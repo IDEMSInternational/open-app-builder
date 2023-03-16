@@ -9,8 +9,12 @@
       "number_of_challenges": "3",
       "question_text": "Did you have any challenges when trying to praise your teen?",
       "_translations": {
-        "question_text": {},
-        "text_challenge_1": {},
+        "question_text": {
+          "tz_sw": true
+        },
+        "text_challenge_1": {
+          "tz_sw": true
+        },
         "reply_challenge_1": {
           "tz_sw": true,
           "za_af": true,
@@ -19,7 +23,9 @@
           "za_xh": true,
           "za_zu": true
         },
-        "text_challenge_2": {},
+        "text_challenge_2": {
+          "tz_sw": true
+        },
         "reply_challenge_2": {
           "tz_sw": true,
           "za_af": true,
@@ -28,7 +34,9 @@
           "za_xh": true,
           "za_zu": true
         },
-        "text_challenge_3": {},
+        "text_challenge_3": {
+          "tz_sw": true
+        },
         "reply_challenge_3": {
           "tz_sw": true,
           "za_af": true,
@@ -37,7 +45,9 @@
           "za_xh": true,
           "za_zu": true
         },
-        "top_text": {}
+        "top_text": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "question_text": {
@@ -78,7 +88,9 @@
       "number_of_challenges": "5",
       "question_text": "Did you have any challenges when sharing how you feel with your teen?",
       "_translations": {
-        "question_text": {},
+        "question_text": {
+          "tz_sw": true
+        },
         "text_challenge_1": {
           "tz_sw": true,
           "za_af": true,
@@ -159,7 +171,9 @@
           "za_xh": true,
           "za_zu": true
         },
-        "top_text": {}
+        "top_text": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "question_text": {
@@ -290,7 +304,9 @@
           "za_xh": true,
           "za_zu": true
         },
-        "top_text": {}
+        "top_text": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "question_text": {
@@ -447,7 +463,9 @@
           "za_xh": true,
           "za_zu": true
         },
-        "top_text": {}
+        "top_text": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "question_text": {
@@ -544,14 +562,7 @@
           "za_xh": true,
           "za_zu": true
         },
-        "reply_challenge_2": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        },
+        "reply_challenge_2": {},
         "text_challenge_3": {
           "tz_sw": true,
           "za_af": true,
@@ -632,7 +643,9 @@
           "za_xh": true,
           "za_zu": true
         },
-        "top_text": {}
+        "top_text": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "question_text": {
@@ -648,7 +661,7 @@
           "eng": "My teen got very angry with me after I gave the consequence."
         },
         "reply_challenge_2": {
-          "eng": "When your teen gets angry, you might need to walk away until you are both calm. \n\nCheck to make sure your consequence is fair and reasonable. Listen to your teen’s explanation, and make sure to give a “Safety Amnesty” if they broke a rule in order to stay safe."
+          "eng": "When your teen gets angry, you might need to walk away until you are both calm.\n\nCheck to make sure your consequence is fair and reasonable. Listen to your teen’s explanation, and react calmly as you agreed if they used the “@global.safety_word” or broke a rule in order to stay safe."
         },
         "text_challenge_3": {
           "eng": "I introduced the consequence without first discussing it with my teen."
@@ -687,7 +700,7 @@
       "text_challenge_1": "I got very angry when my teen broke the rule.",
       "reply_challenge_1": "When we take a pause before responding, it helps us to calm down and respond better. \n\nNext time your teen makes you angry, try to take a pause first. Even a few deep breaths can make a big difference!",
       "text_challenge_2": "My teen got very angry with me after I gave the consequence.",
-      "reply_challenge_2": "When your teen gets angry, you might need to walk away until you are both calm. \n\nCheck to make sure your consequence is fair and reasonable. Listen to your teen’s explanation, and make sure to give a “Safety Amnesty” if they broke a rule in order to stay safe.",
+      "reply_challenge_2": "When your teen gets angry, you might need to walk away until you are both calm.\n\nCheck to make sure your consequence is fair and reasonable. Listen to your teen’s explanation, and react calmly as you agreed if they used the “@global.safety_word” or broke a rule in order to stay safe.",
       "text_challenge_3": "I introduced the consequence without first discussing it with my teen.",
       "reply_challenge_3": "Can you make a consequence for if this happens again? When we establish a consequence together with our teens, the consequence will be more realistic, and our teens will be more willing and able to follow the rule.",
       "text_challenge_4": "I forgot to follow through with the consequence.",
@@ -707,7 +720,9 @@
       "button_go_to_template_2_a": "lib_act_w_solve",
       "question_text": "Did you have any challenges when trying to resolve the problem with your teen?",
       "_translations": {
-        "question_text": {},
+        "question_text": {
+          "tz_sw": true
+        },
         "text_challenge_1": {
           "tz_sw": true,
           "za_af": true,
@@ -804,7 +819,9 @@
           "za_xh": true,
           "za_zu": true
         },
-        "top_text": {}
+        "top_text": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "question_text": {
@@ -869,7 +886,9 @@
       "number_of_challenges": "6",
       "question_text": "Did you have any challenges when trying to map risks and support with your teen?",
       "_translations": {
-        "question_text": {},
+        "question_text": {
+          "tz_sw": true
+        },
         "text_challenge_1": {
           "tz_sw": true,
           "za_af": true,
@@ -966,7 +985,9 @@
           "za_xh": true,
           "za_zu": true
         },
-        "top_text": {}
+        "top_text": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "question_text": {
@@ -1030,9 +1051,12 @@
       "id": "w_crisis",
       "number_of_challenges": "3",
       "button_go_to_template_1_a": "lib_act_w_solve",
+      "button_go_to_template_1_b": "parent_centre_help",
       "question_text": "Did you have any challenges when trying to prepare for a possible crisis with your teen?",
       "_translations": {
-        "question_text": {},
+        "question_text": {
+          "tz_sw": true
+        },
         "text_challenge_1": {
           "tz_sw": true,
           "za_af": true,
@@ -1090,7 +1114,9 @@
           "za_xh": true,
           "za_zu": true
         },
-        "top_text": {}
+        "top_text": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "question_text": {

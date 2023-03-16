@@ -5,7 +5,7 @@
   "status": "released",
   "rows": [
     {
-      "id": "nf_inactive_w_self_care_not_started",
+      "id": "nf_inactive_w_self_care",
       "workshop": "w_self_care",
       "message_type": "inactive",
       "action_list": [
@@ -13,11 +13,11 @@
           "trigger": "sent",
           "action_id": "set_field",
           "args": [
-            "nf_inactive_w_self_care_not_started_sent",
+            "nf_inactive_w_self_care_sent",
             true
           ],
-          "_raw": "sent | set_field: nf_inactive_w_self_care_not_started_sent : true",
-          "_cleaned": "sent | set_field: nf_inactive_w_self_care_not_started_sent : true"
+          "_raw": "sent | set_field: nf_inactive_w_self_care_sent : true",
+          "_cleaned": "sent | set_field: nf_inactive_w_self_care_sent : true"
         }
       ],
       "priority": 1,
@@ -25,83 +25,44 @@
         {
           "condition_type": "calc",
           "condition_args": {
-            "calc": "@fields._task_highlighted_group_id == w_self_care"
+            "calc": "@fields._task_highlighted_group_id == \"w_self_care\""
           },
-          "_raw": "@fields._task_highlighted_group_id == w_self_care"
+          "_raw": "@fields._task_highlighted_group_id == \"w_self_care\""
         }
       ],
       "deactivation_condition_list": [
         {
           "condition_type": "calc",
           "condition_args": {
-            "calc": "@fields.nf_inactive_w_self_care_not_started_sent"
+            "calc": "@fields.nf_inactive_w_self_care_sent"
           },
-          "_raw": "@fields.nf_inactive_w_self_care_not_started_sent"
+          "_raw": "@fields.nf_inactive_w_self_care_sent"
         }
       ],
       "campaign_list": [
         "nf_inactive_progress"
       ],
-      "text": "It is so good to have you on this parenting journey. Tap the @data.workshop.w_self_care.in_text_title and learn how you can care for yourself. A happy family starts with a happy YOU!",
+      "title": "Care for yourself with @global.parent_app",
       "_translations": {
-        "text": {}
+        "title": {
+          "tz_sw": true
+        },
+        "text": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
+        "title": {
+          "eng": "Care for yourself with @global.parent_app"
+        },
         "text": {
-          "eng": "It is so good to have you on this parenting journey. Tap the @data.workshop.w_self_care.in_text_title and learn how you can care for yourself. A happy family starts with a happy YOU!"
+          "eng": "@fields.user_name, it is so good to have you on this parenting journey. Tap the @data.workshop.w_self_care.in_text_title and learn more on how you can care for yourself. A happy family starts with a happy YOU!"
         }
-      }
-    },
-    {
-      "id": "nf_inactive_w_self_care_started",
-      "workshop": "w_self_care",
-      "message_type": "inactive",
-      "action_list": [
-        {
-          "trigger": "sent",
-          "action_id": "set_field",
-          "args": [
-            "nf_inactive_w_self_care_started_sent",
-            true
-          ],
-          "_raw": "sent | set_field: nf_inactive_w_self_care_started_sent : true",
-          "_cleaned": "sent | set_field: nf_inactive_w_self_care_started_sent : true"
-        }
-      ],
-      "priority": 2,
-      "activation_condition_list": [
-        {
-          "condition_type": "calc",
-          "condition_args": {
-            "calc": "@fields._task_highlighted_group_id == w_self_care"
-          },
-          "_raw": "@fields._task_highlighted_group_id == w_self_care"
-        }
-      ],
-      "deactivation_condition_list": [
-        {
-          "condition_type": "calc",
-          "condition_args": {
-            "calc": "@fields.nf_inactive_w_self_care_started_sent"
-          },
-          "_raw": "@fields.nf_inactive_w_self_care_started_sent"
-        }
-      ],
-      "campaign_list": [
-        "nf_inactive_progress"
-      ],
-      "text": "Well done for learning to care for yourself - you matter! Complete the @data.workshop.w_self_care.in_text_title and lay the foundation to help you and your family thrive.",
-      "_translations": {
-        "text": {}
       },
-      "_translatedFields": {
-        "text": {
-          "eng": "Well done for learning to care for yourself - you matter! Complete the @data.workshop.w_self_care.in_text_title and lay the foundation to help you and your family thrive."
-        }
-      }
+      "text": "@fields.user_name, it is so good to have you on this parenting journey. Tap the @data.workshop.w_self_care.in_text_title and learn more on how you can care for yourself. A happy family starts with a happy YOU!"
     },
     {
-      "id": "nf_inactive_w_1on1_not_started",
+      "id": "nf_inactive_w_1on1",
       "workshop": "w_1on1",
       "message_type": "inactive",
       "action_list": [
@@ -109,11 +70,11 @@
           "trigger": "sent",
           "action_id": "set_field",
           "args": [
-            "nf_inactive_w_1on1_not_started_sent",
+            "nf_inactive_w_1on1_sent",
             true
           ],
-          "_raw": "sent | set_field: nf_inactive_w_1on1_not_started_sent : true",
-          "_cleaned": "sent | set_field: nf_inactive_w_1on1_not_started_sent : true"
+          "_raw": "sent | set_field: nf_inactive_w_1on1_sent : true",
+          "_cleaned": "sent | set_field: nf_inactive_w_1on1_sent : true"
         }
       ],
       "priority": 1,
@@ -121,83 +82,44 @@
         {
           "condition_type": "calc",
           "condition_args": {
-            "calc": "@fields._task_highlighted_group_id == w_1on1"
+            "calc": "@fields._task_highlighted_group_id == \"w_1on1\""
           },
-          "_raw": "@fields._task_highlighted_group_id == w_1on1"
+          "_raw": "@fields._task_highlighted_group_id == \"w_1on1\""
         }
       ],
       "deactivation_condition_list": [
         {
           "condition_type": "calc",
           "condition_args": {
-            "calc": "@fields.nf_inactive_w_1on1_not_started_sent"
+            "calc": "@fields.nf_inactive_w_1on1_sent"
           },
-          "_raw": "@fields.nf_inactive_w_1on1_not_started_sent"
+          "_raw": "@fields.nf_inactive_w_1on1_sent"
         }
       ],
       "campaign_list": [
         "nf_inactive_progress"
       ],
-      "text": "Thank you for using @global.parent_app and committing to your parenting. Start the @data.workshop.w_1on1.in_text_title whenever you are ready - you will enjoy it!",
+      "title": "Connect well through @global.parent_app",
       "_translations": {
-        "text": {}
-      },
-      "_translatedFields": {
+        "title": {
+          "tz_sw": true
+        },
         "text": {
-          "eng": "Thank you for using @global.parent_app and committing to your parenting. Start the @data.workshop.w_1on1.in_text_title whenever you are ready - you will enjoy it!"
+          "tz_sw": true
         }
-      }
-    },
-    {
-      "id": "nf_inactive_w_1on1_started",
-      "workshop": "w_1on1",
-      "message_type": "inactive",
-      "action_list": [
-        {
-          "trigger": "sent",
-          "action_id": "set_field",
-          "args": [
-            "nf_inactive_w_1on1_started_sent",
-            true
-          ],
-          "_raw": "sent | set_field: nf_inactive_w_1on1_started_sent : true",
-          "_cleaned": "sent | set_field: nf_inactive_w_1on1_started_sent : true"
-        }
-      ],
-      "priority": 2,
-      "activation_condition_list": [
-        {
-          "condition_type": "calc",
-          "condition_args": {
-            "calc": "@fields._task_highlighted_group_id == w_1on1"
-          },
-          "_raw": "@fields._task_highlighted_group_id == w_1on1"
-        }
-      ],
-      "deactivation_condition_list": [
-        {
-          "condition_type": "calc",
-          "condition_args": {
-            "calc": "@fields.nf_inactive_w_1on1_started_sent"
-          },
-          "_raw": "@fields.nf_inactive_w_1on1_started_sent"
-        }
-      ],
-      "campaign_list": [
-        "nf_inactive_progress"
-      ],
-      "text": "Spending time with your teen helps build trust between you. Continue your @global.parent_app journey now by completing the @data.workshop.w_1on1.in_text_title. You and your family will see great results.",
-      "_translations": {
-        "text": {}
       },
       "_translatedFields": {
+        "title": {
+          "eng": "Connect well through @global.parent_app"
+        },
         "text": {
           "eng": "Spending time with your teen helps build trust between you. Continue your @global.parent_app journey now by completing the @data.workshop.w_1on1.in_text_title. You and your family will see great results."
         }
-      }
+      },
+      "text": "Spending time with your teen helps build trust between you. Continue your @global.parent_app journey now by completing the @data.workshop.w_1on1.in_text_title. You and your family will see great results."
     },
     {
-      "id": "nf_inactive_w_praise_not_started",
+      "id": "nf_inactive_w_praise",
       "workshop": "w_praise",
       "message_type": "inactive",
       "action_list": [
@@ -205,11 +127,11 @@
           "trigger": "sent",
           "action_id": "set_field",
           "args": [
-            "nf_inactive_w_praise_not_started_sent",
+            "nf_inactive_w_praise_sent",
             true
           ],
-          "_raw": "sent | set_field: nf_inactive_w_praise_not_started_sent : true",
-          "_cleaned": "sent | set_field: nf_inactive_w_praise_not_started_sent : true"
+          "_raw": "sent | set_field: nf_inactive_w_praise_sent : true",
+          "_cleaned": "sent | set_field: nf_inactive_w_praise_sent : true"
         }
       ],
       "priority": 1,
@@ -217,83 +139,44 @@
         {
           "condition_type": "calc",
           "condition_args": {
-            "calc": "@fields._task_highlighted_group_id == w_praise"
+            "calc": "@fields._task_highlighted_group_id == \"w_praise\""
           },
-          "_raw": "@fields._task_highlighted_group_id == w_praise"
+          "_raw": "@fields._task_highlighted_group_id == \"w_praise\""
         }
       ],
       "deactivation_condition_list": [
         {
           "condition_type": "calc",
           "condition_args": {
-            "calc": "@fields.nf_inactive_w_praise_not_started_sent"
+            "calc": "@fields.nf_inactive_w_praise_sent"
           },
-          "_raw": "@fields.nf_inactive_w_praise_not_started_sent"
+          "_raw": "@fields.nf_inactive_w_praise_sent"
         }
       ],
       "campaign_list": [
         "nf_inactive_progress"
       ],
-      "text": "Well done for using @global.parent_app to invest in yourself and your family.\nYou can start the @data.workshop.w_praise.in_text_title and build a great parenting skill!",
+      "title": "Praise each other with @global.parent_app",
       "_translations": {
-        "text": {}
-      },
-      "_translatedFields": {
+        "title": {
+          "tz_sw": true
+        },
         "text": {
-          "eng": "Well done for using @global.parent_app to invest in yourself and your family.\nYou can start the @data.workshop.w_praise.in_text_title and build a great parenting skill!"
+          "tz_sw": true
         }
-      }
-    },
-    {
-      "id": "nf_inactive_w_praise_started",
-      "workshop": "w_praise",
-      "message_type": "inactive",
-      "action_list": [
-        {
-          "trigger": "sent",
-          "action_id": "set_field",
-          "args": [
-            "nf_inactive_w_praise_started_sent",
-            true
-          ],
-          "_raw": "sent | set_field: nf_inactive_w_praise_started_sent : true",
-          "_cleaned": "sent | set_field: nf_inactive_w_praise_started_sent : true"
-        }
-      ],
-      "priority": 2,
-      "activation_condition_list": [
-        {
-          "condition_type": "calc",
-          "condition_args": {
-            "calc": "@fields._task_highlighted_group_id == w_praise"
-          },
-          "_raw": "@fields._task_highlighted_group_id == w_praise"
-        }
-      ],
-      "deactivation_condition_list": [
-        {
-          "condition_type": "calc",
-          "condition_args": {
-            "calc": "@fields.nf_inactive_w_praise_started_sent"
-          },
-          "_raw": "@fields.nf_inactive_w_praise_started_sent"
-        }
-      ],
-      "campaign_list": [
-        "nf_inactive_progress"
-      ],
-      "text": "Praising makes all the difference. Complete the @data.workshop.w_praise.in_text_title to see how praise can change YOUR family.",
-      "_translations": {
-        "text": {}
       },
       "_translatedFields": {
+        "title": {
+          "eng": "Praise each other with @global.parent_app"
+        },
         "text": {
           "eng": "Praising makes all the difference. Complete the @data.workshop.w_praise.in_text_title to see how praise can change YOUR family."
         }
-      }
+      },
+      "text": "Praising makes all the difference. Complete the @data.workshop.w_praise.in_text_title to see how praise can change YOUR family."
     },
     {
-      "id": "nf_inactive_w_instruct_not_started",
+      "id": "nf_inactive_w_instruct",
       "workshop": "w_instruct",
       "message_type": "inactive",
       "action_list": [
@@ -301,11 +184,11 @@
           "trigger": "sent",
           "action_id": "set_field",
           "args": [
-            "nf_inactive_w_instruct_not_started_sent",
+            "nf_inactive_w_instruct_sent",
             true
           ],
-          "_raw": "sent | set_field: nf_inactive_w_instruct_not_started_sent : true",
-          "_cleaned": "sent | set_field: nf_inactive_w_instruct_not_started_sent : true"
+          "_raw": "sent | set_field: nf_inactive_w_instruct_sent : true",
+          "_cleaned": "sent | set_field: nf_inactive_w_instruct_sent : true"
         }
       ],
       "priority": 1,
@@ -313,83 +196,44 @@
         {
           "condition_type": "calc",
           "condition_args": {
-            "calc": "@fields._task_highlighted_group_id == w_instruct"
+            "calc": "@fields._task_highlighted_group_id == \"w_instruct\""
           },
-          "_raw": "@fields._task_highlighted_group_id == w_instruct"
+          "_raw": "@fields._task_highlighted_group_id == \"w_instruct\""
         }
       ],
       "deactivation_condition_list": [
         {
           "condition_type": "calc",
           "condition_args": {
-            "calc": "@fields.nf_inactive_w_instruct_not_started_sent"
+            "calc": "@fields.nf_inactive_w_instruct_sent"
           },
-          "_raw": "@fields.nf_inactive_w_instruct_not_started_sent"
+          "_raw": "@fields.nf_inactive_w_instruct_sent"
         }
       ],
       "campaign_list": [
         "nf_inactive_progress"
       ],
-      "text": "Does your teen always listen to you? If not (like the rest of us), have a look at the @data.workshop.w_instruct.in_text_title to learn how giving positive instructions can help - a lot.",
+      "title": "Instruct well through @global.parent_app",
       "_translations": {
-        "text": {}
-      },
-      "_translatedFields": {
+        "title": {
+          "tz_sw": true
+        },
         "text": {
-          "eng": "Does your teen always listen to you? If not (like the rest of us), have a look at the @data.workshop.w_instruct.in_text_title to learn how giving positive instructions can help - a lot."
+          "tz_sw": true
         }
-      }
-    },
-    {
-      "id": "nf_inactive_w_instruct_started",
-      "workshop": "w_instruct",
-      "message_type": "inactive",
-      "action_list": [
-        {
-          "trigger": "sent",
-          "action_id": "set_field",
-          "args": [
-            "nf_inactive_w_instruct_started_sent",
-            true
-          ],
-          "_raw": "sent | set_field: nf_inactive_w_instruct_started_sent : true",
-          "_cleaned": "sent | set_field: nf_inactive_w_instruct_started_sent : true"
-        }
-      ],
-      "priority": 2,
-      "activation_condition_list": [
-        {
-          "condition_type": "calc",
-          "condition_args": {
-            "calc": "@fields._task_highlighted_group_id == w_instruct"
-          },
-          "_raw": "@fields._task_highlighted_group_id == w_instruct"
-        }
-      ],
-      "deactivation_condition_list": [
-        {
-          "condition_type": "calc",
-          "condition_args": {
-            "calc": "@fields.nf_inactive_w_instruct_started_sent"
-          },
-          "_raw": "@fields.nf_inactive_w_instruct_started_sent"
-        }
-      ],
-      "campaign_list": [
-        "nf_inactive_progress"
-      ],
-      "text": "Positive instructions help to see more and more good behaviour! Learn how this could work in your family, by completing the @data.workshop.w_instruct.in_text_title.",
-      "_translations": {
-        "text": {}
       },
       "_translatedFields": {
+        "title": {
+          "eng": "Instruct well through @global.parent_app"
+        },
         "text": {
           "eng": "Positive instructions help to see more and more good behaviour! Learn how this could work in your family, by completing the @data.workshop.w_instruct.in_text_title."
         }
-      }
+      },
+      "text": "Positive instructions help to see more and more good behaviour! Learn how this could work in your family, by completing the @data.workshop.w_instruct.in_text_title."
     },
     {
-      "id": "nf_inactive_w_stress_not_started",
+      "id": "nf_inactive_w_stress",
       "workshop": "w_stress",
       "message_type": "inactive",
       "action_list": [
@@ -397,11 +241,11 @@
           "trigger": "sent",
           "action_id": "set_field",
           "args": [
-            "nf_inactive_w_stress_not_started_sent",
+            "nf_inactive_w_stress_sent",
             true
           ],
-          "_raw": "sent | set_field: nf_inactive_w_stress_not_started_sent : true",
-          "_cleaned": "sent | set_field: nf_inactive_w_stress_not_started_sent : true"
+          "_raw": "sent | set_field: nf_inactive_w_stress_sent : true",
+          "_cleaned": "sent | set_field: nf_inactive_w_stress_sent : true"
         }
       ],
       "priority": 1,
@@ -409,83 +253,44 @@
         {
           "condition_type": "calc",
           "condition_args": {
-            "calc": "@fields._task_highlighted_group_id == w_stress"
+            "calc": "@fields._task_highlighted_group_id == \"w_stress\""
           },
-          "_raw": "@fields._task_highlighted_group_id == w_stress"
+          "_raw": "@fields._task_highlighted_group_id == \"w_stress\""
         }
       ],
       "deactivation_condition_list": [
         {
           "condition_type": "calc",
           "condition_args": {
-            "calc": "@fields.nf_inactive_w_stress_not_started_sent"
+            "calc": "@fields.nf_inactive_w_stress_sent"
           },
-          "_raw": "@fields.nf_inactive_w_stress_not_started_sent"
+          "_raw": "@fields.nf_inactive_w_stress_sent"
         }
       ],
       "campaign_list": [
         "nf_inactive_progress"
       ],
-      "text": "We have a module available for you about managing anger and stress. Try it out, it will help you take better care of yourself.",
+      "title": "Stay calm with @global.parent_app",
       "_translations": {
-        "text": {}
-      },
-      "_translatedFields": {
+        "title": {
+          "tz_sw": true
+        },
         "text": {
-          "eng": "We have a module available for you about managing anger and stress. Try it out, it will help you take better care of yourself."
+          "tz_sw": true
         }
-      }
-    },
-    {
-      "id": "nf_inactive_w_stress_started",
-      "workshop": "w_stress",
-      "message_type": "inactive",
-      "action_list": [
-        {
-          "trigger": "sent",
-          "action_id": "set_field",
-          "args": [
-            "nf_inactive_w_stress_started_sent",
-            true
-          ],
-          "_raw": "sent | set_field: nf_inactive_w_stress_started_sent : true",
-          "_cleaned": "sent | set_field: nf_inactive_w_stress_started_sent : true"
-        }
-      ],
-      "priority": 2,
-      "activation_condition_list": [
-        {
-          "condition_type": "calc",
-          "condition_args": {
-            "calc": "@fields._task_highlighted_group_id == w_stress"
-          },
-          "_raw": "@fields._task_highlighted_group_id == w_stress"
-        }
-      ],
-      "deactivation_condition_list": [
-        {
-          "condition_type": "calc",
-          "condition_args": {
-            "calc": "@fields.nf_inactive_w_stress_started_sent"
-          },
-          "_raw": "@fields.nf_inactive_w_stress_started_sent"
-        }
-      ],
-      "campaign_list": [
-        "nf_inactive_progress"
-      ],
-      "text": "We all feel overwhelmed sometimes. Taking a deep breath helps! Complete the @data.workshop.w_stress.in_text_title to get some useful tools to deal with stress.",
-      "_translations": {
-        "text": {}
       },
       "_translatedFields": {
+        "title": {
+          "eng": "Stay calm with @global.parent_app"
+        },
         "text": {
           "eng": "We all feel overwhelmed sometimes. Taking a deep breath helps! Complete the @data.workshop.w_stress.in_text_title to get some useful tools to deal with stress."
         }
-      }
+      },
+      "text": "We all feel overwhelmed sometimes. Taking a deep breath helps! Complete the @data.workshop.w_stress.in_text_title to get some useful tools to deal with stress."
     },
     {
-      "id": "nf_inactive_w_money_not_started",
+      "id": "nf_inactive_w_money",
       "workshop": "w_money",
       "message_type": "inactive",
       "action_list": [
@@ -493,11 +298,11 @@
           "trigger": "sent",
           "action_id": "set_field",
           "args": [
-            "nf_inactive_w_money_not_started_sent",
+            "nf_inactive_w_money_sent",
             true
           ],
-          "_raw": "sent | set_field: nf_inactive_w_money_not_started_sent : true",
-          "_cleaned": "sent | set_field: nf_inactive_w_money_not_started_sent : true"
+          "_raw": "sent | set_field: nf_inactive_w_money_sent : true",
+          "_cleaned": "sent | set_field: nf_inactive_w_money_sent : true"
         }
       ],
       "priority": 1,
@@ -505,83 +310,44 @@
         {
           "condition_type": "calc",
           "condition_args": {
-            "calc": "@fields._task_highlighted_group_id == w_money"
+            "calc": "@fields._task_highlighted_group_id == \"w_money\""
           },
-          "_raw": "@fields._task_highlighted_group_id == w_money"
+          "_raw": "@fields._task_highlighted_group_id == \"w_money\""
         }
       ],
       "deactivation_condition_list": [
         {
           "condition_type": "calc",
           "condition_args": {
-            "calc": "@fields.nf_inactive_w_money_not_started_sent"
+            "calc": "@fields.nf_inactive_w_money_sent"
           },
-          "_raw": "@fields.nf_inactive_w_money_not_started_sent"
+          "_raw": "@fields.nf_inactive_w_money_sent"
         }
       ],
       "campaign_list": [
         "nf_inactive_progress"
       ],
-      "text": "Do you feel stressed about money? Does your teen keep asking for things you can’t afford? Tap the @data.workshop.w_money.in_text_title to get great tips on money and budgeting.",
+      "title": "Manage money with @global.parent_app",
       "_translations": {
-        "text": {}
+        "title": {
+          "tz_sw": true
+        },
+        "text": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
+        "title": {
+          "eng": "Manage money with @global.parent_app"
+        },
         "text": {
-          "eng": "Do you feel stressed about money? Does your teen keep asking for things you can’t afford? Tap the @data.workshop.w_money.in_text_title to get great tips on money and budgeting."
+          "eng": "@fields.user_name, do you feel stressed about money? Does your teen keep asking for things you can’t afford? Tap the @data.workshop.w_money.in_text_title to get great tips on money and budgeting."
         }
-      }
-    },
-    {
-      "id": "nf_inactive_w_money_started",
-      "workshop": "w_money",
-      "message_type": "inactive",
-      "action_list": [
-        {
-          "trigger": "sent",
-          "action_id": "set_field",
-          "args": [
-            "nf_inactive_w_money_started_sent",
-            true
-          ],
-          "_raw": "sent | set_field: nf_inactive_w_money_started_sent : true",
-          "_cleaned": "sent | set_field: nf_inactive_w_money_started_sent : true"
-        }
-      ],
-      "priority": 2,
-      "activation_condition_list": [
-        {
-          "condition_type": "calc",
-          "condition_args": {
-            "calc": "@fields._task_highlighted_group_id == w_money"
-          },
-          "_raw": "@fields._task_highlighted_group_id == w_money"
-        }
-      ],
-      "deactivation_condition_list": [
-        {
-          "condition_type": "calc",
-          "condition_args": {
-            "calc": "@fields.nf_inactive_w_money_started_sent"
-          },
-          "_raw": "@fields.nf_inactive_w_money_started_sent"
-        }
-      ],
-      "campaign_list": [
-        "nf_inactive_progress"
-      ],
-      "text": "Involving your family in how you spend your money can take away a lot of stress and arguments. Help your family to budget and save by completing the @data.workshop.w_money.in_text_title. It's actually easy - you will see!",
-      "_translations": {
-        "text": {}
       },
-      "_translatedFields": {
-        "text": {
-          "eng": "Involving your family in how you spend your money can take away a lot of stress and arguments. Help your family to budget and save by completing the @data.workshop.w_money.in_text_title. It's actually easy - you will see!"
-        }
-      }
+      "text": "@fields.user_name, do you feel stressed about money? Does your teen keep asking for things you can’t afford? Tap the @data.workshop.w_money.in_text_title to get great tips on money and budgeting."
     },
     {
-      "id": "nf_inactive_w_rules_not_started",
+      "id": "nf_inactive_w_rules",
       "workshop": "w_rules",
       "message_type": "inactive",
       "action_list": [
@@ -589,11 +355,11 @@
           "trigger": "sent",
           "action_id": "set_field",
           "args": [
-            "nf_inactive_w_rules_not_started_sent",
+            "nf_inactive_w_rules_sent",
             true
           ],
-          "_raw": "sent | set_field: nf_inactive_w_rules_not_started_sent : true",
-          "_cleaned": "sent | set_field: nf_inactive_w_rules_not_started_sent : true"
+          "_raw": "sent | set_field: nf_inactive_w_rules_sent : true",
+          "_cleaned": "sent | set_field: nf_inactive_w_rules_sent : true"
         }
       ],
       "priority": 1,
@@ -601,83 +367,44 @@
         {
           "condition_type": "calc",
           "condition_args": {
-            "calc": "@fields._task_highlighted_group_id == w_rules"
+            "calc": "@fields._task_highlighted_group_id == \"w_rules\""
           },
-          "_raw": "@fields._task_highlighted_group_id == w_rules"
+          "_raw": "@fields._task_highlighted_group_id == \"w_rules\""
         }
       ],
       "deactivation_condition_list": [
         {
           "condition_type": "calc",
           "condition_args": {
-            "calc": "@fields.nf_inactive_w_rules_not_started_sent"
+            "calc": "@fields.nf_inactive_w_rules_sent"
           },
-          "_raw": "@fields.nf_inactive_w_rules_not_started_sent"
+          "_raw": "@fields.nf_inactive_w_rules_sent"
         }
       ],
       "campaign_list": [
         "nf_inactive_progress"
       ],
-      "text": "Thank you again for using @global.parent_app and for committing to your parenting journey. The @data.workshop.w_rules.in_text_title will show you how to set rules in a way that helps your teen to understand and follow them better.",
+      "title": "Rules that work with @global.parent_app",
       "_translations": {
-        "text": {}
+        "title": {
+          "tz_sw": true
+        },
+        "text": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
+        "title": {
+          "eng": "Rules that work with @global.parent_app"
+        },
         "text": {
-          "eng": "Thank you again for using @global.parent_app and for committing to your parenting journey. The @data.workshop.w_rules.in_text_title will show you how to set rules in a way that helps your teen to understand and follow them better."
+          "eng": "Well done for using @global.parent_app and for committing to your parenting journey. The @data.workshop.w_rules.in_text_title shows you how to set rules in a way that helps your teen to understand and follow them better. Try it out today!"
         }
-      }
-    },
-    {
-      "id": "nf_inactive_w_rules_started",
-      "workshop": "w_rules",
-      "message_type": "inactive",
-      "action_list": [
-        {
-          "trigger": "sent",
-          "action_id": "set_field",
-          "args": [
-            "nf_inactive_w_rules_started_sent",
-            true
-          ],
-          "_raw": "sent | set_field: nf_inactive_w_rules_started_sent : true",
-          "_cleaned": "sent | set_field: nf_inactive_w_rules_started_sent : true"
-        }
-      ],
-      "priority": 2,
-      "activation_condition_list": [
-        {
-          "condition_type": "calc",
-          "condition_args": {
-            "calc": "@fields._task_highlighted_group_id == w_rules"
-          },
-          "_raw": "@fields._task_highlighted_group_id == w_rules"
-        }
-      ],
-      "deactivation_condition_list": [
-        {
-          "condition_type": "calc",
-          "condition_args": {
-            "calc": "@fields.nf_inactive_w_rules_started_sent"
-          },
-          "_raw": "@fields.nf_inactive_w_rules_started_sent"
-        }
-      ],
-      "campaign_list": [
-        "nf_inactive_progress"
-      ],
-      "text": "You are close to gaining an important parenting tool. Complete the @data.workshop.w_rules.in_text_title, set ONE simple and realistic rule with your teen, and see things change!",
-      "_translations": {
-        "text": {}
       },
-      "_translatedFields": {
-        "text": {
-          "eng": "You are close to gaining an important parenting tool. Complete the @data.workshop.w_rules.in_text_title, set ONE simple and realistic rule with your teen, and see things change!"
-        }
-      }
+      "text": "Well done for using @global.parent_app and for committing to your parenting journey. The @data.workshop.w_rules.in_text_title shows you how to set rules in a way that helps your teen to understand and follow them better. Try it out today!"
     },
     {
-      "id": "nf_inactive_w_consequence_not_started",
+      "id": "nf_inactive_w_consequence",
       "workshop": "w_consequence",
       "message_type": "inactive",
       "action_list": [
@@ -685,11 +412,11 @@
           "trigger": "sent",
           "action_id": "set_field",
           "args": [
-            "nf_inactive_w_consequence_not_started_sent",
+            "nf_inactive_w_consequence_sent",
             true
           ],
-          "_raw": "sent | set_field: nf_inactive_w_consequence_not_started_sent : true",
-          "_cleaned": "sent | set_field: nf_inactive_w_consequence_not_started_sent : true"
+          "_raw": "sent | set_field: nf_inactive_w_consequence_sent : true",
+          "_cleaned": "sent | set_field: nf_inactive_w_consequence_sent : true"
         }
       ],
       "priority": 1,
@@ -697,83 +424,44 @@
         {
           "condition_type": "calc",
           "condition_args": {
-            "calc": "@fields._task_highlighted_group_id == w_consequence"
+            "calc": "@fields._task_highlighted_group_id == \"w_consequence\""
           },
-          "_raw": "@fields._task_highlighted_group_id == w_consequence"
+          "_raw": "@fields._task_highlighted_group_id == \"w_consequence\""
         }
       ],
       "deactivation_condition_list": [
         {
           "condition_type": "calc",
           "condition_args": {
-            "calc": "@fields.nf_inactive_w_consequence_not_started_sent"
+            "calc": "@fields.nf_inactive_w_consequence_sent"
           },
-          "_raw": "@fields.nf_inactive_w_consequence_not_started_sent"
+          "_raw": "@fields.nf_inactive_w_consequence_sent"
         }
       ],
       "campaign_list": [
         "nf_inactive_progress"
       ],
-      "text": "It’s great that you’ve been using @global.parent_app. You’ve gained so many essential parenting tools already! Tap the @data.workshop.w_consequence.in_text_title to get another useful tool!",
+      "title": "Motivate your teen with @global.parent_app",
       "_translations": {
-        "text": {}
+        "title": {
+          "tz_sw": true
+        },
+        "text": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
+        "title": {
+          "eng": "Motivate your teen with @global.parent_app"
+        },
         "text": {
-          "eng": "It’s great that you’ve been using @global.parent_app. You’ve gained so many essential parenting tools already! Tap the @data.workshop.w_consequence.in_text_title to get another useful tool!"
+          "eng": "You have build many great parenting skills already! Tap the @data.workshop.w_consequence.in_text_title to learn how to set one positive and one negative consequence of a behaviour together. You and your family will benefits!"
         }
-      }
-    },
-    {
-      "id": "nf_inactive_w_consequence_started",
-      "workshop": "w_consequence",
-      "message_type": "inactive",
-      "action_list": [
-        {
-          "trigger": "sent",
-          "action_id": "set_field",
-          "args": [
-            "nf_inactive_w_consequence_started_sent",
-            true
-          ],
-          "_raw": "sent | set_field: nf_inactive_w_consequence_started_sent : true",
-          "_cleaned": "sent | set_field: nf_inactive_w_consequence_started_sent : true"
-        }
-      ],
-      "priority": 2,
-      "activation_condition_list": [
-        {
-          "condition_type": "calc",
-          "condition_args": {
-            "calc": "@fields._task_highlighted_group_id == w_consequence"
-          },
-          "_raw": "@fields._task_highlighted_group_id == w_consequence"
-        }
-      ],
-      "deactivation_condition_list": [
-        {
-          "condition_type": "calc",
-          "condition_args": {
-            "calc": "@fields.nf_inactive_w_consequence_started_sent"
-          },
-          "_raw": "@fields.nf_inactive_w_consequence_started_sent"
-        }
-      ],
-      "campaign_list": [
-        "nf_inactive_progress"
-      ],
-      "text": "Complete the @data.workshop.w_consequence.in_text_title and chat with your teen to set one positive and one negative consequence of a behaviour together. \nYou and your family will benefit!",
-      "_translations": {
-        "text": {}
       },
-      "_translatedFields": {
-        "text": {
-          "eng": "Complete the @data.workshop.w_consequence.in_text_title and chat with your teen to set one positive and one negative consequence of a behaviour together. \nYou and your family will benefit!"
-        }
-      }
+      "text": "You have build many great parenting skills already! Tap the @data.workshop.w_consequence.in_text_title to learn how to set one positive and one negative consequence of a behaviour together. You and your family will benefits!"
     },
     {
-      "id": "nf_inactive_w_solve_not_started",
+      "id": "nf_inactive_w_solve",
       "workshop": "w_solve",
       "message_type": "inactive",
       "action_list": [
@@ -781,11 +469,11 @@
           "trigger": "sent",
           "action_id": "set_field",
           "args": [
-            "nf_inactive_w_solve_not_started_sent",
+            "nf_inactive_w_solve_sent",
             true
           ],
-          "_raw": "sent | set_field: nf_inactive_w_solve_not_started_sent : true",
-          "_cleaned": "sent | set_field: nf_inactive_w_solve_not_started_sent : true"
+          "_raw": "sent | set_field: nf_inactive_w_solve_sent : true",
+          "_cleaned": "sent | set_field: nf_inactive_w_solve_sent : true"
         }
       ],
       "priority": 1,
@@ -793,83 +481,44 @@
         {
           "condition_type": "calc",
           "condition_args": {
-            "calc": "@fields._task_highlighted_group_id == w_solve"
+            "calc": "@fields._task_highlighted_group_id == \"w_solve\""
           },
-          "_raw": "@fields._task_highlighted_group_id == w_solve"
+          "_raw": "@fields._task_highlighted_group_id == \"w_solve\""
         }
       ],
       "deactivation_condition_list": [
         {
           "condition_type": "calc",
           "condition_args": {
-            "calc": "@fields.nf_inactive_w_solve_not_started_sent"
+            "calc": "@fields.nf_inactive_w_solve_sent"
           },
-          "_raw": "@fields.nf_inactive_w_solve_not_started_sent"
+          "_raw": "@fields.nf_inactive_w_solve_sent"
         }
       ],
       "campaign_list": [
         "nf_inactive_progress"
       ],
-      "text": "With teenagers, and in life, unexpected problems come up and we have to deal with them. Tap the @data.workshop.w_solve.in_text_title to learn how to overcome any problems.",
+      "title": "Solve problems with @global.parent_app",
       "_translations": {
-        "text": {}
+        "title": {
+          "tz_sw": true
+        },
+        "text": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
+        "title": {
+          "eng": "Solve problems with @global.parent_app"
+        },
         "text": {
-          "eng": "With teenagers, and in life, unexpected problems come up and we have to deal with them. Tap the @data.workshop.w_solve.in_text_title to learn how to overcome any problems."
+          "eng": "With teenagers, and in life, unexpected problems come up. Tap the @data.workshop.w_solve.in_text_title to learn how to resolve any challenge together with your teen."
         }
-      }
-    },
-    {
-      "id": "nf_inactive_w_solve_started",
-      "workshop": "w_solve",
-      "message_type": "inactive",
-      "action_list": [
-        {
-          "trigger": "sent",
-          "action_id": "set_field",
-          "args": [
-            "nf_inactive_w_solve_started_sent",
-            true
-          ],
-          "_raw": "sent | set_field: nf_inactive_w_solve_started_sent : true",
-          "_cleaned": "sent | set_field: nf_inactive_w_solve_started_sent : true"
-        }
-      ],
-      "priority": 2,
-      "activation_condition_list": [
-        {
-          "condition_type": "calc",
-          "condition_args": {
-            "calc": "@fields._task_highlighted_group_id == w_solve"
-          },
-          "_raw": "@fields._task_highlighted_group_id == w_solve"
-        }
-      ],
-      "deactivation_condition_list": [
-        {
-          "condition_type": "calc",
-          "condition_args": {
-            "calc": "@fields.nf_inactive_w_solve_started_sent"
-          },
-          "_raw": "@fields.nf_inactive_w_solve_started_sent"
-        }
-      ],
-      "campaign_list": [
-        "nf_inactive_progress"
-      ],
-      "text": "You are on the right track to start solving problems together with your teen! Learn how to do this well by completing the @data.workshop.w_solve.in_text_title.",
-      "_translations": {
-        "text": {}
       },
-      "_translatedFields": {
-        "text": {
-          "eng": "You are on the right track to start solving problems together with your teen! Learn how to do this well by completing the @data.workshop.w_solve.in_text_title."
-        }
-      }
+      "text": "With teenagers, and in life, unexpected problems come up. Tap the @data.workshop.w_solve.in_text_title to learn how to resolve any challenge together with your teen."
     },
     {
-      "id": "nf_inactive_w_safe_not_started",
+      "id": "nf_inactive_w_safe",
       "workshop": "w_safe",
       "message_type": "inactive",
       "action_list": [
@@ -877,11 +526,11 @@
           "trigger": "sent",
           "action_id": "set_field",
           "args": [
-            "nf_inactive_w_safe_not_started_sent",
+            "nf_inactive_w_safe_sent",
             true
           ],
-          "_raw": "sent | set_field: nf_inactive_w_safe_not_started_sent : true",
-          "_cleaned": "sent | set_field: nf_inactive_w_safe_not_started_sent : true"
+          "_raw": "sent | set_field: nf_inactive_w_safe_sent : true",
+          "_cleaned": "sent | set_field: nf_inactive_w_safe_sent : true"
         }
       ],
       "priority": 1,
@@ -889,83 +538,44 @@
         {
           "condition_type": "calc",
           "condition_args": {
-            "calc": "@fields._task_highlighted_group_id == w_safe"
+            "calc": "@fields._task_highlighted_group_id == \"w_safe\""
           },
-          "_raw": "@fields._task_highlighted_group_id == w_safe"
+          "_raw": "@fields._task_highlighted_group_id == \"w_safe\""
         }
       ],
       "deactivation_condition_list": [
         {
           "condition_type": "calc",
           "condition_args": {
-            "calc": "@fields.nf_inactive_w_safe_not_started_sent"
+            "calc": "@fields.nf_inactive_w_safe_sent"
           },
-          "_raw": "@fields.nf_inactive_w_safe_not_started_sent"
+          "_raw": "@fields.nf_inactive_w_safe_sent"
         }
       ],
       "campaign_list": [
         "nf_inactive_progress"
       ],
-      "text": "You are gaining great skills for yourself and your family! Complete the @data.workshop.w_safe.in_text_title to add another helpful skill.",
+      "title": "Stay safe through @global.parent_app",
       "_translations": {
-        "text": {}
+        "title": {
+          "tz_sw": true
+        },
+        "text": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
+        "title": {
+          "eng": "Stay safe through @global.parent_app"
+        },
         "text": {
-          "eng": "You are gaining great skills for yourself and your family! Complete the @data.workshop.w_safe.in_text_title to add another helpful skill."
+          "eng": "To keep your teen safe, it helps to chat together about your community and their online experiences. Complete the @data.workshop.w_safe.in_text_title and see how you can do this!"
         }
-      }
-    },
-    {
-      "id": "nf_inactive_w_safe_started",
-      "workshop": "w_safe",
-      "message_type": "inactive",
-      "action_list": [
-        {
-          "trigger": "sent",
-          "action_id": "set_field",
-          "args": [
-            "nf_inactive_w_safe_started_sent",
-            true
-          ],
-          "_raw": "sent | set_field: nf_inactive_w_safe_started_sent : true",
-          "_cleaned": "sent | set_field: nf_inactive_w_safe_started_sent : true"
-        }
-      ],
-      "priority": 2,
-      "activation_condition_list": [
-        {
-          "condition_type": "calc",
-          "condition_args": {
-            "calc": "@fields._task_highlighted_group_id == w_safe"
-          },
-          "_raw": "@fields._task_highlighted_group_id == w_safe"
-        }
-      ],
-      "deactivation_condition_list": [
-        {
-          "condition_type": "calc",
-          "condition_args": {
-            "calc": "@fields.nf_inactive_w_safe_started_sent"
-          },
-          "_raw": "@fields.nf_inactive_w_safe_started_sent"
-        }
-      ],
-      "campaign_list": [
-        "nf_inactive_progress"
-      ],
-      "text": "To keep your teen safe, it helps to chat together about your community and their online experiences. Continue with the @data.workshop.w_safe.in_text_title and see how you can do this!",
-      "_translations": {
-        "text": {}
       },
-      "_translatedFields": {
-        "text": {
-          "eng": "To keep your teen safe, it helps to chat together about your community and their online experiences. Continue with the @data.workshop.w_safe.in_text_title and see how you can do this!"
-        }
-      }
+      "text": "To keep your teen safe, it helps to chat together about your community and their online experiences. Complete the @data.workshop.w_safe.in_text_title and see how you can do this!"
     },
     {
-      "id": "nf_inactive_w_crisis_not_started",
+      "id": "nf_inactive_w_crisis",
       "workshop": "w_crisis",
       "message_type": "inactive",
       "action_list": [
@@ -973,11 +583,11 @@
           "trigger": "sent",
           "action_id": "set_field",
           "args": [
-            "nf_inactive_w_crisis_not_started_sent",
+            "nf_inactive_w_crisis_sent",
             true
           ],
-          "_raw": "sent | set_field: nf_inactive_w_crisis_not_started_sent : true",
-          "_cleaned": "sent | set_field: nf_inactive_w_crisis_not_started_sent : true"
+          "_raw": "sent | set_field: nf_inactive_w_crisis_sent : true",
+          "_cleaned": "sent | set_field: nf_inactive_w_crisis_sent : true"
         }
       ],
       "priority": 1,
@@ -985,83 +595,44 @@
         {
           "condition_type": "calc",
           "condition_args": {
-            "calc": "@fields._task_highlighted_group_id == w_crisis"
+            "calc": "@fields._task_highlighted_group_id == \"w_crisis\""
           },
-          "_raw": "@fields._task_highlighted_group_id == w_crisis"
+          "_raw": "@fields._task_highlighted_group_id == \"w_crisis\""
         }
       ],
       "deactivation_condition_list": [
         {
           "condition_type": "calc",
           "condition_args": {
-            "calc": "@fields.nf_inactive_w_crisis_not_started_sent"
+            "calc": "@fields.nf_inactive_w_crisis_sent"
           },
-          "_raw": "@fields.nf_inactive_w_crisis_not_started_sent"
+          "_raw": "@fields.nf_inactive_w_crisis_sent"
         }
       ],
       "campaign_list": [
         "nf_inactive_progress"
       ],
-      "text": "We never know when a crisis may happen, but we CAN be prepared! Tap the @data.workshop.w_crisis.in_text_title to explore how you can do this together with your teen.",
+      "title": "Be ready with @global.parent_app",
       "_translations": {
-        "text": {}
+        "title": {
+          "tz_sw": true
+        },
+        "text": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
+        "title": {
+          "eng": "Be ready with @global.parent_app"
+        },
         "text": {
           "eng": "We never know when a crisis may happen, but we CAN be prepared! Tap the @data.workshop.w_crisis.in_text_title to explore how you can do this together with your teen."
         }
-      }
-    },
-    {
-      "id": "nf_inactive_w_crisis_started",
-      "workshop": "w_crisis",
-      "message_type": "inactive",
-      "action_list": [
-        {
-          "trigger": "sent",
-          "action_id": "set_field",
-          "args": [
-            "nf_inactive_w_crisis_started_sent",
-            true
-          ],
-          "_raw": "sent | set_field: nf_inactive_w_crisis_started_sent : true",
-          "_cleaned": "sent | set_field: nf_inactive_w_crisis_started_sent : true"
-        }
-      ],
-      "priority": 2,
-      "activation_condition_list": [
-        {
-          "condition_type": "calc",
-          "condition_args": {
-            "calc": "@fields._task_highlighted_group_id == w_crisis"
-          },
-          "_raw": "@fields._task_highlighted_group_id == w_crisis"
-        }
-      ],
-      "deactivation_condition_list": [
-        {
-          "condition_type": "calc",
-          "condition_args": {
-            "calc": "@fields.nf_inactive_w_crisis_started_sent"
-          },
-          "_raw": "@fields.nf_inactive_w_crisis_started_sent"
-        }
-      ],
-      "campaign_list": [
-        "nf_inactive_progress"
-      ],
-      "text": "So good that you are on this parenting journey! You can learn what to do when your teen needs you most by completing the @data.workshop.w_crisis.in_text_title.",
-      "_translations": {
-        "text": {}
       },
-      "_translatedFields": {
-        "text": {
-          "eng": "So good that you are on this parenting journey! You can learn what to do when your teen needs you most by completing the @data.workshop.w_crisis.in_text_title."
-        }
-      }
+      "text": "We never know when a crisis may happen, but we CAN be prepared! Tap the @data.workshop.w_crisis.in_text_title to explore how you can do this together with your teen."
     },
     {
-      "id": "nf_inactive_w_celebrate_not_started",
+      "id": "nf_inactive_w_celebrate",
       "workshop": "w_celebrate",
       "message_type": "inactive",
       "action_list": [
@@ -1069,11 +640,11 @@
           "trigger": "sent",
           "action_id": "set_field",
           "args": [
-            "nf_inactive_w_celebrate_not_started_sent",
+            "nf_inactive_w_celebrate_sent",
             true
           ],
-          "_raw": "sent | set_field: nf_inactive_w_celebrate_not_started_sent : true",
-          "_cleaned": "sent | set_field: nf_inactive_w_celebrate_not_started_sent : true"
+          "_raw": "sent | set_field: nf_inactive_w_celebrate_sent : true",
+          "_cleaned": "sent | set_field: nf_inactive_w_celebrate_sent : true"
         }
       ],
       "priority": 1,
@@ -1081,80 +652,41 @@
         {
           "condition_type": "calc",
           "condition_args": {
-            "calc": "@fields._task_highlighted_group_id == w_celebrate"
+            "calc": "@fields._task_highlighted_group_id == \"w_celebrate\""
           },
-          "_raw": "@fields._task_highlighted_group_id == w_celebrate"
+          "_raw": "@fields._task_highlighted_group_id == \"w_celebrate\""
         }
       ],
       "deactivation_condition_list": [
         {
           "condition_type": "calc",
           "condition_args": {
-            "calc": "@fields.nf_inactive_w_celebrate_not_started_sent"
+            "calc": "@fields.nf_inactive_w_celebrate_sent"
           },
-          "_raw": "@fields.nf_inactive_w_celebrate_not_started_sent"
+          "_raw": "@fields.nf_inactive_w_celebrate_sent"
         }
       ],
       "campaign_list": [
         "nf_inactive_progress"
       ],
-      "text": "You deserve to celebrate and be celebrated! Tap the @data.workshop.w_celebrate.in_text_title to see how your family has changed and how you can continue to invest in yourself and your family.",
+      "title": "Celebrate with @global.parent_app",
       "_translations": {
-        "text": {}
+        "title": {
+          "tz_sw": true
+        },
+        "text": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
+        "title": {
+          "eng": "Celebrate with @global.parent_app"
+        },
         "text": {
-          "eng": "You deserve to celebrate and be celebrated! Tap the @data.workshop.w_celebrate.in_text_title to see how your family has changed and how you can continue to invest in yourself and your family."
+          "eng": "@fields.user_name, you deserve to celebrate and be celebrated! Tap the @data.workshop.w_celebrate.in_text_title to reflect on your journey and get ideas for how you can continue to invest in yourself and your family."
         }
-      }
-    },
-    {
-      "id": "nf_inactive_w_celebrate_started",
-      "workshop": "w_celebrate",
-      "message_type": "inactive",
-      "action_list": [
-        {
-          "trigger": "sent",
-          "action_id": "set_field",
-          "args": [
-            "nf_inactive_w_celebrate_started_sent",
-            true
-          ],
-          "_raw": "sent | set_field: nf_inactive_w_celebrate_started_sent : true",
-          "_cleaned": "sent | set_field: nf_inactive_w_celebrate_started_sent : true"
-        }
-      ],
-      "priority": 2,
-      "activation_condition_list": [
-        {
-          "condition_type": "calc",
-          "condition_args": {
-            "calc": "@fields._task_highlighted_group_id == w_celebrate"
-          },
-          "_raw": "@fields._task_highlighted_group_id == w_celebrate"
-        }
-      ],
-      "deactivation_condition_list": [
-        {
-          "condition_type": "calc",
-          "condition_args": {
-            "calc": "@fields.nf_inactive_w_celebrate_started_sent"
-          },
-          "_raw": "@fields.nf_inactive_w_celebrate_started_sent"
-        }
-      ],
-      "campaign_list": [
-        "nf_inactive_progress"
-      ],
-      "text": "You have some great last activities waiting for you in the @data.workshop.w_celebrate.in_text_title. Well done for celebrating and planning ahead - you are a star!",
-      "_translations": {
-        "text": {}
       },
-      "_translatedFields": {
-        "text": {
-          "eng": "You have some great last activities waiting for you in the @data.workshop.w_celebrate.in_text_title. Well done for celebrating and planning ahead - you are a star!"
-        }
-      }
+      "text": "@fields.user_name, you deserve to celebrate and be celebrated! Tap the @data.workshop.w_celebrate.in_text_title to reflect on your journey and get ideas for how you can continue to invest in yourself and your family."
     }
   ],
   "_xlsxPath": "global/campaigns/notifications_inactive.xlsx"

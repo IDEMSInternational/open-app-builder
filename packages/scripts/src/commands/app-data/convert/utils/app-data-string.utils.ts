@@ -122,3 +122,8 @@ export function extractDynamicDependencies(dynamicFields: FlowTypes.TemplateRow[
   });
   return dynamicDependencies;
 }
+
+// Standardise newline characters within a string (i.e. replace "\r\n" (CRLF) with "\n" (LF))
+export function standardiseNewlines(str: string) {
+  return str.replace(/\\r\\n/g, "\\n");
+}

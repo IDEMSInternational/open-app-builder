@@ -22,6 +22,10 @@ const workflows: IDeploymentWorkflows = {
           tasks.workflow.runWorkflow({ name: "sync_sheets", parent: workflow }),
       },
       {
+        name: "copy_to_app",
+        function: async ({ tasks }) => tasks.appData.copyDeploymentDataToApp(),
+      },
+      {
         name: "sync_watch",
         condition: async ({ options }) => !!options.contentWatch,
         function: async ({ tasks, workflow, options }) => {
@@ -31,10 +35,6 @@ const workflows: IDeploymentWorkflows = {
             console.log('Use "--content-watch" or "-cw" to enable live sync\n');
           }
         },
-      },
-      {
-        name: "copy_to_app",
-        function: async ({ tasks }) => tasks.appData.copyDeploymentDataToApp(),
       },
     ],
   },
@@ -124,8 +124,8 @@ const workflows: IDeploymentWorkflows = {
             sourceSheetsFolder: workflow.sheets_process.output,
             sourceTranslationsFolder,
           });
-          tasks.appData.copyDeploymentDataToApp();
           // TODO - add support for assets
+          tasks.appData.copyDeploymentDataToApp();
         },
       },
       {
@@ -173,6 +173,7 @@ const workflows: IDeploymentWorkflows = {
                   parent: workflow,
                   args: ["--skip-download"],
                 });
+                tasks.appData.copyDeploymentDataToApp();
               }
             },
           });

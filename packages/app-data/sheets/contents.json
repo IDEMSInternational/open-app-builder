@@ -381,6 +381,12 @@
       "flow_subtype": "debug",
       "_xlsxPath": "quality_assurance/feature_sheets/to_be_sorted/feature_items.xlsx"
     },
+    "debug_launch_actions": {
+      "flow_type": "data_list",
+      "flow_subtype": "debug_lifecycle_actions",
+      "flow_name": "debug_launch_actions",
+      "_xlsxPath": "quality_assurance/debug_sheets/debug_launch_actions.xlsx"
+    },
     "encouraging_messages": {
       "flow_type": "data_list",
       "flow_name": "encouraging_messages",
@@ -589,6 +595,16 @@
     },
     "tg_w_stress_read_1_tog": {
       "flow_name": "tg_w_stress_read_1_tog",
+      "flow_subtype": "generated",
+      "flow_type": "data_list"
+    },
+    "tg_w_stress_read_3_ind": {
+      "flow_name": "tg_w_stress_read_3_ind",
+      "flow_subtype": "generated",
+      "flow_type": "data_list"
+    },
+    "tg_w_stress_read_3_tog": {
+      "flow_name": "tg_w_stress_read_3_tog",
       "flow_subtype": "generated",
       "flow_type": "data_list"
     },
@@ -1318,6 +1334,18 @@
       "flow_name": "activity_variables",
       "_xlsxPath": "global/data/parent_centre_globals.xlsx"
     },
+    "app_id": {
+      "flow_type": "global",
+      "flow_name": "app_id",
+      "_xlsxPath": "global/data/navigation_globals.xlsx"
+    },
+    "app_id_tz": {
+      "flow_type": "global",
+      "flow_name": "app_id_tz",
+      "override_target": "app_id",
+      "override_condition": "@fields._deployment_name == \"plh_tz\"",
+      "_xlsxPath": "tz/data/navigation_globals_tz.xlsx"
+    },
     "app_menu_globals": {
       "flow_type": "global",
       "flow_name": "app_menu_globals",
@@ -1829,6 +1857,11 @@
       "flow_type": "template",
       "flow_name": "app_menu_unlock_workshops_pop",
       "_xlsxPath": "global/core_templates/core_templates_settings.xlsx"
+    },
+    "app_update_complete": {
+      "flow_type": "template",
+      "flow_name": "app_update_complete",
+      "_xlsxPath": "quality_assurance/debug_sheets/debug_app_update.xlsx"
     },
     "banner": {
       "flow_type": "template",
@@ -4553,6 +4586,11 @@
       "flow_name": "self_care_accordion_item",
       "_xlsxPath": "global/core_templates/core_templates_navigation.xlsx"
     },
+    "settings_customise": {
+      "flow_type": "template",
+      "flow_name": "settings_customise",
+      "_xlsxPath": "global/core_templates/core_templates_settings.xlsx"
+    },
     "setup_and_survey_stepper": {
       "flow_type": "template",
       "flow_name": "setup_and_survey_stepper",
@@ -4838,6 +4876,11 @@
     "user_code": {
       "flow_type": "template",
       "flow_name": "user_code",
+      "_xlsxPath": "global/core_templates/core_templates_settings.xlsx"
+    },
+    "user_info": {
+      "flow_type": "template",
+      "flow_name": "user_info",
       "_xlsxPath": "global/core_templates/core_templates_settings.xlsx"
     },
     "w_1on1_care_together": {
@@ -6705,12 +6748,32 @@
     "w_self_care_reward": {
       "flow_type": "template",
       "flow_name": "w_self_care_reward",
-      "_xlsxPath": "global/top_templates/workshop_templates/workshop_self_care.xlsx"
+      "_xlsxPath": "global/top_templates/workshop_templates/workshop_self_care.xlsx",
+      "_overrides": {
+        "w_self_care_reward_tz": "@fields._deployment_name == \"plh_tz\""
+      }
     },
     "w_self_care_reward_pop": {
       "flow_type": "template",
       "flow_name": "w_self_care_reward_pop",
-      "_xlsxPath": "global/top_templates/workshop_templates/workshop_self_care.xlsx"
+      "_xlsxPath": "global/top_templates/workshop_templates/workshop_self_care.xlsx",
+      "_overrides": {
+        "w_self_care_reward_pop_tz": "@fields._deployment_name == \"plh_tz\""
+      }
+    },
+    "w_self_care_reward_pop_tz": {
+      "flow_type": "template",
+      "flow_name": "w_self_care_reward_pop_tz",
+      "override_target": "w_self_care_reward_pop",
+      "override_condition": "@fields._deployment_name == \"plh_tz\"",
+      "_xlsxPath": "tz/top_templates/workshop_templates/workshop_self_care_tz.xlsx"
+    },
+    "w_self_care_reward_tz": {
+      "flow_type": "template",
+      "flow_name": "w_self_care_reward_tz",
+      "override_target": "w_self_care_reward",
+      "override_condition": "@fields._deployment_name == \"plh_tz\"",
+      "_xlsxPath": "tz/top_templates/workshop_templates/workshop_self_care_tz.xlsx"
     },
     "w_self_care_stepper": {
       "flow_type": "template",
@@ -7052,6 +7115,18 @@
       "flow_name": "w_stress_question",
       "_xlsxPath": "global/top_templates/workshop_templates/workshop_stress.xlsx"
     },
+    "w_stress_question_2": {
+      "flow_type": "template",
+      "module": "stress",
+      "flow_name": "w_stress_question_2",
+      "_xlsxPath": "global/top_templates/workshop_templates/workshop_stress.xlsx"
+    },
+    "w_stress_question_2_pop": {
+      "flow_type": "template",
+      "module": "stress",
+      "flow_name": "w_stress_question_2_pop",
+      "_xlsxPath": "global/top_templates/workshop_templates/workshop_stress.xlsx"
+    },
     "w_stress_read_1": {
       "flow_type": "template",
       "module": "stress",
@@ -7261,6 +7336,16 @@
       "flow_type": "tour",
       "flow_name": "demo_essential_tools_tour",
       "_xlsxPath": "global/demo_templates/demo_navigation.xlsx"
+    },
+    "home_screen_modular_tour_intro": {
+      "flow_type": "tour",
+      "flow_name": "home_screen_modular_tour_intro",
+      "_xlsxPath": "global_modular/tours/home_screen_modular_tour.xlsx"
+    },
+    "home_screen_modular_tour_menu": {
+      "flow_type": "tour",
+      "flow_name": "home_screen_modular_tour_menu",
+      "_xlsxPath": "global_modular/tours/home_screen_modular_tour.xlsx"
     },
     "home_screen_tour_intro": {
       "flow_type": "tour",

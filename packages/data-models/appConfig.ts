@@ -177,6 +177,21 @@ const FEEDBACK_MODULE_DEFAULTS = {
   sidebar_open_field: "_feedback_sidebar_open",
 };
 
+const APP_UPDATES = {
+  /** Check for updates on init and enable in-app "app_update" template actions */
+  enabled: false,
+  /**
+   * Template to be displayed after a flexible update has downloaded, prompting the user to install
+   * the update and restart the app. It should include a button that triggers the "app_update | complete" action
+   * If no template is provided provided, installation of the downloaded flexible update will be completed on next app init
+   */
+  completeUpdateTemplate: "app_update_complete",
+  /** Track whether an update is available for download */
+  app_update_available_field: "_app_update_available",
+  /** Track whether an update has been downloaded and is available for install */
+  app_update_downloaded_field: "_app_update_downloaded",
+};
+
 const APP_CONFIG = {
   APP_FIELDS,
   APP_HEADER_DEFAULTS,
@@ -189,6 +204,7 @@ const APP_CONFIG = {
   APP_STRINGS,
   APP_SKINS,
   APP_THEMES,
+  APP_UPDATES,
   DYNAMIC_PREFIXES,
   FEEDBACK_MODULE_DEFAULTS,
   FIELD_PREFIX,
