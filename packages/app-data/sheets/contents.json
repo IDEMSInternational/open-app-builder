@@ -280,6 +280,12 @@
       "flow_subtype": "component_demo",
       "_xlsxPath": "quality_assurance/component_sheets/component_data_items.xlsx"
     },
+    "comp_radio_button_grid_data": {
+      "flow_type": "data_list",
+      "flow_name": "comp_radio_button_grid_data",
+      "flow_subtype": "component_demo",
+      "_xlsxPath": "quality_assurance/component_sheets/component_radio_button_grid.xlsx"
+    },
     "covid_data_list": {
       "flow_type": "data_list",
       "flow_name": "covid_data_list",
@@ -2134,6 +2140,12 @@
       "flow_name": "comp_qr_code",
       "flow_subtype": "component_demo",
       "_xlsxPath": "quality_assurance/component_sheets/component_qr_code.xlsx"
+    },
+    "comp_radio_button_grid": {
+      "flow_type": "template",
+      "flow_name": "comp_radio_button_grid",
+      "flow_subtype": "component_demo",
+      "_xlsxPath": "quality_assurance/component_sheets/component_radio_button_grid.xlsx"
     },
     "comp_radio_group": {
       "flow_type": "template",

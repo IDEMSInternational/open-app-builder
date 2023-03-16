@@ -101,7 +101,9 @@
       "name": "user_info",
       "value": "Your Profile",
       "_translations": {
-        "value": {}
+        "value": {
+          "tz_sw": true
+        }
       }
     }
   ],

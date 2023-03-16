@@ -416,9 +416,15 @@
           "za_xh": true,
           "za_zu": true
         },
-        "text_4": {},
-        "text_5": {},
-        "text_6": {}
+        "text_4": {
+          "tz_sw": true
+        },
+        "text_5": {
+          "tz_sw": true
+        },
+        "text_6": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "title": {

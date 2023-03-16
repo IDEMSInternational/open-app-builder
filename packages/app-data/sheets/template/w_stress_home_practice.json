@@ -137,7 +137,9 @@
                       "name": "text_2",
                       "value": "Choose a \"@global.safety_word\" with your teenager, and think of a situation together when you could use this.",
                       "_translations": {
-                        "value": {}
+                        "value": {
+                          "tz_sw": true
+                        }
                       },
                       "hidden": false,
                       "type": "set_variable",
@@ -162,7 +164,9 @@
                       "name": "button_2",
                       "value": "@global.safety_word Story",
                       "_translations": {
-                        "value": {}
+                        "value": {
+                          "tz_sw": true
+                        }
                       },
                       "action_list": [
                         {
