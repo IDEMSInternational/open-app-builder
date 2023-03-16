@@ -22,7 +22,9 @@
       "name": "Vodacom Tanzania",
       "description": "Vodacom Tanzania",
       "_translations": {
-        "description": {}
+        "description": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "description": {

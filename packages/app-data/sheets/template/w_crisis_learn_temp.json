@@ -337,7 +337,9 @@
                               "name": "title",
                               "value": "Crisis 3: @global.w_crisis_teen_boy_1 makes a girl pregnant",
                               "_translations": {
-                                "value": {}
+                                "value": {
+                                  "tz_sw": true
+                                }
                               },
                               "hidden": false,
                               "type": "set_variable",
@@ -362,7 +364,9 @@
                               "name": "text",
                               "value": "@global.w_crisis_teen_boy_1: \"I don’t want to have a baby\"",
                               "_translations": {
-                                "value": {}
+                                "value": {
+                                  "tz_sw": true
+                                }
                               },
                               "type": "set_variable",
                               "_nested_name": "learn.workshop_activity.content_box.box_2.box_2.box_1.text",
@@ -386,7 +390,9 @@
                               "name": "dashed_box",
                               "value": "How could you respond to @global.w_crisis_teen_boy_1?",
                               "_translations": {
-                                "value": {}
+                                "value": {
+                                  "tz_sw": true
+                                }
                               },
                               "hidden": false,
                               "type": "set_variable",
@@ -433,7 +439,9 @@
                                   "name": "title",
                                   "value": "Crisis 4: Someone in the family may get sick",
                                   "_translations": {
-                                    "value": {}
+                                    "value": {
+                                      "tz_sw": true
+                                    }
                                   },
                                   "hidden": false,
                                   "type": "set_variable",

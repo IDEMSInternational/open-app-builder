@@ -94,6 +94,7 @@
           "_translations": {
             "value": {}
           },
+          "exclude_from_translation": true,
           "type": "set_variable",
           "_nested_name": "suggestions.list_text",
           "_dynamicFields": {
