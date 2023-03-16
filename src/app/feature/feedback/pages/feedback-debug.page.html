@@ -1,5 +1,12 @@
 <ion-content class="ion-padding">
-  <h2>Feedback</h2>
+  <div style="display: flex">
+    <h2 style="flex: 1">Feedback</h2>
+    <ion-button fill="clear" (click)="feedbackService.sidebarClose()">
+      <ion-icon slot="end" name="close"></ion-icon>
+      close
+    </ion-button>
+  </div>
+
   <!-- Feedback Tools -->
   <plh-feedback-toolbar></plh-feedback-toolbar>
   <hr class="spacer" />

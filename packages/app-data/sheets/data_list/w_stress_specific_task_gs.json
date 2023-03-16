@@ -44,8 +44,7 @@
       "together": true,
       "priority": 14,
       "story_id": "safety_amnesty",
-      "has_single_task": true,
-      "template": "w_stress_read_3",
+      "has_single_task": false,
       "title": "@global.story @global.part_connector @data.story.safety_amnesty.title",
       "_translations": {
         "title": {}

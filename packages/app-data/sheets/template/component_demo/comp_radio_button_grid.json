@@ -1,0 +1,220 @@
+{
+  "flow_type": "template",
+  "flow_name": "comp_radio_button_grid",
+  "status": "released",
+  "flow_subtype": "component_demo",
+  "rows": [
+    {
+      "type": "title",
+      "name": "title_1",
+      "value": "Radio Group Grid",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "_nested_name": "title_1"
+    },
+    {
+      "type": "subtitle",
+      "name": "parameters",
+      "value": "Parameters",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "_nested_name": "parameters"
+    },
+    {
+      "type": "display_group",
+      "exclude_from_translation": true,
+      "rows": [
+        {
+          "type": "text",
+          "name": "item_width_input_label",
+          "value": "item_width",
+          "_translations": {
+            "value": {}
+          },
+          "exclude_from_translation": true,
+          "_nested_name": "display_group.item_width_input_label"
+        },
+        {
+          "type": "text_box",
+          "name": "item_width_input",
+          "value": "120px",
+          "_translations": {
+            "value": {}
+          },
+          "action_list": [
+            {
+              "trigger": "changed",
+              "action_id": "emit",
+              "args": [
+                "force_reprocess"
+              ],
+              "_raw": "changed | emit:force_reprocess",
+              "_cleaned": "changed | emit:force_reprocess"
+            }
+          ],
+          "exclude_from_translation": true,
+          "_nested_name": "display_group.item_width_input"
+        },
+        {
+          "type": "text",
+          "name": "item_width_input_description",
+          "value": "Minimum width that items will occupy (will stretch to fit space)\n Default 200px",
+          "_translations": {
+            "value": {}
+          },
+          "exclude_from_translation": true,
+          "_nested_name": "display_group.item_width_input_description"
+        }
+      ],
+      "name": "display_group",
+      "_nested_name": "display_group"
+    },
+    {
+      "type": "display_group",
+      "exclude_from_translation": true,
+      "rows": [
+        {
+          "type": "text",
+          "name": "grid_width_input_label",
+          "value": "grid_width",
+          "_translations": {
+            "value": {}
+          },
+          "exclude_from_translation": true,
+          "_nested_name": "display_group.grid_width_input_label"
+        },
+        {
+          "type": "text_box",
+          "name": "grid_width_input",
+          "value": 0.75,
+          "action_list": [
+            {
+              "trigger": "changed",
+              "action_id": "emit",
+              "args": [
+                "force_reprocess"
+              ],
+              "_raw": "changed | emit:force_reprocess",
+              "_cleaned": "changed | emit:force_reprocess"
+            }
+          ],
+          "exclude_from_translation": true,
+          "_nested_name": "display_group.grid_width_input"
+        },
+        {
+          "type": "text",
+          "name": "grid_width_input_description",
+          "value": "Maximum grid width, if specified will center items in available space.\n Default 100% (full width)",
+          "_translations": {
+            "value": {}
+          },
+          "exclude_from_translation": true,
+          "_nested_name": "display_group.grid_width_input_description"
+        }
+      ],
+      "name": "display_group",
+      "_nested_name": "display_group"
+    },
+    {
+      "type": "subtitle",
+      "name": "output",
+      "value": "Output",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "_nested_name": "output"
+    },
+    {
+      "type": "text",
+      "name": "output_text",
+      "value": "Selected: @local.grid_1",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "_nested_name": "output_text",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "Selected: @local.grid_1",
+            "matchedExpression": "@local.grid_1",
+            "type": "local",
+            "fieldName": "grid_1"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.grid_1": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "radio_group_grid",
+      "name": "grid_1",
+      "action_list": [
+        {
+          "trigger": "changed",
+          "action_id": "emit",
+          "args": [
+            "force_reprocess"
+          ],
+          "_raw": "changed | emit:force_reprocess",
+          "_cleaned": "changed | emit:force_reprocess"
+        }
+      ],
+      "exclude_from_translation": true,
+      "parameter_list": {
+        "answer_list": "@data.comp_radio_grid_data",
+        "item_width": "@local.item_width_input",
+        "grid_width": "@local.grid_width_input"
+      },
+      "_nested_name": "grid_1",
+      "_dynamicFields": {
+        "parameter_list": {
+          "answer_list": [
+            {
+              "fullExpression": "@data.comp_radio_grid_data",
+              "matchedExpression": "@data.comp_radio_grid_data",
+              "type": "data",
+              "fieldName": "comp_radio_grid_data"
+            }
+          ],
+          "item_width": [
+            {
+              "fullExpression": "@local.item_width_input",
+              "matchedExpression": "@local.item_width_input",
+              "type": "local",
+              "fieldName": "item_width_input"
+            }
+          ],
+          "grid_width": [
+            {
+              "fullExpression": "@local.grid_width_input",
+              "matchedExpression": "@local.grid_width_input",
+              "type": "local",
+              "fieldName": "grid_width_input"
+            }
+          ]
+        }
+      },
+      "_dynamicDependencies": {
+        "@data.comp_radio_grid_data": [
+          "parameter_list.answer_list"
+        ],
+        "@local.item_width_input": [
+          "parameter_list.item_width"
+        ],
+        "@local.grid_width_input": [
+          "parameter_list.grid_width"
+        ]
+      }
+    }
+  ],
+  "_xlsxPath": "quality_assurance/component_sheets/component_radio_button_grid.xlsx"
+}
