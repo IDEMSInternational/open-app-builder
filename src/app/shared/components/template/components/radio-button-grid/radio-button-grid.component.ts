@@ -72,10 +72,8 @@ export class TmplRadioButtonGridComponent
 
   private setParams() {
     this.parameter_list = this._row.parameter_list as any;
-    console.log("set params", this.parameter_list);
     this.radioItems = this.generateItemList();
     this.gridStyle = this.generateGridStyle();
-    console.log("grid style", this.gridStyle);
   }
 
   /**
