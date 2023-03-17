@@ -6,7 +6,8 @@ $background-selected: var(
 );
 $border: var(--ion-border-standard);
 $border-radius: var(--ion-border-radius-standard);
-$font-size: var(--radio-button-font-size, 1.25rem);
+$text-size: var(--radio-button-font-size, 1.25rem);
+$text-color: var(--radio-button-font-color, var(--ion-color-primary));
 
 .radio-grid {
   display: grid;
@@ -26,5 +27,6 @@ $font-size: var(--radio-button-font-size, 1.25rem);
   }
 }
 .item-text {
-  font-size: $font-size;
+  font-size: $text-size;
+  color: $text-color;
 }
