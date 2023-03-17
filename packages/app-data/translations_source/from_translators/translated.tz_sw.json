@@ -319,13 +319,13 @@
   },
   {
     "SourceText": "Parenting for Lifelong Health (PLH) - was designed through a worldwide collaboration between parenting experts from UNICEF, the WHO and Universities in South Africa and the UK, as well as African NGOs and families and teens all across Africa.",
-    "text": "Parenting for Lifelong Health (PLH)- ilitengenezwa kupitia ushirikiano wa wadau mbali mbali wa malezi ulimwenguni kutoka UNICEF, WHO na Chuo Kikuu cha Afrika ya Kusini na Uingereza ,pamoja na taasisi zisizo za kiserikari za afrika na familia na vijana kote kote Afrika.",
+    "text": "Parenting for Lifelong Health (PLH) - ilitengenezwa kupitia ushirikiano wa wadau mbali mbali wa malezi ulimwenguni kutoka UNICEF, WHO na Chuo Kikuu cha Afrika ya Kusini na Uingereza, pamoja na taasisi zisizo za kiserikari za afrika na familia na vijana kote kote Afrika.",
     "type": "template",
     "note": ""
   },
   {
     "SourceText": "The digital @global.parent_app is brought to you by the collaboration of partners including University of Oxford, IDEMS International, University of Cape Town, National Institute for Medical Research - Mwanza Centre Tanzania, and Clowns Without Borders South Africa (‘the @global.parent_app team’).",
-    "text": "@global.parent_app inaletwa kwako kwa ushirikiano wa washirika wakiwemo Chuo Kikuu cha Oxford, IDEMS International, Chuo Kikuu cha Cape Town, Taasisi ya Kitaifa ya Utafiti wa Matibabu - Kituo cha Mwanza Tanzania, na Clowns Without Borders Afrika Kusini ('the @global.parent_app team ').",
+    "text": "@global.parent_app inaletwa kwako kwa ushirikiano wa washirika wakiwemo Chuo Kikuu cha Oxford, IDEMS International, Chuo Kikuu cha Cape Town, Taasisi ya Kitaifa ya Utafiti wa Matibabu - Kituo cha Mwanza Tanzania, na Clowns Without Borders Afrika Kusini ('the @global.parent_app team').",
     "type": "template",
     "note": "The following strings should not be translated:\n@global.parent_app\n@global.parent_app"
   },
@@ -355,7 +355,7 @@
   },
   {
     "SourceText": "Finally this app is not targeted towards anyone under the age of 18. We do not knowingly collect personally identifiable information from individuals under 18.  In the case we discover that an individual under 18 has provided us with personal information (such as gender / name or nickname), we will immediately delete this data from our servers. If you are a parent or guardian and are aware that your child has provided us with personal information, please contact us so that we will be able to undertake the necessary actions.",
-    "text": "Programu tumishi hii haijaleng mtu yeyote aliye na umri wa chini ya miaka 18. Hatukusanyi taarifa zinazoweza kumtambulisha mtu binafsi kutoka kwa watu walio chini ya umri wa miaka 18 kwa makusudi. Iwapo tutagundua kuwa mtu aliye na umri wa chini ya miaka 18 ametupa taarifa za binafsi(kama vile jinsia/ jina au jina la utani), tutafuta taarifa hii mara moja kutoka kwa kanzidata zetu. Ikiwa wewe ni mzazi au mlezi na unafahamu kwamba mtoto wako ametupa taarifa binafsi, tafadhali wasiliana nasi ili tuweze kuchukua hatua zinazohitajika.",
+    "text": "Programu tumishi hii haijaleng mtu yeyote aliye na umri wa chini ya miaka 18. Hatukusanyi taarifa zinazoweza kumtambulisha mtu binafsi kutoka kwa watu walio chini ya umri wa miaka 18 kwa makusudi. Iwapo tutagundua kuwa mtu aliye na umri wa chini ya miaka 18 ametupa taarifa za binafsi (kama vile jinsia/ jina au jina la utani), tutafuta taarifa hii mara moja kutoka kwa kanzidata zetu. Ikiwa wewe ni mzazi au mlezi na unafahamu kwamba mtoto wako ametupa taarifa binafsi, tafadhali wasiliana nasi ili tuweze kuchukua hatua zinazohitajika.",
     "type": "template",
     "note": ""
   },
@@ -12787,7 +12787,7 @@
   },
   {
     "SourceText": "You can explore any @global.workshop whenever you want. To see the biggest change in your family, complete all the activities in one @global.workshop before moving to the next one.",
-    "text": "Unaweza kuchunguza @global.workshop yoyote wakati wowote unaotaka. Kuona mabadiliko makubwa katika familia yako,maliza shughuli zako katika moja ya @global.workshop kabla ya kuhamia nyingine.",
+    "text": "Unaweza kuchunguza @global.workshop yoyote wakati wowote unaotaka. Kuona mabadiliko makubwa katika familia yako, maliza shughuli zako katika moja ya @global.workshop kabla ya kuhamia nyingine.",
     "type": "tour",
     "note": "The following strings should not be translated:\n@global.workshop\n@global.workshop"
   },
@@ -12805,13 +12805,13 @@
   },
   {
     "SourceText": "The STAR button takes you to the @global.parent_points. Each new parenting skill comes with a @global.parent_point. @global.parent_points help you celebrate your achievements.",
-    "text": "Kitufe cha NYOTA kinakupeleka wewe kwenye@global.parent_points.Kila ujuzi mpya wa malezi huja na @global.parent_point. @global.parent_points inakusaidia wewe kusherehekea mafanikio.",
+    "text": "Kitufe cha NYOTA kinakupeleka wewe kwenye @global.parent_points. Kila ujuzi mpya wa malezi huja na @global.parent_point. @global.parent_points inakusaidia wewe kusherehekea mafanikio.",
     "type": "tour",
     "note": "The following strings should not be translated:\n@global.parent_points.\n@global.parent_point.\n@global.parent_points"
   },
   {
     "SourceText": "Tap the BOOK button to go to the @global.parent_centre. Check out the extra relaxation activities and ideas for fun things to do with your teen! You can also find contact details for support services in your area and for technical support with @global.parent_app.",
-    "text": "Gusa kitufe cha KITABU ili kwenda kwenye@global.parent_centre. Angalia kazi za zaidi za kupumzika na mawazo ya kufurahisha kufanya na kijana wako! Unaweza pia kupata taarifa za mawasiliano za msaada katika eneo lako na msaada wa kiufundi kwenye @global.parent_app.\n\nCommunity Verified icon\nSearch for this on Go.",
+    "text": "Gusa kitufe cha KITABU ili kwenda kwenye @global.parent_centre. Angalia kazi za zaidi za kupumzika na mawazo ya kufurahisha kufanya na kijana wako! Unaweza pia kupata taarifa za mawasiliano za msaada katika eneo lako na msaada wa kiufundi kwenye @global.parent_app.",
     "type": "tour",
     "note": "The following strings should not be translated:\n@global.parent_centre.\n@global.parent_app."
   },
