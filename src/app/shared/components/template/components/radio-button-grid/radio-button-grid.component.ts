@@ -10,7 +10,7 @@ interface IAnswerListItem {
   text?: string;
 }
 
-interface IAuthorParameterList {
+interface IRadioButtonGridParams {
   /** List of options presented as radio items */
   answer_list: IAnswerListItem[];
   /**
@@ -54,7 +54,7 @@ export class TmplRadioButtonGridComponent
   /**
    * Authoring parameters
    */
-  private parameter_list: IAuthorParameterList;
+  public parameter_list: IRadioButtonGridParams;
 
   @Input() set row(row: FlowTypes.TemplateRow) {
     this._row = row;
