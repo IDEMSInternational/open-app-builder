@@ -21,7 +21,7 @@
   "dependencies": {
     "@nestjs/common": "7.6.15",
     "@nestjs/config": "^0.6.3",
-    "@nestjs/core": "7.6.15",
+    "@nestjs/core": "9.0.5",
     "@nestjs/event-emitter": "^1.0.0",
     "@nestjs/platform-express": "7.6.15",
     "@nestjs/sequelize": "0.2.0",
