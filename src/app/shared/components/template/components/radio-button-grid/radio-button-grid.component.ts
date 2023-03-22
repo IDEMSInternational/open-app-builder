@@ -14,18 +14,18 @@ interface IRadioButtonGridParams {
   /** List of options presented as radio items */
   answer_list: IAnswerListItem[];
   /**
-   * Minimum item width, will increase to fit grid
-   * default '200px'
+   * Minimum item width, will increase to fit grid.
+   * Default '200px'
    **/
   item_width: string;
   /**
-   * Maximum grid width, if specified will center items in available space
-   * default '100%'
+   * Maximum grid width, if specified will center items in available space.
+   * Default '100%'
    **/
   grid_width: string;
   /**
-   * Spacing between grid items
-   * default '16px'
+   * Spacing between grid items.
+   * Default '16px'
    **/
   grid_gap: string;
 }
