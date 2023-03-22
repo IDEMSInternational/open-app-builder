@@ -2063,7 +2063,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@capacitor-firebase/authentication@npm:^1.2.0":
+"@capacitor-firebase/authentication@npm:^1.3.0":
   version: 1.3.0
   resolution: "@capacitor-firebase/authentication@npm:1.3.0"
   peerDependencies:
@@ -2073,7 +2073,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@capacitor-firebase/performance@npm:^1.2.0":
+"@capacitor-firebase/performance@npm:^1.3.0":
   version: 1.3.0
   resolution: "@capacitor-firebase/performance@npm:1.3.0"
   peerDependencies:
@@ -2083,12 +2083,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@capacitor/android@npm:^4.6.0":
-  version: 4.6.1
-  resolution: "@capacitor/android@npm:4.6.1"
+"@capacitor/android@npm:^4.7.1":
+  version: 4.7.1
+  resolution: "@capacitor/android@npm:4.7.1"
   peerDependencies:
-    "@capacitor/core": ^4.6.0
-  checksum: 179f21f0cce3f3b28d9d55352e1e7298a92b76856eecbf857bfb3ed88c3eba5bbcf944f8493453ce139a853a3b627b17de0c05ebb5f14861573f3347279e676e
+    "@capacitor/core": ^4.7.0
+  checksum: d2cb170f3de262d6c1cabef921cd27b2201740a7330b70726cf757984929e5d3bedb28090348b5ea1cf54973fc3603862ad805bcb6730f8732a5f384aa1b08b0
   languageName: node
   linkType: hard
 
@@ -2101,9 +2101,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@capacitor/cli@npm:^4.6.0":
-  version: 4.6.1
-  resolution: "@capacitor/cli@npm:4.6.1"
+"@capacitor/cli@npm:^4.7.1":
+  version: 4.7.1
+  resolution: "@capacitor/cli@npm:4.7.1"
   dependencies:
     "@ionic/cli-framework-output": ^2.2.5
     "@ionic/utils-fs": ^3.1.6
@@ -2125,7 +2125,7 @@ __metadata:
   bin:
     cap: bin/capacitor
     capacitor: bin/capacitor
-  checksum: 082715e2a2a65a320e45bef3fd8324537d0701acf2185ba29fdb6936d919a787533251d92f8758d1add6ce1e51791cc9bbbd406937624aa743ecf1780f548c24
+  checksum: 0775848608a14583290048a913733027009529a25368f86de63f80431fc4c0848fe1f199a0aafe3849c7772bdac0c21ae446019613961c2e70b992dbe7cb76e7
   languageName: node
   linkType: hard
 
@@ -2138,12 +2138,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@capacitor/core@npm:^4.6.0":
-  version: 4.6.1
-  resolution: "@capacitor/core@npm:4.6.1"
+"@capacitor/core@npm:^4.7.1":
+  version: 4.7.1
+  resolution: "@capacitor/core@npm:4.7.1"
   dependencies:
     tslib: ^2.1.0
-  checksum: e86714e96503c7feced070f98b68aedbb5cf070131ffff724e1e638f5441eb05ce4d2dd767557f0dd83214ecc523f8aad9938d1f1a91d2651f2201ff231067f6
+  checksum: 326b588f9c5cf338ca9198e6a2d7713618c34807427c869fa64103976532579b42b95fa2da0a96847b7f6f0ff4b289e10379c42fc6676d2e3aaaa9bfe69c9eb2
   languageName: node
   linkType: hard
 
@@ -2165,12 +2165,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@capacitor/local-notifications@npm:^4.1.4":
-  version: 4.1.4
-  resolution: "@capacitor/local-notifications@npm:4.1.4"
+"@capacitor/local-notifications@npm:^4.1.5":
+  version: 4.1.5
+  resolution: "@capacitor/local-notifications@npm:4.1.5"
   peerDependencies:
     "@capacitor/core": ^4.0.0
-  checksum: 51daa29c2635e1f353cc15eba6b431b1de8cc360d13e56b0aebf2a9344a41b631fffa446e69b333c6262a8866c01551e7b6624a6073cd2d084690d65031c21fe
+  checksum: 9171aad26425b96ff0e8e454abd674c56dc6bc66a3c55ff29a4c9e4952cb635499565973f4fc2bb2ebe842050d0f29837012f5f9862cd3a998c5528e80331a0a
   languageName: node
   linkType: hard
 
@@ -2183,21 +2183,21 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@capacitor/splash-screen@npm:^4.1.2":
-  version: 4.1.2
-  resolution: "@capacitor/splash-screen@npm:4.1.2"
+"@capacitor/splash-screen@npm:^4.2.0":
+  version: 4.2.0
+  resolution: "@capacitor/splash-screen@npm:4.2.0"
   peerDependencies:
     "@capacitor/core": ^4.0.0
-  checksum: ac05f7ddd1af34824209f66efd61a9e2f6a90dfcc8d4aea6e8f33ebcafeca8dbd5f7a8f42bb3ceddc27083370426941db4e2dcf197f394ed078d50ab35b1c9fb
+  checksum: fb993bd327b7cb5d9d303f621fb8f3d27229e4362685ce3f30c288c79dd07df3be3d3fd1f7d85e051db6f1a8047d11fcbcb3dff9d1aca159dff61bea57aa1299
   languageName: node
   linkType: hard
 
-"@capawesome/capacitor-app-update@npm:^2.0.1":
-  version: 2.0.1
-  resolution: "@capawesome/capacitor-app-update@npm:2.0.1"
+"@capawesome/capacitor-app-update@npm:^2.1.0":
+  version: 2.1.0
+  resolution: "@capawesome/capacitor-app-update@npm:2.1.0"
   peerDependencies:
     "@capacitor/core": ^4.0.0
-  checksum: 251476fd241cd233d3d0fe7a3b1e9bcb00f49695dda53b9c18f80bb5ea9a4f647f6b885021e4e280165783b79ef6b2a56132758e7c37be9c28050bb9e7096972
+  checksum: 828ca23f059011036dcecc70423ad19c597812f53ff23542b5b7771e109289be831e922d329cb567477024f7dc3bc845c89e5cb0806f963463726a79e88a316f
   languageName: node
   linkType: hard
 
@@ -14782,18 +14782,18 @@ __metadata:
     "@angular/platform-browser-dynamic": ~15.0.4
     "@angular/router": ~15.0.4
     "@capacitor-community/firebase-crashlytics": ^1.3.0
-    "@capacitor-firebase/authentication": ^1.2.0
-    "@capacitor-firebase/performance": ^1.2.0
-    "@capacitor/android": ^4.6.0
+    "@capacitor-firebase/authentication": ^1.3.0
+    "@capacitor-firebase/performance": ^1.3.0
+    "@capacitor/android": ^4.7.1
     "@capacitor/app": ^4.1.1
-    "@capacitor/cli": ^4.6.0
+    "@capacitor/cli": ^4.7.1
     "@capacitor/clipboard": ^4.1.0
-    "@capacitor/core": ^4.6.0
+    "@capacitor/core": ^4.7.1
     "@capacitor/device": ^4.1.0
-    "@capacitor/local-notifications": ^4.1.4
+    "@capacitor/local-notifications": ^4.1.5
     "@capacitor/push-notifications": ^4.1.2
-    "@capacitor/splash-screen": ^4.1.2
-    "@capawesome/capacitor-app-update": ^2.0.1
+    "@capacitor/splash-screen": ^4.2.0
+    "@capawesome/capacitor-app-update": ^2.1.0
     "@compodoc/compodoc": ^1.1.19
     "@ionic-native/core": ^5.36.0
     "@ionic-native/device": ^5.36.0
