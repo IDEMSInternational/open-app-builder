@@ -41,8 +41,8 @@
     "themeVariations": {
       "default": {
         "global": {
-          "size_kb": 9.1,
-          "md5Checksum": "665b1f091c80ed455d21c668f3771b6b"
+          "size_kb": 6.4,
+          "md5Checksum": "4d74b997d4ac22f99b48f717ff9a3a07"
         }
       }
     }
@@ -51,8 +51,8 @@
     "themeVariations": {
       "default": {
         "global": {
-          "size_kb": 48.2,
-          "md5Checksum": "19ed1c544bc0e076ef25b9d343c6b42f"
+          "size_kb": 31.4,
+          "md5Checksum": "21703838b036bf47d9e7aadab8a0774d"
         }
       }
     }
@@ -61,8 +61,8 @@
     "themeVariations": {
       "default": {
         "global": {
-          "size_kb": 76.8,
-          "md5Checksum": "0cb603e1f04d4e13254107339bd0f94f"
+          "size_kb": 31.4,
+          "md5Checksum": "21703838b036bf47d9e7aadab8a0774d"
         }
       }
     }
@@ -71,8 +71,8 @@
     "themeVariations": {
       "default": {
         "global": {
-          "size_kb": 80.9,
-          "md5Checksum": "3e225d2f52e559606e7a90184f28d6e4"
+          "size_kb": 123.3,
+          "md5Checksum": "b0c03fe0d1c374ba04fa7d554f26bc01"
         }
       }
     }
@@ -1879,18 +1879,30 @@
     "themeVariations": {
       "default": {
         "global": {
-          "size_kb": 11.9,
-          "md5Checksum": "9a2e9a5b9ccd2827abc842a0043dadb7"
+          "size_kb": 12,
+          "md5Checksum": "e1a851ee35268d34d4948a13649b70d0"
+        }
+      },
+      "professional": {
+        "global": {
+          "size_kb": 22.5,
+          "md5Checksum": "23b81d9fc4c0db3713281de53d658618"
         }
       }
     }
   },
-  "plh_images/first_app_launch/frustrated_shadow.svg": {
+  "plh_images/first_app_launch/join_parents.svg": {
     "themeVariations": {
       "default": {
         "global": {
-          "size_kb": 12,
-          "md5Checksum": "e1a851ee35268d34d4948a13649b70d0"
+          "size_kb": 8.3,
+          "md5Checksum": "0f0c41812fbb43e02a7e4cd6d8ae8fa6"
+        }
+      },
+      "professional": {
+        "global": {
+          "size_kb": 37.6,
+          "md5Checksum": "238c3d241862f588b148bbfbca470b5f"
         }
       }
     }
@@ -1899,38 +1911,14 @@
     "themeVariations": {
       "default": {
         "global": {
-          "size_kb": 864.1,
-          "md5Checksum": "4a88fa5e3141147eaac754f65d17342d"
-        }
-      }
-    }
-  },
-  "plh_images/first_app_launch/loving_parent_shadow.svg": {
-    "themeVariations": {
-      "default": {
-        "global": {
           "size_kb": 864.2,
           "md5Checksum": "6f967d5476582da02692d65983f46d32"
         }
-      }
-    }
-  },
-  "plh_images/first_app_launch/parent_group.svg": {
-    "themeVariations": {
-      "default": {
+      },
+      "professional": {
         "global": {
-          "size_kb": 8.2,
-          "md5Checksum": "ced4c669fce01f8ba982a61be7b12ae0"
-        }
-      }
-    }
-  },
-  "plh_images/first_app_launch/parent_group_shadow.svg": {
-    "themeVariations": {
-      "default": {
-        "global": {
-          "size_kb": 8.3,
-          "md5Checksum": "0f0c41812fbb43e02a7e4cd6d8ae8fa6"
+          "size_kb": 25.7,
+          "md5Checksum": "35ab1bf3969302fd3076c84ccd9ffeba"
         }
       }
     }
@@ -1946,12 +1934,18 @@
     }
   },
   "plh_images/habits/breathe.svg": {
-    "size_kb": 2.3,
-    "md5Checksum": "284285870cd683c71190ab4004cf4d70",
     "themeVariations": {
+      "default": {
+        "global": {
+          "size_kb": 2.3,
+          "md5Checksum": "284285870cd683c71190ab4004cf4d70"
+        }
+      },
       "professional": {
-        "size_kb": 13.1,
-        "md5Checksum": "f0cd9c2695cc4611b182296ea1c8c4ac"
+        "global": {
+          "size_kb": 13.1,
+          "md5Checksum": "f0cd9c2695cc4611b182296ea1c8c4ac"
+        }
       }
     }
   },
@@ -2111,16 +2105,6 @@
         "global": {
           "size_kb": 14.9,
           "md5Checksum": "635c7f0c3150827268c39a7a9ce92176"
-        }
-      }
-    }
-  },
-  "plh_images/habits/relax_chair.gif": {
-    "themeVariations": {
-      "default": {
-        "global": {
-          "size_kb": 207.8,
-          "md5Checksum": "ccecd1d6b280fa6e10b3964c61864f60"
         }
       }
     }
@@ -2909,7 +2893,7 @@
     "themeVariations": {
       "default": {
         "global": {
-          "size_kb": 0.4,
+          "size_kb": 0.3,
           "md5Checksum": "b4e6f1e9ba6e5bcdd2e404bc432ba745"
         }
       }
@@ -4129,209 +4113,23 @@
       },
       "professional": {
         "global": {
-          "size_kb": 27.8,
-          "md5Checksum": "7a412215418ac645681a008c8efcfa36"
+          "size_kb": 24.3,
+          "md5Checksum": "1030b1e3df1ff98bca5f54c9c98ab495"
         }
       }
     }
   },
-  "plh_images/workshop_modes/guide_1/cup.svg": {
-    "themeVariations": {
-      "default": {
-        "global": {
-          "size_kb": 5.5,
-          "md5Checksum": "0f0029204ac24f52194b4ce85d4e7e45"
-        }
-      }
-    }
-  },
-  "plh_images/workshop_modes/guide_1/final/cup.svg": {
-    "themeVariations": {
-      "default": {
-        "global": {
-          "size_kb": 11.6,
-          "md5Checksum": "69d70e4001f78de9b0659412d199d9b8"
-        }
-      }
-    }
-  },
-  "plh_images/workshop_modes/guide_1/final/light_bulb.svg": {
-    "themeVariations": {
-      "default": {
-        "global": {
-          "size_kb": 5.4,
-          "md5Checksum": "bdd9a34056adfcf293479d8ee4f0654b"
-        }
-      }
-    }
-  },
-  "plh_images/workshop_modes/guide_1/final/notes.svg": {
-    "themeVariations": {
-      "default": {
-        "global": {
-          "size_kb": 55,
-          "md5Checksum": "9db02c2ba6c1d809424cedf9b66c223d"
-        }
-      }
-    }
-  },
-  "plh_images/workshop_modes/guide_1/final/relax.svg": {
-    "themeVariations": {
-      "default": {
-        "global": {
-          "size_kb": 4.2,
-          "md5Checksum": "76496e853f49382bb46ab7ae77d622bd"
-        }
-      }
-    }
-  },
-  "plh_images/workshop_modes/guide_1/final/star.svg": {
-    "themeVariations": {
-      "default": {
-        "global": {
-          "size_kb": 4.6,
-          "md5Checksum": "9b798f3f503826ffef4f73f461937666"
-        }
-      }
-    }
-  },
-  "plh_images/workshop_modes/guide_1/final/thumbs_up.svg": {
-    "themeVariations": {
-      "default": {
-        "global": {
-          "size_kb": 4.2,
-          "md5Checksum": "003b54f7152a451d81fe1396e17ef487"
-        }
-      }
-    }
-  },
-  "plh_images/workshop_modes/guide_1/final/wave.svg": {
-    "themeVariations": {
-      "default": {
-        "global": {
-          "size_kb": 3.8,
-          "md5Checksum": "dd1b3f1665c9679cb8af0d9c2f46bc03"
-        }
-      }
-    }
-  },
-  "plh_images/workshop_modes/guide_1/light_bulb.svg": {
-    "themeVariations": {
-      "default": {
-        "global": {
-          "size_kb": 4.4,
-          "md5Checksum": "3bb834d2dd6aa8e61f2a3e92d2526d5e"
-        }
-      }
-    }
-  },
-  "plh_images/workshop_modes/guide_1/notes.svg": {
-    "themeVariations": {
-      "default": {
-        "global": {
-          "size_kb": 54.1,
-          "md5Checksum": "b0c8fa7dfc16eba6a06b6b6579c1a309"
-        }
-      }
-    }
-  },
-  "plh_images/workshop_modes/guide_1/notes_left.svg": {
-    "themeVariations": {
-      "default": {
-        "global": {
-          "size_kb": 55.9,
-          "md5Checksum": "d1682bd9fcb4840d095a2c26545c5d40"
-        }
-      }
-    }
-  },
-  "plh_images/workshop_modes/guide_1/read.svg": {
-    "themeVariations": {
-      "default": {
-        "global": {
-          "size_kb": 3.8,
-          "md5Checksum": "eb4e8e608bee7c91033fccc7bf1c4191"
-        }
-      }
-    }
-  },
-  "plh_images/workshop_modes/guide_1/relax.svg": {
-    "themeVariations": {
-      "default": {
-        "global": {
-          "size_kb": 3.2,
-          "md5Checksum": "35a5e7bb71624377e802535964d00f4d"
-        }
-      }
-    }
-  },
-  "plh_images/workshop_modes/guide_1/star.svg": {
-    "themeVariations": {
-      "default": {
-        "global": {
-          "size_kb": 3.6,
-          "md5Checksum": "57df406149db93283faa59bf8e855f16"
-        }
-      }
-    }
-  },
-  "plh_images/workshop_modes/guide_1/thumbs_up.svg": {
-    "themeVariations": {
-      "default": {
-        "global": {
-          "size_kb": 3.2,
-          "md5Checksum": "76287b6693b8d83a5455e04d58c3bfaa"
-        }
-      }
-    }
-  },
-  "plh_images/workshop_modes/guide_1/wave.svg": {
-    "themeVariations": {
-      "default": {
-        "global": {
-          "size_kb": 2.8,
-          "md5Checksum": "da48a5a5b56099a7beee88bf8c4320bf"
-        }
-      }
-    }
-  },
-  "plh_images/workshop_modes/guide_1/with_teen.svg": {
-    "themeVariations": {
-      "default": {
-        "global": {
-          "size_kb": 5.9,
-          "md5Checksum": "3e880125f35030b4af11a25d17f6129f"
-        }
-      }
-    }
-  },
-  "plh_images/workshop_modes/guide_1/write.svg": {
-    "themeVariations": {
-      "default": {
-        "global": {
-          "size_kb": 3.8,
-          "md5Checksum": "d7859ca5ef124a376a5cf6a638ee3623"
-        }
-      }
-    }
-  },
-  "plh_images/workshop_modes/guide_2/breathe.svg": {
+  "plh_images/workshop_modes/individual/breathe.svg": {
     "themeVariations": {
       "default": {
         "global": {
           "size_kb": 2.3,
           "md5Checksum": "284285870cd683c71190ab4004cf4d70"
         }
-      },
-      "professional": {
-        "global": {
-          "size_kb": 13.1,
-          "md5Checksum": "f0cd9c2695cc4611b182296ea1c8c4ac"
-        }
       }
     }
   },
-  "plh_images/workshop_modes/guide_2/cup.svg": {
+  "plh_images/workshop_modes/individual/cup.svg": {
     "themeVariations": {
       "default": {
         "global": {
@@ -4341,13 +4139,29 @@
       },
       "professional": {
         "global": {
-          "size_kb": 17.2,
-          "md5Checksum": "7291bc613660827496ef59ad0f2f3165"
+          "size_kb": 17.1,
+          "md5Checksum": "ab5a1837be25fa9f6c07ea5b00d5ef9d"
         }
       }
     }
   },
-  "plh_images/workshop_modes/guide_2/final/cup.svg": {
+  "plh_images/workshop_modes/individual/explain.svg": {
+    "themeVariations": {
+      "default": {
+        "global": {
+          "size_kb": 3.4,
+          "md5Checksum": "563c9632f379e12af0159f39256dcd81"
+        }
+      },
+      "professional": {
+        "global": {
+          "size_kb": 8.9,
+          "md5Checksum": "b12fb7be38a646102df3443a85e8939d"
+        }
+      }
+    }
+  },
+  "plh_images/workshop_modes/individual/final/cup.svg": {
     "themeVariations": {
       "default": {
         "global": {
@@ -4357,13 +4171,29 @@
       },
       "professional": {
         "global": {
-          "size_kb": 34.6,
-          "md5Checksum": "f933c3c7096d6de72e8458f435956fd3"
+          "size_kb": 35.6,
+          "md5Checksum": "e725449da44a72eb62888d6913435dbc"
         }
       }
     }
   },
-  "plh_images/workshop_modes/guide_2/final/light_bulb.svg": {
+  "plh_images/workshop_modes/individual/final/explain.svg": {
+    "themeVariations": {
+      "default": {
+        "global": {
+          "size_kb": 3.4,
+          "md5Checksum": "563c9632f379e12af0159f39256dcd81"
+        }
+      },
+      "professional": {
+        "global": {
+          "size_kb": 28.7,
+          "md5Checksum": "dab4ef8540105aa2cecb73ec7c9bf178"
+        }
+      }
+    }
+  },
+  "plh_images/workshop_modes/individual/final/light_bulb.svg": {
     "themeVariations": {
       "default": {
         "global": {
@@ -4373,123 +4203,29 @@
       },
       "professional": {
         "global": {
-          "size_kb": 35.5,
-          "md5Checksum": "5acf57a7c40154a855827ba195b9a5c4"
+          "size_kb": 42.2,
+          "md5Checksum": "47db8ce7ee4437e3f289e04560fd6035"
         }
       }
     }
   },
-  "plh_images/workshop_modes/guide_2/final/notes.svg": {
+  "plh_images/workshop_modes/individual/final/notes.svg": {
     "themeVariations": {
       "default": {
         "global": {
           "size_kb": 57.5,
           "md5Checksum": "a105ae26a2e7de1efc421f1e832acb65"
         }
-      }
-    }
-  },
-  "plh_images/workshop_modes/guide_2/final/relax.svg": {
-    "themeVariations": {
-      "default": {
-        "global": {
-          "size_kb": 3.8,
-          "md5Checksum": "af45d95d4d9d7b5be6055cd90b0d6c33"
-        }
       },
       "professional": {
         "global": {
-          "size_kb": 30.9,
-          "md5Checksum": "393917e9773438716526d42f396d31aa"
+          "size_kb": 33.3,
+          "md5Checksum": "a8192fe36173916dd69010ac8bb9cd53"
         }
       }
     }
   },
-  "plh_images/workshop_modes/guide_2/final/star.svg": {
-    "themeVariations": {
-      "default": {
-        "global": {
-          "size_kb": 4.7,
-          "md5Checksum": "627c2d07c624f9c4194c9967705f774d"
-        }
-      },
-      "professional": {
-        "global": {
-          "size_kb": 30.8,
-          "md5Checksum": "499328575c1b029aecf9dcbfd458b270"
-        }
-      }
-    }
-  },
-  "plh_images/workshop_modes/guide_2/final/thumbs_up.svg": {
-    "themeVariations": {
-      "default": {
-        "global": {
-          "size_kb": 4.4,
-          "md5Checksum": "fed8fb95625b99aa3a612b2284869a96"
-        }
-      }
-    }
-  },
-  "plh_images/workshop_modes/guide_2/final/wave.svg": {
-    "themeVariations": {
-      "default": {
-        "global": {
-          "size_kb": 4,
-          "md5Checksum": "fbd12bcc51d17917bc96fa76fb8567ac"
-        }
-      },
-      "professional": {
-        "global": {
-          "size_kb": 27.8,
-          "md5Checksum": "2cdae9f5840511b3fe87527728bfee4f"
-        }
-      }
-    }
-  },
-  "plh_images/workshop_modes/guide_2/light_bulb.svg": {
-    "themeVariations": {
-      "default": {
-        "global": {
-          "size_kb": 4.6,
-          "md5Checksum": "056e44ecd0260d2d4f09be31031d3ab4"
-        }
-      },
-      "professional": {
-        "global": {
-          "size_kb": 22.3,
-          "md5Checksum": "d99df483690a5e9a4785525b2e08b369"
-        }
-      }
-    }
-  },
-  "plh_images/workshop_modes/guide_2/notes.svg": {
-    "themeVariations": {
-      "default": {
-        "global": {
-          "size_kb": 56.6,
-          "md5Checksum": "3c7d0fa4ee0e4443428a99b7a8c79249"
-        }
-      },
-      "professional": {
-        "global": {
-          "size_kb": 10.1,
-          "md5Checksum": "f74bb1894585d20e1f62f8f90f05a7ad"
-        }
-      }
-    }
-  },
-  "plh_images/workshop_modes/guide_2/notes_left.svg": {
-    "themeVariations": {
-      "default": {
-        "global": {
-          "size_kb": 56.4,
-          "md5Checksum": "f6096aa659c28c7b9aaa6734fee277dd"
-        }
-      }
-    }
-  },
-  "plh_images/workshop_modes/guide_2/read.svg": {
+  "plh_images/workshop_modes/individual/final/read.svg": {
     "themeVariations": {
       "default": {
         "global": {
@@ -4499,13 +4235,129 @@
       },
       "professional": {
         "global": {
-          "size_kb": 12.5,
-          "md5Checksum": "fcb06063ba82edb33d5e290bd102d546"
+          "size_kb": 38.6,
+          "md5Checksum": "06f84c13446845bb5ee1d01b7b62b442"
         }
       }
     }
   },
-  "plh_images/workshop_modes/guide_2/relax.svg": {
+  "plh_images/workshop_modes/individual/final/relax.svg": {
+    "themeVariations": {
+      "default": {
+        "global": {
+          "size_kb": 3.8,
+          "md5Checksum": "af45d95d4d9d7b5be6055cd90b0d6c33"
+        }
+      },
+      "professional": {
+        "global": {
+          "size_kb": 45.9,
+          "md5Checksum": "5c4972d84b75189d1ceecf924794c341"
+        }
+      }
+    }
+  },
+  "plh_images/workshop_modes/individual/final/star.svg": {
+    "themeVariations": {
+      "default": {
+        "global": {
+          "size_kb": 4.7,
+          "md5Checksum": "627c2d07c624f9c4194c9967705f774d"
+        }
+      },
+      "professional": {
+        "global": {
+          "size_kb": 39.4,
+          "md5Checksum": "934a93eb8bf91cc459360ca311a7c384"
+        }
+      }
+    }
+  },
+  "plh_images/workshop_modes/individual/final/thumbs_up.svg": {
+    "themeVariations": {
+      "default": {
+        "global": {
+          "size_kb": 4.4,
+          "md5Checksum": "fed8fb95625b99aa3a612b2284869a96"
+        }
+      }
+    }
+  },
+  "plh_images/workshop_modes/individual/final/wave.svg": {
+    "themeVariations": {
+      "default": {
+        "global": {
+          "size_kb": 4,
+          "md5Checksum": "fbd12bcc51d17917bc96fa76fb8567ac"
+        }
+      },
+      "professional": {
+        "global": {
+          "size_kb": 28.2,
+          "md5Checksum": "ad8e199e90b4c76647b3425797e009f2"
+        }
+      }
+    }
+  },
+  "plh_images/workshop_modes/individual/light_bulb.svg": {
+    "themeVariations": {
+      "default": {
+        "global": {
+          "size_kb": 4.6,
+          "md5Checksum": "056e44ecd0260d2d4f09be31031d3ab4"
+        }
+      },
+      "professional": {
+        "global": {
+          "size_kb": 22.8,
+          "md5Checksum": "7e595824abebdfd70ff7428bdae867d7"
+        }
+      }
+    }
+  },
+  "plh_images/workshop_modes/individual/notes.svg": {
+    "themeVariations": {
+      "default": {
+        "global": {
+          "size_kb": 56.6,
+          "md5Checksum": "3c7d0fa4ee0e4443428a99b7a8c79249"
+        }
+      },
+      "professional": {
+        "global": {
+          "size_kb": 17.5,
+          "md5Checksum": "e158bee5c77f18b9589077e151674848"
+        }
+      }
+    }
+  },
+  "plh_images/workshop_modes/individual/notes_left.svg": {
+    "themeVariations": {
+      "default": {
+        "global": {
+          "size_kb": 56.4,
+          "md5Checksum": "f6096aa659c28c7b9aaa6734fee277dd"
+        }
+      }
+    }
+  },
+  "plh_images/workshop_modes/individual/read.svg": {
+    "themeVariations": {
+      "default": {
+        "global": {
+          "size_kb": 3.7,
+          "md5Checksum": "37004d531d300bcba599761b8fde65c3"
+        }
+      },
+      "professional": {
+        "global": {
+          "size_kb": 17.8,
+          "md5Checksum": "ecde3c483f913bf00ba3c32aa8520d76"
+        }
+      }
+    }
+  },
+  "plh_images/workshop_modes/individual/relax.svg": {
     "themeVariations": {
       "default": {
         "global": {
@@ -4515,13 +4367,13 @@
       },
       "professional": {
         "global": {
-          "size_kb": 12.3,
-          "md5Checksum": "f84e8b05ea5165608a57ead92ce4b661"
+          "size_kb": 27,
+          "md5Checksum": "8873ed6b0f8cbefcc970047588525ae1"
         }
       }
     }
   },
-  "plh_images/workshop_modes/guide_2/star.svg": {
+  "plh_images/workshop_modes/individual/star.svg": {
     "themeVariations": {
       "default": {
         "global": {
@@ -4531,23 +4383,13 @@
       },
       "professional": {
         "global": {
-          "size_kb": 11.1,
-          "md5Checksum": "66c5dbf212697d2ebf2dba63d4e57dc3"
+          "size_kb": 17.7,
+          "md5Checksum": "68b253c4aee3d6462e09dbe40ddffacb"
         }
       }
     }
   },
-  "plh_images/workshop_modes/guide_2/thumbs_up.svg": {
-    "themeVariations": {
-      "default": {
-        "global": {
-          "size_kb": 3.4,
-          "md5Checksum": "563c9632f379e12af0159f39256dcd81"
-        }
-      }
-    }
-  },
-  "plh_images/workshop_modes/guide_2/wave.svg": {
+  "plh_images/workshop_modes/individual/wave.svg": {
     "themeVariations": {
       "default": {
         "global": {
@@ -4557,13 +4399,13 @@
       },
       "professional": {
         "global": {
-          "size_kb": 8.4,
-          "md5Checksum": "1cacc15a821bfab3a7bf32464b5b746d"
+          "size_kb": 8.5,
+          "md5Checksum": "79d5f0d01dca4ab60d638b0d46d134f9"
         }
       }
     }
   },
-  "plh_images/workshop_modes/guide_2/with_teen.svg": {
+  "plh_images/workshop_modes/individual/with_teen.svg": {
     "themeVariations": {
       "default": {
         "global": {
@@ -4573,13 +4415,13 @@
       },
       "professional": {
         "global": {
-          "size_kb": 27.3,
-          "md5Checksum": "53f93b67dac06d7c5594979469817a48"
+          "size_kb": 41.1,
+          "md5Checksum": "eb35a0457cf8dc12632cbb155536da00"
         }
       }
     }
   },
-  "plh_images/workshop_modes/guide_2/write.svg": {
+  "plh_images/workshop_modes/individual/write.svg": {
     "themeVariations": {
       "default": {
         "global": {
@@ -4589,8 +4431,8 @@
       },
       "professional": {
         "global": {
-          "size_kb": 13.5,
-          "md5Checksum": "2ce163413ce7658ede7acc8b9265eebc"
+          "size_kb": 12.5,
+          "md5Checksum": "c0488fd57d79f4b453a05b7a33196f1b"
         }
       }
     }
@@ -4637,8 +4479,8 @@
       },
       "professional": {
         "global": {
-          "size_kb": 51.1,
-          "md5Checksum": "79573ea144de581deeebf42da2d6888c"
+          "size_kb": 52.5,
+          "md5Checksum": "636e5c4f220204a4d3869f670f57f91b"
         }
       }
     }
@@ -4717,8 +4559,8 @@
       },
       "professional": {
         "global": {
-          "size_kb": 49.2,
-          "md5Checksum": "9f68864937ce4d22f3fafcc51db47d3a"
+          "size_kb": 37.4,
+          "md5Checksum": "63614c1d91b37cc93388b1f8dbd1bea7"
         }
       }
     }
@@ -4989,8 +4831,8 @@
       },
       "professional": {
         "global": {
-          "size_kb": 24.8,
-          "md5Checksum": "543caf49b28e3dd89cdfe7fc71cdb1a2"
+          "size_kb": 21.2,
+          "md5Checksum": "5cfeb47f0d56169785e4fa2d69ed13fa"
         }
       }
     }
@@ -5277,8 +5119,8 @@
       },
       "professional": {
         "global": {
-          "size_kb": 56.2,
-          "md5Checksum": "bcd98f1f4ea655b63785b30e7fa3f987"
+          "size_kb": 57,
+          "md5Checksum": "12e56e240b8a92617559e8f92ad5ff8f"
         }
       }
     }
@@ -5539,8 +5381,8 @@
       },
       "professional": {
         "global": {
-          "size_kb": 24.9,
-          "md5Checksum": "ceaed2757884b74d53bf85ae86f3079d"
+          "size_kb": 20.7,
+          "md5Checksum": "7fb1a763780e827c5a939adab2fcbe5a"
         }
       }
     }
@@ -5777,8 +5619,8 @@
       },
       "professional": {
         "global": {
-          "size_kb": 53,
-          "md5Checksum": "bba4198030e6efac29377a3603c8afad"
+          "size_kb": 33,
+          "md5Checksum": "77de144e20d06a6da8d51e620c7e8616"
         }
       }
     }
@@ -5855,8 +5697,8 @@
       },
       "professional": {
         "global": {
-          "size_kb": 36.3,
-          "md5Checksum": "270b0f948ee51b3776890ea7f8cd65de"
+          "size_kb": 32,
+          "md5Checksum": "6b55c48aa2d51ead1b92cfdbd2c3fd2f"
         }
       }
     }
@@ -6063,8 +5905,8 @@
       },
       "professional": {
         "global": {
-          "size_kb": 39.4,
-          "md5Checksum": "7e2cd3324df554df7f281ea3e35dd97a"
+          "size_kb": 41.2,
+          "md5Checksum": "ac18a9c7b31a23ae7f667418832acd5d"
         }
       }
     }
@@ -6287,43 +6129,29 @@
       },
       "professional": {
         "global": {
-          "size_kb": 24.3,
-          "md5Checksum": "3e029ab5e5902c86f82b524642197aa1"
+          "size_kb": 23,
+          "md5Checksum": "f9c326c18bb27635730c7fafbf5aa8cc"
         }
       }
     }
   },
-  "plh_images/workshops/w_self_care/guide_1/recognise.svg": {
-    "themeVariations": {
-      "default": {
-        "global": {
-          "size_kb": 6.9,
-          "md5Checksum": "49344911ea9c25685fffed47728dadbc"
-        }
-      }
-    }
-  },
-  "plh_images/workshops/w_self_care/guide_1/reward.svg": {
-    "themeVariations": {
-      "default": {
-        "global": {
-          "size_kb": 8,
-          "md5Checksum": "a8992712e9a949e14bdaaf03f40575f4"
-        }
-      }
-    }
-  },
-  "plh_images/workshops/w_self_care/guide_2/recognise.svg": {
+  "plh_images/workshops/w_self_care/individual/recognise.svg": {
     "themeVariations": {
       "default": {
         "global": {
           "size_kb": 6.9,
           "md5Checksum": "a84438c8ff0caacc78cc353e0f6b22f9"
         }
+      },
+      "professional": {
+        "global": {
+          "size_kb": 34.7,
+          "md5Checksum": "d49ac09071734c0db1a5b7bf3c900a71"
+        }
       }
     }
   },
-  "plh_images/workshops/w_self_care/guide_2/reward.svg": {
+  "plh_images/workshops/w_self_care/individual/reward.svg": {
     "themeVariations": {
       "default": {
         "global": {
@@ -6349,8 +6177,8 @@
       },
       "professional": {
         "global": {
-          "size_kb": 10.2,
-          "md5Checksum": "e51a8c6f8c9cc740964a66214bda6593"
+          "size_kb": 10.4,
+          "md5Checksum": "e6e75db632b0178ac0692ec4ecac2431"
         }
       }
     }
@@ -6596,32 +6424,50 @@
     }
   },
   "plh_images/workshops/w_solve/read_3/slide_1.svg": {
-    "size_kb": 6.6,
-    "md5Checksum": "e413d37ea5a999964f29d0c156baae87",
     "themeVariations": {
+      "default": {
+        "global": {
+          "size_kb": 6.6,
+          "md5Checksum": "e413d37ea5a999964f29d0c156baae87"
+        }
+      },
       "professional": {
-        "size_kb": 31.5,
-        "md5Checksum": "f8b9c67d446224125fbb9df24a04c1d3"
+        "global": {
+          "size_kb": 31.5,
+          "md5Checksum": "f8b9c67d446224125fbb9df24a04c1d3"
+        }
       }
     }
   },
   "plh_images/workshops/w_solve/read_3/slide_2.svg": {
-    "size_kb": 7.5,
-    "md5Checksum": "e9a7e9234f1cae498ca65e2a049f551f",
     "themeVariations": {
+      "default": {
+        "global": {
+          "size_kb": 7.5,
+          "md5Checksum": "e9a7e9234f1cae498ca65e2a049f551f"
+        }
+      },
       "professional": {
-        "size_kb": 31.9,
-        "md5Checksum": "7f9f6bfe7b25b609b98f37cae1908607"
+        "global": {
+          "size_kb": 31.9,
+          "md5Checksum": "7f9f6bfe7b25b609b98f37cae1908607"
+        }
       }
     }
   },
   "plh_images/workshops/w_solve/read_3/slide_3.svg": {
-    "size_kb": 7.5,
-    "md5Checksum": "e9a7e9234f1cae498ca65e2a049f551f",
     "themeVariations": {
+      "default": {
+        "global": {
+          "size_kb": 7.5,
+          "md5Checksum": "e9a7e9234f1cae498ca65e2a049f551f"
+        }
+      },
       "professional": {
-        "size_kb": 31.3,
-        "md5Checksum": "fd9fdbad4c2ab99b42b6f2533af7c010"
+        "global": {
+          "size_kb": 31.3,
+          "md5Checksum": "fd9fdbad4c2ab99b42b6f2533af7c010"
+        }
       }
     }
   },
@@ -6699,8 +6545,8 @@
       },
       "professional": {
         "global": {
-          "size_kb": 24.8,
-          "md5Checksum": "6442ade0a5565c45edf56cee74e03f04"
+          "size_kb": 51.3,
+          "md5Checksum": "6df9ca0c1475938765f9be70e62d36cd"
         }
       }
     }
@@ -6892,7 +6738,7 @@
       "professional": {
         "global": {
           "size_kb": 24.3,
-          "md5Checksum": "7cc1ef73878be4d04d4c5a79ecba1372"
+          "md5Checksum": "d14940e9c0b6abc8c00f0ddd58faef9f"
         }
       }
     }
@@ -6923,8 +6769,8 @@
       },
       "professional": {
         "global": {
-          "size_kb": 39.6,
-          "md5Checksum": "7d1b3edcc1ef1c069d16d9b04dea7feb"
+          "size_kb": 38.5,
+          "md5Checksum": "4cec497ee9afd4d388856c13d3679c97"
         }
       }
     }
@@ -6940,7 +6786,7 @@
       "professional": {
         "global": {
           "size_kb": 103.5,
-          "md5Checksum": "f5fd2b009d3908fa07cc19a29bdce97a"
+          "md5Checksum": "5921bdac4662f5df231e0a54879f03c8"
         }
       }
     }
@@ -6955,8 +6801,8 @@
       },
       "professional": {
         "global": {
-          "size_kb": 42.2,
-          "md5Checksum": "8538aa770c1e1fb11b673a7922cda585"
+          "size_kb": 71.4,
+          "md5Checksum": "fd334d81f2cd55a9edfef5e8dec85f0d"
         }
       }
     }
@@ -6971,8 +6817,8 @@
       },
       "professional": {
         "global": {
-          "size_kb": 24.2,
-          "md5Checksum": "af9157e52811cd2d09cf54969811822f"
+          "size_kb": 57.8,
+          "md5Checksum": "62a6d4c3fc8a490a5b641ae8643e1cd2"
         }
       }
     }
@@ -6987,8 +6833,8 @@
       },
       "professional": {
         "global": {
-          "size_kb": 10,
-          "md5Checksum": "bfa1481824dc135d25527d63175fb4df"
+          "size_kb": 10.3,
+          "md5Checksum": "cd80f6c372affa44bd8fc927d0e9b701"
         }
       }
     }
