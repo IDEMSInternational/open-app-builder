@@ -1,0 +1,56 @@
+{
+  "flow_type": "template",
+  "flow_name": "app_update_complete",
+  "status": "released",
+  "rows": [
+    {
+      "type": "text",
+      "name": "text",
+      "value": "@global.parent_app has downloaded an update. Please restart the app to finish installation.",
+      "_translations": {
+        "value": {
+          "tz_sw": true
+        }
+      },
+      "_nested_name": "text",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@global.parent_app has downloaded an update. Please restart the app to finish installation.",
+            "matchedExpression": "@global.parent_app",
+            "type": "global",
+            "fieldName": "parent_app"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@global.parent_app": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "button",
+      "name": "button",
+      "value": "Restart",
+      "_translations": {
+        "value": {
+          "tz_sw": true
+        }
+      },
+      "action_list": [
+        {
+          "trigger": "click",
+          "action_id": "app_update",
+          "args": [
+            "complete"
+          ],
+          "_raw": "click | app_update: complete",
+          "_cleaned": "click | app_update: complete"
+        }
+      ],
+      "_nested_name": "button"
+    }
+  ],
+  "_xlsxPath": "quality_assurance/debug_sheets/debug_app_update.xlsx"
+}

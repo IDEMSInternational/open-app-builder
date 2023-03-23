@@ -1945,6 +1945,16 @@
       }
     }
   },
+  "plh_images/habits/breathe.svg": {
+    "size_kb": 2.3,
+    "md5Checksum": "284285870cd683c71190ab4004cf4d70",
+    "themeVariations": {
+      "professional": {
+        "size_kb": 13.1,
+        "md5Checksum": "f0cd9c2695cc4611b182296ea1c8c4ac"
+      }
+    }
+  },
   "plh_images/habits/habit_breathe.svg": {
     "themeVariations": {
       "default": {
@@ -6582,6 +6592,36 @@
           "size_kb": 33.5,
           "md5Checksum": "ec4b8e228363bd564e1b88524daefee4"
         }
+      }
+    }
+  },
+  "plh_images/workshops/w_solve/read_3/slide_1.svg": {
+    "size_kb": 6.6,
+    "md5Checksum": "e413d37ea5a999964f29d0c156baae87",
+    "themeVariations": {
+      "professional": {
+        "size_kb": 31.5,
+        "md5Checksum": "f8b9c67d446224125fbb9df24a04c1d3"
+      }
+    }
+  },
+  "plh_images/workshops/w_solve/read_3/slide_2.svg": {
+    "size_kb": 7.5,
+    "md5Checksum": "e9a7e9234f1cae498ca65e2a049f551f",
+    "themeVariations": {
+      "professional": {
+        "size_kb": 31.9,
+        "md5Checksum": "7f9f6bfe7b25b609b98f37cae1908607"
+      }
+    }
+  },
+  "plh_images/workshops/w_solve/read_3/slide_3.svg": {
+    "size_kb": 7.5,
+    "md5Checksum": "e9a7e9234f1cae498ca65e2a049f551f",
+    "themeVariations": {
+      "professional": {
+        "size_kb": 31.3,
+        "md5Checksum": "fd9fdbad4c2ab99b42b6f2533af7c010"
       }
     }
   },

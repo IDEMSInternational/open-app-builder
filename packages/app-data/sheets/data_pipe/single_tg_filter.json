@@ -77,6 +77,24 @@
     },
     {
       "operation": "filter",
+      "input_source": "w_stress_tasks",
+      "output_target": "tg_w_stress_read_3_ind",
+      "args_list": [
+        "group ==\"read_3\"",
+        "individual"
+      ]
+    },
+    {
+      "operation": "filter",
+      "input_source": "w_stress_tasks",
+      "output_target": "tg_w_stress_read_3_tog",
+      "args_list": [
+        "group ==\"read_3\"",
+        "together"
+      ]
+    },
+    {
+      "operation": "filter",
       "input_source": "w_money_tasks",
       "output_target": "tg_w_money_read_2_ind",
       "args_list": [

@@ -158,25 +158,6 @@
       "template": "w_celebrate_think"
     },
     {
-      "id": "survey_activity",
-      "individual": true,
-      "together": false,
-      "priority": 12,
-      "has_single_task": true,
-      "title": "Survey",
-      "_translations": {
-        "title": {
-          "tz_sw": true
-        }
-      },
-      "_translatedFields": {
-        "title": {
-          "eng": "Survey"
-        }
-      },
-      "template": "survey_final_stepper"
-    },
-    {
       "id": "talk_1",
       "individual": false,
       "together": true,

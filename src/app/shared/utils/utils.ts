@@ -116,19 +116,29 @@ export function shuffleArray(arr: any[]) {
  * getNestedProperty(obj,'a.b.c.d')  // returns null
  *
  * @param obj data object to iterate over
- * @param path nested path, such as data.subfield1.deeperfield2
+ * @param nestedPath property path, such as data.subfield1.deeperfield2
  */
-export function getNestedProperty(obj: any, path: string) {
-  return path.split(".").reduce((prev, current) => {
+export function getNestedProperty(obj: any, nestedPath: string) {
+  return nestedPath.split(".").reduce((prev, current) => {
     return prev ? prev[current] : null;
   }, obj);
 }
 
-export function setNestedProperty<T>(path: string, value: any, obj: T = {} as any) {
-  let childKeys = path.split(".");
+/**
+ * Set a nested json property namespaced as parent.child1.subchild1
+ *
+ * @param nestedPath property path, such as data.subfield1.deeperfield2
+ * @param value assigned value
+ * @param obj optional object to deep assign onto
+ *
+ * @example
+ * setNestedProperty('a.b.c',1,{})  // returns {"a":{"b":{"c":1}}}
+ * */
+export function setNestedProperty<T>(nestedPath: string, value: any, obj: T = {} as any) {
+  let childKeys = nestedPath.split(".");
   const currentKey = childKeys[0];
   if (childKeys.length > 1) {
-    const nestedValue = setNestedProperty(childKeys.slice(1).join("."), value);
+    const nestedValue = setNestedProperty(childKeys.slice(1).join("."), value, obj[currentKey]);
     obj[currentKey] = { ...obj[currentKey], ...(nestedValue as any) };
   } else {
     obj[currentKey] = value;
@@ -345,9 +355,14 @@ export function trackObservableObjectChanges<T extends Object>(subject: Observab
   );
 }
 
-/** A recursive version of Partial, making all properties, included nested ones, optional.
+/**
+ * A recursive version of Partial, making all properties, included nested ones, optional.
  * Copied from https://stackoverflow.com/a/47914631
  */
 export type RecursivePartial<T> = {
   [P in keyof T]?: RecursivePartial<T[P]>;
 };
+
+export function isNonEmptyArray(value: unknown): value is any[] {
+  return Array.isArray(value) && value.length > 0;
+}
