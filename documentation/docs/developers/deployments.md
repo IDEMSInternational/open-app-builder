@@ -67,18 +67,6 @@ yarn workflow deployment set [name]
 
 The final processed config can be found in the local `config.json` file, e.g. `.idems_app/deployments/example/config.json`
 
-## Change Deployment
-To set the active deployment for the workspace run the following script:
-```sh
-yarn workflow deployment set
-```
-This will present an interactive list of deployments to select from
-
-Alternative a name can be provided to select directly
-```sh
-yarn workflow deployment set "My Deployment"
-```
-
 ## Google Drive Management
 The deployment configuration requires IDs for two created Google Drive folders, one for template sheets and one for global assets. 
 
@@ -90,6 +78,19 @@ E.g. `1ja6lzbphZaxnVv5mpQ4YHnn2qmxMiEBW`
 ![](images/deployment-gdrive-ids.png)
 
 
+## GitHub Management
+
+### Import Existing
+If an external content repo already exists it is possible to directly import into the local workspace, instead of first creating a new deployment and then configuring for import. 
+
+This can be done via the script
+```
+yarn workflow deployment import [url]
+```
+Where [url] can be replaced with the url of a github repository where content is stored
+
+You will see the new deployment appear in the `.idems_app` folder and be available for selection
+   
 ## File Encryption
 In cases where deployments need to share private information, such as API keys or service accounts, a special encryption folder can be used to handle encryption and decryption processes
 

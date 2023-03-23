@@ -32,9 +32,11 @@ import { LifecycleActionsService } from "./shared/services/lifecycle-actions/lif
 import { AppConfigService } from "./shared/services/app-config/app-config.service";
 import { IAppConfig } from "./shared/model";
 import { TaskService } from "./shared/services/task/task.service";
+import { AppUpdateService } from "./shared/services/app-update/app-update.service";
 import { AsyncServiceBase } from "./shared/services/asyncService.base";
 import { SyncServiceBase } from "./shared/services/syncService.base";
 import { SeoService } from "./shared/services/seo/seo.service";
+import { FeedbackService } from "./feature/feedback/feedback.service";
 
 @Component({
   selector: "app-root",
@@ -82,10 +84,12 @@ export class AppComponent {
     private authService: AuthService,
     private seoService: SeoService,
     private taskService: TaskService,
+    private feedbackService: FeedbackService,
     /** Inject in the main app component to start tracking actions immediately */
     private taskActions: TaskActionService,
     private lifecycleActionsService: LifecycleActionsService,
-    private serverService: ServerService
+    private serverService: ServerService,
+    private appUpdateService: AppUpdateService
   ) {
     this.initializeApp();
   }
@@ -193,6 +197,7 @@ export class AppComponent {
       nonBlocking: [
         this.skinService,
         this.appConfigService,
+        this.appUpdateService,
         this.themeService,
         this.templateService,
         this.templateProcessService,
@@ -200,6 +205,7 @@ export class AppComponent {
         this.authService,
         this.serverService,
         this.seoService,
+        this.feedbackService,
       ],
       deferred: [this.analyticsService],
       implicit: [

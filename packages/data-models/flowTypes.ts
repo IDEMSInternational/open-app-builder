@@ -353,6 +353,7 @@ export namespace FlowTypes {
   // TODO - 2021-03-11 - most of list needs reconsideration/implementation
   export const ACTION_ID_LIST = [
     "",
+    "app_update",
     "audio_end",
     "audio_play",
     "changed",

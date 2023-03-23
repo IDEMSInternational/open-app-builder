@@ -9,7 +9,7 @@
       "habit_id": "spend_time",
       "has_highlights": true,
       "challenges_structure": "nested",
-      "activity_image_ind": "plh_images/workshop_modes/guide_2/with_teen.svg",
+      "activity_image_ind": "plh_images/workshop_modes/individual/with_teen.svg",
       "activity_image_tog": "plh_images/workshop_modes/group/with_teen.svg",
       "button_no_go_to_template": "w_1on1_home_practice",
       "has_challenges": true,
@@ -31,7 +31,9 @@
           "za_xh": true,
           "za_zu": true
         },
-        "reply_ok": {},
+        "reply_ok": {
+          "tz_sw": true
+        },
         "reply_sad": {
           "tz_sw": true,
           "za_af": true,
@@ -42,7 +44,9 @@
         },
         "activity_title": {},
         "intro_text": {},
-        "question_done": {},
+        "question_done": {
+          "tz_sw": true
+        },
         "reply_no": {
           "tz_sw": true
         },
@@ -113,7 +117,7 @@
     {
       "id": "w_praise",
       "habit_id": "praise_teen",
-      "activity_image_ind": "plh_images/workshop_modes/guide_2/with_teen.svg",
+      "activity_image_ind": "plh_images/workshop_modes/individual/with_teen.svg",
       "activity_image_tog": "plh_images/workshop_modes/group/with_teen.svg",
       "button_no_go_to_template": "w_praise_home_practice",
       "has_highlights": false,
@@ -137,9 +141,15 @@
           "za_xh": true,
           "za_zu": true
         },
-        "reply_happy": {},
-        "reply_ok": {},
-        "reply_sad": {},
+        "reply_happy": {
+          "tz_sw": true
+        },
+        "reply_ok": {
+          "tz_sw": true
+        },
+        "reply_sad": {
+          "tz_sw": true
+        },
         "outro_text": {
           "tz_sw": true,
           "za_af": true,
@@ -150,7 +160,9 @@
         },
         "activity_title": {},
         "intro_text": {},
-        "question_done": {},
+        "question_done": {
+          "tz_sw": true
+        },
         "button_no_text": {},
         "question_how": {
           "tz_sw": true,
@@ -212,7 +224,7 @@
       "habit_id": "instruct_positively",
       "has_highlights": true,
       "challenges_structure": "nested",
-      "activity_image_ind": "plh_images/workshop_modes/guide_2/with_teen.svg",
+      "activity_image_ind": "plh_images/workshop_modes/individual/with_teen.svg",
       "activity_image_tog": "plh_images/workshop_modes/group/with_teen.svg",
       "button_no_go_to_template": "w_instruct_home_practice",
       "has_challenges": true,
@@ -226,7 +238,9 @@
           "za_xh": true,
           "za_zu": true
         },
-        "reply_happy": {},
+        "reply_happy": {
+          "tz_sw": true
+        },
         "reply_ok": {
           "tz_sw": true,
           "za_af": true,
@@ -235,7 +249,9 @@
           "za_xh": true,
           "za_zu": true
         },
-        "reply_sad": {},
+        "reply_sad": {
+          "tz_sw": true
+        },
         "outro_text": {
           "tz_sw": true,
           "za_af": true,
@@ -246,7 +262,9 @@
         },
         "activity_title": {},
         "intro_text": {},
-        "question_done": {},
+        "question_done": {
+          "tz_sw": true
+        },
         "reply_no": {
           "tz_sw": true
         },
@@ -309,7 +327,7 @@
     {
       "id": "w_stress",
       "habit_id": "breathe",
-      "activity_image_ind": "plh_images/workshop_modes/guide_2/with_teen.svg",
+      "activity_image_ind": "plh_images/workshop_modes/individual/with_teen.svg",
       "activity_image_tog": "plh_images/workshop_modes/group/with_teen.svg",
       "button_no_go_to_template": "w_stress_home_practice",
       "has_highlights": false,
@@ -317,7 +335,9 @@
       "challenges_structure": "plain",
       "text_goal": "This week, your goal was: Whenever you are feeling stressed or upset, take five breaths in and out before you react. \n\nYour goal was also to talk to your teen about how you both felt in a stressful situation.",
       "_translations": {
-        "text_goal": {},
+        "text_goal": {
+          "tz_sw": true
+        },
         "reply_happy": {
           "tz_sw": true,
           "za_af": true,
@@ -334,10 +354,14 @@
           "za_xh": true,
           "za_zu": true
         },
-        "reply_sad": {},
+        "reply_sad": {
+          "tz_sw": true
+        },
         "activity_title": {},
         "intro_text": {},
-        "question_done": {},
+        "question_done": {
+          "tz_sw": true
+        },
         "reply_no": {
           "tz_sw": true
         },
@@ -408,7 +432,7 @@
     {
       "id": "w_money",
       "habit_id": "money",
-      "activity_image_ind": "plh_images/workshop_modes/guide_2/with_teen.svg",
+      "activity_image_ind": "plh_images/workshop_modes/individual/with_teen.svg",
       "activity_image_tog": "plh_images/workshop_modes/group/with_teen.svg",
       "button_no_go_to_template": "w_money_home_practice",
       "has_highlights": false,
@@ -432,8 +456,12 @@
           "za_xh": true,
           "za_zu": true
         },
-        "reply_ok": {},
-        "reply_sad": {},
+        "reply_ok": {
+          "tz_sw": true
+        },
+        "reply_sad": {
+          "tz_sw": true
+        },
         "outro_text": {
           "tz_sw": true,
           "za_af": true,
@@ -444,7 +472,9 @@
         },
         "activity_title": {},
         "intro_text": {},
-        "question_done": {},
+        "question_done": {
+          "tz_sw": true
+        },
         "reply_no": {
           "tz_sw": true
         },
@@ -506,7 +536,7 @@
     },
     {
       "id": "w_rules",
-      "activity_image_ind": "plh_images/workshop_modes/guide_2/with_teen.svg",
+      "activity_image_ind": "plh_images/workshop_modes/individual/with_teen.svg",
       "activity_image_tog": "plh_images/workshop_modes/group/with_teen.svg",
       "button_no_go_to_template": "w_rules_home_practice",
       "has_highlights": false,
@@ -514,7 +544,9 @@
       "challenges_structure": "plain",
       "text_goal": "Your goal was to make ONE rule with your teen.",
       "_translations": {
-        "text_goal": {},
+        "text_goal": {
+          "tz_sw": true
+        },
         "reply_happy": {
           "tz_sw": true,
           "za_af": true,
@@ -523,7 +555,9 @@
           "za_xh": true,
           "za_zu": true
         },
-        "reply_ok": {},
+        "reply_ok": {
+          "tz_sw": true
+        },
         "reply_sad": {
           "tz_sw": true,
           "za_af": true,
@@ -542,7 +576,9 @@
         },
         "activity_title": {},
         "intro_text": {},
-        "question_done": {},
+        "question_done": {
+          "tz_sw": true
+        },
         "reply_no": {
           "tz_sw": true
         },
@@ -605,7 +641,7 @@
     {
       "id": "w_consequence",
       "habit_id": "consequence",
-      "activity_image_ind": "plh_images/workshop_modes/guide_2/with_teen.svg",
+      "activity_image_ind": "plh_images/workshop_modes/individual/with_teen.svg",
       "activity_image_tog": "plh_images/workshop_modes/group/with_teen.svg",
       "button_no_go_to_template": "w_consequence_home_practice",
       "has_highlights": false,
@@ -629,11 +665,17 @@
           "za_xh": true,
           "za_zu": true
         },
-        "reply_ok": {},
-        "reply_sad": {},
+        "reply_ok": {
+          "tz_sw": true
+        },
+        "reply_sad": {
+          "tz_sw": true
+        },
         "activity_title": {},
         "intro_text": {},
-        "question_done": {},
+        "question_done": {
+          "tz_sw": true
+        },
         "reply_no": {
           "tz_sw": true
         },
@@ -703,7 +745,7 @@
     },
     {
       "id": "w_solve",
-      "activity_image_ind": "plh_images/workshop_modes/guide_2/with_teen.svg",
+      "activity_image_ind": "plh_images/workshop_modes/individual/with_teen.svg",
       "activity_image_tog": "plh_images/workshop_modes/group/with_teen.svg",
       "button_no_go_to_template": "w_solve_home_practice",
       "has_highlights": false,
@@ -727,7 +769,9 @@
           "za_xh": true,
           "za_zu": true
         },
-        "reply_ok": {},
+        "reply_ok": {
+          "tz_sw": true
+        },
         "reply_sad": {
           "tz_sw": true,
           "za_af": true,
@@ -738,7 +782,9 @@
         },
         "activity_title": {},
         "intro_text": {},
-        "question_done": {},
+        "question_done": {
+          "tz_sw": true
+        },
         "reply_no": {
           "tz_sw": true
         },
@@ -809,7 +855,7 @@
     {
       "id": "w_safe",
       "habit_id": "safe",
-      "activity_image_ind": "plh_images/workshop_modes/guide_2/with_teen.svg",
+      "activity_image_ind": "plh_images/workshop_modes/individual/with_teen.svg",
       "activity_image_tog": "plh_images/workshop_modes/group/with_teen.svg",
       "button_no_go_to_template": "w_safe_home_practice",
       "has_highlights": false,
@@ -833,7 +879,9 @@
           "za_xh": true,
           "za_zu": true
         },
-        "reply_ok": {},
+        "reply_ok": {
+          "tz_sw": true
+        },
         "reply_sad": {
           "tz_sw": true,
           "za_af": true,
@@ -844,7 +892,9 @@
         },
         "activity_title": {},
         "intro_text": {},
-        "question_done": {},
+        "question_done": {
+          "tz_sw": true
+        },
         "reply_no": {
           "tz_sw": true
         },
@@ -915,7 +965,7 @@
     {
       "id": "w_crisis",
       "habit_id": "safe",
-      "activity_image_ind": "plh_images/workshop_modes/guide_2/with_teen.svg",
+      "activity_image_ind": "plh_images/workshop_modes/individual/with_teen.svg",
       "activity_image_tog": "plh_images/workshop_modes/group/with_teen.svg",
       "button_no_go_to_template": "w_crisis_home_practice",
       "has_highlights": false,
@@ -939,7 +989,9 @@
           "za_xh": true,
           "za_zu": true
         },
-        "reply_ok": {},
+        "reply_ok": {
+          "tz_sw": true
+        },
         "reply_sad": {
           "tz_sw": true,
           "za_af": true,
@@ -950,7 +1002,9 @@
         },
         "activity_title": {},
         "intro_text": {},
-        "question_done": {},
+        "question_done": {
+          "tz_sw": true
+        },
         "reply_no": {
           "tz_sw": true
         },

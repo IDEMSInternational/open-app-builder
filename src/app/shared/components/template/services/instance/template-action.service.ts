@@ -19,6 +19,7 @@ import { TaskService } from "src/app/shared/services/task/task.service";
 import { getGlobalService } from "src/app/shared/services/global.service";
 import { SyncServiceBase } from "src/app/shared/services/syncService.base";
 import { TemplateActionRegistry } from "./template-action.registry";
+import { CampaignService } from "src/app/feature/campaign/campaign.service";
 
 /** Logging Toggle - rewrite default functions to enable or disable inline logs */
 let SHOW_DEBUG_LOGS = false;
@@ -73,6 +74,9 @@ export class TemplateActionService extends SyncServiceBase {
   }
   private get taskService() {
     return getGlobalService(this.injector, TaskService);
+  }
+  private get campaignService() {
+    return getGlobalService(this.injector, CampaignService);
   }
   private get templateActionRegistry() {
     // HACK - as only service that does not extend sync/async base just return
@@ -225,7 +229,14 @@ export class TemplateActionService extends SyncServiceBase {
       case "google_auth":
         return await this.authService.signInWithGoogle();
       case "task_group_set_highlighted":
-        return this.taskService.setHighlightedTaskGroup(args[0]);
+        const [previousHighlightedTaskGroup, newHighlightedTaskGroup] =
+          this.taskService.setHighlightedTaskGroup(args[0]);
+        // HACK - reschedule campaign notifications when the highlighted task group has changed,
+        // in order to handle any that are conditional on the highlighted task group
+        if (previousHighlightedTaskGroup !== newHighlightedTaskGroup) {
+          this.campaignService.scheduleCampaignNotifications();
+        }
+        return;
       case "emit":
         const [emit_value, emit_data] = args;
         const container: TemplateContainerComponent = this.container;

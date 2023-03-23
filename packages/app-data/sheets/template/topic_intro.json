@@ -52,6 +52,54 @@
       }
     },
     {
+      "name": "workshop_number",
+      "value": "@local.workshop_data.number",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "workshop_number",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@local.workshop_data.number",
+            "matchedExpression": "@local.workshop_data.number",
+            "type": "local",
+            "fieldName": "workshop_data"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.workshop_data.number": [
+          "value"
+        ]
+      }
+    },
+    {
+      "name": "topic_intro_name",
+      "value": "topic_intro_name_@local.workshop_number",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "topic_intro_name",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "topic_intro_name_@local.workshop_number",
+            "matchedExpression": "@local.workshop_number",
+            "type": "local",
+            "fieldName": "workshop_number"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.workshop_number": [
+          "value"
+        ]
+      }
+    },
+    {
       "name": "intro_text",
       "value": "_intro_text",
       "_translations": {
@@ -247,6 +295,15 @@
           "name": "workshop_activity",
           "rows": [
             {
+              "name": "activity_image",
+              "value": "plh_images/workshop_modes/individual/explain.svg",
+              "_translations": {
+                "value": {}
+              },
+              "type": "set_variable",
+              "_nested_name": "listen.workshop_activity.activity_image"
+            },
+            {
               "name": "intro_title",
               "value": "Why @local.workshop_data.title?",
               "_translations": {
@@ -344,15 +401,10 @@
                   "rows": [
                     {
                       "name": "audio_title",
-                      "value": "Hear @global.topic_intro_name's message",
+                      "value": "Hear @global.@local.topic_intro_name's message",
                       "_translations": {
                         "value": {
-                          "tz_sw": true,
-                          "za_af": true,
-                          "za_st": true,
-                          "za_tn": true,
-                          "za_xh": true,
-                          "za_zu": true
+                          "tz_sw": true
                         }
                       },
                       "type": "set_variable",
@@ -360,15 +412,15 @@
                       "_dynamicFields": {
                         "value": [
                           {
-                            "fullExpression": "Hear @global.topic_intro_name's message",
-                            "matchedExpression": "@global.topic_intro_name",
-                            "type": "global",
+                            "fullExpression": "Hear @global.@local.topic_intro_name's message",
+                            "matchedExpression": "@local.topic_intro_name",
+                            "type": "local",
                             "fieldName": "topic_intro_name"
                           }
                         ]
                       },
                       "_dynamicDependencies": {
-                        "@global.topic_intro_name": [
+                        "@local.topic_intro_name": [
                           "value"
                         ]
                       }
@@ -399,15 +451,10 @@
                     },
                     {
                       "name": "button_1",
-                      "value": "Read @global.topic_intro_name's message",
+                      "value": "Read @global.@local.topic_intro_name's message",
                       "_translations": {
                         "value": {
-                          "tz_sw": true,
-                          "za_af": true,
-                          "za_st": true,
-                          "za_tn": true,
-                          "za_xh": true,
-                          "za_zu": true
+                          "tz_sw": true
                         }
                       },
                       "action_list": [
@@ -427,9 +474,9 @@
                       "_dynamicFields": {
                         "value": [
                           {
-                            "fullExpression": "Read @global.topic_intro_name's message",
-                            "matchedExpression": "@global.topic_intro_name",
-                            "type": "global",
+                            "fullExpression": "Read @global.@local.topic_intro_name's message",
+                            "matchedExpression": "@local.topic_intro_name",
+                            "type": "local",
                             "fieldName": "topic_intro_name"
                           }
                         ],
@@ -465,7 +512,7 @@
                         }
                       },
                       "_dynamicDependencies": {
-                        "@global.topic_intro_name": [
+                        "@local.topic_intro_name": [
                           "value"
                         ],
                         "@local.workshop_intro_text": [
@@ -858,15 +905,10 @@
               "rows": [
                 {
                   "name": "audio_title",
-                  "value": "Hear @global.topic_intro_name's message",
+                  "value": "Hear @global.@local.topic_intro_name's message",
                   "_translations": {
                     "value": {
-                      "tz_sw": true,
-                      "za_af": true,
-                      "za_st": true,
-                      "za_tn": true,
-                      "za_xh": true,
-                      "za_zu": true
+                      "tz_sw": true
                     }
                   },
                   "type": "set_variable",
@@ -874,15 +916,15 @@
                   "_dynamicFields": {
                     "value": [
                       {
-                        "fullExpression": "Hear @global.topic_intro_name's message",
-                        "matchedExpression": "@global.topic_intro_name",
-                        "type": "global",
+                        "fullExpression": "Hear @global.@local.topic_intro_name's message",
+                        "matchedExpression": "@local.topic_intro_name",
+                        "type": "local",
                         "fieldName": "topic_intro_name"
                       }
                     ]
                   },
                   "_dynamicDependencies": {
-                    "@global.topic_intro_name": [
+                    "@local.topic_intro_name": [
                       "value"
                     ]
                   }
@@ -913,15 +955,10 @@
                 },
                 {
                   "name": "button_1",
-                  "value": "Read @global.topic_intro_name's message",
+                  "value": "Read @global.@local.topic_intro_name's message",
                   "_translations": {
                     "value": {
-                      "tz_sw": true,
-                      "za_af": true,
-                      "za_st": true,
-                      "za_tn": true,
-                      "za_xh": true,
-                      "za_zu": true
+                      "tz_sw": true
                     }
                   },
                   "action_list": [
@@ -941,9 +978,9 @@
                   "_dynamicFields": {
                     "value": [
                       {
-                        "fullExpression": "Read @global.topic_intro_name's message",
-                        "matchedExpression": "@global.topic_intro_name",
-                        "type": "global",
+                        "fullExpression": "Read @global.@local.topic_intro_name's message",
+                        "matchedExpression": "@local.topic_intro_name",
+                        "type": "local",
                         "fieldName": "topic_intro_name"
                       }
                     ],
@@ -979,7 +1016,7 @@
                     }
                   },
                   "_dynamicDependencies": {
-                    "@global.topic_intro_name": [
+                    "@local.topic_intro_name": [
                       "value"
                     ],
                     "@local.workshop_intro_text": [

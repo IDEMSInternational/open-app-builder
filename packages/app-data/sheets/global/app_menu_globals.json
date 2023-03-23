@@ -80,6 +80,31 @@
           "za_zu": true
         }
       }
+    },
+    {
+      "type": "declare_global_constant",
+      "name": "language",
+      "value": "Language",
+      "_translations": {
+        "value": {
+          "tz_sw": true,
+          "za_af": true,
+          "za_st": true,
+          "za_tn": true,
+          "za_xh": true,
+          "za_zu": true
+        }
+      }
+    },
+    {
+      "type": "declare_global_constant",
+      "name": "user_info",
+      "value": "Your Profile",
+      "_translations": {
+        "value": {
+          "tz_sw": true
+        }
+      }
     }
   ],
   "_xlsxPath": "global/data/app_menu_globals.xlsx"

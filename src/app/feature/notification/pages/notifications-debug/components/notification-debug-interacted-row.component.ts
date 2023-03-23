@@ -10,9 +10,9 @@ import { ILocalNotificationInteractionDB } from "src/app/shared/services/notific
           <div style="flex:1">
             <div>
               <div>
-                {{ notification.notification_meta.title }}
+                {{ notification.notification_meta?.title }}
               </div>
-              <div class="info-text">{{ notification.notification_meta.id }}</div>
+              <div class="info-text">{{ notification.notification_meta?.id }}</div>
             </div>
           </div>
           <div>
@@ -31,7 +31,7 @@ import { ILocalNotificationInteractionDB } from "src/app/shared/services/notific
         <div class="row-content">
           <div style="flex: 1; margin-right: 8px">
             <div class="divider"></div>
-            <div>{{ notification.notification_meta.text }}</div>
+            <div>{{ notification.notification_meta?.text }}</div>
           </div>
           <div style="text-align: right">
             <div class="divider"></div>
