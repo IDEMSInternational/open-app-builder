@@ -41,33 +41,54 @@ export class TemplateAssetService extends AsyncServiceBase {
     const assetEntry = ASSETS_CONTENTS_LIST[assetName];
     if (!assetEntry) {
       console.error("Asset missing", value, assetName);
+      return `${ASSETS_GLOBAL_FOLDER_NAME}/${assetName}`;
     }
-    // Define default/fallback asset path: asset's "global" version for the default theme
-    let relativePathToOverride = `${ASSETS_GLOBAL_FOLDER_NAME}/${assetName}`;
 
     const currentThemeName = this.themeService.getCurrentTheme();
     const currentLanguageCode = this.translateService.app_language;
-
-    // Assets for the default theme are stored in the base folder,
-    // assets for other themes are nested in a child "theme_" folder
+    // Assets for the default theme are in the base folder, assets for other themes are nested in a child "theme_" folder
     const themePath = currentThemeName === DEFAULT_THEME_NAME ? "" : `theme_${currentThemeName}/`;
 
-    // Use a translated version of the asset for the current language and theme, if it exists
-    if (assetEntry?.themeVariations?.[currentThemeName]?.[currentLanguageCode]) {
-      relativePathToOverride = `${themePath}${currentLanguageCode}/${assetName}`;
-    }
-    // If a translated version does not exist in this theme for the current language,
-    // use the translated version for the default theme, if it exists.
-    // This prioritises language over theme, in order to try and serve the user the asset
-    // in their chosen language if any translation exists.
-    else if (assetEntry?.themeVariations?.[DEFAULT_THEME_NAME]?.[currentLanguageCode]) {
-      relativePathToOverride = `${currentLanguageCode}/${assetName}`;
-    }
-    // Otherwise use a the global version of the asset for the current theme, if it exists
-    else if (assetEntry?.themeVariations?.[currentThemeName]?.[ASSETS_GLOBAL_FOLDER_NAME]) {
-      relativePathToOverride = `${themePath}${ASSETS_GLOBAL_FOLDER_NAME}/${assetName}`;
-    }
-    return this.convertPLHRelativePathToAssetPath(relativePathToOverride);
+    /**
+     * Mappings to return a path to a version of the requested asset.
+     * The path for the first asset version that exists will be returned,
+     * so the order of this array is the order of priority of fallbacks.
+     * E.g. language is prioritised over theme, in order to try and serve
+     * the user the asset in their chosen language if any translation exists.
+     */
+    const assetVersionMappings = [
+      // Version of the asset for the current language and current theme
+      {
+        assetVersionContents:
+          assetEntry?.themeVariations?.[currentThemeName]?.[currentLanguageCode],
+        relativePath: `${themePath}${currentLanguageCode}/${assetName}`,
+      },
+      // Version of the asset for the current language and default theme
+      {
+        assetVersionContents:
+          assetEntry?.themeVariations?.[DEFAULT_THEME_NAME]?.[currentLanguageCode],
+        relativePath: `${currentLanguageCode}/${assetName}`,
+      },
+      // Version of the asset for the default language ("global") and current theme
+      {
+        assetVersionContents:
+          assetEntry?.themeVariations?.[currentThemeName]?.[ASSETS_GLOBAL_FOLDER_NAME],
+        relativePath: `${themePath}${ASSETS_GLOBAL_FOLDER_NAME}/${assetName}`,
+      },
+      // Version of the asset for the default language ("global") and the default theme.
+      // This is the default/fallback and should always exist
+      {
+        assetVersionContents:
+          assetEntry?.themeVariations?.[DEFAULT_THEME_NAME]?.[ASSETS_GLOBAL_FOLDER_NAME],
+        relativePath: `${ASSETS_GLOBAL_FOLDER_NAME}/${assetName}`,
+      },
+    ];
+
+    const relativePath =
+      assetVersionMappings[
+        assetVersionMappings.findIndex((assetVersion) => !!assetVersion.assetVersionContents)
+      ].relativePath;
+    return this.convertPLHRelativePathToAssetPath(relativePath);
   }
 
   private cleanAssetName(value: string) {

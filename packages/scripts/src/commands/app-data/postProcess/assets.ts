@@ -15,6 +15,7 @@ import {
   kbToMB,
   isThemeAssetsFolderName,
   getThemeNameFromThemeAssetFolderName,
+  setNestedProperty,
 } from "../../../utils";
 import { ActiveDeployment } from "../../deployment/get";
 import type {
@@ -62,13 +63,13 @@ export class AssetsPostProcessor {
     this.copyAssetsToFolder(mergedAssets, stagingDir);
     this.assetsQualityCheck(stagingDir);
     const assetsByType = this.listAssetOverrides(mergedAssets);
-    const { complete, orphaned } = assetsByType;
+    const { tracked, untracked } = assetsByType;
     this.checkTotalAssetSize(assetsByType);
     fs.removeSync(stagingDir);
 
     // copy deployment assets to main folder and write merged contents file
     this.copyAssetsToFolder(sourceAssetsFiltered, appAssetsFolder);
-    this.writeAssetsContentsFiles(appAssetsFolder, complete, orphaned);
+    this.writeAssetsContentsFiles(appAssetsFolder, tracked, untracked);
 
     console.log(chalk.green("Asset Process Complete"));
   }
@@ -76,7 +77,7 @@ export class AssetsPostProcessor {
   /**
    * Write two entries to the app assets folder
    * `contents.json` provides a summary of all assets available to the global app with translations
-   * `orphaned-assets.json` provides a summary of all assets that appear in translation or theme folders
+   * `untracked-assets.json` provides a summary of all assets that appear in translation or theme folders
    * but do not have corresponding default global entries (only populated if entries exist)
    */
   private writeAssetsContentsFiles(
@@ -87,7 +88,7 @@ export class AssetsPostProcessor {
     const contentsTarget = path.resolve(appAssetsFolder, "contents.json");
     fs.writeFileSync(contentsTarget, JSON.stringify(assetEntries, null, 2));
 
-    const missingTarget = path.resolve(appAssetsFolder, "orphaned-assets.json");
+    const missingTarget = path.resolve(appAssetsFolder, "untracked-assets.json");
     if (fs.existsSync(missingTarget)) fs.removeSync(missingTarget);
     if (Object.keys(missingEntries).length > 0) {
       logWarning({
@@ -255,8 +256,8 @@ export class AssetsPostProcessor {
    */
   private listAssetOverrides(sourceAssets: IContentsEntryHashmap) {
     const entries: IAssetEntriesByType = {
-      complete: {},
-      orphaned: {},
+      tracked: {},
+      untracked: {},
     };
     const globalFolder = ASSETS_GLOBAL_FOLDER_NAME;
 
@@ -275,11 +276,20 @@ export class AssetsPostProcessor {
         nestedPath = nestedPaths.join("/");
       }
 
+      // Handle asset variations
       if (baseFolder === globalFolder || isCountryLanguageCode(baseFolder)) {
-        entries.complete[nestedPath] ??= {} as any;
-        entries.complete[nestedPath].themeVariations ??= {};
-        entries.complete[nestedPath].themeVariations[themeName] ??= {};
-        entries.complete[nestedPath].themeVariations[themeName][baseFolder] = assetEntry;
+        // If an entry for the given asset already exists, add the language variation
+        if (entries.tracked[nestedPath]?.themeVariations?.[themeName]) {
+          entries.tracked[nestedPath].themeVariations[themeName][baseFolder] = assetEntry;
+        }
+        // Otherwise create the entry
+        else {
+          entries.tracked[nestedPath] = setNestedProperty(
+            `themeVariations.${themeName}.${baseFolder}`,
+            assetEntry,
+            entries.tracked[nestedPath]
+          );
+        }
       } else {
         console.log(
           `Folder naming error: The folder "${baseFolder}" is not named with a valid language code`
@@ -287,11 +297,11 @@ export class AssetsPostProcessor {
       }
     });
 
-    // Check for assets which have no default version, and move them to "orphaned"
-    Object.entries(entries.complete).forEach(([assetPath, assetEntry]) => {
+    // Check for assets which have no default version, and move them to "untracked"
+    Object.entries(entries.tracked).forEach(([assetPath, assetEntry]) => {
       if (!assetEntry.themeVariations.default?.hasOwnProperty("global")) {
-        entries.orphaned[assetPath] = assetEntry;
-        delete entries.complete.assetPath;
+        entries.untracked[assetPath] = assetEntry;
+        delete entries.tracked.assetPath;
       }
     });
     return entries;
@@ -306,7 +316,7 @@ export class AssetsPostProcessor {
 
 interface IAssetEntriesByType {
   /** Assets that have a global in the default theme, including their respective overrides */
-  complete: IAssetEntryHashmap;
+  tracked: IAssetEntryHashmap;
   /** Assets that appear in translation or theme folders but have no corresponding global in the default theme */
-  orphaned: IAssetEntryHashmap;
+  untracked: IAssetEntryHashmap;
 }
