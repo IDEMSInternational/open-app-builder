@@ -5,10 +5,18 @@ on:
     branches:
       - ci/enable-appetize-for-deployment-branches
 jobs:
+  set_environment:
+    outputs:
+      my_env: ${{ steps.setenv.outputs.my_env }}
+    runs-on: ubuntu-latest
+    steps:
+    - id: setenv
+      run: echo "{my_env}={wash}" >> $GITHUB_OUTPUT
+
   environment-test:
     runs-on: ubuntu-latest
     environment: 
-      name: ${{ needs.steps.set_environment.outputs.my_env }}
+      name: ${{ needs.set_environment.outputs.my_env }}
     steps:
       - uses: actions/checkout@v3
         with:
