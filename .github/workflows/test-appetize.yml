@@ -8,9 +8,26 @@ on:
       - deployment/*
       - master
 jobs:
+  set_environment:
+    if: contains(github.event.pull_request.labels.*.name, 'Test - appetize')
+    outputs:
+      my_env: ${{ steps.setenv.outputs.MY_ENV }}
+    runs-on: ubuntu-latest
+    steps:
+    - name: Set Environment Name
+      run: |
+        if [ "$GITHUB_BASE_REF" = "master" ];                    \
+        then echo "ENVIRONMENT_NAME=plh_global" >> $GITHUB_ENV;              \
+        else echo "ENVIRONMENT_NAME=${GITHUB_BASE_REF##*/}" >> $GITHUB_ENV;  \
+        fi
+    - id: setenv
+      run: echo "MY_ENV=${ENVIRONMENT_NAME}" >> $GITHUB_OUTPUT
   test_appetize:
+    needs: set_environment
     if: contains(github.event.pull_request.labels.*.name, 'Test - appetize')
     runs-on: ubuntu-latest
+    environment: 
+      name: ${{ needs.set_environment.outputs.MY_ENV }}
     steps:
       - uses: actions/checkout@v3
         with:
