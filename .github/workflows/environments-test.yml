@@ -13,11 +13,13 @@ jobs:
     - id: setenv
       run: echo "my_env=wash" >> $GITHUB_OUTPUT
 
-  environment-test:
+  environment_test:
     runs-on: ubuntu-latest
     environment: 
       name: ${{ needs.set_environment.outputs.my_env }}
     steps:
+      - name: Echo my_env
+        run: echo ${{ needs.set_environment.outputs.my_env }}
       - uses: actions/checkout@v3
         with:
           lfs: true
