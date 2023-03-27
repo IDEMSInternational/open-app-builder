@@ -22,9 +22,6 @@ $text-color: var(--radio-button-font-color, var(--ion-color-primary));
 }
 .item[data-selected="true"] {
   background: $background-selected;
-  .item-text {
-    font-weight: bold;
-  }
 }
 .item-text {
   font-size: $text-size;
