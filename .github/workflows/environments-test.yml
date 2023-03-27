@@ -1,0 +1,20 @@
+# Testing the functionality of environment secrets in github
+name: Environments Test
+on:
+  push:
+    branches:
+      - ci/enable-appetize-for-deployment-branches
+jobs:
+  environment-test:
+    runs-on: ubuntu-latest
+    environment: wash
+    steps:
+      # - uses: actions/checkout@v3
+      #   with:
+      #     lfs: true
+      - name: Echo secret
+        env:
+            EXAMPLE_SECRET: ${{ secrets.EXAMPLE_SECRET }}
+        run: |
+          echo $EXAMPLE_SECRET
+
