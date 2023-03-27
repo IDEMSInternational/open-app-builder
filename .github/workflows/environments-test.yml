@@ -7,19 +7,20 @@ on:
 jobs:
   set_environment:
     outputs:
-      my_env: ${{ steps.setenv.outputs.my_env }}
+      my_env: ${{ steps.setenv.outputs.MY_ENV }}
     runs-on: ubuntu-latest
     steps:
     - id: setenv
-      run: echo "my_env=wash" >> $GITHUB_OUTPUT
+      run: echo "MY_ENV=wash" >> $GITHUB_OUTPUT
 
   environment_test:
+    needs: set_environment
     runs-on: ubuntu-latest
     environment: 
-      name: ${{ needs.set_environment.outputs.my_env }}
+      name: ${{ needs.set_environment.outputs.MY_ENV }}
     steps:
-      - name: Echo my_env
-        run: echo ${{ needs.set_environment.outputs.my_env }}
+      - name: Echo MY_ENV
+        run: echo ${{ needs.set_environment.outputs.MY_ENV }}
       - uses: actions/checkout@v3
         with:
           lfs: true
