@@ -7,11 +7,13 @@ on:
 jobs:
   environment-test:
     runs-on: ubuntu-latest
-    environment: wash
+    environment: ${{ needs.steps.set_environment.outputs.my_env }}
     steps:
-      # - uses: actions/checkout@v3
-      #   with:
-      #     lfs: true
+      - uses: actions/checkout@v3
+        with:
+          lfs: true
+      - id: set_environment
+        run: echo "::set-output name=my_env::wash"
       - name: Echo secret
         env:
             EXAMPLE_SECRET: ${{ secrets.EXAMPLE_SECRET }}
