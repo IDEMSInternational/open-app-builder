@@ -26,6 +26,5 @@ jobs:
       - name: Echo secret
         env:
             EXAMPLE_SECRET: ${{ secrets.EXAMPLE_SECRET }}
-        run: |
-          echo $EXAMPLE_SECRET
+        run: echo $EXAMPLE_SECRET
 
