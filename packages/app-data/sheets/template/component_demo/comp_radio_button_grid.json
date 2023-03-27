@@ -7,7 +7,7 @@
     {
       "type": "title",
       "name": "title_1",
-      "value": "Radio Group Grid",
+      "value": "Radio Button Grid",
       "_translations": {
         "value": {}
       },
