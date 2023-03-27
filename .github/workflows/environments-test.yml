@@ -7,6 +7,8 @@ on:
 jobs:
   environment-test:
     runs-on: ubuntu-latest
+    environment: 
+      name: ${{ needs.steps.set_environment.outputs.my_env }}
     steps:
       - uses: actions/checkout@v3
         with:
@@ -14,8 +16,6 @@ jobs:
       - id: set_environment
         run: echo "{my_env}={wash}" >> $GITHUB_OUTPUT
       - name: Echo secret
-        environment: 
-          name: ${{ steps.set_environment.outputs.my_env }}
         env:
             EXAMPLE_SECRET: ${{ secrets.EXAMPLE_SECRET }}
         run: |
