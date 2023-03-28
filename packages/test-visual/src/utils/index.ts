@@ -81,6 +81,7 @@ export async function downloadToFile(url: string, outputFilePath: string) {
   return new Promise<void>((resolve, reject) => {
     writer.on("finish", () => {
       logUpdate(`downloaded ${outputFilePath}`);
+      logUpdate.done();
       resolve();
     });
     writer.on("error", reject);
