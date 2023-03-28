@@ -89,4 +89,4 @@ jobs:
         with:
           message: |
             **Android Appetize URL**
-            ${{ steps.upload.outputs.APPETIZE_APP_URL }}?device=nexus5&osVersion=10.0&scale=75
+            ${{ steps.upload.outputs.APPETIZE_APP_URL }}?device=pixel4&osVersion=12.0&scale=75
