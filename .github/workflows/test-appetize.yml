@@ -34,8 +34,6 @@ jobs:
     env:
       DEPLOYMENT_NAME: ${{ needs.set_deployment_name.outputs.DEPLOYMENT_NAME }}
     steps:
-      - name: Log Deployment/Environment Name
-        run: echo $DEPLOYMENT_NAME
       - uses: actions/checkout@v3
         with:
           lfs: true
