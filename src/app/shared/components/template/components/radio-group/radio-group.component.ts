@@ -39,12 +39,15 @@ export class TmplRadioGroupComponent
   @ViewChild("labelImage", { static: false, read: true }) labelImage: ElementRef;
   arrayOfBtn: Array<IButton>;
   groupName: string;
-  radioButtonType: string | null;
-  options_per_row: number = 2;
   windowWidth: number;
-  style: string;
   private componentDestroyed$ = new ReplaySubject(1);
   flexWidth: string;
+
+  // Parameters
+  answer_list: string[];
+  options_per_row: number;
+  radioButtonType: string | null;
+  style: string;
 
   ngOnInit() {
     this.getParams();
@@ -59,8 +62,8 @@ export class TmplRadioGroupComponent
     this.windowWidth = window.innerWidth;
 
     // convert string answer lists to formatted objects
-    const answer_list: string[] = getParamFromTemplateRow(this._row, "answer_list", []);
-    this.createArrayBtnElement(answer_list);
+    this.answer_list = getParamFromTemplateRow(this._row, "answer_list", []);
+    this.arrayOfBtn = this.createArrayBtnElement(this.answer_list);
 
     this.getFlexWidth();
     this.groupName = this._row._nested_name;
@@ -86,7 +89,7 @@ export class TmplRadioGroupComponent
       if (typeof answer_list === "object") {
         answer_list = objectToArray(answer_list);
       }
-      this.arrayOfBtn = answer_list.map((item) => {
+      const arrayOfBtn = answer_list.map((item) => {
         // convert string to relevant mappings
         let itemObj: IButton = {} as any;
         if (typeof item === "string") {
@@ -105,7 +108,9 @@ export class TmplRadioGroupComponent
         const processed = this.processButtonFields(itemObj);
         return processed;
       });
-      this.arrayOfBtn.forEach((item) => {
+      // TODO - CC 2023-03-15 could lead to strange behaviour, to review
+      // (checks every item but keeps overriding the button type depending on what it finds)
+      arrayOfBtn.forEach((item) => {
         if (item.image && item.text) {
           this.radioButtonType = "btn_both";
         } else if (!item.image && item.text) {
@@ -114,6 +119,7 @@ export class TmplRadioGroupComponent
           this.radioButtonType = "btn_image";
         }
       });
+      return arrayOfBtn;
     }
   }
   private processButtonFields(button: IButton) {
