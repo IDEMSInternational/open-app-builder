@@ -55,6 +55,20 @@ const mockDirContents = {
   },
 };
 
+/** Mock file system contents with only a single, global, version of an asset */
+const mockDirContentsGlobal = {
+  app_data: {},
+  local: {
+    assets: {
+      global: {
+        "test.jpg": mockFile,
+      },
+    },
+    sheets: {},
+    translations: {},
+  },
+};
+
 /** Mock function that will replace default `Logger` function to instead just record any invocations */
 const mockErrorLogger = jasmine.createSpy("mockErrorLogger", Logger.error);
 
@@ -90,17 +104,16 @@ describe("Assets PostProcess", () => {
     expect(appGlobalAssets).toEqual(["test.jpg"]);
   });
 
-  // it("Handles case of no asset variations", () => {
-  //   mockFs({ mock: mockDirContentsGlobal })
-  //   runAssetsPostProcessor();
-  //   const contents = fs.readJSONSync(path.resolve(mockDirs.appAssets, "contents.json"));
-  //   const { translations } = contents["test.jpg"];
-  //   expect(translations).toEqual({
-  //     tz_sw: { size_kb: 1024, md5Checksum: "b6d81b360a5672d80c27430f39153e2c" },
-  //     tz_na: { size_kb: 1024, md5Checksum: "b6d81b360a5672d80c27430f39153e2c" },
-  //   });
-  //   mockFs.restore();
-  // });
+  fit("Handles case of no asset variations (only global version provided)", () => {
+    mockFs({ mock: mockDirContentsGlobal });
+    runAssetsPostProcessor();
+    const contents = fs.readJSONSync(path.resolve(mockDirs.appAssets, "contents.json"));
+    const assetEntry = contents["test.jpg"];
+    expect(assetEntry.themeVariations.default).toEqual({
+      global: { size_kb: 1024, md5Checksum: "b6d81b360a5672d80c27430f39153e2c" },
+    });
+    mockFs.restore();
+  });
 
   it("populates contents json", () => {
     runAssetsPostProcessor();
