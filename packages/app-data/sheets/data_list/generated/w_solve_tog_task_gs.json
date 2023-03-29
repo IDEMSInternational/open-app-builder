@@ -28,13 +28,13 @@
       "together": true,
       "priority": 3,
       "has_single_task": true,
-      "title": "@data.workshop[@fields.current_workshop].relax_title",
+      "title": "@data.topic[@fields.current_topic].relax_title",
       "_translations": {
         "title": {}
       },
       "_translatedFields": {
         "title": {
-          "eng": "@data.workshop[@fields.current_workshop].relax_title"
+          "eng": "@data.topic[@fields.current_topic].relax_title"
         }
       },
       "template": "w_solve_relax",
@@ -66,13 +66,13 @@
       "together": true,
       "priority": 5,
       "has_single_task": true,
-      "title": "@data.workshop[@fields.current_workshop].intro_title",
+      "title": "@data.topic[@fields.current_topic].intro_title",
       "_translations": {
         "title": {}
       },
       "_translatedFields": {
         "title": {
-          "eng": "@data.workshop[@fields.current_workshop].intro_title"
+          "eng": "@data.topic[@fields.current_topic].intro_title"
         }
       },
       "template": "w_solve_intro",
@@ -85,13 +85,13 @@
       "together": true,
       "priority": 70,
       "has_single_task": true,
-      "title": "@data.workshop[@fields.current_workshop].tools",
+      "title": "@data.topic[@fields.current_topic].tools",
       "_translations": {
         "title": {}
       },
       "_translatedFields": {
         "title": {
-          "eng": "@data.workshop[@fields.current_workshop].tools"
+          "eng": "@data.topic[@fields.current_topic].tools"
         }
       },
       "template": "w_solve_tools_activity",

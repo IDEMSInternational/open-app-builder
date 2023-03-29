@@ -1,6 +1,6 @@
 {
   "flow_type": "data_list",
-  "flow_name": "common_workshop_task_gs",
+  "flow_name": "common_topic_task_gs",
   "status": "released",
   "rows": [
     {
@@ -41,13 +41,13 @@
       "together": true,
       "priority": 3,
       "has_single_task": true,
-      "title": "@data.workshop[@fields.current_workshop].relax_title",
+      "title": "@data.topic[@fields.current_topic].relax_title",
       "_translations": {
         "title": {}
       },
       "_translatedFields": {
         "title": {
-          "eng": "@data.workshop[@fields.current_workshop].relax_title"
+          "eng": "@data.topic[@fields.current_topic].relax_title"
         }
       }
     },
@@ -73,13 +73,13 @@
       "together": true,
       "priority": 5,
       "has_single_task": true,
-      "title": "@data.workshop[@fields.current_workshop].intro_title",
+      "title": "@data.topic[@fields.current_topic].intro_title",
       "_translations": {
         "title": {}
       },
       "_translatedFields": {
         "title": {
-          "eng": "@data.workshop[@fields.current_workshop].intro_title"
+          "eng": "@data.topic[@fields.current_topic].intro_title"
         }
       }
     },
@@ -89,13 +89,13 @@
       "together": true,
       "priority": 70,
       "has_single_task": true,
-      "title": "@data.workshop[@fields.current_workshop].tools",
+      "title": "@data.topic[@fields.current_topic].tools",
       "_translations": {
         "title": {}
       },
       "_translatedFields": {
         "title": {
-          "eng": "@data.workshop[@fields.current_workshop].tools"
+          "eng": "@data.topic[@fields.current_topic].tools"
         }
       }
     },
@@ -148,5 +148,5 @@
       }
     }
   ],
-  "_xlsxPath": "global/data/module_data/workshop_task_groups.xlsx"
+  "_xlsxPath": "global/data/topic_data/topic_task_groups.xlsx"
 }

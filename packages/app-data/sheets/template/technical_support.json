@@ -33,7 +33,7 @@
     {
       "type": "text",
       "name": "text",
-      "value": "Are you experiencing any technical issues? Let us know and help to make @global.parent_app better!",
+      "value": "Are you experiencing any technical issues? Let us know and help to make @global.app_name better!",
       "_translations": {
         "value": {}
       },
@@ -41,15 +41,15 @@
       "_dynamicFields": {
         "value": [
           {
-            "fullExpression": "Are you experiencing any technical issues? Let us know and help to make @global.parent_app better!",
-            "matchedExpression": "@global.parent_app",
+            "fullExpression": "Are you experiencing any technical issues? Let us know and help to make @global.app_name better!",
+            "matchedExpression": "@global.app_name",
             "type": "global",
-            "fieldName": "parent_app"
+            "fieldName": "app_name"
           }
         ]
       },
       "_dynamicDependencies": {
-        "@global.parent_app": [
+        "@global.app_name": [
           "value"
         ]
       }

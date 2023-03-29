@@ -6,7 +6,7 @@
   "rows": [
     {
       "id": "w_praise",
-      "activity_image": "plh_images/workshop_modes/individual/wave.svg",
+      "activity_image": "plh_images/topic_modes/individual/wave.svg",
       "text": "You matter! Take a moment to check in with yourself.",
       "_translations": {
         "text": {},
@@ -50,5 +50,5 @@
       "question_text": "How are you feeling today?"
     }
   ],
-  "_xlsxPath": "global/data/module_data/module_data.xlsx"
+  "_xlsxPath": "global/data/topic_data/topic_data.xlsx"
 }

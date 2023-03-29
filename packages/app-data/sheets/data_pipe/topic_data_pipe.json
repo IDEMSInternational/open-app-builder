@@ -1,6 +1,6 @@
 {
   "flow_type": "data_pipe",
-  "flow_name": "module_data_pipe",
+  "flow_name": "topic_data_pipe",
   "status": "released",
   "rows": [
     {
@@ -10,9 +10,9 @@
         "completed: @fields.@row.completed_field",
         "skipped_field: task_{@row.id}_skipped"
       ],
-      "input_source": "module_data",
-      "output_target": "module_tasks"
+      "input_source": "topic_data",
+      "output_target": "topic_tasks"
     }
   ],
-  "_xlsxPath": "global/data/module_data/module_data_pipes.xlsx"
+  "_xlsxPath": "global/data/topic_data/topic_data_pipes.xlsx"
 }

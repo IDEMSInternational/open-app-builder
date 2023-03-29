@@ -22,14 +22,14 @@
       "_nested_name": "custom_actions_1"
     },
     {
-      "name": "highlighted_module",
+      "name": "highlighted_topic",
       "value": "@fields._task_highlighted_group_id",
       "_translations": {
         "value": {}
       },
       "exclude_from_translation": true,
       "type": "set_variable",
-      "_nested_name": "highlighted_module",
+      "_nested_name": "highlighted_topic",
       "_dynamicFields": {
         "value": [
           {
@@ -48,38 +48,38 @@
     },
     {
       "type": "display_group",
-      "name": "dg_highlighted_module",
+      "name": "dg_highlighted_topic",
       "parameter_list": {
         "style": "column"
       },
       "rows": [
         {
           "type": "template",
-          "name": "highlighted_module_card",
-          "value": "module_card",
+          "name": "highlighted_topic_card",
+          "value": "topic_card",
           "exclude_from_translation": true,
           "rows": [
             {
-              "name": "workshop_id",
-              "value": "@local.highlighted_module",
+              "name": "topic_id",
+              "value": "@local.highlighted_topic",
               "_translations": {
                 "value": {}
               },
               "exclude_from_translation": true,
               "type": "set_variable",
-              "_nested_name": "dg_highlighted_module.highlighted_module_card.workshop_id",
+              "_nested_name": "dg_highlighted_topic.highlighted_topic_card.topic_id",
               "_dynamicFields": {
                 "value": [
                   {
-                    "fullExpression": "@local.highlighted_module",
-                    "matchedExpression": "@local.highlighted_module",
+                    "fullExpression": "@local.highlighted_topic",
+                    "matchedExpression": "@local.highlighted_topic",
                     "type": "local",
-                    "fieldName": "highlighted_module"
+                    "fieldName": "highlighted_topic"
                   }
                 ]
               },
               "_dynamicDependencies": {
-                "@local.highlighted_module": [
+                "@local.highlighted_topic": [
                   "value"
                 ]
               }
@@ -92,17 +92,17 @@
               },
               "exclude_from_translation": true,
               "type": "set_variable",
-              "_nested_name": "dg_highlighted_module.highlighted_module_card.card_style"
+              "_nested_name": "dg_highlighted_topic.highlighted_topic_card.card_style"
             }
           ],
-          "_nested_name": "dg_highlighted_module.highlighted_module_card"
+          "_nested_name": "dg_highlighted_topic.highlighted_topic_card"
         }
       ],
-      "_nested_name": "dg_highlighted_module"
+      "_nested_name": "dg_highlighted_topic"
     },
     {
       "type": "display_group",
-      "name": "dg_all_modules",
+      "name": "dg_all_topics",
       "parameter_list": {
         "style": "column"
       },
@@ -110,23 +110,23 @@
         {
           "type": "title",
           "name": "title",
-          "value": "All @global.modules_capital",
+          "value": "All @global.topics_capital",
           "_translations": {
             "value": {}
           },
-          "_nested_name": "dg_all_modules.title",
+          "_nested_name": "dg_all_topics.title",
           "_dynamicFields": {
             "value": [
               {
-                "fullExpression": "All @global.modules_capital",
-                "matchedExpression": "@global.modules_capital",
+                "fullExpression": "All @global.topics_capital",
+                "matchedExpression": "@global.topics_capital",
                 "type": "global",
-                "fieldName": "modules_capital"
+                "fieldName": "topics_capital"
               }
             ]
           },
           "_dynamicDependencies": {
-            "@global.modules_capital": [
+            "@global.topics_capital": [
               "value"
             ]
           }
@@ -136,13 +136,13 @@
           "name": "carousel",
           "parameter_list": {
             "space_between": "8",
-            "task_group_data": "module_tasks"
+            "task_group_data": "topic_tasks"
           },
           "exclude_from_translation": true,
           "rows": [
             {
               "type": "items",
-              "value": "@data.workshop_tasks",
+              "value": "@data.topic_tasks",
               "exclude_from_translation": true,
               "rows": [
                 {
@@ -152,14 +152,14 @@
                   "exclude_from_translation": true,
                   "rows": [
                     {
-                      "name": "workshop_id",
+                      "name": "topic_id",
                       "value": "@item.id",
                       "_translations": {
                         "value": {}
                       },
                       "exclude_from_translation": true,
                       "type": "set_variable",
-                      "_nested_name": "dg_all_modules.carousel.items.module_card_@item.id.workshop_id",
+                      "_nested_name": "dg_all_topics.carousel.items.module_card_@item.id.topic_id",
                       "_dynamicFields": {
                         "value": [
                           {
@@ -171,8 +171,8 @@
                         ],
                         "_nested_name": [
                           {
-                            "fullExpression": "dg_all_modules.carousel.items.module_card_@item.id.workshop_id",
-                            "matchedExpression": "@item.id.workshop_id",
+                            "fullExpression": "dg_all_topics.carousel.items.module_card_@item.id.topic_id",
+                            "matchedExpression": "@item.id.topic_id",
                             "type": "item",
                             "fieldName": "id"
                           }
@@ -182,13 +182,13 @@
                         "@item.id": [
                           "value"
                         ],
-                        "@item.id.workshop_id": [
+                        "@item.id.topic_id": [
                           "_nested_name"
                         ]
                       }
                     }
                   ],
-                  "_nested_name": "dg_all_modules.carousel.items.module_card_@item.id",
+                  "_nested_name": "dg_all_topics.carousel.items.module_card_@item.id",
                   "_dynamicFields": {
                     "name": [
                       {
@@ -200,7 +200,7 @@
                     ],
                     "_nested_name": [
                       {
-                        "fullExpression": "dg_all_modules.carousel.items.module_card_@item.id",
+                        "fullExpression": "dg_all_topics.carousel.items.module_card_@item.id",
                         "matchedExpression": "@item.id",
                         "type": "item",
                         "fieldName": "id"
@@ -216,28 +216,28 @@
                 }
               ],
               "name": "items",
-              "_nested_name": "dg_all_modules.carousel.items",
+              "_nested_name": "dg_all_topics.carousel.items",
               "_dynamicFields": {
                 "value": [
                   {
-                    "fullExpression": "@data.workshop_tasks",
-                    "matchedExpression": "@data.workshop_tasks",
+                    "fullExpression": "@data.topic_tasks",
+                    "matchedExpression": "@data.topic_tasks",
                     "type": "data",
-                    "fieldName": "workshop_tasks"
+                    "fieldName": "topic_tasks"
                   }
                 ]
               },
               "_dynamicDependencies": {
-                "@data.workshop_tasks": [
+                "@data.topic_tasks": [
                   "value"
                 ]
               }
             }
           ],
-          "_nested_name": "dg_all_modules.carousel"
+          "_nested_name": "dg_all_topics.carousel"
         }
       ],
-      "_nested_name": "dg_all_modules"
+      "_nested_name": "dg_all_topics"
     },
     {
       "type": "display_group",

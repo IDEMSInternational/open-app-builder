@@ -1,6 +1,6 @@
 {
   "flow_type": "global",
-  "flow_name": "workshop_modes",
+  "flow_name": "topic_modes",
   "status": "released",
   "rows": [
     {
@@ -53,5 +53,5 @@
       "exclude_from_translation": true
     }
   ],
-  "_xlsxPath": "global/data/module_data/workshop_globals.xlsx"
+  "_xlsxPath": "global/data/topic_data/topic_globals.xlsx"
 }

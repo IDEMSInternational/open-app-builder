@@ -1,6 +1,6 @@
 {
   "flow_type": "data_pipe",
-  "flow_name": "workshop_task_gs_append",
+  "flow_name": "topic_task_gs_append",
   "status": "released",
   "rows": [
     {
@@ -304,5 +304,5 @@
       "output_target": "w_celebrate_tog_task_gs"
     }
   ],
-  "_xlsxPath": "global/data/module_data/workshop_task_groups_data_pipes.xlsx"
+  "_xlsxPath": "global/data/topic_data/topic_task_groups_data_pipes.xlsx"
 }

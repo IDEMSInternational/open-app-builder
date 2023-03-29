@@ -6,7 +6,7 @@
     {
       "type": "declare_global_constant",
       "name": "app_name",
-      "value": "Module Scaffolding App",
+      "value": "Scaffolding App",
       "_translations": {
         "value": {}
       }
@@ -14,39 +14,39 @@
     {
       "type": "declare_global_constant",
       "name": "app_id",
-      "value": "idems.international.module_scaffolding",
+      "value": "idems.international.scaffolding",
       "_translations": {
         "value": {}
       }
     },
     {
       "type": "declare_global_constant",
-      "name": "module",
-      "value": "module",
+      "name": "topic",
+      "value": "workshop",
       "_translations": {
         "value": {}
       }
     },
     {
       "type": "declare_global_constant",
-      "name": "modules",
-      "value": "modules",
+      "name": "topics",
+      "value": "workshops",
       "_translations": {
         "value": {}
       }
     },
     {
       "type": "declare_global_constant",
-      "name": "module_capital",
-      "value": "Module",
+      "name": "topic_capital",
+      "value": "Workshop",
       "_translations": {
         "value": {}
       }
     },
     {
       "type": "declare_global_constant",
-      "name": "modules_capital",
-      "value": "Modules",
+      "name": "topics_capital",
+      "value": "Workshops",
       "_translations": {
         "value": {}
       }

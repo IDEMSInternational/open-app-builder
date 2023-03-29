@@ -1,5 +1,5 @@
 {
-  "flow_name": "module_tasks",
+  "flow_name": "topic_tasks",
   "flow_subtype": "generated",
   "flow_type": "data_list",
   "rows": [
@@ -7,7 +7,7 @@
       "id": "praise",
       "number": 3,
       "relax_data": "@data.relax.relax_3",
-      "image_asset": "plh_images/workshops/praise/tools.svg",
+      "image_asset": "plh_images/topics/praise/tools.svg",
       "relax_title": "@data.relax.relax_3.title",
       "title": "Praise",
       "_translations": {
@@ -28,7 +28,7 @@
           "eng": "How to praise"
         },
         "in_text_title": {
-          "eng": "**Praise** @global.workshop"
+          "eng": "**Praise** @global.topic"
         },
         "intro_title": {
           "eng": "Why Praise?"
@@ -36,7 +36,7 @@
       },
       "description": "Praise helps teens show more positive behaviour.",
       "tools_title": "How to praise",
-      "in_text_title": "**Praise** @global.workshop",
+      "in_text_title": "**Praise** @global.topic",
       "intro_title": "Why Praise?",
       "completed_field": "task_praise_completed",
       "completed": "@fields.task_praise_completed",

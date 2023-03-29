@@ -24,7 +24,7 @@
       "flow_type": "data_list",
       "flow_name": "app_section_data",
       "data_list_name": "app_section",
-      "_xlsxPath": "global/data/navigation_data/app_section_data.xlsx"
+      "_xlsxPath": "global/data/navigation_data/navigation_data.xlsx"
     },
     "campaign_hs_w_1on1": {
       "flow_type": "data_list",
@@ -210,25 +210,25 @@
       "flow_type": "data_list",
       "flow_name": "check_in_data",
       "data_list_name": "check_in",
-      "_xlsxPath": "global/data/module_data/module_data.xlsx"
+      "_xlsxPath": "global/data/topic_data/topic_data.xlsx"
     },
-    "common_workshop_task_gs": {
+    "common_topic_task_gs": {
       "flow_type": "data_list",
-      "flow_name": "common_workshop_task_gs",
-      "_xlsxPath": "global/data/module_data/workshop_task_groups.xlsx"
+      "flow_name": "common_topic_task_gs",
+      "_xlsxPath": "global/data/topic_data/topic_task_groups.xlsx"
     },
     "common_workshop_tasks": {
       "flow_type": "data_list",
       "flow_name": "common_workshop_tasks",
-      "_xlsxPath": "global/data/module_data/workshop_tasks.xlsx"
+      "_xlsxPath": "global/data/topic_data/topic_tasks.xlsx"
     },
     "encouraging_messages": {
       "flow_type": "data_list",
       "flow_name": "encouraging_messages",
       "_xlsxPath": "global/campaigns/notifications_inactive.xlsx"
     },
-    "module_tasks": {
-      "flow_name": "module_tasks",
+    "topic_tasks": {
+      "flow_name": "topic_tasks",
       "flow_subtype": "generated",
       "flow_type": "data_list"
     },
@@ -462,11 +462,6 @@
       "flow_subtype": "generated",
       "flow_type": "data_list"
     },
-    "w_self_care_common_tasks": {
-      "flow_name": "w_self_care_common_tasks",
-      "flow_subtype": "generated",
-      "flow_type": "data_list"
-    },
     "w_self_care_ind_task_gs": {
       "flow_name": "w_self_care_ind_task_gs",
       "flow_subtype": "generated",
@@ -479,16 +474,6 @@
     },
     "w_self_care_task_gs_temp_1": {
       "flow_name": "w_self_care_task_gs_temp_1",
-      "flow_subtype": "generated",
-      "flow_type": "data_list"
-    },
-    "w_self_care_tasks": {
-      "flow_name": "w_self_care_tasks",
-      "flow_subtype": "generated",
-      "flow_type": "data_list"
-    },
-    "w_self_care_tasks_temp_1": {
-      "flow_name": "w_self_care_tasks_temp_1",
       "flow_subtype": "generated",
       "flow_type": "data_list"
     },
@@ -557,13 +542,13 @@
       "flow_type": "data_list",
       "flow_name": "hp_challenges_data",
       "data_list_name": "hp_challenges",
-      "_xlsxPath": "global/data/module_data/module_data.xlsx"
+      "_xlsxPath": "global/data/topic_data/topic_data.xlsx"
     },
     "hp_check_in_data": {
       "flow_type": "data_list",
       "flow_name": "hp_check_in_data",
       "data_list_name": "hp_check_in",
-      "_xlsxPath": "global/data/module_data/module_data.xlsx"
+      "_xlsxPath": "global/data/topic_data/topic_data.xlsx"
     },
     "library_data": {
       "flow_type": "data_list",
@@ -577,17 +562,11 @@
       "flow_name": "launch_actions",
       "_xlsxPath": "global/templates/core_templates/app_launch.xlsx"
     },
-    "module_data": {
-      "flow_type": "data_list",
-      "flow_name": "module_data",
-      "data_list_name": "module",
-      "_xlsxPath": "global/data/module_data/module_data.xlsx"
-    },
     "number_data": {
       "flow_type": "data_list",
       "flow_name": "number_data",
       "data_list_name": "number",
-      "_xlsxPath": "global/data/module_data/module_data.xlsx"
+      "_xlsxPath": "global/data/navigation_data/navigation_data.xlsx"
     },
     "partners_data": {
       "flow_type": "data_list",
@@ -617,7 +596,7 @@
       "flow_type": "data_list",
       "flow_name": "story_data",
       "data_list_name": "story",
-      "_xlsxPath": "global/data/module_data/module_data.xlsx"
+      "_xlsxPath": "global/data/topic_data/topic_data.xlsx"
     },
     "survey_question": {
       "flow_type": "data_list",
@@ -631,70 +610,76 @@
       "data_list_name": "survey_question_group",
       "_xlsxPath": "global/data/survey_data/survey_data_list.xlsx"
     },
+    "topic_data": {
+      "flow_type": "data_list",
+      "flow_name": "topic_data",
+      "data_list_name": "topic",
+      "_xlsxPath": "global/data/topic_data/topic_data.xlsx"
+    },
     "w_1on1_specific_task_gs": {
       "flow_type": "data_list",
       "flow_name": "w_1on1_specific_task_gs",
-      "_xlsxPath": "global/data/module_data/workshop_task_groups.xlsx"
+      "_xlsxPath": "global/data/topic_data/topic_task_groups.xlsx"
     },
     "w_celebrate_specific_task_gs": {
       "flow_type": "data_list",
       "flow_name": "w_celebrate_specific_task_gs",
-      "_xlsxPath": "global/data/module_data/workshop_task_groups.xlsx"
+      "_xlsxPath": "global/data/topic_data/topic_task_groups.xlsx"
     },
     "w_consequence_specific_task_gs": {
       "flow_type": "data_list",
       "flow_name": "w_consequence_specific_task_gs",
-      "_xlsxPath": "global/data/module_data/workshop_task_groups.xlsx"
+      "_xlsxPath": "global/data/topic_data/topic_task_groups.xlsx"
     },
     "w_crisis_specific_task_gs": {
       "flow_type": "data_list",
       "flow_name": "w_crisis_specific_task_gs",
-      "_xlsxPath": "global/data/module_data/workshop_task_groups.xlsx"
+      "_xlsxPath": "global/data/topic_data/topic_task_groups.xlsx"
     },
     "w_instruct_specific_task_gs": {
       "flow_type": "data_list",
       "flow_name": "w_instruct_specific_task_gs",
-      "_xlsxPath": "global/data/module_data/workshop_task_groups.xlsx"
+      "_xlsxPath": "global/data/topic_data/topic_task_groups.xlsx"
     },
     "w_money_specific_task_gs": {
       "flow_type": "data_list",
       "flow_name": "w_money_specific_task_gs",
-      "_xlsxPath": "global/data/module_data/workshop_task_groups.xlsx"
+      "_xlsxPath": "global/data/topic_data/topic_task_groups.xlsx"
     },
     "w_praise_specific_task_gs": {
       "flow_type": "data_list",
       "flow_name": "w_praise_specific_task_gs",
-      "_xlsxPath": "global/data/module_data/workshop_task_groups.xlsx"
+      "_xlsxPath": "global/data/topic_data/topic_task_groups.xlsx"
     },
     "w_rules_specific_task_gs": {
       "flow_type": "data_list",
       "flow_name": "w_rules_specific_task_gs",
-      "_xlsxPath": "global/data/module_data/workshop_task_groups.xlsx"
+      "_xlsxPath": "global/data/topic_data/topic_task_groups.xlsx"
     },
     "w_safe_specific_task_gs": {
       "flow_type": "data_list",
       "flow_name": "w_safe_specific_task_gs",
-      "_xlsxPath": "global/data/module_data/workshop_task_groups.xlsx"
+      "_xlsxPath": "global/data/topic_data/topic_task_groups.xlsx"
     },
     "w_self_care_specific_task_gs": {
       "flow_type": "data_list",
       "flow_name": "w_self_care_specific_task_gs",
-      "_xlsxPath": "global/data/module_data/workshop_task_groups.xlsx"
+      "_xlsxPath": "global/data/topic_data/topic_task_groups.xlsx"
     },
     "w_self_care_specific_tasks": {
       "flow_type": "data_list",
       "flow_name": "w_self_care_specific_tasks",
-      "_xlsxPath": "global/data/module_data/workshop_tasks.xlsx"
+      "_xlsxPath": "global/data/topic_data/topic_tasks.xlsx"
     },
     "w_solve_specific_task_gs": {
       "flow_type": "data_list",
       "flow_name": "w_solve_specific_task_gs",
-      "_xlsxPath": "global/data/module_data/workshop_task_groups.xlsx"
+      "_xlsxPath": "global/data/topic_data/topic_task_groups.xlsx"
     },
     "w_stress_specific_task_gs": {
       "flow_type": "data_list",
       "flow_name": "w_stress_specific_task_gs",
-      "_xlsxPath": "global/data/module_data/workshop_task_groups.xlsx"
+      "_xlsxPath": "global/data/topic_data/topic_task_groups.xlsx"
     }
   },
   "global": {
@@ -711,11 +696,6 @@
     "button_texts": {
       "flow_type": "global",
       "flow_name": "button_texts",
-      "_xlsxPath": "global/data/navigation_data/navigation_globals.xlsx"
-    },
-    "click_count_defaults": {
-      "flow_type": "global",
-      "flow_name": "click_count_defaults",
       "_xlsxPath": "global/data/navigation_data/navigation_globals.xlsx"
     },
     "data_warnings": {
@@ -777,20 +757,15 @@
       "flow_name": "survey_completed",
       "_xlsxPath": "global/data/survey_data/survey_globals.xlsx"
     },
-    "workshop_completion_levels": {
+    "topic_modes": {
       "flow_type": "global",
-      "flow_name": "workshop_completion_levels",
-      "_xlsxPath": "global/data/module_data/workshop_globals.xlsx"
+      "flow_name": "topic_modes",
+      "_xlsxPath": "global/data/topic_data/topic_globals.xlsx"
     },
-    "workshop_modes": {
+    "topic_options": {
       "flow_type": "global",
-      "flow_name": "workshop_modes",
-      "_xlsxPath": "global/data/module_data/workshop_globals.xlsx"
-    },
-    "workshop_options": {
-      "flow_type": "global",
-      "flow_name": "workshop_options",
-      "_xlsxPath": "global/data/module_data/workshop_globals.xlsx"
+      "flow_name": "topic_options",
+      "_xlsxPath": "global/data/topic_data/topic_globals.xlsx"
     }
   },
   "template": {
@@ -3701,11 +3676,6 @@
       "flow_name": "workshop_stepper_actions",
       "_xlsxPath": "global/templates/core_templates/modules.xlsx"
     },
-    "workshop_task_groups_test": {
-      "flow_type": "template",
-      "flow_name": "workshop_task_groups_test",
-      "_xlsxPath": "global/data/module_data/workshop_tasks_testing_templates.xlsx"
-    },
     "workshop_unlock": {
       "flow_type": "template",
       "flow_name": "workshop_unlock",
@@ -3735,40 +3705,25 @@
     }
   },
   "data_pipe": {
-    "common_workshop_task_gs_filter": {
+    "common_topic_task_gs_filter": {
       "flow_type": "data_pipe",
-      "flow_name": "common_workshop_task_gs_filter",
-      "_xlsxPath": "global/data/module_data/workshop_task_groups_data_pipes.xlsx"
+      "flow_name": "common_topic_task_gs_filter",
+      "_xlsxPath": "global/data/topic_data/topic_task_groups_data_pipes.xlsx"
     },
-    "common_workshop_tasks_filter": {
+    "topic_data_pipe": {
       "flow_type": "data_pipe",
-      "flow_name": "common_workshop_tasks_filter",
-      "_xlsxPath": "global/data/module_data/workshop_tasks_data_pipes.xlsx"
+      "flow_name": "topic_data_pipe",
+      "_xlsxPath": "global/data/topic_data/topic_data_pipes.xlsx"
     },
-    "module_data_pipe": {
+    "topic_task_gs_append": {
       "flow_type": "data_pipe",
-      "flow_name": "module_data_pipe",
-      "_xlsxPath": "global/data/module_data/module_data_pipes.xlsx"
+      "flow_name": "topic_task_gs_append",
+      "_xlsxPath": "global/data/topic_data/topic_task_groups_data_pipes.xlsx"
     },
-    "workshop_task_gs_append": {
+    "topic_task_gs_concat": {
       "flow_type": "data_pipe",
-      "flow_name": "workshop_task_gs_append",
-      "_xlsxPath": "global/data/module_data/workshop_task_groups_data_pipes.xlsx"
-    },
-    "workshop_task_gs_concat": {
-      "flow_type": "data_pipe",
-      "flow_name": "workshop_task_gs_concat",
-      "_xlsxPath": "global/data/module_data/workshop_task_groups_data_pipes.xlsx"
-    },
-    "workshop_tasks_append": {
-      "flow_type": "data_pipe",
-      "flow_name": "workshop_tasks_append",
-      "_xlsxPath": "global/data/module_data/workshop_tasks_data_pipes.xlsx"
-    },
-    "workshop_tasks_concat": {
-      "flow_type": "data_pipe",
-      "flow_name": "workshop_tasks_concat",
-      "_xlsxPath": "global/data/module_data/workshop_tasks_data_pipes.xlsx"
+      "flow_name": "topic_task_gs_concat",
+      "_xlsxPath": "global/data/topic_data/topic_task_groups_data_pipes.xlsx"
     }
   }
 }

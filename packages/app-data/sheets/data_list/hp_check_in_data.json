@@ -7,8 +7,8 @@
     {
       "id": "w_praise",
       "habit_id": "praise_teen",
-      "activity_image_ind": "plh_images/workshop_modes/individual/with_teen.svg",
-      "activity_image_tog": "plh_images/workshop_modes/group/with_teen.svg",
+      "activity_image_ind": "plh_images/topic_modes/individual/with_teen.svg",
+      "activity_image_tog": "plh_images/topic_modes/group/with_teen.svg",
       "button_no_go_to_template": "w_praise_home_practice",
       "has_highlights": false,
       "has_challenges": true,
@@ -74,5 +74,5 @@
       "question_how": "How did it go?"
     }
   ],
-  "_xlsxPath": "global/data/module_data/module_data.xlsx"
+  "_xlsxPath": "global/data/topic_data/topic_data.xlsx"
 }

@@ -21,26 +21,26 @@
       "_nested_name": "custom_actions_1"
     },
     {
-      "name": "workshop_id",
-      "value": "@fields.current_workshop",
+      "name": "topic_id",
+      "value": "@fields.current_topic",
       "_translations": {
         "value": {}
       },
       "exclude_from_translation": true,
       "type": "set_variable",
-      "_nested_name": "workshop_id",
+      "_nested_name": "topic_id",
       "_dynamicFields": {
         "value": [
           {
-            "fullExpression": "@fields.current_workshop",
-            "matchedExpression": "@fields.current_workshop",
+            "fullExpression": "@fields.current_topic",
+            "matchedExpression": "@fields.current_topic",
             "type": "fields",
-            "fieldName": "current_workshop"
+            "fieldName": "current_topic"
           }
         ]
       },
       "_dynamicDependencies": {
-        "@fields.current_workshop": [
+        "@fields.current_topic": [
           "value"
         ]
       }
@@ -57,7 +57,7 @@
     },
     {
       "name": "task_group_data",
-      "value": "@local.workshop_id@local.task_groups",
+      "value": "@local.topic_id@local.task_groups",
       "_translations": {
         "value": {}
       },
@@ -67,13 +67,13 @@
       "_dynamicFields": {
         "value": [
           {
-            "fullExpression": "@local.workshop_id@local.task_groups",
-            "matchedExpression": "@local.workshop_id",
+            "fullExpression": "@local.topic_id@local.task_groups",
+            "matchedExpression": "@local.topic_id",
             "type": "local",
-            "fieldName": "workshop_id"
+            "fieldName": "topic_id"
           },
           {
-            "fullExpression": "@local.workshop_id@local.task_groups",
+            "fullExpression": "@local.topic_id@local.task_groups",
             "matchedExpression": "@local.task_groups",
             "type": "local",
             "fieldName": "task_groups"
@@ -81,7 +81,7 @@
         ]
       },
       "_dynamicDependencies": {
-        "@local.workshop_id": [
+        "@local.topic_id": [
           "value"
         ],
         "@local.task_groups": [
@@ -101,7 +101,7 @@
     },
     {
       "name": "completed_field",
-      "value": "task_@local.workshop_id@local.completed",
+      "value": "task_@local.topic_id@local.completed",
       "_translations": {
         "value": {}
       },
@@ -111,13 +111,13 @@
       "_dynamicFields": {
         "value": [
           {
-            "fullExpression": "task_@local.workshop_id@local.completed",
-            "matchedExpression": "@local.workshop_id",
+            "fullExpression": "task_@local.topic_id@local.completed",
+            "matchedExpression": "@local.topic_id",
             "type": "local",
-            "fieldName": "workshop_id"
+            "fieldName": "topic_id"
           },
           {
-            "fullExpression": "task_@local.workshop_id@local.completed",
+            "fullExpression": "task_@local.topic_id@local.completed",
             "matchedExpression": "@local.completed",
             "type": "local",
             "fieldName": "completed"
@@ -125,7 +125,7 @@
         ]
       },
       "_dynamicDependencies": {
-        "@local.workshop_id": [
+        "@local.topic_id": [
           "value"
         ],
         "@local.completed": [
@@ -135,7 +135,7 @@
     },
     {
       "name": "ww_id",
-      "value": "workshop.@local.workshop_id",
+      "value": "topic.@local.topic_id",
       "_translations": {
         "value": {}
       },
@@ -145,28 +145,28 @@
       "_dynamicFields": {
         "value": [
           {
-            "fullExpression": "workshop.@local.workshop_id",
-            "matchedExpression": "@local.workshop_id",
+            "fullExpression": "topic.@local.topic_id",
+            "matchedExpression": "@local.topic_id",
             "type": "local",
-            "fieldName": "workshop_id"
+            "fieldName": "topic_id"
           }
         ]
       },
       "_dynamicDependencies": {
-        "@local.workshop_id": [
+        "@local.topic_id": [
           "value"
         ]
       }
     },
     {
-      "name": "workshop_data",
+      "name": "topic_data",
       "value": "@data.@local.ww_id",
       "_translations": {
         "value": {}
       },
       "exclude_from_translation": true,
       "type": "set_variable",
-      "_nested_name": "workshop_data",
+      "_nested_name": "topic_data",
       "_dynamicFields": {
         "value": [
           {
@@ -185,7 +185,7 @@
     },
     {
       "name": "card_title",
-      "value": "@local.workshop_data.title",
+      "value": "@local.topic_data.title",
       "_translations": {
         "value": {}
       },
@@ -195,49 +195,49 @@
       "_dynamicFields": {
         "value": [
           {
-            "fullExpression": "@local.workshop_data.title",
-            "matchedExpression": "@local.workshop_data.title",
+            "fullExpression": "@local.topic_data.title",
+            "matchedExpression": "@local.topic_data.title",
             "type": "local",
-            "fieldName": "workshop_data"
+            "fieldName": "topic_data"
           }
         ]
       },
       "_dynamicDependencies": {
-        "@local.workshop_data.title": [
+        "@local.topic_data.title": [
           "value"
         ]
       }
     },
     {
       "name": "card_title",
-      "value": "@local.workshop_data.short_title",
+      "value": "@local.topic_data.short_title",
       "_translations": {
         "value": {}
       },
-      "condition": "@local.workshop_data.short_title",
+      "condition": "@local.topic_data.short_title",
       "exclude_from_translation": true,
       "type": "set_variable",
       "_nested_name": "card_title",
       "_dynamicFields": {
         "value": [
           {
-            "fullExpression": "@local.workshop_data.short_title",
-            "matchedExpression": "@local.workshop_data.short_title",
+            "fullExpression": "@local.topic_data.short_title",
+            "matchedExpression": "@local.topic_data.short_title",
             "type": "local",
-            "fieldName": "workshop_data"
+            "fieldName": "topic_data"
           }
         ],
         "condition": [
           {
-            "fullExpression": "@local.workshop_data.short_title",
-            "matchedExpression": "@local.workshop_data.short_title",
+            "fullExpression": "@local.topic_data.short_title",
+            "matchedExpression": "@local.topic_data.short_title",
             "type": "local",
-            "fieldName": "workshop_data"
+            "fieldName": "topic_data"
           }
         ]
       },
       "_dynamicDependencies": {
-        "@local.workshop_data.short_title": [
+        "@local.topic_data.short_title": [
           "value",
           "condition"
         ]
@@ -245,7 +245,7 @@
     },
     {
       "name": "card_subtitle",
-      "value": "@local.workshop_data.description",
+      "value": "@local.topic_data.description",
       "_translations": {
         "value": {}
       },
@@ -255,22 +255,22 @@
       "_dynamicFields": {
         "value": [
           {
-            "fullExpression": "@local.workshop_data.description",
-            "matchedExpression": "@local.workshop_data.description",
+            "fullExpression": "@local.topic_data.description",
+            "matchedExpression": "@local.topic_data.description",
             "type": "local",
-            "fieldName": "workshop_data"
+            "fieldName": "topic_data"
           }
         ]
       },
       "_dynamicDependencies": {
-        "@local.workshop_data.description": [
+        "@local.topic_data.description": [
           "value"
         ]
       }
     },
     {
       "name": "card_image",
-      "value": "@local.workshop_data.image_asset",
+      "value": "@local.topic_data.image_asset",
       "_translations": {
         "value": {}
       },
@@ -280,15 +280,15 @@
       "_dynamicFields": {
         "value": [
           {
-            "fullExpression": "@local.workshop_data.image_asset",
-            "matchedExpression": "@local.workshop_data.image_asset",
+            "fullExpression": "@local.topic_data.image_asset",
+            "matchedExpression": "@local.topic_data.image_asset",
             "type": "local",
-            "fieldName": "workshop_data"
+            "fieldName": "topic_data"
           }
         ]
       },
       "_dynamicDependencies": {
-        "@local.workshop_data.image_asset": [
+        "@local.topic_data.image_asset": [
           "value"
         ]
       }
@@ -410,33 +410,33 @@
               "_nested_name": "dg_full_module.full_module.card_style"
             },
             {
-              "name": "workshop_id",
-              "value": "@local.workshop_id",
+              "name": "topic_id",
+              "value": "@local.topic_id",
               "_translations": {
                 "value": {}
               },
               "exclude_from_translation": true,
               "type": "set_variable",
-              "_nested_name": "dg_full_module.full_module.workshop_id",
+              "_nested_name": "dg_full_module.full_module.topic_id",
               "_dynamicFields": {
                 "value": [
                   {
-                    "fullExpression": "@local.workshop_id",
-                    "matchedExpression": "@local.workshop_id",
+                    "fullExpression": "@local.topic_id",
+                    "matchedExpression": "@local.topic_id",
                     "type": "local",
-                    "fieldName": "workshop_id"
+                    "fieldName": "topic_id"
                   }
                 ]
               },
               "_dynamicDependencies": {
-                "@local.workshop_id": [
+                "@local.topic_id": [
                   "value"
                 ]
               }
             },
             {
               "name": "card_title",
-              "value": "@global.workshop_capital",
+              "value": "@global.topic_capital",
               "_translations": {
                 "value": {}
               },
@@ -446,15 +446,15 @@
               "_dynamicFields": {
                 "value": [
                   {
-                    "fullExpression": "@global.workshop_capital",
-                    "matchedExpression": "@global.workshop_capital",
+                    "fullExpression": "@global.topic_capital",
+                    "matchedExpression": "@global.topic_capital",
                     "type": "global",
-                    "fieldName": "workshop_capital"
+                    "fieldName": "topic_capital"
                   }
                 ]
               },
               "_dynamicDependencies": {
-                "@global.workshop_capital": [
+                "@global.topic_capital": [
                   "value"
                 ]
               }
@@ -486,26 +486,26 @@
           "exclude_from_translation": true,
           "rows": [
             {
-              "name": "workshop_id",
-              "value": "@local.workshop_id",
+              "name": "topic_id",
+              "value": "@local.topic_id",
               "_translations": {
                 "value": {}
               },
               "exclude_from_translation": true,
               "type": "set_variable",
-              "_nested_name": "dg_card_tools.card_tools.workshop_id",
+              "_nested_name": "dg_card_tools.card_tools.topic_id",
               "_dynamicFields": {
                 "value": [
                   {
-                    "fullExpression": "@local.workshop_id",
-                    "matchedExpression": "@local.workshop_id",
+                    "fullExpression": "@local.topic_id",
+                    "matchedExpression": "@local.topic_id",
                     "type": "local",
-                    "fieldName": "workshop_id"
+                    "fieldName": "topic_id"
                   }
                 ]
               },
               "_dynamicDependencies": {
-                "@local.workshop_id": [
+                "@local.topic_id": [
                   "value"
                 ]
               }
@@ -537,7 +537,7 @@
     },
     {
       "name": "this_hp_completed",
-      "value": "task_gp_@local.workshop_id@local.hp_completed",
+      "value": "task_gp_@local.topic_id@local.hp_completed",
       "_translations": {
         "value": {}
       },
@@ -546,13 +546,13 @@
       "_dynamicFields": {
         "value": [
           {
-            "fullExpression": "task_gp_@local.workshop_id@local.hp_completed",
-            "matchedExpression": "@local.workshop_id",
+            "fullExpression": "task_gp_@local.topic_id@local.hp_completed",
+            "matchedExpression": "@local.topic_id",
             "type": "local",
-            "fieldName": "workshop_id"
+            "fieldName": "topic_id"
           },
           {
-            "fullExpression": "task_gp_@local.workshop_id@local.hp_completed",
+            "fullExpression": "task_gp_@local.topic_id@local.hp_completed",
             "matchedExpression": "@local.hp_completed",
             "type": "local",
             "fieldName": "hp_completed"
@@ -560,7 +560,7 @@
         ]
       },
       "_dynamicDependencies": {
-        "@local.workshop_id": [
+        "@local.topic_id": [
           "value"
         ],
         "@local.hp_completed": [
@@ -577,30 +577,30 @@
           "type": "template",
           "name": "card_hp",
           "value": "task_card",
-          "condition": "@local.workshop_id != \"w_celebrate\"",
+          "condition": "@local.topic_id != \"w_celebrate\"",
           "exclude_from_translation": true,
           "rows": [
             {
-              "name": "workshop_id",
-              "value": "@local.workshop_id",
+              "name": "topic_id",
+              "value": "@local.topic_id",
               "_translations": {
                 "value": {}
               },
               "exclude_from_translation": true,
               "type": "set_variable",
-              "_nested_name": "dg_card_hp.card_hp.workshop_id",
+              "_nested_name": "dg_card_hp.card_hp.topic_id",
               "_dynamicFields": {
                 "value": [
                   {
-                    "fullExpression": "@local.workshop_id",
-                    "matchedExpression": "@local.workshop_id",
+                    "fullExpression": "@local.topic_id",
+                    "matchedExpression": "@local.topic_id",
                     "type": "local",
-                    "fieldName": "workshop_id"
+                    "fieldName": "topic_id"
                   }
                 ]
               },
               "_dynamicDependencies": {
-                "@local.workshop_id": [
+                "@local.topic_id": [
                   "value"
                 ]
               }
@@ -620,15 +620,15 @@
           "_dynamicFields": {
             "condition": [
               {
-                "fullExpression": "@local.workshop_id != \"w_celebrate\"",
-                "matchedExpression": "@local.workshop_id",
+                "fullExpression": "@local.topic_id != \"w_celebrate\"",
+                "matchedExpression": "@local.topic_id",
                 "type": "local",
-                "fieldName": "workshop_id"
+                "fieldName": "topic_id"
               }
             ]
           },
           "_dynamicDependencies": {
-            "@local.workshop_id": [
+            "@local.topic_id": [
               "condition"
             ]
           }
@@ -659,30 +659,30 @@
           "type": "template",
           "name": "card_hp_review",
           "value": "task_card",
-          "condition": "@local.workshop_id != \"w_self_care\" && @local.workshop_id != \"w_celebrate\"",
+          "condition": "@local.topic_id != \"w_self_care\" && @local.topic_id != \"w_celebrate\"",
           "exclude_from_translation": true,
           "rows": [
             {
-              "name": "workshop_id",
-              "value": "@local.workshop_id",
+              "name": "topic_id",
+              "value": "@local.topic_id",
               "_translations": {
                 "value": {}
               },
               "exclude_from_translation": true,
               "type": "set_variable",
-              "_nested_name": "display_group.card_hp_review.workshop_id",
+              "_nested_name": "display_group.card_hp_review.topic_id",
               "_dynamicFields": {
                 "value": [
                   {
-                    "fullExpression": "@local.workshop_id",
-                    "matchedExpression": "@local.workshop_id",
+                    "fullExpression": "@local.topic_id",
+                    "matchedExpression": "@local.topic_id",
                     "type": "local",
-                    "fieldName": "workshop_id"
+                    "fieldName": "topic_id"
                   }
                 ]
               },
               "_dynamicDependencies": {
-                "@local.workshop_id": [
+                "@local.topic_id": [
                   "value"
                 ]
               }
@@ -702,21 +702,21 @@
           "_dynamicFields": {
             "condition": [
               {
-                "fullExpression": "@local.workshop_id != \"w_self_care\" && @local.workshop_id != \"w_celebrate\"",
-                "matchedExpression": "@local.workshop_id",
+                "fullExpression": "@local.topic_id != \"w_self_care\" && @local.topic_id != \"w_celebrate\"",
+                "matchedExpression": "@local.topic_id",
                 "type": "local",
-                "fieldName": "workshop_id"
+                "fieldName": "topic_id"
               },
               {
-                "fullExpression": "@local.workshop_id != \"w_self_care\" && @local.workshop_id != \"w_celebrate\"",
-                "matchedExpression": "@local.workshop_id",
+                "fullExpression": "@local.topic_id != \"w_self_care\" && @local.topic_id != \"w_celebrate\"",
+                "matchedExpression": "@local.topic_id",
                 "type": "local",
-                "fieldName": "workshop_id"
+                "fieldName": "topic_id"
               }
             ]
           },
           "_dynamicDependencies": {
-            "@local.workshop_id": [
+            "@local.topic_id": [
               "condition",
               "condition"
             ]

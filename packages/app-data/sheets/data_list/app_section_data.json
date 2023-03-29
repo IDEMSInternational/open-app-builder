@@ -5,8 +5,8 @@
   "data_list_name": "app_section",
   "rows": [
     {
-      "id": "modules",
-      "title": "@global.modules_capital",
+      "id": "topics",
+      "title": "@global.topics_capital",
       "title_modular": "Home",
       "icon_asset": "images/icons/home_white.svg",
       "template": "weekly_workshops",
@@ -32,5 +32,5 @@
       "template_modular": "library"
     }
   ],
-  "_xlsxPath": "global/data/navigation_data/app_section_data.xlsx"
+  "_xlsxPath": "global/data/navigation_data/navigation_data.xlsx"
 }

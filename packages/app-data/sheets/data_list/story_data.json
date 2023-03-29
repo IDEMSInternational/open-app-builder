@@ -6,8 +6,8 @@
   "rows": [
     {
       "id": "praise",
-      "image_1": "plh_images/workshops/w_praise/read/slide_1.svg",
-      "image_2": "plh_images/workshops/w_praise/read/slide_2.svg",
+      "image_1": "plh_images/topics/w_praise/read/slide_1.svg",
+      "image_2": "plh_images/topics/w_praise/read/slide_2.svg",
       "title": "Notice the good",
       "_translations": {
         "title": {},
@@ -34,5 +34,5 @@
       "text_2": "@global.w_praise_female_caregiver_name: \"Thank you for doing your schoolwork, @global.w_praise_girl, and thank you for helping your sister,  @global.w_praise_teen_girl. I'm so proud of you!\""
     }
   ],
-  "_xlsxPath": "global/data/module_data/module_data.xlsx"
+  "_xlsxPath": "global/data/topic_data/topic_data.xlsx"
 }

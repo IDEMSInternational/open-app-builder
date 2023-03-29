@@ -1,11 +1,11 @@
 {
   "flow_type": "data_pipe",
-  "flow_name": "common_workshop_task_gs_filter",
+  "flow_name": "common_topic_task_gs_filter",
   "status": "released",
   "rows": [
     {
       "operation": "filter",
-      "input_source": "common_workshop_task_gs",
+      "input_source": "common_topic_task_gs",
       "args_list": [
         "id != \"relax\"",
         "id != \"reflect_together\"",
@@ -22,7 +22,7 @@
     },
     {
       "operation": "filter",
-      "input_source": "common_workshop_task_gs",
+      "input_source": "common_topic_task_gs",
       "args_list": [
         "id != \"reflect_together\""
       ]
@@ -36,7 +36,7 @@
     },
     {
       "operation": "filter",
-      "input_source": "common_workshop_task_gs"
+      "input_source": "common_topic_task_gs"
     },
     {
       "operation": "append_columns",
@@ -47,7 +47,7 @@
     },
     {
       "operation": "filter",
-      "input_source": "common_workshop_task_gs"
+      "input_source": "common_topic_task_gs"
     },
     {
       "operation": "append_columns",
@@ -58,7 +58,7 @@
     },
     {
       "operation": "filter",
-      "input_source": "common_workshop_task_gs"
+      "input_source": "common_topic_task_gs"
     },
     {
       "operation": "append_columns",
@@ -69,7 +69,7 @@
     },
     {
       "operation": "filter",
-      "input_source": "common_workshop_task_gs"
+      "input_source": "common_topic_task_gs"
     },
     {
       "operation": "append_columns",
@@ -80,7 +80,7 @@
     },
     {
       "operation": "filter",
-      "input_source": "common_workshop_task_gs"
+      "input_source": "common_topic_task_gs"
     },
     {
       "operation": "append_columns",
@@ -91,7 +91,7 @@
     },
     {
       "operation": "filter",
-      "input_source": "common_workshop_task_gs",
+      "input_source": "common_topic_task_gs",
       "args_list": [
         "id != \"welcome_individual\""
       ]
@@ -105,7 +105,7 @@
     },
     {
       "operation": "filter",
-      "input_source": "common_workshop_task_gs"
+      "input_source": "common_topic_task_gs"
     },
     {
       "operation": "append_columns",
@@ -116,7 +116,7 @@
     },
     {
       "operation": "filter",
-      "input_source": "common_workshop_task_gs"
+      "input_source": "common_topic_task_gs"
     },
     {
       "operation": "append_columns",
@@ -127,7 +127,7 @@
     },
     {
       "operation": "filter",
-      "input_source": "common_workshop_task_gs"
+      "input_source": "common_topic_task_gs"
     },
     {
       "operation": "append_columns",
@@ -138,7 +138,7 @@
     },
     {
       "operation": "filter",
-      "input_source": "common_workshop_task_gs",
+      "input_source": "common_topic_task_gs",
       "args_list": [
         "id != \"home_practice\"",
         "id != \"hp_review\""
@@ -152,5 +152,5 @@
       ]
     }
   ],
-  "_xlsxPath": "global/data/module_data/workshop_task_groups_data_pipes.xlsx"
+  "_xlsxPath": "global/data/topic_data/topic_task_groups_data_pipes.xlsx"
 }

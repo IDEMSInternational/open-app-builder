@@ -1,14 +1,14 @@
 {
   "flow_type": "data_list",
-  "flow_name": "module_data",
+  "flow_name": "topic_data",
   "status": "released",
-  "data_list_name": "module",
+  "data_list_name": "topic",
   "rows": [
     {
       "id": "praise",
       "number": 3,
       "relax_data": "@data.relax.relax_3",
-      "image_asset": "plh_images/workshops/praise/tools.svg",
+      "image_asset": "plh_images/topics/praise/tools.svg",
       "relax_title": "@data.relax.relax_3.title",
       "title": "Praise",
       "_translations": {
@@ -29,7 +29,7 @@
           "eng": "How to praise"
         },
         "in_text_title": {
-          "eng": "**Praise** @global.workshop"
+          "eng": "**Praise** @global.topic"
         },
         "intro_title": {
           "eng": "Why Praise?"
@@ -37,9 +37,9 @@
       },
       "description": "Praise helps teens show more positive behaviour.",
       "tools_title": "How to praise",
-      "in_text_title": "**Praise** @global.workshop",
+      "in_text_title": "**Praise** @global.topic",
       "intro_title": "Why Praise?"
     }
   ],
-  "_xlsxPath": "global/data/module_data/module_data.xlsx"
+  "_xlsxPath": "global/data/topic_data/topic_data.xlsx"
 }
