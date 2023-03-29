@@ -1,5 +1,6 @@
 import { AssetsPostProcessor } from "./assets";
 import type { IDeploymentConfigJson } from "../../deployment/common";
+import type { RecursivePartial } from "data-models/appConfig";
 
 import fs from "fs-extra";
 import mockFs from "mock-fs";
@@ -88,6 +89,18 @@ describe("Assets PostProcess", () => {
     const appGlobalAssets = fs.readdirSync(appGlobalAssetsDir);
     expect(appGlobalAssets).toEqual(["test.jpg"]);
   });
+
+  // it("Handles case of no asset variations", () => {
+  //   mockFs({ mock: mockDirContentsGlobal })
+  //   runAssetsPostProcessor();
+  //   const contents = fs.readJSONSync(path.resolve(mockDirs.appAssets, "contents.json"));
+  //   const { translations } = contents["test.jpg"];
+  //   expect(translations).toEqual({
+  //     tz_sw: { size_kb: 1024, md5Checksum: "b6d81b360a5672d80c27430f39153e2c" },
+  //     tz_na: { size_kb: 1024, md5Checksum: "b6d81b360a5672d80c27430f39153e2c" },
+  //   });
+  //   mockFs.restore();
+  // });
 
   it("populates contents json", () => {
     runAssetsPostProcessor();
@@ -218,7 +231,7 @@ function stubDeploymentConfig(stub: IDeploymentConfigStub = {}) {
     : () => true;
   const app_themes_available = stub.app_themes_available ?? [];
 
-  const stubDeployment: Partial<IDeploymentConfigJson> = {
+  const stubDeployment: RecursivePartial<IDeploymentConfigJson> = {
     _workspace_path: "mock",
     app_data: { assets_filter_function, output_path: "mock/app_data" },
     translations: { filter_language_codes },
