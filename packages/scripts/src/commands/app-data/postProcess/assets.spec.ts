@@ -104,7 +104,7 @@ describe("Assets PostProcess", () => {
     expect(appGlobalAssets).toEqual(["test.jpg"]);
   });
 
-  fit("Handles case of no asset variations (only global version provided)", () => {
+  it("Handles case of no asset variations (only global version provided)", () => {
     mockFs({ mock: mockDirContentsGlobal });
     runAssetsPostProcessor();
     const contents = fs.readJSONSync(path.resolve(mockDirs.appAssets, "contents.json"));

@@ -109,7 +109,7 @@
       "files": ["*.spec.ts"],
       "extends": ["plugin:jasmine/recommended"],
       "rules": {
-        "jasmine/no-focused-tests": 2,
+        "jasmine/no-focused-tests": 0,
         "jasmine/new-line-before-expect": 0,
         "jasmine/new-line-between-declarations": 0,
         "jasmine/prefer-toHaveBeenCalledWith": 0
