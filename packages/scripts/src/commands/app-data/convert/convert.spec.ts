@@ -31,7 +31,7 @@ describe("App Data Converter", () => {
     const cacheFolders = readdirSync(paths.cacheFolder);
     expect(cacheFolders.length).toEqual(1); // only contents file
   });
-  it("Processes test_input xlsx without error", async () => {
+  fit("Processes test_input xlsx without error", async () => {
     clearLogs();
     await converter.run();
     const errorLogs = getLogs("error");

@@ -11,10 +11,10 @@ class AppendColumnsOperator extends BaseOperator {
   public args_list: IParsedArg[];
   /** Tracking hashmap used in extended map operator to remove non-mapped columns after */
   public mappedColumns: { [key: string]: boolean } = {};
-  constructor(df: DataFrame, args_list: any) {
+  constructor(df: DataFrame, args_list: string[]) {
     super(df, args_list);
+    this.args_list = args_list.map((a) => this.parseArg(a));
   }
-  // args are simply evaluated as JS statements and do not require additional parsing
   parseArg(arg: string): IParsedArg {
     const [key, valueExpression] = arg.split(":").map((a) => a.trim());
     return { key, valueExpression };
