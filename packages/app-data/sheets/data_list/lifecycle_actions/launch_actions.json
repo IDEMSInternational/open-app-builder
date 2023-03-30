@@ -189,22 +189,6 @@
           "_cleaned": "click | app_update: prompt"
         }
       ]
-    },
-    {
-      "lifecycle_event": "app_start",
-      "id": "app_start_update_prompt",
-      "priority": 10,
-      "action_list": [
-        {
-          "trigger": "click",
-          "action_id": "app_update",
-          "args": [
-            "prompt"
-          ],
-          "_raw": "app_update: prompt",
-          "_cleaned": "click | app_update: prompt"
-        }
-      ]
     }
   ],
   "_xlsxPath": "templates/global/app_launch_templates.xlsx"
