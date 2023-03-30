@@ -44,7 +44,7 @@
           "eng": "Sorry that you struggled with this. Starting with praise can take some practice, but you will see the positive results soon!"
         },
         "outro_text": {
-          "eng": "You deserve some praise, too. Thank you again for using @global.parent_app. It shows you really care!"
+          "eng": "You deserve some praise, too. Thank you again for using @global.app_name. It shows you really care!"
         },
         "activity_title": {
           "eng": "@global.hp_review"
@@ -66,7 +66,7 @@
       "reply_happy": "Great to hear it went well! Keep up the praise - you will see your teen do more and more of the behaviour you like to see!",
       "reply_ok": "It sometimes takes a bit of time to adjust to praising, but it makes a big difference, you will see.",
       "reply_sad": "Sorry that you struggled with this. Starting with praise can take some practice, but you will see the positive results soon!",
-      "outro_text": "You deserve some praise, too. Thank you again for using @global.parent_app. It shows you really care!",
+      "outro_text": "You deserve some praise, too. Thank you again for using @global.app_name. It shows you really care!",
       "activity_title": "@global.hp_review",
       "intro_text": "@global.text_hp_review",
       "question_done": "Did you have a chance to try this?",

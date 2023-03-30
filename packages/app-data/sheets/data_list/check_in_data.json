@@ -5,49 +5,47 @@
   "data_list_name": "check_in",
   "rows": [
     {
-      "id": "w_praise",
-      "activity_image": "plh_images/topic_modes/individual/wave.svg",
-      "text": "You matter! Take a moment to check in with yourself.",
+      "id": "connect",
+      "activity_image": "images/topics/wave.svg",
+      "intro_text": "Before I go on @fields.user_name,\nLet's take a moment to centre ourselves",
       "_translations": {
-        "text": {},
+        "intro_text": {},
+        "question_text": {},
         "reply_happy": {},
         "reply_ok": {},
         "reply_sad": {},
         "activity_title": {},
-        "intro_text": {},
-        "question_text": {
-          "es_sp": true
-        }
+        "text": {}
       },
       "_translatedFields": {
-        "text": {
-          "eng": "You matter! Take a moment to check in with yourself."
+        "intro_text": {
+          "eng": "Before I go on @fields.user_name,\nLet's take a moment to centre ourselves"
+        },
+        "question_text": {
+          "eng": "To start with, how are you doing today?"
         },
         "reply_happy": {
-          "eng": "Great to hear that you are doing well. You are a wonderful parent!"
+          "eng": "Wonderful, it’s great to hear that things are going well. We can build on that energy today."
         },
         "reply_ok": {
-          "eng": "Sorry that you are not having the best day. Well done for trying to figure everything out. Nobody has all the answers but you really do your best!"
+          "eng": "Sorry to hear that. Sometimes we just feel...“so-so”. Or, we aren’t quite sure how we feel. We can explore different ways to work through that."
         },
         "reply_sad": {
-          "eng": "Sorry to hear that you are not having a good day. Well done for getting up every morning and trying again, even when you are tired. That is real courage and dedication!"
+          "eng": "Sorry to hear that. Sometimes life just gets the better of us and makes us feel sad, stressed, or overwhelmed. It’s really hard to deal with life when we feel this way. It is completely normal to struggle sometimes – everybody does. Together we can look at strategies to make things feel a bit less hard."
         },
         "activity_title": {
           "eng": "Welcome @fields.user_name"
         },
-        "intro_text": {
-          "eng": "It's great to see you again!"
-        },
-        "question_text": {
-          "eng": "How are you feeling today?"
+        "text": {
+          "eng": "You matter! Take a moment to check in with yourself."
         }
       },
-      "reply_happy": "Great to hear that you are doing well. You are a wonderful parent!",
-      "reply_ok": "Sorry that you are not having the best day. Well done for trying to figure everything out. Nobody has all the answers but you really do your best!",
-      "reply_sad": "Sorry to hear that you are not having a good day. Well done for getting up every morning and trying again, even when you are tired. That is real courage and dedication!",
+      "question_text": "To start with, how are you doing today?",
+      "reply_happy": "Wonderful, it’s great to hear that things are going well. We can build on that energy today.",
+      "reply_ok": "Sorry to hear that. Sometimes we just feel...“so-so”. Or, we aren’t quite sure how we feel. We can explore different ways to work through that.",
+      "reply_sad": "Sorry to hear that. Sometimes life just gets the better of us and makes us feel sad, stressed, or overwhelmed. It’s really hard to deal with life when we feel this way. It is completely normal to struggle sometimes – everybody does. Together we can look at strategies to make things feel a bit less hard.",
       "activity_title": "Welcome @fields.user_name",
-      "intro_text": "It's great to see you again!",
-      "question_text": "How are you feeling today?"
+      "text": "You matter! Take a moment to check in with yourself."
     }
   ],
   "_xlsxPath": "global/data/topic_data/topic_data.xlsx"
