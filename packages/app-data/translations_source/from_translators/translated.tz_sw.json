@@ -1,7 +1,19 @@
 [
   {
+    "SourceText": "Restart",
+    "text": "Anzisha upya tena",
+    "type": "template",
+    "note": ""
+  },
+  {
+    "SourceText": "@global.app_name has downloaded an update. Please restart the app to finish installation.",
+    "text": "@global.app_name imesasishwa. Tafadhali anzisha tena programu tumishi kumalizia kuiweka swa.",
+    "type": "template",
+    "note": ""
+  },
+  {
     "SourceText": "Your data is important to us. This @global.privacy_policy for @global.app_id (‘@global.app_name’ or ‘the app’) sets out our policies for the collection, use, and disclosure of personal information in the use of @global.app_name.",
-    "text": "Data yako ni muhimu kwetu. Hii @global.privacy_policy for @global.app_id\n(‘@global.app_name’ ‘au programu’) huweka bayana sera zetu za ukusanyaji, matumizi na ufichuaji wa taarifa binafsi katika matumizi ya @global.app_name.",
+    "text": "Data yako ni muhimu kwetu. Hii @global.privacy_policy kwa @global.app_id (‘@global.app_name’ ‘au programu’) huweka bayana sera zetu za ukusanyaji, matumizi na ufichuaji wa taarifa binafsi katika matumizi ya @global.app_name.",
     "type": "template",
     "note": "The following strings should not be translated:\n@global.privacy_policy\n@global.app_id\n@global.app_name\n@global.app_name"
   },
@@ -62,18 +74,6 @@
   {
     "SourceText": "Your consent, under Art. 6(1)(a) GDPR, regarding the sharing of answers you may provide to in-app questions (those involving as stated gender and again entirely optional).",
     "text": "Ridhaa yako, chini ya ibara. 6(1)(a) GDPR, kuhusu kushiriki majibu unaweza kutoa kwa maswali ya ndani ya programu (yale yanayohusu jinsia iliyobainishwa na tena ya hiari).",
-    "type": "template",
-    "note": ""
-  },
-  {
-    "SourceText": "The @global.parent_app team has legitimate interests in carrying out research activities, under Art. 6(1)(f) GDPR, regarding the sharing of limited details related to how you use the app; and",
-    "text": "Timu ya @global.parent_app ina maslahi halali katika kutekeleza shughuli za utafiti, chini ya Sanaa. 6(1)(f) GDPR, kuhusiana na kushirikisha maelezo machache yanayohusiana na jinsi unavyotumia programu tumishi; na",
-    "type": "template",
-    "note": "The string @global.parent_app should not be translated."
-  },
-  {
-    "SourceText": "Your consent, under Art. 6(1)(a) GDPR, regarding the email address you provide at the point of Google Sign-in and the sharing of answers you may provide to in-app questions (those involving as stated chosen username and gender which are entirely optional).",
-    "text": "Idhini yako, chini ya Sanaa. 6(1)(a) GDPR, kuhusiana na anuani ya barua pepe unayotoa wakati wa Kuingia kwa Kutumia Google na kushiriki majibu ambayo unaweza kutoa kwa tafiti za ndani ya programu tumishi (ambazo ni za hiari kabisa).",
     "type": "template",
     "note": ""
   },
@@ -139,7 +139,7 @@
   },
   {
     "SourceText": "Your data is important to the @global.app_name team for broader research purposes. Aggregate data is always anonymised.",
-    "text": "Taarifa yako ni muhimu kwa timu ya @global.app_name kwa madhumuni mapana ya utafiti.Taarifa ya jumla haitambuliki kila wakati.",
+    "text": "Taarifa yako ni muhimu kwa timu ya @global.app_name kwa madhumuni mapana ya utafiti. Taarifa kwa jumla daima hazitatambulika.",
     "type": "template",
     "note": "The string @global.app_name should not be translated."
   },
@@ -313,7 +313,7 @@
   },
   {
     "SourceText": "These @global.terms_and_conditions are an agreement between you and @global.app_id (‘@global.app_name’ or ‘the app’) which furthermore sets out the rules for your use of @global.app_name.",
-    "text": "Haya @global.terms_and_conditions ni makubaliano kati yako na @global.app_id (‘@global.app_name’ au ‘programu’) ambayo zaidi ya hayo yanaweka sheria za matumizi yako ya @global.app_name.",
+    "text": "Haya @global.terms_and_conditions ni makubaliano kati yako na global.app_id (‘@global.app_name’ au ‘programu’) ambayo zaidi ya hayo yanaweka sheria za matumizi yako ya @global.app_name.",
     "type": "template",
     "note": "The following strings should not be translated:\n@global.terms_and_conditions\n@global.app_id\n@global.app_name\n@global.app_name"
   },
@@ -328,18 +328,6 @@
     "text": "@global.app_name inaletwa kwako na ushirikiano wa washirika wakiwemo Chuo Kikuu cha Oxford, IDEMS International, Chuo Kikuu cha Cape Town, Taasisi ya Kitaifa ya Utafiti wa Matibabu - Kituo cha Mwanza Tanzania, na Clowns Without Borders Afrika Kusini ('the @global.app_name team ').",
     "type": "template",
     "note": "The following strings should not be translated:\n@global.app_name\n@global.app_name"
-  },
-  {
-    "SourceText": "Parenting for Lifelong Health (PLH) - was designed through a worldwide collaboration between parenting experts from UNICEF, the WHO and Universities in South Africa and the UK, as well as African NGOs and families and teens all across Africa.",
-    "text": "Parenting for Lifelong Health (PLH)- ilitengenezwa kupitia ushirikiano wa wadau mbali mbali wa malezi ulimwenguni kutoka UNICEF, WHO na Chuo Kikuu cha Afrika ya Kusini na Uingereza ,pamoja na taasisi zisizo za kiserikari za afrika na familia na vijana kote kote Afrika.",
-    "type": "template",
-    "note": ""
-  },
-  {
-    "SourceText": "The digital @global.parent_app is brought to you by the collaboration of partners including University of Oxford, IDEMS International, University of Cape Town, National Institute for Medical Research - Mwanza Centre Tanzania, and Clowns Without Borders South Africa (‘the @global.parent_app team’).",
-    "text": "@global.parent_app inaletwa kwako kwa ushirikiano wa washirika wakiwemo Chuo Kikuu cha Oxford, IDEMS International, Chuo Kikuu cha Cape Town, Taasisi ya Kitaifa ya Utafiti wa Matibabu - Kituo cha Mwanza Tanzania, na Clowns Without Borders Afrika Kusini ('the @global.parent_app team ').",
-    "type": "template",
-    "note": "The following strings should not be translated:\n@global.parent_app\n@global.parent_app"
   },
   {
     "SourceText": "Please read these @global.terms_and_conditions carefully. By downloading or using the app, you agree that you have read, understood, and accepted the @global.terms_and_conditions contained below.",
@@ -361,7 +349,7 @@
   },
   {
     "SourceText": "@global.app_name is open source and therefore its source code is available on GitHub for the usage and adaptation by the wider software community.  Nevertheless, you are not allowed to modify the existing app as is or its contents or copy any @global.app_name team trademarks.  Whilst open source, you should not translate the app into other languages or make derivative versions without acknowledging the @global.app_name team in your efforts.  Attempts to obtain sensitive account information or other personal data is not permitted.  You should also not falsely represent yourself in the use of the app, make wrongful claims of affiliations to the app or make misleading reports of app misconduct.   Use of the app must not also be in breach of any applicable laws or regulations.",
-    "text": "@global.parent_app ni chanzo huria na kwa hivyo msimbo wake wa chanzo unapatikana kwenye GitHub kwa matumizi na urekebishaji na jumuiya pana ya programu tumishi. Hata hivyo, huruhusiwi kurekebisha programu iliyopo kama ilivyo au yaliyomo au kunakili alama za biashara za timu ya @global.parent_app. Ingawa ni chanzo huria, hupaswi kutafsiri programu katika lugha nyingine au kutengeneza matoleo mengine bila kutambua timu ya @global.parent_app katika juhudi zako. Majaribio ya kupata maelezo nyeti ya akaunti au taarifa nyingine ya binafsi hairuhusiwi. Pia hupaswi kujiwakilisha kwa uwongo katika matumizi ya programu, kutoa madai yasiyo sahihi ya ushirika na programu au kutoa ripoti za kupotosha za utovu wa nidhamu wa programu. Matumizi ya programu haipaswi pia kukiuka sheria au kanuni zozote zinazotumika. ",
+    "text": "@global.app_name ni chanzo huria na kwa hivyo msimbo wake wa chanzo unapatikana kwenye GitHub kwa matumizi na urekebishaji na jumuiya pana ya programu tumishi. Hata hivyo, huruhusiwi kurekebisha programu iliyopo kama ilivyo au yaliyomo au kunakili alama za biashara za timu ya @global.app_name. Ingawa ni chanzo huria, hupaswi kutafsiri programu katika lugha nyingine au kutengeneza matoleo mengine bila kutambua timu ya @global.app_name katika juhudi zako. Majaribio ya kupata maelezo nyeti ya akaunti au taarifa nyingine ya binafsi hairuhusiwi. Pia hupaswi kujiwakilisha kwa uwongo katika matumizi ya programu, kutoa madai yasiyo sahihi ya ushirika na programu au kutoa ripoti za kupotosha za utovu wa nidhamu wa programu. Matumizi ya programu haipaswi pia kukiuka sheria au kanuni zozote zinazotumika.",
     "type": "template",
     "note": "The following strings should not be translated:\n@global.app_name\n@global.app_name\n@global.app_name"
   },
@@ -763,13 +751,13 @@
   },
   {
     "SourceText": "WASH means Water, Sanitation, and Hygiene. Good WASH practises, like using safe water and food, ensuring clean toilets and homes, and handwashing, keep us healthy. \n\n* Hand washing prevents the spread of diseases.\n* Drinking safe clean water prevents illnesses, like diarrhoea. \n* Access to clean toilets helps to keep germs away.",
-    "text": "WASH ina maana ya Maji, Usafi wa Mazingira, na Usafi wa jumla. Mazoea mazuri ya WASH, kama vile kutumia maji na chakula salama, kuhakikisha vyoo na nyumba safi, na unawaji mikono, hutuweka tukiwa na afya njema.\n\n* Kunawa mikono huzuia kuenea kwa magonjwa.\n* Kunywa maji safi na salama huzuia magonjwa kama vile kuhara.\n* Uwepo wa vyoo safi huzuia vijidudu.",
+    "text": "WASH ina maana ya Maji, Usafi wa Mazingira, na Usafi kwa jumla. Mazoea mazuri ya WASH, kama vile kutumia maji na chakula salama, kuhakikisha vyoo na nyumba safi, na unawaji mikono, hutuweka tukiwa na afya njema.\n\n* Kunawa mikono huzuia kuenea kwa magonjwa.\n* Kunywa maji safi na salama huzuia magonjwa kama vile kuhara.\n* Uwepo wa vyoo safi huzuia vijidudu.",
     "type": "data_list",
     "note": ""
   },
   {
     "SourceText": "Water, Sanitation and Hygiene",
-    "text": "Maji, Usafi na Usafi",
+    "text": "Maji, Usafi na Usafi kwa ujumla",
     "type": "data_list",
     "note": ""
   },
@@ -835,7 +823,7 @@
   },
   {
     "SourceText": "A clean toilet means good hygiene.  A dirty one can mean disease.",
-    "text": "Choo safi kinamaanisha usafi mzuri. Mtu mchafu anaweza kumaanisha ugonjwa.",
+    "text": "Choo safi inamaanisha usafi mzuri. Choo kichafu kinaweza kumaanisha ugonjwa.",
     "type": "data_list",
     "note": ""
   },
@@ -931,7 +919,7 @@
   },
   {
     "SourceText": "You can get water from many sources. The safest water is often from a tap. Water from unprotected streams, open sources (such as the lake), and open dug wells is not safe. That water may have bugs (parasites) or stool from animals and or humans that can make us sick.",
-    "text": "Unaweza kupata maji kutoka kwenye vyanzo vingi. Maji salama zaidi mara nyingi hutoka kwenye bomba. Maji kutoka kwa mito isiyolindwa, vyanzo vya wazi (kama vile ziwa), na visima vilivyochimbwa si salama. Maji hayo yanaweza kuwa na vijidudu (vimelea) au kinyesi kutoka kwa wanyama na au wanadamu ambacho kinaweza kutufanya wagonjwa.",
+    "text": "Unaweza kupata maji kutoka kwenye vyanzo vingi. Maji salama zaidi mara nyingi hutoka kwenye bomba. Maji kutoka kwa mito isiyolindwa, vyanzo vya wazi (kama vile ziwa), na visima vilivyochimbwa si salama. Maji hayo yanaweza kuwa na vijidudu (vimelea) au kinyesi kutoka kwa wanyama na wanadamu ambacho kinaweza kutufanya wagonjwa.",
     "type": "data_list",
     "note": ""
   },
@@ -955,7 +943,7 @@
   },
   {
     "SourceText": "Water should be carried in clean and closed water containers.\n\nThere are many designs for water containers. A safe water storage container is one that is:\n\n* Strong and has a tightly fitting lid or cover\n* Stable base so it does not tip over\n* Durable so that it does not leak easily\n* Has a comfortable handle\n* And of course, is easy to clean",
-    "text": "Maji yanapaswa kubebwa kwenye vyombo safi na vilivyofungwa.\n\nKuna miundo mingi ya vyombo vya maji. Chombo cha kuhifadhi maji salama ni kile ambacho:\n\n* Kina nguvu na kina mfuniko au kifuniko kinachobana sana\n* Msingi thabiti ili ianguke\n* Kinadumu ili kisivuje kwa urahisi\n* Kina mshikio mzuri\n* Na bila shaka, ni rahisi kusafisha",
+    "text": "Maji yanapaswa kubebwa kwenye vyombo safi na vilivyofungwa.\n\nKuna miundo mingi ya vyombo vya maji. Chombo cha kuhifadhi maji salama ni kile ambacho:\n\n* Kina nguvu na kina mfuniko au kifuniko kinachobana sana\n* Msingi thabiti ili isianguke\n* Kinadumu ili kisivuje kwa urahisi\n* Kina mshikio mzuri\n* Na bila shaka, ni rahisi kusafisha",
     "type": "data_list",
     "note": ""
   },
@@ -991,19 +979,19 @@
   },
   {
     "SourceText": "People become infected with intestinal worms by eating unsafe food.\n\nDiseases such as typhoid fever (bacteria infection) can also happen by eating unsafe food or water.\n\nThere are five ways to keeping your food safe:\n* Keep clean.\n* Separate raw and cooked food.\n* Cook food thoroughly.\n* Keep food at a safe temperature.\n* Use safe water.",
-    "text": "Watu huambukizwa minyoo ya matumbo kwa kula chakula kisicho salama.\n\nMagonjwa kama vile homa ya matumbo (maambukizi ya bakteria) yanaweza pia kutokea kwa kula chakula kisicho salama au kunywa maji yasiyo salama.\n\nKuna njia tano za kuweka chakula chako salama:\n* Weka safi.\n* Tenganisha chakula kibichi na kilichopikwa.\n* Pika chakula vizuri.\n* Weka chakula katika halijoto salama.\n*Tumia maji salama.",
+    "text": "Watu huambukizwa minyoo ya utumbo kwa kula chakula kisicho salama.\n\nMagonjwa kama vile homa ya matumbo (maambukizi ya bakteria) yanaweza pia kutokea kwa kula chakula kisicho salama au kunywa maji yasiyo salama.\n\nKuna njia tano za kuweka chakula chako salama:\n* Weka safi.\n* Tenganisha chakula kibichi na kilichopikwa.\n* Pika chakula kiive vizuri.\n* Weka chakula katika joto linalostahili.\n*Tumia maji salama.",
     "type": "data_list",
     "note": ""
   },
   {
     "SourceText": "Keep clean",
-    "text": "Weka salama",
+    "text": "Weka safi",
     "type": "data_list",
     "note": ""
   },
   {
     "SourceText": "* Wash your hands with soap before touching food and while cooking.\n* Wash your hands after going to the toilet.\n* Clean your cooking space and tools.\n* Keep bugs, pests, and other animals away from the cooking area.\n* Cover food if you can.",
-    "text": "* Nawa mikono yako kwa sabuni kabla ya kugusa chakula na unapopika.\n* Nawa mikono yako baada ya kutoka chooni.\n* Safisha sehemu yako ya kupikia na vifaa.\n* Weka vijidudu vyote na wanyama wengine mbali na mahali pa kupikia.\n* Funika chakula kama ukiweza.",
+    "text": "* Nawa mikono yako kwa sabuni kabla ya kugusa chakula na unapopika.\n* Nawa mikono yako baada ya kutoka chooni.\n* Safisha sehemu yako ya kupikia na vifaa.\n* Weka wadudu wote na wanyama wengine mbali na mahali pa kupikia.\n* Funika chakula kama ukiweza.",
     "type": "data_list",
     "note": ""
   },
@@ -1027,7 +1015,7 @@
   },
   {
     "SourceText": "Germs causing illness can be found in raw food (such as meat, chicken, and seafood). These can be transferred to other foods during food preparation or storage.  Separating raw and cooked food is therefore important.",
-    "text": "Vimelea vinavyosababisha magonjwa vinaweza kupatikana katika vyakula vibichi (kama nyama, kuku, na vyakula vya baharini). Hivi vinaweza kusambaa kwa vyakula vingine wakati wa maandalizi ya chakula au kuhifadhi. Hivyo, kutenganisha chakula kibichi na kilichopikwa ni muhimu.",
+    "text": "Vijidudu vinavyosababisha magonjwa vinaweza kupatikana katika vyakula vibichi (kama nyama, kuku, na vyakula vya baharini). Hivi vinaweza kusambaa kwa vyakula vingine wakati wa maandalizi ya chakula au kuhifadhi. Hivyo, kutenganisha chakula kibichi na kilichopikwa ni muhimu.",
     "type": "data_list",
     "note": ""
   },
@@ -1039,7 +1027,7 @@
   },
   {
     "SourceText": "* Cook food thoroughly, especially meat, chicken, eggs, and seafood. \n* When making stews, remember to bring them to a boil.\n* Reheat cooked food thoroughly.\n* Boil the water you use to make baby foods and drinks.",
-    "text": "* Pika chakula vizuri, hasa nyama, kuku, mayai, na vyakula vya baharini. \n* Unapopika kitoweo, kumbuka kuviacha vichemke.\n* Pasha moto tena chakula kilichopikwa vizuri.\n* Chemsha maji unayotumia kutengeneza vyakula na vinywaji vya watoto.",
+    "text": "* Pika chakula vizuri, hasa nyama, kuku, mayai, na vyakula vya baharini. \n* Unapopika kitoweo, kumbuka kuviacha vichemke.\n* Pasha moto tena chakula kilichoiva vizuri.\n* Chemsha maji unayotumia kupikia vyakula na kutengenezea vinywaji vya watoto.",
     "type": "data_list",
     "note": ""
   },
@@ -1051,7 +1039,7 @@
   },
   {
     "SourceText": "Keep food at a safe temperature",
-    "text": "Tunza chakula katika joto salama",
+    "text": "Tunza chakula katika joto linalostahili",
     "type": "data_list",
     "note": ""
   },
@@ -1063,7 +1051,7 @@
   },
   {
     "SourceText": "When food is stored at room temperature germs can grow.  That's why it's important to heat food well and eat it soon after cooking.",
-    "text": "Chakula kikihifadhiwa kwenye chumba chenye joto, vimelea vya magonjwa vinaweza kukuwa. Ndio maana ni muhimu kupika chakula na moto mkali na kula mara baada ya kupika.",
+    "text": "Chakula kikihifadhiwa kwenye chumba chenye joto, vijidudu vya magonjwa vinaweza kukuwa. Ndio maana ni muhimu kupika chakula na moto mkali na kula mara baada ya kupika.",
     "type": "data_list",
     "note": ""
   },
@@ -1087,7 +1075,7 @@
   },
   {
     "SourceText": "Your vegetables, fruits, meats, and even water can hold dangerous germs that cause illness. Washing with safe water and peeling raw foods decreases your risk of getting sick.",
-    "text": "Mboga zako, matunda, nyama, na hata maji vinawezakuwa na vimelea hatari vinavyoweza kusababbisha magonjwa. Kuosha kwa maji salama na kumenya matunda kunapunguza hatari ya kupata magonjwa.",
+    "text": "Mboga zako, matunda, nyama, na hata maji vinawezakuwa na vimelea hatari vinavyoweza kusababisha magonjwa. Kuosha kwa maji salama na kumenya matunda kunapunguza hatari ya kupata magonjwa.",
     "type": "data_list",
     "note": ""
   },
@@ -1123,7 +1111,7 @@
   },
   {
     "SourceText": "The disposal/treatment of solid garbage depends on the type and amount of garbage made. Here’s how to manage your garbage: To throw your garbage:\n* Paper garbage can be buried or collected.\n* Organic materials can be composted, for instance in household compost pits, and can be used as fertilisers/soil conditioners for trees and plants around your home.\n* Plastic garbage can be collected and buried or recycled.\n* And remember, do not place your solid garbage in the toilet.",
-    "text": "Utupaji/utunzaji wa taka ngumu hutegemea aina na kiasi cha takataka zilizotengenezwa. Hivi ndivyo jinsi ya kudhibiti uchafu wako: Kutupa takataka yako:\n* Takataka za karatasi zinaweza kuzikwa au kukusanywa.\n* Taka zinazoweza kuoza zinaweza kuwekwa kama mbolea, kwa mfano katika mashimo ya mbolea nyumbani, na inaweza kutumika kama mbolea/kutunza unyevu wa udongo kwa miti na mimea karibu na nyumba yako.\n* Taka za plastiki zinaweza kukusanywa na kufukiwa au kutumika tena.\n* Kumbuka, usiweke takataka yako ngumu kwenye choo.",
+    "text": "Utupaji/utunzaji wa taka ngumu hutegemea aina na kiasi cha takataka zilizotengenezwa. Hivi ndivyo jinsi ya kudhibiti uchafu wako. Jinsi ya kutupa takataka yako ni kama ifuatavyo:\n* Takataka za karatasi zinaweza kuzikwa au kukusanywa.\n* Taka zinazoweza kuoza zinaweza kuwekwa kama mbolea, kwa mfano katika mashimo ya mbolea nyumbani, na inaweza kutumika kama mbolea/kutunza unyevu wa udongo kwa miti na mimea karibu na nyumba yako.\n* Taka za plastiki zinaweza kukusanywa na kufukiwa au kutumika tena.\n* Kumbuka, usiweke takataka yako ngumu kwenye choo.",
     "type": "data_list",
     "note": ""
   },
@@ -1147,7 +1135,7 @@
   },
   {
     "SourceText": "To help keep healthy it is very important to wash your hands with soap at the following times:\n* Before and after cooking\n* Before eating\n* Before and after attending a sick person\n* After using the toilet\n* After changing a baby’s nappy",
-    "text": "Ili kusaidia kuweka afya ni muhimu sana kunawa mikono kwa sabuni nyakati zifuatazo:\n* Kabla na baada ya kupika\n* Kabla ya kula\n* Kabla na baada ya kumuhudumia mtu mgonjwa\n* Baada ya kutumia choo\n* Baada ya kubadilisha nepi ya mtoto",
+    "text": "Ili kusaidia kuweka afya ni muhimu sana kunawa mikono kwa sabuni nyakati zifuatazo:\n* Kabla na baada ya kupika\n* Kabla na baada ya kula\n* Kabla na baada ya kuhudumia mtu mgonjwa\n* Baada ya kutumia choo\n* Baada ya kubadilisha nepi ya mtoto",
     "type": "data_list",
     "note": ""
   },
@@ -1255,13 +1243,13 @@
   },
   {
     "SourceText": "Tap and type",
-    "text": "Bonya na uandike",
+    "text": "Bofya na uandike",
     "type": "global",
     "note": ""
   },
   {
     "SourceText": "Tap and choose",
-    "text": "Bonya na uchague",
+    "text": "Bofya na uchague",
     "type": "global",
     "note": ""
   },
@@ -1273,37 +1261,37 @@
   },
   {
     "SourceText": "I've understood this. Don't show me this message again.",
-    "text": "Nimeielewa hii. Usinionyeshe tena ujumbe huu.",
+    "text": "Nimeelewa hii. Usinionyeshe tena ujumbe huu.",
     "type": "global",
     "note": ""
   },
   {
     "SourceText": "@global.app_name is brought to you by the collaboration of partners including INNODEMS, IDEMS International, University of Oxford, University of Cape Town, National Institute for Medical Research (NIMR) - Mwanza Centre Tanzania, and Clowns Without Borders South Africa (‘the @global.app_name team’).",
-    "text": "@global.app_name inaletwa kwako kwa ushirikiano wa washirika wakiwemo INNODEMS, IDEMS International, Chuo Kikuu cha Oxford, Chuo Kikuu cha Cape Town, Taasisi ya Taifa ya Utafiti wa Magonjwa ya Binadamu (NIMR) - Mwanza Centre Tanzania, na Clowns Without Borders Afrika Kusini ('the @global.app_name team').",
+    "text": "@global.app_name inaletwa kwako kwa ushirikiano wa washirika wakiwemo INNODEMS, IDEMS International, Chuo Kikuu cha Oxford, Chuo Kikuu cha Cape Town, Taasisi ya Taifa ya Utafiti wa Magonjwa ya Binadamu (NIMR) - Mwanza Centre Tanzania, na Clowns Without Borders Afrika Kusini ('timu ya @global.app_name').",
     "type": "template",
     "note": "The following strings should not be translated:\n@global.app_name\n@global.app_name"
   },
   {
     "SourceText": "By providing your consent below you acknowledge reading and accepting the @global.terms_and_conditions and @global.privacy_policy. The most important commitments are:\n1. This is, and will always be, a fully free app.\n2. Your data will never be sold. We are not for profit.\n3. By using the app you are helping to make the app better for you and others.\n4. Your anonymised data may be used for research purposes by our @global.parent_app team.",
-    "text": "Kwa kutoa ridhaa hii hapa chini unakubali kusoma na kukubali @global.terms_and_conditions na @global.privacy_policy. Mambo muhimu ya kukubaliana nayo:\n1. Hii ni na itazidi kuwa programu tumishi inayopatikana bure.\n2. Taarifa zako kamwe hazitouzwa. Sisi hatupo kwa faida ya kifedha.\n3. Kwa kutumia programu tumishi unasaidia kuiboresha programu tumishi kwa ajili yako na wengine. \n4. Taarifa zisizo na utambulisho zitatumika kwa ajili ya utafiti na timu yetu ya @global.parent_app.",
+    "text": "Kwa kutoa ridhaa yako hapa chini unakubali kusoma na kukubali @global.terms_and_conditions na @global.privacy_policy. Mambo muhimu ya kukubaliana nayo:\n1. Hii ni, na itakuwa programu inayopatikana bure.\n2. Taarifa zako kamwe hazitouzwa. Sisi hatupo kwa faida ya kifedha.\n3. Kwa kutumia programu unasaidia kuiboresha programu kwa ajili yako na wengine. \n4. Taarifa zisizo na utambulisho zitatumika kwa ajili ya utafiti na timu yetu ya @global.parent_app.",
     "type": "template",
     "note": "The following strings should not be translated:\n@global.terms_and_conditions\n@global.privacy_policy\n@global.parent_app"
   },
   {
     "SourceText": "These policies are still under construction. We value advice and input to improve them.",
-    "text": "Sera hizi bado zinatungwa. Tunathamini ushauri na nyongeza wa kuziboresha.",
+    "text": "Sera hizi bado zinaendelea kutungwa. Tunathamini ushauri na nyongeza kuziboresha.",
     "type": "template",
     "note": ""
   },
   {
     "SourceText": "I consent to the commitments stated above.",
-    "text": "Ninaridhia na makubaliano yalioorodheshwa hapo juu.",
+    "text": "Ninaridhia makubaliano yalioorodheshwa hapo juu.",
     "type": "template",
     "note": ""
   },
   {
     "SourceText": "You can only move on and access the app if you provide your consent.",
-    "text": "Utaweza kuendelea kutumia programu tumishi endapo utatoa ridhaa yako.",
+    "text": "Utaweza kuendelea kutumia programu endapo utatoa ridhaa yako.",
     "type": "template",
     "note": ""
   },
@@ -1411,7 +1399,7 @@
   },
   {
     "SourceText": "To launch the app in developer mode, enter your developer code in the box below and press @global.save_button.",
-    "text": "Ili kuzindua programu katika hali ya kubuni, weka msimbo wako wa kubuni kwenye kisanduku kilicho hapa chini na ubonyeze @global.save_button.",
+    "text": "Ili kuzindua programu katika hali ya msanidi, weka msimbo wako wa msanidi kwenye kisanduku kilicho hapa chini na bonyeza @global.save_button.",
     "type": "template",
     "note": "The string @global.save_button should not be translated."
   },
@@ -1423,7 +1411,7 @@
   },
   {
     "SourceText": "You have entered an incorrect code.",
-    "text": "Umeingiza namba isiyo sahihi.",
+    "text": "Umeingiza kodi isiyo sahihi.",
     "type": "template",
     "note": ""
   },
@@ -1507,7 +1495,7 @@
   },
   {
     "SourceText": "@global.app_name is brought to you by",
-    "text": "@global.app_name inaletwa kwako na",
+    "text": "@global.app_name imeletwa kwako na",
     "type": "template",
     "note": "The string @global.app_name should not be translated."
   },
@@ -1519,13 +1507,13 @@
   },
   {
     "SourceText": "Safe Water, Sanitation and Hygiene (WASH) is beneficial for you and your community",
-    "text": "Maji Salama, Usafi wa Mazingira na Usafi wa jumla (WASH) ni ya manufaa kwako na kwa jamii yako",
+    "text": "Maji Salama, Usafi wa Mazingira na Usafi kwa ujumla (WASH) ni ya manufaa kwako na kwa jamii yako",
     "type": "template",
     "note": ""
   },
   {
     "SourceText": "I have read this",
-    "text": "Nimeisoma",
+    "text": "Nimesoma hii",
     "type": "template",
     "note": ""
   },
@@ -1537,25 +1525,25 @@
   },
   {
     "SourceText": "Copied!",
-    "text": "Imenakiriwa!",
+    "text": "Imenakiliwa!",
     "type": "template",
     "note": ""
   },
   {
     "SourceText": "You may be asked to share this code with people who will support your @global.app_name journey.",
-    "text": "Unaweza kuombwa kuwaonyesha namba hii watu watakaokusaidia katika safari yako ya @global.app_name.",
+    "text": "Unaweza kuombwa kuwaonyesha msimbo huu na watu watakaokusaidia katika safari yako ya @global.app_name.",
     "type": "template",
     "note": "The string @global.app_name should not be translated."
   },
   {
     "SourceText": "Last sync at: @local.sync_latest",
-    "text": "Imeoanishwa mara ya mwisho saa: @local.sync_latest",
+    "text": "Imelandanishwa mara ya mwisho saa: @local.sync_latest",
     "type": "template",
     "note": "The string @local.sync_latest should not be translated."
   },
   {
     "SourceText": "This device has never been synced. Sync to reveal your code.",
-    "text": "Kifaa hiki hakijawahi kulandanishwa. Landanisha kupata namba ya siri.",
+    "text": "Kifaa hiki hakijawahi kulandanishwa. Landanisha kuonesha msimbo wako.",
     "type": "template",
     "note": ""
   },
@@ -1567,7 +1555,7 @@
   },
   {
     "SourceText": "Syncing...",
-    "text": "Inaoanisha...",
+    "text": "Landanisha...",
     "type": "template",
     "note": ""
   },
@@ -1609,7 +1597,7 @@
   },
   {
     "SourceText": "<p>Keep healthy and feel good after learning more about safe Water, Sanitation and Hygiene (WASH).</p>\n\n<p>@global.app_name is here to support you.</p>\n\n<p>Here is how to use the app:</p>",
-    "text": "<p>Kuwa na afya njema na kujisikia vizuri baada ya kujifunza zaidi kuhusu Maji salama, Usafi wa Mazingira na Usafi wa jumla (WASH).</p>\n\n<p>@global.app_name ipo hapa kukusaidia.</p>\n\n<p>Hivi ndivyo jinsi ya kutumia programu:</p>",
+    "text": "<p>Kuwa na afya njema na kujisikia vizuri baada ya kujifunza zaidi kuhusu Maji salama, Usafi wa Mazingira na Usafi kwa ujumla (WASH).</p>\n\n<p>@global.app_name ipo hapa kukusaidia.</p>\n\n<p>Hivi ndivyo jinsi ya kutumia programu:</p>",
     "type": "tour",
     "note": "The string <p>@global.app_name should not be translated."
   },
@@ -1629,18 +1617,6 @@
     "SourceText": "You can explore any module whenever you want. To build your knowledge and skills in WASH, access all of the content in one module before moving to the next one.",
     "text": "Unaweza kuchunguza vipindi vyovyote wakati wowote unapotaka. Ili kujenga maarifa na ujuzi wako katika WASH, pata maudhui yote katika sehemu moja kabla ya kuhamia nyingine.",
     "type": "tour",
-    "note": ""
-  },
-  {
-    "SourceText": "@global.app_name has downloaded an update. Please restart the app to finish installation.",
-    "text": "@global.app_name imesasishwa. Tafadhali anzisha tena programu tumishi kumalizia kuiweka swa.",
-    "type": "template",
-    "note": "The string @global.app_name should not be translated."
-  },
-  {
-    "SourceText": "Restart",
-    "text": "Anzisha upya tena",
-    "type": "template",
     "note": ""
   }
 ]
