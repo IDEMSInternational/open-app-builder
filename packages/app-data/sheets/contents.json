@@ -1063,7 +1063,7 @@
     "banner": {
       "flow_type": "template",
       "flow_name": "banner",
-      "_xlsxPath": "global/templates/core_templates/modules.xlsx"
+      "_xlsxPath": "global/templates/core_templates/topics.xlsx"
     },
     "bereavement_practical": {
       "flow_type": "template",
@@ -1088,12 +1088,12 @@
     "box_audio": {
       "flow_type": "template",
       "flow_name": "box_audio",
-      "_xlsxPath": "global/templates/core_templates/module_boxes.xlsx"
+      "_xlsxPath": "global/templates/core_templates/topic_boxes.xlsx"
     },
     "box_buttons": {
       "flow_type": "template",
       "flow_name": "box_buttons",
-      "_xlsxPath": "global/templates/core_templates/module_boxes.xlsx"
+      "_xlsxPath": "global/templates/core_templates/topic_boxes.xlsx"
     },
     "box_combo_box": {
       "flow_type": "template",
@@ -1108,17 +1108,17 @@
     "box_duo": {
       "flow_type": "template",
       "flow_name": "box_duo",
-      "_xlsxPath": "global/templates/core_templates/modules.xlsx"
+      "_xlsxPath": "global/templates/core_templates/topics.xlsx"
     },
     "box_duo_combo_box": {
       "flow_type": "template",
       "flow_name": "box_duo_combo_box",
-      "_xlsxPath": "global/templates/core_templates/module_boxes.xlsx"
+      "_xlsxPath": "global/templates/core_templates/topic_boxes.xlsx"
     },
     "box_duo_radio_buttons": {
       "flow_type": "template",
       "flow_name": "box_duo_radio_buttons",
-      "_xlsxPath": "global/templates/core_templates/module_boxes.xlsx"
+      "_xlsxPath": "global/templates/core_templates/topic_boxes.xlsx"
     },
     "box_hp_review": {
       "flow_type": "template",
@@ -1128,12 +1128,12 @@
     "box_image": {
       "flow_type": "template",
       "flow_name": "box_image",
-      "_xlsxPath": "global/templates/core_templates/module_boxes.xlsx"
+      "_xlsxPath": "global/templates/core_templates/topic_boxes.xlsx"
     },
     "box_image_more": {
       "flow_type": "template",
       "flow_name": "box_image_more",
-      "_xlsxPath": "global/templates/core_templates/module_boxes.xlsx"
+      "_xlsxPath": "global/templates/core_templates/topic_boxes.xlsx"
     },
     "box_multi_1": {
       "flow_type": "template",
@@ -1148,7 +1148,7 @@
     "box_multi_radio_buttons": {
       "flow_type": "template",
       "flow_name": "box_multi_radio_buttons",
-      "_xlsxPath": "global/templates/core_templates/module_boxes.xlsx"
+      "_xlsxPath": "global/templates/core_templates/topic_boxes.xlsx"
     },
     "box_number_selector": {
       "flow_type": "template",
@@ -1158,7 +1158,7 @@
     "box_parent_point_counter": {
       "flow_type": "template",
       "flow_name": "box_parent_point_counter",
-      "_xlsxPath": "global/templates/core_templates/module_boxes.xlsx"
+      "_xlsxPath": "global/templates/core_templates/topic_boxes.xlsx"
     },
     "box_radio_buttons": {
       "flow_type": "template",
@@ -1173,7 +1173,7 @@
     "box_story": {
       "flow_type": "template",
       "flow_name": "box_story",
-      "_xlsxPath": "global/templates/core_templates/module_boxes.xlsx"
+      "_xlsxPath": "global/templates/core_templates/topic_boxes.xlsx"
     },
     "box_story_pages": {
       "flow_type": "template",
@@ -1198,7 +1198,7 @@
     "box_timer": {
       "flow_type": "template",
       "flow_name": "box_timer",
-      "_xlsxPath": "global/templates/core_templates/module_boxes.xlsx"
+      "_xlsxPath": "global/templates/core_templates/topic_boxes.xlsx"
     },
     "box_tools": {
       "flow_type": "template",
@@ -1208,7 +1208,7 @@
     "box_video": {
       "flow_type": "template",
       "flow_name": "box_video",
-      "_xlsxPath": "global/templates/core_templates/module_boxes.xlsx"
+      "_xlsxPath": "global/templates/core_templates/topic_boxes.xlsx"
     },
     "care_together": {
       "flow_type": "template",
@@ -1466,7 +1466,7 @@
     "library_activity": {
       "flow_type": "template",
       "flow_name": "library_activity",
-      "_xlsxPath": "global/templates/core_templates/modules.xlsx"
+      "_xlsxPath": "global/templates/core_templates/topics.xlsx"
     },
     "listen": {
       "flow_type": "template",
@@ -1491,7 +1491,7 @@
     "nav_buttons": {
       "flow_type": "template",
       "flow_name": "nav_buttons",
-      "_xlsxPath": "global/templates/core_templates/modules.xlsx"
+      "_xlsxPath": "global/templates/core_templates/topics.xlsx"
     },
     "organisation_registration": {
       "flow_type": "template",
@@ -1501,12 +1501,12 @@
     "pair": {
       "flow_type": "template",
       "flow_name": "pair",
-      "_xlsxPath": "global/templates/core_templates/modules.xlsx"
+      "_xlsxPath": "global/templates/core_templates/topics.xlsx"
     },
     "pair_hidden": {
       "flow_type": "template",
       "flow_name": "pair_hidden",
-      "_xlsxPath": "global/templates/core_templates/modules.xlsx"
+      "_xlsxPath": "global/templates/core_templates/topics.xlsx"
     },
     "parent_centre_bereavement": {
       "flow_type": "template",
@@ -1898,7 +1898,7 @@
     "task_group_pair": {
       "flow_type": "template",
       "flow_name": "task_group_pair",
-      "_xlsxPath": "global/templates/core_templates/modules.xlsx"
+      "_xlsxPath": "global/templates/core_templates/topics.xlsx"
     },
     "technical_support": {
       "flow_type": "template",
@@ -3624,17 +3624,17 @@
     "workshop_activity": {
       "flow_type": "template",
       "flow_name": "workshop_activity",
-      "_xlsxPath": "global/templates/core_templates/modules.xlsx"
+      "_xlsxPath": "global/templates/core_templates/topics.xlsx"
     },
     "workshop_activity_old": {
       "flow_type": "template",
       "flow_name": "workshop_activity_old",
-      "_xlsxPath": "global/templates/core_templates/modules.xlsx"
+      "_xlsxPath": "global/templates/core_templates/topics.xlsx"
     },
     "workshop_completed_calc": {
       "flow_type": "template",
       "flow_name": "workshop_completed_calc",
-      "_xlsxPath": "global/templates/core_templates/modules.xlsx"
+      "_xlsxPath": "global/templates/core_templates/topics.xlsx"
     },
     "workshop_options_page": {
       "flow_type": "template",
@@ -3669,12 +3669,12 @@
     "workshop_stepper": {
       "flow_type": "template",
       "flow_name": "workshop_stepper",
-      "_xlsxPath": "global/templates/core_templates/modules.xlsx"
+      "_xlsxPath": "global/templates/core_templates/topics.xlsx"
     },
     "workshop_stepper_actions": {
       "flow_type": "template",
       "flow_name": "workshop_stepper_actions",
-      "_xlsxPath": "global/templates/core_templates/modules.xlsx"
+      "_xlsxPath": "global/templates/core_templates/topics.xlsx"
     },
     "workshop_unlock": {
       "flow_type": "template",

@@ -56,7 +56,7 @@
         {
           "type": "template",
           "name": "highlighted_topic_card",
-          "value": "topic_card",
+          "value": "module_card",
           "exclude_from_translation": true,
           "rows": [
             {

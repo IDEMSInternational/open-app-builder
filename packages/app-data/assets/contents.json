@@ -39,6 +39,14 @@
     "size_kb": 0.9,
     "md5Checksum": "f0e5c289173021f4c5af4ce718d5b72b"
   },
+  "images/icons/in_progress.svg": {
+    "size_kb": 1.1,
+    "md5Checksum": "6105962bc0edd981675d874dc8a51035"
+  },
+  "images/icons/in_progress_white.svg": {
+    "size_kb": 1.1,
+    "md5Checksum": "f7bdd991a067c30d0cb140d5b77745bb"
+  },
   "images/icons/library.svg": {
     "size_kb": 0.7,
     "md5Checksum": "0b4bb60ce0e51c17f1b1f77040a098de"
@@ -63,9 +71,21 @@
     "size_kb": 0.6,
     "md5Checksum": "7d4e0f861269a6d8b84456aa7302fa8e"
   },
+  "images/icons/tick.svg": {
+    "size_kb": 0.3,
+    "md5Checksum": "b4e6f1e9ba6e5bcdd2e404bc432ba745"
+  },
+  "images/icons/tick_white.svg": {
+    "size_kb": 0.3,
+    "md5Checksum": "81136e04436759812dc3f6e90c61de11"
+  },
   "images/logos/idems.png": {
     "size_kb": 123.9,
     "md5Checksum": "285b8e02cc1a1fd820a2e117df4fab21"
+  },
+  "images/topics/wave.svg": {
+    "size_kb": 8.5,
+    "md5Checksum": "79d5f0d01dca4ab60d638b0d46d134f9"
   },
   "lottie/habits/cascading_stars.json": {
     "size_kb": 140.5,

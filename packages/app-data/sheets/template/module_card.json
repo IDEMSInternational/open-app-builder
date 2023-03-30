@@ -367,6 +367,24 @@
       "_nested_name": "progress_units_name"
     },
     {
+      "name": "in_progress_icon",
+      "value": "images/icons/in_progress.svg;",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "in_progress_icon"
+    },
+    {
+      "name": "completed_icon",
+      "value": "images/icons/tick_white.svg;",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "completed_icon"
+    },
+    {
       "type": "task_card",
       "name": "task_card",
       "action_list": [
@@ -416,8 +434,8 @@
         "subtitle": "@local.card_subtitle",
         "image": "@local.card_image",
         "style": "@local.card_style",
-        "in_progress_icon": "plh_images/icons/in_progress.svg",
-        "completed_icon": "plh_images/icons/tick_white.svg",
+        "in_progress_icon": "@local.in_progress_icon",
+        "completed_icon": "@local.completed_icon",
         "highlighted_text": "@local.highlighted_text",
         "progress_units_name": "@local.progress_units_name"
       },
@@ -540,6 +558,22 @@
               "fieldName": "card_style"
             }
           ],
+          "in_progress_icon": [
+            {
+              "fullExpression": "@local.in_progress_icon",
+              "matchedExpression": "@local.in_progress_icon",
+              "type": "local",
+              "fieldName": "in_progress_icon"
+            }
+          ],
+          "completed_icon": [
+            {
+              "fullExpression": "@local.completed_icon",
+              "matchedExpression": "@local.completed_icon",
+              "type": "local",
+              "fieldName": "completed_icon"
+            }
+          ],
           "highlighted_text": [
             {
               "fullExpression": "@local.highlighted_text",
@@ -595,6 +629,12 @@
         ],
         "@local.card_style": [
           "parameter_list.style"
+        ],
+        "@local.in_progress_icon": [
+          "parameter_list.in_progress_icon"
+        ],
+        "@local.completed_icon": [
+          "parameter_list.completed_icon"
         ],
         "@local.highlighted_text": [
           "parameter_list.highlighted_text"
@@ -655,8 +695,8 @@
         "completed_field": "@local.completed_field",
         "title": "@local.card_title",
         "style": "@local.card_style",
-        "in_progress_icon": "plh_images/icons/in_progress.svg",
-        "completed_icon": "plh_images/icons/tick_white.svg",
+        "in_progress_icon": "@local.in_progress_icon",
+        "completed_icon": "@local.completed_icon",
         "highlighted_text": "@local.highlighted_text",
         "progress_units_name": "@local.progress_units_name"
       },
@@ -763,6 +803,22 @@
               "fieldName": "card_style"
             }
           ],
+          "in_progress_icon": [
+            {
+              "fullExpression": "@local.in_progress_icon",
+              "matchedExpression": "@local.in_progress_icon",
+              "type": "local",
+              "fieldName": "in_progress_icon"
+            }
+          ],
+          "completed_icon": [
+            {
+              "fullExpression": "@local.completed_icon",
+              "matchedExpression": "@local.completed_icon",
+              "type": "local",
+              "fieldName": "completed_icon"
+            }
+          ],
           "highlighted_text": [
             {
               "fullExpression": "@local.highlighted_text",
@@ -812,6 +868,12 @@
         ],
         "@local.card_style": [
           "parameter_list.style"
+        ],
+        "@local.in_progress_icon": [
+          "parameter_list.in_progress_icon"
+        ],
+        "@local.completed_icon": [
+          "parameter_list.completed_icon"
         ],
         "@local.highlighted_text": [
           "parameter_list.highlighted_text"

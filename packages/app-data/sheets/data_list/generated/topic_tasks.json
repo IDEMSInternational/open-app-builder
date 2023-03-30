@@ -4,43 +4,276 @@
   "flow_type": "data_list",
   "rows": [
     {
-      "id": "praise",
-      "number": 3,
+      "id": "intro",
+      "number": 1,
+      "image_asset": "images/topics/wave.svg",
       "relax_data": "@data.relax.relax_3",
-      "image_asset": "plh_images/topics/praise/tools.svg",
       "relax_title": "@data.relax.relax_3.title",
-      "title": "Praise",
+      "title": "Introduction",
       "_translations": {
         "title": {},
-        "description": {},
-        "tools_title": {},
         "in_text_title": {},
+        "description": {},
         "intro_title": {}
       },
       "_translatedFields": {
         "title": {
-          "eng": "Praise"
-        },
-        "description": {
-          "eng": "Praise helps teens show more positive behaviour."
-        },
-        "tools_title": {
-          "eng": "How to praise"
+          "eng": "Introduction"
         },
         "in_text_title": {
-          "eng": "**Praise** @global.topic"
+          "eng": "**@data.topic.intro.title** @global.topic"
+        },
+        "description": {
+          "eng": "Description of @data.topic.intro.title"
         },
         "intro_title": {
-          "eng": "Why Praise?"
+          "eng": "Why Introduction?"
         }
       },
-      "description": "Praise helps teens show more positive behaviour.",
-      "tools_title": "How to praise",
-      "in_text_title": "**Praise** @global.topic",
-      "intro_title": "Why Praise?",
-      "completed_field": "task_praise_completed",
-      "completed": "@fields.task_praise_completed",
-      "skipped_field": "task_praise_skipped"
+      "in_text_title": "**@data.topic.intro.title** @global.topic",
+      "description": "Description of @data.topic.intro.title",
+      "intro_title": "Why Introduction?",
+      "completed_field": "task_intro_completed",
+      "completed": "@fields.task_intro_completed",
+      "skipped_field": "task_intro_skipped"
+    },
+    {
+      "id": "connect",
+      "number": 2,
+      "image_asset": "images/topics/wave.svg",
+      "relax_data": "@data.relax.relax_3",
+      "relax_title": "@data.relax.relax_3.title",
+      "title": "Connect",
+      "_translations": {
+        "title": {},
+        "in_text_title": {},
+        "description": {},
+        "intro_title": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Connect"
+        },
+        "in_text_title": {
+          "eng": "**@data.topic.connect.title** @global.topic"
+        },
+        "description": {
+          "eng": "Description of @data.topic.connect.title"
+        },
+        "intro_title": {
+          "eng": "Why Connect?"
+        }
+      },
+      "in_text_title": "**@data.topic.connect.title** @global.topic",
+      "description": "Description of @data.topic.connect.title",
+      "intro_title": "Why Connect?",
+      "completed_field": "task_connect_completed",
+      "completed": "@fields.task_connect_completed",
+      "skipped_field": "task_connect_skipped"
+    },
+    {
+      "id": "play",
+      "number": 3,
+      "image_asset": "images/topics/wave.svg",
+      "relax_data": "@data.relax.relax_3",
+      "relax_title": "@data.relax.relax_3.title",
+      "title": "Play",
+      "_translations": {
+        "title": {},
+        "in_text_title": {},
+        "description": {},
+        "intro_title": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Play"
+        },
+        "in_text_title": {
+          "eng": "**@data.topic.play.title** @global.topic"
+        },
+        "description": {
+          "eng": "Description of @data.topic.play.title"
+        },
+        "intro_title": {
+          "eng": "Why Play?"
+        }
+      },
+      "in_text_title": "**@data.topic.play.title** @global.topic",
+      "description": "Description of @data.topic.play.title",
+      "intro_title": "Why Play?",
+      "completed_field": "task_play_completed",
+      "completed": "@fields.task_play_completed",
+      "skipped_field": "task_play_skipped"
+    },
+    {
+      "id": "talk",
+      "number": 4,
+      "image_asset": "images/topics/wave.svg",
+      "relax_data": "@data.relax.relax_3",
+      "relax_title": "@data.relax.relax_3.title",
+      "title": "Talk",
+      "_translations": {
+        "title": {},
+        "in_text_title": {},
+        "description": {},
+        "intro_title": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Talk"
+        },
+        "in_text_title": {
+          "eng": "**@data.topic.talk.title** @global.topic"
+        },
+        "description": {
+          "eng": "Description of @data.topic.talk.title"
+        },
+        "intro_title": {
+          "eng": "Why Talk?"
+        }
+      },
+      "in_text_title": "**@data.topic.talk.title** @global.topic",
+      "description": "Description of @data.topic.talk.title",
+      "intro_title": "Why Talk?",
+      "completed_field": "task_talk_completed",
+      "completed": "@fields.task_talk_completed",
+      "skipped_field": "task_talk_skipped"
+    },
+    {
+      "id": "explore",
+      "number": 5,
+      "image_asset": "images/topics/wave.svg",
+      "relax_data": "@data.relax.relax_3",
+      "relax_title": "@data.relax.relax_3.title",
+      "title": "Explore",
+      "_translations": {
+        "title": {},
+        "in_text_title": {},
+        "description": {},
+        "intro_title": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Explore"
+        },
+        "in_text_title": {
+          "eng": "**@data.topic.explore.title** @global.topic"
+        },
+        "description": {
+          "eng": "Description of @data.topic.explore.title"
+        },
+        "intro_title": {
+          "eng": "Why Explore?"
+        }
+      },
+      "in_text_title": "**@data.topic.explore.title** @global.topic",
+      "description": "Description of @data.topic.explore.title",
+      "intro_title": "Why Explore?",
+      "completed_field": "task_explore_completed",
+      "completed": "@fields.task_explore_completed",
+      "skipped_field": "task_explore_skipped"
+    },
+    {
+      "id": "create",
+      "number": 6,
+      "image_asset": "images/topics/wave.svg",
+      "relax_data": "@data.relax.relax_3",
+      "relax_title": "@data.relax.relax_3.title",
+      "title": "Create",
+      "_translations": {
+        "title": {},
+        "in_text_title": {},
+        "description": {},
+        "intro_title": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Create"
+        },
+        "in_text_title": {
+          "eng": "**@data.topic.create.title** @global.topic"
+        },
+        "description": {
+          "eng": "Description of @data.topic.create.title"
+        },
+        "intro_title": {
+          "eng": "Why Create?"
+        }
+      },
+      "in_text_title": "**@data.topic.create.title** @global.topic",
+      "description": "Description of @data.topic.create.title",
+      "intro_title": "Why Create?",
+      "completed_field": "task_create_completed",
+      "completed": "@fields.task_create_completed",
+      "skipped_field": "task_create_skipped"
+    },
+    {
+      "id": "build",
+      "number": 7,
+      "image_asset": "images/topics/wave.svg",
+      "relax_data": "@data.relax.relax_3",
+      "relax_title": "@data.relax.relax_3.title",
+      "title": "Build",
+      "_translations": {
+        "title": {},
+        "in_text_title": {},
+        "description": {},
+        "intro_title": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Build"
+        },
+        "in_text_title": {
+          "eng": "**@data.topic.build.title** @global.topic"
+        },
+        "description": {
+          "eng": "Description of @data.topic.build.title"
+        },
+        "intro_title": {
+          "eng": "Why Build?"
+        }
+      },
+      "in_text_title": "**@data.topic.build.title** @global.topic",
+      "description": "Description of @data.topic.build.title",
+      "intro_title": "Why Build?",
+      "completed_field": "task_build_completed",
+      "completed": "@fields.task_build_completed",
+      "skipped_field": "task_build_skipped"
+    },
+    {
+      "id": "summary",
+      "number": 8,
+      "image_asset": "images/topics/wave.svg",
+      "relax_data": "@data.relax.relax_3",
+      "relax_title": "@data.relax.relax_3.title",
+      "title": "Summary",
+      "_translations": {
+        "title": {},
+        "in_text_title": {},
+        "description": {},
+        "intro_title": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Summary"
+        },
+        "in_text_title": {
+          "eng": "**@data.topic.summary.title** @global.topic"
+        },
+        "description": {
+          "eng": "Description of @data.topic.summary.title"
+        },
+        "intro_title": {
+          "eng": "Why Summary?"
+        }
+      },
+      "in_text_title": "**@data.topic.summary.title** @global.topic",
+      "description": "Description of @data.topic.summary.title",
+      "intro_title": "Why Summary?",
+      "completed_field": "task_summary_completed",
+      "completed": "@fields.task_summary_completed",
+      "skipped_field": "task_summary_skipped"
     }
   ]
 }

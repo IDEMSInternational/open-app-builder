@@ -324,6 +324,24 @@
       "_nested_name": "card_image"
     },
     {
+      "name": "in_progress_icon",
+      "value": "images/icons/in_progress.svg;",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "in_progress_icon"
+    },
+    {
+      "name": "completed_icon",
+      "value": "images/icons/tick.svg;",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "completed_icon"
+    },
+    {
       "type": "task_card",
       "name": "task_card_1",
       "action_list": [
@@ -362,8 +380,8 @@
         "title": "@local.card_title",
         "image": "@local.card_image",
         "style": "button",
-        "in_progress_icon": "plh_images/icons/in_progress.svg",
-        "completed_icon": "plh_images/icons/tick_white.svg"
+        "in_progress_icon": "images/icons/in_progress.svg",
+        "completed_icon": "images/icons/tick.svg"
       },
       "condition": "@local.with_image",
       "exclude_from_translation": true,
@@ -534,8 +552,8 @@
         "completed_field": "@local.completed_field",
         "title": "@local.card_title",
         "style": "button",
-        "in_progress_icon": "plh_images/icons/in_progress.svg",
-        "completed_icon": "plh_images/icons/tick_white.svg"
+        "in_progress_icon": "@local.in_progress_icon",
+        "completed_icon": "@local.completed_icon"
       },
       "condition": "!@local.with_image && @local.has_single_task",
       "exclude_from_translation": true,
@@ -623,6 +641,22 @@
               "type": "local",
               "fieldName": "card_title"
             }
+          ],
+          "in_progress_icon": [
+            {
+              "fullExpression": "@local.in_progress_icon",
+              "matchedExpression": "@local.in_progress_icon",
+              "type": "local",
+              "fieldName": "in_progress_icon"
+            }
+          ],
+          "completed_icon": [
+            {
+              "fullExpression": "@local.completed_icon",
+              "matchedExpression": "@local.completed_icon",
+              "type": "local",
+              "fieldName": "completed_icon"
+            }
           ]
         },
         "condition": [
@@ -657,6 +691,12 @@
         ],
         "@local.card_title": [
           "parameter_list.title"
+        ],
+        "@local.in_progress_icon": [
+          "parameter_list.in_progress_icon"
+        ],
+        "@local.completed_icon": [
+          "parameter_list.completed_icon"
         ],
         "!@local.with_image": [
           "condition"
@@ -734,8 +774,8 @@
         "completed_field": "@local.completed_field",
         "title": "@local.card_title",
         "style": "button",
-        "in_progress_icon": "plh_images/icons/in_progress.svg",
-        "completed_icon": "plh_images/icons/tick_white.svg"
+        "in_progress_icon": "@local.in_progress_icon",
+        "completed_icon": "@local.completed_icon"
       },
       "condition": "!@local.with_image && !@local.has_single_task",
       "exclude_from_translation": true,
@@ -879,6 +919,22 @@
               "type": "local",
               "fieldName": "card_title"
             }
+          ],
+          "in_progress_icon": [
+            {
+              "fullExpression": "@local.in_progress_icon",
+              "matchedExpression": "@local.in_progress_icon",
+              "type": "local",
+              "fieldName": "in_progress_icon"
+            }
+          ],
+          "completed_icon": [
+            {
+              "fullExpression": "@local.completed_icon",
+              "matchedExpression": "@local.completed_icon",
+              "type": "local",
+              "fieldName": "completed_icon"
+            }
           ]
         },
         "condition": [
@@ -921,6 +977,12 @@
         ],
         "@local.card_title": [
           "parameter_list.title"
+        ],
+        "@local.in_progress_icon": [
+          "parameter_list.in_progress_icon"
+        ],
+        "@local.completed_icon": [
+          "parameter_list.completed_icon"
         ],
         "!@local.with_image": [
           "condition"
