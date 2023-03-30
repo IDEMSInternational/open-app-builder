@@ -6,8 +6,8 @@ android {
         applicationId "international.idems.wash"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 16014
-        versionName "0.16.14"
+        versionCode 16016
+        versionName "0.16.16"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {

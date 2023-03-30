@@ -271,6 +271,7 @@ export namespace FlowTypes {
     | "set_default"
     | "text_box"
     | "text_area"
+    | "radio_button_grid"
     | "radio_group"
     | "tile_component"
     | "combo_box"
