@@ -1,17 +1,5 @@
 [
   {
-    "SourceText": "Restart",
-    "text": "Anzisha upya tena",
-    "type": "template",
-    "note": ""
-  },
-  {
-    "SourceText": "@global.app_name has downloaded an update. Please restart the app to finish installation.",
-    "text": "@global.app_name imesasishwa. Tafadhali anzisha tena programu tumishi kumalizia kuiweka swa.",
-    "type": "template",
-    "note": ""
-  },
-  {
     "SourceText": "Your data is important to us. This @global.privacy_policy for @global.app_id (‘@global.app_name’ or ‘the app’) sets out our policies for the collection, use, and disclosure of personal information in the use of @global.app_name.",
     "text": "Data yako ni muhimu kwetu. Hii @global.privacy_policy kwa @global.app_id (‘@global.app_name’ ‘au programu’) huweka bayana sera zetu za ukusanyaji, matumizi na ufichuaji wa taarifa binafsi katika matumizi ya @global.app_name.",
     "type": "template",
@@ -757,7 +745,7 @@
   },
   {
     "SourceText": "Water, Sanitation and Hygiene",
-    "text": "Maji, Usafi na Usafi kwa ujumla",
+    "text": "Maji Salama, Usafi na Usafi kwa ujumla",
     "type": "data_list",
     "note": ""
   },
@@ -1242,6 +1230,12 @@
     "note": ""
   },
   {
+    "SourceText": "Done",
+    "text": "Imefanyika",
+    "type": "global",
+    "note": ""
+  },
+  {
     "SourceText": "Tap and type",
     "text": "Bofya na uandike",
     "type": "global",
@@ -1388,6 +1382,18 @@
   {
     "SourceText": "Developer Mode",
     "text": "Mtengenezaji wa programu",
+    "type": "template",
+    "note": ""
+  },
+  {
+    "SourceText": "@global.app_name has downloaded an update. Please restart the app to finish installation.",
+    "text": "@global.app_name imesasishwa. Tafadhali anzisha tena programu tumishi kumalizia kuiweka swa.",
+    "type": "template",
+    "note": "The string @global.app_name should not be translated."
+  },
+  {
+    "SourceText": "Restart",
+    "text": "Anzisha upya tena",
     "type": "template",
     "note": ""
   },
