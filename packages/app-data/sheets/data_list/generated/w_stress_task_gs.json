@@ -218,7 +218,7 @@
       "individual": true,
       "together": true,
       "priority": 14,
-      "has_single_task": true,
+      "has_single_task": false,
       "title": "@global.story @global.part_connector @data.story.safety_amnesty.title",
       "_translations": {
         "title": {}
@@ -228,7 +228,6 @@
           "eng": "@global.story @global.part_connector @data.story.safety_amnesty.title"
         }
       },
-      "template": "w_stress_read_3",
       "story_id": "safety_amnesty",
       "completed_field": "task_gp_w_stress_read_3_completed",
       "completed": "@fields.task_gp_w_stress_read_3_completed"

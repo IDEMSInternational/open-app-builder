@@ -69,6 +69,10 @@
     {
       "type": "text_box",
       "name": "text_box",
+      "value": "@fields.@local.text_box_tracker",
+      "_translations": {
+        "value": {}
+      },
       "action_list": [
         {
           "trigger": "changed",
@@ -86,6 +90,14 @@
       },
       "_nested_name": "text_box",
       "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@fields.@local.text_box_tracker",
+            "matchedExpression": "@local.text_box_tracker",
+            "type": "local",
+            "fieldName": "text_box_tracker"
+          }
+        ],
         "action_list": {
           "0": {
             "args": {
@@ -141,6 +153,7 @@
       },
       "_dynamicDependencies": {
         "@local.text_box_tracker": [
+          "value",
           "action_list.0.args.0",
           "action_list.0._raw",
           "action_list.0._cleaned"
@@ -151,6 +164,44 @@
         ],
         "@local.text_box_placeholder": [
           "parameter_list.placeholder"
+        ]
+      }
+    },
+    {
+      "type": "button",
+      "name": "button",
+      "hidden": true,
+      "_nested_name": "button"
+    },
+    {
+      "type": "display_group",
+      "name": "reply_dg",
+      "hidden": "!(@fields.@local.text_box_tracker)",
+      "parameter_list": {
+        "style": "column"
+      },
+      "rows": [
+        {
+          "type": "text",
+          "name": "reply",
+          "exclude_from_translation": true,
+          "_nested_name": "reply_dg.reply"
+        }
+      ],
+      "_nested_name": "reply_dg",
+      "_dynamicFields": {
+        "hidden": [
+          {
+            "fullExpression": "!(@fields.@local.text_box_tracker)",
+            "matchedExpression": "@local.text_box_tracker",
+            "type": "local",
+            "fieldName": "text_box_tracker"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.text_box_tracker": [
+          "hidden"
         ]
       }
     },

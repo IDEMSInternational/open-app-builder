@@ -33,11 +33,14 @@ export class LifecycleActionsService extends SyncServiceBase {
     // if all are satisfied, run its actions list
     const templateActionService = new TemplateActionService(this.injector);
     for (const launchAction of allLaunchActions) {
-      const allConditionsSatisfied = await asyncEvery(
-        launchAction.condition_list,
-        async (condition: string) =>
-          await this.templateVariablesService.evaluateConditionString(condition)
-      );
+      let allConditionsSatisfied = true;
+      if (Array.isArray(launchAction.condition_list) && launchAction.condition_list.length > 0) {
+        allConditionsSatisfied = await asyncEvery(
+          launchAction.condition_list,
+          async (condition: string) =>
+            await this.templateVariablesService.evaluateConditionString(condition)
+        );
+      }
       if (allConditionsSatisfied) {
         console.log(`[Lifecycle Actions] ${launchAction.id}`);
         await templateActionService.handleActions(launchAction.action_list);

@@ -121,6 +121,26 @@
         "value": {}
       },
       "exclude_from_translation": true
+    },
+    {
+      "type": "declare_global_constant",
+      "name": "safety_word",
+      "value": "Safety Word",
+      "_translations": {
+        "value": {
+          "tz_sw": true
+        }
+      }
+    },
+    {
+      "type": "declare_global_constant",
+      "name": "safety_word_example_1",
+      "value": "Aunty Cecilia",
+      "_translations": {
+        "value": {
+          "tz_sw": true
+        }
+      }
     }
   ],
   "_xlsxPath": "global/data/topic_data/topic_globals.xlsx"
