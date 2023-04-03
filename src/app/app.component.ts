@@ -33,6 +33,7 @@ import { AppConfigService } from "./shared/services/app-config/app-config.servic
 import { IAppConfig } from "./shared/model";
 import { TaskService } from "./shared/services/task/task.service";
 import { AppUpdateService } from "./shared/services/app-update/app-update.service";
+import { RemoteAssetService } from "./shared/services/remote-asset/remote-asset.service";
 import { AsyncServiceBase } from "./shared/services/asyncService.base";
 import { SyncServiceBase } from "./shared/services/syncService.base";
 import { SeoService } from "./shared/services/seo/seo.service";
@@ -89,7 +90,8 @@ export class AppComponent {
     private taskActions: TaskActionService,
     private lifecycleActionsService: LifecycleActionsService,
     private serverService: ServerService,
-    private appUpdateService: AppUpdateService
+    private appUpdateService: AppUpdateService,
+    private remoteAssetService: RemoteAssetService
   ) {
     this.initializeApp();
   }
@@ -198,6 +200,7 @@ export class AppComponent {
         this.skinService,
         this.appConfigService,
         this.appUpdateService,
+        this.remoteAssetService,
         this.themeService,
         this.templateService,
         this.templateProcessService,
@@ -237,6 +240,7 @@ export class AppComponent {
     }, 5000);
     console.log("Total time:", Math.round(performance.now() - start) + "ms");
     console.groupEnd();
+    this.remoteAssetService.downloadFile("quality_assurance/example_asset.png");
   }
 
   private clickOnMenuItem(id: string) {
