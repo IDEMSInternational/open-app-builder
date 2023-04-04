@@ -2165,6 +2165,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@capacitor/filesystem@npm:^4.1.4":
+  version: 4.1.4
+  resolution: "@capacitor/filesystem@npm:4.1.4"
+  peerDependencies:
+    "@capacitor/core": ^4.0.0
+  checksum: 6c1c1b934e6dfb7866f3a7995fd17bfa436b763ad720d249c72f2dc9febe36e7e0f9fb4f2dc1efcba7abd93323227ff002cc0713b1dcab3bcd24c3fe4f30e0f0
+  languageName: node
+  linkType: hard
+
 "@capacitor/local-notifications@npm:^4.1.4":
   version: 4.1.4
   resolution: "@capacitor/local-notifications@npm:4.1.4"
@@ -9670,6 +9679,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"capacitor-blob-writer@npm:^1.1.9":
+  version: 1.1.9
+  resolution: "capacitor-blob-writer@npm:1.1.9"
+  peerDependencies:
+    "@capacitor/core": ">=3.0.0"
+    "@capacitor/filesystem": ">=1.0.0"
+  checksum: fd90ef34de024eb009fbdbcfaf6d7ef297ffa03dbcafce5e943e200c6b213ddee1612abc8f4942b0038303995fa711e4f4a7f132ba48ae55d5683e2818f413ee
+  languageName: node
+  linkType: hard
+
 "capacitor-firebase-auth@npm:^3.0.0":
   version: 3.0.0
   resolution: "capacitor-firebase-auth@npm:3.0.0"
@@ -14887,6 +14906,7 @@ __metadata:
     "@capacitor/clipboard": ^4.1.0
     "@capacitor/core": ^4.6.0
     "@capacitor/device": ^4.1.0
+    "@capacitor/filesystem": ^4.1.4
     "@capacitor/local-notifications": ^4.1.4
     "@capacitor/push-notifications": ^4.1.2
     "@capacitor/splash-screen": ^4.1.2
@@ -14918,6 +14938,7 @@ __metadata:
     "@typescript-eslint/eslint-plugin-tslint": ^4.28.0
     "@typescript-eslint/parser": 5.17.0
     app-data: "workspace:*"
+    capacitor-blob-writer: ^1.1.9
     capacitor-firebase-auth: ^3.0.0
     clone: ^2.1.2
     codelyzer: ^6.0.2

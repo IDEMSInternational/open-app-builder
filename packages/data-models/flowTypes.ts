@@ -355,6 +355,7 @@ export namespace FlowTypes {
   export const ACTION_ID_LIST = [
     "",
     "app_update",
+    "asset_pack",
     "audio_end",
     "audio_play",
     "changed",
