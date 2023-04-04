@@ -16,13 +16,10 @@ import {
   isThemeAssetsFolderName,
   getThemeNameFromThemeAssetFolderName,
   setNestedProperty,
+  replicateDir,
 } from "../../../utils";
 import { ActiveDeployment } from "../../deployment/get";
-import type {
-  IAssetEntry,
-  IAssetEntryHashmap,
-  IContentsEntryMinimal,
-} from "data-models/deployment.model";
+import type { IAssetEntryHashmap, IContentsEntryMinimal } from "data-models/deployment.model";
 
 const ASSETS_GLOBAL_FOLDER_NAME = "global";
 
@@ -46,6 +43,7 @@ export default program
  *************************************************************************************/
 export class AssetsPostProcessor {
   private activeDeployment = ActiveDeployment.get();
+  private stagingDir: string;
   constructor(private options: IProgramOptions) {}
 
   public run() {
@@ -57,18 +55,20 @@ export class AssetsPostProcessor {
     const sourceAssets = generateFolderFlatMap(sourceAssetsFolder, { includeLocalPath: true });
     const sourceAssetsFiltered = this.filterAppAssets(sourceAssets);
     const mergedAssets = this.mergeParentAssets(sourceAssetsFiltered);
-
     // Populate merged assets staging to run quality control checks and generate full contents lists
-    const stagingDir = createTempDir();
-    this.copyAssetsToFolder(mergedAssets, stagingDir);
-    this.assetsQualityCheck(stagingDir);
-    const assetsByType = this.listAssetOverrides(mergedAssets);
+    this.stagingDir = createTempDir();
+    replicateDir(sourceAssetsFolder, this.stagingDir, {
+      filter_fn: ({ relativePath }) => relativePath in mergedAssets,
+    });
+    this.assetsQualityCheck(this.stagingDir);
+    const assetsByType = this.handleAssetOverrides(mergedAssets);
     const { tracked, untracked } = assetsByType;
     this.checkTotalAssetSize(assetsByType);
-    fs.removeSync(stagingDir);
 
     // copy deployment assets to main folder and write merged contents file
-    this.copyAssetsToFolder(sourceAssetsFiltered, appAssetsFolder);
+    replicateDir(this.stagingDir, appAssetsFolder);
+    fs.removeSync(this.stagingDir);
+
     this.writeAssetsContentsFiles(appAssetsFolder, tracked, untracked);
 
     console.log(chalk.green("Asset Process Complete"));
@@ -97,21 +97,6 @@ export class AssetsPostProcessor {
       });
       fs.writeFileSync(missingTarget, JSON.stringify(missingEntries, null, 2));
     }
-  }
-
-  private copyAssetsToFolder(
-    sourceAssets: { [relativePath: string]: IContentsEntry },
-    targetDir: string
-  ) {
-    fs.ensureDirSync(targetDir);
-    fs.emptyDirSync(targetDir);
-    Object.values(sourceAssets).forEach(({ localPath, relativePath, modifiedTime }) => {
-      const target = path.resolve(targetDir, relativePath);
-      fs.ensureDirSync(path.dirname(target));
-      fs.copyFileSync(localPath, target);
-      const mtime = new Date(modifiedTime);
-      fs.utimesSync(target, mtime, mtime);
-    });
   }
 
   private mergeParentAssets(sourceAssets: { [relativePath: string]: IContentsEntry }) {
@@ -209,11 +194,10 @@ export class AssetsPostProcessor {
 
   private checkTotalAssetSize(sourceAssets: IAssetEntriesByType) {
     let totalSize = 0;
-    let langSizes = { global: 0 };
     let themeAndLanguageSizes = { default: { total: 0, global: 0 } };
     Object.values(sourceAssets).forEach((assetEntryHashmap: IAssetEntryHashmap) => {
       Object.values(assetEntryHashmap).forEach((entry) => {
-        Object.entries(entry.themeVariations).forEach(([themeName, languageEntries]) => {
+        Object.entries(entry.overrides || {}).forEach(([themeName, languageEntries]) => {
           Object.entries(languageEntries).forEach(([languageCode, languageEntry]) => {
             const assetSize = languageEntry.size_kb;
             totalSize += assetSize;
@@ -252,56 +236,61 @@ export class AssetsPostProcessor {
 
   /**
    * Make a list of any source assets that have language-code or theme overrides,
-   * and any language assets that are missing corresponding globals
+   * and any language assets that are missing corresponding globals.
+   * Flatten override files to sit alongside their target assets
    */
-  private listAssetOverrides(sourceAssets: IContentsEntryHashmap) {
+  private handleAssetOverrides(sourceAssets: IContentsEntryHashmap) {
     const entries: IAssetEntriesByType = {
       tracked: {},
       untracked: {},
     };
-    const globalFolder = ASSETS_GLOBAL_FOLDER_NAME;
 
     // split assets to separate global, translated and theme assets
     Object.entries(sourceAssets).forEach(([relativePath, entry]) => {
       const assetEntry = this.contentsToAssetEntry(entry);
 
-      let [baseFolder, ...nestedPaths] = relativePath.split("/");
-      let nestedPath = nestedPaths.join("/");
-      let themeName = "default";
+      const pathSegments = relativePath.split("/");
 
-      // Handle case where asset is nested inside a theme folder
-      if (isThemeAssetsFolderName(baseFolder)) {
-        themeName = getThemeNameFromThemeAssetFolderName(baseFolder);
-        [baseFolder, ...nestedPaths] = nestedPath.split("/");
-        nestedPath = nestedPaths.join("/");
-      }
+      let themeVariation = pathSegments.find((segment) => isThemeAssetsFolderName(segment));
+      let langVariation = pathSegments.find((segment) => isCountryLanguageCode(segment));
+      let assetPathName = relativePath;
 
-      // Handle asset variations
-      if (baseFolder === globalFolder || isCountryLanguageCode(baseFolder)) {
-        // If an entry for the given asset already exists, add the language variation
-        if (entries.tracked[nestedPath]?.themeVariations?.[themeName]) {
-          entries.tracked[nestedPath].themeVariations[themeName][baseFolder] = assetEntry;
-        }
-        // Otherwise create the entry
-        else {
-          entries.tracked[nestedPath] = setNestedProperty(
-            `themeVariations.${themeName}.${baseFolder}`,
-            assetEntry,
-            entries.tracked[nestedPath]
-          );
-        }
-      } else {
-        console.log(
-          `Folder naming error: The folder "${baseFolder}" is not named with a valid language code`
+      let overridePath = "";
+
+      // If using overrides ensure both theme and language provided, and place in corresponding folder
+
+      if (themeVariation || langVariation) {
+        themeVariation ??= "theme_default";
+        langVariation ??= "global";
+        // Replace override segments to leave named asset segment path
+        assetPathName = assetPathName
+          .replace(`${themeVariation}/`, "")
+          .replace(`${langVariation}/`, "");
+
+        overridePath = `overrides.${themeVariation}.${langVariation}`;
+        // move override file to flat folder structure alongside asset, i.e. `img.[theme].[lang].jpg
+        const extName = path.extname(relativePath);
+        const relativeOverridePath = assetPathName.replace(
+          extName,
+          `.${themeVariation}.${langVariation}${extName}`
         );
+        const sourcePath = path.resolve(this.stagingDir, relativePath);
+        const targetPath = path.resolve(this.stagingDir, relativeOverridePath);
+        fs.moveSync(sourcePath, targetPath);
       }
+      // Merge overrides or top-level asset data into main entries
+      entries.tracked[assetPathName] = setNestedProperty(
+        overridePath,
+        assetEntry,
+        entries.tracked[assetPathName]
+      );
     });
 
     // Check for assets which have no default version, and move them to "untracked"
-    Object.entries(entries.tracked).forEach(([assetPath, assetEntry]) => {
-      if (!assetEntry.themeVariations.default?.hasOwnProperty("global")) {
-        entries.untracked[assetPath] = assetEntry;
-        delete entries.tracked.assetPath;
+    Object.entries(entries.tracked).forEach(([assetPathName, assetEntry]) => {
+      if (assetEntry.overrides && !assetEntry.md5Checksum) {
+        entries.untracked[assetPathName] = assetEntry;
+        delete entries.tracked[assetPathName];
       }
     });
     return entries;

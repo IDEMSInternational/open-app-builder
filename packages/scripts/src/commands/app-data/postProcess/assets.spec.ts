@@ -1,14 +1,17 @@
+import { createHash } from "crypto";
+
 import { AssetsPostProcessor } from "./assets";
 import type { IDeploymentConfigJson } from "../../deployment/common";
 import type { RecursivePartial } from "data-models/appConfig";
 
-import fs from "fs-extra";
+import fs, { readJsonSync, readdirSync } from "fs-extra";
 import mockFs from "mock-fs";
 
 // Use default imports to allow spying on functions and replacing with mock methods
 import { ActiveDeployment } from "../../deployment/get";
 import { Logger } from "../../../utils/logging.utils";
 import path from "path";
+import { IAssetEntryHashmap } from "data-models/deployment.model";
 
 /** Mock file system folders for use in tests */
 const mockDirs = {
@@ -16,73 +19,45 @@ const mockDirs = {
   localAssets: "mock/local/assets",
 };
 
-const mockFile = Buffer.alloc(1 * 1024 * 1024); // create mock 1MB file
-
-/** Mock file system contents. Nesting will create folders and populate filename:contents mock files  */
-const mockDirContents = {
-  app_data: {},
-  local: {
-    assets: {
-      global: {
-        "test.jpg": mockFile,
-      },
-      theme_demoTheme: {
-        global: {
-          "test.jpg": mockFile,
-        },
-        tz_sw: {
-          "test.jpg": mockFile,
-        },
-        es_sp: {
-          "test.jpg": mockFile,
-        },
-      },
-      theme_excluded: {
-        global: {
-          "test.jpg": mockFile,
-        },
-      },
-      // language code not included
-      tz_na: {
-        "test.jpg": mockFile,
-      },
-      tz_sw: {
-        "test.jpg": mockFile,
-      },
-    },
-    sheets: {},
-    translations: {},
-  },
-};
-
-/** Mock file system contents with only a single, global, version of an asset */
-const mockDirContentsGlobal = {
-  app_data: {},
-  local: {
-    assets: {
-      global: {
-        "test.jpg": mockFile,
-      },
-    },
-    sheets: {},
-    translations: {},
-  },
-};
+const { file: mockFile, entry: mockFileEntry } = createMockFile(); // create mock 1MB file
 
 /** Mock function that will replace default `Logger` function to instead just record any invocations */
 const mockErrorLogger = jasmine.createSpy("mockErrorLogger", Logger.error);
 
+/** Parse the contents.json file populated to the app assets folder and return */
+function readAppAssetContents() {
+  const contentsPath = path.resolve(mockDirs.appAssets, "contents.json");
+  return readJsonSync(contentsPath) as IAssetEntryHashmap;
+}
+
+/** Create mock entries on file system corresponding to local assets folder */
+function mockLocalAssets(assets: Record<string, any>) {
+  return mockFs({
+    mock: {
+      local: {
+        assets,
+      },
+    },
+  });
+}
+
+function createMockFile(size_kb = 1024) {
+  const file = Buffer.alloc(1 * 1024 * size_kb);
+  const entry = { size_kb, md5Checksum: createHash("md5").update(file).digest("hex") };
+  return { file, entry };
+}
+
 describe("Assets PostProcess", () => {
   /** Initial setup */
   // replace prettier codeTidying method
-  // relpace `Logger` function with created spy method
+  // replace `Logger` function with created spy method
   beforeAll(() => {
     spyOn(Logger, "error").and.callFake(mockErrorLogger);
   });
   // Populate a fake file system before each test. This will automatically be called for any fs operations
   // Restore regular file functionality after each test.
   beforeEach(() => {
-    mockFs({ mock: mockDirContents });
+    mockLocalAssets({});
   });
   afterEach(() => {
     mockFs.restore();
@@ -90,120 +65,150 @@ describe("Assets PostProcess", () => {
 
   /** Mock setup testing (can be removed once working consistenctly) */
   it("mocks file system for testing", () => {
-    const contents = fs.readdirSync(mockDirs.localAssets);
-    expect(contents).toEqual(Object.keys(mockDirContents.local.assets));
-    const testFilePath = path.resolve(mockDirs.localAssets, "global", "test.jpg");
+    mockLocalAssets({ folder: { "file.jpg": mockFile } });
+    const testFilePath = path.resolve(mockDirs.localAssets, "folder", "file.jpg");
     expect(fs.statSync(testFilePath).size).toEqual(1 * 1024 * 1024);
   });
 
   /** Main tests */
   it("Copies assets from local to app", () => {
+    mockLocalAssets({ folder: { "file.jpg": mockFile } });
     runAssetsPostProcessor();
-    const appGlobalAssetsDir = path.join(mockDirs.localAssets, "global");
-    const appGlobalAssets = fs.readdirSync(appGlobalAssetsDir);
-    expect(appGlobalAssets).toEqual(["test.jpg"]);
+    const testFilePath = path.resolve(mockDirs.appAssets, "folder", "file.jpg");
+    expect(fs.statSync(testFilePath).size).toEqual(1 * 1024 * 1024);
   });
 
-  it("Handles case of no asset variations (only global version provided)", () => {
-    mockFs({ mock: mockDirContentsGlobal });
+  it("Filters theme assets", () => {
+    mockLocalAssets({
+      "test.jpg": mockFile,
+      theme_testTheme: { "test.jpg": mockFile },
+      theme_ignored: { "test.jpg": mockFile },
+    });
+    runAssetsPostProcessor({ app_themes_available: ["testTheme"] });
+    expect(readdirSync(mockDirs.appAssets)).toEqual([
+      "contents.json",
+      "test.jpg",
+      "theme_testTheme",
+    ]);
+  });
+
+  it("Filters language assets", () => {
+    mockLocalAssets({
+      "test.jpg": mockFile,
+      tz_sw: { "test.jpg": mockFile },
+      ke_sw: { "test.jpg": mockFile },
+    });
+    runAssetsPostProcessor({ filter_language_codes: ["tz_sw"] });
+    expect(readdirSync(mockDirs.appAssets)).toEqual(["contents.json", "test.jpg", "tz_sw"]);
+  });
+
+  it("populates contents json", () => {
+    mockLocalAssets({ "test.jpg": mockFile });
     runAssetsPostProcessor();
-    const contents = fs.readJSONSync(path.resolve(mockDirs.appAssets, "contents.json"));
-    const assetEntry = contents["test.jpg"];
-    expect(assetEntry.themeVariations.default).toEqual({
-      global: { size_kb: 1024, md5Checksum: "b6d81b360a5672d80c27430f39153e2c" },
+    const contents = readAppAssetContents();
+    expect("test.jpg" in contents).toBeTrue();
+  });
+
+  it("Populates global assets from named or root folder", () => {
+    mockLocalAssets({
+      global: { "global.jpg": mockFile },
+      "test.jpg": mockFile,
+    });
+    runAssetsPostProcessor();
+    const contents = readAppAssetContents();
+    expect(contents).toEqual({
+      "global.jpg": mockFileEntry,
+      "test.jpg": mockFileEntry,
     });
     mockFs.restore();
   });
 
-  it("populates contents json", () => {
+  it("Populates assets with no overrides", () => {
+    mockLocalAssets({ "test.jpg": mockFile });
     runAssetsPostProcessor();
-    const contentsPath = path.resolve(mockDirs.appAssets, "contents.json");
-    expect(fs.existsSync(contentsPath)).toBeTrue();
-    const contents = fs.readJSONSync(contentsPath);
-    expect("test.jpg" in contents).toBeTrue();
+    const contents = readAppAssetContents();
+    const assetEntry = contents["test.jpg"];
+    expect(assetEntry.overrides).toBeUndefined();
   });
 
-  it("Populates global assets for default theme", () => {
+  it("Populates translation override with default theme", () => {
+    mockLocalAssets({
+      "test.jpg": mockFile,
+      tz_sw: { "test.jpg": mockFile },
+    });
     runAssetsPostProcessor();
-    const contents = fs.readJSONSync(path.resolve(mockDirs.appAssets, "contents.json"));
+    const contents = readAppAssetContents();
     const assetEntry = contents["test.jpg"];
-    expect(assetEntry.themeVariations.default.global).toEqual({
-      size_kb: 1024,
-      md5Checksum: "b6d81b360a5672d80c27430f39153e2c",
+    expect(assetEntry.overrides.default).toEqual({
+      tz_sw: mockFileEntry,
     });
   });
 
-  it("Populates unfiltered translation assets for default theme", () => {
-    runAssetsPostProcessor();
-    const contents = fs.readJSONSync(path.resolve(mockDirs.appAssets, "contents.json"));
-    const assetEntry = contents["test.jpg"];
-    expect(assetEntry.themeVariations.default).toEqual({
-      global: { size_kb: 1024, md5Checksum: "b6d81b360a5672d80c27430f39153e2c" },
-      tz_sw: { size_kb: 1024, md5Checksum: "b6d81b360a5672d80c27430f39153e2c" },
-      tz_na: { size_kb: 1024, md5Checksum: "b6d81b360a5672d80c27430f39153e2c" },
+  it("Populates theme override with global translation", () => {
+    mockLocalAssets({
+      "test.jpg": mockFile,
+      theme_test: { "test.jpg": mockFile },
+    });
+    runAssetsPostProcessor({ app_themes_available: ["test"] });
+    const contents = readAppAssetContents();
+    expect(contents["test.jpg"].overrides).toEqual({
+      theme_test: { global: mockFileEntry },
     });
   });
-
-  it("Populates filtered translation assets for default theme", () => {
-    runAssetsPostProcessor({ filter_language_codes: ["tz_sw"] });
-    const contents = fs.readJSONSync(path.resolve(mockDirs.appAssets, "contents.json"));
-    const assetEntry = contents["test.jpg"];
-    expect(assetEntry.themeVariations.default).toEqual({
-      global: { size_kb: 1024, md5Checksum: "b6d81b360a5672d80c27430f39153e2c" },
-      tz_sw: { size_kb: 1024, md5Checksum: "b6d81b360a5672d80c27430f39153e2c" },
+  it("Populates combined theme and language overrides", () => {
+    mockLocalAssets({
+      "test.jpg": mockFile,
+      theme_test: {
+        tz_sw: { "test.jpg": mockFile },
+      },
+      tz_sw: { "test.jpg": mockFile },
+    });
+    runAssetsPostProcessor({ app_themes_available: ["test"], filter_language_codes: ["tz_sw"] });
+    const contents = readAppAssetContents();
+    console.log(JSON.stringify(contents, null, 2));
+    expect(contents).toEqual({
+      "test.jpg": {
+        ...mockFileEntry,
+        overrides: {
+          default: {
+            tz_sw: mockFileEntry,
+          },
+          theme_test: {
+            tz_sw: mockFileEntry,
+          },
+        },
+      },
     });
   });
-
-  it("Populates global assets for additional theme", () => {
-    runAssetsPostProcessor();
-    const contents = fs.readJSONSync(path.resolve(mockDirs.appAssets, "contents.json"));
-    const assetEntry = contents["test.jpg"];
-    expect(assetEntry.themeVariations.demoTheme.global).toEqual({
-      size_kb: 1024,
-      md5Checksum: "b6d81b360a5672d80c27430f39153e2c",
+  fit("Flattens override file structures", () => {
+    mockLocalAssets({
+      "img.jpg": mockFile,
+      theme_test: {
+        tz_sw: { "img.jpg": mockFile },
+      },
+      tz_sw: { "img.jpg": mockFile },
     });
-  });
-
-  it("Populates unfiltered translated for additional theme", () => {
-    runAssetsPostProcessor();
-    const contents = fs.readJSONSync(path.resolve(mockDirs.appAssets, "contents.json"));
-    const assetEntry = contents["test.jpg"];
-    expect(assetEntry.themeVariations.demoTheme).toEqual({
-      global: { size_kb: 1024, md5Checksum: "b6d81b360a5672d80c27430f39153e2c" },
-      tz_sw: { size_kb: 1024, md5Checksum: "b6d81b360a5672d80c27430f39153e2c" },
-      es_sp: { size_kb: 1024, md5Checksum: "b6d81b360a5672d80c27430f39153e2c" },
-    });
-  });
-
-  it("Populates filtered translation assets for additional theme", () => {
-    runAssetsPostProcessor({ filter_language_codes: ["tz_sw"] });
-    const contents = fs.readJSONSync(path.resolve(mockDirs.appAssets, "contents.json"));
-    const assetEntry = contents["test.jpg"];
-    expect(assetEntry.themeVariations.demoTheme).toEqual({
-      global: { size_kb: 1024, md5Checksum: "b6d81b360a5672d80c27430f39153e2c" },
-      tz_sw: { size_kb: 1024, md5Checksum: "b6d81b360a5672d80c27430f39153e2c" },
-    });
+    runAssetsPostProcessor({ app_themes_available: ["test"], filter_language_codes: ["tz_sw"] });
+    console.log("dir", fs.readdirSync(mockDirs.appAssets));
+    expect(fs.readdirSync(mockDirs.appAssets).sort()).toEqual([
+      "contents.json",
+      "img.jpg",
+      "img.theme_default.tz_sw.jpg",
+      "img.theme_test.tz_sw.jpg",
+    ]);
   });
 
   /** QA tests */
-  it("throws error when global assets not found", () => {
-    const { localAssets } = mockDirs;
-    fs.emptyDirSync(localAssets);
-    stubDeploymentConfig({
-      assets_filter_function: () => false,
-    });
-    const copy = new AssetsPostProcessor({ sourceAssetsFolder: localAssets });
-    copy.run();
-    expect(mockErrorLogger).toHaveBeenCalledWith({
-      msg1: "Assets global folder not found",
-      msg2: 'Assets folder should include a folder named "global"',
-    });
-  });
-
-  // TODO - check functioanlity for invalid language folders and add test
-  // it("warns on invalid language codes", () => {});
-
   // TODO - will require refactoring warning like error logger
+
+  // it("Warns on untracked assets", () => {
+  //   expect(false).toEqual(true);
+  // });
+
+  // it("Warns on too large assets ", () => {
+  //   expect(false).toEqual(true);
+  // });
+
   // it("warns on untracked assets", () => {
   //   const { localAssets } = mockDirs;
   //   const untrackedPath = path.resolve(localAssets, "tz_sw", "untracked.jpg");
@@ -217,7 +222,6 @@ describe("Assets PostProcess", () => {
 });
 
 function runAssetsPostProcessor(deploymentConfig: IDeploymentConfigStub = {}) {
-  deploymentConfig.app_themes_available = ["demoTheme"];
   stubDeploymentConfig(deploymentConfig);
   const { localAssets } = mockDirs;
   const processor = new AssetsPostProcessor({ sourceAssetsFolder: localAssets });
