@@ -141,7 +141,6 @@ describe("Assets PostProcess", () => {
     });
     runAssetsPostProcessor({ app_themes_available: ["test"], filter_language_codes: ["tz_sw"] });
     const contents = readAppAssetContents();
-    console.log(JSON.stringify(contents, null, 2));
     expect(contents).toEqual({
       "test.jpg": {
         ...mockFileEntry,
@@ -165,7 +164,6 @@ describe("Assets PostProcess", () => {
       tz_sw: { "img.jpg": mockFile },
     });
     runAssetsPostProcessor({ app_themes_available: ["test"], filter_language_codes: ["tz_sw"] });
-    console.log("dir", fs.readdirSync(mockDirs.appAssets));
     expect(fs.readdirSync(mockDirs.appAssets).sort()).toEqual([
       "contents.json",
       "img.jpg",
@@ -194,13 +192,47 @@ describe("Assets PostProcess", () => {
       ke_sw: { "test.jpg": mockFile },
     });
     runAssetsPostProcessor({ filter_language_codes: ["tz_sw"] });
-    console.log("contents", readdirSync(mockDirs.appAssets));
     expect(readdirSync(mockDirs.appAssets)).toEqual([
       "contents.json",
       "test.jpg",
       "test.theme_default.tz_sw.jpg",
     ]);
   });
+
+  fit("supports nested lang and theme folders", () => {
+    mockLocalAssets({
+      nested: {
+        "test.jpg": mockFile,
+        theme_test: {
+          tz_sw: { "test.jpg": mockFile },
+        },
+        tz_sw: {
+          "test.jpg": mockFile,
+        },
+      },
+    });
+    runAssetsPostProcessor({
+      filter_language_codes: ["tz_sw"],
+      app_themes_available: ["theme_test"],
+    });
+    const contents = readAppAssetContents();
+    expect(contents).toEqual({
+      "nested/test.jpg": {
+        ...mockFileEntry,
+        overrides: {
+          theme_default: {
+            tz_sw: mockFileEntry,
+          },
+          theme_test: {
+            tz_sw: mockFileEntry,
+          },
+        },
+      },
+    });
+  });
+
+  // TODO - direct support for files named `test.theme_default.tz_sw.jpg`
+  // it("supports inline theme and lang files", () => {});
 
   /** QA tests */
   // TODO - will require refactoring warning like error logger
