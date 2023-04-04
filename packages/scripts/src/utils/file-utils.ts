@@ -39,6 +39,10 @@ export function getNestedProperty(obj: any, nestedPath: string) {
  * setNestedProperty('a.b.c',1,{})  // returns {"a":{"b":{"c":1}}}
  * */
 export function setNestedProperty<T>(nestedPath: string, value: any, obj: T = {} as any) {
+  // if no nested path provided simply return
+  if (!nestedPath) {
+    return { ...obj, ...value } as T;
+  }
   let childKeys = nestedPath.split(".");
   const currentKey = childKeys[0];
   if (childKeys.length > 1) {
@@ -408,17 +412,18 @@ export function readContentsFileAsHashmap(
 export function replicateDir(
   src: string,
   target: string,
-  filter_fn?: (entry: IContentsEntry) => boolean
+  opts: { filter_fn?: (entry: IContentsEntry) => boolean; cleanEmpty?: boolean } = {
+    cleanEmpty: true,
+  }
 ) {
   fs.ensureDirSync(src);
   fs.ensureDirSync(target);
   const srcFiles = generateFolderFlatMap(src);
   const targetFiles = generateFolderFlatMap(target);
-
   // omit src files via filter
-  if (filter_fn) {
+  if (opts.filter_fn) {
     Object.entries(srcFiles).forEach(([key, entry]) => {
-      if (!filter_fn(entry as IContentsEntry)) {
+      if (!opts.filter_fn(entry as IContentsEntry)) {
         delete srcFiles[key];
       }
     });
@@ -460,8 +465,10 @@ export function replicateDir(
     fs.copyFileSync(srcPath, targetPath);
     fs.utimesSync(targetPath, mtime, mtime);
   });
-  // remove hanging directories
-  cleanupEmptyFolders(target);
+  // remove hanging directories]
+  if (opts.cleanEmpty) {
+    cleanupEmptyFolders(target);
+  }
   return ops;
 }
 

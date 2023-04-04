@@ -141,13 +141,11 @@ interface IFlowTypeBase {
 
 export type IContentsEntryMinimal = Omit<IContentsEntry, "relativePath" | "modifiedTime">;
 
-export interface IAssetLanguageVariations {
-  [language_code: string]: IContentsEntryMinimal;
-}
-export interface IAssetThemeVariations {
-  [theme_name: string]: IAssetLanguageVariations;
-}
-export interface IAssetEntry {
-  themeVariations: IAssetThemeVariations;
+export interface IAssetEntry extends IContentsEntryMinimal {
+  overrides?: {
+    [theme_name: string]: {
+      [language_code: string]: IContentsEntryMinimal;
+    };
+  };
 }
 export type IAssetEntryHashmap = { [assetPath: string]: IAssetEntry };
