@@ -240,7 +240,6 @@ export class AppComponent {
     }, 5000);
     console.log("Total time:", Math.round(performance.now() - start) + "ms");
     console.groupEnd();
-    this.remoteAssetService.downloadFile("quality_assurance/example_asset.png");
   }
 
   private clickOnMenuItem(id: string) {
