@@ -257,8 +257,10 @@ export class AssetsPostProcessor {
 
       let overridePath = "";
 
-      // If using overrides ensure both theme and language provided, and place in corresponding folder
+      // Remove additional nesting for default lang and theme folders
+      assetPathName = assetPathName.replace(`global/`, "").replace(`theme_default/`, "");
 
+      // If using overrides ensure both theme and language provided, and place in corresponding folder
       if (themeVariation || langVariation) {
         themeVariation ??= "theme_default";
         langVariation ??= "global";
@@ -295,6 +297,8 @@ export class AssetsPostProcessor {
     });
     return entries;
   }
+
+  private flattenOverrideAsset() {}
 
   /** Strip additional fields from contents entry to provide cleaner asset entry */
   private contentsToAssetEntry(entry: IContentsEntry): IContentsEntryMinimal {

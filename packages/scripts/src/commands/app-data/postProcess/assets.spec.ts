@@ -78,30 +78,6 @@ describe("Assets PostProcess", () => {
     expect(fs.statSync(testFilePath).size).toEqual(1 * 1024 * 1024);
   });
 
-  it("Filters theme assets", () => {
-    mockLocalAssets({
-      "test.jpg": mockFile,
-      theme_testTheme: { "test.jpg": mockFile },
-      theme_ignored: { "test.jpg": mockFile },
-    });
-    runAssetsPostProcessor({ app_themes_available: ["testTheme"] });
-    expect(readdirSync(mockDirs.appAssets)).toEqual([
-      "contents.json",
-      "test.jpg",
-      "theme_testTheme",
-    ]);
-  });
-
-  it("Filters language assets", () => {
-    mockLocalAssets({
-      "test.jpg": mockFile,
-      tz_sw: { "test.jpg": mockFile },
-      ke_sw: { "test.jpg": mockFile },
-    });
-    runAssetsPostProcessor({ filter_language_codes: ["tz_sw"] });
-    expect(readdirSync(mockDirs.appAssets)).toEqual(["contents.json", "test.jpg", "tz_sw"]);
-  });
-
   it("populates contents json", () => {
     mockLocalAssets({ "test.jpg": mockFile });
     runAssetsPostProcessor();
@@ -139,7 +115,7 @@ describe("Assets PostProcess", () => {
     runAssetsPostProcessor();
     const contents = readAppAssetContents();
     const assetEntry = contents["test.jpg"];
-    expect(assetEntry.overrides.default).toEqual({
+    expect(assetEntry.overrides["theme_default"]).toEqual({
       tz_sw: mockFileEntry,
     });
   });
@@ -170,7 +146,7 @@ describe("Assets PostProcess", () => {
       "test.jpg": {
         ...mockFileEntry,
         overrides: {
-          default: {
+          theme_default: {
             tz_sw: mockFileEntry,
           },
           theme_test: {
@@ -180,7 +156,7 @@ describe("Assets PostProcess", () => {
       },
     });
   });
-  fit("Flattens override file structures", () => {
+  it("Flattens override file structures", () => {
     mockLocalAssets({
       "img.jpg": mockFile,
       theme_test: {
@@ -195,6 +171,34 @@ describe("Assets PostProcess", () => {
       "img.jpg",
       "img.theme_default.tz_sw.jpg",
       "img.theme_test.tz_sw.jpg",
+    ]);
+  });
+  it("Filters theme assets", () => {
+    mockLocalAssets({
+      "test.jpg": mockFile,
+      theme_testTheme: { "test.jpg": mockFile },
+      theme_ignored: { "test.jpg": mockFile },
+    });
+    runAssetsPostProcessor({ app_themes_available: ["testTheme"] });
+    expect(readdirSync(mockDirs.appAssets)).toEqual([
+      "contents.json",
+      "test.jpg",
+      "test.theme_testTheme.global.jpg",
+    ]);
+  });
+
+  it("Filters language assets", () => {
+    mockLocalAssets({
+      "test.jpg": mockFile,
+      tz_sw: { "test.jpg": mockFile },
+      ke_sw: { "test.jpg": mockFile },
+    });
+    runAssetsPostProcessor({ filter_language_codes: ["tz_sw"] });
+    console.log("contents", readdirSync(mockDirs.appAssets));
+    expect(readdirSync(mockDirs.appAssets)).toEqual([
+      "contents.json",
+      "test.jpg",
+      "test.theme_default.tz_sw.jpg",
     ]);
   });
 
