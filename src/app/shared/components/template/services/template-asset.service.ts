@@ -49,23 +49,23 @@ export class TemplateAssetService extends AsyncServiceBase {
 
     const themeName = `theme_${currentThemeName}`;
     const langName = currentLanguageCode;
-    const extName = assetName.split(".").pop();
+
     // 1. current theme, current language
-    if (assetEntry.overrides?.[themeName]?.[langName]) {
-      assetName = assetName.replace(`.${extName}`, `.${themeName}.${langName}.${extName}`);
-      return this.convertPLHRelativePathToAssetPath(assetName);
+    const override1 = assetEntry.overrides?.[themeName]?.[langName];
+    if (override1) {
+      return this.convertPLHRelativePathToAssetPath(override1.filePath);
     }
     // 2. default theme, current language
-    if (assetEntry.overrides?.["theme_default"]?.[langName]) {
-      assetName = assetName.replace(`.${extName}`, `.theme_default.${langName}.${extName}`);
-      return this.convertPLHRelativePathToAssetPath(assetName);
+    const override2 = assetEntry.overrides?.["theme_default"]?.[langName];
+    if (override2) {
+      return this.convertPLHRelativePathToAssetPath(override2.filePath);
     }
     // 3. current theme, default language
-    if (assetEntry.overrides?.[themeName]?.["global"]) {
-      assetName = assetName.replace(`.${extName}`, `.${themeName}.global.${extName}`);
-      return this.convertPLHRelativePathToAssetPath(assetName);
+    const override3 = assetEntry.overrides?.[themeName]?.["global"];
+    if (override3) {
+      return this.convertPLHRelativePathToAssetPath(override3.filePath);
     }
-    return this.convertPLHRelativePathToAssetPath(assetName);
+    return this.convertPLHRelativePathToAssetPath(assetEntry.filePath || assetName);
   }
 
   private cleanAssetName(value: string) {

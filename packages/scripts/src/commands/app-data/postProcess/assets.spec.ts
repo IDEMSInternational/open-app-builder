@@ -93,7 +93,7 @@ describe("Assets PostProcess", () => {
     runAssetsPostProcessor();
     const contents = readAppAssetContents();
     expect(contents).toEqual({
-      "global.jpg": mockFileEntry,
+      "global.jpg": { ...mockFileEntry, filePath: "global/global.jpg" },
       "test.jpg": mockFileEntry,
     });
     mockFs.restore();
@@ -116,7 +116,7 @@ describe("Assets PostProcess", () => {
     const contents = readAppAssetContents();
     const assetEntry = contents["test.jpg"];
     expect(assetEntry.overrides["theme_default"]).toEqual({
-      tz_sw: mockFileEntry,
+      tz_sw: { ...mockFileEntry, filePath: "tz_sw/test.jpg" },
     });
   });
 
@@ -128,49 +128,44 @@ describe("Assets PostProcess", () => {
     runAssetsPostProcessor({ app_themes_available: ["test"] });
     const contents = readAppAssetContents();
     expect(contents["test.jpg"].overrides).toEqual({
-      theme_test: { global: mockFileEntry },
+      theme_test: { global: { ...mockFileEntry, filePath: "theme_test/test.jpg" } },
     });
   });
-  it("Populates combined theme and language overrides", () => {
+  it("Populates combined theme and language overrides in any folder order ", () => {
     mockLocalAssets({
-      "test.jpg": mockFile,
+      "test1.jpg": mockFile,
+      "test2.jpg": mockFile,
       theme_test: {
-        tz_sw: { "test.jpg": mockFile },
+        tz_sw: { "test1.jpg": mockFile },
       },
-      tz_sw: { "test.jpg": mockFile },
+      tz_sw: {
+        theme_test: {
+          "test2.jpg": mockFile,
+        },
+      },
     });
     runAssetsPostProcessor({ app_themes_available: ["test"], filter_language_codes: ["tz_sw"] });
     const contents = readAppAssetContents();
     expect(contents).toEqual({
-      "test.jpg": {
+      "test1.jpg": {
         ...mockFileEntry,
         overrides: {
-          theme_default: {
-            tz_sw: mockFileEntry,
-          },
           theme_test: {
-            tz_sw: mockFileEntry,
+            tz_sw: { ...mockFileEntry, filePath: "theme_test/tz_sw/test1.jpg" },
+          },
+        },
+      },
+      "test2.jpg": {
+        ...mockFileEntry,
+        overrides: {
+          theme_test: {
+            tz_sw: { ...mockFileEntry, filePath: "tz_sw/theme_test/test2.jpg" },
           },
         },
       },
     });
   });
-  it("Flattens override file structures", () => {
-    mockLocalAssets({
-      "img.jpg": mockFile,
-      theme_test: {
-        tz_sw: { "img.jpg": mockFile },
-      },
-      tz_sw: { "img.jpg": mockFile },
-    });
-    runAssetsPostProcessor({ app_themes_available: ["test"], filter_language_codes: ["tz_sw"] });
-    expect(fs.readdirSync(mockDirs.appAssets).sort()).toEqual([
-      "contents.json",
-      "img.jpg",
-      "img.theme_default.tz_sw.jpg",
-      "img.theme_test.tz_sw.jpg",
-    ]);
-  });
+
   it("Filters theme assets", () => {
     mockLocalAssets({
       "test.jpg": mockFile,
@@ -181,7 +176,7 @@ describe("Assets PostProcess", () => {
     expect(readdirSync(mockDirs.appAssets)).toEqual([
       "contents.json",
       "test.jpg",
-      "test.theme_testTheme.global.jpg",
+      "theme_testTheme",
     ]);
   });
 
@@ -192,14 +187,10 @@ describe("Assets PostProcess", () => {
       ke_sw: { "test.jpg": mockFile },
     });
     runAssetsPostProcessor({ filter_language_codes: ["tz_sw"] });
-    expect(readdirSync(mockDirs.appAssets)).toEqual([
-      "contents.json",
-      "test.jpg",
-      "test.theme_default.tz_sw.jpg",
-    ]);
+    expect(readdirSync(mockDirs.appAssets)).toEqual(["contents.json", "test.jpg", "tz_sw"]);
   });
 
-  fit("supports nested lang and theme folders", () => {
+  it("supports nested lang and theme folders", () => {
     mockLocalAssets({
       nested: {
         "test.jpg": mockFile,
@@ -221,10 +212,10 @@ describe("Assets PostProcess", () => {
         ...mockFileEntry,
         overrides: {
           theme_default: {
-            tz_sw: mockFileEntry,
+            tz_sw: { ...mockFileEntry, filePath: "nested/tz_sw/test.jpg" },
           },
           theme_test: {
-            tz_sw: mockFileEntry,
+            tz_sw: { ...mockFileEntry, filePath: "nested/theme_test/tz_sw/test.jpg" },
           },
         },
       },
