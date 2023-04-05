@@ -1,5 +1,6 @@
 import { Injectable } from "@angular/core";
-import { Directory } from "@capacitor/filesystem";
+import { Directory, Filesystem } from "@capacitor/filesystem";
+import { Capacitor } from "@capacitor/core";
 import write_blob from "capacitor-blob-writer";
 
 @Injectable({
@@ -21,5 +22,30 @@ export class FileManagerService {
         console.error(error);
       },
     });
+    const src = await this.getFileSrc(fileEntry);
+    console.log("src:", src);
+    // Save src to contents file for lookup
+  }
+
+  /**
+   * A possible approach for getting the path to a file
+   * @returns the URL to access the file
+   * Adapted from https://www.npmjs.com/package/capacitor-blob-writer
+   * */
+  async getFileSrc(fileEntry) {
+    // How the URL is obtained depends on the platform
+    if (Capacitor.isNativePlatform()) {
+      const { uri } = await Filesystem.getUri({
+        path: fileEntry.path,
+        directory: Directory.Data,
+      });
+      return Capacitor.convertFileSrc(uri);
+    } else {
+      const { data } = await Filesystem.readFile({
+        path: fileEntry.path,
+        directory: Directory.Data,
+      });
+      return URL.createObjectURL(new Blob([data]));
+    }
   }
 }
