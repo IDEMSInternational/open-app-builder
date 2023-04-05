@@ -37,7 +37,7 @@ export class RemoteAssetService extends SyncServiceBase {
     // Proposed steps:
 
     // 1.
-    // Get manifest of expected files from config
+    // Check config and download relevant manifest of expected files
     // Generate manifest of locally available files
     // Compare these, and generate a manifest of files to download
     const manifest = this.generateManifest();
