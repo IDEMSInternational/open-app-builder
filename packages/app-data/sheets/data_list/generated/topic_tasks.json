@@ -14,7 +14,8 @@
         "title": {},
         "in_text_title": {},
         "description": {},
-        "intro_title": {}
+        "intro_title": {},
+        "tools_title": {}
       },
       "_translatedFields": {
         "title": {
@@ -28,11 +29,15 @@
         },
         "intro_title": {
           "eng": "Why Introduction?"
+        },
+        "tools_title": {
+          "eng": "How to Introduction"
         }
       },
       "in_text_title": "**@data.topic.intro.title** @global.topic",
       "description": "Description of @data.topic.intro.title",
       "intro_title": "Why Introduction?",
+      "tools_title": "How to Introduction",
       "completed_field": "task_intro_completed",
       "completed": "@fields.task_intro_completed",
       "skipped_field": "task_intro_skipped"
@@ -48,7 +53,8 @@
         "title": {},
         "in_text_title": {},
         "description": {},
-        "intro_title": {}
+        "intro_title": {},
+        "tools_title": {}
       },
       "_translatedFields": {
         "title": {
@@ -62,11 +68,15 @@
         },
         "intro_title": {
           "eng": "Why Connect?"
+        },
+        "tools_title": {
+          "eng": "How to Connect"
         }
       },
       "in_text_title": "**@data.topic.connect.title** @global.topic",
       "description": "Description of @data.topic.connect.title",
       "intro_title": "Why Connect?",
+      "tools_title": "How to Connect",
       "completed_field": "task_connect_completed",
       "completed": "@fields.task_connect_completed",
       "skipped_field": "task_connect_skipped"
@@ -82,7 +92,8 @@
         "title": {},
         "in_text_title": {},
         "description": {},
-        "intro_title": {}
+        "intro_title": {},
+        "tools_title": {}
       },
       "_translatedFields": {
         "title": {
@@ -96,11 +107,15 @@
         },
         "intro_title": {
           "eng": "Why Play?"
+        },
+        "tools_title": {
+          "eng": "How to Play"
         }
       },
       "in_text_title": "**@data.topic.play.title** @global.topic",
       "description": "Description of @data.topic.play.title",
       "intro_title": "Why Play?",
+      "tools_title": "How to Play",
       "completed_field": "task_play_completed",
       "completed": "@fields.task_play_completed",
       "skipped_field": "task_play_skipped"
@@ -116,7 +131,8 @@
         "title": {},
         "in_text_title": {},
         "description": {},
-        "intro_title": {}
+        "intro_title": {},
+        "tools_title": {}
       },
       "_translatedFields": {
         "title": {
@@ -130,11 +146,15 @@
         },
         "intro_title": {
           "eng": "Why Talk?"
+        },
+        "tools_title": {
+          "eng": "How to Talk"
         }
       },
       "in_text_title": "**@data.topic.talk.title** @global.topic",
       "description": "Description of @data.topic.talk.title",
       "intro_title": "Why Talk?",
+      "tools_title": "How to Talk",
       "completed_field": "task_talk_completed",
       "completed": "@fields.task_talk_completed",
       "skipped_field": "task_talk_skipped"
@@ -150,7 +170,8 @@
         "title": {},
         "in_text_title": {},
         "description": {},
-        "intro_title": {}
+        "intro_title": {},
+        "tools_title": {}
       },
       "_translatedFields": {
         "title": {
@@ -164,11 +185,15 @@
         },
         "intro_title": {
           "eng": "Why Explore?"
+        },
+        "tools_title": {
+          "eng": "How to Explore"
         }
       },
       "in_text_title": "**@data.topic.explore.title** @global.topic",
       "description": "Description of @data.topic.explore.title",
       "intro_title": "Why Explore?",
+      "tools_title": "How to Explore",
       "completed_field": "task_explore_completed",
       "completed": "@fields.task_explore_completed",
       "skipped_field": "task_explore_skipped"
@@ -184,7 +209,8 @@
         "title": {},
         "in_text_title": {},
         "description": {},
-        "intro_title": {}
+        "intro_title": {},
+        "tools_title": {}
       },
       "_translatedFields": {
         "title": {
@@ -198,11 +224,15 @@
         },
         "intro_title": {
           "eng": "Why Create?"
+        },
+        "tools_title": {
+          "eng": "How to Create"
         }
       },
       "in_text_title": "**@data.topic.create.title** @global.topic",
       "description": "Description of @data.topic.create.title",
       "intro_title": "Why Create?",
+      "tools_title": "How to Create",
       "completed_field": "task_create_completed",
       "completed": "@fields.task_create_completed",
       "skipped_field": "task_create_skipped"
@@ -218,7 +248,8 @@
         "title": {},
         "in_text_title": {},
         "description": {},
-        "intro_title": {}
+        "intro_title": {},
+        "tools_title": {}
       },
       "_translatedFields": {
         "title": {
@@ -232,11 +263,15 @@
         },
         "intro_title": {
           "eng": "Why Build?"
+        },
+        "tools_title": {
+          "eng": "How to Build"
         }
       },
       "in_text_title": "**@data.topic.build.title** @global.topic",
       "description": "Description of @data.topic.build.title",
       "intro_title": "Why Build?",
+      "tools_title": "How to Build",
       "completed_field": "task_build_completed",
       "completed": "@fields.task_build_completed",
       "skipped_field": "task_build_skipped"
@@ -252,7 +287,8 @@
         "title": {},
         "in_text_title": {},
         "description": {},
-        "intro_title": {}
+        "intro_title": {},
+        "tools_title": {}
       },
       "_translatedFields": {
         "title": {
@@ -266,11 +302,15 @@
         },
         "intro_title": {
           "eng": "Why Summary?"
+        },
+        "tools_title": {
+          "eng": "How to Summary"
         }
       },
       "in_text_title": "**@data.topic.summary.title** @global.topic",
       "description": "Description of @data.topic.summary.title",
       "intro_title": "Why Summary?",
+      "tools_title": "How to Summary",
       "completed_field": "task_summary_completed",
       "completed": "@fields.task_summary_completed",
       "skipped_field": "task_summary_skipped"

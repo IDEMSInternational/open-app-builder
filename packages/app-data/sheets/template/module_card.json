@@ -368,7 +368,7 @@
     },
     {
       "name": "in_progress_icon",
-      "value": "images/icons/in_progress.svg;",
+      "value": "images/icons/home_white.svg",
       "_translations": {
         "value": {}
       },
@@ -377,7 +377,7 @@
     },
     {
       "name": "completed_icon",
-      "value": "images/icons/in_progress.svg;",
+      "value": "images/icons/tick_white.svg",
       "_translations": {
         "value": {}
       },
