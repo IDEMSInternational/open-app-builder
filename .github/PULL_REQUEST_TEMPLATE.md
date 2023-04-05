@@ -1,6 +1,5 @@
 PR Checklist
 
-- [ ] - Latest `master` branch merged
 - [ ] - PR title descriptive (can be used in release notes)
 
 ## Description
