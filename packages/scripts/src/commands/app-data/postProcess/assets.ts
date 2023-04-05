@@ -248,7 +248,6 @@ export class AssetsPostProcessor {
     // split assets to separate global, translated and theme assets
     Object.entries(sourceAssets).forEach(([relativePath, entry]) => {
       const assetEntry = this.contentsToAssetEntry(entry);
-
       const pathSegments = relativePath.split("/");
 
       let themeVariation = pathSegments.find((segment) => isThemeAssetsFolderName(segment));
@@ -270,16 +269,13 @@ export class AssetsPostProcessor {
           .replace(`${langVariation}/`, "");
 
         overridePath = `overrides.${themeVariation}.${langVariation}`;
-        // move override file to flat folder structure alongside asset, i.e. `img.[theme].[lang].jpg
-        const extName = path.extname(relativePath);
-        const relativeOverridePath = assetPathName.replace(
-          extName,
-          `.${themeVariation}.${langVariation}${extName}`
-        );
-        const sourcePath = path.resolve(this.stagingDir, relativePath);
-        const targetPath = path.resolve(this.stagingDir, relativeOverridePath);
-        fs.moveSync(sourcePath, targetPath);
       }
+
+      // Provide explicit path to file when not same as entry name (e.g. overrides)
+      if (entry.relativePath !== assetPathName) {
+        assetEntry.filePath = relativePath;
+      }
+
       // Merge overrides or top-level asset data into main entries
       entries.tracked[assetPathName] = setNestedProperty(
         overridePath,
@@ -297,8 +293,6 @@ export class AssetsPostProcessor {
     });
     return entries;
   }
-
-  private flattenOverrideAsset() {}
 
   /** Strip additional fields from contents entry to provide cleaner asset entry */
   private contentsToAssetEntry(entry: IContentsEntry): IContentsEntryMinimal {

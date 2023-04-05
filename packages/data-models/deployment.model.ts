@@ -115,6 +115,8 @@ interface IContentsEntry {
   size_kb: number;
   modifiedTime: string;
   md5Checksum: string;
+  /** specific path to file when same as relativePath, e.g. asset overrides */
+  filePath?: string;
 }
 
 /** Duplicate type definition from gdrive-downloader (TODO - find better way to share) */
