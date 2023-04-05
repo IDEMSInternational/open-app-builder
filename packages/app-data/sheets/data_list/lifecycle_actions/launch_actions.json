@@ -228,22 +228,6 @@
           "_cleaned": "click | set_field: home_screen_modular_tour_viewed: true"
         }
       ]
-    },
-    {
-      "lifecycle_event": "app_start",
-      "id": "app_start_update_prompt",
-      "priority": 10,
-      "action_list": [
-        {
-          "trigger": "click",
-          "action_id": "app_update",
-          "args": [
-            "prompt"
-          ],
-          "_raw": "app_update: prompt",
-          "_cleaned": "click | app_update: prompt"
-        }
-      ]
     }
   ],
   "_xlsxPath": "global/templates/core_templates/app_launch.xlsx"

@@ -222,12 +222,6 @@
       "flow_name": "common_workshop_tasks",
       "_xlsxPath": "global/data/topic_data/topic_tasks.xlsx"
     },
-    "debug_launch_actions": {
-      "flow_type": "data_list",
-      "flow_subtype": "debug_lifecycle_actions",
-      "flow_name": "debug_launch_actions",
-      "_xlsxPath": "quality_assurance/debug_sheets/debug_launch_actions.xlsx"
-    },
     "encouraging_messages": {
       "flow_type": "data_list",
       "flow_name": "encouraging_messages",
@@ -235,16 +229,6 @@
     },
     "topic_tasks": {
       "flow_name": "topic_tasks",
-      "flow_subtype": "generated",
-      "flow_type": "data_list"
-    },
-    "tg_w_stress_read_3_ind": {
-      "flow_name": "tg_w_stress_read_3_ind",
-      "flow_subtype": "generated",
-      "flow_type": "data_list"
-    },
-    "tg_w_stress_read_3_tog": {
-      "flow_name": "tg_w_stress_read_3_tog",
       "flow_subtype": "generated",
       "flow_type": "data_list"
     },
@@ -704,18 +688,6 @@
       "flow_name": "activity_variables",
       "_xlsxPath": "global/data/library_data/library_globals.xlsx"
     },
-    "app_id": {
-      "flow_type": "global",
-      "flow_name": "app_id",
-      "_xlsxPath": "global/data/navigation_globals.xlsx"
-    },
-    "app_id_tz": {
-      "flow_type": "global",
-      "flow_name": "app_id_tz",
-      "override_target": "app_id",
-      "override_condition": "@fields._deployment_name == \"plh_tz\"",
-      "_xlsxPath": "tz/data/navigation_globals_tz.xlsx"
-    },
     "app_menu_globals": {
       "flow_type": "global",
       "flow_name": "app_menu_globals",
@@ -1087,11 +1059,6 @@
       "flow_type": "template",
       "flow_name": "app_menu_unlock_workshops_pop",
       "_xlsxPath": "global/templates/core_templates/settings.xlsx"
-    },
-    "app_update_complete": {
-      "flow_type": "template",
-      "flow_name": "app_update_complete",
-      "_xlsxPath": "quality_assurance/debug_sheets/debug_app_update.xlsx"
     },
     "banner": {
       "flow_type": "template",
@@ -3539,18 +3506,6 @@
       "module": "stress",
       "flow_name": "w_stress_question",
       "_xlsxPath": "global/templates/top_templates/module_templates/workshop_stress.xlsx"
-    },
-    "w_stress_question_2": {
-      "flow_type": "template",
-      "module": "stress",
-      "flow_name": "w_stress_question_2",
-      "_xlsxPath": "global/top_templates/workshop_templates/workshop_stress.xlsx"
-    },
-    "w_stress_question_2_pop": {
-      "flow_type": "template",
-      "module": "stress",
-      "flow_name": "w_stress_question_2_pop",
-      "_xlsxPath": "global/top_templates/workshop_templates/workshop_stress.xlsx"
     },
     "w_stress_read_1": {
       "flow_type": "template",

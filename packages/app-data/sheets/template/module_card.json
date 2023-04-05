@@ -377,7 +377,7 @@
     },
     {
       "name": "completed_icon",
-      "value": "images/icons/tick_white.svg;",
+      "value": "images/icons/in_progress.svg;",
       "_translations": {
         "value": {}
       },

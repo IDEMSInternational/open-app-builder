@@ -392,7 +392,8 @@
                     "name:name_1 | text:@local.name_1",
                     "name:name_2 | text:@local.name_2",
                     "name:name_3 | text:@local.name_3",
-                    "name:name_4 | text:@local.name_4"
+                    "name:name_4 | text:@local.name_4",
+                    "name:name_5 | text:@local.name_5"
                   ],
                   "type": "set_variable",
                   "_nested_name": "think.workshop_activity.content_box.answer_list",
@@ -429,6 +430,14 @@
                           "type": "local",
                           "fieldName": "name_4"
                         }
+                      ],
+                      "4": [
+                        {
+                          "fullExpression": "name:name_5 | text:@local.name_5",
+                          "matchedExpression": "@local.name_5",
+                          "type": "local",
+                          "fieldName": "name_5"
+                        }
                       ]
                     }
                   },
@@ -444,6 +453,9 @@
                     ],
                     "@local.name_4": [
                       "value.3"
+                    ],
+                    "@local.name_5": [
+                      "value.4"
                     ]
                   }
                 },
@@ -461,10 +473,11 @@
             },
             {
               "name": "outro_text",
-              "value": "Try to do something to reward yourself every day.",
+              "value": "Try to do something to reward yourself every day. This could be to @local.name_1 or anything else that you enjoy.",
               "_translations": {
                 "value": {}
               },
+              "condition": "@fields.w_self_care_reward_a == \"name_1\"",
               "type": "set_variable",
               "_nested_name": "think.workshop_activity.outro_text",
               "_dynamicFields": {

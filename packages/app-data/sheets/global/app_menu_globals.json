@@ -73,9 +73,7 @@
       "name": "user_info",
       "value": "Your Profile",
       "_translations": {
-        "value": {
-          "tz_sw": true
-        }
+        "value": {}
       }
     }
   ],
