@@ -1,0 +1,124 @@
+{
+  "flow_name": "summary_task_gs",
+  "flow_subtype": "generated",
+  "flow_type": "data_list",
+  "rows": [
+    {
+      "id": "welcome",
+      "individual": true,
+      "together": true,
+      "priority": 1,
+      "title": "How are you?",
+      "_translations": {
+        "title": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "How are you?"
+        }
+      },
+      "template": "summary_welcome",
+      "completed_field": "task_gp_summary_welcome_completed",
+      "completed": "@fields.task_gp_summary_welcome_completed"
+    },
+    {
+      "id": "relax",
+      "individual": true,
+      "together": true,
+      "priority": 3,
+      "title": "@data.topic[@fields.current_topic].relax_title",
+      "_translations": {
+        "title": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "@data.topic[@fields.current_topic].relax_title"
+        }
+      },
+      "template": "summary_relax",
+      "completed_field": "task_gp_summary_relax_completed",
+      "completed": "@fields.task_gp_summary_relax_completed"
+    },
+    {
+      "id": "intro",
+      "individual": true,
+      "together": true,
+      "priority": 5,
+      "title": "@data.topic[@fields.current_topic].intro_title",
+      "_translations": {
+        "title": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "@data.topic[@fields.current_topic].intro_title"
+        }
+      },
+      "template": "summary_intro",
+      "completed_field": "task_gp_summary_intro_completed",
+      "completed": "@fields.task_gp_summary_intro_completed"
+    },
+    {
+      "id": "tools",
+      "individual": true,
+      "together": true,
+      "priority": 70,
+      "title": "@data.topic[@fields.current_topic].tools_title",
+      "_translations": {
+        "title": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "@data.topic[@fields.current_topic].tools_title"
+        }
+      },
+      "template": "summary_tools",
+      "completed_field": "task_gp_summary_tools_completed",
+      "completed": "@fields.task_gp_summary_tools_completed"
+    },
+    {
+      "id": "home_practice",
+      "individual": true,
+      "together": true,
+      "priority": 80,
+      "template": "summary_home_practice",
+      "completed_field": "task_gp_summary_home_practice_completed",
+      "completed": "@fields.task_gp_summary_home_practice_completed"
+    },
+    {
+      "id": "ending",
+      "individual": true,
+      "together": true,
+      "priority": 90,
+      "title": "Well done!",
+      "_translations": {
+        "title": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Well done!"
+        }
+      },
+      "template": "summary_ending",
+      "completed_field": "task_gp_summary_ending_completed",
+      "completed": "@fields.task_gp_summary_ending_completed"
+    },
+    {
+      "id": "hp_review",
+      "individual": true,
+      "together": true,
+      "priority": 91,
+      "title": "@global.hp_review",
+      "_translations": {
+        "title": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "@global.hp_review"
+        }
+      },
+      "template": "summary_hp_review",
+      "completed_field": "task_gp_summary_hp_review_completed",
+      "completed": "@fields.task_gp_summary_hp_review_completed"
+    }
+  ]
+}

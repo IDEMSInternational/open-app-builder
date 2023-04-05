@@ -512,7 +512,7 @@
             },
             {
               "name": "task_id",
-              "value": "tools_activity",
+              "value": "tools",
               "_translations": {
                 "value": {}
               },
@@ -577,7 +577,6 @@
           "type": "template",
           "name": "card_hp",
           "value": "task_card",
-          "condition": "@local.topic_id != \"w_celebrate\"",
           "exclude_from_translation": true,
           "rows": [
             {
@@ -616,22 +615,7 @@
               "_nested_name": "dg_card_hp.card_hp.task_id"
             }
           ],
-          "_nested_name": "dg_card_hp.card_hp",
-          "_dynamicFields": {
-            "condition": [
-              {
-                "fullExpression": "@local.topic_id != \"w_celebrate\"",
-                "matchedExpression": "@local.topic_id",
-                "type": "local",
-                "fieldName": "topic_id"
-              }
-            ]
-          },
-          "_dynamicDependencies": {
-            "@local.topic_id": [
-              "condition"
-            ]
-          }
+          "_nested_name": "dg_card_hp.card_hp"
         }
       ],
       "_nested_name": "dg_card_hp",
@@ -659,7 +643,6 @@
           "type": "template",
           "name": "card_hp_review",
           "value": "task_card",
-          "condition": "@local.topic_id != \"w_self_care\" && @local.topic_id != \"w_celebrate\"",
           "exclude_from_translation": true,
           "rows": [
             {
@@ -698,29 +681,7 @@
               "_nested_name": "display_group.card_hp_review.task_id"
             }
           ],
-          "_nested_name": "display_group.card_hp_review",
-          "_dynamicFields": {
-            "condition": [
-              {
-                "fullExpression": "@local.topic_id != \"w_self_care\" && @local.topic_id != \"w_celebrate\"",
-                "matchedExpression": "@local.topic_id",
-                "type": "local",
-                "fieldName": "topic_id"
-              },
-              {
-                "fullExpression": "@local.topic_id != \"w_self_care\" && @local.topic_id != \"w_celebrate\"",
-                "matchedExpression": "@local.topic_id",
-                "type": "local",
-                "fieldName": "topic_id"
-              }
-            ]
-          },
-          "_dynamicDependencies": {
-            "@local.topic_id": [
-              "condition",
-              "condition"
-            ]
-          }
+          "_nested_name": "display_group.card_hp_review"
         }
       ],
       "name": "display_group",

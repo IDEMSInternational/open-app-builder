@@ -1,0 +1,104 @@
+{
+  "flow_type": "data_list",
+  "flow_name": "common_topic_task_gs",
+  "status": "released",
+  "rows": [
+    {
+      "id": "welcome",
+      "individual": true,
+      "together": true,
+      "priority": 1,
+      "title": "How are you?",
+      "_translations": {
+        "title": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "How are you?"
+        }
+      }
+    },
+    {
+      "id": "relax",
+      "individual": true,
+      "together": true,
+      "priority": 3,
+      "title": "@data.topic[@fields.current_topic].relax_title",
+      "_translations": {
+        "title": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "@data.topic[@fields.current_topic].relax_title"
+        }
+      }
+    },
+    {
+      "id": "intro",
+      "individual": true,
+      "together": true,
+      "priority": 5,
+      "title": "@data.topic[@fields.current_topic].intro_title",
+      "_translations": {
+        "title": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "@data.topic[@fields.current_topic].intro_title"
+        }
+      }
+    },
+    {
+      "id": "tools",
+      "individual": true,
+      "together": true,
+      "priority": 70,
+      "title": "@data.topic[@fields.current_topic].tools_title",
+      "_translations": {
+        "title": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "@data.topic[@fields.current_topic].tools_title"
+        }
+      }
+    },
+    {
+      "id": "home_practice",
+      "individual": true,
+      "together": true,
+      "priority": 80
+    },
+    {
+      "id": "ending",
+      "individual": true,
+      "together": true,
+      "priority": 90,
+      "title": "Well done!",
+      "_translations": {
+        "title": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Well done!"
+        }
+      }
+    },
+    {
+      "id": "hp_review",
+      "individual": true,
+      "together": true,
+      "priority": 91,
+      "title": "@global.hp_review",
+      "_translations": {
+        "title": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "@global.hp_review"
+        }
+      }
+    }
+  ],
+  "_xlsxPath": "global/data/topic_data/topic_task_groups.xlsx"
+}

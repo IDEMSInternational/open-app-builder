@@ -1,0 +1,110 @@
+{
+  "flow_name": "talk_task_gs_temp_1",
+  "flow_subtype": "generated",
+  "flow_type": "data_list",
+  "rows": [
+    {
+      "id": "welcome",
+      "individual": true,
+      "together": true,
+      "priority": 1,
+      "title": "How are you?",
+      "_translations": {
+        "title": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "How are you?"
+        }
+      },
+      "template": "talk_welcome"
+    },
+    {
+      "id": "relax",
+      "individual": true,
+      "together": true,
+      "priority": 3,
+      "title": "@data.topic[@fields.current_topic].relax_title",
+      "_translations": {
+        "title": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "@data.topic[@fields.current_topic].relax_title"
+        }
+      },
+      "template": "talk_relax"
+    },
+    {
+      "id": "intro",
+      "individual": true,
+      "together": true,
+      "priority": 5,
+      "title": "@data.topic[@fields.current_topic].intro_title",
+      "_translations": {
+        "title": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "@data.topic[@fields.current_topic].intro_title"
+        }
+      },
+      "template": "talk_intro"
+    },
+    {
+      "id": "tools",
+      "individual": true,
+      "together": true,
+      "priority": 70,
+      "title": "@data.topic[@fields.current_topic].tools_title",
+      "_translations": {
+        "title": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "@data.topic[@fields.current_topic].tools_title"
+        }
+      },
+      "template": "talk_tools"
+    },
+    {
+      "id": "home_practice",
+      "individual": true,
+      "together": true,
+      "priority": 80,
+      "template": "talk_home_practice"
+    },
+    {
+      "id": "ending",
+      "individual": true,
+      "together": true,
+      "priority": 90,
+      "title": "Well done!",
+      "_translations": {
+        "title": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Well done!"
+        }
+      },
+      "template": "talk_ending"
+    },
+    {
+      "id": "hp_review",
+      "individual": true,
+      "together": true,
+      "priority": 91,
+      "title": "@global.hp_review",
+      "_translations": {
+        "title": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "@global.hp_review"
+        }
+      },
+      "template": "talk_hp_review"
+    }
+  ]
+}
