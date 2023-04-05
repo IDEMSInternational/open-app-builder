@@ -1,6 +1,6 @@
 PR Checklist
 
-- [ ] - PR title descriptive (can be used in release notes)
+- [ ] PR title descriptive (can be used in release notes)
 
 ## Description
 
