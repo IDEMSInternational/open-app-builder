@@ -1,3 +1,5 @@
+/* eslint sort-keys: "error"  */
+
 import { FlowTypes, ITemplateRowProps } from "../models";
 import { TemplateContainerComponent } from "../template-container.component";
 import { Type } from "@angular/core";
@@ -5,9 +7,9 @@ import { Type } from "@angular/core";
 /***************************************************************************************
  * Template Components
  **************************************************************************************/
+import { AccordionSectionComponent } from "./layout/accordion_section";
 
 import { AnimatedSectionComponent } from "./layout/animated_section";
-import { AccordionSectionComponent } from "./layout/accordion_section";
 import { TmplAdvancedDashedBoxComponent } from "./layout/advanced-dashed-box/advanced-dashed-box.component";
 import { AnimatedSectionGroupComponent } from "./layout/animated_section_group";
 import { FormComponent } from "./layout/form";
@@ -57,6 +59,7 @@ import { TmplNavigationBarComponent } from "./navigation-bar/navigation-bar.comp
 import { TmplCarouselComponent } from "./carousel/carousel.component";
 import { TmplDrawerComponent } from "./drawer/drawer.component";
 import { TmplDataItemsComponent } from "./data-items/data-items.component";
+import { TmplDisplayGridComponent } from "./layout/display-grid/display-grid.component";
 
 /** All components should be exported as a single array for easy module import */
 export const TEMPLATE_COMPONENTS = [
@@ -116,7 +119,6 @@ export const TEMPLATE_COMPONENTS = [
 /***************************************************************************************
  * Template component mapping
  **************************************************************************************/
-/* eslint sort-keys: "error" */
 export const TEMPLATE_COMPONENT_MAPPING: Record<
   FlowTypes.TemplateRowType,
   Type<ITemplateRowProps>
@@ -134,6 +136,7 @@ export const TEMPLATE_COMPONENT_MAPPING: Record<
   dashed_box: TmplDashedBoxComponent,
   data_items: TmplDataItemsComponent,
   debug_toggle: PLHDebugToggleComponent as any,
+  display_grid: TmplDisplayGridComponent,
   display_group: TmplDisplayGroupComponent,
   display_theme: null as any,
   drawer: TmplDrawerComponent,
