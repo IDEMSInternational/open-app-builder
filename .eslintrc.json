@@ -1,6 +1,6 @@
 {
   "root": true,
-  "ignorePatterns": ["projects/**/*"],
+  "ignorePatterns": ["packages/**/*"],
   "plugins": ["jasmine"],
   "env": { "jasmine": true },
   "overrides": [
@@ -95,7 +95,8 @@
         "no-fallthrough": "warn",
         "no-throw-literal": "warn",
         "use-isnan": "warn",
-        "arrow-body-style": "off"
+        "arrow-body-style": "off",
+        "sort-keys": "warn"
       }
     },
     {
