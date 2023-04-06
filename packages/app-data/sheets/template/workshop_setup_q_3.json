@@ -6,7 +6,7 @@
     {
       "type": "text",
       "name": "text_intro",
-      "value": "You can do the @global.workshops by yourself OR you can invite some other family members or friends to join you - you will learn a lot from each other.It is up to you!",
+      "value": "You can do the @global.workshops by yourself OR you can invite some other family members or friends to join you - you will learn a lot from each other. It is up to you!",
       "_translations": {
         "value": {}
       },
@@ -14,7 +14,7 @@
       "_dynamicFields": {
         "value": [
           {
-            "fullExpression": "You can do the @global.workshops by yourself OR you can invite some other family members or friends to join you - you will learn a lot from each other.It is up to you!",
+            "fullExpression": "You can do the @global.workshops by yourself OR you can invite some other family members or friends to join you - you will learn a lot from each other. It is up to you!",
             "matchedExpression": "@global.workshops",
             "type": "global",
             "fieldName": "workshops"

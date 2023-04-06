@@ -225,14 +225,7 @@
         "reply_ok": {
           "tz_sw": true
         },
-        "reply_sad": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        },
+        "reply_sad": {},
         "activity_title": {},
         "intro_text": {},
         "question_text": {
@@ -256,7 +249,7 @@
           "eng": "Sorry that things are difficult. All families struggle. @global.parent_app is here to help!"
         },
         "reply_sad": {
-          "eng": "Whatever went ‘wrong’ today, let it go and try again tomorrow. It’s okay!"
+          "eng": "Whatever went ‘wrong’ today, let it go and try again tomorrow. It is okay!"
         },
         "activity_title": {
           "eng": "Welcome, @fields.user_name!"
@@ -270,7 +263,7 @@
       },
       "reply_happy": "Wonderful, I am so happy! Keep up the good work.",
       "reply_ok": "Sorry that things are difficult. All families struggle. @global.parent_app is here to help!",
-      "reply_sad": "Whatever went ‘wrong’ today, let it go and try again tomorrow. It’s okay!",
+      "reply_sad": "Whatever went ‘wrong’ today, let it go and try again tomorrow. It is okay!",
       "activity_title": "Welcome, @fields.user_name!",
       "intro_text": "It is great to see you again!",
       "question_text": "How are you feeling today?"
