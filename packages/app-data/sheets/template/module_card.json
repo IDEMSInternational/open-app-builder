@@ -4,11 +4,17 @@
   "status": "released",
   "rows": [
     {
-      "name": "with_image_and_subtitle",
+      "name": "with_image",
       "value": true,
+      "type": "set_variable",
+      "_nested_name": "with_image"
+    },
+    {
+      "name": "with_subtitle",
+      "value": false,
       "exclude_from_translation": true,
       "type": "set_variable",
-      "_nested_name": "with_image_and_subtitle"
+      "_nested_name": "with_subtitle"
     },
     {
       "name": "card_style",
@@ -295,6 +301,7 @@
       "_translations": {
         "value": {}
       },
+      "condition": "@local.with_subtitle",
       "exclude_from_translation": true,
       "type": "set_variable",
       "_nested_name": "card_subtitle",
@@ -306,11 +313,44 @@
             "type": "local",
             "fieldName": "topic_data"
           }
+        ],
+        "condition": [
+          {
+            "fullExpression": "@local.with_subtitle",
+            "matchedExpression": "@local.with_subtitle",
+            "type": "local",
+            "fieldName": "with_subtitle"
+          }
         ]
       },
       "_dynamicDependencies": {
         "@local.topic_data.description": [
           "value"
+        ],
+        "@local.with_subtitle": [
+          "condition"
+        ]
+      }
+    },
+    {
+      "name": "card_subtitle",
+      "condition": "!@local.with_subtitle",
+      "exclude_from_translation": true,
+      "type": "set_variable",
+      "_nested_name": "card_subtitle",
+      "_dynamicFields": {
+        "condition": [
+          {
+            "fullExpression": "!@local.with_subtitle",
+            "matchedExpression": "!@local.with_subtitle",
+            "type": "local",
+            "fieldName": "with_subtitle"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "!@local.with_subtitle": [
+          "condition"
         ]
       }
     },
@@ -439,7 +479,7 @@
         "highlighted_text": "@local.highlighted_text",
         "progress_units_name": "@local.progress_units_name"
       },
-      "condition": "@local.with_image_and_subtitle",
+      "condition": "@local.with_image",
       "exclude_from_translation": true,
       "_nested_name": "task_card",
       "_dynamicFields": {
@@ -593,10 +633,10 @@
         },
         "condition": [
           {
-            "fullExpression": "@local.with_image_and_subtitle",
-            "matchedExpression": "@local.with_image_and_subtitle",
+            "fullExpression": "@local.with_image",
+            "matchedExpression": "@local.with_image",
             "type": "local",
-            "fieldName": "with_image_and_subtitle"
+            "fieldName": "with_image"
           }
         ]
       },
@@ -642,7 +682,7 @@
         "@local.progress_units_name": [
           "parameter_list.progress_units_name"
         ],
-        "@local.with_image_and_subtitle": [
+        "@local.with_image": [
           "condition"
         ]
       }
@@ -700,7 +740,7 @@
         "highlighted_text": "@local.highlighted_text",
         "progress_units_name": "@local.progress_units_name"
       },
-      "condition": "!@local.with_image_and_subtitle",
+      "condition": "!@local.with_image",
       "exclude_from_translation": true,
       "_nested_name": "task_card",
       "_dynamicFields": {
@@ -838,10 +878,10 @@
         },
         "condition": [
           {
-            "fullExpression": "!@local.with_image_and_subtitle",
-            "matchedExpression": "!@local.with_image_and_subtitle",
+            "fullExpression": "!@local.with_image",
+            "matchedExpression": "!@local.with_image",
             "type": "local",
-            "fieldName": "with_image_and_subtitle"
+            "fieldName": "with_image"
           }
         ]
       },
@@ -881,7 +921,7 @@
         "@local.progress_units_name": [
           "parameter_list.progress_units_name"
         ],
-        "!@local.with_image_and_subtitle": [
+        "!@local.with_image": [
           "condition"
         ]
       }

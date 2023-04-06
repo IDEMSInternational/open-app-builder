@@ -4,46 +4,11 @@
   "flow_type": "data_list",
   "rows": [
     {
-      "id": "welcome",
-      "individual": true,
-      "together": true,
-      "priority": 1,
-      "title": "How are you?",
-      "_translations": {
-        "title": {}
-      },
-      "_translatedFields": {
-        "title": {
-          "eng": "How are you?"
-        }
-      },
-      "template": "connect_welcome",
-      "completed_field": "task_gp_connect_welcome_completed",
-      "completed": "@fields.task_gp_connect_welcome_completed"
-    },
-    {
-      "id": "relax",
-      "individual": true,
-      "together": true,
-      "priority": 3,
-      "title": "@data.topic[@fields.current_topic].relax_title",
-      "_translations": {
-        "title": {}
-      },
-      "_translatedFields": {
-        "title": {
-          "eng": "@data.topic[@fields.current_topic].relax_title"
-        }
-      },
-      "template": "connect_relax",
-      "completed_field": "task_gp_connect_relax_completed",
-      "completed": "@fields.task_gp_connect_relax_completed"
-    },
-    {
       "id": "intro",
       "individual": true,
       "together": true,
       "priority": 5,
+      "has_single_task": true,
       "title": "@data.topic[@fields.current_topic].intro_title",
       "_translations": {
         "title": {}
@@ -58,10 +23,49 @@
       "completed": "@fields.task_gp_connect_intro_completed"
     },
     {
+      "id": "check_in",
+      "individual": true,
+      "together": true,
+      "priority": 1,
+      "has_single_task": true,
+      "title": "@data.type.check_in.activity_title",
+      "_translations": {
+        "title": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "@data.type.check_in.activity_title"
+        }
+      },
+      "template": "connect_check_in",
+      "completed_field": "task_gp_connect_check_in_completed",
+      "completed": "@fields.task_gp_connect_check_in_completed"
+    },
+    {
+      "id": "relax",
+      "individual": true,
+      "together": true,
+      "priority": 3,
+      "has_single_task": true,
+      "title": "@data.type.relax.activity_title",
+      "_translations": {
+        "title": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "@data.type.relax.activity_title"
+        }
+      },
+      "template": "connect_relax",
+      "completed_field": "task_gp_connect_relax_completed",
+      "completed": "@fields.task_gp_connect_relax_completed"
+    },
+    {
       "id": "tools",
       "individual": true,
       "together": true,
       "priority": 70,
+      "has_single_task": true,
       "title": "@data.topic[@fields.current_topic].tools_title",
       "_translations": {
         "title": {}
@@ -80,13 +84,14 @@
       "individual": true,
       "together": true,
       "priority": 80,
-      "title": "@global.home_practice",
+      "has_single_task": true,
+      "title": "@data.type.home_practice.activity_title",
       "_translations": {
         "title": {}
       },
       "_translatedFields": {
         "title": {
-          "eng": "@global.home_practice"
+          "eng": "@data.type.home_practice.activity_title"
         }
       },
       "template": "connect_home_practice",
@@ -98,13 +103,14 @@
       "individual": true,
       "together": true,
       "priority": 90,
-      "title": "Well done!",
+      "has_single_task": true,
+      "title": "@data.type.ending.activity_title",
       "_translations": {
         "title": {}
       },
       "_translatedFields": {
         "title": {
-          "eng": "Well done!"
+          "eng": "@data.type.ending.activity_title"
         }
       },
       "template": "connect_ending",
@@ -116,13 +122,14 @@
       "individual": true,
       "together": true,
       "priority": 91,
-      "title": "@global.hp_review",
+      "has_single_task": true,
+      "title": "@data.type.hp_review.activity_title",
       "_translations": {
         "title": {}
       },
       "_translatedFields": {
         "title": {
-          "eng": "@global.hp_review"
+          "eng": "@data.type.hp_review.activity_title"
         }
       },
       "template": "connect_hp_review",

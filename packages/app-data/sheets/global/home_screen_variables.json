@@ -21,38 +21,6 @@
     },
     {
       "type": "declare_global_constant",
-      "name": "topic",
-      "value": "workshop",
-      "_translations": {
-        "value": {}
-      }
-    },
-    {
-      "type": "declare_global_constant",
-      "name": "topics",
-      "value": "workshops",
-      "_translations": {
-        "value": {}
-      }
-    },
-    {
-      "type": "declare_global_constant",
-      "name": "topic_capital",
-      "value": "Workshop",
-      "_translations": {
-        "value": {}
-      }
-    },
-    {
-      "type": "declare_global_constant",
-      "name": "topics_capital",
-      "value": "Workshops",
-      "_translations": {
-        "value": {}
-      }
-    },
-    {
-      "type": "declare_global_constant",
       "name": "habit",
       "value": "habit",
       "_translations": {

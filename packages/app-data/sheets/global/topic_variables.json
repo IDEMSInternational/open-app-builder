@@ -1,0 +1,40 @@
+{
+  "flow_type": "global",
+  "flow_name": "topic_variables",
+  "status": "released",
+  "rows": [
+    {
+      "type": "declare_global_constant",
+      "name": "topic",
+      "value": "workshop",
+      "_translations": {
+        "value": {}
+      }
+    },
+    {
+      "type": "declare_global_constant",
+      "name": "topics",
+      "value": "workshops",
+      "_translations": {
+        "value": {}
+      }
+    },
+    {
+      "type": "declare_global_constant",
+      "name": "topic_capital",
+      "value": "Workshop",
+      "_translations": {
+        "value": {}
+      }
+    },
+    {
+      "type": "declare_global_constant",
+      "name": "topics_capital",
+      "value": "Workshops",
+      "_translations": {
+        "value": {}
+      }
+    }
+  ],
+  "_xlsxPath": "global/data/navigation_data/navigation_globals.xlsx"
+}

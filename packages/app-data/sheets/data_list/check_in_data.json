@@ -6,21 +6,15 @@
   "rows": [
     {
       "id": "connect",
-      "activity_image": "images/topics/wave.svg",
-      "intro_text": "Before I go on @fields.user_name,\nLet's take a moment to centre ourselves",
+      "question_text": "To start with, how are you doing today?",
       "_translations": {
-        "intro_text": {},
         "question_text": {},
         "reply_happy": {},
         "reply_ok": {},
         "reply_sad": {},
-        "activity_title": {},
         "text": {}
       },
       "_translatedFields": {
-        "intro_text": {
-          "eng": "Before I go on @fields.user_name,\nLet's take a moment to centre ourselves"
-        },
         "question_text": {
           "eng": "To start with, how are you doing today?"
         },
@@ -33,18 +27,13 @@
         "reply_sad": {
           "eng": "Sorry to hear that. Sometimes life just gets the better of us and makes us feel sad, stressed, or overwhelmed. It’s really hard to deal with life when we feel this way. It is completely normal to struggle sometimes – everybody does. Together we can look at strategies to make things feel a bit less hard."
         },
-        "activity_title": {
-          "eng": "Welcome @fields.user_name"
-        },
         "text": {
           "eng": "You matter! Take a moment to check in with yourself."
         }
       },
-      "question_text": "To start with, how are you doing today?",
       "reply_happy": "Wonderful, it’s great to hear that things are going well. We can build on that energy today.",
       "reply_ok": "Sorry to hear that. Sometimes we just feel...“so-so”. Or, we aren’t quite sure how we feel. We can explore different ways to work through that.",
       "reply_sad": "Sorry to hear that. Sometimes life just gets the better of us and makes us feel sad, stressed, or overwhelmed. It’s really hard to deal with life when we feel this way. It is completely normal to struggle sometimes – everybody does. Together we can look at strategies to make things feel a bit less hard.",
-      "activity_title": "Welcome @fields.user_name",
       "text": "You matter! Take a moment to check in with yourself."
     }
   ],

@@ -8,11 +8,11 @@
       "id": "intro",
       "number": 1,
       "image_asset": "images/topics/wave.svg",
-      "relax_data": "@data.relax.relax_3",
-      "relax_title": "@data.relax.relax_3.title",
+      "relax_id": "relax_3",
       "title": "Introduction",
       "_translations": {
         "title": {},
+        "lower_case_title": {},
         "in_text_title": {},
         "description": {},
         "intro_title": {},
@@ -22,6 +22,9 @@
         "title": {
           "eng": "Introduction"
         },
+        "lower_case_title": {
+          "eng": "introduction"
+        },
         "in_text_title": {
           "eng": "**@data.topic.intro.title** @global.topic"
         },
@@ -29,28 +32,29 @@
           "eng": "Description of @data.topic.intro.title"
         },
         "intro_title": {
-          "eng": "Why Introduction?"
+          "eng": "Why introduction?"
         },
         "tools_title": {
-          "eng": "How to Introduction"
+          "eng": "How to introduction"
         }
       },
+      "lower_case_title": "introduction",
       "in_text_title": "**@data.topic.intro.title** @global.topic",
       "description": "Description of @data.topic.intro.title",
-      "intro_title": "Why Introduction?",
-      "tools_title": "How to Introduction"
+      "intro_title": "Why introduction?",
+      "tools_title": "How to introduction"
     },
     {
       "id": "connect",
       "number": 2,
       "image_asset": "images/topics/wave.svg",
-      "relax_data": "@data.relax.relax_3",
-      "relax_title": "@data.relax.relax_3.title",
+      "relax_id": "relax_3",
       "title": "Connect",
       "_translations": {
         "title": {},
-        "in_text_title": {},
+        "lower_case_title": {},
         "description": {},
+        "in_text_title": {},
         "intro_title": {},
         "tools_title": {}
       },
@@ -58,33 +62,37 @@
         "title": {
           "eng": "Connect"
         },
+        "lower_case_title": {
+          "eng": "connect"
+        },
+        "description": {
+          "eng": "Connection plays an important role in our relationships, health and wellbeing. This includes how we connect with our children, our families, and communities, but also how we connect with ourselves."
+        },
         "in_text_title": {
           "eng": "**@data.topic.connect.title** @global.topic"
         },
-        "description": {
-          "eng": "Description of @data.topic.connect.title"
-        },
         "intro_title": {
-          "eng": "Why Connect?"
+          "eng": "Why connect?"
         },
         "tools_title": {
-          "eng": "How to Connect"
+          "eng": "How to connect"
         }
       },
+      "lower_case_title": "connect",
+      "description": "Connection plays an important role in our relationships, health and wellbeing. This includes how we connect with our children, our families, and communities, but also how we connect with ourselves.",
       "in_text_title": "**@data.topic.connect.title** @global.topic",
-      "description": "Description of @data.topic.connect.title",
-      "intro_title": "Why Connect?",
-      "tools_title": "How to Connect"
+      "intro_title": "Why connect?",
+      "tools_title": "How to connect"
     },
     {
       "id": "play",
       "number": 3,
       "image_asset": "images/topics/wave.svg",
-      "relax_data": "@data.relax.relax_3",
-      "relax_title": "@data.relax.relax_3.title",
+      "relax_id": "relax_3",
       "title": "Play",
       "_translations": {
         "title": {},
+        "lower_case_title": {},
         "in_text_title": {},
         "description": {},
         "intro_title": {},
@@ -94,6 +102,9 @@
         "title": {
           "eng": "Play"
         },
+        "lower_case_title": {
+          "eng": "play"
+        },
         "in_text_title": {
           "eng": "**@data.topic.play.title** @global.topic"
         },
@@ -101,26 +112,27 @@
           "eng": "Description of @data.topic.play.title"
         },
         "intro_title": {
-          "eng": "Why Play?"
+          "eng": "Why play?"
         },
         "tools_title": {
-          "eng": "How to Play"
+          "eng": "How to play"
         }
       },
+      "lower_case_title": "play",
       "in_text_title": "**@data.topic.play.title** @global.topic",
       "description": "Description of @data.topic.play.title",
-      "intro_title": "Why Play?",
-      "tools_title": "How to Play"
+      "intro_title": "Why play?",
+      "tools_title": "How to play"
     },
     {
       "id": "talk",
       "number": 4,
       "image_asset": "images/topics/wave.svg",
-      "relax_data": "@data.relax.relax_3",
-      "relax_title": "@data.relax.relax_3.title",
+      "relax_id": "relax_3",
       "title": "Talk",
       "_translations": {
         "title": {},
+        "lower_case_title": {},
         "in_text_title": {},
         "description": {},
         "intro_title": {},
@@ -130,6 +142,9 @@
         "title": {
           "eng": "Talk"
         },
+        "lower_case_title": {
+          "eng": "talk"
+        },
         "in_text_title": {
           "eng": "**@data.topic.talk.title** @global.topic"
         },
@@ -137,26 +152,27 @@
           "eng": "Description of @data.topic.talk.title"
         },
         "intro_title": {
-          "eng": "Why Talk?"
+          "eng": "Why talk?"
         },
         "tools_title": {
-          "eng": "How to Talk"
+          "eng": "How to talk"
         }
       },
+      "lower_case_title": "talk",
       "in_text_title": "**@data.topic.talk.title** @global.topic",
       "description": "Description of @data.topic.talk.title",
-      "intro_title": "Why Talk?",
-      "tools_title": "How to Talk"
+      "intro_title": "Why talk?",
+      "tools_title": "How to talk"
     },
     {
       "id": "explore",
       "number": 5,
       "image_asset": "images/topics/wave.svg",
-      "relax_data": "@data.relax.relax_3",
-      "relax_title": "@data.relax.relax_3.title",
+      "relax_id": "relax_3",
       "title": "Explore",
       "_translations": {
         "title": {},
+        "lower_case_title": {},
         "in_text_title": {},
         "description": {},
         "intro_title": {},
@@ -166,6 +182,9 @@
         "title": {
           "eng": "Explore"
         },
+        "lower_case_title": {
+          "eng": "explore"
+        },
         "in_text_title": {
           "eng": "**@data.topic.explore.title** @global.topic"
         },
@@ -173,26 +192,27 @@
           "eng": "Description of @data.topic.explore.title"
         },
         "intro_title": {
-          "eng": "Why Explore?"
+          "eng": "Why explore?"
         },
         "tools_title": {
-          "eng": "How to Explore"
+          "eng": "How to explore"
         }
       },
+      "lower_case_title": "explore",
       "in_text_title": "**@data.topic.explore.title** @global.topic",
       "description": "Description of @data.topic.explore.title",
-      "intro_title": "Why Explore?",
-      "tools_title": "How to Explore"
+      "intro_title": "Why explore?",
+      "tools_title": "How to explore"
     },
     {
       "id": "create",
       "number": 6,
       "image_asset": "images/topics/wave.svg",
-      "relax_data": "@data.relax.relax_3",
-      "relax_title": "@data.relax.relax_3.title",
+      "relax_id": "relax_3",
       "title": "Create",
       "_translations": {
         "title": {},
+        "lower_case_title": {},
         "in_text_title": {},
         "description": {},
         "intro_title": {},
@@ -202,6 +222,9 @@
         "title": {
           "eng": "Create"
         },
+        "lower_case_title": {
+          "eng": "create"
+        },
         "in_text_title": {
           "eng": "**@data.topic.create.title** @global.topic"
         },
@@ -209,26 +232,27 @@
           "eng": "Description of @data.topic.create.title"
         },
         "intro_title": {
-          "eng": "Why Create?"
+          "eng": "Why create?"
         },
         "tools_title": {
-          "eng": "How to Create"
+          "eng": "How to create"
         }
       },
+      "lower_case_title": "create",
       "in_text_title": "**@data.topic.create.title** @global.topic",
       "description": "Description of @data.topic.create.title",
-      "intro_title": "Why Create?",
-      "tools_title": "How to Create"
+      "intro_title": "Why create?",
+      "tools_title": "How to create"
     },
     {
       "id": "build",
       "number": 7,
       "image_asset": "images/topics/wave.svg",
-      "relax_data": "@data.relax.relax_3",
-      "relax_title": "@data.relax.relax_3.title",
+      "relax_id": "relax_3",
       "title": "Build",
       "_translations": {
         "title": {},
+        "lower_case_title": {},
         "in_text_title": {},
         "description": {},
         "intro_title": {},
@@ -238,6 +262,9 @@
         "title": {
           "eng": "Build"
         },
+        "lower_case_title": {
+          "eng": "build"
+        },
         "in_text_title": {
           "eng": "**@data.topic.build.title** @global.topic"
         },
@@ -245,26 +272,27 @@
           "eng": "Description of @data.topic.build.title"
         },
         "intro_title": {
-          "eng": "Why Build?"
+          "eng": "Why build?"
         },
         "tools_title": {
-          "eng": "How to Build"
+          "eng": "How to build"
         }
       },
+      "lower_case_title": "build",
       "in_text_title": "**@data.topic.build.title** @global.topic",
       "description": "Description of @data.topic.build.title",
-      "intro_title": "Why Build?",
-      "tools_title": "How to Build"
+      "intro_title": "Why build?",
+      "tools_title": "How to build"
     },
     {
       "id": "summary",
       "number": 8,
       "image_asset": "images/topics/wave.svg",
-      "relax_data": "@data.relax.relax_3",
-      "relax_title": "@data.relax.relax_3.title",
+      "relax_id": "relax_3",
       "title": "Summary",
       "_translations": {
         "title": {},
+        "lower_case_title": {},
         "in_text_title": {},
         "description": {},
         "intro_title": {},
@@ -274,6 +302,9 @@
         "title": {
           "eng": "Summary"
         },
+        "lower_case_title": {
+          "eng": "summary"
+        },
         "in_text_title": {
           "eng": "**@data.topic.summary.title** @global.topic"
         },
@@ -281,16 +312,17 @@
           "eng": "Description of @data.topic.summary.title"
         },
         "intro_title": {
-          "eng": "Why Summary?"
+          "eng": "Why summary?"
         },
         "tools_title": {
-          "eng": "How to Summary"
+          "eng": "How to summary"
         }
       },
+      "lower_case_title": "summary",
       "in_text_title": "**@data.topic.summary.title** @global.topic",
       "description": "Description of @data.topic.summary.title",
-      "intro_title": "Why Summary?",
-      "tools_title": "How to Summary"
+      "intro_title": "Why summary?",
+      "tools_title": "How to summary"
     }
   ],
   "_xlsxPath": "global/data/topic_data/topic_data.xlsx"

@@ -1,0 +1,158 @@
+{
+  "flow_type": "data_list",
+  "flow_name": "type_data",
+  "status": "released",
+  "data_list_name": "type",
+  "rows": [
+    {
+      "id": "intro",
+      "activity_image": "images/topics/wave.svg",
+      "intro_title": "@row.activity_title",
+      "_translations": {
+        "intro_title": {}
+      },
+      "_translatedFields": {
+        "intro_title": {
+          "eng": "@row.activity_title"
+        }
+      }
+    },
+    {
+      "id": "check_in",
+      "content_template": "box_radio_buttons_emo_temp",
+      "content_data_list_name": "check_in",
+      "activity_image": "images/topics/wave.svg",
+      "activity_title": "How are you?",
+      "_translations": {
+        "activity_title": {},
+        "intro_title": {},
+        "intro_text": {}
+      },
+      "_translatedFields": {
+        "activity_title": {
+          "eng": "How are you?"
+        },
+        "intro_title": {
+          "eng": "Welcome, @fields.user_name"
+        },
+        "intro_text": {
+          "eng": "Let's take a moment to centre ourselves."
+        }
+      },
+      "intro_title": "Welcome, @fields.user_name",
+      "intro_text": "Let's take a moment to centre ourselves."
+    },
+    {
+      "id": "relax",
+      "content_template": "When we are feeling stressed or if our children are making us feel very annoyed, we all need a moment to stop, to notice our thoughts and feelings and take a deep breath before we move on. We call this \"taking a pause\".",
+      "content_data_list_name": "relax",
+      "activity_image": "images/topics/wave.svg",
+      "activity_title": "Take a pause",
+      "_translations": {
+        "activity_title": {},
+        "intro_text": {},
+        "intro_title": {}
+      },
+      "_translatedFields": {
+        "activity_title": {
+          "eng": "Take a pause"
+        },
+        "intro_text": {
+          "eng": "Whatever you are feeling today – we all benefit from taking a moment to pause and reflect on what we are feeling and thinking."
+        },
+        "intro_title": {
+          "eng": "Take a pause"
+        }
+      },
+      "intro_text": "Whatever you are feeling today – we all benefit from taking a moment to pause and reflect on what we are feeling and thinking.",
+      "intro_title": "Take a pause"
+    },
+    {
+      "id": "read",
+      "activity_image": "images/topics/wave.svg",
+      "intro_title": "@row.activity_title",
+      "_translations": {
+        "intro_title": {}
+      },
+      "_translatedFields": {
+        "intro_title": {
+          "eng": "@row.activity_title"
+        }
+      }
+    },
+    {
+      "id": "practice",
+      "activity_image": "images/topics/wave.svg",
+      "intro_title": "@row.activity_title",
+      "_translations": {
+        "intro_title": {}
+      },
+      "_translatedFields": {
+        "intro_title": {
+          "eng": "@row.activity_title"
+        }
+      }
+    },
+    {
+      "id": "home_practice",
+      "activity_image": "images/topics/wave.svg",
+      "activity_title": "Ready to practice?",
+      "_translations": {
+        "activity_title": {},
+        "intro_title": {}
+      },
+      "_translatedFields": {
+        "activity_title": {
+          "eng": "Ready to practice?"
+        },
+        "intro_title": {
+          "eng": "Ready to practice?"
+        }
+      },
+      "intro_title": "Ready to practice?"
+    },
+    {
+      "id": "hp_review",
+      "activity_image": "images/topics/wave.svg",
+      "activity_title": "How did your practice go?",
+      "_translations": {
+        "activity_title": {},
+        "intro_title": {}
+      },
+      "_translatedFields": {
+        "activity_title": {
+          "eng": "How did your practice go?"
+        },
+        "intro_title": {
+          "eng": "How did your practice go?"
+        }
+      },
+      "intro_title": "How did your practice go?"
+    },
+    {
+      "id": "ending",
+      "content_template": "box_video",
+      "activity_image": "images/topics/wave.svg",
+      "activity_title": "Let's slow down",
+      "_translations": {
+        "activity_title": {},
+        "intro_title": {},
+        "intro_text": {}
+      },
+      "_translatedFields": {
+        "activity_title": {
+          "eng": "Let's slow down"
+        },
+        "intro_title": {
+          "eng": "Well done!"
+        },
+        "intro_text": {
+          "eng": "You’ve completed this week’s topic."
+        }
+      },
+      "intro_title": "Well done!",
+      "intro_text": "You’ve completed this week’s topic."
+    }
+  ],
+  "_xlsxPath": "global/data/topic_data/topic_data.xlsx"
+}

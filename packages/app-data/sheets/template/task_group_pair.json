@@ -4,38 +4,38 @@
   "status": "released",
   "rows": [
     {
-      "name": "workshop_id",
-      "value": "@fields.current_workshop",
+      "name": "topic_id",
+      "value": "@fields.current_topic",
       "_translations": {
         "value": {}
       },
-      "condition": "!@local.workshop_id",
+      "condition": "!@local.topic_id",
       "exclude_from_translation": true,
       "type": "set_variable",
-      "_nested_name": "workshop_id",
+      "_nested_name": "topic_id",
       "_dynamicFields": {
         "value": [
           {
-            "fullExpression": "@fields.current_workshop",
-            "matchedExpression": "@fields.current_workshop",
+            "fullExpression": "@fields.current_topic",
+            "matchedExpression": "@fields.current_topic",
             "type": "fields",
-            "fieldName": "current_workshop"
+            "fieldName": "current_topic"
           }
         ],
         "condition": [
           {
-            "fullExpression": "!@local.workshop_id",
-            "matchedExpression": "!@local.workshop_id",
+            "fullExpression": "!@local.topic_id",
+            "matchedExpression": "!@local.topic_id",
             "type": "local",
-            "fieldName": "workshop_id"
+            "fieldName": "topic_id"
           }
         ]
       },
       "_dynamicDependencies": {
-        "@fields.current_workshop": [
+        "@fields.current_topic": [
           "value"
         ],
-        "!@local.workshop_id": [
+        "!@local.topic_id": [
           "condition"
         ]
       }

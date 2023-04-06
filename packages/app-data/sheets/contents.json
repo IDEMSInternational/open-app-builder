@@ -684,12 +684,6 @@
       "data_list_name": "safeguarding_contacts_tz",
       "_xlsxPath": "tz/data/safeguarding_data_tz.xlsx"
     },
-    "story_data": {
-      "flow_type": "data_list",
-      "flow_name": "story_data",
-      "data_list_name": "story",
-      "_xlsxPath": "global/data/topic_data/topic_data.xlsx"
-    },
     "summary_specific_task_gs": {
       "flow_type": "data_list",
       "flow_name": "summary_specific_task_gs",
@@ -730,6 +724,12 @@
       "flow_type": "data_list",
       "flow_name": "topic_data",
       "data_list_name": "topic",
+      "_xlsxPath": "global/data/topic_data/topic_data.xlsx"
+    },
+    "type_data": {
+      "flow_type": "data_list",
+      "flow_name": "type_data",
+      "data_list_name": "type",
       "_xlsxPath": "global/data/topic_data/topic_data.xlsx"
     }
   },
@@ -817,6 +817,11 @@
       "flow_type": "global",
       "flow_name": "topic_options",
       "_xlsxPath": "global/data/topic_data/topic_globals.xlsx"
+    },
+    "topic_variables": {
+      "flow_type": "global",
+      "flow_name": "topic_variables",
+      "_xlsxPath": "global/data/navigation_data/navigation_globals.xlsx"
     }
   },
   "template": {
@@ -1254,7 +1259,7 @@
     "box_tools": {
       "flow_type": "template",
       "flow_name": "box_tools",
-      "_xlsxPath": "global/templates/core_templates/core_templates_essential_tools.xlsx"
+      "_xlsxPath": "global/templates/core_templates/essential_tools.xlsx"
     },
     "box_video": {
       "flow_type": "template",
@@ -1300,12 +1305,12 @@
     "essential_tool": {
       "flow_type": "template",
       "flow_name": "essential_tool",
-      "_xlsxPath": "global/templates/core_templates/core_templates_essential_tools.xlsx"
+      "_xlsxPath": "global/templates/core_templates/essential_tools.xlsx"
     },
     "essential_tools": {
       "flow_type": "template",
       "flow_name": "essential_tools",
-      "_xlsxPath": "global/templates/core_templates/core_templates_essential_tools.xlsx"
+      "_xlsxPath": "global/templates/core_templates/essential_tools.xlsx"
     },
     "footer": {
       "flow_type": "template",
@@ -1447,7 +1452,7 @@
     "lib_act_tools": {
       "flow_type": "template",
       "flow_name": "lib_act_tools",
-      "_xlsxPath": "global/templates/core_templates/core_templates_essential_tools.xlsx"
+      "_xlsxPath": "global/templates/core_templates/essential_tools.xlsx"
     },
     "lib_act_w_1on1": {
       "flow_type": "template",
@@ -1974,7 +1979,7 @@
     "tool_tile": {
       "flow_type": "template",
       "flow_name": "tool_tile",
-      "_xlsxPath": "global/templates/core_templates/core_templates_essential_tools.xlsx"
+      "_xlsxPath": "global/templates/core_templates/essential_tools.xlsx"
     },
     "tools_activity": {
       "flow_type": "template",
@@ -1995,6 +2000,11 @@
       "flow_type": "template",
       "flow_name": "tools_talk_to_teen",
       "_xlsxPath": "global/templates/top_templates/library_templates/covid/covid_tools.xlsx"
+    },
+    "topic_activity": {
+      "flow_type": "template",
+      "flow_name": "topic_activity",
+      "_xlsxPath": "global/templates/core_templates/topic_activities.xlsx"
     },
     "topic_intro": {
       "flow_type": "template",
@@ -3675,11 +3685,6 @@
     "workshop_activity": {
       "flow_type": "template",
       "flow_name": "workshop_activity",
-      "_xlsxPath": "global/templates/core_templates/topics.xlsx"
-    },
-    "workshop_activity_old": {
-      "flow_type": "template",
-      "flow_name": "workshop_activity_old",
       "_xlsxPath": "global/templates/core_templates/topics.xlsx"
     },
     "workshop_completed_calc": {

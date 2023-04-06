@@ -93,6 +93,12 @@
               "exclude_from_translation": true,
               "type": "set_variable",
               "_nested_name": "dg_highlighted_topic.highlighted_topic_card.card_style"
+            },
+            {
+              "name": "with_subtitle",
+              "value": true,
+              "type": "set_variable",
+              "_nested_name": "dg_highlighted_topic.highlighted_topic_card.with_subtitle"
             }
           ],
           "_nested_name": "dg_highlighted_topic.highlighted_topic_card"
