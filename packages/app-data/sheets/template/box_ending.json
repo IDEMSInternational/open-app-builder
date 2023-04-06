@@ -5,95 +5,32 @@
   "type_id": "ending",
   "rows": [
     {
-      "name": "data_list_name",
+      "name": "subs_src",
       "type": "set_variable",
-      "_nested_name": "data_list_name"
+      "_nested_name": "subs_src"
     },
     {
-      "name": "id",
-      "type": "set_variable",
-      "_nested_name": "id"
-    },
-    {
-      "name": "data_list_name_id",
-      "value": [
-        "@local.data_list_name.@local.id"
-      ],
-      "type": "set_variable",
-      "_nested_name": "data_list_name_id",
+      "type": "video",
+      "name": "video_src",
+      "parameter_list": {
+        "subtitles_src": "@local.subs_src"
+      },
+      "_nested_name": "video_src",
       "_dynamicFields": {
-        "value": {
-          "0": [
+        "parameter_list": {
+          "subtitles_src": [
             {
-              "fullExpression": "@local.data_list_name.@local.id",
-              "matchedExpression": "@local.data_list_name",
+              "fullExpression": "@local.subs_src",
+              "matchedExpression": "@local.subs_src",
               "type": "local",
-              "fieldName": "data_list_name"
-            },
-            {
-              "fullExpression": "@local.data_list_name.@local.id",
-              "matchedExpression": "@local.id",
-              "type": "local",
-              "fieldName": "id"
+              "fieldName": "subs_src"
             }
           ]
         }
       },
       "_dynamicDependencies": {
-        "@local.data_list_name": [
-          "value.0"
-        ],
-        "@local.id": [
-          "value.0"
-        ]
-      }
-    },
-    {
-      "name": "row_data",
-      "value": "@data.@local.data_list_name_id",
-      "_translations": {
-        "value": {}
-      },
-      "type": "set_variable",
-      "_nested_name": "row_data",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "@data.@local.data_list_name_id",
-            "matchedExpression": "@local.data_list_name_id",
-            "type": "local",
-            "fieldName": "data_list_name_id"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@local.data_list_name_id": [
-          "value"
-        ]
-      }
-    },
-    {
-      "box_": "text",
-      "name": "text",
-      "value": "@local.row_data.text",
-      "_translations": {
-        "value": {}
-      },
-      "type": "set_variable",
-      "_nested_name": "text",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "@local.row_data.text",
-            "matchedExpression": "@local.row_data.text",
-            "type": "local",
-            "fieldName": "row_data"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@local.row_data.text": [
-          "value"
+        "@local.subs_src": [
+          "parameter_list.subtitles_src"
         ]
       }
     }

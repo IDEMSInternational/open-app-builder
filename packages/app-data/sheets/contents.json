@@ -224,6 +224,11 @@
       "data_list_name": "check_in",
       "_xlsxPath": "global/data/topic_data/topic_data.xlsx"
     },
+    "check_in_options": {
+      "flow_type": "data_list",
+      "flow_name": "check_in_options",
+      "_xlsxPath": "global/templates/core_templates/topic_activity.xlsx"
+    },
     "common_topic_task_gs": {
       "flow_type": "data_list",
       "flow_name": "common_topic_task_gs",
@@ -1328,12 +1333,6 @@
       "flow_type": "template",
       "flow_name": "change_thoughts_sect",
       "_xlsxPath": "global/templates/top_templates/library_templates/covid/covid_reflect.xlsx"
-    },
-    "check_in_options": {
-      "flow_type": "template",
-      "flow_name": "check_in_options",
-      "type_id": "check_in_options",
-      "_xlsxPath": "global/templates/core_templates/topic_activity.xlsx"
     },
     "lets_slow_down_lyrics": {
       "flow_type": "template",

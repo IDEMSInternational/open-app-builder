@@ -29,13 +29,13 @@
     },
     {
       "id": "message_3",
-      "text": "Parenting can be hard, but @global.parent_app is here to help you win.",
+      "text": "Parenting can be hard, but @global.app_name is here to help you win.",
       "_translations": {
         "text": {}
       },
       "_translatedFields": {
         "text": {
-          "eng": "Parenting can be hard, but @global.parent_app is here to help you win."
+          "eng": "Parenting can be hard, but @global.app_name is here to help you win."
         }
       }
     },

@@ -244,10 +244,10 @@
           "eng": "@global.m_w_tomorrow"
         },
         "text": {
-          "eng": "Start a brand new @global.parent_app @global.workshop tomorrow. You'll see great results!"
+          "eng": "Start a brand new @global.app_name @global.workshop tomorrow. You'll see great results!"
         }
       },
-      "text": "Start a brand new @global.parent_app @global.workshop tomorrow. You'll see great results!"
+      "text": "Start a brand new @global.app_name @global.workshop tomorrow. You'll see great results!"
     },
     {
       "id": "w_tomorrow_w_self_care_tog",
@@ -311,10 +311,10 @@
           "eng": "@global.m_w_tomorrow"
         },
         "text": {
-          "eng": "Remember to tell your @global.parent_app partners about the app. Tomorrow, you can start doing @global.parent_app @global.workshops together!"
+          "eng": "Remember to tell your @global.app_name partners about the app. Tomorrow, you can start doing @global.app_name @global.workshops together!"
         }
       },
-      "text": "Remember to tell your @global.parent_app partners about the app. Tomorrow, you can start doing @global.parent_app @global.workshops together!"
+      "text": "Remember to tell your @global.app_name partners about the app. Tomorrow, you can start doing @global.app_name @global.workshops together!"
     },
     {
       "activation_condition_list": []

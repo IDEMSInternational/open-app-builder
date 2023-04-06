@@ -42,14 +42,14 @@
       "campaign_list": [
         "nf_inactive_progress"
       ],
-      "title": "Care for yourself with @global.parent_app",
+      "title": "Care for yourself with @global.app_name",
       "_translations": {
         "title": {},
         "text": {}
       },
       "_translatedFields": {
         "title": {
-          "eng": "Care for yourself with @global.parent_app"
+          "eng": "Care for yourself with @global.app_name"
         },
         "text": {
           "eng": "@fields.user_name, it is so good to have you on this parenting journey. Tap the @data.workshop.w_self_care.in_text_title and learn more on how you can care for yourself. A happy family starts with a happy YOU!"
@@ -95,20 +95,20 @@
       "campaign_list": [
         "nf_inactive_progress"
       ],
-      "title": "Connect well through @global.parent_app",
+      "title": "Connect well through @global.app_name",
       "_translations": {
         "title": {},
         "text": {}
       },
       "_translatedFields": {
         "title": {
-          "eng": "Connect well through @global.parent_app"
+          "eng": "Connect well through @global.app_name"
         },
         "text": {
-          "eng": "Spending time with your teen helps build trust between you. Continue your @global.parent_app journey now by completing the @data.workshop.w_1on1.in_text_title. You and your family will see great results."
+          "eng": "Spending time with your teen helps build trust between you. Continue your @global.app_name journey now by completing the @data.workshop.w_1on1.in_text_title. You and your family will see great results."
         }
       },
-      "text": "Spending time with your teen helps build trust between you. Continue your @global.parent_app journey now by completing the @data.workshop.w_1on1.in_text_title. You and your family will see great results."
+      "text": "Spending time with your teen helps build trust between you. Continue your @global.app_name journey now by completing the @data.workshop.w_1on1.in_text_title. You and your family will see great results."
     },
     {
       "id": "nf_inactive_w_praise",
@@ -148,14 +148,14 @@
       "campaign_list": [
         "nf_inactive_progress"
       ],
-      "title": "Praise each other with @global.parent_app",
+      "title": "Praise each other with @global.app_name",
       "_translations": {
         "title": {},
         "text": {}
       },
       "_translatedFields": {
         "title": {
-          "eng": "Praise each other with @global.parent_app"
+          "eng": "Praise each other with @global.app_name"
         },
         "text": {
           "eng": "Praising makes all the difference. Complete the @data.workshop.w_praise.in_text_title to see how praise can change YOUR family."
@@ -201,14 +201,14 @@
       "campaign_list": [
         "nf_inactive_progress"
       ],
-      "title": "Instruct well through @global.parent_app",
+      "title": "Instruct well through @global.app_name",
       "_translations": {
         "title": {},
         "text": {}
       },
       "_translatedFields": {
         "title": {
-          "eng": "Instruct well through @global.parent_app"
+          "eng": "Instruct well through @global.app_name"
         },
         "text": {
           "eng": "Positive instructions help to see more and more good behaviour! Learn how this could work in your family, by completing the @data.workshop.w_instruct.in_text_title."
@@ -254,14 +254,14 @@
       "campaign_list": [
         "nf_inactive_progress"
       ],
-      "title": "Stay calm with @global.parent_app",
+      "title": "Stay calm with @global.app_name",
       "_translations": {
         "title": {},
         "text": {}
       },
       "_translatedFields": {
         "title": {
-          "eng": "Stay calm with @global.parent_app"
+          "eng": "Stay calm with @global.app_name"
         },
         "text": {
           "eng": "We all feel overwhelmed sometimes. Taking a deep breath helps! Complete the @data.workshop.w_stress.in_text_title to get some useful tools to deal with stress."
@@ -307,14 +307,14 @@
       "campaign_list": [
         "nf_inactive_progress"
       ],
-      "title": "Manage money with @global.parent_app",
+      "title": "Manage money with @global.app_name",
       "_translations": {
         "title": {},
         "text": {}
       },
       "_translatedFields": {
         "title": {
-          "eng": "Manage money with @global.parent_app"
+          "eng": "Manage money with @global.app_name"
         },
         "text": {
           "eng": "@fields.user_name, do you feel stressed about money? Does your teen keep asking for things you can’t afford? Tap the @data.workshop.w_money.in_text_title to get great tips on money and budgeting."
@@ -360,20 +360,20 @@
       "campaign_list": [
         "nf_inactive_progress"
       ],
-      "title": "Rules that work with @global.parent_app",
+      "title": "Rules that work with @global.app_name",
       "_translations": {
         "title": {},
         "text": {}
       },
       "_translatedFields": {
         "title": {
-          "eng": "Rules that work with @global.parent_app"
+          "eng": "Rules that work with @global.app_name"
         },
         "text": {
-          "eng": "Well done for using @global.parent_app and for committing to your parenting journey. The @data.workshop.w_rules.in_text_title shows you how to set rules in a way that helps your teen to understand and follow them better. Try it out today!"
+          "eng": "Well done for using @global.app_name and for committing to your parenting journey. The @data.workshop.w_rules.in_text_title shows you how to set rules in a way that helps your teen to understand and follow them better. Try it out today!"
         }
       },
-      "text": "Well done for using @global.parent_app and for committing to your parenting journey. The @data.workshop.w_rules.in_text_title shows you how to set rules in a way that helps your teen to understand and follow them better. Try it out today!"
+      "text": "Well done for using @global.app_name and for committing to your parenting journey. The @data.workshop.w_rules.in_text_title shows you how to set rules in a way that helps your teen to understand and follow them better. Try it out today!"
     },
     {
       "id": "nf_inactive_w_consequence",
@@ -413,14 +413,14 @@
       "campaign_list": [
         "nf_inactive_progress"
       ],
-      "title": "Motivate your teen with @global.parent_app",
+      "title": "Motivate your teen with @global.app_name",
       "_translations": {
         "title": {},
         "text": {}
       },
       "_translatedFields": {
         "title": {
-          "eng": "Motivate your teen with @global.parent_app"
+          "eng": "Motivate your teen with @global.app_name"
         },
         "text": {
           "eng": "You have build many great parenting skills already! Tap the @data.workshop.w_consequence.in_text_title to learn how to set one positive and one negative consequence of a behaviour together. You and your family will benefits!"
@@ -466,14 +466,14 @@
       "campaign_list": [
         "nf_inactive_progress"
       ],
-      "title": "Solve problems with @global.parent_app",
+      "title": "Solve problems with @global.app_name",
       "_translations": {
         "title": {},
         "text": {}
       },
       "_translatedFields": {
         "title": {
-          "eng": "Solve problems with @global.parent_app"
+          "eng": "Solve problems with @global.app_name"
         },
         "text": {
           "eng": "With teenagers, and in life, unexpected problems come up. Tap the @data.workshop.w_solve.in_text_title to learn how to resolve any challenge together with your teen."
@@ -519,14 +519,14 @@
       "campaign_list": [
         "nf_inactive_progress"
       ],
-      "title": "Stay safe through @global.parent_app",
+      "title": "Stay safe through @global.app_name",
       "_translations": {
         "title": {},
         "text": {}
       },
       "_translatedFields": {
         "title": {
-          "eng": "Stay safe through @global.parent_app"
+          "eng": "Stay safe through @global.app_name"
         },
         "text": {
           "eng": "To keep your teen safe, it helps to chat together about your community and their online experiences. Complete the @data.workshop.w_safe.in_text_title and see how you can do this!"
@@ -572,14 +572,14 @@
       "campaign_list": [
         "nf_inactive_progress"
       ],
-      "title": "Be ready with @global.parent_app",
+      "title": "Be ready with @global.app_name",
       "_translations": {
         "title": {},
         "text": {}
       },
       "_translatedFields": {
         "title": {
-          "eng": "Be ready with @global.parent_app"
+          "eng": "Be ready with @global.app_name"
         },
         "text": {
           "eng": "We never know when a crisis may happen, but we CAN be prepared! Tap the @data.workshop.w_crisis.in_text_title to explore how you can do this together with your teen."
@@ -625,14 +625,14 @@
       "campaign_list": [
         "nf_inactive_progress"
       ],
-      "title": "Celebrate with @global.parent_app",
+      "title": "Celebrate with @global.app_name",
       "_translations": {
         "title": {},
         "text": {}
       },
       "_translatedFields": {
         "title": {
-          "eng": "Celebrate with @global.parent_app"
+          "eng": "Celebrate with @global.app_name"
         },
         "text": {
           "eng": "@fields.user_name, you deserve to celebrate and be celebrated! Tap the @data.workshop.w_celebrate.in_text_title to reflect on your journey and get ideas for how you can continue to invest in yourself and your family."

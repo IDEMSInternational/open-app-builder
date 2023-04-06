@@ -73,10 +73,10 @@
           "eng": "@global.m_w_released"
         },
         "text": {
-          "eng": "Hi @fields.user_name! You're starting your third  @global.parent_app week. \n\nA new @global.workshop is ready!"
+          "eng": "Hi @fields.user_name! You're starting your third  @global.app_name week. \n\nA new @global.workshop is ready!"
         }
       },
-      "text": "Hi @fields.user_name! You're starting your third  @global.parent_app week. \n\nA new @global.workshop is ready!"
+      "text": "Hi @fields.user_name! You're starting your third  @global.app_name week. \n\nA new @global.workshop is ready!"
     },
     {
       "id": "w_released_w_praise_tog",
@@ -147,10 +147,10 @@
           "eng": "@global.m_w_released"
         },
         "text": {
-          "eng": "Hi @fields.group_name! You're starting your third  @global.parent_app week. \n\nA new @global.workshop is ready!"
+          "eng": "Hi @fields.group_name! You're starting your third  @global.app_name week. \n\nA new @global.workshop is ready!"
         }
       },
-      "text": "Hi @fields.group_name! You're starting your third  @global.parent_app week. \n\nA new @global.workshop is ready!"
+      "text": "Hi @fields.group_name! You're starting your third  @global.app_name week. \n\nA new @global.workshop is ready!"
     },
     {
       "id": "relax_w_praise",
@@ -319,10 +319,10 @@
           "eng": "@global.m_praise"
         },
         "text": {
-          "eng": "Well done for using @global.parent_app! Remember, small things make a big difference."
+          "eng": "Well done for using @global.app_name! Remember, small things make a big difference."
         }
       },
-      "text": "Well done for using @global.parent_app! Remember, small things make a big difference."
+      "text": "Well done for using @global.app_name! Remember, small things make a big difference."
     },
     {
       "id": "w_reminder_w_praise",

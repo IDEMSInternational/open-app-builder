@@ -450,10 +450,10 @@
           "eng": "@global.m_w_in_progress"
         },
         "text": {
-          "eng": "Spending time with your teen helps build trust. \n\nContinue your @global.parent_app journey for great results."
+          "eng": "Spending time with your teen helps build trust. \n\nContinue your @global.app_name journey for great results."
         }
       },
-      "text": "Spending time with your teen helps build trust. \n\nContinue your @global.parent_app journey for great results."
+      "text": "Spending time with your teen helps build trust. \n\nContinue your @global.app_name journey for great results."
     },
     {
       "id": "hp_reminder_w_1on1",

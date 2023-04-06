@@ -393,11 +393,11 @@
           "exclude_from_translation": true,
           "rows": [
             {
-              "name": "with_image_and_subtitle",
+              "name": "with_image",
               "value": false,
               "exclude_from_translation": true,
               "type": "set_variable",
-              "_nested_name": "dg_full_module.full_module.with_image_and_subtitle"
+              "_nested_name": "dg_full_module.full_module.with_image"
             },
             {
               "name": "card_style",

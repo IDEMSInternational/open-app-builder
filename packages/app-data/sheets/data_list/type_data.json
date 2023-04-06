@@ -191,11 +191,11 @@
           "eng": "Well done!"
         },
         "intro_text": {
-          "eng": "You’ve completed this week’s @global.topic."
+          "eng": "You’ve completed this @global.topic."
         }
       },
       "intro_title": "Well done!",
-      "intro_text": "You’ve completed this week’s @global.topic."
+      "intro_text": "You’ve completed this @global.topic."
     }
   ],
   "_xlsxPath": "global/data/topic_data/topic_data.xlsx"

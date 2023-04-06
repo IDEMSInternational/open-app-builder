@@ -240,6 +240,7 @@
         "sort": "priority",
         "limit": "1"
       },
+      "condition": false,
       "exclude_from_translation": true,
       "rows": [
         {
@@ -274,6 +275,7 @@
             "style": "card",
             "icon": "@local.topic_image"
           },
+          "condition": false,
           "exclude_from_translation": true,
           "_nested_name": "items.button_topic",
           "_dynamicFields": {
@@ -421,11 +423,12 @@
         "filter": "!@item.completed",
         "limit": "1"
       },
+      "condition": false,
       "exclude_from_translation": true,
       "rows": [
         {
           "type": "button",
-          "name": "button_parent_point",
+          "name": "button_habit",
           "value": "@item.title",
           "_translations": {
             "value": {}
@@ -453,10 +456,11 @@
           ],
           "parameter_list": {
             "style": "card",
-            "icon": "plh_images/icons/star_outline.svg"
+            "icon": "@data.app_section.habits.icon_asset"
           },
+          "condition": false,
           "exclude_from_translation": true,
-          "_nested_name": "items.button_parent_point",
+          "_nested_name": "items.button_habit",
           "_dynamicFields": {
             "value": [
               {
@@ -523,6 +527,16 @@
                   }
                 ]
               }
+            },
+            "parameter_list": {
+              "icon": [
+                {
+                  "fullExpression": "@data.app_section.habits.icon_asset",
+                  "matchedExpression": "@data.app_section.habits.icon_asset",
+                  "type": "data",
+                  "fieldName": "app_section"
+                }
+              ]
             }
           },
           "_dynamicDependencies": {
@@ -538,6 +552,9 @@
               "action_list.1.args.0",
               "action_list.1._raw",
               "action_list.1._cleaned"
+            ],
+            "@data.app_section.habits.icon_asset": [
+              "parameter_list.icon"
             ]
           }
         }
@@ -580,11 +597,12 @@
         "filter": "!@item.completed",
         "limit": "1"
       },
+      "condition": false,
       "exclude_from_translation": true,
       "rows": [
         {
           "type": "button",
-          "name": "button_parent_centre",
+          "name": "button_library",
           "value": "@item.title",
           "_translations": {
             "value": {}
@@ -612,10 +630,11 @@
           ],
           "parameter_list": {
             "style": "card",
-            "icon": "plh_images/icons/book.svg"
+            "icon": "@data.app_section.library.icon_asset"
           },
+          "condition": false,
           "exclude_from_translation": true,
-          "_nested_name": "items.button_parent_centre",
+          "_nested_name": "items.button_library",
           "_dynamicFields": {
             "value": [
               {
@@ -682,6 +701,16 @@
                   }
                 ]
               }
+            },
+            "parameter_list": {
+              "icon": [
+                {
+                  "fullExpression": "@data.app_section.library.icon_asset",
+                  "matchedExpression": "@data.app_section.library.icon_asset",
+                  "type": "data",
+                  "fieldName": "app_section"
+                }
+              ]
             }
           },
           "_dynamicDependencies": {
@@ -697,6 +726,9 @@
               "action_list.1.args.0",
               "action_list.1._raw",
               "action_list.1._cleaned"
+            ],
+            "@data.app_section.library.icon_asset": [
+              "parameter_list.icon"
             ]
           }
         }

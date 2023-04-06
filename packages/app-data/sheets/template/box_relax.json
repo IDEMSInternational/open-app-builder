@@ -6,6 +6,9 @@
   "rows": [
     {
       "name": "data_list_name",
+      "value": [
+        "relax"
+      ],
       "type": "set_variable",
       "_nested_name": "data_list_name"
     },

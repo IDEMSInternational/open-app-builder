@@ -319,10 +319,10 @@
           "eng": "@global.m_praise"
         },
         "text": {
-          "eng": "Be kind to yourself. No parent is perfect. Using @global.parent_app shows you care!"
+          "eng": "Be kind to yourself. No parent is perfect. Using @global.app_name shows you care!"
         }
       },
-      "text": "Be kind to yourself. No parent is perfect. Using @global.parent_app shows you care!"
+      "text": "Be kind to yourself. No parent is perfect. Using @global.app_name shows you care!"
     },
     {
       "id": "w_reminder_w_instruct",

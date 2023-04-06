@@ -73,10 +73,10 @@
           "eng": "@global.m_w_released"
         },
         "text": {
-          "eng": "Hi @fields.user_name! Today we are celebrating two @global.parent_app months! \nThis week you'll learn to how help your teen follow household rules."
+          "eng": "Hi @fields.user_name! Today we are celebrating two @global.app_name months! \nThis week you'll learn to how help your teen follow household rules."
         }
       },
-      "text": "Hi @fields.user_name! Today we are celebrating two @global.parent_app months! \nThis week you'll learn to how help your teen follow household rules."
+      "text": "Hi @fields.user_name! Today we are celebrating two @global.app_name months! \nThis week you'll learn to how help your teen follow household rules."
     },
     {
       "id": "w_released_w_consequence_tog",
@@ -147,10 +147,10 @@
           "eng": "@global.m_w_released"
         },
         "text": {
-          "eng": "Hi @fields.group_name! Today we are celebrating two @global.parent_app months! \n\nThis week you'll learn to help your teen follow household rules."
+          "eng": "Hi @fields.group_name! Today we are celebrating two @global.app_name months! \n\nThis week you'll learn to help your teen follow household rules."
         }
       },
-      "text": "Hi @fields.group_name! Today we are celebrating two @global.parent_app months! \n\nThis week you'll learn to help your teen follow household rules."
+      "text": "Hi @fields.group_name! Today we are celebrating two @global.app_name months! \n\nThis week you'll learn to help your teen follow household rules."
     },
     {
       "id": "relax_w_consequence",

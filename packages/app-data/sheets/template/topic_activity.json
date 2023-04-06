@@ -232,7 +232,7 @@
         {
           "name": "data_list_name",
           "value": [
-            "@local.type_data.data_list_name"
+            "@local.content_data_list_name"
           ],
           "type": "set_variable",
           "_nested_name": "content_box.data_list_name",
@@ -240,16 +240,16 @@
             "value": {
               "0": [
                 {
-                  "fullExpression": "@local.type_data.data_list_name",
-                  "matchedExpression": "@local.type_data.data_list_name",
+                  "fullExpression": "@local.content_data_list_name",
+                  "matchedExpression": "@local.content_data_list_name",
                   "type": "local",
-                  "fieldName": "type_data"
+                  "fieldName": "content_data_list_name"
                 }
               ]
             }
           },
           "_dynamicDependencies": {
-            "@local.type_data.data_list_name": [
+            "@local.content_data_list_name": [
               "value.0"
             ]
           }

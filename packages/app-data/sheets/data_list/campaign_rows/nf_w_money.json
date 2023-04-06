@@ -73,10 +73,10 @@
           "eng": "@global.m_w_released"
         },
         "text": {
-          "eng": "Hi @fields.user_name! Amazing, this is your second month with @global.parent_app.\n\nMost families struggle with money. This @global.workshop will give you tools to plan your expenses to help you through the month."
+          "eng": "Hi @fields.user_name! Amazing, this is your second month with @global.app_name.\n\nMost families struggle with money. This @global.workshop will give you tools to plan your expenses to help you through the month."
         }
       },
-      "text": "Hi @fields.user_name! Amazing, this is your second month with @global.parent_app.\n\nMost families struggle with money. This @global.workshop will give you tools to plan your expenses to help you through the month."
+      "text": "Hi @fields.user_name! Amazing, this is your second month with @global.app_name.\n\nMost families struggle with money. This @global.workshop will give you tools to plan your expenses to help you through the month."
     },
     {
       "id": "w_released_w_money_tog",
@@ -147,10 +147,10 @@
           "eng": "@global.m_w_released"
         },
         "text": {
-          "eng": "Hi @fields.group_name! Amazing, this is your second month with @global.parent_app. \n\nMost families struggle with money. This @global.workshop will give you tools to plan your expenses to help you through the month."
+          "eng": "Hi @fields.group_name! Amazing, this is your second month with @global.app_name. \n\nMost families struggle with money. This @global.workshop will give you tools to plan your expenses to help you through the month."
         }
       },
-      "text": "Hi @fields.group_name! Amazing, this is your second month with @global.parent_app. \n\nMost families struggle with money. This @global.workshop will give you tools to plan your expenses to help you through the month."
+      "text": "Hi @fields.group_name! Amazing, this is your second month with @global.app_name. \n\nMost families struggle with money. This @global.workshop will give you tools to plan your expenses to help you through the month."
     },
     {
       "id": "relax_w_money",

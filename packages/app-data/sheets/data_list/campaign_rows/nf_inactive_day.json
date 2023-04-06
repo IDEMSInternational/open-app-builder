@@ -33,13 +33,13 @@
       "campaign_list": [
         "nf_inactive_day"
       ],
-      "text": "Welcome to @global.parent_app. Click here to start your journey!",
+      "text": "Welcome to @global.app_name. Click here to start your journey!",
       "_translations": {
         "text": {}
       },
       "_translatedFields": {
         "text": {
-          "eng": "Welcome to @global.parent_app. Click here to start your journey!"
+          "eng": "Welcome to @global.app_name. Click here to start your journey!"
         }
       }
     }

@@ -73,10 +73,10 @@
           "eng": "@global.m_w_released"
         },
         "text": {
-          "eng": "Hi @fields.user_name! You're nearly at the end of your @global.parent_app journey! Thank you for sticking to it. \n\nThis week is about keeping our teens safe online and in the community."
+          "eng": "Hi @fields.user_name! You're nearly at the end of your @global.app_name journey! Thank you for sticking to it. \n\nThis week is about keeping our teens safe online and in the community."
         }
       },
-      "text": "Hi @fields.user_name! You're nearly at the end of your @global.parent_app journey! Thank you for sticking to it. \n\nThis week is about keeping our teens safe online and in the community."
+      "text": "Hi @fields.user_name! You're nearly at the end of your @global.app_name journey! Thank you for sticking to it. \n\nThis week is about keeping our teens safe online and in the community."
     },
     {
       "id": "w_released_w_safe_tog",
@@ -147,10 +147,10 @@
           "eng": "@global.m_w_released"
         },
         "text": {
-          "eng": "Hi @fields.group_name! You're nearly at the end of your @global.parent_app journey! Thank you for sticking to it.  \n\nThis week is about keeping our teens safe online and in the community."
+          "eng": "Hi @fields.group_name! You're nearly at the end of your @global.app_name journey! Thank you for sticking to it.  \n\nThis week is about keeping our teens safe online and in the community."
         }
       },
-      "text": "Hi @fields.group_name! You're nearly at the end of your @global.parent_app journey! Thank you for sticking to it.  \n\nThis week is about keeping our teens safe online and in the community."
+      "text": "Hi @fields.group_name! You're nearly at the end of your @global.app_name journey! Thank you for sticking to it.  \n\nThis week is about keeping our teens safe online and in the community."
     },
     {
       "id": "relax_w_safe",
@@ -781,10 +781,10 @@
           "eng": "@global.m_w_tomorrow"
         },
         "text": {
-          "eng": "Finish the @data.workshop.w_safe.in_text_title before moving on. This can prevent many problems. \n\nWell done for using @global.parent_app to support your family."
+          "eng": "Finish the @data.workshop.w_safe.in_text_title before moving on. This can prevent many problems. \n\nWell done for using @global.app_name to support your family."
         }
       },
-      "text": "Finish the @data.workshop.w_safe.in_text_title before moving on. This can prevent many problems. \n\nWell done for using @global.parent_app to support your family."
+      "text": "Finish the @data.workshop.w_safe.in_text_title before moving on. This can prevent many problems. \n\nWell done for using @global.app_name to support your family."
     }
   ],
   "_xlsxPath": "global/campaigns/notifications_in_week_messages.xlsx"

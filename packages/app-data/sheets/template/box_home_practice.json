@@ -6,11 +6,18 @@
   "rows": [
     {
       "name": "data_list_name",
+      "value": [
+        "home_practice"
+      ],
       "type": "set_variable",
       "_nested_name": "data_list_name"
     },
     {
       "name": "id",
+      "value": "connect",
+      "_translations": {
+        "value": {}
+      },
       "type": "set_variable",
       "_nested_name": "id"
     },
@@ -73,13 +80,12 @@
       }
     },
     {
-      "box_": "text",
+      "type": "text",
       "name": "text",
       "value": "@local.row_data.text",
       "_translations": {
         "value": {}
       },
-      "type": "set_variable",
       "_nested_name": "text",
       "_dynamicFields": {
         "value": [
@@ -93,6 +99,78 @@
       },
       "_dynamicDependencies": {
         "@local.row_data.text": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "text",
+      "name": "tip_1",
+      "value": "@local.row_data.tip_1",
+      "_translations": {
+        "value": {}
+      },
+      "_nested_name": "tip_1",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@local.row_data.tip_1",
+            "matchedExpression": "@local.row_data.tip_1",
+            "type": "local",
+            "fieldName": "row_data"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.row_data.tip_1": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "text",
+      "name": "tip_2",
+      "value": "@local.row_data.tip_2",
+      "_translations": {
+        "value": {}
+      },
+      "_nested_name": "tip_2",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@local.row_data.tip_2",
+            "matchedExpression": "@local.row_data.tip_2",
+            "type": "local",
+            "fieldName": "row_data"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.row_data.tip_2": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "text",
+      "name": "tip_3",
+      "value": "@local.row_data.tip_3",
+      "_translations": {
+        "value": {}
+      },
+      "_nested_name": "tip_3",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@local.row_data.tip_3",
+            "matchedExpression": "@local.row_data.tip_3",
+            "type": "local",
+            "fieldName": "row_data"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.row_data.tip_3": [
           "value"
         ]
       }

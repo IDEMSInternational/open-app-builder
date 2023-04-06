@@ -6,11 +6,18 @@
   "rows": [
     {
       "name": "data_list_name",
+      "value": [
+        "check_in"
+      ],
       "type": "set_variable",
       "_nested_name": "data_list_name"
     },
     {
       "name": "id",
+      "value": "connect",
+      "_translations": {
+        "value": {}
+      },
       "type": "set_variable",
       "_nested_name": "id"
     },
@@ -148,7 +155,9 @@
         }
       ],
       "parameter_list": {
-        "answer_list": "@data.check_in_options"
+        "answer_list": "@data.check_in_options",
+        "item_width": "70px",
+        "grid_width": "350px"
       },
       "_nested_name": "radio_button_grid",
       "_dynamicFields": {
@@ -223,7 +232,7 @@
     {
       "type": "display_group",
       "name": "reply_happy_dg",
-      "condition": "@local.radio_button_grid==\"happy\"",
+      "hidden": "@local.radio_button_grid!=\"happy\"",
       "parameter_list": {
         "style": "column"
       },
@@ -255,9 +264,9 @@
       ],
       "_nested_name": "reply_happy_dg",
       "_dynamicFields": {
-        "condition": [
+        "hidden": [
           {
-            "fullExpression": "@local.radio_button_grid==\"happy\"",
+            "fullExpression": "@local.radio_button_grid!=\"happy\"",
             "matchedExpression": "@local.radio_button_grid",
             "type": "local",
             "fieldName": "radio_button_grid"
@@ -266,14 +275,14 @@
       },
       "_dynamicDependencies": {
         "@local.radio_button_grid": [
-          "condition"
+          "hidden"
         ]
       }
     },
     {
       "type": "display_group",
       "name": "reply_ok_dg",
-      "condition": "@local.radio_button_grid==\"ok\"",
+      "hidden": "@local.radio_button_grid!=\"ok\"",
       "parameter_list": {
         "style": "column"
       },
@@ -305,9 +314,9 @@
       ],
       "_nested_name": "reply_ok_dg",
       "_dynamicFields": {
-        "condition": [
+        "hidden": [
           {
-            "fullExpression": "@local.radio_button_grid==\"ok\"",
+            "fullExpression": "@local.radio_button_grid!=\"ok\"",
             "matchedExpression": "@local.radio_button_grid",
             "type": "local",
             "fieldName": "radio_button_grid"
@@ -316,14 +325,14 @@
       },
       "_dynamicDependencies": {
         "@local.radio_button_grid": [
-          "condition"
+          "hidden"
         ]
       }
     },
     {
       "type": "display_group",
       "name": "reply_sad_dg",
-      "condition": "@local.radio_button_grid==\"sad\"",
+      "hidden": "@local.radio_button_grid!=\"sad\"",
       "parameter_list": {
         "style": "column"
       },
@@ -355,9 +364,9 @@
       ],
       "_nested_name": "reply_sad_dg",
       "_dynamicFields": {
-        "condition": [
+        "hidden": [
           {
-            "fullExpression": "@local.radio_button_grid==\"sad\"",
+            "fullExpression": "@local.radio_button_grid!=\"sad\"",
             "matchedExpression": "@local.radio_button_grid",
             "type": "local",
             "fieldName": "radio_button_grid"
@@ -366,7 +375,7 @@
       },
       "_dynamicDependencies": {
         "@local.radio_button_grid": [
-          "condition"
+          "hidden"
         ]
       }
     }
