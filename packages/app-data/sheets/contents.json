@@ -2814,6 +2814,12 @@
       "flow_subtype": "debug",
       "_xlsxPath": "quality_assurance/debug_sheets/to_be_sorted/debug_relax_checkbox.xlsx"
     },
+    "debug_remote_assets": {
+      "flow_type": "template",
+      "flow_name": "debug_remote_assets",
+      "flow_subtype": "debug",
+      "_xlsxPath": "quality_assurance/debug_sheets/debug_remote_assets.xlsx"
+    },
     "debug_render_child": {
       "flow_type": "template",
       "flow_name": "debug_render_child",
