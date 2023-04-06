@@ -17,6 +17,7 @@ import {
   getThemeNameFromThemeAssetFolderName,
   setNestedProperty,
   replicateDir,
+  sortJsonKeys,
 } from "../../../utils";
 import { ActiveDeployment } from "../../deployment/get";
 import type { IAssetEntryHashmap, IContentsEntryMinimal } from "data-models/deployment.model";
@@ -86,8 +87,7 @@ export class AssetsPostProcessor {
     missingEntries: IAssetEntryHashmap
   ) {
     const contentsTarget = path.resolve(appAssetsFolder, "contents.json");
-    fs.writeFileSync(contentsTarget, JSON.stringify(assetEntries, null, 2));
-
+    fs.writeFileSync(contentsTarget, JSON.stringify(sortJsonKeys(assetEntries)));
     const missingTarget = path.resolve(appAssetsFolder, "untracked-assets.json");
     if (fs.existsSync(missingTarget)) fs.removeSync(missingTarget);
     if (Object.keys(missingEntries).length > 0) {
@@ -95,7 +95,7 @@ export class AssetsPostProcessor {
         msg1: "Translated assets found without corresponding global",
         msg2: Object.keys(missingEntries).join("\n"),
       });
-      fs.writeFileSync(missingTarget, JSON.stringify(missingEntries, null, 2));
+      fs.writeFileSync(missingTarget, JSON.stringify(sortJsonKeys(missingEntries), null, 2));
     }
   }
 
