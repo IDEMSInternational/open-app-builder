@@ -126,14 +126,7 @@
         "title": {
           "tz_sw": true
         },
-        "intro_text": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        },
+        "intro_text": {},
         "text_1": {
           "tz_sw": true
         },
@@ -160,7 +153,7 @@
           "eng": "Positive instructions"
         },
         "intro_text": {
-          "eng": "Thank you for thinking along! \n\nLet’s go back in time and see what happens if @global.w_instruct_female_caregiver gives a positive instruction:"
+          "eng": "Thank you for reading along! \n\nLet’s go back in time and see what happens if @global.w_instruct_female_caregiver gives a positive instruction:"
         },
         "text_1": {
           "eng": "@global.w_instruct_female_caregiver was cleaning the house while @global.w_instruct_teen_girl was practising dance moves with her friend.  \n\n@global.w_instruct_female_caregiver: “@global.w_instruct_teen_girl, it is nice to see you practise dance moves with your friend. Please take it outside so I can finish cleaning the house. Afterwards, you can show me your dance.\""
@@ -178,7 +171,7 @@
           "eng": "@global.w_instruct_female_caregiver: \"Wow, @global.w_instruct_teen_girl! You have such good dance moves!\""
         }
       },
-      "intro_text": "Thank you for thinking along! \n\nLet’s go back in time and see what happens if @global.w_instruct_female_caregiver gives a positive instruction:",
+      "intro_text": "Thank you for reading along! \n\nLet’s go back in time and see what happens if @global.w_instruct_female_caregiver gives a positive instruction:",
       "text_1": "@global.w_instruct_female_caregiver was cleaning the house while @global.w_instruct_teen_girl was practising dance moves with her friend.  \n\n@global.w_instruct_female_caregiver: “@global.w_instruct_teen_girl, it is nice to see you practise dance moves with your friend. Please take it outside so I can finish cleaning the house. Afterwards, you can show me your dance.\"",
       "text_2": "@global.w_instruct_teen_girl: “Okay, @global.w_instruct_female_caregiver!”",
       "text_3": "@global.w_instruct_teen_girl and her friend enjoy practising their dance moves.",

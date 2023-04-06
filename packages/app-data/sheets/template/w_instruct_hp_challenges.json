@@ -772,16 +772,9 @@
         {
           "type": "text",
           "name": "reply_choice_2_c",
-          "value": "Wonderful! By sharing responsibilities, you will have more time to do something fun with your teen – it’s so important!",
+          "value": "Wonderful! By sharing responsibilities, you will have more time to do something fun with your teen – it is so important!",
           "_translations": {
-            "value": {
-              "tz_sw": true,
-              "za_af": true,
-              "za_st": true,
-              "za_tn": true,
-              "za_xh": true,
-              "za_zu": true
-            }
+            "value": {}
           },
           "hidden": "@local.combo_box_challenge_2!=\"choice_2_c\"",
           "_nested_name": "challenge_2.reply_choice_2_c",
