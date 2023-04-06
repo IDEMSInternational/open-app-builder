@@ -96,7 +96,7 @@
         "no-throw-literal": "warn",
         "use-isnan": "warn",
         "arrow-body-style": "off",
-        "sort-keys": "warn"
+        "sort-keys": "off"
       }
     },
     {
