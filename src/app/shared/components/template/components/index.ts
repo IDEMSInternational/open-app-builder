@@ -1,119 +1,122 @@
 /* eslint sort-keys: "error"  */
-
+import { Type } from "@angular/core";
 import { FlowTypes, ITemplateRowProps } from "../models";
 import { TemplateContainerComponent } from "../template-container.component";
-import { Type } from "@angular/core";
 
 /***************************************************************************************
  * Template Components
  **************************************************************************************/
 import { AccordionSectionComponent } from "./layout/accordion_section";
-
 import { AnimatedSectionComponent } from "./layout/animated_section";
-import { TmplAdvancedDashedBoxComponent } from "./layout/advanced-dashed-box/advanced-dashed-box.component";
 import { AnimatedSectionGroupComponent } from "./layout/animated_section_group";
+import { ComboBoxModalComponent } from "./combo-box/combo-box-modal/combo-box-modal.component";
 import { FormComponent } from "./layout/form";
-import { WorkshopsComponent } from "./layout/workshops_accordion";
 import { NavGroupComponent } from "./layout/nav_group";
-import { TmplAudioComponent } from "./audio/audio.component";
+import { PLHDebugToggleComponent } from "../../debug-toggle";
+import { RoundIconButtonComponent } from "./round-icon-button/round-icon-button.component";
+import { SelectTextComponent } from "./select-text/select-text.component";
+import { SquareIconButtonComponent } from "./square-icon-button/square-icon-button.component";
 import { TemplateBaseComponent } from "./base";
 import { TemplateDebuggerComponent } from "./debugger";
-import { TmplButtonComponent } from "./button/button.component";
-import { TmplDisplayGroupComponent } from "./layout/display_group";
-import { TmplImageComponent } from "./image";
-import { TmplHelpIconComponent } from "./help-icon";
-import { TmplTextComponent } from "./text";
-import { TmplParentPointCounterComponent } from "./parent-point-counter/parent-point-counter.component";
-import { TmplTimerComponent } from "./timer/timer.component";
-import { TmplTitleComponent } from "./title";
-import { TmplSubtitleComponent } from "./subtitle";
-import { TmplToggleBarComponent } from "./toggle-bar/toggle-bar";
-import { TmplVideoComponent } from "./video";
-import { TmplNumberComponent } from "./number-selector/number-selector.component";
-import { RoundIconButtonComponent } from "./round-icon-button/round-icon-button.component";
-import { SquareIconButtonComponent } from "./square-icon-button/square-icon-button.component";
-import { TmplSliderComponent } from "./slider/slider.component";
-import { TmplRadioButtonGridComponent } from "./radio-button-grid/radio-button-grid.component";
-import { TmplRadioGroupComponent } from "./radio-group/radio-group.component";
-import { TmplTileComponent } from "./tile-component/tile-component.component";
-import { TmplSimpleCheckboxComponent } from "./simple-checkbox/simple-checkbox.component";
-import { TmplTextBoxComponent } from "./text-box/text-box.component";
-import { TmplTextAreaComponent } from "./text-area/text-area.component";
-import { TmplComboBoxComponent } from "./combo-box/combo-box.component";
-import { ComboBoxModalComponent } from "./combo-box/combo-box-modal/combo-box-modal.component";
-import { TemplatePopupComponent } from "./layout/popup";
-import { TmplIconBannerComponent } from "./icon-banner/icon-banner.component";
-import { TmplDashedBoxComponent } from "./dashed-box/dashed-box.component";
-import { TmplParentPointBoxComponent } from "./points-item/points-item.component";
-import { TmplLottieAnimation } from "./lottie-animation";
-import { PLHDebugToggleComponent } from "../../debug-toggle";
-import { SelectTextComponent } from "./select-text/select-text.component";
 import { TemplateHTMLComponent } from "./html/html.component";
+import { TemplatePopupComponent } from "./layout/popup";
+
 import { TmplAccordionComponent } from "./accordion/accordion.component";
-import { TmplLatexComponent } from "./latex/latex.component";
+import { TmplAdvancedDashedBoxComponent } from "./layout/advanced-dashed-box/advanced-dashed-box.component";
 import { TmplAnimatedSlidesComponent } from "./animated-slides/animated-slides.component";
-import { TmplTaskCardComponent } from "./task-card/task-card.component";
-import { TmplTaskProgressBarComponent } from "./task-progress-bar/task-progress-bar.component";
-import { TmplQRCodeComponent } from "./qr-code/qr-code.component";
-import { TmplNavigationBarComponent } from "./navigation-bar/navigation-bar.component";
+import { TmplAudioComponent } from "./audio/audio.component";
+import { TmplButtonComponent } from "./button/button.component";
 import { TmplCarouselComponent } from "./carousel/carousel.component";
-import { TmplDrawerComponent } from "./drawer/drawer.component";
+import { TmplComboBoxComponent } from "./combo-box/combo-box.component";
+import { TmplDashedBoxComponent } from "./dashed-box/dashed-box.component";
 import { TmplDataItemsComponent } from "./data-items/data-items.component";
 import { TmplDisplayGridComponent } from "./layout/display-grid/display-grid.component";
+import { TmplDisplayGroupComponent } from "./layout/display_group";
+import { TmplDrawerComponent } from "./drawer/drawer.component";
+import { TmplHelpIconComponent } from "./help-icon";
+import { TmplIconBannerComponent } from "./icon-banner/icon-banner.component";
+import { TmplImageComponent } from "./image";
+import { TmplLatexComponent } from "./latex/latex.component";
+import { TmplLottieAnimation } from "./lottie-animation";
+import { TmplNavigationBarComponent } from "./navigation-bar/navigation-bar.component";
+import { TmplNumberComponent } from "./number-selector/number-selector.component";
+import { TmplParentPointBoxComponent } from "./points-item/points-item.component";
+import { TmplParentPointCounterComponent } from "./parent-point-counter/parent-point-counter.component";
+import { TmplQRCodeComponent } from "./qr-code/qr-code.component";
+import { TmplRadioButtonGridComponent } from "./radio-button-grid/radio-button-grid.component";
+import { TmplRadioGroupComponent } from "./radio-group/radio-group.component";
+import { TmplSimpleCheckboxComponent } from "./simple-checkbox/simple-checkbox.component";
+import { TmplSliderComponent } from "./slider/slider.component";
+import { TmplSubtitleComponent } from "./subtitle";
+import { TmplTaskCardComponent } from "./task-card/task-card.component";
+import { TmplTaskProgressBarComponent } from "./task-progress-bar/task-progress-bar.component";
+import { TmplTextAreaComponent } from "./text-area/text-area.component";
+import { TmplTextBoxComponent } from "./text-box/text-box.component";
+import { TmplTextComponent } from "./text";
+import { TmplTileComponent } from "./tile-component/tile-component.component";
+import { TmplTitleComponent } from "./title";
+import { TmplTimerComponent } from "./timer/timer.component";
+import { TmplToggleBarComponent } from "./toggle-bar/toggle-bar";
+import { TmplVideoComponent } from "./video";
+
+import { WorkshopsComponent } from "./layout/workshops_accordion";
 
 /** All components should be exported as a single array for easy module import */
 export const TEMPLATE_COMPONENTS = [
+  // no prefix
+  AccordionSectionComponent,
+  AnimatedSectionComponent,
+  AnimatedSectionGroupComponent,
+  ComboBoxModalComponent,
+  FormComponent,
+  NavGroupComponent,
+  RoundIconButtonComponent,
+  SelectTextComponent,
+  SquareIconButtonComponent,
   TemplateBaseComponent,
   TemplateDebuggerComponent,
+  TemplateHTMLComponent,
   TemplatePopupComponent,
-  TmplTextComponent,
-  TmplParentPointCounterComponent,
-  AnimatedSectionGroupComponent,
-  WorkshopsComponent,
-  TmplTitleComponent,
-  TmplSubtitleComponent,
-  TmplToggleBarComponent,
-  TmplDisplayGroupComponent,
+  // tmpl prefix
+  TmplAccordionComponent,
+  TmplAdvancedDashedBoxComponent,
+  TmplAnimatedSlidesComponent,
   TmplAudioComponent,
   TmplButtonComponent,
-  TmplImageComponent,
+  TmplCarouselComponent,
+  TmplComboBoxComponent,
+  TmplDashedBoxComponent,
+  TmplDataItemsComponent,
+  TmplDisplayGridComponent,
+  TmplDisplayGroupComponent,
+  TmplDrawerComponent,
   TmplHelpIconComponent,
-  TmplVideoComponent,
-  AnimatedSectionComponent,
-  AccordionSectionComponent,
-  TmplAdvancedDashedBoxComponent,
-  FormComponent,
-  TmplTimerComponent,
-  TmplSliderComponent,
+  TmplIconBannerComponent,
+  TmplImageComponent,
+  TmplLatexComponent,
+  TmplLottieAnimation,
+  TmplNavigationBarComponent,
   TmplNumberComponent,
-  NavGroupComponent,
-  TmplButtonComponent,
-  RoundIconButtonComponent,
-  SquareIconButtonComponent,
+  TmplParentPointBoxComponent,
+  TmplParentPointCounterComponent,
+  TmplQRCodeComponent,
   TmplRadioButtonGridComponent,
   TmplRadioGroupComponent,
-  TmplTileComponent,
   TmplSimpleCheckboxComponent,
-  TmplTextBoxComponent,
-  TmplTextAreaComponent,
-  TmplComboBoxComponent,
-  ComboBoxModalComponent,
-  TmplIconBannerComponent,
-  TmplDashedBoxComponent,
-  TmplParentPointBoxComponent,
-  TmplLottieAnimation,
-  SelectTextComponent,
-  TemplateHTMLComponent,
-  TmplAccordionComponent,
-  TmplLatexComponent,
-  TmplAnimatedSlidesComponent,
+  TmplSliderComponent,
+  TmplSubtitleComponent,
   TmplTaskCardComponent,
   TmplTaskProgressBarComponent,
-  TmplQRCodeComponent,
-  TmplNavigationBarComponent,
-  TmplCarouselComponent,
-  TmplDrawerComponent,
-  TmplDataItemsComponent,
+  TmplTextAreaComponent,
+  TmplTextBoxComponent,
+  TmplTextComponent,
+  TmplTileComponent,
+  TmplTimerComponent,
+  TmplTitleComponent,
+  TmplToggleBarComponent,
+  TmplVideoComponent,
+  // no prefix
+  WorkshopsComponent,
 ];
 
 /***************************************************************************************
