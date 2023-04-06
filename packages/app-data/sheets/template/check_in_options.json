@@ -1,0 +1,30 @@
+{
+  "flow_type": "template",
+  "flow_name": "check_in_options",
+  "status": "released",
+  "type_id": "check_in_options",
+  "rows": [
+    {
+      "id": "happy",
+      "name": "happy",
+      "image": "images/icons/faces/happy.svg",
+      "type": "set_variable",
+      "_nested_name": "happy"
+    },
+    {
+      "id": "ok",
+      "name": "ok",
+      "image": "images/icons/faces/neutral.svg",
+      "type": "set_variable",
+      "_nested_name": "ok"
+    },
+    {
+      "id": "sad",
+      "name": "sad",
+      "image": "images/icons/faces/sad.svg",
+      "type": "set_variable",
+      "_nested_name": "sad"
+    }
+  ],
+  "_xlsxPath": "global/templates/core_templates/topic_activity.xlsx"
+}

@@ -31,6 +31,18 @@
     "size_kb": 1.2,
     "md5Checksum": "a53f0359c14641b2c0f2d818773247ce"
   },
+  "images/icons/faces/happy.svg": {
+    "size_kb": 1.3,
+    "md5Checksum": "971f8d822fb3d3d79163d0ed327b052d"
+  },
+  "images/icons/faces/neutral.svg": {
+    "size_kb": 0.5,
+    "md5Checksum": "adc1012f5de15b8a2462eaca6cedcb36"
+  },
+  "images/icons/faces/sad.svg": {
+    "size_kb": 1.1,
+    "md5Checksum": "9399ec18c80f26a1567df0ad709b0db6"
+  },
   "images/icons/home.svg": {
     "size_kb": 0.6,
     "md5Checksum": "e16b7483b581e4701569d3f5e7fc0ae2"

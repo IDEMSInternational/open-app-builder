@@ -1,0 +1,34 @@
+{
+  "flow_type": "data_list",
+  "flow_name": "read_data",
+  "status": "released",
+  "data_list_name": "read",
+  "rows": [
+    {
+      "id": "praise",
+      "image_1_asset": "plh_images/topics/w_praise/read/slide_1.svg",
+      "image_1_asset_1": "plh_images/topics/w_praise/read/slide_2.svg",
+      "text_1::eng_1": "@global.w_praise_female_caregiver_name: \"Thank you for doing your schoolwork, @global.w_praise_girl, and thank you for helping your sister,  @global.w_praise_teen_girl. I'm so proud of you!\"",
+      "title": "Notice the good",
+      "_translations": {
+        "title": {},
+        "intro_text": {},
+        "text_1": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Notice the good"
+        },
+        "intro_text": {
+          "eng": "Praise really is powerful. \n\nLet’s look at the example of @global.w_praise_female_caregiver_name and her daughters:"
+        },
+        "text_1": {
+          "eng": "When @global.w_praise_female_caregiver_name is busy, her two daughters often fight. But today, her older daughter actually helped her sister with her schoolwork!"
+        }
+      },
+      "intro_text": "Praise really is powerful. \n\nLet’s look at the example of @global.w_praise_female_caregiver_name and her daughters:",
+      "text_1": "When @global.w_praise_female_caregiver_name is busy, her two daughters often fight. But today, her older daughter actually helped her sister with her schoolwork!"
+    }
+  ],
+  "_xlsxPath": "global/data/topic_data/topic_data.xlsx"
+}

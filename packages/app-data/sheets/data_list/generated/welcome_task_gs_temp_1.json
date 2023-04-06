@@ -1,5 +1,5 @@
 {
-  "flow_name": "intro_common_task_gs",
+  "flow_name": "welcome_task_gs_temp_1",
   "flow_subtype": "generated",
   "flow_type": "data_list",
   "rows": [
@@ -9,16 +9,16 @@
       "together": true,
       "priority": 5,
       "has_single_task": true,
-      "title": "@data.topic[@fields.current_topic].intro_title",
+      "title": "@data.type.intro.activity_title",
       "_translations": {
         "title": {}
       },
       "_translatedFields": {
         "title": {
-          "eng": "@data.topic[@fields.current_topic].intro_title"
+          "eng": "@data.type.intro.activity_title"
         }
       },
-      "template": "intro_intro"
+      "template": "welcome_intro"
     },
     {
       "id": "check_in",
@@ -35,7 +35,7 @@
           "eng": "@data.type.check_in.activity_title"
         }
       },
-      "template": "intro_check_in"
+      "template": "welcome_check_in"
     },
     {
       "id": "relax",
@@ -52,7 +52,7 @@
           "eng": "@data.type.relax.activity_title"
         }
       },
-      "template": "intro_relax"
+      "template": "welcome_relax"
     },
     {
       "id": "tools",
@@ -60,16 +60,16 @@
       "together": true,
       "priority": 70,
       "has_single_task": true,
-      "title": "@data.topic[@fields.current_topic].tools_title",
+      "title": "@data.type.tools.activity_title",
       "_translations": {
         "title": {}
       },
       "_translatedFields": {
         "title": {
-          "eng": "@data.topic[@fields.current_topic].tools_title"
+          "eng": "@data.type.tools.activity_title"
         }
       },
-      "template": "intro_tools"
+      "template": "welcome_tools"
     },
     {
       "id": "home_practice",
@@ -86,7 +86,7 @@
           "eng": "@data.type.home_practice.activity_title"
         }
       },
-      "template": "intro_home_practice"
+      "template": "welcome_home_practice"
     },
     {
       "id": "ending",
@@ -103,7 +103,7 @@
           "eng": "@data.type.ending.activity_title"
         }
       },
-      "template": "intro_ending"
+      "template": "welcome_ending"
     },
     {
       "id": "hp_review",
@@ -120,7 +120,7 @@
           "eng": "@data.type.hp_review.activity_title"
         }
       },
-      "template": "intro_hp_review"
+      "template": "welcome_hp_review"
     }
   ]
 }

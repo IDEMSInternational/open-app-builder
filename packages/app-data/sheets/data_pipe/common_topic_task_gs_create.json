@@ -6,11 +6,11 @@
     {
       "operation": "append_columns",
       "input_source": "common_topic_task_gs",
-      "output_target": "intro_common_task_gs",
+      "output_target": "welcome_common_task_gs",
       "args_list": [
-        "template: intro_@row.id"
+        "template: welcome_@row.id"
       ],
-      "topic_id": "intro"
+      "topic_id": "welcome"
     },
     {
       "operation": "append_columns",

@@ -1,0 +1,21 @@
+{
+  "flow_type": "data_list",
+  "flow_name": "intro_data",
+  "status": "released",
+  "data_list_name": "intro",
+  "rows": [
+    {
+      "id": "connect",
+      "text": "There are so many pressures of daily life. Parenting is indeed a juggling act. But it's always important to take a pause and connect. Connect with your child and connect with yourself.",
+      "_translations": {
+        "text": {}
+      },
+      "_translatedFields": {
+        "text": {
+          "eng": "There are so many pressures of daily life. Parenting is indeed a juggling act. But it's always important to take a pause and connect. Connect with your child and connect with yourself."
+        }
+      }
+    }
+  ],
+  "_xlsxPath": "global/data/topic_data/topic_data.xlsx"
+}

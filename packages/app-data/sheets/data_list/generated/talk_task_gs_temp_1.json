@@ -9,13 +9,13 @@
       "together": true,
       "priority": 5,
       "has_single_task": true,
-      "title": "@data.topic[@fields.current_topic].intro_title",
+      "title": "@data.type.intro.activity_title",
       "_translations": {
         "title": {}
       },
       "_translatedFields": {
         "title": {
-          "eng": "@data.topic[@fields.current_topic].intro_title"
+          "eng": "@data.type.intro.activity_title"
         }
       },
       "template": "talk_intro"
@@ -60,13 +60,13 @@
       "together": true,
       "priority": 70,
       "has_single_task": true,
-      "title": "@data.topic[@fields.current_topic].tools_title",
+      "title": "@data.type.tools.activity_title",
       "_translations": {
         "title": {}
       },
       "_translatedFields": {
         "title": {
-          "eng": "@data.topic[@fields.current_topic].tools_title"
+          "eng": "@data.type.tools.activity_title"
         }
       },
       "template": "talk_tools"

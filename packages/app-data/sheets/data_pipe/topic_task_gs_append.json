@@ -6,12 +6,12 @@
     {
       "operation": "append_columns",
       "args_list": [
-        "completed_field: task_gp_intro_{@row.id}_completed",
+        "completed_field: task_gp_welcome_{@row.id}_completed",
         "completed: @fields.@row.completed_field"
       ],
-      "input_source": "intro_task_gs_temp_1",
-      "output_target": "intro_task_gs",
-      "topic_id": "intro"
+      "input_source": "welcome_task_gs_temp_1",
+      "output_target": "welcome_task_gs",
+      "topic_id": "welcome"
     },
     {
       "operation": "append_columns",
@@ -88,9 +88,9 @@
       "args_list": [
         "individual"
       ],
-      "input_source": "intro_task_gs",
-      "output_target": "intro_ind_task_gs",
-      "topic_id": "intro"
+      "input_source": "welcome_task_gs",
+      "output_target": "welcome_ind_task_gs",
+      "topic_id": "welcome"
     },
     {
       "operation": "filter",
@@ -160,9 +160,9 @@
       "args_list": [
         "together"
       ],
-      "input_source": "intro_task_gs",
-      "output_target": "intro_tog_task_gs",
-      "topic_id": "intro"
+      "input_source": "welcome_task_gs",
+      "output_target": "welcome_tog_task_gs",
+      "topic_id": "welcome"
     },
     {
       "operation": "filter",

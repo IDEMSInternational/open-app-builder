@@ -1,5 +1,5 @@
 {
-  "flow_name": "intro_ind_task_gs",
+  "flow_name": "welcome_common_task_gs",
   "flow_subtype": "generated",
   "flow_type": "data_list",
   "rows": [
@@ -9,18 +9,16 @@
       "together": true,
       "priority": 5,
       "has_single_task": true,
-      "title": "@data.topic[@fields.current_topic].intro_title",
+      "title": "@data.type.intro.activity_title",
       "_translations": {
         "title": {}
       },
       "_translatedFields": {
         "title": {
-          "eng": "@data.topic[@fields.current_topic].intro_title"
+          "eng": "@data.type.intro.activity_title"
         }
       },
-      "template": "intro_intro",
-      "completed_field": "task_gp_intro_intro_completed",
-      "completed": "@fields.task_gp_intro_intro_completed"
+      "template": "welcome_intro"
     },
     {
       "id": "check_in",
@@ -37,9 +35,7 @@
           "eng": "@data.type.check_in.activity_title"
         }
       },
-      "template": "intro_check_in",
-      "completed_field": "task_gp_intro_check_in_completed",
-      "completed": "@fields.task_gp_intro_check_in_completed"
+      "template": "welcome_check_in"
     },
     {
       "id": "relax",
@@ -56,9 +52,7 @@
           "eng": "@data.type.relax.activity_title"
         }
       },
-      "template": "intro_relax",
-      "completed_field": "task_gp_intro_relax_completed",
-      "completed": "@fields.task_gp_intro_relax_completed"
+      "template": "welcome_relax"
     },
     {
       "id": "tools",
@@ -66,18 +60,16 @@
       "together": true,
       "priority": 70,
       "has_single_task": true,
-      "title": "@data.topic[@fields.current_topic].tools_title",
+      "title": "@data.type.tools.activity_title",
       "_translations": {
         "title": {}
       },
       "_translatedFields": {
         "title": {
-          "eng": "@data.topic[@fields.current_topic].tools_title"
+          "eng": "@data.type.tools.activity_title"
         }
       },
-      "template": "intro_tools",
-      "completed_field": "task_gp_intro_tools_completed",
-      "completed": "@fields.task_gp_intro_tools_completed"
+      "template": "welcome_tools"
     },
     {
       "id": "home_practice",
@@ -94,9 +86,7 @@
           "eng": "@data.type.home_practice.activity_title"
         }
       },
-      "template": "intro_home_practice",
-      "completed_field": "task_gp_intro_home_practice_completed",
-      "completed": "@fields.task_gp_intro_home_practice_completed"
+      "template": "welcome_home_practice"
     },
     {
       "id": "ending",
@@ -113,9 +103,7 @@
           "eng": "@data.type.ending.activity_title"
         }
       },
-      "template": "intro_ending",
-      "completed_field": "task_gp_intro_ending_completed",
-      "completed": "@fields.task_gp_intro_ending_completed"
+      "template": "welcome_ending"
     },
     {
       "id": "hp_review",
@@ -132,9 +120,7 @@
           "eng": "@data.type.hp_review.activity_title"
         }
       },
-      "template": "intro_hp_review",
-      "completed_field": "task_gp_intro_hp_review_completed",
-      "completed": "@fields.task_gp_intro_hp_review_completed"
+      "template": "welcome_hp_review"
     }
   ]
 }

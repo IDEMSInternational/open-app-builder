@@ -6,12 +6,12 @@
     {
       "operation": "concat",
       "args_list": [
-        "intro_common_task_gs",
-        "intro_specific_task_gs"
+        "welcome_common_task_gs",
+        "welcome_specific_task_gs"
       ],
       "input_source": false,
-      "output_target": "intro_task_gs_temp_1",
-      "topic_id": "intro"
+      "output_target": "welcome_task_gs_temp_1",
+      "topic_id": "welcome"
     },
     {
       "operation": "concat",

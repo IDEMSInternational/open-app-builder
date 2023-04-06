@@ -6,22 +6,28 @@
   "rows": [
     {
       "id": "intro",
-      "activity_image": "images/topics/wave.svg",
-      "intro_title": "@row.activity_title",
+      "activity_image_asset": "images/topics/wave.svg",
+      "content_template": "box_intro",
+      "activity_title": "@data.topic[@fields.current_topic].intro_title",
       "_translations": {
+        "activity_title": {},
         "intro_title": {}
       },
       "_translatedFields": {
+        "activity_title": {
+          "eng": "@data.topic[@fields.current_topic].intro_title"
+        },
         "intro_title": {
-          "eng": "@row.activity_title"
+          "eng": "@data.topic[@fields.current_topic].intro_title"
         }
-      }
+      },
+      "intro_title": "@data.topic[@fields.current_topic].intro_title"
     },
     {
       "id": "check_in",
-      "content_template": "box_radio_buttons_emo_temp",
       "content_data_list_name": "check_in",
-      "activity_image": "images/topics/wave.svg",
+      "activity_image_asset": "images/topics/wave.svg",
+      "content_template": "box_check_in",
       "activity_title": "How are you?",
       "_translations": {
         "activity_title": {},
@@ -44,9 +50,9 @@
     },
     {
       "id": "relax",
-      "content_template": "When we are feeling stressed or if our children are making us feel very annoyed, we all need a moment to stop, to notice our thoughts and feelings and take a deep breath before we move on. We call this \"taking a pause\".",
       "content_data_list_name": "relax",
-      "activity_image": "images/topics/wave.svg",
+      "activity_image_asset": "images/topics/wave.svg",
+      "content_template": "box_relax",
       "activity_title": "Take a pause",
       "_translations": {
         "activity_title": {},
@@ -69,51 +75,89 @@
     },
     {
       "id": "read",
-      "activity_image": "images/topics/wave.svg",
-      "intro_title": "@row.activity_title",
-      "_translations": {
-        "intro_title": {}
-      },
-      "_translatedFields": {
-        "intro_title": {
-          "eng": "@row.activity_title"
-        }
-      }
-    },
-    {
-      "id": "practice",
-      "activity_image": "images/topics/wave.svg",
-      "intro_title": "@row.activity_title",
-      "_translations": {
-        "intro_title": {}
-      },
-      "_translatedFields": {
-        "intro_title": {
-          "eng": "@row.activity_title"
-        }
-      }
-    },
-    {
-      "id": "home_practice",
-      "activity_image": "images/topics/wave.svg",
-      "activity_title": "Ready to practice?",
+      "activity_image_asset": "images/topics/wave.svg",
+      "content_template": "box_read",
+      "activity_title": "Read",
       "_translations": {
         "activity_title": {},
         "intro_title": {}
       },
       "_translatedFields": {
         "activity_title": {
+          "eng": "Read"
+        },
+        "intro_title": {
+          "eng": "Read"
+        }
+      },
+      "intro_title": "Read"
+    },
+    {
+      "id": "reflect",
+      "activity_image_asset": "images/topics/wave.svg",
+      "content_template": "box_reflect",
+      "activity_title": "Reflect",
+      "_translations": {
+        "activity_title": {},
+        "intro_title": {}
+      },
+      "_translatedFields": {
+        "activity_title": {
+          "eng": "Reflect"
+        },
+        "intro_title": {
+          "eng": "Reflect"
+        }
+      },
+      "intro_title": "Reflect"
+    },
+    {
+      "id": "tools",
+      "activity_image_asset": "images/topics/wave.svg",
+      "content_template": "box_tools",
+      "activity_title": "@data.topic[@fields.current_topic].tools_title",
+      "_translations": {
+        "activity_title": {},
+        "intro_title": {}
+      },
+      "_translatedFields": {
+        "activity_title": {
+          "eng": "@data.topic[@fields.current_topic].tools_title"
+        },
+        "intro_title": {
+          "eng": "@data.topic[@fields.current_topic].tools_title"
+        }
+      },
+      "intro_title": "@data.topic[@fields.current_topic].tools_title"
+    },
+    {
+      "id": "home_practice",
+      "activity_image_asset": "images/topics/wave.svg",
+      "content_template": "box_home_practice",
+      "activity_title": "Ready to practice?",
+      "_translations": {
+        "activity_title": {},
+        "intro_text": {},
+        "intro_title": {}
+      },
+      "_translatedFields": {
+        "activity_title": {
           "eng": "Ready to practice?"
+        },
+        "intro_text": {
+          "eng": "Small actions can have big results."
         },
         "intro_title": {
           "eng": "Ready to practice?"
         }
       },
+      "intro_text": "Small actions can have big results.",
       "intro_title": "Ready to practice?"
     },
     {
       "id": "hp_review",
-      "activity_image": "images/topics/wave.svg",
+      "activity_image_asset": "images/topics/wave.svg",
+      "content_template": "box_hp_review",
       "activity_title": "How did your practice go?",
       "_translations": {
         "activity_title": {},
@@ -131,8 +175,8 @@
     },
     {
       "id": "ending",
-      "content_template": "box_video",
-      "activity_image": "images/topics/wave.svg",
+      "activity_image_asset": "images/topics/wave.svg",
+      "content_template": "box_ending",
       "activity_title": "Let's slow down",
       "_translations": {
         "activity_title": {},
@@ -147,11 +191,11 @@
           "eng": "Well done!"
         },
         "intro_text": {
-          "eng": "You’ve completed this week’s topic."
+          "eng": "You’ve completed this week’s @global.topic."
         }
       },
       "intro_title": "Well done!",
-      "intro_text": "You’ve completed this week’s topic."
+      "intro_text": "You’ve completed this week’s @global.topic."
     }
   ],
   "_xlsxPath": "global/data/topic_data/topic_data.xlsx"

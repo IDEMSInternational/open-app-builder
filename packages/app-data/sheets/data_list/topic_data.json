@@ -5,7 +5,7 @@
   "data_list_name": "topic",
   "rows": [
     {
-      "id": "intro",
+      "id": "welcome",
       "number": 1,
       "image_asset": "images/topics/wave.svg",
       "relax_id": "relax_3",
@@ -26,10 +26,10 @@
           "eng": "introduction"
         },
         "in_text_title": {
-          "eng": "**@data.topic.intro.title** @global.topic"
+          "eng": "**@data.topic.welcome.title** @global.topic"
         },
         "description": {
-          "eng": "Description of @data.topic.intro.title"
+          "eng": "Description of @data.topic.welcome.title"
         },
         "intro_title": {
           "eng": "Why introduction?"
@@ -39,8 +39,8 @@
         }
       },
       "lower_case_title": "introduction",
-      "in_text_title": "**@data.topic.intro.title** @global.topic",
-      "description": "Description of @data.topic.intro.title",
+      "in_text_title": "**@data.topic.welcome.title** @global.topic",
+      "description": "Description of @data.topic.welcome.title",
       "intro_title": "Why introduction?",
       "tools_title": "How to introduction"
     },

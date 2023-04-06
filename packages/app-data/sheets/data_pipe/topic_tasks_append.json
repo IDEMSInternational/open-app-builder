@@ -6,12 +6,12 @@
     {
       "operation": "append_columns",
       "args_list": [
-        "completed_field: task_intro_{@row.id}_completed",
+        "completed_field: task_welcome_{@row.id}_completed",
         "completed: @fields.@row.completed_field"
       ],
-      "input_source": "intro_tasks_temp_1",
-      "output_target": "intro_tasks",
-      "topic_id": "intro"
+      "input_source": "welcome_tasks_temp_1",
+      "output_target": "welcome_tasks",
+      "topic_id": "welcome"
     },
     {
       "operation": "append_columns",
