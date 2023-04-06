@@ -363,7 +363,7 @@ export class TemplateVariablesService extends AsyncServiceBase {
         const [flow_name, nested_path] = fieldName.split(".");
         const sheet = await this.appDataService.getSheet("data_list", flow_name);
         if (sheet) {
-          parsedValue = sheet?.rowsHashmap;
+          parsedValue = sheet.rowsHashmap;
           if (nested_path) {
             parsedValue = getNestedProperty(sheet.rowsHashmap, nested_path);
           }
