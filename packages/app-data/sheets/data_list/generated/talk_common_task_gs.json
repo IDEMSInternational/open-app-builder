@@ -72,6 +72,15 @@
       "individual": true,
       "together": true,
       "priority": 80,
+      "title": "@global.home_practice",
+      "_translations": {
+        "title": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "@global.home_practice"
+        }
+      },
       "template": "talk_home_practice"
     },
     {

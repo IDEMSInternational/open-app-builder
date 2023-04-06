@@ -110,7 +110,7 @@
         {
           "type": "title",
           "name": "title",
-          "value": "All @global.topics_capital",
+          "value": "All @global.topics",
           "_translations": {
             "value": {}
           },
@@ -118,15 +118,15 @@
           "_dynamicFields": {
             "value": [
               {
-                "fullExpression": "All @global.topics_capital",
-                "matchedExpression": "@global.topics_capital",
+                "fullExpression": "All @global.topics",
+                "matchedExpression": "@global.topics",
                 "type": "global",
-                "fieldName": "topics_capital"
+                "fieldName": "topics"
               }
             ]
           },
           "_dynamicDependencies": {
-            "@global.topics_capital": [
+            "@global.topics": [
               "value"
             ]
           }

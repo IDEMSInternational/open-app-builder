@@ -67,7 +67,16 @@
       "id": "home_practice",
       "individual": true,
       "together": true,
-      "priority": 80
+      "priority": 80,
+      "title": "@global.home_practice",
+      "_translations": {
+        "title": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "@global.home_practice"
+        }
+      }
     },
     {
       "id": "ending",
