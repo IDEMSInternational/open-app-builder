@@ -87,7 +87,7 @@ export class AssetsPostProcessor {
     missingEntries: IAssetEntryHashmap
   ) {
     const contentsTarget = path.resolve(appAssetsFolder, "contents.json");
-    fs.writeFileSync(contentsTarget, JSON.stringify(sortJsonKeys(assetEntries)));
+    fs.writeFileSync(contentsTarget, JSON.stringify(sortJsonKeys(assetEntries), null, 2));
     const missingTarget = path.resolve(appAssetsFolder, "untracked-assets.json");
     if (fs.existsSync(missingTarget)) fs.removeSync(missingTarget);
     if (Object.keys(missingEntries).length > 0) {
