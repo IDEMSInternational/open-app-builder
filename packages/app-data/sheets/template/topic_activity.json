@@ -143,6 +143,24 @@
       "_nested_name": "content_id"
     },
     {
+      "name": "join",
+      "value": "_",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "join"
+    },
+    {
+      "name": "response",
+      "value": "_response",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "response"
+    },
+    {
       "type": "display_group",
       "name": "intro",
       "parameter_list": {
@@ -274,6 +292,57 @@
           },
           "_dynamicDependencies": {
             "@local.content_id": [
+              "value"
+            ]
+          }
+        },
+        {
+          "name": "store_response_field",
+          "value": "@local.type_id@local.join@local.content_id@local.response",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "content_box.store_response_field",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@local.type_id@local.join@local.content_id@local.response",
+                "matchedExpression": "@local.type_id",
+                "type": "local",
+                "fieldName": "type_id"
+              },
+              {
+                "fullExpression": "@local.type_id@local.join@local.content_id@local.response",
+                "matchedExpression": "@local.join",
+                "type": "local",
+                "fieldName": "join"
+              },
+              {
+                "fullExpression": "@local.type_id@local.join@local.content_id@local.response",
+                "matchedExpression": "@local.content_id",
+                "type": "local",
+                "fieldName": "content_id"
+              },
+              {
+                "fullExpression": "@local.type_id@local.join@local.content_id@local.response",
+                "matchedExpression": "@local.response",
+                "type": "local",
+                "fieldName": "response"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@local.type_id": [
+              "value"
+            ],
+            "@local.join": [
+              "value"
+            ],
+            "@local.content_id": [
+              "value"
+            ],
+            "@local.response": [
               "value"
             ]
           }

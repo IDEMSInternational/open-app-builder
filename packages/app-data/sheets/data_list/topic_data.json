@@ -8,7 +8,7 @@
       "id": "welcome",
       "number": 1,
       "image_asset": "images/topics/wave.svg",
-      "relax_id": "relax_3",
+      "relax_title": "@data.relax.@row.relax_id.title",
       "title": "Introduction",
       "_translations": {
         "title": {},
@@ -47,8 +47,9 @@
     {
       "id": "connect",
       "number": 2,
+      "relax_id": "relax_25",
       "image_asset": "images/topics/wave.svg",
-      "relax_id": "relax_3",
+      "relax_title": "@data.relax.relax_25.title",
       "title": "Connect",
       "_translations": {
         "title": {},
@@ -88,7 +89,7 @@
       "id": "play",
       "number": 3,
       "image_asset": "images/topics/wave.svg",
-      "relax_id": "relax_3",
+      "relax_title": "@data.relax.@row.relax_id.title",
       "title": "Play",
       "_translations": {
         "title": {},
@@ -128,7 +129,7 @@
       "id": "talk",
       "number": 4,
       "image_asset": "images/topics/wave.svg",
-      "relax_id": "relax_3",
+      "relax_title": "@data.relax.@row.relax_id.title",
       "title": "Talk",
       "_translations": {
         "title": {},
@@ -168,7 +169,7 @@
       "id": "explore",
       "number": 5,
       "image_asset": "images/topics/wave.svg",
-      "relax_id": "relax_3",
+      "relax_title": "@data.relax.@row.relax_id.title",
       "title": "Explore",
       "_translations": {
         "title": {},
@@ -208,7 +209,7 @@
       "id": "create",
       "number": 6,
       "image_asset": "images/topics/wave.svg",
-      "relax_id": "relax_3",
+      "relax_title": "@data.relax.@row.relax_id.title",
       "title": "Create",
       "_translations": {
         "title": {},
@@ -248,7 +249,7 @@
       "id": "build",
       "number": 7,
       "image_asset": "images/topics/wave.svg",
-      "relax_id": "relax_3",
+      "relax_title": "@data.relax.@row.relax_id.title",
       "title": "Build",
       "_translations": {
         "title": {},
@@ -288,7 +289,7 @@
       "id": "summary",
       "number": 8,
       "image_asset": "images/topics/wave.svg",
-      "relax_id": "relax_3",
+      "relax_title": "@data.relax.@row.relax_id.title",
       "title": "Summary",
       "_translations": {
         "title": {},

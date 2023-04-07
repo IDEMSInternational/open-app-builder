@@ -51,9 +51,10 @@
     {
       "id": "relax",
       "content_data_list_name": "relax",
+      "outro_text": "You are a star!\n\nEvery day, recognise something you have done well. Reward yourself with something that makes you happy. And take a deep breath to relax.",
       "activity_image_asset": "images/topics/wave.svg",
       "content_template": "box_relax",
-      "activity_title": "Take a pause",
+      "activity_title": "@data.topic[@fields.current_topic].relax_title",
       "_translations": {
         "activity_title": {},
         "intro_text": {},
@@ -61,17 +62,17 @@
       },
       "_translatedFields": {
         "activity_title": {
-          "eng": "Take a pause"
+          "eng": "@data.topic[@fields.current_topic].relax_title"
         },
         "intro_text": {
           "eng": "Whatever you are feeling today – we all benefit from taking a moment to pause and reflect on what we are feeling and thinking."
         },
         "intro_title": {
-          "eng": "Take a pause"
+          "eng": "@data.topic[@fields.current_topic].relax_title"
         }
       },
       "intro_text": "Whatever you are feeling today – we all benefit from taking a moment to pause and reflect on what we are feeling and thinking.",
-      "intro_title": "Take a pause"
+      "intro_title": "@data.topic[@fields.current_topic].relax_title"
     },
     {
       "id": "read",

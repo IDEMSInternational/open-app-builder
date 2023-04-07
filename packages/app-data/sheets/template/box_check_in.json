@@ -14,10 +14,6 @@
     },
     {
       "name": "id",
-      "value": "connect",
-      "_translations": {
-        "value": {}
-      },
       "type": "set_variable",
       "_nested_name": "id"
     },
