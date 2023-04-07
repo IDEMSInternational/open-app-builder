@@ -4,6 +4,12 @@ import { FlowTypes, ITemplateRowProps } from "../../../models";
 
 interface IDisplayGridParams {
   /**
+   * Item border outline style.
+   * Default: "solid"
+   */
+  item_border?: "solid" | "dashed" | "none";
+
+  /**
    * Minimum item width, will increase to fit grid.
    * Default '200px'
    **/
@@ -27,16 +33,15 @@ interface IDisplayGridParams {
 })
 export class TmplDisplayGridComponent extends TemplateBaseComponent implements ITemplateRowProps {
   /**
-   * Computed item array from input parameters
-   * @ignore
-   */
-  public gridItems: Array<FlowTypes.TemplateRow>;
-
-  /**
    * Computed grid style from input parameters
    * @ignore
    */
   public gridStyle: Partial<CSSStyleDeclaration>;
+  /**
+   * Computed grid style from input parameters
+   * @ignore
+   */
+  public itemStyle: Partial<CSSStyleDeclaration>;
 
   /**
    * Authoring parameters
@@ -49,21 +54,23 @@ export class TmplDisplayGridComponent extends TemplateBaseComponent implements I
   }
 
   private setParams() {
-    this.parameter_list = this._row.parameter_list as any;
-    this.gridItems = this._row.rows || [];
-    this.gridStyle = this.generateGridStyle();
+    this.parameter_list = this._row.parameter_list || ({} as any);
+    const { gridStyle, itemStyle } = this.generateStyles();
+    this.gridStyle = gridStyle;
+    this.itemStyle = itemStyle;
   }
 
   /**
-   * Create a list of styles to be passed into ngStyle
+   * Create a list of styles to be passed into ngStyle for grid and item components
    * https://thesoftwayfarecoder.com/dynamically-creating-css-classes-in-angular/
    */
-  private generateGridStyle() {
+  private generateStyles() {
     const minItemWidth = this.parameter_list.item_width || "200px";
     const maxGridWidth = this.parameter_list.grid_width || "100%";
     const gridGap = this.parameter_list.grid_gap || "16px";
+    const borderStyle = this.parameter_list.item_border || "solid";
 
-    const style: Partial<CSSStyleDeclaration> = {
+    const gridStyle: Partial<CSSStyleDeclaration> = {
       // center grid with maximum width
       maxWidth: maxGridWidth,
       margin: "auto",
@@ -74,6 +81,11 @@ export class TmplDisplayGridComponent extends TemplateBaseComponent implements I
       // make all rows same height
       gridAutoRows: "1fr",
     };
-    return style;
+
+    const itemStyle: Partial<CSSStyleDeclaration> = {
+      // assign item border outline style
+      borderStyle,
+    };
+    return { gridStyle, itemStyle };
   }
 }
