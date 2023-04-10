@@ -4,25 +4,6 @@
   "flow_type": "data_list",
   "rows": [
     {
-      "id": "intro",
-      "individual": true,
-      "together": true,
-      "priority": 5,
-      "has_single_task": true,
-      "title": "@data.type.intro.activity_title",
-      "_translations": {
-        "title": {}
-      },
-      "_translatedFields": {
-        "title": {
-          "eng": "@data.type.intro.activity_title"
-        }
-      },
-      "template": "play_intro",
-      "completed_field": "task_gp_play_intro_completed",
-      "completed": "@fields.task_gp_play_intro_completed"
-    },
-    {
       "id": "check_in",
       "individual": true,
       "together": true,
@@ -59,6 +40,25 @@
       "template": "play_relax",
       "completed_field": "task_gp_play_relax_completed",
       "completed": "@fields.task_gp_play_relax_completed"
+    },
+    {
+      "id": "motivation",
+      "individual": true,
+      "together": true,
+      "priority": 5,
+      "has_single_task": true,
+      "title": "@data.type.motivation.activity_title",
+      "_translations": {
+        "title": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "@data.type.motivation.activity_title"
+        }
+      },
+      "template": "play_motivation",
+      "completed_field": "task_gp_play_motivation_completed",
+      "completed": "@fields.task_gp_play_motivation_completed"
     },
     {
       "id": "tools",

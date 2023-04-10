@@ -16,10 +16,10 @@
       "template": "explore_relax"
     },
     {
-      "id": "intro",
+      "id": "motivation",
       "individual": true,
       "together": true,
-      "template": "explore_intro"
+      "template": "explore_motivation"
     },
     {
       "id": "tools",

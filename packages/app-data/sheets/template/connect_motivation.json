@@ -1,8 +1,8 @@
 {
   "flow_type": "template",
-  "flow_name": "connect_intro",
+  "flow_name": "connect_motivation",
   "status": "released",
-  "type_id": "intro",
+  "type_id": "motivation",
   "rows": [
     {
       "type": "template",
@@ -11,7 +11,7 @@
       "rows": [
         {
           "name": "type_id",
-          "value": "intro",
+          "value": "motivation",
           "_translations": {
             "value": {}
           },

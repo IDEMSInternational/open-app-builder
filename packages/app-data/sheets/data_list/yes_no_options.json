@@ -1,0 +1,34 @@
+{
+  "flow_type": "data_list",
+  "flow_name": "yes_no_options",
+  "status": "released",
+  "rows": [
+    {
+      "id": "yes",
+      "name": "yes",
+      "text": "Yes",
+      "_translations": {
+        "text": {}
+      },
+      "_translatedFields": {
+        "text": {
+          "eng": "Yes"
+        }
+      }
+    },
+    {
+      "id": "no",
+      "name": "no",
+      "text": "No",
+      "_translations": {
+        "text": {}
+      },
+      "_translatedFields": {
+        "text": {
+          "eng": "No"
+        }
+      }
+    }
+  ],
+  "_xlsxPath": "global/templates/core_templates/topic_activity.xlsx"
+}

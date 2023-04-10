@@ -617,12 +617,6 @@
       "data_list_name": "home_practice",
       "_xlsxPath": "global/data/topic_data/topic_data.xlsx"
     },
-    "intro_data": {
-      "flow_type": "data_list",
-      "flow_name": "intro_data",
-      "data_list_name": "intro",
-      "_xlsxPath": "global/data/topic_data/topic_data.xlsx"
-    },
     "library_data": {
       "flow_type": "data_list",
       "flow_name": "library_data",
@@ -634,6 +628,12 @@
       "flow_subtype": "lifecycle_actions",
       "flow_name": "launch_actions",
       "_xlsxPath": "global/templates/core_templates/app_launch.xlsx"
+    },
+    "motivation_data": {
+      "flow_type": "data_list",
+      "flow_name": "motivation_data",
+      "data_list_name": "motivation",
+      "_xlsxPath": "global/data/topic_data/topic_data.xlsx"
     },
     "number_data": {
       "flow_type": "data_list",
@@ -742,6 +742,11 @@
       "flow_name": "welcome_specific_tasks",
       "topic_id": "welcome",
       "_xlsxPath": "global/data/topic_data/topic_tasks.xlsx"
+    },
+    "yes_no_options": {
+      "flow_type": "data_list",
+      "flow_name": "yes_no_options",
+      "_xlsxPath": "global/templates/core_templates/topic_activity.xlsx"
     }
   },
   "global": {
@@ -1107,10 +1112,10 @@
       "flow_name": "box_image_more",
       "_xlsxPath": "global/templates/core_templates/topic_boxes.xlsx"
     },
-    "box_intro": {
+    "box_motivation": {
       "flow_type": "template",
-      "flow_name": "box_intro",
-      "type_id": "intro",
+      "flow_name": "box_motivation",
+      "type_id": "motivation",
       "_xlsxPath": "global/templates/core_templates/topic_activity.xlsx"
     },
     "box_multi_1": {
@@ -1244,10 +1249,10 @@
       "type_id": "hp_review",
       "_xlsxPath": "global/templates/top_templates/topic_templates/topic_connect.xlsx"
     },
-    "connect_intro": {
+    "connect_motivation": {
       "flow_type": "template",
-      "flow_name": "connect_intro",
-      "type_id": "intro",
+      "flow_name": "connect_motivation",
+      "type_id": "motivation",
       "_xlsxPath": "global/templates/top_templates/topic_templates/topic_connect.xlsx"
     },
     "connect_relax": {

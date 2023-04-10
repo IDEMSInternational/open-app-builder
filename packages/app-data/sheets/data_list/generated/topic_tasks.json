@@ -7,14 +7,15 @@
       "id": "welcome",
       "number": 1,
       "image_asset": "images/topics/wave.svg",
-      "relax_title": "@data.relax.@row.relax_id.title",
+      "relax_id": "relax_25",
+      "relax_title": "@data.relax.relax_25.title",
       "title": "Introduction",
       "_translations": {
         "title": {},
         "lower_case_title": {},
         "in_text_title": {},
         "description": {},
-        "intro_title": {},
+        "motivation_title": {},
         "tools_title": {}
       },
       "_translatedFields": {
@@ -30,7 +31,7 @@
         "description": {
           "eng": "Description of @data.topic.welcome.title"
         },
-        "intro_title": {
+        "motivation_title": {
           "eng": "Why introduction?"
         },
         "tools_title": {
@@ -40,7 +41,7 @@
       "lower_case_title": "introduction",
       "in_text_title": "**@data.topic.welcome.title** @global.topic",
       "description": "Description of @data.topic.welcome.title",
-      "intro_title": "Why introduction?",
+      "motivation_title": "Why introduction?",
       "tools_title": "How to introduction",
       "completed_field": "task_welcome_completed",
       "completed": "@fields.task_welcome_completed",
@@ -50,6 +51,7 @@
       "id": "connect",
       "number": 2,
       "image_asset": "images/topics/wave.svg",
+      "relax_id": "relax_25",
       "relax_title": "@data.relax.relax_25.title",
       "title": "Connect",
       "_translations": {
@@ -57,8 +59,9 @@
         "lower_case_title": {},
         "in_text_title": {},
         "description": {},
-        "intro_title": {},
-        "tools_title": {}
+        "motivation_title": {},
+        "tools_title": {},
+        "motivation_text": {}
       },
       "_translatedFields": {
         "title": {
@@ -68,12 +71,15 @@
           "eng": "connect"
         },
         "description": {
-          "eng": "Connection plays an important role in our relationships, health and wellbeing. This includes how we connect with our children, our families, and communities, but also how we connect with ourselves."
+          "eng": "How we connect with our children, families, communities and ourselves plays an important role in our relationships, health and wellbeing."
+        },
+        "motivation_text": {
+          "eng": "We will be focusing on the topic of: CONNECTION.\n\nRight now, we want to focus on two important connections:\n* Your connection with your child\n* Your connection with yourself"
         },
         "in_text_title": {
           "eng": "**@data.topic.connect.title** @global.topic"
         },
-        "intro_title": {
+        "motivation_title": {
           "eng": "Why connect?"
         },
         "tools_title": {
@@ -82,10 +88,10 @@
       },
       "lower_case_title": "connect",
       "in_text_title": "**@data.topic.connect.title** @global.topic",
-      "description": "Connection plays an important role in our relationships, health and wellbeing. This includes how we connect with our children, our families, and communities, but also how we connect with ourselves.",
-      "intro_title": "Why connect?",
+      "description": "How we connect with our children, families, communities and ourselves plays an important role in our relationships, health and wellbeing.",
+      "motivation_title": "Why connect?",
       "tools_title": "How to connect",
-      "relax_id": "relax_25",
+      "motivation_text": "We will be focusing on the topic of: CONNECTION.\n\nRight now, we want to focus on two important connections:\n* Your connection with your child\n* Your connection with yourself",
       "completed_field": "task_connect_completed",
       "completed": "@fields.task_connect_completed",
       "skipped_field": "task_connect_skipped"
@@ -94,14 +100,15 @@
       "id": "play",
       "number": 3,
       "image_asset": "images/topics/wave.svg",
-      "relax_title": "@data.relax.@row.relax_id.title",
+      "relax_id": "relax_25",
+      "relax_title": "@data.relax.relax_25.title",
       "title": "Play",
       "_translations": {
         "title": {},
         "lower_case_title": {},
         "in_text_title": {},
         "description": {},
-        "intro_title": {},
+        "motivation_title": {},
         "tools_title": {}
       },
       "_translatedFields": {
@@ -117,7 +124,7 @@
         "description": {
           "eng": "Description of @data.topic.play.title"
         },
-        "intro_title": {
+        "motivation_title": {
           "eng": "Why play?"
         },
         "tools_title": {
@@ -127,7 +134,7 @@
       "lower_case_title": "play",
       "in_text_title": "**@data.topic.play.title** @global.topic",
       "description": "Description of @data.topic.play.title",
-      "intro_title": "Why play?",
+      "motivation_title": "Why play?",
       "tools_title": "How to play",
       "completed_field": "task_play_completed",
       "completed": "@fields.task_play_completed",
@@ -137,14 +144,15 @@
       "id": "talk",
       "number": 4,
       "image_asset": "images/topics/wave.svg",
-      "relax_title": "@data.relax.@row.relax_id.title",
+      "relax_id": "relax_25",
+      "relax_title": "@data.relax.relax_25.title",
       "title": "Talk",
       "_translations": {
         "title": {},
         "lower_case_title": {},
         "in_text_title": {},
         "description": {},
-        "intro_title": {},
+        "motivation_title": {},
         "tools_title": {}
       },
       "_translatedFields": {
@@ -160,7 +168,7 @@
         "description": {
           "eng": "Description of @data.topic.talk.title"
         },
-        "intro_title": {
+        "motivation_title": {
           "eng": "Why talk?"
         },
         "tools_title": {
@@ -170,7 +178,7 @@
       "lower_case_title": "talk",
       "in_text_title": "**@data.topic.talk.title** @global.topic",
       "description": "Description of @data.topic.talk.title",
-      "intro_title": "Why talk?",
+      "motivation_title": "Why talk?",
       "tools_title": "How to talk",
       "completed_field": "task_talk_completed",
       "completed": "@fields.task_talk_completed",
@@ -180,14 +188,15 @@
       "id": "explore",
       "number": 5,
       "image_asset": "images/topics/wave.svg",
-      "relax_title": "@data.relax.@row.relax_id.title",
+      "relax_id": "relax_25",
+      "relax_title": "@data.relax.relax_25.title",
       "title": "Explore",
       "_translations": {
         "title": {},
         "lower_case_title": {},
         "in_text_title": {},
         "description": {},
-        "intro_title": {},
+        "motivation_title": {},
         "tools_title": {}
       },
       "_translatedFields": {
@@ -203,7 +212,7 @@
         "description": {
           "eng": "Description of @data.topic.explore.title"
         },
-        "intro_title": {
+        "motivation_title": {
           "eng": "Why explore?"
         },
         "tools_title": {
@@ -213,7 +222,7 @@
       "lower_case_title": "explore",
       "in_text_title": "**@data.topic.explore.title** @global.topic",
       "description": "Description of @data.topic.explore.title",
-      "intro_title": "Why explore?",
+      "motivation_title": "Why explore?",
       "tools_title": "How to explore",
       "completed_field": "task_explore_completed",
       "completed": "@fields.task_explore_completed",
@@ -223,14 +232,15 @@
       "id": "create",
       "number": 6,
       "image_asset": "images/topics/wave.svg",
-      "relax_title": "@data.relax.@row.relax_id.title",
+      "relax_id": "relax_25",
+      "relax_title": "@data.relax.relax_25.title",
       "title": "Create",
       "_translations": {
         "title": {},
         "lower_case_title": {},
         "in_text_title": {},
         "description": {},
-        "intro_title": {},
+        "motivation_title": {},
         "tools_title": {}
       },
       "_translatedFields": {
@@ -246,7 +256,7 @@
         "description": {
           "eng": "Description of @data.topic.create.title"
         },
-        "intro_title": {
+        "motivation_title": {
           "eng": "Why create?"
         },
         "tools_title": {
@@ -256,7 +266,7 @@
       "lower_case_title": "create",
       "in_text_title": "**@data.topic.create.title** @global.topic",
       "description": "Description of @data.topic.create.title",
-      "intro_title": "Why create?",
+      "motivation_title": "Why create?",
       "tools_title": "How to create",
       "completed_field": "task_create_completed",
       "completed": "@fields.task_create_completed",
@@ -266,14 +276,15 @@
       "id": "build",
       "number": 7,
       "image_asset": "images/topics/wave.svg",
-      "relax_title": "@data.relax.@row.relax_id.title",
+      "relax_id": "relax_25",
+      "relax_title": "@data.relax.relax_25.title",
       "title": "Build",
       "_translations": {
         "title": {},
         "lower_case_title": {},
         "in_text_title": {},
         "description": {},
-        "intro_title": {},
+        "motivation_title": {},
         "tools_title": {}
       },
       "_translatedFields": {
@@ -289,7 +300,7 @@
         "description": {
           "eng": "Description of @data.topic.build.title"
         },
-        "intro_title": {
+        "motivation_title": {
           "eng": "Why build?"
         },
         "tools_title": {
@@ -299,7 +310,7 @@
       "lower_case_title": "build",
       "in_text_title": "**@data.topic.build.title** @global.topic",
       "description": "Description of @data.topic.build.title",
-      "intro_title": "Why build?",
+      "motivation_title": "Why build?",
       "tools_title": "How to build",
       "completed_field": "task_build_completed",
       "completed": "@fields.task_build_completed",
@@ -309,14 +320,15 @@
       "id": "summary",
       "number": 8,
       "image_asset": "images/topics/wave.svg",
-      "relax_title": "@data.relax.@row.relax_id.title",
+      "relax_id": "relax_25",
+      "relax_title": "@data.relax.relax_25.title",
       "title": "Summary",
       "_translations": {
         "title": {},
         "lower_case_title": {},
         "in_text_title": {},
         "description": {},
-        "intro_title": {},
+        "motivation_title": {},
         "tools_title": {}
       },
       "_translatedFields": {
@@ -332,7 +344,7 @@
         "description": {
           "eng": "Description of @data.topic.summary.title"
         },
-        "intro_title": {
+        "motivation_title": {
           "eng": "Why summary?"
         },
         "tools_title": {
@@ -342,7 +354,7 @@
       "lower_case_title": "summary",
       "in_text_title": "**@data.topic.summary.title** @global.topic",
       "description": "Description of @data.topic.summary.title",
-      "intro_title": "Why summary?",
+      "motivation_title": "Why summary?",
       "tools_title": "How to summary",
       "completed_field": "task_summary_completed",
       "completed": "@fields.task_summary_completed",

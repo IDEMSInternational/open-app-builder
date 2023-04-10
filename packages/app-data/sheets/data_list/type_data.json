@@ -5,25 +5,6 @@
   "data_list_name": "type",
   "rows": [
     {
-      "id": "intro",
-      "activity_image_asset": "images/topics/wave.svg",
-      "content_template": "box_intro",
-      "activity_title": "@data.topic[@fields.current_topic].intro_title",
-      "_translations": {
-        "activity_title": {},
-        "intro_title": {}
-      },
-      "_translatedFields": {
-        "activity_title": {
-          "eng": "@data.topic[@fields.current_topic].intro_title"
-        },
-        "intro_title": {
-          "eng": "@data.topic[@fields.current_topic].intro_title"
-        }
-      },
-      "intro_title": "@data.topic[@fields.current_topic].intro_title"
-    },
-    {
       "id": "check_in",
       "content_data_list_name": "check_in",
       "activity_image_asset": "images/topics/wave.svg",
@@ -51,7 +32,7 @@
     {
       "id": "relax",
       "content_data_list_name": "relax",
-      "outro_text": "You are a star!\n\nEvery day, recognise something you have done well. Reward yourself with something that makes you happy. And take a deep breath to relax.",
+      "outro_text": "You can practice @data.topic[@fields.current_topic].relax_title at any moment in the day – especially when feeling stressed or when your child is frustrating you. It can even be for only 30 seconds or three short breaths!",
       "activity_image_asset": "images/topics/wave.svg",
       "content_template": "box_relax",
       "activity_title": "@data.topic[@fields.current_topic].relax_title",
@@ -73,6 +54,26 @@
       },
       "intro_text": "Whatever you are feeling today – we all benefit from taking a moment to pause and reflect on what we are feeling and thinking.",
       "intro_title": "@data.topic[@fields.current_topic].relax_title"
+    },
+    {
+      "id": "motivation",
+      "content_data_list_name": "motivation",
+      "activity_image_asset": "images/topics/wave.svg",
+      "content_template": "box_motivation",
+      "activity_title": "@data.topic[@fields.current_topic].motivation_title",
+      "_translations": {
+        "activity_title": {},
+        "intro_title": {}
+      },
+      "_translatedFields": {
+        "activity_title": {
+          "eng": "@data.topic[@fields.current_topic].motivation_title"
+        },
+        "intro_title": {
+          "eng": "@data.topic[@fields.current_topic].motivation_title"
+        }
+      },
+      "intro_title": "@data.topic[@fields.current_topic].motivation_title"
     },
     {
       "id": "read",

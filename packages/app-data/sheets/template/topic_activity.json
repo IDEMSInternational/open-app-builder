@@ -162,7 +162,7 @@
     },
     {
       "type": "display_group",
-      "name": "intro",
+      "name": "dg_intro",
       "parameter_list": {
         "style": "column"
       },
@@ -174,7 +174,7 @@
           "_translations": {
             "value": {}
           },
-          "_nested_name": "intro.intro_title",
+          "_nested_name": "dg_intro.intro_title",
           "_dynamicFields": {
             "value": [
               {
@@ -198,7 +198,7 @@
           "_translations": {
             "value": {}
           },
-          "_nested_name": "intro.intro_image",
+          "_nested_name": "dg_intro.intro_image",
           "_dynamicFields": {
             "value": [
               {
@@ -222,7 +222,7 @@
           "_translations": {
             "value": {}
           },
-          "_nested_name": "intro.intro_text",
+          "_nested_name": "dg_intro.intro_text",
           "_dynamicFields": {
             "value": [
               {
@@ -240,7 +240,7 @@
           }
         }
       ],
-      "_nested_name": "intro"
+      "_nested_name": "dg_intro"
     },
     {
       "type": "template",
@@ -367,7 +367,7 @@
     },
     {
       "type": "display_group",
-      "name": "outro",
+      "name": "dg_outro",
       "parameter_list": {
         "style": "column"
       },
@@ -380,7 +380,7 @@
             "value": {}
           },
           "hidden": true,
-          "_nested_name": "outro.outro_title",
+          "_nested_name": "dg_outro.outro_title",
           "_dynamicFields": {
             "value": [
               {
@@ -405,7 +405,7 @@
             "value": {}
           },
           "hidden": true,
-          "_nested_name": "outro.outro_image",
+          "_nested_name": "dg_outro.outro_image",
           "_dynamicFields": {
             "value": [
               {
@@ -429,7 +429,7 @@
           "_translations": {
             "value": {}
           },
-          "_nested_name": "outro.outro_text",
+          "_nested_name": "dg_outro.outro_text",
           "_dynamicFields": {
             "value": [
               {
@@ -454,7 +454,7 @@
           },
           "hidden": true,
           "type": "set_variable",
-          "_nested_name": "outro.outro_habit",
+          "_nested_name": "dg_outro.outro_habit",
           "_dynamicFields": {
             "value": [
               {
@@ -472,7 +472,7 @@
           }
         }
       ],
-      "_nested_name": "outro"
+      "_nested_name": "dg_outro"
     }
   ],
   "_xlsxPath": "global/templates/core_templates/topic_activity.xlsx"

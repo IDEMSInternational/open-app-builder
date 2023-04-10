@@ -211,6 +211,14 @@
     "size_kb": 123.9,
     "md5Checksum": "285b8e02cc1a1fd820a2e117df4fab21"
   },
+  "images/topics/connect/busy_parent.png": {
+    "size_kb": 57.7,
+    "md5Checksum": "337e3b12d2bb44180971910277789cc4"
+  },
+  "images/topics/connect/spend_time_together.png": {
+    "size_kb": 1415.8,
+    "md5Checksum": "5943d562e3c7e1726fb5066e0c4c0952"
+  },
   "images/topics/wave.svg": {
     "size_kb": 8.5,
     "md5Checksum": "79d5f0d01dca4ab60d638b0d46d134f9"

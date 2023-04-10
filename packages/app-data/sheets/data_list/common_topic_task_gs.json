@@ -4,22 +4,6 @@
   "status": "released",
   "rows": [
     {
-      "id": "intro",
-      "individual": true,
-      "together": true,
-      "priority": 5,
-      "has_single_task": true,
-      "title": "@data.type.intro.activity_title",
-      "_translations": {
-        "title": {}
-      },
-      "_translatedFields": {
-        "title": {
-          "eng": "@data.type.intro.activity_title"
-        }
-      }
-    },
-    {
       "id": "check_in",
       "individual": true,
       "together": true,
@@ -48,6 +32,22 @@
       "_translatedFields": {
         "title": {
           "eng": "@data.type.relax.activity_title"
+        }
+      }
+    },
+    {
+      "id": "motivation",
+      "individual": true,
+      "together": true,
+      "priority": 5,
+      "has_single_task": true,
+      "title": "@data.type.motivation.activity_title",
+      "_translations": {
+        "title": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "@data.type.motivation.activity_title"
         }
       }
     },

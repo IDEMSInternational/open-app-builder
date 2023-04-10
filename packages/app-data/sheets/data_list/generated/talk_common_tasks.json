@@ -16,10 +16,10 @@
       "template": "talk_relax"
     },
     {
-      "id": "intro",
+      "id": "motivation",
       "individual": true,
       "together": true,
-      "template": "talk_intro"
+      "template": "talk_motivation"
     },
     {
       "id": "tools",

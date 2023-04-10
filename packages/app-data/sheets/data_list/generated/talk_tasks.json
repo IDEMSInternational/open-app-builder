@@ -20,12 +20,12 @@
       "completed": "@fields.task_talk_relax_completed"
     },
     {
-      "id": "intro",
+      "id": "motivation",
       "individual": true,
       "together": true,
-      "template": "talk_intro",
-      "completed_field": "task_talk_intro_completed",
-      "completed": "@fields.task_talk_intro_completed"
+      "template": "talk_motivation",
+      "completed_field": "task_talk_motivation_completed",
+      "completed": "@fields.task_talk_motivation_completed"
     },
     {
       "id": "tools",
