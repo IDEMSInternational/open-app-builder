@@ -1,0 +1,529 @@
+{
+  "flow_type": "data_list",
+  "flow_name": "reflect_question_data",
+  "status": "released",
+  "data_list_name": "reflect_question",
+  "rows": [
+    {
+      "id": "time_child",
+      "question_text": "We would love to hear from you: what stands in your way from spending time with your child?",
+      "_translations": {
+        "question_text": {},
+        "response_1": {},
+        "response_2": {},
+        "response_3": {},
+        "response_4": {},
+        "reply_all": {},
+        "reply_1": {},
+        "reply_2": {},
+        "reply_3": {},
+        "reply_4": {}
+      },
+      "_translatedFields": {
+        "question_text": {
+          "eng": "We would love to hear from you: what stands in your way from spending time with your child?"
+        },
+        "response_1": {
+          "eng": "Busy"
+        },
+        "response_2": {
+          "eng": "Stressed"
+        },
+        "response_3": {
+          "eng": "My child annoys me"
+        },
+        "response_4": {
+          "eng": "I don't know what to do together"
+        },
+        "reply_all": {
+          "eng": "Thanks for sharing. Many parents feel this way!"
+        },
+        "reply_1": {
+          "eng": "Thanks for sharing. Many parents feel this way!"
+        },
+        "reply_2": {
+          "eng": "Thanks for sharing. Many parents feel this way!"
+        },
+        "reply_3": {
+          "eng": "Thanks for sharing. Many parents feel this way!"
+        },
+        "reply_4": {
+          "eng": "Thanks for sharing. Many parents feel this way!"
+        }
+      },
+      "response_1": "Busy",
+      "response_2": "Stressed",
+      "response_3": "My child annoys me",
+      "response_4": "I don't know what to do together",
+      "reply_all": "Thanks for sharing. Many parents feel this way!",
+      "reply_1": "Thanks for sharing. Many parents feel this way!",
+      "reply_2": "Thanks for sharing. Many parents feel this way!",
+      "reply_3": "Thanks for sharing. Many parents feel this way!",
+      "reply_4": "Thanks for sharing. Many parents feel this way!"
+    },
+    {
+      "id": "time_self",
+      "question_text": "What stands in your way from taking time for yourself?",
+      "_translations": {
+        "question_text": {},
+        "response_1": {},
+        "response_2": {},
+        "response_3": {},
+        "reply_1": {},
+        "reply_2": {},
+        "reply_3": {},
+        "reply_4": {}
+      },
+      "_translatedFields": {
+        "question_text": {
+          "eng": "What stands in your way from taking time for yourself?"
+        },
+        "response_1": {
+          "eng": "Busy"
+        },
+        "response_2": {
+          "eng": "My children and family always need something from me"
+        },
+        "response_3": {
+          "eng": "It feels selfish to take time for myself"
+        },
+        "reply_1": {
+          "eng": "@row.reply_all"
+        },
+        "reply_2": {
+          "eng": "@row.reply_all"
+        },
+        "reply_3": {
+          "eng": "@row.reply_all"
+        },
+        "reply_4": {
+          "eng": "@row.reply_all"
+        }
+      },
+      "response_1": "Busy",
+      "response_2": "My children and family always need something from me",
+      "response_3": "It feels selfish to take time for myself",
+      "reply_1": "@row.reply_all",
+      "reply_2": "@row.reply_all",
+      "reply_3": "@row.reply_all",
+      "reply_4": "@row.reply_all"
+    },
+    {
+      "id": "interrupt_self_feeling",
+      "question_text": "How does this make you feel?",
+      "_translations": {
+        "question_text": {},
+        "reply_1": {},
+        "reply_2": {},
+        "reply_3": {},
+        "reply_4": {}
+      },
+      "_translatedFields": {
+        "question_text": {
+          "eng": "How does this make you feel?"
+        },
+        "reply_1": {
+          "eng": "@row.reply_all"
+        },
+        "reply_2": {
+          "eng": "@row.reply_all"
+        },
+        "reply_3": {
+          "eng": "@row.reply_all"
+        },
+        "reply_4": {
+          "eng": "@row.reply_all"
+        }
+      },
+      "reply_1": "@row.reply_all",
+      "reply_2": "@row.reply_all",
+      "reply_3": "@row.reply_all",
+      "reply_4": "@row.reply_all"
+    },
+    {
+      "id": "interrupt_self_other",
+      "question_text": "How do you feel towards the person making these comments?",
+      "_translations": {
+        "question_text": {},
+        "reply_1": {},
+        "reply_2": {},
+        "reply_3": {},
+        "reply_4": {}
+      },
+      "_translatedFields": {
+        "question_text": {
+          "eng": "How do you feel towards the person making these comments?"
+        },
+        "reply_1": {
+          "eng": "@row.reply_all"
+        },
+        "reply_2": {
+          "eng": "@row.reply_all"
+        },
+        "reply_3": {
+          "eng": "@row.reply_all"
+        },
+        "reply_4": {
+          "eng": "@row.reply_all"
+        }
+      },
+      "reply_1": "@row.reply_all",
+      "reply_2": "@row.reply_all",
+      "reply_3": "@row.reply_all",
+      "reply_4": "@row.reply_all"
+    },
+    {
+      "id": "join_self_feeling",
+      "question_text": "How does that feel?",
+      "_translations": {
+        "question_text": {},
+        "reply_1": {},
+        "reply_2": {},
+        "reply_3": {},
+        "reply_4": {}
+      },
+      "_translatedFields": {
+        "question_text": {
+          "eng": "How does that feel?"
+        },
+        "reply_1": {
+          "eng": "@row.reply_all"
+        },
+        "reply_2": {
+          "eng": "@row.reply_all"
+        },
+        "reply_3": {
+          "eng": "@row.reply_all"
+        },
+        "reply_4": {
+          "eng": "@row.reply_all"
+        }
+      },
+      "reply_1": "@row.reply_all",
+      "reply_2": "@row.reply_all",
+      "reply_3": "@row.reply_all",
+      "reply_4": "@row.reply_all"
+    },
+    {
+      "id": "join_self_diff",
+      "question_text": "How is that different from what we described above?",
+      "_translations": {
+        "question_text": {},
+        "reply_1": {},
+        "reply_2": {},
+        "reply_3": {},
+        "reply_4": {}
+      },
+      "_translatedFields": {
+        "question_text": {
+          "eng": "How is that different from what we described above?"
+        },
+        "reply_1": {
+          "eng": "@row.reply_all"
+        },
+        "reply_2": {
+          "eng": "@row.reply_all"
+        },
+        "reply_3": {
+          "eng": "@row.reply_all"
+        },
+        "reply_4": {
+          "eng": "@row.reply_all"
+        }
+      },
+      "reply_1": "@row.reply_all",
+      "reply_2": "@row.reply_all",
+      "reply_3": "@row.reply_all",
+      "reply_4": "@row.reply_all"
+    },
+    {
+      "id": "interrupt_child_1",
+      "question_text": "Who is leading the activity in this story?",
+      "_translations": {
+        "question_text": {},
+        "reply_1": {},
+        "reply_2": {},
+        "reply_3": {},
+        "reply_4": {}
+      },
+      "_translatedFields": {
+        "question_text": {
+          "eng": "Who is leading the activity in this story?"
+        },
+        "reply_1": {
+          "eng": "@row.reply_all"
+        },
+        "reply_2": {
+          "eng": "@row.reply_all"
+        },
+        "reply_3": {
+          "eng": "@row.reply_all"
+        },
+        "reply_4": {
+          "eng": "@row.reply_all"
+        }
+      },
+      "reply_1": "@row.reply_all",
+      "reply_2": "@row.reply_all",
+      "reply_3": "@row.reply_all",
+      "reply_4": "@row.reply_all"
+    },
+    {
+      "id": "interrupt_child_2",
+      "question_text": "What is the father doing that makes this clear?",
+      "_translations": {
+        "question_text": {},
+        "reply_1": {},
+        "reply_2": {},
+        "reply_3": {},
+        "reply_4": {}
+      },
+      "_translatedFields": {
+        "question_text": {
+          "eng": "What is the father doing that makes this clear?"
+        },
+        "reply_1": {
+          "eng": "@row.reply_all"
+        },
+        "reply_2": {
+          "eng": "@row.reply_all"
+        },
+        "reply_3": {
+          "eng": "@row.reply_all"
+        },
+        "reply_4": {
+          "eng": "@row.reply_all"
+        }
+      },
+      "reply_1": "@row.reply_all",
+      "reply_2": "@row.reply_all",
+      "reply_3": "@row.reply_all",
+      "reply_4": "@row.reply_all"
+    },
+    {
+      "id": "interrupt_child_3",
+      "question_text": "How does Lonwabo feel about the way that his father is interacting with him?",
+      "_translations": {
+        "question_text": {},
+        "reply_1": {},
+        "reply_2": {},
+        "reply_3": {},
+        "reply_4": {}
+      },
+      "_translatedFields": {
+        "question_text": {
+          "eng": "How does Lonwabo feel about the way that his father is interacting with him?"
+        },
+        "reply_1": {
+          "eng": "@row.reply_all"
+        },
+        "reply_2": {
+          "eng": "@row.reply_all"
+        },
+        "reply_3": {
+          "eng": "@row.reply_all"
+        },
+        "reply_4": {
+          "eng": "@row.reply_all"
+        }
+      },
+      "reply_1": "@row.reply_all",
+      "reply_2": "@row.reply_all",
+      "reply_3": "@row.reply_all",
+      "reply_4": "@row.reply_all"
+    },
+    {
+      "id": "interrupt_child_4",
+      "question_text": "How do you think Lonwabo and his father feel after this experience?",
+      "_translations": {
+        "question_text": {},
+        "reply_1": {},
+        "reply_2": {},
+        "reply_3": {},
+        "reply_4": {}
+      },
+      "_translatedFields": {
+        "question_text": {
+          "eng": "How do you think Lonwabo and his father feel after this experience?"
+        },
+        "reply_1": {
+          "eng": "@row.reply_all"
+        },
+        "reply_2": {
+          "eng": "@row.reply_all"
+        },
+        "reply_3": {
+          "eng": "@row.reply_all"
+        },
+        "reply_4": {
+          "eng": "@row.reply_all"
+        }
+      },
+      "reply_1": "@row.reply_all",
+      "reply_2": "@row.reply_all",
+      "reply_3": "@row.reply_all",
+      "reply_4": "@row.reply_all"
+    },
+    {
+      "id": "interrupt_child_5",
+      "question_text": "What could the father have done differently?",
+      "_translations": {
+        "question_text": {},
+        "reply_1": {},
+        "reply_2": {},
+        "reply_3": {},
+        "reply_4": {}
+      },
+      "_translatedFields": {
+        "question_text": {
+          "eng": "What could the father have done differently?"
+        },
+        "reply_1": {
+          "eng": "@row.reply_all"
+        },
+        "reply_2": {
+          "eng": "@row.reply_all"
+        },
+        "reply_3": {
+          "eng": "@row.reply_all"
+        },
+        "reply_4": {
+          "eng": "@row.reply_all"
+        }
+      },
+      "reply_1": "@row.reply_all",
+      "reply_2": "@row.reply_all",
+      "reply_3": "@row.reply_all",
+      "reply_4": "@row.reply_all"
+    },
+    {
+      "id": "join_child_1",
+      "question_text": "Who is leading the activity in this story?",
+      "_translations": {
+        "question_text": {},
+        "reply_1": {},
+        "reply_2": {},
+        "reply_3": {},
+        "reply_4": {}
+      },
+      "_translatedFields": {
+        "question_text": {
+          "eng": "Who is leading the activity in this story?"
+        },
+        "reply_1": {
+          "eng": "@row.reply_all"
+        },
+        "reply_2": {
+          "eng": "@row.reply_all"
+        },
+        "reply_3": {
+          "eng": "@row.reply_all"
+        },
+        "reply_4": {
+          "eng": "@row.reply_all"
+        }
+      },
+      "reply_1": "@row.reply_all",
+      "reply_2": "@row.reply_all",
+      "reply_3": "@row.reply_all",
+      "reply_4": "@row.reply_all"
+    },
+    {
+      "id": "join_child_2",
+      "question_text": "What is the father doing that makes this clear?",
+      "_translations": {
+        "question_text": {},
+        "reply_1": {},
+        "reply_2": {},
+        "reply_3": {},
+        "reply_4": {}
+      },
+      "_translatedFields": {
+        "question_text": {
+          "eng": "What is the father doing that makes this clear?"
+        },
+        "reply_1": {
+          "eng": "@row.reply_all"
+        },
+        "reply_2": {
+          "eng": "@row.reply_all"
+        },
+        "reply_3": {
+          "eng": "@row.reply_all"
+        },
+        "reply_4": {
+          "eng": "@row.reply_all"
+        }
+      },
+      "reply_1": "@row.reply_all",
+      "reply_2": "@row.reply_all",
+      "reply_3": "@row.reply_all",
+      "reply_4": "@row.reply_all"
+    },
+    {
+      "id": "join_child_3",
+      "question_text": "How does Lonwabo feel about the way that his father is interacting with him?",
+      "_translations": {
+        "question_text": {},
+        "reply_1": {},
+        "reply_2": {},
+        "reply_3": {},
+        "reply_4": {}
+      },
+      "_translatedFields": {
+        "question_text": {
+          "eng": "How does Lonwabo feel about the way that his father is interacting with him?"
+        },
+        "reply_1": {
+          "eng": "@row.reply_all"
+        },
+        "reply_2": {
+          "eng": "@row.reply_all"
+        },
+        "reply_3": {
+          "eng": "@row.reply_all"
+        },
+        "reply_4": {
+          "eng": "@row.reply_all"
+        }
+      },
+      "reply_1": "@row.reply_all",
+      "reply_2": "@row.reply_all",
+      "reply_3": "@row.reply_all",
+      "reply_4": "@row.reply_all"
+    },
+    {
+      "id": "join_child_4",
+      "question_text": "How do you think Lonwabo and his father feel after this experience?",
+      "_translations": {
+        "question_text": {},
+        "reply_1": {},
+        "reply_2": {},
+        "reply_3": {},
+        "reply_4": {}
+      },
+      "_translatedFields": {
+        "question_text": {
+          "eng": "How do you think Lonwabo and his father feel after this experience?"
+        },
+        "reply_1": {
+          "eng": "@row.reply_all"
+        },
+        "reply_2": {
+          "eng": "@row.reply_all"
+        },
+        "reply_3": {
+          "eng": "@row.reply_all"
+        },
+        "reply_4": {
+          "eng": "@row.reply_all"
+        }
+      },
+      "reply_1": "@row.reply_all",
+      "reply_2": "@row.reply_all",
+      "reply_3": "@row.reply_all",
+      "reply_4": "@row.reply_all"
+    }
+  ],
+  "_xlsxPath": "global/data/topic_data/topic_data.xlsx"
+}

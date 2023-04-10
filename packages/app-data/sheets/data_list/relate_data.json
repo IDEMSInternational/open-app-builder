@@ -1,8 +1,8 @@
 {
   "flow_type": "data_list",
-  "flow_name": "motivation_data",
+  "flow_name": "relate_data",
   "status": "released",
-  "data_list_name": "motivation",
+  "data_list_name": "relate",
   "rows": [
     {
       "id": "connect",

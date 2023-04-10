@@ -1,0 +1,35 @@
+{
+  "flow_type": "template",
+  "flow_name": "connect_motivate_time_child",
+  "status": "released",
+  "type_id": "motivate",
+  "rows": [
+    {
+      "type": "template",
+      "name": "topic_activity",
+      "value": "topic_activity",
+      "rows": [
+        {
+          "name": "type_id",
+          "value": "motivate",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "topic_activity.type_id"
+        },
+        {
+          "name": "content_id",
+          "value": "time_child",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "topic_activity.content_id"
+        }
+      ],
+      "_nested_name": "topic_activity"
+    }
+  ],
+  "_xlsxPath": "global/templates/top_templates/topic_templates/topic_connect.xlsx"
+}

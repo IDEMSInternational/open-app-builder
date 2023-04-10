@@ -629,10 +629,10 @@
       "flow_name": "launch_actions",
       "_xlsxPath": "global/templates/core_templates/app_launch.xlsx"
     },
-    "motivation_data": {
+    "motivate_data": {
       "flow_type": "data_list",
-      "flow_name": "motivation_data",
-      "data_list_name": "motivation",
+      "flow_name": "motivate_data",
+      "data_list_name": "motivate",
       "_xlsxPath": "global/data/topic_data/topic_data.xlsx"
     },
     "number_data": {
@@ -659,10 +659,22 @@
       "topic_id": "play",
       "_xlsxPath": "global/data/topic_data/topic_tasks.xlsx"
     },
-    "read_data": {
+    "reflect_data": {
       "flow_type": "data_list",
-      "flow_name": "read_data",
-      "data_list_name": "read",
+      "flow_name": "reflect_data",
+      "data_list_name": "reflect",
+      "_xlsxPath": "global/data/topic_data/topic_data.xlsx"
+    },
+    "reflect_question_data": {
+      "flow_type": "data_list",
+      "flow_name": "reflect_question_data",
+      "data_list_name": "reflect_question",
+      "_xlsxPath": "global/data/topic_data/topic_data.xlsx"
+    },
+    "relate_data": {
+      "flow_type": "data_list",
+      "flow_name": "relate_data",
+      "data_list_name": "relate",
       "_xlsxPath": "global/data/topic_data/topic_data.xlsx"
     },
     "relax_data": {
@@ -682,6 +694,12 @@
       "flow_name": "safeguarding_contacts_tz",
       "data_list_name": "safeguarding_contacts_tz",
       "_xlsxPath": "tz/data/safeguarding_data_tz.xlsx"
+    },
+    "story_data": {
+      "flow_type": "data_list",
+      "flow_name": "story_data",
+      "data_list_name": "story",
+      "_xlsxPath": "global/data/topic_data/topic_data.xlsx"
     },
     "summary_specific_task_gs": {
       "flow_type": "data_list",
@@ -1112,10 +1130,10 @@
       "flow_name": "box_image_more",
       "_xlsxPath": "global/templates/core_templates/topic_boxes.xlsx"
     },
-    "box_motivation": {
+    "box_motivate": {
       "flow_type": "template",
-      "flow_name": "box_motivation",
-      "type_id": "motivation",
+      "flow_name": "box_motivate",
+      "type_id": "motivate",
       "_xlsxPath": "global/templates/core_templates/topic_activity.xlsx"
     },
     "box_multi_1": {
@@ -1152,6 +1170,18 @@
       "flow_type": "template",
       "flow_name": "box_radio_buttons_emo_temp",
       "_xlsxPath": "global/templates/core_templates/survey_boxes.xlsx"
+    },
+    "box_reflect": {
+      "flow_type": "template",
+      "flow_name": "box_reflect",
+      "type_id": "reflect",
+      "_xlsxPath": "global/templates/core_templates/topic_activity.xlsx"
+    },
+    "box_relate": {
+      "flow_type": "template",
+      "flow_name": "box_relate",
+      "type_id": "relate",
+      "_xlsxPath": "global/templates/core_templates/topic_activity.xlsx"
     },
     "box_relax": {
       "flow_type": "template",
@@ -1249,10 +1279,22 @@
       "type_id": "hp_review",
       "_xlsxPath": "global/templates/top_templates/topic_templates/topic_connect.xlsx"
     },
-    "connect_motivation": {
+    "connect_motivate_time_child": {
       "flow_type": "template",
-      "flow_name": "connect_motivation",
-      "type_id": "motivation",
+      "flow_name": "connect_motivate_time_child",
+      "type_id": "motivate",
+      "_xlsxPath": "global/templates/top_templates/topic_templates/topic_connect.xlsx"
+    },
+    "connect_reflect_time_child": {
+      "flow_type": "template",
+      "flow_name": "connect_reflect_time_child",
+      "type_id": "reflect",
+      "_xlsxPath": "global/templates/top_templates/topic_templates/topic_connect.xlsx"
+    },
+    "connect_relate": {
+      "flow_type": "template",
+      "flow_name": "connect_relate",
+      "type_id": "relate",
       "_xlsxPath": "global/templates/top_templates/topic_templates/topic_connect.xlsx"
     },
     "connect_relax": {

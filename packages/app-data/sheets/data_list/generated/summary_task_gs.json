@@ -42,23 +42,23 @@
       "completed": "@fields.task_gp_summary_relax_completed"
     },
     {
-      "id": "motivation",
+      "id": "relate",
       "individual": true,
       "together": true,
       "priority": 5,
       "has_single_task": true,
-      "title": "@data.type.motivation.activity_title",
+      "title": "@data.type.relate.activity_title",
       "_translations": {
         "title": {}
       },
       "_translatedFields": {
         "title": {
-          "eng": "@data.type.motivation.activity_title"
+          "eng": "@data.type.relate.activity_title"
         }
       },
-      "template": "summary_motivation",
-      "completed_field": "task_gp_summary_motivation_completed",
-      "completed": "@fields.task_gp_summary_motivation_completed"
+      "template": "summary_relate",
+      "completed_field": "task_gp_summary_relate_completed",
+      "completed": "@fields.task_gp_summary_relate_completed"
     },
     {
       "id": "tools",

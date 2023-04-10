@@ -3,6 +3,109 @@
   "flow_name": "connect_specific_task_gs",
   "status": "released",
   "topic_id": "connect",
-  "rows": [],
+  "rows": [
+    {
+      "id": "reflect_time_child",
+      "individual": true,
+      "together": true,
+      "priority": 10,
+      "has_single_task": true,
+      "template": "connect_reflect_time_child",
+      "title": "Time with your child (reflect)",
+      "_translations": {
+        "title": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Time with your child (reflect)"
+        }
+      }
+    },
+    {
+      "id": "motivate_time_child",
+      "individual": true,
+      "together": true,
+      "priority": 11,
+      "has_single_task": true,
+      "template": "connect_motivate_time_child",
+      "title": "Time with your child (motivate)",
+      "_translations": {
+        "title": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Time with your child (motivate)"
+        }
+      }
+    },
+    {
+      "id": "interrupt_self_neg",
+      "individual": true,
+      "together": true,
+      "priority": 12,
+      "has_single_task": true,
+      "template": "connect_interrupt_self_neg",
+      "title": "Being interrupted",
+      "_translations": {
+        "title": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Being interrupted"
+        }
+      }
+    },
+    {
+      "id": "interrupt_self_pos",
+      "individual": true,
+      "together": true,
+      "priority": 13,
+      "has_single_task": true,
+      "template": "connect_interrupt_self_pos",
+      "title": "Being joined",
+      "_translations": {
+        "title": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Being joined"
+        }
+      }
+    },
+    {
+      "id": "interrupt_child_neg",
+      "individual": true,
+      "together": true,
+      "priority": 14,
+      "has_single_task": true,
+      "template": "connect_interrupt_child_neg",
+      "title": "Interrupting your child",
+      "_translations": {
+        "title": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Interrupting your child"
+        }
+      }
+    },
+    {
+      "id": "interrupt_child_pos",
+      "individual": true,
+      "together": true,
+      "priority": 15,
+      "has_single_task": true,
+      "template": "connect_interrupt_child_pos",
+      "title": "Joining your child",
+      "_translations": {
+        "title": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Joining your child"
+        }
+      }
+    }
+  ],
   "_xlsxPath": "global/data/topic_data/topic_task_groups.xlsx"
 }

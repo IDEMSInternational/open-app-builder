@@ -215,6 +215,38 @@
     "size_kb": 57.7,
     "md5Checksum": "337e3b12d2bb44180971910277789cc4"
   },
+  "images/topics/connect/interrupt_child/slide_1.png": {
+    "size_kb": 50.6,
+    "md5Checksum": "e3ebe1216d4b11d07496d805ccf022e2"
+  },
+  "images/topics/connect/interrupt_child/slide_2.png": {
+    "size_kb": 48,
+    "md5Checksum": "de369eed635d78d3aed287a2c9aae2b7"
+  },
+  "images/topics/connect/interrupt_child/slide_3.png": {
+    "size_kb": 51.2,
+    "md5Checksum": "e157c18890442616b279cbc1299cee9f"
+  },
+  "images/topics/connect/interrupt_child/slide_4.png": {
+    "size_kb": 51.8,
+    "md5Checksum": "5d39fa06b9270a2f3712ff43d0e67a1d"
+  },
+  "images/topics/connect/join_child/slide_1.png": {
+    "size_kb": 40.8,
+    "md5Checksum": "cb8417543bbef0694428a590d4d05c1f"
+  },
+  "images/topics/connect/join_child/slide_2.png": {
+    "size_kb": 48.8,
+    "md5Checksum": "744c5a1b6ff1055c217afcff7cb5ee1e"
+  },
+  "images/topics/connect/join_child/slide_3.png": {
+    "size_kb": 53.4,
+    "md5Checksum": "0140987615c61dcd0893a2d3396eb51f"
+  },
+  "images/topics/connect/join_child/slide_4.png": {
+    "size_kb": 55.5,
+    "md5Checksum": "4bd8706a1a5ddc1610626b6fc51a410b"
+  },
   "images/topics/connect/spend_time_together.png": {
     "size_kb": 1415.8,
     "md5Checksum": "5943d562e3c7e1726fb5066e0c4c0952"

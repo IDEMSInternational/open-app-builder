@@ -23,16 +23,16 @@
           "eng": "Welcome, @fields.user_name"
         },
         "intro_text": {
-          "eng": "Let's take a moment to centre ourselves."
+          "eng": "It’s great to have you here."
         }
       },
       "intro_title": "Welcome, @fields.user_name",
-      "intro_text": "Let's take a moment to centre ourselves."
+      "intro_text": "It’s great to have you here."
     },
     {
       "id": "relax",
       "content_data_list_name": "relax",
-      "outro_text": "You can practice @data.topic[@fields.current_topic].relax_title at any moment in the day – especially when feeling stressed or when your child is frustrating you. It can even be for only 30 seconds or three short breaths!",
+      "outro_text": "When we are feeling stressed or if our children are making us feel very annoyed, we all need a moment to stop, to notice our thoughts and feelings and take a deep breath before we move on.",
       "activity_image_asset": "images/topics/wave.svg",
       "content_template": "box_relax",
       "activity_title": "@data.topic[@fields.current_topic].relax_title",
@@ -46,34 +46,74 @@
           "eng": "@data.topic[@fields.current_topic].relax_title"
         },
         "intro_text": {
-          "eng": "Whatever you are feeling today – we all benefit from taking a moment to pause and reflect on what we are feeling and thinking."
+          "eng": "Whatever you are feeling today - we all benefit from taking a moment to pause and reflect on what we are feeling and thinking."
         },
         "intro_title": {
           "eng": "@data.topic[@fields.current_topic].relax_title"
         }
       },
-      "intro_text": "Whatever you are feeling today – we all benefit from taking a moment to pause and reflect on what we are feeling and thinking.",
+      "intro_text": "Whatever you are feeling today - we all benefit from taking a moment to pause and reflect on what we are feeling and thinking.",
       "intro_title": "@data.topic[@fields.current_topic].relax_title"
     },
     {
-      "id": "motivation",
-      "content_data_list_name": "motivation",
+      "id": "relate",
+      "content_data_list_name": "relate",
       "activity_image_asset": "images/topics/wave.svg",
-      "content_template": "box_motivation",
-      "activity_title": "@data.topic[@fields.current_topic].motivation_title",
+      "content_template": "box_relate",
+      "activity_title": "Your experience",
       "_translations": {
         "activity_title": {},
         "intro_title": {}
       },
       "_translatedFields": {
         "activity_title": {
-          "eng": "@data.topic[@fields.current_topic].motivation_title"
+          "eng": "Your experience"
         },
         "intro_title": {
-          "eng": "@data.topic[@fields.current_topic].motivation_title"
+          "eng": "Your experience"
         }
       },
-      "intro_title": "@data.topic[@fields.current_topic].motivation_title"
+      "intro_title": "Your experience"
+    },
+    {
+      "id": "reflect",
+      "content_data_list_name": "reflect",
+      "activity_image_asset": "images/topics/wave.svg",
+      "content_template": "box_reflect",
+      "activity_title": "Reflect",
+      "_translations": {
+        "activity_title": {},
+        "intro_title": {}
+      },
+      "_translatedFields": {
+        "activity_title": {
+          "eng": "Reflect"
+        },
+        "intro_title": {
+          "eng": "Reflect"
+        }
+      },
+      "intro_title": "Reflect"
+    },
+    {
+      "id": "motivate",
+      "content_data_list_name": "motivate",
+      "activity_image_asset": "images/topics/wave.svg",
+      "content_template": "box_motivate",
+      "activity_title": "Motivation",
+      "_translations": {
+        "activity_title": {},
+        "intro_title": {}
+      },
+      "_translatedFields": {
+        "activity_title": {
+          "eng": "Motivation"
+        },
+        "intro_title": {
+          "eng": "Motivation"
+        }
+      },
+      "intro_title": "Motivation"
     },
     {
       "id": "read",
@@ -93,25 +133,6 @@
         }
       },
       "intro_title": "Read"
-    },
-    {
-      "id": "reflect",
-      "activity_image_asset": "images/topics/wave.svg",
-      "content_template": "box_reflect",
-      "activity_title": "Reflect",
-      "_translations": {
-        "activity_title": {},
-        "intro_title": {}
-      },
-      "_translatedFields": {
-        "activity_title": {
-          "eng": "Reflect"
-        },
-        "intro_title": {
-          "eng": "Reflect"
-        }
-      },
-      "intro_title": "Reflect"
     },
     {
       "id": "tools",

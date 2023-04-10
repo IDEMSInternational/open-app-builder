@@ -1,8 +1,8 @@
 {
   "flow_type": "template",
-  "flow_name": "connect_motivation",
+  "flow_name": "connect_reflect_time_child",
   "status": "released",
-  "type_id": "motivation",
+  "type_id": "reflect",
   "rows": [
     {
       "type": "template",
@@ -11,7 +11,7 @@
       "rows": [
         {
           "name": "type_id",
-          "value": "motivation",
+          "value": "reflect",
           "_translations": {
             "value": {}
           },
@@ -20,7 +20,7 @@
         },
         {
           "name": "content_id",
-          "value": "connect",
+          "value": "time_child",
           "_translations": {
             "value": {}
           },

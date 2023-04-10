@@ -20,12 +20,12 @@
       "completed": "@fields.task_build_relax_completed"
     },
     {
-      "id": "motivation",
+      "id": "relate",
       "individual": true,
       "together": true,
-      "template": "build_motivation",
-      "completed_field": "task_build_motivation_completed",
-      "completed": "@fields.task_build_motivation_completed"
+      "template": "build_relate",
+      "completed_field": "task_build_relate_completed",
+      "completed": "@fields.task_build_relate_completed"
     },
     {
       "id": "tools",

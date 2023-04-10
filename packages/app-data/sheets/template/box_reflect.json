@@ -1,13 +1,13 @@
 {
   "flow_type": "template",
-  "flow_name": "box_motivation",
+  "flow_name": "box_reflect",
   "status": "released",
-  "type_id": "motivation",
+  "type_id": "reflect",
   "rows": [
     {
       "name": "data_list_name",
       "value": [
-        "motivation"
+        "reflect"
       ],
       "type": "set_variable",
       "_nested_name": "data_list_name"
@@ -136,8 +136,8 @@
       "_nested_name": "store_response_field"
     },
     {
-      "type": "radio_button_grid",
-      "name": "radio_button_grid",
+      "type": "combo_box",
+      "name": "combo_box",
       "action_list": [
         {
           "trigger": "changed",
@@ -146,8 +146,8 @@
             "@local.store_response_field",
             "this.value"
           ],
-          "_raw": "changed | set_field:@local.store_response_field: @local.radio_button_grid",
-          "_cleaned": "changed | set_field:@local.store_response_field: @local.radio_button_grid"
+          "_raw": "changed | set_field:@local.store_response_field: @local.combo_box",
+          "_cleaned": "changed | set_field:@local.store_response_field: @local.combo_box"
         }
       ],
       "parameter_list": {
@@ -155,7 +155,7 @@
         "item_width": "70px",
         "grid_width": "300px"
       },
-      "_nested_name": "radio_button_grid",
+      "_nested_name": "combo_box",
       "_dynamicFields": {
         "action_list": {
           "0": {
@@ -171,30 +171,30 @@
             },
             "_raw": [
               {
-                "fullExpression": "changed | set_field:@local.store_response_field: @local.radio_button_grid",
+                "fullExpression": "changed | set_field:@local.store_response_field: @local.combo_box",
                 "matchedExpression": "@local.store_response_field",
                 "type": "local",
                 "fieldName": "store_response_field"
               },
               {
-                "fullExpression": "changed | set_field:@local.store_response_field: @local.radio_button_grid",
-                "matchedExpression": "@local.radio_button_grid",
+                "fullExpression": "changed | set_field:@local.store_response_field: @local.combo_box",
+                "matchedExpression": "@local.combo_box",
                 "type": "local",
-                "fieldName": "radio_button_grid"
+                "fieldName": "combo_box"
               }
             ],
             "_cleaned": [
               {
-                "fullExpression": "changed | set_field:@local.store_response_field: @local.radio_button_grid",
+                "fullExpression": "changed | set_field:@local.store_response_field: @local.combo_box",
                 "matchedExpression": "@local.store_response_field",
                 "type": "local",
                 "fieldName": "store_response_field"
               },
               {
-                "fullExpression": "changed | set_field:@local.store_response_field: @local.radio_button_grid",
-                "matchedExpression": "@local.radio_button_grid",
+                "fullExpression": "changed | set_field:@local.store_response_field: @local.combo_box",
+                "matchedExpression": "@local.combo_box",
                 "type": "local",
-                "fieldName": "radio_button_grid"
+                "fieldName": "combo_box"
               }
             ]
           }
@@ -216,7 +216,7 @@
           "action_list.0._raw",
           "action_list.0._cleaned"
         ],
-        "@local.radio_button_grid": [
+        "@local.combo_box": [
           "action_list.0._raw",
           "action_list.0._cleaned"
         ],
@@ -227,50 +227,50 @@
     },
     {
       "type": "display_group",
-      "name": "reply_yes_dg",
-      "hidden": "@local.radio_button_grid!=\"yes\"",
+      "name": "reply_1_dg",
+      "hidden": "@local.combo_box!=\"response_1\"",
       "parameter_list": {
         "style": "column"
       },
       "rows": [
         {
           "type": "text",
-          "name": "reply_yes",
-          "value": "@local.row_data.reply_yes",
+          "name": "reply_1",
+          "value": "@local.row_data.reply_1",
           "_translations": {
             "value": {}
           },
-          "_nested_name": "reply_yes_dg.reply_yes",
+          "_nested_name": "reply_1_dg.reply_1",
           "_dynamicFields": {
             "value": [
               {
-                "fullExpression": "@local.row_data.reply_yes",
-                "matchedExpression": "@local.row_data.reply_yes",
+                "fullExpression": "@local.row_data.reply_1",
+                "matchedExpression": "@local.row_data.reply_1",
                 "type": "local",
                 "fieldName": "row_data"
               }
             ]
           },
           "_dynamicDependencies": {
-            "@local.row_data.reply_yes": [
+            "@local.row_data.reply_1": [
               "value"
             ]
           }
         }
       ],
-      "_nested_name": "reply_yes_dg",
+      "_nested_name": "reply_1_dg",
       "_dynamicFields": {
         "hidden": [
           {
-            "fullExpression": "@local.radio_button_grid!=\"yes\"",
-            "matchedExpression": "@local.radio_button_grid",
+            "fullExpression": "@local.combo_box!=\"response_1\"",
+            "matchedExpression": "@local.combo_box",
             "type": "local",
-            "fieldName": "radio_button_grid"
+            "fieldName": "combo_box"
           }
         ]
       },
       "_dynamicDependencies": {
-        "@local.radio_button_grid": [
+        "@local.combo_box": [
           "hidden"
         ]
       }
@@ -278,31 +278,31 @@
     {
       "type": "display_group",
       "name": "reply_no_dg",
-      "hidden": "@local.radio_button_grid!=\"no\"",
+      "hidden": "@local.combo_box!=\"response_2\"",
       "parameter_list": {
         "style": "column"
       },
       "rows": [
         {
           "type": "text",
-          "name": "reply_no",
-          "value": "@local.row_data.reply_no",
+          "name": "reply_2",
+          "value": "@local.row_data.reply_2",
           "_translations": {
             "value": {}
           },
-          "_nested_name": "reply_no_dg.reply_no",
+          "_nested_name": "reply_no_dg.reply_2",
           "_dynamicFields": {
             "value": [
               {
-                "fullExpression": "@local.row_data.reply_no",
-                "matchedExpression": "@local.row_data.reply_no",
+                "fullExpression": "@local.row_data.reply_2",
+                "matchedExpression": "@local.row_data.reply_2",
                 "type": "local",
                 "fieldName": "row_data"
               }
             ]
           },
           "_dynamicDependencies": {
-            "@local.row_data.reply_no": [
+            "@local.row_data.reply_2": [
               "value"
             ]
           }
@@ -312,15 +312,15 @@
       "_dynamicFields": {
         "hidden": [
           {
-            "fullExpression": "@local.radio_button_grid!=\"no\"",
-            "matchedExpression": "@local.radio_button_grid",
+            "fullExpression": "@local.combo_box!=\"response_2\"",
+            "matchedExpression": "@local.combo_box",
             "type": "local",
-            "fieldName": "radio_button_grid"
+            "fieldName": "combo_box"
           }
         ]
       },
       "_dynamicDependencies": {
-        "@local.radio_button_grid": [
+        "@local.combo_box": [
           "hidden"
         ]
       }

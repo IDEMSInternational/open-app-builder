@@ -42,23 +42,23 @@
       "completed": "@fields.task_gp_connect_relax_completed"
     },
     {
-      "id": "motivation",
+      "id": "relate",
       "individual": true,
       "together": true,
       "priority": 5,
       "has_single_task": true,
-      "title": "@data.type.motivation.activity_title",
+      "title": "@data.type.relate.activity_title",
       "_translations": {
         "title": {}
       },
       "_translatedFields": {
         "title": {
-          "eng": "@data.type.motivation.activity_title"
+          "eng": "@data.type.relate.activity_title"
         }
       },
-      "template": "connect_motivation",
-      "completed_field": "task_gp_connect_motivation_completed",
-      "completed": "@fields.task_gp_connect_motivation_completed"
+      "template": "connect_relate",
+      "completed_field": "task_gp_connect_relate_completed",
+      "completed": "@fields.task_gp_connect_relate_completed"
     },
     {
       "id": "tools",
@@ -135,6 +135,120 @@
       "template": "connect_hp_review",
       "completed_field": "task_gp_connect_hp_review_completed",
       "completed": "@fields.task_gp_connect_hp_review_completed"
+    },
+    {
+      "id": "reflect_time_child",
+      "individual": true,
+      "together": true,
+      "priority": 10,
+      "has_single_task": true,
+      "title": "Time with your child (reflect)",
+      "_translations": {
+        "title": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Time with your child (reflect)"
+        }
+      },
+      "template": "connect_reflect_time_child",
+      "completed_field": "task_gp_connect_reflect_time_child_completed",
+      "completed": "@fields.task_gp_connect_reflect_time_child_completed"
+    },
+    {
+      "id": "motivate_time_child",
+      "individual": true,
+      "together": true,
+      "priority": 11,
+      "has_single_task": true,
+      "title": "Time with your child (motivate)",
+      "_translations": {
+        "title": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Time with your child (motivate)"
+        }
+      },
+      "template": "connect_motivate_time_child",
+      "completed_field": "task_gp_connect_motivate_time_child_completed",
+      "completed": "@fields.task_gp_connect_motivate_time_child_completed"
+    },
+    {
+      "id": "interrupt_self_neg",
+      "individual": true,
+      "together": true,
+      "priority": 12,
+      "has_single_task": true,
+      "title": "Being interrupted",
+      "_translations": {
+        "title": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Being interrupted"
+        }
+      },
+      "template": "connect_interrupt_self_neg",
+      "completed_field": "task_gp_connect_interrupt_self_neg_completed",
+      "completed": "@fields.task_gp_connect_interrupt_self_neg_completed"
+    },
+    {
+      "id": "interrupt_self_pos",
+      "individual": true,
+      "together": true,
+      "priority": 13,
+      "has_single_task": true,
+      "title": "Being joined",
+      "_translations": {
+        "title": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Being joined"
+        }
+      },
+      "template": "connect_interrupt_self_pos",
+      "completed_field": "task_gp_connect_interrupt_self_pos_completed",
+      "completed": "@fields.task_gp_connect_interrupt_self_pos_completed"
+    },
+    {
+      "id": "interrupt_child_neg",
+      "individual": true,
+      "together": true,
+      "priority": 14,
+      "has_single_task": true,
+      "title": "Interrupting your child",
+      "_translations": {
+        "title": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Interrupting your child"
+        }
+      },
+      "template": "connect_interrupt_child_neg",
+      "completed_field": "task_gp_connect_interrupt_child_neg_completed",
+      "completed": "@fields.task_gp_connect_interrupt_child_neg_completed"
+    },
+    {
+      "id": "interrupt_child_pos",
+      "individual": true,
+      "together": true,
+      "priority": 15,
+      "has_single_task": true,
+      "title": "Joining your child",
+      "_translations": {
+        "title": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Joining your child"
+        }
+      },
+      "template": "connect_interrupt_child_pos",
+      "completed_field": "task_gp_connect_interrupt_child_pos_completed",
+      "completed": "@fields.task_gp_connect_interrupt_child_pos_completed"
     }
   ]
 }

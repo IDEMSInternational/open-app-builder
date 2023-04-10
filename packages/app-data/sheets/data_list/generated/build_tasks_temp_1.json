@@ -16,10 +16,10 @@
       "template": "build_relax"
     },
     {
-      "id": "motivation",
+      "id": "relate",
       "individual": true,
       "together": true,
-      "template": "build_motivation"
+      "template": "build_relate"
     },
     {
       "id": "tools",
