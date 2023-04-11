@@ -11,8 +11,7 @@
         "question_text": {},
         "reply_1": {},
         "reply_2": {},
-        "reply_3": {},
-        "reply_4": {}
+        "reply_3": {}
       },
       "_translatedFields": {
         "question_text": {
@@ -26,15 +25,11 @@
         },
         "reply_3": {
           "eng": "@row.reply_all"
-        },
-        "reply_4": {
-          "eng": "@row.reply_all"
         }
       },
       "reply_1": "@row.reply_all",
       "reply_2": "@row.reply_all",
-      "reply_3": "@row.reply_all",
-      "reply_4": "@row.reply_all"
+      "reply_3": "@row.reply_all"
     },
     {
       "id": "interrupt_self_other",
@@ -43,8 +38,7 @@
         "question_text": {},
         "reply_1": {},
         "reply_2": {},
-        "reply_3": {},
-        "reply_4": {}
+        "reply_3": {}
       },
       "_translatedFields": {
         "question_text": {
@@ -58,15 +52,11 @@
         },
         "reply_3": {
           "eng": "@row.reply_all"
-        },
-        "reply_4": {
-          "eng": "@row.reply_all"
         }
       },
       "reply_1": "@row.reply_all",
       "reply_2": "@row.reply_all",
-      "reply_3": "@row.reply_all",
-      "reply_4": "@row.reply_all"
+      "reply_3": "@row.reply_all"
     },
     {
       "id": "join_self_feeling",
@@ -75,8 +65,7 @@
         "question_text": {},
         "reply_1": {},
         "reply_2": {},
-        "reply_3": {},
-        "reply_4": {}
+        "reply_3": {}
       },
       "_translatedFields": {
         "question_text": {
@@ -90,15 +79,11 @@
         },
         "reply_3": {
           "eng": "@row.reply_all"
-        },
-        "reply_4": {
-          "eng": "@row.reply_all"
         }
       },
       "reply_1": "@row.reply_all",
       "reply_2": "@row.reply_all",
-      "reply_3": "@row.reply_all",
-      "reply_4": "@row.reply_all"
+      "reply_3": "@row.reply_all"
     },
     {
       "id": "join_self_diff",
@@ -107,8 +92,7 @@
         "question_text": {},
         "reply_1": {},
         "reply_2": {},
-        "reply_3": {},
-        "reply_4": {}
+        "reply_3": {}
       },
       "_translatedFields": {
         "question_text": {
@@ -122,15 +106,11 @@
         },
         "reply_3": {
           "eng": "@row.reply_all"
-        },
-        "reply_4": {
-          "eng": "@row.reply_all"
         }
       },
       "reply_1": "@row.reply_all",
       "reply_2": "@row.reply_all",
-      "reply_3": "@row.reply_all",
-      "reply_4": "@row.reply_all"
+      "reply_3": "@row.reply_all"
     },
     {
       "id": "interrupt_child_1",
@@ -139,8 +119,7 @@
         "question_text": {},
         "reply_1": {},
         "reply_2": {},
-        "reply_3": {},
-        "reply_4": {}
+        "reply_3": {}
       },
       "_translatedFields": {
         "question_text": {
@@ -154,15 +133,11 @@
         },
         "reply_3": {
           "eng": "@row.reply_all"
-        },
-        "reply_4": {
-          "eng": "@row.reply_all"
         }
       },
       "reply_1": "@row.reply_all",
       "reply_2": "@row.reply_all",
-      "reply_3": "@row.reply_all",
-      "reply_4": "@row.reply_all"
+      "reply_3": "@row.reply_all"
     },
     {
       "id": "interrupt_child_2",
@@ -171,8 +146,7 @@
         "question_text": {},
         "reply_1": {},
         "reply_2": {},
-        "reply_3": {},
-        "reply_4": {}
+        "reply_3": {}
       },
       "_translatedFields": {
         "question_text": {
@@ -186,15 +160,11 @@
         },
         "reply_3": {
           "eng": "@row.reply_all"
-        },
-        "reply_4": {
-          "eng": "@row.reply_all"
         }
       },
       "reply_1": "@row.reply_all",
       "reply_2": "@row.reply_all",
-      "reply_3": "@row.reply_all",
-      "reply_4": "@row.reply_all"
+      "reply_3": "@row.reply_all"
     },
     {
       "id": "interrupt_child_3",
@@ -203,8 +173,7 @@
         "question_text": {},
         "reply_1": {},
         "reply_2": {},
-        "reply_3": {},
-        "reply_4": {}
+        "reply_3": {}
       },
       "_translatedFields": {
         "question_text": {
@@ -218,15 +187,11 @@
         },
         "reply_3": {
           "eng": "@row.reply_all"
-        },
-        "reply_4": {
-          "eng": "@row.reply_all"
         }
       },
       "reply_1": "@row.reply_all",
       "reply_2": "@row.reply_all",
-      "reply_3": "@row.reply_all",
-      "reply_4": "@row.reply_all"
+      "reply_3": "@row.reply_all"
     },
     {
       "id": "interrupt_child_4",
@@ -235,8 +200,7 @@
         "question_text": {},
         "reply_1": {},
         "reply_2": {},
-        "reply_3": {},
-        "reply_4": {}
+        "reply_3": {}
       },
       "_translatedFields": {
         "question_text": {
@@ -250,15 +214,11 @@
         },
         "reply_3": {
           "eng": "@row.reply_all"
-        },
-        "reply_4": {
-          "eng": "@row.reply_all"
         }
       },
       "reply_1": "@row.reply_all",
       "reply_2": "@row.reply_all",
-      "reply_3": "@row.reply_all",
-      "reply_4": "@row.reply_all"
+      "reply_3": "@row.reply_all"
     },
     {
       "id": "interrupt_child_5",
@@ -267,8 +227,7 @@
         "question_text": {},
         "reply_1": {},
         "reply_2": {},
-        "reply_3": {},
-        "reply_4": {}
+        "reply_3": {}
       },
       "_translatedFields": {
         "question_text": {
@@ -282,15 +241,11 @@
         },
         "reply_3": {
           "eng": "@row.reply_all"
-        },
-        "reply_4": {
-          "eng": "@row.reply_all"
         }
       },
       "reply_1": "@row.reply_all",
       "reply_2": "@row.reply_all",
-      "reply_3": "@row.reply_all",
-      "reply_4": "@row.reply_all"
+      "reply_3": "@row.reply_all"
     },
     {
       "id": "join_child_1",
@@ -299,8 +254,7 @@
         "question_text": {},
         "reply_1": {},
         "reply_2": {},
-        "reply_3": {},
-        "reply_4": {}
+        "reply_3": {}
       },
       "_translatedFields": {
         "question_text": {
@@ -314,15 +268,11 @@
         },
         "reply_3": {
           "eng": "@row.reply_all"
-        },
-        "reply_4": {
-          "eng": "@row.reply_all"
         }
       },
       "reply_1": "@row.reply_all",
       "reply_2": "@row.reply_all",
-      "reply_3": "@row.reply_all",
-      "reply_4": "@row.reply_all"
+      "reply_3": "@row.reply_all"
     },
     {
       "id": "join_child_2",
@@ -331,8 +281,7 @@
         "question_text": {},
         "reply_1": {},
         "reply_2": {},
-        "reply_3": {},
-        "reply_4": {}
+        "reply_3": {}
       },
       "_translatedFields": {
         "question_text": {
@@ -346,15 +295,11 @@
         },
         "reply_3": {
           "eng": "@row.reply_all"
-        },
-        "reply_4": {
-          "eng": "@row.reply_all"
         }
       },
       "reply_1": "@row.reply_all",
       "reply_2": "@row.reply_all",
-      "reply_3": "@row.reply_all",
-      "reply_4": "@row.reply_all"
+      "reply_3": "@row.reply_all"
     },
     {
       "id": "join_child_3",
@@ -363,8 +308,7 @@
         "question_text": {},
         "reply_1": {},
         "reply_2": {},
-        "reply_3": {},
-        "reply_4": {}
+        "reply_3": {}
       },
       "_translatedFields": {
         "question_text": {
@@ -378,15 +322,11 @@
         },
         "reply_3": {
           "eng": "@row.reply_all"
-        },
-        "reply_4": {
-          "eng": "@row.reply_all"
         }
       },
       "reply_1": "@row.reply_all",
       "reply_2": "@row.reply_all",
-      "reply_3": "@row.reply_all",
-      "reply_4": "@row.reply_all"
+      "reply_3": "@row.reply_all"
     },
     {
       "id": "join_child_4",
@@ -395,8 +335,7 @@
         "question_text": {},
         "reply_1": {},
         "reply_2": {},
-        "reply_3": {},
-        "reply_4": {}
+        "reply_3": {}
       },
       "_translatedFields": {
         "question_text": {
@@ -410,15 +349,11 @@
         },
         "reply_3": {
           "eng": "@row.reply_all"
-        },
-        "reply_4": {
-          "eng": "@row.reply_all"
         }
       },
       "reply_1": "@row.reply_all",
       "reply_2": "@row.reply_all",
-      "reply_3": "@row.reply_all",
-      "reply_4": "@row.reply_all"
+      "reply_3": "@row.reply_all"
     }
   ],
   "_xlsxPath": "global/data/topic_data/topic_data.xlsx"

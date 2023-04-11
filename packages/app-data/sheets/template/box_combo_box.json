@@ -6,13 +6,17 @@
     {
       "name": "data_list_name",
       "value": [
-        "reflect"
+        "read_question"
       ],
       "type": "set_variable",
       "_nested_name": "data_list_name"
     },
     {
       "name": "id",
+      "value": "interrupt_child_1",
+      "_translations": {
+        "value": {}
+      },
       "type": "set_variable",
       "_nested_name": "id"
     },
@@ -71,6 +75,40 @@
       "_dynamicDependencies": {
         "@local.data_list_name_id": [
           "value"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "name": "image",
+      "value": "@local.row_data.image_asset",
+      "_translations": {
+        "value": {}
+      },
+      "condition": "!!(@local.row_data.image_asset)",
+      "_nested_name": "image",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@local.row_data.image_asset",
+            "matchedExpression": "@local.row_data.image_asset",
+            "type": "local",
+            "fieldName": "row_data"
+          }
+        ],
+        "condition": [
+          {
+            "fullExpression": "!!(@local.row_data.image_asset)",
+            "matchedExpression": "@local.row_data.image_asset",
+            "type": "local",
+            "fieldName": "row_data"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.row_data.image_asset": [
+          "value",
+          "condition"
         ]
       }
     },

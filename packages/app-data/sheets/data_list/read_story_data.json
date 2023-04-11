@@ -50,10 +50,10 @@
     },
     {
       "id": "interrupt_child",
-      "image_1_asset": "images/topics/interrupt_child/slide_1.png",
-      "image_2_asset": "images/topics/interrupt_child/slide_2.png",
-      "image_3_asset": "images/topics/interrupt_child/slide_3.png",
-      "image_4_asset": "images/topics/interrupt_child/slide_4.png",
+      "image_1_asset": "images/topics/connect/interrupt_child/slide_1.png",
+      "image_2_asset": "images/topics/connect/interrupt_child/slide_2.png",
+      "image_3_asset": "images/topics/connect/interrupt_child/slide_3.png",
+      "image_4_asset": "images/topics/connect/interrupt_child/slide_4.png",
       "text_1": "Father: \"Let's play with the blocks together, Lonwabo.\"",
       "_translations": {
         "text_1": {},
@@ -81,10 +81,10 @@
     },
     {
       "id": "join_child",
-      "image_1_asset": "images/topics/join_child/slide_1.png",
-      "image_2_asset": "images/topics/join_child/slide_2.png",
-      "image_3_asset": "images/topics/join_child/slide_3.png",
-      "image_4_asset": "images/topics/join_child/slide_4.png",
+      "image_1_asset": "images/topics/connect/join_child/slide_1.png",
+      "image_2_asset": "images/topics/connect/join_child/slide_2.png",
+      "image_3_asset": "images/topics/connect/join_child/slide_3.png",
+      "image_4_asset": "images/topics/connect/join_child/slide_4.png",
       "text_1": "Father: \"I see you are playing quietly with the wooden blocks with concentration, Lonwabo.\"",
       "_translations": {
         "text_1": {},

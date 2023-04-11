@@ -1225,6 +1225,26 @@
       "type_id": "hp_review",
       "_xlsxPath": "global/templates/top_templates/topic_templates/topic_connect.xlsx"
     },
+    "connect_read_interrupt_child": {
+      "flow_type": "template",
+      "flow_name": "connect_read_interrupt_child",
+      "_xlsxPath": "global/templates/top_templates/topic_templates/topic_connect.xlsx"
+    },
+    "connect_read_interrupt_self": {
+      "flow_type": "template",
+      "flow_name": "connect_read_interrupt_self",
+      "_xlsxPath": "global/templates/top_templates/topic_templates/topic_connect.xlsx"
+    },
+    "connect_read_join_child": {
+      "flow_type": "template",
+      "flow_name": "connect_read_join_child",
+      "_xlsxPath": "global/templates/top_templates/topic_templates/topic_connect.xlsx"
+    },
+    "connect_read_join_self": {
+      "flow_type": "template",
+      "flow_name": "connect_read_join_self",
+      "_xlsxPath": "global/templates/top_templates/topic_templates/topic_connect.xlsx"
+    },
     "connect_reflect_time_child": {
       "flow_type": "template",
       "flow_name": "connect_reflect_time_child",
@@ -1510,6 +1530,12 @@
       "flow_type": "template",
       "flow_name": "parenting_tips_reply",
       "_xlsxPath": "global/templates/top_templates/library_templates/help_me_now.xlsx"
+    },
+    "read": {
+      "flow_type": "template",
+      "flow_name": "read",
+      "type_id": "read",
+      "_xlsxPath": "global/templates/type_templates/types.xlsx"
     },
     "reflect": {
       "flow_type": "template",
