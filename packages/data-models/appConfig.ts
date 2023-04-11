@@ -192,14 +192,15 @@ const APP_UPDATES = {
   app_update_downloaded_field: "_app_update_downloaded",
 };
 
-type ISupabaseConfig = {
-  url: string;
-  apiKey: string;
-  bucketName: string;
-};
 const ASSET_PACKS = {
   enabled: false,
-  supabase: {} as ISupabaseConfig,
+  bucketName: "asset-packs",
+};
+
+const SUPABASE = {
+  enabled: false,
+  url: "",
+  publicApiKey: "",
 };
 
 const APP_CONFIG = {
@@ -222,6 +223,7 @@ const APP_CONFIG = {
   NOTIFICATIONS_SYNC_FREQUENCY_MS,
   NOTIFICATION_DEFAULTS,
   SERVER_SYNC_FREQUENCY_MS,
+  SUPABASE,
 };
 // Export as a clone to avoid risk one import could alter another
 export const getDefaultAppConfig = () => clone(APP_CONFIG);

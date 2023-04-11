@@ -96,13 +96,16 @@ export class RemoteAssetService extends SyncServiceBase {
 
   private subscribeToAppConfigChanges() {
     this.appConfigService.appConfig$.subscribe((appConfig: IAppConfig) => {
-      const {
-        enabled,
-        supabase: { url, apiKey, bucketName },
-      } = appConfig.ASSET_PACKS;
-      this.remoteAssetsEnabled = enabled;
+      const { enabled: supabaseEnabled, url, publicApiKey } = appConfig.SUPABASE;
+      const { enabled: remoteAssetsEnabled, bucketName } = appConfig.ASSET_PACKS;
+      if (remoteAssetsEnabled && !supabaseEnabled) {
+        console.error(
+          "No provider for remote assets specified. To enable remote assets, supabase must also be enabled in the deployment config."
+        );
+      }
+      this.remoteAssetsEnabled = remoteAssetsEnabled;
       this.supabaseURL = url;
-      this.supabaseApiKey = apiKey;
+      this.supabaseApiKey = publicApiKey;
       this.bucketName = bucketName;
     });
   }
