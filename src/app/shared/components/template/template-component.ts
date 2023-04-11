@@ -49,7 +49,7 @@ export class TmplCompHostDirective {
   template: `
     <!-- Template Debugger -->
     <plh-template-debugger
-      *ngIf="parent.debugMode"
+      *ngIf="parent && parent.debugMode"
       [row]="_row"
       [parent]="parent"
     ></plh-template-debugger>
