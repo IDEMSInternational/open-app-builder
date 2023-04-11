@@ -1,8 +1,8 @@
 {
   "flow_type": "data_list",
-  "flow_name": "motivate_data",
+  "flow_name": "reflect_motivation_data",
   "status": "released",
-  "data_list_name": "motivate",
+  "data_list_name": "reflect_motivation",
   "rows": [
     {
       "id": "time_child",

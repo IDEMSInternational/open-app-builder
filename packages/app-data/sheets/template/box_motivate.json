@@ -7,7 +7,7 @@
     {
       "name": "data_list_name",
       "value": [
-        "motivate"
+        "reflect_motivation"
       ],
       "type": "set_variable",
       "_nested_name": "data_list_name"

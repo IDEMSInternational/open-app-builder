@@ -16,7 +16,6 @@
         "lower_case_title": {},
         "in_text_title": {},
         "description": {},
-        "motivation_title": {},
         "tools_title": {}
       },
       "_translatedFields": {
@@ -32,9 +31,6 @@
         "description": {
           "eng": "Description of @data.topic.welcome.title"
         },
-        "motivation_title": {
-          "eng": "Why introduction?"
-        },
         "tools_title": {
           "eng": "How to introduction"
         }
@@ -42,7 +38,6 @@
       "lower_case_title": "introduction",
       "in_text_title": "**@data.topic.welcome.title** @global.topic",
       "description": "Description of @data.topic.welcome.title",
-      "motivation_title": "Why introduction?",
       "tools_title": "How to introduction"
     },
     {
@@ -56,9 +51,7 @@
         "title": {},
         "lower_case_title": {},
         "description": {},
-        "motivation_text": {},
         "in_text_title": {},
-        "motivation_title": {},
         "tools_title": {}
       },
       "_translatedFields": {
@@ -71,14 +64,8 @@
         "description": {
           "eng": "How we connect with our children, families, communities and ourselves plays an important role in our relationships, health and wellbeing."
         },
-        "motivation_text": {
-          "eng": "We will be focusing on the topic of: CONNECTION.\n\nRight now, we want to focus on two important connections:\n* Your connection with your child\n* Your connection with yourself"
-        },
         "in_text_title": {
           "eng": "**@data.topic.connect.title** @global.topic"
-        },
-        "motivation_title": {
-          "eng": "Why connect?"
         },
         "tools_title": {
           "eng": "How to connect"
@@ -86,9 +73,7 @@
       },
       "lower_case_title": "connect",
       "description": "How we connect with our children, families, communities and ourselves plays an important role in our relationships, health and wellbeing.",
-      "motivation_text": "We will be focusing on the topic of: CONNECTION.\n\nRight now, we want to focus on two important connections:\n* Your connection with your child\n* Your connection with yourself",
       "in_text_title": "**@data.topic.connect.title** @global.topic",
-      "motivation_title": "Why connect?",
       "tools_title": "How to connect"
     },
     {
@@ -103,7 +88,6 @@
         "lower_case_title": {},
         "in_text_title": {},
         "description": {},
-        "motivation_title": {},
         "tools_title": {}
       },
       "_translatedFields": {
@@ -119,9 +103,6 @@
         "description": {
           "eng": "Description of @data.topic.play.title"
         },
-        "motivation_title": {
-          "eng": "Why play?"
-        },
         "tools_title": {
           "eng": "How to play"
         }
@@ -129,7 +110,6 @@
       "lower_case_title": "play",
       "in_text_title": "**@data.topic.play.title** @global.topic",
       "description": "Description of @data.topic.play.title",
-      "motivation_title": "Why play?",
       "tools_title": "How to play"
     },
     {
@@ -144,7 +124,6 @@
         "lower_case_title": {},
         "in_text_title": {},
         "description": {},
-        "motivation_title": {},
         "tools_title": {}
       },
       "_translatedFields": {
@@ -160,9 +139,6 @@
         "description": {
           "eng": "Description of @data.topic.talk.title"
         },
-        "motivation_title": {
-          "eng": "Why talk?"
-        },
         "tools_title": {
           "eng": "How to talk"
         }
@@ -170,7 +146,6 @@
       "lower_case_title": "talk",
       "in_text_title": "**@data.topic.talk.title** @global.topic",
       "description": "Description of @data.topic.talk.title",
-      "motivation_title": "Why talk?",
       "tools_title": "How to talk"
     },
     {
@@ -185,7 +160,6 @@
         "lower_case_title": {},
         "in_text_title": {},
         "description": {},
-        "motivation_title": {},
         "tools_title": {}
       },
       "_translatedFields": {
@@ -201,9 +175,6 @@
         "description": {
           "eng": "Description of @data.topic.explore.title"
         },
-        "motivation_title": {
-          "eng": "Why explore?"
-        },
         "tools_title": {
           "eng": "How to explore"
         }
@@ -211,7 +182,6 @@
       "lower_case_title": "explore",
       "in_text_title": "**@data.topic.explore.title** @global.topic",
       "description": "Description of @data.topic.explore.title",
-      "motivation_title": "Why explore?",
       "tools_title": "How to explore"
     },
     {
@@ -226,7 +196,6 @@
         "lower_case_title": {},
         "in_text_title": {},
         "description": {},
-        "motivation_title": {},
         "tools_title": {}
       },
       "_translatedFields": {
@@ -242,9 +211,6 @@
         "description": {
           "eng": "Description of @data.topic.create.title"
         },
-        "motivation_title": {
-          "eng": "Why create?"
-        },
         "tools_title": {
           "eng": "How to create"
         }
@@ -252,7 +218,6 @@
       "lower_case_title": "create",
       "in_text_title": "**@data.topic.create.title** @global.topic",
       "description": "Description of @data.topic.create.title",
-      "motivation_title": "Why create?",
       "tools_title": "How to create"
     },
     {
@@ -267,7 +232,6 @@
         "lower_case_title": {},
         "in_text_title": {},
         "description": {},
-        "motivation_title": {},
         "tools_title": {}
       },
       "_translatedFields": {
@@ -283,9 +247,6 @@
         "description": {
           "eng": "Description of @data.topic.build.title"
         },
-        "motivation_title": {
-          "eng": "Why build?"
-        },
         "tools_title": {
           "eng": "How to build"
         }
@@ -293,7 +254,6 @@
       "lower_case_title": "build",
       "in_text_title": "**@data.topic.build.title** @global.topic",
       "description": "Description of @data.topic.build.title",
-      "motivation_title": "Why build?",
       "tools_title": "How to build"
     },
     {
@@ -308,7 +268,6 @@
         "lower_case_title": {},
         "in_text_title": {},
         "description": {},
-        "motivation_title": {},
         "tools_title": {}
       },
       "_translatedFields": {
@@ -324,9 +283,6 @@
         "description": {
           "eng": "Description of @data.topic.summary.title"
         },
-        "motivation_title": {
-          "eng": "Why summary?"
-        },
         "tools_title": {
           "eng": "How to summary"
         }
@@ -334,7 +290,6 @@
       "lower_case_title": "summary",
       "in_text_title": "**@data.topic.summary.title** @global.topic",
       "description": "Description of @data.topic.summary.title",
-      "motivation_title": "Why summary?",
       "tools_title": "How to summary"
     }
   ],

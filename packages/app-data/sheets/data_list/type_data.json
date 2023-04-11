@@ -32,13 +32,13 @@
     {
       "id": "relax",
       "content_data_list_name": "relax",
-      "outro_text": "When we are feeling stressed or if our children are making us feel very annoyed, we all need a moment to stop, to notice our thoughts and feelings and take a deep breath before we move on.",
       "activity_image_asset": "images/topics/wave.svg",
       "content_template": "box_relax",
       "activity_title": "@data.topic[@fields.current_topic].relax_title",
       "_translations": {
         "activity_title": {},
         "intro_text": {},
+        "outro_text": {},
         "intro_title": {}
       },
       "_translatedFields": {
@@ -48,11 +48,15 @@
         "intro_text": {
           "eng": "Whatever you are feeling today - we all benefit from taking a moment to pause and reflect on what we are feeling and thinking."
         },
+        "outro_text": {
+          "eng": "When we are feeling stressed or if our children are making us feel very annoyed, we all need a moment to stop, to notice our thoughts and feelings and take a deep breath before we move on."
+        },
         "intro_title": {
           "eng": "@data.topic[@fields.current_topic].relax_title"
         }
       },
       "intro_text": "Whatever you are feeling today - we all benefit from taking a moment to pause and reflect on what we are feeling and thinking.",
+      "outro_text": "When we are feeling stressed or if our children are making us feel very annoyed, we all need a moment to stop, to notice our thoughts and feelings and take a deep breath before we move on.",
       "intro_title": "@data.topic[@fields.current_topic].relax_title"
     },
     {
@@ -96,27 +100,8 @@
       "intro_title": "Reflect"
     },
     {
-      "id": "motivate",
-      "content_data_list_name": "motivate",
-      "activity_image_asset": "images/topics/wave.svg",
-      "content_template": "box_motivate",
-      "activity_title": "Motivation",
-      "_translations": {
-        "activity_title": {},
-        "intro_title": {}
-      },
-      "_translatedFields": {
-        "activity_title": {
-          "eng": "Motivation"
-        },
-        "intro_title": {
-          "eng": "Motivation"
-        }
-      },
-      "intro_title": "Motivation"
-    },
-    {
       "id": "read",
+      "content_data_list_name": "read",
       "activity_image_asset": "images/topics/wave.svg",
       "content_template": "box_read",
       "activity_title": "Read",

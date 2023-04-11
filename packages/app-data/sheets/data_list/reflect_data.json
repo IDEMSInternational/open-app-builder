@@ -6,39 +6,44 @@
   "rows": [
     {
       "id": "time_child",
-      "text": "We know that as a caregiver, there are many demands on your time. While you might have your child around you for large parts of the day, it isn't always easy to focus all of your attention on your child.",
       "image_asset": "images/topics/connect/busy_parent.png",
-      "question_1_id": "time_child",
-      "title": "Time with your child",
+      "question_id": "time_child",
+      "motivation_id": "time_child",
+      "activity_title": "Time with your child",
       "_translations": {
-        "title": {},
+        "activity_title": {},
         "intro_text": {},
+        "text": {},
         "outro_text": {}
       },
       "_translatedFields": {
-        "title": {
+        "activity_title": {
           "eng": "Time with your child"
         },
         "intro_text": {
           "eng": "Let’s start with exploring ways to connect with our children."
+        },
+        "text": {
+          "eng": "We know that as a caregiver, there are many demands on your time. While you might have your child around you for large parts of the day, it isn't always easy to focus all of your attention on your child."
         },
         "outro_text": {
           "eng": "We all spend time doing things with our children, but connecting with them is not always easy. We face many distractions, concerns and challenges that make it difficult to connect with our children. In addition - our children might do or say things that we find frustrating and draining."
         }
       },
       "intro_text": "Let’s start with exploring ways to connect with our children.",
+      "text": "We know that as a caregiver, there are many demands on your time. While you might have your child around you for large parts of the day, it isn't always easy to focus all of your attention on your child.",
       "outro_text": "We all spend time doing things with our children, but connecting with them is not always easy. We face many distractions, concerns and challenges that make it difficult to connect with our children. In addition - our children might do or say things that we find frustrating and draining."
     },
     {
       "id": "time_self",
-      "question_1_id": "time_self",
-      "title": "Time for yourself",
+      "question_id": "time_self",
+      "activity_title": "Time for yourself",
       "_translations": {
-        "title": {},
+        "activity_title": {},
         "intro_text": {}
       },
       "_translatedFields": {
-        "title": {
+        "activity_title": {
           "eng": "Time for yourself"
         },
         "intro_text": {
@@ -46,97 +51,6 @@
         }
       },
       "intro_text": "Being a parent means caring for your \nchildren AND for yourself."
-    },
-    {
-      "id": "interrupt_self",
-      "story_id": "interrupt_self",
-      "question_1_id": "interrupt_self_feeling",
-      "question_2_id": "interrupt_self_other",
-      "title": "Being interrupted",
-      "_translations": {
-        "title": {},
-        "outro_text": {}
-      },
-      "_translatedFields": {
-        "title": {
-          "eng": "Being interrupted"
-        },
-        "outro_text": {
-          "eng": "Most parts of a child’s day are dictated by the rules and plans of adults.\n\nAs adults, we lead the way for our children in terms of most of their activities. Children have very little say. Most adults struggle when they feel they don’t have a say or aren’t in control. Children are the same."
-        }
-      },
-      "outro_text": "Most parts of a child’s day are dictated by the rules and plans of adults.\n\nAs adults, we lead the way for our children in terms of most of their activities. Children have very little say. Most adults struggle when they feel they don’t have a say or aren’t in control. Children are the same."
-    },
-    {
-      "id": "join_self",
-      "story_id": "join_self",
-      "question_1_id": "join_self_feeling",
-      "question_2_id": "join_self_diff",
-      "title": "Being joined",
-      "_translations": {
-        "title": {},
-        "intro_text": {},
-        "outro_text": {}
-      },
-      "_translatedFields": {
-        "title": {
-          "eng": "Being joined"
-        },
-        "intro_text": {
-          "eng": "Now picture the opposite."
-        },
-        "outro_text": {
-          "eng": "A great way to make your child feel seen, valued, important, is making time to join them in their world, and to let them take the lead during one-on-one time."
-        }
-      },
-      "intro_text": "Now picture the opposite.",
-      "outro_text": "A great way to make your child feel seen, valued, important, is making time to join them in their world, and to let them take the lead during one-on-one time."
-    },
-    {
-      "id": "interrupt_child",
-      "story_id": "interrupt_child",
-      "question_1_id": "interrupt_child_1",
-      "question_2_id": "interrupt_child_neg_2",
-      "question_3_id": "interrupt_child_neg_3",
-      "question_4_id": "interrupt_child_neg_4",
-      "question_5_id": "interrupt_child_neg_5",
-      "title": "Interrupting your child",
-      "_translations": {
-        "title": {}
-      },
-      "_translatedFields": {
-        "title": {
-          "eng": "Interrupting your child"
-        }
-      }
-    },
-    {
-      "id": "join_child",
-      "story_id": "join_child",
-      "question_1_id": "join_child_1",
-      "question_2_id": "join_child_2",
-      "question_3_id": "join_child_3",
-      "question_4_id": "join_child_4",
-      "question_5_id": "join_child_5",
-      "title": "Joining your child",
-      "_translations": {
-        "title": {},
-        "intro_text": {},
-        "outro_text": {}
-      },
-      "_translatedFields": {
-        "title": {
-          "eng": "Joining your child"
-        },
-        "intro_text": {
-          "eng": "Let’s look at another story."
-        },
-        "outro_text": {
-          "eng": "It is not about keeping track of a child’s behaviour to make sure they are behaving properly. It’s not about teaching them to do something or educating them.\n\nIt is a way to bond, connect, and have a positive experience with your child. It is a way for you to escape your world and join your child in their world."
-        }
-      },
-      "intro_text": "Let’s look at another story.",
-      "outro_text": "It is not about keeping track of a child’s behaviour to make sure they are behaving properly. It’s not about teaching them to do something or educating them.\n\nIt is a way to bond, connect, and have a positive experience with your child. It is a way for you to escape your world and join your child in their world."
     }
   ],
   "_xlsxPath": "global/data/topic_data/topic_data.xlsx"

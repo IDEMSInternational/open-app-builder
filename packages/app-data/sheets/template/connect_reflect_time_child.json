@@ -6,18 +6,9 @@
   "rows": [
     {
       "type": "template",
-      "name": "topic_activity",
-      "value": "topic_activity",
+      "name": "reflect",
+      "value": "reflect",
       "rows": [
-        {
-          "name": "type_id",
-          "value": "reflect",
-          "_translations": {
-            "value": {}
-          },
-          "type": "set_variable",
-          "_nested_name": "topic_activity.type_id"
-        },
         {
           "name": "content_id",
           "value": "time_child",
@@ -25,10 +16,10 @@
             "value": {}
           },
           "type": "set_variable",
-          "_nested_name": "topic_activity.content_id"
+          "_nested_name": "reflect.content_id"
         }
       ],
-      "_nested_name": "topic_activity"
+      "_nested_name": "reflect"
     }
   ],
   "_xlsxPath": "global/templates/top_templates/topic_templates/topic_connect.xlsx"

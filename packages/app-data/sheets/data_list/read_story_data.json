@@ -1,8 +1,8 @@
 {
   "flow_type": "data_list",
-  "flow_name": "story_data",
+  "flow_name": "read_story_data",
   "status": "released",
-  "data_list_name": "story",
+  "data_list_name": "read_story",
   "rows": [
     {
       "id": "interrupt_self",

@@ -15,7 +15,6 @@
         "lower_case_title": {},
         "in_text_title": {},
         "description": {},
-        "motivation_title": {},
         "tools_title": {}
       },
       "_translatedFields": {
@@ -31,9 +30,6 @@
         "description": {
           "eng": "Description of @data.topic.welcome.title"
         },
-        "motivation_title": {
-          "eng": "Why introduction?"
-        },
         "tools_title": {
           "eng": "How to introduction"
         }
@@ -41,7 +37,6 @@
       "lower_case_title": "introduction",
       "in_text_title": "**@data.topic.welcome.title** @global.topic",
       "description": "Description of @data.topic.welcome.title",
-      "motivation_title": "Why introduction?",
       "tools_title": "How to introduction",
       "completed_field": "task_welcome_completed",
       "completed": "@fields.task_welcome_completed",
@@ -59,9 +54,7 @@
         "lower_case_title": {},
         "in_text_title": {},
         "description": {},
-        "motivation_title": {},
-        "tools_title": {},
-        "motivation_text": {}
+        "tools_title": {}
       },
       "_translatedFields": {
         "title": {
@@ -73,14 +66,8 @@
         "description": {
           "eng": "How we connect with our children, families, communities and ourselves plays an important role in our relationships, health and wellbeing."
         },
-        "motivation_text": {
-          "eng": "We will be focusing on the topic of: CONNECTION.\n\nRight now, we want to focus on two important connections:\n* Your connection with your child\n* Your connection with yourself"
-        },
         "in_text_title": {
           "eng": "**@data.topic.connect.title** @global.topic"
-        },
-        "motivation_title": {
-          "eng": "Why connect?"
         },
         "tools_title": {
           "eng": "How to connect"
@@ -89,9 +76,7 @@
       "lower_case_title": "connect",
       "in_text_title": "**@data.topic.connect.title** @global.topic",
       "description": "How we connect with our children, families, communities and ourselves plays an important role in our relationships, health and wellbeing.",
-      "motivation_title": "Why connect?",
       "tools_title": "How to connect",
-      "motivation_text": "We will be focusing on the topic of: CONNECTION.\n\nRight now, we want to focus on two important connections:\n* Your connection with your child\n* Your connection with yourself",
       "completed_field": "task_connect_completed",
       "completed": "@fields.task_connect_completed",
       "skipped_field": "task_connect_skipped"
@@ -108,7 +93,6 @@
         "lower_case_title": {},
         "in_text_title": {},
         "description": {},
-        "motivation_title": {},
         "tools_title": {}
       },
       "_translatedFields": {
@@ -124,9 +108,6 @@
         "description": {
           "eng": "Description of @data.topic.play.title"
         },
-        "motivation_title": {
-          "eng": "Why play?"
-        },
         "tools_title": {
           "eng": "How to play"
         }
@@ -134,7 +115,6 @@
       "lower_case_title": "play",
       "in_text_title": "**@data.topic.play.title** @global.topic",
       "description": "Description of @data.topic.play.title",
-      "motivation_title": "Why play?",
       "tools_title": "How to play",
       "completed_field": "task_play_completed",
       "completed": "@fields.task_play_completed",
@@ -152,7 +132,6 @@
         "lower_case_title": {},
         "in_text_title": {},
         "description": {},
-        "motivation_title": {},
         "tools_title": {}
       },
       "_translatedFields": {
@@ -168,9 +147,6 @@
         "description": {
           "eng": "Description of @data.topic.talk.title"
         },
-        "motivation_title": {
-          "eng": "Why talk?"
-        },
         "tools_title": {
           "eng": "How to talk"
         }
@@ -178,7 +154,6 @@
       "lower_case_title": "talk",
       "in_text_title": "**@data.topic.talk.title** @global.topic",
       "description": "Description of @data.topic.talk.title",
-      "motivation_title": "Why talk?",
       "tools_title": "How to talk",
       "completed_field": "task_talk_completed",
       "completed": "@fields.task_talk_completed",
@@ -196,7 +171,6 @@
         "lower_case_title": {},
         "in_text_title": {},
         "description": {},
-        "motivation_title": {},
         "tools_title": {}
       },
       "_translatedFields": {
@@ -212,9 +186,6 @@
         "description": {
           "eng": "Description of @data.topic.explore.title"
         },
-        "motivation_title": {
-          "eng": "Why explore?"
-        },
         "tools_title": {
           "eng": "How to explore"
         }
@@ -222,7 +193,6 @@
       "lower_case_title": "explore",
       "in_text_title": "**@data.topic.explore.title** @global.topic",
       "description": "Description of @data.topic.explore.title",
-      "motivation_title": "Why explore?",
       "tools_title": "How to explore",
       "completed_field": "task_explore_completed",
       "completed": "@fields.task_explore_completed",
@@ -240,7 +210,6 @@
         "lower_case_title": {},
         "in_text_title": {},
         "description": {},
-        "motivation_title": {},
         "tools_title": {}
       },
       "_translatedFields": {
@@ -256,9 +225,6 @@
         "description": {
           "eng": "Description of @data.topic.create.title"
         },
-        "motivation_title": {
-          "eng": "Why create?"
-        },
         "tools_title": {
           "eng": "How to create"
         }
@@ -266,7 +232,6 @@
       "lower_case_title": "create",
       "in_text_title": "**@data.topic.create.title** @global.topic",
       "description": "Description of @data.topic.create.title",
-      "motivation_title": "Why create?",
       "tools_title": "How to create",
       "completed_field": "task_create_completed",
       "completed": "@fields.task_create_completed",
@@ -284,7 +249,6 @@
         "lower_case_title": {},
         "in_text_title": {},
         "description": {},
-        "motivation_title": {},
         "tools_title": {}
       },
       "_translatedFields": {
@@ -300,9 +264,6 @@
         "description": {
           "eng": "Description of @data.topic.build.title"
         },
-        "motivation_title": {
-          "eng": "Why build?"
-        },
         "tools_title": {
           "eng": "How to build"
         }
@@ -310,7 +271,6 @@
       "lower_case_title": "build",
       "in_text_title": "**@data.topic.build.title** @global.topic",
       "description": "Description of @data.topic.build.title",
-      "motivation_title": "Why build?",
       "tools_title": "How to build",
       "completed_field": "task_build_completed",
       "completed": "@fields.task_build_completed",
@@ -328,7 +288,6 @@
         "lower_case_title": {},
         "in_text_title": {},
         "description": {},
-        "motivation_title": {},
         "tools_title": {}
       },
       "_translatedFields": {
@@ -344,9 +303,6 @@
         "description": {
           "eng": "Description of @data.topic.summary.title"
         },
-        "motivation_title": {
-          "eng": "Why summary?"
-        },
         "tools_title": {
           "eng": "How to summary"
         }
@@ -354,7 +310,6 @@
       "lower_case_title": "summary",
       "in_text_title": "**@data.topic.summary.title** @global.topic",
       "description": "Description of @data.topic.summary.title",
-      "motivation_title": "Why summary?",
       "tools_title": "How to summary",
       "completed_field": "task_summary_completed",
       "completed": "@fields.task_summary_completed",

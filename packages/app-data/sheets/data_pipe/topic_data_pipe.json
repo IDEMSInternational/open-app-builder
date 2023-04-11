@@ -14,5 +14,5 @@
       "output_target": "topic_tasks"
     }
   ],
-  "_xlsxPath": "global/data/topic_data/topic_data_pipes.xlsx"
+  "_xlsxPath": "global/data/topic_task_data/topic_data_pipes.xlsx"
 }

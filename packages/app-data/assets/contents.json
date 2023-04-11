@@ -119,6 +119,10 @@
     "size_kb": 0.6,
     "md5Checksum": "55abd071b6b4a23e4bf2b4dcc1717c9b"
   },
+  "images/icons/book_outline.svg": {
+    "size_kb": 0.7,
+    "md5Checksum": "1b287c85e36a3375196a2a6ee7a0bca3"
+  },
   "images/icons/book_white.svg": {
     "size_kb": 0.8,
     "md5Checksum": "60b1765a5686443bfd087ef70aa751e0"
@@ -166,6 +170,10 @@
   "images/icons/library_white.svg": {
     "size_kb": 1.1,
     "md5Checksum": "8e791b3a63a264780daa816589472b9e"
+  },
+  "images/icons/parent_child.svg": {
+    "size_kb": 2,
+    "md5Checksum": "99747503b2023a185d20be8e5c7d8076"
   },
   "images/icons/pause.svg": {
     "size_kb": 0.7,
@@ -258,5 +266,17 @@
   "lottie/habits/cascading_stars.json": {
     "size_kb": 140.5,
     "md5Checksum": "131145b165cd19613a9e277a514eec2f"
+  },
+  "video/song/lets_slow_down.mp4": {
+    "size_kb": 13482.2,
+    "md5Checksum": "62f06faa95a979d128b4356db9bb396e"
+  },
+  "video/song/lets_slow_down.srt": {
+    "size_kb": 1.7,
+    "md5Checksum": "77e6d4265f602b20745a738b9809bb15"
+  },
+  "video/song/lets_slow_down.vtt": {
+    "size_kb": 1.8,
+    "md5Checksum": "1c172282f4c58766a03562d1eb88a4a4"
   }
 }

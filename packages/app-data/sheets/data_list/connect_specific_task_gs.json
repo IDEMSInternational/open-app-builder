@@ -11,101 +11,84 @@
       "priority": 10,
       "has_single_task": true,
       "template": "connect_reflect_time_child",
-      "title": "Time with your child (reflect)",
+      "title": "Time with your child - Reflect",
       "_translations": {
         "title": {}
       },
       "_translatedFields": {
         "title": {
-          "eng": "Time with your child (reflect)"
+          "eng": "Time with your child - Reflect"
         }
       }
     },
     {
-      "id": "motivate_time_child",
-      "individual": true,
-      "together": true,
-      "priority": 11,
-      "has_single_task": true,
-      "template": "connect_motivate_time_child",
-      "title": "Time with your child (motivate)",
-      "_translations": {
-        "title": {}
-      },
-      "_translatedFields": {
-        "title": {
-          "eng": "Time with your child (motivate)"
-        }
-      }
-    },
-    {
-      "id": "interrupt_self_neg",
+      "id": "read_interrupt_self",
       "individual": true,
       "together": true,
       "priority": 12,
       "has_single_task": true,
-      "template": "connect_interrupt_self_neg",
-      "title": "Being interrupted",
+      "template": "connect_read_interrupt_self",
+      "title": "Time with your child - Being interrupted",
       "_translations": {
         "title": {}
       },
       "_translatedFields": {
         "title": {
-          "eng": "Being interrupted"
+          "eng": "Time with your child - Being interrupted"
         }
       }
     },
     {
-      "id": "interrupt_self_pos",
+      "id": "read_join_self",
       "individual": true,
       "together": true,
       "priority": 13,
       "has_single_task": true,
-      "template": "connect_interrupt_self_pos",
-      "title": "Being joined",
+      "template": "connect_read_join_self",
+      "title": "Time with your child - Being joined",
       "_translations": {
         "title": {}
       },
       "_translatedFields": {
         "title": {
-          "eng": "Being joined"
+          "eng": "Time with your child - Being joined"
         }
       }
     },
     {
-      "id": "interrupt_child_neg",
+      "id": "read_interrupt_child",
       "individual": true,
       "together": true,
       "priority": 14,
       "has_single_task": true,
-      "template": "connect_interrupt_child_neg",
-      "title": "Interrupting your child",
+      "template": "connect_read_interrupt_child",
+      "title": "Time with your child - Interrupting your child",
       "_translations": {
         "title": {}
       },
       "_translatedFields": {
         "title": {
-          "eng": "Interrupting your child"
+          "eng": "Time with your child - Interrupting your child"
         }
       }
     },
     {
-      "id": "interrupt_child_pos",
+      "id": "read_join_child",
       "individual": true,
       "together": true,
       "priority": 15,
       "has_single_task": true,
-      "template": "connect_interrupt_child_pos",
-      "title": "Joining your child",
+      "template": "connect_read_join_child",
+      "title": "Time with your child - Joining your child",
       "_translations": {
         "title": {}
       },
       "_translatedFields": {
         "title": {
-          "eng": "Joining your child"
+          "eng": "Time with your child - Joining your child"
         }
       }
     }
   ],
-  "_xlsxPath": "global/data/topic_data/topic_task_groups.xlsx"
+  "_xlsxPath": "global/data/topic_task_data/topic_task_groups.xlsx"
 }
