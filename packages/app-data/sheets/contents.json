@@ -280,6 +280,18 @@
       "flow_subtype": "component_demo",
       "_xlsxPath": "quality_assurance/component_sheets/component_data_items.xlsx"
     },
+    "comp_display_grid_data": {
+      "flow_type": "data_list",
+      "flow_name": "comp_display_grid_data",
+      "flow_subtype": "component_demo",
+      "_xlsxPath": "quality_assurance/component_sheets/component_display_grid.xlsx"
+    },
+    "comp_display_grid_params": {
+      "flow_type": "data_list",
+      "flow_name": "comp_display_grid_params",
+      "flow_subtype": "component_demo",
+      "_xlsxPath": "quality_assurance/component_sheets/component_display_grid.xlsx"
+    },
     "comp_radio_button_grid_data": {
       "flow_type": "data_list",
       "flow_name": "comp_radio_button_grid_data",
@@ -2092,6 +2104,12 @@
       "flow_name": "comp_data_items",
       "flow_subtype": "component_demo",
       "_xlsxPath": "quality_assurance/component_sheets/component_data_items.xlsx"
+    },
+    "comp_display_grid": {
+      "flow_type": "template",
+      "flow_name": "comp_display_grid",
+      "flow_subtype": "component_demo",
+      "_xlsxPath": "quality_assurance/component_sheets/component_display_grid.xlsx"
     },
     "comp_drawer": {
       "flow_type": "template",

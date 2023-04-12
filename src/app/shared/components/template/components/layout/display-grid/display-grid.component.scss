@@ -1,0 +1,10 @@
+$border: var(--ion-border-standard);
+$border-radius: var(--ion-border-radius-standard, 15px);
+
+.display-grid {
+  display: grid;
+}
+.grid-item {
+  border: $border;
+  border-radius: $border-radius;
+}
