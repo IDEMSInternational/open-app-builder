@@ -26,7 +26,7 @@ export class FileManagerService extends SyncServiceBase {
     });
     const src = await this.getFileSrc(fileEntry);
     console.log("src:", src);
-    // Save src to contents file for lookup
+    return src;
   }
 
   /**
@@ -49,5 +49,10 @@ export class FileManagerService extends SyncServiceBase {
       });
       return URL.createObjectURL(new Blob([data]));
     }
+  }
+
+  /* Update assets contents list to include new filepath for lookup (by template-asset service) */
+  async updateContentsList(fileEntry, uri: string) {
+    // TODO. Should also update metadata
   }
 }

@@ -3,6 +3,7 @@ import { SyncServiceBase } from "../syncService.base";
 import { AppConfigService } from "../app-config/app-config.service";
 import { IAppConfig } from "../../model";
 import { createClient, SupabaseClient } from "@supabase/supabase-js";
+import { Capacitor } from "@capacitor/core";
 import { FileManagerService } from "../file-manager/file-manager.service";
 import { TemplateActionRegistry } from "../../components/template/services/instance/template-action.registry";
 
@@ -45,18 +46,26 @@ export class RemoteAssetService extends SyncServiceBase {
     // 2. For each file:
     // a) download file from supabase
     // b) populate to respective folder
+    // c) update the assets contents list to include the file's URI for lookup
     for (const fileEntry of manifest) {
-      await this.downloadFile(fileEntry.path);
-      this.fileManagerService.saveFile(this.blob, fileEntry);
+      let uri = "";
+      if (Capacitor.isNativePlatform()) {
+        const blob = await this.downloadFile(fileEntry.path);
+        uri = await this.fileManagerService.saveFile(blob, fileEntry);
+      } else {
+        uri = await this.getPublicUrl(fileEntry.path);
+      }
+      await this.fileManagerService.updateContentsList(fileEntry, uri);
     }
   }
 
-  generateManifest() {
+  private generateManifest() {
     // Return dummy manifest for now
     return [{ path: "quality_assurance/example_asset.png" }];
   }
 
   async downloadFile(filepath: string) {
+    let data: Blob;
     try {
       this.downloading = true;
       const { data: blob, error } = await this.supabase.storage
@@ -66,13 +75,31 @@ export class RemoteAssetService extends SyncServiceBase {
         throw error;
       }
       if (blob) {
-        this.blob = blob;
-        console.log("blob:", this.blob);
+        data = blob;
+        console.log("blob:", data);
       }
     } catch (error) {
       console.error(error);
     } finally {
       this.downloading = false;
+      return data;
+    }
+  }
+
+  /* Get a file's public URL from supabase. For use in the web app */
+  async getPublicUrl(filepath: string) {
+    let url = "";
+    try {
+      const {
+        data: { publicUrl },
+      } = await this.supabase.storage.from(this.bucketName).getPublicUrl(filepath);
+      if (publicUrl) {
+        url = publicUrl;
+      }
+    } catch (error) {
+      console.error(error);
+    } finally {
+      return url;
     }
   }
 
