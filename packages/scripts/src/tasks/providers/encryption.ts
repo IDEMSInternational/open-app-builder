@@ -10,6 +10,8 @@ import {
 } from "fs-extra";
 import NodeRSA from "node-rsa";
 import { basename, resolve } from "path";
+import { ActiveDeployment } from "../../commands/deployment/get";
+import { DEPLOYMENTS_PATH } from "../../paths";
 import { logOutput, promptConfirmation, promptEditorInput } from "../../utils";
 
 /** Suffix added to all encrypted files to distinguish from originals */
@@ -25,7 +27,11 @@ class EncryptionProvider {
   private privateKey: NodeRSA;
 
   /** Check folder files and process any files requiring encryption */
-  public async encrypt(folderPath: string) {
+  public async encrypt(deploymentName = "") {
+    if (!deploymentName) {
+      deploymentName = ActiveDeployment.get().name;
+    }
+    const folderPath = resolve(DEPLOYMENTS_PATH, deploymentName, "encrypted");
     await this.setupEncryptionFolders(folderPath, "encrypt");
     let counter = 0;
     const files = this.listEncryptionFolderFiles(folderPath);
@@ -43,7 +49,11 @@ class EncryptionProvider {
   }
 
   /** Check folder files and process any files requiring decryption */
-  public async decrypt(folderPath: string) {
+  public async decrypt(deploymentName = "") {
+    if (!deploymentName) {
+      deploymentName = ActiveDeployment.get().name;
+    }
+    const folderPath = resolve(DEPLOYMENTS_PATH, deploymentName, "encrypted");
     await this.setupEncryptionFolders(folderPath, "decrypt");
     let counter = 0;
     const files = this.listEncryptionFolderFiles(folderPath);
