@@ -1,19 +1,18 @@
 import { Injectable } from "@angular/core";
-import { SyncServiceBase } from "../syncService.base";
-import { AppConfigService } from "../app-config/app-config.service";
-import { IAppConfig } from "../../model";
-import { createClient, SupabaseClient } from "@supabase/supabase-js";
 import { Capacitor } from "@capacitor/core";
-import { FileManagerService } from "../file-manager/file-manager.service";
+import { createClient, SupabaseClient } from "@supabase/supabase-js";
+import { environment } from "src/environments/environment";
 import { TemplateActionRegistry } from "../../components/template/services/instance/template-action.registry";
+import { IAppConfig } from "../../model";
+import { AppConfigService } from "../app-config/app-config.service";
+import { FileManagerService } from "../file-manager/file-manager.service";
+import { SyncServiceBase } from "../syncService.base";
 
 @Injectable({
   providedIn: "root",
 })
 export class RemoteAssetService extends SyncServiceBase {
   remoteAssetsEnabled: boolean;
-  supabaseURL: string;
-  supabaseApiKey: string;
   bucketName: string;
   folderName: string;
   supabase: SupabaseClient;
@@ -30,9 +29,13 @@ export class RemoteAssetService extends SyncServiceBase {
   }
 
   private initialise() {
-    this.subscribeToAppConfigChanges();
-    this.registerTemplateActionHandlers();
-    this.supabase = createClient(this.supabaseURL, this.supabaseApiKey);
+    // require supabase to be configured to use remote asset service
+    const { enabled, publicApiKey, url } = environment.deploymentConfig.supabase;
+    if (enabled) {
+      this.supabase = createClient(url, publicApiKey);
+      this.subscribeToAppConfigChanges();
+      this.registerTemplateActionHandlers();
+    }
   }
 
   async downloadAndPopulateRequiredAssets() {
@@ -131,16 +134,8 @@ export class RemoteAssetService extends SyncServiceBase {
 
   private subscribeToAppConfigChanges() {
     this.appConfigService.appConfig$.subscribe((appConfig: IAppConfig) => {
-      const { enabled: supabaseEnabled, url, publicApiKey } = appConfig.SUPABASE;
-      const { enabled: remoteAssetsEnabled, bucketName, folderName } = appConfig.ASSET_PACKS;
-      if (remoteAssetsEnabled && !supabaseEnabled) {
-        console.error(
-          "No provider for remote assets specified. To enable remote assets, supabase must also be enabled in the deployment config."
-        );
-      }
-      this.remoteAssetsEnabled = remoteAssetsEnabled;
-      this.supabaseURL = url;
-      this.supabaseApiKey = publicApiKey;
+      const { enabled, bucketName, folderName } = appConfig.ASSET_PACKS;
+      this.remoteAssetsEnabled = enabled;
       this.bucketName = bucketName;
       this.folderName = folderName;
     });

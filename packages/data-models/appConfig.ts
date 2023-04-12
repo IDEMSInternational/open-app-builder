@@ -198,12 +198,6 @@ const ASSET_PACKS = {
   folderName: "asset-packs",
 };
 
-const SUPABASE = {
-  enabled: false,
-  url: "",
-  publicApiKey: "",
-};
-
 const APP_CONFIG = {
   APP_FIELDS,
   APP_HEADER_DEFAULTS,
@@ -224,7 +218,6 @@ const APP_CONFIG = {
   NOTIFICATIONS_SYNC_FREQUENCY_MS,
   NOTIFICATION_DEFAULTS,
   SERVER_SYNC_FREQUENCY_MS,
-  SUPABASE,
 };
 // Export as a clone to avoid risk one import could alter another
 export const getDefaultAppConfig = () => clone(APP_CONFIG);
