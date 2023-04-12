@@ -54,6 +54,10 @@ class EncryptionProvider {
       deploymentName = ActiveDeployment.get().name;
     }
     const folderPath = resolve(DEPLOYMENTS_PATH, deploymentName, "encrypted");
+    // Return if deployment does not use encryption
+    if (!existsSync(folderPath)) {
+      return;
+    }
     await this.setupEncryptionFolders(folderPath, "decrypt");
     let counter = 0;
     const files = this.listEncryptionFolderFiles(folderPath);

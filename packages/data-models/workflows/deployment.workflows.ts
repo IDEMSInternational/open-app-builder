@@ -85,6 +85,13 @@ const workflows: IDeploymentWorkflows = {
               await tasks.deployment.set(args[0]);
             },
           },
+          // Ensure deployment decrypted once set
+          {
+            name: "decrypt",
+            function: async ({ tasks }) => {
+              await tasks.encryption.decrypt();
+            },
+          },
         ],
       },
       encrypt: {
