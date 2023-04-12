@@ -194,7 +194,8 @@ const APP_UPDATES = {
 
 const ASSET_PACKS = {
   enabled: false,
-  bucketName: "asset-packs",
+  bucketName: "deployment_name",
+  folderName: "asset-packs",
 };
 
 const SUPABASE = {

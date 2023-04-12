@@ -15,6 +15,7 @@ export class RemoteAssetService extends SyncServiceBase {
   supabaseURL: string;
   supabaseApiKey: string;
   bucketName: string;
+  folderName: string;
   supabase: SupabaseClient;
   downloading: boolean = false;
   blob: Blob;
@@ -70,7 +71,7 @@ export class RemoteAssetService extends SyncServiceBase {
       this.downloading = true;
       const { data: blob, error } = await this.supabase.storage
         .from(this.bucketName)
-        .download(filepath);
+        .download(this.getSupabaseFilepath(filepath));
       if (error) {
         throw error;
       }
@@ -92,7 +93,9 @@ export class RemoteAssetService extends SyncServiceBase {
     try {
       const {
         data: { publicUrl },
-      } = await this.supabase.storage.from(this.bucketName).getPublicUrl(filepath);
+      } = this.supabase.storage
+        .from(this.bucketName)
+        .getPublicUrl(this.getSupabaseFilepath(filepath));
       if (publicUrl) {
         url = publicUrl;
       }
@@ -101,6 +104,11 @@ export class RemoteAssetService extends SyncServiceBase {
     } finally {
       return url;
     }
+  }
+
+  /* Append filepath to remote assets folder name to match supabase storage folder structure */
+  private getSupabaseFilepath(filepath: string) {
+    return `${this.folderName}/${filepath}`;
   }
 
   private registerTemplateActionHandlers() {
@@ -124,7 +132,7 @@ export class RemoteAssetService extends SyncServiceBase {
   private subscribeToAppConfigChanges() {
     this.appConfigService.appConfig$.subscribe((appConfig: IAppConfig) => {
       const { enabled: supabaseEnabled, url, publicApiKey } = appConfig.SUPABASE;
-      const { enabled: remoteAssetsEnabled, bucketName } = appConfig.ASSET_PACKS;
+      const { enabled: remoteAssetsEnabled, bucketName, folderName } = appConfig.ASSET_PACKS;
       if (remoteAssetsEnabled && !supabaseEnabled) {
         console.error(
           "No provider for remote assets specified. To enable remote assets, supabase must also be enabled in the deployment config."
@@ -134,6 +142,7 @@ export class RemoteAssetService extends SyncServiceBase {
       this.supabaseURL = url;
       this.supabaseApiKey = publicApiKey;
       this.bucketName = bucketName;
+      this.folderName = folderName;
     });
   }
 }
