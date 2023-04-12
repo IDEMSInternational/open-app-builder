@@ -1,5 +1,5 @@
 import { extendDeploymentConfig } from "scripts";
-import { Logger } from "scripts/src/utils";
+import { logWarning } from "scripts/src/utils";
 
 const config = extendDeploymentConfig({ name: "plh_asset_packs", parent: "plh" });
 // override app constants here
@@ -17,10 +17,9 @@ try {
   const supabaseConfig = require("./encrypted/supabaseConfig.json");
   config.supabase = { ...supabaseConfig, enabled: true };
 } catch {
-  Logger.error({
+  logWarning({
     msg1: "Deployment config requires encrypted data",
     msg2: "Decrypt config in order to access supabase functionality",
-    logOnly:true
   });
 }
 
