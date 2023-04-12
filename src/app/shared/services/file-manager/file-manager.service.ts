@@ -2,13 +2,15 @@ import { Injectable } from "@angular/core";
 import { Directory, Filesystem } from "@capacitor/filesystem";
 import { Capacitor } from "@capacitor/core";
 import write_blob from "capacitor-blob-writer";
+import { SyncServiceBase } from "../syncService.base";
 
 @Injectable({
   providedIn: "root",
 })
-// TODO: Refactor to use sync/asyncService base. Methods could also be moved to remote-asset service
-export class FileManagerService {
-  constructor() {}
+export class FileManagerService extends SyncServiceBase {
+  constructor() {
+    super("FileManager");
+  }
 
   async saveFile(blob: Blob, fileEntry) {
     // Docs for write_blob are found here: https://github.com/diachedelic/capacitor-blob-writer#readme
@@ -33,7 +35,7 @@ export class FileManagerService {
    * Adapted from https://www.npmjs.com/package/capacitor-blob-writer
    * */
   async getFileSrc(fileEntry) {
-    // How the URL is obtained depends on the platform
+    // How the URI is obtained depends on the platform
     if (Capacitor.isNativePlatform()) {
       const { uri } = await Filesystem.getUri({
         path: fileEntry.path,
