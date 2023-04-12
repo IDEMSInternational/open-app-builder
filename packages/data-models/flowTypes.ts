@@ -1,3 +1,5 @@
+/* eslint @typescript-eslint/sort-type-constituents: "warn"  */
+
 import type { IDataPipeOperation } from "shared/src/models/dataPipe/types";
 import type { IAppConfig } from "./appConfig";
 
@@ -7,15 +9,15 @@ import type { IAppConfig } from "./appConfig";
 
 export namespace FlowTypes {
   export type FlowType =
-    | "tour"
-    | "template"
-    // global data provides data to other modules, without namespacing (all top-level)
-    | "global"
     // data_lists are a general catch for any data that will be used throughout the app, but
     // without defined typings (such as habit_list).
     | "data_list"
     // data_pipes are used to modify or generate new data_lists via processing methods
-    | "data_pipe";
+    | "data_pipe"
+    // global data provides data to other modules, without namespacing (all top-level)
+    | "global"
+    | "template"
+    | "tour";
 
   // NOTE - most of these types are duplicated in src/data, should eventually refactor to common libs
 
@@ -38,7 +40,7 @@ export namespace FlowTypes {
     /** if specified, template will override target template (e.g. A/B testing) */
     override_target?: string;
     /** condition to evaluate for applying override */
-    override_condition?: string | boolean; // dynamic references will be strings, but converted to boolean during evaluation
+    override_condition?: boolean | string; // dynamic references will be strings, but converted to boolean during evaluation
     /** computed list of all other templates with override conditions that targetthis template */
     _overrides?: {
       [templatename: string]: any; // override condition
@@ -105,15 +107,16 @@ export namespace FlowTypes {
     main_image_asset?: string;
   }
   export interface Module_pageRow {
-    row_id?: string | number;
+    row_id?: number | string;
     type:
-      | "main_image"
-      | "title"
       | "button"
       | "description"
+      | "main_image"
       | "step_group"
       | "step_intro"
-      | "step_item";
+      | "step_item"
+      | "title";
+
     text?: string;
     task_id?: string;
     media_asset?: string;
@@ -121,9 +124,9 @@ export namespace FlowTypes {
     rows?: Module_pageRow[];
   }
   /** all data_list type must provide a unique id for each row to allow */
-  export type Data_listRow<T = any> = { id: string } & T;
+  export type Data_listRow<T = any> = T & { id: string };
   /** As not all tasks will launch flows, use actions to specify different ways to handle a task  */
-  export type Start_action = "start_new_flow" | "give_award" | "open_app";
+  export type Start_action = "give_award" | "open_app" | "start_new_flow";
 
   export interface Campaign_listRow extends RowWithActivationConditions {
     id: string;
@@ -159,7 +162,7 @@ export namespace FlowTypes {
   }
   export interface DataEvaluationCondition {
     /** specific defined actions that have individual methods to determine completion */
-    condition_type: "field_evaluation" | "db_lookup" | "calc";
+    condition_type: "calc" | "db_lookup" | "field_evaluation";
     /** Condition args change depending on type, hard to enforce typing switch so just include type mapping */
     condition_args: {
       db_lookup?: {
@@ -168,12 +171,12 @@ export namespace FlowTypes {
         // NOTE - where queries only support text or number
         // see: https://github.com/dfahlander/Dexie.js/issues/427
         // (non-sparse indexes)
-        where: { [field: string]: string | number }; //  e.g. {name:reminder_1.sent, value:'true'} ;
+        where: { [field: string]: number | string }; //  e.g. {name:reminder_1.sent, value:'true'} ;
         order?: "asc" | "desc";
         evaluate?: {
-          operator: ">" | "<=";
-          value: string | number | boolean;
-          unit?: "day" | "app_day";
+          operator: "<=" | ">";
+          value: boolean | number | string;
+          unit?: "app_day" | "day";
         };
       };
       field_evaluation?: {
@@ -230,68 +233,65 @@ export namespace FlowTypes {
     rows: TemplateRow[];
     comments?: string;
   }
-
   export type TemplateRowType =
-    | "accordion"
-    | "image"
-    | "title"
-    | "subtitle"
-    | "text"
-    | "animated_section"
     | "accordion_section"
+    | "accordion"
     | "advanced_dashed_box"
-    | "parent_point_counter"
-    | "help_icon"
-    | "workshops_accordion"
-    | "form"
-    | "toggle_bar"
     | "animated_section_group"
-    | "display_group"
-    | "set_variable"
-    // TODO - requires global implementation (and possibly rename to set_field_default as value does not override)
-    | "set_field"
-    | "set_local"
-    | "set_field"
-    | "update_action_list" // update own action list
-    | "nested_properties"
-    | "button"
-    | "image"
+    | "animated_section"
+    | "animated_slides"
     | "audio"
-    | "video"
+    | "button"
+    | "carousel"
+    | "combo_box"
+    | "dashed_box"
+    | "data_items"
+    | "debug_toggle"
+    | "display_grid"
+    | "display_group"
     | "display_theme"
-    | "template"
-    | "timer"
-    | "slider"
-    | "number_selector"
-    | "round_button"
-    | "square_button"
+    | "drawer"
+    | "form"
+    | "help_icon"
+    | "html"
+    | "icon_banner"
+    | "image"
+    | "items"
+    | "latex"
+    | "lottie_animation"
     | "nav_group"
     | "nav_section"
-    | "simple_checkbox"
-    | "set_default"
-    | "text_box"
-    | "text_area"
+    | "navigation_bar"
+    | "nested_properties"
+    | "number_selector"
+    | "parent_point_box"
+    | "parent_point_counter"
+    | "qr_code"
     | "radio_button_grid"
     | "radio_group"
-    | "tile_component"
-    | "combo_box"
-    | "icon_banner"
-    | "dashed_box"
-    | "lottie_animation"
-    | "parent_point_box"
-    | "debug_toggle"
-    | "items"
-    | "data_items"
+    | "round_button"
     | "select_text"
-    | "html"
-    | "latex"
-    | "animated_slides"
-    | "qr_code"
-    | "navigation_bar"
+    | "set_default"
+    | "set_field" // TODO - requires global implementation (and possibly rename to set_field_default as value does not override)
+    | "set_local"
+    | "set_variable"
+    | "simple_checkbox"
+    | "slider"
+    | "square_button"
+    | "subtitle"
     | "task_card"
     | "task_progress_bar"
-    | "carousel"
-    | "drawer";
+    | "template"
+    | "text_area"
+    | "text_box"
+    | "text"
+    | "tile_component"
+    | "timer"
+    | "title"
+    | "toggle_bar"
+    | "update_action_list" // update own action list
+    | "video"
+    | "workshops_accordion";
 
   export interface TemplateRow extends Row_with_translations {
     type: TemplateRowType;
@@ -300,10 +300,10 @@ export namespace FlowTypes {
     action_list?: TemplateRowAction[];
     style_list?: string[];
     parameter_list?: { [param: string]: string };
-    hidden?: string | boolean; // dynamic references will be strings, but converted to boolean during evaluation
+    hidden?: boolean | string; // dynamic references will be strings, but converted to boolean during evaluation
     rows?: TemplateRow[];
-    disabled?: string | boolean; // dynamic references will be strings, but converted to boolean during evaluation
-    condition?: string | boolean; // dynamic references will be strings, but converted to boolean during evaluation
+    disabled?: boolean | string; // dynamic references will be strings, but converted to boolean during evaluation
+    condition?: boolean | string; // dynamic references will be strings, but converted to boolean during evaluation
     is_override_target?: boolean; // prevent template being overridden when calling self via override_target (prevent infinite loops)
     _debug_name?: string; // some components may optionally provide a different name for debugging purposes
     _nested_name: string; // track full path to row when nested in a template (e.g. contentBox1.row2.title)
@@ -319,7 +319,7 @@ export namespace FlowTypes {
     _evalContext?: { itemContext: any }; // force specific context variables when calculating eval statements (such as loop items)
     __EMPTY?: any; // empty cells (can be removed after pr 679 merged)
   }
-  export type IDynamicField = { [key: string]: TemplateRowDynamicEvaluator[] | IDynamicField };
+  export type IDynamicField = { [key: string]: IDynamicField | TemplateRowDynamicEvaluator[] };
 
   type IDynamicPrefix = IAppConfig["DYNAMIC_PREFIXES"][number];
 
@@ -337,19 +337,19 @@ export namespace FlowTypes {
   }
 
   export type TemplateRowActionTrigger =
-    | "click"
-    | "completed"
-    | "uncompleted"
-    | "changed"
-    | "audio_play"
-    | "audio_pause"
     | "audio_end"
     | "audio_first_start"
+    | "audio_pause"
+    | "audio_play"
+    | "changed"
+    | "click"
+    | "completed"
+    | "info_click"
     | "nav_resume" // return to template after navigation or popup close;
     | "sent" // notification sent
-    | "info_click";
+    | "uncompleted";
 
-  // TODO document '' action for stop propogation
+  // TODO document '' action for stop propagation
   // note - to keep target nav within component stack go_to is actually just a special case of pop_up
   // TODO - 2021-03-11 - most of list needs reconsideration/implementation
   export const ACTION_ID_LIST = [
@@ -384,7 +384,7 @@ export namespace FlowTypes {
     /** actions have an associated trigger */
     trigger: TemplateRowActionTrigger;
     action_id: typeof ACTION_ID_LIST[number];
-    args: any[]; // should be string | boolean, but breaks type-checking for templates;
+    args: any[]; // should be boolean | string, but breaks type-checking for templates;
     params?: any; // additional params also used by args (does not require position argument)
     // TODO - CC 2022-04-29 - ideally args should be included as part of params
     _triggeredBy?: TemplateRow; // tracking the component that triggered the action for logging;
@@ -404,7 +404,7 @@ export namespace FlowTypes {
   }
 
   export interface GlobalRow extends Row_with_translations {
-    type: "declare_global_constant" | "declare_field_default";
+    type: "declare_field_default" | "declare_global_constant";
     name: string;
     value: any;
     comments?: string;
