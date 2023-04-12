@@ -71,7 +71,7 @@ export class TmplRadioButtonGridComponent
   }
 
   private setParams() {
-    this.parameter_list = this._row.parameter_list as any;
+    this.parameter_list = this._row.parameter_list || ({} as any);
     this.radioItems = this.generateItemList();
     this.gridStyle = this.generateGridStyle();
   }
