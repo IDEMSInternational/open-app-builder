@@ -1,9 +1,12 @@
-import fs, { readdirSync, statSync } from "fs-extra";
-import path from "path";
-import { Logger } from "../../utils";
 import chalk from "chalk";
+import fs, { statSync } from "fs-extra";
+import path from "path";
+
+import { DEPLOYMENT_CONFIG_VERSION } from "data-models";
+
+import { Logger } from "../../utils";
 import { compileDeploymentTSSync } from "./compile";
-import { DEPLOYMENT_CONFIG_VERSION, IDeploymentConfigJson } from "./common";
+import { IDeploymentConfigJson } from "./common";
 
 /**
  * Retrieve compiled config json for a given folder path
