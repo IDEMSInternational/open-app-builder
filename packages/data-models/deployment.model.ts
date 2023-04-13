@@ -1,5 +1,8 @@
 import type { IAppConfig } from "./appConfig";
 
+/** Update version to force recompile next time deployment set (e.g. after default config update) */
+export const DEPLOYMENT_CONFIG_VERSION = 20230413;
+
 export interface IDeploymentConfig {
   /** Friendly name used to identify the deployment name */
   name: string;
