@@ -45,6 +45,12 @@ export interface IDeploymentConfig {
     /** Current tag of content for release */
     content_tag_latest?: string;
   };
+  /** 3rd party integration for remote asset storage and sync */
+  supabase: {
+    enabled: boolean;
+    url?: string;
+    publicApiKey?: string;
+  };
   translations: {
     /** List of all language codes to include. Default null (includes all) */
     filter_language_codes?: string[];
@@ -93,6 +99,9 @@ export const DEPLOYMENT_CONFIG_EXAMPLE_DEFAULTS: IDeploymentConfig = {
     output_path: "packages/app-data",
     sheets_filter_function: (flow) => true,
     assets_filter_function: (fileEntry) => true,
+  },
+  supabase: {
+    enabled: false,
   },
   translations: {
     filter_language_codes: null,
