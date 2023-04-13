@@ -8,14 +8,14 @@ $item-background-complete: var(
 $item-border: var(--points-item-border, none);
 
 .wrapper-point {
-  padding: calc(var(--regular-padding) * var(--scale-factor--point))
-    calc(5px * var(--scale-factor--point));
+  padding: var(--regular-padding) 5px;
   .item {
     @include mixins.flex-centered;
     margin: 0 auto;
-    padding: calc(20px * var(--scale-factor--point)) 0;
-    width: calc(var(--points-item-width) * var(--scale-factor--point));
-    height: calc(var(--points-item-height) * var(--scale-factor--point));
+    padding: 20px 0;
+    width: var(--points-item-width);
+    max-width: 100%; // Don't allow overlap
+    height: var(--points-item-height);
     background: $item-background;
     filter: drop-shadow(var(--ion-default-box-shadow));
     border: 1px solid $item-border;
@@ -31,13 +31,13 @@ $item-border: var(--points-item-border, none);
       .star-value {
         padding-top: 4px;
         font-weight: var(--font-weight-standard);
-        font-size: calc(var(--line-height-text-tiny) * var(--scale-factor--point));
+        font-size: var(--line-height-text-tiny);
         color: var(--ion-color-primary);
         position: absolute;
       }
       img {
-        width: calc(47px * var(--scale-factor--point));
-        height: calc(47px * var(--scale-factor--point));
+        width: 47px;
+        height: 47px;
       }
     }
     .info-button {
@@ -45,12 +45,12 @@ $item-border: var(--points-item-border, none);
       right: 6px;
       top: 6px;
       img {
-        width: calc(28px * var(--scale-factor--point));
-        height: calc(28px * var(--scale-factor--point));
+        width: 28px;
+        height: 28px;
       }
     }
     .image {
-      max-height: calc(100% * var(--scale-factor--point));
+      max-height: 100%;
       img {
         width: 100%;
         height: 100%;
@@ -59,7 +59,7 @@ $item-border: var(--points-item-border, none);
     .text {
       margin: var(--tiny-margin) 0;
       font-weight: var(--font-weight-standard);
-      font-size: calc(var(--font-size-text-small) * var(--scale-factor--point));
+      font-size: var(--font-size-text-small);
       line-height: var(--line-height-text-small);
       text-align: center;
       color: var(--ion-color-primary);

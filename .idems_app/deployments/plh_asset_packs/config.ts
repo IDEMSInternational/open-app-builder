@@ -1,22 +1,26 @@
 import { extendDeploymentConfig } from "scripts";
+import { logWarning } from "scripts/src/utils";
 
 const config = extendDeploymentConfig({ name: "plh_asset_packs", parent: "plh" });
 // override app constants here
 config.app_config.APP_HEADER_DEFAULTS.title = "plh_asset_packs";
 config.app_config.APP_SIDEMENU_DEFAULTS.title = "plh_asset_packs";
 
-config.app_config.ASSET_PACKS.enabled = true
-config.app_config.ASSET_PACKS.bucketName = "plh_asset_packs"
-config.app_config.ASSET_PACKS.folderName = "asset-packs"
+config.app_config.ASSET_PACKS = {
+  enabled: true,
+  bucketName: "plh_asset_packs",
+  folderName: "asset-packs",
+};
 
+// set supabase config if decrypted values available
 try {
-  const supabaseConfig = require("./encrypted/supabaseConfig.json")
-  config.app_config.SUPABASE.enabled = true
-  config.app_config.SUPABASE.url = supabaseConfig.url
-  config.app_config.SUPABASE.publicApiKey = supabaseConfig.publicApiKey
+  const supabaseConfig = require("./encrypted/supabaseConfig.json");
+  config.supabase = { ...supabaseConfig, enabled: true };
 } catch {
-  console.log("Deployment config requires encrypted data. Decrypt config in order to access supabase functionality.")
+  logWarning({
+    msg1: "Deployment config requires encrypted data",
+    msg2: "Decrypt config in order to access supabase functionality",
+  });
 }
-
 
 export default config;
