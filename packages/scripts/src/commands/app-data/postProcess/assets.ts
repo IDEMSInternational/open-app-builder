@@ -159,37 +159,9 @@ export class AssetsPostProcessor {
     return filtered;
   }
 
-  /** Ensure asset folders are named correctly */
   private assetsQualityCheck(sourceFolder: string) {
-    const output = {
-      hasGlobalFolder: false,
-      languageFolders: [],
-      themeFolders: [],
-      invalidFolders: [],
-    };
-    const topLevelFolders = listFolderNames(sourceFolder);
-    for (const folderName of topLevelFolders) {
-      if (folderName === ASSETS_GLOBAL_FOLDER_NAME) output.hasGlobalFolder = true;
-      else {
-        if (isCountryLanguageCode(folderName)) output.languageFolders.push(folderName);
-        // HACK - currently theme folders being used with languages so include
-        // TODO - need to determine better way to distinguish language from theme assets
-        else if (isThemeAssetsFolderName(folderName)) output.themeFolders.push(folderName);
-        else output.invalidFolders.push(folderName);
-      }
-    }
-    if (!output.hasGlobalFolder) {
-      Logger.error({
-        msg1: "Assets global folder not found",
-        msg2: `Assets folder should include a folder named "${ASSETS_GLOBAL_FOLDER_NAME}"`,
-      });
-    }
-    if (output.invalidFolders.length > 0) {
-      Logger.error({
-        msg1: "Asset folders named incorrectly",
-        msg2: `Invalid language codes: [${output.invalidFolders.join(", ")}]`,
-      });
-    }
+    // TODO - add any relevant checks
+    // (previously checked asset folder names but no longer relevant)
   }
 
   private checkTotalAssetSize(sourceAssets: IAssetEntriesByType) {
