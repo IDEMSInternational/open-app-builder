@@ -1,5 +1,8 @@
 import type { IAppConfig } from "./appConfig";
 
+/** Update version to force recompile next time deployment set (e.g. after default config update) */
+export const DEPLOYMENT_CONFIG_VERSION = 20230413;
+
 export interface IDeploymentConfig {
   /** Friendly name used to identify the deployment name */
   name: string;
@@ -44,6 +47,12 @@ export interface IDeploymentConfig {
     content_repo?: string;
     /** Current tag of content for release */
     content_tag_latest?: string;
+  };
+  /** 3rd party integration for remote asset storage and sync */
+  supabase: {
+    enabled: boolean;
+    url?: string;
+    publicApiKey?: string;
   };
   translations: {
     /** List of all language codes to include. Default null (includes all) */
@@ -93,6 +102,9 @@ export const DEPLOYMENT_CONFIG_EXAMPLE_DEFAULTS: IDeploymentConfig = {
     output_path: "packages/app-data",
     sheets_filter_function: (flow) => true,
     assets_filter_function: (fileEntry) => true,
+  },
+  supabase: {
+    enabled: false,
   },
   translations: {
     filter_language_codes: null,
