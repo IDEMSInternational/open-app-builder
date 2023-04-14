@@ -12,10 +12,10 @@ export class FileManagerService extends SyncServiceBase {
     super("FileManager");
   }
 
-  async saveFile(blob: Blob, fileEntry) {
+  async saveFile(blob: Blob, relativePath) {
     // Docs for write_blob are found here: https://github.com/diachedelic/capacitor-blob-writer#readme
     await write_blob({
-      path: fileEntry.path,
+      path: relativePath,
       directory: Directory.Data,
       blob,
       fast_mode: true,
@@ -24,7 +24,7 @@ export class FileManagerService extends SyncServiceBase {
         console.error(error);
       },
     });
-    const src = await this.getFileSrc(fileEntry);
+    const src = await this.getFileSrc(relativePath);
     console.log("src:", src);
     return src;
   }
@@ -34,17 +34,17 @@ export class FileManagerService extends SyncServiceBase {
    * @returns the URL to access the file
    * Adapted from https://www.npmjs.com/package/capacitor-blob-writer
    * */
-  async getFileSrc(fileEntry) {
+  async getFileSrc(relativePath) {
     // How the URI is obtained depends on the platform
     if (Capacitor.isNativePlatform()) {
       const { uri } = await Filesystem.getUri({
-        path: fileEntry.path,
+        path: relativePath,
         directory: Directory.Data,
       });
       return Capacitor.convertFileSrc(uri);
     } else {
       const { data } = await Filesystem.readFile({
-        path: fileEntry.path,
+        path: relativePath,
         directory: Directory.Data,
       });
       return URL.createObjectURL(new Blob([data]));

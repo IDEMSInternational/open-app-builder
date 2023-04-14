@@ -51,21 +51,29 @@ export class RemoteAssetService extends SyncServiceBase {
     // a) download file from supabase
     // b) populate to respective folder
     // c) update the assets contents list to include the file's URI for lookup
-    for (const fileEntry of manifest) {
+    for (const relativePath of Object.keys(manifest)) {
       let uri = "";
       if (Capacitor.isNativePlatform()) {
-        const blob = await this.downloadFile(fileEntry.path);
-        uri = await this.fileManagerService.saveFile(blob, fileEntry);
+        const blob = await this.downloadFile(relativePath);
+        uri = await this.fileManagerService.saveFile(blob, relativePath);
       } else {
-        uri = await this.getPublicUrl(fileEntry.path);
+        uri = await this.getPublicUrl(relativePath);
       }
-      await this.fileManagerService.updateContentsList(fileEntry, uri);
+      console.log("uri:", uri);
+      await this.fileManagerService.updateContentsList(relativePath, uri);
     }
   }
 
   private generateManifest() {
     // Return dummy manifest for now
-    return [{ path: "quality_assurance/example_asset.png" }];
+    const manifest = {
+      "quality_assurance/test_image.png": {
+        size_kb: 2,
+        md5Checksum: "e6d6c6a12ca13a6277084e01c088378c",
+      },
+    };
+    // const manifest = [{ path: "quality_assurance/test_image.png" }]
+    return manifest;
   }
 
   async downloadFile(filepath: string) {
