@@ -51,9 +51,7 @@ describe("Assets PostProcess", () => {
   /** Initial setup */
   // replace prettier codeTidying method
   // replace `Logger` function with created spy method
-  beforeAll(() => {
-    spyOn(Logger, "error").and.callFake(mockErrorLogger);
-  });
+  beforeAll(() => {});
   // Populate a fake file system before each test. This will automatically be called for any fs operations
   // Restore regular file functionality after each test.
   beforeEach(() => {
@@ -87,14 +85,16 @@ describe("Assets PostProcess", () => {
 
   it("Populates global assets from named or root folder", () => {
     mockLocalAssets({
-      global: { "global.jpg": mockFile },
-      "test.jpg": mockFile,
+      global: { "test1.jpg": mockFile },
+      nested: { "test2.jpg": mockFile },
+      "test3.jpg": mockFile,
     });
     runAssetsPostProcessor();
     const contents = readAppAssetContents();
     expect(contents).toEqual({
-      "global.jpg": { ...mockFileEntry, filePath: "global/global.jpg" },
-      "test.jpg": mockFileEntry,
+      "nested/test2.jpg": mockFileEntry,
+      "test1.jpg": { ...mockFileEntry, filePath: "global/test1.jpg" },
+      "test3.jpg": mockFileEntry,
     });
     mockFs.restore();
   });
@@ -247,6 +247,11 @@ describe("Assets PostProcess", () => {
   //   });
   // });
 });
+
+/** Replace runtime error logger with mock that can be inspected in tests */
+function useMockErrorLogger() {
+  spyOn(Logger, "error").and.callFake(mockErrorLogger);
+}
 
 function runAssetsPostProcessor(deploymentConfig: IDeploymentConfigStub = {}) {
   stubDeploymentConfig(deploymentConfig);
