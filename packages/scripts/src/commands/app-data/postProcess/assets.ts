@@ -4,8 +4,6 @@ import chalk from "chalk";
 import { Command } from "commander";
 import {
   generateFolderFlatMap,
-  isCountryLanguageCode,
-  listFolderNames,
   Logger,
   IContentsEntry,
   logOutput,
@@ -13,15 +11,18 @@ import {
   createTempDir,
   IContentsEntryHashmap,
   kbToMB,
-  isThemeAssetsFolderName,
-  getThemeNameFromThemeAssetFolderName,
   setNestedProperty,
   replicateDir,
   sortJsonKeys,
+  getNestedProperty,
 } from "../../../utils";
 import { ActiveDeployment } from "../../deployment/get";
 import type { IAssetEntryHashmap, IContentsEntryMinimal } from "data-models/deployment.model";
 
+/**
+ * Legacy folder used to differentiate language assets
+ * Any assets placed in this folder will be treated as parent-level
+ */
 const ASSETS_GLOBAL_FOLDER_NAME = "global";
 
 /***************************************************************************************
@@ -92,7 +93,7 @@ export class AssetsPostProcessor {
     if (fs.existsSync(missingTarget)) fs.removeSync(missingTarget);
     if (Object.keys(missingEntries).length > 0) {
       logWarning({
-        msg1: "Translated assets found without corresponding global",
+        msg1: "Assets overrride found without corresponding entry",
         msg2: Object.keys(missingEntries).join("\n"),
       });
       fs.writeFileSync(missingTarget, JSON.stringify(sortJsonKeys(missingEntries), null, 2));
@@ -126,28 +127,25 @@ export class AssetsPostProcessor {
     const filtered: typeof sourceAssets = {};
     const { assets_filter_function } = this.activeDeployment.app_data;
     const { filter_language_codes } = this.activeDeployment.translations;
-    const { APP_THEMES } = this.activeDeployment.app_config;
-    // include global folder if filtering by language
-    if (filter_language_codes?.length > 0) {
-      filter_language_codes.push(ASSETS_GLOBAL_FOLDER_NAME);
-    }
+    const filter_theme_names = this.activeDeployment.app_config.APP_THEMES.available;
+
     // remove contents file from gdrive download
     delete sourceAssets["_contents.json"];
+
     // individual file filter function - includes global filter as well as language and theme filters
     function shouldInclude(entry: IContentsEntry) {
+      const assetPaths = entry.relativePath.split("/");
+      const assetLang = assetPaths.find((p) => (isCountryLanguageCode(p) ? p : false));
+      let assetTheme = assetPaths.find((p) => isThemeAssetsFolderName(p));
+      if (assetTheme) {
+        assetTheme = assetTheme.replace("theme_", "");
+      }
+
+      // filter based on language, theme or function
+      if (assetLang && !filter_language_codes.includes(assetLang)) return false;
+      if (assetTheme && !filter_theme_names.includes(assetTheme)) return false;
       if (assets_filter_function && !assets_filter_function(entry)) return false;
-      const [folderName, ...nestedPath] = entry.relativePath.split("/");
-      if (filter_language_codes?.length > 0 && isCountryLanguageCode(folderName)) {
-        return filter_language_codes.includes(folderName);
-      }
-      if (isThemeAssetsFolderName(folderName)) {
-        const themeName = getThemeNameFromThemeAssetFolderName(folderName);
-        if (!APP_THEMES.available.includes(themeName)) return false;
-        const languageFolder = nestedPath[0];
-        if (filter_language_codes?.length > 0 && isCountryLanguageCode(languageFolder)) {
-          return filter_language_codes.includes(languageFolder);
-        }
-      }
+
       return true;
     }
     // process files
@@ -216,7 +214,6 @@ export class AssetsPostProcessor {
       tracked: {},
       untracked: {},
     };
-
     // split assets to separate global, translated and theme assets
     Object.entries(sourceAssets).forEach(([relativePath, entry]) => {
       const assetEntry = this.contentsToAssetEntry(entry);
@@ -229,12 +226,14 @@ export class AssetsPostProcessor {
       let overridePath = "";
 
       // Remove additional nesting for default lang and theme folders
-      assetPathName = assetPathName.replace(`global/`, "").replace(`theme_default/`, "");
+      assetPathName = assetPathName
+        .replace(`${ASSETS_GLOBAL_FOLDER_NAME}/`, "")
+        .replace(`theme_default/`, "");
 
       // If using overrides ensure both theme and language provided, and place in corresponding folder
       if (themeVariation || langVariation) {
         themeVariation ??= "theme_default";
-        langVariation ??= "global";
+        langVariation ??= ASSETS_GLOBAL_FOLDER_NAME;
         // Replace override segments to leave named asset segment path
         assetPathName = assetPathName
           .replace(`${themeVariation}/`, "")
@@ -246,6 +245,12 @@ export class AssetsPostProcessor {
       // Provide explicit path to file when not same as entry name (e.g. overrides)
       if (entry.relativePath !== assetPathName) {
         assetEntry.filePath = relativePath;
+      }
+      if (getNestedProperty(entries.tracked[assetPathName], overridePath)) {
+        Logger.error({
+          msg1: "Duplicate overrides detected",
+          msg2: `${assetPathName} [${themeVariation}] [${langVariation}]`,
+        });
       }
 
       // Merge overrides or top-level asset data into main entries
@@ -271,6 +276,24 @@ export class AssetsPostProcessor {
     const { md5Checksum, size_kb } = entry;
     return { size_kb, md5Checksum };
   }
+}
+
+/**
+ * Check whether a string matches the expected format for the
+ * name of a folder containing theme-specific assets.
+ * Currently expects name to begin 'theme_'
+ */
+function isThemeAssetsFolderName(str: string) {
+  return str.startsWith("theme_");
+}
+
+/**
+ * Simple regex to try and match standard country-language format
+ * Currently restricted to any codes in the format `ab_ab` or `ab_abc`
+ */
+function isCountryLanguageCode(str: string) {
+  const regex = /^[a-z]{2}_[a-z]{2,3}$/gi;
+  return regex.test(str);
 }
 
 interface IAssetEntriesByType {
