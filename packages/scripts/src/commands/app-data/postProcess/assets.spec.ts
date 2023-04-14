@@ -112,7 +112,7 @@ describe("Assets PostProcess", () => {
       "test.jpg": mockFile,
       tz_sw: { "test.jpg": mockFile },
     });
-    runAssetsPostProcessor();
+    runAssetsPostProcessor({ filter_language_codes: ["tz_sw"] });
     const contents = readAppAssetContents();
     const assetEntry = contents["test.jpg"];
     expect(assetEntry.overrides["theme_default"]).toEqual({
@@ -204,7 +204,7 @@ describe("Assets PostProcess", () => {
     });
     runAssetsPostProcessor({
       filter_language_codes: ["tz_sw"],
-      app_themes_available: ["theme_test"],
+      app_themes_available: ["test"],
     });
     const contents = readAppAssetContents();
     expect(contents).toEqual({
@@ -226,31 +226,59 @@ describe("Assets PostProcess", () => {
   // it("supports inline theme and lang files", () => {});
 
   /** QA tests */
-  // TODO - will require refactoring warning like error logger
+  it("throws error on duplicate overrides", () => {
+    const errorLogger = useMockErrorLogger();
+    mockLocalAssets({
+      "test.jpg": mockFile,
+      theme_test: {
+        tz_sw: { "test.jpg": mockFile },
+      },
+      tz_sw: {
+        theme_test: { "test.jpg": mockFile },
+      },
+    });
+    runAssetsPostProcessor({
+      filter_language_codes: ["tz_sw"],
+      app_themes_available: ["test"],
+    });
+    expect(errorLogger).toHaveBeenCalledOnceWith({
+      msg1: "Duplicate overrides detected",
+      msg2: "test.jpg [theme_test] [tz_sw]",
+    });
+  });
 
-  // it("Warns on untracked assets", () => {
-  //   expect(false).toEqual(true);
-  // });
+  /**
+  
+  it("Warns if overrides have no source target",()=>{
+    // TODO - will require processing all non-overrides first
+  })
 
-  // it("Warns on too large assets ", () => {
-  //   expect(false).toEqual(true);
-  // });
+  it("Warns on untracked assets", () => {
+    // TODO - will require refactoring warning like error logger
+  });
 
-  // it("warns on untracked assets", () => {
-  //   const { localAssets } = mockDirs;
-  //   const untrackedPath = path.resolve(localAssets, "tz_sw", "untracked.jpg");
-  //   fs.writeFileSync(untrackedPath, mockFile);
-  //   runAssetsPostProcessor();
-  //   expect(mockWarningLogger).toHaveBeenCalledWith({
-  //     msg1: "Translated assets found without corresponding global",
-  //     msg2: "untracked.jpg",
-  //   });
-  // });
+  it("Warns on too large assets ", () => {
+    // TODO - will require refactoring warning like error logger
+  });
+
+  it("warns on untracked assets", () => {
+    const { localAssets } = mockDirs;
+    const untrackedPath = path.resolve(localAssets, "tz_sw", "untracked.jpg");
+    fs.writeFileSync(untrackedPath, mockFile);
+    runAssetsPostProcessor();
+    expect(mockWarningLogger).toHaveBeenCalledWith({
+      msg1: "Translated assets found without corresponding global",
+      msg2: "untracked.jpg",
+    });
+  });
+
+   */
 });
 
 /** Replace runtime error logger with mock that can be inspected in tests */
 function useMockErrorLogger() {
   spyOn(Logger, "error").and.callFake(mockErrorLogger);
+  return mockErrorLogger;
 }
 
 function runAssetsPostProcessor(deploymentConfig: IDeploymentConfigStub = {}) {
