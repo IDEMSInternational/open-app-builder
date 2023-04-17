@@ -1,0 +1,28 @@
+{
+  "flow_type": "data_list",
+  "flow_name": "combo_box_options",
+  "status": "released",
+  "rows": [
+    {
+      "id": "option_1",
+      "name": "option_1",
+      "text": "@data.@fields.current_data.option_1.@fields.current_row_id"
+    },
+    {
+      "id": "option_2",
+      "name": "option_2",
+      "text": "@data.@fields.current_data.option_2.@fields.current_row_id"
+    },
+    {
+      "id": "option_3",
+      "name": "option_3",
+      "text": "@data.@fields.current_data.option_3.@fields.current_row_id"
+    },
+    {
+      "id": "option_4",
+      "name": "option_4",
+      "text": "@data.@fields.current_data.option_4.@fields.current_row_id"
+    }
+  ],
+  "_xlsxPath": "global/templates/core_templates/topic_activity.xlsx"
+}
