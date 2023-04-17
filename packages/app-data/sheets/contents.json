@@ -304,6 +304,18 @@
       "flow_subtype": "component_demo",
       "_xlsxPath": "quality_assurance/component_sheets/component_radio_button_grid.xlsx"
     },
+    "comp_title_grid_data": {
+      "flow_type": "data_list",
+      "flow_name": "comp_title_grid_data",
+      "flow_subtype": "component_demo",
+      "_xlsxPath": "quality_assurance/component_sheets/component_title_grid.xlsx"
+    },
+    "comp_title_grid_params": {
+      "flow_type": "data_list",
+      "flow_name": "comp_title_grid_params",
+      "flow_subtype": "component_demo",
+      "_xlsxPath": "quality_assurance/component_sheets/component_title_grid.xlsx"
+    },
     "covid_data_list": {
       "flow_type": "data_list",
       "flow_name": "covid_data_list",
@@ -2248,6 +2260,12 @@
       "flow_name": "comp_title",
       "flow_subtype": "component_demo",
       "_xlsxPath": "quality_assurance/component_sheets/component_title.xlsx"
+    },
+    "comp_title_grid": {
+      "flow_type": "template",
+      "flow_name": "comp_title_grid",
+      "flow_subtype": "component_demo",
+      "_xlsxPath": "quality_assurance/component_sheets/component_title_grid.xlsx"
     },
     "comp_toggle_bar": {
       "flow_type": "template",

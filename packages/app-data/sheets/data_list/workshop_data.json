@@ -218,12 +218,7 @@
           "za_zu": true
         },
         "caregiver_testimonial_script": {},
-        "teen_testimonial_script": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true
-        }
+        "teen_testimonial_script": {}
       },
       "_translatedFields": {
         "title": {
@@ -248,7 +243,7 @@
           "eng": "When we learned about this praising thing I thought, “We were never praised for things as teenagers, so why should we start now?” But I got interested when I learned what the benefits of praising could be.\n\nRight after the weekly workshop, I noticed my teen doing what they do every day: washing the dishes. And I said “Thank you for washing the dishes, my girl, it really makes me happy that you are helping out.” My teen was smiling and she even came to give me a hug, which she never does.\n\nThis praising business is hard. I still forget sometimes or give praise at the same time as criticism. But praising really makes a difference. I never thought that a simple praise could make such a change in a person!"
         },
         "teen_testimonial_script": {
-          "eng": "I was grateful that my mother learned about praise. \n\nMy mother always noticed when I was doing something wrong. She would shout at me and hit me. \n\nBut when my mother did the workshop, she would praise me for little things. First I thought “What is going on?” but then it continued. I liked it so I did more good things I thought she would like. \n\nIt feels great that my mother sees the good things I do, and not just the bad things.\n\nI even said it to her once. During @data.workshop.w_1on1.title, I said “Thank you, mom, for saying something nice when I do things well, not only when I do things wrong.” This made us both very happy."
+          "eng": "I was grateful that my mother learned about praise. \n\nMy mother always noticed when I was doing something wrong. She would shout at me and hit me. \n\nBut when my mother did the workshop, she would praise me for little things. First I thought “What is going on?” but then it continued. I liked it so I did more good things I thought she would like. \n\nIt feels great that my mother sees the good things I do, and not just the bad things.\n\nI even said it to her once. During @data.workshop.w_1on1.lower_case_title, I said “Thank you, mom, for saying something nice when I do things well, not only when I do things wrong.” This made us both very happy."
         }
       },
       "lower_case_title": "praise",
@@ -257,7 +252,7 @@
       "intro_title": "Why praise?",
       "tools": "How to praise",
       "caregiver_testimonial_script": "When we learned about this praising thing I thought, “We were never praised for things as teenagers, so why should we start now?” But I got interested when I learned what the benefits of praising could be.\n\nRight after the weekly workshop, I noticed my teen doing what they do every day: washing the dishes. And I said “Thank you for washing the dishes, my girl, it really makes me happy that you are helping out.” My teen was smiling and she even came to give me a hug, which she never does.\n\nThis praising business is hard. I still forget sometimes or give praise at the same time as criticism. But praising really makes a difference. I never thought that a simple praise could make such a change in a person!",
-      "teen_testimonial_script": "I was grateful that my mother learned about praise. \n\nMy mother always noticed when I was doing something wrong. She would shout at me and hit me. \n\nBut when my mother did the workshop, she would praise me for little things. First I thought “What is going on?” but then it continued. I liked it so I did more good things I thought she would like. \n\nIt feels great that my mother sees the good things I do, and not just the bad things.\n\nI even said it to her once. During @data.workshop.w_1on1.title, I said “Thank you, mom, for saying something nice when I do things well, not only when I do things wrong.” This made us both very happy."
+      "teen_testimonial_script": "I was grateful that my mother learned about praise. \n\nMy mother always noticed when I was doing something wrong. She would shout at me and hit me. \n\nBut when my mother did the workshop, she would praise me for little things. First I thought “What is going on?” but then it continued. I liked it so I did more good things I thought she would like. \n\nIt feels great that my mother sees the good things I do, and not just the bad things.\n\nI even said it to her once. During @data.workshop.w_1on1.lower_case_title, I said “Thank you, mom, for saying something nice when I do things well, not only when I do things wrong.” This made us both very happy."
     },
     {
       "id": "w_instruct",

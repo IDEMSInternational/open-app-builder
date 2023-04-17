@@ -284,14 +284,7 @@
           "za_xh": true,
           "za_zu": true
         },
-        "reply_ok": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        },
+        "reply_ok": {},
         "reply_sad": {
           "tz_sw": true
         },
@@ -315,7 +308,7 @@
           "eng": "Great! So good to hear that you are in a good space today. What a wonderful feeling!"
         },
         "reply_ok": {
-          "eng": "Sometimes things go great. Sometimes they don't. And sometimes we don't quite know what to think... and that's totally okay! Remember that you are not alone."
+          "eng": "Sometimes things go great. Sometimes they do not. And sometimes we do not quite know what to think... and that is totally okay! Remember that you are not alone."
         },
         "reply_sad": {
           "eng": "Sorry that things are hard right now. You deserve good things, and @global.parent_app is here to support you every step of the way."
@@ -331,7 +324,7 @@
         }
       },
       "reply_happy": "Great! So good to hear that you are in a good space today. What a wonderful feeling!",
-      "reply_ok": "Sometimes things go great. Sometimes they don't. And sometimes we don't quite know what to think... and that's totally okay! Remember that you are not alone.",
+      "reply_ok": "Sometimes things go great. Sometimes they do not. And sometimes we do not quite know what to think... and that is totally okay! Remember that you are not alone.",
       "reply_sad": "Sorry that things are hard right now. You deserve good things, and @global.parent_app is here to support you every step of the way.",
       "activity_title": "Welcome, @fields.user_name!",
       "intro_text": "It is great to see you again!",
@@ -425,9 +418,7 @@
         "reply_ok": {
           "tz_sw": true
         },
-        "reply_sad": {
-          "tz_sw": true
-        },
+        "reply_sad": {},
         "activity_title": {},
         "intro_text": {},
         "question_text": {
@@ -451,7 +442,7 @@
           "eng": "Well done for recognising that you are not feeling great. Be kind to yourself, you deserve it."
         },
         "reply_sad": {
-          "eng": "Well done for recognising a difficult feeling. It’s okay not to be okay sometimes. Remember @global.parent_app is here to support you."
+          "eng": "Well done for recognising a difficult feeling. It is okay not to be okay sometimes. Remember @global.parent_app is here to support you."
         },
         "activity_title": {
           "eng": "Welcome, @fields.user_name!"
@@ -465,7 +456,7 @@
       },
       "reply_happy": "Well done for recognising a positive feeling. I am happy to hear you are feeling well today!",
       "reply_ok": "Well done for recognising that you are not feeling great. Be kind to yourself, you deserve it.",
-      "reply_sad": "Well done for recognising a difficult feeling. It’s okay not to be okay sometimes. Remember @global.parent_app is here to support you.",
+      "reply_sad": "Well done for recognising a difficult feeling. It is okay not to be okay sometimes. Remember @global.parent_app is here to support you.",
       "activity_title": "Welcome, @fields.user_name!",
       "intro_text": "It is great to see you again!",
       "question_text": "How are you feeling today?"
