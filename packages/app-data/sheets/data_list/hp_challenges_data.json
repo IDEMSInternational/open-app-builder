@@ -147,14 +147,7 @@
           "za_xh": true,
           "za_zu": true
         },
-        "reply_challenge_4": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        },
+        "reply_challenge_4": {},
         "text_challenge_5": {
           "tz_sw": true,
           "za_af": true,
@@ -163,14 +156,7 @@
           "za_xh": true,
           "za_zu": true
         },
-        "reply_challenge_5": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        },
+        "reply_challenge_5": {},
         "top_text": {
           "tz_sw": true
         }
@@ -201,13 +187,13 @@
           "eng": "When I shared my feelings, my teen asked many questions, which made me uncomfortable."
         },
         "reply_challenge_4": {
-          "eng": "Sharing feelings helps your teen to be aware and learn to do the same. You can choose how much detail you want to share about the situation. It’s up to you! You can also choose to answer questions later by saying, “I am feeling angry/stressed now. Could you please give me some time? We can talk about this more tonight”."
+          "eng": "Sharing feelings helps your teen to be aware and learn to do the same. You can choose how much detail you want to share about the situation. It is up to you! You can also choose to answer questions later by saying, “I am feeling angry/stressed now. Could you please give me some time? We can talk about this more tonight.”"
         },
         "text_challenge_5": {
           "eng": "I was too stressed or angry to try sharing my feelings – I prefer to be alone when I feel like that."
         },
         "reply_challenge_5": {
-          "eng": "It’s okay to not want to share at that time. Find some time to explain later, when you feel calmer, so that everyone can understand."
+          "eng": "It is okay to not want to share at that time. Find some time to explain later, when you feel calmer, so that everyone can understand."
         },
         "top_text": {
           "eng": "Challenges other parents experience:"
@@ -220,9 +206,9 @@
       "text_challenge_3": "My teen felt uncomfortable when I shared my feelings.",
       "reply_challenge_3": "Starting a new thing is always difficult at first. Give yourselves some time to get used to it and keep showing a good example by observing and sharing your feelings. Over time, your teen will learn to do the same, and they will feel even more loved and cared for!",
       "text_challenge_4": "When I shared my feelings, my teen asked many questions, which made me uncomfortable.",
-      "reply_challenge_4": "Sharing feelings helps your teen to be aware and learn to do the same. You can choose how much detail you want to share about the situation. It’s up to you! You can also choose to answer questions later by saying, “I am feeling angry/stressed now. Could you please give me some time? We can talk about this more tonight”.",
+      "reply_challenge_4": "Sharing feelings helps your teen to be aware and learn to do the same. You can choose how much detail you want to share about the situation. It is up to you! You can also choose to answer questions later by saying, “I am feeling angry/stressed now. Could you please give me some time? We can talk about this more tonight.”",
       "text_challenge_5": "I was too stressed or angry to try sharing my feelings – I prefer to be alone when I feel like that.",
-      "reply_challenge_5": "It’s okay to not want to share at that time. Find some time to explain later, when you feel calmer, so that everyone can understand.",
+      "reply_challenge_5": "It is okay to not want to share at that time. Find some time to explain later, when you feel calmer, so that everyone can understand.",
       "top_text": "Challenges other parents experience:"
     },
     {
@@ -247,14 +233,7 @@
           "za_xh": true,
           "za_zu": true
         },
-        "reply_challenge_1": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        },
+        "reply_challenge_1": {},
         "text_challenge_2": {
           "tz_sw": true,
           "za_af": true,
@@ -279,14 +258,7 @@
           "za_xh": true,
           "za_zu": true
         },
-        "reply_challenge_3": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        },
+        "reply_challenge_3": {},
         "button_text_3_a": {},
         "text_challenge_4": {
           "tz_sw": true,
@@ -316,7 +288,7 @@
           "eng": "I did not want to tell my family how much I earn."
         },
         "reply_challenge_1": {
-          "eng": "You don’t have to reveal the exact amount you earn; you could give an estimate. You could say, “In this household, we have @global.currency@global.monthly_income_estimate every month” rather than, “I make @global.currency@global.monthly_income_precise”."
+          "eng": "You do not have to reveal the exact amount you earn; you could give an estimate. You could say, “In this household, we have @global.currency@global.monthly_income_estimate every month” rather than, “I make @global.currency@global.monthly_income_precise”."
         },
         "text_challenge_2": {
           "eng": "When budgeting, we could not agree on what should fall under needs and what should fall under wants."
@@ -328,7 +300,7 @@
           "eng": "I did not understand what to do."
         },
         "reply_challenge_3": {
-          "eng": "I’m sorry to hear this. I know it can be difficult! Why don’t we go through it again? Your teen or other family members can join and help you!"
+          "eng": "I am sorry to hear this. I know it can be difficult! Why don’t we go through it again? Your teen or other family members can join and help you!"
         },
         "button_text_3_a": {
           "eng": "@data.workshop.w_money.tools"
@@ -344,11 +316,11 @@
         }
       },
       "text_challenge_1": "I did not want to tell my family how much I earn.",
-      "reply_challenge_1": "You don’t have to reveal the exact amount you earn; you could give an estimate. You could say, “In this household, we have @global.currency@global.monthly_income_estimate every month” rather than, “I make @global.currency@global.monthly_income_precise”.",
+      "reply_challenge_1": "You do not have to reveal the exact amount you earn; you could give an estimate. You could say, “In this household, we have @global.currency@global.monthly_income_estimate every month” rather than, “I make @global.currency@global.monthly_income_precise”.",
       "text_challenge_2": "When budgeting, we could not agree on what should fall under needs and what should fall under wants.",
       "reply_challenge_2": "People’s wants and needs are different sometimes. Talking about them together can help you and your teen to understand each other, respect your differences, and see where you can compromise.",
       "text_challenge_3": "I did not understand what to do.",
-      "reply_challenge_3": "I’m sorry to hear this. I know it can be difficult! Why don’t we go through it again? Your teen or other family members can join and help you!",
+      "reply_challenge_3": "I am sorry to hear this. I know it can be difficult! Why don’t we go through it again? Your teen or other family members can join and help you!",
       "button_text_3_a": "@data.workshop.w_money.tools",
       "text_challenge_4": "My teen did not want to do the budgeting with me.",
       "reply_challenge_4": "Try making the budget with other adults in your home first. Your teen may get interested in what you are doing. \n\nMaking a budget may sound serious but try to make it fun – make it a game during one-on-one time! Or you can try to make the budget for @global.w_money_grandma first. \n\nRemember to praise them when you are done!",

@@ -126,7 +126,14 @@
         "title": {
           "tz_sw": true
         },
-        "intro_text": {},
+        "intro_text": {
+          "tz_sw": true,
+          "za_af": true,
+          "za_st": true,
+          "za_tn": true,
+          "za_xh": true,
+          "za_zu": true
+        },
         "text_1": {
           "tz_sw": true
         },
@@ -153,7 +160,7 @@
           "eng": "Positive instructions"
         },
         "intro_text": {
-          "eng": "Thank you for reading along! \n\nLet’s go back in time and see what happens if @global.w_instruct_female_caregiver gives a positive instruction:"
+          "eng": "Thank you for thinking along! \n\nLet’s go back in time and see what happens if @global.w_instruct_female_caregiver gives a positive instruction:"
         },
         "text_1": {
           "eng": "@global.w_instruct_female_caregiver was cleaning the house while @global.w_instruct_teen_girl was practising dance moves with her friend.  \n\n@global.w_instruct_female_caregiver: “@global.w_instruct_teen_girl, it is nice to see you practise dance moves with your friend. Please take it outside so I can finish cleaning the house. Afterwards, you can show me your dance.\""
@@ -171,7 +178,7 @@
           "eng": "@global.w_instruct_female_caregiver: \"Wow, @global.w_instruct_teen_girl! You have such good dance moves!\""
         }
       },
-      "intro_text": "Thank you for reading along! \n\nLet’s go back in time and see what happens if @global.w_instruct_female_caregiver gives a positive instruction:",
+      "intro_text": "Thank you for thinking along! \n\nLet’s go back in time and see what happens if @global.w_instruct_female_caregiver gives a positive instruction:",
       "text_1": "@global.w_instruct_female_caregiver was cleaning the house while @global.w_instruct_teen_girl was practising dance moves with her friend.  \n\n@global.w_instruct_female_caregiver: “@global.w_instruct_teen_girl, it is nice to see you practise dance moves with your friend. Please take it outside so I can finish cleaning the house. Afterwards, you can show me your dance.\"",
       "text_2": "@global.w_instruct_teen_girl: “Okay, @global.w_instruct_female_caregiver!”",
       "text_3": "@global.w_instruct_teen_girl and her friend enjoy practising their dance moves.",
@@ -309,14 +316,7 @@
           "za_xh": true,
           "za_zu": true
         },
-        "text_3": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        },
+        "text_3": {},
         "text_4": {
           "tz_sw": true,
           "za_af": true,
@@ -348,7 +348,7 @@
           "eng": "@global.w_stress_teen_boy_1: “Can I have money to buy some airtime?”  \n\n@global.w_stress_male_caregiver (taking a breath): “I’m sorry son. I had a difficult day today. The boss fired me.”"
         },
         "text_3": {
-          "eng": "@global.w_stress_teen_boy_1: “Oh no!  I need a new school uniform.”  \n\n@global.w_stress_male_caregiver: “I’ll try, son, And your @global.w_stress_female_caregiver’s job will help us get by while I look for another job.”"
+          "eng": "@global.w_stress_teen_boy_1: “Oh no!  I need a new school uniform.”  \n\n@global.w_stress_male_caregiver: “I’ll try, son, and your @global.w_stress_female_caregiver’s job will help us get by while I look for another job.”"
         },
         "text_4": {
           "eng": "@global.w_stress_teen_boy_1: “I can help out with looking for work, too, @global.w_stress_male_caregiver?”  \n\n@global.w_stress_male_caregiver: “No it’s okay, @global.w_stress_teen_boy_1. I appreciate your offer. The most important thing is that you work hard at school. Thanks for listening to me.”"
@@ -360,7 +360,7 @@
       "intro_text": "Thank you for thinking along! Let’s go back in time and see what @global.w_stress_male_caregiver does now:",
       "text_1": "@global.w_stress_male_caregiver lost his job. He was sitting at home feeling frustrated and stressed, when @global.w_stress_teen_boy_1 entered.",
       "text_2": "@global.w_stress_teen_boy_1: “Can I have money to buy some airtime?”  \n\n@global.w_stress_male_caregiver (taking a breath): “I’m sorry son. I had a difficult day today. The boss fired me.”",
-      "text_3": "@global.w_stress_teen_boy_1: “Oh no!  I need a new school uniform.”  \n\n@global.w_stress_male_caregiver: “I’ll try, son, And your @global.w_stress_female_caregiver’s job will help us get by while I look for another job.”",
+      "text_3": "@global.w_stress_teen_boy_1: “Oh no!  I need a new school uniform.”  \n\n@global.w_stress_male_caregiver: “I’ll try, son, and your @global.w_stress_female_caregiver’s job will help us get by while I look for another job.”",
       "text_4": "@global.w_stress_teen_boy_1: “I can help out with looking for work, too, @global.w_stress_male_caregiver?”  \n\n@global.w_stress_male_caregiver: “No it’s okay, @global.w_stress_teen_boy_1. I appreciate your offer. The most important thing is that you work hard at school. Thanks for listening to me.”",
       "text_5": "@global.w_stress_male_caregiver: “Let’s play some soccer together. It will help me get this stress off my mind for a bit.”  \n\n@global.w_stress_teen_boy_1: “Okay, @global.w_stress_male_caregiver!”"
     },
@@ -377,41 +377,11 @@
       "title": "@global.safety_word",
       "_translations": {
         "title": {},
-        "intro_text": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        },
-        "text_1": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        },
-        "text_2": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        },
-        "text_3": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        },
-        "text_4": {
-          "tz_sw": true
-        },
+        "intro_text": {},
+        "text_1": {},
+        "text_2": {},
+        "text_3": {},
+        "text_4": {},
         "text_5": {
           "tz_sw": true
         },
@@ -424,19 +394,19 @@
           "eng": "@global.safety_word"
         },
         "intro_text": {
-          "eng": "Think back to when you were a teenager. \n\nWas there ever a time when you were in danger but you couldn’t tell your family because they would have been angry?\n\nThis ALMOST happened to @global.w_stress_teen_boy_2 and @global.w_stress_teen_girl! Let’s have a look:"
+          "eng": "Think back to when you were a teenager. \n\nWas there ever a time when you were in danger but you could not tell your family because they would have been angry?\n\nThis ALMOST happened to @global.w_stress_teen_boy_2 and @global.w_stress_teen_girl! Let’s have a look:"
         },
         "text_1": {
-          "eng": "@global.w_stress_teen_boy_2: \"Don’t tell the adults, but I’m going to bar with my friends tonight\" \n\n@global.w_stress_teen_girl: \"Have fun! I’ve told them I’m staying with my girlfriend, but I’m actually going to a cool party\""
+          "eng": "@global.w_stress_teen_boy_2: \"Don’t tell the adults, but I am going to bar with my friends tonight\" \n\n@global.w_stress_teen_girl: \"Have fun! I have told them I am staying with my girlfriend, but I am actually going to a cool party.\""
         },
         "text_2": {
-          "eng": "@global.w_stress_teen_boy_2: \"I think they are dealing drugs. We could all get arrested. But I can’t tell my parents – they’ll be so angry\""
+          "eng": "@global.w_stress_teen_boy_2: \"I think they are dealing drugs. We could all get arrested. But I can’t tell my parents – they will be so angry!\""
         },
         "text_3": {
-          "eng": "@global.w_stress_teen_girl: \"I’m scared. Everyone is too drunk to drive me home. This boy says he’ll take me but he wants us to go to his house first. I can’t tell my parents – I lied about coming to this party.\""
+          "eng": "@global.w_stress_teen_girl: \"I am scared. Everyone is too drunk to drive me home. This boy says he will take me but he wants us to go to his house first. I can’t tell my parents – I lied about coming to this party.\""
         },
         "text_4": {
-          "eng": "These are dangerous situations! Thankfully, @global.w_stress_teen_boy_2 and @global.w_stress_teen_girl then remembered what @global.w_stress_parent told them:  \n\n\"I care about your safety more than anything. If you are ever upset, or scared, you can always call me for help, or tell me about it. \n\nShall we use an imaginary ‘@global.safety_word_example_1’ as @global.safety_word? Just say something about @global.safety_word_example_1, I promise that I will try my best to help and I won’t be angry – even if you are doing something you shouldn’t.\""
+          "eng": "These are dangerous situations! Thankfully, @global.w_stress_teen_boy_2 and @global.w_stress_teen_girl then remembered what @global.w_stress_parent told them:  \n\n\"I care about your safety more than anything. If you are ever upset, or scared, you can always call me for help, or tell me about it. \n\nShall we use an imaginary ‘@global.safety_word_example_1’ as @global.safety_word? Just say something about @global.safety_word_example_1, I promise that I will try my best to help and I will not be angry – even if you are doing something you should not.\""
         },
         "text_5": {
           "eng": "@global.w_stress_teen_girl: \"@global.w_stress_parent, how is @global.safety_word_example_1 doing now?\"\n\n@global.w_stress_parent (on the other side of the phone): \"Not well. We need you at home. I will come pick you up right away. Where are you?\""
@@ -445,11 +415,11 @@
           "eng": "@global.w_stress_teen_boy_2 (thinking): \"I think my friends are in trouble. I don’t want to stop being their friend, but I’m worried. Maybe @global.w_stress_parent knows what to do.\"\n\n@global.w_stress_teen_boy_2: \"@global.w_stress_parent, I just remembered, @global.safety_word_example_1 said she will come visit tomorrow.\"\n\n@global.w_stress_parent (on the other side of the phone): \"Okay, I need you at home to help get things ready. I will come pick you up now. Where are you?\""
         }
       },
-      "intro_text": "Think back to when you were a teenager. \n\nWas there ever a time when you were in danger but you couldn’t tell your family because they would have been angry?\n\nThis ALMOST happened to @global.w_stress_teen_boy_2 and @global.w_stress_teen_girl! Let’s have a look:",
-      "text_1": "@global.w_stress_teen_boy_2: \"Don’t tell the adults, but I’m going to bar with my friends tonight\" \n\n@global.w_stress_teen_girl: \"Have fun! I’ve told them I’m staying with my girlfriend, but I’m actually going to a cool party\"",
-      "text_2": "@global.w_stress_teen_boy_2: \"I think they are dealing drugs. We could all get arrested. But I can’t tell my parents – they’ll be so angry\"",
-      "text_3": "@global.w_stress_teen_girl: \"I’m scared. Everyone is too drunk to drive me home. This boy says he’ll take me but he wants us to go to his house first. I can’t tell my parents – I lied about coming to this party.\"",
-      "text_4": "These are dangerous situations! Thankfully, @global.w_stress_teen_boy_2 and @global.w_stress_teen_girl then remembered what @global.w_stress_parent told them:  \n\n\"I care about your safety more than anything. If you are ever upset, or scared, you can always call me for help, or tell me about it. \n\nShall we use an imaginary ‘@global.safety_word_example_1’ as @global.safety_word? Just say something about @global.safety_word_example_1, I promise that I will try my best to help and I won’t be angry – even if you are doing something you shouldn’t.\"",
+      "intro_text": "Think back to when you were a teenager. \n\nWas there ever a time when you were in danger but you could not tell your family because they would have been angry?\n\nThis ALMOST happened to @global.w_stress_teen_boy_2 and @global.w_stress_teen_girl! Let’s have a look:",
+      "text_1": "@global.w_stress_teen_boy_2: \"Don’t tell the adults, but I am going to bar with my friends tonight\" \n\n@global.w_stress_teen_girl: \"Have fun! I have told them I am staying with my girlfriend, but I am actually going to a cool party.\"",
+      "text_2": "@global.w_stress_teen_boy_2: \"I think they are dealing drugs. We could all get arrested. But I can’t tell my parents – they will be so angry!\"",
+      "text_3": "@global.w_stress_teen_girl: \"I am scared. Everyone is too drunk to drive me home. This boy says he will take me but he wants us to go to his house first. I can’t tell my parents – I lied about coming to this party.\"",
+      "text_4": "These are dangerous situations! Thankfully, @global.w_stress_teen_boy_2 and @global.w_stress_teen_girl then remembered what @global.w_stress_parent told them:  \n\n\"I care about your safety more than anything. If you are ever upset, or scared, you can always call me for help, or tell me about it. \n\nShall we use an imaginary ‘@global.safety_word_example_1’ as @global.safety_word? Just say something about @global.safety_word_example_1, I promise that I will try my best to help and I will not be angry – even if you are doing something you should not.\"",
       "text_5": "@global.w_stress_teen_girl: \"@global.w_stress_parent, how is @global.safety_word_example_1 doing now?\"\n\n@global.w_stress_parent (on the other side of the phone): \"Not well. We need you at home. I will come pick you up right away. Where are you?\"",
       "text_6": "@global.w_stress_teen_boy_2 (thinking): \"I think my friends are in trouble. I don’t want to stop being their friend, but I’m worried. Maybe @global.w_stress_parent knows what to do.\"\n\n@global.w_stress_teen_boy_2: \"@global.w_stress_parent, I just remembered, @global.safety_word_example_1 said she will come visit tomorrow.\"\n\n@global.w_stress_parent (on the other side of the phone): \"Okay, I need you at home to help get things ready. I will come pick you up now. Where are you?\""
     },
@@ -479,14 +449,7 @@
           "za_xh": true,
           "za_zu": true
         },
-        "text_2": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        }
+        "text_2": {}
       },
       "_translatedFields": {
         "title": {
@@ -499,12 +462,12 @@
           "eng": "@global.w_money_grandma: \"I have been taking care of my grandchildren, @global.w_money_teen_girl and @global.w_money_teen_boy, since their parents died when they were young. We often struggle with money, as I only receive a small grant.\""
         },
         "text_2": {
-          "eng": "@global.w_money_grandma: \"I am so stressed. I don’t have any money left. And now I’m fighting with my teens over things they want – again.\""
+          "eng": "@global.w_money_grandma: \"I am so stressed. I don’t have any money left. And now I am fighting with my teens over things they want – again.\""
         }
       },
       "intro_text": "It can be hard to make ends meet every month. Many families have this problem! \n\nIncluding @global.w_money_grandma - let's have a look:",
       "text_1": "@global.w_money_grandma: \"I have been taking care of my grandchildren, @global.w_money_teen_girl and @global.w_money_teen_boy, since their parents died when they were young. We often struggle with money, as I only receive a small grant.\"",
-      "text_2": "@global.w_money_grandma: \"I am so stressed. I don’t have any money left. And now I’m fighting with my teens over things they want – again.\""
+      "text_2": "@global.w_money_grandma: \"I am so stressed. I don’t have any money left. And now I am fighting with my teens over things they want – again.\""
     },
     {
       "id": "money_plan",
@@ -527,14 +490,7 @@
           "za_xh": true,
           "za_zu": true
         },
-        "text_1": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        },
+        "text_1": {},
         "text_2": {
           "tz_sw": true,
           "za_af": true,
@@ -551,14 +507,7 @@
           "za_xh": true,
           "za_zu": true
         },
-        "text_4": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        },
+        "text_4": {},
         "text_5": {
           "tz_sw": true,
           "za_af": true,
@@ -576,7 +525,7 @@
           "eng": "Great work, you have completed the first 3 steps! \n\nLet's see how @global.w_money_grandma made a plan with her money, just like you are doing:"
         },
         "text_1": {
-          "eng": "\"I want the best future for my grandchildren, but I don’t know where to get the money. Loan sharks are dangerous and paying them back is so expensive. \n\nI should save, but that feels impossible!\""
+          "eng": "\"I want the best future for my grandchildren, but I do not know where to get the money.  Loan sharks are dangerous and paying them back is so expensive. \n\nI should save, but that feels impossible!\""
         },
         "text_2": {
           "eng": "\"My goal is to make sure my grandson can go to high school and my granddaughter can reach her dream of university. How can I save a lot of money with the little money I have?\""
@@ -585,17 +534,17 @@
           "eng": "\"I know - let’s start with a plan! First, let me make a budget – a plan for how I can save my money. Then I will save just a little bit of money at a time – I will even join a savings and loans group.\""
         },
         "text_4": {
-          "eng": "\"I should also speak with my grandchildren to choose things that we can spend just a little bit less on each week. They will help me think of things we want but don’t need.\""
+          "eng": "\"I should also speak with my grandchildren to choose things that we can spend just a little bit less on each week. They will help me think of things we want but do not need.\""
         },
         "text_5": {
           "eng": "A few years later:\n\n\"Look, we reached our dreams! I didn’t borrow any money from friends or loan sharks. By saving a tiny bit each week, I managed to pay for @global.w_money_teen_boy’s high school and save some money for @global.w_money_teen_girl’s university. I am so proud of this.”"
         }
       },
       "intro_text": "Great work, you have completed the first 3 steps! \n\nLet's see how @global.w_money_grandma made a plan with her money, just like you are doing:",
-      "text_1": "\"I want the best future for my grandchildren, but I don’t know where to get the money. Loan sharks are dangerous and paying them back is so expensive. \n\nI should save, but that feels impossible!\"",
+      "text_1": "\"I want the best future for my grandchildren, but I do not know where to get the money.  Loan sharks are dangerous and paying them back is so expensive. \n\nI should save, but that feels impossible!\"",
       "text_2": "\"My goal is to make sure my grandson can go to high school and my granddaughter can reach her dream of university. How can I save a lot of money with the little money I have?\"",
       "text_3": "\"I know - let’s start with a plan! First, let me make a budget – a plan for how I can save my money. Then I will save just a little bit of money at a time – I will even join a savings and loans group.\"",
-      "text_4": "\"I should also speak with my grandchildren to choose things that we can spend just a little bit less on each week. They will help me think of things we want but don’t need.\"",
+      "text_4": "\"I should also speak with my grandchildren to choose things that we can spend just a little bit less on each week. They will help me think of things we want but do not need.\"",
       "text_5": "A few years later:\n\n\"Look, we reached our dreams! I didn’t borrow any money from friends or loan sharks. By saving a tiny bit each week, I managed to pay for @global.w_money_teen_boy’s high school and save some money for @global.w_money_teen_girl’s university. I am so proud of this.”"
     },
     {
