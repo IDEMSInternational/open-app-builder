@@ -31,7 +31,6 @@ export class TmplParentPointBoxComponent
   lottie_src: string | null;
   video_src: string | null;
   windowWidth: number;
-  scaleFactor: number = 1;
   text: string | null;
   wasClicked: boolean = false;
   value: number | null = 0;
@@ -41,19 +40,14 @@ export class TmplParentPointBoxComponent
   showCelebrationAnimation = false;
   @HostListener("window:resize", ["$event"]) onResize(event) {
     this.windowWidth = event.target.innerWidth - 10;
-    this.getScaleFactor();
   }
 
-  @HostBinding("style.--scale-factor--point") get scale() {
-    return this.scaleFactor;
-  }
   constructor(private templateAssetService: TemplateAssetService) {
     super();
   }
 
   ngOnInit() {
     this.getParams();
-    this.getScaleFactor();
     if (this.lottie_src) {
       this.lottie_src = this.templateAssetService.getTranslatedAssetPath(this.lottie_src);
       this.animOptions = {
@@ -117,10 +111,5 @@ export class TmplParentPointBoxComponent
   async clickInfo(event) {
     event.stopPropagation();
     await this.triggerActions("info_click");
-  }
-
-  getScaleFactor(): number {
-    this.scaleFactor = this.windowWidth / 420 > 1 ? 1 : this.windowWidth / ((200 + 20) * 2);
-    return this.scaleFactor;
   }
 }
