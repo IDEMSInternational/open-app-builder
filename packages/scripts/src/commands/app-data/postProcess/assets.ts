@@ -140,9 +140,9 @@ export class AssetsPostProcessor {
       if (assetTheme) {
         assetTheme = assetTheme.replace("theme_", "");
       }
-
       // filter based on language, theme or function
-      if (assetLang && !filter_language_codes.includes(assetLang)) return false;
+      if (assetLang && filter_language_codes && !filter_language_codes.includes(assetLang))
+        return false;
       if (assetTheme && !filter_theme_names.includes(assetTheme)) return false;
       if (assets_filter_function && !assets_filter_function(entry)) return false;
 
@@ -250,6 +250,7 @@ export class AssetsPostProcessor {
         Logger.error({
           msg1: "Duplicate overrides detected",
           msg2: `${assetPathName} [${themeVariation}] [${langVariation}]`,
+          logOnly: true,
         });
       }
 
