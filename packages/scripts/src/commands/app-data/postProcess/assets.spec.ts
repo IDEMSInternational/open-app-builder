@@ -180,6 +180,27 @@ describe("Assets PostProcess", () => {
     ]);
   });
 
+  it("Includes all language assets by default", () => {
+    mockLocalAssets({
+      "test.jpg": mockFile,
+      tz_sw: { "test.jpg": mockFile },
+      ke_sw: { "test.jpg": mockFile },
+    });
+    runAssetsPostProcessor({ filter_language_codes: undefined });
+    const contents = readAppAssetContents();
+    expect(contents).toEqual({
+      "test.jpg": {
+        ...mockFileEntry,
+        overrides: {
+          theme_default: {
+            tz_sw: { ...mockFileEntry, filePath: "tz_sw/test.jpg" },
+            ke_sw: { ...mockFileEntry, filePath: "ke_sw/test.jpg" },
+          },
+        },
+      },
+    });
+  });
+
   it("Filters language assets", () => {
     mockLocalAssets({
       "test.jpg": mockFile,
@@ -244,6 +265,7 @@ describe("Assets PostProcess", () => {
     expect(errorLogger).toHaveBeenCalledOnceWith({
       msg1: "Duplicate overrides detected",
       msg2: "test.jpg [theme_test] [tz_sw]",
+      logOnly: true,
     });
   });
 
@@ -302,7 +324,7 @@ interface IDeploymentConfigStub {
  * Limited to just values referenced in the copy method
  **/
 function stubDeploymentConfig(stub: IDeploymentConfigStub = {}) {
-  const filter_language_codes = stub.filter_language_codes ?? [];
+  const filter_language_codes = stub.filter_language_codes;
   const assets_filter_function = stub.assets_filter_function
     ? stub.assets_filter_function
     : () => true;
