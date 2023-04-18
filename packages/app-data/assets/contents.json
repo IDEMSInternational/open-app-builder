@@ -1756,38 +1756,78 @@
     "md5Checksum": "b2baf969abbe27383327d1d82f6a644c"
   },
   "plh_images/logos/cwb.png": {
+    "size_kb": 135.5,
+    "md5Checksum": "f8089054824a65ada758d583e43f5e31"
+  },
+  "plh_images/logos/cwb_blue.png": {
     "size_kb": 56.3,
     "md5Checksum": "96ca4be5f77d2647764c06c51bc5411f"
   },
   "plh_images/logos/erc.png": {
+    "size_kb": 105.3,
+    "md5Checksum": "9a0b2473644eec219f148c38ba952fdf"
+  },
+  "plh_images/logos/erc_blue.png": {
     "size_kb": 96.4,
     "md5Checksum": "55f8f51b3463f962b3689b1dd7805d49"
   },
   "plh_images/logos/gcrf.png": {
+    "size_kb": 111.7,
+    "md5Checksum": "829a9435aae650809619df6ffb4cf4fd"
+  },
+  "plh_images/logos/gcrf_blue.png": {
     "size_kb": 56.4,
     "md5Checksum": "68a32997af07aa3c721d318f7fa90050"
   },
   "plh_images/logos/gisp.png": {
+    "size_kb": 55.4,
+    "md5Checksum": "120676ea8e2ecfc6ec9b53665ea7d205"
+  },
+  "plh_images/logos/gisp_blue.png": {
     "size_kb": 53.9,
     "md5Checksum": "413bbb0015d29c1201961bfbd5b05e09"
   },
   "plh_images/logos/ics.png": {
+    "size_kb": 433.7,
+    "md5Checksum": "51483b96fb9e4cf233e9eb242e79a896"
+  },
+  "plh_images/logos/ics_blue.png": {
     "size_kb": 153,
     "md5Checksum": "0cf239a90bf039f26613d4386db43a66"
   },
   "plh_images/logos/idems.png": {
+    "size_kb": 75.6,
+    "md5Checksum": "31379d2c24b6ccacd13036ab50b6660e"
+  },
+  "plh_images/logos/idems_blue.png": {
     "size_kb": 39.4,
     "md5Checksum": "7a9836027993f71cbd19a871e16fe450"
   },
+  "plh_images/logos/innodems.png": {
+    "size_kb": 87.3,
+    "md5Checksum": "21a95d3e386ed06e3097913311aa1364"
+  },
   "plh_images/logos/lego_foundation.png": {
+    "size_kb": 54.4,
+    "md5Checksum": "b65dda37d388c6f8aeea7213bf98fe54"
+  },
+  "plh_images/logos/lego_foundation_blue.png": {
     "size_kb": 39.3,
     "md5Checksum": "a1de5d3618c53d5a7016f2b67e4819bf"
   },
   "plh_images/logos/nimr.png": {
+    "size_kb": 61.9,
+    "md5Checksum": "5a20dae15a336d57002b3f65ab75d772"
+  },
+  "plh_images/logos/nimr_blue.png": {
     "size_kb": 222.6,
     "md5Checksum": "4937f247b3e71fa05eb9885beb40c66f"
   },
   "plh_images/logos/oak_foundation.png": {
+    "size_kb": 69.2,
+    "md5Checksum": "eedd51376b0839bd7305a1adc4429c2b"
+  },
+  "plh_images/logos/oak_foundation_blue.png": {
     "size_kb": 48.2,
     "md5Checksum": "091e9aafa6eec611dd6717ee2583cfcb"
   },
@@ -1803,47 +1843,83 @@
     "size_kb": 14.3,
     "md5Checksum": "97c52b2da9fc03641461ce8aa0174f36"
   },
-  "plh_images/logos/oxford.png": {
-    "size_kb": 71.2,
-    "md5Checksum": "0009af508ce7eb45c677828c7f9e4395"
-  },
   "plh_images/logos/plh.png": {
+    "size_kb": 163.3,
+    "md5Checksum": "35ccb54756451169595910cb754c69cc"
+  },
+  "plh_images/logos/plh_blue.png": {
     "size_kb": 163.3,
     "md5Checksum": "63e24b7c8b6f77e1bb13546059203075"
   },
   "plh_images/logos/tz_government.png": {
+    "size_kb": 116.4,
+    "md5Checksum": "d925d10404f9980f4ccaccd3077011f8"
+  },
+  "plh_images/logos/tz_government_blue.png": {
     "size_kb": 443.2,
     "md5Checksum": "38351450d8ecaa1f131635937750b03f"
   },
   "plh_images/logos/uct.png": {
+    "size_kb": 118,
+    "md5Checksum": "0779b98857a25376c23efaf4854b9eb6"
+  },
+  "plh_images/logos/uct_blue.png": {
     "size_kb": 131.5,
     "md5Checksum": "00601e7a7eb016aa58cfd841d55219ab"
   },
   "plh_images/logos/ukri.png": {
+    "size_kb": 40.1,
+    "md5Checksum": "b909b91c3391b798483b6207b47c01d7"
+  },
+  "plh_images/logos/ukri_blue.png": {
     "size_kb": 37.6,
     "md5Checksum": "321908826b3a1465ac61d4d4d80dfa3b"
   },
   "plh_images/logos/unicef.png": {
+    "size_kb": 66,
+    "md5Checksum": "801d6ef85266fb61fa1a754ed93f90a5"
+  },
+  "plh_images/logos/unicef_blue.png": {
     "size_kb": 49.3,
     "md5Checksum": "893d4022f7d8ff914c4d5917efaf0356"
   },
   "plh_images/logos/university_of_oxford.png": {
+    "size_kb": 92.7,
+    "md5Checksum": "db31366ffa5b4e98892828b320c9e6ae"
+  },
+  "plh_images/logos/university_of_oxford_blue.png": {
     "size_kb": 71.2,
     "md5Checksum": "0009af508ce7eb45c677828c7f9e4395"
   },
   "plh_images/logos/usaid.png": {
+    "size_kb": 121.6,
+    "md5Checksum": "09e502ad96ae7e446e100da130ec3b32"
+  },
+  "plh_images/logos/usaid_blue.png": {
     "size_kb": 68.7,
     "md5Checksum": "7ba000baf996668a493b0af9a4bfa698"
   },
   "plh_images/logos/wellspring.png": {
+    "size_kb": 61.7,
+    "md5Checksum": "6da4d0647f09eb8fc8e0efb1a856f1ae"
+  },
+  "plh_images/logos/wellspring_blue.png": {
     "size_kb": 65.4,
     "md5Checksum": "e9e4f5d3205a0befe50dc8f219f65cb2"
   },
   "plh_images/logos/who.png": {
+    "size_kb": 105,
+    "md5Checksum": "a2bd1255743d407c6ede193fea813883"
+  },
+  "plh_images/logos/who_blue.png": {
     "size_kb": 108,
     "md5Checksum": "297544696aaa8a242ac36ffd19f06849"
   },
   "plh_images/logos/za_dsd.png": {
+    "size_kb": 154.5,
+    "md5Checksum": "6f9397395b9fa9a195f73808844d5b87"
+  },
+  "plh_images/logos/za_dsd_blue.png": {
     "size_kb": 112.5,
     "md5Checksum": "186e0729316e0bad64ede2908da972d4"
   },
