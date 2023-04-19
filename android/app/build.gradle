@@ -6,8 +6,8 @@ android {
         applicationId "international.idems.plh_teens_tz"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 16016
-        versionName "0.16.16"
+        versionCode 16017
+        versionName "0.16.17"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
