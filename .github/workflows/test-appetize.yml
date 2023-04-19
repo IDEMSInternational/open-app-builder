@@ -5,11 +5,34 @@ on:
   pull_request:
     types: [labeled, synchronize]
     branches:
+      - deployment/*
       - master
 jobs:
+  # Set the deployment name, to be used as the name of the environment in which to run the following job
+  # Pattern found in this question: https://github.com/actions/runner/issues/998#issue-817330769
+  set_deployment_name:
+    if: contains(github.event.pull_request.labels.*.name, 'Test - appetize')
+    outputs:
+      DEPLOYMENT_NAME: ${{ steps.get_deployment_name.outputs.DEPLOYMENT_NAME }}
+    runs-on: ubuntu-latest
+    steps:
+    # Extract deployment name as the slug of target PR branch via string operators, e.g. /deployment/plh_tz -> plh_tz
+    # https://www.linuxjournal.com/article/8919, https://github.com/greenbone/gsa/actions/runs/1277581365/workflow
+    - name: Get deployment name
+      id: get_deployment_name
+      run: |
+        if [ "$GITHUB_BASE_REF" = "master" ];                    \
+        then echo "DEPLOYMENT_NAME=plh_global" >> $GITHUB_OUTPUT;              \
+        else echo "DEPLOYMENT_NAME=${GITHUB_BASE_REF##*/}" >> $GITHUB_OUTPUT;  \
+        fi;
   test_appetize:
+    needs: set_deployment_name
     if: contains(github.event.pull_request.labels.*.name, 'Test - appetize')
     runs-on: ubuntu-latest
+    environment: 
+      name: ${{ needs.set_deployment_name.outputs.DEPLOYMENT_NAME }}
+    env:
+      DEPLOYMENT_NAME: ${{ needs.set_deployment_name.outputs.DEPLOYMENT_NAME }}
     steps:
       - uses: actions/checkout@v3
         with:
@@ -32,9 +55,7 @@ jobs:
       - name: Install Dependencies
         run: yarn install
       - name: Set Deployment
-        run: yarn workflow deployment set "$APP_DEPLOYMENT_NAME"
-        env:
-          APP_DEPLOYMENT_NAME: ${{ secrets.APP_DEPLOYMENT_NAME }}
+        run: yarn workflow deployment set $DEPLOYMENT_NAME
       - name: Build Angular Project
         run: yarn build
       - name: Sync Android Files
@@ -66,4 +87,4 @@ jobs:
         with:
           message: |
             **Android Appetize URL**
-            ${{ steps.upload.outputs.APPETIZE_APP_URL }}?device=nexus5&osVersion=10.0&scale=75
+            ${{ steps.upload.outputs.APPETIZE_APP_URL }}?device=pixel4&osVersion=12.0&scale=75
