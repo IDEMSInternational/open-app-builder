@@ -85,6 +85,13 @@ const workflows: IDeploymentWorkflows = {
               await tasks.deployment.set(args[0]);
             },
           },
+          // Ensure deployment decrypted once set
+          {
+            name: "decrypt",
+            function: async ({ tasks }) => {
+              await tasks.encryption.decrypt();
+            },
+          },
         ],
       },
       encrypt: {
@@ -92,8 +99,7 @@ const workflows: IDeploymentWorkflows = {
         steps: [
           {
             name: "encrypt",
-            function: async ({ tasks, config }) =>
-              tasks.encryption.encrypt(resolve(config._workspace_path, "encrypted")),
+            function: async ({ tasks, args }) => tasks.encryption.encrypt(args[0]),
           },
         ],
       },
@@ -102,8 +108,7 @@ const workflows: IDeploymentWorkflows = {
         steps: [
           {
             name: "decrypt",
-            function: async ({ tasks, config }) =>
-              tasks.encryption.decrypt(resolve(config._workspace_path, "encrypted")),
+            function: async ({ tasks, args }) => tasks.encryption.decrypt(args[0]),
           },
         ],
       },

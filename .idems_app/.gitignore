@@ -5,6 +5,7 @@ deployments/*
 !deployments/plh*
 !deployments/wash
 !deployments/module_scaffolding
+!deployments/pfr
 
 # Renamed to activeDeployment.json, include here so people can remove
 !/deployments/default.json
