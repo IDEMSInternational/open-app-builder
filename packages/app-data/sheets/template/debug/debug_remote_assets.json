@@ -1,0 +1,38 @@
+{
+  "flow_type": "template",
+  "flow_name": "debug_remote_assets",
+  "status": "released",
+  "flow_subtype": "debug",
+  "rows": [
+    {
+      "type": "title",
+      "name": "title",
+      "value": "Remote assets",
+      "_translations": {
+        "value": {}
+      },
+      "_nested_name": "title"
+    },
+    {
+      "type": "button",
+      "name": "button",
+      "value": "Download required assets",
+      "_translations": {
+        "value": {}
+      },
+      "action_list": [
+        {
+          "trigger": "click",
+          "action_id": "asset_pack",
+          "args": [
+            "download"
+          ],
+          "_raw": "click | asset_pack: download",
+          "_cleaned": "click | asset_pack: download"
+        }
+      ],
+      "_nested_name": "button"
+    }
+  ],
+  "_xlsxPath": "quality_assurance/debug_sheets/debug_remote_assets.xlsx"
+}

@@ -43,6 +43,8 @@
       accordion-background-highlight: var(--ion-color-primary-300),
       tour-next-button-background: var(--ion-color-secondary),
       radio-group-background-selected: var(--ion-color-primary-300),
+      // radio-button-font-size: 1.25rem,
+      // radio-button-font-color: var(--ion-color-primary),
       ion-item-background: var(--ion-color-gray-light),
     );
     @include utils.generateTheme($color-primary, $color-secondary, $page-background);
