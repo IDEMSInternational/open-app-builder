@@ -226,7 +226,7 @@ export type IAppConfig = typeof APP_CONFIG;
 /** A recursive version of Partial, making all properties, included nested ones, optional.
  * Copied from https://stackoverflow.com/a/47914631
  */
-type RecursivePartial<T> = {
+export type RecursivePartial<T> = {
   [P in keyof T]?: RecursivePartial<T[P]>;
 };
 export type IAppConfigOverride = RecursivePartial<IAppConfig>;
