@@ -93,7 +93,7 @@ export class AssetsPostProcessor {
     if (fs.existsSync(missingTarget)) fs.removeSync(missingTarget);
     if (Object.keys(missingEntries).length > 0) {
       logWarning({
-        msg1: "Assets overrride found without corresponding entry",
+        msg1: "Assets override found without corresponding entry",
         msg2: Object.keys(missingEntries).join("\n"),
       });
       fs.writeFileSync(missingTarget, JSON.stringify(sortJsonKeys(missingEntries), null, 2));
