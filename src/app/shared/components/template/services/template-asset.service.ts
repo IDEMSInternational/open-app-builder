@@ -9,6 +9,7 @@ const ASSETS_BASE = `assets/app_data/assets`;
 
 /** Expected folder containing global assets (TODO - merge with scripts) */
 const ASSETS_GLOBAL_FOLDER_NAME = "global";
+const DEFAULT_THEME_NAME = "default";
 
 @Injectable({ providedIn: "root" })
 export class TemplateAssetService extends AsyncServiceBase {
@@ -25,53 +26,51 @@ export class TemplateAssetService extends AsyncServiceBase {
     this.ensureSyncServicesReady([this.themeService]);
   }
 
-  getAbsoluteAssetPath(value: string) {
-    const assetName = this.cleanAssetName(value);
-    const assetEntry = ASSETS_CONTENTS_LIST[assetName];
-    if (!assetEntry) {
-      console.error("Asset missing", value, assetName);
-    }
-    return this.convertPLHRelativePathToAssetPath(`${ASSETS_GLOBAL_FOLDER_NAME}/${assetName}`);
-  }
   /**
-   * Retrieve the path to translated version of an asset path for the current language.
-   * Fallsback to original path if does not exist
+   * Retrieve the path to a variation of an asset for the current language and theme.
+   * It is possible that such a variation does not exist, in which case the path to a
+   * different version of the asset will be returned as a fallback.
+   * The order of priority for these fallbacks is:
+   * 1. current theme, current language
+   * 2. default theme, current language
+   * 3. current theme, default language
+   * 4. default theme, default language
    */
   getTranslatedAssetPath(value: string) {
-    const currentLanguageCode = this.translateService.app_language;
-    const assetName = this.cleanAssetName(value);
+    let assetName = this.cleanAssetName(value);
     const assetEntry = ASSETS_CONTENTS_LIST[assetName];
     if (!assetEntry) {
       console.error("Asset missing", value, assetName);
+      return `${ASSETS_GLOBAL_FOLDER_NAME}/${assetName}`;
     }
-    if (assetEntry?.translations?.[currentLanguageCode]) {
-      return this.convertPLHRelativePathToAssetPath(`${currentLanguageCode}/${assetName}`);
-    }
-    return this.convertPLHRelativePathToAssetPath(`${ASSETS_GLOBAL_FOLDER_NAME}/${assetName}`);
-  }
 
-  /**
-   * Retrieve the path to theme-specific version of an asset path for the current theme.
-   * Fallsback to original path if does not exist
-   */
-  getThemeAssetPath(value: string) {
-    const themeName = this.themeService.getCurrentTheme();
-    const assetName = this.cleanAssetName(value);
-    const assetEntry = ASSETS_CONTENTS_LIST[assetName];
-    if (!assetEntry) {
-      console.error("Asset missing", value, assetName);
+    const currentThemeName = this.themeService.getCurrentTheme();
+    const currentLanguageCode = this.translateService.app_language;
+
+    const themeName = `theme_${currentThemeName}`;
+    const langName = currentLanguageCode;
+
+    // 1. current theme, current language
+    const override1 = assetEntry.overrides?.[themeName]?.[langName];
+    if (override1) {
+      return this.convertPLHRelativePathToAssetPath(override1.filePath);
     }
-    if (assetEntry?.themeVariations?.[themeName]) {
-      return this.convertPLHRelativePathToAssetPath(
-        `theme_${themeName}/${ASSETS_GLOBAL_FOLDER_NAME}/${assetName}`
-      );
+    // 2. default theme, current language
+    const override2 = assetEntry.overrides?.["theme_default"]?.[langName];
+    if (override2) {
+      return this.convertPLHRelativePathToAssetPath(override2.filePath);
     }
-    return this.convertPLHRelativePathToAssetPath(`${ASSETS_GLOBAL_FOLDER_NAME}/${assetName}`);
+    // 3. current theme, default language
+    const override3 = assetEntry.overrides?.[themeName]?.["global"];
+    if (override3) {
+      return this.convertPLHRelativePathToAssetPath(override3.filePath);
+    }
+    return this.convertPLHRelativePathToAssetPath(assetEntry.filePath || assetName);
   }
 
   private cleanAssetName(value: string) {
     // remove prefix slash
-    if (value.startsWith("/")) value = value.replace("/", "");
+    if (value.startsWith("/")) value = value.substring(1);
     return value;
   }
 

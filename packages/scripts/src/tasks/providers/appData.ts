@@ -40,7 +40,7 @@ const copyDeploymentDataToApp = () => {
   };
   const source = app_data.output_path;
   const target = path.resolve(SRC_ASSETS_PATH, "app_data");
-  replicateDir(source, target, filter_fn);
+  replicateDir(source, target, { filter_fn });
 
   // HACK - Angular webpack won't always live-reload when changes only made to asset files
   // so write an arbitrary variable that can be imported into the app and will trigger reload

@@ -17,20 +17,10 @@
       "image_asset": "plh_images/logos/usaid.png"
     },
     {
-      "id": "vodacom_tz",
+      "id": "vodacom",
       "splash_page": 2,
       "name": "Vodacom Tanzania",
-      "description": "Vodacom Tanzania",
-      "_translations": {
-        "description": {
-          "tz_sw": true
-        }
-      },
-      "_translatedFields": {
-        "description": {
-          "eng": "Vodacom Tanzania"
-        }
-      }
+      "image_asset": "plh_images/logos/vodacom.png"
     }
   ],
   "_xlsxPath": "global/data/partners_data_lists.xlsx"
