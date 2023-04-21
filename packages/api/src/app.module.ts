@@ -1,18 +1,21 @@
-import { MiddlewareConsumer, Module, NestModule, RequestMethod } from "@nestjs/common";
+import { Module } from "@nestjs/common";
 import { EventEmitterModule } from "@nestjs/event-emitter";
 import { ConfigModule } from "@nestjs/config";
 import { SequelizeModule } from "@nestjs/sequelize";
 import { USER_DB_CONFIG } from "./db/config";
 import * as Endpoints from "./endpoints";
 import { DefaultModule } from "./endpoints/default";
-import { DeploymentDBSelector } from "./middleware/deployment.middleware";
+import { DeploymentModule } from "./modules";
 
 @Module({
   imports: [
     ConfigModule.forRoot(),
     EventEmitterModule.forRoot(),
+    DeploymentModule,
+    // TODO - this should be removed when all tables connect via middleware service
     SequelizeModule.forRoot({
       ...USER_DB_CONFIG,
+      // name: environment.APP_DB_NAME,
       autoLoadModels: true,
       // tables will be initialised via sequelizer
       synchronize: false,
@@ -22,6 +25,9 @@ import { DeploymentDBSelector } from "./middleware/deployment.middleware";
         min: 0,
         idle: 10000,
       },
+      hooks: {
+        // TODO - consider disabling connections after bootstrap
+      },
     }),
     DefaultModule,
     Endpoints.AppUsersModule,
@@ -30,9 +36,6 @@ import { DeploymentDBSelector } from "./middleware/deployment.middleware";
     Endpoints.AppNotificationInteractionModule,
     Endpoints.TablesModule,
   ],
+  providers: [],
 })
-export class AppModule implements NestModule {
-  configure(consumer: MiddlewareConsumer) {
-    consumer.apply(DeploymentDBSelector).forRoutes({ path: "/**", method: RequestMethod.ALL });
-  }
-}
+export class AppModule {}

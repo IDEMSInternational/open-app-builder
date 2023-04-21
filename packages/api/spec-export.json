@@ -213,7 +213,17 @@
       "get": {
         "operationId": "AppUsersController_findAll",
         "summary": "List users",
-        "parameters": [],
+        "parameters": [
+          {
+            "required": false,
+            "name": "db_name",
+            "in": "query",
+            "schema": {
+              "default": "plh",
+              "type": "string"
+            }
+          }
+        ],
         "responses": {
           "200": {
             "description": ""

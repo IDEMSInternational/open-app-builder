@@ -2,7 +2,8 @@ import { Body, Controller, Get, HttpException, HttpStatus, Param, Post } from "@
 import { ContactFieldDto } from "./dto/set-user-data.dto";
 import { AppUser } from "./app_user.model";
 import { AppUsersService } from "./app_user.service";
-import { ApiBody, ApiOperation, ApiParam, ApiResponse, ApiTags } from "@nestjs/swagger";
+import { ApiBody, ApiOperation, ApiParam, ApiQuery, ApiResponse, ApiTags } from "@nestjs/swagger";
+import { DeploymentQuery, InjectDeploymentModel } from "src/modules/deployment.decorators";
 
 @ApiTags("Users")
 @Controller("app_users")
@@ -16,8 +17,9 @@ export class AppUsersController {
 
   @Get()
   @ApiOperation({ summary: "List users" })
-  findAll(): Promise<AppUser[]> {
-    return this.appUsersService.findAll();
+  @DeploymentQuery()
+  findAll(@InjectDeploymentModel(AppUser) model: typeof AppUser): Promise<AppUser[]> {
+    return model.findAll();
   }
 
   // @Get(":app_user_id")
