@@ -1,10 +1,11 @@
-import { Module } from "@nestjs/common";
+import { MiddlewareConsumer, Module, NestModule, RequestMethod } from "@nestjs/common";
 import { EventEmitterModule } from "@nestjs/event-emitter";
 import { ConfigModule } from "@nestjs/config";
 import { SequelizeModule } from "@nestjs/sequelize";
 import { USER_DB_CONFIG } from "./db/config";
 import * as Endpoints from "./endpoints";
 import { DefaultModule } from "./endpoints/default";
+import { DeploymentDBSelector } from "./middleware/deployment.middleware";
 
 @Module({
   imports: [
@@ -30,4 +31,8 @@ import { DefaultModule } from "./endpoints/default";
     Endpoints.TablesModule,
   ],
 })
-export class AppModule {}
+export class AppModule implements NestModule {
+  configure(consumer: MiddlewareConsumer) {
+    consumer.apply(DeploymentDBSelector).forRoutes({ path: "/**", method: RequestMethod.ALL });
+  }
+}

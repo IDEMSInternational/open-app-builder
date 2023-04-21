@@ -8206,8 +8206,8 @@ __metadata:
     prettier: ^2.4.1
     reflect-metadata: ^0.1.13
     rimraf: ^3.0.2
-    sequelize: 6.29.0
-    sequelize-typescript: 2.1.0
+    sequelize: 6.31.0
+    sequelize-typescript: 2.1.5
     supertest: ^6.1.3
     swagger-ui-express: ^4.1.6
     ts-jest: ^26.5.4
@@ -15589,20 +15589,6 @@ __metadata:
   version: 0.4.1
   resolution: "glob-to-regexp@npm:0.4.1"
   checksum: e795f4e8f06d2a15e86f76e4d92751cf8bbfcf0157cea5c2f0f35678a8195a750b34096b1256e436f0cebc1883b5ff0888c47348443e69546a5a87f9e1eb1167
-  languageName: node
-  linkType: hard
-
-"glob@npm:7.1.6":
-  version: 7.1.6
-  resolution: "glob@npm:7.1.6"
-  dependencies:
-    fs.realpath: ^1.0.0
-    inflight: ^1.0.4
-    inherits: 2
-    minimatch: ^3.0.4
-    once: ^1.3.0
-    path-is-absolute: ^1.0.0
-  checksum: 351d549dd90553b87c2d3f90ce11aed9e1093c74130440e7ae0592e11bbcd2ce7f0ebb8ba6bfe63aaf9b62166a7f4c80cb84490ae5d78408bb2572bf7d4ee0a6
   languageName: node
   linkType: hard
 
@@ -24577,21 +24563,64 @@ __metadata:
   languageName: node
   linkType: hard
 
-"sequelize-typescript@npm:2.1.0":
-  version: 2.1.0
-  resolution: "sequelize-typescript@npm:2.1.0"
+"sequelize-typescript@npm:2.1.5":
+  version: 2.1.5
+  resolution: "sequelize-typescript@npm:2.1.5"
   dependencies:
-    glob: 7.1.6
+    glob: 7.2.0
   peerDependencies:
     "@types/node": "*"
     "@types/validator": "*"
     reflect-metadata: "*"
-    sequelize: ">=6.2.0"
-  checksum: e2374c56ca69d6c3bf44edab49b6fa23c5e1ca5497286533e2805453b12852b44b920200988cb23809574918a771b567dd3ec307326b5bf53e1c03eab5d3c81e
+    sequelize: ">=6.20.1"
+  checksum: 017abffa552014b14a3b2dfac4f6a4239689c5668720fc4a78a793a1f245f9bd2fd4745361e8725ad37d200af93a9e9c8b96dd07a1fb0cd833c00ace2269a35a
   languageName: node
   linkType: hard
 
-"sequelize@npm:6.29.0, sequelize@npm:^6.29.0":
+"sequelize@npm:6.31.0":
+  version: 6.31.0
+  resolution: "sequelize@npm:6.31.0"
+  dependencies:
+    "@types/debug": ^4.1.7
+    "@types/validator": ^13.7.1
+    debug: ^4.3.3
+    dottie: ^2.0.2
+    inflection: ^1.13.2
+    lodash: ^4.17.21
+    moment: ^2.29.1
+    moment-timezone: ^0.5.35
+    pg-connection-string: ^2.5.0
+    retry-as-promised: ^7.0.3
+    semver: ^7.3.5
+    sequelize-pool: ^7.1.0
+    toposort-class: ^1.0.1
+    uuid: ^8.3.2
+    validator: ^13.7.0
+    wkx: ^0.5.0
+  peerDependenciesMeta:
+    ibm_db:
+      optional: true
+    mariadb:
+      optional: true
+    mysql2:
+      optional: true
+    oracledb:
+      optional: true
+    pg:
+      optional: true
+    pg-hstore:
+      optional: true
+    snowflake-sdk:
+      optional: true
+    sqlite3:
+      optional: true
+    tedious:
+      optional: true
+  checksum: 7964a9415b154c0f6ba25321c068909c896bdbd76457579e622f004db514aeb35731ccc9ad237035ac6c7ccad62e74c6d679019ef18eb3a9ece11381b2713f4a
+  languageName: node
+  linkType: hard
+
+"sequelize@npm:^6.29.0":
   version: 6.29.0
   resolution: "sequelize@npm:6.29.0"
   dependencies:
