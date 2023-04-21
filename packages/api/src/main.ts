@@ -2,12 +2,12 @@ import { NestFactory } from "@nestjs/core";
 import { SwaggerModule, DocumentBuilder } from "@nestjs/swagger";
 import * as fs from "fs";
 import { AppModule } from "./app.module";
-import { setupDB } from "./db";
+import { DBInstance } from "./db";
 import { environment } from "./environment";
 
 async function bootstrap() {
   // DB Bootstrap (could be managed outside repo)
-  await setupDB();
+  await new DBInstance().setup();
   // API Boostrap (auto connects to DB)
   const app = await NestFactory.create(AppModule);
   app.enableCors();
