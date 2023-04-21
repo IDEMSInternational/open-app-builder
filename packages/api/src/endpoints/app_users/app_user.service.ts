@@ -1,13 +1,18 @@
 import { Injectable } from "@nestjs/common";
 import { InjectModel } from "@nestjs/sequelize";
+import { DeploymentModelService } from "src/modules/deployment.service";
 import { AppUser } from "./app_user.model";
 import { ContactFieldDto } from "./dto/set-user-data.dto";
 
 @Injectable()
 export class AppUsersService {
   constructor(
+    private deploymentModel: DeploymentModelService,
+    // TODO - want to remove to include with requests
+    // or inject something that returns a class with module getter
+
     @InjectModel(AppUser)
-    private readonly model: typeof AppUser
+    private readonly model: typeof AppUser // @InjectDeploymentDB(AppUser) // private readonly deploymentDB: any
   ) {}
 
   // create(app_user_id: string, createUserDto: ContactFieldDto): Promise<AppUser> {
@@ -17,10 +22,6 @@ export class AppUsersService {
 
   //   return user.save();
   // }
-
-  async findAll(): Promise<AppUser[]> {
-    return this.model.findAll();
-  }
 
   findOne(app_user_id: string): Promise<AppUser> {
     return this.model.findOne({
