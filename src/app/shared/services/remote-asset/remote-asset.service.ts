@@ -7,6 +7,7 @@ import { IAppConfig } from "../../model";
 import { AppConfigService } from "../app-config/app-config.service";
 import { FileManagerService } from "../file-manager/file-manager.service";
 import { SyncServiceBase } from "../syncService.base";
+import { IAssetContents } from "src/app/data";
 
 @Injectable({
   providedIn: "root",
@@ -51,16 +52,16 @@ export class RemoteAssetService extends SyncServiceBase {
     // a) download file from supabase
     // b) populate to respective folder
     // c) update the assets contents list to include the file's URI for lookup
-    for (const relativePath of Object.keys(manifest)) {
+    for (const [assetName, assetEntry] of Object.entries(manifest)) {
       let uri = "";
       if (Capacitor.isNativePlatform()) {
-        const blob = await this.downloadFile(relativePath);
-        uri = await this.fileManagerService.saveFile(blob, relativePath);
+        const blob = await this.downloadFile(assetName);
+        uri = await this.fileManagerService.saveFile(blob, assetName);
       } else {
-        uri = await this.getPublicUrl(relativePath);
+        uri = await this.getPublicUrl(assetName);
       }
       console.log("uri:", uri);
-      await this.fileManagerService.updateContentsList(relativePath, uri);
+      await this.fileManagerService.updateContentsList(assetName, uri);
     }
   }
 
@@ -73,7 +74,7 @@ export class RemoteAssetService extends SyncServiceBase {
       },
     };
     // const manifest = [{ path: "quality_assurance/test_image.png" }]
-    return manifest;
+    return manifest as IAssetContents;
   }
 
   async downloadFile(filepath: string) {
@@ -117,7 +118,7 @@ export class RemoteAssetService extends SyncServiceBase {
     }
   }
 
-  /* Append filepath to remote assets folder name to match supabase storage folder structure */
+  /* Convert base filepath to match supabase storage folder structure */
   private getSupabaseFilepath(filepath: string) {
     return `${this.folderName}/${filepath}`;
   }

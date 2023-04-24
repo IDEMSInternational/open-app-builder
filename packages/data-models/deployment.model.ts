@@ -129,6 +129,8 @@ interface IContentsEntry {
   md5Checksum: string;
   /** specific path to file when same as relativePath, e.g. asset overrides */
   filePath?: string;
+  /** External to display remote assets when running in browser */
+  url?: string;
 }
 
 /** Duplicate type definition from gdrive-downloader (TODO - find better way to share) */
