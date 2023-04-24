@@ -6,6 +6,12 @@
   "rows": [
     {
       "id": "time_child",
+      "answer_list": [
+        "name: option_1 | text: @data.reflect_question.time_child.option_1",
+        "name: option_2 | text: @data.reflect_question.time_child.option_2",
+        "name: option_3 | text: @data.reflect_question.time_child.option_3",
+        "name: option_4 | text: @data.reflect_question.time_child.option_4"
+      ],
       "question_text": "We would love to hear from you: what stands in your way from spending time with your child?",
       "_translations": {
         "question_text": {},

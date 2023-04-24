@@ -229,11 +229,6 @@
       "flow_name": "check_in_options",
       "_xlsxPath": "global/templates/core_templates/topic_activity.xlsx"
     },
-    "combo_box_options": {
-      "flow_type": "data_list",
-      "flow_name": "combo_box_options",
-      "_xlsxPath": "global/templates/core_templates/topic_activity.xlsx"
-    },
     "common_topic_task_gs": {
       "flow_type": "data_list",
       "flow_name": "common_topic_task_gs",

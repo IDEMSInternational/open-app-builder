@@ -227,7 +227,7 @@
     },
     {
       "type": "display_group",
-      "name": "reply_yes_dg",
+      "name": "option_yes_dg",
       "hidden": "@local.radio_button_grid!=\"yes\"",
       "parameter_list": {
         "style": "column"
@@ -235,30 +235,30 @@
       "rows": [
         {
           "type": "text",
-          "name": "reply_yes",
-          "value": "@local.row_data.reply_yes",
+          "name": "option_yes",
+          "value": "@local.row_data.option_yes",
           "_translations": {
             "value": {}
           },
-          "_nested_name": "reply_yes_dg.reply_yes",
+          "_nested_name": "option_yes_dg.option_yes",
           "_dynamicFields": {
             "value": [
               {
-                "fullExpression": "@local.row_data.reply_yes",
-                "matchedExpression": "@local.row_data.reply_yes",
+                "fullExpression": "@local.row_data.option_yes",
+                "matchedExpression": "@local.row_data.option_yes",
                 "type": "local",
                 "fieldName": "row_data"
               }
             ]
           },
           "_dynamicDependencies": {
-            "@local.row_data.reply_yes": [
+            "@local.row_data.option_yes": [
               "value"
             ]
           }
         }
       ],
-      "_nested_name": "reply_yes_dg",
+      "_nested_name": "option_yes_dg",
       "_dynamicFields": {
         "hidden": [
           {
@@ -277,7 +277,7 @@
     },
     {
       "type": "display_group",
-      "name": "reply_no_dg",
+      "name": "option_no_dg",
       "hidden": "@local.radio_button_grid!=\"no\"",
       "parameter_list": {
         "style": "column"
@@ -285,30 +285,30 @@
       "rows": [
         {
           "type": "text",
-          "name": "reply_no",
-          "value": "@local.row_data.reply_no",
+          "name": "option_no",
+          "value": "@local.row_data.option_no",
           "_translations": {
             "value": {}
           },
-          "_nested_name": "reply_no_dg.reply_no",
+          "_nested_name": "option_no_dg.option_no",
           "_dynamicFields": {
             "value": [
               {
-                "fullExpression": "@local.row_data.reply_no",
-                "matchedExpression": "@local.row_data.reply_no",
+                "fullExpression": "@local.row_data.option_no",
+                "matchedExpression": "@local.row_data.option_no",
                 "type": "local",
                 "fieldName": "row_data"
               }
             ]
           },
           "_dynamicDependencies": {
-            "@local.row_data.reply_no": [
+            "@local.row_data.option_no": [
               "value"
             ]
           }
         }
       ],
-      "_nested_name": "reply_no_dg",
+      "_nested_name": "option_no_dg",
       "_dynamicFields": {
         "hidden": [
           {
