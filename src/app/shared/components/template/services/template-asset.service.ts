@@ -1,8 +1,10 @@
 import { Injectable } from "@angular/core";
+import { Capacitor } from "@capacitor/core";
 import { ASSETS_CONTENTS_LIST } from "src/app/data";
 import { ThemeService } from "src/app/feature/theme/services/theme.service";
 import { AsyncServiceBase } from "src/app/shared/services/asyncService.base";
 import { TemplateTranslateService } from "./template-translate.service";
+import { IAssetEntry, IContentsEntryMinimal } from "packages/data-models/deployment.model";
 
 /** Synced assets are automatically copied during build to asset subfolder */
 const ASSETS_BASE = `assets/app_data/assets`;
@@ -13,6 +15,7 @@ const DEFAULT_THEME_NAME = "default";
 
 @Injectable({ providedIn: "root" })
 export class TemplateAssetService extends AsyncServiceBase {
+  public assetsContentList = ASSETS_CONTENTS_LIST;
   constructor(
     private translateService: TemplateTranslateService,
     private themeService: ThemeService
@@ -38,7 +41,7 @@ export class TemplateAssetService extends AsyncServiceBase {
    */
   getTranslatedAssetPath(value: string) {
     let assetName = this.cleanAssetName(value);
-    const assetEntry = ASSETS_CONTENTS_LIST[assetName];
+    const assetEntry = this.assetsContentList[assetName];
     if (!assetEntry) {
       console.error("Asset missing", value, assetName);
       return `${ASSETS_GLOBAL_FOLDER_NAME}/${assetName}`;
@@ -53,25 +56,38 @@ export class TemplateAssetService extends AsyncServiceBase {
     // 1. current theme, current language
     const override1 = assetEntry.overrides?.[themeName]?.[langName];
     if (override1) {
-      return this.convertPLHRelativePathToAssetPath(override1.filePath);
+      return this.getFilePath(assetName, override1);
     }
     // 2. default theme, current language
     const override2 = assetEntry.overrides?.["theme_default"]?.[langName];
     if (override2) {
-      return this.convertPLHRelativePathToAssetPath(override2.filePath);
+      return this.getFilePath(assetName, override2);
     }
     // 3. current theme, default language
     const override3 = assetEntry.overrides?.[themeName]?.["global"];
     if (override3) {
-      return this.convertPLHRelativePathToAssetPath(override3.filePath);
+      return this.getFilePath(assetName, override3);
     }
-    return this.convertPLHRelativePathToAssetPath(assetEntry.filePath || assetName);
+    return this.getFilePath(assetName, assetEntry);
   }
 
   private cleanAssetName(value: string) {
     // remove prefix slash
     if (value.startsWith("/")) value = value.substring(1);
     return value;
+  }
+
+  private getFilePath(assetName, contentsEntry: IContentsEntryMinimal | Partial<IAssetEntry>) {
+    if (Capacitor.isNativePlatform()) {
+      return this.convertPLHRelativePathToAssetPath(contentsEntry.filePath || assetName);
+    }
+    // If running on web, return external url (supabase). TODO: think about fallback
+    else {
+      return (
+        contentsEntry.url ||
+        this.convertPLHRelativePathToAssetPath(contentsEntry.filePath || assetName)
+      );
+    }
   }
 
   /**

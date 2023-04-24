@@ -3,12 +3,13 @@ import { Directory, Filesystem } from "@capacitor/filesystem";
 import { Capacitor } from "@capacitor/core";
 import write_blob from "capacitor-blob-writer";
 import { SyncServiceBase } from "../syncService.base";
+import { TemplateAssetService } from "../../components/template/services/template-asset.service";
 
 @Injectable({
   providedIn: "root",
 })
 export class FileManagerService extends SyncServiceBase {
-  constructor() {
+  constructor(private templateAssetService: TemplateAssetService) {
     super("FileManager");
   }
 
@@ -52,7 +53,13 @@ export class FileManagerService extends SyncServiceBase {
   }
 
   /* Update assets contents list to include new filepath for lookup (by template-asset service) */
-  async updateContentsList(fileEntry, uri: string) {
-    // TODO. Should also update metadata
+  async updateContentsList(assetName, uri: string, metadata?) {
+    // TODO
+    // Options:
+    // 1. Store contents list in memory (shared with template-asset service) and update this
+    // 2. Save to file, contents.json (ensure template-asset service uses up-to-date version)
+    // 3. Use localstorage
+    this.templateAssetService.assetsContentList[assetName].url = uri;
+    console.log(this.templateAssetService.assetsContentList[assetName]);
   }
 }

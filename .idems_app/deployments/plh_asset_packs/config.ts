@@ -9,7 +9,7 @@ config.app_config.APP_SIDEMENU_DEFAULTS.title = "plh_asset_packs";
 config.app_config.ASSET_PACKS = {
   enabled: true,
   bucketName: "plh_asset_packs",
-  folderName: "asset-packs",
+  folderName: "asset_packs",
 };
 
 // set supabase config if decrypted values available
