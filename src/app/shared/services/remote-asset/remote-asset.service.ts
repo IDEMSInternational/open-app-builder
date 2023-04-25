@@ -56,12 +56,19 @@ export class RemoteAssetService extends SyncServiceBase {
       let uri = "";
       if (Capacitor.isNativePlatform()) {
         const blob = await this.downloadFile(assetName);
-        uri = await this.fileManagerService.saveFile(blob, assetName);
+        console.log("blob:", blob);
+        if (blob) {
+          uri = await this.fileManagerService.saveFile(blob, assetName);
+        } else {
+          console.error("Failed to download resource");
+        }
       } else {
-        uri = await this.getPublicUrl(assetName);
+        uri = this.getPublicUrl(assetName);
       }
       console.log("uri:", uri);
-      await this.fileManagerService.updateContentsList(assetName, uri);
+      if (uri) {
+        await this.fileManagerService.updateContentsList(assetName, uri);
+      }
     }
   }
 
@@ -78,12 +85,14 @@ export class RemoteAssetService extends SyncServiceBase {
   }
 
   async downloadFile(filepath: string) {
+    const publicUrl = this.getPublicUrl(filepath);
+    console.log("publicUrl:", publicUrl);
     let data: Blob;
     try {
       this.downloading = true;
       const { data: blob, error } = await this.supabase.storage
         .from(this.bucketName)
-        .download(this.getSupabaseFilepath(filepath));
+        .download(publicUrl);
       if (error) {
         throw error;
       }
@@ -99,8 +108,8 @@ export class RemoteAssetService extends SyncServiceBase {
     }
   }
 
-  /* Get a file's public URL from supabase. For use in the web app */
-  async getPublicUrl(filepath: string) {
+  /** Get a file's public URL from supabase. For use in the web app */
+  getPublicUrl(filepath: string) {
     let url = "";
     try {
       const {
@@ -118,7 +127,7 @@ export class RemoteAssetService extends SyncServiceBase {
     }
   }
 
-  /* Convert base filepath to match supabase storage folder structure */
+  /** Convert base filepath to match supabase storage folder structure */
   private getSupabaseFilepath(filepath: string) {
     return `${this.folderName}/${filepath}`;
   }

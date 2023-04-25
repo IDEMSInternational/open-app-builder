@@ -79,7 +79,11 @@ export class TemplateAssetService extends AsyncServiceBase {
 
   private getFilePath(assetName, contentsEntry: IContentsEntryMinimal | Partial<IAssetEntry>) {
     if (Capacitor.isNativePlatform()) {
-      return this.convertPLHRelativePathToAssetPath(contentsEntry.filePath || assetName);
+      console.log("contentsEntry.downloadedFilepath:", contentsEntry.downloadedFilepath);
+      return (
+        contentsEntry.downloadedFilepath ||
+        this.convertPLHRelativePathToAssetPath(contentsEntry.filePath || assetName)
+      );
     }
     // If running on web, return external url (supabase). TODO: think about fallback
     else {
