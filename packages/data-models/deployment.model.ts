@@ -131,6 +131,8 @@ interface IContentsEntry {
   filePath?: string;
   /** External to display remote assets when running in browser */
   url?: string;
+  /** Path to file in local device filesystem, populated after asset download */
+  downloadedFilepath?: string;
 }
 
 /** Duplicate type definition from gdrive-downloader (TODO - find better way to share) */
