@@ -82,6 +82,26 @@
       "type": "template",
       "name": "topic_activity",
       "value": "topic_activity",
+      "action_list": [
+        {
+          "trigger": "completed",
+          "action_id": "emit",
+          "args": [
+            "completed"
+          ],
+          "_raw": "completed | emit: completed",
+          "_cleaned": "completed | emit: completed"
+        },
+        {
+          "trigger": "uncompleted",
+          "action_id": "emit",
+          "args": [
+            "uncompleted"
+          ],
+          "_raw": "uncompleted | emit: uncompleted",
+          "_cleaned": "uncompleted | emit: uncompleted"
+        }
+      ],
       "rows": [
         {
           "name": "type_id",
@@ -162,6 +182,7 @@
                   "type": "nested_properties",
                   "name": "box_1",
                   "value": "box_combo_box",
+                  "hidden": "!!(@local.content_data.question_1_id)",
                   "rows": [
                     {
                       "name": "data_list_name",
@@ -196,33 +217,72 @@
                       }
                     }
                   ],
-                  "_nested_name": "topic_activity.content_box.box_2.box_1"
+                  "_nested_name": "topic_activity.content_box.box_2.box_1",
+                  "_dynamicFields": {
+                    "hidden": [
+                      {
+                        "fullExpression": "!!(@local.content_data.question_1_id)",
+                        "matchedExpression": "@local.content_data.question_1_id",
+                        "type": "local",
+                        "fieldName": "content_data"
+                      }
+                    ]
+                  },
+                  "_dynamicDependencies": {
+                    "@local.content_data.question_1_id": [
+                      "hidden"
+                    ]
+                  }
                 },
                 {
                   "type": "nested_properties",
                   "name": "box_2",
-                  "value": "box_combo_box",
+                  "value": "duo",
                   "rows": [
                     {
-                      "name": "data_list_name",
-                      "value": [
-                        "read_question"
+                      "type": "nested_properties",
+                      "name": "box_1",
+                      "value": "box_combo_box",
+                      "hidden": "!!(@local.content_data.question_2_id)",
+                      "rows": [
+                        {
+                          "name": "data_list_name",
+                          "value": [
+                            "read_question"
+                          ],
+                          "type": "set_variable",
+                          "_nested_name": "topic_activity.content_box.box_2.box_2.box_1.data_list_name"
+                        },
+                        {
+                          "name": "id",
+                          "value": "@local.content_data.question_2_id",
+                          "_translations": {
+                            "value": {}
+                          },
+                          "type": "set_variable",
+                          "_nested_name": "topic_activity.content_box.box_2.box_2.box_1.id",
+                          "_dynamicFields": {
+                            "value": [
+                              {
+                                "fullExpression": "@local.content_data.question_2_id",
+                                "matchedExpression": "@local.content_data.question_2_id",
+                                "type": "local",
+                                "fieldName": "content_data"
+                              }
+                            ]
+                          },
+                          "_dynamicDependencies": {
+                            "@local.content_data.question_2_id": [
+                              "value"
+                            ]
+                          }
+                        }
                       ],
-                      "type": "set_variable",
-                      "_nested_name": "topic_activity.content_box.box_2.box_2.data_list_name"
-                    },
-                    {
-                      "name": "id",
-                      "value": "@local.content_data.question_2_id",
-                      "_translations": {
-                        "value": {}
-                      },
-                      "type": "set_variable",
-                      "_nested_name": "topic_activity.content_box.box_2.box_2.id",
+                      "_nested_name": "topic_activity.content_box.box_2.box_2.box_1",
                       "_dynamicFields": {
-                        "value": [
+                        "hidden": [
                           {
-                            "fullExpression": "@local.content_data.question_2_id",
+                            "fullExpression": "!!(@local.content_data.question_2_id)",
                             "matchedExpression": "@local.content_data.question_2_id",
                             "type": "local",
                             "fieldName": "content_data"
@@ -231,7 +291,63 @@
                       },
                       "_dynamicDependencies": {
                         "@local.content_data.question_2_id": [
-                          "value"
+                          "hidden"
+                        ]
+                      }
+                    },
+                    {
+                      "type": "nested_properties",
+                      "name": "box_2",
+                      "value": "box_combo_box",
+                      "hidden": "!!(@local.content_data.question_3_id)",
+                      "rows": [
+                        {
+                          "name": "data_list_name",
+                          "value": [
+                            "read_question"
+                          ],
+                          "type": "set_variable",
+                          "_nested_name": "topic_activity.content_box.box_2.box_2.box_2.data_list_name"
+                        },
+                        {
+                          "name": "id",
+                          "value": "@local.content_data.question_3_id",
+                          "_translations": {
+                            "value": {}
+                          },
+                          "type": "set_variable",
+                          "_nested_name": "topic_activity.content_box.box_2.box_2.box_2.id",
+                          "_dynamicFields": {
+                            "value": [
+                              {
+                                "fullExpression": "@local.content_data.question_3_id",
+                                "matchedExpression": "@local.content_data.question_3_id",
+                                "type": "local",
+                                "fieldName": "content_data"
+                              }
+                            ]
+                          },
+                          "_dynamicDependencies": {
+                            "@local.content_data.question_3_id": [
+                              "value"
+                            ]
+                          }
+                        }
+                      ],
+                      "_nested_name": "topic_activity.content_box.box_2.box_2.box_2",
+                      "_dynamicFields": {
+                        "hidden": [
+                          {
+                            "fullExpression": "!!(@local.content_data.question_3_id)",
+                            "matchedExpression": "@local.content_data.question_3_id",
+                            "type": "local",
+                            "fieldName": "content_data"
+                          }
+                        ]
+                      },
+                      "_dynamicDependencies": {
+                        "@local.content_data.question_3_id": [
+                          "hidden"
                         ]
                       }
                     }

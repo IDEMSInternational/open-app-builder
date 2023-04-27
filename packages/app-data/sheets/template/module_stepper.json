@@ -1,0 +1,104 @@
+{
+  "flow_type": "template",
+  "flow_name": "module_stepper",
+  "status": "released",
+  "rows": [
+    {
+      "name": "topic_id",
+      "value": "@fields.current_topic",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "type": "set_variable",
+      "_nested_name": "topic_id",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@fields.current_topic",
+            "matchedExpression": "@fields.current_topic",
+            "type": "fields",
+            "fieldName": "current_topic"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@fields.current_topic": [
+          "value"
+        ]
+      }
+    },
+    {
+      "name": "task_groups",
+      "value": "_task_gs",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "type": "set_variable",
+      "_nested_name": "task_groups"
+    },
+    {
+      "name": "task_group_data",
+      "value": "@local.topic_id@local.task_groups",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "type": "set_variable",
+      "_nested_name": "task_group_data",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@local.topic_id@local.task_groups",
+            "matchedExpression": "@local.topic_id",
+            "type": "local",
+            "fieldName": "topic_id"
+          },
+          {
+            "fullExpression": "@local.topic_id@local.task_groups",
+            "matchedExpression": "@local.task_groups",
+            "type": "local",
+            "fieldName": "task_groups"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.topic_id": [
+          "value"
+        ],
+        "@local.task_groups": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "nav_group",
+      "name": "nav_group",
+      "value": "@data.@local.task_group_data",
+      "_translations": {
+        "value": {}
+      },
+      "parameter_list": {
+        "sort": "priority"
+      },
+      "_nested_name": "nav_group",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@data.@local.task_group_data",
+            "matchedExpression": "@local.task_group_data",
+            "type": "local",
+            "fieldName": "task_group_data"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.task_group_data": [
+          "value"
+        ]
+      }
+    }
+  ],
+  "_xlsxPath": "global_modular/core_templates/module_navigation.xlsx"
+}

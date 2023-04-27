@@ -381,7 +381,7 @@
     },
     {
       "name": "click_template",
-      "value": "module_overview",
+      "value": "module_details",
       "_translations": {
         "value": {}
       },

@@ -54,6 +54,7 @@
       "story_id": "interrupt_child",
       "question_1_id": "interrupt_child_1",
       "question_2_id": "interrupt_child_2",
+      "question_3_id": "interrupt_child_3",
       "activity_title": "Interrupting your child",
       "_translations": {
         "activity_title": {}
@@ -69,6 +70,7 @@
       "story_id": "join_child",
       "question_1_id": "join_child_1",
       "question_2_id": "join_child_2",
+      "question_3_id": "join_child_3",
       "activity_title": "Joining your child",
       "_translations": {
         "activity_title": {},

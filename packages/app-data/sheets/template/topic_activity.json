@@ -474,9 +474,6 @@
         "value": {}
       },
       "condition": false,
-      "parameter_list": {
-        "priority_list": "@local.type_data.intro_image_asset, @local.activity_image"
-      },
       "type": "set_variable",
       "_nested_name": "intro_image",
       "_dynamicFields": {
@@ -487,33 +484,11 @@
             "type": "local",
             "fieldName": "content_data"
           }
-        ],
-        "parameter_list": {
-          "priority_list": [
-            {
-              "fullExpression": "@local.type_data.intro_image_asset, @local.activity_image",
-              "matchedExpression": "@local.type_data.intro_image_asset",
-              "type": "local",
-              "fieldName": "type_data"
-            },
-            {
-              "fullExpression": "@local.type_data.intro_image_asset, @local.activity_image",
-              "matchedExpression": "@local.activity_image",
-              "type": "local",
-              "fieldName": "activity_image"
-            }
-          ]
-        }
+        ]
       },
       "_dynamicDependencies": {
         "@local.content_data.intro_image_asset": [
           "value"
-        ],
-        "@local.type_data.intro_image_asset": [
-          "parameter_list.priority_list"
-        ],
-        "@local.activity_image": [
-          "parameter_list.priority_list"
         ]
       }
     },
@@ -1293,6 +1268,33 @@
         }
       ],
       "_nested_name": "dg_outro"
+    },
+    {
+      "type": "template",
+      "name": "nav_buttons",
+      "value": "nav_buttons",
+      "action_list": [
+        {
+          "trigger": "completed",
+          "action_id": "emit",
+          "args": [
+            "completed"
+          ],
+          "_raw": "completed | emit: completed",
+          "_cleaned": "completed | emit: completed"
+        },
+        {
+          "trigger": "uncompleted",
+          "action_id": "emit",
+          "args": [
+            "uncompleted"
+          ],
+          "_raw": "uncompleted | emit: uncompleted",
+          "_cleaned": "uncompleted | emit: uncompleted"
+        }
+      ],
+      "rows": [],
+      "_nested_name": "nav_buttons"
     }
   ],
   "_xlsxPath": "global/templates/core_templates/topic_activity.xlsx"

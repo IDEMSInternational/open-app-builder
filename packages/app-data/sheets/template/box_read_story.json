@@ -159,14 +159,22 @@
           "rows": [
             {
               "type": "image",
-              "name": "image",
+              "name": "image_@item.id",
               "value": "@data.@local.image_src",
               "_translations": {
                 "value": {}
               },
               "condition": "!!(@data.@local.image_src)",
-              "_nested_name": "items.dashed_box_@item.id.image",
+              "_nested_name": "items.dashed_box_@item.id.image_@item.id",
               "_dynamicFields": {
+                "name": [
+                  {
+                    "fullExpression": "image_@item.id",
+                    "matchedExpression": "@item.id",
+                    "type": "item",
+                    "fieldName": "id"
+                  }
+                ],
                 "value": [
                   {
                     "fullExpression": "@data.@local.image_src",
@@ -185,33 +193,51 @@
                 ],
                 "_nested_name": [
                   {
-                    "fullExpression": "items.dashed_box_@item.id.image",
-                    "matchedExpression": "@item.id.image",
+                    "fullExpression": "items.dashed_box_@item.id.image_@item.id",
+                    "matchedExpression": "@item.id.image_",
+                    "type": "item",
+                    "fieldName": "id"
+                  },
+                  {
+                    "fullExpression": "items.dashed_box_@item.id.image_@item.id",
+                    "matchedExpression": "@item.id",
                     "type": "item",
                     "fieldName": "id"
                   }
                 ]
               },
               "_dynamicDependencies": {
+                "@item.id": [
+                  "name",
+                  "_nested_name"
+                ],
                 "@local.image_src": [
                   "value",
                   "condition"
                 ],
-                "@item.id.image": [
+                "@item.id.image_": [
                   "_nested_name"
                 ]
               }
             },
             {
               "type": "text",
-              "name": "text",
+              "name": "text_@item.id",
               "value": "@data.@local.text",
               "_translations": {
                 "value": {}
               },
               "condition": "!!(@data.@local.text)",
-              "_nested_name": "items.dashed_box_@item.id.text",
+              "_nested_name": "items.dashed_box_@item.id.text_@item.id",
               "_dynamicFields": {
+                "name": [
+                  {
+                    "fullExpression": "text_@item.id",
+                    "matchedExpression": "@item.id",
+                    "type": "item",
+                    "fieldName": "id"
+                  }
+                ],
                 "value": [
                   {
                     "fullExpression": "@data.@local.text",
@@ -230,19 +256,29 @@
                 ],
                 "_nested_name": [
                   {
-                    "fullExpression": "items.dashed_box_@item.id.text",
-                    "matchedExpression": "@item.id.text",
+                    "fullExpression": "items.dashed_box_@item.id.text_@item.id",
+                    "matchedExpression": "@item.id.text_",
+                    "type": "item",
+                    "fieldName": "id"
+                  },
+                  {
+                    "fullExpression": "items.dashed_box_@item.id.text_@item.id",
+                    "matchedExpression": "@item.id",
                     "type": "item",
                     "fieldName": "id"
                   }
                 ]
               },
               "_dynamicDependencies": {
+                "@item.id": [
+                  "name",
+                  "_nested_name"
+                ],
                 "@local.text": [
                   "value",
                   "condition"
                 ],
-                "@item.id.text": [
+                "@item.id.text_": [
                   "_nested_name"
                 ]
               }

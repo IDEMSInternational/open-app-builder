@@ -1486,6 +1486,11 @@
       "flow_name": "module_overview",
       "_xlsxPath": "global_modular/core_templates/module_navigation.xlsx"
     },
+    "module_stepper": {
+      "flow_type": "template",
+      "flow_name": "module_stepper",
+      "_xlsxPath": "global_modular/core_templates/module_navigation.xlsx"
+    },
     "nav_buttons": {
       "flow_type": "template",
       "flow_name": "nav_buttons",

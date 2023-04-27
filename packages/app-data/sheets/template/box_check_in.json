@@ -227,7 +227,7 @@
     },
     {
       "type": "display_group",
-      "name": "option_happy_dg",
+      "name": "feedback_happy_dg",
       "hidden": "@local.radio_button_grid!=\"happy\"",
       "parameter_list": {
         "style": "column"
@@ -235,30 +235,30 @@
       "rows": [
         {
           "type": "text",
-          "name": "option_happy",
-          "value": "@local.row_data.option_happy",
+          "name": "feedback_happy",
+          "value": "@local.row_data.feedback_happy",
           "_translations": {
             "value": {}
           },
-          "_nested_name": "option_happy_dg.option_happy",
+          "_nested_name": "feedback_happy_dg.feedback_happy",
           "_dynamicFields": {
             "value": [
               {
-                "fullExpression": "@local.row_data.option_happy",
-                "matchedExpression": "@local.row_data.option_happy",
+                "fullExpression": "@local.row_data.feedback_happy",
+                "matchedExpression": "@local.row_data.feedback_happy",
                 "type": "local",
                 "fieldName": "row_data"
               }
             ]
           },
           "_dynamicDependencies": {
-            "@local.row_data.option_happy": [
+            "@local.row_data.feedback_happy": [
               "value"
             ]
           }
         }
       ],
-      "_nested_name": "option_happy_dg",
+      "_nested_name": "feedback_happy_dg",
       "_dynamicFields": {
         "hidden": [
           {
@@ -277,7 +277,7 @@
     },
     {
       "type": "display_group",
-      "name": "option_ok_dg",
+      "name": "feedback_ok_dg",
       "hidden": "@local.radio_button_grid!=\"ok\"",
       "parameter_list": {
         "style": "column"
@@ -285,30 +285,30 @@
       "rows": [
         {
           "type": "text",
-          "name": "option_ok",
-          "value": "@local.row_data.option_ok",
+          "name": "feedback_ok",
+          "value": "@local.row_data.feedback_ok",
           "_translations": {
             "value": {}
           },
-          "_nested_name": "option_ok_dg.option_ok",
+          "_nested_name": "feedback_ok_dg.feedback_ok",
           "_dynamicFields": {
             "value": [
               {
-                "fullExpression": "@local.row_data.option_ok",
-                "matchedExpression": "@local.row_data.option_ok",
+                "fullExpression": "@local.row_data.feedback_ok",
+                "matchedExpression": "@local.row_data.feedback_ok",
                 "type": "local",
                 "fieldName": "row_data"
               }
             ]
           },
           "_dynamicDependencies": {
-            "@local.row_data.option_ok": [
+            "@local.row_data.feedback_ok": [
               "value"
             ]
           }
         }
       ],
-      "_nested_name": "option_ok_dg",
+      "_nested_name": "feedback_ok_dg",
       "_dynamicFields": {
         "hidden": [
           {
@@ -327,7 +327,7 @@
     },
     {
       "type": "display_group",
-      "name": "option_sad_dg",
+      "name": "feedback_sad_dg",
       "hidden": "@local.radio_button_grid!=\"sad\"",
       "parameter_list": {
         "style": "column"
@@ -335,30 +335,30 @@
       "rows": [
         {
           "type": "text",
-          "name": "option_sad",
-          "value": "@local.row_data.option_sad",
+          "name": "feedback_sad",
+          "value": "@local.row_data.feedback_sad",
           "_translations": {
             "value": {}
           },
-          "_nested_name": "option_sad_dg.option_sad",
+          "_nested_name": "feedback_sad_dg.feedback_sad",
           "_dynamicFields": {
             "value": [
               {
-                "fullExpression": "@local.row_data.option_sad",
-                "matchedExpression": "@local.row_data.option_sad",
+                "fullExpression": "@local.row_data.feedback_sad",
+                "matchedExpression": "@local.row_data.feedback_sad",
                 "type": "local",
                 "fieldName": "row_data"
               }
             ]
           },
           "_dynamicDependencies": {
-            "@local.row_data.option_sad": [
+            "@local.row_data.feedback_sad": [
               "value"
             ]
           }
         }
       ],
-      "_nested_name": "option_sad_dg",
+      "_nested_name": "feedback_sad_dg",
       "_dynamicFields": {
         "hidden": [
           {
