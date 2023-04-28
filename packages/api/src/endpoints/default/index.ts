@@ -1,11 +1,7 @@
-import { Body, Controller, DefaultValuePipe, Get, Module, Param, Query } from "@nestjs/common";
-import { ApiOperation, ApiProperty, ApiQuery } from "@nestjs/swagger";
+import { Controller, Get, Headers, Module } from "@nestjs/common";
+import { ApiOperation } from "@nestjs/swagger";
 import { environment } from "../../environment";
-
-export class QueryDTO {
-  @ApiProperty({ default: environment.APP_DB_NAME, required: false })
-  db_name: string;
-}
+import { UseDeploymentDB } from "src/modules/deployment.decorators";
 
 @Controller()
 class DefaultController {
@@ -17,8 +13,8 @@ class DefaultController {
 
   @Get("status")
   @ApiOperation({ summary: "Check server status" })
-  @ApiQuery({ name: "db_name", required: false, type: QueryDTO })
-  checkStatus(@Query("db_name") db_name = environment.APP_DB_NAME) {
+  @UseDeploymentDB()
+  checkStatus(@Headers("x-deployment-db-name") db_name = environment.APP_DB_NAME) {
     return `[${db_name}] API Up`;
   }
 }
