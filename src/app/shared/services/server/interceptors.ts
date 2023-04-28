@@ -9,13 +9,22 @@ import {
 import { environment } from "src/environments/environment";
 import { Observable } from "rxjs";
 
+let { db_name, url: API_URL } = environment.deploymentConfig.api;
+
+// Override development credentials when running locally
+if (!environment.production) {
+  API_URL = "http://localhost:3000";
+}
+
 /** Handle updating urls intended for api server */
 @Injectable()
 export class ServerAPIInterceptor implements HttpInterceptor {
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     // assume requests targetting / (e.g. /app_users) is directed to api endpoint
     if (req.url.startsWith("/")) {
-      const replacedUrl = `${environment.apiEndpoint}${req.url}`;
+      const headers = req.headers;
+      headers.set("db_name", db_name);
+      const replacedUrl = `${API_URL}${req.url}`;
       const apiReq = req.clone({ url: replacedUrl });
       return next.handle(apiReq);
     }
