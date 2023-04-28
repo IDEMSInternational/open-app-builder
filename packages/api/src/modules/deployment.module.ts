@@ -1,11 +1,11 @@
 import { Global, MiddlewareConsumer, Module, NestModule, RequestMethod } from "@nestjs/common";
 import { DeploymentMiddleware } from "./deployment.middleware";
-import { DeploymentDBService, DeploymentModelService } from "./deployment.service";
+import { DeploymentService } from "./deployment.service";
 
 @Global()
 @Module({
-  providers: [DeploymentDBService, DeploymentModelService, DeploymentMiddleware],
-  exports: [DeploymentDBService, DeploymentModelService, DeploymentMiddleware],
+  providers: [DeploymentService, DeploymentMiddleware],
+  exports: [DeploymentService, DeploymentMiddleware],
 })
 /**
  * Create a global module so that deployment services can be accessed from any controller/service

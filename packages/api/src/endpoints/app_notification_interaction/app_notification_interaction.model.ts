@@ -1,4 +1,4 @@
-import { Column, DataType, Model, Table } from "sequelize-typescript";
+import { Column, DataType, Table } from "sequelize-typescript";
 import { AppCommonModel } from "../common";
 
 // NOTE - the table will not be created from this model, but instead via db migration scripts

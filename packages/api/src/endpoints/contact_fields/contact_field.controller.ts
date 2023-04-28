@@ -7,12 +7,12 @@ import { ContactFieldDto } from "../app_users/dto/set-user-data.dto";
 @ApiTags("Contact Fields")
 @Controller("contact_fields")
 export class ContactFieldController {
-  constructor(private readonly ContactFieldService: ContactFieldService) {}
+  constructor(private readonly contactFieldService: ContactFieldService) {}
 
   @Get()
   @ApiOperation({ summary: "List contact field entries" })
   findAll(): Promise<ContactFieldEntry[]> {
-    return this.ContactFieldService.findAll();
+    return this.contactFieldService.findAll();
   }
 
   // NOTE - assumes app_user_id will never be 'columns' -> Future refactor to own api endpoint
@@ -28,7 +28,7 @@ export class ContactFieldController {
   async setUserContactFields(@Param() params: { app_user_id: string }, @Body() data: any) {
     const { app_user_id } = params;
     try {
-      const res = await this.ContactFieldService.setUserContactFields(app_user_id, data);
+      const res = await this.contactFieldService.setUserContactFields(app_user_id, data);
       return res;
     } catch (error) {
       throw new HttpException(error.message, HttpStatus.BAD_REQUEST);

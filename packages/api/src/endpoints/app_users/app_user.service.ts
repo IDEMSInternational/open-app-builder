@@ -1,19 +1,15 @@
 import { Injectable } from "@nestjs/common";
-import { InjectModel } from "@nestjs/sequelize";
-import { DeploymentModelService } from "src/modules/deployment.service";
+import { DeploymentService } from "src/modules/deployment.service";
 import { AppUser } from "./app_user.model";
 import { ContactFieldDto } from "./dto/set-user-data.dto";
 
 @Injectable()
 export class AppUsersService {
-  constructor(
-    private deploymentModel: DeploymentModelService,
-    // TODO - want to remove to include with requests
-    // or inject something that returns a class with module getter
+  constructor(private deploymentService: DeploymentService) {}
 
-    @InjectModel(AppUser)
-    private readonly model: typeof AppUser // @InjectDeploymentDB(AppUser) // private readonly deploymentDB: any
-  ) {}
+  get model() {
+    return this.deploymentService.model(AppUser);
+  }
 
   // create(app_user_id: string, createUserDto: ContactFieldDto): Promise<AppUser> {
   //   const user = new AppUser();

@@ -17,7 +17,7 @@ import { DataType } from "sequelize-typescript";
 @ApiTags("DB Tables")
 @Controller("tables")
 export class TablesController {
-  constructor(private readonly TableService: TableService) {}
+  constructor(private readonly tableService: TableService) {}
 
   @Get()
   @ApiOperation({ summary: "List tables" })
@@ -68,7 +68,7 @@ export class TablesController {
     const { table_name } = params;
     const { columns } = data;
     try {
-      const res = await this.TableService.updateTableColumns(table_name, "add", columns);
+      const res = await this.tableService.updateTableColumns(table_name, "add", columns);
       // TODO re-map json (maybe param to pass?)
       return res;
     } catch (error) {
@@ -91,7 +91,7 @@ export class TablesController {
     const { table_name } = params;
     const { columns } = data;
     try {
-      const res = await this.TableService.updateTableColumns(table_name, "drop", columns);
+      const res = await this.tableService.updateTableColumns(table_name, "drop", columns);
       return res;
     } catch (error) {
       throw new HttpException(error.message, HttpStatus.BAD_REQUEST);

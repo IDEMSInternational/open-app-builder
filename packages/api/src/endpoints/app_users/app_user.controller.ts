@@ -3,12 +3,16 @@ import { ContactFieldDto } from "./dto/set-user-data.dto";
 import { AppUser } from "./app_user.model";
 import { AppUsersService } from "./app_user.service";
 import { ApiBody, ApiOperation, ApiParam, ApiResponse, ApiTags } from "@nestjs/swagger";
-import { UseDeploymentDB, InjectDeploymentModel } from "src/modules/deployment.decorators";
+import { UseDeploymentDB } from "src/modules/deployment.decorators";
+import { DeploymentService } from "src/modules/deployment.service";
 
 @ApiTags("Users")
 @Controller("app_users")
 export class AppUsersController {
-  constructor(private readonly appUsersService: AppUsersService) {}
+  constructor(
+    private readonly appUsersService: AppUsersService,
+    private dbService: DeploymentService
+  ) {}
 
   // @Post()
   // create(@Body() createUserDto: CreateAppUserDto): Promise<AppUser> {
@@ -18,8 +22,8 @@ export class AppUsersController {
   @Get()
   @ApiOperation({ summary: "List users" })
   @UseDeploymentDB()
-  findAll(@InjectDeploymentModel(AppUser) model: typeof AppUser): Promise<AppUser[]> {
-    return model.findAll();
+  findAll() {
+    return this.dbService.model(AppUser).findAll();
   }
 
   // @Get(":app_user_id")
