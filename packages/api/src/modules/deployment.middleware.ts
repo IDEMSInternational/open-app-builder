@@ -17,10 +17,10 @@ export class DeploymentMiddleware implements NestMiddleware {
 
   async use(req: Request, res: Response, next: NextFunction) {
     // ensure all requests include a db_name parameter
-    if (!req.query.db_name) {
-      req.query.db_name = environment.APP_DB_NAME;
+    if (!req.headers["x-deployment-db-name"]) {
+      req.headers["x-deployment-db-name"] = environment.APP_DB_NAME;
     }
-    const dbName = req.query.db_name as string;
+    const dbName = req.headers["x-deployment-db-name"] as string;
 
     const sequelize = await this.service.getSequelizeClient(dbName);
     req.body.sequelize = sequelize;
