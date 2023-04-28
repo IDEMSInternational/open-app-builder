@@ -39,7 +39,7 @@ export interface IDeploymentConfig {
      * Target endpoint for api. Default `https://apps-server.idems.international/api`
      * Will be replaced when running locally as per `src\app\shared\services\server\interceptors.ts`
      * */
-    url?: string;
+    endpoint?: string;
   };
   /** Optional override of any provided constants from data-models/constants */
   app_config: IAppConfig;
@@ -103,7 +103,7 @@ export const DEPLOYMENT_CONFIG_EXAMPLE_DEFAULTS: IDeploymentConfig = {
   android: {},
   api: {
     db_name: "plh",
-    url: "https://apps-server.idems.international/api",
+    endpoint: "https://apps-server.idems.international/api",
   },
   app_config: {} as any, // populated by `getDefaultAppConstants()`,
   local_drive: {
