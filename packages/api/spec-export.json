@@ -193,12 +193,12 @@
         "summary": "Check server status",
         "parameters": [
           {
-            "required": false,
-            "name": "db_name",
-            "in": "query",
+            "name": "x-deployment-db-name",
+            "in": "header",
+            "description": "Name of db for deployment to populate",
             "schema": {
-              "default": "plh",
-              "type": "string"
+              "type": "string",
+              "default": "plh"
             }
           }
         ],
@@ -215,12 +215,12 @@
         "summary": "List users",
         "parameters": [
           {
-            "required": false,
-            "name": "db_name",
-            "in": "query",
+            "name": "x-deployment-db-name",
+            "in": "header",
+            "description": "Name of db for deployment to populate",
             "schema": {
-              "default": "plh",
-              "type": "string"
+              "type": "string",
+              "default": "plh"
             }
           }
         ],

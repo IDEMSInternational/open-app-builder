@@ -1,5 +1,5 @@
 import { applyDecorators, createParamDecorator, ExecutionContext } from "@nestjs/common";
-import { ApiProperty, ApiQuery } from "@nestjs/swagger";
+import { ApiHeader } from "@nestjs/swagger";
 
 import { Sequelize } from "sequelize-typescript";
 import { environment } from "src/environment";
@@ -20,22 +20,25 @@ export const InjectDeploymentModel = createParamDecorator(
   }
 );
 
-export class DeploymentQueryDTO {
-  @ApiProperty({ default: environment.APP_DB_NAME, required: false })
-  db_name: string;
-}
-
 /**
  * Add query parameter to support db_name property used for deployments with default value
  * Shorthand for
  * ```
- * @ApiQuery({ name: "db_name", required: false, type: DeploymentQueryDTO })
+ * @ApiHeader({
+    name: "x-deployment-db-name", schema: { type: "string", default: environment.APP_DB_NAME }
+  })
  * ```
  *
  * Can also include other decorators as required
  * */
-export function DeploymentQuery() {
-  return applyDecorators(ApiQuery({ name: "db_name", required: false, type: DeploymentQueryDTO }));
+export function UseDeploymentDB() {
+  return applyDecorators(
+    ApiHeader({
+      name: "x-deployment-db-name",
+      description: "Name of db for deployment to populate",
+      schema: { type: "string", default: environment.APP_DB_NAME },
+    })
+  );
 }
 
 // https://stackoverflow.com/questions/60578332/use-global-nest-module-in-decorator/60608856#60608856

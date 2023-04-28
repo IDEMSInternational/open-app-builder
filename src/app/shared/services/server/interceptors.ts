@@ -5,6 +5,7 @@ import {
   HttpHandler,
   HttpRequest,
   HTTP_INTERCEPTORS,
+  HttpHeaders,
 } from "@angular/common/http";
 import { environment } from "src/environments/environment";
 import { Observable } from "rxjs";
@@ -22,10 +23,13 @@ export class ServerAPIInterceptor implements HttpInterceptor {
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     // assume requests targetting / (e.g. /app_users) is directed to api endpoint
     if (req.url.startsWith("/")) {
-      const headers = req.headers;
-      headers.set("db_name", db_name);
       const replacedUrl = `${API_ENDPOINT}${req.url}`;
-      const apiReq = req.clone({ url: replacedUrl });
+      // append deployment-specific values (header set/append methods inconsistent so create new)
+      const headerValues = { "x-deployment-db-name": db_name };
+      for (const key of req.headers.keys()) {
+        headerValues[key] = req.headers.get(key);
+      }
+      const apiReq = req.clone({ url: replacedUrl, headers: new HttpHeaders(headerValues) });
       return next.handle(apiReq);
     }
     return next.handle(req);
