@@ -6,12 +6,6 @@
   "rows": [
     {
       "id": "time_child",
-      "answer_list": [
-        "name: option_1 | text: Busy",
-        "name: option_2 | text: Stressed",
-        "name: option_3 | text: My child annoys me",
-        "name: option_4 | text: I don't know what to do together"
-      ],
       "question_text": "We would love to hear from you: what stands in your way from spending time with your child?",
       "_translations": {
         "question_text": {},
@@ -69,11 +63,6 @@
     },
     {
       "id": "time_self",
-      "answer_list": [
-        "name: option_1 | text: Busy",
-        "name: option_2 | text: My children and family always need something from me",
-        "name: option_3 | text: It feels selfish to take time for myself"
-      ],
       "question_text": "What stands in your way from taking time for yourself?",
       "_translations": {
         "question_text": {},
