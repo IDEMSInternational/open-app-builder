@@ -1,5 +1,5 @@
 import { generateDeploymentConfig } from "scripts";
-const config = generateDeploymentConfig("module_scaffolding");
+const config = generateDeploymentConfig("parentapp_kids");
 import { SKINS } from "./../plh/skins";
 
 config.google_drive = {
@@ -17,11 +17,11 @@ config.translations = {
   source_strings_path: "packages/app-data/translations_source/to_translate",
 }
 // Override any app constants here
-config.app_config.APP_HEADER_DEFAULTS.title = "Module Scaffolding App"
-config.app_config.APP_SIDEMENU_DEFAULTS.title = "Module Scaffolding App"
+config.app_config.APP_HEADER_DEFAULTS.title = "ParentApp for Kids"
+config.app_config.APP_SIDEMENU_DEFAULTS.title = "ParentApp for Kids"
 config.app_config.APP_LANGUAGES.default = "gb_en";
-config.app_config.NOTIFICATION_DEFAULTS.title = "New message from Module Scaffolding App";
-config.app_config.NOTIFICATION_DEFAULTS.text = "You have a new message from Module Scaffolding App";
+config.app_config.NOTIFICATION_DEFAULTS.title = "New message from ParentApp for Kids";
+config.app_config.NOTIFICATION_DEFAULTS.text = "You have a new message from ParentApp for Kids";
 config.app_config.APP_SKINS.defaultSkinName = SKINS.modular.name;
 config.app_config.APP_SKINS.available = [SKINS.modular, SKINS.weekly_workshop];
 config.app_config.APP_THEMES.available = ["default", "professional"];
