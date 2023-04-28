@@ -1,5 +1,5 @@
-import { Inject, Injectable, Scope } from "@nestjs/common";
-import { ModuleRef, REQUEST } from "@nestjs/core";
+import { Injectable } from "@nestjs/common";
+import { ModuleRef } from "@nestjs/core";
 import { DBInstance } from "src/db";
 
 import { Sequelize } from "sequelize-typescript";
@@ -19,35 +19,52 @@ import { DEFAULT_CONNECTION_NAME } from "@nestjs/sequelize/dist/sequelize.consta
  * as that will populate a single global service used in all requests whereas
  * the api will want to switch connection depending on request
  */
-export class DeploymentDBService {
+export class DeploymentService {
+  /** Active sequelize client */
+  public client: Sequelize;
+
+  /** List of all admin clients initialised*/
   private adminClients = {};
+
+  /** List of all user clients initialised */
   private userClients: Record<string, Sequelize> = {};
   private globalClient: Sequelize;
   private models: Function[];
 
   // https://stackoverflow.com/questions/52665421/angular-inject-service-into-decorator
   constructor(private moduleRef: ModuleRef) {
-    DeploymentDBService.service = this;
+    DeploymentService.service = this;
   }
 
-  private static service: DeploymentDBService | undefined = undefined;
-
-  public static getService(): DeploymentDBService {
-    if (!DeploymentDBService.service) {
-      throw new Error("DeploymentDBService not initialized");
+  /**
+   *
+   * @param entity
+   * @returns
+   */
+  public model<T extends Function>(entity: T) {
+    // Client init depends on middleware. Ensure currently in use
+    if (!this.client) {
+      throw new Error("Deployment client not initialized");
     }
-    return DeploymentDBService.service;
+    const model = this.client.model<T, T>(entity.name) as any;
+    return model as T;
   }
 
-  async getSequelizeClient(dbName: string) {
+  private static service: DeploymentService | undefined = undefined;
+
+  public static getService(): DeploymentService {
+    if (!DeploymentService.service) {
+      throw new Error("DeploymentService not initialized");
+    }
+    return DeploymentService.service;
+  }
+
+  async setDeploymentDB(dbName: string) {
     //
     if (!this.globalClient) {
       this.globalClient = this.moduleRef.get(Sequelize, { strict: false });
       // TODO - want to prevent connection being used
       this.models = EntitiesMetadataStorage.getEntitiesByConnection(DEFAULT_CONNECTION_NAME);
-      this.globalClient.addHook("beforeConnect", () => {
-        console.log("beforeConnect");
-      });
     }
     //
     if (!this.adminClients[dbName]) {
@@ -78,7 +95,8 @@ export class DeploymentDBService {
     // TODO - maybe try register sequelize as a lazy module?
     // global injected version not suitable
     console.log("get client", dbName, this.userClients[dbName].config);
-    return this.userClients[dbName];
+    this.client = this.userClients[dbName];
+    return this.client;
   }
 
   /**
@@ -105,18 +123,23 @@ export class DeploymentDBService {
   }
 }
 
-@Injectable({ scope: Scope.REQUEST })
-/** Alternative to param decorator used for services */
-export class DeploymentModelService {
-  constructor(@Inject(REQUEST) private request: Request, private service: DeploymentDBService) {}
+// DEPRECATED - CC 2023-04-29 - prefer set sequelize client via service instead
+// of extracting from request
 
-  get<T extends Function>(entity: T) {
-    // TODO - add better typings
-    const sequelize: Sequelize = (this.request.body as any).sequelize;
-    const model = sequelize.model<T, T>(entity.name) as any;
-    return model as T;
-    // NOTE - assumes already gone through middleware
-    // const sequelize:Sequelize = this.request.body.sequelize
-    // console.log("get model", this.request, this.service);
-  }
-}
+// @Injectable({ scope: Scope.REQUEST })
+// /**
+//  * Alternative to param decorator used for services
+//  * */
+// export class DeploymentRequestService {
+//   constructor(@Inject(REQUEST) private request: Request, private service: DeploymentService) {}
+
+//   get<T extends Function>(entity: T) {
+//     // TODO - add better typings
+//     const sequelize: Sequelize = (this.request.body as any).sequelize;
+//     const model = sequelize.model<T, T>(entity.name) as any;
+//     return model as T;
+//     // NOTE - assumes already gone through middleware
+//     // const sequelize:Sequelize = this.request.body.sequelize
+//     // console.log("get model", this.request, this.service);
+//   }
+// }
