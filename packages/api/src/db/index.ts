@@ -19,14 +19,17 @@ export class DBInstance {
    * NOTE - this could all be done outside the app
    */
   public async setup() {
+    // create an admin client to create new tables and users as required
     const adminClient = new Client(ADMIN_CLIENT_CONFIG);
     try {
       await adminClient.connect();
       await this.setupTables(adminClient);
       await this.setupUsers(adminClient);
       await adminClient.end();
-      await this.runMigrations();
-      return adminClient;
+      // create additional client on target db to perform migrations
+      const migrationClient = new Sequelize({ ...USER_DB_CONFIG, database: this.dbName });
+      await this.runMigrations(migrationClient);
+      await migrationClient.close();
     } catch (error) {
       console.error(error);
       console.error("Could not bootstrap DB");
@@ -63,17 +66,16 @@ export class DBInstance {
    * Perform all listed database migration functions as found in local migrations folder
    * For more info see: https://github.com/sequelize/umzug
    */
-  private async runMigrations() {
+  private async runMigrations(client: Sequelize) {
     console.log("[Migration] start");
-    const sequelize = new Sequelize(USER_DB_CONFIG);
     const migrator = new Umzug({
       migrations: {
         // files might be local typescript or the compiled js files
         // in case compiled ignore type definitions
         glob: ["*.{js,ts}", { cwd: MIGRATIONS_DIR, ignore: ["*.d.ts"] }],
       },
-      context: sequelize.getQueryInterface(),
-      storage: new SequelizeStorage({ sequelize }),
+      context: client.getQueryInterface(),
+      storage: new SequelizeStorage({ sequelize: client }),
       logger: console,
     });
     const pending = await migrator.pending();
@@ -87,8 +89,6 @@ export class DBInstance {
     } catch (error) {
       console.error("[Migration] error", error);
     }
-
-    await sequelize.close();
   }
 
   /**

@@ -2,13 +2,11 @@ import { Injectable, NestMiddleware } from "@nestjs/common";
 import { NextFunction, Request } from "express";
 import { environment } from "src/environment";
 
-import { DeploymentService } from "src/modules/deployment.service";
+import { DeploymentService } from "./deployment.service";
 
 /**
- *
- * @param req
- * @param res
- * @param next
+ * Intercept all requests and use request headers to set the active connection to use
+ * as part of db operations
  */
 
 @Injectable()

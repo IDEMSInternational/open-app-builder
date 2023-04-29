@@ -17,7 +17,7 @@ import { DeploymentModule } from "./modules";
       ...USER_DB_CONFIG,
       // name: environment.APP_DB_NAME,
       autoLoadModels: true,
-      // tables will be initialised via sequelizer
+      // tables will be initialised via sequelize
       synchronize: false,
       // TODO - expose env pooling options
       pool: {
