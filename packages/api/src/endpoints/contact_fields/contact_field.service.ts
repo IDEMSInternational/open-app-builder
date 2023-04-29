@@ -10,21 +10,27 @@ type ITableColumn = { column_name: string; data_type: string };
 
 @Injectable()
 export class ContactFieldService {
+  private initialised = false;
   // columns: ITableColumn[];
   // columnsHashmap: { [column_name: string]: ITableColumn };
-  tableName: string;
-  constructor(private eventEmitter: EventEmitter2, private deploymentService: DeploymentService) {
-    this.tableName = this.model.tableName;
-    this.addFlattenJsonBindings(this.model);
-  }
+  constructor(private eventEmitter: EventEmitter2, private deploymentService: DeploymentService) {}
+
   get model() {
+    // only complete init on first request so that deployment service can configure db connections as required
+    if (!this.initialised) {
+      this.addFlattenJsonBindings(this.deploymentService.model(ContactFieldEntry));
+      this.initialised = true;
+    }
     return this.deploymentService.model(ContactFieldEntry);
+  }
+  get tableName() {
+    return this.model.tableName;
   }
   /** Add hook so that after docs are saved raw json is flattened */
 
-  private async addFlattenJsonBindings(model: typeof ContactFieldEntry) {
+  private addFlattenJsonBindings(model: typeof ContactFieldEntry) {
     // Bind to db save to populate flattened json
-    model.addHook("afterSave", async (instance) => {
+    this.deploymentService.registerHook("afterSave", async (instance) => {
       const rawValuesChanged = instance.changed("raw" as any);
       if (rawValuesChanged) {
         await flattenJson({

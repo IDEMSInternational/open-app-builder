@@ -7,6 +7,7 @@ import { USER_DB_CONFIG } from "src/db/config";
 import { SequelizeModuleOptions } from "@nestjs/sequelize";
 import { EntitiesMetadataStorage } from "@nestjs/sequelize/dist/entities-metadata.storage";
 import { DEFAULT_CONNECTION_NAME } from "@nestjs/sequelize/dist/sequelize.constants";
+import { SequelizeHooks } from "sequelize/types/hooks";
 
 @Injectable()
 /**
@@ -23,13 +24,12 @@ export class DeploymentService {
   /** Active sequelize client */
   public client: Sequelize;
 
-  /** List of all admin clients initialised*/
-  private adminClients = {};
-
   /** List of all user clients initialised */
   private userClients: Record<string, Sequelize> = {};
   private globalClient: Sequelize;
   private models: Function[];
+
+  private hooks: { hookType: keyof SequelizeHooks; fn: any }[] = [];
 
   // https://stackoverflow.com/questions/52665421/angular-inject-service-into-decorator
   constructor(private moduleRef: ModuleRef) {
@@ -50,6 +50,14 @@ export class DeploymentService {
     return model as T;
   }
 
+  /** Specify sequelize hooks to apply to clients. Updates all existing clients and will be registered on future **/
+  public registerHook<K extends keyof SequelizeHooks>(hookType: K, fn: SequelizeHooks[K]) {
+    for (const client of Object.values(this.userClients)) {
+      client.addHook(hookType, fn);
+    }
+    this.hooks.push({ hookType, fn });
+  }
+
   private static service: DeploymentService | undefined = undefined;
 
   public static getService(): DeploymentService {
@@ -66,37 +74,44 @@ export class DeploymentService {
       // TODO - want to prevent connection being used
       this.models = EntitiesMetadataStorage.getEntitiesByConnection(DEFAULT_CONNECTION_NAME);
     }
-    //
-    if (!this.adminClients[dbName]) {
-      console.log("db init", dbName);
-      const adminClient = await new DBInstance(dbName).setup();
-      this.adminClients[dbName] = adminClient;
-    }
+
     //
     if (!this.userClients[dbName]) {
-      const userClient = await this.createConnectionFactory({
-        ...USER_DB_CONFIG,
-        database: dbName,
-        autoLoadModels: true,
-        name: dbName,
-        // tables will be initialised via sequelizer
-        synchronize: false,
-        // TODO - expose env pooling options
-        pool: {
-          max: 50,
-          min: 0,
-          idle: 10000,
-        },
-      });
-      console.log(dbName, userClient.models);
-      this.userClients[dbName] = userClient;
+      await new DBInstance(dbName).setup();
+      await this.createNewClient(dbName);
     }
 
-    // TODO - maybe try register sequelize as a lazy module?
     // global injected version not suitable
-    console.log("get client", dbName, this.userClients[dbName].config);
+    // console.log("get client", dbName, this.userClients[dbName].config);
     this.client = this.userClients[dbName];
     return this.client;
+  }
+
+  /**
+   * Create a new sequelize user client for the named DB
+   * @param dbName
+   */
+  private async createNewClient(dbName: string) {
+    const userClient = await this.createConnectionFactory({
+      ...USER_DB_CONFIG,
+      database: dbName,
+      autoLoadModels: true,
+      name: dbName,
+      // tables will be initialised via sequelize
+      synchronize: false,
+      // TODO - expose env pooling options
+      pool: {
+        max: 50,
+        min: 0,
+        idle: 10000,
+      },
+    });
+    // ensure all hooks are registered
+    for (const { hookType, fn } of this.hooks) {
+      userClient.addHook(hookType, fn);
+    }
+    // store globally to allow future access
+    this.userClients[dbName] = userClient;
   }
 
   /**

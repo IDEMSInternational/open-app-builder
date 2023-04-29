@@ -23,8 +23,15 @@ export class DeploymentMiddleware implements NestMiddleware {
     // Assign the correct sequelize client based on target deployment db
     // Additionally update request itself to allow access to client
     // either via service or request handler
-    const sequelize = await this.service.setDeploymentDB(dbName);
-    req.body.sequelize = sequelize;
+    await this.service.setDeploymentDB(dbName);
+
+    /**
+     * DEPRECATED CC 2023-29-04 - prefer use service instead of parsing from body
+     * client returned from setDeploymentDB, also requires removing from any method
+     * that tries to convert full body to json
+     */
+    // req.body.sequelize = client;
+
     next();
   }
 }
