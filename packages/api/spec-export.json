@@ -1,191 +1,5 @@
 {
   "openapi": "3.0.0",
-  "info": {
-    "title": "IDEMS Apps API",
-    "description": "App-Server Communication",
-    "version": "1.2.7",
-    "contact": {}
-  },
-  "tags": [
-    {
-      "name": "api",
-      "description": ""
-    }
-  ],
-  "servers": [
-    {
-      "url": ""
-    }
-  ],
-  "components": {
-    "schemas": {
-      "JSONB": {
-        "type": "object",
-        "properties": {}
-      },
-      "ContactFieldDto": {
-        "type": "object",
-        "properties": {
-          "app_user_id": {
-            "type": "string",
-            "description": "App user ID"
-          },
-          "app_deployment_name": {
-            "type": "string",
-            "description": "Name of app deployment",
-            "default": ""
-          },
-          "app_version": {
-            "type": "string",
-            "description": "Current app version",
-            "default": "0.0.0"
-          },
-          "contact_fields": {
-            "description": "Contact Fields from app",
-            "default": {},
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/JSONB"
-              }
-            ]
-          },
-          "device_info": {
-            "description": "Device info from app",
-            "default": {},
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/JSONB"
-              }
-            ]
-          }
-        },
-        "required": [
-          "app_user_id",
-          "app_deployment_name",
-          "app_version",
-          "contact_fields",
-          "device_info"
-        ]
-      },
-      "UserFeedbackDto": {
-        "type": "object",
-        "properties": {
-          "app_user_id": {
-            "type": "string",
-            "description": "App user ID"
-          },
-          "app_deployment_name": {
-            "type": "string",
-            "description": "Name of app deployment",
-            "default": ""
-          },
-          "app_version": {
-            "type": "string",
-            "description": "Current app version",
-            "default": "0.0.0"
-          },
-          "app_user_record_id": {
-            "type": "number",
-            "description": "Local ID for local db record"
-          },
-          "data": {
-            "description": "Feedback entry",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/JSONB"
-              }
-            ]
-          }
-        },
-        "required": [
-          "app_user_id",
-          "app_deployment_name",
-          "app_version",
-          "app_user_record_id",
-          "data"
-        ]
-      },
-      "UserNotificationInteractionDto": {
-        "type": "object",
-        "properties": {
-          "app_user_id": {
-            "type": "string",
-            "description": "App user ID"
-          },
-          "app_deployment_name": {
-            "type": "string",
-            "description": "Name of app deployment",
-            "default": ""
-          },
-          "app_version": {
-            "type": "string",
-            "description": "Current app version",
-            "default": "0.0.0"
-          },
-          "app_user_record_id": {
-            "type": "number",
-            "description": "Local ID for local db record"
-          },
-          "data": {
-            "description": "Notification interaction entry",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/JSONB"
-              }
-            ]
-          }
-        },
-        "required": [
-          "app_user_id",
-          "app_deployment_name",
-          "app_version",
-          "app_user_record_id",
-          "data"
-        ]
-      },
-      "STRING": {
-        "type": "object",
-        "properties": {}
-      },
-      "TableColumnMappingDto": {
-        "type": "object",
-        "properties": {
-          "columns": {
-            "description": "Column Field Mapping",
-            "default": [
-              {
-                "field_name": "test_text",
-                "field_type": "text"
-              },
-              {
-                "field_name": "test_integer",
-                "field_type": "integer"
-              },
-              {
-                "field_name": "test_number",
-                "field_type": "number"
-              },
-              {
-                "field_name": "test_date",
-                "field_type": "date"
-              },
-              {
-                "field_name": "test_boolean",
-                "field_type": "boolean"
-              }
-            ],
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          }
-        },
-        "required": [
-          "columns"
-        ]
-      }
-    }
-  },
   "paths": {
     "/status": {
       "get": {
@@ -699,6 +513,192 @@
         },
         "tags": [
           "DB Tables"
+        ]
+      }
+    }
+  },
+  "info": {
+    "title": "IDEMS Apps API",
+    "description": "App-Server Communication",
+    "version": "1.3.0",
+    "contact": {}
+  },
+  "tags": [
+    {
+      "name": "api",
+      "description": ""
+    }
+  ],
+  "servers": [
+    {
+      "url": ""
+    }
+  ],
+  "components": {
+    "schemas": {
+      "JSONB": {
+        "type": "object",
+        "properties": {}
+      },
+      "ContactFieldDto": {
+        "type": "object",
+        "properties": {
+          "app_user_id": {
+            "type": "string",
+            "description": "App user ID"
+          },
+          "app_deployment_name": {
+            "type": "string",
+            "description": "Name of app deployment",
+            "default": ""
+          },
+          "app_version": {
+            "type": "string",
+            "description": "Current app version",
+            "default": "0.0.0"
+          },
+          "contact_fields": {
+            "description": "Contact Fields from app",
+            "default": {},
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/JSONB"
+              }
+            ]
+          },
+          "device_info": {
+            "description": "Device info from app",
+            "default": {},
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/JSONB"
+              }
+            ]
+          }
+        },
+        "required": [
+          "app_user_id",
+          "app_deployment_name",
+          "app_version",
+          "contact_fields",
+          "device_info"
+        ]
+      },
+      "UserFeedbackDto": {
+        "type": "object",
+        "properties": {
+          "app_user_id": {
+            "type": "string",
+            "description": "App user ID"
+          },
+          "app_deployment_name": {
+            "type": "string",
+            "description": "Name of app deployment",
+            "default": ""
+          },
+          "app_version": {
+            "type": "string",
+            "description": "Current app version",
+            "default": "0.0.0"
+          },
+          "app_user_record_id": {
+            "type": "number",
+            "description": "Local ID for local db record"
+          },
+          "data": {
+            "description": "Feedback entry",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/JSONB"
+              }
+            ]
+          }
+        },
+        "required": [
+          "app_user_id",
+          "app_deployment_name",
+          "app_version",
+          "app_user_record_id",
+          "data"
+        ]
+      },
+      "UserNotificationInteractionDto": {
+        "type": "object",
+        "properties": {
+          "app_user_id": {
+            "type": "string",
+            "description": "App user ID"
+          },
+          "app_deployment_name": {
+            "type": "string",
+            "description": "Name of app deployment",
+            "default": ""
+          },
+          "app_version": {
+            "type": "string",
+            "description": "Current app version",
+            "default": "0.0.0"
+          },
+          "app_user_record_id": {
+            "type": "number",
+            "description": "Local ID for local db record"
+          },
+          "data": {
+            "description": "Notification interaction entry",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/JSONB"
+              }
+            ]
+          }
+        },
+        "required": [
+          "app_user_id",
+          "app_deployment_name",
+          "app_version",
+          "app_user_record_id",
+          "data"
+        ]
+      },
+      "STRING": {
+        "type": "object",
+        "properties": {}
+      },
+      "TableColumnMappingDto": {
+        "type": "object",
+        "properties": {
+          "columns": {
+            "description": "Column Field Mapping",
+            "default": [
+              {
+                "field_name": "test_text",
+                "field_type": "text"
+              },
+              {
+                "field_name": "test_integer",
+                "field_type": "integer"
+              },
+              {
+                "field_name": "test_number",
+                "field_type": "number"
+              },
+              {
+                "field_name": "test_date",
+                "field_type": "date"
+              },
+              {
+                "field_name": "test_boolean",
+                "field_type": "boolean"
+              }
+            ],
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "columns"
         ]
       }
     }
