@@ -1,8 +1,9 @@
 import { Body, Controller, Get, HttpException, HttpStatus, Param, Post } from "@nestjs/common";
 import { ContactFieldEntry } from "./contact_field.model";
 import { ContactFieldService } from "./contact_field.service";
-import { ApiBody, ApiOperation, ApiResponse, ApiTags } from "@nestjs/swagger";
+import { ApiBody, ApiOperation, ApiParam, ApiResponse, ApiTags } from "@nestjs/swagger";
 import { ContactFieldDto } from "../app_users/dto/set-user-data.dto";
+import { DeploymentHeaders } from "src/modules/deployment.decorators";
 
 @ApiTags("Contact Fields")
 @Controller("contact_fields")
@@ -11,6 +12,7 @@ export class ContactFieldController {
 
   @Get()
   @ApiOperation({ summary: "List contact field entries" })
+  @DeploymentHeaders()
   findAll(): Promise<ContactFieldEntry[]> {
     return this.contactFieldService.findAll();
   }
@@ -20,11 +22,13 @@ export class ContactFieldController {
   @Post(":app_user_id")
   @ApiOperation({ summary: "Set User Contact Fields" })
   @ApiBody({ type: ContactFieldDto })
+  @ApiParam({ name: "app_user_id", type: "string" })
   @ApiResponse({
     status: 200,
     description: "User Updated",
     type: ContactFieldDto,
   })
+  @DeploymentHeaders()
   async setUserContactFields(@Param() params: { app_user_id: string }, @Body() data: any) {
     const { app_user_id } = params;
     try {

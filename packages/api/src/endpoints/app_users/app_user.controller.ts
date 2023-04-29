@@ -3,7 +3,7 @@ import { ContactFieldDto } from "./dto/set-user-data.dto";
 import { AppUser } from "./app_user.model";
 import { AppUsersService } from "./app_user.service";
 import { ApiBody, ApiOperation, ApiParam, ApiResponse, ApiTags } from "@nestjs/swagger";
-import { UseDeploymentDB } from "src/modules/deployment.decorators";
+import { DeploymentHeaders } from "src/modules/deployment.decorators";
 import { DeploymentService } from "src/modules/deployment.service";
 
 @ApiTags("Users")
@@ -21,7 +21,7 @@ export class AppUsersController {
 
   @Get()
   @ApiOperation({ summary: "List users" })
-  @UseDeploymentDB()
+  @DeploymentHeaders()
   findAll() {
     return this.dbService.model(AppUser).findAll();
   }
@@ -39,6 +39,7 @@ export class AppUsersController {
   @Get(":app_user_id")
   @ApiParam({ name: "app_user_id", type: String })
   @ApiOperation({ summary: "Get user profile" })
+  @DeploymentHeaders()
   findOne(@Param("app_user_id") app_user_id: string): Promise<AppUser> {
     return this.appUsersService.findOne(app_user_id);
   }
@@ -52,6 +53,7 @@ export class AppUsersController {
     description: "User Updated",
     type: ContactFieldDto,
   })
+  @DeploymentHeaders()
   async setUserData(@Param() params: { app_user_id: string }, @Body() data: ContactFieldDto) {
     try {
       const res = await this.appUsersService.setUserData(params.app_user_id, data);
