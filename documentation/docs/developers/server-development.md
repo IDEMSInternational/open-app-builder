@@ -50,8 +50,10 @@ yarn workspace api docker:build
 ```bash
 yarn workspace server start
 ```
+NOTE - if users need to be configured then this can be done using the stack PGAdmin available at `localhost:5050` with a connection host name `db` (instead of localhost)
 
-4. Interact with app
+
+1. Interact with app
 Update the `API_ENDPOINT` specified in `src\app\shared\services\server\interceptors.ts` to target docker stack in development, i.e. `http://localhost/api`.
 
 Run the app via `yarn start`
