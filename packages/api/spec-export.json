@@ -246,6 +246,15 @@
             "schema": {
               "type": "string"
             }
+          },
+          {
+            "name": "x-deployment-db-name",
+            "in": "header",
+            "description": "Name of db for deployment to populate",
+            "schema": {
+              "type": "string",
+              "default": "plh"
+            }
           }
         ],
         "responses": {
@@ -261,6 +270,15 @@
         "operationId": "AppUsersController_setUserData",
         "summary": "Update user profile",
         "parameters": [
+          {
+            "name": "x-deployment-db-name",
+            "in": "header",
+            "description": "Name of db for deployment to populate",
+            "schema": {
+              "type": "string",
+              "default": "plh"
+            }
+          },
           {
             "name": "app_user_id",
             "required": true,
@@ -301,7 +319,17 @@
       "get": {
         "operationId": "ContactFieldController_findAll",
         "summary": "List contact field entries",
-        "parameters": [],
+        "parameters": [
+          {
+            "name": "x-deployment-db-name",
+            "in": "header",
+            "description": "Name of db for deployment to populate",
+            "schema": {
+              "type": "string",
+              "default": "plh"
+            }
+          }
+        ],
         "responses": {
           "200": {
             "description": ""
@@ -316,7 +344,25 @@
       "post": {
         "operationId": "ContactFieldController_setUserContactFields",
         "summary": "Set User Contact Fields",
-        "parameters": [],
+        "parameters": [
+          {
+            "name": "x-deployment-db-name",
+            "in": "header",
+            "description": "Name of db for deployment to populate",
+            "schema": {
+              "type": "string",
+              "default": "plh"
+            }
+          },
+          {
+            "name": "app_user_id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
         "requestBody": {
           "required": true,
           "content": {
@@ -348,7 +394,17 @@
       "get": {
         "operationId": "AppFeedbackController_findAll",
         "summary": "List all feedback",
-        "parameters": [],
+        "parameters": [
+          {
+            "name": "x-deployment-db-name",
+            "in": "header",
+            "description": "Name of db for deployment to populate",
+            "schema": {
+              "type": "string",
+              "default": "plh"
+            }
+          }
+        ],
         "responses": {
           "200": {
             "description": ""
@@ -361,7 +417,17 @@
       "post": {
         "operationId": "AppFeedbackController_addUserFeedback",
         "summary": "Add feedback entry",
-        "parameters": [],
+        "parameters": [
+          {
+            "name": "x-deployment-db-name",
+            "in": "header",
+            "description": "Name of db for deployment to populate",
+            "schema": {
+              "type": "string",
+              "default": "plh"
+            }
+          }
+        ],
         "requestBody": {
           "required": true,
           "content": {
@@ -393,7 +459,17 @@
       "get": {
         "operationId": "AppNotificationInteractionController_findAll",
         "summary": "List all notification interactions",
-        "parameters": [],
+        "parameters": [
+          {
+            "name": "x-deployment-db-name",
+            "in": "header",
+            "description": "Name of db for deployment to populate",
+            "schema": {
+              "type": "string",
+              "default": "plh"
+            }
+          }
+        ],
         "responses": {
           "200": {
             "description": ""
@@ -406,7 +482,17 @@
       "post": {
         "operationId": "AppNotificationInteractionController_addUserNotificationInteraction",
         "summary": "Add notification interaction entry",
-        "parameters": [],
+        "parameters": [
+          {
+            "name": "x-deployment-db-name",
+            "in": "header",
+            "description": "Name of db for deployment to populate",
+            "schema": {
+              "type": "string",
+              "default": "plh"
+            }
+          }
+        ],
         "requestBody": {
           "required": true,
           "content": {
@@ -438,7 +524,17 @@
       "get": {
         "operationId": "TablesController_listTables",
         "summary": "List tables",
-        "parameters": [],
+        "parameters": [
+          {
+            "name": "x-deployment-db-name",
+            "in": "header",
+            "description": "Name of db for deployment to populate",
+            "schema": {
+              "type": "string",
+              "default": "plh"
+            }
+          }
+        ],
         "responses": {
           "200": {
             "description": "List of table_names",
@@ -463,7 +559,17 @@
       "get": {
         "operationId": "TablesController_getTableMeta",
         "summary": "Get table meta",
-        "parameters": [],
+        "parameters": [
+          {
+            "name": "x-deployment-db-name",
+            "in": "header",
+            "description": "Name of db for deployment to populate",
+            "schema": {
+              "type": "string",
+              "default": "plh"
+            }
+          }
+        ],
         "responses": {
           "200": {
             "description": ""
@@ -478,7 +584,17 @@
       "get": {
         "operationId": "TablesController_getTableColumns",
         "summary": "Add columns to map raw field data",
-        "parameters": [],
+        "parameters": [
+          {
+            "name": "x-deployment-db-name",
+            "in": "header",
+            "description": "Name of db for deployment to populate",
+            "schema": {
+              "type": "string",
+              "default": "plh"
+            }
+          }
+        ],
         "requestBody": {
           "required": true,
           "content": {
@@ -508,7 +624,17 @@
       "post": {
         "operationId": "TablesController_addMappedTableColumns",
         "summary": "Add columns to map raw field data",
-        "parameters": [],
+        "parameters": [
+          {
+            "name": "x-deployment-db-name",
+            "in": "header",
+            "description": "Name of db for deployment to populate",
+            "schema": {
+              "type": "string",
+              "default": "plh"
+            }
+          }
+        ],
         "requestBody": {
           "required": true,
           "content": {
@@ -538,7 +664,17 @@
       "delete": {
         "operationId": "TablesController_removeMappedTableColumns",
         "summary": "Remove columns used to map raw field data",
-        "parameters": [],
+        "parameters": [
+          {
+            "name": "x-deployment-db-name",
+            "in": "header",
+            "description": "Name of db for deployment to populate",
+            "schema": {
+              "type": "string",
+              "default": "plh"
+            }
+          }
+        ],
         "requestBody": {
           "required": true,
           "content": {
