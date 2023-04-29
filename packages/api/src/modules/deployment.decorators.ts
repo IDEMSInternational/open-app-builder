@@ -16,7 +16,7 @@ import { environment } from "src/environment";
  *
  * Can also include other decorators as required
  * */
-export function UseDeploymentDB() {
+export function DeploymentHeaders() {
   return applyDecorators(
     ApiHeader({
       name: "x-deployment-db-name",
