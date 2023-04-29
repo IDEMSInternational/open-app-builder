@@ -26,6 +26,7 @@ nav:
       - developers/quickstart.md
       - developers/adding-components.md
       - developers/deployments.md
+      - developers/server-development.md
       - developers/device-testing.md
       - developers/android-assets.md
       - developers/in-app-updates.md
