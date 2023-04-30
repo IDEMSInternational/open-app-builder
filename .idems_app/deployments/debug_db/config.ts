@@ -1,6 +1,10 @@
 import { generateDeploymentConfig } from "scripts";
 const config = generateDeploymentConfig("debug_db")
 
+config.api = {
+  db_name:'debug',
+}
+
 config.google_drive = {
   sheets_folder_id: "",
   assets_folder_id: "",
