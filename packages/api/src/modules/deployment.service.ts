@@ -16,7 +16,7 @@ import { SequelizeHooks } from "sequelize/types/hooks";
  * Admin connections setup tables
  * Client connections used for operations
  *
- * This is used instead of intialising sequelize via module import forRoot,
+ * This is used instead of initialising sequelize via module import forRoot,
  * as that will populate a single global service used in all requests whereas
  * the api will want to switch connection depending on request
  */
@@ -31,15 +31,26 @@ export class DeploymentService {
 
   private hooks: { hookType: keyof SequelizeHooks; fn: any }[] = [];
 
-  // https://stackoverflow.com/questions/52665421/angular-inject-service-into-decorator
   constructor(private moduleRef: ModuleRef) {
     DeploymentService.service = this;
   }
 
   /**
-   *
-   * @param entity
-   * @returns
+   * Provide access to any globally instantiated instance of service without injection
+   * (e.g. functional utilities)
+   * https://stackoverflow.com/questions/52665421/angular-inject-service-into-decorator
+   */
+  public static getService(): DeploymentService {
+    if (!DeploymentService.service) {
+      throw new Error("DeploymentService not initialized");
+    }
+    return DeploymentService.service;
+  }
+  private static service: DeploymentService | undefined = undefined;
+
+  /**
+   * Access sequelize methods for a given model
+   * @param entity Sequelize model representation of db table and columns
    */
   public model<T extends Function>(entity: T) {
     // Client init depends on middleware. Ensure currently in use
@@ -58,31 +69,21 @@ export class DeploymentService {
     this.hooks.push({ hookType, fn });
   }
 
-  private static service: DeploymentService | undefined = undefined;
-
-  public static getService(): DeploymentService {
-    if (!DeploymentService.service) {
-      throw new Error("DeploymentService not initialized");
-    }
-    return DeploymentService.service;
-  }
-
+  /** Specify default db connection to be used for any subsequent operations */
   async setDeploymentDB(dbName: string) {
-    //
+    // Ensure sequelize has been initialised with default credentials to use as a base
     if (!this.globalClient) {
       this.globalClient = this.moduleRef.get(Sequelize, { strict: false });
       // TODO - want to prevent connection being used
       this.models = EntitiesMetadataStorage.getEntitiesByConnection(DEFAULT_CONNECTION_NAME);
     }
 
-    //
+    // Create new client for custom db connection
     if (!this.userClients[dbName]) {
       await new DBInstance(dbName).setup();
       await this.createNewClient(dbName);
     }
 
-    // global injected version not suitable
-    // console.log("get client", dbName, this.userClients[dbName].config);
     this.client = this.userClients[dbName];
     return this.client;
   }
