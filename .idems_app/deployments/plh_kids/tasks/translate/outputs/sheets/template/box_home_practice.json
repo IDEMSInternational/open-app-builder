@@ -1,0 +1,180 @@
+{
+  "flow_type": "template",
+  "flow_name": "box_home_practice",
+  "status": "released",
+  "type_id": "home_practice",
+  "rows": [
+    {
+      "name": "data_list_name",
+      "value": [
+        "home_practice"
+      ],
+      "type": "set_variable",
+      "_nested_name": "data_list_name"
+    },
+    {
+      "name": "id",
+      "value": "connect",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "id"
+    },
+    {
+      "name": "data_list_name_id",
+      "value": [
+        "@local.data_list_name.@local.id"
+      ],
+      "type": "set_variable",
+      "_nested_name": "data_list_name_id",
+      "_dynamicFields": {
+        "value": {
+          "0": [
+            {
+              "fullExpression": "@local.data_list_name.@local.id",
+              "matchedExpression": "@local.data_list_name",
+              "type": "local",
+              "fieldName": "data_list_name"
+            },
+            {
+              "fullExpression": "@local.data_list_name.@local.id",
+              "matchedExpression": "@local.id",
+              "type": "local",
+              "fieldName": "id"
+            }
+          ]
+        }
+      },
+      "_dynamicDependencies": {
+        "@local.data_list_name": [
+          "value.0"
+        ],
+        "@local.id": [
+          "value.0"
+        ]
+      }
+    },
+    {
+      "name": "row_data",
+      "value": "@data.@local.data_list_name_id",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "row_data",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@data.@local.data_list_name_id",
+            "matchedExpression": "@local.data_list_name_id",
+            "type": "local",
+            "fieldName": "data_list_name_id"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.data_list_name_id": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "text",
+      "name": "text",
+      "value": "@local.row_data.text",
+      "_translations": {
+        "value": {}
+      },
+      "_nested_name": "text",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@local.row_data.text",
+            "matchedExpression": "@local.row_data.text",
+            "type": "local",
+            "fieldName": "row_data"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.row_data.text": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "text",
+      "name": "tip_1",
+      "value": "@local.row_data.tip_1",
+      "_translations": {
+        "value": {}
+      },
+      "_nested_name": "tip_1",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@local.row_data.tip_1",
+            "matchedExpression": "@local.row_data.tip_1",
+            "type": "local",
+            "fieldName": "row_data"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.row_data.tip_1": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "text",
+      "name": "tip_2",
+      "value": "@local.row_data.tip_2",
+      "_translations": {
+        "value": {}
+      },
+      "_nested_name": "tip_2",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@local.row_data.tip_2",
+            "matchedExpression": "@local.row_data.tip_2",
+            "type": "local",
+            "fieldName": "row_data"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.row_data.tip_2": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "text",
+      "name": "tip_3",
+      "value": "@local.row_data.tip_3",
+      "_translations": {
+        "value": {}
+      },
+      "_nested_name": "tip_3",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@local.row_data.tip_3",
+            "matchedExpression": "@local.row_data.tip_3",
+            "type": "local",
+            "fieldName": "row_data"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.row_data.tip_3": [
+          "value"
+        ]
+      }
+    }
+  ],
+  "_xlsxPath": "global/templates/core_templates/topic_activity.xlsx"
+}

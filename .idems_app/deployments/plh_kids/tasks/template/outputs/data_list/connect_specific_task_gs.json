@@ -1,0 +1,79 @@
+{
+  "flow_type": "data_list",
+  "flow_name": "connect_specific_task_gs",
+  "status": "released",
+  "topic_id": "connect",
+  "rows": [
+    {
+      "id": "reflect_time_child",
+      "individual": true,
+      "together": true,
+      "priority": 10,
+      "has_single_task": true,
+      "template": "connect_reflect_time_child",
+      "title": "Time with your child - Reflect",
+      "_translatedFields": {
+        "title": {
+          "eng": "Time with your child - Reflect"
+        }
+      }
+    },
+    {
+      "id": "read_interrupt_self",
+      "individual": true,
+      "together": true,
+      "priority": 12,
+      "has_single_task": true,
+      "template": "connect_read_interrupt_self",
+      "title": "Time with your child - Being interrupted",
+      "_translatedFields": {
+        "title": {
+          "eng": "Time with your child - Being interrupted"
+        }
+      }
+    },
+    {
+      "id": "read_join_self",
+      "individual": true,
+      "together": true,
+      "priority": 13,
+      "has_single_task": true,
+      "template": "connect_read_join_self",
+      "title": "Time with your child - Being joined",
+      "_translatedFields": {
+        "title": {
+          "eng": "Time with your child - Being joined"
+        }
+      }
+    },
+    {
+      "id": "read_interrupt_child",
+      "individual": true,
+      "together": true,
+      "priority": 14,
+      "has_single_task": true,
+      "template": "connect_read_interrupt_child",
+      "title": "Time with your child - Interrupting your child",
+      "_translatedFields": {
+        "title": {
+          "eng": "Time with your child - Interrupting your child"
+        }
+      }
+    },
+    {
+      "id": "read_join_child",
+      "individual": true,
+      "together": true,
+      "priority": 15,
+      "has_single_task": true,
+      "template": "connect_read_join_child",
+      "title": "Time with your child - Joining your child",
+      "_translatedFields": {
+        "title": {
+          "eng": "Time with your child - Joining your child"
+        }
+      }
+    }
+  ],
+  "_xlsxPath": "global/data/topic_task_data/topic_task_groups.xlsx"
+}

@@ -1,0 +1,284 @@
+{
+  "flow_type": "template",
+  "flow_name": "box_relax",
+  "status": "released",
+  "type_id": "relax",
+  "rows": [
+    {
+      "name": "data_list_name",
+      "value": [
+        "relax"
+      ],
+      "exclude_from_translation": true,
+      "type": "set_variable",
+      "_nested_name": "data_list_name"
+    },
+    {
+      "name": "id",
+      "value": "relax_1",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "id"
+    },
+    {
+      "name": "data_list_name_id",
+      "value": [
+        "@local.data_list_name.@local.id"
+      ],
+      "type": "set_variable",
+      "_nested_name": "data_list_name_id",
+      "_dynamicFields": {
+        "value": {
+          "0": [
+            {
+              "fullExpression": "@local.data_list_name.@local.id",
+              "matchedExpression": "@local.data_list_name",
+              "type": "local",
+              "fieldName": "data_list_name"
+            },
+            {
+              "fullExpression": "@local.data_list_name.@local.id",
+              "matchedExpression": "@local.id",
+              "type": "local",
+              "fieldName": "id"
+            }
+          ]
+        }
+      },
+      "_dynamicDependencies": {
+        "@local.data_list_name": [
+          "value.0"
+        ],
+        "@local.id": [
+          "value.0"
+        ]
+      }
+    },
+    {
+      "name": "row_data",
+      "value": "@data.@local.data_list_name_id",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "row_data",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@data.@local.data_list_name_id",
+            "matchedExpression": "@local.data_list_name_id",
+            "type": "local",
+            "fieldName": "data_list_name_id"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.data_list_name_id": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "text",
+      "name": "text",
+      "value": "@local.row_data.text",
+      "_translations": {
+        "value": {}
+      },
+      "_nested_name": "text",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@local.row_data.text",
+            "matchedExpression": "@local.row_data.text",
+            "type": "local",
+            "fieldName": "row_data"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.row_data.text": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "name": "image",
+      "value": "images/habits/breathe.svg",
+      "_translations": {
+        "value": {}
+      },
+      "_nested_name": "image"
+    },
+    {
+      "name": "audio_transcript",
+      "value": "@local.row_data.audio_transcript",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "audio_transcript",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@local.row_data.audio_transcript",
+            "matchedExpression": "@local.row_data.audio_transcript",
+            "type": "local",
+            "fieldName": "row_data"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.row_data.audio_transcript": [
+          "value"
+        ]
+      }
+    },
+    {
+      "name": "audio_asset",
+      "value": "@local.row_data.audio_asset",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "audio_asset",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@local.row_data.audio_asset",
+            "matchedExpression": "@local.row_data.audio_asset",
+            "type": "local",
+            "fieldName": "row_data"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.row_data.audio_asset": [
+          "value"
+        ]
+      }
+    },
+    {
+      "name": "audio_title",
+      "value": "Listen and relax",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "audio_title"
+    },
+    {
+      "type": "audio",
+      "name": "audio",
+      "value": "@local.audio_asset",
+      "_translations": {
+        "value": {}
+      },
+      "parameter_list": {
+        "title": "@local.audio_title"
+      },
+      "_nested_name": "audio",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@local.audio_asset",
+            "matchedExpression": "@local.audio_asset",
+            "type": "local",
+            "fieldName": "audio_asset"
+          }
+        ],
+        "parameter_list": {
+          "title": [
+            {
+              "fullExpression": "@local.audio_title",
+              "matchedExpression": "@local.audio_title",
+              "type": "local",
+              "fieldName": "audio_title"
+            }
+          ]
+        }
+      },
+      "_dynamicDependencies": {
+        "@local.audio_asset": [
+          "value"
+        ],
+        "@local.audio_title": [
+          "parameter_list.title"
+        ]
+      }
+    },
+    {
+      "type": "button",
+      "name": "button",
+      "value": "Read and relax",
+      "_translations": {
+        "value": {}
+      },
+      "action_list": [
+        {
+          "trigger": "click",
+          "action_id": "set_field",
+          "args": [
+            "current_relax_id",
+            "@local.id"
+          ],
+          "_raw": "click | set_field: current_relax_id: @local.id",
+          "_cleaned": "click | set_field: current_relax_id: @local.id"
+        },
+        {
+          "trigger": "click",
+          "action_id": "pop_up",
+          "args": [
+            "relax_text"
+          ],
+          "_raw": "click | pop_up: relax_text",
+          "_cleaned": "click | pop_up: relax_text"
+        }
+      ],
+      "_nested_name": "button",
+      "_dynamicFields": {
+        "action_list": {
+          "0": {
+            "args": {
+              "1": [
+                {
+                  "fullExpression": "@local.id",
+                  "matchedExpression": "@local.id",
+                  "type": "local",
+                  "fieldName": "id"
+                }
+              ]
+            },
+            "_raw": [
+              {
+                "fullExpression": "click | set_field: current_relax_id: @local.id",
+                "matchedExpression": "@local.id",
+                "type": "local",
+                "fieldName": "id"
+              }
+            ],
+            "_cleaned": [
+              {
+                "fullExpression": "click | set_field: current_relax_id: @local.id",
+                "matchedExpression": "@local.id",
+                "type": "local",
+                "fieldName": "id"
+              }
+            ]
+          }
+        }
+      },
+      "_dynamicDependencies": {
+        "@local.id": [
+          "action_list.0.args.1",
+          "action_list.0._raw",
+          "action_list.0._cleaned"
+        ]
+      }
+    }
+  ],
+  "_xlsxPath": "global/templates/core_templates/topic_activity.xlsx"
+}

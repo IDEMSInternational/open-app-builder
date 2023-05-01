@@ -1,0 +1,235 @@
+{
+  "flow_name": "connect_tog_task_gs",
+  "flow_subtype": "generated",
+  "flow_type": "data_list",
+  "rows": [
+    {
+      "id": "check_in",
+      "individual": true,
+      "together": true,
+      "priority": 1,
+      "has_single_task": true,
+      "title": "@data.type.check_in.activity_title",
+      "_translations": {
+        "title": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "@data.type.check_in.activity_title"
+        }
+      },
+      "template": "connect_check_in",
+      "completed_field": "task_gp_connect_check_in_completed",
+      "completed": "@fields.task_gp_connect_check_in_completed"
+    },
+    {
+      "id": "relax",
+      "individual": true,
+      "together": true,
+      "priority": 3,
+      "has_single_task": true,
+      "title": "@data.type.relax.activity_title",
+      "_translations": {
+        "title": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "@data.type.relax.activity_title"
+        }
+      },
+      "template": "connect_relax",
+      "completed_field": "task_gp_connect_relax_completed",
+      "completed": "@fields.task_gp_connect_relax_completed"
+    },
+    {
+      "id": "relate",
+      "individual": true,
+      "together": true,
+      "priority": 5,
+      "has_single_task": true,
+      "title": "@data.type.relate.activity_title",
+      "_translations": {
+        "title": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "@data.type.relate.activity_title"
+        }
+      },
+      "template": "connect_relate",
+      "completed_field": "task_gp_connect_relate_completed",
+      "completed": "@fields.task_gp_connect_relate_completed"
+    },
+    {
+      "id": "tools",
+      "individual": true,
+      "together": true,
+      "priority": 70,
+      "has_single_task": true,
+      "title": "@data.type.tools.activity_title",
+      "_translations": {
+        "title": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "@data.type.tools.activity_title"
+        }
+      },
+      "template": "connect_tools",
+      "completed_field": "task_gp_connect_tools_completed",
+      "completed": "@fields.task_gp_connect_tools_completed"
+    },
+    {
+      "id": "home_practice",
+      "individual": true,
+      "together": true,
+      "priority": 80,
+      "has_single_task": true,
+      "title": "@data.type.home_practice.activity_title",
+      "_translations": {
+        "title": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "@data.type.home_practice.activity_title"
+        }
+      },
+      "template": "connect_home_practice",
+      "completed_field": "task_gp_connect_home_practice_completed",
+      "completed": "@fields.task_gp_connect_home_practice_completed"
+    },
+    {
+      "id": "ending",
+      "individual": true,
+      "together": true,
+      "priority": 90,
+      "has_single_task": true,
+      "title": "@data.type.ending.activity_title",
+      "_translations": {
+        "title": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "@data.type.ending.activity_title"
+        }
+      },
+      "template": "connect_ending",
+      "completed_field": "task_gp_connect_ending_completed",
+      "completed": "@fields.task_gp_connect_ending_completed"
+    },
+    {
+      "id": "hp_review",
+      "individual": true,
+      "together": true,
+      "priority": 91,
+      "has_single_task": true,
+      "title": "@data.type.hp_review.activity_title",
+      "_translations": {
+        "title": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "@data.type.hp_review.activity_title"
+        }
+      },
+      "template": "connect_hp_review",
+      "completed_field": "task_gp_connect_hp_review_completed",
+      "completed": "@fields.task_gp_connect_hp_review_completed"
+    },
+    {
+      "id": "reflect_time_child",
+      "individual": true,
+      "together": true,
+      "priority": 10,
+      "has_single_task": true,
+      "title": "Time with your child - Reflect",
+      "_translations": {
+        "title": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Time with your child - Reflect"
+        }
+      },
+      "template": "connect_reflect_time_child",
+      "completed_field": "task_gp_connect_reflect_time_child_completed",
+      "completed": "@fields.task_gp_connect_reflect_time_child_completed"
+    },
+    {
+      "id": "read_interrupt_self",
+      "individual": true,
+      "together": true,
+      "priority": 12,
+      "has_single_task": true,
+      "title": "Time with your child - Being interrupted",
+      "_translations": {
+        "title": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Time with your child - Being interrupted"
+        }
+      },
+      "template": "connect_read_interrupt_self",
+      "completed_field": "task_gp_connect_read_interrupt_self_completed",
+      "completed": "@fields.task_gp_connect_read_interrupt_self_completed"
+    },
+    {
+      "id": "read_join_self",
+      "individual": true,
+      "together": true,
+      "priority": 13,
+      "has_single_task": true,
+      "title": "Time with your child - Being joined",
+      "_translations": {
+        "title": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Time with your child - Being joined"
+        }
+      },
+      "template": "connect_read_join_self",
+      "completed_field": "task_gp_connect_read_join_self_completed",
+      "completed": "@fields.task_gp_connect_read_join_self_completed"
+    },
+    {
+      "id": "read_interrupt_child",
+      "individual": true,
+      "together": true,
+      "priority": 14,
+      "has_single_task": true,
+      "title": "Time with your child - Interrupting your child",
+      "_translations": {
+        "title": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Time with your child - Interrupting your child"
+        }
+      },
+      "template": "connect_read_interrupt_child",
+      "completed_field": "task_gp_connect_read_interrupt_child_completed",
+      "completed": "@fields.task_gp_connect_read_interrupt_child_completed"
+    },
+    {
+      "id": "read_join_child",
+      "individual": true,
+      "together": true,
+      "priority": 15,
+      "has_single_task": true,
+      "title": "Time with your child - Joining your child",
+      "_translations": {
+        "title": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Time with your child - Joining your child"
+        }
+      },
+      "template": "connect_read_join_child",
+      "completed_field": "task_gp_connect_read_join_child_completed",
+      "completed": "@fields.task_gp_connect_read_join_child_completed"
+    }
+  ]
+}

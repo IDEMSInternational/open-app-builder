@@ -1,0 +1,36 @@
+{
+  "flow_type": "data_list",
+  "flow_name": "relate_data",
+  "status": "released",
+  "data_list_name": "relate",
+  "rows": [
+    {
+      "id": "connect",
+      "text": "Connection plays an important role in our relationships, health and wellbeing. This includes how we connect with our children, our families, and communities, but also: how we connect with ourselves. \n\nYet often when life gets busy or if we feel overwhelmed, the idea of taking a pause and connecting just feels like too much effort! When our children are being demanding and difficult, or if we are feeling stressed, it can be really challenging to find the time and energy to connect - with our children and with ourselves.",
+      "_translations": {
+        "text": {},
+        "feedback_yes": {},
+        "feedback_no": {},
+        "question_text": {}
+      },
+      "_translatedFields": {
+        "text": {
+          "eng": "Connection plays an important role in our relationships, health and wellbeing. This includes how we connect with our children, our families, and communities, but also: how we connect with ourselves. \n\nYet often when life gets busy or if we feel overwhelmed, the idea of taking a pause and connecting just feels like too much effort! When our children are being demanding and difficult, or if we are feeling stressed, it can be really challenging to find the time and energy to connect - with our children and with ourselves."
+        },
+        "feedback_yes": {
+          "eng": "You are not alone! It can be really hard sometimes to do this. In this @global.topic we will look at some ways to support you in this."
+        },
+        "feedback_no": {
+          "eng": "It’s great that you are able to make time to connect with your child and with yourself! In this @global.topic we will look at some ways to do more of just that."
+        },
+        "question_text": {
+          "eng": "Have you experienced this?"
+        }
+      },
+      "feedback_yes": "You are not alone! It can be really hard sometimes to do this. In this @global.topic we will look at some ways to support you in this.",
+      "feedback_no": "It’s great that you are able to make time to connect with your child and with yourself! In this @global.topic we will look at some ways to do more of just that.",
+      "question_text": "Have you experienced this?"
+    }
+  ],
+  "_xlsxPath": "global/data/topic_data/topic_data.xlsx"
+}

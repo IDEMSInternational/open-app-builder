@@ -1,0 +1,8 @@
+{
+  "flow_type": "data_list",
+  "flow_name": "talk_specific_task_gs",
+  "status": "released",
+  "topic_id": "talk",
+  "rows": [],
+  "_xlsxPath": "global/data/topic_task_data/topic_task_groups.xlsx"
+}

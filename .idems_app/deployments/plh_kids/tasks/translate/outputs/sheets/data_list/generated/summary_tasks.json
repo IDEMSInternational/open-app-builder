@@ -1,0 +1,63 @@
+{
+  "flow_name": "summary_tasks",
+  "flow_subtype": "generated",
+  "flow_type": "data_list",
+  "rows": [
+    {
+      "id": "welcome",
+      "individual": true,
+      "together": true,
+      "template": "summary_welcome",
+      "completed_field": "task_summary_welcome_completed",
+      "completed": "@fields.task_summary_welcome_completed"
+    },
+    {
+      "id": "relax",
+      "individual": true,
+      "together": true,
+      "template": "summary_relax",
+      "completed_field": "task_summary_relax_completed",
+      "completed": "@fields.task_summary_relax_completed"
+    },
+    {
+      "id": "relate",
+      "individual": true,
+      "together": true,
+      "template": "summary_relate",
+      "completed_field": "task_summary_relate_completed",
+      "completed": "@fields.task_summary_relate_completed"
+    },
+    {
+      "id": "tools",
+      "individual": true,
+      "together": true,
+      "template": "summary_tools",
+      "completed_field": "task_summary_tools_completed",
+      "completed": "@fields.task_summary_tools_completed"
+    },
+    {
+      "id": "home_practice",
+      "individual": true,
+      "together": true,
+      "template": "summary_home_practice",
+      "completed_field": "task_summary_home_practice_completed",
+      "completed": "@fields.task_summary_home_practice_completed"
+    },
+    {
+      "id": "ending",
+      "individual": true,
+      "together": true,
+      "template": "summary_ending",
+      "completed_field": "task_summary_ending_completed",
+      "completed": "@fields.task_summary_ending_completed"
+    },
+    {
+      "id": "hp_review",
+      "individual": true,
+      "together": true,
+      "template": "summary_hp_review",
+      "completed_field": "task_summary_hp_review_completed",
+      "completed": "@fields.task_summary_hp_review_completed"
+    }
+  ]
+}

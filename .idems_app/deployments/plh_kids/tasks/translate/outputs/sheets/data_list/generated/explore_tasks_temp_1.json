@@ -1,0 +1,49 @@
+{
+  "flow_name": "explore_tasks_temp_1",
+  "flow_subtype": "generated",
+  "flow_type": "data_list",
+  "rows": [
+    {
+      "id": "welcome",
+      "individual": true,
+      "together": true,
+      "template": "explore_welcome"
+    },
+    {
+      "id": "relax",
+      "individual": true,
+      "together": true,
+      "template": "explore_relax"
+    },
+    {
+      "id": "relate",
+      "individual": true,
+      "together": true,
+      "template": "explore_relate"
+    },
+    {
+      "id": "tools",
+      "individual": true,
+      "together": true,
+      "template": "explore_tools"
+    },
+    {
+      "id": "home_practice",
+      "individual": true,
+      "together": true,
+      "template": "explore_home_practice"
+    },
+    {
+      "id": "ending",
+      "individual": true,
+      "together": true,
+      "template": "explore_ending"
+    },
+    {
+      "id": "hp_review",
+      "individual": true,
+      "together": true,
+      "template": "explore_hp_review"
+    }
+  ]
+}

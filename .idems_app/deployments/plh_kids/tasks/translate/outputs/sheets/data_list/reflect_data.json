@@ -1,0 +1,57 @@
+{
+  "flow_type": "data_list",
+  "flow_name": "reflect_data",
+  "status": "released",
+  "data_list_name": "reflect",
+  "rows": [
+    {
+      "id": "time_child",
+      "image_asset": "images/topics/connect/busy_parent.png",
+      "question_id": "time_child",
+      "motivation_id": "time_child",
+      "activity_title": "Time with your child",
+      "_translations": {
+        "activity_title": {},
+        "intro_text": {},
+        "text": {},
+        "outro_text": {}
+      },
+      "_translatedFields": {
+        "activity_title": {
+          "eng": "Time with your child"
+        },
+        "intro_text": {
+          "eng": "Let’s start with exploring ways to connect with our children."
+        },
+        "text": {
+          "eng": "We know that as a caregiver, there are many demands on your time. While you might have your child around you for large parts of the day, it isn't always easy to focus all of your attention on your child."
+        },
+        "outro_text": {
+          "eng": "We all spend time doing things with our children, but connecting with them is not always easy. We face many distractions, concerns and challenges that make it difficult to connect with our children. In addition - our children might do or say things that we find frustrating and draining."
+        }
+      },
+      "intro_text": "Let’s start with exploring ways to connect with our children.",
+      "text": "We know that as a caregiver, there are many demands on your time. While you might have your child around you for large parts of the day, it isn't always easy to focus all of your attention on your child.",
+      "outro_text": "We all spend time doing things with our children, but connecting with them is not always easy. We face many distractions, concerns and challenges that make it difficult to connect with our children. In addition - our children might do or say things that we find frustrating and draining."
+    },
+    {
+      "id": "time_self",
+      "question_id": "time_self",
+      "activity_title": "Time for yourself",
+      "_translations": {
+        "activity_title": {},
+        "intro_text": {}
+      },
+      "_translatedFields": {
+        "activity_title": {
+          "eng": "Time for yourself"
+        },
+        "intro_text": {
+          "eng": "Being a parent means caring for your \nchildren AND for yourself."
+        }
+      },
+      "intro_text": "Being a parent means caring for your \nchildren AND for yourself."
+    }
+  ],
+  "_xlsxPath": "global/data/topic_data/topic_data.xlsx"
+}

@@ -1,0 +1,35 @@
+{
+  "flow_type": "data_list",
+  "flow_name": "reflect_motivation_data",
+  "status": "released",
+  "data_list_name": "reflect_motivation",
+  "rows": [
+    {
+      "id": "time_child",
+      "image_asset": "images/topics/connect/spend_time_together.png",
+      "text": "We have something you can try: Following your child's lead. And the best thing about this is - you don’t need a lot of time - even 10 minutes a day makes a big difference. \n\nIt can",
+      "_translatedFields": {
+        "text": {
+          "eng": "We have something you can try: Following your child's lead. And the best thing about this is - you don’t need a lot of time - even 10 minutes a day makes a big difference. \n\nIt can"
+        },
+        "block_1": {
+          "eng": "help your child feel seen and important"
+        },
+        "block_2": {
+          "eng": "help you to connect and relax with your child"
+        },
+        "block_3": {
+          "eng": "be a chance for you to step away from what causes you stress"
+        },
+        "block_4": {
+          "eng": "be a chance for you to take a moment to pause and play"
+        }
+      },
+      "block_1": "help your child feel seen and important",
+      "block_2": "help you to connect and relax with your child",
+      "block_3": "be a chance for you to step away from what causes you stress",
+      "block_4": "be a chance for you to take a moment to pause and play"
+    }
+  ],
+  "_xlsxPath": "global/data/topic_data/topic_data.xlsx"
+}

@@ -1,0 +1,79 @@
+{
+  "flow_type": "data_list",
+  "flow_name": "read_data",
+  "status": "released",
+  "data_list_name": "read",
+  "rows": [
+    {
+      "id": "interrupt_self",
+      "story_id": "interrupt_self",
+      "question_1_id": "interrupt_self_feeling",
+      "question_2_id": "interrupt_self_other",
+      "activity_title": "Being interrupted",
+      "_translatedFields": {
+        "activity_title": {
+          "eng": "Being interrupted"
+        },
+        "outro_text": {
+          "eng": "Most parts of a child’s day are dictated by the rules and plans of adults.\n\nAs adults, we lead the way for our children in terms of most of their activities. Children have very little say. Most adults struggle when they feel they don’t have a say or aren’t in control. Children are the same."
+        }
+      },
+      "outro_text": "Most parts of a child’s day are dictated by the rules and plans of adults.\n\nAs adults, we lead the way for our children in terms of most of their activities. Children have very little say. Most adults struggle when they feel they don’t have a say or aren’t in control. Children are the same."
+    },
+    {
+      "id": "join_self",
+      "story_id": "join_self",
+      "question_1_id": "join_self_feeling",
+      "question_2_id": "join_self_diff",
+      "activity_title": "Being joined",
+      "_translatedFields": {
+        "activity_title": {
+          "eng": "Being joined"
+        },
+        "intro_text": {
+          "eng": "Now picture the opposite."
+        },
+        "outro_text": {
+          "eng": "A great way to make your child feel seen, valued, important, is making time to join them in their world, and to let them take the lead during one-on-one time."
+        }
+      },
+      "intro_text": "Now picture the opposite.",
+      "outro_text": "A great way to make your child feel seen, valued, important, is making time to join them in their world, and to let them take the lead during one-on-one time."
+    },
+    {
+      "id": "interrupt_child",
+      "story_id": "interrupt_child",
+      "question_1_id": "interrupt_child_1",
+      "question_2_id": "interrupt_child_2",
+      "question_3_id": "interrupt_child_3",
+      "activity_title": "Interrupting your child",
+      "_translatedFields": {
+        "activity_title": {
+          "eng": "Interrupting your child"
+        }
+      }
+    },
+    {
+      "id": "join_child",
+      "story_id": "join_child",
+      "question_1_id": "join_child_1",
+      "question_2_id": "join_child_2",
+      "question_3_id": "join_child_3",
+      "activity_title": "Joining your child",
+      "_translatedFields": {
+        "activity_title": {
+          "eng": "Joining your child"
+        },
+        "intro_text": {
+          "eng": "Let’s look at another story."
+        },
+        "outro_text": {
+          "eng": "It is not about keeping track of a child’s behaviour to make sure they are behaving properly. It’s not about teaching them to do something or educating them.\n\nIt is a way to bond, connect, and have a positive experience with your child. It is a way for you to escape your world and join your child in their world."
+        }
+      },
+      "intro_text": "Let’s look at another story.",
+      "outro_text": "It is not about keeping track of a child’s behaviour to make sure they are behaving properly. It’s not about teaching them to do something or educating them.\n\nIt is a way to bond, connect, and have a positive experience with your child. It is a way for you to escape your world and join your child in their world."
+    }
+  ],
+  "_xlsxPath": "global/data/topic_data/topic_data.xlsx"
+}

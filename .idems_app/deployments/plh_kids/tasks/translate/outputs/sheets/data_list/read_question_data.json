@@ -1,0 +1,419 @@
+{
+  "flow_type": "data_list",
+  "flow_name": "read_question_data",
+  "status": "released",
+  "data_list_name": "read_question",
+  "rows": [
+    {
+      "id": "interrupt_self_feeling",
+      "question_text": "How does this make you feel?",
+      "_translations": {
+        "question_text": {},
+        "option_1": {},
+        "option_2": {},
+        "option_3": {},
+        "feedback_all": {},
+        "feedback_1": {},
+        "feedback_2": {},
+        "feedback_3": {}
+      },
+      "_translatedFields": {
+        "question_text": {
+          "eng": "How does this make you feel?"
+        },
+        "option_1": {
+          "eng": "Uncomfortable"
+        },
+        "option_2": {
+          "eng": "Sad"
+        },
+        "option_3": {
+          "eng": "Angry"
+        },
+        "feedback_all": {
+          "eng": "Thank you for sharing!"
+        },
+        "feedback_1": {
+          "eng": "Thank you for sharing!"
+        },
+        "feedback_2": {
+          "eng": "Thank you for sharing!"
+        },
+        "feedback_3": {
+          "eng": "Thank you for sharing!"
+        }
+      },
+      "option_1": "Uncomfortable",
+      "option_2": "Sad",
+      "option_3": "Angry",
+      "feedback_all": "Thank you for sharing!",
+      "feedback_1": "Thank you for sharing!",
+      "feedback_2": "Thank you for sharing!",
+      "feedback_3": "Thank you for sharing!"
+    },
+    {
+      "id": "interrupt_self_other",
+      "question_text": "How do you feel towards the person making these comments?",
+      "_translations": {
+        "question_text": {},
+        "option_1": {},
+        "option_2": {},
+        "feedback_all": {},
+        "feedback_1": {},
+        "feedback_2": {},
+        "feedback_3": {}
+      },
+      "_translatedFields": {
+        "question_text": {
+          "eng": "How do you feel towards the person making these comments?"
+        },
+        "option_1": {
+          "eng": "They do not understand me"
+        },
+        "option_2": {
+          "eng": "I do not want to spend time with them"
+        },
+        "feedback_all": {
+          "eng": "Thank you for sharing!"
+        },
+        "feedback_1": {
+          "eng": "Thank you for sharing!"
+        },
+        "feedback_2": {
+          "eng": "Thank you for sharing!"
+        },
+        "feedback_3": {
+          "eng": "Thank you for sharing!"
+        }
+      },
+      "option_1": "They do not understand me",
+      "option_2": "I do not want to spend time with them",
+      "feedback_all": "Thank you for sharing!",
+      "feedback_1": "Thank you for sharing!",
+      "feedback_2": "Thank you for sharing!",
+      "feedback_3": "Thank you for sharing!"
+    },
+    {
+      "id": "join_self_feeling",
+      "question_text": "How does that make you feel?",
+      "_translations": {
+        "question_text": {},
+        "option_1": {},
+        "option_2": {},
+        "option_3": {},
+        "feedback_all": {},
+        "feedback_1": {},
+        "feedback_2": {},
+        "feedback_3": {}
+      },
+      "_translatedFields": {
+        "question_text": {
+          "eng": "How does that make you feel?"
+        },
+        "option_1": {
+          "eng": "Recognised"
+        },
+        "option_2": {
+          "eng": "Happy"
+        },
+        "option_3": {
+          "eng": "Excited"
+        },
+        "feedback_all": {
+          "eng": "Thank you for sharing!"
+        },
+        "feedback_1": {
+          "eng": "Thank you for sharing!"
+        },
+        "feedback_2": {
+          "eng": "Thank you for sharing!"
+        },
+        "feedback_3": {
+          "eng": "Thank you for sharing!"
+        }
+      },
+      "option_1": "Recognised",
+      "option_2": "Happy",
+      "option_3": "Excited",
+      "feedback_all": "Thank you for sharing!",
+      "feedback_1": "Thank you for sharing!",
+      "feedback_2": "Thank you for sharing!",
+      "feedback_3": "Thank you for sharing!"
+    },
+    {
+      "id": "join_self_diff",
+      "question_text": "How is that different from what we described above?",
+      "_translations": {
+        "question_text": {},
+        "feedback_all": {},
+        "feedback_1": {},
+        "feedback_2": {},
+        "feedback_3": {}
+      },
+      "_translatedFields": {
+        "question_text": {
+          "eng": "How is that different from what we described above?"
+        },
+        "feedback_all": {
+          "eng": "Thank you for sharing!"
+        },
+        "feedback_1": {
+          "eng": "Thank you for sharing!"
+        },
+        "feedback_2": {
+          "eng": "Thank you for sharing!"
+        },
+        "feedback_3": {
+          "eng": "Thank you for sharing!"
+        }
+      },
+      "feedback_all": "Thank you for sharing!",
+      "feedback_1": "Thank you for sharing!",
+      "feedback_2": "Thank you for sharing!",
+      "feedback_3": "Thank you for sharing!"
+    },
+    {
+      "id": "interrupt_child_1",
+      "question_text": "Who is leading the activity in this story?",
+      "_translations": {
+        "question_text": {},
+        "option_1": {},
+        "option_2": {},
+        "feedback_1": {},
+        "feedback_2": {},
+        "feedback_all": {},
+        "feedback_3": {}
+      },
+      "_translatedFields": {
+        "question_text": {
+          "eng": "Who is leading the activity in this story?"
+        },
+        "option_1": {
+          "eng": "Father"
+        },
+        "option_2": {
+          "eng": "Lonwabo"
+        },
+        "feedback_1": {
+          "eng": "Yes!"
+        },
+        "feedback_2": {
+          "eng": "Try again"
+        },
+        "feedback_all": {
+          "eng": "Thank you for sharing!"
+        },
+        "feedback_3": {
+          "eng": "Thank you for sharing!"
+        }
+      },
+      "option_1": "Father",
+      "option_2": "Lonwabo",
+      "feedback_1": "Yes!",
+      "feedback_2": "Try again",
+      "feedback_all": "Thank you for sharing!",
+      "feedback_3": "Thank you for sharing!"
+    },
+    {
+      "id": "interrupt_child_2",
+      "question_text": "How do you think Lonwabo and his father feel after this experience?",
+      "_translations": {
+        "question_text": {},
+        "option_1": {},
+        "option_2": {},
+        "option_3": {},
+        "feedback_all": {},
+        "feedback_1": {},
+        "feedback_2": {},
+        "feedback_3": {}
+      },
+      "_translatedFields": {
+        "question_text": {
+          "eng": "How do you think Lonwabo and his father feel after this experience?"
+        },
+        "option_1": {
+          "eng": "Misunderstood"
+        },
+        "option_2": {
+          "eng": "Angry"
+        },
+        "option_3": {
+          "eng": "Alone"
+        },
+        "feedback_all": {
+          "eng": "Thank you for sharing!"
+        },
+        "feedback_1": {
+          "eng": "Thank you for sharing!"
+        },
+        "feedback_2": {
+          "eng": "Thank you for sharing!"
+        },
+        "feedback_3": {
+          "eng": "Thank you for sharing!"
+        }
+      },
+      "option_1": "Misunderstood",
+      "option_2": "Angry",
+      "option_3": "Alone",
+      "feedback_all": "Thank you for sharing!",
+      "feedback_1": "Thank you for sharing!",
+      "feedback_2": "Thank you for sharing!",
+      "feedback_3": "Thank you for sharing!"
+    },
+    {
+      "id": "interrupt_child_3",
+      "question_text": "What could the father have done differently?",
+      "_translations": {
+        "question_text": {},
+        "feedback_all": {},
+        "feedback_1": {},
+        "feedback_2": {},
+        "feedback_3": {}
+      },
+      "_translatedFields": {
+        "question_text": {
+          "eng": "What could the father have done differently?"
+        },
+        "feedback_all": {
+          "eng": "Thank you for sharing!"
+        },
+        "feedback_1": {
+          "eng": "Thank you for sharing!"
+        },
+        "feedback_2": {
+          "eng": "Thank you for sharing!"
+        },
+        "feedback_3": {
+          "eng": "Thank you for sharing!"
+        }
+      },
+      "feedback_all": "Thank you for sharing!",
+      "feedback_1": "Thank you for sharing!",
+      "feedback_2": "Thank you for sharing!",
+      "feedback_3": "Thank you for sharing!"
+    },
+    {
+      "id": "join_child_1",
+      "question_text": "Who is leading the activity in this story?",
+      "_translations": {
+        "question_text": {},
+        "option_1": {},
+        "option_2": {},
+        "feedback_1": {},
+        "feedback_2": {},
+        "feedback_all": {},
+        "feedback_3": {}
+      },
+      "_translatedFields": {
+        "question_text": {
+          "eng": "Who is leading the activity in this story?"
+        },
+        "option_1": {
+          "eng": "Father"
+        },
+        "option_2": {
+          "eng": "Lonwabo"
+        },
+        "feedback_1": {
+          "eng": "Try again"
+        },
+        "feedback_2": {
+          "eng": "Yes!"
+        },
+        "feedback_all": {
+          "eng": "Thank you for sharing!"
+        },
+        "feedback_3": {
+          "eng": "Thank you for sharing!"
+        }
+      },
+      "option_1": "Father",
+      "option_2": "Lonwabo",
+      "feedback_1": "Try again",
+      "feedback_2": "Yes!",
+      "feedback_all": "Thank you for sharing!",
+      "feedback_3": "Thank you for sharing!"
+    },
+    {
+      "id": "join_child_2",
+      "question_text": "What is the father doing that makes this clear?",
+      "_translations": {
+        "question_text": {},
+        "feedback_all": {},
+        "feedback_1": {},
+        "feedback_2": {},
+        "feedback_3": {}
+      },
+      "_translatedFields": {
+        "question_text": {
+          "eng": "What is the father doing that makes this clear?"
+        },
+        "feedback_all": {
+          "eng": "Thank you for sharing!"
+        },
+        "feedback_1": {
+          "eng": "Thank you for sharing!"
+        },
+        "feedback_2": {
+          "eng": "Thank you for sharing!"
+        },
+        "feedback_3": {
+          "eng": "Thank you for sharing!"
+        }
+      },
+      "feedback_all": "Thank you for sharing!",
+      "feedback_1": "Thank you for sharing!",
+      "feedback_2": "Thank you for sharing!",
+      "feedback_3": "Thank you for sharing!"
+    },
+    {
+      "id": "join_child_3",
+      "question_text": "How do you think Lonwabo and his father feel after this experience?",
+      "_translations": {
+        "question_text": {},
+        "option_1": {},
+        "option_2": {},
+        "option_3": {},
+        "feedback_all": {},
+        "feedback_1": {},
+        "feedback_2": {},
+        "feedback_3": {}
+      },
+      "_translatedFields": {
+        "question_text": {
+          "eng": "How do you think Lonwabo and his father feel after this experience?"
+        },
+        "option_1": {
+          "eng": "Connected"
+        },
+        "option_2": {
+          "eng": "Calm"
+        },
+        "option_3": {
+          "eng": "Happy"
+        },
+        "feedback_all": {
+          "eng": "Thank you for sharing!"
+        },
+        "feedback_1": {
+          "eng": "Thank you for sharing!"
+        },
+        "feedback_2": {
+          "eng": "Thank you for sharing!"
+        },
+        "feedback_3": {
+          "eng": "Thank you for sharing!"
+        }
+      },
+      "option_1": "Connected",
+      "option_2": "Calm",
+      "option_3": "Happy",
+      "feedback_all": "Thank you for sharing!",
+      "feedback_1": "Thank you for sharing!",
+      "feedback_2": "Thank you for sharing!",
+      "feedback_3": "Thank you for sharing!"
+    }
+  ],
+  "_xlsxPath": "global/data/topic_data/topic_data.xlsx"
+}

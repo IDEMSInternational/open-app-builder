@@ -1,0 +1,1 @@
+[{"flow_type":"global","flow_name":"workshop_completion_levels","status":"draft","rows":[{"type":"declare_field_default","name":"connect_completion_level","value":0,"exclude_from_translation":true}],"_xlsxPath":"global/data/topic_data/topic_globals.xlsx"}]

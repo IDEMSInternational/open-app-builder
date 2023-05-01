@@ -1,0 +1,560 @@
+{
+  "flow_type": "template",
+  "flow_name": "home_screen",
+  "status": "released",
+  "rows": [
+    {
+      "name": "weekly_workshops_campaign",
+      "value": "@campaign.weekly_workshops",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "type": "set_variable",
+      "_nested_name": "weekly_workshops_campaign",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@campaign.weekly_workshops",
+            "matchedExpression": "@campaign.weekly_workshops",
+            "type": "campaign",
+            "fieldName": "weekly_workshops"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@campaign.weekly_workshops": [
+          "value"
+        ]
+      }
+    },
+    {
+      "name": "habits_campaign",
+      "value": "@campaign.parent_points",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "type": "set_variable",
+      "_nested_name": "habits_campaign",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@campaign.parent_points",
+            "matchedExpression": "@campaign.parent_points",
+            "type": "campaign",
+            "fieldName": "parent_points"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@campaign.parent_points": [
+          "value"
+        ]
+      }
+    },
+    {
+      "name": "library_campaign",
+      "value": "@campaign.parent_centre",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "type": "set_variable",
+      "_nested_name": "library_campaign",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@campaign.parent_centre",
+            "matchedExpression": "@campaign.parent_centre",
+            "type": "campaign",
+            "fieldName": "parent_centre"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@campaign.parent_centre": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "update_action_list",
+      "name": "nav_resume_actions",
+      "action_list": [
+        {
+          "trigger": "nav_resume",
+          "action_id": "emit",
+          "args": [
+            "force_reload"
+          ],
+          "_raw": "nav_resume | emit:force_reload",
+          "_cleaned": "nav_resume | emit:force_reload"
+        }
+      ],
+      "_nested_name": "nav_resume_actions"
+    },
+    {
+      "type": "display_group",
+      "name": "tile_weekly_workshops",
+      "action_list": [
+        {
+          "trigger": "click",
+          "action_id": "go_to",
+          "args": [
+            "weekly_workshops"
+          ],
+          "_raw": "click | go_to:weekly_workshops",
+          "_cleaned": "click | go_to:weekly_workshops"
+        }
+      ],
+      "parameter_list": {
+        "style": "home_screen light"
+      },
+      "rows": [
+        {
+          "type": "lottie_animation",
+          "name": "image_weekly_workshops",
+          "value": "plh_lottie/weekly_workshops.json",
+          "_translations": {
+            "value": {}
+          },
+          "_nested_name": "tile_weekly_workshops.image_weekly_workshops"
+        },
+        {
+          "type": "display_group",
+          "name": "dg_weekly_workshops",
+          "parameter_list": {
+            "style": "column"
+          },
+          "rows": [
+            {
+              "type": "title",
+              "name": "title_weekly_workshops",
+              "value": "@global.weekly_workshops",
+              "_translations": {
+                "value": {}
+              },
+              "parameter_list": {
+                "style": "alternative"
+              },
+              "_nested_name": "tile_weekly_workshops.dg_weekly_workshops.title_weekly_workshops",
+              "_dynamicFields": {
+                "value": [
+                  {
+                    "fullExpression": "@global.weekly_workshops",
+                    "matchedExpression": "@global.weekly_workshops",
+                    "type": "global",
+                    "fieldName": "weekly_workshops"
+                  }
+                ]
+              },
+              "_dynamicDependencies": {
+                "@global.weekly_workshops": [
+                  "value"
+                ]
+              }
+            },
+            {
+              "type": "round_button",
+              "name": "quick_start_weekly_workshops",
+              "action_list": [
+                {
+                  "trigger": "click",
+                  "action_id": "trigger_actions",
+                  "args": [
+                    "@local.weekly_workshops_campaign.action_list"
+                  ],
+                  "_raw": "click | trigger_actions: @local.weekly_workshops_campaign.action_list",
+                  "_cleaned": "click | trigger_actions: @local.weekly_workshops_campaign.action_list"
+                }
+              ],
+              "hidden": "@local.weekly_workshops_campaign.id == \"default\"",
+              "exclude_from_translation": true,
+              "parameter_list": {
+                "icon_src": "@local.weekly_workshops_campaign.icon",
+                "style": "home_screen yellow"
+              },
+              "_nested_name": "tile_weekly_workshops.dg_weekly_workshops.quick_start_weekly_workshops",
+              "_dynamicFields": {
+                "action_list": {
+                  "0": {
+                    "args": {
+                      "0": [
+                        {
+                          "fullExpression": "@local.weekly_workshops_campaign.action_list",
+                          "matchedExpression": "@local.weekly_workshops_campaign.action_list",
+                          "type": "local",
+                          "fieldName": "weekly_workshops_campaign"
+                        }
+                      ]
+                    },
+                    "_raw": [
+                      {
+                        "fullExpression": "click | trigger_actions: @local.weekly_workshops_campaign.action_list",
+                        "matchedExpression": "@local.weekly_workshops_campaign.action_list",
+                        "type": "local",
+                        "fieldName": "weekly_workshops_campaign"
+                      }
+                    ],
+                    "_cleaned": [
+                      {
+                        "fullExpression": "click | trigger_actions: @local.weekly_workshops_campaign.action_list",
+                        "matchedExpression": "@local.weekly_workshops_campaign.action_list",
+                        "type": "local",
+                        "fieldName": "weekly_workshops_campaign"
+                      }
+                    ]
+                  }
+                },
+                "hidden": [
+                  {
+                    "fullExpression": "@local.weekly_workshops_campaign.id == \"default\"",
+                    "matchedExpression": "@local.weekly_workshops_campaign.id",
+                    "type": "local",
+                    "fieldName": "weekly_workshops_campaign"
+                  }
+                ],
+                "parameter_list": {
+                  "icon_src": [
+                    {
+                      "fullExpression": "@local.weekly_workshops_campaign.icon",
+                      "matchedExpression": "@local.weekly_workshops_campaign.icon",
+                      "type": "local",
+                      "fieldName": "weekly_workshops_campaign"
+                    }
+                  ]
+                }
+              },
+              "_dynamicDependencies": {
+                "@local.weekly_workshops_campaign.action_list": [
+                  "action_list.0.args.0",
+                  "action_list.0._raw",
+                  "action_list.0._cleaned"
+                ],
+                "@local.weekly_workshops_campaign.id": [
+                  "hidden"
+                ],
+                "@local.weekly_workshops_campaign.icon": [
+                  "parameter_list.icon_src"
+                ]
+              }
+            }
+          ],
+          "_nested_name": "tile_weekly_workshops.dg_weekly_workshops"
+        }
+      ],
+      "_nested_name": "tile_weekly_workshops"
+    },
+    {
+      "type": "display_group",
+      "name": "tile_habits",
+      "value": "tile_habits",
+      "action_list": [
+        {
+          "trigger": "click",
+          "action_id": "go_to",
+          "args": [
+            "habits"
+          ],
+          "_raw": "click | go_to:habits",
+          "_cleaned": "click | go_to:habits"
+        }
+      ],
+      "parameter_list": {
+        "style": "home_screen shade"
+      },
+      "rows": [
+        {
+          "type": "lottie_animation",
+          "name": "image_habits",
+          "value": "plh_lottie/habits.json",
+          "_translations": {
+            "value": {}
+          },
+          "_nested_name": "tile_habits.image_habits"
+        },
+        {
+          "type": "display_group",
+          "name": "dg_habits",
+          "parameter_list": {
+            "style": "column"
+          },
+          "rows": [
+            {
+              "type": "title",
+              "name": "title_habits",
+              "value": "@global.habits",
+              "_translations": {
+                "value": {}
+              },
+              "parameter_list": {
+                "style": "alternative"
+              },
+              "_nested_name": "tile_habits.dg_habits.title_habits",
+              "_dynamicFields": {
+                "value": [
+                  {
+                    "fullExpression": "@global.habits",
+                    "matchedExpression": "@global.habits",
+                    "type": "global",
+                    "fieldName": "habits"
+                  }
+                ]
+              },
+              "_dynamicDependencies": {
+                "@global.habits": [
+                  "value"
+                ]
+              }
+            },
+            {
+              "type": "round_button",
+              "name": "quick_start_habits",
+              "action_list": [
+                {
+                  "trigger": "click",
+                  "action_id": "trigger_actions",
+                  "args": [
+                    "@local.habits_campaign.action_list"
+                  ],
+                  "_raw": "click | trigger_actions: @local.habits_campaign.action_list",
+                  "_cleaned": "click | trigger_actions: @local.habits_campaign.action_list"
+                }
+              ],
+              "hidden": "@local.habits_campaign.id == \"default\"",
+              "exclude_from_translation": true,
+              "parameter_list": {
+                "icon_src": "@local.habits_campaign.icon",
+                "style": "home_screen orange"
+              },
+              "_nested_name": "tile_habits.dg_habits.quick_start_habits",
+              "_dynamicFields": {
+                "action_list": {
+                  "0": {
+                    "args": {
+                      "0": [
+                        {
+                          "fullExpression": "@local.habits_campaign.action_list",
+                          "matchedExpression": "@local.habits_campaign.action_list",
+                          "type": "local",
+                          "fieldName": "habits_campaign"
+                        }
+                      ]
+                    },
+                    "_raw": [
+                      {
+                        "fullExpression": "click | trigger_actions: @local.habits_campaign.action_list",
+                        "matchedExpression": "@local.habits_campaign.action_list",
+                        "type": "local",
+                        "fieldName": "habits_campaign"
+                      }
+                    ],
+                    "_cleaned": [
+                      {
+                        "fullExpression": "click | trigger_actions: @local.habits_campaign.action_list",
+                        "matchedExpression": "@local.habits_campaign.action_list",
+                        "type": "local",
+                        "fieldName": "habits_campaign"
+                      }
+                    ]
+                  }
+                },
+                "hidden": [
+                  {
+                    "fullExpression": "@local.habits_campaign.id == \"default\"",
+                    "matchedExpression": "@local.habits_campaign.id",
+                    "type": "local",
+                    "fieldName": "habits_campaign"
+                  }
+                ],
+                "parameter_list": {
+                  "icon_src": [
+                    {
+                      "fullExpression": "@local.habits_campaign.icon",
+                      "matchedExpression": "@local.habits_campaign.icon",
+                      "type": "local",
+                      "fieldName": "habits_campaign"
+                    }
+                  ]
+                }
+              },
+              "_dynamicDependencies": {
+                "@local.habits_campaign.action_list": [
+                  "action_list.0.args.0",
+                  "action_list.0._raw",
+                  "action_list.0._cleaned"
+                ],
+                "@local.habits_campaign.id": [
+                  "hidden"
+                ],
+                "@local.habits_campaign.icon": [
+                  "parameter_list.icon_src"
+                ]
+              }
+            }
+          ],
+          "_nested_name": "tile_habits.dg_habits"
+        }
+      ],
+      "_nested_name": "tile_habits"
+    },
+    {
+      "type": "display_group",
+      "name": "tile_library",
+      "value": "tile_library",
+      "action_list": [
+        {
+          "trigger": "click",
+          "action_id": "go_to",
+          "args": [
+            "library"
+          ],
+          "_raw": "click | go_to:library",
+          "_cleaned": "click | go_to:library"
+        }
+      ],
+      "parameter_list": {
+        "style": "home_screen dark"
+      },
+      "rows": [
+        {
+          "type": "lottie_animation",
+          "name": "image_library",
+          "value": "plh_lottie/library.json",
+          "_translations": {
+            "value": {}
+          },
+          "_nested_name": "tile_library.image_library"
+        },
+        {
+          "type": "display_group",
+          "name": "dg_library",
+          "parameter_list": {
+            "style": "column"
+          },
+          "rows": [
+            {
+              "type": "title",
+              "name": "title_library",
+              "value": "@global.library",
+              "_translations": {
+                "value": {}
+              },
+              "parameter_list": {
+                "style": "alternative"
+              },
+              "_nested_name": "tile_library.dg_library.title_library",
+              "_dynamicFields": {
+                "value": [
+                  {
+                    "fullExpression": "@global.library",
+                    "matchedExpression": "@global.library",
+                    "type": "global",
+                    "fieldName": "library"
+                  }
+                ]
+              },
+              "_dynamicDependencies": {
+                "@global.library": [
+                  "value"
+                ]
+              }
+            },
+            {
+              "type": "round_button",
+              "name": "quick_start_library",
+              "action_list": [
+                {
+                  "trigger": "click",
+                  "action_id": "trigger_actions",
+                  "args": [
+                    "@local.library_campaign.action_list"
+                  ],
+                  "_raw": "click | trigger_actions: @local.library_campaign.action_list",
+                  "_cleaned": "click | trigger_actions: @local.library_campaign.action_list"
+                }
+              ],
+              "hidden": "@local.library_campaign.id == \"default\"",
+              "exclude_from_translation": true,
+              "parameter_list": {
+                "icon_src": "@local.library_campaign.icon",
+                "style": "home_screen dark_orange"
+              },
+              "_nested_name": "tile_library.dg_library.quick_start_library",
+              "_dynamicFields": {
+                "action_list": {
+                  "0": {
+                    "args": {
+                      "0": [
+                        {
+                          "fullExpression": "@local.library_campaign.action_list",
+                          "matchedExpression": "@local.library_campaign.action_list",
+                          "type": "local",
+                          "fieldName": "library_campaign"
+                        }
+                      ]
+                    },
+                    "_raw": [
+                      {
+                        "fullExpression": "click | trigger_actions: @local.library_campaign.action_list",
+                        "matchedExpression": "@local.library_campaign.action_list",
+                        "type": "local",
+                        "fieldName": "library_campaign"
+                      }
+                    ],
+                    "_cleaned": [
+                      {
+                        "fullExpression": "click | trigger_actions: @local.library_campaign.action_list",
+                        "matchedExpression": "@local.library_campaign.action_list",
+                        "type": "local",
+                        "fieldName": "library_campaign"
+                      }
+                    ]
+                  }
+                },
+                "hidden": [
+                  {
+                    "fullExpression": "@local.library_campaign.id == \"default\"",
+                    "matchedExpression": "@local.library_campaign.id",
+                    "type": "local",
+                    "fieldName": "library_campaign"
+                  }
+                ],
+                "parameter_list": {
+                  "icon_src": [
+                    {
+                      "fullExpression": "@local.library_campaign.icon",
+                      "matchedExpression": "@local.library_campaign.icon",
+                      "type": "local",
+                      "fieldName": "library_campaign"
+                    }
+                  ]
+                }
+              },
+              "_dynamicDependencies": {
+                "@local.library_campaign.action_list": [
+                  "action_list.0.args.0",
+                  "action_list.0._raw",
+                  "action_list.0._cleaned"
+                ],
+                "@local.library_campaign.id": [
+                  "hidden"
+                ],
+                "@local.library_campaign.icon": [
+                  "parameter_list.icon_src"
+                ]
+              }
+            }
+          ],
+          "_nested_name": "tile_library.dg_library"
+        }
+      ],
+      "_nested_name": "tile_library"
+    }
+  ],
+  "_xlsxPath": "global/templates/core_templates/navigation.xlsx",
+  "_overrides": {
+    "home_screen_modular": "@fields._app_skin == \"modular\""
+  }
+}

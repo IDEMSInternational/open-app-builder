@@ -1,0 +1,184 @@
+{
+  "name": "parentapp_kids",
+  "google_drive": {
+    "sheets_folder_id": "1Y8uC9-rqQtsjQgUfeX9qp-vNzsFDUQFU",
+    "assets_folder_id": "1abaL1QGd33NqqLoKuo2t9fVWKmh5ouM9"
+  },
+  "android": {
+    "splash_asset_path": "C:\\Users\\Esmee\\Documents\\GitHub\\parenting-app-ui\\packages\\app-data\\assets\\global\\android\\splash.png",
+    "icon_asset_path": "C:\\Users\\Esmee\\Documents\\GitHub\\parenting-app-ui\\packages\\app-data\\assets\\global\\android\\icon.png",
+    "icon_asset_foreground_path": "C:\\Users\\Esmee\\Documents\\GitHub\\parenting-app-ui\\packages\\app-data\\assets\\global\\android\\icon-foreground.png",
+    "icon_asset_background_path": "C:\\Users\\Esmee\\Documents\\GitHub\\parenting-app-ui\\packages\\app-data\\assets\\global\\android\\icon-background.png"
+  },
+  "app_config": {
+    "APP_FIELDS": {
+      "SERVER_SYNC_LATEST": "rp-contact-field._server_sync_latest",
+      "APP_LANGUAGE": "rp-contact-field._app_language",
+      "DEPLOYMENT_NAME": "rp-contact-field._deployment_name",
+      "APP_VERSION": "rp-contact-field._app_version",
+      "APP_AUTH_USER": "rp-contact-field._app_auth_user",
+      "APP_SKIN": "rp-contact-field._app_skin",
+      "APP_THEME": "rp-contact-field._app_theme"
+    },
+    "APP_HEADER_DEFAULTS": {
+      "title": "ParentApp for Kids"
+    },
+    "APP_INITIALISATION_DEFAULTS": {
+      "app_first_launch_actions": []
+    },
+    "APP_AUTHENTICATION_DEFAULTS": {
+      "enforceLogin": false,
+      "signInTemplate": "sign_in"
+    },
+    "APP_LANGUAGES": {
+      "default": "gb_en"
+    },
+    "APP_ROUTE_DEFAULTS": {
+      "home_route": "/template/home_screen",
+      "fallback_route": "/template/home_screen",
+      "redirects": [
+        {
+          "path": "home",
+          "redirectTo": "/template/home_screen"
+        },
+        {
+          "path": "privacy",
+          "redirectTo": "/template/app_menu_privacy_policy"
+        }
+      ]
+    },
+    "APP_SIDEMENU_DEFAULTS": {
+      "enabled": true,
+      "title": "ParentApp for Kids",
+      "template_name": "app_menu",
+      "should_show_version": true,
+      "should_show_deployment_name": false
+    },
+    "APP_FOOTER_DEFAULTS": {
+      "templateName": null
+    },
+    "APP_STRINGS": {
+      "feedback_add_button_text": "Add Feedback",
+      "feedback_suggest_change_text": "Suggest Change",
+      "feedback_sent_text": "Thank you for your feedback",
+      "feedback_unsent_text": "You are currently offline. Feedback will be sent when next online",
+      "notification_default_title": "Notification",
+      "notification_default_text": "You have a new message"
+    },
+    "APP_SKINS": {
+      "defaultSkinName": "modular",
+      "available": [
+        {
+          "name": "modular",
+          "appConfig": {
+            "APP_THEMES": {
+              "defaultThemeName": "professional"
+            },
+            "APP_FOOTER_DEFAULTS": {
+              "templateName": "footer"
+            }
+          }
+        },
+        {
+          "name": "weekly_workshop",
+          "appConfig": {
+            "APP_THEMES": {
+              "defaultThemeName": "default"
+            }
+          }
+        }
+      ]
+    },
+    "APP_THEMES": {
+      "defaultThemeName": "default",
+      "available": [
+        "default",
+        "professional"
+      ]
+    },
+    "APP_UPDATES": {
+      "enabled": false,
+      "completeUpdateTemplate": "app_update_complete",
+      "app_update_available_field": "_app_update_available",
+      "app_update_downloaded_field": "_app_update_downloaded"
+    },
+    "ASSET_PACKS": {
+      "enabled": false,
+      "bucketName": "deployment_name",
+      "folderName": "asset-packs"
+    },
+    "DYNAMIC_PREFIXES": [
+      "local",
+      "field",
+      "fields",
+      "global",
+      "data",
+      "campaign",
+      "calc",
+      "item",
+      "raw"
+    ],
+    "FEEDBACK_MODULE_DEFAULTS": {
+      "buttons": [
+        {
+          "id": "feedback-addFeedback",
+          "menuButtonText": "Add Feedback",
+          "appearInMenus": [
+            "rightClick",
+            "longPress",
+            "textSelect"
+          ],
+          "displayedTemplate": "feature_feedback_default"
+        },
+        {
+          "id": "feedback-suggestChange",
+          "menuButtonText": "Suggest Change",
+          "appearInMenus": [
+            "textSelect"
+          ],
+          "displayedTemplate": "feature_feedback_text_select"
+        }
+      ],
+      "selected_text_field": "_feedback_selected_text",
+      "sidebar_open_field": "_feedback_sidebar_open"
+    },
+    "FIELD_PREFIX": "rp-contact-field",
+    "NOTIFICATIONS_SYNC_FREQUENCY_MS": 180000,
+    "NOTIFICATION_DEFAULTS": {
+      "title": "New message from ParentApp for Kids",
+      "text": "You have a new message from ParentApp for Kids",
+      "time": {
+        "hour": 12,
+        "minute": 0
+      }
+    },
+    "SERVER_SYNC_FREQUENCY_MS": 300000
+  },
+  "local_drive": {
+    "assets_path": "C:\\Users\\Esmee\\Documents\\GitHub\\parenting-app-ui\\.idems_app\\deployments\\parentapp_kids\\assets",
+    "sheets_path": "C:\\Users\\Esmee\\Documents\\GitHub\\parenting-app-ui\\.idems_app\\deployments\\parentapp_kids\\sheets"
+  },
+  "app_data": {
+    "output_path": "C:\\Users\\Esmee\\Documents\\GitHub\\parenting-app-ui\\packages\\app-data",
+    "sheets_filter_function": "(flow)=>true",
+    "assets_filter_function": "(fileEntry)=>true"
+  },
+  "supabase": {
+    "enabled": false
+  },
+  "translations": {
+    "translated_strings_path": "C:\\Users\\Esmee\\Documents\\GitHub\\parenting-app-ui\\packages\\app-data\\translations_source\\from_translators",
+    "source_strings_path": "C:\\Users\\Esmee\\Documents\\GitHub\\parenting-app-ui\\packages\\app-data\\translations_source\\to_translate"
+  },
+  "workflows": {
+    "custom_ts_files": [],
+    "task_cache_path": "C:\\Users\\Esmee\\Documents\\GitHub\\parenting-app-ui\\.idems_app\\deployments\\parentapp_kids\\tasks"
+  },
+  "git": {},
+  "_validated": true,
+  "_parent_config": null,
+  "_version": 1,
+  "_workspace_path": "C:\\Users\\Esmee\\Documents\\GitHub\\parenting-app-ui\\.idems_app\\deployments\\parentapp_kids",
+  "_config_ts_path": "C:\\Users\\Esmee\\Documents\\GitHub\\parenting-app-ui\\.idems_app\\deployments\\parentapp_kids\\config.ts",
+  "_config_version": 20230413
+}

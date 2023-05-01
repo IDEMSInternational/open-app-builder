@@ -1,0 +1,46 @@
+{
+  "flow_type": "template",
+  "flow_name": "habits",
+  "status": "released",
+  "rows": [
+    {
+      "type": "display_group",
+      "name": "heading",
+      "rows": [
+        {
+          "type": "title",
+          "name": "title",
+          "value": "@global.habits_capital",
+          "parameter_list": {
+            "style": "tiny"
+          },
+          "_nested_name": "heading.title",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@global.habits_capital",
+                "matchedExpression": "@global.habits_capital",
+                "type": "global",
+                "fieldName": "habits_capital"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@global.habits_capital": [
+              "value"
+            ]
+          }
+        }
+      ],
+      "_nested_name": "heading"
+    },
+    {
+      "type": "template",
+      "name": "habit_tiles",
+      "value": "habit_tiles",
+      "rows": [],
+      "_nested_name": "habit_tiles"
+    }
+  ],
+  "_xlsxPath": "global/templates/core_templates/habits.xlsx"
+}

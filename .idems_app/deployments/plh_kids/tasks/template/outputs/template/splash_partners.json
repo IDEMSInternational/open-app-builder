@@ -1,0 +1,82 @@
+{
+  "flow_type": "template",
+  "flow_name": "splash_partners",
+  "status": "released",
+  "rows": [
+    {
+      "type": "display_group",
+      "name": "global_partners",
+      "parameter_list": {
+        "style": "two_columns_images grid-spacing-sm"
+      },
+      "rows": [
+        {
+          "type": "items",
+          "name": "loop_partners",
+          "value": "@data.partners",
+          "rows": [
+            {
+              "type": "image",
+              "name": "@item.id",
+              "value": "@item.image_asset",
+              "_nested_name": "global_partners.loop_partners.@item.id",
+              "_dynamicFields": {
+                "name": [
+                  {
+                    "fullExpression": "@item.id",
+                    "matchedExpression": "@item.id",
+                    "type": "item",
+                    "fieldName": "id"
+                  }
+                ],
+                "value": [
+                  {
+                    "fullExpression": "@item.image_asset",
+                    "matchedExpression": "@item.image_asset",
+                    "type": "item",
+                    "fieldName": "image_asset"
+                  }
+                ],
+                "_nested_name": [
+                  {
+                    "fullExpression": "global_partners.loop_partners.@item.id",
+                    "matchedExpression": "@item.id",
+                    "type": "item",
+                    "fieldName": "id"
+                  }
+                ]
+              },
+              "_dynamicDependencies": {
+                "@item.id": [
+                  "name",
+                  "_nested_name"
+                ],
+                "@item.image_asset": [
+                  "value"
+                ]
+              }
+            }
+          ],
+          "_nested_name": "global_partners.loop_partners",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@data.partners",
+                "matchedExpression": "@data.partners",
+                "type": "data",
+                "fieldName": "partners"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@data.partners": [
+              "value"
+            ]
+          }
+        }
+      ],
+      "_nested_name": "global_partners"
+    }
+  ],
+  "_xlsxPath": "global/templates/core_templates/app_launch.xlsx"
+}

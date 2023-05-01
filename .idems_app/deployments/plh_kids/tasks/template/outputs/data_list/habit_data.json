@@ -1,0 +1,49 @@
+{
+  "flow_type": "data_list",
+  "flow_name": "habit_data",
+  "status": "released",
+  "data_list_name": "habit",
+  "rows": [
+    {
+      "id": "ground",
+      "task_id": "task_habit_ground",
+      "image_asset": "images/topics/wave.svg",
+      "click_count_field": "habit_ground_click_count",
+      "title": "Grounding",
+      "_translatedFields": {
+        "title": {
+          "eng": "Grounding"
+        },
+        "mark_text": {
+          "eng": "Every time you do this, tap the @global.habit_capital and celebrate your success!"
+        },
+        "short_mark_text": {
+          "eng": "Did it? Tap it!"
+        }
+      },
+      "mark_text": "Every time you do this, tap the @global.habit_capital and celebrate your success!",
+      "short_mark_text": "Did it? Tap it!"
+    },
+    {
+      "id": "self_aware",
+      "task_id": "task_habit_self_aware",
+      "image_asset": "images/topics/wave.svg",
+      "click_count_field": "habit_self_aware_click_count",
+      "title": "Self-awareness",
+      "_translatedFields": {
+        "title": {
+          "eng": "Self-awareness"
+        },
+        "mark_text": {
+          "eng": "Every time you do this, tap the @global.habit_capital and celebrate your success!"
+        },
+        "short_mark_text": {
+          "eng": "Did it? Tap it!"
+        }
+      },
+      "mark_text": "Every time you do this, tap the @global.habit_capital and celebrate your success!",
+      "short_mark_text": "Did it? Tap it!"
+    }
+  ],
+  "_xlsxPath": "global/data/habit_data/habit_data_list.xlsx"
+}

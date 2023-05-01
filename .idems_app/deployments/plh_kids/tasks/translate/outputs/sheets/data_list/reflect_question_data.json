@@ -1,0 +1,113 @@
+{
+  "flow_type": "data_list",
+  "flow_name": "reflect_question_data",
+  "status": "released",
+  "data_list_name": "reflect_question",
+  "rows": [
+    {
+      "id": "time_child",
+      "question_text": "We would love to hear from you: what stands in your way from spending time with your child?",
+      "_translations": {
+        "question_text": {},
+        "option_1": {},
+        "option_2": {},
+        "option_3": {},
+        "option_4": {},
+        "feedback_all": {},
+        "feedback_1": {},
+        "feedback_2": {},
+        "feedback_3": {},
+        "feedback_4": {}
+      },
+      "_translatedFields": {
+        "question_text": {
+          "eng": "We would love to hear from you: what stands in your way from spending time with your child?"
+        },
+        "option_1": {
+          "eng": "Busy"
+        },
+        "option_2": {
+          "eng": "Stressed"
+        },
+        "option_3": {
+          "eng": "My child annoys me"
+        },
+        "option_4": {
+          "eng": "I don't know what to do together"
+        },
+        "feedback_all": {
+          "eng": "Thanks for sharing. Many parents feel this way!"
+        },
+        "feedback_1": {
+          "eng": "Thanks for sharing. Many parents feel this way!"
+        },
+        "feedback_2": {
+          "eng": "Thanks for sharing. Many parents feel this way!"
+        },
+        "feedback_3": {
+          "eng": "Thanks for sharing. Many parents feel this way!"
+        },
+        "feedback_4": {
+          "eng": "Thanks for sharing. Many parents feel this way!"
+        }
+      },
+      "option_1": "Busy",
+      "option_2": "Stressed",
+      "option_3": "My child annoys me",
+      "option_4": "I don't know what to do together",
+      "feedback_all": "Thanks for sharing. Many parents feel this way!",
+      "feedback_1": "Thanks for sharing. Many parents feel this way!",
+      "feedback_2": "Thanks for sharing. Many parents feel this way!",
+      "feedback_3": "Thanks for sharing. Many parents feel this way!",
+      "feedback_4": "Thanks for sharing. Many parents feel this way!"
+    },
+    {
+      "id": "time_self",
+      "question_text": "What stands in your way from taking time for yourself?",
+      "_translations": {
+        "question_text": {},
+        "option_1": {},
+        "option_2": {},
+        "option_3": {},
+        "feedback_1": {},
+        "feedback_2": {},
+        "feedback_3": {},
+        "feedback_4": {}
+      },
+      "_translatedFields": {
+        "question_text": {
+          "eng": "What stands in your way from taking time for yourself?"
+        },
+        "option_1": {
+          "eng": "Busy"
+        },
+        "option_2": {
+          "eng": "My children and family always need something from me"
+        },
+        "option_3": {
+          "eng": "It feels selfish to take time for myself"
+        },
+        "feedback_1": {
+          "eng": "@row.feedback_all"
+        },
+        "feedback_2": {
+          "eng": "@row.feedback_all"
+        },
+        "feedback_3": {
+          "eng": "@row.feedback_all"
+        },
+        "feedback_4": {
+          "eng": "@row.feedback_all"
+        }
+      },
+      "option_1": "Busy",
+      "option_2": "My children and family always need something from me",
+      "option_3": "It feels selfish to take time for myself",
+      "feedback_1": "@row.feedback_all",
+      "feedback_2": "@row.feedback_all",
+      "feedback_3": "@row.feedback_all",
+      "feedback_4": "@row.feedback_all"
+    }
+  ],
+  "_xlsxPath": "global/data/topic_data/topic_data.xlsx"
+}

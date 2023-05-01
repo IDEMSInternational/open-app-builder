@@ -1,0 +1,92 @@
+{
+  "flow_type": "template",
+  "flow_name": "relax_text",
+  "status": "released",
+  "rows": [
+    {
+      "name": "relax_id",
+      "value": "@fields.current_relax_id",
+      "type": "set_variable",
+      "_nested_name": "relax_id",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@fields.current_relax_id",
+            "matchedExpression": "@fields.current_relax_id",
+            "type": "fields",
+            "fieldName": "current_relax_id"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@fields.current_relax_id": [
+          "value"
+        ]
+      }
+    },
+    {
+      "name": "relax_relax_id",
+      "value": "relax.@local.relax_id",
+      "type": "set_variable",
+      "_nested_name": "relax_relax_id",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "relax.@local.relax_id",
+            "matchedExpression": "@local.relax_id",
+            "type": "local",
+            "fieldName": "relax_id"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.relax_id": [
+          "value"
+        ]
+      }
+    },
+    {
+      "name": "row_data",
+      "value": "@data.@local.relax_relax_id",
+      "type": "set_variable",
+      "_nested_name": "row_data",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@data.@local.relax_relax_id",
+            "matchedExpression": "@local.relax_relax_id",
+            "type": "local",
+            "fieldName": "relax_relax_id"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.relax_relax_id": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "text",
+      "name": "text",
+      "value": "@local.row_data.audio_transcript",
+      "_nested_name": "text",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@local.row_data.audio_transcript",
+            "matchedExpression": "@local.row_data.audio_transcript",
+            "type": "local",
+            "fieldName": "row_data"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.row_data.audio_transcript": [
+          "value"
+        ]
+      }
+    }
+  ],
+  "_xlsxPath": "global/data/library_data/relax_data.xlsx"
+}

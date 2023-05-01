@@ -1,0 +1,159 @@
+{
+  "flow_type": "template",
+  "flow_name": "reflect",
+  "status": "released",
+  "type_id": "reflect",
+  "rows": [
+    {
+      "name": "content_id",
+      "value": "time_child",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "content_id"
+    },
+    {
+      "type": "template",
+      "name": "topic_activity",
+      "value": "topic_activity",
+      "action_list": [
+        {
+          "trigger": "completed",
+          "action_id": "emit",
+          "args": [
+            "completed"
+          ],
+          "_raw": "completed | emit: completed",
+          "_cleaned": "completed | emit: completed"
+        },
+        {
+          "trigger": "uncompleted",
+          "action_id": "emit",
+          "args": [
+            "uncompleted"
+          ],
+          "_raw": "uncompleted | emit: uncompleted",
+          "_cleaned": "uncompleted | emit: uncompleted"
+        }
+      ],
+      "rows": [
+        {
+          "name": "type_id",
+          "value": "reflect",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "topic_activity.type_id"
+        },
+        {
+          "name": "content_id",
+          "value": "@local.content_id",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "topic_activity.content_id",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@local.content_id",
+                "matchedExpression": "@local.content_id",
+                "type": "local",
+                "fieldName": "content_id"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@local.content_id": [
+              "value"
+            ]
+          }
+        },
+        {
+          "type": "nested_properties",
+          "name": "content_box",
+          "value": "duo",
+          "rows": [
+            {
+              "type": "nested_properties",
+              "name": "box_1",
+              "value": "box_combo_box",
+              "rows": [
+                {
+                  "name": "data_list_name",
+                  "value": [
+                    "reflect_question"
+                  ],
+                  "type": "set_variable",
+                  "_nested_name": "topic_activity.content_box.box_1.data_list_name"
+                },
+                {
+                  "name": "id",
+                  "value": "@local.content_id",
+                  "_translations": {
+                    "value": {}
+                  },
+                  "type": "set_variable",
+                  "_nested_name": "topic_activity.content_box.box_1.id",
+                  "_dynamicFields": {
+                    "value": [
+                      {
+                        "fullExpression": "@local.content_id",
+                        "matchedExpression": "@local.content_id",
+                        "type": "local",
+                        "fieldName": "content_id"
+                      }
+                    ]
+                  },
+                  "_dynamicDependencies": {
+                    "@local.content_id": [
+                      "value"
+                    ]
+                  }
+                }
+              ],
+              "_nested_name": "topic_activity.content_box.box_1"
+            },
+            {
+              "type": "nested_properties",
+              "name": "box_2",
+              "value": "box_motivate",
+              "rows": [
+                {
+                  "name": "id",
+                  "value": "@local.content_id",
+                  "_translations": {
+                    "value": {}
+                  },
+                  "type": "set_variable",
+                  "_nested_name": "topic_activity.content_box.box_2.id",
+                  "_dynamicFields": {
+                    "value": [
+                      {
+                        "fullExpression": "@local.content_id",
+                        "matchedExpression": "@local.content_id",
+                        "type": "local",
+                        "fieldName": "content_id"
+                      }
+                    ]
+                  },
+                  "_dynamicDependencies": {
+                    "@local.content_id": [
+                      "value"
+                    ]
+                  }
+                }
+              ],
+              "_nested_name": "topic_activity.content_box.box_2"
+            }
+          ],
+          "_nested_name": "topic_activity.content_box"
+        }
+      ],
+      "_nested_name": "topic_activity"
+    }
+  ],
+  "_xlsxPath": "global/templates/type_templates/types.xlsx"
+}

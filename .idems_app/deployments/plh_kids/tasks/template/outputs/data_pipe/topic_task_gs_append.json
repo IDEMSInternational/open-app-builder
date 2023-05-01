@@ -1,0 +1,232 @@
+{
+  "flow_type": "data_pipe",
+  "flow_name": "topic_task_gs_append",
+  "status": "released",
+  "rows": [
+    {
+      "operation": "append_columns",
+      "args_list": [
+        "completed_field: task_gp_welcome_{@row.id}_completed",
+        "completed: @fields.@row.completed_field"
+      ],
+      "input_source": "welcome_task_gs_temp_1",
+      "output_target": "welcome_task_gs",
+      "topic_id": "welcome"
+    },
+    {
+      "operation": "append_columns",
+      "args_list": [
+        "completed_field: task_gp_connect_{@row.id}_completed",
+        "completed: @fields.@row.completed_field"
+      ],
+      "input_source": "connect_task_gs_temp_1",
+      "output_target": "connect_task_gs",
+      "topic_id": "connect"
+    },
+    {
+      "operation": "append_columns",
+      "args_list": [
+        "completed_field: task_gp_play_{@row.id}_completed",
+        "completed: @fields.@row.completed_field"
+      ],
+      "input_source": "play_task_gs_temp_1",
+      "output_target": "play_task_gs",
+      "topic_id": "play"
+    },
+    {
+      "operation": "append_columns",
+      "args_list": [
+        "completed_field: task_gp_talk_{@row.id}_completed",
+        "completed: @fields.@row.completed_field"
+      ],
+      "input_source": "talk_task_gs_temp_1",
+      "output_target": "talk_task_gs",
+      "topic_id": "talk"
+    },
+    {
+      "operation": "append_columns",
+      "args_list": [
+        "completed_field: task_gp_explore_{@row.id}_completed",
+        "completed: @fields.@row.completed_field"
+      ],
+      "input_source": "explore_task_gs_temp_1",
+      "output_target": "explore_task_gs",
+      "topic_id": "explore"
+    },
+    {
+      "operation": "append_columns",
+      "args_list": [
+        "completed_field: task_gp_create_{@row.id}_completed",
+        "completed: @fields.@row.completed_field"
+      ],
+      "input_source": "create_task_gs_temp_1",
+      "output_target": "create_task_gs",
+      "topic_id": "create"
+    },
+    {
+      "operation": "append_columns",
+      "args_list": [
+        "completed_field: task_gp_build_{@row.id}_completed",
+        "completed: @fields.@row.completed_field"
+      ],
+      "input_source": "build_task_gs_temp_1",
+      "output_target": "build_task_gs",
+      "topic_id": "build"
+    },
+    {
+      "operation": "append_columns",
+      "args_list": [
+        "completed_field: task_gp_summary_{@row.id}_completed",
+        "completed: @fields.@row.completed_field"
+      ],
+      "input_source": "summary_task_gs_temp_1",
+      "output_target": "summary_task_gs",
+      "topic_id": "summary"
+    },
+    {
+      "operation": "filter",
+      "args_list": [
+        "individual"
+      ],
+      "input_source": "welcome_task_gs",
+      "output_target": "welcome_ind_task_gs",
+      "topic_id": "welcome"
+    },
+    {
+      "operation": "filter",
+      "args_list": [
+        "individual"
+      ],
+      "input_source": "connect_task_gs",
+      "output_target": "connect_ind_task_gs",
+      "topic_id": "connect"
+    },
+    {
+      "operation": "filter",
+      "args_list": [
+        "individual"
+      ],
+      "input_source": "play_task_gs",
+      "output_target": "play_ind_task_gs",
+      "topic_id": "play"
+    },
+    {
+      "operation": "filter",
+      "args_list": [
+        "individual"
+      ],
+      "input_source": "talk_task_gs",
+      "output_target": "talk_ind_task_gs",
+      "topic_id": "talk"
+    },
+    {
+      "operation": "filter",
+      "args_list": [
+        "individual"
+      ],
+      "input_source": "explore_task_gs",
+      "output_target": "explore_ind_task_gs",
+      "topic_id": "explore"
+    },
+    {
+      "operation": "filter",
+      "args_list": [
+        "individual"
+      ],
+      "input_source": "create_task_gs",
+      "output_target": "create_ind_task_gs",
+      "topic_id": "create"
+    },
+    {
+      "operation": "filter",
+      "args_list": [
+        "individual"
+      ],
+      "input_source": "build_task_gs",
+      "output_target": "build_ind_task_gs",
+      "topic_id": "build"
+    },
+    {
+      "operation": "filter",
+      "args_list": [
+        "individual"
+      ],
+      "input_source": "summary_task_gs",
+      "output_target": "summary_ind_task_gs",
+      "topic_id": "summary"
+    },
+    {
+      "operation": "filter",
+      "args_list": [
+        "together"
+      ],
+      "input_source": "welcome_task_gs",
+      "output_target": "welcome_tog_task_gs",
+      "topic_id": "welcome"
+    },
+    {
+      "operation": "filter",
+      "args_list": [
+        "together"
+      ],
+      "input_source": "connect_task_gs",
+      "output_target": "connect_tog_task_gs",
+      "topic_id": "connect"
+    },
+    {
+      "operation": "filter",
+      "args_list": [
+        "together"
+      ],
+      "input_source": "play_task_gs",
+      "output_target": "play_tog_task_gs",
+      "topic_id": "play"
+    },
+    {
+      "operation": "filter",
+      "args_list": [
+        "together"
+      ],
+      "input_source": "talk_task_gs",
+      "output_target": "talk_tog_task_gs",
+      "topic_id": "talk"
+    },
+    {
+      "operation": "filter",
+      "args_list": [
+        "together"
+      ],
+      "input_source": "explore_task_gs",
+      "output_target": "explore_tog_task_gs",
+      "topic_id": "explore"
+    },
+    {
+      "operation": "filter",
+      "args_list": [
+        "together"
+      ],
+      "input_source": "create_task_gs",
+      "output_target": "create_tog_task_gs",
+      "topic_id": "create"
+    },
+    {
+      "operation": "filter",
+      "args_list": [
+        "together"
+      ],
+      "input_source": "build_task_gs",
+      "output_target": "build_tog_task_gs",
+      "topic_id": "build"
+    },
+    {
+      "operation": "filter",
+      "args_list": [
+        "together"
+      ],
+      "input_source": "summary_task_gs",
+      "output_target": "summary_tog_task_gs",
+      "topic_id": "summary"
+    }
+  ],
+  "_xlsxPath": "global/data/topic_task_data/topic_task_groups_data_pipes.xlsx"
+}

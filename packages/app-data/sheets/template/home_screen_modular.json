@@ -23,28 +23,13 @@
     },
     {
       "name": "highlighted_topic",
-      "value": "@fields._task_highlighted_group_id",
+      "value": "connect",
       "_translations": {
         "value": {}
       },
       "exclude_from_translation": true,
       "type": "set_variable",
-      "_nested_name": "highlighted_topic",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "@fields._task_highlighted_group_id",
-            "matchedExpression": "@fields._task_highlighted_group_id",
-            "type": "fields",
-            "fieldName": "_task_highlighted_group_id"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@fields._task_highlighted_group_id": [
-          "value"
-        ]
-      }
+      "_nested_name": "highlighted_topic"
     },
     {
       "type": "display_group",
@@ -112,6 +97,7 @@
       "parameter_list": {
         "style": "column"
       },
+      "condition": false,
       "rows": [
         {
           "type": "title",
@@ -120,6 +106,7 @@
           "_translations": {
             "value": {}
           },
+          "condition": false,
           "_nested_name": "dg_all_topics.title",
           "_dynamicFields": {
             "value": [
@@ -144,17 +131,20 @@
             "space_between": "8",
             "task_group_data": "topic_tasks"
           },
+          "condition": false,
           "exclude_from_translation": true,
           "rows": [
             {
               "type": "items",
               "value": "@data.topic_tasks",
+              "condition": false,
               "exclude_from_translation": true,
               "rows": [
                 {
                   "type": "template",
                   "name": "module_card_@item.id",
                   "value": "module_card",
+                  "condition": false,
                   "exclude_from_translation": true,
                   "rows": [
                     {
@@ -163,6 +153,7 @@
                       "_translations": {
                         "value": {}
                       },
+                      "condition": false,
                       "exclude_from_translation": true,
                       "type": "set_variable",
                       "_nested_name": "dg_all_topics.carousel.items.module_card_@item.id.topic_id",
@@ -251,6 +242,7 @@
       "parameter_list": {
         "style": "column"
       },
+      "condition": false,
       "rows": [
         {
           "type": "drawer",
@@ -259,12 +251,14 @@
           "parameter_list": {
             "style": "secondary"
           },
+          "condition": false,
           "exclude_from_translation": true,
           "rows": [
             {
               "type": "template",
               "name": "things_to_do_temp",
               "value": "things_to_do",
+              "condition": false,
               "exclude_from_translation": true,
               "rows": [],
               "_nested_name": "dg_drawer.drawer.things_to_do_temp"

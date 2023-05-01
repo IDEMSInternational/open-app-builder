@@ -1,0 +1,49 @@
+{
+  "flow_name": "talk_common_tasks",
+  "flow_subtype": "generated",
+  "flow_type": "data_list",
+  "rows": [
+    {
+      "id": "welcome",
+      "individual": true,
+      "together": true,
+      "template": "talk_welcome"
+    },
+    {
+      "id": "relax",
+      "individual": true,
+      "together": true,
+      "template": "talk_relax"
+    },
+    {
+      "id": "relate",
+      "individual": true,
+      "together": true,
+      "template": "talk_relate"
+    },
+    {
+      "id": "tools",
+      "individual": true,
+      "together": true,
+      "template": "talk_tools"
+    },
+    {
+      "id": "home_practice",
+      "individual": true,
+      "together": true,
+      "template": "talk_home_practice"
+    },
+    {
+      "id": "ending",
+      "individual": true,
+      "together": true,
+      "template": "talk_ending"
+    },
+    {
+      "id": "hp_review",
+      "individual": true,
+      "together": true,
+      "template": "talk_hp_review"
+    }
+  ]
+}

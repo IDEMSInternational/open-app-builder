@@ -1,0 +1,380 @@
+{
+  "flow_type": "template",
+  "flow_name": "box_check_in",
+  "status": "released",
+  "type_id": "check_in",
+  "rows": [
+    {
+      "name": "data_list_name",
+      "value": [
+        "check_in"
+      ],
+      "type": "set_variable",
+      "_nested_name": "data_list_name"
+    },
+    {
+      "name": "id",
+      "type": "set_variable",
+      "_nested_name": "id"
+    },
+    {
+      "name": "data_list_name_id",
+      "value": [
+        "@local.data_list_name.@local.id"
+      ],
+      "type": "set_variable",
+      "_nested_name": "data_list_name_id",
+      "_dynamicFields": {
+        "value": {
+          "0": [
+            {
+              "fullExpression": "@local.data_list_name.@local.id",
+              "matchedExpression": "@local.data_list_name",
+              "type": "local",
+              "fieldName": "data_list_name"
+            },
+            {
+              "fullExpression": "@local.data_list_name.@local.id",
+              "matchedExpression": "@local.id",
+              "type": "local",
+              "fieldName": "id"
+            }
+          ]
+        }
+      },
+      "_dynamicDependencies": {
+        "@local.data_list_name": [
+          "value.0"
+        ],
+        "@local.id": [
+          "value.0"
+        ]
+      }
+    },
+    {
+      "name": "row_data",
+      "value": "@data.@local.data_list_name_id",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "row_data",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@data.@local.data_list_name_id",
+            "matchedExpression": "@local.data_list_name_id",
+            "type": "local",
+            "fieldName": "data_list_name_id"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.data_list_name_id": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "text",
+      "name": "text",
+      "value": "@local.row_data.text",
+      "_translations": {
+        "value": {}
+      },
+      "_nested_name": "text",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@local.row_data.text",
+            "matchedExpression": "@local.row_data.text",
+            "type": "local",
+            "fieldName": "row_data"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.row_data.text": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "text",
+      "name": "question_text",
+      "value": "@local.row_data.question_text",
+      "_translations": {
+        "value": {}
+      },
+      "parameter_list": {
+        "style": "emphasised"
+      },
+      "_nested_name": "question_text",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@local.row_data.question_text",
+            "matchedExpression": "@local.row_data.question_text",
+            "type": "local",
+            "fieldName": "row_data"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.row_data.question_text": [
+          "value"
+        ]
+      }
+    },
+    {
+      "name": "store_response_field",
+      "value": "store_response_field",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "store_response_field"
+    },
+    {
+      "type": "radio_button_grid",
+      "name": "radio_button_grid",
+      "action_list": [
+        {
+          "trigger": "changed",
+          "action_id": "set_field",
+          "args": [
+            "@local.store_response_field",
+            "this.value"
+          ],
+          "_raw": "changed | set_field:@local.store_response_field: @local.radio_button_grid",
+          "_cleaned": "changed | set_field:@local.store_response_field: @local.radio_button_grid"
+        }
+      ],
+      "parameter_list": {
+        "answer_list": "@data.check_in_options",
+        "item_width": "70px",
+        "grid_width": "350px"
+      },
+      "_nested_name": "radio_button_grid",
+      "_dynamicFields": {
+        "action_list": {
+          "0": {
+            "args": {
+              "0": [
+                {
+                  "fullExpression": "@local.store_response_field",
+                  "matchedExpression": "@local.store_response_field",
+                  "type": "local",
+                  "fieldName": "store_response_field"
+                }
+              ]
+            },
+            "_raw": [
+              {
+                "fullExpression": "changed | set_field:@local.store_response_field: @local.radio_button_grid",
+                "matchedExpression": "@local.store_response_field",
+                "type": "local",
+                "fieldName": "store_response_field"
+              },
+              {
+                "fullExpression": "changed | set_field:@local.store_response_field: @local.radio_button_grid",
+                "matchedExpression": "@local.radio_button_grid",
+                "type": "local",
+                "fieldName": "radio_button_grid"
+              }
+            ],
+            "_cleaned": [
+              {
+                "fullExpression": "changed | set_field:@local.store_response_field: @local.radio_button_grid",
+                "matchedExpression": "@local.store_response_field",
+                "type": "local",
+                "fieldName": "store_response_field"
+              },
+              {
+                "fullExpression": "changed | set_field:@local.store_response_field: @local.radio_button_grid",
+                "matchedExpression": "@local.radio_button_grid",
+                "type": "local",
+                "fieldName": "radio_button_grid"
+              }
+            ]
+          }
+        },
+        "parameter_list": {
+          "answer_list": [
+            {
+              "fullExpression": "@data.check_in_options",
+              "matchedExpression": "@data.check_in_options",
+              "type": "data",
+              "fieldName": "check_in_options"
+            }
+          ]
+        }
+      },
+      "_dynamicDependencies": {
+        "@local.store_response_field": [
+          "action_list.0.args.0",
+          "action_list.0._raw",
+          "action_list.0._cleaned"
+        ],
+        "@local.radio_button_grid": [
+          "action_list.0._raw",
+          "action_list.0._cleaned"
+        ],
+        "@data.check_in_options": [
+          "parameter_list.answer_list"
+        ]
+      }
+    },
+    {
+      "type": "display_group",
+      "name": "feedback_happy_dg",
+      "hidden": "@local.radio_button_grid!=\"happy\"",
+      "parameter_list": {
+        "style": "column"
+      },
+      "rows": [
+        {
+          "type": "text",
+          "name": "feedback_happy",
+          "value": "@local.row_data.feedback_happy",
+          "_translations": {
+            "value": {}
+          },
+          "_nested_name": "feedback_happy_dg.feedback_happy",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@local.row_data.feedback_happy",
+                "matchedExpression": "@local.row_data.feedback_happy",
+                "type": "local",
+                "fieldName": "row_data"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@local.row_data.feedback_happy": [
+              "value"
+            ]
+          }
+        }
+      ],
+      "_nested_name": "feedback_happy_dg",
+      "_dynamicFields": {
+        "hidden": [
+          {
+            "fullExpression": "@local.radio_button_grid!=\"happy\"",
+            "matchedExpression": "@local.radio_button_grid",
+            "type": "local",
+            "fieldName": "radio_button_grid"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.radio_button_grid": [
+          "hidden"
+        ]
+      }
+    },
+    {
+      "type": "display_group",
+      "name": "feedback_ok_dg",
+      "hidden": "@local.radio_button_grid!=\"ok\"",
+      "parameter_list": {
+        "style": "column"
+      },
+      "rows": [
+        {
+          "type": "text",
+          "name": "feedback_ok",
+          "value": "@local.row_data.feedback_ok",
+          "_translations": {
+            "value": {}
+          },
+          "_nested_name": "feedback_ok_dg.feedback_ok",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@local.row_data.feedback_ok",
+                "matchedExpression": "@local.row_data.feedback_ok",
+                "type": "local",
+                "fieldName": "row_data"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@local.row_data.feedback_ok": [
+              "value"
+            ]
+          }
+        }
+      ],
+      "_nested_name": "feedback_ok_dg",
+      "_dynamicFields": {
+        "hidden": [
+          {
+            "fullExpression": "@local.radio_button_grid!=\"ok\"",
+            "matchedExpression": "@local.radio_button_grid",
+            "type": "local",
+            "fieldName": "radio_button_grid"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.radio_button_grid": [
+          "hidden"
+        ]
+      }
+    },
+    {
+      "type": "display_group",
+      "name": "feedback_sad_dg",
+      "hidden": "@local.radio_button_grid!=\"sad\"",
+      "parameter_list": {
+        "style": "column"
+      },
+      "rows": [
+        {
+          "type": "text",
+          "name": "feedback_sad",
+          "value": "@local.row_data.feedback_sad",
+          "_translations": {
+            "value": {}
+          },
+          "_nested_name": "feedback_sad_dg.feedback_sad",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@local.row_data.feedback_sad",
+                "matchedExpression": "@local.row_data.feedback_sad",
+                "type": "local",
+                "fieldName": "row_data"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@local.row_data.feedback_sad": [
+              "value"
+            ]
+          }
+        }
+      ],
+      "_nested_name": "feedback_sad_dg",
+      "_dynamicFields": {
+        "hidden": [
+          {
+            "fullExpression": "@local.radio_button_grid!=\"sad\"",
+            "matchedExpression": "@local.radio_button_grid",
+            "type": "local",
+            "fieldName": "radio_button_grid"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.radio_button_grid": [
+          "hidden"
+        ]
+      }
+    }
+  ],
+  "_xlsxPath": "global/templates/core_templates/topic_activity.xlsx"
+}

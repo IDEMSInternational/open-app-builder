@@ -1,0 +1,341 @@
+{
+  "flow_type": "template",
+  "flow_name": "read",
+  "status": "released",
+  "type_id": "read",
+  "rows": [
+    {
+      "name": "data_list_name",
+      "value": [
+        "read"
+      ],
+      "type": "set_variable",
+      "_nested_name": "data_list_name"
+    },
+    {
+      "name": "content_id",
+      "value": "interrupt_child",
+      "type": "set_variable",
+      "_nested_name": "content_id"
+    },
+    {
+      "name": "content_composed",
+      "value": "@local.data_list_name.@local.content_id",
+      "type": "set_variable",
+      "_nested_name": "content_composed",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@local.data_list_name.@local.content_id",
+            "matchedExpression": "@local.data_list_name",
+            "type": "local",
+            "fieldName": "data_list_name"
+          },
+          {
+            "fullExpression": "@local.data_list_name.@local.content_id",
+            "matchedExpression": "@local.content_id",
+            "type": "local",
+            "fieldName": "content_id"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.data_list_name": [
+          "value"
+        ],
+        "@local.content_id": [
+          "value"
+        ]
+      }
+    },
+    {
+      "name": "content_data",
+      "value": "@data.@local.content_composed",
+      "type": "set_variable",
+      "_nested_name": "content_data",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@data.@local.content_composed",
+            "matchedExpression": "@local.content_composed",
+            "type": "local",
+            "fieldName": "content_composed"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.content_composed": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "template",
+      "name": "topic_activity",
+      "value": "topic_activity",
+      "action_list": [
+        {
+          "trigger": "completed",
+          "action_id": "emit",
+          "args": [
+            "completed"
+          ],
+          "_raw": "completed | emit: completed",
+          "_cleaned": "completed | emit: completed"
+        },
+        {
+          "trigger": "uncompleted",
+          "action_id": "emit",
+          "args": [
+            "uncompleted"
+          ],
+          "_raw": "uncompleted | emit: uncompleted",
+          "_cleaned": "uncompleted | emit: uncompleted"
+        }
+      ],
+      "rows": [
+        {
+          "name": "type_id",
+          "value": "read",
+          "type": "set_variable",
+          "_nested_name": "topic_activity.type_id"
+        },
+        {
+          "name": "content_id",
+          "value": "@local.content_id",
+          "type": "set_variable",
+          "_nested_name": "topic_activity.content_id",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@local.content_id",
+                "matchedExpression": "@local.content_id",
+                "type": "local",
+                "fieldName": "content_id"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@local.content_id": [
+              "value"
+            ]
+          }
+        },
+        {
+          "type": "nested_properties",
+          "name": "content_box",
+          "value": "duo",
+          "rows": [
+            {
+              "type": "nested_properties",
+              "name": "box_1",
+              "value": "box_read_story",
+              "rows": [
+                {
+                  "name": "story_id",
+                  "value": "@local.content_data.story_id",
+                  "type": "set_variable",
+                  "_nested_name": "topic_activity.content_box.box_1.story_id",
+                  "_dynamicFields": {
+                    "value": [
+                      {
+                        "fullExpression": "@local.content_data.story_id",
+                        "matchedExpression": "@local.content_data.story_id",
+                        "type": "local",
+                        "fieldName": "content_data"
+                      }
+                    ]
+                  },
+                  "_dynamicDependencies": {
+                    "@local.content_data.story_id": [
+                      "value"
+                    ]
+                  }
+                }
+              ],
+              "_nested_name": "topic_activity.content_box.box_1"
+            },
+            {
+              "type": "nested_properties",
+              "name": "box_2",
+              "value": "duo",
+              "rows": [
+                {
+                  "type": "nested_properties",
+                  "name": "box_1",
+                  "value": "box_combo_box",
+                  "hidden": "!!(@local.content_data.question_1_id)",
+                  "rows": [
+                    {
+                      "name": "data_list_name",
+                      "value": [
+                        "read_question"
+                      ],
+                      "type": "set_variable",
+                      "_nested_name": "topic_activity.content_box.box_2.box_1.data_list_name"
+                    },
+                    {
+                      "name": "id",
+                      "value": "@local.content_data.question_1_id",
+                      "type": "set_variable",
+                      "_nested_name": "topic_activity.content_box.box_2.box_1.id",
+                      "_dynamicFields": {
+                        "value": [
+                          {
+                            "fullExpression": "@local.content_data.question_1_id",
+                            "matchedExpression": "@local.content_data.question_1_id",
+                            "type": "local",
+                            "fieldName": "content_data"
+                          }
+                        ]
+                      },
+                      "_dynamicDependencies": {
+                        "@local.content_data.question_1_id": [
+                          "value"
+                        ]
+                      }
+                    }
+                  ],
+                  "_nested_name": "topic_activity.content_box.box_2.box_1",
+                  "_dynamicFields": {
+                    "hidden": [
+                      {
+                        "fullExpression": "!!(@local.content_data.question_1_id)",
+                        "matchedExpression": "@local.content_data.question_1_id",
+                        "type": "local",
+                        "fieldName": "content_data"
+                      }
+                    ]
+                  },
+                  "_dynamicDependencies": {
+                    "@local.content_data.question_1_id": [
+                      "hidden"
+                    ]
+                  }
+                },
+                {
+                  "type": "nested_properties",
+                  "name": "box_2",
+                  "value": "duo",
+                  "rows": [
+                    {
+                      "type": "nested_properties",
+                      "name": "box_1",
+                      "value": "box_combo_box",
+                      "hidden": "!!(@local.content_data.question_2_id)",
+                      "rows": [
+                        {
+                          "name": "data_list_name",
+                          "value": [
+                            "read_question"
+                          ],
+                          "type": "set_variable",
+                          "_nested_name": "topic_activity.content_box.box_2.box_2.box_1.data_list_name"
+                        },
+                        {
+                          "name": "id",
+                          "value": "@local.content_data.question_2_id",
+                          "type": "set_variable",
+                          "_nested_name": "topic_activity.content_box.box_2.box_2.box_1.id",
+                          "_dynamicFields": {
+                            "value": [
+                              {
+                                "fullExpression": "@local.content_data.question_2_id",
+                                "matchedExpression": "@local.content_data.question_2_id",
+                                "type": "local",
+                                "fieldName": "content_data"
+                              }
+                            ]
+                          },
+                          "_dynamicDependencies": {
+                            "@local.content_data.question_2_id": [
+                              "value"
+                            ]
+                          }
+                        }
+                      ],
+                      "_nested_name": "topic_activity.content_box.box_2.box_2.box_1",
+                      "_dynamicFields": {
+                        "hidden": [
+                          {
+                            "fullExpression": "!!(@local.content_data.question_2_id)",
+                            "matchedExpression": "@local.content_data.question_2_id",
+                            "type": "local",
+                            "fieldName": "content_data"
+                          }
+                        ]
+                      },
+                      "_dynamicDependencies": {
+                        "@local.content_data.question_2_id": [
+                          "hidden"
+                        ]
+                      }
+                    },
+                    {
+                      "type": "nested_properties",
+                      "name": "box_2",
+                      "value": "box_combo_box",
+                      "hidden": "!!(@local.content_data.question_3_id)",
+                      "rows": [
+                        {
+                          "name": "data_list_name",
+                          "value": [
+                            "read_question"
+                          ],
+                          "type": "set_variable",
+                          "_nested_name": "topic_activity.content_box.box_2.box_2.box_2.data_list_name"
+                        },
+                        {
+                          "name": "id",
+                          "value": "@local.content_data.question_3_id",
+                          "type": "set_variable",
+                          "_nested_name": "topic_activity.content_box.box_2.box_2.box_2.id",
+                          "_dynamicFields": {
+                            "value": [
+                              {
+                                "fullExpression": "@local.content_data.question_3_id",
+                                "matchedExpression": "@local.content_data.question_3_id",
+                                "type": "local",
+                                "fieldName": "content_data"
+                              }
+                            ]
+                          },
+                          "_dynamicDependencies": {
+                            "@local.content_data.question_3_id": [
+                              "value"
+                            ]
+                          }
+                        }
+                      ],
+                      "_nested_name": "topic_activity.content_box.box_2.box_2.box_2",
+                      "_dynamicFields": {
+                        "hidden": [
+                          {
+                            "fullExpression": "!!(@local.content_data.question_3_id)",
+                            "matchedExpression": "@local.content_data.question_3_id",
+                            "type": "local",
+                            "fieldName": "content_data"
+                          }
+                        ]
+                      },
+                      "_dynamicDependencies": {
+                        "@local.content_data.question_3_id": [
+                          "hidden"
+                        ]
+                      }
+                    }
+                  ],
+                  "_nested_name": "topic_activity.content_box.box_2.box_2"
+                }
+              ],
+              "_nested_name": "topic_activity.content_box.box_2"
+            }
+          ],
+          "_nested_name": "topic_activity.content_box"
+        }
+      ],
+      "_nested_name": "topic_activity"
+    }
+  ],
+  "_xlsxPath": "global/templates/type_templates/types.xlsx"
+}

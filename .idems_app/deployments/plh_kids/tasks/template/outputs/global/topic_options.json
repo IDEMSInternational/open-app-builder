@@ -1,0 +1,88 @@
+{
+  "flow_type": "global",
+  "flow_name": "topic_options",
+  "status": "released",
+  "rows": [
+    {
+      "type": "declare_field_default",
+      "name": "topic_path",
+      "value": "individual",
+      "exclude_from_translation": true
+    },
+    {
+      "type": "declare_field_default",
+      "name": "topic_path_user_choice",
+      "value": false,
+      "exclude_from_translation": true
+    },
+    {
+      "type": "declare_field_default",
+      "name": "do_topics_together",
+      "value": "@fields.topic_path==\"together\"",
+      "exclude_from_translation": true
+    },
+    {
+      "type": "declare_global_constant",
+      "name": "together",
+      "value": "In my group"
+    },
+    {
+      "type": "declare_global_constant",
+      "name": "together_image",
+      "value": "plh_images/topics/options/together.svg",
+      "exclude_from_translation": true
+    },
+    {
+      "type": "declare_global_constant",
+      "name": "individual",
+      "value": "By myself"
+    },
+    {
+      "type": "declare_global_constant",
+      "name": "individual_image",
+      "value": "plh_images/topic_modes/individual/wave.svg",
+      "exclude_from_translation": true
+    },
+    {
+      "type": "declare_field_default",
+      "name": "guide_number",
+      "value": "guide_2",
+      "exclude_from_translation": true
+    },
+    {
+      "type": "declare_global_constant",
+      "name": "user_name_default",
+      "value": "Awesome parent"
+    },
+    {
+      "type": "declare_field_default",
+      "name": "user_name",
+      "value": "@global.user_name_default",
+      "exclude_from_translation": true
+    },
+    {
+      "type": "declare_global_constant",
+      "name": "group_name_default",
+      "value": "friends"
+    },
+    {
+      "type": "declare_field_default",
+      "name": "group_name",
+      "value": "@global.group_name_default",
+      "exclude_from_translation": true
+    },
+    {
+      "type": "declare_field_default",
+      "name": "w_money_path",
+      "value": "alone",
+      "exclude_from_translation": true
+    },
+    {
+      "type": "declare_field_default",
+      "name": "w_safe_path",
+      "value": "alone",
+      "exclude_from_translation": true
+    }
+  ],
+  "_xlsxPath": "global/data/topic_task_data/topic_globals.xlsx"
+}

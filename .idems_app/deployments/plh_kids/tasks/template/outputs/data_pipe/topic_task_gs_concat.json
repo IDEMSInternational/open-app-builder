@@ -1,0 +1,88 @@
+{
+  "flow_type": "data_pipe",
+  "flow_name": "topic_task_gs_concat",
+  "status": "released",
+  "rows": [
+    {
+      "operation": "concat",
+      "args_list": [
+        "welcome_common_task_gs",
+        "welcome_specific_task_gs"
+      ],
+      "input_source": false,
+      "output_target": "welcome_task_gs_temp_1",
+      "topic_id": "welcome"
+    },
+    {
+      "operation": "concat",
+      "args_list": [
+        "connect_common_task_gs",
+        "connect_specific_task_gs"
+      ],
+      "input_source": false,
+      "output_target": "connect_task_gs_temp_1",
+      "topic_id": "connect"
+    },
+    {
+      "operation": "concat",
+      "args_list": [
+        "play_common_task_gs",
+        "play_specific_task_gs"
+      ],
+      "input_source": false,
+      "output_target": "play_task_gs_temp_1",
+      "topic_id": "play"
+    },
+    {
+      "operation": "concat",
+      "args_list": [
+        "talk_common_task_gs",
+        "talk_specific_task_gs"
+      ],
+      "input_source": false,
+      "output_target": "talk_task_gs_temp_1",
+      "topic_id": "talk"
+    },
+    {
+      "operation": "concat",
+      "args_list": [
+        "explore_common_task_gs",
+        "explore_specific_task_gs"
+      ],
+      "input_source": false,
+      "output_target": "explore_task_gs_temp_1",
+      "topic_id": "explore"
+    },
+    {
+      "operation": "concat",
+      "args_list": [
+        "create_common_task_gs",
+        "create_specific_task_gs"
+      ],
+      "input_source": false,
+      "output_target": "create_task_gs_temp_1",
+      "topic_id": "create"
+    },
+    {
+      "operation": "concat",
+      "args_list": [
+        "build_common_task_gs",
+        "build_specific_task_gs"
+      ],
+      "input_source": false,
+      "output_target": "build_task_gs_temp_1",
+      "topic_id": "build"
+    },
+    {
+      "operation": "concat",
+      "args_list": [
+        "summary_common_task_gs",
+        "summary_specific_task_gs"
+      ],
+      "input_source": false,
+      "output_target": "summary_task_gs_temp_1",
+      "topic_id": "summary"
+    }
+  ],
+  "_xlsxPath": "global/data/topic_task_data/topic_task_groups_data_pipes.xlsx"
+}

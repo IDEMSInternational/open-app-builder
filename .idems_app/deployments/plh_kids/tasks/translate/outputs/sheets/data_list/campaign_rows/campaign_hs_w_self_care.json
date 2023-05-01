@@ -1,0 +1,367 @@
+{
+  "flow_type": "data_list",
+  "flow_subtype": "campaign_rows",
+  "flow_name": "campaign_hs_w_self_care",
+  "status": "released",
+  "rows": [
+    {
+      "id": "default",
+      "action_list": [
+        {
+          "trigger": "click",
+          "action_id": "set_field",
+          "args": [
+            "default_sent",
+            true
+          ],
+          "_raw": "click | set_field: default_sent : true",
+          "_cleaned": "click | set_field: default_sent : true"
+        }
+      ],
+      "priority": -1,
+      "campaign_list": [
+        "weekly_workshops",
+        "parent_points",
+        "parent_centre"
+      ],
+      "icon": "plh_images/icons/play_white.svg"
+    },
+    {
+      "id": "survey_welcome_quick_start",
+      "action_list": [
+        {
+          "trigger": "click",
+          "action_id": "go_to",
+          "args": [
+            "setup_and_survey_stepper"
+          ],
+          "_raw": "click | go_to: setup_and_survey_stepper",
+          "_cleaned": "click | go_to: setup_and_survey_stepper"
+        },
+        {
+          "trigger": "click",
+          "action_id": "set_field",
+          "args": [
+            "survey_welcome_quick_start_sent",
+            true
+          ],
+          "_raw": "click | set_field: survey_welcome_quick_start_sent : true",
+          "_cleaned": "click | set_field: survey_welcome_quick_start_sent : true"
+        }
+      ],
+      "priority": 13.2,
+      "activation_condition_list": [
+        {
+          "condition_type": "calc",
+          "condition_args": {
+            "calc": "@fields.w_self_care_started"
+          },
+          "_raw": "@fields.w_self_care_started"
+        }
+      ],
+      "deactivation_condition_list": [
+        {
+          "condition_type": "calc",
+          "condition_args": {
+            "calc": "@fields.survey_welcome_completed"
+          },
+          "_raw": "@fields.survey_welcome_completed"
+        }
+      ],
+      "campaign_list": [
+        "parent_centre"
+      ],
+      "icon": "plh_images/icons/phone_heart_white.svg"
+    },
+    {
+      "id": "survey_final_quick_start",
+      "action_list": [
+        {
+          "trigger": "click",
+          "action_id": "go_to",
+          "args": [
+            "survey_final_stepper"
+          ],
+          "_raw": "click | go_to: survey_final_stepper",
+          "_cleaned": "click | go_to: survey_final_stepper"
+        },
+        {
+          "trigger": "click",
+          "action_id": "set_field",
+          "args": [
+            "survey_final_quick_start_sent",
+            true
+          ],
+          "_raw": "click | set_field: survey_final_quick_start_sent : true",
+          "_cleaned": "click | set_field: survey_final_quick_start_sent : true"
+        }
+      ],
+      "priority": 13.1,
+      "activation_condition_list": [
+        {
+          "condition_type": "calc",
+          "condition_args": {
+            "calc": "@fields.w_celebrate_started"
+          },
+          "_raw": "@fields.w_celebrate_started"
+        }
+      ],
+      "deactivation_condition_list": [
+        {
+          "condition_type": "calc",
+          "condition_args": {
+            "calc": "@fields.survey_final_completed"
+          },
+          "_raw": "@fields.survey_final_completed"
+        }
+      ],
+      "campaign_list": [
+        "parent_centre"
+      ],
+      "icon": "plh_images/icons/phone_heart_white.svg"
+    },
+    {
+      "id": "w_self_care_m_w_released",
+      "action_list": [
+        {
+          "trigger": "click",
+          "action_id": "go_to",
+          "args": [
+            "w_self_care_stepper"
+          ],
+          "_raw": "click | go_to: w_self_care_stepper",
+          "_cleaned": "click | go_to: w_self_care_stepper"
+        },
+        {
+          "trigger": "click",
+          "action_id": "set_field",
+          "args": [
+            "w_self_care_m_w_released_sent",
+            true
+          ],
+          "_raw": "click | set_field: w_self_care_m_w_released_sent : true",
+          "_cleaned": "click | set_field: w_self_care_m_w_released_sent : true"
+        }
+      ],
+      "priority": 12.99,
+      "activation_condition_list": [
+        {
+          "condition_type": "calc",
+          "condition_args": {
+            "calc": "@fields.workshop_number == 1"
+          },
+          "_raw": "@fields.workshop_number == 1"
+        }
+      ],
+      "deactivation_condition_list": [
+        {
+          "condition_type": "calc",
+          "condition_args": {
+            "calc": "@fields.w_self_care_m_w_released_sent"
+          },
+          "_raw": "@fields.w_self_care_m_w_released_sent"
+        },
+        {
+          "condition_type": "calc",
+          "condition_args": {
+            "calc": "@fields.w_self_care_started"
+          },
+          "_raw": "@fields.w_self_care_started"
+        }
+      ],
+      "campaign_list": [
+        "weekly_workshops"
+      ],
+      "icon": "plh_images/icons/play_white.svg"
+    },
+    {
+      "id": "w_self_care_m_relax",
+      "action_list": [
+        {
+          "trigger": "click",
+          "action_id": "pop_up",
+          "args": [
+            "w_self_care_m_relax"
+          ],
+          "_raw": "click | pop_up:w_self_care_m_relax",
+          "_cleaned": "click | pop_up:w_self_care_m_relax"
+        },
+        {
+          "trigger": "click",
+          "action_id": "set_field",
+          "args": [
+            "w_self_care_m_relax_sent",
+            true
+          ],
+          "_raw": "click | set_field: w_self_care_m_relax_sent : true",
+          "_cleaned": "click | set_field: w_self_care_m_relax_sent : true"
+        }
+      ],
+      "priority": 12.9,
+      "activation_condition_list": [
+        {
+          "condition_type": "calc",
+          "condition_args": {
+            "calc": "@fields.workshop_number == 1 && @fields.w_self_care_completion_level == 100"
+          },
+          "_raw": "@fields.workshop_number == 1 && @fields.w_self_care_completion_level == 100"
+        }
+      ],
+      "deactivation_condition_list": [
+        {
+          "condition_type": "calc",
+          "condition_args": {
+            "calc": "@fields.w_self_care_m_relax_sent"
+          },
+          "_raw": "@fields.w_self_care_m_relax_sent"
+        }
+      ],
+      "campaign_list": [
+        "parent_points"
+      ],
+      "icon": "plh_images/icons/smile_eyes_down_white.svg"
+    },
+    {
+      "id": "w_self_care_m_hp_reminder",
+      "action_list": [
+        {
+          "trigger": "click",
+          "action_id": "pop_up",
+          "args": [
+            "w_self_care_m_hp_reminder"
+          ],
+          "_raw": "click | pop_up:w_self_care_m_hp_reminder",
+          "_cleaned": "click | pop_up:w_self_care_m_hp_reminder"
+        },
+        {
+          "trigger": "click",
+          "action_id": "set_field",
+          "args": [
+            "w_self_care_m_hp_reminder_sent",
+            true
+          ],
+          "_raw": "click | set_field: w_self_care_m_hp_reminder_sent : true",
+          "_cleaned": "click | set_field: w_self_care_m_hp_reminder_sent : true"
+        }
+      ],
+      "priority": 12.4,
+      "activation_condition_list": [
+        {
+          "condition_type": "calc",
+          "condition_args": {
+            "calc": "@fields.workshop_number == 1 && @fields.w_self_care_completion_level == 100 && @fields.workshop_day == 4"
+          },
+          "_raw": "@fields.workshop_number == 1 && @fields.w_self_care_completion_level == 100 && @fields.workshop_day == 4"
+        }
+      ],
+      "deactivation_condition_list": [
+        {
+          "condition_type": "calc",
+          "condition_args": {
+            "calc": "@fields.w_self_care_m_hp_reminder_sent"
+          },
+          "_raw": "@fields.w_self_care_m_hp_reminder_sent"
+        }
+      ],
+      "campaign_list": [
+        "parent_points"
+      ],
+      "icon": "plh_images/icons/parent_heart_white.svg"
+    },
+    {
+      "id": "w_self_care_m_parent_points_overview",
+      "action_list": [
+        {
+          "trigger": "click",
+          "action_id": "pop_up",
+          "args": [
+            "m_parent_points_overview"
+          ],
+          "_raw": "click | pop_up:m_parent_points_overview",
+          "_cleaned": "click | pop_up:m_parent_points_overview"
+        },
+        {
+          "trigger": "click",
+          "action_id": "set_field",
+          "args": [
+            "w_self_care_m_parent_points_overview_sent",
+            true
+          ],
+          "_raw": "click | set_field: w_self_care_m_parent_points_overview_sent : true",
+          "_cleaned": "click | set_field: w_self_care_m_parent_points_overview_sent : true"
+        }
+      ],
+      "priority": 12.3,
+      "activation_condition_list": [
+        {
+          "condition_type": "calc",
+          "condition_args": {
+            "calc": "@fields.workshop_number == 1 && @fields.workshop_day == 5"
+          },
+          "_raw": "@fields.workshop_number == 1 && @fields.workshop_day == 5"
+        }
+      ],
+      "deactivation_condition_list": [
+        {
+          "condition_type": "calc",
+          "condition_args": {
+            "calc": "@fields.w_self_care_m_parent_points_overview_sent"
+          },
+          "_raw": "@fields.w_self_care_m_parent_points_overview_sent"
+        }
+      ],
+      "campaign_list": [
+        "parent_points"
+      ],
+      "icon": "plh_images/icons/star_white.svg"
+    },
+    {
+      "id": "w_self_care_m_w_tomorrow",
+      "action_list": [
+        {
+          "trigger": "click",
+          "action_id": "pop_up",
+          "args": [
+            "w_self_care_m_w_tomorrow"
+          ],
+          "_raw": "click | pop_up:w_self_care_m_w_tomorrow",
+          "_cleaned": "click | pop_up:w_self_care_m_w_tomorrow"
+        },
+        {
+          "trigger": "click",
+          "action_id": "set_field",
+          "args": [
+            "w_self_care_m_w_tomorrow_sent",
+            true
+          ],
+          "_raw": "click | set_field: w_self_care_m_w_tomorrow_sent : true",
+          "_cleaned": "click | set_field: w_self_care_m_w_tomorrow_sent : true"
+        }
+      ],
+      "priority": 12.1,
+      "activation_condition_list": [
+        {
+          "condition_type": "calc",
+          "condition_args": {
+            "calc": "@fields.workshop_number == 1 && @fields.workshop_day == 6"
+          },
+          "_raw": "@fields.workshop_number == 1 && @fields.workshop_day == 6"
+        }
+      ],
+      "deactivation_condition_list": [
+        {
+          "condition_type": "calc",
+          "condition_args": {
+            "calc": "@fields.w_self_care_m_w_tomorrow_sent"
+          },
+          "_raw": "@fields.w_self_care_m_w_tomorrow_sent"
+        }
+      ],
+      "campaign_list": [
+        "weekly_workshops"
+      ],
+      "icon": "plh_images/icons/bell_white.svg"
+    }
+  ],
+  "_xlsxPath": "global/campaigns/quick_start_home_screen.xlsx"
+}

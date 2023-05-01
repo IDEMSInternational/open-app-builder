@@ -1,0 +1,42 @@
+{
+  "flow_type": "template",
+  "flow_name": "connect_read_interrupt_self",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "read",
+      "value": "read",
+      "action_list": [
+        {
+          "trigger": "completed",
+          "action_id": "emit",
+          "args": [
+            "completed"
+          ],
+          "_raw": "completed | emit: completed",
+          "_cleaned": "completed | emit: completed"
+        },
+        {
+          "trigger": "uncompleted",
+          "action_id": "emit",
+          "args": [
+            "uncompleted"
+          ],
+          "_raw": "uncompleted | emit: uncompleted",
+          "_cleaned": "uncompleted | emit: uncompleted"
+        }
+      ],
+      "rows": [
+        {
+          "name": "content_id",
+          "value": "interrupt_self",
+          "type": "set_variable",
+          "_nested_name": "read.content_id"
+        }
+      ],
+      "_nested_name": "read"
+    }
+  ],
+  "_xlsxPath": "global/templates/top_templates/topic_templates/topic_connect.xlsx"
+}

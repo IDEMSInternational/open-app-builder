@@ -1,0 +1,80 @@
+{
+  "flow_type": "data_pipe",
+  "flow_name": "common_topic_task_gs_create",
+  "status": "released",
+  "rows": [
+    {
+      "operation": "append_columns",
+      "input_source": "common_topic_task_gs",
+      "output_target": "welcome_common_task_gs",
+      "args_list": [
+        "template: welcome_@row.id"
+      ],
+      "topic_id": "welcome"
+    },
+    {
+      "operation": "append_columns",
+      "input_source": "common_topic_task_gs",
+      "output_target": "connect_common_task_gs",
+      "args_list": [
+        "template: connect_@row.id"
+      ],
+      "topic_id": "connect"
+    },
+    {
+      "operation": "append_columns",
+      "input_source": "common_topic_task_gs",
+      "output_target": "play_common_task_gs",
+      "args_list": [
+        "template: play_@row.id"
+      ],
+      "topic_id": "play"
+    },
+    {
+      "operation": "append_columns",
+      "input_source": "common_topic_task_gs",
+      "output_target": "talk_common_task_gs",
+      "args_list": [
+        "template: talk_@row.id"
+      ],
+      "topic_id": "talk"
+    },
+    {
+      "operation": "append_columns",
+      "input_source": "common_topic_task_gs",
+      "output_target": "explore_common_task_gs",
+      "args_list": [
+        "template: explore_@row.id"
+      ],
+      "topic_id": "explore"
+    },
+    {
+      "operation": "append_columns",
+      "input_source": "common_topic_task_gs",
+      "output_target": "create_common_task_gs",
+      "args_list": [
+        "template: create_@row.id"
+      ],
+      "topic_id": "create"
+    },
+    {
+      "operation": "append_columns",
+      "input_source": "common_topic_task_gs",
+      "output_target": "build_common_task_gs",
+      "args_list": [
+        "template: build_@row.id"
+      ],
+      "topic_id": "build"
+    },
+    {
+      "operation": "append_columns",
+      "input_source": "common_topic_task_gs",
+      "output_target": "summary_common_task_gs",
+      "args_list": [
+        "template: summary_@row.id"
+      ],
+      "topic_id": "summary"
+    }
+  ],
+  "_xlsxPath": "global/data/topic_task_data/topic_task_groups_data_pipes.xlsx"
+}

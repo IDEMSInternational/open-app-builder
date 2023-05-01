@@ -1,0 +1,36 @@
+{
+  "flow_type": "data_list",
+  "flow_name": "home_practice_data",
+  "status": "released",
+  "data_list_name": "home_practice",
+  "rows": [
+    {
+      "id": "connect",
+      "tip_1": "Make time for yourself",
+      "_translations": {
+        "tip_1": {},
+        "tip_2": {},
+        "tip_3": {},
+        "text": {}
+      },
+      "_translatedFields": {
+        "tip_1": {
+          "eng": "Make time for yourself"
+        },
+        "tip_2": {
+          "eng": "10 minutes of one-on-one time with your child"
+        },
+        "tip_3": {
+          "eng": "Share a book with your child"
+        },
+        "text": {
+          "eng": "Here are 3 things to try during the week:"
+        }
+      },
+      "tip_2": "10 minutes of one-on-one time with your child",
+      "tip_3": "Share a book with your child",
+      "text": "Here are 3 things to try during the week:"
+    }
+  ],
+  "_xlsxPath": "global/data/topic_data/topic_data.xlsx"
+}

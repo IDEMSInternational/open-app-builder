@@ -1,0 +1,55 @@
+{
+  "flow_type": "template",
+  "flow_name": "connect_check_in",
+  "status": "released",
+  "type_id": "check_in",
+  "rows": [
+    {
+      "type": "template",
+      "name": "topic_activity",
+      "value": "topic_activity",
+      "action_list": [
+        {
+          "trigger": "completed",
+          "action_id": "emit",
+          "args": [
+            "completed"
+          ],
+          "_raw": "completed | emit: completed",
+          "_cleaned": "completed | emit: completed"
+        },
+        {
+          "trigger": "uncompleted",
+          "action_id": "emit",
+          "args": [
+            "uncompleted"
+          ],
+          "_raw": "uncompleted | emit: uncompleted",
+          "_cleaned": "uncompleted | emit: uncompleted"
+        }
+      ],
+      "rows": [
+        {
+          "name": "type_id",
+          "value": "check_in",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "topic_activity.type_id"
+        },
+        {
+          "name": "content_id",
+          "value": "connect",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "topic_activity.content_id"
+        }
+      ],
+      "_nested_name": "topic_activity"
+    }
+  ],
+  "_xlsxPath": "global/templates/top_templates/topic_templates/topic_connect.xlsx"
+}

@@ -1,0 +1,115 @@
+{
+  "flow_type": "data_list",
+  "flow_name": "read_story_data",
+  "status": "released",
+  "data_list_name": "read_story",
+  "rows": [
+    {
+      "id": "interrupt_self",
+      "text_1": "You are engaging in something you enjoy doing.",
+      "_translations": {
+        "text_1": {},
+        "text_2": {},
+        "text_3": {}
+      },
+      "_translatedFields": {
+        "text_1": {
+          "eng": "You are engaging in something you enjoy doing."
+        },
+        "text_2": {
+          "eng": "Then, someone you know and care about comes into your space."
+        },
+        "text_3": {
+          "eng": "They interrupt you and ask: \"What are you doing? Why are you doing it like that? Wouldn’t it be easier if you did it like this? You should rather do this! That’s not going to work, you should be doing this...\""
+        }
+      },
+      "text_2": "Then, someone you know and care about comes into your space.",
+      "text_3": "They interrupt you and ask: \"What are you doing? Why are you doing it like that? Wouldn’t it be easier if you did it like this? You should rather do this! That’s not going to work, you should be doing this...\""
+    },
+    {
+      "id": "join_self",
+      "text_1": "You are engaging in something you enjoy doing.",
+      "_translations": {
+        "text_1": {},
+        "text_2": {},
+        "text_3": {}
+      },
+      "_translatedFields": {
+        "text_1": {
+          "eng": "You are engaging in something you enjoy doing."
+        },
+        "text_2": {
+          "eng": "Someone you know and care about sits down next to you."
+        },
+        "text_3": {
+          "eng": "They show interest in what you are doing by closely observing and paying attention, showing curiosity and encouragement."
+        }
+      },
+      "text_2": "Someone you know and care about sits down next to you.",
+      "text_3": "They show interest in what you are doing by closely observing and paying attention, showing curiosity and encouragement."
+    },
+    {
+      "id": "interrupt_child",
+      "image_1_asset": "images/topics/connect/interrupt_child/slide_1.png",
+      "image_2_asset": "images/topics/connect/interrupt_child/slide_2.png",
+      "image_3_asset": "images/topics/connect/interrupt_child/slide_3.png",
+      "image_4_asset": "images/topics/connect/interrupt_child/slide_4.png",
+      "text_1": "Father: \"Let's play with the blocks together, Lonwabo.\"",
+      "_translations": {
+        "text_1": {},
+        "text_2": {},
+        "text_3": {},
+        "text_4": {}
+      },
+      "_translatedFields": {
+        "text_1": {
+          "eng": "Father: \"Let's play with the blocks together, Lonwabo.\""
+        },
+        "text_2": {
+          "eng": "Father: \"Who can build a taller tower?\""
+        },
+        "text_3": {
+          "eng": "Father: \"No, you are doing it wrong. User the big blocks for the bottom and the small blocks for the top.\""
+        },
+        "text_4": {
+          "eng": "Father: \"Where are you going? We were playing together!\""
+        }
+      },
+      "text_2": "Father: \"Who can build a taller tower?\"",
+      "text_3": "Father: \"No, you are doing it wrong. User the big blocks for the bottom and the small blocks for the top.\"",
+      "text_4": "Father: \"Where are you going? We were playing together!\""
+    },
+    {
+      "id": "join_child",
+      "image_1_asset": "images/topics/connect/join_child/slide_1.png",
+      "image_2_asset": "images/topics/connect/join_child/slide_2.png",
+      "image_3_asset": "images/topics/connect/join_child/slide_3.png",
+      "image_4_asset": "images/topics/connect/join_child/slide_4.png",
+      "text_1": "Father: \"I see you are playing quietly with the wooden blocks with concentration, Lonwabo.\"",
+      "_translations": {
+        "text_1": {},
+        "text_2": {},
+        "text_3": {},
+        "text_4": {}
+      },
+      "_translatedFields": {
+        "text_1": {
+          "eng": "Father: \"I see you are playing quietly with the wooden blocks with concentration, Lonwabo.\""
+        },
+        "text_2": {
+          "eng": "Father: \"Wow! You are building such a tall and strong wall with those blocks.\"\n\nLonwabo: \"It's for our cows.\""
+        },
+        "text_3": {
+          "eng": "Father: \"The enclosure is a kraal. It will keep our cows safe!\"\n\nLonwabo: \"Now you can help make a rondavel for you and me to sleep in.\""
+        },
+        "text_4": {
+          "eng": "Father: \"This rondavel is going to keep us both warm and dry. You are such a good builder, Lonwabo.\""
+        }
+      },
+      "text_2": "Father: \"Wow! You are building such a tall and strong wall with those blocks.\"\n\nLonwabo: \"It's for our cows.\"",
+      "text_3": "Father: \"The enclosure is a kraal. It will keep our cows safe!\"\n\nLonwabo: \"Now you can help make a rondavel for you and me to sleep in.\"",
+      "text_4": "Father: \"This rondavel is going to keep us both warm and dry. You are such a good builder, Lonwabo.\""
+    }
+  ],
+  "_xlsxPath": "global/data/topic_data/topic_data.xlsx"
+}

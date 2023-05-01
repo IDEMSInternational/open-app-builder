@@ -1,0 +1,68 @@
+{
+  "flow_type": "global",
+  "flow_name": "parent_point_variables",
+  "status": "released",
+  "rows": [
+    {
+      "type": "declare_field_default",
+      "name": "parent_point_count_relax",
+      "value": 0,
+      "exclude_from_translation": true
+    },
+    {
+      "type": "declare_field_default",
+      "name": "parent_point_count_treat_yourself",
+      "value": 0,
+      "exclude_from_translation": true
+    },
+    {
+      "type": "declare_field_default",
+      "name": "parent_point_count_praise_yourself",
+      "value": 0,
+      "exclude_from_translation": true
+    },
+    {
+      "type": "declare_field_default",
+      "name": "parent_point_count_spend_time",
+      "value": 0,
+      "exclude_from_translation": true
+    },
+    {
+      "type": "declare_field_default",
+      "name": "parent_point_count_praise_teen",
+      "value": 0,
+      "exclude_from_translation": true
+    },
+    {
+      "type": "declare_field_default",
+      "name": "parent_point_count_instruct_positively",
+      "value": 0,
+      "exclude_from_translation": true
+    },
+    {
+      "type": "declare_field_default",
+      "name": "parent_point_count_breathe",
+      "value": 0,
+      "exclude_from_translation": true
+    },
+    {
+      "type": "declare_field_default",
+      "name": "parent_point_count_money",
+      "value": 0,
+      "exclude_from_translation": true
+    },
+    {
+      "type": "declare_field_default",
+      "name": "parent_point_count_consequence",
+      "value": 0,
+      "exclude_from_translation": true
+    },
+    {
+      "type": "declare_field_default",
+      "name": "parent_point_count_safe",
+      "value": 0,
+      "exclude_from_translation": true
+    }
+  ],
+  "_xlsxPath": "global/data/habit_data/habit_globals.xlsx"
+}

@@ -1,0 +1,239 @@
+{
+  "flow_type": "template",
+  "flow_name": "box_motivate",
+  "status": "released",
+  "type_id": "motivate",
+  "rows": [
+    {
+      "name": "data_list_name",
+      "value": [
+        "reflect_motivation"
+      ],
+      "type": "set_variable",
+      "_nested_name": "data_list_name"
+    },
+    {
+      "name": "id",
+      "type": "set_variable",
+      "_nested_name": "id"
+    },
+    {
+      "name": "data_list_name_id",
+      "value": [
+        "@local.data_list_name.@local.id"
+      ],
+      "type": "set_variable",
+      "_nested_name": "data_list_name_id",
+      "_dynamicFields": {
+        "value": {
+          "0": [
+            {
+              "fullExpression": "@local.data_list_name.@local.id",
+              "matchedExpression": "@local.data_list_name",
+              "type": "local",
+              "fieldName": "data_list_name"
+            },
+            {
+              "fullExpression": "@local.data_list_name.@local.id",
+              "matchedExpression": "@local.id",
+              "type": "local",
+              "fieldName": "id"
+            }
+          ]
+        }
+      },
+      "_dynamicDependencies": {
+        "@local.data_list_name": [
+          "value.0"
+        ],
+        "@local.id": [
+          "value.0"
+        ]
+      }
+    },
+    {
+      "name": "row_data",
+      "value": "@data.@local.data_list_name_id",
+      "type": "set_variable",
+      "_nested_name": "row_data",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@data.@local.data_list_name_id",
+            "matchedExpression": "@local.data_list_name_id",
+            "type": "local",
+            "fieldName": "data_list_name_id"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.data_list_name_id": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "text",
+      "name": "text",
+      "value": "@local.row_data.text",
+      "_nested_name": "text",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@local.row_data.text",
+            "matchedExpression": "@local.row_data.text",
+            "type": "local",
+            "fieldName": "row_data"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.row_data.text": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "text",
+      "name": "blocks",
+      "value": "* @local.row_data.block_1\n* @local.row_data.block_2\n* @local.row_data.block_3\n* @local.row_data.block_4",
+      "_nested_name": "blocks",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "* @local.row_data.block_1\n* @local.row_data.block_2\n* @local.row_data.block_3\n* @local.row_data.block_4",
+            "matchedExpression": "@local.row_data.block_1",
+            "type": "local",
+            "fieldName": "row_data"
+          },
+          {
+            "fullExpression": "* @local.row_data.block_1\n* @local.row_data.block_2\n* @local.row_data.block_3\n* @local.row_data.block_4",
+            "matchedExpression": "@local.row_data.block_2",
+            "type": "local",
+            "fieldName": "row_data"
+          },
+          {
+            "fullExpression": "* @local.row_data.block_1\n* @local.row_data.block_2\n* @local.row_data.block_3\n* @local.row_data.block_4",
+            "matchedExpression": "@local.row_data.block_3",
+            "type": "local",
+            "fieldName": "row_data"
+          },
+          {
+            "fullExpression": "* @local.row_data.block_1\n* @local.row_data.block_2\n* @local.row_data.block_3\n* @local.row_data.block_4",
+            "matchedExpression": "@local.row_data.block_4",
+            "type": "local",
+            "fieldName": "row_data"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.row_data.block_1": [
+          "value"
+        ],
+        "@local.row_data.block_2": [
+          "value"
+        ],
+        "@local.row_data.block_3": [
+          "value"
+        ],
+        "@local.row_data.block_4": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "text",
+      "name": "blocks",
+      "value": "* @local.row_data.block_1\n* @local.row_data.block_2\n* @local.row_data.block_3",
+      "condition": "!(@local.row_data.block_4)",
+      "_nested_name": "blocks",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "* @local.row_data.block_1\n* @local.row_data.block_2\n* @local.row_data.block_3",
+            "matchedExpression": "@local.row_data.block_1",
+            "type": "local",
+            "fieldName": "row_data"
+          },
+          {
+            "fullExpression": "* @local.row_data.block_1\n* @local.row_data.block_2\n* @local.row_data.block_3",
+            "matchedExpression": "@local.row_data.block_2",
+            "type": "local",
+            "fieldName": "row_data"
+          },
+          {
+            "fullExpression": "* @local.row_data.block_1\n* @local.row_data.block_2\n* @local.row_data.block_3",
+            "matchedExpression": "@local.row_data.block_3",
+            "type": "local",
+            "fieldName": "row_data"
+          }
+        ],
+        "condition": [
+          {
+            "fullExpression": "!(@local.row_data.block_4)",
+            "matchedExpression": "@local.row_data.block_4",
+            "type": "local",
+            "fieldName": "row_data"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.row_data.block_1": [
+          "value"
+        ],
+        "@local.row_data.block_2": [
+          "value"
+        ],
+        "@local.row_data.block_3": [
+          "value"
+        ],
+        "@local.row_data.block_4": [
+          "condition"
+        ]
+      }
+    },
+    {
+      "type": "text",
+      "name": "blocks",
+      "value": "* @local.row_data.block_1\n* @local.row_data.block_2",
+      "condition": "!(@local.row_data.block_3)",
+      "_nested_name": "blocks",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "* @local.row_data.block_1\n* @local.row_data.block_2",
+            "matchedExpression": "@local.row_data.block_1",
+            "type": "local",
+            "fieldName": "row_data"
+          },
+          {
+            "fullExpression": "* @local.row_data.block_1\n* @local.row_data.block_2",
+            "matchedExpression": "@local.row_data.block_2",
+            "type": "local",
+            "fieldName": "row_data"
+          }
+        ],
+        "condition": [
+          {
+            "fullExpression": "!(@local.row_data.block_3)",
+            "matchedExpression": "@local.row_data.block_3",
+            "type": "local",
+            "fieldName": "row_data"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.row_data.block_1": [
+          "value"
+        ],
+        "@local.row_data.block_2": [
+          "value"
+        ],
+        "@local.row_data.block_3": [
+          "condition"
+        ]
+      }
+    }
+  ],
+  "_xlsxPath": "global/templates/core_templates/topic_activity.xlsx"
+}

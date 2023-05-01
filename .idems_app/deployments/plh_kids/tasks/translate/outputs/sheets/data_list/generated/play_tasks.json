@@ -1,0 +1,63 @@
+{
+  "flow_name": "play_tasks",
+  "flow_subtype": "generated",
+  "flow_type": "data_list",
+  "rows": [
+    {
+      "id": "welcome",
+      "individual": true,
+      "together": true,
+      "template": "play_welcome",
+      "completed_field": "task_play_welcome_completed",
+      "completed": "@fields.task_play_welcome_completed"
+    },
+    {
+      "id": "relax",
+      "individual": true,
+      "together": true,
+      "template": "play_relax",
+      "completed_field": "task_play_relax_completed",
+      "completed": "@fields.task_play_relax_completed"
+    },
+    {
+      "id": "relate",
+      "individual": true,
+      "together": true,
+      "template": "play_relate",
+      "completed_field": "task_play_relate_completed",
+      "completed": "@fields.task_play_relate_completed"
+    },
+    {
+      "id": "tools",
+      "individual": true,
+      "together": true,
+      "template": "play_tools",
+      "completed_field": "task_play_tools_completed",
+      "completed": "@fields.task_play_tools_completed"
+    },
+    {
+      "id": "home_practice",
+      "individual": true,
+      "together": true,
+      "template": "play_home_practice",
+      "completed_field": "task_play_home_practice_completed",
+      "completed": "@fields.task_play_home_practice_completed"
+    },
+    {
+      "id": "ending",
+      "individual": true,
+      "together": true,
+      "template": "play_ending",
+      "completed_field": "task_play_ending_completed",
+      "completed": "@fields.task_play_ending_completed"
+    },
+    {
+      "id": "hp_review",
+      "individual": true,
+      "together": true,
+      "template": "play_hp_review",
+      "completed_field": "task_play_hp_review_completed",
+      "completed": "@fields.task_play_hp_review_completed"
+    }
+  ]
+}

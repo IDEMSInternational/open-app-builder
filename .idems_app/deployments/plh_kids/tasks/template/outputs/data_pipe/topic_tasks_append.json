@@ -1,0 +1,88 @@
+{
+  "flow_type": "data_pipe",
+  "flow_name": "topic_tasks_append",
+  "status": "released",
+  "rows": [
+    {
+      "operation": "append_columns",
+      "args_list": [
+        "completed_field: task_welcome_{@row.id}_completed",
+        "completed: @fields.@row.completed_field"
+      ],
+      "input_source": "welcome_tasks_temp_1",
+      "output_target": "welcome_tasks",
+      "topic_id": "welcome"
+    },
+    {
+      "operation": "append_columns",
+      "args_list": [
+        "completed_field: task_connect_{@row.id}_completed",
+        "completed: @fields.@row.completed_field"
+      ],
+      "input_source": "connect_tasks_temp_1",
+      "output_target": "connect_tasks",
+      "topic_id": "connect"
+    },
+    {
+      "operation": "append_columns",
+      "args_list": [
+        "completed_field: task_play_{@row.id}_completed",
+        "completed: @fields.@row.completed_field"
+      ],
+      "input_source": "play_tasks_temp_1",
+      "output_target": "play_tasks",
+      "topic_id": "play"
+    },
+    {
+      "operation": "append_columns",
+      "args_list": [
+        "completed_field: task_talk_{@row.id}_completed",
+        "completed: @fields.@row.completed_field"
+      ],
+      "input_source": "talk_tasks_temp_1",
+      "output_target": "talk_tasks",
+      "topic_id": "talk"
+    },
+    {
+      "operation": "append_columns",
+      "args_list": [
+        "completed_field: task_explore_{@row.id}_completed",
+        "completed: @fields.@row.completed_field"
+      ],
+      "input_source": "explore_tasks_temp_1",
+      "output_target": "explore_tasks",
+      "topic_id": "explore"
+    },
+    {
+      "operation": "append_columns",
+      "args_list": [
+        "completed_field: task_create_{@row.id}_completed",
+        "completed: @fields.@row.completed_field"
+      ],
+      "input_source": "create_tasks_temp_1",
+      "output_target": "create_tasks",
+      "topic_id": "create"
+    },
+    {
+      "operation": "append_columns",
+      "args_list": [
+        "completed_field: task_build_{@row.id}_completed",
+        "completed: @fields.@row.completed_field"
+      ],
+      "input_source": "build_tasks_temp_1",
+      "output_target": "build_tasks",
+      "topic_id": "build"
+    },
+    {
+      "operation": "append_columns",
+      "args_list": [
+        "completed_field: task_summary_{@row.id}_completed",
+        "completed: @fields.@row.completed_field"
+      ],
+      "input_source": "summary_tasks_temp_1",
+      "output_target": "summary_tasks",
+      "topic_id": "summary"
+    }
+  ],
+  "_xlsxPath": "global/data/topic_task_data/topic_tasks_data_pipes.xlsx"
+}

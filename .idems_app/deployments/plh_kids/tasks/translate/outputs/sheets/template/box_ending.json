@@ -1,0 +1,47 @@
+{
+  "flow_type": "template",
+  "flow_name": "box_ending",
+  "status": "released",
+  "type_id": "ending",
+  "rows": [
+    {
+      "name": "subtitles",
+      "value": "video/song/lets_slow_down.vtt",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "subtitles"
+    },
+    {
+      "type": "video",
+      "name": "video",
+      "value": "video/song/lets_slow_down.mp4",
+      "_translations": {
+        "value": {}
+      },
+      "parameter_list": {
+        "subtitles_src": "@local.subtitles"
+      },
+      "_nested_name": "video",
+      "_dynamicFields": {
+        "parameter_list": {
+          "subtitles_src": [
+            {
+              "fullExpression": "@local.subtitles",
+              "matchedExpression": "@local.subtitles",
+              "type": "local",
+              "fieldName": "subtitles"
+            }
+          ]
+        }
+      },
+      "_dynamicDependencies": {
+        "@local.subtitles": [
+          "parameter_list.subtitles_src"
+        ]
+      }
+    }
+  ],
+  "_xlsxPath": "global/templates/core_templates/topic_activity.xlsx"
+}

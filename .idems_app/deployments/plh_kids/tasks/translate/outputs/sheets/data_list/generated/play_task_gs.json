@@ -1,0 +1,140 @@
+{
+  "flow_name": "play_task_gs",
+  "flow_subtype": "generated",
+  "flow_type": "data_list",
+  "rows": [
+    {
+      "id": "check_in",
+      "individual": true,
+      "together": true,
+      "priority": 1,
+      "has_single_task": true,
+      "title": "@data.type.check_in.activity_title",
+      "_translations": {
+        "title": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "@data.type.check_in.activity_title"
+        }
+      },
+      "template": "play_check_in",
+      "completed_field": "task_gp_play_check_in_completed",
+      "completed": "@fields.task_gp_play_check_in_completed"
+    },
+    {
+      "id": "relax",
+      "individual": true,
+      "together": true,
+      "priority": 3,
+      "has_single_task": true,
+      "title": "@data.type.relax.activity_title",
+      "_translations": {
+        "title": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "@data.type.relax.activity_title"
+        }
+      },
+      "template": "play_relax",
+      "completed_field": "task_gp_play_relax_completed",
+      "completed": "@fields.task_gp_play_relax_completed"
+    },
+    {
+      "id": "relate",
+      "individual": true,
+      "together": true,
+      "priority": 5,
+      "has_single_task": true,
+      "title": "@data.type.relate.activity_title",
+      "_translations": {
+        "title": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "@data.type.relate.activity_title"
+        }
+      },
+      "template": "play_relate",
+      "completed_field": "task_gp_play_relate_completed",
+      "completed": "@fields.task_gp_play_relate_completed"
+    },
+    {
+      "id": "tools",
+      "individual": true,
+      "together": true,
+      "priority": 70,
+      "has_single_task": true,
+      "title": "@data.type.tools.activity_title",
+      "_translations": {
+        "title": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "@data.type.tools.activity_title"
+        }
+      },
+      "template": "play_tools",
+      "completed_field": "task_gp_play_tools_completed",
+      "completed": "@fields.task_gp_play_tools_completed"
+    },
+    {
+      "id": "home_practice",
+      "individual": true,
+      "together": true,
+      "priority": 80,
+      "has_single_task": true,
+      "title": "@data.type.home_practice.activity_title",
+      "_translations": {
+        "title": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "@data.type.home_practice.activity_title"
+        }
+      },
+      "template": "play_home_practice",
+      "completed_field": "task_gp_play_home_practice_completed",
+      "completed": "@fields.task_gp_play_home_practice_completed"
+    },
+    {
+      "id": "ending",
+      "individual": true,
+      "together": true,
+      "priority": 90,
+      "has_single_task": true,
+      "title": "@data.type.ending.activity_title",
+      "_translations": {
+        "title": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "@data.type.ending.activity_title"
+        }
+      },
+      "template": "play_ending",
+      "completed_field": "task_gp_play_ending_completed",
+      "completed": "@fields.task_gp_play_ending_completed"
+    },
+    {
+      "id": "hp_review",
+      "individual": true,
+      "together": true,
+      "priority": 91,
+      "has_single_task": true,
+      "title": "@data.type.hp_review.activity_title",
+      "_translations": {
+        "title": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "@data.type.hp_review.activity_title"
+        }
+      },
+      "template": "play_hp_review",
+      "completed_field": "task_gp_play_hp_review_completed",
+      "completed": "@fields.task_gp_play_hp_review_completed"
+    }
+  ]
+}

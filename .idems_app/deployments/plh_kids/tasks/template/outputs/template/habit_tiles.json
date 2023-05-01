@@ -1,0 +1,103 @@
+{
+  "flow_type": "template",
+  "flow_name": "habit_tiles",
+  "status": "released",
+  "rows": [
+    {
+      "type": "begin_display_group",
+      "name": "habits",
+      "parameter_list": {
+        "style": "parent_point"
+      },
+      "_nested_name": "habits"
+    },
+    {
+      "type": "items",
+      "value": "@data.habit",
+      "rows": [
+        {
+          "type": "template",
+          "name": "tile_@item.id",
+          "value": "habit_tile",
+          "rows": [
+            {
+              "name": "habit_id",
+              "value": "@item.id",
+              "type": "set_variable",
+              "_nested_name": "items.tile_@item.id.habit_id",
+              "_dynamicFields": {
+                "value": [
+                  {
+                    "fullExpression": "@item.id",
+                    "matchedExpression": "@item.id",
+                    "type": "item",
+                    "fieldName": "id"
+                  }
+                ],
+                "_nested_name": [
+                  {
+                    "fullExpression": "items.tile_@item.id.habit_id",
+                    "matchedExpression": "@item.id.habit_id",
+                    "type": "item",
+                    "fieldName": "id"
+                  }
+                ]
+              },
+              "_dynamicDependencies": {
+                "@item.id": [
+                  "value"
+                ],
+                "@item.id.habit_id": [
+                  "_nested_name"
+                ]
+              }
+            }
+          ],
+          "_nested_name": "items.tile_@item.id",
+          "_dynamicFields": {
+            "name": [
+              {
+                "fullExpression": "tile_@item.id",
+                "matchedExpression": "@item.id",
+                "type": "item",
+                "fieldName": "id"
+              }
+            ],
+            "_nested_name": [
+              {
+                "fullExpression": "items.tile_@item.id",
+                "matchedExpression": "@item.id",
+                "type": "item",
+                "fieldName": "id"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@item.id": [
+              "name",
+              "_nested_name"
+            ]
+          }
+        }
+      ],
+      "name": "items",
+      "_nested_name": "items",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@data.habit",
+            "matchedExpression": "@data.habit",
+            "type": "data",
+            "fieldName": "habit"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@data.habit": [
+          "value"
+        ]
+      }
+    }
+  ],
+  "_xlsxPath": "global/templates/core_templates/habits.xlsx"
+}

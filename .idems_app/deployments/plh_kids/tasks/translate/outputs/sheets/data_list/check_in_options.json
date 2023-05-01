@@ -1,0 +1,23 @@
+{
+  "flow_type": "data_list",
+  "flow_name": "check_in_options",
+  "status": "released",
+  "rows": [
+    {
+      "id": "happy",
+      "name": "happy",
+      "image": "images/icons/faces/happy.svg"
+    },
+    {
+      "id": "ok",
+      "name": "ok",
+      "image": "images/icons/faces/neutral.svg"
+    },
+    {
+      "id": "sad",
+      "name": "sad",
+      "image": "images/icons/faces/sad.svg"
+    }
+  ],
+  "_xlsxPath": "global/templates/core_templates/topic_activity.xlsx"
+}

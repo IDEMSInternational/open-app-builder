@@ -1,0 +1,57 @@
+{
+  "flow_type": "global",
+  "flow_name": "topic_modes",
+  "status": "released",
+  "rows": [
+    {
+      "type": "declare_global_constant",
+      "name": "home_practice",
+      "value": "Ready to practise?",
+      "_translations": {
+        "value": {}
+      }
+    },
+    {
+      "type": "declare_global_constant",
+      "name": "home_practice_problem_solving",
+      "value": "Talk about home practice",
+      "_translations": {
+        "value": {}
+      }
+    },
+    {
+      "type": "declare_global_constant",
+      "name": "hp_review",
+      "value": "How did your practice go?",
+      "_translations": {
+        "value": {}
+      }
+    },
+    {
+      "type": "declare_global_constant",
+      "name": "text_hp_review",
+      "value": "Let's talk about how your home practice went this week.",
+      "_translations": {
+        "value": {}
+      }
+    },
+    {
+      "type": "declare_global_constant",
+      "name": "story",
+      "value": "Story",
+      "_translations": {
+        "value": {}
+      }
+    },
+    {
+      "type": "declare_global_constant",
+      "name": "part_connector",
+      "value": "-",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true
+    }
+  ],
+  "_xlsxPath": "global/data/topic_task_data/topic_globals.xlsx"
+}

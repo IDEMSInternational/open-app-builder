@@ -1,0 +1,49 @@
+{
+  "flow_name": "summary_common_tasks",
+  "flow_subtype": "generated",
+  "flow_type": "data_list",
+  "rows": [
+    {
+      "id": "welcome",
+      "individual": true,
+      "together": true,
+      "template": "summary_welcome"
+    },
+    {
+      "id": "relax",
+      "individual": true,
+      "together": true,
+      "template": "summary_relax"
+    },
+    {
+      "id": "relate",
+      "individual": true,
+      "together": true,
+      "template": "summary_relate"
+    },
+    {
+      "id": "tools",
+      "individual": true,
+      "together": true,
+      "template": "summary_tools"
+    },
+    {
+      "id": "home_practice",
+      "individual": true,
+      "together": true,
+      "template": "summary_home_practice"
+    },
+    {
+      "id": "ending",
+      "individual": true,
+      "together": true,
+      "template": "summary_ending"
+    },
+    {
+      "id": "hp_review",
+      "individual": true,
+      "together": true,
+      "template": "summary_hp_review"
+    }
+  ]
+}

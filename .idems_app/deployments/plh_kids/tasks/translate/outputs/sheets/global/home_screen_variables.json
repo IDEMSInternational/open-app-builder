@@ -1,0 +1,64 @@
+{
+  "flow_type": "global",
+  "flow_name": "home_screen_variables",
+  "status": "released",
+  "rows": [
+    {
+      "type": "declare_global_constant",
+      "name": "app_name",
+      "value": "Scaffolding App",
+      "_translations": {
+        "value": {}
+      }
+    },
+    {
+      "type": "declare_global_constant",
+      "name": "app_id",
+      "value": "idems.international.scaffolding",
+      "_translations": {
+        "value": {}
+      }
+    },
+    {
+      "type": "declare_global_constant",
+      "name": "habit",
+      "value": "habit",
+      "_translations": {
+        "value": {}
+      }
+    },
+    {
+      "type": "declare_global_constant",
+      "name": "habits",
+      "value": "habits",
+      "_translations": {
+        "value": {}
+      }
+    },
+    {
+      "type": "declare_global_constant",
+      "name": "habit_capital",
+      "value": "Habit",
+      "_translations": {
+        "value": {}
+      }
+    },
+    {
+      "type": "declare_global_constant",
+      "name": "habits_capital",
+      "value": "Habits",
+      "_translations": {
+        "value": {}
+      }
+    },
+    {
+      "type": "declare_global_constant",
+      "name": "drawer",
+      "value": "Things to do",
+      "_translations": {
+        "value": {}
+      }
+    }
+  ],
+  "_xlsxPath": "global/data/navigation_data/navigation_globals.xlsx"
+}
