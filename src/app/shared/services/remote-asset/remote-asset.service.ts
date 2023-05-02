@@ -1,4 +1,5 @@
 import { Injectable } from "@angular/core";
+import { HttpClient, HttpEventType } from "@angular/common/http";
 import { Capacitor } from "@capacitor/core";
 import { createClient, SupabaseClient } from "@supabase/supabase-js";
 import { environment } from "src/environments/environment";
@@ -8,6 +9,7 @@ import { AppConfigService } from "../app-config/app-config.service";
 import { FileManagerService } from "../file-manager/file-manager.service";
 import { SyncServiceBase } from "../syncService.base";
 import { IAssetContents } from "src/app/data";
+import { BehaviorSubject, Subscription } from "rxjs";
 
 @Injectable({
   providedIn: "root",
@@ -23,7 +25,8 @@ export class RemoteAssetService extends SyncServiceBase {
   constructor(
     private templateActionRegistry: TemplateActionRegistry,
     private appConfigService: AppConfigService,
-    private fileManagerService: FileManagerService
+    private fileManagerService: FileManagerService,
+    private http: HttpClient
   ) {
     super("RemoteAsset");
     this.initialise();
@@ -55,7 +58,7 @@ export class RemoteAssetService extends SyncServiceBase {
     for (const [assetName, assetEntry] of Object.entries(manifest)) {
       let uri = "";
       if (Capacitor.isNativePlatform()) {
-        const blob = await this.downloadFile(assetName);
+        const blob = await this.downloadFileFromPrivateBucket(assetName);
         console.log("blob:", blob);
         if (blob) {
           uri = await this.fileManagerService.saveFile(blob, assetName);
@@ -84,15 +87,78 @@ export class RemoteAssetService extends SyncServiceBase {
     return manifest as IAssetContents;
   }
 
-  async downloadFile(filepath: string) {
-    const publicUrl = this.getPublicUrl(filepath);
-    console.log("publicUrl:", publicUrl);
+  private downloadFile(url: string, responseType: "blob" | "base64" = "base64", headers = {}) {
+    // If downloading from local assets ignore cache
+    if (!url.startsWith("http")) {
+      headers = {
+        "Cache-Control": "no-cache",
+        Pragma: "no-cache",
+        Expires: "0",
+        ...headers,
+      };
+    }
+
+    // subscribe and share updates
+    let subscription = new Subscription();
+    let progress = 0;
+    let data: Blob | string;
+
+    // share initial update with request and subscription objects to allow dl interrupt via unsubscribe method
+    const updates$ = new BehaviorSubject<{
+      progress: number;
+      subscription: Subscription;
+      data?: Blob | string;
+    }>({ progress, subscription });
+
+    subscription = this.http
+      .get(url, {
+        responseType: "blob",
+        reportProgress: true,
+        headers,
+        observe: "events",
+      })
+      .subscribe({
+        error: (err) => updates$.error(err),
+        next: async (event) => {
+          // handle progress update
+          if (event.type === HttpEventType.DownloadProgress) {
+            if (event.total) {
+              progress = Math.round((100 * event.loaded) / event.total);
+            }
+          }
+          // handle full response received
+          if (event.type === HttpEventType.Response) {
+            data = event.body as Blob;
+          }
+          updates$.next({ progress, subscription, data });
+        },
+        complete: async () => {
+          if (responseType === "base64") {
+            data = await this.convertBlobToBase64(data as Blob);
+          }
+          updates$.next({ progress: 100, data, subscription });
+          updates$.complete();
+        },
+      });
+    return updates$;
+  }
+
+  private convertBlobToBase64(blob: Blob): Promise<string> {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onerror = reject;
+      reader.onload = () => resolve(reader.result as string);
+      reader.readAsDataURL(blob);
+    });
+  }
+
+  async downloadFileFromPrivateBucket(filepath: string) {
     let data: Blob;
     try {
       this.downloading = true;
       const { data: blob, error } = await this.supabase.storage
         .from(this.bucketName)
-        .download(publicUrl);
+        .download(filepath);
       if (error) {
         throw error;
       }
