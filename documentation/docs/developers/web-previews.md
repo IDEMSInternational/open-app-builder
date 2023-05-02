@@ -54,4 +54,4 @@ Creating a new web preview for a deployment must be done by a user with the rele
 ```
 If your firebase site does not match your deployment name, then instead use the format `"example_deployment": ["example_firebase_site_id"]`
 
-The web preview is now configured. You can make the first release by pushing to the `deployment/` branch for your deployment. It may take a few minutes for the 
+The web preview is now configured. You can make the first release by pushing to the `deployment/` branch for your deployment. It may take a few minutes for the site to update and display the content when making the first release.
