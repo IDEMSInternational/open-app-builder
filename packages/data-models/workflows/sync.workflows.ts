@@ -27,14 +27,9 @@ const workflows: IDeploymentWorkflows = {
       },
       {
         name: "sync_watch",
-        condition: async ({ options }) => !!options.contentWatch,
-        function: async ({ tasks, workflow, options }) => {
-          if (options.contentWatch) {
-            tasks.workflow.runWorkflow({ name: "sync_watch", parent: workflow });
-          } else {
-            console.log('Use "--content-watch" or "-cw" to enable live sync\n');
-          }
-        },
+        condition: async ({ options }) => options.contentWatch === true,
+        function: async ({ tasks, workflow }) =>
+          tasks.workflow.runWorkflow({ name: "sync_watch", parent: workflow }),
       },
     ],
   },
