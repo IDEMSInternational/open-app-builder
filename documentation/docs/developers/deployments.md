@@ -102,9 +102,9 @@ You will see the new deployment appear in the `.idems_app` folder and be availab
 
 
 ### Push Changes
-A local repo can have its changes pushed to github by creating a new content release
+A local repo can have its changes pushed to github by publishing a new release
 ```
-yarn workflow content_release
+yarn workflow repo publish
 ```
 This will create a new git branch, apply local changes and push to github. From there a pull request can be created to merge into the main branch.
 

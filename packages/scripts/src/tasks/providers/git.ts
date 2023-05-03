@@ -3,8 +3,8 @@ import fs from "fs-extra";
 import path from "path";
 import semver from "semver";
 import simpleGit, { ResetMode } from "simple-git";
-import type { SimpleGit } from "simple-git";
-import { Project, PropertyAssignment, SyntaxKind } from "ts-morph";
+import type { SimpleGit, FileStatusResult } from "simple-git";
+import { Project, SyntaxKind } from "ts-morph";
 import { ActiveDeployment } from "../../commands/deployment/get";
 import { Logger, logOutput, promptOptions } from "../../utils";
 import type { IDeploymentConfigJson } from "../../commands/deployment/common";
@@ -58,12 +58,13 @@ class GitProvider {
     console.log("Preparing files...");
     await this.promptChangesReview();
     const tagName = await this.promptReleaseTag();
-    const branchName = `content/${tagName}`;
-    const compareLink = `${this.deployment.git.content_repo}/compare/main...${branchName}`;
-    await this.prepareReleaseBranch(branchName, compareLink);
 
     // apply changes
     await this.updateGitConfigTs({ content_tag_latest: tagName });
+
+    const branchName = `content/${tagName}`;
+    const compareLink = `${this.deployment.git.content_repo}/compare/main...${branchName}`;
+    await this.prepareReleaseBranch(branchName, compareLink);
 
     await this.git.add([this.deployment._config_ts_path]);
     await this.git.commit(`chore: update config`);
@@ -108,10 +109,23 @@ class GitProvider {
       process.exit(0);
     }
     console.log(chalk.blueBright("\nChanges Summary"));
-    const summary = status.files.map((file) => ({ change: `[${file.index}]`, path: file.path }));
-    console.table(summary);
+    this.logChangesSummary(status.files);
     console.log("");
     return status;
+  }
+
+  private logChangesSummary(fileChanges: FileStatusResult[]) {
+    const statusIcons = {
+      A: chalk.bgGreen.white(" A "),
+      D: chalk.bgRed.white(" D "),
+      M: chalk.bgBlue.white(" M "),
+      U: chalk.bgGray.white(" U "),
+    };
+    const changes = [];
+    for (const { index, path: filePath } of fileChanges) {
+      changes.push(`${statusIcons[index] || index} ${filePath}`);
+    }
+    console.log(changes.join("\n"));
   }
 
   private async promptReleaseTag() {
@@ -135,14 +149,40 @@ class GitProvider {
     const project = new Project();
     const { _config_ts_path } = this.deployment;
     const sourceFile = project.addSourceFileAtPath(_config_ts_path);
-    // extract config.git property
-    const configNode = sourceFile.getVariableDeclarationOrThrow("config");
-    const gitConfigNode = configNode
-      .getInitializerIfKindOrThrow(SyntaxKind.ObjectLiteralExpression)
-      .getPropertyOrThrow("git") as PropertyAssignment;
-    const editableNode = gitConfigNode.getInitializerIfKindOrThrow(
+
+    // git config should exist in config file under a config.git = {...} assignment
+    const assigner = "config.git";
+
+    // search for expressions which represent variable assignment, e.g. config.git = {...}
+    const expressions = sourceFile.getDescendantsOfKind(SyntaxKind.ExpressionStatement);
+    const configGitNode = expressions.find((e) => e.getText().includes(assigner));
+
+    if (!configGitNode) {
+      Logger.error({
+        msg1: `Could not find [${assigner}] assignment in config file`,
+        msg2: _config_ts_path,
+      });
+    }
+    console.log(configGitNode.getText());
+
+    /** Debugging */
+    // for (const expression of configGitNode.getDescendants()) {
+    //   console.log({ descendent: descendent.constructor.name, text: descendent.getText() });
+    // }
+
+    const editableNode = configGitNode.getFirstDescendantByKindOrThrow(
       SyntaxKind.ObjectLiteralExpression
     );
+
+    /** LEGACY - config assignment all in single expression, i.e. config = { ... } */
+    // const configNode = sourceFile.getVariableDeclarationOrThrow("config");
+    // const gitConfigNode = configNode
+    //   .getInitializerIfKindOrThrow(SyntaxKind.ObjectLiteralExpression)
+    //   .getPropertyOrThrow("git") as PropertyAssignment;
+    // const editableNode = gitConfigNode.getInitializerIfKindOrThrow(
+    //   SyntaxKind.ObjectLiteralExpression
+    // );
+
     const indentSize = editableNode.getChildIndentationLevel();
     // Update individual values
     // TODO - only supports string literal values
