@@ -101,10 +101,8 @@ const workflows: IDeploymentWorkflows = {
             },
           },
           {
-            name: "copy_app_data",
-            function: async ({ tasks }) => {
-              tasks.appData.copyDeploymentDataToApp();
-            },
+            name: "copy_to_app",
+            function: async ({ tasks }) => tasks.appData.copyDeploymentDataToApp(),
           },
         ],
       },
