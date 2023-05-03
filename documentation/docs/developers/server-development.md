@@ -20,18 +20,21 @@ Ensure `API_BASE_PATH=""` to allow running standalone (as opposed to part of ful
 2. Ensure the named `POSTGRES_USER` specified in `.env` also exists on postgres database with admin privileges. More info on creating users using PGAdmin4 can be found in this [Google Doc](https://docs.google.com/document/d/1YLxLQfr0UC0VdA-fVOVeKSnHaVySi2gQ7FCLQQozqv8/edit?usp=sharing)
 
 3. Serve api
-```bash
-yarn workspace api start:watch
-```
+  ```bash
+  yarn workspace api start:watch
+  ```
 
-This will start a local api server alongside interactive documentation for testing endpoints
-This can be found on [localhost:3000](http://localhost:3000)
+    This will start a local api server alongside interactive documentation for testing endpoints
+    This can be found on [localhost:3000](http://localhost:3000)
 
-*Example Docs - endpoints can be viewed and triggered with parameters*
+    !!! note
+        If postgres is not configured to start at boot time, as seems to be the case by default on macOS, then you must manually start it before serving the API. In order to start postgres running in the background, run `pg_ctl -D /usr/local/var/postgres start`.
 
-![](images/api-docs.png)
+    *Example Docs - endpoints can be viewed and triggered with parameters*
 
-4. Interact with app
+    ![](images/api-docs.png)
+
+4. Interact with app.
 By default any app running locally via `yarn start` will target the localhost api, so in-app operations such as contact field syncing can be tested in the same way as production
 
 
