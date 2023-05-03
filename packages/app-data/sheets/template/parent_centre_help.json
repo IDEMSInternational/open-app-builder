@@ -33,7 +33,50 @@
     {
       "type": "button",
       "name": "button_1",
-      "value": "Give me quick parenting tips",
+      "value": "Support Contacts",
+      "_translations": {
+        "value": {
+          "tz_sw": true,
+          "za_af": true,
+          "za_st": true,
+          "za_tn": true,
+          "za_xh": true,
+          "za_zu": true
+        }
+      },
+      "action_list": [
+        {
+          "trigger": "click",
+          "action_id": "go_to",
+          "args": [
+            "parent_centre_support_con"
+          ],
+          "_raw": "click | go_to: parent_centre_support_con",
+          "_cleaned": "click | go_to: parent_centre_support_con"
+        }
+      ],
+      "condition": "@fields._deployment_name == \"plh_tz\"",
+      "_nested_name": "button_1",
+      "_dynamicFields": {
+        "condition": [
+          {
+            "fullExpression": "@fields._deployment_name == \"plh_tz\"",
+            "matchedExpression": "@fields._deployment_name",
+            "type": "fields",
+            "fieldName": "_deployment_name"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@fields._deployment_name": [
+          "condition"
+        ]
+      }
+    },
+    {
+      "type": "button",
+      "name": "button_2",
+      "value": "Quick Parenting Tips",
       "_translations": {
         "value": {
           "tz_sw": true,
@@ -55,29 +98,12 @@
           "_cleaned": "click | go_to: parenting_tips"
         }
       ],
-      "_nested_name": "button_1"
-    },
-    {
-      "type": "button",
-      "name": "button_2",
-      "value": "Something really bad happened",
-      "_translations": {
-        "value": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        }
-      },
-      "hidden": true,
       "_nested_name": "button_2"
     },
     {
       "type": "button",
       "name": "button_3",
-      "value": "I have technical problems with the app",
+      "value": "Technical Support",
       "_translations": {
         "value": {
           "tz_sw": true,
@@ -99,7 +125,6 @@
           "_cleaned": "click | go_to: parent_centre_technical_support"
         }
       ],
-      "hidden": true,
       "_nested_name": "button_3"
     }
   ],

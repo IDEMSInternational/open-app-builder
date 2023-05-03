@@ -3,6 +3,7 @@ import { Capacitor } from "@capacitor/core";
 import { Device } from "@capacitor/device";
 import * as Sentry from "@sentry/angular";
 import { environment } from "src/environments/environment";
+import { GIT_SHA } from "src/environments/sha";
 import { fromError as getStacktraceFromError } from "stacktrace-js";
 import { CrashlyticsService } from "../crashlytics/crashlytics.service";
 
@@ -40,11 +41,8 @@ export class ErrorHandlerService extends ErrorHandler {
     this.initialised = true;
   }
 
-  /**
-   * Custom error handling. Will always call default handler, as well
-   * as any 3rd party integrations
-   */
-  async handleError(error: Error) {
+  /** Log an error to reporting services */
+  public async logError(error: Error) {
     if (!this.initialised) {
       await this.initialise();
     }
@@ -54,6 +52,14 @@ export class ErrorHandlerService extends ErrorHandler {
     if (this.crashlyticsEnabled) {
       this.logToCrashlytics(error);
     }
+  }
+
+  /**
+   * Custom error handling. Will always call default handler, as well
+   * as any 3rd party integrations
+   */
+  async handleError(error: Error) {
+    await this.logError(error);
     super.handleError(error);
   }
 
@@ -69,9 +75,9 @@ export class ErrorHandlerService extends ErrorHandler {
     const { deploymentConfig, version, production } = environment;
     const { error_logging, name } = deploymentConfig;
     Sentry.init({
-      dsn: error_logging.dsn,
+      dsn: error_logging?.dsn,
       environment: production ? "production" : "development",
-      release: `${name}-${version}`,
+      release: `${name}-${version}-${GIT_SHA}`,
       autoSessionTracking: false,
       attachStacktrace: true,
       enabled: true,

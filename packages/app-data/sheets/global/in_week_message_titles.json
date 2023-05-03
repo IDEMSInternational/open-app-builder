@@ -96,7 +96,9 @@
       "name": "m_something_fun",
       "value": "Something fun",
       "_translations": {
-        "value": {}
+        "value": {
+          "tz_sw": true
+        }
       }
     },
     {
@@ -149,7 +151,9 @@
       "name": "m_hp_reminder",
       "value": "Remember to practise",
       "_translations": {
-        "value": {}
+        "value": {
+          "tz_sw": true
+        }
       }
     },
     {

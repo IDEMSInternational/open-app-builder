@@ -3,9 +3,15 @@
 The feedback feature provides means by which users can provide contextual feedback within the app, such as a bug report, content suggestion or short survey
 
 ## Enabling Feedback
-The best way to enable feedback is to navigate to a template and provide a feedback sidebar, e.g. `/template/home_screen(sidebar:feedback)`
+The feedback sidebar can be toggled using the `feedback:open` or `feedback:close` action, e.g. 
 
-This will show a sidebar with feedback options
+```
+click | feedback:open
+```
+
+This will navigate the current page url to include a sidebar for feedback appended to the url, e.g. `/template/home_screen(sidebar:feedback)`
+
+Any page can also be directly shared or linked in this form to open with feedback enabled
 
 ![](images/feedback-sidebar.png)  
 

@@ -36,16 +36,19 @@ jobs:
         run: |
           echo ${{github.event.inputs.build_branch}} | sed 's/.*\///'
           echo "DEPLOYMENT_NAME=$(echo ${{github.event.inputs.build_branch}} | sed 's/.*\///')" >> $GITHUB_ENV;
+          echo "SHA_SHORT=$(git rev-parse --short=6 HEAD)" >> $GITHUB_ENV
         shell: bash
       - name: Setup node
         uses: actions/setup-node@v3
         with:
           node-version: 16
           cache: 'yarn'
-      - name: Populate firebaseConfig.ts
+      - name: Populate environment config
         env:
           FIREBASE_CONFIG_TS: ${{ secrets.FIREBASE_CONFIG_TS }}
-        run: echo $FIREBASE_CONFIG_TS > src/environments/firebaseConfig.ts
+        run: |
+          echo "export const GIT_SHA = \"$SHA_SHORT\";" > src/environments/sha.ts
+          echo $FIREBASE_CONFIG_TS > src/environments/firebaseConfig.ts
       - name: Populate google-services.json
         env:
           GOOGLE_SERVICES_JSON: ${{ secrets.GOOGLE_SERVICES_JSON }}
