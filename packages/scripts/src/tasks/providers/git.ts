@@ -28,8 +28,8 @@ class GitProvider {
   public async refreshRemoteRepo() {
     await this.initialiseGitProvider();
     console.log(chalk.gray("checkout [main]"));
-    await this.git.checkout("main");
     try {
+      await this.git.checkout("main");
       await this.git.pull();
     } catch (error) {
       // If merge conflict prompt to discard local changes and retry
@@ -65,10 +65,7 @@ class GitProvider {
     const branchName = `content/${tagName}`;
     const compareLink = `${this.deployment.git.content_repo}/compare/main...${branchName}`;
     await this.prepareReleaseBranch(branchName, compareLink);
-
-    await this.git.add([this.deployment._config_ts_path]);
-    await this.git.commit(`chore: update config`);
-    await this.git.add(["app_data"]);
+    await this.git.add("./*");
     await this.git.commit(`content: ${tagName}`);
     await this.git.addTag(tagName);
     console.log("pushing changes");
@@ -163,7 +160,6 @@ class GitProvider {
         msg2: _config_ts_path,
       });
     }
-    console.log(configGitNode.getText());
 
     /** Debugging */
     // for (const expression of configGitNode.getDescendants()) {

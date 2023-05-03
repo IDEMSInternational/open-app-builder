@@ -12,6 +12,11 @@ const workflows: IDeploymentWorkflows = {
     ],
     steps: [
       {
+        condition: async ({ config }) => config.git?.content_repo !== undefined,
+        name: "sync_remote",
+        function: async ({ tasks }) => tasks.git().refreshRemoteRepo(),
+      },
+      {
         name: "sync_assets",
         function: async ({ tasks, workflow }) =>
           tasks.workflow.runWorkflow({ name: "sync_assets", parent: workflow }),
