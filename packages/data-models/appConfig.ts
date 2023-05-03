@@ -174,6 +174,28 @@ const FEEDBACK_MODULE_DEFAULTS = {
   ],
   /** Field to populate with selected text for use in templates */
   selected_text_field: "_feedback_selected_text",
+  sidebar_open_field: "_feedback_sidebar_open",
+};
+
+const APP_UPDATES = {
+  /** Check for updates on init and enable in-app "app_update" template actions */
+  enabled: false,
+  /**
+   * Template to be displayed after a flexible update has downloaded, prompting the user to install
+   * the update and restart the app. It should include a button that triggers the "app_update | complete" action
+   * If no template is provided provided, installation of the downloaded flexible update will be completed on next app init
+   */
+  completeUpdateTemplate: "app_update_complete",
+  /** Track whether an update is available for download */
+  app_update_available_field: "_app_update_available",
+  /** Track whether an update has been downloaded and is available for install */
+  app_update_downloaded_field: "_app_update_downloaded",
+};
+
+const ASSET_PACKS = {
+  enabled: false,
+  bucketName: "deployment_name",
+  folderName: "asset-packs",
 };
 
 const APP_CONFIG = {
@@ -188,6 +210,8 @@ const APP_CONFIG = {
   APP_STRINGS,
   APP_SKINS,
   APP_THEMES,
+  APP_UPDATES,
+  ASSET_PACKS,
   DYNAMIC_PREFIXES,
   FEEDBACK_MODULE_DEFAULTS,
   FIELD_PREFIX,
@@ -202,7 +226,7 @@ export type IAppConfig = typeof APP_CONFIG;
 /** A recursive version of Partial, making all properties, included nested ones, optional.
  * Copied from https://stackoverflow.com/a/47914631
  */
-type RecursivePartial<T> = {
+export type RecursivePartial<T> = {
   [P in keyof T]?: RecursivePartial<T[P]>;
 };
 export type IAppConfigOverride = RecursivePartial<IAppConfig>;

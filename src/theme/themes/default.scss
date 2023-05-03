@@ -47,6 +47,8 @@
       // accordion-background-highlight: var(--gradient-primary-light-vertical),
       // tour-next-button-background: var(--gradient-secondary-mid-vertical),
       // radio-group-background-selected: var(--gradient-primary-light-vertical),
+      // radio-button-font-size: 1.25rem,
+      // radio-button-font-color: var(--ion-color-primary),
       ion-item-background: var(--ion-color-gray-light),
     );
     @include utils.generateTheme($color-primary, $color-secondary, $page-background);

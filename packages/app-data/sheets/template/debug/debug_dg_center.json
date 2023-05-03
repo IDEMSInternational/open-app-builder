@@ -52,7 +52,7 @@
     {
       "type": "image",
       "name": "image_1",
-      "value": "plh_images/workshop_modes/guide_2/relax.svg",
+      "value": "plh_images/workshop_modes/individual/relax.svg",
       "_translations": {
         "value": {}
       },
@@ -72,7 +72,7 @@
         {
           "type": "image",
           "name": "image_2",
-          "value": "plh_images/workshop_modes/guide_2/relax.svg",
+          "value": "plh_images/workshop_modes/individual/relax.svg",
           "_translations": {
             "value": {}
           },
@@ -94,7 +94,7 @@
         {
           "type": "image",
           "name": "image_3",
-          "value": "plh_images/workshop_modes/guide_2/relax.svg",
+          "value": "plh_images/workshop_modes/individual/relax.svg",
           "_translations": {
             "value": {}
           },

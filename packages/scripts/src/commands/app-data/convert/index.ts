@@ -18,6 +18,7 @@ import {
   getLogFiles,
   logWarning,
   clearLogs,
+  standardiseNewlines,
 } from "./utils";
 import { FlowParserProcessor } from "./processors/flowParser/flowParser";
 
@@ -54,7 +55,7 @@ export default program
  */
 export class AppDataConverter {
   /** Change version to invalidate all underlying caches */
-  public version = 20230203.0;
+  public version = 20230406.1;
 
   public activeDeployment = ActiveDeployment.get();
 
@@ -204,7 +205,8 @@ export class AppDataConverter {
             details: [flow, fs.readJsonSync(flowOutputPath)],
           });
         }
-        fs.writeFileSync(flowOutputPath, JSON.stringify(flow, null, 2));
+        // ensure newline characters are standardised (i.e. replace "\r\n" with "\n")
+        fs.writeFileSync(flowOutputPath, standardiseNewlines(JSON.stringify(flow, null, 2)));
       });
     });
   }

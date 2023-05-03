@@ -181,6 +181,7 @@ const workflows: IDeploymentWorkflows = {
                 sourceSheetsFolder: output,
                 sourceTranslationsFolder,
               });
+              tasks.appData.copyDeploymentDataToApp();
             },
           }),
       },

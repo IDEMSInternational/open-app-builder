@@ -131,6 +131,16 @@
       "template": "w_stress_read_3",
       "completed_field": "task_w_stress_read_3_completed",
       "completed": "@fields.task_w_stress_read_3_completed"
+    },
+    {
+      "id": "question_2",
+      "group": "read_3",
+      "individual": true,
+      "together": false,
+      "template": "w_stress_question_2",
+      "rel_priority": 2,
+      "completed_field": "task_w_stress_question_2_completed",
+      "completed": "@fields.task_w_stress_question_2_completed"
     }
   ]
 }
