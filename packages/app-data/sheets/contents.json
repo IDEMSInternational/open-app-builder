@@ -1,23 +1,55 @@
 {
-  "data_list": {},
+  "data_list": {
+    "session_tasks": {
+      "flow_name": "session_tasks",
+      "flow_subtype": "generated",
+      "flow_type": "data_list"
+    },
+    "session": {
+      "flow_type": "data_list",
+      "flow_name": "session",
+      "_xlsxPath": "global/data_lists/sessions.xlsx"
+    },
+    "topic": {
+      "flow_type": "data_list",
+      "flow_name": "topic",
+      "_xlsxPath": "global/data_lists/topics.xlsx"
+    },
+    "topic_group": {
+      "flow_type": "data_list",
+      "flow_name": "topic_group",
+      "_xlsxPath": "global/data_lists/topics.xlsx"
+    }
+  },
   "global": {},
   "template": {
     "app_menu": {
       "flow_type": "template",
       "flow_name": "app_menu",
-      "_xlsxPath": "global/templates/demo.xlsx"
+      "_xlsxPath": "global/templates/navigation.xlsx"
     },
     "home_screen": {
       "flow_type": "template",
       "flow_name": "home_screen",
-      "_xlsxPath": "global/templates/demo.xlsx"
+      "_xlsxPath": "global/templates/navigation.xlsx"
     },
     "session_card": {
       "flow_type": "template",
       "flow_name": "session_card",
-      "_xlsxPath": "global/templates/demo.xlsx"
+      "_xlsxPath": "global/templates/navigation.xlsx"
+    },
+    "session_overview": {
+      "flow_type": "template",
+      "flow_name": "session_overview",
+      "_xlsxPath": "global/templates/navigation.xlsx"
     }
   },
   "tour": {},
-  "data_pipe": {}
+  "data_pipe": {
+    "session_data_pipe": {
+      "flow_type": "data_pipe",
+      "flow_name": "session_data_pipe",
+      "_xlsxPath": "global/data_lists/session_data_pipes.xlsx"
+    }
+  }
 }

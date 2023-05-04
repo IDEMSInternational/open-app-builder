@@ -1,0 +1,97 @@
+{
+  "flow_type": "data_list",
+  "flow_name": "topic",
+  "status": "released",
+  "rows": [
+    {
+      "id": "family_relation",
+      "title": "Family relationships",
+      "topic_group": "child_care",
+      "image_asset": "family_relation.png"
+    },
+    {
+      "id": "current_pract",
+      "title": "Current beliefs and practices regarding parent-child interaction",
+      "topic_group": "attachment",
+      "image_asset": "current_pract.png",
+      "block_list": [
+        "intro_current_practices",
+        "tips_child_perception",
+        "tips_raise_child"
+      ]
+    },
+    {
+      "id": "child_dev",
+      "title": "Child development (ages 0 – 17)",
+      "topic_group": "attachment",
+      "image_asset": "child_dev.png"
+    },
+    {
+      "id": "parent_childhood",
+      "title": "Influence of one’s own parents and positive discipline",
+      "topic_group": "attachment",
+      "image_asset": "family_relation.png"
+    },
+    {
+      "id": "positive_parenting",
+      "title": "Positive and sensitive parenting",
+      "topic_group": "behaviour",
+      "image_asset": "current_pract.png"
+    },
+    {
+      "id": "gender_power",
+      "title": "Norms, practices and behaviour",
+      "topic_group": "gender_relations",
+      "image_asset": "child_dev.png"
+    },
+    {
+      "id": "impact_conflict",
+      "title": "Impact of parental conflict and violence",
+      "topic_group": "parental_conflict",
+      "image_asset": "family_relation.png"
+    },
+    {
+      "id": "sharing_care",
+      "title": "Sharing child care responsibility",
+      "topic_group": "child_care",
+      "image_asset": "current_pract.png"
+    },
+    {
+      "id": "healthy_relation",
+      "title": "Healthy marital relationships, sexuality, alcohol and communication",
+      "topic_group": "gender_relations",
+      "image_asset": "child_dev.png"
+    },
+    {
+      "id": "discipline",
+      "title": "Achieving respectability and discipline",
+      "topic_group": "behaviour",
+      "image_asset": "family_relation.png"
+    },
+    {
+      "id": "education",
+      "title": "Encouraging education",
+      "topic_group": "child_care",
+      "image_asset": "current_pract.png"
+    },
+    {
+      "id": "gender_equality",
+      "title": "Greater gender equality",
+      "topic_group": "gender_relations",
+      "image_asset": "child_dev.png"
+    },
+    {
+      "id": "abuse_prevention",
+      "title": "Prevention of sexual abuse for children below 17 years",
+      "topic_group": "child_care",
+      "image_asset": "family_relation.png"
+    },
+    {
+      "id": "reduce_conflict",
+      "title": "Reducing parental conflict and improving communication",
+      "topic_group": "parental_conflict",
+      "image_asset": "current_pract.png"
+    }
+  ],
+  "_xlsxPath": "global/data_lists/topics.xlsx"
+}

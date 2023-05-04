@@ -1,18 +1,13 @@
 {
-  "child_development.png": {
-    "filePath": "global/child_development.png",
+  "child_dev.png": {
+    "filePath": "global/child_dev.png",
     "md5Checksum": "555458425a8251a6baa6ac770b59d642",
     "size_kb": 440.2
   },
-  "current_beliefs_intro_image.png": {
-    "filePath": "global/current_beliefs_intro_image.png",
+  "current_pract.png": {
+    "filePath": "global/current_pract.png",
     "md5Checksum": "1ac4567416b1efbcb29f2d2ee92b2a79",
     "size_kb": 578.3
-  },
-  "current_pract_intro_image.png": {
-    "filePath": "global/current_pract_intro_image.png",
-    "md5Checksum": "eb560447467a28e0cfb034d505931f32",
-    "size_kb": 489.4
   },
   "current_pract_picture_quiz_1.png": {
     "filePath": "global/current_pract_picture_quiz_1.png",
@@ -21,8 +16,8 @@
   },
   "current_pract_picture_quiz_2.png": {
     "filePath": "global/current_pract_picture_quiz_2.png",
-    "md5Checksum": "962af9e410885f1a13824e2eaadc05c0",
-    "size_kb": 168.8
+    "md5Checksum": "2fb51623824aa1ea9bcc7671fc81d38e",
+    "size_kb": 201.6
   },
   "current_pract_picture_quiz_3.png": {
     "filePath": "global/current_pract_picture_quiz_3.png",
@@ -49,13 +44,8 @@
     "md5Checksum": "a9c6ede49762cb786e490a46e6892af0",
     "size_kb": 210
   },
-  "current_pract_picture_quiz_8.png": {
-    "filePath": "global/current_pract_picture_quiz_8.png",
-    "md5Checksum": "2fb51623824aa1ea9bcc7671fc81d38e",
-    "size_kb": 201.6
-  },
-  "family_relations_intro_image.png": {
-    "filePath": "global/family_relations_intro_image.png",
+  "family_relation.png": {
+    "filePath": "global/family_relation.png",
     "md5Checksum": "fe9d2a07ea001244f5485c93ff38cacc",
     "size_kb": 998.1
   },
@@ -68,10 +58,5 @@
     "filePath": "global/icons/tick.svg",
     "md5Checksum": "b4e6f1e9ba6e5bcdd2e404bc432ba745",
     "size_kb": 0.3
-  },
-  "test_image.png": {
-    "filePath": "global/test_image.png",
-    "md5Checksum": "e6d6c6a12ca13a6277084e01c088378c",
-    "size_kb": 2
   }
 }

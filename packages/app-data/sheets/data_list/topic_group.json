@@ -1,0 +1,28 @@
+{
+  "flow_type": "data_list",
+  "flow_name": "topic_group",
+  "status": "released",
+  "rows": [
+    {
+      "id": "attachment",
+      "title": "Attachment and bonding"
+    },
+    {
+      "id": "gender_relations",
+      "title": "Gendered relationships and power"
+    },
+    {
+      "id": "behaviour",
+      "title": "Respectability and good behaviour"
+    },
+    {
+      "id": "parental_conflict",
+      "title": "Parental conflict"
+    },
+    {
+      "id": "child_care",
+      "title": "Child care"
+    }
+  ],
+  "_xlsxPath": "global/data_lists/topics.xlsx"
+}
