@@ -78,7 +78,10 @@ class GitProvider {
   }
 
   /**
-   * TODO - Octokit api requires auth, so will need to come up with appropriate handling */
+   * TODO - Octokit api requires auth, so will need to come up with appropriate handling
+   * TODO - Alt could use github actions and assume link should go valid
+   * TODO - Alt could be to use GH cli (require install and auth)
+   */
   private async wipCreateReleasePr(head: string, base = "main", body: string) {
     // const [owner, repo] = this.deployment.git.content_repo.split("/").slice(-2);
     // const res = await new Octokit({}).rest.pulls.create({ owner, repo, base, head, body });
