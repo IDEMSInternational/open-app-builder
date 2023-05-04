@@ -2,7 +2,7 @@ import * as path from "path";
 import * as fs from "fs-extra";
 import chalk from "chalk";
 import { Command } from "commander";
-import { Logger, recursiveFindByExtension, logWarning, replicateDir } from "../../../utils";
+import { Logger, recursiveFindByExtension } from "../../../utils";
 
 import { ActiveDeployment } from "../../deployment/get";
 import { FlowTypes } from "data-models";

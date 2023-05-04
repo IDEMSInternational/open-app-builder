@@ -127,6 +127,8 @@ interface IContentsEntry {
   size_kb: number;
   modifiedTime: string;
   md5Checksum: string;
+  /** specific path to file when same as relativePath, e.g. asset overrides */
+  filePath?: string;
 }
 
 /** Duplicate type definition from gdrive-downloader (TODO - find better way to share) */
@@ -151,10 +153,13 @@ interface IFlowTypeBase {
   status: "draft" | "released";
 }
 
-type IContentsEntryMinimal = Omit<IContentsEntry, "relativePath" | "modifiedTime">;
+export type IContentsEntryMinimal = Omit<IContentsEntry, "relativePath" | "modifiedTime">;
 
 export interface IAssetEntry extends IContentsEntryMinimal {
-  translations?: { [language_code: string]: IContentsEntryMinimal };
-  themeVariations?: { [theme_name: string]: IContentsEntryMinimal };
+  overrides?: {
+    [theme_name: string]: {
+      [language_code: string]: IContentsEntryMinimal;
+    };
+  };
 }
 export type IAssetEntryHashmap = { [assetPath: string]: IAssetEntry };
