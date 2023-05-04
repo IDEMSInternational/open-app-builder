@@ -1,3 +1,4 @@
+import { spawnSync } from "child_process";
 import type { IDeploymentWorkflows } from "./workflow.model";
 /** Default workflows made available to all deployments */
 const workflows: IDeploymentWorkflows = {
@@ -24,6 +25,16 @@ const workflows: IDeploymentWorkflows = {
       },
     ],
     children: {
+      open: {
+        label: "Open child repo in VSCode",
+        steps: [
+          {
+            name: "open",
+            function: async ({ config }) =>
+              spawnSync(`code ${config._workspace_path}`, { shell: true, stdio: "inherit" }),
+          },
+        ],
+      },
       publish: {
         label: "Create github release",
         steps: [
