@@ -14,7 +14,6 @@ const program = new Command("run");
 
 interface IProgramOptions {
   parent?: string;
-  contentWatch?: boolean;
 }
 
 /***************************************************************************************
@@ -27,12 +26,12 @@ export default program
   .allowUnknownOption()
   .helpOption("--helpIgnored", "will show help from child workflow instead of this")
   .option("-p --parent <string>", "Name of parent workflow triggered by")
-  .action(async (name: string, { parent }: IProgramOptions) => {
+  .action(async (name, opts: IProgramOptions) => {
     // pass any additional args after [name] positional argument
     const args = program.args.slice(1);
     const runner = WorkflowRunner;
     await runner.init();
-    return runner.run({ name, parent, args });
+    return runner.run({ ...opts, name, args });
   });
 
 /***************************************************************************
@@ -81,8 +80,14 @@ export class WorkflowRunnerClass {
       console.log(chalk.yellow(`yarn scripts workflow run ${name}`));
     }
     let { workflow, args: workflowArgs } = this.prepareWorkflow(name, args);
-
-    this.activeWorkflowOptions = this.parseWorkflowOptions(workflow);
+    // if workflow supports options ensure any main process args are also parsed to populate
+    // and merge with existing
+    if (workflow.options) {
+      this.activeWorkflowOptions = {
+        ...this.activeWorkflowOptions,
+        ...this.parseWorkflowOptions(workflow.options),
+      };
+    }
     return this.executeWorkflow(workflow, workflowArgs);
   }
 
@@ -116,22 +121,20 @@ export class WorkflowRunnerClass {
    * Generate a child commander instance that can dynamically parse options as defined
    * within a workflow
    */
-  private parseWorkflowOptions(workflow: IWorkflow) {
+  private parseWorkflowOptions(options: IWorkflow["options"] = []) {
     let parsedOptions: { [name: string]: string | boolean } = {};
-    if (workflow.options) {
-      const subProgram = new Command().allowUnknownOption();
-      for (const option of workflow.options) {
-        const { flags, description, defaultValue } = option;
-        subProgram.option(flags, description, defaultValue);
-      }
-      subProgram.action((options) => {
-        parsedOptions = options;
-      });
-      if (process.argv.find((arg) => ["--help", "h"].includes(arg))) {
-        logProgramHelp(subProgram);
-      }
-      subProgram.parse(process.argv);
+    const subProgram = new Command().allowUnknownOption();
+    for (const option of options) {
+      const { flags, description, defaultValue } = option;
+      subProgram.option(flags, description, defaultValue);
     }
+    subProgram.action((o) => {
+      parsedOptions = o;
+    });
+    if (process.argv.find((arg) => ["--help", "h"].includes(arg))) {
+      logProgramHelp(subProgram);
+    }
+    subProgram.parse(process.argv);
     return parsedOptions;
   }
 
