@@ -5,17 +5,17 @@
     "app_menu": {
       "flow_type": "template",
       "flow_name": "app_menu",
-      "_xlsxPath": "demo.xlsx"
-    },
-    "content": {
-      "flow_type": "template",
-      "flow_name": "content",
-      "_xlsxPath": "demo.xlsx"
+      "_xlsxPath": "global/templates/demo.xlsx"
     },
     "home_screen": {
       "flow_type": "template",
       "flow_name": "home_screen",
-      "_xlsxPath": "demo.xlsx"
+      "_xlsxPath": "global/templates/demo.xlsx"
+    },
+    "session_card": {
+      "flow_type": "template",
+      "flow_name": "session_card",
+      "_xlsxPath": "global/templates/demo.xlsx"
     }
   },
   "tour": {},

@@ -9,14 +9,25 @@
       "_nested_name": "debug_toggle"
     },
     {
-      "type": "text",
-      "name": "text_1",
-      "value": "This is the side menu",
+      "type": "button",
+      "name": "button_templatelist",
+      "value": "Template list",
       "_translations": {
         "value": {}
       },
-      "_nested_name": "text_1"
+      "action_list": [
+        {
+          "trigger": "click",
+          "action_id": "go_to",
+          "args": [
+            "/template"
+          ],
+          "_raw": "click | go_to:/template",
+          "_cleaned": "click | go_to:/template"
+        }
+      ],
+      "_nested_name": "button_templatelist"
     }
   ],
-  "_xlsxPath": "demo.xlsx"
+  "_xlsxPath": "global/templates/demo.xlsx"
 }
