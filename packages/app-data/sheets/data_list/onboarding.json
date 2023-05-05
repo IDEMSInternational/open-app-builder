@@ -30,7 +30,7 @@
     {
       "id": "onboarding_user_name",
       "priority": 12,
-      "data_list_name": "onboarding",
+      "data_list_name": "onboarding_content",
       "row_id": "user_name"
     },
     {

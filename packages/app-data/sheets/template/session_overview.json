@@ -443,7 +443,51 @@
           "parameter_list": {
             "style": "emphasised"
           },
-          "_nested_name": "goals.goals_title"
+          "condition": "!!(@local.session_data.goal_2)",
+          "_nested_name": "goals.goals_title",
+          "_dynamicFields": {
+            "condition": [
+              {
+                "fullExpression": "!!(@local.session_data.goal_2)",
+                "matchedExpression": "@local.session_data.goal_2",
+                "type": "local",
+                "fieldName": "session_data"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@local.session_data.goal_2": [
+              "condition"
+            ]
+          }
+        },
+        {
+          "type": "text",
+          "name": "goals_title",
+          "value": "Goal",
+          "_translations": {
+            "value": {}
+          },
+          "parameter_list": {
+            "style": "emphasised"
+          },
+          "condition": "!(@local.session_data.goal_2)",
+          "_nested_name": "goals.goals_title",
+          "_dynamicFields": {
+            "condition": [
+              {
+                "fullExpression": "!(@local.session_data.goal_2)",
+                "matchedExpression": "@local.session_data.goal_2",
+                "type": "local",
+                "fieldName": "session_data"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@local.session_data.goal_2": [
+              "condition"
+            ]
+          }
         },
         {
           "type": "text",
