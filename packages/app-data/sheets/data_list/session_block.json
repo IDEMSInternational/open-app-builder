@@ -1,0 +1,17 @@
+{
+  "flow_type": "data_list",
+  "flow_name": "session_block",
+  "status": "released",
+  "rows": [
+    {
+      "id": "check-in"
+    },
+    {
+      "id": "relax"
+    },
+    {
+      "id": "praise"
+    }
+  ],
+  "_xlsxPath": "global/data_lists/sessions.xlsx"
+}

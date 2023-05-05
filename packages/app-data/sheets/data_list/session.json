@@ -9,7 +9,7 @@
       "title": "Welcome to Parenting for Respectibility",
       "gender_split": true,
       "session_type": "onboarding",
-      "image_asset": "current_pract_picture_quiz_3.png",
+      "image_asset": "images/current_pract_picture_quiz_3.png",
       "goal_1": "Introductions, explore expectations, set ground rules and discuss roles of the facilitator."
     },
     {
@@ -112,7 +112,7 @@
       "title": "Review",
       "gender_split": false,
       "session_type": "review",
-      "image_asset": "current_pract_picture_quiz_1.png",
+      "image_asset": "images/current_pract_picture_quiz_1.png",
       "goal_1": "To reflect on all single sex sessions and plan for the mixed sex sessions."
     },
     {
@@ -137,24 +137,24 @@
       "image_asset": "@data.topic.education.image_asset"
     },
     {
-      "id": "gender_equality",
+      "id": "gender_equal",
       "number": 13,
       "gender_split": false,
       "session_type": "topic",
       "goal_1": "To understand how gender expectations affect the lives of women and men, and of girls and boys.",
       "goal_2": "To discuss strategies to modify discriminatory gender norms.",
       "goal_3": "To reflect upon communication and affection between parents and sons and how this affects their well being.",
-      "title": "@data.topic.gender_equality.title",
-      "image_asset": "@data.topic.gender_equality.image_asset"
+      "title": "@data.topic.gender_equal.title",
+      "image_asset": "@data.topic.gender_equal.image_asset"
     },
     {
-      "id": "abuse_prevention",
+      "id": "prevent_abuse",
       "number": 14,
       "gender_split": false,
       "session_type": "topic",
       "goal_1": "To discuss constructive ways of sharing information to avoid violent situation in relationships. Express personal needs and feelings and listen reflectively and empathically.",
-      "title": "@data.topic.abuse_prevention.title",
-      "image_asset": "@data.topic.abuse_prevention.image_asset"
+      "title": "@data.topic.prevent_abuse.title",
+      "image_asset": "@data.topic.prevent_abuse.image_asset"
     },
     {
       "id": "reduce_conflict",
@@ -173,7 +173,7 @@
       "title": "Conclusion",
       "gender_split": false,
       "session_type": "conclusion",
-      "image_asset": "current_pract_picture_quiz_7.png"
+      "image_asset": "images/current_pract_picture_quiz_7.png"
     },
     {
       "gender_split": false,

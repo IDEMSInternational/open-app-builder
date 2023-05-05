@@ -1,0 +1,16 @@
+{
+  "flow_type": "data_list",
+  "flow_name": "quiz",
+  "status": "released",
+  "rows": [
+    {
+      "id": "current_pract",
+      "title": "Picture quiz",
+      "intro_text": "Let's look at some images.",
+      "question_1_id": "playing_what",
+      "question_2_id": "feeding_what",
+      "question_3_id": "reading_what"
+    }
+  ],
+  "_xlsxPath": "global/data_lists/topics.xlsx"
+}

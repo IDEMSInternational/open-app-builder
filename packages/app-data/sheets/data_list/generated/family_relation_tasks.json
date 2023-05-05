@@ -4,68 +4,68 @@
   "flow_type": "data_list",
   "rows": [
     {
-      "id": "check_in_id_1",
+      "id": "family_relation_check_in",
       "priority": 1,
       "data_list_name": "check_in",
       "row_id": "id_1",
-      "completed_field": "task_check_in_id_1_completed",
-      "completed": "@fields.task_check_in_id_1_completed"
+      "completed_field": "task_family_relation_check_in_completed",
+      "completed": "@fields.task_family_relation_check_in_completed"
     },
     {
-      "id": "relax_id_1",
+      "id": "family_relation_relax",
       "priority": 2,
       "data_list_name": "relax",
       "row_id": "id_1",
-      "completed_field": "task_relax_id_1_completed",
-      "completed": "@fields.task_relax_id_1_completed"
+      "completed_field": "task_family_relation_relax_completed",
+      "completed": "@fields.task_family_relation_relax_completed"
     },
     {
-      "id": "intro_family_relation",
+      "id": "family_relation_intro",
       "priority": 10,
       "data_list_name": "intro",
       "row_id": "family_relation",
-      "completed_field": "task_intro_family_relation_completed",
-      "completed": "@fields.task_intro_family_relation_completed"
+      "completed_field": "task_family_relation_intro_completed",
+      "completed": "@fields.task_family_relation_intro_completed"
     },
     {
-      "id": "reflect_future_now",
+      "id": "family_relation_reflect",
       "priority": 11,
       "data_list_name": "reflect",
       "row_id": "future_now",
-      "completed_field": "task_reflect_future_now_completed",
-      "completed": "@fields.task_reflect_future_now_completed"
+      "completed_field": "task_family_relation_reflect_completed",
+      "completed": "@fields.task_family_relation_reflect_completed"
     },
     {
-      "id": "story_rel_vacuum",
+      "id": "family_relation_story",
       "priority": 12,
       "data_list_name": "story",
       "row_id": "rel_vacuum",
-      "completed_field": "task_story_rel_vacuum_completed",
-      "completed": "@fields.task_story_rel_vacuum_completed"
+      "completed_field": "task_family_relation_story_completed",
+      "completed": "@fields.task_family_relation_story_completed"
     },
     {
-      "id": "tips_grow_relation",
+      "id": "family_relation_tips",
       "priority": 13,
       "data_list_name": "tips",
       "row_id": "grow_relation",
-      "completed_field": "task_tips_grow_relation_completed",
-      "completed": "@fields.task_tips_grow_relation_completed"
+      "completed_field": "task_family_relation_tips_completed",
+      "completed": "@fields.task_family_relation_tips_completed"
     },
     {
-      "id": "set_hp_family_relation",
+      "id": "family_relation_set_hp",
       "priority": 14,
       "data_list_name": "set_hp",
       "row_id": "family_relation",
-      "completed_field": "task_set_hp_family_relation_completed",
-      "completed": "@fields.task_set_hp_family_relation_completed"
+      "completed_field": "task_family_relation_set_hp_completed",
+      "completed": "@fields.task_family_relation_set_hp_completed"
     },
     {
-      "id": "praise_id_1",
+      "id": "family_relation_praise",
       "priority": 30,
       "data_list_name": "praise",
-      "row_id": "id_1",
-      "completed_field": "task_praise_id_1_completed",
-      "completed": "@fields.task_praise_id_1_completed"
+      "row_id": "family_relation",
+      "completed_field": "task_family_relation_praise_completed",
+      "completed": "@fields.task_family_relation_praise_completed"
     }
   ]
 }

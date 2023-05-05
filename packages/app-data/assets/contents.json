@@ -1,61 +1,53 @@
 {
-  "child_dev.png": {
-    "filePath": "global/child_dev.png",
+  "audio/relax/relax_19.mp3": {
+    "md5Checksum": "91b71aa328f31c46b56bf7949448ae55",
+    "size_kb": 1746.5
+  },
+  "images/child_dev.png": {
     "md5Checksum": "555458425a8251a6baa6ac770b59d642",
     "size_kb": 440.2
   },
-  "current_pract.png": {
-    "filePath": "global/current_pract.png",
+  "images/current_pract.png": {
     "md5Checksum": "1ac4567416b1efbcb29f2d2ee92b2a79",
     "size_kb": 578.3
   },
-  "current_pract_picture_quiz_1.png": {
-    "filePath": "global/current_pract_picture_quiz_1.png",
+  "images/current_pract_picture_quiz_1.png": {
     "md5Checksum": "23b85d319393037a0474b71cd08fdc3f",
     "size_kb": 538.1
   },
-  "current_pract_picture_quiz_2.png": {
-    "filePath": "global/current_pract_picture_quiz_2.png",
+  "images/current_pract_picture_quiz_2.png": {
     "md5Checksum": "2fb51623824aa1ea9bcc7671fc81d38e",
     "size_kb": 201.6
   },
-  "current_pract_picture_quiz_3.png": {
-    "filePath": "global/current_pract_picture_quiz_3.png",
+  "images/current_pract_picture_quiz_3.png": {
     "md5Checksum": "768ff4f85fcd64a4503286e929ccc3ca",
     "size_kb": 151.9
   },
-  "current_pract_picture_quiz_4.png": {
-    "filePath": "global/current_pract_picture_quiz_4.png",
+  "images/current_pract_picture_quiz_4.png": {
     "md5Checksum": "22535ae6caa1fb31f92fc10171bb9117",
     "size_kb": 395.3
   },
-  "current_pract_picture_quiz_5.png": {
-    "filePath": "global/current_pract_picture_quiz_5.png",
+  "images/current_pract_picture_quiz_5.png": {
     "md5Checksum": "1db9f76a2d89fb048161d8b2772732df",
     "size_kb": 237.7
   },
-  "current_pract_picture_quiz_6.png": {
-    "filePath": "global/current_pract_picture_quiz_6.png",
+  "images/current_pract_picture_quiz_6.png": {
     "md5Checksum": "41e91afd64832332556e7ed71d0e157e",
     "size_kb": 222.2
   },
-  "current_pract_picture_quiz_7.png": {
-    "filePath": "global/current_pract_picture_quiz_7.png",
+  "images/current_pract_picture_quiz_7.png": {
     "md5Checksum": "a9c6ede49762cb786e490a46e6892af0",
     "size_kb": 210
   },
-  "family_relation.png": {
-    "filePath": "global/family_relation.png",
+  "images/family_relation.png": {
     "md5Checksum": "fe9d2a07ea001244f5485c93ff38cacc",
     "size_kb": 998.1
   },
-  "icons/in_progress.svg": {
-    "filePath": "global/icons/in_progress.svg",
+  "images/icons/in_progress.svg": {
     "md5Checksum": "6105962bc0edd981675d874dc8a51035",
     "size_kb": 1.1
   },
-  "icons/tick.svg": {
-    "filePath": "global/icons/tick.svg",
+  "images/icons/tick.svg": {
     "md5Checksum": "b4e6f1e9ba6e5bcdd2e404bc432ba745",
     "size_kb": 0.3
   }

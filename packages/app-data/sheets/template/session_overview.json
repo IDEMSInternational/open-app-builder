@@ -192,66 +192,6 @@
       }
     },
     {
-      "name": "card_title",
-      "value": "@local.session_data.short_title",
-      "_translations": {
-        "value": {}
-      },
-      "condition": "@local.session_data.short_title",
-      "exclude_from_translation": true,
-      "type": "set_variable",
-      "_nested_name": "card_title",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "@local.session_data.short_title",
-            "matchedExpression": "@local.session_data.short_title",
-            "type": "local",
-            "fieldName": "session_data"
-          }
-        ],
-        "condition": [
-          {
-            "fullExpression": "@local.session_data.short_title",
-            "matchedExpression": "@local.session_data.short_title",
-            "type": "local",
-            "fieldName": "session_data"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@local.session_data.short_title": [
-          "value",
-          "condition"
-        ]
-      }
-    },
-    {
-      "name": "card_subtitle",
-      "value": "@local.session_data.description",
-      "_translations": {
-        "value": {}
-      },
-      "exclude_from_translation": true,
-      "type": "set_variable",
-      "_nested_name": "card_subtitle",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "@local.session_data.description",
-            "matchedExpression": "@local.session_data.description",
-            "type": "local",
-            "fieldName": "session_data"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@local.session_data.description": [
-          "value"
-        ]
-      }
-    },
-    {
       "name": "card_image",
       "value": "@local.session_data.image_asset",
       "_translations": {
@@ -494,13 +434,16 @@
       },
       "rows": [
         {
-          "type": "title",
-          "name": "title",
+          "type": "text",
+          "name": "goals_title",
           "value": "Goals",
           "_translations": {
             "value": {}
           },
-          "_nested_name": "goals.title"
+          "parameter_list": {
+            "style": "emphasised"
+          },
+          "_nested_name": "goals.goals_title"
         },
         {
           "type": "text",
