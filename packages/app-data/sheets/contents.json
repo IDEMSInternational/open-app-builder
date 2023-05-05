@@ -10,6 +10,11 @@
       "flow_name": "family_relation",
       "_xlsxPath": "global/data_lists/session_tasks.xlsx"
     },
+    "family_relation_tasks": {
+      "flow_name": "family_relation_tasks",
+      "flow_subtype": "generated",
+      "flow_type": "data_list"
+    },
     "onboarding_tasks": {
       "flow_name": "onboarding_tasks",
       "flow_subtype": "generated",
