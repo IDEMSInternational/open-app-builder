@@ -1,9 +1,24 @@
 {
   "data_list": {
+    "current_prac": {
+      "flow_type": "data_list",
+      "flow_name": "current_prac",
+      "_xlsxPath": "global/data_lists/session_tasks.xlsx"
+    },
+    "family_relation": {
+      "flow_type": "data_list",
+      "flow_name": "family_relation",
+      "_xlsxPath": "global/data_lists/session_tasks.xlsx"
+    },
     "session_tasks": {
       "flow_name": "session_tasks",
       "flow_subtype": "generated",
       "flow_type": "data_list"
+    },
+    "onboarding": {
+      "flow_type": "data_list",
+      "flow_name": "onboarding",
+      "_xlsxPath": "global/data_lists/session_tasks.xlsx"
     },
     "session": {
       "flow_type": "data_list",
@@ -49,7 +64,7 @@
     "session_data_pipe": {
       "flow_type": "data_pipe",
       "flow_name": "session_data_pipe",
-      "_xlsxPath": "global/data_lists/session_data_pipes.xlsx"
+      "_xlsxPath": "global/data_lists/sessions.xlsx"
     }
   }
 }

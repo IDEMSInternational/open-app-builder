@@ -29,37 +29,37 @@
       }
     },
     {
-      "name": "task_groups",
-      "value": "_task_gs",
+      "name": "tasks",
+      "value": "_tasks",
       "_translations": {
         "value": {}
       },
       "exclude_from_translation": true,
       "type": "set_variable",
-      "_nested_name": "task_groups"
+      "_nested_name": "tasks"
     },
     {
-      "name": "task_group_data",
-      "value": "@local.session_id@local.task_groups",
+      "name": "task_data",
+      "value": "@local.session_id@local.tasks",
       "_translations": {
         "value": {}
       },
       "exclude_from_translation": true,
       "type": "set_variable",
-      "_nested_name": "task_group_data",
+      "_nested_name": "task_data",
       "_dynamicFields": {
         "value": [
           {
-            "fullExpression": "@local.session_id@local.task_groups",
+            "fullExpression": "@local.session_id@local.tasks",
             "matchedExpression": "@local.session_id",
             "type": "local",
             "fieldName": "session_id"
           },
           {
-            "fullExpression": "@local.session_id@local.task_groups",
-            "matchedExpression": "@local.task_groups",
+            "fullExpression": "@local.session_id@local.tasks",
+            "matchedExpression": "@local.tasks",
             "type": "local",
-            "fieldName": "task_groups"
+            "fieldName": "tasks"
           }
         ]
       },
@@ -67,7 +67,7 @@
         "@local.session_id": [
           "value"
         ],
-        "@local.task_groups": [
+        "@local.tasks": [
           "value"
         ]
       }
@@ -509,6 +509,7 @@
           "_translations": {
             "value": {}
           },
+          "condition": "!!(@local.session_data.goal_1)",
           "_nested_name": "goals.goal_1",
           "_dynamicFields": {
             "value": [
@@ -518,11 +519,20 @@
                 "type": "local",
                 "fieldName": "session_data"
               }
+            ],
+            "condition": [
+              {
+                "fullExpression": "!!(@local.session_data.goal_1)",
+                "matchedExpression": "@local.session_data.goal_1",
+                "type": "local",
+                "fieldName": "session_data"
+              }
             ]
           },
           "_dynamicDependencies": {
             "@local.session_data.goal_1": [
-              "value"
+              "value",
+              "condition"
             ]
           }
         },
@@ -533,6 +543,7 @@
           "_translations": {
             "value": {}
           },
+          "condition": "!!(@local.session_data.goal_2)",
           "_nested_name": "goals.goal_2",
           "_dynamicFields": {
             "value": [
@@ -542,11 +553,20 @@
                 "type": "local",
                 "fieldName": "session_data"
               }
+            ],
+            "condition": [
+              {
+                "fullExpression": "!!(@local.session_data.goal_2)",
+                "matchedExpression": "@local.session_data.goal_2",
+                "type": "local",
+                "fieldName": "session_data"
+              }
             ]
           },
           "_dynamicDependencies": {
             "@local.session_data.goal_2": [
-              "value"
+              "value",
+              "condition"
             ]
           }
         },
@@ -557,6 +577,7 @@
           "_translations": {
             "value": {}
           },
+          "condition": "!!(@local.session_data.goal_3)",
           "_nested_name": "goals.goal_3",
           "_dynamicFields": {
             "value": [
@@ -566,11 +587,20 @@
                 "type": "local",
                 "fieldName": "session_data"
               }
+            ],
+            "condition": [
+              {
+                "fullExpression": "!!(@local.session_data.goal_3)",
+                "matchedExpression": "@local.session_data.goal_3",
+                "type": "local",
+                "fieldName": "session_data"
+              }
             ]
           },
           "_dynamicDependencies": {
             "@local.session_data.goal_3": [
-              "value"
+              "value",
+              "condition"
             ]
           }
         }
@@ -578,37 +608,37 @@
       "_nested_name": "goals"
     },
     {
-      "name": "task_groups",
-      "value": "_task_gs",
+      "name": "tasks",
+      "value": "_tasks",
       "_translations": {
         "value": {}
       },
       "exclude_from_translation": true,
       "type": "set_variable",
-      "_nested_name": "task_groups"
+      "_nested_name": "tasks"
     },
     {
-      "name": "task_group_data",
-      "value": "@local.session_id@local.task_groups",
+      "name": "task_data",
+      "value": "@local.session_id@local.tasks",
       "_translations": {
         "value": {}
       },
       "exclude_from_translation": true,
       "type": "set_variable",
-      "_nested_name": "task_group_data",
+      "_nested_name": "task_data",
       "_dynamicFields": {
         "value": [
           {
-            "fullExpression": "@local.session_id@local.task_groups",
+            "fullExpression": "@local.session_id@local.tasks",
             "matchedExpression": "@local.session_id",
             "type": "local",
             "fieldName": "session_id"
           },
           {
-            "fullExpression": "@local.session_id@local.task_groups",
-            "matchedExpression": "@local.task_groups",
+            "fullExpression": "@local.session_id@local.tasks",
+            "matchedExpression": "@local.tasks",
             "type": "local",
-            "fieldName": "task_groups"
+            "fieldName": "tasks"
           }
         ]
       },
@@ -616,14 +646,14 @@
         "@local.session_id": [
           "value"
         ],
-        "@local.task_groups": [
+        "@local.tasks": [
           "value"
         ]
       }
     },
     {
       "type": "items",
-      "value": "@data.@local.task_group_data",
+      "value": "@data.@local.task_data",
       "parameter_list": {
         "sort": "priority"
       },
@@ -740,15 +770,15 @@
       "_dynamicFields": {
         "value": [
           {
-            "fullExpression": "@data.@local.task_group_data",
-            "matchedExpression": "@local.task_group_data",
+            "fullExpression": "@data.@local.task_data",
+            "matchedExpression": "@local.task_data",
             "type": "local",
-            "fieldName": "task_group_data"
+            "fieldName": "task_data"
           }
         ]
       },
       "_dynamicDependencies": {
-        "@local.task_group_data": [
+        "@local.task_data": [
           "value"
         ]
       }

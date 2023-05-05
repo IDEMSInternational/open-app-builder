@@ -14,5 +14,5 @@
       "output_target": "session_tasks"
     }
   ],
-  "_xlsxPath": "global/data_lists/session_data_pipes.xlsx"
+  "_xlsxPath": "global/data_lists/sessions.xlsx"
 }
