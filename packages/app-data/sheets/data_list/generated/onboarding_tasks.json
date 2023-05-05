@@ -1,0 +1,55 @@
+{
+  "flow_name": "onboarding_tasks",
+  "flow_subtype": "generated",
+  "flow_type": "data_list",
+  "rows": [
+    {
+      "id": "check_in_id_1",
+      "priority": 1,
+      "data_list_name": "check_in",
+      "row_id": "id_1",
+      "completed_field": "task_check_in_id_1_completed",
+      "completed": "@fields.task_check_in_id_1_completed"
+    },
+    {
+      "id": "relax_id_1",
+      "priority": 2,
+      "data_list_name": "relax",
+      "row_id": "id_1",
+      "completed_field": "task_relax_id_1_completed",
+      "completed": "@fields.task_relax_id_1_completed"
+    },
+    {
+      "id": "onboarding_pfr_goals",
+      "priority": 10,
+      "data_list_name": "onboarding",
+      "row_id": "pfr_goals",
+      "completed_field": "task_onboarding_pfr_goals_completed",
+      "completed": "@fields.task_onboarding_pfr_goals_completed"
+    },
+    {
+      "id": "onboarding_ground_rules",
+      "priority": 11,
+      "data_list_name": "onboarding",
+      "row_id": "ground_rules",
+      "completed_field": "task_onboarding_ground_rules_completed",
+      "completed": "@fields.task_onboarding_ground_rules_completed"
+    },
+    {
+      "id": "quiz_user_name",
+      "priority": 12,
+      "data_list_name": "quiz",
+      "row_id": "user_name",
+      "completed_field": "task_quiz_user_name_completed",
+      "completed": "@fields.task_quiz_user_name_completed"
+    },
+    {
+      "id": "praise_id_1",
+      "priority": 30,
+      "data_list_name": "praise",
+      "row_id": "id_1",
+      "completed_field": "task_praise_id_1_completed",
+      "completed": "@fields.task_praise_id_1_completed"
+    }
+  ]
+}

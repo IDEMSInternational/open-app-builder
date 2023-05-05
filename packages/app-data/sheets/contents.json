@@ -10,6 +10,11 @@
       "flow_name": "family_relation",
       "_xlsxPath": "global/data_lists/session_tasks.xlsx"
     },
+    "onboarding_tasks": {
+      "flow_name": "onboarding_tasks",
+      "flow_subtype": "generated",
+      "flow_type": "data_list"
+    },
     "session_tasks": {
       "flow_name": "session_tasks",
       "flow_subtype": "generated",
@@ -65,6 +70,11 @@
       "flow_type": "data_pipe",
       "flow_name": "session_data_pipe",
       "_xlsxPath": "global/data_lists/sessions.xlsx"
+    },
+    "session_tasks_data_pipe": {
+      "flow_type": "data_pipe",
+      "flow_name": "session_tasks_data_pipe",
+      "_xlsxPath": "global/data_lists/session_tasks.xlsx"
     }
   }
 }
