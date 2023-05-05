@@ -1,0 +1,87 @@
+{
+  "flow_name": "current_pract_tasks",
+  "flow_subtype": "generated",
+  "flow_type": "data_list",
+  "rows": [
+    {
+      "id": "current_pract_check_in",
+      "priority": 1,
+      "data_list_name": "check_in",
+      "row_id": "id_1",
+      "completed_field": "task_current_pract_check_in_completed",
+      "completed": "@fields.task_current_pract_check_in_completed"
+    },
+    {
+      "id": "current_pract_relax",
+      "priority": 2,
+      "data_list_name": "relax",
+      "row_id": "id_1",
+      "completed_field": "task_current_pract_relax_completed",
+      "completed": "@fields.task_current_pract_relax_completed"
+    },
+    {
+      "id": "current_pract_review_hp",
+      "priority": 3,
+      "data_list_name": "review_hp",
+      "row_id": "family_relation",
+      "completed_field": "task_current_pract_review_hp_completed",
+      "completed": "@fields.task_current_pract_review_hp_completed"
+    },
+    {
+      "id": "current_pract_intro",
+      "priority": 10,
+      "data_list_name": "intro",
+      "row_id": "current_pract",
+      "completed_field": "task_current_pract_intro_completed",
+      "completed": "@fields.task_current_pract_intro_completed"
+    },
+    {
+      "id": "current_pract_reflect",
+      "priority": 11,
+      "data_list_name": "reflect",
+      "row_id": "child_20",
+      "completed_field": "task_current_pract_reflect_completed",
+      "completed": "@fields.task_current_pract_reflect_completed"
+    },
+    {
+      "id": "current_pract_story",
+      "priority": 12,
+      "data_list_name": "story",
+      "row_id": "raise_child",
+      "completed_field": "task_current_pract_story_completed",
+      "completed": "@fields.task_current_pract_story_completed"
+    },
+    {
+      "id": "current_pract_quiz",
+      "priority": 13,
+      "data_list_name": "quiz",
+      "row_id": "current_pract",
+      "completed_field": "task_current_pract_quiz_completed",
+      "completed": "@fields.task_current_pract_quiz_completed"
+    },
+    {
+      "id": "current_pract_tips",
+      "priority": 14,
+      "data_list_name": "tips",
+      "row_id": "child_perception",
+      "completed_field": "task_current_pract_tips_completed",
+      "completed": "@fields.task_current_pract_tips_completed"
+    },
+    {
+      "id": "current_pract_set_hp",
+      "priority": 20,
+      "data_list_name": "set_hp",
+      "row_id": "current_pract",
+      "completed_field": "task_current_pract_set_hp_completed",
+      "completed": "@fields.task_current_pract_set_hp_completed"
+    },
+    {
+      "id": "current_pract_praise",
+      "priority": 30,
+      "data_list_name": "praise",
+      "row_id": "current_pract",
+      "completed_field": "task_current_pract_praise_completed",
+      "completed": "@fields.task_current_pract_praise_completed"
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "flow_type": "data_list",
+  "flow_name": "review_hp",
+  "status": "released",
+  "rows": [
+    {
+      "id": "family_relation",
+      "text": "When talking about @data.topic.family_relation.title we explored the benefits and challenges of improving family relationships by living like you had only 3 months to live.",
+      "title": "Review your home practice: @data.topic.family_relation.title",
+      "intro_text": "How did your home practice go?"
+    },
+    {
+      "id": "current_pract",
+      "text": "Review home practice by asking individuals to share their experience. Encourage them to discuss benefits and challenges to both parents and children when they practiced the parenting measures.\n\nEncourage all parents to continue doing the home practice.",
+      "title": "Review your home practice: @data.topic.current_pract.title",
+      "intro_text": "How did your home practice go?"
+    },
+    {
+      "id": "child_dev",
+      "text": "Share your experiences and discuss benefits and challenges of involving both parents\nand children when they practiced the parenting measures.\n\nEncourage all parents to continue doing the home practice.",
+      "title": "Review your home practice: @data.topic.child_dev.title",
+      "intro_text": "How did your home practice go?"
+    }
+  ],
+  "_xlsxPath": "global/data_lists/topics.xlsx"
+}

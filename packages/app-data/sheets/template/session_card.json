@@ -186,6 +186,12 @@
       }
     },
     {
+      "name": "card_subtitle",
+      "exclude_from_translation": true,
+      "type": "set_variable",
+      "_nested_name": "card_subtitle"
+    },
+    {
       "type": "display_group",
       "name": "create_subtitle",
       "condition": "@local.session_data.session_type == \"topic\"",
@@ -453,8 +459,8 @@
         "subtitle": "@local.card_subtitle",
         "image": "@local.card_image",
         "style": "@local.card_style",
-        "in_progress_icon": "icons/in_progress.svg",
-        "completed_icon": "icons/tick.svg",
+        "in_progress_icon": "images/icons/in_progress.svg",
+        "completed_icon": "images/icons/tick.svg",
         "highlighted_text": "@local.highlighted_text"
       },
       "exclude_from_translation": true,

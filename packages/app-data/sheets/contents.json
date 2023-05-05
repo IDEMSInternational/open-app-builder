@@ -1,18 +1,123 @@
 {
   "data_list": {
+    "check_in": {
+      "flow_type": "data_list",
+      "flow_name": "check_in",
+      "_xlsxPath": "global/data_lists/sessions.xlsx"
+    },
+    "current_pract": {
+      "flow_type": "data_list",
+      "flow_name": "current_pract",
+      "_xlsxPath": "global/data_lists/session_tasks.xlsx"
+    },
+    "family_relation": {
+      "flow_type": "data_list",
+      "flow_name": "family_relation",
+      "_xlsxPath": "global/data_lists/session_tasks.xlsx"
+    },
+    "current_pract_tasks": {
+      "flow_name": "current_pract_tasks",
+      "flow_subtype": "generated",
+      "flow_type": "data_list"
+    },
+    "family_relation_tasks": {
+      "flow_name": "family_relation_tasks",
+      "flow_subtype": "generated",
+      "flow_type": "data_list"
+    },
+    "onboarding_tasks": {
+      "flow_name": "onboarding_tasks",
+      "flow_subtype": "generated",
+      "flow_type": "data_list"
+    },
     "session_tasks": {
       "flow_name": "session_tasks",
       "flow_subtype": "generated",
       "flow_type": "data_list"
+    },
+    "intro": {
+      "flow_type": "data_list",
+      "flow_name": "intro",
+      "_xlsxPath": "global/data_lists/topics.xlsx"
+    },
+    "onboarding": {
+      "flow_type": "data_list",
+      "flow_name": "onboarding",
+      "_xlsxPath": "global/data_lists/session_tasks.xlsx"
+    },
+    "onboarding_content": {
+      "flow_type": "data_list",
+      "flow_name": "onboarding_content",
+      "_xlsxPath": "global/data_lists/onboarding.xlsx"
+    },
+    "praise": {
+      "flow_type": "data_list",
+      "flow_name": "praise",
+      "_xlsxPath": "global/data_lists/sessions.xlsx"
+    },
+    "quiz": {
+      "flow_type": "data_list",
+      "flow_name": "quiz",
+      "_xlsxPath": "global/data_lists/topics.xlsx"
+    },
+    "quiz_question": {
+      "flow_type": "data_list",
+      "flow_name": "quiz_question",
+      "_xlsxPath": "global/data_lists/topics.xlsx"
+    },
+    "reflect": {
+      "flow_type": "data_list",
+      "flow_name": "reflect",
+      "_xlsxPath": "global/data_lists/topics.xlsx"
+    },
+    "relax": {
+      "flow_type": "data_list",
+      "flow_name": "relax",
+      "_xlsxPath": "global/data_lists/sessions.xlsx"
+    },
+    "review_hp": {
+      "flow_type": "data_list",
+      "flow_name": "review_hp",
+      "_xlsxPath": "global/data_lists/topics.xlsx"
     },
     "session": {
       "flow_type": "data_list",
       "flow_name": "session",
       "_xlsxPath": "global/data_lists/sessions.xlsx"
     },
+    "session_block": {
+      "flow_type": "data_list",
+      "flow_name": "session_block",
+      "_xlsxPath": "global/data_lists/sessions.xlsx"
+    },
+    "session_type": {
+      "flow_type": "data_list",
+      "flow_name": "session_type",
+      "_xlsxPath": "global/data_lists/sessions.xlsx"
+    },
+    "set_hp": {
+      "flow_type": "data_list",
+      "flow_name": "set_hp",
+      "_xlsxPath": "global/data_lists/topics.xlsx"
+    },
+    "story": {
+      "flow_type": "data_list",
+      "flow_name": "story",
+      "_xlsxPath": "global/data_lists/topics.xlsx"
+    },
+    "tips": {
+      "flow_type": "data_list",
+      "flow_name": "tips",
+      "_xlsxPath": "global/data_lists/topics.xlsx"
+    },
     "topic": {
       "flow_type": "data_list",
       "flow_name": "topic",
+      "_xlsxPath": "global/data_lists/topics.xlsx"
+    },
+    "topic_block": {
+      "flow_type": "data_list",
+      "flow_name": "topic_block",
       "_xlsxPath": "global/data_lists/topics.xlsx"
     },
     "topic_group": {
@@ -33,6 +138,26 @@
       "flow_name": "home_screen",
       "_xlsxPath": "global/templates/navigation.xlsx"
     },
+    "intro": {
+      "flow_type": "template",
+      "flow_name": "intro",
+      "_xlsxPath": "global/templates/topic_blocks.xlsx"
+    },
+    "praise": {
+      "flow_type": "template",
+      "flow_name": "praise",
+      "_xlsxPath": "global/templates/session_blocks.xlsx"
+    },
+    "relax": {
+      "flow_type": "template",
+      "flow_name": "relax",
+      "_xlsxPath": "global/templates/session_blocks.xlsx"
+    },
+    "relax_text": {
+      "flow_type": "template",
+      "flow_name": "relax_text",
+      "_xlsxPath": "global/templates/session_blocks.xlsx"
+    },
     "session_card": {
       "flow_type": "template",
       "flow_name": "session_card",
@@ -42,6 +167,11 @@
       "flow_type": "template",
       "flow_name": "session_overview",
       "_xlsxPath": "global/templates/navigation.xlsx"
+    },
+    "task_card": {
+      "flow_type": "template",
+      "flow_name": "task_card",
+      "_xlsxPath": "global/templates/navigation.xlsx"
     }
   },
   "tour": {},
@@ -49,7 +179,12 @@
     "session_data_pipe": {
       "flow_type": "data_pipe",
       "flow_name": "session_data_pipe",
-      "_xlsxPath": "global/data_lists/session_data_pipes.xlsx"
+      "_xlsxPath": "global/data_lists/sessions.xlsx"
+    },
+    "session_tasks_data_pipe": {
+      "flow_type": "data_pipe",
+      "flow_name": "session_tasks_data_pipe",
+      "_xlsxPath": "global/data_lists/session_tasks.xlsx"
     }
   }
 }

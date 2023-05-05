@@ -1,0 +1,68 @@
+{
+  "flow_type": "data_list",
+  "flow_name": "current_pract",
+  "status": "released",
+  "rows": [
+    {
+      "id": "current_pract_check_in",
+      "priority": 1,
+      "data_list_name": "check_in",
+      "row_id": "id_1"
+    },
+    {
+      "id": "current_pract_relax",
+      "priority": 2,
+      "data_list_name": "relax",
+      "row_id": "id_1"
+    },
+    {
+      "id": "current_pract_review_hp",
+      "priority": 3,
+      "data_list_name": "review_hp",
+      "row_id": "family_relation"
+    },
+    {
+      "id": "current_pract_intro",
+      "priority": 10,
+      "data_list_name": "intro",
+      "row_id": "current_pract"
+    },
+    {
+      "id": "current_pract_reflect",
+      "priority": 11,
+      "data_list_name": "reflect",
+      "row_id": "child_20"
+    },
+    {
+      "id": "current_pract_story",
+      "priority": 12,
+      "data_list_name": "story",
+      "row_id": "raise_child"
+    },
+    {
+      "id": "current_pract_quiz",
+      "priority": 13,
+      "data_list_name": "quiz",
+      "row_id": "current_pract"
+    },
+    {
+      "id": "current_pract_tips",
+      "priority": 14,
+      "data_list_name": "tips",
+      "row_id": "child_perception"
+    },
+    {
+      "id": "current_pract_set_hp",
+      "priority": 20,
+      "data_list_name": "set_hp",
+      "row_id": "current_pract"
+    },
+    {
+      "id": "current_pract_praise",
+      "priority": 30,
+      "data_list_name": "praise",
+      "row_id": "current_pract"
+    }
+  ],
+  "_xlsxPath": "global/data_lists/session_tasks.xlsx"
+}

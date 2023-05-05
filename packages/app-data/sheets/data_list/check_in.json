@@ -1,0 +1,23 @@
+{
+  "flow_type": "data_list",
+  "flow_name": "check_in",
+  "status": "released",
+  "rows": [
+    {
+      "id": "id_1",
+      "title": "Check-In",
+      "intro_text": "You matter! Take a moment to check in with yourself.",
+      "question_text": "How are you feeling today?",
+      "option_happy_image_asset": "icons/happy_check_in.png",
+      "option_ok_image_asset": "icons/sad_check_in.png",
+      "option_sad_image_asset": "icons/very_sad_check_in.png",
+      "option_happy_text": "Happy",
+      "option_ok_text": "Okay",
+      "option_sad_text": "Sad",
+      "feedback_happy": "Wonderful, it’s great to hear that things are going well. We can build on that energy today.",
+      "feedback_ok": "Sorry to hear that. Sometimes we just feel...“so-so”. Or, we aren’t quite sure how we feel. We can explore different ways to work through that.",
+      "feedback_sad": "Sorry to hear that. Sometimes life just gets the better of us and makes us feel sad, stressed, or overwhelmed. It’s really hard to deal with life when we feel this way. It is completely normal to struggle sometimes - everybody does. Together we can look at strategies to make things feel a bit less hard."
+    }
+  ],
+  "_xlsxPath": "global/data_lists/sessions.xlsx"
+}

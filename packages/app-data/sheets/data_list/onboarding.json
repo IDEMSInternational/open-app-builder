@@ -1,0 +1,44 @@
+{
+  "flow_type": "data_list",
+  "flow_name": "onboarding",
+  "status": "released",
+  "rows": [
+    {
+      "id": "onboarding_check_in",
+      "priority": 1,
+      "data_list_name": "check_in",
+      "row_id": "id_1"
+    },
+    {
+      "id": "onboarding_relax",
+      "priority": 2,
+      "data_list_name": "relax",
+      "row_id": "id_1"
+    },
+    {
+      "id": "onboarding_pfr_goals",
+      "priority": 10,
+      "data_list_name": "onboarding_content",
+      "row_id": "pfr_goals"
+    },
+    {
+      "id": "onboarding_ground_rules",
+      "priority": 11,
+      "data_list_name": "onboarding_content",
+      "row_id": "ground_rules"
+    },
+    {
+      "id": "onboarding_user_name",
+      "priority": 12,
+      "data_list_name": "onboarding_content",
+      "row_id": "user_name"
+    },
+    {
+      "id": "onboarding_praise",
+      "priority": 30,
+      "data_list_name": "praise",
+      "row_id": "onboarding"
+    }
+  ],
+  "_xlsxPath": "global/data_lists/session_tasks.xlsx"
+}

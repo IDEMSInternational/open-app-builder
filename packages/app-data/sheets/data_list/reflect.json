@@ -1,0 +1,24 @@
+{
+  "flow_type": "data_list",
+  "flow_name": "reflect",
+  "status": "released",
+  "rows": [
+    {
+      "id": "future_now",
+      "title": "50 years and 3 months",
+      "text": "Take a minute to think about what you would do if you had 50 or more years to live and note them down on a piece of paper. Take time to reflect on what you have written down. Are these the most important relationships in your life? \n\nAnd what would you do if you had only 3 months left?"
+    },
+    {
+      "id": "child_20",
+      "title": "Your child as a 20-year-old",
+      "text": "Close your eyes and imagine the following: Your child or grandchild is grown up. You are about to celebrate his/her 20th birthday. Imagine what he or she will look like at that age. What kind of person do you hope he/she will be? What kind of relationship will you have with your child?",
+      "suggestion_1": "Kind and helpful",
+      "suggestion_2": "Honest and trustworthy",
+      "suggestion_3": "A good decision-maker",
+      "suggestion_4": "Respectful",
+      "suggestion_5": "Well behaved",
+      "suggestion_6": "Loves his/her parents"
+    }
+  ],
+  "_xlsxPath": "global/data_lists/topics.xlsx"
+}

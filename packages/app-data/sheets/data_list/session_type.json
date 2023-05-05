@@ -1,0 +1,20 @@
+{
+  "flow_type": "data_list",
+  "flow_name": "session_type",
+  "status": "released",
+  "rows": [
+    {
+      "id": "onboarding"
+    },
+    {
+      "id": "topic"
+    },
+    {
+      "id": "review"
+    },
+    {
+      "id": "conclusion"
+    }
+  ],
+  "_xlsxPath": "global/data_lists/sessions.xlsx"
+}

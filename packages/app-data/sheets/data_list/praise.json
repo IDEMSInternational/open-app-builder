@@ -1,0 +1,23 @@
+{
+  "flow_type": "data_list",
+  "flow_name": "praise",
+  "status": "released",
+  "rows": [
+    {
+      "id": "onboarding",
+      "title": "Well done!",
+      "intro_text": "Congratulations for completing the @data.session.onboarding.title session."
+    },
+    {
+      "id": "family_relation",
+      "title": "Well done!",
+      "intro_text": "Congratulations for completing the @data.session.family_relation.title session."
+    },
+    {
+      "id": "current_pract",
+      "title": "Well done!",
+      "intro_text": "Congratulations for completing the @data.session.current_pract.title session."
+    }
+  ],
+  "_xlsxPath": "global/data_lists/sessions.xlsx"
+}

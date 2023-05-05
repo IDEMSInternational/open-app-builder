@@ -1,0 +1,35 @@
+{
+  "flow_type": "data_pipe",
+  "flow_name": "session_tasks_data_pipe",
+  "status": "released",
+  "rows": [
+    {
+      "operation": "append_columns",
+      "args_list": [
+        "completed_field: task_{@row.id}_completed",
+        "completed: @fields.@row.completed_field"
+      ],
+      "input_source": "onboarding",
+      "output_target": "onboarding_tasks"
+    },
+    {
+      "operation": "append_columns",
+      "args_list": [
+        "completed_field: task_{@row.id}_completed",
+        "completed: @fields.@row.completed_field"
+      ],
+      "input_source": "family_relation",
+      "output_target": "family_relation_tasks"
+    },
+    {
+      "operation": "append_columns",
+      "args_list": [
+        "completed_field: task_{@row.id}_completed",
+        "completed: @fields.@row.completed_field"
+      ],
+      "input_source": "current_pract",
+      "output_target": "current_pract_tasks"
+    }
+  ],
+  "_xlsxPath": "global/data_lists/session_tasks.xlsx"
+}
