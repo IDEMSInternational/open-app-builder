@@ -459,8 +459,8 @@
         "subtitle": "@local.card_subtitle",
         "image": "@local.card_image",
         "style": "@local.card_style",
-        "in_progress_icon": "images/iconsin_progress.svg",
-        "completed_icon": "images/iconstick.svg",
+        "in_progress_icon": "images/icons/in_progress.svg",
+        "completed_icon": "images/icons/tick.svg",
         "highlighted_text": "@local.highlighted_text"
       },
       "exclude_from_translation": true,

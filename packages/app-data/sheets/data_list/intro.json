@@ -1,0 +1,28 @@
+{
+  "flow_type": "data_list",
+  "flow_name": "intro",
+  "status": "released",
+  "rows": [
+    {
+      "id": "family_relation",
+      "intro_text": "Welcome @fields.user_name! It’s great to have you here.",
+      "text": "This is your space to:\n* Pause and reflect\n* Take time for yourself\n* Recognise the importance of close family relationships",
+      "illustration": "family_relations_intro_image.png",
+      "title": "Introduction to @data.topic.family_relation.title"
+    },
+    {
+      "id": "current_pract",
+      "intro_text": "Welcome @fields.user_name. We will learn about attachment and bonding with your child.",
+      "text": "We will:\n* Explore parenting goals and factors that facilitate the achievement of these goals\n* Explore parents’ current beliefs and practices regarding parent – child interaction",
+      "illustration": "current_pract_intro_image.png",
+      "title": "Introduction to @data.topic.current_pract.title"
+    },
+    {
+      "id": "child_dev",
+      "intro_text": "Welcome @fields.user_name. We will learn about attachment and bonding with your child.",
+      "illustration": "child_development.png",
+      "title": "Introduction to @data.topic.child_dev.title"
+    }
+  ],
+  "_xlsxPath": "global/data_lists/topics.xlsx"
+}

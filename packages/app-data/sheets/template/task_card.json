@@ -14,7 +14,7 @@
     },
     {
       "name": "task_id",
-      "value": "id_1",
+      "value": "onboarding_check_in",
       "_translations": {
         "value": {}
       },
@@ -304,7 +304,7 @@
     },
     {
       "name": "template",
-      "value": "@local.task_row.template",
+      "value": "@local.task_id",
       "_translations": {
         "value": {}
       },
@@ -314,15 +314,15 @@
       "_dynamicFields": {
         "value": [
           {
-            "fullExpression": "@local.task_row.template",
-            "matchedExpression": "@local.task_row.template",
+            "fullExpression": "@local.task_id",
+            "matchedExpression": "@local.task_id",
             "type": "local",
-            "fieldName": "task_row"
+            "fieldName": "task_id"
           }
         ]
       },
       "_dynamicDependencies": {
-        "@local.task_row.template": [
+        "@local.task_id": [
           "value"
         ]
       }
@@ -365,8 +365,8 @@
         "completed_field": "@local.completed_field",
         "title": "@local.card_title",
         "style": "button",
-        "in_progress_icon": "images/iconsin_progress.svg",
-        "completed_icon": "images/iconstick.svg"
+        "in_progress_icon": "images/icons/in_progress.svg",
+        "completed_icon": "images/icons/tick.svg"
       },
       "exclude_from_translation": true,
       "_nested_name": "task_card",

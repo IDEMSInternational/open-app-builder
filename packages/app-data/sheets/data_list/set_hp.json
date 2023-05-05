@@ -1,0 +1,20 @@
+{
+  "flow_type": "data_list",
+  "flow_name": "set_hp",
+  "status": "released",
+  "rows": [
+    {
+      "id": "family_relation",
+      "text": "* Discuss with your partner and other members of the family the importance of close family relationships.\n* Practice interaction activities that improve family relationships by living like you have only 3 months to live with your children and spouse during the week.",
+      "title": "Home practice: @data.topic.family_relation.title",
+      "intro_text": "Time to try this at home with your family."
+    },
+    {
+      "id": "current_pract",
+      "text": "* Discuss with your partner and other members of the family the importance of parenting measures as discussed in this session.\n* Practice parenting measures you were not doing before with your children during the week.",
+      "title": "Home practice: @data.topic.current_pract.title",
+      "intro_text": "Time to try this at home with your family."
+    }
+  ],
+  "_xlsxPath": "global/data_lists/topics.xlsx"
+}
