@@ -16,7 +16,7 @@
       "row_id": "id_1"
     },
     {
-      "id": "current_pract_review_hp",
+      "id": "family_relation_review_hp",
       "priority": 3,
       "data_list_name": "review_hp",
       "row_id": "family_relation"

@@ -1,0 +1,33 @@
+{
+  "flow_type": "template",
+  "flow_name": "onboarding_relax",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "relax",
+      "value": "relax",
+      "rows": [
+        {
+          "name": "session_data_list_name",
+          "value": [
+            "onboarding"
+          ],
+          "type": "set_variable",
+          "_nested_name": "relax.session_data_list_name"
+        },
+        {
+          "name": "session_task_id",
+          "value": "onboarding_relax",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "relax.session_task_id"
+        }
+      ],
+      "_nested_name": "relax"
+    }
+  ],
+  "_xlsxPath": "global/templates/blocks/onboarding_blocks.xlsx"
+}

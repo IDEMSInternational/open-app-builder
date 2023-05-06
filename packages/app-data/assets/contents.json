@@ -43,9 +43,37 @@
     "md5Checksum": "fe9d2a07ea001244f5485c93ff38cacc",
     "size_kb": 998.1
   },
+  "images/icons/faces/happy.svg": {
+    "md5Checksum": "971f8d822fb3d3d79163d0ed327b052d",
+    "size_kb": 1.3
+  },
+  "images/icons/faces/neutral.svg": {
+    "md5Checksum": "adc1012f5de15b8a2462eaca6cedcb36",
+    "size_kb": 0.5
+  },
+  "images/icons/faces/sad.svg": {
+    "md5Checksum": "9399ec18c80f26a1567df0ad709b0db6",
+    "size_kb": 1.1
+  },
   "images/icons/in_progress.svg": {
     "md5Checksum": "6105962bc0edd981675d874dc8a51035",
     "size_kb": 1.1
+  },
+  "images/icons/pause.svg": {
+    "md5Checksum": "b9a01b9c0b6ed86d47ff094f22d23c73",
+    "size_kb": 0.7
+  },
+  "images/icons/pause_white.svg": {
+    "md5Checksum": "f6989826fb94a865281b035fa155689d",
+    "size_kb": 0.7
+  },
+  "images/icons/play.svg": {
+    "md5Checksum": "5393d2113acd3a4b7d5f03795067a678",
+    "size_kb": 0.5
+  },
+  "images/icons/play_white.svg": {
+    "md5Checksum": "6508bf39f8cb3c3ab0f30b96994a6cbc",
+    "size_kb": 0.5
   },
   "images/icons/tick.svg": {
     "md5Checksum": "b4e6f1e9ba6e5bcdd2e404bc432ba745",

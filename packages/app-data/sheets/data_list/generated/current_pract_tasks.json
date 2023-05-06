@@ -20,12 +20,12 @@
       "completed": "@fields.task_current_pract_relax_completed"
     },
     {
-      "id": "current_pract_review_hp",
+      "id": "family_relation_review_hp",
       "priority": 3,
       "data_list_name": "review_hp",
       "row_id": "family_relation",
-      "completed_field": "task_current_pract_review_hp_completed",
-      "completed": "@fields.task_current_pract_review_hp_completed"
+      "completed_field": "task_family_relation_review_hp_completed",
+      "completed": "@fields.task_family_relation_review_hp_completed"
     },
     {
       "id": "current_pract_intro",

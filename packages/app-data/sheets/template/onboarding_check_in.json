@@ -1,0 +1,33 @@
+{
+  "flow_type": "template",
+  "flow_name": "onboarding_check_in",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "check_in",
+      "value": "check_in",
+      "rows": [
+        {
+          "name": "session_data_list_name",
+          "value": [
+            "onboarding"
+          ],
+          "type": "set_variable",
+          "_nested_name": "check_in.session_data_list_name"
+        },
+        {
+          "name": "session_task_id",
+          "value": "onboarding_check_in",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "check_in.session_task_id"
+        }
+      ],
+      "_nested_name": "check_in"
+    }
+  ],
+  "_xlsxPath": "global/templates/blocks/onboarding_blocks.xlsx"
+}

@@ -1,6 +1,6 @@
 {
   "flow_type": "template",
-  "flow_name": "intro",
+  "flow_name": "reflect",
   "status": "released",
   "rows": [
     {
@@ -13,7 +13,7 @@
     },
     {
       "name": "session_task_id",
-      "value": "family_relation_intro",
+      "value": "family_relation_reflect",
       "_translations": {
         "value": {}
       },
@@ -283,6 +283,172 @@
         "@local.row_data.text": [
           "value",
           "condition"
+        ]
+      }
+    },
+    {
+      "name": "audio_transcript",
+      "value": "@local.row_data.audio_transcript",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "audio_transcript",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@local.row_data.audio_transcript",
+            "matchedExpression": "@local.row_data.audio_transcript",
+            "type": "local",
+            "fieldName": "row_data"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.row_data.audio_transcript": [
+          "value"
+        ]
+      }
+    },
+    {
+      "name": "audio_asset",
+      "value": "@local.row_data.audio_asset",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "audio_asset",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@local.row_data.audio_asset",
+            "matchedExpression": "@local.row_data.audio_asset",
+            "type": "local",
+            "fieldName": "row_data"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.row_data.audio_asset": [
+          "value"
+        ]
+      }
+    },
+    {
+      "name": "audio_title",
+      "value": "Listen and reflect",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "audio_title"
+    },
+    {
+      "type": "audio",
+      "name": "audio",
+      "value": "@local.audio_asset",
+      "_translations": {
+        "value": {}
+      },
+      "parameter_list": {
+        "title": "@local.audio_title"
+      },
+      "_nested_name": "audio",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@local.audio_asset",
+            "matchedExpression": "@local.audio_asset",
+            "type": "local",
+            "fieldName": "audio_asset"
+          }
+        ],
+        "parameter_list": {
+          "title": [
+            {
+              "fullExpression": "@local.audio_title",
+              "matchedExpression": "@local.audio_title",
+              "type": "local",
+              "fieldName": "audio_title"
+            }
+          ]
+        }
+      },
+      "_dynamicDependencies": {
+        "@local.audio_asset": [
+          "value"
+        ],
+        "@local.audio_title": [
+          "parameter_list.title"
+        ]
+      }
+    },
+    {
+      "type": "button",
+      "name": "button",
+      "value": "Read and reflect",
+      "_translations": {
+        "value": {}
+      },
+      "action_list": [
+        {
+          "trigger": "click",
+          "action_id": "set_field",
+          "args": [
+            "current_reflect_id",
+            "@local.id"
+          ],
+          "_raw": "click | set_field: current_reflect_id: @local.id",
+          "_cleaned": "click | set_field: current_reflect_id: @local.id"
+        },
+        {
+          "trigger": "click",
+          "action_id": "pop_up",
+          "args": [
+            "reflect_text"
+          ],
+          "_raw": "click | pop_up: reflect_text",
+          "_cleaned": "click | pop_up: reflect_text"
+        }
+      ],
+      "_nested_name": "button",
+      "_dynamicFields": {
+        "action_list": {
+          "0": {
+            "args": {
+              "1": [
+                {
+                  "fullExpression": "@local.id",
+                  "matchedExpression": "@local.id",
+                  "type": "local",
+                  "fieldName": "id"
+                }
+              ]
+            },
+            "_raw": [
+              {
+                "fullExpression": "click | set_field: current_reflect_id: @local.id",
+                "matchedExpression": "@local.id",
+                "type": "local",
+                "fieldName": "id"
+              }
+            ],
+            "_cleaned": [
+              {
+                "fullExpression": "click | set_field: current_reflect_id: @local.id",
+                "matchedExpression": "@local.id",
+                "type": "local",
+                "fieldName": "id"
+              }
+            ]
+          }
+        }
+      },
+      "_dynamicDependencies": {
+        "@local.id": [
+          "action_list.0.args.1",
+          "action_list.0._raw",
+          "action_list.0._cleaned"
         ]
       }
     }

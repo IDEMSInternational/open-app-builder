@@ -1,0 +1,42 @@
+{
+  "flow_type": "template",
+  "flow_name": "nav_buttons",
+  "status": "released",
+  "rows": [
+    {
+      "type": "display_group",
+      "name": "buttons",
+      "parameter_list": {
+        "style": "navigation"
+      },
+      "rows": [
+        {
+          "type": "button",
+          "name": "button_completed",
+          "value": "Done",
+          "_translations": {
+            "value": {}
+          },
+          "action_list": [
+            {
+              "trigger": "click",
+              "action_id": "emit",
+              "args": [
+                "completed"
+              ],
+              "_raw": "click | emit:completed",
+              "_cleaned": "click | emit:completed"
+            }
+          ],
+          "parameter_list": {
+            "style": "navigation",
+            "text_align": "center"
+          },
+          "_nested_name": "buttons.button_completed"
+        }
+      ],
+      "_nested_name": "buttons"
+    }
+  ],
+  "_xlsxPath": "global/templates/navigation.xlsx"
+}
