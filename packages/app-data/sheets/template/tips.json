@@ -233,7 +233,6 @@
         "value": {}
       },
       "condition": "!!(@local.tips_data.title)",
-      "hidden": "!!(@local.tips_data.title)",
       "_nested_name": "title",
       "_dynamicFields": {
         "value": [
@@ -251,21 +250,12 @@
             "type": "local",
             "fieldName": "tips_data"
           }
-        ],
-        "hidden": [
-          {
-            "fullExpression": "!!(@local.tips_data.title)",
-            "matchedExpression": "@local.tips_data.title",
-            "type": "local",
-            "fieldName": "tips_data"
-          }
         ]
       },
       "_dynamicDependencies": {
         "@local.tips_data.title": [
           "value",
-          "condition",
-          "hidden"
+          "condition"
         ]
       }
     },
@@ -277,7 +267,6 @@
         "value": {}
       },
       "condition": "!!(@local.tips_data.intro_text)",
-      "hidden": "!!(@local.tips_data.intro_text)",
       "_nested_name": "intro_text",
       "_dynamicFields": {
         "value": [
@@ -295,21 +284,12 @@
             "type": "local",
             "fieldName": "tips_data"
           }
-        ],
-        "hidden": [
-          {
-            "fullExpression": "!!(@local.tips_data.intro_text)",
-            "matchedExpression": "@local.tips_data.intro_text",
-            "type": "local",
-            "fieldName": "tips_data"
-          }
         ]
       },
       "_dynamicDependencies": {
         "@local.tips_data.intro_text": [
           "value",
-          "condition",
-          "hidden"
+          "condition"
         ]
       }
     },

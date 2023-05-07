@@ -588,6 +588,49 @@
           "value"
         ]
       }
+    },
+    {
+      "type": "template",
+      "name": "nav_buttons",
+      "value": "nav_buttons",
+      "condition": "@fields.show_nav_buttons",
+      "action_list": [
+        {
+          "trigger": "completed",
+          "action_id": "emit",
+          "args": [
+            "completed"
+          ],
+          "_raw": "completed | emit: completed",
+          "_cleaned": "completed | emit: completed"
+        },
+        {
+          "trigger": "uncompleted",
+          "action_id": "emit",
+          "args": [
+            "uncompleted"
+          ],
+          "_raw": "uncompleted | emit: uncompleted",
+          "_cleaned": "uncompleted | emit: uncompleted"
+        }
+      ],
+      "rows": [],
+      "_nested_name": "nav_buttons",
+      "_dynamicFields": {
+        "condition": [
+          {
+            "fullExpression": "@fields.show_nav_buttons",
+            "matchedExpression": "@fields.show_nav_buttons",
+            "type": "fields",
+            "fieldName": "show_nav_buttons"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@fields.show_nav_buttons": [
+          "condition"
+        ]
+      }
     }
   ],
   "_xlsxPath": "global/templates/blocks/topic_blocks.xlsx"

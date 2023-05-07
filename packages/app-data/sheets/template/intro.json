@@ -191,7 +191,7 @@
       "_translations": {
         "value": {}
       },
-      "condition": "!!(@local.row_data.title)",
+      "condition_1": "!!(@local.row_data.title)",
       "_nested_name": "title",
       "_dynamicFields": {
         "value": [
@@ -202,7 +202,7 @@
             "fieldName": "row_data"
           }
         ],
-        "condition": [
+        "condition_1": [
           {
             "fullExpression": "!!(@local.row_data.title)",
             "matchedExpression": "@local.row_data.title",
@@ -214,7 +214,7 @@
       "_dynamicDependencies": {
         "@local.row_data.title": [
           "value",
-          "condition"
+          "condition_1"
         ]
       }
     },
@@ -225,7 +225,7 @@
       "_translations": {
         "value": {}
       },
-      "condition": "!!(@local.row_data.intro_text)",
+      "condition_1": "!!(@local.row_data.intro_text)",
       "_nested_name": "intro_text",
       "_dynamicFields": {
         "value": [
@@ -236,7 +236,7 @@
             "fieldName": "row_data"
           }
         ],
-        "condition": [
+        "condition_1": [
           {
             "fullExpression": "!!(@local.row_data.intro_text)",
             "matchedExpression": "@local.row_data.intro_text",
@@ -248,7 +248,7 @@
       "_dynamicDependencies": {
         "@local.row_data.intro_text": [
           "value",
-          "condition"
+          "condition_1"
         ]
       }
     },
@@ -259,7 +259,7 @@
       "_translations": {
         "value": {}
       },
-      "condition": "!!(@local.row_data.text)",
+      "condition_1": "!!(@local.row_data.text)",
       "_nested_name": "text",
       "_dynamicFields": {
         "value": [
@@ -270,7 +270,7 @@
             "fieldName": "row_data"
           }
         ],
-        "condition": [
+        "condition_1": [
           {
             "fullExpression": "!!(@local.row_data.text)",
             "matchedExpression": "@local.row_data.text",
@@ -282,6 +282,49 @@
       "_dynamicDependencies": {
         "@local.row_data.text": [
           "value",
+          "condition_1"
+        ]
+      }
+    },
+    {
+      "type": "template",
+      "name": "nav_buttons",
+      "value": "nav_buttons",
+      "action_list": [
+        {
+          "trigger": "completed",
+          "action_id": "emit",
+          "args": [
+            "completed"
+          ],
+          "_raw": "completed | emit: completed",
+          "_cleaned": "completed | emit: completed"
+        },
+        {
+          "trigger": "uncompleted",
+          "action_id": "emit",
+          "args": [
+            "uncompleted"
+          ],
+          "_raw": "uncompleted | emit: uncompleted",
+          "_cleaned": "uncompleted | emit: uncompleted"
+        }
+      ],
+      "condition": "@fields.show_nav_buttons",
+      "rows": [],
+      "_nested_name": "nav_buttons",
+      "_dynamicFields": {
+        "condition": [
+          {
+            "fullExpression": "@fields.show_nav_buttons",
+            "matchedExpression": "@fields.show_nav_buttons",
+            "type": "fields",
+            "fieldName": "show_nav_buttons"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@fields.show_nav_buttons": [
           "condition"
         ]
       }
