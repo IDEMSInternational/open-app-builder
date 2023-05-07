@@ -1,12 +1,12 @@
 {
   "flow_type": "template",
-  "flow_name": "family_relation_intro",
+  "flow_name": "current_pract_tips",
   "status": "released",
   "rows": [
     {
       "type": "template",
-      "name": "intro",
-      "value": "intro",
+      "name": "tips",
+      "value": "tips",
       "action_list": [
         {
           "trigger": "completed",
@@ -31,23 +31,23 @@
         {
           "name": "session_data_list_name",
           "value": [
-            "family_relation"
+            "current_pract"
           ],
           "type": "set_variable",
-          "_nested_name": "intro.session_data_list_name"
+          "_nested_name": "tips.session_data_list_name"
         },
         {
           "name": "session_task_id",
-          "value": "family_relation_intro",
+          "value": "current_pract_tips",
           "_translations": {
             "value": {}
           },
           "type": "set_variable",
-          "_nested_name": "intro.session_task_id"
+          "_nested_name": "tips.session_task_id"
         }
       ],
-      "_nested_name": "intro"
+      "_nested_name": "tips"
     }
   ],
-  "_xlsxPath": "global/templates/blocks/family_relation_blocks.xlsx"
+  "_xlsxPath": "global/templates/blocks/current_pract_blocks.xlsx"
 }

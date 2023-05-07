@@ -10,11 +10,10 @@
     },
     {
       "type": "button",
-      "name": "button_templatelist",
-      "value": "Template list",
-      "_translations": {
-        "value": {}
-      },
+      "name": "button_template_list",
+      "value": [
+        "Template list"
+      ],
       "action_list": [
         {
           "trigger": "click",
@@ -26,7 +25,80 @@
           "_cleaned": "click | go_to:/template"
         }
       ],
-      "_nested_name": "button_templatelist"
+      "_nested_name": "button_template_list"
+    },
+    {
+      "type": "button",
+      "name": "button_reset",
+      "value": "Reset app",
+      "_translations": {
+        "value": {}
+      },
+      "action_list": [
+        {
+          "trigger": "click",
+          "action_id": "reset_app",
+          "args": [],
+          "_raw": "click | reset_app",
+          "_cleaned": "click | reset_app"
+        }
+      ],
+      "_nested_name": "button_reset"
+    },
+    {
+      "type": "display_group",
+      "name": "dg_navigation",
+      "rows": [
+        {
+          "type": "toggle_bar",
+          "name": "toggle_navigation",
+          "value": "@fields.show_nav_buttons",
+          "_translations": {
+            "value": {}
+          },
+          "action_list": [
+            {
+              "trigger": "changed",
+              "action_id": "set_field",
+              "args": [
+                "show_nav_buttons",
+                "this.value"
+              ],
+              "_raw": "changed | set_field: show_nav_buttons: this.value",
+              "_cleaned": "changed | set_field: show_nav_buttons: this.value"
+            }
+          ],
+          "_nested_name": "dg_navigation.toggle_navigation",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@fields.show_nav_buttons",
+                "matchedExpression": "@fields.show_nav_buttons",
+                "type": "fields",
+                "fieldName": "show_nav_buttons"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@fields.show_nav_buttons": [
+              "value"
+            ]
+          }
+        },
+        {
+          "type": "text",
+          "name": "toggle_text",
+          "value": "Show navigation buttons",
+          "_translations": {
+            "value": {}
+          },
+          "parameter_list": {
+            "flex": "1"
+          },
+          "_nested_name": "dg_navigation.toggle_text"
+        }
+      ],
+      "_nested_name": "dg_navigation"
     }
   ],
   "_xlsxPath": "global/templates/navigation.xlsx"

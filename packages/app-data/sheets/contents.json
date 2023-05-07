@@ -40,10 +40,15 @@
       "flow_name": "intro",
       "_xlsxPath": "global/data_lists/topics.xlsx"
     },
+    "navigation_defaults": {
+      "flow_type": "data_list",
+      "flow_name": "navigation_defaults",
+      "_xlsxPath": "global/data_lists/navigation_defaults.xlsx"
+    },
     "number": {
       "flow_type": "data_list",
       "flow_name": "number",
-      "_xlsxPath": "global/data_lists/navigation.xlsx"
+      "_xlsxPath": "global/data_lists/navigation_defaults.xlsx"
     },
     "onboarding": {
       "flow_type": "data_list",
@@ -183,6 +188,11 @@
       "flow_name": "current_pract_story",
       "_xlsxPath": "global/templates/blocks/current_pract_blocks.xlsx"
     },
+    "current_pract_tips": {
+      "flow_type": "template",
+      "flow_name": "current_pract_tips",
+      "_xlsxPath": "global/templates/blocks/current_pract_blocks.xlsx"
+    },
     "family_relation_check_in": {
       "flow_type": "template",
       "flow_name": "family_relation_check_in",
@@ -221,6 +231,11 @@
     "family_relation_story": {
       "flow_type": "template",
       "flow_name": "family_relation_story",
+      "_xlsxPath": "global/templates/blocks/family_relation_blocks.xlsx"
+    },
+    "family_relation_tips": {
+      "flow_type": "template",
+      "flow_name": "family_relation_tips",
       "_xlsxPath": "global/templates/blocks/family_relation_blocks.xlsx"
     },
     "home_screen": {
@@ -327,6 +342,11 @@
       "flow_type": "template",
       "flow_name": "text_input_block",
       "_xlsxPath": "global/templates/blocks/onboarding_blocks.xlsx"
+    },
+    "tips": {
+      "flow_type": "template",
+      "flow_name": "tips",
+      "_xlsxPath": "global/templates/blocks/topic_blocks.xlsx"
     }
   },
   "tour": {},

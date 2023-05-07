@@ -1,0 +1,33 @@
+{
+  "flow_type": "data_list",
+  "flow_name": "navigation_defaults",
+  "status": "released",
+  "rows": [
+    {
+      "type": "set_field_default",
+      "name": "user_name",
+      "value": "@global.user_name_default"
+    },
+    {
+      "type": "set_global",
+      "name": "user_name_default",
+      "value": "parent"
+    },
+    {
+      "type": "set_global",
+      "name": "app_name",
+      "value": "PfR App"
+    },
+    {
+      "type": "set_global",
+      "name": "app_id",
+      "value": "idems.international.parenting-for-respectability"
+    },
+    {
+      "type": "set_field_default",
+      "name": "show_nav_buttons",
+      "value": true
+    }
+  ],
+  "_xlsxPath": "global/data_lists/navigation_defaults.xlsx"
+}
