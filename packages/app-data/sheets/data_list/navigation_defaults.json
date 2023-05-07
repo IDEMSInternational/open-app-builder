@@ -4,27 +4,27 @@
   "status": "released",
   "rows": [
     {
-      "type": "set_field_default",
+      "type": "declare_field_default",
       "name": "user_name",
       "value": "@global.user_name_default"
     },
     {
-      "type": "set_global",
+      "type": "declare_global_constant",
       "name": "user_name_default",
       "value": "parent"
     },
     {
-      "type": "set_global",
+      "type": "declare_global_constant",
       "name": "app_name",
       "value": "PfR App"
     },
     {
-      "type": "set_global",
+      "type": "declare_global_constant",
       "name": "app_id",
       "value": "idems.international.parenting-for-respectability"
     },
     {
-      "type": "set_field_default",
+      "type": "declare_field_default",
       "name": "show_nav_buttons",
       "value": true
     }
