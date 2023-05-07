@@ -1,0 +1,53 @@
+{
+  "flow_type": "template",
+  "flow_name": "current_pract_check_in",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "check_in",
+      "value": "check_in",
+      "action_list": [
+        {
+          "trigger": "completed",
+          "action_id": "emit",
+          "args": [
+            "completed"
+          ],
+          "_raw": "completed | emit: completed",
+          "_cleaned": "completed | emit: completed"
+        },
+        {
+          "trigger": "uncompleted",
+          "action_id": "emit",
+          "args": [
+            "uncompleted"
+          ],
+          "_raw": "uncompleted | emit: uncompleted",
+          "_cleaned": "uncompleted | emit: uncompleted"
+        }
+      ],
+      "rows": [
+        {
+          "name": "session_data_list_name",
+          "value": [
+            "current_pract"
+          ],
+          "type": "set_variable",
+          "_nested_name": "check_in.session_data_list_name"
+        },
+        {
+          "name": "session_task_id",
+          "value": "current_pract_check_in",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "check_in.session_task_id"
+        }
+      ],
+      "_nested_name": "check_in"
+    }
+  ],
+  "_xlsxPath": "global/templates/blocks/current_pract_blocks.xlsx"
+}

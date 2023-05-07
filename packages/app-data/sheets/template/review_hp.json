@@ -1,6 +1,6 @@
 {
   "flow_type": "template",
-  "flow_name": "praise",
+  "flow_name": "review_hp",
   "status": "released",
   "rows": [
     {
@@ -13,7 +13,7 @@
     },
     {
       "name": "session_task_id",
-      "value": "family_relation_praise",
+      "value": "family_relation_review_hp",
       "_translations": {
         "value": {}
       },
@@ -253,6 +253,40 @@
       }
     },
     {
+      "type": "text",
+      "name": "text",
+      "value": "@local.row_data.text",
+      "_translations": {
+        "value": {}
+      },
+      "condition": "!!(@local.row_data.text)",
+      "_nested_name": "text",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@local.row_data.text",
+            "matchedExpression": "@local.row_data.text",
+            "type": "local",
+            "fieldName": "row_data"
+          }
+        ],
+        "condition": [
+          {
+            "fullExpression": "!!(@local.row_data.text)",
+            "matchedExpression": "@local.row_data.text",
+            "type": "local",
+            "fieldName": "row_data"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.row_data.text": [
+          "value",
+          "condition"
+        ]
+      }
+    },
+    {
       "type": "template",
       "name": "nav_buttons",
       "value": "nav_buttons",
@@ -296,5 +330,5 @@
       }
     }
   ],
-  "_xlsxPath": "global/templates/blocks/session_blocks.xlsx"
+  "_xlsxPath": "global/templates/blocks/topic_blocks.xlsx"
 }

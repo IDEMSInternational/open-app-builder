@@ -4,7 +4,7 @@
   "status": "released",
   "rows": [
     {
-      "id": "check-in"
+      "id": "check_in"
     },
     {
       "id": "relax"

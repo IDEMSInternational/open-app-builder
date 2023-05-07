@@ -1,0 +1,53 @@
+{
+  "flow_type": "template",
+  "flow_name": "current_pract_intro",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "intro",
+      "value": "intro",
+      "action_list": [
+        {
+          "trigger": "completed",
+          "action_id": "emit",
+          "args": [
+            "completed"
+          ],
+          "_raw": "completed | emit: completed",
+          "_cleaned": "completed | emit: completed"
+        },
+        {
+          "trigger": "uncompleted",
+          "action_id": "emit",
+          "args": [
+            "uncompleted"
+          ],
+          "_raw": "uncompleted | emit: uncompleted",
+          "_cleaned": "uncompleted | emit: uncompleted"
+        }
+      ],
+      "rows": [
+        {
+          "name": "session_data_list_name",
+          "value": [
+            "current_pract"
+          ],
+          "type": "set_variable",
+          "_nested_name": "intro.session_data_list_name"
+        },
+        {
+          "name": "session_task_id",
+          "value": "current_pract_intro",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "intro.session_task_id"
+        }
+      ],
+      "_nested_name": "intro"
+    }
+  ],
+  "_xlsxPath": "global/templates/blocks/current_pract_blocks.xlsx"
+}

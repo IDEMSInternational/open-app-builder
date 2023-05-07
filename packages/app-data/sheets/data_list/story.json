@@ -9,7 +9,11 @@
       "slide_1_text": "Every human being needs positive relationships whether children, men and women.",
       "slide_2_text": "Life hates a relationship vacuum. When there is a relationship vacuum with one's family, they feel empty both inside and around them.",
       "slide_3_text": "But because life hates a relationship vacuum, we are naturally drawn to fill that gap.",
-      "slide_4_text": "This vacuum often leads us to turn to other people or things such as drugs, alcohol consumption, or establish other relationships with other people in order to fill the existing gap."
+      "slide_4_text": "This vacuum often leads us to turn to other people or things such as drugs, alcohol consumption, or establish other relationships with other people in order to fill the existing gap.",
+      "slide_1_image_asset": "images/current_pract_picture_quiz_2.png",
+      "slide_2_image_asset": "images/current_pract_picture_quiz_5.png",
+      "slide_3_image_asset": "images/current_pract_picture_quiz_6.png",
+      "slide_4_image_asset": "images/current_pract_picture_quiz_7.png"
     },
     {
       "id": "raise_child",
@@ -17,7 +21,11 @@
       "slide_1_text": "It is a good thing to raise a child and a child is a PERSON like you and me.",
       "slide_2_text": "Everyone may see a child differently depending on the circumstance surrounding their family or community.",
       "slide_3_text": "Treating children negatively because of 'bad' behaviour can only worsen the situation.",
-      "slide_4_text": "As caregivers, we need to pay attention to the needs of our children. It is important to try and live like you have '3 months' left in order to raise children whose behaviour earns the family respect."
+      "slide_4_text": "As caregivers, we need to pay attention to the needs of our children. It is important to try and live like you have '3 months' left in order to raise children whose behaviour earns the family respect.",
+      "slide_1_image_asset": "images/current_pract_picture_quiz_2.png",
+      "slide_2_image_asset": "images/current_pract_picture_quiz_5.png",
+      "slide_3_image_asset": "images/current_pract_picture_quiz_6.png",
+      "slide_4_image_asset": "images/current_pract_picture_quiz_7.png"
     }
   ],
   "_xlsxPath": "global/data_lists/topics.xlsx"
