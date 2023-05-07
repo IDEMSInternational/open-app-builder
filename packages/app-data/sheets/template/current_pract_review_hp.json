@@ -1,0 +1,33 @@
+{
+  "flow_type": "template",
+  "flow_name": "current_pract_review_hp",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "review_hp",
+      "value": "review_hp",
+      "rows": [
+        {
+          "name": "session_data_list_name",
+          "value": [
+            "current_pract"
+          ],
+          "type": "set_variable",
+          "_nested_name": "review_hp.session_data_list_name"
+        },
+        {
+          "name": "session_task_id",
+          "value": "current_pract_review_hp",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "review_hp.session_task_id"
+        }
+      ],
+      "_nested_name": "review_hp"
+    }
+  ],
+  "_xlsxPath": "global/templates/blocks/current_pract_blocks.xlsx"
+}

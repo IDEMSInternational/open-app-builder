@@ -333,6 +333,15 @@
       }
     },
     {
+      "name": "placeholder",
+      "value": "Tap and type",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "placeholder"
+    },
+    {
       "type": "text_box",
       "name": "text_box",
       "action_list": [
@@ -347,6 +356,9 @@
           "_cleaned": "changed | set_field: @local.field_name: @local.text_box"
         }
       ],
+      "parameter_list": {
+        "placeholder": "@local.placeholder"
+      },
       "condition": "@local.row_data.question_type == \"text_input\"",
       "_nested_name": "text_box",
       "_dynamicFields": {
@@ -392,6 +404,16 @@
             ]
           }
         },
+        "parameter_list": {
+          "placeholder": [
+            {
+              "fullExpression": "@local.placeholder",
+              "matchedExpression": "@local.placeholder",
+              "type": "local",
+              "fieldName": "placeholder"
+            }
+          ]
+        },
         "condition": [
           {
             "fullExpression": "@local.row_data.question_type == \"text_input\"",
@@ -410,6 +432,9 @@
         "@local.text_box": [
           "action_list.0._raw",
           "action_list.0._cleaned"
+        ],
+        "@local.placeholder": [
+          "parameter_list.placeholder"
         ],
         "@local.row_data.question_type": [
           "condition"
@@ -431,6 +456,9 @@
           "_cleaned": "changed | set_field: @local.field_name: @local.text_area"
         }
       ],
+      "parameter_list": {
+        "placeholder": "@local.placeholder"
+      },
       "condition": "@local.row_data.question_type == \"text_input_long\"",
       "_nested_name": "text_area",
       "_dynamicFields": {
@@ -476,6 +504,16 @@
             ]
           }
         },
+        "parameter_list": {
+          "placeholder": [
+            {
+              "fullExpression": "@local.placeholder",
+              "matchedExpression": "@local.placeholder",
+              "type": "local",
+              "fieldName": "placeholder"
+            }
+          ]
+        },
         "condition": [
           {
             "fullExpression": "@local.row_data.question_type == \"text_input_long\"",
@@ -494,6 +532,9 @@
         "@local.text_area": [
           "action_list.0._raw",
           "action_list.0._cleaned"
+        ],
+        "@local.placeholder": [
+          "parameter_list.placeholder"
         ],
         "@local.row_data.question_type": [
           "condition"

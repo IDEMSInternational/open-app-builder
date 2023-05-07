@@ -1,0 +1,33 @@
+{
+  "flow_type": "template",
+  "flow_name": "family_relation_reflect",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "reflect",
+      "value": "reflect",
+      "rows": [
+        {
+          "name": "session_data_list_name",
+          "value": [
+            "family_relation"
+          ],
+          "type": "set_variable",
+          "_nested_name": "reflect.session_data_list_name"
+        },
+        {
+          "name": "session_task_id",
+          "value": "family_relation_reflect",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "reflect.session_task_id"
+        }
+      ],
+      "_nested_name": "reflect"
+    }
+  ],
+  "_xlsxPath": "global/templates/blocks/family_relation_blocks.xlsx"
+}
