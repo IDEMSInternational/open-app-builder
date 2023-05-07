@@ -178,30 +178,6 @@
       }
     },
     {
-      "type": "text",
-      "name": "show_tips_data_row",
-      "value": "@local.tips_data_row",
-      "_translations": {
-        "value": {}
-      },
-      "_nested_name": "show_tips_data_row",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "@local.tips_data_row",
-            "matchedExpression": "@local.tips_data_row",
-            "type": "local",
-            "fieldName": "tips_data_row"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@local.tips_data_row": [
-          "value"
-        ]
-      }
-    },
-    {
       "name": "tips_data",
       "value": "@data.@local.tips_data_row",
       "_translations": {

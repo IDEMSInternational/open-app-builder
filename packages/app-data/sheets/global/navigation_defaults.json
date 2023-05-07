@@ -1,27 +1,39 @@
 {
-  "flow_type": "data_list",
+  "flow_type": "global",
   "flow_name": "navigation_defaults",
   "status": "released",
   "rows": [
     {
-      "type": "declare_field_default",
-      "name": "user_name",
-      "value": "@global.user_name_default"
-    },
-    {
       "type": "declare_global_constant",
       "name": "user_name_default",
-      "value": "parent"
+      "value": "parent",
+      "_translations": {
+        "value": {}
+      }
+    },
+    {
+      "type": "declare_field_default",
+      "name": "user_name",
+      "value": "@global.user_name_default",
+      "_translations": {
+        "value": {}
+      }
     },
     {
       "type": "declare_global_constant",
       "name": "app_name",
-      "value": "PfR App"
+      "value": "PfR App",
+      "_translations": {
+        "value": {}
+      }
     },
     {
       "type": "declare_global_constant",
       "name": "app_id",
-      "value": "idems.international.parenting-for-respectability"
+      "value": "idems.international.parenting-for-respectability",
+      "_translations": {
+        "value": {}
+      }
     },
     {
       "type": "declare_field_default",

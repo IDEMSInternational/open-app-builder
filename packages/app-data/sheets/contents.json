@@ -40,11 +40,6 @@
       "flow_name": "intro",
       "_xlsxPath": "global/data_lists/topics.xlsx"
     },
-    "navigation_defaults": {
-      "flow_type": "data_list",
-      "flow_name": "navigation_defaults",
-      "_xlsxPath": "global/data_lists/navigation_defaults.xlsx"
-    },
     "number": {
       "flow_type": "data_list",
       "flow_name": "number",
@@ -136,7 +131,13 @@
       "_xlsxPath": "global/data_lists/topics.xlsx"
     }
   },
-  "global": {},
+  "global": {
+    "navigation_defaults": {
+      "flow_type": "global",
+      "flow_name": "navigation_defaults",
+      "_xlsxPath": "global/data_lists/navigation_defaults.xlsx"
+    }
+  },
   "template": {
     "app_menu": {
       "flow_type": "template",
