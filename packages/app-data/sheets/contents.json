@@ -472,13 +472,13 @@
       "flow_subtype": "generated",
       "flow_type": "data_list"
     },
-    "example_pipe_sort_complete": {
-      "flow_name": "example_pipe_sort_complete",
+    "example_pipe_sort_desc": {
+      "flow_name": "example_pipe_sort_desc",
       "flow_subtype": "generated",
       "flow_type": "data_list"
     },
-    "example_pipe_sort_desc": {
-      "flow_name": "example_pipe_sort_desc",
+    "example_pipe_sort_order": {
+      "flow_name": "example_pipe_sort_order",
       "flow_subtype": "generated",
       "flow_type": "data_list"
     },
