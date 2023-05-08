@@ -6,6 +6,7 @@
     {
       "id": "id_5",
       "value": 5,
+      "sort_order": 4,
       "completed": true,
       "Text": "Hello id_5",
       "Label": "Another column",
@@ -14,6 +15,7 @@
     {
       "id": "id_6",
       "value": 6,
+      "sort_order": 1,
       "completed": true,
       "Text": "Hello id_6",
       "Label": "Another column",

@@ -12,7 +12,7 @@ class BaseOperator {
   parseArg(arg: any): IParsedArg {
     return arg;
   }
-  validateArg(arg: any): Boolean | String {
+  validateArg(arg: any, index: number): Boolean | String {
     return true;
   }
   apply() {
@@ -20,7 +20,10 @@ class BaseOperator {
   }
 
   private validate() {
-    const validatedArgs = this.args_list.map((a) => ({ ...a, validation: this.validateArg(a) }));
+    const validatedArgs = this.args_list.map((a, i) => ({
+      a,
+      validation: this.validateArg(a, i),
+    }));
     const invalidArgs = validatedArgs.filter((a) => a.validation !== true);
     if (invalidArgs.length > 0) {
       console.error("invalid args\n", invalidArgs);

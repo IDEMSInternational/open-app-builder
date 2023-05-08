@@ -6,6 +6,7 @@
     {
       "id": "id_2",
       "value": 2,
+      "sort_order": 8,
       "completed": false,
       "Text": "Hello id_2",
       "Label": "Another column",
@@ -14,6 +15,7 @@
     {
       "id": "id_4",
       "value": 4,
+      "sort_order": 5,
       "Text": "Hello id_4",
       "Label": "Another column",
       "Field": "example_id_4_field"
@@ -21,6 +23,7 @@
     {
       "id": "id_8",
       "value": 8,
+      "sort_order": 3,
       "completed": false,
       "Text": "Hello id_8",
       "Label": "Another column",
