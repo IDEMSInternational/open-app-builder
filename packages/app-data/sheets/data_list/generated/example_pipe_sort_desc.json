@@ -1,20 +1,19 @@
 {
+  "flow_name": "example_pipe_sort_desc",
+  "flow_subtype": "generated",
   "flow_type": "data_list",
-  "flow_subtype": "example_pipe",
-  "flow_name": "example_data_pipe_list",
-  "status": "released",
   "rows": [
-    {
-      "id": "id_1",
-      "value": 1,
-      "sort_order": 7,
-      "completed": true
-    },
     {
       "id": "id_2",
       "value": 2,
       "sort_order": 8,
       "completed": false
+    },
+    {
+      "id": "id_1",
+      "value": 1,
+      "sort_order": 7,
+      "completed": true
     },
     {
       "id": "id_3",
@@ -33,10 +32,10 @@
       "completed": true
     },
     {
-      "id": "id_6",
-      "value": 6,
-      "sort_order": 1,
-      "completed": true
+      "id": "id_8",
+      "value": 8,
+      "sort_order": 3,
+      "completed": false
     },
     {
       "id": "id_7",
@@ -45,11 +44,10 @@
       "completed": false
     },
     {
-      "id": "id_8",
-      "value": 8,
-      "sort_order": 3,
-      "completed": false
+      "id": "id_6",
+      "value": 6,
+      "sort_order": 1,
+      "completed": true
     }
-  ],
-  "_xlsxPath": "quality_assurance/example_sheets/example_data_pipes.xlsx"
+  ]
 }
