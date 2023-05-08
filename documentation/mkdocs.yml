@@ -30,6 +30,7 @@ nav:
       - developers/android-assets.md
       - developers/in-app-updates.md
       - developers/error-logs.md
+      - developers/web-previews.md
   - Display Components:
       - components/audio.md
       - components/html.md
