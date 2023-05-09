@@ -133,6 +133,10 @@ export class FlowParserProcessor extends BaseProcessor<FlowTypes.FlowTypeWithDat
     if (input.flow_type === "data_pipe") {
       return false;
     }
+    // TODO - optimise to use cache if generator and list unchanged
+    if (input.flow_type === "generator") {
+      return false;
+    }
     return true;
   }
 }
