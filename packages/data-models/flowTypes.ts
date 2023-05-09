@@ -83,6 +83,7 @@ export namespace FlowTypes {
     parameter_list: {
       input_data_list: string;
       output_flow_name?: string;
+      output_flow_subtype?: string;
       output_flow_type?: FlowType;
     };
   }

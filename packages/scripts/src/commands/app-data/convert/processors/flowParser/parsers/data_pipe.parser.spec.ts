@@ -30,14 +30,14 @@ describe("data_pipe Parser", () => {
     expect(output._generated.data_list).toEqual({
       test_output_1: {
         flow_name: "test_output_1",
-        flow_type: "data_list",
         flow_subtype: "generated",
+        flow_type: "data_list",
         rows: [{ id: 2 }, { id: 3 }],
       },
       test_output_2: {
         flow_name: "test_output_2",
-        flow_type: "data_list",
         flow_subtype: "generated",
+        flow_type: "data_list",
         rows: [{ id: 3 }],
       },
     });
@@ -74,8 +74,8 @@ describe("data_pipe Parser", () => {
     expect(output._generated.data_list).toEqual({
       test_output_2: {
         flow_name: "test_output_2",
-        flow_type: "data_list",
         flow_subtype: "generated",
+        flow_type: "data_list",
         rows: [{ id: 3 }],
       },
     });

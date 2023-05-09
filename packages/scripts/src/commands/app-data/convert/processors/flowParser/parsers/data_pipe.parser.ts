@@ -33,8 +33,8 @@ export class DataPipeParser extends DefaultParser<FlowTypes.DataPipeFlow> {
     for (const [flow_name, rows] of Object.entries(outputs)) {
       generated.data_list[flow_name] = {
         flow_name,
-        flow_type: "data_list",
         flow_subtype: "generated",
+        flow_type: "data_list",
         rows,
       };
       // also populate generated outputs to be available for future input sources
