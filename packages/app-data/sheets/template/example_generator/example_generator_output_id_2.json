@@ -9,7 +9,8 @@
       "value": "Welcome to Workshop 2",
       "_translations": {
         "value": {}
-      }
+      },
+      "_nested_name": "title"
     },
     {
       "type": "text",
@@ -18,7 +19,8 @@
       "_translations": {
         "value": {}
       },
-      "condition": "true"
+      "condition": "true",
+      "_nested_name": "text"
     }
   ]
 }
