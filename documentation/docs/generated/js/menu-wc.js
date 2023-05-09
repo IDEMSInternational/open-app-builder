@@ -133,6 +133,9 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="components/TmplDataItemsComponent.html" data-type="entity-link" >TmplDataItemsComponent</a>
                             </li>
                             <li class="link">
+                                <a href="components/TmplDisplayGridComponent.html" data-type="entity-link" >TmplDisplayGridComponent</a>
+                            </li>
+                            <li class="link">
                                 <a href="components/TmplDisplayGroupComponent.html" data-type="entity-link" >TmplDisplayGroupComponent</a>
                             </li>
                             <li class="link">
@@ -167,6 +170,9 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                             </li>
                             <li class="link">
                                 <a href="components/TmplQRCodeComponent.html" data-type="entity-link" >TmplQRCodeComponent</a>
+                            </li>
+                            <li class="link">
+                                <a href="components/TmplRadioButtonGridComponent.html" data-type="entity-link" >TmplRadioButtonGridComponent</a>
                             </li>
                             <li class="link">
                                 <a href="components/TmplRadioGroupComponent.html" data-type="entity-link" >TmplRadioGroupComponent</a>
@@ -246,6 +252,9 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="interfaces/AnswerBody.html" data-type="entity-link" >AnswerBody</a>
                             </li>
                             <li class="link">
+                                <a href="interfaces/IAnswerListItem.html" data-type="entity-link" >IAnswerListItem</a>
+                            </li>
+                            <li class="link">
                                 <a href="interfaces/IButton.html" data-type="entity-link" >IButton</a>
                             </li>
                             <li class="link">
@@ -253,6 +262,12 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                             </li>
                             <li class="link">
                                 <a href="interfaces/ICategoryList.html" data-type="entity-link" >ICategoryList</a>
+                            </li>
+                            <li class="link">
+                                <a href="interfaces/IDisplayGridParams.html" data-type="entity-link" >IDisplayGridParams</a>
+                            </li>
+                            <li class="link">
+                                <a href="interfaces/IRadioButtonGridParams.html" data-type="entity-link" >IRadioButtonGridParams</a>
                             </li>
                             <li class="link">
                                 <a href="interfaces/ITemplatePopupComponentProps.html" data-type="entity-link" >ITemplatePopupComponentProps</a>
