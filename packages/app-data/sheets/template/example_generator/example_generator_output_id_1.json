@@ -9,7 +9,8 @@
       "value": "Welcome to Workshop 1",
       "_translations": {
         "value": {}
-      }
+      },
+      "_nested_name": "title"
     },
     {
       "type": "text",
@@ -18,7 +19,23 @@
       "_translations": {
         "value": {}
       },
-      "condition": "@fields.show_image_1"
+      "condition": "@fields.show_image_1",
+      "_nested_name": "text",
+      "_dynamicFields": {
+        "condition": [
+          {
+            "fullExpression": "@fields.show_image_1",
+            "matchedExpression": "@fields.show_image_1",
+            "type": "fields",
+            "fieldName": "show_image_1"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@fields.show_image_1": [
+          "condition"
+        ]
+      }
     }
   ]
 }
