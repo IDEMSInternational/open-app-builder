@@ -1,0 +1,27 @@
+{
+  "flow_type": "generator",
+  "flow_subtype": "example_generator",
+  "flow_name": "example_generator",
+  "status": "released",
+  "parameter_list": {
+    "input_data_list": "example_generator_list",
+    "output_flow_name": "example_generator_output_@gen.id",
+    "output_flow_type": "template",
+    "output_flow_subtype": "example_generator"
+  },
+  "comments": "The only required parameter is input_data_list\nAll others will override default values",
+  "rows": [
+    {
+      "type": "title",
+      "name": "title",
+      "value": "Welcome to @gen.title"
+    },
+    {
+      "type": "text",
+      "name": "text",
+      "value": "This text will populate based on condition",
+      "condition": "@gen.text_condition"
+    }
+  ],
+  "_xlsxPath": "quality_assurance/example_sheets/example_generator.xlsx"
+}
