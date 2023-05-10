@@ -15058,6 +15058,7 @@ __metadata:
     marked: ^2.0.1
     ng2-nouislider: ^1.8.3
     ngx-color: ^6.1.0
+    ngx-extended-pdf-viewer: 17.0.0-alpha.4
     ngx-lottie: ^7.0.4
     nouislider: ^14.6.3
     prettier: 2.4.1
@@ -19302,6 +19303,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"lodash.deburr@npm:^4.1.0":
+  version: 4.1.0
+  resolution: "lodash.deburr@npm:4.1.0"
+  checksum: 6e2012315c20a4d8ed4f1884ed4b8e6b0093c6355a87bfd95ecf25a5243c8c88d747d67375d52cb87ebc99d090935ed8dc3814c8e661e3275a6dbe02b68efc99
+  languageName: node
+  linkType: hard
+
 "lodash.defaults@npm:^4.2.0":
   version: 4.2.0
   resolution: "lodash.defaults@npm:4.2.0"
@@ -20685,6 +20693,19 @@ __metadata:
     "@angular/common": ">=10.0.0-0"
     "@angular/core": ">=10.0.0-0"
   checksum: 287c52f55b432185658da7a9ad8626110024936e51f78238d05522b5306512decf17165d47c86da04d3478e8c3dec2102dee2f484d24fd2fdd8cea096702df38
+  languageName: node
+  linkType: hard
+
+"ngx-extended-pdf-viewer@npm:17.0.0-alpha.4":
+  version: 17.0.0-alpha.4
+  resolution: "ngx-extended-pdf-viewer@npm:17.0.0-alpha.4"
+  dependencies:
+    lodash.deburr: ^4.1.0
+    tslib: ^2.3.0
+  peerDependencies:
+    "@angular/common": ">=12.0.0 <17.0.0"
+    "@angular/core": ">=12.0.0 <17.0.0"
+  checksum: 6750aa14c5d31bb26166b28313f411d6c0cbb34477f37931125ec1a9c39a83854b354fd4e74aefe1040d38f43414df04a89ffa912f20bdce828a3f06d55a37d1
   languageName: node
   linkType: hard
 
