@@ -167,3 +167,12 @@ $tour-next-button-background: var(
     border: none;
   }
 }
+
+ngx-extended-pdf-viewer {
+  #mainContainer {
+    min-width: 250px !important;
+  }
+  .toolbarButton {
+    color: var(--ion-color-primary-contrast) !important;
+  }
+}

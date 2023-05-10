@@ -90,6 +90,7 @@
     "marked": "^2.0.1",
     "ng2-nouislider": "^1.8.3",
     "ngx-color": "^6.1.0",
+    "ngx-extended-pdf-viewer": "17.0.0-alpha.4",
     "ngx-lottie": "^7.0.4",
     "nouislider": "^14.6.3",
     "qrcode": "^1.5.1",
