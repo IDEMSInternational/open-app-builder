@@ -62,10 +62,10 @@
               "action_id": "feedback",
               "args": [
                 "submit",
-                "@local.feedback"
+                "@local.feedback **by @fields.user_name**"
               ],
-              "_raw": "click | feedback:submit:@local.feedback",
-              "_cleaned": "click | feedback:submit:@local.feedback"
+              "_raw": "click | feedback:submit:@local.feedback **by @fields.user_name**",
+              "_cleaned": "click | feedback:submit:@local.feedback **by @fields.user_name**"
             }
           ],
           "exclude_from_translation": true,
@@ -76,27 +76,45 @@
                 "args": {
                   "1": [
                     {
-                      "fullExpression": "@local.feedback",
+                      "fullExpression": "@local.feedback **by @fields.user_name**",
                       "matchedExpression": "@local.feedback",
                       "type": "local",
                       "fieldName": "feedback"
+                    },
+                    {
+                      "fullExpression": "@local.feedback **by @fields.user_name**",
+                      "matchedExpression": "@fields.user_name",
+                      "type": "fields",
+                      "fieldName": "user_name"
                     }
                   ]
                 },
                 "_raw": [
                   {
-                    "fullExpression": "click | feedback:submit:@local.feedback",
+                    "fullExpression": "click | feedback:submit:@local.feedback **by @fields.user_name**",
                     "matchedExpression": "@local.feedback",
                     "type": "local",
                     "fieldName": "feedback"
+                  },
+                  {
+                    "fullExpression": "click | feedback:submit:@local.feedback **by @fields.user_name**",
+                    "matchedExpression": "@fields.user_name",
+                    "type": "fields",
+                    "fieldName": "user_name"
                   }
                 ],
                 "_cleaned": [
                   {
-                    "fullExpression": "click | feedback:submit:@local.feedback",
+                    "fullExpression": "click | feedback:submit:@local.feedback **by @fields.user_name**",
                     "matchedExpression": "@local.feedback",
                     "type": "local",
                     "fieldName": "feedback"
+                  },
+                  {
+                    "fullExpression": "click | feedback:submit:@local.feedback **by @fields.user_name**",
+                    "matchedExpression": "@fields.user_name",
+                    "type": "fields",
+                    "fieldName": "user_name"
                   }
                 ]
               }
@@ -104,6 +122,11 @@
           },
           "_dynamicDependencies": {
             "@local.feedback": [
+              "action_list.0.args.1",
+              "action_list.0._raw",
+              "action_list.0._cleaned"
+            ],
+            "@fields.user_name": [
               "action_list.0.args.1",
               "action_list.0._raw",
               "action_list.0._cleaned"
