@@ -30,7 +30,7 @@
       "session_type": "topic",
       "goal_1": "To explore parents’ current beliefs and practices regarding parent – child interaction.",
       "goal_2": "To discuss parenting goals and factors that facilitate the achievement of the goals.",
-      "manual_pdf_asset": "pdf/facilitator_manual/1_current_pract_pfr_manual_2021.pdf",
+      "manual_pdf_asset": "pdf/facilitator_manual/2_current_pract_pfr_manual_2021.pdf",
       "title": "@data.topic.current_pract.title",
       "image_asset": "@data.topic.current_pract.image_asset"
     },
@@ -42,7 +42,7 @@
       "goal_1": "To explore the basic developmental needs and behaviors of children 0 – 17 years.",
       "goal_2": "To discuss the importance of fathers’ supportiveness during pregnancy and childhood.",
       "goal_3": "To show how parenting practices are important for children to reach their full potential.",
-      "manual_pdf_asset": "pdf/facilitator_manual/1_child_dev_pfr_manual_2021.pdf",
+      "manual_pdf_asset": "pdf/facilitator_manual/3_child_dev_pfr_manual_2021.pdf",
       "title": "@data.topic.child_dev.title",
       "image_asset": "@data.topic.child_dev.image_asset"
     },
@@ -54,7 +54,7 @@
       "goal_1": "To reflect on the influence of parent figures on participants while they were growing up.",
       "goal_2": "To discuss how participants can build on their parents’ positive influences, and avoid repeating their negative influences.",
       "goal_3": "To identify and learn new ways to encourage good behavior without being violent.",
-      "manual_pdf_asset": "pdf/facilitator_manual/1_parent_childhood_pfr_manual_2021.pdf",
+      "manual_pdf_asset": "pdf/facilitator_manual/4_parent_childhood_pfr_manual_2021.pdf",
       "title": "@data.topic.parent_childhood.title",
       "image_asset": "@data.topic.parent_childhood.image_asset"
     },
@@ -65,7 +65,7 @@
       "session_type": "topic",
       "goal_1": "To discuss positive parent-child interaction to improve discipline and respectability in families.",
       "goal_2": "To explore different styles of parenting and demonstrate sensitive parenting that which promotes positive relationships and respectability.",
-      "manual_pdf_asset": "pdf/facilitator_manual/1_positive_parenting_pfr_manual_2021.pdf",
+      "manual_pdf_asset": "pdf/facilitator_manual/5_positive_parenting_pfr_manual_2021.pdf",
       "title": "@data.topic.positive_parenting.title",
       "image_asset": "@data.topic.positive_parenting.image_asset"
     },
@@ -77,7 +77,7 @@
       "goal_1": "To reflect upon how gender norms can be harmful to both women and men, girls and boys. (check harriet)",
       "goal_2": "To increase the awareness of gendered power differences within families.",
       "goal_3": "To encourage men to commit to positive notions of ‘being a man’.",
-      "manual_pdf_asset": "pdf/facilitator_manual/1_gender_power_pfr_manual_2021.pdf",
+      "manual_pdf_asset": "pdf/facilitator_manual/6_gender_power_pfr_manual_2021.pdf",
       "title": "@data.topic.gender_power.title",
       "image_asset": "@data.topic.gender_power.image_asset"
     },
@@ -88,7 +88,7 @@
       "session_type": "topic",
       "goal_1": "To reflect on own experiences and common causes of spousal conflict.",
       "goal_2": "To discuss the effects of spousal conflict on parenting.",
-      "manual_pdf_asset": "pdf/facilitator_manual/1_impact_conflict_pfr_manual_2021.pdf",
+      "manual_pdf_asset": "pdf/facilitator_manual/7_impact_conflict_pfr_manual_2021.pdf",
       "title": "@data.topic.impact_conflict.title",
       "image_asset": "@data.topic.impact_conflict.image_asset"
     },
@@ -99,7 +99,7 @@
       "session_type": "topic",
       "goal_1": "To reflect on the time men and women dedicate to caring for their children and shaping their future.",
       "goal_2": "To identify how men and women can be more involved in family life.",
-      "manual_pdf_asset": "pdf/facilitator_manual/1_sharing_care_pfr_manual_2021.pdf",
+      "manual_pdf_asset": "pdf/facilitator_manual/8_sharing_care_pfr_manual_2021.pdf",
       "title": "@data.topic.sharing_care.title",
       "image_asset": "@data.topic.sharing_care.image_asset"
     },
@@ -111,7 +111,7 @@
       "goal_1": "To learn how excessive drinking affects relationships and children.",
       "goal_2": "To learn how to help a partner to reduce alcohol consumption and other socially unacceptable practices.",
       "goal_3": "To discuss what constitutes a healthy marriage and sexuality.",
-      "manual_pdf_asset": "pdf/facilitator_manual/1_healthy_relation_pfr_manual_2021.pdf",
+      "manual_pdf_asset": "pdf/facilitator_manual/9_healthy_relation_pfr_manual_2021.pdf",
       "title": "@data.topic.healthy_relation.title",
       "image_asset": "@data.topic.healthy_relation.image_asset"
     },
@@ -123,7 +123,7 @@
       "session_type": "review",
       "image_asset": "images/current_pract_picture_quiz_1.png",
       "goal_1": "To reflect on all single sex sessions and plan for the mixed sex sessions.",
-      "manual_pdf_asset": "pdf/facilitator_manual/1_review_pfr_manual_2021.pdf"
+      "manual_pdf_asset": "pdf/facilitator_manual/10_review_pfr_manual_2021.pdf"
     },
     {
       "id": "discipline",
@@ -133,7 +133,7 @@
       "goal_1": "To identify the differences between punishment and discipline.",
       "goal_2": "To explore the effects of punishment on children’s development. To practice effective strategies of managing anger and disappointment.",
       "goal_3": "To discuss how to positively and sensitively engage with children to promote respect.",
-      "manual_pdf_asset": "pdf/facilitator_manual/1_discipline_pfr_manual_2021.pdf",
+      "manual_pdf_asset": "pdf/facilitator_manual/11_discipline_pfr_manual_2021.pdf",
       "title": "@data.topic.discipline.title",
       "image_asset": "@data.topic.discipline.image_asset"
     },
@@ -144,7 +144,7 @@
       "session_type": "topic",
       "goal_1": "To increase parents’ engagement at school and cooperation with teachers.",
       "goal_2": "To learn how to encourage children to achieve through education.",
-      "manual_pdf_asset": "pdf/facilitator_manual/1_education_pfr_manual_2021.pdf",
+      "manual_pdf_asset": "pdf/facilitator_manual/12_education_pfr_manual_2021.pdf",
       "title": "@data.topic.education.title",
       "image_asset": "@data.topic.education.image_asset"
     },
@@ -156,7 +156,7 @@
       "goal_1": "To understand how gender expectations affect the lives of women and men, and of girls and boys.",
       "goal_2": "To discuss strategies to modify discriminatory gender norms.",
       "goal_3": "To reflect upon communication and affection between parents and sons and how this affects their well being.",
-      "manual_pdf_asset": "pdf/facilitator_manual/1_gender_equal_pfr_manual_2021.pdf",
+      "manual_pdf_asset": "pdf/facilitator_manual/13_gender_equal_pfr_manual_2021.pdf",
       "title": "@data.topic.gender_equal.title",
       "image_asset": "@data.topic.gender_equal.image_asset"
     },
@@ -166,7 +166,7 @@
       "gender_split": false,
       "session_type": "topic",
       "goal_1": "To discuss constructive ways of sharing information to avoid violent situation in relationships. Express personal needs and feelings and listen reflectively and empathically.",
-      "manual_pdf_asset": "pdf/facilitator_manual/1_prevent_abuse_pfr_manual_2021.pdf",
+      "manual_pdf_asset": "pdf/facilitator_manual/14_prevent_abuse_pfr_manual_2021.pdf",
       "title": "@data.topic.prevent_abuse.title",
       "image_asset": "@data.topic.prevent_abuse.image_asset"
     },
@@ -178,7 +178,7 @@
       "goal_1": "To reflect on the participants’ experience of the programme",
       "goal_2": "To reinforce commitment to positive more equitable and respectful parenting",
       "goal_3": "To encourage continued meetings after the programme formally ends.",
-      "manual_pdf_asset": "pdf/facilitator_manual/1_reduce_conflict_pfr_manual_2021.pdf",
+      "manual_pdf_asset": "pdf/facilitator_manual/15_reduce_conflict_pfr_manual_2021.pdf",
       "title": "@data.topic.reduce_conflict.title",
       "image_asset": "@data.topic.reduce_conflict.image_asset"
     },
@@ -188,7 +188,8 @@
       "title": "Conclusion",
       "gender_split": false,
       "session_type": "conclusion",
-      "image_asset": "images/current_pract_picture_quiz_7.png"
+      "image_asset": "images/current_pract_picture_quiz_7.png",
+      "manual_pdf_asset": "pdf/facilitator_manual/16_conclusion_pfr_manual_2021.pdf"
     },
     {
       "gender_split": false,
