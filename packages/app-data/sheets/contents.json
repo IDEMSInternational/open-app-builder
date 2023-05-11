@@ -239,6 +239,18 @@
       "flow_name": "family_relation_tips",
       "_xlsxPath": "global/templates/blocks/family_relation_blocks.xlsx"
     },
+    "feature_feedback_default": {
+      "flow_type": "template",
+      "flow_name": "feature_feedback_default",
+      "comments": "Default general feedback form",
+      "_xlsxPath": "global/templates/feedback.xlsx"
+    },
+    "feature_feedback_text_select": {
+      "flow_type": "template",
+      "flow_name": "feature_feedback_text_select",
+      "comments": "Default text-select feedback form",
+      "_xlsxPath": "global/templates/feedback.xlsx"
+    },
     "home_screen": {
       "flow_type": "template",
       "flow_name": "home_screen",
