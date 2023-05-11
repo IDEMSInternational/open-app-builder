@@ -458,6 +458,7 @@
               "parameter_list": {
                 "icon_src": "images/icons/book_white.svg"
               },
+              "condition": "@local.session_id != \"onboarding\"",
               "_nested_name": "top.dg_top.round_button",
               "_dynamicFields": {
                 "action_list": {
@@ -489,13 +490,22 @@
                       }
                     ]
                   }
-                }
+                },
+                "condition": [
+                  {
+                    "fullExpression": "@local.session_id != \"onboarding\"",
+                    "matchedExpression": "@local.session_id",
+                    "type": "local",
+                    "fieldName": "session_id"
+                  }
+                ]
               },
               "_dynamicDependencies": {
                 "@local.session_id": [
                   "action_list.0.args.1",
                   "action_list.0._raw",
-                  "action_list.0._cleaned"
+                  "action_list.0._cleaned",
+                  "condition"
                 ]
               }
             }
