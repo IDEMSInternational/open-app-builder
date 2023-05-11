@@ -261,6 +261,11 @@
       "flow_name": "intro",
       "_xlsxPath": "global/templates/blocks/topic_blocks.xlsx"
     },
+    "manual_pdf": {
+      "flow_type": "template",
+      "flow_name": "manual_pdf",
+      "_xlsxPath": "global/templates/navigation.xlsx"
+    },
     "nav_buttons": {
       "flow_type": "template",
       "flow_name": "nav_buttons",

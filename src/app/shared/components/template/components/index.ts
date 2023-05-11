@@ -42,6 +42,7 @@ import { TmplNavigationBarComponent } from "./navigation-bar/navigation-bar.comp
 import { TmplNumberComponent } from "./number-selector/number-selector.component";
 import { TmplParentPointBoxComponent } from "./points-item/points-item.component";
 import { TmplParentPointCounterComponent } from "./parent-point-counter/parent-point-counter.component";
+import { TmplPdfComponent } from "./pdf/pdf.component";
 import { TmplQRCodeComponent } from "./qr-code/qr-code.component";
 import { TmplRadioButtonGridComponent } from "./radio-button-grid/radio-button-grid.component";
 import { TmplRadioGroupComponent } from "./radio-group/radio-group.component";
@@ -99,6 +100,7 @@ export const TEMPLATE_COMPONENTS = [
   TmplNumberComponent,
   TmplParentPointBoxComponent,
   TmplParentPointCounterComponent,
+  TmplPdfComponent,
   TmplQRCodeComponent,
   TmplRadioButtonGridComponent,
   TmplRadioGroupComponent,
@@ -158,6 +160,7 @@ export const TEMPLATE_COMPONENT_MAPPING: Record<
   number_selector: TmplNumberComponent,
   parent_point_box: TmplParentPointBoxComponent,
   parent_point_counter: TmplParentPointCounterComponent,
+  pdf: TmplPdfComponent,
   qr_code: TmplQRCodeComponent,
   radio_button_grid: TmplRadioButtonGridComponent,
   radio_group: TmplRadioGroupComponent,

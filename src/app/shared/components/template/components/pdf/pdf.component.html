@@ -1,0 +1,23 @@
+<div class="pdf-viewer">
+  <ngx-extended-pdf-viewer
+    [src]="_row.value || src | plhAsset"
+    [customToolbar]="customToolbar"
+    [showBorders]="false"
+    [mobileFriendlyZoom]="'1.3'"
+    [height]="'80%'"
+    [textLayer]="false"
+    [backgroundColor]="'var(--ion-color-gray-light)'"
+    [zoom]="'page-width'"
+  >
+  </ngx-extended-pdf-viewer>
+</div>
+
+<!-- Custom toolbar examples here: https://pdfviewer.net/extended-pdf-viewer/custom-toolbar -->
+<ng-template #customToolbar>
+  <div id="toolbarViewer">
+    <div [class.invisible]="false" id="toolbarViewerMiddle">
+      <pdf-zoom-out id="zoomOut"></pdf-zoom-out>
+      <pdf-zoom-in id="zoomIn"></pdf-zoom-in>
+    </div>
+  </div>
+</ng-template>
