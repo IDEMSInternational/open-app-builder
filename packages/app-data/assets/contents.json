@@ -43,6 +43,14 @@
     "md5Checksum": "fe9d2a07ea001244f5485c93ff38cacc",
     "size_kb": 998.1
   },
+  "images/icons/book.svg": {
+    "md5Checksum": "1b287c85e36a3375196a2a6ee7a0bca3",
+    "size_kb": 0.7
+  },
+  "images/icons/book_white.svg": {
+    "md5Checksum": "12c477faa57812b7a16bc6a0d0424c06",
+    "size_kb": 0.7
+  },
   "images/icons/faces/happy.svg": {
     "md5Checksum": "971f8d822fb3d3d79163d0ed327b052d",
     "size_kb": 1.3
@@ -78,5 +86,69 @@
   "images/icons/tick.svg": {
     "md5Checksum": "b4e6f1e9ba6e5bcdd2e404bc432ba745",
     "size_kb": 0.3
+  },
+  "pdf/facilitator_manual/10_review_pfr_manual.pdf": {
+    "md5Checksum": "dede387f6b7070109f5d472b00427be9",
+    "size_kb": 1217.9
+  },
+  "pdf/facilitator_manual/11_discipline_pfr_manual_2021.pdf": {
+    "md5Checksum": "9687d258441f784c3d64660f26526df0",
+    "size_kb": 3995
+  },
+  "pdf/facilitator_manual/12_education_pfr_manual_2021.pdf": {
+    "md5Checksum": "aeb428e1cd6e757f37446e0fe32d3b6d",
+    "size_kb": 1857.1
+  },
+  "pdf/facilitator_manual/13_gender_equal_pfr_manual_2021.pdf": {
+    "md5Checksum": "2077c4c0e7fa2dadf48232c77f29a9c6",
+    "size_kb": 993.9
+  },
+  "pdf/facilitator_manual/14_prevent_abuse_pfr_manual_2021.pdf": {
+    "md5Checksum": "9b4c07318e3f25dc78bd2fb66ce59f6c",
+    "size_kb": 1341.4
+  },
+  "pdf/facilitator_manual/15_reduce_conflict_pfr_manual_2021.pdf": {
+    "md5Checksum": "92c179a6b161b01e66203252ab90ed55",
+    "size_kb": 1017.9
+  },
+  "pdf/facilitator_manual/16_conclusion_pfr_manual_2021.pdf": {
+    "md5Checksum": "c6eddc6ec20b2159ba480c679b2192a6",
+    "size_kb": 1504.7
+  },
+  "pdf/facilitator_manual/1_family_relation_pfr_manual_2021.pdf": {
+    "md5Checksum": "3e84fdcace39892439de2646287b770f",
+    "size_kb": 1431
+  },
+  "pdf/facilitator_manual/2_current_pract_pfr_manual_2021.pdf": {
+    "md5Checksum": "5e2326736d9c8628a823e50c6779b756",
+    "size_kb": 5310.4
+  },
+  "pdf/facilitator_manual/3_child_dev_pfr_manual_2021.pdf": {
+    "md5Checksum": "6f67bb1386d41025bf9d39d308ad33d6",
+    "size_kb": 1386.4
+  },
+  "pdf/facilitator_manual/4_parent_childhood_pfr_manual_2021.pdf": {
+    "md5Checksum": "594ab6cee277608974181f802afa783d",
+    "size_kb": 1525.5
+  },
+  "pdf/facilitator_manual/5_positive_parenting_pfr_manual_2021.pdf": {
+    "md5Checksum": "874fee82299817dc0c15618387fa7d5f",
+    "size_kb": 2463.8
+  },
+  "pdf/facilitator_manual/6_gender_power_pfr_manual_2021.pdf": {
+    "md5Checksum": "763cfedc435e6dd605385daebd594c76",
+    "size_kb": 1711.5
+  },
+  "pdf/facilitator_manual/7_impact_conflict_pfr_manual_2021.pdf": {
+    "md5Checksum": "3f6121d780411b4d1b03a8db93a513ba",
+    "size_kb": 2826.2
+  },
+  "pdf/facilitator_manual/8_sharing_care_pfr_manual_2021.pdf": {
+    "md5Checksum": "1d4a0e53d775b08b1fe681332a5a580c",
+    "size_kb": 1729.2
+  },
+  "pdf/facilitator_manual/9_healthy_relation_pfr_manual_2021.pdf": {
+    "md5Checksum": "93c139604275d8006351dee006f2e863",
+    "size_kb": 955.2
   }
 }
