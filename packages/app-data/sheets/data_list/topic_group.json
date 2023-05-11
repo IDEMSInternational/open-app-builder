@@ -18,10 +18,6 @@
     {
       "id": "parental_conflict",
       "title": "Parental conflict"
-    },
-    {
-      "id": "child_care",
-      "title": "Child care"
     }
   ],
   "_xlsxPath": "global/data_lists/topics.xlsx"
