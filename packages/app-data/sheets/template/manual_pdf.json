@@ -54,6 +54,7 @@
       "_translations": {
         "value": {}
       },
+      "exclude_from_translation": true,
       "type": "set_variable",
       "_nested_name": "session_tasks",
       "_dynamicFields": {
@@ -171,6 +172,31 @@
       },
       "_dynamicDependencies": {
         "@local.ww_id": [
+          "value"
+        ]
+      }
+    },
+    {
+      "name": "pdf_asset",
+      "value": "@local.session_data.manual_pdf_asset",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "type": "set_variable",
+      "_nested_name": "pdf_asset",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@local.session_data.manual_pdf_asset",
+            "matchedExpression": "@local.session_data.manual_pdf_asset",
+            "type": "local",
+            "fieldName": "session_data"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.session_data.manual_pdf_asset": [
           "value"
         ]
       }
