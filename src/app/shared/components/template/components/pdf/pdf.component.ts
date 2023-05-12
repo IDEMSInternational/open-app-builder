@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { TemplateBaseComponent } from "../base";
-import { ITemplateRowProps } from "../../models";
+import { pdfDefaultOptions } from "ngx-extended-pdf-viewer";
 import { getStringParamFromTemplateRow } from "src/app/shared/utils";
 
 @Component({
@@ -13,6 +13,10 @@ export class TmplPdfComponent extends TemplateBaseComponent implements OnInit {
 
   constructor() {
     super();
+    // name of folder pdf viewer assets copied to as declared in `angular.json`
+    pdfDefaultOptions.assetsFolder = "assets/comp-pdf";
+    // additional locales are currently excluded from main build
+    pdfDefaultOptions.locale = "en-GB";
   }
 
   ngOnInit() {
