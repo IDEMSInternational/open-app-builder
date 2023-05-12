@@ -2159,6 +2159,12 @@
       "flow_subtype": "component_demo",
       "_xlsxPath": "quality_assurance/component_sheets/component_parent_point_counter.xlsx"
     },
+    "comp_pdf": {
+      "flow_type": "template",
+      "flow_name": "comp_pdf",
+      "flow_subtype": "component_demo",
+      "_xlsxPath": "quality_assurance/component_sheets/component_pdf.xlsx"
+    },
     "comp_qr_code": {
       "flow_type": "template",
       "flow_name": "comp_qr_code",
