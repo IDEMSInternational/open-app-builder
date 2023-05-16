@@ -25,6 +25,14 @@ import type { IAssetEntryHashmap, IContentsEntryMinimal } from "data-models/depl
  */
 const ASSETS_GLOBAL_FOLDER_NAME = "global";
 
+/** Approximate size of core build as populated to www folder (excluding assets) */
+const APP_CORE_BUILD_KB = 7 * 1024;
+/** Approximate size of core assets as populated to www folder (excluding assets/app_data) */
+const APP_CORE_ASSETS_KB = 0.5 * 1024;
+const APP_CORE_SIZE_KB = {
+  total: APP_CORE_BUILD_KB + APP_CORE_ASSETS_KB,
+};
+
 /***************************************************************************************
  * CLI
  * @example yarn
@@ -163,8 +171,11 @@ export class AssetsPostProcessor {
   }
 
   private checkTotalAssetSize(sourceAssets: IAssetEntriesByType) {
-    let totalSize = 0;
-    let themeAndLanguageSizes = { theme_default: { total: 0, global: 0 } };
+    let totalSize = APP_CORE_SIZE_KB.total;
+    let themeAndLanguageSizes = {
+      app_core: APP_CORE_SIZE_KB,
+      theme_default: { total: 0, global: 0 },
+    };
     Object.values(sourceAssets.tracked).forEach((entry) => {
       totalSize += entry.size_kb;
       themeAndLanguageSizes.theme_default.total += entry.size_kb;
@@ -193,7 +204,7 @@ export class AssetsPostProcessor {
       })
       .join("\n");
     const totalSizeMB = kbToMB(totalSize);
-    const maxWarningSize = 145;
+    const maxWarningSize = 150;
     if (totalSizeMB > maxWarningSize) {
       logWarning({
         msg1: `Asset files too large`,
