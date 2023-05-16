@@ -164,10 +164,13 @@ export class AssetsPostProcessor {
 
   private checkTotalAssetSize(sourceAssets: IAssetEntriesByType) {
     let totalSize = 0;
-    let themeAndLanguageSizes = { default: { total: 0, global: 0 } };
-    Object.values(sourceAssets).forEach((assetEntryHashmap: IAssetEntryHashmap) => {
-      Object.values(assetEntryHashmap).forEach((entry) => {
-        Object.entries(entry.overrides || {}).forEach(([themeName, languageEntries]) => {
+    let themeAndLanguageSizes = { theme_default: { total: 0, global: 0 } };
+    Object.values(sourceAssets.tracked).forEach((entry) => {
+      totalSize += entry.size_kb;
+      themeAndLanguageSizes.theme_default.total += entry.size_kb;
+      themeAndLanguageSizes.theme_default.global += entry.size_kb;
+      if (entry.overrides) {
+        Object.entries(entry.overrides).forEach(([themeName, languageEntries]) => {
           Object.entries(languageEntries).forEach(([languageCode, languageEntry]) => {
             const assetSize = languageEntry.size_kb;
             totalSize += assetSize;
@@ -178,7 +181,7 @@ export class AssetsPostProcessor {
             themeAndLanguageSizes[themeName][languageCode] += assetSize;
           });
         });
-      });
+      }
     });
 
     const themeLangSizesMBSummary = Object.entries(themeAndLanguageSizes)
@@ -186,7 +189,7 @@ export class AssetsPostProcessor {
         const languageBreakdown = Object.entries(themeEntry)
           .map(([language, size]) => `${language}: ${kbToMB(size)} MB`)
           .join("\n    ");
-        return `${themeName} theme:\n  ${languageBreakdown}`;
+        return `${themeName}:\n  ${languageBreakdown}`;
       })
       .join("\n");
     const totalSizeMB = kbToMB(totalSize);
