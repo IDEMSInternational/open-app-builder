@@ -24488,6 +24488,7 @@ __metadata:
     data-models: "workspace:*"
     esbuild: ^0.14.2
     fs-extra: ^9.0.1
+    glob: ^7.2.0
     inquirer: ^7.3.3
     jasmine: ^3.99.0
     jasmine-spec-reporter: ^7.0.0
