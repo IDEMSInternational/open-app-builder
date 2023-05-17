@@ -48,7 +48,7 @@
   <li>Interfaces</li>
   <li
   >
-  IAnswerListItem</li>
+  IRadioButtonGridParams</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
@@ -85,23 +85,27 @@
                         <td class="col-md-4">
                             <ul class="index-list">
                                 <li>
-                                            <span class="modifier">Optional</span>
-                                        <a href="#image" 
+                                        <a href="#answer_list" 
 >
-                                            image
+                                            answer_list
                                         </a>
                                 </li>
                                 <li>
-                                        <a href="#name" 
+                                        <a href="#grid_gap" 
 >
-                                            name
+                                            grid_gap
                                         </a>
                                 </li>
                                 <li>
-                                            <span class="modifier">Optional</span>
-                                        <a href="#text" 
+                                        <a href="#grid_width" 
 >
-                                            text
+                                            grid_width
+                                        </a>
+                                </li>
+                                <li>
+                                        <a href="#item_width" 
+>
+                                            item_width
                                         </a>
                                 </li>
                             </ul>
@@ -119,9 +123,9 @@
                         <tbody>
                                 <tr>
                                     <td class="col-md-4">
-                                        <a name="image"></a>
-                                        <span class="name "><b>image</b>
-                                            <a href="#image">
+                                        <a name="answer_list"></a>
+                                        <span class="name "><b>answer_list</b>
+                                            <a href="#answer_list">
                                                 <span class="icon ion-ios-link"></span>
                                             </a>
                                         </span>
@@ -129,7 +133,7 @@
                                 </tr>
                                 <tr>
                                     <td class="col-md-4">
-                                        <code>image:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                        <code>answer_list:         <code><a href="../interfaces/IAnswerListItem.html" target="_self" >IAnswerListItem[]</a></code>
 </code>
                                     </td>
                                 </tr>
@@ -137,29 +141,30 @@
 
                                     <tr>
                                         <td class="col-md-4">
-                                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            <i>Type : </i>        <code><a href="../interfaces/IAnswerListItem.html" target="_self" >IAnswerListItem[]</a></code>
 
                                         </td>
                                     </tr>
 
-                                    <tr>
-                                        <td class="col-md-4">
-                                            <i>Optional</i>
-                                        </td>
-                                    </tr>
 
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>List of options presented as radio items</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                     <table class="table table-sm table-bordered">
                         <tbody>
                                 <tr>
                                     <td class="col-md-4">
-                                        <a name="name"></a>
-                                        <span class="name "><b>name</b>
-                                            <a href="#name">
+                                        <a name="grid_gap"></a>
+                                        <span class="name "><b>grid_gap</b>
+                                            <a href="#grid_gap">
                                                 <span class="icon ion-ios-link"></span>
                                             </a>
                                         </span>
@@ -167,7 +172,7 @@
                                 </tr>
                                 <tr>
                                     <td class="col-md-4">
-                                        <code>name:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                        <code>grid_gap:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
 </code>
                                     </td>
                                 </tr>
@@ -184,15 +189,22 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>Spacing between grid items.
+Default &#39;16px&#39;</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                     <table class="table table-sm table-bordered">
                         <tbody>
                                 <tr>
                                     <td class="col-md-4">
-                                        <a name="text"></a>
-                                        <span class="name "><b>text</b>
-                                            <a href="#text">
+                                        <a name="grid_width"></a>
+                                        <span class="name "><b>grid_width</b>
+                                            <a href="#grid_width">
                                                 <span class="icon ion-ios-link"></span>
                                             </a>
                                         </span>
@@ -200,7 +212,7 @@
                                 </tr>
                                 <tr>
                                     <td class="col-md-4">
-                                        <code>text:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                        <code>grid_width:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
 </code>
                                     </td>
                                 </tr>
@@ -213,15 +225,57 @@
                                         </td>
                                     </tr>
 
+
+
+
+
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>Maximum grid width, if specified will center items in available space.
+Default &#39;100%&#39;</p>
+</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="item_width"></a>
+                                        <span class="name "><b>item_width</b>
+                                            <a href="#item_width">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>item_width:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+</code>
+                                    </td>
+                                </tr>
+
+
                                     <tr>
                                         <td class="col-md-4">
-                                            <i>Optional</i>
+                                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
                                         </td>
                                     </tr>
 
 
 
 
+
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>Minimum item width, will increase to fit grid.
+Default &#39;200px&#39;</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
             </section>
@@ -404,7 +458,7 @@ export class TmplRadioButtonGridComponent
        <script>
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'interface';
-            var COMPODOC_CURRENT_PAGE_URL = 'IAnswerListItem.html';
+            var COMPODOC_CURRENT_PAGE_URL = 'IRadioButtonGridParams.html';
             var MAX_SEARCH_RESULTS = 15;
        </script>
 
