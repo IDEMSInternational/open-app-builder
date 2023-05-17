@@ -37,9 +37,10 @@
                 "output": "./svg"
               },
               {
-                "glob": "**/*",
+                "glob": "{*.min.js,op-chaining-support.js,cmaps/*,images/*,locale/en-GB/*,locale/locale.properties,standard_fonts/**}",
                 "input": "node_modules/ngx-extended-pdf-viewer/assets/",
-                "output": "/assets/"
+                "ignore": ["**/*-es5.min.js"],
+                "output": "/assets/comp-pdf"
               }
             ],
             "styles": [
