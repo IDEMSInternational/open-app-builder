@@ -5708,6 +5708,11 @@
     },
     "size_kb": 21.9
   },
+  "quality_assurance/dummy.pdf": {
+    "filePath": "global/quality_assurance/dummy.pdf",
+    "md5Checksum": "2942bfabb3d05332b66eb128e0842cff",
+    "size_kb": 13
+  },
   "quality_assurance/example_pdf.pdf": {
     "filePath": "global/quality_assurance/example_pdf.pdf",
     "md5Checksum": "5afaf79789a776d81ec91ccbdc9fdaba",
