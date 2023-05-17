@@ -109,7 +109,14 @@ yarn workflow repo publish
 This will create a new git branch, apply local changes and push to github. From there a pull request can be created to merge into the main branch.
 
 !!! warning
-    If multiple authors are updating content and creating releases there is a high probability of conflicts arising. It is recommended to merge open pull requests before creating new content releases, and running the `yarn scripts deployment set` script to ensure local content also includes the latest remote content.
+    If multiple authors are updating content and creating releases there is a high probability of conflicts arising. 
+    
+    Open pull requests should be merged before creating new content releases, and running `yarn workflow sync` to update local content from remotes.
+
+### Troubleshooting
+If for any reason the local content repo gets into a bad/conflicted state, it can be manually resolved by opening the deployment repo in vscode and resolving using git commands. 
+
+The content repo can be opened via shortcut `yarn workflow deployment open`
     
    
 ## File Encryption
