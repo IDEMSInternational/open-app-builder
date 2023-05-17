@@ -57,6 +57,7 @@ class GitProvider {
     await this.initialiseGitProvider();
     console.log("Preparing files...");
     await this.promptChangesReview();
+    const revertTagName = this.deployment.git.content_tag_latest;
     const tagName = await this.promptReleaseTag();
 
     // apply changes
@@ -69,11 +70,24 @@ class GitProvider {
     await this.git.commit(`content: ${tagName}`);
     await this.git.addTag(tagName);
     console.log("pushing changes");
-    await this.git.push("origin", branchName);
-    logOutput({
-      msg1: "Content uploaded successfully. Pull request link:",
-      msg2: compareLink,
-    });
+    try {
+      await this.git.push("origin", branchName);
+      logOutput({
+        msg1: "Content uploaded successfully. Pull request link:",
+        msg2: compareLink,
+      });
+    } catch (error) {
+      Logger.error({ msg1: "Failed to push to repo", msg2: error.message, logOnly: true });
+      console.log("reverting changes");
+      // Rollback changes
+      // Reset previous commit, revert config ts change, checkout main, unstage files, delete created tag
+      await this.git.reset(ResetMode.SOFT, ["HEAD~1"]);
+      await this.updateGitConfigTs({ content_tag_latest: revertTagName });
+      await this.git.reset(["--"]);
+      await this.git.checkout("main");
+      await this.git.tag(["--delete", tagName]);
+    }
+
     // open PR
   }
 
