@@ -48,7 +48,7 @@
   <li>Interfaces</li>
   <li
   >
-  IAnswerListItem</li>
+  IDisplayGridParams</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
@@ -66,7 +66,7 @@
             <h3>File</h3>
         </p>
         <p class="comment">
-            <code>src/app/shared/components/template/components/radio-button-grid/radio-button-grid.component.ts</code>
+            <code>src/app/shared/components/template/components/layout/display-grid/display-grid.component.ts</code>
         </p>
 
 
@@ -85,23 +85,28 @@
                         <td class="col-md-4">
                             <ul class="index-list">
                                 <li>
-                                            <span class="modifier">Optional</span>
-                                        <a href="#image" 
+                                        <a href="#grid_gap" 
 >
-                                            image
+                                            grid_gap
                                         </a>
                                 </li>
                                 <li>
-                                        <a href="#name" 
+                                        <a href="#grid_width" 
 >
-                                            name
+                                            grid_width
                                         </a>
                                 </li>
                                 <li>
                                             <span class="modifier">Optional</span>
-                                        <a href="#text" 
+                                        <a href="#item_border" 
 >
-                                            text
+                                            item_border
+                                        </a>
+                                </li>
+                                <li>
+                                        <a href="#item_width" 
+>
+                                            item_width
                                         </a>
                                 </li>
                             </ul>
@@ -119,9 +124,9 @@
                         <tbody>
                                 <tr>
                                     <td class="col-md-4">
-                                        <a name="image"></a>
-                                        <span class="name "><b>image</b>
-                                            <a href="#image">
+                                        <a name="grid_gap"></a>
+                                        <span class="name "><b>grid_gap</b>
+                                            <a href="#grid_gap">
                                                 <span class="icon ion-ios-link"></span>
                                             </a>
                                         </span>
@@ -129,7 +134,7 @@
                                 </tr>
                                 <tr>
                                     <td class="col-md-4">
-                                        <code>image:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                        <code>grid_gap:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
 </code>
                                     </td>
                                 </tr>
@@ -138,6 +143,86 @@
                                     <tr>
                                         <td class="col-md-4">
                                             <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                                        </td>
+                                    </tr>
+
+
+
+
+
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>Spacing between grid items.
+Default &#39;16px&#39;</p>
+</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="grid_width"></a>
+                                        <span class="name "><b>grid_width</b>
+                                            <a href="#grid_width">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>grid_width:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                                        </td>
+                                    </tr>
+
+
+
+
+
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>Maximum grid width, if specified will center items in available space.
+Default &#39;100%&#39;</p>
+</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="item_border"></a>
+                                        <span class="name "><b>item_border</b>
+                                            <a href="#item_border">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>item_border:     <code>&quot;solid&quot; | &quot;dashed&quot; | &quot;none&quot;</code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>    <code>&quot;solid&quot; | &quot;dashed&quot; | &quot;none&quot;</code>
 
                                         </td>
                                     </tr>
@@ -151,15 +236,22 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>Item border outline style.
+Default: &quot;solid&quot;</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                     <table class="table table-sm table-bordered">
                         <tbody>
                                 <tr>
                                     <td class="col-md-4">
-                                        <a name="name"></a>
-                                        <span class="name "><b>name</b>
-                                            <a href="#name">
+                                        <a name="item_width"></a>
+                                        <span class="name "><b>item_width</b>
+                                            <a href="#item_width">
                                                 <span class="icon ion-ios-link"></span>
                                             </a>
                                         </span>
@@ -167,7 +259,7 @@
                                 </tr>
                                 <tr>
                                     <td class="col-md-4">
-                                        <code>name:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                        <code>item_width:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
 </code>
                                     </td>
                                 </tr>
@@ -184,44 +276,13 @@
 
 
 
-                        </tbody>
-                    </table>
-                    <table class="table table-sm table-bordered">
-                        <tbody>
-                                <tr>
-                                    <td class="col-md-4">
-                                        <a name="text"></a>
-                                        <span class="name "><b>text</b>
-                                            <a href="#text">
-                                                <span class="icon ion-ios-link"></span>
-                                            </a>
-                                        </span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="col-md-4">
-                                        <code>text:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
-</code>
-                                    </td>
-                                </tr>
-
-
-                                    <tr>
-                                        <td class="col-md-4">
-                                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
-
-                                        </td>
-                                    </tr>
-
-                                    <tr>
-                                        <td class="col-md-4">
-                                            <i>Optional</i>
-                                        </td>
-                                    </tr>
-
-
-
-
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>Minimum item width, will increase to fit grid.
+Default &#39;200px&#39;</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
             </section>
@@ -230,20 +291,16 @@
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, Input } from &quot;@angular/core&quot;;
-import { TemplateBaseComponent } from &quot;../base&quot;;
-import { FlowTypes, ITemplateRowProps } from &quot;../../models&quot;;
-import { getParamFromTemplateRow } from &quot;src/app/shared/utils&quot;;
-import { objectToArray } from &quot;../../utils&quot;;
+import { TemplateBaseComponent } from &quot;../../base&quot;;
+import { FlowTypes, ITemplateRowProps } from &quot;../../../models&quot;;
 
-interface IAnswerListItem {
-  name: string;
-  image?: string;
-  text?: string;
-}
+interface IDisplayGridParams {
+  /**
+   * Item border outline style.
+   * Default: &quot;solid&quot;
+   */
+  item_border?: &quot;solid&quot; | &quot;dashed&quot; | &quot;none&quot;;
 
-interface IRadioButtonGridParams {
-  /** List of options presented as radio items */
-  answer_list: IAnswerListItem[];
   /**
    * Minimum item width, will increase to fit grid.
    * Default &#x27;200px&#x27;
@@ -262,61 +319,50 @@ interface IRadioButtonGridParams {
 }
 
 @Component({
-  selector: &quot;plh-radio-button-grid&quot;,
-  templateUrl: &quot;./radio-button-grid.component.html&quot;,
-  styleUrls: [&quot;./radio-button-grid.component.scss&quot;],
+  selector: &quot;plh-display-grid&quot;,
+  templateUrl: &quot;./display-grid.component.html&quot;,
+  styleUrls: [&quot;./display-grid.component.scss&quot;],
 })
-export class TmplRadioButtonGridComponent
-  extends TemplateBaseComponent
-  implements ITemplateRowProps
-{
-  /**
-   * Computed item array from input parameters
-   * @ignore
-   */
-  public radioItems: Array&lt;IAnswerListItem&gt;;
-
+export class TmplDisplayGridComponent extends TemplateBaseComponent implements ITemplateRowProps {
   /**
    * Computed grid style from input parameters
    * @ignore
    */
   public gridStyle: Partial&lt;CSSStyleDeclaration&gt;;
+  /**
+   * Computed grid style from input parameters
+   * @ignore
+   */
+  public itemStyle: Partial&lt;CSSStyleDeclaration&gt;;
 
   /**
    * Authoring parameters
    */
-  public parameter_list: IRadioButtonGridParams;
+  public parameter_list: IDisplayGridParams;
 
   @Input() set row(row: FlowTypes.TemplateRow) {
     this._row &#x3D; row;
     this.setParams();
   }
 
-  /**
-   * S
-   * @ignore
-   */
-  public async handleItemClick(item: IAnswerListItem) {
-    await this.setValue(item.name);
-    this.triggerActions(&quot;changed&quot;);
-  }
-
   private setParams() {
     this.parameter_list &#x3D; this._row.parameter_list || ({} as any);
-    this.radioItems &#x3D; this.generateItemList();
-    this.gridStyle &#x3D; this.generateGridStyle();
+    const { gridStyle, itemStyle } &#x3D; this.generateStyles();
+    this.gridStyle &#x3D; gridStyle;
+    this.itemStyle &#x3D; itemStyle;
   }
 
   /**
-   * Create a list of styles to be passed into ngStyle
+   * Create a list of styles to be passed into ngStyle for grid and item components
    * https://thesoftwayfarecoder.com/dynamically-creating-css-classes-in-angular/
    */
-  private generateGridStyle() {
+  private generateStyles() {
     const minItemWidth &#x3D; this.parameter_list.item_width || &quot;200px&quot;;
     const maxGridWidth &#x3D; this.parameter_list.grid_width || &quot;100%&quot;;
     const gridGap &#x3D; this.parameter_list.grid_gap || &quot;16px&quot;;
+    const borderStyle &#x3D; this.parameter_list.item_border || &quot;solid&quot;;
 
-    const style: Partial&lt;CSSStyleDeclaration&gt; &#x3D; {
+    const gridStyle: Partial&lt;CSSStyleDeclaration&gt; &#x3D; {
       // center grid with maximum width
       maxWidth: maxGridWidth,
       margin: &quot;auto&quot;,
@@ -327,44 +373,12 @@ export class TmplRadioButtonGridComponent
       // make all rows same height
       gridAutoRows: &quot;1fr&quot;,
     };
-    return style;
-  }
 
-  /**
-   * Adapted from radio-group.component
-   * Convert input answer_list to rendered item list
-   */
-  private generateItemList() {
-    let answerList &#x3D; getParamFromTemplateRow(this._row, &quot;answer_list&quot;, []);
-    // Convert if datalist input (hashmap to array)
-    if (answerList.constructor &#x3D;&#x3D;&#x3D; {}.constructor) {
-      answerList &#x3D; objectToArray(answerList);
-    }
-    const radioItems: IAnswerListItem[] &#x3D; answerList.map(
-      (item: string | Record&lt;string, string&gt;) &#x3D;&gt; {
-        if (typeof item &#x3D;&#x3D;&#x3D; &quot;string&quot;) {
-          return this.parseAnswerListItemString(item);
-        }
-        return item as any;
-      }
-    );
-    return radioItems;
-  }
-
-  /**
-   * convert string to relevant mappings
-   * TODO - CC 2023-03-16 - should ideally convert in parsers instead of at runtime
-   */
-  private parseAnswerListItemString(item: string) {
-    const itemObj: IAnswerListItem &#x3D; {} as any;
-    const stringProperties &#x3D; item.split(&quot;|&quot;);
-    stringProperties.forEach((s) &#x3D;&gt; {
-      const [field, value] &#x3D; s.split(&quot;:&quot;).map((v) &#x3D;&gt; v.trim());
-      if (field &amp;&amp; value) {
-        itemObj[field] &#x3D; value;
-      }
-    });
-    return itemObj;
+    const itemStyle: Partial&lt;CSSStyleDeclaration&gt; &#x3D; {
+      // assign item border outline style
+      borderStyle,
+    };
+    return { gridStyle, itemStyle };
   }
 }
 </code></pre>
@@ -404,7 +418,7 @@ export class TmplRadioButtonGridComponent
        <script>
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'interface';
-            var COMPODOC_CURRENT_PAGE_URL = 'IAnswerListItem.html';
+            var COMPODOC_CURRENT_PAGE_URL = 'IDisplayGridParams.html';
             var MAX_SEARCH_RESULTS = 15;
        </script>
 
