@@ -1,6 +1,7 @@
 <div class="pdf-viewer">
   <ngx-extended-pdf-viewer
-    [src]="_row.value || src | plhAsset"
+    [src]="_row.value | plhAsset"
+    [page]="startingPage"
     [customToolbar]="customToolbar"
     [showBorders]="false"
     [mobileFriendlyZoom]="'1.3'"

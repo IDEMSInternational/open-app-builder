@@ -15058,7 +15058,7 @@ __metadata:
     marked: ^2.0.1
     ng2-nouislider: ^1.8.3
     ngx-color: ^6.1.0
-    ngx-extended-pdf-viewer: 17.0.0-alpha.4
+    ngx-extended-pdf-viewer: 16.2.16
     ngx-lottie: ^7.0.4
     nouislider: ^14.6.3
     prettier: 2.4.1
@@ -20696,16 +20696,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ngx-extended-pdf-viewer@npm:17.0.0-alpha.4":
-  version: 17.0.0-alpha.4
-  resolution: "ngx-extended-pdf-viewer@npm:17.0.0-alpha.4"
+"ngx-extended-pdf-viewer@npm:16.2.16":
+  version: 16.2.16
+  resolution: "ngx-extended-pdf-viewer@npm:16.2.16"
   dependencies:
     lodash.deburr: ^4.1.0
     tslib: ^2.3.0
   peerDependencies:
-    "@angular/common": ">=12.0.0 <17.0.0"
-    "@angular/core": ">=12.0.0 <17.0.0"
-  checksum: 6750aa14c5d31bb26166b28313f411d6c0cbb34477f37931125ec1a9c39a83854b354fd4e74aefe1040d38f43414df04a89ffa912f20bdce828a3f06d55a37d1
+    "@angular/common": ">=12.0.0 <16.0.0"
+    "@angular/core": ">=12.0.0 <16.0.0"
+  checksum: a08ee46989b7d0a00d11fd60c568a3a78a0508317630a6de22eb663b0d8010a5967e5b2c9f7191e8a68bb22785d8be917d8421af5788cf02e7d8342aa7444d46
   languageName: node
   linkType: hard
 
