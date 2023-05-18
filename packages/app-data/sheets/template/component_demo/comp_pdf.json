@@ -21,18 +21,9 @@
         "value": {}
       },
       "parameter_list": {
-        "src": "\"quality_assurance/example_pdf.pdf\""
+        "starting_page": "3"
       },
       "_nested_name": "pdf_viewer"
-    },
-    {
-      "type": "pdf",
-      "name": "pdf_viewer_value",
-      "value": "quality_assurance/dummy.pdf",
-      "_translations": {
-        "value": {}
-      },
-      "_nested_name": "pdf_viewer_value"
     }
   ],
   "_xlsxPath": "quality_assurance/component_sheets/component_pdf.xlsx"

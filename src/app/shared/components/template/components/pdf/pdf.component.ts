@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { TemplateBaseComponent } from "../base";
 import { pdfDefaultOptions } from "ngx-extended-pdf-viewer";
-import { getStringParamFromTemplateRow } from "src/app/shared/utils";
+import { getNumberParamFromTemplateRow } from "src/app/shared/utils";
 
 @Component({
   selector: "plh-pdf",
@@ -9,7 +9,7 @@ import { getStringParamFromTemplateRow } from "src/app/shared/utils";
   styleUrls: ["./pdf.component.scss"],
 })
 export class TmplPdfComponent extends TemplateBaseComponent implements OnInit {
-  src: string;
+  startingPage: number;
 
   constructor() {
     super();
@@ -24,6 +24,6 @@ export class TmplPdfComponent extends TemplateBaseComponent implements OnInit {
   }
 
   getParams() {
-    this.src = getStringParamFromTemplateRow(this._row, "src", "");
+    this.startingPage = getNumberParamFromTemplateRow(this._row, "starting_page", 1);
   }
 }
