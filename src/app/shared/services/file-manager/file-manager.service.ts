@@ -15,7 +15,7 @@ export class FileManagerService extends SyncServiceBase {
 
   async saveFile(blob: Blob, relativePath) {
     // Docs for write_blob are found here: https://github.com/diachedelic/capacitor-blob-writer#readme
-    console.log(relativePath);
+    console.log("[File Manager] relativePath:", relativePath);
     const src = await write_blob({
       path: relativePath,
       directory: Directory.Data,
@@ -26,9 +26,9 @@ export class FileManagerService extends SyncServiceBase {
         console.error(error);
       },
     });
-    console.log("src:", src);
+    console.log("[File Manager] src:", src);
     const uri = await this.getFileSrc(relativePath);
-    console.log("uri:", uri);
+    console.log("[File Manager] uri:", uri);
     return uri;
   }
 
@@ -56,18 +56,25 @@ export class FileManagerService extends SyncServiceBase {
   }
 
   /** Update assets contents list to include new filepath for lookup (by template-asset service) */
-  async updateContentsList(assetName, uri: string, metadata?) {
+  async updateContentsList(
+    assetName: string,
+    updates: { filesystemPath?: string; url?: string; metadata?: any }
+  ) {
     // TODO
     // Options:
     // 1. Store contents list in memory (shared with template-asset service) and update this
     // 2. Save to file, contents.json (ensure template-asset service uses up-to-date version)
     // 3. Use localstorage
-    console.log("[REMOTE ASSETS] uri:", uri);
-    if (Capacitor.isNativePlatform()) {
-      this.templateAssetService.assetsContentList[assetName].downloadedFilepath = uri;
-    } else {
-      this.templateAssetService.assetsContentList[assetName].url = uri;
+    const { filesystemPath, url } = updates;
+    if (filesystemPath) {
+      this.templateAssetService.assetsContentList[assetName].downloadedFilepath = filesystemPath;
     }
-    console.log(this.templateAssetService.assetsContentList[assetName]);
+    if (url) {
+      this.templateAssetService.assetsContentList[assetName].url = url;
+    }
+    console.log(
+      "[File manager] updated asset entry:",
+      this.templateAssetService.assetsContentList[assetName]
+    );
   }
 }

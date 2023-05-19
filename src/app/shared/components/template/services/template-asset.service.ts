@@ -5,6 +5,7 @@ import { ThemeService } from "src/app/feature/theme/services/theme.service";
 import { AsyncServiceBase } from "src/app/shared/services/asyncService.base";
 import { TemplateTranslateService } from "./template-translate.service";
 import { IAssetEntry, IContentsEntryMinimal } from "packages/data-models/deployment.model";
+import { environment } from "src/environments/environment";
 
 /** Synced assets are automatically copied during build to asset subfolder */
 const ASSETS_BASE = `assets/app_data/assets`;
@@ -78,20 +79,22 @@ export class TemplateAssetService extends AsyncServiceBase {
   }
 
   private getFilePath(assetName, contentsEntry: IContentsEntryMinimal | Partial<IAssetEntry>) {
-    if (Capacitor.isNativePlatform()) {
-      console.log("contentsEntry.downloadedFilepath:", contentsEntry.downloadedFilepath);
-      return (
-        contentsEntry.downloadedFilepath ||
-        this.convertPLHRelativePathToAssetPath(contentsEntry.filePath || assetName)
-      );
-    }
-    // If running on web, return external url (supabase). TODO: think about fallback
-    else {
-      return (
-        contentsEntry.url ||
-        this.convertPLHRelativePathToAssetPath(contentsEntry.filePath || assetName)
-      );
-    }
+    if (environment.deploymentConfig.supabase.enabled) {
+      if (Capacitor.isNativePlatform()) {
+        console.log("contentsEntry.downloadedFilepath:", contentsEntry.downloadedFilepath);
+        return (
+          contentsEntry.downloadedFilepath ||
+          this.convertPLHRelativePathToAssetPath(contentsEntry.filePath || assetName)
+        );
+      }
+      // If running on web, return external url (supabase). TODO: think about fallback
+      else {
+        return (
+          contentsEntry.url ||
+          this.convertPLHRelativePathToAssetPath(contentsEntry.filePath || assetName)
+        );
+      }
+    } else return this.convertPLHRelativePathToAssetPath(contentsEntry.filePath || assetName);
   }
 
   /**
