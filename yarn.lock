@@ -15069,6 +15069,7 @@ __metadata:
     shared: "workspace:*"
     stacktrace-js: ^2.0.2
     swiper: ^8.4.4
+    trusted-types: ^2.0.0
     typescript: 4.8.4
     zone.js: ~0.11.4
   languageName: unknown
@@ -26661,6 +26662,13 @@ __metadata:
   version: 1.3.0
   resolution: "triple-beam@npm:1.3.0"
   checksum: 7d7b77d8625fb252c126c24984a68de462b538a8fcd1de2abd0a26421629cf3527d48e23b3c2264f08f4a6c3bc40a478a722176f4d7b6a1acc154cb70c359f2b
+  languageName: node
+  linkType: hard
+
+"trusted-types@npm:^2.0.0":
+  version: 2.0.0
+  resolution: "trusted-types@npm:2.0.0"
+  checksum: b22751b4897ed19387b692842b57f3f2ad195179d9a778bc29e1cff95be91fed65f79e390612503af905b3a3df412b290b550318bc84539dd3f49d29bd50a5a5
   languageName: node
   linkType: hard
 
