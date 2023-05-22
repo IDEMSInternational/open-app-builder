@@ -1,24 +1,36 @@
 import { Injectable } from "@angular/core";
-import { Directory, Filesystem } from "@capacitor/filesystem";
+import { Directory, Encoding, Filesystem } from "@capacitor/filesystem";
 import { Capacitor } from "@capacitor/core";
 import write_blob from "capacitor-blob-writer";
 import { SyncServiceBase } from "../syncService.base";
 import { TemplateAssetService } from "../../components/template/services/template-asset.service";
+import { environment } from "src/environments/environment";
+import { IAssetContents } from "src/app/data";
 
 @Injectable({
   providedIn: "root",
 })
 export class FileManagerService extends SyncServiceBase {
+  cacheName: string;
+
   constructor(private templateAssetService: TemplateAssetService) {
     super("FileManager");
+    this.initialise();
   }
 
-  async saveFile(blob: Blob, relativePath) {
-    // Docs for write_blob are found here: https://github.com/diachedelic/capacitor-blob-writer#readme
-    console.log("[File Manager] relativePath:", relativePath);
+  private initialise() {
+    this.cacheName = environment.deploymentConfig.name;
+  }
+
+  /**
+   * Save a file to the local filesystem (native only)
+   * @returns the local filesystem path to the saved file
+   */
+  async saveFile(blob: Blob, relativePath: string) {
+    // Docs for write_blob are here: https://github.com/diachedelic/capacitor-blob-writer#readme
     const src = await write_blob({
-      path: relativePath,
       directory: Directory.Data,
+      path: `${this.cacheName}/${relativePath}`,
       blob,
       fast_mode: true,
       recursive: true,
@@ -26,45 +38,14 @@ export class FileManagerService extends SyncServiceBase {
         console.error(error);
       },
     });
-    console.log("[File Manager] src:", src);
-    const uri = await this.getFileSrc(relativePath);
-    console.log("[File Manager] uri:", uri);
-    return uri;
+    return Capacitor.convertFileSrc(src);
   }
 
-  /**
-   * A possible approach for getting the path to a file
-   * @returns the URL to access the file
-   * Adapted from https://www.npmjs.com/package/capacitor-blob-writer
-   * */
-  async getFileSrc(relativePath) {
-    // How the URI is obtained depends on the platform
-    if (Capacitor.isNativePlatform()) {
-      const { uri } = await Filesystem.getUri({
-        path: relativePath,
-        directory: Directory.Data,
-      });
-      console.log("Filesystem.uri:", uri);
-      return Capacitor.convertFileSrc(uri);
-    } else {
-      const { data } = await Filesystem.readFile({
-        path: relativePath,
-        directory: Directory.Data,
-      });
-      return URL.createObjectURL(new Blob([data]));
-    }
-  }
-
-  /** Update assets contents list to include new filepath for lookup (by template-asset service) */
+  /** Update the template-asset service's assets contents list to include new filepath for lookup */
   async updateContentsList(
     assetName: string,
     updates: { filesystemPath?: string; url?: string; metadata?: any }
   ) {
-    // TODO
-    // Options:
-    // 1. Store contents list in memory (shared with template-asset service) and update this
-    // 2. Save to file, contents.json (ensure template-asset service uses up-to-date version)
-    // 3. Use localstorage
     const { filesystemPath, url } = updates;
     if (filesystemPath) {
       this.templateAssetService.assetsContentList[assetName].downloadedFilepath = filesystemPath;
@@ -76,5 +57,42 @@ export class FileManagerService extends SyncServiceBase {
       "[File manager] updated asset entry:",
       this.templateAssetService.assetsContentList[assetName]
     );
+  }
+
+  /**
+   * @returns a URL to access the file (not currently used)
+   * Adapted from https://www.npmjs.com/package/capacitor-blob-writer
+   */
+  async getLocalUrl(relativePath: string) {
+    // How the URI is obtained depends on the platform
+    if (Capacitor.isNativePlatform()) {
+      const { uri } = await Filesystem.getUri({
+        path: `${this.cacheName}/${relativePath}`,
+        directory: Directory.Data,
+      });
+      return Capacitor.convertFileSrc(uri);
+    }
+    // On web, return a URL from which to read the file
+    else {
+      const { data } = await Filesystem.readFile({
+        path: `${this.cacheName}/${relativePath}`,
+        directory: Directory.Data,
+      });
+      return URL.createObjectURL(new Blob([data]));
+    }
+  }
+
+  /**
+   * WIP: method to save list of cached assets to file. This file is to be used at least by remote-asset service
+   * to compare cached files to those required by deployment to generate manifest of those to be downlaoded
+   */
+  async writeCacheListToFile(cachedFilesList: IAssetContents) {
+    return await Filesystem.writeFile({
+      directory: Directory.Data,
+      path: `${this.cacheName}/cachedFiles.json`,
+      data: JSON.stringify(cachedFilesList),
+      recursive: true,
+      encoding: Encoding.UTF8,
+    });
   }
 }

@@ -9,7 +9,7 @@ import { AppConfigService } from "../app-config/app-config.service";
 import { FileManagerService } from "../file-manager/file-manager.service";
 import { SyncServiceBase } from "../syncService.base";
 import { IAssetContents } from "src/app/data";
-import { BehaviorSubject, Subject, Subscription } from "rxjs";
+import { BehaviorSubject, Subscription } from "rxjs";
 
 @Injectable({
   providedIn: "root",
@@ -20,8 +20,6 @@ export class RemoteAssetService extends SyncServiceBase {
   folderName: string;
   supabase: SupabaseClient;
   downloading: boolean = false;
-  blob: Blob;
-  private currentDownload$?: Subscription;
   downloadProgress: number;
 
   constructor(
@@ -37,10 +35,12 @@ export class RemoteAssetService extends SyncServiceBase {
   private initialise() {
     // require supabase to be configured to use remote asset service
     const { enabled: supabaseEnabled, publicApiKey, url } = environment.deploymentConfig.supabase;
-    if (supabaseEnabled && this.remoteAssetsEnabled) {
-      this.supabase = createClient(url, publicApiKey);
+    if (supabaseEnabled) {
       this.subscribeToAppConfigChanges();
-      this.registerTemplateActionHandlers();
+      if (this.remoteAssetsEnabled) {
+        this.supabase = createClient(url, publicApiKey);
+        this.registerTemplateActionHandlers();
+      }
     }
   }
 
@@ -79,112 +79,62 @@ export class RemoteAssetService extends SyncServiceBase {
    *  Download methods
    ************************************************************************************/
   async downloadAndPopulateRequiredAssets() {
-    // Proposed steps:
-
-    // 1.
-    // Check config and download relevant manifest of expected files
-    // Generate manifest of locally available files
-    // Compare these, and generate a manifest of files to download
+    // Get manifest of files to download
     const manifest = this.generateManifest();
-
-    // 2. For each file:
-    // a) download file from supabase
-    // b) populate to respective folder
-    // c) update the assets contents list to include the file's URI for lookup
-    for (const [relativePath, assetEntry] of Object.entries(manifest)) {
-      // // Imperative version
-      // let uri = "";
-      // if (Capacitor.isNativePlatform()) {
-      //   const blob = await this.downloadFileFromPrivateBucket(relativePath);
-      //   console.log("blob:", blob);
-      //   if (blob) {
-      //     uri = await this.fileManagerService.saveFile(blob, relativePath);
-      //   } else {
-      //     console.error("Failed to download resource");
-      //   }
-      // } else {
-      //   uri = this.getPublicUrl(relativePath);
-      // }
-      // console.log("uri:", uri);
-      // if (uri) {
-      //   await this.fileManagerService.updateContentsList(relativePath, uri);
-      // }
-
+    const relativePaths = Object.keys(manifest);
+    relativePaths.forEach((relativePath, i) => {
+      const url = this.getPublicUrl(relativePath);
       // If running on native device, download assets and populate to filesystem, adding local
       // filesystem path to asset entry in contents list for consumption by template asset service
       if (Capacitor.isNativePlatform()) {
         this.downloadProgress = 0;
-        this.downloadFileFromPublicBucket(relativePath).subscribe({
-          next: ({ progress, subscription }) => {
-            this.currentDownload$ = subscription;
-            this.downloadProgress = progress;
-          },
+        let data: Blob;
+        this.downloadFileFromUrl(url, "blob").subscribe({
           error: (err) => {
             console.error(err);
             this.downloadProgress = undefined;
-            // TODO - show error message
+            // TODO - show error message to user
             throw err;
           },
-          complete: () => {
-            this.downloadProgress = undefined;
+          next: async (res) => {
+            data = res.data as Blob;
+            this.downloadProgress = res.progress;
+            console.log(
+              `[REMOTE ASSETS] Downloading ${i} of ${relativePaths.length} files: ${this.downloadProgress}%`
+            );
+          },
+          complete: async () => {
+            console.log(
+              `[REMOTE ASSETS] ${i} of ${relativePaths.length} files downloaded to cache`
+            );
+            if (data) {
+              const filesystemPath = await this.fileManagerService.saveFile(data, relativePath);
+              await this.fileManagerService.updateContentsList(relativePath, { filesystemPath });
+            }
           },
         });
       }
-      // Else, add link to public URL to contents list for consumption by template asset service
+      // On web, add asset's public URL to contents list for consumption by template asset service
       else {
-        this.fileManagerService.updateContentsList(relativePath, {
-          url: this.getPublicUrl(relativePath),
-        });
+        console.log(
+          `[REMOTE ASSETS] Fetching remote URL for ${i} of ${relativePaths.length} files.`
+        );
+        this.fileManagerService.updateContentsList(relativePath, { url });
       }
-    }
+    });
   }
 
-  private generateManifest() {
+  private generateManifest(): IAssetContents {
+    // TODO: Check config and download relevant manifest of expected files, compare
+    // this to manifest of cached files, and generate a manifest of files to download.
     // Return dummy manifest for now
-    const manifest = {
+    const manifest: IAssetContents = {
       "quality_assurance/test_image.png": {
         size_kb: 2,
         md5Checksum: "e6d6c6a12ca13a6277084e01c088378c",
       },
     };
-    // const manifest = [{ path: "quality_assurance/test_image.png" }]
-    return manifest as IAssetContents;
-  }
-
-  /** Supabase buckets which are public do not support the SDK download method */
-  downloadFileFromPublicBucket(filepath: string) {
-    const publicUrl = this.getPublicUrl(filepath);
-    let data: Blob;
-    let subscription: Subscription;
-    let progress: number;
-    // create a new subject to subscribe from inner observable
-    const updates$ = new Subject<{
-      progress: number;
-      subscription: Subscription;
-      filesystemPath?: string;
-    }>();
-    // call file download subscription, passing values to top observable
-    // TODO - might be tidier way to manage nested observables (e.g. map/switchmap/mergemap op)
-    this.downloadFileFromUrl(publicUrl, "blob").subscribe({
-      error: (err) => updates$.error(err),
-      next: async (res) => {
-        data = res.data as Blob;
-        subscription = res.subscription;
-        progress = res.progress;
-        updates$.next({ progress, subscription });
-      },
-      complete: async () => {
-        console.log("download to cache completed");
-        console.log("data:", data);
-        if (data) {
-          const filesystemPath = await this.fileManagerService.saveFile(data, filepath);
-          await this.fileManagerService.updateContentsList(filepath, { filesystemPath });
-          updates$.next({ progress, subscription, filesystemPath });
-          updates$.complete();
-        }
-      },
-    });
-    return updates$;
+    return manifest;
   }
 
   private downloadFileFromUrl(
@@ -274,15 +224,15 @@ export class RemoteAssetService extends SyncServiceBase {
    *  Download method utils
    ************************************************************************************/
 
-  /** Get a file's public URL from supabase */
-  getPublicUrl(filepath: string) {
+  /** Get a file's public supabase URL */
+  getPublicUrl(relativePath: string) {
     let url = "";
     try {
       const {
         data: { publicUrl },
       } = this.supabase.storage
         .from(this.bucketName)
-        .getPublicUrl(this.getSupabaseFilepath(filepath));
+        .getPublicUrl(this.getSupabaseFilepath(relativePath));
       if (publicUrl) {
         url = publicUrl;
       }
@@ -294,8 +244,8 @@ export class RemoteAssetService extends SyncServiceBase {
   }
 
   /** Convert base filepath to match supabase storage folder structure */
-  private getSupabaseFilepath(filepath: string) {
-    return `${this.folderName}/${filepath}`;
+  private getSupabaseFilepath(relativePath: string) {
+    return `${this.folderName}/${relativePath}`;
   }
 
   private convertBlobToBase64(blob: Blob): Promise<string> {
