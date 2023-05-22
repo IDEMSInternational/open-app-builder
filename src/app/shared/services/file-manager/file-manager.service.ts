@@ -48,7 +48,7 @@ export class FileManagerService extends SyncServiceBase {
   ) {
     const { filesystemPath, url } = updates;
     if (filesystemPath) {
-      this.templateAssetService.assetsContentList[assetName].downloadedFilepath = filesystemPath;
+      this.templateAssetService.assetsContentList[assetName].cachedFilepath = filesystemPath;
     }
     if (url) {
       this.templateAssetService.assetsContentList[assetName].url = url;

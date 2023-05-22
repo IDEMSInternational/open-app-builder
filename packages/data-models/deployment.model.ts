@@ -127,12 +127,13 @@ interface IContentsEntry {
   size_kb: number;
   modifiedTime: string;
   md5Checksum: string;
-  /** specific path to file when same as relativePath, e.g. asset overrides */
+  localPath?: string;
+  /** specific path to file when not the same as relativePath, e.g. asset overrides */
   filePath?: string;
-  /** External to display remote assets when running in browser */
+  /** External URL to display remote assets when running in browser */
   url?: string;
   /** Path to file in local device filesystem, populated after asset download */
-  downloadedFilepath?: string;
+  cachedFilepath?: string;
 }
 
 /** Duplicate type definition from gdrive-downloader (TODO - find better way to share) */

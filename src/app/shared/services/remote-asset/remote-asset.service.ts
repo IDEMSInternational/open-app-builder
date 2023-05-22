@@ -100,12 +100,14 @@ export class RemoteAssetService extends SyncServiceBase {
             data = res.data as Blob;
             this.downloadProgress = res.progress;
             console.log(
-              `[REMOTE ASSETS] Downloading ${i} of ${relativePaths.length} files: ${this.downloadProgress}%`
+              `[REMOTE ASSETS] Downloading ${i + 1} of ${relativePaths.length} files: ${
+                this.downloadProgress
+              }%`
             );
           },
           complete: async () => {
             console.log(
-              `[REMOTE ASSETS] ${i} of ${relativePaths.length} files downloaded to cache`
+              `[REMOTE ASSETS] ${i + 1} of ${relativePaths.length} files downloaded to cache`
             );
             if (data) {
               const filesystemPath = await this.fileManagerService.saveFile(data, relativePath);
