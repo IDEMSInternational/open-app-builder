@@ -81,9 +81,8 @@ export class TemplateAssetService extends AsyncServiceBase {
   private getFilePath(assetName, contentsEntry: IContentsEntryMinimal | Partial<IAssetEntry>) {
     if (environment.deploymentConfig.supabase.enabled) {
       if (Capacitor.isNativePlatform()) {
-        console.log("contentsEntry.downloadedFilepath:", contentsEntry.downloadedFilepath);
         return (
-          contentsEntry.downloadedFilepath ||
+          contentsEntry.cachedFilepath ||
           this.convertPLHRelativePathToAssetPath(contentsEntry.filePath || assetName)
         );
       }

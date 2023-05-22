@@ -173,6 +173,12 @@ export interface IContentsEntry {
   modifiedTime: string;
   md5Checksum: string;
   localPath?: string;
+  /** specific path to file when not the same as relativePath, e.g. asset overrides */
+  filePath?: string;
+  /** External URL to display remote assets when running in browser */
+  url?: string;
+  /** Path to file in local device filesystem, populated after asset download */
+  cachedFilepath?: string;
 }
 export type IContentsEntryHashmap = { [relativePath: string]: IContentsEntry };
 
