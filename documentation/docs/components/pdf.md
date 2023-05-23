@@ -19,4 +19,4 @@
 | Parameter         | Default     | Description |
 | ---------         | ----------- | --------- |
 |starting_page	    | 1	          | The page that will be displayed when the component is initially rendered |
-|error_message	    | "Embedded PDFs are not supported in this browser, please use an up-to-date version of Google Chrome to view"  | An errorr message to be displayed on legacy browsers that don't support the pdf component |
+|error_message	    | "Embedded PDFs are not supported in this browser, please use an up-to-date version of Google Chrome to view"  | An error message to be displayed on legacy browsers that don't support the pdf component |
