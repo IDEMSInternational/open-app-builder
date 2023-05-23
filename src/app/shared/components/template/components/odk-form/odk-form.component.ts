@@ -35,11 +35,12 @@ export interface IEventFormSaved {
  * It is preferable to import from external project when available to remove additional
  * imports as noted below
  *
- * Opt-Out
- * - Can remove modules:
- *   jquery jquery-touchswipe mergexml/mergexml bootstrap-datepicker signature_pad html5sortable
- *
+ * Opt-Out (additional changes to make if removing component)
+ * - Remove modules:
+ *   jquery jquery-touchswipe mergexml/mergexml bootstrap-datepicker signature_pad html5sortable node-forge
  * - Remove js file import in tsconfig.app.json
+ * - Reduce build budget styles 200kb -> 16kb
+ * - Reduce build budget js 5MB -> 4MB
  */
 export class TmplOdkFormComponent extends TemplateBaseComponent implements OnInit {
   /** HTML form template */
