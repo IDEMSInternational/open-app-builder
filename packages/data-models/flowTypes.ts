@@ -264,6 +264,7 @@ export namespace FlowTypes {
     | "navigation_bar"
     | "nested_properties"
     | "number_selector"
+    | "odk_form"
     | "parent_point_box"
     | "parent_point_counter"
     | "qr_code"
