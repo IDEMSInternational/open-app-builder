@@ -3,3 +3,9 @@ ngx-extended-pdf-viewer {
     background-color: var(--ion-color-primary);
   }
 }
+
+.error-message {
+  font-size: var(--buttons-font-size-small);
+  font-weight: var(--font-weight-standard);
+  color: var(--ion-color-primary);
+}
