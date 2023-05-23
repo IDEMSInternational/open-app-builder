@@ -1,0 +1,72 @@
+@import "libs/enketo/sass/grid/grid.scss";
+
+:host {
+  display: block;
+  position: relative;
+
+  // @font-face {
+  //   font-family: "OpenSans";
+  //   src: url("./assets/fonts/OpenSans-Regular-webfont.woff") format("woff");
+  //   font-weight: normal;
+  //   font-style: normal;
+  // }
+  // font-family: "OpenSans", sans-serif;
+  font-weight: 400;
+}
+#form-title {
+  margin: 0;
+}
+#form-unavailable {
+  // give form a chance to load/render before showing unavailable message
+  animation: appearDelayed 2s;
+  -webkit-animation: appearDelayed 2s;
+  -moz-animation: appearDelayed 2s;
+  -o-animation: appearDelayed 2s;
+  -ms-animation: appearDelayed 2s;
+}
+
+.enketo-logo-container {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  margin-bottom: -25px;
+  font-size: 18px;
+}
+.enketo-logo {
+  height: 25px;
+}
+// HACK - show all form sections (need to add buttons for page nave)
+.pages.or .or-group-data {
+  display: block !important;
+}
+// HACK - using emojis instead of icons so recolor as required
+.icon {
+  color: transparent;
+  text-shadow: 0 0 0 white;
+  margin-left: -12px;
+  margin-right: 12px;
+}
+
+#form-footer {
+  display: flex;
+  padding: 20px;
+  justify-content: center;
+}
+#form-footer > button {
+  min-width: 180px;
+  min-height: 48px;
+  margin: 0 10px;
+}
+
+// Animations
+@keyframes appearDelayed {
+  0% {
+    opacity: 0;
+  }
+  90% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
