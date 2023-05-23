@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, ViewEncapsulation } from "@angular/core";
 import { TemplateBaseComponent } from "../base";
 import { pdfDefaultOptions } from "ngx-extended-pdf-viewer";
 import { getNumberParamFromTemplateRow, getStringParamFromTemplateRow } from "src/app/shared/utils";
@@ -8,6 +8,8 @@ import { isLegacyBrowser } from "src/app/shared/utils";
   selector: "plh-pdf",
   templateUrl: "./pdf.component.html",
   styleUrls: ["./pdf.component.scss"],
+  // Allow override of global pdf viewer styles
+  encapsulation: ViewEncapsulation.None,
 })
 export class TmplPdfComponent extends TemplateBaseComponent implements OnInit {
   startingPage: number;
