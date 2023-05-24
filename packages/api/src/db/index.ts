@@ -1,3 +1,4 @@
+// TODO - not working in prod - should check if still required
 require("ts-node/register");
 
 import * as path from "path";
