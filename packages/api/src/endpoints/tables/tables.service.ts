@@ -1,17 +1,12 @@
 import { Injectable } from "@nestjs/common";
 import { EventEmitter2 } from "@nestjs/event-emitter";
-import { InjectConnection } from "@nestjs/sequelize";
-import { Sequelize } from "sequelize";
+import { DeploymentService } from "src/modules/deployment.service";
 import { ColumnMappingType, CUSTOM_EVENTS, FieldDataTypeMapping } from "src/types";
 import { arrayToHashmap, dropTableColumn, listTableColumns } from "src/utils";
 
 @Injectable()
 export class TableService {
-  constructor(
-    @InjectConnection()
-    private sequelize: Sequelize,
-    private eventEmitter: EventEmitter2
-  ) {}
+  constructor(private eventEmitter: EventEmitter2, private deploymentService: DeploymentService) {}
 
   /** Dynamically create or drop table columns */
   async updateTableColumns(table_name: string, op: "add" | "drop", columns: ColumnMappingType[]) {
@@ -23,7 +18,7 @@ export class TableService {
         // TODO - handle remapping of existing column
         // TODO - could process together as transaction
         for (const column of newColumns) {
-          const queryInterface = this.sequelize.getQueryInterface();
+          const queryInterface = this.deploymentService.client.getQueryInterface();
           const fieldTypeKey = column.field_type || "text";
           if (!FieldDataTypeMapping.hasOwnProperty(fieldTypeKey)) {
             console.error(`[${fieldTypeKey}] not supported`);

@@ -21,7 +21,7 @@ $ yarn workspaces focus api
 $ yarn start
 
 # watch mode
-$ yarn start:dev
+$ yarn start:watch
 
 # production mode
 $ yarn start:prod
