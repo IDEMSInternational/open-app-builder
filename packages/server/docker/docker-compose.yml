@@ -6,11 +6,18 @@ services:
   # Nginx with auto cert generate and renewal
   ####################################################################
   nginx:
-    image: jonasal/nginx-certbot:3.1.3
+    image: jonasal/nginx-certbot:4.2.1
     container_name: plh_webserver
     restart: unless-stopped
     env_file:
       - ../.env
+    environment:
+      - USE_ECDSA=1
+      # Debugging - set to 0 to sign local cert (sometimes required before then signing as 1)
+      # https://github.com/JonasAlfredsson/docker-nginx-certbot/blob/master/docs/good_to_know.md#initial-testing
+      # - USE_LOCAL_CA=1
+      # - STAGING=1
+      # - DEBUG=1
     ports:
       - 80:80
       - 443:443
@@ -28,6 +35,10 @@ services:
       - ./config/nginx/templates:/etc/nginx/templates
       # Certs populated by certbot
       - nginx_secrets:/etc/letsencrypt
+
+      # HACK CC 2023-05-24 - certs not reneweing so ran certbot manually and copy over
+      # Should ensure still renew and consider removing/replacing volume
+      # - /etc/letsencrypt:/etc/letsencrypt
   ####################################################################
   # IDEMS Apps API
   ####################################################################
@@ -39,7 +50,7 @@ services:
     #   context: ../../api
     #   dockerfile: Dockerfile
     #   target: prod-env
-    image: idems/apps-api:1.2.7
+    image: idems/apps-api:1.3.0
     env_file:
       - ../../api/.env
     environment:
