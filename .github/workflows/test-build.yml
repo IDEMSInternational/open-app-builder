@@ -33,7 +33,7 @@ jobs:
       - name: Set Deployment
         run: yarn workflow deployment set $DEPLOYMENT_NAME
       - name: Lint
-        run: yarn lint
+        run: yarn lint && yarn workspace api lint
       - name: Unit Test Workspaces
         run: yarn test:workspaces  
       - run: yarn build
