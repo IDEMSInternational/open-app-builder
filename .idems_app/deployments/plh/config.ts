@@ -1,6 +1,6 @@
 import { generateDeploymentConfig } from "scripts";
 const config = generateDeploymentConfig("plh");
-import { SKINS } from "./skins";
+import { SKINS } from "../../skins";
 
 /**
  * The default config should ideally be a superset of any extended configs
