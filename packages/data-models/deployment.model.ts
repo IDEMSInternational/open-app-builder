@@ -1,7 +1,7 @@
 import type { IAppConfig } from "./appConfig";
 
 /** Update version to force recompile next time deployment set (e.g. after default config update) */
-export const DEPLOYMENT_CONFIG_VERSION = 20230413;
+export const DEPLOYMENT_CONFIG_VERSION = 20230428;
 
 export interface IDeploymentConfig {
   /** Friendly name used to identify the deployment name */
@@ -31,6 +31,15 @@ export interface IDeploymentConfig {
     splash_asset_path?: string;
     icon_asset_foreground_path?: string;
     icon_asset_background_path?: string;
+  };
+  api: {
+    /** Name of target db for api operations. Default `plh` */
+    db_name?: string;
+    /**
+     * Target endpoint for api. Default `https://apps-server.idems.international/api`
+     * Will be replaced when running locally as per `src\app\shared\services\server\interceptors.ts`
+     * */
+    endpoint?: string;
   };
   /** Optional override of any provided constants from data-models/constants */
   app_config: IAppConfig;
@@ -92,6 +101,10 @@ export const DEPLOYMENT_CONFIG_EXAMPLE_DEFAULTS: IDeploymentConfig = {
     assets_filter_function: (gdriveEntry) => true,
   },
   android: {},
+  api: {
+    db_name: "plh",
+    endpoint: "https://apps-server.idems.international/api",
+  },
   app_config: {} as any, // populated by `getDefaultAppConstants()`,
   local_drive: {
     assets_path: "./assets",
@@ -127,6 +140,8 @@ interface IContentsEntry {
   size_kb: number;
   modifiedTime: string;
   md5Checksum: string;
+  /** specific path to file when same as relativePath, e.g. asset overrides */
+  filePath?: string;
 }
 
 /** Duplicate type definition from gdrive-downloader (TODO - find better way to share) */
@@ -151,10 +166,13 @@ interface IFlowTypeBase {
   status: "draft" | "released";
 }
 
-type IContentsEntryMinimal = Omit<IContentsEntry, "relativePath" | "modifiedTime">;
+export type IContentsEntryMinimal = Omit<IContentsEntry, "relativePath" | "modifiedTime">;
 
 export interface IAssetEntry extends IContentsEntryMinimal {
-  translations?: { [language_code: string]: IContentsEntryMinimal };
-  themeVariations?: { [theme_name: string]: IContentsEntryMinimal };
+  overrides?: {
+    [theme_name: string]: {
+      [language_code: string]: IContentsEntryMinimal;
+    };
+  };
 }
 export type IAssetEntryHashmap = { [assetPath: string]: IAssetEntry };
