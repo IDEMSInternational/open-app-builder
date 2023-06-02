@@ -66,7 +66,7 @@
             <h3>File</h3>
         </p>
         <p class="comment">
-            <code>src/app/shared/components/template/components/radio-group-grid/radio-group-grid.component.ts</code>
+            <code>src/app/shared/components/template/components/radio-button-grid/radio-button-grid.component.ts</code>
         </p>
 
 
@@ -241,27 +241,32 @@ interface IAnswerListItem {
   text?: string;
 }
 
-interface IAuthorParameterList {
+interface IRadioButtonGridParams {
   /** List of options presented as radio items */
   answer_list: IAnswerListItem[];
   /**
-   * Minimum item width, will increase to fit grid
-   * default &#x27;200px&#x27;
+   * Minimum item width, will increase to fit grid.
+   * Default &#x27;200px&#x27;
    **/
   item_width: string;
   /**
-   * Maximum grid width, if specified will center items in available space
-   * default &#x27;100%&#x27;
+   * Maximum grid width, if specified will center items in available space.
+   * Default &#x27;100%&#x27;
    **/
   grid_width: string;
+  /**
+   * Spacing between grid items.
+   * Default &#x27;16px&#x27;
+   **/
+  grid_gap: string;
 }
 
 @Component({
-  selector: &quot;plh-radio-group-grid&quot;,
-  templateUrl: &quot;./radio-group-grid.component.html&quot;,
-  styleUrls: [&quot;./radio-group-grid.component.scss&quot;],
+  selector: &quot;plh-radio-button-grid&quot;,
+  templateUrl: &quot;./radio-button-grid.component.html&quot;,
+  styleUrls: [&quot;./radio-button-grid.component.scss&quot;],
 })
-export class TmplRadioGroupGridComponent
+export class TmplRadioButtonGridComponent
   extends TemplateBaseComponent
   implements ITemplateRowProps
 {
@@ -280,7 +285,7 @@ export class TmplRadioGroupGridComponent
   /**
    * Authoring parameters
    */
-  protected parameter_list: IAuthorParameterList;
+  public parameter_list: IRadioButtonGridParams;
 
   @Input() set row(row: FlowTypes.TemplateRow) {
     this._row &#x3D; row;
@@ -297,6 +302,7 @@ export class TmplRadioGroupGridComponent
   }
 
   private setParams() {
+    this.parameter_list &#x3D; this._row.parameter_list || ({} as any);
     this.radioItems &#x3D; this.generateItemList();
     this.gridStyle &#x3D; this.generateGridStyle();
   }
@@ -306,12 +312,16 @@ export class TmplRadioGroupGridComponent
    * https://thesoftwayfarecoder.com/dynamically-creating-css-classes-in-angular/
    */
   private generateGridStyle() {
-    const minItemWidth &#x3D; getParamFromTemplateRow(this._row, &quot;item_width&quot;, &quot;200px&quot;);
-    const maxGridWidth &#x3D; getParamFromTemplateRow(this._row, &quot;grid_width&quot;, &quot;100%&quot;);
+    const minItemWidth &#x3D; this.parameter_list.item_width || &quot;200px&quot;;
+    const maxGridWidth &#x3D; this.parameter_list.grid_width || &quot;100%&quot;;
+    const gridGap &#x3D; this.parameter_list.grid_gap || &quot;16px&quot;;
+
     const style: Partial&lt;CSSStyleDeclaration&gt; &#x3D; {
       // center grid with maximum width
       maxWidth: maxGridWidth,
       margin: &quot;auto&quot;,
+      // apply fixed gap between grid items
+      gap: gridGap,
       // fit columns with target item width
       gridTemplateColumns: &#x60;repeat(auto-fit, minmax(${minItemWidth}, 1fr))&#x60;,
       // make all rows same height
