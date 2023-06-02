@@ -605,9 +605,7 @@
           "za_xh": true,
           "za_zu": true
         },
-        "reply_ok": {
-          "tz_sw": true
-        },
+        "reply_ok": {},
         "reply_sad": {
           "tz_sw": true
         },
@@ -631,7 +629,7 @@
           "eng": "So good to hear you are feeling well today. You are incredible!"
         },
         "reply_ok": {
-          "eng": "We all have days where we just don’t know. That’s okay! You are here and that is what matters."
+          "eng": "We all have days where we just don’t know. That is okay! You are here and that is what matters."
         },
         "reply_sad": {
           "eng": "Being a parent can be hard. But you are here and that shows you want to keep improving things. That is a big accomplishment already!"
@@ -647,7 +645,7 @@
         }
       },
       "reply_happy": "So good to hear you are feeling well today. You are incredible!",
-      "reply_ok": "We all have days where we just don’t know. That’s okay! You are here and that is what matters.",
+      "reply_ok": "We all have days where we just don’t know. That is okay! You are here and that is what matters.",
       "reply_sad": "Being a parent can be hard. But you are here and that shows you want to keep improving things. That is a big accomplishment already!",
       "activity_title": "Welcome, @fields.user_name!",
       "intro_text": "It is great to see you again!",

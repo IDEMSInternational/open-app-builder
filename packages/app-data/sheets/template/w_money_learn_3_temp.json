@@ -212,16 +212,9 @@
                 },
                 {
                   "name": "text",
-                  "value": "Look at your list of things you spend money on and choose:\n* Which are NEEDS that you can’t live without? Why?\n* Which are WANTS which are nice to have but not essential? Why? \n* Which things could you try to spend less money on?",
+                  "value": "Look at your list of things you spend money on and choose:\n* Which are NEEDS that you cannot live without? Why?\n* Which are WANTS which are nice to have but not essential? Why? \n* Which things could you try to spend less money on?",
                   "_translations": {
-                    "value": {
-                      "tz_sw": true,
-                      "za_af": true,
-                      "za_st": true,
-                      "za_tn": true,
-                      "za_xh": true,
-                      "za_zu": true
-                    }
+                    "value": {}
                   },
                   "type": "set_variable",
                   "_nested_name": "learn_alone.workshop_activity.content_box.text"
