@@ -1,16 +1,17 @@
 import { Injectable } from "@nestjs/common";
-import { InjectModel } from "@nestjs/sequelize";
 import { AppFeedback } from "./app_feedback.model";
 import { UserFeedbackDto } from "./dto/add-user-feedback.dto";
+import { DeploymentService } from "src/modules/deployment.service";
 
 @Injectable()
 export class AppFeedbackService {
-  constructor(
-    @InjectModel(AppFeedback)
-    private readonly model: typeof AppFeedback
-  ) {}
+  constructor(private deploymentService: DeploymentService) {}
 
-  async findAll(): Promise<AppFeedback[]> {
+  private get model() {
+    return this.deploymentService.model(AppFeedback);
+  }
+
+  async findAll() {
     return this.model.findAll();
   }
 
