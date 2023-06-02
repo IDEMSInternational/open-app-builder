@@ -543,22 +543,8 @@
         "reply_ok": {
           "tz_sw": true
         },
-        "reply_sad": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        },
-        "outro_text": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        },
+        "reply_sad": {},
+        "outro_text": {},
         "activity_title": {},
         "intro_text": {},
         "question_done": {
@@ -586,10 +572,10 @@
           "eng": "It can be hard to create your first rule together, but you will see the benefits of involving your family. Keep trying!"
         },
         "reply_sad": {
-          "eng": "Sorry that this has been difficult. Creating rules together requires some practice but it's worth it!"
+          "eng": "Sorry that this has been difficult. Creating rules together requires some practice but it is worth it!"
         },
         "outro_text": {
-          "eng": "Well done for this! It’s not easy, and teenagers won’t keep to the rules all the time, but making a few key rules together is a great start. Praise yourself for trying this - we are proud of you!"
+          "eng": "Well done for this! It is not easy, and teenagers will not keep to the rules all the time, but making a few key rules together is a great start. Praise yourself for trying this - we are proud of you!"
         },
         "activity_title": {
           "eng": "@global.hp_review"
@@ -612,8 +598,8 @@
       },
       "reply_happy": "Great to hear it went well! Consistent rules help make our teens feel secure, and keep them safe!",
       "reply_ok": "It can be hard to create your first rule together, but you will see the benefits of involving your family. Keep trying!",
-      "reply_sad": "Sorry that this has been difficult. Creating rules together requires some practice but it's worth it!",
-      "outro_text": "Well done for this! It’s not easy, and teenagers won’t keep to the rules all the time, but making a few key rules together is a great start. Praise yourself for trying this - we are proud of you!",
+      "reply_sad": "Sorry that this has been difficult. Creating rules together requires some practice but it is worth it!",
+      "outro_text": "Well done for this! It is not easy, and teenagers will not keep to the rules all the time, but making a few key rules together is a great start. Praise yourself for trying this - we are proud of you!",
       "activity_title": "@global.hp_review",
       "intro_text": "@global.text_hp_review",
       "question_done": "Did you have a chance to try this?",
@@ -969,14 +955,7 @@
         "reply_ok": {
           "tz_sw": true
         },
-        "reply_sad": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        },
+        "reply_sad": {},
         "activity_title": {},
         "intro_text": {},
         "question_done": {
@@ -1012,7 +991,7 @@
           "eng": "It can be hard to think and talk about a crisis happening in your family. By trying you are already on the right path. Keep up the good work!"
         },
         "reply_sad": {
-          "eng": "Sorry that it didn’t go so well. This is not easy to do. Try to sit down and discuss it with your teen again. Also, is there someone your teen trusts who could join you in the discussion with your teen?"
+          "eng": "Sorry that it did not go so well. This is not easy to do. Try to sit down and discuss it with your teen again. Also, is there someone your teen trusts who could join you in the discussion with your teen?"
         },
         "activity_title": {
           "eng": "@global.hp_review"
@@ -1038,7 +1017,7 @@
       },
       "reply_happy": "Great to hear it went well!",
       "reply_ok": "It can be hard to think and talk about a crisis happening in your family. By trying you are already on the right path. Keep up the good work!",
-      "reply_sad": "Sorry that it didn’t go so well. This is not easy to do. Try to sit down and discuss it with your teen again. Also, is there someone your teen trusts who could join you in the discussion with your teen?",
+      "reply_sad": "Sorry that it did not go so well. This is not easy to do. Try to sit down and discuss it with your teen again. Also, is there someone your teen trusts who could join you in the discussion with your teen?",
       "activity_title": "@global.hp_review",
       "intro_text": "@global.text_hp_review",
       "question_done": "Did you have a chance to try this?",
