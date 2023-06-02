@@ -4145,6 +4145,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@idemsInternational/xlsform-converter@workspace:packages/@idemsInternational/xlsform-converter":
+  version: 0.0.0-use.local
+  resolution: "@idemsInternational/xlsform-converter@workspace:packages/@idemsInternational/xlsform-converter"
+  languageName: unknown
+  linkType: soft
+
 "@ionic-native/core@npm:^5.36.0":
   version: 5.36.0
   resolution: "@ionic-native/core@npm:5.36.0"
