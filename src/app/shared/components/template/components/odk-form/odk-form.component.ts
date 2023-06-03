@@ -1,11 +1,26 @@
-import { Component, ElementRef, Input, OnInit, ViewChild } from "@angular/core";
-import TEST_FORM_BASIC from "./test/form-basic.json";
+import { Component, ElementRef, OnInit, ViewChild } from "@angular/core";
 
 import Events from "./libs/enketo/js/event";
 import { Form } from "./libs/enketo/js/form";
 import { TemplateBaseComponent } from "../base";
+import { TemplateAssetService } from "../../services/template-asset.service";
 
-export interface IFormEntry {
+/** Enketo-transformed form representation */
+interface IEnketoFormData {
+  enketoId: string;
+  externalData: [];
+  /** html string representation of form */
+  form: string;
+  hash: string;
+  languageMap: {};
+  maxSize: number;
+  media: {};
+  /** xml string representation of model */
+  model: string;
+  theme: "grid";
+}
+
+interface IFormEntry {
   created: number;
   draft: boolean;
   enketoId: string;
@@ -17,8 +32,15 @@ export interface IFormEntry {
   xml: string;
 }
 
-export interface IEventFormSaved {
+interface IEventFormSaved {
   entry: IFormEntry;
+}
+
+interface IODKFormComponentParameters {
+  /**
+   * Path to asset file containing form data in enketo-transformed json format
+   */
+  form_asset?: string;
 }
 
 @Component({
@@ -43,22 +65,39 @@ export interface IEventFormSaved {
  * - Reduce build budget js 5MB -> 4MB
  */
 export class TmplOdkFormComponent extends TemplateBaseComponent implements OnInit {
-  /** HTML form template */
-  @Input() form: string = TEST_FORM_BASIC.form;
-
-  /** XML form model, as processed by an Enketo Transformer */
-  @Input() model: string = TEST_FORM_BASIC.model;
+  private parameter_list: IODKFormComponentParameters;
 
   @ViewChild("formContainerEl", { static: true }) formContainerEl: ElementRef<HTMLDivElement>;
 
-  private enketoForm: Form;
-
-  ngOnInit(): void {
-    this.loadForm();
+  constructor(private templateAssetService: TemplateAssetService) {
+    super();
   }
+
+  ngOnInit() {
+    this.processParameterList();
+  }
+
+  private async processParameterList() {
+    this.parameter_list = this._row.parameter_list || ({} as any);
+    // load form from form_asset parameter
+    const { form_asset } = this.parameter_list;
+    if (!form_asset) {
+      console.error("[odk_form] form_asset parameter required");
+      return;
+    }
+    const formData: IEnketoFormData = await this.templateAssetService.fetchAsset(form_asset);
+    if (!formData) {
+      console.error("[odk_form] form_asset does not exist");
+      return;
+    }
+    this.loadForm(formData);
+  }
+
+  private enketoForm: Form;
 
   public async save(opts = { draft: false }) {
     await this.setValue(this.xmlFormValue);
+    await this.triggerActions("changed");
   }
 
   private get xmlFormValue() {
@@ -67,27 +106,27 @@ export class TmplOdkFormComponent extends TemplateBaseComponent implements OnIni
 
   private async handleEventDataUpdate(e: ReturnType<typeof Events.DataUpdate>) {
     await this.setValue(this.xmlFormValue);
+    await this.triggerActions("changed");
   }
 
-  private handleEventXmlFormChange(e: ReturnType<typeof Events.XFormsValueChanged>) {
-    console.log("handle xml form change", e.detail);
+  private async handleEventXmlFormChange(e: ReturnType<typeof Events.XFormsValueChanged>) {
     // Value saved in autoSave method of https://github.com/enketo/enketo-express/blob/master/public/js/src/module/controller-webform.js
-    const formXML = this.xmlFormValue;
-    console.log("XFormsValueChanged", { formXML });
+    // await this.setValue(this.xmlFormValue);
   }
 
   /**
    * Load the form xml and data models and render intial form components
    * https://enketo.github.io/enketo-core/tutorial-00-getting-started.html
    */
-  private loadForm() {
-    const { form, model, formContainerEl } = this;
+  private loadForm(formData: IEnketoFormData) {
+    const { formContainerEl } = this;
+    const { form, model } = formData;
     console.log({ form, model, formContainerEl });
     if (form && model && formContainerEl) {
-      this.formContainerEl.nativeElement.innerHTML = this.form;
+      this.formContainerEl.nativeElement.innerHTML = form;
       const formEl = this.formContainerEl.nativeElement.querySelector("form");
       if (formEl) {
-        this.enketoForm = new Form(formEl, this.model, {});
+        this.enketoForm = new Form(formEl, model, {});
         // Initialize the form and capture any load errors
         let loadErrors = this.enketoForm.init();
         if (loadErrors.length > 0) {
