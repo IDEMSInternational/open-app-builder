@@ -43,15 +43,6 @@ class SheetsPostProcessor {
     const appSheetsFolder = path.resolve(app_data.output_path, "sheets");
     fs.ensureDirSync(appSheetsFolder);
     fs.emptyDirSync(appSheetsFolder);
-    // if (_parent_config) {
-    //   // TODO - merge parent config
-    //   logWarning({ msg1: "TODO - Merge parent content" });
-    //   // const parentSheetsFolder =
-    // }
-    // // Merge parent
-    // if (_parent_config) {
-    //   Logger.error({ msg1: "TODO - merge parent" });
-    // }
     // Handle Copy
     this.sheetsCopyFiles(sourceSheetsFolder, appSheetsFolder);
     const sheetContents = this.sheetsGenerateContents(appSheetsFolder);

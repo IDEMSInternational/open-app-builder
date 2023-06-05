@@ -49,7 +49,7 @@ export async function compileDeploymentTS(options: IOptions) {
   fs.utimesSync(options.output, mtime, mtime);
 }
 
-/** Additional export to call program via spawnSync */
+/** Additional export to call program a child process to allow sync execution of async functions */
 export function compileDeploymentTSSync(options: IOptions) {
   const exec = `yarn workspace scripts start`;
   const args = `deployment compile --input "${options.input}" --output "${options.output}"`;
