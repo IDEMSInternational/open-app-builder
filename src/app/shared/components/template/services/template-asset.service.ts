@@ -1,11 +1,10 @@
 import { Injectable } from "@angular/core";
 import { Capacitor } from "@capacitor/core";
-import { ASSETS_CONTENTS_LIST } from "src/app/data";
+import { ASSETS_CONTENTS_LIST, IAssetContents } from "src/app/data";
 import { ThemeService } from "src/app/feature/theme/services/theme.service";
 import { AsyncServiceBase } from "src/app/shared/services/asyncService.base";
 import { TemplateTranslateService } from "./template-translate.service";
 import { IAssetEntry, IContentsEntryMinimal } from "packages/data-models/deployment.model";
-import { environment } from "src/environments/environment";
 
 /** Synced assets are automatically copied during build to asset subfolder */
 const ASSETS_BASE = `assets/app_data/assets`;
@@ -16,7 +15,7 @@ const DEFAULT_THEME_NAME = "default";
 
 @Injectable({ providedIn: "root" })
 export class TemplateAssetService extends AsyncServiceBase {
-  public assetsContentList = ASSETS_CONTENTS_LIST;
+  public assetsContentList: IAssetContents = ASSETS_CONTENTS_LIST;
   constructor(
     private translateService: TemplateTranslateService,
     private themeService: ThemeService
@@ -57,19 +56,19 @@ export class TemplateAssetService extends AsyncServiceBase {
     // 1. current theme, current language
     const override1 = assetEntry.overrides?.[themeName]?.[langName];
     if (override1) {
-      return this.getFilePath(assetName, override1);
+      return this.getAssetPath(assetName, override1);
     }
     // 2. default theme, current language
     const override2 = assetEntry.overrides?.["theme_default"]?.[langName];
     if (override2) {
-      return this.getFilePath(assetName, override2);
+      return this.getAssetPath(assetName, override2);
     }
     // 3. current theme, default language
     const override3 = assetEntry.overrides?.[themeName]?.["global"];
     if (override3) {
-      return this.getFilePath(assetName, override3);
+      return this.getAssetPath(assetName, override3);
     }
-    return this.getFilePath(assetName, assetEntry);
+    return this.getAssetPath(assetName, assetEntry);
   }
 
   private cleanAssetName(value: string) {
@@ -78,29 +77,24 @@ export class TemplateAssetService extends AsyncServiceBase {
     return value;
   }
 
-  private getFilePath(assetName, contentsEntry: IContentsEntryMinimal | Partial<IAssetEntry>) {
-    if (environment.deploymentConfig.supabase.enabled) {
-      if (Capacitor.isNativePlatform()) {
-        return (
-          contentsEntry.cachedFilepath ||
-          this.convertPLHRelativePathToAssetPath(contentsEntry.filePath || assetName)
-        );
-      }
-      // If running on web, return external url (supabase). TODO: think about fallback
-      else {
-        return (
-          contentsEntry.url ||
-          this.convertPLHRelativePathToAssetPath(contentsEntry.filePath || assetName)
-        );
-      }
-    } else return this.convertPLHRelativePathToAssetPath(contentsEntry.filePath || assetName);
+  private getAssetPath(
+    assetName: string,
+    contentsEntry: IContentsEntryMinimal | Partial<IAssetEntry>
+  ) {
+    return this.convertGdriveRelativePathToAssetPath(contentsEntry.filePath || assetName);
   }
 
   /**
    * When asset paths are provided it is relative to the assets folder populated from
    * google drive. Rewrite paths to add correct prefix, fixing common authoring mistakes
    */
-  private convertPLHRelativePathToAssetPath(value: string) {
+  private convertGdriveRelativePathToAssetPath(value: string) {
+    // For remote assets, the filepath will be either an external URL (web) or an internal Android filepath (native).
+    // These should be left unchanged
+    if (value.startsWith("http") || value.startsWith("file://") || value.startsWith("content://")) {
+      return value;
+    }
+
     // ensure starts either "assets" or "/assets/"
     const regex = new RegExp(`^(\/)?assets\/`, "gi");
     let transformed = value;
@@ -112,6 +106,11 @@ export class TemplateAssetService extends AsyncServiceBase {
       transformed = transformed.replace(`${ASSETS_BASE}/${ASSETS_BASE}`, ASSETS_BASE);
     }
     return transformed;
+  }
+
+  public updateAssetsContentList(updates: IAssetContents) {
+    // TODO: Deep merge with updates? Store in rxdb via dynamicData?
+    return this.assetsContentList;
   }
 }
 
