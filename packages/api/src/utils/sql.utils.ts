@@ -1,5 +1,5 @@
 import { ITableColumn } from "../types";
-import { getSequelize } from "./sequelize.utils";
+import { getActiveClient } from "./sequelize.utils";
 
 export async function listTableNames() {
   const query = `
@@ -44,8 +44,7 @@ export function dropTableColumn(table_name: string, column_name: string) {
  *
  */
 export async function executeSQL(query: string, values: string[] = []) {
-  // TODO - might be way to pass existing connection
-  const sequelize = getSequelize();
+  const sequelize = getActiveClient();
   const res = await sequelize.query({ query, values });
   return res;
 }

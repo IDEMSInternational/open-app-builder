@@ -21,10 +21,8 @@ export const environment = {
   chatNonNavigatePaths: ["/chat/action", "/chat/msg-info"],
   variableNameFlows: ["character_names"],
   /** Local Settings */
-  apiEndpoint: "http://localhost:3000",
   analytics: { endpoint: "http://localhost/analytics", siteId: 1 },
   /** Production Settings **/
-  // apiEndpoint: "https://apps-server.idems.international/api",
   // analytics: { endpoint: "https://apps-server.idems.international/analytics", siteId: 1 },
 };
 

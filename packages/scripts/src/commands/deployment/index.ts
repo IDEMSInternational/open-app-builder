@@ -10,7 +10,6 @@ import { logProgramHelp } from "../../utils";
 
 const program = new Command("deployment").description("Manage active deployment workspace");
 
-/** add sub-commands from child folders */
 program.addCommand(compileCmd);
 program.addCommand(createCmd);
 program.addCommand(getCmd);
