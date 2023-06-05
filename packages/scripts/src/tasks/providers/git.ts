@@ -30,7 +30,7 @@ class GitProvider {
     console.log(chalk.gray("checkout [main]"));
     try {
       await this.git.checkout("main");
-      await this.git.pull();
+      await this.git.pull("origin", "main");
     } catch (error) {
       // If merge conflict prompt to discard local changes and retry
       console.log(chalk.red(error.message));
