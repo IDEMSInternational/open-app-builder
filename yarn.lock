@@ -6139,6 +6139,18 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@ts-morph/common@npm:~0.16.0":
+  version: 0.16.0
+  resolution: "@ts-morph/common@npm:0.16.0"
+  dependencies:
+    fast-glob: ^3.2.11
+    minimatch: ^5.1.0
+    mkdirp: ^1.0.4
+    path-browserify: ^1.0.1
+  checksum: 0ef97330a164a42b81b0499b042e91db8e39d705bb983ef83cbc80cc32ab36123e26baefb78203953d1a0c6e3b92cad9bc7a5e0ea409623a5e7db90cb3742112
+  languageName: node
+  linkType: hard
+
 "@tsconfig/node10@npm:^1.0.7":
   version: 1.0.9
   resolution: "@tsconfig/node10@npm:1.0.9"
@@ -6856,6 +6868,13 @@ __metadata:
   version: 7.3.13
   resolution: "@types/semver@npm:7.3.13"
   checksum: 00c0724d54757c2f4bc60b5032fe91cda6410e48689633d5f35ece8a0a66445e3e57fa1d6e07eb780f792e82ac542948ec4d0b76eb3484297b79bd18b8cf1cb0
+  languageName: node
+  linkType: hard
+
+"@types/semver@npm:^7.3.9":
+  version: 7.5.0
+  resolution: "@types/semver@npm:7.5.0"
+  checksum: 0a64b9b9c7424d9a467658b18dd70d1d781c2d6f033096a6e05762d20ebbad23c1b69b0083b0484722aabf35640b78ccc3de26368bcae1129c87e9df028a22e2
   languageName: node
   linkType: hard
 
@@ -24185,6 +24204,7 @@ __metadata:
     "@types/inquirer": ^7.3.1
     "@types/jasmine": ^3.10.6
     "@types/node-rsa": ^1.1.1
+    "@types/semver": ^7.3.9
     boxen: ^5.0.1
     chalk: ^4.1.0
     chokidar: ^3.5.3
@@ -24202,9 +24222,11 @@ __metadata:
     nodemon: ^2.0.19
     p-queue: ^6.6.2
     pkg: ^5.5.1
+    semver: ^7.3.7
     shared: "workspace:*"
     simple-git: ^3.7.1
     subtitles-parser-vtt: ^0.1.0
+    ts-morph: ^15.0.0
     ts-node: ^10.8.0
     ts-node-dev: ^1.0.0
     typescript: ^4.1.2
@@ -26445,7 +26467,6 @@ __metadata:
     "@types/fs-extra": ^9.0.12
     "@types/inquirer": ^8.1.2
     "@types/node": ^15.12.4
-    app-data: "workspace:*"
     boxen: ^5.0.1
     chalk: ^4.1.1
     commander: ^8.1.0
@@ -26552,6 +26573,16 @@ __metadata:
     "@ts-morph/common": ~0.12.3
     code-block-writer: ^11.0.0
   checksum: 0983a7c4e0e1063e3900186bf2e85c5080621e31b754434136d2130a82bda6556985fdf012b766a87b9ae47d6f63732a562bb80854c34644f9352bea9a35b8ee
+  languageName: node
+  linkType: hard
+
+"ts-morph@npm:^15.0.0":
+  version: 15.1.0
+  resolution: "ts-morph@npm:15.1.0"
+  dependencies:
+    "@ts-morph/common": ~0.16.0
+    code-block-writer: ^11.0.0
+  checksum: 95e026214282850f08d1d4de673e969cdc166cb6d9366e455e1ea0251a204f80cffcb958c8ed7b1f351e56b972c4244e0dc7be0b13df3c4a6f22abdd4d4608e4
   languageName: node
   linkType: hard
 
