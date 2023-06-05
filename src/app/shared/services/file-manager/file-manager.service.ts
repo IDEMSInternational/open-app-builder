@@ -6,6 +6,22 @@ import { SyncServiceBase } from "../syncService.base";
 import { TemplateAssetService } from "../../components/template/services/template-asset.service";
 import { environment } from "src/environments/environment";
 import { IAssetContents } from "src/app/data";
+import { IContentsEntryMinimal } from "packages/data-models/deployment.model";
+
+interface IDownloadedContentsEntry extends IContentsEntryMinimal {
+  /** External URL to display remote assets when running in browser */
+  url?: string;
+  /** Path to file in local device filesystem, populated after asset download */
+  cachedFilepath?: string;
+}
+interface IDownloadedAssetEntry extends IDownloadedContentsEntry {
+  overrides?: {
+    [theme_name: string]: {
+      [language_code: string]: IDownloadedContentsEntry;
+    };
+  };
+}
+export type IDownloadedAssetContents = { [relative_path: string]: Partial<IDownloadedAssetEntry> };
 
 @Injectable({
   providedIn: "root",
@@ -42,16 +58,12 @@ export class FileManagerService extends SyncServiceBase {
   }
 
   /** Update the template-asset service's assets contents list to include new filepath for lookup */
-  async updateContentsList(
-    assetName: string,
-    updates: { filesystemPath?: string; url?: string; metadata?: any }
-  ) {
-    const { filesystemPath, url } = updates;
-    if (filesystemPath) {
-      this.templateAssetService.assetsContentList[assetName].cachedFilepath = filesystemPath;
-    }
-    if (url) {
-      this.templateAssetService.assetsContentList[assetName].url = url;
+  async updateContentsList(assetName: string, updates: { uri?: string; metadata?: any }) {
+    const { uri } = updates;
+    if (uri) {
+      this.templateAssetService.assetsContentList[assetName].filePath = uri;
+      // TODO: theme/language overrides. Possibly use "setNestedProperty", e.g.:
+      // setNestedProperty(overrides.theme_default.tz_sw, uri, this.templateAssetService.assetsContentList[assetName])
     }
     console.log(
       "[File manager] updated asset entry:",
@@ -86,7 +98,7 @@ export class FileManagerService extends SyncServiceBase {
    * WIP: method to save list of cached assets to file. This file is to be used at least by remote-asset service
    * to compare cached files to those required by deployment to generate manifest of those to be downlaoded
    */
-  async writeCacheListToFile(cachedFilesList: IAssetContents) {
+  async writeCacheListToFile(cachedFilesList: IDownloadedAssetContents) {
     return await Filesystem.writeFile({
       directory: Directory.Data,
       path: `${this.cacheName}/cachedFiles.json`,

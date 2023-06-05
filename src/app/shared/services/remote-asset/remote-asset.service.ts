@@ -89,6 +89,7 @@ export class RemoteAssetService extends SyncServiceBase {
       if (Capacitor.isNativePlatform()) {
         this.downloadProgress = 0;
         let data: Blob;
+
         this.downloadFileFromUrl(url, "blob").subscribe({
           error: (err) => {
             console.error(err);
@@ -111,7 +112,9 @@ export class RemoteAssetService extends SyncServiceBase {
             );
             if (data) {
               const filesystemPath = await this.fileManagerService.saveFile(data, relativePath);
-              await this.fileManagerService.updateContentsList(relativePath, { filesystemPath });
+              await this.fileManagerService.updateContentsList(relativePath, {
+                uri: filesystemPath,
+              });
             }
           },
         });
@@ -121,7 +124,7 @@ export class RemoteAssetService extends SyncServiceBase {
         console.log(
           `[REMOTE ASSETS] Fetching remote URL for ${i} of ${relativePaths.length} files.`
         );
-        this.fileManagerService.updateContentsList(relativePath, { url });
+        this.fileManagerService.updateContentsList(relativePath, { uri: url });
       }
     });
   }
