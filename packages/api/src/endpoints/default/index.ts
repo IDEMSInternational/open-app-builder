@@ -1,5 +1,7 @@
-import { Controller, Get, Module } from "@nestjs/common";
+import { Controller, Get, Headers, Module } from "@nestjs/common";
 import { ApiOperation } from "@nestjs/swagger";
+import { environment } from "../../environment";
+import { DeploymentHeaders } from "src/modules/deployment.decorators";
 
 @Controller()
 class DefaultController {
@@ -8,10 +10,12 @@ class DefaultController {
   // redirect(@Res() res) {
   //   return res.redirect("/api");
   // }
+
   @Get("status")
   @ApiOperation({ summary: "Check server status" })
-  checkStatus() {
-    return "API Up";
+  @DeploymentHeaders()
+  checkStatus(@Headers("x-deployment-db-name") db_name = environment.APP_DB_NAME) {
+    return `[${db_name}] API Up`;
   }
 }
 

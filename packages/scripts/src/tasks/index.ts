@@ -23,6 +23,7 @@ const ALL_TASKS = {
   deployment,
   encryption,
   file,
+  git,
   gdrive,
   git,
   subtitles,
