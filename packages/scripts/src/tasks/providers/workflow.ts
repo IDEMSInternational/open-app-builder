@@ -1,5 +1,5 @@
-import { spawnSync } from "child_process";
 import { IWorkflowContext } from "data-models/workflows";
+import { parseCommand } from "../../commands";
 
 /**
  * Call another workflow to run.
@@ -11,11 +11,11 @@ const runWorkflow = async (options: {
   args?: string[];
 }) => {
   const { name, args, parent } = options;
-  let cmd = `yarn start workflow run ${name} --parent ${parent.name}`;
+  let cmd = `workflow run ${name} --parent ${parent.name}`;
   if (args) {
     cmd += ` ${args.join(" ")}`;
   }
-  spawnSync(cmd, { stdio: "inherit", shell: true });
+  parseCommand(cmd);
 };
 
 export default { runWorkflow };
