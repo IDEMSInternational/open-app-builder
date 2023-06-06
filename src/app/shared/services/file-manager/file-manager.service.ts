@@ -61,13 +61,14 @@ export class FileManagerService extends SyncServiceBase {
   async updateContentsList(assetName: string, updates: { uri?: string; metadata?: any }) {
     const { uri } = updates;
     if (uri) {
-      this.templateAssetService.assetsContentList[assetName].filePath = uri;
+      this.templateAssetService.assetsContentsList[assetName] ??= {};
+      this.templateAssetService.assetsContentsList[assetName].filePath = uri;
       // TODO: theme/language overrides. Possibly use "setNestedProperty", e.g.:
       // setNestedProperty(overrides.theme_default.tz_sw, uri, this.templateAssetService.assetsContentList[assetName])
     }
     console.log(
       "[File manager] updated asset entry:",
-      this.templateAssetService.assetsContentList[assetName]
+      this.templateAssetService.assetsContentsList[assetName]
     );
   }
 

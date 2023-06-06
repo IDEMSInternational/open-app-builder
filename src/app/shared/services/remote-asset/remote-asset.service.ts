@@ -9,7 +9,7 @@ import { AppConfigService } from "../app-config/app-config.service";
 import { FileManagerService } from "../file-manager/file-manager.service";
 import { SyncServiceBase } from "../syncService.base";
 import { IAssetContents } from "src/app/data";
-import { BehaviorSubject, Subscription } from "rxjs";
+import { BehaviorSubject, Subscription, lastValueFrom } from "rxjs";
 
 @Injectable({
   providedIn: "root",
@@ -82,51 +82,21 @@ export class RemoteAssetService extends SyncServiceBase {
     // Get manifest of files to download
     const manifest = this.generateManifest();
     const relativePaths = Object.keys(manifest);
-    relativePaths.forEach((relativePath, i) => {
+    for (const [index, relativePath] of relativePaths.entries()) {
       const url = this.getPublicUrl(relativePath);
       // If running on native device, download assets and populate to filesystem, adding local
       // filesystem path to asset entry in contents list for consumption by template asset service
       if (Capacitor.isNativePlatform()) {
-        this.downloadProgress = 0;
-        let data: Blob;
-
-        this.downloadFileFromUrl(url, "blob").subscribe({
-          error: (err) => {
-            console.error(err);
-            this.downloadProgress = undefined;
-            // TODO - show error message to user
-            throw err;
-          },
-          next: async (res) => {
-            data = res.data as Blob;
-            this.downloadProgress = res.progress;
-            console.log(
-              `[REMOTE ASSETS] Downloading ${i + 1} of ${relativePaths.length} files: ${
-                this.downloadProgress
-              }%`
-            );
-          },
-          complete: async () => {
-            console.log(
-              `[REMOTE ASSETS] ${i + 1} of ${relativePaths.length} files downloaded to cache`
-            );
-            if (data) {
-              const filesystemPath = await this.fileManagerService.saveFile(data, relativePath);
-              await this.fileManagerService.updateContentsList(relativePath, {
-                uri: filesystemPath,
-              });
-            }
-          },
-        });
+        await this.handleDownload(url, relativePath, index, relativePaths.length);
       }
       // On web, add asset's public URL to contents list for consumption by template asset service
       else {
         console.log(
-          `[REMOTE ASSETS] Fetching remote URL for ${i} of ${relativePaths.length} files.`
+          `[REMOTE ASSETS] Fetching remote URL for ${index + 1} of ${relativePaths.length} files.`
         );
         this.fileManagerService.updateContentsList(relativePath, { uri: url });
       }
-    });
+    }
   }
 
   private generateManifest(): IAssetContents {
@@ -138,8 +108,49 @@ export class RemoteAssetService extends SyncServiceBase {
         size_kb: 2,
         md5Checksum: "e6d6c6a12ca13a6277084e01c088378c",
       },
+      "quality_assurance/example_asset.png": {
+        size_kb: 2,
+        md5Checksum: "e6d6c6a12ca13a6277084e01c088378c",
+      },
     };
     return manifest;
+  }
+
+  async handleDownload(url: string, relativePath: string, index: number, totalFiles: number) {
+    this.downloadProgress = 0;
+    let data: Blob;
+    return new Promise((resolve, reject) => {
+      this.downloadFileFromUrl(url, "blob").subscribe({
+        error: (err) => {
+          console.error(err);
+          this.downloadProgress = undefined;
+          // TODO - show error message to user
+          reject(new Error(err));
+        },
+        next: async (res) => {
+          data = res.data as Blob;
+          this.downloadProgress = res.progress;
+          console.log(
+            `[REMOTE ASSETS] Downloading file ${index + 1} of ${totalFiles}: ${
+              this.downloadProgress
+            }%`
+          );
+        },
+        complete: async () => {
+          console.log(`[REMOTE ASSETS] ${index + 1} of ${totalFiles} files downloaded to cache`);
+          if (data) {
+            const filesystemPath = await this.fileManagerService.saveFile(
+              data as Blob,
+              relativePath
+            );
+            await this.fileManagerService.updateContentsList(relativePath, {
+              uri: filesystemPath,
+            });
+          }
+          setTimeout(() => resolve(data), 2000);
+        },
+      });
+    });
   }
 
   private downloadFileFromUrl(
