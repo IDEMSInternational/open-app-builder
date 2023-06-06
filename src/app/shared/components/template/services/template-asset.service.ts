@@ -15,7 +15,7 @@ const DEFAULT_THEME_NAME = "default";
 
 @Injectable({ providedIn: "root" })
 export class TemplateAssetService extends AsyncServiceBase {
-  public assetsContentList: IAssetContents = ASSETS_CONTENTS_LIST;
+  public assetsContentsList: IAssetContents = ASSETS_CONTENTS_LIST;
   constructor(
     private translateService: TemplateTranslateService,
     private themeService: ThemeService
@@ -41,7 +41,7 @@ export class TemplateAssetService extends AsyncServiceBase {
    */
   getTranslatedAssetPath(value: string) {
     let assetName = this.cleanAssetName(value);
-    const assetEntry = this.assetsContentList[assetName];
+    const assetEntry = this.assetsContentsList[assetName];
     if (!assetEntry) {
       console.error("Asset missing", value, assetName);
       return `${ASSETS_GLOBAL_FOLDER_NAME}/${assetName}`;
@@ -108,9 +108,9 @@ export class TemplateAssetService extends AsyncServiceBase {
     return transformed;
   }
 
-  public updateAssetsContentList(updates: IAssetContents) {
+  public updateAssetsContentsList(updates: IAssetContents) {
     // TODO: Deep merge with updates? Store in rxdb via dynamicData?
-    return this.assetsContentList;
+    return this.assetsContentsList;
   }
 }
 
