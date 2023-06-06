@@ -9,7 +9,7 @@ import { AppConfigService } from "../app-config/app-config.service";
 import { FileManagerService } from "../file-manager/file-manager.service";
 import { SyncServiceBase } from "../syncService.base";
 import { IAssetContents } from "src/app/data";
-import { BehaviorSubject, Subscription, lastValueFrom } from "rxjs";
+import { BehaviorSubject, Subject, Subscription, lastValueFrom } from "rxjs";
 
 @Injectable({
   providedIn: "root",
@@ -87,7 +87,9 @@ export class RemoteAssetService extends SyncServiceBase {
       // If running on native device, download assets and populate to filesystem, adding local
       // filesystem path to asset entry in contents list for consumption by template asset service
       if (Capacitor.isNativePlatform()) {
-        await this.handleDownload(url, relativePath, index, relativePaths.length);
+        await lastValueFrom(
+          this.handleDownload(url, relativePath, index, relativePaths.length)
+        ).catch((error) => console.error(error));
       }
       // On web, add asset's public URL to contents list for consumption by template asset service
       else {
@@ -116,43 +118,47 @@ export class RemoteAssetService extends SyncServiceBase {
     return manifest;
   }
 
-  async handleDownload(url: string, relativePath: string, index: number, totalFiles: number) {
-    this.downloadProgress = 0;
+  /**
+   * Download a single asset from an array of assets,
+   * save to local storage and update the assets contents list
+   * */
+  handleDownload(url: string, relativePath: string, fileIndex: number, totalFiles: number) {
+    console.log(
+      `[REMOTE ASSETS] Downloading file ${fileIndex + 1} of ${totalFiles}: ${
+        this.downloadProgress
+      }%`
+    );
     let data: Blob;
-    return new Promise((resolve, reject) => {
-      this.downloadFileFromUrl(url, "blob").subscribe({
-        error: (err) => {
-          console.error(err);
-          this.downloadProgress = undefined;
-          // TODO - show error message to user
-          reject(new Error(err));
-        },
-        next: async (res) => {
-          data = res.data as Blob;
-          this.downloadProgress = res.progress;
-          console.log(
-            `[REMOTE ASSETS] Downloading file ${index + 1} of ${totalFiles}: ${
-              this.downloadProgress
-            }%`
-          );
-        },
-        complete: async () => {
-          console.log(`[REMOTE ASSETS] ${index + 1} of ${totalFiles} files downloaded to cache`);
-          if (data) {
-            const filesystemPath = await this.fileManagerService.saveFile(
-              data as Blob,
-              relativePath
-            );
-            await this.fileManagerService.updateContentsList(relativePath, {
-              uri: filesystemPath,
-            });
-          }
-          setTimeout(() => resolve(data), 2000);
-        },
-      });
+    let progress: number;
+    // create a new subject to subscribe from inner observable
+    const progress$ = new Subject<number>();
+    this.downloadFileFromUrl(url, "blob").subscribe({
+      error: (err) => {
+        this.downloadProgress = undefined;
+        progress$.error(err);
+      },
+      next: async (res) => {
+        data = res.data as Blob;
+        progress = res.progress;
+        console.log(`[REMOTE ASSETS] Downloading: ${progress}%`);
+        progress$.next(progress);
+      },
+      complete: async () => {
+        console.log(`[REMOTE ASSETS] File ${fileIndex + 1} of ${totalFiles} downloaded to cache`);
+        if (data) {
+          const filesystemPath = await this.fileManagerService.saveFile(data, relativePath);
+          await this.fileManagerService.updateContentsList(relativePath, {
+            uri: filesystemPath,
+          });
+        }
+        progress$.next(progress);
+        progress$.complete();
+      },
     });
+    return progress$;
   }
 
+  /** A general function to download a file from a URL */
   private downloadFileFromUrl(
     url: string,
     responseType: "blob" | "base64" = "base64",
