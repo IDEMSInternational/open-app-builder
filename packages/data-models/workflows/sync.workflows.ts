@@ -14,6 +14,11 @@ const workflows: IDeploymentWorkflows = {
     ],
     steps: [
       {
+        condition: async ({ config }) => config.git?.content_repo !== undefined,
+        name: "sync_remote",
+        function: async ({ tasks }) => tasks.git().refreshRemoteRepo(),
+      },
+      {
         name: "sync_assets",
         function: async ({ tasks, workflow }) =>
           tasks.workflow.runWorkflow({ name: "sync_assets", parent: workflow }),
@@ -89,11 +94,12 @@ const workflows: IDeploymentWorkflows = {
         name: "assets_dl",
         function: async ({ tasks, config, options }) => {
           const folderId = config.google_drive.assets_folder_id;
+          const filterFn = config.google_drive.assets_filter_function;
           // If skipping download still need to return download folder for next step
           if (options.skipDownload) {
             return tasks.gdrive.getOutputFolder(folderId);
           } else {
-            return tasks.gdrive.download({ folderId });
+            return tasks.gdrive.download({ folderId, filterFn });
           }
         },
       },

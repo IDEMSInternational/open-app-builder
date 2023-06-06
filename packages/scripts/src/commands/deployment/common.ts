@@ -28,8 +28,12 @@ export function extendDeploymentConfig(options: {
 }): IDeploymentConfig {
   const parentWorkspace = path.resolve(DEPLOYMENTS_PATH, options.parent);
   const baseConfig = loadDeploymentJson(parentWorkspace);
-  // add parent_config meta
+  // add parent_config meta, remove git references
   baseConfig._parent_config = { name: baseConfig.name, _workspace_path: parentWorkspace };
   baseConfig.name = options.name;
+  if (baseConfig.git.content_repo) {
+    baseConfig._parent_config.git = baseConfig.git;
+    delete baseConfig.git;
+  }
   return baseConfig as IDeploymentConfig;
 }
