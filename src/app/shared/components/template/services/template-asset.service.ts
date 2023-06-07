@@ -11,7 +11,7 @@ const ASSETS_BASE = `assets/app_data/assets`;
 
 /** Expected folder containing global assets (TODO - merge with scripts) */
 const ASSETS_GLOBAL_FOLDER_NAME = "global";
-const DEFAULT_THEME_NAME = "default";
+const DEFAULT_THEME_NAME = "theme_default";
 
 @Injectable({ providedIn: "root" })
 export class TemplateAssetService extends AsyncServiceBase {
@@ -59,7 +59,7 @@ export class TemplateAssetService extends AsyncServiceBase {
       return this.getAssetPath(assetName, override1);
     }
     // 2. default theme, current language
-    const override2 = assetEntry.overrides?.["theme_default"]?.[langName];
+    const override2 = assetEntry.overrides?.[DEFAULT_THEME_NAME]?.[langName];
     if (override2) {
       return this.getAssetPath(assetName, override2);
     }
@@ -108,9 +108,17 @@ export class TemplateAssetService extends AsyncServiceBase {
     return transformed;
   }
 
-  public updateAssetsContentsList(updates: IAssetContents) {
-    // TODO: Deep merge with updates? Store in rxdb via dynamicData?
-    return this.assetsContentsList;
+  public async updateContentsList(assetName: string, updates?: { uri?: string }) {
+    // TODO: Store contents list overrides in rxdb via dynamicData service to enable persitence.
+    // For now, just update this.assetsContentsList
+    const { uri } = updates;
+    if (uri) {
+      this.assetsContentsList[assetName] ??= {};
+      this.assetsContentsList[assetName].filePath = uri;
+      // TODO: theme/language overrides. Possibly use "setNestedProperty", e.g.:
+      // setNestedProperty(overrides.theme_default.tz_sw, uri, this.templateAssetService.assetsContentList[assetName])
+    }
+    console.log("[TEMPLATE ASSET] updated asset entry:", this.assetsContentsList[assetName]);
   }
 }
 

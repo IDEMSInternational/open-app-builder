@@ -7,14 +7,15 @@ import { TemplateActionRegistry } from "../../components/template/services/insta
 import { IAppConfig } from "../../model";
 import { AppConfigService } from "../app-config/app-config.service";
 import { FileManagerService } from "../file-manager/file-manager.service";
-import { SyncServiceBase } from "../syncService.base";
 import { IAssetContents } from "src/app/data";
 import { BehaviorSubject, Subject, Subscription, lastValueFrom } from "rxjs";
+import { TemplateAssetService } from "../../components/template/services/template-asset.service";
+import { AsyncServiceBase } from "../asyncService.base";
 
 @Injectable({
   providedIn: "root",
 })
-export class RemoteAssetService extends SyncServiceBase {
+export class RemoteAssetService extends AsyncServiceBase {
   remoteAssetsEnabled: boolean;
   bucketName: string;
   folderName: string;
@@ -26,16 +27,19 @@ export class RemoteAssetService extends SyncServiceBase {
     private templateActionRegistry: TemplateActionRegistry,
     private appConfigService: AppConfigService,
     private fileManagerService: FileManagerService,
+    private templateAssetService: TemplateAssetService,
     private http: HttpClient
   ) {
     super("RemoteAsset");
-    this.initialise();
+    this.registerInitFunction(this.initialise);
   }
 
-  private initialise() {
+  private async initialise() {
     // require supabase to be configured to use remote asset service
     const { enabled: supabaseEnabled, publicApiKey, url } = environment.deploymentConfig.supabase;
     if (supabaseEnabled) {
+      await this.ensureAsyncServicesReady([this.templateAssetService]);
+      this.ensureSyncServicesReady([this.appConfigService, this.fileManagerService]);
       this.subscribeToAppConfigChanges();
       if (this.remoteAssetsEnabled) {
         this.supabase = createClient(url, publicApiKey);
@@ -96,7 +100,7 @@ export class RemoteAssetService extends SyncServiceBase {
         console.log(
           `[REMOTE ASSETS] Fetching remote URL for ${index + 1} of ${relativePaths.length} files.`
         );
-        this.fileManagerService.updateContentsList(relativePath, { uri: url });
+        this.templateAssetService.updateContentsList(relativePath, { uri: url });
       }
     }
   }
@@ -147,7 +151,7 @@ export class RemoteAssetService extends SyncServiceBase {
         console.log(`[REMOTE ASSETS] File ${fileIndex + 1} of ${totalFiles} downloaded to cache`);
         if (data) {
           const filesystemPath = await this.fileManagerService.saveFile(data, relativePath);
-          await this.fileManagerService.updateContentsList(relativePath, {
+          await this.templateAssetService.updateContentsList(relativePath, {
             uri: filesystemPath,
           });
         }
