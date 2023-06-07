@@ -30,14 +30,7 @@
         "description": {
           "tz_sw": true
         },
-        "mark_text": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        },
+        "mark_text": {},
         "short_mark_text": {
           "tz_sw": true,
           "za_af": true,
@@ -58,7 +51,7 @@
           "eng": "Do a short relaxation activity: Take a deep breath or open one of the relaxation activities in @global.parent_app. You can do this anytime or anywhere. Taking care of yourself helps you to take care of others."
         },
         "mark_text": {
-          "eng": "Every time you do a relax, tap the @global.parent_point and celebrate your success!"
+          "eng": "Every time you relax, tap the @global.parent_point and celebrate your success!"
         },
         "short_mark_text": {
           "eng": "Did it? Tap it!"
@@ -66,7 +59,7 @@
       },
       "in_text_title": "**Relax** @global.parent_point",
       "description": "Do a short relaxation activity: Take a deep breath or open one of the relaxation activities in @global.parent_app. You can do this anytime or anywhere. Taking care of yourself helps you to take care of others.",
-      "mark_text": "Every time you do a relax, tap the @global.parent_point and celebrate your success!",
+      "mark_text": "Every time you relax, tap the @global.parent_point and celebrate your success!",
       "short_mark_text": "Did it? Tap it!"
     },
     {
