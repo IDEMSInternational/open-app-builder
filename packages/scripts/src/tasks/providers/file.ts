@@ -1,10 +1,12 @@
 import fs from "fs-extra";
 import chokidar from "chokidar";
-import { generateFolderFlatMap } from "../../utils";
+import { generateFolderFlatMap, replicateDir } from "../../utils";
 import { resolve } from "path";
 
 const remove = (options: { src: string }) => fs.removeSync(options.src);
 const filter = (options: { src: string; target?: string }) => null;
+const replicate = replicateDir;
+
 const copy = (options: { src: string; target: string; copyOptions?: fs.CopyOptionsSync }) =>
   fs.copySync(options.src, options.target, options.copyOptions || {});
 
@@ -34,5 +36,6 @@ export default {
   copy,
   watchFolder,
   writeFolderContents,
-  // filter, copy
+  filter,
+  replicate,
 };
