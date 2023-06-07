@@ -188,7 +188,7 @@
     {
       "type": "declare_global_constant",
       "name": "female_caregiver_1",
-      "value": "Gogo",
+      "value": "Mother",
       "_translations": {
         "value": {}
       },
@@ -197,16 +197,7 @@
     {
       "type": "declare_global_constant",
       "name": "female_caregiver_2",
-      "value": "Mother",
-      "_translations": {
-        "value": {}
-      },
-      "exclude_from_translation": true
-    },
-    {
-      "type": "declare_global_constant",
-      "name": "female_caregiver_3",
-      "value": "Mother",
+      "value": "Gogo",
       "_translations": {
         "value": {}
       },
@@ -377,15 +368,6 @@
     {
       "type": "declare_global_constant",
       "name": "male_caregiver_2",
-      "value": "Father",
-      "_translations": {
-        "value": {}
-      },
-      "exclude_from_translation": true
-    },
-    {
-      "type": "declare_global_constant",
-      "name": "male_caregiver_3",
       "value": "Mkhulu",
       "_translations": {
         "value": {}
