@@ -86,6 +86,7 @@ export class RemoteAssetService extends AsyncServiceBase {
     // Get manifest of files to download
     const manifest = this.generateManifest();
     const relativePaths = Object.keys(manifest);
+    // TODO: implement queue system for downloads (see template-action service, or use of 3rd party p-queue elsewhere)
     for (const [index, relativePath] of relativePaths.entries()) {
       const url = this.getPublicUrl(relativePath);
       // If running on native device, download assets and populate to filesystem, adding local
