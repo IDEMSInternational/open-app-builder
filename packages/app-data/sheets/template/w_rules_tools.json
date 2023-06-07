@@ -87,16 +87,9 @@
             },
             {
               "name": "text_1",
-              "value": "Make them realistic for what your teenager can do, and be clear and specific so there’s no misunderstanding. Not ‘on time’ but ‘by 7pm’.",
+              "value": "Make them realistic for what your teenager can do, and be clear and specific so there is no misunderstanding. Not ‘on time’ but ‘by 7pm’.",
               "_translations": {
-                "value": {
-                  "tz_sw": true,
-                  "za_af": true,
-                  "za_st": true,
-                  "za_tn": true,
-                  "za_xh": true,
-                  "za_zu": true
-                }
+                "value": {}
               },
               "type": "set_variable",
               "_nested_name": "essential_tools.tool_2.text_1"

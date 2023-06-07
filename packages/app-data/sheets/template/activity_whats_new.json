@@ -45,16 +45,9 @@
         },
         {
           "name": "activity_text",
-          "value": "* Think of a new skill you could learn together with your teen. For example, keeping a ball in the air or your foot, juggling, making soup?\n* Take turns in trying the new skill out.\n* Make sure to praise each other, and try to learn and play together!",
+          "value": "* Think of a new skill you could learn together with your teen. For example, keeping a ball in the air or on your foot, juggling, making soup?\n* Take turns in trying the new skill out.\n* Make sure to praise each other, and try to learn and play together!",
           "_translations": {
-            "value": {
-              "tz_sw": true,
-              "za_af": true,
-              "za_st": true,
-              "za_tn": true,
-              "za_xh": true,
-              "za_zu": true
-            }
+            "value": {}
           },
           "type": "set_variable",
           "_nested_name": "lib_act_something_fun.activity_text"
