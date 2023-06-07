@@ -4,22 +4,7 @@ import { Capacitor } from "@capacitor/core";
 import write_blob from "capacitor-blob-writer";
 import { SyncServiceBase } from "../syncService.base";
 import { environment } from "src/environments/environment";
-import { IContentsEntryMinimal } from "packages/data-models/deployment.model";
-
-interface IDownloadedContentsEntry extends IContentsEntryMinimal {
-  /** External URL to display remote assets when running in browser */
-  url?: string;
-  /** Path to file in local device filesystem, populated after asset download */
-  cachedFilepath?: string;
-}
-interface IDownloadedAssetEntry extends IDownloadedContentsEntry {
-  overrides?: {
-    [theme_name: string]: {
-      [language_code: string]: IDownloadedContentsEntry;
-    };
-  };
-}
-export type IDownloadedAssetContents = { [relative_path: string]: Partial<IDownloadedAssetEntry> };
+import { IAssetContents } from "src/app/data";
 
 @Injectable({
   providedIn: "root",
@@ -79,10 +64,9 @@ export class FileManagerService extends SyncServiceBase {
   }
 
   /**
-   * WIP: method to save list of cached assets to file. This file is to be used at least by remote-asset service
-   * to compare cached files to those required by deployment to generate manifest of those to be downlaoded
+   * WIP: method to save list of cached assets to file. May not be needed if we utilize rxdb/dynamicDataService
    */
-  async writeCacheListToFile(cachedFilesList: IDownloadedAssetContents) {
+  async writeCacheListToFile(cachedFilesList: IAssetContents) {
     return await Filesystem.writeFile({
       directory: Directory.Data,
       path: `${this.cacheName}/cachedFiles.json`,
