@@ -3,9 +3,7 @@ import { Directory, Encoding, Filesystem } from "@capacitor/filesystem";
 import { Capacitor } from "@capacitor/core";
 import write_blob from "capacitor-blob-writer";
 import { SyncServiceBase } from "../syncService.base";
-import { TemplateAssetService } from "../../components/template/services/template-asset.service";
 import { environment } from "src/environments/environment";
-import { IAssetContents } from "src/app/data";
 import { IContentsEntryMinimal } from "packages/data-models/deployment.model";
 
 interface IDownloadedContentsEntry extends IContentsEntryMinimal {
@@ -29,7 +27,7 @@ export type IDownloadedAssetContents = { [relative_path: string]: Partial<IDownl
 export class FileManagerService extends SyncServiceBase {
   cacheName: string;
 
-  constructor(private templateAssetService: TemplateAssetService) {
+  constructor() {
     super("FileManager");
     this.initialise();
   }
@@ -55,21 +53,6 @@ export class FileManagerService extends SyncServiceBase {
       },
     });
     return Capacitor.convertFileSrc(src);
-  }
-
-  /** Update the template-asset service's assets contents list to include new filepath for lookup */
-  async updateContentsList(assetName: string, updates: { uri?: string; metadata?: any }) {
-    const { uri } = updates;
-    if (uri) {
-      this.templateAssetService.assetsContentsList[assetName] ??= {};
-      this.templateAssetService.assetsContentsList[assetName].filePath = uri;
-      // TODO: theme/language overrides. Possibly use "setNestedProperty", e.g.:
-      // setNestedProperty(overrides.theme_default.tz_sw, uri, this.templateAssetService.assetsContentList[assetName])
-    }
-    console.log(
-      "[File manager] updated asset entry:",
-      this.templateAssetService.assetsContentsList[assetName]
-    );
   }
 
   /**
