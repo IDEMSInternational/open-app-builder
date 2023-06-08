@@ -92,6 +92,18 @@ const workflows: IDeploymentWorkflows = {
               await tasks.encryption.decrypt();
             },
           },
+          {
+            name: "refresh_remote_content",
+            function: async ({ tasks, config }) => {
+              if (config.git?.content_repo) {
+                await tasks.git().refreshRemoteRepo();
+              }
+            },
+          },
+          {
+            name: "copy_to_app",
+            function: async ({ tasks }) => tasks.appData.copyDeploymentDataToApp(),
+          },
         ],
       },
       encrypt: {

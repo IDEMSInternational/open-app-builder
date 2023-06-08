@@ -772,16 +772,9 @@
         {
           "type": "text",
           "name": "reply_choice_2_c",
-          "value": "Wonderful! By sharing responsibilities, you will have more time to do something fun with your teen – it’s so important!",
+          "value": "Wonderful! By sharing responsibilities, you will have more time to do something fun with your teen – it is so important!",
           "_translations": {
-            "value": {
-              "tz_sw": true,
-              "za_af": true,
-              "za_st": true,
-              "za_tn": true,
-              "za_xh": true,
-              "za_zu": true
-            }
+            "value": {}
           },
           "hidden": "@local.combo_box_challenge_2!=\"choice_2_c\"",
           "_nested_name": "challenge_2.reply_choice_2_c",
@@ -822,16 +815,9 @@
     {
       "type": "text",
       "name": "reply_challenge_3",
-      "value": "Yes, it takes some time to get used to giving positive instructions – it’s really worth trying again! Think about the behaviour you would love to see your teen do more and think of positive ways to give that instruction!",
+      "value": "Yes, it takes some time to get used to giving positive instructions – it is really worth trying again! Think about the behaviour you would love to see your teen do more and think of positive ways to give that instruction!",
       "_translations": {
-        "value": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        }
+        "value": {}
       },
       "condition": "@local.combo_box==\"challenge_3\"",
       "_nested_name": "reply_challenge_3",

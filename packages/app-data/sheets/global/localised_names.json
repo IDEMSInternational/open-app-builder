@@ -186,15 +186,6 @@
     {
       "type": "declare_global_constant",
       "name": "female_caregiver_1",
-      "value": "Grandma",
-      "_translations": {
-        "value": {}
-      },
-      "exclude_from_translation": true
-    },
-    {
-      "type": "declare_global_constant",
-      "name": "female_caregiver_2",
       "value": "Mother",
       "_translations": {
         "value": {}
@@ -203,8 +194,8 @@
     },
     {
       "type": "declare_global_constant",
-      "name": "female_caregiver_3",
-      "value": "Mom",
+      "name": "female_caregiver_2",
+      "value": "Grandma",
       "_translations": {
         "value": {}
       },
@@ -375,15 +366,6 @@
     {
       "type": "declare_global_constant",
       "name": "male_caregiver_2",
-      "value": "Dad",
-      "_translations": {
-        "value": {}
-      },
-      "exclude_from_translation": true
-    },
-    {
-      "type": "declare_global_constant",
-      "name": "male_caregiver_3",
       "value": "Grandpa",
       "_translations": {
         "value": {}

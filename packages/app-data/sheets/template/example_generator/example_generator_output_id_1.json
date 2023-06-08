@@ -1,0 +1,41 @@
+{
+  "flow_name": "example_generator_output_id_1",
+  "flow_subtype": "example_generator",
+  "flow_type": "template",
+  "rows": [
+    {
+      "type": "title",
+      "name": "title",
+      "value": "Welcome to Workshop 1",
+      "_translations": {
+        "value": {}
+      },
+      "_nested_name": "title"
+    },
+    {
+      "type": "text",
+      "name": "text",
+      "value": "This text will populate based on condition",
+      "_translations": {
+        "value": {}
+      },
+      "condition": "@fields.show_image_1",
+      "_nested_name": "text",
+      "_dynamicFields": {
+        "condition": [
+          {
+            "fullExpression": "@fields.show_image_1",
+            "matchedExpression": "@fields.show_image_1",
+            "type": "fields",
+            "fieldName": "show_image_1"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@fields.show_image_1": [
+          "condition"
+        ]
+      }
+    }
+  ]
+}
