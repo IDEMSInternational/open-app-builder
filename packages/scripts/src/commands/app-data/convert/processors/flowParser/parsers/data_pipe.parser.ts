@@ -18,7 +18,7 @@ export class DataPipeParser extends DefaultParser<FlowTypes.DataPipeFlow> {
     }
     try {
       const outputs = pipe.run();
-      this.handleOutputs(outputs);
+      this.populateGeneratedFlows(outputs);
     } catch (error) {
       console.trace(error);
       throw error;
@@ -26,16 +26,21 @@ export class DataPipeParser extends DefaultParser<FlowTypes.DataPipeFlow> {
     return this.flow;
   }
 
-  private handleOutputs(outputs: { [output_name: string]: any[] }) {
-    // store generated outputs to flow
-    this.flow._processed = outputs;
-    // also populate generated outputs to be available for future input sources
-    if (!this.flowProcessor.processedFlowHashmap.data_list) {
-      this.flowProcessor.processedFlowHashmap.data_list = {};
-    }
+  private populateGeneratedFlows(outputs: { [output_name: string]: any[] }) {
+    const generated: FlowTypes.DataPipeFlow["_generated"] = { data_list: {} };
+    this.flowProcessor.processedFlowHashmap.data_list ??= {};
+
     for (const [flow_name, rows] of Object.entries(outputs)) {
+      generated.data_list[flow_name] = {
+        flow_name,
+        flow_subtype: "generated",
+        flow_type: "data_list",
+        rows,
+      };
+      // also populate generated outputs to be available for future input sources
       this.flowProcessor.processedFlowHashmap.data_list[flow_name] = rows;
     }
+    this.flow._generated = generated;
   }
 
   private loadInputSources() {
