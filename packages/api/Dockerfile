@@ -49,4 +49,4 @@ EXPOSE 3000
 HEALTHCHECK --interval=12s --timeout=12s --start-period=30s \  
     CMD node dist/healthcheck.js
 # Start server command 
-CMD ["node", "dist/main"]
+CMD ["node", "dist/main.js"]
