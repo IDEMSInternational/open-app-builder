@@ -119,16 +119,9 @@
                     },
                     {
                       "name": "text",
-                      "value": "Parents usually don’t get thanked or praised enough.",
+                      "value": "Parents usually do not get thanked or praised enough.",
                       "_translations": {
-                        "value": {
-                          "tz_sw": true,
-                          "za_af": true,
-                          "za_st": true,
-                          "za_tn": true,
-                          "za_xh": true,
-                          "za_zu": true
-                        }
+                        "value": {}
                       },
                       "type": "set_variable",
                       "_nested_name": "question_time.workshop_activity.content_box.radio_buttons_2.text"
