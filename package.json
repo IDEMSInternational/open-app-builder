@@ -28,7 +28,7 @@
     "test:e2e": "yarn workspace test-e2e start",
     "lint": "ng lint",
     "lint:docs": "cspell \"documentation/docs/**/*.md\" --config \"cspell.config.yml\"",
-    "analyse": "yarn build -- --stats-json && npx webpack-bundle-analyzer www/stats.json"
+    "analyse": "ng build --configuration=production --stats-json && npx webpack-bundle-analyzer www/stats.json"
   },
   "private": true,
   "dependencies": {
@@ -90,6 +90,7 @@
     "marked": "^2.0.1",
     "ng2-nouislider": "^1.8.3",
     "ngx-color": "^6.1.0",
+    "ngx-extended-pdf-viewer": "16.2.16",
     "ngx-lottie": "^7.0.4",
     "nouislider": "^14.6.3",
     "qrcode": "^1.5.1",
@@ -99,6 +100,7 @@
     "shared": "workspace:*",
     "stacktrace-js": "^2.0.2",
     "swiper": "^8.4.4",
+    "trusted-types": "^2.0.0",
     "zone.js": "~0.11.4"
   },
   "devDependencies": {
