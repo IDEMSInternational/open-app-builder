@@ -43,15 +43,6 @@ class SheetsPostProcessor {
     const appSheetsFolder = path.resolve(app_data.output_path, "sheets");
     fs.ensureDirSync(appSheetsFolder);
     fs.emptyDirSync(appSheetsFolder);
-    // if (_parent_config) {
-    //   // TODO - merge parent config
-    //   logWarning({ msg1: "TODO - Merge parent content" });
-    //   // const parentSheetsFolder =
-    // }
-    // // Merge parent
-    // if (_parent_config) {
-    //   Logger.error({ msg1: "TODO - merge parent" });
-    // }
     // Handle Copy
     this.sheetsCopyFiles(sourceSheetsFolder, appSheetsFolder);
     const sheetContents = this.sheetsGenerateContents(appSheetsFolder);
@@ -84,10 +75,11 @@ class SheetsPostProcessor {
     // Generate contents
     const contents: ISheetContents = {
       data_list: {},
+      data_pipe: {},
+      generator: {},
       global: {},
       template: {},
       tour: {},
-      data_pipe: {},
     };
     const sheetPaths = recursiveFindByExtension(baseFolder, "json").sort();
     for (const sheetPath of sheetPaths) {
@@ -102,7 +94,7 @@ class SheetsPostProcessor {
 
   private extractContentsData(flow: FlowTypes.FlowTypeWithData): FlowTypes.FlowTypeBase {
     // remove rows property (if exists)
-    const { rows, status, _processed, ...keptFields } = flow;
+    const { rows, status, _generated, ...keptFields } = flow;
     return keptFields as FlowTypes.FlowTypeBase;
   }
   private sheetsWriteContents(baseFolder: string, contents: ISheetContents) {

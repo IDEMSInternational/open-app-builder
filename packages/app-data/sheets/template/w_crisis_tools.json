@@ -48,16 +48,9 @@
             },
             {
               "name": "text_1",
-              "value": "Stay calm. Ask yourself ‘what does my teen need right now’",
+              "value": "Stay calm. Ask yourself \"What does my teen need right now?\"",
               "_translations": {
-                "value": {
-                  "tz_sw": true,
-                  "za_af": true,
-                  "za_st": true,
-                  "za_tn": true,
-                  "za_xh": true,
-                  "za_zu": true
-                }
+                "value": {}
               },
               "type": "set_variable",
               "_nested_name": "essential_tools.tool_1.text_1"

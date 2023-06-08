@@ -27,7 +27,6 @@ export const TEMPLATE_CONTENTS_PATH = path.resolve(
   ROOT_FOLDER,
   "src/assets/app_data/sheets/contents.json"
 );
-
 export const GH_REPO_ORG = env.GH_REPO_ORG;
 export const GH_REPO_NAME = env.GH_REPO_NAME;
 
