@@ -75,10 +75,11 @@ class SheetsPostProcessor {
     // Generate contents
     const contents: ISheetContents = {
       data_list: {},
+      data_pipe: {},
+      generator: {},
       global: {},
       template: {},
       tour: {},
-      data_pipe: {},
     };
     const sheetPaths = recursiveFindByExtension(baseFolder, "json").sort();
     for (const sheetPath of sheetPaths) {
@@ -93,7 +94,7 @@ class SheetsPostProcessor {
 
   private extractContentsData(flow: FlowTypes.FlowTypeWithData): FlowTypes.FlowTypeBase {
     // remove rows property (if exists)
-    const { rows, status, _processed, ...keptFields } = flow;
+    const { rows, status, _generated, ...keptFields } = flow;
     return keptFields as FlowTypes.FlowTypeBase;
   }
   private sheetsWriteContents(baseFolder: string, contents: ISheetContents) {
