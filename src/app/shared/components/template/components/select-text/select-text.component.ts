@@ -63,10 +63,4 @@ export class SelectTextComponent
     const { type, value } = await Clipboard.read();
     console.log(`Got ${type} from clipboard: ${value}`);
   }
-
-  async share() {
-    this.parent.templateActionService.handleActions([
-      { action_id: "share", args: ["text", this._row.value], trigger: "click" },
-    ]);
-  }
 }
