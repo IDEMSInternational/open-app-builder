@@ -72,7 +72,6 @@ export class AppDataConverter {
     // Setup Folders
     const { inputFolder, outputFolder, cacheFolder } = options;
     [inputFolder, outputFolder, cacheFolder].forEach((p) => fs.ensureDir(p));
-
     if (this.options.skipCache) {
       this.cache.clear();
     }

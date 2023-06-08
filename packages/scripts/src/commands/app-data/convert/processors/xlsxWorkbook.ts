@@ -5,10 +5,10 @@ import { IConverterPaths } from "../types";
 import chalk from "chalk";
 import BaseProcessor from "./base";
 import { existsSync } from "fs-extra";
-import { IContentsEntry } from "../utils";
+import { IContentsEntry, parseAppDataCollectionString } from "../utils";
 
 export class XLSXWorkbookProcessor extends BaseProcessor<IContentsEntry> {
-  public cacheVersion = 20220823.1;
+  public cacheVersion = 20230509.1;
   constructor(paths: IConverterPaths) {
     super({ paths, namespace: "xlsxWorkbookProcessor" });
   }
@@ -75,7 +75,7 @@ export class XLSXWorkbookProcessor extends BaseProcessor<IContentsEntry> {
       const contentList = json["==content_list=="] as FlowTypes.FlowTypeWithData[];
       if (contentList) {
         for (const contents of contentList) {
-          const { flow_name, flow_type, module } = contents;
+          const { flow_name, flow_type, module, parameter_list } = contents;
           const filename = path.basename(xlsxPath, ".xlsx");
           // only include flows marked as released in the contents
           if (flow_name) {
@@ -85,6 +85,12 @@ export class XLSXWorkbookProcessor extends BaseProcessor<IContentsEntry> {
                 this.logger.warn(chalk.yellow(`Duplicate flow: ${flow_name}`));
               }
               merged[flow_name] = { ...contents, rows: json[flow_name] };
+              // convert parameter list from string to object
+              if (parameter_list) {
+                merged[flow_name].parameter_list = parseAppDataCollectionString(
+                  parameter_list as any
+                );
+              }
             } else {
               this.logger.warn(chalk.yellow(`No Contents: ${flow_name}`));
             }

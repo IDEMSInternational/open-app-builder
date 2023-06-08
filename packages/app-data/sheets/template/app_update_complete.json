@@ -52,5 +52,5 @@
       "_nested_name": "button"
     }
   ],
-  "_xlsxPath": "quality_assurance/debug_sheets/debug_app_update.xlsx"
+  "_xlsxPath": "global/core_templates/app_update.xlsx"
 }

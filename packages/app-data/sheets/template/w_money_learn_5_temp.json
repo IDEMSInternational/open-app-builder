@@ -210,16 +210,9 @@
             },
             {
               "name": "outro_text",
-              "value": "CONGRATULATIONS!!! You’ve made your budget – remember to do this exercise again with your other family members - if you agree on a plan together it will make a huge difference!",
+              "value": "CONGRATULATIONS!!! You have made your budget – remember to do this exercise again with your other family members - if you agree on a plan together it will make a huge difference!",
               "_translations": {
-                "value": {
-                  "tz_sw": true,
-                  "za_af": true,
-                  "za_st": true,
-                  "za_tn": true,
-                  "za_xh": true,
-                  "za_zu": true
-                }
+                "value": {}
               },
               "condition": "!@fields.do_this_workshop_together || (@fields.w_money_path==\"alone\" || !@fields.w_money_path)",
               "type": "set_variable",
