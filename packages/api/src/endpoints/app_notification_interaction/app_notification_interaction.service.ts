@@ -1,14 +1,15 @@
 import { Injectable } from "@nestjs/common";
-import { InjectModel } from "@nestjs/sequelize";
 import { AppNotificationInteraction } from "./app_notification_interaction.model";
 import { UserNotificationInteractionDto } from "./dto/add-user-notification-interaction.dto";
+import { DeploymentService } from "src/modules/deployment.service";
 
 @Injectable()
 export class AppNotificationInteractionService {
-  constructor(
-    @InjectModel(AppNotificationInteraction)
-    private readonly model: typeof AppNotificationInteraction
-  ) {}
+  constructor(private deploymentService: DeploymentService) {}
+
+  get model() {
+    return this.deploymentService.model(AppNotificationInteraction);
+  }
 
   async findAll(): Promise<AppNotificationInteraction[]> {
     return this.model.findAll();
