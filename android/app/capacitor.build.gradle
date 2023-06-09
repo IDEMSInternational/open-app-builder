@@ -17,6 +17,7 @@ dependencies {
     implementation project(':capacitor-device')
     implementation project(':capacitor-local-notifications')
     implementation project(':capacitor-push-notifications')
+    implementation project(':capacitor-share')
     implementation project(':capacitor-splash-screen')
     implementation project(':capawesome-capacitor-app-update')
     implementation project(':capacitor-firebase-auth')
