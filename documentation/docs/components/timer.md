@@ -9,7 +9,7 @@
 ![](images/timer.png)
 
 [Google Sheet Demo](https://docs.google.com/spreadsheets/d/1jQAvELG5EXj6zgj0bBQmVg7Iaa-66OpemdZzgOh2PP0/edit#gid=569531329)   
-[Live Preview Demo](https://plh-global.web.app/template/comp_timer)
+[Live Preview Demo](https://idems-debug.web.app/template/comp_timer)
 
 ## Parameters
 
