@@ -28,6 +28,9 @@
         ],
         "pfr": [
           "parenting-for-respectability"
+        ],
+        "debug": [
+          "idems-debug"
         ]
       }
     }
