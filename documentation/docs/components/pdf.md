@@ -12,7 +12,7 @@
 ![](images/pdf.png)
 
 [Google Sheet Demo](https://docs.google.com/spreadsheets/d/1VXM9zYgrsZIB4h8slC9mg3P9C-jsXuPScNaml-1qaOk/)   
-[Live Preview Demo](https://plh-global.web.app/template/comp_pdf)
+[Live Preview Demo](https://idems-debug.web.app/template/comp_pdf)
 
 ## Parameters
 
