@@ -22,8 +22,12 @@ export class ShareService extends SyncServiceBase {
         const [actionId, ...shareArgs] = args;
         const childActions = {
           text: async () => {
-            const [text, title, dialogTitle] = shareArgs;
-            this.share({ text, title, dialogTitle });
+            const [text] = shareArgs;
+            await this.share({ text: String(text) });
+          },
+          url: async () => {
+            const [url] = shareArgs;
+            await this.share({ url });
           },
         };
         if (!(actionId in childActions)) {
@@ -36,6 +40,14 @@ export class ShareService extends SyncServiceBase {
   }
 
   async share(options: ShareOptions) {
-    await Share.share(options);
+    const { value: canShare } = await Share.canShare();
+    if (canShare) {
+      try {
+        const { activityType } = await Share.share(options);
+        console.log("[SHARE] Content shared to", activityType);
+      } catch {
+        console.log("[SHARE] Share cancelled");
+      }
+    } else console.error("[SHARE] Sharing is not supported on this device");
   }
 }
