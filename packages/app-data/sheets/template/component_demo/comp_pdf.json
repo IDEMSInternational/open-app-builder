@@ -1,0 +1,30 @@
+{
+  "flow_type": "template",
+  "flow_name": "comp_pdf",
+  "status": "released",
+  "flow_subtype": "component_demo",
+  "rows": [
+    {
+      "type": "title",
+      "name": "title",
+      "value": "PDF Viewer Component",
+      "_translations": {
+        "value": {}
+      },
+      "_nested_name": "title"
+    },
+    {
+      "type": "pdf",
+      "name": "pdf_viewer",
+      "value": "quality_assurance/example_pdf.pdf",
+      "_translations": {
+        "value": {}
+      },
+      "parameter_list": {
+        "starting_page": "3"
+      },
+      "_nested_name": "pdf_viewer"
+    }
+  ],
+  "_xlsxPath": "quality_assurance/component_sheets/component_pdf.xlsx"
+}

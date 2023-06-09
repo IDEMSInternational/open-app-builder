@@ -278,6 +278,7 @@ export namespace FlowTypes {
     | "number_selector"
     | "parent_point_box"
     | "parent_point_counter"
+    | "pdf"
     | "qr_code"
     | "radio_button_grid"
     | "radio_group"
