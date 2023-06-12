@@ -240,42 +240,6 @@
       "flow_name": "encouraging_messages",
       "_xlsxPath": "global/campaigns/notifications_inactive.xlsx"
     },
-    "example_generator_list": {
-      "flow_type": "data_list",
-      "flow_subtype": "example_generator",
-      "flow_name": "example_generator_list",
-      "_xlsxPath": "quality_assurance/example_sheets/example_generator.xlsx"
-    },
-    "example_data_pipe_list": {
-      "flow_type": "data_list",
-      "flow_subtype": "example_pipe",
-      "flow_name": "example_data_pipe_list",
-      "_xlsxPath": "quality_assurance/example_sheets/example_data_pipes.xlsx"
-    },
-    "example_data_pipe_list_1": {
-      "flow_type": "data_list",
-      "flow_subtype": "example_pipe",
-      "flow_name": "example_data_pipe_list_1",
-      "_xlsxPath": "quality_assurance/example_sheets/example_data_pipes_join.xlsx"
-    },
-    "example_data_pipe_list_2": {
-      "flow_type": "data_list",
-      "flow_subtype": "example_pipe",
-      "flow_name": "example_data_pipe_list_2",
-      "_xlsxPath": "quality_assurance/example_sheets/example_data_pipes_join.xlsx"
-    },
-    "example_data_pipe_list_3": {
-      "flow_type": "data_list",
-      "flow_subtype": "example_pipe",
-      "flow_name": "example_data_pipe_list_3",
-      "_xlsxPath": "quality_assurance/example_sheets/example_data_pipes_join.xlsx"
-    },
-    "example_sheet_defaults_list": {
-      "flow_type": "data_list",
-      "flow_name": "example_sheet_defaults_list",
-      "flow_subtype": "example_sheet_defaults",
-      "_xlsxPath": "quality_assurance/example_sheets/to_be_sorted/example_sheet_defaults.xlsx"
-    },
     "funders_data_list": {
       "flow_type": "data_list",
       "flow_name": "funders_data_list",
@@ -1163,36 +1127,6 @@
       "flow_name": "common_workshop_tasks_filter",
       "_xlsxPath": "global/data/workshop_data/workshop_tasks_data_pipes.xlsx"
     },
-    "debug_data_pipe_translate": {
-      "flow_type": "data_pipe",
-      "flow_name": "debug_data_pipe_translate",
-      "flow_subtype": "debug",
-      "_xlsxPath": "quality_assurance/debug_sheets/to_be_sorted/debug_data_lists.xlsx"
-    },
-    "example_data_pipe": {
-      "flow_type": "data_pipe",
-      "flow_subtype": "example_pipe",
-      "flow_name": "example_data_pipe",
-      "_xlsxPath": "quality_assurance/example_sheets/example_data_pipes.xlsx"
-    },
-    "example_data_pipe_concat": {
-      "flow_type": "data_pipe",
-      "flow_subtype": "example_pipe",
-      "flow_name": "example_data_pipe_concat",
-      "_xlsxPath": "quality_assurance/example_sheets/example_data_pipes.xlsx"
-    },
-    "example_data_pipe_concat_2": {
-      "flow_type": "data_pipe",
-      "flow_subtype": "example_pipe",
-      "flow_name": "example_data_pipe_concat_2",
-      "_xlsxPath": "quality_assurance/example_sheets/example_data_pipes_join.xlsx"
-    },
-    "example_data_pipe_map": {
-      "flow_type": "data_pipe",
-      "flow_subtype": "example_pipe",
-      "flow_name": "example_data_pipe_map",
-      "_xlsxPath": "quality_assurance/example_sheets/example_data_pipes.xlsx"
-    },
     "single_tg_filter": {
       "flow_type": "data_pipe",
       "flow_name": "single_tg_filter",
@@ -1224,21 +1158,7 @@
       "_xlsxPath": "global/data/workshop_data/workshop_tasks_data_pipes.xlsx"
     }
   },
-  "generator": {
-    "example_generator": {
-      "flow_type": "generator",
-      "flow_subtype": "example_generator",
-      "flow_name": "example_generator",
-      "parameter_list": {
-        "input_data_list": "example_generator_list",
-        "output_flow_name": "example_generator_output_@gen.id",
-        "output_flow_type": "template",
-        "output_flow_subtype": "example_generator"
-      },
-      "comments": "The only required parameter is input_data_list\nAll others will override default values",
-      "_xlsxPath": "quality_assurance/example_sheets/example_generator.xlsx"
-    }
-  },
+  "generator": {},
   "global": {
     "activity_variables": {
       "flow_type": "global",
