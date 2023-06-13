@@ -48,16 +48,9 @@
             },
             {
               "name": "text_1",
-              "value": "Check you are both calm. Take a few breaths. Explain to your teen why you are concerned about their behaviour.\n\nExplain the reasons why the rule mattered. You can share your feelings - it’s okay to say you are disappointed.",
+              "value": "Check you are both calm. Take a few breaths. Explain to your teen why you are concerned about their behaviour.\n\nExplain the reasons why the rule mattered. You can share your feelings - it is okay to say you are disappointed.",
               "_translations": {
-                "value": {
-                  "tz_sw": true,
-                  "za_af": true,
-                  "za_st": true,
-                  "za_tn": true,
-                  "za_xh": true,
-                  "za_zu": true
-                }
+                "value": {}
               },
               "type": "set_variable",
               "_nested_name": "essential_tools.tool_1.text_1"
