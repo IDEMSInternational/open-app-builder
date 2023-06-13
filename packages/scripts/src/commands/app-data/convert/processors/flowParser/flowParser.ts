@@ -1,18 +1,19 @@
 import { FlowTypes } from "data-models";
 import * as Parsers from "./parsers";
-import { IConverterPaths, IParsedWorkbookData } from "../../types";
+import { IConverterPaths, IFlowHashmapByType, IParsedWorkbookData } from "../../types";
 import { arrayToHashmap, groupJsonByKey, IContentsEntry } from "../../utils";
 import BaseProcessor from "../base";
 
 export class FlowParserProcessor extends BaseProcessor<FlowTypes.FlowTypeWithData> {
-  public cacheVersion = 20221026.1;
+  public cacheVersion = 20230509.3;
 
   public parsers: { [flowType in FlowTypes.FlowType]: Parsers.DefaultParser } = {
-    template: new Parsers.TemplateParser(this),
     data_list: new Parsers.DataListParser(this),
-    global: new Parsers.DefaultParser(this),
-    tour: new Parsers.DefaultParser(this),
     data_pipe: new Parsers.DataPipeParser(this),
+    generator: new Parsers.GeneratorParser(this),
+    global: new Parsers.DefaultParser(this),
+    template: new Parsers.TemplateParser(this),
+    tour: new Parsers.DefaultParser(this),
   };
 
   /** Keep a track of all processed flows by type and name (used in data_pipes)*/
@@ -65,50 +66,61 @@ export class FlowParserProcessor extends BaseProcessor<FlowTypes.FlowTypeWithDat
    * Apply combined parser postProcess methods
    * @returns hashmap of flowtypes with postprocessed flows
    */
-  public async postProcess(flows: FlowTypes.FlowTypeWithData[]): Promise<IParsedWorkbookData> {
-    const flowsByType: IParsedWorkbookData = groupJsonByKey(flows, "flow_type");
+  public async postProcess(flows: FlowTypes.FlowTypeWithData[]) {
+    // post process flows by type
+    const flowArraysByType = groupJsonByKey(flows, "flow_type");
     for (const [flowType, parser] of Object.entries(this.parsers)) {
-      if (flowsByType[flowType]) {
-        flowsByType[flowType] = parser.postProcessFlows(flowsByType[flowType]);
+      if (flowArraysByType[flowType]) {
+        flowArraysByType[flowType] = parser.postProcessFlows(flowArraysByType[flowType]);
       }
     }
-    const flowTypesWithGenerated: IParsedWorkbookData =
-      this.populateDataPipeGeneratedFlows(flowsByType);
-    return flowTypesWithGenerated;
+    // convert to hashmap for easier processing of generated flows
+    const flowHashmapByType: IFlowHashmapByType = {};
+    for (const [type, typeFlows] of Object.entries(flowArraysByType)) {
+      flowHashmapByType[type] = arrayToHashmap(typeFlows, "flow_name", (k) => {
+        this.logger.error("Duplicate flows found", [type, k]);
+        return k;
+      });
+    }
+    // populate any generated flows to main list
+    const flowTypesWithGenerated = this.populateGeneratedFlows(flowHashmapByType);
+
+    // convert back from hashmap to hashArrays for final output
+    const outputData: IParsedWorkbookData = {};
+    for (const [type, typeHashmap] of Object.entries(flowTypesWithGenerated)) {
+      outputData[type] = Object.values(typeHashmap);
+    }
+    return outputData;
   }
 
   /**
-   * Data Pipes can return multiple generated flows from a single pipeline
-   * Extract these generated flows and populate as datalists
+   * Iterate over all flows to check for any that populate additional _generated flows
+   * that should be extracted to top-level
    */
-  private populateDataPipeGeneratedFlows(flowsByType: IParsedWorkbookData) {
-    if (flowsByType.data_pipe) {
-      const dataPipeHashmap = {};
-      const dataListHashmap = arrayToHashmap(flowsByType.data_list || [], "flow_name");
-      for (const flow of flowsByType.data_pipe) {
-        const { _processed, ...rest } = flow as FlowTypes.DataPipeFlow;
-        if (_processed) {
-          for (const [flow_name, rows] of Object.entries(_processed)) {
-            const datalist: FlowTypes.Data_list = {
-              flow_name,
-              flow_subtype: "generated",
-              flow_type: "data_list",
-              rows,
-            };
-            if (dataListHashmap[flow_name]) {
-              this.logger.error({
-                message: "Generated datalist will override existing datalist",
-                details: [flow_name],
-              });
+  private populateGeneratedFlows(flowsByType: IFlowHashmapByType) {
+    // handle any additional methods that operate on full list of processed flows,
+    // e.g. populating additional generated flows
+    for (const typeFlows of Object.values(flowsByType)) {
+      for (const { _generated, ...flow } of Object.values(typeFlows)) {
+        if (_generated) {
+          // remove _generated field from flow
+          flowsByType[flow.flow_type][flow.flow_name] = flow;
+          // populate generated to main list, ensure generated flows are also fully processed
+          for (const generatedFlows of Object.values(_generated)) {
+            for (const generatedFlow of Object.values(generatedFlows)) {
+              flowsByType[generatedFlow.flow_type] ??= {};
+              if (flowsByType[generatedFlow.flow_type][generatedFlow.flow_name]) {
+                this.logger.error({
+                  message: "Generated flow will override existing flow",
+                  details: [generatedFlow.flow_type, generatedFlow.flow_name],
+                });
+              }
+              const processed = this.processInput(JSON.parse(JSON.stringify(generatedFlow)));
+              flowsByType[generatedFlow.flow_type][generatedFlow.flow_name] = processed;
             }
-            dataListHashmap[flow_name] = datalist;
           }
         }
-        // Populate rest of data pipe (without _processed) to main flows list
-        dataPipeHashmap[flow.flow_name] = rest;
       }
-      flowsByType.data_pipe = Object.values(dataPipeHashmap);
-      flowsByType.data_list = Object.values(dataListHashmap);
     }
     return flowsByType;
   }
@@ -120,6 +132,10 @@ export class FlowParserProcessor extends BaseProcessor<FlowTypes.FlowTypeWithDat
     // Ignore cache if data_pipe (in case dependencies have changed)
     // TODO refine to bypass cache iff datalists not in cache
     if (input.flow_type === "data_pipe") {
+      return false;
+    }
+    // TODO - optimise to use cache if generator and list unchanged
+    if (input.flow_type === "generator") {
       return false;
     }
     return true;

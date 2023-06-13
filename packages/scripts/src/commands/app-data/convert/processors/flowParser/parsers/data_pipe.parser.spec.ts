@@ -7,7 +7,7 @@ const testInputSources = {
 };
 
 describe("data_pipe Parser", () => {
-  it("Parses data pipes to flow _processed property", async () => {
+  it("Populates generated data lists", async () => {
     const parser = new DataPipeParser({ processedFlowHashmap: testInputSources } as any);
     const output = parser.run({
       flow_name: "test_pipe_parse",
@@ -27,9 +27,19 @@ describe("data_pipe Parser", () => {
         },
       ],
     }) as FlowTypes.DataPipeFlow;
-    expect(output._processed).toEqual({
-      test_output_1: [{ id: 2 }, { id: 3 }],
-      test_output_2: [{ id: 3 }],
+    expect(output._generated.data_list).toEqual({
+      test_output_1: {
+        flow_name: "test_output_1",
+        flow_subtype: "generated",
+        flow_type: "data_list",
+        rows: [{ id: 2 }, { id: 3 }],
+      },
+      test_output_2: {
+        flow_name: "test_output_2",
+        flow_subtype: "generated",
+        flow_type: "data_list",
+        rows: [{ id: 3 }],
+      },
     });
   });
 
@@ -61,7 +71,14 @@ describe("data_pipe Parser", () => {
       flow_type: "data_pipe",
       rows: ops2,
     }) as FlowTypes.DataPipeFlow;
-    expect(output._processed).toEqual({ test_output_2: [{ id: 3 }] });
+    expect(output._generated.data_list).toEqual({
+      test_output_2: {
+        flow_name: "test_output_2",
+        flow_subtype: "generated",
+        flow_type: "data_list",
+        rows: [{ id: 3 }],
+      },
+    });
   });
 
   it("Defers processing when inputs not available", async () => {
