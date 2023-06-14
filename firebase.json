@@ -100,7 +100,7 @@
       ]
     },
     {
-      "target": "plh-facilitator",
+      "target": "plh_facilitator",
       "public": "www",
       "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
       "rewrites": [
