@@ -247,9 +247,7 @@
           "za_xh": true,
           "za_zu": true
         },
-        "reply_sad": {
-          "tz_sw": true
-        },
+        "reply_sad": {},
         "outro_text": {},
         "activity_title": {},
         "intro_text": {},
@@ -278,7 +276,7 @@
           "eng": "Sorry to hear it was difficult for you. Well done for trying!"
         },
         "reply_sad": {
-          "eng": "Giving instructions in a new way takes some practice. Keep trying, you will soon see  the difference it makes!"
+          "eng": "Giving instructions in a new way takes some practice. Keep trying, you will soon see the difference it makes!"
         },
         "outro_text": {
           "eng": "Thank you for sharing! Well done for trying to give your teen positive instructions and for building a positive relationship with your teen. \n\nYour teen deserves praise and YOU do as well!"
@@ -304,7 +302,7 @@
       },
       "reply_happy": "Great to hear it went well. You are a star!",
       "reply_ok": "Sorry to hear it was difficult for you. Well done for trying!",
-      "reply_sad": "Giving instructions in a new way takes some practice. Keep trying, you will soon see  the difference it makes!",
+      "reply_sad": "Giving instructions in a new way takes some practice. Keep trying, you will soon see the difference it makes!",
       "outro_text": "Thank you for sharing! Well done for trying to give your teen positive instructions and for building a positive relationship with your teen. \n\nYour teen deserves praise and YOU do as well!",
       "activity_title": "@global.hp_review",
       "intro_text": "@global.text_hp_review",
