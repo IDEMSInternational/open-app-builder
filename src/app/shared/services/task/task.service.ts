@@ -59,6 +59,7 @@ export class TaskService extends AsyncServiceBase {
     if (taskGroupsNotCompletedAndNotSkipped.length === 0) {
       this.templateFieldService.setField(this.highlightedTaskFieldName, "");
       console.log("[HIGHLIGHTED TASK GROUP] - No highlighted task group is set");
+      return []
     }
     // Else set the highlighted task group to the task group with the highest priority of those
     // not completed or skipped
