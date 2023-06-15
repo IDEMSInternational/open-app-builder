@@ -5,6 +5,7 @@ deployments/*
 !deployments/wash
 !deployments/parentapp_kids
 !deployments/pfr
+!deployments/sandbox
 
 # Renamed to activeDeployment.json, include here so people can remove
 !/deployments/default.json
