@@ -100,6 +100,14 @@ Where [url] can be replaced with the url of a github repository where content is
 
 You will see the new deployment appear in the `.idems_app` folder and be available for selection
 
+### Sync Content
+Content from external repos can be synced in the usual way
+
+```sh
+yarn workflow sync
+```
+This will first update any content from the remote repo, and then proceed to also sync from external google drive
+
 
 ### Push Changes
 A local repo can have its changes pushed to github by publishing a new release
