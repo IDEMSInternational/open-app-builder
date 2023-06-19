@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild } from "@angular/core";
+import { Component, ElementRef, OnInit, ViewChild, ViewEncapsulation } from "@angular/core";
 
 import Events from "./libs/enketo/js/event";
 import { Form } from "./libs/enketo/js/form";
@@ -47,6 +47,7 @@ interface IODKFormComponentParameters {
   selector: "tmpl-odk-form",
   templateUrl: "./odk-form.component.html",
   styleUrls: ["./odk-form.component.scss"],
+  encapsulation: ViewEncapsulation.None,
 })
 /**
  * A lightweight port of enketo-core to render a form within an angular component
