@@ -1,17 +1,18 @@
-@import "libs/enketo/sass/grid/grid.scss";
+@import "./libs/enketo/sass/grid/grid.scss";
 
-:host {
+// apply :host style bindings for non-encapsulated component
+tmpl-odk-form {
+  background: white;
+  padding: 8px;
   display: block;
   position: relative;
-
-  // @font-face {
-  //   font-family: "OpenSans";
-  //   src: url("./assets/fonts/OpenSans-Regular-webfont.woff") format("woff");
-  //   font-weight: normal;
-  //   font-style: normal;
-  // }
-  // font-family: "OpenSans", sans-serif;
-  font-weight: 400;
+}
+// apply margin to fit section dropdown arrows (breakpoints from _responsiveness.scss)
+tmpl-odk-form form {
+  margin-left: 30px;
+  @media screen and (max-width: 600px) {
+    margin-left: 24px;
+  }
 }
 #form-title {
   margin: 0;
