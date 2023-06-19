@@ -31,6 +31,9 @@
         ],
         "debug": [
           "idems-debug"
+        ],
+        "plh_facilitator": [
+          "plh-facilitator"
         ]
       }
     }
