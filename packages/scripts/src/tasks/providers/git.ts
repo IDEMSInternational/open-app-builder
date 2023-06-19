@@ -6,7 +6,7 @@ import simpleGit, { ResetMode } from "simple-git";
 import type { SimpleGit, FileStatusResult } from "simple-git";
 import { Project, SyntaxKind } from "ts-morph";
 import { ActiveDeployment } from "../../commands/deployment/get";
-import { Logger, logOutput, promptOptions } from "../../utils";
+import { Logger, logOutput, openUrl, promptOptions } from "../../utils";
 import type { IDeploymentConfigJson } from "../../commands/deployment/common";
 
 class GitProvider {
@@ -64,7 +64,8 @@ class GitProvider {
     await this.updateGitConfigTs({ content_tag_latest: tagName });
 
     const branchName = `content/${tagName}`;
-    const compareLink = `${this.deployment.git.content_repo}/compare/main...${branchName}`;
+    const repoUrl = this.deployment.git.content_repo.replace(".git", "");
+    const compareLink = `${repoUrl}/compare/main...${branchName}`;
     await this.prepareReleaseBranch(branchName, compareLink);
     await this.git.add("./*");
     await this.git.commit(`content: ${tagName}`);
@@ -73,9 +74,11 @@ class GitProvider {
     try {
       await this.git.push("origin", branchName);
       logOutput({
-        msg1: "Content uploaded successfully. Pull request link:",
-        msg2: compareLink,
+        msg1: "Content uploaded successfully",
+        msg2: "Use browser to complete Pull Request",
       });
+      console.log(chalk.gray(compareLink));
+      await openUrl(compareLink);
     } catch (error) {
       Logger.error({ msg1: "Failed to push to repo", msg2: error.message, logOnly: true });
       console.log("reverting changes");
