@@ -305,31 +305,24 @@
             },
             {
               "name": "intro_title",
-              "value": "Why @local.workshop_data.title?",
+              "value": "@local.workshop_data.intro_title",
               "_translations": {
-                "value": {
-                  "tz_sw": true,
-                  "za_af": true,
-                  "za_st": true,
-                  "za_tn": true,
-                  "za_xh": true,
-                  "za_zu": true
-                }
+                "value": {}
               },
               "type": "set_variable",
               "_nested_name": "listen.workshop_activity.intro_title",
               "_dynamicFields": {
                 "value": [
                   {
-                    "fullExpression": "Why @local.workshop_data.title?",
-                    "matchedExpression": "@local.workshop_data.title",
+                    "fullExpression": "@local.workshop_data.intro_title",
+                    "matchedExpression": "@local.workshop_data.intro_title",
                     "type": "local",
                     "fieldName": "workshop_data"
                   }
                 ]
               },
               "_dynamicDependencies": {
-                "@local.workshop_data.title": [
+                "@local.workshop_data.intro_title": [
                   "value"
                 ]
               }

@@ -21,6 +21,7 @@ export class AppDataService extends SyncServiceBase {
   public appDataCache: IAppDataCache = {
     data_pipe: {},
     data_list: {},
+    generator: {},
     global: {},
     template: {},
     tour: {},
