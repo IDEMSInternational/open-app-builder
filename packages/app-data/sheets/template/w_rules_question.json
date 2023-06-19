@@ -271,16 +271,9 @@
                     },
                     {
                       "name": "reply",
-                      "value": "That's right, making clear rules together in a calm and positive way works so well!",
+                      "value": "That is right, making clear rules together in a calm and positive way works so well!",
                       "_translations": {
-                        "value": {
-                          "tz_sw": true,
-                          "za_af": true,
-                          "za_st": true,
-                          "za_tn": true,
-                          "za_xh": true,
-                          "za_zu": true
-                        }
+                        "value": {}
                       },
                       "type": "set_variable",
                       "_nested_name": "question_time.workshop_activity.content_box.combo_box_1.reply"

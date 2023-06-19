@@ -114,7 +114,7 @@
     {
       "type": "declare_global_constant",
       "name": "w_praise_female_caregiver_name",
-      "value": "@global.female_caregiver_2",
+      "value": "@global.female_caregiver_1",
       "_translations": {
         "value": {}
       },
@@ -150,7 +150,7 @@
     {
       "type": "declare_global_constant",
       "name": "w_instruct_female_caregiver",
-      "value": "@global.female_caregiver_1",
+      "value": "@global.female_caregiver_2",
       "_translations": {
         "value": {}
       },
@@ -186,7 +186,7 @@
     {
       "type": "declare_global_constant",
       "name": "w_stress_female_caregiver",
-      "value": "@global.female_caregiver_2",
+      "value": "@global.female_caregiver_1",
       "_translations": {
         "value": {}
       },
@@ -213,7 +213,7 @@
     {
       "type": "declare_global_constant",
       "name": "w_stress_parent",
-      "value": "@global.male_caregiver_2",
+      "value": "@global.male_caregiver_1",
       "_translations": {
         "value": {}
       },
@@ -231,7 +231,7 @@
     {
       "type": "declare_global_constant",
       "name": "w_rules_female_caregiver_1",
-      "value": "@global.female_caregiver_2",
+      "value": "@global.female_caregiver_1",
       "_translations": {
         "value": {}
       },
@@ -249,7 +249,7 @@
     {
       "type": "declare_global_constant",
       "name": "w_rules_female_caregiver_2",
-      "value": "@global.female_caregiver_3",
+      "value": "@global.female_caregiver_1",
       "_translations": {
         "value": {}
       },
@@ -303,7 +303,7 @@
     {
       "type": "declare_global_constant",
       "name": "w_consequence_female_caregiver",
-      "value": "@global.female_caregiver_2",
+      "value": "@global.female_caregiver_1",
       "_translations": {
         "value": {}
       },
@@ -312,7 +312,7 @@
     {
       "type": "declare_global_constant",
       "name": "w_money_grandma",
-      "value": "@global.female_caregiver_1 @global.female_adult_name_1",
+      "value": "@global.female_caregiver_2 @global.female_adult_name_1",
       "_translations": {
         "value": {}
       },
@@ -339,7 +339,7 @@
     {
       "type": "declare_global_constant",
       "name": "w_solve_female_caregiver_1",
-      "value": "@global.female_caregiver_2",
+      "value": "@global.female_caregiver_1",
       "_translations": {
         "value": {}
       },
@@ -375,7 +375,7 @@
     {
       "type": "declare_global_constant",
       "name": "w_solve_female_caregiver_2",
-      "value": "@global.female_caregiver_1",
+      "value": "@global.female_caregiver_2",
       "_translations": {
         "value": {}
       },
@@ -420,7 +420,7 @@
     {
       "type": "declare_global_constant",
       "name": "w_safe_female_caregiver",
-      "value": "@global.female_caregiver_3",
+      "value": "@global.female_caregiver_1",
       "_translations": {
         "value": {}
       },
@@ -447,7 +447,7 @@
     {
       "type": "declare_global_constant",
       "name": "w_crisis_adult_friend",
-      "value": "@global.female_caregiver_1",
+      "value": "@global.female_caregiver_2",
       "_translations": {
         "value": {}
       },
@@ -456,7 +456,7 @@
     {
       "type": "declare_global_constant",
       "name": "w_crisis_female_caregiver",
-      "value": "@global.female_caregiver_1",
+      "value": "@global.female_caregiver_2",
       "_translations": {
         "value": {}
       },
@@ -483,7 +483,7 @@
     {
       "type": "declare_global_constant",
       "name": "w_crisis_male_caregiver_1",
-      "value": "@global.male_caregiver_2",
+      "value": "@global.male_caregiver_1",
       "_translations": {
         "value": {}
       },
@@ -492,7 +492,7 @@
     {
       "type": "declare_global_constant",
       "name": "w_crisis_male_caregiver_2",
-      "value": "@global.male_caregiver_3",
+      "value": "@global.male_caregiver_1",
       "_translations": {
         "value": {}
       },

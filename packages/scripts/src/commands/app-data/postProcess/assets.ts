@@ -28,7 +28,7 @@ const ASSETS_GLOBAL_FOLDER_NAME = "global";
 /** Approximate size of core build as populated to www folder (excluding assets) */
 const APP_CORE_BUILD_KB = 7 * 1024;
 /** Approximate size of core assets as populated to www folder (excluding assets/app_data) */
-const APP_CORE_ASSETS_KB = 0.5 * 1024;
+const APP_CORE_ASSETS_KB = 5 * 1024;
 const APP_CORE_SIZE_KB = {
   total: APP_CORE_BUILD_KB + APP_CORE_ASSETS_KB,
 };
