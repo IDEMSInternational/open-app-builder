@@ -2,7 +2,7 @@
 name: GlitchTip report
 about: Complete the form below to report crash report data
 title: "[GlitchTip]"
-labels: GlitchTip
+labels: glitchtip
 assignees: ''
 
 ---
