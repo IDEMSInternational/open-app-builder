@@ -46,14 +46,17 @@ export class TaskService extends AsyncServiceBase {
    * priority task_group that is not completed and not skipped
    * NB "highest priority" is defined as having the lowest numerical value for the "number" column
    */
-  public evaluateHighlightedTaskGroup() {
+  public evaluateHighlightedTaskGroup(): {
+    previousHighlightedTaskGroup: string;
+    newHighlightedTaskGroup: string;
+  } {
     const previousHighlightedTaskGroup = this.getHighlightedTaskGroup();
-    const taskGroupsNotCompletedAndNotSkipped = this.taskGroups.filter((taskGroup) => {
-      return (
+    let newHighlightedTaskGroup = previousHighlightedTaskGroup;
+    const taskGroupsNotCompletedAndNotSkipped = this.taskGroups.filter(
+      (taskGroup) =>
         !this.templateFieldService.getField(taskGroup.completed_field) &&
         !this.templateFieldService.getField(taskGroup.skipped_field)
-      );
-    });
+    );
     // If all task groups are completed or skipped (e.g. when user completes final task group),
     // then un-set highlighted task group
     if (taskGroupsNotCompletedAndNotSkipped.length === 0) {
@@ -64,17 +67,16 @@ export class TaskService extends AsyncServiceBase {
     // not completed or skipped
     else {
       const highestPriorityTaskGroup = taskGroupsNotCompletedAndNotSkipped.reduce(
-        (highestPriority, taskGroup) => {
-          return highestPriority.number < taskGroup.number ? highestPriority : taskGroup;
-        }
+        (highestPriority, taskGroup) =>
+          highestPriority.number < taskGroup.number ? highestPriority : taskGroup
       );
-      const newHighlightedTaskGroup = highestPriorityTaskGroup.id;
+      newHighlightedTaskGroup = highestPriorityTaskGroup.id;
       if (newHighlightedTaskGroup !== previousHighlightedTaskGroup) {
         this.templateFieldService.setField(this.highlightedTaskFieldName, newHighlightedTaskGroup);
       }
       console.log("[HIGHLIGHTED TASK GROUP] - ", newHighlightedTaskGroup);
-      return [previousHighlightedTaskGroup, newHighlightedTaskGroup];
     }
+    return { previousHighlightedTaskGroup, newHighlightedTaskGroup };
   }
 
   /** Get the id of the task group stored as higlighted */
