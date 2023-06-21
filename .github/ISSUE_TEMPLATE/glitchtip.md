@@ -1,13 +1,13 @@
 ---
-name: Crashlytics report
+name: GlitchTip report
 about: Complete the form below to report crash report data
-title: "[Crashlytics]"
-labels: crashlytics
+title: "[GlitchTip]"
+labels: glitchtip
 assignees: ''
 
 ---
 
-**Crashlytics Link**
+**GlitchTip Link**
 _url_
 
 **Report txt**
