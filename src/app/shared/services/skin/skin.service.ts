@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { BehaviorSubject } from "rxjs";
 import { LocalStorageService } from "src/app/shared/services/local-storage/local-storage.service";
-import { IAppSkin } from "data-models";
+import { IAppConfig, IAppSkin } from "data-models";
 import { arrayToHashmap } from "../../utils";
 import { AppConfigService } from "../app-config/app-config.service";
 import { TemplateService } from "../../components/template/services/template.service";
@@ -17,6 +17,8 @@ export class SkinService extends SyncServiceBase {
   // A hashmap of all skins available to the current deployment
   private availableSkins: Record<string, IAppSkin>;
   private activeSkin$ = new BehaviorSubject<IAppSkin | undefined>(undefined);
+  private appConfig: IAppConfig;
+  private skinsConfig: IAppConfig["APP_SKINS"];
 
   constructor(
     private localStorageService: LocalStorageService,
@@ -35,23 +37,23 @@ export class SkinService extends SyncServiceBase {
       this.appConfigService,
       this.themeService,
       this.templateService,
+      this.appConfigService,
     ]);
-    const skinsConfig = this.appConfigService.APP_CONFIG.APP_SKINS;
-    this.availableSkins = arrayToHashmap(skinsConfig.available, "name");
+    this.subscribeToAppConfigChanges();
     // Retrieve the last active skin and apply it. Fallback on deployment's default skin
     // if there is no last active skin, or if it is not "available" in current appConfig
     const lastActiveSkinName = this.getActiveSkinName();
-    const targetSkinName =
-      lastActiveSkinName && this.availableSkins.hasOwnProperty(lastActiveSkinName)
-        ? lastActiveSkinName
-        : skinsConfig.defaultSkinName;
+    let targetSkinName = this.skinsConfig.defaultSkinName;
+    if (lastActiveSkinName && this.availableSkins.hasOwnProperty(lastActiveSkinName)) {
+      targetSkinName = lastActiveSkinName;
+    }
     this.setSkin(targetSkinName, true);
   }
 
   /**
    * Set the active skin
    * @param skinName The name of the target skin
-   * @param {boolean} [isInit=false] Whether or not the function is being triggered by the service's initialisation
+   * @param [isInit=false] Whether or not the function is being triggered by the service's initialisation
    * */
   public setSkin(skinName: string, isInit = false) {
     if (skinName in this.availableSkins) {
@@ -69,10 +71,7 @@ export class SkinService extends SyncServiceBase {
         this.applySkinThemeChanges();
       }
       // Use local storage so that the active skin persists across app launches
-      this.localStorageService.setString(
-        this.appConfigService.APP_CONFIG.APP_FIELDS.APP_SKIN,
-        targetSkin.name
-      );
+      this.localStorageService.setString(this.appConfig.APP_FIELDS.APP_SKIN, targetSkin.name);
       this.updateRoutingDefaults(targetSkin, oldSkin);
     } else {
       console.error(`No skin found with name "${skinName}"`, {
@@ -126,7 +125,7 @@ export class SkinService extends SyncServiceBase {
 
   /** Get the name of the active skin, as saved in local storage */
   public getActiveSkinName() {
-    return this.localStorageService.getString(this.appConfigService.APP_CONFIG.APP_FIELDS.APP_SKIN);
+    return this.localStorageService.getString(this.appConfig.APP_FIELDS.APP_SKIN);
   }
 
   /** Get the full active skin, from the skin name saved in local storage */
@@ -136,19 +135,27 @@ export class SkinService extends SyncServiceBase {
   }
 
   private applySkinThemeChanges() {
-    const targetSkinDefaultTheme = this.appConfigService.APP_CONFIG.APP_THEMES.defaultThemeName;
+    const targetSkinDefaultTheme = this.appConfig.APP_THEMES.defaultThemeName;
     if (targetSkinDefaultTheme) {
       this.themeService.setTheme(targetSkinDefaultTheme);
     }
     // If target skin has no default theme and the current theme is not available in the target skin,
     // then set theme to the first available theme of the target skin
     else if (!this.isCurrentThemeAvailableInTargetSkin()) {
-      this.themeService.setTheme(this.appConfigService.APP_CONFIG.APP_THEMES.available[0]);
+      this.themeService.setTheme(this.appConfig.APP_THEMES.available[0]);
     }
   }
 
   private isCurrentThemeAvailableInTargetSkin() {
     const currentTheme = this.themeService.getCurrentTheme();
-    return this.appConfigService.APP_CONFIG.APP_THEMES.available.includes(currentTheme);
+    return this.appConfig.APP_THEMES.available.includes(currentTheme);
+  }
+
+  subscribeToAppConfigChanges() {
+    this.appConfigService.appConfig$.subscribe((appConfig: IAppConfig) => {
+      this.appConfig = appConfig;
+      this.skinsConfig = this.appConfig.APP_SKINS;
+      this.availableSkins = arrayToHashmap(this.skinsConfig.available, "name");
+    });
   }
 }
