@@ -108,7 +108,8 @@ class GitProvider {
   private async prepareReleaseBranch(branchName: string, compareLink: string) {
     // Ensure existing release does not already exist for tag
     if (await this.checkRemoteBranchExists(branchName)) {
-      Logger.error({ msg1: "A branch already exists for this release", msg2: compareLink });
+      console.log(chalk.gray(compareLink));
+      Logger.error({ msg1: "A branch already exists for this release" });
     }
     if (await this.checkLocalBranchExists(branchName)) {
       await this.git.deleteLocalBranch(branchName, true);
