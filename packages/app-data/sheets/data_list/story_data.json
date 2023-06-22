@@ -710,9 +710,7 @@
         "title": {
           "tz_sw": true
         },
-        "intro_text": {
-          "tz_sw": true
-        },
+        "intro_text": {},
         "text_1": {},
         "text_2": {},
         "text_3": {
@@ -738,7 +736,7 @@
           "eng": "Online safety"
         },
         "intro_text": {
-          "eng": "Rules are important to keep your teens safe - also online. There’s more about this in the @global.weekly_workshop on safety planning, but let’s already have a first look now!"
+          "eng": "Rules are important to keep your teens safe - not only offline, but also online. There’s more about this in the @global.weekly_workshop on safety planning, but let’s already have a first look now!"
         },
         "text_1": {
           "eng": "@global.w_rules_female_caregiver_2: \"@global.w_rules_teen_girl, have you done your homework?\"\n\n@global.w_rules_teen_girl: \"Just a minute @global.w_rules_female_caregiver_2, I’m finishing this @global.teen_social_medium video.\""
@@ -756,7 +754,7 @@
           "eng": "@global.w_rules_female_caregiver_2: \"I’m proud of you @global.w_rules_teen_girl!\""
         }
       },
-      "intro_text": "Rules are important to keep your teens safe - also online. There’s more about this in the @global.weekly_workshop on safety planning, but let’s already have a first look now!",
+      "intro_text": "Rules are important to keep your teens safe - not only offline, but also online. There’s more about this in the @global.weekly_workshop on safety planning, but let’s already have a first look now!",
       "text_1": "@global.w_rules_female_caregiver_2: \"@global.w_rules_teen_girl, have you done your homework?\"\n\n@global.w_rules_teen_girl: \"Just a minute @global.w_rules_female_caregiver_2, I’m finishing this @global.teen_social_medium video.\"",
       "text_2": "@global.w_rules_female_caregiver_2: \"You are a really great dancer! Tell me about why you like @global.teen_social_medium.\"\n\n@global.w_rules_teen_girl: \"All my friends are on it, @global.w_rules_female_caregiver_2. I have more than 600 likes and 120 followers.\"",
       "text_3": "@global.w_rules_female_caregiver_2: \"I’m proud of how well you dance, @global.w_rules_teen_girl. But we need to make sure you are safe. \n\nI know your friends look at @global.teen_social_medium, but with an open account, there are other people who look at videos of teenagers for their own sexual needs. Sometimes they contact teenagers. They pretend to be nice but end up threatening and abusing teens.\"",

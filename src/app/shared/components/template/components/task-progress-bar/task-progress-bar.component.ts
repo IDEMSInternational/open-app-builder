@@ -81,7 +81,7 @@ export class TmplTaskProgressBarComponent extends TemplateBaseComponent implemen
         this.progressStatusChange.emit(this.progressStatus);
       }
     }
-    const [previousHighlightedTaskGroup, newHighlightedTaskGroup] =
+    const { previousHighlightedTaskGroup, newHighlightedTaskGroup } =
       this.taskService.evaluateHighlightedTaskGroup();
     // HACK - reschedule campaign notifications when the highlighted task group has changed,
     // in order to handle any that are conditional on the highlighted task group
