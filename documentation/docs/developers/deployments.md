@@ -124,7 +124,7 @@ This will create a new git branch, apply local changes and push to github. From 
 ### Troubleshooting
 If for any reason the local content repo gets into a bad/conflicted state, it can be manually resolved by opening the deployment repo in vscode and resolving using git commands. 
 
-The content repo can be opened via shortcut `yarn workflow deployment open`
+The content repo can be opened via shortcut `yarn workflow repo open`
     
    
 ## File Encryption
