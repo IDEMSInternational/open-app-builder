@@ -402,10 +402,28 @@ export interface IAnswerListItem {
 }
 
 /**
+ * Parse an answer_list parameter and return an array of AnswerListItems
+ * @param answerList an answer_list parameter, either an array of IAnswerListItems
+ * (possibly still in string representation) or a data list (hashmap of IAnswerListItems)
+ */
+export function parseAnswerList(answerList: any) {
+  // If a data_list (hashmap) is provided as input, convert to an array
+  if (answerList.constructor === {}.constructor) {
+    answerList = objectToArray(answerList);
+  }
+  const answerListItems: IAnswerListItem[] = answerList.map(
+    (item: string | Record<string, string>) => {
+      return parseAnswerListItem(item);
+    }
+  );
+  return answerListItems;
+}
+
+/**
  * Convert answer list item (string or object) to relevant mappings
  * TODO - CC 2023-03-16 - should ideally convert in parsers instead of at runtime
  */
-export function parseAnswerListItem(item: any) {
+function parseAnswerListItem(item: any) {
   const itemObj: IAnswerListItem = {} as any;
   if (typeof item === "string") {
     const stringProperties = item.split("|");
@@ -419,17 +437,4 @@ export function parseAnswerListItem(item: any) {
     return itemObj;
   }
   return item;
-}
-
-export function parseAnswerList(answerList: any) {
-  // Convert if datalist input (hashmap to array)
-  if (answerList.constructor === {}.constructor) {
-    answerList = objectToArray(answerList);
-  }
-  const answerListItems: IAnswerListItem[] = answerList.map(
-    (item: string | Record<string, string>) => {
-      return parseAnswerListItem(item);
-    }
-  );
-  return answerListItems;
 }
