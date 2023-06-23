@@ -3,6 +3,8 @@ import { ASSETS_CONTENTS_LIST } from "src/app/data";
 import { ThemeService } from "src/app/feature/theme/services/theme.service";
 import { AsyncServiceBase } from "src/app/shared/services/asyncService.base";
 import { TemplateTranslateService } from "./template-translate.service";
+import { HttpClient } from "@angular/common/http";
+import { lastValueFrom } from "rxjs";
 
 /** Synced assets are automatically copied during build to asset subfolder */
 const ASSETS_BASE = `assets/app_data/assets`;
@@ -15,7 +17,8 @@ const DEFAULT_THEME_NAME = "default";
 export class TemplateAssetService extends AsyncServiceBase {
   constructor(
     private translateService: TemplateTranslateService,
-    private themeService: ThemeService
+    private themeService: ThemeService,
+    private http: HttpClient
   ) {
     super("TemplateAsset");
     this.registerInitFunction(this.initialise);
@@ -24,6 +27,18 @@ export class TemplateAssetService extends AsyncServiceBase {
   private async initialise() {
     await this.ensureAsyncServicesReady([this.translateService]);
     this.ensureSyncServicesReady([this.themeService]);
+  }
+
+  /**
+   * Retrieve an app_data asset via get request
+   * @param responseType specify expected response type (depending on file extension)
+   */
+  public async fetchAsset<T>(
+    path: string,
+    responseType: "json" | "text" | "arraybuffer" | "blob" = "json"
+  ) {
+    const translatedPath = this.getTranslatedAssetPath(path);
+    return lastValueFrom(this.http.get(translatedPath, { responseType: responseType as any })) as T;
   }
 
   /**
