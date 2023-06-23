@@ -11,6 +11,7 @@ import { TemplateBaseComponent } from "../base";
 import { ITemplateRowProps } from "../../models";
 import { TemplateService } from "../../services/template.service";
 import { ReplaySubject } from "rxjs";
+import { objectToArray } from "../../utils";
 
 @Component({
   selector: "plh-combo-box",
@@ -34,12 +35,16 @@ export class TmplComboBoxComponent
 
   ngOnInit(): void {
     this.getParams();
-    const listAnswers: string[] = getParamFromTemplateRow(this._row, "answer_list", null);
+    let answerList = getParamFromTemplateRow(this._row, "answer_list", []);
+    // Convert if datalist input (hashmap to array)
+    if (answerList.constructor === {}.constructor) {
+      answerList = objectToArray(answerList);
+    }
     this.customAnswerSelected =
-      listAnswers && this._row.value
-        ? !listAnswers.find((x) => x.includes(this._row.value))
+      answerList.length > 0 && this._row.value
+        ? !answerList.find((x) => x.includes(this._row.value))
         : false;
-    this.text = this.getText(this._row.value, listAnswers);
+    this.text = this.getText(this._row.value, answerList);
   }
 
   getParams() {

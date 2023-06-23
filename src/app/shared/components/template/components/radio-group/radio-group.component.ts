@@ -14,6 +14,7 @@ import {
   getNumberParamFromTemplateRow,
   getParamFromTemplateRow,
   getStringParamFromTemplateRow,
+  parseAnswerListItem,
 } from "../../../../utils";
 import { ReplaySubject } from "rxjs";
 import { objectToArray } from "../../utils/template-utils";
@@ -91,20 +92,7 @@ export class TmplRadioGroupComponent
       }
       const arrayOfBtn = answer_list.map((item) => {
         // convert string to relevant mappings
-        let itemObj: IButton = {} as any;
-        if (typeof item === "string") {
-          const stringProperties = item.split("|");
-          stringProperties.forEach((s) => {
-            const [field, value] = s.split(":").map((v) => v.trim());
-            if (field && value) {
-              itemObj[field] = value;
-            }
-          });
-        }
-        // NOTE CC 2021-08-07 - allow passing of object, not just string for conversion
-        else {
-          itemObj = item;
-        }
+        const itemObj = parseAnswerListItem(item) as IButton;
         const processed = this.processButtonFields(itemObj);
         return processed;
       });

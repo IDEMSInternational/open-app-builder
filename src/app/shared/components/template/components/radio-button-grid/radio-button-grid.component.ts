@@ -1,14 +1,12 @@
 import { Component, Input } from "@angular/core";
 import { TemplateBaseComponent } from "../base";
 import { FlowTypes, ITemplateRowProps } from "../../models";
-import { getParamFromTemplateRow } from "src/app/shared/utils";
+import {
+  getParamFromTemplateRow,
+  IAnswerListItem,
+  parseAnswerListItem,
+} from "src/app/shared/utils";
 import { objectToArray } from "../../utils";
-
-interface IAnswerListItem {
-  name: string;
-  image?: string;
-  text?: string;
-}
 
 interface IRadioButtonGridParams {
   /** List of options presented as radio items */
@@ -111,28 +109,9 @@ export class TmplRadioButtonGridComponent
     }
     const radioItems: IAnswerListItem[] = answerList.map(
       (item: string | Record<string, string>) => {
-        if (typeof item === "string") {
-          return this.parseAnswerListItemString(item);
-        }
-        return item as any;
+        return parseAnswerListItem(item);
       }
     );
     return radioItems;
-  }
-
-  /**
-   * convert string to relevant mappings
-   * TODO - CC 2023-03-16 - should ideally convert in parsers instead of at runtime
-   */
-  private parseAnswerListItemString(item: string) {
-    const itemObj: IAnswerListItem = {} as any;
-    const stringProperties = item.split("|");
-    stringProperties.forEach((s) => {
-      const [field, value] = s.split(":").map((v) => v.trim());
-      if (field && value) {
-        itemObj[field] = value;
-      }
-    });
-    return itemObj;
   }
 }

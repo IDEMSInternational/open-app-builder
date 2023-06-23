@@ -5,9 +5,11 @@ import {
   getNumberParamFromTemplateRow,
   getParamFromTemplateRow,
   getStringParamFromTemplateRow,
+  parseAnswerListItem,
 } from "src/app/shared/utils";
 import { FormBuilder, FormControl, FormGroup } from "@angular/forms";
 import { ModalController } from "@ionic/angular";
+import { objectToArray } from "../../../utils";
 
 interface AnswerBody {
   name: string | null;
@@ -65,21 +67,15 @@ export class ComboBoxModalComponent implements OnInit {
     }
   }
 
-  convertToObject(answers_list: string[]): AnswerBody[] {
+  convertToObject(answerList: string[]): AnswerBody[] {
     let answers: AnswerBody[] = [];
-    if (answers_list) {
-      answers_list.map((item) => {
-        const obj: AnswerBody = {
-          text: null,
-          name: null,
-        };
-        const stringProperties = item.split("|");
-        stringProperties.forEach((s) => {
-          const [field, value] = s.split(":").map((v) => v.trim());
-          if (field && value) {
-            obj[field] = value;
-          }
-        });
+    if (answerList) {
+      // Convert if datalist input (hashmap to array)
+      if (answerList.constructor === {}.constructor) {
+        answerList = objectToArray(answerList);
+      }
+      answerList.map((item) => {
+        const obj = parseAnswerListItem(item) as AnswerBody;
         answers.push(obj);
       });
       return answers;
