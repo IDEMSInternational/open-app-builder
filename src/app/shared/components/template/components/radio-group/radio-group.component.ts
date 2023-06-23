@@ -14,17 +14,10 @@ import {
   getNumberParamFromTemplateRow,
   getParamFromTemplateRow,
   getStringParamFromTemplateRow,
-  parseAnswerListItem,
+  parseAnswerList,
+  IAnswerListItem,
 } from "../../../../utils";
 import { ReplaySubject } from "rxjs";
-import { objectToArray } from "../../utils/template-utils";
-
-interface IButton {
-  name: string | null;
-  image: string | null;
-  text: string | null;
-  image_checked: string | null;
-}
 
 @Component({
   selector: "plh-radio-group",
@@ -38,7 +31,7 @@ export class TmplRadioGroupComponent
   @Input() changeTheme: EventEmitter<boolean>;
   @Input() parent: TemplateContainerComponent;
   @ViewChild("labelImage", { static: false, read: true }) labelImage: ElementRef;
-  arrayOfBtn: Array<IButton>;
+  arrayOfBtn: Array<IAnswerListItem>;
   groupName: string;
   windowWidth: number;
   private componentDestroyed$ = new ReplaySubject(1);
@@ -85,17 +78,9 @@ export class TmplRadioGroupComponent
    */
   createArrayBtnElement(answer_list: string[]) {
     if (answer_list) {
-      // NOTE CC 2021-08-07 - datalists might be used which currently only format as objects
-      // manually convert to array if required (temp method until better handling found)
-      if (typeof answer_list === "object") {
-        answer_list = objectToArray(answer_list);
-      }
-      const arrayOfBtn = answer_list.map((item) => {
-        // convert string to relevant mappings
-        const itemObj = parseAnswerListItem(item) as IButton;
-        const processed = this.processButtonFields(itemObj);
-        return processed;
-      });
+      let arrayOfBtn = parseAnswerList(answer_list);
+      arrayOfBtn = arrayOfBtn.map((itemObj) => this.processButtonFields(itemObj));
+
       // TODO - CC 2023-03-15 could lead to strange behaviour, to review
       // (checks every item but keeps overriding the button type depending on what it finds)
       arrayOfBtn.forEach((item) => {
@@ -110,8 +95,8 @@ export class TmplRadioGroupComponent
       return arrayOfBtn;
     }
   }
-  private processButtonFields(button: IButton) {
-    const processed: IButton = {
+  private processButtonFields(button: IAnswerListItem) {
+    const processed: IAnswerListItem = {
       text: null,
       image: null,
       name: null,

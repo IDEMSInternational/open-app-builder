@@ -1,12 +1,7 @@
 import { Component, Input } from "@angular/core";
 import { TemplateBaseComponent } from "../base";
 import { FlowTypes, ITemplateRowProps } from "../../models";
-import {
-  getParamFromTemplateRow,
-  IAnswerListItem,
-  parseAnswerListItem,
-} from "src/app/shared/utils";
-import { objectToArray } from "../../utils";
+import { getParamFromTemplateRow, IAnswerListItem, parseAnswerList } from "src/app/shared/utils";
 
 interface IRadioButtonGridParams {
   /** List of options presented as radio items */
@@ -70,7 +65,8 @@ export class TmplRadioButtonGridComponent
 
   private setParams() {
     this.parameter_list = this._row.parameter_list || ({} as any);
-    this.radioItems = this.generateItemList();
+    const answerList = getParamFromTemplateRow(this._row, "answer_list", []);
+    this.radioItems = parseAnswerList(answerList);
     this.gridStyle = this.generateGridStyle();
   }
 
@@ -95,23 +91,5 @@ export class TmplRadioButtonGridComponent
       gridAutoRows: "1fr",
     };
     return style;
-  }
-
-  /**
-   * Adapted from radio-group.component
-   * Convert input answer_list to rendered item list
-   */
-  private generateItemList() {
-    let answerList = getParamFromTemplateRow(this._row, "answer_list", []);
-    // Convert if datalist input (hashmap to array)
-    if (answerList.constructor === {}.constructor) {
-      answerList = objectToArray(answerList);
-    }
-    const radioItems: IAnswerListItem[] = answerList.map(
-      (item: string | Record<string, string>) => {
-        return parseAnswerListItem(item);
-      }
-    );
-    return radioItems;
   }
 }
