@@ -12,7 +12,7 @@ interface IWorkflowStep {
   condition?: (context: IWorkflowStepContext) => Promise<boolean>;
   function: (context: IWorkflowStepContext) => Promise<any>;
 }
-interface IWorkflowStepContext {
+export interface IWorkflowStepContext {
   config: IDeploymentConfigJson;
   workflow: IWorkflowContext;
   tasks: ITasks;
