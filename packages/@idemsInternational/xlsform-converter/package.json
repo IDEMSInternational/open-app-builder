@@ -1,0 +1,10 @@
+{
+  "name": "@idemsInternational/xlsform-converter",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "start": "docker compose up --build --abort-on-container-exit"
+  },
+  "author": "",
+  "license": "ISC"
+}
