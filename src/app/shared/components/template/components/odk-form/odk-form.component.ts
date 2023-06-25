@@ -66,8 +66,13 @@ interface IODKFormComponentParameters {
  * - Reduce build budget js 5MB -> 4MB
  */
 export class TmplOdkFormComponent extends TemplateBaseComponent implements OnInit {
+  /* Authoring Parameters */
   private parameter_list: IODKFormComponentParameters;
 
+  /**
+   * Form container element binding to render form
+   * @ignore
+   */
   @ViewChild("formContainerEl", { static: true }) formContainerEl: ElementRef<HTMLDivElement>;
 
   constructor(private templateAssetService: TemplateAssetService) {
@@ -117,7 +122,7 @@ export class TmplOdkFormComponent extends TemplateBaseComponent implements OnIni
 
   /**
    * Load the form xml and data models and render intial form components
-   * https://enketo.github.io/enketo-core/tutorial-00-getting-started.html
+   * https://github.com/enketo/enketo-core#usage-as-a-library
    */
   private loadForm(formData: IEnketoFormData) {
     const { formContainerEl } = this;
