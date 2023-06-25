@@ -66,8 +66,8 @@ interface IODKFormComponentParameters {
  * - Reduce build budget js 5MB -> 4MB
  */
 export class TmplOdkFormComponent extends TemplateBaseComponent implements OnInit {
-  /* Authoring Parameters */
-  private parameter_list: IODKFormComponentParameters;
+  /** Authoring parameters */
+  public parameter_list: IODKFormComponentParameters;
 
   /**
    * Form container element binding to render form
