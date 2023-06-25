@@ -4145,6 +4145,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@idemsInternational/xlsform-converter@workspace:packages/@idemsInternational/xlsform-converter":
+  version: 0.0.0-use.local
+  resolution: "@idemsInternational/xlsform-converter@workspace:packages/@idemsInternational/xlsform-converter"
+  languageName: unknown
+  linkType: soft
+
 "@ionic-native/core@npm:^5.36.0":
   version: 5.36.0
   resolution: "@ionic-native/core@npm:5.36.0"
@@ -7619,6 +7625,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@xmldom/xmldom@npm:^0.7.0":
+  version: 0.7.10
+  resolution: "@xmldom/xmldom@npm:0.7.10"
+  checksum: faeb5efd208f25643e469b9807b4b1bfe4f9c19540f0a24b4bb1c748cee6ee44ec441048820f9100987d1ee075f2e2bfc28e535cae5024d4566bb62b0a42be13
+  languageName: node
+  linkType: hard
+
 "@xtuc/ieee754@npm:^1.2.0":
   version: 1.2.0
   resolution: "@xtuc/ieee754@npm:1.2.0"
@@ -9125,6 +9138,15 @@ __metadata:
   version: 1.0.0
   resolution: "boolbase@npm:1.0.0"
   checksum: 3e25c80ef626c3a3487c73dbfc70ac322ec830666c9ad915d11b701142fab25ec1e63eff2c450c74347acfd2de854ccde865cd79ef4db1683f7c7b046ea43bb0
+  languageName: node
+  linkType: hard
+
+"bootstrap-datepicker@npm:^1.10.0":
+  version: 1.10.0
+  resolution: "bootstrap-datepicker@npm:1.10.0"
+  dependencies:
+    jquery: ">=3.4.0 <4.0.0"
+  checksum: 3f1545545f2052eb44d519d6ec6a8792d34c0285fc6d4f291a3bbee14f1987bb33b51106d9f578dbc1db23d95e51a6878e6fba846e689a938b8e10af57926bd6
   languageName: node
   linkType: hard
 
@@ -14803,7 +14825,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"formidable@npm:^1.2.2":
+"formidable@npm:^1.2.1, formidable@npm:^1.2.2":
   version: 1.2.6
   resolution: "formidable@npm:1.2.6"
   checksum: 2b68ed07ba88302b9c63f8eda94f19a460cef6017bfda48348f09f41d2a36660c9353137991618e0e4c3db115b41e4b8f6fa63bc973b7a7c91dec66acdd02a56
@@ -14947,6 +14969,7 @@ __metadata:
     "@typescript-eslint/eslint-plugin": ^5.57.1
     "@typescript-eslint/parser": 5.57.1
     app-data: "workspace:*"
+    bootstrap-datepicker: ^1.10.0
     capacitor-blob-writer: ^1.1.9
     capacitor-firebase-auth: ^3.0.0
     clone: ^2.1.2
@@ -14977,10 +15000,13 @@ __metadata:
     firebase-tools: ^9.14.0
     globalthis: ^1.0.2
     howler: ^2.2.1
+    html5sortable: ^0.13.3
     husky: ^8.0.3
     intro.js: ^3.2.1
     jasmine-core: ~4.5.0
     jasmine-spec-reporter: ~7.0.0
+    jquery: ^3.7.0
+    jquery-touchswipe: ^1.6.19
     karma: ~6.4.0
     karma-chrome-launcher: ~3.1.0
     karma-coverage: ~2.2.0
@@ -14990,6 +15016,7 @@ __metadata:
     lint-staged: ^13.0.3
     lottie-web: ^5.7.14
     marked: ^2.0.1
+    mergexml: ^1.2.3
     ng2-nouislider: ^1.8.3
     ngx-color: ^6.1.0
     ngx-extended-pdf-viewer: 16.2.16
@@ -15001,6 +15028,7 @@ __metadata:
     rxjs: ^7.8.0
     scripts: "workspace:*"
     shared: "workspace:*"
+    signature_pad: ^4.1.5
     stacktrace-js: ^2.0.2
     swiper: ^8.4.4
     trusted-types: ^2.0.0
@@ -16159,6 +16187,13 @@ __metadata:
   version: 2.0.2
   resolution: "html-escaper@npm:2.0.2"
   checksum: d2df2da3ad40ca9ee3a39c5cc6475ef67c8f83c234475f24d8e9ce0dc80a2c82df8e1d6fa78ddd1e9022a586ea1bd247a615e80a5cd9273d90111ddda7d9e974
+  languageName: node
+  linkType: hard
+
+"html5sortable@npm:^0.13.3":
+  version: 0.13.3
+  resolution: "html5sortable@npm:0.13.3"
+  checksum: 619cb6f355b070dc8e55c8bfb44bd92856cdfdb140ffdaa53031ebb7356f046367bb6bd8515179dc0210941879635bc573094f59487f6874e7d92593ccfc4840
   languageName: node
   linkType: hard
 
@@ -18273,6 +18308,20 @@ __metadata:
   languageName: node
   linkType: hard
 
+"jquery-touchswipe@npm:^1.6.19":
+  version: 1.6.19
+  resolution: "jquery-touchswipe@npm:1.6.19"
+  checksum: b987f43819f234f1a25abc798b8cec31d61c4de48e929d1c1bb4023f79ecf29905474413295d0a5bcad2b5d9ab2db67304c4dcb9d62900033ae57db62115bb56
+  languageName: node
+  linkType: hard
+
+"jquery@npm:>=3.4.0 <4.0.0, jquery@npm:^3.7.0":
+  version: 3.7.0
+  resolution: "jquery@npm:3.7.0"
+  checksum: 907785e133afc427650a131af5fccef66a404885037513b3d4d7d63aee6409bcc32a39836868c60e59b05aa0fb8ace8961c18b2ee3ffdf6ffdb571d6d7cd88ff
+  languageName: node
+  linkType: hard
+
 "js-base64@npm:3.7.3":
   version: 3.7.3
   resolution: "js-base64@npm:3.7.3"
@@ -19937,6 +19986,17 @@ __metadata:
   version: 1.4.1
   resolution: "merge2@npm:1.4.1"
   checksum: 7268db63ed5169466540b6fb947aec313200bcf6d40c5ab722c22e242f651994619bcd85601602972d3c85bd2cc45a358a4c61937e9f11a061919a1da569b0c2
+  languageName: node
+  linkType: hard
+
+"mergexml@npm:^1.2.3":
+  version: 1.2.3
+  resolution: "mergexml@npm:1.2.3"
+  dependencies:
+    "@xmldom/xmldom": ^0.7.0
+    formidable: ^1.2.1
+    xpath: 0.0.27
+  checksum: 5627a26bb8c14459175c22ae261da0154f9de458c03fc659a418a9c3161ff0c2e4da1526dcf438886667ba868803f8dab97b5127a91c0749dc565250a80dac5a
   languageName: node
   linkType: hard
 
@@ -24914,6 +24974,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"signature_pad@npm:^4.1.5":
+  version: 4.1.5
+  resolution: "signature_pad@npm:4.1.5"
+  checksum: de91afa65b3e98bdfc3ac2db7fe8c5708c1773258f97a06000e33cdb58b378ab46d66e5ec1798c9cc9272469b6c59a261bdce49d21e88b70f025bf8c325ccc88
+  languageName: node
+  linkType: hard
+
 "simple-concat@npm:^1.0.0":
   version: 1.0.1
   resolution: "simple-concat@npm:1.0.1"
@@ -28607,6 +28674,13 @@ __metadata:
   version: 2.0.0
   resolution: "xmlhttprequest-ssl@npm:2.0.0"
   checksum: 1e98df67f004fec15754392a131343ea92e6ab5ac4d77e842378c5c4e4fd5b6a9134b169d96842cc19422d77b1606b8df84a5685562b3b698cb68441636f827e
+  languageName: node
+  linkType: hard
+
+"xpath@npm:0.0.27":
+  version: 0.0.27
+  resolution: "xpath@npm:0.0.27"
+  checksum: 51f45d211a9a552a8f6a12a474061e89bafb07e0aecd4bad18a557411feb975919c158e1a66e4ea0542198c6ed442481d9f709c625cca57b97aaedeaeded902e
   languageName: node
   linkType: hard
 
