@@ -14,9 +14,12 @@ export const AppBuild: IActionConfig = {
   ],
   secrets: [
     {
+      name: "DEPLOYMENT_PRIVATE_KEY",
+      description: "(optional) Private key if using encrypted deployments",
+    },
+    {
       name: "FIREBASE_CONFIG",
-      description: "JSON export of firebase config (exported from firebase console)",
-      required: true,
+      description: "(optional) JSON export from firebase console if using firebase",
     },
   ],
 };
