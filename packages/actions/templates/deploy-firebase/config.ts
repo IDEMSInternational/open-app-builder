@@ -2,8 +2,7 @@ import { IActionConfig } from "../../models";
 
 export const DeployFirebase: IActionConfig = {
   name: "Deploy to Firebase",
-  description:
-    "Build and deploy to firebase hosting\nSupports both live and preview deployments, and per-branch triggers",
+  description: "Build and deploy to firebase hosting",
   templatePath: "deploy-firebase/template.yml",
   requires: [{ name: "App Build" }],
   inputs: () => [

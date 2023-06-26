@@ -1,17 +1,16 @@
 ##################################################################################
 #         About
 ##################################################################################
-# Build and deploy app to firebase
-# Supports deploying to custom hosting channel for long-lived preview urls (30d)
-# Or using custom hosting target
+# Build and deploy app to firebase preview channel
 
 ##################################################################################
-#         Configuration (updated per deployment)
+#         Configuration
 ##################################################################################
 
 env:
+  PR_LABEL_TRIGGER: "%{PR_LABEL_TRIGGER}" # | Specific label that must be manually applied in order to trigger preview
+  PR_TARGET_BRANCH: "%{PR_TARGET_BRANCH}" # | Branch name or pattern required as target for PR to trigger
   FIREBASE_PROJECT_ID: "%{FIREBASE_PROJECT_ID}" # | ID of firebase project used (in case of multiple deployment targets just specify default)
-  FIREBASE_HOSTING_CHANNEL: "%{FIREBASE_HOSTING_CHANNEL}" # | Name of channel to deploy to (default 'live' is main site, any other word, e.g. 'pr' will create random temp preview site)
   FIREBASE_HOSTING_TARGET: "%{FIREBASE_HOSTING_TARGET}" # | Optional override if using multiple hosting target sites (default target project ID)
   FIREBASE_SERVICE_ACCOUNT: ${{secrets.FIREBASE_SERVICE_ACCOUNT}} # | JSON export of firebase service account (from console)
 ##################################################################################
@@ -20,21 +19,23 @@ env:
 # https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows
 ##################################################################################
 on:
-  push:
+  pull_request:
+    types: [labeled, synchronize]
     branches:
-      - "%{PUSH_TARGET_BRANCH}"
+      - "%{PR_TARGET_BRANCH}"
 
 ##################################################################################
 #         Main Code
 ##################################################################################
-name: Deploy - Firebase
+name: PR Preview - Firebase
 # Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
 concurrency:
-  group: "deploy_firebase"
+  group: "pr_preview_firebase"
   cancel-in-progress: true
 
 jobs:
   build_action:
+    if: contains(github.event.pull_request.labels.*.name, '%{PR_LABEL_TRIGGER}')
     uses: ./.github/workflows/app-build.yml
     with:
       artifact-name: www
@@ -104,7 +105,6 @@ jobs:
           repoToken: "${{ secrets.GITHUB_TOKEN }}"
           firebaseServiceAccount: "${{ env.FIREBASE_SERVICE_ACCOUNT }}"
           projectId: "${{ env.FIREBASE_PROJECT_ID }}"
-          channelId: "${{ env.FIREBASE_HOSTING_CHANNEL }}"
           target: "${{ env.FIREBASE_HOSTING_TARGET }}"
           expires: "30d"
 ##################################################################################

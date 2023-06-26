@@ -22,9 +22,10 @@ export async function setupActions(deployment: IDeploymentConfigJson) {
       name: "selected",
       message: "What action would you like to configure?\n",
       choices: Object.values(ACTION_TEMPLATES).map((value) => {
-        const name = `${chalk.blue(value.name)}\n${chalk.gray(value.description)}\n`;
+        const name = `${chalk.blue(value.name)}\n  ${chalk.gray(value.description)}\n`;
         return { value, name };
       }),
+      pageSize: 30,
     },
   ]);
   await handleActionRequires(selected);
