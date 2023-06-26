@@ -7789,9 +7789,11 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "actions@workspace:packages/actions"
   dependencies:
+    "@types/fs-extra": ^9.0.13
     "@types/inquirer": ^7.3.1
     "@types/js-yaml": ^4.0.5
     chalk: ^4.1.0
+    fs-extra: ^10.0.0
     inquirer: ^7.3.3
     js-yaml: ^4.1.0
     ts-node: ^10.8.0

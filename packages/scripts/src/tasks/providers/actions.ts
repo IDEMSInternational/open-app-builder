@@ -1,4 +1,4 @@
-import { setupActions } from "actions/lib";
+import { setupActions } from "actions";
 import { ActiveDeployment } from "../../commands/deployment/get";
 
 class ActionsProvider {

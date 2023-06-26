@@ -1,6 +1,6 @@
 import type { IDeploymentConfig } from "data-models";
 
-export interface ITemplateConfig {
+export interface IActionConfig {
   name: string;
   description: string;
   /** relative path to template.yml */

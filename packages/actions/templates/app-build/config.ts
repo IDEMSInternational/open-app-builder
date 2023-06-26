@@ -1,6 +1,6 @@
-import { ITemplateConfig } from "../../models";
+import { IActionConfig } from "../../models";
 
-export const AppBuild: ITemplateConfig = {
+export const AppBuild: IActionConfig = {
   name: "App Build",
   description: "Create main app build for use in deployments",
   templatePath: "app-build/template.yml",
