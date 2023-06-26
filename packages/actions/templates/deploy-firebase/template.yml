@@ -38,6 +38,7 @@ jobs:
     uses: ./.github/workflows/app-build.yml
     with:
       artifact-name: www
+    secrets: inherit
 
   deploy_dev:
     needs: build_action

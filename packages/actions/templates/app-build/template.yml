@@ -20,7 +20,6 @@ on:
         description: Additional flags to pass to build command (e.g. base-href)
         type: string
         default: ""
-  # TODO - may need to also pass secrets here if working with encrypted deployments (to test)
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -29,7 +28,6 @@ jobs:
         with:
           lfs: true
           repository: "IDEMSInternational/parenting-app-ui.git"
-          # TODO - extract from config
           ref: master
       - uses: actions/checkout@v3
         with:
@@ -37,7 +35,14 @@ jobs:
           path: ".idems_app/deployments/${{env.DEPLOYMENT_NAME}}"
       - name: Populate Encryption key
         if: env.DEPLOYMENT_PRIVATE_KEY != ''
-        run: echo $DEPLOYMENT_PRIVATE_KEY > .idems_app/deployments/$DEPLOYMENT_NAME/encrypted/private.key
+        run: echo "${{env.DEPLOYMENT_PRIVATE_KEY}}" > ./.idems_app/deployments/${{env.DEPLOYMENT_NAME}}/encrypted/private.key
+
+        # TODO - populate firebase as part of deployment set
+      - name: Populate Firebase Config
+        if: env.FIREBASE_CONFIG != ''
+        run: |
+          echo "export const firebaseConfig = ${{env.FIREBASE_CONFIG}}" > src/environments/firebaseConfig.ts
+          cat src/environments/firebaseConfig.ts
       - name: Setup Node
         uses: actions/setup-node@v3
         with:
@@ -57,11 +62,9 @@ jobs:
       - name: Install node modules
         run: yarn install
 
-      # TODO - populate firebase as part of deployment set
       - name: Set deployment
-        run: |
-          yarn workflow deployment set $DEPLOYMENT_NAME
-          echo "export const firebaseConfig = ${{env.FIREBASE_CONFIG}}" > src/environments/firebaseConfig.ts
+        run: yarn workflow deployment set $DEPLOYMENT_NAME
+
       - name: Build
         run: yarn build ${{inputs.build-flags}}
         # Use github pages upload artifact action as also compresses into tar
