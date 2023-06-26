@@ -4,7 +4,7 @@
   "description": "",
   "types": "index.d.ts",
   "scripts": {
-    "start": "ts-node src/index.ts"
+    "start": "ts-node lib/index.ts"
   },
   "dependencies": {
     "chalk": "^4.1.0",
