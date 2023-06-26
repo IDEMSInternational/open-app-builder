@@ -2,15 +2,15 @@
 
 Github actions for use by deployment repos
 
-## Creating Templates
-Templates follow the same syntax as github-actions 
+## Creating Action Templates
+Action templates follow the same syntax as github-actions 
 
 ## Adding Variables
-Templates can be modified with user input variables. These are denoted with
+Action templates can be modified with user input variables. These are denoted with
 ```
 %{VARIABLE_NAME}
 ```
-Variables for replacement should be defined in the template configuration `config.ts`
+Variables for replacement should be defined in the action template `config.ts`
 
 **Note** - when actions are triggered from main app workflows all active deployment variables will be available and can be set as default value for any inputs
 
