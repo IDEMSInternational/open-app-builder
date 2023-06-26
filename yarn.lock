@@ -7785,7 +7785,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"actions@workspace:packages/actions":
+"actions@workspace:*, actions@workspace:packages/actions":
   version: 0.0.0-use.local
   resolution: "actions@workspace:packages/actions"
   dependencies:
@@ -24419,6 +24419,7 @@ __metadata:
     "@types/jasmine": ^3.10.6
     "@types/node-rsa": ^1.1.1
     "@types/semver": ^7.3.9
+    actions: "workspace:*"
     boxen: ^5.0.1
     chalk: ^4.1.0
     chokidar: ^3.5.3
