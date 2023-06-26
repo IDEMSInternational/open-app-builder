@@ -14,8 +14,8 @@ export const AppBuild: IActionConfig = {
   ],
   secrets: [
     {
-      name: "FIREBASE_SERVICE_ACCOUNT",
-      description: "JSON export of service account (exported from firebase console)",
+      name: "FIREBASE_CONFIG",
+      description: "JSON export of firebase config (exported from firebase console)",
       required: true,
     },
   ],
