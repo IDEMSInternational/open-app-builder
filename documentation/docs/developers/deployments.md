@@ -111,7 +111,7 @@ This will first update any content from the remote repo, and then proceed to als
 
 ### Push Changes
 A local repo can have its changes pushed to github by publishing a new release
-```
+```sh
 yarn workflow repo publish
 ```
 This will create a new git branch, apply local changes and push to github. From there a pull request can be created to merge into the main branch.
@@ -126,8 +126,8 @@ This will create a new git branch, apply local changes and push to github. From 
 Content repos may also wish to configure github actions to support common tasks like building web previews on pull requests, or deploying releases.
 
 Several action templates have been prepared and can be configured using the command
-```
-yarn workflow deployment actions
+```sh
+yarn workflow repo actions
 ```
 This will provide interactive prompts to setup required actions
 
