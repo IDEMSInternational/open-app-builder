@@ -1,0 +1,4746 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>frontend documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+        <link rel="stylesheet" href="../styles/material.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">frontend documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content miscellaneous-functions">
+                   <div class="content-data">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li>Miscellaneous</li>
+  <li>Functions</li>
+</ol>
+
+<section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <ul class="index-list">
+                        <li>
+                            <a href="#_distanceBetween" title="src/app/shared/components/template/components/odk-form/libs/openrosa/geo.ts" ><b>_distanceBetween</b>&nbsp;&nbsp;&nbsp;(src/.../geo.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#_getSiblingElements" title="src/app/shared/components/template/components/odk-form/libs/enketo/js/dom-utils.ts" ><b>_getSiblingElements</b>&nbsp;&nbsp;&nbsp;(src/.../dom-utils.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#_latLngsValid" title="src/app/shared/components/template/components/odk-form/libs/openrosa/geo.ts" ><b>_latLngsValid</b>&nbsp;&nbsp;&nbsp;(src/.../geo.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#_random13chars" title="src/app/shared/components/template/components/odk-form/libs/openrosa/random-token.ts" ><b>_random13chars</b>&nbsp;&nbsp;&nbsp;(src/.../random-token.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#_toLatLngs" title="src/app/shared/components/template/components/odk-form/libs/openrosa/geo.ts" ><b>_toLatLngs</b>&nbsp;&nbsp;&nbsp;(src/.../geo.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#_toRadians" title="src/app/shared/components/template/components/odk-form/libs/openrosa/geo.ts" ><b>_toRadians</b>&nbsp;&nbsp;&nbsp;(src/.../geo.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#_zeroPad" title="src/app/shared/components/template/components/odk-form/libs/openrosa/openrosa-extensions.ts" ><b>_zeroPad</b>&nbsp;&nbsp;&nbsp;(src/.../openrosa-extensions.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#AddRepeat" title="src/app/shared/components/template/components/odk-form/libs/enketo/js/event.ts" ><b>AddRepeat</b>&nbsp;&nbsp;&nbsp;(src/.../event.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#ApplyFocus" title="src/app/shared/components/template/components/odk-form/libs/enketo/js/event.ts" ><b>ApplyFocus</b>&nbsp;&nbsp;&nbsp;(src/.../event.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#area" title="src/app/shared/components/template/components/odk-form/libs/openrosa/geo.ts" ><b>area</b>&nbsp;&nbsp;&nbsp;(src/.../geo.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#asBoolean" title="src/app/shared/components/template/components/odk-form/libs/openrosa/utils/xpath-cast.ts" ><b>asBoolean</b>&nbsp;&nbsp;&nbsp;(src/.../xpath-cast.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#asDate" title="src/app/shared/components/template/components/odk-form/libs/openrosa/openrosa-extensions.ts" ><b>asDate</b>&nbsp;&nbsp;&nbsp;(src/.../openrosa-extensions.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#asGeopoints" title="src/app/shared/components/template/components/odk-form/libs/openrosa/geo.ts" ><b>asGeopoints</b>&nbsp;&nbsp;&nbsp;(src/.../geo.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#asInteger" title="src/app/shared/components/template/components/odk-form/libs/openrosa/openrosa-extensions.ts" ><b>asInteger</b>&nbsp;&nbsp;&nbsp;(src/.../openrosa-extensions.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#asNumber" title="src/app/shared/components/template/components/odk-form/libs/openrosa/utils/xpath-cast.ts" ><b>asNumber</b>&nbsp;&nbsp;&nbsp;(src/.../xpath-cast.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#asString" title="src/app/shared/components/template/components/odk-form/libs/openrosa/utils/xpath-cast.ts" ><b>asString</b>&nbsp;&nbsp;&nbsp;(src/.../xpath-cast.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#BeforeSave" title="src/app/shared/components/template/components/odk-form/libs/enketo/js/event.ts" ><b>BeforeSave</b>&nbsp;&nbsp;&nbsp;(src/.../event.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#bothOf" title="src/app/shared/components/template/components/odk-form/libs/openrosa/utils/operation.ts" ><b>bothOf</b>&nbsp;&nbsp;&nbsp;(src/.../operation.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#byDocumentOrder" title="src/app/shared/components/template/components/odk-form/libs/openrosa/utils/sort-by-document-order.ts" ><b>byDocumentOrder</b>&nbsp;&nbsp;&nbsp;(src/.../sort-by-document-order.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#castFor" title="src/app/shared/components/template/components/odk-form/libs/openrosa/utils/operation.ts" ><b>castFor</b>&nbsp;&nbsp;&nbsp;(src/.../operation.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#Change" title="src/app/shared/components/template/components/odk-form/libs/enketo/js/event.ts" ><b>Change</b>&nbsp;&nbsp;&nbsp;(src/.../event.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#ChangeLanguage" title="src/app/shared/components/template/components/odk-form/libs/enketo/js/event.ts" ><b>ChangeLanguage</b>&nbsp;&nbsp;&nbsp;(src/.../event.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#ChangeOption" title="src/app/shared/components/template/components/odk-form/libs/enketo/js/event.ts" ><b>ChangeOption</b>&nbsp;&nbsp;&nbsp;(src/.../event.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#closestAncestorUntil" title="src/app/shared/components/template/components/odk-form/libs/enketo/js/dom-utils.ts" ><b>closestAncestorUntil</b>&nbsp;&nbsp;&nbsp;(src/.../dom-utils.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#convertSubstringArgs" title="src/app/shared/components/template/components/odk-form/libs/openrosa/utils/native.ts" ><b>convertSubstringArgs</b>&nbsp;&nbsp;&nbsp;(src/.../native.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#DataUpdate" title="src/app/shared/components/template/components/odk-form/libs/enketo/js/event.ts" ><b>DataUpdate</b>&nbsp;&nbsp;&nbsp;(src/.../event.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#dateStringToDays" title="src/app/shared/components/template/components/odk-form/libs/openrosa/utils/date.ts" ><b>dateStringToDays</b>&nbsp;&nbsp;&nbsp;(src/.../date.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#dateToDays" title="src/app/shared/components/template/components/odk-form/libs/openrosa/utils/date.ts" ><b>dateToDays</b>&nbsp;&nbsp;&nbsp;(src/.../date.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#DePrintify" title="src/app/shared/components/template/components/odk-form/libs/enketo/js/event.ts" ><b>DePrintify</b>&nbsp;&nbsp;&nbsp;(src/.../event.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#distance" title="src/app/shared/components/template/components/odk-form/libs/openrosa/geo.ts" ><b>distance</b>&nbsp;&nbsp;&nbsp;(src/.../geo.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#Edited" title="src/app/shared/components/template/components/odk-form/libs/enketo/js/event.ts" ><b>Edited</b>&nbsp;&nbsp;&nbsp;(src/.../event.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#empty" title="src/app/shared/components/template/components/odk-form/libs/enketo/js/dom-utils.ts" ><b>empty</b>&nbsp;&nbsp;&nbsp;(src/.../dom-utils.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#equalityCompare" title="src/app/shared/components/template/components/odk-form/libs/openrosa/utils/operation.ts" ><b>equalityCompare</b>&nbsp;&nbsp;&nbsp;(src/.../operation.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#FakeFocus" title="src/app/shared/components/template/components/odk-form/libs/enketo/js/event.ts" ><b>FakeFocus</b>&nbsp;&nbsp;&nbsp;(src/.../event.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#getAncestors" title="src/app/shared/components/template/components/odk-form/libs/enketo/js/dom-utils.ts" ><b>getAncestors</b>&nbsp;&nbsp;&nbsp;(src/.../dom-utils.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#getChild" title="src/app/shared/components/template/components/odk-form/libs/enketo/js/dom-utils.ts" ><b>getChild</b>&nbsp;&nbsp;&nbsp;(src/.../dom-utils.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#getChildren" title="src/app/shared/components/template/components/odk-form/libs/enketo/js/dom-utils.ts" ><b>getChildren</b>&nbsp;&nbsp;&nbsp;(src/.../dom-utils.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#getNode" title="src/app/shared/components/template/components/odk-form/libs/openrosa/openrosa-extensions.ts" ><b>getNode</b>&nbsp;&nbsp;&nbsp;(src/.../openrosa-extensions.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#getNodeName" title="src/app/shared/components/template/components/odk-form/libs/openrosa/openrosa-extensions.ts" ><b>getNodeName</b>&nbsp;&nbsp;&nbsp;(src/.../openrosa-extensions.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#getRepeatIndex" title="src/app/shared/components/template/components/odk-form/libs/enketo/js/dom-utils.ts" ><b>getRepeatIndex</b>&nbsp;&nbsp;&nbsp;(src/.../dom-utils.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#getSiblingElement" title="src/app/shared/components/template/components/odk-form/libs/enketo/js/dom-utils.ts" ><b>getSiblingElement</b>&nbsp;&nbsp;&nbsp;(src/.../dom-utils.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#getSiblingElements" title="src/app/shared/components/template/components/odk-form/libs/enketo/js/dom-utils.ts" ><b>getSiblingElements</b>&nbsp;&nbsp;&nbsp;(src/.../dom-utils.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#getSiblingElementsAndSelf" title="src/app/shared/components/template/components/odk-form/libs/enketo/js/dom-utils.ts" ><b>getSiblingElementsAndSelf</b>&nbsp;&nbsp;&nbsp;(src/.../dom-utils.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#getXPath" title="src/app/shared/components/template/components/odk-form/libs/enketo/js/dom-utils.ts" ><b>getXPath</b>&nbsp;&nbsp;&nbsp;(src/.../dom-utils.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#GoToInvisible" title="src/app/shared/components/template/components/odk-form/libs/enketo/js/event.ts" ><b>GoToInvisible</b>&nbsp;&nbsp;&nbsp;(src/.../event.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#GoToIrrelevant" title="src/app/shared/components/template/components/odk-form/libs/enketo/js/event.ts" ><b>GoToIrrelevant</b>&nbsp;&nbsp;&nbsp;(src/.../event.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#handleOperation" title="src/app/shared/components/template/components/odk-form/libs/openrosa/utils/operation.ts" ><b>handleOperation</b>&nbsp;&nbsp;&nbsp;(src/.../operation.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#hasNextSiblingElementSameName" title="src/app/shared/components/template/components/odk-form/libs/enketo/js/dom-utils.ts" ><b>hasNextSiblingElementSameName</b>&nbsp;&nbsp;&nbsp;(src/.../dom-utils.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#hasPreviousCommentSiblingWithContent" title="src/app/shared/components/template/components/odk-form/libs/enketo/js/dom-utils.ts" ><b>hasPreviousCommentSiblingWithContent</b>&nbsp;&nbsp;&nbsp;(src/.../dom-utils.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#hasPreviousSiblingElementSameName" title="src/app/shared/components/template/components/odk-form/libs/enketo/js/dom-utils.ts" ><b>hasPreviousSiblingElementSameName</b>&nbsp;&nbsp;&nbsp;(src/.../dom-utils.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#hasSiblingElementSameName" title="src/app/shared/components/template/components/odk-form/libs/enketo/js/dom-utils.ts" ><b>hasSiblingElementSameName</b>&nbsp;&nbsp;&nbsp;(src/.../dom-utils.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#Input" title="src/app/shared/components/template/components/odk-form/libs/enketo/js/event.ts" ><b>Input</b>&nbsp;&nbsp;&nbsp;(src/.../event.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#InputUpdate" title="src/app/shared/components/template/components/odk-form/libs/enketo/js/event.ts" ><b>InputUpdate</b>&nbsp;&nbsp;&nbsp;(src/.../event.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#InstanceFirstLoad" title="src/app/shared/components/template/components/odk-form/libs/enketo/js/event.ts" ><b>InstanceFirstLoad</b>&nbsp;&nbsp;&nbsp;(src/.../event.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#Invalidated" title="src/app/shared/components/template/components/odk-form/libs/enketo/js/event.ts" ><b>Invalidated</b>&nbsp;&nbsp;&nbsp;(src/.../event.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#isDomNode" title="src/app/shared/components/template/components/odk-form/libs/openrosa/utils/xpath-cast.ts" ><b>isDomNode</b>&nbsp;&nbsp;&nbsp;(src/.../xpath-cast.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#isNodeish" title="src/app/shared/components/template/components/odk-form/libs/openrosa/openrosa-extensions.ts" ><b>isNodeish</b>&nbsp;&nbsp;&nbsp;(src/.../openrosa-extensions.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#mapFn" title="src/app/shared/components/template/components/odk-form/libs/openrosa/openrosa-extensions.ts" ><b>mapFn</b>&nbsp;&nbsp;&nbsp;(src/.../openrosa-extensions.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#NewRepeat" title="src/app/shared/components/template/components/odk-form/libs/enketo/js/event.ts" ><b>NewRepeat</b>&nbsp;&nbsp;&nbsp;(src/.../event.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#nodeToString" title="src/app/shared/components/template/components/odk-form/libs/openrosa/utils/xpath-cast.ts" ><b>nodeToString</b>&nbsp;&nbsp;&nbsp;(src/.../xpath-cast.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#oneOf" title="src/app/shared/components/template/components/odk-form/libs/openrosa/utils/operation.ts" ><b>oneOf</b>&nbsp;&nbsp;&nbsp;(src/.../operation.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#PageFlip" title="src/app/shared/components/template/components/odk-form/libs/enketo/js/event.ts" ><b>PageFlip</b>&nbsp;&nbsp;&nbsp;(src/.../event.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#preprocessNativeArgs" title="src/app/shared/components/template/components/odk-form/libs/openrosa/utils/native.ts" ><b>preprocessNativeArgs</b>&nbsp;&nbsp;&nbsp;(src/.../native.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#Printify" title="src/app/shared/components/template/components/odk-form/libs/enketo/js/event.ts" ><b>Printify</b>&nbsp;&nbsp;&nbsp;(src/.../event.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#ProgressUpdate" title="src/app/shared/components/template/components/odk-form/libs/enketo/js/event.ts" ><b>ProgressUpdate</b>&nbsp;&nbsp;&nbsp;(src/.../event.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#Random" title="src/app/shared/components/template/components/odk-form/libs/openrosa/utils/shuffle.ts" ><b>Random</b>&nbsp;&nbsp;&nbsp;(src/.../shuffle.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#randomToken" title="src/app/shared/components/template/components/odk-form/libs/openrosa/random-token.ts" ><b>randomToken</b>&nbsp;&nbsp;&nbsp;(src/.../random-token.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#relationalCompare" title="src/app/shared/components/template/components/odk-form/libs/openrosa/utils/operation.ts" ><b>relationalCompare</b>&nbsp;&nbsp;&nbsp;(src/.../operation.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#Removed" title="src/app/shared/components/template/components/odk-form/libs/enketo/js/event.ts" ><b>Removed</b>&nbsp;&nbsp;&nbsp;(src/.../event.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#RemoveRepeat" title="src/app/shared/components/template/components/odk-form/libs/enketo/js/event.ts" ><b>RemoveRepeat</b>&nbsp;&nbsp;&nbsp;(src/.../event.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#shuffle" title="src/app/shared/components/template/components/odk-form/libs/openrosa/utils/shuffle.ts" ><b>shuffle</b>&nbsp;&nbsp;&nbsp;(src/.../shuffle.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#toSnapshotResult" title="src/app/shared/components/template/components/odk-form/libs/openrosa/utils/result.ts" ><b>toSnapshotResult</b>&nbsp;&nbsp;&nbsp;(src/.../result.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#Unnamed function" title="src/app/shared/components/template/components/odk-form/libs/openrosa/extended-xpath.ts" ><b>Unnamed function</b>&nbsp;&nbsp;&nbsp;(src/.../extended-xpath.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#Unnamed function" title="src/app/shared/components/template/components/odk-form/libs/enketo/js/xpath-evaluator-binding.ts" ><b>Unnamed function</b>&nbsp;&nbsp;&nbsp;(src/.../xpath-evaluator-binding.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#Unnamed function" title="src/app/shared/components/template/components/odk-form/libs/openrosa/utils/sort-by-document-order.ts" ><b>Unnamed function</b>&nbsp;&nbsp;&nbsp;(src/.../sort-by-document-order.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#UpdateMaxSize" title="src/app/shared/components/template/components/odk-form/libs/enketo/js/event.ts" ><b>UpdateMaxSize</b>&nbsp;&nbsp;&nbsp;(src/.../event.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#uuid" title="src/app/shared/components/template/components/odk-form/libs/openrosa/openrosa-extensions.ts" ><b>uuid</b>&nbsp;&nbsp;&nbsp;(src/.../openrosa-extensions.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#ValidationComplete" title="src/app/shared/components/template/components/odk-form/libs/enketo/js/event.ts" ><b>ValidationComplete</b>&nbsp;&nbsp;&nbsp;(src/.../event.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#XFormsValueChanged" title="src/app/shared/components/template/components/odk-form/libs/enketo/js/event.ts" ><b>XFormsValueChanged</b>&nbsp;&nbsp;&nbsp;(src/.../event.ts)</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+
+    <h3>src/app/shared/components/template/components/odk-form/libs/openrosa/geo.ts</h3>
+    <section>
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="_distanceBetween"></a>
+                    <span class="name">
+                        <span ><b>_distanceBetween</b></span>
+                        <a href="#_distanceBetween"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>_distanceBetween(p1, p2)</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Adapted from <a href="https://www.movable-type.co.uk/scripts/latlong.html">https://www.movable-type.co.uk/scripts/latlong.html</a></p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>p1</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>p2</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="_latLngsValid"></a>
+                    <span class="name">
+                        <span ><b>_latLngsValid</b></span>
+                        <a href="#_latLngsValid"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>_latLngsValid(latLngs)</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>latLngs</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="_toLatLngs"></a>
+                    <span class="name">
+                        <span ><b>_toLatLngs</b></span>
+                        <a href="#_toLatLngs"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>_toLatLngs(geopoints)</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>geopoints</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="_toRadians"></a>
+                    <span class="name">
+                        <span ><b>_toRadians</b></span>
+                        <a href="#_toRadians"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>_toRadians(angle)</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>angle</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="area"></a>
+                    <span class="name">
+                        <span ><b>area</b></span>
+                        <a href="#area"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>area(geopoints)</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Adapted from <a href="https://github.com/Leaflet/Leaflet.draw/blob/3cba37065ea5be28f42efe9cc47836c9e3f5db8c/src/ext/GeometryUtil.js#L3-L20">https://github.com/Leaflet/Leaflet.draw/blob/3cba37065ea5be28f42efe9cc47836c9e3f5db8c/src/ext/GeometryUtil.js#L3-L20</a></p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>geopoints</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="asGeopoints"></a>
+                    <span class="name">
+                        <span ><b>asGeopoints</b></span>
+                        <a href="#asGeopoints"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>asGeopoints(r)</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>r</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="distance"></a>
+                    <span class="name">
+                        <span ><b>distance</b></span>
+                        <a href="#distance"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>distance(geopoints)</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>geopoints</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>    <h3>src/app/shared/components/template/components/odk-form/libs/enketo/js/dom-utils.ts</h3>
+    <section>
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="_getSiblingElements"></a>
+                    <span class="name">
+                        <span ><b>_getSiblingElements</b></span>
+                        <a href="#_getSiblingElements"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>_getSiblingElements(element, selector: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, includeSelf)</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Gets siblings that match selector <em>in DOM order</em>.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Default value</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>element</td>
+                                    <td>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+                                    <td>
+                                    </td>
+
+                                    <td>
+                                        <ul>
+<li>Target element.</li>
+</ul>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>selector</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+                                    <td>
+                                        <code>&quot;*&quot;</code>
+                                    </td>
+
+                                    <td>
+                                        <ul>
+<li>A CSS selector.</li>
+</ul>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>includeSelf</td>
+                                    <td>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+                                    <td>
+                                        <code>false</code>
+                                    </td>
+
+                                    <td>
+                                        <ul>
+<li>Whether to include self.</li>
+</ul>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="closestAncestorUntil"></a>
+                    <span class="name">
+                        <span ><b>closestAncestorUntil</b></span>
+                        <a href="#closestAncestorUntil"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>closestAncestorUntil(element, filterSelector: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, endSelector: null)</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Gets closest ancestor that match selector until the end selector.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Default value</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>element</td>
+                                    <td>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+                                    <td>
+                                    </td>
+
+                                    <td>
+                                        <ul>
+<li>Target element.</li>
+</ul>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>filterSelector</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+                                    <td>
+                                        <code>&quot;*&quot;</code>
+                                    </td>
+
+                                    <td>
+                                        <ul>
+<li>A CSS selector.</li>
+</ul>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>endSelector</td>
+                                    <td>
+                                            <code>null</code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+                                    <td>
+                                        <code>null</code>
+                                    </td>
+
+                                    <td>
+                                        <ul>
+<li>A CSS selector indicating where to stop. It will include this element if matched by the filter.</li>
+</ul>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="empty"></a>
+                    <span class="name">
+                        <span ><b>empty</b></span>
+                        <a href="#empty"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>empty(element)</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Removes all children elements.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>element</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <ul>
+<li>Target element.</li>
+</ul>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getAncestors"></a>
+                    <span class="name">
+                        <span ><b>getAncestors</b></span>
+                        <a href="#getAncestors"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getAncestors(element, filterSelector: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, endSelector: null)</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Gets ancestors that match selector <em>in DOM order</em>.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Default value</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>element</td>
+                                    <td>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+                                    <td>
+                                    </td>
+
+                                    <td>
+                                        <ul>
+<li>Target element.</li>
+</ul>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>filterSelector</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+                                    <td>
+                                        <code>&quot;*&quot;</code>
+                                    </td>
+
+                                    <td>
+                                        <ul>
+<li>A CSS selector.</li>
+</ul>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>endSelector</td>
+                                    <td>
+                                            <code>null</code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+                                    <td>
+                                        <code>null</code>
+                                    </td>
+
+                                    <td>
+                                        <ul>
+<li>A CSS selector indicating where to stop. It will include this element if matched by the filter.</li>
+</ul>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getChild"></a>
+                    <span class="name">
+                        <span ><b>getChild</b></span>
+                        <a href="#getChild"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getChild(element, selector: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Gets first child element, that (optionally) matches a selector.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Default value</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>element</td>
+                                    <td>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+                                    <td>
+                                    </td>
+
+                                    <td>
+                                        <ul>
+<li>Target element.</li>
+</ul>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>selector</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+                                    <td>
+                                        <code>&quot;*&quot;</code>
+                                    </td>
+
+                                    <td>
+                                        <ul>
+<li>A CSS selector.</li>
+</ul>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getChildren"></a>
+                    <span class="name">
+                        <span ><b>getChildren</b></span>
+                        <a href="#getChildren"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getChildren(element, selector: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Gets child elements, that (optionally) match a selector.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Default value</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>element</td>
+                                    <td>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+                                    <td>
+                                    </td>
+
+                                    <td>
+                                        <ul>
+<li>Target element.</li>
+</ul>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>selector</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+                                    <td>
+                                        <code>&quot;*&quot;</code>
+                                    </td>
+
+                                    <td>
+                                        <ul>
+<li>A CSS selector.</li>
+</ul>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getRepeatIndex"></a>
+                    <span class="name">
+                        <span ><b>getRepeatIndex</b></span>
+                        <a href="#getRepeatIndex"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getRepeatIndex(node)</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Obtains the index of a repeat instance within its own series.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>node</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <ul>
+<li>XML node</li>
+</ul>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getSiblingElement"></a>
+                    <span class="name">
+                        <span ><b>getSiblingElement</b></span>
+                        <a href="#getSiblingElement"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getSiblingElement(element, selector: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Returns first sibling element (in DOM order) that optionally matches the provided selector.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Default value</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>element</td>
+                                    <td>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+                                    <td>
+                                    </td>
+
+                                    <td>
+                                        <ul>
+<li>Target element.</li>
+</ul>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>selector</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+                                    <td>
+                                        <code>&quot;*&quot;</code>
+                                    </td>
+
+                                    <td>
+                                        <ul>
+<li>A CSS selector.</li>
+</ul>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Element</code>
+
+                    </div>
+                    <div class="io-description">
+                        <p>First sibling element in DOM order</p>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getSiblingElements"></a>
+                    <span class="name">
+                        <span ><b>getSiblingElements</b></span>
+                        <a href="#getSiblingElements"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getSiblingElements(element, selector)</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Gets siblings that match selector <em>in DOM order</em>.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>element</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <ul>
+<li>Target element.</li>
+</ul>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>selector</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <ul>
+<li>A CSS selector.</li>
+</ul>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getSiblingElementsAndSelf"></a>
+                    <span class="name">
+                        <span ><b>getSiblingElementsAndSelf</b></span>
+                        <a href="#getSiblingElementsAndSelf"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getSiblingElementsAndSelf(element, selector)</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>element</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>selector</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getXPath"></a>
+                    <span class="name">
+                        <span ><b>getXPath</b></span>
+                        <a href="#getXPath"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getXPath(node, rootNodeName: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, includePosition)</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Creates an XPath from a node</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Default value</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>node</td>
+                                    <td>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+                                    <td>
+                                    </td>
+
+                                    <td>
+                                        <ul>
+<li>XML node</li>
+</ul>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>rootNodeName</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+                                    <td>
+                                        <code>&quot;#document&quot;</code>
+                                    </td>
+
+                                    <td>
+                                        <ul>
+<li>Defaults to #document</li>
+</ul>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>includePosition</td>
+                                    <td>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+                                    <td>
+                                        <code>false</code>
+                                    </td>
+
+                                    <td>
+                                        <ul>
+<li>Whether or not to include the positions <code>/path/to/repeat[2]/node</code></li>
+</ul>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="hasNextSiblingElementSameName"></a>
+                    <span class="name">
+                        <span ><b>hasNextSiblingElementSameName</b></span>
+                        <a href="#hasNextSiblingElementSameName"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>hasNextSiblingElementSameName(el)</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>el</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <ul>
+<li>Target node</li>
+</ul>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="hasPreviousCommentSiblingWithContent"></a>
+                    <span class="name">
+                        <span ><b>hasPreviousCommentSiblingWithContent</b></span>
+                        <a href="#hasPreviousCommentSiblingWithContent"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>hasPreviousCommentSiblingWithContent(node, content)</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>node</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <ul>
+<li>Target node</li>
+</ul>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>content</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <ul>
+<li>Text content to look for</li>
+</ul>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="hasPreviousSiblingElementSameName"></a>
+                    <span class="name">
+                        <span ><b>hasPreviousSiblingElementSameName</b></span>
+                        <a href="#hasPreviousSiblingElementSameName"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>hasPreviousSiblingElementSameName(el)</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>el</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <ul>
+<li>Target node</li>
+</ul>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="hasSiblingElementSameName"></a>
+                    <span class="name">
+                        <span ><b>hasSiblingElementSameName</b></span>
+                        <a href="#hasSiblingElementSameName"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>hasSiblingElementSameName(el)</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>el</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <ul>
+<li>Target node</li>
+</ul>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>    <h3>src/app/shared/components/template/components/odk-form/libs/openrosa/random-token.ts</h3>
+    <section>
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="_random13chars"></a>
+                    <span class="name">
+                        <span ><b>_random13chars</b></span>
+                        <a href="#_random13chars"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>_random13chars()</code>
+                </td>
+            </tr>
+
+
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="randomToken"></a>
+                    <span class="name">
+                        <span ><b>randomToken</b></span>
+                        <a href="#randomToken"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>randomToken(length)</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>length</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>    <h3>src/app/shared/components/template/components/odk-form/libs/openrosa/openrosa-extensions.ts</h3>
+    <section>
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="_zeroPad"></a>
+                    <span class="name">
+                        <span ><b>_zeroPad</b></span>
+                        <a href="#_zeroPad"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>_zeroPad(n, len?)</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>n</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>len</td>
+
+                                    <td>
+                                        Yes
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="asDate"></a>
+                    <span class="name">
+                        <span ><b>asDate</b></span>
+                        <a href="#asDate"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>asDate(r)</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>r</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="asInteger"></a>
+                    <span class="name">
+                        <span ><b>asInteger</b></span>
+                        <a href="#asInteger"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>asInteger(r)</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>r</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getNode"></a>
+                    <span class="name">
+                        <span ><b>getNode</b></span>
+                        <a href="#getNode"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getNode(ctx, r)</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>If r is supplied, returns the first Element or Attribute in r by document order.
+If r is not supplied, returns the ctx iff it is an Element or Attribute.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>ctx</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>r</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getNodeName"></a>
+                    <span class="name">
+                        <span ><b>getNodeName</b></span>
+                        <a href="#getNodeName"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getNodeName(ctx, r)</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>ctx</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>r</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="isNodeish"></a>
+                    <span class="name">
+                        <span ><b>isNodeish</b></span>
+                        <a href="#isNodeish"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>isNodeish(__namedParameters: {nodeType})</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>nodeType</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="mapFn"></a>
+                    <span class="name">
+                        <span ><b>mapFn</b></span>
+                        <a href="#mapFn"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>mapFn(fn, ..._args: any[])</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>fn</td>
+                                    <td>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>_args</td>
+                                    <td>
+                                            <code>any[]</code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="uuid"></a>
+                    <span class="name">
+                        <span ><b>uuid</b></span>
+                        <a href="#uuid"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>uuid()</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Implementation from <a href="https://stackoverflow.com/a/2117523">https://stackoverflow.com/a/2117523</a>, added in revision
+<a href="https://stackoverflow.com/revisions/2117523/11">https://stackoverflow.com/revisions/2117523/11</a>, licensed under CC by SA 3.0
+(<a href="https://creativecommons.org/licenses/by-sa/3.0/">https://creativecommons.org/licenses/by-sa/3.0/</a>), see
+<a href="https://stackoverflow.com/posts/2117523/timeline">https://stackoverflow.com/posts/2117523/timeline</a>.  Formatting may have been
+changed.</p>
+</div>
+
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>    <h3>src/app/shared/components/template/components/odk-form/libs/enketo/js/event.ts</h3>
+    <section>
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="AddRepeat"></a>
+                    <span class="name">
+                        <span ><b>AddRepeat</b></span>
+                        <a href="#AddRepeat"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>AddRepeat(detail)</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>The addrepeat event is similar but fired under different circumstances.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                    <td>Default value</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>detail</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+                                    <td>
+                                        <code>undefined</code>
+                                    </td>
+
+                                    <td>
+                                        <ul>
+<li>Data to be passed with event.</li>
+</ul>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ApplyFocus"></a>
+                    <span class="name">
+                        <span ><b>ApplyFocus</b></span>
+                        <a href="#ApplyFocus"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ApplyFocus()</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Apply focus event.</p>
+</div>
+
+                    <div>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="BeforeSave"></a>
+                    <span class="name">
+                        <span ><b>BeforeSave</b></span>
+                        <a href="#BeforeSave"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>BeforeSave()</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Before save event.</p>
+</div>
+
+                    <div>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="Change"></a>
+                    <span class="name">
+                        <span ><b>Change</b></span>
+                        <a href="#Change"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>Change()</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Change event.</p>
+</div>
+
+                    <div>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ChangeLanguage"></a>
+                    <span class="name">
+                        <span ><b>ChangeLanguage</b></span>
+                        <a href="#ChangeLanguage"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ChangeLanguage()</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Change language event.</p>
+</div>
+
+                    <div>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ChangeOption"></a>
+                    <span class="name">
+                        <span ><b>ChangeOption</b></span>
+                        <a href="#ChangeOption"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ChangeOption()</code>
+                </td>
+            </tr>
+
+
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="DataUpdate"></a>
+                    <span class="name">
+                        <span ><b>DataUpdate</b></span>
+                        <a href="#DataUpdate"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>DataUpdate(detail)</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                    <td>Default value</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>detail</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+                                    <td>
+                                        <code>undefined</code>
+                                    </td>
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="DePrintify"></a>
+                    <span class="name">
+                        <span ><b>DePrintify</b></span>
+                        <a href="#DePrintify"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>DePrintify()</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Go to deprintify text event.</p>
+</div>
+
+                    <div>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="Edited"></a>
+                    <span class="name">
+                        <span ><b>Edited</b></span>
+                        <a href="#Edited"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>Edited()</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Edited event.</p>
+</div>
+
+                    <div>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="FakeFocus"></a>
+                    <span class="name">
+                        <span ><b>FakeFocus</b></span>
+                        <a href="#FakeFocus"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>FakeFocus()</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Fake focus event.</p>
+</div>
+
+                    <div>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="GoToInvisible"></a>
+                    <span class="name">
+                        <span ><b>GoToInvisible</b></span>
+                        <a href="#GoToInvisible"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>GoToInvisible()</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Go to invisible event fired when the target has no form control.
+This is event has prevalence of the &quot;go to hidden&quot; event.</p>
+</div>
+
+                    <div>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="GoToIrrelevant"></a>
+                    <span class="name">
+                        <span ><b>GoToIrrelevant</b></span>
+                        <a href="#GoToIrrelevant"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>GoToIrrelevant()</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Go to hidden event fired when the goto target is not relevant.</p>
+</div>
+
+                    <div>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="Input"></a>
+                    <span class="name">
+                        <span ><b>Input</b></span>
+                        <a href="#Input"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>Input()</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Input event.</p>
+</div>
+
+                    <div>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="InputUpdate"></a>
+                    <span class="name">
+                        <span ><b>InputUpdate</b></span>
+                        <a href="#InputUpdate"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>InputUpdate()</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Input update event which fires when a form control value is updated programmatically.</p>
+</div>
+
+                    <div>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="InstanceFirstLoad"></a>
+                    <span class="name">
+                        <span ><b>InstanceFirstLoad</b></span>
+                        <a href="#InstanceFirstLoad"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>InstanceFirstLoad()</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>The odk-instance-first-load event as defined in the ODK XForms spec.</p>
+</div>
+
+                    <div>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="Invalidated"></a>
+                    <span class="name">
+                        <span ><b>Invalidated</b></span>
+                        <a href="#Invalidated"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>Invalidated()</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Invalidated event.</p>
+</div>
+
+                    <div>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="NewRepeat"></a>
+                    <span class="name">
+                        <span ><b>NewRepeat</b></span>
+                        <a href="#NewRepeat"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>NewRepeat(detail)</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>The odk-new-repeat event as defined in the ODK XForms spec.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                    <td>Default value</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>detail</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+                                    <td>
+                                        <code>undefined</code>
+                                    </td>
+
+                                    <td>
+                                        <ul>
+<li>Data to be passed with event.</li>
+</ul>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="PageFlip"></a>
+                    <span class="name">
+                        <span ><b>PageFlip</b></span>
+                        <a href="#PageFlip"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>PageFlip()</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Page flip event.</p>
+</div>
+
+                    <div>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="Printify"></a>
+                    <span class="name">
+                        <span ><b>Printify</b></span>
+                        <a href="#Printify"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>Printify()</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Go to printify text event.</p>
+</div>
+
+                    <div>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ProgressUpdate"></a>
+                    <span class="name">
+                        <span ><b>ProgressUpdate</b></span>
+                        <a href="#ProgressUpdate"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ProgressUpdate(detail)</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Progress update event.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>detail</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <ul>
+<li>Data to be passed with event</li>
+</ul>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="Removed"></a>
+                    <span class="name">
+                        <span ><b>Removed</b></span>
+                        <a href="#Removed"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>Removed(detail)</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Removed event.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                    <td>Default value</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>detail</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+                                    <td>
+                                        <code>undefined</code>
+                                    </td>
+
+                                    <td>
+                                        <ul>
+<li>Data to be passed with event</li>
+</ul>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="RemoveRepeat"></a>
+                    <span class="name">
+                        <span ><b>RemoveRepeat</b></span>
+                        <a href="#RemoveRepeat"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>RemoveRepeat()</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Remove repeat event.</p>
+</div>
+
+                    <div>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="UpdateMaxSize"></a>
+                    <span class="name">
+                        <span ><b>UpdateMaxSize</b></span>
+                        <a href="#UpdateMaxSize"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>UpdateMaxSize()</code>
+                </td>
+            </tr>
+
+
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ValidationComplete"></a>
+                    <span class="name">
+                        <span ><b>ValidationComplete</b></span>
+                        <a href="#ValidationComplete"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ValidationComplete()</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Validation complete event.</p>
+</div>
+
+                    <div>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="XFormsValueChanged"></a>
+                    <span class="name">
+                        <span ><b>XFormsValueChanged</b></span>
+                        <a href="#XFormsValueChanged"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>XFormsValueChanged(detail)</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Xforms-value-changed event as defined in the ODK XForms spec.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                    <td>Default value</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>detail</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+                                    <td>
+                                        <code>undefined</code>
+                                    </td>
+
+                                    <td>
+                                        <ul>
+<li>Data to be passed with event.</li>
+</ul>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>    <h3>src/app/shared/components/template/components/odk-form/libs/openrosa/utils/xpath-cast.ts</h3>
+    <section>
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="asBoolean"></a>
+                    <span class="name">
+                        <span ><b>asBoolean</b></span>
+                        <a href="#asBoolean"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>asBoolean(r)</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>r</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="asNumber"></a>
+                    <span class="name">
+                        <span ><b>asNumber</b></span>
+                        <a href="#asNumber"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>asNumber(r)</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>r</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="asString"></a>
+                    <span class="name">
+                        <span ><b>asString</b></span>
+                        <a href="#asString"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>asString(r)</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>r</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="isDomNode"></a>
+                    <span class="name">
+                        <span ><b>isDomNode</b></span>
+                        <a href="#isDomNode"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>isDomNode(thing)</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Check if an object is a DOM Node, or one of its subtypes (e.g. Element).</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>thing</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="nodeToString"></a>
+                    <span class="name">
+                        <span ><b>nodeToString</b></span>
+                        <a href="#nodeToString"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>nodeToString(node)</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>node</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>    <h3>src/app/shared/components/template/components/odk-form/libs/openrosa/utils/operation.ts</h3>
+    <section>
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="bothOf"></a>
+                    <span class="name">
+                        <span ><b>bothOf</b></span>
+                        <a href="#bothOf"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>bothOf(lhs, rhs, t)</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>lhs</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>rhs</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>t</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="castFor"></a>
+                    <span class="name">
+                        <span ><b>castFor</b></span>
+                        <a href="#castFor"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>castFor(r)</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>r</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="equalityCompare"></a>
+                    <span class="name">
+                        <span ><b>equalityCompare</b></span>
+                        <a href="#equalityCompare"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>equalityCompare(lhs, rhs, compareFn)</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>lhs</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>rhs</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>compareFn</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="handleOperation"></a>
+                    <span class="name">
+                        <span ><b>handleOperation</b></span>
+                        <a href="#handleOperation"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>handleOperation(lhs, op, rhs)</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>lhs</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>op</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>rhs</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="oneOf"></a>
+                    <span class="name">
+                        <span ><b>oneOf</b></span>
+                        <a href="#oneOf"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>oneOf(lhs, rhs, t)</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>lhs</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>rhs</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>t</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="relationalCompare"></a>
+                    <span class="name">
+                        <span ><b>relationalCompare</b></span>
+                        <a href="#relationalCompare"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>relationalCompare(lhs, rhs, compareFn)</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>lhs</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>rhs</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>compareFn</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>    <h3>src/app/shared/components/template/components/odk-form/libs/openrosa/utils/sort-by-document-order.ts</h3>
+    <section>
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="byDocumentOrder"></a>
+                    <span class="name">
+                        <span ><b>byDocumentOrder</b></span>
+                        <a href="#byDocumentOrder"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>byDocumentOrder(a, b)</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>a</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>b</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="Unnamed function"></a>
+                    <span class="name">
+                        <span ><b>Unnamed function</b></span>
+                        <a href="#Unnamed function"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>Unnamed function(ir)</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>ir</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>    <h3>src/app/shared/components/template/components/odk-form/libs/openrosa/utils/native.ts</h3>
+    <section>
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="convertSubstringArgs"></a>
+                    <span class="name">
+                        <span ><b>convertSubstringArgs</b></span>
+                        <a href="#convertSubstringArgs"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>convertSubstringArgs(str, start, len)</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>str</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>start</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>len</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="preprocessNativeArgs"></a>
+                    <span class="name">
+                        <span ><b>preprocessNativeArgs</b></span>
+                        <a href="#preprocessNativeArgs"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>preprocessNativeArgs(name, args)</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>name</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>args</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>    <h3>src/app/shared/components/template/components/odk-form/libs/openrosa/utils/date.ts</h3>
+    <section>
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="dateStringToDays"></a>
+                    <span class="name">
+                        <span ><b>dateStringToDays</b></span>
+                        <a href="#dateStringToDays"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>dateStringToDays(d)</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>d</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="dateToDays"></a>
+                    <span class="name">
+                        <span ><b>dateToDays</b></span>
+                        <a href="#dateToDays"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>dateToDays(d)</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>d</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>    <h3>src/app/shared/components/template/components/odk-form/libs/openrosa/utils/shuffle.ts</h3>
+    <section>
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="Random"></a>
+                    <span class="name">
+                        <span ><b>Random</b></span>
+                        <a href="#Random"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>Random(seed)</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Creates a the Park-Miller PRNG pseudo-random value generator.
+The seed must be an integer.</p>
+<p>Adapted from: <a href="https://gist.github.com/blixt/f17b47c62508be59987b">https://gist.github.com/blixt/f17b47c62508be59987b</a></p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>seed</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="shuffle"></a>
+                    <span class="name">
+                        <span ><b>shuffle</b></span>
+                        <a href="#shuffle"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>shuffle(array, seed)</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Performs the &quot;inside-out&quot; variant of the Fisher-Yates array shuffle.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>array</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>seed</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>the seed value</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>    <h3>src/app/shared/components/template/components/odk-form/libs/openrosa/utils/result.ts</h3>
+    <section>
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="toSnapshotResult"></a>
+                    <span class="name">
+                        <span ><b>toSnapshotResult</b></span>
+                        <a href="#toSnapshotResult"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>toSnapshotResult(arr, resultType, singleItem?)</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>arr</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>resultType</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>singleItem</td>
+
+                                    <td>
+                                        Yes
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>    <h3>src/app/shared/components/template/components/odk-form/libs/openrosa/extended-xpath.ts</h3>
+    <section>
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="Unnamed function"></a>
+                    <span class="name">
+                        <span ><b>Unnamed function</b></span>
+                        <a href="#Unnamed function"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>Unnamed function(wrapped, extensions)</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>wrapped</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>extensions</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>    <h3>src/app/shared/components/template/components/odk-form/libs/enketo/js/xpath-evaluator-binding.ts</h3>
+    <section>
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="Unnamed function"></a>
+                    <span class="name">
+                        <span ><b>Unnamed function</b></span>
+                        <a href="#Unnamed function"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>Unnamed function()</code>
+                </td>
+            </tr>
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'miscellaneous-functions';
+            var COMPODOC_CURRENT_PAGE_URL = 'functions.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>
