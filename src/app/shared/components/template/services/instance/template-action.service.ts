@@ -229,7 +229,7 @@ export class TemplateActionService extends SyncServiceBase {
       case "google_auth":
         return await this.authService.signInWithGoogle();
       case "task_group_set_highlighted":
-        const [previousHighlightedTaskGroup, newHighlightedTaskGroup] =
+        const { previousHighlightedTaskGroup, newHighlightedTaskGroup } =
           this.taskService.setHighlightedTaskGroup(args[0]);
         // HACK - reschedule campaign notifications when the highlighted task group has changed,
         // in order to handle any that are conditional on the highlighted task group
