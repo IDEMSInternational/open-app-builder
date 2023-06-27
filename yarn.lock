@@ -4145,6 +4145,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@idemsInternational/xlsform-converter@workspace:packages/@idemsInternational/xlsform-converter":
+  version: 0.0.0-use.local
+  resolution: "@idemsInternational/xlsform-converter@workspace:packages/@idemsInternational/xlsform-converter"
+  languageName: unknown
+  linkType: soft
+
 "@ionic-native/core@npm:^5.36.0":
   version: 5.36.0
   resolution: "@ionic-native/core@npm:5.36.0"
@@ -7612,6 +7618,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@xmldom/xmldom@npm:^0.7.0":
+  version: 0.7.10
+  resolution: "@xmldom/xmldom@npm:0.7.10"
+  checksum: faeb5efd208f25643e469b9807b4b1bfe4f9c19540f0a24b4bb1c748cee6ee44ec441048820f9100987d1ee075f2e2bfc28e535cae5024d4566bb62b0a42be13
+  languageName: node
+  linkType: hard
+
 "@xtuc/ieee754@npm:^1.2.0":
   version: 1.2.0
   resolution: "@xtuc/ieee754@npm:1.2.0"
@@ -8947,7 +8960,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"big-integer@npm:1.6.x, big-integer@npm:^1.6.17":
+"big-integer@npm:1.6.x, big-integer@npm:^1.6.17, big-integer@npm:^1.6.44":
   version: 1.6.51
   resolution: "big-integer@npm:1.6.51"
   checksum: 3d444173d1b2e20747e2c175568bedeebd8315b0637ea95d75fd27830d3b8e8ba36c6af40374f36bdaea7b5de376dcada1b07587cb2a79a928fccdb6e6e3c518
@@ -9108,6 +9121,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"bootstrap-datepicker@npm:^1.10.0":
+  version: 1.10.0
+  resolution: "bootstrap-datepicker@npm:1.10.0"
+  dependencies:
+    jquery: ">=3.4.0 <4.0.0"
+  checksum: 3f1545545f2052eb44d519d6ec6a8792d34c0285fc6d4f291a3bbee14f1987bb33b51106d9f578dbc1db23d95e51a6878e6fba846e689a938b8e10af57926bd6
+  languageName: node
+  linkType: hard
+
 "bottleneck@npm:^2.15.3":
   version: 2.19.5
   resolution: "bottleneck@npm:2.19.5"
@@ -9144,6 +9166,15 @@ __metadata:
     type-fest: ^0.8.1
     widest-line: ^3.1.0
   checksum: ce2b565a2e44b33d11336155675cf4f7f0e13dbf7412928845aefd6a2cf65e0da2dbb0a2cb198b7620a2ae714416a2eb710926b780f15d19f6250a19633b29af
+  languageName: node
+  linkType: hard
+
+"bplist-parser@npm:^0.2.0":
+  version: 0.2.0
+  resolution: "bplist-parser@npm:0.2.0"
+  dependencies:
+    big-integer: ^1.6.44
+  checksum: d5339dd16afc51de6c88f88f58a45b72ed6a06aa31f5557d09877575f220b7c1d3fbe375da0b62e6a10d4b8ed80523567e351f24014f5bc886ad523758142cdd
   languageName: node
   linkType: hard
 
@@ -9407,6 +9438,15 @@ __metadata:
   dependencies:
     semver: ^7.0.0
   checksum: 66d204657fe36522822a95b288943ad11b58f5eaede235b11d8c4edaa28ce4800087d44a2681524c340494aadb120a0068011acabe99d30e8f11a7d826d83515
+  languageName: node
+  linkType: hard
+
+"bundle-name@npm:^3.0.0":
+  version: 3.0.0
+  resolution: "bundle-name@npm:3.0.0"
+  dependencies:
+    run-applescript: ^5.0.0
+  checksum: edf2b1fbe6096ed32e7566947ace2ea937ee427391744d7510a2880c4b9a5b3543d3f6c551236a29e5c87d3195f8e2912516290e638c15bcbede7b37cc375615
   languageName: node
   linkType: hard
 
@@ -11517,6 +11557,28 @@ __metadata:
   languageName: node
   linkType: hard
 
+"default-browser-id@npm:^3.0.0":
+  version: 3.0.0
+  resolution: "default-browser-id@npm:3.0.0"
+  dependencies:
+    bplist-parser: ^0.2.0
+    untildify: ^4.0.0
+  checksum: 279c7ad492542e5556336b6c254a4eaf31b2c63a5433265655ae6e47301197b6cfb15c595a6fdc6463b2ff8e1a1a1ed3cba56038a60e1527ba4ab1628c6b9941
+  languageName: node
+  linkType: hard
+
+"default-browser@npm:^4.0.0":
+  version: 4.0.0
+  resolution: "default-browser@npm:4.0.0"
+  dependencies:
+    bundle-name: ^3.0.0
+    default-browser-id: ^3.0.0
+    execa: ^7.1.1
+    titleize: ^3.0.0
+  checksum: 40c5af984799042b140300be5639c9742599bda76dc9eba5ac9ad5943c83dd36cebc4471eafcfddf8e0ec817166d5ba89d56f08e66a126c7c7908a179cead1a7
+  languageName: node
+  linkType: hard
+
 "default-gateway@npm:^6.0.3":
   version: 6.0.3
   resolution: "default-gateway@npm:6.0.3"
@@ -11562,6 +11624,13 @@ __metadata:
   version: 2.0.0
   resolution: "define-lazy-prop@npm:2.0.0"
   checksum: 0115fdb065e0490918ba271d7339c42453d209d4cb619dfe635870d906731eff3e1ade8028bb461ea27ce8264ec5e22c6980612d332895977e89c1bbc80fcee2
+  languageName: node
+  linkType: hard
+
+"define-lazy-prop@npm:^3.0.0":
+  version: 3.0.0
+  resolution: "define-lazy-prop@npm:3.0.0"
+  checksum: 54884f94caac0791bf6395a3ec530ce901cf71c47b0196b8754f3fd17edb6c0e80149c1214429d851873bb0d689dbe08dcedbb2306dc45c8534a5934723851b6
   languageName: node
   linkType: hard
 
@@ -13832,6 +13901,23 @@ __metadata:
   languageName: node
   linkType: hard
 
+"execa@npm:^7.1.1":
+  version: 7.1.1
+  resolution: "execa@npm:7.1.1"
+  dependencies:
+    cross-spawn: ^7.0.3
+    get-stream: ^6.0.1
+    human-signals: ^4.3.0
+    is-stream: ^3.0.0
+    merge-stream: ^2.0.0
+    npm-run-path: ^5.1.0
+    onetime: ^6.0.0
+    signal-exit: ^3.0.7
+    strip-final-newline: ^3.0.0
+  checksum: 21fa46fc69314ace4068cf820142bdde5b643a5d89831c2c9349479c1555bff137a291b8e749e7efca36535e4e0a8c772c11008ca2e84d2cbd6ca141a3c8f937
+  languageName: node
+  linkType: hard
+
 "executable@npm:^4.1.1":
   version: 4.1.1
   resolution: "executable@npm:4.1.1"
@@ -14719,7 +14805,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"formidable@npm:^1.2.2":
+"formidable@npm:^1.2.1, formidable@npm:^1.2.2":
   version: 1.2.6
   resolution: "formidable@npm:1.2.6"
   checksum: 2b68ed07ba88302b9c63f8eda94f19a460cef6017bfda48348f09f41d2a36660c9353137991618e0e4c3db115b41e4b8f6fa63bc973b7a7c91dec66acdd02a56
@@ -14863,6 +14949,7 @@ __metadata:
     "@typescript-eslint/eslint-plugin": ^5.57.1
     "@typescript-eslint/parser": 5.57.1
     app-data: "workspace:*"
+    bootstrap-datepicker: ^1.10.0
     capacitor-blob-writer: ^1.1.9
     capacitor-firebase-auth: ^3.0.0
     clone: ^2.1.2
@@ -14893,10 +14980,13 @@ __metadata:
     firebase-tools: ^9.14.0
     globalthis: ^1.0.2
     howler: ^2.2.1
+    html5sortable: ^0.13.3
     husky: ^8.0.3
     intro.js: ^3.2.1
     jasmine-core: ~4.5.0
     jasmine-spec-reporter: ~7.0.0
+    jquery: ^3.7.0
+    jquery-touchswipe: ^1.6.19
     karma: ~6.4.0
     karma-chrome-launcher: ~3.1.0
     karma-coverage: ~2.2.0
@@ -14906,6 +14996,7 @@ __metadata:
     lint-staged: ^13.0.3
     lottie-web: ^5.7.14
     marked: ^2.0.1
+    mergexml: ^1.2.3
     ng2-nouislider: ^1.8.3
     ngx-color: ^6.1.0
     ngx-extended-pdf-viewer: 16.2.16
@@ -14917,6 +15008,7 @@ __metadata:
     rxjs: ^7.8.0
     scripts: "workspace:*"
     shared: "workspace:*"
+    signature_pad: ^4.1.5
     stacktrace-js: ^2.0.2
     swiper: ^8.4.4
     trusted-types: ^2.0.0
@@ -16078,6 +16170,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"html5sortable@npm:^0.13.3":
+  version: 0.13.3
+  resolution: "html5sortable@npm:0.13.3"
+  checksum: 619cb6f355b070dc8e55c8bfb44bd92856cdfdb140ffdaa53031ebb7356f046367bb6bd8515179dc0210941879635bc573094f59487f6874e7d92593ccfc4840
+  languageName: node
+  linkType: hard
+
 "htmlparser2@npm:^8.0.1":
   version: 8.0.1
   resolution: "htmlparser2@npm:8.0.1"
@@ -16279,6 +16378,13 @@ __metadata:
   version: 3.0.1
   resolution: "human-signals@npm:3.0.1"
   checksum: f252a7769c8094a5c9dc6772816bdb417b188820b04c8b42d0fc468e03a0ba905b1dd07afabe9385cc83504af1ccc2b985cd1e4aeeeb8e0029896c5af2e6f354
+  languageName: node
+  linkType: hard
+
+"human-signals@npm:^4.3.0":
+  version: 4.3.1
+  resolution: "human-signals@npm:4.3.1"
+  checksum: 6f12958df3f21b6fdaf02d90896c271df00636a31e2bbea05bddf817a35c66b38a6fdac5863e2df85bd52f34958997f1f50350ff97249e1dff8452865d5235d1
   languageName: node
   linkType: hard
 
@@ -16900,6 +17006,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"is-docker@npm:^3.0.0":
+  version: 3.0.0
+  resolution: "is-docker@npm:3.0.0"
+  bin:
+    is-docker: cli.js
+  checksum: b698118f04feb7eaf3338922bd79cba064ea54a1c3db6ec8c0c8d8ee7613e7e5854d802d3ef646812a8a3ace81182a085dfa0a71cc68b06f3fa794b9783b3c90
+  languageName: node
+  linkType: hard
+
 "is-extendable@npm:^0.1.0, is-extendable@npm:^0.1.1":
   version: 0.1.1
   resolution: "is-extendable@npm:0.1.1"
@@ -16975,6 +17090,17 @@ __metadata:
   dependencies:
     is-extglob: ^2.1.1
   checksum: d381c1319fcb69d341cc6e6c7cd588e17cd94722d9a32dbd60660b993c4fb7d0f19438674e68dfec686d09b7c73139c9166b47597f846af387450224a8101ab4
+  languageName: node
+  linkType: hard
+
+"is-inside-container@npm:^1.0.0":
+  version: 1.0.0
+  resolution: "is-inside-container@npm:1.0.0"
+  dependencies:
+    is-docker: ^3.0.0
+  bin:
+    is-inside-container: cli.js
+  checksum: c50b75a2ab66ab3e8b92b3bc534e1ea72ca25766832c0623ac22d134116a98bcf012197d1caabe1d1c4bd5f84363d4aa5c36bb4b585fbcaf57be172cd10a1a03
   languageName: node
   linkType: hard
 
@@ -18159,6 +18285,20 @@ __metadata:
   version: 0.4.4
   resolution: "jpeg-js@npm:0.4.4"
   checksum: bd7cb61aa8df40a9ee2c2106839c3df6054891e56cfc22c0ac581402e06c6295f962a4754b0b2ac50a401789131b1c6dc9df8d24400f1352168be1894833c590
+  languageName: node
+  linkType: hard
+
+"jquery-touchswipe@npm:^1.6.19":
+  version: 1.6.19
+  resolution: "jquery-touchswipe@npm:1.6.19"
+  checksum: b987f43819f234f1a25abc798b8cec31d61c4de48e929d1c1bb4023f79ecf29905474413295d0a5bcad2b5d9ab2db67304c4dcb9d62900033ae57db62115bb56
+  languageName: node
+  linkType: hard
+
+"jquery@npm:>=3.4.0 <4.0.0, jquery@npm:^3.7.0":
+  version: 3.7.0
+  resolution: "jquery@npm:3.7.0"
+  checksum: 907785e133afc427650a131af5fccef66a404885037513b3d4d7d63aee6409bcc32a39836868c60e59b05aa0fb8ace8961c18b2ee3ffdf6ffdb571d6d7cd88ff
   languageName: node
   linkType: hard
 
@@ -19829,6 +19969,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"mergexml@npm:^1.2.3":
+  version: 1.2.3
+  resolution: "mergexml@npm:1.2.3"
+  dependencies:
+    "@xmldom/xmldom": ^0.7.0
+    formidable: ^1.2.1
+    xpath: 0.0.27
+  checksum: 5627a26bb8c14459175c22ae261da0154f9de458c03fc659a418a9c3161ff0c2e4da1526dcf438886667ba868803f8dab97b5127a91c0749dc565250a80dac5a
+  languageName: node
+  linkType: hard
+
 "methods@npm:^1.1.2, methods@npm:~1.1.2":
   version: 1.1.2
   resolution: "methods@npm:1.1.2"
@@ -21318,6 +21469,18 @@ __metadata:
     is-docker: ^2.0.0
     is-wsl: ^2.1.1
   checksum: 3333900ec0e420d64c23b831bc3467e57031461d843c801f569b2204a1acc3cd7b3ec3c7897afc9dde86491dfa289708eb92bba164093d8bd88fb2c231843c91
+  languageName: node
+  linkType: hard
+
+"open@npm:^9.1.0":
+  version: 9.1.0
+  resolution: "open@npm:9.1.0"
+  dependencies:
+    default-browser: ^4.0.0
+    define-lazy-prop: ^3.0.0
+    is-inside-container: ^1.0.0
+    is-wsl: ^2.2.0
+  checksum: 3993c0f61d51fed8ac290e99c9c3cf45d3b6cfb3e2aa2b74cafd312c3486c22fd81df16ac8f3ab91dd8a4e3e729a16fc2480cfc406c4833416cf908acf1ae7c9
   languageName: node
   linkType: hard
 
@@ -23908,6 +24071,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"run-applescript@npm:^5.0.0":
+  version: 5.0.0
+  resolution: "run-applescript@npm:5.0.0"
+  dependencies:
+    execa: ^5.0.0
+  checksum: d00c2dbfa5b2d774de7451194b8b125f40f65fc183de7d9dcae97f57f59433586d3c39b9001e111c38bfa24c3436c99df1bb4066a2a0c90d39a8c4cd6889af77
+  languageName: node
+  linkType: hard
+
 "run-async@npm:^2.2.0, run-async@npm:^2.4.0":
   version: 2.4.1
   resolution: "run-async@npm:2.4.1"
@@ -24242,6 +24414,7 @@ __metadata:
     mock-fs: ^5.2.0
     node-rsa: ^1.1.1
     nodemon: ^2.0.19
+    open: ^9.1.0
     p-queue: ^6.6.2
     pkg: ^5.5.1
     semver: ^7.3.7
@@ -24251,6 +24424,7 @@ __metadata:
     ts-morph: ^15.0.0
     ts-node: ^10.8.0
     ts-node-dev: ^1.0.0
+    tsimportlib: ^0.0.5
     typescript: ^4.1.2
     winston: ^3.8.1
     xlsx: ^0.18.5
@@ -24777,6 +24951,13 @@ __metadata:
   version: 4.0.1
   resolution: "signal-exit@npm:4.0.1"
   checksum: 832043367dca23e61ab6033e8b41c595fc805119bfe4fee63dea201cdc809a8b086bc54597bbbc1b2cde1a63c7dd554d1295ed2cca92db598233834a0b59b281
+  languageName: node
+  linkType: hard
+
+"signature_pad@npm:^4.1.5":
+  version: 4.1.5
+  resolution: "signature_pad@npm:4.1.5"
+  checksum: de91afa65b3e98bdfc3ac2db7fe8c5708c1773258f97a06000e33cdb58b378ab46d66e5ec1798c9cc9272469b6c59a261bdce49d21e88b70f025bf8c325ccc88
   languageName: node
   linkType: hard
 
@@ -26331,6 +26512,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"titleize@npm:^3.0.0":
+  version: 3.0.0
+  resolution: "titleize@npm:3.0.0"
+  checksum: 71fbbeabbfb36ccd840559f67f21e356e1d03da2915b32d2ae1a60ddcc13a124be2739f696d2feb884983441d159a18649e8d956648d591bdad35c430a6b6d28
+  languageName: node
+  linkType: hard
+
 "tmp@npm:0.0.33, tmp@npm:^0.0.33":
   version: 0.0.33
   resolution: "tmp@npm:0.0.33"
@@ -26763,6 +26951,13 @@ __metadata:
     strip-bom: ^3.0.0
     strip-json-comments: ^2.0.0
   checksum: 8bce05e93c673defd56d93d83d4055e49651d3947c076339c4bc15d47b7eb5029bed194087e568764213a2e4bf45c477ba9f4da16adfd92cd901af7c09e4517e
+  languageName: node
+  linkType: hard
+
+"tsimportlib@npm:^0.0.5":
+  version: 0.0.5
+  resolution: "tsimportlib@npm:0.0.5"
+  checksum: e8272b8e9ea53dc6cb75d5a96e6c573d262992ce71ca3734b52bdea10fa9d14f9587c7f9bc17824c0a863a51cc718c8775117fbb4a4af2e5e3bb8be62d74c95c
   languageName: node
   linkType: hard
 
@@ -28459,6 +28654,13 @@ __metadata:
   version: 2.0.0
   resolution: "xmlhttprequest-ssl@npm:2.0.0"
   checksum: 1e98df67f004fec15754392a131343ea92e6ab5ac4d77e842378c5c4e4fd5b6a9134b169d96842cc19422d77b1606b8df84a5685562b3b698cb68441636f827e
+  languageName: node
+  linkType: hard
+
+"xpath@npm:0.0.27":
+  version: 0.0.27
+  resolution: "xpath@npm:0.0.27"
+  checksum: 51f45d211a9a552a8f6a12a474061e89bafb07e0aecd4bad18a557411feb975919c158e1a66e4ea0542198c6ed442481d9f709c625cca57b97aaedeaeded902e
   languageName: node
   linkType: hard
 

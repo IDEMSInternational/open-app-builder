@@ -32,6 +32,7 @@
     "glob": "^7.2.0",
     "inquirer": "^7.3.3",
     "node-rsa": "^1.1.1",
+    "open": "^9.1.0",
     "p-queue": "^6.6.2",
     "semver": "^7.3.7",
     "shared": "workspace:*",
@@ -57,6 +58,7 @@
     "nodemon": "^2.0.19",
     "pkg": "^5.5.1",
     "ts-node": "^10.8.0",
-    "ts-node-dev": "^1.0.0"
+    "ts-node-dev": "^1.0.0",
+    "tsimportlib": "^0.0.5"
   }
 }
