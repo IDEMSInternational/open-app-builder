@@ -113,12 +113,33 @@ async function writeActionOutput(
     { type: "input", message, default: defaultName, name: "filename" },
   ]);
   const filepath = resolve(deployment._workspace_path, ".github", "workflows", filename);
+  const ymlMetadata = generateMetadataTag(config);
+  const ymlContent = `${ymlMetadata}${actionYml}`;
   ensureDirSync(dirname(filepath));
-  writeFileSync(filepath, actionYml);
+  writeFileSync(filepath, ymlContent);
   console.log(chalk.blue("\nAction created successfully\n"), filepath);
 }
 
 if (require.main === module) {
   // when running direct assume no deployment configured
   setupActions({} as any);
+}
+
+/**
+ * Generate a local yml tag used to store metadata
+ * @returns tag representation of action config metadata, e.g.
+ * ```yaml
+ * # IDEMS Template Metadata
+ * %TAG !idems_meta! id:app_build,version:20230629
+ * ---
+ * ```
+ *
+ * Ideally we would just add key-value pairs directly to top-section of yaml file,
+ * however json-schema detection throws errors for properties not expected in github action yml
+ */
+function generateMetadataTag(config: IActionConfig) {
+  const metadataString = Object.entries(config.metadata)
+    .map(([key, value]) => `${key}:${value}`)
+    .join(",");
+  return `# IDEMS Template Metadata\n%TAG !idems_meta! ${metadataString}\n---\n`;
 }

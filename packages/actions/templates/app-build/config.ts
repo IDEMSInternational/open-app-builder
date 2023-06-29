@@ -22,4 +22,8 @@ export const AppBuild: IActionConfig = {
       description: "(optional) JSON export from firebase console if using firebase",
     },
   ],
+  metadata: {
+    id: "app_build",
+    version: "1.0.0",
+  },
 };

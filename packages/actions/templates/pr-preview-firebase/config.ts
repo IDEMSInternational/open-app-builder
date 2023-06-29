@@ -31,4 +31,8 @@ export const PRPreviewFirebase: IActionConfig = {
       required: true,
     },
   ],
+  metadata: {
+    id: "pr_preview_firebase",
+    version: "1.0.0",
+  },
 };
