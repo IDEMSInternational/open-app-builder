@@ -31,4 +31,8 @@ export const DeployFirebase: IActionConfig = {
       required: true,
     },
   ],
+  metadata: {
+    id: "deploy_firebase",
+    version: "1.0.0",
+  },
 };

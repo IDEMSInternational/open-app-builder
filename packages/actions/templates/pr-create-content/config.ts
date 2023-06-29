@@ -18,4 +18,8 @@ export const PRCreateContent: IActionConfig = {
         "https://github.com/marketplace/actions/create-pull-request#workflow-permissions",
     },
   ],
+  metadata: {
+    id: "pr_create_content",
+    version: "1.0.0",
+  },
 };

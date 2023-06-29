@@ -20,4 +20,11 @@ export interface IActionConfig {
     description: string;
     required?: boolean;
   }[];
+  /** Additional metadata populated to templates for use in debugging */
+  metadata: {
+    /** unique id of action template (used for updating) */
+    id: string;
+    /** template version, using semantic versioning, e.g. "1.0.0" */
+    version: string;
+  };
 }
