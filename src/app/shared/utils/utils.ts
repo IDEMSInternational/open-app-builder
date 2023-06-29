@@ -207,25 +207,6 @@ export function getBooleanParamFromTemplateRow(
   return params.hasOwnProperty(name) ? params[name] === "true" : _default;
 }
 
-/** Return a string of space-separated values for the "variant" or "variant_list" parameters  */
-export function getVariantParamFromTemplateRow(
-  row: FlowTypes.TemplateRow,
-  _default: string
-): string {
-  const params = row.parameter_list || {};
-  let variantValue = getParamFromTemplateRow(row, "variant", "");
-  if (params.hasOwnProperty("variant_list")) {
-    variantValue = getParamFromTemplateRow(row, "variant_list", "");
-  }
-  if (variantValue.length > 0) {
-    // If array, join into space-separated string
-    if (Array.isArray(variantValue)) return variantValue.join(" ");
-    // If string, replace commas with spaces
-    return variantValue.replace(",", " ").replace("  ", " ");
-  }
-  return _default;
-}
-
 /**
  * Evaluate a javascript expression in a safe context
  * @param expression string expression, e.g. "!true", "5 - 4"
