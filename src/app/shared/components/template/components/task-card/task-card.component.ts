@@ -1,9 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { TaskService } from "src/app/shared/services/task/task.service";
-import {
-  getStringParamFromTemplateRow,
-  getVariantParamFromTemplateRow,
-} from "src/app/shared/utils";
+import { getStringParamFromTemplateRow } from "src/app/shared/utils";
 import { TemplateBaseComponent } from "../base";
 import { IProgressStatus } from "src/app/shared/services/task/task.service";
 import { TemplateFieldService } from "../../services/template-field.service";
@@ -45,14 +42,9 @@ interface ITaskCardParams {
   style: string;
   /**
    * A list of named style variants of the component, separated by spaces or commas.
-   * Use interchangeably with "variant_list". Default "landscape"
+   * Default "landscape"
    * */
   variant: string;
-  /**
-   * A list of named style variants of the component, separated by spaces or commas.
-   * Use interchangeably with "variant". Default "landscape"
-   * */
-  variant_list: string;
   /**
    * The icon to display in the "badge" added to the task card
    * when its associated task/task group has been completed
@@ -101,6 +93,7 @@ export class TmplTaskCardComponent extends TemplateBaseComponent implements OnIn
   completedIcon: string;
   inProgressIcon: string;
   isButton: boolean;
+  variant: string;
 
   constructor(
     private taskService: TaskService,
@@ -129,9 +122,10 @@ export class TmplTaskCardComponent extends TemplateBaseComponent implements OnIn
 
     // Use "variant" param to determine styles, including support for legacy "style" param
     this.style = getStringParamFromTemplateRow(this._row, "style", "landscape");
-    const variant = getVariantParamFromTemplateRow(this._row, "");
-    this.style = `${this.style} ${variant}`;
-    this.isButton = this.style.includes("button");
+    this.variant = getStringParamFromTemplateRow(this._row, "variant", "landscape")
+      .replace(",", " ")
+      .replace("  ", " ");
+    this.isButton = this.style.includes("button") || this.variant.includes("button");
 
     this.completedIcon = getStringParamFromTemplateRow(this._row, "completed_icon", null);
     this.inProgressIcon = getStringParamFromTemplateRow(this._row, "in_progress_icon", null);
