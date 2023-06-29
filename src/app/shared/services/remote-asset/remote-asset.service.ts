@@ -111,11 +111,11 @@ export class RemoteAssetService extends AsyncServiceBase {
     // this to manifest of cached files, and generate a manifest of files to download.
     // Return dummy manifest for now
     const manifest: IAssetContents = {
-      "quality_assurance/test_image.png": {
+      "debug_asset_pack/test_image.png": {
         size_kb: 2,
         md5Checksum: "e6d6c6a12ca13a6277084e01c088378c",
       },
-      "quality_assurance/example_asset.png": {
+      "debug_asset_pack/example_asset.png": {
         size_kb: 2,
         md5Checksum: "e6d6c6a12ca13a6277084e01c088378c",
       },
