@@ -44,7 +44,7 @@ interface ITaskCardParams {
    * A list of named style variants of the component, separated by spaces or commas.
    * Default "landscape"
    * */
-  variant: string;
+  variant: "background-secondary" | "button" | "landscape" | "portrait" | "";
   /**
    * The icon to display in the "badge" added to the task card
    * when its associated task/task group has been completed
@@ -93,7 +93,7 @@ export class TmplTaskCardComponent extends TemplateBaseComponent implements OnIn
   completedIcon: string;
   inProgressIcon: string;
   isButton: boolean;
-  variant: string;
+  variant: ITaskCardParams["variant"];
 
   constructor(
     private taskService: TaskService,
@@ -122,9 +122,9 @@ export class TmplTaskCardComponent extends TemplateBaseComponent implements OnIn
 
     // Use "variant" param to determine styles, including support for legacy "style" param
     this.style = getStringParamFromTemplateRow(this._row, "style", "landscape");
-    this.variant = getStringParamFromTemplateRow(this._row, "variant", "landscape")
-      .replace(",", " ")
-      .replace("  ", " ");
+    this.variant = getStringParamFromTemplateRow(this._row, "variant", "")
+      .split(",")
+      .join(" ") as ITaskCardParams["variant"];
     this.isButton = this.style.includes("button") || this.variant.includes("button");
 
     this.completedIcon = getStringParamFromTemplateRow(this._row, "completed_icon", null);
