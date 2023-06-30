@@ -20,7 +20,7 @@
       "number": 1,
       "title": "@data.topic.family_relation.title",
       "gender_split": true,
-      "session_type": "topic",
+      "session_type": "onboarding",
       "image_asset": "@data.topic.family_relation.image_asset",
       "goal_1": "To appreciate the importance of family relationships especially relations with one’s children and partner.",
       "goal_2": "To encourage participants to recruit their partners.",

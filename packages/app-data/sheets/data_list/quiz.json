@@ -5,11 +5,44 @@
   "rows": [
     {
       "id": "current_pract",
+      "topic": "current_pract",
       "title": "Picture quiz",
       "intro_text": "Let's look at some images.",
       "question_1_id": "playing_what",
       "question_2_id": "feeding_what",
       "question_3_id": "reading_what"
+    },
+    {
+      "id": "dev_stage",
+      "topic": "child_dev",
+      "title": "Needs of children in different developmental stages",
+      "question_1_id": "dev_stage_which",
+      "question_2_id": "dev_stage_physical",
+      "question_3_id": "dev_stage_feel",
+      "question_4_id": "dev_stage_think",
+      "question_5_id": "dev_stage_social",
+      "outro": "As a parent, note that by focusing on growing only one or two areas of a child’s development could affect their wellbeing. \n\nFor balanced growth and development, ensure that you focus on all the four main areas equally in order to have a well-developed child.",
+      "intro_text": "Let's do a reflection."
+    },
+    {
+      "id": "sharing_care",
+      "topic": "sharing_care",
+      "question_1_id": "sharing_care_who",
+      "question_2_id": "sharing_care_relations",
+      "question_3_id": "sharing_care_obstacles",
+      "question_4_id": "sharing_care_benefits",
+      "question_5_id": "sharing_care_how",
+      "title": "Quiz",
+      "intro_text": "Let's do a reflection."
+    },
+    {
+      "id": "caregiving",
+      "topic": "sharing_care",
+      "question_1_id": "caregiving_man",
+      "question_2_id": "caregiving_woman",
+      "question_3_id": "caregiving_self",
+      "title": "Quiz",
+      "intro_text": "Let's do a reflection."
     }
   ],
   "_xlsxPath": "global/data_lists/topics.xlsx"

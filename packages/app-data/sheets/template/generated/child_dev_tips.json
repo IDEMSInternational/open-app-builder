@@ -1,12 +1,21 @@
 {
+  "flow_name": "child_dev_tips",
+  "flow_subtype": "generated",
   "flow_type": "template",
-  "flow_name": "onboarding_praise",
-  "status": "released",
   "rows": [
     {
+      "name": "join",
+      "value": "_",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "join"
+    },
+    {
       "type": "template",
-      "name": "praise",
-      "value": "praise",
+      "name": "tips",
+      "value": "tips",
       "action_list": [
         {
           "trigger": "completed",
@@ -31,23 +40,22 @@
         {
           "name": "session_data_list_name",
           "value": [
-            "onboarding"
+            "child_dev"
           ],
           "type": "set_variable",
-          "_nested_name": "praise.session_data_list_name"
+          "_nested_name": "tips.session_data_list_name"
         },
         {
           "name": "session_task_id",
-          "value": "onboarding_praise",
+          "value": "child_dev_tips",
           "_translations": {
             "value": {}
           },
           "type": "set_variable",
-          "_nested_name": "praise.session_task_id"
+          "_nested_name": "tips.session_task_id"
         }
       ],
-      "_nested_name": "praise"
+      "_nested_name": "tips"
     }
-  ],
-  "_xlsxPath": "global/templates/blocks/onboarding_blocks.xlsx"
+  ]
 }

@@ -1,12 +1,21 @@
 {
+  "flow_name": "child_dev_reflect",
+  "flow_subtype": "generated",
   "flow_type": "template",
-  "flow_name": "onboarding_user_name",
-  "status": "released",
   "rows": [
     {
+      "name": "join",
+      "value": "_",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "join"
+    },
+    {
       "type": "template",
-      "name": "text_input_block",
-      "value": "text_input_block",
+      "name": "reflect",
+      "value": "reflect",
       "action_list": [
         {
           "trigger": "completed",
@@ -31,32 +40,22 @@
         {
           "name": "session_data_list_name",
           "value": [
-            "onboarding"
+            "child_dev"
           ],
           "type": "set_variable",
-          "_nested_name": "text_input_block.session_data_list_name"
+          "_nested_name": "reflect.session_data_list_name"
         },
         {
           "name": "session_task_id",
-          "value": "onboarding_user_name",
+          "value": "child_dev_reflect",
           "_translations": {
             "value": {}
           },
           "type": "set_variable",
-          "_nested_name": "text_input_block.session_task_id"
-        },
-        {
-          "name": "field_name",
-          "value": "user_name",
-          "_translations": {
-            "value": {}
-          },
-          "type": "set_variable",
-          "_nested_name": "text_input_block.field_name"
+          "_nested_name": "reflect.session_task_id"
         }
       ],
-      "_nested_name": "text_input_block"
+      "_nested_name": "reflect"
     }
-  ],
-  "_xlsxPath": "global/templates/blocks/onboarding_blocks.xlsx"
+  ]
 }

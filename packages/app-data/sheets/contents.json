@@ -1,9 +1,19 @@
 {
   "data_list": {
+    "app_section_data": {
+      "flow_type": "data_list",
+      "flow_name": "app_section_data",
+      "_xlsxPath": "global/data_lists/navigation.xlsx"
+    },
     "check_in": {
       "flow_type": "data_list",
       "flow_name": "check_in",
       "_xlsxPath": "global/data_lists/sessions.xlsx"
+    },
+    "child_dev": {
+      "flow_type": "data_list",
+      "flow_name": "child_dev",
+      "_xlsxPath": "global/data_lists/session_tasks.xlsx"
     },
     "current_pract": {
       "flow_type": "data_list",
@@ -14,6 +24,11 @@
       "flow_type": "data_list",
       "flow_name": "family_relation",
       "_xlsxPath": "global/data_lists/session_tasks.xlsx"
+    },
+    "child_dev_tasks": {
+      "flow_name": "child_dev_tasks",
+      "flow_subtype": "generated",
+      "flow_type": "data_list"
     },
     "current_pract_tasks": {
       "flow_name": "current_pract_tasks",
@@ -40,10 +55,16 @@
       "flow_name": "intro",
       "_xlsxPath": "global/data_lists/topics.xlsx"
     },
+    "library_data": {
+      "flow_type": "data_list",
+      "flow_name": "library_data",
+      "data_list_name": "library",
+      "_xlsxPath": "global/data_lists/library_data.xlsx"
+    },
     "number": {
       "flow_type": "data_list",
       "flow_name": "number",
-      "_xlsxPath": "global/data_lists/navigation_defaults.xlsx"
+      "_xlsxPath": "global/data_lists/navigation.xlsx"
     },
     "onboarding": {
       "flow_type": "data_list",
@@ -125,24 +146,67 @@
       "flow_name": "topic_block",
       "_xlsxPath": "global/data_lists/topics.xlsx"
     },
+    "topic_block_group": {
+      "flow_type": "data_list",
+      "flow_name": "topic_block_group",
+      "_xlsxPath": "global/data_lists/topics.xlsx"
+    },
     "topic_group": {
       "flow_type": "data_list",
       "flow_name": "topic_group",
       "_xlsxPath": "global/data_lists/topics.xlsx"
     }
   },
+  "data_pipe": {
+    "session_data_pipe": {
+      "flow_type": "data_pipe",
+      "flow_name": "session_data_pipe",
+      "_xlsxPath": "global/data_lists/sessions.xlsx"
+    },
+    "session_tasks_data_pipe": {
+      "flow_type": "data_pipe",
+      "flow_name": "session_tasks_data_pipe",
+      "_xlsxPath": "global/data_lists/session_tasks.xlsx"
+    }
+  },
+  "generator": {
+    "gen_child_dev_blocks": {
+      "flow_type": "generator",
+      "flow_name": "gen_child_dev_blocks",
+      "parameter_list": {
+        "input_data_list": "child_dev",
+        "output_flow_name": "@gen.id",
+        "output_flow_type": "template",
+        "output_flow_subtype": "generated"
+      },
+      "session": "child_dev",
+      "_xlsxPath": "global/templates/blocks/generate_session_blocks.xlsx"
+    },
+    "gen_onboarding_blocks": {
+      "flow_type": "generator",
+      "flow_name": "gen_onboarding_blocks",
+      "parameter_list": {
+        "input_data_list": "onboarding",
+        "output_flow_name": "@gen.id",
+        "output_flow_type": "template",
+        "output_flow_subtype": "generated"
+      },
+      "session": "onboarding",
+      "_xlsxPath": "global/templates/blocks/generate_session_blocks.xlsx"
+    }
+  },
   "global": {
     "navigation_defaults": {
       "flow_type": "global",
       "flow_name": "navigation_defaults",
-      "_xlsxPath": "global/data_lists/navigation_defaults.xlsx"
+      "_xlsxPath": "global/data_lists/navigation.xlsx"
     }
   },
   "template": {
     "app_menu": {
       "flow_type": "template",
       "flow_name": "app_menu",
-      "_xlsxPath": "global/templates/navigation.xlsx"
+      "_xlsxPath": "global/templates/navigation_templates.xlsx"
     },
     "check_in": {
       "flow_type": "template",
@@ -172,11 +236,6 @@
     "current_pract_relax": {
       "flow_type": "template",
       "flow_name": "current_pract_relax",
-      "_xlsxPath": "global/templates/blocks/current_pract_blocks.xlsx"
-    },
-    "current_pract_review_hp": {
-      "flow_type": "template",
-      "flow_name": "current_pract_review_hp",
       "_xlsxPath": "global/templates/blocks/current_pract_blocks.xlsx"
     },
     "current_pract_set_hp": {
@@ -243,68 +302,168 @@
       "flow_type": "template",
       "flow_name": "feature_feedback_default",
       "comments": "Default general feedback form",
-      "_xlsxPath": "global/templates/feedback.xlsx"
+      "_xlsxPath": "global/templates/feedback_templates.xlsx"
     },
     "feature_feedback_text_select": {
       "flow_type": "template",
       "flow_name": "feature_feedback_text_select",
       "comments": "Default text-select feedback form",
-      "_xlsxPath": "global/templates/feedback.xlsx"
+      "_xlsxPath": "global/templates/feedback_templates.xlsx"
+    },
+    "footer": {
+      "flow_type": "template",
+      "flow_name": "footer",
+      "_xlsxPath": "global/templates/navigation_templates.xlsx"
+    },
+    "child_dev_1_quiz": {
+      "flow_name": "child_dev_1_quiz",
+      "flow_subtype": "generated",
+      "flow_type": "template"
+    },
+    "child_dev_1_reflect": {
+      "flow_name": "child_dev_1_reflect",
+      "flow_subtype": "generated",
+      "flow_type": "template"
+    },
+    "child_dev_1_story": {
+      "flow_name": "child_dev_1_story",
+      "flow_subtype": "generated",
+      "flow_type": "template"
+    },
+    "child_dev_1_tips": {
+      "flow_name": "child_dev_1_tips",
+      "flow_subtype": "generated",
+      "flow_type": "template"
+    },
+    "child_dev_2_story": {
+      "flow_name": "child_dev_2_story",
+      "flow_subtype": "generated",
+      "flow_type": "template"
+    },
+    "child_dev_2_tips": {
+      "flow_name": "child_dev_2_tips",
+      "flow_subtype": "generated",
+      "flow_type": "template"
+    },
+    "child_dev_3_tips": {
+      "flow_name": "child_dev_3_tips",
+      "flow_subtype": "generated",
+      "flow_type": "template"
+    },
+    "child_dev_4_tips": {
+      "flow_name": "child_dev_4_tips",
+      "flow_subtype": "generated",
+      "flow_type": "template"
+    },
+    "child_dev_check_in": {
+      "flow_name": "child_dev_check_in",
+      "flow_subtype": "generated",
+      "flow_type": "template"
+    },
+    "child_dev_intro": {
+      "flow_name": "child_dev_intro",
+      "flow_subtype": "generated",
+      "flow_type": "template"
+    },
+    "child_dev_praise": {
+      "flow_name": "child_dev_praise",
+      "flow_subtype": "generated",
+      "flow_type": "template"
+    },
+    "child_dev_quiz": {
+      "flow_name": "child_dev_quiz",
+      "flow_subtype": "generated",
+      "flow_type": "template"
+    },
+    "child_dev_reflect": {
+      "flow_name": "child_dev_reflect",
+      "flow_subtype": "generated",
+      "flow_type": "template"
+    },
+    "child_dev_relax": {
+      "flow_name": "child_dev_relax",
+      "flow_subtype": "generated",
+      "flow_type": "template"
+    },
+    "child_dev_set_hp": {
+      "flow_name": "child_dev_set_hp",
+      "flow_subtype": "generated",
+      "flow_type": "template"
+    },
+    "child_dev_tips": {
+      "flow_name": "child_dev_tips",
+      "flow_subtype": "generated",
+      "flow_type": "template"
+    },
+    "current_pract_review_hp": {
+      "flow_name": "current_pract_review_hp",
+      "flow_subtype": "generated",
+      "flow_type": "template"
+    },
+    "onboarding_check_in": {
+      "flow_name": "onboarding_check_in",
+      "flow_subtype": "generated",
+      "flow_type": "template"
+    },
+    "onboarding_ground_rules": {
+      "flow_name": "onboarding_ground_rules",
+      "flow_subtype": "generated",
+      "flow_type": "template"
+    },
+    "onboarding_pfr_goals": {
+      "flow_name": "onboarding_pfr_goals",
+      "flow_subtype": "generated",
+      "flow_type": "template"
+    },
+    "onboarding_praise": {
+      "flow_name": "onboarding_praise",
+      "flow_subtype": "generated",
+      "flow_type": "template"
+    },
+    "onboarding_relax": {
+      "flow_name": "onboarding_relax",
+      "flow_subtype": "generated",
+      "flow_type": "template"
+    },
+    "onboarding_user_name": {
+      "flow_name": "onboarding_user_name",
+      "flow_subtype": "generated",
+      "flow_type": "template"
     },
     "home_screen": {
       "flow_type": "template",
       "flow_name": "home_screen",
-      "_xlsxPath": "global/templates/navigation.xlsx"
+      "_xlsxPath": "global/templates/navigation_templates.xlsx"
     },
     "intro": {
       "flow_type": "template",
       "flow_name": "intro",
       "_xlsxPath": "global/templates/blocks/topic_blocks.xlsx"
     },
+    "library": {
+      "flow_type": "template",
+      "flow_name": "library",
+      "_xlsxPath": "global/templates/library.xlsx"
+    },
     "manual_pdf": {
       "flow_type": "template",
       "flow_name": "manual_pdf",
-      "_xlsxPath": "global/templates/navigation.xlsx"
+      "_xlsxPath": "global/templates/session_templates.xlsx"
     },
     "nav_buttons": {
       "flow_type": "template",
       "flow_name": "nav_buttons",
-      "_xlsxPath": "global/templates/navigation.xlsx"
-    },
-    "onboarding_check_in": {
-      "flow_type": "template",
-      "flow_name": "onboarding_check_in",
-      "_xlsxPath": "global/templates/blocks/onboarding_blocks.xlsx"
-    },
-    "onboarding_ground_rules": {
-      "flow_type": "template",
-      "flow_name": "onboarding_ground_rules",
-      "_xlsxPath": "global/templates/blocks/onboarding_blocks.xlsx"
-    },
-    "onboarding_pfr_goals": {
-      "flow_type": "template",
-      "flow_name": "onboarding_pfr_goals",
-      "_xlsxPath": "global/templates/blocks/onboarding_blocks.xlsx"
-    },
-    "onboarding_praise": {
-      "flow_type": "template",
-      "flow_name": "onboarding_praise",
-      "_xlsxPath": "global/templates/blocks/onboarding_blocks.xlsx"
-    },
-    "onboarding_relax": {
-      "flow_type": "template",
-      "flow_name": "onboarding_relax",
-      "_xlsxPath": "global/templates/blocks/onboarding_blocks.xlsx"
-    },
-    "onboarding_user_name": {
-      "flow_type": "template",
-      "flow_name": "onboarding_user_name",
-      "_xlsxPath": "global/templates/blocks/onboarding_blocks.xlsx"
+      "_xlsxPath": "global/templates/session_templates.xlsx"
     },
     "praise": {
       "flow_type": "template",
       "flow_name": "praise",
       "_xlsxPath": "global/templates/blocks/session_blocks.xlsx"
+    },
+    "quiz": {
+      "flow_type": "template",
+      "flow_name": "quiz",
+      "_xlsxPath": "global/templates/blocks/topic_blocks.xlsx"
     },
     "reflect": {
       "flow_type": "template",
@@ -334,12 +493,12 @@
     "session_card": {
       "flow_type": "template",
       "flow_name": "session_card",
-      "_xlsxPath": "global/templates/navigation.xlsx"
+      "_xlsxPath": "global/templates/session_templates.xlsx"
     },
     "session_overview": {
       "flow_type": "template",
       "flow_name": "session_overview",
-      "_xlsxPath": "global/templates/navigation.xlsx"
+      "_xlsxPath": "global/templates/session_templates.xlsx"
     },
     "set_hp": {
       "flow_type": "template",
@@ -354,7 +513,12 @@
     "task_card": {
       "flow_type": "template",
       "flow_name": "task_card",
-      "_xlsxPath": "global/templates/navigation.xlsx"
+      "_xlsxPath": "global/templates/session_templates.xlsx"
+    },
+    "technical_support": {
+      "flow_type": "template",
+      "flow_name": "technical_support",
+      "_xlsxPath": "global/templates/library.xlsx"
     },
     "text_input_block": {
       "flow_type": "template",
@@ -367,17 +531,5 @@
       "_xlsxPath": "global/templates/blocks/topic_blocks.xlsx"
     }
   },
-  "tour": {},
-  "data_pipe": {
-    "session_data_pipe": {
-      "flow_type": "data_pipe",
-      "flow_name": "session_data_pipe",
-      "_xlsxPath": "global/data_lists/sessions.xlsx"
-    },
-    "session_tasks_data_pipe": {
-      "flow_type": "data_pipe",
-      "flow_name": "session_tasks_data_pipe",
-      "_xlsxPath": "global/data_lists/session_tasks.xlsx"
-    }
-  }
+  "tour": {}
 }

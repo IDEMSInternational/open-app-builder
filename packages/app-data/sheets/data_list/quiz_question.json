@@ -5,7 +5,6 @@
   "rows": [
     {
       "id": "playing_what",
-      "image_asset": "[path to image]",
       "question_type": "select_one",
       "question_text": "What is happening this image?",
       "option_1_text": "The child is holding a toy",
@@ -28,7 +27,6 @@
     },
     {
       "id": "feeding_what",
-      "image_asset": "[path to image]",
       "question_type": "select_one",
       "question_text": "What is happening this image?",
       "option_1_text": "The child is eating a meal",
@@ -51,7 +49,7 @@
     },
     {
       "id": "reading_what",
-      "image_asset": "[path to image]",
+      "image_asset": "images/parents_child_reading.jpg",
       "question_type": "select_one",
       "question_text": "What is happening this image?",
       "option_1_text": "Parent and child are reading together",
@@ -72,6 +70,103 @@
       "id": "reading_why",
       "question_type": "text_input",
       "question_text": "Why?"
+    },
+    {
+      "id": "child_20",
+      "question_type": "select_multiple",
+      "question_text": "What of these relationships do you foresee to have with your child on their 20th birthday (choose all that apply)?",
+      "option_1_text": "Kind and helpful",
+      "option_2_text": "Honest and trustworthy",
+      "option_3_text": "A good decision-maker",
+      "option_4_text": "Respectful",
+      "option_5_text": "Well behaved",
+      "option_6_text": "Loves his/her parents"
+    },
+    {
+      "id": "often_see",
+      "question_type": "select_one",
+      "question_text": "Do you often see men in your community doing the things Ssemakula does with his wife and family?",
+      "option_1_text": "Yes",
+      "option_2_text": "No"
+    },
+    {
+      "id": "learn_new",
+      "question_type": "select_one",
+      "question_text": "Have you learnt anything new from the story?",
+      "option_1_text": "Yes",
+      "option_2_text": "No"
+    },
+    {
+      "id": "dev_stage_which",
+      "question_type": "select_one",
+      "question_text": "Which of the four main developmental stages does your child belong to?",
+      "option_1_text": "0-5 years ( Pre- school)",
+      "option_2_text": "6-9 years (lower primary)",
+      "option_3_text": "10-12 years (upper primary)",
+      "option_4_text": "13-17 years ( teenagers)"
+    },
+    {
+      "id": "dev_stage_physical",
+      "question_type": "text_input_long",
+      "question_text": "How will you ensure that this child will grow well physically (growth)?"
+    },
+    {
+      "id": "dev_stage_feel",
+      "question_type": "text_input_long",
+      "question_text": "How will you ensure that this child will grow well emotionally (feelings)?"
+    },
+    {
+      "id": "dev_stage_think",
+      "question_type": "text_input_long",
+      "question_text": "How will you ensure that this child will grow well cognitively (thinking)?"
+    },
+    {
+      "id": "dev_stage_social",
+      "question_type": "text_input_long",
+      "question_text": "How will you ensure that this child will grow well socially (social awareness)?"
+    },
+    {
+      "id": "sharing_care_who",
+      "question_type": "select_one",
+      "question_text": "Who spends more time in a day doing activities that relate directly to child upbringing?",
+      "option_1_text": "Women",
+      "option_2_text": "Men",
+      "option_3_text": "Both"
+    },
+    {
+      "id": "sharing_care_relations",
+      "question_type": "text_input_long",
+      "question_text": "How does participation affect parent-child relationships?"
+    },
+    {
+      "id": "sharing_care_obstacles",
+      "question_type": "text_input_long",
+      "question_text": "What factors contribute to men’s limited participation in child care?"
+    },
+    {
+      "id": "sharing_care_benefits",
+      "question_type": "text_input_long",
+      "question_text": "What are the benefits of men participating in child care?"
+    },
+    {
+      "id": "sharing_care_how",
+      "question_type": "text_input_long",
+      "question_text": "What can be done to promote more equitable distribution of labour in the households?"
+    },
+    {
+      "id": "caregiving_man",
+      "question_type": "text_input_long",
+      "question_text": "How do you think a man can properly care for the pictures and objects that were in the woman’s box? Why?"
+    },
+    {
+      "id": "caregiving_woman",
+      "question_type": "text_input_long",
+      "question_text": "How do you think a woman can properly care for the pictures and objects that were in the man’s box? Why?"
+    },
+    {
+      "id": "caregiving_self",
+      "question_type": "text_input_long",
+      "question_text": "What would you change to improve your own role in taking care of your children?"
     }
   ],
   "_xlsxPath": "global/data_lists/topics.xlsx"

@@ -17,6 +17,11 @@
       "id": "current_pract",
       "title": "Well done!",
       "intro_text": "Congratulations for completing the @data.session.current_pract.title session."
+    },
+    {
+      "id": "child_dev",
+      "title": "Well done!",
+      "intro_text": "Congratulations for completing the @data.session.child_dev.title session."
     }
   ],
   "_xlsxPath": "global/data_lists/sessions.xlsx"

@@ -16,7 +16,7 @@
       "id": "family_relation",
       "number": 1,
       "gender_split": true,
-      "session_type": "topic",
+      "session_type": "onboarding",
       "goal_1": "To appreciate the importance of family relationships especially relations with one’s children and partner.",
       "goal_2": "To encourage participants to recruit their partners.",
       "manual_pdf_asset": "pdf/facilitator_manual/1_family_relation_pfr_manual_2021.pdf",

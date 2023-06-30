@@ -29,6 +29,15 @@
       ],
       "input_source": "current_pract",
       "output_target": "current_pract_tasks"
+    },
+    {
+      "operation": "append_columns",
+      "args_list": [
+        "completed_field: task_{@row.id}_completed",
+        "completed: @fields.@row.completed_field"
+      ],
+      "input_source": "child_dev",
+      "output_target": "child_dev_tasks"
     }
   ],
   "_xlsxPath": "global/data_lists/session_tasks.xlsx"

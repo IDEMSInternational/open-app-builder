@@ -1,12 +1,21 @@
 {
+  "flow_name": "onboarding_pfr_goals",
+  "flow_subtype": "generated",
   "flow_type": "template",
-  "flow_name": "onboarding_relax",
-  "status": "released",
   "rows": [
     {
+      "name": "join",
+      "value": "_",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "join"
+    },
+    {
       "type": "template",
-      "name": "relax",
-      "value": "relax",
+      "name": "onboarding_content",
+      "value": "onboarding_content",
       "action_list": [
         {
           "trigger": "completed",
@@ -34,20 +43,19 @@
             "onboarding"
           ],
           "type": "set_variable",
-          "_nested_name": "relax.session_data_list_name"
+          "_nested_name": "onboarding_content.session_data_list_name"
         },
         {
           "name": "session_task_id",
-          "value": "onboarding_relax",
+          "value": "onboarding_pfr_goals",
           "_translations": {
             "value": {}
           },
           "type": "set_variable",
-          "_nested_name": "relax.session_task_id"
+          "_nested_name": "onboarding_content.session_task_id"
         }
       ],
-      "_nested_name": "relax"
+      "_nested_name": "onboarding_content"
     }
-  ],
-  "_xlsxPath": "global/templates/blocks/onboarding_blocks.xlsx"
+  ]
 }

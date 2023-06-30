@@ -1,0 +1,105 @@
+{
+  "flow_type": "data_list",
+  "flow_name": "topic_block_group",
+  "status": "released",
+  "rows": [
+    {
+      "id": "dev_stages",
+      "topic": "child_dev",
+      "title": "Stages of child development",
+      "intro_text": "We are going to explore the basic developmental needs and behaviors of children 0 -17 years.",
+      "task_1_data": "quiz",
+      "task_1_id": "child_dev",
+      "task_2_data": "tips",
+      "task_2_id": "child_dev"
+    },
+    {
+      "id": "interactive_play_distracted",
+      "topic": "child_dev",
+      "title": "When we do not pay attention",
+      "task_1_data": "story",
+      "task_1_id": "interactive_play_distracted",
+      "task_2_data": "reflect",
+      "task_2_id": "interactive_play_distracted",
+      "outro_text": "Just like adults, children like attention. When you do not give children enough attention, they will behave and act in a way that draws your attention. You must try to pay attention to your children and be interested in the things they are doing."
+    },
+    {
+      "id": "interactive_play_control",
+      "topic": "child_dev",
+      "title": "Too much control",
+      "task_1_data": "story",
+      "task_1_id": "interactive_play_control",
+      "task_2_data": "reflect",
+      "task_2_id": "interactive_play_control",
+      "outro_text": "It is good practice for parents to be involved in their children’s play but this should be done respectfully with the full consent of the child. Play should meet the needs of the child and not the parents; thus play the child’s way and not the parent’s way."
+    },
+    {
+      "id": "interactive_play",
+      "topic": "child_dev",
+      "title": "Interactive play with children",
+      "intro_text": "Children must have uninterrupted time to play in order to learn and gain life skills. Here are 2 scenarios and reflection activities that will help understand and support children’s play:",
+      "task_1_data": "topic_block_group",
+      "task_1_id": "interactive_play_distracted",
+      "task_2_data": "topic_block_group",
+      "task_2_id": "interactive_play_control",
+      "outro_text": "Play promotes every aspect of children’s development – physical, social, emotional and  cognitive"
+    },
+    {
+      "id": "impact_conflict",
+      "topic": "impact_conflict",
+      "title": "The violence around me",
+      "intro_text": "Here are a story and an activity that will help us explore common causes of conflicts and discuss the consequences of violence on parents and children:",
+      "task_1_data": "story",
+      "task_1_id": "impact_conflict",
+      "task_2_data": "reflect",
+      "task_2_id": "impact_conflict"
+    },
+    {
+      "id": "managing_behaviour",
+      "topic": "discipline",
+      "title": "Managing difficult behavior",
+      "intro_text": "Here is a comic that illustrates a mother reinforcing behavior, followed by an activity:",
+      "task_1_data": "story",
+      "task_1_id": "managing_behaviour",
+      "task_2_data": "reflect",
+      "task_2_id": "managing_behaviour_questions",
+      "task_3_data": "reflect",
+      "task_3_id": "managing_behaviour"
+    },
+    {
+      "id": "parenting_style",
+      "topic": "positive_parenting",
+      "task_1_data": "reflect",
+      "task_1_id": "parenting_style_strict",
+      "task_2_data": "reflect",
+      "task_2_id": "parenting_style_firm",
+      "task_3_data": "reflect",
+      "task_3_id": "parenting_style_permissive",
+      "task_4_data": "reflect",
+      "task_4_id": "parenting_style_uninvolved"
+    },
+    {
+      "id": "setting_limits",
+      "topic": "positive_parenting",
+      "title": "Setting limits/rules for our children",
+      "intro_text": "Here is a comic illustrating a scenario of a parent setting limits for her child, and some questions:",
+      "task_1_data": "story",
+      "task_1_id": "setting_limits",
+      "task_2_data": "reflect",
+      "task_2_id": "setting_limits_questions",
+      "task_3_data": "reflect",
+      "task_3_id": "setting_limits_tips"
+    },
+    {
+      "id": "caregiving",
+      "topic": "sharing_care",
+      "title": "Men, Women and Caregiving",
+      "intro_text": "In this activity we wil promote reflection and increase awareness about gender differences in terms of care-giving and caring relationships.",
+      "task_1_data": "reflect",
+      "task_1_id": "caregiving",
+      "task_2_data": "quiz",
+      "task_2_id": "caregiving"
+    }
+  ],
+  "_xlsxPath": "global/data_lists/topics.xlsx"
+}

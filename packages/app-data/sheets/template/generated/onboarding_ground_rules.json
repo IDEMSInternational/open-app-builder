@@ -1,12 +1,21 @@
 {
-  "flow_type": "template",
   "flow_name": "onboarding_ground_rules",
-  "status": "released",
+  "flow_subtype": "generated",
+  "flow_type": "template",
   "rows": [
     {
+      "name": "join",
+      "value": "_",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "join"
+    },
+    {
       "type": "template",
-      "name": "text_input_block",
-      "value": "text_input_block",
+      "name": "onboarding_content",
+      "value": "onboarding_content",
       "action_list": [
         {
           "trigger": "completed",
@@ -34,7 +43,7 @@
             "onboarding"
           ],
           "type": "set_variable",
-          "_nested_name": "text_input_block.session_data_list_name"
+          "_nested_name": "onboarding_content.session_data_list_name"
         },
         {
           "name": "session_task_id",
@@ -43,20 +52,10 @@
             "value": {}
           },
           "type": "set_variable",
-          "_nested_name": "text_input_block.session_task_id"
-        },
-        {
-          "name": "field_name",
-          "value": "user_rules",
-          "_translations": {
-            "value": {}
-          },
-          "type": "set_variable",
-          "_nested_name": "text_input_block.field_name"
+          "_nested_name": "onboarding_content.session_task_id"
         }
       ],
-      "_nested_name": "text_input_block"
+      "_nested_name": "onboarding_content"
     }
-  ],
-  "_xlsxPath": "global/templates/blocks/onboarding_blocks.xlsx"
+  ]
 }

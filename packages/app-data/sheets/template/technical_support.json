@@ -1,0 +1,718 @@
+{
+  "flow_type": "template",
+  "flow_name": "technical_support",
+  "status": "released",
+  "rows": [
+    {
+      "type": "title",
+      "name": "title",
+      "value": "@data.library.tech_support.title",
+      "_translations": {
+        "value": {}
+      },
+      "parameter_list": {
+        "style": "tiny"
+      },
+      "_nested_name": "title",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@data.library.tech_support.title",
+            "matchedExpression": "@data.library.tech_support.title",
+            "type": "data",
+            "fieldName": "library"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@data.library.tech_support.title": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "text",
+      "name": "text",
+      "value": "Are you experiencing any technical issues? Let us know and help to make @global.app_name better!",
+      "_translations": {
+        "value": {}
+      },
+      "_nested_name": "text",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "Are you experiencing any technical issues? Let us know and help to make @global.app_name better!",
+            "matchedExpression": "@global.app_name",
+            "type": "global",
+            "fieldName": "app_name"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@global.app_name": [
+          "value"
+        ]
+      }
+    },
+    {
+      "name": "text_type_name",
+      "value": "Type your name (optional)",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "text_type_name"
+    },
+    {
+      "type": "text_box",
+      "name": "name",
+      "parameter_list": {
+        "placeholder": "@local.text_type_name",
+        "text_align": "left"
+      },
+      "_nested_name": "name",
+      "_dynamicFields": {
+        "parameter_list": {
+          "placeholder": [
+            {
+              "fullExpression": "@local.text_type_name",
+              "matchedExpression": "@local.text_type_name",
+              "type": "local",
+              "fieldName": "text_type_name"
+            }
+          ]
+        }
+      },
+      "_dynamicDependencies": {
+        "@local.text_type_name": [
+          "parameter_list.placeholder"
+        ]
+      }
+    },
+    {
+      "name": "text_checkbox_whatsapp",
+      "value": "Contact me on @global.whatsapp",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "text_checkbox_whatsapp",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "Contact me on @global.whatsapp",
+            "matchedExpression": "@global.whatsapp",
+            "type": "global",
+            "fieldName": "whatsapp"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@global.whatsapp": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "simple_checkbox",
+      "name": "checkbox_whatsapp",
+      "parameter_list": {
+        "label_text": "@local.text_checkbox_whatsapp",
+        "align": "left"
+      },
+      "_nested_name": "checkbox_whatsapp",
+      "_dynamicFields": {
+        "parameter_list": {
+          "label_text": [
+            {
+              "fullExpression": "@local.text_checkbox_whatsapp",
+              "matchedExpression": "@local.text_checkbox_whatsapp",
+              "type": "local",
+              "fieldName": "text_checkbox_whatsapp"
+            }
+          ]
+        }
+      },
+      "_dynamicDependencies": {
+        "@local.text_checkbox_whatsapp": [
+          "parameter_list.label_text"
+        ]
+      }
+    },
+    {
+      "type": "display_group",
+      "name": "dg_whatsapp",
+      "condition": "@local.checkbox_whatsapp",
+      "rows": [
+        {
+          "name": "text_type_phone_number",
+          "value": "Type your phone number",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "dg_whatsapp.text_type_phone_number"
+        },
+        {
+          "type": "text_box",
+          "name": "phone_number",
+          "parameter_list": {
+            "placeholder": "@local.text_type_phone_number",
+            "text_align": "left"
+          },
+          "_nested_name": "dg_whatsapp.phone_number",
+          "_dynamicFields": {
+            "parameter_list": {
+              "placeholder": [
+                {
+                  "fullExpression": "@local.text_type_phone_number",
+                  "matchedExpression": "@local.text_type_phone_number",
+                  "type": "local",
+                  "fieldName": "text_type_phone_number"
+                }
+              ]
+            }
+          },
+          "_dynamicDependencies": {
+            "@local.text_type_phone_number": [
+              "parameter_list.placeholder"
+            ]
+          }
+        }
+      ],
+      "_nested_name": "dg_whatsapp",
+      "_dynamicFields": {
+        "condition": [
+          {
+            "fullExpression": "@local.checkbox_whatsapp",
+            "matchedExpression": "@local.checkbox_whatsapp",
+            "type": "local",
+            "fieldName": "checkbox_whatsapp"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.checkbox_whatsapp": [
+          "condition"
+        ]
+      }
+    },
+    {
+      "name": "text_checkbox_email",
+      "value": "Contact me via email",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "text_checkbox_email"
+    },
+    {
+      "type": "simple_checkbox",
+      "name": "checkbox_email",
+      "parameter_list": {
+        "label_text": "@local.text_checkbox_email",
+        "align": "left"
+      },
+      "_nested_name": "checkbox_email",
+      "_dynamicFields": {
+        "parameter_list": {
+          "label_text": [
+            {
+              "fullExpression": "@local.text_checkbox_email",
+              "matchedExpression": "@local.text_checkbox_email",
+              "type": "local",
+              "fieldName": "text_checkbox_email"
+            }
+          ]
+        }
+      },
+      "_dynamicDependencies": {
+        "@local.text_checkbox_email": [
+          "parameter_list.label_text"
+        ]
+      }
+    },
+    {
+      "type": "display_group",
+      "name": "dg_email",
+      "condition": "@local.checkbox_email",
+      "rows": [
+        {
+          "name": "text_type_email",
+          "value": "Type your email address",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "dg_email.text_type_email"
+        },
+        {
+          "type": "text_box",
+          "name": "email_address",
+          "parameter_list": {
+            "placeholder": "@local.text_type_email",
+            "text_align": "left"
+          },
+          "_nested_name": "dg_email.email_address",
+          "_dynamicFields": {
+            "parameter_list": {
+              "placeholder": [
+                {
+                  "fullExpression": "@local.text_type_email",
+                  "matchedExpression": "@local.text_type_email",
+                  "type": "local",
+                  "fieldName": "text_type_email"
+                }
+              ]
+            }
+          },
+          "_dynamicDependencies": {
+            "@local.text_type_email": [
+              "parameter_list.placeholder"
+            ]
+          }
+        }
+      ],
+      "_nested_name": "dg_email",
+      "_dynamicFields": {
+        "condition": [
+          {
+            "fullExpression": "@local.checkbox_email",
+            "matchedExpression": "@local.checkbox_email",
+            "type": "local",
+            "fieldName": "checkbox_email"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.checkbox_email": [
+          "condition"
+        ]
+      }
+    },
+    {
+      "name": "text_issue",
+      "value": "Tell us about your issue",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "text_issue"
+    },
+    {
+      "type": "text_area",
+      "name": "issue",
+      "parameter_list": {
+        "placeholder": "@local.text_issue"
+      },
+      "_nested_name": "issue",
+      "_dynamicFields": {
+        "parameter_list": {
+          "placeholder": [
+            {
+              "fullExpression": "@local.text_issue",
+              "matchedExpression": "@local.text_issue",
+              "type": "local",
+              "fieldName": "text_issue"
+            }
+          ]
+        }
+      },
+      "_dynamicDependencies": {
+        "@local.text_issue": [
+          "parameter_list.placeholder"
+        ]
+      }
+    },
+    {
+      "type": "dashed_box",
+      "name": "warning",
+      "value": "@global.data_warning_send_message",
+      "_translations": {
+        "value": {}
+      },
+      "condition": false,
+      "parameter_list": {
+        "icon_src": "plh_images/icons/globe_circle.svg"
+      },
+      "_nested_name": "warning",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@global.data_warning_send_message",
+            "matchedExpression": "@global.data_warning_send_message",
+            "type": "global",
+            "fieldName": "data_warning_send_message"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@global.data_warning_send_message": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "display_group",
+      "name": "dg_data_no_email",
+      "condition": "!@local.checkbox_email",
+      "parameter_list": {
+        "style": "column"
+      },
+      "rows": [
+        {
+          "name": "form_data",
+          "value": "name: @local.name; issue: @local.issue",
+          "_translations": {
+            "value": {}
+          },
+          "condition": "!@local.checkbox_whatsapp",
+          "exclude_from_translation": true,
+          "type": "set_variable",
+          "_nested_name": "dg_data_no_email.form_data",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "name: @local.name; issue: @local.issue",
+                "matchedExpression": "@local.name",
+                "type": "local",
+                "fieldName": "name"
+              },
+              {
+                "fullExpression": "name: @local.name; issue: @local.issue",
+                "matchedExpression": "@local.issue",
+                "type": "local",
+                "fieldName": "issue"
+              }
+            ],
+            "condition": [
+              {
+                "fullExpression": "!@local.checkbox_whatsapp",
+                "matchedExpression": "!@local.checkbox_whatsapp",
+                "type": "local",
+                "fieldName": "checkbox_whatsapp"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@local.name": [
+              "value"
+            ],
+            "@local.issue": [
+              "value"
+            ],
+            "!@local.checkbox_whatsapp": [
+              "condition"
+            ]
+          }
+        },
+        {
+          "name": "form_data",
+          "value": "name: @local.name; whatsapp: @local.phone_number; issue: @local.issue",
+          "_translations": {
+            "value": {}
+          },
+          "condition": "@local.checkbox_whatsapp",
+          "exclude_from_translation": true,
+          "type": "set_variable",
+          "_nested_name": "dg_data_no_email.form_data",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "name: @local.name; whatsapp: @local.phone_number; issue: @local.issue",
+                "matchedExpression": "@local.name",
+                "type": "local",
+                "fieldName": "name"
+              },
+              {
+                "fullExpression": "name: @local.name; whatsapp: @local.phone_number; issue: @local.issue",
+                "matchedExpression": "@local.phone_number",
+                "type": "local",
+                "fieldName": "phone_number"
+              },
+              {
+                "fullExpression": "name: @local.name; whatsapp: @local.phone_number; issue: @local.issue",
+                "matchedExpression": "@local.issue",
+                "type": "local",
+                "fieldName": "issue"
+              }
+            ],
+            "condition": [
+              {
+                "fullExpression": "@local.checkbox_whatsapp",
+                "matchedExpression": "@local.checkbox_whatsapp",
+                "type": "local",
+                "fieldName": "checkbox_whatsapp"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@local.name": [
+              "value"
+            ],
+            "@local.phone_number": [
+              "value"
+            ],
+            "@local.issue": [
+              "value"
+            ],
+            "@local.checkbox_whatsapp": [
+              "condition"
+            ]
+          }
+        }
+      ],
+      "_nested_name": "dg_data_no_email",
+      "_dynamicFields": {
+        "condition": [
+          {
+            "fullExpression": "!@local.checkbox_email",
+            "matchedExpression": "!@local.checkbox_email",
+            "type": "local",
+            "fieldName": "checkbox_email"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "!@local.checkbox_email": [
+          "condition"
+        ]
+      }
+    },
+    {
+      "type": "display_group",
+      "name": "dg_data_email",
+      "condition": "@local.checkbox_email",
+      "rows": [
+        {
+          "name": "form_data",
+          "value": "name: @local.name; email: @local.email_address; issue: @local.issue",
+          "_translations": {
+            "value": {}
+          },
+          "condition": "!@local.checkbox_whatsapp",
+          "parameter_list": {
+            "style": "column"
+          },
+          "exclude_from_translation": true,
+          "type": "set_variable",
+          "_nested_name": "dg_data_email.form_data",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "name: @local.name; email: @local.email_address; issue: @local.issue",
+                "matchedExpression": "@local.name",
+                "type": "local",
+                "fieldName": "name"
+              },
+              {
+                "fullExpression": "name: @local.name; email: @local.email_address; issue: @local.issue",
+                "matchedExpression": "@local.email_address",
+                "type": "local",
+                "fieldName": "email_address"
+              },
+              {
+                "fullExpression": "name: @local.name; email: @local.email_address; issue: @local.issue",
+                "matchedExpression": "@local.issue",
+                "type": "local",
+                "fieldName": "issue"
+              }
+            ],
+            "condition": [
+              {
+                "fullExpression": "!@local.checkbox_whatsapp",
+                "matchedExpression": "!@local.checkbox_whatsapp",
+                "type": "local",
+                "fieldName": "checkbox_whatsapp"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@local.name": [
+              "value"
+            ],
+            "@local.email_address": [
+              "value"
+            ],
+            "@local.issue": [
+              "value"
+            ],
+            "!@local.checkbox_whatsapp": [
+              "condition"
+            ]
+          }
+        },
+        {
+          "name": "form_data",
+          "value": "name: @local.name; whatsapp: @local.phone_number; email: @local.email_address; issue: @local.issue",
+          "_translations": {
+            "value": {}
+          },
+          "condition": "@local.checkbox_whatsapp",
+          "exclude_from_translation": true,
+          "type": "set_variable",
+          "_nested_name": "dg_data_email.form_data",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "name: @local.name; whatsapp: @local.phone_number; email: @local.email_address; issue: @local.issue",
+                "matchedExpression": "@local.name",
+                "type": "local",
+                "fieldName": "name"
+              },
+              {
+                "fullExpression": "name: @local.name; whatsapp: @local.phone_number; email: @local.email_address; issue: @local.issue",
+                "matchedExpression": "@local.phone_number",
+                "type": "local",
+                "fieldName": "phone_number"
+              },
+              {
+                "fullExpression": "name: @local.name; whatsapp: @local.phone_number; email: @local.email_address; issue: @local.issue",
+                "matchedExpression": "@local.email_address",
+                "type": "local",
+                "fieldName": "email_address"
+              },
+              {
+                "fullExpression": "name: @local.name; whatsapp: @local.phone_number; email: @local.email_address; issue: @local.issue",
+                "matchedExpression": "@local.issue",
+                "type": "local",
+                "fieldName": "issue"
+              }
+            ],
+            "condition": [
+              {
+                "fullExpression": "@local.checkbox_whatsapp",
+                "matchedExpression": "@local.checkbox_whatsapp",
+                "type": "local",
+                "fieldName": "checkbox_whatsapp"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@local.name": [
+              "value"
+            ],
+            "@local.phone_number": [
+              "value"
+            ],
+            "@local.email_address": [
+              "value"
+            ],
+            "@local.issue": [
+              "value"
+            ],
+            "@local.checkbox_whatsapp": [
+              "condition"
+            ]
+          }
+        }
+      ],
+      "_nested_name": "dg_data_email",
+      "_dynamicFields": {
+        "condition": [
+          {
+            "fullExpression": "@local.checkbox_email",
+            "matchedExpression": "@local.checkbox_email",
+            "type": "local",
+            "fieldName": "checkbox_email"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.checkbox_email": [
+          "condition"
+        ]
+      }
+    },
+    {
+      "type": "button",
+      "name": "button_submit",
+      "value": "@global.submit_button",
+      "_translations": {
+        "value": {}
+      },
+      "action_list": [
+        {
+          "trigger": "click",
+          "action_id": "feedback",
+          "args": [
+            "send",
+            "@local.form_data"
+          ],
+          "_raw": "click | feedback:send:@local.form_data",
+          "_cleaned": "click | feedback:send:@local.form_data"
+        },
+        {
+          "trigger": "click",
+          "action_id": "emit",
+          "args": [
+            "completed"
+          ],
+          "_raw": "click | emit: completed",
+          "_cleaned": "click | emit: completed"
+        },
+        {
+          "trigger": "click",
+          "action_id": "emit",
+          "args": [
+            "server_sync"
+          ],
+          "_raw": "click | emit: server_sync",
+          "_cleaned": "click | emit: server_sync"
+        }
+      ],
+      "_nested_name": "button_submit",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@global.submit_button",
+            "matchedExpression": "@global.submit_button",
+            "type": "global",
+            "fieldName": "submit_button"
+          }
+        ],
+        "action_list": {
+          "0": {
+            "args": {
+              "1": [
+                {
+                  "fullExpression": "@local.form_data",
+                  "matchedExpression": "@local.form_data",
+                  "type": "local",
+                  "fieldName": "form_data"
+                }
+              ]
+            },
+            "_raw": [
+              {
+                "fullExpression": "click | feedback:send:@local.form_data",
+                "matchedExpression": "@local.form_data",
+                "type": "local",
+                "fieldName": "form_data"
+              }
+            ],
+            "_cleaned": [
+              {
+                "fullExpression": "click | feedback:send:@local.form_data",
+                "matchedExpression": "@local.form_data",
+                "type": "local",
+                "fieldName": "form_data"
+              }
+            ]
+          }
+        }
+      },
+      "_dynamicDependencies": {
+        "@global.submit_button": [
+          "value"
+        ],
+        "@local.form_data": [
+          "action_list.0.args.1",
+          "action_list.0._raw",
+          "action_list.0._cleaned"
+        ]
+      }
+    }
+  ],
+  "_xlsxPath": "global/templates/library.xlsx"
+}
