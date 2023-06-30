@@ -1,5 +1,7 @@
-import { resolve } from "path";
-import type { IDeploymentWorkflows } from "./workflow.model";
+import { normalize } from "path";
+import { replicateDir } from "scripts/src/utils";
+import type { IDeploymentWorkflows, IWorkflowStepContext } from "./workflow.model";
+
 /** Default workflows made available to all deployments */
 const workflows: IDeploymentWorkflows = {
   sync: {
@@ -11,6 +13,11 @@ const workflows: IDeploymentWorkflows = {
       },
     ],
     steps: [
+      {
+        condition: async ({ config }) => config.git?.content_repo !== undefined,
+        name: "sync_remote",
+        function: async ({ tasks }) => tasks.git().refreshRemoteRepo(),
+      },
       {
         name: "sync_assets",
         function: async ({ tasks, workflow }) =>
@@ -76,14 +83,25 @@ const workflows: IDeploymentWorkflows = {
   },
   sync_assets: {
     // label: "Sync Latest Assets",
+    options: [
+      {
+        flags: "-s, --skip-download",
+        description: "Skip download and just process local sheets",
+      },
+    ],
     steps: [
       {
         name: "assets_dl",
-        function: async ({ tasks, config }) =>
-          tasks.gdrive.download({
-            folderId: config.google_drive.assets_folder_id,
-            // filterFn: config.google_drive.assets_filter_function,
-          }),
+        function: async ({ tasks, config, options }) => {
+          const folderId = config.google_drive.assets_folder_id;
+          const filterFn = config.google_drive.assets_filter_function;
+          // If skipping download still need to return download folder for next step
+          if (options.skipDownload) {
+            return tasks.gdrive.getOutputFolder(folderId);
+          } else {
+            return tasks.gdrive.download({ folderId, filterFn });
+          }
+        },
       },
       {
         name: "assets_post_process",
@@ -98,55 +116,21 @@ const workflows: IDeploymentWorkflows = {
     label: "Sync direct edits to local sheets",
     steps: [
       {
-        name: "sheets_process",
-        function: async ({ tasks, config }) =>
-          tasks.template.process({ inputFolder: config.local_drive.sheets_path }),
-      },
-      // NOTE - translations not currently included in local version
-      {
-        name: "app_copy_data",
-        function: async ({ tasks, workflow, config }) => {
-          // HACK - skipping translations step but still use previously processed strings
-          const sourceTranslationsFolder = resolve(
-            config.workflows.task_cache_path,
-            "tasks",
-            "translate",
-            "outputs",
-            "strings"
-          );
-          // copy files
-          tasks.appData.postProcessSheets({
-            sourceSheetsFolder: workflow.sheets_process.output,
-            sourceTranslationsFolder,
-          });
-          // TODO - add support for assets
-          tasks.appData.copyDeploymentDataToApp();
+        name: "sync_local",
+        function: async (context) => {
+          processLocalFiles(context);
         },
       },
       {
         name: "watch_changes",
-        function: async ({ tasks, workflow, config }) =>
-          tasks.file.watchFolder({
-            src: [config.local_drive.assets_path, config.local_drive.sheets_path],
-            // HACK - want to just call same as above but hard to do and not cause multiple listeners
-            onUpdate: async () => {
-              const output = tasks.template.process({
-                inputFolder: config.local_drive.sheets_path,
-              });
-              // HACK - skipping translations step but still use previously processed strings
-              const sourceTranslationsFolder = resolve(
-                config.workflows.task_cache_path,
-                "tasks",
-                "translate",
-                "outputs",
-                "strings"
-              );
-              // copy files
-              tasks.appData.postProcessSheets({
-                sourceSheetsFolder: output,
-                sourceTranslationsFolder,
-              });
-              tasks.appData.copyDeploymentDataToApp();
+        function: async (context) =>
+          context.tasks.file.watchFolder({
+            src: [context.config.local_drive.assets_path, context.config.local_drive.sheets_path],
+            onUpdate: async (filepath) => {
+              const { assets_path, sheets_path } = context.config.local_drive;
+              const only_sheets = normalize(filepath).startsWith(normalize(sheets_path));
+              const only_assets = normalize(filepath).startsWith(normalize(assets_path));
+              processLocalFiles(context, { only_assets, only_sheets });
             },
           }),
       },
@@ -192,3 +176,37 @@ const workflows: IDeploymentWorkflows = {
 };
 
 export default workflows;
+
+/**
+ * When processing local files omit download process but instead replicate files
+ * to download folder to allow processing as part of regular workflow
+ * @param context
+ */
+const processLocalFiles = async (
+  { tasks, config, workflow }: IWorkflowStepContext,
+  options: { only_assets?: boolean; only_sheets?: boolean } = {}
+) => {
+  // HACK - copy local files to expected gdrive folder so can continue as if downloaded
+  const { assets_folder_id, sheets_folder_id } = config.google_drive;
+  replicateDir(config.local_drive.sheets_path, tasks.gdrive.getOutputFolder(sheets_folder_id));
+  replicateDir(config.local_drive.assets_path, tasks.gdrive.getOutputFolder(assets_folder_id));
+
+  // Run rest of standard sync workflow
+  const { only_assets, only_sheets } = options;
+  if (!only_sheets) {
+    await tasks.workflow.runWorkflow({
+      name: "sync_assets",
+      parent: workflow,
+      args: ["--skip-download"],
+    });
+  }
+  if (!only_assets) {
+    await tasks.workflow.runWorkflow({
+      name: "sync_sheets",
+      parent: workflow,
+      args: ["--skip-download"],
+    });
+  }
+
+  tasks.appData.copyDeploymentDataToApp();
+};

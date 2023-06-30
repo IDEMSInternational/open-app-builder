@@ -5,10 +5,7 @@ deployments/*
 !deployments/wash
 !deployments/parentapp_kids
 !deployments/pfr
+!deployments/sandbox
 
 # Renamed to activeDeployment.json, include here so people can remove
 !/deployments/default.json
-
-# Temp repo for PR 1780, can be deleted prior to merge
-# https://github.com/IDEMSInternational/parenting-app-ui/pull/1780
-!deployments/encryption_demo

@@ -1,21 +1,27 @@
 import { Injectable } from "@angular/core";
-import { ASSETS_CONTENTS_LIST } from "src/app/data";
+import { Capacitor } from "@capacitor/core";
+import { ASSETS_CONTENTS_LIST, IAssetContents } from "src/app/data";
 import { ThemeService } from "src/app/feature/theme/services/theme.service";
 import { AsyncServiceBase } from "src/app/shared/services/asyncService.base";
 import { TemplateTranslateService } from "./template-translate.service";
+import { IAssetEntry, IContentsEntryMinimal } from "packages/data-models/deployment.model";
+import { HttpClient } from "@angular/common/http";
+import { lastValueFrom } from "rxjs";
 
 /** Synced assets are automatically copied during build to asset subfolder */
 const ASSETS_BASE = `assets/app_data/assets`;
 
 /** Expected folder containing global assets (TODO - merge with scripts) */
 const ASSETS_GLOBAL_FOLDER_NAME = "global";
-const DEFAULT_THEME_NAME = "default";
+const DEFAULT_THEME_NAME = "theme_default";
 
 @Injectable({ providedIn: "root" })
 export class TemplateAssetService extends AsyncServiceBase {
+  public assetsContentsList: IAssetContents = ASSETS_CONTENTS_LIST;
   constructor(
     private translateService: TemplateTranslateService,
-    private themeService: ThemeService
+    private themeService: ThemeService,
+    private http: HttpClient
   ) {
     super("TemplateAsset");
     this.registerInitFunction(this.initialise);
@@ -24,6 +30,18 @@ export class TemplateAssetService extends AsyncServiceBase {
   private async initialise() {
     await this.ensureAsyncServicesReady([this.translateService]);
     this.ensureSyncServicesReady([this.themeService]);
+  }
+
+  /**
+   * Retrieve an app_data asset via get request
+   * @param responseType specify expected response type (depending on file extension)
+   */
+  public async fetchAsset<T>(
+    path: string,
+    responseType: "json" | "text" | "arraybuffer" | "blob" = "json"
+  ) {
+    const translatedPath = this.getTranslatedAssetPath(path);
+    return lastValueFrom(this.http.get(translatedPath, { responseType: responseType as any })) as T;
   }
 
   /**
@@ -38,7 +56,7 @@ export class TemplateAssetService extends AsyncServiceBase {
    */
   getTranslatedAssetPath(value: string) {
     let assetName = this.cleanAssetName(value);
-    const assetEntry = ASSETS_CONTENTS_LIST[assetName];
+    const assetEntry = this.assetsContentsList[assetName];
     if (!assetEntry) {
       console.error("Asset missing", value, assetName);
       return `${ASSETS_GLOBAL_FOLDER_NAME}/${assetName}`;
@@ -53,19 +71,19 @@ export class TemplateAssetService extends AsyncServiceBase {
     // 1. current theme, current language
     const override1 = assetEntry.overrides?.[themeName]?.[langName];
     if (override1) {
-      return this.convertPLHRelativePathToAssetPath(override1.filePath);
+      return this.getAssetPath(assetName, override1);
     }
     // 2. default theme, current language
-    const override2 = assetEntry.overrides?.["theme_default"]?.[langName];
+    const override2 = assetEntry.overrides?.[DEFAULT_THEME_NAME]?.[langName];
     if (override2) {
-      return this.convertPLHRelativePathToAssetPath(override2.filePath);
+      return this.getAssetPath(assetName, override2);
     }
     // 3. current theme, default language
     const override3 = assetEntry.overrides?.[themeName]?.["global"];
     if (override3) {
-      return this.convertPLHRelativePathToAssetPath(override3.filePath);
+      return this.getAssetPath(assetName, override3);
     }
-    return this.convertPLHRelativePathToAssetPath(assetEntry.filePath || assetName);
+    return this.getAssetPath(assetName, assetEntry);
   }
 
   private cleanAssetName(value: string) {
@@ -74,11 +92,24 @@ export class TemplateAssetService extends AsyncServiceBase {
     return value;
   }
 
+  private getAssetPath(
+    assetName: string,
+    contentsEntry: IContentsEntryMinimal | Partial<IAssetEntry>
+  ) {
+    return this.convertGdriveRelativePathToAssetPath(contentsEntry.filePath || assetName);
+  }
+
   /**
    * When asset paths are provided it is relative to the assets folder populated from
    * google drive. Rewrite paths to add correct prefix, fixing common authoring mistakes
    */
-  private convertPLHRelativePathToAssetPath(value: string) {
+  private convertGdriveRelativePathToAssetPath(value: string) {
+    // For remote assets, the filepath will be either an external URL (web) or an internal Android filepath (native).
+    // These should be left unchanged
+    if (value.startsWith("http") || value.startsWith("file://") || value.startsWith("content://")) {
+      return value;
+    }
+
     // ensure starts either "assets" or "/assets/"
     const regex = new RegExp(`^(\/)?assets\/`, "gi");
     let transformed = value;
@@ -90,6 +121,19 @@ export class TemplateAssetService extends AsyncServiceBase {
       transformed = transformed.replace(`${ASSETS_BASE}/${ASSETS_BASE}`, ASSETS_BASE);
     }
     return transformed;
+  }
+
+  public async updateContentsList(assetName: string, updates?: { uri?: string }) {
+    // TODO: Store contents list overrides in rxdb via dynamicData service to enable persitence.
+    // For now, just update this.assetsContentsList
+    const { uri } = updates;
+    if (uri) {
+      this.assetsContentsList[assetName] ??= {};
+      this.assetsContentsList[assetName].filePath = uri;
+      // TODO: theme/language overrides. Possibly use "setNestedProperty", e.g.:
+      // setNestedProperty(overrides.theme_default.tz_sw, uri, this.templateAssetService.assetsContentList[assetName])
+    }
+    console.log("[TEMPLATE ASSET] updated asset entry:", this.assetsContentsList[assetName]);
   }
 }
 

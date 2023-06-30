@@ -2,4 +2,16 @@ ngx-extended-pdf-viewer {
   #toolbarViewer {
     background-color: var(--ion-color-primary);
   }
+  #mainContainer {
+    min-width: 250px !important;
+  }
+  .toolbarButton {
+    color: var(--ion-color-primary-contrast) !important;
+  }
+}
+
+.pdf-viewer > .error-message {
+  font-size: var(--buttons-font-size-small);
+  font-weight: var(--font-weight-standard);
+  color: var(--ion-color-primary);
 }

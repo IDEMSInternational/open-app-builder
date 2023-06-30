@@ -2,6 +2,10 @@ import type { FlowTypes } from "data-models";
 
 export type IParsedWorkbookData = { [type in FlowTypes.FlowType]?: FlowTypes.FlowTypeWithData[] };
 
+export type IFlowHashmapByType = {
+  [type in FlowTypes.FlowType]?: { [flow_name: string]: FlowTypes.FlowTypeWithData };
+};
+
 export interface IGDriveContentsEntry {
   id: string;
   name: string;
