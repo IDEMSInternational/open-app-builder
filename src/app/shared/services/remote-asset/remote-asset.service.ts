@@ -17,6 +17,7 @@ import { AsyncServiceBase } from "../asyncService.base";
 })
 export class RemoteAssetService extends AsyncServiceBase {
   remoteAssetsEnabled: boolean;
+  supabaseEnabled: boolean;
   bucketName: string;
   folderName: string;
   supabase: SupabaseClient;
@@ -35,15 +36,16 @@ export class RemoteAssetService extends AsyncServiceBase {
   }
 
   private async initialise() {
+    this.registerTemplateActionHandlers();
     // require supabase to be configured to use remote asset service
-    const { enabled: supabaseEnabled, publicApiKey, url } = environment.deploymentConfig.supabase;
-    if (supabaseEnabled) {
+    const { enabled, publicApiKey, url } = environment.deploymentConfig.supabase;
+    this.supabaseEnabled = enabled;
+    if (this.supabaseEnabled) {
       await this.ensureAsyncServicesReady([this.templateAssetService]);
       this.ensureSyncServicesReady([this.appConfigService, this.fileManagerService]);
       this.subscribeToAppConfigChanges();
       if (this.remoteAssetsEnabled) {
         this.supabase = createClient(url, publicApiKey);
-        this.registerTemplateActionHandlers();
       }
     }
   }
@@ -58,7 +60,12 @@ export class RemoteAssetService extends AsyncServiceBase {
         const [actionId] = args;
         const childActions = {
           download: async () => {
-            await this.downloadAndPopulateRequiredAssets();
+            if (this.supabaseEnabled && this.remoteAssetsEnabled) {
+              await this.downloadAndPopulateRequiredAssets();
+            } else
+              console.error(
+                "The 'asset_pack: download' action is not available. To enable asset pack functionality, please ensure that supabase and ASSET_PACKS are enabled in the deployment config."
+              );
           },
         };
         if (!(actionId in childActions)) {
