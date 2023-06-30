@@ -44,7 +44,7 @@ interface ITaskCardParams {
    * A list of named style variants of the component, separated by spaces or commas.
    * Default "landscape"
    * */
-  variant: "background-secondary" | "button" | "landscape" | "portrait" | "";
+  variant: "background-secondary" | "background-primary" | "button" | "landscape" | "portrait" | "";
   /**
    * The icon to display in the "badge" added to the task card
    * when its associated task/task group has been completed
