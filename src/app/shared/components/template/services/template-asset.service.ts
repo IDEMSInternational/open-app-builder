@@ -6,7 +6,7 @@ import { AsyncServiceBase } from "src/app/shared/services/asyncService.base";
 import { TemplateTranslateService } from "./template-translate.service";
 import { IAssetEntry, IContentsEntryMinimal } from "packages/data-models/deployment.model";
 import { HttpClient } from "@angular/common/http";
-import { lastValueFrom } from "rxjs";
+import { BehaviorSubject, lastValueFrom } from "rxjs";
 
 /** Synced assets are automatically copied during build to asset subfolder */
 const ASSETS_BASE = `assets/app_data/assets`;
@@ -18,6 +18,8 @@ const DEFAULT_THEME_NAME = "theme_default";
 @Injectable({ providedIn: "root" })
 export class TemplateAssetService extends AsyncServiceBase {
   public assetsContentsList: IAssetContents = ASSETS_CONTENTS_LIST;
+  public assetsContentsList$ = new BehaviorSubject<IAssetContents>(ASSETS_CONTENTS_LIST);
+
   constructor(
     private translateService: TemplateTranslateService,
     private themeService: ThemeService,
@@ -57,6 +59,7 @@ export class TemplateAssetService extends AsyncServiceBase {
   getTranslatedAssetPath(value: string) {
     let assetName = this.cleanAssetName(value);
     const assetEntry = this.assetsContentsList[assetName];
+    // const assetEntry = this.assetsContentsList$.value[assetName]
     if (!assetEntry) {
       console.error("Asset missing", value, assetName);
       return `${ASSETS_GLOBAL_FOLDER_NAME}/${assetName}`;
