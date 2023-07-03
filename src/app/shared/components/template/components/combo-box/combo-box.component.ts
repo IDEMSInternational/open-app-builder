@@ -6,6 +6,7 @@ import {
   getBooleanParamFromTemplateRow,
   getParamFromTemplateRow,
   getStringParamFromTemplateRow,
+  parseAnswerList,
 } from "src/app/shared/utils";
 import { TemplateBaseComponent } from "../base";
 import { ITemplateRowProps } from "../../models";
@@ -35,16 +36,20 @@ export class TmplComboBoxComponent
 
   ngOnInit(): void {
     this.getParams();
-    let answerList = getParamFromTemplateRow(this._row, "answer_list", []);
-    // Convert if datalist input (hashmap to array)
-    if (answerList.constructor === {}.constructor) {
-      answerList = objectToArray(answerList);
-    }
+    const answerList = parseAnswerList(getParamFromTemplateRow(this._row, "answer_list", []));
+
     this.customAnswerSelected =
       answerList.length > 0 && this._row.value
-        ? !answerList.find((x) => x.includes(this._row.value))
+        ? !answerList.find((x) => x.name === this._row.value)
         : false;
-    this.text = this.getText(this._row.value, answerList);
+
+    this.text = "";
+    if (this._row.value) {
+      this.text =
+        this._row.value === "other"
+          ? this._row.parameter_list["customAnswer"]
+          : answerList.find((answerListItem) => answerListItem.name === this._row.value)?.text;
+    }
   }
 
   getParams() {
@@ -55,19 +60,6 @@ export class TmplComboBoxComponent
       false
     );
     this.style = getStringParamFromTemplateRow(this._row, "style", "");
-  }
-
-  getText(aValue: string, listAnswers: string[]): string {
-    if (aValue) {
-      if (aValue === "other") {
-        return this._row.parameter_list["customAnswer"];
-      }
-      const textFromList = listAnswers
-        .find((answer: string) => answer.includes(aValue))
-        ?.match(/(?<=text:).+/)[0]
-        .trim();
-      return textFromList ? textFromList : aValue;
-    }
   }
 
   async openModal() {
@@ -87,6 +79,7 @@ export class TmplComboBoxComponent
     modal.onDidDismiss().then(async (data) => {
       this.prioritisePlaceholder = false;
       const value = data?.data?.answer?.name;
+      console.log("value", value);
       this.text = data?.data?.answer?.text;
       this.customAnswerSelected = data?.data?.customAnswerSelected;
       if (this.customAnswerSelected) {
@@ -96,6 +89,7 @@ export class TmplComboBoxComponent
       }
       await this.setValue(value);
       await this.triggerActions("changed");
+      console.log("this._row.value", this._row.value);
     });
     await modal.present();
   }
