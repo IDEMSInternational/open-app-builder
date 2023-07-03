@@ -11,7 +11,7 @@ type ISheetContents = {
 };
 export const SHEETS_CONTENT_LIST = SHEETS_CONTENT_JSON as ISheetContents;
 
-type IAssetContents = { [relative_path: string]: Partial<IAssetEntry> };
+export type IAssetContents = { [relative_path: string]: Partial<IAssetEntry> };
 export const ASSETS_CONTENTS_LIST = ASSETS_CONTENT_JSON as IAssetContents;
 
 type ITranslationContents = { [language_code: string]: { filename: string } };
