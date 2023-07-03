@@ -11,6 +11,7 @@ import { PersistedMemoryAdapter } from "./adapters/persistedMemory";
 import { ReactiveMemoryAdapater, REACTIVE_SCHEMA_BASE } from "./adapters/reactiveMemory";
 import { TemplateActionRegistry } from "../../components/template/services/instance/template-action.registry";
 import { TopLevelProperty } from "rxdb/dist/types/types";
+import { ASSETS_CONTENTS_LIST, IAssetContents } from "src/app/data";
 
 type IDocWithID = { id: string };
 
@@ -153,6 +154,15 @@ export class DynamicDataService extends AsyncServiceBase {
     const writeData = this.writeCache.get(flow_type, flow_name);
     const writeDataArray = Object.entries(writeData || {}).map(([id, v]) => ({ ...v, id }));
     const mergedData = this.mergeData(flowData?.rows, writeDataArray);
+    return mergedData;
+  }
+  /** Retrive json sheet data and merge with any user writes */
+  private async getInitialAssetContents(flow_type: FlowTypes.FlowType, flow_name: string) {
+    const flowData = ASSETS_CONTENTS_LIST as IAssetContents;
+
+    const writeData = this.writeCache.get(flow_type, flow_name);
+    const writeDataArray = Object.entries(writeData || {}).map(([id, v]) => ({ ...v, id }));
+    const mergedData = this.mergeData(flowData, writeDataArray);
     return mergedData;
   }
 
