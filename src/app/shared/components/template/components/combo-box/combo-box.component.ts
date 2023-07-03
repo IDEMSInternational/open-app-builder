@@ -12,7 +12,6 @@ import { TemplateBaseComponent } from "../base";
 import { ITemplateRowProps } from "../../models";
 import { TemplateService } from "../../services/template.service";
 import { ReplaySubject } from "rxjs";
-import { objectToArray } from "../../utils";
 
 @Component({
   selector: "plh-combo-box",
@@ -29,6 +28,7 @@ export class TmplComboBoxComponent
   style: string;
   text = "";
   customAnswerSelected: boolean = false;
+  customAnswerText: string;
   private componentDestroyed$ = new ReplaySubject(1);
   constructor(private modalController: ModalController, private templateService: TemplateService) {
     super();
@@ -45,10 +45,9 @@ export class TmplComboBoxComponent
 
     this.text = "";
     if (this._row.value) {
-      this.text =
-        this._row.value === "other"
-          ? this._row.parameter_list["customAnswer"]
-          : answerList.find((answerListItem) => answerListItem.name === this._row.value)?.text;
+      this.text = this.customAnswerSelected
+        ? this.customAnswerText
+        : answerList.find((answerListItem) => answerListItem.name === this._row.value)?.text;
     }
   }
 
@@ -78,18 +77,13 @@ export class TmplComboBoxComponent
 
     modal.onDidDismiss().then(async (data) => {
       this.prioritisePlaceholder = false;
-      const value = data?.data?.answer?.name;
-      console.log("value", value);
       this.text = data?.data?.answer?.text;
       this.customAnswerSelected = data?.data?.customAnswerSelected;
-      if (this.customAnswerSelected) {
-        this._row.parameter_list["customAnswer"] = data?.data?.answer?.text;
-      } else {
-        this._row.parameter_list["customAnswer"] = null;
-      }
-      await this.setValue(value);
+      this.customAnswerText = this.customAnswerSelected
+        ? (this.text = data?.data?.answer?.text)
+        : "";
+      await this.setValue(data?.data?.answer?.name);
       await this.triggerActions("changed");
-      console.log("this._row.value", this._row.value);
     });
     await modal.present();
   }
