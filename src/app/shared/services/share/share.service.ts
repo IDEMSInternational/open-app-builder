@@ -22,24 +22,7 @@ export class ShareService extends SyncServiceBase {
 
   private registerTemplateActionHandlers() {
     this.templateActionRegistry.register({
-      share: async ({ args }) => {
-        const [actionId, ...shareArgs] = args;
-        const childActions = {
-          text: async () => {
-            const [text] = shareArgs;
-            await this.share({ text: String(text) });
-          },
-          url: async () => {
-            const [url] = shareArgs;
-            await this.share({ url });
-          },
-        };
-        if (!(actionId in childActions)) {
-          console.error("'share' does not have action", actionId);
-          return;
-        }
-        return childActions[actionId]();
-      },
+      share: async ({ args }) => await this.share({ text: args[0] }),
     });
   }
 
