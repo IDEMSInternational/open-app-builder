@@ -197,12 +197,12 @@ export class AppComponent {
         this.taskService,
         this.taskActions,
         this.campaignService,
+        this.remoteAssetService,
       ],
       nonBlocking: [
         this.skinService,
         this.appConfigService,
         this.appUpdateService,
-        this.remoteAssetService,
         this.themeService,
         this.templateService,
         this.templateProcessService,
