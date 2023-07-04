@@ -194,8 +194,9 @@ const APP_UPDATES = {
 
 const ASSET_PACKS = {
   enabled: false,
-  bucketName: "deployment_name",
-  folderName: "asset-packs",
+  /** By convention, this should match the deployment name */
+  bucketName: "",
+  folderName: "asset_packs",
 };
 
 const APP_CONFIG = {
