@@ -1,4 +1,8 @@
-<div [class]="'card-wrapper landscape ' + style" (click)="triggerActions('click')">
+<div
+  [class]="'card-wrapper landscape ' + style"
+  [attr.data-variant]="variant"
+  (click)="triggerActions('click')"
+>
   <ng-container *ngIf="highlighted; else showProgress">
     <span class="badge highlighted-badge">
       {{ highlightedText }}
