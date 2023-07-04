@@ -39,7 +39,7 @@ export class TmplDisplayGridComponent extends TemplateBaseComponent implements I
   public gridStyle: Partial<CSSStyleDeclaration>;
   /**
    * Computed grid style from input parameters
-   * @ignore
+   *
    */
   public itemStyle: Partial<CSSStyleDeclaration>;
 
