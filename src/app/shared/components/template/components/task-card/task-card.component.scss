@@ -9,6 +9,9 @@
   max-width: 400px;
   filter: drop-shadow(var(--ion-default-box-shadow));
 
+  // Variants should be set using "variant" param, but support legacy
+  // "style" param for "portrait" and "button", which adds a class
+  &[data-variant~="portrait"],
   &.portrait {
     width: 165px;
     padding: var(--small-padding);
@@ -35,6 +38,7 @@
     }
   }
 
+  &[data-variant~="button"],
   &.button {
     display: flex;
     align-items: center;
@@ -139,4 +143,13 @@
       }
     }
   }
+}
+
+// TODO: These could be moved to the global scope, and possibly reworked to be "styles" rather than "variants"
+// as part of https://github.com/IDEMSInternational/parenting-app-ui/issues/1971
+*[data-variant~="background-secondary"] {
+  background-color: var(--ion-color-secondary-200);
+}
+*[data-variant~="background-primary"] {
+  background-color: var(--ion-color-primary-200);
 }
