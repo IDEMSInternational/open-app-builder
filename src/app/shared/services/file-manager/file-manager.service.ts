@@ -75,4 +75,15 @@ export class FileManagerService extends SyncServiceBase {
       encoding: Encoding.UTF8,
     });
   }
+
+  async convertToAssetContentsEntry(relativePath: string): Promise<Partial<IAssetContents>> {
+    const fileInfo = await Filesystem.stat({ path: relativePath, directory: Directory.Data });
+    // TODO: handle theme/language overrides
+    return {
+      relativePath: {
+        filePath: fileInfo.uri,
+        size_kb: Math.round(fileInfo.size / 102.4) / 10,
+      },
+    };
+  }
 }

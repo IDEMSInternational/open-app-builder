@@ -139,7 +139,7 @@ interface IContentsEntry {
   relativePath: string;
   size_kb: number;
   modifiedTime: string;
-  md5Checksum: string;
+  md5Checksum?: string;
   /** specific path to file when not the same as relativePath, e.g. asset overrides */
   filePath?: string;
 }
