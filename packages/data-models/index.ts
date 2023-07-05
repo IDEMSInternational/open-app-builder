@@ -4,6 +4,7 @@ export * from "./functions";
 // export { IDeploymentWorkflows, IWorkflow, IWorkflowContext, WORKFLOW_DEFAULTS } from "./workflows";
 export {
   IDeploymentConfig,
+  IDeploymentConfigJson,
   DEPLOYMENT_CONFIG_EXAMPLE_DEFAULTS,
   DEPLOYMENT_CONFIG_VERSION,
 } from "./deployment.model";
