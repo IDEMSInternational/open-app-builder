@@ -2183,6 +2183,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@capacitor/share@npm:^4.1.1":
+  version: 4.1.1
+  resolution: "@capacitor/share@npm:4.1.1"
+  peerDependencies:
+    "@capacitor/core": ^4.0.0
+  checksum: 3356d1719040d92331f4c69e7842fd86820b0bffbbca3d7233b1c69d5518304f2d895944e1b0386ad5995b2592eb8f2c699c7740ab8b1fa30489cae093bc840b
+  languageName: node
+  linkType: hard
+
 "@capacitor/splash-screen@npm:^4.1.2":
   version: 4.1.2
   resolution: "@capacitor/splash-screen@npm:4.1.2"
@@ -14921,6 +14930,7 @@ __metadata:
     "@capacitor/filesystem": ^4.1.4
     "@capacitor/local-notifications": ^4.1.4
     "@capacitor/push-notifications": ^4.1.2
+    "@capacitor/share": ^4.1.1
     "@capacitor/splash-screen": ^4.1.2
     "@capawesome/capacitor-app-update": ^2.0.1
     "@compodoc/compodoc": ^1.1.19
