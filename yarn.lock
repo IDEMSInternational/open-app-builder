@@ -6601,6 +6601,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/js-yaml@npm:^4.0.5":
+  version: 4.0.5
+  resolution: "@types/js-yaml@npm:4.0.5"
+  checksum: 7dcac8c50fec31643cc9d6444b5503239a861414cdfaa7ae9a38bc22597c4d850c4b8cec3d82d73b3fbca408348ce223b0408d598b32e094470dfffc6d486b4d
+  languageName: node
+  linkType: hard
+
 "@types/json-schema@npm:*, @types/json-schema@npm:7.0.11, @types/json-schema@npm:^7.0.4, @types/json-schema@npm:^7.0.5, @types/json-schema@npm:^7.0.6, @types/json-schema@npm:^7.0.8, @types/json-schema@npm:^7.0.9":
   version: 7.0.11
   resolution: "@types/json-schema@npm:7.0.11"
@@ -7786,6 +7793,21 @@ __metadata:
   checksum: 4079b67283b94935157698831967642f24a075c52ce3feaaaafe095776dfbe15d86a1b33b1e53860fc0d062ed6c83f4284a5c87c85b9ad51853a01173da6097f
   languageName: node
   linkType: hard
+
+"actions@workspace:*, actions@workspace:packages/actions":
+  version: 0.0.0-use.local
+  resolution: "actions@workspace:packages/actions"
+  dependencies:
+    "@types/fs-extra": ^9.0.13
+    "@types/inquirer": ^7.3.1
+    "@types/js-yaml": ^4.0.5
+    chalk: ^4.1.0
+    fs-extra: ^10.0.0
+    inquirer: ^7.3.3
+    js-yaml: ^4.1.0
+    ts-node: ^10.8.0
+  languageName: unknown
+  linkType: soft
 
 "adjust-sourcemap-loader@npm:^4.0.0":
   version: 4.0.0
@@ -24409,6 +24431,7 @@ __metadata:
     "@types/jasmine": ^3.10.6
     "@types/node-rsa": ^1.1.1
     "@types/semver": ^7.3.9
+    actions: "workspace:*"
     boxen: ^5.0.1
     chalk: ^4.1.0
     chokidar: ^3.5.3
