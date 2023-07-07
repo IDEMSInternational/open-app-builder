@@ -13,9 +13,7 @@
           "name": "description_text",
           "value": "Sometimes it is hard to think of what to praise your teen for! Here are some ideas from other parents:",
           "_translations": {
-            "value": {
-              "tz_sw": true
-            }
+            "value": {}
           },
           "type": "set_variable",
           "_nested_name": "suggestions.description_text"

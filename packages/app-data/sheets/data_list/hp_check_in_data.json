@@ -192,12 +192,8 @@
         "reply_ok": {
           "tz_sw": true
         },
-        "reply_sad": {
-          "tz_sw": true
-        },
-        "outro_text": {
-          "tz_sw": true
-        },
+        "reply_sad": {},
+        "outro_text": {},
         "activity_title": {},
         "intro_text": {},
         "question_done": {
@@ -440,12 +436,8 @@
         "reply_ok": {
           "tz_sw": true
         },
-        "reply_sad": {
-          "tz_sw": true
-        },
-        "outro_text": {
-          "tz_sw": true
-        },
+        "reply_sad": {},
+        "outro_text": {},
         "activity_title": {},
         "intro_text": {},
         "question_done": {
@@ -771,9 +763,7 @@
         "reply_ok": {
           "tz_sw": true
         },
-        "reply_sad": {
-          "tz_sw": true
-        },
+        "reply_sad": {},
         "activity_title": {},
         "intro_text": {},
         "question_done": {

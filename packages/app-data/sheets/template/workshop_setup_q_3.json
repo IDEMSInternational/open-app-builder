@@ -8,9 +8,7 @@
       "name": "text_intro",
       "value": "You can do the @global.workshops by yourself OR you can invite some other family members or friends to join you - you will learn a lot from each other. It is up to you!",
       "_translations": {
-        "value": {
-          "tz_sw": true
-        }
+        "value": {}
       },
       "_nested_name": "text_intro",
       "_dynamicFields": {
@@ -34,9 +32,7 @@
       "name": "text_q_1",
       "value": "How would you like to do your @global.workshops?",
       "_translations": {
-        "value": {
-          "tz_sw": true
-        }
+        "value": {}
       },
       "parameter_list": {
         "style": "emphasised"
@@ -373,9 +369,7 @@
       "name": "text_q_3",
       "value": "Which day of the week would you like to do your @global.workshops?",
       "_translations": {
-        "value": {
-          "tz_sw": true
-        }
+        "value": {}
       },
       "parameter_list": {
         "style": "emphasised"

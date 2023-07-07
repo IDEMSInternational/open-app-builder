@@ -307,9 +307,7 @@
               "name": "intro_title",
               "value": "@local.workshop_data.intro_title",
               "_translations": {
-                "value": {
-                  "tz_sw": true
-                }
+                "value": {}
               },
               "type": "set_variable",
               "_nested_name": "listen.workshop_activity.intro_title",

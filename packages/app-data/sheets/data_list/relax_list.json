@@ -256,9 +256,7 @@
       "completed": "@fields.relax_12_completed",
       "title": "Feel your feelings",
       "_translations": {
-        "title": {
-          "tz_sw": true
-        }
+        "title": {}
       },
       "_translatedFields": {
         "title": {

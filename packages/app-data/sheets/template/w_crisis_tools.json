@@ -40,9 +40,7 @@
               "name": "text_1",
               "value": "Stay calm. Ask yourself \"What does my teen need right now?\"",
               "_translations": {
-                "value": {
-                  "tz_sw": true
-                }
+                "value": {}
               },
               "type": "set_variable",
               "_nested_name": "essential_tools.tool_1.text_1"
@@ -119,18 +117,6 @@
           "hidden": false,
           "type": "set_variable",
           "_nested_name": "essential_tools.bottom_text"
-        },
-        {
-          "name": "button_1",
-          "value": "Resources to help in the community",
-          "_translations": {
-            "value": {
-              "tz_sw": true
-            }
-          },
-          "hidden": true,
-          "type": "set_variable",
-          "_nested_name": "essential_tools.button_1"
         }
       ],
       "_nested_name": "essential_tools"

@@ -86,9 +86,7 @@
               "name": "text_1",
               "value": "Switch off the TV and put phones aside. Look at your teen. Nod or say “I see” to show you are really paying attention. Accept what they say without judging them.",
               "_translations": {
-                "value": {
-                  "tz_sw": true
-                }
+                "value": {}
               },
               "type": "set_variable",
               "_nested_name": "essential_tools.tool_3.text_1"

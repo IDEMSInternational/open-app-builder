@@ -187,9 +187,7 @@
               "name": "outro_text",
               "value": "CONGRATULATIONS!!! You have made your budget – remember to do this exercise again with your other family members - if you agree on a plan together it will make a huge difference!",
               "_translations": {
-                "value": {
-                  "tz_sw": true
-                }
+                "value": {}
               },
               "condition": "!@fields.do_this_workshop_together || (@fields.w_money_path==\"alone\" || !@fields.w_money_path)",
               "type": "set_variable",

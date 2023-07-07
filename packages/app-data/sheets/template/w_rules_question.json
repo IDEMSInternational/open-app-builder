@@ -243,9 +243,7 @@
                       "name": "reply",
                       "value": "That is right, making clear rules together in a calm and positive way works so well!",
                       "_translations": {
-                        "value": {
-                          "tz_sw": true
-                        }
+                        "value": {}
                       },
                       "type": "set_variable",
                       "_nested_name": "question_time.workshop_activity.content_box.combo_box_1.reply"
