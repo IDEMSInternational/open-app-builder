@@ -32,9 +32,7 @@
           "name": "activity_title",
           "value": "Question time",
           "_translations": {
-            "value": {
-              "tz_sw": true
-            }
+            "value": {}
           },
           "type": "set_variable",
           "_nested_name": "workshop_activity.activity_title"
@@ -52,9 +50,7 @@
           "name": "intro_text",
           "value": "It is time for some questions!",
           "_translations": {
-            "value": {
-              "tz_sw": true
-            }
+            "value": {}
           },
           "type": "set_variable",
           "_nested_name": "workshop_activity.intro_text"

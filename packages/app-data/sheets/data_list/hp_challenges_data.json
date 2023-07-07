@@ -97,15 +97,11 @@
         "text_challenge_4": {
           "tz_sw": true
         },
-        "reply_challenge_4": {
-          "tz_sw": true
-        },
+        "reply_challenge_4": {},
         "text_challenge_5": {
           "tz_sw": true
         },
-        "reply_challenge_5": {
-          "tz_sw": true
-        },
+        "reply_challenge_5": {},
         "top_text": {
           "tz_sw": true
         }
@@ -172,9 +168,7 @@
         "text_challenge_1": {
           "tz_sw": true
         },
-        "reply_challenge_1": {
-          "tz_sw": true
-        },
+        "reply_challenge_1": {},
         "text_challenge_2": {
           "tz_sw": true
         },
@@ -184,9 +178,7 @@
         "text_challenge_3": {
           "tz_sw": true
         },
-        "reply_challenge_3": {
-          "tz_sw": true
-        },
+        "reply_challenge_3": {},
         "button_text_3_a": {},
         "text_challenge_4": {
           "tz_sw": true
@@ -598,9 +590,7 @@
         "reply_challenge_2": {
           "tz_sw": true
         },
-        "text_challenge_3": {
-          "tz_sw": true
-        },
+        "text_challenge_3": {},
         "reply_challenge_3": {
           "tz_sw": true
         },
@@ -610,18 +600,12 @@
         "reply_challenge_4": {
           "tz_sw": true
         },
-        "text_challenge_5": {
-          "tz_sw": true
-        },
+        "text_challenge_5": {},
         "reply_challenge_5": {
           "tz_sw": true
         },
-        "text_challenge_6": {
-          "tz_sw": true
-        },
-        "reply_challenge_6": {
-          "tz_sw": true
-        },
+        "text_challenge_6": {},
+        "reply_challenge_6": {},
         "top_text": {
           "tz_sw": true
         }

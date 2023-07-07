@@ -84,9 +84,7 @@
       "feedback_worse::4": "Sometime our children don’t seem to do or say many things that deserve praise. Start praising the small things, you will see your child showing more positive behaviour over time!",
       "intro_text": "In our busy lives it is hard to focus on the positive.",
       "_translations": {
-        "intro_text": {
-          "tz_sw": true
-        },
+        "intro_text": {},
         "question": {
           "tz_sw": true
         },

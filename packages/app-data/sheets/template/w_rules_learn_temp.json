@@ -53,9 +53,7 @@
                   "name": "text_1",
                   "value": "Write down one important rule you would like to make with your teenager – you will be doing this as your home practice this week. \n\nWhat will they think about it?",
                   "_translations": {
-                    "value": {
-                      "tz_sw": true
-                    }
+                    "value": {}
                   },
                   "type": "set_variable",
                   "_nested_name": "learn_temp.workshop_activity.content_box.text_1"

@@ -28,9 +28,7 @@
               "name": "text_1",
               "value": "Look for anything your teen does that is helpful or good, and praise them for it. They may not show it, but you will see them doing that good thing again. It will also reassure them that you notice and care.",
               "_translations": {
-                "value": {
-                  "tz_sw": true
-                }
+                "value": {}
               },
               "type": "set_variable",
               "_nested_name": "essential_tools.tool_1.text_1"

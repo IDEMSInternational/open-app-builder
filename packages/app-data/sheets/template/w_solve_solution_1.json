@@ -69,9 +69,7 @@
           "name": "text",
           "value": "@global.w_solve_female_caregiver_1: “You cannot go out for the next month”",
           "_translations": {
-            "value": {
-              "tz_sw": true
-            }
+            "value": {}
           },
           "type": "set_variable",
           "_nested_name": "box_image.text",
