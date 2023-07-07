@@ -168,7 +168,7 @@
                 },
                 {
                   "name": "text",
-                  "value": "* Write down what your income is for the month.\n* Take some stones or beans or anything with lots of bits - this is your income for the month. \n(For example: If your income is @global.currency@local.monthly_income, and you have @local.number_of_beans beans, each bean is @global.currency@local.bean_value.)\n* Decide what you will spend on what, and put the stones/objects on that image. \n\nNot sure about your decisions? Having trouble deciding between \"needs\" and \"wants\"? That’s totally fine!",
+                  "value": "* Write down what your income is for the month.\n* Take some stones or beans or anything with lots of bits - this is your income for the month. \n(For example: If your income is @global.currency@local.monthly_income, and you have @local.number_of_beans beans, each bean is @global.currency@local.bean_value.)\n* Decide what you will spend on what, and put the stones/objects on that image. \n\nNot sure about your decisions? Having trouble deciding between \"needs\" and \"wants\"? That is totally fine!",
                   "_translations": {
                     "value": {
                       "tz_sw": true
@@ -179,31 +179,31 @@
                   "_dynamicFields": {
                     "value": [
                       {
-                        "fullExpression": "* Write down what your income is for the month.\n* Take some stones or beans or anything with lots of bits - this is your income for the month. \n(For example: If your income is @global.currency@local.monthly_income, and you have @local.number_of_beans beans, each bean is @global.currency@local.bean_value.)\n* Decide what you will spend on what, and put the stones/objects on that image. \n\nNot sure about your decisions? Having trouble deciding between \"needs\" and \"wants\"? That’s totally fine!",
+                        "fullExpression": "* Write down what your income is for the month.\n* Take some stones or beans or anything with lots of bits - this is your income for the month. \n(For example: If your income is @global.currency@local.monthly_income, and you have @local.number_of_beans beans, each bean is @global.currency@local.bean_value.)\n* Decide what you will spend on what, and put the stones/objects on that image. \n\nNot sure about your decisions? Having trouble deciding between \"needs\" and \"wants\"? That is totally fine!",
                         "matchedExpression": "@global.currency",
                         "type": "global",
                         "fieldName": "currency"
                       },
                       {
-                        "fullExpression": "* Write down what your income is for the month.\n* Take some stones or beans or anything with lots of bits - this is your income for the month. \n(For example: If your income is @global.currency@local.monthly_income, and you have @local.number_of_beans beans, each bean is @global.currency@local.bean_value.)\n* Decide what you will spend on what, and put the stones/objects on that image. \n\nNot sure about your decisions? Having trouble deciding between \"needs\" and \"wants\"? That’s totally fine!",
+                        "fullExpression": "* Write down what your income is for the month.\n* Take some stones or beans or anything with lots of bits - this is your income for the month. \n(For example: If your income is @global.currency@local.monthly_income, and you have @local.number_of_beans beans, each bean is @global.currency@local.bean_value.)\n* Decide what you will spend on what, and put the stones/objects on that image. \n\nNot sure about your decisions? Having trouble deciding between \"needs\" and \"wants\"? That is totally fine!",
                         "matchedExpression": "@local.monthly_income",
                         "type": "local",
                         "fieldName": "monthly_income"
                       },
                       {
-                        "fullExpression": "* Write down what your income is for the month.\n* Take some stones or beans or anything with lots of bits - this is your income for the month. \n(For example: If your income is @global.currency@local.monthly_income, and you have @local.number_of_beans beans, each bean is @global.currency@local.bean_value.)\n* Decide what you will spend on what, and put the stones/objects on that image. \n\nNot sure about your decisions? Having trouble deciding between \"needs\" and \"wants\"? That’s totally fine!",
+                        "fullExpression": "* Write down what your income is for the month.\n* Take some stones or beans or anything with lots of bits - this is your income for the month. \n(For example: If your income is @global.currency@local.monthly_income, and you have @local.number_of_beans beans, each bean is @global.currency@local.bean_value.)\n* Decide what you will spend on what, and put the stones/objects on that image. \n\nNot sure about your decisions? Having trouble deciding between \"needs\" and \"wants\"? That is totally fine!",
                         "matchedExpression": "@local.number_of_beans",
                         "type": "local",
                         "fieldName": "number_of_beans"
                       },
                       {
-                        "fullExpression": "* Write down what your income is for the month.\n* Take some stones or beans or anything with lots of bits - this is your income for the month. \n(For example: If your income is @global.currency@local.monthly_income, and you have @local.number_of_beans beans, each bean is @global.currency@local.bean_value.)\n* Decide what you will spend on what, and put the stones/objects on that image. \n\nNot sure about your decisions? Having trouble deciding between \"needs\" and \"wants\"? That’s totally fine!",
+                        "fullExpression": "* Write down what your income is for the month.\n* Take some stones or beans or anything with lots of bits - this is your income for the month. \n(For example: If your income is @global.currency@local.monthly_income, and you have @local.number_of_beans beans, each bean is @global.currency@local.bean_value.)\n* Decide what you will spend on what, and put the stones/objects on that image. \n\nNot sure about your decisions? Having trouble deciding between \"needs\" and \"wants\"? That is totally fine!",
                         "matchedExpression": "@global.currency",
                         "type": "global",
                         "fieldName": "currency"
                       },
                       {
-                        "fullExpression": "* Write down what your income is for the month.\n* Take some stones or beans or anything with lots of bits - this is your income for the month. \n(For example: If your income is @global.currency@local.monthly_income, and you have @local.number_of_beans beans, each bean is @global.currency@local.bean_value.)\n* Decide what you will spend on what, and put the stones/objects on that image. \n\nNot sure about your decisions? Having trouble deciding between \"needs\" and \"wants\"? That’s totally fine!",
+                        "fullExpression": "* Write down what your income is for the month.\n* Take some stones or beans or anything with lots of bits - this is your income for the month. \n(For example: If your income is @global.currency@local.monthly_income, and you have @local.number_of_beans beans, each bean is @global.currency@local.bean_value.)\n* Decide what you will spend on what, and put the stones/objects on that image. \n\nNot sure about your decisions? Having trouble deciding between \"needs\" and \"wants\"? That is totally fine!",
                         "matchedExpression": "@local.bean_value",
                         "type": "local",
                         "fieldName": "bean_value"

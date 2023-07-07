@@ -45,7 +45,7 @@
         },
         {
           "name": "activity_text",
-          "value": "* Start the story with “Once upon a time there was a…”\n* Let your teen make up the next sentence.\n* Then you make up a sentence.\n* Take turns until you have a wonderful new story.\n* Make sure to end the story on a positive note.\n* Ask your teen what was their favourite part of the story!",
+          "value": "* Start the story with “Once upon a time there was a…”\n* Let your teen make up the next sentence.\n* Then you make up a sentence.\n* Take turns until you have a wonderful new story.\n* Make sure to end the story on a positive note.\n* Ask your teen what their favourite part of the story was!",
           "_translations": {
             "value": {
               "tz_sw": true

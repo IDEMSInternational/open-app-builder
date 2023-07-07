@@ -32,9 +32,7 @@
         "question_done": {
           "tz_sw": true
         },
-        "reply_no": {
-          "tz_sw": true
-        },
+        "reply_no": {},
         "button_no_text": {},
         "question_how": {
           "tz_sw": true
@@ -66,7 +64,7 @@
           "eng": "Did you have a chance to try this?"
         },
         "reply_no": {
-          "eng": "That's okay, don't be too hard on yourself. We encourage you to try and do it when you can."
+          "eng": "That is okay, do not be too hard on yourself. We encourage you to try and do it when you can."
         },
         "button_no_text": {
           "eng": "@global.home_practice"
@@ -84,7 +82,7 @@
       "activity_title": "@global.hp_review",
       "intro_text": "@global.text_hp_review",
       "question_done": "Did you have a chance to try this?",
-      "reply_no": "That's okay, don't be too hard on yourself. We encourage you to try and do it when you can.",
+      "reply_no": "That is okay, do not be too hard on yourself. We encourage you to try and do it when you can.",
       "button_no_text": "@global.home_practice",
       "question_how": "How did it go?",
       "outro_text": "Well done for exploring solutions to your challenges. Go try them out. Your relationship with your teen will get stronger and stronger!"
@@ -205,9 +203,7 @@
         "question_done": {
           "tz_sw": true
         },
-        "reply_no": {
-          "tz_sw": true
-        },
+        "reply_no": {},
         "button_no_text": {},
         "question_how": {
           "tz_sw": true
@@ -224,10 +220,10 @@
           "eng": "Sorry to hear it was difficult for you. Well done for trying!"
         },
         "reply_sad": {
-          "eng": "Giving instructions in a new way takes some practice. Keep trying, you will soon see  the difference it makes!"
+          "eng": "Giving instructions in a new way takes some practice. Keep trying, you will soon see the difference it makes!"
         },
         "outro_text": {
-          "eng": "Thank you for sharing! Well done for trying to give your teen positive instructions and for building a positive relationship with your teen. \n\nYour teen deserves praise and YOU as well!"
+          "eng": "Thank you for sharing! Well done for trying to give your teen positive instructions and for building a positive relationship with your teen. \n\nYour teen deserves praise and YOU do as well!"
         },
         "activity_title": {
           "eng": "@global.hp_review"
@@ -239,7 +235,7 @@
           "eng": "Did you have a chance to try this?"
         },
         "reply_no": {
-          "eng": "That's okay, don't be too hard on yourself. We encourage you to try and do it when you can."
+          "eng": "That is okay, do not be too hard on yourself. We encourage you to try and do it when you can."
         },
         "button_no_text": {
           "eng": "@global.home_practice"
@@ -250,12 +246,12 @@
       },
       "reply_happy": "Great to hear it went well. You are a star!",
       "reply_ok": "Sorry to hear it was difficult for you. Well done for trying!",
-      "reply_sad": "Giving instructions in a new way takes some practice. Keep trying, you will soon see  the difference it makes!",
-      "outro_text": "Thank you for sharing! Well done for trying to give your teen positive instructions and for building a positive relationship with your teen. \n\nYour teen deserves praise and YOU as well!",
+      "reply_sad": "Giving instructions in a new way takes some practice. Keep trying, you will soon see the difference it makes!",
+      "outro_text": "Thank you for sharing! Well done for trying to give your teen positive instructions and for building a positive relationship with your teen. \n\nYour teen deserves praise and YOU do as well!",
       "activity_title": "@global.hp_review",
       "intro_text": "@global.text_hp_review",
       "question_done": "Did you have a chance to try this?",
-      "reply_no": "That's okay, don't be too hard on yourself. We encourage you to try and do it when you can.",
+      "reply_no": "That is okay, do not be too hard on yourself. We encourage you to try and do it when you can.",
       "button_no_text": "@global.home_practice",
       "question_how": "How did it go?"
     },
@@ -287,9 +283,7 @@
         "question_done": {
           "tz_sw": true
         },
-        "reply_no": {
-          "tz_sw": true
-        },
+        "reply_no": {},
         "button_no_text": {},
         "question_how": {
           "tz_sw": true
@@ -321,7 +315,7 @@
           "eng": "Did you have a chance to try this?"
         },
         "reply_no": {
-          "eng": "That's okay, don't be too hard on yourself. We encourage you to try and do it when you can."
+          "eng": "That is okay, do not be too hard on yourself. We encourage you to try and do it when you can."
         },
         "button_no_text": {
           "eng": "@global.home_practice"
@@ -339,7 +333,7 @@
       "activity_title": "@global.hp_review",
       "intro_text": "@global.text_hp_review",
       "question_done": "Did you have a chance to try this?",
-      "reply_no": "That's okay, don't be too hard on yourself. We encourage you to try and do it when you can.",
+      "reply_no": "That is okay, do not be too hard on yourself. We encourage you to try and do it when you can.",
       "button_no_text": "@global.home_practice",
       "question_how": "How did it go?",
       "outro_text": "Well done for exploring solutions to your challenges. Go try them out. Your relationship with your teen will get stronger and stronger!"
@@ -375,9 +369,7 @@
         "question_done": {
           "tz_sw": true
         },
-        "reply_no": {
-          "tz_sw": true
-        },
+        "reply_no": {},
         "button_no_text": {},
         "question_how": {
           "tz_sw": true
@@ -409,7 +401,7 @@
           "eng": "Did you have a chance to try this?"
         },
         "reply_no": {
-          "eng": "That's okay, don't be too hard on yourself. We encourage you to try and do it when you can."
+          "eng": "That is okay, do not be too hard on yourself. We encourage you to try and do it when you can."
         },
         "button_no_text": {
           "eng": "@global.home_practice"
@@ -425,7 +417,7 @@
       "activity_title": "@global.hp_review",
       "intro_text": "@global.text_hp_review",
       "question_done": "Did you have a chance to try this?",
-      "reply_no": "That's okay, don't be too hard on yourself. We encourage you to try and do it when you can.",
+      "reply_no": "That is okay, do not be too hard on yourself. We encourage you to try and do it when you can.",
       "button_no_text": "@global.home_practice",
       "question_how": "How did it go?"
     },
@@ -459,9 +451,7 @@
         "question_done": {
           "tz_sw": true
         },
-        "reply_no": {
-          "tz_sw": true
-        },
+        "reply_no": {},
         "button_no_text": {},
         "question_how": {
           "tz_sw": true
@@ -478,10 +468,10 @@
           "eng": "It can be hard to create your first rule together, but you will see the benefits of involving your family. Keep trying!"
         },
         "reply_sad": {
-          "eng": "Sorry that this has been difficult. Creating rules together requires some practice but it's worth it!"
+          "eng": "Sorry that this has been difficult. Creating rules together requires some practice but it is worth it!"
         },
         "outro_text": {
-          "eng": "Well done for this! It’s not easy, and teenagers won’t keep to the rules all the time, but making a few key rules together is a great start. Praise yourself for trying this - we are proud of you!"
+          "eng": "Well done for this! It is not easy, and teenagers will not keep to the rules all the time, but making a few key rules together is a great start. Praise yourself for trying this - we are proud of you!"
         },
         "activity_title": {
           "eng": "@global.hp_review"
@@ -493,7 +483,7 @@
           "eng": "Did you have a chance to try this?"
         },
         "reply_no": {
-          "eng": "That's okay, don't be too hard on yourself. We encourage you to try and do it when you can."
+          "eng": "That is okay, do not be too hard on yourself. We encourage you to try and do it when you can."
         },
         "button_no_text": {
           "eng": "@global.home_practice"
@@ -504,12 +494,12 @@
       },
       "reply_happy": "Great to hear it went well! Consistent rules help make our teens feel secure, and keep them safe!",
       "reply_ok": "It can be hard to create your first rule together, but you will see the benefits of involving your family. Keep trying!",
-      "reply_sad": "Sorry that this has been difficult. Creating rules together requires some practice but it's worth it!",
-      "outro_text": "Well done for this! It’s not easy, and teenagers won’t keep to the rules all the time, but making a few key rules together is a great start. Praise yourself for trying this - we are proud of you!",
+      "reply_sad": "Sorry that this has been difficult. Creating rules together requires some practice but it is worth it!",
+      "outro_text": "Well done for this! It is not easy, and teenagers will not keep to the rules all the time, but making a few key rules together is a great start. Praise yourself for trying this - we are proud of you!",
       "activity_title": "@global.hp_review",
       "intro_text": "@global.text_hp_review",
       "question_done": "Did you have a chance to try this?",
-      "reply_no": "That's okay, don't be too hard on yourself. We encourage you to try and do it when you can.",
+      "reply_no": "That is okay, do not be too hard on yourself. We encourage you to try and do it when you can.",
       "button_no_text": "@global.home_practice",
       "question_how": "How did it go?"
     },
@@ -541,9 +531,7 @@
         "question_done": {
           "tz_sw": true
         },
-        "reply_no": {
-          "tz_sw": true
-        },
+        "reply_no": {},
         "button_no_text": {},
         "question_how": {
           "tz_sw": true
@@ -575,7 +563,7 @@
           "eng": "Did you have a chance to try this?"
         },
         "reply_no": {
-          "eng": "That's okay, don't be too hard on yourself. We encourage you to try and do it when you can."
+          "eng": "That is okay, do not be too hard on yourself. We encourage you to try and do it when you can."
         },
         "button_no_text": {
           "eng": "@global.home_practice"
@@ -593,7 +581,7 @@
       "activity_title": "@global.hp_review",
       "intro_text": "@global.text_hp_review",
       "question_done": "Did you have a chance to try this?",
-      "reply_no": "That's okay, don't be too hard on yourself. We encourage you to try and do it when you can.",
+      "reply_no": "That is okay, do not be too hard on yourself. We encourage you to try and do it when you can.",
       "button_no_text": "@global.home_practice",
       "question_how": "How did it go?",
       "outro_text": "Well done for exploring solutions to your challenges. Go try them out. Your relationship with your teen will get stronger and stronger!"
@@ -625,9 +613,7 @@
         "question_done": {
           "tz_sw": true
         },
-        "reply_no": {
-          "tz_sw": true
-        },
+        "reply_no": {},
         "button_no_text": {},
         "question_how": {
           "tz_sw": true
@@ -659,7 +645,7 @@
           "eng": "Did you have a chance to try this?"
         },
         "reply_no": {
-          "eng": "That's okay, don't be too hard on yourself. We encourage you to try and do it when you can."
+          "eng": "That is okay, do not be too hard on yourself. We encourage you to try and do it when you can."
         },
         "button_no_text": {
           "eng": "@global.home_practice"
@@ -677,7 +663,7 @@
       "activity_title": "@global.hp_review",
       "intro_text": "@global.text_hp_review",
       "question_done": "Did you have a chance to try this?",
-      "reply_no": "That's okay, don't be too hard on yourself. We encourage you to try and do it when you can.",
+      "reply_no": "That is okay, do not be too hard on yourself. We encourage you to try and do it when you can.",
       "button_no_text": "@global.home_practice",
       "question_how": "How did it go?",
       "outro_text": "Well done for exploring solutions to your challenges. Go try them out. Your relationship with your teen will get stronger and stronger!"
@@ -710,9 +696,7 @@
         "question_done": {
           "tz_sw": true
         },
-        "reply_no": {
-          "tz_sw": true
-        },
+        "reply_no": {},
         "button_no_text": {},
         "question_how": {
           "tz_sw": true
@@ -744,7 +728,7 @@
           "eng": "Did you have a chance to try this?"
         },
         "reply_no": {
-          "eng": "That's okay, don't be too hard on yourself. We encourage you to try and do it when you can."
+          "eng": "That is okay, do not be too hard on yourself. We encourage you to try and do it when you can."
         },
         "button_no_text": {
           "eng": "@global.home_practice"
@@ -762,7 +746,7 @@
       "activity_title": "@global.hp_review",
       "intro_text": "@global.text_hp_review",
       "question_done": "Did you have a chance to try this?",
-      "reply_no": "That's okay, don't be too hard on yourself. We encourage you to try and do it when you can.",
+      "reply_no": "That is okay, do not be too hard on yourself. We encourage you to try and do it when you can.",
       "button_no_text": "@global.home_practice",
       "question_how": "How did it go?",
       "outro_text": "Well done for exploring solutions to your challenges. Go try them out. Your relationship with your teen will get stronger and stronger!"
@@ -795,9 +779,7 @@
         "question_done": {
           "tz_sw": true
         },
-        "reply_no": {
-          "tz_sw": true
-        },
+        "reply_no": {},
         "button_no_text": {},
         "question_how": {
           "tz_sw": true
@@ -817,7 +799,7 @@
           "eng": "It can be hard to think and talk about a crisis happening in your family. By trying you are already on the right path. Keep up the good work!"
         },
         "reply_sad": {
-          "eng": "Sorry that it didn’t go so well. This is not easy to do. Try to sit down and discuss it with your teen again. Also, is there someone your teen trusts who could join you in the discussion with your teen?"
+          "eng": "Sorry that it did not go so well. This is not easy to do. Try to sit down and discuss it with your teen again. Also, is there someone your teen trusts who could join you in the discussion with your teen?"
         },
         "activity_title": {
           "eng": "@global.hp_review"
@@ -829,7 +811,7 @@
           "eng": "Did you have a chance to try this?"
         },
         "reply_no": {
-          "eng": "That's okay, don't be too hard on yourself. We encourage you to try and do it when you can."
+          "eng": "That is okay, do not be too hard on yourself. We encourage you to try and do it when you can."
         },
         "button_no_text": {
           "eng": "@global.home_practice"
@@ -843,11 +825,11 @@
       },
       "reply_happy": "Great to hear it went well!",
       "reply_ok": "It can be hard to think and talk about a crisis happening in your family. By trying you are already on the right path. Keep up the good work!",
-      "reply_sad": "Sorry that it didn’t go so well. This is not easy to do. Try to sit down and discuss it with your teen again. Also, is there someone your teen trusts who could join you in the discussion with your teen?",
+      "reply_sad": "Sorry that it did not go so well. This is not easy to do. Try to sit down and discuss it with your teen again. Also, is there someone your teen trusts who could join you in the discussion with your teen?",
       "activity_title": "@global.hp_review",
       "intro_text": "@global.text_hp_review",
       "question_done": "Did you have a chance to try this?",
-      "reply_no": "That's okay, don't be too hard on yourself. We encourage you to try and do it when you can.",
+      "reply_no": "That is okay, do not be too hard on yourself. We encourage you to try and do it when you can.",
       "button_no_text": "@global.home_practice",
       "question_how": "How did it go?",
       "outro_text": "Well done for exploring solutions to your challenges. Go try them out. Your relationship with your teen will get stronger and stronger!"

@@ -1,14 +1,15 @@
 import { Injectable } from "@nestjs/common";
-import { InjectModel } from "@nestjs/sequelize";
+import { DeploymentService } from "src/modules/deployment.service";
 import { AppUser } from "./app_user.model";
 import { ContactFieldDto } from "./dto/set-user-data.dto";
 
 @Injectable()
 export class AppUsersService {
-  constructor(
-    @InjectModel(AppUser)
-    private readonly model: typeof AppUser
-  ) {}
+  constructor(private deploymentService: DeploymentService) {}
+
+  get model() {
+    return this.deploymentService.model(AppUser);
+  }
 
   // create(app_user_id: string, createUserDto: ContactFieldDto): Promise<AppUser> {
   //   const user = new AppUser();
@@ -17,10 +18,6 @@ export class AppUsersService {
 
   //   return user.save();
   // }
-
-  async findAll(): Promise<AppUser[]> {
-    return this.model.findAll();
-  }
 
   findOne(app_user_id: string): Promise<AppUser> {
     return this.model.findOne({

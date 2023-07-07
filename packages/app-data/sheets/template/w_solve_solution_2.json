@@ -52,7 +52,7 @@
         },
         {
           "name": "text",
-          "value": "@global.w_solve_female_caregiver_1: \"I am not trying to accuse your friend or be jealous. I am worried that when someone gives a gift it is hard to say 'no' when they ask something in return – like sex. If you want to have a phone, we’ll save up together so you can make your own decisions without owing him anything.\"",
+          "value": "@global.w_solve_female_caregiver_1: \"I am not trying to accuse your friend or be jealous. I am worried that when someone gives a gift it is hard to say 'no' when they ask something in return – like sex. If you want to have a phone, we will save up together so you can make your own decisions without owing him anything.\"",
           "_translations": {
             "value": {
               "tz_sw": true
@@ -63,7 +63,7 @@
           "_dynamicFields": {
             "value": [
               {
-                "fullExpression": "@global.w_solve_female_caregiver_1: \"I am not trying to accuse your friend or be jealous. I am worried that when someone gives a gift it is hard to say 'no' when they ask something in return – like sex. If you want to have a phone, we’ll save up together so you can make your own decisions without owing him anything.\"",
+                "fullExpression": "@global.w_solve_female_caregiver_1: \"I am not trying to accuse your friend or be jealous. I am worried that when someone gives a gift it is hard to say 'no' when they ask something in return – like sex. If you want to have a phone, we will save up together so you can make your own decisions without owing him anything.\"",
                 "matchedExpression": "@global.w_solve_female_caregiver_1",
                 "type": "global",
                 "fieldName": "w_solve_female_caregiver_1"
