@@ -79,6 +79,54 @@
       }
     },
     {
+      "name": "tools_concat",
+      "value": "tools.@local.workshop_id",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "tools_concat",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "tools.@local.workshop_id",
+            "matchedExpression": "@local.workshop_id",
+            "type": "local",
+            "fieldName": "workshop_id"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.workshop_id": [
+          "value"
+        ]
+      }
+    },
+    {
+      "name": "tools_data",
+      "value": "@data.@local.tools_concat",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "tools_data",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@data.@local.tools_concat",
+            "matchedExpression": "@local.tools_concat",
+            "type": "local",
+            "fieldName": "tools_concat"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.tools_concat": [
+          "value"
+        ]
+      }
+    },
+    {
       "type": "template",
       "name": "library_activity",
       "value": "library_activity",
@@ -120,7 +168,7 @@
         },
         {
           "name": "activity_title",
-          "value": "@local.workshop_data.tools",
+          "value": "@local.tools_data.title",
           "_translations": {
             "value": {}
           },
@@ -129,15 +177,15 @@
           "_dynamicFields": {
             "value": [
               {
-                "fullExpression": "@local.workshop_data.tools",
-                "matchedExpression": "@local.workshop_data.tools",
+                "fullExpression": "@local.tools_data.title",
+                "matchedExpression": "@local.tools_data.title",
                 "type": "local",
-                "fieldName": "workshop_data"
+                "fieldName": "tools_data"
               }
             ]
           },
           "_dynamicDependencies": {
-            "@local.workshop_data.tools": [
+            "@local.tools_data.title": [
               "value"
             ]
           }
