@@ -52,6 +52,7 @@
       "parameter_list": {
         "style": "column"
       },
+      "condition": "!!(@local.highlighted_module)",
       "rows": [
         {
           "type": "template",
@@ -98,7 +99,22 @@
           "_nested_name": "dg_highlighted_module.highlighted_module_card"
         }
       ],
-      "_nested_name": "dg_highlighted_module"
+      "_nested_name": "dg_highlighted_module",
+      "_dynamicFields": {
+        "condition": [
+          {
+            "fullExpression": "!!(@local.highlighted_module)",
+            "matchedExpression": "@local.highlighted_module",
+            "type": "local",
+            "fieldName": "highlighted_module"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.highlighted_module": [
+          "condition"
+        ]
+      }
     },
     {
       "type": "display_group",
