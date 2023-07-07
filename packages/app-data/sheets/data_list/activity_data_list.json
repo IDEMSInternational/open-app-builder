@@ -55,7 +55,7 @@
       "type": "chat_together",
       "completed_field": "dream_travel_completed",
       "completed": "@fields.dream_travel_completed",
-      "title": "Dream Travel",
+      "title": "Dream travel",
       "_translations": {
         "title": {
           "tz_sw": true
@@ -63,7 +63,7 @@
       },
       "_translatedFields": {
         "title": {
-          "eng": "Dream Travel"
+          "eng": "Dream travel"
         }
       }
     },
@@ -76,7 +76,7 @@
       "type": "chat_together",
       "completed_field": "famous_party_completed",
       "completed": "@fields.famous_party_completed",
-      "title": "Famous Party",
+      "title": "Famous party",
       "_translations": {
         "title": {
           "tz_sw": true
@@ -84,7 +84,7 @@
       },
       "_translatedFields": {
         "title": {
-          "eng": "Famous Party"
+          "eng": "Famous party"
         }
       }
     },
@@ -118,7 +118,7 @@
       "type": "chat_together",
       "completed_field": "time_machine_completed",
       "completed": "@fields.time_machine_completed",
-      "title": "Time Machine",
+      "title": "Time machine",
       "_translations": {
         "title": {
           "tz_sw": true
@@ -126,7 +126,7 @@
       },
       "_translatedFields": {
         "title": {
-          "eng": "Time Machine"
+          "eng": "Time machine"
         }
       }
     },
@@ -179,7 +179,7 @@
       "type": "chat_together",
       "completed_field": "interrupter_completed",
       "completed": "@fields.interrupter_completed",
-      "title": "The Interrupter",
+      "title": "The interrupter",
       "_translations": {
         "title": {
           "tz_sw": true
@@ -187,7 +187,7 @@
       },
       "_translatedFields": {
         "title": {
-          "eng": "The Interrupter"
+          "eng": "The interrupter"
         }
       }
     },
@@ -219,7 +219,7 @@
       "type": "chat_together",
       "completed_field": "yes_no_maybe_completed",
       "completed": "@fields.yes_no_maybe_completed",
-      "title": "Yes, No or Maybe",
+      "title": "Yes, no or maybe",
       "_translations": {
         "title": {
           "tz_sw": true
@@ -227,7 +227,7 @@
       },
       "_translatedFields": {
         "title": {
-          "eng": "Yes, No or Maybe"
+          "eng": "Yes, no or maybe"
         }
       }
     },

@@ -85,7 +85,7 @@
             },
             {
               "name": "text_1",
-              "value": "Be ‘parenting buddies’ to call when you are upset or don’t know what to do.",
+              "value": "Be ‘parenting buddies’ to call when you are upset or do not know what to do.",
               "_translations": {
                 "value": {
                   "tz_sw": true
@@ -124,7 +124,7 @@
             },
             {
               "name": "text_1",
-              "value": "Text each other every week to share what you’ve done well.",
+              "value": "Text each other every week to share what you have done well.",
               "_translations": {
                 "value": {
                   "tz_sw": true

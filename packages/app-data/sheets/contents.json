@@ -253,36 +253,6 @@
       "flow_name": "encouraging_messages",
       "_xlsxPath": "global/campaigns/notifications_inactive.xlsx"
     },
-    "example_data_pipe_list": {
-      "flow_type": "data_list",
-      "flow_subtype": "example_pipe",
-      "flow_name": "example_data_pipe_list",
-      "_xlsxPath": "quality_assurance/example_sheets/example_data_pipes.xlsx"
-    },
-    "example_data_pipe_list_1": {
-      "flow_type": "data_list",
-      "flow_subtype": "example_pipe",
-      "flow_name": "example_data_pipe_list_1",
-      "_xlsxPath": "quality_assurance/example_sheets/example_data_pipes_join.xlsx"
-    },
-    "example_data_pipe_list_2": {
-      "flow_type": "data_list",
-      "flow_subtype": "example_pipe",
-      "flow_name": "example_data_pipe_list_2",
-      "_xlsxPath": "quality_assurance/example_sheets/example_data_pipes_join.xlsx"
-    },
-    "example_data_pipe_list_3": {
-      "flow_type": "data_list",
-      "flow_subtype": "example_pipe",
-      "flow_name": "example_data_pipe_list_3",
-      "_xlsxPath": "quality_assurance/example_sheets/example_data_pipes_join.xlsx"
-    },
-    "example_sheet_defaults_list": {
-      "flow_type": "data_list",
-      "flow_name": "example_sheet_defaults_list",
-      "flow_subtype": "example_sheet_defaults",
-      "_xlsxPath": "quality_assurance/example_sheets/to_be_sorted/example_sheet_defaults.xlsx"
-    },
     "funders_data_list": {
       "flow_type": "data_list",
       "flow_name": "funders_data_list",
@@ -1184,6 +1154,49 @@
       "_xlsxPath": "global/data/workshop_data/workshop_data_list.xlsx"
     }
   },
+  "data_pipe": {
+    "common_workshop_task_gs_filter": {
+      "flow_type": "data_pipe",
+      "flow_name": "common_workshop_task_gs_filter",
+      "_xlsxPath": "global/data/workshop_data/workshop_task_groups_data_pipes.xlsx"
+    },
+    "common_workshop_tasks_filter": {
+      "flow_type": "data_pipe",
+      "flow_name": "common_workshop_tasks_filter",
+      "_xlsxPath": "global/data/workshop_data/workshop_tasks_data_pipes.xlsx"
+    },
+    "single_tg_filter": {
+      "flow_type": "data_pipe",
+      "flow_name": "single_tg_filter",
+      "_xlsxPath": "global/data/workshop_data/workshop_task_groups_data_pipes.xlsx"
+    },
+    "workshop_data_pipe": {
+      "flow_type": "data_pipe",
+      "flow_name": "workshop_data_pipe",
+      "_xlsxPath": "global/data/workshop_data/workshop_data_pipes.xlsx"
+    },
+    "workshop_task_gs_append": {
+      "flow_type": "data_pipe",
+      "flow_name": "workshop_task_gs_append",
+      "_xlsxPath": "global/data/workshop_data/workshop_task_groups_data_pipes.xlsx"
+    },
+    "workshop_task_gs_concat": {
+      "flow_type": "data_pipe",
+      "flow_name": "workshop_task_gs_concat",
+      "_xlsxPath": "global/data/workshop_data/workshop_task_groups_data_pipes.xlsx"
+    },
+    "workshop_tasks_append": {
+      "flow_type": "data_pipe",
+      "flow_name": "workshop_tasks_append",
+      "_xlsxPath": "global/data/workshop_data/workshop_tasks_data_pipes.xlsx"
+    },
+    "workshop_tasks_concat": {
+      "flow_type": "data_pipe",
+      "flow_name": "workshop_tasks_concat",
+      "_xlsxPath": "global/data/workshop_data/workshop_tasks_data_pipes.xlsx"
+    }
+  },
+  "generator": {},
   "global": {
     "activity_variables": {
       "flow_type": "global",
@@ -1659,7 +1672,7 @@
     "app_update_complete": {
       "flow_type": "template",
       "flow_name": "app_update_complete",
-      "_xlsxPath": "quality_assurance/debug_sheets/debug_app_update.xlsx"
+      "_xlsxPath": "global/core_templates/app_update.xlsx"
     },
     "banner": {
       "flow_type": "template",
@@ -1897,19 +1910,19 @@
       "flow_type": "template",
       "flow_name": "feature_feedback_debug",
       "comments": "Used in /feedback debug page",
-      "_xlsxPath": "quality_assurance/feature_sheets/to_be_sorted/feature_feedback.xlsx"
+      "_xlsxPath": "global/core_templates/feature_feedback.xlsx"
     },
     "feature_feedback_default": {
       "flow_type": "template",
       "flow_name": "feature_feedback_default",
       "comments": "Default general feedback form",
-      "_xlsxPath": "quality_assurance/feature_sheets/to_be_sorted/feature_feedback.xlsx"
+      "_xlsxPath": "global/core_templates/feature_feedback.xlsx"
     },
     "feature_feedback_text_select": {
       "flow_type": "template",
       "flow_name": "feature_feedback_text_select",
       "comments": "Default text-select feedback form",
-      "_xlsxPath": "quality_assurance/feature_sheets/to_be_sorted/feature_feedback.xlsx"
+      "_xlsxPath": "global/core_templates/feature_feedback.xlsx"
     },
     "footer": {
       "flow_type": "template",

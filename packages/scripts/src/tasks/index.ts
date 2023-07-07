@@ -1,3 +1,4 @@
+import actions from "./providers/actions";
 import android from "./providers/android";
 import appData from "./providers/appData";
 import deployment from "./providers/deployment";
@@ -15,9 +16,10 @@ import workflow from "./providers/workflow";
  * Tasks are thin wrappers around functions and commands, to support inclusion as part of
  * chained workflows
  *
- * TODO - naming conventions should be tidied so that commands and tasks are consistend
+ * TODO - naming conventions should be tidied so that commands and tasks are consistent
  */
 const ALL_TASKS = {
+  actions,
   android,
   appData,
   deployment,

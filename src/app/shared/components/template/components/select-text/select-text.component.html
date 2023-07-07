@@ -1,4 +1,8 @@
-<div class="box-wrapper" [attr.data-toggled]="toggle" (click)="triggerCopyContent($event, _row)">
+<div
+  class="box-wrapper"
+  [attr.data-toggled]="toggle"
+  (click)="triggerCopyContent($event, _row); triggerActions('click')"
+>
   <div class="text">{{ _row?.value }}</div>
   <div class="copy-button">
     <ng-container *ngIf="_row?.parameter_list?.copy_text && _row?.parameter_list.copied_text">

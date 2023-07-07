@@ -21,7 +21,7 @@
         },
         {
           "name": "text",
-          "value": "This app focuses on families with teenagers age @global.teen_age_bracket, but you are welcome to continue - you may learn useful things for your family too!",
+          "value": "This app focuses on families with teenagers aged @global.teen_age_bracket, but you are welcome to continue - you may learn useful things for your family too!",
           "_translations": {
             "value": {
               "tz_sw": true
@@ -32,7 +32,7 @@
           "_dynamicFields": {
             "value": [
               {
-                "fullExpression": "This app focuses on families with teenagers age @global.teen_age_bracket, but you are welcome to continue - you may learn useful things for your family too!",
+                "fullExpression": "This app focuses on families with teenagers aged @global.teen_age_bracket, but you are welcome to continue - you may learn useful things for your family too!",
                 "matchedExpression": "@global.teen_age_bracket",
                 "type": "global",
                 "fieldName": "teen_age_bracket"

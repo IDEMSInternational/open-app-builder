@@ -305,7 +305,7 @@
             },
             {
               "name": "intro_title",
-              "value": "Why @local.workshop_data.title?",
+              "value": "@local.workshop_data.intro_title",
               "_translations": {
                 "value": {
                   "tz_sw": true
@@ -316,15 +316,15 @@
               "_dynamicFields": {
                 "value": [
                   {
-                    "fullExpression": "Why @local.workshop_data.title?",
-                    "matchedExpression": "@local.workshop_data.title",
+                    "fullExpression": "@local.workshop_data.intro_title",
+                    "matchedExpression": "@local.workshop_data.intro_title",
                     "type": "local",
                     "fieldName": "workshop_data"
                   }
                 ]
               },
               "_dynamicDependencies": {
-                "@local.workshop_data.title": [
+                "@local.workshop_data.intro_title": [
                   "value"
                 ]
               }

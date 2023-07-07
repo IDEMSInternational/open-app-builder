@@ -77,7 +77,7 @@
             },
             {
               "name": "text_1",
-              "value": "Take a moment and think of one thing YOU have done recently that you have done well! Say it aloud if you can \"Well done for …\"",
+              "value": "Take a moment and think of one thing YOU have done recently that you have done well! Say it aloud if you can: \"Well done for …\"",
               "_translations": {
                 "value": {
                   "tz_sw": true
@@ -129,7 +129,7 @@
             },
             {
               "name": "text_1",
-              "value": "Remember you deserve your quality time too! What makes you happy?",
+              "value": "Remember, you deserve your quality time too! What makes you happy?",
               "_translations": {
                 "value": {
                   "tz_sw": true

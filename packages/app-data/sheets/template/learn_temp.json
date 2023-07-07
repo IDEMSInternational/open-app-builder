@@ -82,7 +82,7 @@
         },
         {
           "name": "intro_text",
-          "value": "It's time to learn and practice together!",
+          "value": "It is time to learn and practice together!",
           "_translations": {
             "value": {
               "tz_sw": true
@@ -161,7 +161,7 @@
         },
         {
           "name": "intro_text",
-          "value": "It's time to learn and practice!",
+          "value": "It is time to learn and practice!",
           "_translations": {
             "value": {
               "tz_sw": true
