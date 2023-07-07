@@ -88,11 +88,9 @@
             },
             {
               "name": "text_1",
-              "value": "Talk together about needs and wants",
+              "value": "Talk together about needs and wants.",
               "_translations": {
-                "value": {
-                  "tz_sw": true
-                }
+                "value": {}
               },
               "type": "set_variable",
               "_nested_name": "essential_tools.tool_2.text_1"
@@ -150,11 +148,9 @@
             },
             {
               "name": "text_1",
-              "value": "Make your own budget",
+              "value": "Make your own budget.",
               "_translations": {
-                "value": {
-                  "tz_sw": true
-                }
+                "value": {}
               },
               "type": "set_variable",
               "_nested_name": "essential_tools.tool_3.text_1"
@@ -213,11 +209,9 @@
             },
             {
               "name": "text_1",
-              "value": "Emergencies and family goals",
+              "value": "Emergencies and family goals.",
               "_translations": {
-                "value": {
-                  "tz_sw": true
-                }
+                "value": {}
               },
               "type": "set_variable",
               "_nested_name": "essential_tools.tool_4.text_1"

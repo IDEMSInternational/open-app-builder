@@ -28,63 +28,101 @@
           "_nested_name": "display_group.title"
         },
         {
-          "type": "subtitle",
-          "name": "subtitle_1",
-          "hidden": true,
+          "type": "text",
+          "name": "text",
           "parameter_list": {
             "style": "alternative"
           },
-          "_nested_name": "display_group.subtitle_1"
+          "_nested_name": "display_group.text"
         },
         {
-          "type": "text",
-          "name": "text_1",
-          "parameter_list": {
-            "style": "alternative"
-          },
-          "_nested_name": "display_group.text_1"
+          "name": "button_text",
+          "type": "set_variable",
+          "_nested_name": "display_group.button_text"
+        },
+        {
+          "name": "button_actions",
+          "type": "set_variable",
+          "_nested_name": "display_group.button_actions"
         },
         {
           "type": "button",
-          "name": "button_1",
-          "hidden": true,
+          "name": "button",
+          "value": "@local.button_text",
+          "_translations": {
+            "value": {}
+          },
+          "action_list": [
+            {
+              "trigger": "click",
+              "action_id": "@local.button_actions",
+              "args": [],
+              "_raw": "@local.button_actions",
+              "_cleaned": "click | @local.button_actions"
+            }
+          ],
+          "condition": "!!(@local.button_text)",
           "parameter_list": {
             "style": "nested_color"
           },
-          "_nested_name": "display_group.button_1"
-        },
-        {
-          "type": "subtitle",
-          "name": "subtitle_2",
-          "hidden": true,
-          "parameter_list": {
-            "style": "alternative"
+          "_nested_name": "display_group.button",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@local.button_text",
+                "matchedExpression": "@local.button_text",
+                "type": "local",
+                "fieldName": "button_text"
+              }
+            ],
+            "action_list": {
+              "0": {
+                "action_id": [
+                  {
+                    "fullExpression": "@local.button_actions",
+                    "matchedExpression": "@local.button_actions",
+                    "type": "local",
+                    "fieldName": "button_actions"
+                  }
+                ],
+                "_raw": [
+                  {
+                    "fullExpression": "@local.button_actions",
+                    "matchedExpression": "@local.button_actions",
+                    "type": "local",
+                    "fieldName": "button_actions"
+                  }
+                ],
+                "_cleaned": [
+                  {
+                    "fullExpression": "click | @local.button_actions",
+                    "matchedExpression": "@local.button_actions",
+                    "type": "local",
+                    "fieldName": "button_actions"
+                  }
+                ]
+              }
+            },
+            "condition": [
+              {
+                "fullExpression": "!!(@local.button_text)",
+                "matchedExpression": "@local.button_text",
+                "type": "local",
+                "fieldName": "button_text"
+              }
+            ]
           },
-          "_nested_name": "display_group.subtitle_2"
-        },
-        {
-          "type": "text",
-          "name": "text_2",
-          "hidden": true,
-          "parameter_list": {
-            "style": "alternative"
-          },
-          "_nested_name": "display_group.text_2"
-        },
-        {
-          "type": "image",
-          "name": "image_src",
-          "hidden": true,
-          "_nested_name": "display_group.image_src"
-        },
-        {
-          "type": "button",
-          "name": "button_2",
-          "hidden": true,
-          "parameter_list": {
-            "style": "nested_color"
-          },
-          "_nested_name": "display_group.button_2"
+          "_dynamicDependencies": {
+            "@local.button_text": [
+              "value",
+              "condition"
+            ],
+            "@local.button_actions": [
+              "action_list.0.action_id",
+              "action_list.0._raw",
+              "action_list.0._cleaned"
+            ]
+          }
         }
       ],
       "name": "display_group",
