@@ -81,13 +81,13 @@
       "together": true,
       "priority": 5,
       "has_single_task": true,
-      "title": "@data.workshop[@fields.current_workshop].intro_title",
+      "title": "@data.topic_intro[@fields.current_workshop].title",
       "_translations": {
         "title": {}
       },
       "_translatedFields": {
         "title": {
-          "eng": "@data.workshop[@fields.current_workshop].intro_title"
+          "eng": "@data.topic_intro[@fields.current_workshop].title"
         }
       },
       "template": "w_stress_intro"
@@ -98,13 +98,13 @@
       "together": true,
       "priority": 70,
       "has_single_task": true,
-      "title": "@data.workshop[@fields.current_workshop].tools",
+      "title": "@data.tools[@fields.current_workshop].title",
       "_translations": {
         "title": {}
       },
       "_translatedFields": {
         "title": {
-          "eng": "@data.workshop[@fields.current_workshop].tools"
+          "eng": "@data.tools[@fields.current_workshop].title"
         }
       },
       "template": "w_stress_tools_activity"
