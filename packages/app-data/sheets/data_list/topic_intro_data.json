@@ -1,0 +1,502 @@
+{
+  "flow_type": "data_list",
+  "flow_name": "topic_intro_data",
+  "status": "released",
+  "data_list_name": "topic_intro",
+  "rows": [
+    {
+      "id": "w_self_care",
+      "activity_image_asset": "plh_images/workshop_modes/individual/explain.svg",
+      "audio_asset": "plh_audio/topic_intros/w_self_care_intro.mp3",
+      "intro_text": "We often don’t look after ourselves enough. But this is so important, especially as a parent! \n\nReducing our stress and treating ourselves well helps us AND our teenagers.",
+      "_translations": {
+        "intro_text": {
+          "tz_sw": true
+        },
+        "script": {},
+        "title": {},
+        "intro_nav_button_completed": {}
+      },
+      "_translatedFields": {
+        "intro_text": {
+          "eng": "We often don’t look after ourselves enough. But this is so important, especially as a parent! \n\nReducing our stress and treating ourselves well helps us AND our teenagers."
+        },
+        "script": {
+          "eng": "Greetings, everyone.\n\nToday's topic is self-care.\n\nThere are times when we experience challenges, face problems and do not know what to do. It is important to take care of ourselves to learn the techniques for keeping ourselves calm, in case problems, challenges or issues come up.\n\nWhen we are calm we are in a good state to think positively and come up with positive solutions to any challenges we may be facing."
+        },
+        "title": {
+          "eng": "Why @data.workshop.w_self_care.lower_case_title?"
+        },
+        "intro_nav_button_completed": {
+          "eng": "@global.tell_me_more_button"
+        }
+      },
+      "script": "Greetings, everyone.\n\nToday's topic is self-care.\n\nThere are times when we experience challenges, face problems and do not know what to do. It is important to take care of ourselves to learn the techniques for keeping ourselves calm, in case problems, challenges or issues come up.\n\nWhen we are calm we are in a good state to think positively and come up with positive solutions to any challenges we may be facing.",
+      "title": "Why @data.workshop.w_self_care.lower_case_title?",
+      "intro_nav_button_completed": "@global.tell_me_more_button"
+    },
+    {
+      "id": "w_1on1",
+      "activity_image_asset": "plh_images/workshop_modes/individual/explain.svg",
+      "audio_asset": "plh_audio/topic_intros/w_1on1_intro.mp3",
+      "intro_text": "Being a parent can be so hard. Sometimes it feels like our children never listen to us.\n\nBut science shows that spending just a few minutes each day of focused one-on-one time with your teen helps build trust and love.",
+      "_translations": {
+        "intro_text": {
+          "tz_sw": true
+        },
+        "intro_nav_button_completed": {},
+        "text": {
+          "tz_sw": true
+        },
+        "script": {},
+        "title": {}
+      },
+      "_translatedFields": {
+        "intro_text": {
+          "eng": "Being a parent can be so hard. Sometimes it feels like our children never listen to us.\n\nBut science shows that spending just a few minutes each day of focused one-on-one time with your teen helps build trust and love."
+        },
+        "intro_nav_button_completed": {
+          "eng": "@global.more_button"
+        },
+        "text": {
+          "eng": "One-on-one time is when you focus on them, without TV or phones. Let them lead what you do or talk about.\n\nIt is great if you can do twenty minutes a day, but even five minutes a day is really good."
+        },
+        "script": {
+          "eng": "Hello.\n\nOur topic today is one-on-one time with our children.\n\nIt is important to spend time with our children so that they can get to understand us, and for us to get an opportunity to understand them.\n\nRemember, a family with good understanding lives in harmony."
+        },
+        "title": {
+          "eng": "Why @data.workshop.w_1on1.lower_case_title?"
+        }
+      },
+      "intro_nav_button_completed": "@global.more_button",
+      "text": "One-on-one time is when you focus on them, without TV or phones. Let them lead what you do or talk about.\n\nIt is great if you can do twenty minutes a day, but even five minutes a day is really good.",
+      "script": "Hello.\n\nOur topic today is one-on-one time with our children.\n\nIt is important to spend time with our children so that they can get to understand us, and for us to get an opportunity to understand them.\n\nRemember, a family with good understanding lives in harmony.",
+      "title": "Why @data.workshop.w_1on1.lower_case_title?"
+    },
+    {
+      "id": "w_praise",
+      "activity_image_asset": "plh_images/workshop_modes/individual/explain.svg",
+      "audio_asset": "plh_audio/topic_intros/w_praise_intro.mp3",
+      "intro_text": "Praise is a powerful parenting skill.\n\nIf we praise our teens when they do something well, we will see them do more and more positive things!",
+      "_translations": {
+        "intro_text": {
+          "tz_sw": true
+        },
+        "script": {
+          "tz_sw": true
+        },
+        "title": {},
+        "intro_nav_button_completed": {}
+      },
+      "_translatedFields": {
+        "intro_text": {
+          "eng": "Praise is a powerful parenting skill.\n\nIf we praise our teens when they do something well, we will see them do more and more positive things!"
+        },
+        "script": {
+          "eng": "Greetings everyone. \n\nOur topic today is about praise. \n\nIt is good to praise our children when they've done good because when we do that, they will do more of that good behavior we want to see. \n\nAnd let's not forget to praise ourselves when we do good too!"
+        },
+        "title": {
+          "eng": "Why @data.workshop.w_praise.lower_case_title?"
+        },
+        "intro_nav_button_completed": {
+          "eng": "@global.tell_me_more_button"
+        }
+      },
+      "script": "Greetings everyone. \n\nOur topic today is about praise. \n\nIt is good to praise our children when they've done good because when we do that, they will do more of that good behavior we want to see. \n\nAnd let's not forget to praise ourselves when we do good too!",
+      "title": "Why @data.workshop.w_praise.lower_case_title?",
+      "intro_nav_button_completed": "@global.tell_me_more_button"
+    },
+    {
+      "id": "w_instruct",
+      "activity_image_asset": "plh_images/workshop_modes/individual/explain.svg",
+      "audio_asset": "plh_audio/topic_intros/w_instruct_intro.mp3",
+      "intro_text": "Focus on the positive! \n\nTelling our teens what we DO want them to do works better than telling them to STOP doing something.\n\nYou will see the difference.",
+      "_translations": {
+        "intro_text": {
+          "tz_sw": true
+        },
+        "script": {
+          "tz_sw": true
+        },
+        "title": {},
+        "intro_nav_button_completed": {}
+      },
+      "_translatedFields": {
+        "intro_text": {
+          "eng": "Focus on the positive! \n\nTelling our teens what we DO want them to do works better than telling them to STOP doing something.\n\nYou will see the difference."
+        },
+        "script": {
+          "eng": "Greetings, greetings everyone.\n\nToday our topic is positive instructions. \n\nIt is important to give positive instructions to our children, because when we give them positive instructions they know and understand what we are expecting them to do, and they do it the way we want them to do it. \n\nSo, at the end it keeps everyone happy."
+        },
+        "title": {
+          "eng": "Why @data.workshop.w_instruct.lower_case_title?"
+        },
+        "intro_nav_button_completed": {
+          "eng": "@global.tell_me_more_button"
+        }
+      },
+      "script": "Greetings, greetings everyone.\n\nToday our topic is positive instructions. \n\nIt is important to give positive instructions to our children, because when we give them positive instructions they know and understand what we are expecting them to do, and they do it the way we want them to do it. \n\nSo, at the end it keeps everyone happy.",
+      "title": "Why @data.workshop.w_instruct.lower_case_title?",
+      "intro_nav_button_completed": "@global.tell_me_more_button"
+    },
+    {
+      "id": "w_stress",
+      "activity_image_asset": "plh_images/workshop_modes/individual/explain.svg",
+      "audio_asset": "plh_audio/topic_intros/w_stress_intro.mp3",
+      "intro_text": "We know how stressful it is to bring up teenagers in these times. Learning to manage your stress helps you - and your family.",
+      "_translations": {
+        "intro_text": {
+          "tz_sw": true
+        },
+        "script": {
+          "tz_sw": true
+        },
+        "title": {},
+        "intro_nav_button_completed": {}
+      },
+      "_translatedFields": {
+        "intro_text": {
+          "eng": "We know how stressful it is to bring up teenagers in these times. Learning to manage your stress helps you - and your family."
+        },
+        "script": {
+          "eng": "Greetings everyone. \n\nToday's topic is managing stress. \n\nIt is important to know how to manage our stress. At times our children can behave in ways that make us feel stressed and us as parents can make our children feel stressed too. \n\nSo, it is important to notice when we feel stressed and take a pause and breathe. That will help you manage your stress."
+        },
+        "title": {
+          "eng": "Why @data.workshop.w_stress.lower_case_title?"
+        },
+        "intro_nav_button_completed": {
+          "eng": "@global.tell_me_more_button"
+        }
+      },
+      "script": "Greetings everyone. \n\nToday's topic is managing stress. \n\nIt is important to know how to manage our stress. At times our children can behave in ways that make us feel stressed and us as parents can make our children feel stressed too. \n\nSo, it is important to notice when we feel stressed and take a pause and breathe. That will help you manage your stress.",
+      "title": "Why @data.workshop.w_stress.lower_case_title?",
+      "intro_nav_button_completed": "@global.tell_me_more_button"
+    },
+    {
+      "id": "w_solve",
+      "activity_image_asset": "plh_images/workshop_modes/individual/explain.svg",
+      "audio_asset": "plh_audio/topic_intros/w_solve_intro.mp3",
+      "intro_text": "Every family faces challenges, but when we work together we can deal with problems in an effective and peaceful way. \n\nWhat a great skill for your teen to learn too!",
+      "_translations": {
+        "intro_text": {
+          "tz_sw": true
+        },
+        "script": {
+          "tz_sw": true
+        },
+        "title": {},
+        "intro_nav_button_completed": {}
+      },
+      "_translatedFields": {
+        "intro_text": {
+          "eng": "Every family faces challenges, but when we work together we can deal with problems in an effective and peaceful way. \n\nWhat a great skill for your teen to learn too!"
+        },
+        "script": {
+          "eng": "Greetings, everyone. \n\nToday's topic is problem solving. \n\nWe all know that in life there are times where we face problems, and we all know in a way that when we find ourselves in these situations, it is difficult to think of immediate positive solutions. \n\nTherefore, it is important that when we are facing problems we take a pause, we breathe, keep calm and think of problem-solving skills that we may use. \n\nRemember to include our teenagers when we are solving problems. This will help them to become responsible and learn how to solve their own problems in the future."
+        },
+        "title": {
+          "eng": "Why @data.workshop.w_solve.lower_case_title?"
+        },
+        "intro_nav_button_completed": {
+          "eng": "@global.tell_me_more_button"
+        }
+      },
+      "script": "Greetings, everyone. \n\nToday's topic is problem solving. \n\nWe all know that in life there are times where we face problems, and we all know in a way that when we find ourselves in these situations, it is difficult to think of immediate positive solutions. \n\nTherefore, it is important that when we are facing problems we take a pause, we breathe, keep calm and think of problem-solving skills that we may use. \n\nRemember to include our teenagers when we are solving problems. This will help them to become responsible and learn how to solve their own problems in the future.",
+      "title": "Why @data.workshop.w_solve.lower_case_title?",
+      "intro_nav_button_completed": "@global.tell_me_more_button"
+    },
+    {
+      "id": "w_money",
+      "activity_image_asset": "plh_images/workshop_modes/individual/explain.svg",
+      "audio_asset": "plh_audio/topic_intros/w_money_intro.mp3",
+      "intro_text": "Many families are stressed about money, especially if teens keep asking for things! \n\nWhen we make a budget together, we can agree how to spend AND save to prevent stress and work towards our family’s goals.",
+      "_translations": {
+        "intro_text": {
+          "tz_sw": true
+        },
+        "script": {
+          "tz_sw": true
+        },
+        "title": {},
+        "intro_nav_button_completed": {}
+      },
+      "_translatedFields": {
+        "intro_text": {
+          "eng": "Many families are stressed about money, especially if teens keep asking for things! \n\nWhen we make a budget together, we can agree how to spend AND save to prevent stress and work towards our family’s goals."
+        },
+        "script": {
+          "eng": "Greetings, everyone. \n\nToday's topic is family budgeting. \n\nIt is important to create a budget, but it is even more important to create a budget involving the entire family. \n\nDoing it together helps increase the level of understanding of how you spend money as a family and how much you save for the family, and you can even come up with plans of how you can save as a family."
+        },
+        "title": {
+          "eng": "Why @data.workshop.w_money.lower_case_title?"
+        },
+        "intro_nav_button_completed": {
+          "eng": "@global.tell_me_more_button"
+        }
+      },
+      "script": "Greetings, everyone. \n\nToday's topic is family budgeting. \n\nIt is important to create a budget, but it is even more important to create a budget involving the entire family. \n\nDoing it together helps increase the level of understanding of how you spend money as a family and how much you save for the family, and you can even come up with plans of how you can save as a family.",
+      "title": "Why @data.workshop.w_money.lower_case_title?",
+      "intro_nav_button_completed": "@global.tell_me_more_button"
+    },
+    {
+      "id": "w_rules",
+      "activity_image_asset": "plh_images/workshop_modes/individual/explain.svg",
+      "audio_asset": "plh_audio/topic_intros/w_rules_intro.mp3",
+      "intro_text": "Rules help teens understand what is expected from them. \n\nTeens are more likely to follow rules if you create the rules WITH your teen and praise them for it!",
+      "_translations": {
+        "intro_text": {
+          "tz_sw": true
+        },
+        "script": {
+          "tz_sw": true
+        },
+        "title": {},
+        "intro_nav_button_completed": {}
+      },
+      "_translatedFields": {
+        "intro_text": {
+          "eng": "Rules help teens understand what is expected from them. \n\nTeens are more likely to follow rules if you create the rules WITH your teen and praise them for it!"
+        },
+        "script": {
+          "eng": "Greetings, everyone. \n\nToday's topic is rules. \n\nRules promote peace within the household and promote understanding amongst family members. \n\nRules promote responsibilities for each family member; therefore, it is important to have family rules. \n\nA household with family rules lives in peace."
+        },
+        "title": {
+          "eng": "Why @data.workshop.w_rules.lower_case_title?"
+        },
+        "intro_nav_button_completed": {
+          "eng": "@global.tell_me_more_button"
+        }
+      },
+      "script": "Greetings, everyone. \n\nToday's topic is rules. \n\nRules promote peace within the household and promote understanding amongst family members. \n\nRules promote responsibilities for each family member; therefore, it is important to have family rules. \n\nA household with family rules lives in peace.",
+      "title": "Why @data.workshop.w_rules.lower_case_title?",
+      "intro_nav_button_completed": "@global.tell_me_more_button"
+    },
+    {
+      "id": "w_consequence",
+      "activity_image_asset": "plh_images/workshop_modes/individual/explain.svg",
+      "audio_asset": "plh_audio/topic_intros/w_consequence_intro.mp3",
+      "intro_text": "Our actions have consequences: Some consequences happen naturally (“if you break something, you can’t use it anymore”). Other consequences we set as a family to motivate us to follow the rules (“if you come home late, you can’t go out with friends tomorrow”).\n\nHOW you set and use consequences together matters.\n\nGetting consequences right helps teens behave better and makes family life calmer.",
+      "_translations": {
+        "intro_text": {},
+        "script": {
+          "tz_sw": true
+        },
+        "title": {},
+        "intro_nav_button_completed": {}
+      },
+      "_translatedFields": {
+        "intro_text": {
+          "eng": "Our actions have consequences: Some consequences happen naturally (“if you break something, you can’t use it anymore”). Other consequences we set as a family to motivate us to follow the rules (“if you come home late, you can’t go out with friends tomorrow”).\n\nHOW you set and use consequences together matters.\n\nGetting consequences right helps teens behave better and makes family life calmer."
+        },
+        "script": {
+          "eng": "Greetings, everyone. \n\nToday's topic is calm consequences.\n\nIt is important that when we introduce consequences to our teenagers we involve them, but also important that we are calm when we introduce consequences.\n\nThat will assist in us to agree on introducing calm consequences to our teenagers and our teenagers will easily remember them when they are involved and that will make them responsible."
+        },
+        "title": {
+          "eng": "Why @data.workshop.w_consequence.lower_case_title?"
+        },
+        "intro_nav_button_completed": {
+          "eng": "@global.tell_me_more_button"
+        }
+      },
+      "script": "Greetings, everyone. \n\nToday's topic is calm consequences.\n\nIt is important that when we introduce consequences to our teenagers we involve them, but also important that we are calm when we introduce consequences.\n\nThat will assist in us to agree on introducing calm consequences to our teenagers and our teenagers will easily remember them when they are involved and that will make them responsible.",
+      "title": "Why @data.workshop.w_consequence.lower_case_title?",
+      "intro_nav_button_completed": "@global.tell_me_more_button"
+    },
+    {
+      "id": "w_safe",
+      "activity_image_asset": "plh_images/workshop_modes/individual/explain.svg",
+      "audio_asset": "plh_audio/topic_intros/w_safe_intro.mp3",
+      "intro_text": "Teens can spend a lot of time outside the house or online, where it is harder for us to keep them safe. \n\nTalking together about safe and unsafe places, and how to prevent problems, really helps!",
+      "_translations": {
+        "intro_text": {
+          "tz_sw": true
+        },
+        "script": {
+          "tz_sw": true
+        },
+        "title": {},
+        "intro_nav_button_completed": {}
+      },
+      "_translatedFields": {
+        "intro_text": {
+          "eng": "Teens can spend a lot of time outside the house or online, where it is harder for us to keep them safe. \n\nTalking together about safe and unsafe places, and how to prevent problems, really helps!"
+        },
+        "script": {
+          "eng": "Greetings, everyone. \n\nToday our topic is teen safety. \n\nIt is our responsibility as parents to keep our teens safe at all times. We need to ensure that our teenagers are safe in the communities that we live in. It is our responsibility that we make them aware of the safe and unsafe areas in the communities. \n\nIt is also our responsibility to ensure that they understand the dangers that they might be exposed to when they are online. That way our teenagers will be responsible and be able to make right decisions to keep themselves safe too."
+        },
+        "title": {
+          "eng": "Why @data.workshop.w_safe.lower_case_title?"
+        },
+        "intro_nav_button_completed": {
+          "eng": "@global.tell_me_more_button"
+        }
+      },
+      "script": "Greetings, everyone. \n\nToday our topic is teen safety. \n\nIt is our responsibility as parents to keep our teens safe at all times. We need to ensure that our teenagers are safe in the communities that we live in. It is our responsibility that we make them aware of the safe and unsafe areas in the communities. \n\nIt is also our responsibility to ensure that they understand the dangers that they might be exposed to when they are online. That way our teenagers will be responsible and be able to make right decisions to keep themselves safe too.",
+      "title": "Why @data.workshop.w_safe.lower_case_title?",
+      "intro_nav_button_completed": "@global.tell_me_more_button"
+    },
+    {
+      "id": "w_crisis",
+      "activity_image_asset": "plh_images/workshop_modes/individual/explain.svg",
+      "audio_asset": "plh_audio/topic_intros/w_crisis_intro.mp3",
+      "intro_text": "All families experience crises. When we prepare together and know where to get help BEFORE something bad happens, we can overcome any crisis.",
+      "_translations": {
+        "intro_text": {
+          "tz_sw": true
+        },
+        "script": {
+          "tz_sw": true
+        },
+        "title": {},
+        "intro_nav_button_completed": {}
+      },
+      "_translatedFields": {
+        "intro_text": {
+          "eng": "All families experience crises. When we prepare together and know where to get help BEFORE something bad happens, we can overcome any crisis."
+        },
+        "script": {
+          "eng": "Greetings, everyone.\n\nToday's topic is dealing with crises.\n\nCrises may occur anywhere. Crises may occur anytime. Therefore, it is important as a family to have plans in place should any family member find themselves in a crisis situation. \n\nIt is important to have plans so that every family member may feel protected. \n\nWhen we are dealing with crises, remember to take a pause, breathe, and keep yourself calm. That will help you to deal with crises better."
+        },
+        "title": {
+          "eng": "Why @data.workshop.w_crisis.lower_case_title?"
+        },
+        "intro_nav_button_completed": {
+          "eng": "@global.tell_me_more_button"
+        }
+      },
+      "script": "Greetings, everyone.\n\nToday's topic is dealing with crises.\n\nCrises may occur anywhere. Crises may occur anytime. Therefore, it is important as a family to have plans in place should any family member find themselves in a crisis situation. \n\nIt is important to have plans so that every family member may feel protected. \n\nWhen we are dealing with crises, remember to take a pause, breathe, and keep yourself calm. That will help you to deal with crises better.",
+      "title": "Why @data.workshop.w_crisis.lower_case_title?",
+      "intro_nav_button_completed": "@global.tell_me_more_button"
+    },
+    {
+      "id": "w_celebrate",
+      "activity_image_asset": "plh_images/workshop_modes/individual/final/wave.svg",
+      "audio_asset": "plh_audio/topic_intros/w_celebrate_intro.mp3",
+      "title": "@data.workshop.w_celebrate.title",
+      "_translations": {
+        "title": {},
+        "intro_text": {
+          "tz_sw": true
+        },
+        "script": {
+          "tz_sw": true
+        },
+        "intro_nav_button_completed": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "@data.workshop.w_celebrate.title"
+        },
+        "intro_text": {
+          "eng": "CONGRATULATIONS! You have done it! You have built 11 important parenting skills. \n\nThis is a huge achievement. It shows such care for your family. \n\nLet’s celebrate you, and plan your future @global.parent_app support."
+        },
+        "script": {
+          "eng": "Greetings everyone.\n\nToday’s topic is celebration and next steps.\n\nIt has been amazing, it has been wonderful having you on this journey. Today we are celebrating our journey together. \n\nToday we are celebrating all the learnings that we have learned throughout."
+        },
+        "intro_nav_button_completed": {
+          "eng": "@global.tell_me_more_button"
+        }
+      },
+      "intro_text": "CONGRATULATIONS! You have done it! You have built 11 important parenting skills. \n\nThis is a huge achievement. It shows such care for your family. \n\nLet’s celebrate you, and plan your future @global.parent_app support.",
+      "script": "Greetings everyone.\n\nToday’s topic is celebration and next steps.\n\nIt has been amazing, it has been wonderful having you on this journey. Today we are celebrating our journey together. \n\nToday we are celebrating all the learnings that we have learned throughout.",
+      "intro_nav_button_completed": "@global.tell_me_more_button"
+    },
+    {
+      "id": "w_srh",
+      "activity_image_asset": "plh_images/workshop_modes/individual/explain.svg",
+      "audio_asset": "plh_audio/topic_intros/w_srh_intro.mp3",
+      "title": "Why @data.workshop.w_srh.lower_case_title?",
+      "_translations": {
+        "title": {},
+        "intro_nav_button_completed": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Why @data.workshop.w_srh.lower_case_title?"
+        },
+        "intro_nav_button_completed": {
+          "eng": "@global.tell_me_more_button"
+        }
+      },
+      "intro_nav_button_completed": "@global.tell_me_more_button"
+    },
+    {
+      "id": "w_svp",
+      "activity_image_asset": "plh_images/workshop_modes/individual/explain.svg",
+      "audio_asset": "plh_audio/topic_intros/w_svp_intro.mp3",
+      "intro_text": "To keep our teens safe, we need to understand their reality and the potential risky situations they can find themselves in.\n\nWe can help our teens know how to use their thoughts, voice, AND body in dangerous situations. It makes a big difference!",
+      "_translations": {
+        "intro_text": {},
+        "title": {},
+        "intro_nav_button_completed": {}
+      },
+      "_translatedFields": {
+        "intro_text": {
+          "eng": "To keep our teens safe, we need to understand their reality and the potential risky situations they can find themselves in.\n\nWe can help our teens know how to use their thoughts, voice, AND body in dangerous situations. It makes a big difference!"
+        },
+        "title": {
+          "eng": "Why @data.workshop.w_svp.lower_case_title?"
+        },
+        "intro_nav_button_completed": {
+          "eng": "@global.tell_me_more_button"
+        }
+      },
+      "title": "Why @data.workshop.w_svp.lower_case_title?",
+      "intro_nav_button_completed": "@global.tell_me_more_button"
+    },
+    {
+      "id": "w_grief",
+      "activity_image_asset": "plh_images/workshop_modes/individual/explain.svg",
+      "audio_asset": "plh_audio/topic_intros/w_grief_intro.mp3",
+      "intro_text": "Grief affects us all in different ways. Some people shout, some cry, some feel angry and some feel very sad. It can feel different each day. Sometimes we feel better, then worse, then better again. \n\nWhatever you feel, you are grieving in your own way, and that is okay.",
+      "_translations": {
+        "intro_text": {},
+        "intro_nav_button_completed": {},
+        "text": {},
+        "title": {}
+      },
+      "_translatedFields": {
+        "intro_text": {
+          "eng": "Grief affects us all in different ways. Some people shout, some cry, some feel angry and some feel very sad. It can feel different each day. Sometimes we feel better, then worse, then better again. \n\nWhatever you feel, you are grieving in your own way, and that is okay."
+        },
+        "intro_nav_button_completed": {
+          "eng": "@global.more_button"
+        },
+        "text": {
+          "eng": "Children and adults have similar emotions when it comes to death, but they handle these emotions in different ways. By sharing how you feel and being kind to yourself and each other you can support each other well."
+        },
+        "title": {
+          "eng": "Why @data.workshop.w_grief.lower_case_title?"
+        }
+      },
+      "intro_nav_button_completed": "@global.more_button",
+      "text": "Children and adults have similar emotions when it comes to death, but they handle these emotions in different ways. By sharing how you feel and being kind to yourself and each other you can support each other well.",
+      "title": "Why @data.workshop.w_grief.lower_case_title?"
+    },
+    {
+      "id": "w_learn",
+      "activity_image_asset": "plh_images/workshop_modes/individual/explain.svg",
+      "audio_asset": "plh_audio/topic_intros/w_learn_intro.mp3",
+      "intro_text": "Did you know that your one-on-one time with your teen can help them at school?  Today we will share some ideas on how to do this.\n\nBy spending time with them, you teach them important life skills that will help them at school and at home.",
+      "_translations": {
+        "intro_text": {},
+        "title": {},
+        "intro_nav_button_completed": {}
+      },
+      "_translatedFields": {
+        "intro_text": {
+          "eng": "Did you know that your one-on-one time with your teen can help them at school?  Today we will share some ideas on how to do this.\n\nBy spending time with them, you teach them important life skills that will help them at school and at home."
+        },
+        "title": {
+          "eng": "Why @data.workshop.w_learn.lower_case_title?"
+        },
+        "intro_nav_button_completed": {
+          "eng": "@global.tell_me_more_button"
+        }
+      },
+      "title": "Why @data.workshop.w_learn.lower_case_title?",
+      "intro_nav_button_completed": "@global.tell_me_more_button"
+    }
+  ],
+  "_xlsxPath": "global/data/workshop_data/workshop_data_list.xlsx"
+}
