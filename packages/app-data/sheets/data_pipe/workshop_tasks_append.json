@@ -110,6 +110,42 @@
       ],
       "input_source": "w_celebrate_tasks_temp_1",
       "output_target": "w_celebrate_tasks"
+    },
+    {
+      "operation": "append_columns",
+      "args_list": [
+        "completed_field: task_w_srh_{@row.id}_completed",
+        "completed: @fields.@row.completed_field"
+      ],
+      "input_source": "w_srh_tasks_temp_1",
+      "output_target": "w_srh_tasks"
+    },
+    {
+      "operation": "append_columns",
+      "args_list": [
+        "completed_field: task_w_svp_{@row.id}_completed",
+        "completed: @fields.@row.completed_field"
+      ],
+      "input_source": "w_svp_tasks_temp_1",
+      "output_target": "w_svp_tasks"
+    },
+    {
+      "operation": "append_columns",
+      "args_list": [
+        "completed_field: task_w_grief_{@row.id}_completed",
+        "completed: @fields.@row.completed_field"
+      ],
+      "input_source": "w_grief_tasks_temp_1",
+      "output_target": "w_grief_tasks"
+    },
+    {
+      "operation": "append_columns",
+      "args_list": [
+        "completed_field: task_w_learn_{@row.id}_completed",
+        "completed: @fields.@row.completed_field"
+      ],
+      "input_source": "w_learn_tasks_temp_1",
+      "output_target": "w_learn_tasks"
     }
   ],
   "_xlsxPath": "global/data/workshop_data/workshop_tasks_data_pipes.xlsx"
