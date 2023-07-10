@@ -110,6 +110,42 @@
       ],
       "input_source": false,
       "output_target": "w_celebrate_task_gs_temp_1"
+    },
+    {
+      "operation": "concat",
+      "args_list": [
+        "w_srh_common_task_gs",
+        "w_srh_specific_task_gs"
+      ],
+      "input_source": false,
+      "output_target": "w_srh_task_gs_temp_1"
+    },
+    {
+      "operation": "concat",
+      "args_list": [
+        "w_svp_common_task_gs",
+        "w_svp_specific_task_gs"
+      ],
+      "input_source": false,
+      "output_target": "w_svp_task_gs_temp_1"
+    },
+    {
+      "operation": "concat",
+      "args_list": [
+        "w_grief_common_task_gs",
+        "w_grief_specific_task_gs"
+      ],
+      "input_source": false,
+      "output_target": "w_grief_task_gs_temp_1"
+    },
+    {
+      "operation": "concat",
+      "args_list": [
+        "w_learn_common_task_gs",
+        "w_learn_specific_task_gs"
+      ],
+      "input_source": false,
+      "output_target": "w_learn_task_gs_temp_1"
     }
   ],
   "_xlsxPath": "global/data/workshop_data/workshop_task_groups_data_pipes.xlsx"
