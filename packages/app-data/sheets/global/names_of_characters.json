@@ -497,6 +497,42 @@
         "value": {}
       },
       "exclude_from_translation": true
+    },
+    {
+      "type": "declare_global_constant",
+      "name": "w_srh_female_caregiver_1",
+      "value": "@global.female_caregiver_2",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true
+    },
+    {
+      "type": "declare_global_constant",
+      "name": "w_srh_teen_girl_1",
+      "value": "@global.female_child_name_3",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true
+    },
+    {
+      "type": "declare_global_constant",
+      "name": "w_srh_female_caregiver_2",
+      "value": "@global.female_caregiver_1",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true
+    },
+    {
+      "type": "declare_global_constant",
+      "name": "w_srh_teen_girl_2",
+      "value": "@global.female_child_name_2",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true
     }
   ],
   "_xlsxPath": "global/data/localisation_globals.xlsx"
