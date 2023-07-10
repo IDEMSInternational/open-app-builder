@@ -1,0 +1,7 @@
+{
+  "flow_type": "data_list",
+  "flow_name": "w_svp_specific_task_gs",
+  "status": "released",
+  "rows": [],
+  "_xlsxPath": "global/data/workshop_data/workshop_task_groups.xlsx"
+}
