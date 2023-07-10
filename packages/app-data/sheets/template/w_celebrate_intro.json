@@ -120,40 +120,12 @@
                 },
                 {
                   "name": "intro_text",
-                  "value": "CONGRATULATIONS! You have done it! You have built 11 important parenting skills. \n\nThis is a huge achievement. It shows such care for your family. \n\nLet’s celebrate you, and plan your future parenting support.",
-                  "_translations": {
-                    "value": {
-                      "tz_sw": true
-                    }
-                  },
-                  "condition": "@field.do_this_workshop_together",
-                  "type": "set_variable",
-                  "_nested_name": "topic_intro.listen.workshop_activity.intro_text",
-                  "_dynamicFields": {
-                    "condition": [
-                      {
-                        "fullExpression": "@field.do_this_workshop_together",
-                        "matchedExpression": "@field.do_this_workshop_together",
-                        "type": "field",
-                        "fieldName": "do_this_workshop_together"
-                      }
-                    ]
-                  },
-                  "_dynamicDependencies": {
-                    "@field.do_this_workshop_together": [
-                      "condition"
-                    ]
-                  }
-                },
-                {
-                  "name": "intro_text",
                   "value": "CONGRATULATIONS! You have done it! You have built 11 important parenting skills. \n\nThis is a huge achievement. It shows such care for your family. \n\nLet’s celebrate you, and plan your future @global.parent_app support.",
                   "_translations": {
                     "value": {
                       "tz_sw": true
                     }
                   },
-                  "condition": "!@field.do_this_workshop_together",
                   "type": "set_variable",
                   "_nested_name": "topic_intro.listen.workshop_activity.intro_text",
                   "_dynamicFields": {
@@ -164,22 +136,11 @@
                         "type": "global",
                         "fieldName": "parent_app"
                       }
-                    ],
-                    "condition": [
-                      {
-                        "fullExpression": "!@field.do_this_workshop_together",
-                        "matchedExpression": "!@field.do_this_workshop_together",
-                        "type": "field",
-                        "fieldName": "do_this_workshop_together"
-                      }
                     ]
                   },
                   "_dynamicDependencies": {
                     "@global.parent_app": [
                       "value"
-                    ],
-                    "!@field.do_this_workshop_together": [
-                      "condition"
                     ]
                   }
                 }

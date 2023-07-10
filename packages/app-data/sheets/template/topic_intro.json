@@ -184,8 +184,56 @@
       }
     },
     {
+      "name": "topic_intro_concat",
+      "value": "topic_intro.@local.workshop",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "topic_intro_concat",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "topic_intro.@local.workshop",
+            "matchedExpression": "@local.workshop",
+            "type": "local",
+            "fieldName": "workshop"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.workshop": [
+          "value"
+        ]
+      }
+    },
+    {
+      "name": "topic_intro_data",
+      "value": "@data.@local.topic_intro_concat",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "topic_intro_data",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@data.@local.topic_intro_concat",
+            "matchedExpression": "@local.topic_intro_concat",
+            "type": "local",
+            "fieldName": "topic_intro_concat"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.topic_intro_concat": [
+          "value"
+        ]
+      }
+    },
+    {
       "name": "topic_intro_audio",
-      "value": "@local.workshop_data.intro_audio_asset",
+      "value": "@local.topic_intro_data.audio_asset",
       "_translations": {
         "value": {}
       },
@@ -194,15 +242,15 @@
       "_dynamicFields": {
         "value": [
           {
-            "fullExpression": "@local.workshop_data.intro_audio_asset",
-            "matchedExpression": "@local.workshop_data.intro_audio_asset",
+            "fullExpression": "@local.topic_intro_data.audio_asset",
+            "matchedExpression": "@local.topic_intro_data.audio_asset",
             "type": "local",
-            "fieldName": "workshop_data"
+            "fieldName": "topic_intro_data"
           }
         ]
       },
       "_dynamicDependencies": {
-        "@local.workshop_data.intro_audio_asset": [
+        "@local.topic_intro_data.audio_asset": [
           "value"
         ]
       }
@@ -296,16 +344,31 @@
           "rows": [
             {
               "name": "activity_image",
-              "value": "plh_images/workshop_modes/individual/explain.svg",
+              "value": "@local.topic_intro_data.activity_image_asset",
               "_translations": {
                 "value": {}
               },
               "type": "set_variable",
-              "_nested_name": "listen.workshop_activity.activity_image"
+              "_nested_name": "listen.workshop_activity.activity_image",
+              "_dynamicFields": {
+                "value": [
+                  {
+                    "fullExpression": "@local.topic_intro_data.activity_image_asset",
+                    "matchedExpression": "@local.topic_intro_data.activity_image_asset",
+                    "type": "local",
+                    "fieldName": "topic_intro_data"
+                  }
+                ]
+              },
+              "_dynamicDependencies": {
+                "@local.topic_intro_data.activity_image_asset": [
+                  "value"
+                ]
+              }
             },
             {
               "name": "intro_title",
-              "value": "@local.workshop_data.intro_title",
+              "value": "@local.topic_intro_data.title",
               "_translations": {
                 "value": {}
               },
@@ -314,15 +377,15 @@
               "_dynamicFields": {
                 "value": [
                   {
-                    "fullExpression": "@local.workshop_data.intro_title",
-                    "matchedExpression": "@local.workshop_data.intro_title",
+                    "fullExpression": "@local.topic_intro_data.title",
+                    "matchedExpression": "@local.topic_intro_data.title",
                     "type": "local",
-                    "fieldName": "workshop_data"
+                    "fieldName": "topic_intro_data"
                   }
                 ]
               },
               "_dynamicDependencies": {
-                "@local.workshop_data.intro_title": [
+                "@local.topic_intro_data.title": [
                   "value"
                 ]
               }
@@ -357,7 +420,7 @@
               "rows": [
                 {
                   "name": "button_completed",
-                  "value": "@global.tell_me_more_button",
+                  "value": "@local.topic_intro_data.intro_nav_button_completed",
                   "_translations": {
                     "value": {}
                   },
@@ -366,15 +429,15 @@
                   "_dynamicFields": {
                     "value": [
                       {
-                        "fullExpression": "@global.tell_me_more_button",
-                        "matchedExpression": "@global.tell_me_more_button",
-                        "type": "global",
-                        "fieldName": "tell_me_more_button"
+                        "fullExpression": "@local.topic_intro_data.intro_nav_button_completed",
+                        "matchedExpression": "@local.topic_intro_data.intro_nav_button_completed",
+                        "type": "local",
+                        "fieldName": "topic_intro_data"
                       }
                     ]
                   },
                   "_dynamicDependencies": {
-                    "@global.tell_me_more_button": [
+                    "@local.topic_intro_data.intro_nav_button_completed": [
                       "value"
                     ]
                   }
