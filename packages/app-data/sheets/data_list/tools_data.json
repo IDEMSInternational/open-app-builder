@@ -9,7 +9,6 @@
       "tool_1_button_actions": "click | go_to:w_self_care_relax",
       "tool_2_button_actions": "click | go_to:w_self_care_recognise",
       "tool_3_button_actions": "click | go_to:w_self_care_reward",
-      "bottom_text": "One-on-one time with your teen can be fun for you, too! It might even make you feel less stressed.",
       "title": "How to do self-care",
       "_translations": {
         "title": {
@@ -36,6 +35,9 @@
         },
         "tool_3_text": {},
         "tool_3_button_text": {
+          "tz_sw": true
+        },
+        "bottom_text": {
           "tz_sw": true
         }
       },
@@ -69,6 +71,9 @@
         },
         "tool_3_button_text": {
           "eng": "Reward activity"
+        },
+        "bottom_text": {
+          "eng": "One-on-one time with your teen can be fun for you, too! It might even make you feel less stressed."
         }
       },
       "tool_1_title": "Relax",
@@ -79,7 +84,8 @@
       "tool_2_button_text": "Recognise activity",
       "tool_3_title": "Reward",
       "tool_3_text": "Remember, you deserve your quality time too! What makes you happy?",
-      "tool_3_button_text": "Reward activity"
+      "tool_3_button_text": "Reward activity",
+      "bottom_text": "One-on-one time with your teen can be fun for you, too! It might even make you feel less stressed."
     },
     {
       "id": "w_1on1",
@@ -127,7 +133,6 @@
     },
     {
       "id": "w_praise",
-      "bottom_text": "You can also praise other adults in your household, too. Notice how they respond!",
       "title": "How to praise",
       "_translations": {
         "title": {
@@ -141,6 +146,9 @@
         },
         "tool_3_title": {},
         "tool_3_text": {
+          "tz_sw": true
+        },
+        "bottom_text": {
           "tz_sw": true
         }
       },
@@ -165,6 +173,9 @@
         },
         "tool_3_text": {
           "eng": "Try to find something to thank them for every day. Even something really small."
+        },
+        "bottom_text": {
+          "eng": "You can also praise other adults in your household, too. Notice how they respond!"
         }
       },
       "tool_1_title": "See it",
@@ -172,7 +183,8 @@
       "tool_2_title": "Say it",
       "tool_2_text": "Be enthusiastic – really mean it when you say it!",
       "tool_3_title": "Repeat it",
-      "tool_3_text": "Try to find something to thank them for every day. Even something really small."
+      "tool_3_text": "Try to find something to thank them for every day. Even something really small.",
+      "bottom_text": "You can also praise other adults in your household, too. Notice how they respond!"
     },
     {
       "id": "w_instruct",
@@ -226,7 +238,6 @@
     },
     {
       "id": "w_stress",
-      "bottom_text": "If all else fails, breathe. You can do this.",
       "title": "How to manage stress",
       "_translations": {
         "title": {
@@ -239,7 +250,10 @@
         "tool_3_title": {},
         "tool_3_text": {},
         "tool_4_title": {},
-        "tool_4_text": {}
+        "tool_4_text": {},
+        "bottom_text": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -268,6 +282,9 @@
         },
         "tool_4_text": {
           "eng": "Seek the positive.\n\nCan you and your teen think about ideas that might help? Can you do something positive together to take your mind off the stress?"
+        },
+        "bottom_text": {
+          "eng": "If all else fails, breathe. You can do this."
         }
       },
       "tool_1_title": "Breathe",
@@ -277,7 +294,8 @@
       "tool_3_title": "Show",
       "tool_3_text": "Show them you care.\n\nThis is also hard! Stress makes us focus on ourselves. But our teens need our support. Ask them how they feel. Listen to them and comfort them. Try a hug or say \"I understand\". It can change everything.",
       "tool_4_title": "Seek",
-      "tool_4_text": "Seek the positive.\n\nCan you and your teen think about ideas that might help? Can you do something positive together to take your mind off the stress?"
+      "tool_4_text": "Seek the positive.\n\nCan you and your teen think about ideas that might help? Can you do something positive together to take your mind off the stress?",
+      "bottom_text": "If all else fails, breathe. You can do this."
     },
     {
       "id": "w_solve",
@@ -545,7 +563,6 @@
       "tool_1_button_actions": "click | go_to:w_safe_learn_individual_temp",
       "tool_2_button_actions": "click | go_to:w_rules_read_2",
       "tool_3_image_asset": "@global.safety_word Story",
-      "bottom_text": "Digital parenting is just like parenting in the real world. You have taken a BIG STEP to keeping your teen safe in the community AND online. Good for you!",
       "title": "How to keep your teen safe",
       "_translations": {
         "title": {
@@ -567,7 +584,10 @@
         "tool_3_text": {
           "tz_sw": true
         },
-        "tool_3_button_text": {}
+        "tool_3_button_text": {},
+        "bottom_text": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -599,6 +619,9 @@
         },
         "tool_3_button_text": {
           "eng": "click | go_to:w_stress_read_3"
+        },
+        "bottom_text": {
+          "eng": "Digital parenting is just like parenting in the real world. You have taken a BIG STEP to keeping your teen safe in the community AND online. Good for you!"
         }
       },
       "tool_1_title": "Maps",
@@ -609,11 +632,11 @@
       "tool_2_button_text": "Online Safety Story",
       "tool_3_title": "@global.safety_word",
       "tool_3_text": "Agree on a @global.safety_word. If something happens that makes your teen upset, uncomfortable or scared, they can say the @global.safety_word  and you will help them without getting angry or punishing them, even if they were doing something wrong. \n\nRemember the story about the @global.safety_word? See it again here.",
-      "tool_3_button_text": "click | go_to:w_stress_read_3"
+      "tool_3_button_text": "click | go_to:w_stress_read_3",
+      "bottom_text": "Digital parenting is just like parenting in the real world. You have taken a BIG STEP to keeping your teen safe in the community AND online. Good for you!"
     },
     {
       "id": "w_crisis",
-      "bottom_text": "You can be proud of yourself for exploring ways to get help!",
       "title": "How to deal with crisis",
       "_translations": {
         "title": {
@@ -634,6 +657,9 @@
           "tz_sw": true
         },
         "tool_3_text": {
+          "tz_sw": true
+        },
+        "bottom_text": {
           "tz_sw": true
         }
       },
@@ -661,6 +687,9 @@
         },
         "tool_3_text": {
           "eng": "Talk with your teen. What might help the situation? You might need to make immediate plans now, and then long-term plans later."
+        },
+        "bottom_text": {
+          "eng": "You can be proud of yourself for exploring ways to get help!"
         }
       },
       "top_text": "Crisis can make us feel angry or helpless. But this is when our teens really need us to breathe, listen and think.",
@@ -669,7 +698,8 @@
       "tool_2_title": "Listen",
       "tool_2_text": "Tell them you are there for them and love them.",
       "tool_3_title": "Think",
-      "tool_3_text": "Talk with your teen. What might help the situation? You might need to make immediate plans now, and then long-term plans later."
+      "tool_3_text": "Talk with your teen. What might help the situation? You might need to make immediate plans now, and then long-term plans later.",
+      "bottom_text": "You can be proud of yourself for exploring ways to get help!"
     },
     {
       "id": "w_celebrate",
