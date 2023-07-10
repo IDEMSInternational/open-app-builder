@@ -1,0 +1,7 @@
+{
+  "flow_type": "data_list",
+  "flow_name": "w_srh_specific_tasks",
+  "status": "released",
+  "rows": [],
+  "_xlsxPath": "global/data/workshop_data/workshop_tasks.xlsx"
+}
