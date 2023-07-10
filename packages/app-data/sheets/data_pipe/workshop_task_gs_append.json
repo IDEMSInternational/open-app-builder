@@ -10,7 +10,8 @@
         "completed: @fields.@row.completed_field"
       ],
       "input_source": "w_self_care_task_gs_temp_1",
-      "output_target": "w_self_care_task_gs"
+      "output_target": "w_self_care_task_gs",
+      "module": "Append a column with the completed field"
     },
     {
       "operation": "append_columns",
@@ -112,12 +113,49 @@
       "output_target": "w_celebrate_task_gs"
     },
     {
+      "operation": "append_columns",
+      "args_list": [
+        "completed_field: task_gp_w_srh_{@row.id}_completed",
+        "completed: @fields.@row.completed_field"
+      ],
+      "input_source": "w_srh_task_gs_temp_1",
+      "output_target": "w_srh_task_gs"
+    },
+    {
+      "operation": "append_columns",
+      "args_list": [
+        "completed_field: task_gp_w_svp_{@row.id}_completed",
+        "completed: @fields.@row.completed_field"
+      ],
+      "input_source": "w_svp_task_gs_temp_1",
+      "output_target": "w_svp_task_gs"
+    },
+    {
+      "operation": "append_columns",
+      "args_list": [
+        "completed_field: task_gp_w_grief_{@row.id}_completed",
+        "completed: @fields.@row.completed_field"
+      ],
+      "input_source": "w_grief_task_gs_temp_1",
+      "output_target": "w_grief_task_gs"
+    },
+    {
+      "operation": "append_columns",
+      "args_list": [
+        "completed_field: task_gp_w_learn_{@row.id}_completed",
+        "completed: @fields.@row.completed_field"
+      ],
+      "input_source": "w_learn_task_gs_temp_1",
+      "output_target": "w_learn_task_gs"
+    },
+    {
       "operation": "filter",
       "args_list": [
         "individual"
       ],
       "input_source": "w_self_care_task_gs",
-      "output_target": "w_self_care_ind_task_gs"
+      "output_target": "w_self_care_ind_task_gs",
+      "module": "w_self_care"
     },
     {
       "operation": "filter",
@@ -125,7 +163,8 @@
         "individual"
       ],
       "input_source": "w_1on1_task_gs",
-      "output_target": "w_1on1_ind_task_gs"
+      "output_target": "w_1on1_ind_task_gs",
+      "module": "w_1on1"
     },
     {
       "operation": "filter",
@@ -133,7 +172,8 @@
         "individual"
       ],
       "input_source": "w_praise_task_gs",
-      "output_target": "w_praise_ind_task_gs"
+      "output_target": "w_praise_ind_task_gs",
+      "module": "w_praise"
     },
     {
       "operation": "filter",
@@ -141,7 +181,8 @@
         "individual"
       ],
       "input_source": "w_instruct_task_gs",
-      "output_target": "w_instruct_ind_task_gs"
+      "output_target": "w_instruct_ind_task_gs",
+      "module": "w_instruct"
     },
     {
       "operation": "filter",
@@ -149,31 +190,8 @@
         "individual"
       ],
       "input_source": "w_stress_task_gs",
-      "output_target": "w_stress_ind_task_gs"
-    },
-    {
-      "operation": "filter",
-      "args_list": [
-        "individual"
-      ],
-      "input_source": "w_money_task_gs",
-      "output_target": "w_money_ind_task_gs"
-    },
-    {
-      "operation": "filter",
-      "args_list": [
-        "individual"
-      ],
-      "input_source": "w_rules_task_gs",
-      "output_target": "w_rules_ind_task_gs"
-    },
-    {
-      "operation": "filter",
-      "args_list": [
-        "individual"
-      ],
-      "input_source": "w_consequence_task_gs",
-      "output_target": "w_consequence_ind_task_gs"
+      "output_target": "w_stress_ind_task_gs",
+      "module": "w_stress"
     },
     {
       "operation": "filter",
@@ -181,7 +199,35 @@
         "individual"
       ],
       "input_source": "w_solve_task_gs",
-      "output_target": "w_solve_ind_task_gs"
+      "output_target": "w_solve_ind_task_gs",
+      "module": "w_solve"
+    },
+    {
+      "operation": "filter",
+      "args_list": [
+        "individual"
+      ],
+      "input_source": "w_money_task_gs",
+      "output_target": "w_money_ind_task_gs",
+      "module": "w_money"
+    },
+    {
+      "operation": "filter",
+      "args_list": [
+        "individual"
+      ],
+      "input_source": "w_rules_task_gs",
+      "output_target": "w_rules_ind_task_gs",
+      "module": "w_rules"
+    },
+    {
+      "operation": "filter",
+      "args_list": [
+        "individual"
+      ],
+      "input_source": "w_consequence_task_gs",
+      "output_target": "w_consequence_ind_task_gs",
+      "module": "w_consequence"
     },
     {
       "operation": "filter",
@@ -189,7 +235,8 @@
         "individual"
       ],
       "input_source": "w_safe_task_gs",
-      "output_target": "w_safe_ind_task_gs"
+      "output_target": "w_safe_ind_task_gs",
+      "module": "w_safe"
     },
     {
       "operation": "filter",
@@ -197,7 +244,8 @@
         "individual"
       ],
       "input_source": "w_crisis_task_gs",
-      "output_target": "w_crisis_ind_task_gs"
+      "output_target": "w_crisis_ind_task_gs",
+      "module": "w_crisis"
     },
     {
       "operation": "filter",
@@ -205,7 +253,44 @@
         "individual"
       ],
       "input_source": "w_celebrate_task_gs",
-      "output_target": "w_celebrate_ind_task_gs"
+      "output_target": "w_celebrate_ind_task_gs",
+      "module": "w_celebrate"
+    },
+    {
+      "operation": "filter",
+      "args_list": [
+        "individual"
+      ],
+      "input_source": "w_srh_task_gs",
+      "output_target": "w_srh_ind_task_gs",
+      "module": "w_srh"
+    },
+    {
+      "operation": "filter",
+      "args_list": [
+        "individual"
+      ],
+      "input_source": "w_svp_task_gs",
+      "output_target": "w_svp_ind_task_gs",
+      "module": "w_svp"
+    },
+    {
+      "operation": "filter",
+      "args_list": [
+        "individual"
+      ],
+      "input_source": "w_grief_task_gs",
+      "output_target": "w_grief_ind_task_gs",
+      "module": "w_grief"
+    },
+    {
+      "operation": "filter",
+      "args_list": [
+        "individual"
+      ],
+      "input_source": "w_learn_task_gs",
+      "output_target": "w_learn_ind_task_gs",
+      "module": "w_learn"
     },
     {
       "operation": "filter",
@@ -213,7 +298,8 @@
         "together"
       ],
       "input_source": "w_self_care_task_gs",
-      "output_target": "w_self_care_tog_task_gs"
+      "output_target": "w_self_care_tog_task_gs",
+      "module": "w_self_care"
     },
     {
       "operation": "filter",
@@ -221,7 +307,8 @@
         "together"
       ],
       "input_source": "w_1on1_task_gs",
-      "output_target": "w_1on1_tog_task_gs"
+      "output_target": "w_1on1_tog_task_gs",
+      "module": "w_1on1"
     },
     {
       "operation": "filter",
@@ -229,7 +316,8 @@
         "together"
       ],
       "input_source": "w_praise_task_gs",
-      "output_target": "w_praise_tog_task_gs"
+      "output_target": "w_praise_tog_task_gs",
+      "module": "w_praise"
     },
     {
       "operation": "filter",
@@ -237,7 +325,8 @@
         "together"
       ],
       "input_source": "w_instruct_task_gs",
-      "output_target": "w_instruct_tog_task_gs"
+      "output_target": "w_instruct_tog_task_gs",
+      "module": "w_instruct"
     },
     {
       "operation": "filter",
@@ -245,31 +334,8 @@
         "together"
       ],
       "input_source": "w_stress_task_gs",
-      "output_target": "w_stress_tog_task_gs"
-    },
-    {
-      "operation": "filter",
-      "args_list": [
-        "together"
-      ],
-      "input_source": "w_money_task_gs",
-      "output_target": "w_money_tog_task_gs"
-    },
-    {
-      "operation": "filter",
-      "args_list": [
-        "together"
-      ],
-      "input_source": "w_rules_task_gs",
-      "output_target": "w_rules_tog_task_gs"
-    },
-    {
-      "operation": "filter",
-      "args_list": [
-        "together"
-      ],
-      "input_source": "w_consequence_task_gs",
-      "output_target": "w_consequence_tog_task_gs"
+      "output_target": "w_stress_tog_task_gs",
+      "module": "w_stress"
     },
     {
       "operation": "filter",
@@ -277,7 +343,35 @@
         "together"
       ],
       "input_source": "w_solve_task_gs",
-      "output_target": "w_solve_tog_task_gs"
+      "output_target": "w_solve_tog_task_gs",
+      "module": "w_solve"
+    },
+    {
+      "operation": "filter",
+      "args_list": [
+        "together"
+      ],
+      "input_source": "w_money_task_gs",
+      "output_target": "w_money_tog_task_gs",
+      "module": "w_money"
+    },
+    {
+      "operation": "filter",
+      "args_list": [
+        "together"
+      ],
+      "input_source": "w_rules_task_gs",
+      "output_target": "w_rules_tog_task_gs",
+      "module": "w_rules"
+    },
+    {
+      "operation": "filter",
+      "args_list": [
+        "together"
+      ],
+      "input_source": "w_consequence_task_gs",
+      "output_target": "w_consequence_tog_task_gs",
+      "module": "w_consequence"
     },
     {
       "operation": "filter",
@@ -285,7 +379,8 @@
         "together"
       ],
       "input_source": "w_safe_task_gs",
-      "output_target": "w_safe_tog_task_gs"
+      "output_target": "w_safe_tog_task_gs",
+      "module": "w_safe"
     },
     {
       "operation": "filter",
@@ -293,7 +388,8 @@
         "together"
       ],
       "input_source": "w_crisis_task_gs",
-      "output_target": "w_crisis_tog_task_gs"
+      "output_target": "w_crisis_tog_task_gs",
+      "module": "w_crisis"
     },
     {
       "operation": "filter",
@@ -301,7 +397,44 @@
         "together"
       ],
       "input_source": "w_celebrate_task_gs",
-      "output_target": "w_celebrate_tog_task_gs"
+      "output_target": "w_celebrate_tog_task_gs",
+      "module": "w_celebrate"
+    },
+    {
+      "operation": "filter",
+      "args_list": [
+        "together"
+      ],
+      "input_source": "w_srh_task_gs",
+      "output_target": "w_srh_tog_task_gs",
+      "module": "w_srh"
+    },
+    {
+      "operation": "filter",
+      "args_list": [
+        "together"
+      ],
+      "input_source": "w_svp_task_gs",
+      "output_target": "w_svp_tog_task_gs",
+      "module": "w_svp"
+    },
+    {
+      "operation": "filter",
+      "args_list": [
+        "together"
+      ],
+      "input_source": "w_grief_task_gs",
+      "output_target": "w_grief_tog_task_gs",
+      "module": "w_grief"
+    },
+    {
+      "operation": "filter",
+      "args_list": [
+        "together"
+      ],
+      "input_source": "w_learn_task_gs",
+      "output_target": "w_learn_tog_task_gs",
+      "module": "w_learn"
     }
   ],
   "_xlsxPath": "global/data/workshop_data/workshop_task_groups_data_pipes.xlsx"
