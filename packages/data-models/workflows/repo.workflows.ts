@@ -25,6 +25,17 @@ const workflows: IDeploymentWorkflows = {
       },
     ],
     children: {
+      actions: {
+        label: "Configure Github Actions for repo",
+        steps: [
+          {
+            name: "Github Actions setup",
+            function: async ({ tasks }) => {
+              tasks.actions.setup();
+            },
+          },
+        ],
+      },
       open: {
         label: "Open child repo in VSCode",
         steps: [
