@@ -1,5 +1,5 @@
 {
-  "flow_name": "child_dev_1_story",
+  "flow_name": "child_dev_ip_distracted",
   "flow_subtype": "generated",
   "flow_type": "template",
   "rows": [
@@ -14,8 +14,8 @@
     },
     {
       "type": "template",
-      "name": "story",
-      "value": "story",
+      "name": "topic_block_group",
+      "value": "topic_block_group",
       "action_list": [
         {
           "trigger": "completed",
@@ -43,19 +43,19 @@
             "child_dev"
           ],
           "type": "set_variable",
-          "_nested_name": "story.session_data_list_name"
+          "_nested_name": "topic_block_group.session_data_list_name"
         },
         {
           "name": "session_task_id",
-          "value": "child_dev_1_story",
+          "value": "child_dev_ip_distracted",
           "_translations": {
             "value": {}
           },
           "type": "set_variable",
-          "_nested_name": "story.session_task_id"
+          "_nested_name": "topic_block_group.session_task_id"
         }
       ],
-      "_nested_name": "story"
+      "_nested_name": "topic_block_group"
     }
   ]
 }

@@ -22,6 +22,36 @@
       "id": "child_dev",
       "title": "Well done!",
       "intro_text": "Congratulations for completing the @data.session.child_dev.title session."
+    },
+    {
+      "id": "parent_childhood",
+      "title": "Well done!",
+      "intro_text": "Congratulations for completing the @data.session.parent_childhood.title session."
+    },
+    {
+      "id": "positive_parenting",
+      "title": "Well done!",
+      "intro_text": "Congratulations for completing the @data.session.positive_parenting.title session."
+    },
+    {
+      "id": "gender_power",
+      "title": "Well done!",
+      "intro_text": "Congratulations for completing the @data.session.gender_power.title session."
+    },
+    {
+      "id": "impact_conflict",
+      "title": "Well done!",
+      "intro_text": "Congratulations for completing the @data.session.impact_conflict.title session."
+    },
+    {
+      "id": "sharing_care",
+      "title": "Well done!",
+      "intro_text": "Congratulations for completing the @data.session.sharing_care.title session."
+    },
+    {
+      "id": "healthy_relation",
+      "title": "Well done!",
+      "intro_text": "Congratulations for completing the @data.session.healthy_relation.title session."
     }
   ],
   "_xlsxPath": "global/data_lists/sessions.xlsx"

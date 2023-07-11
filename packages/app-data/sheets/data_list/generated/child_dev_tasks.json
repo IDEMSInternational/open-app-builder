@@ -68,12 +68,12 @@
       "completed": "@fields.task_child_dev_reflect_completed"
     },
     {
-      "id": "child_dev_1_story",
+      "id": "child_dev_ip_distracted",
       "priority": 9,
-      "data_list_name": "story",
+      "data_list_name": "topic_block_group",
       "row_id": "interactive_play_distracted",
-      "completed_field": "task_child_dev_1_story_completed",
-      "completed": "@fields.task_child_dev_1_story_completed"
+      "completed_field": "task_child_dev_ip_distracted_completed",
+      "completed": "@fields.task_child_dev_ip_distracted_completed"
     },
     {
       "id": "child_dev_1_reflect",

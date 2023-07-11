@@ -34,7 +34,7 @@
     {
       "id": "healthy_relation",
       "topic": "healthy_relation",
-      "text": "* As you end this session, reflect on the things you like and those you do not like about your marriage or family life.",
+      "text": "Reflect on the things you like and those you do not like about your marriage or family life.",
       "title": "Home practice: @data.topic.healthy_relation.title",
       "intro_text": "Time to try this at home with your family."
     }

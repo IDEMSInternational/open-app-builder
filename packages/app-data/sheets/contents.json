@@ -240,7 +240,7 @@
         "output_flow_subtype": "generated"
       },
       "session": "child_dev",
-      "_xlsxPath": "global/templates/blocks/generate_session_blocks.xlsx"
+      "_xlsxPath": "global/templates/blocks/generate_blocks.xlsx"
     },
     "gen_current_pract_blocks": {
       "flow_type": "generator",
@@ -252,7 +252,7 @@
         "output_flow_subtype": "generated"
       },
       "session": "current_pract",
-      "_xlsxPath": "global/templates/blocks/generate_session_blocks.xlsx"
+      "_xlsxPath": "global/templates/blocks/generate_blocks.xlsx"
     },
     "gen_family_relation_blocks": {
       "flow_type": "generator",
@@ -264,7 +264,7 @@
         "output_flow_subtype": "generated"
       },
       "session": "family_relation",
-      "_xlsxPath": "global/templates/blocks/generate_session_blocks.xlsx"
+      "_xlsxPath": "global/templates/blocks/generate_blocks.xlsx"
     },
     "gen_gender_power_blocks": {
       "flow_type": "generator",
@@ -276,7 +276,7 @@
         "output_flow_subtype": "generated"
       },
       "session": "gender_power",
-      "_xlsxPath": "global/templates/blocks/generate_session_blocks.xlsx"
+      "_xlsxPath": "global/templates/blocks/generate_blocks.xlsx"
     },
     "gen_healthy_relation_blocks": {
       "flow_type": "generator",
@@ -288,7 +288,7 @@
         "output_flow_subtype": "generated"
       },
       "session": "healthy_relation",
-      "_xlsxPath": "global/templates/blocks/generate_session_blocks.xlsx"
+      "_xlsxPath": "global/templates/blocks/generate_blocks.xlsx"
     },
     "gen_impact_conflict_blocks": {
       "flow_type": "generator",
@@ -300,7 +300,7 @@
         "output_flow_subtype": "generated"
       },
       "session": "impact_conflict",
-      "_xlsxPath": "global/templates/blocks/generate_session_blocks.xlsx"
+      "_xlsxPath": "global/templates/blocks/generate_blocks.xlsx"
     },
     "gen_onboarding_blocks": {
       "flow_type": "generator",
@@ -312,7 +312,7 @@
         "output_flow_subtype": "generated"
       },
       "session": "onboarding",
-      "_xlsxPath": "global/templates/blocks/generate_session_blocks.xlsx"
+      "_xlsxPath": "global/templates/blocks/generate_blocks.xlsx"
     },
     "gen_parent_childhood_blocks": {
       "flow_type": "generator",
@@ -324,7 +324,7 @@
         "output_flow_subtype": "generated"
       },
       "session": "parent_childhood",
-      "_xlsxPath": "global/templates/blocks/generate_session_blocks.xlsx"
+      "_xlsxPath": "global/templates/blocks/generate_blocks.xlsx"
     },
     "gen_positive_parenting_blocks": {
       "flow_type": "generator",
@@ -336,7 +336,7 @@
         "output_flow_subtype": "generated"
       },
       "session": "positive_parenting",
-      "_xlsxPath": "global/templates/blocks/generate_session_blocks.xlsx"
+      "_xlsxPath": "global/templates/blocks/generate_blocks.xlsx"
     },
     "gen_sharing_care_blocks": {
       "flow_type": "generator",
@@ -348,7 +348,7 @@
         "output_flow_subtype": "generated"
       },
       "session": "sharing_care",
-      "_xlsxPath": "global/templates/blocks/generate_session_blocks.xlsx"
+      "_xlsxPath": "global/templates/blocks/generate_blocks.xlsx"
     }
   },
   "global": {
@@ -396,11 +396,6 @@
       "flow_subtype": "generated",
       "flow_type": "template"
     },
-    "child_dev_1_story": {
-      "flow_name": "child_dev_1_story",
-      "flow_subtype": "generated",
-      "flow_type": "template"
-    },
     "child_dev_1_tips": {
       "flow_name": "child_dev_1_tips",
       "flow_subtype": "generated",
@@ -433,6 +428,11 @@
     },
     "child_dev_intro": {
       "flow_name": "child_dev_intro",
+      "flow_subtype": "generated",
+      "flow_type": "template"
+    },
+    "child_dev_ip_distracted": {
+      "flow_name": "child_dev_ip_distracted",
       "flow_subtype": "generated",
       "flow_type": "template"
     },
@@ -869,6 +869,11 @@
     "tips": {
       "flow_type": "template",
       "flow_name": "tips",
+      "_xlsxPath": "global/templates/blocks/topic_blocks.xlsx"
+    },
+    "topic_block_group": {
+      "flow_type": "template",
+      "flow_name": "topic_block_group",
       "_xlsxPath": "global/templates/blocks/topic_blocks.xlsx"
     }
   },
