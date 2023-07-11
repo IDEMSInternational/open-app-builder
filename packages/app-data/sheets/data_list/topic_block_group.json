@@ -4,14 +4,28 @@
   "status": "released",
   "rows": [
     {
+      "id": "child_20",
+      "topic": "current_pract",
+      "title": "Your child as a 20-year-old",
+      "task_1_data": "reflect",
+      "task_1_id": "child_20",
+      "task_2_data": "quiz_question",
+      "task_2_id": "child_20",
+      "task_3_data": "quiz",
+      "task_3_id": "current_pract",
+      "outro_text": "It is important to involve both men and women in raising a child."
+    },
+    {
       "id": "dev_stages",
       "topic": "child_dev",
       "title": "Stages of child development",
-      "intro_text": "We are going to explore the basic developmental needs and behaviors of children 0 -17 years.",
+      "intro_text": "We are going to explore the basic developmental needs and behaviors of children 0-17 years.",
       "task_1_data": "quiz",
-      "task_1_id": "child_dev",
+      "task_1_id": "dev_stage",
       "task_2_data": "tips",
-      "task_2_id": "child_dev"
+      "task_2_id": "child_needs_dev",
+      "task_3_data": "tips",
+      "task_3_id": "child_dev_needs"
     },
     {
       "id": "interactive_play_distracted",
@@ -42,7 +56,28 @@
       "task_1_id": "interactive_play_distracted",
       "task_2_data": "topic_block_group",
       "task_2_id": "interactive_play_control",
-      "outro_text": "Play promotes every aspect of children’s development – physical, social, emotional and  cognitive"
+      "outro_text": "Play promotes every aspect of children’s development – physical, social, emotional and cognitive."
+    },
+    {
+      "id": "caregiver_legacy",
+      "topic": "parent_childhood",
+      "title": "My Father/Mother’s Legacy",
+      "task_1_data": "reflect",
+      "task_1_id": "caregiver_legacy_1",
+      "task_2_data": "reflect",
+      "task_2_id": "caregiver_legacy_2",
+      "task_3_data": "tips",
+      "task_3_id": "caregiver_legacy"
+    },
+    {
+      "id": "outstanding_abilities",
+      "topic": "parent_childhood",
+      "gender": "men",
+      "title": "Outstanding abilities of fathers",
+      "task_1_data": "story",
+      "task_1_id": "outstanding_abilities",
+      "task_2_data": "tips",
+      "task_2_id": "relation_pregnancy"
     },
     {
       "id": "impact_conflict",
@@ -62,9 +97,8 @@
       "task_1_data": "story",
       "task_1_id": "managing_behaviour",
       "task_2_data": "reflect",
-      "task_2_id": "managing_behaviour_questions",
-      "task_3_data": "reflect",
-      "task_3_id": "managing_behaviour"
+      "task_2_id": "managing_behaviour",
+      "outro_text": "* Humbly, Sarah was trying to get her brother to play with her.\n* Instead of the mother encouraging them to enjoy the play together, she made it worse by shouting at her daughter Sarah. This is common in our everyday lives.\n* As parents, we tend to favor the young ones at the expense of the older ones.\n* The mother needed to resolve the problem between the two siblings instead of referring the issue to their father.\n* She needed to help the children to play together happily."
     },
     {
       "id": "parenting_style",
@@ -86,9 +120,8 @@
       "task_1_data": "story",
       "task_1_id": "setting_limits",
       "task_2_data": "reflect",
-      "task_2_id": "setting_limits_questions",
-      "task_3_data": "reflect",
-      "task_3_id": "setting_limits_tips"
+      "task_2_id": "setting_limits",
+      "outro_text": "Notice:\n* The mother sits with the child at the same level and communicates the limit. It’s a respectful position where both people are ready to listen.\n* The limit should be for a specific behaviour to ensure that Sam abides to the limit. A watch is provided so that they can refer to it.\n* Just like the mother, we need to appreciate the children when they follow family rules and limits to encourage them to keep following them."
     },
     {
       "id": "caregiving",
@@ -99,6 +132,50 @@
       "task_1_id": "caregiving",
       "task_2_data": "quiz",
       "task_2_id": "caregiving"
+    },
+    {
+      "id": "healthy_relation",
+      "topic": "healthy_relation",
+      "title": "Throw the Drunk Ball",
+      "intro_text": "In this activity we are going to: \n* Learn how excessive drinking affects family relationships \n* Learn how to help partners reduce alcohol consumption and other socially unacceptable practices/ behavior.",
+      "task_1_data": "quiz",
+      "task_1_id": "healthy_relation",
+      "task_2_data": "tips",
+      "task_2_id": "healthy_relation"
+    },
+    {
+      "id": "rships_communication",
+      "topic": "healthy_relation",
+      "title": "Marital Relationships and Communication",
+      "intro_text": "In this activity we are going to: \n* Learn what constitutes a healthy marriage and sexuality and the importance of healthy communication in a marriage",
+      "task_1_data": "story",
+      "task_1_id": "rships_communication",
+      "task_2_data": "quiz",
+      "task_2_id": "rships_communication",
+      "task_3_data": "tips",
+      "task_3_id": "rships_communication"
+    },
+    {
+      "id": "session_review",
+      "topic": "session_review",
+      "title": "Review",
+      "intro_text": "Let us review sessions 1-9 and share some of the lessons learned.",
+      "task_1_data": "quiz",
+      "task_1_id": "session_review",
+      "task_2_data": "tips",
+      "task_2_id": "session_review"
+    },
+    {
+      "id": "ball_change",
+      "topic": "session_review",
+      "title": "The Ball of Change",
+      "task_1_data": "story",
+      "task_1_id": "spousal_relationships",
+      "task_2_data": "quiz",
+      "task_2_id": "spousal_relationships",
+      "task_3_data": "tips",
+      "task_3_id": "spousal_relationships",
+      "outro_text": "Thank you for your dedication to the program and for seeing\nthat your relationship improves and violence is reduced."
     }
   ],
   "_xlsxPath": "global/data_lists/topics.xlsx"

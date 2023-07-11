@@ -6,14 +6,14 @@
     {
       "name": "session_data_list_name",
       "value": [
-        "family_relation"
+        "child_dev"
       ],
       "type": "set_variable",
       "_nested_name": "session_data_list_name"
     },
     {
       "name": "session_task_id",
-      "value": "family_relation_story",
+      "value": "child_dev_1_story",
       "_translations": {
         "value": {}
       },

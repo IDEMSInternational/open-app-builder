@@ -23,7 +23,7 @@
       "id": "current_pract_review_hp",
       "priority": 3,
       "data_list_name": "review_hp",
-      "row_id": "child_dev",
+      "row_id": "current_pract",
       "completed_field": "task_current_pract_review_hp_completed",
       "completed": "@fields.task_current_pract_review_hp_completed"
     },
@@ -40,7 +40,6 @@
       "priority": 5,
       "data_list_name": "quiz",
       "row_id": "child_dev",
-      "group": "child_dev_quiz",
       "completed_field": "task_child_dev_quiz_completed",
       "completed": "@fields.task_child_dev_quiz_completed"
     },
@@ -49,7 +48,6 @@
       "priority": 6,
       "data_list_name": "quiz",
       "row_id": "child_dev_how",
-      "group": "child_dev_quiz",
       "completed_field": "task_child_dev_1_quiz_completed",
       "completed": "@fields.task_child_dev_1_quiz_completed"
     },
@@ -58,7 +56,6 @@
       "priority": 7,
       "data_list_name": "tips",
       "row_id": "child_dev",
-      "group": "child_dev_quiz",
       "completed_field": "task_child_dev_tips_completed",
       "completed": "@fields.task_child_dev_tips_completed"
     },
@@ -74,8 +71,7 @@
       "id": "child_dev_1_story",
       "priority": 9,
       "data_list_name": "story",
-      "row_id": "interactive_play",
-      "group": "child_dev_story_1",
+      "row_id": "interactive_play_distracted",
       "completed_field": "task_child_dev_1_story_completed",
       "completed": "@fields.task_child_dev_1_story_completed"
     },
@@ -84,7 +80,6 @@
       "priority": 10,
       "data_list_name": "reflect",
       "row_id": "scenario_1",
-      "group": "child_dev_story_1",
       "completed_field": "task_child_dev_1_reflect_completed",
       "completed": "@fields.task_child_dev_1_reflect_completed"
     },
@@ -93,7 +88,6 @@
       "priority": 11,
       "data_list_name": "tips",
       "row_id": "scenario_1",
-      "group": "child_dev_story_1",
       "completed_field": "task_child_dev_1_tips_completed",
       "completed": "@fields.task_child_dev_1_tips_completed"
     },
@@ -102,7 +96,6 @@
       "priority": 12,
       "data_list_name": "story",
       "row_id": "interactive_play",
-      "group": "child_dev_story_2",
       "completed_field": "task_child_dev_2_story_completed",
       "completed": "@fields.task_child_dev_2_story_completed"
     },
@@ -111,7 +104,6 @@
       "priority": 13,
       "data_list_name": "reflect",
       "row_id": "scenario_2",
-      "group": "child_dev_story_2",
       "completed_field": "task_child_dev_reflect_completed",
       "completed": "@fields.task_child_dev_reflect_completed"
     },
@@ -120,7 +112,6 @@
       "priority": 14,
       "data_list_name": "tips",
       "row_id": "scenario_2",
-      "group": "child_dev_story_2",
       "completed_field": "task_child_dev_2_tips_completed",
       "completed": "@fields.task_child_dev_2_tips_completed"
     },

@@ -21,7 +21,7 @@
       "question_3_id": "dev_stage_feel",
       "question_4_id": "dev_stage_think",
       "question_5_id": "dev_stage_social",
-      "outro": "As a parent, note that by focusing on growing only one or two areas of a child’s development could affect their wellbeing. \n\nFor balanced growth and development, ensure that you focus on all the four main areas equally in order to have a well-developed child.",
+      "outro_text": "As a parent, note that by focusing on growing only one or two areas of a child’s development could affect their wellbeing. \n\nFor balanced growth and development, ensure that you focus on all the four main areas equally in order to have a well-developed child.",
       "intro_text": "Let's do a reflection."
     },
     {
@@ -41,6 +41,45 @@
       "question_1_id": "caregiving_man",
       "question_2_id": "caregiving_woman",
       "question_3_id": "caregiving_self",
+      "title": "Quiz",
+      "intro_text": "Let's do a reflection."
+    },
+    {
+      "id": "healthy_relation",
+      "topic": "healthy_relation",
+      "question_1_id": "difference_signs",
+      "question_2_id": "do_why",
+      "question_3_id": "influence_how",
+      "question_4_id": "help_control",
+      "title": "Quiz",
+      "intro_text": "Let's do a reflection."
+    },
+    {
+      "id": "rships_communication",
+      "topic": "healthy_relation",
+      "question_1_id": "marriage_like",
+      "question_2_id": "marriage_don't_like",
+      "question_3_id": "barrelate_differently",
+      "question_4_id": "couple_relate",
+      "question_5_id": "lose_interest",
+      "question_5_id_1": "intimacy_communicate",
+      "title": "Quiz",
+      "intro_text": "Let's do a reflection."
+    },
+    {
+      "id": "session_review",
+      "topic": "session_review",
+      "question_1_id": "useful_session",
+      "question_2_id": "useful_activity",
+      "question_3_id": "least_session",
+      "title": "Quiz",
+      "intro_text": "Let's do a reflection."
+    },
+    {
+      "id": "spousal_relationships",
+      "topic": "session_review",
+      "question_1_id": "discuss_parenting",
+      "question_2_id": "helped_how",
       "title": "Quiz",
       "intro_text": "Let's do a reflection."
     }

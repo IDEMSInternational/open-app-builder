@@ -4,75 +4,8 @@
   "status": "released",
   "rows": [
     {
-      "id": "playing_what",
-      "question_type": "select_one",
-      "question_text": "What is happening this image?",
-      "option_1_text": "The child is holding a toy",
-      "option_2_text": "The parent is watching the child",
-      "feedback_all_next_question_id": "playing_ease"
-    },
-    {
-      "id": "playing_ease",
-      "question_type": "select_one",
-      "question_text": "For me this practice is...",
-      "option_1_text": "Easy to do",
-      "option_2_text": "",
-      "option_3_text": "Not done",
-      "feedback_all_next_question_id": "playing_why"
-    },
-    {
-      "id": "playing_why",
-      "question_type": "text_input",
-      "question_text": "Why?"
-    },
-    {
-      "id": "feeding_what",
-      "question_type": "select_one",
-      "question_text": "What is happening this image?",
-      "option_1_text": "The child is eating a meal",
-      "option_2_text": "The parent is feeding the child",
-      "feedback_all_next_question_id": "feeding_ease"
-    },
-    {
-      "id": "feeding_ease",
-      "question_type": "select_one",
-      "question_text": "For me this practice is...",
-      "option_1_text": "Easy to do",
-      "option_2_text": "Difficult to do",
-      "option_3_text": "Not done",
-      "feedback_all_next_question_id": "feeding_why"
-    },
-    {
-      "id": "feeding_why",
-      "question_type": "text_input",
-      "question_text": "Why?"
-    },
-    {
-      "id": "reading_what",
-      "image_asset": "images/parents_child_reading.jpg",
-      "question_type": "select_one",
-      "question_text": "What is happening this image?",
-      "option_1_text": "Parent and child are reading together",
-      "option_2_text": "The child is sitting on the caregiver's lap",
-      "option_3_text": "The caregiver is pointing at an image",
-      "feedback_all_next_question_id": "reading_ease"
-    },
-    {
-      "id": "reading_ease",
-      "question_type": "select_one",
-      "question_text": "For me this practice is...",
-      "option_1_text": "Easy to do",
-      "option_2_text": "Difficult to do",
-      "option_3_text": "Not done",
-      "feedback_all_next_question_id": "reading_why"
-    },
-    {
-      "id": "reading_why",
-      "question_type": "text_input",
-      "question_text": "Why?"
-    },
-    {
       "id": "child_20",
+      "topic": "current_pract",
       "question_type": "select_multiple",
       "question_text": "What of these relationships do you foresee to have with your child on their 20th birthday (choose all that apply)?",
       "option_1_text": "Kind and helpful",
@@ -83,21 +16,85 @@
       "option_6_text": "Loves his/her parents"
     },
     {
-      "id": "often_see",
+      "id": "playing_what",
+      "topic": "current_pract",
       "question_type": "select_one",
-      "question_text": "Do you often see men in your community doing the things Ssemakula does with his wife and family?",
-      "option_1_text": "Yes",
-      "option_2_text": "No"
+      "question_text": "What is happening this image?",
+      "option_1_text": "The child is holding a toy",
+      "option_2_text": "The parent is watching the child",
+      "feedback_all_next_question_id": "playing_ease"
     },
     {
-      "id": "learn_new",
+      "id": "playing_ease",
+      "topic": "current_pract",
       "question_type": "select_one",
-      "question_text": "Have you learnt anything new from the story?",
-      "option_1_text": "Yes",
-      "option_2_text": "No"
+      "question_text": "For me this practice is...",
+      "option_1_text": "Easy to do",
+      "option_2_text": "",
+      "option_3_text": "Not done",
+      "feedback_all_next_question_id": "playing_why"
+    },
+    {
+      "id": "playing_why",
+      "topic": "current_pract",
+      "question_type": "text_input",
+      "question_text": "Why?"
+    },
+    {
+      "id": "feeding_what",
+      "topic": "current_pract",
+      "question_type": "select_one",
+      "question_text": "What is happening this image?",
+      "option_1_text": "The child is eating a meal",
+      "option_2_text": "The parent is feeding the child",
+      "feedback_all_next_question_id": "feeding_ease"
+    },
+    {
+      "id": "feeding_ease",
+      "topic": "current_pract",
+      "question_type": "select_one",
+      "question_text": "For me this practice is...",
+      "option_1_text": "Easy to do",
+      "option_2_text": "Difficult to do",
+      "option_3_text": "Not done",
+      "feedback_all_next_question_id": "feeding_why"
+    },
+    {
+      "id": "feeding_why",
+      "topic": "current_pract",
+      "question_type": "text_input",
+      "question_text": "Why?"
+    },
+    {
+      "id": "reading_what",
+      "topic": "current_pract",
+      "image_asset": "images/parents_child_reading.jpg",
+      "question_type": "select_one",
+      "question_text": "What is happening this image?",
+      "option_1_text": "Parent and child are reading together",
+      "option_2_text": "The child is sitting on the caregiver's lap",
+      "option_3_text": "The caregiver is pointing at an image",
+      "feedback_all_next_question_id": "reading_ease"
+    },
+    {
+      "id": "reading_ease",
+      "topic": "current_pract",
+      "question_type": "select_one",
+      "question_text": "For me this practice is...",
+      "option_1_text": "Easy to do",
+      "option_2_text": "Difficult to do",
+      "option_3_text": "Not done",
+      "feedback_all_next_question_id": "reading_why"
+    },
+    {
+      "id": "reading_why",
+      "topic": "current_pract",
+      "question_type": "text_input",
+      "question_text": "Why?"
     },
     {
       "id": "dev_stage_which",
+      "topic": "child_dev",
       "question_type": "select_one",
       "question_text": "Which of the four main developmental stages does your child belong to?",
       "option_1_text": "0-5 years ( Pre- school)",
@@ -107,26 +104,47 @@
     },
     {
       "id": "dev_stage_physical",
+      "topic": "child_dev",
       "question_type": "text_input_long",
       "question_text": "How will you ensure that this child will grow well physically (growth)?"
     },
     {
-      "id": "dev_stage_feel",
-      "question_type": "text_input_long",
-      "question_text": "How will you ensure that this child will grow well emotionally (feelings)?"
-    },
-    {
       "id": "dev_stage_think",
+      "topic": "child_dev",
       "question_type": "text_input_long",
       "question_text": "How will you ensure that this child will grow well cognitively (thinking)?"
     },
     {
+      "id": "dev_stage_feel",
+      "topic": "child_dev",
+      "question_type": "text_input_long",
+      "question_text": "How will you ensure that this child will grow well emotionally (feelings)?"
+    },
+    {
       "id": "dev_stage_social",
+      "topic": "child_dev",
       "question_type": "text_input_long",
       "question_text": "How will you ensure that this child will grow well socially (social awareness)?"
     },
     {
+      "id": "often_see",
+      "topic": "parent_childhood",
+      "question_type": "select_one",
+      "question_text": "Do you often see men in your community doing the things Ssemakula does with his wife and family?",
+      "option_1_text": "Yes",
+      "option_2_text": "No"
+    },
+    {
+      "id": "learn_new",
+      "topic": "parent_childhood",
+      "question_type": "select_one",
+      "question_text": "Have you learnt anything new from the story?",
+      "option_1_text": "Yes",
+      "option_2_text": "No"
+    },
+    {
       "id": "sharing_care_who",
+      "topic": "sharing_care",
       "question_type": "select_one",
       "question_text": "Who spends more time in a day doing activities that relate directly to child upbringing?",
       "option_1_text": "Women",
@@ -135,38 +153,130 @@
     },
     {
       "id": "sharing_care_relations",
+      "topic": "sharing_care",
       "question_type": "text_input_long",
       "question_text": "How does participation affect parent-child relationships?"
     },
     {
       "id": "sharing_care_obstacles",
+      "topic": "sharing_care",
       "question_type": "text_input_long",
       "question_text": "What factors contribute to men’s limited participation in child care?"
     },
     {
       "id": "sharing_care_benefits",
+      "topic": "sharing_care",
       "question_type": "text_input_long",
       "question_text": "What are the benefits of men participating in child care?"
     },
     {
       "id": "sharing_care_how",
+      "topic": "sharing_care",
       "question_type": "text_input_long",
       "question_text": "What can be done to promote more equitable distribution of labour in the households?"
     },
     {
       "id": "caregiving_man",
+      "topic": "sharing_care",
       "question_type": "text_input_long",
       "question_text": "How do you think a man can properly care for the pictures and objects that were in the woman’s box? Why?"
     },
     {
       "id": "caregiving_woman",
+      "topic": "sharing_care",
       "question_type": "text_input_long",
       "question_text": "How do you think a woman can properly care for the pictures and objects that were in the man’s box? Why?"
     },
     {
       "id": "caregiving_self",
+      "topic": "sharing_care",
       "question_type": "text_input_long",
       "question_text": "What would you change to improve your own role in taking care of your children?"
+    },
+    {
+      "id": "difference_signs",
+      "topic": "healthy_relation",
+      "question_type": "text_input_long",
+      "question_text": "What is the difference between low risk drinking and excessive drinking that leads to problems? What are the signs that one is drinking excessively?"
+    },
+    {
+      "id": "do_why",
+      "topic": "healthy_relation",
+      "question_type": "text_input_long",
+      "question_text": "Do you think men/women drink alcohol to be ‘real men’ or ‘real women’? Why?"
+    },
+    {
+      "id": "influence_how",
+      "topic": "healthy_relation",
+      "question_type": "text_input_long",
+      "question_text": "How does it influence marital violence?"
+    },
+    {
+      "id": "help_control",
+      "topic": "healthy_relation",
+      "question_type": "text_input_long",
+      "question_text": "How would you help your partner to control the problem of excessive drinking?"
+    },
+    {
+      "id": "marriage_like",
+      "topic": "healthy_relation",
+      "question_type": "text_input_long",
+      "question_text": "What do you like about marriage?"
+    },
+    {
+      "id": "marriage_don't_like",
+      "topic": "healthy_relation",
+      "question_type": "text_input_long",
+      "question_text": "What don’t you like about marriage?"
+    },
+    {
+      "id": "barrelate_differently",
+      "topic": "healthy_relation",
+      "question_type": "text_input_long",
+      "question_text": "Why did Dorotia and the lady at the barrelate differently\nwith Adome?"
+    },
+    {
+      "id": "couple_relate",
+      "topic": "healthy_relation",
+      "question_type": "text_input_long",
+      "question_text": "Why is it good or bad for married couples to relate like those\nin the story?"
+    },
+    {
+      "id": "lose_interest",
+      "topic": "healthy_relation",
+      "question_type": "text_input_long",
+      "question_text": "What would make you lose interest in intimacy with your partner?"
+    },
+    {
+      "id": "intimacy_communicate",
+      "topic": "healthy_relation",
+      "question_type": "text_input_long",
+      "question_text": "How do most married people communicate about matters of intimacy?"
+    },
+    {
+      "id": "useful_session",
+      "topic": "session_review",
+      "question_text": "Which sessions did you find most useful/interesting?"
+    },
+    {
+      "id": "useful_activity",
+      "topic": "session_review",
+      "question_text": "Activities did you find most useful/interesting?"
+    },
+    {
+      "id": "least_session",
+      "topic": "session_review",
+      "question_text": "What sessions did you find unhelpful/least useful?"
+    },
+    {
+      "id": "discuss_parenting",
+      "question_type": "text_input_long",
+      "question_text": "Why is it important for men and women to discuss parenting and spousal relationships together?"
+    },
+    {
+      "id": "helped_how",
+      "question_type": "text_input_long",
+      "question_text": "How can both men and women be helped to participate in parenting alongside each other."
     }
   ],
   "_xlsxPath": "global/data_lists/topics.xlsx"

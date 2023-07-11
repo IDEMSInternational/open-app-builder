@@ -55,7 +55,12 @@
       "id": "healthy_relation",
       "title": "Healthy marital relationships, sexuality, alcohol and communication",
       "topic_group": "parental_conflict",
-      "image_asset": "images/child_dev.png"
+      "image_asset": "images/father_mother.jpg"
+    },
+    {
+      "id": "session_review",
+      "title": "Review of the First 9 Sessions",
+      "image_asset": "images/family_time_playing_reading.jpg"
     },
     {
       "id": "discipline",

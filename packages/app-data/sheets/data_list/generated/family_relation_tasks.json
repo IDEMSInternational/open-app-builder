@@ -36,20 +36,20 @@
       "completed": "@fields.task_family_relation_reflect_completed"
     },
     {
-      "id": "family_relation_story",
+      "id": "family_relation_tips_1",
       "priority": 12,
-      "data_list_name": "story",
+      "data_list_name": "tips",
       "row_id": "rel_vacuum",
-      "completed_field": "task_family_relation_story_completed",
-      "completed": "@fields.task_family_relation_story_completed"
+      "completed_field": "task_family_relation_tips_1_completed",
+      "completed": "@fields.task_family_relation_tips_1_completed"
     },
     {
-      "id": "family_relation_tips",
+      "id": "family_relation_tips_2",
       "priority": 13,
       "data_list_name": "tips",
       "row_id": "grow_relation",
-      "completed_field": "task_family_relation_tips_completed",
-      "completed": "@fields.task_family_relation_tips_completed"
+      "completed_field": "task_family_relation_tips_2_completed",
+      "completed": "@fields.task_family_relation_tips_2_completed"
     },
     {
       "id": "family_relation_set_hp",

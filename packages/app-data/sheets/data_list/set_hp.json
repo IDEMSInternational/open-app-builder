@@ -13,7 +13,7 @@
     {
       "id": "current_pract",
       "topic": "current_pract",
-      "text": "* Discuss with your partner and other members of the family the importance of parenting measures as discussed in this session.\n* Practice parenting measures you were not doing before with your children during the week.",
+      "text": "* Discuss with your partner and other family members the importance of having a defined parenting approach- refer back to the session.\n* Practice parenting measures you were not doing before with your children during the week.",
       "title": "Home practice: @data.topic.current_pract.title",
       "intro_text": "Time to try this at home with your family."
     },
@@ -29,6 +29,13 @@
       "topic": "parent_childhood",
       "text": "* Reflect on the positive things you remember from your childhood relationship with your father/mother/caregiver.\n* Practice one of these things with your children or family.",
       "title": "Home practice: @data.topic.parent_childhood.title",
+      "intro_text": "Time to try this at home with your family."
+    },
+    {
+      "id": "healthy_relation",
+      "topic": "healthy_relation",
+      "text": "* As you end this session, reflect on the things you like and those you do not like about your marriage or family life.",
+      "title": "Home practice: @data.topic.healthy_relation.title",
       "intro_text": "Time to try this at home with your family."
     }
   ],

@@ -5,80 +5,21 @@
   "rows": [
     {
       "id": "future_now",
+      "topic": "family_relation",
       "title": "50 years and 3 months",
-      "audio_transcript": "Take a minute to think about what you would do if you had 50 or more years to live and note them down on a piece of paper. Take time to reflect on what you have written down. Are these the most important relationships in your life? \n\nAnd what would you do if you had only 3 months left?",
-      "intro_text": "Let's imagine the following situation."
+      "intro_text": "* This activity is meant to help you to reflect on the importance of family relationships.\n* This activity is supposed to trigger your desire to strengthen family bonds, especially spouses and children.",
+      "audio_transcript": "Take a minute to think about what you would do if you had 50 or more years to live and note them down on a piece of paper. Take time to reflect on what you have written down. Are these the most important relationships in your life? \n\nAnd what would you do if you had only 3 months left?"
     },
     {
       "id": "child_20",
-      "title": "Your child as a 20-year-old",
+      "topic": "current_pract",
       "audio_transcript": "Close your eyes and imagine the following: Your child or grandchild is grown up. You are about to celebrate his/her 20th birthday. Imagine what he or she will look like at that age. What kind of person do you hope he/she will be? What kind of relationship will you have with your child?",
-      "intro_text": "Let's imagine the following situation."
-    },
-    {
-      "id": "caregiver_legacy",
-      "title": "My Father/Mother’s Legacy",
-      "audio_transcript": "* What positive childhood things do you remember in your relationship with your father/mother/caregiver?\n* What negative  childhood things do you remember in your relationship with your father/mother/caregiver?\n* What is the one thing about your father/mother/caregiver that you want to take into your relationship with your children?\n* What is the one thing about your father/mother/caregiver that you do not want to repeat with your children?",
-      "intro_text": "Let's imagine the following situation."
-    },
-    {
-      "id": "managing_behavior_questions",
-      "audio_transcript": "* What does Sarah do to get attention from the mother? Does it work?\n* Why is it important for Sarah to get the mother’s attention?\n* What behavior is the mother rewarding by responding to the needs of Sarah’s brother?\n* Why might it be a problem to say “I will tell your father”?\n* What would be a better way to respond?",
       "title": "Reflection",
       "intro_text": "Let's imagine the following situation."
-    },
-    {
-      "id": "managing_behavior_tips",
-      "audio_transcript": "* Humbly, Sarah was trying to get her brother to play with her.\n* Instead of the mother encouraging them to enjoy the play together, she made it worse by shouting at her daughter Sarah. This is common in our everyday lives.\n* As parents, we tend to favor the young ones at the expense of the older ones.\n* The mother needed to resolve the problem between the two siblings instead of referring the issue to their father.\n* She needed to help the children to play together happily",
-      "title": "Reflection",
-      "intro_text": "Let's imagine the following situation."
-    },
-    {
-      "id": "setting_limits_questions",
-      "topic": "positive_parenting",
-      "audio_transcript": "* How does the mother communicate to the child about house rules?\n* How does the mother talk to the child to make sure that he is really listening?\n* Is the house rule connected to a specific behavior?\n* What does the mother do to support the child when he follows the house rule?",
-      "title": "Reflection",
-      "intro_text": "Let's imagine the following situation."
-    },
-    {
-      "id": "setting_limits_tips",
-      "topic": "positive_parenting",
-      "audio_transcript": "Notice:\n* The mother sits with the child at the same level and communicates the limit. It’s a respectful position where both people are ready to listen.\n* The limit should be for a specific behaviour to ensure that Sam abides to the limit. A watch is provided so that they can refer to it.\n* Just like the mother, we need to appreciate the children when they follow family rules and limits to encourage them to keep following them.",
-      "title": "Reflection",
-      "intro_text": "Let's imagine the following situation."
-    },
-    {
-      "id": "parenting_style_strict",
-      "title": "Strict/Authoritarian",
-      "intro_text": "Strict parenting has its benefits and also effects.",
-      "audio_transcript": "Strict parenting has the following benefits and effects:\n* Obedient in the presence of adults\n* Do well in school\nIts effects include:\n* Unhappy and fearful\n* Low self esteem\n* Problems relating with people\n* Cannot cope with frustration"
-    },
-    {
-      "id": "parenting_style_firm",
-      "title": "Firm/Authoritative Parenting",
-      "image_1": "images/firm_parenting_1.jpg",
-      "image_2": "images/firm_parenting_2.jpg",
-      "intro_text": "Firm/Authoritative parenting has its benefits and also effects.",
-      "audio_transcript": "Firm/Authoritative parenting has the following benefits and effects:\n* Behave well\n* Do well in school\n* Lively and feel secure\n* Self-confident\n* Able to control their emotions\n* Can relate with other people in the home and outside children's right to expression is not respected\n* Sometimes children can be misunderstood as being proud\n* They can be vulnerable to abuse if they go to an environment where children's right to expression is not respected."
-    },
-    {
-      "id": "parenting_style_permissive",
-      "title": "Permissive parenting",
-      "image_1": "images/permissive_parenting_1.jpg",
-      "image_2": "images/permissive_parenting_2.jpg",
-      "intro_text": "Permissive parenting has its benefits and also effects.",
-      "audio_transcript": "Permissive parenting has the following benefits and also effects:\n* More resourceful than kids raised by uninvolved or strict parents.\n* Cannot control their emotions\n* Often rebellious likely to have problems with authorities\n* Tend to have problems at school"
-    },
-    {
-      "id": "parenting_style_uninvolved",
-      "title": "Indifferent/uninvolved caregiver",
-      "image_1": "images/non_involved_parenting_1.jpg",
-      "image_2": "images/images/non_involved_parenting_2.jpg",
-      "intro_text": "Indifferent/uninvolved caregiver has its benefits and also effects.",
-      "audio_transcript": "Indifferent/uninvolved caregiver has the following benefits and also effects.\n* Survive on their own but can be dangerous\n* Unhappy\n* Have problems controlling themselves\n* Have low self-esteem\n* Lack confidence\n* Have problems at school"
     },
     {
       "id": "child_need",
+      "topic": "child_dev",
       "title": "Child's Needs",
       "intro_text": "What does your child want from you to grow up well?",
       "audio_transcript": "What does your child want (at different stages of life) from you to grow up well?\nWell, children do not develop in isolation but need an environment where their rights are respected.",
@@ -89,24 +30,56 @@
     },
     {
       "id": "interactive_play_distracted",
+      "topic": "child_dev",
       "intro_text": "If you were David’s mother, what would you do?",
       "audio_transcript": "If you were David’s mother, what would you do to:\n*  Make him happy again? \n* Give him attention?\n* Avoid this happening again?",
       "title": "Reflection"
     },
     {
       "id": "interactive_play_control",
+      "topic": "child_dev",
       "audio_transcript": "* What do you think of Birungi’s father’s actions?\n* What could he have done differently?",
       "title": "Reflection",
       "intro_text": "Let's imagine the following situation."
     },
     {
+      "id": "caregiver_legacy_1",
+      "topic": "parent_childhood",
+      "audio_transcript": "* What positive and negative childhood things do you remember in your relationship with your father/mother/caregiver?",
+      "title": "Reflection",
+      "intro_text": "Let's imagine the following situation."
+    },
+    {
+      "id": "caregiver_legacy_2",
+      "topic": "parent_childhood",
+      "audio_transcript": "* What is the one thing about your father/mother/caregiver that you would want to avoid or take into your relationship with your children?",
+      "title": "Reflection",
+      "intro_text": "Let's imagine the following situation."
+    },
+    {
+      "id": "managing_behavior",
+      "topic": "positive_parenting",
+      "audio_transcript": "* What does Sarah do to get attention from the mother? Does it work?\n* Why is it important for Sarah to get the mother’s attention?\n* What behavior is the mother rewarding by responding to the needs of Sarah’s brother?\n* Why might it be a problem to say “I will tell your father”?\n* What would be a better way to respond?",
+      "title": "Reflection",
+      "intro_text": "Let's imagine the following situation."
+    },
+    {
+      "id": "setting_limits",
+      "topic": "positive_parenting",
+      "audio_transcript": "* How does the mother communicate to the child about house rules?\n* How does the mother talk to the child to make sure that he is really listening?\n* Is the house rule connected to a specific behavior?\n* What does the mother do to support the child when he follows the house rule?",
+      "title": "Reflection",
+      "intro_text": "Let's imagine the following situation."
+    },
+    {
       "id": "gender_stereotypes",
+      "topic": "gender_power",
       "title": "Understanding gender stereotypes",
       "intro_text": "Let's reflect upon how gender norms can be harmful to both women and men or girls and boys.",
       "audio_transcript": "* What comes to mind when you hear the words “being a man”? Is it being “father”, “decision maker”, “breadwinner”, “provider”, “strong”, “courageous”, “violent”, “leader”\n* What comes to mind when you hear the words “being a woman”? Is it being “mother”, “weak”, “carer”, “beard”, “penis”, “breasts”, “pregnancy”, and “birth”)"
     },
     {
       "id": "gender_stereotypes_1",
+      "topic": "gender_power",
       "title": "Understanding gender stereotypes",
       "intro_text": "",
       "audio_transcript": "* What things do men do that are considered to be for women?\n* What things do women do that are considered to be for men?\n* What attributes can a woman take to make her a better wife and mother?\n* What attributes can a man take to make her a better husband and father?\n* What have you learned from this activity?"
@@ -120,12 +93,14 @@
     },
     {
       "id": "sharing_care",
+      "topic": "sharing_care",
       "title": "Caregiving and fatherhood/motherhood",
       "intro_text": "Let’s reflect on the time men and women dedicate to caring for their children and shaping their future.",
       "audio_transcript": "* Think of all typical household duties that take place on a daily basis and are usually performed by women, men and both relating to child care. \n* Write them on a piece of paper separately until they are exhausted.\n* Count the number of activities that women, men or both sexes normally do."
     },
     {
       "id": "caregiving",
+      "topic": "sharing_care",
       "audio_transcript": "Imagine having the following items, two empty boxes, household items such as a radio, phone, plates, baby\noil, clothes, hoe, electronic items, and baby toys.\n* Drop in the woman’s box pictures and/or objects of things that women care for, better.\n* In the man’s box drop pictures and/or objects of things that men care for, better.",
       "title": "Reflection",
       "intro_text": "Let's imagine the following situation."

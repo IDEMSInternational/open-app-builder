@@ -28,13 +28,13 @@
       "row_id": "future_now"
     },
     {
-      "id": "family_relation_story",
+      "id": "family_relation_tips_1",
       "priority": 12,
-      "data_list_name": "story",
+      "data_list_name": "tips",
       "row_id": "rel_vacuum"
     },
     {
-      "id": "family_relation_tips",
+      "id": "family_relation_tips_2",
       "priority": 13,
       "data_list_name": "tips",
       "row_id": "grow_relation"

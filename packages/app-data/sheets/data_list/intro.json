@@ -68,6 +68,29 @@
       "text": "We will:\n* Reflect on the time men and women dedicated to caring for and shaping their future.\n* Identify how men and women can be more involved in family life\n* Promote reflection and increase awareness about gender differences in terms of caregiving and caring relationships.\n* Improve men’s self–confidence and efficacy in caregiving.",
       "image_asset": "images/father_soothing_baby.jpg",
       "title": "Introduction to @data.topic.sharing_care.title"
+    },
+    {
+      "id": "healthy_relation",
+      "topic": "healthy_relation",
+      "intro_text": "Welcome @fields.user_name. We will learn about parental conflict.",
+      "text": "In this session we will learn about:\n* How excessive drinking affects family relationships and children.\n* How to help a partner reduce alcohol consumption and other socially unacceptable behavior.\n* Discuss what constitutes a healthy marriage and sexuality and the importance of healthy communication in marriage.\n* Importance of father’s supportiveness during pregnancy and after birth.",
+      "image_asset": "images/father_mother.jpg",
+      "title": "Introduction to @data.topic.healthy_relation.title"
+    },
+    {
+      "id": "session_review",
+      "topic": "session_review",
+      "intro_text": "Welcome @fields.user_name. PfR is here to support parents, raise well-behaved children, and be respectful parents.",
+      "text": "Thank you for participating in the first nine sessions of the PfR program.\n\nIn this session, we will:\n* Reflect on all the previous sessions",
+      "image_asset": "images/family_time_playing_reading.jpg",
+      "title": "Introduction to @data.topic.session_review.title"
+    },
+    {
+      "id": "discipline",
+      "topic": "discipline",
+      "intro_text": "Welcome @fields.user_name. We will learn respectability and good behavior",
+      "text": "In this session we will learn about:\n* The aspects of parent-child relationships\n* Alternative and positive ways of supporting good behavior and discouraging bad behavior\n* Effective approaches for managing anger and disappointment\n* How to positively and sensitively engage with our children to promote respect",
+      "title": "Introduction to @data.topic.discipline.title"
     }
   ],
   "_xlsxPath": "global/data_lists/topics.xlsx"

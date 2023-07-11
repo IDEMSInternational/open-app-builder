@@ -1,0 +1,29 @@
+{
+  "flow_type": "data_list",
+  "flow_name": "topic_block_type",
+  "status": "released",
+  "rows": [
+    {
+      "id": "intro"
+    },
+    {
+      "id": "story"
+    },
+    {
+      "id": "reflect"
+    },
+    {
+      "id": "quiz"
+    },
+    {
+      "id": "tips"
+    },
+    {
+      "id": "set_hp"
+    },
+    {
+      "id": "review_hp"
+    }
+  ],
+  "_xlsxPath": "global/data_lists/topics.xlsx"
+}

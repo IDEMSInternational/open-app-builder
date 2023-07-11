@@ -1,0 +1,55 @@
+{
+  "flow_name": "gender_power_tasks",
+  "flow_subtype": "generated",
+  "flow_type": "data_list",
+  "rows": [
+    {
+      "id": "gender_power_check_in",
+      "priority": 1,
+      "data_list_name": "check_in",
+      "row_id": "id_1",
+      "completed_field": "task_gender_power_check_in_completed",
+      "completed": "@fields.task_gender_power_check_in_completed"
+    },
+    {
+      "id": "gender_power_relax",
+      "priority": 2,
+      "data_list_name": "relax",
+      "row_id": "id_1",
+      "completed_field": "task_gender_power_relax_completed",
+      "completed": "@fields.task_gender_power_relax_completed"
+    },
+    {
+      "id": "gender_power_review_hp",
+      "priority": 3,
+      "data_list_name": "review_hp",
+      "row_id": "positive_parenting",
+      "completed_field": "task_gender_power_review_hp_completed",
+      "completed": "@fields.task_gender_power_review_hp_completed"
+    },
+    {
+      "id": "gender_power_intro",
+      "priority": 4,
+      "data_list_name": "intro",
+      "row_id": "gender_power",
+      "completed_field": "task_gender_power_intro_completed",
+      "completed": "@fields.task_gender_power_intro_completed"
+    },
+    {
+      "id": "gender_power_set_hp",
+      "priority": 17,
+      "data_list_name": "set_hp",
+      "row_id": "gender_power",
+      "completed_field": "task_gender_power_set_hp_completed",
+      "completed": "@fields.task_gender_power_set_hp_completed"
+    },
+    {
+      "id": "gender_power_praise",
+      "priority": 18,
+      "data_list_name": "praise",
+      "row_id": "gender_power",
+      "completed_field": "task_gender_power_praise_completed",
+      "completed": "@fields.task_gender_power_praise_completed"
+    }
+  ]
+}
