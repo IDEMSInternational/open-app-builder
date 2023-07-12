@@ -38,21 +38,13 @@
       ],
       "rows": [
         {
-          "name": "session_data_list_name",
-          "value": [
-            "sharing_care"
-          ],
-          "type": "set_variable",
-          "_nested_name": "review_hp.session_data_list_name"
-        },
-        {
-          "name": "session_task_id",
-          "value": "sharing_care_review_hp",
+          "name": "id",
+          "value": "impact_conflict",
           "_translations": {
             "value": {}
           },
           "type": "set_variable",
-          "_nested_name": "review_hp.session_task_id"
+          "_nested_name": "review_hp.id"
         }
       ],
       "_nested_name": "review_hp"

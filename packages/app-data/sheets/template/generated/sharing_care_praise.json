@@ -38,21 +38,13 @@
       ],
       "rows": [
         {
-          "name": "session_data_list_name",
-          "value": [
-            "sharing_care"
-          ],
-          "type": "set_variable",
-          "_nested_name": "praise.session_data_list_name"
-        },
-        {
-          "name": "session_task_id",
-          "value": "sharing_care_praise",
+          "name": "id",
+          "value": "sharing_care",
           "_translations": {
             "value": {}
           },
           "type": "set_variable",
-          "_nested_name": "praise.session_task_id"
+          "_nested_name": "praise.id"
         }
       ],
       "_nested_name": "praise"

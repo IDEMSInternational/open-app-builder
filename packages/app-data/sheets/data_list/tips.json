@@ -38,7 +38,7 @@
       "text_4": "As caregivers, we need to pay attention to the needs of our children. It is important to try and live like you have '3 months' left in order to raise children whose behaviour earns the family respect."
     },
     {
-      "id": "child_needs_dev",
+      "id": "child_dev_needs",
       "topic": "child_dev",
       "title": "Needs of children in different developmental stages",
       "intro_text": "Here are a few suggestions on how you can ensure you child grows in specific developmental stages:",
@@ -52,7 +52,7 @@
       "text_4": "* Positive role models\n* Positive and consistent discipline in a loving context (praising good behavior, explaining why bad behavior is wrong, giving positive remarks by name)."
     },
     {
-      "id": "child_dev_needs",
+      "id": "dev_take_away",
       "topic": "child_dev",
       "title": "Take away",
       "text_1": "As a parent, note that by focusing on growing only one or two areas of a child’s development could affect their wellbeing.",
@@ -63,7 +63,6 @@
       "topic": "child_dev",
       "title": "Child's Needs",
       "intro_text": "What your child wants from you to grow up well at different stages of life.",
-      "outro_text": "Children do not develop in isolation but rather in an environment where their rights are respected.",
       "title_1": "0-5 years",
       "text_1": "* Hugs and kisses\n* Smiles and playtime\n* Regulation of behavior & consistency\n* Rules to keep children safe\n* Answer their questions\n* Love and nurturing\n* Eye contact & attention",
       "title_2": "6-9 years",
@@ -71,7 +70,8 @@
       "title_3": "10-12 years",
       "text_3": "* Support and Guidance\n* Establish a routine and teach what is expected of children \n* Approval and encouragement\n* Maintain clear rules and limits\n* Teach beliefs & responsibility",
       "title_4": "13-17 years",
-      "text_4": "* Debates and discussions\n* Mentoring and direction\n* Guidelines, but no rules to\nenable decision-making & learning from their mistakes \n* Respect & parents’ support toward independence"
+      "text_4": "* Debates and discussions\n* Mentoring and direction\n* Guidelines, but no rules to\nenable decision-making & learning from their mistakes \n* Respect & parents’ support toward independence",
+      "outro_text": "Children do not develop in isolation but rather in an environment where their rights are respected."
     },
     {
       "id": "parents_attitude",
@@ -121,7 +121,8 @@
     {
       "id": "setting_limits",
       "topic": "positive_parenting",
-      "title": "Setting  limits",
+      "title": "Limits",
+      "intro_text": "What do we mean by limits?",
       "text_1": "Limits are rules (a rule that does not oppress both the child and the parent and is respectful).",
       "text_2": "Limits refer to the establishment of boundaries beyond which a certain thing may not be done.",
       "text_3": "Limits are guidelines- tell children what they can and cannot do."
@@ -131,12 +132,12 @@
       "topic": "positive_parenting",
       "title": "Importance of setting limits",
       "intro_text": "Parents set rules for children for some of the following reasons:",
-      "outro_text": "Applying these limits involves directing the children towards the desired behavior in a positive and caring way.",
       "text_1": "Provides a sense of comfort and security in the household",
       "text_2": "Teaches responsibility, and understanding of what is expected of them",
       "text_3": "Encourages discipline and listening",
       "text_4": "Ensures they behave well towards other people",
-      "text_5": "Protects children from harm"
+      "text_5": "Protects children from harm",
+      "outro_text": "Applying these limits involves directing the children towards the desired behavior in a positive and caring way."
     },
     {
       "id": "establish_limits",
@@ -150,66 +151,54 @@
       "text_6": "Praise and rewards (not necessarily monetary) can help support your child in following household rules."
     },
     {
-      "id": "parenting_styles",
-      "topic": "positive_parenting",
-      "title": "Four Kinds of Parenting",
-      "intro_text": "For parents to make use of principles on Love/connectedness & Setting limits and boundaries, we need to understand four parenting styles:",
-      "title_1": "Authoritative/Firm",
-      "text_1": "Parents who support their children but set firm limits for them. Firm parents show high levels of warmth and control. They control the children’s behavior by explaining rules, discussing and reasoning together. They listen to the children’s viewpoints but do not always accept them.",
-      "title_2": "Authoritarian/Strict",
-      "text_2": "High levels of control and demands on the child, poor relationships, and very strict commands coupled with low levels of love and care. Strict parents engage in low levels of communication with the children.",
-      "title_3": "Permissive",
-      "text_3": "Excess love and warmth, with low levels of control. Parents do not exert control over their children’s behavior or set limits and do not monitor their activities.",
-      "title_4": "Indifferent/Uninvolved",
-      "text_4": "Low control and poor relationships. Parents are not interested in their children and make few demands on them."
-    },
-    {
       "id": "parenting_style_firm",
       "topic": "positive_parenting",
-      "title": "Firm/Authoritative Parenting",
-      "image_1": "images/firm_parenting_1.jpg",
-      "image_2": "images/firm_parenting_2.jpg",
-      "intro_text": "Firm/Authoritative parenting has its benefits and also effects.",
-      "title_1": "Benefits of Authoritative parenting",
-      "text_1": "* Behave well\n* Do well in school\n* Lively and feel secure\n* Self-confident\n* Able to control their emotions\n* Can relate with other people in the home and outside children's right to expression is not respected",
-      "title_2": "Effects of Authoritative parenting",
-      "text_2": "* Sometimes children can be misunderstood as being proud\n* They can be vulnerable to abuse if they go to an environment where children's right to expression is not respected."
+      "title_1": "Authoritative/Firm",
+      "text_1": "Parents who support their children but set firm limits for them. Firm parents show high levels of warmth and control. They control the children’s behavior by explaining rules, discussing and reasoning together. They listen to the children’s viewpoints but do not always accept them.",
+      "title_2": "Benefits of Authoritative parenting",
+      "text_2": "* Behave well\n* Do well in school\n* Lively and feel secure\n* Self-confident\n* Able to control their emotions\n* Can relate with other people in the home and outside children's right to expression is not respected",
+      "title_3": "Effects of Authoritative parenting",
+      "text_3": "* Sometimes children can be misunderstood as being proud\n* They can be vulnerable to abuse if they go to an environment where children's right to expression is not respected.",
+      "title": "Tips"
     },
     {
       "id": "parenting_style_strict",
       "topic": "positive_parenting",
-      "title": "Strict/Authoritarian",
-      "image_1": "images/strict_parenting_1.jpg",
-      "image_2": "images/strict_parenting_2.jpg",
-      "intro_text": "Strict parenting has its benefits and also effects.",
-      "title_1": "Benefits of Strict parenting",
-      "text_1": "* Obedient in the presence of adults\n* Do well in school",
-      "title_2": "Effects of Strict parenting",
-      "text_2": "* Unhappy and fearful\n* Low self esteem\n* Problems relating with people\n* Cannot cope with frustration"
+      "title": "Firm/Authoritative Parenting",
+      "image_1": "images/firm_parenting_1.jpg",
+      "image_2": "images/firm_parenting_2.jpg",
+      "title_1": "Authoritarian/Strict",
+      "text_1": "High levels of control and demands on the child, poor relationships, and very strict commands coupled with low levels of love and care. Strict parents engage in low levels of communication with the children.",
+      "title_2": "Benefits of Strict parenting",
+      "text_2": "* Obedient in the presence of adults\n* Do well in school",
+      "title_3": "Effects of Strict parenting",
+      "text_3": "* Unhappy and fearful\n* Low self esteem\n* Problems relating with people\n* Cannot cope with frustration"
     },
     {
       "id": "parenting_style_permissive",
       "topic": "positive_parenting",
-      "title": "Permissive parenting",
-      "image_1": "images/permissive_parenting_1.jpg",
-      "image_2": "images/permissive_parenting_2.jpg",
-      "intro_text": "Permissive parenting has its benefits and also effects.",
-      "title_1": "Benefits of Permissive parenting",
-      "text_1": "* More resourceful than kids raised by uninvolved or strict parents.",
-      "title_2": "Effects of Permissive parenting",
-      "text_2": "* Cannot control their emotions\n* Often rebellious likely to have problems with authorities\n* Tend to have problems at school"
+      "title": "Strict/Authoritarian",
+      "image_1": "images/strict_parenting_1.jpg",
+      "image_2": "images/strict_parenting_2.jpg",
+      "title_1": "Permissive",
+      "text_1": "Excess love and warmth, with low levels of control. Parents do not exert control over their children’s behavior or set limits and do not monitor their activities.",
+      "title_2": "Benefits of Permissive parenting",
+      "text_2": "* More resourceful than kids raised by uninvolved or strict parents.",
+      "title_3": "Effects of Permissive parenting",
+      "text_3": "* Cannot control their emotions\n* Often rebellious likely to have problems with authorities\n* Tend to have problems at school"
     },
     {
       "id": "parenting_style_uninvolved",
       "topic": "positive_parenting",
-      "title": "Indifferent/uninvolved caregiver",
-      "image_1": "images/non_involved_parenting_1.jpg",
-      "image_2": "images/images/non_involved_parenting_2.jpg",
-      "intro_text": "Indifferent/uninvolved caregiver has its benefits and also effects.",
-      "title_1": "Benefits of Uninvolved caregiver",
-      "text_1": "* Survive on their own but can be dangerous",
-      "title_2": "Effects of Uninvolved caregiver",
-      "text_2": "* Unhappy\n* Have problems controlling themselves\n* Have low self-esteem\n* Lack confidence\n* Have problems at school"
+      "title": "Permissive parenting",
+      "image_1": "images/permissive_parenting_1.jpg",
+      "image_2": "images/permissive_parenting_2.jpg",
+      "title_1": "Indifferent/Uninvolved",
+      "text_1": "Low control and poor relationships. Parents are not interested in their children and make few demands on them.",
+      "title_2": "Benefits of Uninvolved caregiver",
+      "text_2": "* Survive on their own but can be dangerous",
+      "title_3": "Effects of Uninvolved caregiver",
+      "text_3": "* Unhappy\n* Have problems controlling themselves\n* Have low self-esteem\n* Lack confidence\n* Have problems at school"
     },
     {
       "id": "parenting_relationships",

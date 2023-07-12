@@ -14,7 +14,6 @@
       "id": "child_20",
       "topic": "current_pract",
       "audio_transcript": "Close your eyes and imagine the following: Your child or grandchild is grown up. You are about to celebrate his/her 20th birthday. Imagine what he or she will look like at that age. What kind of person do you hope he/she will be? What kind of relationship will you have with your child?",
-      "title": "Reflection",
       "intro_text": "Let's imagine the following situation."
     },
     {
@@ -32,42 +31,36 @@
       "id": "interactive_play_distracted",
       "topic": "child_dev",
       "intro_text": "If you were David’s mother, what would you do?",
-      "audio_transcript": "If you were David’s mother, what would you do to:\n*  Make him happy again? \n* Give him attention?\n* Avoid this happening again?",
-      "title": "Reflection"
+      "audio_transcript": "If you were David’s mother, what would you do to:\n*  Make him happy again? \n* Give him attention?\n* Avoid this happening again?"
     },
     {
       "id": "interactive_play_control",
       "topic": "child_dev",
       "audio_transcript": "* What do you think of Birungi’s father’s actions?\n* What could he have done differently?",
-      "title": "Reflection",
       "intro_text": "Let's imagine the following situation."
     },
     {
       "id": "caregiver_legacy_1",
       "topic": "parent_childhood",
       "audio_transcript": "* What positive and negative childhood things do you remember in your relationship with your father/mother/caregiver?",
-      "title": "Reflection",
       "intro_text": "Let's imagine the following situation."
     },
     {
       "id": "caregiver_legacy_2",
       "topic": "parent_childhood",
       "audio_transcript": "* What is the one thing about your father/mother/caregiver that you would want to avoid or take into your relationship with your children?",
-      "title": "Reflection",
       "intro_text": "Let's imagine the following situation."
     },
     {
       "id": "managing_behavior",
       "topic": "positive_parenting",
       "audio_transcript": "* What does Sarah do to get attention from the mother? Does it work?\n* Why is it important for Sarah to get the mother’s attention?\n* What behavior is the mother rewarding by responding to the needs of Sarah’s brother?\n* Why might it be a problem to say “I will tell your father”?\n* What would be a better way to respond?",
-      "title": "Reflection",
       "intro_text": "Let's imagine the following situation."
     },
     {
       "id": "setting_limits",
       "topic": "positive_parenting",
       "audio_transcript": "* How does the mother communicate to the child about house rules?\n* How does the mother talk to the child to make sure that he is really listening?\n* Is the house rule connected to a specific behavior?\n* What does the mother do to support the child when he follows the house rule?",
-      "title": "Reflection",
       "intro_text": "Let's imagine the following situation."
     },
     {
@@ -88,8 +81,7 @@
       "id": "impact_conflict",
       "topic": "impact_conflict",
       "intro_text": "Follow up reflection:",
-      "audio_transcript": "* Is such a situation familiar in your community or daily lives?\n* What is the most common type of violence practiced against women? Against men? Against children?\n* Is there a relationship between power and violence?\n* What are the consequences of conflict/violence to women? To the Children? To the Men? To the Family?\n* What are some examples of healthy spousal and family relationships?\n* How can we make our own relationships less violent?",
-      "title": "Reflection"
+      "audio_transcript": "* Is such a situation familiar in your community or daily lives?\n* What is the most common type of violence practiced against women? Against men? Against children?\n* Is there a relationship between power and violence?\n* What are the consequences of conflict/violence to women? To the Children? To the Men? To the Family?\n* What are some examples of healthy spousal and family relationships?\n* How can we make our own relationships less violent?"
     },
     {
       "id": "sharing_care",
@@ -102,7 +94,6 @@
       "id": "caregiving",
       "topic": "sharing_care",
       "audio_transcript": "Imagine having the following items, two empty boxes, household items such as a radio, phone, plates, baby\noil, clothes, hoe, electronic items, and baby toys.\n* Drop in the woman’s box pictures and/or objects of things that women care for, better.\n* In the man’s box drop pictures and/or objects of things that men care for, better.",
-      "title": "Reflection",
       "intro_text": "Let's imagine the following situation."
     }
   ],

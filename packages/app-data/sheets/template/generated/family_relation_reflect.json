@@ -38,21 +38,13 @@
       ],
       "rows": [
         {
-          "name": "session_data_list_name",
-          "value": [
-            "family_relation"
-          ],
-          "type": "set_variable",
-          "_nested_name": "reflect.session_data_list_name"
-        },
-        {
-          "name": "session_task_id",
-          "value": "family_relation_reflect",
+          "name": "id",
+          "value": "future_now",
           "_translations": {
             "value": {}
           },
           "type": "set_variable",
-          "_nested_name": "reflect.session_task_id"
+          "_nested_name": "reflect.id"
         }
       ],
       "_nested_name": "reflect"

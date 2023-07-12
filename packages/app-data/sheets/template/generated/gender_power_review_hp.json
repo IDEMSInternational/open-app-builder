@@ -38,21 +38,13 @@
       ],
       "rows": [
         {
-          "name": "session_data_list_name",
-          "value": [
-            "gender_power"
-          ],
-          "type": "set_variable",
-          "_nested_name": "review_hp.session_data_list_name"
-        },
-        {
-          "name": "session_task_id",
-          "value": "gender_power_review_hp",
+          "name": "id",
+          "value": "positive_parenting",
           "_translations": {
             "value": {}
           },
           "type": "set_variable",
-          "_nested_name": "review_hp.session_task_id"
+          "_nested_name": "review_hp.id"
         }
       ],
       "_nested_name": "review_hp"

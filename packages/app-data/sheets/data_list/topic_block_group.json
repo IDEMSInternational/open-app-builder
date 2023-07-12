@@ -9,10 +9,8 @@
       "title": "Your child as a 20-year-old",
       "task_1_data": "reflect",
       "task_1_id": "child_20",
-      "task_2_data": "quiz_question",
+      "task_2_data": "quiz",
       "task_2_id": "child_20",
-      "task_3_data": "quiz",
-      "task_3_id": "current_pract",
       "outro_text": "It is important to involve both men and women in raising a child."
     },
     {
@@ -23,9 +21,9 @@
       "task_1_data": "quiz",
       "task_1_id": "dev_stage",
       "task_2_data": "tips",
-      "task_2_id": "child_needs_dev",
+      "task_2_id": "child_dev_needs",
       "task_3_data": "tips",
-      "task_3_id": "child_dev_needs"
+      "task_3_id": "dev_take_away"
     },
     {
       "id": "interactive_play_distracted",
@@ -80,18 +78,8 @@
       "task_2_id": "relation_pregnancy"
     },
     {
-      "id": "impact_conflict",
-      "topic": "impact_conflict",
-      "title": "The violence around me",
-      "intro_text": "Here are a story and an activity that will help us explore common causes of conflicts and discuss the consequences of violence on parents and children:",
-      "task_1_data": "story",
-      "task_1_id": "impact_conflict",
-      "task_2_data": "reflect",
-      "task_2_id": "impact_conflict"
-    },
-    {
       "id": "managing_behaviour",
-      "topic": "discipline",
+      "topic": "positive_parenting",
       "title": "Managing difficult behavior",
       "intro_text": "Here is a comic that illustrates a mother reinforcing behavior, followed by an activity:",
       "task_1_data": "story",
@@ -101,27 +89,50 @@
       "outro_text": "* Humbly, Sarah was trying to get her brother to play with her.\n* Instead of the mother encouraging them to enjoy the play together, she made it worse by shouting at her daughter Sarah. This is common in our everyday lives.\n* As parents, we tend to favor the young ones at the expense of the older ones.\n* The mother needed to resolve the problem between the two siblings instead of referring the issue to their father.\n* She needed to help the children to play together happily."
     },
     {
-      "id": "parenting_style",
-      "topic": "positive_parenting",
-      "task_1_data": "reflect",
-      "task_1_id": "parenting_style_strict",
-      "task_2_data": "reflect",
-      "task_2_id": "parenting_style_firm",
-      "task_3_data": "reflect",
-      "task_3_id": "parenting_style_permissive",
-      "task_4_data": "reflect",
-      "task_4_id": "parenting_style_uninvolved"
-    },
-    {
       "id": "setting_limits",
       "topic": "positive_parenting",
-      "title": "Setting limits/rules for our children",
+      "title": "Setting limits for our children",
       "intro_text": "Here is a comic illustrating a scenario of a parent setting limits for her child, and some questions:",
       "task_1_data": "story",
       "task_1_id": "setting_limits",
       "task_2_data": "reflect",
       "task_2_id": "setting_limits",
       "outro_text": "Notice:\n* The mother sits with the child at the same level and communicates the limit. It’s a respectful position where both people are ready to listen.\n* The limit should be for a specific behaviour to ensure that Sam abides to the limit. A watch is provided so that they can refer to it.\n* Just like the mother, we need to appreciate the children when they follow family rules and limits to encourage them to keep following them."
+    },
+    {
+      "id": "setting_limits_how",
+      "topic": "positive_parenting",
+      "title": "Tips on how to Set Limits for our children",
+      "task_1_data": "tips",
+      "task_1_id": "setting_limits",
+      "task_2_data": "tips",
+      "task_2_id": "limits_importance",
+      "task_3_data": "tips",
+      "task_3_id": "establish_limits"
+    },
+    {
+      "id": "parenting_style",
+      "topic": "positive_parenting",
+      "title": "Four Kinds of Parenting",
+      "intro_text": "For parents to make use of principles on Love/connectedness & Setting limits and boundaries, we need to understand four parenting styles:",
+      "task_1_data": "tips",
+      "task_1_id": "parenting_style_firm",
+      "task_2_data": "tips",
+      "task_2_id": "parenting_style_strict",
+      "task_3_data": "tips",
+      "task_3_id": "parenting_style_permissive",
+      "task_4_data": "tips",
+      "task_4_id": "parenting_style_uninvolved"
+    },
+    {
+      "id": "impact_conflict",
+      "topic": "impact_conflict",
+      "title": "The violence around me",
+      "intro_text": "Here are a story and an activity that will help us explore common causes of conflicts and discuss the consequences of violence on parents and children:",
+      "task_1_data": "story",
+      "task_1_id": "impact_conflict",
+      "task_2_data": "reflect",
+      "task_2_id": "impact_conflict"
     },
     {
       "id": "caregiving",

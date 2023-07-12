@@ -38,21 +38,13 @@
       ],
       "rows": [
         {
-          "name": "session_data_list_name",
-          "value": [
-            "child_dev"
-          ],
-          "type": "set_variable",
-          "_nested_name": "topic_block_group.session_data_list_name"
-        },
-        {
-          "name": "session_task_id",
-          "value": "child_dev_ip_distracted",
+          "name": "id",
+          "value": "interactive_play_control",
           "_translations": {
             "value": {}
           },
           "type": "set_variable",
-          "_nested_name": "topic_block_group.session_task_id"
+          "_nested_name": "topic_block_group.id"
         }
       ],
       "_nested_name": "topic_block_group"

@@ -40,12 +40,8 @@
       ],
       "rows": [
         {
-          "name": "session_data_list_name",
-          "value": "current_pract"
-        },
-        {
-          "name": "session_task_id",
-          "value": "@gen.id"
+          "name": "id",
+          "value": "@gen.row_id"
         }
       ]
     }

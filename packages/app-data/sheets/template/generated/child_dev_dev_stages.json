@@ -1,5 +1,5 @@
 {
-  "flow_name": "child_dev_1_tips",
+  "flow_name": "child_dev_dev_stages",
   "flow_subtype": "generated",
   "flow_type": "template",
   "rows": [
@@ -14,8 +14,8 @@
     },
     {
       "type": "template",
-      "name": "tips",
-      "value": "tips",
+      "name": "topic_block_group",
+      "value": "topic_block_group",
       "action_list": [
         {
           "trigger": "completed",
@@ -38,24 +38,16 @@
       ],
       "rows": [
         {
-          "name": "session_data_list_name",
-          "value": [
-            "child_dev"
-          ],
-          "type": "set_variable",
-          "_nested_name": "tips.session_data_list_name"
-        },
-        {
-          "name": "session_task_id",
-          "value": "child_dev_1_tips",
+          "name": "id",
+          "value": "dev_stages",
           "_translations": {
             "value": {}
           },
           "type": "set_variable",
-          "_nested_name": "tips.session_task_id"
+          "_nested_name": "topic_block_group.id"
         }
       ],
-      "_nested_name": "tips"
+      "_nested_name": "topic_block_group"
     }
   ]
 }

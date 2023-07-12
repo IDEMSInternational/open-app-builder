@@ -38,21 +38,13 @@
       ],
       "rows": [
         {
-          "name": "session_data_list_name",
-          "value": [
-            "child_dev"
-          ],
-          "type": "set_variable",
-          "_nested_name": "tips.session_data_list_name"
-        },
-        {
-          "name": "session_task_id",
-          "value": "child_dev_tips",
+          "name": "id",
+          "value": "child_needs",
           "_translations": {
             "value": {}
           },
           "type": "set_variable",
-          "_nested_name": "tips.session_task_id"
+          "_nested_name": "tips.id"
         }
       ],
       "_nested_name": "tips"

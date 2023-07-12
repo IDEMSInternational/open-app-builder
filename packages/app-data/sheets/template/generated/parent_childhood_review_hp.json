@@ -38,21 +38,13 @@
       ],
       "rows": [
         {
-          "name": "session_data_list_name",
-          "value": [
-            "parent_childhood"
-          ],
-          "type": "set_variable",
-          "_nested_name": "review_hp.session_data_list_name"
-        },
-        {
-          "name": "session_task_id",
-          "value": "parent_childhood_review_hp",
+          "name": "id",
+          "value": "child_dev",
           "_translations": {
             "value": {}
           },
           "type": "set_variable",
-          "_nested_name": "review_hp.session_task_id"
+          "_nested_name": "review_hp.id"
         }
       ],
       "_nested_name": "review_hp"

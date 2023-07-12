@@ -4,13 +4,26 @@
   "status": "released",
   "rows": [
     {
-      "id": "current_pract",
+      "id": "child_20",
+      "topic": "current_pract",
+      "question_1_id": "child_20",
+      "title": "Quiz",
+      "intro_text": "Let's do a reflection."
+    },
+    {
+      "id": "picture_quiz",
       "topic": "current_pract",
       "title": "Picture quiz",
       "intro_text": "Let's look at some images.",
       "question_1_id": "playing_what",
-      "question_2_id": "feeding_what",
-      "question_3_id": "reading_what"
+      "question_2_id": "playing_ease",
+      "question_3_id": "playing_why",
+      "question_4_id": "feeding_what",
+      "question_5_id": "feeding_ease",
+      "question_6_id": "feeding_why",
+      "question_7_id": "reading_what",
+      "question_8_id": "reading_ease",
+      "question_9_id": "reading_why"
     },
     {
       "id": "dev_stage",
@@ -62,7 +75,7 @@
       "question_3_id": "barrelate_differently",
       "question_4_id": "couple_relate",
       "question_5_id": "lose_interest",
-      "question_5_id_1": "intimacy_communicate",
+      "question_6_id": "intimacy_communicate",
       "title": "Quiz",
       "intro_text": "Let's do a reflection."
     },

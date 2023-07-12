@@ -386,43 +386,18 @@
       "flow_name": "footer",
       "_xlsxPath": "global/templates/navigation_templates.xlsx"
     },
-    "child_dev_1_quiz": {
-      "flow_name": "child_dev_1_quiz",
-      "flow_subtype": "generated",
-      "flow_type": "template"
-    },
-    "child_dev_1_reflect": {
-      "flow_name": "child_dev_1_reflect",
-      "flow_subtype": "generated",
-      "flow_type": "template"
-    },
-    "child_dev_1_tips": {
-      "flow_name": "child_dev_1_tips",
-      "flow_subtype": "generated",
-      "flow_type": "template"
-    },
-    "child_dev_2_story": {
-      "flow_name": "child_dev_2_story",
-      "flow_subtype": "generated",
-      "flow_type": "template"
-    },
-    "child_dev_2_tips": {
-      "flow_name": "child_dev_2_tips",
-      "flow_subtype": "generated",
-      "flow_type": "template"
-    },
     "child_dev_3_tips": {
       "flow_name": "child_dev_3_tips",
       "flow_subtype": "generated",
       "flow_type": "template"
     },
-    "child_dev_4_tips": {
-      "flow_name": "child_dev_4_tips",
+    "child_dev_check_in": {
+      "flow_name": "child_dev_check_in",
       "flow_subtype": "generated",
       "flow_type": "template"
     },
-    "child_dev_check_in": {
-      "flow_name": "child_dev_check_in",
+    "child_dev_dev_stages": {
+      "flow_name": "child_dev_dev_stages",
       "flow_subtype": "generated",
       "flow_type": "template"
     },
@@ -438,16 +413,6 @@
     },
     "child_dev_praise": {
       "flow_name": "child_dev_praise",
-      "flow_subtype": "generated",
-      "flow_type": "template"
-    },
-    "child_dev_quiz": {
-      "flow_name": "child_dev_quiz",
-      "flow_subtype": "generated",
-      "flow_type": "template"
-    },
-    "child_dev_reflect": {
-      "flow_name": "child_dev_reflect",
       "flow_subtype": "generated",
       "flow_type": "template"
     },
@@ -486,11 +451,6 @@
       "flow_subtype": "generated",
       "flow_type": "template"
     },
-    "current_pract_reflect": {
-      "flow_name": "current_pract_reflect",
-      "flow_subtype": "generated",
-      "flow_type": "template"
-    },
     "current_pract_relax": {
       "flow_name": "current_pract_relax",
       "flow_subtype": "generated",
@@ -506,13 +466,18 @@
       "flow_subtype": "generated",
       "flow_type": "template"
     },
-    "current_pract_story": {
-      "flow_name": "current_pract_story",
+    "current_pract_tbg": {
+      "flow_name": "current_pract_tbg",
       "flow_subtype": "generated",
       "flow_type": "template"
     },
-    "current_pract_tips": {
-      "flow_name": "current_pract_tips",
+    "current_pract_tips_1": {
+      "flow_name": "current_pract_tips_1",
+      "flow_subtype": "generated",
+      "flow_type": "template"
+    },
+    "current_pract_tips_2": {
+      "flow_name": "current_pract_tips_2",
       "flow_subtype": "generated",
       "flow_type": "template"
     },
@@ -809,6 +774,11 @@
     "quiz": {
       "flow_type": "template",
       "flow_name": "quiz",
+      "_xlsxPath": "global/templates/blocks/topic_blocks.xlsx"
+    },
+    "quiz_question": {
+      "flow_type": "template",
+      "flow_name": "quiz_question",
       "_xlsxPath": "global/templates/blocks/topic_blocks.xlsx"
     },
     "reflect": {

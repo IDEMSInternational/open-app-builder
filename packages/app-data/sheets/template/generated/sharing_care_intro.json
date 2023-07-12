@@ -38,21 +38,13 @@
       ],
       "rows": [
         {
-          "name": "session_data_list_name",
-          "value": [
-            "sharing_care"
-          ],
-          "type": "set_variable",
-          "_nested_name": "intro.session_data_list_name"
-        },
-        {
-          "name": "session_task_id",
-          "value": "sharing_care_intro",
+          "name": "id",
+          "value": "sharing_care",
           "_translations": {
             "value": {}
           },
           "type": "set_variable",
-          "_nested_name": "intro.session_task_id"
+          "_nested_name": "intro.id"
         }
       ],
       "_nested_name": "intro"

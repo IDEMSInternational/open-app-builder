@@ -38,21 +38,13 @@
       ],
       "rows": [
         {
-          "name": "session_data_list_name",
-          "value": [
-            "current_pract"
-          ],
-          "type": "set_variable",
-          "_nested_name": "relax.session_data_list_name"
-        },
-        {
-          "name": "session_task_id",
-          "value": "current_pract_relax",
+          "name": "id",
+          "value": "id_1",
           "_translations": {
             "value": {}
           },
           "type": "set_variable",
-          "_nested_name": "relax.session_task_id"
+          "_nested_name": "relax.id"
         }
       ],
       "_nested_name": "relax"

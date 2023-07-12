@@ -46,14 +46,14 @@
       "id": "parent_childhood",
       "topic": "parent_childhood",
       "question_done": "Did you get a chance to practice one positive thing from your childhood to improve your relationship with your children?",
+      "feedback_no": "Regularly taking initiative to do a positive practice to your child will help build a positive relationship with him/her. You can always refer back to this home practise activity in our session 4 on Attachment and Bonding - Influence of one’s own parents and positive discipline techniques",
+      "feedback_happy": "Good job on integrating a positive practice from your childhood to improve the relationship with your child. We have a deep and long-lasting impact on our children’s lives. These legacies may be positive or negative and are passed on intentionally or unintentionally.",
+      "outro_text": "Continue practicing positive things from your childhood with your child. This will strengthen the relationship you have with your child.",
       "title": "Review your home practice: @data.topic.parent_childhood.title",
       "intro_text": "Your home practice for this week was to:\n@data.set_hp.parent_childhood.text",
-      "feedback_no": "That is okay, do not be too hard on yourself. We encourage you to try and do it when you can.",
       "question_how": "How did your home practice go?",
-      "feedback_happy": "Great to hear it went well. You are a star!",
       "feedback_okay": "Every small step counts. Keep up the good work!",
-      "feedback_sad": "Sorry to hear it was difficult for you. Well done for trying!",
-      "outro_text": "Encouragement to continue doing the home practice."
+      "feedback_sad": "Sorry to hear it was difficult for you. Well done for trying!"
     },
     {
       "id": "positive_parenting",

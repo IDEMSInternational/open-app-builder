@@ -38,21 +38,13 @@
       ],
       "rows": [
         {
-          "name": "session_data_list_name",
-          "value": [
-            "parent_childhood"
-          ],
-          "type": "set_variable",
-          "_nested_name": "praise.session_data_list_name"
-        },
-        {
-          "name": "session_task_id",
-          "value": "parent_childhood_praise",
+          "name": "id",
+          "value": "parent_childhood",
           "_translations": {
             "value": {}
           },
           "type": "set_variable",
-          "_nested_name": "praise.session_task_id"
+          "_nested_name": "praise.id"
         }
       ],
       "_nested_name": "praise"

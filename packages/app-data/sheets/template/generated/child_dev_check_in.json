@@ -38,21 +38,13 @@
       ],
       "rows": [
         {
-          "name": "session_data_list_name",
-          "value": [
-            "child_dev"
-          ],
-          "type": "set_variable",
-          "_nested_name": "check_in.session_data_list_name"
-        },
-        {
-          "name": "session_task_id",
-          "value": "child_dev_check_in",
+          "name": "id",
+          "value": "id_1",
           "_translations": {
             "value": {}
           },
           "type": "set_variable",
-          "_nested_name": "check_in.session_task_id"
+          "_nested_name": "check_in.id"
         }
       ],
       "_nested_name": "check_in"

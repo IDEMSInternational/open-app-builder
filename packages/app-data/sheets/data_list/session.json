@@ -9,7 +9,7 @@
       "title": "Welcome to Parenting for Respectibility",
       "gender_split": true,
       "session_type": "onboarding",
-      "image_asset": "images/current_pract_picture_quiz_3.png",
+      "image_asset": "images/family.jpg",
       "goal_1": "Introductions, explore expectations, set ground rules and discuss roles of the facilitator."
     },
     {
@@ -121,7 +121,7 @@
       "title": "Review",
       "gender_split": false,
       "session_type": "review",
-      "image_asset": "images/current_pract_picture_quiz_1.png",
+      "image_asset": "images/family.jpg",
       "goal_1": "To reflect on all single sex sessions and plan for the mixed sex sessions.",
       "manual_pdf_asset": "pdf/facilitator_manual/10_review_pfr_manual_2021.pdf"
     },

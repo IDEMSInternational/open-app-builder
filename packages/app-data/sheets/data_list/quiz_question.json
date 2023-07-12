@@ -21,8 +21,7 @@
       "question_type": "select_one",
       "question_text": "What is happening this image?",
       "option_1_text": "The child is holding a toy",
-      "option_2_text": "The parent is watching the child",
-      "feedback_all_next_question_id": "playing_ease"
+      "option_2_text": "The parent is watching the child"
     },
     {
       "id": "playing_ease",
@@ -30,9 +29,8 @@
       "question_type": "select_one",
       "question_text": "For me this practice is...",
       "option_1_text": "Easy to do",
-      "option_2_text": "",
-      "option_3_text": "Not done",
-      "feedback_all_next_question_id": "playing_why"
+      "option_2_text": "Difficult to do",
+      "option_3_text": "Not done"
     },
     {
       "id": "playing_why",
@@ -46,8 +44,7 @@
       "question_type": "select_one",
       "question_text": "What is happening this image?",
       "option_1_text": "The child is eating a meal",
-      "option_2_text": "The parent is feeding the child",
-      "feedback_all_next_question_id": "feeding_ease"
+      "option_2_text": "The parent is feeding the child"
     },
     {
       "id": "feeding_ease",
@@ -56,8 +53,7 @@
       "question_text": "For me this practice is...",
       "option_1_text": "Easy to do",
       "option_2_text": "Difficult to do",
-      "option_3_text": "Not done",
-      "feedback_all_next_question_id": "feeding_why"
+      "option_3_text": "Not done"
     },
     {
       "id": "feeding_why",
@@ -73,8 +69,7 @@
       "question_text": "What is happening this image?",
       "option_1_text": "Parent and child are reading together",
       "option_2_text": "The child is sitting on the caregiver's lap",
-      "option_3_text": "The caregiver is pointing at an image",
-      "feedback_all_next_question_id": "reading_ease"
+      "option_3_text": "The caregiver is pointing at an image"
     },
     {
       "id": "reading_ease",
@@ -83,8 +78,7 @@
       "question_text": "For me this practice is...",
       "option_1_text": "Easy to do",
       "option_2_text": "Difficult to do",
-      "option_3_text": "Not done",
-      "feedback_all_next_question_id": "reading_why"
+      "option_3_text": "Not done"
     },
     {
       "id": "reading_why",

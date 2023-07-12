@@ -1,5 +1,5 @@
 {
-  "flow_name": "current_pract_story",
+  "flow_name": "current_pract_tbg",
   "flow_subtype": "generated",
   "flow_type": "template",
   "rows": [
@@ -14,8 +14,8 @@
     },
     {
       "type": "template",
-      "name": "story",
-      "value": "story",
+      "name": "topic_block_group",
+      "value": "topic_block_group",
       "action_list": [
         {
           "trigger": "completed",
@@ -38,24 +38,16 @@
       ],
       "rows": [
         {
-          "name": "session_data_list_name",
-          "value": [
-            "current_pract"
-          ],
-          "type": "set_variable",
-          "_nested_name": "story.session_data_list_name"
-        },
-        {
-          "name": "session_task_id",
-          "value": "current_pract_story",
+          "name": "id",
+          "value": "child_20",
           "_translations": {
             "value": {}
           },
           "type": "set_variable",
-          "_nested_name": "story.session_task_id"
+          "_nested_name": "topic_block_group.id"
         }
       ],
-      "_nested_name": "story"
+      "_nested_name": "topic_block_group"
     }
   ]
 }

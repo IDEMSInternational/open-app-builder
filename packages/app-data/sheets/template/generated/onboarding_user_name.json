@@ -38,21 +38,13 @@
       ],
       "rows": [
         {
-          "name": "session_data_list_name",
-          "value": [
-            "onboarding"
-          ],
-          "type": "set_variable",
-          "_nested_name": "onboarding_content.session_data_list_name"
-        },
-        {
-          "name": "session_task_id",
-          "value": "onboarding_user_name",
+          "name": "id",
+          "value": "user_name",
           "_translations": {
             "value": {}
           },
           "type": "set_variable",
-          "_nested_name": "onboarding_content.session_task_id"
+          "_nested_name": "onboarding_content.id"
         }
       ],
       "_nested_name": "onboarding_content"
