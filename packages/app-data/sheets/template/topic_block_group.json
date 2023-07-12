@@ -12,17 +12,17 @@
       "_nested_name": "data_list_name"
     },
     {
-      "name": "tbg_id",
+      "name": "id",
       "value": "interactive_play_distracted",
       "_translations": {
         "value": {}
       },
       "type": "set_variable",
-      "_nested_name": "tbg_id"
+      "_nested_name": "id"
     },
     {
       "name": "tbg_concat",
-      "value": "@local.data_list_name.@local.tbg_id",
+      "value": "@local.data_list_name.@local.id",
       "_translations": {
         "value": {}
       },
@@ -31,16 +31,16 @@
       "_dynamicFields": {
         "value": [
           {
-            "fullExpression": "@local.data_list_name.@local.tbg_id",
+            "fullExpression": "@local.data_list_name.@local.id",
             "matchedExpression": "@local.data_list_name",
             "type": "local",
             "fieldName": "data_list_name"
           },
           {
-            "fullExpression": "@local.data_list_name.@local.tbg_id",
-            "matchedExpression": "@local.tbg_id",
+            "fullExpression": "@local.data_list_name.@local.id",
+            "matchedExpression": "@local.id",
             "type": "local",
-            "fieldName": "tbg_id"
+            "fieldName": "id"
           }
         ]
       },
@@ -48,7 +48,7 @@
         "@local.data_list_name": [
           "value"
         ],
-        "@local.tbg_id": [
+        "@local.id": [
           "value"
         ]
       }
