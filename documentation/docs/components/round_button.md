@@ -1,5 +1,7 @@
 # Round button
 
+## Definition
+A round button is a graphical user interface (GUI) component that has a circular appearance and functions as an interactive element. It is often used to trigger actions, navigate through different screens or menus, or initiate specific operations within the app. The appearance of round buttons can vary depending on the app's design guidelines or the preferences of the app developer. It can have different colors, sizes, and even icons or text within them to provide visual cues about their functionality.
 ## Example
 
 | type        | name                                      |parameter_list |
