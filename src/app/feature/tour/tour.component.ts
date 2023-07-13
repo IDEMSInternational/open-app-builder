@@ -1,24 +1,19 @@
 import { Component } from "@angular/core";
-import { TourService } from "src/app/shared/services/tour/tour.service";
+import { TourService } from "./tour.service";
 
 @Component({
   template: ` <ion-content class="ion-padding">
     <h3>Start a tour</h3>
     <ion-list>
-      <ion-item *ngFor="let tourName of tourNames" (click)="startTour(tourName)">
-        {{ tourName }}
+      <ion-item
+        *ngFor="let tour of tourService.toursList"
+        (click)="tourService.startTour(tour.flow_name)"
+      >
+        {{ tour.flow_name }}
       </ion-item>
     </ion-list>
   </ion-content>`,
 })
 export class TourComponent {
-  tourNames: string[] = [];
-
-  constructor(private tourService: TourService) {
-    this.tourNames = this.tourService.listTourNames();
-  }
-
-  public startTour(tourName: string): void {
-    this.tourService.startTour(tourName);
-  }
+  constructor(public tourService: TourService) {}
 }

@@ -11,7 +11,7 @@ A round button is a graphical user interface (GUI) component that has a circular
 ![](images/round_button.png)
 
 [Google Sheet Demo](https://docs.google.com/spreadsheets/d/161GZue4jkQNJzyfYvMWesMp2vwvbkJgpNqkDlVIGJDw/edit#gid=569531329)   
-[Live Preview Demo](https://plh-teens-app1.web.app/template/comp_round_button)
+[Live Preview Demo](https://idems-debug.web.app/template/comp_round_button)
 
 ## Parameters
 
@@ -24,7 +24,7 @@ A round button is a graphical user interface (GUI) component that has a circular
 |style                  |yellow                  |Button colour yellow|
 |style                  |orange                  |Button colour orange|
 |style                  |dark_orange             |Button colour dark orange|
-|style                  |home_screen             |Button colour primary positioned to the righthand side of the screen|
+|style                  |home_screen             |Button colour primary positioned to the right hand side of the screen|
 |text                   |empty string (default)|No text on the button|
 |text                   |string                  |Any string as a button text|
 |disabled	            |false (default)         |To be removed|

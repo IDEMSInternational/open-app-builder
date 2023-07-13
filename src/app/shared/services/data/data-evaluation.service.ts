@@ -6,6 +6,7 @@ import { TemplateFieldService } from "../../components/template/services/templat
 import { TemplateVariablesService } from "../../components/template/services/template-variables.service";
 import { arrayToHashmapArray, parseBoolean } from "../../utils";
 import { AppEventService } from "../app-events/app-events.service";
+import { AsyncServiceBase } from "../asyncService.base";
 import { DbService } from "../db/db.service";
 
 /** Logging Toggle - rewrite default functions to enable or disable inline logs */
@@ -15,18 +16,35 @@ let log_group = SHOW_DEBUG_LOGS ? console.group : () => null;
 let log_groupEnd = SHOW_DEBUG_LOGS ? console.groupEnd : () => null;
 
 @Injectable({ providedIn: "root" })
-export class DataEvaluationService {
+export class DataEvaluationService extends AsyncServiceBase {
   public data: IDataEvaluationCache;
   constructor(
     private dbService: DbService,
     private appEventService: AppEventService,
-    private templateFieldService: TemplateFieldService,
     private injector: Injector
-  ) {}
-
-  /** Provide access to templateVariablesService within cyclic dependency */
+  ) {
+    super("Data Evaluation");
+    this.registerInitFunction(this.initialise);
+  }
+  /**
+   * Provide access to templateVariablesService within cyclic dependency
+   * NOTE - extra care should be taken when using methods from this service due to cyclic nature
+   * (e.g. ensure services ready only as called upon)
+   * */
   get templateVariablesService(): TemplateVariablesService {
     return this.injector.get(TemplateVariablesService);
+  }
+  get templateFieldService(): TemplateFieldService {
+    return this.injector.get(TemplateFieldService);
+  }
+
+  private async initialise() {
+    await this.ensureAsyncServicesReady([this.dbService, this.appEventService]);
+    await this.refreshDBCache();
+  }
+
+  private async ensurePublicTemplateServicesReady() {
+    await this.ensureAsyncServicesReady([this.templateFieldService, this.templateVariablesService]);
   }
 
   /**
@@ -35,7 +53,6 @@ export class DataEvaluationService {
    * db service itself
    * */
   public async refreshDBCache() {
-    await this.appEventService.ready();
     const taskActions = await this.dbService.table("task_actions").orderBy("_created").toArray();
     // get event histories
     const task_actions = arrayToHashmapArray(taskActions, "task_id");
@@ -71,6 +88,7 @@ export class DataEvaluationService {
   public async evaluateReminderCondition(
     condition: FlowTypes.DataEvaluationCondition
   ): Promise<boolean> {
+    await this.ensurePublicTemplateServicesReady();
     if (!this.data) {
       // TODO - determine if using a cache-first approach is better or just to make the queries live
       await this.refreshDBCache();
@@ -84,6 +102,7 @@ export class DataEvaluationService {
       db_lookup: () => this.processDBLookupCondition(condition),
       field_evaluation: () => this.processFieldEvaluationCondition(condition_args.field_evaluation),
       calc: async () => {
+        await this.templateVariablesService.ready();
         const parsed = await this.templateVariablesService.evaluateConditionString(_raw);
         return parseBoolean(parsed);
       },

@@ -1,7 +1,7 @@
-/* eslint-disable @typescript-eslint/naming-convention */
-import APP_CONSTANTS from "./constants";
-import { RapidProFlowExport } from "@idemsInternational/rapidpro-excel";
-import { TipRow } from "./tips.model";
+/* eslint @typescript-eslint/sort-type-constituents: "warn"  */
+
+import type { IDataPipeOperation } from "shared/src/models/dataPipe/types";
+import type { IAppConfig } from "./appConfig";
 
 /*********************************************************************************************
  *  Base flow types
@@ -9,25 +9,17 @@ import { TipRow } from "./tips.model";
 
 export namespace FlowTypes {
   export type FlowType =
-    | "conversation"
-    | "tips"
-    | "completion_list"
-    | "goal_list"
-    | "habit_list"
-    | "task_list"
-    | "module_list"
-    | "module_page"
-    | "care_package_list"
-    | "tour"
-    | "habit_ideas"
-    | "template"
-    | "component_defaults"
-    // global data provides data to other modules, without namespacing (all top-level)
-    | "global"
-    | "home_page"
     // data_lists are a general catch for any data that will be used throughout the app, but
     // without defined typings (such as habit_list).
-    | "data_list";
+    | "data_list"
+    // data_pipes are used to modify or generate new data_lists via processing methods
+    | "data_pipe"
+    // generators can create any other flow type using a source datalist and flow skeleton
+    | "generator"
+    // global data provides data to other modules, without namespacing (all top-level)
+    | "global"
+    | "template"
+    | "tour";
 
   // NOTE - most of these types are duplicated in src/data, should eventually refactor to common libs
 
@@ -38,7 +30,7 @@ export namespace FlowTypes {
     /** allows further level of grouping within flows */
     flow_subtype?: string;
     /** Used to hide unfinished content from the app */
-    status: "draft" | "released";
+    status?: "draft" | "released";
     /** Events triggered from the flow that would ordinarily write to the db (e.g. emit completed) will be ignored */
     db_ignore_events?: boolean;
     /** By default data will be removed following server-sync. Specify if instead should be retained locally also */
@@ -50,8 +42,11 @@ export namespace FlowTypes {
     /** if specified, template will override target template (e.g. A/B testing) */
     override_target?: string;
     /** condition to evaluate for applying override */
-    override_condition?: string | boolean; // dynamic references will be strings, but converted to boolean during evaluation
+    override_condition?: boolean | string; // dynamic references will be strings, but converted to boolean during evaluation
+    /** additional parameters passed to flows */
+    parameter_list?: Record<string, any>;
     /** computed list of all other templates with override conditions that targetthis template */
+
     _overrides?: {
       [templatename: string]: any; // override condition
     };
@@ -66,46 +61,32 @@ export namespace FlowTypes {
   export interface FlowTypeWithData extends FlowTypeBase {
     /** Specific flow data rows - these are usually defined from within specific flow type row typings */
     rows: any[];
+    /** Datalists populate rows as a hashmap instead to allow easier access to nested structures */
+    rowsHashmap?: { [id: string]: any };
+    /** Additional flows generated during parsing, such as data pipe or generator flow outputs */
+    _generated?: { [flow_type in FlowType]?: { [flow_name: string]: FlowTypeWithData } };
   }
 
   /*********************************************************************************************
    *  Specific flow types
    ********************************************************************************************/
-  // 2021-04-07 - TODO - implementing common data lists but need to review what is now deprecated
-  // and what other list types also want to be refactored
-  export interface Completion_list extends FlowTypeWithData {}
-  export interface Goal_list extends FlowTypeWithData {}
-  export interface Habit_list extends FlowTypeWithData {
-    flow_type: "habit_list";
-    rows: Habit_listRow[];
-  }
-  export interface Task_list extends FlowTypeWithData {
-    flow_type: "task_list";
-    rows: Task_listRow[];
-  }
-  export interface Tips extends FlowTypeWithData {
-    flow_type: "tips";
-    title: string;
-    rows: TipRow[];
-  }
-  export interface Module_list extends FlowTypeWithData {
-    flow_type: "module_list";
-    rows: Module_listRow[];
-  }
-  export interface Module_page extends FlowTypeWithData {
-    flow_type: "module_page";
-    rows: Module_pageRow[];
-  }
-  export interface Care_package_list extends FlowTypeWithData {
-    flow_type: "care_package_list";
-    rows: CarePackage[];
-  }
   export interface Data_list extends FlowTypeWithData {
     flow_type: "data_list";
     rows: Data_listRow[];
   }
-
-  export interface Conversation extends RapidProFlowExport.RootObject {}
+  export interface DataPipeFlow extends FlowTypeWithData {
+    flow_type: "data_pipe";
+    rows: IDataPipeOperation[];
+  }
+  export interface GeneratorFlow extends FlowTypeWithData {
+    flow_type: "generator";
+    parameter_list: {
+      input_data_list: string;
+      output_flow_name?: string;
+      output_flow_subtype?: string;
+      output_flow_type?: FlowType;
+    };
+  }
   export interface Translation_strings {
     [sourceText: string]: string;
   }
@@ -138,15 +119,16 @@ export namespace FlowTypes {
     main_image_asset?: string;
   }
   export interface Module_pageRow {
-    row_id?: string | number;
+    row_id?: number | string;
     type:
-      | "main_image"
-      | "title"
       | "button"
       | "description"
+      | "main_image"
       | "step_group"
       | "step_intro"
-      | "step_item";
+      | "step_item"
+      | "title";
+
     text?: string;
     task_id?: string;
     media_asset?: string;
@@ -154,51 +136,9 @@ export namespace FlowTypes {
     rows?: Module_pageRow[];
   }
   /** all data_list type must provide a unique id for each row to allow */
-  export type Data_listRow<T = any> = { id: string } & T;
-  export interface Habit_listRow extends Data_listRow {
-    title: string;
-    description: string;
-    task_id: string;
-    icon_asset: string;
-    main_image_asset: string;
-    aim_button_text: string;
-    aim_action: string;
-    set_aim_button_text?: string;
-    suggestion_button_text?: string;
-    launch_flow_type?: string;
-    launch_flow_name?: string;
-    suggestion_flow_type?: string;
-    suggestion_flow_name?: string;
-
-    _complete?: boolean;
-    _count?: number;
-    _animating_on_add?: boolean;
-    _animate_timeout_ref?: any;
-  }
-  export interface Task_listRow {
-    id: string;
-    start_action?: Start_action;
-    /** when tasks launch flows specify the type and name of flow. Only specific types are currently handled, as listed here */
-    flow_type?: "template" | "conversation" | "tips";
-    /** when tasks launch flows specify the type and name of flow */
-    flow_name?: string;
-    /** when tasks require additional paremeters, such as the name of a reward, provide here */
-    start_action_args?: string;
-    groups_list?: string[];
-    label?: string;
-    requires_list?: string[];
-  }
+  export type Data_listRow<T = any> = T & { id: string };
   /** As not all tasks will launch flows, use actions to specify different ways to handle a task  */
-  export type Start_action = "start_new_flow" | "give_award" | "open_app";
-
-  export interface CarePackage {
-    id: string;
-    label: string;
-    description?: string;
-    icon_asset?: string;
-    main_image_asset?: string;
-    habit_list: string[];
-  }
+  export type Start_action = "give_award" | "open_app" | "start_new_flow";
 
   export interface Campaign_listRow extends RowWithActivationConditions {
     id: string;
@@ -234,7 +174,7 @@ export namespace FlowTypes {
   }
   export interface DataEvaluationCondition {
     /** specific defined actions that have individual methods to determine completion */
-    condition_type: "field_evaluation" | "db_lookup" | "calc";
+    condition_type: "calc" | "db_lookup" | "field_evaluation";
     /** Condition args change depending on type, hard to enforce typing switch so just include type mapping */
     condition_args: {
       db_lookup?: {
@@ -243,12 +183,12 @@ export namespace FlowTypes {
         // NOTE - where queries only support text or number
         // see: https://github.com/dfahlander/Dexie.js/issues/427
         // (non-sparse indexes)
-        where: { [field: string]: string | number }; //  e.g. {name:reminder_1.sent, value:'true'} ;
+        where: { [field: string]: number | string }; //  e.g. {name:reminder_1.sent, value:'true'} ;
         order?: "asc" | "desc";
         evaluate?: {
-          operator: ">" | "<=";
-          value: string | number | boolean;
-          unit?: "day" | "app_day";
+          operator: "<=" | ">";
+          value: boolean | number | string;
+          unit?: "app_day" | "day";
         };
       };
       field_evaluation?: {
@@ -264,6 +204,14 @@ export namespace FlowTypes {
     _cleaned?: string;
     _parsed?: string[][];
   }
+  export interface Lifecycle_Action {
+    lifecycle_event: LifecycleEvent;
+    id: string;
+    priority?: number; // priority order in which to run actions
+    condition_list?: string[];
+    action_list: TemplateRowAction[];
+  }
+  export type LifecycleEvent = "app_start"; // scope to add app_open, app_close, app_minimize, app_first_start etc.
   export interface RowWithActivationConditions {
     /** evaluated statements for activating campaign */
     activation_condition_list?: DataEvaluationCondition[];
@@ -275,24 +223,6 @@ export namespace FlowTypes {
     _deactivated?: boolean;
     /** all activation criteria satisfied and not any deactivation criteria satisfied */
     _active?: boolean;
-  }
-
-  export interface Habit_ideas extends FlowTypeWithData {
-    flow_type: "habit_ideas";
-    flow_name: string;
-    title: string;
-    suggestion_list_title: string;
-    personal_list_title: string;
-    personal_list_title_short: string;
-    add_button: string;
-    publish_button: string;
-    edit_button: string;
-    rows: Habit_ideasRow[];
-  }
-
-  export interface Habit_ideasRow {
-    type: "list_item";
-    message_text: string;
   }
 
   export interface Tour extends FlowTypeBase {
@@ -310,79 +240,72 @@ export namespace FlowTypes {
     route?: string;
   }
 
-  export interface Home_page extends FlowTypeBase {
-    flow_type: "home_page";
-    rows: Home_pageRow[];
-  }
-
-  export interface Home_pageRow {
-    type: "button";
-    id?: "workshops" | "parent_points" | "parent_center";
-    text: string;
-    visible?: boolean;
-    enabled?: boolean;
-    route?: string;
-    left_image?: string;
-  }
-
   export interface Template extends FlowTypeBase {
     flow_type: "template";
     rows: TemplateRow[];
     comments?: string;
   }
-
   export type TemplateRowType =
-    | "accordion"
-    | "image"
-    | "title"
-    | "subtitle"
-    | "text"
-    | "animated_section"
     | "accordion_section"
+    | "accordion"
     | "advanced_dashed_box"
-    | "parent_point_counter"
-    | "help_icon"
-    | "workshops_accordion"
-    | "form"
-    | "toggle_bar"
     | "animated_section_group"
-    | "display_group"
-    | "set_variable"
-    | "set_theme"
-    // TODO - requires global implementation (and possibly rename to set_field_default as value does not override)
-    | "set_field"
-    | "set_local"
-    | "set_field"
-    | "update_action_list" // update own action list
-    | "nested_properties"
-    | "button"
-    | "image"
+    | "animated_section"
+    | "animated_slides"
     | "audio"
-    | "video"
+    | "button"
+    | "carousel"
+    | "combo_box"
+    | "dashed_box"
+    | "data_items"
+    | "debug_toggle"
+    | "display_grid"
+    | "display_group"
     | "display_theme"
-    | "template"
-    | "timer"
-    | "slider"
-    | "number_selector"
-    | "round_button"
-    | "square_button"
+    | "drawer"
+    | "form"
+    | "help_icon"
+    | "html"
+    | "icon_banner"
+    | "image"
+    | "items"
+    | "latex"
+    | "lottie_animation"
     | "nav_group"
     | "nav_section"
-    | "simple_checkbox"
-    | "set_default"
-    | "text_box"
-    | "text_area"
-    | "radio_group"
-    | "tile_component"
-    | "combo_box"
-    | "icon_banner"
-    | "dashed_box"
-    | "lottie_animation"
+    | "navigation_bar"
+    | "nested_properties"
+    | "number_selector"
+    | "odk_form"
     | "parent_point_box"
-    | "debug_toggle"
-    | "items"
+    | "parent_point_counter"
+    | "pdf"
+    | "qr_code"
+    | "radio_button_grid"
+    | "radio_group"
+    | "round_button"
     | "select_text"
-    | "html";
+    | "set_default"
+    | "set_field" // TODO - requires global implementation (and possibly rename to set_field_default as value does not override)
+    | "set_local"
+    | "set_variable"
+    | "simple_checkbox"
+    | "slider"
+    | "square_button"
+    | "subtitle"
+    | "task_card"
+    | "task_progress_bar"
+    | "template"
+    | "text_area"
+    | "text_box"
+    | "text"
+    | "tile_component"
+    | "timer"
+    | "title"
+    | "toggle_bar"
+    | "update_action_list" // update own action list
+    | "video"
+    | "workshops_accordion";
 
   export interface TemplateRow extends Row_with_translations {
     type: TemplateRowType;
@@ -391,10 +314,10 @@ export namespace FlowTypes {
     action_list?: TemplateRowAction[];
     style_list?: string[];
     parameter_list?: { [param: string]: string };
-    hidden?: string | boolean; // dynamic references will be strings, but converted to boolean during evaluation
+    hidden?: boolean | string; // dynamic references will be strings, but converted to boolean during evaluation
     rows?: TemplateRow[];
-    disabled?: string | boolean; // dynamic references will be strings, but converted to boolean during evaluation
-    condition?: string | boolean; // dynamic references will be strings, but converted to boolean during evaluation
+    disabled?: boolean | string; // dynamic references will be strings, but converted to boolean during evaluation
+    condition?: boolean | string; // dynamic references will be strings, but converted to boolean during evaluation
     is_override_target?: boolean; // prevent template being overridden when calling self via override_target (prevent infinite loops)
     _debug_name?: string; // some components may optionally provide a different name for debugging purposes
     _nested_name: string; // track full path to row when nested in a template (e.g. contentBox1.row2.title)
@@ -410,9 +333,9 @@ export namespace FlowTypes {
     _evalContext?: { itemContext: any }; // force specific context variables when calculating eval statements (such as loop items)
     __EMPTY?: any; // empty cells (can be removed after pr 679 merged)
   }
-  export type IDynamicField = { [key: string]: TemplateRowDynamicEvaluator[] | IDynamicField };
+  export type IDynamicField = { [key: string]: IDynamicField | TemplateRowDynamicEvaluator[] };
 
-  type IDynamicPrefix = typeof APP_CONSTANTS.DYNAMIC_PREFIXES[number];
+  type IDynamicPrefix = IAppConfig["DYNAMIC_PREFIXES"][number];
 
   /** Data passed back from regex match, e.g. expression @local.someField => type:local, fieldName: someField */
   export interface TemplateRowDynamicEvaluator {
@@ -428,43 +351,57 @@ export namespace FlowTypes {
   }
 
   export type TemplateRowActionTrigger =
-    | "click"
-    | "completed"
-    | "uncompleted"
-    | "changed"
-    | "audio_play"
-    | "audio_pause"
     | "audio_end"
     | "audio_first_start"
+    | "audio_pause"
+    | "audio_play"
+    | "changed"
+    | "click"
+    | "completed"
+    | "info_click"
     | "nav_resume" // return to template after navigation or popup close;
-    | "sent"; // notification sent
+    | "sent" // notification sent
+    | "uncompleted";
+
+  // TODO document '' action for stop propagation
+  // note - to keep target nav within component stack go_to is actually just a special case of pop_up
+  // TODO - 2021-03-11 - most of list needs reconsideration/implementation
+  export const ACTION_ID_LIST = [
+    "",
+    "app_update",
+    "asset_pack",
+    "audio_end",
+    "audio_play",
+    "changed",
+    "close_pop_up",
+    "emit",
+    "feedback",
+    "go_to",
+    "go_to_url",
+    "google_auth",
+    "pop_up",
+    "process_template",
+    "reset_app",
+    "set_field",
+    "set_item",
+    "set_items",
+    "set_local",
+    "share",
+    "style",
+    "start_tour",
+    "task_group_set_highlighted",
+    "toggle_field",
+    "track_event",
+    "trigger_actions",
+  ] as const;
 
   export interface TemplateRowAction {
     /** actions have an associated trigger */
     trigger: TemplateRowActionTrigger;
-    // TODO - 2021-03-11 - most of list needs reconsideration/implementation
-    action_id:
-      | "" // TODO document this property for stop propogation
-      | "reset_app"
-      | "set_field"
-      | "set_local"
-      | "emit"
-      | "feedback"
-      | "changed"
-      // note - to keep target nav within component stack go_to is actually just a special case of pop_up
-      | "go_to"
-      | "go_to_url"
-      | "pop_up"
-      | "audio_end"
-      | "audio_play"
-      | "style"
-      | "close_pop_up"
-      | "set_theme"
-      | "start_tour"
-      | "trigger_actions"
-      | "track_event"
-      | "process_template";
-    args: any[]; // should be string | boolean, but breaks type-checking for templates;
+    action_id: typeof ACTION_ID_LIST[number];
+    args: any[]; // should be boolean | string, but breaks type-checking for templates;
+    params?: any; // additional params also used by args (does not require position argument)
+    // TODO - CC 2022-04-29 - ideally args should be included as part of params
     _triggeredBy?: TemplateRow; // tracking the component that triggered the action for logging;
     /**
      * most actions are specified from a parent template (begin_template statement) and are executed
@@ -482,22 +419,10 @@ export namespace FlowTypes {
   }
 
   export interface GlobalRow extends Row_with_translations {
-    type: "declare_global_constant" | "declare_field_default";
+    type: "declare_field_default" | "declare_global_constant";
     name: string;
     value: any;
     comments?: string;
     __EMPTY?: string;
-  }
-
-  /* Used for setting default parameters for template components */
-  export interface Component_defaults extends FlowTypeBase {
-    flow_type: "component_defaults";
-    rows: Component_defaultsRow[];
-  }
-
-  export interface Component_defaultsRow {
-    parameter: string;
-    default_value?: string | number | boolean;
-    comments?: string /* Used for authoring comments. Not used in code */;
   }
 }

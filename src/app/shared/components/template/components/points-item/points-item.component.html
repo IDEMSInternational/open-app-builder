@@ -9,6 +9,9 @@
         {{ _row.value }}
       </div>
     </div>
+    <div *ngIf="info_icon_src" class="info-button" (click)="clickInfo($event)">
+      <img [src]="info_icon_src | plhAsset" alt="" />
+    </div>
     <div class="image">
       <!-- order of preference - video, lottie, img -->
       <video

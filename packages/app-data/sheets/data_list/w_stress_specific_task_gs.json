@@ -1,0 +1,60 @@
+{
+  "flow_type": "data_list",
+  "flow_name": "w_stress_specific_task_gs",
+  "status": "released",
+  "rows": [
+    {
+      "id": "read_1",
+      "individual": true,
+      "together": true,
+      "priority": 11,
+      "story_id": "ignore_emotions",
+      "has_single_task": false,
+      "title": "@global.story @global.part_connector @data.story.ignore_emotions.title",
+      "_translations": {
+        "title": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "@global.story @global.part_connector @data.story.ignore_emotions.title"
+        }
+      }
+    },
+    {
+      "id": "read_2",
+      "individual": true,
+      "together": true,
+      "priority": 13,
+      "story_id": "acknowledge_emotions",
+      "has_single_task": true,
+      "template": "w_stress_read_2",
+      "title": "@global.story @global.part_connector @data.story.acknowledge_emotions.title",
+      "_translations": {
+        "title": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "@global.story @global.part_connector @data.story.acknowledge_emotions.title"
+        }
+      }
+    },
+    {
+      "id": "read_3",
+      "individual": true,
+      "together": true,
+      "priority": 14,
+      "story_id": "safety_amnesty",
+      "has_single_task": false,
+      "title": "@global.story @global.part_connector @data.story.safety_amnesty.title",
+      "_translations": {
+        "title": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "@global.story @global.part_connector @data.story.safety_amnesty.title"
+        }
+      }
+    }
+  ],
+  "_xlsxPath": "global/data/workshop_data/workshop_task_groups.xlsx"
+}

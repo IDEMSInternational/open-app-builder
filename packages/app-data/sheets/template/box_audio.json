@@ -1,0 +1,121 @@
+{
+  "flow_type": "template",
+  "flow_name": "box_audio",
+  "status": "released",
+  "rows": [
+    {
+      "name": "audio_src",
+      "value": "plh_assets/quality_assurance/test_audio.mp3",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "audio_src"
+    },
+    {
+      "name": "audio_title",
+      "type": "set_variable",
+      "_nested_name": "audio_title"
+    },
+    {
+      "type": "text",
+      "name": "text",
+      "_nested_name": "text"
+    },
+    {
+      "type": "image",
+      "name": "image_src",
+      "hidden": true,
+      "parameter_list": {
+        "style": "rounded_corners"
+      },
+      "_nested_name": "image_src"
+    },
+    {
+      "type": "lottie_animation",
+      "name": "lottie_src",
+      "hidden": true,
+      "_nested_name": "lottie_src"
+    },
+    {
+      "type": "audio",
+      "name": "audio_player",
+      "value": "@local.audio_src",
+      "_translations": {
+        "value": {}
+      },
+      "parameter_list": {
+        "title": "@local.audio_title"
+      },
+      "_nested_name": "audio_player",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@local.audio_src",
+            "matchedExpression": "@local.audio_src",
+            "type": "local",
+            "fieldName": "audio_src"
+          }
+        ],
+        "parameter_list": {
+          "title": [
+            {
+              "fullExpression": "@local.audio_title",
+              "matchedExpression": "@local.audio_title",
+              "type": "local",
+              "fieldName": "audio_title"
+            }
+          ]
+        }
+      },
+      "_dynamicDependencies": {
+        "@local.audio_src": [
+          "value"
+        ],
+        "@local.audio_title": [
+          "parameter_list.title"
+        ]
+      }
+    },
+    {
+      "type": "button",
+      "name": "button_1",
+      "hidden": true,
+      "_nested_name": "button_1"
+    },
+    {
+      "type": "button",
+      "name": "button_2",
+      "hidden": true,
+      "_nested_name": "button_2"
+    },
+    {
+      "type": "template",
+      "name": "nav_buttons",
+      "value": "nav_buttons",
+      "action_list": [
+        {
+          "trigger": "completed",
+          "action_id": "emit",
+          "args": [
+            "completed"
+          ],
+          "_raw": "completed | emit:completed",
+          "_cleaned": "completed | emit:completed"
+        },
+        {
+          "trigger": "uncompleted",
+          "action_id": "emit",
+          "args": [
+            "uncompleted"
+          ],
+          "_raw": "uncompleted | emit:uncompleted",
+          "_cleaned": "uncompleted | emit:uncompleted"
+        }
+      ],
+      "rows": [],
+      "_nested_name": "nav_buttons"
+    }
+  ],
+  "_xlsxPath": "global/core_templates/core_templates_workshop_boxes.xlsx"
+}

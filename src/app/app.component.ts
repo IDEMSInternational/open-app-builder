@@ -1,22 +1,22 @@
-import { Component } from "@angular/core";
+import { ChangeDetectorRef, Component } from "@angular/core";
 import { Platform, MenuController } from "@ionic/angular";
 import { Router } from "@angular/router";
 import { Capacitor } from "@capacitor/core";
 import { SplashScreen } from "@capacitor/splash-screen";
 import { App } from "@capacitor/app";
-import { PushNotificationService } from "./shared/services/notification/push-notification.service";
 import { DbService } from "./shared/services/db/db.service";
-import { ThemeService } from "./feature/theme/theme-service/theme.service";
-import { SurveyService } from "./feature/survey/survey.service";
+import { SkinService } from "./shared/services/skin/skin.service";
+import { ThemeService } from "./feature/theme/services/theme.service";
 import { environment } from "src/environments/environment";
 import { TaskActionService } from "./shared/services/task/task-action.service";
-import { UserMetaService, IUserMeta } from "./shared/services/userMeta/userMeta.service";
+import { UserMetaService } from "./shared/services/userMeta/userMeta.service";
 import { AppEventService } from "./shared/services/app-events/app-events.service";
-import { TourService } from "./shared/services/tour/tour.service";
+import { TourService } from "./feature/tour/tour.service";
 import { TemplateService } from "./shared/components/template/services/template.service";
 import { CampaignService } from "./feature/campaign/campaign.service";
 import { ServerService } from "./shared/services/server/server.service";
 import { DataEvaluationService } from "./shared/services/data/data-evaluation.service";
+import { DynamicDataService } from "./shared/services/dynamic-data/dynamic-data.service";
 import { TemplateProcessService } from "./shared/components/template/services/instance/template-process.service";
 import { isSameDay } from "date-fns";
 import { AnalyticsService } from "./shared/services/analytics/analytics.service";
@@ -25,10 +25,20 @@ import { TemplateFieldService } from "./shared/components/template/services/temp
 import { TemplateTranslateService } from "./shared/components/template/services/template-translate.service";
 import { LocalNotificationInteractionService } from "./shared/services/notification/local-notification-interaction.service";
 import { DBSyncService } from "./shared/services/db/db-sync.service";
-
-import { APP_CONSTANTS } from "./data";
-
-const { APP_FIELDS, APP_INITIALISATION_DEFAULTS, APP_SIDEMENU_DEFAULTS } = APP_CONSTANTS;
+import { CrashlyticsService } from "./shared/services/crashlytics/crashlytics.service";
+import { AppDataService } from "./shared/services/data/app-data.service";
+import { AuthService } from "./shared/services/auth/auth.service";
+import { LifecycleActionsService } from "./shared/services/lifecycle-actions/lifecycle-actions.service";
+import { AppConfigService } from "./shared/services/app-config/app-config.service";
+import { IAppConfig } from "./shared/model";
+import { TaskService } from "./shared/services/task/task.service";
+import { AppUpdateService } from "./shared/services/app-update/app-update.service";
+import { RemoteAssetService } from "./shared/services/remote-asset/remote-asset.service";
+import { AsyncServiceBase } from "./shared/services/asyncService.base";
+import { SyncServiceBase } from "./shared/services/syncService.base";
+import { SeoService } from "./shared/services/seo/seo.service";
+import { FeedbackService } from "./feature/feedback/feedback.service";
+import { ShareService } from "./shared/services/share/share.service";
 
 @Component({
   selector: "app-root",
@@ -38,21 +48,28 @@ const { APP_FIELDS, APP_INITIALISATION_DEFAULTS, APP_SIDEMENU_DEFAULTS } = APP_C
 export class AppComponent {
   APP_VERSION = environment.version;
   DEPLOYMENT_NAME = environment.deploymentName;
-  ENV_NAME = environment.envName;
-  sideMenuDefaults = APP_SIDEMENU_DEFAULTS;
+  appConfig: IAppConfig;
+  appFields: IAppConfig["APP_FIELDS"];
+  appAuthenticationDefaults: IAppConfig["APP_AUTHENTICATION_DEFAULTS"];
+  sideMenuDefaults: IAppConfig["APP_SIDEMENU_DEFAULTS"];
+  footerDefaults: IAppConfig["APP_FOOTER_DEFAULTS"];
   /** Track when app ready to render sidebar and route templates */
   public renderAppTemplates = false;
 
   constructor(
+    // 3rd Party Services
     private platform: Platform,
+    private cdr: ChangeDetectorRef,
     private menuController: MenuController,
     private router: Router,
-    private pushNotificationService: PushNotificationService,
+    // App services
+    private skinService: SkinService,
+    private appConfigService: AppConfigService,
+    private dynamicDataService: DynamicDataService,
     private dbService: DbService,
     private dbSyncService: DBSyncService,
     private userMetaService: UserMetaService,
     private themeService: ThemeService,
-    private surveyService: SurveyService,
     private tourService: TourService,
     private templateService: TemplateService,
     private templateFieldService: TemplateFieldService,
@@ -64,38 +81,85 @@ export class AppComponent {
     private localNotificationService: LocalNotificationService,
     private localNotificationInteractionService: LocalNotificationInteractionService,
     private templateTranslateService: TemplateTranslateService,
+    private crashlyticsService: CrashlyticsService,
+    private appDataService: AppDataService,
+    private authService: AuthService,
+    private seoService: SeoService,
+    private taskService: TaskService,
+    private feedbackService: FeedbackService,
     /** Inject in the main app component to start tracking actions immediately */
-    public taskActions: TaskActionService,
-    public serverService: ServerService
+    private taskActions: TaskActionService,
+    private lifecycleActionsService: LifecycleActionsService,
+    private serverService: ServerService,
+    private appUpdateService: AppUpdateService,
+    private remoteAssetService: RemoteAssetService,
+    private shareService: ShareService
   ) {
     this.initializeApp();
   }
 
-  async initializeApp() {
-    this.themeService.init();
+  private async initializeApp() {
     this.platform.ready().then(async () => {
+      this.subscribeToAppConfigChanges();
+      // ensure deployment field set correctly for use in any startup services or templates
+      localStorage.setItem(this.appFields.DEPLOYMENT_NAME, this.DEPLOYMENT_NAME);
+      localStorage.setItem(this.appFields.APP_VERSION, this.APP_VERSION);
       await this.initialiseCoreServices();
       this.hackSetDeveloperOptions();
       const isDeveloperMode = this.templateFieldService.getField("user_mode") === false;
-      const user = await this.userMetaService.init();
-      if (!user.first_app_open) {
-        await this.surveyService.runSurvey("introSplash");
-        await this.userMetaService.setUserMeta({ first_app_open: new Date().toISOString() });
-        this.hackSetFirstOpenFields();
-        await this.handleFirstLaunchDataActions();
+      const user = this.userMetaService.userMeta;
+      // Authentication requires verified domain and app ids populated to firebase console
+      // Currently only run on native where specified (but can comment out for testing locally)
+      if (this.appAuthenticationDefaults.enforceLogin && Capacitor.isNativePlatform()) {
+        await this.ensureUserSignedIn();
       }
+      if (!user.first_app_open) {
+        await this.userMetaService.setUserMeta({ first_app_open: new Date().toISOString() });
+      }
+      // Run app-specific launch tasks
+
+      // Re-initialise default field and globals on init in case sheets have been updated
+      // TODO - ideally this should just be triggered on first launch of new app update
+      await this.templateService.initialiseDefaultFieldAndGlobals();
+      await this.templateProcessService.initialiseStartupTemplates();
+      await this.lifecycleActionsService.handleLaunchActions();
+
       this.menuController.enable(true, "main-side-menu");
-      await this.hackSetAppOpenFields(user);
-      if (Capacitor.isNative) {
+      if (Capacitor.isNativePlatform()) {
         if (!isDeveloperMode) {
           this.removeConsoleLogs();
         }
-        SplashScreen.hide();
-        this.pushNotificationService.init();
+        await SplashScreen.hide();
       }
-      this.analyticsService.init();
+      // Show main template
       this.renderAppTemplates = true;
+      // Detect changes in case expression changed prior to render (e.g. feedback sidebar)
+      this.cdr.detectChanges();
       this.scheduleReinitialisation();
+    });
+  }
+
+  private async ensureUserSignedIn() {
+    const authUser = await this.authService.getCurrentUser();
+    if (!authUser) {
+      const templatename = this.appAuthenticationDefaults.signInTemplate;
+      const { modal } = await this.templateService.runStandaloneTemplate(templatename, {
+        showCloseButton: false,
+        waitForDismiss: false,
+      });
+      await this.authService.waitForSignInComplete();
+      await modal.dismiss();
+    }
+  }
+
+  /** Initialise appConfig and set dependent properties */
+  private subscribeToAppConfigChanges() {
+    this.appConfigService.appConfig$.subscribe((appConfig: IAppConfig) => {
+      this.appConfig = appConfig;
+      this.sideMenuDefaults = this.appConfig.APP_SIDEMENU_DEFAULTS;
+      this.footerDefaults = this.appConfig.APP_FOOTER_DEFAULTS;
+      this.appAuthenticationDefaults = this.appConfig.APP_AUTHENTICATION_DEFAULTS;
+      this.appFields = this.appConfig.APP_FIELDS;
     });
   }
 
@@ -106,45 +170,82 @@ export class AppComponent {
    * Note - For some of these services order will be important
    * (e.g. notifications before campaigns that require notifications)
    **/
-  async initialiseCoreServices() {
-    await this.dbService.init();
-    // CC 2021-05-14 - disabling reminders service until decide on full implementation
-    // (ideally not requiring evaluation of all reminders on init)
-    // this.remindersService.init();
-    await this.appEventService.init();
-    await this.serverService.init();
-    await this.dataEvaluationService.refreshDBCache();
-    await this.templateTranslateService.init();
-    await this.templateService.init();
-    await this.templateProcessService.init();
-    await this.localNotificationInteractionService.init();
-    await this.localNotificationService.init();
-    await this.campaignService.init();
-    await this.dbSyncService.init();
-  }
+  private async initialiseCoreServices() {
+    // Organise all services into groups
+    const services: {
+      /** should be called early but don't need to be waited for */
+      eager: AsyncServiceBase[];
+      /** require async init and may be depended on by other services */
+      blocking: AsyncServiceBase[];
+      /** handle own init in synchronous function (will be ready on inject) */
+      nonBlocking: SyncServiceBase[];
+      /** async but not depended on for init of other services (can be intialised after timeout) */
+      deferred: (AsyncServiceBase | SyncServiceBase)[];
+      /** do not strictly need to be initialised as done by other services (but kept for reference) */
+      implicit: (AsyncServiceBase | SyncServiceBase)[];
+      /** likely no longer required, should be removed in future (impact can be tested by moving into group) */
+      deprecated: (AsyncServiceBase | SyncServiceBase)[];
+    } = {
+      eager: [this.crashlyticsService],
+      blocking: [
+        this.dbSyncService,
+        this.dynamicDataService,
+        this.userMetaService,
+        this.tourService,
+        this.localNotificationService,
+        this.localNotificationInteractionService,
+        this.taskService,
+        this.taskActions,
+        this.campaignService,
+        this.remoteAssetService,
+      ],
+      nonBlocking: [
+        this.skinService,
+        this.appConfigService,
+        this.appUpdateService,
+        this.themeService,
+        this.templateService,
+        this.templateProcessService,
+        this.appDataService,
+        this.authService,
+        this.serverService,
+        this.seoService,
+        this.feedbackService,
+        this.shareService,
+      ],
+      deferred: [this.analyticsService],
+      implicit: [
+        this.dbService,
+        this.templateTranslateService,
+        this.templateFieldService,
+        this.dataEvaluationService,
+        this.appEventService,
+      ],
+      deprecated: [this.lifecycleActionsService],
+    };
 
-  /**
-   * Run app-specific first launch tasks
-   **/
-  private async handleFirstLaunchDataActions() {
-    for (const initAction of APP_INITIALISATION_DEFAULTS.app_first_launch_actions) {
-      switch (initAction.type) {
-        case "template_popup":
-          await this.templateService.runStandaloneTemplate(initAction.value, {
-            showCloseButton: false,
-          });
-          break;
-        case "tour_start":
-          await this.tourService.startTour(initAction.value);
-          break;
-        default:
-          console.error("Startup action not defined:", initAction);
-          break;
-      }
+    // log all init logs in a group. Note, some services may sit outside this group in cases
+    // where non-blocking services import blocking (non-blocking call init on import into constructor).
+    // could be resolved by importing via injector instead of constructor (assumed not very important)
+    console.group("Core Services");
+    const start = performance.now();
+    for (const service of services.eager) {
+      service.ready();
     }
+    await Promise.all(services.blocking.map(async (service) => await service.ready()));
+    for (const service of services.nonBlocking) {
+      service.ready();
+    }
+    setTimeout(() => {
+      for (const service of services.deferred) {
+        service.ready();
+      }
+    }, 5000);
+    console.log("Total time:", Math.round(performance.now() - start) + "ms");
+    console.groupEnd();
   }
 
-  clickOnMenuItem(id: string) {
+  private clickOnMenuItem(id: string) {
     this.menuController.close("main-side-menu");
     this.router.navigateByUrl("/" + id);
   }
@@ -193,53 +294,5 @@ export class AppComponent {
         this.templateFieldService.setField("user_mode", "false");
       }
     }
-  }
-
-  /**
-   * temporary fix: set initial fields to avoid doubling up of quickstart buttons
-   * TODO CC 2021-07-23 - Review if methods still required
-   */
-  private hackSetFirstOpenFields() {
-    this.templateFieldService.setField(".w_1on1_completion_status", "uncompleted");
-    this.templateFieldService.setField("second_week", "false");
-    this.templateFieldService.setField(".w_praise_completion_status", "uncompleted");
-    this.templateFieldService.setField("third_week", "false");
-  }
-
-  /**
-   * temporary workaround for setting unlocked content
-   */
-  private async hackSetAppOpenFields(user: IUserMeta) {
-    localStorage.setItem(APP_FIELDS.DEPLOYMENT_NAME, this.DEPLOYMENT_NAME);
-
-    // TODO CC 2021-07-23 - Review if methods below still required
-    let old_date = this.userMetaService.getUserMeta("current_date");
-    await this.userMetaService.setUserMeta({ current_date: new Date().toISOString() });
-    let current_date = this.userMetaService.getUserMeta("current_date");
-    this.templateFieldService.setField("first_app_open", user.first_app_open);
-    this.templateFieldService.setField("current_date", current_date);
-    if (old_date != current_date) {
-      this.templateFieldService.setField("daily_relax_done", "false");
-    }
-    this.templateFieldService.setField("first_week", "true");
-    if (Date.parse(current_date) - Date.parse(user.first_app_open) > 6 * 24 * 60 * 60 * 1000) {
-      this.templateFieldService.setField("second_week", "true");
-      this.templateFieldService.setField("w_1on1_disabled", "false");
-    } else {
-      this.templateFieldService.setField("second_week", "false");
-    }
-    if (Date.parse(current_date) - Date.parse(user.first_app_open) > 13 * 24 * 60 * 60 * 1000) {
-      this.templateFieldService.setField("third_week", "true");
-      this.templateFieldService.setField("w_praise_disabled", "false");
-    } else {
-      this.templateFieldService.setField("third_week", "false");
-    }
-    this.templateFieldService.setField(
-      "days_since_start",
-      (
-        (Date.parse(current_date) - Date.parse(user.first_app_open)) /
-        (24 * 60 * 60 * 1000)
-      ).toString()
-    );
   }
 }

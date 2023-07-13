@@ -1,0 +1,1325 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>frontend documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+        <link rel="stylesheet" href="../styles/material.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">frontend documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li>Components</li>
+  <li
+  >
+  NavGroupComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li >
+            <a href="#styleData" role="tab" id="styleData-tab" data-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li >
+            <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/shared/components/template/components/layout/nav_group.ts</code>
+</p>
+
+
+
+    <p class="comment">
+        <h3>Extends</h3>
+    </p>
+    <p class="comment">
+                <code><a href="../components/TemplateLayoutComponent.html" target="_self" >TemplateLayoutComponent</a></code>
+    </p>
+
+
+
+<section>
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>plh-tmpl-nav-group</code></td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-3">styles</td>
+                <td class="col-md-9"><code>
+      :host {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+      }
+      .nav-section {
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        /* sections not active are kept off-screen to avoid content height jump */
+        right: 100vw;
+      }
+      .nav-section[data-selected] {
+        flex: 1;
+        right: unset;
+      }
+      .nav-progress {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        padding: 1em 0;
+      }
+
+      .nav-progress-part {
+        height: 7px;
+        flex: 1;
+        margin: 0 2px;
+        background-color: var(--ion-primary-color, #0d3f60);
+        border-radius: var(--ion-border-radius-standard);
+        max-width: 40px;
+      }
+
+      .nav-progress-part[data-seen] {
+        background-color: var(--ion-primary-color, #f88923);
+      }
+    </code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">template</td>
+                <td class="col-md-9"><pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;nav-progress&quot;&gt;
+  &lt;div
+    *ngFor&#x3D;&quot;let templateName of templateNames; index as i&quot;
+    class&#x3D;&quot;nav-progress-part&quot;
+    [attr.data-seen]&#x3D;&quot;i &lt;&#x3D; sectionIndex ? true : null&quot;
+    (click)&#x3D;&quot;goToSection(i)&quot;
+  &gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;!-- Render placeholders for each section but omit content --&gt;
+&lt;div
+  *ngFor&#x3D;&quot;let templateName of templateNames; index as i&quot;
+  class&#x3D;&quot;nav-section&quot;
+  [attr.data-selected]&#x3D;&quot;sectionIndex &#x3D;&#x3D;&#x3D; i ? true : null&quot;
+&gt;
+  &lt;plh-template-container
+    *ngIf&#x3D;&quot;sectionIndex &#x3D;&#x3D;&#x3D; i&quot;
+    [name]&#x3D;&quot;templateName&quot;
+    [templatename]&#x3D;&quot;templateName&quot;
+    [parent]&#x3D;&quot;parent&quot;
+    [row]&#x3D;&quot;containerRow&quot;
+    @fadeEntryExit
+  &gt;
+  &lt;/plh-template-container&gt;
+&lt;/div&gt;
+</code></pre></td>
+            </tr>
+
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#containerRow" >containerRow</a>
+                            </li>
+                            <li>
+                                <a href="#sectionIndex" >sectionIndex</a>
+                            </li>
+                            <li>
+                                <a href="#templateNames" >templateNames</a>
+                            </li>
+                            <li>
+                                <a href="#_row" >_row</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#trackByRow" >trackByRow</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#getActiveSectionIdx" >getActiveSectionIdx</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#goToSection" >goToSection</a>
+                            </li>
+                            <li>
+                                <a href="#interceptTemplateContainerAction" >interceptTemplateContainerAction</a>
+                            </li>
+                            <li>
+                                <a href="#modifyRowSetter" >modifyRowSetter</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#updateSectionProgress" >updateSectionProgress</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#scrollToTop" >scrollToTop</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Inputs</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#parent" >parent</a>
+                            </li>
+                            <li>
+                                <a href="#row" >row</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(templateFieldService: TemplateFieldService)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="83" class="link-to-prism">src/app/shared/components/template/components/layout/nav_group.ts:83</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>templateFieldService</td>
+                                                  
+                                                        <td>
+                                                                    <code>TemplateFieldService</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+    <section>
+    <h3 id="inputs">Inputs</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="parent"></a>
+                        <b>parent</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>TemplateContainerComponent</code>
+
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4" colspan="2">
+                                    <div class="io-line">Inherited from         <code><a href="../components/TemplateLayoutComponent.html" target="_self" >TemplateLayoutComponent</a></code>
+</div>
+                                </td>
+                            </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in         <code><a href="../components/TemplateLayoutComponent.html#source" target="_self" >TemplateLayoutComponent:37</a></code>
+</div>
+                            </td>
+                        </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>reference to parent template container - does not have setter as should remain static</p>
+</div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="row"></a>
+                        <b>row</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>FlowTypes.TemplateRow</code>
+
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4" colspan="2">
+                                    <div class="io-line">Inherited from         <code><a href="../components/TemplateLayoutComponent.html" target="_self" >TemplateLayoutComponent</a></code>
+</div>
+                                </td>
+                            </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in         <code><a href="../components/TemplateLayoutComponent.html#source" target="_self" >TemplateLayoutComponent:28</a></code>
+</div>
+                            </td>
+                        </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>specific data used in component rendering</p>
+</div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+    <section>
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getActiveSectionIdx"></a>
+                    <span class="name">
+                        <span ><b>getActiveSectionIdx</b></span>
+                        <a href="#getActiveSectionIdx"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getActiveSectionIdx(progressField: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="155"
+                            class="link-to-prism">src/app/shared/components/template/components/layout/nav_group.ts:155</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Function that will return Current Slider Index</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>progressField</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="goToSection"></a>
+                    <span class="name">
+                        <span class="modifier">Async</span>
+                        <span ><b>goToSection</b></span>
+                        <a href="#goToSection"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>goToSection(index: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="171"
+                            class="link-to-prism">src/app/shared/components/template/components/layout/nav_group.ts:171</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Function that will move forward or back to Section</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>index</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="interceptTemplateContainerAction"></a>
+                    <span class="name">
+                        <span ><b>interceptTemplateContainerAction</b></span>
+                        <a href="#interceptTemplateContainerAction"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>interceptTemplateContainerAction(action: FlowTypes.TemplateRowAction)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Inherited from         <code><a href="../components/TemplateLayoutComponent.html" target="_self" >TemplateLayoutComponent</a></code>
+</div>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-line">Defined in         <code><a href="../components/TemplateLayoutComponent.html#source" target="_self" >TemplateLayoutComponent:132</a></code>
+</div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>action</td>
+                                    <td>
+                                            <code>FlowTypes.TemplateRowAction</code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="modifyRowSetter"></a>
+                    <span class="name">
+                        <span ><b>modifyRowSetter</b></span>
+                        <a href="#modifyRowSetter"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>modifyRowSetter(row: FlowTypes.TemplateRow)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Inherited from         <code><a href="../components/TemplateLayoutComponent.html" target="_self" >TemplateLayoutComponent</a></code>
+</div>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-line">Defined in         <code><a href="../components/TemplateLayoutComponent.html#source" target="_self" >TemplateLayoutComponent:89</a></code>
+</div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>row</td>
+                                    <td>
+                                            <code>FlowTypes.TemplateRow</code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>FlowTypes.TemplateRow</code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="updateSectionProgress"></a>
+                    <span class="name">
+                        <span class="modifier">Async</span>
+                        <span ><b>updateSectionProgress</b></span>
+                        <a href="#updateSectionProgress"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>updateSectionProgress()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="181"
+                            class="link-to-prism">src/app/shared/components/template/components/layout/nav_group.ts:181</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Function to Update Progress of Stepper</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="scrollToTop"></a>
+                    <span class="name">
+                        <span class="modifier">Public</span>
+                        <span ><b>scrollToTop</b></span>
+                        <a href="#scrollToTop"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>scrollToTop()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Inherited from         <code><a href="../components/TemplateLayoutComponent.html" target="_self" >TemplateLayoutComponent</a></code>
+</div>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-line">Defined in         <code><a href="../components/TemplateLayoutComponent.html#source" target="_self" >TemplateLayoutComponent:49</a></code>
+</div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>As content can be nested within containers or pages, a general
+method that scrolls everything scrollable (all parent containers and page content)
+to the top</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section>
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="containerRow"></a>
+                    <span class="name">
+                        <span ><b>containerRow</b></span>
+                        <a href="#containerRow"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>hackAddRowWithDefaultActions()</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="83" class="link-to-prism">src/app/shared/components/template/components/layout/nav_group.ts:83</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Temp row to pass emit completed/uncompleted actions to parent</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="sectionIndex"></a>
+                    <span class="name">
+                        <span ><b>sectionIndex</b></span>
+                        <a href="#sectionIndex"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="80" class="link-to-prism">src/app/shared/components/template/components/layout/nav_group.ts:80</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="templateNames"></a>
+                    <span class="name">
+                        <span ><b>templateNames</b></span>
+                        <a href="#templateNames"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>string[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="79" class="link-to-prism">src/app/shared/components/template/components/layout/nav_group.ts:79</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="_row"></a>
+                    <span class="name">
+                        <span ><b>_row</b></span>
+                        <a href="#_row"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>FlowTypes.TemplateRow</code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Inherited from         <code><a href="../components/TemplateLayoutComponent.html" target="_self" >TemplateLayoutComponent</a></code>
+</div>
+                            </td>
+                        </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in         <code><a href="../components/TemplateLayoutComponent.html#source" target="_self" >TemplateLayoutComponent:26</a></code>
+</div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="trackByRow"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>trackByRow</b></span>
+                        <a href="#trackByRow"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>() &#x3D;&gt; {...}</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Inherited from         <code><a href="../components/TemplateLayoutComponent.html" target="_self" >TemplateLayoutComponent</a></code>
+</div>
+                            </td>
+                        </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in         <code><a href="../components/TemplateLayoutComponent.html#source" target="_self" >TemplateLayoutComponent:80</a></code>
+</div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component } from &quot;@angular/core&quot;;
+import { PLHAnimations } from &quot;src/app/shared/animations&quot;;
+import { FlowTypes } from &quot;data-models&quot;;
+import { hackAddRowWithDefaultActions } from &quot;../../hacks&quot;;
+import { TemplateLayoutComponent } from &quot;./layout&quot;;
+import { isObject } from &quot;src/app/shared/utils/utils&quot;;
+import { TemplateFieldService } from &quot;../../services/template-field.service&quot;;
+
+@Component({
+  selector: &quot;plh-tmpl-nav-group&quot;,
+  animations: PLHAnimations.fadeEntryExit,
+  template: &#x60;
+    &lt;div class&#x3D;&quot;nav-progress&quot;&gt;
+      &lt;div
+        *ngFor&#x3D;&quot;let templateName of templateNames; index as i&quot;
+        class&#x3D;&quot;nav-progress-part&quot;
+        [attr.data-seen]&#x3D;&quot;i &lt;&#x3D; sectionIndex ? true : null&quot;
+        (click)&#x3D;&quot;goToSection(i)&quot;
+      &gt;&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;!-- Render placeholders for each section but omit content --&gt;
+    &lt;div
+      *ngFor&#x3D;&quot;let templateName of templateNames; index as i&quot;
+      class&#x3D;&quot;nav-section&quot;
+      [attr.data-selected]&#x3D;&quot;sectionIndex &#x3D;&#x3D;&#x3D; i ? true : null&quot;
+    &gt;
+      &lt;plh-template-container
+        *ngIf&#x3D;&quot;sectionIndex &#x3D;&#x3D;&#x3D; i&quot;
+        [name]&#x3D;&quot;templateName&quot;
+        [templatename]&#x3D;&quot;templateName&quot;
+        [parent]&#x3D;&quot;parent&quot;
+        [row]&#x3D;&quot;containerRow&quot;
+        @fadeEntryExit
+      &gt;
+      &lt;/plh-template-container&gt;
+    &lt;/div&gt;
+  &#x60;,
+  styles: [
+    &#x60;
+      :host {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+      }
+      .nav-section {
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        /* sections not active are kept off-screen to avoid content height jump */
+        right: 100vw;
+      }
+      .nav-section[data-selected] {
+        flex: 1;
+        right: unset;
+      }
+      .nav-progress {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        padding: 1em 0;
+      }
+
+      .nav-progress-part {
+        height: 7px;
+        flex: 1;
+        margin: 0 2px;
+        background-color: var(--ion-primary-color, #0d3f60);
+        border-radius: var(--ion-border-radius-standard);
+        max-width: 40px;
+      }
+
+      .nav-progress-part[data-seen] {
+        background-color: var(--ion-primary-color, #f88923);
+      }
+    &#x60;,
+  ],
+})
+export class NavGroupComponent extends TemplateLayoutComponent {
+  templateNames: string[] &#x3D; [];
+  sectionIndex: number;
+
+  /** Temp row to pass emit completed/uncompleted actions to parent */
+  containerRow &#x3D; hackAddRowWithDefaultActions();
+
+  constructor(private templateFieldService: TemplateFieldService) {
+    super();
+  }
+
+  modifyRowSetter(row: FlowTypes.TemplateRow) {
+    this.hackPopulateTemplateNames(row);
+    if (this.templateNames.length &gt; 0) {
+      row._debug_name &#x3D; this.templateNames[this.sectionIndex];
+      // only set the active section the first time value received
+      // (handle via goToSection method internally for other cases)
+      if (!this.sectionIndex) {
+        this.sectionIndex &#x3D; this.getActiveSectionIdx(row?.parameter_list?.progress_field);
+      }
+    }
+    return row;
+  }
+
+  /**
+   * Populate this.templateNames: if row.value is an object referring to a data_list with a &quot;template&quot; column,
+   * use these values, else if row.value is an array assume it&#x27;s a list of template names.
+   */
+  private hackPopulateTemplateNames(row: any) {
+    let dataListObject &#x3D; null;
+    // Handle case where data list object is passed in directly
+    if (isObject(row?.value)) {
+      dataListObject &#x3D; row.value;
+    }
+    // Handle case where data list object is inside an array,
+    // e.g. if assigned to a &quot;_list&quot; local variable in authoring
+    else if (Array.isArray(row?.value) &amp;&amp; isObject(row?.value[0])) {
+      dataListObject &#x3D; row.value[0];
+    }
+    if (dataListObject) {
+      // If the data list has a &quot;template&quot; column, populate this.templateNames with these values
+      for (const property in dataListObject) {
+        if (dataListObject[property].hasOwnProperty(&quot;template&quot;)) {
+          this.templateNames.push(dataListObject[property].template);
+        }
+      }
+    }
+    // If row.value is an array that doesn&#x27;t contain a datalist object,
+    // assume it&#x27;s a list of template names
+    if (this.templateNames.length &#x3D;&#x3D;&#x3D; 0 &amp;&amp; Array.isArray(row?.value)) {
+      this.templateNames &#x3D; row.value;
+    }
+  }
+
+  interceptTemplateContainerAction(action: FlowTypes.TemplateRowAction) {
+    const { action_id, args } &#x3D; action;
+    // only allow actions to be processed by parent if last section
+    if (action_id &#x3D;&#x3D;&#x3D; &quot;emit&quot; &amp;&amp; args[0] &#x3D;&#x3D;&#x3D; &quot;completed&quot;) {
+      if (this.sectionIndex &lt; this.templateNames.length - 1) {
+        this.goToSection(this.sectionIndex + 1);
+        return false;
+      }
+    }
+    if (action_id &#x3D;&#x3D;&#x3D; &quot;emit&quot; &amp;&amp; args[0] &#x3D;&#x3D;&#x3D; &quot;uncompleted&quot;) {
+      if (this.sectionIndex &gt; 0) {
+        this.goToSection(this.sectionIndex - 1).then();
+        return false;
+      }
+    }
+    // default process on parent
+    return true;
+  }
+
+  /**
+   * Function that will return Current Slider Index
+   * @param progressField
+   */
+  getActiveSectionIdx(progressField: string): number {
+    let result: number;
+    const currentProgress &#x3D; this.templateFieldService.getField(progressField);
+    if (+currentProgress &#x3D;&#x3D;&#x3D; 100) {
+      result &#x3D; 0;
+      this.templateFieldService.setField(progressField, &#x60;${result}&#x60;);
+      return result;
+    }
+    result &#x3D; Math.floor((currentProgress * this.templateNames.length) / 100 - 1);
+    return result &gt; 0 ? result : 0;
+  }
+
+  /**
+   * Function that will move forward or back to Section
+   * @param index
+   */
+  async goToSection(index: number) {
+    this.sectionIndex &#x3D; index;
+    this.scrollToTop();
+    this._row._debug_name &#x3D; this.templateNames[index];
+    await this.updateSectionProgress();
+  }
+
+  /**
+   * Function to Update Progress of Stepper
+   */
+  async updateSectionProgress() {
+    //update the field provided in progress_variable to be equal to the max of it&#x27;s current value
+    //and the percentage of this.sectionIndex from this.templateNames.length. the value should
+    //be an integer between 0 and 100 inclusive.
+    const progressField &#x3D; this._row.parameter_list[&quot;progress_field&quot;];
+    const progressFieldMaximum &#x3D; this._row.parameter_list[&quot;max_progress_field&quot;];
+
+    if (progressField &amp;&amp; progressField.indexOf(&quot;{{&quot;) &lt; 0) {
+      const currentPercentDone &#x3D; Math.ceil(
+        ((this.sectionIndex + 1) / this.templateNames.length) * 100
+      );
+
+      let maximumPercentDone: number;
+
+      let currentMaximumPercentDone: number &#x3D; Number.parseInt(
+        this.templateFieldService.getField(progressFieldMaximum)
+          ? this.templateFieldService.getField(progressFieldMaximum)
+          : currentPercentDone
+      );
+
+      maximumPercentDone &#x3D; Math.max(currentPercentDone, currentMaximumPercentDone);
+
+      await this.parent.handleActions(
+        [
+          {
+            action_id: &quot;set_field&quot;,
+            args: [progressField, &quot;&quot; + currentPercentDone],
+            trigger: &quot;completed&quot;,
+            _triggeredBy: this._row,
+          },
+          {
+            action_id: &quot;set_field&quot;,
+            args: [progressFieldMaximum, &quot;&quot; + maximumPercentDone],
+            trigger: &quot;completed&quot;,
+            _triggeredBy: this._row,
+          },
+        ],
+        this._row
+      );
+    } else {
+      console.warn(&quot;No progress field&quot;, progressField);
+    }
+  }
+}
+</code></pre>
+    </div>
+
+
+    <div class="tab-pane fade " id="c-styleData">
+            <pre class="line-numbers"><code class="language-scss">
+      :host {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+      }
+      .nav-section {
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        /* sections not active are kept off-screen to avoid content height jump */
+        right: 100vw;
+      }
+      .nav-section[data-selected] {
+        flex: 1;
+        right: unset;
+      }
+      .nav-progress {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        padding: 1em 0;
+      }
+
+      .nav-progress-part {
+        height: 7px;
+        flex: 1;
+        margin: 0 2px;
+        background-color: var(--ion-primary-color, #0d3f60);
+        border-radius: var(--ion-border-radius-standard);
+        max-width: 40px;
+      }
+
+      .nav-progress-part[data-seen] {
+        background-color: var(--ion-primary-color, #f88923);
+      }
+    
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><div class="nav-progress">  <div    *ngFor="let templateName of templateNames; index as i"    class="nav-progress-part"    [attr.data-seen]="i <= sectionIndex ? true : null"    (click)="goToSection(i)"  ></div></div><!-- Render placeholders for each section but omit content --><div  *ngFor="let templateName of templateNames; index as i"  class="nav-section"  [attr.data-selected]="sectionIndex === i ? true : null">  <plh-template-container    *ngIf="sectionIndex === i"    [name]="templateName"    [templatename]="templateName"    [parent]="parent"    [row]="containerRow"    @fadeEntryExit  >  </plh-template-container></div></div>'
+    var COMPONENTS = [{'name': 'AccordionSectionComponent', 'selector': 'plh-tmpl-accordion-section'},{'name': 'AnimatedSectionComponent', 'selector': 'plh-tmpl-animated-section'},{'name': 'AnimatedSectionGroupComponent', 'selector': 'plh-tmpl-animated-section-group'},{'name': 'ComboBoxModalComponent', 'selector': 'combo-box-modal'},{'name': 'FormComponent', 'selector': 'plh-tmpl-form'},{'name': 'NavGroupComponent', 'selector': 'plh-tmpl-nav-group'},{'name': 'RoundIconButtonComponent', 'selector': 'plh-round-button'},{'name': 'SelectTextComponent', 'selector': 'plh-select-text'},{'name': 'SquareIconButtonComponent', 'selector': 'plh-square-icon-button'},{'name': 'TemplateBaseComponent', 'selector': ''},{'name': 'TemplateDebuggerComponent', 'selector': 'plh-template-debugger'},{'name': 'TemplateHTMLComponent', 'selector': 'template-html-component'},{'name': 'TemplateLayoutComponent', 'selector': ''},{'name': 'TemplatePopupComponent', 'selector': ''},{'name': 'TmplAccordionComponent', 'selector': 'plh-accordion-component'},{'name': 'TmplAdvancedDashedBoxComponent', 'selector': 'plh-advanced-dashed-box'},{'name': 'TmplAnimatedSlidesComponent', 'selector': 'template-animated-slides'},{'name': 'TmplAudioComponent', 'selector': 'plh-audio'},{'name': 'TmplButtonComponent', 'selector': 'plh-button'},{'name': 'TmplCarouselComponent', 'selector': 'plh-carousel'},{'name': 'TmplComboBoxComponent', 'selector': 'plh-combo-box'},{'name': 'TmplDashedBoxComponent', 'selector': 'plh-dashed-box'},{'name': 'TmplDataItemsComponent', 'selector': 'plh-data-items'},{'name': 'TmplDisplayGridComponent', 'selector': 'plh-display-grid'},{'name': 'TmplDisplayGroupComponent', 'selector': 'plh-tmpl-display-group'},{'name': 'TmplDrawerComponent', 'selector': 'plh-drawer'},{'name': 'TmplHelpIconComponent', 'selector': 'plh-tmpl-help-icon'},{'name': 'TmplIconBannerComponent', 'selector': 'plh-icon-banner'},{'name': 'TmplImageComponent', 'selector': 'plh-tmpl-image'},{'name': 'TmplLatexComponent', 'selector': 'template-latex-component'},{'name': 'TmplLottieAnimation', 'selector': 'plh-tmpl-lottie-animation'},{'name': 'TmplNavigationBarComponent', 'selector': 'plh-navigation-bar'},{'name': 'TmplNumberComponent', 'selector': 'plh-number-selector'},{'name': 'TmplOdkFormComponent', 'selector': 'tmpl-odk-form'},{'name': 'TmplParentPointBoxComponent', 'selector': 'plh-points-item'},{'name': 'TmplParentPointCounterComponent', 'selector': 'plh-parent-point-counter'},{'name': 'TmplPdfComponent', 'selector': 'plh-pdf'},{'name': 'TmplQRCodeComponent', 'selector': 'plh-qr-code'},{'name': 'TmplRadioButtonGridComponent', 'selector': 'plh-radio-button-grid'},{'name': 'TmplRadioGroupComponent', 'selector': 'plh-radio-group'},{'name': 'TmplSimpleCheckboxComponent', 'selector': 'plh-simple-checkbox'},{'name': 'TmplSliderComponent', 'selector': 'plh-slider-new'},{'name': 'TmplSubtitleComponent', 'selector': 'plh-tmpl-subtitle'},{'name': 'TmplTaskCardComponent', 'selector': 'plh-task-card'},{'name': 'TmplTaskProgressBarComponent', 'selector': 'plh-task-progress-bar'},{'name': 'TmplTextAreaComponent', 'selector': 'plh-text-area'},{'name': 'TmplTextBoxComponent', 'selector': 'plh-text-box'},{'name': 'TmplTextComponent', 'selector': 'plh-tmpl-text'},{'name': 'TmplTileComponent', 'selector': 'plh-tile-component'},{'name': 'TmplTimerComponent', 'selector': 'plh-timer'},{'name': 'TmplTitleComponent', 'selector': 'plh-tmpl-title'},{'name': 'TmplToggleBarComponent', 'selector': 'plh-tmpl-toggle-bar'},{'name': 'TmplVideoComponent', 'selector': 'plh-tmpl-video'},{'name': 'WorkshopsComponent', 'selector': 'plh-tmpl-workshops-accordion'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'NavGroupComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'NavGroupComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

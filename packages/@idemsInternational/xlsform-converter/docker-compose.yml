@@ -1,0 +1,6 @@
+services:
+  xlsform_converter:
+    image: idems/xlsform-converter
+    build: ./src
+    volumes:
+      - ./forms:/app/forms:rw

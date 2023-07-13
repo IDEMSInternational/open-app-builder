@@ -1,0 +1,118 @@
+{
+  "flow_type": "template",
+  "module": "celebrate",
+  "flow_name": "w_celebrate_tools_activity",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "tools_activity",
+      "value": "tools_activity",
+      "action_list": [
+        {
+          "trigger": "completed",
+          "action_id": "emit",
+          "args": [
+            "completed"
+          ],
+          "_raw": "completed | emit:completed",
+          "_cleaned": "completed | emit:completed"
+        },
+        {
+          "trigger": "uncompleted",
+          "action_id": "emit",
+          "args": [
+            "uncompleted"
+          ],
+          "_raw": "uncompleted | emit:uncompleted",
+          "_cleaned": "uncompleted | emit:uncompleted"
+        }
+      ],
+      "rows": [
+        {
+          "name": "workshop_data",
+          "value": "@data.workshop.w_celebrate",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "tools_activity.workshop_data",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@data.workshop.w_celebrate",
+                "matchedExpression": "@data.workshop.w_celebrate",
+                "type": "data",
+                "fieldName": "workshop"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@data.workshop.w_celebrate": [
+              "value"
+            ]
+          }
+        },
+        {
+          "type": "nested_properties",
+          "name": "workshop_activity",
+          "rows": [
+            {
+              "name": "activity_image",
+              "value": "plh_images/workshop_modes/group/final/light_bulb.svg",
+              "_translations": {
+                "value": {}
+              },
+              "condition": "@field.do_this_workshop_together",
+              "type": "set_variable",
+              "_nested_name": "tools_activity.workshop_activity.activity_image",
+              "_dynamicFields": {
+                "condition": [
+                  {
+                    "fullExpression": "@field.do_this_workshop_together",
+                    "matchedExpression": "@field.do_this_workshop_together",
+                    "type": "field",
+                    "fieldName": "do_this_workshop_together"
+                  }
+                ]
+              },
+              "_dynamicDependencies": {
+                "@field.do_this_workshop_together": [
+                  "condition"
+                ]
+              }
+            },
+            {
+              "name": "activity_image",
+              "value": "plh_images/workshop_modes/individual/final/light_bulb.svg",
+              "_translations": {
+                "value": {}
+              },
+              "condition": "!@field.do_this_workshop_together",
+              "type": "set_variable",
+              "_nested_name": "tools_activity.workshop_activity.activity_image",
+              "_dynamicFields": {
+                "condition": [
+                  {
+                    "fullExpression": "!@field.do_this_workshop_together",
+                    "matchedExpression": "!@field.do_this_workshop_together",
+                    "type": "field",
+                    "fieldName": "do_this_workshop_together"
+                  }
+                ]
+              },
+              "_dynamicDependencies": {
+                "!@field.do_this_workshop_together": [
+                  "condition"
+                ]
+              }
+            }
+          ],
+          "_nested_name": "tools_activity.workshop_activity"
+        }
+      ],
+      "_nested_name": "tools_activity"
+    }
+  ],
+  "_xlsxPath": "global/top_templates/workshop_templates/workshop_celebrate.xlsx"
+}

@@ -1,0 +1,90 @@
+{
+  "flow_type": "template",
+  "flow_name": "demo_emo_check_in",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "w_self_care_welcome_individual",
+      "value": "w_self_care_welcome_individual",
+      "action_list": [
+        {
+          "trigger": "completed",
+          "action_id": "emit",
+          "args": [
+            "completed"
+          ],
+          "_raw": "completed | emit:completed",
+          "_cleaned": "completed | emit:completed"
+        },
+        {
+          "trigger": "uncompleted",
+          "action_id": "emit",
+          "args": [
+            "completed"
+          ],
+          "_raw": "uncompleted | emit:completed",
+          "_cleaned": "uncompleted | emit:completed"
+        }
+      ],
+      "exclude_from_translation": true,
+      "rows": [
+        {
+          "type": "nested_properties",
+          "name": "welcome_individual",
+          "exclude_from_translation": true,
+          "rows": [
+            {
+              "type": "nested_properties",
+              "name": "workshop_activity",
+              "exclude_from_translation": true,
+              "rows": [
+                {
+                  "name": "hide_intro",
+                  "value": true,
+                  "exclude_from_translation": true,
+                  "type": "set_variable",
+                  "_nested_name": "w_self_care_welcome_individual.welcome_individual.workshop_activity.hide_intro"
+                },
+                {
+                  "name": "hide_content",
+                  "value": false,
+                  "exclude_from_translation": true,
+                  "type": "set_variable",
+                  "_nested_name": "w_self_care_welcome_individual.welcome_individual.workshop_activity.hide_content"
+                },
+                {
+                  "type": "nested_properties",
+                  "name": "content_box",
+                  "exclude_from_translation": true,
+                  "rows": [
+                    {
+                      "type": "nested_properties",
+                      "name": "nav_buttons",
+                      "exclude_from_translation": true,
+                      "rows": [
+                        {
+                          "name": "display_back",
+                          "value": false,
+                          "exclude_from_translation": true,
+                          "type": "set_variable",
+                          "_nested_name": "w_self_care_welcome_individual.welcome_individual.workshop_activity.content_box.nav_buttons.display_back"
+                        }
+                      ],
+                      "_nested_name": "w_self_care_welcome_individual.welcome_individual.workshop_activity.content_box.nav_buttons"
+                    }
+                  ],
+                  "_nested_name": "w_self_care_welcome_individual.welcome_individual.workshop_activity.content_box"
+                }
+              ],
+              "_nested_name": "w_self_care_welcome_individual.welcome_individual.workshop_activity"
+            }
+          ],
+          "_nested_name": "w_self_care_welcome_individual.welcome_individual"
+        }
+      ],
+      "_nested_name": "w_self_care_welcome_individual"
+    }
+  ],
+  "_xlsxPath": "global/demo_templates/demo_navigation.xlsx"
+}

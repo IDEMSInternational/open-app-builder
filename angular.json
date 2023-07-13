@@ -32,18 +32,20 @@
                 "output": "assets"
               },
               {
-                "glob": "**/*",
-                "input": "node_modules/app-data/assets",
-                "output": "assets/app_data_assets"
-              },
-              {
                 "glob": "**/*.svg",
                 "input": "node_modules/ionicons/dist/ionicons/svg",
                 "output": "./svg"
+              },
+              {
+                "glob": "{*.min.js,op-chaining-support.js,cmaps/*,images/*,locale/en-GB/*,locale/locale.properties,standard_fonts/**}",
+                "input": "node_modules/ngx-extended-pdf-viewer/assets/",
+                "ignore": ["**/*-es5.min.js"],
+                "output": "/assets/comp-pdf"
               }
             ],
             "styles": [
               "./node_modules/intro.js/introjs.css",
+              "./node_modules/katex/dist/katex.min.css",
               {
                 "input": "src/theme/variables.scss",
                 "inject": true
@@ -51,14 +53,23 @@
               {
                 "input": "src/global.scss",
                 "inject": true
-              },
-              {
-                "input": "node_modules/survey-angular/modern.css",
-                "inject": true
               }
             ],
             "scripts": ["./node_modules/intro.js/intro.js"],
-            "allowedCommonJsDependencies": ["lottie-web", "firebase/app", "@firebase/auth"]
+            "allowedCommonJsDependencies": [
+              "lottie-web",
+              "firebase/app",
+              "@firebase/auth",
+              "clone",
+              "howler",
+              "dompurify",
+              "extract-math",
+              "marked",
+              "app-data",
+              "stacktrace-js",
+              "intro.js",
+              "qrcode"
+            ]
           },
           "configurations": {
             "development": {
@@ -94,14 +105,26 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "6mb",
-                  "maximumError": "16mb"
+                  "maximumWarning": "850kb",
+                  "maximumError": "5mb"
                 },
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "6kb"
+                  "maximumWarning": "3kb",
+                  "maximumError": "200kb"
                 }
               ]
+            },
+            "glitchtip": {
+              "sourceMap": {
+                "scripts": true,
+                "styles": false,
+                "hidden": true,
+                "vendor": false
+              }
+            },
+            "preview": {
+              "sourceMap": true
             },
             "ci": {
               "budgets": [
@@ -137,30 +160,24 @@
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "src/test.ts",
-            "polyfills": "src/polyfills.ts",
-            "tsConfig": "tsconfig.spec.json",
             "karmaConfig": "karma.conf.js",
-            "styles": ["./node_modules/@angular/material/prebuilt-themes/indigo-pink.css"],
-            "scripts": [],
-            "assets": [
+            "polyfills": ["zone.js", "zone.js/testing"],
+            "tsConfig": "tsconfig.spec.json",
+            "inlineStyleLanguage": "scss",
+            "assets": ["src/favicon.ico", "src/assets"],
+            "styles": [
+              "./node_modules/intro.js/introjs.css",
+              "./node_modules/katex/dist/katex.min.css",
               {
-                "glob": "favicon.ico",
-                "input": "src/",
-                "output": "/"
+                "input": "src/theme/variables.scss",
+                "inject": false
               },
               {
-                "glob": "**/*",
-                "input": "src/assets",
-                "output": "/assets"
+                "input": "src/global.scss",
+                "inject": false
               }
-            ]
-          },
-          "configurations": {
-            "ci": {
-              "progress": false,
-              "watch": false
-            }
+            ],
+            "scripts": []
           }
         },
         "lint": {
@@ -193,7 +210,8 @@
   },
   "cli": {
     "defaultCollection": "@ionic/angular-toolkit",
-    "packageManager": "yarn"
+    "packageManager": "yarn",
+    "analytics": false
   },
   "schematics": {
     "@ionic/angular-toolkit:component": {

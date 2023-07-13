@@ -1,0 +1,200 @@
+{
+  "flow_type": "template",
+  "flow_name": "in_week_message",
+  "status": "released",
+  "rows": [
+    {
+      "name": "habit_data",
+      "type": "set_variable",
+      "_nested_name": "habit_data"
+    },
+    {
+      "name": "habit_2_data",
+      "type": "set_variable",
+      "_nested_name": "habit_2_data"
+    },
+    {
+      "name": "habit_text",
+      "type": "set_variable",
+      "_nested_name": "habit_text"
+    },
+    {
+      "type": "image",
+      "name": "image",
+      "hidden": "@local.habit_data",
+      "style_list": [
+        "height: 180px"
+      ],
+      "_nested_name": "image",
+      "_dynamicFields": {
+        "hidden": [
+          {
+            "fullExpression": "@local.habit_data",
+            "matchedExpression": "@local.habit_data",
+            "type": "local",
+            "fieldName": "habit_data"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.habit_data": [
+          "hidden"
+        ]
+      }
+    },
+    {
+      "type": "title",
+      "name": "title",
+      "_nested_name": "title"
+    },
+    {
+      "type": "text",
+      "name": "text",
+      "_nested_name": "text"
+    },
+    {
+      "type": "template",
+      "name": "habit_box",
+      "value": "parent_point_dashed_box",
+      "hidden": "!@local.habit_data",
+      "rows": [
+        {
+          "name": "habit_1_data",
+          "value": "@local.habit_data",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "habit_box.habit_1_data",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@local.habit_data",
+                "matchedExpression": "@local.habit_data",
+                "type": "local",
+                "fieldName": "habit_data"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@local.habit_data": [
+              "value"
+            ]
+          }
+        },
+        {
+          "name": "habit_text",
+          "value": "@local.habit_text",
+          "_translations": {
+            "value": {}
+          },
+          "condition": "@local.habit_text",
+          "type": "set_variable",
+          "_nested_name": "habit_box.habit_text",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@local.habit_text",
+                "matchedExpression": "@local.habit_text",
+                "type": "local",
+                "fieldName": "habit_text"
+              }
+            ],
+            "condition": [
+              {
+                "fullExpression": "@local.habit_text",
+                "matchedExpression": "@local.habit_text",
+                "type": "local",
+                "fieldName": "habit_text"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@local.habit_text": [
+              "value",
+              "condition"
+            ]
+          }
+        },
+        {
+          "name": "habit_2_data",
+          "value": "@local.habit_2_data",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "habit_box.habit_2_data",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@local.habit_2_data",
+                "matchedExpression": "@local.habit_2_data",
+                "type": "local",
+                "fieldName": "habit_2_data"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@local.habit_2_data": [
+              "value"
+            ]
+          }
+        }
+      ],
+      "_nested_name": "habit_box",
+      "_dynamicFields": {
+        "hidden": [
+          {
+            "fullExpression": "!@local.habit_data",
+            "matchedExpression": "!@local.habit_data",
+            "type": "local",
+            "fieldName": "habit_data"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "!@local.habit_data": [
+          "hidden"
+        ]
+      }
+    },
+    {
+      "type": "button",
+      "name": "button_1",
+      "value": "@global.check_it_out_button",
+      "_translations": {
+        "value": {}
+      },
+      "hidden": true,
+      "parameter_list": {
+        "style": "navigation"
+      },
+      "_nested_name": "button_1",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@global.check_it_out_button",
+            "matchedExpression": "@global.check_it_out_button",
+            "type": "global",
+            "fieldName": "check_it_out_button"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@global.check_it_out_button": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "button",
+      "name": "button_2",
+      "hidden": true,
+      "parameter_list": {
+        "style": "navigation"
+      },
+      "_nested_name": "button_2"
+    }
+  ],
+  "_xlsxPath": "global/top_templates/in_week_messages/in_week_message_types.xlsx"
+}

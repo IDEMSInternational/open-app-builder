@@ -1,0 +1,47 @@
+{
+  "flow_type": "template",
+  "module": "consequence",
+  "flow_name": "w_consequence_hp_challenges",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "home_practice_challenges",
+      "value": "home_practice_challenges",
+      "action_list": [
+        {
+          "trigger": "completed",
+          "action_id": "emit",
+          "args": [
+            "completed"
+          ],
+          "_raw": "completed | emit:completed",
+          "_cleaned": "completed | emit:completed"
+        },
+        {
+          "trigger": "uncompleted",
+          "action_id": "emit",
+          "args": [
+            "uncompleted"
+          ],
+          "_raw": "uncompleted | emit:uncompleted",
+          "_cleaned": "uncompleted | emit:uncompleted"
+        }
+      ],
+      "rows": [
+        {
+          "name": "workshop",
+          "value": "w_consequence",
+          "_translations": {
+            "value": {}
+          },
+          "exclude_from_translation": true,
+          "type": "set_variable",
+          "_nested_name": "home_practice_challenges.workshop"
+        }
+      ],
+      "_nested_name": "home_practice_challenges"
+    }
+  ],
+  "_xlsxPath": "global/top_templates/in_week_messages/home_practice_reviews/w_consequence_hp_review.xlsx"
+}

@@ -1,12 +1,14 @@
 import { firebaseConfig } from "./firebaseConfig";
 import packageJson from "../../package.json";
-import deploymentJson from "../../.idems_app/deployments/default.json";
+import deploymentJson from "../../.idems_app/deployments/activeDeployment.json";
+import type { IDeploymentConfig } from "packages/data-models";
 
 export const environment = {
   /** App version, as provided by package.json */
   version: packageJson.version,
   deploymentName: deploymentJson.name,
-  deploymentConfig: deploymentJson,
+  // HACK - json config converts functions to strings, not strongly typed
+  deploymentConfig: deploymentJson as any as IDeploymentConfig,
   production: false,
   rapidPro: {
     receiveUrl:
@@ -14,18 +16,13 @@ export const environment = {
     contactRegisterUrl:
       "https://rapidpro.idems.international/c/fcm/a459e9bf-6462-41fe-9bde-98dbed64e687/register",
   },
-  envName: "dev",
   firebaseConfig,
   domains: ["plh-demo1.idems.international", "plh-demo.idems.international"],
   chatNonNavigatePaths: ["/chat/action", "/chat/msg-info"],
   variableNameFlows: ["character_names"],
-  /** Local Postgres */
-  // apiEndpoint: "http://localhost:3000",
-  /** Local Docker */
-  apiEndpoint: "http://localhost/api",
+  /** Local Settings */
   analytics: { endpoint: "http://localhost/analytics", siteId: 1 },
-  /** production settings **/
-  // apiEndpoint: "https://apps-server.idems.international/api",
+  /** Production Settings **/
   // analytics: { endpoint: "https://apps-server.idems.international/analytics", siteId: 1 },
 };
 

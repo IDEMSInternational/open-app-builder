@@ -2,13 +2,13 @@ import { NestFactory } from "@nestjs/core";
 import { SwaggerModule, DocumentBuilder } from "@nestjs/swagger";
 import * as fs from "fs";
 import { AppModule } from "./app.module";
-import { setupDB } from "./db";
+import { DBInstance } from "./db";
 import { environment } from "./environment";
 
 async function bootstrap() {
   // DB Bootstrap (could be managed outside repo)
-  await setupDB();
-  // API Boostrap (auto connects to DB)
+  await new DBInstance().setup();
+  // API Bootstrap (auto connects to DB)
   const app = await NestFactory.create(AppModule);
   app.enableCors();
   // Make available on reverse proxy path (e.g. /api)
@@ -17,7 +17,7 @@ async function bootstrap() {
   const config = new DocumentBuilder()
     .setTitle("IDEMS Apps API")
     .setDescription("App-Server Communication")
-    .setVersion("1.1")
+    .setVersion(environment.npm_package_version || "1.2")
     .addTag("api")
     // .setBasePath("/api")
     // Fix swagger redirection issue

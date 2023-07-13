@@ -1,0 +1,125 @@
+{
+  "flow_type": "template",
+  "module": "safe",
+  "flow_name": "w_safe_stepper",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "workshop_stepper_actions",
+      "value": "workshop_stepper_actions",
+      "action_list": [
+        {
+          "trigger": "completed",
+          "action_id": "emit",
+          "args": [
+            "completed"
+          ],
+          "_raw": "completed | emit:completed",
+          "_cleaned": "completed | emit:completed"
+        },
+        {
+          "trigger": "uncompleted",
+          "action_id": "emit",
+          "args": [
+            "uncompleted"
+          ],
+          "_raw": "uncompleted | emit:uncompleted",
+          "_cleaned": "uncompleted | emit:uncompleted"
+        }
+      ],
+      "rows": [
+        {
+          "name": "workshop_id",
+          "value": "w_safe",
+          "_translations": {
+            "value": {}
+          },
+          "exclude_from_translation": true,
+          "type": "set_variable",
+          "_nested_name": "workshop_stepper_actions.workshop_id"
+        },
+        {
+          "type": "nested_properties",
+          "name": "workshop_stepper",
+          "rows": [
+            {
+              "name": "nav_template_list",
+              "value": [
+                "w_safe_care_together",
+                "w_safe_relax",
+                "w_safe_reflect_together",
+                "w_safe_intro",
+                "w_safe_read_1",
+                "w_safe_talk_1",
+                "w_safe_read_2",
+                "w_safe_talk_2",
+                "w_safe_learn_together_temp",
+                "w_safe_tools_activity",
+                "w_safe_home_practice",
+                "w_safe_ending"
+              ],
+              "condition": "@field.do_this_workshop_together",
+              "exclude_from_translation": true,
+              "type": "set_variable",
+              "_nested_name": "workshop_stepper_actions.workshop_stepper.nav_template_list",
+              "_dynamicFields": {
+                "condition": [
+                  {
+                    "fullExpression": "@field.do_this_workshop_together",
+                    "matchedExpression": "@field.do_this_workshop_together",
+                    "type": "field",
+                    "fieldName": "do_this_workshop_together"
+                  }
+                ]
+              },
+              "_dynamicDependencies": {
+                "@field.do_this_workshop_together": [
+                  "condition"
+                ]
+              }
+            },
+            {
+              "name": "nav_template_list",
+              "value": [
+                "w_safe_welcome_individual",
+                "w_safe_relax",
+                "w_safe_intro",
+                "w_safe_read_1",
+                "w_safe_question_1",
+                "w_safe_read_2",
+                "w_safe_question_2",
+                "w_safe_learn_individual_temp",
+                "w_safe_tools_activity",
+                "w_safe_home_practice",
+                "w_safe_ending"
+              ],
+              "condition": "!@field.do_this_workshop_together",
+              "exclude_from_translation": true,
+              "type": "set_variable",
+              "_nested_name": "workshop_stepper_actions.workshop_stepper.nav_template_list",
+              "_dynamicFields": {
+                "condition": [
+                  {
+                    "fullExpression": "!@field.do_this_workshop_together",
+                    "matchedExpression": "!@field.do_this_workshop_together",
+                    "type": "field",
+                    "fieldName": "do_this_workshop_together"
+                  }
+                ]
+              },
+              "_dynamicDependencies": {
+                "!@field.do_this_workshop_together": [
+                  "condition"
+                ]
+              }
+            }
+          ],
+          "_nested_name": "workshop_stepper_actions.workshop_stepper"
+        }
+      ],
+      "_nested_name": "workshop_stepper_actions"
+    }
+  ],
+  "_xlsxPath": "global/top_templates/workshop_templates/workshop_safe.xlsx"
+}

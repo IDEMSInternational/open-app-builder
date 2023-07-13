@@ -1,0 +1,137 @@
+{
+  "flow_type": "template",
+  "module": "money",
+  "flow_name": "w_money_stepper",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "workshop_stepper_actions",
+      "value": "workshop_stepper_actions",
+      "action_list": [
+        {
+          "trigger": "completed",
+          "action_id": "emit",
+          "args": [
+            "completed"
+          ],
+          "_raw": "completed | emit:completed",
+          "_cleaned": "completed | emit:completed"
+        },
+        {
+          "trigger": "uncompleted",
+          "action_id": "emit",
+          "args": [
+            "uncompleted"
+          ],
+          "_raw": "uncompleted | emit:uncompleted",
+          "_cleaned": "uncompleted | emit:uncompleted"
+        }
+      ],
+      "rows": [
+        {
+          "name": "workshop_id",
+          "value": "w_money",
+          "_translations": {
+            "value": {}
+          },
+          "exclude_from_translation": true,
+          "type": "set_variable",
+          "_nested_name": "workshop_stepper_actions.workshop_id"
+        },
+        {
+          "type": "nested_properties",
+          "name": "workshop_stepper",
+          "rows": [
+            {
+              "name": "nav_template_list",
+              "value": [
+                "w_money_care_together",
+                "w_money_relax",
+                "w_money_reflect_together",
+                "w_money_intro",
+                "w_money_read_1",
+                "w_money_learn_1_temp",
+                "w_money_learn_2_temp",
+                "w_money_learn_3_temp",
+                "w_money_learn_4_temp",
+                "w_money_read_2",
+                "w_money_tq_1",
+                "w_money_read_3",
+                "w_money_tq_2",
+                "w_money_tq_3",
+                "w_money_learn_5_temp",
+                "w_money_tools_activity",
+                "w_money_home_practice",
+                "w_money_ending"
+              ],
+              "condition": "@fields.do_this_workshop_together",
+              "exclude_from_translation": true,
+              "type": "set_variable",
+              "_nested_name": "workshop_stepper_actions.workshop_stepper.nav_template_list",
+              "_dynamicFields": {
+                "condition": [
+                  {
+                    "fullExpression": "@fields.do_this_workshop_together",
+                    "matchedExpression": "@fields.do_this_workshop_together",
+                    "type": "fields",
+                    "fieldName": "do_this_workshop_together"
+                  }
+                ]
+              },
+              "_dynamicDependencies": {
+                "@fields.do_this_workshop_together": [
+                  "condition"
+                ]
+              }
+            },
+            {
+              "name": "nav_template_list",
+              "value": [
+                "w_money_welcome_individual",
+                "w_money_relax",
+                "w_money_intro",
+                "w_money_read_1",
+                "w_money_learn_1_temp",
+                "w_money_learn_2_temp",
+                "w_money_learn_3_temp",
+                "w_money_learn_4_temp",
+                "w_money_read_2",
+                "w_money_tq_1",
+                "w_money_read_3",
+                "w_money_tq_2",
+                "w_money_tq_3",
+                "w_money_learn_5_temp",
+                "w_money_tools_activity",
+                "w_money_home_practice",
+                "w_money_ending"
+              ],
+              "condition": "!@fields.do_this_workshop_together",
+              "exclude_from_translation": true,
+              "type": "set_variable",
+              "_nested_name": "workshop_stepper_actions.workshop_stepper.nav_template_list",
+              "_dynamicFields": {
+                "condition": [
+                  {
+                    "fullExpression": "!@fields.do_this_workshop_together",
+                    "matchedExpression": "!@fields.do_this_workshop_together",
+                    "type": "fields",
+                    "fieldName": "do_this_workshop_together"
+                  }
+                ]
+              },
+              "_dynamicDependencies": {
+                "!@fields.do_this_workshop_together": [
+                  "condition"
+                ]
+              }
+            }
+          ],
+          "_nested_name": "workshop_stepper_actions.workshop_stepper"
+        }
+      ],
+      "_nested_name": "workshop_stepper_actions"
+    }
+  ],
+  "_xlsxPath": "global/top_templates/workshop_templates/workshop_money.xlsx"
+}
