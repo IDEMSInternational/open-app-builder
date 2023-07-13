@@ -19,6 +19,7 @@ export class AppDataService extends SyncServiceBase {
   private sheetContents = SHEETS_CONTENT_LIST;
   private translationContents = TRANSLATIONS_CONTENT_LIST;
   public appDataCache: IAppDataCache = {
+    asset_pack: {},
     data_pipe: {},
     data_list: {},
     generator: {},
@@ -86,7 +87,7 @@ export class AppDataService extends SyncServiceBase {
       const flow = await this.loadSheetFromJson(sheetContents);
       this.appDataCache[flow_type][flow_name] = flow;
       // Data lists have additional processing, default is just to populate value
-      if (flow.flow_type === "data_list") {
+      if (flow.flow_type === "data_list" || flow.flow_type === "asset_pack") {
         this.populateCacheDataList(flow);
       }
     }
