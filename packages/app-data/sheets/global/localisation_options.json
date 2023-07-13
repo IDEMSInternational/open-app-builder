@@ -77,6 +77,14 @@
           "tz_sw": true
         }
       }
+    },
+    {
+      "type": "declare_global_constant",
+      "name": "regional",
+      "value": "regional",
+      "_translations": {
+        "value": {}
+      }
     }
   ],
   "_xlsxPath": "global/data/localisation_globals.xlsx"

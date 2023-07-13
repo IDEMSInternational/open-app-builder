@@ -21,9 +21,7 @@
         "reply_sad": {
           "tz_sw": true
         },
-        "activity_title": {
-          "tz_sw": true
-        },
+        "activity_title": {},
         "question_text": {
           "tz_sw": true
         }
@@ -71,12 +69,8 @@
         "reply_sad": {
           "tz_sw": true
         },
-        "activity_title": {
-          "tz_sw": true
-        },
-        "intro_text": {
-          "tz_sw": true
-        },
+        "activity_title": {},
+        "intro_text": {},
         "question_text": {
           "tz_sw": true
         }
@@ -128,12 +122,8 @@
         "reply_sad": {
           "tz_sw": true
         },
-        "activity_title": {
-          "tz_sw": true
-        },
-        "intro_text": {
-          "tz_sw": true
-        },
+        "activity_title": {},
+        "intro_text": {},
         "question_text": {
           "tz_sw": true
         }
@@ -182,15 +172,9 @@
         "reply_ok": {
           "tz_sw": true
         },
-        "reply_sad": {
-          "tz_sw": true
-        },
-        "activity_title": {
-          "tz_sw": true
-        },
-        "intro_text": {
-          "tz_sw": true
-        },
+        "reply_sad": {},
+        "activity_title": {},
+        "intro_text": {},
         "question_text": {
           "tz_sw": true
         }
@@ -236,18 +220,12 @@
         "reply_happy": {
           "tz_sw": true
         },
-        "reply_ok": {
-          "tz_sw": true
-        },
+        "reply_ok": {},
         "reply_sad": {
           "tz_sw": true
         },
-        "activity_title": {
-          "tz_sw": true
-        },
-        "intro_text": {
-          "tz_sw": true
-        },
+        "activity_title": {},
+        "intro_text": {},
         "question_text": {
           "tz_sw": true
         }
@@ -299,12 +277,8 @@
         "reply_sad": {
           "tz_sw": true
         },
-        "activity_title": {
-          "tz_sw": true
-        },
-        "intro_text": {
-          "tz_sw": true
-        },
+        "activity_title": {},
+        "intro_text": {},
         "question_text": {
           "tz_sw": true
         }
@@ -353,15 +327,9 @@
         "reply_ok": {
           "tz_sw": true
         },
-        "reply_sad": {
-          "tz_sw": true
-        },
-        "activity_title": {
-          "tz_sw": true
-        },
-        "intro_text": {
-          "tz_sw": true
-        },
+        "reply_sad": {},
+        "activity_title": {},
+        "intro_text": {},
         "question_text": {
           "tz_sw": true
         }
@@ -407,18 +375,12 @@
         "reply_happy": {
           "tz_sw": true
         },
-        "reply_ok": {
-          "tz_sw": true
-        },
+        "reply_ok": {},
         "reply_sad": {
           "tz_sw": true
         },
-        "activity_title": {
-          "tz_sw": true
-        },
-        "intro_text": {
-          "tz_sw": true
-        },
+        "activity_title": {},
+        "intro_text": {},
         "question_text": {
           "tz_sw": true
         }
@@ -431,7 +393,7 @@
           "eng": "Great. And amazing that you are using this app – it shows your commitment as a parent. Make sure you give yourself credit and praise for what you are doing."
         },
         "reply_ok": {
-          "eng": "Every day has its highs and lows. Praise yourself for being here and trying - you are moving forward."
+          "eng": "Every day has its highs and lows. Praise yourself for being here and trying – you are moving forward."
         },
         "reply_sad": {
           "eng": "Sorry that things are difficult right now. Take a deep breath and know that you are valued."
@@ -447,7 +409,7 @@
         }
       },
       "reply_happy": "Great. And amazing that you are using this app – it shows your commitment as a parent. Make sure you give yourself credit and praise for what you are doing.",
-      "reply_ok": "Every day has its highs and lows. Praise yourself for being here and trying - you are moving forward.",
+      "reply_ok": "Every day has its highs and lows. Praise yourself for being here and trying – you are moving forward.",
       "reply_sad": "Sorry that things are difficult right now. Take a deep breath and know that you are valued.",
       "activity_title": "Welcome, @fields.user_name!",
       "intro_text": "It is great to see you again!",
@@ -470,12 +432,8 @@
         "reply_sad": {
           "tz_sw": true
         },
-        "activity_title": {
-          "tz_sw": true
-        },
-        "intro_text": {
-          "tz_sw": true
-        },
+        "activity_title": {},
+        "intro_text": {},
         "question_text": {
           "tz_sw": true
         }
@@ -525,12 +483,8 @@
         "reply_sad": {
           "tz_sw": true
         },
-        "activity_title": {
-          "tz_sw": true
-        },
-        "intro_text": {
-          "tz_sw": true
-        },
+        "activity_title": {},
+        "intro_text": {},
         "question_text": {
           "tz_sw": true
         }
@@ -576,18 +530,12 @@
         "reply_happy": {
           "tz_sw": true
         },
-        "reply_ok": {
-          "tz_sw": true
-        },
+        "reply_ok": {},
         "reply_sad": {
           "tz_sw": true
         },
-        "activity_title": {
-          "tz_sw": true
-        },
-        "intro_text": {
-          "tz_sw": true
-        },
+        "activity_title": {},
+        "intro_text": {},
         "question_text": {
           "tz_sw": true
         }
@@ -600,7 +548,7 @@
           "eng": "Great that today is going well! What is one thing that has gone well today? Remember to praise yourself for it."
         },
         "reply_ok": {
-          "eng": "Every day has its good and hard parts. Praise yourself for everything you have done so far - you are amazing."
+          "eng": "Every day has its good and hard parts. Praise yourself for everything you have done so far – you are amazing."
         },
         "reply_sad": {
           "eng": "Sorry to hear you are feeling difficult feelings today. Well done for recognising those emotions, and trying to be calm and kind to yourself. You are setting a great example for your family."
@@ -616,7 +564,7 @@
         }
       },
       "reply_happy": "Great that today is going well! What is one thing that has gone well today? Remember to praise yourself for it.",
-      "reply_ok": "Every day has its good and hard parts. Praise yourself for everything you have done so far - you are amazing.",
+      "reply_ok": "Every day has its good and hard parts. Praise yourself for everything you have done so far – you are amazing.",
       "reply_sad": "Sorry to hear you are feeling difficult feelings today. Well done for recognising those emotions, and trying to be calm and kind to yourself. You are setting a great example for your family.",
       "activity_title": "Welcome, @fields.user_name!",
       "intro_text": "It is great to see you again!",
@@ -625,36 +573,28 @@
     {
       "id": "w_celebrate",
       "activity_image": "plh_images/workshop_modes/guide_2/final/wave.svg",
-      "reply_happy": "Fantastic! And well done for investing in yourself and your family - you have accomplished a lot.",
+      "reply_happy": "Fantastic! And well done for investing in yourself and your family – you have accomplished a lot.",
       "_translations": {
-        "reply_happy": {
-          "tz_sw": true
-        },
+        "reply_happy": {},
         "reply_ok": {
           "tz_sw": true
         },
-        "reply_sad": {
-          "tz_sw": true
-        },
-        "activity_title": {
-          "tz_sw": true
-        },
-        "intro_text": {
-          "tz_sw": true
-        },
+        "reply_sad": {},
+        "activity_title": {},
+        "intro_text": {},
         "question_text": {
           "tz_sw": true
         }
       },
       "_translatedFields": {
         "reply_happy": {
-          "eng": "Fantastic! And well done for investing in yourself and your family - you have accomplished a lot."
+          "eng": "Fantastic! And well done for investing in yourself and your family – you have accomplished a lot."
         },
         "reply_ok": {
           "eng": "Sorry that you are not having the best day. Well done for trying to figure everything out. @global.parent_app is here to help."
         },
         "reply_sad": {
-          "eng": "Being a parent can be challenging. Take a deep breath and recognise all you have done for your family - you deserve praise!"
+          "eng": "Being a parent can be challenging. Take a deep breath and recognise all you have done for your family – you deserve praise!"
         },
         "activity_title": {
           "eng": "Welcome, @fields.user_name!"
@@ -667,7 +607,150 @@
         }
       },
       "reply_ok": "Sorry that you are not having the best day. Well done for trying to figure everything out. @global.parent_app is here to help.",
-      "reply_sad": "Being a parent can be challenging. Take a deep breath and recognise all you have done for your family - you deserve praise!",
+      "reply_sad": "Being a parent can be challenging. Take a deep breath and recognise all you have done for your family – you deserve praise!",
+      "activity_title": "Welcome, @fields.user_name!",
+      "intro_text": "It is great to see you again!",
+      "question_text": "How are you feeling today?"
+    },
+    {
+      "id": "w_srh",
+      "activity_image": "plh_images/workshop_modes/individual/wave.svg",
+      "text": "Discussing body changes and relationships can be difficult. Take a moment for yourself first.",
+      "_translations": {
+        "text": {},
+        "activity_title": {},
+        "intro_text": {},
+        "question_text": {
+          "tz_sw": true
+        }
+      },
+      "_translatedFields": {
+        "text": {
+          "eng": "Discussing body changes and relationships can be difficult. Take a moment for yourself first."
+        },
+        "activity_title": {
+          "eng": "Welcome, @fields.user_name!"
+        },
+        "intro_text": {
+          "eng": "It is great to see you again!"
+        },
+        "question_text": {
+          "eng": "How are you feeling today?"
+        }
+      },
+      "activity_title": "Welcome, @fields.user_name!",
+      "intro_text": "It is great to see you again!",
+      "question_text": "How are you feeling today?"
+    },
+    {
+      "id": "w_svp",
+      "activity_image": "plh_images/workshop_modes/individual/wave.svg",
+      "text": "It can be hard to think about dangerous situations for your teen. Take a moment to notice how you are doing.",
+      "_translations": {
+        "text": {},
+        "reply_happy": {
+          "tz_sw": true
+        },
+        "reply_ok": {
+          "tz_sw": true
+        },
+        "reply_sad": {
+          "tz_sw": true
+        },
+        "activity_title": {},
+        "intro_text": {},
+        "question_text": {
+          "tz_sw": true
+        }
+      },
+      "_translatedFields": {
+        "text": {
+          "eng": "It can be hard to think about dangerous situations for your teen. Take a moment to notice how you are doing."
+        },
+        "reply_happy": {
+          "eng": "Great! So good to hear that you are in a good space today. What a wonderful feeling!"
+        },
+        "reply_ok": {
+          "eng": "Some days will have their challenges. That is okay. You are on the right path!"
+        },
+        "reply_sad": {
+          "eng": "Sorry that things are difficult now. It is completely normal to struggle sometimes. Remember that you are not alone!"
+        },
+        "activity_title": {
+          "eng": "Welcome, @fields.user_name!"
+        },
+        "intro_text": {
+          "eng": "It is great to see you again!"
+        },
+        "question_text": {
+          "eng": "How are you feeling today?"
+        }
+      },
+      "reply_happy": "Great! So good to hear that you are in a good space today. What a wonderful feeling!",
+      "reply_ok": "Some days will have their challenges. That is okay. You are on the right path!",
+      "reply_sad": "Sorry that things are difficult now. It is completely normal to struggle sometimes. Remember that you are not alone!",
+      "activity_title": "Welcome, @fields.user_name!",
+      "intro_text": "It is great to see you again!",
+      "question_text": "How are you feeling today?"
+    },
+    {
+      "id": "w_grief",
+      "activity_image": "plh_images/workshop_modes/individual/wave.svg",
+      "text": "When we lose someone we love, we go through so many different emotions. There is no right or wrong way to feel. However you are feeling, it is okay.",
+      "_translations": {
+        "text": {},
+        "activity_title": {},
+        "intro_text": {},
+        "question_text": {
+          "tz_sw": true
+        }
+      },
+      "_translatedFields": {
+        "text": {
+          "eng": "When we lose someone we love, we go through so many different emotions. There is no right or wrong way to feel. However you are feeling, it is okay."
+        },
+        "activity_title": {
+          "eng": "Welcome, @fields.user_name!"
+        },
+        "intro_text": {
+          "eng": "It is great to see you again!"
+        },
+        "question_text": {
+          "eng": "How are you feeling today?"
+        }
+      },
+      "activity_title": "Welcome, @fields.user_name!",
+      "intro_text": "It is great to see you again!",
+      "question_text": "How are you feeling today?"
+    },
+    {
+      "id": "w_learn",
+      "activity_image": "plh_images/workshop_modes/individual/wave.svg",
+      "text": "Let’s take a moment for YOU. Looking after yourself well starts with noticing how you feel.",
+      "_translations": {
+        "text": {
+          "tz_sw": true
+        },
+        "activity_title": {},
+        "intro_text": {},
+        "question_text": {
+          "tz_sw": true
+        }
+      },
+      "_translatedFields": {
+        "text": {
+          "eng": "Let’s take a moment for YOU. Looking after yourself well starts with noticing how you feel."
+        },
+        "activity_title": {
+          "eng": "Welcome, @fields.user_name!"
+        },
+        "intro_text": {
+          "eng": "It is great to see you again!"
+        },
+        "question_text": {
+          "eng": "How are you feeling today?"
+        }
+      },
       "activity_title": "Welcome, @fields.user_name!",
       "intro_text": "It is great to see you again!",
       "question_text": "How are you feeling today?"

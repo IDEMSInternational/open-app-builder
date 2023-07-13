@@ -27,9 +27,7 @@
         "text_challenge_3": {
           "tz_sw": true
         },
-        "reply_challenge_3": {
-          "tz_sw": true
-        },
+        "reply_challenge_3": {},
         "top_text": {
           "tz_sw": true
         }
@@ -54,7 +52,7 @@
           "eng": "My teen did not like it."
         },
         "reply_challenge_3": {
-          "eng": "It happens - just be patient. Make sure to keep spending time with your teen, so they will value your opinion more and more. When your praise is genuine, you will see the benefits soon!"
+          "eng": "It happens – just be patient. Make sure to keep spending time with your teen, so they will value your opinion more and more. When your praise is genuine, you will see the benefits soon!"
         },
         "top_text": {
           "eng": "Challenges other parents experience:"
@@ -65,7 +63,7 @@
       "text_challenge_2": "My teen was surprised or suspicious.",
       "reply_challenge_2": "Remember, it takes some time for your teen to get used to seeing you praise them. The more time you spend with them, the better it will go!",
       "text_challenge_3": "My teen did not like it.",
-      "reply_challenge_3": "It happens - just be patient. Make sure to keep spending time with your teen, so they will value your opinion more and more. When your praise is genuine, you will see the benefits soon!",
+      "reply_challenge_3": "It happens – just be patient. Make sure to keep spending time with your teen, so they will value your opinion more and more. When your praise is genuine, you will see the benefits soon!",
       "top_text": "Challenges other parents experience:"
     },
     {
@@ -85,9 +83,7 @@
         "text_challenge_2": {
           "tz_sw": true
         },
-        "reply_challenge_2": {
-          "tz_sw": true
-        },
+        "reply_challenge_2": {},
         "text_challenge_3": {
           "tz_sw": true
         },
@@ -120,7 +116,7 @@
           "eng": "I felt uncomfortable about naming specific difficult feelings."
         },
         "reply_challenge_2": {
-          "eng": "Being specific is not rude or insensitive - it really helps others to understand you clearly and this prevents confusion in the family. Feelings like anger and stress are part of our lives. All we need to do when we feel angry and stressed is handle our emotions well by taking a few deep breaths before responding."
+          "eng": "Being specific is not rude or insensitive – it really helps others to understand you clearly and this prevents confusion in the family. Feelings like anger and stress are part of our lives. All we need to do when we feel angry and stressed is handle our emotions well by taking a few deep breaths before responding."
         },
         "text_challenge_3": {
           "eng": "My teen felt uncomfortable when I shared my feelings."
@@ -147,7 +143,7 @@
       "text_challenge_1": "I was afraid my teen would think I was weak.",
       "reply_challenge_1": "Sharing feelings, especially the difficult ones, sets an important example for your teen! It actually makes everyone in the family stronger, because you can understand and support each other better.",
       "text_challenge_2": "I felt uncomfortable about naming specific difficult feelings.",
-      "reply_challenge_2": "Being specific is not rude or insensitive - it really helps others to understand you clearly and this prevents confusion in the family. Feelings like anger and stress are part of our lives. All we need to do when we feel angry and stressed is handle our emotions well by taking a few deep breaths before responding.",
+      "reply_challenge_2": "Being specific is not rude or insensitive – it really helps others to understand you clearly and this prevents confusion in the family. Feelings like anger and stress are part of our lives. All we need to do when we feel angry and stressed is handle our emotions well by taking a few deep breaths before responding.",
       "text_challenge_3": "My teen felt uncomfortable when I shared my feelings.",
       "reply_challenge_3": "Starting a new thing is always difficult at first. Give yourselves some time to get used to it and keep showing a good example by observing and sharing your feelings. Over time, your teen will learn to do the same, and they will feel even more loved and cared for!",
       "text_challenge_4": "When I shared my feelings, my teen asked many questions, which made me uncomfortable.",
@@ -475,9 +471,7 @@
         "text_challenge_1": {
           "tz_sw": true
         },
-        "reply_challenge_1": {
-          "tz_sw": true
-        },
+        "reply_challenge_1": {},
         "button_text_1_a": {
           "tz_sw": true
         },
@@ -520,7 +514,7 @@
           "eng": "I forgot the steps of problem solving."
         },
         "reply_challenge_1": {
-          "eng": "It takes some practice to use all four steps of problem solving. Next time a problem comes up, look at the four steps together with your teen - it will make a big difference!"
+          "eng": "It takes some practice to use all four steps of problem solving. Next time a problem comes up, look at the four steps together with your teen – it will make a big difference!"
         },
         "button_text_1_a": {
           "eng": "Four steps of problem solving"
@@ -557,7 +551,7 @@
         }
       },
       "text_challenge_1": "I forgot the steps of problem solving.",
-      "reply_challenge_1": "It takes some practice to use all four steps of problem solving. Next time a problem comes up, look at the four steps together with your teen - it will make a big difference!",
+      "reply_challenge_1": "It takes some practice to use all four steps of problem solving. Next time a problem comes up, look at the four steps together with your teen – it will make a big difference!",
       "button_text_1_a": "Four steps of problem solving",
       "text_challenge_2": "I started with the solutions right away.",
       "reply_challenge_2": "When we have a problem, we always want to get to the quickest end result and can forget about the steps. To come up with the best solution together, it is helpful to first have a full understanding of the problem and the different solutions.",
@@ -581,9 +575,7 @@
         "text_challenge_1": {
           "tz_sw": true
         },
-        "reply_challenge_1": {
-          "tz_sw": true
-        },
+        "reply_challenge_1": {},
         "text_challenge_2": {
           "tz_sw": true
         },
@@ -591,12 +583,8 @@
           "tz_sw": true
         },
         "text_challenge_3": {},
-        "reply_challenge_3": {
-          "tz_sw": true
-        },
-        "text_challenge_4": {
-          "tz_sw": true
-        },
+        "reply_challenge_3": {},
+        "text_challenge_4": {},
         "reply_challenge_4": {
           "tz_sw": true
         },
@@ -618,7 +606,7 @@
           "eng": "My teen and I disagreed on which areas and online activities were unsafe."
         },
         "reply_challenge_1": {
-          "eng": "Well done for trying the activity! When we listen to our teenagers, even if we disagree, we learn to understand their thinking. Try and find time to do the activity again - try to really listen and show you understand them before sharing your thoughts."
+          "eng": "Well done for trying the activity! When we listen to our teenagers, even if we disagree, we learn to understand their thinking. Try and find time to do the activity again – try to really listen and show you understand them before sharing your thoughts."
         },
         "text_challenge_2": {
           "eng": "My teen identified the house of someone I trust as unsafe. I was shocked and did not know what to do."
@@ -630,10 +618,10 @@
           "eng": "My teen insisted that the bar (or another place I do not feel is safe) is safe for them to visit. I do not know how to convince my teen."
         },
         "reply_challenge_3": {
-          "eng": "This can be very frustrating. To find a solution, your teen needs to feel heard - so listen calmly to your teen's reasons, and only then share your own thoughts. Then, think together about a rule that allows them to have fun but stay safe."
+          "eng": "This can be very frustrating. To find a solution, your teen needs to feel heard – so listen calmly to your teen's reasons, and only then share your own thoughts. Then, think together about a rule that allows them to have fun but stay safe."
         },
         "text_challenge_4": {
-          "eng": "As an adult, I feel responsible to protect - but when I told my teen what is safe and what is not, my teen got angry."
+          "eng": "As an adult, I feel responsible to protect – but when I told my teen what is safe and what is not, my teen got angry."
         },
         "reply_challenge_4": {
           "eng": "Our teenagers may know things about our communities and technology that we are not aware of. When we actively involve our teens in the mapping activity and really listen to them, they feel heard and valued, and it can be easier to come up with a plan that everyone agrees on."
@@ -648,24 +636,24 @@
           "eng": "I do not know much about technology, so I do not know how to talk about it with my teen."
         },
         "reply_challenge_6": {
-          "eng": "That is totally fine! You can still support your teen. Ask your teen to explain the gadgets they use - you could do this during one-on-one time. This is a great opportunity to show interest in your teen’s life and to discuss potential risks together. If you are not sure which rules to set, you can always agree, with your teen, to try a new rule for two weeks and then discuss how things are going and change the rule if needed!"
+          "eng": "That is totally fine! You can still support your teen. Ask your teen to explain the gadgets they use – you could do this during one-on-one time. This is a great opportunity to show interest in your teen’s life and to discuss potential risks together. If you are not sure which rules to set, you can always agree, with your teen, to try a new rule for two weeks and then discuss how things are going and change the rule if needed!"
         },
         "top_text": {
           "eng": "Challenges other parents experience:"
         }
       },
       "text_challenge_1": "My teen and I disagreed on which areas and online activities were unsafe.",
-      "reply_challenge_1": "Well done for trying the activity! When we listen to our teenagers, even if we disagree, we learn to understand their thinking. Try and find time to do the activity again - try to really listen and show you understand them before sharing your thoughts.",
+      "reply_challenge_1": "Well done for trying the activity! When we listen to our teenagers, even if we disagree, we learn to understand their thinking. Try and find time to do the activity again – try to really listen and show you understand them before sharing your thoughts.",
       "text_challenge_2": "My teen identified the house of someone I trust as unsafe. I was shocked and did not know what to do.",
       "reply_challenge_2": "It is shocking to learn that people who are close to us and who we trust may be a danger to our teens. Remember to take a pause when you are upset, and try to listen calmly to your teen. Find someone you can talk to about this, perhaps a friend or support service, so you can get the support you need.",
       "text_challenge_3": "My teen insisted that the bar (or another place I do not feel is safe) is safe for them to visit. I do not know how to convince my teen.",
-      "reply_challenge_3": "This can be very frustrating. To find a solution, your teen needs to feel heard - so listen calmly to your teen's reasons, and only then share your own thoughts. Then, think together about a rule that allows them to have fun but stay safe.",
-      "text_challenge_4": "As an adult, I feel responsible to protect - but when I told my teen what is safe and what is not, my teen got angry.",
+      "reply_challenge_3": "This can be very frustrating. To find a solution, your teen needs to feel heard – so listen calmly to your teen's reasons, and only then share your own thoughts. Then, think together about a rule that allows them to have fun but stay safe.",
+      "text_challenge_4": "As an adult, I feel responsible to protect – but when I told my teen what is safe and what is not, my teen got angry.",
       "reply_challenge_4": "Our teenagers may know things about our communities and technology that we are not aware of. When we actively involve our teens in the mapping activity and really listen to them, they feel heard and valued, and it can be easier to come up with a plan that everyone agrees on.",
       "text_challenge_5": "It was hard to identify support resources available in my community, because I do not know my community so well / there are few services available.",
       "reply_challenge_5": "It is difficult to know every detail about our communities. Involve another family member or friend in your mapping activity. You can even visit some of the services available and ask what they do. The more we know, the better we can keep our families safe!",
       "text_challenge_6": "I do not know much about technology, so I do not know how to talk about it with my teen.",
-      "reply_challenge_6": "That is totally fine! You can still support your teen. Ask your teen to explain the gadgets they use - you could do this during one-on-one time. This is a great opportunity to show interest in your teen’s life and to discuss potential risks together. If you are not sure which rules to set, you can always agree, with your teen, to try a new rule for two weeks and then discuss how things are going and change the rule if needed!",
+      "reply_challenge_6": "That is totally fine! You can still support your teen. Ask your teen to explain the gadgets they use – you could do this during one-on-one time. This is a great opportunity to show interest in your teen’s life and to discuss potential risks together. If you are not sure which rules to set, you can always agree, with your teen, to try a new rule for two weeks and then discuss how things are going and change the rule if needed!",
       "top_text": "Challenges other parents experience:"
     },
     {
