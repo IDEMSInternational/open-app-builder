@@ -142,6 +142,8 @@ interface IContentsEntry {
   md5Checksum?: string;
   /** specific path to file when not the same as relativePath, e.g. asset overrides */
   filePath?: string;
+  /** id field is required to convert asset contents to and from data_list format */
+  id?: string;
 }
 
 /** Duplicate type definition from gdrive-downloader (TODO - find better way to share) */

@@ -7,6 +7,8 @@ import { TemplateTranslateService } from "./template-translate.service";
 import { IAssetEntry, IContentsEntryMinimal } from "packages/data-models/deployment.model";
 import { HttpClient } from "@angular/common/http";
 import { BehaviorSubject, lastValueFrom } from "rxjs";
+import { DynamicDataService } from "src/app/shared/services/dynamic-data/dynamic-data.service";
+import { arrayToHashmap } from "src/app/shared/utils";
 
 /** Synced assets are automatically copied during build to asset subfolder */
 const ASSETS_BASE = `assets/app_data/assets`;
@@ -23,6 +25,7 @@ export class TemplateAssetService extends AsyncServiceBase {
   constructor(
     private translateService: TemplateTranslateService,
     private themeService: ThemeService,
+    private dynamicDataService: DynamicDataService,
     private http: HttpClient
   ) {
     super("TemplateAsset");
@@ -30,8 +33,14 @@ export class TemplateAssetService extends AsyncServiceBase {
   }
 
   private async initialise() {
-    await this.ensureAsyncServicesReady([this.translateService]);
+    await this.ensureAsyncServicesReady([this.translateService, this.dynamicDataService]);
     this.ensureSyncServicesReady([this.themeService]);
+    const obs = await this.dynamicDataService.query$("asset_pack", "required_assets");
+    obs.subscribe((dataRows) => {
+      const assetContentsHashmap = arrayToHashmap(dataRows, "id") as IAssetContents;
+      this.assetsContentsList$.next(assetContentsHashmap);
+      console.log("value", this.assetsContentsList$.value);
+    });
   }
 
   /**
@@ -58,8 +67,7 @@ export class TemplateAssetService extends AsyncServiceBase {
    */
   getTranslatedAssetPath(value: string) {
     let assetName = this.cleanAssetName(value);
-    const assetEntry = this.assetsContentsList[assetName];
-    // const assetEntry = this.assetsContentsList$.value[assetName]
+    const assetEntry = this.assetsContentsList$.value[assetName];
     if (!assetEntry) {
       console.error("Asset missing", value, assetName);
       return `${ASSETS_GLOBAL_FOLDER_NAME}/${assetName}`;
