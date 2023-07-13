@@ -1,0 +1,27 @@
+{
+  "flow_type": "data_list",
+  "flow_name": "partners_tz_data_list",
+  "status": "released",
+  "data_list_name": "partners_plh_tz",
+  "rows": [
+    {
+      "id": "tz_government",
+      "splash_page": 2,
+      "name": "Tanzanian government",
+      "image_asset": "plh_images/logos/tz_government.png"
+    },
+    {
+      "id": "usaid",
+      "splash_page": 2,
+      "name": "USAID",
+      "image_asset": "plh_images/logos/usaid.png"
+    },
+    {
+      "id": "vodacom",
+      "splash_page": 2,
+      "name": "Vodacom Tanzania",
+      "image_asset": "plh_images/logos/vodacom.png"
+    }
+  ],
+  "_xlsxPath": "global/data/partners_data_lists.xlsx"
+}

@@ -1,138 +1,134 @@
 import { Injectable } from "@angular/core";
-import { Router } from "@angular/router";
-import { FlowTypes } from "../../model";
-import { TASK_LIST } from "../data/data.service";
-import { TaskActionService } from "./task-action.service";
+import { TemplateFieldService } from "../../components/template/services/template-field.service";
+import { AppDataService } from "../data/app-data.service";
+import { arrayToHashmap } from "../../utils";
+import { AsyncServiceBase } from "../asyncService.base";
 
-@Injectable({ providedIn: "root" })
-export class TaskService {
-  allTasksById: Hashmap<FlowTypes.Task_listRow> = {};
+@Injectable({
+  providedIn: "root",
+})
+export class TaskService extends AsyncServiceBase {
+  // TODO: These should be set from the deployment/skin level (ultimately should come from templates)
+  highlightedTaskFieldName = "_task_highlighted_group_id";
+  taskGroupsListName = "workshop_tasks";
 
-  constructor(private router: Router, private taskActions: TaskActionService) {
-    this.processTaskList();
-    this.processTaskActionHistory();
+  taskGroups: any[] = [];
+  taskGroupsHashmap: Record<string, any> = {};
+  constructor(
+    private templateFieldService: TemplateFieldService,
+    private appDataService: AppDataService
+  ) {
+    super("Task");
+    this.registerInitFunction(this.initialise);
   }
 
-  /*******************************************************************************
-   * Public methods
-   *******************************************************************************/
+  private async initialise() {
+    await this.ensureAsyncServicesReady([this.templateFieldService]);
+    this.ensureSyncServicesReady([this.appDataService]);
+    await this.getListOfTaskGroups();
+    if (this.taskGroups.length > 0) {
+      this.evaluateHighlightedTaskGroup();
+    }
+  }
+
+  /** Get the list of highlight-able task groups, from the relevant data_list */
+  private async getListOfTaskGroups() {
+    const taskGroupsDataList = await this.appDataService.getSheet(
+      "data_list",
+      this.taskGroupsListName
+    );
+    this.taskGroups = taskGroupsDataList?.rows || [];
+    this.taskGroupsHashmap = arrayToHashmap(this.taskGroups, "id");
+  }
 
   /**
-   * When running a task we want to trigger any required actions,
+   * The highlighted task group should always be the ID of the highest
+   * priority task_group that is not completed and not skipped
+   * NB "highest priority" is defined as having the lowest numerical value for the "number" column
    */
-  async startTask(task_id: string) {
-    const task = this.allTasksById[task_id];
-    if (!task) {
-      throw new Error(`task not found: ${task_id}`);
+  public evaluateHighlightedTaskGroup(): {
+    previousHighlightedTaskGroup: string;
+    newHighlightedTaskGroup: string;
+  } {
+    const previousHighlightedTaskGroup = this.getHighlightedTaskGroup();
+    let newHighlightedTaskGroup = previousHighlightedTaskGroup;
+    const taskGroupsNotCompletedAndNotSkipped = this.taskGroups.filter(
+      (taskGroup) =>
+        !this.templateFieldService.getField(taskGroup.completed_field) &&
+        !this.templateFieldService.getField(taskGroup.skipped_field)
+    );
+    // If all task groups are completed or skipped (e.g. when user completes final task group),
+    // then un-set highlighted task group
+    if (taskGroupsNotCompletedAndNotSkipped.length === 0) {
+      this.templateFieldService.setField(this.highlightedTaskFieldName, "");
+      console.log("[HIGHLIGHTED TASK GROUP] - No highlighted task group is set");
     }
-    const { start_action } = task;
-    if (start_action) {
-      await this.taskActions.recordTaskAction({ task_id, type: "started" });
-      this.runAction(task);
-    } else {
-      console.log("This task does not havea start_action", task);
-    }
-  }
-
-  async evaluateTaskCompleted(task_id: string) {
-    const completionCount = await this.getTaskCompletions(task_id).count();
-    return completionCount > 0;
-  }
-
-  getTaskCompletions(task_id: string) {
-    return this.taskActions.table
-      .where("task_id")
-      .equals(task_id)
-      .filter((t) => t._completed);
-  }
-
-  async evaluateTasklocked(task_id: string) {
-    const task = this.allTasksById[task_id];
-    if (task) {
-      if (task.requires_list) {
-        const evaluations = await Promise.all(
-          task.requires_list.map(
-            async (condition) => await this.evaluateTaskRequireCondition(condition)
-          )
-        );
-        console.table(
-          task.requires_list.map((t, i) => ({ condition: t, evaluation: evaluations[i] }))
-        );
-        return !evaluations.every((evaluation) => evaluation === true);
-      } else {
-        return false;
+    // Else set the highlighted task group to the task group with the highest priority of those
+    // not completed or skipped
+    else {
+      const highestPriorityTaskGroup = taskGroupsNotCompletedAndNotSkipped.reduce(
+        (highestPriority, taskGroup) =>
+          highestPriority.number < taskGroup.number ? highestPriority : taskGroup
+      );
+      newHighlightedTaskGroup = highestPriorityTaskGroup.id;
+      if (newHighlightedTaskGroup !== previousHighlightedTaskGroup) {
+        this.templateFieldService.setField(this.highlightedTaskFieldName, newHighlightedTaskGroup);
       }
-    } else {
-      console.error("could not find task_id", task_id);
+      console.log("[HIGHLIGHTED TASK GROUP] - ", newHighlightedTaskGroup);
     }
-    return false;
-  }
-  private async evaluateTaskRequireCondition(condition: string): Promise<boolean> {
-    // e.g. first_app_launch | delay_7_day |other_condition
-    const [task_id, ...conditions] = condition.split("|").map((str) => str.trim());
-    const completions = await this.getTaskCompletions(task_id).toArray();
-    if (completions.length > 0) {
-      // TODO - handle conditions
-      console.log("TODO - evaluate conditions", completions, conditions);
-      return true;
-    }
-    // TODO - provide informative reason for failure (?)
-
-    return false;
+    return { previousHighlightedTaskGroup, newHighlightedTaskGroup };
   }
 
-  /** Provide specific handlers for actions, such as starting a flow */
-  public async runAction(task: FlowTypes.Task_listRow) {
-    const handlers: {
-      [key in FlowTypes.Task_listRow["start_action"]]: (
-        task: FlowTypes.Task_listRow
-      ) => Promise<any>;
-    } = {
-      give_award: () => this.handleGiveAwardAction(task),
-      start_new_flow: () => this.handleStartNewFlowAction(task),
-      open_app: null,
-    };
-    return handlers[task.start_action](task);
+  /** Get the id of the task group stored as higlighted */
+  public getHighlightedTaskGroup() {
+    return this.templateFieldService.getField(this.highlightedTaskFieldName);
   }
 
-  /*******************************************************************************
-   * Initialisation
-   *******************************************************************************/
+  /**
+   * For a given task groups list, lookup the current highlighted task group and return the index
+   * of the highlighted task within it
+   * @return the index of the highlighted task group within that list, or 0 if not found
+   * */
+  public async getHighlightedTaskGroupIndex(highlightedTaskGroup: string, taskGroupsList: string) {
+    const taskGroupsDataList = await this.appDataService.getSheet("data_list", taskGroupsList);
+    const arrayOfIds = taskGroupsDataList.rows.map((taskGroup) => taskGroup.id);
+    const indexOfHighlightedTask = arrayOfIds.indexOf(highlightedTaskGroup);
+    return indexOfHighlightedTask === -1 ? 0 : indexOfHighlightedTask;
+  }
 
-  /** Generate a hashmap of all tasks sorted by id */
-  private processTaskList() {
-    const allTasksById: Hashmap<FlowTypes.Task_listRow> = {};
-    TASK_LIST.forEach((taskFlow) => {
-      taskFlow.rows.forEach((taskRow) => {
-        allTasksById[taskRow.id] = taskRow;
-      });
+  /**
+   * Set the value of the skipped field to true for all uncompleted tasks groups with
+   * a priority lower than the target task group. Then re-evaluate the highlighted task group
+   * NB "highest priority" is defined as having the lowest numerical value for the "number" column
+   **/
+  public setHighlightedTaskGroup(targetTaskGroupId: string) {
+    const taskGroupsNotCompleted = this.taskGroups.filter((taskGroup) => {
+      return !this.templateFieldService.getField(taskGroup.completed_field);
     });
-    this.allTasksById = allTasksById;
-  }
-  private async processTaskActionHistory() {
-    // this.taskActions = await this.dbService.table<ITaskAction>("task_actions").toArray();
-  }
-
-  /*******************************************************************************
-   * Specific action handlers
-   *******************************************************************************/
-
-  /** Launch a flow using the chat page interface, passing the flow id for starting */
-  private async handleStartNewFlowAction(task: FlowTypes.Task_listRow) {
-    const { flow_name, flow_type } = task;
-    if (!flow_name || !flow_type) {
-      throw new Error("flow type or name not specified");
-    }
-    this.router.navigate([flow_type, flow_name]);
+    const targetTaskGroupPriority = this.taskGroupsHashmap[targetTaskGroupId].number;
+    taskGroupsNotCompleted.forEach((taskGroup) => {
+      // Case: "skipping forward" – target task group is lower in priority than current highlighted task,
+      // so "skip" all tasks with lower priority than target task
+      if (taskGroup.number < targetTaskGroupPriority) {
+        this.templateFieldService.setField(taskGroup.skipped_field, "true");
+      }
+      // Case: "skipping backward" – target task group is higher in priority than current highlighted task,
+      // so "un-skip" all tasks with equal or higher priority than target task (including target task)
+      if (taskGroup.number >= targetTaskGroupPriority) {
+        this.templateFieldService.setField(taskGroup.skipped_field, "false");
+      }
+    });
+    // Re-evaluate highlighted task group
+    return this.evaluateHighlightedTaskGroup();
   }
 
-  private async handleGiveAwardAction(task: FlowTypes.Task_listRow) {
-    const { start_action_args } = task;
-    console.log("handle give award", start_action_args);
-    // TODO
+  /**
+   * @returns a boolean value indicating whether or not the task with taskId is the highlighted task
+   */
+  public checkHighlightedTaskGroup(taskGroupId: string) {
+    if (!taskGroupId) return false;
+    return taskGroupId === this.getHighlightedTaskGroup();
   }
 }
 
-interface Hashmap<T> {
-  [key: string]: T;
-}
+export type IProgressStatus = "notStarted" | "inProgress" | "completed";

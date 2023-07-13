@@ -1,0 +1,41 @@
+{
+  "flow_type": "template",
+  "module": "stress",
+  "flow_name": "w_stress_m_relax",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "m_relax",
+      "value": "m_relax",
+      "rows": [
+        {
+          "name": "workshop_data",
+          "value": "@data.workshop.w_stress",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "m_relax.workshop_data",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@data.workshop.w_stress",
+                "matchedExpression": "@data.workshop.w_stress",
+                "type": "data",
+                "fieldName": "workshop"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@data.workshop.w_stress": [
+              "value"
+            ]
+          }
+        }
+      ],
+      "_nested_name": "m_relax"
+    }
+  ],
+  "_xlsxPath": "global/top_templates/in_week_messages/in_week_message_texts/w_stress_messages.xlsx"
+}

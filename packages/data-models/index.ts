@@ -1,10 +1,12 @@
 export * from "./flowTypes";
-export * from "./tips.model";
 export * from "./functions";
-export { IDeploymentConfig, DEPLOYMENT_CONFIG_EXAMPLE_DEFAULTS } from "./deployment.model";
-// Re-export rapidpro excel types
-export { RapidProFlowExport, RapidproExcelModel } from "@idemsInternational/rapidpro-excel";
-
-// Constants are not designed to be consumed directly, but rather following merge with deployment config
-import CONSTANTS from "./constants";
-export const DEFAULT_CONSTANTS = CONSTANTS;
+// NOTE - avoid exporting workflows as node-based can't be consumed by frontend src
+// export { IDeploymentWorkflows, IWorkflow, IWorkflowContext, WORKFLOW_DEFAULTS } from "./workflows";
+export {
+  IDeploymentConfig,
+  IDeploymentConfigJson,
+  DEPLOYMENT_CONFIG_EXAMPLE_DEFAULTS,
+  DEPLOYMENT_CONFIG_VERSION,
+} from "./deployment.model";
+export { IAppSkin } from "./skin.model";
+export { IAppConfig, IAppConfigOverride, getDefaultAppConfig } from "./appConfig";

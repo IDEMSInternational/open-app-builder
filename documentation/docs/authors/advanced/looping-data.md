@@ -33,6 +33,11 @@ We will render text and a button for each of the 3 items in the data list
 
 [Live Preview Demo](https://plh-teens-app1.web.app/template/feature_items)
 
+## Sort, filter and limit data
+Looped data can also be piped with various operators to organise the final data output
+
+<!-- TODO update docs -->
+See notes in https://docs.google.com/document/d/1Pk2gYNhtu68XJo-U-h6RY8ZD8gOPaCnLOlCft4IjLY4/edit#
 
 
 

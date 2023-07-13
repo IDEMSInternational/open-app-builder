@@ -14,14 +14,25 @@ plh-template-component[data-hidden="true"] {
   display: none !important;
   flex: 0 !important;
 }
-/// Ensure all directly nested template rows have spacing between elements,
-/// except in case where only one row (e.g. deep-nested)
-plh-template-container > plh-template-component:not([data-hidden="true"]) {
-  margin-top: 1em;
+plh-template-container {
+  width: 100%;
+  max-width: var(--content-max-width);
+  margin: auto;
 }
-plh-template-container > plh-template-component:not([data-hidden="true"]):first-of-type {
+
+/// Ensure all directly nested non-hidden template rows have spacing between elements,
+/// except in case where only one row (e.g. deep-nested).
+// Apply 0 margin to all children
+plh-template-container > plh-template-component:not([data-hidden="true"]) {
   margin-top: 0;
 }
+// Apply 1em margin to all non-hidden children but the first, see https://stackoverflow.com/a/29422984
+plh-template-container
+  > plh-template-component:not([data-hidden="true"])
+  ~ plh-template-component:not([data-hidden="true"]) {
+  margin-top: 1em;
+}
+
 /// Ensure standalone containers and components fill all available space
 plh-template-container:not([data-hidden="true"]):only-child,
 plh-template-component:not([data-hidden="true"]):only-child {

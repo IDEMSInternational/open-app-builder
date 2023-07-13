@@ -1,0 +1,46 @@
+{
+  "flow_type": "template",
+  "module": "safe",
+  "flow_name": "w_safe_hp_review",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "home_practice_review",
+      "value": "home_practice_review",
+      "action_list": [
+        {
+          "trigger": "completed",
+          "action_id": "emit",
+          "args": [
+            "completed"
+          ],
+          "_raw": "completed | emit:completed",
+          "_cleaned": "completed | emit:completed"
+        },
+        {
+          "trigger": "uncompleted",
+          "action_id": "emit",
+          "args": [
+            "uncompleted"
+          ],
+          "_raw": "uncompleted | emit:uncompleted",
+          "_cleaned": "uncompleted | emit:uncompleted"
+        }
+      ],
+      "rows": [
+        {
+          "name": "workshop",
+          "value": "w_safe",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "home_practice_review.workshop"
+        }
+      ],
+      "_nested_name": "home_practice_review"
+    }
+  ],
+  "_xlsxPath": "global/top_templates/in_week_messages/home_practice_reviews/w_safe_hp_review.xlsx"
+}

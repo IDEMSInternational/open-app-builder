@@ -27,10 +27,10 @@ export class TmplParentPointBoxComponent
   @ViewChild("star", { static: false }) star: ElementRef;
   @ViewChild("item", { static: false }) item: ElementRef;
   icon_src: string | null;
+  info_icon_src: string | null;
   lottie_src: string | null;
   video_src: string | null;
   windowWidth: number;
-  scaleFactor: number = 1;
   text: string | null;
   wasClicked: boolean = false;
   value: number | null = 0;
@@ -40,19 +40,14 @@ export class TmplParentPointBoxComponent
   showCelebrationAnimation = false;
   @HostListener("window:resize", ["$event"]) onResize(event) {
     this.windowWidth = event.target.innerWidth - 10;
-    this.getScaleFactor();
   }
 
-  @HostBinding("style.--scale-factor--point") get scale() {
-    return this.scaleFactor;
-  }
   constructor(private templateAssetService: TemplateAssetService) {
     super();
   }
 
   ngOnInit() {
     this.getParams();
-    this.getScaleFactor();
     if (this.lottie_src) {
       this.lottie_src = this.templateAssetService.getTranslatedAssetPath(this.lottie_src);
       this.animOptions = {
@@ -80,6 +75,7 @@ export class TmplParentPointBoxComponent
   getParams() {
     this.video_src = getStringParamFromTemplateRow(this._row, "video_src", null);
     this.icon_src = getStringParamFromTemplateRow(this._row, "icon_src", null);
+    this.info_icon_src = getStringParamFromTemplateRow(this._row, "info_icon_src", null);
     this.lottie_src = getStringParamFromTemplateRow(this._row, "lottie_src", null);
     this.play_celebration = getBooleanParamFromTemplateRow(this._row, "play_celebration", true);
     this.text = getStringParamFromTemplateRow(this._row, "text", null);
@@ -112,8 +108,8 @@ export class TmplParentPointBoxComponent
     await this.triggerActions("changed");
   }
 
-  getScaleFactor(): number {
-    this.scaleFactor = this.windowWidth / 420 > 1 ? 1 : this.windowWidth / ((200 + 20) * 2);
-    return this.scaleFactor;
+  async clickInfo(event) {
+    event.stopPropagation();
+    await this.triggerActions("info_click");
   }
 }

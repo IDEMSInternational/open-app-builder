@@ -1,19 +1,19 @@
 import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 import { IonicModule } from "@ionic/angular";
 
-import { PointsItemComponent } from "./points-item.component";
+import { TmplParentPointBoxComponent } from "./points-item.component";
 
-describe("PointsItemComponent", () => {
-  let component: PointsItemComponent;
-  let fixture: ComponentFixture<PointsItemComponent>;
+describe("TmplParentPointBoxComponent", () => {
+  let component: TmplParentPointBoxComponent;
+  let fixture: ComponentFixture<TmplParentPointBoxComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [PointsItemComponent],
+      declarations: [TmplParentPointBoxComponent],
       imports: [IonicModule.forRoot()],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(PointsItemComponent);
+    fixture = TestBed.createComponent(TmplParentPointBoxComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   }));

@@ -1,0 +1,87 @@
+{
+  "flow_type": "template",
+  "module": "money",
+  "flow_name": "w_money_tq_2_pop",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "suggestions",
+      "value": "suggestions",
+      "rows": [
+        {
+          "name": "list_text",
+          "value": "* @global.financial_emergency_1\n* @global.financial_emergency_2\n* @global.financial_emergency_3\n* @global.financial_emergency_4\n* @global.financial_emergency_5\n* @global.financial_emergency_6",
+          "_translations": {
+            "value": {}
+          },
+          "exclude_from_translation": true,
+          "type": "set_variable",
+          "_nested_name": "suggestions.list_text",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "* @global.financial_emergency_1\n* @global.financial_emergency_2\n* @global.financial_emergency_3\n* @global.financial_emergency_4\n* @global.financial_emergency_5\n* @global.financial_emergency_6",
+                "matchedExpression": "@global.financial_emergency_1",
+                "type": "global",
+                "fieldName": "financial_emergency_1"
+              },
+              {
+                "fullExpression": "* @global.financial_emergency_1\n* @global.financial_emergency_2\n* @global.financial_emergency_3\n* @global.financial_emergency_4\n* @global.financial_emergency_5\n* @global.financial_emergency_6",
+                "matchedExpression": "@global.financial_emergency_2",
+                "type": "global",
+                "fieldName": "financial_emergency_2"
+              },
+              {
+                "fullExpression": "* @global.financial_emergency_1\n* @global.financial_emergency_2\n* @global.financial_emergency_3\n* @global.financial_emergency_4\n* @global.financial_emergency_5\n* @global.financial_emergency_6",
+                "matchedExpression": "@global.financial_emergency_3",
+                "type": "global",
+                "fieldName": "financial_emergency_3"
+              },
+              {
+                "fullExpression": "* @global.financial_emergency_1\n* @global.financial_emergency_2\n* @global.financial_emergency_3\n* @global.financial_emergency_4\n* @global.financial_emergency_5\n* @global.financial_emergency_6",
+                "matchedExpression": "@global.financial_emergency_4",
+                "type": "global",
+                "fieldName": "financial_emergency_4"
+              },
+              {
+                "fullExpression": "* @global.financial_emergency_1\n* @global.financial_emergency_2\n* @global.financial_emergency_3\n* @global.financial_emergency_4\n* @global.financial_emergency_5\n* @global.financial_emergency_6",
+                "matchedExpression": "@global.financial_emergency_5",
+                "type": "global",
+                "fieldName": "financial_emergency_5"
+              },
+              {
+                "fullExpression": "* @global.financial_emergency_1\n* @global.financial_emergency_2\n* @global.financial_emergency_3\n* @global.financial_emergency_4\n* @global.financial_emergency_5\n* @global.financial_emergency_6",
+                "matchedExpression": "@global.financial_emergency_6",
+                "type": "global",
+                "fieldName": "financial_emergency_6"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@global.financial_emergency_1": [
+              "value"
+            ],
+            "@global.financial_emergency_2": [
+              "value"
+            ],
+            "@global.financial_emergency_3": [
+              "value"
+            ],
+            "@global.financial_emergency_4": [
+              "value"
+            ],
+            "@global.financial_emergency_5": [
+              "value"
+            ],
+            "@global.financial_emergency_6": [
+              "value"
+            ]
+          }
+        }
+      ],
+      "_nested_name": "suggestions"
+    }
+  ],
+  "_xlsxPath": "global/top_templates/workshop_templates/workshop_money.xlsx"
+}

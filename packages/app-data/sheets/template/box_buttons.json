@@ -1,0 +1,143 @@
+{
+  "flow_type": "template",
+  "flow_name": "box_buttons",
+  "status": "released",
+  "rows": [
+    {
+      "name": "habit_text",
+      "type": "set_variable",
+      "_nested_name": "habit_text"
+    },
+    {
+      "type": "title",
+      "name": "title",
+      "hidden": true,
+      "_nested_name": "title"
+    },
+    {
+      "type": "image",
+      "name": "image_src",
+      "hidden": true,
+      "parameter_list": {
+        "style": "rounded_corners"
+      },
+      "_nested_name": "image_src"
+    },
+    {
+      "type": "text",
+      "name": "text_1",
+      "_nested_name": "text_1"
+    },
+    {
+      "type": "button",
+      "name": "button_1",
+      "_nested_name": "button_1"
+    },
+    {
+      "type": "text",
+      "name": "text_2",
+      "hidden": true,
+      "_nested_name": "text_2"
+    },
+    {
+      "type": "button",
+      "name": "button_2",
+      "hidden": true,
+      "_nested_name": "button_2"
+    },
+    {
+      "type": "text",
+      "name": "text_3",
+      "hidden": true,
+      "_nested_name": "text_3"
+    },
+    {
+      "type": "button",
+      "name": "button_3",
+      "hidden": true,
+      "_nested_name": "button_3"
+    },
+    {
+      "type": "template",
+      "name": "parent_point_dashed_box",
+      "value": "parent_point_dashed_box",
+      "condition": "@local.habit_text",
+      "rows": [
+        {
+          "name": "habit_text",
+          "value": "@local.habit_text",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "parent_point_dashed_box.habit_text",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@local.habit_text",
+                "matchedExpression": "@local.habit_text",
+                "type": "local",
+                "fieldName": "habit_text"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@local.habit_text": [
+              "value"
+            ]
+          }
+        }
+      ],
+      "_nested_name": "parent_point_dashed_box",
+      "_dynamicFields": {
+        "condition": [
+          {
+            "fullExpression": "@local.habit_text",
+            "matchedExpression": "@local.habit_text",
+            "type": "local",
+            "fieldName": "habit_text"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.habit_text": [
+          "condition"
+        ]
+      }
+    },
+    {
+      "type": "text",
+      "name": "bottom_text",
+      "hidden": true,
+      "_nested_name": "bottom_text"
+    },
+    {
+      "type": "template",
+      "name": "nav_buttons",
+      "value": "nav_buttons",
+      "action_list": [
+        {
+          "trigger": "completed",
+          "action_id": "emit",
+          "args": [
+            "completed"
+          ],
+          "_raw": "completed | emit:completed",
+          "_cleaned": "completed | emit:completed"
+        },
+        {
+          "trigger": "uncompleted",
+          "action_id": "emit",
+          "args": [
+            "uncompleted"
+          ],
+          "_raw": "uncompleted | emit:uncompleted",
+          "_cleaned": "uncompleted | emit:uncompleted"
+        }
+      ],
+      "rows": [],
+      "_nested_name": "nav_buttons"
+    }
+  ],
+  "_xlsxPath": "global/core_templates/core_templates_workshop_boxes.xlsx"
+}

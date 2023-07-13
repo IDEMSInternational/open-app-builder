@@ -10,7 +10,8 @@ import { getStringParamFromTemplateRow } from "../../../../utils";
 })
 export class TmplIconBannerComponent
   extends TemplateBaseComponent
-  implements ITemplateRowProps, OnInit {
+  implements ITemplateRowProps, OnInit
+{
   image_src: string | null;
   title: string | null;
   text: string | null;

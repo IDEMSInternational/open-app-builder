@@ -1,7 +1,9 @@
-@import "../../../../../../theme/mixins.scss";
+@use "/src/theme/mixins";
+
+$button-background: var(--timer-button-background, var(--ion-color-primary-500));
 
 .timer-counter {
-  @include flex-centered;
+  @include mixins.flex-centered;
   width: calc(100% - 10px);
   height: var(--timer-counter-height);
   margin: 0 var(--tiny-margin);
@@ -15,7 +17,7 @@
   }
 }
 .timer-content {
-  @include flex-space-between;
+  @include mixins.flex-space-between;
 }
 .timer-title {
   margin-left: var(--tiny-margin);
@@ -36,10 +38,10 @@
   display: flex;
 }
 .add-min {
-  @include large-square;
+  @include mixins.large-square;
   min-width: var(--buttons-size);
   position: relative;
-  --background: var(--timer-buttons-color);
+  --background: #{$button-background};
   --background-size: cover;
   --border-radius: var(--ion-border-radius-rounded);
   --padding: 0;

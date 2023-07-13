@@ -1,0 +1,37 @@
+{
+  "flow_type": "template",
+  "flow_name": "lib_act_change_thoughts",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "lib_act_covid",
+      "value": "lib_act_covid",
+      "action_list": [
+        {
+          "trigger": "completed",
+          "action_id": "emit",
+          "args": [
+            "completed"
+          ],
+          "_raw": "completed | emit: completed",
+          "_cleaned": "completed | emit: completed"
+        }
+      ],
+      "rows": [
+        {
+          "name": "activity_id",
+          "value": "change_thoughts",
+          "_translations": {
+            "value": {}
+          },
+          "exclude_from_translation": true,
+          "type": "set_variable",
+          "_nested_name": "lib_act_covid.activity_id"
+        }
+      ],
+      "_nested_name": "lib_act_covid"
+    }
+  ],
+  "_xlsxPath": "global/top_templates/parent_centre_templates/covid/databank_covid_lib_act.xlsx"
+}

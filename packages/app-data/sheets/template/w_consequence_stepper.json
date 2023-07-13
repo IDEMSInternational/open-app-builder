@@ -1,0 +1,128 @@
+{
+  "flow_type": "template",
+  "module": "consequence",
+  "flow_name": "w_consequence_stepper",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "workshop_stepper_actions",
+      "value": "workshop_stepper_actions",
+      "action_list": [
+        {
+          "trigger": "completed",
+          "action_id": "emit",
+          "args": [
+            "completed"
+          ],
+          "_raw": "completed | emit:completed",
+          "_cleaned": "completed | emit:completed"
+        },
+        {
+          "trigger": "uncompleted",
+          "action_id": "emit",
+          "args": [
+            "uncompleted"
+          ],
+          "_raw": "uncompleted | emit:uncompleted",
+          "_cleaned": "uncompleted | emit:uncompleted"
+        }
+      ],
+      "rows": [
+        {
+          "name": "workshop_id",
+          "value": "w_consequence",
+          "_translations": {
+            "value": {}
+          },
+          "exclude_from_translation": true,
+          "type": "set_variable",
+          "_nested_name": "workshop_stepper_actions.workshop_id"
+        },
+        {
+          "type": "nested_properties",
+          "name": "workshop_stepper",
+          "rows": [
+            {
+              "name": "nav_template_list",
+              "value": [
+                "w_consequence_care_together",
+                "w_consequence_relax",
+                "w_consequence_reflect_together",
+                "w_consequence_intro",
+                "w_consequence_read_1",
+                "w_consequence_talk_1",
+                "w_consequence_learn_1_temp",
+                "w_consequence_tools_activity",
+                "w_consequence_talk_2",
+                "w_consequence_read_3",
+                "w_consequence_talk_3",
+                "w_consequence_try",
+                "w_consequence_home_practice",
+                "w_consequence_ending"
+              ],
+              "condition": "@field.do_this_workshop_together",
+              "exclude_from_translation": true,
+              "type": "set_variable",
+              "_nested_name": "workshop_stepper_actions.workshop_stepper.nav_template_list",
+              "_dynamicFields": {
+                "condition": [
+                  {
+                    "fullExpression": "@field.do_this_workshop_together",
+                    "matchedExpression": "@field.do_this_workshop_together",
+                    "type": "field",
+                    "fieldName": "do_this_workshop_together"
+                  }
+                ]
+              },
+              "_dynamicDependencies": {
+                "@field.do_this_workshop_together": [
+                  "condition"
+                ]
+              }
+            },
+            {
+              "name": "nav_template_list",
+              "value": [
+                "w_consequence_welcome_ind",
+                "w_consequence_relax",
+                "w_consequence_intro",
+                "w_consequence_read_1",
+                "w_consequence_question_1",
+                "w_consequence_learn_1_temp",
+                "w_consequence_tools_activity",
+                "w_consequence_read_3",
+                "w_consequence_question_2",
+                "w_consequence_learn_2_temp",
+                "w_consequence_home_practice",
+                "w_consequence_ending"
+              ],
+              "condition": "!@field.do_this_workshop_together",
+              "exclude_from_translation": true,
+              "type": "set_variable",
+              "_nested_name": "workshop_stepper_actions.workshop_stepper.nav_template_list",
+              "_dynamicFields": {
+                "condition": [
+                  {
+                    "fullExpression": "!@field.do_this_workshop_together",
+                    "matchedExpression": "!@field.do_this_workshop_together",
+                    "type": "field",
+                    "fieldName": "do_this_workshop_together"
+                  }
+                ]
+              },
+              "_dynamicDependencies": {
+                "!@field.do_this_workshop_together": [
+                  "condition"
+                ]
+              }
+            }
+          ],
+          "_nested_name": "workshop_stepper_actions.workshop_stepper"
+        }
+      ],
+      "_nested_name": "workshop_stepper_actions"
+    }
+  ],
+  "_xlsxPath": "global/top_templates/workshop_templates/workshop_consequence.xlsx"
+}

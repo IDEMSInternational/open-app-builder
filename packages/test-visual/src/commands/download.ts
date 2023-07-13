@@ -28,7 +28,7 @@ export class ScreenshotDownload {
   async run(options = DEFAULT_OPTIONS) {
     const { outputFolder } = options;
     console.log("downloading screenshots");
-    console.table(options);
+    // console.table(options);
     if (options.latest) {
       const { browser_download_url, id } = await this.getLatestScreenshotsArtifact();
       await this.downloadCacheAsset(browser_download_url, `${id}.zip`);

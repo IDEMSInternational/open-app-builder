@@ -1,40 +1,54 @@
 import { Injectable } from "@angular/core";
 import { LocalStorageService } from "src/app/shared/services/local-storage/local-storage.service";
-import { GLOBAL, TEMPLATE } from "src/app/shared/services/data/data.service";
+import { AppDataService } from "src/app/shared/services/data/app-data.service";
 import { DbService } from "src/app/shared/services/db/db.service";
 import { FlowTypes } from "src/app/shared/model";
-import { BehaviorSubject } from "rxjs";
 import { ModalController } from "@ionic/angular";
 import { ITemplatePopupComponentProps, TemplatePopupComponent } from "../components/layout/popup";
 import { TemplateTranslateService } from "./template-translate.service";
 import { IFlowEvent } from "data-models/db.model";
 import { TemplateVariablesService } from "./template-variables.service";
 import { TemplateFieldService } from "./template-field.service";
+import { arrayToHashmap } from "src/app/shared/utils";
+import { SyncServiceBase } from "src/app/shared/services/syncService.base";
 
 @Injectable({
   providedIn: "root",
 })
-export class TemplateService {
-  private themeValue = new BehaviorSubject("passive");
-  currentTheme = this.themeValue.asObservable();
+export class TemplateService extends SyncServiceBase {
   constructor(
     private localStorageService: LocalStorageService,
+    private appDataService: AppDataService,
     private dbService: DbService,
     private modalCtrl: ModalController,
     private translateService: TemplateTranslateService,
     private templateVariablesService: TemplateVariablesService,
     private templateFieldService: TemplateFieldService
-  ) {}
+  ) {
+    super("TemplateService");
+    this.initialise();
+    /**
+     * Avoid initialisation logic and prefer to ensure services ready
+     * on demand to avoid cyclic issues
+     * Instead services are checked before public method calls
+     * */
+  }
 
-  /** Initialise global and startup templates */
-  async init() {
-    // Re-initialise default field and globals on init in case sheets have been updated
-    // TODO - ideally this should just be triggered on first launch of new app update
-    this.initialiseDefaultFieldAndGlobals();
+  private async initialise() {
     // Update default values when language changed to allow for global translations
-    this.translateService.app_language$.subscribe((lang) => {
-      this.initialiseDefaultFieldAndGlobals();
+    this.translateService.app_language$.subscribe(async (lang) => {
+      await this.initialiseDefaultFieldAndGlobals();
     });
+  }
+
+  private async ensurePublicServicesReady() {
+    await this.ensureAsyncServicesReady([
+      this.dbService,
+      this.translateService,
+      this.templateVariablesService,
+      this.templateFieldService,
+    ]);
+    this.ensureSyncServicesReady([this.localStorageService, this.appDataService]);
   }
 
   /**
@@ -47,10 +61,12 @@ export class TemplateService {
     templatename: string,
     options: Partial<ITemplatePopupComponentProps> = {}
   ) {
+    await this.ensurePublicServicesReady();
     const props: ITemplatePopupComponentProps = {
       name: templatename,
       templatename,
       dismissOnEmit: true, // defaults will be overridden by passed options
+      waitForDismiss: true,
       fullscreen: true,
       showCloseButton: true,
       ...options,
@@ -61,9 +77,12 @@ export class TemplateService {
       componentProps: { props },
     });
     await modal.present();
-    const { data } = await modal.onDidDismiss();
-    const emitData: { emit_value?: string; emit_data?: any } = data;
-    return emitData;
+    let dismissData: { emit_value?: string; emit_data?: any } = {};
+    if (props.waitForDismiss) {
+      const { data } = await modal.onDidDismiss();
+      dismissData = data;
+    }
+    return { modal, ...dismissData };
   }
 
   /**
@@ -72,8 +91,25 @@ export class TemplateService {
    * NOTE - globals will always show the latest value as defined in app sheets (with any translations processed)
    * NOTE - fields will not update if already set
    */
-  private initialiseDefaultFieldAndGlobals() {
-    GLOBAL.forEach((flow) => {
+  public async initialiseDefaultFieldAndGlobals() {
+    await this.ensurePublicServicesReady();
+    // Evaluate overrides
+    // TODO - should be generalised with other template and datalist retrieval methods
+    const allGlobals = await this.appDataService.getSheetsWithData<FlowTypes.Global>("global");
+    const baseGlobals = allGlobals.filter((flow) => !flow.hasOwnProperty("override_target"));
+    const baseGlobalsHashmap = arrayToHashmap(baseGlobals, "flow_name");
+    const globalOverrides = allGlobals.filter((flow) => flow.hasOwnProperty("override_target"));
+    for (const flow of globalOverrides) {
+      const satisfied = await this.templateVariablesService.evaluateConditionString(
+        `${flow.override_condition}`
+      );
+      if (satisfied) {
+        console.log(`[GLOBAL] override ${flow.override_target} -> ${flow.flow_name}`);
+        baseGlobalsHashmap[flow.override_target] = flow;
+      }
+    }
+    // Apply field default and global constants
+    Object.values<any>(baseGlobalsHashmap).forEach((flow) => {
       flow.rows?.forEach((row) => {
         switch (row.type) {
           case "declare_field_default":
@@ -104,7 +140,12 @@ export class TemplateService {
     templateName: string,
     is_override_target: boolean
   ): Promise<FlowTypes.Template> {
-    const foundTemplate: FlowTypes.Template = TEMPLATE.find((t) => t.flow_name === templateName);
+    await this.ensurePublicServicesReady();
+    const foundTemplate = await this.appDataService.getSheet<FlowTypes.Template>(
+      "template",
+      templateName
+    );
+    // const foundTemplate: FlowTypes.Template = template.find((t) => t.flow_name === templateName);
     if (foundTemplate) {
       const overiddenTemplate = await this.getTemplateOverride(foundTemplate, is_override_target);
       // create a deep clone of the object to prevent accidental reference changes
@@ -143,6 +184,47 @@ export class TemplateService {
     }
     return foundTemplate;
   }
+  //   // write to local storage - this will cast to string
+  //   this.localStorageService.setString("rp-contact-field." + key, value);
+
+  //   // write to db - note this can handle more data formats but only string/number will be available to queries
+  //   if (typeof value === "boolean") value = "value";
+  //   const evt: IFlowEvent = {
+  //     ...this.dbService.generateDBMeta(),
+  //     event: "set",
+  //     value,
+  //     name: key,
+  //     type: "contact_field" as any,
+  //   };
+  //   return this.dbService.table("data_events").add(evt);
+  // }
+
+  getGlobal(key: string): string {
+    alert("TODO - getGlobal");
+    return null as any;
+    // // provide a fallback if the target global variable has never been set
+    // if (!this.globals.hasOwnProperty(key)) {
+    //   console.warn("global value not found for key:", key);
+    //   return undefined;
+    // }
+    // let global = this.globals[key];
+    // // HACK - ensure global value is translated (if exists)
+    // // (could possibly be handled better from within translate service)
+    // return this.translateService.translateValue(global.value);
+  }
+
+  // private setGlobal(row: FlowTypes.GlobalRow) {
+  //   this.globals[row.name] = row;
+  // }
+
+  // /** Get the value of a data_list item as defined within templates */
+  getDataListByPath(path: string) {
+    // const data = getNestedProperty(this.appDataService.dataLists, path);
+    // return data;
+    // TODO
+    alert("TODO - get datalist by path" + path);
+    return null as any;
+  }
 
   /** Record a template event to the database */
   recordEvent(template: FlowTypes.Template, event: "emit", value: any) {
@@ -156,20 +238,6 @@ export class TemplateService {
         value,
       };
       return this.dbService.table("flow_events").add(evt);
-    }
-  }
-
-  setTheme(template: FlowTypes.Template, event: "set_theme", value: any) {
-    if (value && value.length) {
-      const mainBgBodyColor = `var(--${
-        value[0] === "active" ? "ion-main-bg-active" : "ion-main-bg-passive"
-      })`;
-      const dgBodyColor = `var(--${
-        value[0] === "active" ? "ion-banner-secondary" : "ion-banner-primary"
-      })`;
-      document.body.style.setProperty("--ion-dg-bg-default", dgBodyColor);
-      document.body.style.setProperty("--ion-background-color", mainBgBodyColor);
-      this.themeValue.next(value[0]);
     }
   }
 }

@@ -2,7 +2,7 @@ import { Command } from "commander";
 import fs from "fs-extra";
 import path from "path";
 import { FlowTypes } from "data-models";
-import { checkInputOutputDirs, outputErrorMessage, recursiveFindByExtension } from "../utils";
+import { outputCompleteMessage, outputErrorMessage, recursiveFindByExtension } from "../utils";
 
 const program = new Command("compile");
 
@@ -46,12 +46,15 @@ class TranslationsCompiler {
    * replace text from input files
    **/
   public run() {
+    // console.table(this.options);
     const { input: inDir, output: outDir, translations: translationsDir } = this.options;
-    checkInputOutputDirs(inDir, path.resolve(outDir, "strings"));
-    checkInputOutputDirs(translationsDir, path.resolve(outDir, "jsons"));
+    fs.ensureDir(inDir);
+    fs.ensureDirSync(translationsDir);
+    fs.ensureDirSync(outDir);
+    fs.emptyDirSync(outDir);
     const { translationsByCode } = this.compileTranslationStrings();
     this.populateTranslations(inDir, outDir, translationsByCode);
-    // outputCompleteMessage("Translations Compiled", outDir);
+    outputCompleteMessage("Translations Compiled", outDir);
   }
 
   /**
@@ -118,42 +121,44 @@ class TranslationsCompiler {
     // Handle output files
     // const indexOutput = path.resolve(outDir, "index.ts");
     for (const [langCode, strings] of Object.entries(translationsByCode)) {
-      const stringsOutput = path.resolve(outDir, "strings", `${langCode}.json`);
+      const stringsOutput = path.resolve(outDir, "strings", langCode, "strings.json");
+      fs.ensureDirSync(path.dirname(stringsOutput));
       fs.writeFileSync(stringsOutput, JSON.stringify(strings, null, 2));
     }
-    const combinedOutput = path.resolve(outDir, "strings", `_combined.json`);
-    fs.writeFileSync(combinedOutput, JSON.stringify(translationsCombined, null, 2));
+    // TODO - CC 2022-04-18 - combined likely no longer needed. To confirm and remove rest of related code
+    // const combinedOutput = path.resolve(outDir, "strings", `_combined.json`);
+    // fs.writeFileSync(combinedOutput, JSON.stringify(translationsCombined, null, 2));
     return { translationsCombined, translationsByCode };
   }
 
   /**
-   *
+   * Iterate over all input files and apply translations
    */
   private populateTranslations(inDir: string, outDir: string, strings: ITranslationsByCode) {
     const inputFiles = recursiveFindByExtension(inDir, "json");
     for (const filepath of inputFiles) {
-      const inputEntries: IInputEntry[] = fs.readJSONSync(filepath);
-      const translatedEntries: IInputEntry[] = [];
-      for (let entry of inputEntries) {
-        const { flow_type, rows } = entry;
-        // Handle text replacements. For data_lists this can be any column, otherwise assume
-        // only value column to replace recursively within rows.
-        const translatedFields = getTranslatedFields(flow_type, rows);
-        if (translatedFields.length > 0) {
-          entry = applyStringTranslations(entry, translatedFields, strings);
-        }
-        translatedEntries.push(entry);
+      let entry: IInputEntry = fs.readJSONSync(filepath);
+      const { flow_type, rows } = entry;
+      // Handle text replacements. For data_lists this can be any column, otherwise assume
+      // only value column to replace recursively within rows.
+      const translatedFields = getTranslatedFields(flow_type, rows);
+      if (translatedFields.length > 0) {
+        entry = applyStringTranslations(entry, translatedFields, strings);
       }
       const relativePath = path.relative(inDir, filepath);
-      const outputFilepath = path.resolve(outDir, "jsons", relativePath);
+      const outputFilepath = path.resolve(outDir, "sheets", relativePath);
       fs.ensureDirSync(path.dirname(outputFilepath));
-      fs.writeFileSync(outputFilepath, JSON.stringify(translatedEntries, null, 2));
+      fs.writeFileSync(outputFilepath, JSON.stringify(entry, null, 2));
     }
   }
 }
 
+/**
+ * Iterate over data checking for possible translateable data and track what data has translations
+ * Add _translations metadata to content tracking available translation languages
+ */
 function applyStringTranslations(
-  row: any,
+  row: FlowTypes.FlowTypeWithData,
   translatedFields: string[],
   translationsByCode: ITranslationsByCode
 ) {
@@ -162,7 +167,7 @@ function applyStringTranslations(
   const langCodes = Object.keys(translationsByCode);
   Object.entries(row).forEach(([field, value]) => {
     // default keep original
-    translated[field] = row[field];
+    translated[field] = value;
     // handle translations from list
     if (field === "rows" && Array.isArray(value)) {
       translated[field] = value.map((v) =>

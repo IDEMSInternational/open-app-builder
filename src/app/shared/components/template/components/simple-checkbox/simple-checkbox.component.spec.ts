@@ -1,24 +1,24 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { IonicModule } from '@ionic/angular';
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
+import { IonicModule } from "@ionic/angular";
 
-import { SimpleCheckboxComponent } from './simple-checkbox.component';
+import { TmplSimpleCheckboxComponent } from "./simple-checkbox.component";
 
-describe('SimpleCheckboxComponent', () => {
-  let component: SimpleCheckboxComponent;
-  let fixture: ComponentFixture<SimpleCheckboxComponent>;
+describe("TmplSimpleCheckboxComponent", () => {
+  let component: TmplSimpleCheckboxComponent;
+  let fixture: ComponentFixture<TmplSimpleCheckboxComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SimpleCheckboxComponent ],
-      imports: [IonicModule.forRoot()]
+      declarations: [TmplSimpleCheckboxComponent],
+      imports: [IonicModule.forRoot()],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(SimpleCheckboxComponent);
+    fixture = TestBed.createComponent(TmplSimpleCheckboxComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   }));
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });

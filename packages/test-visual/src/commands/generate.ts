@@ -3,16 +3,15 @@ import puppeteer from "puppeteer";
 import path from "path";
 import PQueue from "p-queue";
 import fs from "fs-extra";
+import handler from "serve-handler";
+import http from "http";
 import logUpdate from "log-update";
 import { DEXIE_SRC_PATH, paths } from "../config";
+import { outputCompleteMessage, outputErrorMessage, zipFolder } from "../utils";
+import { VISUAL_TEST_CONFIG } from "../config/test";
 
-// As using commonJS can only import from built
-// TODO - Ensure built before run. Handle sharing of types between packages
-import { VISUAL_TEST_CONFIG } from "app-data/dist/test/index";
 type IPageConfig = typeof VISUAL_TEST_CONFIG["pageList"][number];
 type IDexieConfig = typeof VISUAL_TEST_CONFIG["dexieConfig"];
-
-import { outputCompleteMessage, outputErrorMessage, zipFolder } from "../utils";
 
 // Import Dexie from the src folder so that same instance can be used to seed the DB
 // as is used in the app itself. Uses require import syntax for compatibility
@@ -44,6 +43,8 @@ interface IProgramOptions {
   debug?: boolean;
   /** maximum templates to process in parallel. Default: 10 */
   concurrency?: string;
+  /** Serve content from local www folder (e.g. ci). Default: false */
+  serveWww?: boolean;
 }
 
 const DEFAULT_OPTIONS: IProgramOptions = {
@@ -70,6 +71,7 @@ export default program
   .option("-c, --clean", "Clean output folder before generating")
   .option("-D --debug", "Run in debug mode (not headless)")
   .option("-C --concurrency <string>", "Max number of browser pages to process in parallel")
+  .option("-S --serve-www", "Serve production build from local www folder")
   .action(async (opts) => {
     console.log("Generating screenshots...");
     await new ScreenshotGenerate(opts).run().then(() => process.exit(0));
@@ -82,6 +84,7 @@ export default program
 export class ScreenshotGenerate {
   browser: puppeteer.Browser;
   page: puppeteer.Page;
+  server?: http.Server;
 
   private options: IProgramOptions;
   constructor(opts: Partial<IProgramOptions> = {}) {
@@ -94,16 +97,50 @@ export class ScreenshotGenerate {
     });
 
     this.options = { ...DEFAULT_OPTIONS, ...opts } as IProgramOptions;
-    console.table(this.options);
+    // console.table(this.options);
   }
 
   public async run() {
+    await this.startFrontendServer();
     await this.prepareBrowserRunner();
     await this.seedBrowserDB();
     await this.generateTemplateScreenshots();
     await this.generateZipOutput();
     await this.browser.close();
+    await this.stopFrontendServer();
     outputCompleteMessage("Screenshots successfully generated", SCREENSHOTS_OUTPUT_ZIP);
+  }
+
+  /** Run a local webserver to server to serve frontend build from www folder */
+  private async startFrontendServer() {
+    if (this.options.serveWww) {
+      return new Promise((resolve, reject) => {
+        this.server = http.createServer((request, response) => {
+          // https://github.com/vercel/serve-handler#options
+          return handler(request, response, {
+            public: paths.WWW_FOLDER,
+            rewrites: [{ source: "**", destination: "/index.html" }],
+          });
+        });
+        this.server.listen(4200, () => {
+          console.log("server listening on http://localhost:4200");
+          resolve(this.server);
+        });
+      });
+    }
+  }
+  private stopFrontendServer() {
+    if (this.server) {
+      return new Promise((resolve, reject) => {
+        this.server!.close((err) => {
+          if (err) {
+            reject(err);
+          }
+          console.log("server stopped");
+          resolve(true);
+        });
+      });
+    }
   }
 
   /** Create initial puppeteer browser and custom page objects   */

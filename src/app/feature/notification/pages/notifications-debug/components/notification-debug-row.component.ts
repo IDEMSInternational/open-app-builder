@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
+import { Component, EventEmitter, Input, Output } from "@angular/core";
 import { timer } from "rxjs";
 import { map, take } from "rxjs/operators";
 import {
@@ -57,15 +57,13 @@ import {
   // Notification  interacted
   styleUrls: ["./notification-debug-row.scss"],
 })
-export class NotificationDebugRowComponent implements OnInit {
+export class NotificationDebugRowComponent {
   public previewCountdown: number;
 
   @Input() notification: ILocalNotification;
   @Output() showNotificationScheduleClicked = new EventEmitter<ILocalNotification>();
 
   constructor(public localNotificationService: LocalNotificationService) {}
-
-  ngOnInit() {}
 
   /**
    * Reschedule a notification to be triggered after 2s

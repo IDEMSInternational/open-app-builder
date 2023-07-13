@@ -15,14 +15,14 @@
     "chalk": "^4.1.0",
     "commander": "^8.3.0",
     "fs-extra": "^10.0.0",
-    "googleapis": "88.2.0",
+    "googleapis": "^108.0.0",
     "log-update": "^4.0.0",
     "p-queue": "^6.6.2"
   },
   "devDependencies": {
     "@types/fs-extra": "^9.0.13",
     "@types/node": "^16.11.10",
-    "ts-node": "~7.0.0",
+    "ts-node": "^10.8.0",
     "ts-node-dev": "^1.0.0",
     "typescript": "^4.1.2"
   }

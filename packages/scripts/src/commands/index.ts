@@ -3,11 +3,12 @@ import { Command } from "commander";
 
 // Commands
 import appDataCmd from "./app-data";
+import compileCmd from "./compile";
 import e2eDataCmd from "./e2e-data";
 import configCmd from "./config";
 import deploymentCmd from "./deployment";
-import generateCmd from "./generate";
 import versionCmd from "./version";
+import workflowCmd from "./workflow";
 import { logWarning, logProgramHelp } from "../utils/logging.utils";
 
 const program = new Command();
@@ -16,15 +17,7 @@ program.version("1.0.0").description("IDEMS App Scripts");
 
 // Handle legacy command renames so can still run `yarn scripts gdrive-download`
 const legacyCommandMappings = {
-  "gdrive-download": ["app-data", "download"],
-  "gdrive-auth": ["app-data", "download", "--authorize"],
-  "decrypt-config": ["config", "decrypt"],
-  "encrypt-config": ["config", "encrypt"],
-  "sync-plh-content": ["app-data", "sync"],
-  "sync-single": ["app-data", "sync", "--sheetname"],
-  "app-data-copy": ["app-data", "copy"],
-  "app-data-sync": ["app-data", "sync"],
-  "app-data-convert": ["app-data", "convert"],
+  "legacy-command": ["new-command", "arg"],
 };
 const cmdName = process.argv[2] || "";
 const mapping = legacyCommandMappings[cmdName];
@@ -38,11 +31,12 @@ if (mapping) {
 
 /** add sub-commands from child folders */
 program.addCommand(appDataCmd);
+program.addCommand(compileCmd);
 program.addCommand(e2eDataCmd);
 program.addCommand(configCmd);
 program.addCommand(deploymentCmd);
-// program.addCommand(generateCmd);
 program.addCommand(versionCmd);
+program.addCommand(workflowCmd);
 
 if (!process.argv.slice(2).length) {
   logProgramHelp(program);
@@ -61,4 +55,17 @@ const handleError = (e) => {
 process.on("SIGINT", handleExit);
 process.on("uncaughtException", handleError);
 
-program.parse(process.argv);
+async function main() {
+  await program.parseAsync(process.argv);
+}
+main();
+
+/** Allow programmatic call of command parser */
+export const parseCommand = async (cmd: string) => {
+  const args = [...process.argv.slice(0, 2), ...cmd.split(" ")];
+  return program.parseAsync(args);
+};
+
+// Additional exports for direct consumption
+import { extendDeploymentConfig, generateDeploymentConfig } from "./deployment/common";
+export { extendDeploymentConfig, generateDeploymentConfig };

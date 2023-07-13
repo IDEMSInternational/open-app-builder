@@ -1,0 +1,8 @@
+{
+  "recommendations": [
+    "dbaeumer.vscode-eslint", 
+    "esbenp.prettier-vscode",
+    "Syler.sass-indented",
+    "Angular.ng-template"
+  ]
+}
