@@ -236,9 +236,7 @@
         "text_2": {
           "tz_sw": true
         },
-        "text_3": {
-          "tz_sw": true
-        },
+        "text_3": {},
         "text_4": {
           "tz_sw": true
         },
@@ -289,21 +287,11 @@
       "title": "@global.safety_word",
       "_translations": {
         "title": {},
-        "intro_text": {
-          "tz_sw": true
-        },
-        "text_1": {
-          "tz_sw": true
-        },
-        "text_2": {
-          "tz_sw": true
-        },
-        "text_3": {
-          "tz_sw": true
-        },
-        "text_4": {
-          "tz_sw": true
-        },
+        "intro_text": {},
+        "text_1": {},
+        "text_2": {},
+        "text_3": {},
+        "text_4": {},
         "text_5": {
           "tz_sw": true
         },
@@ -355,22 +343,18 @@
         "title": {
           "tz_sw": true
         },
-        "intro_text": {
-          "tz_sw": true
-        },
+        "intro_text": {},
         "text_1": {
           "tz_sw": true
         },
-        "text_2": {
-          "tz_sw": true
-        }
+        "text_2": {}
       },
       "_translatedFields": {
         "title": {
           "eng": "Money problems"
         },
         "intro_text": {
-          "eng": "It can be hard to make ends meet every month. Many families have this problem! \n\nIncluding @global.w_money_grandma - let's have a look:"
+          "eng": "It can be hard to make ends meet every month. Many families have this problem! \n\nIncluding @global.w_money_grandma – let's have a look:"
         },
         "text_1": {
           "eng": "@global.w_money_grandma: \"I have been taking care of my grandchildren, @global.w_money_teen_girl and @global.w_money_teen_boy, since their parents died when they were young. We often struggle with money, as I only receive a small grant.\""
@@ -379,7 +363,7 @@
           "eng": "@global.w_money_grandma: \"I am so stressed. I don’t have any money left. And now I am fighting with my teens over things they want – again.\""
         }
       },
-      "intro_text": "It can be hard to make ends meet every month. Many families have this problem! \n\nIncluding @global.w_money_grandma - let's have a look:",
+      "intro_text": "It can be hard to make ends meet every month. Many families have this problem! \n\nIncluding @global.w_money_grandma – let's have a look:",
       "text_1": "@global.w_money_grandma: \"I have been taking care of my grandchildren, @global.w_money_teen_girl and @global.w_money_teen_boy, since their parents died when they were young. We often struggle with money, as I only receive a small grant.\"",
       "text_2": "@global.w_money_grandma: \"I am so stressed. I don’t have any money left. And now I am fighting with my teens over things they want – again.\""
     },
@@ -399,21 +383,13 @@
         "intro_text": {
           "tz_sw": true
         },
-        "text_1": {
-          "tz_sw": true
-        },
+        "text_1": {},
         "text_2": {
           "tz_sw": true
         },
-        "text_3": {
-          "tz_sw": true
-        },
-        "text_4": {
-          "tz_sw": true
-        },
-        "text_5": {
-          "tz_sw": true
-        }
+        "text_3": {},
+        "text_4": {},
+        "text_5": {}
       },
       "_translatedFields": {
         "title": {
@@ -429,7 +405,7 @@
           "eng": "\"My goal is to make sure my grandson can go to high school and my granddaughter can reach her dream of university. How can I save a lot of money with the little money I have?\""
         },
         "text_3": {
-          "eng": "\"I know - let’s start with a plan! First, let me make a budget – a plan for how I can save my money. Then I will save just a little bit of money at a time – I will even join a savings and loans group.\""
+          "eng": "\"I know – let’s start with a plan! First, let me make a budget – a plan for how I can save my money. Then I will save just a little bit of money at a time – I will even join a savings and loans group.\""
         },
         "text_4": {
           "eng": "\"I should also speak with my grandchildren to choose things that we can spend just a little bit less on each week. They will help me think of things we want but do not need.\""
@@ -441,7 +417,7 @@
       "intro_text": "Great work, you have completed the first 3 steps! \n\nLet's see how @global.w_money_grandma made a plan with her money, just like you are doing:",
       "text_1": "\"I want the best future for my grandchildren, but I do not know where to get the money.  Loan sharks are dangerous and paying them back is so expensive. \n\nI should save, but that feels impossible!\"",
       "text_2": "\"My goal is to make sure my grandson can go to high school and my granddaughter can reach her dream of university. How can I save a lot of money with the little money I have?\"",
-      "text_3": "\"I know - let’s start with a plan! First, let me make a budget – a plan for how I can save my money. Then I will save just a little bit of money at a time – I will even join a savings and loans group.\"",
+      "text_3": "\"I know – let’s start with a plan! First, let me make a budget – a plan for how I can save my money. Then I will save just a little bit of money at a time – I will even join a savings and loans group.\"",
       "text_4": "\"I should also speak with my grandchildren to choose things that we can spend just a little bit less on each week. They will help me think of things we want but do not need.\"",
       "text_5": "A few years later:\n\n\"Look, we reached our dreams! I did not borrow any money from friends or loan sharks. By saving a tiny bit each week, I managed to pay for @global.w_money_teen_boy’s high school and save some money for @global.w_money_teen_girl’s university. I am so proud of this.”"
     },
@@ -454,9 +430,7 @@
         "title": {
           "tz_sw": true
         },
-        "intro_text": {
-          "tz_sw": true
-        },
+        "intro_text": {},
         "text_1": {
           "tz_sw": true
         }
@@ -466,13 +440,13 @@
           "eng": "Coping with emergencies"
         },
         "intro_text": {
-          "eng": "Saving is important for one more reason: emergencies! @global.w_money_grandma also learned this along the way:"
+          "eng": "Saving is important for one more reason: emergencies! @global.w_money_grandma also learnt this along the way:"
         },
         "text_1": {
           "eng": "“One night there was a horrible storm that broke my roof. Everything was flooded. I suddenly had to find money to fix the roof. I just felt defeated.”"
         }
       },
-      "intro_text": "Saving is important for one more reason: emergencies! @global.w_money_grandma also learned this along the way:",
+      "intro_text": "Saving is important for one more reason: emergencies! @global.w_money_grandma also learnt this along the way:",
       "text_1": "“One night there was a horrible storm that broke my roof. Everything was flooded. I suddenly had to find money to fix the roof. I just felt defeated.”"
     },
     {
@@ -502,12 +476,8 @@
         "text_2": {
           "tz_sw": true
         },
-        "text_3": {
-          "tz_sw": true
-        },
-        "text_4": {
-          "tz_sw": true
-        },
+        "text_3": {},
+        "text_4": {},
         "text_5": {
           "tz_sw": true
         },
@@ -574,31 +544,23 @@
         "title": {
           "tz_sw": true
         },
-        "intro_text": {
-          "tz_sw": true
-        },
-        "text_1": {
-          "tz_sw": true
-        },
-        "text_2": {
-          "tz_sw": true
-        },
+        "intro_text": {},
+        "text_1": {},
+        "text_2": {},
         "text_3": {
           "tz_sw": true
         },
         "text_4": {
           "tz_sw": true
         },
-        "text_5": {
-          "tz_sw": true
-        }
+        "text_5": {}
       },
       "_translatedFields": {
         "title": {
           "eng": "Online safety"
         },
         "intro_text": {
-          "eng": "Rules are important to keep your teens safe - not only offline, but also online. There’s more about this in the @global.weekly_workshop on safety planning, but let’s already have a first look now!"
+          "eng": "Rules are important to keep your teens safe – not only offline, but also online. There’s more about this in the @global.weekly_workshop on safety planning, but let’s already have a first look now!"
         },
         "text_1": {
           "eng": "@global.w_rules_female_caregiver_2: \"@global.w_rules_teen_girl, have you done your homework?\"\n\n@global.w_rules_teen_girl: \"Just a minute @global.w_rules_female_caregiver_2, I’m finishing this @global.teen_social_medium video.\""
@@ -616,7 +578,7 @@
           "eng": "@global.w_rules_female_caregiver_2: \"I’m proud of you @global.w_rules_teen_girl!\""
         }
       },
-      "intro_text": "Rules are important to keep your teens safe - not only offline, but also online. There’s more about this in the @global.weekly_workshop on safety planning, but let’s already have a first look now!",
+      "intro_text": "Rules are important to keep your teens safe – not only offline, but also online. There’s more about this in the @global.weekly_workshop on safety planning, but let’s already have a first look now!",
       "text_1": "@global.w_rules_female_caregiver_2: \"@global.w_rules_teen_girl, have you done your homework?\"\n\n@global.w_rules_teen_girl: \"Just a minute @global.w_rules_female_caregiver_2, I’m finishing this @global.teen_social_medium video.\"",
       "text_2": "@global.w_rules_female_caregiver_2: \"You are a really great dancer! Tell me about why you like @global.teen_social_medium.\"\n\n@global.w_rules_teen_girl: \"All my friends are on it, @global.w_rules_female_caregiver_2. I have more than 600 likes and 120 followers.\"",
       "text_3": "@global.w_rules_female_caregiver_2: \"I’m proud of how well you dance, @global.w_rules_teen_girl. But we need to make sure you are safe. \n\nI know your friends look at @global.teen_social_medium, but with an open account, there are other people who look at videos of teenagers for their own sexual needs. Sometimes they contact teenagers. They pretend to be nice but end up threatening and abusing teens.\"",
@@ -700,9 +662,7 @@
         "text_1": {
           "tz_sw": true
         },
-        "text_2": {
-          "tz_sw": true
-        },
+        "text_2": {},
         "text_3": {
           "tz_sw": true
         },
@@ -782,18 +742,14 @@
         "title": {
           "tz_sw": true
         },
-        "intro_text": {
-          "tz_sw": true
-        },
+        "intro_text": {},
         "text_1": {
           "tz_sw": true
         },
         "text_2": {
           "tz_sw": true
         },
-        "text_3": {
-          "tz_sw": true
-        }
+        "text_3": {}
       },
       "_translatedFields": {
         "title": {
@@ -843,24 +799,14 @@
         "text_1": {
           "tz_sw": true
         },
-        "text_2": {
-          "tz_sw": true
-        },
-        "text_3": {
-          "tz_sw": true
-        },
-        "text_4": {
-          "tz_sw": true
-        },
+        "text_2": {},
+        "text_3": {},
+        "text_4": {},
         "dashed_box_4": {
           "tz_sw": true
         },
-        "text_5": {
-          "tz_sw": true
-        },
-        "text_6": {
-          "tz_sw": true
-        },
+        "text_5": {},
+        "text_6": {},
         "dashed_box_6": {
           "tz_sw": true
         },
@@ -870,18 +816,12 @@
         "text_8": {
           "tz_sw": true
         },
-        "text_9": {
-          "tz_sw": true
-        },
-        "text_10": {
-          "tz_sw": true
-        },
+        "text_9": {},
+        "text_10": {},
         "dashed_box_10": {
           "tz_sw": true
         },
-        "text_11": {
-          "tz_sw": true
-        },
+        "text_11": {},
         "dashed_box_11": {
           "tz_sw": true
         },
@@ -980,21 +920,11 @@
         "intro_text": {
           "tz_sw": true
         },
-        "text_1": {
-          "tz_sw": true
-        },
-        "text_2": {
-          "tz_sw": true
-        },
-        "text_3": {
-          "tz_sw": true
-        },
-        "text_4": {
-          "tz_sw": true
-        },
-        "text_5": {
-          "tz_sw": true
-        },
+        "text_1": {},
+        "text_2": {},
+        "text_3": {},
+        "text_4": {},
+        "text_5": {},
         "text_6": {
           "tz_sw": true
         }
@@ -1047,15 +977,11 @@
         "intro_text": {
           "tz_sw": true
         },
-        "text_1": {
-          "tz_sw": true
-        },
+        "text_1": {},
         "text_2": {
           "tz_sw": true
         },
-        "text_3": {
-          "tz_sw": true
-        }
+        "text_3": {}
       },
       "_translatedFields": {
         "title": {
@@ -1099,15 +1025,9 @@
         "text_1": {
           "tz_sw": true
         },
-        "text_2": {
-          "tz_sw": true
-        },
-        "text_3": {
-          "tz_sw": true
-        },
-        "text_4": {
-          "tz_sw": true
-        },
+        "text_2": {},
+        "text_3": {},
+        "text_4": {},
         "text_5": {
           "tz_sw": true
         },
@@ -1172,9 +1092,7 @@
         "text_2": {
           "tz_sw": true
         },
-        "text_3": {
-          "tz_sw": true
-        },
+        "text_3": {},
         "text_4": {
           "tz_sw": true
         },
@@ -1218,6 +1136,87 @@
       "text_4": "@global.w_crisis_teen_boy_1: “Everyone was fighting. I saw someone lying on the field in a pool of blood. He looked… dead.\"",
       "text_5": "@global.w_crisis_male_caregiver_1: \"I am glad you are telling me about this, @global.w_crisis_teen_boy_1. Let’s sit down together now and discuss whether we should involve the police or someone else to help.\"",
       "text_6": "@global.w_crisis_teen_boy_1: \"Thank you, @global.w_crisis_male_caregiver_1\"\n\n@global.w_crisis_male_caregiver_1: \"We will get through this. Remember, we will support you as a family.\""
+    },
+    {
+      "id": "srh_talk",
+      "workshop": "w_srh",
+      "title": "Sex talk",
+      "_translations": {
+        "title": {},
+        "intro_text": {},
+        "text_1": {},
+        "text_2": {},
+        "text_3": {},
+        "text_4": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Sex talk"
+        },
+        "intro_text": {
+          "eng": "Teenagers can get information about sex from school, their friends, home or social media. This information may not always be right or suitable for their age and situation. \n\nParents and teenagers can feel uncomfortable when topics around ‘sex’ are mentioned. They may even get into arguments, especially when parents do not approve of their teen’s behaviour. \n\nLet’s look at an example:"
+        },
+        "text_1": {
+          "eng": "@global.w_srh_teen_girl_1 is on her way to leave the house looking very pretty.\n\n@global.w_srh_female_caregiver_1: “Where are you going looking like that?”\n\n@global.w_srh_teen_girl_1: “I am going out with some of my friends.”"
+        },
+        "text_2": {
+          "eng": "@global.w_srh_teen_girl_1 accidentally drops her bag, and a packet of condoms falls out.\n\n@global.w_srh_female_caregiver_1: “What is that @global.w_srh_teen_girl_1? Condoms? Why are you carrying those in your bag? Where did you get them?!”\n\n@global.w_srh_teen_girl_1: “I got it from one of the girls at school today. We were talking about safe sex and she said she uses birth control so that she does not get pregnant.”"
+        },
+        "text_3": {
+          "eng": "@global.w_srh_female_caregiver_1 (angry): “What is this talk of sex in my house! You are too young…”\n\n@global.w_srh_teen_girl_1 (interrupting): “But @global.w_srh_female_caregiver_1, it’s not like that…!”"
+        },
+        "text_4": {
+          "eng": "@global.w_srh_female_caregiver_1: “No, no, no, @global.w_srh_teen_girl_1! I will not have this discussion with you. Is that what you do at school? Talking about things not suited for your age instead of focusing on school? You won’t go out with those friends of yours anymore. You want to bring shame in this home. Come here now! I am going to hit you. Stupid girl!”\n\n@global.w_srh_teen_girl_1 (screaming): “No @global.w_srh_female_caregiver_1, please don’t hit me, it is not what you think!”"
+        }
+      },
+      "intro_text": "Teenagers can get information about sex from school, their friends, home or social media. This information may not always be right or suitable for their age and situation. \n\nParents and teenagers can feel uncomfortable when topics around ‘sex’ are mentioned. They may even get into arguments, especially when parents do not approve of their teen’s behaviour. \n\nLet’s look at an example:",
+      "text_1": "@global.w_srh_teen_girl_1 is on her way to leave the house looking very pretty.\n\n@global.w_srh_female_caregiver_1: “Where are you going looking like that?”\n\n@global.w_srh_teen_girl_1: “I am going out with some of my friends.”",
+      "text_2": "@global.w_srh_teen_girl_1 accidentally drops her bag, and a packet of condoms falls out.\n\n@global.w_srh_female_caregiver_1: “What is that @global.w_srh_teen_girl_1? Condoms? Why are you carrying those in your bag? Where did you get them?!”\n\n@global.w_srh_teen_girl_1: “I got it from one of the girls at school today. We were talking about safe sex and she said she uses birth control so that she does not get pregnant.”",
+      "text_3": "@global.w_srh_female_caregiver_1 (angry): “What is this talk of sex in my house! You are too young…”\n\n@global.w_srh_teen_girl_1 (interrupting): “But @global.w_srh_female_caregiver_1, it’s not like that…!”",
+      "text_4": "@global.w_srh_female_caregiver_1: “No, no, no, @global.w_srh_teen_girl_1! I will not have this discussion with you. Is that what you do at school? Talking about things not suited for your age instead of focusing on school? You won’t go out with those friends of yours anymore. You want to bring shame in this home. Come here now! I am going to hit you. Stupid girl!”\n\n@global.w_srh_teen_girl_1 (screaming): “No @global.w_srh_female_caregiver_1, please don’t hit me, it is not what you think!”"
+    },
+    {
+      "id": "new_boyfriend",
+      "workshop": "w_srh",
+      "title": "My new boyfriend",
+      "_translations": {
+        "title": {},
+        "intro_text": {},
+        "text_1": {},
+        "text_2": {},
+        "text_3": {},
+        "text_4": {},
+        "text_5": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "My new boyfriend"
+        },
+        "intro_text": {
+          "eng": "It can be hard for parents and teens to talk about boyfriends and girlfriends. \n\nLet’s look at an example of how this can happen calmly:"
+        },
+        "text_1": {
+          "eng": "@global.w_srh_teen_girl_2 (looking at the ground): “@global.w_srh_female_caregiver_2, can I talk to you about something?”\n\n@global.w_srh_female_caregiver_2 (calmly): “Sure, my darling. What is the matter?”"
+        },
+        "text_2": {
+          "eng": "@global.w_srh_teen_girl_2 sits down next to @global.w_srh_female_caregiver_2.\n\n@global.w_srh_teen_girl_2: “My friend wants us to watch the football match together tomorrow. I really like him but I am not sure what to do.”\n\n@global.w_srh_female_caregiver_2 (thinking to herself): “How has my daughter grown up so fast? What now? Take a deep breath…”"
+        },
+        "text_3": {
+          "eng": "@global.w_srh_female_caregiver_2 (calmly): “Thank you for sharing this with me, @global.w_srh_teen_girl_2. I know that you like Musa a lot, but this is a serious issue. You are only 16 and he is 18. \n\nI feel worried that it is not safe for you to be alone with him. He might pressure you into doing something that you are not prepared to do. \n\nI don’t want to tell you who you can see but we need to have some rules about how you spend time together.”"
+        },
+        "text_4": {
+          "eng": "@global.w_srh_female_caregiver_2: “What do you think would be a fair rule about how you spend time together?”\n\n@global.w_srh_teen_girl_2: “How about: We can spend time together if there is an adult with us?”"
+        },
+        "text_5": {
+          "eng": "@global.w_srh_female_caregiver_2: “That would be fine as long as his parents also know. I will give them a call later. And we can talk again after you get back to see how it worked.”\n\n@global.w_srh_teen_girl_2 (hugs @global.w_srh_female_caregiver_2): “Okay. Thank you for coming up with a plan together, @global.w_srh_female_caregiver_2.”"
+        }
+      },
+      "intro_text": "It can be hard for parents and teens to talk about boyfriends and girlfriends. \n\nLet’s look at an example of how this can happen calmly:",
+      "text_1": "@global.w_srh_teen_girl_2 (looking at the ground): “@global.w_srh_female_caregiver_2, can I talk to you about something?”\n\n@global.w_srh_female_caregiver_2 (calmly): “Sure, my darling. What is the matter?”",
+      "text_2": "@global.w_srh_teen_girl_2 sits down next to @global.w_srh_female_caregiver_2.\n\n@global.w_srh_teen_girl_2: “My friend wants us to watch the football match together tomorrow. I really like him but I am not sure what to do.”\n\n@global.w_srh_female_caregiver_2 (thinking to herself): “How has my daughter grown up so fast? What now? Take a deep breath…”",
+      "text_3": "@global.w_srh_female_caregiver_2 (calmly): “Thank you for sharing this with me, @global.w_srh_teen_girl_2. I know that you like Musa a lot, but this is a serious issue. You are only 16 and he is 18. \n\nI feel worried that it is not safe for you to be alone with him. He might pressure you into doing something that you are not prepared to do. \n\nI don’t want to tell you who you can see but we need to have some rules about how you spend time together.”",
+      "text_4": "@global.w_srh_female_caregiver_2: “What do you think would be a fair rule about how you spend time together?”\n\n@global.w_srh_teen_girl_2: “How about: We can spend time together if there is an adult with us?”",
+      "text_5": "@global.w_srh_female_caregiver_2: “That would be fine as long as his parents also know. I will give them a call later. And we can talk again after you get back to see how it worked.”\n\n@global.w_srh_teen_girl_2 (hugs @global.w_srh_female_caregiver_2): “Okay. Thank you for coming up with a plan together, @global.w_srh_female_caregiver_2.”"
     }
   ],
   "_xlsxPath": "global/data/workshop_data/workshop_data_list.xlsx"

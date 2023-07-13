@@ -1,0 +1,121 @@
+{
+  "flow_type": "data_list",
+  "flow_name": "learn_data",
+  "status": "released",
+  "data_list_name": "quiz",
+  "rows": [
+    {
+      "id": "srh_talk",
+      "workshop": "w_srh",
+      "part_1_id": "srh_talk_who",
+      "part_2_id": "srh_talk_when",
+      "part_3_id": "srh_talk_safe",
+      "part_4_id": "srh_talk_age",
+      "title": "Learn",
+      "_translations": {
+        "title": {
+          "tz_sw": true
+        },
+        "intro_text": {},
+        "text": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Learn"
+        },
+        "intro_text": {
+          "eng": "Many parents really want to support their teens, but struggle to talk about sensitive topics like body changes and intimate relationships."
+        },
+        "text": {
+          "eng": "Let’s look at a few questions from other parents to help you get started."
+        }
+      },
+      "intro_text": "Many parents really want to support their teens, but struggle to talk about sensitive topics like body changes and intimate relationships.",
+      "text": "Let’s look at a few questions from other parents to help you get started."
+    },
+    {
+      "id": "warning_signs",
+      "workshop": "w_svp",
+      "type": "question",
+      "part_1_id": "pushy_boyfriend",
+      "part_2_id": "controlling_boyfriend",
+      "part_3_id": "catcalling",
+      "part_4_id": "pushy_friend",
+      "part_5_id": "nude_pic",
+      "part_6_id": "private_tutoring",
+      "part_7_id": "rejected_ride",
+      "title": "Warning signs",
+      "_translations": {
+        "title": {},
+        "intro_text": {},
+        "text": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Warning signs"
+        },
+        "intro_text": {
+          "eng": "People around us can make us feel respected, happy and safe. But sometimes, people can pressure us and make us feel uncomfortable. This can happen to teenagers and adults.\n\nWhen we know the warning signs, we can try and stop the situation to stay safe."
+        },
+        "text": {
+          "eng": "Let’s look at some scenarios."
+        }
+      },
+      "intro_text": "People around us can make us feel respected, happy and safe. But sometimes, people can pressure us and make us feel uncomfortable. This can happen to teenagers and adults.\n\nWhen we know the warning signs, we can try and stop the situation to stay safe.",
+      "text": "Let’s look at some scenarios."
+    },
+    {
+      "id": "use_voice",
+      "workshop": "w_svp",
+      "type": "suggestions",
+      "part_1_id": "use_voice",
+      "title": "Use your voice",
+      "_translations": {
+        "title": {},
+        "intro_text": {},
+        "text": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Use your voice"
+        },
+        "intro_text": {
+          "eng": "When we do not feel safe, we are allowed to do anything to get away."
+        },
+        "text": {
+          "eng": "Let’s think about the scenario when @global.w_svp_teen_girl_2 was forced into a car by a man.\n\nHow could @global.w_svp_teen_girl_2 use her voice to get away?"
+        }
+      },
+      "intro_text": "When we do not feel safe, we are allowed to do anything to get away.",
+      "text": "Let’s think about the scenario when @global.w_svp_teen_girl_2 was forced into a car by a man.\n\nHow could @global.w_svp_teen_girl_2 use her voice to get away?"
+    },
+    {
+      "id": "use_body",
+      "workshop": "w_svp",
+      "type": "suggestions",
+      "part_1_id": "first_targets",
+      "part_2_id": "second_targets",
+      "part_3_id": "defence_moves",
+      "title": "Use your body",
+      "_translations": {
+        "title": {},
+        "intro_text": {},
+        "text": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Use your body"
+        },
+        "intro_text": {
+          "eng": "When our voice does not stop the situation, we can use our bodies to defend ourselves."
+        },
+        "text": {
+          "eng": "@global.w_svp_teen_girl_2’s attacker has some weak spots she can target in order to get away, The same can work for you:"
+        }
+      },
+      "intro_text": "When our voice does not stop the situation, we can use our bodies to defend ourselves.",
+      "text": "@global.w_svp_teen_girl_2’s attacker has some weak spots she can target in order to get away, The same can work for you:"
+    }
+  ],
+  "_xlsxPath": "global/data/workshop_data/workshop_data_list.xlsx"
+}

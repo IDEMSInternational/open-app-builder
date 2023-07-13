@@ -79,6 +79,14 @@
           "tz_sw": true
         }
       }
+    },
+    {
+      "type": "declare_global_constant",
+      "name": "regional",
+      "value": "Tanzanian",
+      "_translations": {
+        "value": {}
+      }
     }
   ],
   "_xlsxPath": "tz/data/localisation_globals_tz.xlsx"

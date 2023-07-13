@@ -827,7 +827,9 @@
         "tool_3_title": {},
         "tool_3_text": {},
         "tool_4_title": {},
-        "tool_4_text": {}
+        "tool_4_text": {},
+        "tool_4_button_text": {},
+        "bottom_text": {}
       },
       "_translatedFields": {
         "title": {
@@ -859,6 +861,12 @@
         },
         "tool_4_text": {
           "eng": "When our voice is not changing the situation, we can use our bodies.\n\nKnow the ‘weapons’ on your body and know the ‘targets’ on your attacker’s body. Use what is free on your body that you can fight with and what is open on the attacker’s body to hit."
+        },
+        "tool_4_button_text": {
+          "eng": "Use your body"
+        },
+        "bottom_text": {
+          "eng": "If you do get hurt by someone, remember it is never your fault. Ask someone you trust for help, and make sure your teen knows they can tell you anything so you can find a solution together."
         }
       },
       "top_text": "In a dangerous situation, we may not know what to do and freeze – this is normal. These tools can help you and your teen stay safe.",
@@ -869,7 +877,9 @@
       "tool_3_title": "Say it",
       "tool_3_text": "Your voice can stop many attacks. Yell ‘No!’, call for help, warn of consequences, name the behaviour, act crazy, pretend to go along to buy time, use humour, calm them down, or negotiate. \n\nBe clear, confident and direct. Speak using your voice, body language and eye contact.",
       "tool_4_title": "Do it",
-      "tool_4_text": "When our voice is not changing the situation, we can use our bodies.\n\nKnow the ‘weapons’ on your body and know the ‘targets’ on your attacker’s body. Use what is free on your body that you can fight with and what is open on the attacker’s body to hit."
+      "tool_4_text": "When our voice is not changing the situation, we can use our bodies.\n\nKnow the ‘weapons’ on your body and know the ‘targets’ on your attacker’s body. Use what is free on your body that you can fight with and what is open on the attacker’s body to hit.",
+      "tool_4_button_text": "Use your body",
+      "bottom_text": "If you do get hurt by someone, remember it is never your fault. Ask someone you trust for help, and make sure your teen knows they can tell you anything so you can find a solution together."
     },
     {
       "id": "w_grief",
