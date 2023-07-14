@@ -1,8 +1,7 @@
 {
+  "flow_name": "w_learn_welcome_individual",
+  "flow_subtype": "generated",
   "flow_type": "template",
-  "module": "solve",
-  "flow_name": "w_solve_welcome_individual",
-  "status": "released",
   "rows": [
     {
       "type": "template",
@@ -30,32 +29,16 @@
       ],
       "rows": [
         {
-          "name": "workshop_data",
-          "value": "@data.workshop.w_solve",
+          "name": "workshop",
+          "value": "w_learn",
           "_translations": {
             "value": {}
           },
           "type": "set_variable",
-          "_nested_name": "welcome_individual.workshop_data",
-          "_dynamicFields": {
-            "value": [
-              {
-                "fullExpression": "@data.workshop.w_solve",
-                "matchedExpression": "@data.workshop.w_solve",
-                "type": "data",
-                "fieldName": "workshop"
-              }
-            ]
-          },
-          "_dynamicDependencies": {
-            "@data.workshop.w_solve": [
-              "value"
-            ]
-          }
+          "_nested_name": "welcome_individual.workshop"
         }
       ],
       "_nested_name": "welcome_individual"
     }
-  ],
-  "_xlsxPath": "global/top_templates/workshop_templates/workshop_solve.xlsx"
+  ]
 }

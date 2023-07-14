@@ -1,13 +1,18 @@
 {
-  "flow_type": "template",
-  "module": "consequence",
-  "flow_name": "w_consequence_ending",
+  "flow_type": "generator",
+  "flow_name": "gen_welcome_individual",
   "status": "released",
+  "parameter_list": {
+    "input_data_list": "workshop_data",
+    "output_flow_name": "{@gen.id}_welcome_individual",
+    "output_flow_type": "template",
+    "output_flow_subtype": "generated"
+  },
   "rows": [
     {
       "type": "template",
-      "name": "ending",
-      "value": "ending",
+      "name": "welcome_individual",
+      "value": "welcome_individual",
       "action_list": [
         {
           "trigger": "completed",
@@ -28,9 +33,13 @@
           "_cleaned": "uncompleted | emit:uncompleted"
         }
       ],
-      "rows": [],
-      "_nested_name": "ending"
+      "rows": [
+        {
+          "name": "workshop",
+          "value": "@gen.id"
+        }
+      ]
     }
   ],
-  "_xlsxPath": "global/top_templates/workshop_templates/workshop_consequence.xlsx"
+  "_xlsxPath": "global/top_templates/workshop_templates/gen_workshop_act.xlsx"
 }

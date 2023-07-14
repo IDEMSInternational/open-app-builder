@@ -1,13 +1,12 @@
 {
+  "flow_name": "w_instruct_welcome_individual",
+  "flow_subtype": "generated",
   "flow_type": "template",
-  "module": "instruct",
-  "flow_name": "w_instruct_ending",
-  "status": "released",
   "rows": [
     {
       "type": "template",
-      "name": "ending",
-      "value": "ending",
+      "name": "welcome_individual",
+      "value": "welcome_individual",
       "action_list": [
         {
           "trigger": "completed",
@@ -28,9 +27,18 @@
           "_cleaned": "uncompleted | emit:uncompleted"
         }
       ],
-      "rows": [],
-      "_nested_name": "ending"
+      "rows": [
+        {
+          "name": "workshop",
+          "value": "w_instruct",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "welcome_individual.workshop"
+        }
+      ],
+      "_nested_name": "welcome_individual"
     }
-  ],
-  "_xlsxPath": "global/top_templates/workshop_templates/workshop_instruct.xlsx"
+  ]
 }

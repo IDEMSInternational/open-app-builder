@@ -4,52 +4,13 @@
   "status": "released",
   "rows": [
     {
-      "name": "workshop_data",
-      "value": "@data.workshop.w_self_care",
-      "_translations": {
-        "value": {}
-      },
-      "type": "set_variable",
-      "_nested_name": "workshop_data",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "@data.workshop.w_self_care",
-            "matchedExpression": "@data.workshop.w_self_care",
-            "type": "data",
-            "fieldName": "workshop"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@data.workshop.w_self_care": [
-          "value"
-        ]
-      }
-    },
-    {
       "name": "workshop",
-      "value": "@local.workshop_data.id",
+      "value": "w_self_care",
       "_translations": {
         "value": {}
       },
       "type": "set_variable",
-      "_nested_name": "workshop",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "@local.workshop_data.id",
-            "matchedExpression": "@local.workshop_data.id",
-            "type": "local",
-            "fieldName": "workshop_data"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@local.workshop_data.id": [
-          "value"
-        ]
-      }
+      "_nested_name": "workshop"
     },
     {
       "name": "welcome_individual_answer",
