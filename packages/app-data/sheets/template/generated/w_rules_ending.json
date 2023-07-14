@@ -1,5 +1,5 @@
 {
-  "flow_name": "w_instruct_ending",
+  "flow_name": "w_rules_ending",
   "flow_subtype": "generated",
   "flow_type": "template",
   "rows": [
@@ -30,7 +30,7 @@
       "rows": [
         {
           "name": "workshop",
-          "value": "w_instruct",
+          "value": "w_rules",
           "_translations": {
             "value": {}
           },
