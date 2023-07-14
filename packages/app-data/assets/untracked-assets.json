@@ -22,17 +22,6 @@
       }
     }
   },
-  "quality_assurance/test_audio.mp3": {
-    "overrides": {
-      "theme_default": {
-        "es_sp": {
-          "filePath": "es_sp/quality_assurance/test_audio.mp3",
-          "md5Checksum": "a53e8b35c7985e051a7b9b9742879b03",
-          "size_kb": 33.6
-        }
-      }
-    }
-  },
   "quality_assurance/test_folder_structure.png": {
     "overrides": {
       "theme_professional": {
@@ -46,29 +35,11 @@
   },
   "quality_assurance/test_image.png": {
     "overrides": {
-      "theme_default": {
-        "es_sp": {
-          "filePath": "es_sp/quality_assurance/test_image.png",
-          "md5Checksum": "f44069fc2c1d641dae929631c17fdbec",
-          "size_kb": 1.8
-        }
-      },
       "theme_professional": {
         "tz_sw": {
           "filePath": "tz_sw/quality_assurance/theme_professional/test_image.png",
           "md5Checksum": "cbf87a2865550f4d0330af13804383cf",
           "size_kb": 22.4
-        }
-      }
-    }
-  },
-  "quality_assurance/test_image_untracked.png": {
-    "overrides": {
-      "theme_default": {
-        "es_sp": {
-          "filePath": "es_sp/quality_assurance/test_image_untracked.png",
-          "md5Checksum": "72f88e0cd59ffd07a8cefdee51713ea6",
-          "size_kb": 12.8
         }
       }
     }

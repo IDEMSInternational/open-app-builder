@@ -1,7 +1,7 @@
 {
+  "flow_name": "w_stress_welcome_individual",
+  "flow_subtype": "generated",
   "flow_type": "template",
-  "flow_name": "w_self_care_welcome_individual",
-  "status": "released",
   "rows": [
     {
       "type": "template",
@@ -29,32 +29,16 @@
       ],
       "rows": [
         {
-          "name": "workshop_data",
-          "value": "@data.workshop.w_self_care",
+          "name": "workshop",
+          "value": "w_stress",
           "_translations": {
             "value": {}
           },
           "type": "set_variable",
-          "_nested_name": "welcome_individual.workshop_data",
-          "_dynamicFields": {
-            "value": [
-              {
-                "fullExpression": "@data.workshop.w_self_care",
-                "matchedExpression": "@data.workshop.w_self_care",
-                "type": "data",
-                "fieldName": "workshop"
-              }
-            ]
-          },
-          "_dynamicDependencies": {
-            "@data.workshop.w_self_care": [
-              "value"
-            ]
-          }
+          "_nested_name": "welcome_individual.workshop"
         }
       ],
       "_nested_name": "welcome_individual"
     }
-  ],
-  "_xlsxPath": "global/top_templates/workshop_templates/workshop_self_care.xlsx"
+  ]
 }
