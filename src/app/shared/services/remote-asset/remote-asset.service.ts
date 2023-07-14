@@ -11,6 +11,9 @@ import { IAssetContents } from "src/app/data";
 import { BehaviorSubject, Subject, Subscription, lastValueFrom } from "rxjs";
 import { TemplateAssetService } from "../../components/template/services/template-asset.service";
 import { AsyncServiceBase } from "../asyncService.base";
+import { IAssetEntry } from "packages/data-models/deployment.model";
+import { DynamicDataService } from "../dynamic-data/dynamic-data.service";
+import { arrayToHashmap } from "../../utils";
 
 @Injectable({
   providedIn: "root",
@@ -25,10 +28,11 @@ export class RemoteAssetService extends AsyncServiceBase {
   downloadProgress: number;
 
   constructor(
-    private templateActionRegistry: TemplateActionRegistry,
     private appConfigService: AppConfigService,
+    private dynamicDataService: DynamicDataService,
     private fileManagerService: FileManagerService,
     private templateAssetService: TemplateAssetService,
+    private templateActionRegistry: TemplateActionRegistry,
     private http: HttpClient
   ) {
     super("RemoteAsset");
@@ -41,11 +45,19 @@ export class RemoteAssetService extends AsyncServiceBase {
     const { enabled, publicApiKey, url } = environment.deploymentConfig.supabase;
     this.supabaseEnabled = enabled;
     if (this.supabaseEnabled) {
-      await this.ensureAsyncServicesReady([this.templateAssetService]);
+      await this.ensureAsyncServicesReady([this.templateAssetService, this.dynamicDataService]);
       this.ensureSyncServicesReady([this.appConfigService, this.fileManagerService]);
       this.subscribeToAppConfigChanges();
       if (this.remoteAssetsEnabled) {
         this.supabase = createClient(url, publicApiKey);
+
+        // Share updates to asset contents list with template asset service for lookup
+        const obs = await this.dynamicDataService.query$("asset_pack", "required_assets");
+        obs.subscribe((dataRows) => {
+          const assetContentsHashmap = arrayToHashmap(dataRows, "id") as IAssetContents;
+          this.templateAssetService.updateContentsList(assetContentsHashmap);
+          console.log("asset contents list", this.templateAssetService.assetsContentsList$.value);
+        });
       }
     }
   }
@@ -108,7 +120,7 @@ export class RemoteAssetService extends AsyncServiceBase {
         console.log(
           `[REMOTE ASSETS] Fetching remote URL for ${index + 1} of ${relativePaths.length} files.`
         );
-        this.templateAssetService.updateContentsList(relativePath, { uri: url });
+        this.updateAssetContents(relativePath, { filePath: url });
       }
     }
   }
@@ -122,11 +134,19 @@ export class RemoteAssetService extends AsyncServiceBase {
         size_kb: 2,
         md5Checksum: "e6d6c6a12ca13a6277084e01c088378c",
       },
-      "debug_asset_pack/example_asset.png": {
+      "debug_asset_pack/test_image_2.png": {
         size_kb: 2,
         md5Checksum: "e6d6c6a12ca13a6277084e01c088378c",
       },
     };
+
+    /**
+     * TODO:
+     * 1. Check what is required by active asset pack(s). I.e. which assets are not included in core
+     * 2. Get manifest of available files on device
+     * 3. Compare the above to generate manifest of files needed to be downloaded
+     * 4. Download and update contents using existing methods
+     */
     return manifest;
   }
 
@@ -159,15 +179,22 @@ export class RemoteAssetService extends AsyncServiceBase {
         console.log(`[REMOTE ASSETS] File ${fileIndex + 1} of ${totalFiles} downloaded to cache`);
         if (data) {
           const filesystemPath = await this.fileManagerService.saveFile(data, relativePath);
-          await this.templateAssetService.updateContentsList(relativePath, {
-            uri: filesystemPath,
-          });
+          await this.updateAssetContents(relativePath, { filePath: filesystemPath });
         }
         progress$.next(progress);
         progress$.complete();
       },
     });
     return progress$;
+  }
+
+  private async updateAssetContents(relativePath: string, update: Partial<IAssetEntry>) {
+    await this.dynamicDataService.update<IAssetEntry>(
+      "asset_pack",
+      "required_assets",
+      relativePath,
+      update
+    );
   }
 
   /** A general function to download a file from a URL */
