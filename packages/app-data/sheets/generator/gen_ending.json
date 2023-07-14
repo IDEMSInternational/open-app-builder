@@ -1,8 +1,13 @@
 {
-  "flow_type": "template",
-  "module": "solve",
-  "flow_name": "w_solve_ending",
+  "flow_type": "generator",
+  "flow_name": "gen_ending",
   "status": "released",
+  "parameter_list": {
+    "input_data_list": "workshop_data",
+    "output_flow_name": "{@gen.id}_ending",
+    "output_flow_type": "template",
+    "output_flow_subtype": "generated"
+  },
   "rows": [
     {
       "type": "template",
@@ -28,9 +33,13 @@
           "_cleaned": "uncompleted | emit:uncompleted"
         }
       ],
-      "rows": [],
-      "_nested_name": "ending"
+      "rows": [
+        {
+          "name": "workshop",
+          "value": "@gen.id"
+        }
+      ]
     }
   ],
-  "_xlsxPath": "global/top_templates/workshop_templates/workshop_solve.xlsx"
+  "_xlsxPath": "global/top_templates/workshop_templates/gen_workshop_act.xlsx"
 }

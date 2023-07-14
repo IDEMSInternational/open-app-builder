@@ -1,8 +1,7 @@
 {
+  "flow_name": "w_praise_ending",
+  "flow_subtype": "generated",
   "flow_type": "template",
-  "module": "safe",
-  "flow_name": "w_safe_ending",
-  "status": "released",
   "rows": [
     {
       "type": "template",
@@ -28,9 +27,18 @@
           "_cleaned": "uncompleted | emit:uncompleted"
         }
       ],
-      "rows": [],
+      "rows": [
+        {
+          "name": "workshop",
+          "value": "w_praise",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "ending.workshop"
+        }
+      ],
       "_nested_name": "ending"
     }
-  ],
-  "_xlsxPath": "global/top_templates/workshop_templates/workshop_safe.xlsx"
+  ]
 }

@@ -4,6 +4,15 @@
   "status": "released",
   "rows": [
     {
+      "name": "workshop",
+      "value": "w_self_care",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "workshop"
+    },
+    {
       "type": "template",
       "name": "watch",
       "value": "watch",
@@ -49,21 +58,30 @@
               "_translations": {
                 "value": {}
               },
-              "condition": "@field.do_this_workshop_together",
+              "condition": "@fields.do_this_workshop_together && @local.workshop != \"w_celebrate\"",
               "type": "set_variable",
               "_nested_name": "watch.workshop_activity.activity_image",
               "_dynamicFields": {
                 "condition": [
                   {
-                    "fullExpression": "@field.do_this_workshop_together",
-                    "matchedExpression": "@field.do_this_workshop_together",
-                    "type": "field",
+                    "fullExpression": "@fields.do_this_workshop_together && @local.workshop != \"w_celebrate\"",
+                    "matchedExpression": "@fields.do_this_workshop_together",
+                    "type": "fields",
                     "fieldName": "do_this_workshop_together"
+                  },
+                  {
+                    "fullExpression": "@fields.do_this_workshop_together && @local.workshop != \"w_celebrate\"",
+                    "matchedExpression": "@local.workshop",
+                    "type": "local",
+                    "fieldName": "workshop"
                   }
                 ]
               },
               "_dynamicDependencies": {
-                "@field.do_this_workshop_together": [
+                "@fields.do_this_workshop_together": [
+                  "condition"
+                ],
+                "@local.workshop": [
                   "condition"
                 ]
               }
@@ -74,21 +92,98 @@
               "_translations": {
                 "value": {}
               },
-              "condition": "!@field.do_this_workshop_together",
+              "condition": "!@fields.do_this_workshop_together && @local.workshop != \"w_celebrate\"",
               "type": "set_variable",
               "_nested_name": "watch.workshop_activity.activity_image",
               "_dynamicFields": {
                 "condition": [
                   {
-                    "fullExpression": "!@field.do_this_workshop_together",
-                    "matchedExpression": "!@field.do_this_workshop_together",
-                    "type": "field",
+                    "fullExpression": "!@fields.do_this_workshop_together && @local.workshop != \"w_celebrate\"",
+                    "matchedExpression": "!@fields.do_this_workshop_together",
+                    "type": "fields",
                     "fieldName": "do_this_workshop_together"
+                  },
+                  {
+                    "fullExpression": "!@fields.do_this_workshop_together && @local.workshop != \"w_celebrate\"",
+                    "matchedExpression": "@local.workshop",
+                    "type": "local",
+                    "fieldName": "workshop"
                   }
                 ]
               },
               "_dynamicDependencies": {
-                "!@field.do_this_workshop_together": [
+                "!@fields.do_this_workshop_together": [
+                  "condition"
+                ],
+                "@local.workshop": [
+                  "condition"
+                ]
+              }
+            },
+            {
+              "name": "activity_image",
+              "value": "plh_images/workshop_modes/group/final/cup.svg",
+              "_translations": {
+                "value": {}
+              },
+              "condition": "@fields.do_this_workshop_together && @local.workshop == \"w_celebrate\"",
+              "type": "set_variable",
+              "_nested_name": "watch.workshop_activity.activity_image",
+              "_dynamicFields": {
+                "condition": [
+                  {
+                    "fullExpression": "@fields.do_this_workshop_together && @local.workshop == \"w_celebrate\"",
+                    "matchedExpression": "@fields.do_this_workshop_together",
+                    "type": "fields",
+                    "fieldName": "do_this_workshop_together"
+                  },
+                  {
+                    "fullExpression": "@fields.do_this_workshop_together && @local.workshop == \"w_celebrate\"",
+                    "matchedExpression": "@local.workshop",
+                    "type": "local",
+                    "fieldName": "workshop"
+                  }
+                ]
+              },
+              "_dynamicDependencies": {
+                "@fields.do_this_workshop_together": [
+                  "condition"
+                ],
+                "@local.workshop": [
+                  "condition"
+                ]
+              }
+            },
+            {
+              "name": "activity_image",
+              "value": "plh_images/workshop_modes/individual/final/cup.svg",
+              "_translations": {
+                "value": {}
+              },
+              "condition": "!@fields.do_this_workshop_together && @local.workshop == \"w_celebrate\"",
+              "type": "set_variable",
+              "_nested_name": "watch.workshop_activity.activity_image",
+              "_dynamicFields": {
+                "condition": [
+                  {
+                    "fullExpression": "!@fields.do_this_workshop_together && @local.workshop == \"w_celebrate\"",
+                    "matchedExpression": "!@fields.do_this_workshop_together",
+                    "type": "fields",
+                    "fieldName": "do_this_workshop_together"
+                  },
+                  {
+                    "fullExpression": "!@fields.do_this_workshop_together && @local.workshop == \"w_celebrate\"",
+                    "matchedExpression": "@local.workshop",
+                    "type": "local",
+                    "fieldName": "workshop"
+                  }
+                ]
+              },
+              "_dynamicDependencies": {
+                "!@fields.do_this_workshop_together": [
+                  "condition"
+                ],
+                "@local.workshop": [
                   "condition"
                 ]
               }
@@ -112,6 +207,7 @@
                   "tz_sw": true
                 }
               },
+              "condition": "@local.workshop != \"w_celebrate\"",
               "type": "set_variable",
               "_nested_name": "watch.workshop_activity.intro_text",
               "_dynamicFields": {
@@ -122,11 +218,94 @@
                     "type": "global",
                     "fieldName": "workshop"
                   }
+                ],
+                "condition": [
+                  {
+                    "fullExpression": "@local.workshop != \"w_celebrate\"",
+                    "matchedExpression": "@local.workshop",
+                    "type": "local",
+                    "fieldName": "workshop"
+                  }
                 ]
               },
               "_dynamicDependencies": {
                 "@global.workshop": [
                   "value"
+                ],
+                "@local.workshop": [
+                  "condition"
+                ]
+              }
+            },
+            {
+              "name": "intro_text",
+              "value": "We are so proud of you. You have shown strength, courage, and love for your family. Parents are amazing. You are amazing. \n\nThis song is for parents everywhere. Listen, dance together and celebrate yourselves!",
+              "_translations": {
+                "value": {
+                  "tz_sw": true
+                }
+              },
+              "condition": "@fields.do_this_workshop_together && @local.workshop == \"w_celebrate\"",
+              "type": "set_variable",
+              "_nested_name": "watch.workshop_activity.intro_text",
+              "_dynamicFields": {
+                "condition": [
+                  {
+                    "fullExpression": "@fields.do_this_workshop_together && @local.workshop == \"w_celebrate\"",
+                    "matchedExpression": "@fields.do_this_workshop_together",
+                    "type": "fields",
+                    "fieldName": "do_this_workshop_together"
+                  },
+                  {
+                    "fullExpression": "@fields.do_this_workshop_together && @local.workshop == \"w_celebrate\"",
+                    "matchedExpression": "@local.workshop",
+                    "type": "local",
+                    "fieldName": "workshop"
+                  }
+                ]
+              },
+              "_dynamicDependencies": {
+                "@fields.do_this_workshop_together": [
+                  "condition"
+                ],
+                "@local.workshop": [
+                  "condition"
+                ]
+              }
+            },
+            {
+              "name": "intro_text",
+              "value": "We are so proud of you. You have shown strength, courage, and love for your family. Parents are amazing. You are amazing. \n\nThis song is for parents everywhere. Listen, dance and celebrate yourself!",
+              "_translations": {
+                "value": {
+                  "tz_sw": true
+                }
+              },
+              "condition": "!@fields.do_this_workshop_together && @local.workshop == \"w_celebrate\"",
+              "type": "set_variable",
+              "_nested_name": "watch.workshop_activity.intro_text",
+              "_dynamicFields": {
+                "condition": [
+                  {
+                    "fullExpression": "!@fields.do_this_workshop_together && @local.workshop == \"w_celebrate\"",
+                    "matchedExpression": "!@fields.do_this_workshop_together",
+                    "type": "fields",
+                    "fieldName": "do_this_workshop_together"
+                  },
+                  {
+                    "fullExpression": "!@fields.do_this_workshop_together && @local.workshop == \"w_celebrate\"",
+                    "matchedExpression": "@local.workshop",
+                    "type": "local",
+                    "fieldName": "workshop"
+                  }
+                ]
+              },
+              "_dynamicDependencies": {
+                "!@fields.do_this_workshop_together": [
+                  "condition"
+                ],
+                "@local.workshop": [
+                  "condition"
                 ]
               }
             },

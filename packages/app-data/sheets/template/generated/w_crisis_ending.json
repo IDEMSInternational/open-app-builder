@@ -1,8 +1,7 @@
 {
+  "flow_name": "w_crisis_ending",
+  "flow_subtype": "generated",
   "flow_type": "template",
-  "module": "praise",
-  "flow_name": "w_praise_ending",
-  "status": "released",
   "rows": [
     {
       "type": "template",
@@ -28,9 +27,18 @@
           "_cleaned": "uncompleted | emit:uncompleted"
         }
       ],
-      "rows": [],
+      "rows": [
+        {
+          "name": "workshop",
+          "value": "w_crisis",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "ending.workshop"
+        }
+      ],
       "_nested_name": "ending"
     }
-  ],
-  "_xlsxPath": "global/top_templates/workshop_templates/workshop_praise.xlsx"
+  ]
 }
