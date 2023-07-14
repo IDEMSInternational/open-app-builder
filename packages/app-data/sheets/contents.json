@@ -3544,12 +3544,6 @@
       "flow_name": "w_celebrate_tools_activity",
       "_xlsxPath": "global/top_templates/workshop_templates/workshop_celebrate.xlsx"
     },
-    "w_celebrate_welcome_together": {
-      "flow_type": "template",
-      "module": "celebrate",
-      "flow_name": "w_celebrate_welcome_together",
-      "_xlsxPath": "global/top_templates/workshop_templates/workshop_celebrate.xlsx"
-    },
     "w_consequence_care_together": {
       "flow_type": "template",
       "module": "consequence",
@@ -3795,12 +3789,6 @@
       "flow_name": "w_consequence_welcome_ind",
       "_xlsxPath": "global/top_templates/workshop_templates/workshop_consequence.xlsx"
     },
-    "w_consequence_welcome_together": {
-      "flow_type": "template",
-      "module": "consequence",
-      "flow_name": "w_consequence_welcome_together",
-      "_xlsxPath": "global/top_templates/workshop_templates/workshop_consequence.xlsx"
-    },
     "w_crisis_care_together": {
       "flow_type": "template",
       "module": "crisis",
@@ -3972,12 +3960,6 @@
       "flow_type": "template",
       "module": "crisis",
       "flow_name": "w_crisis_tools_activity",
-      "_xlsxPath": "global/top_templates/workshop_templates/workshop_crisis.xlsx"
-    },
-    "w_crisis_welcome_together": {
-      "flow_type": "template",
-      "module": "crisis",
-      "flow_name": "w_crisis_welcome_together",
       "_xlsxPath": "global/top_templates/workshop_templates/workshop_crisis.xlsx"
     },
     "w_instruct_care_together": {
@@ -4175,12 +4157,6 @@
       "flow_type": "template",
       "module": "instruct",
       "flow_name": "w_instruct_try_pop",
-      "_xlsxPath": "global/top_templates/workshop_templates/workshop_instruct.xlsx"
-    },
-    "w_instruct_welcome_together": {
-      "flow_type": "template",
-      "module": "instruct",
-      "flow_name": "w_instruct_welcome_together",
       "_xlsxPath": "global/top_templates/workshop_templates/workshop_instruct.xlsx"
     },
     "w_money_care_together": {
@@ -4398,12 +4374,6 @@
       "flow_name": "w_money_tq_3_pop",
       "_xlsxPath": "global/top_templates/workshop_templates/workshop_money.xlsx"
     },
-    "w_money_welcome_together": {
-      "flow_type": "template",
-      "module": "money",
-      "flow_name": "w_money_welcome_together",
-      "_xlsxPath": "global/top_templates/workshop_templates/workshop_money.xlsx"
-    },
     "w_praise_care_together": {
       "flow_type": "template",
       "module": "praise",
@@ -4575,12 +4545,6 @@
       "flow_type": "template",
       "module": "praise",
       "flow_name": "w_praise_try_pop",
-      "_xlsxPath": "global/top_templates/workshop_templates/workshop_praise.xlsx"
-    },
-    "w_praise_welcome_together": {
-      "flow_type": "template",
-      "module": "praise",
-      "flow_name": "w_praise_welcome_together",
       "_xlsxPath": "global/top_templates/workshop_templates/workshop_praise.xlsx"
     },
     "w_rules_care_together": {
@@ -5241,12 +5205,6 @@
       "flow_name": "w_solve_try",
       "_xlsxPath": "global/top_templates/workshop_templates/workshop_solve.xlsx"
     },
-    "w_solve_welcome_together": {
-      "flow_type": "template",
-      "module": "solve",
-      "flow_name": "w_solve_welcome_together",
-      "_xlsxPath": "global/top_templates/workshop_templates/workshop_solve.xlsx"
-    },
     "w_stress_care_together": {
       "flow_type": "template",
       "module": "stress",
@@ -5420,12 +5378,6 @@
       "flow_name": "w_stress_tools_activity",
       "_xlsxPath": "global/top_templates/workshop_templates/workshop_stress.xlsx"
     },
-    "w_stress_welcome_together": {
-      "flow_type": "template",
-      "module": "stress",
-      "flow_name": "w_stress_welcome_together",
-      "_xlsxPath": "global/top_templates/workshop_templates/workshop_stress.xlsx"
-    },
     "watch": {
       "flow_type": "template",
       "flow_name": "watch",
@@ -5439,11 +5391,6 @@
     "welcome_individual": {
       "flow_type": "template",
       "flow_name": "welcome_individual",
-      "_xlsxPath": "global/mode_templates/welcome.xlsx"
-    },
-    "welcome_together": {
-      "flow_type": "template",
-      "flow_name": "welcome_together",
       "_xlsxPath": "global/mode_templates/welcome.xlsx"
     },
     "workshop_accordion_item": {
