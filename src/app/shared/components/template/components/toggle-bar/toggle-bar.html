@@ -1,0 +1,16 @@
+<div
+  class="container"
+  [class]="position"
+  [attr.data-param-style]="style"
+  [attr.data-variant]="variant"
+>
+  <div *ngIf="!isVariantIcon" class="toggle_wrapper" [class.show-tick-cross]="showTickAndCross">
+    <ion-toggle mode="md" [checked]="_row.value" (click)="handleClick($event)"> </ion-toggle>
+  </div>
+  <div *ngIf="isVariantIcon" class="toggle_wrapper">
+    <div class="icon-wrapper" (click)="handleClick($event)">
+      <img [src]="(_row.value ? iconTrue : iconFalse) | plhAsset" />
+    </div>
+  </div>
+  <span class="label" *ngIf="trueText && falseText">{{ _row.value ? trueText : falseText }} </span>
+</div>
