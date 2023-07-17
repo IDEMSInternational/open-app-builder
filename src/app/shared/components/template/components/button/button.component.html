@@ -1,11 +1,14 @@
 <ion-button
+  *ngIf="!isCardPortrait"
   [class]="'full standard medium' + ' ' + style + ' ' + buttonAlign"
   [disabled]="disabled"
   (click)="triggerActions('click')"
   [attr.data-param-style]="style"
+  [attr.data-variant]="variant"
 >
   <ion-icon *ngIf="icon" slot="start" src="{{ icon | plhAsset }}"></ion-icon>
-  <span *ngIf="_row.value" [class]="textAlign" [innerHTML]="_row.value | markdown"> </span>
+  <span *ngIf="_row.value" [class]="'left ' + textAlign" [innerHTML]="_row.value | markdown">
+  </span>
   <span *ngIf="_row.rows" class="children">
     <plh-template-component
       *ngFor="let childRow of _row.rows | filterDisplayComponent; trackBy: trackByRow"
@@ -16,3 +19,24 @@
     ></plh-template-component>
   </span>
 </ion-button>
+
+<div
+  class="button-container"
+  *ngIf="isCardPortrait"
+  (click)="triggerActions('click')"
+  [attr.data-variant]="variant"
+>
+  <img src="{{ image | plhAsset }}" />
+  <div *ngIf="_row.value" [class]="'button-text ' + textAlign">
+    {{ _row.value }}
+  </div>
+  <span *ngIf="_row.rows" class="children">
+    <plh-template-component
+      *ngFor="let childRow of _row.rows | filterDisplayComponent; trackBy: trackByRow"
+      class="child"
+      [row]="childRow"
+      [parent]="parent"
+      [attr.data-rowname]="_row.name"
+    ></plh-template-component>
+  </span>
+</div>
