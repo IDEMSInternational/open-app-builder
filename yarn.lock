@@ -2183,6 +2183,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@capacitor/share@npm:^4.1.1":
+  version: 4.1.1
+  resolution: "@capacitor/share@npm:4.1.1"
+  peerDependencies:
+    "@capacitor/core": ^4.0.0
+  checksum: 3356d1719040d92331f4c69e7842fd86820b0bffbbca3d7233b1c69d5518304f2d895944e1b0386ad5995b2592eb8f2c699c7740ab8b1fa30489cae093bc840b
+  languageName: node
+  linkType: hard
+
 "@capacitor/splash-screen@npm:^4.1.2":
   version: 4.1.2
   resolution: "@capacitor/splash-screen@npm:4.1.2"
@@ -6592,6 +6601,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/js-yaml@npm:^4.0.5":
+  version: 4.0.5
+  resolution: "@types/js-yaml@npm:4.0.5"
+  checksum: 7dcac8c50fec31643cc9d6444b5503239a861414cdfaa7ae9a38bc22597c4d850c4b8cec3d82d73b3fbca408348ce223b0408d598b32e094470dfffc6d486b4d
+  languageName: node
+  linkType: hard
+
 "@types/json-schema@npm:*, @types/json-schema@npm:7.0.11, @types/json-schema@npm:^7.0.4, @types/json-schema@npm:^7.0.5, @types/json-schema@npm:^7.0.6, @types/json-schema@npm:^7.0.8, @types/json-schema@npm:^7.0.9":
   version: 7.0.11
   resolution: "@types/json-schema@npm:7.0.11"
@@ -7777,6 +7793,21 @@ __metadata:
   checksum: 4079b67283b94935157698831967642f24a075c52ce3feaaaafe095776dfbe15d86a1b33b1e53860fc0d062ed6c83f4284a5c87c85b9ad51853a01173da6097f
   languageName: node
   linkType: hard
+
+"actions@workspace:*, actions@workspace:packages/actions":
+  version: 0.0.0-use.local
+  resolution: "actions@workspace:packages/actions"
+  dependencies:
+    "@types/fs-extra": ^9.0.13
+    "@types/inquirer": ^7.3.1
+    "@types/js-yaml": ^4.0.5
+    chalk: ^4.1.0
+    fs-extra: ^10.0.0
+    inquirer: ^7.3.3
+    js-yaml: ^4.1.0
+    ts-node: ^10.8.0
+  languageName: unknown
+  linkType: soft
 
 "adjust-sourcemap-loader@npm:^4.0.0":
   version: 4.0.0
@@ -14921,6 +14952,7 @@ __metadata:
     "@capacitor/filesystem": ^4.1.4
     "@capacitor/local-notifications": ^4.1.4
     "@capacitor/push-notifications": ^4.1.2
+    "@capacitor/share": ^4.1.1
     "@capacitor/splash-screen": ^4.1.2
     "@capawesome/capacitor-app-update": ^2.0.1
     "@compodoc/compodoc": ^1.1.19
@@ -24399,6 +24431,7 @@ __metadata:
     "@types/jasmine": ^3.10.6
     "@types/node-rsa": ^1.1.1
     "@types/semver": ^7.3.9
+    actions: "workspace:*"
     boxen: ^5.0.1
     chalk: ^4.1.0
     chokidar: ^3.5.3
@@ -24417,7 +24450,7 @@ __metadata:
     open: ^9.1.0
     p-queue: ^6.6.2
     pkg: ^5.5.1
-    semver: ^7.3.7
+    semver: ^7.5.2
     shared: "workspace:*"
     simple-git: ^3.7.1
     subtitles-parser-vtt: ^0.1.0
@@ -24512,6 +24545,17 @@ __metadata:
   bin:
     semver: ./bin/semver.js
   checksum: 1b26ecf6db9e8292dd90df4e781d91875c0dcc1b1909e70f5d12959a23c7eebb8f01ea581c00783bbee72ceeaad9505797c381756326073850dc36ed284b21b9
+  languageName: node
+  linkType: hard
+
+"semver@npm:^7.5.2":
+  version: 7.5.3
+  resolution: "semver@npm:7.5.3"
+  dependencies:
+    lru-cache: ^6.0.0
+  bin:
+    semver: bin/semver.js
+  checksum: 9d58db16525e9f749ad0a696a1f27deabaa51f66e91d2fa2b0db3de3e9644e8677de3b7d7a03f4c15bc81521e0c3916d7369e0572dbde250d9bedf5194e2a8a7
   languageName: node
   linkType: hard
 

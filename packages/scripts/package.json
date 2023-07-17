@@ -23,6 +23,7 @@
   "dependencies": {
     "@idemsInternational/gdrive-tools": "workspace:*",
     "@idemsInternational/rapidpro-excel": "workspace:*",
+    "actions": "workspace:*",
     "boxen": "^5.0.1",
     "chalk": "^4.1.0",
     "chokidar": "^3.5.3",
@@ -34,7 +35,7 @@
     "node-rsa": "^1.1.1",
     "open": "^9.1.0",
     "p-queue": "^6.6.2",
-    "semver": "^7.3.7",
+    "semver": "^7.5.2",
     "shared": "workspace:*",
     "simple-git": "^3.7.1",
     "subtitles-parser-vtt": "^0.1.0",
