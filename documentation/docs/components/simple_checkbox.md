@@ -1,5 +1,7 @@
 # Checkbox
 
+A checkbox is a graphical user interface (GUI) element that allows users to make a binary choice, typically between two distinct options or states. It consists of a small box that can be either checked (selected) or unchecked (deselected) by the user. The checkbox is often represented by a small square or circle with a checkmark inside when selected and empty when not selected.
+
 ## Example
 
 | type            | name                    |parameter_list |
