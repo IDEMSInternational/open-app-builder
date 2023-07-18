@@ -1,5 +1,5 @@
 <ion-button
-  *ngIf="!isCardPortrait"
+  *ngIf="!variantIsCardPortrait"
   [class]="'full standard medium' + ' ' + style + ' ' + buttonAlign"
   [disabled]="disabled"
   (click)="triggerActions('click')"
@@ -22,11 +22,11 @@
 
 <div
   class="button-container"
-  *ngIf="isCardPortrait"
+  *ngIf="variantIsCardPortrait"
   (click)="triggerActions('click')"
   [attr.data-variant]="variant"
 >
-  <img src="{{ image | plhAsset }}" />
+  <img *ngIf="image" src="{{ image | plhAsset }}" />
   <div *ngIf="_row.value" [class]="'button-text ' + textAlign">
     {{ _row.value }}
   </div>

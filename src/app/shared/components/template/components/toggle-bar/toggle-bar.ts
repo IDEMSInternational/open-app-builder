@@ -19,9 +19,9 @@ interface IToggleParams {
   falseText: string;
   /** TEMPLATE PARAMETER: "true_text". Label text to display when value is true */
   trueText: string;
-  /** TEMPLATE PARAMETER: "icon_true". Clickable icon to display when value is true */
+  /** TEMPLATE PARAMETER: "icon_true_asset". Clickable icon to display when value is true */
   iconTrue: string;
-  /** TEMPLATE PARAMETER: "icon_false". Clickable icon to display when value is false */
+  /** TEMPLATE PARAMETER: "icon_false_asset". Clickable icon to display when value is false */
   iconFalse: string;
 }
 
@@ -34,15 +34,24 @@ export class TmplToggleBarComponent
   extends TemplateBaseComponent
   implements ITemplateRowProps, OnInit
 {
+  /** TEMPLATE PARAMETER: "false_text". Label text to display when value is false */
   public falseText: IToggleParams["falseText"];
+  /** TEMPLATE PARAMETER: "true_text". Label text to display when value is true */
   public trueText: IToggleParams["trueText"];
+  /** TEMPLATE PARAMETER: "position". Default "left" */
   public position: IToggleParams["position"];
+  /** TEMPLATE PARAMETER: "show_tick_and_cross" */
   public showTickAndCross: IToggleParams["showTickAndCross"];
+  /** TEMPLATE PARAMETER: "icon_true_asset". Clickable icon to display when value is true */
   public iconTrue: IToggleParams["iconTrue"];
+  /** TEMPLATE PARAMETER: "icon_false_asset". Clickable icon to display when value is false */
   public iconFalse: IToggleParams["iconFalse"];
+  /** TEMPLATE PARAMETER: "style". Legacy, use "variant" instead. */
   style: IToggleParams["style"];
+  /** TEMPLATE PARAMETER: "variant" */
   variant: IToggleParams["variant"];
-  isVariantIcon: boolean;
+  /** @ignore */
+  variantIsCardPortrait: boolean;
 
   ngOnInit() {
     this.getParams();
@@ -71,8 +80,8 @@ export class TmplToggleBarComponent
     this.variant = getStringParamFromTemplateRow(this._row, "variant", "")
       .split(",")
       .join(" ") as IToggleParams["variant"];
-    this.isVariantIcon = this.variant.split(" ").includes("icon");
-    this.iconTrue = getStringParamFromTemplateRow(this._row, "icon_true", "");
-    this.iconFalse = getStringParamFromTemplateRow(this._row, "icon_false", "");
+    this.variantIsCardPortrait = this.variant.split(" ").includes("icon");
+    this.iconTrue = getStringParamFromTemplateRow(this._row, "icon_true_asset", "");
+    this.iconFalse = getStringParamFromTemplateRow(this._row, "icon_false_asset", "");
   }
 }

@@ -29,7 +29,7 @@ interface IButtonParams {
   buttonAlign: "left" | "centre" | "right";
   /** TEMPLATE PARAMETER: "icon". The path to an icon asset */
   icon: string;
-  /** TEMPLATE PARAMETER: "image". The path to an image asset */
+  /** TEMPLATE PARAMETER: "image_asset". The path to an image asset */
   image: string;
 }
 
@@ -54,10 +54,10 @@ export class TmplButtonComponent extends TemplateBaseComponent implements OnInit
   buttonAlign: IButtonParams["buttonAlign"] = "centre";
   /** TEMPLATE PARAMETER: "icon". The path to an icon asset */
   icon: IButtonParams["icon"];
-  /** TEMPLATE PARAMETER: "image". The path to an image asset */
+  /** TEMPLATE PARAMETER: "image_asset". The path to an image asset */
   image: IButtonParams["image"];
   /** @ignore */
-  isCardPortrait: boolean = false;
+  variantIsCardPortrait: boolean = false;
 
   /** @ignore */
   constructor(private elRef: ElementRef) {
@@ -75,9 +75,9 @@ export class TmplButtonComponent extends TemplateBaseComponent implements OnInit
     this.variant = getStringParamFromTemplateRow(this._row, "variant", "")
       .split(",")
       .join(" ") as IButtonParams["variant"];
-    this.isCardPortrait = this.variant.split(" ").includes("card-portrait");
+    this.variantIsCardPortrait = this.variant.split(" ").includes("card-portrait");
     this.disabled = getBooleanParamFromTemplateRow(this._row, "disabled", false);
-    this.image = getStringParamFromTemplateRow(this._row, "image", null);
+    this.image = getStringParamFromTemplateRow(this._row, "image_asset", null);
     if (this._row.disabled) {
       this.disabled = true;
     }
