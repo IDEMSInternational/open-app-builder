@@ -12,14 +12,13 @@
     border-radius: var(--ion-border-radius-secondary);
     position: relative;
     .text{
-      // addresses error 1152
-      white-space: pre-line; // allows line breaks to be preserved and paragraphs to be created when pressing Enter
+      white-space: pre-line; 
       text-align: center;
       font-size: var(--font-size-text-medium);
       line-height: var(--line-height-text-largest);
 
       p {
-        margin-bottom: 0.75em 0 ; // this is made to account for paragraph tags 
+        margin-bottom: 0.75em 0 ;
       }
     }    
     .icon {
