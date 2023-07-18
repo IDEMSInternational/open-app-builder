@@ -37,7 +37,9 @@
               "name": "intro_text",
               "value": "It is helpful to practice dealing with crisis before something happens.\n\nLook at these five family crisis times. Imagine you are the parent: What would you do?\n\nRemember:  BREATHE - LISTEN - THINK",
               "_translations": {
-                "value": {}
+                "value": {
+                  "tz_sw": true
+                }
               },
               "type": "set_variable",
               "_nested_name": "learn.workshop_activity.intro_text"
@@ -129,7 +131,9 @@
                       "name": "text",
                       "value": "@global.w_crisis_teen_boy_2: \"I have never done this before. And now they will expel me.\"",
                       "_translations": {
-                        "value": {}
+                        "value": {
+                          "tz_sw": true
+                        }
                       },
                       "type": "set_variable",
                       "_nested_name": "learn.workshop_activity.content_box.box_1.text",
@@ -229,7 +233,9 @@
                           "name": "text",
                           "value": "@global.w_crisis_teen_girl_2: \"@global.w_crisis_male_caregiver_1, I am so ashamed. I do not know what to do.\"",
                           "_translations": {
-                            "value": {}
+                            "value": {
+                              "tz_sw": true
+                            }
                           },
                           "type": "set_variable",
                           "_nested_name": "learn.workshop_activity.content_box.box_2.box_1.text",
@@ -338,7 +344,9 @@
                               "name": "text",
                               "value": "@global.w_crisis_teen_boy_1: \"I do not want to have a baby.\"",
                               "_translations": {
-                                "value": {}
+                                "value": {
+                                  "tz_sw": true
+                                }
                               },
                               "type": "set_variable",
                               "_nested_name": "learn.workshop_activity.content_box.box_2.box_2.box_1.text",
@@ -423,7 +431,9 @@
                                   "name": "text",
                                   "value": "\"The test said I have HIV. I am scared I am going to die.\"",
                                   "_translations": {
-                                    "value": {}
+                                    "value": {
+                                      "tz_sw": true
+                                    }
                                   },
                                   "type": "set_variable",
                                   "_nested_name": "learn.workshop_activity.content_box.box_2.box_2.box_2.box_1.text"
@@ -488,7 +498,9 @@
                                   "name": "text",
                                   "value": "@global.w_crisis_teen_girl_1: \"I did not really want to. Now I will get pregnant or be ill. @global.w_crisis_female_caregiver, I am so scared...\"",
                                   "_translations": {
-                                    "value": {}
+                                    "value": {
+                                      "tz_sw": true
+                                    }
                                   },
                                   "type": "set_variable",
                                   "_nested_name": "learn.workshop_activity.content_box.box_2.box_2.box_2.box_2.text",

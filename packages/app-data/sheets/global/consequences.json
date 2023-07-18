@@ -19,7 +19,9 @@
       "name": "negative_consequence_2",
       "value": "Take 5 minutes' pause in a separate part of the room",
       "_translations": {
-        "value": {}
+        "value": {
+          "tz_sw": true
+        }
       }
     },
     {
@@ -87,7 +89,9 @@
       "name": "positive_consequence_4",
       "value": "Watching teen’s TV show together",
       "_translations": {
-        "value": {}
+        "value": {
+          "tz_sw": true
+        }
       }
     },
     {

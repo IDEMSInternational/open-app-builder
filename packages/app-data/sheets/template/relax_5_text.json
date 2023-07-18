@@ -24,7 +24,9 @@
           "name": "outro_text",
           "value": "When you are ready, open your eyes again. You are in control!",
           "_translations": {
-            "value": {}
+            "value": {
+              "tz_sw": true
+            }
           },
           "type": "set_variable",
           "_nested_name": "relax_text.outro_text"

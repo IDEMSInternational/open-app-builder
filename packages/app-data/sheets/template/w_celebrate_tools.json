@@ -87,7 +87,9 @@
               "name": "text_1",
               "value": "Be ‘parenting buddies’ to call when you are upset or do not know what to do.",
               "_translations": {
-                "value": {}
+                "value": {
+                  "tz_sw": true
+                }
               },
               "type": "set_variable",
               "_nested_name": "essential_tools.tool_2.text_1"
@@ -124,7 +126,9 @@
               "name": "text_1",
               "value": "Text each other every week to share what you have done well.",
               "_translations": {
-                "value": {}
+                "value": {
+                  "tz_sw": true
+                }
               },
               "type": "set_variable",
               "_nested_name": "essential_tools.tool_3.text_1"

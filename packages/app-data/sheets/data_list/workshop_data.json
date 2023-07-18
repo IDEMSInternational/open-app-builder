@@ -21,7 +21,9 @@
         "short_title": {
           "tz_sw": true
         },
-        "lower_case_title": {},
+        "lower_case_title": {
+          "tz_sw": true
+        },
         "description": {
           "tz_sw": true
         },
@@ -80,7 +82,9 @@
         "title": {
           "tz_sw": true
         },
-        "lower_case_title": {},
+        "lower_case_title": {
+          "tz_sw": true
+        },
         "description": {
           "tz_sw": true
         },
@@ -135,12 +139,18 @@
         "title": {
           "tz_sw": true
         },
-        "lower_case_title": {},
+        "lower_case_title": {
+          "tz_sw": true
+        },
         "description": {
           "tz_sw": true
         },
-        "caregiver_testimonial_script": {},
-        "teen_testimonial_script": {},
+        "caregiver_testimonial_script": {
+          "tz_sw": true
+        },
+        "teen_testimonial_script": {
+          "tz_sw": true
+        },
         "in_text_title": {
           "tz_sw": true
         }
@@ -186,12 +196,18 @@
         "title": {
           "tz_sw": true
         },
-        "lower_case_title": {},
+        "lower_case_title": {
+          "tz_sw": true
+        },
         "description": {
           "tz_sw": true
         },
-        "caregiver_testimonial_script": {},
-        "teen_testimonial_script": {},
+        "caregiver_testimonial_script": {
+          "tz_sw": true
+        },
+        "teen_testimonial_script": {
+          "tz_sw": true
+        },
         "in_text_title": {
           "tz_sw": true
         }
@@ -237,7 +253,9 @@
         "title": {
           "tz_sw": true
         },
-        "lower_case_title": {},
+        "lower_case_title": {
+          "tz_sw": true
+        },
         "description": {
           "tz_sw": true
         },
@@ -292,7 +310,9 @@
         "title": {
           "tz_sw": true
         },
-        "lower_case_title": {},
+        "lower_case_title": {
+          "tz_sw": true
+        },
         "description": {
           "tz_sw": true
         },
@@ -347,7 +367,9 @@
         "title": {
           "tz_sw": true
         },
-        "lower_case_title": {},
+        "lower_case_title": {
+          "tz_sw": true
+        },
         "description": {
           "tz_sw": true
         },
@@ -402,11 +424,15 @@
         "title": {
           "tz_sw": true
         },
-        "lower_case_title": {},
+        "lower_case_title": {
+          "tz_sw": true
+        },
         "description": {
           "tz_sw": true
         },
-        "caregiver_testimonial_script": {},
+        "caregiver_testimonial_script": {
+          "tz_sw": true
+        },
         "teen_testimonial_script": {
           "tz_sw": true
         },
@@ -455,11 +481,15 @@
         "title": {
           "tz_sw": true
         },
-        "lower_case_title": {},
+        "lower_case_title": {
+          "tz_sw": true
+        },
         "description": {
           "tz_sw": true
         },
-        "caregiver_testimonial_script": {},
+        "caregiver_testimonial_script": {
+          "tz_sw": true
+        },
         "teen_testimonial_script": {
           "tz_sw": true
         },
@@ -508,14 +538,18 @@
         "title": {
           "tz_sw": true
         },
-        "lower_case_title": {},
+        "lower_case_title": {
+          "tz_sw": true
+        },
         "description": {
           "tz_sw": true
         },
         "caregiver_testimonial_script": {
           "tz_sw": true
         },
-        "teen_testimonial_script": {},
+        "teen_testimonial_script": {
+          "tz_sw": true
+        },
         "in_text_title": {
           "tz_sw": true
         }
@@ -561,7 +595,9 @@
         "title": {
           "tz_sw": true
         },
-        "lower_case_title": {},
+        "lower_case_title": {
+          "tz_sw": true
+        },
         "description": {
           "tz_sw": true
         },
@@ -614,8 +650,12 @@
         "title": {
           "tz_sw": true
         },
-        "lower_case_title": {},
-        "description": {},
+        "lower_case_title": {
+          "tz_sw": true
+        },
+        "description": {
+          "tz_sw": true
+        },
         "in_text_title": {
           "tz_sw": true
         }
@@ -648,12 +688,24 @@
       "relax_title": "@data.relax.relax_15.title",
       "title": "Body Changes and Intimate Relationships",
       "_translations": {
-        "title": {},
-        "lower_case_title": {},
-        "description": {},
-        "caregiver_testimonial_script": {},
-        "teen_testimonial_script": {},
-        "in_text_title": {}
+        "title": {
+          "tz_sw": true
+        },
+        "lower_case_title": {
+          "tz_sw": true
+        },
+        "description": {
+          "tz_sw": true
+        },
+        "caregiver_testimonial_script": {
+          "tz_sw": true
+        },
+        "teen_testimonial_script": {
+          "tz_sw": true
+        },
+        "in_text_title": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -691,12 +743,24 @@
       "relax_title": "@data.relax.relax_17.title",
       "title": "Staying Safe",
       "_translations": {
-        "title": {},
-        "lower_case_title": {},
-        "description": {},
-        "caregiver_testimonial_script": {},
-        "teen_testimonial_script": {},
-        "in_text_title": {}
+        "title": {
+          "tz_sw": true
+        },
+        "lower_case_title": {
+          "tz_sw": true
+        },
+        "description": {
+          "tz_sw": true
+        },
+        "caregiver_testimonial_script": {
+          "tz_sw": true
+        },
+        "teen_testimonial_script": {
+          "tz_sw": true
+        },
+        "in_text_title": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -734,12 +798,24 @@
       "relax_title": "@data.relax.relax_22.title",
       "title": "Coping with Grief",
       "_translations": {
-        "title": {},
-        "lower_case_title": {},
-        "description": {},
-        "caregiver_testimonial_script": {},
-        "teen_testimonial_script": {},
-        "in_text_title": {}
+        "title": {
+          "tz_sw": true
+        },
+        "lower_case_title": {
+          "tz_sw": true
+        },
+        "description": {
+          "tz_sw": true
+        },
+        "caregiver_testimonial_script": {
+          "tz_sw": true
+        },
+        "teen_testimonial_script": {
+          "tz_sw": true
+        },
+        "in_text_title": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -777,12 +853,24 @@
       "relax_title": "@data.relax.relax_20.title",
       "title": "Helping Your Teen Learn",
       "_translations": {
-        "title": {},
-        "lower_case_title": {},
-        "description": {},
-        "caregiver_testimonial_script": {},
-        "teen_testimonial_script": {},
-        "in_text_title": {}
+        "title": {
+          "tz_sw": true
+        },
+        "lower_case_title": {
+          "tz_sw": true
+        },
+        "description": {
+          "tz_sw": true
+        },
+        "caregiver_testimonial_script": {
+          "tz_sw": true
+        },
+        "teen_testimonial_script": {
+          "tz_sw": true
+        },
+        "in_text_title": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "title": {

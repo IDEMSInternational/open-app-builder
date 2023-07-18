@@ -47,7 +47,9 @@
           "name": "activity_text",
           "value": "Take turns being the “leader”. Say the intro sentences to get everybody started. Then the “leader” gives an instruction and everyone does the activity as fast as possible:\n* Leader: “There’s a fire on the mountain!”        \n* Together: “Run, run, run!”\n* Leader: “There’s a fire on the mountain!”        \n* Together: “Run, run, run!”\n* Leader: “Touch something red.” \n* Leader: “There’s a fire on the mountain!”        \n* Together: “Run, run, run!”\n* Leader: “There’s a fire on the mountain!”        \n* Together: “Run, run, run!”\n* Leader: “Jump up and down ten times.”\n* Leader: “There’s a fire on the mountain!”        \n* Together: “Run, run, run!”\n* Leader: “There’s a fire on the mountain!”        \n* Together: “Run, run, run!”\n* Leader: “Put the shoes in the shoe rack.”",
           "_translations": {
-            "value": {}
+            "value": {
+              "tz_sw": true
+            }
           },
           "type": "set_variable",
           "_nested_name": "lib_act_something_fun.activity_text"

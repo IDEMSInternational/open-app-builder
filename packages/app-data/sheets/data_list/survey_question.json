@@ -84,7 +84,9 @@
       "feedback_worse::4": "Sometime our children don’t seem to do or say many things that deserve praise. Start praising the small things, you will see your child showing more positive behaviour over time!",
       "intro_text": "In our busy lives it is hard to focus on the positive.",
       "_translations": {
-        "intro_text": {},
+        "intro_text": {
+          "tz_sw": true
+        },
         "question": {
           "tz_sw": true
         },
@@ -506,7 +508,9 @@
         "intro_text": {
           "tz_sw": true
         },
-        "question": {},
+        "question": {
+          "tz_sw": true
+        },
         "range_description": {
           "tz_sw": true
         }
@@ -575,7 +579,9 @@
       "parent_text_question": "-",
       "intro_text": "It is hard to keep track of our teenagers when they are becoming more independent.",
       "_translations": {
-        "intro_text": {},
+        "intro_text": {
+          "tz_sw": true
+        },
         "question": {
           "tz_sw": true
         },
@@ -613,7 +619,9 @@
       "parent_text": false,
       "question": "How many times in the past month did your teen go out with friends you do not know?",
       "_translations": {
-        "question": {},
+        "question": {
+          "tz_sw": true
+        },
         "range_description": {
           "tz_sw": true
         }
@@ -747,7 +755,9 @@
       "parent_text": false,
       "question": "How many times in the past month has your teen walked home alone, taken a lift with someone they do not know or hung out in a place that made you worried for their safety?",
       "_translations": {
-        "question": {},
+        "question": {
+          "tz_sw": true
+        },
         "range_description": {
           "tz_sw": true
         }

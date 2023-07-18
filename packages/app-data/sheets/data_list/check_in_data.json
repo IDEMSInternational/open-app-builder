@@ -21,7 +21,9 @@
         "reply_sad": {
           "tz_sw": true
         },
-        "activity_title": {},
+        "activity_title": {
+          "tz_sw": true
+        },
         "question_text": {
           "tz_sw": true
         }
@@ -69,8 +71,12 @@
         "reply_sad": {
           "tz_sw": true
         },
-        "activity_title": {},
-        "intro_text": {},
+        "activity_title": {
+          "tz_sw": true
+        },
+        "intro_text": {
+          "tz_sw": true
+        },
         "question_text": {
           "tz_sw": true
         }
@@ -122,8 +128,12 @@
         "reply_sad": {
           "tz_sw": true
         },
-        "activity_title": {},
-        "intro_text": {},
+        "activity_title": {
+          "tz_sw": true
+        },
+        "intro_text": {
+          "tz_sw": true
+        },
         "question_text": {
           "tz_sw": true
         }
@@ -172,9 +182,15 @@
         "reply_ok": {
           "tz_sw": true
         },
-        "reply_sad": {},
-        "activity_title": {},
-        "intro_text": {},
+        "reply_sad": {
+          "tz_sw": true
+        },
+        "activity_title": {
+          "tz_sw": true
+        },
+        "intro_text": {
+          "tz_sw": true
+        },
         "question_text": {
           "tz_sw": true
         }
@@ -220,12 +236,18 @@
         "reply_happy": {
           "tz_sw": true
         },
-        "reply_ok": {},
+        "reply_ok": {
+          "tz_sw": true
+        },
         "reply_sad": {
           "tz_sw": true
         },
-        "activity_title": {},
-        "intro_text": {},
+        "activity_title": {
+          "tz_sw": true
+        },
+        "intro_text": {
+          "tz_sw": true
+        },
         "question_text": {
           "tz_sw": true
         }
@@ -277,8 +299,12 @@
         "reply_sad": {
           "tz_sw": true
         },
-        "activity_title": {},
-        "intro_text": {},
+        "activity_title": {
+          "tz_sw": true
+        },
+        "intro_text": {
+          "tz_sw": true
+        },
         "question_text": {
           "tz_sw": true
         }
@@ -327,9 +353,15 @@
         "reply_ok": {
           "tz_sw": true
         },
-        "reply_sad": {},
-        "activity_title": {},
-        "intro_text": {},
+        "reply_sad": {
+          "tz_sw": true
+        },
+        "activity_title": {
+          "tz_sw": true
+        },
+        "intro_text": {
+          "tz_sw": true
+        },
         "question_text": {
           "tz_sw": true
         }
@@ -375,12 +407,18 @@
         "reply_happy": {
           "tz_sw": true
         },
-        "reply_ok": {},
+        "reply_ok": {
+          "tz_sw": true
+        },
         "reply_sad": {
           "tz_sw": true
         },
-        "activity_title": {},
-        "intro_text": {},
+        "activity_title": {
+          "tz_sw": true
+        },
+        "intro_text": {
+          "tz_sw": true
+        },
         "question_text": {
           "tz_sw": true
         }
@@ -432,8 +470,12 @@
         "reply_sad": {
           "tz_sw": true
         },
-        "activity_title": {},
-        "intro_text": {},
+        "activity_title": {
+          "tz_sw": true
+        },
+        "intro_text": {
+          "tz_sw": true
+        },
         "question_text": {
           "tz_sw": true
         }
@@ -479,12 +521,18 @@
         "reply_happy": {
           "tz_sw": true
         },
-        "reply_ok": {},
+        "reply_ok": {
+          "tz_sw": true
+        },
         "reply_sad": {
           "tz_sw": true
         },
-        "activity_title": {},
-        "intro_text": {},
+        "activity_title": {
+          "tz_sw": true
+        },
+        "intro_text": {
+          "tz_sw": true
+        },
         "question_text": {
           "tz_sw": true
         }
@@ -530,12 +578,18 @@
         "reply_happy": {
           "tz_sw": true
         },
-        "reply_ok": {},
+        "reply_ok": {
+          "tz_sw": true
+        },
         "reply_sad": {
           "tz_sw": true
         },
-        "activity_title": {},
-        "intro_text": {},
+        "activity_title": {
+          "tz_sw": true
+        },
+        "intro_text": {
+          "tz_sw": true
+        },
         "question_text": {
           "tz_sw": true
         }
@@ -575,13 +629,21 @@
       "activity_image": "plh_images/workshop_modes/individual/final/wave.svg",
       "reply_happy": "Fantastic! And well done for investing in yourself and your family – you have accomplished a lot.",
       "_translations": {
-        "reply_happy": {},
+        "reply_happy": {
+          "tz_sw": true
+        },
         "reply_ok": {
           "tz_sw": true
         },
-        "reply_sad": {},
-        "activity_title": {},
-        "intro_text": {},
+        "reply_sad": {
+          "tz_sw": true
+        },
+        "activity_title": {
+          "tz_sw": true
+        },
+        "intro_text": {
+          "tz_sw": true
+        },
         "question_text": {
           "tz_sw": true
         }
@@ -617,9 +679,15 @@
       "activity_image": "plh_images/workshop_modes/individual/wave.svg",
       "text": "Discussing body changes and relationships can be difficult. Take a moment for yourself first.",
       "_translations": {
-        "text": {},
-        "activity_title": {},
-        "intro_text": {},
+        "text": {
+          "tz_sw": true
+        },
+        "activity_title": {
+          "tz_sw": true
+        },
+        "intro_text": {
+          "tz_sw": true
+        },
         "question_text": {
           "tz_sw": true
         }
@@ -647,7 +715,9 @@
       "activity_image": "plh_images/workshop_modes/individual/wave.svg",
       "text": "It can be hard to think about dangerous situations for your teen. Take a moment to notice how you are doing.",
       "_translations": {
-        "text": {},
+        "text": {
+          "tz_sw": true
+        },
         "reply_happy": {
           "tz_sw": true
         },
@@ -657,8 +727,12 @@
         "reply_sad": {
           "tz_sw": true
         },
-        "activity_title": {},
-        "intro_text": {},
+        "activity_title": {
+          "tz_sw": true
+        },
+        "intro_text": {
+          "tz_sw": true
+        },
         "question_text": {
           "tz_sw": true
         }
@@ -698,9 +772,15 @@
       "activity_image": "plh_images/workshop_modes/individual/wave.svg",
       "text": "When we lose someone we love, we go through so many different emotions. There is no right or wrong way to feel. However you are feeling, it is okay.",
       "_translations": {
-        "text": {},
-        "activity_title": {},
-        "intro_text": {},
+        "text": {
+          "tz_sw": true
+        },
+        "activity_title": {
+          "tz_sw": true
+        },
+        "intro_text": {
+          "tz_sw": true
+        },
         "question_text": {
           "tz_sw": true
         }
@@ -731,8 +811,12 @@
         "text": {
           "tz_sw": true
         },
-        "activity_title": {},
-        "intro_text": {},
+        "activity_title": {
+          "tz_sw": true
+        },
+        "intro_text": {
+          "tz_sw": true
+        },
         "question_text": {
           "tz_sw": true
         }

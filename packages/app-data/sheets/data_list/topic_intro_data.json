@@ -13,8 +13,12 @@
         "intro_text": {
           "tz_sw": true
         },
-        "script": {},
-        "title": {},
+        "script": {
+          "tz_sw": true
+        },
+        "title": {
+          "tz_sw": true
+        },
         "intro_nav_button_completed": {}
       },
       "_translatedFields": {
@@ -48,8 +52,12 @@
         "text": {
           "tz_sw": true
         },
-        "script": {},
-        "title": {}
+        "script": {
+          "tz_sw": true
+        },
+        "title": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "intro_text": {
@@ -85,7 +93,9 @@
         "script": {
           "tz_sw": true
         },
-        "title": {},
+        "title": {
+          "tz_sw": true
+        },
         "intro_nav_button_completed": {}
       },
       "_translatedFields": {
@@ -118,7 +128,9 @@
         "script": {
           "tz_sw": true
         },
-        "title": {},
+        "title": {
+          "tz_sw": true
+        },
         "intro_nav_button_completed": {}
       },
       "_translatedFields": {
@@ -145,11 +157,15 @@
       "audio_asset": "plh_audio/topic_intros/w_stress_intro.mp3",
       "intro_text": "We know how stressful it is to bring up teenagers in these times. Learning to manage your stress helps you – and your family.",
       "_translations": {
-        "intro_text": {},
+        "intro_text": {
+          "tz_sw": true
+        },
         "script": {
           "tz_sw": true
         },
-        "title": {},
+        "title": {
+          "tz_sw": true
+        },
         "intro_nav_button_completed": {}
       },
       "_translatedFields": {
@@ -182,7 +198,9 @@
         "script": {
           "tz_sw": true
         },
-        "title": {},
+        "title": {
+          "tz_sw": true
+        },
         "intro_nav_button_completed": {}
       },
       "_translatedFields": {
@@ -215,7 +233,9 @@
         "script": {
           "tz_sw": true
         },
-        "title": {},
+        "title": {
+          "tz_sw": true
+        },
         "intro_nav_button_completed": {}
       },
       "_translatedFields": {
@@ -248,7 +268,9 @@
         "script": {
           "tz_sw": true
         },
-        "title": {},
+        "title": {
+          "tz_sw": true
+        },
         "intro_nav_button_completed": {}
       },
       "_translatedFields": {
@@ -275,11 +297,15 @@
       "audio_asset": "plh_audio/topic_intros/w_consequence_intro.mp3",
       "intro_text": "Our actions have consequences: Some consequences happen naturally (“if you break something, you can’t use it anymore”). Other consequences we set as a family to motivate us to follow the rules (“if you come home late, you can’t go out with friends tomorrow”).\n\nHOW you set and use consequences together matters.\n\nGetting consequences right helps teens behave better and makes family life calmer.",
       "_translations": {
-        "intro_text": {},
+        "intro_text": {
+          "tz_sw": true
+        },
         "script": {
           "tz_sw": true
         },
-        "title": {},
+        "title": {
+          "tz_sw": true
+        },
         "intro_nav_button_completed": {}
       },
       "_translatedFields": {
@@ -312,7 +338,9 @@
         "script": {
           "tz_sw": true
         },
-        "title": {},
+        "title": {
+          "tz_sw": true
+        },
         "intro_nav_button_completed": {}
       },
       "_translatedFields": {
@@ -345,7 +373,9 @@
         "script": {
           "tz_sw": true
         },
-        "title": {},
+        "title": {
+          "tz_sw": true
+        },
         "intro_nav_button_completed": {}
       },
       "_translatedFields": {
@@ -405,10 +435,18 @@
       "audio_asset": "plh_audio/topic_intros/w_srh_intro.mp3",
       "intro_text": "Think back to your own teenage years: \n* Did you ever experience a difficult situation as a teenager around body changes? And what about relationships? \n* What kind of support or information do you wish you had at the time?\n* Do you think your teen may be experiencing any challenges in these areas?",
       "_translations": {
-        "intro_text": {},
-        "text": {},
-        "script": {},
-        "title": {},
+        "intro_text": {
+          "tz_sw": true
+        },
+        "text": {
+          "tz_sw": true
+        },
+        "script": {
+          "tz_sw": true
+        },
+        "title": {
+          "tz_sw": true
+        },
         "intro_nav_button_completed": {}
       },
       "_translatedFields": {
@@ -439,9 +477,15 @@
       "audio_asset": "plh_audio/topic_intros/w_svp_intro.mp3",
       "intro_text": "To keep our teens safe, we need to understand their reality and the potential risky situations they can find themselves in.\n\nWe can help our teens know how to use their thoughts, voice, AND body in dangerous situations. It makes a big difference!",
       "_translations": {
-        "intro_text": {},
-        "script": {},
-        "title": {},
+        "intro_text": {
+          "tz_sw": true
+        },
+        "script": {
+          "tz_sw": true
+        },
+        "title": {
+          "tz_sw": true
+        },
         "intro_nav_button_completed": {}
       },
       "_translatedFields": {
@@ -468,11 +512,19 @@
       "audio_asset": "plh_audio/topic_intros/w_grief_intro.mp3",
       "intro_text": "Grief affects us all in different ways. Some people shout, some cry, some feel angry and some feel very sad. It can feel different each day. Sometimes we feel better, then worse, then better again. \n\nWhatever you feel, you are grieving in your own way, and that is okay.",
       "_translations": {
-        "intro_text": {},
+        "intro_text": {
+          "tz_sw": true
+        },
         "intro_nav_button_completed": {},
-        "text": {},
-        "script": {},
-        "title": {}
+        "text": {
+          "tz_sw": true
+        },
+        "script": {
+          "tz_sw": true
+        },
+        "title": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "intro_text": {
@@ -502,9 +554,15 @@
       "audio_asset": "plh_audio/topic_intros/w_learn_intro.mp3",
       "intro_text": "Did you know that your one-on-one time with your teen can help them at school?  Today we will share some ideas on how to do this.\n\nBy spending time with them, you teach them important life skills that will help them at school and at home.",
       "_translations": {
-        "intro_text": {},
-        "script": {},
-        "title": {},
+        "intro_text": {
+          "tz_sw": true
+        },
+        "script": {
+          "tz_sw": true
+        },
+        "title": {
+          "tz_sw": true
+        },
         "intro_nav_button_completed": {}
       },
       "_translatedFields": {

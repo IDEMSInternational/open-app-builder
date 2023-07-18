@@ -83,7 +83,9 @@
       "name": "regional",
       "value": "regional",
       "_translations": {
-        "value": {}
+        "value": {
+          "tz_sw": true
+        }
       }
     }
   ],

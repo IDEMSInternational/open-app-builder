@@ -47,7 +47,9 @@
           "name": "activity_text",
           "value": "* Choose a storyteller to start making up a story.\n* Story listeners can interrupt with a word at any time.\n* The storyteller needs to fit that word in their story.\n* When the story is finished, try with a different storyteller!",
           "_translations": {
-            "value": {}
+            "value": {
+              "tz_sw": true
+            }
           },
           "type": "set_variable",
           "_nested_name": "lib_act_something_fun.activity_text"

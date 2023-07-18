@@ -47,7 +47,9 @@
           "name": "activity_text",
           "value": "* Ask each other questions. They can be any questions about things you like or what you did today.\n* The only rule is that you can’t answer “yes”, “no” or “maybe”.\n* How long can you last? How creative can you get with your answers?\n* Swap over and play again!",
           "_translations": {
-            "value": {}
+            "value": {
+              "tz_sw": true
+            }
           },
           "type": "set_variable",
           "_nested_name": "lib_act_something_fun.activity_text"
