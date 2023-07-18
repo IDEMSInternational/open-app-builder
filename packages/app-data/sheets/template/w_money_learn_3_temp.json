@@ -80,7 +80,9 @@
                   "name": "text",
                   "value": "People often don’t see things in the same way. When we talk about our needs and wants, we understand each other better and can make good choices together on how to spend our money.\n\nLook at your lists of things you spend money on and discuss:\n* Which are NEEDS that you cannot live without? Why?\n* Which are WANTS which are nice to have but not essential? Why? \n* Which things could you try to spend less money on as a family?",
                   "_translations": {
-                    "value": {}
+                    "value": {
+                      "tz_sw": true
+                    }
                   },
                   "type": "set_variable",
                   "_nested_name": "learn_group_family.workshop_activity.content_box.text"
@@ -194,7 +196,9 @@
                   "name": "text",
                   "value": "Look at your list of things you spend money on and choose:\n* Which are NEEDS that you cannot live without? Why?\n* Which are WANTS which are nice to have but not essential? Why? \n* Which things could you try to spend less money on?",
                   "_translations": {
-                    "value": {}
+                    "value": {
+                      "tz_sw": true
+                    }
                   },
                   "type": "set_variable",
                   "_nested_name": "learn_alone.workshop_activity.content_box.text"

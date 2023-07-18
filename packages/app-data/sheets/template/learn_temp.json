@@ -84,7 +84,9 @@
           "name": "intro_text",
           "value": "It is time to learn and practice together!",
           "_translations": {
-            "value": {}
+            "value": {
+              "tz_sw": true
+            }
           },
           "condition": "@fields.do_this_workshop_together",
           "type": "set_variable",
@@ -161,7 +163,9 @@
           "name": "intro_text",
           "value": "It is time to learn and practice!",
           "_translations": {
-            "value": {}
+            "value": {
+              "tz_sw": true
+            }
           },
           "condition": "!@fields.do_this_workshop_together",
           "type": "set_variable",

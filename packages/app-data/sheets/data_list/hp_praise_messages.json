@@ -339,7 +339,9 @@
       ],
       "text": "Sorry that this has been difficult. Creating rules together requires some practice but it is worth it!",
       "_translations": {
-        "text": {}
+        "text": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "text": {

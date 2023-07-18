@@ -13,7 +13,9 @@
           "name": "description_text",
           "value": "Close eyes and relax.\n\nThink of your family life before you started your journey with this app.\n       \nThink back on skills you learned:\n* Self-care\n* One-on-one time\n* Praise\n* Positive instructions\n* Managing stress\n* Family budgeting\n* Rules\n* Calm consequences\n* Problem solving\n* Teen safety\n* Dealing with crisis\n\nReflect on the journey – how was it for you to:\n* Share ideas and experiences\n* Reflect on and learn from the stories\n* Practice skills with your teen\n\nDid anything change for you and your family?\n\nWhat do you need to continue to use skills?",
           "_translations": {
-            "value": {}
+            "value": {
+              "tz_sw": true
+            }
           },
           "type": "set_variable",
           "_nested_name": "suggestions.description_text"

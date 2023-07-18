@@ -57,7 +57,9 @@
       "completed": "@fields.dream_travel_completed",
       "title": "Dream travel",
       "_translations": {
-        "title": {}
+        "title": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -76,7 +78,9 @@
       "completed": "@fields.famous_party_completed",
       "title": "Famous party",
       "_translations": {
-        "title": {}
+        "title": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -116,7 +120,9 @@
       "completed": "@fields.time_machine_completed",
       "title": "Time machine",
       "_translations": {
-        "title": {}
+        "title": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -175,7 +181,9 @@
       "completed": "@fields.interrupter_completed",
       "title": "The interrupter",
       "_translations": {
-        "title": {}
+        "title": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -213,7 +221,9 @@
       "completed": "@fields.yes_no_maybe_completed",
       "title": "Yes, no or maybe",
       "_translations": {
-        "title": {}
+        "title": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "title": {

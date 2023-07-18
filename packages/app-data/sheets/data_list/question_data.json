@@ -12,14 +12,30 @@
       "icon_3_asset": "[tick]",
       "question_text": "Who should start the conversation about body changes and intimate relationships?",
       "_translations": {
-        "question_text": {},
-        "option_1_text": {},
-        "reply_1_text": {},
-        "option_2": {},
-        "reply_2": {},
-        "option_3": {},
-        "reply_3": {},
-        "reply_all": {}
+        "question_text": {
+          "tz_sw": true
+        },
+        "option_1_text": {
+          "tz_sw": true
+        },
+        "reply_1_text": {
+          "tz_sw": true
+        },
+        "option_2": {
+          "tz_sw": true
+        },
+        "reply_2": {
+          "tz_sw": true
+        },
+        "option_3": {
+          "tz_sw": true
+        },
+        "reply_3": {
+          "tz_sw": true
+        },
+        "reply_all": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "question_text": {
@@ -64,16 +80,36 @@
       "icon_4_asset": "[tick]",
       "question_text": "When is the right time to start talking about this?",
       "_translations": {
-        "question_text": {},
-        "option_1_text": {},
-        "reply_1_text": {},
-        "option_2": {},
-        "reply_2": {},
-        "option_3": {},
-        "reply_3": {},
-        "option_4": {},
-        "reply_4": {},
-        "reply_all": {}
+        "question_text": {
+          "tz_sw": true
+        },
+        "option_1_text": {
+          "tz_sw": true
+        },
+        "reply_1_text": {
+          "tz_sw": true
+        },
+        "option_2": {
+          "tz_sw": true
+        },
+        "reply_2": {
+          "tz_sw": true
+        },
+        "option_3": {
+          "tz_sw": true
+        },
+        "reply_3": {
+          "tz_sw": true
+        },
+        "option_4": {
+          "tz_sw": true
+        },
+        "reply_4": {
+          "tz_sw": true
+        },
+        "reply_all": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "question_text": {
@@ -127,18 +163,42 @@
       "icon_5_asset": "[tick]",
       "question_text": "How can I best keep my teen safe?",
       "_translations": {
-        "question_text": {},
-        "option_1_text": {},
-        "reply_1_text": {},
-        "option_2": {},
-        "reply_2": {},
-        "option_3": {},
-        "reply_3": {},
-        "option_4": {},
-        "reply_4": {},
-        "option_5": {},
-        "reply_5": {},
-        "reply_all": {}
+        "question_text": {
+          "tz_sw": true
+        },
+        "option_1_text": {
+          "tz_sw": true
+        },
+        "reply_1_text": {
+          "tz_sw": true
+        },
+        "option_2": {
+          "tz_sw": true
+        },
+        "reply_2": {
+          "tz_sw": true
+        },
+        "option_3": {
+          "tz_sw": true
+        },
+        "reply_3": {
+          "tz_sw": true
+        },
+        "option_4": {
+          "tz_sw": true
+        },
+        "reply_4": {
+          "tz_sw": true
+        },
+        "option_5": {
+          "tz_sw": true
+        },
+        "reply_5": {
+          "tz_sw": true
+        },
+        "reply_all": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "question_text": {
@@ -198,14 +258,30 @@
       "icon_3_asset": "[tick]",
       "question_text": "How can I help prevent  my teen from having sex too young?",
       "_translations": {
-        "question_text": {},
-        "option_1_text": {},
-        "reply_1_text": {},
-        "option_2": {},
-        "reply_2": {},
-        "option_3": {},
-        "reply_3": {},
-        "reply_all": {}
+        "question_text": {
+          "tz_sw": true
+        },
+        "option_1_text": {
+          "tz_sw": true
+        },
+        "reply_1_text": {
+          "tz_sw": true
+        },
+        "option_2": {
+          "tz_sw": true
+        },
+        "reply_2": {
+          "tz_sw": true
+        },
+        "option_3": {
+          "tz_sw": true
+        },
+        "reply_3": {
+          "tz_sw": true
+        },
+        "reply_all": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "question_text": {
@@ -246,13 +322,25 @@
       "workshop": "w_svp",
       "scenario_title": "Boyfriend pressures @global.w_svp_teen_girl_1 to go beyond kissing",
       "_translations": {
-        "scenario_title": {},
-        "scenario_text": {},
+        "scenario_title": {
+          "tz_sw": true
+        },
+        "scenario_text": {
+          "tz_sw": true
+        },
         "question_text": {},
-        "option_1_text": {},
-        "option_2": {},
-        "option_3": {},
-        "reply_all": {}
+        "option_1_text": {
+          "tz_sw": true
+        },
+        "option_2": {
+          "tz_sw": true
+        },
+        "option_3": {
+          "tz_sw": true
+        },
+        "reply_all": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "scenario_title": {
@@ -289,7 +377,9 @@
       "workshop": "w_svp",
       "scenario_title": "Boyfriend stops @global.w_svp_teen_girl_1 from meeting friends",
       "_translations": {
-        "scenario_title": {},
+        "scenario_title": {
+          "tz_sw": true
+        },
         "scenario_text": {},
         "question_text": {},
         "option_1_text": {},

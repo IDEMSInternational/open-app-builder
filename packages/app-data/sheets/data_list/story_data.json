@@ -236,7 +236,9 @@
         "text_2": {
           "tz_sw": true
         },
-        "text_3": {},
+        "text_3": {
+          "tz_sw": true
+        },
         "text_4": {
           "tz_sw": true
         },
@@ -287,11 +289,21 @@
       "title": "@global.safety_word",
       "_translations": {
         "title": {},
-        "intro_text": {},
-        "text_1": {},
-        "text_2": {},
-        "text_3": {},
-        "text_4": {},
+        "intro_text": {
+          "tz_sw": true
+        },
+        "text_1": {
+          "tz_sw": true
+        },
+        "text_2": {
+          "tz_sw": true
+        },
+        "text_3": {
+          "tz_sw": true
+        },
+        "text_4": {
+          "tz_sw": true
+        },
         "text_5": {
           "tz_sw": true
         },
@@ -347,7 +359,9 @@
         "text_1": {
           "tz_sw": true
         },
-        "text_2": {}
+        "text_2": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -383,13 +397,19 @@
         "intro_text": {
           "tz_sw": true
         },
-        "text_1": {},
+        "text_1": {
+          "tz_sw": true
+        },
         "text_2": {
           "tz_sw": true
         },
         "text_3": {},
-        "text_4": {},
-        "text_5": {}
+        "text_4": {
+          "tz_sw": true
+        },
+        "text_5": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -476,8 +496,12 @@
         "text_2": {
           "tz_sw": true
         },
-        "text_3": {},
-        "text_4": {},
+        "text_3": {
+          "tz_sw": true
+        },
+        "text_4": {
+          "tz_sw": true
+        },
         "text_5": {
           "tz_sw": true
         },
@@ -545,15 +569,21 @@
           "tz_sw": true
         },
         "intro_text": {},
-        "text_1": {},
-        "text_2": {},
+        "text_1": {
+          "tz_sw": true
+        },
+        "text_2": {
+          "tz_sw": true
+        },
         "text_3": {
           "tz_sw": true
         },
         "text_4": {
           "tz_sw": true
         },
-        "text_5": {}
+        "text_5": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -662,7 +692,9 @@
         "text_1": {
           "tz_sw": true
         },
-        "text_2": {},
+        "text_2": {
+          "tz_sw": true
+        },
         "text_3": {
           "tz_sw": true
         },
@@ -742,14 +774,18 @@
         "title": {
           "tz_sw": true
         },
-        "intro_text": {},
+        "intro_text": {
+          "tz_sw": true
+        },
         "text_1": {
           "tz_sw": true
         },
         "text_2": {
           "tz_sw": true
         },
-        "text_3": {}
+        "text_3": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -799,14 +835,24 @@
         "text_1": {
           "tz_sw": true
         },
-        "text_2": {},
-        "text_3": {},
-        "text_4": {},
+        "text_2": {
+          "tz_sw": true
+        },
+        "text_3": {
+          "tz_sw": true
+        },
+        "text_4": {
+          "tz_sw": true
+        },
         "dashed_box_4": {
           "tz_sw": true
         },
-        "text_5": {},
-        "text_6": {},
+        "text_5": {
+          "tz_sw": true
+        },
+        "text_6": {
+          "tz_sw": true
+        },
         "dashed_box_6": {
           "tz_sw": true
         },
@@ -816,12 +862,18 @@
         "text_8": {
           "tz_sw": true
         },
-        "text_9": {},
-        "text_10": {},
+        "text_9": {
+          "tz_sw": true
+        },
+        "text_10": {
+          "tz_sw": true
+        },
         "dashed_box_10": {
           "tz_sw": true
         },
-        "text_11": {},
+        "text_11": {
+          "tz_sw": true
+        },
         "dashed_box_11": {
           "tz_sw": true
         },
@@ -920,11 +972,21 @@
         "intro_text": {
           "tz_sw": true
         },
-        "text_1": {},
-        "text_2": {},
-        "text_3": {},
-        "text_4": {},
-        "text_5": {},
+        "text_1": {
+          "tz_sw": true
+        },
+        "text_2": {
+          "tz_sw": true
+        },
+        "text_3": {
+          "tz_sw": true
+        },
+        "text_4": {
+          "tz_sw": true
+        },
+        "text_5": {
+          "tz_sw": true
+        },
         "text_6": {
           "tz_sw": true
         }
@@ -977,11 +1039,15 @@
         "intro_text": {
           "tz_sw": true
         },
-        "text_1": {},
+        "text_1": {
+          "tz_sw": true
+        },
         "text_2": {
           "tz_sw": true
         },
-        "text_3": {}
+        "text_3": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -1025,9 +1091,15 @@
         "text_1": {
           "tz_sw": true
         },
-        "text_2": {},
-        "text_3": {},
-        "text_4": {},
+        "text_2": {
+          "tz_sw": true
+        },
+        "text_3": {
+          "tz_sw": true
+        },
+        "text_4": {
+          "tz_sw": true
+        },
         "text_5": {
           "tz_sw": true
         },
@@ -1092,7 +1164,9 @@
         "text_2": {
           "tz_sw": true
         },
-        "text_3": {},
+        "text_3": {
+          "tz_sw": true
+        },
         "text_4": {
           "tz_sw": true
         },

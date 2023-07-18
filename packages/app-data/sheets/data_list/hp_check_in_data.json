@@ -24,13 +24,17 @@
         "reply_ok": {
           "tz_sw": true
         },
-        "reply_sad": {},
+        "reply_sad": {
+          "tz_sw": true
+        },
         "activity_title": {},
         "intro_text": {},
         "question_done": {
           "tz_sw": true
         },
-        "reply_no": {},
+        "reply_no": {
+          "tz_sw": true
+        },
         "button_no_text": {},
         "question_how": {
           "tz_sw": true
@@ -102,7 +106,9 @@
         "reply_no": {
           "tz_sw": true
         },
-        "reply_happy": {},
+        "reply_happy": {
+          "tz_sw": true
+        },
         "reply_ok": {
           "tz_sw": true
         },
@@ -188,14 +194,20 @@
         "reply_ok": {
           "tz_sw": true
         },
-        "reply_sad": {},
-        "outro_text": {},
+        "reply_sad": {
+          "tz_sw": true
+        },
+        "outro_text": {
+          "tz_sw": true
+        },
         "activity_title": {},
         "intro_text": {},
         "question_done": {
           "tz_sw": true
         },
-        "reply_no": {},
+        "reply_no": {
+          "tz_sw": true
+        },
         "button_no_text": {},
         "question_how": {
           "tz_sw": true
@@ -275,7 +287,9 @@
         "question_done": {
           "tz_sw": true
         },
-        "reply_no": {},
+        "reply_no": {
+          "tz_sw": true
+        },
         "button_no_text": {},
         "question_how": {
           "tz_sw": true
@@ -361,7 +375,9 @@
         "question_done": {
           "tz_sw": true
         },
-        "reply_no": {},
+        "reply_no": {
+          "tz_sw": true
+        },
         "button_no_text": {},
         "question_how": {
           "tz_sw": true
@@ -432,14 +448,20 @@
         "reply_ok": {
           "tz_sw": true
         },
-        "reply_sad": {},
-        "outro_text": {},
+        "reply_sad": {
+          "tz_sw": true
+        },
+        "outro_text": {
+          "tz_sw": true
+        },
         "activity_title": {},
         "intro_text": {},
         "question_done": {
           "tz_sw": true
         },
-        "reply_no": {},
+        "reply_no": {
+          "tz_sw": true
+        },
         "button_no_text": {},
         "question_how": {
           "tz_sw": true
@@ -519,7 +541,9 @@
         "question_done": {
           "tz_sw": true
         },
-        "reply_no": {},
+        "reply_no": {
+          "tz_sw": true
+        },
         "button_no_text": {},
         "question_how": {
           "tz_sw": true
@@ -601,7 +625,9 @@
         "question_done": {
           "tz_sw": true
         },
-        "reply_no": {},
+        "reply_no": {
+          "tz_sw": true
+        },
         "button_no_text": {},
         "question_how": {
           "tz_sw": true
@@ -667,7 +693,9 @@
       "challenges_structure": "plain",
       "text_goal": "Your goal was to map risks and support systems with your teen – both in your community and online.",
       "_translations": {
-        "text_goal": {},
+        "text_goal": {
+          "tz_sw": true
+        },
         "reply_happy": {
           "tz_sw": true
         },
@@ -682,7 +710,9 @@
         "question_done": {
           "tz_sw": true
         },
-        "reply_no": {},
+        "reply_no": {
+          "tz_sw": true
+        },
         "button_no_text": {},
         "question_how": {
           "tz_sw": true
@@ -757,13 +787,17 @@
         "reply_ok": {
           "tz_sw": true
         },
-        "reply_sad": {},
+        "reply_sad": {
+          "tz_sw": true
+        },
         "activity_title": {},
         "intro_text": {},
         "question_done": {
           "tz_sw": true
         },
-        "reply_no": {},
+        "reply_no": {
+          "tz_sw": true
+        },
         "button_no_text": {},
         "question_how": {
           "tz_sw": true

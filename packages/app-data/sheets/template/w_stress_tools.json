@@ -86,7 +86,9 @@
               "name": "text_1",
               "value": "This is also hard! Stress makes us focus on ourselves. But our teens need our support. Ask them how they feel. Listen to them and comfort them. Try a hug or say \"I understand\". It can change everything.",
               "_translations": {
-                "value": {}
+                "value": {
+                  "tz_sw": true
+                }
               },
               "type": "set_variable",
               "_nested_name": "essential_tools.tool_3.text_1"

@@ -33,7 +33,9 @@
           "name": "story_id",
           "value": "praise",
           "_translations": {
-            "value": {}
+            "value": {
+              "tz_sw": true
+            }
           },
           "exclude_from_translation": true,
           "type": "set_variable",

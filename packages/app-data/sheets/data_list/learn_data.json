@@ -16,8 +16,12 @@
         "title": {
           "tz_sw": true
         },
-        "intro_text": {},
-        "text": {}
+        "intro_text": {
+          "tz_sw": true
+        },
+        "text": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -46,9 +50,15 @@
       "part_7_id": "rejected_ride",
       "title": "Warning signs",
       "_translations": {
-        "title": {},
-        "intro_text": {},
-        "text": {}
+        "title": {
+          "tz_sw": true
+        },
+        "intro_text": {
+          "tz_sw": true
+        },
+        "text": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -71,9 +81,15 @@
       "part_1_id": "use_voice",
       "title": "Use your voice",
       "_translations": {
-        "title": {},
-        "intro_text": {},
-        "text": {}
+        "title": {
+          "tz_sw": true
+        },
+        "intro_text": {
+          "tz_sw": true
+        },
+        "text": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -98,9 +114,15 @@
       "part_3_id": "defence_moves",
       "title": "Use your body",
       "_translations": {
-        "title": {},
-        "intro_text": {},
-        "text": {}
+        "title": {
+          "tz_sw": true
+        },
+        "intro_text": {
+          "tz_sw": true
+        },
+        "text": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "title": {

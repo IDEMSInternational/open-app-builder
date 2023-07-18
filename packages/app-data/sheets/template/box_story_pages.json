@@ -7,7 +7,9 @@
       "name": "story_id",
       "value": "praise",
       "_translations": {
-        "value": {}
+        "value": {
+          "tz_sw": true
+        }
       },
       "type": "set_variable",
       "_nested_name": "story_id"

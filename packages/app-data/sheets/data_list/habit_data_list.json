@@ -20,7 +20,9 @@
         "description": {
           "tz_sw": true
         },
-        "mark_text": {},
+        "mark_text": {
+          "tz_sw": true
+        },
         "short_mark_text": {
           "tz_sw": true
         }

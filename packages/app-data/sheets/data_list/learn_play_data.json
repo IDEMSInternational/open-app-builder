@@ -9,9 +9,15 @@
       "group": "chores",
       "title": "Doing chores together",
       "_translations": {
-        "title": {},
-        "intro_text": {},
-        "steps_text": {}
+        "title": {
+          "tz_sw": true
+        },
+        "intro_text": {
+          "tz_sw": true
+        },
+        "steps_text": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -32,11 +38,21 @@
       "group": "games",
       "title": "Traditional game",
       "_translations": {
-        "title": {},
-        "intro_text": {},
-        "resources_text": {},
-        "steps_text": {},
-        "tips_text": {}
+        "title": {
+          "tz_sw": true
+        },
+        "intro_text": {
+          "tz_sw": true
+        },
+        "resources_text": {
+          "tz_sw": true
+        },
+        "steps_text": {
+          "tz_sw": true
+        },
+        "tips_text": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -65,10 +81,18 @@
       "group": "move",
       "title": "Walking together",
       "_translations": {
-        "title": {},
-        "intro_text": {},
-        "steps_text": {},
-        "tips_text": {}
+        "title": {
+          "tz_sw": true
+        },
+        "intro_text": {
+          "tz_sw": true
+        },
+        "steps_text": {
+          "tz_sw": true
+        },
+        "tips_text": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -93,10 +117,18 @@
       "group": "chores",
       "title": "Cooking traditional food",
       "_translations": {
-        "title": {},
-        "intro_text": {},
-        "steps_text": {},
-        "tips_text": {}
+        "title": {
+          "tz_sw": true
+        },
+        "intro_text": {
+          "tz_sw": true
+        },
+        "steps_text": {
+          "tz_sw": true
+        },
+        "tips_text": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -121,10 +153,18 @@
       "group": "chores",
       "title": "Gardening",
       "_translations": {
-        "title": {},
-        "intro_text": {},
-        "steps_text": {},
-        "tips_text": {}
+        "title": {
+          "tz_sw": true
+        },
+        "intro_text": {
+          "tz_sw": true
+        },
+        "steps_text": {
+          "tz_sw": true
+        },
+        "tips_text": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -149,10 +189,18 @@
       "group": "games",
       "title": "Charades",
       "_translations": {
-        "title": {},
-        "intro_text": {},
-        "steps_text": {},
-        "tips_text": {}
+        "title": {
+          "tz_sw": true
+        },
+        "intro_text": {
+          "tz_sw": true
+        },
+        "steps_text": {
+          "tz_sw": true
+        },
+        "tips_text": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -177,10 +225,18 @@
       "group": "talk",
       "title": "Role play",
       "_translations": {
-        "title": {},
-        "intro_text": {},
-        "steps_text": {},
-        "tips_text": {}
+        "title": {
+          "tz_sw": true
+        },
+        "intro_text": {
+          "tz_sw": true
+        },
+        "steps_text": {
+          "tz_sw": true
+        },
+        "tips_text": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -205,12 +261,24 @@
       "group": "move",
       "title": "Hide and seek",
       "_translations": {
-        "title": {},
-        "intro_text": {},
-        "resources_text": {},
-        "steps_text": {},
-        "tips_text": {},
-        "extension_text": {}
+        "title": {
+          "tz_sw": true
+        },
+        "intro_text": {
+          "tz_sw": true
+        },
+        "resources_text": {
+          "tz_sw": true
+        },
+        "steps_text": {
+          "tz_sw": true
+        },
+        "tips_text": {
+          "tz_sw": true
+        },
+        "extension_text": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -243,11 +311,21 @@
       "group": "games",
       "title": "Mystery box",
       "_translations": {
-        "title": {},
-        "intro_text": {},
-        "resources_text": {},
-        "steps_text": {},
-        "tips_text": {}
+        "title": {
+          "tz_sw": true
+        },
+        "intro_text": {
+          "tz_sw": true
+        },
+        "resources_text": {
+          "tz_sw": true
+        },
+        "steps_text": {
+          "tz_sw": true
+        },
+        "tips_text": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -276,11 +354,21 @@
       "group": "games",
       "title": "Memory game",
       "_translations": {
-        "title": {},
-        "intro_text": {},
-        "resources_text": {},
-        "steps_text": {},
-        "tips_text": {}
+        "title": {
+          "tz_sw": true
+        },
+        "intro_text": {
+          "tz_sw": true
+        },
+        "resources_text": {
+          "tz_sw": true
+        },
+        "steps_text": {
+          "tz_sw": true
+        },
+        "tips_text": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -309,10 +397,18 @@
       "group": "chores",
       "title": "Cooking",
       "_translations": {
-        "title": {},
-        "intro_text": {},
-        "steps_text": {},
-        "tips_text": {}
+        "title": {
+          "tz_sw": true
+        },
+        "intro_text": {
+          "tz_sw": true
+        },
+        "steps_text": {
+          "tz_sw": true
+        },
+        "tips_text": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -337,10 +433,18 @@
       "group": "talk",
       "title": "Storytelling",
       "_translations": {
-        "title": {},
-        "intro_text": {},
-        "steps_text": {},
-        "tips_text": {}
+        "title": {
+          "tz_sw": true
+        },
+        "intro_text": {
+          "tz_sw": true
+        },
+        "steps_text": {
+          "tz_sw": true
+        },
+        "tips_text": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -365,10 +469,18 @@
       "group": "move",
       "title": "Music and dance",
       "_translations": {
-        "title": {},
-        "intro_text": {},
-        "steps_text": {},
-        "tips_text": {}
+        "title": {
+          "tz_sw": true
+        },
+        "intro_text": {
+          "tz_sw": true
+        },
+        "steps_text": {
+          "tz_sw": true
+        },
+        "tips_text": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -393,10 +505,18 @@
       "group": "talk",
       "title": "Goal setting",
       "_translations": {
-        "title": {},
-        "intro_text": {},
-        "steps_text": {},
-        "tips_text": {}
+        "title": {
+          "tz_sw": true
+        },
+        "intro_text": {
+          "tz_sw": true
+        },
+        "steps_text": {
+          "tz_sw": true
+        },
+        "tips_text": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -421,10 +541,18 @@
       "group": "talk",
       "title": "Realise my strength",
       "_translations": {
-        "title": {},
-        "intro_text": {},
-        "steps_text": {},
-        "tips_text": {}
+        "title": {
+          "tz_sw": true
+        },
+        "intro_text": {
+          "tz_sw": true
+        },
+        "steps_text": {
+          "tz_sw": true
+        },
+        "tips_text": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -449,10 +577,18 @@
       "group": "chores",
       "title": "Cleaning and organising",
       "_translations": {
-        "title": {},
-        "intro_text": {},
-        "steps_text": {},
-        "tips_text": {}
+        "title": {
+          "tz_sw": true
+        },
+        "intro_text": {
+          "tz_sw": true
+        },
+        "steps_text": {
+          "tz_sw": true
+        },
+        "tips_text": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "title": {
