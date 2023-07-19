@@ -406,9 +406,7 @@
         "intro_text": {
           "tz_sw": true
         },
-        "script": {
-          "tz_sw": true
-        },
+        "script": {},
         "intro_nav_button_completed": {}
       },
       "_translatedFields": {
@@ -419,14 +417,14 @@
           "eng": "CONGRATULATIONS! You have done it! You have built 11 important parenting skills. \n\nThis is a huge achievement. It shows such care for your family. \n\nLet’s celebrate you, and plan your future @global.parent_app support."
         },
         "script": {
-          "eng": "Greetings everyone.\n\nToday’s topic is celebration and next steps.\n\nIt has been amazing, it has been wonderful having you on this journey. Today we are celebrating our journey together. \n\nToday we are celebrating all the learnings that we have learned throughout."
+          "eng": "Greetings everyone.\n\nToday’s topic is celebration and next steps.\n\nIt has been amazing, it has been wonderful having you on this journey. Today we are celebrating our journey together. \n\nToday we are celebrating all the learnings that we have learnt throughout."
         },
         "intro_nav_button_completed": {
           "eng": "@global.tell_me_more_button"
         }
       },
       "intro_text": "CONGRATULATIONS! You have done it! You have built 11 important parenting skills. \n\nThis is a huge achievement. It shows such care for your family. \n\nLet’s celebrate you, and plan your future @global.parent_app support.",
-      "script": "Greetings everyone.\n\nToday’s topic is celebration and next steps.\n\nIt has been amazing, it has been wonderful having you on this journey. Today we are celebrating our journey together. \n\nToday we are celebrating all the learnings that we have learned throughout.",
+      "script": "Greetings everyone.\n\nToday’s topic is celebration and next steps.\n\nIt has been amazing, it has been wonderful having you on this journey. Today we are celebrating our journey together. \n\nToday we are celebrating all the learnings that we have learnt throughout.",
       "intro_nav_button_completed": "@global.tell_me_more_button"
     },
     {
@@ -510,42 +508,31 @@
       "id": "w_grief",
       "activity_image_asset": "plh_images/workshop_modes/individual/explain.svg",
       "audio_asset": "plh_audio/topic_intros/w_grief_intro.mp3",
-      "intro_text": "Grief affects us all in different ways. Some people shout, some cry, some feel angry and some feel very sad. It can feel different each day. Sometimes we feel better, then worse, then better again. \n\nWhatever you feel, you are grieving in your own way, and that is okay.",
+      "intro_text": "Grief affects us all in different ways. \n\nWhatever you feel, you are grieving in your own way, and that is okay.",
       "_translations": {
-        "intro_text": {
-          "tz_sw": true
-        },
+        "intro_text": {},
         "intro_nav_button_completed": {},
-        "text": {
-          "tz_sw": true
-        },
-        "script": {
-          "tz_sw": true
-        },
+        "script": {},
         "title": {
           "tz_sw": true
         }
       },
       "_translatedFields": {
         "intro_text": {
-          "eng": "Grief affects us all in different ways. Some people shout, some cry, some feel angry and some feel very sad. It can feel different each day. Sometimes we feel better, then worse, then better again. \n\nWhatever you feel, you are grieving in your own way, and that is okay."
+          "eng": "Grief affects us all in different ways. \n\nWhatever you feel, you are grieving in your own way, and that is okay."
         },
         "intro_nav_button_completed": {
           "eng": "@global.more_button"
         },
-        "text": {
-          "eng": "Children and adults have similar emotions when it comes to death, but they handle these emotions in different ways. By sharing how you feel and being kind to yourself and each other you can support each other well."
-        },
         "script": {
-          "eng": "Greetings everyone. \n\nToday's topic is coping with grief. \n\nGrief affects us all in different ways. Some people shout, some cry, some feel angry, and some feel very sad. We can feel different each day. Sometimes we feel better, then Worse, then better again. \n\nWhatever you feel, you are grieving in your own way and that is okay. Children and adults have similar emotions when it comes to death, but they handle these emotions in different ways. By sharing how you feel and being kind to yourself and each other you can support each other well."
+          "eng": "Greetings everyone. \n\nToday's topic is coping with grief. \n\nGrief affects us all in different ways. Some people shout, some cry, some feel angry, and some feel very sad. We can feel different each day. Sometimes we feel better, then worse, then better again. \n\nWhatever you feel, you are grieving in your own way and that is okay. Children and adults have similar emotions when it comes to death, but they handle these emotions in different ways. By sharing how you feel and being kind to yourself and each other you can support each other well."
         },
         "title": {
           "eng": "Why @data.workshop.w_grief.lower_case_title?"
         }
       },
       "intro_nav_button_completed": "@global.more_button",
-      "text": "Children and adults have similar emotions when it comes to death, but they handle these emotions in different ways. By sharing how you feel and being kind to yourself and each other you can support each other well.",
-      "script": "Greetings everyone. \n\nToday's topic is coping with grief. \n\nGrief affects us all in different ways. Some people shout, some cry, some feel angry, and some feel very sad. We can feel different each day. Sometimes we feel better, then Worse, then better again. \n\nWhatever you feel, you are grieving in your own way and that is okay. Children and adults have similar emotions when it comes to death, but they handle these emotions in different ways. By sharing how you feel and being kind to yourself and each other you can support each other well.",
+      "script": "Greetings everyone. \n\nToday's topic is coping with grief. \n\nGrief affects us all in different ways. Some people shout, some cry, some feel angry, and some feel very sad. We can feel different each day. Sometimes we feel better, then worse, then better again. \n\nWhatever you feel, you are grieving in your own way and that is okay. Children and adults have similar emotions when it comes to death, but they handle these emotions in different ways. By sharing how you feel and being kind to yourself and each other you can support each other well.",
       "title": "Why @data.workshop.w_grief.lower_case_title?"
     },
     {
