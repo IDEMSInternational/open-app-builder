@@ -69,7 +69,7 @@
     {
       "type": "declare_global_constant",
       "name": "individual_image",
-      "value": "plh_images/workshop_modes/guide_2/wave.svg",
+      "value": "plh_images/workshop_modes/individual/wave.svg",
       "_translations": {
         "value": {}
       },
@@ -87,16 +87,10 @@
     {
       "type": "declare_global_constant",
       "name": "user_name_default",
-      "value": "awesome parent",
+      "value": "Awesome parent",
       "_translations": {
         "value": {
-          "es_sp": true,
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
+          "tz_sw": true
         }
       }
     },
@@ -150,7 +144,27 @@
         "value": {}
       },
       "exclude_from_translation": true
+    },
+    {
+      "type": "declare_global_constant",
+      "name": "safety_word",
+      "value": "Safety Word",
+      "_translations": {
+        "value": {
+          "tz_sw": true
+        }
+      }
+    },
+    {
+      "type": "declare_global_constant",
+      "name": "safety_word_example_1",
+      "value": "Aunty Cecilia",
+      "_translations": {
+        "value": {
+          "tz_sw": true
+        }
+      }
     }
   ],
-  "_xlsxPath": "global/data/workshop_globals.xlsx"
+  "_xlsxPath": "global/data/workshop_data/workshop_globals.xlsx"
 }

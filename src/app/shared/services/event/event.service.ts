@@ -2,6 +2,7 @@ import { Injectable } from "@angular/core";
 import { Subject, concat, Observable, from } from "rxjs";
 import { filter, first } from "rxjs/operators";
 import { generateRandomId } from "src/app/shared/utils";
+import { SyncServiceBase } from "../syncService.base";
 
 @Injectable({
   providedIn: "root",
@@ -10,7 +11,7 @@ import { generateRandomId } from "src/app/shared/utils";
  * A shared messaging service to allow communciation between any other components
  * or services
  */
-export class EventService {
+export class EventService extends SyncServiceBase {
   /**
    * Topic-level observables that can be subscribed to
    */
@@ -27,6 +28,10 @@ export class EventService {
     LOCAL_NOTIFICATION: [],
     FEEDBACK: [],
   };
+  constructor() {
+    super("AppEvents");
+  }
+
   /**
    * Return an observable to allow subscription to all future
    * events of a given topic
@@ -57,7 +62,7 @@ export class EventService {
    * Subscribe to all historical updates, and once finished continue to receive new
    */
   all(topic: IEvent["topic"], subtopic?: IEvent["subtopic"]): Observable<IEvent> {
-    console.log("subscribe all", topic, subtopic);
+    // console.log("subscribe all", topic, subtopic);
     const history = from(this.history[topic]).pipe(
       filter((e) => e.topic === topic),
       filter((e) => (subtopic ? e.subtopic === subtopic : true))

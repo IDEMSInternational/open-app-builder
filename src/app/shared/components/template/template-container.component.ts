@@ -57,7 +57,7 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
 
   /** track path to template from top parent (not currently used) */
   templateBreadcrumbs: string[] = [];
-  componentDestroyed$ = new Subject<boolean>();
+  private componentDestroyed$ = new Subject<boolean>();
   debugMode: boolean;
 
   constructor(

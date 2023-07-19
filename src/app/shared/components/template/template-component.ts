@@ -2,7 +2,6 @@ import {
   Directive,
   ViewContainerRef,
   Component,
-  ComponentFactoryResolver,
   Input,
   ViewChild,
   Type,
@@ -50,7 +49,7 @@ export class TmplCompHostDirective {
   template: `
     <!-- Template Debugger -->
     <plh-template-debugger
-      *ngIf="parent.debugMode"
+      *ngIf="parent && parent.debugMode"
       [row]="_row"
       [parent]="parent"
     ></plh-template-debugger>
@@ -102,10 +101,7 @@ export class TemplateComponent implements OnInit, AfterContentInit, ITemplateRow
 
   @ViewChild(TmplCompHostDirective, { static: true }) tmplComponentHost: TmplCompHostDirective;
 
-  constructor(
-    private componentFactoryResolver: ComponentFactoryResolver,
-    private elRef: ElementRef
-  ) {}
+  constructor(private elRef: ElementRef) {}
 
   ngOnInit() {
     this.renderRow(this._row);
@@ -154,8 +150,7 @@ export class TemplateComponent implements OnInit, AfterContentInit, ITemplateRow
     row: FlowTypes.TemplateRow
   ) {
     const viewContainerRef = this.tmplComponentHost.viewContainerRef;
-    const factory = this.componentFactoryResolver.resolveComponentFactory(component);
-    const componentRef = viewContainerRef.createComponent(factory);
+    const componentRef = viewContainerRef.createComponent(component);
     // assign input variables (note template name taken from the row's value column)
     componentRef.instance.row = row;
     componentRef.instance.parent = this.parent;
@@ -167,9 +162,7 @@ export class TemplateComponent implements OnInit, AfterContentInit, ITemplateRow
   /** Create and render a common display component */
   private renderDisplayComponent(component: Type<ITemplateRowProps>, row: FlowTypes.TemplateRow) {
     const viewContainerRef = this.tmplComponentHost.viewContainerRef;
-    const factory =
-      this.componentFactoryResolver.resolveComponentFactory<ITemplateRowProps>(component);
-    const componentRef = viewContainerRef.createComponent(factory);
+    const componentRef = viewContainerRef.createComponent(component);
     // assign input variables
     componentRef.instance.parent = this.parent;
     componentRef.instance.row = row;

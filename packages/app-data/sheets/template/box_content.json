@@ -1,0 +1,237 @@
+{
+  "flow_type": "template",
+  "flow_name": "box_content",
+  "status": "released",
+  "rows": [
+    {
+      "name": "use_scroll",
+      "value": "@fields.use_modular_skin",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "use_scroll",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@fields.use_modular_skin",
+            "matchedExpression": "@fields.use_modular_skin",
+            "type": "fields",
+            "fieldName": "use_modular_skin"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@fields.use_modular_skin": [
+          "value"
+        ]
+      }
+    },
+    {
+      "name": "story_id",
+      "value": "w_praise",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "story_id"
+    },
+    {
+      "name": "use_completed_chevron",
+      "value": true,
+      "type": "set_variable",
+      "_nested_name": "use_completed_chevron"
+    },
+    {
+      "name": "use_completed_more",
+      "value": false,
+      "type": "set_variable",
+      "_nested_name": "use_completed_more"
+    },
+    {
+      "type": "template",
+      "name": "box_story_pages",
+      "value": "box_story_pages",
+      "action_list": [
+        {
+          "trigger": "completed",
+          "action_id": "emit",
+          "args": [
+            "completed"
+          ],
+          "_raw": "completed | emit:completed",
+          "_cleaned": "completed | emit:completed"
+        },
+        {
+          "trigger": "uncompleted",
+          "action_id": "emit",
+          "args": [
+            "uncompleted"
+          ],
+          "_raw": "uncompleted | emit:uncompleted",
+          "_cleaned": "uncompleted | emit:uncompleted"
+        }
+      ],
+      "condition": "!@local.use_scroll",
+      "rows": [
+        {
+          "name": "story_id",
+          "value": "@local.story_id",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "box_story_pages.story_id",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@local.story_id",
+                "matchedExpression": "@local.story_id",
+                "type": "local",
+                "fieldName": "story_id"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@local.story_id": [
+              "value"
+            ]
+          }
+        },
+        {
+          "name": "use_completed_chevron",
+          "value": "@local.use_completed_chevron",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "box_story_pages.use_completed_chevron",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@local.use_completed_chevron",
+                "matchedExpression": "@local.use_completed_chevron",
+                "type": "local",
+                "fieldName": "use_completed_chevron"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@local.use_completed_chevron": [
+              "value"
+            ]
+          }
+        },
+        {
+          "name": "use_completed_more",
+          "value": "@local.use_completed_more",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "box_story_pages.use_completed_more",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@local.use_completed_more",
+                "matchedExpression": "@local.use_completed_more",
+                "type": "local",
+                "fieldName": "use_completed_more"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@local.use_completed_more": [
+              "value"
+            ]
+          }
+        }
+      ],
+      "_nested_name": "box_story_pages",
+      "_dynamicFields": {
+        "condition": [
+          {
+            "fullExpression": "!@local.use_scroll",
+            "matchedExpression": "!@local.use_scroll",
+            "type": "local",
+            "fieldName": "use_scroll"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "!@local.use_scroll": [
+          "condition"
+        ]
+      }
+    },
+    {
+      "type": "template",
+      "name": "box_story_scroll",
+      "value": "box_story_scroll",
+      "action_list": [
+        {
+          "trigger": "completed",
+          "action_id": "emit",
+          "args": [
+            "completed"
+          ],
+          "_raw": "completed | emit:completed",
+          "_cleaned": "completed | emit:completed"
+        },
+        {
+          "trigger": "uncompleted",
+          "action_id": "emit",
+          "args": [
+            "uncompleted"
+          ],
+          "_raw": "uncompleted | emit:uncompleted",
+          "_cleaned": "uncompleted | emit:uncompleted"
+        }
+      ],
+      "condition": "@local.use_scroll",
+      "rows": [
+        {
+          "name": "story_id",
+          "value": "@local.story_id",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "box_story_scroll.story_id",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@local.story_id",
+                "matchedExpression": "@local.story_id",
+                "type": "local",
+                "fieldName": "story_id"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@local.story_id": [
+              "value"
+            ]
+          }
+        }
+      ],
+      "_nested_name": "box_story_scroll",
+      "_dynamicFields": {
+        "condition": [
+          {
+            "fullExpression": "@local.use_scroll",
+            "matchedExpression": "@local.use_scroll",
+            "type": "local",
+            "fieldName": "use_scroll"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.use_scroll": [
+          "condition"
+        ]
+      }
+    }
+  ],
+  "_xlsxPath": "global_modular/core_templates/box_story.xlsx"
+}

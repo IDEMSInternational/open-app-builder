@@ -6,45 +6,30 @@
     {
       "type": "declare_global_constant",
       "name": "home_practice",
-      "value": "Home Practice",
+      "value": "Ready to practise?",
       "_translations": {
         "value": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
+          "tz_sw": true
         }
       }
     },
     {
       "type": "declare_global_constant",
       "name": "home_practice_problem_solving",
-      "value": "Talk about @global.home_practice",
+      "value": "Talk about home practice",
       "_translations": {
         "value": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
+          "tz_sw": true
         }
       }
     },
     {
       "type": "declare_global_constant",
       "name": "hp_review",
-      "value": "Home Practice Review",
+      "value": "How did your practice go?",
       "_translations": {
         "value": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
+          "tz_sw": true
         }
       }
     },
@@ -62,7 +47,26 @@
           "za_zu": true
         }
       }
+    },
+    {
+      "type": "declare_global_constant",
+      "name": "story",
+      "value": "Story",
+      "_translations": {
+        "value": {
+          "tz_sw": true
+        }
+      }
+    },
+    {
+      "type": "declare_global_constant",
+      "name": "part_connector",
+      "value": "-",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true
     }
   ],
-  "_xlsxPath": "global/data/workshop_globals.xlsx"
+  "_xlsxPath": "global/data/workshop_data/workshop_globals.xlsx"
 }

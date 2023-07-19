@@ -1,0 +1,157 @@
+{
+  "flow_name": "w_crisis_tasks",
+  "flow_subtype": "generated",
+  "flow_type": "data_list",
+  "rows": [
+    {
+      "id": "welcome_individual",
+      "group": "welcome_individual",
+      "individual": true,
+      "together": false,
+      "template": "w_crisis_welcome_individual",
+      "completed_field": "task_w_crisis_welcome_individual_completed",
+      "completed": "@fields.task_w_crisis_welcome_individual_completed"
+    },
+    {
+      "id": "care_together",
+      "group": "care_together",
+      "individual": false,
+      "together": true,
+      "template": "w_crisis_care_together",
+      "completed_field": "task_w_crisis_care_together_completed",
+      "completed": "@fields.task_w_crisis_care_together_completed"
+    },
+    {
+      "id": "relax",
+      "group": "relax",
+      "individual": true,
+      "together": true,
+      "template": "w_crisis_relax",
+      "completed_field": "task_w_crisis_relax_completed",
+      "completed": "@fields.task_w_crisis_relax_completed"
+    },
+    {
+      "id": "reflect_together",
+      "group": "reflect_together",
+      "individual": false,
+      "together": true,
+      "template": "w_crisis_reflect_together",
+      "completed_field": "task_w_crisis_reflect_together_completed",
+      "completed": "@fields.task_w_crisis_reflect_together_completed"
+    },
+    {
+      "id": "intro",
+      "group": "intro",
+      "individual": true,
+      "together": true,
+      "template": "w_crisis_intro",
+      "completed_field": "task_w_crisis_intro_completed",
+      "completed": "@fields.task_w_crisis_intro_completed"
+    },
+    {
+      "id": "tools_activity",
+      "group": "tools_activity",
+      "individual": true,
+      "together": true,
+      "template": "w_crisis_tools_activity",
+      "completed_field": "task_w_crisis_tools_activity_completed",
+      "completed": "@fields.task_w_crisis_tools_activity_completed"
+    },
+    {
+      "id": "home_practice",
+      "group": "home_practice",
+      "individual": true,
+      "together": true,
+      "template": "w_crisis_home_practice",
+      "completed_field": "task_w_crisis_home_practice_completed",
+      "completed": "@fields.task_w_crisis_home_practice_completed"
+    },
+    {
+      "id": "ending",
+      "group": "ending",
+      "individual": true,
+      "together": true,
+      "template": "w_crisis_ending",
+      "completed_field": "task_w_crisis_ending_completed",
+      "completed": "@fields.task_w_crisis_ending_completed"
+    },
+    {
+      "id": "hp_review",
+      "group": "hp_review",
+      "individual": true,
+      "together": true,
+      "template": "w_crisis_hp_review",
+      "completed_field": "task_w_crisis_hp_review_completed",
+      "completed": "@fields.task_w_crisis_hp_review_completed"
+    },
+    {
+      "id": "read_1",
+      "group": "read_1",
+      "individual": true,
+      "together": true,
+      "template": "w_crisis_read_1",
+      "rel_priority": 1,
+      "completed_field": "task_w_crisis_read_1_completed",
+      "completed": "@fields.task_w_crisis_read_1_completed"
+    },
+    {
+      "id": "question_1",
+      "group": "read_1",
+      "individual": true,
+      "together": false,
+      "template": "w_crisis_question_1",
+      "rel_priority": 2,
+      "completed_field": "task_w_crisis_question_1_completed",
+      "completed": "@fields.task_w_crisis_question_1_completed"
+    },
+    {
+      "id": "talk_1",
+      "group": "read_1",
+      "individual": false,
+      "together": true,
+      "template": "w_crisis_talk_1",
+      "rel_priority": 3,
+      "completed_field": "task_w_crisis_talk_1_completed",
+      "completed": "@fields.task_w_crisis_talk_1_completed"
+    },
+    {
+      "id": "read_2",
+      "group": "read_2",
+      "individual": true,
+      "together": true,
+      "template": "w_crisis_read_2",
+      "rel_priority": 1,
+      "completed_field": "task_w_crisis_read_2_completed",
+      "completed": "@fields.task_w_crisis_read_2_completed"
+    },
+    {
+      "id": "question_2",
+      "group": "read_2",
+      "individual": true,
+      "together": false,
+      "template": "w_crisis_question_2",
+      "rel_priority": 2,
+      "completed_field": "task_w_crisis_question_2_completed",
+      "completed": "@fields.task_w_crisis_question_2_completed"
+    },
+    {
+      "id": "talk_2",
+      "group": "read_2",
+      "individual": false,
+      "together": true,
+      "template": "w_crisis_talk_2",
+      "rel_priority": 3,
+      "completed_field": "task_w_crisis_talk_2_completed",
+      "completed": "@fields.task_w_crisis_talk_2_completed"
+    },
+    {
+      "id": "learn",
+      "group": "learn",
+      "individual": true,
+      "together": true,
+      "template": "w_crisis_learn_temp",
+      "completed_field": "task_w_crisis_learn_completed",
+      "completed": "@fields.task_w_crisis_learn_completed"
+    }
+  ]
+}

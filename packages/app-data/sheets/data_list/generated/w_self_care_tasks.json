@@ -1,0 +1,88 @@
+{
+  "flow_name": "w_self_care_tasks",
+  "flow_subtype": "generated",
+  "flow_type": "data_list",
+  "rows": [
+    {
+      "id": "welcome_individual",
+      "group": "welcome_individual",
+      "individual": true,
+      "together": false,
+      "template": "w_self_care_welcome_individual",
+      "completed_field": "task_w_self_care_welcome_individual_completed",
+      "completed": "@fields.task_w_self_care_welcome_individual_completed"
+    },
+    {
+      "id": "care_together",
+      "group": "care_together",
+      "individual": false,
+      "together": true,
+      "template": "w_self_care_care_together",
+      "completed_field": "task_w_self_care_care_together_completed",
+      "completed": "@fields.task_w_self_care_care_together_completed"
+    },
+    {
+      "id": "intro",
+      "group": "intro",
+      "individual": true,
+      "together": true,
+      "template": "w_self_care_intro",
+      "completed_field": "task_w_self_care_intro_completed",
+      "completed": "@fields.task_w_self_care_intro_completed"
+    },
+    {
+      "id": "tools_activity",
+      "group": "tools_activity",
+      "individual": true,
+      "together": true,
+      "template": "w_self_care_tools_activity",
+      "completed_field": "task_w_self_care_tools_activity_completed",
+      "completed": "@fields.task_w_self_care_tools_activity_completed"
+    },
+    {
+      "id": "home_practice",
+      "group": "home_practice",
+      "individual": true,
+      "together": true,
+      "template": "w_self_care_home_practice",
+      "completed_field": "task_w_self_care_home_practice_completed",
+      "completed": "@fields.task_w_self_care_home_practice_completed"
+    },
+    {
+      "id": "ending",
+      "group": "ending",
+      "individual": true,
+      "together": true,
+      "template": "w_self_care_ending",
+      "completed_field": "task_w_self_care_ending_completed",
+      "completed": "@fields.task_w_self_care_ending_completed"
+    },
+    {
+      "id": "relax",
+      "group": "relax",
+      "individual": true,
+      "together": true,
+      "template": "w_self_care_relax",
+      "completed_field": "task_w_self_care_relax_completed",
+      "completed": "@fields.task_w_self_care_relax_completed"
+    },
+    {
+      "id": "recognise",
+      "group": "recognise",
+      "individual": true,
+      "together": true,
+      "template": "w_self_care_recognise",
+      "completed_field": "task_w_self_care_recognise_completed",
+      "completed": "@fields.task_w_self_care_recognise_completed"
+    },
+    {
+      "id": "reward",
+      "group": "reward",
+      "individual": true,
+      "together": true,
+      "template": "w_self_care_reward",
+      "completed_field": "task_w_self_care_reward_completed",
+      "completed": "@fields.task_w_self_care_reward_completed"
+    }
+  ]
+}

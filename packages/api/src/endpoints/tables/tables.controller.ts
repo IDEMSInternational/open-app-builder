@@ -13,11 +13,12 @@ import { TableService } from "./tables.service";
 import { ApiBody, ApiOperation, ApiResponse, ApiTags } from "@nestjs/swagger";
 import { listTableColumns, listTableNames } from "src/utils";
 import { DataType } from "sequelize-typescript";
+import { DeploymentHeaders } from "src/modules/deployment.decorators";
 
 @ApiTags("DB Tables")
 @Controller("tables")
 export class TablesController {
-  constructor(private readonly TableService: TableService) {}
+  constructor(private readonly tableService: TableService) {}
 
   @Get()
   @ApiOperation({ summary: "List tables" })
@@ -27,6 +28,7 @@ export class TablesController {
     type: DataType.STRING,
     isArray: true,
   })
+  @DeploymentHeaders()
   async listTables() {
     return listTableNames();
   }
@@ -36,6 +38,7 @@ export class TablesController {
   @ApiResponse({
     status: 200,
   })
+  @DeploymentHeaders()
   async getTableMeta(@Param() params: { table_name: string }) {
     // TODO - add general table meta get return or discovery doc
     return params.table_name;
@@ -49,6 +52,7 @@ export class TablesController {
     description: "User Updated",
     type: TableColumnMappingDto,
   })
+  @DeploymentHeaders()
   async getTableColumns(@Param() params: { table_name: string }) {
     return listTableColumns(params.table_name);
   }
@@ -61,6 +65,7 @@ export class TablesController {
     description: "User Updated",
     type: TableColumnMappingDto,
   })
+  @DeploymentHeaders()
   async addMappedTableColumns(
     @Param() params: { table_name: string },
     @Body() data: TableColumnMappingDto
@@ -68,7 +73,7 @@ export class TablesController {
     const { table_name } = params;
     const { columns } = data;
     try {
-      const res = await this.TableService.updateTableColumns(table_name, "add", columns);
+      const res = await this.tableService.updateTableColumns(table_name, "add", columns);
       // TODO re-map json (maybe param to pass?)
       return res;
     } catch (error) {
@@ -84,6 +89,7 @@ export class TablesController {
     description: "User Updated",
     type: TableColumnMappingDto,
   })
+  @DeploymentHeaders()
   async removeMappedTableColumns(
     @Param() params: { table_name: string },
     @Body() data: TableColumnMappingDto
@@ -91,7 +97,7 @@ export class TablesController {
     const { table_name } = params;
     const { columns } = data;
     try {
-      const res = await this.TableService.updateTableColumns(table_name, "drop", columns);
+      const res = await this.tableService.updateTableColumns(table_name, "drop", columns);
       return res;
     } catch (error) {
       throw new HttpException(error.message, HttpStatus.BAD_REQUEST);

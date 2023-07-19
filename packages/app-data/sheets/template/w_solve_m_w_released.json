@@ -63,9 +63,11 @@
           "rows": [
             {
               "name": "text",
-              "value": "Hi @fields.user_name! You are making such good progress on your parenting journey! \n\nHaving a teen means having a lot of unexpected problems to deal with. This workshop will show you how to deal with them.",
+              "value": "Hi @fields.user_name! You are making such good progress on your parenting journey! \n\nHaving a teen means having a lot of unexpected problems to deal with. This @global.workshop will show you how to deal with them.",
               "_translations": {
-                "value": {}
+                "value": {
+                  "tz_sw": true
+                }
               },
               "condition": "!@local.do_workshops_together",
               "type": "set_variable",
@@ -73,10 +75,16 @@
               "_dynamicFields": {
                 "value": [
                   {
-                    "fullExpression": "Hi @fields.user_name! You are making such good progress on your parenting journey! \n\nHaving a teen means having a lot of unexpected problems to deal with. This workshop will show you how to deal with them.",
+                    "fullExpression": "Hi @fields.user_name! You are making such good progress on your parenting journey! \n\nHaving a teen means having a lot of unexpected problems to deal with. This @global.workshop will show you how to deal with them.",
                     "matchedExpression": "@fields.user_name",
                     "type": "fields",
                     "fieldName": "user_name"
+                  },
+                  {
+                    "fullExpression": "Hi @fields.user_name! You are making such good progress on your parenting journey! \n\nHaving a teen means having a lot of unexpected problems to deal with. This @global.workshop will show you how to deal with them.",
+                    "matchedExpression": "@global.workshop",
+                    "type": "global",
+                    "fieldName": "workshop"
                   }
                 ],
                 "condition": [
@@ -92,6 +100,9 @@
                 "@fields.user_name": [
                   "value"
                 ],
+                "@global.workshop": [
+                  "value"
+                ],
                 "!@local.do_workshops_together": [
                   "condition"
                 ]
@@ -99,9 +110,11 @@
             },
             {
               "name": "text",
-              "value": "Hi @fields.group_name! You are making such good progress on your parenting journey!\n\nHaving a teen means having a lot of unexpected problems to deal with. This workshop will show you all how to deal with them.",
+              "value": "Hi @fields.group_name! You are making such good progress on your parenting journey!\n\nHaving a teen means having a lot of unexpected problems to deal with. This @global.workshop will show you all how to deal with them.",
               "_translations": {
-                "value": {}
+                "value": {
+                  "tz_sw": true
+                }
               },
               "condition": "@local.do_workshops_together",
               "type": "set_variable",
@@ -109,10 +122,16 @@
               "_dynamicFields": {
                 "value": [
                   {
-                    "fullExpression": "Hi @fields.group_name! You are making such good progress on your parenting journey!\n\nHaving a teen means having a lot of unexpected problems to deal with. This workshop will show you all how to deal with them.",
+                    "fullExpression": "Hi @fields.group_name! You are making such good progress on your parenting journey!\n\nHaving a teen means having a lot of unexpected problems to deal with. This @global.workshop will show you all how to deal with them.",
                     "matchedExpression": "@fields.group_name",
                     "type": "fields",
                     "fieldName": "group_name"
+                  },
+                  {
+                    "fullExpression": "Hi @fields.group_name! You are making such good progress on your parenting journey!\n\nHaving a teen means having a lot of unexpected problems to deal with. This @global.workshop will show you all how to deal with them.",
+                    "matchedExpression": "@global.workshop",
+                    "type": "global",
+                    "fieldName": "workshop"
                   }
                 ],
                 "condition": [
@@ -128,6 +147,9 @@
                 "@fields.group_name": [
                   "value"
                 ],
+                "@global.workshop": [
+                  "value"
+                ],
                 "@local.do_workshops_together": [
                   "condition"
                 ]
@@ -140,5 +162,5 @@
       "_nested_name": "m_workshop_released"
     }
   ],
-  "_xlsxPath": "global/in_week_messages/in_week_message_texts/w_solve_messages.xlsx"
+  "_xlsxPath": "global/top_templates/in_week_messages/in_week_message_texts/w_solve_messages.xlsx"
 }

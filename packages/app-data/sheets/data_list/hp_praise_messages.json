@@ -417,20 +417,13 @@
         "ok",
         "sad"
       ],
-      "text": "Sorry that this has been difficult. Creating rules together requires some practice but it's worth it!",
+      "text": "Sorry that this has been difficult. Creating rules together requires some practice but it is worth it!",
       "_translations": {
-        "text": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        }
+        "text": {}
       },
       "_translatedFields": {
         "text": {
-          "eng": "Sorry that this has been difficult. Creating rules together requires some practice but it's worth it!"
+          "eng": "Sorry that this has been difficult. Creating rules together requires some practice but it is worth it!"
         }
       }
     },

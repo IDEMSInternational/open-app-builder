@@ -6,15 +6,10 @@
     {
       "type": "declare_global_constant",
       "name": "m_w_tomorrow",
-      "value": "New workshop ready tomorrow!",
+      "value": "New @global.workshop ready tomorrow!",
       "_translations": {
         "value": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
+          "tz_sw": true
         }
       }
     },
@@ -36,15 +31,10 @@
     {
       "type": "declare_global_constant",
       "name": "m_w_reminder",
-      "value": "Workshop Reminder",
+      "value": "@global.workshop_capital Reminder",
       "_translations": {
         "value": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
+          "tz_sw": true
         }
       }
     },
@@ -104,15 +94,10 @@
     {
       "type": "declare_global_constant",
       "name": "m_something_fun",
-      "value": "Something Fun",
+      "value": "Something fun",
       "_translations": {
         "value": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
+          "tz_sw": true
         }
       }
     },
@@ -164,15 +149,10 @@
     {
       "type": "declare_global_constant",
       "name": "m_hp_reminder",
-      "value": "Home Practice Reminder",
+      "value": "Remember to practise",
       "_translations": {
         "value": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
+          "tz_sw": true
         }
       }
     },

@@ -1,0 +1,29 @@
+// @use "/src/theme/mixins";
+
+$background-selected: var(
+  --radio-group-background-selected,
+  var(--gradient-primary-light-vertical)
+);
+$border: var(--ion-border-standard);
+$border-radius: var(--ion-border-radius-standard);
+$text-size: var(--radio-button-font-size, 1.25rem);
+$text-color: var(--radio-button-font-color, var(--ion-color-primary));
+
+.radio-grid {
+  display: grid;
+}
+.item {
+  border: $border;
+  border-radius: 15px;
+  text-align: center;
+  padding: 8px;
+  background: white;
+  cursor: pointer;
+}
+.item[data-selected="true"] {
+  background: $background-selected;
+}
+.item-text {
+  font-size: $text-size;
+  color: $text-color;
+}

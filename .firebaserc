@@ -1,4 +1,7 @@
 {
+  "projects": {
+    "default": "plh-teens-app1"
+  },
   "targets": {
     "plh-teens-app1": {
       "hosting": {
@@ -16,11 +19,24 @@
         ],
         "early_family_math": [
           "early-family-math"
+        ],
+        "wash": [
+          "wash"
+        ],
+        "perinatal": [
+          "perinatal"
+        ],
+        "pfr": [
+          "parenting-for-respectability"
+        ],
+        "debug": [
+          "idems-debug"
+        ],
+        "plh_facilitator": [
+          "plh-facilitator"
         ]
       }
     }
   },
-  "projects": {
-    "default": "plh-teens-app1"
-  }
+  "etags": {}
 }

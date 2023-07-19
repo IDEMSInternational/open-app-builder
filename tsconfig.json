@@ -17,6 +17,9 @@
     "skipLibCheck": true,
     "resolveJsonModule": true
   },
+  "paths": {
+    "tslib": ["node_modules/tslib/tslib.d.ts"]
+  },
   "angularCompilerOptions": {
     "strictTemplates": true,
     "strictInjectionParameters": true

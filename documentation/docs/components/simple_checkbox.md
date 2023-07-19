@@ -12,7 +12,7 @@ A checkbox is a graphical user interface (GUI) element that allows users to make
 ![](images/simple_checkbox.png)
 
 [Google Sheet Demo](https://docs.google.com/spreadsheets/d/19t6lEBkVF0LV2dMD1yL6nbuUIFiiYNa0xLA1QQAyyxU/edit#gid=569531329)   
-[Live Preview Demo](https://plh-teens-app1.web.app/template/comp_checkbox_button)
+[Live Preview Demo](https://idems-debug.web.app/template/comp_checkbox)
 
 ## Parameters
 

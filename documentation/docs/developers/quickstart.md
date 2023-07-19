@@ -62,7 +62,7 @@ Once you've installed those tools you'll also need to make sure you PATH and AND
 ### Running on an Android Emulator
 
 1. Open Android studio and follow the steps here https://developer.android.com/studio/run/managing-avds#createavd to create an Android emulator. When choosing a system image to create an emulator for do not choose a version of Android older than 5.0 Lollipop (API Level 21).
-2. Incase you are having problems with running the AVD you might receivean error message saying something like - _How to Enable Intel Virtualization Technology (vt-x) ……… you will need to get into your bios and enable virtualization_ if you are not sure what that is, then you can google it up for your computer model.
+2. In case you are having problems with running the AVD you might receive an error message saying something like - _How to Enable Intel Virtualization Technology (vt-x) ……… you will need to get into your bios and enable virtualization_ if you are not sure what that is, then you can google it up for your computer model.
 3. Once you've created an emulator run directly from Android Studio
 
 ### Running on a physical Android device (developing on Windows)
