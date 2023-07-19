@@ -20,6 +20,21 @@
     },
     {
       "type": "declare_global_constant",
+      "name": "home_screen",
+      "value": "Home",
+      "_translations": {
+        "value": {
+          "tz_sw": true,
+          "za_af": true,
+          "za_st": true,
+          "za_tn": true,
+          "za_xh": true,
+          "za_zu": true
+        }
+      }
+    },
+    {
+      "type": "declare_global_constant",
       "name": "weekly_workshops",
       "value": "Weekly Workshops",
       "_translations": {
@@ -50,8 +65,8 @@
     },
     {
       "type": "declare_global_constant",
-      "name": "weekly_workshop_options",
-      "value": "Weekly Workshop Options",
+      "name": "options",
+      "value": "Options",
       "_translations": {
         "value": {
           "tz_sw": true,
@@ -60,6 +75,55 @@
           "za_tn": true,
           "za_xh": true,
           "za_zu": true
+        }
+      }
+    },
+    {
+      "type": "declare_global_constant",
+      "name": "weekly_workshop_options",
+      "value": "@global.weekly_workshop @global.options",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true
+    },
+    {
+      "type": "declare_global_constant",
+      "name": "workshops",
+      "value": "workshops",
+      "_translations": {
+        "value": {
+          "tz_sw": true
+        }
+      }
+    },
+    {
+      "type": "declare_global_constant",
+      "name": "workshop",
+      "value": "workshop",
+      "_translations": {
+        "value": {
+          "tz_sw": true
+        }
+      }
+    },
+    {
+      "type": "declare_global_constant",
+      "name": "workshops_capital",
+      "value": "Workshops",
+      "_translations": {
+        "value": {
+          "tz_sw": true
+        }
+      }
+    },
+    {
+      "type": "declare_global_constant",
+      "name": "workshop_capital",
+      "value": "Workshop",
+      "_translations": {
+        "value": {
+          "tz_sw": true
         }
       }
     },
@@ -120,6 +184,16 @@
           "za_tn": true,
           "za_xh": true,
           "za_zu": true
+        }
+      }
+    },
+    {
+      "type": "declare_global_constant",
+      "name": "things_to_do",
+      "value": "Things to do",
+      "_translations": {
+        "value": {
+          "tz_sw": true
         }
       }
     }

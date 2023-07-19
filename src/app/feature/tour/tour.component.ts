@@ -1,5 +1,5 @@
 import { Component } from "@angular/core";
-import { TourService } from "src/app/shared/services/tour/tour.service";
+import { TourService } from "./tour.service";
 
 @Component({
   template: ` <ion-content class="ion-padding">

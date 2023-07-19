@@ -22,10 +22,10 @@ Here is an example of two rows added to a `==content_list==` for creating notifi
 | schedule.start_date           | Date of earliest notification. If in past will be ignored |
 | schedule.end_date             | Date of latest notification. If in past will be ignored |
 | schedule.day_of_week          | Send notifications weekly on a given day of the week (numbered from 1 - Monday, to 7 - Sunday) |
-| schedule.batch_size           | Maximum number of notifications to schedule, e.g. if scheduling weekly specify number of weeks to preschedule |
-| time.hour                     | Hour of day to send notificaitons on, in 24h format       |
+| schedule.batch_size           | Maximum number of notifications to schedule, e.g. if scheduling weekly specify number of weeks to pre-schedule |
+| time.hour                     | Hour of day to send notifications on, in 24h format       |
 | time.minute                   | Minute of day to send notification on |
-| delay.days                    | Offset to schedule notfication a given number of days from today |
+| delay.days                    | Offset to schedule notification a given number of days from today |
 
 The default settings for notifications will schedule a daily at 12pm. These settings are defined in the `NOTIFICATION_DEFAULTS` variable.
 
@@ -39,7 +39,7 @@ The default settings for notifications will schedule a daily at 12pm. These sett
 | priority           | Number given to specify which notification should take priority when multiple active (highest priority sent sent) |
 | campaign_list             | List of campaign schedules to include notifications in |
 | text          | Send notifications weekly on a given day of the week (numbered from 1 - Monday, to 7 - Sunday) |
-| title                     | Hour of day to send notificaitons on, in 24h format       |
+| title                     | Hour of day to send notifications on, in 24h format       |
 
 ## Advanced Topics
 
@@ -58,9 +58,9 @@ Clicking the notification icon in the top-right will lead to another `/notificat
 
 
 ### Scheduling Frequency
-Notifications are automatatically evaluated and scheduled on app start
+Notifications are automatically evaluated and scheduled on app start
 
 !!! warning
-    When the app is not in active use sync timers pause and so no new notifications will be evaulated. That means that if the user closes the app 
+    When the app is not in active use sync timers pause and so no new notifications will be evaluated. That means that if the user closes the app 
 
 There is currently no workaround for this unfortunately except for reducing the re-schedule sync timer, however if this is required than it is suggested to [create an issue](https://github.com/IDEMSInternational/parenting-app-ui/issues/new/choose) for the feature (likely best handled by a trigger that can be called from authoring).

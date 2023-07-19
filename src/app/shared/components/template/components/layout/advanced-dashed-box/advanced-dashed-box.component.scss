@@ -1,8 +1,8 @@
-@import "src/theme/mixins.scss";
+@use "/src/theme/mixins";
 
 .box-wrapper {
   .item {
-    @include flex-centered;
+    @include mixins.flex-centered;
     flex-direction: column;
     margin-left: auto;
     margin-right: auto;
@@ -18,7 +18,7 @@
       line-height: var(--line-height-text-largest);
     }
     .icon {
-      @include small-square;
+      @include mixins.small-square;
       position: absolute;
       img {
         width: 100%;

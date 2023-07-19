@@ -24,11 +24,11 @@
           "trigger": "click",
           "action_id": "set_field",
           "args": [
-            "w_crisis_m_w_released.sent",
+            "w_crisis_m_w_released_sent",
             true
           ],
-          "_raw": "click | set_field: w_crisis_m_w_released.sent : true",
-          "_cleaned": "click | set_field: w_crisis_m_w_released.sent : true"
+          "_raw": "click | set_field: w_crisis_m_w_released_sent : true",
+          "_cleaned": "click | set_field: w_crisis_m_w_released_sent : true"
         }
       ],
       "priority": 2.99,
@@ -75,10 +75,10 @@
           "eng": "@global.m_w_released"
         },
         "text": {
-          "eng": "Hi @fields.user_name! Crises happen to anyone - being ready helps a lot. \n\nThis workshop will show you how."
+          "eng": "Hi @fields.user_name! Crises happen to anyone - being ready helps a lot. \n\nThis @global.workshop will show you how."
         }
       },
-      "text": "Hi @fields.user_name! Crises happen to anyone - being ready helps a lot. \n\nThis workshop will show you how."
+      "text": "Hi @fields.user_name! Crises happen to anyone - being ready helps a lot. \n\nThis @global.workshop will show you how."
     },
     {
       "id": "w_released_w_crisis_tog",
@@ -100,11 +100,11 @@
           "trigger": "click",
           "action_id": "set_field",
           "args": [
-            "w_crisis_m_w_released.sent",
+            "w_crisis_m_w_released_sent",
             true
           ],
-          "_raw": "click | set_field: w_crisis_m_w_released.sent : true",
-          "_cleaned": "click | set_field: w_crisis_m_w_released.sent : true"
+          "_raw": "click | set_field: w_crisis_m_w_released_sent : true",
+          "_cleaned": "click | set_field: w_crisis_m_w_released_sent : true"
         }
       ],
       "priority": 2.99,
@@ -151,10 +151,10 @@
           "eng": "@global.m_w_released"
         },
         "text": {
-          "eng": "Hi @fields.group_name! Crises happen to anyone - being ready helps a lot. \n\nThis workshop will show you how."
+          "eng": "Hi @fields.group_name! Crises happen to anyone - being ready helps a lot. \n\nThis @global.workshop will show you how."
         }
       },
-      "text": "Hi @fields.group_name! Crises happen to anyone - being ready helps a lot. \n\nThis workshop will show you how."
+      "text": "Hi @fields.group_name! Crises happen to anyone - being ready helps a lot. \n\nThis @global.workshop will show you how."
     },
     {
       "id": "relax_w_crisis",
@@ -175,11 +175,11 @@
           "trigger": "click",
           "action_id": "set_field",
           "args": [
-            "w_crisis_m_relax.sent",
+            "w_crisis_m_relax_sent",
             true
           ],
-          "_raw": "click | set_field: w_crisis_m_relax.sent : true",
-          "_cleaned": "click | set_field: w_crisis_m_relax.sent : true"
+          "_raw": "click | set_field: w_crisis_m_relax_sent : true",
+          "_cleaned": "click | set_field: w_crisis_m_relax_sent : true"
         }
       ],
       "priority": 2.9,
@@ -233,11 +233,11 @@
           "trigger": "click",
           "action_id": "set_field",
           "args": [
-            "w_crisis_m_something_fun.sent",
+            "w_crisis_m_something_fun_sent",
             true
           ],
-          "_raw": "click | set_field: w_crisis_m_something_fun.sent : true",
-          "_cleaned": "click | set_field: w_crisis_m_something_fun.sent : true"
+          "_raw": "click | set_field: w_crisis_m_something_fun_sent : true",
+          "_cleaned": "click | set_field: w_crisis_m_something_fun_sent : true"
         }
       ],
       "priority": 2.8,
@@ -290,11 +290,11 @@
           "trigger": "click",
           "action_id": "set_field",
           "args": [
-            "w_crisis_m_praise.sent",
+            "w_crisis_m_praise_sent",
             true
           ],
-          "_raw": "click | set_field: w_crisis_m_praise.sent : true",
-          "_cleaned": "click | set_field: w_crisis_m_praise.sent : true"
+          "_raw": "click | set_field: w_crisis_m_praise_sent : true",
+          "_cleaned": "click | set_field: w_crisis_m_praise_sent : true"
         }
       ],
       "priority": 2.7,
@@ -317,7 +317,10 @@
       "_translations": {
         "title": {},
         "text": {
-          "tz_sw": true
+          "tz_sw": true,
+          "za_af": true,
+          "za_st": true,
+          "za_tn": true
         }
       },
       "_translatedFields": {
@@ -349,11 +352,11 @@
           "trigger": "click",
           "action_id": "set_field",
           "args": [
-            "w_crisis_m_w_reminder.sent",
+            "w_crisis_m_w_reminder_sent",
             true
           ],
-          "_raw": "click | set_field: w_crisis_m_w_reminder.sent : true",
-          "_cleaned": "click | set_field: w_crisis_m_w_reminder.sent : true"
+          "_raw": "click | set_field: w_crisis_m_w_reminder_sent : true",
+          "_cleaned": "click | set_field: w_crisis_m_w_reminder_sent : true"
         }
       ],
       "priority": 2.6,
@@ -393,10 +396,10 @@
           "eng": "@global.m_w_reminder"
         },
         "text": {
-          "eng": "Crises may happen, and we CAN be prepared!\n\nStart the next workshop to see how with your teen."
+          "eng": "Crises may happen, and we CAN be prepared!\n\nStart the next @global.workshop to see how with your teen."
         }
       },
-      "text": "Crises may happen, and we CAN be prepared!\n\nStart the next workshop to see how with your teen."
+      "text": "Crises may happen, and we CAN be prepared!\n\nStart the next @global.workshop to see how with your teen."
     },
     {
       "id": "w_in_progress_w_crisis",
@@ -417,11 +420,11 @@
           "trigger": "click",
           "action_id": "set_field",
           "args": [
-            "w_crisis_m_w_in_progress.sent",
+            "w_crisis_m_w_in_progress_sent",
             true
           ],
-          "_raw": "click | set_field: w_crisis_m_w_in_progress.sent : true",
-          "_cleaned": "click | set_field: w_crisis_m_w_in_progress.sent : true"
+          "_raw": "click | set_field: w_crisis_m_w_in_progress_sent : true",
+          "_cleaned": "click | set_field: w_crisis_m_w_in_progress_sent : true"
         }
       ],
       "priority": 2.5,
@@ -460,7 +463,10 @@
       "_translations": {
         "title": {},
         "text": {
-          "tz_sw": true
+          "tz_sw": true,
+          "za_af": true,
+          "za_st": true,
+          "za_tn": true
         }
       },
       "_translatedFields": {
@@ -492,11 +498,11 @@
           "trigger": "click",
           "action_id": "set_field",
           "args": [
-            "w_crisis_m_hp_reminder.sent",
+            "w_crisis_m_hp_reminder_sent",
             true
           ],
-          "_raw": "click | set_field: w_crisis_m_hp_reminder.sent : true",
-          "_cleaned": "click | set_field: w_crisis_m_hp_reminder.sent : true"
+          "_raw": "click | set_field: w_crisis_m_hp_reminder_sent : true",
+          "_cleaned": "click | set_field: w_crisis_m_hp_reminder_sent : true"
         }
       ],
       "priority": 2.4,
@@ -528,7 +534,10 @@
       "_translations": {
         "title": {},
         "text": {
-          "tz_sw": true
+          "tz_sw": true,
+          "za_af": true,
+          "za_st": true,
+          "za_tn": true
         }
       },
       "_translatedFields": {
@@ -560,11 +569,11 @@
           "trigger": "click",
           "action_id": "set_field",
           "args": [
-            "m_parent_points_overview.sent",
+            "m_parent_points_overview_sent",
             true
           ],
-          "_raw": "click | set_field: m_parent_points_overview.sent : true",
-          "_cleaned": "click | set_field: m_parent_points_overview.sent : true"
+          "_raw": "click | set_field: m_parent_points_overview_sent : true",
+          "_cleaned": "click | set_field: m_parent_points_overview_sent : true"
         }
       ],
       "priority": 2.3,
@@ -617,11 +626,11 @@
           "trigger": "click",
           "action_id": "set_field",
           "args": [
-            "undefined.sent",
+            "w_crisis_hp_review_sent",
             true
           ],
-          "_raw": "click | set_field: undefined.sent : true",
-          "_cleaned": "click | set_field: undefined.sent : true"
+          "_raw": "click | set_field: w_crisis_hp_review_sent : true",
+          "_cleaned": "click | set_field: w_crisis_hp_review_sent : true"
         }
       ],
       "priority": 2.2,
@@ -684,11 +693,11 @@
           "trigger": "click",
           "action_id": "set_field",
           "args": [
-            "w_crisis_m_w_tomorrow.sent",
+            "w_crisis_m_w_tomorrow_sent",
             true
           ],
-          "_raw": "click | set_field: w_crisis_m_w_tomorrow.sent : true",
-          "_cleaned": "click | set_field: w_crisis_m_w_tomorrow.sent : true"
+          "_raw": "click | set_field: w_crisis_m_w_tomorrow_sent : true",
+          "_cleaned": "click | set_field: w_crisis_m_w_tomorrow_sent : true"
         }
       ],
       "priority": 2.1,
@@ -728,10 +737,10 @@
           "eng": "@global.m_w_tomorrow"
         },
         "text": {
-          "eng": "Well done for finishing the @data.workshop.w_crisis. Tomorrow, you can access the final workshop to reflect on your journey and plan what to do next!"
+          "eng": "Well done for finishing the @data.workshop.w_crisis. Tomorrow, you can access the final @global.workshop to reflect on your journey and plan what to do next!"
         }
       },
-      "text": "Well done for finishing the @data.workshop.w_crisis. Tomorrow, you can access the final workshop to reflect on your journey and plan what to do next!"
+      "text": "Well done for finishing the @data.workshop.w_crisis. Tomorrow, you can access the final @global.workshop to reflect on your journey and plan what to do next!"
     },
     {
       "id": "w_tomorrow_w_crisis_incompl",
@@ -753,11 +762,11 @@
           "trigger": "click",
           "action_id": "set_field",
           "args": [
-            "w_crisis_m_w_tomorrow.sent",
+            "w_crisis_m_w_tomorrow_sent",
             true
           ],
-          "_raw": "click | set_field: w_crisis_m_w_tomorrow.sent : true",
-          "_cleaned": "click | set_field: w_crisis_m_w_tomorrow.sent : true"
+          "_raw": "click | set_field: w_crisis_m_w_tomorrow_sent : true",
+          "_cleaned": "click | set_field: w_crisis_m_w_tomorrow_sent : true"
         }
       ],
       "priority": 2.1,
@@ -797,10 +806,10 @@
           "eng": "@global.m_w_tomorrow"
         },
         "text": {
-          "eng": "The final workshop unlocks tomorrow!\n\nFirst try to finish the @data.workshop.w_crisis.in_text_title. That way, you can complete your set of parenting skills and decide what to do next."
+          "eng": "The final @global.workshop unlocks tomorrow!\n\nFirst try to finish the @data.workshop.w_crisis.in_text_title. That way, you can complete your set of parenting skills and decide what to do next."
         }
       },
-      "text": "The final workshop unlocks tomorrow!\n\nFirst try to finish the @data.workshop.w_crisis.in_text_title. That way, you can complete your set of parenting skills and decide what to do next."
+      "text": "The final @global.workshop unlocks tomorrow!\n\nFirst try to finish the @data.workshop.w_crisis.in_text_title. That way, you can complete your set of parenting skills and decide what to do next."
     }
   ],
   "_xlsxPath": "global/campaigns/notifications_in_week_messages.xlsx"

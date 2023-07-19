@@ -4,50 +4,107 @@
   "status": "released",
   "rows": [
     {
-      "name": "number_of_challenges",
-      "value": 5,
-      "type": "set_variable",
-      "_nested_name": "number_of_challenges"
-    },
-    {
-      "name": "workshop_data",
-      "type": "set_variable",
-      "_nested_name": "workshop_data"
-    },
-    {
       "name": "workshop",
-      "value": "@local.workshop_data.id",
+      "value": "w_crisis",
       "_translations": {
         "value": {}
       },
       "exclude_from_translation": true,
       "type": "set_variable",
-      "_nested_name": "workshop",
+      "_nested_name": "workshop"
+    },
+    {
+      "name": "data_list_row",
+      "value": [
+        "hp_challenges.@local.workshop"
+      ],
+      "type": "set_variable",
+      "_nested_name": "data_list_row",
+      "_dynamicFields": {
+        "value": {
+          "0": [
+            {
+              "fullExpression": "hp_challenges.@local.workshop",
+              "matchedExpression": "@local.workshop",
+              "type": "local",
+              "fieldName": "workshop"
+            }
+          ]
+        }
+      },
+      "_dynamicDependencies": {
+        "@local.workshop": [
+          "value.0"
+        ]
+      }
+    },
+    {
+      "name": "row_data",
+      "value": "@data.@local.data_list_row",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "row_data",
       "_dynamicFields": {
         "value": [
           {
-            "fullExpression": "@local.workshop_data.id",
-            "matchedExpression": "@local.workshop_data.id",
+            "fullExpression": "@data.@local.data_list_row",
+            "matchedExpression": "@local.data_list_row",
             "type": "local",
-            "fieldName": "workshop_data"
+            "fieldName": "data_list_row"
           }
         ]
       },
       "_dynamicDependencies": {
-        "@local.workshop_data.id": [
+        "@local.data_list_row": [
           "value"
         ]
       }
     },
     {
-      "name": "hp_review_mood",
-      "value": "_hp_review_mood",
+      "name": "hp_mood",
+      "value": "_hp_mood",
       "_translations": {
         "value": {}
       },
       "exclude_from_translation": true,
       "type": "set_variable",
-      "_nested_name": "hp_review_mood"
+      "_nested_name": "hp_mood"
+    },
+    {
+      "name": "workshop_hp_mood",
+      "value": "@local.workshop@local.hp_mood",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "type": "set_variable",
+      "_nested_name": "workshop_hp_mood",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@local.workshop@local.hp_mood",
+            "matchedExpression": "@local.workshop",
+            "type": "local",
+            "fieldName": "workshop"
+          },
+          {
+            "fullExpression": "@local.workshop@local.hp_mood",
+            "matchedExpression": "@local.hp_mood",
+            "type": "local",
+            "fieldName": "hp_mood"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.workshop": [
+          "value"
+        ],
+        "@local.hp_mood": [
+          "value"
+        ]
+      }
     },
     {
       "name": "hp_challenge",
@@ -60,53 +117,27 @@
       "_nested_name": "hp_challenge"
     },
     {
-      "name": "tracker",
-      "value": "_tracker",
+      "name": "workshop_hp_challenge",
+      "value": "@local.workshop@local.hp_challenge",
       "_translations": {
         "value": {}
       },
       "exclude_from_translation": true,
       "type": "set_variable",
-      "_nested_name": "tracker"
-    },
-    {
-      "name": "final",
-      "value": "_final",
-      "_translations": {
-        "value": {}
-      },
-      "exclude_from_translation": true,
-      "type": "set_variable",
-      "_nested_name": "final"
-    },
-    {
-      "name": "workshop_hp_review_mood",
-      "value": "@local.workshop@local.hp_review_mood@local.final",
-      "_translations": {
-        "value": {}
-      },
-      "exclude_from_translation": true,
-      "type": "set_variable",
-      "_nested_name": "workshop_hp_review_mood",
+      "_nested_name": "workshop_hp_challenge",
       "_dynamicFields": {
         "value": [
           {
-            "fullExpression": "@local.workshop@local.hp_review_mood@local.final",
+            "fullExpression": "@local.workshop@local.hp_challenge",
             "matchedExpression": "@local.workshop",
             "type": "local",
             "fieldName": "workshop"
           },
           {
-            "fullExpression": "@local.workshop@local.hp_review_mood@local.final",
-            "matchedExpression": "@local.hp_review_mood",
+            "fullExpression": "@local.workshop@local.hp_challenge",
+            "matchedExpression": "@local.hp_challenge",
             "type": "local",
-            "fieldName": "hp_review_mood"
-          },
-          {
-            "fullExpression": "@local.workshop@local.hp_review_mood@local.final",
-            "matchedExpression": "@local.final",
-            "type": "local",
-            "fieldName": "final"
+            "fieldName": "hp_challenge"
           }
         ]
       },
@@ -114,242 +145,303 @@
         "@local.workshop": [
           "value"
         ],
-        "@local.hp_review_mood": [
-          "value"
-        ],
-        "@local.final": [
+        "@local.hp_challenge": [
           "value"
         ]
       }
     },
     {
-      "name": "hp_description_third_plural",
-      "value": "talk to their teens about how they feel",
-      "_translations": {
-        "value": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        }
-      },
+      "name": "hp_challenge_list",
+      "value": [
+        "_hp_challenge_list"
+      ],
       "type": "set_variable",
-      "_nested_name": "hp_description_third_plural"
+      "_nested_name": "hp_challenge_list"
     },
     {
-      "name": "hp_description_second_singular",
-      "value": "talk to your teen about how you feel",
-      "_translations": {
+      "name": "workshop_hp_challenge_list",
+      "value": [
+        "@local.workshop@local.hp_challenge_list"
+      ],
+      "type": "set_variable",
+      "_nested_name": "workshop_hp_challenge_list",
+      "_dynamicFields": {
         "value": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
+          "0": [
+            {
+              "fullExpression": "@local.workshop@local.hp_challenge_list",
+              "matchedExpression": "@local.workshop",
+              "type": "local",
+              "fieldName": "workshop"
+            },
+            {
+              "fullExpression": "@local.workshop@local.hp_challenge_list",
+              "matchedExpression": "@local.hp_challenge_list",
+              "type": "local",
+              "fieldName": "hp_challenge_list"
+            }
+          ]
         }
       },
-      "type": "set_variable",
-      "_nested_name": "hp_description_second_singular"
+      "_dynamicDependencies": {
+        "@local.workshop": [
+          "value.0"
+        ],
+        "@local.hp_challenge_list": [
+          "value.0"
+        ]
+      }
     },
     {
       "name": "top_text",
-      "value": "Top @local.number_of_challenges challenges other parents experience:",
+      "value": "@local.row_data.top_text",
       "_translations": {
-        "value": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        }
+        "value": {}
       },
       "type": "set_variable",
       "_nested_name": "top_text",
       "_dynamicFields": {
         "value": [
           {
-            "fullExpression": "Top @local.number_of_challenges challenges other parents experience:",
-            "matchedExpression": "@local.number_of_challenges",
+            "fullExpression": "@local.row_data.top_text",
+            "matchedExpression": "@local.row_data.top_text",
             "type": "local",
-            "fieldName": "number_of_challenges"
+            "fieldName": "row_data"
           }
         ]
       },
       "_dynamicDependencies": {
-        "@local.number_of_challenges": [
+        "@local.row_data.top_text": [
           "value"
         ]
       }
     },
     {
       "type": "text",
-      "name": "question_text_happy",
-      "value": "Did you experience any challenges when trying to @local.hp_description_second_singular?",
+      "name": "question_text",
+      "value": "@local.row_data.question_text",
       "_translations": {
-        "value": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        }
+        "value": {}
       },
-      "condition": "!(@fields.@local.workshop_hp_review_mood == \"ok\" || @fields.@local.workshop_hp_review_mood == \"sad\")",
       "parameter_list": {
         "style": "emphasised"
       },
-      "_nested_name": "question_text_happy",
+      "_nested_name": "question_text",
       "_dynamicFields": {
         "value": [
           {
-            "fullExpression": "Did you experience any challenges when trying to @local.hp_description_second_singular?",
-            "matchedExpression": "@local.hp_description_second_singular",
+            "fullExpression": "@local.row_data.question_text",
+            "matchedExpression": "@local.row_data.question_text",
             "type": "local",
-            "fieldName": "hp_description_second_singular"
-          }
-        ],
-        "condition": [
-          {
-            "fullExpression": "!(@fields.@local.workshop_hp_review_mood == \"ok\" || @fields.@local.workshop_hp_review_mood == \"sad\")",
-            "matchedExpression": "@local.workshop_hp_review_mood",
-            "type": "local",
-            "fieldName": "workshop_hp_review_mood"
-          },
-          {
-            "fullExpression": "!(@fields.@local.workshop_hp_review_mood == \"ok\" || @fields.@local.workshop_hp_review_mood == \"sad\")",
-            "matchedExpression": "@local.workshop_hp_review_mood",
-            "type": "local",
-            "fieldName": "workshop_hp_review_mood"
+            "fieldName": "row_data"
           }
         ]
       },
       "_dynamicDependencies": {
-        "@local.hp_description_second_singular": [
+        "@local.row_data.question_text": [
           "value"
-        ],
-        "@local.workshop_hp_review_mood": [
-          "condition",
-          "condition"
         ]
       }
     },
     {
-      "type": "text",
-      "name": "question_text_ok_sad",
-      "value": "What was difficult for you when trying to @local.hp_description_second_singular?",
+      "name": "number_of_challenges",
+      "value": "@local.row_data.number_of_challenges",
       "_translations": {
-        "value": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        }
+        "value": {}
       },
-      "condition": "@fields.@local.workshop_hp_review_mood == \"ok\" || @fields.@local.workshop_hp_review_mood == \"sad\"",
-      "parameter_list": {
-        "style": "emphasised"
-      },
-      "_nested_name": "question_text_ok_sad",
+      "exclude_from_translation": true,
+      "type": "set_variable",
+      "_nested_name": "number_of_challenges",
       "_dynamicFields": {
         "value": [
           {
-            "fullExpression": "What was difficult for you when trying to @local.hp_description_second_singular?",
-            "matchedExpression": "@local.hp_description_second_singular",
+            "fullExpression": "@local.row_data.number_of_challenges",
+            "matchedExpression": "@local.row_data.number_of_challenges",
             "type": "local",
-            "fieldName": "hp_description_second_singular"
-          }
-        ],
-        "condition": [
-          {
-            "fullExpression": "@fields.@local.workshop_hp_review_mood == \"ok\" || @fields.@local.workshop_hp_review_mood == \"sad\"",
-            "matchedExpression": "@local.workshop_hp_review_mood",
-            "type": "local",
-            "fieldName": "workshop_hp_review_mood"
-          },
-          {
-            "fullExpression": "@fields.@local.workshop_hp_review_mood == \"ok\" || @fields.@local.workshop_hp_review_mood == \"sad\"",
-            "matchedExpression": "@local.workshop_hp_review_mood",
-            "type": "local",
-            "fieldName": "workshop_hp_review_mood"
+            "fieldName": "row_data"
           }
         ]
       },
       "_dynamicDependencies": {
-        "@local.hp_description_second_singular": [
+        "@local.row_data.number_of_challenges": [
           "value"
-        ],
-        "@local.workshop_hp_review_mood": [
-          "condition",
-          "condition"
         ]
       }
     },
     {
       "name": "text_challenge_1",
-      "value": "text_challenge_1",
+      "value": "@local.row_data.text_challenge_1",
       "_translations": {
         "value": {}
       },
       "exclude_from_translation": true,
       "type": "set_variable",
-      "_nested_name": "text_challenge_1"
+      "_nested_name": "text_challenge_1",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@local.row_data.text_challenge_1",
+            "matchedExpression": "@local.row_data.text_challenge_1",
+            "type": "local",
+            "fieldName": "row_data"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.row_data.text_challenge_1": [
+          "value"
+        ]
+      }
     },
     {
       "name": "text_challenge_2",
-      "value": "text_challenge_2",
+      "value": "@local.row_data.text_challenge_2",
       "_translations": {
         "value": {}
       },
       "exclude_from_translation": true,
       "type": "set_variable",
-      "_nested_name": "text_challenge_2"
+      "_nested_name": "text_challenge_2",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@local.row_data.text_challenge_2",
+            "matchedExpression": "@local.row_data.text_challenge_2",
+            "type": "local",
+            "fieldName": "row_data"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.row_data.text_challenge_2": [
+          "value"
+        ]
+      }
     },
     {
       "name": "text_challenge_3",
-      "value": "text_challenge_3",
+      "value": "@local.row_data.text_challenge_3",
       "_translations": {
         "value": {}
       },
       "exclude_from_translation": true,
       "type": "set_variable",
-      "_nested_name": "text_challenge_3"
+      "_nested_name": "text_challenge_3",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@local.row_data.text_challenge_3",
+            "matchedExpression": "@local.row_data.text_challenge_3",
+            "type": "local",
+            "fieldName": "row_data"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.row_data.text_challenge_3": [
+          "value"
+        ]
+      }
     },
     {
       "name": "text_challenge_4",
-      "value": "text_challenge_4",
+      "value": "@local.row_data.text_challenge_4",
       "_translations": {
         "value": {}
       },
       "exclude_from_translation": true,
       "type": "set_variable",
-      "_nested_name": "text_challenge_4"
+      "_nested_name": "text_challenge_4",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@local.row_data.text_challenge_4",
+            "matchedExpression": "@local.row_data.text_challenge_4",
+            "type": "local",
+            "fieldName": "row_data"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.row_data.text_challenge_4": [
+          "value"
+        ]
+      }
     },
     {
       "name": "text_challenge_5",
-      "value": "text_challenge_5",
+      "value": "@local.row_data.text_challenge_5",
       "_translations": {
         "value": {}
       },
       "exclude_from_translation": true,
       "type": "set_variable",
-      "_nested_name": "text_challenge_5"
+      "_nested_name": "text_challenge_5",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@local.row_data.text_challenge_5",
+            "matchedExpression": "@local.row_data.text_challenge_5",
+            "type": "local",
+            "fieldName": "row_data"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.row_data.text_challenge_5": [
+          "value"
+        ]
+      }
     },
     {
       "name": "text_challenge_6",
-      "value": "text_challenge_6",
+      "value": "@local.row_data.text_challenge_6",
       "_translations": {
         "value": {}
       },
       "exclude_from_translation": true,
       "type": "set_variable",
-      "_nested_name": "text_challenge_6"
+      "_nested_name": "text_challenge_6",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@local.row_data.text_challenge_6",
+            "matchedExpression": "@local.row_data.text_challenge_6",
+            "type": "local",
+            "fieldName": "row_data"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.row_data.text_challenge_6": [
+          "value"
+        ]
+      }
+    },
+    {
+      "name": "text_challenge_7",
+      "value": "@local.row_data.text_challenge_7",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "type": "set_variable",
+      "_nested_name": "text_challenge_7",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@local.row_data.text_challenge_7",
+            "matchedExpression": "@local.row_data.text_challenge_7",
+            "type": "local",
+            "fieldName": "row_data"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.row_data.text_challenge_7": [
+          "value"
+        ]
+      }
     },
     {
       "name": "text_other_challenge",
@@ -862,90 +954,9 @@
       }
     },
     {
-      "name": "combo_box_tracker",
-      "value": "@local.workshop@local.hp_challenge@local.tracker",
-      "_translations": {
-        "value": {}
-      },
-      "exclude_from_translation": true,
+      "name": "combo_box",
       "type": "set_variable",
-      "_nested_name": "combo_box_tracker",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "@local.workshop@local.hp_challenge@local.tracker",
-            "matchedExpression": "@local.workshop",
-            "type": "local",
-            "fieldName": "workshop"
-          },
-          {
-            "fullExpression": "@local.workshop@local.hp_challenge@local.tracker",
-            "matchedExpression": "@local.hp_challenge",
-            "type": "local",
-            "fieldName": "hp_challenge"
-          },
-          {
-            "fullExpression": "@local.workshop@local.hp_challenge@local.tracker",
-            "matchedExpression": "@local.tracker",
-            "type": "local",
-            "fieldName": "tracker"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@local.workshop": [
-          "value"
-        ],
-        "@local.hp_challenge": [
-          "value"
-        ],
-        "@local.tracker": [
-          "value"
-        ]
-      }
-    },
-    {
-      "name": "combo_box_final",
-      "value": "@local.workshop@local.hp_challenge@local.final",
-      "_translations": {
-        "value": {}
-      },
-      "exclude_from_translation": true,
-      "type": "set_variable",
-      "_nested_name": "combo_box_final",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "@local.workshop@local.hp_challenge@local.final",
-            "matchedExpression": "@local.workshop",
-            "type": "local",
-            "fieldName": "workshop"
-          },
-          {
-            "fullExpression": "@local.workshop@local.hp_challenge@local.final",
-            "matchedExpression": "@local.hp_challenge",
-            "type": "local",
-            "fieldName": "hp_challenge"
-          },
-          {
-            "fullExpression": "@local.workshop@local.hp_challenge@local.final",
-            "matchedExpression": "@local.final",
-            "type": "local",
-            "fieldName": "final"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@local.workshop": [
-          "value"
-        ],
-        "@local.hp_challenge": [
-          "value"
-        ],
-        "@local.final": [
-          "value"
-        ]
-      }
+      "_nested_name": "combo_box"
     },
     {
       "type": "combo_box",
@@ -955,11 +966,21 @@
           "trigger": "changed",
           "action_id": "set_field",
           "args": [
-            "@local.combo_box_tracker",
+            "@local.workshop_hp_challenge",
             "this.value"
           ],
-          "_raw": "changed | set_field: @local.combo_box_tracker: @local.combo_box",
-          "_cleaned": "changed | set_field: @local.combo_box_tracker: @local.combo_box"
+          "_raw": "changed | set_field: @local.workshop_hp_challenge: @local.combo_box",
+          "_cleaned": "changed | set_field: @local.workshop_hp_challenge: @local.combo_box"
+        },
+        {
+          "trigger": "changed",
+          "action_id": "set_field",
+          "args": [
+            "@local.workshop_hp_challenge_list",
+            "@fields.@local.workshop_hp_challenge_list, @local.combo_box"
+          ],
+          "_raw": "changed | set_field: @local.workshop_hp_challenge_list: @fields.@local.workshop_hp_challenge_list, @local.combo_box",
+          "_cleaned": "changed | set_field: @local.workshop_hp_challenge_list: @fields.@local.workshop_hp_challenge_list, @local.combo_box"
         }
       ],
       "parameter_list": {
@@ -974,22 +995,22 @@
             "args": {
               "0": [
                 {
-                  "fullExpression": "@local.combo_box_tracker",
-                  "matchedExpression": "@local.combo_box_tracker",
+                  "fullExpression": "@local.workshop_hp_challenge",
+                  "matchedExpression": "@local.workshop_hp_challenge",
                   "type": "local",
-                  "fieldName": "combo_box_tracker"
+                  "fieldName": "workshop_hp_challenge"
                 }
               ]
             },
             "_raw": [
               {
-                "fullExpression": "changed | set_field: @local.combo_box_tracker: @local.combo_box",
-                "matchedExpression": "@local.combo_box_tracker",
+                "fullExpression": "changed | set_field: @local.workshop_hp_challenge: @local.combo_box",
+                "matchedExpression": "@local.workshop_hp_challenge",
                 "type": "local",
-                "fieldName": "combo_box_tracker"
+                "fieldName": "workshop_hp_challenge"
               },
               {
-                "fullExpression": "changed | set_field: @local.combo_box_tracker: @local.combo_box",
+                "fullExpression": "changed | set_field: @local.workshop_hp_challenge: @local.combo_box",
                 "matchedExpression": "@local.combo_box",
                 "type": "local",
                 "fieldName": "combo_box"
@@ -997,13 +1018,79 @@
             ],
             "_cleaned": [
               {
-                "fullExpression": "changed | set_field: @local.combo_box_tracker: @local.combo_box",
-                "matchedExpression": "@local.combo_box_tracker",
+                "fullExpression": "changed | set_field: @local.workshop_hp_challenge: @local.combo_box",
+                "matchedExpression": "@local.workshop_hp_challenge",
                 "type": "local",
-                "fieldName": "combo_box_tracker"
+                "fieldName": "workshop_hp_challenge"
               },
               {
-                "fullExpression": "changed | set_field: @local.combo_box_tracker: @local.combo_box",
+                "fullExpression": "changed | set_field: @local.workshop_hp_challenge: @local.combo_box",
+                "matchedExpression": "@local.combo_box",
+                "type": "local",
+                "fieldName": "combo_box"
+              }
+            ]
+          },
+          "1": {
+            "args": {
+              "0": [
+                {
+                  "fullExpression": "@local.workshop_hp_challenge_list",
+                  "matchedExpression": "@local.workshop_hp_challenge_list",
+                  "type": "local",
+                  "fieldName": "workshop_hp_challenge_list"
+                }
+              ],
+              "1": [
+                {
+                  "fullExpression": "@fields.@local.workshop_hp_challenge_list, @local.combo_box",
+                  "matchedExpression": "@local.workshop_hp_challenge_list",
+                  "type": "local",
+                  "fieldName": "workshop_hp_challenge_list"
+                },
+                {
+                  "fullExpression": "@fields.@local.workshop_hp_challenge_list, @local.combo_box",
+                  "matchedExpression": "@local.combo_box",
+                  "type": "local",
+                  "fieldName": "combo_box"
+                }
+              ]
+            },
+            "_raw": [
+              {
+                "fullExpression": "changed | set_field: @local.workshop_hp_challenge_list: @fields.@local.workshop_hp_challenge_list, @local.combo_box",
+                "matchedExpression": "@local.workshop_hp_challenge_list",
+                "type": "local",
+                "fieldName": "workshop_hp_challenge_list"
+              },
+              {
+                "fullExpression": "changed | set_field: @local.workshop_hp_challenge_list: @fields.@local.workshop_hp_challenge_list, @local.combo_box",
+                "matchedExpression": "@local.workshop_hp_challenge_list",
+                "type": "local",
+                "fieldName": "workshop_hp_challenge_list"
+              },
+              {
+                "fullExpression": "changed | set_field: @local.workshop_hp_challenge_list: @fields.@local.workshop_hp_challenge_list, @local.combo_box",
+                "matchedExpression": "@local.combo_box",
+                "type": "local",
+                "fieldName": "combo_box"
+              }
+            ],
+            "_cleaned": [
+              {
+                "fullExpression": "changed | set_field: @local.workshop_hp_challenge_list: @fields.@local.workshop_hp_challenge_list, @local.combo_box",
+                "matchedExpression": "@local.workshop_hp_challenge_list",
+                "type": "local",
+                "fieldName": "workshop_hp_challenge_list"
+              },
+              {
+                "fullExpression": "changed | set_field: @local.workshop_hp_challenge_list: @fields.@local.workshop_hp_challenge_list, @local.combo_box",
+                "matchedExpression": "@local.workshop_hp_challenge_list",
+                "type": "local",
+                "fieldName": "workshop_hp_challenge_list"
+              },
+              {
+                "fullExpression": "changed | set_field: @local.workshop_hp_challenge_list: @fields.@local.workshop_hp_challenge_list, @local.combo_box",
                 "matchedExpression": "@local.combo_box",
                 "type": "local",
                 "fieldName": "combo_box"
@@ -1039,14 +1126,25 @@
         }
       },
       "_dynamicDependencies": {
-        "@local.combo_box_tracker": [
+        "@local.workshop_hp_challenge": [
           "action_list.0.args.0",
           "action_list.0._raw",
           "action_list.0._cleaned"
         ],
         "@local.combo_box": [
           "action_list.0._raw",
-          "action_list.0._cleaned"
+          "action_list.0._cleaned",
+          "action_list.1.args.1",
+          "action_list.1._raw",
+          "action_list.1._cleaned"
+        ],
+        "@local.workshop_hp_challenge_list": [
+          "action_list.1.args.0",
+          "action_list.1.args.1",
+          "action_list.1._raw",
+          "action_list.1._raw",
+          "action_list.1._cleaned",
+          "action_list.1._cleaned"
         ],
         "@local.top_text": [
           "parameter_list.text"
@@ -1070,54 +1168,112 @@
         {
           "type": "text",
           "name": "reply_challenge_1",
-          "exclude_from_translation": true,
-          "_nested_name": "challenge_1.reply_challenge_1"
-        },
-        {
-          "name": "reply_challenge_1_has_button",
-          "value": false,
-          "exclude_from_translation": true,
-          "type": "set_variable",
-          "_nested_name": "challenge_1.reply_challenge_1_has_button"
-        },
-        {
-          "name": "reply_challenge_1_has_2_buttons",
-          "value": false,
-          "exclude_from_translation": true,
-          "type": "set_variable",
-          "_nested_name": "challenge_1.reply_challenge_1_has_2_buttons"
-        },
-        {
-          "type": "button",
-          "name": "button_1_a",
-          "value": "button_1_a",
+          "value": "@local.row_data.reply_challenge_1",
           "_translations": {
             "value": {}
           },
-          "condition": "@local.reply_challenge_1_has_button || @local.reply_challenge_1_has_2_buttons",
           "exclude_from_translation": true,
-          "_nested_name": "challenge_1.button_1_a",
+          "_nested_name": "challenge_1.reply_challenge_1",
           "_dynamicFields": {
-            "condition": [
+            "value": [
               {
-                "fullExpression": "@local.reply_challenge_1_has_button || @local.reply_challenge_1_has_2_buttons",
-                "matchedExpression": "@local.reply_challenge_1_has_button",
+                "fullExpression": "@local.row_data.reply_challenge_1",
+                "matchedExpression": "@local.row_data.reply_challenge_1",
                 "type": "local",
-                "fieldName": "reply_challenge_1_has_button"
-              },
-              {
-                "fullExpression": "@local.reply_challenge_1_has_button || @local.reply_challenge_1_has_2_buttons",
-                "matchedExpression": "@local.reply_challenge_1_has_2_buttons",
-                "type": "local",
-                "fieldName": "reply_challenge_1_has_2_buttons"
+                "fieldName": "row_data"
               }
             ]
           },
           "_dynamicDependencies": {
-            "@local.reply_challenge_1_has_button": [
+            "@local.row_data.reply_challenge_1": [
+              "value"
+            ]
+          }
+        },
+        {
+          "type": "button",
+          "name": "button_1_a",
+          "value": "@local.row_data.button_text_1_a",
+          "_translations": {
+            "value": {}
+          },
+          "action_list": [
+            {
+              "trigger": "click",
+              "action_id": "go_to",
+              "args": [
+                "@local.row_data.button_go_to_template_1_a"
+              ],
+              "_raw": "click | go_to: @local.row_data.button_go_to_template_1_a",
+              "_cleaned": "click | go_to: @local.row_data.button_go_to_template_1_a"
+            }
+          ],
+          "condition": "@local.row_data.button_text_1_a&&@local.row_data.button_go_to_template_1_a",
+          "exclude_from_translation": true,
+          "_nested_name": "challenge_1.button_1_a",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@local.row_data.button_text_1_a",
+                "matchedExpression": "@local.row_data.button_text_1_a",
+                "type": "local",
+                "fieldName": "row_data"
+              }
+            ],
+            "action_list": {
+              "0": {
+                "args": {
+                  "0": [
+                    {
+                      "fullExpression": "@local.row_data.button_go_to_template_1_a",
+                      "matchedExpression": "@local.row_data.button_go_to_template_1_a",
+                      "type": "local",
+                      "fieldName": "row_data"
+                    }
+                  ]
+                },
+                "_raw": [
+                  {
+                    "fullExpression": "click | go_to: @local.row_data.button_go_to_template_1_a",
+                    "matchedExpression": "@local.row_data.button_go_to_template_1_a",
+                    "type": "local",
+                    "fieldName": "row_data"
+                  }
+                ],
+                "_cleaned": [
+                  {
+                    "fullExpression": "click | go_to: @local.row_data.button_go_to_template_1_a",
+                    "matchedExpression": "@local.row_data.button_go_to_template_1_a",
+                    "type": "local",
+                    "fieldName": "row_data"
+                  }
+                ]
+              }
+            },
+            "condition": [
+              {
+                "fullExpression": "@local.row_data.button_text_1_a&&@local.row_data.button_go_to_template_1_a",
+                "matchedExpression": "@local.row_data.button_text_1_a",
+                "type": "local",
+                "fieldName": "row_data"
+              },
+              {
+                "fullExpression": "@local.row_data.button_text_1_a&&@local.row_data.button_go_to_template_1_a",
+                "matchedExpression": "@local.row_data.button_go_to_template_1_a",
+                "type": "local",
+                "fieldName": "row_data"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@local.row_data.button_text_1_a": [
+              "value",
               "condition"
             ],
-            "@local.reply_challenge_1_has_2_buttons": [
+            "@local.row_data.button_go_to_template_1_a": [
+              "action_list.0.args.0",
+              "action_list.0._raw",
+              "action_list.0._cleaned",
               "condition"
             ]
           }
@@ -1125,25 +1281,87 @@
         {
           "type": "button",
           "name": "button_1_b",
-          "value": "button_1_b",
+          "value": "@local.row_data.button_text_1_b",
           "_translations": {
             "value": {}
           },
-          "condition": "@local.reply_challenge_1_has_2_buttons",
+          "action_list": [
+            {
+              "trigger": "click",
+              "action_id": "go_to",
+              "args": [
+                "@local.row_data.button_go_to_template_1_b"
+              ],
+              "_raw": "click | go_to: @local.row_data.button_go_to_template_1_b",
+              "_cleaned": "click | go_to: @local.row_data.button_go_to_template_1_b"
+            }
+          ],
+          "condition": "@local.row_data.button_text_1_b&&@local.row_data.button_go_to_template_1_b",
           "exclude_from_translation": true,
           "_nested_name": "challenge_1.button_1_b",
           "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@local.row_data.button_text_1_b",
+                "matchedExpression": "@local.row_data.button_text_1_b",
+                "type": "local",
+                "fieldName": "row_data"
+              }
+            ],
+            "action_list": {
+              "0": {
+                "args": {
+                  "0": [
+                    {
+                      "fullExpression": "@local.row_data.button_go_to_template_1_b",
+                      "matchedExpression": "@local.row_data.button_go_to_template_1_b",
+                      "type": "local",
+                      "fieldName": "row_data"
+                    }
+                  ]
+                },
+                "_raw": [
+                  {
+                    "fullExpression": "click | go_to: @local.row_data.button_go_to_template_1_b",
+                    "matchedExpression": "@local.row_data.button_go_to_template_1_b",
+                    "type": "local",
+                    "fieldName": "row_data"
+                  }
+                ],
+                "_cleaned": [
+                  {
+                    "fullExpression": "click | go_to: @local.row_data.button_go_to_template_1_b",
+                    "matchedExpression": "@local.row_data.button_go_to_template_1_b",
+                    "type": "local",
+                    "fieldName": "row_data"
+                  }
+                ]
+              }
+            },
             "condition": [
               {
-                "fullExpression": "@local.reply_challenge_1_has_2_buttons",
-                "matchedExpression": "@local.reply_challenge_1_has_2_buttons",
+                "fullExpression": "@local.row_data.button_text_1_b&&@local.row_data.button_go_to_template_1_b",
+                "matchedExpression": "@local.row_data.button_text_1_b",
                 "type": "local",
-                "fieldName": "reply_challenge_1_has_2_buttons"
+                "fieldName": "row_data"
+              },
+              {
+                "fullExpression": "@local.row_data.button_text_1_b&&@local.row_data.button_go_to_template_1_b",
+                "matchedExpression": "@local.row_data.button_go_to_template_1_b",
+                "type": "local",
+                "fieldName": "row_data"
               }
             ]
           },
           "_dynamicDependencies": {
-            "@local.reply_challenge_1_has_2_buttons": [
+            "@local.row_data.button_text_1_b": [
+              "value",
+              "condition"
+            ],
+            "@local.row_data.button_go_to_template_1_b": [
+              "action_list.0.args.0",
+              "action_list.0._raw",
+              "action_list.0._cleaned",
               "condition"
             ]
           }
@@ -1177,54 +1395,112 @@
         {
           "type": "text",
           "name": "reply_challenge_2",
-          "exclude_from_translation": true,
-          "_nested_name": "challenge_2.reply_challenge_2"
-        },
-        {
-          "name": "reply_challenge_2_has_button",
-          "value": false,
-          "exclude_from_translation": true,
-          "type": "set_variable",
-          "_nested_name": "challenge_2.reply_challenge_2_has_button"
-        },
-        {
-          "name": "reply_challenge_2_has_2_buttons",
-          "value": false,
-          "exclude_from_translation": true,
-          "type": "set_variable",
-          "_nested_name": "challenge_2.reply_challenge_2_has_2_buttons"
-        },
-        {
-          "type": "button",
-          "name": "button_2_a",
-          "value": "button_2_a",
+          "value": "@local.row_data.reply_challenge_2",
           "_translations": {
             "value": {}
           },
-          "condition": "@local.reply_challenge_2_has_button || @local.reply_challenge_2_has_2_buttons",
           "exclude_from_translation": true,
-          "_nested_name": "challenge_2.button_2_a",
+          "_nested_name": "challenge_2.reply_challenge_2",
           "_dynamicFields": {
-            "condition": [
+            "value": [
               {
-                "fullExpression": "@local.reply_challenge_2_has_button || @local.reply_challenge_2_has_2_buttons",
-                "matchedExpression": "@local.reply_challenge_2_has_button",
+                "fullExpression": "@local.row_data.reply_challenge_2",
+                "matchedExpression": "@local.row_data.reply_challenge_2",
                 "type": "local",
-                "fieldName": "reply_challenge_2_has_button"
-              },
-              {
-                "fullExpression": "@local.reply_challenge_2_has_button || @local.reply_challenge_2_has_2_buttons",
-                "matchedExpression": "@local.reply_challenge_2_has_2_buttons",
-                "type": "local",
-                "fieldName": "reply_challenge_2_has_2_buttons"
+                "fieldName": "row_data"
               }
             ]
           },
           "_dynamicDependencies": {
-            "@local.reply_challenge_2_has_button": [
+            "@local.row_data.reply_challenge_2": [
+              "value"
+            ]
+          }
+        },
+        {
+          "type": "button",
+          "name": "button_2_a",
+          "value": "@local.row_data.button_text_2_a",
+          "_translations": {
+            "value": {}
+          },
+          "action_list": [
+            {
+              "trigger": "click",
+              "action_id": "go_to",
+              "args": [
+                "@local.row_data.button_go_to_template_2_a"
+              ],
+              "_raw": "click | go_to: @local.row_data.button_go_to_template_2_a",
+              "_cleaned": "click | go_to: @local.row_data.button_go_to_template_2_a"
+            }
+          ],
+          "condition": "@local.row_data.button_text_2_a&&@local.row_data.button_go_to_template_2_a",
+          "exclude_from_translation": true,
+          "_nested_name": "challenge_2.button_2_a",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@local.row_data.button_text_2_a",
+                "matchedExpression": "@local.row_data.button_text_2_a",
+                "type": "local",
+                "fieldName": "row_data"
+              }
+            ],
+            "action_list": {
+              "0": {
+                "args": {
+                  "0": [
+                    {
+                      "fullExpression": "@local.row_data.button_go_to_template_2_a",
+                      "matchedExpression": "@local.row_data.button_go_to_template_2_a",
+                      "type": "local",
+                      "fieldName": "row_data"
+                    }
+                  ]
+                },
+                "_raw": [
+                  {
+                    "fullExpression": "click | go_to: @local.row_data.button_go_to_template_2_a",
+                    "matchedExpression": "@local.row_data.button_go_to_template_2_a",
+                    "type": "local",
+                    "fieldName": "row_data"
+                  }
+                ],
+                "_cleaned": [
+                  {
+                    "fullExpression": "click | go_to: @local.row_data.button_go_to_template_2_a",
+                    "matchedExpression": "@local.row_data.button_go_to_template_2_a",
+                    "type": "local",
+                    "fieldName": "row_data"
+                  }
+                ]
+              }
+            },
+            "condition": [
+              {
+                "fullExpression": "@local.row_data.button_text_2_a&&@local.row_data.button_go_to_template_2_a",
+                "matchedExpression": "@local.row_data.button_text_2_a",
+                "type": "local",
+                "fieldName": "row_data"
+              },
+              {
+                "fullExpression": "@local.row_data.button_text_2_a&&@local.row_data.button_go_to_template_2_a",
+                "matchedExpression": "@local.row_data.button_go_to_template_2_a",
+                "type": "local",
+                "fieldName": "row_data"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@local.row_data.button_text_2_a": [
+              "value",
               "condition"
             ],
-            "@local.reply_challenge_2_has_2_buttons": [
+            "@local.row_data.button_go_to_template_2_a": [
+              "action_list.0.args.0",
+              "action_list.0._raw",
+              "action_list.0._cleaned",
               "condition"
             ]
           }
@@ -1232,25 +1508,87 @@
         {
           "type": "button",
           "name": "button_2_b",
-          "value": "button_2_b",
+          "value": "@local.row_data.button_text_2_b",
           "_translations": {
             "value": {}
           },
-          "condition": "@local.reply_challenge_2_has_2_buttons",
+          "action_list": [
+            {
+              "trigger": "click",
+              "action_id": "go_to",
+              "args": [
+                "@local.row_data.button_go_to_template_2_b"
+              ],
+              "_raw": "click | go_to: @local.row_data.button_go_to_template_2_b",
+              "_cleaned": "click | go_to: @local.row_data.button_go_to_template_2_b"
+            }
+          ],
+          "condition": "@local.row_data.button_text_2_b&&@local.row_data.button_go_to_template_2_b",
           "exclude_from_translation": true,
           "_nested_name": "challenge_2.button_2_b",
           "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@local.row_data.button_text_2_b",
+                "matchedExpression": "@local.row_data.button_text_2_b",
+                "type": "local",
+                "fieldName": "row_data"
+              }
+            ],
+            "action_list": {
+              "0": {
+                "args": {
+                  "0": [
+                    {
+                      "fullExpression": "@local.row_data.button_go_to_template_2_b",
+                      "matchedExpression": "@local.row_data.button_go_to_template_2_b",
+                      "type": "local",
+                      "fieldName": "row_data"
+                    }
+                  ]
+                },
+                "_raw": [
+                  {
+                    "fullExpression": "click | go_to: @local.row_data.button_go_to_template_2_b",
+                    "matchedExpression": "@local.row_data.button_go_to_template_2_b",
+                    "type": "local",
+                    "fieldName": "row_data"
+                  }
+                ],
+                "_cleaned": [
+                  {
+                    "fullExpression": "click | go_to: @local.row_data.button_go_to_template_2_b",
+                    "matchedExpression": "@local.row_data.button_go_to_template_2_b",
+                    "type": "local",
+                    "fieldName": "row_data"
+                  }
+                ]
+              }
+            },
             "condition": [
               {
-                "fullExpression": "@local.reply_challenge_2_has_2_buttons",
-                "matchedExpression": "@local.reply_challenge_2_has_2_buttons",
+                "fullExpression": "@local.row_data.button_text_2_b&&@local.row_data.button_go_to_template_2_b",
+                "matchedExpression": "@local.row_data.button_text_2_b",
                 "type": "local",
-                "fieldName": "reply_challenge_2_has_2_buttons"
+                "fieldName": "row_data"
+              },
+              {
+                "fullExpression": "@local.row_data.button_text_2_b&&@local.row_data.button_go_to_template_2_b",
+                "matchedExpression": "@local.row_data.button_go_to_template_2_b",
+                "type": "local",
+                "fieldName": "row_data"
               }
             ]
           },
           "_dynamicDependencies": {
-            "@local.reply_challenge_2_has_2_buttons": [
+            "@local.row_data.button_text_2_b": [
+              "value",
+              "condition"
+            ],
+            "@local.row_data.button_go_to_template_2_b": [
+              "action_list.0.args.0",
+              "action_list.0._raw",
+              "action_list.0._cleaned",
               "condition"
             ]
           }
@@ -1284,54 +1622,114 @@
         {
           "type": "text",
           "name": "reply_challenge_3",
-          "exclude_from_translation": true,
-          "_nested_name": "challenge_3.reply_challenge_3"
-        },
-        {
-          "name": "reply_challenge_3_has_button",
-          "value": false,
-          "exclude_from_translation": true,
-          "type": "set_variable",
-          "_nested_name": "challenge_3.reply_challenge_3_has_button"
-        },
-        {
-          "name": "reply_challenge_3_has_2_buttons",
-          "value": false,
-          "exclude_from_translation": true,
-          "type": "set_variable",
-          "_nested_name": "challenge_3.reply_challenge_3_has_2_buttons"
-        },
-        {
-          "type": "button",
-          "name": "button_3_a",
-          "value": "button_3_a",
+          "value": "@local.row_data.reply_challenge_3",
           "_translations": {
             "value": {}
           },
-          "condition": "@local.reply_challenge_3_has_button || @local.reply_challenge_3_has_2_buttons",
           "exclude_from_translation": true,
-          "_nested_name": "challenge_3.button_3_a",
+          "_nested_name": "challenge_3.reply_challenge_3",
           "_dynamicFields": {
-            "condition": [
+            "value": [
               {
-                "fullExpression": "@local.reply_challenge_3_has_button || @local.reply_challenge_3_has_2_buttons",
-                "matchedExpression": "@local.reply_challenge_3_has_button",
+                "fullExpression": "@local.row_data.reply_challenge_3",
+                "matchedExpression": "@local.row_data.reply_challenge_3",
                 "type": "local",
-                "fieldName": "reply_challenge_3_has_button"
-              },
-              {
-                "fullExpression": "@local.reply_challenge_3_has_button || @local.reply_challenge_3_has_2_buttons",
-                "matchedExpression": "@local.reply_challenge_3_has_2_buttons",
-                "type": "local",
-                "fieldName": "reply_challenge_3_has_2_buttons"
+                "fieldName": "row_data"
               }
             ]
           },
           "_dynamicDependencies": {
-            "@local.reply_challenge_3_has_button": [
+            "@local.row_data.reply_challenge_3": [
+              "value"
+            ]
+          }
+        },
+        {
+          "type": "button",
+          "name": "button_3_a",
+          "value": "@local.row_data.button_text_3_a",
+          "_translations": {
+            "value": {}
+          },
+          "action_list": [
+            {
+              "trigger": "click",
+              "action_id": "go_to",
+              "args": [
+                "@local.row_data.button_go_to_template_1_a"
+              ],
+              "_raw": "click | go_to: @local.row_data.button_go_to_template_1_a",
+              "_cleaned": "click | go_to: @local.row_data.button_go_to_template_1_a"
+            }
+          ],
+          "condition": "@local.row_data.button_text_3_a&&@local.row_data.button_go_to_template_3_a",
+          "exclude_from_translation": true,
+          "_nested_name": "challenge_3.button_3_a",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@local.row_data.button_text_3_a",
+                "matchedExpression": "@local.row_data.button_text_3_a",
+                "type": "local",
+                "fieldName": "row_data"
+              }
+            ],
+            "action_list": {
+              "0": {
+                "args": {
+                  "0": [
+                    {
+                      "fullExpression": "@local.row_data.button_go_to_template_1_a",
+                      "matchedExpression": "@local.row_data.button_go_to_template_1_a",
+                      "type": "local",
+                      "fieldName": "row_data"
+                    }
+                  ]
+                },
+                "_raw": [
+                  {
+                    "fullExpression": "click | go_to: @local.row_data.button_go_to_template_1_a",
+                    "matchedExpression": "@local.row_data.button_go_to_template_1_a",
+                    "type": "local",
+                    "fieldName": "row_data"
+                  }
+                ],
+                "_cleaned": [
+                  {
+                    "fullExpression": "click | go_to: @local.row_data.button_go_to_template_1_a",
+                    "matchedExpression": "@local.row_data.button_go_to_template_1_a",
+                    "type": "local",
+                    "fieldName": "row_data"
+                  }
+                ]
+              }
+            },
+            "condition": [
+              {
+                "fullExpression": "@local.row_data.button_text_3_a&&@local.row_data.button_go_to_template_3_a",
+                "matchedExpression": "@local.row_data.button_text_3_a",
+                "type": "local",
+                "fieldName": "row_data"
+              },
+              {
+                "fullExpression": "@local.row_data.button_text_3_a&&@local.row_data.button_go_to_template_3_a",
+                "matchedExpression": "@local.row_data.button_go_to_template_3_a",
+                "type": "local",
+                "fieldName": "row_data"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@local.row_data.button_text_3_a": [
+              "value",
               "condition"
             ],
-            "@local.reply_challenge_3_has_2_buttons": [
+            "@local.row_data.button_go_to_template_1_a": [
+              "action_list.0.args.0",
+              "action_list.0._raw",
+              "action_list.0._cleaned"
+            ],
+            "@local.row_data.button_go_to_template_3_a": [
               "condition"
             ]
           }
@@ -1339,25 +1737,89 @@
         {
           "type": "button",
           "name": "button_3_b",
-          "value": "button_3_b",
+          "value": "@local.row_data.button_text_3_b",
           "_translations": {
             "value": {}
           },
-          "condition": "@local.reply_challenge_3_has_2_buttons",
+          "action_list": [
+            {
+              "trigger": "click",
+              "action_id": "go_to",
+              "args": [
+                "@local.row_data.button_go_to_template_1_b"
+              ],
+              "_raw": "click | go_to: @local.row_data.button_go_to_template_1_b",
+              "_cleaned": "click | go_to: @local.row_data.button_go_to_template_1_b"
+            }
+          ],
+          "condition": "@local.row_data.button_text_3_b&&@local.row_data.button_go_to_template_3_b",
           "exclude_from_translation": true,
           "_nested_name": "challenge_3.button_3_b",
           "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@local.row_data.button_text_3_b",
+                "matchedExpression": "@local.row_data.button_text_3_b",
+                "type": "local",
+                "fieldName": "row_data"
+              }
+            ],
+            "action_list": {
+              "0": {
+                "args": {
+                  "0": [
+                    {
+                      "fullExpression": "@local.row_data.button_go_to_template_1_b",
+                      "matchedExpression": "@local.row_data.button_go_to_template_1_b",
+                      "type": "local",
+                      "fieldName": "row_data"
+                    }
+                  ]
+                },
+                "_raw": [
+                  {
+                    "fullExpression": "click | go_to: @local.row_data.button_go_to_template_1_b",
+                    "matchedExpression": "@local.row_data.button_go_to_template_1_b",
+                    "type": "local",
+                    "fieldName": "row_data"
+                  }
+                ],
+                "_cleaned": [
+                  {
+                    "fullExpression": "click | go_to: @local.row_data.button_go_to_template_1_b",
+                    "matchedExpression": "@local.row_data.button_go_to_template_1_b",
+                    "type": "local",
+                    "fieldName": "row_data"
+                  }
+                ]
+              }
+            },
             "condition": [
               {
-                "fullExpression": "@local.reply_challenge_3_has_2_buttons",
-                "matchedExpression": "@local.reply_challenge_3_has_2_buttons",
+                "fullExpression": "@local.row_data.button_text_3_b&&@local.row_data.button_go_to_template_3_b",
+                "matchedExpression": "@local.row_data.button_text_3_b",
                 "type": "local",
-                "fieldName": "reply_challenge_3_has_2_buttons"
+                "fieldName": "row_data"
+              },
+              {
+                "fullExpression": "@local.row_data.button_text_3_b&&@local.row_data.button_go_to_template_3_b",
+                "matchedExpression": "@local.row_data.button_go_to_template_3_b",
+                "type": "local",
+                "fieldName": "row_data"
               }
             ]
           },
           "_dynamicDependencies": {
-            "@local.reply_challenge_3_has_2_buttons": [
+            "@local.row_data.button_text_3_b": [
+              "value",
+              "condition"
+            ],
+            "@local.row_data.button_go_to_template_1_b": [
+              "action_list.0.args.0",
+              "action_list.0._raw",
+              "action_list.0._cleaned"
+            ],
+            "@local.row_data.button_go_to_template_3_b": [
               "condition"
             ]
           }
@@ -1391,54 +1853,116 @@
         {
           "type": "text",
           "name": "reply_challenge_4",
-          "exclude_from_translation": true,
-          "_nested_name": "challenge_4.reply_challenge_4"
-        },
-        {
-          "name": "reply_challenge_4_has_button",
-          "value": false,
-          "exclude_from_translation": true,
-          "type": "set_variable",
-          "_nested_name": "challenge_4.reply_challenge_4_has_button"
-        },
-        {
-          "name": "reply_challenge_4_has_2_buttons",
-          "value": false,
-          "exclude_from_translation": true,
-          "type": "set_variable",
-          "_nested_name": "challenge_4.reply_challenge_4_has_2_buttons"
-        },
-        {
-          "type": "button",
-          "name": "button_4_a",
-          "value": "button_4_a",
+          "value": "@local.row_data.reply_challenge_4",
           "_translations": {
             "value": {}
           },
-          "condition": "@local.reply_challenge_4_has_button || @local.reply_challenge_4_has_2_buttons",
           "exclude_from_translation": true,
-          "_nested_name": "challenge_4.button_4_a",
+          "_nested_name": "challenge_4.reply_challenge_4",
           "_dynamicFields": {
-            "condition": [
+            "value": [
               {
-                "fullExpression": "@local.reply_challenge_4_has_button || @local.reply_challenge_4_has_2_buttons",
-                "matchedExpression": "@local.reply_challenge_4_has_button",
+                "fullExpression": "@local.row_data.reply_challenge_4",
+                "matchedExpression": "@local.row_data.reply_challenge_4",
                 "type": "local",
-                "fieldName": "reply_challenge_4_has_button"
-              },
-              {
-                "fullExpression": "@local.reply_challenge_4_has_button || @local.reply_challenge_4_has_2_buttons",
-                "matchedExpression": "@local.reply_challenge_4_has_2_buttons",
-                "type": "local",
-                "fieldName": "reply_challenge_4_has_2_buttons"
+                "fieldName": "row_data"
               }
             ]
           },
           "_dynamicDependencies": {
-            "@local.reply_challenge_4_has_button": [
+            "@local.row_data.reply_challenge_4": [
+              "value"
+            ]
+          }
+        },
+        {
+          "type": "button",
+          "name": "button_4_a",
+          "value": "@local.row_data.button_text_4_a",
+          "_translations": {
+            "value": {}
+          },
+          "action_list": [
+            {
+              "trigger": "click",
+              "action_id": "go_to",
+              "args": [
+                "@local.row_data.button_go_to_template_4_a"
+              ],
+              "_raw": "click | go_to: @local.row_data.button_go_to_template_4_a",
+              "_cleaned": "click | go_to: @local.row_data.button_go_to_template_4_a"
+            }
+          ],
+          "condition": "@local.row_data.button_text_5_a&&@local.row_data.button_go_to_template_5_a",
+          "exclude_from_translation": true,
+          "_nested_name": "challenge_4.button_4_a",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@local.row_data.button_text_4_a",
+                "matchedExpression": "@local.row_data.button_text_4_a",
+                "type": "local",
+                "fieldName": "row_data"
+              }
+            ],
+            "action_list": {
+              "0": {
+                "args": {
+                  "0": [
+                    {
+                      "fullExpression": "@local.row_data.button_go_to_template_4_a",
+                      "matchedExpression": "@local.row_data.button_go_to_template_4_a",
+                      "type": "local",
+                      "fieldName": "row_data"
+                    }
+                  ]
+                },
+                "_raw": [
+                  {
+                    "fullExpression": "click | go_to: @local.row_data.button_go_to_template_4_a",
+                    "matchedExpression": "@local.row_data.button_go_to_template_4_a",
+                    "type": "local",
+                    "fieldName": "row_data"
+                  }
+                ],
+                "_cleaned": [
+                  {
+                    "fullExpression": "click | go_to: @local.row_data.button_go_to_template_4_a",
+                    "matchedExpression": "@local.row_data.button_go_to_template_4_a",
+                    "type": "local",
+                    "fieldName": "row_data"
+                  }
+                ]
+              }
+            },
+            "condition": [
+              {
+                "fullExpression": "@local.row_data.button_text_5_a&&@local.row_data.button_go_to_template_5_a",
+                "matchedExpression": "@local.row_data.button_text_5_a",
+                "type": "local",
+                "fieldName": "row_data"
+              },
+              {
+                "fullExpression": "@local.row_data.button_text_5_a&&@local.row_data.button_go_to_template_5_a",
+                "matchedExpression": "@local.row_data.button_go_to_template_5_a",
+                "type": "local",
+                "fieldName": "row_data"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@local.row_data.button_text_4_a": [
+              "value"
+            ],
+            "@local.row_data.button_go_to_template_4_a": [
+              "action_list.0.args.0",
+              "action_list.0._raw",
+              "action_list.0._cleaned"
+            ],
+            "@local.row_data.button_text_5_a": [
               "condition"
             ],
-            "@local.reply_challenge_4_has_2_buttons": [
+            "@local.row_data.button_go_to_template_5_a": [
               "condition"
             ]
           }
@@ -1446,25 +1970,91 @@
         {
           "type": "button",
           "name": "button_4_b",
-          "value": "button_4_b",
+          "value": "@local.row_data.button_text_4_b",
           "_translations": {
             "value": {}
           },
-          "condition": "@local.reply_challenge_4_has_2_buttons",
+          "action_list": [
+            {
+              "trigger": "click",
+              "action_id": "go_to",
+              "args": [
+                "@local.row_data.button_go_to_template_4_b"
+              ],
+              "_raw": "click | go_to: @local.row_data.button_go_to_template_4_b",
+              "_cleaned": "click | go_to: @local.row_data.button_go_to_template_4_b"
+            }
+          ],
+          "condition": "@local.row_data.button_text_5_b&&@local.row_data.button_go_to_template_5_b",
           "exclude_from_translation": true,
           "_nested_name": "challenge_4.button_4_b",
           "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@local.row_data.button_text_4_b",
+                "matchedExpression": "@local.row_data.button_text_4_b",
+                "type": "local",
+                "fieldName": "row_data"
+              }
+            ],
+            "action_list": {
+              "0": {
+                "args": {
+                  "0": [
+                    {
+                      "fullExpression": "@local.row_data.button_go_to_template_4_b",
+                      "matchedExpression": "@local.row_data.button_go_to_template_4_b",
+                      "type": "local",
+                      "fieldName": "row_data"
+                    }
+                  ]
+                },
+                "_raw": [
+                  {
+                    "fullExpression": "click | go_to: @local.row_data.button_go_to_template_4_b",
+                    "matchedExpression": "@local.row_data.button_go_to_template_4_b",
+                    "type": "local",
+                    "fieldName": "row_data"
+                  }
+                ],
+                "_cleaned": [
+                  {
+                    "fullExpression": "click | go_to: @local.row_data.button_go_to_template_4_b",
+                    "matchedExpression": "@local.row_data.button_go_to_template_4_b",
+                    "type": "local",
+                    "fieldName": "row_data"
+                  }
+                ]
+              }
+            },
             "condition": [
               {
-                "fullExpression": "@local.reply_challenge_4_has_2_buttons",
-                "matchedExpression": "@local.reply_challenge_4_has_2_buttons",
+                "fullExpression": "@local.row_data.button_text_5_b&&@local.row_data.button_go_to_template_5_b",
+                "matchedExpression": "@local.row_data.button_text_5_b",
                 "type": "local",
-                "fieldName": "reply_challenge_4_has_2_buttons"
+                "fieldName": "row_data"
+              },
+              {
+                "fullExpression": "@local.row_data.button_text_5_b&&@local.row_data.button_go_to_template_5_b",
+                "matchedExpression": "@local.row_data.button_go_to_template_5_b",
+                "type": "local",
+                "fieldName": "row_data"
               }
             ]
           },
           "_dynamicDependencies": {
-            "@local.reply_challenge_4_has_2_buttons": [
+            "@local.row_data.button_text_4_b": [
+              "value"
+            ],
+            "@local.row_data.button_go_to_template_4_b": [
+              "action_list.0.args.0",
+              "action_list.0._raw",
+              "action_list.0._cleaned"
+            ],
+            "@local.row_data.button_text_5_b": [
+              "condition"
+            ],
+            "@local.row_data.button_go_to_template_5_b": [
               "condition"
             ]
           }
@@ -1498,54 +2088,112 @@
         {
           "type": "text",
           "name": "reply_challenge_5",
-          "exclude_from_translation": true,
-          "_nested_name": "challenge_5.reply_challenge_5"
-        },
-        {
-          "name": "reply_challenge_5_has_button",
-          "value": false,
-          "exclude_from_translation": true,
-          "type": "set_variable",
-          "_nested_name": "challenge_5.reply_challenge_5_has_button"
-        },
-        {
-          "name": "reply_challenge_5_has_2_buttons",
-          "value": false,
-          "exclude_from_translation": true,
-          "type": "set_variable",
-          "_nested_name": "challenge_5.reply_challenge_5_has_2_buttons"
-        },
-        {
-          "type": "button",
-          "name": "button_5_a",
-          "value": "button_5_a",
+          "value": "@local.row_data.reply_challenge_5",
           "_translations": {
             "value": {}
           },
-          "condition": "@local.reply_challenge_5_has_button || @local.reply_challenge_5_has_2_buttons",
           "exclude_from_translation": true,
-          "_nested_name": "challenge_5.button_5_a",
+          "_nested_name": "challenge_5.reply_challenge_5",
           "_dynamicFields": {
-            "condition": [
+            "value": [
               {
-                "fullExpression": "@local.reply_challenge_5_has_button || @local.reply_challenge_5_has_2_buttons",
-                "matchedExpression": "@local.reply_challenge_5_has_button",
+                "fullExpression": "@local.row_data.reply_challenge_5",
+                "matchedExpression": "@local.row_data.reply_challenge_5",
                 "type": "local",
-                "fieldName": "reply_challenge_5_has_button"
-              },
-              {
-                "fullExpression": "@local.reply_challenge_5_has_button || @local.reply_challenge_5_has_2_buttons",
-                "matchedExpression": "@local.reply_challenge_5_has_2_buttons",
-                "type": "local",
-                "fieldName": "reply_challenge_5_has_2_buttons"
+                "fieldName": "row_data"
               }
             ]
           },
           "_dynamicDependencies": {
-            "@local.reply_challenge_5_has_button": [
+            "@local.row_data.reply_challenge_5": [
+              "value"
+            ]
+          }
+        },
+        {
+          "type": "button",
+          "name": "button_5_a",
+          "value": "@local.row_data.button_text_5_a",
+          "_translations": {
+            "value": {}
+          },
+          "action_list": [
+            {
+              "trigger": "click",
+              "action_id": "go_to",
+              "args": [
+                "@local.row_data.button_go_to_template_5_a"
+              ],
+              "_raw": "click | go_to: @local.row_data.button_go_to_template_5_a",
+              "_cleaned": "click | go_to: @local.row_data.button_go_to_template_5_a"
+            }
+          ],
+          "condition": "@local.row_data.button_text_5_a&&@local.row_data.button_go_to_template_5_a",
+          "exclude_from_translation": true,
+          "_nested_name": "challenge_5.button_5_a",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@local.row_data.button_text_5_a",
+                "matchedExpression": "@local.row_data.button_text_5_a",
+                "type": "local",
+                "fieldName": "row_data"
+              }
+            ],
+            "action_list": {
+              "0": {
+                "args": {
+                  "0": [
+                    {
+                      "fullExpression": "@local.row_data.button_go_to_template_5_a",
+                      "matchedExpression": "@local.row_data.button_go_to_template_5_a",
+                      "type": "local",
+                      "fieldName": "row_data"
+                    }
+                  ]
+                },
+                "_raw": [
+                  {
+                    "fullExpression": "click | go_to: @local.row_data.button_go_to_template_5_a",
+                    "matchedExpression": "@local.row_data.button_go_to_template_5_a",
+                    "type": "local",
+                    "fieldName": "row_data"
+                  }
+                ],
+                "_cleaned": [
+                  {
+                    "fullExpression": "click | go_to: @local.row_data.button_go_to_template_5_a",
+                    "matchedExpression": "@local.row_data.button_go_to_template_5_a",
+                    "type": "local",
+                    "fieldName": "row_data"
+                  }
+                ]
+              }
+            },
+            "condition": [
+              {
+                "fullExpression": "@local.row_data.button_text_5_a&&@local.row_data.button_go_to_template_5_a",
+                "matchedExpression": "@local.row_data.button_text_5_a",
+                "type": "local",
+                "fieldName": "row_data"
+              },
+              {
+                "fullExpression": "@local.row_data.button_text_5_a&&@local.row_data.button_go_to_template_5_a",
+                "matchedExpression": "@local.row_data.button_go_to_template_5_a",
+                "type": "local",
+                "fieldName": "row_data"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@local.row_data.button_text_5_a": [
+              "value",
               "condition"
             ],
-            "@local.reply_challenge_5_has_2_buttons": [
+            "@local.row_data.button_go_to_template_5_a": [
+              "action_list.0.args.0",
+              "action_list.0._raw",
+              "action_list.0._cleaned",
               "condition"
             ]
           }
@@ -1553,25 +2201,87 @@
         {
           "type": "button",
           "name": "button_5_b",
-          "value": "button_5_b",
+          "value": "@local.row_data.button_text_5_b",
           "_translations": {
             "value": {}
           },
-          "condition": "@local.reply_challenge_5_has_2_buttons",
+          "action_list": [
+            {
+              "trigger": "click",
+              "action_id": "go_to",
+              "args": [
+                "@local.row_data.button_go_to_template_5_b"
+              ],
+              "_raw": "click | go_to: @local.row_data.button_go_to_template_5_b",
+              "_cleaned": "click | go_to: @local.row_data.button_go_to_template_5_b"
+            }
+          ],
+          "condition": "@local.row_data.button_text_5_b&&@local.row_data.button_go_to_template_5_b",
           "exclude_from_translation": true,
           "_nested_name": "challenge_5.button_5_b",
           "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@local.row_data.button_text_5_b",
+                "matchedExpression": "@local.row_data.button_text_5_b",
+                "type": "local",
+                "fieldName": "row_data"
+              }
+            ],
+            "action_list": {
+              "0": {
+                "args": {
+                  "0": [
+                    {
+                      "fullExpression": "@local.row_data.button_go_to_template_5_b",
+                      "matchedExpression": "@local.row_data.button_go_to_template_5_b",
+                      "type": "local",
+                      "fieldName": "row_data"
+                    }
+                  ]
+                },
+                "_raw": [
+                  {
+                    "fullExpression": "click | go_to: @local.row_data.button_go_to_template_5_b",
+                    "matchedExpression": "@local.row_data.button_go_to_template_5_b",
+                    "type": "local",
+                    "fieldName": "row_data"
+                  }
+                ],
+                "_cleaned": [
+                  {
+                    "fullExpression": "click | go_to: @local.row_data.button_go_to_template_5_b",
+                    "matchedExpression": "@local.row_data.button_go_to_template_5_b",
+                    "type": "local",
+                    "fieldName": "row_data"
+                  }
+                ]
+              }
+            },
             "condition": [
               {
-                "fullExpression": "@local.reply_challenge_5_has_2_buttons",
-                "matchedExpression": "@local.reply_challenge_5_has_2_buttons",
+                "fullExpression": "@local.row_data.button_text_5_b&&@local.row_data.button_go_to_template_5_b",
+                "matchedExpression": "@local.row_data.button_text_5_b",
                 "type": "local",
-                "fieldName": "reply_challenge_5_has_2_buttons"
+                "fieldName": "row_data"
+              },
+              {
+                "fullExpression": "@local.row_data.button_text_5_b&&@local.row_data.button_go_to_template_5_b",
+                "matchedExpression": "@local.row_data.button_go_to_template_5_b",
+                "type": "local",
+                "fieldName": "row_data"
               }
             ]
           },
           "_dynamicDependencies": {
-            "@local.reply_challenge_5_has_2_buttons": [
+            "@local.row_data.button_text_5_b": [
+              "value",
+              "condition"
+            ],
+            "@local.row_data.button_go_to_template_5_b": [
+              "action_list.0.args.0",
+              "action_list.0._raw",
+              "action_list.0._cleaned",
               "condition"
             ]
           }
@@ -1605,54 +2315,112 @@
         {
           "type": "text",
           "name": "reply_challenge_6",
-          "exclude_from_translation": true,
-          "_nested_name": "challenge_6.reply_challenge_6"
-        },
-        {
-          "name": "reply_challenge_6_has_button",
-          "value": false,
-          "exclude_from_translation": true,
-          "type": "set_variable",
-          "_nested_name": "challenge_6.reply_challenge_6_has_button"
-        },
-        {
-          "name": "reply_challenge_6_has_2_buttons",
-          "value": false,
-          "exclude_from_translation": true,
-          "type": "set_variable",
-          "_nested_name": "challenge_6.reply_challenge_6_has_2_buttons"
-        },
-        {
-          "type": "button",
-          "name": "button_6_a",
-          "value": "button_6_a",
+          "value": "@local.row_data.reply_challenge_6",
           "_translations": {
             "value": {}
           },
-          "condition": "@local.reply_challenge_6_has_button || @local.reply_challenge_6_has_2_buttons",
           "exclude_from_translation": true,
-          "_nested_name": "challenge_6.button_6_a",
+          "_nested_name": "challenge_6.reply_challenge_6",
           "_dynamicFields": {
-            "condition": [
+            "value": [
               {
-                "fullExpression": "@local.reply_challenge_6_has_button || @local.reply_challenge_6_has_2_buttons",
-                "matchedExpression": "@local.reply_challenge_6_has_button",
+                "fullExpression": "@local.row_data.reply_challenge_6",
+                "matchedExpression": "@local.row_data.reply_challenge_6",
                 "type": "local",
-                "fieldName": "reply_challenge_6_has_button"
-              },
-              {
-                "fullExpression": "@local.reply_challenge_6_has_button || @local.reply_challenge_6_has_2_buttons",
-                "matchedExpression": "@local.reply_challenge_6_has_2_buttons",
-                "type": "local",
-                "fieldName": "reply_challenge_6_has_2_buttons"
+                "fieldName": "row_data"
               }
             ]
           },
           "_dynamicDependencies": {
-            "@local.reply_challenge_6_has_button": [
+            "@local.row_data.reply_challenge_6": [
+              "value"
+            ]
+          }
+        },
+        {
+          "type": "button",
+          "name": "button_6_a",
+          "value": "@local.row_data.button_text_6_a",
+          "_translations": {
+            "value": {}
+          },
+          "action_list": [
+            {
+              "trigger": "click",
+              "action_id": "go_to",
+              "args": [
+                "@local.row_data.button_go_to_template_6_a"
+              ],
+              "_raw": "click | go_to: @local.row_data.button_go_to_template_6_a",
+              "_cleaned": "click | go_to: @local.row_data.button_go_to_template_6_a"
+            }
+          ],
+          "condition": "@local.row_data.button_text_6_a&&@local.row_data.button_go_to_template_6_a",
+          "exclude_from_translation": true,
+          "_nested_name": "challenge_6.button_6_a",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@local.row_data.button_text_6_a",
+                "matchedExpression": "@local.row_data.button_text_6_a",
+                "type": "local",
+                "fieldName": "row_data"
+              }
+            ],
+            "action_list": {
+              "0": {
+                "args": {
+                  "0": [
+                    {
+                      "fullExpression": "@local.row_data.button_go_to_template_6_a",
+                      "matchedExpression": "@local.row_data.button_go_to_template_6_a",
+                      "type": "local",
+                      "fieldName": "row_data"
+                    }
+                  ]
+                },
+                "_raw": [
+                  {
+                    "fullExpression": "click | go_to: @local.row_data.button_go_to_template_6_a",
+                    "matchedExpression": "@local.row_data.button_go_to_template_6_a",
+                    "type": "local",
+                    "fieldName": "row_data"
+                  }
+                ],
+                "_cleaned": [
+                  {
+                    "fullExpression": "click | go_to: @local.row_data.button_go_to_template_6_a",
+                    "matchedExpression": "@local.row_data.button_go_to_template_6_a",
+                    "type": "local",
+                    "fieldName": "row_data"
+                  }
+                ]
+              }
+            },
+            "condition": [
+              {
+                "fullExpression": "@local.row_data.button_text_6_a&&@local.row_data.button_go_to_template_6_a",
+                "matchedExpression": "@local.row_data.button_text_6_a",
+                "type": "local",
+                "fieldName": "row_data"
+              },
+              {
+                "fullExpression": "@local.row_data.button_text_6_a&&@local.row_data.button_go_to_template_6_a",
+                "matchedExpression": "@local.row_data.button_go_to_template_6_a",
+                "type": "local",
+                "fieldName": "row_data"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@local.row_data.button_text_6_a": [
+              "value",
               "condition"
             ],
-            "@local.reply_challenge_6_has_2_buttons": [
+            "@local.row_data.button_go_to_template_6_a": [
+              "action_list.0.args.0",
+              "action_list.0._raw",
+              "action_list.0._cleaned",
               "condition"
             ]
           }
@@ -1660,25 +2428,87 @@
         {
           "type": "button",
           "name": "button_6_b",
-          "value": "button_6_b",
+          "value": "@local.row_data.button_text_6_b",
           "_translations": {
             "value": {}
           },
-          "condition": "@local.reply_challenge_6_has_2_buttons",
+          "action_list": [
+            {
+              "trigger": "click",
+              "action_id": "go_to",
+              "args": [
+                "@local.row_data.button_go_to_template_6_b"
+              ],
+              "_raw": "click | go_to: @local.row_data.button_go_to_template_6_b",
+              "_cleaned": "click | go_to: @local.row_data.button_go_to_template_6_b"
+            }
+          ],
+          "condition": "@local.row_data.button_text_6_b&&@local.row_data.button_go_to_template_6_b",
           "exclude_from_translation": true,
           "_nested_name": "challenge_6.button_6_b",
           "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@local.row_data.button_text_6_b",
+                "matchedExpression": "@local.row_data.button_text_6_b",
+                "type": "local",
+                "fieldName": "row_data"
+              }
+            ],
+            "action_list": {
+              "0": {
+                "args": {
+                  "0": [
+                    {
+                      "fullExpression": "@local.row_data.button_go_to_template_6_b",
+                      "matchedExpression": "@local.row_data.button_go_to_template_6_b",
+                      "type": "local",
+                      "fieldName": "row_data"
+                    }
+                  ]
+                },
+                "_raw": [
+                  {
+                    "fullExpression": "click | go_to: @local.row_data.button_go_to_template_6_b",
+                    "matchedExpression": "@local.row_data.button_go_to_template_6_b",
+                    "type": "local",
+                    "fieldName": "row_data"
+                  }
+                ],
+                "_cleaned": [
+                  {
+                    "fullExpression": "click | go_to: @local.row_data.button_go_to_template_6_b",
+                    "matchedExpression": "@local.row_data.button_go_to_template_6_b",
+                    "type": "local",
+                    "fieldName": "row_data"
+                  }
+                ]
+              }
+            },
             "condition": [
               {
-                "fullExpression": "@local.reply_challenge_6_has_2_buttons",
-                "matchedExpression": "@local.reply_challenge_6_has_2_buttons",
+                "fullExpression": "@local.row_data.button_text_6_b&&@local.row_data.button_go_to_template_6_b",
+                "matchedExpression": "@local.row_data.button_text_6_b",
                 "type": "local",
-                "fieldName": "reply_challenge_6_has_2_buttons"
+                "fieldName": "row_data"
+              },
+              {
+                "fullExpression": "@local.row_data.button_text_6_b&&@local.row_data.button_go_to_template_6_b",
+                "matchedExpression": "@local.row_data.button_go_to_template_6_b",
+                "type": "local",
+                "fieldName": "row_data"
               }
             ]
           },
           "_dynamicDependencies": {
-            "@local.reply_challenge_6_has_2_buttons": [
+            "@local.row_data.button_text_6_b": [
+              "value",
+              "condition"
+            ],
+            "@local.row_data.button_go_to_template_6_b": [
+              "action_list.0.args.0",
+              "action_list.0._raw",
+              "action_list.0._cleaned",
               "condition"
             ]
           }
@@ -1712,54 +2542,112 @@
         {
           "type": "text",
           "name": "reply_challenge_7",
-          "exclude_from_translation": true,
-          "_nested_name": "challenge_7.reply_challenge_7"
-        },
-        {
-          "name": "reply_challenge_7_has_button",
-          "value": false,
-          "exclude_from_translation": true,
-          "type": "set_variable",
-          "_nested_name": "challenge_7.reply_challenge_7_has_button"
-        },
-        {
-          "name": "reply_challenge_7_has_2_buttons",
-          "value": false,
-          "exclude_from_translation": true,
-          "type": "set_variable",
-          "_nested_name": "challenge_7.reply_challenge_7_has_2_buttons"
-        },
-        {
-          "type": "button",
-          "name": "button_7_a",
-          "value": "button_7_a",
+          "value": "@local.row_data.reply_challenge_7",
           "_translations": {
             "value": {}
           },
-          "condition": "@local.reply_challenge_7_has_button || @local.reply_challenge_7_has_2_buttons",
           "exclude_from_translation": true,
-          "_nested_name": "challenge_7.button_7_a",
+          "_nested_name": "challenge_7.reply_challenge_7",
           "_dynamicFields": {
-            "condition": [
+            "value": [
               {
-                "fullExpression": "@local.reply_challenge_7_has_button || @local.reply_challenge_7_has_2_buttons",
-                "matchedExpression": "@local.reply_challenge_7_has_button",
+                "fullExpression": "@local.row_data.reply_challenge_7",
+                "matchedExpression": "@local.row_data.reply_challenge_7",
                 "type": "local",
-                "fieldName": "reply_challenge_7_has_button"
-              },
-              {
-                "fullExpression": "@local.reply_challenge_7_has_button || @local.reply_challenge_7_has_2_buttons",
-                "matchedExpression": "@local.reply_challenge_7_has_2_buttons",
-                "type": "local",
-                "fieldName": "reply_challenge_7_has_2_buttons"
+                "fieldName": "row_data"
               }
             ]
           },
           "_dynamicDependencies": {
-            "@local.reply_challenge_7_has_button": [
+            "@local.row_data.reply_challenge_7": [
+              "value"
+            ]
+          }
+        },
+        {
+          "type": "button",
+          "name": "button_7_a",
+          "value": "@local.row_data.button_text_7_a",
+          "_translations": {
+            "value": {}
+          },
+          "action_list": [
+            {
+              "trigger": "click",
+              "action_id": "go_to",
+              "args": [
+                "@local.row_data.button_go_to_template_7_a"
+              ],
+              "_raw": "click | go_to: @local.row_data.button_go_to_template_7_a",
+              "_cleaned": "click | go_to: @local.row_data.button_go_to_template_7_a"
+            }
+          ],
+          "condition": "@local.row_data.button_text_7_a&&@local.row_data.button_go_to_template_7_a",
+          "exclude_from_translation": true,
+          "_nested_name": "challenge_7.button_7_a",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@local.row_data.button_text_7_a",
+                "matchedExpression": "@local.row_data.button_text_7_a",
+                "type": "local",
+                "fieldName": "row_data"
+              }
+            ],
+            "action_list": {
+              "0": {
+                "args": {
+                  "0": [
+                    {
+                      "fullExpression": "@local.row_data.button_go_to_template_7_a",
+                      "matchedExpression": "@local.row_data.button_go_to_template_7_a",
+                      "type": "local",
+                      "fieldName": "row_data"
+                    }
+                  ]
+                },
+                "_raw": [
+                  {
+                    "fullExpression": "click | go_to: @local.row_data.button_go_to_template_7_a",
+                    "matchedExpression": "@local.row_data.button_go_to_template_7_a",
+                    "type": "local",
+                    "fieldName": "row_data"
+                  }
+                ],
+                "_cleaned": [
+                  {
+                    "fullExpression": "click | go_to: @local.row_data.button_go_to_template_7_a",
+                    "matchedExpression": "@local.row_data.button_go_to_template_7_a",
+                    "type": "local",
+                    "fieldName": "row_data"
+                  }
+                ]
+              }
+            },
+            "condition": [
+              {
+                "fullExpression": "@local.row_data.button_text_7_a&&@local.row_data.button_go_to_template_7_a",
+                "matchedExpression": "@local.row_data.button_text_7_a",
+                "type": "local",
+                "fieldName": "row_data"
+              },
+              {
+                "fullExpression": "@local.row_data.button_text_7_a&&@local.row_data.button_go_to_template_7_a",
+                "matchedExpression": "@local.row_data.button_go_to_template_7_a",
+                "type": "local",
+                "fieldName": "row_data"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@local.row_data.button_text_7_a": [
+              "value",
               "condition"
             ],
-            "@local.reply_challenge_7_has_2_buttons": [
+            "@local.row_data.button_go_to_template_7_a": [
+              "action_list.0.args.0",
+              "action_list.0._raw",
+              "action_list.0._cleaned",
               "condition"
             ]
           }
@@ -1767,25 +2655,87 @@
         {
           "type": "button",
           "name": "button_7_b",
-          "value": "button_7_b",
+          "value": "@local.row_data.button_text_7_b",
           "_translations": {
             "value": {}
           },
-          "condition": "@local.reply_challenge_7_has_2_buttons",
+          "action_list": [
+            {
+              "trigger": "click",
+              "action_id": "go_to",
+              "args": [
+                "@local.row_data.button_go_to_template_7_b"
+              ],
+              "_raw": "click | go_to: @local.row_data.button_go_to_template_7_b",
+              "_cleaned": "click | go_to: @local.row_data.button_go_to_template_7_b"
+            }
+          ],
+          "condition": "@local.row_data.button_text_7_b&&@local.row_data.button_go_to_template_7_b",
           "exclude_from_translation": true,
           "_nested_name": "challenge_7.button_7_b",
           "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@local.row_data.button_text_7_b",
+                "matchedExpression": "@local.row_data.button_text_7_b",
+                "type": "local",
+                "fieldName": "row_data"
+              }
+            ],
+            "action_list": {
+              "0": {
+                "args": {
+                  "0": [
+                    {
+                      "fullExpression": "@local.row_data.button_go_to_template_7_b",
+                      "matchedExpression": "@local.row_data.button_go_to_template_7_b",
+                      "type": "local",
+                      "fieldName": "row_data"
+                    }
+                  ]
+                },
+                "_raw": [
+                  {
+                    "fullExpression": "click | go_to: @local.row_data.button_go_to_template_7_b",
+                    "matchedExpression": "@local.row_data.button_go_to_template_7_b",
+                    "type": "local",
+                    "fieldName": "row_data"
+                  }
+                ],
+                "_cleaned": [
+                  {
+                    "fullExpression": "click | go_to: @local.row_data.button_go_to_template_7_b",
+                    "matchedExpression": "@local.row_data.button_go_to_template_7_b",
+                    "type": "local",
+                    "fieldName": "row_data"
+                  }
+                ]
+              }
+            },
             "condition": [
               {
-                "fullExpression": "@local.reply_challenge_7_has_2_buttons",
-                "matchedExpression": "@local.reply_challenge_7_has_2_buttons",
+                "fullExpression": "@local.row_data.button_text_7_b&&@local.row_data.button_go_to_template_7_b",
+                "matchedExpression": "@local.row_data.button_text_7_b",
                 "type": "local",
-                "fieldName": "reply_challenge_7_has_2_buttons"
+                "fieldName": "row_data"
+              },
+              {
+                "fullExpression": "@local.row_data.button_text_7_b&&@local.row_data.button_go_to_template_7_b",
+                "matchedExpression": "@local.row_data.button_go_to_template_7_b",
+                "type": "local",
+                "fieldName": "row_data"
               }
             ]
           },
           "_dynamicDependencies": {
-            "@local.reply_challenge_7_has_2_buttons": [
+            "@local.row_data.button_text_7_b": [
+              "value",
+              "condition"
+            ],
+            "@local.row_data.button_go_to_template_7_b": [
+              "action_list.0.args.0",
+              "action_list.0._raw",
+              "action_list.0._cleaned",
               "condition"
             ]
           }
@@ -1815,26 +2765,26 @@
       "condition": "@local.combo_box==\"other_challenge\"",
       "rows": [
         {
-          "name": "workshop_data",
-          "value": "@local.workshop_data",
+          "name": "workshop",
+          "value": "@local.workshop",
           "_translations": {
             "value": {}
           },
           "exclude_from_translation": true,
           "type": "set_variable",
-          "_nested_name": "hp_review_other_challenge.workshop_data",
+          "_nested_name": "hp_review_other_challenge.workshop",
           "_dynamicFields": {
             "value": [
               {
-                "fullExpression": "@local.workshop_data",
-                "matchedExpression": "@local.workshop_data",
+                "fullExpression": "@local.workshop",
+                "matchedExpression": "@local.workshop",
                 "type": "local",
-                "fieldName": "workshop_data"
+                "fieldName": "workshop"
               }
             ]
           },
           "_dynamicDependencies": {
-            "@local.workshop_data": [
+            "@local.workshop": [
               "value"
             ]
           }
@@ -1879,84 +2829,10 @@
           ],
           "_raw": "uncompleted | emit:uncompleted",
           "_cleaned": "uncompleted | emit:uncompleted"
-        },
-        {
-          "trigger": "completed",
-          "action_id": "set_field",
-          "args": [
-            "@local.combo_box_final",
-            "@local.combo_box"
-          ],
-          "_raw": "completed | set_field:@local.combo_box_final: @local.combo_box",
-          "_cleaned": "completed | set_field:@local.combo_box_final: @local.combo_box"
         }
       ],
       "rows": [],
-      "_nested_name": "nav_buttons",
-      "_dynamicFields": {
-        "action_list": {
-          "2": {
-            "args": {
-              "0": [
-                {
-                  "fullExpression": "@local.combo_box_final",
-                  "matchedExpression": "@local.combo_box_final",
-                  "type": "local",
-                  "fieldName": "combo_box_final"
-                }
-              ],
-              "1": [
-                {
-                  "fullExpression": "@local.combo_box",
-                  "matchedExpression": "@local.combo_box",
-                  "type": "local",
-                  "fieldName": "combo_box"
-                }
-              ]
-            },
-            "_raw": [
-              {
-                "fullExpression": "completed | set_field:@local.combo_box_final: @local.combo_box",
-                "matchedExpression": "@local.combo_box_final",
-                "type": "local",
-                "fieldName": "combo_box_final"
-              },
-              {
-                "fullExpression": "completed | set_field:@local.combo_box_final: @local.combo_box",
-                "matchedExpression": "@local.combo_box",
-                "type": "local",
-                "fieldName": "combo_box"
-              }
-            ],
-            "_cleaned": [
-              {
-                "fullExpression": "completed | set_field:@local.combo_box_final: @local.combo_box",
-                "matchedExpression": "@local.combo_box_final",
-                "type": "local",
-                "fieldName": "combo_box_final"
-              },
-              {
-                "fullExpression": "completed | set_field:@local.combo_box_final: @local.combo_box",
-                "matchedExpression": "@local.combo_box",
-                "type": "local",
-                "fieldName": "combo_box"
-              }
-            ]
-          }
-        }
-      },
-      "_dynamicDependencies": {
-        "@local.combo_box_final": [
-          "action_list.2.args.0",
-          "action_list.2._raw",
-          "action_list.2._cleaned"
-        ],
-        "@local.combo_box": [
-          "action_list.2.args.1",
-          "action_list.2._raw",
-          "action_list.2._cleaned"
-        ]
-      }
+      "_nested_name": "nav_buttons"
     }
   ],
   "_xlsxPath": "global/mode_templates/home_practice.xlsx"

@@ -1,8 +1,8 @@
-@import "../../mixins.scss";
+@use "../../mixins.scss";
 
 /// home_screen
 plh-tmpl-display-group .display-group-wrapper[data-param-style~="home_screen"] {
-  @include flex-centered;
+  @include mixins.flex-centered;
   border-radius: var(--ion-border-radius-secondary);
   width: 100%;
   height: var(--home-screen-height);
@@ -12,7 +12,7 @@ plh-tmpl-display-group .display-group-wrapper[data-param-style~="home_screen"] {
   }
   // animated start icon
   plh-template-component[data-type="lottie_animation"] {
-    @include flex-centered;
+    @include mixins.flex-centered;
     flex-direction: column;
     // make offset slightly out of top
     margin-top: -30px;

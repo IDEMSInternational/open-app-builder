@@ -24,7 +24,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
         with:
           lfs: true
           ref: "${{github.event.inputs.build_branch}}"
@@ -36,23 +36,19 @@ jobs:
         run: |
           echo ${{github.event.inputs.build_branch}} | sed 's/.*\///'
           echo "DEPLOYMENT_NAME=$(echo ${{github.event.inputs.build_branch}} | sed 's/.*\///')" >> $GITHUB_ENV;
+          echo "SHA_SHORT=$(git rev-parse --short=6 HEAD)" >> $GITHUB_ENV
         shell: bash
-      - name: Cache node modules
-        uses: actions/cache@v2
-        with:
-          path: ./.yarn/cache
-          # If cachebusting required (e.g. breaking yarn changes on update) change `v1` to another number
-          key: ${{ runner.os }}-node-modules-yarn-v1-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-yarn-v1-
       - name: Setup node
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v3
         with:
-          node-version: "16"
-      - name: Populate firebaseConfig.ts
+          node-version: 16
+          cache: 'yarn'
+      - name: Populate environment config
         env:
           FIREBASE_CONFIG_TS: ${{ secrets.FIREBASE_CONFIG_TS }}
-        run: echo $FIREBASE_CONFIG_TS > src/environments/firebaseConfig.ts
+        run: |
+          echo "export const GIT_SHA = \"$SHA_SHORT\";" > src/environments/sha.ts
+          echo $FIREBASE_CONFIG_TS > src/environments/firebaseConfig.ts
       - name: Populate google-services.json
         env:
           GOOGLE_SERVICES_JSON: ${{ secrets.GOOGLE_SERVICES_JSON }}
@@ -60,7 +56,7 @@ jobs:
       - name: Install Dependencies
         run: yarn install
       - name: Set Deployment
-        run: yarn scripts deployment set $DEPLOYMENT_NAME
+        run: yarn workflow deployment set $DEPLOYMENT_NAME
       - name: Build Angular Project
         run: yarn build
       - name: Sync Android Files

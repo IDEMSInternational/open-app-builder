@@ -135,32 +135,37 @@
                     },
                     {
                       "name": "text_2",
-                      "value": "Discuss \"safety amnesty\" with your teenager, and think of a situation together when you could use this.",
+                      "value": "Choose a \"@global.safety_word\" with your teenager, and think of a situation together when you could use this.",
                       "_translations": {
                         "value": {
-                          "tz_sw": true,
-                          "za_af": true,
-                          "za_st": true,
-                          "za_tn": true,
-                          "za_xh": true,
-                          "za_zu": true
+                          "tz_sw": true
                         }
                       },
                       "hidden": false,
                       "type": "set_variable",
-                      "_nested_name": "home_practice.workshop_activity.content_box.box_1.text_2"
+                      "_nested_name": "home_practice.workshop_activity.content_box.box_1.text_2",
+                      "_dynamicFields": {
+                        "value": [
+                          {
+                            "fullExpression": "Choose a \"@global.safety_word\" with your teenager, and think of a situation together when you could use this.",
+                            "matchedExpression": "@global.safety_word",
+                            "type": "global",
+                            "fieldName": "safety_word"
+                          }
+                        ]
+                      },
+                      "_dynamicDependencies": {
+                        "@global.safety_word": [
+                          "value"
+                        ]
+                      }
                     },
                     {
                       "name": "button_2",
-                      "value": "Safety Amnesty Story",
+                      "value": "@global.safety_word Story",
                       "_translations": {
                         "value": {
-                          "tz_sw": true,
-                          "za_af": true,
-                          "za_st": true,
-                          "za_tn": true,
-                          "za_xh": true,
-                          "za_zu": true
+                          "tz_sw": true
                         }
                       },
                       "action_list": [
@@ -168,15 +173,30 @@
                           "trigger": "click",
                           "action_id": "go_to",
                           "args": [
-                            "w_stress_read_3_temp"
+                            "w_stress_read_3"
                           ],
-                          "_raw": "click | go_to:w_stress_read_3_temp",
-                          "_cleaned": "click | go_to:w_stress_read_3_temp"
+                          "_raw": "click | go_to:w_stress_read_3",
+                          "_cleaned": "click | go_to:w_stress_read_3"
                         }
                       ],
                       "hidden": false,
                       "type": "set_variable",
-                      "_nested_name": "home_practice.workshop_activity.content_box.box_1.button_2"
+                      "_nested_name": "home_practice.workshop_activity.content_box.box_1.button_2",
+                      "_dynamicFields": {
+                        "value": [
+                          {
+                            "fullExpression": "@global.safety_word Story",
+                            "matchedExpression": "@global.safety_word",
+                            "type": "global",
+                            "fieldName": "safety_word"
+                          }
+                        ]
+                      },
+                      "_dynamicDependencies": {
+                        "@global.safety_word": [
+                          "value"
+                        ]
+                      }
                     },
                     {
                       "name": "habit_text",

@@ -1,0 +1,112 @@
+{
+  "flow_type": "template",
+  "module": "stress",
+  "flow_name": "w_stress_question_2_pop",
+  "status": "released",
+  "rows": [
+    {
+      "name": "item_1",
+      "value": "A specific food",
+      "_translations": {
+        "value": {
+          "tz_sw": true
+        }
+      },
+      "type": "set_variable",
+      "_nested_name": "item_1"
+    },
+    {
+      "name": "item_2",
+      "value": "A specific family member",
+      "_translations": {
+        "value": {
+          "tz_sw": true
+        }
+      },
+      "type": "set_variable",
+      "_nested_name": "item_2"
+    },
+    {
+      "name": "item_3",
+      "value": "A specific animal",
+      "_translations": {
+        "value": {
+          "tz_sw": true
+        }
+      },
+      "type": "set_variable",
+      "_nested_name": "item_3"
+    },
+    {
+      "name": "item_4",
+      "value": "Something else",
+      "_translations": {
+        "value": {
+          "tz_sw": true
+        }
+      },
+      "type": "set_variable",
+      "_nested_name": "item_4"
+    },
+    {
+      "type": "template",
+      "name": "suggestions",
+      "value": "suggestions",
+      "rows": [
+        {
+          "name": "list_text",
+          "value": "* @local.item_1\n* @local.item_2\n* @local.item_3\n* @local.item_4",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "suggestions.list_text",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "* @local.item_1\n* @local.item_2\n* @local.item_3\n* @local.item_4",
+                "matchedExpression": "@local.item_1",
+                "type": "local",
+                "fieldName": "item_1"
+              },
+              {
+                "fullExpression": "* @local.item_1\n* @local.item_2\n* @local.item_3\n* @local.item_4",
+                "matchedExpression": "@local.item_2",
+                "type": "local",
+                "fieldName": "item_2"
+              },
+              {
+                "fullExpression": "* @local.item_1\n* @local.item_2\n* @local.item_3\n* @local.item_4",
+                "matchedExpression": "@local.item_3",
+                "type": "local",
+                "fieldName": "item_3"
+              },
+              {
+                "fullExpression": "* @local.item_1\n* @local.item_2\n* @local.item_3\n* @local.item_4",
+                "matchedExpression": "@local.item_4",
+                "type": "local",
+                "fieldName": "item_4"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@local.item_1": [
+              "value"
+            ],
+            "@local.item_2": [
+              "value"
+            ],
+            "@local.item_3": [
+              "value"
+            ],
+            "@local.item_4": [
+              "value"
+            ]
+          }
+        }
+      ],
+      "_nested_name": "suggestions"
+    }
+  ],
+  "_xlsxPath": "global/top_templates/workshop_templates/workshop_stress.xlsx"
+}

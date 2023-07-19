@@ -6,29 +6,21 @@
     {
       "type": "title",
       "name": "title",
-      "value": "@data.parent_centre.technical_support.title",
+      "value": "Technical Support",
       "_translations": {
-        "value": {}
+        "value": {
+          "tz_sw": true,
+          "za_af": true,
+          "za_st": true,
+          "za_tn": true,
+          "za_xh": true,
+          "za_zu": true
+        }
       },
       "parameter_list": {
         "style": "tiny"
       },
-      "_nested_name": "title",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "@data.parent_centre.technical_support.title",
-            "matchedExpression": "@data.parent_centre.technical_support.title",
-            "type": "data",
-            "fieldName": "parent_centre"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@data.parent_centre.technical_support.title": [
-          "value"
-        ]
-      }
+      "_nested_name": "title"
     },
     {
       "type": "text",
@@ -109,6 +101,7 @@
       "_translations": {
         "value": {
           "tz_sw": true,
+          "za_af": true,
           "za_st": true,
           "za_tn": true,
           "za_zu": true
@@ -683,11 +676,11 @@
           "trigger": "click",
           "action_id": "feedback",
           "args": [
-            "send",
+            "submit",
             "@local.form_data"
           ],
-          "_raw": "click | feedback:send:@local.form_data",
-          "_cleaned": "click | feedback:send:@local.form_data"
+          "_raw": "click | feedback:submit:@local.form_data",
+          "_cleaned": "click | feedback:submit:@local.form_data"
         },
         {
           "trigger": "click",
@@ -732,7 +725,7 @@
             },
             "_raw": [
               {
-                "fullExpression": "click | feedback:send:@local.form_data",
+                "fullExpression": "click | feedback:submit:@local.form_data",
                 "matchedExpression": "@local.form_data",
                 "type": "local",
                 "fieldName": "form_data"
@@ -740,7 +733,7 @@
             ],
             "_cleaned": [
               {
-                "fullExpression": "click | feedback:send:@local.form_data",
+                "fullExpression": "click | feedback:submit:@local.form_data",
                 "matchedExpression": "@local.form_data",
                 "type": "local",
                 "fieldName": "form_data"

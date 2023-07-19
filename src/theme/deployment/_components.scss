@@ -1,4 +1,4 @@
-@import "./components/index";
+@use "./components/index";
 
 /// HACK - (TODO handle with authoring) remove margins for summary elements
 plh-template-component[data-name="clicks_all_time"],

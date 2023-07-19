@@ -24,11 +24,11 @@
           "trigger": "click",
           "action_id": "set_field",
           "args": [
-            "w_instruct_m_w_released.sent",
+            "w_instruct_m_w_released_sent",
             true
           ],
-          "_raw": "click | set_field: w_instruct_m_w_released.sent : true",
-          "_cleaned": "click | set_field: w_instruct_m_w_released.sent : true"
+          "_raw": "click | set_field: w_instruct_m_w_released_sent : true",
+          "_cleaned": "click | set_field: w_instruct_m_w_released_sent : true"
         }
       ],
       "priority": 9.99,
@@ -67,7 +67,10 @@
       "_translations": {
         "title": {},
         "text": {
-          "tz_sw": true
+          "tz_sw": true,
+          "za_af": true,
+          "za_st": true,
+          "za_tn": true
         }
       },
       "_translatedFields": {
@@ -100,11 +103,11 @@
           "trigger": "click",
           "action_id": "set_field",
           "args": [
-            "w_instruct_m_w_released.sent",
+            "w_instruct_m_w_released_sent",
             true
           ],
-          "_raw": "click | set_field: w_instruct_m_w_released.sent : true",
-          "_cleaned": "click | set_field: w_instruct_m_w_released.sent : true"
+          "_raw": "click | set_field: w_instruct_m_w_released_sent : true",
+          "_cleaned": "click | set_field: w_instruct_m_w_released_sent : true"
         }
       ],
       "priority": 9.99,
@@ -143,7 +146,10 @@
       "_translations": {
         "title": {},
         "text": {
-          "tz_sw": true
+          "tz_sw": true,
+          "za_af": true,
+          "za_st": true,
+          "za_tn": true
         }
       },
       "_translatedFields": {
@@ -175,11 +181,11 @@
           "trigger": "click",
           "action_id": "set_field",
           "args": [
-            "w_instruct_m_relax.sent",
+            "w_instruct_m_relax_sent",
             true
           ],
-          "_raw": "click | set_field: w_instruct_m_relax.sent : true",
-          "_cleaned": "click | set_field: w_instruct_m_relax.sent : true"
+          "_raw": "click | set_field: w_instruct_m_relax_sent : true",
+          "_cleaned": "click | set_field: w_instruct_m_relax_sent : true"
         }
       ],
       "priority": 9.9,
@@ -233,11 +239,11 @@
           "trigger": "click",
           "action_id": "set_field",
           "args": [
-            "w_instruct_m_something_fun.sent",
+            "w_instruct_m_something_fun_sent",
             true
           ],
-          "_raw": "click | set_field: w_instruct_m_something_fun.sent : true",
-          "_cleaned": "click | set_field: w_instruct_m_something_fun.sent : true"
+          "_raw": "click | set_field: w_instruct_m_something_fun_sent : true",
+          "_cleaned": "click | set_field: w_instruct_m_something_fun_sent : true"
         }
       ],
       "priority": 9.8,
@@ -290,11 +296,11 @@
           "trigger": "click",
           "action_id": "set_field",
           "args": [
-            "w_instruct_m_praise.sent",
+            "w_instruct_m_praise_sent",
             true
           ],
-          "_raw": "click | set_field: w_instruct_m_praise.sent : true",
-          "_cleaned": "click | set_field: w_instruct_m_praise.sent : true"
+          "_raw": "click | set_field: w_instruct_m_praise_sent : true",
+          "_cleaned": "click | set_field: w_instruct_m_praise_sent : true"
         }
       ],
       "priority": 9.7,
@@ -317,7 +323,10 @@
       "_translations": {
         "title": {},
         "text": {
-          "tz_sw": true
+          "tz_sw": true,
+          "za_af": true,
+          "za_st": true,
+          "za_tn": true
         }
       },
       "_translatedFields": {
@@ -349,11 +358,11 @@
           "trigger": "click",
           "action_id": "set_field",
           "args": [
-            "w_instruct_m_w_reminder.sent",
+            "w_instruct_m_w_reminder_sent",
             true
           ],
-          "_raw": "click | set_field: w_instruct_m_w_reminder.sent : true",
-          "_cleaned": "click | set_field: w_instruct_m_w_reminder.sent : true"
+          "_raw": "click | set_field: w_instruct_m_w_reminder_sent : true",
+          "_cleaned": "click | set_field: w_instruct_m_w_reminder_sent : true"
         }
       ],
       "priority": 9.6,
@@ -393,10 +402,10 @@
           "eng": "@global.m_w_reminder"
         },
         "text": {
-          "eng": "Teens don’t always listen. Look at this week's workshop to learn how positive instructions can help."
+          "eng": "Teens don’t always listen. Look at this week's @global.workshop to learn how positive instructions can help."
         }
       },
-      "text": "Teens don’t always listen. Look at this week's workshop to learn how positive instructions can help."
+      "text": "Teens don’t always listen. Look at this week's @global.workshop to learn how positive instructions can help."
     },
     {
       "id": "w_in_progress_w_instruct",
@@ -417,11 +426,11 @@
           "trigger": "click",
           "action_id": "set_field",
           "args": [
-            "w_instruct_m_w_in_progress.sent",
+            "w_instruct_m_w_in_progress_sent",
             true
           ],
-          "_raw": "click | set_field: w_instruct_m_w_in_progress.sent : true",
-          "_cleaned": "click | set_field: w_instruct_m_w_in_progress.sent : true"
+          "_raw": "click | set_field: w_instruct_m_w_in_progress_sent : true",
+          "_cleaned": "click | set_field: w_instruct_m_w_in_progress_sent : true"
         }
       ],
       "priority": 9.5,
@@ -460,7 +469,10 @@
       "_translations": {
         "title": {},
         "text": {
-          "tz_sw": true
+          "tz_sw": true,
+          "za_af": true,
+          "za_st": true,
+          "za_tn": true
         }
       },
       "_translatedFields": {
@@ -493,11 +505,11 @@
           "trigger": "click",
           "action_id": "set_field",
           "args": [
-            "w_instruct_m_hp_reminder.sent",
+            "w_instruct_m_hp_reminder_sent",
             true
           ],
-          "_raw": "click | set_field: w_instruct_m_hp_reminder.sent : true",
-          "_cleaned": "click | set_field: w_instruct_m_hp_reminder.sent : true"
+          "_raw": "click | set_field: w_instruct_m_hp_reminder_sent : true",
+          "_cleaned": "click | set_field: w_instruct_m_hp_reminder_sent : true"
         }
       ],
       "priority": 9.4,
@@ -536,7 +548,10 @@
       "_translations": {
         "title": {},
         "text": {
-          "tz_sw": true
+          "tz_sw": true,
+          "za_af": true,
+          "za_st": true,
+          "za_tn": true
         }
       },
       "_translatedFields": {
@@ -569,11 +584,11 @@
           "trigger": "click",
           "action_id": "set_field",
           "args": [
-            "w_instruct_m_hp_reminder.sent",
+            "w_instruct_m_hp_reminder_sent",
             true
           ],
-          "_raw": "click | set_field: w_instruct_m_hp_reminder.sent : true",
-          "_cleaned": "click | set_field: w_instruct_m_hp_reminder.sent : true"
+          "_raw": "click | set_field: w_instruct_m_hp_reminder_sent : true",
+          "_cleaned": "click | set_field: w_instruct_m_hp_reminder_sent : true"
         }
       ],
       "priority": 9.4,
@@ -612,7 +627,10 @@
       "_translations": {
         "title": {},
         "text": {
-          "tz_sw": true
+          "tz_sw": true,
+          "za_af": true,
+          "za_st": true,
+          "za_tn": true
         }
       },
       "_translatedFields": {
@@ -644,11 +662,11 @@
           "trigger": "click",
           "action_id": "set_field",
           "args": [
-            "m_parent_points_overview.sent",
+            "m_parent_points_overview_sent",
             true
           ],
-          "_raw": "click | set_field: m_parent_points_overview.sent : true",
-          "_cleaned": "click | set_field: m_parent_points_overview.sent : true"
+          "_raw": "click | set_field: m_parent_points_overview_sent : true",
+          "_cleaned": "click | set_field: m_parent_points_overview_sent : true"
         }
       ],
       "priority": 9.3,
@@ -701,11 +719,11 @@
           "trigger": "click",
           "action_id": "set_field",
           "args": [
-            "undefined.sent",
+            "w_instruct_hp_review_sent",
             true
           ],
-          "_raw": "click | set_field: undefined.sent : true",
-          "_cleaned": "click | set_field: undefined.sent : true"
+          "_raw": "click | set_field: w_instruct_hp_review_sent : true",
+          "_cleaned": "click | set_field: w_instruct_hp_review_sent : true"
         }
       ],
       "priority": 9.2,
@@ -768,11 +786,11 @@
           "trigger": "click",
           "action_id": "set_field",
           "args": [
-            "w_instruct_m_w_tomorrow.sent",
+            "w_instruct_m_w_tomorrow_sent",
             true
           ],
-          "_raw": "click | set_field: w_instruct_m_w_tomorrow.sent : true",
-          "_cleaned": "click | set_field: w_instruct_m_w_tomorrow.sent : true"
+          "_raw": "click | set_field: w_instruct_m_w_tomorrow_sent : true",
+          "_cleaned": "click | set_field: w_instruct_m_w_tomorrow_sent : true"
         }
       ],
       "priority": 9.1,
@@ -812,10 +830,10 @@
           "eng": "@global.m_w_tomorrow"
         },
         "text": {
-          "eng": "Congratulations, you completed the @data.workshop.w_instruct.in_text_title.\n\nTomorrow, a new workshop is ready for you. See a big difference by making small changes!"
+          "eng": "Congratulations, you completed the @data.workshop.w_instruct.in_text_title.\n\nTomorrow, a new @global.workshop is ready for you. See a big difference by making small changes!"
         }
       },
-      "text": "Congratulations, you completed the @data.workshop.w_instruct.in_text_title.\n\nTomorrow, a new workshop is ready for you. See a big difference by making small changes!"
+      "text": "Congratulations, you completed the @data.workshop.w_instruct.in_text_title.\n\nTomorrow, a new @global.workshop is ready for you. See a big difference by making small changes!"
     },
     {
       "id": "w_tomorrow_w_instruct_incompl",
@@ -837,11 +855,11 @@
           "trigger": "click",
           "action_id": "set_field",
           "args": [
-            "w_instruct_m_w_tomorrow.sent",
+            "w_instruct_m_w_tomorrow_sent",
             true
           ],
-          "_raw": "click | set_field: w_instruct_m_w_tomorrow.sent : true",
-          "_cleaned": "click | set_field: w_instruct_m_w_tomorrow.sent : true"
+          "_raw": "click | set_field: w_instruct_m_w_tomorrow_sent : true",
+          "_cleaned": "click | set_field: w_instruct_m_w_tomorrow_sent : true"
         }
       ],
       "priority": 9.1,
@@ -873,7 +891,10 @@
       "_translations": {
         "title": {},
         "text": {
-          "tz_sw": true
+          "tz_sw": true,
+          "za_af": true,
+          "za_st": true,
+          "za_tn": true
         }
       },
       "_translatedFields": {

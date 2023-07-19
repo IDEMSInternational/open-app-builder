@@ -4,3 +4,6 @@ config/*
 !config/*.enc
 build
 exec
+
+test/data/cache
+test/data/output
