@@ -6,6 +6,7 @@
   "rows": [
     {
       "id": "w_self_care",
+      "voice_name": "@global.female_adult_name_3",
       "activity_image_asset": "plh_images/workshop_modes/individual/explain.svg",
       "audio_asset": "plh_audio/topic_intros/w_self_care_intro.mp3",
       "intro_text": "We often don’t look after ourselves enough. But this is so important, especially as a parent! \n\nReducing our stress and treating ourselves well helps us AND our teenagers.",
@@ -41,6 +42,7 @@
     },
     {
       "id": "w_1on1",
+      "voice_name": "@global.female_adult_name_4",
       "activity_image_asset": "plh_images/workshop_modes/individual/explain.svg",
       "audio_asset": "plh_audio/topic_intros/w_1on1_intro.mp3",
       "intro_text": "Being a parent can be so hard. Sometimes it feels like our children never listen to us.\n\nBut science shows that spending just a few minutes each day of focused one-on-one time with your teen helps build trust and love.",
@@ -83,6 +85,7 @@
     },
     {
       "id": "w_praise",
+      "voice_name": "@global.female_adult_name_5",
       "activity_image_asset": "plh_images/workshop_modes/individual/explain.svg",
       "audio_asset": "plh_audio/topic_intros/w_praise_intro.mp3",
       "intro_text": "Praise is a powerful parenting skill.\n\nIf we praise our teens when they do something well, we will see them do more and more positive things!",
@@ -118,6 +121,7 @@
     },
     {
       "id": "w_instruct",
+      "voice_name": "@global.female_adult_name_6",
       "activity_image_asset": "plh_images/workshop_modes/individual/explain.svg",
       "audio_asset": "plh_audio/topic_intros/w_instruct_intro.mp3",
       "intro_text": "Focus on the positive! \n\nTelling our teens what we DO want them to do works better than telling them to STOP doing something.\n\nYou will see the difference.",
@@ -153,6 +157,7 @@
     },
     {
       "id": "w_stress",
+      "voice_name": "@global.female_adult_name_7",
       "activity_image_asset": "plh_images/workshop_modes/individual/explain.svg",
       "audio_asset": "plh_audio/topic_intros/w_stress_intro.mp3",
       "intro_text": "We know how stressful it is to bring up teenagers in these times. Learning to manage your stress helps you – and your family.",
@@ -188,6 +193,7 @@
     },
     {
       "id": "w_solve",
+      "voice_name": "@global.female_adult_name_8",
       "activity_image_asset": "plh_images/workshop_modes/individual/explain.svg",
       "audio_asset": "plh_audio/topic_intros/w_solve_intro.mp3",
       "intro_text": "Every family faces challenges, but when we work together we can deal with problems in an effective and peaceful way. \n\nWhat a great skill for your teen to learn too!",
@@ -223,6 +229,7 @@
     },
     {
       "id": "w_money",
+      "voice_name": "@global.female_adult_name_9",
       "activity_image_asset": "plh_images/workshop_modes/individual/explain.svg",
       "audio_asset": "plh_audio/topic_intros/w_money_intro.mp3",
       "intro_text": "Many families are stressed about money, especially if teens keep asking for things! \n\nWhen we make a budget together, we can agree how to spend AND save to prevent stress and work towards our family’s goals.",
@@ -258,6 +265,7 @@
     },
     {
       "id": "w_rules",
+      "voice_name": "@global.female_adult_name_10",
       "activity_image_asset": "plh_images/workshop_modes/individual/explain.svg",
       "audio_asset": "plh_audio/topic_intros/w_rules_intro.mp3",
       "intro_text": "Rules help teens understand what is expected from them. \n\nTeens are more likely to follow rules if you create the rules WITH your teen and praise them for it!",
@@ -293,6 +301,7 @@
     },
     {
       "id": "w_consequence",
+      "voice_name": "@global.female_adult_name_11",
       "activity_image_asset": "plh_images/workshop_modes/individual/explain.svg",
       "audio_asset": "plh_audio/topic_intros/w_consequence_intro.mp3",
       "intro_text": "Our actions have consequences: Some consequences happen naturally (“if you break something, you can’t use it anymore”). Other consequences we set as a family to motivate us to follow the rules (“if you come home late, you can’t go out with friends tomorrow”).\n\nHOW you set and use consequences together matters.\n\nGetting consequences right helps teens behave better and makes family life calmer.",
@@ -328,6 +337,7 @@
     },
     {
       "id": "w_safe",
+      "voice_name": "@global.female_adult_name_12",
       "activity_image_asset": "plh_images/workshop_modes/individual/explain.svg",
       "audio_asset": "plh_audio/topic_intros/w_safe_intro.mp3",
       "intro_text": "Teens can spend a lot of time outside the house or online, where it is harder for us to keep them safe. \n\nTalking together about safe and unsafe places, and how to prevent problems, really helps!",
@@ -363,6 +373,7 @@
     },
     {
       "id": "w_crisis",
+      "voice_name": "@global.female_adult_name_13",
       "activity_image_asset": "plh_images/workshop_modes/individual/explain.svg",
       "audio_asset": "plh_audio/topic_intros/w_crisis_intro.mp3",
       "intro_text": "All families experience crises. When we prepare together and know where to get help BEFORE something bad happens, we can overcome any crisis.",
@@ -399,6 +410,7 @@
     {
       "id": "w_celebrate",
       "activity_image_asset": "plh_images/workshop_modes/individual/final/wave.svg",
+      "voice_name": "@global.female_adult_name_14",
       "audio_asset": "plh_audio/topic_intros/w_celebrate_intro.mp3",
       "title": "@data.workshop.w_celebrate.title",
       "_translations": {
@@ -429,13 +441,12 @@
     },
     {
       "id": "w_srh",
+      "voice_name": "@global.female_adult_name_3",
       "activity_image_asset": "plh_images/workshop_modes/individual/explain.svg",
       "audio_asset": "plh_audio/topic_intros/w_srh_intro.mp3",
-      "intro_text": "Think back to your own teenage years: \n* Did you ever experience a difficult situation as a teenager around body changes? And what about relationships? \n* What kind of support or information do you wish you had at the time?\n* Do you think your teen may be experiencing any challenges in these areas?",
+      "intro_text": "Teenagers go through a lot of changes, both in their bodies and in how they feel and experience the world.",
       "_translations": {
-        "intro_text": {
-          "tz_sw": true
-        },
+        "intro_text": {},
         "text": {
           "tz_sw": true
         },
@@ -449,10 +460,10 @@
       },
       "_translatedFields": {
         "intro_text": {
-          "eng": "Think back to your own teenage years: \n* Did you ever experience a difficult situation as a teenager around body changes? And what about relationships? \n* What kind of support or information do you wish you had at the time?\n* Do you think your teen may be experiencing any challenges in these areas?"
+          "eng": "Teenagers go through a lot of changes, both in their bodies and in how they feel and experience the world."
         },
         "text": {
-          "eng": "Teenagers go through a lot of changes, both in their bodies and in how they feel and experience the world. By speaking with them, you can help them handle these changes well.\n\nLet your teen know you may not have all the answers, but you are there to support them and find solutions together. That way your teen knows you are there to listen and talk, will not judge or shame them, and can support them to make healthy and confident decisions."
+          "eng": "Think back to your own teenage years: \n* Did you ever experience a difficult situation as a teenager around body changes? And what about relationships? \n* What kind of support or information do you wish you had at the time?\n* Do you think your teen may be experiencing any challenges in these areas?"
         },
         "script": {
           "eng": "Today's topic is body changes and intimate relationships. \n\nTeenagers go through a lot of changes, both in their bodies and in how they feel and experience the world. By speaking with them you can help them handle this change as well. \n\nLet your teen know you may not have all the answers, but you are there to support them and find solutions together. That way your teen knows you are there to listen and talk. You will not judge or shame them and can support them to make healthy and confident decisions."
@@ -464,13 +475,14 @@
           "eng": "@global.tell_me_more_button"
         }
       },
-      "text": "Teenagers go through a lot of changes, both in their bodies and in how they feel and experience the world. By speaking with them, you can help them handle these changes well.\n\nLet your teen know you may not have all the answers, but you are there to support them and find solutions together. That way your teen knows you are there to listen and talk, will not judge or shame them, and can support them to make healthy and confident decisions.",
+      "text": "Think back to your own teenage years: \n* Did you ever experience a difficult situation as a teenager around body changes? And what about relationships? \n* What kind of support or information do you wish you had at the time?\n* Do you think your teen may be experiencing any challenges in these areas?",
       "script": "Today's topic is body changes and intimate relationships. \n\nTeenagers go through a lot of changes, both in their bodies and in how they feel and experience the world. By speaking with them you can help them handle this change as well. \n\nLet your teen know you may not have all the answers, but you are there to support them and find solutions together. That way your teen knows you are there to listen and talk. You will not judge or shame them and can support them to make healthy and confident decisions.",
       "title": "Why @data.workshop.w_srh.lower_case_title?",
       "intro_nav_button_completed": "@global.tell_me_more_button"
     },
     {
       "id": "w_svp",
+      "voice_name": "@global.female_adult_name_4",
       "activity_image_asset": "plh_images/workshop_modes/individual/explain.svg",
       "audio_asset": "plh_audio/topic_intros/w_svp_intro.mp3",
       "intro_text": "To keep our teens safe, we need to understand their reality and the potential risky situations they can find themselves in.\n\nWe can help our teens know how to use their thoughts, voice, AND body in dangerous situations. It makes a big difference!",
@@ -506,6 +518,7 @@
     },
     {
       "id": "w_grief",
+      "voice_name": "@global.female_adult_name_5",
       "activity_image_asset": "plh_images/workshop_modes/individual/explain.svg",
       "audio_asset": "plh_audio/topic_intros/w_grief_intro.mp3",
       "intro_text": "Grief affects us all in different ways. \n\nWhatever you feel, you are grieving in your own way, and that is okay.",
@@ -537,6 +550,7 @@
     },
     {
       "id": "w_learn",
+      "voice_name": "@global.female_adult_name_6",
       "activity_image_asset": "plh_images/workshop_modes/individual/explain.svg",
       "audio_asset": "plh_audio/topic_intros/w_learn_intro.mp3",
       "intro_text": "Did you know that your one-on-one time with your teen can help them at school?  Today we will share some ideas on how to do this.\n\nBy spending time with them, you teach them important life skills that will help them at school and at home.",
