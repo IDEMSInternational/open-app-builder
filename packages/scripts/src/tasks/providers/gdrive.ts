@@ -30,7 +30,41 @@ const download = (options: { folderId: string; filterFn?: any }) => {
     const filterFnBase64 = Buffer.from(filterFn.toString()).toString("base64");
     dlArgs += ` --filter-function-64 "${filterFnBase64}"`;
   }
-  gdriveExec("download", dlArgs);
+  /**
+   * added variables const downloadAResult
+   * original line: 'gdriveExec("download", dlArgs);'
+   * to ensure that we can track the return of this:  
+      const result = gdriveExec("download", dlArgs);
+      console.log(chalk.red(result)); 
+  // the error given is:
+  /**
+   *  ERROR! An error was encountered while executing
+      Error: ENOENT: no such file or directory, open '/Users/jodygyekye/idems/parenting-app-ui/.idems_app/deployments/debug/app_data/assets/contents.json'
+          at Object.openSync (node:fs:601:3)
+          at Object.writeFileSync (node:fs:2249:35)
+          at AssetsPostProcessor.writeAssetsContentsFiles (/Users/jodygyekye/idems/parenting-app-ui/packages/scripts/src/commands/app-data/postProcess/assets.ts:99:8)
+          at AssetsPostProcessor.run (/Users/jodygyekye/idems/parenting-app-ui/packages/scripts/src/commands/app-data/postProcess/assets.ts:82:10)
+          at Command.<anonymous> (/Users/jodygyekye/idems/parenting-app-ui/packages/scripts/src/commands/app-data/postProcess/assets.ts:48:38)
+          at Generator.next (<anonymous>)
+          at asyncGeneratorStep (/Users/jodygyekye/idems/parenting-app-ui/packages/scripts/src/commands/app-data/postProcess/assets.ts:23:28)
+          at _next (/Users/jodygyekye/idems/parenting-app-ui/packages/scripts/src/commands/app-data/postProcess/assets.ts:41:17)
+          at /Users/jodygyekye/idems/parenting-app-ui/packages/scripts/src/commands/app-data/postProcess/assets.ts:46:13
+          at new Promise (<anonymous>) {
+        errno: -2,
+        syscall: 'open',
+        code: 'ENOENT',
+        path: '/Users/jodygyekye/idems/parenting-app-ui/.idems_app/deployments/debug/app_data/assets/contents.json'
+      }
+      Cleaning up.
+      Exiting with error.
+  * To show the output path after running 'yarn workflow sync'
+  * One thing I noticed is that the error stems from being unable to generate an assets folder in the file path
+  *   Therefore, it struggles to
+  */
+  const result = gdriveExec("download", dlArgs);
+  console.log(chalk.red(result));
+  // console.log(`Here is the output path: ` + chalk.red(outputPath));
+
   return outputPath;
 };
 
