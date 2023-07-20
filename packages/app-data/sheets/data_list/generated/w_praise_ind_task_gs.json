@@ -30,13 +30,13 @@
       "together": true,
       "priority": 3,
       "has_single_task": true,
-      "title": "@data.workshop[@fields.current_workshop].relax_title",
+      "title": "@data.workshop_relax[@fields.current_workshop].activity_title",
       "_translations": {
         "title": {}
       },
       "_translatedFields": {
         "title": {
-          "eng": "@data.workshop[@fields.current_workshop].relax_title"
+          "eng": "@data.workshop_relax[@fields.current_workshop].activity_title"
         }
       },
       "template": "w_praise_relax",

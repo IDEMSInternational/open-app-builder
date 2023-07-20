@@ -8,11 +8,9 @@
       "id": "w_self_care",
       "number": 1,
       "group": "core",
-      "relax_data": "@data.relax.relax_5",
       "caregiver_testimonial_audio_asset": "plh_audio/testimonials/caregiver/caregiver_test_w_self_care.mp3",
       "teen_testimonial_audio_asset": "plh_audio/testimonials/teen/teen_test_w_self_care.mp3",
       "image_asset": "plh_images/workshops/w_self_care/tools.svg",
-      "relax_title": "@data.relax.relax_5.title",
       "title": "Welcome and Self-Care",
       "_translations": {
         "title": {
@@ -71,12 +69,10 @@
       "id": "w_1on1",
       "number": 2,
       "group": "core",
-      "relax_data": "@data.relax.relax_2",
       "something_fun_data": "@data.something_fun.co_chef",
       "caregiver_testimonial_audio_asset": "plh_audio/testimonials/caregiver/caregiver_test_w_1on1.mp3",
       "teen_testimonial_audio_asset": "plh_audio/testimonials/teen/teen_test_w_1on1.mp3",
       "image_asset": "plh_images/workshops/w_1on1/tools.svg",
-      "relax_title": "@data.relax.relax_2.title",
       "title": "One-on-One Time",
       "_translations": {
         "title": {
@@ -128,12 +124,10 @@
       "id": "w_praise",
       "number": 3,
       "group": "core",
-      "relax_data": "@data.relax.relax_3",
       "something_fun_data": "@data.something_fun.reflect_positive",
       "caregiver_testimonial_audio_asset": "plh_audio/testimonials/caregiver/caregiver_test_w_praise.mp3",
       "teen_testimonial_audio_asset": "plh_audio/testimonials/teen/teen_test_w_praise.mp3",
       "image_asset": "plh_images/workshops/w_praise/tools.svg",
-      "relax_title": "@data.relax.relax_3.title",
       "title": "Praise",
       "_translations": {
         "title": {
@@ -185,12 +179,10 @@
       "id": "w_instruct",
       "number": 4,
       "group": "core",
-      "relax_data": "@data.relax.relax_4",
       "something_fun_data": "@data.something_fun.dance_moves",
       "caregiver_testimonial_audio_asset": "plh_audio/testimonials/caregiver/caregiver_test_w_instruct.mp3",
       "teen_testimonial_audio_asset": "plh_audio/testimonials/teen/teen_test_w_instruct.mp3",
       "image_asset": "plh_images/workshops/w_instruct/tools.svg",
-      "relax_title": "@data.relax.relax_4.title",
       "title": "Positive Instructions",
       "_translations": {
         "title": {
@@ -242,12 +234,10 @@
       "id": "w_stress",
       "number": 5,
       "group": "core",
-      "relax_data": "@data.relax.relax_7",
       "something_fun_data": "@data.something_fun.check_in_chat",
       "caregiver_testimonial_audio_asset": "plh_audio/testimonials/caregiver/caregiver_test_w_stress.mp3",
       "teen_testimonial_audio_asset": "plh_audio/testimonials/teen/teen_test_w_stress.mp3",
       "image_asset": "plh_images/workshops/w_stress/tools.svg",
-      "relax_title": "@data.relax.relax_7.title",
       "title": "Managing Stress",
       "_translations": {
         "title": {
@@ -299,12 +289,10 @@
       "id": "w_solve",
       "number": 6,
       "group": "core",
-      "relax_data": "@data.relax.relax_11",
       "something_fun_data": "@data.something_fun.mirror",
       "caregiver_testimonial_audio_asset": "plh_audio/testimonials/caregiver/caregiver_test_w_solve.mp3",
       "teen_testimonial_audio_asset": "plh_audio/testimonials/teen/teen_test_w_solve.mp3",
       "image_asset": "plh_images/workshops/w_solve/tools.svg",
-      "relax_title": "@data.relax.relax_11.title",
       "title": "Problem Solving",
       "_translations": {
         "title": {
@@ -356,12 +344,10 @@
       "id": "w_money",
       "number": 7,
       "group": "core",
-      "relax_data": "@data.relax.relax_8",
       "something_fun_data": "@data.something_fun.dream_travel",
       "caregiver_testimonial_audio_asset": "plh_audio/testimonials/caregiver/caregiver_test_w_money.mp3",
       "teen_testimonial_audio_asset": "plh_audio/testimonials/teen/teen_test_w_money.mp3",
       "image_asset": "plh_images/workshops/w_money/tools.svg",
-      "relax_title": "@data.relax.relax_8.title",
       "title": "Family Budgets",
       "_translations": {
         "title": {
@@ -413,12 +399,10 @@
       "id": "w_rules",
       "number": 8,
       "group": "core",
-      "relax_data": "@data.relax.relax_9",
       "something_fun_data": "@data.something_fun.famous_party",
       "caregiver_testimonial_audio_asset": "plh_audio/testimonials/caregiver/caregiver_test_w_rules.mp3",
       "teen_testimonial_audio_asset": "plh_audio/testimonials/teen/teen_test_w_rules.mp3",
       "image_asset": "plh_images/workshops/w_rules/tools.svg",
-      "relax_title": "@data.relax.relax_9.title",
       "title": "Rules",
       "_translations": {
         "title": {
@@ -468,12 +452,10 @@
       "id": "w_consequence",
       "number": 9,
       "group": "core",
-      "relax_data": "@data.relax.relax_10",
       "something_fun_data": "@data.something_fun.two_truths",
       "caregiver_testimonial_audio_asset": "plh_audio/testimonials/caregiver/caregiver_test_w_consequence.mp3",
       "teen_testimonial_audio_asset": "plh_audio/testimonials/teen/teen_test_w_consequence.mp3",
       "image_asset": "plh_images/workshops/w_consequence/tools.svg",
-      "relax_title": "@data.relax.relax_10.title",
       "title": "Calm Consequences",
       "_translations": {
         "title": {
@@ -525,12 +507,10 @@
       "id": "w_safe",
       "number": 10,
       "group": "core",
-      "relax_data": "@data.relax.relax_12",
       "something_fun_data": "@data.something_fun.time_machine",
       "caregiver_testimonial_audio_asset": "plh_audio/testimonials/caregiver/caregiver_test_w_safe.mp3",
       "teen_testimonial_audio_asset": "plh_audio/testimonials/teen/teen_test_w_safe.mp3",
       "image_asset": "plh_images/workshops/w_safe/tools.svg",
-      "relax_title": "@data.relax.relax_12.title",
       "title": "Teen Safety",
       "_translations": {
         "title": {
@@ -582,12 +562,10 @@
       "id": "w_crisis",
       "number": 11,
       "group": "core",
-      "relax_data": "@data.relax.relax_13",
       "something_fun_data": "@data.something_fun.superpowers",
       "caregiver_testimonial_audio_asset": "plh_audio/testimonials/caregiver/caregiver_test_w_crisis.mp3",
       "teen_testimonial_audio_asset": "plh_audio/testimonials/teen/teen_test_w_crisis.mp3",
       "image_asset": "plh_images/workshops/w_crisis/tools.svg",
-      "relax_title": "@data.relax.relax_13.title",
       "title": "Dealing with Crisis",
       "_translations": {
         "title": {
@@ -639,10 +617,8 @@
       "id": "w_celebrate",
       "number": 12,
       "group": "core",
-      "relax_data": "@data.relax.relax_14",
       "something_fun_data": "@data.something_fun.get_active",
       "image_asset": "plh_images/workshops/w_celebrate/tools.svg",
-      "relax_title": "@data.relax.relax_14.title",
       "title": "Celebration and Next Steps",
       "_translations": {
         "title": {
@@ -680,10 +656,8 @@
       "id": "w_srh",
       "number": 13,
       "group": "extra",
-      "relax_data": "@data.relax.relax_15",
       "something_fun_data": "@data.something_fun.friendly_chat",
       "image_asset": "plh_images/workshops/w_srh/tools.svg",
-      "relax_title": "@data.relax.relax_15.title",
       "title": "Body Changes and Intimate Relationships",
       "_translations": {
         "title": {
@@ -735,10 +709,8 @@
       "id": "w_svp",
       "number": 14,
       "group": "extra",
-      "relax_data": "@data.relax.relax_17",
       "something_fun_data": "@data.something_fun.three_options",
       "image_asset": "plh_images/workshops/w_svp/tools.svg",
-      "relax_title": "@data.relax.relax_17.title",
       "title": "Staying Safe",
       "_translations": {
         "title": {
@@ -790,10 +762,8 @@
       "id": "w_grief",
       "number": 15,
       "group": "extra",
-      "relax_data": "@data.relax.relax_22",
       "something_fun_data": "@data.something_fun.whats_new",
       "image_asset": "plh_images/workshops/w_grief/tools.svg",
-      "relax_title": "@data.relax.relax_22.title",
       "title": "Coping with Grief",
       "_translations": {
         "title": {
@@ -845,10 +815,8 @@
       "id": "w_learn",
       "number": 16,
       "group": "play",
-      "relax_data": "@data.relax.relax_20",
       "something_fun_data": "@data.something_fun.doing_what",
       "image_asset": "plh_images/workshops/w_learn/tools.svg",
-      "relax_title": "@data.relax.relax_20.title",
       "title": "Helping Your Teen Learn",
       "_translations": {
         "title": {
