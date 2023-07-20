@@ -58,13 +58,18 @@ const download = (options: { folderId: string; filterFn?: any }) => {
       Cleaning up.
       Exiting with error.
   * To show the output path after running 'yarn workflow sync'
-  * One thing I noticed is that the error stems from being unable to generate an assets folder in the file path
-  *   Therefore, it struggles to
+  * One thing I noticed is that the error stems from being unable to generate a file or directory that would be accessed to be used
+  * At the time of testing, it was apparent that when 'yarn workflow sync' is executed, it fails to create a file that should be run:
+  *   - that way to resolve, i will use the fs-extra module to detect if the file exists or not, which is what i will work on tomorrow.
+  *   - shouldn't be too long. Was trying to use resources such as: 
+  *     - (https://stackoverflow.com/questions/71777616/enoent-no-such-file-or-directory-open-filename)
+  *     - (https://github.com/sindresorhus/load-json-file/issues/9)
+  *     - (https://github.com/dashersw/brain-bits/issues/3)
   */
   const result = gdriveExec("download", dlArgs);
   console.log(chalk.red(result));
   // console.log(`Here is the output path: ` + chalk.red(outputPath));
-
+  console.log(chalk.blueBright(outputPath));
   return outputPath;
 };
 
