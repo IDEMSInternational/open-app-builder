@@ -11,16 +11,12 @@
     border: 1px dashed transparent;
     border-radius: var(--ion-border-radius-secondary);
     position: relative;
-    .text{
-      white-space: pre-line; 
+    .text {
+      white-space: pre-line;
       text-align: center;
       font-size: var(--font-size-text-medium);
       line-height: var(--line-height-text-largest);
-
-      p {
-        margin-bottom: 0.75em 0 ;
-      }
-    }    
+    }
     .icon {
       @include mixins.small-square;
       position: absolute;
