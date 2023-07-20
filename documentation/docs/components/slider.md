@@ -1,4 +1,6 @@
 # Slider
+
+A slider refers to a user interface element or control that allows users to adjust and set a value along a visual scale. It typically consists of a horizontal or vertical bar with a movable thumb or handle that users can drag or slide to select a specific value within a predefined range. The slider is often used to enable users to fine-tune settings, make selections, or adjust numerical values. 
 ## Example
 
 | type      | name          |parameter_list                 |
