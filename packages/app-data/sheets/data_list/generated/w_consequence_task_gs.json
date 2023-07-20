@@ -4,6 +4,27 @@
   "flow_type": "data_list",
   "rows": [
     {
+      "id": "welcome_individual",
+      "individual": true,
+      "together": false,
+      "priority": 1,
+      "has_single_task": true,
+      "title": "How are you?",
+      "_translations": {
+        "title": {
+          "tz_sw": true
+        }
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "How are you?"
+        }
+      },
+      "template": "w_consequence_welcome_individual",
+      "completed_field": "task_gp_w_consequence_welcome_individual_completed",
+      "completed": "@fields.task_gp_w_consequence_welcome_individual_completed"
+    },
+    {
       "id": "care_together",
       "individual": false,
       "together": true,
@@ -158,27 +179,6 @@
       "template": "w_consequence_hp_review",
       "completed_field": "task_gp_w_consequence_hp_review_completed",
       "completed": "@fields.task_gp_w_consequence_hp_review_completed"
-    },
-    {
-      "id": "welcome_individual",
-      "individual": true,
-      "together": false,
-      "priority": 1,
-      "has_single_task": true,
-      "title": "How are you?",
-      "_translations": {
-        "title": {
-          "tz_sw": true
-        }
-      },
-      "_translatedFields": {
-        "title": {
-          "eng": "How are you?"
-        }
-      },
-      "template": "w_consequence_welcome_ind",
-      "completed_field": "task_gp_w_consequence_welcome_individual_completed",
-      "completed": "@fields.task_gp_w_consequence_welcome_individual_completed"
     },
     {
       "id": "read_1",
