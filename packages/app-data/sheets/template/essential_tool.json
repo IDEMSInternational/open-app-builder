@@ -15,6 +15,7 @@
     },
     {
       "type": "display_group",
+      "name": "dg",
       "parameter_list": {
         "style": "column @local.tool_style"
       },
@@ -25,7 +26,7 @@
           "parameter_list": {
             "style": "alternative"
           },
-          "_nested_name": "display_group.title"
+          "_nested_name": "dg.title"
         },
         {
           "type": "text",
@@ -33,17 +34,66 @@
           "parameter_list": {
             "style": "alternative"
           },
-          "_nested_name": "display_group.text"
+          "_nested_name": "dg.text"
+        },
+        {
+          "name": "image_asset",
+          "type": "set_variable",
+          "_nested_name": "dg.image_asset"
+        },
+        {
+          "type": "image",
+          "name": "image",
+          "value": "@local.image_asset",
+          "_translations": {
+            "value": {}
+          },
+          "condition": "!!(@local.image_asset)",
+          "_nested_name": "dg.image",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@local.image_asset",
+                "matchedExpression": "@local.image_asset",
+                "type": "local",
+                "fieldName": "image_asset"
+              }
+            ],
+            "condition": [
+              {
+                "fullExpression": "!!(@local.image_asset)",
+                "matchedExpression": "@local.image_asset",
+                "type": "local",
+                "fieldName": "image_asset"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@local.image_asset": [
+              "value",
+              "condition"
+            ]
+          }
         },
         {
           "name": "button_text",
           "type": "set_variable",
-          "_nested_name": "display_group.button_text"
+          "_nested_name": "dg.button_text"
         },
         {
-          "name": "button_actions",
+          "name": "button_set_field_name",
           "type": "set_variable",
-          "_nested_name": "display_group.button_actions"
+          "_nested_name": "dg.button_set_field_name"
+        },
+        {
+          "name": "button_set_field_value",
+          "type": "set_variable",
+          "_nested_name": "dg.button_set_field_value"
+        },
+        {
+          "name": "button_go_to_template",
+          "type": "set_variable",
+          "_nested_name": "dg.button_go_to_template"
         },
         {
           "type": "button",
@@ -55,17 +105,19 @@
           "action_list": [
             {
               "trigger": "click",
-              "action_id": "@local.button_actions",
-              "args": [],
-              "_raw": "@local.button_actions",
-              "_cleaned": "click | @local.button_actions"
+              "action_id": "go_to",
+              "args": [
+                "@local.button_go_to_template"
+              ],
+              "_raw": "click | go_to: @local.button_go_to_template",
+              "_cleaned": "click | go_to: @local.button_go_to_template"
             }
           ],
-          "condition": "!!(@local.button_text)",
+          "condition": "!!(@local.button_text) && !(@local.button_set_field_name)",
           "parameter_list": {
             "style": "nested_color"
           },
-          "_nested_name": "display_group.button",
+          "_nested_name": "dg.button",
           "_dynamicFields": {
             "value": [
               {
@@ -77,38 +129,46 @@
             ],
             "action_list": {
               "0": {
-                "action_id": [
-                  {
-                    "fullExpression": "@local.button_actions",
-                    "matchedExpression": "@local.button_actions",
-                    "type": "local",
-                    "fieldName": "button_actions"
-                  }
-                ],
+                "args": {
+                  "0": [
+                    {
+                      "fullExpression": "@local.button_go_to_template",
+                      "matchedExpression": "@local.button_go_to_template",
+                      "type": "local",
+                      "fieldName": "button_go_to_template"
+                    }
+                  ]
+                },
                 "_raw": [
                   {
-                    "fullExpression": "@local.button_actions",
-                    "matchedExpression": "@local.button_actions",
+                    "fullExpression": "click | go_to: @local.button_go_to_template",
+                    "matchedExpression": "@local.button_go_to_template",
                     "type": "local",
-                    "fieldName": "button_actions"
+                    "fieldName": "button_go_to_template"
                   }
                 ],
                 "_cleaned": [
                   {
-                    "fullExpression": "click | @local.button_actions",
-                    "matchedExpression": "@local.button_actions",
+                    "fullExpression": "click | go_to: @local.button_go_to_template",
+                    "matchedExpression": "@local.button_go_to_template",
                     "type": "local",
-                    "fieldName": "button_actions"
+                    "fieldName": "button_go_to_template"
                   }
                 ]
               }
             },
             "condition": [
               {
-                "fullExpression": "!!(@local.button_text)",
+                "fullExpression": "!!(@local.button_text) && !(@local.button_set_field_name)",
                 "matchedExpression": "@local.button_text",
                 "type": "local",
                 "fieldName": "button_text"
+              },
+              {
+                "fullExpression": "!!(@local.button_text) && !(@local.button_set_field_name)",
+                "matchedExpression": "@local.button_set_field_name",
+                "type": "local",
+                "fieldName": "button_set_field_name"
               }
             ]
           },
@@ -117,16 +177,176 @@
               "value",
               "condition"
             ],
-            "@local.button_actions": [
-              "action_list.0.action_id",
+            "@local.button_go_to_template": [
+              "action_list.0.args.0",
               "action_list.0._raw",
               "action_list.0._cleaned"
+            ],
+            "@local.button_set_field_name": [
+              "condition"
+            ]
+          }
+        },
+        {
+          "type": "button",
+          "name": "button",
+          "value": "@local.button_text",
+          "_translations": {
+            "value": {}
+          },
+          "action_list": [
+            {
+              "trigger": "click",
+              "action_id": "set_field",
+              "args": [
+                "@local.button_set_field_name",
+                "@local.button_set_field_value"
+              ],
+              "_raw": "click | set_field: @local.button_set_field_name: @local.button_set_field_value",
+              "_cleaned": "click | set_field: @local.button_set_field_name: @local.button_set_field_value"
+            },
+            {
+              "trigger": "click",
+              "action_id": "go_to",
+              "args": [
+                "@local.button_go_to_template"
+              ],
+              "_raw": "click | go_to: @local.button_go_to_template",
+              "_cleaned": "click | go_to: @local.button_go_to_template"
+            }
+          ],
+          "condition": "!!(@local.button_text) && !!(@local.button_set_field_name)",
+          "parameter_list": {
+            "style": "nested_color"
+          },
+          "_nested_name": "dg.button",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@local.button_text",
+                "matchedExpression": "@local.button_text",
+                "type": "local",
+                "fieldName": "button_text"
+              }
+            ],
+            "action_list": {
+              "0": {
+                "args": {
+                  "0": [
+                    {
+                      "fullExpression": "@local.button_set_field_name",
+                      "matchedExpression": "@local.button_set_field_name",
+                      "type": "local",
+                      "fieldName": "button_set_field_name"
+                    }
+                  ],
+                  "1": [
+                    {
+                      "fullExpression": "@local.button_set_field_value",
+                      "matchedExpression": "@local.button_set_field_value",
+                      "type": "local",
+                      "fieldName": "button_set_field_value"
+                    }
+                  ]
+                },
+                "_raw": [
+                  {
+                    "fullExpression": "click | set_field: @local.button_set_field_name: @local.button_set_field_value",
+                    "matchedExpression": "@local.button_set_field_name",
+                    "type": "local",
+                    "fieldName": "button_set_field_name"
+                  },
+                  {
+                    "fullExpression": "click | set_field: @local.button_set_field_name: @local.button_set_field_value",
+                    "matchedExpression": "@local.button_set_field_value",
+                    "type": "local",
+                    "fieldName": "button_set_field_value"
+                  }
+                ],
+                "_cleaned": [
+                  {
+                    "fullExpression": "click | set_field: @local.button_set_field_name: @local.button_set_field_value",
+                    "matchedExpression": "@local.button_set_field_name",
+                    "type": "local",
+                    "fieldName": "button_set_field_name"
+                  },
+                  {
+                    "fullExpression": "click | set_field: @local.button_set_field_name: @local.button_set_field_value",
+                    "matchedExpression": "@local.button_set_field_value",
+                    "type": "local",
+                    "fieldName": "button_set_field_value"
+                  }
+                ]
+              },
+              "1": {
+                "args": {
+                  "0": [
+                    {
+                      "fullExpression": "@local.button_go_to_template",
+                      "matchedExpression": "@local.button_go_to_template",
+                      "type": "local",
+                      "fieldName": "button_go_to_template"
+                    }
+                  ]
+                },
+                "_raw": [
+                  {
+                    "fullExpression": "click | go_to: @local.button_go_to_template",
+                    "matchedExpression": "@local.button_go_to_template",
+                    "type": "local",
+                    "fieldName": "button_go_to_template"
+                  }
+                ],
+                "_cleaned": [
+                  {
+                    "fullExpression": "click | go_to: @local.button_go_to_template",
+                    "matchedExpression": "@local.button_go_to_template",
+                    "type": "local",
+                    "fieldName": "button_go_to_template"
+                  }
+                ]
+              }
+            },
+            "condition": [
+              {
+                "fullExpression": "!!(@local.button_text) && !!(@local.button_set_field_name)",
+                "matchedExpression": "@local.button_text",
+                "type": "local",
+                "fieldName": "button_text"
+              },
+              {
+                "fullExpression": "!!(@local.button_text) && !!(@local.button_set_field_name)",
+                "matchedExpression": "@local.button_set_field_name",
+                "type": "local",
+                "fieldName": "button_set_field_name"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@local.button_text": [
+              "value",
+              "condition"
+            ],
+            "@local.button_set_field_name": [
+              "action_list.0.args.0",
+              "action_list.0._raw",
+              "action_list.0._cleaned",
+              "condition"
+            ],
+            "@local.button_set_field_value": [
+              "action_list.0.args.1",
+              "action_list.0._raw",
+              "action_list.0._cleaned"
+            ],
+            "@local.button_go_to_template": [
+              "action_list.1.args.0",
+              "action_list.1._raw",
+              "action_list.1._cleaned"
             ]
           }
         }
       ],
-      "name": "display_group",
-      "_nested_name": "display_group",
+      "_nested_name": "dg",
       "_dynamicFields": {
         "parameter_list": {
           "style": [

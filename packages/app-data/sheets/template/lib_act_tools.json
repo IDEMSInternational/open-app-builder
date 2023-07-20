@@ -4,32 +4,58 @@
   "status": "released",
   "rows": [
     {
-      "name": "workshop_data",
-      "exclude_from_translation": true,
-      "type": "set_variable",
-      "_nested_name": "workshop_data"
-    },
-    {
-      "name": "workshop_id",
-      "value": "@local.workshop_data.id",
+      "name": "workshop",
+      "value": "w_1on1",
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
       "type": "set_variable",
-      "_nested_name": "workshop_id",
+      "_nested_name": "workshop"
+    },
+    {
+      "name": "workshop_concat",
+      "value": "workshop.@local.workshop",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "workshop_concat",
       "_dynamicFields": {
         "value": [
           {
-            "fullExpression": "@local.workshop_data.id",
-            "matchedExpression": "@local.workshop_data.id",
+            "fullExpression": "workshop.@local.workshop",
+            "matchedExpression": "@local.workshop",
             "type": "local",
-            "fieldName": "workshop_data"
+            "fieldName": "workshop"
           }
         ]
       },
       "_dynamicDependencies": {
-        "@local.workshop_data.id": [
+        "@local.workshop": [
+          "value"
+        ]
+      }
+    },
+    {
+      "name": "workshop_data",
+      "value": "@data.@local.workshop_concat",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "workshop_data",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@data.@local.workshop_concat",
+            "matchedExpression": "@local.workshop_concat",
+            "type": "local",
+            "fieldName": "workshop_concat"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.workshop_concat": [
           "value"
         ]
       }
@@ -46,7 +72,7 @@
     },
     {
       "name": "workshop_tools",
-      "value": "@local.workshop_id@local.tools",
+      "value": "@local.workshop@local.tools",
       "_translations": {
         "value": {}
       },
@@ -56,13 +82,13 @@
       "_dynamicFields": {
         "value": [
           {
-            "fullExpression": "@local.workshop_id@local.tools",
-            "matchedExpression": "@local.workshop_id",
+            "fullExpression": "@local.workshop@local.tools",
+            "matchedExpression": "@local.workshop",
             "type": "local",
-            "fieldName": "workshop_id"
+            "fieldName": "workshop"
           },
           {
-            "fullExpression": "@local.workshop_id@local.tools",
+            "fullExpression": "@local.workshop@local.tools",
             "matchedExpression": "@local.tools",
             "type": "local",
             "fieldName": "tools"
@@ -70,7 +96,7 @@
         ]
       },
       "_dynamicDependencies": {
-        "@local.workshop_id": [
+        "@local.workshop": [
           "value"
         ],
         "@local.tools": [
@@ -80,7 +106,7 @@
     },
     {
       "name": "tools_concat",
-      "value": "tools.@local.workshop_id",
+      "value": "tools.@local.workshop",
       "_translations": {
         "value": {}
       },
@@ -89,15 +115,15 @@
       "_dynamicFields": {
         "value": [
           {
-            "fullExpression": "tools.@local.workshop_id",
-            "matchedExpression": "@local.workshop_id",
+            "fullExpression": "tools.@local.workshop",
+            "matchedExpression": "@local.workshop",
             "type": "local",
-            "fieldName": "workshop_id"
+            "fieldName": "workshop"
           }
         ]
       },
       "_dynamicDependencies": {
-        "@local.workshop_id": [
+        "@local.workshop": [
           "value"
         ]
       }

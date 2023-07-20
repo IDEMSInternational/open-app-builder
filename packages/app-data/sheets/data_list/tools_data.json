@@ -6,9 +6,9 @@
   "rows": [
     {
       "id": "w_self_care",
-      "tool_1_button_actions": "click | go_to:w_self_care_relax",
-      "tool_2_button_actions": "click | go_to:w_self_care_recognise",
-      "tool_3_button_actions": "click | go_to:w_self_care_reward",
+      "tool_1_button_go_to_template": "w_self_care_relax",
+      "tool_2_button_go_to_template": "w_self_care_recognise",
+      "tool_3_button_go_to_template": "w_self_care_reward",
       "title": "How to do self-care",
       "_translations": {
         "title": {
@@ -386,10 +386,16 @@
     },
     {
       "id": "w_money",
-      "tool_1_button_actions": "click | go_to:w_money_learn_2_temp; \nclick | set_field:w_money_path:family",
-      "tool_2_button_actions": "click | go_to:w_money_learn_3_temp; \nclick | set_field:w_money_path:family",
-      "tool_3_button_actions": "click | go_to:w_money_learn_4_temp; \nclick | set_field:w_money_path:family",
-      "tool_4_button_actions": "click | go_to:w_money_learn_5_temp; \nclick | set_field:w_money_path:family",
+      "tool_1_button_go_to_template": "w_money_learn_2_temp",
+      "tool_2_button_set_field_name": "w_money_path",
+      "tool_2_button_set_field_value": "family",
+      "tool_2_button_go_to_template": "w_money_learn_3_temp",
+      "tool_3_button_set_field_name": "w_money_path",
+      "tool_3_button_set_field_value": "family",
+      "tool_3_button_go_to_template": "w_money_learn_4_temp",
+      "tool_3_button_set_field_name_1": "w_money_path",
+      "tool_3_button_set_field_value_1": "family",
+      "tool_4_button_go_to_template": "w_money_learn_5_temp",
       "title": "How to budget & save",
       "_translations": {
         "title": {
@@ -580,9 +586,9 @@
     },
     {
       "id": "w_safe",
-      "tool_1_button_actions": "click | go_to:w_safe_learn_individual_temp",
-      "tool_2_button_actions": "click | go_to:w_rules_read_2",
-      "tool_3_image_asset": "@global.safety_word Story",
+      "tool_1_button_go_to_template": "w_safe_learn_individual_temp",
+      "tool_2_button_go_to_template": "w_rules_read_2",
+      "tool_3_button_go_to_template": "w_stress_read_3",
       "title": "How to keep your teen safe",
       "_translations": {
         "title": {
@@ -604,7 +610,9 @@
         "tool_3_text": {
           "tz_sw": true
         },
-        "tool_3_button_text": {},
+        "tool_3_button_text": {
+          "tz_sw": true
+        },
         "bottom_text": {
           "tz_sw": true
         }
@@ -638,7 +646,7 @@
           "eng": "Agree on a @global.safety_word. If something happens that makes your teen upset, uncomfortable or scared, they can say the @global.safety_word  and you will help them without getting angry or punishing them, even if they were doing something wrong. \n\nRemember the story about the @global.safety_word? See it again here."
         },
         "tool_3_button_text": {
-          "eng": "click | go_to:w_stress_read_3"
+          "eng": "@global.safety_word Story"
         },
         "bottom_text": {
           "eng": "Digital parenting is just like parenting in the real world. You have taken a BIG STEP to keeping your teen safe in the community AND online. Good for you!"
@@ -652,7 +660,7 @@
       "tool_2_button_text": "Online Safety Story",
       "tool_3_title": "@global.safety_word",
       "tool_3_text": "Agree on a @global.safety_word. If something happens that makes your teen upset, uncomfortable or scared, they can say the @global.safety_word  and you will help them without getting angry or punishing them, even if they were doing something wrong. \n\nRemember the story about the @global.safety_word? See it again here.",
-      "tool_3_button_text": "click | go_to:w_stress_read_3",
+      "tool_3_button_text": "@global.safety_word Story",
       "bottom_text": "Digital parenting is just like parenting in the real world. You have taken a BIG STEP to keeping your teen safe in the community AND online. Good for you!"
     },
     {

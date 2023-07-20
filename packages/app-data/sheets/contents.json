@@ -1434,6 +1434,39 @@
       },
       "_xlsxPath": "global/top_templates/workshop_templates/gen_workshop_act.xlsx"
     },
+    "gen_lib_act_tools": {
+      "flow_type": "generator",
+      "flow_name": "gen_lib_act_tools",
+      "parameter_list": {
+        "input_data_list": "workshop_data",
+        "output_flow_name": "lib_act_{@gen.id}",
+        "output_flow_type": "template",
+        "output_flow_subtype": "generated"
+      },
+      "_xlsxPath": "global/top_templates/parent_centre_templates/gen_lib_act_tools.xlsx"
+    },
+    "gen_tools": {
+      "flow_type": "generator",
+      "flow_name": "gen_tools",
+      "parameter_list": {
+        "input_data_list": "workshop_data",
+        "output_flow_name": "{@gen.id}_tools",
+        "output_flow_type": "template",
+        "output_flow_subtype": "generated"
+      },
+      "_xlsxPath": "global/top_templates/workshop_templates/gen_workshop_act.xlsx"
+    },
+    "gen_tools_activity": {
+      "flow_type": "generator",
+      "flow_name": "gen_tools_activity",
+      "parameter_list": {
+        "input_data_list": "workshop_data",
+        "output_flow_name": "{@gen.id}_tools_activity",
+        "output_flow_type": "template",
+        "output_flow_subtype": "generated"
+      },
+      "_xlsxPath": "global/top_templates/workshop_templates/gen_workshop_act.xlsx"
+    },
     "gen_welcome_individual": {
       "flow_type": "generator",
       "flow_name": "gen_welcome_individual",
@@ -2178,6 +2211,86 @@
       "flow_name": "footer",
       "_xlsxPath": "global_modular/core_templates/footer.xlsx"
     },
+    "lib_act_w_1on1": {
+      "flow_name": "lib_act_w_1on1",
+      "flow_subtype": "generated",
+      "flow_type": "template"
+    },
+    "lib_act_w_celebrate": {
+      "flow_name": "lib_act_w_celebrate",
+      "flow_subtype": "generated",
+      "flow_type": "template"
+    },
+    "lib_act_w_consequence": {
+      "flow_name": "lib_act_w_consequence",
+      "flow_subtype": "generated",
+      "flow_type": "template"
+    },
+    "lib_act_w_crisis": {
+      "flow_name": "lib_act_w_crisis",
+      "flow_subtype": "generated",
+      "flow_type": "template"
+    },
+    "lib_act_w_grief": {
+      "flow_name": "lib_act_w_grief",
+      "flow_subtype": "generated",
+      "flow_type": "template"
+    },
+    "lib_act_w_instruct": {
+      "flow_name": "lib_act_w_instruct",
+      "flow_subtype": "generated",
+      "flow_type": "template"
+    },
+    "lib_act_w_learn": {
+      "flow_name": "lib_act_w_learn",
+      "flow_subtype": "generated",
+      "flow_type": "template"
+    },
+    "lib_act_w_money": {
+      "flow_name": "lib_act_w_money",
+      "flow_subtype": "generated",
+      "flow_type": "template"
+    },
+    "lib_act_w_praise": {
+      "flow_name": "lib_act_w_praise",
+      "flow_subtype": "generated",
+      "flow_type": "template"
+    },
+    "lib_act_w_rules": {
+      "flow_name": "lib_act_w_rules",
+      "flow_subtype": "generated",
+      "flow_type": "template"
+    },
+    "lib_act_w_safe": {
+      "flow_name": "lib_act_w_safe",
+      "flow_subtype": "generated",
+      "flow_type": "template"
+    },
+    "lib_act_w_self_care": {
+      "flow_name": "lib_act_w_self_care",
+      "flow_subtype": "generated",
+      "flow_type": "template"
+    },
+    "lib_act_w_solve": {
+      "flow_name": "lib_act_w_solve",
+      "flow_subtype": "generated",
+      "flow_type": "template"
+    },
+    "lib_act_w_srh": {
+      "flow_name": "lib_act_w_srh",
+      "flow_subtype": "generated",
+      "flow_type": "template"
+    },
+    "lib_act_w_stress": {
+      "flow_name": "lib_act_w_stress",
+      "flow_subtype": "generated",
+      "flow_type": "template"
+    },
+    "lib_act_w_svp": {
+      "flow_name": "lib_act_w_svp",
+      "flow_subtype": "generated",
+      "flow_type": "template"
+    },
     "w_1on1_ending": {
       "flow_name": "w_1on1_ending",
       "flow_subtype": "generated",
@@ -2195,6 +2308,16 @@
     },
     "w_1on1_relax": {
       "flow_name": "w_1on1_relax",
+      "flow_subtype": "generated",
+      "flow_type": "template"
+    },
+    "w_1on1_tools": {
+      "flow_name": "w_1on1_tools",
+      "flow_subtype": "generated",
+      "flow_type": "template"
+    },
+    "w_1on1_tools_activity": {
+      "flow_name": "w_1on1_tools_activity",
       "flow_subtype": "generated",
       "flow_type": "template"
     },
@@ -2223,6 +2346,16 @@
       "flow_subtype": "generated",
       "flow_type": "template"
     },
+    "w_celebrate_tools": {
+      "flow_name": "w_celebrate_tools",
+      "flow_subtype": "generated",
+      "flow_type": "template"
+    },
+    "w_celebrate_tools_activity": {
+      "flow_name": "w_celebrate_tools_activity",
+      "flow_subtype": "generated",
+      "flow_type": "template"
+    },
     "w_celebrate_welcome_individual": {
       "flow_name": "w_celebrate_welcome_individual",
       "flow_subtype": "generated",
@@ -2245,6 +2378,16 @@
     },
     "w_consequence_relax": {
       "flow_name": "w_consequence_relax",
+      "flow_subtype": "generated",
+      "flow_type": "template"
+    },
+    "w_consequence_tools": {
+      "flow_name": "w_consequence_tools",
+      "flow_subtype": "generated",
+      "flow_type": "template"
+    },
+    "w_consequence_tools_activity": {
+      "flow_name": "w_consequence_tools_activity",
       "flow_subtype": "generated",
       "flow_type": "template"
     },
@@ -2273,6 +2416,16 @@
       "flow_subtype": "generated",
       "flow_type": "template"
     },
+    "w_crisis_tools": {
+      "flow_name": "w_crisis_tools",
+      "flow_subtype": "generated",
+      "flow_type": "template"
+    },
+    "w_crisis_tools_activity": {
+      "flow_name": "w_crisis_tools_activity",
+      "flow_subtype": "generated",
+      "flow_type": "template"
+    },
     "w_crisis_welcome_individual": {
       "flow_name": "w_crisis_welcome_individual",
       "flow_subtype": "generated",
@@ -2295,6 +2448,16 @@
     },
     "w_grief_relax": {
       "flow_name": "w_grief_relax",
+      "flow_subtype": "generated",
+      "flow_type": "template"
+    },
+    "w_grief_tools": {
+      "flow_name": "w_grief_tools",
+      "flow_subtype": "generated",
+      "flow_type": "template"
+    },
+    "w_grief_tools_activity": {
+      "flow_name": "w_grief_tools_activity",
       "flow_subtype": "generated",
       "flow_type": "template"
     },
@@ -2323,6 +2486,16 @@
       "flow_subtype": "generated",
       "flow_type": "template"
     },
+    "w_instruct_tools": {
+      "flow_name": "w_instruct_tools",
+      "flow_subtype": "generated",
+      "flow_type": "template"
+    },
+    "w_instruct_tools_activity": {
+      "flow_name": "w_instruct_tools_activity",
+      "flow_subtype": "generated",
+      "flow_type": "template"
+    },
     "w_instruct_welcome_individual": {
       "flow_name": "w_instruct_welcome_individual",
       "flow_subtype": "generated",
@@ -2345,6 +2518,16 @@
     },
     "w_learn_relax": {
       "flow_name": "w_learn_relax",
+      "flow_subtype": "generated",
+      "flow_type": "template"
+    },
+    "w_learn_tools": {
+      "flow_name": "w_learn_tools",
+      "flow_subtype": "generated",
+      "flow_type": "template"
+    },
+    "w_learn_tools_activity": {
+      "flow_name": "w_learn_tools_activity",
       "flow_subtype": "generated",
       "flow_type": "template"
     },
@@ -2373,6 +2556,16 @@
       "flow_subtype": "generated",
       "flow_type": "template"
     },
+    "w_money_tools": {
+      "flow_name": "w_money_tools",
+      "flow_subtype": "generated",
+      "flow_type": "template"
+    },
+    "w_money_tools_activity": {
+      "flow_name": "w_money_tools_activity",
+      "flow_subtype": "generated",
+      "flow_type": "template"
+    },
     "w_money_welcome_individual": {
       "flow_name": "w_money_welcome_individual",
       "flow_subtype": "generated",
@@ -2395,6 +2588,16 @@
     },
     "w_praise_relax": {
       "flow_name": "w_praise_relax",
+      "flow_subtype": "generated",
+      "flow_type": "template"
+    },
+    "w_praise_tools": {
+      "flow_name": "w_praise_tools",
+      "flow_subtype": "generated",
+      "flow_type": "template"
+    },
+    "w_praise_tools_activity": {
+      "flow_name": "w_praise_tools_activity",
       "flow_subtype": "generated",
       "flow_type": "template"
     },
@@ -2423,6 +2626,16 @@
       "flow_subtype": "generated",
       "flow_type": "template"
     },
+    "w_rules_tools": {
+      "flow_name": "w_rules_tools",
+      "flow_subtype": "generated",
+      "flow_type": "template"
+    },
+    "w_rules_tools_activity": {
+      "flow_name": "w_rules_tools_activity",
+      "flow_subtype": "generated",
+      "flow_type": "template"
+    },
     "w_rules_welcome_individual": {
       "flow_name": "w_rules_welcome_individual",
       "flow_subtype": "generated",
@@ -2445,6 +2658,16 @@
     },
     "w_safe_relax": {
       "flow_name": "w_safe_relax",
+      "flow_subtype": "generated",
+      "flow_type": "template"
+    },
+    "w_safe_tools": {
+      "flow_name": "w_safe_tools",
+      "flow_subtype": "generated",
+      "flow_type": "template"
+    },
+    "w_safe_tools_activity": {
+      "flow_name": "w_safe_tools_activity",
       "flow_subtype": "generated",
       "flow_type": "template"
     },
@@ -2473,6 +2696,16 @@
       "flow_subtype": "generated",
       "flow_type": "template"
     },
+    "w_self_care_tools": {
+      "flow_name": "w_self_care_tools",
+      "flow_subtype": "generated",
+      "flow_type": "template"
+    },
+    "w_self_care_tools_activity": {
+      "flow_name": "w_self_care_tools_activity",
+      "flow_subtype": "generated",
+      "flow_type": "template"
+    },
     "w_self_care_welcome_individual": {
       "flow_name": "w_self_care_welcome_individual",
       "flow_subtype": "generated",
@@ -2495,6 +2728,16 @@
     },
     "w_solve_relax": {
       "flow_name": "w_solve_relax",
+      "flow_subtype": "generated",
+      "flow_type": "template"
+    },
+    "w_solve_tools": {
+      "flow_name": "w_solve_tools",
+      "flow_subtype": "generated",
+      "flow_type": "template"
+    },
+    "w_solve_tools_activity": {
+      "flow_name": "w_solve_tools_activity",
       "flow_subtype": "generated",
       "flow_type": "template"
     },
@@ -2523,6 +2766,16 @@
       "flow_subtype": "generated",
       "flow_type": "template"
     },
+    "w_srh_tools": {
+      "flow_name": "w_srh_tools",
+      "flow_subtype": "generated",
+      "flow_type": "template"
+    },
+    "w_srh_tools_activity": {
+      "flow_name": "w_srh_tools_activity",
+      "flow_subtype": "generated",
+      "flow_type": "template"
+    },
     "w_srh_welcome_individual": {
       "flow_name": "w_srh_welcome_individual",
       "flow_subtype": "generated",
@@ -2548,6 +2801,16 @@
       "flow_subtype": "generated",
       "flow_type": "template"
     },
+    "w_stress_tools": {
+      "flow_name": "w_stress_tools",
+      "flow_subtype": "generated",
+      "flow_type": "template"
+    },
+    "w_stress_tools_activity": {
+      "flow_name": "w_stress_tools_activity",
+      "flow_subtype": "generated",
+      "flow_type": "template"
+    },
     "w_stress_welcome_individual": {
       "flow_name": "w_stress_welcome_individual",
       "flow_subtype": "generated",
@@ -2570,6 +2833,16 @@
     },
     "w_svp_relax": {
       "flow_name": "w_svp_relax",
+      "flow_subtype": "generated",
+      "flow_type": "template"
+    },
+    "w_svp_tools": {
+      "flow_name": "w_svp_tools",
+      "flow_subtype": "generated",
+      "flow_type": "template"
+    },
+    "w_svp_tools_activity": {
+      "flow_name": "w_svp_tools_activity",
       "flow_subtype": "generated",
       "flow_type": "template"
     },
@@ -2707,66 +2980,6 @@
       "flow_type": "template",
       "flow_name": "lib_act_tools",
       "_xlsxPath": "global/core_templates/core_templates_essential_tools.xlsx"
-    },
-    "lib_act_w_1on1": {
-      "flow_type": "template",
-      "flow_name": "lib_act_w_1on1",
-      "_xlsxPath": "global/top_templates/parent_centre_templates/databank_essential_tools.xlsx"
-    },
-    "lib_act_w_celebrate": {
-      "flow_type": "template",
-      "flow_name": "lib_act_w_celebrate",
-      "_xlsxPath": "global/top_templates/parent_centre_templates/databank_essential_tools.xlsx"
-    },
-    "lib_act_w_consequence": {
-      "flow_type": "template",
-      "flow_name": "lib_act_w_consequence",
-      "_xlsxPath": "global/top_templates/parent_centre_templates/databank_essential_tools.xlsx"
-    },
-    "lib_act_w_crisis": {
-      "flow_type": "template",
-      "flow_name": "lib_act_w_crisis",
-      "_xlsxPath": "global/top_templates/parent_centre_templates/databank_essential_tools.xlsx"
-    },
-    "lib_act_w_instruct": {
-      "flow_type": "template",
-      "flow_name": "lib_act_w_instruct",
-      "_xlsxPath": "global/top_templates/parent_centre_templates/databank_essential_tools.xlsx"
-    },
-    "lib_act_w_money": {
-      "flow_type": "template",
-      "flow_name": "lib_act_w_money",
-      "_xlsxPath": "global/top_templates/parent_centre_templates/databank_essential_tools.xlsx"
-    },
-    "lib_act_w_praise": {
-      "flow_type": "template",
-      "flow_name": "lib_act_w_praise",
-      "_xlsxPath": "global/top_templates/parent_centre_templates/databank_essential_tools.xlsx"
-    },
-    "lib_act_w_rules": {
-      "flow_type": "template",
-      "flow_name": "lib_act_w_rules",
-      "_xlsxPath": "global/top_templates/parent_centre_templates/databank_essential_tools.xlsx"
-    },
-    "lib_act_w_safe": {
-      "flow_type": "template",
-      "flow_name": "lib_act_w_safe",
-      "_xlsxPath": "global/top_templates/parent_centre_templates/databank_essential_tools.xlsx"
-    },
-    "lib_act_w_self_care": {
-      "flow_type": "template",
-      "flow_name": "lib_act_w_self_care",
-      "_xlsxPath": "global/top_templates/parent_centre_templates/databank_essential_tools.xlsx"
-    },
-    "lib_act_w_solve": {
-      "flow_type": "template",
-      "flow_name": "lib_act_w_solve",
-      "_xlsxPath": "global/top_templates/parent_centre_templates/databank_essential_tools.xlsx"
-    },
-    "lib_act_w_stress": {
-      "flow_type": "template",
-      "flow_name": "lib_act_w_stress",
-      "_xlsxPath": "global/top_templates/parent_centre_templates/databank_essential_tools.xlsx"
     },
     "library_activity": {
       "flow_type": "template",
@@ -3624,18 +3837,6 @@
       "flow_name": "w_1on1_talk_pop",
       "_xlsxPath": "global/top_templates/workshop_templates/workshop_1on1.xlsx"
     },
-    "w_1on1_tools": {
-      "flow_type": "template",
-      "module": "1on1",
-      "flow_name": "w_1on1_tools",
-      "_xlsxPath": "global/top_templates/workshop_templates/workshop_1on1.xlsx"
-    },
-    "w_1on1_tools_activity": {
-      "flow_type": "template",
-      "module": "1on1",
-      "flow_name": "w_1on1_tools_activity",
-      "_xlsxPath": "global/top_templates/workshop_templates/workshop_1on1.xlsx"
-    },
     "w_celebrate_care_together": {
       "flow_type": "template",
       "module": "celebrate",
@@ -3694,18 +3895,6 @@
       "flow_type": "template",
       "module": "celebrate",
       "flow_name": "w_celebrate_think_text",
-      "_xlsxPath": "global/top_templates/workshop_templates/workshop_celebrate.xlsx"
-    },
-    "w_celebrate_tools": {
-      "flow_type": "template",
-      "module": "celebrate",
-      "flow_name": "w_celebrate_tools",
-      "_xlsxPath": "global/top_templates/workshop_templates/workshop_celebrate.xlsx"
-    },
-    "w_celebrate_tools_activity": {
-      "flow_type": "template",
-      "module": "celebrate",
-      "flow_name": "w_celebrate_tools_activity",
       "_xlsxPath": "global/top_templates/workshop_templates/workshop_celebrate.xlsx"
     },
     "w_consequence_care_together": {
@@ -3911,18 +4100,6 @@
       "flow_name": "w_consequence_talk_3_pop",
       "_xlsxPath": "global/top_templates/workshop_templates/workshop_consequence.xlsx"
     },
-    "w_consequence_tools": {
-      "flow_type": "template",
-      "module": "consequence",
-      "flow_name": "w_consequence_tools",
-      "_xlsxPath": "global/top_templates/workshop_templates/workshop_consequence.xlsx"
-    },
-    "w_consequence_tools_activity": {
-      "flow_type": "template",
-      "module": "consequence",
-      "flow_name": "w_consequence_tools_activity",
-      "_xlsxPath": "global/top_templates/workshop_templates/workshop_consequence.xlsx"
-    },
     "w_consequence_try": {
       "flow_type": "template",
       "module": "consequence",
@@ -4084,18 +4261,6 @@
       "flow_name": "w_crisis_talk_2",
       "_xlsxPath": "global/top_templates/workshop_templates/workshop_crisis.xlsx"
     },
-    "w_crisis_tools": {
-      "flow_type": "template",
-      "module": "crisis",
-      "flow_name": "w_crisis_tools",
-      "_xlsxPath": "global/top_templates/workshop_templates/workshop_crisis.xlsx"
-    },
-    "w_crisis_tools_activity": {
-      "flow_type": "template",
-      "module": "crisis",
-      "flow_name": "w_crisis_tools_activity",
-      "_xlsxPath": "global/top_templates/workshop_templates/workshop_crisis.xlsx"
-    },
     "w_instruct_care_together": {
       "flow_type": "template",
       "module": "instruct",
@@ -4255,18 +4420,6 @@
       "flow_type": "template",
       "module": "instruct",
       "flow_name": "w_instruct_think_1_temp",
-      "_xlsxPath": "global/top_templates/workshop_templates/workshop_instruct.xlsx"
-    },
-    "w_instruct_tools": {
-      "flow_type": "template",
-      "module": "instruct",
-      "flow_name": "w_instruct_tools",
-      "_xlsxPath": "global/top_templates/workshop_templates/workshop_instruct.xlsx"
-    },
-    "w_instruct_tools_activity": {
-      "flow_type": "template",
-      "module": "instruct",
-      "flow_name": "w_instruct_tools_activity",
       "_xlsxPath": "global/top_templates/workshop_templates/workshop_instruct.xlsx"
     },
     "w_instruct_try": {
@@ -4434,18 +4587,6 @@
       "flow_type": "template",
       "module": "money",
       "flow_name": "w_money_summary",
-      "_xlsxPath": "global/top_templates/workshop_templates/workshop_money.xlsx"
-    },
-    "w_money_tools": {
-      "flow_type": "template",
-      "module": "money",
-      "flow_name": "w_money_tools",
-      "_xlsxPath": "global/top_templates/workshop_templates/workshop_money.xlsx"
-    },
-    "w_money_tools_activity": {
-      "flow_type": "template",
-      "module": "money",
-      "flow_name": "w_money_tools_activity",
       "_xlsxPath": "global/top_templates/workshop_templates/workshop_money.xlsx"
     },
     "w_money_tq_1": {
@@ -4621,18 +4762,6 @@
       "flow_name": "w_praise_talk_2_pop",
       "_xlsxPath": "global/top_templates/workshop_templates/workshop_praise.xlsx"
     },
-    "w_praise_tools": {
-      "flow_type": "template",
-      "module": "praise",
-      "flow_name": "w_praise_tools",
-      "_xlsxPath": "global/top_templates/workshop_templates/workshop_praise.xlsx"
-    },
-    "w_praise_tools_activity": {
-      "flow_type": "template",
-      "module": "praise",
-      "flow_name": "w_praise_tools_activity",
-      "_xlsxPath": "global/top_templates/workshop_templates/workshop_praise.xlsx"
-    },
     "w_praise_try": {
       "flow_type": "template",
       "module": "praise",
@@ -4786,18 +4915,6 @@
       "flow_type": "template",
       "module": "rules",
       "flow_name": "w_rules_talk_pop_2",
-      "_xlsxPath": "global/top_templates/workshop_templates/workshop_rules.xlsx"
-    },
-    "w_rules_tools": {
-      "flow_type": "template",
-      "module": "rules",
-      "flow_name": "w_rules_tools",
-      "_xlsxPath": "global/top_templates/workshop_templates/workshop_rules.xlsx"
-    },
-    "w_rules_tools_activity": {
-      "flow_type": "template",
-      "module": "rules",
-      "flow_name": "w_rules_tools_activity",
       "_xlsxPath": "global/top_templates/workshop_templates/workshop_rules.xlsx"
     },
     "w_rules_try": {
@@ -4979,18 +5096,6 @@
       "flow_name": "w_safe_talk_2_pop",
       "_xlsxPath": "global/top_templates/workshop_templates/workshop_safe.xlsx"
     },
-    "w_safe_tools": {
-      "flow_type": "template",
-      "module": "safe",
-      "flow_name": "w_safe_tools",
-      "_xlsxPath": "global/top_templates/workshop_templates/workshop_safe.xlsx"
-    },
-    "w_safe_tools_activity": {
-      "flow_type": "template",
-      "module": "safe",
-      "flow_name": "w_safe_tools_activity",
-      "_xlsxPath": "global/top_templates/workshop_templates/workshop_safe.xlsx"
-    },
     "w_self_care_home_practice": {
       "flow_type": "template",
       "flow_name": "w_self_care_home_practice",
@@ -5072,16 +5177,6 @@
     "w_self_care_survey_activity": {
       "flow_type": "template",
       "flow_name": "w_self_care_survey_activity",
-      "_xlsxPath": "global/top_templates/workshop_templates/workshop_self_care.xlsx"
-    },
-    "w_self_care_tools": {
-      "flow_type": "template",
-      "flow_name": "w_self_care_tools",
-      "_xlsxPath": "global/top_templates/workshop_templates/workshop_self_care.xlsx"
-    },
-    "w_self_care_tools_activity": {
-      "flow_type": "template",
-      "flow_name": "w_self_care_tools_activity",
       "_xlsxPath": "global/top_templates/workshop_templates/workshop_self_care.xlsx"
     },
     "w_solve_care_together": {
@@ -5239,18 +5334,6 @@
       "flow_name": "w_solve_think",
       "_xlsxPath": "global/top_templates/workshop_templates/workshop_solve.xlsx"
     },
-    "w_solve_tools": {
-      "flow_type": "template",
-      "module": "solve",
-      "flow_name": "w_solve_tools",
-      "_xlsxPath": "global/top_templates/workshop_templates/workshop_solve.xlsx"
-    },
-    "w_solve_tools_activity": {
-      "flow_type": "template",
-      "module": "solve",
-      "flow_name": "w_solve_tools_activity",
-      "_xlsxPath": "global/top_templates/workshop_templates/workshop_solve.xlsx"
-    },
     "w_solve_try": {
       "flow_type": "template",
       "module": "solve",
@@ -5404,18 +5487,6 @@
       "flow_type": "template",
       "module": "stress",
       "flow_name": "w_stress_talk_pop",
-      "_xlsxPath": "global/top_templates/workshop_templates/workshop_stress.xlsx"
-    },
-    "w_stress_tools": {
-      "flow_type": "template",
-      "module": "stress",
-      "flow_name": "w_stress_tools",
-      "_xlsxPath": "global/top_templates/workshop_templates/workshop_stress.xlsx"
-    },
-    "w_stress_tools_activity": {
-      "flow_type": "template",
-      "module": "stress",
-      "flow_name": "w_stress_tools_activity",
       "_xlsxPath": "global/top_templates/workshop_templates/workshop_stress.xlsx"
     },
     "watch": {

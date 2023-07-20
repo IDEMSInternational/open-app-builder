@@ -1,0 +1,35 @@
+{
+  "flow_name": "lib_act_w_praise",
+  "flow_subtype": "generated",
+  "flow_type": "template",
+  "rows": [
+    {
+      "type": "template",
+      "name": "lib_act_tools",
+      "value": "lib_act_tools",
+      "action_list": [
+        {
+          "trigger": "completed",
+          "action_id": "emit",
+          "args": [
+            "completed"
+          ],
+          "_raw": "completed | emit: completed",
+          "_cleaned": "completed | emit: completed"
+        }
+      ],
+      "rows": [
+        {
+          "name": "workshop",
+          "value": "w_praise",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "lib_act_tools.workshop"
+        }
+      ],
+      "_nested_name": "lib_act_tools"
+    }
+  ]
+}
