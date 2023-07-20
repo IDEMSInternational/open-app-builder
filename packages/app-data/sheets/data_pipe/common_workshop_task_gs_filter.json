@@ -75,14 +75,8 @@
       ]
     },
     {
-      "operation": "filter",
-      "input_source": "common_workshop_task_gs",
-      "args_list": [
-        "id != \"welcome_individual\""
-      ]
-    },
-    {
       "operation": "append_columns",
+      "input_source": "common_workshop_task_gs",
       "output_target": "w_consequence_common_task_gs",
       "args_list": [
         "template: w_consequence_@row.id"
