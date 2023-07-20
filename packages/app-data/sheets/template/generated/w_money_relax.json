@@ -1,8 +1,7 @@
 {
-  "flow_type": "template",
-  "module": "money",
   "flow_name": "w_money_relax",
-  "status": "released",
+  "flow_subtype": "generated",
+  "flow_type": "template",
   "rows": [
     {
       "type": "template",
@@ -30,32 +29,16 @@
       ],
       "rows": [
         {
-          "name": "workshop_data",
-          "value": "@data.workshop.w_money",
+          "name": "workshop",
+          "value": "w_money",
           "_translations": {
             "value": {}
           },
           "type": "set_variable",
-          "_nested_name": "relax.workshop_data",
-          "_dynamicFields": {
-            "value": [
-              {
-                "fullExpression": "@data.workshop.w_money",
-                "matchedExpression": "@data.workshop.w_money",
-                "type": "data",
-                "fieldName": "workshop"
-              }
-            ]
-          },
-          "_dynamicDependencies": {
-            "@data.workshop.w_money": [
-              "value"
-            ]
-          }
+          "_nested_name": "relax.workshop"
         }
       ],
       "_nested_name": "relax"
     }
-  ],
-  "_xlsxPath": "global/top_templates/workshop_templates/workshop_money.xlsx"
+  ]
 }

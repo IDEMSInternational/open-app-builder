@@ -4,66 +4,77 @@
   "status": "released",
   "rows": [
     {
-      "name": "favourite",
-      "value": "_favourite",
+      "name": "workshop",
+      "value": "w_self_care",
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
       "type": "set_variable",
-      "_nested_name": "favourite"
+      "_nested_name": "workshop"
     },
     {
-      "name": "workshop_data",
-      "value": "@data.workshop.w_consequence",
+      "name": "workshop_relax_concat",
+      "value": "workshop_relax.@local.workshop",
       "_translations": {
         "value": {}
       },
       "type": "set_variable",
-      "_nested_name": "workshop_data",
+      "_nested_name": "workshop_relax_concat",
       "_dynamicFields": {
         "value": [
           {
-            "fullExpression": "@data.workshop.w_consequence",
-            "matchedExpression": "@data.workshop.w_consequence",
-            "type": "data",
+            "fullExpression": "workshop_relax.@local.workshop",
+            "matchedExpression": "@local.workshop",
+            "type": "local",
             "fieldName": "workshop"
           }
         ]
       },
       "_dynamicDependencies": {
-        "@data.workshop.w_consequence": [
+        "@local.workshop": [
           "value"
         ]
       }
     },
     {
-      "name": "relax_data",
-      "value": "@local.workshop_data.relax_data",
+      "name": "workshop_relax_data",
+      "value": "@data.@local.workshop_relax_concat",
       "_translations": {
         "value": {}
       },
+      "condition": "!!(@local.workshop)",
       "type": "set_variable",
-      "_nested_name": "relax_data",
+      "_nested_name": "workshop_relax_data",
       "_dynamicFields": {
         "value": [
           {
-            "fullExpression": "@local.workshop_data.relax_data",
-            "matchedExpression": "@local.workshop_data.relax_data",
+            "fullExpression": "@data.@local.workshop_relax_concat",
+            "matchedExpression": "@local.workshop_relax_concat",
             "type": "local",
-            "fieldName": "workshop_data"
+            "fieldName": "workshop_relax_concat"
+          }
+        ],
+        "condition": [
+          {
+            "fullExpression": "!!(@local.workshop)",
+            "matchedExpression": "@local.workshop",
+            "type": "local",
+            "fieldName": "workshop"
           }
         ]
       },
       "_dynamicDependencies": {
-        "@local.workshop_data.relax_data": [
+        "@local.workshop_relax_concat": [
           "value"
+        ],
+        "@local.workshop": [
+          "condition"
         ]
       }
     },
     {
       "name": "relax",
-      "value": "@local.relax_data.id",
+      "value": "@local.workshop_relax_data.relax_id",
       "_translations": {
         "value": {}
       },
@@ -72,18 +83,76 @@
       "_dynamicFields": {
         "value": [
           {
-            "fullExpression": "@local.relax_data.id",
-            "matchedExpression": "@local.relax_data.id",
+            "fullExpression": "@local.workshop_relax_data.relax_id",
+            "matchedExpression": "@local.workshop_relax_data.relax_id",
             "type": "local",
-            "fieldName": "relax_data"
+            "fieldName": "workshop_relax_data"
           }
         ]
       },
       "_dynamicDependencies": {
-        "@local.relax_data.id": [
+        "@local.workshop_relax_data.relax_id": [
           "value"
         ]
       }
+    },
+    {
+      "name": "relax_concat",
+      "value": "relax.@local.relax",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "relax_concat",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "relax.@local.relax",
+            "matchedExpression": "@local.relax",
+            "type": "local",
+            "fieldName": "relax"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.relax": [
+          "value"
+        ]
+      }
+    },
+    {
+      "name": "relax_data",
+      "value": "@data.@local.relax_concat",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "relax_data",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@data.@local.relax_concat",
+            "matchedExpression": "@local.relax_concat",
+            "type": "local",
+            "fieldName": "relax_concat"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.relax_concat": [
+          "value"
+        ]
+      }
+    },
+    {
+      "name": "favourite",
+      "value": "_favourite",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "type": "set_variable",
+      "_nested_name": "favourite"
     },
     {
       "name": "relax_favourite",
@@ -224,6 +293,65 @@
           }
         },
         {
+          "name": "activity_image",
+          "value": "plh_images/workshop_modes/individual/relax.svg",
+          "_translations": {
+            "value": {}
+          },
+          "condition": "!@field.do_this_workshop_together",
+          "type": "set_variable",
+          "_nested_name": "workshop_activity.activity_image",
+          "_dynamicFields": {
+            "condition": [
+              {
+                "fullExpression": "!@field.do_this_workshop_together",
+                "matchedExpression": "!@field.do_this_workshop_together",
+                "type": "field",
+                "fieldName": "do_this_workshop_together"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "!@field.do_this_workshop_together": [
+              "condition"
+            ]
+          }
+        },
+        {
+          "name": "activity_image",
+          "value": "@local.workshop_relax_data.activity_image_asset",
+          "_translations": {
+            "value": {}
+          },
+          "condition": "!!(@local.workshop_relax_data.activity_image_asset)",
+          "type": "set_variable",
+          "_nested_name": "workshop_activity.activity_image",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@local.workshop_relax_data.activity_image_asset",
+                "matchedExpression": "@local.workshop_relax_data.activity_image_asset",
+                "type": "local",
+                "fieldName": "workshop_relax_data"
+              }
+            ],
+            "condition": [
+              {
+                "fullExpression": "!!(@local.workshop_relax_data.activity_image_asset)",
+                "matchedExpression": "@local.workshop_relax_data.activity_image_asset",
+                "type": "local",
+                "fieldName": "workshop_relax_data"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@local.workshop_relax_data.activity_image_asset": [
+              "value",
+              "condition"
+            ]
+          }
+        },
+        {
           "name": "activity_title",
           "value": "Relax Together",
           "_translations": {
@@ -246,31 +374,6 @@
           },
           "_dynamicDependencies": {
             "@field.do_this_workshop_together": [
-              "condition"
-            ]
-          }
-        },
-        {
-          "name": "activity_image",
-          "value": "plh_images/workshop_modes/individual/relax.svg",
-          "_translations": {
-            "value": {}
-          },
-          "condition": "!@field.do_this_workshop_together",
-          "type": "set_variable",
-          "_nested_name": "workshop_activity.activity_image",
-          "_dynamicFields": {
-            "condition": [
-              {
-                "fullExpression": "!@field.do_this_workshop_together",
-                "matchedExpression": "!@field.do_this_workshop_together",
-                "type": "field",
-                "fieldName": "do_this_workshop_together"
-              }
-            ]
-          },
-          "_dynamicDependencies": {
-            "!@field.do_this_workshop_together": [
               "condition"
             ]
           }
@@ -312,6 +415,40 @@
           },
           "type": "set_variable",
           "_nested_name": "workshop_activity.intro_text"
+        },
+        {
+          "name": "intro_text",
+          "value": "@local.workshop_relax_data.intro_text",
+          "_translations": {
+            "value": {}
+          },
+          "condition": "!!(@local.workshop_relax_data.intro_text)",
+          "type": "set_variable",
+          "_nested_name": "workshop_activity.intro_text",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@local.workshop_relax_data.intro_text",
+                "matchedExpression": "@local.workshop_relax_data.intro_text",
+                "type": "local",
+                "fieldName": "workshop_relax_data"
+              }
+            ],
+            "condition": [
+              {
+                "fullExpression": "!!(@local.workshop_relax_data.intro_text)",
+                "matchedExpression": "@local.workshop_relax_data.intro_text",
+                "type": "local",
+                "fieldName": "workshop_relax_data"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@local.workshop_relax_data.intro_text": [
+              "value",
+              "condition"
+            ]
+          }
         },
         {
           "name": "activity_banner",
@@ -562,6 +699,40 @@
           "_nested_name": "workshop_activity.outro_text"
         },
         {
+          "name": "outro_text",
+          "value": "@local.workshop_relax_data.outro_text",
+          "_translations": {
+            "value": {}
+          },
+          "condition": "!!(@local.workshop_relax_data.outro_text)",
+          "type": "set_variable",
+          "_nested_name": "workshop_activity.outro_text",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@local.workshop_relax_data.outro_text",
+                "matchedExpression": "@local.workshop_relax_data.outro_text",
+                "type": "local",
+                "fieldName": "workshop_relax_data"
+              }
+            ],
+            "condition": [
+              {
+                "fullExpression": "!!(@local.workshop_relax_data.outro_text)",
+                "matchedExpression": "@local.workshop_relax_data.outro_text",
+                "type": "local",
+                "fieldName": "workshop_relax_data"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@local.workshop_relax_data.outro_text": [
+              "value",
+              "condition"
+            ]
+          }
+        },
+        {
           "type": "nested_properties",
           "name": "outro_habit_box",
           "rows": [
@@ -570,6 +741,40 @@
               "value": true,
               "type": "set_variable",
               "_nested_name": "workshop_activity.outro_habit_box.use_short_mark_text"
+            },
+            {
+              "name": "use_short_mark_text",
+              "value": "@local.workshop_relax_data.outro_habit_box_use_short_mark_text",
+              "_translations": {
+                "value": {}
+              },
+              "condition": "!!(@local.workshop_relax_data.outro_habit_box_use_short_mark_text)",
+              "type": "set_variable",
+              "_nested_name": "workshop_activity.outro_habit_box.use_short_mark_text",
+              "_dynamicFields": {
+                "value": [
+                  {
+                    "fullExpression": "@local.workshop_relax_data.outro_habit_box_use_short_mark_text",
+                    "matchedExpression": "@local.workshop_relax_data.outro_habit_box_use_short_mark_text",
+                    "type": "local",
+                    "fieldName": "workshop_relax_data"
+                  }
+                ],
+                "condition": [
+                  {
+                    "fullExpression": "!!(@local.workshop_relax_data.outro_habit_box_use_short_mark_text)",
+                    "matchedExpression": "@local.workshop_relax_data.outro_habit_box_use_short_mark_text",
+                    "type": "local",
+                    "fieldName": "workshop_relax_data"
+                  }
+                ]
+              },
+              "_dynamicDependencies": {
+                "@local.workshop_relax_data.outro_habit_box_use_short_mark_text": [
+                  "value",
+                  "condition"
+                ]
+              }
             }
           ],
           "_nested_name": "workshop_activity.outro_habit_box"
