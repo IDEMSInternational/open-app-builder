@@ -1,11 +1,5 @@
 {
   "data_list": {
-    "activity_data_list": {
-      "flow_type": "data_list",
-      "flow_name": "activity_data_list",
-      "data_list_name": "something_fun",
-      "_xlsxPath": "global/data/activity_data_list.xlsx"
-    },
     "language_data_list": {
       "flow_type": "data_list",
       "flow_name": "language_data_list",
@@ -1149,6 +1143,12 @@
       "data_list_name": "safeguarding_contacts_tz",
       "_xlsxPath": "tz/data/safeguarding_data_tz.xlsx"
     },
+    "something_fun_data": {
+      "flow_type": "data_list",
+      "flow_name": "something_fun_data",
+      "data_list_name": "something_fun",
+      "_xlsxPath": "global/data/activity_data_list.xlsx"
+    },
     "story_data": {
       "flow_type": "data_list",
       "flow_name": "story_data",
@@ -1434,6 +1434,17 @@
       },
       "_xlsxPath": "global/top_templates/workshop_templates/gen_workshop_act.xlsx"
     },
+    "gen_learn_play": {
+      "flow_type": "generator",
+      "flow_name": "gen_learn_play",
+      "parameter_list": {
+        "input_data_list": "learn_play_data",
+        "output_flow_name": "ltp_activity_{@gen.id}",
+        "output_flow_type": "template",
+        "output_flow_subtype": "generated"
+      },
+      "_xlsxPath": "global/top_templates/parent_centre_templates/gen_activities.xlsx"
+    },
     "gen_lib_act_tools": {
       "flow_type": "generator",
       "flow_name": "gen_lib_act_tools",
@@ -1444,6 +1455,17 @@
         "output_flow_subtype": "generated"
       },
       "_xlsxPath": "global/top_templates/parent_centre_templates/gen_lib_act_tools.xlsx"
+    },
+    "gen_something_fun": {
+      "flow_type": "generator",
+      "flow_name": "gen_something_fun",
+      "parameter_list": {
+        "input_data_list": "something_fun_data",
+        "output_flow_name": "activity_{@gen.id}",
+        "output_flow_type": "template",
+        "output_flow_subtype": "generated"
+      },
+      "_xlsxPath": "global/top_templates/parent_centre_templates/gen_activities.xlsx"
     },
     "gen_tools": {
       "flow_type": "generator",
@@ -1681,96 +1703,6 @@
       "flow_name": "accept_terms_warning",
       "_xlsxPath": "global/core_templates/core_templates_app_launch.xlsx"
     },
-    "activity_check_in_chat": {
-      "flow_type": "template",
-      "flow_name": "activity_check_in_chat",
-      "_xlsxPath": "global/top_templates/parent_centre_templates/databank_activities.xlsx"
-    },
-    "activity_co_chef": {
-      "flow_type": "template",
-      "flow_name": "activity_co_chef",
-      "_xlsxPath": "global/top_templates/parent_centre_templates/databank_activities.xlsx"
-    },
-    "activity_crazy_chicken": {
-      "flow_type": "template",
-      "flow_name": "activity_crazy_chicken",
-      "_xlsxPath": "global/top_templates/parent_centre_templates/databank_activities.xlsx"
-    },
-    "activity_dance_moves": {
-      "flow_type": "template",
-      "flow_name": "activity_dance_moves",
-      "_xlsxPath": "global/top_templates/parent_centre_templates/databank_activities.xlsx"
-    },
-    "activity_doing_what": {
-      "flow_type": "template",
-      "flow_name": "activity_doing_what",
-      "_xlsxPath": "global/top_templates/parent_centre_templates/databank_activities.xlsx"
-    },
-    "activity_dream_travel": {
-      "flow_type": "template",
-      "flow_name": "activity_dream_travel",
-      "_xlsxPath": "global/top_templates/parent_centre_templates/databank_activities.xlsx"
-    },
-    "activity_family_workout": {
-      "flow_type": "template",
-      "flow_name": "activity_family_workout",
-      "_xlsxPath": "global/top_templates/parent_centre_templates/databank_activities.xlsx"
-    },
-    "activity_famous_party": {
-      "flow_type": "template",
-      "flow_name": "activity_famous_party",
-      "_xlsxPath": "global/top_templates/parent_centre_templates/databank_activities.xlsx"
-    },
-    "activity_friendly_chat": {
-      "flow_type": "template",
-      "flow_name": "activity_friendly_chat",
-      "_xlsxPath": "global/top_templates/parent_centre_templates/databank_activities.xlsx"
-    },
-    "activity_get_active": {
-      "flow_type": "template",
-      "flow_name": "activity_get_active",
-      "_xlsxPath": "global/top_templates/parent_centre_templates/databank_activities.xlsx"
-    },
-    "activity_housework": {
-      "flow_type": "template",
-      "flow_name": "activity_housework",
-      "_xlsxPath": "global/top_templates/parent_centre_templates/databank_activities.xlsx"
-    },
-    "activity_interrupter": {
-      "flow_type": "template",
-      "flow_name": "activity_interrupter",
-      "_xlsxPath": "global/top_templates/parent_centre_templates/databank_activities.xlsx"
-    },
-    "activity_invent_story": {
-      "flow_type": "template",
-      "flow_name": "activity_invent_story",
-      "_xlsxPath": "global/top_templates/parent_centre_templates/databank_activities.xlsx"
-    },
-    "activity_memory_game": {
-      "flow_type": "template",
-      "flow_name": "activity_memory_game",
-      "_xlsxPath": "global/top_templates/parent_centre_templates/databank_activities.xlsx"
-    },
-    "activity_mirror": {
-      "flow_type": "template",
-      "flow_name": "activity_mirror",
-      "_xlsxPath": "global/top_templates/parent_centre_templates/databank_activities.xlsx"
-    },
-    "activity_name_that_tune": {
-      "flow_type": "template",
-      "flow_name": "activity_name_that_tune",
-      "_xlsxPath": "global/top_templates/parent_centre_templates/databank_activities.xlsx"
-    },
-    "activity_pass_the_snap": {
-      "flow_type": "template",
-      "flow_name": "activity_pass_the_snap",
-      "_xlsxPath": "global/top_templates/parent_centre_templates/databank_activities.xlsx"
-    },
-    "activity_reflect_positive": {
-      "flow_type": "template",
-      "flow_name": "activity_reflect_positive",
-      "_xlsxPath": "global/top_templates/parent_centre_templates/databank_activities.xlsx"
-    },
     "activity_relax_1": {
       "flow_type": "template",
       "flow_name": "activity_relax_1",
@@ -1890,36 +1822,6 @@
       "flow_type": "template",
       "flow_name": "activity_relax_9",
       "_xlsxPath": "global/data/relax_data_list.xlsx"
-    },
-    "activity_superpowers": {
-      "flow_type": "template",
-      "flow_name": "activity_superpowers",
-      "_xlsxPath": "global/top_templates/parent_centre_templates/databank_activities.xlsx"
-    },
-    "activity_three_options": {
-      "flow_type": "template",
-      "flow_name": "activity_three_options",
-      "_xlsxPath": "global/top_templates/parent_centre_templates/databank_activities.xlsx"
-    },
-    "activity_time_machine": {
-      "flow_type": "template",
-      "flow_name": "activity_time_machine",
-      "_xlsxPath": "global/top_templates/parent_centre_templates/databank_activities.xlsx"
-    },
-    "activity_two_truths": {
-      "flow_type": "template",
-      "flow_name": "activity_two_truths",
-      "_xlsxPath": "global/top_templates/parent_centre_templates/databank_activities.xlsx"
-    },
-    "activity_whats_new": {
-      "flow_type": "template",
-      "flow_name": "activity_whats_new",
-      "_xlsxPath": "global/top_templates/parent_centre_templates/databank_activities.xlsx"
-    },
-    "activity_yes_no_maybe": {
-      "flow_type": "template",
-      "flow_name": "activity_yes_no_maybe",
-      "_xlsxPath": "global/top_templates/parent_centre_templates/databank_activities.xlsx"
     },
     "app_launch_calculations": {
       "flow_type": "template",
@@ -2211,6 +2113,126 @@
       "flow_name": "footer",
       "_xlsxPath": "global_modular/core_templates/footer.xlsx"
     },
+    "activity_check_in_chat": {
+      "flow_name": "activity_check_in_chat",
+      "flow_subtype": "generated",
+      "flow_type": "template"
+    },
+    "activity_co_chef": {
+      "flow_name": "activity_co_chef",
+      "flow_subtype": "generated",
+      "flow_type": "template"
+    },
+    "activity_crazy_chicken": {
+      "flow_name": "activity_crazy_chicken",
+      "flow_subtype": "generated",
+      "flow_type": "template"
+    },
+    "activity_dance_moves": {
+      "flow_name": "activity_dance_moves",
+      "flow_subtype": "generated",
+      "flow_type": "template"
+    },
+    "activity_doing_what": {
+      "flow_name": "activity_doing_what",
+      "flow_subtype": "generated",
+      "flow_type": "template"
+    },
+    "activity_dream_travel": {
+      "flow_name": "activity_dream_travel",
+      "flow_subtype": "generated",
+      "flow_type": "template"
+    },
+    "activity_family_workout": {
+      "flow_name": "activity_family_workout",
+      "flow_subtype": "generated",
+      "flow_type": "template"
+    },
+    "activity_famous_party": {
+      "flow_name": "activity_famous_party",
+      "flow_subtype": "generated",
+      "flow_type": "template"
+    },
+    "activity_friendly_chat": {
+      "flow_name": "activity_friendly_chat",
+      "flow_subtype": "generated",
+      "flow_type": "template"
+    },
+    "activity_get_active": {
+      "flow_name": "activity_get_active",
+      "flow_subtype": "generated",
+      "flow_type": "template"
+    },
+    "activity_housework": {
+      "flow_name": "activity_housework",
+      "flow_subtype": "generated",
+      "flow_type": "template"
+    },
+    "activity_interrupter": {
+      "flow_name": "activity_interrupter",
+      "flow_subtype": "generated",
+      "flow_type": "template"
+    },
+    "activity_invent_story": {
+      "flow_name": "activity_invent_story",
+      "flow_subtype": "generated",
+      "flow_type": "template"
+    },
+    "activity_memory_game": {
+      "flow_name": "activity_memory_game",
+      "flow_subtype": "generated",
+      "flow_type": "template"
+    },
+    "activity_mirror": {
+      "flow_name": "activity_mirror",
+      "flow_subtype": "generated",
+      "flow_type": "template"
+    },
+    "activity_name_that_tune": {
+      "flow_name": "activity_name_that_tune",
+      "flow_subtype": "generated",
+      "flow_type": "template"
+    },
+    "activity_pass_the_snap": {
+      "flow_name": "activity_pass_the_snap",
+      "flow_subtype": "generated",
+      "flow_type": "template"
+    },
+    "activity_reflect_positive": {
+      "flow_name": "activity_reflect_positive",
+      "flow_subtype": "generated",
+      "flow_type": "template"
+    },
+    "activity_superpowers": {
+      "flow_name": "activity_superpowers",
+      "flow_subtype": "generated",
+      "flow_type": "template"
+    },
+    "activity_three_options": {
+      "flow_name": "activity_three_options",
+      "flow_subtype": "generated",
+      "flow_type": "template"
+    },
+    "activity_time_machine": {
+      "flow_name": "activity_time_machine",
+      "flow_subtype": "generated",
+      "flow_type": "template"
+    },
+    "activity_two_truths": {
+      "flow_name": "activity_two_truths",
+      "flow_subtype": "generated",
+      "flow_type": "template"
+    },
+    "activity_whats_new": {
+      "flow_name": "activity_whats_new",
+      "flow_subtype": "generated",
+      "flow_type": "template"
+    },
+    "activity_yes_no_maybe": {
+      "flow_name": "activity_yes_no_maybe",
+      "flow_subtype": "generated",
+      "flow_type": "template"
+    },
     "lib_act_w_1on1": {
       "flow_name": "lib_act_w_1on1",
       "flow_subtype": "generated",
@@ -2288,6 +2310,86 @@
     },
     "lib_act_w_svp": {
       "flow_name": "lib_act_w_svp",
+      "flow_subtype": "generated",
+      "flow_type": "template"
+    },
+    "ltp_activity_bao": {
+      "flow_name": "ltp_activity_bao",
+      "flow_subtype": "generated",
+      "flow_type": "template"
+    },
+    "ltp_activity_charades": {
+      "flow_name": "ltp_activity_charades",
+      "flow_subtype": "generated",
+      "flow_type": "template"
+    },
+    "ltp_activity_chores": {
+      "flow_name": "ltp_activity_chores",
+      "flow_subtype": "generated",
+      "flow_type": "template"
+    },
+    "ltp_activity_clean": {
+      "flow_name": "ltp_activity_clean",
+      "flow_subtype": "generated",
+      "flow_type": "template"
+    },
+    "ltp_activity_cook": {
+      "flow_name": "ltp_activity_cook",
+      "flow_subtype": "generated",
+      "flow_type": "template"
+    },
+    "ltp_activity_cook_traditional": {
+      "flow_name": "ltp_activity_cook_traditional",
+      "flow_subtype": "generated",
+      "flow_type": "template"
+    },
+    "ltp_activity_dance": {
+      "flow_name": "ltp_activity_dance",
+      "flow_subtype": "generated",
+      "flow_type": "template"
+    },
+    "ltp_activity_garden": {
+      "flow_name": "ltp_activity_garden",
+      "flow_subtype": "generated",
+      "flow_type": "template"
+    },
+    "ltp_activity_hide_seek": {
+      "flow_name": "ltp_activity_hide_seek",
+      "flow_subtype": "generated",
+      "flow_type": "template"
+    },
+    "ltp_activity_long_term_goal": {
+      "flow_name": "ltp_activity_long_term_goal",
+      "flow_subtype": "generated",
+      "flow_type": "template"
+    },
+    "ltp_activity_memory_game": {
+      "flow_name": "ltp_activity_memory_game",
+      "flow_subtype": "generated",
+      "flow_type": "template"
+    },
+    "ltp_activity_mystery_box": {
+      "flow_name": "ltp_activity_mystery_box",
+      "flow_subtype": "generated",
+      "flow_type": "template"
+    },
+    "ltp_activity_role_play": {
+      "flow_name": "ltp_activity_role_play",
+      "flow_subtype": "generated",
+      "flow_type": "template"
+    },
+    "ltp_activity_short_term_goal": {
+      "flow_name": "ltp_activity_short_term_goal",
+      "flow_subtype": "generated",
+      "flow_type": "template"
+    },
+    "ltp_activity_tell_stories": {
+      "flow_name": "ltp_activity_tell_stories",
+      "flow_subtype": "generated",
+      "flow_type": "template"
+    },
+    "ltp_activity_walk": {
+      "flow_name": "ltp_activity_walk",
       "flow_subtype": "generated",
       "flow_type": "template"
     },
@@ -2918,6 +3020,11 @@
       "override_target": "language_select",
       "override_condition": "@fields._deployment_name == \"plh_za\"",
       "_xlsxPath": "za/core_templates/core_templates_settings_za.xlsx"
+    },
+    "learn_play": {
+      "flow_type": "template",
+      "flow_name": "learn_play",
+      "_xlsxPath": "global/core_templates/core_templates_relax_and_activities.xlsx"
     },
     "learn_temp": {
       "flow_type": "template",
