@@ -90,6 +90,13 @@ export interface IDeploymentConfig {
   _parent_config?: Partial<IDeploymentConfig & { _workspace_path: string }>;
 }
 
+/** Deployment with additional metadata when set as active deployment */
+export interface IDeploymentConfigJson extends IDeploymentConfig {
+  _workspace_path: string;
+  _config_ts_path: string;
+  _config_version: number;
+}
+
 /** Full example of just all config once merged with defaults */
 export const DEPLOYMENT_CONFIG_EXAMPLE_DEFAULTS: IDeploymentConfig = {
   name: "Full Config Example",
