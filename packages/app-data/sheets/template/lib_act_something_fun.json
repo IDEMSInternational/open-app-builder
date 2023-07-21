@@ -4,8 +4,41 @@
   "status": "released",
   "rows": [
     {
+      "name": "activity_id",
+      "value": "co_chef",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "activity_id"
+    },
+    {
+      "name": "activity_concat",
+      "value": "something_fun.@local.activity_id",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "activity_concat",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "something_fun.@local.activity_id",
+            "matchedExpression": "@local.activity_id",
+            "type": "local",
+            "fieldName": "activity_id"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.activity_id": [
+          "value"
+        ]
+      }
+    },
+    {
       "name": "activity_data",
-      "value": "@data.something_fun.co_chef",
+      "value": "@data.@local.activity_concat",
       "_translations": {
         "value": {}
       },
@@ -14,23 +47,42 @@
       "_dynamicFields": {
         "value": [
           {
-            "fullExpression": "@data.something_fun.co_chef",
-            "matchedExpression": "@data.something_fun.co_chef",
-            "type": "data",
-            "fieldName": "something_fun"
+            "fullExpression": "@data.@local.activity_concat",
+            "matchedExpression": "@local.activity_concat",
+            "type": "local",
+            "fieldName": "activity_concat"
           }
         ]
       },
       "_dynamicDependencies": {
-        "@data.something_fun.co_chef": [
+        "@local.activity_concat": [
           "value"
         ]
       }
     },
     {
       "name": "activity_text",
+      "value": "@local.activity_data.activity_text",
+      "_translations": {
+        "value": {}
+      },
       "type": "set_variable",
-      "_nested_name": "activity_text"
+      "_nested_name": "activity_text",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@local.activity_data.activity_text",
+            "matchedExpression": "@local.activity_data.activity_text",
+            "type": "local",
+            "fieldName": "activity_data"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.activity_data.activity_text": [
+          "value"
+        ]
+      }
     },
     {
       "type": "template",

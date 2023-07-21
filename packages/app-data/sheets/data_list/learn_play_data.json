@@ -6,7 +6,7 @@
   "rows": [
     {
       "id": "chores",
-      "group": "chores",
+      "group": "everyday",
       "title": "Doing chores together",
       "_translations": {
         "title": {
@@ -78,7 +78,7 @@
     },
     {
       "id": "walk",
-      "group": "move",
+      "group": "everyday",
       "title": "Walking together",
       "_translations": {
         "title": {
@@ -114,7 +114,7 @@
     },
     {
       "id": "cook_traditional",
-      "group": "chores",
+      "group": "everyday",
       "title": "Cooking traditional food",
       "_translations": {
         "title": {
@@ -150,7 +150,7 @@
     },
     {
       "id": "garden",
-      "group": "chores",
+      "group": "games",
       "title": "Gardening",
       "_translations": {
         "title": {
@@ -222,7 +222,7 @@
     },
     {
       "id": "role_play",
-      "group": "talk",
+      "group": "home",
       "title": "Role play",
       "_translations": {
         "title": {
@@ -258,7 +258,7 @@
     },
     {
       "id": "hide_seek",
-      "group": "move",
+      "group": "home",
       "title": "Hide and seek",
       "_translations": {
         "title": {
@@ -276,9 +276,7 @@
         "tips_text": {
           "tz_sw": true
         },
-        "extension_text": {
-          "tz_sw": true
-        }
+        "extension_text": {}
       },
       "_translatedFields": {
         "title": {
@@ -297,18 +295,18 @@
           "eng": "* Try to make the game more challenging by making the objects harder to find. \n* You can also time how long it takes your teen to find all the objects and ask them to try and beat their time. \n* Choose objects with different shapes, sizes, and colours."
         },
         "extension_text": {
-          "eng": "Association game: Instead of a matching pair, show your teen an object that is connected to the object you hid in the room. For example, show your teen a sock, and they will search for something connected with that, like a shoe."
+          "eng": "Instead of a matching pair, show your teen an object that is connected to the object you hid in the room. For example, show your teen a sock, and they will search for something connected with that, like a shoe."
         }
       },
       "intro_text": "Hide and seek is a game that many people played when they were children. It is a great way to have fun with family. In this version of the game, we will add a twist to make it more challenging for your teen. \n\nIn this game, you will hide everyday household objects and your teen will have to remember what the objects are and look for the matching pairs.",
       "resources_text": "Spoons, cups, bowls, empty boxes, shoes, or other small objects you can find around the house. Make sure you have two of each object.",
       "steps_text": "1. Hide one of each object around the room. Make sure they are not too difficult to find, but also not too easy.\n2. Show your teen the objects they need to find.\n3. Let your teen look for the objects. When they find one, they must run back to you, name the object, and put it next to the matching object.\n4. Repeat the process until all pairs of objects have been found.",
       "tips_text": "* Try to make the game more challenging by making the objects harder to find. \n* You can also time how long it takes your teen to find all the objects and ask them to try and beat their time. \n* Choose objects with different shapes, sizes, and colours.",
-      "extension_text": "Association game: Instead of a matching pair, show your teen an object that is connected to the object you hid in the room. For example, show your teen a sock, and they will search for something connected with that, like a shoe."
+      "extension_text": "Instead of a matching pair, show your teen an object that is connected to the object you hid in the room. For example, show your teen a sock, and they will search for something connected with that, like a shoe."
     },
     {
       "id": "mystery_box",
-      "group": "games",
+      "group": "home",
       "title": "Mystery box",
       "_translations": {
         "title": {
@@ -351,7 +349,7 @@
     },
     {
       "id": "memory_game",
-      "group": "games",
+      "group": "home",
       "title": "Memory game",
       "_translations": {
         "title": {
@@ -394,7 +392,7 @@
     },
     {
       "id": "cook",
-      "group": "chores",
+      "group": "everyday",
       "title": "Cooking",
       "_translations": {
         "title": {
@@ -430,7 +428,7 @@
     },
     {
       "id": "tell_stories",
-      "group": "talk",
+      "group": "everyday",
       "title": "Storytelling",
       "_translations": {
         "title": {
@@ -466,7 +464,7 @@
     },
     {
       "id": "dance",
-      "group": "move",
+      "group": "games",
       "title": "Music and dance",
       "_translations": {
         "title": {
@@ -502,7 +500,7 @@
     },
     {
       "id": "short_term_goal",
-      "group": "talk",
+      "group": "home",
       "title": "Goal setting",
       "_translations": {
         "title": {
@@ -538,7 +536,7 @@
     },
     {
       "id": "long_term_goal",
-      "group": "talk",
+      "group": "home",
       "title": "Realise my strength",
       "_translations": {
         "title": {
@@ -574,7 +572,7 @@
     },
     {
       "id": "clean",
-      "group": "chores",
+      "group": "everyday",
       "title": "Cleaning and organising",
       "_translations": {
         "title": {

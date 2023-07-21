@@ -114,6 +114,15 @@
           ],
           "_raw": "completed | emit:completed",
           "_cleaned": "completed | emit:completed"
+        },
+        {
+          "trigger": "uncompleted",
+          "action_id": "emit",
+          "args": [
+            "uncompleted"
+          ],
+          "_raw": "uncompleted | emit: uncompleted",
+          "_cleaned": "uncompleted | emit: uncompleted"
         }
       ],
       "rows": [
