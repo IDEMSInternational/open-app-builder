@@ -1,0 +1,38 @@
+##################################################################################
+#         About
+##################################################################################
+# Create a PR whenever code pushed to new content branches
+# Uses gh cli https://cli.github.com/manual/gh_pr_create
+
+##################################################################################
+#         Configuration
+##################################################################################
+# See https://github.com/marketplace/actions/create-pull-request#workflow-permissions
+
+##################################################################################
+#         Triggers
+# Specify conditions to run workflow. # See more information at:
+# https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows
+##################################################################################
+on:
+  push:
+    branches:
+      - "%{PUSH_TARGET_BRANCH}"
+
+##################################################################################
+#         Main Code
+##################################################################################
+
+name: PR - Create Content
+jobs:
+  pr_create:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - run: |
+          gh pr list --base main --head ${{github.ref_name}}
+          gh pr create --base main --head ${{github.ref_name}} --title 'Merge ${{github.ref_name}}' --body 'Created by Github action'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        # Allow action to continue if PR already exists
+        continue-on-error: true
