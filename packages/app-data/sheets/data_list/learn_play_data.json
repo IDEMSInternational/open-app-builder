@@ -6,7 +6,10 @@
   "rows": [
     {
       "id": "chores",
+      "icon_asset": "plh_images/parent_centre/ltp_activities/chores_icon.svg",
+      "image_asset": "plh_images/parent_centre/ltp_activities/chores.svg",
       "group": "everyday",
+      "favourite_field": "ltp_activity_chores_favourite",
       "title": "Doing chores together",
       "_translations": {
         "title": {
@@ -35,7 +38,10 @@
     },
     {
       "id": "bao",
+      "icon_asset": "plh_images/parent_centre/ltp_activities/bao_icon.svg",
+      "image_asset": "plh_images/parent_centre/ltp_activities/bao.svg",
       "group": "games",
+      "favourite_field": "ltp_activity_bao_favourite",
       "title": "Traditional game",
       "_translations": {
         "title": {
@@ -78,7 +84,10 @@
     },
     {
       "id": "walk",
+      "icon_asset": "plh_images/parent_centre/ltp_activities/walk_icon.svg",
+      "image_asset": "plh_images/parent_centre/ltp_activities/walk.svg",
       "group": "everyday",
+      "favourite_field": "ltp_activity_walk_favourite",
       "title": "Walking together",
       "_translations": {
         "title": {
@@ -114,7 +123,10 @@
     },
     {
       "id": "cook_traditional",
+      "icon_asset": "plh_images/parent_centre/ltp_activities/cook_traditional_icon.svg",
+      "image_asset": "plh_images/parent_centre/ltp_activities/cook_traditional.svg",
       "group": "everyday",
+      "favourite_field": "ltp_activity_cook_traditional_favourite",
       "title": "Cooking traditional food",
       "_translations": {
         "title": {
@@ -150,7 +162,10 @@
     },
     {
       "id": "garden",
+      "icon_asset": "plh_images/parent_centre/ltp_activities/garden_icon.svg",
+      "image_asset": "plh_images/parent_centre/ltp_activities/garden.svg",
       "group": "games",
+      "favourite_field": "ltp_activity_garden_favourite",
       "title": "Gardening",
       "_translations": {
         "title": {
@@ -186,7 +201,10 @@
     },
     {
       "id": "charades",
+      "icon_asset": "plh_images/parent_centre/ltp_activities/charades_icon.svg",
+      "image_asset": "plh_images/parent_centre/ltp_activities/charades.svg",
       "group": "games",
+      "favourite_field": "ltp_activity_charades_favourite",
       "title": "Charades",
       "_translations": {
         "title": {
@@ -222,7 +240,10 @@
     },
     {
       "id": "role_play",
+      "icon_asset": "plh_images/parent_centre/ltp_activities/role_play_icon.svg",
+      "image_asset": "plh_images/parent_centre/ltp_activities/role_play.svg",
       "group": "home",
+      "favourite_field": "ltp_activity_role_play_favourite",
       "title": "Role play",
       "_translations": {
         "title": {
@@ -258,7 +279,10 @@
     },
     {
       "id": "hide_seek",
+      "icon_asset": "plh_images/parent_centre/ltp_activities/hide_seek_icon.svg",
+      "image_asset": "plh_images/parent_centre/ltp_activities/hide_seek.svg",
       "group": "home",
+      "favourite_field": "ltp_activity_hide_seek_favourite",
       "title": "Hide and seek",
       "_translations": {
         "title": {
@@ -306,7 +330,10 @@
     },
     {
       "id": "mystery_box",
+      "icon_asset": "plh_images/parent_centre/ltp_activities/mystery_box_icon.svg",
+      "image_asset": "plh_images/parent_centre/ltp_activities/mystery_box.svg",
       "group": "home",
+      "favourite_field": "ltp_activity_mystery_box_favourite",
       "title": "Mystery box",
       "_translations": {
         "title": {
@@ -349,7 +376,10 @@
     },
     {
       "id": "memory_game",
+      "icon_asset": "plh_images/parent_centre/ltp_activities/memory_game_icon.svg",
+      "image_asset": "plh_images/parent_centre/ltp_activities/memory_game.svg",
       "group": "home",
+      "favourite_field": "ltp_activity_memory_game_favourite",
       "title": "Memory game",
       "_translations": {
         "title": {
@@ -392,7 +422,10 @@
     },
     {
       "id": "cook",
+      "icon_asset": "plh_images/parent_centre/ltp_activities/cook_icon.svg",
+      "image_asset": "plh_images/parent_centre/ltp_activities/cook.svg",
       "group": "everyday",
+      "favourite_field": "ltp_activity_cook_favourite",
       "title": "Cooking",
       "_translations": {
         "title": {
@@ -428,7 +461,10 @@
     },
     {
       "id": "tell_stories",
+      "icon_asset": "plh_images/parent_centre/ltp_activities/tell_stories_icon.svg",
+      "image_asset": "plh_images/parent_centre/ltp_activities/tell_stories.svg",
       "group": "everyday",
+      "favourite_field": "ltp_activity_tell_stories_favourite",
       "title": "Storytelling",
       "_translations": {
         "title": {
@@ -464,7 +500,10 @@
     },
     {
       "id": "dance",
+      "icon_asset": "plh_images/parent_centre/ltp_activities/dance_icon.svg",
+      "image_asset": "plh_images/parent_centre/ltp_activities/dance.svg",
       "group": "games",
+      "favourite_field": "ltp_activity_dance_favourite",
       "title": "Music and dance",
       "_translations": {
         "title": {
@@ -500,7 +539,10 @@
     },
     {
       "id": "short_term_goal",
+      "icon_asset": "plh_images/parent_centre/ltp_activities/short_term_goal_icon.svg",
+      "image_asset": "plh_images/parent_centre/ltp_activities/short_term_goal.svg",
       "group": "home",
+      "favourite_field": "ltp_activity_short_term_goal_favourite",
       "title": "Goal setting",
       "_translations": {
         "title": {
@@ -536,7 +578,10 @@
     },
     {
       "id": "long_term_goal",
+      "icon_asset": "plh_images/parent_centre/ltp_activities/long_term_goal_icon.svg",
+      "image_asset": "plh_images/parent_centre/ltp_activities/long_term_goal.svg",
       "group": "home",
+      "favourite_field": "ltp_activity_long_term_goal_favourite",
       "title": "Realise my strength",
       "_translations": {
         "title": {
@@ -572,7 +617,10 @@
     },
     {
       "id": "clean",
+      "icon_asset": "plh_images/parent_centre/ltp_activities/clean_icon.svg",
+      "image_asset": "plh_images/parent_centre/ltp_activities/clean.svg",
       "group": "everyday",
+      "favourite_field": "ltp_activity_clean_favourite",
       "title": "Cleaning and organising",
       "_translations": {
         "title": {

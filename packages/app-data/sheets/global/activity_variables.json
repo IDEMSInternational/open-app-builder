@@ -25,6 +25,24 @@
     },
     {
       "type": "declare_global_constant",
+      "name": "activities",
+      "value": "Activities",
+      "_translations": {
+        "value": {}
+      }
+    },
+    {
+      "type": "declare_global_constant",
+      "name": "something_fun",
+      "value": "Something fun",
+      "_translations": {
+        "value": {
+          "tz_sw": true
+        }
+      }
+    },
+    {
+      "type": "declare_global_constant",
       "name": "random_activity",
       "value": "Random Activity",
       "_translations": {
