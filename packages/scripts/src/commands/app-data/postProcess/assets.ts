@@ -18,6 +18,7 @@ import {
 } from "../../../utils";
 import { ActiveDeployment } from "../../deployment/get";
 import type { IAssetEntryHashmap, IContentsEntryMinimal } from "data-models/deployment.model";
+import { existsSync } from "fs-extra";
 
 /**
  * Legacy folder used to differentiate language assets
@@ -96,6 +97,9 @@ export class AssetsPostProcessor {
     missingEntries: IAssetEntryHashmap
   ) {
     const contentsTarget = path.resolve(appAssetsFolder, "contents.json");
+    // this is where we implement the fix
+    // to implement, we can surround the code in a try-catch
+    // try {
     fs.writeFileSync(contentsTarget, JSON.stringify(sortJsonKeys(assetEntries), null, 2));
     const missingTarget = path.resolve(appAssetsFolder, "untracked-assets.json");
     if (fs.existsSync(missingTarget)) fs.removeSync(missingTarget);
@@ -106,6 +110,16 @@ export class AssetsPostProcessor {
       });
       fs.writeFileSync(missingTarget, JSON.stringify(sortJsonKeys(missingEntries), null, 2));
     }
+    // }
+    // catch
+    // {
+    //   if (!existsSync(contentsTarget))
+    //   {
+    //     console.error(chalk.red("File \'" + contentsTarget + "\' does not exist. /n"
+    //     + "Please check your Google Drive permissions.")) ;
+    //   }
+    //   process.exit(1) ;
+    // }
   }
 
   private mergeParentAssets(sourceAssets: { [relativePath: string]: IContentsEntry }) {

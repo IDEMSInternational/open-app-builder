@@ -66,20 +66,22 @@ const download = (options: { folderId: string; filterFn?: any }) => {
   *     - (https://github.com/sindresorhus/load-json-file/issues/9)
   *     - (https://github.com/dashersw/brain-bits/issues/3)
   */
-  gdriveExec("download", dlArgs);
 
   /**
    * now to implement the fix, this is where the fix will be implemented
    * we need to check if the file actually exists
    * now attempt to perform a try-catch
    * using accessSync is used to check the accessibility of a file, for this, we are going to check if outputPath is real
-   */
-  if (existsSync(outputPath)) {
+   * if (existsSync(outputPath)) {
     console.log("File exists.");
     return outputPath;
   } else {
     throw new Error("File does not exist.");
   }
+   */
+
+  gdriveExec("download", dlArgs);
+  return outputPath;
 };
 
 /**
