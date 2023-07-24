@@ -5,6 +5,7 @@ import write_blob from "capacitor-blob-writer";
 import { SyncServiceBase } from "../syncService.base";
 import { environment } from "src/environments/environment";
 import { IAssetContents } from "src/app/data";
+import { IAssetEntry } from "packages/data-models/deployment.model";
 
 @Injectable({
   providedIn: "root",
@@ -76,14 +77,29 @@ export class FileManagerService extends SyncServiceBase {
     });
   }
 
-  async convertToAssetContentsEntry(relativePath: string): Promise<Partial<IAssetContents>> {
-    const fileInfo = await Filesystem.stat({ path: relativePath, directory: Directory.Data });
-    // TODO: handle theme/language overrides
-    return {
-      relativePath: {
-        filePath: fileInfo.uri,
-        size_kb: Math.round(fileInfo.size / 102.4) / 10,
-      },
-    };
+  async generateAssetContentsEntry(
+    relativePath: string,
+    url?: string
+  ): Promise<Partial<IAssetEntry>> {
+    let assetContentsEntry = {} as Partial<IAssetEntry>;
+    if (Capacitor.isNativePlatform()) {
+      const fileInfo = await Filesystem.stat({
+        path: `${this.cacheName}/${relativePath}`,
+        directory: Directory.Data,
+      });
+      const { uri, size } = fileInfo;
+      const filePath = Capacitor.convertFileSrc(uri);
+      // TODO: handle theme/language overrides
+
+      assetContentsEntry = {
+        filePath,
+        size_kb: Math.round(size / 102.4) / 10,
+      };
+    } else {
+      assetContentsEntry = {
+        filePath: url,
+      };
+    }
+    return assetContentsEntry;
   }
 }

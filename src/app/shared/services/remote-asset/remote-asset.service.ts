@@ -120,7 +120,7 @@ export class RemoteAssetService extends AsyncServiceBase {
         console.log(
           `[REMOTE ASSETS] Fetching remote URL for ${index + 1} of ${relativePaths.length} files.`
         );
-        this.updateAssetContents(relativePath, { filePath: url });
+        this.updateAssetContents(relativePath, url);
       }
     }
   }
@@ -179,7 +179,7 @@ export class RemoteAssetService extends AsyncServiceBase {
         console.log(`[REMOTE ASSETS] File ${fileIndex + 1} of ${totalFiles} downloaded to cache`);
         if (data) {
           const filesystemPath = await this.fileManagerService.saveFile(data, relativePath);
-          await this.updateAssetContents(relativePath, { filePath: filesystemPath });
+          await this.updateAssetContents(relativePath);
         }
         progress$.next(progress);
         progress$.complete();
@@ -188,7 +188,12 @@ export class RemoteAssetService extends AsyncServiceBase {
     return progress$;
   }
 
-  private async updateAssetContents(relativePath: string, update: Partial<IAssetEntry>) {
+  /**
+   * Fetch file info from local storage and save updates to asset contents in dynamic data.
+   * @param url - Required if platform is web
+   * */
+  private async updateAssetContents(relativePath: string, url?: string) {
+    const update = await this.fileManagerService.generateAssetContentsEntry(relativePath, url);
     await this.dynamicDataService.update<IAssetEntry>(
       "asset_pack",
       "required_assets",
