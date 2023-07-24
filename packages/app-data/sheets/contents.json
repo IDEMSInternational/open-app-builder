@@ -1,5 +1,11 @@
 {
   "data_list": {
+    "activity_groups_data": {
+      "flow_type": "data_list",
+      "flow_name": "activity_groups_data",
+      "data_list_name": "activity_groups",
+      "_xlsxPath": "global/data/activity_data_list.xlsx"
+    },
     "language_data_list": {
       "flow_type": "data_list",
       "flow_name": "language_data_list",
@@ -1702,6 +1708,11 @@
       "flow_type": "template",
       "flow_name": "accept_terms_warning",
       "_xlsxPath": "global/core_templates/core_templates_app_launch.xlsx"
+    },
+    "activities": {
+      "flow_type": "template",
+      "flow_name": "activities",
+      "_xlsxPath": "global/core_templates/core_templates_relax_and_activities.xlsx"
     },
     "activity_relax_1": {
       "flow_type": "template",

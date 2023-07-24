@@ -1,0 +1,60 @@
+{
+  "flow_type": "data_list",
+  "flow_name": "activity_groups_data",
+  "data_list_name": "activity_groups",
+  "status": "released",
+  "rows": [
+    {
+      "id": "games",
+      "title": "Fun and games",
+      "_translations": {
+        "title": {},
+        "text": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Fun and games"
+        },
+        "text": {
+          "eng": "Playing games with teens is a great way to spend quality time together while also teaching important skills."
+        }
+      },
+      "text": "Playing games with teens is a great way to spend quality time together while also teaching important skills."
+    },
+    {
+      "id": "everyday",
+      "title": "Everyday activities",
+      "_translations": {
+        "title": {},
+        "text": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Everyday activities"
+        },
+        "text": {
+          "eng": "Turn everyday activities into something fun! Help your teen learn by doing these everyday activities."
+        }
+      },
+      "text": "Turn everyday activities into something fun! Help your teen learn by doing these everyday activities."
+    },
+    {
+      "id": "home",
+      "title": "Learning at home",
+      "_translations": {
+        "title": {},
+        "text": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Learning at home"
+        },
+        "text": {
+          "eng": "School is not the only place where teens learn. These activities will teach them life skills that will help them at school and beyond."
+        }
+      },
+      "text": "School is not the only place where teens learn. These activities will teach them life skills that will help them at school and beyond."
+    }
+  ],
+  "_xlsxPath": "global/data/activity_data_list.xlsx"
+}

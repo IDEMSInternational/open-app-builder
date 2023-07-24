@@ -316,18 +316,16 @@
       "spend_time": true,
       "completed_field": "memory_game_completed",
       "completed": "@fields.memory_game_completed",
-      "title": "Memory game - \"On Saturday...\"",
+      "title": "Memory game – \"On Saturday...\"",
       "_translations": {
-        "title": {
-          "tz_sw": true
-        },
+        "title": {},
         "activity_text": {
           "tz_sw": true
         }
       },
       "_translatedFields": {
         "title": {
-          "eng": "Memory game - \"On Saturday...\""
+          "eng": "Memory game – \"On Saturday...\""
         },
         "activity_text": {
           "eng": "* First person says, “On Saturday, I am going to… (e.g., go to the park)”.\n* Second person adds to first person, “On Saturday, I am going to the park and… (e.g., visit my best friend).\n* Each person adds to the previous, trying to think of all of the fun things to do on Saturday."
