@@ -95,9 +95,12 @@ const gdriveExec = (cmd: string, args: string = "", sync = true) => {
   const gdriveToolsBin = `yarn workspace @idemsInternational/gdrive-tools start`;
   const fullCommand = `${gdriveToolsBin} ${cmd} ${commonArgs} ${args}`;
   console.log(chalk.gray(fullCommand));
-  return sync
+  // ALSO COULD TRY TO MAKE CHECKS IN THIS FILE FOR ANY ERRORS DURING THE SYNC;
+  // could be done by writing 'const process = sync', and then printing the process ( console.log("process", process))
+  const process = sync
     ? spawnSync(fullCommand, { stdio: "inherit", shell: true })
     : spawn(fullCommand, { stdio: "inherit", shell: true });
+  console.log("process", process); // debugging
 };
 
 const getOutputFolder = (folderId: string) => {
