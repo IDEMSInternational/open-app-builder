@@ -13,7 +13,7 @@ import { TemplateAssetService } from "../../components/template/services/templat
 import { AsyncServiceBase } from "../asyncService.base";
 import { IAssetEntry } from "packages/data-models/deployment.model";
 import { DynamicDataService } from "../dynamic-data/dynamic-data.service";
-import { arrayToHashmap } from "../../utils";
+import { arrayToHashmap, deepDiffObjects } from "../../utils";
 
 @Injectable({
   providedIn: "root",
@@ -147,6 +147,13 @@ export class RemoteAssetService extends AsyncServiceBase {
      * 3. Compare the above to generate manifest of files needed to be downloaded
      * 4. Download and update contents using existing methods
      */
+
+    // e.g.
+    // deepDiffObjects()
+
+    // required_assets = core_assets merged with asset_pack_1 etc ?
+    // trying to maintain backwards compatibility, and we don't want to require that authors use asset packs
+    // So there probs needs to be some work at the postProcessor stage to generate various asset_packs, including "core" and "theme_secondary"
     return manifest;
   }
 
