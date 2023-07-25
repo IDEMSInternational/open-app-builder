@@ -752,6 +752,15 @@
   "plh_audio/topic_intros/w_grief_intro.mp3": {
     "filePath": "global/plh_audio/topic_intros/w_grief_intro.mp3",
     "md5Checksum": "8ed65e6a15ed328d6d8348a7e8866d31",
+    "overrides": {
+      "theme_default": {
+        "tz_sw": {
+          "filePath": "tz_sw/plh_audio/topic_intros/w_grief_intro.mp3",
+          "md5Checksum": "79b22b0269179f14c0a18ca89231ce29",
+          "size_kb": 1045.2
+        }
+      }
+    },
     "size_kb": 759.6
   },
   "plh_audio/topic_intros/w_instruct_intro.mp3": {
@@ -771,6 +780,15 @@
   "plh_audio/topic_intros/w_learn_intro.mp3": {
     "filePath": "global/plh_audio/topic_intros/w_learn_intro.mp3",
     "md5Checksum": "cb26d84fc37478d7b02f41352e3879e1",
+    "overrides": {
+      "theme_default": {
+        "tz_sw": {
+          "filePath": "tz_sw/plh_audio/topic_intros/w_learn_intro.mp3",
+          "md5Checksum": "d58886e0f28302c74a0a4e64b1bf8276",
+          "size_kb": 879.4
+        }
+      }
+    },
     "size_kb": 656.7
   },
   "plh_audio/topic_intros/w_money_intro.mp3": {
@@ -860,6 +878,15 @@
   "plh_audio/topic_intros/w_srh_intro.mp3": {
     "filePath": "global/plh_audio/topic_intros/w_srh_intro.mp3",
     "md5Checksum": "d586c9b58c5a5cd8b5a965d78ff0b96e",
+    "overrides": {
+      "theme_default": {
+        "tz_sw": {
+          "filePath": "tz_sw/plh_audio/topic_intros/w_srh_intro.mp3",
+          "md5Checksum": "31d08af8db8fea1577333a69076f45e6",
+          "size_kb": 810.8
+        }
+      }
+    },
     "size_kb": 706.9
   },
   "plh_audio/topic_intros/w_stress_intro.mp3": {
@@ -879,6 +906,15 @@
   "plh_audio/topic_intros/w_svp_intro.mp3": {
     "filePath": "global/plh_audio/topic_intros/w_svp_intro.mp3",
     "md5Checksum": "38b3c3d5b7d18eb28792a618266e8edd",
+    "overrides": {
+      "theme_default": {
+        "tz_sw": {
+          "filePath": "tz_sw/plh_audio/topic_intros/w_svp_intro.mp3",
+          "md5Checksum": "eb13d339afa0035ff50d03d40e0bd9cd",
+          "size_kb": 510.8
+        }
+      }
+    },
     "size_kb": 538.4
   },
   "plh_audio/topic_intros/workshops_reflection.mp3": {
