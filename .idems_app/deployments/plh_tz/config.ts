@@ -8,6 +8,7 @@ config.app_data!.sheets_filter_function = (flow) =>
     flow.flow_subtype!
   );
 config.translations!.filter_language_codes = ["tz_en", "tz_sw"];
+config.app_data.assets_filter_function = (fileEntry) => !fileEntry.relativePath.includes("uncompressed")
 
 // Override constants
 config.app_config!.APP_LANGUAGES!.default = "tz_sw";
