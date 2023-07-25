@@ -4,17 +4,19 @@
   [attr.data-param-style]="style"
   [attr.data-variant]="variant"
 >
-  <div
-    *ngIf="!variantIsCardPortrait"
-    class="toggle_wrapper"
-    [class.show-tick-cross]="showTickAndCross"
-  >
-    <ion-toggle mode="md" [checked]="_row.value" (click)="handleClick($event)"> </ion-toggle>
-  </div>
-  <div *ngIf="variantIsCardPortrait" class="toggle_wrapper">
-    <div class="icon-wrapper" (click)="handleClick($event)">
-      <img [src]="(_row.value ? iconTrue : iconFalse) | plhAsset" />
+  <ng-container [ngSwitch]="variantMap.icon">
+    <!-- Default variant -->
+    <div *ngSwitchCase="false" class="toggle_wrapper" [class.show-tick-cross]="showTickAndCross">
+      <ion-toggle mode="md" [checked]="_row.value" (click)="handleClick($event)"> </ion-toggle>
     </div>
-  </div>
+
+    <!-- "icon" variant, replaces ion-toggle with alternating pair of icons -->
+    <div *ngSwitchCase="true" class="toggle_wrapper">
+      <div class="icon-wrapper" (click)="handleClick($event)">
+        <img [src]="(_row.value ? iconTrue : iconFalse) | plhAsset" />
+      </div>
+    </div>
+  </ng-container>
+
   <span class="label" *ngIf="trueText && falseText">{{ _row.value ? trueText : falseText }} </span>
 </div>
