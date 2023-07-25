@@ -64,6 +64,16 @@ export class AssetsPostProcessor {
     fs.ensureDirSync(appAssetsFolder);
     // Generate a list of all deployment assets, merge with list of assets from parent
     const sourceAssets = generateFolderFlatMap(sourceAssetsFolder, { includeLocalPath: true });
+    // CHECKING IF THERE ARE ASSETS IN THE SOURCE ASSETS FOLDER, IF THERE ARE NO ASSETS, THEN THROW AN ERROR/WARNING BUT ALLOW THE PROGRAM TO RUN
+    if (Object.keys(sourceAssets).length === 0 && sourceAssets.constructor === Object) {
+      // if the assets folder is empty, print a warning message and continue
+      console.error(
+        chalk.red(
+          "No assets found in source assets folder. \n" +
+            "Please check your Google Drive permissions."
+        )
+      );
+    }
     const sourceAssetsFiltered = this.filterAppAssets(sourceAssets);
     const mergedAssets = this.mergeParentAssets(sourceAssetsFiltered);
     // Populate merged assets staging to run quality control checks and generate full contents lists
@@ -115,7 +125,7 @@ export class AssetsPostProcessor {
     // {
     //   if (!existsSync(contentsTarget))
     //   {
-    //     console.error(chalk.red("File \'" + contentsTarget + "\' does not exist. /n"
+    //     console.error(chalk.red("File \'" + contentsTarget + "\' does not exist. \n"
     //     + "Please check your Google Drive permissions.")) ;
     //   }
     //   process.exit(1) ;
