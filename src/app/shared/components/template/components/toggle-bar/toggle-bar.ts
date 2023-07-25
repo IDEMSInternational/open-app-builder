@@ -51,7 +51,7 @@ export class TmplToggleBarComponent
   /** TEMPLATE PARAMETER: "variant" */
   variant: IToggleParams["variant"];
   /** @ignore */
-  variantIsCardPortrait: boolean;
+  variantMap: { icon: boolean };
 
   ngOnInit() {
     this.getParams();
@@ -80,8 +80,15 @@ export class TmplToggleBarComponent
     this.variant = getStringParamFromTemplateRow(this._row, "variant", "")
       .split(",")
       .join(" ") as IToggleParams["variant"];
-    this.variantIsCardPortrait = this.variant.split(" ").includes("icon");
+    this.populateVariantMap();
     this.iconTrue = getStringParamFromTemplateRow(this._row, "icon_true_asset", "");
     this.iconFalse = getStringParamFromTemplateRow(this._row, "icon_false_asset", "");
+  }
+
+  private populateVariantMap() {
+    const variantArray = this.variant.split(" ");
+    this.variantMap = {
+      icon: variantArray.includes("icon"),
+    };
   }
 }

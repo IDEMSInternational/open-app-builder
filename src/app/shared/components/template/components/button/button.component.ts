@@ -57,7 +57,7 @@ export class TmplButtonComponent extends TemplateBaseComponent implements OnInit
   /** TEMPLATE PARAMETER: "image_asset". The path to an image asset */
   image: IButtonParams["image"];
   /** @ignore */
-  variantIsCardPortrait: boolean = false;
+  variantMap: { cardPortrait: boolean };
 
   /** @ignore */
   constructor(private elRef: ElementRef) {
@@ -75,7 +75,7 @@ export class TmplButtonComponent extends TemplateBaseComponent implements OnInit
     this.variant = getStringParamFromTemplateRow(this._row, "variant", "")
       .split(",")
       .join(" ") as IButtonParams["variant"];
-    this.variantIsCardPortrait = this.variant.split(" ").includes("card-portrait");
+    this.populateVariantMap();
     this.disabled = getBooleanParamFromTemplateRow(this._row, "disabled", false);
     this.image = getStringParamFromTemplateRow(this._row, "image_asset", null);
     if (this._row.disabled) {
@@ -94,5 +94,12 @@ export class TmplButtonComponent extends TemplateBaseComponent implements OnInit
     } else {
       return false;
     }
+  }
+
+  private populateVariantMap() {
+    const variantArray = this.variant.split(" ");
+    this.variantMap = {
+      cardPortrait: variantArray.includes("card-portrait"),
+    };
   }
 }

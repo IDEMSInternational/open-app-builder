@@ -82,7 +82,7 @@ ion-button[data-variant~="card"] {
   align-items: center;
   padding: 1.5rem 0.5rem 0.5rem;
   // TODO: make a variable, shared with task card
-  width: 165px;
+  width: 160px;
 
   &:active {
     background-color: var(--ion-color-gray-light);
@@ -94,7 +94,7 @@ ion-button[data-variant~="card"] {
 
   .button-text {
     width: 100%;
-    padding: 1rem 1rem 0.2rem;
+    padding: 1rem 0.5rem 0.5rem;
     text-align: center;
     &.right {
       text-align: right;
