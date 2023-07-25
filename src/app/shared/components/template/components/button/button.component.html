@@ -2,14 +2,18 @@
   <!-- Default variant -->
   <ion-button
     *ngSwitchDefault
-    [class]="'full standard medium' + ' ' + style + ' ' + buttonAlign"
-    [disabled]="disabled"
+    [class]="'full standard medium' + ' ' + params.style + ' ' + params.buttonAlign"
+    [disabled]="params.disabled"
     (click)="triggerActions('click')"
-    [attr.data-param-style]="style"
-    [attr.data-variant]="variant"
+    [attr.data-param-style]="params.style"
+    [attr.data-variant]="params.variant"
   >
-    <ion-icon *ngIf="icon" slot="start" src="{{ icon | plhAsset }}"></ion-icon>
-    <span *ngIf="_row.value" [class]="'left ' + textAlign" [innerHTML]="_row.value | markdown">
+    <ion-icon *ngIf="params.icon" slot="start" src="{{ params.icon | plhAsset }}"></ion-icon>
+    <span
+      *ngIf="_row.value"
+      [class]="'left ' + params.textAlign"
+      [innerHTML]="_row.value | markdown"
+    >
     </span>
     <span *ngIf="_row.rows" class="children">
       <plh-template-component
@@ -27,10 +31,10 @@
     *ngSwitchCase="true"
     class="button-container"
     (click)="triggerActions('click')"
-    [attr.data-variant]="variant"
+    [attr.data-variant]="params.variant"
   >
-    <img *ngIf="image" src="{{ image | plhAsset }}" />
-    <div *ngIf="_row.value" [class]="'button-text ' + textAlign">
+    <img *ngIf="params.image" src="{{ params.image | plhAsset }}" />
+    <div *ngIf="_row.value" [class]="'button-text ' + params.textAlign">
       {{ _row.value }}
     </div>
     <span *ngIf="_row.rows" class="children">
