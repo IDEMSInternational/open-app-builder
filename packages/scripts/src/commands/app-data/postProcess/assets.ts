@@ -64,7 +64,6 @@ export class AssetsPostProcessor {
     fs.ensureDirSync(appAssetsFolder);
     // Generate a list of all deployment assets, merge with list of assets from parent
     const sourceAssets = generateFolderFlatMap(sourceAssetsFolder, { includeLocalPath: true });
-    // CHECKING IF THERE ARE ASSETS IN THE SOURCE ASSETS FOLDER, IF THERE ARE NO ASSETS, THEN THROW AN ERROR/WARNING BUT ALLOW THE PROGRAM TO RUN
     if (Object.keys(sourceAssets).length === 0 && sourceAssets.constructor === Object) {
       // if the assets folder is empty, print a warning message and continue
       console.error(
@@ -107,9 +106,6 @@ export class AssetsPostProcessor {
     missingEntries: IAssetEntryHashmap
   ) {
     const contentsTarget = path.resolve(appAssetsFolder, "contents.json");
-    // this is where we implement the fix
-    // to implement, we can surround the code in a try-catch
-    // try {
     fs.writeFileSync(contentsTarget, JSON.stringify(sortJsonKeys(assetEntries), null, 2));
     const missingTarget = path.resolve(appAssetsFolder, "untracked-assets.json");
     if (fs.existsSync(missingTarget)) fs.removeSync(missingTarget);
@@ -120,16 +116,6 @@ export class AssetsPostProcessor {
       });
       fs.writeFileSync(missingTarget, JSON.stringify(sortJsonKeys(missingEntries), null, 2));
     }
-    // }
-    // catch
-    // {
-    //   if (!existsSync(contentsTarget))
-    //   {
-    //     console.error(chalk.red("File \'" + contentsTarget + "\' does not exist. \n"
-    //     + "Please check your Google Drive permissions.")) ;
-    //   }
-    //   process.exit(1) ;
-    // }
   }
 
   private mergeParentAssets(sourceAssets: { [relativePath: string]: IContentsEntry }) {
