@@ -164,9 +164,89 @@
               "exclude_from_translation": true,
               "rows": [
                 {
+                  "name": "relevant_module",
+                  "value": true,
+                  "condition": "@fields.post_rct_access",
+                  "type": "set_variable",
+                  "_nested_name": "dg_all_modules.carousel.items.relevant_module",
+                  "_dynamicFields": {
+                    "condition": [
+                      {
+                        "fullExpression": "@fields.post_rct_access",
+                        "matchedExpression": "@fields.post_rct_access",
+                        "type": "fields",
+                        "fieldName": "post_rct_access"
+                      }
+                    ]
+                  },
+                  "_dynamicDependencies": {
+                    "@fields.post_rct_access": [
+                      "condition"
+                    ]
+                  }
+                },
+                {
+                  "name": "relevant_module",
+                  "value": "@item.id != \"w_srh\" && @item.id != \"w_svp\" && @item.id != \"w_grief\" && @item.id != \"w_learn\"",
+                  "_translations": {
+                    "value": {}
+                  },
+                  "condition": "!@fields.post_rct_access",
+                  "type": "set_variable",
+                  "_nested_name": "dg_all_modules.carousel.items.relevant_module",
+                  "_dynamicFields": {
+                    "value": [
+                      {
+                        "fullExpression": "@item.id != \"w_srh\" && @item.id != \"w_svp\" && @item.id != \"w_grief\" && @item.id != \"w_learn\"",
+                        "matchedExpression": "@item.id",
+                        "type": "item",
+                        "fieldName": "id"
+                      },
+                      {
+                        "fullExpression": "@item.id != \"w_srh\" && @item.id != \"w_svp\" && @item.id != \"w_grief\" && @item.id != \"w_learn\"",
+                        "matchedExpression": "@item.id",
+                        "type": "item",
+                        "fieldName": "id"
+                      },
+                      {
+                        "fullExpression": "@item.id != \"w_srh\" && @item.id != \"w_svp\" && @item.id != \"w_grief\" && @item.id != \"w_learn\"",
+                        "matchedExpression": "@item.id",
+                        "type": "item",
+                        "fieldName": "id"
+                      },
+                      {
+                        "fullExpression": "@item.id != \"w_srh\" && @item.id != \"w_svp\" && @item.id != \"w_grief\" && @item.id != \"w_learn\"",
+                        "matchedExpression": "@item.id",
+                        "type": "item",
+                        "fieldName": "id"
+                      }
+                    ],
+                    "condition": [
+                      {
+                        "fullExpression": "!@fields.post_rct_access",
+                        "matchedExpression": "!@fields.post_rct_access",
+                        "type": "fields",
+                        "fieldName": "post_rct_access"
+                      }
+                    ]
+                  },
+                  "_dynamicDependencies": {
+                    "@item.id": [
+                      "value",
+                      "value",
+                      "value",
+                      "value"
+                    ],
+                    "!@fields.post_rct_access": [
+                      "condition"
+                    ]
+                  }
+                },
+                {
                   "type": "template",
                   "name": "module_card_@item.id",
                   "value": "module_card",
+                  "condition": "@local.relevant_module",
                   "exclude_from_translation": true,
                   "rows": [
                     {
@@ -216,6 +296,14 @@
                         "fieldName": "id"
                       }
                     ],
+                    "condition": [
+                      {
+                        "fullExpression": "@local.relevant_module",
+                        "matchedExpression": "@local.relevant_module",
+                        "type": "local",
+                        "fieldName": "relevant_module"
+                      }
+                    ],
                     "_nested_name": [
                       {
                         "fullExpression": "dg_all_modules.carousel.items.module_card_@item.id",
@@ -229,6 +317,9 @@
                     "@item.id": [
                       "name",
                       "_nested_name"
+                    ],
+                    "@local.relevant_module": [
+                      "condition"
                     ]
                   }
                 }
