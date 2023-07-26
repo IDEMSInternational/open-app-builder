@@ -6,9 +6,9 @@
   "rows": [
     {
       "id": "chores",
+      "group": "everyday",
       "icon_asset": "plh_images/parent_centre/ltp_activities/chores_icon.svg",
       "image_asset": "plh_images/parent_centre/ltp_activities/chores.svg",
-      "group": "everyday",
       "favourite_field": "ltp_activity_chores_favourite",
       "title": "Doing chores together",
       "_translations": {
@@ -38,9 +38,9 @@
     },
     {
       "id": "bao",
+      "group": "games",
       "icon_asset": "plh_images/parent_centre/ltp_activities/bao_icon.svg",
       "image_asset": "plh_images/parent_centre/ltp_activities/bao.svg",
-      "group": "games",
       "favourite_field": "ltp_activity_bao_favourite",
       "title": "Traditional game",
       "_translations": {
@@ -84,9 +84,9 @@
     },
     {
       "id": "walk",
+      "group": "everyday",
       "icon_asset": "plh_images/parent_centre/ltp_activities/walk_icon.svg",
       "image_asset": "plh_images/parent_centre/ltp_activities/walk.svg",
-      "group": "everyday",
       "favourite_field": "ltp_activity_walk_favourite",
       "title": "Walking together",
       "_translations": {
@@ -123,9 +123,9 @@
     },
     {
       "id": "cook_traditional",
+      "group": "everyday",
       "icon_asset": "plh_images/parent_centre/ltp_activities/cook_traditional_icon.svg",
       "image_asset": "plh_images/parent_centre/ltp_activities/cook_traditional.svg",
-      "group": "everyday",
       "favourite_field": "ltp_activity_cook_traditional_favourite",
       "title": "Cooking traditional food",
       "_translations": {
@@ -162,9 +162,9 @@
     },
     {
       "id": "garden",
+      "group": "games",
       "icon_asset": "plh_images/parent_centre/ltp_activities/garden_icon.svg",
       "image_asset": "plh_images/parent_centre/ltp_activities/garden.svg",
-      "group": "games",
       "favourite_field": "ltp_activity_garden_favourite",
       "title": "Gardening",
       "_translations": {
@@ -201,9 +201,9 @@
     },
     {
       "id": "charades",
+      "group": "games",
       "icon_asset": "plh_images/parent_centre/ltp_activities/charades_icon.svg",
       "image_asset": "plh_images/parent_centre/ltp_activities/charades.svg",
-      "group": "games",
       "favourite_field": "ltp_activity_charades_favourite",
       "title": "Charades",
       "_translations": {
@@ -240,9 +240,9 @@
     },
     {
       "id": "role_play",
+      "group": "home",
       "icon_asset": "plh_images/parent_centre/ltp_activities/role_play_icon.svg",
       "image_asset": "plh_images/parent_centre/ltp_activities/role_play.svg",
-      "group": "home",
       "favourite_field": "ltp_activity_role_play_favourite",
       "title": "Role play",
       "_translations": {
@@ -279,9 +279,9 @@
     },
     {
       "id": "hide_seek",
+      "group": "home",
       "icon_asset": "plh_images/parent_centre/ltp_activities/hide_seek_icon.svg",
       "image_asset": "plh_images/parent_centre/ltp_activities/hide_seek.svg",
-      "group": "home",
       "favourite_field": "ltp_activity_hide_seek_favourite",
       "title": "Hide and seek",
       "_translations": {
@@ -330,9 +330,9 @@
     },
     {
       "id": "mystery_box",
+      "group": "home",
       "icon_asset": "plh_images/parent_centre/ltp_activities/mystery_box_icon.svg",
       "image_asset": "plh_images/parent_centre/ltp_activities/mystery_box.svg",
-      "group": "home",
       "favourite_field": "ltp_activity_mystery_box_favourite",
       "title": "Mystery box",
       "_translations": {
@@ -376,9 +376,9 @@
     },
     {
       "id": "memory_game",
+      "group": "home",
       "icon_asset": "plh_images/parent_centre/ltp_activities/memory_game_icon.svg",
       "image_asset": "plh_images/parent_centre/ltp_activities/memory_game.svg",
-      "group": "home",
       "favourite_field": "ltp_activity_memory_game_favourite",
       "title": "Memory game",
       "_translations": {
@@ -422,9 +422,9 @@
     },
     {
       "id": "cook",
+      "group": "everyday",
       "icon_asset": "plh_images/parent_centre/ltp_activities/cook_icon.svg",
       "image_asset": "plh_images/parent_centre/ltp_activities/cook.svg",
-      "group": "everyday",
       "favourite_field": "ltp_activity_cook_favourite",
       "title": "Cooking",
       "_translations": {
@@ -461,9 +461,9 @@
     },
     {
       "id": "tell_stories",
+      "group": "everyday",
       "icon_asset": "plh_images/parent_centre/ltp_activities/tell_stories_icon.svg",
       "image_asset": "plh_images/parent_centre/ltp_activities/tell_stories.svg",
-      "group": "everyday",
       "favourite_field": "ltp_activity_tell_stories_favourite",
       "title": "Storytelling",
       "_translations": {
@@ -500,9 +500,9 @@
     },
     {
       "id": "dance",
+      "group": "games",
       "icon_asset": "plh_images/parent_centre/ltp_activities/dance_icon.svg",
       "image_asset": "plh_images/parent_centre/ltp_activities/dance.svg",
-      "group": "games",
       "favourite_field": "ltp_activity_dance_favourite",
       "title": "Music and dance",
       "_translations": {
@@ -539,9 +539,9 @@
     },
     {
       "id": "short_term_goal",
+      "group": "home",
       "icon_asset": "plh_images/parent_centre/ltp_activities/short_term_goal_icon.svg",
       "image_asset": "plh_images/parent_centre/ltp_activities/short_term_goal.svg",
-      "group": "home",
       "favourite_field": "ltp_activity_short_term_goal_favourite",
       "title": "Goal setting",
       "_translations": {
@@ -578,9 +578,9 @@
     },
     {
       "id": "long_term_goal",
+      "group": "home",
       "icon_asset": "plh_images/parent_centre/ltp_activities/long_term_goal_icon.svg",
       "image_asset": "plh_images/parent_centre/ltp_activities/long_term_goal.svg",
-      "group": "home",
       "favourite_field": "ltp_activity_long_term_goal_favourite",
       "title": "Realise my strength",
       "_translations": {
@@ -617,8 +617,8 @@
     },
     {
       "id": "clean",
-      "icon_asset": "plh_images/parent_centre/ltp_activities/clean_icon.svg",
-      "image_asset": "plh_images/parent_centre/ltp_activities/clean.svg",
+      "icon_asset": "plh_images/parent_centre/ltp_activities/chores_icon.svg",
+      "image_asset": "plh_images/parent_centre/ltp_activities/chores.svg",
       "group": "everyday",
       "favourite_field": "ltp_activity_clean_favourite",
       "title": "Cleaning and organising",
@@ -653,6 +653,329 @@
       "intro_text": "As a caregiver with teens, you may find that your home is messy and disorganised. \n\nWorking with your teen to clean and organise your home provides an opportunity for bonding and teamwork.",
       "steps_text": "1. Start by identifying a specific area in your home or community space that needs cleaning and organising, such as a room, cupboard or area on the floor.\n2. Talk to your teen about what needs to be done to clean the space (Like sorting items into groups, or dusting a surface).\n3. Give specific tasks to each person and work together to complete them. \n4. As you clean and organise, take the opportunity to talk and connect with your teen. Ask them about their interests and share stories from your own life.\n5. When you’re finished, take a moment to appreciate what you did and praise your teen for their part.",
       "tips_text": "* Let your teen come up with an idea for what they think should be cleaned or organised.\n* Take breaks and take your time. Remember to keep things fun. The goal is to spend time with your teen and teach them about being tidy."
+    },
+    {
+      "id": "reflect_positive",
+      "icon_asset": "plh_images/parent_centre/ltp_activities/tell_stories_icon.svg",
+      "image_asset": "plh_images/parent_centre/ltp_activities/tell_stories.svg",
+      "group": "chat",
+      "favourite_field": "ltp_activity_reflect_positive_favourite",
+      "title": "Reflect on the positive",
+      "_translations": {
+        "title": {
+          "tz_sw": true
+        },
+        "intro_text": {
+          "tz_sw": true
+        }
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Reflect on the positive"
+        },
+        "intro_text": {
+          "eng": "At the end of the day, take a minute to: \n\n* Talk to your teen about one fun thing they did. \n* Praise yourself for one thing you did well today. \n* You are a star!"
+        }
+      },
+      "intro_text": "At the end of the day, take a minute to: \n\n* Talk to your teen about one fun thing they did. \n* Praise yourself for one thing you did well today. \n* You are a star!"
+    },
+    {
+      "id": "check_in_chat",
+      "icon_asset": "plh_images/parent_centre/ltp_activities/tell_stories_icon.svg",
+      "image_asset": "plh_images/parent_centre/ltp_activities/tell_stories.svg",
+      "group": "chat",
+      "favourite_field": "ltp_activity_check_in_chat_favourite",
+      "title": "Check-in chat",
+      "_translations": {
+        "title": {
+          "tz_sw": true
+        },
+        "intro_text": {
+          "tz_sw": true
+        }
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Check-in chat"
+        },
+        "intro_text": {
+          "eng": "* Ask each other, “What made you happy today?”\n* Ask each other, “What difficulty did you face today?”\n* Ask each other, “How can I help you?”\n* Try to do this together every day; it could be when you are eating dinner together or before you go to bed."
+        }
+      },
+      "intro_text": "* Ask each other, “What made you happy today?”\n* Ask each other, “What difficulty did you face today?”\n* Ask each other, “How can I help you?”\n* Try to do this together every day; it could be when you are eating dinner together or before you go to bed."
+    },
+    {
+      "id": "dream_travel",
+      "icon_asset": "plh_images/parent_centre/ltp_activities/tell_stories_icon.svg",
+      "image_asset": "plh_images/parent_centre/ltp_activities/tell_stories.svg",
+      "group": "chat",
+      "favourite_field": "ltp_activity_dream_travel_favourite",
+      "title": "Dream travel",
+      "_translations": {
+        "title": {
+          "tz_sw": true
+        },
+        "intro_text": {
+          "tz_sw": true
+        }
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Dream travel"
+        },
+        "intro_text": {
+          "eng": "* You can’t always travel, but you can always dream! Ask your teen these questions:\n* Where would you want to travel to? How long would you be away? What would you pack? What would you do on your trip? What would you see?\n* Look at a map together or draw one.\n* Choose a country that your teen has never heard of and learn more about the country."
+        }
+      },
+      "intro_text": "* You can’t always travel, but you can always dream! Ask your teen these questions:\n* Where would you want to travel to? How long would you be away? What would you pack? What would you do on your trip? What would you see?\n* Look at a map together or draw one.\n* Choose a country that your teen has never heard of and learn more about the country."
+    },
+    {
+      "id": "famous_party",
+      "icon_asset": "plh_images/parent_centre/ltp_activities/tell_stories_icon.svg",
+      "image_asset": "plh_images/parent_centre/ltp_activities/tell_stories.svg",
+      "group": "chat",
+      "favourite_field": "ltp_activity_famous_party_favourite",
+      "title": "Famous party",
+      "_translations": {
+        "title": {
+          "tz_sw": true
+        },
+        "intro_text": {
+          "tz_sw": true
+        }
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Famous party"
+        },
+        "intro_text": {
+          "eng": "You and your teenager can plan a guestlist of the famous people you’d most like to invite to your party. You can each have five people – they can be from the past or from the present time. Who would you invite? And would your guests get on well together?"
+        }
+      },
+      "intro_text": "You and your teenager can plan a guestlist of the famous people you’d most like to invite to your party. You can each have five people – they can be from the past or from the present time. Who would you invite? And would your guests get on well together?"
+    },
+    {
+      "id": "two_truths",
+      "icon_asset": "plh_images/parent_centre/ltp_activities/tell_stories_icon.svg",
+      "image_asset": "plh_images/parent_centre/ltp_activities/tell_stories.svg",
+      "group": "chat",
+      "favourite_field": "ltp_activity_two_truths_favourite",
+      "title": "Two truths, one lie",
+      "_translations": {
+        "title": {
+          "tz_sw": true
+        },
+        "intro_text": {
+          "tz_sw": true
+        }
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Two truths, one lie"
+        },
+        "intro_text": {
+          "eng": "* Think of three statements about yourself. Two must be true and one must be a lie.\n* It might help to think of wishes, dreams, experiences at school, likes or dislikes. For example: I hate bananas, my favourite subject is science, and I really wish I could sing. \n* Say them to your teenager and ask them to guess which one is a lie. \n* Did they guess correctly? Was it a surprise?\n* Now ask them to do the same. Did you learn something new about each other?"
+        }
+      },
+      "intro_text": "* Think of three statements about yourself. Two must be true and one must be a lie.\n* It might help to think of wishes, dreams, experiences at school, likes or dislikes. For example: I hate bananas, my favourite subject is science, and I really wish I could sing. \n* Say them to your teenager and ask them to guess which one is a lie. \n* Did they guess correctly? Was it a surprise?\n* Now ask them to do the same. Did you learn something new about each other?"
+    },
+    {
+      "id": "time_machine",
+      "icon_asset": "plh_images/parent_centre/ltp_activities/tell_stories_icon.svg",
+      "image_asset": "plh_images/parent_centre/ltp_activities/tell_stories.svg",
+      "group": "chat",
+      "favourite_field": "ltp_activity_time_machine_favourite",
+      "title": "Time machine",
+      "_translations": {
+        "title": {
+          "tz_sw": true
+        },
+        "intro_text": {
+          "tz_sw": true
+        }
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Time machine"
+        },
+        "intro_text": {
+          "eng": "Tell your teenager something about when you were a teenager yourself. What things didn’t exist then? Phones with internet? What did you do for fun? What did you worry about? Don’t worry if they don’t tell you something in return – what’s important is that they listen and remember. Sometimes our teenagers forget that their parents are people too!"
+        }
+      },
+      "intro_text": "Tell your teenager something about when you were a teenager yourself. What things didn’t exist then? Phones with internet? What did you do for fun? What did you worry about? Don’t worry if they don’t tell you something in return – what’s important is that they listen and remember. Sometimes our teenagers forget that their parents are people too!"
+    },
+    {
+      "id": "superpowers",
+      "icon_asset": "plh_images/parent_centre/ltp_activities/tell_stories_icon.svg",
+      "image_asset": "plh_images/parent_centre/ltp_activities/tell_stories.svg",
+      "group": "chat",
+      "favourite_field": "ltp_activity_superpowers_favourite",
+      "title": "Superpowers",
+      "_translations": {
+        "title": {
+          "tz_sw": true
+        },
+        "intro_text": {
+          "tz_sw": true
+        }
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Superpowers"
+        },
+        "intro_text": {
+          "eng": "* Think of a superpower. For example, going anywhere instantly, travelling in time, reading minds. \n* Ask your teen, “If you had the superpower to […], how would you use it?”\n* Encourage them to give their superhero a name and act it out. \n* Now let your teen choose a superpower for you.\n* Make sure you act out your superpower, too!"
+        }
+      },
+      "intro_text": "* Think of a superpower. For example, going anywhere instantly, travelling in time, reading minds. \n* Ask your teen, “If you had the superpower to […], how would you use it?”\n* Encourage them to give their superhero a name and act it out. \n* Now let your teen choose a superpower for you.\n* Make sure you act out your superpower, too!"
+    },
+    {
+      "id": "friendly_chat",
+      "icon_asset": "plh_images/parent_centre/ltp_activities/tell_stories_icon.svg",
+      "image_asset": "plh_images/parent_centre/ltp_activities/tell_stories.svg",
+      "group": "chat",
+      "favourite_field": "ltp_activity_friendly_chat_favourite",
+      "title": "Just a friendly chat",
+      "_translations": {
+        "title": {
+          "tz_sw": true
+        },
+        "intro_text": {
+          "tz_sw": true
+        }
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Just a friendly chat"
+        },
+        "intro_text": {
+          "eng": "Have a conversation with your teen about something they like.\n\nIt can be about anything they choose to talk about: sports, friends, music, celebrities…\n\nTry to listen to your teen and give them space to talk."
+        }
+      },
+      "intro_text": "Have a conversation with your teen about something they like.\n\nIt can be about anything they choose to talk about: sports, friends, music, celebrities…\n\nTry to listen to your teen and give them space to talk."
+    },
+    {
+      "id": "interrupter",
+      "icon_asset": "plh_images/parent_centre/ltp_activities/tell_stories_icon.svg",
+      "image_asset": "plh_images/parent_centre/ltp_activities/tell_stories.svg",
+      "group": "chat",
+      "favourite_field": "ltp_activity_interrupter_favourite",
+      "title": "The interrupter",
+      "_translations": {
+        "title": {
+          "tz_sw": true
+        },
+        "intro_text": {
+          "tz_sw": true
+        }
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "The interrupter"
+        },
+        "intro_text": {
+          "eng": "* Choose a storyteller to start making up a story.\n* Story listeners can interrupt with a word at any time.\n* The storyteller needs to fit that word in their story.\n* When the story is finished, try with a different storyteller!"
+        }
+      },
+      "intro_text": "* Choose a storyteller to start making up a story.\n* Story listeners can interrupt with a word at any time.\n* The storyteller needs to fit that word in their story.\n* When the story is finished, try with a different storyteller!"
+    },
+    {
+      "id": "three_options",
+      "icon_asset": "plh_images/parent_centre/ltp_activities/tell_stories_icon.svg",
+      "image_asset": "plh_images/parent_centre/ltp_activities/tell_stories.svg",
+      "group": "chat",
+      "favourite_field": "ltp_activity_three_options_favourite",
+      "title": "Three options",
+      "_translations": {
+        "title": {
+          "tz_sw": true
+        },
+        "intro_text": {
+          "tz_sw": true
+        }
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Three options"
+        },
+        "intro_text": {
+          "eng": "* Think of three different situations. For example, driving a car, sailing a boat or flying a plane.\n* Say them to your teen and ask, “Which would you prefer?”\n* Ask them why?\n* Now think of three more situations or ask your teen to do it for you."
+        }
+      },
+      "intro_text": "* Think of three different situations. For example, driving a car, sailing a boat or flying a plane.\n* Say them to your teen and ask, “Which would you prefer?”\n* Ask them why?\n* Now think of three more situations or ask your teen to do it for you."
+    },
+    {
+      "id": "yes_no_maybe",
+      "icon_asset": "plh_images/parent_centre/ltp_activities/tell_stories_icon.svg",
+      "image_asset": "plh_images/parent_centre/ltp_activities/tell_stories.svg",
+      "group": "chat",
+      "favourite_field": "ltp_activity_yes_no_maybe_favourite",
+      "title": "Yes, no or maybe",
+      "_translations": {
+        "title": {
+          "tz_sw": true
+        },
+        "intro_text": {
+          "tz_sw": true
+        }
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Yes, no or maybe"
+        },
+        "intro_text": {
+          "eng": "* Ask each other questions. They can be any questions about things you like or what you did today.\n* The only rule is that you can’t answer “yes”, “no” or “maybe”.\n* How long can you last? How creative can you get with your answers?\n* Swap over and play again!"
+        }
+      },
+      "intro_text": "* Ask each other questions. They can be any questions about things you like or what you did today.\n* The only rule is that you can’t answer “yes”, “no” or “maybe”.\n* How long can you last? How creative can you get with your answers?\n* Swap over and play again!"
+    },
+    {
+      "id": "memory_game",
+      "icon_asset": "plh_images/parent_centre/ltp_activities/tell_stories_icon.svg",
+      "image_asset": "plh_images/parent_centre/ltp_activities/tell_stories.svg",
+      "group": "chat",
+      "favourite_field": "ltp_activity_memory_game_favourite",
+      "title": "Memory game – \"On Saturday...\"",
+      "_translations": {
+        "title": {},
+        "intro_text": {
+          "tz_sw": true
+        }
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Memory game – \"On Saturday...\""
+        },
+        "intro_text": {
+          "eng": "* First person says, “On Saturday, I am going to… (e.g., go to the park)”.\n* Second person adds to first person, “On Saturday, I am going to the park and… (e.g., visit my best friend).\n* Each person adds to the previous, trying to think of all of the fun things to do on Saturday."
+        }
+      },
+      "intro_text": "* First person says, “On Saturday, I am going to… (e.g., go to the park)”.\n* Second person adds to first person, “On Saturday, I am going to the park and… (e.g., visit my best friend).\n* Each person adds to the previous, trying to think of all of the fun things to do on Saturday."
+    },
+    {
+      "id": "invent_story",
+      "icon_asset": "plh_images/parent_centre/ltp_activities/tell_stories_icon.svg",
+      "image_asset": "plh_images/parent_centre/ltp_activities/tell_stories.svg",
+      "group": "chat",
+      "favourite_field": "ltp_activity_invent_story_favourite",
+      "title": "Make up a story",
+      "_translations": {
+        "title": {
+          "tz_sw": true
+        },
+        "intro_text": {
+          "tz_sw": true
+        }
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Make up a story"
+        },
+        "intro_text": {
+          "eng": "* Start the story with “Once upon a time there was a…”\n* Let your teen make up the next sentence.\n* Then you make up a sentence.\n* Take turns until you have a wonderful new story.\n* Make sure to end the story on a positive note.\n* Ask your teen what their favourite part of the story was!"
+        }
+      },
+      "intro_text": "* Start the story with “Once upon a time there was a…”\n* Let your teen make up the next sentence.\n* Then you make up a sentence.\n* Take turns until you have a wonderful new story.\n* Make sure to end the story on a positive note.\n* Ask your teen what their favourite part of the story was!"
     }
   ],
   "_xlsxPath": "global/data/activity_data_list.xlsx"
