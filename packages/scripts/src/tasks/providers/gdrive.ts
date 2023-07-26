@@ -101,6 +101,7 @@ const gdriveExec = (cmd: string, args: string = "", sync = true) => {
     ? spawnSync(fullCommand, { stdio: "inherit", shell: true })
     : spawn(fullCommand, { stdio: "inherit", shell: true });
   console.log("process", process); // debugging
+  return process;
 };
 
 const getOutputFolder = (folderId: string) => {
