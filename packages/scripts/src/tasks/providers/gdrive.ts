@@ -30,56 +30,6 @@ const download = (options: { folderId: string; filterFn?: any }) => {
     const filterFnBase64 = Buffer.from(filterFn.toString()).toString("base64");
     dlArgs += ` --filter-function-64 "${filterFnBase64}"`;
   }
-  /**
-   * added variables const downloadAResult
-   * original line: 'gdriveExec("download", dlArgs);'
-   * to ensure that we can track the return of this:  
-      const result = gdriveExec("download", dlArgs);
-      console.log(chalk.red(result)); 
-  // the error given is:
-  /**
-   *  ERROR! An error was encountered while executing
-      Error: ENOENT: no such file or directory, open '/Users/jodygyekye/idems/parenting-app-ui/.idems_app/deployments/debug/app_data/assets/contents.json'
-          at Object.openSync (node:fs:601:3)
-          at Object.writeFileSync (node:fs:2249:35)
-          at AssetsPostProcessor.writeAssetsContentsFiles (/Users/jodygyekye/idems/parenting-app-ui/packages/scripts/src/commands/app-data/postProcess/assets.ts:99:8)
-          at AssetsPostProcessor.run (/Users/jodygyekye/idems/parenting-app-ui/packages/scripts/src/commands/app-data/postProcess/assets.ts:82:10)
-          at Command.<anonymous> (/Users/jodygyekye/idems/parenting-app-ui/packages/scripts/src/commands/app-data/postProcess/assets.ts:48:38)
-          at Generator.next (<anonymous>)
-          at asyncGeneratorStep (/Users/jodygyekye/idems/parenting-app-ui/packages/scripts/src/commands/app-data/postProcess/assets.ts:23:28)
-          at _next (/Users/jodygyekye/idems/parenting-app-ui/packages/scripts/src/commands/app-data/postProcess/assets.ts:41:17)
-          at /Users/jodygyekye/idems/parenting-app-ui/packages/scripts/src/commands/app-data/postProcess/assets.ts:46:13
-          at new Promise (<anonymous>) {
-        errno: -2,
-        syscall: 'open',
-        code: 'ENOENT',
-        path: '/Users/jodygyekye/idems/parenting-app-ui/.idems_app/deployments/debug/app_data/assets/contents.json'
-      }
-      Cleaning up.
-      Exiting with error.
-  * To show the output path after running 'yarn workflow sync'
-  * One thing I noticed is that the error stems from being unable to generate a file or directory that would be accessed to be used
-  * At the time of testing, it was apparent that when 'yarn workflow sync' is executed, it fails to create a file that should be run:
-  *   - that way to resolve, i will use the fs-extra module to detect if the file exists or not, which is what i will work on tomorrow.
-  *   - shouldn't be too long. Was trying to use resources such as: 
-  *     - (https://stackoverflow.com/questions/71777616/enoent-no-such-file-or-directory-open-filename)
-  *     - (https://github.com/sindresorhus/load-json-file/issues/9)
-  *     - (https://github.com/dashersw/brain-bits/issues/3)
-  */
-
-  /**
-   * now to implement the fix, this is where the fix will be implemented
-   * we need to check if the file actually exists
-   * now attempt to perform a try-catch
-   * using accessSync is used to check the accessibility of a file, for this, we are going to check if outputPath is real
-   * if (existsSync(outputPath)) {
-    console.log("File exists.");
-    return outputPath;
-  } else {
-    throw new Error("File does not exist.");
-  }
-   */
-
   gdriveExec("download", dlArgs);
   return outputPath;
 };
@@ -95,13 +45,9 @@ const gdriveExec = (cmd: string, args: string = "", sync = true) => {
   const gdriveToolsBin = `yarn workspace @idemsInternational/gdrive-tools start`;
   const fullCommand = `${gdriveToolsBin} ${cmd} ${commonArgs} ${args}`;
   console.log(chalk.gray(fullCommand));
-  // ALSO COULD TRY TO MAKE CHECKS IN THIS FILE FOR ANY ERRORS DURING THE SYNC;
-  // could be done by writing 'const process = sync', and then printing the process ( console.log("process", process))
-  const process = sync
+  return sync
     ? spawnSync(fullCommand, { stdio: "inherit", shell: true })
     : spawn(fullCommand, { stdio: "inherit", shell: true });
-  console.log("process", process); // debugging
-  return process;
 };
 
 const getOutputFolder = (folderId: string) => {
