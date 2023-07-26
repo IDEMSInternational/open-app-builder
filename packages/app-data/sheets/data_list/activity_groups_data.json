@@ -54,6 +54,18 @@
         }
       },
       "text": "School is not the only place where teens learn. These activities will teach them life skills that will help them at school and beyond."
+    },
+    {
+      "id": "chat",
+      "title": "Chat together",
+      "_translations": {
+        "title": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Chat together"
+        }
+      }
     }
   ],
   "_xlsxPath": "global/data/activity_data_list.xlsx"
