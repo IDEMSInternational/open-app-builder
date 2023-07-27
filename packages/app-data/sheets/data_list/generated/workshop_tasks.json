@@ -815,9 +815,7 @@
         "description": {
           "tz_sw": true
         },
-        "caregiver_testimonial_script": {
-          "tz_sw": true
-        },
+        "caregiver_testimonial_script": {},
         "teen_testimonial_script": {
           "tz_sw": true
         },
@@ -836,7 +834,7 @@
           "eng": "Help your teen cope after losing a loved one."
         },
         "caregiver_testimonial_script": {
-          "eng": "After I lost my husband, the parenting tips that I learnt were so helpful to me: I began breathing calmly whenever I was feeling so sad or angry, and my kids really felt the difference because I was learning to keep calm.\n\nNaming our feelings and being open about how we are feeling has helped me feel closer to my child. Before, I felt like only I was going through these emotions, but now I know that my child is feeling the same things. We can talk about it and help each other. We don’t feel alone anymore."
+          "eng": "After I lost my husband, the parenting tips that I learnt were so helpful to me: I began breathing calmly whenever I was feeling so sad or angry, and my kids really felt the difference because I was learning to keep calm.\n\nNaming our feelings and being open about how we are feeling has helped me feel closer to my child. Before, I felt like I was the only one who was going through these emotions, but now I know that my child is feeling the same things. We can talk about it and help each other. We don’t feel alone anymore."
         },
         "teen_testimonial_script": {
           "eng": "When I lost my mom, everything changed. I was so sad, but it felt like my dad couldn't understand. Our relationship suffered. We did our own things and we stopped talking to each other. But then something incredible happened.\n\nMy dad learnt all these things from the app about what to do when you lose someone. He asked me how I was doing and we started to talk again. He explained that he was sad too, and he even said he was sorry for not talking to me after my mom died. We can now see that it is hard for both of us, and we can help each other. He is supporting me and we are a lot closer."
@@ -847,7 +845,7 @@
       },
       "lower_case_title": "coping with grief",
       "description": "Help your teen cope after losing a loved one.",
-      "caregiver_testimonial_script": "After I lost my husband, the parenting tips that I learnt were so helpful to me: I began breathing calmly whenever I was feeling so sad or angry, and my kids really felt the difference because I was learning to keep calm.\n\nNaming our feelings and being open about how we are feeling has helped me feel closer to my child. Before, I felt like only I was going through these emotions, but now I know that my child is feeling the same things. We can talk about it and help each other. We don’t feel alone anymore.",
+      "caregiver_testimonial_script": "After I lost my husband, the parenting tips that I learnt were so helpful to me: I began breathing calmly whenever I was feeling so sad or angry, and my kids really felt the difference because I was learning to keep calm.\n\nNaming our feelings and being open about how we are feeling has helped me feel closer to my child. Before, I felt like I was the only one who was going through these emotions, but now I know that my child is feeling the same things. We can talk about it and help each other. We don’t feel alone anymore.",
       "teen_testimonial_script": "When I lost my mom, everything changed. I was so sad, but it felt like my dad couldn't understand. Our relationship suffered. We did our own things and we stopped talking to each other. But then something incredible happened.\n\nMy dad learnt all these things from the app about what to do when you lose someone. He asked me how I was doing and we started to talk again. He explained that he was sad too, and he even said he was sorry for not talking to me after my mom died. We can now see that it is hard for both of us, and we can help each other. He is supporting me and we are a lot closer.",
       "in_text_title": "**Coping with Grief** @global.workshop",
       "something_fun_data": "@data.something_fun.whats_new",
