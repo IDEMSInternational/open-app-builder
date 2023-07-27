@@ -329,6 +329,102 @@
             }
           ],
           "_nested_name": "habits.safe"
+        },
+        {
+          "type": "template",
+          "name": "safe_self",
+          "value": "parent_point_tile",
+          "condition": "@fields.post_rct_access",
+          "rows": [
+            {
+              "name": "habit_data",
+              "value": "@data.habit.safe_self",
+              "_translations": {
+                "value": {}
+              },
+              "type": "set_variable",
+              "_nested_name": "habits.safe_self.habit_data",
+              "_dynamicFields": {
+                "value": [
+                  {
+                    "fullExpression": "@data.habit.safe_self",
+                    "matchedExpression": "@data.habit.safe_self",
+                    "type": "data",
+                    "fieldName": "habit"
+                  }
+                ]
+              },
+              "_dynamicDependencies": {
+                "@data.habit.safe_self": [
+                  "value"
+                ]
+              }
+            }
+          ],
+          "_nested_name": "habits.safe_self",
+          "_dynamicFields": {
+            "condition": [
+              {
+                "fullExpression": "@fields.post_rct_access",
+                "matchedExpression": "@fields.post_rct_access",
+                "type": "fields",
+                "fieldName": "post_rct_access"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@fields.post_rct_access": [
+              "condition"
+            ]
+          }
+        },
+        {
+          "type": "template",
+          "name": "play",
+          "value": "parent_point_tile",
+          "condition": "@fields.post_rct_access",
+          "rows": [
+            {
+              "name": "habit_data",
+              "value": "@data.habit.play",
+              "_translations": {
+                "value": {}
+              },
+              "type": "set_variable",
+              "_nested_name": "habits.play.habit_data",
+              "_dynamicFields": {
+                "value": [
+                  {
+                    "fullExpression": "@data.habit.play",
+                    "matchedExpression": "@data.habit.play",
+                    "type": "data",
+                    "fieldName": "habit"
+                  }
+                ]
+              },
+              "_dynamicDependencies": {
+                "@data.habit.play": [
+                  "value"
+                ]
+              }
+            }
+          ],
+          "_nested_name": "habits.play",
+          "_dynamicFields": {
+            "condition": [
+              {
+                "fullExpression": "@fields.post_rct_access",
+                "matchedExpression": "@fields.post_rct_access",
+                "type": "fields",
+                "fieldName": "post_rct_access"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@fields.post_rct_access": [
+              "condition"
+            ]
+          }
         }
       ],
       "_nested_name": "habits"
