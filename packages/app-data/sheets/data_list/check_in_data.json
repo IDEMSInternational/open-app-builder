@@ -682,6 +682,9 @@
         "text": {
           "tz_sw": true
         },
+        "reply_happy": {},
+        "reply_ok": {},
+        "reply_sad": {},
         "activity_title": {
           "tz_sw": true
         },
@@ -696,6 +699,15 @@
         "text": {
           "eng": "Discussing body changes and relationships can be difficult. Take a moment for yourself first."
         },
+        "reply_happy": {
+          "eng": "It is great to hear you are feeling positive today. You make a real difference for your family!"
+        },
+        "reply_ok": {
+          "eng": "Life has its great and hard moments – that is okay. You are on the right track."
+        },
+        "reply_sad": {
+          "eng": "It is normal to have hard days as a parent. Take a deep breath and know you are not alone!"
+        },
         "activity_title": {
           "eng": "Welcome, @fields.user_name!"
         },
@@ -706,6 +718,9 @@
           "eng": "How are you feeling today?"
         }
       },
+      "reply_happy": "It is great to hear you are feeling positive today. You make a real difference for your family!",
+      "reply_ok": "Life has its great and hard moments – that is okay. You are on the right track.",
+      "reply_sad": "It is normal to have hard days as a parent. Take a deep breath and know you are not alone!",
       "activity_title": "Welcome, @fields.user_name!",
       "intro_text": "It is great to see you again!",
       "question_text": "How are you feeling today?"
@@ -775,6 +790,9 @@
         "text": {
           "tz_sw": true
         },
+        "reply_happy": {},
+        "reply_ok": {},
+        "reply_sad": {},
         "activity_title": {
           "tz_sw": true
         },
@@ -789,6 +807,15 @@
         "text": {
           "eng": "When we lose someone we love, we go through so many different emotions. There is no right or wrong way to feel. However you are feeling, it is okay."
         },
+        "reply_happy": {
+          "eng": "Well done for recognising how you feel. Good to hear that you are feeling well today!"
+        },
+        "reply_ok": {
+          "eng": "We all have good and hard days. Remember, you are the best parent for your teen and you deserve praise!"
+        },
+        "reply_sad": {
+          "eng": "It can be hard to cope with everything happening in our lives. Remember, you are stronger than you may think!"
+        },
         "activity_title": {
           "eng": "Welcome, @fields.user_name!"
         },
@@ -799,6 +826,9 @@
           "eng": "How are you feeling today?"
         }
       },
+      "reply_happy": "Well done for recognising how you feel. Good to hear that you are feeling well today!",
+      "reply_ok": "We all have good and hard days. Remember, you are the best parent for your teen and you deserve praise!",
+      "reply_sad": "It can be hard to cope with everything happening in our lives. Remember, you are stronger than you may think!",
       "activity_title": "Welcome, @fields.user_name!",
       "intro_text": "It is great to see you again!",
       "question_text": "How are you feeling today?"
@@ -811,6 +841,9 @@
         "text": {
           "tz_sw": true
         },
+        "reply_happy": {},
+        "reply_ok": {},
+        "reply_sad": {},
         "activity_title": {
           "tz_sw": true
         },
@@ -825,6 +858,15 @@
         "text": {
           "eng": "Let’s take a moment for YOU. Looking after yourself well starts with noticing how you feel."
         },
+        "reply_happy": {
+          "eng": "Amazing, life is the best when you're feeling good."
+        },
+        "reply_ok": {
+          "eng": "Everyone has times when they are not feeling good. This is completely normal. Hopefully you feel better soon."
+        },
+        "reply_sad": {
+          "eng": "It is part of life to have bad days. Always remember, tough times never last and tomorrow is another day!"
+        },
         "activity_title": {
           "eng": "Welcome, @fields.user_name!"
         },
@@ -835,6 +877,9 @@
           "eng": "How are you feeling today?"
         }
       },
+      "reply_happy": "Amazing, life is the best when you're feeling good.",
+      "reply_ok": "Everyone has times when they are not feeling good. This is completely normal. Hopefully you feel better soon.",
+      "reply_sad": "It is part of life to have bad days. Always remember, tough times never last and tomorrow is another day!",
       "activity_title": "Welcome, @fields.user_name!",
       "intro_text": "It is great to see you again!",
       "question_text": "How are you feeling today?"

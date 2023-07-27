@@ -946,15 +946,11 @@
         "tool_1_title": {
           "tz_sw": true
         },
-        "tool_1_text": {
-          "tz_sw": true
-        },
+        "tool_1_text": {},
         "tool_2_title": {
           "tz_sw": true
         },
-        "tool_2_text": {
-          "tz_sw": true
-        },
+        "tool_2_text": {},
         "tool_3_title": {
           "tz_sw": true
         },
@@ -968,9 +964,7 @@
         "tool_4_button_text": {
           "tz_sw": true
         },
-        "bottom_text": {
-          "tz_sw": true
-        }
+        "bottom_text": {}
       },
       "_translatedFields": {
         "title": {
@@ -983,13 +977,13 @@
           "eng": "KNOW IT"
         },
         "tool_1_text": {
-          "eng": "Know the difference between healthy and unhealthy relationships. If you are attacked, know that it is never your fault. You are allowed to say and do what is needed to stay safe and get away – do not worry about what others may think.\n\nYou are worth being defended. You are strong and powerful."
+          "eng": "Know the difference between healthy and unhealthy relationships. If you are attacked, know that it is never your fault. You are allowed to say and do what is needed to stay safe and get away – do not worry about what others may think.\n\nYou are worth defending. You are strong and powerful."
         },
         "tool_2_title": {
           "eng": "SEE IT"
         },
         "tool_2_text": {
-          "eng": "When someone makes you (or someone else) feel uncomfortable with what they say or do, that is never okay! We all have the right to feel safe, especially at home.\n\nSee the warning signs and follow your intuition. When you feel attacked with words or actions, your goal is to get away."
+          "eng": "When someone makes you (or someone else) feel uncomfortable with what they say or do, that is never okay! We all have the right to feel safe, especially at home.\n\nSee the warning signs and follow your feeling. When you feel attacked with words or actions, your goal is to get away."
         },
         "tool_3_title": {
           "eng": "SAY IT"
@@ -1007,20 +1001,20 @@
           "eng": "Use your body"
         },
         "bottom_text": {
-          "eng": "If you do get hurt by someone, remember it is never your fault. Ask someone you trust for help, and make sure your teen knows they can tell you anything so you can find a solution together."
+          "eng": "If you as a teen or parent do get hurt by someone, remember it is never your fault. Ask someone you trust for help. \n\nAs a parent, make sure your teen knows they can tell you anything, so you can find a solution together."
         }
       },
       "top_text": "In a dangerous situation, we may not know what to do and freeze – this is normal. These tools can help you and your teen stay safe.",
       "tool_1_title": "KNOW IT",
-      "tool_1_text": "Know the difference between healthy and unhealthy relationships. If you are attacked, know that it is never your fault. You are allowed to say and do what is needed to stay safe and get away – do not worry about what others may think.\n\nYou are worth being defended. You are strong and powerful.",
+      "tool_1_text": "Know the difference between healthy and unhealthy relationships. If you are attacked, know that it is never your fault. You are allowed to say and do what is needed to stay safe and get away – do not worry about what others may think.\n\nYou are worth defending. You are strong and powerful.",
       "tool_2_title": "SEE IT",
-      "tool_2_text": "When someone makes you (or someone else) feel uncomfortable with what they say or do, that is never okay! We all have the right to feel safe, especially at home.\n\nSee the warning signs and follow your intuition. When you feel attacked with words or actions, your goal is to get away.",
+      "tool_2_text": "When someone makes you (or someone else) feel uncomfortable with what they say or do, that is never okay! We all have the right to feel safe, especially at home.\n\nSee the warning signs and follow your feeling. When you feel attacked with words or actions, your goal is to get away.",
       "tool_3_title": "SAY IT",
       "tool_3_text": "Your voice can stop many attacks. Yell ‘No!’, call for help, warn of consequences, name the behaviour, act crazy, pretend to go along to buy time, use humour, calm them down, or negotiate. \n\nBe clear, confident and direct. Speak using your voice, body language and eye contact.",
       "tool_4_title": "DO IT",
       "tool_4_text": "When our voice is not changing the situation, we can use our bodies.\n\nKnow the ‘weapons’ on your body and know the ‘targets’ on your attacker’s body. Use what is free on your body that you can fight with and what is open on the attacker’s body to hit.",
       "tool_4_button_text": "Use your body",
-      "bottom_text": "If you do get hurt by someone, remember it is never your fault. Ask someone you trust for help, and make sure your teen knows they can tell you anything so you can find a solution together."
+      "bottom_text": "If you as a teen or parent do get hurt by someone, remember it is never your fault. Ask someone you trust for help. \n\nAs a parent, make sure your teen knows they can tell you anything, so you can find a solution together."
     },
     {
       "id": "w_grief",
@@ -1030,17 +1024,11 @@
           "tz_sw": true
         },
         "tool_1_title": {},
-        "tool_1_text": {
-          "tz_sw": true
-        },
+        "tool_1_text": {},
         "tool_2_title": {},
-        "tool_2_text": {
-          "tz_sw": true
-        },
+        "tool_2_text": {},
         "tool_3_title": {},
-        "tool_3_text": {
-          "tz_sw": true
-        },
+        "tool_3_text": {},
         "tool_4_title": {}
       },
       "_translatedFields": {
@@ -1048,33 +1036,33 @@
           "eng": "How to cope with grief"
         },
         "tool_1_title": {
-          "eng": "EVERYONE IS DIFFERENT"
+          "eng": "ACCEPT"
         },
         "tool_1_text": {
-          "eng": "There is no correct way to respond to grief and no timeline for it to end. It is different for everybody. This is okay. Do what feels right for you and your child."
+          "eng": "Losing someone we love can affect us for weeks, months or years. You do not have to feel better quickly, and there is no right or wrong way to grieve.\n\nYour teen may feel sad, angry, not understand or not believe it, or feel unwell. They may have pains, nightmares, or problems at school. They may seem happy, but still feel sad. All of this is normal."
         },
         "tool_2_title": {
           "eng": "SAY GOODBYE"
         },
         "tool_2_text": {
-          "eng": "Some people hold a ceremony or have a special meal to celebrate the person and say goodbye.\n\nIt can help to make a box of memories to put things that remind them of the person."
+          "eng": "Find a way to say goodbye that feels right for your and your family. Some people hold a ceremony or have a special meal to celebrate the person.\n\nAsk your teen what they would want to do to say goodbye."
         },
         "tool_3_title": {
           "eng": "TALK"
         },
         "tool_3_text": {
-          "eng": "It can help just to talk about the person when you think about them or write down how you feel."
+          "eng": "It can help just to talk about the person when you think about them or write down how you feel. Share your memories, the good ones and the difficult ones. \n\nChildren may feel like the person’s death was their fault or that they behaved badly. Tell them clearly that they did nothing wrong. Explain that your teen can always tell you how they feel, and encourage them by also sharing how you feel."
         },
         "tool_4_title": {
           "eng": ""
         }
       },
-      "tool_1_title": "EVERYONE IS DIFFERENT",
-      "tool_1_text": "There is no correct way to respond to grief and no timeline for it to end. It is different for everybody. This is okay. Do what feels right for you and your child.",
+      "tool_1_title": "ACCEPT",
+      "tool_1_text": "Losing someone we love can affect us for weeks, months or years. You do not have to feel better quickly, and there is no right or wrong way to grieve.\n\nYour teen may feel sad, angry, not understand or not believe it, or feel unwell. They may have pains, nightmares, or problems at school. They may seem happy, but still feel sad. All of this is normal.",
       "tool_2_title": "SAY GOODBYE",
-      "tool_2_text": "Some people hold a ceremony or have a special meal to celebrate the person and say goodbye.\n\nIt can help to make a box of memories to put things that remind them of the person.",
+      "tool_2_text": "Find a way to say goodbye that feels right for your and your family. Some people hold a ceremony or have a special meal to celebrate the person.\n\nAsk your teen what they would want to do to say goodbye.",
       "tool_3_title": "TALK",
-      "tool_3_text": "It can help just to talk about the person when you think about them or write down how you feel.",
+      "tool_3_text": "It can help just to talk about the person when you think about them or write down how you feel. Share your memories, the good ones and the difficult ones. \n\nChildren may feel like the person’s death was their fault or that they behaved badly. Tell them clearly that they did nothing wrong. Explain that your teen can always tell you how they feel, and encourage them by also sharing how you feel.",
       "tool_4_title": ""
     },
     {
