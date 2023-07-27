@@ -422,7 +422,7 @@
           "eng": "Cooking"
         },
         "intro_text": {
-          "eng": "Cooking together is a wonderfulopportunity to talk and connect, while also teaching your teen life skills (preparing food and appreciating the effort it takes / time management / contributing to family life). \n\nYou might find that your teen has been wanting to help you cook but did not know how to ask."
+          "eng": "Cooking together is a wonderful opportunity to talk and connect, while also teaching your teen life skills (preparing food and appreciating the effort it takes / time management / contributing to family life). \n\nYou might find that your teen has been wanting to help you cook but did not know how to ask."
         },
         "steps_text": {
           "eng": "1. Set a time and day that you and your teen are going to cook together. This will help both of you plan.\n2. Teach them about what you are going to make together. Show them the ingredients and let them help measure how much you will be using today.\n3. Give them a job to do, like fetching water, chopping, or stirring.\n4. Enjoy the meal as a family and let your teen enjoy the pride of contributing to the family"
@@ -431,7 +431,7 @@
           "eng": "* Involve them in the planning process by letting them choose the recipe or ingredients.\n* Allow your teen to do as much as possible, including washing, measuring, cutting, and mixing.\n* Encourage your teen to ask questions and to share what they are learning.\n* Praise their efforts and accomplishments, even if the food does not turn out perfectly."
         }
       },
-      "intro_text": "Cooking together is a wonderfulopportunity to talk and connect, while also teaching your teen life skills (preparing food and appreciating the effort it takes / time management / contributing to family life). \n\nYou might find that your teen has been wanting to help you cook but did not know how to ask.",
+      "intro_text": "Cooking together is a wonderful opportunity to talk and connect, while also teaching your teen life skills (preparing food and appreciating the effort it takes / time management / contributing to family life). \n\nYou might find that your teen has been wanting to help you cook but did not know how to ask.",
       "steps_text": "1. Set a time and day that you and your teen are going to cook together. This will help both of you plan.\n2. Teach them about what you are going to make together. Show them the ingredients and let them help measure how much you will be using today.\n3. Give them a job to do, like fetching water, chopping, or stirring.\n4. Enjoy the meal as a family and let your teen enjoy the pride of contributing to the family",
       "tips_text": "* Involve them in the planning process by letting them choose the recipe or ingredients.\n* Allow your teen to do as much as possible, including washing, measuring, cutting, and mixing.\n* Encourage your teen to ask questions and to share what they are learning.\n* Praise their efforts and accomplishments, even if the food does not turn out perfectly."
     },
@@ -573,9 +573,9 @@
     },
     {
       "id": "clean",
-      "icon_asset": "plh_images/parent_centre/ltp_activities/chores_icon.svg",
-      "image_asset": "plh_images/parent_centre/ltp_activities/chores.svg",
       "group": "everyday",
+      "icon_asset": "plh_images/parent_centre/ltp_activities/clean_icon.svg",
+      "image_asset": "plh_images/parent_centre/ltp_activities/clean.svg",
       "favourite_field": "ltp_activity_clean_favourite",
       "title": "Cleaning and organising",
       "_translations": {
