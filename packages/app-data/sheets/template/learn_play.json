@@ -478,6 +478,7 @@
           "_translations": {
             "value": {}
           },
+          "condition": "@local.activity_data.group == \"chat\"",
           "type": "set_variable",
           "_nested_name": "habit_box.habit_1_data",
           "_dynamicFields": {
@@ -488,11 +489,58 @@
                 "type": "data",
                 "fieldName": "habit"
               }
+            ],
+            "condition": [
+              {
+                "fullExpression": "@local.activity_data.group == \"chat\"",
+                "matchedExpression": "@local.activity_data.group",
+                "type": "local",
+                "fieldName": "activity_data"
+              }
             ]
           },
           "_dynamicDependencies": {
             "@data.habit.spend_time": [
               "value"
+            ],
+            "@local.activity_data.group": [
+              "condition"
+            ]
+          }
+        },
+        {
+          "name": "habit_1_data",
+          "value": "@data.habit.play",
+          "_translations": {
+            "value": {}
+          },
+          "condition": "@local.activity_data.group != \"chat\"",
+          "type": "set_variable",
+          "_nested_name": "habit_box.habit_1_data",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@data.habit.play",
+                "matchedExpression": "@data.habit.play",
+                "type": "data",
+                "fieldName": "habit"
+              }
+            ],
+            "condition": [
+              {
+                "fullExpression": "@local.activity_data.group != \"chat\"",
+                "matchedExpression": "@local.activity_data.group",
+                "type": "local",
+                "fieldName": "activity_data"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@data.habit.play": [
+              "value"
+            ],
+            "@local.activity_data.group": [
+              "condition"
             ]
           }
         }
