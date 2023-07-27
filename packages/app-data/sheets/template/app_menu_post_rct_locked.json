@@ -166,12 +166,43 @@
         },
         {
           "trigger": "click",
-          "action_id": "emit",
+          "action_id": "set_field",
           "args": [
-            "force_restart"
+            "task_w_srh_skipped",
+            "!@local.password_correct"
           ],
-          "_raw": "click | emit:force_restart",
-          "_cleaned": "click | emit:force_restart"
+          "_raw": "click | set_field: task_w_srh_skipped: !@local.password_correct",
+          "_cleaned": "click | set_field: task_w_srh_skipped: !@local.password_correct"
+        },
+        {
+          "trigger": "click",
+          "action_id": "set_field",
+          "args": [
+            "task_w_svp_skipped",
+            "!@local.password_correct"
+          ],
+          "_raw": "click | set_field: task_w_svp_skipped: !@local.password_correct",
+          "_cleaned": "click | set_field: task_w_svp_skipped: !@local.password_correct"
+        },
+        {
+          "trigger": "click",
+          "action_id": "set_field",
+          "args": [
+            "task_w_grief_skipped",
+            "!@local.password_correct"
+          ],
+          "_raw": "click | set_field: task_w_grief_skipped: !@local.password_correct",
+          "_cleaned": "click | set_field: task_w_grief_skipped: !@local.password_correct"
+        },
+        {
+          "trigger": "click",
+          "action_id": "set_field",
+          "args": [
+            "task_w_learn_skipped",
+            "!@local.password_correct"
+          ],
+          "_raw": "click | set_field: task_w_learn_skipped: !@local.password_correct",
+          "_cleaned": "click | set_field: task_w_learn_skipped: !@local.password_correct"
         }
       ],
       "_nested_name": "button_submit",
@@ -212,6 +243,118 @@
                 "fieldName": "password_correct"
               }
             ]
+          },
+          "2": {
+            "args": {
+              "1": [
+                {
+                  "fullExpression": "!@local.password_correct",
+                  "matchedExpression": "!@local.password_correct",
+                  "type": "local",
+                  "fieldName": "password_correct"
+                }
+              ]
+            },
+            "_raw": [
+              {
+                "fullExpression": "click | set_field: task_w_srh_skipped: !@local.password_correct",
+                "matchedExpression": "!@local.password_correct",
+                "type": "local",
+                "fieldName": "password_correct"
+              }
+            ],
+            "_cleaned": [
+              {
+                "fullExpression": "click | set_field: task_w_srh_skipped: !@local.password_correct",
+                "matchedExpression": "!@local.password_correct",
+                "type": "local",
+                "fieldName": "password_correct"
+              }
+            ]
+          },
+          "3": {
+            "args": {
+              "1": [
+                {
+                  "fullExpression": "!@local.password_correct",
+                  "matchedExpression": "!@local.password_correct",
+                  "type": "local",
+                  "fieldName": "password_correct"
+                }
+              ]
+            },
+            "_raw": [
+              {
+                "fullExpression": "click | set_field: task_w_svp_skipped: !@local.password_correct",
+                "matchedExpression": "!@local.password_correct",
+                "type": "local",
+                "fieldName": "password_correct"
+              }
+            ],
+            "_cleaned": [
+              {
+                "fullExpression": "click | set_field: task_w_svp_skipped: !@local.password_correct",
+                "matchedExpression": "!@local.password_correct",
+                "type": "local",
+                "fieldName": "password_correct"
+              }
+            ]
+          },
+          "4": {
+            "args": {
+              "1": [
+                {
+                  "fullExpression": "!@local.password_correct",
+                  "matchedExpression": "!@local.password_correct",
+                  "type": "local",
+                  "fieldName": "password_correct"
+                }
+              ]
+            },
+            "_raw": [
+              {
+                "fullExpression": "click | set_field: task_w_grief_skipped: !@local.password_correct",
+                "matchedExpression": "!@local.password_correct",
+                "type": "local",
+                "fieldName": "password_correct"
+              }
+            ],
+            "_cleaned": [
+              {
+                "fullExpression": "click | set_field: task_w_grief_skipped: !@local.password_correct",
+                "matchedExpression": "!@local.password_correct",
+                "type": "local",
+                "fieldName": "password_correct"
+              }
+            ]
+          },
+          "5": {
+            "args": {
+              "1": [
+                {
+                  "fullExpression": "!@local.password_correct",
+                  "matchedExpression": "!@local.password_correct",
+                  "type": "local",
+                  "fieldName": "password_correct"
+                }
+              ]
+            },
+            "_raw": [
+              {
+                "fullExpression": "click | set_field: task_w_learn_skipped: !@local.password_correct",
+                "matchedExpression": "!@local.password_correct",
+                "type": "local",
+                "fieldName": "password_correct"
+              }
+            ],
+            "_cleaned": [
+              {
+                "fullExpression": "click | set_field: task_w_learn_skipped: !@local.password_correct",
+                "matchedExpression": "!@local.password_correct",
+                "type": "local",
+                "fieldName": "password_correct"
+              }
+            ]
           }
         }
       },
@@ -223,6 +366,20 @@
           "action_list.1.args.1",
           "action_list.1._raw",
           "action_list.1._cleaned"
+        ],
+        "!@local.password_correct": [
+          "action_list.2.args.1",
+          "action_list.2._raw",
+          "action_list.2._cleaned",
+          "action_list.3.args.1",
+          "action_list.3._raw",
+          "action_list.3._cleaned",
+          "action_list.4.args.1",
+          "action_list.4._raw",
+          "action_list.4._cleaned",
+          "action_list.5.args.1",
+          "action_list.5._raw",
+          "action_list.5._cleaned"
         ]
       }
     },
@@ -243,6 +400,45 @@
           },
           "condition": "@local.password_correct",
           "_nested_name": "enter_replies.text_correct",
+          "_dynamicFields": {
+            "condition": [
+              {
+                "fullExpression": "@local.password_correct",
+                "matchedExpression": "@local.password_correct",
+                "type": "local",
+                "fieldName": "password_correct"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@local.password_correct": [
+              "condition"
+            ]
+          }
+        },
+        {
+          "type": "button",
+          "name": "button_correct",
+          "value": "Load new content",
+          "_translations": {
+            "value": {}
+          },
+          "action_list": [
+            {
+              "trigger": "click",
+              "action_id": "emit",
+              "args": [
+                "force_restart"
+              ],
+              "_raw": "click | emit:force_restart",
+              "_cleaned": "click | emit:force_restart"
+            }
+          ],
+          "condition": "@local.password_correct",
+          "parameter_list": {
+            "style": "navigation"
+          },
+          "_nested_name": "enter_replies.button_correct",
           "_dynamicFields": {
             "condition": [
               {

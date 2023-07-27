@@ -52,7 +52,7 @@
       "parameter_list": {
         "style": "column"
       },
-      "condition": "!!(@local.highlighted_module)",
+      "condition": "(!!(@local.highlighted_module))",
       "rows": [
         {
           "type": "template",
@@ -103,7 +103,7 @@
       "_dynamicFields": {
         "condition": [
           {
-            "fullExpression": "!!(@local.highlighted_module)",
+            "fullExpression": "(!!(@local.highlighted_module))",
             "matchedExpression": "@local.highlighted_module",
             "type": "local",
             "fieldName": "highlighted_module"
@@ -165,80 +165,25 @@
               "rows": [
                 {
                   "name": "relevant_module",
-                  "value": true,
-                  "condition": "@fields.post_rct_access",
-                  "type": "set_variable",
-                  "_nested_name": "dg_all_modules.carousel.items.relevant_module",
-                  "_dynamicFields": {
-                    "condition": [
-                      {
-                        "fullExpression": "@fields.post_rct_access",
-                        "matchedExpression": "@fields.post_rct_access",
-                        "type": "fields",
-                        "fieldName": "post_rct_access"
-                      }
-                    ]
-                  },
-                  "_dynamicDependencies": {
-                    "@fields.post_rct_access": [
-                      "condition"
-                    ]
-                  }
-                },
-                {
-                  "name": "relevant_module",
-                  "value": "@item.id != \"w_srh\" && @item.id != \"w_svp\" && @item.id != \"w_grief\" && @item.id != \"w_learn\"",
+                  "value": "!(@fields.@item.skipped_field)",
                   "_translations": {
                     "value": {}
                   },
-                  "condition": "!@fields.post_rct_access",
                   "type": "set_variable",
                   "_nested_name": "dg_all_modules.carousel.items.relevant_module",
                   "_dynamicFields": {
                     "value": [
                       {
-                        "fullExpression": "@item.id != \"w_srh\" && @item.id != \"w_svp\" && @item.id != \"w_grief\" && @item.id != \"w_learn\"",
-                        "matchedExpression": "@item.id",
+                        "fullExpression": "!(@fields.@item.skipped_field)",
+                        "matchedExpression": "@item.skipped_field",
                         "type": "item",
-                        "fieldName": "id"
-                      },
-                      {
-                        "fullExpression": "@item.id != \"w_srh\" && @item.id != \"w_svp\" && @item.id != \"w_grief\" && @item.id != \"w_learn\"",
-                        "matchedExpression": "@item.id",
-                        "type": "item",
-                        "fieldName": "id"
-                      },
-                      {
-                        "fullExpression": "@item.id != \"w_srh\" && @item.id != \"w_svp\" && @item.id != \"w_grief\" && @item.id != \"w_learn\"",
-                        "matchedExpression": "@item.id",
-                        "type": "item",
-                        "fieldName": "id"
-                      },
-                      {
-                        "fullExpression": "@item.id != \"w_srh\" && @item.id != \"w_svp\" && @item.id != \"w_grief\" && @item.id != \"w_learn\"",
-                        "matchedExpression": "@item.id",
-                        "type": "item",
-                        "fieldName": "id"
-                      }
-                    ],
-                    "condition": [
-                      {
-                        "fullExpression": "!@fields.post_rct_access",
-                        "matchedExpression": "!@fields.post_rct_access",
-                        "type": "fields",
-                        "fieldName": "post_rct_access"
+                        "fieldName": "skipped_field"
                       }
                     ]
                   },
                   "_dynamicDependencies": {
-                    "@item.id": [
-                      "value",
-                      "value",
-                      "value",
+                    "@item.skipped_field": [
                       "value"
-                    ],
-                    "!@fields.post_rct_access": [
-                      "condition"
                     ]
                   }
                 },
