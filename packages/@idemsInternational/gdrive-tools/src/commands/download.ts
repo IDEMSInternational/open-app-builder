@@ -95,8 +95,7 @@ export class GDriveDownloader {
     await this.setupGdrive();
     console.log(chalk.yellow("Retrieving list of files"));
     const serverFiles = await this.listGdriveFilesRecursively(folderId);
-    if (!serverFiles.length) {
-      // checks if there are any files in the folder
+    if (Object.keys(serverFiles).length === 0) {
       console.log(
         chalk.red("No files found. Failure to find files may result in an error.") +
           "\n" +
