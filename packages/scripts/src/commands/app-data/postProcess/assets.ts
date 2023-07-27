@@ -105,16 +105,30 @@ export class AssetsPostProcessor {
     assetEntries: IAssetEntryHashmap,
     missingEntries: IAssetEntryHashmap
   ) {
-    const contentsTarget = path.resolve(appAssetsFolder, "contents.json");
-    fs.writeFileSync(contentsTarget, JSON.stringify(sortJsonKeys(assetEntries), null, 2));
-    const missingTarget = path.resolve(appAssetsFolder, "untracked-assets.json");
-    if (fs.existsSync(missingTarget)) fs.removeSync(missingTarget);
-    if (Object.keys(missingEntries).length > 0) {
-      logWarning({
-        msg1: "Assets override found without corresponding entry",
-        msg2: Object.keys(missingEntries).join("\n"),
-      });
-      fs.writeFileSync(missingTarget, JSON.stringify(sortJsonKeys(missingEntries), null, 2));
+    try {
+      const contentsTarget = path.resolve(appAssetsFolder, "contents.json");
+      fs.writeFileSync(contentsTarget, JSON.stringify(sortJsonKeys(assetEntries), null, 2));
+      const missingTarget = path.resolve(appAssetsFolder, "untracked-assets.json");
+      if (fs.existsSync(missingTarget)) fs.removeSync(missingTarget);
+      if (Object.keys(missingEntries).length > 0) {
+        logWarning({
+          msg1: "Assets override found without corresponding entry",
+          msg2: Object.keys(missingEntries).join("\n"),
+        });
+        fs.writeFileSync(missingTarget, JSON.stringify(sortJsonKeys(missingEntries), null, 2));
+      }
+    } catch {
+      console.log(chalk.red("ERROR: the program was stopped due to a runtime error."));
+      if (!fs.existsSync(appAssetsFolder)) {
+        console.log(
+          chalk.red(
+            "The folder '" +
+              appAssetsFolder +
+              "' does not exist. Check you have access to the relevant Google Drive folders."
+          )
+        );
+        process.exit(1); // exit the program if it cant find the folder!
+      }
     }
   }
 
