@@ -2822,6 +2822,16 @@
     "md5Checksum": "b84ab70fb7d4753b83088971ca5eed54",
     "size_kb": 9.5
   },
+  "plh_images/parent_centre/ltp_activities/clean.svg": {
+    "filePath": "global/plh_images/parent_centre/ltp_activities/clean.svg",
+    "md5Checksum": "f728ca35aab3bd680551bd24715ccb9e",
+    "size_kb": 39.9
+  },
+  "plh_images/parent_centre/ltp_activities/clean_icon.svg": {
+    "filePath": "global/plh_images/parent_centre/ltp_activities/clean_icon.svg",
+    "md5Checksum": "27af36e0a0d877452326c148f79046d9",
+    "size_kb": 35.4
+  },
   "plh_images/parent_centre/ltp_activities/cook.svg": {
     "filePath": "global/plh_images/parent_centre/ltp_activities/cook.svg",
     "md5Checksum": "30a219436bf4ac290b4c1f6665495428",
@@ -2884,12 +2894,12 @@
   },
   "plh_images/parent_centre/ltp_activities/memory_game.svg": {
     "filePath": "global/plh_images/parent_centre/ltp_activities/memory_game.svg",
-    "md5Checksum": "2853d2e1360ab4874d3da0298f9c0efa",
+    "md5Checksum": "245b1dc2166ff8af98e5ceab9d9bc444",
     "size_kb": 40
   },
   "plh_images/parent_centre/ltp_activities/memory_game_icon.svg": {
     "filePath": "global/plh_images/parent_centre/ltp_activities/memory_game_icon.svg",
-    "md5Checksum": "b453316d46b539687e1751a5225b3ff8",
+    "md5Checksum": "d112bef480cdbe65fd8e859b5e201ebf",
     "size_kb": 31.5
   },
   "plh_images/parent_centre/ltp_activities/mystery_box.svg": {
@@ -3556,26 +3566,6 @@
     "filePath": "global/plh_images/workshops/w_learn/Busy day (positive)_04.svg",
     "md5Checksum": "f3e40a96423f98f1f0a3e0457350aa3b",
     "size_kb": 40.5
-  },
-  "plh_images/workshops/w_learn/Cleaning and organising icon.svg": {
-    "filePath": "global/plh_images/workshops/w_learn/Cleaning and organising icon.svg",
-    "md5Checksum": "27af36e0a0d877452326c148f79046d9",
-    "size_kb": 35.4
-  },
-  "plh_images/workshops/w_learn/Cleaning and organising.svg": {
-    "filePath": "global/plh_images/workshops/w_learn/Cleaning and organising.svg",
-    "md5Checksum": "f728ca35aab3bd680551bd24715ccb9e",
-    "size_kb": 39.9
-  },
-  "plh_images/workshops/w_learn/Memory Game icon.svg": {
-    "filePath": "global/plh_images/workshops/w_learn/Memory Game icon.svg",
-    "md5Checksum": "d112bef480cdbe65fd8e859b5e201ebf",
-    "size_kb": 31.5
-  },
-  "plh_images/workshops/w_learn/Memory Game.svg": {
-    "filePath": "global/plh_images/workshops/w_learn/Memory Game.svg",
-    "md5Checksum": "245b1dc2166ff8af98e5ceab9d9bc444",
-    "size_kb": 40
   },
   "plh_images/workshops/w_learn/tools.svg": {
     "filePath": "global/plh_images/workshops/w_learn/tools.svg",
