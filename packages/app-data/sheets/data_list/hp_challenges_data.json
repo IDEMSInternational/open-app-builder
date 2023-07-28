@@ -761,6 +761,116 @@
       "text_challenge_3": "One of us did not feel comfortable.",
       "reply_challenge_3": "This is difficult stuff to talk about. Find a relaxing time for it. We know it is much easier to not talk about these things and to hope they will never happen to us. However, learning to deal with crisis is like getting insurance; it is ALWAYS best to think about them and be prepared.",
       "top_text": "Challenges other parents experience:"
+    },
+    {
+      "id": "w_srh",
+      "number_of_challenges": "4",
+      "question_text": "Did you have any challenges when talking to your teen about body changes and intimate relationships?",
+      "_translations": {
+        "question_text": {},
+        "text_challenge_1": {},
+        "reply_challenge_1": {},
+        "text_challenge_2": {},
+        "reply_challenge_2": {},
+        "text_challenge_3": {},
+        "reply_challenge_3": {},
+        "text_challenge_4": {},
+        "reply_challenge_4": {},
+        "top_text": {
+          "tz_sw": true
+        }
+      },
+      "_translatedFields": {
+        "question_text": {
+          "eng": "Did you have any challenges when talking to your teen about body changes and intimate relationships?"
+        },
+        "text_challenge_1": {
+          "eng": "It made me uncomfortable."
+        },
+        "reply_challenge_1": {
+          "eng": "Talking about body changes, intimate relationships, and sex can be uncomfortable - many parents feel this way! \n\nRemember, these are all normal parts of life. The more you talk about them and educate your teen, the more prepared they are for keeping themselves healthy and safe."
+        },
+        "text_challenge_2": {
+          "eng": "It made my teen uncomfortable."
+        },
+        "reply_challenge_2": {
+          "eng": "Teens often do not want to speak to their parents about body changes, intimate relationships, and sex. Tell your teen that that is normal and you also went through this.\n \nIf they do not want to talk to you, give them resources so they can learn about the topic. Tell your teen that you are happy to speak with them any time!"
+        },
+        "text_challenge_3": {
+          "eng": "I do not know where to find resources to support my teen’s development."
+        },
+        "reply_challenge_3": {
+          "eng": "It can be hard to find resources! Go to your nearest clinic or another support service and ask what resources they may have available."
+        },
+        "text_challenge_4": {
+          "eng": "I think my teen is too young to be talking about these things."
+        },
+        "reply_challenge_4": {
+          "eng": "Talking about relationships and sex from an early age reduces the chance that teens end up in dangerous or unhealthy situations! It helps them know what is safe and healthy, so they can make good choices to keep themselves safe."
+        },
+        "top_text": {
+          "eng": "Challenges other parents experience:"
+        }
+      },
+      "text_challenge_1": "It made me uncomfortable.",
+      "reply_challenge_1": "Talking about body changes, intimate relationships, and sex can be uncomfortable - many parents feel this way! \n\nRemember, these are all normal parts of life. The more you talk about them and educate your teen, the more prepared they are for keeping themselves healthy and safe.",
+      "text_challenge_2": "It made my teen uncomfortable.",
+      "reply_challenge_2": "Teens often do not want to speak to their parents about body changes, intimate relationships, and sex. Tell your teen that that is normal and you also went through this.\n \nIf they do not want to talk to you, give them resources so they can learn about the topic. Tell your teen that you are happy to speak with them any time!",
+      "text_challenge_3": "I do not know where to find resources to support my teen’s development.",
+      "reply_challenge_3": "It can be hard to find resources! Go to your nearest clinic or another support service and ask what resources they may have available.",
+      "text_challenge_4": "I think my teen is too young to be talking about these things.",
+      "reply_challenge_4": "Talking about relationships and sex from an early age reduces the chance that teens end up in dangerous or unhealthy situations! It helps them know what is safe and healthy, so they can make good choices to keep themselves safe.",
+      "top_text": "Challenges other parents experience:"
+    },
+    {
+      "id": "w_svp",
+      "number_of_challenges": "3",
+      "question_text": "Did you have any challenges when talking about the @data.workshop.w_svp.in_text_title with your teen?",
+      "_translations": {
+        "question_text": {},
+        "text_challenge_1": {},
+        "reply_challenge_1": {},
+        "text_challenge_2": {},
+        "reply_challenge_2": {},
+        "text_challenge_3": {},
+        "reply_challenge_3": {},
+        "top_text": {
+          "tz_sw": true
+        }
+      },
+      "_translatedFields": {
+        "question_text": {
+          "eng": "Did you have any challenges when talking about the @data.workshop.w_svp.in_text_title with your teen?"
+        },
+        "text_challenge_1": {
+          "eng": "My teen and/or I felt uncomfortable."
+        },
+        "reply_challenge_1": {
+          "eng": "Talking about potential dangers in our direct environment is never easy. However, dangerous situations can happen to anyone and helping your teen be prepared can make the biggest difference to keep them safe.\n\nTry to have another conversation or practise with your teen so you can both get more confident with your new skills to stay safe."
+        },
+        "text_challenge_2": {
+          "eng": "I discovered my teen experienced a dangerous situation or trauma."
+        },
+        "reply_challenge_2": {
+          "eng": "It can be hard for teens to open up about a difficult situation or trauma they experienced, especially if it happened while they were in a place or with people that you may not approve of as a parent.\nRemember to breathe and listen to what your teen needs. You can find support together if needed."
+        },
+        "text_challenge_3": {
+          "eng": "The conversation reminded me of a difficult experience I had."
+        },
+        "reply_challenge_3": {
+          "eng": "It is normal to feel upset or angry when we are reminded of such experiences. Think about what support you may need. Taking good care of yourself is essential for taking good care of your family.\n\nOnce you are in a calmer space, you can try again to talk to your teen about how they can stay safe."
+        },
+        "top_text": {
+          "eng": "Challenges other parents experience:"
+        }
+      },
+      "text_challenge_1": "My teen and/or I felt uncomfortable.",
+      "reply_challenge_1": "Talking about potential dangers in our direct environment is never easy. However, dangerous situations can happen to anyone and helping your teen be prepared can make the biggest difference to keep them safe.\n\nTry to have another conversation or practise with your teen so you can both get more confident with your new skills to stay safe.",
+      "text_challenge_2": "I discovered my teen experienced a dangerous situation or trauma.",
+      "reply_challenge_2": "It can be hard for teens to open up about a difficult situation or trauma they experienced, especially if it happened while they were in a place or with people that you may not approve of as a parent.\nRemember to breathe and listen to what your teen needs. You can find support together if needed.",
+      "text_challenge_3": "The conversation reminded me of a difficult experience I had.",
+      "reply_challenge_3": "It is normal to feel upset or angry when we are reminded of such experiences. Think about what support you may need. Taking good care of yourself is essential for taking good care of your family.\n\nOnce you are in a calmer space, you can try again to talk to your teen about how they can stay safe.",
+      "top_text": "Challenges other parents experience:"
     }
   ],
   "_xlsxPath": "global/data/workshop_data/workshop_data_list.xlsx"
