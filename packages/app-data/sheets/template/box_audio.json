@@ -5,10 +5,6 @@
   "rows": [
     {
       "name": "audio_src",
-      "value": "plh_assets/quality_assurance/test_audio.mp3",
-      "_translations": {
-        "value": {}
-      },
       "type": "set_variable",
       "_nested_name": "audio_src"
     },
