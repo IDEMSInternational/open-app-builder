@@ -514,6 +514,12 @@
               }
             },
             {
+              "name": "include_outro",
+              "value": false,
+              "type": "set_variable",
+              "_nested_name": "learn.workshop_activity.include_outro"
+            },
+            {
               "type": "nested_properties",
               "name": "content_box",
               "value": "pair",
@@ -873,7 +879,7 @@
                         },
                         {
                           "name": "button_1",
-                          "value": "@local.part_data_2.option_2",
+                          "value": "@local.part_data_2.option_1",
                           "_translations": {
                             "value": {}
                           },
@@ -893,8 +899,8 @@
                           "_dynamicFields": {
                             "value": [
                               {
-                                "fullExpression": "@local.part_data_2.option_2",
-                                "matchedExpression": "@local.part_data_2.option_2",
+                                "fullExpression": "@local.part_data_2.option_1",
+                                "matchedExpression": "@local.part_data_2.option_1",
                                 "type": "local",
                                 "fieldName": "part_data_2"
                               }
@@ -949,7 +955,7 @@
                             }
                           },
                           "_dynamicDependencies": {
-                            "@local.part_data_2.option_2": [
+                            "@local.part_data_2.option_1": [
                               "value"
                             ],
                             "@local.part_id_2": [
@@ -1288,7 +1294,7 @@
                             },
                             {
                               "name": "button_1",
-                              "value": "@local.part_data_3.option_3",
+                              "value": "@local.part_data_3.option_1",
                               "_translations": {
                                 "value": {}
                               },
@@ -1308,8 +1314,8 @@
                               "_dynamicFields": {
                                 "value": [
                                   {
-                                    "fullExpression": "@local.part_data_3.option_3",
-                                    "matchedExpression": "@local.part_data_3.option_3",
+                                    "fullExpression": "@local.part_data_3.option_1",
+                                    "matchedExpression": "@local.part_data_3.option_1",
                                     "type": "local",
                                     "fieldName": "part_data_3"
                                   }
@@ -1364,7 +1370,7 @@
                                 }
                               },
                               "_dynamicDependencies": {
-                                "@local.part_data_3.option_3": [
+                                "@local.part_data_3.option_1": [
                                   "value"
                                 ],
                                 "@local.part_id_3": [
@@ -1792,7 +1798,7 @@
                             },
                             {
                               "name": "button_1",
-                              "value": "@local.part_data_4.option_4",
+                              "value": "@local.part_data_4.option_1",
                               "_translations": {
                                 "value": {}
                               },
@@ -1812,8 +1818,8 @@
                               "_dynamicFields": {
                                 "value": [
                                   {
-                                    "fullExpression": "@local.part_data_4.option_4",
-                                    "matchedExpression": "@local.part_data_4.option_4",
+                                    "fullExpression": "@local.part_data_4.option_1",
+                                    "matchedExpression": "@local.part_data_4.option_1",
                                     "type": "local",
                                     "fieldName": "part_data_4"
                                   }
@@ -1868,7 +1874,7 @@
                                 }
                               },
                               "_dynamicDependencies": {
-                                "@local.part_data_4.option_4": [
+                                "@local.part_data_4.option_1": [
                                   "value"
                                 ],
                                 "@local.part_id_4": [
