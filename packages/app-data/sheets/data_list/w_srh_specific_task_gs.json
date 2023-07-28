@@ -2,6 +2,58 @@
   "flow_type": "data_list",
   "flow_name": "w_srh_specific_task_gs",
   "status": "released",
-  "rows": [],
+  "rows": [
+    {
+      "id": "read_sex_talk",
+      "individual": true,
+      "together": true,
+      "priority": 11,
+      "story_id": "sex_talk",
+      "has_single_task": false,
+      "title": "@global.story @global.part_connector @data.story.sex_talk.title",
+      "_translations": {
+        "title": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "@global.story @global.part_connector @data.story.sex_talk.title"
+        }
+      }
+    },
+    {
+      "id": "read_new_boyfriend",
+      "individual": true,
+      "together": true,
+      "priority": 13,
+      "story_id": "new_boyfriend",
+      "has_single_task": false,
+      "title": "@global.story @global.part_connector @data.story.new_boyfriend.title",
+      "_translations": {
+        "title": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "@global.story @global.part_connector @data.story.new_boyfriend.title"
+        }
+      }
+    },
+    {
+      "id": "learn_sex_talk",
+      "individual": true,
+      "together": true,
+      "priority": 15,
+      "has_single_task": true,
+      "template": "w_srh_learn_sex_talk",
+      "title": "@data.learn.sex_talk.title",
+      "_translations": {
+        "title": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "@data.learn.sex_talk.title"
+        }
+      }
+    }
+  ],
   "_xlsxPath": "global/data/workshop_data/workshop_task_groups.xlsx"
 }

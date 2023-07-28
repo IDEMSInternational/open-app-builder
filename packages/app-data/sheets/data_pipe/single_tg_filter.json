@@ -272,6 +272,42 @@
         "group ==\"read_2\"",
         "together"
       ]
+    },
+    {
+      "operation": "filter",
+      "input_source": "w_srh_tasks",
+      "output_target": "tg_w_srh_read_sex_talk_ind",
+      "args_list": [
+        "group ==\"read_sex_talk\"",
+        "individual"
+      ]
+    },
+    {
+      "operation": "filter",
+      "input_source": "w_srh_tasks",
+      "output_target": "tg_w_srh_read_sex_talk_tog",
+      "args_list": [
+        "group ==\"read_sex_talk\"",
+        "together"
+      ]
+    },
+    {
+      "operation": "filter",
+      "input_source": "w_srh_tasks",
+      "output_target": "tg_w_srh_read_new_boyfriend_ind",
+      "args_list": [
+        "group ==\"read_new_boyfriend\"",
+        "individual"
+      ]
+    },
+    {
+      "operation": "filter",
+      "input_source": "w_srh_tasks",
+      "output_target": "tg_w_srh_read_new_boyfriend_tog",
+      "args_list": [
+        "group ==\"read_new_boyfriend\"",
+        "together"
+      ]
     }
   ],
   "_xlsxPath": "global/data/workshop_data/workshop_task_groups_data_pipes.xlsx"

@@ -5,20 +5,204 @@
   "data_list_name": "question",
   "rows": [
     {
-      "id": "srh_talk_who",
+      "id": "sex_talk_trigger",
       "workshop": "w_srh",
-      "reply_1_icon_asset": "[cross]",
-      "icon_2_asset": "[cross]",
-      "icon_3_asset": "[tick]",
+      "question_text": "Why do you think @global.w_srh_female_caregiver_1 reacted the way she did?",
+      "_translations": {
+        "question_text": {},
+        "option_1": {},
+        "option_2": {},
+        "option_3": {},
+        "option_4": {},
+        "reply_all": {}
+      },
+      "_translatedFields": {
+        "question_text": {
+          "eng": "Why do you think @global.w_srh_female_caregiver_1 reacted the way she did?"
+        },
+        "option_1": {
+          "eng": "She was shocked that @global.w_srh_teen_girl_1 had condoms"
+        },
+        "option_2": {
+          "eng": "She felt disrespected and angry at @global.w_srh_teen_girl_1."
+        },
+        "option_3": {
+          "eng": "She was scared @global.w_srh_teen_girl_1 was already having sex."
+        },
+        "option_4": {
+          "eng": "She felt ashamed to talk about sex."
+        },
+        "reply_all": {
+          "eng": "When we are angry or scared, we can say or do things that hurt others and harm our relationships."
+        }
+      },
+      "option_1": "She was shocked that @global.w_srh_teen_girl_1 had condoms",
+      "option_2": "She felt disrespected and angry at @global.w_srh_teen_girl_1.",
+      "option_3": "She was scared @global.w_srh_teen_girl_1 was already having sex.",
+      "option_4": "She felt ashamed to talk about sex.",
+      "reply_all": "When we are angry or scared, we can say or do things that hurt others and harm our relationships."
+    },
+    {
+      "id": "sex_talk_consequence",
+      "workshop": "w_srh",
+      "question_text": "How will this affect @global.w_srh_female_caregiver_1’s relationship with @global.w_srh_teen_girl_1?",
+      "_translations": {
+        "question_text": {},
+        "option_1": {},
+        "option_2": {},
+        "option_3": {},
+        "reply_all": {}
+      },
+      "_translatedFields": {
+        "question_text": {
+          "eng": "How will this affect @global.w_srh_female_caregiver_1’s relationship with @global.w_srh_teen_girl_1?"
+        },
+        "option_1": {
+          "eng": "@global.w_srh_teen_girl_1 may not trust @global.w_srh_female_caregiver_1 in the future."
+        },
+        "option_2": {
+          "eng": "@global.w_srh_teen_girl_1 may not ask @global.w_srh_female_caregiver_1 questions or advice if she has a problem."
+        },
+        "option_3": {
+          "eng": "@global.w_srh_teen_girl_1 may make bad decisions out of anger."
+        },
+        "reply_all": {
+          "eng": "Yes, all of these are true. After this argument, @global.w_srh_teen_girl_1 is likely to look for information and advice from other places (also if something goes wrong with a relationship or in her life).\n\nShe may get into situations that are not healthy or safe, and may not want to talk to @global.w_srh_female_caregiver_1 about it even if she has questions or needs help. She may feel worried that @global.w_srh_female_caregiver_1 will judge her choices or feel ashamed of her."
+        }
+      },
+      "option_1": "@global.w_srh_teen_girl_1 may not trust @global.w_srh_female_caregiver_1 in the future.",
+      "option_2": "@global.w_srh_teen_girl_1 may not ask @global.w_srh_female_caregiver_1 questions or advice if she has a problem.",
+      "option_3": "@global.w_srh_teen_girl_1 may make bad decisions out of anger.",
+      "reply_all": "Yes, all of these are true. After this argument, @global.w_srh_teen_girl_1 is likely to look for information and advice from other places (also if something goes wrong with a relationship or in her life).\n\nShe may get into situations that are not healthy or safe, and may not want to talk to @global.w_srh_female_caregiver_1 about it even if she has questions or needs help. She may feel worried that @global.w_srh_female_caregiver_1 will judge her choices or feel ashamed of her."
+    },
+    {
+      "id": "new_boyfriend_start",
+      "workshop": "w_srh",
+      "question_text": "How did @global.w_srh_female_caregiver_2 and @global.w_srh_teen_girl_2 feel at the start of their conversation?",
+      "_translations": {
+        "question_text": {},
+        "option_1": {},
+        "option_2": {
+          "tz_sw": true
+        },
+        "option_3": {
+          "tz_sw": true
+        },
+        "option_4": {},
+        "option_5": {
+          "tz_sw": true
+        },
+        "reply_all": {}
+      },
+      "_translatedFields": {
+        "question_text": {
+          "eng": "How did @global.w_srh_female_caregiver_2 and @global.w_srh_teen_girl_2 feel at the start of their conversation?"
+        },
+        "option_1": {
+          "eng": "Worried"
+        },
+        "option_2": {
+          "eng": "Confused"
+        },
+        "option_3": {
+          "eng": "Angry"
+        },
+        "option_4": {
+          "eng": "Nervous"
+        },
+        "option_5": {
+          "eng": "Hopeful"
+        },
+        "reply_all": {
+          "eng": "Yes, it was hard for both @global.w_srh_teen_girl_2 and @global.w_srh_female_caregiver_2 to start this conversation."
+        }
+      },
+      "option_1": "Worried",
+      "option_2": "Confused",
+      "option_3": "Angry",
+      "option_4": "Nervous",
+      "option_5": "Hopeful",
+      "reply_all": "Yes, it was hard for both @global.w_srh_teen_girl_2 and @global.w_srh_female_caregiver_2 to start this conversation."
+    },
+    {
+      "id": "new_boyfriend_during",
+      "workshop": "w_srh",
+      "question_text": "How does @global.w_srh_female_caregiver_2 respond to @global.w_srh_teen_girl_2?",
+      "_translations": {
+        "question_text": {},
+        "option_1": {},
+        "option_2": {},
+        "option_3": {},
+        "option_4": {},
+        "option_5": {},
+        "reply_all": {}
+      },
+      "_translatedFields": {
+        "question_text": {
+          "eng": "How does @global.w_srh_female_caregiver_2 respond to @global.w_srh_teen_girl_2?"
+        },
+        "option_1": {
+          "eng": "She breathes to stay calm."
+        },
+        "option_2": {
+          "eng": "She praises @global.w_srh_teen_girl_2 for sharing."
+        },
+        "option_3": {
+          "eng": "She shares why she is worried."
+        },
+        "option_4": {
+          "eng": "She creates rules with @global.w_srh_teen_girl_2."
+        },
+        "option_5": {
+          "eng": "She involves other adults for support."
+        },
+        "reply_all": {
+          "eng": "Yes, @global.w_srh_female_caregiver_2 uses all these great strategies!"
+        }
+      },
+      "option_1": "She breathes to stay calm.",
+      "option_2": "She praises @global.w_srh_teen_girl_2 for sharing.",
+      "option_3": "She shares why she is worried.",
+      "option_4": "She creates rules with @global.w_srh_teen_girl_2.",
+      "option_5": "She involves other adults for support.",
+      "reply_all": "Yes, @global.w_srh_female_caregiver_2 uses all these great strategies!"
+    },
+    {
+      "id": "new_boyfriend_after",
+      "workshop": "w_srh",
+      "question_text": "How did @global.w_srh_female_caregiver_2 and @global.w_srh_teen_girl_2 feel after their conversation?",
+      "_translations": {
+        "question_text": {},
+        "reply_all": {}
+      },
+      "_translatedFields": {
+        "question_text": {
+          "eng": "How did @global.w_srh_female_caregiver_2 and @global.w_srh_teen_girl_2 feel after their conversation?"
+        },
+        "reply_all": {
+          "eng": "When we stay calm, share how we feel, and look for solutions together, it will help us all – even if we are not sure of the right outcome. You can learn to navigate tricky situations and problems together with your teen."
+        }
+      },
+      "reply_all": "When we stay calm, share how we feel, and look for solutions together, it will help us all – even if we are not sure of the right outcome. You can learn to navigate tricky situations and problems together with your teen."
+    },
+    {
+      "id": "sex_talk_who",
+      "workshop": "w_srh",
+      "reply_1_image_asset": "plh_images/workshops/w_srh/learn/sex_talk_who/slide_1.svg",
+      "reply_1_icon_asset": "plh_images/icons/cross_circle.svg",
+      "reply_2_image_asset": "plh_images/workshops/w_srh/learn/sex_talk_who/slide_2.svg",
+      "reply_2_icon_asset": "plh_images/icons/cross_circle.svg",
+      "reply_3_image_asset": "plh_images/workshops/w_srh/learn/sex_talk_who/slide_3.svg",
+      "reply_3_icon_asset": "plh_images/icons/tick_circle.svg",
       "question_text": "Who should start the conversation about body changes and intimate relationships?",
       "_translations": {
         "question_text": {
           "tz_sw": true
         },
-        "option_1_text": {
+        "option_1": {
           "tz_sw": true
         },
-        "reply_1_text": {
+        "reply_1": {
           "tz_sw": true
         },
         "option_2": {
@@ -41,10 +225,10 @@
         "question_text": {
           "eng": "Who should start the conversation about body changes and intimate relationships?"
         },
-        "option_1_text": {
+        "option_1": {
           "eng": "The teen’s friends"
         },
-        "reply_1_text": {
+        "reply_1": {
           "eng": "Remember, friends can sometimes mislead or have wrong information themselves."
         },
         "option_2": {
@@ -63,8 +247,8 @@
           "eng": "Check out the other options too."
         }
       },
-      "option_1_text": "The teen’s friends",
-      "reply_1_text": "Remember, friends can sometimes mislead or have wrong information themselves.",
+      "option_1": "The teen’s friends",
+      "reply_1": "Remember, friends can sometimes mislead or have wrong information themselves.",
       "option_2": "The teen",
       "reply_2": "Your teen might feel uncomfortable or scared to start that conversation with you.",
       "option_3": "The parent",
@@ -72,21 +256,25 @@
       "reply_all": "Check out the other options too."
     },
     {
-      "id": "srh_talk_when",
+      "id": "sex_talk_when",
       "workshop": "w_srh",
-      "reply_1_icon_asset": "[cross]",
-      "icon_2_asset": "[cross]",
-      "icon_3_asset": "[tick]",
-      "icon_4_asset": "[tick]",
+      "reply_1_image_asset": "plh_images/workshops/w_srh/learn/sex_talk_when/slide_1.svg",
+      "reply_1_icon_asset": "plh_images/icons/cross_circle.svg",
+      "reply_2_image_asset": "plh_images/workshops/w_srh/learn/sex_talk_when/slide_2.svg",
+      "reply_2_icon_asset": "plh_images/icons/cross_circle.svg",
+      "reply_3_image_asset": "plh_images/workshops/w_srh/learn/sex_talk_when/slide_3.svg",
+      "reply_3_icon_asset": "plh_images/icons/tick_circle.svg",
+      "reply_4_image_asset": "plh_images/workshops/w_srh/learn/sex_talk_when/slide_4.svg",
+      "reply_4_icon_asset": "plh_images/icons/tick_circle.svg",
       "question_text": "When is the right time to start talking about this?",
       "_translations": {
         "question_text": {
           "tz_sw": true
         },
-        "option_1_text": {
+        "option_1": {
           "tz_sw": true
         },
-        "reply_1_text": {
+        "reply_1": {
           "tz_sw": true
         },
         "option_2": {
@@ -115,10 +303,10 @@
         "question_text": {
           "eng": "When is the right time to start talking about this?"
         },
-        "option_1_text": {
+        "option_1": {
           "eng": "When you find out they have a boyfriend or girlfriend"
         },
-        "reply_1_text": {
+        "reply_1": {
           "eng": "It is important that your teen knows about body changes and intimate relationships before they reach that stage, so they are ready and can make good choices.\n\nIf you discover that your teen is having sex, try to share your feelings or worries in a calm way so you can find a way forward together. Anger towards your teen will make them less likely to open up with you about hard topics."
         },
         "option_2": {
@@ -143,8 +331,8 @@
           "eng": "Check out the other options too."
         }
       },
-      "option_1_text": "When you find out they have a boyfriend or girlfriend",
-      "reply_1_text": "It is important that your teen knows about body changes and intimate relationships before they reach that stage, so they are ready and can make good choices.\n\nIf you discover that your teen is having sex, try to share your feelings or worries in a calm way so you can find a way forward together. Anger towards your teen will make them less likely to open up with you about hard topics.",
+      "option_1": "When you find out they have a boyfriend or girlfriend",
+      "reply_1": "It is important that your teen knows about body changes and intimate relationships before they reach that stage, so they are ready and can make good choices.\n\nIf you discover that your teen is having sex, try to share your feelings or worries in a calm way so you can find a way forward together. Anger towards your teen will make them less likely to open up with you about hard topics.",
       "option_2": "When they turn 10",
       "reply_2": "From the age of 10, children start to enter the puberty stage and need to already know about how their bodies and feelings may change. \n\nThis will also help them cope better with sexual feelings safely.",
       "option_3": "Before they turn 10",
@@ -154,22 +342,27 @@
       "reply_all": "Check out the other options too."
     },
     {
-      "id": "srh_talk_safe",
+      "id": "sex_talk_safe",
       "workshop": "w_srh",
-      "reply_1_icon_asset": "[cross]",
-      "icon_2_asset": "[cross]",
-      "icon_3_asset": "[tick]",
-      "icon_4_asset": "[tick]",
-      "icon_5_asset": "[tick]",
+      "reply_1_image_asset": "plh_images/workshops/w_srh/learn/sex_talk_safe/slide_1.svg",
+      "reply_1_icon_asset": "plh_images/icons/cross_circle.svg",
+      "reply_2_image_asset": "plh_images/workshops/w_srh/learn/sex_talk_safe/slide_2.svg",
+      "reply_2_icon_asset": "plh_images/icons/cross_circle.svg",
+      "reply_3_image_asset": "plh_images/workshops/w_srh/learn/sex_talk_safe/slide_3.svg",
+      "reply_3_icon_asset": "plh_images/icons/tick_circle.svg",
+      "reply_4_image_asset": "plh_images/workshops/w_srh/learn/sex_talk_safe/slide_4.svg",
+      "reply_4_icon_asset": "plh_images/icons/tick_circle.svg",
+      "reply_5_image_asset": "plh_images/workshops/w_srh/learn/sex_talk_safe/slide_5.svg",
+      "reply_5_icon_asset": "plh_images/icons/tick_circle.svg",
       "question_text": "How can I best keep my teen safe?",
       "_translations": {
         "question_text": {
           "tz_sw": true
         },
-        "option_1_text": {
+        "option_1": {
           "tz_sw": true
         },
-        "reply_1_text": {
+        "reply_1": {
           "tz_sw": true
         },
         "option_2": {
@@ -204,10 +397,10 @@
         "question_text": {
           "eng": "How can I best keep my teen safe?"
         },
-        "option_1_text": {
+        "option_1": {
           "eng": "I determine what my teen can and cannot do"
         },
-        "reply_1_text": {
+        "reply_1": {
           "eng": "When we are too controlling, our teens may become rebellious and end up doing the things we do not want them to do. \n\nWhen we give our teens space to make their own decisions and guide them, they generally behave more responsibly."
         },
         "option_2": {
@@ -238,8 +431,8 @@
           "eng": "Check out the other options too."
         }
       },
-      "option_1_text": "I determine what my teen can and cannot do",
-      "reply_1_text": "When we are too controlling, our teens may become rebellious and end up doing the things we do not want them to do. \n\nWhen we give our teens space to make their own decisions and guide them, they generally behave more responsibly.",
+      "option_1": "I determine what my teen can and cannot do",
+      "reply_1": "When we are too controlling, our teens may become rebellious and end up doing the things we do not want them to do. \n\nWhen we give our teens space to make their own decisions and guide them, they generally behave more responsibly.",
       "option_2": "I keep information or bad influences away from them",
       "reply_2": "Teens get information and pressure from many different sources that we cannot control. \n\nIt is our role as parents to prepare them and guide them well, so they can  learn how to tell the difference between good and bad information, and be confident to make their own decisions.",
       "option_3": "I build a healthy trusting relationship with my teen",
@@ -251,20 +444,23 @@
       "reply_all": "Check out the other options too."
     },
     {
-      "id": "srh_talk_age",
+      "id": "sex_talk_age",
       "workshop": "w_srh",
-      "reply_1_icon_asset": "[cross]",
-      "icon_2_asset": "[cross]",
-      "icon_3_asset": "[tick]",
+      "reply_1_image_asset": "plh_images/workshops/w_srh/learn/sex_talk_age/slide_1.svg",
+      "reply_1_icon_asset": "plh_images/icons/cross_circle.svg",
+      "reply_2_image_asset": "plh_images/workshops/w_srh/learn/sex_talk_age/slide_2.svg",
+      "reply_2_icon_asset": "plh_images/icons/cross_circle.svg",
+      "reply_3_image_asset": "plh_images/workshops/w_srh/learn/sex_talk_age/slide_3.svg",
+      "reply_3_icon_asset": "plh_images/icons/tick_circle.svg",
       "question_text": "How can I help prevent  my teen from having sex too young?",
       "_translations": {
         "question_text": {
           "tz_sw": true
         },
-        "option_1_text": {
+        "option_1": {
           "tz_sw": true
         },
-        "reply_1_text": {
+        "reply_1": {
           "tz_sw": true
         },
         "option_2": {
@@ -287,10 +483,10 @@
         "question_text": {
           "eng": "How can I help prevent  my teen from having sex too young?"
         },
-        "option_1_text": {
+        "option_1": {
           "eng": "Keep any information about sex away from them"
         },
-        "reply_1_text": {
+        "reply_1": {
           "eng": "Teenagers get right and wrong information about sex from many different sources at an early age, including school, their friends, and social media.\n\nKnowing about sex does not mean they are having sex themselves already. Having good information can help teenagers understand sex, be clear about safe and unsafe interactions with others, and why they may want to choose to wait to have sex.\n\nNot knowing about sex can lead to problems, for example when teens do not understand how pregnancy happens or what risks sex can have."
         },
         "option_2": {
@@ -309,8 +505,8 @@
           "eng": "Check out the other options too."
         }
       },
-      "option_1_text": "Keep any information about sex away from them",
-      "reply_1_text": "Teenagers get right and wrong information about sex from many different sources at an early age, including school, their friends, and social media.\n\nKnowing about sex does not mean they are having sex themselves already. Having good information can help teenagers understand sex, be clear about safe and unsafe interactions with others, and why they may want to choose to wait to have sex.\n\nNot knowing about sex can lead to problems, for example when teens do not understand how pregnancy happens or what risks sex can have.",
+      "option_1": "Keep any information about sex away from them",
+      "reply_1": "Teenagers get right and wrong information about sex from many different sources at an early age, including school, their friends, and social media.\n\nKnowing about sex does not mean they are having sex themselves already. Having good information can help teenagers understand sex, be clear about safe and unsafe interactions with others, and why they may want to choose to wait to have sex.\n\nNot knowing about sex can lead to problems, for example when teens do not understand how pregnancy happens or what risks sex can have.",
       "option_2": "Forbid them to have a boyfriend or girlfriend",
       "reply_2": "Your teen may have a boyfriend or girlfriend without telling you. \n\nIf you push them to hide their relationships, they may not  come to you when they have questions or problems (about their partner or other things), and they may end up in dangerous situations without you knowing.",
       "option_3": "Have an open discussion on how and why they could wait",
@@ -325,11 +521,9 @@
         "scenario_title": {
           "tz_sw": true
         },
-        "scenario_text": {
-          "tz_sw": true
-        },
+        "scenario_text": {},
         "question_text": {},
-        "option_1_text": {
+        "option_1": {
           "tz_sw": true
         },
         "option_2": {
@@ -347,12 +541,12 @@
           "eng": "Boyfriend pressures @global.w_svp_teen_girl_1 to go beyond kissing"
         },
         "scenario_text": {
-          "eng": "@global.w_svp_teen_girl_1: \"I don't think I am ready...\"\n\nBoyfriend: \"Oh come on... We are ready for the next step, this kissing thing is getting a bit boring. You know I love you, right!\""
+          "eng": "@global.w_svp_teen_girl_1: \"I don't think I am ready...\"\n\nBoyfriend: \"Oh come on... We are ready for the next step. We see each other all the time and we never do anything more… You know I love you, right!\""
         },
         "question_text": {
           "eng": "What warning signs do you see here?\n\nThe boyfriend:"
         },
-        "option_1_text": {
+        "option_1": {
           "eng": "Does not listen to @global.w_svp_teen_girl_1 or ask what she wants"
         },
         "option_2": {
@@ -365,9 +559,9 @@
           "eng": "Yes, these are clear warning signs! Your partner (or anyone else) should never try to push or convince you to do something you do not want to do or feel unsure about. Even if you do something once, this does not mean you have to do it again – you are allowed to change your mind at any time, even during an intimate moment.\n\nA partner who really loves and respects you will ask if you are okay, listen to you, and stop if you want to. They would never push you into something you do not want to do."
         }
       },
-      "scenario_text": "@global.w_svp_teen_girl_1: \"I don't think I am ready...\"\n\nBoyfriend: \"Oh come on... We are ready for the next step, this kissing thing is getting a bit boring. You know I love you, right!\"",
+      "scenario_text": "@global.w_svp_teen_girl_1: \"I don't think I am ready...\"\n\nBoyfriend: \"Oh come on... We are ready for the next step. We see each other all the time and we never do anything more… You know I love you, right!\"",
       "question_text": "What warning signs do you see here?\n\nThe boyfriend:",
-      "option_1_text": "Does not listen to @global.w_svp_teen_girl_1 or ask what she wants",
+      "option_1": "Does not listen to @global.w_svp_teen_girl_1 or ask what she wants",
       "option_2": "Does not respect @global.w_svp_teen_girl_1's feelings/opinion",
       "option_3": "Makes @global.w_svp_teen_girl_1 feel bad about how she acts",
       "reply_all": "Yes, these are clear warning signs! Your partner (or anyone else) should never try to push or convince you to do something you do not want to do or feel unsure about. Even if you do something once, this does not mean you have to do it again – you are allowed to change your mind at any time, even during an intimate moment.\n\nA partner who really loves and respects you will ask if you are okay, listen to you, and stop if you want to. They would never push you into something you do not want to do."
@@ -382,7 +576,7 @@
         },
         "scenario_text": {},
         "question_text": {},
-        "option_1_text": {},
+        "option_1": {},
         "option_2": {},
         "option_3": {},
         "option_4": {},
@@ -399,7 +593,7 @@
         "question_text": {
           "eng": "What warning signs do you see here?\n\nThe boyfriend:"
         },
-        "option_1_text": {
+        "option_1": {
           "eng": "Tries to control @global.w_svp_teen_girl_1"
         },
         "option_2": {
@@ -420,7 +614,7 @@
       },
       "scenario_text": "@global.w_svp_teen_girl_1: “I just wanted to…”\n\nBoyfriend: “No, you are staying here. You always leave me alone to go see your friends. Don’t you love me? Or are you meeting your other boyfriend?!”",
       "question_text": "What warning signs do you see here?\n\nThe boyfriend:",
-      "option_1_text": "Tries to control @global.w_svp_teen_girl_1",
+      "option_1": "Tries to control @global.w_svp_teen_girl_1",
       "option_2": "Stops @global.w_svp_teen_girl_1 from seeing friends",
       "option_3": "Does not listen to @global.w_svp_teen_girl_1",
       "option_4": "Makes @global.w_svp_teen_girl_1 feel bad about how she act",
@@ -435,7 +629,7 @@
         "scenario_title": {},
         "scenario_text": {},
         "question_text": {},
-        "option_1_text": {},
+        "option_1": {},
         "option_2": {},
         "option_3": {},
         "reply_all": {}
@@ -450,7 +644,7 @@
         "question_text": {
           "eng": "What warning signs do you see here?\n\nThe friend:"
         },
-        "option_1_text": {
+        "option_1": {
           "eng": "Makes fun of the girl"
         },
         "option_2": {
@@ -465,7 +659,7 @@
       },
       "scenario_text": "Friend: “Hey pretty, why are you walking so fast! Don’t you want to come show us what is under that skirt?”",
       "question_text": "What warning signs do you see here?\n\nThe friend:",
-      "option_1_text": "Makes fun of the girl",
+      "option_1": "Makes fun of the girl",
       "option_2": "Makes the girl feel uncomfortable about how she looks and acts",
       "option_3": "Acts disrespectfully",
       "reply_all": "Yes, all of these are warning signs! Shouting sexual comments, whistling or making kissing sounds at someone is sexual harassment and a type of sexual abuse. \n\nIf @global.w_svp_teen_boy_1 stays silent, his friend will likely keep doing this. @global.w_svp_teen_boy_1 can help his friend see that his behaviour makes girls feel scared, angry, or sad, and is not okay."
@@ -478,7 +672,7 @@
         "scenario_title": {},
         "scenario_text": {},
         "question_text": {},
-        "option_1_text": {},
+        "option_1": {},
         "option_2": {},
         "option_3": {},
         "reply_all": {}
@@ -493,7 +687,7 @@
         "question_text": {
           "eng": "What warning signs do you see here?"
         },
-        "option_1_text": {
+        "option_1": {
           "eng": "The friend pressures and manipulates @global.w_svp_teen_girl_2."
         },
         "option_2": {
@@ -508,7 +702,7 @@
       },
       "scenario_text": "Man: “Hi beautiful, can I buy you a drink?”\n\n@global.w_svp_teen_girl_2: “Uhmmm... I don’t…”\n\nFriend: “Yes, she’ll have it!”",
       "question_text": "What warning signs do you see here?",
-      "option_1_text": "The friend pressures and manipulates @global.w_svp_teen_girl_2.",
+      "option_1": "The friend pressures and manipulates @global.w_svp_teen_girl_2.",
       "option_2": "The friend does not listen to @global.w_svp_teen_girl_2.",
       "option_3": "The man abuses his status.",
       "reply_all": "Yes, all of these are warning signs! It is common for young women to be pressured into sex when men offer food, gifts, or money. \n\nWhenever you do not get the space to make your own decisions, that can be dangerous. Your friends, and others, should respect your choices."
@@ -521,7 +715,7 @@
         "scenario_title": {},
         "scenario_text": {},
         "question_text": {},
-        "option_1_text": {},
+        "option_1": {},
         "option_2": {},
         "reply_all": {}
       },
@@ -530,13 +724,13 @@
           "eng": "@global.w_svp_teen_girl_3’s nude picture is shared"
         },
         "scenario_text": {
-          "eng": "Boy: “Look what my girlfriend sent me! Should I post it online?”"
+          "eng": "Boy: “Look I still have this sexy picture that @global.w_svp_teen_girl_3 sent me! I will post it online, that should teach her not to break up with me.”"
         },
         "question_text": {
-          "eng": "What warning signs do you see here?\n\nThe boyfriend:"
+          "eng": "What warning signs do you see here?\n\nThe ex-boyfriend:"
         },
-        "option_1_text": {
-          "eng": "Breaks @global.w_svp_teen_girl_2’s trust"
+        "option_1": {
+          "eng": "Breaks @global.w_svp_teen_girl_3’s trust"
         },
         "option_2": {
           "eng": "Breaks the law"
@@ -545,9 +739,9 @@
           "eng": "Yes, these are important warning signs! Sharing sexual images without someone’s permission is wrong and, in many places, it is a crime (especially if someone is under 18). \n\n@global.w_svp_teen_girl_3’s may feel ashamed and may not know what to do – it is important that she knows this situation is not her fault and that she talks to her boyfriend or an adult he trusts. \n\nRemember to talk about social media and online activity as a family, so everyone stays safe."
         }
       },
-      "scenario_text": "Boy: “Look what my girlfriend sent me! Should I post it online?”",
-      "question_text": "What warning signs do you see here?\n\nThe boyfriend:",
-      "option_1_text": "Breaks @global.w_svp_teen_girl_2’s trust",
+      "scenario_text": "Boy: “Look I still have this sexy picture that @global.w_svp_teen_girl_3 sent me! I will post it online, that should teach her not to break up with me.”",
+      "question_text": "What warning signs do you see here?\n\nThe ex-boyfriend:",
+      "option_1": "Breaks @global.w_svp_teen_girl_3’s trust",
       "option_2": "Breaks the law",
       "reply_all": "Yes, these are important warning signs! Sharing sexual images without someone’s permission is wrong and, in many places, it is a crime (especially if someone is under 18). \n\n@global.w_svp_teen_girl_3’s may feel ashamed and may not know what to do – it is important that she knows this situation is not her fault and that she talks to her boyfriend or an adult he trusts. \n\nRemember to talk about social media and online activity as a family, so everyone stays safe."
     },
@@ -559,7 +753,7 @@
         "scenario_title": {},
         "scenario_text": {},
         "question_text": {},
-        "option_1_text": {},
+        "option_1": {},
         "option_2": {},
         "option_3": {},
         "option_4": {},
@@ -576,7 +770,7 @@
         "question_text": {
           "eng": "What warning signs do you see here?\n\nThe teacher:"
         },
-        "option_1_text": {
+        "option_1": {
           "eng": "Abuses his power"
         },
         "option_2": {
@@ -597,7 +791,7 @@
       },
       "scenario_text": "Teacher: “@global.w_svp_teen_girl_1, if you want to get good grades this year, you need to stay after school when everyone is gone so I can tutor you.”\n\n@global.w_svp_teen_girl_1: “My friend also needs support. Can I invite her too?” \n\nTeacher: “No, this will be our secret. You don’t want people to think you are stupid, right?”",
       "question_text": "What warning signs do you see here?\n\nThe teacher:",
-      "option_1_text": "Abuses his power",
+      "option_1": "Abuses his power",
       "option_2": "Pressures and manipulates @global.w_svp_teen_girl_1",
       "option_3": "Does not listen to @global.w_svp_teen_girl_1",
       "option_4": "Makes @global.w_svp_teen_girl_1 feel unsafe",
@@ -612,7 +806,7 @@
         "scenario_title": {},
         "scenario_text": {},
         "question_text": {},
-        "option_1_text": {},
+        "option_1": {},
         "option_2": {},
         "option_3": {},
         "option_4": {},
@@ -626,22 +820,22 @@
           "eng": "@global.w_svp_teen_girl_2 says ‘no’ to offered lift"
         },
         "scenario_text": {
-          "eng": "Man: “Your friends left, so this is the only way you can get home, you idiot!”"
+          "eng": "@global.w_svp_teen_girl_2: “No, I don’t want to…”\n\nMan: “Your friends left, so this is the only way you can get home, you idiot!”"
         },
         "question_text": {
           "eng": "What warning signs do you see here?\n\nThe man:"
         },
-        "option_1_text": {
+        "option_1": {
           "eng": "Does not listen to @global.w_svp_teen_girl_2"
         },
         "option_2": {
           "eng": "Yells and calls @global.w_svp_teen_girl_2 names"
         },
         "option_3": {
-          "eng": "Touches @global.w_svp_teen_girl_2 without permission"
+          "eng": "May touch @global.w_svp_teen_girl_2 without permission"
         },
         "option_4": {
-          "eng": "Physically hurts [girl name 5]"
+          "eng": "May physically hurt @global.w_svp_teen_girl_2"
         },
         "option_5": {
           "eng": "Makes @global.w_svp_teen_girl_2 feel unsafe"
@@ -656,16 +850,124 @@
           "eng": "Yes, all of these are warning signs! Your ‘no’ should alway be respected. \n\nAlso remember, if people at home or outside use alcohol and other drugs this can be a warning sign, as those can make people angry, aggressive, and even violent."
         }
       },
-      "scenario_text": "Man: “Your friends left, so this is the only way you can get home, you idiot!”",
+      "scenario_text": "@global.w_svp_teen_girl_2: “No, I don’t want to…”\n\nMan: “Your friends left, so this is the only way you can get home, you idiot!”",
       "question_text": "What warning signs do you see here?\n\nThe man:",
-      "option_1_text": "Does not listen to @global.w_svp_teen_girl_2",
+      "option_1": "Does not listen to @global.w_svp_teen_girl_2",
       "option_2": "Yells and calls @global.w_svp_teen_girl_2 names",
-      "option_3": "Touches @global.w_svp_teen_girl_2 without permission",
-      "option_4": "Physically hurts [girl name 5]",
+      "option_3": "May touch @global.w_svp_teen_girl_2 without permission",
+      "option_4": "May physically hurt @global.w_svp_teen_girl_2",
       "option_5": "Makes @global.w_svp_teen_girl_2 feel unsafe",
       "option_6": "Pressures @global.w_svp_teen_girl_2",
       "option_7": "Lies and acts disrespectfully",
       "reply_all": "Yes, all of these are warning signs! Your ‘no’ should alway be respected. \n\nAlso remember, if people at home or outside use alcohol and other drugs this can be a warning sign, as those can make people angry, aggressive, and even violent."
+    },
+    {
+      "reply_1_icon_asset": "She was shocked that Neema had condoms",
+      "reply_2_image_asset": "She was scared Neema was already having sex",
+      "reply_2_icon_asset": "[once user selects answer] When we are angry or scared, we can say or do things that hurt others and harm our relationships.",
+      "reply_3_image_asset": "How will this affect Bibi’s relationship with Neema?",
+      "reply_3_icon_asset": "Neema may not ask Bibi questions or advice if she has a problem",
+      "reply_4_image_asset": "[once user selects answer] Yes, all of these are true. After this argument, Neema is likely to look for information and advice from other places (also if something goes wrong with a relationship or in her life).",
+      "reply_1": "Why do you think Bibi reacted the way she did?",
+      "_translations": {
+        "reply_1": {},
+        "option_2": {},
+        "reply_2": {},
+        "reply_3": {},
+        "option_4": {},
+        "reply_4": {}
+      },
+      "_translatedFields": {
+        "reply_1": {
+          "eng": "Why do you think Bibi reacted the way she did?"
+        },
+        "option_2": {
+          "eng": "She felt disrespected and angry at Neema"
+        },
+        "reply_2": {
+          "eng": "She felt ashamed to talk about sex"
+        },
+        "reply_3": {
+          "eng": "Neema may not trust Bibi in the future"
+        },
+        "option_4": {
+          "eng": "Neema may make bad decisions out of anger"
+        },
+        "reply_4": {
+          "eng": "She may get into situations that are not healthy or safe, and may not want to talk to Bibi about it even if she has questions or needs help. She may feel worried that Bibi will judge her choices or feel ashamed of her."
+        }
+      },
+      "option_2": "She felt disrespected and angry at Neema",
+      "reply_2": "She felt ashamed to talk about sex",
+      "reply_3": "Neema may not trust Bibi in the future",
+      "option_4": "Neema may make bad decisions out of anger",
+      "reply_4": "She may get into situations that are not healthy or safe, and may not want to talk to Bibi about it even if she has questions or needs help. She may feel worried that Bibi will judge her choices or feel ashamed of her."
+    },
+    {
+      "scenario_text": "How will this affect Bibi’s relationship with Neema?",
+      "_translations": {
+        "scenario_text": {}
+      },
+      "_translatedFields": {
+        "scenario_text": {
+          "eng": "How will this affect Bibi’s relationship with Neema?"
+        }
+      }
+    },
+    {
+      "scenario_text": "Neema may not trust Bibi in the future",
+      "_translations": {
+        "scenario_text": {}
+      },
+      "_translatedFields": {
+        "scenario_text": {
+          "eng": "Neema may not trust Bibi in the future"
+        }
+      }
+    },
+    {
+      "scenario_text": "Neema may not ask Bibi questions or advice if she has a problem",
+      "_translations": {
+        "scenario_text": {}
+      },
+      "_translatedFields": {
+        "scenario_text": {
+          "eng": "Neema may not ask Bibi questions or advice if she has a problem"
+        }
+      }
+    },
+    {
+      "scenario_text": "Neema may make bad decisions out of anger",
+      "_translations": {
+        "scenario_text": {}
+      },
+      "_translatedFields": {
+        "scenario_text": {
+          "eng": "Neema may make bad decisions out of anger"
+        }
+      }
+    },
+    {
+      "scenario_text": "[once user selects answer] Yes, all of these are true. After this argument, Neema is likely to look for information and advice from other places (also if something goes wrong with a relationship or in her life).",
+      "_translations": {
+        "scenario_text": {}
+      },
+      "_translatedFields": {
+        "scenario_text": {
+          "eng": "[once user selects answer] Yes, all of these are true. After this argument, Neema is likely to look for information and advice from other places (also if something goes wrong with a relationship or in her life)."
+        }
+      }
+    },
+    {
+      "scenario_text": "She may get into situations that are not healthy or safe, and may not want to talk to Bibi about it even if she has questions or needs help. She may feel worried that Bibi will judge her choices or feel ashamed of her.",
+      "_translations": {
+        "scenario_text": {}
+      },
+      "_translatedFields": {
+        "scenario_text": {
+          "eng": "She may get into situations that are not healthy or safe, and may not want to talk to Bibi about it even if she has questions or needs help. She may feel worried that Bibi will judge her choices or feel ashamed of her."
+        }
+      }
     }
   ],
   "_xlsxPath": "global/data/workshop_data/workshop_data_list.xlsx"
