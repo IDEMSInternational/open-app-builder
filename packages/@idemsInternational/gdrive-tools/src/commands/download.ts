@@ -97,9 +97,9 @@ export class GDriveDownloader {
     const serverFiles = await this.listGdriveFilesRecursively(folderId);
     if (Object.keys(serverFiles).length === 0) {
       console.log(
-        chalk.red("No files found. Failure to find files may result in an error.") +
-          "\n" +
-          chalk.red("Check if you are authorised to access the Google Drive folders.")
+        chalk.red(
+          "No asset files were found. Please ensure your Google account is authorised to access the relevant asset folder."
+        )
       );
     }
     return this.processDownloads(serverFiles);

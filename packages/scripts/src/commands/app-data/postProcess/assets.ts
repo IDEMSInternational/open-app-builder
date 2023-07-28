@@ -64,15 +64,7 @@ export class AssetsPostProcessor {
     fs.ensureDirSync(appAssetsFolder);
     // Generate a list of all deployment assets, merge with list of assets from parent
     const sourceAssets = generateFolderFlatMap(sourceAssetsFolder, { includeLocalPath: true });
-    if (Object.keys(sourceAssets).length === 0 && sourceAssets.constructor === Object) {
-      // if the assets folder is empty, print a warning message and continue
-      console.error(
-        chalk.red(
-          "No assets found in source assets folder. \n" +
-            "Please check your Google Drive permissions."
-        )
-      );
-    }
+
     const sourceAssetsFiltered = this.filterAppAssets(sourceAssets);
     const mergedAssets = this.mergeParentAssets(sourceAssetsFiltered);
     // Populate merged assets staging to run quality control checks and generate full contents lists
@@ -105,30 +97,26 @@ export class AssetsPostProcessor {
     assetEntries: IAssetEntryHashmap,
     missingEntries: IAssetEntryHashmap
   ) {
-    try {
-      const contentsTarget = path.resolve(appAssetsFolder, "contents.json");
-      fs.writeFileSync(contentsTarget, JSON.stringify(sortJsonKeys(assetEntries), null, 2));
-      const missingTarget = path.resolve(appAssetsFolder, "untracked-assets.json");
-      if (fs.existsSync(missingTarget)) fs.removeSync(missingTarget);
-      if (Object.keys(missingEntries).length > 0) {
-        logWarning({
-          msg1: "Assets override found without corresponding entry",
-          msg2: Object.keys(missingEntries).join("\n"),
-        });
-        fs.writeFileSync(missingTarget, JSON.stringify(sortJsonKeys(missingEntries), null, 2));
+    if (fs.existsSync(appAssetsFolder)) {
+      {
+        const contentsTarget = path.resolve(appAssetsFolder, "contents.json");
+        fs.writeFileSync(contentsTarget, JSON.stringify(sortJsonKeys(assetEntries), null, 2));
+        const missingTarget = path.resolve(appAssetsFolder, "untracked-assets.json");
+        if (fs.existsSync(missingTarget)) fs.removeSync(missingTarget);
+        if (Object.keys(missingEntries).length > 0) {
+          logWarning({
+            msg1: "Assets override found without corresponding entry",
+            msg2: Object.keys(missingEntries).join("\n"),
+          });
+          fs.writeFileSync(missingTarget, JSON.stringify(sortJsonKeys(missingEntries), null, 2));
+        }
       }
-    } catch {
-      console.log(chalk.red("ERROR: the program was stopped due to a runtime error."));
-      if (!fs.existsSync(appAssetsFolder)) {
-        console.log(
-          chalk.red(
-            "The folder '" +
-              appAssetsFolder +
-              "' does not exist. Check you have access to the relevant Google Drive folders."
-          )
-        );
-        process.exit(1); // exit the program if it cant find the folder!
-      }
+    } else {
+      console.log(
+        chalk.red(
+          "No assets were downloaded. Please ensure that your Google account is authorised to access to the relevant folder in Google Drive, as defined in the deployment config."
+        )
+      );
     }
   }
 
