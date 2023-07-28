@@ -1212,8 +1212,12 @@
       "text_6": "@global.w_crisis_teen_boy_1: \"Thank you, @global.w_crisis_male_caregiver_1\"\n\n@global.w_crisis_male_caregiver_1: \"We will get through this. Remember, we will support you as a family.\""
     },
     {
-      "id": "srh_talk",
+      "id": "sex_talk",
       "workshop": "w_srh",
+      "image_1": "plh_images/workshops/w_srh/read_sex_talk/slide_1.svg",
+      "image_2": "plh_images/workshops/w_srh/read_sex_talk/slide_2.svg",
+      "image_3": "plh_images/workshops/w_srh/read_sex_talk/slide_3.svg",
+      "image_4": "plh_images/workshops/w_srh/read_sex_talk/slide_4.svg",
       "title": "Sex talk",
       "_translations": {
         "title": {},
@@ -1252,6 +1256,11 @@
     {
       "id": "new_boyfriend",
       "workshop": "w_srh",
+      "image_1": "plh_images/workshops/w_srh/read_new_boyfriend/slide_1.svg",
+      "image_2": "plh_images/workshops/w_srh/read_new_boyfriend/slide_2.svg",
+      "image_3": "plh_images/workshops/w_srh/read_new_boyfriend/slide_3.svg",
+      "image_4": "plh_images/workshops/w_srh/read_new_boyfriend/slide_4.svg",
+      "image_5": "plh_images/workshops/w_srh/read_new_boyfriend/slide_5.svg",
       "title": "My new boyfriend",
       "_translations": {
         "title": {},
