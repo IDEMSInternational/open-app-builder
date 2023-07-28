@@ -2,52 +2,44 @@
   "flow_type": "data_list",
   "flow_name": "learn_data",
   "status": "released",
-  "data_list_name": "quiz",
+  "data_list_name": "learn",
   "rows": [
     {
-      "id": "srh_talk",
+      "id": "sex_talk",
       "workshop": "w_srh",
-      "part_1_id": "srh_talk_who",
-      "part_2_id": "srh_talk_when",
-      "part_3_id": "srh_talk_safe",
-      "part_4_id": "srh_talk_age",
+      "type": "question",
+      "part_1": "sex_talk_who",
+      "part_2": "sex_talk_when",
+      "part_3": "sex_talk_safe",
+      "part_4": "sex_talk_age",
       "title": "Learn",
       "_translations": {
         "title": {
           "tz_sw": true
         },
-        "intro_text": {
-          "tz_sw": true
-        },
-        "text": {
-          "tz_sw": true
-        }
+        "intro_text": {}
       },
       "_translatedFields": {
         "title": {
           "eng": "Learn"
         },
         "intro_text": {
-          "eng": "Many parents really want to support their teens, but struggle to talk about sensitive topics like body changes and intimate relationships."
-        },
-        "text": {
-          "eng": "Let’s look at a few questions from other parents to help you get started."
+          "eng": "Many parents really want to support their teens, but struggle to talk about sensitive topics like body changes and intimate relationships.\n\nLet’s look at a few questions from other parents to help you get started."
         }
       },
-      "intro_text": "Many parents really want to support their teens, but struggle to talk about sensitive topics like body changes and intimate relationships.",
-      "text": "Let’s look at a few questions from other parents to help you get started."
+      "intro_text": "Many parents really want to support their teens, but struggle to talk about sensitive topics like body changes and intimate relationships.\n\nLet’s look at a few questions from other parents to help you get started."
     },
     {
       "id": "warning_signs",
       "workshop": "w_svp",
       "type": "question",
-      "part_1_id": "pushy_boyfriend",
-      "part_2_id": "controlling_boyfriend",
-      "part_3_id": "catcalling",
-      "part_4_id": "pushy_friend",
-      "part_5_id": "nude_pic",
-      "part_6_id": "private_tutoring",
-      "part_7_id": "rejected_ride",
+      "part_1": "pushy_boyfriend",
+      "part_2": "controlling_boyfriend",
+      "part_3": "catcalling",
+      "part_4": "pushy_friend",
+      "part_5": "nude_pic",
+      "part_6": "private_tutoring",
+      "part_7": "rejected_ride",
       "title": "Warning signs",
       "_translations": {
         "title": {
@@ -78,7 +70,7 @@
       "id": "use_voice",
       "workshop": "w_svp",
       "type": "suggestions",
-      "part_1_id": "use_voice",
+      "part_1": "use_voice",
       "title": "Use your voice",
       "_translations": {
         "title": {
@@ -109,9 +101,9 @@
       "id": "use_body",
       "workshop": "w_svp",
       "type": "suggestions",
-      "part_1_id": "first_targets",
-      "part_2_id": "second_targets",
-      "part_3_id": "defence_moves",
+      "part_1": "first_targets",
+      "part_2": "second_targets",
+      "part_3": "defence_moves",
       "title": "Use your body",
       "_translations": {
         "title": {

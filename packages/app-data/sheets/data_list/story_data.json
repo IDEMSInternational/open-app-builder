@@ -1256,6 +1256,7 @@
     {
       "id": "new_boyfriend",
       "workshop": "w_srh",
+      "outro_habit": "safe_self",
       "image_1": "plh_images/workshops/w_srh/read_new_boyfriend/slide_1.svg",
       "image_2": "plh_images/workshops/w_srh/read_new_boyfriend/slide_2.svg",
       "image_3": "plh_images/workshops/w_srh/read_new_boyfriend/slide_3.svg",

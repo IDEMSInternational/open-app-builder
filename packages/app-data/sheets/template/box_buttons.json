@@ -58,6 +58,18 @@
       "_nested_name": "button_3"
     },
     {
+      "type": "button",
+      "name": "button_4",
+      "hidden": true,
+      "_nested_name": "button_4"
+    },
+    {
+      "type": "button",
+      "name": "button_5",
+      "hidden": true,
+      "_nested_name": "button_5"
+    },
+    {
       "type": "template",
       "name": "parent_point_dashed_box",
       "value": "parent_point_dashed_box",
