@@ -412,7 +412,7 @@
       "activity_image_asset": "plh_images/workshop_modes/individual/final/wave.svg",
       "voice_name": "@global.female_adult_name_14",
       "audio_asset": "plh_audio/topic_intros/w_celebrate_intro.mp3",
-      "title": "@data.workshop.w_celebrate.title",
+      "title": "Why celebrate?",
       "_translations": {
         "title": {},
         "intro_text": {
@@ -423,7 +423,7 @@
       },
       "_translatedFields": {
         "title": {
-          "eng": "@data.workshop.w_celebrate.title"
+          "eng": "Why celebrate?"
         },
         "intro_text": {
           "eng": "CONGRATULATIONS! You have done it! You have built 11 important parenting skills. \n\nThis is a huge achievement. It shows such care for your family. \n\nLet’s celebrate you, and plan your future @global.parent_app support."

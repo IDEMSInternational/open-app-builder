@@ -855,6 +855,409 @@
           "condition"
         ]
       }
+    },
+    {
+      "type": "template",
+      "name": "listen",
+      "value": "listen",
+      "action_list": [
+        {
+          "trigger": "completed",
+          "action_id": "emit",
+          "args": [
+            "completed"
+          ],
+          "_raw": "completed | emit:completed",
+          "_cleaned": "completed | emit:completed"
+        },
+        {
+          "trigger": "uncompleted",
+          "action_id": "emit",
+          "args": [
+            "uncompleted"
+          ],
+          "_raw": "uncompleted | emit:uncompleted",
+          "_cleaned": "uncompleted | emit:uncompleted"
+        }
+      ],
+      "condition": "!@local.has_ct_script",
+      "rows": [
+        {
+          "type": "nested_properties",
+          "name": "workshop_activity",
+          "rows": [
+            {
+              "name": "activity_image",
+              "value": "@local.topic_intro_data.activity_image_asset",
+              "_translations": {
+                "value": {}
+              },
+              "type": "set_variable",
+              "_nested_name": "listen.workshop_activity.activity_image",
+              "_dynamicFields": {
+                "value": [
+                  {
+                    "fullExpression": "@local.topic_intro_data.activity_image_asset",
+                    "matchedExpression": "@local.topic_intro_data.activity_image_asset",
+                    "type": "local",
+                    "fieldName": "topic_intro_data"
+                  }
+                ]
+              },
+              "_dynamicDependencies": {
+                "@local.topic_intro_data.activity_image_asset": [
+                  "value"
+                ]
+              }
+            },
+            {
+              "name": "intro_title",
+              "value": "@local.topic_intro_data.title",
+              "_translations": {
+                "value": {}
+              },
+              "type": "set_variable",
+              "_nested_name": "listen.workshop_activity.intro_title",
+              "_dynamicFields": {
+                "value": [
+                  {
+                    "fullExpression": "@local.topic_intro_data.title",
+                    "matchedExpression": "@local.topic_intro_data.title",
+                    "type": "local",
+                    "fieldName": "topic_intro_data"
+                  }
+                ]
+              },
+              "_dynamicDependencies": {
+                "@local.topic_intro_data.title": [
+                  "value"
+                ]
+              }
+            },
+            {
+              "name": "activity_title",
+              "value": "@local.workshop_data.title",
+              "_translations": {
+                "value": {}
+              },
+              "type": "set_variable",
+              "_nested_name": "listen.workshop_activity.activity_title",
+              "_dynamicFields": {
+                "value": [
+                  {
+                    "fullExpression": "@local.workshop_data.title",
+                    "matchedExpression": "@local.workshop_data.title",
+                    "type": "local",
+                    "fieldName": "workshop_data"
+                  }
+                ]
+              },
+              "_dynamicDependencies": {
+                "@local.workshop_data.title": [
+                  "value"
+                ]
+              }
+            },
+            {
+              "name": "intro_text",
+              "value": "@local.topic_intro_data.intro_text",
+              "_translations": {
+                "value": {}
+              },
+              "type": "set_variable",
+              "_nested_name": "listen.workshop_activity.intro_text",
+              "_dynamicFields": {
+                "value": [
+                  {
+                    "fullExpression": "@local.topic_intro_data.intro_text",
+                    "matchedExpression": "@local.topic_intro_data.intro_text",
+                    "type": "local",
+                    "fieldName": "topic_intro_data"
+                  }
+                ]
+              },
+              "_dynamicDependencies": {
+                "@local.topic_intro_data.intro_text": [
+                  "value"
+                ]
+              }
+            },
+            {
+              "type": "nested_properties",
+              "name": "intro_nav_buttons",
+              "rows": [
+                {
+                  "name": "button_completed",
+                  "value": "@local.topic_intro_data.intro_nav_button_completed",
+                  "_translations": {
+                    "value": {}
+                  },
+                  "type": "set_variable",
+                  "_nested_name": "listen.workshop_activity.intro_nav_buttons.button_completed",
+                  "_dynamicFields": {
+                    "value": [
+                      {
+                        "fullExpression": "@local.topic_intro_data.intro_nav_button_completed",
+                        "matchedExpression": "@local.topic_intro_data.intro_nav_button_completed",
+                        "type": "local",
+                        "fieldName": "topic_intro_data"
+                      }
+                    ]
+                  },
+                  "_dynamicDependencies": {
+                    "@local.topic_intro_data.intro_nav_button_completed": [
+                      "value"
+                    ]
+                  }
+                }
+              ],
+              "_nested_name": "listen.workshop_activity.intro_nav_buttons"
+            },
+            {
+              "type": "nested_properties",
+              "name": "content_box",
+              "value": "box_audio",
+              "rows": [
+                {
+                  "name": "text",
+                  "value": "@local.topic_intro_data.text",
+                  "_translations": {
+                    "value": {}
+                  },
+                  "type": "set_variable",
+                  "_nested_name": "listen.workshop_activity.content_box.text",
+                  "_dynamicFields": {
+                    "value": [
+                      {
+                        "fullExpression": "@local.topic_intro_data.text",
+                        "matchedExpression": "@local.topic_intro_data.text",
+                        "type": "local",
+                        "fieldName": "topic_intro_data"
+                      }
+                    ]
+                  },
+                  "_dynamicDependencies": {
+                    "@local.topic_intro_data.text": [
+                      "value"
+                    ]
+                  }
+                },
+                {
+                  "name": "audio_title",
+                  "value": "Hear @local.topic_intro_name's message",
+                  "_translations": {
+                    "value": {}
+                  },
+                  "type": "set_variable",
+                  "_nested_name": "listen.workshop_activity.content_box.audio_title",
+                  "_dynamicFields": {
+                    "value": [
+                      {
+                        "fullExpression": "Hear @local.topic_intro_name's message",
+                        "matchedExpression": "@local.topic_intro_name",
+                        "type": "local",
+                        "fieldName": "topic_intro_name"
+                      }
+                    ]
+                  },
+                  "_dynamicDependencies": {
+                    "@local.topic_intro_name": [
+                      "value"
+                    ]
+                  }
+                },
+                {
+                  "name": "audio_src",
+                  "value": "@local.topic_intro_audio_asset",
+                  "_translations": {
+                    "value": {}
+                  },
+                  "type": "set_variable",
+                  "_nested_name": "listen.workshop_activity.content_box.audio_src",
+                  "_dynamicFields": {
+                    "value": [
+                      {
+                        "fullExpression": "@local.topic_intro_audio_asset",
+                        "matchedExpression": "@local.topic_intro_audio_asset",
+                        "type": "local",
+                        "fieldName": "topic_intro_audio_asset"
+                      }
+                    ]
+                  },
+                  "_dynamicDependencies": {
+                    "@local.topic_intro_audio_asset": [
+                      "value"
+                    ]
+                  }
+                },
+                {
+                  "name": "button_1",
+                  "value": "Read @local.topic_intro_name's message",
+                  "_translations": {
+                    "value": {}
+                  },
+                  "action_list": [
+                    {
+                      "trigger": "click",
+                      "action_id": "pop_up",
+                      "args": [
+                        "@local.workshop_intro_text"
+                      ],
+                      "_raw": "click | pop_up:@local.workshop_intro_text",
+                      "_cleaned": "click | pop_up:@local.workshop_intro_text"
+                    }
+                  ],
+                  "hidden": false,
+                  "type": "set_variable",
+                  "_nested_name": "listen.workshop_activity.content_box.button_1",
+                  "_dynamicFields": {
+                    "value": [
+                      {
+                        "fullExpression": "Read @local.topic_intro_name's message",
+                        "matchedExpression": "@local.topic_intro_name",
+                        "type": "local",
+                        "fieldName": "topic_intro_name"
+                      }
+                    ],
+                    "action_list": {
+                      "0": {
+                        "args": {
+                          "0": [
+                            {
+                              "fullExpression": "@local.workshop_intro_text",
+                              "matchedExpression": "@local.workshop_intro_text",
+                              "type": "local",
+                              "fieldName": "workshop_intro_text"
+                            }
+                          ]
+                        },
+                        "_raw": [
+                          {
+                            "fullExpression": "click | pop_up:@local.workshop_intro_text",
+                            "matchedExpression": "@local.workshop_intro_text",
+                            "type": "local",
+                            "fieldName": "workshop_intro_text"
+                          }
+                        ],
+                        "_cleaned": [
+                          {
+                            "fullExpression": "click | pop_up:@local.workshop_intro_text",
+                            "matchedExpression": "@local.workshop_intro_text",
+                            "type": "local",
+                            "fieldName": "workshop_intro_text"
+                          }
+                        ]
+                      }
+                    }
+                  },
+                  "_dynamicDependencies": {
+                    "@local.topic_intro_name": [
+                      "value"
+                    ],
+                    "@local.workshop_intro_text": [
+                      "action_list.0.args.0",
+                      "action_list.0._raw",
+                      "action_list.0._cleaned"
+                    ]
+                  }
+                },
+                {
+                  "name": "button_2",
+                  "value": "Today's steps",
+                  "_translations": {
+                    "value": {
+                      "tz_sw": true
+                    }
+                  },
+                  "action_list": [
+                    {
+                      "trigger": "click",
+                      "action_id": "pop_up",
+                      "args": [
+                        "@local.workshop_summary"
+                      ],
+                      "_raw": "click | pop_up:@local.workshop_summary",
+                      "_cleaned": "click | pop_up:@local.workshop_summary"
+                    }
+                  ],
+                  "condition": "@fields._app_skin == \"weekly_workshop\"",
+                  "hidden": false,
+                  "type": "set_variable",
+                  "_nested_name": "listen.workshop_activity.content_box.button_2",
+                  "_dynamicFields": {
+                    "action_list": {
+                      "0": {
+                        "args": {
+                          "0": [
+                            {
+                              "fullExpression": "@local.workshop_summary",
+                              "matchedExpression": "@local.workshop_summary",
+                              "type": "local",
+                              "fieldName": "workshop_summary"
+                            }
+                          ]
+                        },
+                        "_raw": [
+                          {
+                            "fullExpression": "click | pop_up:@local.workshop_summary",
+                            "matchedExpression": "@local.workshop_summary",
+                            "type": "local",
+                            "fieldName": "workshop_summary"
+                          }
+                        ],
+                        "_cleaned": [
+                          {
+                            "fullExpression": "click | pop_up:@local.workshop_summary",
+                            "matchedExpression": "@local.workshop_summary",
+                            "type": "local",
+                            "fieldName": "workshop_summary"
+                          }
+                        ]
+                      }
+                    },
+                    "condition": [
+                      {
+                        "fullExpression": "@fields._app_skin == \"weekly_workshop\"",
+                        "matchedExpression": "@fields._app_skin",
+                        "type": "fields",
+                        "fieldName": "_app_skin"
+                      }
+                    ]
+                  },
+                  "_dynamicDependencies": {
+                    "@local.workshop_summary": [
+                      "action_list.0.args.0",
+                      "action_list.0._raw",
+                      "action_list.0._cleaned"
+                    ],
+                    "@fields._app_skin": [
+                      "condition"
+                    ]
+                  }
+                }
+              ],
+              "_nested_name": "listen.workshop_activity.content_box"
+            }
+          ],
+          "_nested_name": "listen.workshop_activity"
+        }
+      ],
+      "_nested_name": "listen",
+      "_dynamicFields": {
+        "condition": [
+          {
+            "fullExpression": "!@local.has_ct_script",
+            "matchedExpression": "!@local.has_ct_script",
+            "type": "local",
+            "fieldName": "has_ct_script"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "!@local.has_ct_script": [
+          "condition"
+        ]
+      }
     }
   ],
   "_xlsxPath": "global/mode_templates/listen.xlsx"
