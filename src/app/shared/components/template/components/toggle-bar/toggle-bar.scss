@@ -42,12 +42,23 @@ ion-toggle {
   display: flex;
   align-items: center;
   justify-content: space-between;
-}
 
-.container[data-param-style~="in_button"] {
-  flex-direction: row-reverse;
-  ion-toggle {
-    transform: translate($togglePadding, $togglePadding);
+  &[data-param-style~="in_button"],
+  &[data-variant~="in_button"] {
+    flex-direction: row-reverse;
+    ion-toggle {
+      transform: translate($togglePadding, $togglePadding);
+    }
+  }
+
+  &[data-variant~="icon"] {
+    .icon-wrapper {
+      width: 24px;
+      margin: 12px;
+      img {
+        width: 100%;
+      }
+    }
   }
 }
 
