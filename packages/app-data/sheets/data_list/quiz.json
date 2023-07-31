@@ -95,6 +95,56 @@
       "question_2_id": "helped_how",
       "title": "Quiz",
       "intro_text": "Let's do a reflection."
+    },
+    {
+      "id": "education",
+      "topic": "education",
+      "question_1_id": "encourage_how",
+      "title": "Quiz",
+      "intro_text": "Let's do a reflection."
+    },
+    {
+      "id": "equality",
+      "topic": "gender_equal",
+      "question_1_id": "help_modify",
+      "question_2_id": "community_modify",
+      "title": "Quiz",
+      "intro_text": "Let's do a reflection."
+    },
+    {
+      "id": "gender_equal",
+      "topic": "gender_equal",
+      "question_1_id": "common_issues",
+      "question_2_id": "techniques",
+      "title": "Quiz",
+      "intro_text": "Let's do a reflection."
+    },
+    {
+      "id": "building_values",
+      "topic": "prevent_abuse",
+      "title": "Building values for better decision making on sexual issues",
+      "question_1_id": "parent_values",
+      "question_2_id": "religious_values",
+      "question_3_id": "behaviour_influence",
+      "question_4_id": "different_values",
+      "intro_text": "Let's do a reflection."
+    },
+    {
+      "id": "parents_web",
+      "topic": "conclusion",
+      "question_1_id": "web",
+      "title": "Quiz",
+      "intro_text": "Let's do a reflection."
+    },
+    {
+      "id": "future_group",
+      "topic": "conclusion",
+      "question_1_id": "each_other_support",
+      "question_2_id": "plan_reach",
+      "question_3_id": "wish_receive",
+      "question_4_id": "support_need",
+      "title": "Quiz",
+      "intro_text": "Let's do a reflection."
     }
   ],
   "_xlsxPath": "global/data_lists/topics.xlsx"

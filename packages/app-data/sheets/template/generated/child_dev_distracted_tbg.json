@@ -1,17 +1,8 @@
 {
-  "flow_name": "child_dev_ip_distracted",
+  "flow_name": "child_dev_distracted_tbg",
   "flow_subtype": "generated",
   "flow_type": "template",
   "rows": [
-    {
-      "name": "join",
-      "value": "_",
-      "_translations": {
-        "value": {}
-      },
-      "type": "set_variable",
-      "_nested_name": "join"
-    },
     {
       "type": "template",
       "name": "topic_block_group",
@@ -39,7 +30,7 @@
       "rows": [
         {
           "name": "id",
-          "value": "interactive_play_control",
+          "value": "interactive_play_distracted",
           "_translations": {
             "value": {}
           },

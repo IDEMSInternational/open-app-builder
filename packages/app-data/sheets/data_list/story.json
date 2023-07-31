@@ -78,6 +78,50 @@
       "slide_3_text": "She asked the husband to come and bathe the children as she goes to prepare tea for him. The father agreed and took over this responsibility. A few minutes later, the tea was ready.",
       "slide_4_text": "A neighbour who was then passing by saw this and was impressed to see a father bathing his child as their mother served tea. He wondered how they were able to share the roles easily.",
       "slide_5_text": "The couple told him that they had benefited from attending Parenting for Respectability sessions."
+    },
+    {
+      "id": "conflict_children",
+      "topic": "discipline",
+      "title": "Tug of war",
+      "intro_text": "While raising our children, especially adolescents, it is easy to get into a confrontation with them. For instance, this can happen when parents set limits and regulate their children’s behavior. However, confrontation or conflict can often be avoided"
+    },
+    {
+      "id": "positive_child_interaction_1",
+      "topic": "discipline",
+      "slide_1_text": "It's so nice to see you playing with your dolls Sylia.",
+      "slide_1_image_asset": "images/sylvia_playing_with_toys_1.jpg",
+      "slide_2_text": "In five minutes, it will be time for keeping them.",
+      "slide_2_image_asset": "images/sylvia_playing_with_toys_2.jpg",
+      "slide_3_text": "It's time for keeping your dolls Sylvia. Please keep them in the box, I would like to tell you a story.",
+      "slide_3_image_asset": "images/sylvia_playing_with_toys_3.jpg",
+      "slide_4_text": "Please pack them properly.",
+      "slide_4_image_asset": "images/sylvia_playing_with_toys_4.jpg",
+      "slide_5_text": "Thank you for removing the dolls when I told you. I am so grateful because you listen to what I say. Now, let's read a story together.",
+      "slide_5_image_asset": "images/sylvia_playing_with_toys_5.jpg",
+      "slide_6_text": "Once upon a time.....",
+      "slide_6_image_asset": "images/sylvia_playing_with_toys_6.jpg"
+    },
+    {
+      "id": "positive_child_interaction_2",
+      "topic": "discipline",
+      "slide_1_text": "Radio presenter: At the end of 1st half, Arsenal and Man u",
+      "slide_2_text": "<span><i>Music playing: la la la... la la la... la la la!...<br/><br/></i></span><span>Dad: Moses, thank you for playing quietly down there, I loved it</span>",
+      "slide_3_text": "Radio presenter: 2-2 The game is over",
+      "slide_4_text": "Dad: You have played very well, you were quite while I was listening to my program, Thank you Moses."
+    },
+    {
+      "id": "patnership_parenting",
+      "topic": "gender_equal",
+      "title": "Missing story: To be added"
+    },
+    {
+      "id": "encourage_school",
+      "topic": "education",
+      "title": "Story",
+      "slide_1_text": "Nakato is a 13 year- old girl in Primary7 in a certain school.",
+      "slide_2_text": "She tries to work hard but received a very low mark in the mid-year examinations.",
+      "slide_3_text": "That same day, her parents found out that there is a man in the neighborhood who has been pestering Nakato to have a love relationship with him, and even promised to marry her.",
+      "slide_4_text": "Just before examinations, Nakato’s teacher had tried to contact the parents regarding her academics, but the parents were busy."
     }
   ],
   "_xlsxPath": "global/data_lists/topics.xlsx"

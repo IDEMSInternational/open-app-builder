@@ -1,21 +1,12 @@
 {
-  "flow_name": "gender_power_set_hp",
+  "flow_name": "discipline_communication",
   "flow_subtype": "generated",
   "flow_type": "template",
   "rows": [
     {
-      "name": "join",
-      "value": "_",
-      "_translations": {
-        "value": {}
-      },
-      "type": "set_variable",
-      "_nested_name": "join"
-    },
-    {
       "type": "template",
-      "name": "set_hp",
-      "value": "set_hp",
+      "name": "topic_block_group",
+      "value": "topic_block_group",
       "action_list": [
         {
           "trigger": "completed",
@@ -39,15 +30,15 @@
       "rows": [
         {
           "name": "id",
-          "value": "gender_power",
+          "value": "communication",
           "_translations": {
             "value": {}
           },
           "type": "set_variable",
-          "_nested_name": "set_hp.id"
+          "_nested_name": "topic_block_group.id"
         }
       ],
-      "_nested_name": "set_hp"
+      "_nested_name": "topic_block_group"
     }
   ]
 }

@@ -20,12 +20,12 @@
       "completed": "@fields.task_positive_parenting_relax_completed"
     },
     {
-      "id": "positive_parenting_review_hp",
+      "id": "parent_childhood_review_hp",
       "priority": 3,
       "data_list_name": "review_hp",
       "row_id": "parent_childhood",
-      "completed_field": "task_positive_parenting_review_hp_completed",
-      "completed": "@fields.task_positive_parenting_review_hp_completed"
+      "completed_field": "task_parent_childhood_review_hp_completed",
+      "completed": "@fields.task_parent_childhood_review_hp_completed"
     },
     {
       "id": "positive_parenting_intro",
@@ -36,12 +36,44 @@
       "completed": "@fields.task_positive_parenting_intro_completed"
     },
     {
-      "id": "positive_parenting_set_hp",
-      "priority": 17,
-      "data_list_name": "set_hp",
-      "row_id": "positive_parenting",
-      "completed_field": "task_positive_parenting_set_hp_completed",
-      "completed": "@fields.task_positive_parenting_set_hp_completed"
+      "id": "positive_parenting_behavior_tbg",
+      "priority": 5,
+      "data_list_name": "topic_block_group",
+      "row_id": "managing_behaviour",
+      "completed_field": "task_positive_parenting_behavior_tbg_completed",
+      "completed": "@fields.task_positive_parenting_behavior_tbg_completed"
+    },
+    {
+      "id": "positive_parenting_limits_tbg",
+      "priority": 6,
+      "data_list_name": "topic_block_group",
+      "row_id": "setting_limits",
+      "completed_field": "task_positive_parenting_limits_tbg_completed",
+      "completed": "@fields.task_positive_parenting_limits_tbg_completed"
+    },
+    {
+      "id": "positive_parenting_how_tbg",
+      "priority": 7,
+      "data_list_name": "topic_block_group",
+      "row_id": "setting_limits_how",
+      "completed_field": "task_positive_parenting_how_tbg_completed",
+      "completed": "@fields.task_positive_parenting_how_tbg_completed"
+    },
+    {
+      "id": "positive_parenting_style_tbg",
+      "priority": 8,
+      "data_list_name": "topic_block_group",
+      "row_id": "parenting_style",
+      "completed_field": "task_positive_parenting_style_tbg_completed",
+      "completed": "@fields.task_positive_parenting_style_tbg_completed"
+    },
+    {
+      "id": "positive_parenting_tips",
+      "priority": 9,
+      "data_list_name": "tips",
+      "row_id": "parenting_relationships",
+      "completed_field": "task_positive_parenting_tips_completed",
+      "completed": "@fields.task_positive_parenting_tips_completed"
     },
     {
       "id": "positive_parenting_praise",

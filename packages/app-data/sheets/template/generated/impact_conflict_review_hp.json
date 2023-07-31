@@ -4,15 +4,6 @@
   "flow_type": "template",
   "rows": [
     {
-      "name": "join",
-      "value": "_",
-      "_translations": {
-        "value": {}
-      },
-      "type": "set_variable",
-      "_nested_name": "join"
-    },
-    {
       "type": "template",
       "name": "review_hp",
       "value": "review_hp",
@@ -39,7 +30,7 @@
       "rows": [
         {
           "name": "id",
-          "value": "gender_power",
+          "value": "impact_conflict",
           "_translations": {
             "value": {}
           },

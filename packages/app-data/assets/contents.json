@@ -103,6 +103,10 @@
     "md5Checksum": "566759c896c23dbbd02ac37907f105a5",
     "size_kb": 119.4
   },
+  "images/conclusion.jpg": {
+    "md5Checksum": "f5139cb9bb1744df7d29f0ec5e54eaf8",
+    "size_kb": 57
+  },
   "images/discussion_men.jpg": {
     "md5Checksum": "3972917357fc44df60f5acd7aba19e42",
     "size_kb": 570
@@ -351,7 +355,7 @@
     "md5Checksum": "9222d536f80e1b695929ac1bc8868273",
     "size_kb": 123.2
   },
-  "images/mother_with_children_reading_magazine.JPG": {
+  "images/mother_with_children_reading_magazine.jpg": {
     "md5Checksum": "91fb355590d8a23311e5bd669927d806",
     "size_kb": 838.2
   },
@@ -399,7 +403,7 @@
     "md5Checksum": "b8506572c66942175c0289af90d52c44",
     "size_kb": 1299.4
   },
-  "images/parents_with_kids_reading_magazine.jpg": {
+  "images/parents_kids_reading_magazine.jpg": {
     "md5Checksum": "c9df255210da288c43a66fdc6bb3ac1d",
     "size_kb": 753.7
   },
@@ -418,6 +422,10 @@
   "images/physical_safety.jpg": {
     "md5Checksum": "a0e7a8a88845f972591e15a1d837188c",
     "size_kb": 18.6
+  },
+  "images/sexual_abuse_prevention.jpg": {
+    "md5Checksum": "1e07e18d714a2a8d6268b89bd512d20b",
+    "size_kb": 52.6
   },
   "images/sexual_violence_research_initiative_logo.jpg": {
     "md5Checksum": "a850396cfae4bb31f6d5b3f703f1c26d",

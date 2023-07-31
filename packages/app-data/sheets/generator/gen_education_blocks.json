@@ -1,21 +1,19 @@
 {
-  "flow_name": "gender_power_review_hp",
-  "flow_subtype": "generated",
-  "flow_type": "template",
+  "flow_type": "generator",
+  "flow_name": "gen_education_blocks",
+  "status": "released",
+  "parameter_list": {
+    "input_data_list": "education",
+    "output_flow_name": "@gen.id",
+    "output_flow_type": "template",
+    "output_flow_subtype": "generated"
+  },
+  "session": "education",
   "rows": [
     {
-      "name": "join",
-      "value": "_",
-      "_translations": {
-        "value": {}
-      },
-      "type": "set_variable",
-      "_nested_name": "join"
-    },
-    {
       "type": "template",
-      "name": "review_hp",
-      "value": "review_hp",
+      "name": "@gen.data_list_name",
+      "value": "@gen.data_list_name",
       "action_list": [
         {
           "trigger": "completed",
@@ -39,15 +37,10 @@
       "rows": [
         {
           "name": "id",
-          "value": "positive_parenting",
-          "_translations": {
-            "value": {}
-          },
-          "type": "set_variable",
-          "_nested_name": "review_hp.id"
+          "value": "@gen.row_id"
         }
-      ],
-      "_nested_name": "review_hp"
+      ]
     }
-  ]
+  ],
+  "_xlsxPath": "global/templates/blocks/generate_blocks.xlsx"
 }

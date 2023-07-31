@@ -36,44 +36,44 @@
       "completed": "@fields.task_child_dev_intro_completed"
     },
     {
-      "id": "child_dev_dev_stages",
+      "id": "child_dev_stages_tbg",
       "priority": 5,
       "data_list_name": "topic_block_group",
       "row_id": "dev_stages",
-      "completed_field": "task_child_dev_dev_stages_completed",
-      "completed": "@fields.task_child_dev_dev_stages_completed"
+      "completed_field": "task_child_dev_stages_tbg_completed",
+      "completed": "@fields.task_child_dev_stages_tbg_completed"
     },
     {
-      "id": "child_dev_tips",
+      "id": "child_dev_tips_1",
       "priority": 6,
       "data_list_name": "tips",
       "row_id": "child_needs",
-      "completed_field": "task_child_dev_tips_completed",
-      "completed": "@fields.task_child_dev_tips_completed"
+      "completed_field": "task_child_dev_tips_1_completed",
+      "completed": "@fields.task_child_dev_tips_1_completed"
     },
     {
-      "id": "child_dev_ip_distracted",
+      "id": "child_dev_distracted_tbg",
       "priority": 7,
       "data_list_name": "topic_block_group",
       "row_id": "interactive_play_distracted",
-      "completed_field": "task_child_dev_ip_distracted_completed",
-      "completed": "@fields.task_child_dev_ip_distracted_completed"
+      "completed_field": "task_child_dev_distracted_tbg_completed",
+      "completed": "@fields.task_child_dev_distracted_tbg_completed"
     },
     {
-      "id": "child_dev_ip_distracted",
+      "id": "child_dev_control_tbg",
       "priority": 8,
       "data_list_name": "topic_block_group",
       "row_id": "interactive_play_control",
-      "completed_field": "task_child_dev_ip_distracted_completed",
-      "completed": "@fields.task_child_dev_ip_distracted_completed"
+      "completed_field": "task_child_dev_control_tbg_completed",
+      "completed": "@fields.task_child_dev_control_tbg_completed"
     },
     {
-      "id": "child_dev_3_tips",
+      "id": "child_dev_tips_2",
       "priority": 9,
       "data_list_name": "tips",
       "row_id": "parents_attitude",
-      "completed_field": "task_child_dev_3_tips_completed",
-      "completed": "@fields.task_child_dev_3_tips_completed"
+      "completed_field": "task_child_dev_tips_2_completed",
+      "completed": "@fields.task_child_dev_tips_2_completed"
     },
     {
       "id": "child_dev_set_hp",

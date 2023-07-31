@@ -18,10 +18,12 @@
     {
       "id": "playing_what",
       "topic": "current_pract",
+      "image_asset": "images/parents_children_playing_football.jpg",
       "question_type": "select_one",
       "question_text": "What is happening this image?",
-      "option_1_text": "The child is holding a toy",
-      "option_2_text": "The parent is watching the child"
+      "option_1_text": "The child is kicking a ball",
+      "option_2_text": "The parents are cheering the kids as they play",
+      "option_3_text": "The parents are playing with the kids"
     },
     {
       "id": "playing_ease",
@@ -41,10 +43,12 @@
     {
       "id": "feeding_what",
       "topic": "current_pract",
+      "image_asset": "images/mother_reading_map_with_children.jpg",
       "question_type": "select_one",
       "question_text": "What is happening this image?",
-      "option_1_text": "The child is eating a meal",
-      "option_2_text": "The parent is feeding the child"
+      "option_1_text": "A child sitting on the table",
+      "option_2_text": "Parent and child interpreting a map",
+      "option_3_text": "The parent engages with the kids in their comfort"
     },
     {
       "id": "feeding_ease",
@@ -250,27 +254,126 @@
     {
       "id": "useful_session",
       "topic": "session_review",
+      "question_type": "text_input_long",
       "question_text": "Which sessions did you find most useful/interesting?"
     },
     {
       "id": "useful_activity",
       "topic": "session_review",
+      "question_type": "text_input_long",
       "question_text": "Activities did you find most useful/interesting?"
     },
     {
       "id": "least_session",
       "topic": "session_review",
+      "question_type": "text_input_long",
       "question_text": "What sessions did you find unhelpful/least useful?"
     },
     {
       "id": "discuss_parenting",
+      "topic": "session_review",
       "question_type": "text_input_long",
       "question_text": "Why is it important for men and women to discuss parenting and spousal relationships together?"
     },
     {
       "id": "helped_how",
+      "topic": "session_review",
       "question_type": "text_input_long",
       "question_text": "How can both men and women be helped to participate in parenting alongside each other."
+    },
+    {
+      "id": "encourage_how",
+      "topic": "education",
+      "question_type": "text_input_long",
+      "question_text": "How would a supportive parent react based on the story above?"
+    },
+    {
+      "id": "parent_values",
+      "topic": "prevent_abuse",
+      "question_type": "text_input_long",
+      "question_text": "What happens when young people’s behavior goes against their parents' values? What is the best way to handle this if its a sexuality concern?"
+    },
+    {
+      "id": "religious_values",
+      "topic": "prevent_abuse",
+      "question_type": "text_input_long",
+      "question_text": "What happens if their behavior goes against the religious or spiritual values they were taught? What is the best way to handle it if it's a sexuality concern?"
+    },
+    {
+      "id": "behaviour_influence",
+      "topic": "prevent_abuse",
+      "question_type": "text_input",
+      "question_text": "What influences young people to behave in ways that are consistent with their values?"
+    },
+    {
+      "id": "different_values",
+      "topic": "prevent_abuse",
+      "question_type": "select_multiple",
+      "question_text": "What influences young people to behave in ways that are different from their values (possible answers",
+      "option_1_text": "Peer pressure",
+      "option_2_text": "Opportunity for personal gain",
+      "option_3_text": "To get attention",
+      "option_4_text": "To rebel"
+    },
+    {
+      "id": "help_modify",
+      "topic": "gender_equal",
+      "question_type": "text_input",
+      "question_text": "How can we help our children to modify the unfair norms and practices boys and girls are subjected to?"
+    },
+    {
+      "id": "community_modify",
+      "topic": "gender_equal",
+      "question_type": "text_input",
+      "question_text": "How can you help modify, at the community level, some of the unfair norms and practices men and women are subjected to?"
+    },
+    {
+      "id": "common_issues",
+      "topic": "gender_equal",
+      "question_type": "text_input",
+      "question_text": "Identify the five most common issues mothers and fathers argue about in regard to parenting.",
+      "option_1_text": "To be added",
+      "option_2_text": "To be added",
+      "option_3_text": "To be added",
+      "option_4_text": "To be added",
+      "option_5_text": "To be added",
+      "option_6_text": "To be added"
+    },
+    {
+      "id": "techniques",
+      "topic": "gender_equal",
+      "question_type": "text_input",
+      "question_text": "Identify five techniques by which a couple can resolve disagreement in a respectful and constructive way."
+    },
+    {
+      "id": "web",
+      "topic": "conclusion",
+      "question_type": "text_input",
+      "question_text": "Mention one lesson from this parenting programme that we will take with you into your future parenting journey."
+    },
+    {
+      "id": "each_other_support",
+      "topic": "conclusion",
+      "question_type": "text_input",
+      "question_text": "How do you wish to support each other after the programme?"
+    },
+    {
+      "id": "plan_reach",
+      "topic": "conclusion",
+      "question_type": "text_input",
+      "question_text": "How do you plan to reach others who did not participate in the programme?"
+    },
+    {
+      "id": "wish_receive",
+      "topic": "conclusion",
+      "question_type": "text_input",
+      "question_text": "What one important thing, other than money, do you wish to receive from the implementers of the programme in future?"
+    },
+    {
+      "id": "support_need",
+      "topic": "conclusion",
+      "question_type": "text_input",
+      "question_text": "What kind of support do you need from the sub county/ district?"
     }
   ],
   "_xlsxPath": "global/data_lists/topics.xlsx"

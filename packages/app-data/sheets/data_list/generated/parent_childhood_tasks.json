@@ -20,12 +20,12 @@
       "completed": "@fields.task_parent_childhood_relax_completed"
     },
     {
-      "id": "parent_childhood_review_hp",
+      "id": "child_dev_review_hp",
       "priority": 3,
       "data_list_name": "review_hp",
       "row_id": "child_dev",
-      "completed_field": "task_parent_childhood_review_hp_completed",
-      "completed": "@fields.task_parent_childhood_review_hp_completed"
+      "completed_field": "task_child_dev_review_hp_completed",
+      "completed": "@fields.task_child_dev_review_hp_completed"
     },
     {
       "id": "parent_childhood_intro",
@@ -34,6 +34,22 @@
       "row_id": "parent_childhood",
       "completed_field": "task_parent_childhood_intro_completed",
       "completed": "@fields.task_parent_childhood_intro_completed"
+    },
+    {
+      "id": "parent_childhood_legacy_tbg",
+      "priority": 5,
+      "data_list_name": "topic_block_group",
+      "row_id": "caregiver_legacy",
+      "completed_field": "task_parent_childhood_legacy_tbg_completed",
+      "completed": "@fields.task_parent_childhood_legacy_tbg_completed"
+    },
+    {
+      "id": "parent_childhood_abilities_tbg",
+      "priority": 6,
+      "data_list_name": "topic_block_group",
+      "row_id": "outstanding_abilities",
+      "completed_field": "task_parent_childhood_abilities_tbg_completed",
+      "completed": "@fields.task_parent_childhood_abilities_tbg_completed"
     },
     {
       "id": "parent_childhood_set_hp",

@@ -16,7 +16,7 @@
       "row_id": "id_1"
     },
     {
-      "id": "healthy_relation_review_hp",
+      "id": "sharing_care_review_hp",
       "priority": 3,
       "data_list_name": "review_hp",
       "row_id": "sharing_care"
@@ -28,14 +28,26 @@
       "row_id": "healthy_relation"
     },
     {
+      "id": "healthy_relation_tbg_1",
+      "priority": 5,
+      "data_list_name": "topic_block_group",
+      "row_id": "healthy_relation"
+    },
+    {
+      "id": "healthy_relation_tbg_2",
+      "priority": 6,
+      "data_list_name": "topic_block_group",
+      "row_id": "rships_communication"
+    },
+    {
       "id": "healthy_relation_set_hp",
-      "priority": 17,
+      "priority": 8,
       "data_list_name": "set_hp",
       "row_id": "healthy_relation"
     },
     {
       "id": "healthy_relation_praise",
-      "priority": 18,
+      "priority": 9,
       "data_list_name": "praise",
       "row_id": "healthy_relation"
     }

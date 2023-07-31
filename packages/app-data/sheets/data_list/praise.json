@@ -52,6 +52,41 @@
       "id": "healthy_relation",
       "title": "Well done!",
       "intro_text": "Congratulations for completing the @data.session.healthy_relation.title session."
+    },
+    {
+      "id": "review",
+      "title": "Well done!",
+      "intro_text": "Congratulations for completing the @data.session.review.title session."
+    },
+    {
+      "id": "discipline",
+      "title": "Well done!",
+      "intro_text": "Congratulations for completing the @data.session.discipline.title session."
+    },
+    {
+      "id": "education",
+      "title": "Well done!",
+      "intro_text": "Congratulations for completing the @data.session.education.title session."
+    },
+    {
+      "id": "gender_equal",
+      "title": "Well done!",
+      "intro_text": "Congratulations for completing the @data.session.gender_equal.title session."
+    },
+    {
+      "id": "prevent_abuse",
+      "title": "Well done!",
+      "intro_text": "Congratulations for completing the @data.session.prevent_abuse.title session."
+    },
+    {
+      "id": "reduce_conflict",
+      "title": "Well done!",
+      "intro_text": "Congratulations for completing the @data.session.reduce_conflict.title session."
+    },
+    {
+      "id": "conclusion",
+      "title": "Well done!",
+      "intro_text": "Congratulations for completing the @data.session.conclusion.title session."
     }
   ],
   "_xlsxPath": "global/data_lists/sessions.xlsx"

@@ -92,6 +92,69 @@
       ],
       "input_source": "healthy_relation",
       "output_target": "healthy_relation_tasks"
+    },
+    {
+      "operation": "append_columns",
+      "args_list": [
+        "completed_field: task_{@row.id}_completed",
+        "completed: @fields.@row.completed_field"
+      ],
+      "input_source": "review",
+      "output_target": "review_tasks"
+    },
+    {
+      "operation": "append_columns",
+      "args_list": [
+        "completed_field: task_{@row.id}_completed",
+        "completed: @fields.@row.completed_field"
+      ],
+      "input_source": "discipline",
+      "output_target": "discipline_tasks"
+    },
+    {
+      "operation": "append_columns",
+      "args_list": [
+        "completed_field: task_{@row.id}_completed",
+        "completed: @fields.@row.completed_field"
+      ],
+      "input_source": "education",
+      "output_target": "education_tasks"
+    },
+    {
+      "operation": "append_columns",
+      "args_list": [
+        "completed_field: task_{@row.id}_completed",
+        "completed: @fields.@row.completed_field"
+      ],
+      "input_source": "gender_equal",
+      "output_target": "gender_equal_tasks"
+    },
+    {
+      "operation": "append_columns",
+      "args_list": [
+        "completed_field: task_{@row.id}_completed",
+        "completed: @fields.@row.completed_field"
+      ],
+      "input_source": "prevent_abuse",
+      "output_target": "prevent_abuse_tasks"
+    },
+    {
+      "operation": "append_columns",
+      "args_list": [
+        "completed_field: task_{@row.id}_completed",
+        "completed: @fields.@row.completed_field"
+      ],
+      "input_source": "reduce_conflict",
+      "output_target": "reduce_conflict_tasks"
+    },
+    {
+      "operation": "append_columns",
+      "args_list": [
+        "completed_field: task_{@row.id}_completed",
+        "completed: @fields.@row.completed_field"
+      ],
+      "input_source": "conclusion",
+      "output_target": "conclusion_tasks"
     }
   ],
   "_xlsxPath": "global/data_lists/session_tasks.xlsx"

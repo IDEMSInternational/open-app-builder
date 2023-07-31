@@ -148,35 +148,71 @@
     },
     {
       "type": "text",
-      "name": "text",
-      "value": "@local.row_data.text",
+      "name": "question_done",
+      "value": "@local.row_data.question_done",
       "_translations": {
         "value": {}
       },
-      "condition": "!!(@local.row_data.text)",
-      "_nested_name": "text",
+      "condition": "!!(@local.row_data.question_done)",
+      "_nested_name": "question_done",
       "_dynamicFields": {
         "value": [
           {
-            "fullExpression": "@local.row_data.text",
-            "matchedExpression": "@local.row_data.text",
+            "fullExpression": "@local.row_data.question_done",
+            "matchedExpression": "@local.row_data.question_done",
             "type": "local",
             "fieldName": "row_data"
           }
         ],
         "condition": [
           {
-            "fullExpression": "!!(@local.row_data.text)",
-            "matchedExpression": "@local.row_data.text",
+            "fullExpression": "!!(@local.row_data.question_done)",
+            "matchedExpression": "@local.row_data.question_done",
             "type": "local",
             "fieldName": "row_data"
           }
         ]
       },
       "_dynamicDependencies": {
-        "@local.row_data.text": [
+        "@local.row_data.question_done": [
           "value",
           "condition"
+        ]
+      }
+    },
+    {
+      "type": "radio_button_grid",
+      "name": "yes_no",
+      "action_list": [
+        {
+          "trigger": "changed",
+          "action_id": "emit",
+          "args": [
+            "force_reprocess"
+          ],
+          "_raw": "changed | emit:force_reprocess",
+          "_cleaned": "changed | emit:force_reprocess"
+        }
+      ],
+      "parameter_list": {
+        "answer_list": "@data.comp_radio_button_grid_data"
+      },
+      "_nested_name": "yes_no",
+      "_dynamicFields": {
+        "parameter_list": {
+          "answer_list": [
+            {
+              "fullExpression": "@data.comp_radio_button_grid_data",
+              "matchedExpression": "@data.comp_radio_button_grid_data",
+              "type": "data",
+              "fieldName": "comp_radio_button_grid_data"
+            }
+          ]
+        }
+      },
+      "_dynamicDependencies": {
+        "@data.comp_radio_button_grid_data": [
+          "parameter_list.answer_list"
         ]
       }
     },

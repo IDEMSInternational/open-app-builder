@@ -52,7 +52,7 @@
       "intro_text": "Let's imagine the following situation."
     },
     {
-      "id": "managing_behavior",
+      "id": "manage_behavior",
       "topic": "positive_parenting",
       "audio_transcript": "* What does Sarah do to get attention from the mother? Does it work?\n* Why is it important for Sarah to get the mother’s attention?\n* What behavior is the mother rewarding by responding to the needs of Sarah’s brother?\n* Why might it be a problem to say “I will tell your father”?\n* What would be a better way to respond?",
       "intro_text": "Let's imagine the following situation."
@@ -64,16 +64,14 @@
       "intro_text": "Let's imagine the following situation."
     },
     {
-      "id": "gender_stereotypes",
-      "topic": "gender_power",
-      "title": "Understanding gender stereotypes",
-      "intro_text": "Let's reflect upon how gender norms can be harmful to both women and men or girls and boys.",
-      "audio_transcript": "* What comes to mind when you hear the words “being a man”? Is it being “father”, “decision maker”, “breadwinner”, “provider”, “strong”, “courageous”, “violent”, “leader”\n* What comes to mind when you hear the words “being a woman”? Is it being “mother”, “weak”, “carer”, “beard”, “penis”, “breasts”, “pregnancy”, and “birth”)"
-    },
-    {
       "id": "gender_stereotypes_1",
       "topic": "gender_power",
-      "title": "Understanding gender stereotypes",
+      "audio_transcript": "* What comes to mind when you hear the words “being a man”? Is it being “father”, “decision maker”, “breadwinner”, “provider”, “strong”, “courageous”, “violent”, “leader”\n* What comes to mind when you hear the words “being a woman”? Is it being “mother”, “weak”, “carer”, “beard”, “penis”, “breasts”, “pregnancy”, and “birth”)",
+      "intro_text": "Let's imagine the following situation."
+    },
+    {
+      "id": "gender_stereotypes_2",
+      "topic": "gender_power",
       "intro_text": "",
       "audio_transcript": "* What things do men do that are considered to be for women?\n* What things do women do that are considered to be for men?\n* What attributes can a woman take to make her a better wife and mother?\n* What attributes can a man take to make her a better husband and father?\n* What have you learned from this activity?"
     },
@@ -86,14 +84,108 @@
     {
       "id": "sharing_care",
       "topic": "sharing_care",
-      "title": "Caregiving and fatherhood/motherhood",
       "intro_text": "Let’s reflect on the time men and women dedicate to caring for their children and shaping their future.",
       "audio_transcript": "* Think of all typical household duties that take place on a daily basis and are usually performed by women, men and both relating to child care. \n* Write them on a piece of paper separately until they are exhausted.\n* Count the number of activities that women, men or both sexes normally do."
     },
     {
       "id": "caregiving",
       "topic": "sharing_care",
-      "audio_transcript": "Imagine having the following items, two empty boxes, household items such as a radio, phone, plates, baby\noil, clothes, hoe, electronic items, and baby toys.\n* Drop in the woman’s box pictures and/or objects of things that women care for, better.\n* In the man’s box drop pictures and/or objects of things that men care for, better.",
+      "audio_transcript": "Imagine having the following items, two empty boxes, household items such as a radio, phone, plates, baby oil, clothes, hoe, electronic items, and baby toys.\n* Drop in the woman’s box pictures and/or objects of things that women care for, better.\n* In the man’s box drop pictures and/or objects of things that men care for, better.",
+      "intro_text": "Let's imagine the following situation."
+    },
+    {
+      "id": "session_review",
+      "topic": "session_review",
+      "title": "Reflect",
+      "audio_transcript": "At this point, we invite you to reflect on why you participating in this Parenting for Respectability program.",
+      "intro_text": "Let's imagine the following situation."
+    },
+    {
+      "id": "conflict_child",
+      "topic": "discipline",
+      "audio_transcript": "Now that you viewed the video, what lessons do we learn from this activity?",
+      "intro_text": "Let's imagine the following situation."
+    },
+    {
+      "id": "positive_child_interaction_1",
+      "topic": "discipline",
+      "audio_transcript": "* How does spending special time with a child help the child and parent?\n* How does grandmother teach Sylvia to listen?\n* When does reward help support good behavior from our children?\n* Why does the Grandmother give Sylvia a 5 minute warning?",
+      "intro_text": "Let's imagine the following situation."
+    },
+    {
+      "id": "positive_child_interaction_2",
+      "topic": "discipline",
+      "audio_transcript": "* How does the father encourage Moses to play quietly?\n* What might have happened if he ignored Moses?",
+      "intro_text": "Let's imagine the following situation."
+    },
+    {
+      "id": "school_needs_1",
+      "topic": "education",
+      "title": "Reflection Activity 1",
+      "audio_transcript": "Imagine you are a child within these age brackets (6 – 10, 11 – 14, 15 – 17 years). What kind of support (not monetary) would you like your parents to provide for you in order to achieve at school?”",
+      "intro_text": "Let's imagine the following situation."
+    },
+    {
+      "id": "school_needs_2",
+      "topic": "education",
+      "title": "Reflection Activity 2",
+      "audio_transcript": "Imagine you are a parent with children in these age brackets (6 – 10, 11 – 14, 15 – 17 years) ”What would you want in your child so that you are motivated to support them in their education?”",
+      "intro_text": "Let's imagine the following situation."
+    },
+    {
+      "id": "encourage_school",
+      "topic": "education",
+      "audio_transcript": "What would you do if...\n* Your 16 year-old son went to revise books with friends and came back home after midnight drunk.\n* Your 13 year-old daughter returns from school and disrespects you in front of your neighbor.\n* You discover that your 15 year-old daughter who is in senior 3 has a boyfriend and she did not tell you.",
+      "intro_text": "Let's imagine the following situation."
+    },
+    {
+      "id": "gendered_rulesgendered_rules_1",
+      "topic": "gender_equal",
+      "audio_transcript": "* How do you feel when told to act like a man/woman?\n* Why do you think they said this?\n* Which of these messages above can be potentially harmful? Why?",
+      "outro_text": "In this session, we will continue to see how society sustains very different rules for how men and women are supposed to behave. \nThese rules are called “gender norms” because they define what is supposed to be ‘normal’ for how men and women “ought to” think, feel, and act. However, these rules sometimes restrict the lives of both women and men.",
+      "intro_text": "Let's imagine the following situation."
+    },
+    {
+      "id": "gendered_rules_2",
+      "topic": "gender_equal",
+      "audio_transcript": "* How do the messages impact on a man’s/woman’s health and the health of other family members?\n* What happens to men/women who try not to follow/ conform to the messages? How are they treated?\n* What things could be changed to make men’s/women’s lives and the family members better?\n* Which are the characteristics of a transformed man/woman (women/men that do not completely agree to the messages of acting like a man/woman?",
+      "intro_text": "Let's imagine the following situation."
+    },
+    {
+      "id": "needs_awareness_1",
+      "topic": "prevent_abuse",
+      "audio_transcript": "* Reflect quietly about your own dreams for your family and in particular things you would like to achieve or relationships you would like with your children, quality of life desired for yourself and your children, health, and education of your children.",
+      "intro_text": "Let's imagine the following situation."
+    },
+    {
+      "id": "needs_awareness_2",
+      "topic": "prevent_abuse",
+      "audio_transcript": "* Think quietly again about the achievements you made when you were married and/or living with their children. Reflect on both the barriers and enablers for the achievements as an individual or family.",
+      "intro_text": "Let's imagine the following situation."
+    },
+    {
+      "id": "puberty_changes",
+      "topic": "prevent_abuse",
+      "audio_transcript": "* What changes did you experience during puberty?\n* How did your life change in puberty?\n* Where did you get accurate information about puberty and sexuality?\n* From experience, what information is important for preventing sexual abuse and delaying sexual activity for children between 10 – 17 years?\n* Which information is suitable for children below 10 years for preventing sexual abuse and discouraging early sex?",
+      "intro_text": "Let's imagine the following situation."
+    },
+    {
+      "id": "reduce_conflict_activity",
+      "topic": "reduce_conflict",
+      "intro_text": "For this activity, you'll be working in pairs and require the following materials:\n* Opaque paper (ordinary).\n* Transparent item (see-through e.g. empty mineral water bottle or paper).\n* Translucent item (dull/unclear e.g polythene or paper)",
+      "audio_transcript": "* Stand opposite your pair and let one person hold the paper/ item one at a time\n* Try and see your partner through the paper/item provided; one at a time and state if you can see them."
+    },
+    {
+      "id": "reduce_conflict",
+      "topic": "reduce_conflict",
+      "audio_transcript": "* Let's reflect on the emotions you experienced while attempting to see the other person through the paper/item and consider how these feelings relate to our everyday communication with our spouses.\n* How, on average, does the number of marriages for each scenario (opaque, transparent, and translucent) affect both parents and children?",
+      "intro_text": "Let's imagine the following situation."
+    },
+    {
+      "id": "conclusion",
+      "topic": "conclusion",
+      "image": "images/head.jpg",
+      "audio_transcript": "* Let’s reflect on the reasons why the features on the head perform their role. Example: (Does the mouth eat for its own purpose? The eye etc?)\n* What happens when the features on the head do not function as they are supposed to? \n* Relate the functions of the features of the head to your day-to-day role as heads of families? (Are the heads of the family functioning to benefit their family the same way the features function to benefit the body? Why? Why not).\n* How best can you learn from the functions of the features of the head to improve your leadership role in your families? (You can use biblical examples and positive cultural practices)",
       "intro_text": "Let's imagine the following situation."
     }
   ],

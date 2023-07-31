@@ -1,17 +1,8 @@
 {
-  "flow_name": "child_dev_3_tips",
+  "flow_name": "prevent_abuse_tips",
   "flow_subtype": "generated",
   "flow_type": "template",
   "rows": [
-    {
-      "name": "join",
-      "value": "_",
-      "_translations": {
-        "value": {}
-      },
-      "type": "set_variable",
-      "_nested_name": "join"
-    },
     {
       "type": "template",
       "name": "tips",
@@ -39,7 +30,7 @@
       "rows": [
         {
           "name": "id",
-          "value": "parents_attitude",
+          "value": "values_behaviours",
           "_translations": {
             "value": {}
           },

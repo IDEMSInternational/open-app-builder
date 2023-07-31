@@ -4,15 +4,6 @@
   "flow_type": "template",
   "rows": [
     {
-      "name": "join",
-      "value": "_",
-      "_translations": {
-        "value": {}
-      },
-      "type": "set_variable",
-      "_nested_name": "join"
-    },
-    {
       "type": "template",
       "name": "topic_block_group",
       "value": "topic_block_group",

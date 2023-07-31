@@ -18,6 +18,14 @@
     {
       "id": "parental_conflict",
       "title": "Parental conflict"
+    },
+    {
+      "id": "review",
+      "title": "Review and Introduction to Mixed Session"
+    },
+    {
+      "id": "conclusion",
+      "title": "Conclusion"
     }
   ],
   "_xlsxPath": "global/data_lists/topics.xlsx"

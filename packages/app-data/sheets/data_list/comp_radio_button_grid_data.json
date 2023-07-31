@@ -1,0 +1,18 @@
+{
+  "flow_type": "data_list",
+  "flow_name": "comp_radio_button_grid_data",
+  "status": "released",
+  "rows": [
+    {
+      "id": "option_1",
+      "name": "option_1",
+      "text": "Yes"
+    },
+    {
+      "id": "option_2",
+      "name": "option_2",
+      "text": "No"
+    }
+  ],
+  "_xlsxPath": "global/data_lists/sessions.xlsx"
+}

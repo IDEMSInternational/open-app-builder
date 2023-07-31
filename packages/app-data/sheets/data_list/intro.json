@@ -32,7 +32,7 @@
       "topic": "parent_childhood",
       "intro_text": "Welcome @fields.user_name. We will learn about attachment and bonding with your child.",
       "text": "We will learn about:\n* Reflecting upon the influences your parents had on you while you were growing up.\n* Building on your parents’ positive influences, and avoid repeating the negative influences in your own parenting role.",
-      "image_asset": "images/parents_with_kids_reading_magazine.jpg",
+      "image_asset": "images/parents_kids_reading_magazine.jpg",
       "title": "Introduction to @data.topic.parent_childhood.title"
     },
     {
@@ -40,9 +40,7 @@
       "topic": "positive_parenting",
       "intro_text": "Welcome @fields.user_name. We will learn respectability and good behavior",
       "text": "We will:\n* Discuss positive parent-child interaction to improve discipline and respectability\n* Explore different styles of parenting and demonstrate the one which promotes positive relationships and respectability.",
-      "image_asset": "images/father_children_washing_utensils.jpg",
-      "image_asset_1": "images/parents_adressing_children.jpg",
-      "image_asset_2": "images/family_praying.jpg",
+      "image_asset": "images/family_praying.jpg",
       "title": "Introduction to @data.topic.positive_parenting.title"
     },
     {
@@ -90,7 +88,47 @@
       "topic": "discipline",
       "intro_text": "Welcome @fields.user_name. We will learn respectability and good behavior",
       "text": "In this session we will learn about:\n* The aspects of parent-child relationships\n* Alternative and positive ways of supporting good behavior and discouraging bad behavior\n* Effective approaches for managing anger and disappointment\n* How to positively and sensitively engage with our children to promote respect",
+      "image_asset": "images/parents_kids_reading_magazine.jpg",
       "title": "Introduction to @data.topic.discipline.title"
+    },
+    {
+      "id": "education",
+      "topic": "education",
+      "intro_text": "Welcome @fields.user_name. We will learn respectability and good behavior",
+      "text": "In this session, we will:\n* Encourage both parent and child to be accountable for the child’s education.\n* Explore ways to increase parents’ involvement in their child’s schooling and interaction with teachers.\n* Encourage children to achieve through education.",
+      "image_asset": "images/parents_child_reading.jpg",
+      "title": "Introduction to @data.topic.education.title"
+    },
+    {
+      "id": "education",
+      "topic": "gender_equal",
+      "intro_text": "Welcome @fields.user_name. We will learn respectability and good behavior",
+      "text": "In this session we will:\n* Understand how gendered expectations affect the lives of women and men, and girls and boys\n* Identify discriminatory or unequal gender norms and practices\n* Suggest innovative ideas and methods for modifying discriminatory gender norms",
+      "image_asset": "images/family_cooking_2.jpg",
+      "title": "Introduction to @data.topic.education.title"
+    },
+    {
+      "id": "prevent_abuse",
+      "topic": "prevent_abuse",
+      "intro_text": "Welcome @fields.user_name. We will learn respectability and good behavior",
+      "text": "In this session, we will learn about:\n* Exploring long-term goals for preventing sexual abuse and early sex.\n* Nurturvalues in children for preventing sexual violence.\n* Facilitating healthy communication between parents and children about sexuality.",
+      "image_asset": "images/sexual_abuse_prevention_jpg",
+      "title": "Introduction to @data.topic.prevent_abuse.title"
+    },
+    {
+      "id": "reduce_conflict",
+      "topic": "reduce_conflict",
+      "intro_text": "Welcome @fields.user_name. We will learn about parental conflict.",
+      "text": "In this session, we will:\n* To discuss constructive ways of sharing information to avoid violent situations in relationships.\n* To develop participants' skills in expressing personal needs and feelings and in listening reflectively and empathetically.",
+      "image_asset": "images/family_cooking_1.jpg",
+      "title": "Introduction to @data.topic.reduce_conflict.title"
+    },
+    {
+      "id": "conclusion",
+      "topic": "conclusion",
+      "text": "In this session, we will:\n* Reflect on the participant’s experience of the programme.\n* Reinforce commitment to positive, more equitable, and respectful parenting.\n* Encourage continued meetings after the formal ending of the programme.",
+      "image_asset": "images/mother_with_children_reading_magazine.jpg",
+      "title": "Introduction to @data.topic.conclusion.title"
     }
   ],
   "_xlsxPath": "global/data_lists/topics.xlsx"

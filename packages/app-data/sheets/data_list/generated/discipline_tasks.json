@@ -1,0 +1,79 @@
+{
+  "flow_name": "discipline_tasks",
+  "flow_subtype": "generated",
+  "flow_type": "data_list",
+  "rows": [
+    {
+      "id": "discipline_check_in",
+      "priority": 1,
+      "data_list_name": "check_in",
+      "row_id": "id_1",
+      "completed_field": "task_discipline_check_in_completed",
+      "completed": "@fields.task_discipline_check_in_completed"
+    },
+    {
+      "id": "discipline_relax",
+      "priority": 2,
+      "data_list_name": "relax",
+      "row_id": "id_1",
+      "completed_field": "task_discipline_relax_completed",
+      "completed": "@fields.task_discipline_relax_completed"
+    },
+    {
+      "id": "discipline_conflict_children_tbg",
+      "priority": 3,
+      "data_list_name": "topic_block_group",
+      "row_id": "conflict_children",
+      "completed_field": "task_discipline_conflict_children_tbg_completed",
+      "completed": "@fields.task_discipline_conflict_children_tbg_completed"
+    },
+    {
+      "id": "discipline_interaction_children_tbg",
+      "priority": 4,
+      "data_list_name": "topic_block_group",
+      "row_id": "interaction_children",
+      "completed_field": "task_discipline_interaction_children_tbg_completed",
+      "completed": "@fields.task_discipline_interaction_children_tbg_completed"
+    },
+    {
+      "id": "discipline_interaction_1_tbg",
+      "priority": 5,
+      "data_list_name": "topic_block_group",
+      "row_id": "interaction_children_1",
+      "completed_field": "task_discipline_interaction_1_tbg_completed",
+      "completed": "@fields.task_discipline_interaction_1_tbg_completed"
+    },
+    {
+      "id": "discipline_interaction_2_tbg",
+      "priority": 6,
+      "data_list_name": "topic_block_group",
+      "row_id": "interaction_children_2",
+      "completed_field": "task_discipline_interaction_2_tbg_completed",
+      "completed": "@fields.task_discipline_interaction_2_tbg_completed"
+    },
+    {
+      "id": "discipline_communication",
+      "priority": 7,
+      "data_list_name": "topic_block_group",
+      "row_id": "communication",
+      "completed_field": "task_discipline_communication_completed",
+      "completed": "@fields.task_discipline_communication_completed"
+    },
+    {
+      "id": "discipline_set_hp",
+      "priority": 17,
+      "data_list_name": "set_hp",
+      "row_id": "discipline",
+      "completed_field": "task_discipline_set_hp_completed",
+      "completed": "@fields.task_discipline_set_hp_completed"
+    },
+    {
+      "id": "discipline_praise",
+      "priority": 18,
+      "data_list_name": "praise",
+      "row_id": "discipline",
+      "completed_field": "task_discipline_praise_completed",
+      "completed": "@fields.task_discipline_praise_completed"
+    }
+  ]
+}

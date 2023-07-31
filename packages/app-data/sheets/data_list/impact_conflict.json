@@ -16,16 +16,22 @@
       "row_id": "id_1"
     },
     {
-      "id": "impact_conflict_review_hp",
-      "priority": 3,
-      "data_list_name": "review_hp",
-      "row_id": "gender_power"
-    },
-    {
       "id": "impact_conflict_intro",
       "priority": 4,
       "data_list_name": "intro",
       "row_id": "impact_conflict"
+    },
+    {
+      "id": "impact_conflict_tbg",
+      "priority": 5,
+      "data_list_name": "topic_block_group",
+      "row_id": "impact_conflict"
+    },
+    {
+      "id": "impact_conflict_tips",
+      "priority": 6,
+      "data_list_name": "tips",
+      "row_id": "parents_involvement"
     },
     {
       "id": "impact_conflict_set_hp",

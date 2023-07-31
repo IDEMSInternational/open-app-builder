@@ -25,13 +25,13 @@
       "id": "parent_childhood",
       "title": "Influence of one’s own parents and positive discipline",
       "topic_group": "attachment",
-      "image_asset": "images/parents_with_kids_reading_magazine.jpg"
+      "image_asset": "images/parents_kids_reading_magazine.jpg"
     },
     {
       "id": "positive_parenting",
       "title": "Positive and sensitive parenting",
       "topic_group": "behaviour",
-      "image_asset": "images/images/parents_adressing_children.jpg"
+      "image_asset": "images/father_children_washing_utensils.jpg"
     },
     {
       "id": "gender_power",
@@ -60,37 +60,44 @@
     {
       "id": "session_review",
       "title": "Review of the First 9 Sessions",
+      "topic_group": "review",
       "image_asset": "images/family_time_playing_reading.jpg"
     },
     {
       "id": "discipline",
       "title": "Achieving respectability and discipline",
       "topic_group": "behaviour",
-      "image_asset": "images/family_relation.png"
+      "image_asset": "images/parents_kids_reading_magazine.jpg"
     },
     {
       "id": "education",
       "title": "Encouraging education",
       "topic_group": "behaviour",
-      "image_asset": "images/current_pract.png"
+      "image_asset": "images/parents_child_reading.jpg"
     },
     {
       "id": "gender_equal",
       "title": "Greater gender equality",
       "topic_group": "gender_relations",
-      "image_asset": "images/child_dev.png"
+      "image_asset": "images/family_cooking_2.jpg"
     },
     {
       "id": "prevent_abuse",
       "title": "Prevention of sexual abuse for children below 17 years",
       "topic_group": "behaviour",
-      "image_asset": "images/family_relation.png"
+      "image_asset": "images/sexual_abuse_prevention.jpg"
     },
     {
       "id": "reduce_conflict",
       "title": "Reducing parental conflict and improving communication",
       "topic_group": "parental_conflict",
-      "image_asset": "images/current_pract.png"
+      "image_asset": "images/family_cooking_1.jpg"
+    },
+    {
+      "id": "conclusion",
+      "title": "Conclusion",
+      "topic_group": "conclusion",
+      "image_asset": "images/mother_with_children_reading_magazine.jpg"
     }
   ],
   "_xlsxPath": "global/data_lists/topics.xlsx"

@@ -32,10 +32,59 @@
       "intro_text": "Time to try this at home with your family."
     },
     {
+      "id": "impact_conflict",
+      "topic": "impact_conflict",
+      "text": "* Try to practice the new techniques for resolving conflict at home.",
+      "title": "Home practice: @data.topic.impact_conflict.title",
+      "intro_text": "Time to try this at home with your family."
+    },
+    {
+      "id": "sharing_care",
+      "topic": "sharing_care",
+      "text": "* Discuss with your partner/children about the benefits and challenges of family time together",
+      "title": "Home practice: @data.topic.sharing_care.title",
+      "intro_text": "Time to try this at home with your family."
+    },
+    {
       "id": "healthy_relation",
       "topic": "healthy_relation",
       "text": "Reflect on the things you like and those you do not like about your marriage or family life.",
       "title": "Home practice: @data.topic.healthy_relation.title",
+      "intro_text": "Time to try this at home with your family."
+    },
+    {
+      "id": "education",
+      "topic": "education",
+      "text": "* As you end this session, if you have school going children, identify any two of their unmet school needs and attempt to fulfill them during the week as a means to encourage them to achieve at school. Those needs should not be financial in nature.",
+      "title": "Home practice: @data.topic.education.title",
+      "intro_text": "Time to try this at home with your family."
+    },
+    {
+      "id": "discipline",
+      "topic": "discipline",
+      "text": "* Find time to go practice positive ways to discipline children and reflect together on the experience and the lessons you have taken from it.",
+      "title": "Home practice: @data.topic.discipline.title",
+      "intro_text": "Time to try this at home with your family."
+    },
+    {
+      "id": "gender_equal",
+      "topic": "gender_equal",
+      "text": "* As you end this session, reflect on the gender norms and practices that influenced your adult behaviour and parenting styles today and discuss its effects with your children and spouse; and together decide on what you should change.",
+      "title": "Home practice: @data.topic.gender_equal.title",
+      "intro_text": "Time to try this at home with your family."
+    },
+    {
+      "id": "prevent_abuse",
+      "topic": "prevent_abuse",
+      "text": "* Reflect on the positive things you remember from your adolescence stage and your relationship and communications with your parents that helped you delay sex and practice one with your children/family.",
+      "title": "Home practice: @data.topic.prevent_abuse.title",
+      "intro_text": "Time to try this at home with your family."
+    },
+    {
+      "id": "reduce_conflict",
+      "topic": "reduce_conflict",
+      "text": "* As you end this session, reflect on the ways in which you will share the knowledge you gained from this activity with your spouse, children, and neighbors.",
+      "title": "Home practice: @data.topic.reduce_conflict.title",
       "intro_text": "Time to try this at home with your family."
     }
   ],

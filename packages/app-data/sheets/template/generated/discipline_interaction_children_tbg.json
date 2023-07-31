@@ -1,21 +1,12 @@
 {
-  "flow_name": "healthy_relation_review_hp",
+  "flow_name": "discipline_interaction_children_tbg",
   "flow_subtype": "generated",
   "flow_type": "template",
   "rows": [
     {
-      "name": "join",
-      "value": "_",
-      "_translations": {
-        "value": {}
-      },
-      "type": "set_variable",
-      "_nested_name": "join"
-    },
-    {
       "type": "template",
-      "name": "review_hp",
-      "value": "review_hp",
+      "name": "topic_block_group",
+      "value": "topic_block_group",
       "action_list": [
         {
           "trigger": "completed",
@@ -39,15 +30,15 @@
       "rows": [
         {
           "name": "id",
-          "value": "sharing_care",
+          "value": "interaction_children",
           "_translations": {
             "value": {}
           },
           "type": "set_variable",
-          "_nested_name": "review_hp.id"
+          "_nested_name": "topic_block_group.id"
         }
       ],
-      "_nested_name": "review_hp"
+      "_nested_name": "topic_block_group"
     }
   ]
 }

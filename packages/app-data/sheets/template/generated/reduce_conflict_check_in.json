@@ -1,21 +1,12 @@
 {
-  "flow_name": "positive_parenting_set_hp",
+  "flow_name": "reduce_conflict_check_in",
   "flow_subtype": "generated",
   "flow_type": "template",
   "rows": [
     {
-      "name": "join",
-      "value": "_",
-      "_translations": {
-        "value": {}
-      },
-      "type": "set_variable",
-      "_nested_name": "join"
-    },
-    {
       "type": "template",
-      "name": "set_hp",
-      "value": "set_hp",
+      "name": "check_in",
+      "value": "check_in",
       "action_list": [
         {
           "trigger": "completed",
@@ -39,15 +30,15 @@
       "rows": [
         {
           "name": "id",
-          "value": "positive_parenting",
+          "value": "id_1",
           "_translations": {
             "value": {}
           },
           "type": "set_variable",
-          "_nested_name": "set_hp.id"
+          "_nested_name": "check_in.id"
         }
       ],
-      "_nested_name": "set_hp"
+      "_nested_name": "check_in"
     }
   ]
 }

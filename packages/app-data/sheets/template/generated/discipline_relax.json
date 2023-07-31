@@ -1,21 +1,12 @@
 {
-  "flow_name": "positive_parenting_review_hp",
+  "flow_name": "discipline_relax",
   "flow_subtype": "generated",
   "flow_type": "template",
   "rows": [
     {
-      "name": "join",
-      "value": "_",
-      "_translations": {
-        "value": {}
-      },
-      "type": "set_variable",
-      "_nested_name": "join"
-    },
-    {
       "type": "template",
-      "name": "review_hp",
-      "value": "review_hp",
+      "name": "relax",
+      "value": "relax",
       "action_list": [
         {
           "trigger": "completed",
@@ -39,15 +30,15 @@
       "rows": [
         {
           "name": "id",
-          "value": "parent_childhood",
+          "value": "id_1",
           "_translations": {
             "value": {}
           },
           "type": "set_variable",
-          "_nested_name": "review_hp.id"
+          "_nested_name": "relax.id"
         }
       ],
-      "_nested_name": "review_hp"
+      "_nested_name": "relax"
     }
   ]
 }

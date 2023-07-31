@@ -16,7 +16,7 @@
       "row_id": "id_1"
     },
     {
-      "id": "parent_childhood_review_hp",
+      "id": "child_dev_review_hp",
       "priority": 3,
       "data_list_name": "review_hp",
       "row_id": "child_dev"
@@ -26,6 +26,18 @@
       "priority": 4,
       "data_list_name": "intro",
       "row_id": "parent_childhood"
+    },
+    {
+      "id": "parent_childhood_legacy_tbg",
+      "priority": 5,
+      "data_list_name": "topic_block_group",
+      "row_id": "caregiver_legacy"
+    },
+    {
+      "id": "parent_childhood_abilities_tbg",
+      "priority": 6,
+      "data_list_name": "topic_block_group",
+      "row_id": "outstanding_abilities"
     },
     {
       "id": "parent_childhood_set_hp",
