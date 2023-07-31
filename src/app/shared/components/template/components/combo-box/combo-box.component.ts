@@ -6,6 +6,7 @@ import {
   getBooleanParamFromTemplateRow,
   getParamFromTemplateRow,
   getStringParamFromTemplateRow,
+  parseAnswerList,
 } from "src/app/shared/utils";
 import { TemplateBaseComponent } from "../base";
 import { ITemplateRowProps } from "../../models";
@@ -27,6 +28,7 @@ export class TmplComboBoxComponent
   style: string;
   text = "";
   customAnswerSelected: boolean = false;
+  customAnswerText: string;
   private componentDestroyed$ = new ReplaySubject(1);
   constructor(private modalController: ModalController, private templateService: TemplateService) {
     super();
@@ -34,12 +36,19 @@ export class TmplComboBoxComponent
 
   ngOnInit(): void {
     this.getParams();
-    const listAnswers: string[] = getParamFromTemplateRow(this._row, "answer_list", null);
+    const answerList = parseAnswerList(getParamFromTemplateRow(this._row, "answer_list", []));
+
     this.customAnswerSelected =
-      listAnswers && this._row.value
-        ? !listAnswers.find((x) => x.includes(this._row.value))
+      answerList.length > 0 && this._row.value
+        ? !answerList.find((x) => x.name === this._row.value)
         : false;
-    this.text = this.getText(this._row.value, listAnswers);
+
+    this.text = "";
+    if (this._row.value) {
+      this.text = this.customAnswerSelected
+        ? this.customAnswerText
+        : answerList.find((answerListItem) => answerListItem.name === this._row.value)?.text;
+    }
   }
 
   getParams() {
@@ -50,19 +59,6 @@ export class TmplComboBoxComponent
       false
     );
     this.style = getStringParamFromTemplateRow(this._row, "style", "");
-  }
-
-  getText(aValue: string, listAnswers: string[]): string {
-    if (aValue) {
-      if (aValue === "other") {
-        return this._row.parameter_list["customAnswer"];
-      }
-      const textFromList = listAnswers
-        .find((answer: string) => answer.includes(aValue))
-        ?.match(/(?<=text:).+/)[0]
-        .trim();
-      return textFromList ? textFromList : aValue;
-    }
   }
 
   async openModal() {
@@ -81,15 +77,12 @@ export class TmplComboBoxComponent
 
     modal.onDidDismiss().then(async (data) => {
       this.prioritisePlaceholder = false;
-      const value = data?.data?.answer?.name;
       this.text = data?.data?.answer?.text;
       this.customAnswerSelected = data?.data?.customAnswerSelected;
-      if (this.customAnswerSelected) {
-        this._row.parameter_list["customAnswer"] = data?.data?.answer?.text;
-      } else {
-        this._row.parameter_list["customAnswer"] = null;
-      }
-      await this.setValue(value);
+      this.customAnswerText = this.customAnswerSelected
+        ? (this.text = data?.data?.answer?.text)
+        : "";
+      await this.setValue(data?.data?.answer?.name);
       await this.triggerActions("changed");
     });
     await modal.present();

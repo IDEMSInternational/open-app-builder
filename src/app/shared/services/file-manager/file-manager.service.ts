@@ -1,22 +1,35 @@
 import { Injectable } from "@angular/core";
-import { Directory, Filesystem } from "@capacitor/filesystem";
+import { Directory, Encoding, Filesystem } from "@capacitor/filesystem";
 import { Capacitor } from "@capacitor/core";
 import write_blob from "capacitor-blob-writer";
 import { SyncServiceBase } from "../syncService.base";
+import { environment } from "src/environments/environment";
+import { IAssetContents } from "src/app/data";
 
 @Injectable({
   providedIn: "root",
 })
 export class FileManagerService extends SyncServiceBase {
+  cacheName: string;
+
   constructor() {
     super("FileManager");
+    this.initialise();
   }
 
-  async saveFile(blob: Blob, fileEntry) {
-    // Docs for write_blob are found here: https://github.com/diachedelic/capacitor-blob-writer#readme
-    await write_blob({
-      path: fileEntry.path,
+  private initialise() {
+    this.cacheName = environment.deploymentConfig.name;
+  }
+
+  /**
+   * Save a file to the local filesystem (native only)
+   * @returns the local filesystem path to the saved file
+   */
+  async saveFile(blob: Blob, relativePath: string) {
+    // Docs for write_blob are here: https://github.com/diachedelic/capacitor-blob-writer#readme
+    const src = await write_blob({
       directory: Directory.Data,
+      path: `${this.cacheName}/${relativePath}`,
       blob,
       fast_mode: true,
       recursive: true,
@@ -24,35 +37,42 @@ export class FileManagerService extends SyncServiceBase {
         console.error(error);
       },
     });
-    const src = await this.getFileSrc(fileEntry);
-    console.log("src:", src);
-    return src;
+    return Capacitor.convertFileSrc(src);
   }
 
   /**
-   * A possible approach for getting the path to a file
-   * @returns the URL to access the file
+   * @returns a URL to access the file (not currently used)
    * Adapted from https://www.npmjs.com/package/capacitor-blob-writer
-   * */
-  async getFileSrc(fileEntry) {
+   */
+  async getLocalUrl(relativePath: string) {
     // How the URI is obtained depends on the platform
     if (Capacitor.isNativePlatform()) {
       const { uri } = await Filesystem.getUri({
-        path: fileEntry.path,
+        path: `${this.cacheName}/${relativePath}`,
         directory: Directory.Data,
       });
       return Capacitor.convertFileSrc(uri);
-    } else {
+    }
+    // On web, return a URL from which to read the file
+    else {
       const { data } = await Filesystem.readFile({
-        path: fileEntry.path,
+        path: `${this.cacheName}/${relativePath}`,
         directory: Directory.Data,
       });
       return URL.createObjectURL(new Blob([data]));
     }
   }
 
-  /* Update assets contents list to include new filepath for lookup (by template-asset service) */
-  async updateContentsList(fileEntry, uri: string) {
-    // TODO. Should also update metadata
+  /**
+   * WIP: method to save list of cached assets to file. May not be needed if we utilize rxdb/dynamicDataService
+   */
+  async writeCacheListToFile(cachedFilesList: IAssetContents) {
+    return await Filesystem.writeFile({
+      directory: Directory.Data,
+      path: `${this.cacheName}/cachedFiles.json`,
+      data: JSON.stringify(cachedFilesList),
+      recursive: true,
+      encoding: Encoding.UTF8,
+    });
   }
 }

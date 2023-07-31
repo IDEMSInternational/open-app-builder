@@ -1,7 +1,7 @@
 import type { IAppConfig } from "./appConfig";
 
 /** Update version to force recompile next time deployment set (e.g. after default config update) */
-export const DEPLOYMENT_CONFIG_VERSION = 20230413;
+export const DEPLOYMENT_CONFIG_VERSION = 20230428;
 
 export interface IDeploymentConfig {
   /** Friendly name used to identify the deployment name */
@@ -31,6 +31,15 @@ export interface IDeploymentConfig {
     splash_asset_path?: string;
     icon_asset_foreground_path?: string;
     icon_asset_background_path?: string;
+  };
+  api: {
+    /** Name of target db for api operations. Default `plh` */
+    db_name?: string;
+    /**
+     * Target endpoint for api. Default `https://apps-server.idems.international/api`
+     * Will be replaced when running locally as per `src\app\shared\services\server\interceptors.ts`
+     * */
+    endpoint?: string;
   };
   /** Optional override of any provided constants from data-models/constants */
   app_config: IAppConfig;
@@ -81,6 +90,13 @@ export interface IDeploymentConfig {
   _parent_config?: Partial<IDeploymentConfig & { _workspace_path: string }>;
 }
 
+/** Deployment with additional metadata when set as active deployment */
+export interface IDeploymentConfigJson extends IDeploymentConfig {
+  _workspace_path: string;
+  _config_ts_path: string;
+  _config_version: number;
+}
+
 /** Full example of just all config once merged with defaults */
 export const DEPLOYMENT_CONFIG_EXAMPLE_DEFAULTS: IDeploymentConfig = {
   name: "Full Config Example",
@@ -92,6 +108,10 @@ export const DEPLOYMENT_CONFIG_EXAMPLE_DEFAULTS: IDeploymentConfig = {
     assets_filter_function: (gdriveEntry) => true,
   },
   android: {},
+  api: {
+    db_name: "plh",
+    endpoint: "https://apps-server.idems.international/api",
+  },
   app_config: {} as any, // populated by `getDefaultAppConstants()`,
   local_drive: {
     assets_path: "./assets",
@@ -127,7 +147,7 @@ interface IContentsEntry {
   size_kb: number;
   modifiedTime: string;
   md5Checksum: string;
-  /** specific path to file when same as relativePath, e.g. asset overrides */
+  /** specific path to file when not the same as relativePath, e.g. asset overrides */
   filePath?: string;
 }
 

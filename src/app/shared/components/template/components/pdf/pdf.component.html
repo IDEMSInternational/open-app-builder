@@ -1,6 +1,8 @@
 <div class="pdf-viewer">
   <ngx-extended-pdf-viewer
-    [src]="_row.value || src | plhAsset"
+    *ngIf="!legacyBrowser"
+    [src]="_row.value | plhAsset"
+    [page]="startingPage"
     [customToolbar]="customToolbar"
     [showBorders]="false"
     [mobileFriendlyZoom]="'1.3'"
@@ -10,6 +12,9 @@
     [zoom]="'page-width'"
   >
   </ngx-extended-pdf-viewer>
+  <div class="error-message" *ngIf="legacyBrowser">
+    {{ errorMessage }}
+  </div>
 </div>
 
 <!-- Custom toolbar examples here: https://pdfviewer.net/extended-pdf-viewer/custom-toolbar -->

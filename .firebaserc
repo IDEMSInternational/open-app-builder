@@ -28,6 +28,12 @@
         ],
         "pfr": [
           "parenting-for-respectability"
+        ],
+        "debug": [
+          "idems-debug"
+        ],
+        "plh_facilitator": [
+          "plh-facilitator"
         ]
       }
     }

@@ -1,4 +1,3 @@
-import { resolve } from "path";
 import type { IDeploymentWorkflows } from "./workflow.model";
 /** Default workflows made available to all deployments */
 const workflows: IDeploymentWorkflows = {
@@ -91,6 +90,18 @@ const workflows: IDeploymentWorkflows = {
             function: async ({ tasks }) => {
               await tasks.encryption.decrypt();
             },
+          },
+          {
+            name: "refresh_remote_content",
+            function: async ({ tasks, config }) => {
+              if (config.git?.content_repo) {
+                await tasks.git().refreshRemoteRepo();
+              }
+            },
+          },
+          {
+            name: "copy_to_app",
+            function: async ({ tasks }) => tasks.appData.copyDeploymentDataToApp(),
           },
         ],
       },

@@ -38,6 +38,7 @@ import { AsyncServiceBase } from "./shared/services/asyncService.base";
 import { SyncServiceBase } from "./shared/services/syncService.base";
 import { SeoService } from "./shared/services/seo/seo.service";
 import { FeedbackService } from "./feature/feedback/feedback.service";
+import { ShareService } from "./shared/services/share/share.service";
 
 @Component({
   selector: "app-root",
@@ -91,7 +92,8 @@ export class AppComponent {
     private lifecycleActionsService: LifecycleActionsService,
     private serverService: ServerService,
     private appUpdateService: AppUpdateService,
-    private remoteAssetService: RemoteAssetService
+    private remoteAssetService: RemoteAssetService,
+    private shareService: ShareService
   ) {
     this.initializeApp();
   }
@@ -195,12 +197,12 @@ export class AppComponent {
         this.taskService,
         this.taskActions,
         this.campaignService,
+        this.remoteAssetService,
       ],
       nonBlocking: [
         this.skinService,
         this.appConfigService,
         this.appUpdateService,
-        this.remoteAssetService,
         this.themeService,
         this.templateService,
         this.templateProcessService,
@@ -209,6 +211,7 @@ export class AppComponent {
         this.serverService,
         this.seoService,
         this.feedbackService,
+        this.shareService,
       ],
       deferred: [this.analyticsService],
       implicit: [

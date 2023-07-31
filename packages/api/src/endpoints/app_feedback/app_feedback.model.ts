@@ -7,7 +7,7 @@ export class AppFeedback extends Model<AppFeedback> {
   app_user_id: string;
 
   @Column({ allowNull: false })
-  app_user_record_id: string;
+  app_user_record_id: number;
 
   @Column({ allowNull: false })
   app_deployment_name: string;

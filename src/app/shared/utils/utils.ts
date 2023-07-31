@@ -3,6 +3,7 @@ import { diff } from "deep-object-diff";
 import { Observable } from "rxjs";
 import { map, pairwise, filter, share } from "rxjs/operators";
 import { FlowTypes } from "../model";
+import { objectToArray } from "../components/template/utils";
 
 /**
  * Generate a random string of characters in base-36 (a-z and 0-9 characters)
@@ -365,4 +366,75 @@ export type RecursivePartial<T> = {
 
 export function isNonEmptyArray(value: unknown): value is any[] {
   return Array.isArray(value) && value.length > 0;
+}
+
+/**
+ * Check whether browser supports post-ES5 features. Further checks could be made, for example
+ * whether the browser is IE/iOS, but not necessary at runtime as these platforms aren't supported anyway.
+ * See discussion thread here: https://github.com/IDEMSInternational/parenting-app-ui/issues/1726
+ */
+export function isLegacyBrowser() {
+  if (typeof window === "undefined") {
+    // server-side rendering
+    return false;
+  }
+  return (
+    typeof ReadableStream === "undefined" ||
+    typeof Promise["allSettled"] === "undefined" ||
+    !supportsOptionalChaining()
+  );
+}
+
+function supportsOptionalChaining() {
+  try {
+    eval("const foo = {}; foo?.bar");
+  } catch (e) {
+    return false;
+  }
+  return true;
+}
+
+export interface IAnswerListItem {
+  name: string;
+  image?: string;
+  text?: string;
+  image_checked?: string | null;
+}
+
+/**
+ * Parse an answer_list parameter and return an array of AnswerListItems
+ * @param answerList an answer_list parameter, either an array of IAnswerListItems
+ * (possibly still in string representation) or a data list (hashmap of IAnswerListItems)
+ */
+export function parseAnswerList(answerList: any) {
+  // If a data_list (hashmap) is provided as input, convert to an array
+  if (answerList.constructor === {}.constructor) {
+    answerList = objectToArray(answerList);
+  }
+  const answerListItems: IAnswerListItem[] = answerList.map(
+    (item: string | Record<string, string>) => {
+      return parseAnswerListItem(item);
+    }
+  );
+  return answerListItems;
+}
+
+/**
+ * Convert answer list item (string or object) to relevant mappings
+ * TODO - CC 2023-03-16 - should ideally convert in parsers instead of at runtime
+ */
+function parseAnswerListItem(item: any) {
+  const itemObj: IAnswerListItem = {} as any;
+  if (typeof item === "string") {
+    const stringProperties = item.split("|");
+    stringProperties.forEach((s) => {
+      const [field, value] = s.split(":").map((v) => v.trim());
+      if (field && value) {
+        itemObj[field] = value;
+      }
+    });
+    // NOTE CC 2021-08-07 - allow passing of object, not just string for conversion
+    return itemObj;
+  }
+  return item;
 }

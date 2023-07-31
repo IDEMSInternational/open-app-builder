@@ -14,6 +14,8 @@ export namespace FlowTypes {
     | "data_list"
     // data_pipes are used to modify or generate new data_lists via processing methods
     | "data_pipe"
+    // generators can create any other flow type using a source datalist and flow skeleton
+    | "generator"
     // global data provides data to other modules, without namespacing (all top-level)
     | "global"
     | "template"
@@ -41,7 +43,10 @@ export namespace FlowTypes {
     override_target?: string;
     /** condition to evaluate for applying override */
     override_condition?: boolean | string; // dynamic references will be strings, but converted to boolean during evaluation
+    /** additional parameters passed to flows */
+    parameter_list?: Record<string, any>;
     /** computed list of all other templates with override conditions that targetthis template */
+
     _overrides?: {
       [templatename: string]: any; // override condition
     };
@@ -58,8 +63,8 @@ export namespace FlowTypes {
     rows: any[];
     /** Datalists populate rows as a hashmap instead to allow easier access to nested structures */
     rowsHashmap?: { [id: string]: any };
-    /** Datapipes store output from operations in a temporary field to allow data-list population */
-    _processed?: { [output_target: string]: any[] };
+    /** Additional flows generated during parsing, such as data pipe or generator flow outputs */
+    _generated?: { [flow_type in FlowType]?: { [flow_name: string]: FlowTypeWithData } };
   }
 
   /*********************************************************************************************
@@ -72,8 +77,15 @@ export namespace FlowTypes {
   export interface DataPipeFlow extends FlowTypeWithData {
     flow_type: "data_pipe";
     rows: IDataPipeOperation[];
-    /** Datapipes store output from operations in a temporary field to allow data-list population */
-    _processed?: { [output_target: string]: any[] };
+  }
+  export interface GeneratorFlow extends FlowTypeWithData {
+    flow_type: "generator";
+    parameter_list: {
+      input_data_list: string;
+      output_flow_name?: string;
+      output_flow_subtype?: string;
+      output_flow_type?: FlowType;
+    };
   }
   export interface Translation_strings {
     [sourceText: string]: string;
@@ -264,6 +276,7 @@ export namespace FlowTypes {
     | "navigation_bar"
     | "nested_properties"
     | "number_selector"
+    | "odk_form"
     | "parent_point_box"
     | "parent_point_counter"
     | "pdf"
@@ -373,6 +386,7 @@ export namespace FlowTypes {
     "set_item",
     "set_items",
     "set_local",
+    "share",
     "style",
     "start_tour",
     "task_group_set_highlighted",
