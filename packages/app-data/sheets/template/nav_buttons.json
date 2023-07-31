@@ -12,8 +12,32 @@
       "rows": [
         {
           "type": "button",
+          "name": "button_uncompleted",
+          "value": "Previous",
+          "_translations": {
+            "value": {}
+          },
+          "action_list": [
+            {
+              "trigger": "click",
+              "action_id": "emit",
+              "args": [
+                "uncompleted"
+              ],
+              "_raw": "click | emit:uncompleted",
+              "_cleaned": "click | emit:uncompleted"
+            }
+          ],
+          "parameter_list": {
+            "style": "navigation",
+            "text_align": "center"
+          },
+          "_nested_name": "buttons.button_uncompleted"
+        },
+        {
+          "type": "button",
           "name": "button_completed",
-          "value": "Done",
+          "value": "Next",
           "_translations": {
             "value": {}
           },
@@ -38,5 +62,5 @@
       "_nested_name": "buttons"
     }
   ],
-  "_xlsxPath": "global/templates/navigation.xlsx"
+  "_xlsxPath": "global/templates/session_templates.xlsx"
 }

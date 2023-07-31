@@ -1,0 +1,62 @@
+{
+  "flow_type": "data_list",
+  "flow_name": "discipline",
+  "status": "released",
+  "rows": [
+    {
+      "id": "discipline_check_in",
+      "priority": 1,
+      "data_list_name": "check_in",
+      "row_id": "id_1"
+    },
+    {
+      "id": "discipline_relax",
+      "priority": 2,
+      "data_list_name": "relax",
+      "row_id": "id_1"
+    },
+    {
+      "id": "discipline_conflict_children_tbg",
+      "priority": 3,
+      "data_list_name": "topic_block_group",
+      "row_id": "conflict_children"
+    },
+    {
+      "id": "discipline_interaction_children_tbg",
+      "priority": 4,
+      "data_list_name": "topic_block_group",
+      "row_id": "interaction_children"
+    },
+    {
+      "id": "discipline_interaction_1_tbg",
+      "priority": 5,
+      "data_list_name": "topic_block_group",
+      "row_id": "interaction_children_1"
+    },
+    {
+      "id": "discipline_interaction_2_tbg",
+      "priority": 6,
+      "data_list_name": "topic_block_group",
+      "row_id": "interaction_children_2"
+    },
+    {
+      "id": "discipline_communication",
+      "priority": 7,
+      "data_list_name": "topic_block_group",
+      "row_id": "communication"
+    },
+    {
+      "id": "discipline_set_hp",
+      "priority": 17,
+      "data_list_name": "set_hp",
+      "row_id": "discipline"
+    },
+    {
+      "id": "discipline_praise",
+      "priority": 18,
+      "data_list_name": "praise",
+      "row_id": "discipline"
+    }
+  ],
+  "_xlsxPath": "global/data_lists/session_tasks.xlsx"
+}

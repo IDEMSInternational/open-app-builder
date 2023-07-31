@@ -1,0 +1,40 @@
+{
+  "flow_type": "data_list",
+  "flow_name": "library_data",
+  "status": "released",
+  "data_list_name": "library",
+  "rows": [
+    {
+      "id": "relax_activities",
+      "tile_style": "parent_centre_1",
+      "show": true,
+      "icon_asset": "images/icons/book_white.svg",
+      "title": "Relaxation Activities",
+      "_translations": {
+        "title": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Relaxation Activities"
+        }
+      }
+    },
+    {
+      "id": "tech_support",
+      "icon_asset": "images/icons/buoy_white.svg",
+      "template": "technical_support",
+      "tile_style": "parent_centre_4",
+      "show": true,
+      "title": "Technical Support",
+      "_translations": {
+        "title": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Technical Support"
+        }
+      }
+    }
+  ],
+  "_xlsxPath": "global/data_lists/library_data.xlsx"
+}

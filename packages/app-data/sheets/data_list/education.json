@@ -1,0 +1,68 @@
+{
+  "flow_type": "data_list",
+  "flow_name": "education",
+  "status": "released",
+  "rows": [
+    {
+      "id": "education_check_in",
+      "priority": 1,
+      "data_list_name": "check_in",
+      "row_id": "id_1"
+    },
+    {
+      "id": "education_relax",
+      "priority": 2,
+      "data_list_name": "relax",
+      "row_id": "id_1"
+    },
+    {
+      "id": "discipline_review_hp",
+      "priority": 3,
+      "data_list_name": "review_hp",
+      "row_id": "discipline"
+    },
+    {
+      "id": "education_intro",
+      "priority": 4,
+      "data_list_name": "intro",
+      "row_id": "education"
+    },
+    {
+      "id": "education_tbg",
+      "priority": 5,
+      "data_list_name": "topic_block_group",
+      "row_id": "education"
+    },
+    {
+      "id": "education_needs_tbg",
+      "priority": 6,
+      "data_list_name": "topic_block_group",
+      "row_id": "school_needs"
+    },
+    {
+      "id": "education_encourage_tbg",
+      "priority": 7,
+      "data_list_name": "topic_block_group",
+      "row_id": "encourage_school"
+    },
+    {
+      "id": "education_tips",
+      "priority": 9,
+      "data_list_name": "tips",
+      "row_id": "education"
+    },
+    {
+      "id": "education_set_hp",
+      "priority": 16,
+      "data_list_name": "set_hp",
+      "row_id": "education"
+    },
+    {
+      "id": "education_praise",
+      "priority": 18,
+      "data_list_name": "praise",
+      "row_id": "education"
+    }
+  ],
+  "_xlsxPath": "global/data_lists/session_tasks.xlsx"
+}

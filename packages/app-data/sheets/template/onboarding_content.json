@@ -1,0 +1,589 @@
+{
+  "flow_type": "template",
+  "flow_name": "onboarding_content",
+  "status": "released",
+  "rows": [
+    {
+      "name": "session_data_list_name",
+      "value": [
+        "onboarding"
+      ],
+      "type": "set_variable",
+      "_nested_name": "session_data_list_name"
+    },
+    {
+      "name": "session_task_id",
+      "value": "onboarding_user_name",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "session_task_id"
+    },
+    {
+      "name": "field_name",
+      "value": "user_name",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "field_name"
+    },
+    {
+      "name": "session_task_row",
+      "value": "@local.session_data_list_name.@local.session_task_id",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "session_task_row",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@local.session_data_list_name.@local.session_task_id",
+            "matchedExpression": "@local.session_data_list_name",
+            "type": "local",
+            "fieldName": "session_data_list_name"
+          },
+          {
+            "fullExpression": "@local.session_data_list_name.@local.session_task_id",
+            "matchedExpression": "@local.session_task_id",
+            "type": "local",
+            "fieldName": "session_task_id"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.session_data_list_name": [
+          "value"
+        ],
+        "@local.session_task_id": [
+          "value"
+        ]
+      }
+    },
+    {
+      "name": "session_task_row_data",
+      "value": "@data.@local.session_task_row",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "session_task_row_data",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@data.@local.session_task_row",
+            "matchedExpression": "@local.session_task_row",
+            "type": "local",
+            "fieldName": "session_task_row"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.session_task_row": [
+          "value"
+        ]
+      }
+    },
+    {
+      "name": "data_list_name",
+      "value": [
+        "@local.session_task_row_data.data_list_name"
+      ],
+      "type": "set_variable",
+      "_nested_name": "data_list_name",
+      "_dynamicFields": {
+        "value": {
+          "0": [
+            {
+              "fullExpression": "@local.session_task_row_data.data_list_name",
+              "matchedExpression": "@local.session_task_row_data.data_list_name",
+              "type": "local",
+              "fieldName": "session_task_row_data"
+            }
+          ]
+        }
+      },
+      "_dynamicDependencies": {
+        "@local.session_task_row_data.data_list_name": [
+          "value.0"
+        ]
+      }
+    },
+    {
+      "name": "id",
+      "value": "@local.session_task_row_data.row_id",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "id",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@local.session_task_row_data.row_id",
+            "matchedExpression": "@local.session_task_row_data.row_id",
+            "type": "local",
+            "fieldName": "session_task_row_data"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.session_task_row_data.row_id": [
+          "value"
+        ]
+      }
+    },
+    {
+      "name": "data_list_name_id",
+      "value": [
+        "@local.data_list_name.@local.id"
+      ],
+      "type": "set_variable",
+      "_nested_name": "data_list_name_id",
+      "_dynamicFields": {
+        "value": {
+          "0": [
+            {
+              "fullExpression": "@local.data_list_name.@local.id",
+              "matchedExpression": "@local.data_list_name",
+              "type": "local",
+              "fieldName": "data_list_name"
+            },
+            {
+              "fullExpression": "@local.data_list_name.@local.id",
+              "matchedExpression": "@local.id",
+              "type": "local",
+              "fieldName": "id"
+            }
+          ]
+        }
+      },
+      "_dynamicDependencies": {
+        "@local.data_list_name": [
+          "value.0"
+        ],
+        "@local.id": [
+          "value.0"
+        ]
+      }
+    },
+    {
+      "name": "row_data",
+      "value": "@data.@local.data_list_name_id",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "row_data",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@data.@local.data_list_name_id",
+            "matchedExpression": "@local.data_list_name_id",
+            "type": "local",
+            "fieldName": "data_list_name_id"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.data_list_name_id": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "title",
+      "name": "title",
+      "value": "@local.row_data.title",
+      "_translations": {
+        "value": {}
+      },
+      "condition": "!!(@local.row_data.title)",
+      "_nested_name": "title",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@local.row_data.title",
+            "matchedExpression": "@local.row_data.title",
+            "type": "local",
+            "fieldName": "row_data"
+          }
+        ],
+        "condition": [
+          {
+            "fullExpression": "!!(@local.row_data.title)",
+            "matchedExpression": "@local.row_data.title",
+            "type": "local",
+            "fieldName": "row_data"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.row_data.title": [
+          "value",
+          "condition"
+        ]
+      }
+    },
+    {
+      "type": "text",
+      "name": "intro_text",
+      "value": "@local.row_data.intro_text",
+      "_translations": {
+        "value": {}
+      },
+      "condition": "!!(@local.row_data.intro_text)",
+      "_nested_name": "intro_text",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@local.row_data.intro_text",
+            "matchedExpression": "@local.row_data.intro_text",
+            "type": "local",
+            "fieldName": "row_data"
+          }
+        ],
+        "condition": [
+          {
+            "fullExpression": "!!(@local.row_data.intro_text)",
+            "matchedExpression": "@local.row_data.intro_text",
+            "type": "local",
+            "fieldName": "row_data"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.row_data.intro_text": [
+          "value",
+          "condition"
+        ]
+      }
+    },
+    {
+      "type": "text",
+      "name": "text",
+      "value": "@local.row_data.text",
+      "_translations": {
+        "value": {}
+      },
+      "condition": "!!(@local.row_data.text)",
+      "_nested_name": "text",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@local.row_data.text",
+            "matchedExpression": "@local.row_data.text",
+            "type": "local",
+            "fieldName": "row_data"
+          }
+        ],
+        "condition": [
+          {
+            "fullExpression": "!!(@local.row_data.text)",
+            "matchedExpression": "@local.row_data.text",
+            "type": "local",
+            "fieldName": "row_data"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.row_data.text": [
+          "value",
+          "condition"
+        ]
+      }
+    },
+    {
+      "type": "text",
+      "name": "question_text",
+      "value": "@local.row_data.question_text",
+      "_translations": {
+        "value": {}
+      },
+      "parameter_list": {
+        "style": "emphasised"
+      },
+      "condition": "!!(@local.row_data.question_text)",
+      "_nested_name": "question_text",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@local.row_data.question_text",
+            "matchedExpression": "@local.row_data.question_text",
+            "type": "local",
+            "fieldName": "row_data"
+          }
+        ],
+        "condition": [
+          {
+            "fullExpression": "!!(@local.row_data.question_text)",
+            "matchedExpression": "@local.row_data.question_text",
+            "type": "local",
+            "fieldName": "row_data"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.row_data.question_text": [
+          "value",
+          "condition"
+        ]
+      }
+    },
+    {
+      "name": "placeholder",
+      "value": "Tap and type",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "placeholder"
+    },
+    {
+      "type": "text_box",
+      "name": "text_box",
+      "action_list": [
+        {
+          "trigger": "changed",
+          "action_id": "set_field",
+          "args": [
+            "@local.field_name",
+            "this.value"
+          ],
+          "_raw": "changed | set_field: @local.field_name: @local.text_box",
+          "_cleaned": "changed | set_field: @local.field_name: @local.text_box"
+        }
+      ],
+      "parameter_list": {
+        "placeholder": "@local.placeholder"
+      },
+      "condition": "@local.row_data.question_type == \"text_input\"",
+      "_nested_name": "text_box",
+      "_dynamicFields": {
+        "action_list": {
+          "0": {
+            "args": {
+              "0": [
+                {
+                  "fullExpression": "@local.field_name",
+                  "matchedExpression": "@local.field_name",
+                  "type": "local",
+                  "fieldName": "field_name"
+                }
+              ]
+            },
+            "_raw": [
+              {
+                "fullExpression": "changed | set_field: @local.field_name: @local.text_box",
+                "matchedExpression": "@local.field_name",
+                "type": "local",
+                "fieldName": "field_name"
+              },
+              {
+                "fullExpression": "changed | set_field: @local.field_name: @local.text_box",
+                "matchedExpression": "@local.text_box",
+                "type": "local",
+                "fieldName": "text_box"
+              }
+            ],
+            "_cleaned": [
+              {
+                "fullExpression": "changed | set_field: @local.field_name: @local.text_box",
+                "matchedExpression": "@local.field_name",
+                "type": "local",
+                "fieldName": "field_name"
+              },
+              {
+                "fullExpression": "changed | set_field: @local.field_name: @local.text_box",
+                "matchedExpression": "@local.text_box",
+                "type": "local",
+                "fieldName": "text_box"
+              }
+            ]
+          }
+        },
+        "parameter_list": {
+          "placeholder": [
+            {
+              "fullExpression": "@local.placeholder",
+              "matchedExpression": "@local.placeholder",
+              "type": "local",
+              "fieldName": "placeholder"
+            }
+          ]
+        },
+        "condition": [
+          {
+            "fullExpression": "@local.row_data.question_type == \"text_input\"",
+            "matchedExpression": "@local.row_data.question_type",
+            "type": "local",
+            "fieldName": "row_data"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.field_name": [
+          "action_list.0.args.0",
+          "action_list.0._raw",
+          "action_list.0._cleaned"
+        ],
+        "@local.text_box": [
+          "action_list.0._raw",
+          "action_list.0._cleaned"
+        ],
+        "@local.placeholder": [
+          "parameter_list.placeholder"
+        ],
+        "@local.row_data.question_type": [
+          "condition"
+        ]
+      }
+    },
+    {
+      "type": "text_area",
+      "name": "text_area",
+      "action_list": [
+        {
+          "trigger": "changed",
+          "action_id": "set_field",
+          "args": [
+            "@local.field_name",
+            "this.value"
+          ],
+          "_raw": "changed | set_field: @local.field_name: @local.text_area",
+          "_cleaned": "changed | set_field: @local.field_name: @local.text_area"
+        }
+      ],
+      "parameter_list": {
+        "placeholder": "@local.placeholder"
+      },
+      "condition": "@local.row_data.question_type == \"text_input_long\"",
+      "_nested_name": "text_area",
+      "_dynamicFields": {
+        "action_list": {
+          "0": {
+            "args": {
+              "0": [
+                {
+                  "fullExpression": "@local.field_name",
+                  "matchedExpression": "@local.field_name",
+                  "type": "local",
+                  "fieldName": "field_name"
+                }
+              ]
+            },
+            "_raw": [
+              {
+                "fullExpression": "changed | set_field: @local.field_name: @local.text_area",
+                "matchedExpression": "@local.field_name",
+                "type": "local",
+                "fieldName": "field_name"
+              },
+              {
+                "fullExpression": "changed | set_field: @local.field_name: @local.text_area",
+                "matchedExpression": "@local.text_area",
+                "type": "local",
+                "fieldName": "text_area"
+              }
+            ],
+            "_cleaned": [
+              {
+                "fullExpression": "changed | set_field: @local.field_name: @local.text_area",
+                "matchedExpression": "@local.field_name",
+                "type": "local",
+                "fieldName": "field_name"
+              },
+              {
+                "fullExpression": "changed | set_field: @local.field_name: @local.text_area",
+                "matchedExpression": "@local.text_area",
+                "type": "local",
+                "fieldName": "text_area"
+              }
+            ]
+          }
+        },
+        "parameter_list": {
+          "placeholder": [
+            {
+              "fullExpression": "@local.placeholder",
+              "matchedExpression": "@local.placeholder",
+              "type": "local",
+              "fieldName": "placeholder"
+            }
+          ]
+        },
+        "condition": [
+          {
+            "fullExpression": "@local.row_data.question_type == \"text_input_long\"",
+            "matchedExpression": "@local.row_data.question_type",
+            "type": "local",
+            "fieldName": "row_data"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.field_name": [
+          "action_list.0.args.0",
+          "action_list.0._raw",
+          "action_list.0._cleaned"
+        ],
+        "@local.text_area": [
+          "action_list.0._raw",
+          "action_list.0._cleaned"
+        ],
+        "@local.placeholder": [
+          "parameter_list.placeholder"
+        ],
+        "@local.row_data.question_type": [
+          "condition"
+        ]
+      }
+    },
+    {
+      "type": "template",
+      "name": "nav_buttons",
+      "value": "nav_buttons",
+      "action_list": [
+        {
+          "trigger": "completed",
+          "action_id": "emit",
+          "args": [
+            "completed"
+          ],
+          "_raw": "completed | emit: completed",
+          "_cleaned": "completed | emit: completed"
+        },
+        {
+          "trigger": "uncompleted",
+          "action_id": "emit",
+          "args": [
+            "uncompleted"
+          ],
+          "_raw": "uncompleted | emit: uncompleted",
+          "_cleaned": "uncompleted | emit: uncompleted"
+        }
+      ],
+      "condition": "@fields.show_nav_buttons",
+      "rows": [],
+      "_nested_name": "nav_buttons",
+      "_dynamicFields": {
+        "condition": [
+          {
+            "fullExpression": "@fields.show_nav_buttons",
+            "matchedExpression": "@fields.show_nav_buttons",
+            "type": "fields",
+            "fieldName": "show_nav_buttons"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@fields.show_nav_buttons": [
+          "condition"
+        ]
+      }
+    }
+  ],
+  "_xlsxPath": "global/templates/blocks/onboarding_blocks.xlsx"
+}

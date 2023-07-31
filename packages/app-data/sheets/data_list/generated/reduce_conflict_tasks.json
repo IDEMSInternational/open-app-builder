@@ -1,0 +1,71 @@
+{
+  "flow_name": "reduce_conflict_tasks",
+  "flow_subtype": "generated",
+  "flow_type": "data_list",
+  "rows": [
+    {
+      "id": "reduce_conflict_check_in",
+      "priority": 1,
+      "data_list_name": "check_in",
+      "row_id": "id_1",
+      "completed_field": "task_reduce_conflict_check_in_completed",
+      "completed": "@fields.task_reduce_conflict_check_in_completed"
+    },
+    {
+      "id": "reduce_conflict_relax",
+      "priority": 2,
+      "data_list_name": "relax",
+      "row_id": "id_1",
+      "completed_field": "task_reduce_conflict_relax_completed",
+      "completed": "@fields.task_reduce_conflict_relax_completed"
+    },
+    {
+      "id": "prevent_abuse_review_hp",
+      "priority": 3,
+      "data_list_name": "review_hp",
+      "row_id": "prevent_abuse",
+      "completed_field": "task_prevent_abuse_review_hp_completed",
+      "completed": "@fields.task_prevent_abuse_review_hp_completed"
+    },
+    {
+      "id": "reduce_conflict_intro",
+      "priority": 4,
+      "data_list_name": "intro",
+      "row_id": "reduce_conflict",
+      "completed_field": "task_reduce_conflict_intro_completed",
+      "completed": "@fields.task_reduce_conflict_intro_completed"
+    },
+    {
+      "id": "reduce_conflict_tbg_1",
+      "priority": 5,
+      "data_list_name": "topic_block_group",
+      "row_id": "reduce_conflict",
+      "completed_field": "task_reduce_conflict_tbg_1_completed",
+      "completed": "@fields.task_reduce_conflict_tbg_1_completed"
+    },
+    {
+      "id": "reduce_conflict_tips",
+      "priority": 7,
+      "data_list_name": "tips",
+      "row_id": "reduce_conflict_tips",
+      "completed_field": "task_reduce_conflict_tips_completed",
+      "completed": "@fields.task_reduce_conflict_tips_completed"
+    },
+    {
+      "id": "reduce_conflict_set_hp",
+      "priority": 9,
+      "data_list_name": "set_hp",
+      "row_id": "reduce_conflict",
+      "completed_field": "task_reduce_conflict_set_hp_completed",
+      "completed": "@fields.task_reduce_conflict_set_hp_completed"
+    },
+    {
+      "id": "reduce_conflict_praise",
+      "priority": 11,
+      "data_list_name": "praise",
+      "row_id": "reduce_conflict",
+      "completed_field": "task_reduce_conflict_praise_completed",
+      "completed": "@fields.task_reduce_conflict_praise_completed"
+    }
+  ]
+}

@@ -4,12 +4,147 @@
   "status": "released",
   "rows": [
     {
-      "id": "current_pract",
+      "id": "child_20",
+      "topic": "current_pract",
+      "question_1_id": "child_20",
+      "title": "Quiz",
+      "intro_text": "Let's do a reflection."
+    },
+    {
+      "id": "picture_quiz",
+      "topic": "current_pract",
       "title": "Picture quiz",
       "intro_text": "Let's look at some images.",
       "question_1_id": "playing_what",
-      "question_2_id": "feeding_what",
-      "question_3_id": "reading_what"
+      "question_2_id": "playing_ease",
+      "question_3_id": "playing_why",
+      "question_4_id": "feeding_what",
+      "question_5_id": "feeding_ease",
+      "question_6_id": "feeding_why",
+      "question_7_id": "reading_what",
+      "question_8_id": "reading_ease",
+      "question_9_id": "reading_why"
+    },
+    {
+      "id": "dev_stage",
+      "topic": "child_dev",
+      "title": "Needs of children in different developmental stages",
+      "question_1_id": "dev_stage_which",
+      "question_2_id": "dev_stage_physical",
+      "question_3_id": "dev_stage_feel",
+      "question_4_id": "dev_stage_think",
+      "question_5_id": "dev_stage_social",
+      "outro_text": "As a parent, note that by focusing on growing only one or two areas of a child’s development could affect their wellbeing. \n\nFor balanced growth and development, ensure that you focus on all the four main areas equally in order to have a well-developed child.",
+      "intro_text": "Let's do a reflection."
+    },
+    {
+      "id": "sharing_care",
+      "topic": "sharing_care",
+      "question_1_id": "sharing_care_who",
+      "question_2_id": "sharing_care_relations",
+      "question_3_id": "sharing_care_obstacles",
+      "question_4_id": "sharing_care_benefits",
+      "question_5_id": "sharing_care_how",
+      "title": "Quiz",
+      "intro_text": "Let's do a reflection."
+    },
+    {
+      "id": "caregiving",
+      "topic": "sharing_care",
+      "question_1_id": "caregiving_man",
+      "question_2_id": "caregiving_woman",
+      "question_3_id": "caregiving_self",
+      "title": "Quiz",
+      "intro_text": "Let's do a reflection."
+    },
+    {
+      "id": "healthy_relation",
+      "topic": "healthy_relation",
+      "question_1_id": "difference_signs",
+      "question_2_id": "do_why",
+      "question_3_id": "influence_how",
+      "question_4_id": "help_control",
+      "title": "Quiz",
+      "intro_text": "Let's do a reflection."
+    },
+    {
+      "id": "rships_communication",
+      "topic": "healthy_relation",
+      "question_1_id": "marriage_like",
+      "question_2_id": "marriage_don't_like",
+      "question_3_id": "barrelate_differently",
+      "question_4_id": "couple_relate",
+      "question_5_id": "lose_interest",
+      "question_6_id": "intimacy_communicate",
+      "title": "Quiz",
+      "intro_text": "Let's do a reflection."
+    },
+    {
+      "id": "session_review",
+      "topic": "session_review",
+      "question_1_id": "useful_session",
+      "question_2_id": "useful_activity",
+      "question_3_id": "least_session",
+      "title": "Quiz",
+      "intro_text": "Let's do a reflection."
+    },
+    {
+      "id": "spousal_relationships",
+      "topic": "session_review",
+      "question_1_id": "discuss_parenting",
+      "question_2_id": "helped_how",
+      "title": "Quiz",
+      "intro_text": "Let's do a reflection."
+    },
+    {
+      "id": "education",
+      "topic": "education",
+      "question_1_id": "encourage_how",
+      "title": "Quiz",
+      "intro_text": "Let's do a reflection."
+    },
+    {
+      "id": "equality",
+      "topic": "gender_equal",
+      "question_1_id": "help_modify",
+      "question_2_id": "community_modify",
+      "title": "Quiz",
+      "intro_text": "Let's do a reflection."
+    },
+    {
+      "id": "gender_equal",
+      "topic": "gender_equal",
+      "question_1_id": "common_issues",
+      "question_2_id": "techniques",
+      "title": "Quiz",
+      "intro_text": "Let's do a reflection."
+    },
+    {
+      "id": "building_values",
+      "topic": "prevent_abuse",
+      "title": "Building values for better decision making on sexual issues",
+      "question_1_id": "parent_values",
+      "question_2_id": "religious_values",
+      "question_3_id": "behaviour_influence",
+      "question_4_id": "different_values",
+      "intro_text": "Let's do a reflection."
+    },
+    {
+      "id": "parents_web",
+      "topic": "conclusion",
+      "question_1_id": "web",
+      "title": "Quiz",
+      "intro_text": "Let's do a reflection."
+    },
+    {
+      "id": "future_group",
+      "topic": "conclusion",
+      "question_1_id": "each_other_support",
+      "question_2_id": "plan_reach",
+      "question_3_id": "wish_receive",
+      "question_4_id": "support_need",
+      "title": "Quiz",
+      "intro_text": "Let's do a reflection."
     }
   ],
   "_xlsxPath": "global/data_lists/topics.xlsx"

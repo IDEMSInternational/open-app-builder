@@ -39,7 +39,15 @@
       "type": "declare_field_default",
       "name": "show_nav_buttons",
       "value": true
+    },
+    {
+      "type": "declare_global_constant",
+      "name": "combo_box_placeholder",
+      "value": "Tap and select",
+      "_translations": {
+        "value": {}
+      }
     }
   ],
-  "_xlsxPath": "global/data_lists/navigation_defaults.xlsx"
+  "_xlsxPath": "global/data_lists/navigation.xlsx"
 }

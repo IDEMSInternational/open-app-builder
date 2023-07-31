@@ -1,0 +1,47 @@
+{
+  "flow_name": "review_tasks",
+  "flow_subtype": "generated",
+  "flow_type": "data_list",
+  "rows": [
+    {
+      "id": "review_check_in",
+      "priority": 1,
+      "data_list_name": "check_in",
+      "row_id": "id_1",
+      "completed_field": "task_review_check_in_completed",
+      "completed": "@fields.task_review_check_in_completed"
+    },
+    {
+      "id": "review_relax",
+      "priority": 2,
+      "data_list_name": "relax",
+      "row_id": "id_1",
+      "completed_field": "task_review_relax_completed",
+      "completed": "@fields.task_review_relax_completed"
+    },
+    {
+      "id": "review_tbg",
+      "priority": 3,
+      "data_list_name": "topic_block_group",
+      "row_id": "session_review",
+      "completed_field": "task_review_tbg_completed",
+      "completed": "@fields.task_review_tbg_completed"
+    },
+    {
+      "id": "review_ball_change_tbg",
+      "priority": 4,
+      "data_list_name": "topic_block_group",
+      "row_id": "ball_change",
+      "completed_field": "task_review_ball_change_tbg_completed",
+      "completed": "@fields.task_review_ball_change_tbg_completed"
+    },
+    {
+      "id": "review_praise",
+      "priority": 18,
+      "data_list_name": "praise",
+      "row_id": "review",
+      "completed_field": "task_review_praise_completed",
+      "completed": "@fields.task_review_praise_completed"
+    }
+  ]
+}

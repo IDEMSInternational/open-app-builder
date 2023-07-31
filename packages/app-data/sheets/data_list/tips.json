@@ -4,7 +4,17 @@
   "status": "released",
   "rows": [
     {
+      "id": "rel_vacuum",
+      "topic": "family_relation",
+      "title": "Relationship vacuum",
+      "text_1": "Every human being needs positive relationships whether children, men and women.",
+      "text_2": "Life hates a relationship vacuum. When there is a relationship vacuum with one's family, they feel empty both inside and around them.",
+      "text_3": "But because life hates a relationship vacuum, we are naturally drawn to fill that gap.",
+      "text_4": "This vacuum often leads us to turn to other people or things such as drugs, alcohol consumption, or establish other relationships with other people in order to fill the existing gap."
+    },
+    {
       "id": "grow_relation",
+      "topic": "family_relation",
       "title": "Importance of close family relationships",
       "text_1": "In Uganda, most infants bond with their caregivers and caregivers are available to respond, play and engage with them.",
       "text_2": "However, as children grow, caregivers tend to refer that role and dis-engage themselves from their children. This makes children to fill the vacuum with other things like peers and drugs.",
@@ -12,10 +22,483 @@
     },
     {
       "id": "child_perception",
+      "topic": "current_pract",
       "title": "Who is your child?",
-      "text_1": "How a caregiver perceives his/her child shapes the type of care the\nchild is given.",
-      "text_2": "In our community, where family is central, there seems to be a tendency to stress qualities in children such as obedience, respect, hardworking and loyalty towards the family and relatives. But for successful parenting these qualities should come from both the parents and children.",
-      "text_3": "Being kind and able to understand your children, confident parenting and warm family relationships are important to children’s achievement, wellbeing and behaviour."
+      "text_1": "How a caregiver perceives their child shapes the type of care the\nchild is given.",
+      "text_2": "Since the family is at the heart of our community, successful parenting should nurture ideals of obedience, respect, handwork and loyalty in both children and parents.",
+      "text_3": "Being kind and understanding to your children is a sign of confident parenting and warm family relationship, and fosters good behavior and well-being of children."
+    },
+    {
+      "id": "raise_child",
+      "topic": "current_pract",
+      "title": "Raising a child",
+      "text_1": "It is a good thing to raise a child and a child is a PERSON like you and me.",
+      "text_2": "Everyone may see a child differently depending on the circumstance surrounding their family or community.",
+      "text_3": "Treating children negatively because of 'bad' behaviour can only worsen the situation.",
+      "text_4": "As caregivers, we need to pay attention to the needs of our children. It is important to try and live like you have '3 months' left in order to raise children whose behaviour earns the family respect."
+    },
+    {
+      "id": "child_dev_needs",
+      "topic": "child_dev",
+      "title": "Needs of children in different developmental stages",
+      "intro_text": "Here are a few suggestions on how you can ensure you child grows in specific developmental stages:",
+      "title_1": "Physical development",
+      "text_1": "* Proper nutrition\n* Shelter\n* Play \n* Protection from violence",
+      "title_2": "Cognitive development/thinking",
+      "text_2": "* Simulation\n* Colorful pictures\n* Education\n* Interactive play\n* Good nutrition\n* Time for rest",
+      "title_3": "Feelings development",
+      "text_3": "* Supportive family\n* Love\n* Feeling secure\n* Protection from neglect and emotional abuse",
+      "title_4": "Moral/social (religion & culture) development",
+      "text_4": "* Positive role models\n* Positive and consistent discipline in a loving context (praising good behavior, explaining why bad behavior is wrong, giving positive remarks by name)."
+    },
+    {
+      "id": "dev_take_away",
+      "topic": "child_dev",
+      "title": "Take away",
+      "text_1": "As a parent, note that by focusing on growing only one or two areas of a child’s development could affect their wellbeing.",
+      "text_2": "For balanced growth and development, ensure that you focus on all the four main areas equally in order to have a well-developed child."
+    },
+    {
+      "id": "child_needs",
+      "topic": "child_dev",
+      "title": "Child's Needs",
+      "intro_text": "What your child wants from you to grow up well at different stages of life.",
+      "title_1": "0-5 years",
+      "text_1": "* Hugs and kisses\n* Smiles and playtime\n* Regulation of behavior & consistency\n* Rules to keep children safe\n* Answer their questions\n* Love and nurturing\n* Eye contact & attention",
+      "title_2": "6-9 years",
+      "text_2": "* Talking and listening time\n* Play and have a fun time with you \n* Answers their questions\n* Participation & Involvement\n* Activities that build on self-esteem",
+      "title_3": "10-12 years",
+      "text_3": "* Support and Guidance\n* Establish a routine and teach what is expected of children \n* Approval and encouragement\n* Maintain clear rules and limits\n* Teach beliefs & responsibility",
+      "title_4": "13-17 years",
+      "text_4": "* Debates and discussions\n* Mentoring and direction\n* Guidelines, but no rules to\nenable decision-making & learning from their mistakes \n* Respect & parents’ support toward independence",
+      "outro_text": "Children do not develop in isolation but rather in an environment where their rights are respected."
+    },
+    {
+      "id": "parents_attitude",
+      "topic": "child_dev",
+      "title": "Attitudes and behaviors of parents/caregivers that help children:",
+      "title_1": "Feel safe",
+      "text_1": "* Children learn more from making mistakes if adults take the time to guide them through the journey.\n* Providing space for dialogue which involving active listening and open feedback\n* Be understanding during discussions in the family.\n* Be consistent in rules setting and fair in responding to all situations",
+      "title_2": "Feel loved",
+      "text_2": "* Create space within family to enable children to express themselves and feel a sense of self.\n* Allow children develop their independence\n* Show gentleness and in a considerate manner.\n* Use a firm and friendly tone.",
+      "title_3": "Feel respected and valued",
+      "text_3": "* Understand children’s needs and feelings for all the different ages brackets\n* Actively listen to children and respect their opinions.\n* Involve children in the family activities\n* Clearly define limits for the child"
+    },
+    {
+      "id": "caregiver_legacy",
+      "topic": "parent_childhood",
+      "text_1": "From the moment a child is born, his/her life is shaped by those around him/her, especially the parents/caregivers.",
+      "text_2": "Parents/caregivers have a deep and long lasting impact on their children’s lives. For example, even as adults, we can still ‘hear’ our parent’s voices or ‘see’ their actions in our lives (legacy). These legacies may be positive or negative, and are passed on intentionally or unintentionally.",
+      "text_3": "Parents/caretakers can have the greatest impact by teaching their child about different life issues e.g relationship skills, value of work, among others. These shape the person a child may become",
+      "text_4": "As a parent,it is important to reflect on how you want your child/children to remember you.",
+      "title": "Tips"
+    },
+    {
+      "id": "relation_pregnancy",
+      "topic": "parent_childhood",
+      "title": "A couple's relationship during pregnancy",
+      "text_1": "When a woman is pregnant she experiences body changes, which can affect her emotionally and physically. This may lead to relationship difficulties between couples. Oftentimes, such relationship problems might be quite difficult to resolve. This calls for patience! It is therefore a good idea to have an open discussion with your partner so that both of you can express how you feel about the situation.",
+      "text_2": "As a couple, you should be sensitive, objective and realistic about issues that cause conflicts during pregnancy.",
+      "text_3": "Avoid violent conflicts because they can:\n* Seriously damage the unborn child\n* Seriously damage the mother\n* Lead to stress in the family",
+      "text_4": "Men/fathers can actively support their wives during pregnancy by talking about the baby in the womb, checking the mother’s feelings, accompanying the mother to prenatal checkups, planning for the birth, and helping with household chores like cooking, washing, etc."
+    },
+    {
+      "id": "managing_behavior",
+      "topic": "positive_parenting",
+      "intro_text": "Improved discipline and respectability through positive parent-child interactions can be achieved through the following positive techniques:",
+      "title_1": "Fix-up",
+      "text_1": "When children cause trouble or hurt another child, expect them to fix it up – or at least try to help learn how to fix up their mess.",
+      "title_2": "Ignore",
+      "text_2": "The best way to deal with misbehavior aimed at getting your attention is to simply ignore it especially for infants. But be sure to give attention to your children when they behave well. Children need attention for good behavior, not misbehavior. However, this changes as children grow, for teenagers, we need to pay attention proportionally to both their good behavior and misbehavior.",
+      "title_3": "Be firm",
+      "text_3": "Clearly and firmly state, or even demand that the child do what needs to be done. Speak in a tone that lets your child know that you mean what you say and that you expect the child to do as he is told. Being firm doesn't mean yelling, nagging, threatening, or taking away privileges.",
+      "title_4": "Stay in control",
+      "text_4": "Act before the situation gets out of control, that is to say before you get angry and overly frustrated and before the child's behavior becomes unreasonable.",
+      "title_5": "Praise",
+      "text_5": "Give more attention and praise for good behavior and less for naughty behavior. Don't make punishment a reward. Let the child know that you appreciate a good attitude and cooperation. Children respond positively to genuine respect and praise.",
+      "title": "Tips"
+    },
+    {
+      "id": "setting_limits",
+      "topic": "positive_parenting",
+      "title": "Limits",
+      "intro_text": "What do we mean by limits?",
+      "text_1": "Limits are rules (a rule that does not oppress both the child and the parent and is respectful).",
+      "text_2": "Limits refer to the establishment of boundaries beyond which a certain thing may not be done.",
+      "text_3": "Limits are guidelines- tell children what they can and cannot do."
+    },
+    {
+      "id": "limits_importance",
+      "topic": "positive_parenting",
+      "title": "Importance of setting limits",
+      "intro_text": "Parents set rules for children for some of the following reasons:",
+      "text_1": "Provides a sense of comfort and security in the household",
+      "text_2": "Teaches responsibility, and understanding of what is expected of them",
+      "text_3": "Encourages discipline and listening",
+      "text_4": "Ensures they behave well towards other people",
+      "text_5": "Protects children from harm",
+      "outro_text": "Applying these limits involves directing the children towards the desired behavior in a positive and caring way."
+    },
+    {
+      "id": "establish_limits",
+      "topic": "positive_parenting",
+      "title": "How to establish effective family limits",
+      "text_1": "Children should understand the ‘why’ behind the limit. Get children’s opinions. They often have good ideas on limits, and when they participate in setting the rules, children are more likely to obey them",
+      "text_2": "Too many limits prevent children from learning on their own. Set limits on things that are important for the family respectability",
+      "text_3": "Rules should be consistent (should not change every day and when there is more than one caregiver in a home, they should all agree on the rules to avoid giving a child confusing messages).",
+      "text_4": "Limits should be stated positively e.g. “Play on the floor” instead of “Don’t climb on the chair”. Limits should be appropriate to children’s age, abilities and explained calmly.",
+      "text_5": "Limits should be clear, easy to understand and connected to a specific behavior. Set limits and also consequences. However, the consequences should be fair, and not involve corporal punishment.",
+      "text_6": "Praise and rewards (not necessarily monetary) can help support your child in following household rules."
+    },
+    {
+      "id": "parenting_style_firm",
+      "topic": "positive_parenting",
+      "title": "Firm/Authoritative Parenting",
+      "image_1": "images/firm_parenting_1.jpg",
+      "image_2": "images/firm_parenting_2.jpg",
+      "title_1": "Authoritative/Firm",
+      "text_1": "Parents who support their children but set firm limits for them. Firm parents show high levels of warmth and control. They control the children’s behavior by explaining rules, discussing and reasoning together. They listen to the children’s viewpoints but do not always accept them.",
+      "title_2": "Benefits of Authoritative parenting",
+      "text_2": "* Behave well\n* Do well in school\n* Lively and feel secure\n* Self-confident\n* Able to control their emotions\n* Can relate with other people in the home and outside children's right to expression is not respected",
+      "title_3": "Effects of Authoritative parenting",
+      "text_3": "* Sometimes children can be misunderstood as being proud\n* They can be vulnerable to abuse if they go to an environment where children's right to expression is not respected."
+    },
+    {
+      "id": "parenting_style_strict",
+      "topic": "positive_parenting",
+      "title": "Strict/Authoritarian",
+      "image_1": "images/strict_parenting_1.jpg",
+      "image_2": "images/strict_parenting_2.jpg",
+      "title_1": "Authoritarian/Strict",
+      "text_1": "High levels of control and demands on the child, poor relationships, and very strict commands coupled with low levels of love and care. Strict parents engage in low levels of communication with the children.",
+      "title_2": "Benefits of Strict parenting",
+      "text_2": "* Obedient in the presence of adults\n* Do well in school",
+      "title_3": "Effects of Strict parenting",
+      "text_3": "* Unhappy and fearful\n* Low self esteem\n* Problems relating with people\n* Cannot cope with frustration"
+    },
+    {
+      "id": "parenting_style_permissive",
+      "topic": "positive_parenting",
+      "title": "Permissive parenting",
+      "image_1": "images/permissive_parenting_1.jpg",
+      "image_2": "images/permissive_parenting_2.jpg",
+      "title_1": "Permissive",
+      "text_1": "Excess love and warmth, with low levels of control. Parents do not exert control over their children’s behavior or set limits and do not monitor their activities.",
+      "title_2": "Benefits of Permissive parenting",
+      "text_2": "* More resourceful than kids raised by uninvolved or strict parents.",
+      "title_3": "Effects of Permissive parenting",
+      "text_3": "* Cannot control their emotions\n* Often rebellious likely to have problems with authorities\n* Tend to have problems at school"
+    },
+    {
+      "id": "parenting_style_uninvolved",
+      "topic": "positive_parenting",
+      "title": "Indifferent/Uninvolved parenting",
+      "image_1": "images/non_involved_parenting_1.jpg",
+      "image_2": "images/non_involved_parenting_2.jpg",
+      "title_1": "Indifferent/Uninvolved",
+      "text_1": "Low control and poor relationships. Parents are not interested in their children and make few demands on them.",
+      "title_2": "Benefits of Uninvolved caregiver",
+      "text_2": "* Survive on their own but can be dangerous",
+      "title_3": "Effects of Uninvolved caregiver",
+      "text_3": "* Unhappy\n* Have problems controlling themselves\n* Have low self-esteem\n* Lack confidence\n* Have problems at school"
+    },
+    {
+      "id": "parenting_relationships",
+      "topic": "positive_parenting",
+      "title": "Tips for parenting for positive relationships and respectability",
+      "image_1": "images/parents_adressing_children.jpg",
+      "intro_text": "While exploring different styles of parenting for positive relationships and respectability, you need to know:",
+      "text_1": "Exerting power to achieve what you demand from the child may bring about conflict.",
+      "text_2": "Respect from children can best be attained by having interactive relationships, laying down clear rules of behavior, and holding your children accountable for their actions/behavior. Respect is earned by giving respect.",
+      "text_3": "To communicate clear expectations and limits, and to keep their anger in check while communicating their disappointments.",
+      "text_4": "Children, especially teenagers, learn to solve problems and plan with the possible consequences in mind.",
+      "text_5": "Parents become role models – their behaviors and attitudes provide examples of how to behave in relation to many areas of daily life, including health."
+    },
+    {
+      "id": "gender_stereotypes_1",
+      "topic": "gender_power",
+      "title": "Take away",
+      "text_1": "If we are to have a happy family, it is important for women and men to move out of their boxes with the attributes that make them better men and women.",
+      "text_2": "We also need to learn the attributes in the opposite sex's boxes that are positive. However, care should be taken not to use this as an opportunity to exploit others for instance a man should continue fulfilling their responsibilities even when they learn to practice the positive things from the woman's box.",
+      "text_3": "Women also should not use this to disrespect their husbands especially when they become economically empowered."
+    },
+    {
+      "id": "gender_stereotypes_2",
+      "topic": "gender_power",
+      "text_1": "Men and women are born with many similarities but as they grow, their family and society define for them the behavior and attitudes appropriate for them.",
+      "text_2": "We need to take the good attributes of men and women that are outside the box if they make us better mothers and fathers to our children.",
+      "text_3": "Although sex roles do not change over time, gender roles can be changed. This benefits both men and women.",
+      "text_4": "In families, where differences and similarities between men and women are appreciated, there is less stress and violence, and there is greater love and respect, especially for fathers.",
+      "title": "Tips"
+    },
+    {
+      "id": "gender_power",
+      "topic": "gender_power",
+      "title": "Key highlights on @data.topic_group.gender_relations: @data.topic.gender_power.title",
+      "text_1": "In our families/communities there are many unquestioned differences and inequalities between women and men, parents and children",
+      "text_2": "Abuse of power can make individuals vulnerable to gender based violence and mistreatment, and this negatively affect family relationships",
+      "text_3": "Both women and men can adopt non-violent means of resolving conflict without losing respect, and instead become admired role models",
+      "text_4": "Men will still be respected as real men if they commit to using their power positively by protecting their family from abuse and supporting the family.",
+      "text_5": "Men can choose to build a culture of respect in their families. They can use their leadership role to love, support and advise their wives and children.This can benefit them because they gain more respect at home and in thecommunity."
+    },
+    {
+      "id": "impact_conflict",
+      "topic": "impact_conflict",
+      "image_1": "images/cdhc_poster.jpg",
+      "text_1": "Spousal or partner violence (domestic violence) is a common problem in our families/communities. It is deeply rooted in unequal social and power relations, and is seen as ‘natural’ or ‘normal’.",
+      "text_2": "However, violence is a learned behaviour – boys and men are often raised to think that violence is an acceptable means of maintaining control particularly over women and children, resolving conflicts or expressing anger.",
+      "text_3": "Most of the victims of violence are women and children but it is often difficult for them to speak out and seek help. Some of them may fear that the person inflicting violence may take revenge if they seek help.",
+      "text_4": "Violence, especially the most severe forms, does not only have negative and lasting effects on the victims, but it also undermines, respect, and love of the person causing it to others. Witnessing or suffering conflict/violence in childhood also teaches children to associate anger or rage with violence later in life.",
+      "text_5": "We all get angered but anger should not lead to violence. We have a responsibility to control ourselves when we feel angry.",
+      "title": "Tips"
+    },
+    {
+      "id": "parents_involvement",
+      "topic": "impact_conflict",
+      "title": "Benefits of involvement of mothers and fathers",
+      "intro_text": "It's very important for both mothers and fathers to be involved in their children’s lives for the children’s and parents’ well being:",
+      "text_1": "A father’s academic support means that a child is likely to stay in school longer, a child is less likely to engage in risky sex or become pregnant early, and is positively related to the children’s academic motivation to try hard in school, feel their grades are important and place high value on education which benefits the father because in times like now when resources are so scarce. \n* The influence of a father’s involvement on academic achievement extends into adolescence and young adulthood. Fathering is associated with better verbal skills, intellectual functioning, and academic achievement among adolescents.",
+      "text_2": "* Children of involved fathers are more likely to have higher levels of economic achievement because children are more likely to have career success and occupational competency, enabling the father to have the best legacy for generations.\n* Fathers who are involved, nurturing, and playful with their infants have children with higher IQs, as well as better linguistic and cognitive capacities",
+      "text_3": "* Children of involved fathers are most likely to internalize their parents’ disciplinary messages and develop acceptable standards of conduct, and so will require less force or harassment to become responsible adults.\n* Children of involved fathers show higher social competence and social maturity. They have great respect for their parents and other authorities which can make any father proud to have raised such a child.",
+      "text_4": "* The more positive time you spend as a father with your child early on in life, the less negative time you need to spend with them later in life.\n* Safety - Children will feel more safe and are able to live in an environment free from abuse and neglect.\n* Permanency. Children of involved father are more likely to have a permanent place to call home. A sense of continuity and connectedness is central to a child’s healthy development",
+      "text_5": "* Children of involved fathers are more likely to belong to nurturing families and environments in which their physical, emotional, educational, and social needs are met.\n* Involved fathers are more likely to treat the mothers of their children with respect and deal with conflict within the relationship in an adult and appropriate manner. Thus their boys are more likely to understand how they are to treat women and less likely to act in an aggressive fashion toward females.\n* Girls with involved, respectful fathers see how they should expect men to treat them and are less likely to become involved in violent or unhealthy relationships.",
+      "text_6": "* Children who have an involved father are more likely to be emotionally secure, be confident to explore their surroundings, and, as they grow older, have better social connections with peers. These children also are less likely to get in trouble at home, school, or in the neighborhood.\n* Boys with involved fathers had fewer school behavior problems and girls had stronger self-esteem."
+    },
+    {
+      "id": "sharing_care",
+      "topic": "sharing_care",
+      "intro_text": "Men can do many simple things to help redefine their role and build their skills in childcare, including:",
+      "text_1": "Spending time talking about each family member’s needs and roles",
+      "text_2": "Working together with mothers – everybody benefits when parents work together to maintain the home",
+      "text_3": "Taking responsibility. This involves noticing what needs doing, and planning when and how it gets done.",
+      "text_4": "Planning to spend time alone with their children. This helps to forge strong bonds and warm relations with children, understand children’s needs and develop parenting skills.",
+      "text_5": "Avoiding authoritarian parenting and not relying on intimidation.",
+      "title": "Tips"
+    },
+    {
+      "id": "caregiving",
+      "topic": "sharing_care",
+      "title": "Take away",
+      "text_1": "Men and women should spend quality time every day with their children.",
+      "text_2": "Men are capable of caring for babies and can satisfy all their babies’ needs (except for breastfeeding).",
+      "text_3": "Gendered ideas about care-giving are historically and culturally constructed and passed on to new generations which we can now change in our setting because children actually belong more to the men’s family than the women.",
+      "text_4": "Just like men can care for objects, they can also make a unique contribution in caring for people, most especially their children."
+    },
+    {
+      "id": "healthy_relation",
+      "topic": "healthy_relation",
+      "title": "Key highlights on Throw the Drunk Ball.",
+      "text_1": "Men and women drink alcohol for different reasons.",
+      "text_2": "Excessive drinking of alcohol creates serious problems,including medical problems and even death, and in families it contributes to violence and conflicts between partners and poverty.",
+      "text_3": "Living in an alcoholic family makes children more vulnerable to abuse, including incest and being battered."
+    },
+    {
+      "id": "rships_communication",
+      "topic": "healthy_relation",
+      "title": "Key highlights on Marital Relationships and Communication",
+      "text_1": "We need open  communication in our relationships. For example, play , laugh together, consult each other on intimate issues and give each other feedback.",
+      "text_2": "As married people, we need to understand each other properly. Know when to give positive and negative feedback but do that with patience and in love.",
+      "text_3": "Marriage expresses companionship, motherhood and fatherhood, and should be complementary. Therefore it is important to focus on building a good and healthy relationship.",
+      "text_4": "Sex in marriage is an honorable and noble act. Sexual union strengthens love between husband and wife. Therefore, faithfulness is essential to marriage.",
+      "text_5": "Respect is a key element that sustains a marriage. But infidelity, alcoholism and violence are the worst threats to a healthy marriage."
+    },
+    {
+      "id": "spousal_relationships",
+      "topic": "session_review",
+      "title": "Take of the day",
+      "text_1": "It is important for mothers and fathers to work together and support each other for the good of their family",
+      "text_2": "It is not wrong for fathers to do work that society normally considers to be women’s work like looking after children",
+      "text_3": "As a mother, always try to be open with your spouse when you need his help caring for the children."
+    },
+    {
+      "id": "resolving_conflict",
+      "topic": "discipline",
+      "title": "Resolving Conflict with children",
+      "text_1": "Problems cannot be resolved with the ‘lose and win’ approach  like in the ‘tug of war.’ Winning and losing ends up hurting some people in the process and in most cases even those that get what they want from children leave behind lasting painful hearts.",
+      "text_2": "When we support each other like in the circle, with the strong supporting the weak, we all achieve the family objective. The weak will begin to believe in themselves and do even better.",
+      "text_3": "We need to build proper and respectful relationships so that our children do not wait for opportunities to revenge when they are strong but rather work towards building and sustaining respectful relationships.",
+      "text_4": "For many of us growing up, discipline usually meant punishment and it often left us feeling hurt, upset, and unfairly treated.",
+      "text_5": "Discipline is however about guidance. It is about helping children learn the values that are important to the family and society.",
+      "text_6": "Although some people hold the view that it is alright to punish (smack, shove, hit, burn, verbally and sexually abuse) children as a way of disciplining them, punishing children is harmful."
+    },
+    {
+      "id": "sensitive_interaction",
+      "topic": "discipline",
+      "text_1": "Parents should be interested in their children’s play and spend some special time with them. Parents should praise their children, because praise encourages a child to put in more effort and be helpful. Pay attention to the behavior you want to promote and encourage it.",
+      "title_2": "Don’t combine praise with criticism because:",
+      "text_2": "* The child might change from the ‘unwanted’ behavior, but only for a bit. They may probably repeat the behavior since they have only learnt what not to do, rather than being taught what is expected/what to do.",
+      "text_3": "* The child learns not to do what is forbidden in the adult's presence, rather than learn not to do it at all.",
+      "text_4": "* The child learns to tell lies, cheat or blame others to avoid being hit.\n* Children tend to have strong feelings of anger, hurt, and injustice and may hate themselves.",
+      "text_5": "* Beating children can encourage them to bully others, misleading them to think that it is okay to hit others when you are bigger and stronger, due to anger or to get what you want. This eventually leads to being violent in adult life.",
+      "text_6": "* The child becomes withdrawn, fears parents/adults, feels less valued, anxious or depressed.\n* A child can break trust and respect for adults.",
+      "outro_text": "A positive approach to discipline is less stressful for children and strengthens the bond with the parents. It takes patience but is worth it in the long run.",
+      "title": "Tips"
+    },
+    {
+      "id": "harsh_communication",
+      "topic": "discipline",
+      "title": "Harsh communication",
+      "text_1": "Emphasize the power of personal authority, make demands:\nFor example: Kato, turn off the music,\nWe are taking a rest.",
+      "text_2": "Arbitrary, indirectly related to situation\nor not related at all:\nFor example: Why do you have to turn\non the music when we are taking a\nrest? You are now not allowed to listen\nto any music from now on.",
+      "text_3": "Identify children’s behavior with\npersonality, imply moral judgment:\nFor example: You acted like a thief\nwhen you used my motorbike without\nasking for permission. From now on you\nare not allowed to touch it!",
+      "text_4": "Concerned with past behavior:\nFor example: You are not allowed to\ninvite your friends to our house again.\nLast time you made a big mess and\nyour friends used bad language",
+      "text_5": "Threaten, disrespect, or put the child\ndown:\nFor example: Last time you made me\ni lost face with my friend. You know\nwhat will happen if your friends come to\nour house next time......",
+      "text_6": "Demand obedience and does not\naccept child’s choice:\nFor example: Do it now, go! If you don’t\ndo it now, I will beat you!",
+      "text_7": "Angry, unfriendly voice and expression:\nFor example: If you don’t go to be now,\nyou will see what I will do to you."
+    },
+    {
+      "id": "positive_communication",
+      "topic": "discipline",
+      "title": "Positive communication",
+      "text_1": "Express the reality of the life, showing\nmutual respect:\nFor example: Kato, I know that you like\nthat song but we are taking a rest. So\nplease either you turn the volume down\nor you turn the music off.",
+      "text_2": "Directly related to the child’s\nmisbehavior:\nFor example: You should not turn the\nmusic up so loud at noon when people\nare taking a rest.",
+      "text_3": "Separate the deed from the doer, no\nmoral judgment:\nFor example: You use my motorbike\nwithout my permission. It is not right.\nFrom now on, you must ask me before\ntaking it.",
+      "text_4": "Concerned only with present and future\nbehaviors:\nFor example: You can invite your friends\nto our house if you tidy up yourselves\nand nobody uses bad language.",
+      "text_5": "Discuss the behavior in a friendly\nmanner, after the adult and the child\nhave calmed down; imply good will:\nFor example: Because you were not\nrespectful to my guest, next time may\nyou stay in your room when I talk with\nmy guest?",
+      "text_6": "Permit choices:\nFor example: You can do it whenever you want but it should be completed before I come back.",
+      "text_7": "Calm, friendly but determined voice and\nexpression:\nFor example: You can continue reading\nbut do not stay up after 10 o’clock."
+    },
+    {
+      "id": "education_purpose",
+      "topic": "education",
+      "text_1": "All parents want their children to succeed in school and life.",
+      "text_2": "Research indicates that children whose parents are supportive ineducation tend to do better than those whose parents are not.",
+      "text_3": "A non-school going girl is more likely to get married early and get unintended pregnancies among others than a school going girl.",
+      "text_4": "An educated woman is more likely to contribute to her family income and get involved in her children’s learning and social life than mothers with no schooling.",
+      "title": "Tips"
+    },
+    {
+      "id": "education_why",
+      "topic": "education",
+      "title": "Why do parents take boys and girls to school?",
+      "text_1": "Every parent wants their child to become a successful, caring adult, thus taking them to school.",
+      "text_2": "Children who are actively and truly supported by parents in their education tend to do better in school.",
+      "text_3": "How parents perceive the purpose of education affects choices of schools for their children. what they provide for children while in school, how they allocate time for household chores for their children, study and play among others.",
+      "text_4": "If parents believe the purpose is to shape children’s values, then they will focus more on what their children are becoming as human beings, rather than just their exam results or promotion to the next class."
+    },
+    {
+      "id": "encourage_school",
+      "topic": "education",
+      "text_1": "Children sometimes fail at school because they have not been supported well enough, and not because of their own weaknesses.",
+      "text_2": "Most parents want to be involved in their children’s education. However, sometimes, they do not know where to start, when to find time or how to engage positively with their child’s school.",
+      "text_3": "It takes more than a good school/teacher to educate children. And it takes more than a good home/parent to raise a respectful child. However, these two have to work together.",
+      "title": "Tips"
+    },
+    {
+      "id": "education",
+      "topic": "education",
+      "title": "Positive Parenting Strategies",
+      "intro_text": "Here are a few suggestions on positive strategies:",
+      "title_1": "Withholding privileges",
+      "text_1": "Something the child values such as playing with friends BUT NOT FOOD. Children should know that a privilege is earned through good behavior. This method is most effective with adolescents. But make sure privilege is related to the behavior in order for it to be effective.",
+      "title_2": "Grounding",
+      "text_2": "Not allowing the child to leave a certain space/room. This method is most effective with school aged children.",
+      "title_3": "Reward good behavior",
+      "text_3": "Praise the child and celebrate good behavior. Ignore negative attention seeking behavior. When children are praised and encouraged for knowing and doing what is expected of them, their desire to please the parent is built. But be careful not to ignore negative behavior of adolescents, as consequences can be bad.",
+      "title_4": "Consequences",
+      "text_4": "Let the child face the consequence of negative behavior e.g. break a toy and there will be no more toys to play with. But be careful about letting adolescents face consequences of their bad behavior, let the consequence be implementable looking at a timeframe because some parents end up withdrawing the consequences.",
+      "title_5": "Time out or cool down",
+      "text_5": "Sending a child to a corner and/or giving them a seat and asking them to spend 5 minutes cooling down, until he/she is calm. This method is effective with younger children.",
+      "title_6": "Teach children values",
+      "text_6": "Show good behavior and monitor your child. Stop bad behavior and show the alternative by talking to them about it. Talk to your child about why you want them to do something, not just because you say so. They will learn what is important to your family, e.g. listening to each other and speaking with respect. This method can be used for all ages).",
+      "title_7": "‘Delaying’ to discipline",
+      "text_7": "Learn to be patient and let go of frustrations/ anger accumulated elsewhere. Harsh punishment often happens due to excessive anger. But time heals and delaying punishment helps to discipline a child appropriately."
+    },
+    {
+      "id": "gender_equal",
+      "topic": "gender_equal",
+      "text_1": "Throughout our lives, men and women are taught by family, media, and society on how we should conduct ourselves as men and women, and how we should relate to members of the opposite and same sex.",
+      "text_2": "As we have seen, many of these differences are constructed by society and are not part of our nature or biological make-up.",
+      "text_3": "What is considered appropriate behaviour for women or men varies from country to country and culture to culture. It changes over time. This means such behaviour is not natural/ inborn. Many of these expectations are completely fine and help us enjoy our identities as either man or woman.",
+      "text_4": "We however all have the ability to discern unhealthy teachings and prevent them from limiting our full potential as human beings or that of our family members. As we become more aware of how some gender stereotypes can negatively impact our lives and communities, we can think constructively about how to challenge them and promote more positive gender roles and relations in our lives and communities.",
+      "text_5": "We can all have the scope to challenge/modify the unfair norms and practices that hinder the lives of men, women, boys and girls, characteristics. of the gender boxes. The more people do this, the easier it gets.",
+      "title": "Tips"
+    },
+    {
+      "id": "resolving_disagreement",
+      "topic": "gender_equal",
+      "title": "Techniques on resolving disagreement",
+      "intro_text": "Here are a few guidelines on how to resolve a disagreement with your patner in a respectful and constructive way",
+      "text_1": "Ask to hear your partner’s views and listen to them carefully without interruption.Identify any aspects of your partner’s views with which you agree.",
+      "text_2": "Ask your partner to hear your own views without interruption.",
+      "text_3": "State your own views firmly, and if possible clarify on how you feel about the issue:\n* Try not to blame your partner or list their mistakes. \n* Try to have a neutral tone. Do not be angry. \n* Try to use ‘I’ other than ‘you’ in your statements to help avoid blaming your partner.",
+      "text_4": "Have a ‘problem-solving approach’. Do not try to win the argument with your partner, but try to find a solution you can both agree on.",
+      "text_5": "Don’t make threats or provocations. If you feel too emotional/overwhelmed, seek another engagement to distract oneself. Resume discussion on feelings when calmer.",
+      "text_6": "Try to do at least three positive things to improve/reinforce your relationship every time an issue of disagreement arises"
+    },
+    {
+      "id": "patnership_parenting",
+      "topic": "gender_equal",
+      "title": "Positive spousal relationship",
+      "text_1": "Positive spousal relationship is very important because taking care of children requires support from each other. It is a mixture of hard work and love, in which the relationship between parents is very important.",
+      "text_2": "Parents’ styles of parenting are often shaped by the way they were brought up by their parents. The influence of one’s own upbringing can be positive or negative.",
+      "text_3": "However, parents have to stay tuned to each other and have open communication to discuss how they can share parenting roles.",
+      "text_4": "Always try to present a united front to the children and resolve differences away from them.",
+      "text_5": "Agree on a parenting plan that you both believe is in the best interest of your children, marriage and family."
+    },
+    {
+      "id": "info_puberty",
+      "topic": "prevent_abuse",
+      "intro_text": "Here are key highlights from this activity",
+      "text_1": "Some boys start puberty at the age of 10, but others do not start until they are 14 or 15. Some girls start puberty as early as age eight and others do not start until they are 13 or 14. However, if a girl does not start menstruating by the age of 16, she should consult a health provider",
+      "text_2": "During puberty, there is an order in which certain physical changes usually occur. For girls, breasts begin to grow; for boys, growth of the testicles is usually the earliest sign. However, bodily changes can occur in a different order and still be considered normal.",
+      "text_3": "Non-verbal communication and talking in parables does not normally help parents to protect their children from early sex and possible sexual abuse. As parents, there is need to have open transparent communication with the children,",
+      "text_4": "Let them share how they feel, and provide practical workable solutions that help children to choose to delay sex and avoid possible sexual abuse.",
+      "title": "Tips"
+    },
+    {
+      "id": "values_behaviours",
+      "topic": "prevent_abuse",
+      "title": "Building values for better decision making on sexual issues",
+      "text_1": "Most parents feel that young people should not have sex. It’s important for parents and all caregivers to provide appropriate personal values and to discuss the values from your family which helped you to make positive decisions about delaying sex among others.",
+      "text_2": "Parents are important figures in the lives of children and influence their values and behaviors. Therefore, parents should be clear about the values they hold about sexuality."
+    },
+    {
+      "id": "reduce_conflict",
+      "topic": "reduce_conflict",
+      "intro_text": "There are two main things that all of us can do to make our relationships better:",
+      "title_1": "Sharing",
+      "text_1": "Opening yourself more to those you trust.",
+      "title_2": "Feedback",
+      "text_2": "When others let you know in a positive manner what you do not know about yourself, what is in the blind/unknown part of your life. For example, if someone has a bad breath, you need to prepare a good moment to give feedback to the person to improve oral hygiene.",
+      "title": "Tips"
+    },
+    {
+      "id": "reduce_conflict_tips",
+      "topic": "reduce_conflict",
+      "title": "Take away",
+      "text_1": "Keeping many secrets/hiding issues from the people we live with, especially our spouses creates tension in the family.",
+      "text_2": "Although sometimes it is better to keep hidden things hidden, it is often easier to live and work with someone who does not hide too much."
+    },
+    {
+      "id": "conclusion",
+      "topic": "conclusion",
+      "text_1": "Parenthood is not a position but a responsibility, it is not a name but a function to protect, re-assure and refill emptiness, cultivate and be a source of blessing to children and spouses.",
+      "text_2": "Head means being a leader –being at the forefront and providing direction. Therefore, fathers especially, should learn from this activity and play their leadership role sufficiently.",
+      "text_3": "Parents, especially fathers, strengthen their children's competence. They form lifelong healthy attitudes towards work, along with serious habits of work. Without such leadership, children would have trouble grasping the connection between effort and results, standards and achievement.",
+      "text_4": "Parents teach respect for rightful authority. Being smart and far-sighted, parents know that when children fail to respect them, they may later clash with other forms of rightful authority e.g. teachers, employers, the law, God's law, and their own conscience.",
+      "text_5": "Parents build healthy self-confidence in children.",
+      "title": "Tips"
+    },
+    {
+      "id": "parents_web",
+      "topic": "conclusion",
+      "text_1": "If you wish to share your experiences with the community, you should do so willingly as it will be the best way to influence other parents in their community.",
+      "text_2": "Encourage continuity of community radio programmes, community talks with schools and other meetings so that community members can raise their children respectfully.",
+      "title": "Tips"
+    },
+    {
+      "id": "parents_web",
+      "topic": "conclusion",
+      "text_1": "Continued meeting and providing support to one another will help you to fulfill your commitment to the group and serve as a source of emotional support.",
+      "title": "Tips"
+    },
+    {
+      "id": "closing",
+      "topic": "conclusion",
+      "title": "The Closing Activity",
+      "text_1": "We have come to the end of the programme but there is only one more thing to be done: the award of certificates.",
+      "text_2": "As a participant who has successfully completed the programme, you will be awarded a certificate (we will send you a PDF to print either to your telephone or email)"
     }
   ],
   "_xlsxPath": "global/data_lists/topics.xlsx"

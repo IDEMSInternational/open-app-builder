@@ -1,0 +1,44 @@
+{
+  "flow_type": "data_list",
+  "flow_name": "gender_power",
+  "status": "released",
+  "rows": [
+    {
+      "id": "gender_power_check_in",
+      "priority": 1,
+      "data_list_name": "check_in",
+      "row_id": "id_1"
+    },
+    {
+      "id": "gender_power_relax",
+      "priority": 2,
+      "data_list_name": "relax",
+      "row_id": "id_1"
+    },
+    {
+      "id": "gender_power_intro",
+      "priority": 4,
+      "data_list_name": "intro",
+      "row_id": "gender_power"
+    },
+    {
+      "id": "gender_power_stereotypes_tbg",
+      "priority": 5,
+      "data_list_name": "topic_block_group",
+      "row_id": "gender_stereotypes"
+    },
+    {
+      "id": "gender_power_tips",
+      "priority": 6,
+      "data_list_name": "tips",
+      "row_id": "gender_power"
+    },
+    {
+      "id": "gender_power_praise",
+      "priority": 18,
+      "data_list_name": "praise",
+      "row_id": "gender_power"
+    }
+  ],
+  "_xlsxPath": "global/data_lists/session_tasks.xlsx"
+}

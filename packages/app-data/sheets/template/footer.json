@@ -1,0 +1,136 @@
+{
+  "flow_type": "template",
+  "flow_name": "footer",
+  "status": "released",
+  "rows": [
+    {
+      "name": "button_list",
+      "value": [
+        "image: @data.app_section.sessions.icon_asset | text: @data.app_section.sessions.title_modular | target_template: @data.app_section.sessions.template_modular",
+        "image: @data.app_section.habits.icon_asset | text: @data.app_section.habits.title_modular | target_template: @data.app_section.habits.template_modular",
+        "image: @data.app_section.library.icon_asset | text: @data.app_section.library.title_modular | target_template: @data.app_section.library.template_modular"
+      ],
+      "type": "set_variable",
+      "_nested_name": "button_list",
+      "_dynamicFields": {
+        "value": {
+          "0": [
+            {
+              "fullExpression": "image: @data.app_section.sessions.icon_asset | text: @data.app_section.sessions.title_modular | target_template: @data.app_section.sessions.template_modular",
+              "matchedExpression": "@data.app_section.sessions.icon_asset",
+              "type": "data",
+              "fieldName": "app_section"
+            },
+            {
+              "fullExpression": "image: @data.app_section.sessions.icon_asset | text: @data.app_section.sessions.title_modular | target_template: @data.app_section.sessions.template_modular",
+              "matchedExpression": "@data.app_section.sessions.title_modular",
+              "type": "data",
+              "fieldName": "app_section"
+            },
+            {
+              "fullExpression": "image: @data.app_section.sessions.icon_asset | text: @data.app_section.sessions.title_modular | target_template: @data.app_section.sessions.template_modular",
+              "matchedExpression": "@data.app_section.sessions.template_modular",
+              "type": "data",
+              "fieldName": "app_section"
+            }
+          ],
+          "1": [
+            {
+              "fullExpression": "image: @data.app_section.habits.icon_asset | text: @data.app_section.habits.title_modular | target_template: @data.app_section.habits.template_modular",
+              "matchedExpression": "@data.app_section.habits.icon_asset",
+              "type": "data",
+              "fieldName": "app_section"
+            },
+            {
+              "fullExpression": "image: @data.app_section.habits.icon_asset | text: @data.app_section.habits.title_modular | target_template: @data.app_section.habits.template_modular",
+              "matchedExpression": "@data.app_section.habits.title_modular",
+              "type": "data",
+              "fieldName": "app_section"
+            },
+            {
+              "fullExpression": "image: @data.app_section.habits.icon_asset | text: @data.app_section.habits.title_modular | target_template: @data.app_section.habits.template_modular",
+              "matchedExpression": "@data.app_section.habits.template_modular",
+              "type": "data",
+              "fieldName": "app_section"
+            }
+          ],
+          "2": [
+            {
+              "fullExpression": "image: @data.app_section.library.icon_asset | text: @data.app_section.library.title_modular | target_template: @data.app_section.library.template_modular",
+              "matchedExpression": "@data.app_section.library.icon_asset",
+              "type": "data",
+              "fieldName": "app_section"
+            },
+            {
+              "fullExpression": "image: @data.app_section.library.icon_asset | text: @data.app_section.library.title_modular | target_template: @data.app_section.library.template_modular",
+              "matchedExpression": "@data.app_section.library.title_modular",
+              "type": "data",
+              "fieldName": "app_section"
+            },
+            {
+              "fullExpression": "image: @data.app_section.library.icon_asset | text: @data.app_section.library.title_modular | target_template: @data.app_section.library.template_modular",
+              "matchedExpression": "@data.app_section.library.template_modular",
+              "type": "data",
+              "fieldName": "app_section"
+            }
+          ]
+        }
+      },
+      "_dynamicDependencies": {
+        "@data.app_section.sessions.icon_asset": [
+          "value.0"
+        ],
+        "@data.app_section.sessions.title_modular": [
+          "value.0"
+        ],
+        "@data.app_section.sessions.template_modular": [
+          "value.0"
+        ],
+        "@data.app_section.habits.icon_asset": [
+          "value.1"
+        ],
+        "@data.app_section.habits.title_modular": [
+          "value.1"
+        ],
+        "@data.app_section.habits.template_modular": [
+          "value.1"
+        ],
+        "@data.app_section.library.icon_asset": [
+          "value.2"
+        ],
+        "@data.app_section.library.title_modular": [
+          "value.2"
+        ],
+        "@data.app_section.library.template_modular": [
+          "value.2"
+        ]
+      }
+    },
+    {
+      "type": "navigation_bar",
+      "parameter_list": {
+        "button_list": "@local.button_list"
+      },
+      "name": "navigation_bar",
+      "_nested_name": "navigation_bar",
+      "_dynamicFields": {
+        "parameter_list": {
+          "button_list": [
+            {
+              "fullExpression": "@local.button_list",
+              "matchedExpression": "@local.button_list",
+              "type": "local",
+              "fieldName": "button_list"
+            }
+          ]
+        }
+      },
+      "_dynamicDependencies": {
+        "@local.button_list": [
+          "parameter_list.button_list"
+        ]
+      }
+    }
+  ],
+  "_xlsxPath": "global/templates/navigation_templates.xlsx"
+}

@@ -1,0 +1,46 @@
+{
+  "flow_type": "generator",
+  "flow_name": "gen_impact_conflict_blocks",
+  "status": "released",
+  "parameter_list": {
+    "input_data_list": "impact_conflict",
+    "output_flow_name": "@gen.id",
+    "output_flow_type": "template",
+    "output_flow_subtype": "generated"
+  },
+  "session": "impact_conflict",
+  "rows": [
+    {
+      "type": "template",
+      "name": "@gen.data_list_name",
+      "value": "@gen.data_list_name",
+      "action_list": [
+        {
+          "trigger": "completed",
+          "action_id": "emit",
+          "args": [
+            "completed"
+          ],
+          "_raw": "completed | emit: completed",
+          "_cleaned": "completed | emit: completed"
+        },
+        {
+          "trigger": "uncompleted",
+          "action_id": "emit",
+          "args": [
+            "uncompleted"
+          ],
+          "_raw": "uncompleted | emit: uncompleted",
+          "_cleaned": "uncompleted | emit: uncompleted"
+        }
+      ],
+      "rows": [
+        {
+          "name": "id",
+          "value": "@gen.row_id"
+        }
+      ]
+    }
+  ],
+  "_xlsxPath": "global/templates/blocks/generate_blocks.xlsx"
+}

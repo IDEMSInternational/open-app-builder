@@ -4,28 +4,124 @@
   "status": "released",
   "rows": [
     {
-      "id": "rel_vacuum",
-      "title": "Relationship vacuum",
-      "slide_1_text": "Every human being needs positive relationships whether children, men and women.",
-      "slide_2_text": "Life hates a relationship vacuum. When there is a relationship vacuum with one's family, they feel empty both inside and around them.",
-      "slide_3_text": "But because life hates a relationship vacuum, we are naturally drawn to fill that gap.",
-      "slide_4_text": "This vacuum often leads us to turn to other people or things such as drugs, alcohol consumption, or establish other relationships with other people in order to fill the existing gap.",
-      "slide_1_image_asset": "images/current_pract_picture_quiz_2.png",
-      "slide_2_image_asset": "images/current_pract_picture_quiz_5.png",
-      "slide_3_image_asset": "images/current_pract_picture_quiz_6.png",
-      "slide_4_image_asset": "images/current_pract_picture_quiz_7.png"
+      "id": "interactive_play_distracted",
+      "topic": "child_dev",
+      "slide_1_text": "A mother is busy on the phone.",
+      "slide_2_text": "Her son David keeps talking to her trying to get her attention to join and enjoy play.",
+      "slide_3_text": "The child gets disappointed and annoyed."
     },
     {
-      "id": "raise_child",
-      "title": "Raising a child",
-      "slide_1_text": "It is a good thing to raise a child and a child is a PERSON like you and me.",
-      "slide_2_text": "Everyone may see a child differently depending on the circumstance surrounding their family or community.",
-      "slide_3_text": "Treating children negatively because of 'bad' behaviour can only worsen the situation.",
-      "slide_4_text": "As caregivers, we need to pay attention to the needs of our children. It is important to try and live like you have '3 months' left in order to raise children whose behaviour earns the family respect.",
-      "slide_1_image_asset": "images/current_pract_picture_quiz_2.png",
-      "slide_2_image_asset": "images/current_pract_picture_quiz_5.png",
-      "slide_3_image_asset": "images/current_pract_picture_quiz_6.png",
-      "slide_4_image_asset": "images/current_pract_picture_quiz_7.png"
+      "id": "interactive_play_control",
+      "topic": "child_dev",
+      "slide_1_text": "A father finds his daughter Birungi playing and asks to join.",
+      "slide_2_text": "In the process, the father insists that the child should play his way since he knows the game better.",
+      "slide_3_text": "The child gets frustrated and goes away."
+    },
+    {
+      "id": "outstanding_abilities",
+      "topic": "parent_childhood",
+      "gender": "men",
+      "intro_text": "Here's a story of a supportive father in child care.",
+      "slide_1_text": "Ssemakula from Kirowoza village is married with four children. Whenever his wife is pregnant, Mr. Ssemakula accompanies her to the Health Centre and brings her back home.",
+      "slide_2_text": "The family does not have a lot of money, but they seem happy and healthy. On weekends, the family works together on the farm.",
+      "slide_3_text": "Whenever the wife delivers, Ssemakula takes turns with her to look after the baby even at night when the child is restless or crying.",
+      "slide_4_text": "In his compound, Ssemakula plays different games with the older children such as football, hide and seek, and spends time reading with them and teaching them to ride the bicycle."
+    },
+    {
+      "id": "managing_behaviour",
+      "topic": "positive_parenting",
+      "slide_1_text": "Sarah's mother is washing clothes while his younger brother is playing with bricks.",
+      "slide_1_image_asset": "images/managing_difficult_behaviour_1.jpg",
+      "slide_2_text": "Sarah walks toward his brother\n \nSarah humbly: \"Give it to me!\"",
+      "slide_2_image_asset": "images/managing_difficult_behaviour_2.jpg",
+      "slide_3_text": "Sarah's mother shouting: \"Please give the bricks back to your brother.\"",
+      "slide_3_image_asset": "images/managing_difficult_behaviour_3.jpg",
+      "slide_4_text": "Sarah's brother begins to cry :\n\"WAAAAH...Mama\"",
+      "slide_4_image_asset": "images/managing_difficult_behaviour_4.jpg",
+      "slide_5_text": "Sarah's mother: Sarah, if you cannot place nicely with your brother, I will tell your father.\nSarah's brother continues crying.",
+      "slide_5_image_asset": "images/managing_difficult_behaviour_5.jpg"
+    },
+    {
+      "id": "setting_limits",
+      "topic": "positive_parenting",
+      "slide_1_text": "Mother: \"Sam, you have been coming home from playing with your friends after sunset.\"",
+      "slide_1_image_asset": "images/limits_for_children_1.jpg",
+      "slide_2_text": "Mother: \"It is too dangerous in the community after dark. From now on, our household rule is that you need to come home before sunset, okay?\"",
+      "slide_2_image_asset": "images/limits_for_children_2.jpg",
+      "slide_3_text": "Mother: \"Thank you, Sam, for coming before sunset. Tomorrow let's go to soccer match together.\"",
+      "slide_3_image_asset": "images/limits_for_children_3.jpg"
+    },
+    {
+      "id": "impact_conflict",
+      "topic": "impact_conflict",
+      "slide_1_text": "Susan and her husband John have a troublesome son, Henry, who is 11 years old. Henry is very energetic and creative. However, he often gets into trouble at school.",
+      "slide_2_text": "On weekends and even on some school days, Henry escapes from home to watch video in the trading centre. Susan’s husband often blames her for Henry’s bad behaviour saying that she spends too much time at her job as a charcoal seller in the market, when she should be home more, watching over the children.",
+      "slide_3_text": "One day Susan and her husband got into a heated argument and he hit her. He often did so but this time, Susan decided that she could not take it anymore. She lashes out at Henry and beats him up, blaming him for always bringing her problems.",
+      "slide_4_text": "A male neighbour passed but did not say anything. As Susan contemplated leaving, she thought about her children and got discouraged, saying the children would suffer without her."
+    },
+    {
+      "id": "rships_communication",
+      "topic": "healthy_relation",
+      "title": "Story Time",
+      "slide_1_text": "“But I did not do anything wrong, we are just friends” Adome insisted, when a family member voiced concern over the time he was spending with the girl working in the bar and restaurant.",
+      "slide_2_text": "In Adome’s mind, he had not crossed any lines because there was nothing much that was happening; “I only tap her behind sometimes, just for fun, and I have no problem spending time with someone who cooks and serves us food and beer very well, daily.",
+      "slide_3_text": "Adome and his wife Dorotia had been happily married for 5 years having had a very powerful ‘kwanjula’. But Dorotia is a quiet and shy person at home. She cannot make a conversation and Adome often feels lonely – even when they are together. Dorotia is a faithful wife and a good mother who is very strict in raising her 2 two children.",
+      "slide_4_text": "When it comes to being sensitive to his needs (including bedroom affairs), Adome feels that Dorotia has a lot to learn yet, both of them have challenges with body hygiene issues.The restaurant girl, however, is a good listener and easily reads Adome’s moods. She is quick to laugh with him and is fun to be around.",
+      "slide_5_text": "As the two continued to spend time together, a friend to whom Adome had casually told about the relationship mentioned it to Dorotia. but Adome dismissed her concerns. Dorotia was so disturbed and wanted the matter resolved. So she invited the ‘Ssenga’ for a meeting with them."
+    },
+    {
+      "id": "spousal_relationships",
+      "topic": "session_review",
+      "title": "Story Time",
+      "slide_1_text": "A mother was bathing a child when the father returned home and asked to be served tea.",
+      "slide_2_text": "Patiently, she explained that she was still busy bathing the child, and that the other children were also waiting to be bathed.",
+      "slide_3_text": "She asked the husband to come and bathe the children as she goes to prepare tea for him. The father agreed and took over this responsibility. A few minutes later, the tea was ready.",
+      "slide_4_text": "A neighbour who was then passing by saw this and was impressed to see a father bathing his child as their mother served tea. He wondered how they were able to share the roles easily.",
+      "slide_5_text": "The couple told him that they had benefited from attending Parenting for Respectability sessions."
+    },
+    {
+      "id": "conflict_children",
+      "topic": "discipline",
+      "title": "Tug of war",
+      "intro_text": "While raising our children, especially adolescents, it is easy to get into a confrontation with them. For instance, this can happen when parents set limits and regulate their children’s behavior. However, confrontation or conflict can often be avoided"
+    },
+    {
+      "id": "positive_child_interaction_1",
+      "topic": "discipline",
+      "slide_1_text": "It's so nice to see you playing with your dolls Sylia.",
+      "slide_1_image_asset": "images/sylvia_playing_with_toys_1.jpg",
+      "slide_2_text": "In five minutes, it will be time for keeping them.",
+      "slide_2_image_asset": "images/sylvia_playing_with_toys_2.jpg",
+      "slide_3_text": "It's time for keeping your dolls Sylvia. Please keep them in the box, I would like to tell you a story.",
+      "slide_3_image_asset": "images/sylvia_playing_with_toys_3.jpg",
+      "slide_4_text": "Please pack them properly.",
+      "slide_4_image_asset": "images/sylvia_playing_with_toys_4.jpg",
+      "slide_5_text": "Thank you for removing the dolls when I told you. I am so grateful because you listen to what I say. Now, let's read a story together.",
+      "slide_5_image_asset": "images/sylvia_playing_with_toys_5.jpg",
+      "slide_6_text": "Once upon a time.....",
+      "slide_6_image_asset": "images/sylvia_playing_with_toys_6.jpg"
+    },
+    {
+      "id": "positive_child_interaction_2",
+      "topic": "discipline",
+      "slide_1_text": "Radio presenter: At the end of 1st half, Arsenal and Man u",
+      "slide_2_text": "<span><i>Music playing: la la la... la la la... la la la!...<br/><br/></i></span><span>Dad: Moses, thank you for playing quietly down there, I loved it</span>",
+      "slide_3_text": "Radio presenter: 2-2 The game is over",
+      "slide_4_text": "Dad: You have played very well, you were quite while I was listening to my program, Thank you Moses."
+    },
+    {
+      "id": "patnership_parenting",
+      "topic": "gender_equal",
+      "title": "Missing story: To be added"
+    },
+    {
+      "id": "encourage_school",
+      "topic": "education",
+      "title": "Story",
+      "slide_1_text": "Nakato is a 13 year- old girl in Primary7 in a certain school.",
+      "slide_2_text": "She tries to work hard but received a very low mark in the mid-year examinations.",
+      "slide_3_text": "That same day, her parents found out that there is a man in the neighborhood who has been pestering Nakato to have a love relationship with him, and even promised to marry her.",
+      "slide_4_text": "Just before examinations, Nakato’s teacher had tried to contact the parents regarding her academics, but the parents were busy."
     }
   ],
   "_xlsxPath": "global/data_lists/topics.xlsx"

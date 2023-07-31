@@ -7,85 +7,97 @@
       "id": "family_relation",
       "title": "Family relationships",
       "topic_group": "attachment",
-      "image_asset": "images/family_relation.png"
+      "image_asset": "images/family.jpg"
     },
     {
       "id": "current_pract",
       "title": "Current beliefs and practices regarding parent-child interaction",
       "topic_group": "attachment",
-      "image_asset": "images/current_pract.png"
+      "image_asset": "images/family_seated.jpg"
     },
     {
       "id": "child_dev",
       "title": "Child development (ages 0 – 17)",
       "topic_group": "attachment",
-      "image_asset": "images/child_dev.png"
+      "image_asset": "images/father_playing_with_children.jpg"
     },
     {
       "id": "parent_childhood",
       "title": "Influence of one’s own parents and positive discipline",
       "topic_group": "attachment",
-      "image_asset": "images/family_relation.png"
+      "image_asset": "images/parents_kids_reading_magazine.jpg"
     },
     {
       "id": "positive_parenting",
       "title": "Positive and sensitive parenting",
       "topic_group": "behaviour",
-      "image_asset": "images/current_pract.png"
+      "image_asset": "images/father_children_washing_utensils.jpg"
     },
     {
       "id": "gender_power",
       "title": "Norms, practices and behaviour",
       "topic_group": "gender_relations",
-      "image_asset": "images/child_dev.png"
+      "image_asset": "images/family_preparing_cereal.jpg"
     },
     {
       "id": "impact_conflict",
       "title": "Impact of parental conflict and violence",
       "topic_group": "parental_conflict",
-      "image_asset": "images/family_relation.png"
+      "image_asset": "images/father_dressing_child.jpg"
     },
     {
       "id": "sharing_care",
       "title": "Sharing child care responsibility",
       "topic_group": "gender_relations",
-      "image_asset": "images/current_pract.png"
+      "image_asset": "images/father_soothing_baby.jpg"
     },
     {
       "id": "healthy_relation",
       "title": "Healthy marital relationships, sexuality, alcohol and communication",
       "topic_group": "parental_conflict",
-      "image_asset": "images/child_dev.png"
+      "image_asset": "images/father_mother.jpg"
+    },
+    {
+      "id": "session_review",
+      "title": "Review of the First 9 Sessions",
+      "topic_group": "review",
+      "image_asset": "images/family_time_playing_reading.jpg"
     },
     {
       "id": "discipline",
       "title": "Achieving respectability and discipline",
       "topic_group": "behaviour",
-      "image_asset": "images/family_relation.png"
+      "image_asset": "images/parents_kids_reading_magazine.jpg"
     },
     {
       "id": "education",
       "title": "Encouraging education",
       "topic_group": "behaviour",
-      "image_asset": "images/current_pract.png"
+      "image_asset": "images/parents_child_reading.jpg"
     },
     {
       "id": "gender_equal",
       "title": "Greater gender equality",
       "topic_group": "gender_relations",
-      "image_asset": "images/child_dev.png"
+      "image_asset": "images/family_cooking_2.jpg"
     },
     {
       "id": "prevent_abuse",
       "title": "Prevention of sexual abuse for children below 17 years",
       "topic_group": "behaviour",
-      "image_asset": "images/family_relation.png"
+      "image_asset": "images/sexual_abuse_prevention.jpg"
     },
     {
       "id": "reduce_conflict",
       "title": "Reducing parental conflict and improving communication",
       "topic_group": "parental_conflict",
-      "image_asset": "images/current_pract.png"
+      "image_asset": "images/family_cooking_1.jpg"
+    },
+    {
+      "id": "conclusion",
+      "title": "Conclusion",
+      "topic_group": "conclusion",
+      "image_asset": "images/mother_with_children_reading_magazine.jpg"
     }
   ],
   "_xlsxPath": "global/data_lists/topics.xlsx"

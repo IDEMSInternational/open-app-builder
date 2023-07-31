@@ -1,0 +1,63 @@
+{
+  "flow_name": "impact_conflict_tasks",
+  "flow_subtype": "generated",
+  "flow_type": "data_list",
+  "rows": [
+    {
+      "id": "impact_conflict_check_in",
+      "priority": 1,
+      "data_list_name": "check_in",
+      "row_id": "id_1",
+      "completed_field": "task_impact_conflict_check_in_completed",
+      "completed": "@fields.task_impact_conflict_check_in_completed"
+    },
+    {
+      "id": "impact_conflict_relax",
+      "priority": 2,
+      "data_list_name": "relax",
+      "row_id": "id_1",
+      "completed_field": "task_impact_conflict_relax_completed",
+      "completed": "@fields.task_impact_conflict_relax_completed"
+    },
+    {
+      "id": "impact_conflict_intro",
+      "priority": 4,
+      "data_list_name": "intro",
+      "row_id": "impact_conflict",
+      "completed_field": "task_impact_conflict_intro_completed",
+      "completed": "@fields.task_impact_conflict_intro_completed"
+    },
+    {
+      "id": "impact_conflict_tbg",
+      "priority": 5,
+      "data_list_name": "topic_block_group",
+      "row_id": "impact_conflict",
+      "completed_field": "task_impact_conflict_tbg_completed",
+      "completed": "@fields.task_impact_conflict_tbg_completed"
+    },
+    {
+      "id": "impact_conflict_tips",
+      "priority": 6,
+      "data_list_name": "tips",
+      "row_id": "parents_involvement",
+      "completed_field": "task_impact_conflict_tips_completed",
+      "completed": "@fields.task_impact_conflict_tips_completed"
+    },
+    {
+      "id": "impact_conflict_set_hp",
+      "priority": 17,
+      "data_list_name": "set_hp",
+      "row_id": "impact_conflict",
+      "completed_field": "task_impact_conflict_set_hp_completed",
+      "completed": "@fields.task_impact_conflict_set_hp_completed"
+    },
+    {
+      "id": "impact_conflict_praise",
+      "priority": 18,
+      "data_list_name": "praise",
+      "row_id": "impact_conflict",
+      "completed_field": "task_impact_conflict_praise_completed",
+      "completed": "@fields.task_impact_conflict_praise_completed"
+    }
+  ]
+}
