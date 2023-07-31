@@ -64,7 +64,6 @@ export class AssetsPostProcessor {
     fs.ensureDirSync(appAssetsFolder);
     // Generate a list of all deployment assets, merge with list of assets from parent
     const sourceAssets = generateFolderFlatMap(sourceAssetsFolder, { includeLocalPath: true });
-
     const sourceAssetsFiltered = this.filterAppAssets(sourceAssets);
     const mergedAssets = this.mergeParentAssets(sourceAssetsFiltered);
     // Populate merged assets staging to run quality control checks and generate full contents lists
@@ -98,18 +97,16 @@ export class AssetsPostProcessor {
     missingEntries: IAssetEntryHashmap
   ) {
     if (fs.existsSync(appAssetsFolder)) {
-      {
-        const contentsTarget = path.resolve(appAssetsFolder, "contents.json");
-        fs.writeFileSync(contentsTarget, JSON.stringify(sortJsonKeys(assetEntries), null, 2));
-        const missingTarget = path.resolve(appAssetsFolder, "untracked-assets.json");
-        if (fs.existsSync(missingTarget)) fs.removeSync(missingTarget);
-        if (Object.keys(missingEntries).length > 0) {
-          logWarning({
-            msg1: "Assets override found without corresponding entry",
-            msg2: Object.keys(missingEntries).join("\n"),
-          });
-          fs.writeFileSync(missingTarget, JSON.stringify(sortJsonKeys(missingEntries), null, 2));
-        }
+      const contentsTarget = path.resolve(appAssetsFolder, "contents.json");
+      fs.writeFileSync(contentsTarget, JSON.stringify(sortJsonKeys(assetEntries), null, 2));
+      const missingTarget = path.resolve(appAssetsFolder, "untracked-assets.json");
+      if (fs.existsSync(missingTarget)) fs.removeSync(missingTarget);
+      if (Object.keys(missingEntries).length > 0) {
+        logWarning({
+          msg1: "Assets override found without corresponding entry",
+          msg2: Object.keys(missingEntries).join("\n"),
+        });
+        fs.writeFileSync(missingTarget, JSON.stringify(sortJsonKeys(missingEntries), null, 2));
       }
     } else {
       console.log(
