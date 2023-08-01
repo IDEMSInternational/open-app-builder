@@ -16,7 +16,6 @@ const DEFAULT_THEME_NAME = "theme_default";
 
 @Injectable({ providedIn: "root" })
 export class TemplateAssetService extends AsyncServiceBase {
-  public assetsContentsList: IAssetContents = ASSETS_CONTENTS_LIST;
   public assetsContentsList$ = new BehaviorSubject<IAssetContents>(ASSETS_CONTENTS_LIST);
 
   constructor(
