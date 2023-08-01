@@ -2,6 +2,7 @@ import { Injectable } from "@angular/core";
 import { HttpClient, HttpEventType } from "@angular/common/http";
 import { Capacitor } from "@capacitor/core";
 import { createClient, SupabaseClient } from "@supabase/supabase-js";
+import { FileObject } from "@supabase/storage-js";
 import { environment } from "src/environments/environment";
 import { TemplateActionRegistry } from "../../components/template/services/instance/template-action.registry";
 import { IAppConfig } from "../../model";
@@ -14,6 +15,9 @@ import { AsyncServiceBase } from "../asyncService.base";
 import { IAssetEntry } from "packages/data-models/deployment.model";
 import { DynamicDataService } from "../dynamic-data/dynamic-data.service";
 import { arrayToHashmap, deepDiffObjects } from "../../utils";
+
+// For testing, use a specified asset pack name
+const ASSET_PACK_NAME = "debug_asset_pack";
 
 @Injectable({
   providedIn: "root",
@@ -115,12 +119,12 @@ export class RemoteAssetService extends AsyncServiceBase {
           this.handleDownload(url, relativePath, index, relativePaths.length)
         ).catch((error) => console.error(error));
       }
-      // On web, add asset's public URL to contents list for consumption by template asset service
+      // On web, update contents list with asset's public URL for consumption by template asset service
       else {
         console.log(
           `[REMOTE ASSETS] Fetching remote URL for ${index + 1} of ${relativePaths.length} files.`
         );
-        this.updateAssetContents(relativePath, url);
+        this.updateAssetContents(relativePath);
       }
     }
   }
@@ -130,11 +134,11 @@ export class RemoteAssetService extends AsyncServiceBase {
     // this to manifest of cached files, and generate a manifest of files to download.
     // Return dummy manifest for now
     const manifest: IAssetContents = {
-      "debug_asset_pack/test_image.png": {
+      [`${ASSET_PACK_NAME}/test_image.png`]: {
         size_kb: 2,
         md5Checksum: "e6d6c6a12ca13a6277084e01c088378c",
       },
-      "debug_asset_pack/test_image_2.png": {
+      [`${ASSET_PACK_NAME}/test_image_2.png`]: {
         size_kb: 2,
         md5Checksum: "e6d6c6a12ca13a6277084e01c088378c",
       },
@@ -196,11 +200,26 @@ export class RemoteAssetService extends AsyncServiceBase {
   }
 
   /**
-   * Fetch file info from local storage and save updates to asset contents in dynamic data.
-   * @param url - Required if platform is web
+   * Fetch file info (from local storage on native platforms and supabase on web)
+   * and save updates to asset contents in dynamic data.
    * */
-  private async updateAssetContents(relativePath: string, url?: string) {
-    const update = await this.fileManagerService.generateAssetContentsEntry(relativePath, url);
+  private async updateAssetContents(relativePath: string) {
+    let update: Partial<IAssetEntry> = {};
+    // On native platforms, get the path of the local file in storage and the actual size of the downloaded file
+    if (Capacitor.isNativePlatform()) {
+      update = await this.fileManagerService.generateAssetContentsEntry(relativePath);
+    }
+    // On web, get the remote URL of the file and the size from supabase's metadata
+    else {
+      const url = this.getPublicUrl(relativePath);
+      const {
+        metadata: { size },
+      } = await this.getRemoteFileMetadata(relativePath);
+      update = {
+        filePath: url,
+        size_kb: Math.round(size / 102.4) / 10,
+      };
+    }
     await this.dynamicDataService.update<IAssetEntry>(
       "asset_pack",
       "required_assets",
@@ -314,6 +333,19 @@ export class RemoteAssetService extends AsyncServiceBase {
     } finally {
       return url;
     }
+  }
+
+  async getRemoteFileMetadata(relativePath: string): Promise<FileObject> {
+    const pathSegments = relativePath.split("/");
+    const fileName = pathSegments.pop();
+    const dirname = pathSegments.join("/");
+
+    // const dirname = relativePath.substring(0, relativePath.lastIndexOf("/"))
+    const { data } = await this.supabase.storage
+      .from(this.bucketName)
+      .list(`${this.folderName}/${dirname}`);
+    const fileObject = data.find((element) => element.name === fileName);
+    return fileObject;
   }
 
   /** Convert base filepath to match supabase storage folder structure */

@@ -77,29 +77,18 @@ export class FileManagerService extends SyncServiceBase {
     });
   }
 
-  async generateAssetContentsEntry(
-    relativePath: string,
-    url?: string
-  ): Promise<Partial<IAssetEntry>> {
-    let assetContentsEntry = {} as Partial<IAssetEntry>;
-    if (Capacitor.isNativePlatform()) {
-      const fileInfo = await Filesystem.stat({
-        path: `${this.cacheName}/${relativePath}`,
-        directory: Directory.Data,
-      });
-      const { uri, size } = fileInfo;
-      const filePath = Capacitor.convertFileSrc(uri);
-      // TODO: handle theme/language overrides
+  async generateAssetContentsEntry(relativePath: string): Promise<Partial<IAssetEntry>> {
+    const { uri, size } = await Filesystem.stat({
+      path: `${this.cacheName}/${relativePath}`,
+      directory: Directory.Data,
+    });
+    const filePath = Capacitor.convertFileSrc(uri);
+    const size_kb = Math.round(size / 102.4) / 10;
+    // TODO: handle theme/language overrides
 
-      assetContentsEntry = {
-        filePath,
-        size_kb: Math.round(size / 102.4) / 10,
-      };
-    } else {
-      assetContentsEntry = {
-        filePath: url,
-      };
-    }
-    return assetContentsEntry;
+    return {
+      filePath,
+      size_kb,
+    };
   }
 }
