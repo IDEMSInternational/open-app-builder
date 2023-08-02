@@ -343,6 +343,10 @@
     "md5Checksum": "587b8f69566b65dd5de8508b813d82af",
     "size_kb": 20.3
   },
+  "images/mother_kids_with_magazine.jpg": {
+    "md5Checksum": "91fb355590d8a23311e5bd669927d806",
+    "size_kb": 838.2
+  },
   "images/mother_reading_map_with_children.jpg": {
     "md5Checksum": "56f33fba747efe8ea861a2faefee9128",
     "size_kb": 126.8
@@ -354,10 +358,6 @@
   "images/mother_washing_with_child.jpg": {
     "md5Checksum": "9222d536f80e1b695929ac1bc8868273",
     "size_kb": 123.2
-  },
-  "images/mother_with_children_reading_magazine.jpg": {
-    "md5Checksum": "91fb355590d8a23311e5bd669927d806",
-    "size_kb": 838.2
   },
   "images/move_in_groups.jpg": {
     "md5Checksum": "812ed0793b33866721090d655145ce7e",

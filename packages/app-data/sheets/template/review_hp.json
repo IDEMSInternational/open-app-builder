@@ -217,6 +217,61 @@
       }
     },
     {
+      "name": "reply",
+      "type": "set_variable",
+      "_nested_name": "reply"
+    },
+    {
+      "type": "display_group",
+      "name": "reply_dg",
+      "parameter_list": {
+        "!@local.radio_group_answered": "true"
+      },
+      "condition": "!!(@local.reply)",
+      "rows": [
+        {
+          "type": "text",
+          "name": "show_reply",
+          "value": "@local.reply",
+          "_translations": {
+            "value": {}
+          },
+          "_nested_name": "reply_dg.show_reply",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@local.reply",
+                "matchedExpression": "@local.reply",
+                "type": "local",
+                "fieldName": "reply"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@local.reply": [
+              "value"
+            ]
+          }
+        }
+      ],
+      "_nested_name": "reply_dg",
+      "_dynamicFields": {
+        "condition": [
+          {
+            "fullExpression": "!!(@local.reply)",
+            "matchedExpression": "@local.reply",
+            "type": "local",
+            "fieldName": "reply"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.reply": [
+          "condition"
+        ]
+      }
+    },
+    {
       "type": "template",
       "name": "nav_buttons",
       "value": "nav_buttons",
