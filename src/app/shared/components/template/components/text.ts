@@ -25,6 +25,7 @@ export class TmplTextComponent extends TemplateBaseComponent implements OnInit {
 
   ngOnInit() {
     this.getParams();
+    // this.textValue = this._row.value ;
   }
 
   getParams() {
