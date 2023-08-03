@@ -130,9 +130,11 @@ export class RemoteAssetService extends AsyncServiceBase {
   }
 
   private generateManifest(): IAssetContents {
-    // TODO: Check config and download relevant manifest of expected files, compare
-    // this to manifest of cached files, and generate a manifest of files to download.
-    // Return dummy manifest for now
+    /**
+     * Return dummy manifest for now
+     * TODO: get manifest of files to download. Either by directly reading an asset_pack manifest file,
+     * or by comparing which assets are available to the app to a manifest of required assets (e.g. deepDiffObjects()?)
+     */
     const manifest: IAssetContents = {
       [`${ASSET_PACK_NAME}/test_image.png`]: {
         size_kb: 2,
@@ -143,21 +145,6 @@ export class RemoteAssetService extends AsyncServiceBase {
         md5Checksum: "e6d6c6a12ca13a6277084e01c088378c",
       },
     };
-
-    /**
-     * TODO:
-     * 1. Check what is required by active asset pack(s). I.e. which assets are not included in core
-     * 2. Get manifest of available files on device
-     * 3. Compare the above to generate manifest of files needed to be downloaded
-     * 4. Download and update contents using existing methods
-     */
-
-    // e.g.
-    // deepDiffObjects()
-
-    // required_assets = core_assets merged with asset_pack_1 etc ?
-    // trying to maintain backwards compatibility, and we don't want to require that authors use asset packs
-    // So there probs needs to be some work at the postProcessor stage to generate various asset_packs, including "core" and "theme_secondary"
     return manifest;
   }
 
