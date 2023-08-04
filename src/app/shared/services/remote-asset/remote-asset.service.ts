@@ -5,7 +5,7 @@ import { createClient, SupabaseClient } from "@supabase/supabase-js";
 import { FileObject } from "@supabase/storage-js";
 import { environment } from "src/environments/environment";
 import { TemplateActionRegistry } from "../../components/template/services/instance/template-action.registry";
-import { IAppConfig } from "../../model";
+import { FlowTypes, IAppConfig } from "../../model";
 import { AppConfigService } from "../app-config/app-config.service";
 import { FileManagerService } from "../file-manager/file-manager.service";
 import { IAssetContents } from "src/app/data";
@@ -14,10 +14,11 @@ import { TemplateAssetService } from "../../components/template/services/templat
 import { AsyncServiceBase } from "../asyncService.base";
 import { IAssetEntry } from "packages/data-models/deployment.model";
 import { DynamicDataService } from "../dynamic-data/dynamic-data.service";
-import { arrayToHashmap, deepDiffObjects } from "../../utils";
+import { arrayToHashmap, deepMergeObjects } from "../../utils";
 
+const CORE_ASSET_PACK_NAME = "core_assets";
 // For testing, use a specified asset pack name
-const ASSET_PACK_NAME = "debug_asset_pack";
+const ASSET_PACK_NAME = "debug_asset_pack_1";
 
 @Injectable({
   providedIn: "root",
@@ -30,6 +31,7 @@ export class RemoteAssetService extends AsyncServiceBase {
   supabase: SupabaseClient;
   downloading: boolean = false;
   downloadProgress: number;
+  manifest: FlowTypes.AssetPack;
 
   constructor(
     private appConfigService: AppConfigService,
@@ -56,7 +58,9 @@ export class RemoteAssetService extends AsyncServiceBase {
         this.supabase = createClient(url, publicApiKey);
 
         // Share updates to asset contents list with template asset service for lookup
-        const obs = await this.dynamicDataService.query$("asset_pack", "required_assets");
+        // TODO: at this point "core_assets" is a misnomar, as it may contain additional entries for remote assets that
+        // have been downloaded. Consider a different name for the core asset pack when it is created, e.g. "available_assets"
+        const obs = await this.dynamicDataService.query$("asset_pack", CORE_ASSET_PACK_NAME);
         obs.subscribe((dataRows) => {
           const assetContentsHashmap = arrayToHashmap(dataRows, "id") as IAssetContents;
           this.templateAssetService.updateContentsList(assetContentsHashmap);
@@ -73,14 +77,23 @@ export class RemoteAssetService extends AsyncServiceBase {
   private registerTemplateActionHandlers() {
     this.templateActionRegistry.register({
       asset_pack: async ({ args }) => {
-        const [actionId] = args;
+        const [actionId, ...assetPackArgs] = args;
         const childActions = {
           download: async () => {
             if (this.supabaseEnabled && this.remoteAssetsEnabled) {
-              await this.downloadAndPopulateRequiredAssets();
+              const assetPackName = assetPackArgs[0];
+              await this.downloadAndPopulateRequiredAssets(assetPackName);
             } else
               console.error(
                 "The 'asset_pack: download' action is not available. To enable asset pack functionality, please ensure that supabase and ASSET_PACKS are enabled in the deployment config."
+              );
+          },
+          clear_cache: async () => {
+            if (this.supabaseEnabled && this.remoteAssetsEnabled) {
+              await this.clearCache();
+            } else
+              console.error(
+                "The 'asset_pack: clear_cache' action is not available. To enable asset pack functionality, please ensure that supabase and ASSET_PACKS are enabled in the deployment config."
               );
           },
         };
@@ -105,10 +118,18 @@ export class RemoteAssetService extends AsyncServiceBase {
   /************************************************************************************
    *  Download methods
    ************************************************************************************/
-  async downloadAndPopulateRequiredAssets() {
-    // Get manifest of files to download
-    const manifest = this.generateManifest();
-    const relativePaths = Object.keys(manifest);
+  async downloadAndPopulateRequiredAssets(assetPack?: string) {
+    // If a named asset pack is provided, download its manifest from supabase
+    if (assetPack) {
+      await lastValueFrom(this.getManifest(assetPack)).catch((error) => console.error(error));
+    }
+    // TODO: Else, somehow generate a manifest of files to download
+    // (e.g. look at what files are available locally vs required in accordance with current app config)
+    else {
+      this.manifest = this.generateManifest();
+    }
+    const manifestHashmap = arrayToHashmap(this.manifest.rows, "id") as IAssetContents;
+    const relativePaths = Object.keys(manifestHashmap);
     // TODO: implement queue system for downloads (see template-action service, or use of 3rd party p-queue elsewhere)
     for (const [index, relativePath] of relativePaths.entries()) {
       const url = this.getPublicUrl(relativePath);
@@ -124,28 +145,68 @@ export class RemoteAssetService extends AsyncServiceBase {
         console.log(
           `[REMOTE ASSETS] Fetching remote URL for ${index + 1} of ${relativePaths.length} files.`
         );
-        this.updateAssetContents(relativePath);
+        await this.updateAssetContents(relativePath);
       }
     }
   }
 
-  private generateManifest(): IAssetContents {
-    /**
-     * Return dummy manifest for now
-     * TODO: get manifest of files to download. Either by directly reading an asset_pack manifest file,
-     * or by comparing which assets are available to the app to a manifest of required assets (e.g. deepDiffObjects()?)
-     */
-    const manifest: IAssetContents = {
-      [`${ASSET_PACK_NAME}/test_image.png`]: {
-        size_kb: 2,
-        md5Checksum: "e6d6c6a12ca13a6277084e01c088378c",
+  private getManifest(assetPack: string) {
+    let data: Blob;
+    let progress: number;
+    const url = this.getPublicUrl(`${assetPack}/${assetPack}.json`);
+    console.log(url);
+    const progress$ = new Subject<number>();
+    this.downloadFileFromUrl(url, "blob").subscribe({
+      error: (err) => {
+        this.downloadProgress = undefined;
+        progress$.error(err);
       },
-      [`${ASSET_PACK_NAME}/test_image_2.png`]: {
-        size_kb: 2,
-        md5Checksum: "e6d6c6a12ca13a6277084e01c088378c",
+      next: async (res) => {
+        data = res.data as Blob;
+        progress = res.progress;
+        console.log(`[REMOTE ASSETS] Downloading: ${progress}%`);
+        progress$.next(progress);
       },
+      complete: async () => {
+        console.log(`[REMOTE ASSETS] Manifest file downloaded for asset pack: ${assetPack}`);
+        if (data) {
+          this.manifest = JSON.parse(await data.text());
+        }
+        progress$.next(progress);
+        progress$.complete();
+      },
+    });
+    return progress$;
+  }
+
+  /**
+   * Return dummy manifest for now
+   * TODO: generate a manifest of files to download. E.g. by comparing which assets are
+   * available locally to a manifest of required assets (e.g. deepDiffObjects()?)
+   */
+  private generateManifest(): FlowTypes.AssetPack {
+    const manifest = {
+      flow_type: "asset_pack",
+      flow_name: "debug_asset_pack_1",
+      rows: [
+        {
+          id: "debug_asset_pack_1/test_image.png",
+          md5Checksum: "e6d6c6a12ca13a6277084e01c088378c",
+          size_kb: 2,
+        },
+        {
+          id: "debug_asset_pack_1/test_image_2.png",
+          md5Checksum: "52ec3256ba473e6a19987b4d766bc5f9",
+          size_kb: 6.5,
+        },
+        {
+          id: "debug_asset_pack_1/test_remote_only.png",
+          md5Checksum: "dcb0c69c2e0bcb696086dffca903b7f5",
+          size_kb: 14.2,
+        },
+      ],
     };
-    return manifest;
+    return manifest as FlowTypes.AssetPack;
   }
 
   /**
@@ -203,15 +264,17 @@ export class RemoteAssetService extends AsyncServiceBase {
         metadata: { size },
       } = await this.getRemoteFileMetadata(relativePath);
       update = {
+        id: relativePath,
         filePath: url,
         size_kb: Math.round(size / 102.4) / 10,
       };
     }
     await this.dynamicDataService.update<IAssetEntry>(
       "asset_pack",
-      "required_assets",
+      CORE_ASSET_PACK_NAME,
       relativePath,
-      update
+      update,
+      { upsert: true }
     );
   }
 
@@ -297,6 +360,14 @@ export class RemoteAssetService extends AsyncServiceBase {
       this.downloading = false;
       return data;
     }
+  }
+
+  /**
+   * Reset the core asset pack contents to its original state before any remote assets were downloaded.
+   * Useful when testing. TODO: Also delete any downloaded assets from the device
+   * */
+  async clearCache() {
+    await this.dynamicDataService.resetOverwrites("asset_pack", CORE_ASSET_PACK_NAME);
   }
 
   /************************************************************************************

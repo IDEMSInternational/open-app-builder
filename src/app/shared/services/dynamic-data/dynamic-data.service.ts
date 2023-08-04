@@ -109,16 +109,16 @@ export class DynamicDataService extends AsyncServiceBase {
     flow_type: FlowTypes.FlowType,
     flow_name: string,
     row_id: string,
-    update: Partial<T>
+    update: Partial<T>,
+    options: { upsert: boolean } = { upsert: false }
   ) {
     if (update) {
       const { collectionName } = await this.ensureCollection(flow_type, flow_name);
       const existingDoc = await this.db.getDoc<any>(collectionName, row_id);
-
       if (existingDoc) {
         const data = existingDoc.toMutableJSON();
         update = deepMergeObjects(data, update);
-      } else {
+      } else if (!options.upsert) {
         throw new Error(`cannot update row that does not exist: [${flow_name}]:[${row_id}]`);
       }
       // update memory db
@@ -145,6 +145,18 @@ export class DynamicDataService extends AsyncServiceBase {
       await this.db.bulkInsert(collectionName, initialData);
     }
     return { collectionName };
+  }
+
+  /** Remove user writes on a flow to return it to its original state */
+  public async resetOverwrites(flow_type: FlowTypes.FlowType, flow_name: string) {
+    await this.clearCache(flow_type, flow_name);
+    const collectionName = this.normaliseCollectionName(flow_type, flow_name);
+    if (this.db.getCollection(collectionName)) {
+      await this.db.removeCollection(collectionName);
+      await this.ensureCollection(flow_type, flow_name);
+    } else {
+      throw new Error(`Collection [${collectionName}] not found, cannot remove`);
+    }
   }
 
   /** Retrive json sheet data and merge with any user writes */
