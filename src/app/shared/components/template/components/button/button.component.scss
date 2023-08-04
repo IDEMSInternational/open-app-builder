@@ -36,12 +36,13 @@ ion-button[disabled] {
 }
 
 /// nested_color style applies semi-transparent background to match container
-ion-button[data-param-style~="nested_color"] {
+ion-button[data-param-style~="nested_color"],
+ion-button[data-variant~="nested_color"] {
   --background: linear-gradient(rgb(0 0 0 / 13%) 0%, rgb(0 0 0 / 20%) 100%);
 }
 
-// nested_color style applies semi-transparent background to match container
-ion-button[data-param-style~="card"] {
+ion-button[data-param-style~="card"],
+ion-button[data-variant~="card"] {
   --background: white;
   --background-activated: var(--ion-color-gray-light);
   --padding-top: 4px;
@@ -64,6 +65,52 @@ ion-button[data-param-style~="card"] {
     right: 0;
     display: flex;
     align-items: center;
+  }
+}
+
+.button-container[data-variant~="card-portrait"] {
+  background-color: white;
+  color: var(--ion-color-primary);
+  font-size: var(--buttons-font-size-small);
+  font-weight: var(--font-weight-bold);
+  border: 1px solid var(--ion-color-gray-light);
+  border-radius: var(--ion-border-radius-secondary);
+  min-height: var(--buttons-short-height);
+  filter: drop-shadow(var(--ion-default-box-shadow));
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1.5rem 0.5rem 0.5rem;
+  // TODO: make a variable, shared with task card
+  width: 160px;
+
+  &:active {
+    background-color: var(--ion-color-gray-light);
+  }
+
+  img {
+    width: 85%;
+  }
+
+  .button-text {
+    width: 100%;
+    padding: 1rem 0.5rem 0.5rem;
+    text-align: center;
+    &.right {
+      text-align: right;
+    }
+    &.left {
+      text-align: left;
+    }
+  }
+  .children {
+    position: absolute;
+    align-self: flex-end;
+    right: -4px;
+    top: -12px;
+    display: flex;
+    align-items: center;
+    padding: -8px;
   }
 }
 

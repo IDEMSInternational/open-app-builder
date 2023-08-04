@@ -1,5 +1,7 @@
 # Checkbox
 
+A checkbox allows users to make a choice between two distinct options or states. It consists of a small square that can be either checked (selected) or unchecked (deselected) by the user. The square contains a checkmark when selected and is empty when not selected.
+
 ## Example
 
 | type            | name                    |parameter_list |
