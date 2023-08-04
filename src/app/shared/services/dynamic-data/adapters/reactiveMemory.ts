@@ -128,8 +128,12 @@ export class ReactiveMemoryAdapater {
       const updatedDoc = await existingDoc.atomicPatch(data);
       return updatedDoc.toMutableJSON();
     } else {
-      await collection.insert(update);
+      await collection.insert(data);
       return update;
     }
+  }
+
+  public async removeCollection(collectionName: string) {
+    return await this.db.collections[collectionName].remove();
   }
 }

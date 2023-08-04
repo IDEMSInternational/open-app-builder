@@ -118,8 +118,14 @@ export class PersistedMemoryAdapter {
 
   public delete(flow_type: FlowTypes.FlowType, flow_name: string) {
     if (this.get(flow_type, flow_name)) {
+      const idsToDelete = [];
+      const rowHash = this.state[flow_type][flow_name];
+      for (const row_id of Object.keys(rowHash)) {
+        idsToDelete.push(`${flow_type}__${flow_name}__${row_id}`);
+      }
       delete this.state[flow_type][flow_name];
-      this.persistStateToDB();
+      // Persist deletes to DB
+      this.collection.bulkRemove(idsToDelete);
     }
   }
 
