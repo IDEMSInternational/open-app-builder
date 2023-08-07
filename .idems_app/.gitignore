@@ -3,7 +3,7 @@ deployments/*
 !deployments/local
 !deployments/plh*
 !deployments/wash
-!deployments/parentapp_kids
+!deployments/plh_kids
 !deployments/pfr
 !deployments/sandbox
 
