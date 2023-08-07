@@ -14,11 +14,9 @@ import { TemplateAssetService } from "../../components/template/services/templat
 import { AsyncServiceBase } from "../asyncService.base";
 import { IAssetEntry } from "packages/data-models/deployment.model";
 import { DynamicDataService } from "../dynamic-data/dynamic-data.service";
-import { arrayToHashmap, deepMergeObjects } from "../../utils";
+import { arrayToHashmap } from "../../utils";
 
 const CORE_ASSET_PACK_NAME = "core_assets";
-// For testing, use a specified asset pack name
-const ASSET_PACK_NAME = "debug_asset_pack_1";
 
 @Injectable({
   providedIn: "root",
@@ -180,9 +178,9 @@ export class RemoteAssetService extends AsyncServiceBase {
   }
 
   /**
-   * Return dummy manifest for now
    * TODO: generate a manifest of files to download. E.g. by comparing which assets are
-   * available locally to a manifest of required assets (e.g. deepDiffObjects()?)
+   * available locally to a manifest of required assets (e.g. deepDiffObjects()?).
+   * Return a dummy manifest for now
    */
   private generateManifest(): FlowTypes.AssetPack {
     const manifest = {
@@ -339,7 +337,10 @@ export class RemoteAssetService extends AsyncServiceBase {
     return updates$;
   }
 
-  /** Download from a private supabase bucket using the SDK method. NB this method does not support tracking download progress */
+  /**
+   * Download from a private supabase bucket using the SDK method. Not currently used.
+   * NB this method does not support tracking download progress
+   * */
   async downloadFileFromPrivateBucket(filepath: string) {
     let data: Blob;
     try {
@@ -393,12 +394,12 @@ export class RemoteAssetService extends AsyncServiceBase {
     }
   }
 
+  /** Fetch metadata for a specific file from supabase */
   async getRemoteFileMetadata(relativePath: string): Promise<FileObject> {
     const pathSegments = relativePath.split("/");
     const fileName = pathSegments.pop();
     const dirname = pathSegments.join("/");
 
-    // const dirname = relativePath.substring(0, relativePath.lastIndexOf("/"))
     const { data } = await this.supabase.storage
       .from(this.bucketName)
       .list(`${this.folderName}/${dirname}`);
