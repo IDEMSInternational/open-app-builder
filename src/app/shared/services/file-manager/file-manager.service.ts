@@ -77,6 +77,7 @@ export class FileManagerService extends SyncServiceBase {
     });
   }
 
+  /** @returns filepath and file size metadata from a file saved in local storage */
   async generateAssetContentsEntry(relativePath: string): Promise<Partial<IAssetEntry>> {
     const { uri, size } = await Filesystem.stat({
       path: `${this.cacheName}/${relativePath}`,
