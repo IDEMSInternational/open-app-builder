@@ -6,32 +6,37 @@ import {
   getBooleanParamFromTemplateRow,
 } from "src/app/shared/utils";
 
+interface IToggleParams {
+  /** TEMPLATE PARAMETER: "variant" */
+  variant: "" | "icon" | "in_button";
+  /** TEMPLATE PARAMETER: "style". Legacy, use "variant" instead. */
+  style: string;
+  /** TEMPLATE PARAMETER: "show_tick_and_cross" */
+  showTickAndCross: boolean;
+  /** TEMPLATE PARAMETER: "position". Default "left" */
+  position: "left" | "center" | "right";
+  /** TEMPLATE PARAMETER: "false_text". Label text to display when value is false */
+  falseText: string;
+  /** TEMPLATE PARAMETER: "true_text". Label text to display when value is true */
+  trueText: string;
+  /** TEMPLATE PARAMETER: "icon_true_asset". Clickable icon to display when value is true */
+  iconTrue: string;
+  /** TEMPLATE PARAMETER: "icon_false_asset". Clickable icon to display when value is false */
+  iconFalse: string;
+}
+
 @Component({
   selector: "plh-tmpl-toggle-bar",
-  template: `
-    <div class="container" [class]="position" [attr.data-param-style]="style">
-      <div class="toggle_wrapper" [class.show-tick-cross]="showTickAndCross">
-        <ion-toggle mode="md" [checked]="_row.value" (click)="handleClick($event)"> </ion-toggle>
-      </div>
-      <span
-        class="label"
-        *ngIf="true_text && false_text"
-        [innerHTML]="true_text && false_text | markdown"
-        >{{ _row.value ? true_text : false_text }}</span
-      >
-    </div>
-  `,
+  templateUrl: "./toggle-bar.html",
   styleUrls: ["./toggle-bar.scss"],
 })
 export class TmplToggleBarComponent
   extends TemplateBaseComponent
   implements ITemplateRowProps, OnInit
 {
-  public false_text: string;
-  public true_text: string;
-  public position: string;
-  public showTickAndCross: boolean;
-  style: string;
+  params: Partial<IToggleParams> = {};
+  /** @ignore */
+  variantMap: { icon: boolean };
 
   ngOnInit() {
     this.getParams();
@@ -48,10 +53,31 @@ export class TmplToggleBarComponent
   }
 
   getParams() {
-    this.false_text = getStringParamFromTemplateRow(this._row, "false_text", "");
-    this.true_text = getStringParamFromTemplateRow(this._row, "true_text", "");
-    this.position = getStringParamFromTemplateRow(this._row, "position", "left");
-    this.showTickAndCross = getBooleanParamFromTemplateRow(this._row, "show_tick_and_cross", true);
-    this.style = getStringParamFromTemplateRow(this._row, "style", "");
+    this.params.falseText = getStringParamFromTemplateRow(this._row, "false_text", "");
+    this.params.trueText = getStringParamFromTemplateRow(this._row, "true_text", "");
+    this.params.position = getStringParamFromTemplateRow(
+      this._row,
+      "position",
+      "left"
+    ) as IToggleParams["position"];
+    this.params.showTickAndCross = getBooleanParamFromTemplateRow(
+      this._row,
+      "show_tick_and_cross",
+      true
+    );
+    this.params.style = getStringParamFromTemplateRow(this._row, "style", "");
+    this.params.variant = getStringParamFromTemplateRow(this._row, "variant", "")
+      .split(",")
+      .join(" ") as IToggleParams["variant"];
+    this.populateVariantMap();
+    this.params.iconTrue = getStringParamFromTemplateRow(this._row, "icon_true_asset", "");
+    this.params.iconFalse = getStringParamFromTemplateRow(this._row, "icon_false_asset", "");
+  }
+
+  private populateVariantMap() {
+    const variantArray = this.params.variant.split(" ");
+    this.variantMap = {
+      icon: variantArray.includes("icon"),
+    };
   }
 }
