@@ -3,7 +3,6 @@ deployments/*
 !deployments/local
 !deployments/plh*
 !deployments/wash
-!deployments/plh_kids
 !deployments/pfr
 !deployments/sandbox
 
