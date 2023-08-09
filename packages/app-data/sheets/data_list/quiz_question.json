@@ -95,7 +95,7 @@
       "topic": "child_dev",
       "question_type": "select_one",
       "question_text": "Which of the four main developmental stages does your child belong to?",
-      "option_1_text": "0-5 years ( Pre- school)",
+      "option_1_text": "0-5 years (pre-school)",
       "option_2_text": "6-9 years (lower primary)",
       "option_3_text": "10-12 years (upper primary)",
       "option_4_text": "13-17 years ( teenagers)"
