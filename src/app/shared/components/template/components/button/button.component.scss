@@ -71,17 +71,17 @@ ion-button[data-variant~="card"] {
 .button-container[data-variant~="card-portrait"] {
   background-color: white;
   color: var(--ion-color-primary);
-  font-size: var(--buttons-font-size-small);
+  font-size: var(--buttons-font-size-tiny);
   font-weight: var(--font-weight-bold);
   border: 1px solid var(--ion-color-gray-light);
-  border-radius: var(--ion-border-radius-secondary);
+  border-radius: var(--ion-border-radius-standard);
   min-height: var(--buttons-short-height);
   filter: drop-shadow(var(--ion-default-box-shadow));
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 1.5rem 0.5rem 0.5rem;
-  // TODO: make a variable, shared with task card
+  // TODO: make a variable
   width: 160px;
 
   &:active {
@@ -94,13 +94,19 @@ ion-button[data-variant~="card"] {
 
   .button-text {
     width: 100%;
-    padding: 1rem 0.5rem 0.5rem;
+    padding: 1rem 0 0.5rem;
     text-align: center;
     &.right {
       text-align: right;
     }
     &.left {
       text-align: left;
+    }
+    &.center {
+      text-align: center;
+    }
+    &.centre {
+      text-align: center;
     }
   }
   .children {
@@ -160,6 +166,12 @@ ion-button[data-variant~="card"] {
 .right {
   margin: 0 2px 0 auto;
   text-align: right;
+}
+.center {
+  text-align: center;
+}
+.centre {
+  text-align: center;
 }
 
 // width

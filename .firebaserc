@@ -34,6 +34,9 @@
         ],
         "plh_facilitator": [
           "plh-facilitator"
+        ],
+        "plh_kids": [
+          "plh-kids"
         ]
       }
     }
