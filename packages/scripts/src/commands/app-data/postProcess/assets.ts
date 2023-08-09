@@ -18,7 +18,6 @@ import {
 } from "../../../utils";
 import { ActiveDeployment } from "../../deployment/get";
 import type { IAssetEntryHashmap, IContentsEntryMinimal } from "data-models/deployment.model";
-import { existsSync } from "fs-extra";
 
 /**
  * Legacy folder used to differentiate language assets
@@ -108,12 +107,6 @@ export class AssetsPostProcessor {
         });
         fs.writeFileSync(missingTarget, JSON.stringify(sortJsonKeys(missingEntries), null, 2));
       }
-    } else {
-      console.log(
-        chalk.red(
-          "No assets were downloaded. Please ensure that your Google account is authorised to access to the relevant folder in Google Drive, as defined in the deployment config."
-        )
-      );
     }
   }
 
