@@ -1,6 +1,6 @@
 import { generateDeploymentConfig } from "scripts";
-const config = generateDeploymentConfig("parentapp_kids");
-import { SKINS } from "./../plh/skins";
+const config = generateDeploymentConfig("plh_kids");
+import { SKINS } from "../plh/skins";
 
 config.google_drive = {
   sheets_folder_id: "1Y8uC9-rqQtsjQgUfeX9qp-vNzsFDUQFU",
