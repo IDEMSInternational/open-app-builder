@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import type { Table } from "dexie";
-import { IDBMeta } from "packages/data-models/db.model";
+import { IDBMeta } from "data-models";
 import { BehaviorSubject } from "rxjs";
 import { interval } from "rxjs";
 import { debounce, filter } from "rxjs/operators";

@@ -2,18 +2,22 @@
   "name": "data-models",
   "version": "1.0.0",
   "description": "",
-  "types": "index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "main": "dist/index.js",
+  "types": "./dist/index.d.ts",
   "scripts": {
     "build": "tsc -b",
     "serve": "tsc -w"
+  },
+  "dependencies": {
+    "clone": "^2.1.2"
   },
   "devDependencies": {
     "@types/clone": "^2.1.1",
     "@types/node": "^16.18.9",
     "shared": "workspace:*",
     "typescript": "~4.2.4"
-  },
-  "dependencies": {
-    "clone": "^2.1.2"
   }
 }
