@@ -4,7 +4,7 @@ import { spawnSync } from "child_process";
 import { Command } from "commander";
 import fs from "fs-extra";
 import path from "path";
-import { DATA_MODELS_WORKSPACE_PATH } from "shared";
+import { DATA_MODELS_WORKSPACE_PATH } from "../../paths";
 
 /***************************************************************************************
  * CLI

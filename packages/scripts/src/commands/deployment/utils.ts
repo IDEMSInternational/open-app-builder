@@ -4,7 +4,7 @@ import path from "path";
 
 import { DEPLOYMENT_CONFIG_VERSION } from "data-models";
 
-import { Logger } from "shared";
+import { Logger } from "../../utils";
 import { compileDeploymentTSSync } from "./compile";
 import { IDeploymentConfigJson } from "./common";
 

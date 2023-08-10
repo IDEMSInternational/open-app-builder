@@ -5,7 +5,7 @@ import XLSX from "xlsx";
 import prettier from "prettier";
 import * as mappings from "./mappings";
 import snippets from "./snippets";
-import { ROOT_DIR } from "shared";
+import { ROOT_DIR } from "../../paths";
 
 interface IProgramOptions {
   input: string;

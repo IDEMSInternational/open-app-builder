@@ -2,7 +2,7 @@ import { DEPLOYMENT_CONFIG_EXAMPLE_DEFAULTS, getDefaultAppConfig } from "data-mo
 import type { IDeploymentConfig, IDeploymentConfigJson } from "data-models";
 import path from "path";
 
-import { DEPLOYMENTS_PATH } from "shared";
+import { DEPLOYMENTS_PATH } from "../../paths";
 import { loadDeploymentJson } from "./utils";
 
 // re-export of type for convenience
