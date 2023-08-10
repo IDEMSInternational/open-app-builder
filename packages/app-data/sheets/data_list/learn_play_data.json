@@ -18,9 +18,8 @@
         "intro_text": {
           "tz_sw": true
         },
-        "steps_text": {
-          "tz_sw": true
-        }
+        "steps_text": {},
+        "tips_text": {}
       },
       "_translatedFields": {
         "title": {
@@ -30,11 +29,15 @@
           "eng": "Cleaning up is an important life skill. Get your teen to help you clean the house and make it fun!"
         },
         "steps_text": {
-          "eng": "1. Make a list of all the chores in the house with your teen. For example: washing dishes, sweeping, cooking, making the beds, or doing laundry.\n2. Every week, let each family member choose a chore they want to do. \n3. When your teen is part of the decision, your teen will be more willing to help out. \n4. Agree when the chore should be done by.\n5. Agree what the consequence will be if it is not finished, and what small reward you can give as motivation to do the chore.\n6. A reward does not have to cost money and can be something small, like going to bed a bit later, having more time with friends, or doing a fun (free) activity together.\n7. Let your teen mark the chore as 'done' on your list of chores. Seeing progress is a great motivation!\n8. If your teen did not complete the chore, do not discipline them harshly. Instead, ask them why they were not able to complete the task and give them the consequence you decided on earlier."
+          "eng": "1. Make a list of all the chores in the house with your teen. For example: washing dishes, sweeping, cooking, making the beds, or doing laundry.\n2. Every week, let each family member choose a chore they want to do. \n3. Agree when the chore should be done by.\n4. Agree on what the consequence will be if it is not finished, and what small reward you can give as motivation to do the chore.\n5. When the chore is done, praise your teen and let them mark it as 'done' on your list of chores. Praise and seeing progress are great motivation!"
+        },
+        "tips_text": {
+          "eng": "* When your teen is part of the decision, your teen will be more willing to help out.\n* A reward does not have to cost money and can be something small, like going to bed a bit later, having more time with friends, or doing a fun (free) activity together.\n* If your teen did not complete the chore, do not discipline them harshly. Instead, ask them why they were not able to complete the task and give them the consequence you decided on earlier."
         }
       },
       "intro_text": "Cleaning up is an important life skill. Get your teen to help you clean the house and make it fun!",
-      "steps_text": "1. Make a list of all the chores in the house with your teen. For example: washing dishes, sweeping, cooking, making the beds, or doing laundry.\n2. Every week, let each family member choose a chore they want to do. \n3. When your teen is part of the decision, your teen will be more willing to help out. \n4. Agree when the chore should be done by.\n5. Agree what the consequence will be if it is not finished, and what small reward you can give as motivation to do the chore.\n6. A reward does not have to cost money and can be something small, like going to bed a bit later, having more time with friends, or doing a fun (free) activity together.\n7. Let your teen mark the chore as 'done' on your list of chores. Seeing progress is a great motivation!\n8. If your teen did not complete the chore, do not discipline them harshly. Instead, ask them why they were not able to complete the task and give them the consequence you decided on earlier."
+      "steps_text": "1. Make a list of all the chores in the house with your teen. For example: washing dishes, sweeping, cooking, making the beds, or doing laundry.\n2. Every week, let each family member choose a chore they want to do. \n3. Agree when the chore should be done by.\n4. Agree on what the consequence will be if it is not finished, and what small reward you can give as motivation to do the chore.\n5. When the chore is done, praise your teen and let them mark it as 'done' on your list of chores. Praise and seeing progress are great motivation!",
+      "tips_text": "* When your teen is part of the decision, your teen will be more willing to help out.\n* A reward does not have to cost money and can be something small, like going to bed a bit later, having more time with friends, or doing a fun (free) activity together.\n* If your teen did not complete the chore, do not discipline them harshly. Instead, ask them why they were not able to complete the task and give them the consequence you decided on earlier."
     },
     {
       "id": "bao",
@@ -96,12 +99,8 @@
         "intro_text": {
           "tz_sw": true
         },
-        "steps_text": {
-          "tz_sw": true
-        },
-        "tips_text": {
-          "tz_sw": true
-        }
+        "steps_text": {},
+        "tips_text": {}
       },
       "_translatedFields": {
         "title": {
@@ -111,15 +110,15 @@
           "eng": "Walking around your community is an easy and fun way to spend quality time together. It is good exercise and helps your teen learn about their community."
         },
         "steps_text": {
-          "eng": "1. Plan. Ask your teen to help you choose a time and a place to walk together. It could be a nearby park, market, or any interesting area. If you were going there anyway, ask your teen if they want to come with you.\n2. Observe and explore. Encourage your teen to ask questions about what they see on the walk. This could be about people, nature or buildings.\n3. Learn together. Tell your teen things you know about the area. For example, who lives in different directions, your favourite flower, or what the area looked like long ago"
+          "eng": "<span>1. </span><span><b>Plan.</b></span><span> Discuss with your teen to choose a time and a place to walk together. It could be a nearby park, market, or any interesting area. If you were going there anyway, ask your teen if they want to come with you.<br/>2. </span><span><b>Observe and explore.</b></span><span> Encourage your teen to ask questions about what they see on the walk. This could be about people, nature or buildings.<br/>3. </span><span><b>Learn together.</b></span><span> Tell your teen things you know about the area. For example, who lives in different directions, your favourite flower, or what the area looked like long ago.</span>"
         },
         "tips_text": {
-          "eng": "* Use technology: Bring along your smartphone to take pictures of interesting things you see on the walk. Let your teen take photos and talk about it!\n* Make it regular: Schedule regular walks and explore new locations to keep the activity fresh and engaging."
+          "eng": "<span>* </span><span><b>Use technology:</b></span><span> Bring along your smartphone to take pictures of interesting things you see on the walk. Let your teen take photos and talk about it!<br/>* </span><span><b>Make it regular:</b></span><span> Schedule regular walks and explore new locations to keep the activity fresh and fun.</span>"
         }
       },
       "intro_text": "Walking around your community is an easy and fun way to spend quality time together. It is good exercise and helps your teen learn about their community.",
-      "steps_text": "1. Plan. Ask your teen to help you choose a time and a place to walk together. It could be a nearby park, market, or any interesting area. If you were going there anyway, ask your teen if they want to come with you.\n2. Observe and explore. Encourage your teen to ask questions about what they see on the walk. This could be about people, nature or buildings.\n3. Learn together. Tell your teen things you know about the area. For example, who lives in different directions, your favourite flower, or what the area looked like long ago",
-      "tips_text": "* Use technology: Bring along your smartphone to take pictures of interesting things you see on the walk. Let your teen take photos and talk about it!\n* Make it regular: Schedule regular walks and explore new locations to keep the activity fresh and engaging."
+      "steps_text": "<span>1. </span><span><b>Plan.</b></span><span> Discuss with your teen to choose a time and a place to walk together. It could be a nearby park, market, or any interesting area. If you were going there anyway, ask your teen if they want to come with you.<br/>2. </span><span><b>Observe and explore.</b></span><span> Encourage your teen to ask questions about what they see on the walk. This could be about people, nature or buildings.<br/>3. </span><span><b>Learn together.</b></span><span> Tell your teen things you know about the area. For example, who lives in different directions, your favourite flower, or what the area looked like long ago.</span>",
+      "tips_text": "<span>* </span><span><b>Use technology:</b></span><span> Bring along your smartphone to take pictures of interesting things you see on the walk. Let your teen take photos and talk about it!<br/>* </span><span><b>Make it regular:</b></span><span> Schedule regular walks and explore new locations to keep the activity fresh and fun.</span>"
     },
     {
       "id": "cook_traditional",
@@ -135,12 +134,8 @@
         "intro_text": {
           "tz_sw": true
         },
-        "steps_text": {
-          "tz_sw": true
-        },
-        "tips_text": {
-          "tz_sw": true
-        }
+        "steps_text": {},
+        "tips_text": {}
       },
       "_translatedFields": {
         "title": {
@@ -150,15 +145,15 @@
           "eng": "Cooking traditional @global.regional food with your teen is a great way to connect, learn new skills, and share stories about your culture."
         },
         "steps_text": {
-          "eng": "1. Choose a recipe. Find a traditional @global.regional recipe that you and your teen would like to prepare. You can also ask friends and family for their favourites.\n2. Gather ingredients. Ask your teen to help you get all the necessary ingredients and materials. \n3. Clean and prepare the cooking area. Make sure the kitchen area is clean and tidy before you start cooking. Teach your teen to wash their hands thoroughly when working with food.\n4. Enjoy the meal. Eat the meal you prepared together! Talk about the flavours and textures of the food and share stories about traditional food in @global.regional culture.\n5. Clean up. Once you have finished eating, clean up the cooking area together."
+          "eng": "<span>1. </span><span><b>Choose a recipe.</b></span><span> Find a traditional recipe that you and your teen would like to prepare. You can also ask friends and family for their favourites.<br/>2. </span><span><b>Gather ingredients.</b></span><span> Ask your teen to help you get all the necessary ingredients and materials. <br/>3. </span><span><b>Clean and prepare the cooking area.</b></span><span> Make sure the kitchen area is clean and tidy before you start cooking. Teach your teen to wash their hands thoroughly when working with food.<br/>4. </span><span><b>Enjoy the meal.</b></span><span> Eat the meal you prepared together! Talk about the flavours and textures of the food and share stories about traditional food in your</span><span> </span><span>culture.<br/>5. </span><span><b>Clean up.</b></span><span> Once you have finished eating, clean up the cooking area together.</span>"
         },
         "tips_text": {
-          "eng": "* Plan with your teen: Ask your teen in the morning if they can help you with the cooking tonight. This gives them time to plan their school work and time with friends.\n* Involve them: Tell them what you are cooking tonight and ask them if they know the ingredients. \n* Clear tasks: Ask your teen to chop the food or check the heat of the pots. They will be more interested if they help you and not only watch you cook.\n* Make it regular: Ask them to help you with the cooking more and let them try different jobs like chopping different vegetables or starting a fire."
+          "eng": "<span>* </span><span><b>Plan with your teen:</b></span><span> Ask your teen in the morning if they can help you with the cooking tonight. This gives them time to plan their school work and time with friends.<br/>* </span><span><b>Involve them:</b></span><span> Tell them what you are cooking tonight and ask them if they know the ingredients. <br/>* </span><span><b>Clear tasks:</b></span><span> Ask your teen to chop the food or check the heat of the pots. They will be more interested if they help you and not only watch you cook.<br/>* </span><span><b>Make it regular:</b></span><span> Ask them to help you with the cooking more and let them try different jobs like chopping different vegetables or starting a fire.</span>"
         }
       },
       "intro_text": "Cooking traditional @global.regional food with your teen is a great way to connect, learn new skills, and share stories about your culture.",
-      "steps_text": "1. Choose a recipe. Find a traditional @global.regional recipe that you and your teen would like to prepare. You can also ask friends and family for their favourites.\n2. Gather ingredients. Ask your teen to help you get all the necessary ingredients and materials. \n3. Clean and prepare the cooking area. Make sure the kitchen area is clean and tidy before you start cooking. Teach your teen to wash their hands thoroughly when working with food.\n4. Enjoy the meal. Eat the meal you prepared together! Talk about the flavours and textures of the food and share stories about traditional food in @global.regional culture.\n5. Clean up. Once you have finished eating, clean up the cooking area together.",
-      "tips_text": "* Plan with your teen: Ask your teen in the morning if they can help you with the cooking tonight. This gives them time to plan their school work and time with friends.\n* Involve them: Tell them what you are cooking tonight and ask them if they know the ingredients. \n* Clear tasks: Ask your teen to chop the food or check the heat of the pots. They will be more interested if they help you and not only watch you cook.\n* Make it regular: Ask them to help you with the cooking more and let them try different jobs like chopping different vegetables or starting a fire."
+      "steps_text": "<span>1. </span><span><b>Choose a recipe.</b></span><span> Find a traditional recipe that you and your teen would like to prepare. You can also ask friends and family for their favourites.<br/>2. </span><span><b>Gather ingredients.</b></span><span> Ask your teen to help you get all the necessary ingredients and materials. <br/>3. </span><span><b>Clean and prepare the cooking area.</b></span><span> Make sure the kitchen area is clean and tidy before you start cooking. Teach your teen to wash their hands thoroughly when working with food.<br/>4. </span><span><b>Enjoy the meal.</b></span><span> Eat the meal you prepared together! Talk about the flavours and textures of the food and share stories about traditional food in your</span><span> </span><span>culture.<br/>5. </span><span><b>Clean up.</b></span><span> Once you have finished eating, clean up the cooking area together.</span>",
+      "tips_text": "<span>* </span><span><b>Plan with your teen:</b></span><span> Ask your teen in the morning if they can help you with the cooking tonight. This gives them time to plan their school work and time with friends.<br/>* </span><span><b>Involve them:</b></span><span> Tell them what you are cooking tonight and ask them if they know the ingredients. <br/>* </span><span><b>Clear tasks:</b></span><span> Ask your teen to chop the food or check the heat of the pots. They will be more interested if they help you and not only watch you cook.<br/>* </span><span><b>Make it regular:</b></span><span> Ask them to help you with the cooking more and let them try different jobs like chopping different vegetables or starting a fire.</span>"
     },
     {
       "id": "garden",
@@ -265,14 +260,14 @@
           "eng": "Role-playing is when you pretend to be someone in a certain situation, and act out how you think things will go. \n\nThis is a fun way to help your teen understand how others might act or feel, and for you to learn more about how your teen thinks and feels."
         },
         "steps_text": {
-          "eng": "1. Ask your teen if they want to try out this “pretending” or “role playing” with you.\n2. Ask your teen to choose a situation (real or made up) that they would like to act out. It is easier to start with something made up, like being a superhero, and later you can suggest role-playing being a teacher and student at their school.\n3. Take time to talk about what you learned through role-playing. Ask questions like, \"How did you feel acting out that role?\" or, \"What did you learn about that situation?\". This will help your teen to think about how other people think and feel."
+          "eng": "1. Ask your teen if they want to try out this “role-playing” with you.\n2. Ask your teen to choose a situation that they would like to act out. It can be something they saw at school, in your community, or on social media.  For example, being a teacher and student at their school.\n3. Let your teen decide who should play which role, and act out the scenario together. \n4. Take time to talk about what you learned through role-playing. Ask questions like, \"How did you feel acting out that role?\" or, \"What did you learn about that situation?\". This will help your teen to think about how other people think and feel."
         },
         "tips_text": {
           "eng": "* Take turns acting different roles. You can also swap roles to see how it changes the situation.\n* Keep the activity fun. It doesn’t always have to be role play about something real. \n* Ask your teen to act as their favourite hero. Ask what they would do if they had super powers for a day."
         }
       },
       "intro_text": "Role-playing is when you pretend to be someone in a certain situation, and act out how you think things will go. \n\nThis is a fun way to help your teen understand how others might act or feel, and for you to learn more about how your teen thinks and feels.",
-      "steps_text": "1. Ask your teen if they want to try out this “pretending” or “role playing” with you.\n2. Ask your teen to choose a situation (real or made up) that they would like to act out. It is easier to start with something made up, like being a superhero, and later you can suggest role-playing being a teacher and student at their school.\n3. Take time to talk about what you learned through role-playing. Ask questions like, \"How did you feel acting out that role?\" or, \"What did you learn about that situation?\". This will help your teen to think about how other people think and feel.",
+      "steps_text": "1. Ask your teen if they want to try out this “role-playing” with you.\n2. Ask your teen to choose a situation that they would like to act out. It can be something they saw at school, in your community, or on social media.  For example, being a teacher and student at their school.\n3. Let your teen decide who should play which role, and act out the scenario together. \n4. Take time to talk about what you learned through role-playing. Ask questions like, \"How did you feel acting out that role?\" or, \"What did you learn about that situation?\". This will help your teen to think about how other people think and feel.",
       "tips_text": "* Take turns acting different roles. You can also swap roles to see how it changes the situation.\n* Keep the activity fun. It doesn’t always have to be role play about something real. \n* Ask your teen to act as their favourite hero. Ask what they would do if they had super powers for a day."
     },
     {
@@ -285,9 +280,7 @@
       "_translations": {
         "title": {},
         "intro_text": {},
-        "resources_text": {
-          "tz_sw": true
-        },
+        "resources_text": {},
         "steps_text": {
           "tz_sw": true
         },
@@ -299,10 +292,10 @@
           "eng": "Hide and seek (find the pair)"
         },
         "intro_text": {
-          "eng": "Hide and seek is a fun game that many people played when they were children. In this version of the game, you add a challenging twist for your teen.\n\nHide everyday household objects and ask your teen to remember what the objects are and look for the matching pairs."
+          "eng": "Hide and seek is a fun game that many people played when they were children. \n\nIn this version of the game, you add a challenging twist for your teen."
         },
         "resources_text": {
-          "eng": "Spoons, cups, bowls, empty boxes, shoes, or other small objects you can find around the house. Make sure you have two of each object."
+          "eng": "Pairs of any small objects you can find around the house (for example spoons, cups, bowls, empty boxes, shoes) Make sure you have two of each object."
         },
         "steps_text": {
           "eng": "1. Hide one of each object around the room. Make sure they are not too difficult to find, but also not too easy.\n2. Show your teen the objects they need to find.\n3. Let your teen look for the objects. When they find one, they must run back to you, name the object, and put it next to the matching object.\n4. Repeat the process until all pairs of objects have been found."
@@ -314,8 +307,8 @@
           "eng": "Instead of a matching pair, show your teen an object that is “connected to” the object you hid in the room. For example, show your teen a sock, and they will search for something connected with that, like a shoe."
         }
       },
-      "intro_text": "Hide and seek is a fun game that many people played when they were children. In this version of the game, you add a challenging twist for your teen.\n\nHide everyday household objects and ask your teen to remember what the objects are and look for the matching pairs.",
-      "resources_text": "Spoons, cups, bowls, empty boxes, shoes, or other small objects you can find around the house. Make sure you have two of each object.",
+      "intro_text": "Hide and seek is a fun game that many people played when they were children. \n\nIn this version of the game, you add a challenging twist for your teen.",
+      "resources_text": "Pairs of any small objects you can find around the house (for example spoons, cups, bowls, empty boxes, shoes) Make sure you have two of each object.",
       "steps_text": "1. Hide one of each object around the room. Make sure they are not too difficult to find, but also not too easy.\n2. Show your teen the objects they need to find.\n3. Let your teen look for the objects. When they find one, they must run back to you, name the object, and put it next to the matching object.\n4. Repeat the process until all pairs of objects have been found.",
       "tips_text": "* Try to make the game more challenging by making the objects harder to find. \n* You can time how long it takes your teen to find all the objects and ask them to try and beat their time. \n* Choose objects with different shapes, sizes, and colours.",
       "extension_text": "Instead of a matching pair, show your teen an object that is “connected to” the object you hid in the room. For example, show your teen a sock, and they will search for something connected with that, like a shoe."
@@ -334,9 +327,7 @@
         "intro_text": {},
         "resources_text": {},
         "steps_text": {},
-        "tips_text": {
-          "tz_sw": true
-        }
+        "tips_text": {}
       },
       "_translatedFields": {
         "title": {
@@ -352,13 +343,13 @@
           "eng": "1. Place any object inside the “Mystery Box”, without showing your teen.\n2. Your teen now asks you questions to try and guess what it is. You can only answer with “Yes” or “No”.\n3. When your teen is sure of the answer, they have to say, “I believe the mystery box is hiding …” and give their answer.\n4. Swap roles with your teen and let them choose an object to hide in the box and you try to guess what it is."
         },
         "tips_text": {
-          "eng": "* You can use different objects. You can also introduce themes, such as animals or fruits, to make the game more exciting. \n* You can allow their teen to choose the objects or themes, making them feel more involved and part of the game."
+          "eng": "* You can use different objects. You can also introduce themes, such as animals or fruits, to make the game more exciting. \n* You can allow your teen to choose the objects or themes. This makes them feel more involved and part of the game.\n* Your teen can close their eyes and touch the mystery item to guess what it is."
         }
       },
       "intro_text": "Mystery Box is a fun game in which you place an object inside a box, and let your teen ask questions to figure out what the object is.",
       "resources_text": "You can use anything as a ‘box’ (a bucket, sack, packet), as long as your teen can not see what is inside.\n\nYou also need something to hide inside the mystery box.",
       "steps_text": "1. Place any object inside the “Mystery Box”, without showing your teen.\n2. Your teen now asks you questions to try and guess what it is. You can only answer with “Yes” or “No”.\n3. When your teen is sure of the answer, they have to say, “I believe the mystery box is hiding …” and give their answer.\n4. Swap roles with your teen and let them choose an object to hide in the box and you try to guess what it is.",
-      "tips_text": "* You can use different objects. You can also introduce themes, such as animals or fruits, to make the game more exciting. \n* You can allow their teen to choose the objects or themes, making them feel more involved and part of the game."
+      "tips_text": "* You can use different objects. You can also introduce themes, such as animals or fruits, to make the game more exciting. \n* You can allow your teen to choose the objects or themes. This makes them feel more involved and part of the game.\n* Your teen can close their eyes and touch the mystery item to guess what it is."
     },
     {
       "id": "memory_game",
@@ -422,18 +413,18 @@
           "eng": "Cooking"
         },
         "intro_text": {
-          "eng": "Cooking together is a wonderful opportunity to talk and connect, while also teaching your teen life skills (preparing food and appreciating the effort it takes / time management / contributing to family life). \n\nYou might find that your teen has been wanting to help you cook but did not know how to ask."
+          "eng": "Cooking together is a wonderful opportunity to talk and connect, while also teaching your teen life skills."
         },
         "steps_text": {
           "eng": "1. Set a time and day that you and your teen are going to cook together. This will help both of you plan.\n2. Teach them about what you are going to make together. Show them the ingredients and let them help measure how much you will be using today.\n3. Give them a job to do, like fetching water, chopping, or stirring.\n4. Enjoy the meal as a family and let your teen enjoy the pride of contributing to the family"
         },
         "tips_text": {
-          "eng": "* Involve them in the planning process by letting them choose the recipe or ingredients.\n* Allow your teen to do as much as possible, including washing, measuring, cutting, and mixing.\n* Encourage your teen to ask questions and to share what they are learning.\n* Praise their efforts and accomplishments, even if the food does not turn out perfectly."
+          "eng": "* Involve them in the planning process by letting them choose the recipe or ingredients.\n* Allow your teen to do as much as possible, including washing, measuring, cutting, and mixing.\n* Encourage your teen to ask questions and to share what they are learning.\n* Praise their efforts, even if the food does not turn out perfectly.\n* Your teen will learn important life skills by cooking together: How to prepare food and plan well, appreciating the effort cooking takes, and how good it feels to contribute to family life.\n* You might find that your teen has been wanting to help you cook but did not know how to ask."
         }
       },
-      "intro_text": "Cooking together is a wonderful opportunity to talk and connect, while also teaching your teen life skills (preparing food and appreciating the effort it takes / time management / contributing to family life). \n\nYou might find that your teen has been wanting to help you cook but did not know how to ask.",
+      "intro_text": "Cooking together is a wonderful opportunity to talk and connect, while also teaching your teen life skills.",
       "steps_text": "1. Set a time and day that you and your teen are going to cook together. This will help both of you plan.\n2. Teach them about what you are going to make together. Show them the ingredients and let them help measure how much you will be using today.\n3. Give them a job to do, like fetching water, chopping, or stirring.\n4. Enjoy the meal as a family and let your teen enjoy the pride of contributing to the family",
-      "tips_text": "* Involve them in the planning process by letting them choose the recipe or ingredients.\n* Allow your teen to do as much as possible, including washing, measuring, cutting, and mixing.\n* Encourage your teen to ask questions and to share what they are learning.\n* Praise their efforts and accomplishments, even if the food does not turn out perfectly."
+      "tips_text": "* Involve them in the planning process by letting them choose the recipe or ingredients.\n* Allow your teen to do as much as possible, including washing, measuring, cutting, and mixing.\n* Encourage your teen to ask questions and to share what they are learning.\n* Praise their efforts, even if the food does not turn out perfectly.\n* Your teen will learn important life skills by cooking together: How to prepare food and plan well, appreciating the effort cooking takes, and how good it feels to contribute to family life.\n* You might find that your teen has been wanting to help you cook but did not know how to ask."
     },
     {
       "id": "tell_stories",
@@ -458,15 +449,15 @@
           "eng": "Storytelling is a wonderful way to help your teen feel more connected with you, as well as with their family, history and culture."
         },
         "steps_text": {
-          "eng": "1. Choose a time and place where you and your teen can sit and talk comfortably. This could be after dinner, before bedtime, or during a walk outside.\n2. Start by sharing your own story. It could be something that happened today, something you remember as a child, or a memory that is special to you.\n3. After you finish your story, ask your teen if they have any questions. If they don’t have any, ask them to share their own story with you.  \n4. Listen to your teen's story, ask questions and show interest in what they have to say.\n5. If your teen is struggling to come up with a story, suggest some prompts such as \"What was your favourite childhood memory?\" or \"What is a tradition in our family that you enjoy?\""
+          "eng": "1. Choose a time and place where you and your teen can talk comfortably. This could be after dinner, before bedtime, or during a walk outside.\n2. Start by sharing your own story. It could be something that happened today, something you remember as a child or a memory that is special to you.\n3. After you finish your story, ask your teen if they have any questions. If they don’t have any, ask them to share their own story with you.  \n4. Listen to your teen's story, ask questions, and show interest in what they have to say.\n5. If your teen is struggling to come up with a story, ask something like \"What is your favourite childhood memory?\" or \"What is a tradition in our family that you enjoy?\". They can even make up a story."
         },
         "tips_text": {
-          "eng": "* Create a safe space for your teen to share their stories. They will share more with you if they feel like you won’t be upset with them.\n* Give your teen time to think and come up with their own story. This is not easy for them to do."
+          "eng": "* Create a safe space for your teen to share their stories. They will share more with you if they feel like you won’t be upset with them.\n* Give your teen time to think and come up with their own story. This may not be easy for them to do."
         }
       },
       "intro_text": "Storytelling is a wonderful way to help your teen feel more connected with you, as well as with their family, history and culture.",
-      "steps_text": "1. Choose a time and place where you and your teen can sit and talk comfortably. This could be after dinner, before bedtime, or during a walk outside.\n2. Start by sharing your own story. It could be something that happened today, something you remember as a child, or a memory that is special to you.\n3. After you finish your story, ask your teen if they have any questions. If they don’t have any, ask them to share their own story with you.  \n4. Listen to your teen's story, ask questions and show interest in what they have to say.\n5. If your teen is struggling to come up with a story, suggest some prompts such as \"What was your favourite childhood memory?\" or \"What is a tradition in our family that you enjoy?\"",
-      "tips_text": "* Create a safe space for your teen to share their stories. They will share more with you if they feel like you won’t be upset with them.\n* Give your teen time to think and come up with their own story. This is not easy for them to do."
+      "steps_text": "1. Choose a time and place where you and your teen can talk comfortably. This could be after dinner, before bedtime, or during a walk outside.\n2. Start by sharing your own story. It could be something that happened today, something you remember as a child or a memory that is special to you.\n3. After you finish your story, ask your teen if they have any questions. If they don’t have any, ask them to share their own story with you.  \n4. Listen to your teen's story, ask questions, and show interest in what they have to say.\n5. If your teen is struggling to come up with a story, ask something like \"What is your favourite childhood memory?\" or \"What is a tradition in our family that you enjoy?\". They can even make up a story.",
+      "tips_text": "* Create a safe space for your teen to share their stories. They will share more with you if they feel like you won’t be upset with them.\n* Give your teen time to think and come up with their own story. This may not be easy for them to do."
     },
     {
       "id": "dance",
@@ -528,14 +519,14 @@
           "eng": "Setting weekly goals together teaches your teen how to set achievable tasks and work towards their larger long-term goals. \n\nThis is a great way to bond and to support their personal growth and success in education."
         },
         "steps_text": {
-          "eng": "1. At the start of each week, sit down with your teen and ask them to choose one goal for that week. Make sure the goal is specific, and can be done in one week. \n2. Share your own goal with your teen and try to support each other to help each other reach your goals.\n3. During the week, praise your teen for working on their goal. Celebrate their hard work.\n4. If your teen does not reach their goal, use it as an opportunity to learn: Talk about why they did not reach it. What could they do better next time? Encourage them to re-plan their goal for next week.\n5. Do this every week to start the habit of setting goals and completing them."
+          "eng": "1. At the start of each week, sit down with your teen and ask them to choose one goal for that week. Make sure the goal is specific and can be done in one week. \n2. Share your own goal with your teen and try to support each other to reach your goals.\n3. During the week, praise your teen for working on their goal. Celebrate their hard work.\n4. If your teen does not reach their goal, use it as an opportunity to learn: Talk about why they did not reach it. What could they do better next time? Encourage them to re-plan their goal for next week.\n5. Do this every week to start the habit of setting goals and completing them."
         },
         "tips_text": {
           "eng": "* Let your teen choose their own goal.\n* Make sure the goal is small enough for them to do in one week. Teens are more likely to set more goals if they complete their last goal. \n* Praise your teen for trying! They will put more effort in if they see that you care about their goal."
         }
       },
       "intro_text": "Setting weekly goals together teaches your teen how to set achievable tasks and work towards their larger long-term goals. \n\nThis is a great way to bond and to support their personal growth and success in education.",
-      "steps_text": "1. At the start of each week, sit down with your teen and ask them to choose one goal for that week. Make sure the goal is specific, and can be done in one week. \n2. Share your own goal with your teen and try to support each other to help each other reach your goals.\n3. During the week, praise your teen for working on their goal. Celebrate their hard work.\n4. If your teen does not reach their goal, use it as an opportunity to learn: Talk about why they did not reach it. What could they do better next time? Encourage them to re-plan their goal for next week.\n5. Do this every week to start the habit of setting goals and completing them.",
+      "steps_text": "1. At the start of each week, sit down with your teen and ask them to choose one goal for that week. Make sure the goal is specific and can be done in one week. \n2. Share your own goal with your teen and try to support each other to reach your goals.\n3. During the week, praise your teen for working on their goal. Celebrate their hard work.\n4. If your teen does not reach their goal, use it as an opportunity to learn: Talk about why they did not reach it. What could they do better next time? Encourage them to re-plan their goal for next week.\n5. Do this every week to start the habit of setting goals and completing them.",
       "tips_text": "* Let your teen choose their own goal.\n* Make sure the goal is small enough for them to do in one week. Teens are more likely to set more goals if they complete their last goal. \n* Praise your teen for trying! They will put more effort in if they see that you care about their goal."
     },
     {
@@ -561,14 +552,14 @@
           "eng": "Helping your teen understand their strengths makes them feel confident in life and helps them take steps to grow in other areas as well."
         },
         "steps_text": {
-          "eng": "1. Ask your teen to come up with three things they are good at. These can be small things, such as being on time for school, washing the dishes, or something they do with their friends.\n2. Talk about why they are good at these things and what helped them be so great at them.\n3. Ask your teen what they wish they were good at. Help them understand that these things take work and practice, just like the things they are already good at.\n4. Help your teen come up with things they will need to do to achieve this new thing they want to be great at.\n5. Break down the goal into smaller, achievable steps. Write down these smaller goals and encourage your teen to tick them off as they accomplish them.\n6. Celebrate each achievement and encourage your teen to keep working towards their bigger goal."
+          "eng": "1. Talk about your teen’s strengths. Ask them:\n   * Which 3 things are you good at? (These can be small things, such as being on time for school, washing the dishes, or something they do with their friends.)\n   * What helped you to be good at these things? (Make sure to talk about hard work and practice.)\n2. Talk about your teen’s areas of improvement. Ask them:\n   * What would you love to be better at? \n   * What can you do to reach that goal, and how can I help you? (Break down the big goal into smaller achievable goals/steps.)\n3. Write down these smaller goals and encourage your teen to tick them off as they accomplish them.\n4. Celebrate each achievement and encourage your teen to keep working towards their bigger goal."
         },
         "tips_text": {
           "eng": "* Remember that teens will try more if they find things fun.\n* Celebrate each step along the way and offer praise when your teen faces challenges."
         }
       },
       "intro_text": "Helping your teen understand their strengths makes them feel confident in life and helps them take steps to grow in other areas as well.",
-      "steps_text": "1. Ask your teen to come up with three things they are good at. These can be small things, such as being on time for school, washing the dishes, or something they do with their friends.\n2. Talk about why they are good at these things and what helped them be so great at them.\n3. Ask your teen what they wish they were good at. Help them understand that these things take work and practice, just like the things they are already good at.\n4. Help your teen come up with things they will need to do to achieve this new thing they want to be great at.\n5. Break down the goal into smaller, achievable steps. Write down these smaller goals and encourage your teen to tick them off as they accomplish them.\n6. Celebrate each achievement and encourage your teen to keep working towards their bigger goal.",
+      "steps_text": "1. Talk about your teen’s strengths. Ask them:\n   * Which 3 things are you good at? (These can be small things, such as being on time for school, washing the dishes, or something they do with their friends.)\n   * What helped you to be good at these things? (Make sure to talk about hard work and practice.)\n2. Talk about your teen’s areas of improvement. Ask them:\n   * What would you love to be better at? \n   * What can you do to reach that goal, and how can I help you? (Break down the big goal into smaller achievable goals/steps.)\n3. Write down these smaller goals and encourage your teen to tick them off as they accomplish them.\n4. Celebrate each achievement and encourage your teen to keep working towards their bigger goal.",
       "tips_text": "* Remember that teens will try more if they find things fun.\n* Celebrate each step along the way and offer praise when your teen faces challenges."
     },
     {
@@ -583,9 +574,7 @@
           "tz_sw": true
         },
         "intro_text": {},
-        "steps_text": {
-          "tz_sw": true
-        },
+        "steps_text": {},
         "tips_text": {}
       },
       "_translatedFields": {
@@ -596,14 +585,14 @@
           "eng": "Every house needs some cleaning and organising sometimes. Working with your teen to do this provides an opportunity for bonding and teamwork."
         },
         "steps_text": {
-          "eng": "1. Start by identifying a specific area in your home or community space that needs cleaning and organising, such as a room, cupboard or area on the floor.\n2. Talk to your teen about what needs to be done to clean the space (Like sorting items into groups, or dusting a surface).\n3. Give specific tasks to each person and work together to complete them. \n4. As you clean and organise, take the opportunity to talk and connect with your teen. Ask them about their interests and share stories from your own life.\n5. When you’re finished, take a moment to appreciate what you did and praise your teen for their part."
+          "eng": "1. Identify a specific area in your home that needs cleaning and organising, such as a room, cupboard, or area on the floor.\n2. Talk to your teen about what needs to be done to clean the space (Like sorting items into groups, or dusting a surface).\n3. Give specific tasks to each person and work together to complete them. \n4. As you clean and organise, take the opportunity to talk and connect with your teen. Ask them about their interests and share stories from your own life.\n5. When you are finished, take a moment to appreciate what you did and praise your teen for their part."
         },
         "tips_text": {
           "eng": "* Let your teen come up with an idea for what they think should be cleaned or organised.\n* Take breaks and take your time. Remember to keep things fun. The goal is to spend time with your teen and teach them about being tidy and organised."
         }
       },
       "intro_text": "Every house needs some cleaning and organising sometimes. Working with your teen to do this provides an opportunity for bonding and teamwork.",
-      "steps_text": "1. Start by identifying a specific area in your home or community space that needs cleaning and organising, such as a room, cupboard or area on the floor.\n2. Talk to your teen about what needs to be done to clean the space (Like sorting items into groups, or dusting a surface).\n3. Give specific tasks to each person and work together to complete them. \n4. As you clean and organise, take the opportunity to talk and connect with your teen. Ask them about their interests and share stories from your own life.\n5. When you’re finished, take a moment to appreciate what you did and praise your teen for their part.",
+      "steps_text": "1. Identify a specific area in your home that needs cleaning and organising, such as a room, cupboard, or area on the floor.\n2. Talk to your teen about what needs to be done to clean the space (Like sorting items into groups, or dusting a surface).\n3. Give specific tasks to each person and work together to complete them. \n4. As you clean and organise, take the opportunity to talk and connect with your teen. Ask them about their interests and share stories from your own life.\n5. When you are finished, take a moment to appreciate what you did and praise your teen for their part.",
       "tips_text": "* Let your teen come up with an idea for what they think should be cleaned or organised.\n* Take breaks and take your time. Remember to keep things fun. The goal is to spend time with your teen and teach them about being tidy and organised."
     },
     {
