@@ -16,8 +16,9 @@
     --border-width: var(--checkbox-border-width);
     --background: var(--ion-color-primary-contrast);
     --border-radius: var(--checkbox-border-radius);
-    --size: var(--checkbox-border-size);
+    --size: var(--checkbox-size);
     margin: 0 var(--small-margin);
+    min-width: var(--checkbox-size);
   }
 
   label {

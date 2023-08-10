@@ -449,7 +449,7 @@
         },
         {
           "name": "image",
-          "value": "plh_images/workshop_modes/guide_2/star.svg",
+          "value": "plh_images/workshop_modes/individual/star.svg",
           "_translations": {
             "value": {}
           },
@@ -863,5 +863,5 @@
       }
     }
   ],
-  "_xlsxPath": "global/in_week_messages/in_week_message_types.xlsx"
+  "_xlsxPath": "global/top_templates/in_week_messages/in_week_message_types.xlsx"
 }

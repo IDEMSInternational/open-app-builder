@@ -35,11 +35,9 @@ export class DeprecatedContentsFileProcessor<T extends IContentsFileEntry> {
 
   public write(contentsFolder: string) {
     const contentsFilename = "_contents.json";
-    const cacheHashmap = generateFolderFlatMap(
-      contentsFolder,
-      true,
-      (p) => p !== contentsFilename
-    ) as { [relativePath: string]: IContentsEntry };
+    const cacheHashmap = generateFolderFlatMap(contentsFolder, {
+      filterFn: (p) => p !== contentsFilename,
+    }) as { [relativePath: string]: IContentsEntry };
     const contentsData = Object.values(cacheHashmap).map((entry) => {
       entry.relativePath = entry.relativePath.replace(".json", "");
       const contentsEntry: IContentsFileEntry = {

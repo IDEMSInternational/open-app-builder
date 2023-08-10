@@ -41,7 +41,17 @@
     },
     {
       "id": "private_family_foundation",
-      "description": "A private family foundation which wishes to remain anonymous"
+      "description": "A private family foundation which wishes to remain anonymous",
+      "_translations": {
+        "description": {
+          "tz_sw": true
+        }
+      },
+      "_translatedFields": {
+        "description": {
+          "eng": "A private family foundation which wishes to remain anonymous"
+        }
+      }
     }
   ],
   "_xlsxPath": "global/data/partners_data_lists.xlsx"

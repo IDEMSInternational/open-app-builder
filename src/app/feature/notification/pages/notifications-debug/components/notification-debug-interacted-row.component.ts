@@ -10,14 +10,14 @@ import { ILocalNotificationInteractionDB } from "src/app/shared/services/notific
           <div style="flex:1">
             <div>
               <div>
-                {{ notification.notification_meta.title }}
+                {{ notification.notification_meta?.title }}
               </div>
-              <div class="info-text">{{ notification.notification_meta.id }}</div>
+              <div class="info-text">{{ notification.notification_meta?.id }}</div>
             </div>
           </div>
           <div>
             <div class="next-notification" style="color:grey">
-              {{ notification.schedule_timestamp | date: "MMM d h:mm a" }}
+              {{ notification.schedule_timestamp | date : "MMM d h:mm a" }}
             </div>
             <div style="margin-top:0.5em; text-align:right">
               <span class="tag action" *ngIf="notification.action_id">
@@ -31,7 +31,7 @@ import { ILocalNotificationInteractionDB } from "src/app/shared/services/notific
         <div class="row-content">
           <div style="flex: 1; margin-right: 8px">
             <div class="divider"></div>
-            <div>{{ notification.notification_meta.text }}</div>
+            <div>{{ notification.notification_meta?.text }}</div>
           </div>
           <div style="text-align: right">
             <div class="divider"></div>

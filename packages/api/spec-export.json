@@ -1,9 +1,526 @@
 {
   "openapi": "3.0.0",
+  "paths": {
+    "/status": {
+      "get": {
+        "operationId": "DefaultController_checkStatus",
+        "summary": "Check server status",
+        "parameters": [
+          {
+            "name": "x-deployment-db-name",
+            "in": "header",
+            "description": "Name of db for deployment to populate",
+            "schema": {
+              "type": "string",
+              "default": "plh"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/app_users": {
+      "get": {
+        "operationId": "AppUsersController_findAll",
+        "summary": "List users",
+        "parameters": [
+          {
+            "name": "x-deployment-db-name",
+            "in": "header",
+            "description": "Name of db for deployment to populate",
+            "schema": {
+              "type": "string",
+              "default": "plh"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Users"
+        ]
+      }
+    },
+    "/app_users/{app_user_id}": {
+      "get": {
+        "operationId": "AppUsersController_findOne",
+        "summary": "Get user profile",
+        "parameters": [
+          {
+            "name": "app_user_id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-deployment-db-name",
+            "in": "header",
+            "description": "Name of db for deployment to populate",
+            "schema": {
+              "type": "string",
+              "default": "plh"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Users"
+        ]
+      },
+      "post": {
+        "operationId": "AppUsersController_setUserData",
+        "summary": "Update user profile",
+        "parameters": [
+          {
+            "name": "x-deployment-db-name",
+            "in": "header",
+            "description": "Name of db for deployment to populate",
+            "schema": {
+              "type": "string",
+              "default": "plh"
+            }
+          },
+          {
+            "name": "app_user_id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ContactFieldDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "User Updated",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ContactFieldDto"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Users"
+        ]
+      }
+    },
+    "/contact_fields": {
+      "get": {
+        "operationId": "ContactFieldController_findAll",
+        "summary": "List contact field entries",
+        "parameters": [
+          {
+            "name": "x-deployment-db-name",
+            "in": "header",
+            "description": "Name of db for deployment to populate",
+            "schema": {
+              "type": "string",
+              "default": "plh"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Contact Fields"
+        ]
+      }
+    },
+    "/contact_fields/{app_user_id}": {
+      "post": {
+        "operationId": "ContactFieldController_setUserContactFields",
+        "summary": "Set User Contact Fields",
+        "parameters": [
+          {
+            "name": "x-deployment-db-name",
+            "in": "header",
+            "description": "Name of db for deployment to populate",
+            "schema": {
+              "type": "string",
+              "default": "plh"
+            }
+          },
+          {
+            "name": "app_user_id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ContactFieldDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "User Updated",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ContactFieldDto"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Contact Fields"
+        ]
+      }
+    },
+    "/app_feedback": {
+      "get": {
+        "operationId": "AppFeedbackController_findAll",
+        "summary": "List all feedback",
+        "parameters": [
+          {
+            "name": "x-deployment-db-name",
+            "in": "header",
+            "description": "Name of db for deployment to populate",
+            "schema": {
+              "type": "string",
+              "default": "plh"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Feedback"
+        ]
+      },
+      "post": {
+        "operationId": "AppFeedbackController_addUserFeedback",
+        "summary": "Add feedback entry",
+        "parameters": [
+          {
+            "name": "x-deployment-db-name",
+            "in": "header",
+            "description": "Name of db for deployment to populate",
+            "schema": {
+              "type": "string",
+              "default": "plh"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserFeedbackDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Feedback Added",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserFeedbackDto"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Feedback"
+        ]
+      }
+    },
+    "/app_notification_interaction": {
+      "get": {
+        "operationId": "AppNotificationInteractionController_findAll",
+        "summary": "List all notification interactions",
+        "parameters": [
+          {
+            "name": "x-deployment-db-name",
+            "in": "header",
+            "description": "Name of db for deployment to populate",
+            "schema": {
+              "type": "string",
+              "default": "plh"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Notification Interaction"
+        ]
+      },
+      "post": {
+        "operationId": "AppNotificationInteractionController_addUserNotificationInteraction",
+        "summary": "Add notification interaction entry",
+        "parameters": [
+          {
+            "name": "x-deployment-db-name",
+            "in": "header",
+            "description": "Name of db for deployment to populate",
+            "schema": {
+              "type": "string",
+              "default": "plh"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserNotificationInteractionDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Notification Interaction Added",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserNotificationInteractionDto"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Notification Interaction"
+        ]
+      }
+    },
+    "/tables": {
+      "get": {
+        "operationId": "TablesController_listTables",
+        "summary": "List tables",
+        "parameters": [
+          {
+            "name": "x-deployment-db-name",
+            "in": "header",
+            "description": "Name of db for deployment to populate",
+            "schema": {
+              "type": "string",
+              "default": "plh"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "List of table_names",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/STRING"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "DB Tables"
+        ]
+      }
+    },
+    "/tables/{table_name}": {
+      "get": {
+        "operationId": "TablesController_getTableMeta",
+        "summary": "Get table meta",
+        "parameters": [
+          {
+            "name": "x-deployment-db-name",
+            "in": "header",
+            "description": "Name of db for deployment to populate",
+            "schema": {
+              "type": "string",
+              "default": "plh"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "DB Tables"
+        ]
+      }
+    },
+    "/tables/{table_name}/columns": {
+      "get": {
+        "operationId": "TablesController_getTableColumns",
+        "summary": "Add columns to map raw field data",
+        "parameters": [
+          {
+            "name": "x-deployment-db-name",
+            "in": "header",
+            "description": "Name of db for deployment to populate",
+            "schema": {
+              "type": "string",
+              "default": "plh"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TableColumnMappingDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "User Updated",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TableColumnMappingDto"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "DB Tables"
+        ]
+      },
+      "post": {
+        "operationId": "TablesController_addMappedTableColumns",
+        "summary": "Add columns to map raw field data",
+        "parameters": [
+          {
+            "name": "x-deployment-db-name",
+            "in": "header",
+            "description": "Name of db for deployment to populate",
+            "schema": {
+              "type": "string",
+              "default": "plh"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TableColumnMappingDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "User Updated",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TableColumnMappingDto"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "DB Tables"
+        ]
+      },
+      "delete": {
+        "operationId": "TablesController_removeMappedTableColumns",
+        "summary": "Remove columns used to map raw field data",
+        "parameters": [
+          {
+            "name": "x-deployment-db-name",
+            "in": "header",
+            "description": "Name of db for deployment to populate",
+            "schema": {
+              "type": "string",
+              "default": "plh"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TableColumnMappingDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "User Updated",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TableColumnMappingDto"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "DB Tables"
+        ]
+      }
+    }
+  },
   "info": {
     "title": "IDEMS Apps API",
     "description": "App-Server Communication",
-    "version": "1.2.7",
+    "version": "1.3.0",
     "contact": {}
   },
   "tags": [
@@ -180,340 +697,9 @@
             }
           }
         },
-        "required": ["columns"]
-      }
-    }
-  },
-  "paths": {
-    "/status": {
-      "get": {
-        "operationId": "DefaultController_checkStatus",
-        "summary": "Check server status",
-        "parameters": [],
-        "responses": {
-          "200": {
-            "description": ""
-          }
-        }
-      }
-    },
-    "/app_users": {
-      "get": {
-        "operationId": "AppUsersController_findAll",
-        "summary": "List users",
-        "parameters": [],
-        "responses": {
-          "200": {
-            "description": ""
-          }
-        },
-        "tags": ["Users"]
-      }
-    },
-    "/app_users/{app_user_id}": {
-      "get": {
-        "operationId": "AppUsersController_findOne",
-        "summary": "Get user profile",
-        "parameters": [
-          {
-            "name": "app_user_id",
-            "required": true,
-            "in": "path",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": ""
-          }
-        },
-        "tags": ["Users"]
-      },
-      "post": {
-        "operationId": "AppUsersController_setUserData",
-        "summary": "Update user profile",
-        "parameters": [
-          {
-            "name": "app_user_id",
-            "required": true,
-            "in": "path",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/ContactFieldDto"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "User Updated",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ContactFieldDto"
-                }
-              }
-            }
-          }
-        },
-        "tags": ["Users"]
-      }
-    },
-    "/contact_fields": {
-      "get": {
-        "operationId": "ContactFieldController_findAll",
-        "summary": "List contact field entries",
-        "parameters": [],
-        "responses": {
-          "200": {
-            "description": ""
-          }
-        },
-        "tags": ["Contact Fields"]
-      }
-    },
-    "/contact_fields/{app_user_id}": {
-      "post": {
-        "operationId": "ContactFieldController_setUserContactFields",
-        "summary": "Set User Contact Fields",
-        "parameters": [],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/ContactFieldDto"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "User Updated",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ContactFieldDto"
-                }
-              }
-            }
-          }
-        },
-        "tags": ["Contact Fields"]
-      }
-    },
-    "/app_feedback": {
-      "get": {
-        "operationId": "AppFeedbackController_findAll",
-        "summary": "List all feedback",
-        "parameters": [],
-        "responses": {
-          "200": {
-            "description": ""
-          }
-        },
-        "tags": ["Feedback"]
-      },
-      "post": {
-        "operationId": "AppFeedbackController_addUserFeedback",
-        "summary": "Add feedback entry",
-        "parameters": [],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/UserFeedbackDto"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Feedback Added",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/UserFeedbackDto"
-                }
-              }
-            }
-          }
-        },
-        "tags": ["Feedback"]
-      }
-    },
-    "/app_notification_interaction": {
-      "get": {
-        "operationId": "AppNotificationInteractionController_findAll",
-        "summary": "List all notification interactions",
-        "parameters": [],
-        "responses": {
-          "200": {
-            "description": ""
-          }
-        },
-        "tags": ["Notification Interaction"]
-      },
-      "post": {
-        "operationId": "AppNotificationInteractionController_addUserNotificationInteraction",
-        "summary": "Add notification interaction entry",
-        "parameters": [],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/UserNotificationInteractionDto"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Notification Interaction Added",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/UserNotificationInteractionDto"
-                }
-              }
-            }
-          }
-        },
-        "tags": ["Notification Interaction"]
-      }
-    },
-    "/tables": {
-      "get": {
-        "operationId": "TablesController_listTables",
-        "summary": "List tables",
-        "parameters": [],
-        "responses": {
-          "200": {
-            "description": "List of table_names",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/STRING"
-                  }
-                }
-              }
-            }
-          }
-        },
-        "tags": ["DB Tables"]
-      }
-    },
-    "/tables/{table_name}": {
-      "get": {
-        "operationId": "TablesController_getTableMeta",
-        "summary": "Get table meta",
-        "parameters": [],
-        "responses": {
-          "200": {
-            "description": ""
-          }
-        },
-        "tags": ["DB Tables"]
-      }
-    },
-    "/tables/{table_name}/columns": {
-      "get": {
-        "operationId": "TablesController_getTableColumns",
-        "summary": "Add columns to map raw field data",
-        "parameters": [],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/TableColumnMappingDto"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "User Updated",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/TableColumnMappingDto"
-                }
-              }
-            }
-          }
-        },
-        "tags": ["DB Tables"]
-      },
-      "post": {
-        "operationId": "TablesController_addMappedTableColumns",
-        "summary": "Add columns to map raw field data",
-        "parameters": [],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/TableColumnMappingDto"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "User Updated",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/TableColumnMappingDto"
-                }
-              }
-            }
-          }
-        },
-        "tags": ["DB Tables"]
-      },
-      "delete": {
-        "operationId": "TablesController_removeMappedTableColumns",
-        "summary": "Remove columns used to map raw field data",
-        "parameters": [],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/TableColumnMappingDto"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "User Updated",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/TableColumnMappingDto"
-                }
-              }
-            }
-          }
-        },
-        "tags": ["DB Tables"]
+        "required": [
+          "columns"
+        ]
       }
     }
   }

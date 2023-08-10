@@ -1,24 +1,22 @@
 import { ComponentFixture, TestBed, waitForAsync } from "@angular/core/testing";
 import { IonicModule } from "@ionic/angular";
 
-import { CarouselComponent } from "./carousel.component";
+import { TmplCarouselComponent } from "./carousel.component";
 
 describe("CarouselComponent", () => {
-  let component: CarouselComponent;
-  let fixture: ComponentFixture<CarouselComponent>;
+  let component: TmplCarouselComponent;
+  let fixture: ComponentFixture<TmplCarouselComponent>;
 
-  beforeEach(
-    waitForAsync(() => {
-      TestBed.configureTestingModule({
-        declarations: [CarouselComponent],
-        imports: [IonicModule.forRoot()],
-      }).compileComponents();
+  beforeEach(waitForAsync(() => {
+    TestBed.configureTestingModule({
+      declarations: [TmplCarouselComponent],
+      imports: [IonicModule.forRoot()],
+    }).compileComponents();
 
-      fixture = TestBed.createComponent(CarouselComponent);
-      component = fixture.componentInstance;
-      fixture.detectChanges();
-    })
-  );
+    fixture = TestBed.createComponent(TmplCarouselComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  }));
 
   it("should create", () => {
     expect(component).toBeTruthy();

@@ -1,5 +1,5 @@
 $placeholder-text: var(--combo-box-placeholder-text, var(--ion-color-primary-transparent));
-$background-no-value: var(combo-box-background-no-value, transparent);
+$background-no-value: var(--combo-box-background-no-value, transparent);
 $background-with-value: var(
   --combo-box-background-with-value,
   var(--gradient-primary-light-vertical)

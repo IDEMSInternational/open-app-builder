@@ -6,6 +6,7 @@ import { LottieModule } from "ngx-lottie";
 import { NouisliderModule } from "ng2-nouislider";
 import { RouterModule } from "@angular/router";
 import { SwiperModule } from "swiper/angular";
+import { NgxExtendedPdfViewerModule } from "ngx-extended-pdf-viewer";
 
 import { SharedPipesModule } from "../../pipes";
 import { TooltipDirective } from "../common/directives/tooltip.directive";
@@ -28,6 +29,7 @@ import { createCustomElement } from "@angular/elements";
     LottieModule,
     RouterModule,
     SwiperModule,
+    NgxExtendedPdfViewerModule,
   ],
   exports: [...TEMPLATE_COMPONENTS, ...TEMPLATE_PIPES, TemplateContainerComponent],
   declarations: [

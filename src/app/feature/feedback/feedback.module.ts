@@ -4,8 +4,8 @@ import { FeedbackDebugPage } from "./pages/feedback-debug.page";
 import { IonicModule } from "@ionic/angular";
 import { FormsModule } from "@angular/forms";
 import { FeedbackRoutingModule } from "./feedback-routing.module";
-import { FeedbackActionsService } from "./feedback.actions";
 import { TemplateComponentsModule } from "src/app/shared/components/template/template.module";
+import { FeedbackComponentsModule } from "./components";
 
 @NgModule({
   imports: [
@@ -14,12 +14,9 @@ import { TemplateComponentsModule } from "src/app/shared/components/template/tem
     FormsModule,
     FeedbackRoutingModule,
     TemplateComponentsModule,
+    FeedbackComponentsModule,
   ],
   declarations: [FeedbackDebugPage],
   exports: [],
 })
-export class FeedbackModule {
-  constructor(feedbackActions: FeedbackActionsService) {
-    //  register events via constructor when module imported
-  }
-}
+export class FeedbackModule {}

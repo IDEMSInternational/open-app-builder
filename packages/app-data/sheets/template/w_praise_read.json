@@ -31,10 +31,11 @@
       "rows": [
         {
           "name": "story_id",
-          "value": "w_praise",
+          "value": "praise",
           "_translations": {
             "value": {}
           },
+          "exclude_from_translation": true,
           "type": "set_variable",
           "_nested_name": "read.story_id"
         }

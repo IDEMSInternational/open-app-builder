@@ -7,12 +7,18 @@ import {
   ActionPerformed,
 } from "@capacitor/local-notifications";
 import { addSeconds } from "date-fns";
+import type { Table } from "dexie";
 import { interval } from "rxjs";
 import { Subscription } from "rxjs";
 import { BehaviorSubject } from "rxjs";
 import { debounceTime } from "rxjs/operators";
 import { IAppConfig } from "../../model";
-import { arrayToHashmap, arrayToHashmapArray, generateTimestamp } from "../../utils";
+import {
+  arrayToHashmap,
+  arrayToHashmapArray,
+  generateTimestamp,
+  isNonEmptyArray,
+} from "../../utils";
 import { AppConfigService } from "../app-config/app-config.service";
 import { AsyncServiceBase } from "../asyncService.base";
 import { DbService } from "../db/db.service";
@@ -59,7 +65,7 @@ export class LocalNotificationService extends AsyncServiceBase {
   public interactedNotification$ = new BehaviorSubject<ActionPerformed>(null);
 
   /** Typed wrapper around database table used to store local notifications */
-  private db: Dexie.Table<ILocalNotification, number>;
+  private db: Table<ILocalNotification, number>;
 
   /** Track session start time to resolve list of notifications processed during session */
   private sessionStartTime = new Date().getTime();
@@ -112,9 +118,14 @@ export class LocalNotificationService extends AsyncServiceBase {
   /** Ensure all notifications in database are also scheduled on device */
   private async setApiNotifications() {
     const existingNotifications = await LocalNotifications.getPending();
-    await LocalNotifications.cancel({ notifications: existingNotifications.notifications });
+    // Ensure notification ops use non-empty arrays to avoid error shown in #1827
+    if (isNonEmptyArray(existingNotifications.notifications)) {
+      await LocalNotifications.cancel({ notifications: existingNotifications.notifications });
+    }
     const toSchedule = this.pendingNotifications$.value;
-    await LocalNotifications.schedule({ notifications: toSchedule });
+    if (isNonEmptyArray(toSchedule)) {
+      await LocalNotifications.schedule({ notifications: toSchedule });
+    }
   }
 
   public async requestPermission(): Promise<boolean> {
@@ -207,7 +218,7 @@ export class LocalNotificationService extends AsyncServiceBase {
    */
   private async cleanDBNotifications() {
     const dbNotifications = await this.getDBNotifications();
-    const duplicatesByRowId = arrayToHashmapArray(dbNotifications, "_row_id");
+    const duplicatesByRowId = arrayToHashmapArray<any>(dbNotifications, "_row_id");
     const removeIds: number[] = [];
     // in case multiple entries scheduled for a given row notification id
     // retain only the most recently interacted with (if exists), or can just pick any one
@@ -302,7 +313,7 @@ export class LocalNotificationService extends AsyncServiceBase {
       schedule: { at: notificationDeliveryTime },
     };
     await this.scheduleNotification(immediateNotification);
-    // ensure api notificaiton scheduled immediately
+    // ensure api notification scheduled immediately
     await LocalNotifications.schedule({ notifications: [immediateNotification] });
     if (Capacitor.isNative && forceBackground) {
       // Ideally we want to minimise the app to see response when app is in background,

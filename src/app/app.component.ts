@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { ChangeDetectorRef, Component } from "@angular/core";
 import { Platform, MenuController } from "@ionic/angular";
 import { Router } from "@angular/router";
 import { Capacitor } from "@capacitor/core";
@@ -16,6 +16,7 @@ import { TemplateService } from "./shared/components/template/services/template.
 import { CampaignService } from "./feature/campaign/campaign.service";
 import { ServerService } from "./shared/services/server/server.service";
 import { DataEvaluationService } from "./shared/services/data/data-evaluation.service";
+import { DynamicDataService } from "./shared/services/dynamic-data/dynamic-data.service";
 import { TemplateProcessService } from "./shared/components/template/services/instance/template-process.service";
 import { isSameDay } from "date-fns";
 import { AnalyticsService } from "./shared/services/analytics/analytics.service";
@@ -31,8 +32,13 @@ import { LifecycleActionsService } from "./shared/services/lifecycle-actions/lif
 import { AppConfigService } from "./shared/services/app-config/app-config.service";
 import { IAppConfig } from "./shared/model";
 import { TaskService } from "./shared/services/task/task.service";
+import { AppUpdateService } from "./shared/services/app-update/app-update.service";
+import { RemoteAssetService } from "./shared/services/remote-asset/remote-asset.service";
 import { AsyncServiceBase } from "./shared/services/asyncService.base";
 import { SyncServiceBase } from "./shared/services/syncService.base";
+import { SeoService } from "./shared/services/seo/seo.service";
+import { FeedbackService } from "./feature/feedback/feedback.service";
+import { ShareService } from "./shared/services/share/share.service";
 
 @Component({
   selector: "app-root",
@@ -53,11 +59,13 @@ export class AppComponent {
   constructor(
     // 3rd Party Services
     private platform: Platform,
+    private cdr: ChangeDetectorRef,
     private menuController: MenuController,
     private router: Router,
     // App services
     private skinService: SkinService,
     private appConfigService: AppConfigService,
+    private dynamicDataService: DynamicDataService,
     private dbService: DbService,
     private dbSyncService: DBSyncService,
     private userMetaService: UserMetaService,
@@ -76,11 +84,16 @@ export class AppComponent {
     private crashlyticsService: CrashlyticsService,
     private appDataService: AppDataService,
     private authService: AuthService,
+    private seoService: SeoService,
     private taskService: TaskService,
+    private feedbackService: FeedbackService,
     /** Inject in the main app component to start tracking actions immediately */
     private taskActions: TaskActionService,
     private lifecycleActionsService: LifecycleActionsService,
-    private serverService: ServerService
+    private serverService: ServerService,
+    private appUpdateService: AppUpdateService,
+    private remoteAssetService: RemoteAssetService,
+    private shareService: ShareService
   ) {
     this.initializeApp();
   }
@@ -120,6 +133,8 @@ export class AppComponent {
       }
       // Show main template
       this.renderAppTemplates = true;
+      // Detect changes in case expression changed prior to render (e.g. feedback sidebar)
+      this.cdr.detectChanges();
       this.scheduleReinitialisation();
     });
   }
@@ -174,6 +189,7 @@ export class AppComponent {
       eager: [this.crashlyticsService],
       blocking: [
         this.dbSyncService,
+        this.dynamicDataService,
         this.userMetaService,
         this.tourService,
         this.localNotificationService,
@@ -181,16 +197,21 @@ export class AppComponent {
         this.taskService,
         this.taskActions,
         this.campaignService,
+        this.remoteAssetService,
       ],
       nonBlocking: [
         this.skinService,
         this.appConfigService,
+        this.appUpdateService,
         this.themeService,
         this.templateService,
         this.templateProcessService,
         this.appDataService,
         this.authService,
         this.serverService,
+        this.seoService,
+        this.feedbackService,
+        this.shareService,
       ],
       deferred: [this.analyticsService],
       implicit: [

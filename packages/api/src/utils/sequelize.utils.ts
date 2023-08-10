@@ -1,25 +1,39 @@
 import { Sequelize } from "sequelize";
 import SequelizeDefault from "sequelize";
-import { USER_DB_CONFIG } from "src/db/config";
 import { arrayToHashmap } from "./data.utils";
 import { listTableColumns } from "./sql.utils";
+import { DeploymentService } from "src/modules/deployment.service";
+import { USER_DB_CONFIG } from "src/db/config";
 
 /**
- * Wrapper methods provide access to a sequelize instance outside
- * of regular providers
+ * Get the active client of the injected deployment service outside of provider environment
  */
-const sequelize = new Sequelize(USER_DB_CONFIG);
+export function getActiveClient() {
+  return DeploymentService.getService().client;
+}
+
+/**
+ * DEPRECATED CC 2023-04-29
+ * Create a new client to interact with DB using default credentials
+ */
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+function createClient() {
+  return new Sequelize(USER_DB_CONFIG);
+}
 
 export function getQueryInterface() {
-  return sequelize.getQueryInterface();
+  const client = getActiveClient();
+  return client.getQueryInterface();
 }
 
 export function getSequelize() {
-  return sequelize;
+  const client = getActiveClient();
+  return client;
 }
 
 export function getTableNames() {
-  return sequelize.getQueryInterface().showAllTables();
+  const client = getActiveClient();
+  return client.getQueryInterface().showAllTables();
 }
 
 /**
@@ -39,7 +53,8 @@ export async function flattenJson(options: {
   const { idColumnName, instance, tableName, jsonColumnName } = options;
   const jsonData: any = instance.toJSON();
   const updateFields = await getMappedFieldsFromData(tableName, jsonData[jsonColumnName]);
-  const queryInterface = sequelize.getQueryInterface();
+  const client = getActiveClient();
+  const queryInterface = client.getQueryInterface();
   return queryInterface.update(instance, tableName, updateFields, {
     [idColumnName]: jsonData[idColumnName],
   });
