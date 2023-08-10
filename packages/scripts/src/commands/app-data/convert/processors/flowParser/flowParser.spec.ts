@@ -1,6 +1,6 @@
 import path from "path";
 import { FlowTypes } from "data-models";
-import { SCRIPTS_WORKSPACE_PATH } from "shared";
+import { SCRIPTS_WORKSPACE_PATH } from "../../../../../paths";
 import { clearLogs, getLogs } from "../../utils";
 import { FlowParserProcessor } from "./flowParser";
 
