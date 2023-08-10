@@ -161,6 +161,57 @@
         }
       },
       "template": "w_svp_hp_review"
+    },
+    {
+      "id": "learn_warning_signs",
+      "individual": true,
+      "together": true,
+      "priority": 11,
+      "has_single_task": true,
+      "title": "@data.learn.warning_signs.title",
+      "_translations": {
+        "title": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "@data.learn.warning_signs.title"
+        }
+      },
+      "template": "w_svp_learn_warning_signs"
+    },
+    {
+      "id": "learn_use_voice",
+      "individual": true,
+      "together": true,
+      "priority": 12,
+      "has_single_task": true,
+      "title": "@data.learn.use_voice.title",
+      "_translations": {
+        "title": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "@data.learn.use_voice.title"
+        }
+      },
+      "template": "w_svp_learn_use_voice"
+    },
+    {
+      "id": "learn_use_body",
+      "individual": true,
+      "together": true,
+      "priority": 13,
+      "has_single_task": true,
+      "title": "@data.learn.use_body.title",
+      "_translations": {
+        "title": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "@data.learn.use_body.title"
+        }
+      },
+      "template": "w_svp_learn_use_body"
     }
   ]
 }

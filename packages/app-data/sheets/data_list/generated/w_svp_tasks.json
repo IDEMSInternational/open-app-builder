@@ -83,6 +83,33 @@
       "template": "w_svp_hp_review",
       "completed_field": "task_w_svp_hp_review_completed",
       "completed": "@fields.task_w_svp_hp_review_completed"
+    },
+    {
+      "id": "learn_warning_signs",
+      "group": "learn_warning_signs",
+      "individual": true,
+      "together": true,
+      "template": "w_svp_learn_warning_signs",
+      "completed_field": "task_w_svp_learn_warning_signs_completed",
+      "completed": "@fields.task_w_svp_learn_warning_signs_completed"
+    },
+    {
+      "id": "learn_use_voice",
+      "group": "learn_use_voice",
+      "individual": true,
+      "together": true,
+      "template": "w_svp_learn_use_voice",
+      "completed_field": "task_w_svp_learn_use_voice_completed",
+      "completed": "@fields.task_w_svp_learn_use_voice_completed"
+    },
+    {
+      "id": "learn_use_body",
+      "group": "learn_use_body",
+      "individual": true,
+      "together": true,
+      "template": "w_svp_learn_use_body",
+      "completed_field": "task_w_svp_learn_use_body_completed",
+      "completed": "@fields.task_w_svp_learn_use_body_completed"
     }
   ]
 }
