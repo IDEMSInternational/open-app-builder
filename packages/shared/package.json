@@ -2,7 +2,7 @@
   "name": "shared",
   "version": "1.0.0",
   "description": "",
-  "main": "src/index.ts",
+  "main": "src",
   "scripts": {
     "test": "jasmine-ts --config=jasmine.json",
     "test:watch": "nodemon --ext ts --exec 'jasmine-ts --config=jasmine.json'"
