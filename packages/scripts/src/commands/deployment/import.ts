@@ -4,8 +4,8 @@ import { Command } from "commander";
 import fs, { moveSync, rmSync } from "fs-extra";
 import { resolve } from "path";
 import GitProvider from "../../tasks/providers/git";
-import { DEPLOYMENTS_PATH } from "shared";
-import { Logger, logOutput, logWarning, promptConfirmation, promptInput } from "shared";
+import { DEPLOYMENTS_PATH } from "../../paths";
+import { Logger, logOutput, logWarning, promptConfirmation, promptInput } from "../../utils";
 import { loadDeploymentJson } from "./utils";
 import { existsSync } from "fs";
 

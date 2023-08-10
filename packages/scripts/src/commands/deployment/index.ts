@@ -6,7 +6,7 @@ import createCmd from "./create";
 import getCmd from "./get";
 import importCmd from "./import";
 import setCmd from "./set";
-import { logProgramHelp } from "shared";
+import { logProgramHelp } from "../../utils";
 
 const program = new Command("deployment").description("Manage active deployment workspace");
 
