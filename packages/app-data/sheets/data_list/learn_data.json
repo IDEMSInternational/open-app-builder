@@ -12,16 +12,14 @@
       "part_2": "sex_talk_when",
       "part_3": "sex_talk_safe",
       "part_4": "sex_talk_age",
-      "title": "Learn",
+      "title": "Other parents’ questions",
       "_translations": {
-        "title": {
-          "tz_sw": true
-        },
+        "title": {},
         "intro_text": {}
       },
       "_translatedFields": {
         "title": {
-          "eng": "Learn"
+          "eng": "Other parents’ questions"
         },
         "intro_text": {
           "eng": "Many parents really want to support their teens, but struggle to talk about sensitive topics like body changes and intimate relationships.\n\nLet’s look at a few questions from other parents to help you get started."
@@ -45,26 +43,17 @@
         "title": {
           "tz_sw": true
         },
-        "intro_text": {
-          "tz_sw": true
-        },
-        "text": {
-          "tz_sw": true
-        }
+        "intro_text": {}
       },
       "_translatedFields": {
         "title": {
           "eng": "Warning signs"
         },
         "intro_text": {
-          "eng": "People around us can make us feel respected, happy and safe. But sometimes, people can pressure us and make us feel uncomfortable. This can happen to teenagers and adults.\n\nWhen we know the warning signs, we can try and stop the situation to stay safe."
-        },
-        "text": {
-          "eng": "Let’s look at some scenarios."
+          "eng": "People around us can make us feel respected, happy and safe. But sometimes, people can pressure us and make us feel uncomfortable. This can happen to teenagers and adults. \n\nWhen we know the warning signs, we can try and stop the situation to stay safe.\n\nLet’s look at some scenarios."
         }
       },
-      "intro_text": "People around us can make us feel respected, happy and safe. But sometimes, people can pressure us and make us feel uncomfortable. This can happen to teenagers and adults.\n\nWhen we know the warning signs, we can try and stop the situation to stay safe.",
-      "text": "Let’s look at some scenarios."
+      "intro_text": "People around us can make us feel respected, happy and safe. But sometimes, people can pressure us and make us feel uncomfortable. This can happen to teenagers and adults. \n\nWhen we know the warning signs, we can try and stop the situation to stay safe.\n\nLet’s look at some scenarios."
     },
     {
       "id": "use_voice",
@@ -76,26 +65,17 @@
         "title": {
           "tz_sw": true
         },
-        "intro_text": {
-          "tz_sw": true
-        },
-        "text": {
-          "tz_sw": true
-        }
+        "intro_text": {}
       },
       "_translatedFields": {
         "title": {
           "eng": "Use your voice"
         },
         "intro_text": {
-          "eng": "When we do not feel safe, we are allowed to do anything to get away."
-        },
-        "text": {
-          "eng": "Let’s think about the scenario when @global.w_svp_teen_girl_2 was forced into a car by a man.\n\nHow could @global.w_svp_teen_girl_2 use her voice to get away?"
+          "eng": "When we do not feel safe, we are allowed to do, say, and believe anything that helps keep us safe. The goal is to get away!\n\nLet’s think about the scenario when @global.w_svp_teen_girl_2 was forced into a car by a man.\n\nHow could @global.w_svp_teen_girl_2 use her voice to get away?"
         }
       },
-      "intro_text": "When we do not feel safe, we are allowed to do anything to get away.",
-      "text": "Let’s think about the scenario when @global.w_svp_teen_girl_2 was forced into a car by a man.\n\nHow could @global.w_svp_teen_girl_2 use her voice to get away?"
+      "intro_text": "When we do not feel safe, we are allowed to do, say, and believe anything that helps keep us safe. The goal is to get away!\n\nLet’s think about the scenario when @global.w_svp_teen_girl_2 was forced into a car by a man.\n\nHow could @global.w_svp_teen_girl_2 use her voice to get away?"
     },
     {
       "id": "use_body",
@@ -109,26 +89,17 @@
         "title": {
           "tz_sw": true
         },
-        "intro_text": {
-          "tz_sw": true
-        },
-        "text": {
-          "tz_sw": true
-        }
+        "intro_text": {}
       },
       "_translatedFields": {
         "title": {
           "eng": "Use your body"
         },
         "intro_text": {
-          "eng": "When our voice does not stop the situation, we can use our bodies to defend ourselves."
-        },
-        "text": {
-          "eng": "@global.w_svp_teen_girl_2’s attacker has some weak spots she can target in order to get away, The same can work for you:"
+          "eng": "When our voice does not stop the situation, we can use our bodies to defend ourselves. \n\n@global.w_svp_teen_girl_2’s attacker has some weak spots she can target in order to get away, The same can work for you:"
         }
       },
-      "intro_text": "When our voice does not stop the situation, we can use our bodies to defend ourselves.",
-      "text": "@global.w_svp_teen_girl_2’s attacker has some weak spots she can target in order to get away, The same can work for you:"
+      "intro_text": "When our voice does not stop the situation, we can use our bodies to defend ourselves. \n\n@global.w_svp_teen_girl_2’s attacker has some weak spots she can target in order to get away, The same can work for you:"
     }
   ],
   "_xlsxPath": "global/data/workshop_data/workshop_data_list.xlsx"

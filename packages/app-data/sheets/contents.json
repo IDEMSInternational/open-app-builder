@@ -1175,6 +1175,12 @@
       "data_list_name": "safeguarding_contacts_tz",
       "_xlsxPath": "tz/data/safeguarding_data_tz.xlsx"
     },
+    "scenario_question_data": {
+      "flow_type": "data_list",
+      "flow_name": "scenario_question_data",
+      "data_list_name": "scenario_question",
+      "_xlsxPath": "global/data/workshop_data/workshop_data_list.xlsx"
+    },
     "something_fun_data": {
       "flow_type": "data_list",
       "flow_name": "something_fun_data",
@@ -1487,6 +1493,18 @@
         "output_flow_subtype": "generated"
       },
       "_xlsxPath": "global/top_templates/parent_centre_templates/gen_lib_act_tools.xlsx"
+    },
+    "gen_scenario_question": {
+      "flow_type": "generator",
+      "module": "w_srh",
+      "flow_name": "gen_scenario_question",
+      "parameter_list": {
+        "input_data_list": "scenario_question_data",
+        "output_flow_name": "w_svp_learn_warning_signs_{@gen.id}",
+        "output_flow_type": "template",
+        "output_flow_subtype": "generated"
+      },
+      "_xlsxPath": "global/top_templates/workshop_templates/workshop_svp.xlsx"
     },
     "gen_something_fun": {
       "flow_type": "generator",
@@ -2078,6 +2096,11 @@
       "flow_type": "template",
       "flow_name": "box_radio_buttons_emo_temp",
       "_xlsxPath": "global/core_templates/core_templates_survey_boxes.xlsx"
+    },
+    "box_scenario_question": {
+      "flow_type": "template",
+      "flow_name": "box_scenario_question",
+      "_xlsxPath": "global/core_templates/core_templates_workshop_boxes.xlsx"
     },
     "box_story": {
       "flow_type": "template",
@@ -3190,6 +3213,46 @@
     },
     "w_svp_intro_text": {
       "flow_name": "w_svp_intro_text",
+      "flow_subtype": "generated",
+      "flow_type": "template"
+    },
+    "w_svp_learn_warning_signs_@gen.id": {
+      "flow_name": "w_svp_learn_warning_signs_@gen.id",
+      "flow_subtype": "generated",
+      "flow_type": "template"
+    },
+    "w_svp_learn_warning_signs_catcalling": {
+      "flow_name": "w_svp_learn_warning_signs_catcalling",
+      "flow_subtype": "generated",
+      "flow_type": "template"
+    },
+    "w_svp_learn_warning_signs_controlling_boyfriend": {
+      "flow_name": "w_svp_learn_warning_signs_controlling_boyfriend",
+      "flow_subtype": "generated",
+      "flow_type": "template"
+    },
+    "w_svp_learn_warning_signs_nude_pic": {
+      "flow_name": "w_svp_learn_warning_signs_nude_pic",
+      "flow_subtype": "generated",
+      "flow_type": "template"
+    },
+    "w_svp_learn_warning_signs_private_tutoring": {
+      "flow_name": "w_svp_learn_warning_signs_private_tutoring",
+      "flow_subtype": "generated",
+      "flow_type": "template"
+    },
+    "w_svp_learn_warning_signs_pushy_boyfriend": {
+      "flow_name": "w_svp_learn_warning_signs_pushy_boyfriend",
+      "flow_subtype": "generated",
+      "flow_type": "template"
+    },
+    "w_svp_learn_warning_signs_pushy_friend": {
+      "flow_name": "w_svp_learn_warning_signs_pushy_friend",
+      "flow_subtype": "generated",
+      "flow_type": "template"
+    },
+    "w_svp_learn_warning_signs_rejected_ride": {
+      "flow_name": "w_svp_learn_warning_signs_rejected_ride",
       "flow_subtype": "generated",
       "flow_type": "template"
     },
@@ -5921,6 +5984,12 @@
       "flow_name": "w_stress_talk_pop",
       "_xlsxPath": "global/top_templates/workshop_templates/workshop_stress.xlsx"
     },
+    "w_svp_home_practice": {
+      "flow_type": "template",
+      "module": "w_srh",
+      "flow_name": "w_svp_home_practice",
+      "_xlsxPath": "global/top_templates/workshop_templates/workshop_svp.xlsx"
+    },
     "w_svp_hp_challenges": {
       "flow_type": "template",
       "module": "stress",
@@ -5932,6 +6001,12 @@
       "module": "stress",
       "flow_name": "w_svp_hp_review",
       "_xlsxPath": "global/top_templates/in_week_messages/home_practice_reviews/w_svp_hp_review.xlsx"
+    },
+    "w_svp_learn_warning_signs": {
+      "flow_type": "template",
+      "module": "w_srh",
+      "flow_name": "w_svp_learn_warning_signs",
+      "_xlsxPath": "global/top_templates/workshop_templates/workshop_svp.xlsx"
     },
     "watch": {
       "flow_type": "template",

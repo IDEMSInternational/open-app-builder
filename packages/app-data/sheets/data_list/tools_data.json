@@ -935,6 +935,9 @@
     },
     {
       "id": "w_svp",
+      "tool_2_button_go_to_template": "w_svp_learn_warning_signs",
+      "tool_3_button_go_to_template": "w_svp_learn_use_voice",
+      "tool_4_button_go_to_template": "w_svp_learn_use_body",
       "title": "How to stay safe",
       "_translations": {
         "title": {
@@ -951,19 +954,19 @@
           "tz_sw": true
         },
         "tool_2_text": {},
+        "tool_2_button_text": {},
         "tool_3_title": {
           "tz_sw": true
         },
         "tool_3_text": {
           "tz_sw": true
         },
+        "tool_3_button_text": {},
         "tool_4_title": {},
         "tool_4_text": {
           "tz_sw": true
         },
-        "tool_4_button_text": {
-          "tz_sw": true
-        },
+        "tool_4_button_text": {},
         "bottom_text": {}
       },
       "_translatedFields": {
@@ -985,11 +988,17 @@
         "tool_2_text": {
           "eng": "When someone makes you (or someone else) feel uncomfortable with what they say or do, that is never okay! We all have the right to feel safe, especially at home.\n\nSee the warning signs and follow your feeling. When you feel attacked with words or actions, your goal is to get away."
         },
+        "tool_2_button_text": {
+          "eng": "@data.learn.warning_signs.title"
+        },
         "tool_3_title": {
           "eng": "SAY IT"
         },
         "tool_3_text": {
           "eng": "Your voice can stop many attacks. Yell ‘No!’, call for help, warn of consequences, name the behaviour, act crazy, pretend to go along to buy time, use humour, calm them down, or negotiate. \n\nBe clear, confident and direct. Speak using your voice, body language and eye contact."
+        },
+        "tool_3_button_text": {
+          "eng": "@data.learn.use_voice.title"
         },
         "tool_4_title": {
           "eng": "DO IT"
@@ -998,7 +1007,7 @@
           "eng": "When our voice is not changing the situation, we can use our bodies.\n\nKnow the ‘weapons’ on your body and know the ‘targets’ on your attacker’s body. Use what is free on your body that you can fight with and what is open on the attacker’s body to hit."
         },
         "tool_4_button_text": {
-          "eng": "Use your body"
+          "eng": "@data.learn.use_body.title"
         },
         "bottom_text": {
           "eng": "If you as a teen or parent do get hurt by someone, remember it is never your fault. Ask someone you trust for help. \n\nAs a parent, make sure your teen knows they can tell you anything, so you can find a solution together."
@@ -1009,11 +1018,13 @@
       "tool_1_text": "Know the difference between healthy and unhealthy relationships. If you are attacked, know that it is never your fault. You are allowed to say and do what is needed to stay safe and get away – do not worry about what others may think.\n\nYou are worth defending. You are strong and powerful.",
       "tool_2_title": "SEE IT",
       "tool_2_text": "When someone makes you (or someone else) feel uncomfortable with what they say or do, that is never okay! We all have the right to feel safe, especially at home.\n\nSee the warning signs and follow your feeling. When you feel attacked with words or actions, your goal is to get away.",
+      "tool_2_button_text": "@data.learn.warning_signs.title",
       "tool_3_title": "SAY IT",
       "tool_3_text": "Your voice can stop many attacks. Yell ‘No!’, call for help, warn of consequences, name the behaviour, act crazy, pretend to go along to buy time, use humour, calm them down, or negotiate. \n\nBe clear, confident and direct. Speak using your voice, body language and eye contact.",
+      "tool_3_button_text": "@data.learn.use_voice.title",
       "tool_4_title": "DO IT",
       "tool_4_text": "When our voice is not changing the situation, we can use our bodies.\n\nKnow the ‘weapons’ on your body and know the ‘targets’ on your attacker’s body. Use what is free on your body that you can fight with and what is open on the attacker’s body to hit.",
-      "tool_4_button_text": "Use your body",
+      "tool_4_button_text": "@data.learn.use_body.title",
       "bottom_text": "If you as a teen or parent do get hurt by someone, remember it is never your fault. Ask someone you trust for help. \n\nAs a parent, make sure your teen knows they can tell you anything, so you can find a solution together."
     },
     {

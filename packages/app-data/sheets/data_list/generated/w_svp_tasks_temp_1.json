@@ -65,6 +65,27 @@
       "individual": true,
       "together": true,
       "template": "w_svp_hp_review"
+    },
+    {
+      "id": "learn_warning_signs",
+      "group": "learn_warning_signs",
+      "individual": true,
+      "together": true,
+      "template": "w_svp_learn_warning_signs"
+    },
+    {
+      "id": "learn_use_voice",
+      "group": "learn_use_voice",
+      "individual": true,
+      "together": true,
+      "template": "w_svp_learn_use_voice"
+    },
+    {
+      "id": "learn_use_body",
+      "group": "learn_use_body",
+      "individual": true,
+      "together": true,
+      "template": "w_svp_learn_use_body"
     }
   ]
 }
