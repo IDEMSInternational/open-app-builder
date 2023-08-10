@@ -2,7 +2,7 @@ import { AppDataConverter } from "./index";
 
 import path from "path";
 
-import { SCRIPTS_TEST_DATA_DIR } from "shared";
+import { SCRIPTS_TEST_DATA_DIR } from "../../../paths";
 import { emptyDirSync, existsSync, readdirSync } from "fs-extra";
 import { clearLogs, getLogs } from "./utils";
 
