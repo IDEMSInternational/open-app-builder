@@ -5,7 +5,7 @@ import { existsSync, removeSync } from "fs-extra";
 import path from "path";
 
 import { WorkflowRunner } from "../../commands/workflow/run";
-import { AUTH_TOKEN_PATH, CREDENTIALS_PATH } from "shared";
+import { AUTH_TOKEN_PATH, CREDENTIALS_PATH } from "../../paths";
 
 const authorize = () => {
   // remove any pre-existing auth token

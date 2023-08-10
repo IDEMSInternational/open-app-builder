@@ -1,7 +1,8 @@
 import * as path from "path";
 import { Options, run } from "cordova-res";
 import fs from "fs";
-import { ROOT_DIR, Logger } from "shared";
+import { ROOT_DIR } from "../../paths";
+import { Logger } from "../../utils";
 
 const set_splash_image = async (splashAssetPath: string) => {
   if (!fs.existsSync(splashAssetPath)) {

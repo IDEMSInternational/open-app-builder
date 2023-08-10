@@ -2,8 +2,8 @@ import { writeFileSync } from "fs-extra";
 import path from "path";
 import { parseCommand } from "../../commands";
 import { WorkflowRunner } from "../../commands/workflow/run";
-import { SRC_ASSETS_PATH } from "shared";
-import { IContentsEntry, replicateDir } from "shared";
+import { SRC_ASSETS_PATH } from "../../paths";
+import { IContentsEntry, replicateDir } from "../../utils";
 
 /** Prepare sourcely cached assets for population to app */
 const postProcessAssets = (options: { sourceAssetsFolder: string }) => {
