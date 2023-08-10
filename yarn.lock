@@ -24460,6 +24460,7 @@ __metadata:
     tsimportlib: ^0.0.5
     typescript: ^4.1.2
     winston: ^3.8.1
+    workflows: "workspace:*"
     xlsx: ^0.18.5
   bin:
     idapp: ./build/commands.js
@@ -28469,6 +28470,18 @@ __metadata:
   checksum: 3493b4f0ef979a23d2c1583d7ef85f62fc9463cc02f82829d3e7e663b517f8ae9707da0249b382e46ac58986deb0ca2232ee1081713741211bda9254b429c9bb
   languageName: node
   linkType: hard
+
+"workflows@workspace:*, workflows@workspace:packages/workflows":
+  version: 0.0.0-use.local
+  resolution: "workflows@workspace:packages/workflows"
+  dependencies:
+    "@types/node": ^16.18.9
+    clone: ^2.1.2
+    scripts: "workspace:*"
+    shared: "workspace:*"
+    typescript: ~4.2.4
+  languageName: unknown
+  linkType: soft
 
 "wrap-ansi@npm:^6.2.0":
   version: 6.2.0
