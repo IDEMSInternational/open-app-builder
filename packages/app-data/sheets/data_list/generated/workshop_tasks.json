@@ -7,9 +7,9 @@
       "id": "w_self_care",
       "number": 1,
       "group": "core",
-      "caregiver_testimonial_audio_asset": "plh_audio/testimonials/caregiver/caregiver_test_w_self_care.mp3",
-      "teen_testimonial_audio_asset": "plh_audio/testimonials/teen/teen_test_w_self_care.mp3",
       "image_asset": "plh_images/workshops/w_self_care/tools.svg",
+      "caregiver_testimonial_audio_asset": "plh_audio/testimonials/caregiver/caregiver_test_w_self_care.mp3",
+      "teen_testimonial_audio_asset": "plh_audio/testimonials/caregiver/teen_test_w_self_care.mp3",
       "title": "Welcome and Self-Care",
       "_translations": {
         "title": {
@@ -71,9 +71,9 @@
       "id": "w_1on1",
       "number": 2,
       "group": "core",
-      "caregiver_testimonial_audio_asset": "plh_audio/testimonials/caregiver/caregiver_test_w_1on1.mp3",
-      "teen_testimonial_audio_asset": "plh_audio/testimonials/teen/teen_test_w_1on1.mp3",
       "image_asset": "plh_images/workshops/w_1on1/tools.svg",
+      "caregiver_testimonial_audio_asset": "plh_audio/testimonials/caregiver/caregiver_test_w_1on1.mp3",
+      "teen_testimonial_audio_asset": "plh_audio/testimonials/caregiver/teen_test_w_1on1.mp3",
       "title": "One-on-One Time",
       "_translations": {
         "title": {
@@ -129,9 +129,9 @@
       "id": "w_praise",
       "number": 3,
       "group": "core",
-      "caregiver_testimonial_audio_asset": "plh_audio/testimonials/caregiver/caregiver_test_w_praise.mp3",
-      "teen_testimonial_audio_asset": "plh_audio/testimonials/teen/teen_test_w_praise.mp3",
       "image_asset": "plh_images/workshops/w_praise/tools.svg",
+      "caregiver_testimonial_audio_asset": "plh_audio/testimonials/caregiver/caregiver_test_w_praise.mp3",
+      "teen_testimonial_audio_asset": "plh_audio/testimonials/caregiver/teen_test_w_praise.mp3",
       "title": "Praise",
       "_translations": {
         "title": {
@@ -187,9 +187,9 @@
       "id": "w_instruct",
       "number": 4,
       "group": "core",
-      "caregiver_testimonial_audio_asset": "plh_audio/testimonials/caregiver/caregiver_test_w_instruct.mp3",
-      "teen_testimonial_audio_asset": "plh_audio/testimonials/teen/teen_test_w_instruct.mp3",
       "image_asset": "plh_images/workshops/w_instruct/tools.svg",
+      "caregiver_testimonial_audio_asset": "plh_audio/testimonials/caregiver/caregiver_test_w_instruct.mp3",
+      "teen_testimonial_audio_asset": "plh_audio/testimonials/caregiver/teen_test_w_instruct.mp3",
       "title": "Positive Instructions",
       "_translations": {
         "title": {
@@ -245,9 +245,9 @@
       "id": "w_stress",
       "number": 5,
       "group": "core",
-      "caregiver_testimonial_audio_asset": "plh_audio/testimonials/caregiver/caregiver_test_w_stress.mp3",
-      "teen_testimonial_audio_asset": "plh_audio/testimonials/teen/teen_test_w_stress.mp3",
       "image_asset": "plh_images/workshops/w_stress/tools.svg",
+      "caregiver_testimonial_audio_asset": "plh_audio/testimonials/caregiver/caregiver_test_w_stress.mp3",
+      "teen_testimonial_audio_asset": "plh_audio/testimonials/caregiver/teen_test_w_stress.mp3",
       "title": "Managing Stress",
       "_translations": {
         "title": {
@@ -303,9 +303,9 @@
       "id": "w_solve",
       "number": 6,
       "group": "core",
-      "caregiver_testimonial_audio_asset": "plh_audio/testimonials/caregiver/caregiver_test_w_solve.mp3",
-      "teen_testimonial_audio_asset": "plh_audio/testimonials/teen/teen_test_w_solve.mp3",
       "image_asset": "plh_images/workshops/w_solve/tools.svg",
+      "caregiver_testimonial_audio_asset": "plh_audio/testimonials/caregiver/caregiver_test_w_solve.mp3",
+      "teen_testimonial_audio_asset": "plh_audio/testimonials/caregiver/teen_test_w_solve.mp3",
       "title": "Problem Solving",
       "_translations": {
         "title": {
@@ -361,9 +361,9 @@
       "id": "w_money",
       "number": 7,
       "group": "core",
-      "caregiver_testimonial_audio_asset": "plh_audio/testimonials/caregiver/caregiver_test_w_money.mp3",
-      "teen_testimonial_audio_asset": "plh_audio/testimonials/teen/teen_test_w_money.mp3",
       "image_asset": "plh_images/workshops/w_money/tools.svg",
+      "caregiver_testimonial_audio_asset": "plh_audio/testimonials/caregiver/caregiver_test_w_money.mp3",
+      "teen_testimonial_audio_asset": "plh_audio/testimonials/caregiver/teen_test_w_money.mp3",
       "title": "Family Budgets",
       "_translations": {
         "title": {
@@ -419,9 +419,9 @@
       "id": "w_rules",
       "number": 8,
       "group": "core",
-      "caregiver_testimonial_audio_asset": "plh_audio/testimonials/caregiver/caregiver_test_w_rules.mp3",
-      "teen_testimonial_audio_asset": "plh_audio/testimonials/teen/teen_test_w_rules.mp3",
       "image_asset": "plh_images/workshops/w_rules/tools.svg",
+      "caregiver_testimonial_audio_asset": "plh_audio/testimonials/caregiver/caregiver_test_w_rules.mp3",
+      "teen_testimonial_audio_asset": "plh_audio/testimonials/caregiver/teen_test_w_rules.mp3",
       "title": "Rules",
       "_translations": {
         "title": {
@@ -475,9 +475,9 @@
       "id": "w_consequence",
       "number": 9,
       "group": "core",
-      "caregiver_testimonial_audio_asset": "plh_audio/testimonials/caregiver/caregiver_test_w_consequence.mp3",
-      "teen_testimonial_audio_asset": "plh_audio/testimonials/teen/teen_test_w_consequence.mp3",
       "image_asset": "plh_images/workshops/w_consequence/tools.svg",
+      "caregiver_testimonial_audio_asset": "plh_audio/testimonials/caregiver/caregiver_test_w_consequence.mp3",
+      "teen_testimonial_audio_asset": "plh_audio/testimonials/caregiver/teen_test_w_consequence.mp3",
       "title": "Calm Consequences",
       "_translations": {
         "title": {
@@ -533,9 +533,9 @@
       "id": "w_safe",
       "number": 10,
       "group": "core",
-      "caregiver_testimonial_audio_asset": "plh_audio/testimonials/caregiver/caregiver_test_w_safe.mp3",
-      "teen_testimonial_audio_asset": "plh_audio/testimonials/teen/teen_test_w_safe.mp3",
       "image_asset": "plh_images/workshops/w_safe/tools.svg",
+      "caregiver_testimonial_audio_asset": "plh_audio/testimonials/caregiver/caregiver_test_w_safe.mp3",
+      "teen_testimonial_audio_asset": "plh_audio/testimonials/caregiver/teen_test_w_safe.mp3",
       "title": "Teen Safety",
       "_translations": {
         "title": {
@@ -591,9 +591,9 @@
       "id": "w_crisis",
       "number": 11,
       "group": "core",
-      "caregiver_testimonial_audio_asset": "plh_audio/testimonials/caregiver/caregiver_test_w_crisis.mp3",
-      "teen_testimonial_audio_asset": "plh_audio/testimonials/teen/teen_test_w_crisis.mp3",
       "image_asset": "plh_images/workshops/w_crisis/tools.svg",
+      "caregiver_testimonial_audio_asset": "plh_audio/testimonials/caregiver/caregiver_test_w_crisis.mp3",
+      "teen_testimonial_audio_asset": "plh_audio/testimonials/caregiver/teen_test_w_crisis.mp3",
       "title": "Dealing with Crisis",
       "_translations": {
         "title": {
@@ -650,6 +650,8 @@
       "number": 12,
       "group": "core",
       "image_asset": "plh_images/workshops/w_celebrate/tools.svg",
+      "caregiver_testimonial_audio_asset": "plh_audio/testimonials/caregiver/caregiver_test_w_celebrate.mp3",
+      "teen_testimonial_audio_asset": "plh_audio/testimonials/caregiver/teen_test_w_celebrate.mp3",
       "title": "Celebration and Next Steps",
       "_translations": {
         "title": {
@@ -692,6 +694,8 @@
       "number": 13,
       "group": "extra",
       "image_asset": "plh_images/workshops/w_srh/tools.svg",
+      "caregiver_testimonial_audio_asset": "plh_audio/testimonials/caregiver/caregiver_test_w_srh.mp3",
+      "teen_testimonial_audio_asset": "plh_audio/testimonials/caregiver/teen_test_w_srh.mp3",
       "title": "Body Changes and Intimate Relationships",
       "_translations": {
         "title": {
@@ -748,6 +752,8 @@
       "number": 14,
       "group": "extra",
       "image_asset": "plh_images/workshops/w_svp/tools.svg",
+      "caregiver_testimonial_audio_asset": "plh_audio/testimonials/caregiver/caregiver_test_w_svp.mp3",
+      "teen_testimonial_audio_asset": "plh_audio/testimonials/caregiver/teen_test_w_svp.mp3",
       "title": "Staying Safe",
       "_translations": {
         "title": {
@@ -804,6 +810,8 @@
       "number": 15,
       "group": "extra",
       "image_asset": "plh_images/workshops/w_grief/tools.svg",
+      "caregiver_testimonial_audio_asset": "plh_audio/testimonials/caregiver/caregiver_test_w_grief.mp3",
+      "teen_testimonial_audio_asset": "plh_audio/testimonials/caregiver/teen_test_w_grief.mp3",
       "title": "Coping with Grief",
       "_translations": {
         "title": {
@@ -858,6 +866,8 @@
       "number": 16,
       "group": "play",
       "image_asset": "plh_images/workshops/w_learn/tools.svg",
+      "caregiver_testimonial_audio_asset": "plh_audio/testimonials/caregiver/caregiver_test_w_learn.mp3",
+      "teen_testimonial_audio_asset": "plh_audio/testimonials/caregiver/teen_test_w_learn.mp3",
       "title": "Helping Your Teen Learn",
       "_translations": {
         "title": {
