@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 import fs from "fs-extra";
-import { Logger, logOutput } from "../../utils";
-import { CONFIG_FOLDER_PATH, PRIVATE_KEY_PATH } from "../../paths";
+import { Logger, logOutput } from "shared";
+import { CONFIG_FOLDER_PATH, PRIVATE_KEY_PATH } from "shared";
 import { Command } from "commander";
 import NodeRSA from "node-rsa";
 

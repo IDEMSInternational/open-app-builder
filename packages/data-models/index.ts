@@ -1,7 +1,6 @@
 export * from "./flowTypes";
 export * from "./functions";
-// NOTE - avoid exporting workflows as node-based can't be consumed by frontend src
-// export { IDeploymentWorkflows, IWorkflow, IWorkflowContext, WORKFLOW_DEFAULTS } from "./workflows";
+
 export {
   IDeploymentConfig,
   IDeploymentConfigJson,

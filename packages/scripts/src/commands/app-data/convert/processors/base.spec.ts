@@ -1,7 +1,7 @@
 import path from "path";
 import BaseProcessor from "./base";
 
-import { SCRIPTS_WORKSPACE_PATH } from "../../../../paths";
+import { SCRIPTS_WORKSPACE_PATH } from "shared";
 import { clearLogs, getLogs } from "../utils";
 const testDataDir = path.resolve(SCRIPTS_WORKSPACE_PATH, "test", "data");
 const paths = {
