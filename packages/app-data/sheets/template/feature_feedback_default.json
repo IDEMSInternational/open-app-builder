@@ -38,12 +38,12 @@
           "action_list": [
             {
               "trigger": "click",
-              "action_id": "emit",
+              "action_id": "feedback",
               "args": [
-                "uncompleted"
+                "cancel"
               ],
-              "_raw": "click | emit:uncompleted",
-              "_cleaned": "click | emit:uncompleted"
+              "_raw": "click | feedback:cancel",
+              "_cleaned": "click | feedback:cancel"
             }
           ],
           "exclude_from_translation": true,
@@ -66,13 +66,13 @@
           "action_list": [
             {
               "trigger": "click",
-              "action_id": "emit",
+              "action_id": "feedback",
               "args": [
-                "completed",
+                "submit",
                 "@local.feedback"
               ],
-              "_raw": "click | emit:completed:@local.feedback",
-              "_cleaned": "click | emit:completed:@local.feedback"
+              "_raw": "click | feedback:submit:@local.feedback",
+              "_cleaned": "click | feedback:submit:@local.feedback"
             }
           ],
           "exclude_from_translation": true,
@@ -92,7 +92,7 @@
                 },
                 "_raw": [
                   {
-                    "fullExpression": "click | emit:completed:@local.feedback",
+                    "fullExpression": "click | feedback:submit:@local.feedback",
                     "matchedExpression": "@local.feedback",
                     "type": "local",
                     "fieldName": "feedback"
@@ -100,7 +100,7 @@
                 ],
                 "_cleaned": [
                   {
-                    "fullExpression": "click | emit:completed:@local.feedback",
+                    "fullExpression": "click | feedback:submit:@local.feedback",
                     "matchedExpression": "@local.feedback",
                     "type": "local",
                     "fieldName": "feedback"
@@ -121,5 +121,5 @@
       "_nested_name": "dg_buttons"
     }
   ],
-  "_xlsxPath": "quality_assurance/feature_sheets/to_be_sorted/feature_feedback.xlsx"
+  "_xlsxPath": "global/core_templates/feature_feedback.xlsx"
 }

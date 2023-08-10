@@ -126,7 +126,7 @@
         },
         {
           "name": "image",
-          "value": "plh_images/workshop_modes/guide_2/wave.svg",
+          "value": "plh_images/workshop_modes/individual/wave.svg",
           "_translations": {
             "value": {}
           },
@@ -370,5 +370,5 @@
       "_nested_name": "in_week_message"
     }
   ],
-  "_xlsxPath": "global/in_week_messages/in_week_message_types.xlsx"
+  "_xlsxPath": "global/top_templates/in_week_messages/in_week_message_types.xlsx"
 }

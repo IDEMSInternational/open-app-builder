@@ -83,15 +83,6 @@
       "template": "w_self_care_reward",
       "completed_field": "task_w_self_care_reward_completed",
       "completed": "@fields.task_w_self_care_reward_completed"
-    },
-    {
-      "id": "survey_activity",
-      "group": "survey_activity",
-      "individual": true,
-      "together": false,
-      "template": "w_self_care_survey_activity",
-      "completed_field": "task_w_self_care_survey_activity_completed",
-      "completed": "@fields.task_w_self_care_survey_activity_completed"
     }
   ]
 }

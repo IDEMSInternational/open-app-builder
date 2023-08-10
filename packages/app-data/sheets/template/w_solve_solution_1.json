@@ -72,23 +72,16 @@
         },
         {
           "name": "text",
-          "value": "@global.w_solve_female_caregiver_1: “You can’t go out for the next month”",
+          "value": "@global.w_solve_female_caregiver_1: “You cannot go out for the next month”",
           "_translations": {
-            "value": {
-              "tz_sw": true,
-              "za_af": true,
-              "za_st": true,
-              "za_tn": true,
-              "za_xh": true,
-              "za_zu": true
-            }
+            "value": {}
           },
           "type": "set_variable",
           "_nested_name": "box_image.text",
           "_dynamicFields": {
             "value": [
               {
-                "fullExpression": "@global.w_solve_female_caregiver_1: “You can’t go out for the next month”",
+                "fullExpression": "@global.w_solve_female_caregiver_1: “You cannot go out for the next month”",
                 "matchedExpression": "@global.w_solve_female_caregiver_1",
                 "type": "global",
                 "fieldName": "w_solve_female_caregiver_1"

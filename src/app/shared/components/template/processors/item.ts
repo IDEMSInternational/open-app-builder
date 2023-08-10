@@ -1,5 +1,5 @@
 // TODO - shared package name conflicts with local shared
-import { AppStringEvaluator } from "packages/shared";
+import { AppStringEvaluator, TemplatedData } from "packages/shared";
 import { shuffleArray } from "src/app/shared/utils";
 import { FlowTypes } from "../models";
 import { objectToArray } from "../utils";
@@ -11,10 +11,11 @@ export class ItemProcessor {
     const data = objectToArray(this.dataList);
     const pipedData = this.pipeData(data, this.parameterList);
     const itemRows = this.generateLoopItemRows(templateRows, pipedData);
-    return itemRows;
+    const parsedItemRows = this.hackSetNestedName(itemRows);
+    return parsedItemRows;
   }
 
-  public pipeData(data: any[], parameter_list: any) {
+  private pipeData(data: any[], parameter_list: any) {
     if (parameter_list) {
       const operations = Object.entries<any>(parameter_list).map(([name, arg]) => ({
         name,
@@ -59,6 +60,25 @@ export class ItemProcessor {
       }
     }
     return rowWithEvalContext;
+  }
+
+  /**
+   * When working with items nested names cannot be parsed by regular parser,
+   * so use delimited syntax and parse via newer TemplatedData processor
+   * @see https://github.com/IDEMSInternational/parenting-app-ui/issues/1765
+   */
+  private hackSetNestedName(itemRows: FlowTypes.TemplateRow[]) {
+    const parsedRows = [];
+    for (const row of itemRows) {
+      const parser = new TemplatedData({ context: { item: row._evalContext.itemContext } });
+      const { rows, _nested_name } = row;
+      row._nested_name = parser.parse(_nested_name);
+      if (rows) {
+        row.rows = this.hackSetNestedName(rows);
+      }
+      parsedRows.push(row);
+    }
+    return parsedRows;
   }
 }
 

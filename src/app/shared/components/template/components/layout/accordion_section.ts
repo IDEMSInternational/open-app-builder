@@ -24,7 +24,7 @@ import { TemplateBaseComponent } from "../base";
       />
       <img *ngIf="_row.disabled" [src]="'plh_images/icons/temporarily_disabled.svg' | plhAsset" />
       <img
-        *ngIf="!completed && !_row.disabled && percentComplete == 0"
+        *ngIf="!completed && !_row.disabled"
         [src]="'plh_images/icons/in_progress.svg' | plhAsset"
       />
     </div>

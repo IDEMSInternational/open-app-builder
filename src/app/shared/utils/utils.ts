@@ -3,6 +3,7 @@ import { diff } from "deep-object-diff";
 import { Observable } from "rxjs";
 import { map, pairwise, filter, share } from "rxjs/operators";
 import { FlowTypes } from "../model";
+import { objectToArray } from "../components/template/utils";
 
 /**
  * Generate a random string of characters in base-36 (a-z and 0-9 characters)
@@ -41,7 +42,7 @@ export function arrayToHashmap<T>(arr: T[], keyfield: string): { [key: string]: 
  * @param keyfield any unique field which all array objects contain to use as hash keys (e.g. 'id')
  */
 export function arrayToHashmapArray<T>(arr: T[], keyfield: keyof T) {
-  const hashmap: { [key: string]: T[] } = {};
+  const hashmap: Record<string, T[]> = {};
   for (const el of arr) {
     if (el.hasOwnProperty(keyfield)) {
       if (!hashmap[el[keyfield as string]]) {
@@ -116,19 +117,29 @@ export function shuffleArray(arr: any[]) {
  * getNestedProperty(obj,'a.b.c.d')  // returns null
  *
  * @param obj data object to iterate over
- * @param path nested path, such as data.subfield1.deeperfield2
+ * @param nestedPath property path, such as data.subfield1.deeperfield2
  */
-export function getNestedProperty(obj: any, path: string) {
-  return path.split(".").reduce((prev, current) => {
+export function getNestedProperty(obj: any, nestedPath: string) {
+  return nestedPath.split(".").reduce((prev, current) => {
     return prev ? prev[current] : null;
   }, obj);
 }
 
-export function setNestedProperty<T>(path: string, value: any, obj: T = {} as any) {
-  let childKeys = path.split(".");
+/**
+ * Set a nested json property namespaced as parent.child1.subchild1
+ *
+ * @param nestedPath property path, such as data.subfield1.deeperfield2
+ * @param value assigned value
+ * @param obj optional object to deep assign onto
+ *
+ * @example
+ * setNestedProperty('a.b.c',1,{})  // returns {"a":{"b":{"c":1}}}
+ * */
+export function setNestedProperty<T>(nestedPath: string, value: any, obj: T = {} as any) {
+  let childKeys = nestedPath.split(".");
   const currentKey = childKeys[0];
   if (childKeys.length > 1) {
-    const nestedValue = setNestedProperty(childKeys.slice(1).join("."), value);
+    const nestedValue = setNestedProperty(childKeys.slice(1).join("."), value, obj[currentKey]);
     obj[currentKey] = { ...obj[currentKey], ...(nestedValue as any) };
   } else {
     obj[currentKey] = value;
@@ -293,7 +304,7 @@ export function stringToIntegerHash(str: string) {
  * @param target
  * @param ...sources
  */
-export function deepMergeObjects(target: any, ...sources: any) {
+export function deepMergeObjects(target: any = {}, ...sources: any) {
   if (!sources.length) return target;
   const source = sources.shift();
 
@@ -345,9 +356,85 @@ export function trackObservableObjectChanges<T extends Object>(subject: Observab
   );
 }
 
-/** A recursive version of Partial, making all properties, included nested ones, optional.
+/**
+ * A recursive version of Partial, making all properties, included nested ones, optional.
  * Copied from https://stackoverflow.com/a/47914631
  */
 export type RecursivePartial<T> = {
   [P in keyof T]?: RecursivePartial<T[P]>;
 };
+
+export function isNonEmptyArray(value: unknown): value is any[] {
+  return Array.isArray(value) && value.length > 0;
+}
+
+/**
+ * Check whether browser supports post-ES5 features. Further checks could be made, for example
+ * whether the browser is IE/iOS, but not necessary at runtime as these platforms aren't supported anyway.
+ * See discussion thread here: https://github.com/IDEMSInternational/parenting-app-ui/issues/1726
+ */
+export function isLegacyBrowser() {
+  if (typeof window === "undefined") {
+    // server-side rendering
+    return false;
+  }
+  return (
+    typeof ReadableStream === "undefined" ||
+    typeof Promise["allSettled"] === "undefined" ||
+    !supportsOptionalChaining()
+  );
+}
+
+function supportsOptionalChaining() {
+  try {
+    eval("const foo = {}; foo?.bar");
+  } catch (e) {
+    return false;
+  }
+  return true;
+}
+
+export interface IAnswerListItem {
+  name: string;
+  image?: string;
+  text?: string;
+  image_checked?: string | null;
+}
+
+/**
+ * Parse an answer_list parameter and return an array of AnswerListItems
+ * @param answerList an answer_list parameter, either an array of IAnswerListItems
+ * (possibly still in string representation) or a data list (hashmap of IAnswerListItems)
+ */
+export function parseAnswerList(answerList: any) {
+  // If a data_list (hashmap) is provided as input, convert to an array
+  if (answerList.constructor === {}.constructor) {
+    answerList = objectToArray(answerList);
+  }
+  const answerListItems: IAnswerListItem[] = answerList.map(
+    (item: string | Record<string, string>) => {
+      return parseAnswerListItem(item);
+    }
+  );
+  return answerListItems;
+}
+
+/**
+ * Convert answer list item (string or object) to relevant mappings
+ * TODO - CC 2023-03-16 - should ideally convert in parsers instead of at runtime
+ */
+function parseAnswerListItem(item: any) {
+  const itemObj: IAnswerListItem = {} as any;
+  if (typeof item === "string") {
+    const stringProperties = item.split("|");
+    stringProperties.forEach((s) => {
+      const [field, value] = s.split(":").map((v) => v.trim());
+      if (field && value) {
+        itemObj[field] = value;
+      }
+    });
+    // NOTE CC 2021-08-07 - allow passing of object, not just string for conversion
+    return itemObj;
+  }
+  return item;
+}

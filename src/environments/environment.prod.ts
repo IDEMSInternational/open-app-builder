@@ -1,6 +1,6 @@
 import { firebaseConfig } from "./firebaseConfig";
 import packageJson from "../../package.json";
-import deploymentJson from "../../.idems_app/deployments/default.json";
+import deploymentJson from "../../.idems_app/deployments/activeDeployment.json";
 import type { IDeploymentConfig } from "packages/data-models";
 
 export const environment = {
@@ -19,6 +19,5 @@ export const environment = {
   domains: ["plh-demo1.idems.international", "plh-demo.idems.international"],
   chatNonNavigatePaths: ["/chat/action", "/chat/msg-info"],
   variableNameFlows: ["character_names"],
-  apiEndpoint: "https://apps-server.idems.international/api",
   analytics: { endpoint: "https://apps-server.idems.international/analytics", siteId: 1 },
 };
