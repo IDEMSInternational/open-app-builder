@@ -4,10 +4,10 @@
   },
   "tasksRunnerOptions": {
     "default": {
-      "runner": "@nrwl/nx-cloud",
+      "runner": "nx-cloud",
       "options": {
         "cacheableOperations": ["build", "test", "lint", "e2e"],
-        "accessToken": "ZGZhOWEwMjctMzBmYS00ZjczLTg4ZjYtZDRkNjcyOWIxM2U3fHJlYWQtd3JpdGU="
+        "accessToken": "ZjZmNDkzNzUtYmFlNy00YmU3LTg0NjMtYzAzNTYyMzY5ZTBkfHJlYWQtd3JpdGU="
       }
     }
   },
@@ -20,8 +20,7 @@
       "!{projectRoot}/**/*.spec.[jt]s",
       "!{projectRoot}/karma.conf.js",
       "!{projectRoot}/.eslintrc.json"
-    ],
-    "appData": []
+    ]
   },
   "targetDefaults": {
     "build": {
@@ -37,6 +36,7 @@
     "e2e": {
       "inputs": ["default", "^production"]
     }
-  }
+  },
+  "defaultProject": "app"
 }
 
