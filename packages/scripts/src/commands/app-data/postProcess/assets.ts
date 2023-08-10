@@ -15,7 +15,7 @@ import {
   replicateDir,
   sortJsonKeys,
   getNestedProperty,
-} from "../../../utils";
+} from "shared";
 import { ActiveDeployment } from "../../deployment/get";
 import type { IAssetEntryHashmap, IContentsEntryMinimal } from "data-models/deployment.model";
 

@@ -3,8 +3,8 @@ import fs from "fs-extra";
 import path from "path";
 import chalk from "chalk";
 import NodeRSA from "node-rsa";
-import { promptOptions } from "../../utils";
-import { PUBLIC_KEY_PATH } from "../../paths";
+import { promptOptions } from "shared";
+import { PUBLIC_KEY_PATH } from "shared";
 import { Command } from "commander";
 
 const program = new Command("download");

@@ -4,8 +4,8 @@ import { Command } from "commander";
 import { IDeploymentConfig, DEPLOYMENT_CONFIG_VERSION } from "data-models";
 import fs from "fs-extra";
 import path from "path";
-import { ROOT_DIR } from "../../paths";
-import { Logger } from "../../utils";
+import { ROOT_DIR } from "shared";
+import { Logger } from "shared";
 import { IDeploymentConfigJson } from "./common";
 import { convertFunctionsToStrings } from "./utils";
 

@@ -7,7 +7,6 @@ import PQueue from "p-queue";
 import { drive_v3 } from "googleapis";
 import { GaxiosResponse, GaxiosOptions } from "gaxios";
 import { Command } from "commander";
-import { PATHS } from "../paths";
 import {
   GDRIVE_OFFICE_MAPPING,
   MIMETYPE_EXTENSIONS,
@@ -19,6 +18,7 @@ import {
   cleanupEmptyFolders,
 } from "../utils";
 import { authorizeGDrive } from "./authorize";
+import { PATHS } from "../paths";
 
 const GOOGLE_FOLDER_MIMETYPE = "application/vnd.google-apps.folder";
 

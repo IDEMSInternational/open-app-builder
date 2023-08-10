@@ -3,7 +3,7 @@
 // import path from "path";
 // import { watch } from "chokidar";
 // import fs from "fs-extra";
-// import { ROOT_DIR } from "../../paths";
+// import { ROOT_DIR } from "shared";
 // import chalk from "chalk";
 
 // const program = new Command("watch");

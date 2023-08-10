@@ -4,8 +4,8 @@ import { spawnSync } from "child_process";
 import { Command } from "commander";
 import fs from "fs-extra";
 import path from "path";
-import { CREDENTIALS_PATH, AUTH_TOKEN_PATH } from "../../paths";
-import { logWarning, promptOptions } from "../../utils";
+import { CREDENTIALS_PATH, AUTH_TOKEN_PATH } from "shared";
+import { logWarning, promptOptions } from "shared";
 import { ActiveDeployment } from "../deployment/get";
 
 /***************************************************************************************

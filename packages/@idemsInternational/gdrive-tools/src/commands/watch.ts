@@ -3,10 +3,10 @@ import { Command } from "commander";
 import type { drive_v3 } from "googleapis";
 import { logProgramHelp } from "../utils";
 import { authorizeGDrive, authorizeGDriveActivity } from "./authorize";
-import { PATHS } from "../paths";
 import { randomUUID } from "crypto";
 import { GDriveDownloader } from "./download";
 import chalk from "chalk";
+import { PATHS } from "../paths";
 
 /***************************************************************************************
  * WiP Methods to enable streaming of live changes from google drive

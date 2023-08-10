@@ -1,7 +1,7 @@
 import * as fs from "fs-extra";
 import { Command } from "commander";
 import inquirer from "inquirer";
-import { APP_BUILD_GRADLE_PATH, MAIN_PACKAGE_PATH } from "../paths";
+import { APP_BUILD_GRADLE_PATH, MAIN_PACKAGE_PATH } from "shared";
 
 /***************************************************************************************
  * CLI

@@ -1,7 +1,7 @@
 import path from "path";
 import { XLSXWorkbookProcessor } from "./xlsxWorkbook";
 
-import { SCRIPTS_TEST_DATA_DIR } from "../../../../paths";
+import { SCRIPTS_TEST_DATA_DIR } from "shared";
 import { clearLogs, getLogs, IContentsEntry } from "../utils";
 const paths = {
   SHEETS_CACHE_FOLDER: path.resolve(SCRIPTS_TEST_DATA_DIR, "cache"),
