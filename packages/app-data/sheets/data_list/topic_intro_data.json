@@ -444,7 +444,7 @@
       "voice_name": "@global.female_adult_name_3",
       "activity_image_asset": "plh_images/workshop_modes/individual/explain.svg",
       "audio_asset": "plh_audio/topic_intros/w_srh_intro.mp3",
-      "intro_text": "Teenagers go through a lot of changes, both in their bodies and in how they feel and experience the world.",
+      "intro_text": "Teenagers go through a lot of changes, both in their bodies and in how they feel and experience the world. By speaking with them you can help them handle this change as well. \n\nLet your teen know you may not have all the answers, but you are there to support them and find solutions together. That way your teen knows you are there to listen and talk. You will not judge or shame them and can support them to make healthy and confident decisions.",
       "_translations": {
         "intro_text": {},
         "text": {
@@ -460,7 +460,7 @@
       },
       "_translatedFields": {
         "intro_text": {
-          "eng": "Teenagers go through a lot of changes, both in their bodies and in how they feel and experience the world."
+          "eng": "Teenagers go through a lot of changes, both in their bodies and in how they feel and experience the world. By speaking with them you can help them handle this change as well. \n\nLet your teen know you may not have all the answers, but you are there to support them and find solutions together. That way your teen knows you are there to listen and talk. You will not judge or shame them and can support them to make healthy and confident decisions."
         },
         "text": {
           "eng": "Think back to your own teenage years: \n* Did you ever experience a difficult situation as a teenager around body changes? And what about relationships? \n* What kind of support or information do you wish you had at the time?\n* Do you think your teen may be experiencing any challenges in these areas?"

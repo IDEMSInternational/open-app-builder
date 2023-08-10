@@ -21,7 +21,7 @@
           "eng": "Why do you think @global.w_srh_female_caregiver_1 reacted the way she did?"
         },
         "option_1": {
-          "eng": "She was shocked that @global.w_srh_teen_girl_1 had condoms"
+          "eng": "She was shocked that @global.w_srh_teen_girl_1 had condoms."
         },
         "option_2": {
           "eng": "She felt disrespected and angry at @global.w_srh_teen_girl_1."
@@ -36,7 +36,7 @@
           "eng": "When we are angry or scared, we can say or do things that hurt others and harm our relationships."
         }
       },
-      "option_1": "She was shocked that @global.w_srh_teen_girl_1 had condoms",
+      "option_1": "She was shocked that @global.w_srh_teen_girl_1 had condoms.",
       "option_2": "She felt disrespected and angry at @global.w_srh_teen_girl_1.",
       "option_3": "She was scared @global.w_srh_teen_girl_1 was already having sex.",
       "option_4": "She felt ashamed to talk about sex.",
