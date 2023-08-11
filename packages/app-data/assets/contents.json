@@ -2433,38 +2433,38 @@
     "md5Checksum": "12e56e240b8a92617559e8f92ad5ff8f",
     "size_kb": 57
   },
-  "plh_images/workshops/w_grief/Everyone is different (negative story)_1.svg": {
-    "filePath": "global/plh_images/workshops/w_grief/Everyone is different (negative story)_1.svg",
+  "plh_images/workshops/w_grief/read_grief_conflict/slide_1.svg": {
+    "filePath": "global/plh_images/workshops/w_grief/read_grief_conflict/slide_1.svg",
     "md5Checksum": "1de6ae714efccf25da91e3bcde249d95",
     "size_kb": 28.3
   },
-  "plh_images/workshops/w_grief/Everyone is different (negative story)_2.svg": {
-    "filePath": "global/plh_images/workshops/w_grief/Everyone is different (negative story)_2.svg",
+  "plh_images/workshops/w_grief/read_grief_conflict/slide_2.svg": {
+    "filePath": "global/plh_images/workshops/w_grief/read_grief_conflict/slide_2.svg",
     "md5Checksum": "cc7258d9660a04c0f96dfc7079a371e1",
     "size_kb": 59.8
   },
-  "plh_images/workshops/w_grief/Everyone is different (negative story)_3.svg": {
-    "filePath": "global/plh_images/workshops/w_grief/Everyone is different (negative story)_3.svg",
+  "plh_images/workshops/w_grief/read_grief_conflict/slide_3.svg": {
+    "filePath": "global/plh_images/workshops/w_grief/read_grief_conflict/slide_3.svg",
     "md5Checksum": "6f655f6c9cfded8e39b7b057c325548b",
     "size_kb": 32.7
   },
-  "plh_images/workshops/w_grief/Saying goodbye (positive story)_1.svg": {
-    "filePath": "global/plh_images/workshops/w_grief/Saying goodbye (positive story)_1.svg",
+  "plh_images/workshops/w_grief/read_grief_support/slide_1.svg": {
+    "filePath": "global/plh_images/workshops/w_grief/read_grief_support/slide_1.svg",
     "md5Checksum": "b48b0cd172936b219345bd8f19b309ae",
     "size_kb": 33
   },
-  "plh_images/workshops/w_grief/Saying goodbye (positive story)_2.svg": {
-    "filePath": "global/plh_images/workshops/w_grief/Saying goodbye (positive story)_2.svg",
+  "plh_images/workshops/w_grief/read_grief_support/slide_2.svg": {
+    "filePath": "global/plh_images/workshops/w_grief/read_grief_support/slide_2.svg",
     "md5Checksum": "acf16361a741fc9e3b0fa0638dd453ee",
     "size_kb": 29.8
   },
-  "plh_images/workshops/w_grief/Saying goodbye (positive story)_3.svg": {
-    "filePath": "global/plh_images/workshops/w_grief/Saying goodbye (positive story)_3.svg",
+  "plh_images/workshops/w_grief/read_grief_support/slide_3.svg": {
+    "filePath": "global/plh_images/workshops/w_grief/read_grief_support/slide_3.svg",
     "md5Checksum": "95b5c559b942beb8d2819a5af06241ef",
     "size_kb": 32.2
   },
-  "plh_images/workshops/w_grief/Saying goodbye (positive story)_4.svg": {
-    "filePath": "global/plh_images/workshops/w_grief/Saying goodbye (positive story)_4.svg",
+  "plh_images/workshops/w_grief/read_grief_support/slide_4.svg": {
+    "filePath": "global/plh_images/workshops/w_grief/read_grief_support/slide_4.svg",
     "md5Checksum": "46931f7f58059a250ee872d4fe2be09f",
     "size_kb": 32.7
   },
@@ -2970,8 +2970,8 @@
   },
   "plh_images/workshops/w_srh/learn/sex_talk_when/slide_2.svg": {
     "filePath": "global/plh_images/workshops/w_srh/learn/sex_talk_when/slide_2.svg",
-    "md5Checksum": "640c0ea825b40db1d7d508afcba082b6",
-    "size_kb": 89.1
+    "md5Checksum": "b983757da2fd3542908b769b37a518b7",
+    "size_kb": 89.8
   },
   "plh_images/workshops/w_srh/learn/sex_talk_when/slide_3.svg": {
     "filePath": "global/plh_images/workshops/w_srh/learn/sex_talk_when/slide_3.svg",
@@ -3178,25 +3178,20 @@
     "md5Checksum": "4e2d1d746bdd0f588a055e1cb53d2762",
     "size_kb": 24.8
   },
+  "plh_images/workshops/w_svp/use_body/moves.gif": {
+    "filePath": "global/plh_images/workshops/w_svp/use_body/moves.gif",
+    "md5Checksum": "bfdf81a79bd33711b2496a32a93c1fcf",
+    "size_kb": 173.2
+  },
   "plh_images/workshops/w_svp/use_body/zone_1.gif": {
     "filePath": "global/plh_images/workshops/w_svp/use_body/zone_1.gif",
     "md5Checksum": "a8496245082ef524815881cb5ab8f6e5",
     "size_kb": 2008.5
   },
-  "plh_images/workshops/w_svp/use_body/zone_1.jpg": {
-    "filePath": "global/plh_images/workshops/w_svp/use_body/zone_1.jpg",
-    "md5Checksum": "4fdc8690917f5dde7541176b81b8ca02",
-    "size_kb": 1352.9
-  },
   "plh_images/workshops/w_svp/use_body/zone_2.gif": {
     "filePath": "global/plh_images/workshops/w_svp/use_body/zone_2.gif",
     "md5Checksum": "ca9d35af7a81bf482b2b2eec1f027d40",
     "size_kb": 844.1
-  },
-  "plh_images/workshops/w_svp/use_body/zone_2.jpg": {
-    "filePath": "global/plh_images/workshops/w_svp/use_body/zone_2.jpg",
-    "md5Checksum": "06c88dca69276e2f940e9b18ad25b8d6",
-    "size_kb": 1847.2
   },
   "plh_images/workshops/w_svp/use_voice.svg": {
     "filePath": "global/plh_images/workshops/w_svp/use_voice.svg",
