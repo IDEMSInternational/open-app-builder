@@ -767,15 +767,31 @@
       "number_of_challenges": "4",
       "question_text": "Did you have any challenges when talking to your teen about body changes and intimate relationships?",
       "_translations": {
-        "question_text": {},
-        "text_challenge_1": {},
+        "question_text": {
+          "tz_sw": true
+        },
+        "text_challenge_1": {
+          "tz_sw": true
+        },
         "reply_challenge_1": {},
-        "text_challenge_2": {},
-        "reply_challenge_2": {},
-        "text_challenge_3": {},
-        "reply_challenge_3": {},
-        "text_challenge_4": {},
-        "reply_challenge_4": {},
+        "text_challenge_2": {
+          "tz_sw": true
+        },
+        "reply_challenge_2": {
+          "tz_sw": true
+        },
+        "text_challenge_3": {
+          "tz_sw": true
+        },
+        "reply_challenge_3": {
+          "tz_sw": true
+        },
+        "text_challenge_4": {
+          "tz_sw": true
+        },
+        "reply_challenge_4": {
+          "tz_sw": true
+        },
         "top_text": {
           "tz_sw": true
         }
@@ -827,13 +843,27 @@
       "number_of_challenges": "3",
       "question_text": "Did you have any challenges when talking about the @data.workshop.w_svp.in_text_title with your teen?",
       "_translations": {
-        "question_text": {},
-        "text_challenge_1": {},
-        "reply_challenge_1": {},
-        "text_challenge_2": {},
-        "reply_challenge_2": {},
-        "text_challenge_3": {},
-        "reply_challenge_3": {},
+        "question_text": {
+          "tz_sw": true
+        },
+        "text_challenge_1": {
+          "tz_sw": true
+        },
+        "reply_challenge_1": {
+          "tz_sw": true
+        },
+        "text_challenge_2": {
+          "tz_sw": true
+        },
+        "reply_challenge_2": {
+          "tz_sw": true
+        },
+        "text_challenge_3": {
+          "tz_sw": true
+        },
+        "reply_challenge_3": {
+          "tz_sw": true
+        },
         "top_text": {
           "tz_sw": true
         }

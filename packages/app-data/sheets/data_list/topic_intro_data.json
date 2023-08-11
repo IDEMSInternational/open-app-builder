@@ -414,11 +414,15 @@
       "audio_asset": "plh_audio/topic_intros/w_celebrate_intro.mp3",
       "title": "Why celebrate?",
       "_translations": {
-        "title": {},
+        "title": {
+          "tz_sw": true
+        },
         "intro_text": {
           "tz_sw": true
         },
-        "script": {},
+        "script": {
+          "tz_sw": true
+        },
         "intro_nav_button_completed": {}
       },
       "_translatedFields": {
@@ -519,7 +523,9 @@
       "audio_asset": "plh_audio/topic_intros/w_grief_intro.mp3",
       "intro_text": "Grief affects us all in different ways. \n\nWhatever you feel, you are grieving in your own way, and that is okay.",
       "_translations": {
-        "intro_text": {},
+        "intro_text": {
+          "tz_sw": true
+        },
         "intro_nav_button_completed": {},
         "script": {},
         "title": {

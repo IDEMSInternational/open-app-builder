@@ -15,7 +15,9 @@
       "title": "Other parents’ questions",
       "_translations": {
         "title": {},
-        "intro_text": {}
+        "intro_text": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "title": {

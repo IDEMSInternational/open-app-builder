@@ -492,7 +492,9 @@
                       "name": "audio_title",
                       "value": "Hear @local.topic_intro_name's message",
                       "_translations": {
-                        "value": {}
+                        "value": {
+                          "tz_sw": true
+                        }
                       },
                       "type": "set_variable",
                       "_nested_name": "listen.workshop_activity.content_box.box_1.audio_title",
@@ -540,7 +542,9 @@
                       "name": "button_1",
                       "value": "Read @local.topic_intro_name's message",
                       "_translations": {
-                        "value": {}
+                        "value": {
+                          "tz_sw": true
+                        }
                       },
                       "action_list": [
                         {
@@ -1046,7 +1050,9 @@
                   "name": "audio_title",
                   "value": "Hear @local.topic_intro_name's message",
                   "_translations": {
-                    "value": {}
+                    "value": {
+                      "tz_sw": true
+                    }
                   },
                   "type": "set_variable",
                   "_nested_name": "listen.workshop_activity.content_box.audio_title",
@@ -1094,7 +1100,9 @@
                   "name": "button_1",
                   "value": "Read @local.topic_intro_name's message",
                   "_translations": {
-                    "value": {}
+                    "value": {
+                      "tz_sw": true
+                    }
                   },
                   "action_list": [
                     {

@@ -110,15 +110,15 @@
           "eng": "Walking around your community is an easy and fun way to spend quality time together. It is good exercise and helps your teen learn about their community."
         },
         "steps_text": {
-          "eng": "<span>1. </span><span><b>Plan.</b></span><span> Discuss with your teen to choose a time and a place to walk together. It could be a nearby park, market, or any interesting area. If you were going there anyway, ask your teen if they want to come with you.<br/>2. </span><span><b>Observe and explore.</b></span><span> Encourage your teen to ask questions about what they see on the walk. This could be about people, nature or buildings.<br/>3. </span><span><b>Learn together.</b></span><span> Tell your teen things you know about the area. For example, who lives in different directions, your favourite flower, or what the area looked like long ago.</span>"
+          "eng": "1. Plan: Discuss with your teen to choose a time and a place to walk together. It could be a nearby park, market, or any interesting area. If you were going there anyway, ask your teen if they want to come with you.\n2. Observe and explore: Encourage your teen to ask questions about what they see on the walk. This could be about people, nature or buildings.\n3. Learn together: Tell your teen things you know about the area. For example, who lives in different directions, your favourite flower, or what the area looked like long ago."
         },
         "tips_text": {
-          "eng": "<span>* </span><span><b>Use technology:</b></span><span> Bring along your smartphone to take pictures of interesting things you see on the walk. Let your teen take photos and talk about it!<br/>* </span><span><b>Make it regular:</b></span><span> Schedule regular walks and explore new locations to keep the activity fresh and fun.</span>"
+          "eng": "* Use technology: Bring along your smartphone to take pictures of interesting things you see on the walk. Let your teen take photos and talk about it!\n* Make it regular: Schedule regular walks and explore new locations to keep the activity fresh and fun."
         }
       },
       "intro_text": "Walking around your community is an easy and fun way to spend quality time together. It is good exercise and helps your teen learn about their community.",
-      "steps_text": "<span>1. </span><span><b>Plan.</b></span><span> Discuss with your teen to choose a time and a place to walk together. It could be a nearby park, market, or any interesting area. If you were going there anyway, ask your teen if they want to come with you.<br/>2. </span><span><b>Observe and explore.</b></span><span> Encourage your teen to ask questions about what they see on the walk. This could be about people, nature or buildings.<br/>3. </span><span><b>Learn together.</b></span><span> Tell your teen things you know about the area. For example, who lives in different directions, your favourite flower, or what the area looked like long ago.</span>",
-      "tips_text": "<span>* </span><span><b>Use technology:</b></span><span> Bring along your smartphone to take pictures of interesting things you see on the walk. Let your teen take photos and talk about it!<br/>* </span><span><b>Make it regular:</b></span><span> Schedule regular walks and explore new locations to keep the activity fresh and fun.</span>"
+      "steps_text": "1. Plan: Discuss with your teen to choose a time and a place to walk together. It could be a nearby park, market, or any interesting area. If you were going there anyway, ask your teen if they want to come with you.\n2. Observe and explore: Encourage your teen to ask questions about what they see on the walk. This could be about people, nature or buildings.\n3. Learn together: Tell your teen things you know about the area. For example, who lives in different directions, your favourite flower, or what the area looked like long ago.",
+      "tips_text": "* Use technology: Bring along your smartphone to take pictures of interesting things you see on the walk. Let your teen take photos and talk about it!\n* Make it regular: Schedule regular walks and explore new locations to keep the activity fresh and fun."
     },
     {
       "id": "cook_traditional",
@@ -135,7 +135,9 @@
           "tz_sw": true
         },
         "steps_text": {},
-        "tips_text": {}
+        "tips_text": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -145,15 +147,15 @@
           "eng": "Cooking traditional @global.regional food with your teen is a great way to connect, learn new skills, and share stories about your culture."
         },
         "steps_text": {
-          "eng": "<span>1. </span><span><b>Choose a recipe.</b></span><span> Find a traditional recipe that you and your teen would like to prepare. You can also ask friends and family for their favourites.<br/>2. </span><span><b>Gather ingredients.</b></span><span> Ask your teen to help you get all the necessary ingredients and materials. <br/>3. </span><span><b>Clean and prepare the cooking area.</b></span><span> Make sure the kitchen area is clean and tidy before you start cooking. Teach your teen to wash their hands thoroughly when working with food.<br/>4. </span><span><b>Enjoy the meal.</b></span><span> Eat the meal you prepared together! Talk about the flavours and textures of the food and share stories about traditional food in your</span><span> </span><span>culture.<br/>5. </span><span><b>Clean up.</b></span><span> Once you have finished eating, clean up the cooking area together.</span>"
+          "eng": "1. Choose a recipe. Find a traditional recipe that you and your teen would like to prepare. You can also ask friends and family for their favourites.\n2. Gather ingredients. Ask your teen to help you get all the necessary ingredients and materials. \n3. Clean and prepare the cooking area. Make sure the kitchen area is clean and tidy before you start cooking. Teach your teen to wash their hands thoroughly when working with food.\n4. Enjoy the meal. Eat the meal you prepared together! Talk about the flavours and textures of the food and share stories about traditional food in your culture.\n5. Clean up. Once you have finished eating, clean up the cooking area together."
         },
         "tips_text": {
-          "eng": "<span>* </span><span><b>Plan with your teen:</b></span><span> Ask your teen in the morning if they can help you with the cooking tonight. This gives them time to plan their school work and time with friends.<br/>* </span><span><b>Involve them:</b></span><span> Tell them what you are cooking tonight and ask them if they know the ingredients. <br/>* </span><span><b>Clear tasks:</b></span><span> Ask your teen to chop the food or check the heat of the pots. They will be more interested if they help you and not only watch you cook.<br/>* </span><span><b>Make it regular:</b></span><span> Ask them to help you with the cooking more and let them try different jobs like chopping different vegetables or starting a fire.</span>"
+          "eng": "* Plan with your teen: Ask your teen in the morning if they can help you with the cooking tonight. This gives them time to plan their school work and time with friends.\n* Involve them: Tell them what you are cooking tonight and ask them if they know the ingredients. \n* Clear tasks: Ask your teen to chop the food or check the heat of the pots. They will be more interested if they help you and not only watch you cook.\n* Make it regular: Ask them to help you with the cooking more and let them try different jobs like chopping different vegetables or starting a fire."
         }
       },
       "intro_text": "Cooking traditional @global.regional food with your teen is a great way to connect, learn new skills, and share stories about your culture.",
-      "steps_text": "<span>1. </span><span><b>Choose a recipe.</b></span><span> Find a traditional recipe that you and your teen would like to prepare. You can also ask friends and family for their favourites.<br/>2. </span><span><b>Gather ingredients.</b></span><span> Ask your teen to help you get all the necessary ingredients and materials. <br/>3. </span><span><b>Clean and prepare the cooking area.</b></span><span> Make sure the kitchen area is clean and tidy before you start cooking. Teach your teen to wash their hands thoroughly when working with food.<br/>4. </span><span><b>Enjoy the meal.</b></span><span> Eat the meal you prepared together! Talk about the flavours and textures of the food and share stories about traditional food in your</span><span> </span><span>culture.<br/>5. </span><span><b>Clean up.</b></span><span> Once you have finished eating, clean up the cooking area together.</span>",
-      "tips_text": "<span>* </span><span><b>Plan with your teen:</b></span><span> Ask your teen in the morning if they can help you with the cooking tonight. This gives them time to plan their school work and time with friends.<br/>* </span><span><b>Involve them:</b></span><span> Tell them what you are cooking tonight and ask them if they know the ingredients. <br/>* </span><span><b>Clear tasks:</b></span><span> Ask your teen to chop the food or check the heat of the pots. They will be more interested if they help you and not only watch you cook.<br/>* </span><span><b>Make it regular:</b></span><span> Ask them to help you with the cooking more and let them try different jobs like chopping different vegetables or starting a fire.</span>"
+      "steps_text": "1. Choose a recipe. Find a traditional recipe that you and your teen would like to prepare. You can also ask friends and family for their favourites.\n2. Gather ingredients. Ask your teen to help you get all the necessary ingredients and materials. \n3. Clean and prepare the cooking area. Make sure the kitchen area is clean and tidy before you start cooking. Teach your teen to wash their hands thoroughly when working with food.\n4. Enjoy the meal. Eat the meal you prepared together! Talk about the flavours and textures of the food and share stories about traditional food in your culture.\n5. Clean up. Once you have finished eating, clean up the cooking area together.",
+      "tips_text": "* Plan with your teen: Ask your teen in the morning if they can help you with the cooking tonight. This gives them time to plan their school work and time with friends.\n* Involve them: Tell them what you are cooking tonight and ask them if they know the ingredients. \n* Clear tasks: Ask your teen to chop the food or check the heat of the pots. They will be more interested if they help you and not only watch you cook.\n* Make it regular: Ask them to help you with the cooking more and let them try different jobs like chopping different vegetables or starting a fire."
     },
     {
       "id": "garden",
@@ -278,14 +280,20 @@
       "favourite_field": "ltp_activity_hide_seek_favourite",
       "title": "Hide and seek (find the pair)",
       "_translations": {
-        "title": {},
+        "title": {
+          "tz_sw": true
+        },
         "intro_text": {},
         "resources_text": {},
         "steps_text": {
           "tz_sw": true
         },
-        "tips_text": {},
-        "extension_text": {}
+        "tips_text": {
+          "tz_sw": true
+        },
+        "extension_text": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -324,9 +332,15 @@
         "title": {
           "tz_sw": true
         },
-        "intro_text": {},
-        "resources_text": {},
-        "steps_text": {},
+        "intro_text": {
+          "tz_sw": true
+        },
+        "resources_text": {
+          "tz_sw": true
+        },
+        "steps_text": {
+          "tz_sw": true
+        },
         "tips_text": {}
       },
       "_translatedFields": {
@@ -362,11 +376,15 @@
         "title": {
           "tz_sw": true
         },
-        "intro_text": {},
+        "intro_text": {
+          "tz_sw": true
+        },
         "resources_text": {
           "tz_sw": true
         },
-        "steps_text": {},
+        "steps_text": {
+          "tz_sw": true
+        },
         "tips_text": {
           "tz_sw": true
         }
@@ -405,7 +423,9 @@
           "tz_sw": true
         },
         "intro_text": {},
-        "steps_text": {},
+        "steps_text": {
+          "tz_sw": true
+        },
         "tips_text": {}
       },
       "_translatedFields": {
@@ -437,7 +457,9 @@
         "title": {
           "tz_sw": true
         },
-        "intro_text": {},
+        "intro_text": {
+          "tz_sw": true
+        },
         "steps_text": {},
         "tips_text": {}
       },
@@ -470,8 +492,12 @@
         "title": {
           "tz_sw": true
         },
-        "intro_text": {},
-        "steps_text": {},
+        "intro_text": {
+          "tz_sw": true
+        },
+        "steps_text": {
+          "tz_sw": true
+        },
         "tips_text": {
           "tz_sw": true
         }
@@ -505,7 +531,9 @@
         "title": {
           "tz_sw": true
         },
-        "intro_text": {},
+        "intro_text": {
+          "tz_sw": true
+        },
         "steps_text": {},
         "tips_text": {
           "tz_sw": true
@@ -540,9 +568,13 @@
         "title": {
           "tz_sw": true
         },
-        "intro_text": {},
+        "intro_text": {
+          "tz_sw": true
+        },
         "steps_text": {},
-        "tips_text": {}
+        "tips_text": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -573,9 +605,13 @@
         "title": {
           "tz_sw": true
         },
-        "intro_text": {},
+        "intro_text": {
+          "tz_sw": true
+        },
         "steps_text": {},
-        "tips_text": {}
+        "tips_text": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -878,7 +914,9 @@
       "favourite_field": "ltp_activity_memory_game_favourite",
       "title": "Memory game – \"On Saturday...\"",
       "_translations": {
-        "title": {},
+        "title": {
+          "tz_sw": true
+        },
         "intro_text": {
           "tz_sw": true
         }

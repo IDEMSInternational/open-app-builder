@@ -28,7 +28,9 @@
       "name": "activities",
       "value": "Activities",
       "_translations": {
-        "value": {}
+        "value": {
+          "tz_sw": true
+        }
       }
     },
     {

@@ -862,10 +862,18 @@
       "challenges_structure": "plain",
       "text_goal": "Your goal was to look at the stories in this module together with your teen and let it spark a discussion about body changes and intimate relationships.",
       "_translations": {
-        "text_goal": {},
-        "reply_happy": {},
-        "reply_ok": {},
-        "reply_sad": {},
+        "text_goal": {
+          "tz_sw": true
+        },
+        "reply_happy": {
+          "tz_sw": true
+        },
+        "reply_ok": {
+          "tz_sw": true
+        },
+        "reply_sad": {
+          "tz_sw": true
+        },
         "activity_title": {},
         "intro_text": {},
         "question_done": {
@@ -939,10 +947,18 @@
       "challenges_structure": "plain",
       "text_goal": "Your goal was to discuss the @data.workshop.w_svp.in_text_title with your teen.",
       "_translations": {
-        "text_goal": {},
-        "reply_happy": {},
-        "reply_ok": {},
-        "reply_sad": {},
+        "text_goal": {
+          "tz_sw": true
+        },
+        "reply_happy": {
+          "tz_sw": true
+        },
+        "reply_ok": {
+          "tz_sw": true
+        },
+        "reply_sad": {
+          "tz_sw": true
+        },
         "activity_title": {},
         "intro_text": {},
         "question_done": {

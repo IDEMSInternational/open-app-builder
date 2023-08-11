@@ -39,7 +39,9 @@
       "outro_habit_box_use_short_mark_text": true,
       "outro_text": "You are a star! \n\nEvery day, recognise something you have done well. Reward yourself with something that makes you happy. And take a deep breath to relax. \n\nRemember, you earn a @global.parent_point every time you care for yourself – you matter!",
       "_translations": {
-        "outro_text": {}
+        "outro_text": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "outro_text": {

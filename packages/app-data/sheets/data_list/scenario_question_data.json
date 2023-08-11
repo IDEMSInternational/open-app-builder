@@ -13,8 +13,12 @@
         "scenario_title": {
           "tz_sw": true
         },
-        "scenario_text": {},
-        "question_text": {},
+        "scenario_text": {
+          "tz_sw": true
+        },
+        "question_text": {
+          "tz_sw": true
+        },
         "option_1": {
           "tz_sw": true
         },
@@ -67,14 +71,30 @@
         "scenario_title": {
           "tz_sw": true
         },
-        "scenario_text": {},
-        "question_text": {},
-        "option_1": {},
-        "option_2": {},
-        "option_3": {},
-        "option_4": {},
-        "option_5": {},
-        "reply_all": {}
+        "scenario_text": {
+          "tz_sw": true
+        },
+        "question_text": {
+          "tz_sw": true
+        },
+        "option_1": {
+          "tz_sw": true
+        },
+        "option_2": {
+          "tz_sw": true
+        },
+        "option_3": {
+          "tz_sw": true
+        },
+        "option_4": {
+          "tz_sw": true
+        },
+        "option_5": {
+          "tz_sw": true
+        },
+        "reply_all": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "scenario_title": {
@@ -120,13 +140,27 @@
       "scenario_image_asset": "plh_images/workshops/w_svp/learn_warning_signs/catcalling.svg",
       "scenario_title": "@global.w_svp_teen_boy_1’s friend shouts sexual comment at girl",
       "_translations": {
-        "scenario_title": {},
-        "scenario_text": {},
-        "question_text": {},
-        "option_1": {},
-        "option_2": {},
-        "option_3": {},
-        "reply_all": {}
+        "scenario_title": {
+          "tz_sw": true
+        },
+        "scenario_text": {
+          "tz_sw": true
+        },
+        "question_text": {
+          "tz_sw": true
+        },
+        "option_1": {
+          "tz_sw": true
+        },
+        "option_2": {
+          "tz_sw": true
+        },
+        "option_3": {
+          "tz_sw": true
+        },
+        "reply_all": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "scenario_title": {
@@ -164,13 +198,27 @@
       "scenario_image_asset": "plh_images/workshops/w_svp/learn_warning_signs/pushy_friend.svg",
       "scenario_title": "Friend pushes @global.w_svp_teen_girl_2 to accept drinks",
       "_translations": {
-        "scenario_title": {},
-        "scenario_text": {},
-        "question_text": {},
-        "option_1": {},
-        "option_2": {},
-        "option_3": {},
-        "reply_all": {}
+        "scenario_title": {
+          "tz_sw": true
+        },
+        "scenario_text": {
+          "tz_sw": true
+        },
+        "question_text": {
+          "tz_sw": true
+        },
+        "option_1": {
+          "tz_sw": true
+        },
+        "option_2": {
+          "tz_sw": true
+        },
+        "option_3": {
+          "tz_sw": true
+        },
+        "reply_all": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "scenario_title": {
@@ -208,12 +256,24 @@
       "scenario_image_asset": "plh_images/workshops/w_svp/learn_warning_signs/nude_pic.svg",
       "scenario_title": "@global.w_svp_teen_girl_3’s nude picture is shared",
       "_translations": {
-        "scenario_title": {},
-        "scenario_text": {},
-        "question_text": {},
-        "option_1": {},
-        "option_2": {},
-        "reply_all": {}
+        "scenario_title": {
+          "tz_sw": true
+        },
+        "scenario_text": {
+          "tz_sw": true
+        },
+        "question_text": {
+          "tz_sw": true
+        },
+        "option_1": {
+          "tz_sw": true
+        },
+        "option_2": {
+          "tz_sw": true
+        },
+        "reply_all": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "scenario_title": {
@@ -247,15 +307,33 @@
       "scenario_image_asset": "plh_images/workshops/w_svp/learn_warning_signs/private_tutoring.svg",
       "scenario_title": "Teacher asks @global.w_svp_teen_girl_1 to stay after school",
       "_translations": {
-        "scenario_title": {},
-        "scenario_text": {},
-        "question_text": {},
-        "option_1": {},
-        "option_2": {},
-        "option_3": {},
-        "option_4": {},
-        "option_5": {},
-        "reply_all": {}
+        "scenario_title": {
+          "tz_sw": true
+        },
+        "scenario_text": {
+          "tz_sw": true
+        },
+        "question_text": {
+          "tz_sw": true
+        },
+        "option_1": {
+          "tz_sw": true
+        },
+        "option_2": {
+          "tz_sw": true
+        },
+        "option_3": {
+          "tz_sw": true
+        },
+        "option_4": {
+          "tz_sw": true
+        },
+        "option_5": {
+          "tz_sw": true
+        },
+        "reply_all": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "scenario_title": {
@@ -301,17 +379,39 @@
       "scenario_image_asset": "plh_images/workshops/w_svp/learn_warning_signs/rejected_ride.svg",
       "scenario_title": "@global.w_svp_teen_girl_2 says ‘no’ to offered lift",
       "_translations": {
-        "scenario_title": {},
-        "scenario_text": {},
-        "question_text": {},
-        "option_1": {},
-        "option_2": {},
-        "option_3": {},
-        "option_4": {},
-        "option_5": {},
-        "option_6": {},
-        "option_7": {},
-        "reply_all": {}
+        "scenario_title": {
+          "tz_sw": true
+        },
+        "scenario_text": {
+          "tz_sw": true
+        },
+        "question_text": {
+          "tz_sw": true
+        },
+        "option_1": {
+          "tz_sw": true
+        },
+        "option_2": {
+          "tz_sw": true
+        },
+        "option_3": {
+          "tz_sw": true
+        },
+        "option_4": {
+          "tz_sw": true
+        },
+        "option_5": {
+          "tz_sw": true
+        },
+        "option_6": {
+          "tz_sw": true
+        },
+        "option_7": {
+          "tz_sw": true
+        },
+        "reply_all": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "scenario_title": {
@@ -362,8 +462,12 @@
     {
       "option_2": "She felt disrespected and angry at Neema",
       "_translations": {
-        "option_2": {},
-        "option_4": {}
+        "option_2": {
+          "tz_sw": true
+        },
+        "option_4": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "option_2": {
@@ -378,7 +482,9 @@
     {
       "scenario_text": "How will this affect Bibi’s relationship with Neema?",
       "_translations": {
-        "scenario_text": {}
+        "scenario_text": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "scenario_text": {
@@ -389,7 +495,9 @@
     {
       "scenario_text": "Neema may not trust Bibi in the future",
       "_translations": {
-        "scenario_text": {}
+        "scenario_text": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "scenario_text": {
@@ -400,7 +508,9 @@
     {
       "scenario_text": "Neema may not ask Bibi questions or advice if she has a problem",
       "_translations": {
-        "scenario_text": {}
+        "scenario_text": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "scenario_text": {
@@ -411,7 +521,9 @@
     {
       "scenario_text": "Neema may make bad decisions out of anger",
       "_translations": {
-        "scenario_text": {}
+        "scenario_text": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "scenario_text": {
@@ -422,7 +534,9 @@
     {
       "scenario_text": "[once user selects answer] Yes, all of these are true. After this argument, Neema is likely to look for information and advice from other places (also if something goes wrong with a relationship or in her life).",
       "_translations": {
-        "scenario_text": {}
+        "scenario_text": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "scenario_text": {
@@ -433,7 +547,9 @@
     {
       "scenario_text": "She may get into situations that are not healthy or safe, and may not want to talk to Bibi about it even if she has questions or needs help. She may feel worried that Bibi will judge her choices or feel ashamed of her.",
       "_translations": {
-        "scenario_text": {}
+        "scenario_text": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "scenario_text": {

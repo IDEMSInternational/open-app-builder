@@ -414,7 +414,9 @@
       "name": "button_11",
       "value": "Unlock New Content",
       "_translations": {
-        "value": {}
+        "value": {
+          "tz_sw": true
+        }
       },
       "action_list": [
         {
@@ -450,7 +452,9 @@
       "name": "button_12",
       "value": "Unlock New Content",
       "_translations": {
-        "value": {}
+        "value": {
+          "tz_sw": true
+        }
       },
       "action_list": [
         {

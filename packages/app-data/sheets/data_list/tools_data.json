@@ -103,12 +103,24 @@
         "title": {
           "tz_sw": true
         },
-        "tool_1_title": {},
-        "tool_1_text": {},
-        "tool_2_title": {},
-        "tool_2_text": {},
-        "tool_3_title": {},
-        "tool_3_text": {},
+        "tool_1_title": {
+          "tz_sw": true
+        },
+        "tool_1_text": {
+          "tz_sw": true
+        },
+        "tool_2_title": {
+          "tz_sw": true
+        },
+        "tool_2_text": {
+          "tz_sw": true
+        },
+        "tool_3_title": {
+          "tz_sw": true
+        },
+        "tool_3_text": {
+          "tz_sw": true
+        },
         "tool_4_title": {}
       },
       "_translatedFields": {
@@ -232,7 +244,9 @@
         "tool_2_text": {
           "tz_sw": true
         },
-        "tool_3_title": {},
+        "tool_3_title": {
+          "tz_sw": true
+        },
         "tool_3_text": {
           "tz_sw": true
         },
@@ -282,15 +296,27 @@
         "tool_1_title": {
           "tz_sw": true
         },
-        "tool_1_text": {},
+        "tool_1_text": {
+          "tz_sw": true
+        },
         "tool_2_title": {
           "tz_sw": true
         },
-        "tool_2_text": {},
-        "tool_3_title": {},
-        "tool_3_text": {},
-        "tool_4_title": {},
-        "tool_4_text": {},
+        "tool_2_text": {
+          "tz_sw": true
+        },
+        "tool_3_title": {
+          "tz_sw": true
+        },
+        "tool_3_text": {
+          "tz_sw": true
+        },
+        "tool_4_title": {
+          "tz_sw": true
+        },
+        "tool_4_text": {
+          "tz_sw": true
+        },
         "bottom_text": {
           "tz_sw": true
         }
@@ -435,26 +461,42 @@
         "title": {
           "tz_sw": true
         },
-        "tool_1_title": {},
+        "tool_1_title": {
+          "tz_sw": true
+        },
         "tool_1_text": {
           "tz_sw": true
         },
-        "tool_1_button_text": {},
-        "tool_2_title": {},
+        "tool_1_button_text": {
+          "tz_sw": true
+        },
+        "tool_2_title": {
+          "tz_sw": true
+        },
         "tool_2_text": {
           "tz_sw": true
         },
-        "tool_2_button_text": {},
-        "tool_3_title": {},
+        "tool_2_button_text": {
+          "tz_sw": true
+        },
+        "tool_3_title": {
+          "tz_sw": true
+        },
         "tool_3_text": {
           "tz_sw": true
         },
-        "tool_3_button_text": {},
-        "tool_4_title": {},
+        "tool_3_button_text": {
+          "tz_sw": true
+        },
+        "tool_4_title": {
+          "tz_sw": true
+        },
         "tool_4_text": {
           "tz_sw": true
         },
-        "tool_4_button_text": {}
+        "tool_4_button_text": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -529,7 +571,9 @@
         "tool_2_title": {
           "tz_sw": true
         },
-        "tool_2_text": {},
+        "tool_2_text": {
+          "tz_sw": true
+        },
         "tool_3_title": {
           "tz_sw": true
         },
@@ -589,7 +633,9 @@
         "tool_1_title": {
           "tz_sw": true
         },
-        "tool_1_text": {},
+        "tool_1_text": {
+          "tz_sw": true
+        },
         "tool_2_title": {
           "tz_sw": true
         },
@@ -599,7 +645,9 @@
         "tool_3_title": {
           "tz_sw": true
         },
-        "tool_3_text": {},
+        "tool_3_text": {
+          "tz_sw": true
+        },
         "tool_4_title": {}
       },
       "_translatedFields": {
@@ -653,14 +701,18 @@
         "tool_1_title": {
           "tz_sw": true
         },
-        "tool_1_text": {},
+        "tool_1_text": {
+          "tz_sw": true
+        },
         "tool_1_button_text": {
           "tz_sw": true
         },
         "tool_2_title": {
           "tz_sw": true
         },
-        "tool_2_text": {},
+        "tool_2_text": {
+          "tz_sw": true
+        },
         "tool_2_button_text": {
           "tz_sw": true
         },
@@ -879,17 +931,27 @@
       "id": "w_srh",
       "title": "How to talk about sensitive topics",
       "_translations": {
-        "title": {},
-        "top_text": {},
-        "tool_1_title": {},
+        "title": {
+          "tz_sw": true
+        },
+        "top_text": {
+          "tz_sw": true
+        },
+        "tool_1_title": {
+          "tz_sw": true
+        },
         "tool_1_text": {
           "tz_sw": true
         },
-        "tool_2_title": {},
+        "tool_2_title": {
+          "tz_sw": true
+        },
         "tool_2_text": {
           "tz_sw": true
         },
-        "tool_3_title": {},
+        "tool_3_title": {
+          "tz_sw": true
+        },
         "tool_3_text": {
           "tz_sw": true
         },
@@ -949,11 +1011,15 @@
         "tool_1_title": {
           "tz_sw": true
         },
-        "tool_1_text": {},
+        "tool_1_text": {
+          "tz_sw": true
+        },
         "tool_2_title": {
           "tz_sw": true
         },
-        "tool_2_text": {},
+        "tool_2_text": {
+          "tz_sw": true
+        },
         "tool_2_button_text": {},
         "tool_3_title": {
           "tz_sw": true
@@ -962,12 +1028,16 @@
           "tz_sw": true
         },
         "tool_3_button_text": {},
-        "tool_4_title": {},
+        "tool_4_title": {
+          "tz_sw": true
+        },
         "tool_4_text": {
           "tz_sw": true
         },
         "tool_4_button_text": {},
-        "bottom_text": {}
+        "bottom_text": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -1034,12 +1104,24 @@
         "title": {
           "tz_sw": true
         },
-        "tool_1_title": {},
-        "tool_1_text": {},
-        "tool_2_title": {},
-        "tool_2_text": {},
-        "tool_3_title": {},
-        "tool_3_text": {},
+        "tool_1_title": {
+          "tz_sw": true
+        },
+        "tool_1_text": {
+          "tz_sw": true
+        },
+        "tool_2_title": {
+          "tz_sw": true
+        },
+        "tool_2_text": {
+          "tz_sw": true
+        },
+        "tool_3_title": {
+          "tz_sw": true
+        },
+        "tool_3_text": {
+          "tz_sw": true
+        },
         "tool_4_title": {}
       },
       "_translatedFields": {
@@ -1086,11 +1168,15 @@
         "top_text": {
           "tz_sw": true
         },
-        "tool_1_title": {},
+        "tool_1_title": {
+          "tz_sw": true
+        },
         "tool_1_text": {
           "tz_sw": true
         },
-        "tool_2_title": {},
+        "tool_2_title": {
+          "tz_sw": true
+        },
         "tool_2_text": {
           "tz_sw": true
         },

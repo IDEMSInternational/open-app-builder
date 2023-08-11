@@ -38,7 +38,9 @@
       "name": "title",
       "value": "Unlock New Content",
       "_translations": {
-        "value": {}
+        "value": {
+          "tz_sw": true
+        }
       },
       "_nested_name": "title"
     },
@@ -47,7 +49,9 @@
       "name": "text",
       "value": "Enter the password in the box below and press @global.submit_button.",
       "_translations": {
-        "value": {}
+        "value": {
+          "tz_sw": true
+        }
       },
       "_nested_name": "text",
       "_dynamicFields": {
@@ -107,7 +111,9 @@
       "name": "password_correct",
       "value": "@local.text_box == @global.post_rct_password",
       "_translations": {
-        "value": {}
+        "value": {
+          "tz_sw": true
+        }
       },
       "type": "set_variable",
       "_nested_name": "password_correct",
@@ -396,7 +402,9 @@
           "name": "text_correct",
           "value": "You can now access the new content!",
           "_translations": {
-            "value": {}
+            "value": {
+              "tz_sw": true
+            }
           },
           "condition": "@local.password_correct",
           "_nested_name": "enter_replies.text_correct",
@@ -421,7 +429,9 @@
           "name": "button_correct",
           "value": "Load new content",
           "_translations": {
-            "value": {}
+            "value": {
+              "tz_sw": true
+            }
           },
           "action_list": [
             {
@@ -460,7 +470,9 @@
           "name": "text_incorrect",
           "value": "You have entered an incorrect password.",
           "_translations": {
-            "value": {}
+            "value": {
+              "tz_sw": true
+            }
           },
           "condition": "!@local.password_correct",
           "_nested_name": "enter_replies.text_incorrect",
