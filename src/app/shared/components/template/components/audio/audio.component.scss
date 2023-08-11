@@ -80,20 +80,13 @@ $control-background: var(--audio-control-background, var(--ion-color-primary-500
     align-self: center;
     .rewind,
     .forward {
-      ion-button {
-        @include mixins.large-square;
-        --background: transparent;
-        --padding: 0;
-        --border-radius: var(--ion-border-radius-rounded);
-        --box-shadow: transparent;
-        img {
-          position: absolute;
-          min-width: var(--audio-controls-img-width);
-        }
+      ion-icon {
+        font-size: var(--icon-size-largest);
+        color: var(--ion-color-primary);
       }
     }
     .rewind {
-      img {
+      ion-icon {
         transform: rotate(180deg);
       }
     }
@@ -104,9 +97,9 @@ $control-background: var(--audio-control-background, var(--ion-color-primary-500
         --border-radius: var(--ion-border-radius-rounded);
         --padding: 0;
         --box-shadow: var(--ion-default-box-shadow);
-        img {
+        ion-icon {
           position: absolute;
-          width: var(--audio-play-img-width);
+          font-size: var(--icon-size-medium);
         }
       }
     }
