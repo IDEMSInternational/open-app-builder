@@ -158,6 +158,63 @@
       "template": "w_grief_hp_review",
       "completed_field": "task_gp_w_grief_hp_review_completed",
       "completed": "@fields.task_gp_w_grief_hp_review_completed"
+    },
+    {
+      "id": "read_grief_conflict",
+      "individual": true,
+      "together": true,
+      "priority": 11,
+      "has_single_task": false,
+      "title": "@global.story @global.part_connector @data.story.grief_conflict.title",
+      "_translations": {
+        "title": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "@global.story @global.part_connector @data.story.grief_conflict.title"
+        }
+      },
+      "story_id": "grief_conflict",
+      "completed_field": "task_gp_w_grief_read_grief_conflict_completed",
+      "completed": "@fields.task_gp_w_grief_read_grief_conflict_completed"
+    },
+    {
+      "id": "read_grief_support",
+      "individual": true,
+      "together": true,
+      "priority": 13,
+      "has_single_task": false,
+      "title": "@global.story @global.part_connector @data.story.grief_support.title",
+      "_translations": {
+        "title": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "@global.story @global.part_connector @data.story.grief_support.title"
+        }
+      },
+      "story_id": "grief_support",
+      "completed_field": "task_gp_w_grief_read_grief_support_completed",
+      "completed": "@fields.task_gp_w_grief_read_grief_support_completed"
+    },
+    {
+      "id": "learn_name_feelings",
+      "individual": true,
+      "together": true,
+      "priority": 71,
+      "has_single_task": true,
+      "title": "@data.learn.name_feelings.title",
+      "_translations": {
+        "title": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "@data.learn.name_feelings.title"
+        }
+      },
+      "template": "w_grief_learn_name_feelings",
+      "completed_field": "task_gp_w_grief_learn_name_feelings_completed",
+      "completed": "@fields.task_gp_w_grief_learn_name_feelings_completed"
     }
   ]
 }

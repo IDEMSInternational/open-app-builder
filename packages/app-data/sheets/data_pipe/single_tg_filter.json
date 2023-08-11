@@ -308,6 +308,42 @@
         "group ==\"read_new_boyfriend\"",
         "together"
       ]
+    },
+    {
+      "operation": "filter",
+      "input_source": "w_grief_tasks",
+      "output_target": "tg_w_grief_read_grief_conflict_ind",
+      "args_list": [
+        "group ==\"read_grief_conflict\"",
+        "individual"
+      ]
+    },
+    {
+      "operation": "filter",
+      "input_source": "w_grief_tasks",
+      "output_target": "tg_w_grief_read_grief_conflict_tog",
+      "args_list": [
+        "group ==\"read_grief_conflict\"",
+        "together"
+      ]
+    },
+    {
+      "operation": "filter",
+      "input_source": "w_grief_tasks",
+      "output_target": "tg_w_grief_read_grief_support_ind",
+      "args_list": [
+        "group ==\"read_grief_support\"",
+        "individual"
+      ]
+    },
+    {
+      "operation": "filter",
+      "input_source": "w_grief_tasks",
+      "output_target": "tg_w_grief_read_grief_support_tog",
+      "args_list": [
+        "group ==\"read_grief_support\"",
+        "together"
+      ]
     }
   ],
   "_xlsxPath": "global/data/workshop_data/workshop_task_groups_data_pipes.xlsx"

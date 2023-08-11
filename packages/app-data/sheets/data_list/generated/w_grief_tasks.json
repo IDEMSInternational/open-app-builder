@@ -83,6 +83,55 @@
       "template": "w_grief_hp_review",
       "completed_field": "task_w_grief_hp_review_completed",
       "completed": "@fields.task_w_grief_hp_review_completed"
+    },
+    {
+      "id": "read_grief_conflict",
+      "group": "read_grief_conflict",
+      "individual": true,
+      "together": true,
+      "template": "w_grief_read_grief_conflict",
+      "rel_priority": 1,
+      "completed_field": "task_w_grief_read_grief_conflict_completed",
+      "completed": "@fields.task_w_grief_read_grief_conflict_completed"
+    },
+    {
+      "id": "quiz_grief_conflict",
+      "group": "read_grief_conflict",
+      "individual": true,
+      "together": false,
+      "template": "w_grief_quiz_grief_conflict",
+      "rel_priority": 2,
+      "completed_field": "task_w_grief_quiz_grief_conflict_completed",
+      "completed": "@fields.task_w_grief_quiz_grief_conflict_completed"
+    },
+    {
+      "id": "read_grief_support",
+      "group": "read_grief_support",
+      "individual": true,
+      "together": true,
+      "template": "w_grief_read_grief_support",
+      "rel_priority": 1,
+      "completed_field": "task_w_grief_read_grief_support_completed",
+      "completed": "@fields.task_w_grief_read_grief_support_completed"
+    },
+    {
+      "id": "quiz_grief_support",
+      "group": "read_grief_support",
+      "individual": true,
+      "together": false,
+      "template": "w_grief_quiz_grief_support",
+      "rel_priority": 2,
+      "completed_field": "task_w_grief_quiz_grief_support_completed",
+      "completed": "@fields.task_w_grief_quiz_grief_support_completed"
+    },
+    {
+      "id": "learn_name_feelings",
+      "group": "learn_name_feelings",
+      "individual": true,
+      "together": true,
+      "template": "w_grief_learn_name_feelings",
+      "completed_field": "task_w_grief_learn_name_feelings_completed",
+      "completed": "@fields.task_w_grief_learn_name_feelings_completed"
     }
   ]
 }

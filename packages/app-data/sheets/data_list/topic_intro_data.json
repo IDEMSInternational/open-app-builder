@@ -450,9 +450,7 @@
         "text": {
           "tz_sw": true
         },
-        "script": {
-          "tz_sw": true
-        },
+        "script": {},
         "title": {
           "tz_sw": true
         },
@@ -466,7 +464,7 @@
           "eng": "Think back to your own teenage years: \n* Did you ever experience a difficult situation as a teenager around body changes? And what about relationships? \n* What kind of support or information do you wish you had at the time?\n* Do you think your teen may be experiencing any challenges in these areas?"
         },
         "script": {
-          "eng": "Today's topic is body changes and intimate relationships. \n\nTeenagers go through a lot of changes, both in their bodies and in how they feel and experience the world. By speaking with them you can help them handle this change as well. \n\nLet your teen know you may not have all the answers, but you are there to support them and find solutions together. That way your teen knows you are there to listen and talk. You will not judge or shame them and can support them to make healthy and confident decisions."
+          "eng": "Greetings, everyone. \n\nToday's topic is body changes and intimate relationships. \n\nDiscussing body and intimate relationships with your child can be difficult. However, it is important to have these discussions in order for your teen to understand that this stage of life is normal. This will help them to acknowledge the changes in their bodies and be able to take positive decisions regarding intimate relationships."
         },
         "title": {
           "eng": "Why @data.workshop.w_srh.lower_case_title?"
@@ -476,7 +474,7 @@
         }
       },
       "text": "Think back to your own teenage years: \n* Did you ever experience a difficult situation as a teenager around body changes? And what about relationships? \n* What kind of support or information do you wish you had at the time?\n* Do you think your teen may be experiencing any challenges in these areas?",
-      "script": "Today's topic is body changes and intimate relationships. \n\nTeenagers go through a lot of changes, both in their bodies and in how they feel and experience the world. By speaking with them you can help them handle this change as well. \n\nLet your teen know you may not have all the answers, but you are there to support them and find solutions together. That way your teen knows you are there to listen and talk. You will not judge or shame them and can support them to make healthy and confident decisions.",
+      "script": "Greetings, everyone. \n\nToday's topic is body changes and intimate relationships. \n\nDiscussing body and intimate relationships with your child can be difficult. However, it is important to have these discussions in order for your teen to understand that this stage of life is normal. This will help them to acknowledge the changes in their bodies and be able to take positive decisions regarding intimate relationships.",
       "title": "Why @data.workshop.w_srh.lower_case_title?",
       "intro_nav_button_completed": "@global.tell_me_more_button"
     },
@@ -490,9 +488,7 @@
         "intro_text": {
           "tz_sw": true
         },
-        "script": {
-          "tz_sw": true
-        },
+        "script": {},
         "title": {
           "tz_sw": true
         },
@@ -503,7 +499,7 @@
           "eng": "To keep our teens safe, we need to understand their reality and the potential risky situations they can find themselves in.\n\nWe can help our teens know how to use their thoughts, voice, AND body in dangerous situations. It makes a big difference!"
         },
         "script": {
-          "eng": "Greetings. Greetings. \n\nToday's topic is sexual violence prevention. \n\nWhy is it important to stay safe? To keep our teens safe, we need to understand their reality and potential risky situations they can find themselves in. We can help our teens know how to use their thoughts, voice and body in dangerous situations. It makes a big difference."
+          "eng": "Our topic is staying safe. \n\nAs parents it is important to ensure that our teens are safe at all times. Our safety and our children’s safety is important. We may need to have discussions with our children about their safety, and how they can keep themselves safe always."
         },
         "title": {
           "eng": "Why @data.workshop.w_svp.lower_case_title?"
@@ -512,7 +508,7 @@
           "eng": "@global.tell_me_more_button"
         }
       },
-      "script": "Greetings. Greetings. \n\nToday's topic is sexual violence prevention. \n\nWhy is it important to stay safe? To keep our teens safe, we need to understand their reality and potential risky situations they can find themselves in. We can help our teens know how to use their thoughts, voice and body in dangerous situations. It makes a big difference.",
+      "script": "Our topic is staying safe. \n\nAs parents it is important to ensure that our teens are safe at all times. Our safety and our children’s safety is important. We may need to have discussions with our children about their safety, and how they can keep themselves safe always.",
       "title": "Why @data.workshop.w_svp.lower_case_title?",
       "intro_nav_button_completed": "@global.tell_me_more_button"
     },
@@ -538,14 +534,14 @@
           "eng": "@global.more_button"
         },
         "script": {
-          "eng": "Greetings everyone. \n\nToday's topic is coping with grief. \n\nGrief affects us all in different ways. Some people shout, some cry, some feel angry, and some feel very sad. We can feel different each day. Sometimes we feel better, then worse, then better again. \n\nWhatever you feel, you are grieving in your own way and that is okay. Children and adults have similar emotions when it comes to death, but they handle these emotions in different ways. By sharing how you feel and being kind to yourself and each other you can support each other well."
+          "eng": "Today's topic is coping with grief. \n\nTaking care of ourselves is important, especially when we are facing challenging and difficult times such as coping with grief. We need to stay calm in order to think act positively whenever we find ourselves overwhelmed. We may use techniques such as taking a pause to calm ourselves down."
         },
         "title": {
           "eng": "Why @data.workshop.w_grief.lower_case_title?"
         }
       },
       "intro_nav_button_completed": "@global.more_button",
-      "script": "Greetings everyone. \n\nToday's topic is coping with grief. \n\nGrief affects us all in different ways. Some people shout, some cry, some feel angry, and some feel very sad. We can feel different each day. Sometimes we feel better, then worse, then better again. \n\nWhatever you feel, you are grieving in your own way and that is okay. Children and adults have similar emotions when it comes to death, but they handle these emotions in different ways. By sharing how you feel and being kind to yourself and each other you can support each other well.",
+      "script": "Today's topic is coping with grief. \n\nTaking care of ourselves is important, especially when we are facing challenging and difficult times such as coping with grief. We need to stay calm in order to think act positively whenever we find ourselves overwhelmed. We may use techniques such as taking a pause to calm ourselves down.",
       "title": "Why @data.workshop.w_grief.lower_case_title?"
     },
     {
@@ -558,9 +554,7 @@
         "intro_text": {
           "tz_sw": true
         },
-        "script": {
-          "tz_sw": true
-        },
+        "script": {},
         "title": {
           "tz_sw": true
         },
@@ -571,7 +565,7 @@
           "eng": "Did you know that your one-on-one time with your teen can help them at school?  Today we will share some ideas on how to do this.\n\nBy spending time with them, you teach them important life skills that will help them at school and at home."
         },
         "script": {
-          "eng": "Hello dear caregiver. \n\nToday's topic is helping your teen learn. \n\nIt is important to talk about the power of learning through play with your teen. Life is very busy, and we know it is difficult to find time to spend with your teen. By spending time with your teen, you may teach them important life skills that will help them at school and at home. \n\nEven when spending time together may be short you can do small things that will make a big difference in you and your teen’s life."
+          "eng": "Greetings everyone! \n\nToday's topic is helping your teen to learn. \n\nThere are different fun ways and activities that we can use as parents to help our teens learn. Some of those activities could be playing games together or doing house chores together. Remember, our teens learn better when they are having fun!"
         },
         "title": {
           "eng": "Why @data.workshop.w_learn.lower_case_title?"
@@ -580,7 +574,7 @@
           "eng": "@global.tell_me_more_button"
         }
       },
-      "script": "Hello dear caregiver. \n\nToday's topic is helping your teen learn. \n\nIt is important to talk about the power of learning through play with your teen. Life is very busy, and we know it is difficult to find time to spend with your teen. By spending time with your teen, you may teach them important life skills that will help them at school and at home. \n\nEven when spending time together may be short you can do small things that will make a big difference in you and your teen’s life.",
+      "script": "Greetings everyone! \n\nToday's topic is helping your teen to learn. \n\nThere are different fun ways and activities that we can use as parents to help our teens learn. Some of those activities could be playing games together or doing house chores together. Remember, our teens learn better when they are having fun!",
       "title": "Why @data.workshop.w_learn.lower_case_title?",
       "intro_nav_button_completed": "@global.tell_me_more_button"
     }
