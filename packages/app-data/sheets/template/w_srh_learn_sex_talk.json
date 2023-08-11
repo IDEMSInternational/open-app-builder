@@ -484,12 +484,6 @@
           "name": "workshop_activity",
           "rows": [
             {
-              "name": "include_outro",
-              "value": true,
-              "type": "set_variable",
-              "_nested_name": "learn.workshop_activity.include_outro"
-            },
-            {
               "name": "intro_text",
               "value": "@local.row_data.intro_text",
               "_translations": {
@@ -512,12 +506,6 @@
                   "value"
                 ]
               }
-            },
-            {
-              "name": "include_outro",
-              "value": false,
-              "type": "set_variable",
-              "_nested_name": "learn.workshop_activity.include_outro"
             },
             {
               "type": "nested_properties",
