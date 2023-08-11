@@ -41,26 +41,18 @@
   </div>
   <div class="controls" *ngIf="!errorTxt">
     <div class="rewind">
-      <ion-button (click)="rewindPrev()"
-        ><img src="/assets/icon/audio/arrow.svg" alt=""
-      /></ion-button>
+      <ion-icon [name]="forwardIcon" [src]="forwardIcon" (click)="rewindPrev()"></ion-icon>
     </div>
     <div class="play">
       <ion-button class="btn-play" (click)="togglePlayer()">
-        <img
-          [class.ml-5]="!isPlayed"
-          [src]="
-            (!isPlayed ? 'plh_images/icons/play_white.svg' : 'plh_images/icons/pause_white.svg')
-              | plhAsset
-          "
-          alt=""
-        />
+        <ion-icon
+          [name]="!isPlayed ? playIcon : pauseIcon"
+          [src]="!isPlayed ? playIcon : pauseIcon"
+        ></ion-icon>
       </ion-button>
     </div>
     <div class="forward">
-      <ion-button (click)="rewindNext()">
-        <img src="/assets/icon/audio/arrow.svg" alt="" />
-      </ion-button>
+      <ion-icon [name]="forwardIcon" [src]="forwardIcon" (click)="rewindNext()"></ion-icon>
     </div>
   </div>
   <div class="error-text" *ngIf="errorTxt">

@@ -11,6 +11,10 @@ import { ITemplateRowProps } from "../../models";
 import { TemplateBaseComponent } from "../base";
 import { TemplateAssetService } from "../../services/template-asset.service";
 
+const PLAY_ICON_DEFAULT = "play-outline";
+const PAUSE_ICON_DEFAULT = "pause-outline";
+const FORWARD_ICON_DEFAULT = "play-forward";
+
 @Component({
   selector: "plh-audio",
   templateUrl: "./audio.component.html",
@@ -35,6 +39,9 @@ export class TmplAudioComponent
   currentTimeSong: string = "0";
   rangeBarDisabled: boolean = false;
   hasStarted: boolean = false;
+  playIcon: string;
+  pauseIcon: string;
+  forwardIcon: string;
 
   constructor(private templateAssetService: TemplateAssetService) {
     super();
@@ -47,12 +54,23 @@ export class TmplAudioComponent
 
   getParams() {
     this.src = this.templateAssetService.getTranslatedAssetPath(
-      this._row.value || getStringParamFromTemplateRow(this._row, "src", null)
+      this._row.value || this.getAssetParamFromTemplateRow("src", null)
+    );
+    this.playIcon = this.getAssetParamFromTemplateRow("play_icon_asset", PLAY_ICON_DEFAULT);
+    this.pauseIcon = this.getAssetParamFromTemplateRow("pause_icon_asset", PAUSE_ICON_DEFAULT);
+    this.forwardIcon = this.getAssetParamFromTemplateRow(
+      "forward_icon_asset",
+      FORWARD_ICON_DEFAULT
     );
     this.titleAudio = getStringParamFromTemplateRow(this._row, "title", "Title");
     this.help = getStringParamFromTemplateRow(this._row, "help", null);
     this.rangeBarDisabled = getBooleanParamFromTemplateRow(this._row, "range_bar_disabled", false);
     this.timeToRewind = getNumberParamFromTemplateRow(this._row, "time_to_rewind", 15);
+  }
+
+  getAssetParamFromTemplateRow(parameterName: string, _default: string | null) {
+    const value = getStringParamFromTemplateRow(this._row, parameterName, null);
+    return value ? this.templateAssetService.getTranslatedAssetPath(value) : _default;
   }
 
   initPlayer() {
