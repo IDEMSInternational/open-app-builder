@@ -30,7 +30,7 @@
     {
       "id": "warning_signs",
       "workshop": "w_svp",
-      "type": "question",
+      "type": "scenario_question",
       "part_1": "pushy_boyfriend",
       "part_2": "controlling_boyfriend",
       "part_3": "catcalling",
@@ -80,6 +80,7 @@
     {
       "id": "use_body",
       "workshop": "w_svp",
+      "outro_habit": "safe_self",
       "type": "suggestions",
       "part_1": "first_targets",
       "part_2": "second_targets",

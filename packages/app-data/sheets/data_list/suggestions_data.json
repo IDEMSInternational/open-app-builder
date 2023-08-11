@@ -7,6 +7,7 @@
     {
       "id": "use_voice",
       "workshop": "w_svp",
+      "image_asset": "plh_images/workshops/w_svp/use_voice.svg",
       "title": "Practice",
       "_translations": {
         "title": {},
@@ -105,6 +106,7 @@
     {
       "id": "first_targets",
       "workshop": "w_svp",
+      "image_asset": "plh_images/workshops/w_svp/use_body/zone_1.gif",
       "title": "First targets",
       "_translations": {
         "title": {},
@@ -158,6 +160,7 @@
     {
       "id": "second_targets",
       "workshop": "w_svp",
+      "image_asset": "plh_images/workshops/w_svp/use_body/zone_2.gif",
       "title": "Second targets",
       "_translations": {
         "title": {},
@@ -211,10 +214,10 @@
           "eng": "Pull the attackers pinky or little finger away from the other fingers hard and fast (it breaks easily)."
         },
         "option_6_title": {
-          "eng": "Shin"
+          "eng": "Shins"
         },
         "option_6_text": {
-          "eng": "Kick against the attacker’s shin as hard as you can."
+          "eng": "Kick against the attacker’s shins as hard as you can."
         },
         "option_7_title": {
           "eng": "Top of feet"
@@ -233,14 +236,15 @@
       "option_4_text": "Punch the attacker in the ribs with your fist or the back of your elbow.",
       "option_5_title": "Fingers",
       "option_5_text": "Pull the attackers pinky or little finger away from the other fingers hard and fast (it breaks easily).",
-      "option_6_title": "Shin",
-      "option_6_text": "Kick against the attacker’s shin as hard as you can.",
+      "option_6_title": "Shins",
+      "option_6_text": "Kick against the attacker’s shins as hard as you can.",
       "option_7_title": "Top of feet",
       "option_7_text": "Lift your foot and stomp your heel on the top of your attacker’s foot."
     },
     {
       "id": "defence_moves",
       "workshop": "w_svp",
+      "image_asset": "plh_images/workshops/w_svp/use_body/moves.gif",
       "title": "Examples",
       "_translations": {
         "title": {
