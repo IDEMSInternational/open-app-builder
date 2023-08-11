@@ -8,8 +8,12 @@
       "id": "games",
       "title": "Fun and games",
       "_translations": {
-        "title": {},
-        "text": {}
+        "title": {
+          "tz_sw": true
+        },
+        "text": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -25,8 +29,12 @@
       "id": "everyday",
       "title": "Everyday activities",
       "_translations": {
-        "title": {},
-        "text": {}
+        "title": {
+          "tz_sw": true
+        },
+        "text": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -42,8 +50,12 @@
       "id": "home",
       "title": "Learning at home",
       "_translations": {
-        "title": {},
-        "text": {}
+        "title": {
+          "tz_sw": true
+        },
+        "text": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -59,7 +71,9 @@
       "id": "chat",
       "title": "Chat together",
       "_translations": {
-        "title": {}
+        "title": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "title": {

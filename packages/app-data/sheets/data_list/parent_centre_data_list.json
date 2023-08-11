@@ -94,7 +94,9 @@
         "title": {
           "tz_sw": true
         },
-        "location_text": {}
+        "location_text": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "title": {

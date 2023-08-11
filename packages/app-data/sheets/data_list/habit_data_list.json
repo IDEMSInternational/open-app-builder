@@ -461,10 +461,18 @@
       "lottie_asset": "plh_lottie/habits/habit_safe_self.json",
       "title": "Stay safe",
       "_translations": {
-        "title": {},
-        "description": {},
-        "mark_text": {},
-        "in_text_title": {},
+        "title": {
+          "tz_sw": true
+        },
+        "description": {
+          "tz_sw": true
+        },
+        "mark_text": {
+          "tz_sw": true
+        },
+        "in_text_title": {
+          "tz_sw": true
+        },
         "short_mark_text": {
           "tz_sw": true
         }
@@ -498,9 +506,15 @@
       "lottie_asset": "plh_lottie/habits/habit_play.json",
       "title": "Learn and have fun",
       "_translations": {
-        "title": {},
-        "mark_text": {},
-        "in_text_title": {},
+        "title": {
+          "tz_sw": true
+        },
+        "mark_text": {
+          "tz_sw": true
+        },
+        "in_text_title": {
+          "tz_sw": true
+        },
         "short_mark_text": {
           "tz_sw": true
         }

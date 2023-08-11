@@ -682,9 +682,15 @@
         "text": {
           "tz_sw": true
         },
-        "reply_happy": {},
-        "reply_ok": {},
-        "reply_sad": {},
+        "reply_happy": {
+          "tz_sw": true
+        },
+        "reply_ok": {
+          "tz_sw": true
+        },
+        "reply_sad": {
+          "tz_sw": true
+        },
         "activity_title": {
           "tz_sw": true
         },
@@ -790,9 +796,15 @@
         "text": {
           "tz_sw": true
         },
-        "reply_happy": {},
-        "reply_ok": {},
-        "reply_sad": {},
+        "reply_happy": {
+          "tz_sw": true
+        },
+        "reply_ok": {
+          "tz_sw": true
+        },
+        "reply_sad": {
+          "tz_sw": true
+        },
         "activity_title": {
           "tz_sw": true
         },
@@ -841,9 +853,15 @@
         "text": {
           "tz_sw": true
         },
-        "reply_happy": {},
-        "reply_ok": {},
-        "reply_sad": {},
+        "reply_happy": {
+          "tz_sw": true
+        },
+        "reply_ok": {
+          "tz_sw": true
+        },
+        "reply_sad": {
+          "tz_sw": true
+        },
         "activity_title": {
           "tz_sw": true
         },

@@ -433,7 +433,9 @@
         "description": {
           "tz_sw": true
         },
-        "caregiver_testimonial_script": {},
+        "caregiver_testimonial_script": {
+          "tz_sw": true
+        },
         "teen_testimonial_script": {
           "tz_sw": true
         },
@@ -823,7 +825,9 @@
         "description": {
           "tz_sw": true
         },
-        "caregiver_testimonial_script": {},
+        "caregiver_testimonial_script": {
+          "tz_sw": true
+        },
         "teen_testimonial_script": {
           "tz_sw": true
         },

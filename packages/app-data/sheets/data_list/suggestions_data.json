@@ -10,24 +10,60 @@
       "image_asset": "plh_images/workshops/w_svp/use_voice.svg",
       "title": "Practice",
       "_translations": {
-        "title": {},
-        "text": {},
-        "option_1_title": {},
-        "option_1_text": {},
-        "option_2_title": {},
-        "option_2_text": {},
-        "option_3_title": {},
-        "option_3_text": {},
-        "option_4_title": {},
-        "option_4_text": {},
-        "option_5_title": {},
-        "option_5_text": {},
-        "option_6_title": {},
-        "option_6_text": {},
-        "option_7_title": {},
-        "option_7_text": {},
-        "option_8_title": {},
-        "option_8_text": {}
+        "title": {
+          "tz_sw": true
+        },
+        "text": {
+          "tz_sw": true
+        },
+        "option_1_title": {
+          "tz_sw": true
+        },
+        "option_1_text": {
+          "tz_sw": true
+        },
+        "option_2_title": {
+          "tz_sw": true
+        },
+        "option_2_text": {
+          "tz_sw": true
+        },
+        "option_3_title": {
+          "tz_sw": true
+        },
+        "option_3_text": {
+          "tz_sw": true
+        },
+        "option_4_title": {
+          "tz_sw": true
+        },
+        "option_4_text": {
+          "tz_sw": true
+        },
+        "option_5_title": {
+          "tz_sw": true
+        },
+        "option_5_text": {
+          "tz_sw": true
+        },
+        "option_6_title": {
+          "tz_sw": true
+        },
+        "option_6_text": {
+          "tz_sw": true
+        },
+        "option_7_title": {
+          "tz_sw": true
+        },
+        "option_7_text": {
+          "tz_sw": true
+        },
+        "option_8_title": {
+          "tz_sw": true
+        },
+        "option_8_text": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -109,15 +145,31 @@
       "image_asset": "plh_images/workshops/w_svp/use_body/zone_1.gif",
       "title": "First targets",
       "_translations": {
-        "title": {},
-        "option_1_title": {},
+        "title": {
+          "tz_sw": true
+        },
+        "option_1_title": {
+          "tz_sw": true
+        },
         "option_1_text": {},
-        "option_2_title": {},
-        "option_2_text": {},
-        "option_3_title": {},
-        "option_3_text": {},
-        "option_4_title": {},
-        "option_4_text": {}
+        "option_2_title": {
+          "tz_sw": true
+        },
+        "option_2_text": {
+          "tz_sw": true
+        },
+        "option_3_title": {
+          "tz_sw": true
+        },
+        "option_3_text": {
+          "tz_sw": true
+        },
+        "option_4_title": {
+          "tz_sw": true
+        },
+        "option_4_text": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -163,21 +215,47 @@
       "image_asset": "plh_images/workshops/w_svp/use_body/zone_2.gif",
       "title": "Second targets",
       "_translations": {
-        "title": {},
-        "option_1_title": {},
-        "option_1_text": {},
-        "option_2_title": {},
-        "option_2_text": {},
-        "option_3_title": {},
-        "option_3_text": {},
-        "option_4_title": {},
-        "option_4_text": {},
-        "option_5_title": {},
-        "option_5_text": {},
+        "title": {
+          "tz_sw": true
+        },
+        "option_1_title": {
+          "tz_sw": true
+        },
+        "option_1_text": {
+          "tz_sw": true
+        },
+        "option_2_title": {
+          "tz_sw": true
+        },
+        "option_2_text": {
+          "tz_sw": true
+        },
+        "option_3_title": {
+          "tz_sw": true
+        },
+        "option_3_text": {
+          "tz_sw": true
+        },
+        "option_4_title": {
+          "tz_sw": true
+        },
+        "option_4_text": {
+          "tz_sw": true
+        },
+        "option_5_title": {
+          "tz_sw": true
+        },
+        "option_5_text": {
+          "tz_sw": true
+        },
         "option_6_title": {},
         "option_6_text": {},
-        "option_7_title": {},
-        "option_7_text": {}
+        "option_7_title": {
+          "tz_sw": true
+        },
+        "option_7_text": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -250,7 +328,9 @@
         "title": {
           "tz_sw": true
         },
-        "text": {}
+        "text": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "title": {

@@ -355,7 +355,9 @@
         "title": {
           "tz_sw": true
         },
-        "intro_text": {},
+        "intro_text": {
+          "tz_sw": true
+        },
         "text_1": {
           "tz_sw": true
         },
@@ -403,7 +405,9 @@
         "text_2": {
           "tz_sw": true
         },
-        "text_3": {},
+        "text_3": {
+          "tz_sw": true
+        },
         "text_4": {
           "tz_sw": true
         },
@@ -450,7 +454,9 @@
         "title": {
           "tz_sw": true
         },
-        "intro_text": {},
+        "intro_text": {
+          "tz_sw": true
+        },
         "text_1": {
           "tz_sw": true
         }
@@ -568,7 +574,9 @@
         "title": {
           "tz_sw": true
         },
-        "intro_text": {},
+        "intro_text": {
+          "tz_sw": true
+        },
         "text_1": {
           "tz_sw": true
         },
@@ -1220,10 +1228,18 @@
       "image_4": "plh_images/workshops/w_srh/read_sex_talk/slide_4.svg",
       "title": "Sex talk",
       "_translations": {
-        "title": {},
-        "intro_text": {},
-        "text_1": {},
-        "text_2": {},
+        "title": {
+          "tz_sw": true
+        },
+        "intro_text": {
+          "tz_sw": true
+        },
+        "text_1": {
+          "tz_sw": true
+        },
+        "text_2": {
+          "tz_sw": true
+        },
         "text_3": {},
         "text_4": {}
       },
@@ -1264,13 +1280,27 @@
       "image_5": "plh_images/workshops/w_srh/read_new_boyfriend/slide_5.svg",
       "title": "My new boyfriend",
       "_translations": {
-        "title": {},
-        "intro_text": {},
-        "text_1": {},
-        "text_2": {},
-        "text_3": {},
-        "text_4": {},
-        "text_5": {}
+        "title": {
+          "tz_sw": true
+        },
+        "intro_text": {
+          "tz_sw": true
+        },
+        "text_1": {
+          "tz_sw": true
+        },
+        "text_2": {
+          "tz_sw": true
+        },
+        "text_3": {
+          "tz_sw": true
+        },
+        "text_4": {
+          "tz_sw": true
+        },
+        "text_5": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -1310,9 +1340,7 @@
       "image_3": "plh_images/workshops/w_grief/read_grief_conflict/slide_3.svg",
       "title": "Everyone is different",
       "_translations": {
-        "title": {
-          "tz_sw": true
-        },
+        "title": {},
         "intro_text": {},
         "text_1": {},
         "text_2": {},

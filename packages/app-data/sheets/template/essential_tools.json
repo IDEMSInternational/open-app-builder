@@ -946,7 +946,9 @@
       "name": "tip_text",
       "value": "You can always find these tools in the @global.parent_centre.",
       "_translations": {
-        "value": {}
+        "value": {
+          "tz_sw": true
+        }
       },
       "parameter_list": {
         "icon_src": "@local.tip_icon",

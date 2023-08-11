@@ -40,7 +40,9 @@
           "name": "button_random",
           "value": "Choose for me!",
           "_translations": {
-            "value": {}
+            "value": {
+              "tz_sw": true
+            }
           },
           "action_list": [
             {
@@ -186,7 +188,9 @@
           "name": "title_favourite",
           "value": "Favourites",
           "_translations": {
-            "value": {}
+            "value": {
+              "tz_sw": true
+            }
           },
           "_nested_name": "dg_favourite.title_favourite"
         },

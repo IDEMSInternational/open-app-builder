@@ -318,7 +318,9 @@
       "completed": "@fields.memory_game_completed",
       "title": "Memory game – \"On Saturday...\"",
       "_translations": {
-        "title": {},
+        "title": {
+          "tz_sw": true
+        },
         "activity_text": {
           "tz_sw": true
         }
