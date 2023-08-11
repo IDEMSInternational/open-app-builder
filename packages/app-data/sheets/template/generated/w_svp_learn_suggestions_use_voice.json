@@ -1,18 +1,12 @@
 {
-  "flow_type": "generator",
-  "flow_name": "gen_scenario_question",
-  "status": "released",
-  "parameter_list": {
-    "input_data_list": "scenario_question_data",
-    "output_flow_name": "w_svp_learn_warning_signs_{@gen.id}",
-    "output_flow_type": "template",
-    "output_flow_subtype": "generated"
-  },
+  "flow_name": "w_svp_learn_suggestions_use_voice",
+  "flow_subtype": "generated",
+  "flow_type": "template",
   "rows": [
     {
       "type": "template",
-      "name": "box_scenario_question",
-      "value": "box_scenario_question",
+      "name": "box_suggestions",
+      "value": "box_suggestions",
       "action_list": [
         {
           "trigger": "completed",
@@ -36,10 +30,15 @@
       "rows": [
         {
           "name": "row_id",
-          "value": "@gen.id"
+          "value": "use_voice",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "box_suggestions.row_id"
         }
-      ]
+      ],
+      "_nested_name": "box_suggestions"
     }
-  ],
-  "_xlsxPath": "global/top_templates/workshop_templates/workshop_svp.xlsx"
+  ]
 }

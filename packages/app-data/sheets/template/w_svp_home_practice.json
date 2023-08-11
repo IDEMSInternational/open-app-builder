@@ -1,6 +1,6 @@
 {
   "flow_type": "template",
-  "module": "w_srh",
+  "module": "w_svp",
   "flow_name": "w_svp_home_practice",
   "status": "released",
   "rows": [
