@@ -320,34 +320,40 @@
       }
     },
     {
+      "name": "reply",
+      "type": "set_variable",
+      "_nested_name": "reply"
+    },
+    {
       "type": "display_group",
       "name": "reply_dg",
       "hidden": "!@local.combo_box_answered",
+      "condition": "!!(@local.reply)",
       "parameter_list": {
         "style": "column"
       },
       "rows": [
         {
           "type": "text",
-          "name": "reply",
-          "value": "You selected @local.combo_box",
+          "name": "show_reply",
+          "value": "@local.reply",
           "_translations": {
             "value": {}
           },
           "exclude_from_translation": true,
-          "_nested_name": "reply_dg.reply",
+          "_nested_name": "reply_dg.show_reply",
           "_dynamicFields": {
             "value": [
               {
-                "fullExpression": "You selected @local.combo_box",
-                "matchedExpression": "@local.combo_box",
+                "fullExpression": "@local.reply",
+                "matchedExpression": "@local.reply",
                 "type": "local",
-                "fieldName": "combo_box"
+                "fieldName": "reply"
               }
             ]
           },
           "_dynamicDependencies": {
-            "@local.combo_box": [
+            "@local.reply": [
               "value"
             ]
           }
@@ -362,11 +368,22 @@
             "type": "local",
             "fieldName": "combo_box_answered"
           }
+        ],
+        "condition": [
+          {
+            "fullExpression": "!!(@local.reply)",
+            "matchedExpression": "@local.reply",
+            "type": "local",
+            "fieldName": "reply"
+          }
         ]
       },
       "_dynamicDependencies": {
         "!@local.combo_box_answered": [
           "hidden"
+        ],
+        "@local.reply": [
+          "condition"
         ]
       }
     },

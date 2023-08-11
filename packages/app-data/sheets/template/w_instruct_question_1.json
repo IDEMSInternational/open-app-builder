@@ -167,12 +167,6 @@
                       "_nested_name": "question_time.workshop_activity.content_box.combo_box_1.answer_list"
                     },
                     {
-                      "name": "reply",
-                      "hidden": true,
-                      "type": "set_variable",
-                      "_nested_name": "question_time.workshop_activity.content_box.combo_box_1.reply"
-                    },
-                    {
                       "type": "nested_properties",
                       "name": "nav_buttons",
                       "hidden": true,
@@ -283,12 +277,6 @@
                       "exclude_from_translation": true,
                       "type": "set_variable",
                       "_nested_name": "question_time.workshop_activity.content_box.combo_box_2.input_allowed"
-                    },
-                    {
-                      "name": "reply",
-                      "hidden": true,
-                      "type": "set_variable",
-                      "_nested_name": "question_time.workshop_activity.content_box.combo_box_2.reply"
                     }
                   ],
                   "_nested_name": "question_time.workshop_activity.content_box.combo_box_2"
