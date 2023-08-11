@@ -1301,6 +1301,86 @@
       "text_3": "@global.w_srh_female_caregiver_2 (calmly): “Thank you for sharing this with me, @global.w_srh_teen_girl_2. I know that you like @global.w_srh_teen_boy_1 a lot, he is a charming boy and he does great at school, but you are only 16 and he is 18. \n\nI feel worried that it is not safe for you to be alone with him. He might pressure you into doing something that you are not prepared to do. \n\nI don’t want to tell you who you can see but we need to have some rules about how you spend time together.”",
       "text_4": "@global.w_srh_female_caregiver_2: “What do you think would be a fair rule about how you spend time together?”\n\n@global.w_srh_teen_girl_2: “How about: We can spend time together if there is an adult with us?”",
       "text_5": "@global.w_srh_female_caregiver_2: “That would be fine as long as his parents also know. I will give them a call later. And we can talk again after you get back to see how it worked.”\n\n@global.w_srh_teen_girl_2 (hugs @global.w_srh_female_caregiver_2): “Okay. Thank you for coming up with a plan together, @global.w_srh_female_caregiver_2.”"
+    },
+    {
+      "id": "grief_conflict",
+      "workshop": "w_grief",
+      "image_1": "plh_images/workshops/w_grief/read_grief_conflict/slide_1.svg",
+      "image_2": "plh_images/workshops/w_grief/read_grief_conflict/slide_2.svg",
+      "image_3": "plh_images/workshops/w_grief/read_grief_conflict/slide_3.svg",
+      "title": "Everyone is different",
+      "_translations": {
+        "title": {
+          "tz_sw": true
+        },
+        "intro_text": {},
+        "text_1": {},
+        "text_2": {},
+        "text_3": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Everyone is different"
+        },
+        "intro_text": {
+          "eng": "Difficult emotions can lead to difficult behaviour – especially with children. Losing a caregiver or a loved one can make your teen feel worried, insecure, or angry, and can often make them act out.\n\nLet’s see what happened with @global.w_grief_teen_girl_1 who lost her mother 6 months ago:"
+        },
+        "text_1": {
+          "eng": "@global.w_grief_teen_girl_1 (thinking): \"I miss @global.w_grief_female_caregiver_1 so much...\""
+        },
+        "text_2": {
+          "eng": "@global.w_grief_male_caregiver_1: \"@global.w_grief_teen_girl_1, you need to stop crying. It has been months already! This crying will not bring @global.w_grief_female_caregiver_1 back and you are doing worse and worse in school!\" \n\n@global.w_grief_teen_girl_1: \"You just don't understand how I feel! You never listen!\""
+        },
+        "text_3": {
+          "eng": "@global.w_grief_male_caregiver_1: \"Stop being so dramatic! Your behaviour is unacceptable!\""
+        }
+      },
+      "intro_text": "Difficult emotions can lead to difficult behaviour – especially with children. Losing a caregiver or a loved one can make your teen feel worried, insecure, or angry, and can often make them act out.\n\nLet’s see what happened with @global.w_grief_teen_girl_1 who lost her mother 6 months ago:",
+      "text_1": "@global.w_grief_teen_girl_1 (thinking): \"I miss @global.w_grief_female_caregiver_1 so much...\"",
+      "text_2": "@global.w_grief_male_caregiver_1: \"@global.w_grief_teen_girl_1, you need to stop crying. It has been months already! This crying will not bring @global.w_grief_female_caregiver_1 back and you are doing worse and worse in school!\" \n\n@global.w_grief_teen_girl_1: \"You just don't understand how I feel! You never listen!\"",
+      "text_3": "@global.w_grief_male_caregiver_1: \"Stop being so dramatic! Your behaviour is unacceptable!\""
+    },
+    {
+      "id": "grief_support",
+      "workshop": "w_grief",
+      "image_1": "plh_images/workshops/w_grief/read_grief_support/slide_1.svg",
+      "image_2": "plh_images/workshops/w_grief/read_grief_support/slide_2.svg",
+      "image_3": "plh_images/workshops/w_grief/read_grief_support/slide_3.svg",
+      "image_4": "plh_images/workshops/w_grief/read_grief_support/slide_4.svg",
+      "title": "Saying goodbye",
+      "_translations": {
+        "title": {},
+        "intro_text": {},
+        "text_1": {},
+        "text_2": {},
+        "text_3": {},
+        "text_4": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Saying goodbye"
+        },
+        "intro_text": {
+          "eng": "Thank you for thinking along!\n\nLet’s see what happens if @global.w_grief_male_caregiver_1 tries to support @global.w_grief_teen_girl_1:"
+        },
+        "text_1": {
+          "eng": "@global.w_grief_male_caregiver_1: “I know you are sad, @global.w_grief_teen_girl_1. I also miss @global.w_grief_female_caregiver_1. What do you think we can do to help you feel better?”\n\n@global.w_grief_teen_girl_1: Maybe we can visit @global.w_grief_aunt, so we can share stories about @global.w_grief_female_caregiver_1?"
+        },
+        "text_2": {
+          "eng": "@global.w_grief_male_caregiver_1: “I like that idea, let’s go see her on Saturday. Do you already want to tell me more about how you feel now?”"
+        },
+        "text_3": {
+          "eng": "@global.w_grief_teen_girl_1: “I honestly feel angry that she left. Is it okay to say that?”"
+        },
+        "text_4": {
+          "eng": "@global.w_grief_male_caregiver_1: “Yes, it is normal to feel angry. We all have different feelings at different times, and that is okay. It is good to talk about this together, thank you for sharing with me.”"
+        }
+      },
+      "intro_text": "Thank you for thinking along!\n\nLet’s see what happens if @global.w_grief_male_caregiver_1 tries to support @global.w_grief_teen_girl_1:",
+      "text_1": "@global.w_grief_male_caregiver_1: “I know you are sad, @global.w_grief_teen_girl_1. I also miss @global.w_grief_female_caregiver_1. What do you think we can do to help you feel better?”\n\n@global.w_grief_teen_girl_1: Maybe we can visit @global.w_grief_aunt, so we can share stories about @global.w_grief_female_caregiver_1?",
+      "text_2": "@global.w_grief_male_caregiver_1: “I like that idea, let’s go see her on Saturday. Do you already want to tell me more about how you feel now?”",
+      "text_3": "@global.w_grief_teen_girl_1: “I honestly feel angry that she left. Is it okay to say that?”",
+      "text_4": "@global.w_grief_male_caregiver_1: “Yes, it is normal to feel angry. We all have different feelings at different times, and that is okay. It is good to talk about this together, thank you for sharing with me.”"
     }
   ],
   "_xlsxPath": "global/data/workshop_data/workshop_data_list.xlsx"

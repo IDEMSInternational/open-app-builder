@@ -1,0 +1,17 @@
+{
+  "flow_name": "tg_w_grief_read_grief_conflict_tog",
+  "flow_subtype": "generated",
+  "flow_type": "data_list",
+  "rows": [
+    {
+      "id": "read_grief_conflict",
+      "group": "read_grief_conflict",
+      "individual": true,
+      "together": true,
+      "template": "w_grief_read_grief_conflict",
+      "rel_priority": 1,
+      "completed_field": "task_w_grief_read_grief_conflict_completed",
+      "completed": "@fields.task_w_grief_read_grief_conflict_completed"
+    }
+  ]
+}

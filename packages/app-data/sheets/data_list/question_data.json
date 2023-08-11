@@ -514,6 +514,123 @@
       "reply_all": "Check out the other options too."
     },
     {
+      "id": "grief_conflict_feel",
+      "workshop": "w_grief",
+      "question_text": "How did @global.w_grief_male_caregiver_1’s response make @global.w_grief_teen_girl_1 feel?",
+      "_translations": {
+        "question_text": {},
+        "reply_all": {}
+      },
+      "_translatedFields": {
+        "question_text": {
+          "eng": "How did @global.w_grief_male_caregiver_1’s response make @global.w_grief_teen_girl_1 feel?"
+        },
+        "reply_all": {
+          "eng": "Yes, telling someone to stop crying can make them feel even more sad, angry or confused."
+        }
+      },
+      "reply_all": "Yes, telling someone to stop crying can make them feel even more sad, angry or confused."
+    },
+    {
+      "id": "grief_conflict_alternative",
+      "workshop": "w_grief",
+      "question_text": "What could @global.w_grief_male_caregiver_1 have done differently?",
+      "_translations": {
+        "question_text": {},
+        "option_1": {},
+        "option_2": {},
+        "option_3": {},
+        "option_4": {},
+        "reply_all": {}
+      },
+      "_translatedFields": {
+        "question_text": {
+          "eng": "What could @global.w_grief_male_caregiver_1 have done differently?"
+        },
+        "option_1": {
+          "eng": "Take a pause before responding and notice his own emotions."
+        },
+        "option_2": {
+          "eng": "Ask @global.w_grief_teen_girl_1 to share more about how she feels."
+        },
+        "option_3": {
+          "eng": "Give @global.w_grief_teen_girl_1 a hug and tell her she can talk to him."
+        },
+        "option_4": {
+          "eng": "Ask @global.w_grief_teen_girl_1 what would help her feel better."
+        },
+        "reply_all": {
+          "eng": "When we lose someone we love, it helps to recognise and share our feelings as a family."
+        }
+      },
+      "option_1": "Take a pause before responding and notice his own emotions.",
+      "option_2": "Ask @global.w_grief_teen_girl_1 to share more about how she feels.",
+      "option_3": "Give @global.w_grief_teen_girl_1 a hug and tell her she can talk to him.",
+      "option_4": "Ask @global.w_grief_teen_girl_1 what would help her feel better.",
+      "reply_all": "When we lose someone we love, it helps to recognise and share our feelings as a family."
+    },
+    {
+      "id": "grief_support_feel",
+      "workshop": "w_grief",
+      "question_text": "How did @global.w_grief_teen_girl_1 and @global.w_grief_male_caregiver_1 feel after talking?",
+      "_translations": {
+        "question_text": {},
+        "option_1": {},
+        "option_2": {},
+        "option_3": {}
+      },
+      "_translatedFields": {
+        "question_text": {
+          "eng": "How did @global.w_grief_teen_girl_1 and @global.w_grief_male_caregiver_1 feel after talking?"
+        },
+        "option_1": {
+          "eng": "Relieved"
+        },
+        "option_2": {
+          "eng": "Supported"
+        },
+        "option_3": {
+          "eng": "Comforted"
+        }
+      },
+      "option_1": "Relieved",
+      "option_2": "Supported",
+      "option_3": "Comforted"
+    },
+    {
+      "id": "grief_support_alternative",
+      "workshop": "w_grief",
+      "question_text": "What could have happened if @global.w_grief_male_caregiver_1 got angry at @global.w_grief_teen_girl_1 when she shared that she was feeling angry?",
+      "_translations": {
+        "question_text": {},
+        "option_1": {},
+        "option_2": {},
+        "option_3": {},
+        "reply_all": {}
+      },
+      "_translatedFields": {
+        "question_text": {
+          "eng": "What could have happened if @global.w_grief_male_caregiver_1 got angry at @global.w_grief_teen_girl_1 when she shared that she was feeling angry?"
+        },
+        "option_1": {
+          "eng": "@global.w_grief_teen_girl_1 might not trust @global.w_grief_male_caregiver_1."
+        },
+        "option_2": {
+          "eng": "@global.w_grief_teen_girl_1 and @global.w_grief_male_caregiver_1 might talk less and feel more alone."
+        },
+        "option_3": {
+          "eng": "@global.w_grief_teen_girl_1 might show more challenging behaviour."
+        },
+        "reply_all": {
+          "eng": "Everyone copes with grief differently. We can help each other by accepting each other’s feelings and coming up with ideas together to support each other."
+        }
+      },
+      "option_1": "@global.w_grief_teen_girl_1 might not trust @global.w_grief_male_caregiver_1.",
+      "option_2": "@global.w_grief_teen_girl_1 and @global.w_grief_male_caregiver_1 might talk less and feel more alone.",
+      "option_3": "@global.w_grief_teen_girl_1 might show more challenging behaviour.",
+      "reply_all": "Everyone copes with grief differently. We can help each other by accepting each other’s feelings and coming up with ideas together to support each other."
+    },
+    {
       "reply_1_icon_asset": "She was shocked that Neema had condoms",
       "reply_2_image_asset": "She was scared Neema was already having sex",
       "reply_2_icon_asset": "[once user selects answer] When we are angry or scared, we can say or do things that hurt others and harm our relationships.",

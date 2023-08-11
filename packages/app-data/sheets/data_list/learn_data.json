@@ -101,6 +101,24 @@
         }
       },
       "intro_text": "When our voice does not stop the situation, we can use our bodies to defend ourselves. \n\n@global.w_svp_teen_girl_2’s attacker has some weak spots she can target in order to get away, The same can work for you:"
+    },
+    {
+      "id": "name_feelings",
+      "workshop": "w_grief",
+      "title": "Name your feelings",
+      "_translations": {
+        "title": {},
+        "intro_text": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Name your feelings"
+        },
+        "intro_text": {
+          "eng": "When we are going through a difficult time, it can help to talk about or write down how we feel. \n\nLet's practice naming feelings."
+        }
+      },
+      "intro_text": "When we are going through a difficult time, it can help to talk about or write down how we feel. \n\nLet's practice naming feelings."
     }
   ],
   "_xlsxPath": "global/data/workshop_data/workshop_data_list.xlsx"

@@ -65,6 +65,45 @@
       "individual": true,
       "together": true,
       "template": "w_grief_hp_review"
+    },
+    {
+      "id": "read_grief_conflict",
+      "group": "read_grief_conflict",
+      "individual": true,
+      "together": true,
+      "template": "w_grief_read_grief_conflict",
+      "rel_priority": 1
+    },
+    {
+      "id": "quiz_grief_conflict",
+      "group": "read_grief_conflict",
+      "individual": true,
+      "together": false,
+      "template": "w_grief_quiz_grief_conflict",
+      "rel_priority": 2
+    },
+    {
+      "id": "read_grief_support",
+      "group": "read_grief_support",
+      "individual": true,
+      "together": true,
+      "template": "w_grief_read_grief_support",
+      "rel_priority": 1
+    },
+    {
+      "id": "quiz_grief_support",
+      "group": "read_grief_support",
+      "individual": true,
+      "together": false,
+      "template": "w_grief_quiz_grief_support",
+      "rel_priority": 2
+    },
+    {
+      "id": "learn_name_feelings",
+      "group": "learn_name_feelings",
+      "individual": true,
+      "together": true,
+      "template": "w_grief_learn_name_feelings"
     }
   ]
 }

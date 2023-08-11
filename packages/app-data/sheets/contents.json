@@ -286,6 +286,26 @@
       "flow_subtype": "generated",
       "flow_type": "data_list"
     },
+    "tg_w_grief_read_grief_conflict_ind": {
+      "flow_name": "tg_w_grief_read_grief_conflict_ind",
+      "flow_subtype": "generated",
+      "flow_type": "data_list"
+    },
+    "tg_w_grief_read_grief_conflict_tog": {
+      "flow_name": "tg_w_grief_read_grief_conflict_tog",
+      "flow_subtype": "generated",
+      "flow_type": "data_list"
+    },
+    "tg_w_grief_read_grief_support_ind": {
+      "flow_name": "tg_w_grief_read_grief_support_ind",
+      "flow_subtype": "generated",
+      "flow_type": "data_list"
+    },
+    "tg_w_grief_read_grief_support_tog": {
+      "flow_name": "tg_w_grief_read_grief_support_tog",
+      "flow_subtype": "generated",
+      "flow_type": "data_list"
+    },
     "tg_w_instruct_read_1_ind": {
       "flow_name": "tg_w_instruct_read_1_ind",
       "flow_subtype": "generated",
@@ -1496,7 +1516,6 @@
     },
     "gen_scenario_question": {
       "flow_type": "generator",
-      "module": "w_srh",
       "flow_name": "gen_scenario_question",
       "parameter_list": {
         "input_data_list": "scenario_question_data",
@@ -1516,6 +1535,17 @@
         "output_flow_subtype": "generated"
       },
       "_xlsxPath": "global/top_templates/parent_centre_templates/gen_activities.xlsx"
+    },
+    "gen_suggestions": {
+      "flow_type": "generator",
+      "flow_name": "gen_suggestions",
+      "parameter_list": {
+        "input_data_list": "suggestions_data",
+        "output_flow_name": "w_svp_learn_suggestions_{@gen.id}",
+        "output_flow_type": "template",
+        "output_flow_subtype": "generated"
+      },
+      "_xlsxPath": "global/top_templates/workshop_templates/workshop_svp.xlsx"
     },
     "gen_tools": {
       "flow_type": "generator",
@@ -2077,6 +2107,11 @@
       "flow_name": "box_multi_radio_buttons",
       "_xlsxPath": "global/core_templates/core_templates_workshop_boxes.xlsx"
     },
+    "box_name_feelings": {
+      "flow_type": "template",
+      "flow_name": "box_name_feelings",
+      "_xlsxPath": "global/top_templates/workshop_templates/workshop_grief.xlsx"
+    },
     "box_number_selector": {
       "flow_type": "template",
       "flow_name": "box_number_selector",
@@ -2116,6 +2151,11 @@
       "flow_type": "template",
       "flow_name": "box_story_scroll",
       "_xlsxPath": "global_modular/core_templates/box_story.xlsx"
+    },
+    "box_suggestions": {
+      "flow_type": "template",
+      "flow_name": "box_suggestions",
+      "_xlsxPath": "global/core_templates/core_templates_workshop_boxes.xlsx"
     },
     "box_survey_question": {
       "flow_type": "template",
@@ -3213,6 +3253,26 @@
     },
     "w_svp_intro_text": {
       "flow_name": "w_svp_intro_text",
+      "flow_subtype": "generated",
+      "flow_type": "template"
+    },
+    "w_svp_learn_suggestions_defence_moves": {
+      "flow_name": "w_svp_learn_suggestions_defence_moves",
+      "flow_subtype": "generated",
+      "flow_type": "template"
+    },
+    "w_svp_learn_suggestions_first_targets": {
+      "flow_name": "w_svp_learn_suggestions_first_targets",
+      "flow_subtype": "generated",
+      "flow_type": "template"
+    },
+    "w_svp_learn_suggestions_second_targets": {
+      "flow_name": "w_svp_learn_suggestions_second_targets",
+      "flow_subtype": "generated",
+      "flow_type": "template"
+    },
+    "w_svp_learn_suggestions_use_voice": {
+      "flow_name": "w_svp_learn_suggestions_use_voice",
       "flow_subtype": "generated",
       "flow_type": "template"
     },
@@ -4696,6 +4756,12 @@
       "flow_name": "w_crisis_talk_2",
       "_xlsxPath": "global/top_templates/workshop_templates/workshop_crisis.xlsx"
     },
+    "w_grief_home_practice": {
+      "flow_type": "template",
+      "module": "w_grief",
+      "flow_name": "w_grief_home_practice",
+      "_xlsxPath": "global/top_templates/workshop_templates/workshop_grief.xlsx"
+    },
     "w_grief_hp_challenges": {
       "flow_type": "template",
       "module": "stress",
@@ -4707,6 +4773,36 @@
       "module": "stress",
       "flow_name": "w_grief_hp_review",
       "_xlsxPath": "global/top_templates/in_week_messages/home_practice_reviews/w_grief_hp_review.xlsx"
+    },
+    "w_grief_learn_name_feelings": {
+      "flow_type": "template",
+      "module": "w_grief",
+      "flow_name": "w_grief_learn_name_feelings",
+      "_xlsxPath": "global/top_templates/workshop_templates/workshop_grief.xlsx"
+    },
+    "w_grief_quiz_grief_conflict": {
+      "flow_type": "template",
+      "module": "w_grief",
+      "flow_name": "w_grief_quiz_grief_conflict",
+      "_xlsxPath": "global/top_templates/workshop_templates/workshop_grief.xlsx"
+    },
+    "w_grief_quiz_grief_support": {
+      "flow_type": "template",
+      "module": "w_grief",
+      "flow_name": "w_grief_quiz_grief_support",
+      "_xlsxPath": "global/top_templates/workshop_templates/workshop_grief.xlsx"
+    },
+    "w_grief_read_grief_conflict": {
+      "flow_type": "template",
+      "module": "w_grief",
+      "flow_name": "w_grief_read_grief_conflict",
+      "_xlsxPath": "global/top_templates/workshop_templates/workshop_grief.xlsx"
+    },
+    "w_grief_read_grief_support": {
+      "flow_type": "template",
+      "module": "w_grief",
+      "flow_name": "w_grief_read_grief_support",
+      "_xlsxPath": "global/top_templates/workshop_templates/workshop_grief.xlsx"
     },
     "w_instruct_care_together": {
       "flow_type": "template",
@@ -5986,7 +6082,7 @@
     },
     "w_svp_home_practice": {
       "flow_type": "template",
-      "module": "w_srh",
+      "module": "w_svp",
       "flow_name": "w_svp_home_practice",
       "_xlsxPath": "global/top_templates/workshop_templates/workshop_svp.xlsx"
     },
@@ -6002,9 +6098,21 @@
       "flow_name": "w_svp_hp_review",
       "_xlsxPath": "global/top_templates/in_week_messages/home_practice_reviews/w_svp_hp_review.xlsx"
     },
+    "w_svp_learn_use_body": {
+      "flow_type": "template",
+      "module": "w_svp",
+      "flow_name": "w_svp_learn_use_body",
+      "_xlsxPath": "global/top_templates/workshop_templates/workshop_svp.xlsx"
+    },
+    "w_svp_learn_use_voice": {
+      "flow_type": "template",
+      "module": "w_svp",
+      "flow_name": "w_svp_learn_use_voice",
+      "_xlsxPath": "global/top_templates/workshop_templates/workshop_svp.xlsx"
+    },
     "w_svp_learn_warning_signs": {
       "flow_type": "template",
-      "module": "w_srh",
+      "module": "w_svp",
       "flow_name": "w_svp_learn_warning_signs",
       "_xlsxPath": "global/top_templates/workshop_templates/workshop_svp.xlsx"
     },
