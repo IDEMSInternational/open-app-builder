@@ -1123,6 +1123,12 @@
       "flow_name": "launch_actions",
       "_xlsxPath": "global/core_templates/core_templates_app_launch.xlsx"
     },
+    "name_feelings_data": {
+      "flow_type": "data_list",
+      "flow_name": "name_feelings_data",
+      "data_list_name": "name_feelings",
+      "_xlsxPath": "global/top_templates/workshop_templates/workshop_grief.xlsx"
+    },
     "number_5_data": {
       "flow_type": "data_list",
       "flow_name": "number_5_data",

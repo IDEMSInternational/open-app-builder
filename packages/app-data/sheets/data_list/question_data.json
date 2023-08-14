@@ -217,19 +217,17 @@
         "question_text": {
           "tz_sw": true
         },
-        "reply_all": {
-          "tz_sw": true
-        }
+        "reply_all": {}
       },
       "_translatedFields": {
         "question_text": {
           "eng": "How did @global.w_srh_female_caregiver_2 and @global.w_srh_teen_girl_2 feel after their conversation?"
         },
         "reply_all": {
-          "eng": "When we stay calm, share how we feel, and look for solutions together, it will help us all – even if we are not sure of the right outcome. You can learn to navigate tricky situations and problems together with your teen."
+          "eng": "When we stay calm, share how we feel, and look for solutions together, it will help us all – even if we are not sure of the right outcome. You can learn to manage tricky situations and problems together with your teen."
         }
       },
-      "reply_all": "When we stay calm, share how we feel, and look for solutions together, it will help us all – even if we are not sure of the right outcome. You can learn to navigate tricky situations and problems together with your teen."
+      "reply_all": "When we stay calm, share how we feel, and look for solutions together, it will help us all – even if we are not sure of the right outcome. You can learn to manage tricky situations and problems together with your teen."
     },
     {
       "id": "sex_talk_who",
@@ -312,11 +310,9 @@
       "reply_3_icon_asset": "plh_images/icons/tick_circle.svg",
       "reply_4_image_asset": "plh_images/workshops/w_srh/learn/sex_talk_when/slide_4.svg",
       "reply_4_icon_asset": "plh_images/icons/tick_circle.svg",
-      "question_text": "When is the right time to start talking about this?",
+      "question_text": "When is the right time to start talking about body changes and intimate relationships?",
       "_translations": {
-        "question_text": {
-          "tz_sw": true
-        },
+        "question_text": {},
         "option_1": {
           "tz_sw": true
         },
@@ -332,22 +328,18 @@
         "option_3": {
           "tz_sw": true
         },
-        "reply_3": {
-          "tz_sw": true
-        },
+        "reply_3": {},
         "option_4": {
           "tz_sw": true
         },
-        "reply_4": {
-          "tz_sw": true
-        },
+        "reply_4": {},
         "reply_all": {
           "tz_sw": true
         }
       },
       "_translatedFields": {
         "question_text": {
-          "eng": "When is the right time to start talking about this?"
+          "eng": "When is the right time to start talking about body changes and intimate relationships?"
         },
         "option_1": {
           "eng": "When you find out they have a boyfriend or girlfriend"
@@ -365,13 +357,13 @@
           "eng": "Before they turn 10"
         },
         "reply_3": {
-          "eng": "Discussions around body changes and intimate relationships can start early, before the age of 9, by responding to questions a child may have. \n\nYou do not need to go into detail – just answer their questions in a simple and accurate way that works for their age."
+          "eng": "Discussions around body changes and intimate relationships can start early, before the age of 9, by responding to questions a child may have. \n\nYou do not need to go into detail – just answer their questions in a simple and honest way that works for their age."
         },
         "option_4": {
           "eng": "When you get an opportunity"
         },
         "reply_4": {
-          "eng": "No parent feels ‘ready’ to have these conversations with their teen. When your teen asks you a question or when you see a situation together that relates to body changes or relationships (for example on TV or in your community), you can use that as an opening to start the conversation. You can ask “What do you think about what we saw?” or “How did that make you feel?”. \n\nYou do not have to have all the answers, just use the opportunity when it comes up!"
+          "eng": "Parents never feel ‘ready’ to have these conversations with their teen. When your teen asks you a question or when you see a situation together that relates to body changes or relationships (for example in magazines or in your community), you can use that as an opening to start the conversation. You can ask “What do you think about what we saw?” or “How did that make you feel?”. \n\nYou do not have to have all the answers, just use the opportunity when it comes up!"
         },
         "reply_all": {
           "eng": "Check out the other options too."
@@ -382,9 +374,9 @@
       "option_2": "When they turn 10",
       "reply_2": "From the age of 10, children start to enter the puberty stage and need to already know about how their bodies and feelings may change. \n\nThis will also help them cope better with sexual feelings safely.",
       "option_3": "Before they turn 10",
-      "reply_3": "Discussions around body changes and intimate relationships can start early, before the age of 9, by responding to questions a child may have. \n\nYou do not need to go into detail – just answer their questions in a simple and accurate way that works for their age.",
+      "reply_3": "Discussions around body changes and intimate relationships can start early, before the age of 9, by responding to questions a child may have. \n\nYou do not need to go into detail – just answer their questions in a simple and honest way that works for their age.",
       "option_4": "When you get an opportunity",
-      "reply_4": "No parent feels ‘ready’ to have these conversations with their teen. When your teen asks you a question or when you see a situation together that relates to body changes or relationships (for example on TV or in your community), you can use that as an opening to start the conversation. You can ask “What do you think about what we saw?” or “How did that make you feel?”. \n\nYou do not have to have all the answers, just use the opportunity when it comes up!",
+      "reply_4": "Parents never feel ‘ready’ to have these conversations with their teen. When your teen asks you a question or when you see a situation together that relates to body changes or relationships (for example in magazines or in your community), you can use that as an opening to start the conversation. You can ask “What do you think about what we saw?” or “How did that make you feel?”. \n\nYou do not have to have all the answers, just use the opportunity when it comes up!",
       "reply_all": "Check out the other options too."
     },
     {
@@ -408,9 +400,7 @@
         "option_1": {
           "tz_sw": true
         },
-        "reply_1": {
-          "tz_sw": true
-        },
+        "reply_1": {},
         "option_2": {
           "tz_sw": true
         },
@@ -426,15 +416,11 @@
         "option_4": {
           "tz_sw": true
         },
-        "reply_4": {
-          "tz_sw": true
-        },
+        "reply_4": {},
         "option_5": {
           "tz_sw": true
         },
-        "reply_5": {
-          "tz_sw": true
-        },
+        "reply_5": {},
         "reply_all": {
           "tz_sw": true
         }
@@ -447,7 +433,7 @@
           "eng": "I determine what my teen can and cannot do"
         },
         "reply_1": {
-          "eng": "When we are too controlling, our teens may become rebellious and end up doing the things we do not want them to do. \n\nWhen we give our teens space to make their own decisions and guide them, they generally behave more responsibly."
+          "eng": "When we are too controlling, our teens may end up doing the things we do not want them to do. \n\nWhen we give our teens space to make their own decisions and guide them, they generally behave more responsibly."
         },
         "option_2": {
           "eng": "I keep information or bad influences away from them"
@@ -465,28 +451,28 @@
           "eng": "I discuss consequences and solutions with my teen"
         },
         "reply_4": {
-          "eng": "To make a good decision, we have to think through the consequences. When you have a problem, have an open discussion with your teen. Listen to each other’s opinions and discuss solutions together.\n\nEvery challenge is an opportunity to help your teen understand that each action has consequences and you can work together to find a solution.\n\nWhen you work through a tricky situation or conversation together, remember to praise and recognize yourselves for your great teamwork."
+          "eng": "To make a good decision, we have to think through the consequences. When you have a problem, have an open discussion with your teen. Listen to each other’s opinions and discuss solutions together.\n\nEvery challenge is an opportunity to help your teen understand that each action has consequences and you can work together to find a solution.\n\nWhen you work through a tricky situation or conversation together, remember to praise and recognise yourselves for your great teamwork."
         },
         "option_5": {
           "eng": "I emphasise that pressure is never okay"
         },
         "reply_5": {
-          "eng": "To stay safe, your teen needs to understand the difference between respectful behaviours and relationships (when we feel cared for, involved in decision making, happy and safe) and unhealthy ones (when we feel pressured to do something, uncomfortable with decisions or actions, or unsafe in any other way). \n\nIn any relationship or sexual activity, you should never be pushed or convinced to do something you do not feel comfortable with, and you should never force others either. \n\nYou can learn more about this in the @data.workshop.w_svp.in_text_title."
+          "eng": "To stay safe, your teen needs to understand the difference between respectful behaviours and relationships, and unhealthy ones. \n\nA respectful relationship is when we feel cared for, involved in decision making, happy and safe. An unhealthy relationship is when we feel pressured to do something, uncomfortable with decisions or actions, or unsafe in any other way. \n\nIn any relationship or sexual activity, you should never be pushed or convinced to do something you do not feel comfortable with, and you should never force others either. You can learn more about this in the @data.workshop.w_svp.in_text_title."
         },
         "reply_all": {
           "eng": "Check out the other options too."
         }
       },
       "option_1": "I determine what my teen can and cannot do",
-      "reply_1": "When we are too controlling, our teens may become rebellious and end up doing the things we do not want them to do. \n\nWhen we give our teens space to make their own decisions and guide them, they generally behave more responsibly.",
+      "reply_1": "When we are too controlling, our teens may end up doing the things we do not want them to do. \n\nWhen we give our teens space to make their own decisions and guide them, they generally behave more responsibly.",
       "option_2": "I keep information or bad influences away from them",
       "reply_2": "Teens get information and pressure from many different sources that we cannot control. \n\nIt is our role as parents to prepare them and guide them well, so they can  learn how to tell the difference between good and bad information, and be confident to make their own decisions.",
       "option_3": "I build a healthy trusting relationship with my teen",
       "reply_3": "Your teen will trust you, when they feel you trust them. They are more likely to ask for advice or share when they have a problem if they are used to talking to you.\n\nPraise and thank your teen whenever they share, and avoid judging their questions or behaviour so they feel safe to come to you again and again.",
       "option_4": "I discuss consequences and solutions with my teen",
-      "reply_4": "To make a good decision, we have to think through the consequences. When you have a problem, have an open discussion with your teen. Listen to each other’s opinions and discuss solutions together.\n\nEvery challenge is an opportunity to help your teen understand that each action has consequences and you can work together to find a solution.\n\nWhen you work through a tricky situation or conversation together, remember to praise and recognize yourselves for your great teamwork.",
+      "reply_4": "To make a good decision, we have to think through the consequences. When you have a problem, have an open discussion with your teen. Listen to each other’s opinions and discuss solutions together.\n\nEvery challenge is an opportunity to help your teen understand that each action has consequences and you can work together to find a solution.\n\nWhen you work through a tricky situation or conversation together, remember to praise and recognise yourselves for your great teamwork.",
       "option_5": "I emphasise that pressure is never okay",
-      "reply_5": "To stay safe, your teen needs to understand the difference between respectful behaviours and relationships (when we feel cared for, involved in decision making, happy and safe) and unhealthy ones (when we feel pressured to do something, uncomfortable with decisions or actions, or unsafe in any other way). \n\nIn any relationship or sexual activity, you should never be pushed or convinced to do something you do not feel comfortable with, and you should never force others either. \n\nYou can learn more about this in the @data.workshop.w_svp.in_text_title.",
+      "reply_5": "To stay safe, your teen needs to understand the difference between respectful behaviours and relationships, and unhealthy ones. \n\nA respectful relationship is when we feel cared for, involved in decision making, happy and safe. An unhealthy relationship is when we feel pressured to do something, uncomfortable with decisions or actions, or unsafe in any other way. \n\nIn any relationship or sexual activity, you should never be pushed or convinced to do something you do not feel comfortable with, and you should never force others either. You can learn more about this in the @data.workshop.w_svp.in_text_title.",
       "reply_all": "Check out the other options too."
     },
     {
