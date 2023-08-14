@@ -1,5 +1,6 @@
 # Square button
 
+A square button is an interactive element with a square appearance. It is used to trigger actions, such as navigating through different screens or menus, or initiating specific operations within the app. Square buttons can have different colours, sizes, and even icons within them to provide visual cues about their functionality.
 ## Example
 
 | type         | name                  |parameter_list |
