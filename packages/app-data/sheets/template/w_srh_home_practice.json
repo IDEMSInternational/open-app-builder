@@ -78,7 +78,7 @@
                     },
                     {
                       "name": "button_1",
-                      "value": "@data.story.sex_talk.title",
+                      "value": "Story @global.part_connector @data.story.sex_talk.title",
                       "_translations": {
                         "value": {}
                       },
@@ -99,7 +99,13 @@
                       "_dynamicFields": {
                         "value": [
                           {
-                            "fullExpression": "@data.story.sex_talk.title",
+                            "fullExpression": "Story @global.part_connector @data.story.sex_talk.title",
+                            "matchedExpression": "@global.part_connector",
+                            "type": "global",
+                            "fieldName": "part_connector"
+                          },
+                          {
+                            "fullExpression": "Story @global.part_connector @data.story.sex_talk.title",
                             "matchedExpression": "@data.story.sex_talk.title",
                             "type": "data",
                             "fieldName": "story"
@@ -107,6 +113,9 @@
                         ]
                       },
                       "_dynamicDependencies": {
+                        "@global.part_connector": [
+                          "value"
+                        ],
                         "@data.story.sex_talk.title": [
                           "value"
                         ]
@@ -114,7 +123,7 @@
                     },
                     {
                       "name": "button_2",
-                      "value": "@data.story.new_boyfriend.title",
+                      "value": "Story @global.part_connector @data.story.new_boyfriend.title",
                       "_translations": {
                         "value": {}
                       },
@@ -135,7 +144,13 @@
                       "_dynamicFields": {
                         "value": [
                           {
-                            "fullExpression": "@data.story.new_boyfriend.title",
+                            "fullExpression": "Story @global.part_connector @data.story.new_boyfriend.title",
+                            "matchedExpression": "@global.part_connector",
+                            "type": "global",
+                            "fieldName": "part_connector"
+                          },
+                          {
+                            "fullExpression": "Story @global.part_connector @data.story.new_boyfriend.title",
                             "matchedExpression": "@data.story.new_boyfriend.title",
                             "type": "data",
                             "fieldName": "story"
@@ -143,6 +158,9 @@
                         ]
                       },
                       "_dynamicDependencies": {
+                        "@global.part_connector": [
+                          "value"
+                        ],
                         "@data.story.new_boyfriend.title": [
                           "value"
                         ]
