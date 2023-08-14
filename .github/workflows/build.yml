@@ -70,6 +70,11 @@ jobs:
       - name: Install node modules
         run: yarn install
 
+      # Ensure required packages built to enable deployment set
+      # TODO - should add implicit dep to scripts when NX added
+      - name: Precompile
+        run: yarn scripts compile types
+
       - name: Set deployment
         run: yarn workflow deployment set ${{inputs.deployment-name}}
 
