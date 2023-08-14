@@ -2,18 +2,16 @@
 import { Command } from "commander";
 
 import convertCmd from "./convert";
-import copyCmd from "./copy";
+import postProcessCmd from "./postProcess";
 import downloadCmd from "./download";
-import syncCmd from "./sync";
 import { logProgramHelp } from "../../utils";
 
 const program = new Command("app-data").description("Manage app data");
 
 /** add sub-commands from child folders */
 program.addCommand(convertCmd);
-program.addCommand(copyCmd);
+program.addCommand(postProcessCmd);
 program.addCommand(downloadCmd);
-program.addCommand(syncCmd);
 
 export default program;
 
@@ -22,5 +20,7 @@ if (require.main === module) {
   if (!process.argv.slice(2).length) {
     logProgramHelp(program);
   }
-  program.parse(process.argv);
+  (async function () {
+    await program.parseAsync(process.argv);
+  })();
 }

@@ -35,15 +35,10 @@
         },
         {
           "name": "text_not_completed",
-          "value": "As usual, you can access a new workshop tomorrow. It will help to complete the previous workshop before then.  \n\nSome parents are using the app while commuting to work. Why don’t you use the app when you have a few minutes? \n\nThank you again for using @global.parent_app.",
+          "value": "As usual, you can access a new workshop tomorrow. It will help to complete the previous @global.workshop before then.  \n\nSome parents are using the app while commuting to work. Why don’t you use the app when you have a few minutes? \n\nThank you again for using @global.parent_app.",
           "_translations": {
             "value": {
-              "tz_sw": true,
-              "za_af": true,
-              "za_st": true,
-              "za_tn": true,
-              "za_xh": true,
-              "za_zu": true
+              "tz_sw": true
             }
           },
           "type": "set_variable",
@@ -51,7 +46,13 @@
           "_dynamicFields": {
             "value": [
               {
-                "fullExpression": "As usual, you can access a new workshop tomorrow. It will help to complete the previous workshop before then.  \n\nSome parents are using the app while commuting to work. Why don’t you use the app when you have a few minutes? \n\nThank you again for using @global.parent_app.",
+                "fullExpression": "As usual, you can access a new workshop tomorrow. It will help to complete the previous @global.workshop before then.  \n\nSome parents are using the app while commuting to work. Why don’t you use the app when you have a few minutes? \n\nThank you again for using @global.parent_app.",
+                "matchedExpression": "@global.workshop",
+                "type": "global",
+                "fieldName": "workshop"
+              },
+              {
+                "fullExpression": "As usual, you can access a new workshop tomorrow. It will help to complete the previous @global.workshop before then.  \n\nSome parents are using the app while commuting to work. Why don’t you use the app when you have a few minutes? \n\nThank you again for using @global.parent_app.",
                 "matchedExpression": "@global.parent_app",
                 "type": "global",
                 "fieldName": "parent_app"
@@ -59,6 +60,9 @@
             ]
           },
           "_dynamicDependencies": {
+            "@global.workshop": [
+              "value"
+            ],
             "@global.parent_app": [
               "value"
             ]
@@ -66,15 +70,10 @@
         },
         {
           "name": "text_completed",
-          "value": "Congratulations, you completed the @local.workshop_data.in_text_title.\n\nTomorrow, a new workshop is ready for you: you will see a big difference by making small changes!",
+          "value": "Congratulations, you completed the @local.workshop_data.in_text_title.\n\nTomorrow, a new @global.workshop is ready for you: you will see a big difference by making small changes!",
           "_translations": {
             "value": {
-              "tz_sw": true,
-              "za_af": true,
-              "za_st": true,
-              "za_tn": true,
-              "za_xh": true,
-              "za_zu": true
+              "tz_sw": true
             }
           },
           "type": "set_variable",
@@ -82,15 +81,24 @@
           "_dynamicFields": {
             "value": [
               {
-                "fullExpression": "Congratulations, you completed the @local.workshop_data.in_text_title.\n\nTomorrow, a new workshop is ready for you: you will see a big difference by making small changes!",
+                "fullExpression": "Congratulations, you completed the @local.workshop_data.in_text_title.\n\nTomorrow, a new @global.workshop is ready for you: you will see a big difference by making small changes!",
                 "matchedExpression": "@local.workshop_data.in_text_title",
                 "type": "local",
                 "fieldName": "workshop_data"
+              },
+              {
+                "fullExpression": "Congratulations, you completed the @local.workshop_data.in_text_title.\n\nTomorrow, a new @global.workshop is ready for you: you will see a big difference by making small changes!",
+                "matchedExpression": "@global.workshop",
+                "type": "global",
+                "fieldName": "workshop"
               }
             ]
           },
           "_dynamicDependencies": {
             "@local.workshop_data.in_text_title": [
+              "value"
+            ],
+            "@global.workshop": [
               "value"
             ]
           }
@@ -99,5 +107,5 @@
       "_nested_name": "m_workshop_tomorrow"
     }
   ],
-  "_xlsxPath": "global/in_week_messages/in_week_message_texts/w_instruct_messages.xlsx"
+  "_xlsxPath": "global/top_templates/in_week_messages/in_week_message_texts/w_instruct_messages.xlsx"
 }

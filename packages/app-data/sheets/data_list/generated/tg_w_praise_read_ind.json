@@ -1,0 +1,29 @@
+{
+  "flow_name": "tg_w_praise_read_ind",
+  "flow_subtype": "generated",
+  "flow_type": "data_list",
+  "rows": [
+    {
+      "id": "read",
+      "group": "read",
+      "individual": true,
+      "together": true,
+      "template": "w_praise_read",
+      "priority": 12,
+      "rel_priority": 1,
+      "completed_field": "task_w_praise_read_completed",
+      "completed": "@fields.task_w_praise_read_completed"
+    },
+    {
+      "id": "question_2",
+      "group": "read",
+      "individual": true,
+      "together": false,
+      "template": "w_praise_question_2",
+      "priority": 13,
+      "rel_priority": 2,
+      "completed_field": "task_w_praise_question_2_completed",
+      "completed": "@fields.task_w_praise_question_2_completed"
+    }
+  ]
+}

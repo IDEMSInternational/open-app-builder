@@ -1,17 +1,5 @@
 {
   "name": "app-data",
   "version": "1.0.0",
-  "description": "",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
-  "scripts": {
-    "build": "tsc -b",
-    "serve": "tsc -w",
-    "sync": "TODO - call scripts"
-  },
-  "devDependencies": {
-    "@types/node": "^15.12.4",
-    "data-models": "workspace:*",
-    "typescript": "~4.2.4"
-  }
+  "description": ""
 }

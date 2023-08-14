@@ -39,15 +39,10 @@
           "rows": [
             {
               "name": "text",
-              "value": "It’s great that you’ve been using @global.parent_app. You’ve gained 6 parenting tools already! \n\nTake the next workshop to get another parenting tool!",
+              "value": "It’s great that you’ve been using @global.parent_app. You’ve gained 6 parenting tools already! \n\nTake the next @global.workshop to get another parenting tool!",
               "_translations": {
                 "value": {
-                  "tz_sw": true,
-                  "za_af": true,
-                  "za_st": true,
-                  "za_tn": true,
-                  "za_xh": true,
-                  "za_zu": true
+                  "tz_sw": true
                 }
               },
               "type": "set_variable",
@@ -55,15 +50,24 @@
               "_dynamicFields": {
                 "value": [
                   {
-                    "fullExpression": "It’s great that you’ve been using @global.parent_app. You’ve gained 6 parenting tools already! \n\nTake the next workshop to get another parenting tool!",
+                    "fullExpression": "It’s great that you’ve been using @global.parent_app. You’ve gained 6 parenting tools already! \n\nTake the next @global.workshop to get another parenting tool!",
                     "matchedExpression": "@global.parent_app",
                     "type": "global",
                     "fieldName": "parent_app"
+                  },
+                  {
+                    "fullExpression": "It’s great that you’ve been using @global.parent_app. You’ve gained 6 parenting tools already! \n\nTake the next @global.workshop to get another parenting tool!",
+                    "matchedExpression": "@global.workshop",
+                    "type": "global",
+                    "fieldName": "workshop"
                   }
                 ]
               },
               "_dynamicDependencies": {
                 "@global.parent_app": [
+                  "value"
+                ],
+                "@global.workshop": [
                   "value"
                 ]
               }
@@ -75,5 +79,5 @@
       "_nested_name": "m_workshop_reminder"
     }
   ],
-  "_xlsxPath": "global/in_week_messages/in_week_message_texts/w_consequence_messages.xlsx"
+  "_xlsxPath": "global/top_templates/in_week_messages/in_week_message_texts/w_consequence_messages.xlsx"
 }

@@ -1,9 +1,11 @@
 import { Injectable } from "@angular/core";
+import type { Table } from "dexie";
 import { IDBMeta } from "packages/data-models/db.model";
 import { BehaviorSubject } from "rxjs";
 import { interval } from "rxjs";
 import { debounce, filter } from "rxjs/operators";
 import { generateTimestamp } from "../../utils";
+import { AsyncServiceBase } from "../asyncService.base";
 import { DbService } from "../db/db.service";
 import { LocalNotificationService } from "./local-notification.service";
 
@@ -26,9 +28,9 @@ export type ILocalNotificationInteractionDB = ILocalNotificationInteraction & ID
  * Small service that handles tracking local notification interaction history and saving to db
  *
  */
-export class LocalNotificationInteractionService {
+export class LocalNotificationInteractionService extends AsyncServiceBase {
   /** Typed wrapper around database table used to store local notifications */
-  private db: Dexie.Table<ILocalNotificationInteractionDB, number>;
+  private db: Table<ILocalNotificationInteractionDB, number>;
   /**  */
   public interactedNotifications$ = new BehaviorSubject<ILocalNotificationInteractionDB[]>([]);
 
@@ -36,11 +38,16 @@ export class LocalNotificationInteractionService {
     private dbService: DbService,
     private localNotificationService: LocalNotificationService
   ) {
-    this.db = dbService.table<ILocalNotificationInteraction>("local_notifications_interaction");
+    super("LocalNotificationInteraction");
+    this.registerInitFunction(this.initialise);
   }
-  public async init() {
+  private async initialise() {
+    await this.ensureAsyncServicesReady([this.dbService, this.localNotificationService]);
+    this.db = this.dbService.table<ILocalNotificationInteraction>(
+      "local_notifications_interaction"
+    );
     this.subscribeToNotifications();
-    this.loadInteractedNotifications();
+    await this.loadInteractedNotifications();
   }
   public async loadInteractedNotifications() {
     const interactedNotifications = await this.db.reverse().toArray();
@@ -55,9 +62,11 @@ export class LocalNotificationInteractionService {
       )
       .subscribe(async (action) => {
         const { actionId, notification, inputValue } = action;
+        const { id, text, title, campaign_id } = notification.extra;
         const update: Partial<ILocalNotificationInteraction> = {
           action_id: actionId,
           action_recorded_timestamp: generateTimestamp(),
+          notification_meta: { id, text, title, campaign_id },
         };
         if (inputValue) {
           update.action_meta = { inputValue };

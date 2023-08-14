@@ -84,173 +84,23 @@
       }
     },
     {
-      "name": "parent_point",
-      "value": "spend_time",
-      "_translations": {
-        "value": {}
-      },
-      "type": "set_variable",
-      "_nested_name": "parent_point"
-    },
-    {
-      "name": "parent_point_habit",
-      "value": "habit.@local.parent_point",
-      "_translations": {
-        "value": {}
-      },
-      "type": "set_variable",
-      "_nested_name": "parent_point_habit",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "habit.@local.parent_point",
-            "matchedExpression": "@local.parent_point",
-            "type": "local",
-            "fieldName": "parent_point"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@local.parent_point": [
-          "value"
-        ]
-      }
-    },
-    {
-      "name": "parent_point_data",
-      "value": "@data.@local.parent_point_habit",
-      "_translations": {
-        "value": {}
-      },
-      "type": "set_variable",
-      "_nested_name": "parent_point_data",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "@data.@local.parent_point_habit",
-            "matchedExpression": "@local.parent_point_habit",
-            "type": "local",
-            "fieldName": "parent_point_habit"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@local.parent_point_habit": [
-          "value"
-        ]
-      }
-    },
-    {
-      "name": "count_pp_field",
-      "value": "parent_point_count_@local.parent_point",
-      "_translations": {
-        "value": {}
-      },
-      "type": "set_variable",
-      "_nested_name": "count_pp_field",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "parent_point_count_@local.parent_point",
-            "matchedExpression": "@local.parent_point",
-            "type": "local",
-            "fieldName": "parent_point"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@local.parent_point": [
-          "value"
-        ]
-      }
-    },
-    {
-      "name": "count_pp",
-      "value": "+@fields.@local.count_pp_field",
-      "_translations": {
-        "value": {}
-      },
-      "type": "set_variable",
-      "_nested_name": "count_pp",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "+@fields.@local.count_pp_field",
-            "matchedExpression": "@local.count_pp_field",
-            "type": "local",
-            "fieldName": "count_pp_field"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@local.count_pp_field": [
-          "value"
-        ]
-      }
-    },
-    {
-      "type": "text",
-      "name": "text_pp",
-      "value": "We noticed you tapped the @local.parent_point_data.in_text_title - great job for remembering!",
-      "_translations": {
-        "value": {
-          "tz_sw": true
-        }
-      },
-      "condition": "@local.count_pp > 0",
-      "_nested_name": "text_pp",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "We noticed you tapped the @local.parent_point_data.in_text_title - great job for remembering!",
-            "matchedExpression": "@local.parent_point_data.in_text_title",
-            "type": "local",
-            "fieldName": "parent_point_data"
-          }
-        ],
-        "condition": [
-          {
-            "fullExpression": "@local.count_pp > 0",
-            "matchedExpression": "@local.count_pp",
-            "type": "local",
-            "fieldName": "count_pp"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@local.parent_point_data.in_text_title": [
-          "value"
-        ],
-        "@local.count_pp": [
-          "condition"
-        ]
-      }
-    },
-    {
       "type": "text",
       "name": "text_done",
-      "value": "Your goal was to spend one-on-one time with your teen.",
+      "value": "text_done",
       "_translations": {
-        "value": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        }
+        "value": {}
       },
+      "exclude_from_translation": true,
       "_nested_name": "text_done"
     },
     {
       "type": "text",
       "name": "question_text_done",
-      "value": "Did you have a chance to do this?",
+      "value": "question_text_done",
       "_translations": {
-        "value": {
-          "tz_sw": true
-        }
+        "value": {}
       },
+      "exclude_from_translation": true,
       "parameter_list": {
         "style": "emphasised"
       },
@@ -371,12 +221,92 @@
         {
           "type": "text",
           "name": "reply_no",
-          "value": "That's okay, don't be too hard on yourself. We encourage you to try and do it when you can.",
+          "value": "reply_no",
           "_translations": {
             "value": {}
           },
           "exclude_from_translation": true,
           "_nested_name": "reply_no_dg.reply_no"
+        },
+        {
+          "name": "button_no_go_to_template",
+          "type": "set_variable",
+          "_nested_name": "reply_no_dg.button_no_go_to_template"
+        },
+        {
+          "name": "button_no_text",
+          "type": "set_variable",
+          "_nested_name": "reply_no_dg.button_no_text"
+        },
+        {
+          "type": "button",
+          "name": "button_no",
+          "value": "@local.button_no_text",
+          "_translations": {
+            "value": {}
+          },
+          "action_list": [
+            {
+              "trigger": "click",
+              "action_id": "go_to",
+              "args": [
+                "@local.button_no_go_to_template"
+              ],
+              "_raw": "click | go_to: @local.button_no_go_to_template",
+              "_cleaned": "click | go_to: @local.button_no_go_to_template"
+            }
+          ],
+          "_nested_name": "reply_no_dg.button_no",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@local.button_no_text",
+                "matchedExpression": "@local.button_no_text",
+                "type": "local",
+                "fieldName": "button_no_text"
+              }
+            ],
+            "action_list": {
+              "0": {
+                "args": {
+                  "0": [
+                    {
+                      "fullExpression": "@local.button_no_go_to_template",
+                      "matchedExpression": "@local.button_no_go_to_template",
+                      "type": "local",
+                      "fieldName": "button_no_go_to_template"
+                    }
+                  ]
+                },
+                "_raw": [
+                  {
+                    "fullExpression": "click | go_to: @local.button_no_go_to_template",
+                    "matchedExpression": "@local.button_no_go_to_template",
+                    "type": "local",
+                    "fieldName": "button_no_go_to_template"
+                  }
+                ],
+                "_cleaned": [
+                  {
+                    "fullExpression": "click | go_to: @local.button_no_go_to_template",
+                    "matchedExpression": "@local.button_no_go_to_template",
+                    "type": "local",
+                    "fieldName": "button_no_go_to_template"
+                  }
+                ]
+              }
+            }
+          },
+          "_dynamicDependencies": {
+            "@local.button_no_text": [
+              "value"
+            ],
+            "@local.button_no_go_to_template": [
+              "action_list.0.args.0",
+              "action_list.0._raw",
+              "action_list.0._cleaned"
+            ]
+          }
         }
       ],
       "_nested_name": "reply_no_dg",
@@ -434,16 +364,9 @@
         {
           "type": "text",
           "name": "question_text_mood",
-          "value": "How did it go?",
+          "value": "question_text_mood",
           "_translations": {
-            "value": {
-              "tz_sw": true,
-              "za_af": true,
-              "za_st": true,
-              "za_tn": true,
-              "za_xh": true,
-              "za_zu": true
-            }
+            "value": {}
           },
           "parameter_list": {
             "style": "emphasised"
@@ -566,7 +489,7 @@
             {
               "type": "text",
               "name": "reply_happy",
-              "value": "Reply happy",
+              "value": "reply_happy",
               "_translations": {
                 "value": {}
               },
@@ -602,7 +525,7 @@
             {
               "type": "text",
               "name": "reply_ok",
-              "value": "Reply ok",
+              "value": "reply_ok",
               "_translations": {
                 "value": {}
               },
@@ -638,7 +561,7 @@
             {
               "type": "text",
               "name": "reply_sad",
-              "value": "Reply sad",
+              "value": "reply_sad",
               "_translations": {
                 "value": {}
               },

@@ -24,11 +24,11 @@
           "trigger": "click",
           "action_id": "set_field",
           "args": [
-            "w_rules_m_w_released.sent",
+            "w_rules_m_w_released_sent",
             true
           ],
-          "_raw": "click | set_field: w_rules_m_w_released.sent : true",
-          "_cleaned": "click | set_field: w_rules_m_w_released.sent : true"
+          "_raw": "click | set_field: w_rules_m_w_released_sent : true",
+          "_cleaned": "click | set_field: w_rules_m_w_released_sent : true"
         }
       ],
       "priority": 6.99,
@@ -67,10 +67,7 @@
       "_translations": {
         "title": {},
         "text": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true
+          "tz_sw": true
         }
       },
       "_translatedFields": {
@@ -78,10 +75,10 @@
           "eng": "@global.m_w_released"
         },
         "text": {
-          "eng": "Hi @fields.user_name! New week, new workshop! Learn to set household rules that your teen understands and follows."
+          "eng": "Hi @fields.user_name! New week, new @global.workshop! Learn to set household rules that your teen understands and follows."
         }
       },
-      "text": "Hi @fields.user_name! New week, new workshop! Learn to set household rules that your teen understands and follows."
+      "text": "Hi @fields.user_name! New week, new @global.workshop! Learn to set household rules that your teen understands and follows."
     },
     {
       "id": "w_released_w_rules_tog",
@@ -103,11 +100,11 @@
           "trigger": "click",
           "action_id": "set_field",
           "args": [
-            "w_rules_m_w_released.sent",
+            "w_rules_m_w_released_sent",
             true
           ],
-          "_raw": "click | set_field: w_rules_m_w_released.sent : true",
-          "_cleaned": "click | set_field: w_rules_m_w_released.sent : true"
+          "_raw": "click | set_field: w_rules_m_w_released_sent : true",
+          "_cleaned": "click | set_field: w_rules_m_w_released_sent : true"
         }
       ],
       "priority": 6.99,
@@ -146,10 +143,7 @@
       "_translations": {
         "title": {},
         "text": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true
+          "tz_sw": true
         }
       },
       "_translatedFields": {
@@ -157,10 +151,10 @@
           "eng": "@global.m_w_released"
         },
         "text": {
-          "eng": "Hi @fields.group_name! New week, new workshop! Learn to set household rules that your teen understands and follows."
+          "eng": "Hi @fields.group_name! New week, new @global.workshop! Learn to set household rules that your teen understands and follows."
         }
       },
-      "text": "Hi @fields.group_name! New week, new workshop! Learn to set household rules that your teen understands and follows."
+      "text": "Hi @fields.group_name! New week, new @global.workshop! Learn to set household rules that your teen understands and follows."
     },
     {
       "id": "relax_w_rules",
@@ -181,11 +175,11 @@
           "trigger": "click",
           "action_id": "set_field",
           "args": [
-            "w_rules_m_relax.sent",
+            "w_rules_m_relax_sent",
             true
           ],
-          "_raw": "click | set_field: w_rules_m_relax.sent : true",
-          "_cleaned": "click | set_field: w_rules_m_relax.sent : true"
+          "_raw": "click | set_field: w_rules_m_relax_sent : true",
+          "_cleaned": "click | set_field: w_rules_m_relax_sent : true"
         }
       ],
       "priority": 6.9,
@@ -239,11 +233,11 @@
           "trigger": "click",
           "action_id": "set_field",
           "args": [
-            "w_rules_m_something_fun.sent",
+            "w_rules_m_something_fun_sent",
             true
           ],
-          "_raw": "click | set_field: w_rules_m_something_fun.sent : true",
-          "_cleaned": "click | set_field: w_rules_m_something_fun.sent : true"
+          "_raw": "click | set_field: w_rules_m_something_fun_sent : true",
+          "_cleaned": "click | set_field: w_rules_m_something_fun_sent : true"
         }
       ],
       "priority": 6.8,
@@ -296,11 +290,11 @@
           "trigger": "click",
           "action_id": "set_field",
           "args": [
-            "w_rules_m_praise.sent",
+            "w_rules_m_praise_sent",
             true
           ],
-          "_raw": "click | set_field: w_rules_m_praise.sent : true",
-          "_cleaned": "click | set_field: w_rules_m_praise.sent : true"
+          "_raw": "click | set_field: w_rules_m_praise_sent : true",
+          "_cleaned": "click | set_field: w_rules_m_praise_sent : true"
         }
       ],
       "priority": 6.7,
@@ -358,11 +352,11 @@
           "trigger": "click",
           "action_id": "set_field",
           "args": [
-            "w_rules_m_w_reminder.sent",
+            "w_rules_m_w_reminder_sent",
             true
           ],
-          "_raw": "click | set_field: w_rules_m_w_reminder.sent : true",
-          "_cleaned": "click | set_field: w_rules_m_w_reminder.sent : true"
+          "_raw": "click | set_field: w_rules_m_w_reminder_sent : true",
+          "_cleaned": "click | set_field: w_rules_m_w_reminder_sent : true"
         }
       ],
       "priority": 6.6,
@@ -429,11 +423,11 @@
           "trigger": "click",
           "action_id": "set_field",
           "args": [
-            "w_rules_m_w_in_progress.sent",
+            "w_rules_m_w_in_progress_sent",
             true
           ],
-          "_raw": "click | set_field: w_rules_m_w_in_progress.sent : true",
-          "_cleaned": "click | set_field: w_rules_m_w_in_progress.sent : true"
+          "_raw": "click | set_field: w_rules_m_w_in_progress_sent : true",
+          "_cleaned": "click | set_field: w_rules_m_w_in_progress_sent : true"
         }
       ],
       "priority": 6.5,
@@ -507,11 +501,11 @@
           "trigger": "click",
           "action_id": "set_field",
           "args": [
-            "w_rules_m_hp_reminder.sent",
+            "w_rules_m_hp_reminder_sent",
             true
           ],
-          "_raw": "click | set_field: w_rules_m_hp_reminder.sent : true",
-          "_cleaned": "click | set_field: w_rules_m_hp_reminder.sent : true"
+          "_raw": "click | set_field: w_rules_m_hp_reminder_sent : true",
+          "_cleaned": "click | set_field: w_rules_m_hp_reminder_sent : true"
         }
       ],
       "priority": 6.4,
@@ -578,11 +572,11 @@
           "trigger": "click",
           "action_id": "set_field",
           "args": [
-            "m_parent_points_overview.sent",
+            "m_parent_points_overview_sent",
             true
           ],
-          "_raw": "click | set_field: m_parent_points_overview.sent : true",
-          "_cleaned": "click | set_field: m_parent_points_overview.sent : true"
+          "_raw": "click | set_field: m_parent_points_overview_sent : true",
+          "_cleaned": "click | set_field: m_parent_points_overview_sent : true"
         }
       ],
       "priority": 6.3,
@@ -635,11 +629,11 @@
           "trigger": "click",
           "action_id": "set_field",
           "args": [
-            "undefined.sent",
+            "w_rules_hp_review_sent",
             true
           ],
-          "_raw": "click | set_field: undefined.sent : true",
-          "_cleaned": "click | set_field: undefined.sent : true"
+          "_raw": "click | set_field: w_rules_hp_review_sent : true",
+          "_cleaned": "click | set_field: w_rules_hp_review_sent : true"
         }
       ],
       "priority": 6.2,
@@ -702,11 +696,11 @@
           "trigger": "click",
           "action_id": "set_field",
           "args": [
-            "w_rules_m_w_tomorrow.sent",
+            "w_rules_m_w_tomorrow_sent",
             true
           ],
-          "_raw": "click | set_field: w_rules_m_w_tomorrow.sent : true",
-          "_cleaned": "click | set_field: w_rules_m_w_tomorrow.sent : true"
+          "_raw": "click | set_field: w_rules_m_w_tomorrow_sent : true",
+          "_cleaned": "click | set_field: w_rules_m_w_tomorrow_sent : true"
         }
       ],
       "priority": 6.1,
@@ -738,10 +732,7 @@
       "_translations": {
         "title": {},
         "text": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true
+          "tz_sw": true
         }
       },
       "_translatedFields": {
@@ -749,10 +740,10 @@
           "eng": "@global.m_w_tomorrow"
         },
         "text": {
-          "eng": "Congratulations, you completed the @local.workshop_data.in_text_title.\n \nTomorrow, access a new workshop! It will show you what to do when teens display bad (or good) behaviour!"
+          "eng": "Congratulations, you completed the @local.workshop_data.in_text_title.\n \nTomorrow, access a new @global.workshop! It will show you what to do when teens display bad (or good) behaviour!"
         }
       },
-      "text": "Congratulations, you completed the @local.workshop_data.in_text_title.\n \nTomorrow, access a new workshop! It will show you what to do when teens display bad (or good) behaviour!"
+      "text": "Congratulations, you completed the @local.workshop_data.in_text_title.\n \nTomorrow, access a new @global.workshop! It will show you what to do when teens display bad (or good) behaviour!"
     },
     {
       "id": "w_tomorrow_w_rules_incompl",
@@ -774,11 +765,11 @@
           "trigger": "click",
           "action_id": "set_field",
           "args": [
-            "w_rules_m_w_tomorrow.sent",
+            "w_rules_m_w_tomorrow_sent",
             true
           ],
-          "_raw": "click | set_field: w_rules_m_w_tomorrow.sent : true",
-          "_cleaned": "click | set_field: w_rules_m_w_tomorrow.sent : true"
+          "_raw": "click | set_field: w_rules_m_w_tomorrow_sent : true",
+          "_cleaned": "click | set_field: w_rules_m_w_tomorrow_sent : true"
         }
       ],
       "priority": 6.1,
@@ -810,10 +801,7 @@
       "_translations": {
         "title": {},
         "text": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true
+          "tz_sw": true
         }
       },
       "_translatedFields": {
@@ -821,10 +809,10 @@
           "eng": "@global.m_w_tomorrow"
         },
         "text": {
-          "eng": "A brand-new workshop unlocks tomorrow!\n \nComplete the @local.workshop_data.in_text_title before moving on. Just a few more minutes to help your teen follow your rules!"
+          "eng": "A brand-new @global.workshop unlocks tomorrow!\n \nComplete the @local.workshop_data.in_text_title before moving on. Just a few more minutes to help your teen follow your rules!"
         }
       },
-      "text": "A brand-new workshop unlocks tomorrow!\n \nComplete the @local.workshop_data.in_text_title before moving on. Just a few more minutes to help your teen follow your rules!"
+      "text": "A brand-new @global.workshop unlocks tomorrow!\n \nComplete the @local.workshop_data.in_text_title before moving on. Just a few more minutes to help your teen follow your rules!"
     }
   ],
   "_xlsxPath": "global/campaigns/notifications_in_week_messages.xlsx"

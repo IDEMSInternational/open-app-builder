@@ -63,13 +63,10 @@
           "rows": [
             {
               "name": "text",
-              "value": "Hi @fields.user_name! Today we are celebrating two months of using @global.parent_app! \n\nYou are doing great! This week’s workshop will help you know what to do when your teen is not following the household rules.",
+              "value": "Hi @fields.user_name! Today we are celebrating two months of using @global.parent_app! \n\nYou are doing great! This week’s @global.workshop will help you know what to do when your teen is not following the household rules.",
               "_translations": {
                 "value": {
-                  "tz_sw": true,
-                  "za_af": true,
-                  "za_st": true,
-                  "za_tn": true
+                  "tz_sw": true
                 }
               },
               "condition": "!@local.do_workshops_together",
@@ -78,16 +75,22 @@
               "_dynamicFields": {
                 "value": [
                   {
-                    "fullExpression": "Hi @fields.user_name! Today we are celebrating two months of using @global.parent_app! \n\nYou are doing great! This week’s workshop will help you know what to do when your teen is not following the household rules.",
+                    "fullExpression": "Hi @fields.user_name! Today we are celebrating two months of using @global.parent_app! \n\nYou are doing great! This week’s @global.workshop will help you know what to do when your teen is not following the household rules.",
                     "matchedExpression": "@fields.user_name",
                     "type": "fields",
                     "fieldName": "user_name"
                   },
                   {
-                    "fullExpression": "Hi @fields.user_name! Today we are celebrating two months of using @global.parent_app! \n\nYou are doing great! This week’s workshop will help you know what to do when your teen is not following the household rules.",
+                    "fullExpression": "Hi @fields.user_name! Today we are celebrating two months of using @global.parent_app! \n\nYou are doing great! This week’s @global.workshop will help you know what to do when your teen is not following the household rules.",
                     "matchedExpression": "@global.parent_app",
                     "type": "global",
                     "fieldName": "parent_app"
+                  },
+                  {
+                    "fullExpression": "Hi @fields.user_name! Today we are celebrating two months of using @global.parent_app! \n\nYou are doing great! This week’s @global.workshop will help you know what to do when your teen is not following the household rules.",
+                    "matchedExpression": "@global.workshop",
+                    "type": "global",
+                    "fieldName": "workshop"
                   }
                 ],
                 "condition": [
@@ -106,6 +109,9 @@
                 "@global.parent_app": [
                   "value"
                 ],
+                "@global.workshop": [
+                  "value"
+                ],
                 "!@local.do_workshops_together": [
                   "condition"
                 ]
@@ -113,13 +119,10 @@
             },
             {
               "name": "text",
-              "value": "Hi @fields.group_name! Today we are celebrating two months of using @global.parent_app! \n\nYou are doing great! This week’s workshop will help you know what to do when your teen is not following the household rules.",
+              "value": "Hi @fields.group_name! Today we are celebrating two months of using @global.parent_app! \n\nYou are doing great! This week’s @global.workshop will help you know what to do when your teen is not following the household rules.",
               "_translations": {
                 "value": {
-                  "tz_sw": true,
-                  "za_af": true,
-                  "za_st": true,
-                  "za_tn": true
+                  "tz_sw": true
                 }
               },
               "condition": "@local.do_workshops_together",
@@ -128,16 +131,22 @@
               "_dynamicFields": {
                 "value": [
                   {
-                    "fullExpression": "Hi @fields.group_name! Today we are celebrating two months of using @global.parent_app! \n\nYou are doing great! This week’s workshop will help you know what to do when your teen is not following the household rules.",
+                    "fullExpression": "Hi @fields.group_name! Today we are celebrating two months of using @global.parent_app! \n\nYou are doing great! This week’s @global.workshop will help you know what to do when your teen is not following the household rules.",
                     "matchedExpression": "@fields.group_name",
                     "type": "fields",
                     "fieldName": "group_name"
                   },
                   {
-                    "fullExpression": "Hi @fields.group_name! Today we are celebrating two months of using @global.parent_app! \n\nYou are doing great! This week’s workshop will help you know what to do when your teen is not following the household rules.",
+                    "fullExpression": "Hi @fields.group_name! Today we are celebrating two months of using @global.parent_app! \n\nYou are doing great! This week’s @global.workshop will help you know what to do when your teen is not following the household rules.",
                     "matchedExpression": "@global.parent_app",
                     "type": "global",
                     "fieldName": "parent_app"
+                  },
+                  {
+                    "fullExpression": "Hi @fields.group_name! Today we are celebrating two months of using @global.parent_app! \n\nYou are doing great! This week’s @global.workshop will help you know what to do when your teen is not following the household rules.",
+                    "matchedExpression": "@global.workshop",
+                    "type": "global",
+                    "fieldName": "workshop"
                   }
                 ],
                 "condition": [
@@ -156,6 +165,9 @@
                 "@global.parent_app": [
                   "value"
                 ],
+                "@global.workshop": [
+                  "value"
+                ],
                 "@local.do_workshops_together": [
                   "condition"
                 ]
@@ -168,5 +180,5 @@
       "_nested_name": "m_workshop_released"
     }
   ],
-  "_xlsxPath": "global/in_week_messages/in_week_message_texts/w_consequence_messages.xlsx"
+  "_xlsxPath": "global/top_templates/in_week_messages/in_week_message_texts/w_consequence_messages.xlsx"
 }

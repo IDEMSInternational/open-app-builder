@@ -124,6 +124,72 @@
                   "condition"
                 ]
               }
+            },
+            {
+              "type": "subtitle",
+              "name": "@item.id",
+              "value": "@item.description",
+              "_translations": {
+                "value": {}
+              },
+              "condition": "!@item.image_asset && @item.description",
+              "parameter_list": {
+                "style": "center tiny"
+              },
+              "_nested_name": "global_funders.loop_funders_image.@item.id",
+              "_dynamicFields": {
+                "name": [
+                  {
+                    "fullExpression": "@item.id",
+                    "matchedExpression": "@item.id",
+                    "type": "item",
+                    "fieldName": "id"
+                  }
+                ],
+                "value": [
+                  {
+                    "fullExpression": "@item.description",
+                    "matchedExpression": "@item.description",
+                    "type": "item",
+                    "fieldName": "description"
+                  }
+                ],
+                "condition": [
+                  {
+                    "fullExpression": "!@item.image_asset && @item.description",
+                    "matchedExpression": "!@item.image_asset",
+                    "type": "item",
+                    "fieldName": "image_asset"
+                  },
+                  {
+                    "fullExpression": "!@item.image_asset && @item.description",
+                    "matchedExpression": "@item.description",
+                    "type": "item",
+                    "fieldName": "description"
+                  }
+                ],
+                "_nested_name": [
+                  {
+                    "fullExpression": "global_funders.loop_funders_image.@item.id",
+                    "matchedExpression": "@item.id",
+                    "type": "item",
+                    "fieldName": "id"
+                  }
+                ]
+              },
+              "_dynamicDependencies": {
+                "@item.id": [
+                  "name",
+                  "_nested_name"
+                ],
+                "@item.description": [
+                  "value",
+                  "condition"
+                ],
+                "!@item.image_asset": [
+                  "condition"
+                ]
+              }
             }
           ],
           "_nested_name": "global_funders.loop_funders_image",
@@ -145,86 +211,6 @@
         }
       ],
       "_nested_name": "global_funders"
-    },
-    {
-      "type": "items",
-      "name": "loop_funders_description",
-      "value": "@local.funders_data",
-      "rows": [
-        {
-          "type": "text",
-          "name": "@item.id",
-          "value": "@item.description",
-          "_translations": {
-            "value": {}
-          },
-          "condition": "@item.description",
-          "parameter_list": {
-            "style": "center"
-          },
-          "_nested_name": "loop_funders_description.@item.id",
-          "_dynamicFields": {
-            "name": [
-              {
-                "fullExpression": "@item.id",
-                "matchedExpression": "@item.id",
-                "type": "item",
-                "fieldName": "id"
-              }
-            ],
-            "value": [
-              {
-                "fullExpression": "@item.description",
-                "matchedExpression": "@item.description",
-                "type": "item",
-                "fieldName": "description"
-              }
-            ],
-            "condition": [
-              {
-                "fullExpression": "@item.description",
-                "matchedExpression": "@item.description",
-                "type": "item",
-                "fieldName": "description"
-              }
-            ],
-            "_nested_name": [
-              {
-                "fullExpression": "loop_funders_description.@item.id",
-                "matchedExpression": "@item.id",
-                "type": "item",
-                "fieldName": "id"
-              }
-            ]
-          },
-          "_dynamicDependencies": {
-            "@item.id": [
-              "name",
-              "_nested_name"
-            ],
-            "@item.description": [
-              "value",
-              "condition"
-            ]
-          }
-        }
-      ],
-      "_nested_name": "loop_funders_description",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "@local.funders_data",
-            "matchedExpression": "@local.funders_data",
-            "type": "local",
-            "fieldName": "funders_data"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@local.funders_data": [
-          "value"
-        ]
-      }
     }
   ],
   "_xlsxPath": "global/core_templates/core_templates_app_launch.xlsx"

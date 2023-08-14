@@ -63,13 +63,10 @@
           "rows": [
             {
               "name": "text",
-              "value": "Hi @fields.user_name! You are starting your second month of using @global.parent_app. Amazing! \n\nAlmost every family struggles with money issues, therefore, this week’s workshop will give you a tool that will help you to plan your expenses so you can have enough money to get through the month.",
+              "value": "Hi @fields.user_name! You are starting your second month of using @global.parent_app. Amazing! \n\nAlmost every family struggles with money issues, therefore, this week’s @global.workshop will give you a tool that will help you to plan your expenses so you can have enough money to get through the month.",
               "_translations": {
                 "value": {
-                  "tz_sw": true,
-                  "za_af": true,
-                  "za_st": true,
-                  "za_tn": true
+                  "tz_sw": true
                 }
               },
               "condition": "!@local.do_workshops_together",
@@ -78,16 +75,22 @@
               "_dynamicFields": {
                 "value": [
                   {
-                    "fullExpression": "Hi @fields.user_name! You are starting your second month of using @global.parent_app. Amazing! \n\nAlmost every family struggles with money issues, therefore, this week’s workshop will give you a tool that will help you to plan your expenses so you can have enough money to get through the month.",
+                    "fullExpression": "Hi @fields.user_name! You are starting your second month of using @global.parent_app. Amazing! \n\nAlmost every family struggles with money issues, therefore, this week’s @global.workshop will give you a tool that will help you to plan your expenses so you can have enough money to get through the month.",
                     "matchedExpression": "@fields.user_name",
                     "type": "fields",
                     "fieldName": "user_name"
                   },
                   {
-                    "fullExpression": "Hi @fields.user_name! You are starting your second month of using @global.parent_app. Amazing! \n\nAlmost every family struggles with money issues, therefore, this week’s workshop will give you a tool that will help you to plan your expenses so you can have enough money to get through the month.",
+                    "fullExpression": "Hi @fields.user_name! You are starting your second month of using @global.parent_app. Amazing! \n\nAlmost every family struggles with money issues, therefore, this week’s @global.workshop will give you a tool that will help you to plan your expenses so you can have enough money to get through the month.",
                     "matchedExpression": "@global.parent_app",
                     "type": "global",
                     "fieldName": "parent_app"
+                  },
+                  {
+                    "fullExpression": "Hi @fields.user_name! You are starting your second month of using @global.parent_app. Amazing! \n\nAlmost every family struggles with money issues, therefore, this week’s @global.workshop will give you a tool that will help you to plan your expenses so you can have enough money to get through the month.",
+                    "matchedExpression": "@global.workshop",
+                    "type": "global",
+                    "fieldName": "workshop"
                   }
                 ],
                 "condition": [
@@ -106,6 +109,9 @@
                 "@global.parent_app": [
                   "value"
                 ],
+                "@global.workshop": [
+                  "value"
+                ],
                 "!@local.do_workshops_together": [
                   "condition"
                 ]
@@ -113,13 +119,10 @@
             },
             {
               "name": "text",
-              "value": "Hi @fields.group_name! You are starting your second month of using @global.parent_app. Amazing! \n\nAlmost every family struggles with money issues, therefore, this week’s workshop will give you a tool that will help you to plan your expenses so you can have enough money to get through the month.",
+              "value": "Hi @fields.group_name! You are starting your second month of using @global.parent_app. Amazing! \n\nAlmost every family struggles with money issues, therefore, this week’s @global.workshop will give you a tool that will help you to plan your expenses so you can have enough money to get through the month.",
               "_translations": {
                 "value": {
-                  "tz_sw": true,
-                  "za_af": true,
-                  "za_st": true,
-                  "za_tn": true
+                  "tz_sw": true
                 }
               },
               "condition": "@local.do_workshops_together",
@@ -128,16 +131,22 @@
               "_dynamicFields": {
                 "value": [
                   {
-                    "fullExpression": "Hi @fields.group_name! You are starting your second month of using @global.parent_app. Amazing! \n\nAlmost every family struggles with money issues, therefore, this week’s workshop will give you a tool that will help you to plan your expenses so you can have enough money to get through the month.",
+                    "fullExpression": "Hi @fields.group_name! You are starting your second month of using @global.parent_app. Amazing! \n\nAlmost every family struggles with money issues, therefore, this week’s @global.workshop will give you a tool that will help you to plan your expenses so you can have enough money to get through the month.",
                     "matchedExpression": "@fields.group_name",
                     "type": "fields",
                     "fieldName": "group_name"
                   },
                   {
-                    "fullExpression": "Hi @fields.group_name! You are starting your second month of using @global.parent_app. Amazing! \n\nAlmost every family struggles with money issues, therefore, this week’s workshop will give you a tool that will help you to plan your expenses so you can have enough money to get through the month.",
+                    "fullExpression": "Hi @fields.group_name! You are starting your second month of using @global.parent_app. Amazing! \n\nAlmost every family struggles with money issues, therefore, this week’s @global.workshop will give you a tool that will help you to plan your expenses so you can have enough money to get through the month.",
                     "matchedExpression": "@global.parent_app",
                     "type": "global",
                     "fieldName": "parent_app"
+                  },
+                  {
+                    "fullExpression": "Hi @fields.group_name! You are starting your second month of using @global.parent_app. Amazing! \n\nAlmost every family struggles with money issues, therefore, this week’s @global.workshop will give you a tool that will help you to plan your expenses so you can have enough money to get through the month.",
+                    "matchedExpression": "@global.workshop",
+                    "type": "global",
+                    "fieldName": "workshop"
                   }
                 ],
                 "condition": [
@@ -156,6 +165,9 @@
                 "@global.parent_app": [
                   "value"
                 ],
+                "@global.workshop": [
+                  "value"
+                ],
                 "@local.do_workshops_together": [
                   "condition"
                 ]
@@ -168,5 +180,5 @@
       "_nested_name": "m_workshop_released"
     }
   ],
-  "_xlsxPath": "global/in_week_messages/in_week_message_texts/w_money_messages.xlsx"
+  "_xlsxPath": "global/top_templates/in_week_messages/in_week_message_texts/w_money_messages.xlsx"
 }

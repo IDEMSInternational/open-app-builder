@@ -23,11 +23,11 @@
           "trigger": "click",
           "action_id": "set_field",
           "args": [
-            "w_self_care_m_relax.sent",
+            "w_self_care_m_relax_sent",
             true
           ],
-          "_raw": "click | set_field: w_self_care_m_relax.sent : true",
-          "_cleaned": "click | set_field: w_self_care_m_relax.sent : true"
+          "_raw": "click | set_field: w_self_care_m_relax_sent : true",
+          "_cleaned": "click | set_field: w_self_care_m_relax_sent : true"
         }
       ],
       "priority": 12.9,
@@ -80,11 +80,11 @@
           "trigger": "click",
           "action_id": "set_field",
           "args": [
-            "w_self_care_m_hp_reminder.sent",
+            "w_self_care_m_hp_reminder_sent",
             true
           ],
-          "_raw": "click | set_field: w_self_care_m_hp_reminder.sent : true",
-          "_cleaned": "click | set_field: w_self_care_m_hp_reminder.sent : true"
+          "_raw": "click | set_field: w_self_care_m_hp_reminder_sent : true",
+          "_cleaned": "click | set_field: w_self_care_m_hp_reminder_sent : true"
         }
       ],
       "priority": 12.4,
@@ -152,11 +152,11 @@
           "trigger": "click",
           "action_id": "set_field",
           "args": [
-            "m_parent_points_overview.sent",
+            "m_parent_points_overview_sent",
             true
           ],
-          "_raw": "click | set_field: m_parent_points_overview.sent : true",
-          "_cleaned": "click | set_field: m_parent_points_overview.sent : true"
+          "_raw": "click | set_field: m_parent_points_overview_sent : true",
+          "_cleaned": "click | set_field: m_parent_points_overview_sent : true"
         }
       ],
       "priority": 12.3,
@@ -210,11 +210,11 @@
           "trigger": "click",
           "action_id": "set_field",
           "args": [
-            "w_self_care_m_w_tomorrow.sent",
+            "w_self_care_m_w_tomorrow_sent",
             true
           ],
-          "_raw": "click | set_field: w_self_care_m_w_tomorrow.sent : true",
-          "_cleaned": "click | set_field: w_self_care_m_w_tomorrow.sent : true"
+          "_raw": "click | set_field: w_self_care_m_w_tomorrow_sent : true",
+          "_cleaned": "click | set_field: w_self_care_m_w_tomorrow_sent : true"
         }
       ],
       "priority": 12.1,
@@ -244,11 +244,7 @@
       "_translations": {
         "title": {},
         "text": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_zu": true
+          "tz_sw": true
         }
       },
       "_translatedFields": {
@@ -256,10 +252,10 @@
           "eng": "@global.m_w_tomorrow"
         },
         "text": {
-          "eng": "Start a brand new @global.parent_app workshop tomorrow. You'll see great results!"
+          "eng": "Start a brand new @global.parent_app @global.workshop tomorrow. You'll see great results!"
         }
       },
-      "text": "Start a brand new @global.parent_app workshop tomorrow. You'll see great results!"
+      "text": "Start a brand new @global.parent_app @global.workshop tomorrow. You'll see great results!"
     },
     {
       "id": "w_tomorrow_w_self_care_tog",
@@ -281,11 +277,11 @@
           "trigger": "click",
           "action_id": "set_field",
           "args": [
-            "w_self_care_m_w_tomorrow.sent",
+            "w_self_care_m_w_tomorrow_sent",
             true
           ],
-          "_raw": "click | set_field: w_self_care_m_w_tomorrow.sent : true",
-          "_cleaned": "click | set_field: w_self_care_m_w_tomorrow.sent : true"
+          "_raw": "click | set_field: w_self_care_m_w_tomorrow_sent : true",
+          "_cleaned": "click | set_field: w_self_care_m_w_tomorrow_sent : true"
         }
       ],
       "priority": 12.1,
@@ -317,11 +313,7 @@
       "_translations": {
         "title": {},
         "text": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_zu": true
+          "tz_sw": true
         }
       },
       "_translatedFields": {
@@ -329,10 +321,10 @@
           "eng": "@global.m_w_tomorrow"
         },
         "text": {
-          "eng": "Remember to tell your @global.parent_app partners about the app. Tomorrow, you can start doing @global.parent_app workshops together!"
+          "eng": "Remember to tell your @global.parent_app partners about the app. Tomorrow, you can start doing @global.parent_app @global.workshops together!"
         }
       },
-      "text": "Remember to tell your @global.parent_app partners about the app. Tomorrow, you can start doing @global.parent_app workshops together!"
+      "text": "Remember to tell your @global.parent_app partners about the app. Tomorrow, you can start doing @global.parent_app @global.workshops together!"
     },
     {
       "activation_condition_list": []

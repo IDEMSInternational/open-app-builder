@@ -1,15 +1,20 @@
 import { Injectable } from "@angular/core";
 import { Device } from "@capacitor/device";
+import { AsyncServiceBase } from "../asyncService.base";
 import { DbService } from "../db/db.service";
 
 @Injectable({ providedIn: "root" })
-export class UserMetaService {
+export class UserMetaService extends AsyncServiceBase {
   /** keep an in-memory copy of user to provide synchronously */
   public userMeta: IUserMeta;
-  constructor(private dbService: DbService) {}
+  constructor(private dbService: DbService) {
+    super("UsesrMetaService");
+    this.registerInitFunction(this.initialise);
+  }
 
   /** When first initialising ensure a default profile created and any newer defaults are merged with older user profiles */
-  async init() {
+  private async initialise() {
+    await this.ensureAsyncServicesReady([this.dbService]);
     const userMetaValues = await this.dbService.table<IUserMetaEntry>("user_meta").toArray();
     const userMeta: IUserMeta = USER_DEFAULTS;
     userMetaValues.forEach((v) => {
