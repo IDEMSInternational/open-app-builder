@@ -74,11 +74,9 @@
     {
       "type": "declare_global_constant",
       "name": "m_something_fun",
-      "value": "Something fun",
+      "value": "@global.something_fun",
       "_translations": {
-        "value": {
-          "tz_sw": true
-        }
+        "value": {}
       }
     },
     {

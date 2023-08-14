@@ -52,6 +52,7 @@
       "parameter_list": {
         "style": "column"
       },
+      "condition": "(!!(@local.highlighted_module))",
       "rows": [
         {
           "type": "template",
@@ -98,7 +99,22 @@
           "_nested_name": "dg_highlighted_module.highlighted_module_card"
         }
       ],
-      "_nested_name": "dg_highlighted_module"
+      "_nested_name": "dg_highlighted_module",
+      "_dynamicFields": {
+        "condition": [
+          {
+            "fullExpression": "(!!(@local.highlighted_module))",
+            "matchedExpression": "@local.highlighted_module",
+            "type": "local",
+            "fieldName": "highlighted_module"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.highlighted_module": [
+          "condition"
+        ]
+      }
     },
     {
       "type": "display_group",
@@ -148,9 +164,34 @@
               "exclude_from_translation": true,
               "rows": [
                 {
+                  "name": "relevant_module",
+                  "value": "!(@fields.@item.skipped_field)",
+                  "_translations": {
+                    "value": {}
+                  },
+                  "type": "set_variable",
+                  "_nested_name": "dg_all_modules.carousel.items.relevant_module",
+                  "_dynamicFields": {
+                    "value": [
+                      {
+                        "fullExpression": "!(@fields.@item.skipped_field)",
+                        "matchedExpression": "@item.skipped_field",
+                        "type": "item",
+                        "fieldName": "skipped_field"
+                      }
+                    ]
+                  },
+                  "_dynamicDependencies": {
+                    "@item.skipped_field": [
+                      "value"
+                    ]
+                  }
+                },
+                {
                   "type": "template",
                   "name": "module_card_@item.id",
                   "value": "module_card",
+                  "condition": "@local.relevant_module",
                   "exclude_from_translation": true,
                   "rows": [
                     {
@@ -200,6 +241,14 @@
                         "fieldName": "id"
                       }
                     ],
+                    "condition": [
+                      {
+                        "fullExpression": "@local.relevant_module",
+                        "matchedExpression": "@local.relevant_module",
+                        "type": "local",
+                        "fieldName": "relevant_module"
+                      }
+                    ],
                     "_nested_name": [
                       {
                         "fullExpression": "dg_all_modules.carousel.items.module_card_@item.id",
@@ -213,6 +262,9 @@
                     "@item.id": [
                       "name",
                       "_nested_name"
+                    ],
+                    "@local.relevant_module": [
+                      "condition"
                     ]
                   }
                 }

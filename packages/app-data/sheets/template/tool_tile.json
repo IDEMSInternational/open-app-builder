@@ -4,8 +4,41 @@
   "status": "released",
   "rows": [
     {
+      "name": "workshop",
+      "value": "w_1on1",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "workshop"
+    },
+    {
+      "name": "workshop_concat",
+      "value": "workshop.@local.workshop",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "workshop_concat",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "workshop.@local.workshop",
+            "matchedExpression": "@local.workshop",
+            "type": "local",
+            "fieldName": "workshop"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.workshop": [
+          "value"
+        ]
+      }
+    },
+    {
       "name": "workshop_data",
-      "value": "@data.workshop.w_1on1",
+      "value": "@data.@local.workshop_concat",
       "_translations": {
         "value": {}
       },
@@ -14,39 +47,63 @@
       "_dynamicFields": {
         "value": [
           {
-            "fullExpression": "@data.workshop.w_1on1",
-            "matchedExpression": "@data.workshop.w_1on1",
-            "type": "data",
-            "fieldName": "workshop"
+            "fullExpression": "@data.@local.workshop_concat",
+            "matchedExpression": "@local.workshop_concat",
+            "type": "local",
+            "fieldName": "workshop_concat"
           }
         ]
       },
       "_dynamicDependencies": {
-        "@data.workshop.w_1on1": [
+        "@local.workshop_concat": [
           "value"
         ]
       }
     },
     {
-      "name": "workshop",
-      "value": "@local.workshop_data.id",
+      "name": "tools_concat",
+      "value": "tools.@local.workshop",
       "_translations": {
         "value": {}
       },
       "type": "set_variable",
-      "_nested_name": "workshop",
+      "_nested_name": "tools_concat",
       "_dynamicFields": {
         "value": [
           {
-            "fullExpression": "@local.workshop_data.id",
-            "matchedExpression": "@local.workshop_data.id",
+            "fullExpression": "tools.@local.workshop",
+            "matchedExpression": "@local.workshop",
             "type": "local",
-            "fieldName": "workshop_data"
+            "fieldName": "workshop"
           }
         ]
       },
       "_dynamicDependencies": {
-        "@local.workshop_data.id": [
+        "@local.workshop": [
+          "value"
+        ]
+      }
+    },
+    {
+      "name": "tools_data",
+      "value": "@data.@local.tools_concat",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "tools_data",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@data.@local.tools_concat",
+            "matchedExpression": "@local.tools_concat",
+            "type": "local",
+            "fieldName": "tools_concat"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.tools_concat": [
           "value"
         ]
       }
@@ -109,7 +166,7 @@
       ],
       "parameter_list": {
         "style": "image_text",
-        "first_line_text": "@local.workshop_data.tools",
+        "first_line_text": "@local.tools_data.title",
         "icon_src": "@local.workshop_data.image_asset"
       },
       "name": "tile_component",
@@ -148,10 +205,10 @@
         "parameter_list": {
           "first_line_text": [
             {
-              "fullExpression": "@local.workshop_data.tools",
-              "matchedExpression": "@local.workshop_data.tools",
+              "fullExpression": "@local.tools_data.title",
+              "matchedExpression": "@local.tools_data.title",
               "type": "local",
-              "fieldName": "workshop_data"
+              "fieldName": "tools_data"
             }
           ],
           "icon_src": [
@@ -170,7 +227,7 @@
           "action_list.0._raw",
           "action_list.0._cleaned"
         ],
-        "@local.workshop_data.tools": [
+        "@local.tools_data.title": [
           "parameter_list.first_line_text"
         ],
         "@local.workshop_data.image_asset": [

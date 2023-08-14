@@ -1,0 +1,102 @@
+{
+  "flow_name": "w_svp_intro_text",
+  "flow_subtype": "generated",
+  "flow_type": "template",
+  "rows": [
+    {
+      "name": "workshop_id",
+      "value": "w_svp",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "workshop_id"
+    },
+    {
+      "name": "topic_intro_concat",
+      "value": "topic_intro.@local.workshop_id",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "topic_intro_concat",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "topic_intro.@local.workshop_id",
+            "matchedExpression": "@local.workshop_id",
+            "type": "local",
+            "fieldName": "workshop_id"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.workshop_id": [
+          "value"
+        ]
+      }
+    },
+    {
+      "name": "topic_intro_data",
+      "value": "@data.@local.topic_intro_concat",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "topic_intro_data",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@data.@local.topic_intro_concat",
+            "matchedExpression": "@local.topic_intro_concat",
+            "type": "local",
+            "fieldName": "topic_intro_concat"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.topic_intro_concat": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "template",
+      "name": "suggestions",
+      "value": "suggestions",
+      "rows": [
+        {
+          "name": "description_text",
+          "value": "@local.topic_intro_data.script",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "suggestions.description_text",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@local.topic_intro_data.script",
+                "matchedExpression": "@local.topic_intro_data.script",
+                "type": "local",
+                "fieldName": "topic_intro_data"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@local.topic_intro_data.script": [
+              "value"
+            ]
+          }
+        },
+        {
+          "name": "list_text",
+          "hidden": true,
+          "type": "set_variable",
+          "_nested_name": "suggestions.list_text"
+        }
+      ],
+      "_nested_name": "suggestions"
+    }
+  ]
+}

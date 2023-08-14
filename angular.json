@@ -100,12 +100,12 @@
                 {
                   "type": "initial",
                   "maximumWarning": "850kb",
-                  "maximumError": "4mb"
+                  "maximumError": "5mb"
                 },
                 {
                   "type": "anyComponentStyle",
                   "maximumWarning": "3kb",
-                  "maximumError": "16kb"
+                  "maximumError": "200kb"
                 }
               ]
             },

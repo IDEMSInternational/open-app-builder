@@ -17,7 +17,7 @@
     {
       "type": "declare_global_constant",
       "name": "negative_consequence_2",
-      "value": "Take 5 minutes pause in separate part of the room",
+      "value": "Take 5 minutes' pause in a separate part of the room",
       "_translations": {
         "value": {
           "tz_sw": true
@@ -87,7 +87,7 @@
     {
       "type": "declare_global_constant",
       "name": "positive_consequence_4",
-      "value": "Watching teen’s T.V. show together",
+      "value": "Watching teen’s TV show together",
       "_translations": {
         "value": {
           "tz_sw": true

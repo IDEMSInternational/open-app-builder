@@ -67,7 +67,7 @@
     {
       "type": "declare_global_constant",
       "name": "spend_time_idea_7",
-      "value": "Watch a T.V. show",
+      "value": "Watch a TV show",
       "_translations": {
         "value": {
           "tz_sw": true

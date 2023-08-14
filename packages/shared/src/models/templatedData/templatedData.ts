@@ -62,7 +62,7 @@ export class TemplatedData {
    * Main data conversion method
    * Iterate over data, parse string values and nested objects and arrays recursively
    */
-  public parse(value = this.initialValue) {
+  public parse<T>(value: T = this.initialValue) {
     if (value) {
       if (typeof value === "string") {
         value = this.parseTemplatedString(value);
@@ -70,7 +70,7 @@ export class TemplatedData {
       // recurssively convert array and json-like objects
       if (typeof value === "object") {
         if (Array.isArray(value)) {
-          value = value.map((v) => this.parse(v));
+          value = value.map((v) => this.parse(v)) as any;
         }
         if (value.constructor === {}.constructor) {
           Object.keys(value).forEach((key) => (value[key] = this.parse(value[key])));

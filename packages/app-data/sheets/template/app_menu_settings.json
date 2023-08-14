@@ -408,6 +408,82 @@
       ],
       "condition": false,
       "_nested_name": "button_10"
+    },
+    {
+      "type": "button",
+      "name": "button_11",
+      "value": "Unlock New Content",
+      "_translations": {
+        "value": {
+          "tz_sw": true
+        }
+      },
+      "action_list": [
+        {
+          "trigger": "click",
+          "action_id": "go_to",
+          "args": [
+            "app_menu_post_rct_locked"
+          ],
+          "_raw": "click | go_to: app_menu_post_rct_locked",
+          "_cleaned": "click | go_to: app_menu_post_rct_locked"
+        }
+      ],
+      "condition": "!@fields.post_rct_access",
+      "_nested_name": "button_11",
+      "_dynamicFields": {
+        "condition": [
+          {
+            "fullExpression": "!@fields.post_rct_access",
+            "matchedExpression": "!@fields.post_rct_access",
+            "type": "fields",
+            "fieldName": "post_rct_access"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "!@fields.post_rct_access": [
+          "condition"
+        ]
+      }
+    },
+    {
+      "type": "button",
+      "name": "button_12",
+      "value": "Unlock New Content",
+      "_translations": {
+        "value": {
+          "tz_sw": true
+        }
+      },
+      "action_list": [
+        {
+          "trigger": "click",
+          "action_id": "go_to",
+          "args": [
+            "app_menu_post_rct_unlocked"
+          ],
+          "_raw": "click | go_to: app_menu_post_rct_unlocked",
+          "_cleaned": "click | go_to: app_menu_post_rct_unlocked"
+        }
+      ],
+      "condition": "@fields.post_rct_access",
+      "_nested_name": "button_12",
+      "_dynamicFields": {
+        "condition": [
+          {
+            "fullExpression": "@fields.post_rct_access",
+            "matchedExpression": "@fields.post_rct_access",
+            "type": "fields",
+            "fieldName": "post_rct_access"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@fields.post_rct_access": [
+          "condition"
+        ]
+      }
     }
   ],
   "_xlsxPath": "global/core_templates/core_templates_settings.xlsx"

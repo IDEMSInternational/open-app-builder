@@ -1,0 +1,59 @@
+{
+  "flow_type": "data_list",
+  "flow_name": "w_grief_specific_task_gs",
+  "status": "released",
+  "rows": [
+    {
+      "id": "read_grief_conflict",
+      "individual": true,
+      "together": true,
+      "priority": 11,
+      "story_id": "grief_conflict",
+      "has_single_task": false,
+      "title": "@global.story @global.part_connector @data.story.grief_conflict.title",
+      "_translations": {
+        "title": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "@global.story @global.part_connector @data.story.grief_conflict.title"
+        }
+      }
+    },
+    {
+      "id": "read_grief_support",
+      "individual": true,
+      "together": true,
+      "priority": 13,
+      "story_id": "grief_support",
+      "has_single_task": false,
+      "title": "@global.story @global.part_connector @data.story.grief_support.title",
+      "_translations": {
+        "title": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "@global.story @global.part_connector @data.story.grief_support.title"
+        }
+      }
+    },
+    {
+      "id": "learn_name_feelings",
+      "individual": true,
+      "together": true,
+      "priority": 71,
+      "has_single_task": true,
+      "template": "w_grief_learn_name_feelings",
+      "title": "@data.learn.name_feelings.title",
+      "_translations": {
+        "title": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "@data.learn.name_feelings.title"
+        }
+      }
+    }
+  ],
+  "_xlsxPath": "global/data/workshop_data/workshop_task_groups.xlsx"
+}

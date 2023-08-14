@@ -1,0 +1,217 @@
+{
+  "flow_type": "template",
+  "flow_name": "box_name_feelings",
+  "status": "released",
+  "rows": [
+    {
+      "type": "text",
+      "name": "text_top",
+      "value": "Sit with your teen and choose:\n* How could a person feel when someone they love passes away?\n* How do you feel now?",
+      "_translations": {
+        "value": {}
+      },
+      "_nested_name": "text_top"
+    },
+    {
+      "type": "display_grid",
+      "name": "dg_emotions",
+      "parameter_list": {
+        "item_width": "100px"
+      },
+      "rows": [
+        {
+          "type": "text",
+          "name": "dashed_box_1",
+          "value": "Happy",
+          "_translations": {
+            "value": {}
+          },
+          "parameter_list": {
+            "text_align": "center"
+          },
+          "_nested_name": "dg_emotions.dashed_box_1"
+        },
+        {
+          "type": "text",
+          "name": "dashed_box_2",
+          "value": "Sad",
+          "_translations": {
+            "value": {
+              "tz_sw": true
+            }
+          },
+          "parameter_list": {
+            "text_align": "center"
+          },
+          "_nested_name": "dg_emotions.dashed_box_2"
+        },
+        {
+          "type": "text",
+          "name": "dashed_box_3",
+          "value": "Scared",
+          "_translations": {
+            "value": {
+              "tz_sw": true
+            }
+          },
+          "parameter_list": {
+            "text_align": "center"
+          },
+          "_nested_name": "dg_emotions.dashed_box_3"
+        },
+        {
+          "type": "text",
+          "name": "dashed_box_4",
+          "value": "Loved",
+          "_translations": {
+            "value": {}
+          },
+          "parameter_list": {
+            "text_align": "center"
+          },
+          "_nested_name": "dg_emotions.dashed_box_4"
+        },
+        {
+          "type": "text",
+          "name": "dashed_box_5",
+          "value": "Angry",
+          "_translations": {
+            "value": {
+              "tz_sw": true
+            }
+          },
+          "parameter_list": {
+            "text_align": "center"
+          },
+          "_nested_name": "dg_emotions.dashed_box_5"
+        },
+        {
+          "type": "text",
+          "name": "dashed_box_6",
+          "value": "Brave",
+          "_translations": {
+            "value": {}
+          },
+          "parameter_list": {
+            "text_align": "center"
+          },
+          "_nested_name": "dg_emotions.dashed_box_6"
+        },
+        {
+          "type": "text",
+          "name": "dashed_box_7",
+          "value": "Lost",
+          "_translations": {
+            "value": {}
+          },
+          "parameter_list": {
+            "text_align": "center"
+          },
+          "_nested_name": "dg_emotions.dashed_box_7"
+        },
+        {
+          "type": "text",
+          "name": "dashed_box_8",
+          "value": "Hopeful",
+          "_translations": {
+            "value": {
+              "tz_sw": true
+            }
+          },
+          "parameter_list": {
+            "text_align": "center"
+          },
+          "_nested_name": "dg_emotions.dashed_box_8"
+        },
+        {
+          "type": "text",
+          "name": "dashed_box_9",
+          "value": "Shocked",
+          "_translations": {
+            "value": {}
+          },
+          "parameter_list": {
+            "text_align": "center"
+          },
+          "_nested_name": "dg_emotions.dashed_box_9"
+        },
+        {
+          "type": "text",
+          "name": "dashed_box_10",
+          "value": "Guilty",
+          "_translations": {
+            "value": {}
+          },
+          "parameter_list": {
+            "text_align": "center"
+          },
+          "_nested_name": "dg_emotions.dashed_box_10"
+        },
+        {
+          "type": "text",
+          "name": "dashed_box_11",
+          "value": "Numb",
+          "_translations": {
+            "value": {}
+          },
+          "parameter_list": {
+            "text_align": "center"
+          },
+          "_nested_name": "dg_emotions.dashed_box_11"
+        },
+        {
+          "type": "text",
+          "name": "dashed_box_12",
+          "value": "Lonely",
+          "_translations": {
+            "value": {
+              "tz_sw": true
+            }
+          },
+          "parameter_list": {
+            "text_align": "center"
+          },
+          "_nested_name": "dg_emotions.dashed_box_12"
+        }
+      ],
+      "_nested_name": "dg_emotions"
+    },
+    {
+      "type": "text",
+      "name": "text_bottom",
+      "value": "You can choose more than one feeling (or all feelings!), and you can add other feelings if they are not here.",
+      "_translations": {
+        "value": {}
+      },
+      "_nested_name": "text_bottom"
+    },
+    {
+      "type": "template",
+      "name": "nav_buttons",
+      "value": "nav_buttons",
+      "action_list": [
+        {
+          "trigger": "completed",
+          "action_id": "emit",
+          "args": [
+            "completed"
+          ],
+          "_raw": "completed | emit:completed",
+          "_cleaned": "completed | emit:completed"
+        },
+        {
+          "trigger": "uncompleted",
+          "action_id": "emit",
+          "args": [
+            "uncompleted"
+          ],
+          "_raw": "uncompleted | emit:uncompleted",
+          "_cleaned": "uncompleted | emit:uncompleted"
+        }
+      ],
+      "rows": [],
+      "_nested_name": "nav_buttons"
+    }
+  ],
+  "_xlsxPath": "global/top_templates/workshop_templates/workshop_grief.xlsx"
+}

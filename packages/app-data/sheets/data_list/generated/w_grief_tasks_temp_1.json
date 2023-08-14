@@ -1,0 +1,109 @@
+{
+  "flow_name": "w_grief_tasks_temp_1",
+  "flow_subtype": "generated",
+  "flow_type": "data_list",
+  "rows": [
+    {
+      "id": "welcome_individual",
+      "group": "welcome_individual",
+      "individual": true,
+      "together": false,
+      "template": "w_grief_welcome_individual"
+    },
+    {
+      "id": "care_together",
+      "group": "care_together",
+      "individual": false,
+      "together": true,
+      "template": "w_grief_care_together"
+    },
+    {
+      "id": "relax",
+      "group": "relax",
+      "individual": true,
+      "together": true,
+      "template": "w_grief_relax"
+    },
+    {
+      "id": "reflect_together",
+      "group": "reflect_together",
+      "individual": false,
+      "together": true,
+      "template": "w_grief_reflect_together"
+    },
+    {
+      "id": "intro",
+      "group": "intro",
+      "individual": true,
+      "together": true,
+      "template": "w_grief_intro"
+    },
+    {
+      "id": "tools_activity",
+      "group": "tools_activity",
+      "individual": true,
+      "together": true,
+      "template": "w_grief_tools_activity"
+    },
+    {
+      "id": "home_practice",
+      "group": "home_practice",
+      "individual": true,
+      "together": true,
+      "template": "w_grief_home_practice"
+    },
+    {
+      "id": "ending",
+      "group": "ending",
+      "individual": true,
+      "together": true,
+      "template": "w_grief_ending"
+    },
+    {
+      "id": "hp_review",
+      "group": "hp_review",
+      "individual": true,
+      "together": true,
+      "template": "w_grief_hp_review"
+    },
+    {
+      "id": "read_grief_conflict",
+      "group": "read_grief_conflict",
+      "individual": true,
+      "together": true,
+      "template": "w_grief_read_grief_conflict",
+      "rel_priority": 1
+    },
+    {
+      "id": "quiz_grief_conflict",
+      "group": "read_grief_conflict",
+      "individual": true,
+      "together": false,
+      "template": "w_grief_quiz_grief_conflict",
+      "rel_priority": 2
+    },
+    {
+      "id": "read_grief_support",
+      "group": "read_grief_support",
+      "individual": true,
+      "together": true,
+      "template": "w_grief_read_grief_support",
+      "rel_priority": 1
+    },
+    {
+      "id": "quiz_grief_support",
+      "group": "read_grief_support",
+      "individual": true,
+      "together": false,
+      "template": "w_grief_quiz_grief_support",
+      "rel_priority": 2
+    },
+    {
+      "id": "learn_name_feelings",
+      "group": "learn_name_feelings",
+      "individual": true,
+      "together": true,
+      "template": "w_grief_learn_name_feelings"
+    }
+  ]
+}
