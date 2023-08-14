@@ -22,6 +22,8 @@ config.translations = {
   source_strings_path: "packages/app-data/translations_source/to_translate",
 };
 
+config.app_data.assets_filter_function = (fileEntry) => !fileEntry.relativePath.includes("uncompressed")
+
 config.app_config.APP_LANGUAGES.default = "gb_en";
 config.app_config.APP_SIDEMENU_DEFAULTS.title = "ParentApp";
 config.app_config.APP_HEADER_DEFAULTS.title = "ParentApp";

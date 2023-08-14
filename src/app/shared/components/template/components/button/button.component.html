@@ -1,18 +1,50 @@
-<ion-button
-  [class]="'full standard medium' + ' ' + style + ' ' + buttonAlign"
-  [disabled]="disabled"
-  (click)="triggerActions('click')"
-  [attr.data-param-style]="style"
->
-  <ion-icon *ngIf="icon" slot="start" src="{{ icon | plhAsset }}"></ion-icon>
-  <span *ngIf="_row.value" [class]="textAlign" [innerHTML]="_row.value | markdown"> </span>
-  <span *ngIf="_row.rows" class="children">
-    <plh-template-component
-      *ngFor="let childRow of _row.rows | filterDisplayComponent; trackBy: trackByRow"
-      class="child"
-      [row]="childRow"
-      [parent]="parent"
-      [attr.data-rowname]="_row.name"
-    ></plh-template-component>
-  </span>
-</ion-button>
+<ng-container [ngSwitch]="variantMap.cardPortrait">
+  <!-- Default variant -->
+  <ion-button
+    *ngSwitchDefault
+    [class]="'full standard medium' + ' ' + params.style + ' ' + params.buttonAlign"
+    [disabled]="params.disabled"
+    (click)="triggerActions('click')"
+    [attr.data-param-style]="params.style"
+    [attr.data-variant]="params.variant"
+  >
+    <ion-icon *ngIf="params.icon" slot="start" src="{{ params.icon | plhAsset }}"></ion-icon>
+    <span
+      *ngIf="_row.value"
+      [class]="'left ' + params.textAlign"
+      [innerHTML]="_row.value | markdown"
+    >
+    </span>
+    <span *ngIf="_row.rows" class="children">
+      <plh-template-component
+        *ngFor="let childRow of _row.rows | filterDisplayComponent; trackBy: trackByRow"
+        class="child"
+        [row]="childRow"
+        [parent]="parent"
+        [attr.data-rowname]="_row.name"
+      ></plh-template-component>
+    </span>
+  </ion-button>
+
+  <!-- "card-portrait" variant. This variant is not achievable using an ion-button -->
+  <div
+    *ngSwitchCase="true"
+    class="button-container"
+    (click)="triggerActions('click')"
+    [attr.data-variant]="params.variant"
+  >
+    <img *ngIf="params.image" src="{{ params.image | plhAsset }}" />
+    <div *ngIf="_row.value" [class]="'button-text ' + params.textAlign">
+      {{ _row.value }}
+    </div>
+    <span *ngIf="_row.rows" class="children">
+      <plh-template-component
+        *ngFor="let childRow of _row.rows | filterDisplayComponent; trackBy: trackByRow"
+        class="child"
+        [row]="childRow"
+        [parent]="parent"
+        [attr.data-rowname]="_row.name"
+      ></plh-template-component>
+    </span>
+  </div>
+</ng-container>
