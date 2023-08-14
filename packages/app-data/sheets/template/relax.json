@@ -257,7 +257,7 @@
         },
         {
           "name": "activity_image",
-          "value": "plh_images/workshop_modes/guide_2/relax.svg",
+          "value": "plh_images/workshop_modes/individual/relax.svg",
           "_translations": {
             "value": {}
           },
@@ -314,15 +314,10 @@
         },
         {
           "name": "intro_text",
-          "value": "Let’s do a short relaxation activity together – it will take less than 1 minute and you will feel more relaxed.",
+          "value": "Let’s do a short relaxation activity together. It will only take a moment and you will feel more relaxed.",
           "_translations": {
             "value": {
-              "tz_sw": true,
-              "za_af": true,
-              "za_st": true,
-              "za_tn": true,
-              "za_xh": true,
-              "za_zu": true
+              "tz_sw": true
             }
           },
           "type": "set_variable",
@@ -446,7 +441,7 @@
             },
             {
               "name": "image_src",
-              "value": "plh_images/habits/relax_chair.gif",
+              "value": "plh_images/habits/breathe.svg",
               "_translations": {
                 "value": {}
               },

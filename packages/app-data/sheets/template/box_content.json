@@ -50,8 +50,8 @@
     },
     {
       "type": "template",
-      "name": "box_content_pages",
-      "value": "box_content_pages",
+      "name": "box_story_pages",
+      "value": "box_story_pages",
       "action_list": [
         {
           "trigger": "completed",
@@ -81,7 +81,7 @@
             "value": {}
           },
           "type": "set_variable",
-          "_nested_name": "box_content_pages.story_id",
+          "_nested_name": "box_story_pages.story_id",
           "_dynamicFields": {
             "value": [
               {
@@ -105,7 +105,7 @@
             "value": {}
           },
           "type": "set_variable",
-          "_nested_name": "box_content_pages.use_completed_chevron",
+          "_nested_name": "box_story_pages.use_completed_chevron",
           "_dynamicFields": {
             "value": [
               {
@@ -129,7 +129,7 @@
             "value": {}
           },
           "type": "set_variable",
-          "_nested_name": "box_content_pages.use_completed_more",
+          "_nested_name": "box_story_pages.use_completed_more",
           "_dynamicFields": {
             "value": [
               {
@@ -147,7 +147,7 @@
           }
         }
       ],
-      "_nested_name": "box_content_pages",
+      "_nested_name": "box_story_pages",
       "_dynamicFields": {
         "condition": [
           {
@@ -166,8 +166,8 @@
     },
     {
       "type": "template",
-      "name": "box_content_scroll",
-      "value": "box_content_scroll",
+      "name": "box_story_scroll",
+      "value": "box_story_scroll",
       "action_list": [
         {
           "trigger": "completed",
@@ -197,7 +197,7 @@
             "value": {}
           },
           "type": "set_variable",
-          "_nested_name": "box_content_scroll.story_id",
+          "_nested_name": "box_story_scroll.story_id",
           "_dynamicFields": {
             "value": [
               {
@@ -215,7 +215,7 @@
           }
         }
       ],
-      "_nested_name": "box_content_scroll",
+      "_nested_name": "box_story_scroll",
       "_dynamicFields": {
         "condition": [
           {

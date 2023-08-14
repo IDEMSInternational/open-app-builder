@@ -72,7 +72,7 @@ export class DomHandler {
   public static index(element: any): number {
     let children = element.parentNode.childNodes;
     let num = 0;
-    for (var i = 0; i < children.length; i++) {
+    for (let i = 0; i < children.length; i++) {
       if (children[i] == element) return num;
       if (children[i].nodeType == 1) num++;
     }
@@ -82,7 +82,7 @@ export class DomHandler {
   public static indexWithinGroup(element: any, attributeName: string): number {
     let children = element.parentNode ? element.parentNode.childNodes : [];
     let num = 0;
-    for (var i = 0; i < children.length; i++) {
+    for (let i = 0; i < children.length; i++) {
       if (children[i] == element) return num;
       if (
         children[i].attributes &&
@@ -289,7 +289,7 @@ export class DomHandler {
   }
 
   public static fadeOut(element, ms) {
-    var opacity = 1,
+    let opacity = 1,
       interval = 50,
       duration = ms,
       gap = interval / duration;
@@ -317,8 +317,8 @@ export class DomHandler {
   }
 
   public static matches(element, selector: string): boolean {
-    var p = Element.prototype;
-    var f =
+    let p = Element.prototype;
+    let f =
       p["matches"] ||
       p.webkitMatchesSelector ||
       p["mozMatchesSelector"] ||
@@ -423,7 +423,7 @@ export class DomHandler {
   }
 
   public static getOffset(el) {
-    var rect = el.getBoundingClientRect();
+    let rect = el.getBoundingClientRect();
 
     return {
       top:
@@ -449,22 +449,22 @@ export class DomHandler {
   }
 
   public static isIE() {
-    var ua = window.navigator.userAgent;
+    let ua = window.navigator.userAgent;
 
-    var msie = ua.indexOf("MSIE ");
+    let msie = ua.indexOf("MSIE ");
     if (msie > 0) {
       // IE 10 or older => return version number
       return true;
     }
 
-    var trident = ua.indexOf("Trident/");
+    let trident = ua.indexOf("Trident/");
     if (trident > 0) {
       // IE 11 => return version number
-      var rv = ua.indexOf("rv:");
+      let rv = ua.indexOf("rv:");
       return true;
     }
 
-    var edge = ua.indexOf("Edge/");
+    let edge = ua.indexOf("Edge/");
     if (edge > 0) {
       // Edge (IE 12+) => return version number
       return true;

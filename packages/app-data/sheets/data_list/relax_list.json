@@ -309,20 +309,13 @@
       "type": "relax_passive_short",
       "completed_field": "relax_12_completed",
       "completed": "@fields.relax_12_completed",
-      "title": "Feel your feeling",
+      "title": "Feel your feelings",
       "_translations": {
-        "title": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        }
+        "title": {}
       },
       "_translatedFields": {
         "title": {
-          "eng": "Feel your feeling"
+          "eng": "Feel your feelings"
         }
       }
     },

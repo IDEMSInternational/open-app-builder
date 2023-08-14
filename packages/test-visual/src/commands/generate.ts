@@ -7,14 +7,11 @@ import handler from "serve-handler";
 import http from "http";
 import logUpdate from "log-update";
 import { DEXIE_SRC_PATH, paths } from "../config";
+import { outputCompleteMessage, outputErrorMessage, zipFolder } from "../utils";
+import { VISUAL_TEST_CONFIG } from "../config/test";
 
-// As using commonJS can only import from built
-// TODO - Ensure built before run. Handle sharing of types between packages
-import { VISUAL_TEST_CONFIG } from "app-data/dist/test/index";
 type IPageConfig = typeof VISUAL_TEST_CONFIG["pageList"][number];
 type IDexieConfig = typeof VISUAL_TEST_CONFIG["dexieConfig"];
-
-import { outputCompleteMessage, outputErrorMessage, zipFolder } from "../utils";
 
 // Import Dexie from the src folder so that same instance can be used to seed the DB
 // as is used in the app itself. Uses require import syntax for compatibility

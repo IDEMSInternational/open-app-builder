@@ -9,16 +9,20 @@ import {
   PushNotificationSchema,
   ActionPerformed,
 } from "@capacitor/push-notifications";
+import { AsyncServiceBase } from "../asyncService.base";
 
 @Injectable({
   providedIn: "root",
 })
-export class PushNotificationService {
+export class PushNotificationService extends AsyncServiceBase {
   initalized = false;
   initializing = false;
   public token: string;
   public messages$ = new Subject<any>();
-  constructor(public device: Device, public http: HTTP) {}
+  constructor(public device: Device, public http: HTTP) {
+    super("PushNotification");
+    super.registerInitFunction(this.initialise);
+  }
 
   /**
    * Initialisation is called from app.component.ts after platform ready
@@ -26,7 +30,7 @@ export class PushNotificationService {
    * Obtain push notification token and provide to RapidPro for messaging.
    * Subscribe to messages.
    */
-  public async init() {
+  private async initialise() {
     if (!this.initalized && !this.initializing) {
       this.initializing = true;
       let granted = await PushNotifications.requestPermissions();

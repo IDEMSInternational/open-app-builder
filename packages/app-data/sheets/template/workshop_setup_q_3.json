@@ -6,30 +6,23 @@
     {
       "type": "text",
       "name": "text_intro",
-      "value": "You can do the @global.weekly_workshops by yourself OR you can invite some other family members or friends to join you - you will learn a lot from each other. It's up to you!",
+      "value": "You can do the @global.workshops by yourself OR you can invite some other family members or friends to join you - you will learn a lot from each other. It is up to you!",
       "_translations": {
-        "value": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        }
+        "value": {}
       },
       "_nested_name": "text_intro",
       "_dynamicFields": {
         "value": [
           {
-            "fullExpression": "You can do the @global.weekly_workshops by yourself OR you can invite some other family members or friends to join you - you will learn a lot from each other. It's up to you!",
-            "matchedExpression": "@global.weekly_workshops",
+            "fullExpression": "You can do the @global.workshops by yourself OR you can invite some other family members or friends to join you - you will learn a lot from each other. It is up to you!",
+            "matchedExpression": "@global.workshops",
             "type": "global",
-            "fieldName": "weekly_workshops"
+            "fieldName": "workshops"
           }
         ]
       },
       "_dynamicDependencies": {
-        "@global.weekly_workshops": [
+        "@global.workshops": [
           "value"
         ]
       }
@@ -37,16 +30,9 @@
     {
       "type": "text",
       "name": "text_q_1",
-      "value": "How would you like to do your @global.weekly_workshops?",
+      "value": "How would you like to do your @global.workshops?",
       "_translations": {
-        "value": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        }
+        "value": {}
       },
       "parameter_list": {
         "style": "emphasised"
@@ -55,15 +41,15 @@
       "_dynamicFields": {
         "value": [
           {
-            "fullExpression": "How would you like to do your @global.weekly_workshops?",
-            "matchedExpression": "@global.weekly_workshops",
+            "fullExpression": "How would you like to do your @global.workshops?",
+            "matchedExpression": "@global.workshops",
             "type": "global",
-            "fieldName": "weekly_workshops"
+            "fieldName": "workshops"
           }
         ]
       },
       "_dynamicDependencies": {
-        "@global.weekly_workshops": [
+        "@global.workshops": [
           "value"
         ]
       }
@@ -386,16 +372,9 @@
     {
       "type": "text",
       "name": "text_q_3",
-      "value": "Which day of the week would you like to do your @global.weekly_workshops?",
+      "value": "Which day of the week would you like to do your @global.workshops?",
       "_translations": {
-        "value": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        }
+        "value": {}
       },
       "parameter_list": {
         "style": "emphasised"
@@ -404,15 +383,15 @@
       "_dynamicFields": {
         "value": [
           {
-            "fullExpression": "Which day of the week would you like to do your @global.weekly_workshops?",
-            "matchedExpression": "@global.weekly_workshops",
+            "fullExpression": "Which day of the week would you like to do your @global.workshops?",
+            "matchedExpression": "@global.workshops",
             "type": "global",
-            "fieldName": "weekly_workshops"
+            "fieldName": "workshops"
           }
         ]
       },
       "_dynamicDependencies": {
-        "@global.weekly_workshops": [
+        "@global.workshops": [
           "value"
         ]
       }

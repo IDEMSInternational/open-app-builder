@@ -3,11 +3,12 @@ import { BehaviorSubject } from "rxjs";
 import { LocalStorageService } from "src/app/shared/services/local-storage/local-storage.service";
 import { AppConfigService } from "src/app/shared/services/app-config/app-config.service";
 import { IAppConfig } from "packages/data-models";
+import { SyncServiceBase } from "src/app/shared/services/syncService.base";
 
 @Injectable({
   providedIn: "root",
 })
-export class ThemeService {
+export class ThemeService extends SyncServiceBase {
   currentTheme$ = new BehaviorSubject<string>(null);
   availableThemes: IAppConfig["APP_THEMES"]["available"];
   appFields: IAppConfig["APP_FIELDS"];
@@ -17,18 +18,26 @@ export class ThemeService {
     private localStorageService: LocalStorageService,
     private appConfigService: AppConfigService
   ) {
-    this.subscribeToAppConfigChanges();
+    super("Theme");
+    this.initialise();
   }
 
-  init() {
-    // Retrieve the last active theme with default fallback
-    const currentThemeName = this.getCurrentTheme() ?? this.defaultThemeName;
-    this.setTheme(currentThemeName);
+  private initialise() {
+    this.ensureSyncServicesReady([this.localStorageService, this.appConfigService]);
+    this.subscribeToAppConfigChanges();
+    // Retrieve the last active theme and apply it. Fallback on default theme
+    // if there is no last active theme, or if it is not "available" in current appConfig
+    const lastActiveTheme = this.getCurrentTheme();
+    const targetTheme =
+      lastActiveTheme && this.availableThemes.includes(lastActiveTheme)
+        ? lastActiveTheme
+        : this.defaultThemeName;
+    this.setTheme(targetTheme);
   }
 
   public setTheme(themeName: string) {
     if (this.availableThemes.includes(themeName)) {
-      console.log("[SET THEME]", themeName);
+      // console.log("[SET THEME]", themeName);
       document.body.dataset.theme = themeName;
       this.currentTheme$.next(themeName);
       // Use local storage so that the current theme persists across app launches

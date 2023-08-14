@@ -5,6 +5,7 @@ import { TemplateBaseComponent } from "../base";
 import { TemplateFieldService } from "../../services/template-field.service";
 import { AppDataService } from "src/app/shared/services/data/app-data.service";
 import { IProgressStatus } from "src/app/shared/services/task/task.service";
+import { CampaignService } from "src/app/feature/campaign/campaign.service";
 
 @Component({
   selector: "plh-task-progress-bar",
@@ -26,7 +27,8 @@ export class TmplTaskProgressBarComponent extends TemplateBaseComponent implemen
   constructor(
     private taskService: TaskService,
     private templateFieldService: TemplateFieldService,
-    private appDataService: AppDataService
+    private appDataService: AppDataService,
+    private campaignService: CampaignService
   ) {
     super();
   }
@@ -79,7 +81,13 @@ export class TmplTaskProgressBarComponent extends TemplateBaseComponent implemen
         this.progressStatusChange.emit(this.progressStatus);
       }
     }
-    this.taskService.evaluateHighlightedTaskGroup();
+    const { previousHighlightedTaskGroup, newHighlightedTaskGroup } =
+      this.taskService.evaluateHighlightedTaskGroup();
+    // HACK - reschedule campaign notifications when the highlighted task group has changed,
+    // in order to handle any that are conditional on the highlighted task group
+    if (previousHighlightedTaskGroup !== newHighlightedTaskGroup) {
+      this.campaignService.scheduleCampaignNotifications();
+    }
   }
 
   async setTaskGroupCompletedStatus(taskGroupCompletedField: string, isCompleted: boolean) {

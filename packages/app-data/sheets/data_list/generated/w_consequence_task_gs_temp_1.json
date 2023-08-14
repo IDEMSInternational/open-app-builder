@@ -4,25 +4,6 @@
   "flow_type": "data_list",
   "rows": [
     {
-      "id": "welcome_individual",
-      "individual": true,
-      "together": false,
-      "priority": 1,
-      "has_single_task": true,
-      "title": "How are you?",
-      "_translations": {
-        "title": {
-          "tz_sw": true
-        }
-      },
-      "_translatedFields": {
-        "title": {
-          "eng": "How are you?"
-        }
-      },
-      "template": "w_consequence_welcome_individual"
-    },
-    {
       "id": "care_together",
       "individual": false,
       "together": true,
@@ -168,12 +149,12 @@
       "template": "w_consequence_hp_review"
     },
     {
-      "id": "read_1",
+      "id": "welcome_individual",
       "individual": true,
-      "together": true,
-      "priority": 11,
-      "has_single_task": false,
-      "title": "Story",
+      "together": false,
+      "priority": 1,
+      "has_single_task": true,
+      "title": "How are you?",
       "_translations": {
         "title": {
           "tz_sw": true
@@ -181,9 +162,27 @@
       },
       "_translatedFields": {
         "title": {
-          "eng": "Story"
+          "eng": "How are you?"
         }
-      }
+      },
+      "template": "w_consequence_welcome_ind"
+    },
+    {
+      "id": "read_1",
+      "individual": true,
+      "together": true,
+      "priority": 11,
+      "has_single_task": false,
+      "title": "@global.story @global.part_connector @data.story.neg_consequence.title",
+      "_translations": {
+        "title": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "@global.story @global.part_connector @data.story.neg_consequence.title"
+        }
+      },
+      "story_id": "neg_consequence"
     },
     {
       "id": "learn_1",
@@ -239,17 +238,16 @@
       "together": true,
       "priority": 72,
       "has_single_task": false,
-      "title": "Story",
+      "title": "@global.story @global.part_connector @data.story.pos_consequence.title",
       "_translations": {
-        "title": {
-          "tz_sw": true
-        }
+        "title": {}
       },
       "_translatedFields": {
         "title": {
-          "eng": "Story"
+          "eng": "@global.story @global.part_connector @data.story.pos_consequence.title"
         }
-      }
+      },
+      "story_id": "pos_consequence"
     },
     {
       "id": "learn_2",

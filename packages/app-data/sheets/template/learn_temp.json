@@ -87,16 +87,9 @@
         },
         {
           "name": "intro_text",
-          "value": "It's time to learn and practice together!",
+          "value": "It is time to learn and practice together!",
           "_translations": {
-            "value": {
-              "tz_sw": true,
-              "za_af": true,
-              "za_st": true,
-              "za_tn": true,
-              "za_xh": true,
-              "za_zu": true
-            }
+            "value": {}
           },
           "condition": "@fields.do_this_workshop_together",
           "type": "set_variable",
@@ -119,7 +112,7 @@
         },
         {
           "name": "activity_image",
-          "value": "plh_images/workshop_modes/guide_2/notes.svg",
+          "value": "plh_images/workshop_modes/individual/notes.svg",
           "_translations": {
             "value": {}
           },
@@ -176,16 +169,9 @@
         },
         {
           "name": "intro_text",
-          "value": "It's time to learn and practice!",
+          "value": "It is time to learn and practice!",
           "_translations": {
-            "value": {
-              "tz_sw": true,
-              "za_af": true,
-              "za_st": true,
-              "za_tn": true,
-              "za_xh": true,
-              "za_zu": true
-            }
+            "value": {}
           },
           "condition": "!@fields.do_this_workshop_together",
           "type": "set_variable",

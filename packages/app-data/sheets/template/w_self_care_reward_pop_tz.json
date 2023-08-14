@@ -1,0 +1,63 @@
+{
+  "flow_type": "template",
+  "flow_name": "w_self_care_reward_pop_tz",
+  "status": "released",
+  "override_target": "w_self_care_reward_pop",
+  "override_condition": "@fields._deployment_name == \"plh_tz\"",
+  "rows": [
+    {
+      "type": "template",
+      "name": "w_self_care_reward_pop",
+      "value": "w_self_care_reward_pop",
+      "is_override_target": true,
+      "rows": [
+        {
+          "name": "name_1",
+          "value": "Sleeping",
+          "_translations": {
+            "value": {
+              "tz_sw": true
+            }
+          },
+          "type": "set_variable",
+          "_nested_name": "w_self_care_reward_pop.name_1"
+        },
+        {
+          "name": "name_2",
+          "value": "Talking with a friend",
+          "_translations": {
+            "value": {
+              "tz_sw": true
+            }
+          },
+          "type": "set_variable",
+          "_nested_name": "w_self_care_reward_pop.name_2"
+        },
+        {
+          "name": "name_3",
+          "value": "Doing something I enjoy",
+          "_translations": {
+            "value": {
+              "tz_sw": true
+            }
+          },
+          "type": "set_variable",
+          "_nested_name": "w_self_care_reward_pop.name_3"
+        },
+        {
+          "name": "name_4",
+          "value": "Doing something relaxing",
+          "_translations": {
+            "value": {
+              "tz_sw": true
+            }
+          },
+          "type": "set_variable",
+          "_nested_name": "w_self_care_reward_pop.name_4"
+        }
+      ],
+      "_nested_name": "w_self_care_reward_pop"
+    }
+  ],
+  "_xlsxPath": "tz/top_templates/workshop_templates/workshop_self_care_tz.xlsx"
+}

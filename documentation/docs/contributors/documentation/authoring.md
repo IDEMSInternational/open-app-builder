@@ -29,7 +29,7 @@ nav:
 A full set of styling options can be found from the theme documentation at https://squidfunk.github.io/mkdocs-material/reference/
 
 !!! info
-    This includes how to add things like callouts (admonitions), buttons, tables and more!
+    This includes how to add things like call-outs (admonitions), buttons, tables and more!
 
 [View Theme Docs :fontawesome-solid-external-link-alt:](https://squidfunk.github.io/mkdocs-material/reference/){ .md-button .md-button--primary }
 

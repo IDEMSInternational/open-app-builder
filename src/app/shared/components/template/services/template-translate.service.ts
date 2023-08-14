@@ -2,6 +2,7 @@ import { Injectable } from "@angular/core";
 import { IAppConfig } from "packages/data-models";
 import { BehaviorSubject } from "rxjs";
 import { AppConfigService } from "src/app/shared/services/app-config/app-config.service";
+import { AsyncServiceBase } from "src/app/shared/services/asyncService.base";
 import { AppDataService } from "src/app/shared/services/data/app-data.service";
 import { LocalStorageService } from "src/app/shared/services/local-storage/local-storage.service";
 import { FlowTypes } from "../models";
@@ -12,7 +13,7 @@ import { FlowTypes } from "../models";
  * It is assumed the only translatable column is the value column, and that all translations
  * are already pre-populated in the column (so just a case to return the current language field)
  */
-export class TemplateTranslateService {
+export class TemplateTranslateService extends AsyncServiceBase {
   /**
    * Provide an observable so services can subscribe and respond to language changes
    * Formatted as country-language code, e.g. za-en
@@ -27,10 +28,17 @@ export class TemplateTranslateService {
     private appDataService: AppDataService,
     private appConfigService: AppConfigService
   ) {
-    this.subscribeToAppConfigChanges();
+    super("Template Translate");
+    this.registerInitFunction(this.init);
   }
 
-  public async init() {
+  private async init() {
+    this.ensureSyncServicesReady([
+      this.localStorageService,
+      this.appDataService,
+      this.appConfigService,
+    ]);
+    this.subscribeToAppConfigChanges();
     const currentLanguage = this.localStorageService.getString(this.appFields.APP_LANGUAGE);
     if (currentLanguage) {
       await this.setLanguage(currentLanguage, false);
@@ -53,7 +61,7 @@ export class TemplateTranslateService {
       this.translation_strings = translationStrings || {};
       // update observable for subscribers
       this.app_language$.next(code);
-      console.log("[Language Set]", code);
+      // console.log("[Language Set]", code);
     }
   }
 

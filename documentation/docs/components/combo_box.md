@@ -13,7 +13,7 @@ A combo box combines a text input field and a drop-down list of options. Combo b
 [![combo_box](images/combo_box.png)](videos/combo_box.mp4 "combo_box")
 
 [Google Sheet Demo](https://docs.google.com/spreadsheets/d/1uIkaMlDjoDN7uTpHkSeEQ6Yp-4ehX9IrBQMrolpfjQc/edit#gid=569531329)   
-[Live Preview Demo](https://plh-global.web.app/template/comp_combo_box)
+[Live Preview Demo](https://idems-debug.web.app/template/comp_combo_box)
 
 ## Parameters
 

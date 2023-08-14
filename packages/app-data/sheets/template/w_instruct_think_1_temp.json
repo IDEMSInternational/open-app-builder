@@ -70,16 +70,9 @@
                     },
                     {
                       "name": "text",
-                      "value": "DO NOT THINK ABOUT AN ELEPHANT \n\nWhat are you thinking about?",
+                      "value": "DO NOT THINK ABOUT AN ELEPHANT.\n\nWhat are you thinking about?",
                       "_translations": {
-                        "value": {
-                          "tz_sw": true,
-                          "za_af": true,
-                          "za_st": true,
-                          "za_tn": true,
-                          "za_xh": true,
-                          "za_zu": true
-                        }
+                        "value": {}
                       },
                       "type": "set_variable",
                       "_nested_name": "think.workshop_activity.content_box.box_1.text"
@@ -108,16 +101,9 @@
                         },
                         {
                           "name": "text",
-                          "value": "You probably DID think about an elephant...\n\n‘Don’t do’ instructions make teens think about that thing. \n\nSometimes they don’t understand what we DID want from them. \n\nAlso they often don’t like being told not to do things (don’t we all?)",
+                          "value": "You probably DID think about an elephant...\n\n‘Don’t do’ instructions make teens think about that thing.\n\nSometimes they do not understand what we DID want from them.\n\nAlso they often don’t like being told not to do things (just like most of us).",
                           "_translations": {
-                            "value": {
-                              "tz_sw": true,
-                              "za_af": true,
-                              "za_st": true,
-                              "za_tn": true,
-                              "za_xh": true,
-                              "za_zu": true
-                            }
+                            "value": {}
                           },
                           "type": "set_variable",
                           "_nested_name": "think.workshop_activity.content_box.box_2.box_1.text"

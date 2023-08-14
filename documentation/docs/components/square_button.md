@@ -10,7 +10,7 @@
 ![](images/square_button.png)
 
 [Google Sheet Demo](https://docs.google.com/spreadsheets/d/1ptSCtSDQ-_PrgLuZiJouHa9k1nUEjg7eMzx9rVOKBUE/edit#gid=569531329)   
-[Live Preview Demo](https://plh-global.web.app/template/comp_square_button)
+[Live Preview Demo](https://idems-debug.web.app/template/comp_square_button)
 
 ## Parameters
 

@@ -152,30 +152,49 @@
       "_nested_name": "consent_text"
     },
     {
-      "type": "simple_checkbox",
-      "name": "checkbox",
-      "parameter_list": {
-        "align": "left",
-        "label_text": "@local.consent_text"
-      },
-      "_nested_name": "checkbox",
-      "_dynamicFields": {
-        "parameter_list": {
-          "label_text": [
-            {
-              "fullExpression": "@local.consent_text",
-              "matchedExpression": "@local.consent_text",
-              "type": "local",
-              "fieldName": "consent_text"
-            }
-          ]
+      "type": "display_group",
+      "name": "dg_checkbox",
+      "rows": [
+        {
+          "type": "simple_checkbox",
+          "name": "checkbox",
+          "parameter_list": {
+            "align": "left"
+          },
+          "_nested_name": "dg_checkbox.checkbox"
+        },
+        {
+          "type": "text",
+          "name": "text",
+          "value": "@local.consent_text",
+          "_translations": {
+            "value": {}
+          },
+          "parameter_list": {
+            "style": "emphasised"
+          },
+          "style_list": [
+            "flex:1"
+          ],
+          "_nested_name": "dg_checkbox.text",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@local.consent_text",
+                "matchedExpression": "@local.consent_text",
+                "type": "local",
+                "fieldName": "consent_text"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@local.consent_text": [
+              "value"
+            ]
+          }
         }
-      },
-      "_dynamicDependencies": {
-        "@local.consent_text": [
-          "parameter_list.label_text"
-        ]
-      }
+      ],
+      "_nested_name": "dg_checkbox"
     },
     {
       "type": "template",
@@ -260,11 +279,11 @@
           "trigger": "completed",
           "action_id": "set_field",
           "args": [
-            "terms_v20221018_accepted",
+            "terms_v20230301_accepted",
             true
           ],
-          "_raw": "completed | set_field: terms_v20221018_accepted: true",
-          "_cleaned": "completed | set_field: terms_v20221018_accepted: true"
+          "_raw": "completed | set_field: terms_v20230301_accepted: true",
+          "_cleaned": "completed | set_field: terms_v20230301_accepted: true"
         },
         {
           "trigger": "uncompleted",
@@ -276,9 +295,6 @@
           "_cleaned": "uncompleted | emit:uncompleted"
         }
       ],
-      "parameter_list": {
-        "disabled": "@local.checkbox"
-      },
       "condition": "@local.checkbox",
       "rows": [
         {
@@ -314,16 +330,6 @@
       ],
       "_nested_name": "nav_buttons_consent",
       "_dynamicFields": {
-        "parameter_list": {
-          "disabled": [
-            {
-              "fullExpression": "@local.checkbox",
-              "matchedExpression": "@local.checkbox",
-              "type": "local",
-              "fieldName": "checkbox"
-            }
-          ]
-        },
         "condition": [
           {
             "fullExpression": "@local.checkbox",
@@ -335,7 +341,6 @@
       },
       "_dynamicDependencies": {
         "@local.checkbox": [
-          "parameter_list.disabled",
           "condition"
         ]
       }

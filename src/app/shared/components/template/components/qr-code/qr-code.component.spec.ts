@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed, waitForAsync } from "@angular/core/testing";
 import { IonicModule } from "@ionic/angular";
 
-import { QrCodeComponent } from "./qr-code.component";
+import { TmplQRCodeComponent } from "./qr-code.component";
 
 describe("QrCodeComponent", () => {
-  let component: QrCodeComponent;
-  let fixture: ComponentFixture<QrCodeComponent>;
+  let component: TmplQRCodeComponent;
+  let fixture: ComponentFixture<TmplQRCodeComponent>;
 
   beforeEach(
     waitForAsync(() => {
       TestBed.configureTestingModule({
-        declarations: [QrCodeComponent],
+        declarations: [TmplQRCodeComponent],
         imports: [IonicModule.forRoot()],
       }).compileComponents();
 
-      fixture = TestBed.createComponent(QrCodeComponent);
+      fixture = TestBed.createComponent(TmplQRCodeComponent);
       component = fixture.componentInstance;
       fixture.detectChanges();
     })
