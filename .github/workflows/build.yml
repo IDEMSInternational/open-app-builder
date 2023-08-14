@@ -8,10 +8,11 @@ env:
 #         Main Code
 ##################################################################################
 name: App - Build
-push:
-  branches:
-    - refactor/gh-actions
+
 on:
+  push:
+    branches:
+      - refactor/gh-actions
   workflow_call:
     inputs:
       artifact-name:
