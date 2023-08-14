@@ -15258,12 +15258,6 @@
     "note": "The following strings should not be translated:\n@global.workshop\n@global.workshop"
   },
   {
-    "SourceText": "Things to do",
-    "text": "Unaweza kuchunguza@global.workshop yoyote wakati wowote unaotaka. Kuona mabadiliko makubwa katika familia yako, maliza shughuli zako katika moja ya @global.workshop kabla ya kuhamia nyingine",
-    "type": "tour",
-    "note": ""
-  },
-  {
     "SourceText": "Tap here whenever you enter @global.parent_app! You will find 3 short activities that you can do next to help yourself and your family.",
     "text": "Bonyeza hapa kila unapoingia kwenye @global.parent_app! Utapata shughuli tatu fupi unzaoweza kufanya zikusaidie wewe na familia yako.",
     "type": "tour",
