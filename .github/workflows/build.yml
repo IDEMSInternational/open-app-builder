@@ -1,0 +1,90 @@
+##################################################################################
+#         Configuration
+##################################################################################
+env:
+  FIREBASE_CONFIG: ${{secrets.FIREBASE_CONFIG}}
+
+##################################################################################
+#         Main Code
+##################################################################################
+name: App - Build
+push:
+  branches:
+    - refactor/gh-actions
+on:
+  workflow_call:
+    inputs:
+      artifact-name:
+        description: Name of the artifact to upload
+        type: string
+        default: www
+      build-flags:
+        description: Additional flags to pass to build command (e.g. base-href)
+        type: string
+        default: ""
+      deployment-name:
+        description: Identifier of deployment to build
+        type: string
+        default: plh_global
+      deployment-private-key:
+        description: "(optional) Private key if using encrypted deployments"
+        type: string
+        default: ""
+      git-sha:
+        description: "(optional) git sha to assign for use in error-handler post deployment"
+        type: string
+        default: ""
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          lfs: true
+
+        # TODO - populate firebase as part of deployment set
+      - name: Populate Firebase Config
+        if: env.FIREBASE_CONFIG != ''
+        run: echo 'export const firebaseConfig = ${{env.FIREBASE_CONFIG}}' > src/environments/firebaseConfig.ts
+
+      - name: Populate Git Sha
+        if: inputs.git-sha != ''
+        env:
+          GIT_SHA: ${{inputs.git-sha}}
+        run: echo "export const GIT_SHA = \"$GIT_SHA\";" > src/environments/sha.ts
+
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18.x
+
+      - name: Cache node modules
+        uses: actions/cache@v3
+        with:
+          path: ./.yarn/cache
+          # If cachebusting required (e.g. breaking yarn changes on update) change `v1` to another number
+          key: ${{ runner.os }}-node-modules-yarn-v1-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-node-modules-yarn-v1-
+
+      - name: Install node modules
+        run: yarn install
+
+      - name: Set deployment
+        run: yarn workflow deployment set ${{inputs.deployment-name}}
+
+      - name: Build
+        run: yarn build ${{inputs.build-flags}}
+
+        # Use github pages upload artifact action to compress and upload
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v1.0.8
+        with:
+          path: "www/"
+          name: ${{inputs.artifact-name}}
+##################################################################################
+#         Links
+##################################################################################
+
+# Create a reusable workflow to build deployment app
+# https://colinsalmcorner.com/musings-on-reusable-workflows/
