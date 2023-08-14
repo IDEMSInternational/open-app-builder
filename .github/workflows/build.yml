@@ -2,12 +2,19 @@
 #         Configuration
 ##################################################################################
 env:
+  DEPLOYMENT_NAME: "plh_global"
   FIREBASE_CONFIG: ${{secrets.FIREBASE_CONFIG}}
+
 
 ##################################################################################
 #         Main Code
 ##################################################################################
-name: App - Build
+name: Build
+
+# Only keep one active build per ref (e.g. pr branch, push branch, triggering workflow ref)
+concurrency:
+  group: build-${{ github.ref }}
+  cancel-in-progress: true
 
 on:
   push:
@@ -26,15 +33,12 @@ on:
       deployment-name:
         description: Identifier of deployment to build
         type: string
-        default: plh_global
-      deployment-private-key:
-        description: "(optional) Private key if using encrypted deployments"
-        type: string
         default: ""
       git-sha:
         description: "(optional) git sha to assign for use in error-handler post deployment"
         type: string
         default: ""
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -53,6 +57,10 @@ jobs:
         env:
           GIT_SHA: ${{inputs.git-sha}}
         run: echo "export const GIT_SHA = \"$GIT_SHA\";" > src/environments/sha.ts
+
+      - name: Set deployment name
+        if: ${{github.inputs.deployment-name}}
+        run: echo "DEPLOYMENT_NAME=${{github.inputs.deployment-name}} >> $GITHUB_ENV
 
       - name: Setup Node
         uses: actions/setup-node@v3
@@ -79,15 +87,15 @@ jobs:
       - name: Set deployment
         run: yarn workflow deployment set ${{inputs.deployment-name}}
 
-      - name: Build
-        run: yarn build ${{inputs.build-flags}}
+      # - name: Build
+      #   run: yarn build ${{inputs.build-flags}}
 
-        # Use github pages upload artifact action to compress and upload
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v1.0.8
-        with:
-          path: "www/"
-          name: ${{inputs.artifact-name}}
+      #   # Use github pages upload artifact action to compress and upload
+      # - name: Upload artifact
+      #   uses: actions/upload-pages-artifact@v1.0.8
+      #   with:
+      #     path: "www/"
+      #     name: ${{inputs.artifact-name}}
 ##################################################################################
 #         Links
 ##################################################################################
