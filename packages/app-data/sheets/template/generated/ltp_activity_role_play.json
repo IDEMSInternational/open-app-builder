@@ -1,0 +1,35 @@
+{
+  "flow_name": "ltp_activity_role_play",
+  "flow_subtype": "generated",
+  "flow_type": "template",
+  "rows": [
+    {
+      "type": "template",
+      "name": "learn_play",
+      "value": "learn_play",
+      "action_list": [
+        {
+          "trigger": "completed",
+          "action_id": "emit",
+          "args": [
+            "completed"
+          ],
+          "_raw": "completed | emit: completed",
+          "_cleaned": "completed | emit: completed"
+        }
+      ],
+      "rows": [
+        {
+          "name": "activity_id",
+          "value": "role_play",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "learn_play.activity_id"
+        }
+      ],
+      "_nested_name": "learn_play"
+    }
+  ]
+}

@@ -58,7 +58,7 @@
     },
     {
       "id": "relax_and_activities",
-      "show": true,
+      "show": "!@fields.post_rct_access",
       "icon_asset": "plh_images/icons/smile_eyes_up_white.svg",
       "template": "parent_centre_relax_and_act",
       "tile_style": "parent_centre_4",
@@ -81,6 +81,32 @@
         }
       },
       "location_text": "under **Relax & Activities** in the @global.parent_centre"
+    },
+    {
+      "id": "relax",
+      "show": "@fields.post_rct_access",
+      "icon_asset": "plh_images/icons/smile_eyes_down_white.svg",
+      "template": "parent_centre_relax",
+      "tile_style": "parent_centre_4",
+      "click_count_field": "click_pc_relax_count",
+      "title": "Relaxation activities",
+      "_translations": {
+        "title": {
+          "tz_sw": true
+        },
+        "location_text": {
+          "tz_sw": true
+        }
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Relaxation activities"
+        },
+        "location_text": {
+          "eng": "**Relaxation activities** in the @global.parent_centre"
+        }
+      },
+      "location_text": "**Relaxation activities** in the @global.parent_centre"
     },
     {
       "id": "help",
@@ -110,7 +136,7 @@
     },
     {
       "id": "covid",
-      "show": true,
+      "show": "!@fields.post_rct_access",
       "icon_asset": "plh_images/icons/ask_question_white.svg",
       "template": "parent_centre_covid",
       "tile_style": "parent_centre_3",
@@ -136,7 +162,7 @@
     },
     {
       "id": "bereavement",
-      "show": true,
+      "show": "!@fields.post_rct_access",
       "icon_asset": "plh_images/icons/hands_support_heart_white.svg",
       "template": "parent_centre_bereavement",
       "tile_style": "parent_centre_4",

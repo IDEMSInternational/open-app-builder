@@ -79,6 +79,15 @@ E.g. `1ja6lzbphZaxnVv5mpQ4YHnn2qmxMiEBW`
 
 
 ## GitHub Management
+Deployments are designed to have their content managed via external github repos. To configure a deployment to sync with an external git repository, first create the repo on github and then provide the url within the `git.content_repo` configuration object
+
+```ts
+const config: IDeploymentConfig = {
+  name: "example",
+  git: {
+    content_repo: "https://github.com/my-org/my-git-repo",
+  },
+```
 
 ### Import Existing
 If an external content repo already exists it is possible to directly import into the local workspace, instead of first creating a new deployment and then configuring for import. 
@@ -90,6 +99,51 @@ yarn workflow deployment import [url]
 Where [url] can be replaced with the url of a github repository where content is stored
 
 You will see the new deployment appear in the `.idems_app` folder and be available for selection
+
+### Sync Content
+Content from external repos can be synced in the usual way
+
+```sh
+yarn workflow sync
+```
+This will first update any content from the remote repo, and then proceed to also sync from external google drive
+
+
+### Push Changes
+A local repo can have its changes pushed to github by publishing a new release
+```sh
+yarn workflow repo publish
+```
+This will create a new git branch, apply local changes and push to github. From there a pull request can be created to merge into the main branch.
+
+!!! warning
+    If multiple authors are updating content and creating releases there is a high probability of conflicts arising. 
+    
+    Open pull requests should be merged before creating new content releases, and running `yarn workflow sync` to update local content from remotes.
+
+
+### Github Actions
+Content repos may also wish to configure github actions to support common tasks like building web previews on pull requests, or deploying releases.
+
+Several action templates have been prepared and can be configured using the command
+```sh
+yarn workflow repo actions
+```
+This will provide interactive prompts to setup required actions
+
+!!! note
+    Several actions require additional variables configured as *Secrets* within the Github Repo   
+    See the following link for more information about using [Github Secrets](https://docs.github.com/en/actions/security-guides/encrypted-secrets)
+
+
+### Troubleshooting
+If for any reason the local content repo gets into a bad/conflicted state, it can be manually resolved by opening the deployment repo in vscode and resolving using git commands. 
+
+The content repo can be opened via shortcut `yarn workflow repo open`
+
+
+
+    
    
 ## File Encryption
 In cases where deployments need to share private information, such as API keys or service accounts, a special encryption folder can be used to handle encryption and decryption processes

@@ -134,7 +134,7 @@
     {
       "type": "declare_global_constant",
       "name": "female_child_name_1",
-      "value": "Faraja",
+      "value": "Shukuru",
       "_translations": {
         "value": {}
       },
@@ -143,7 +143,7 @@
     {
       "type": "declare_global_constant",
       "name": "female_child_name_2",
-      "value": "Shukuru",
+      "value": "Faraja",
       "_translations": {
         "value": {}
       },
@@ -188,7 +188,7 @@
     {
       "type": "declare_global_constant",
       "name": "female_caregiver_1",
-      "value": "Bibi",
+      "value": "Mama",
       "_translations": {
         "value": {}
       },
@@ -197,7 +197,7 @@
     {
       "type": "declare_global_constant",
       "name": "female_caregiver_2",
-      "value": "Mama",
+      "value": "Bibi",
       "_translations": {
         "value": {}
       },
@@ -206,7 +206,7 @@
     {
       "type": "declare_global_constant",
       "name": "female_caregiver_3",
-      "value": "Mama",
+      "value": "Aunt",
       "_translations": {
         "value": {}
       },
@@ -377,15 +377,6 @@
     {
       "type": "declare_global_constant",
       "name": "male_caregiver_2",
-      "value": "Baba",
-      "_translations": {
-        "value": {}
-      },
-      "exclude_from_translation": true
-    },
-    {
-      "type": "declare_global_constant",
-      "name": "male_caregiver_3",
       "value": "Babu",
       "_translations": {
         "value": {}

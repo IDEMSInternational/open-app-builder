@@ -7,10 +7,8 @@
     {
       "id": "w_self_care",
       "number": 1,
+      "group": "core",
       "image_asset": "plh_images/workshops/w_self_care/tools.svg",
-      "relax_data": "@data.relax.relax_5",
-      "relax_title": "@data.relax.relax_5.title",
-      "intro_audio_asset": "plh_audio/topic_intros/w_self_care_intro.mp3",
       "caregiver_testimonial_audio_asset": "plh_audio/testimonials/caregiver/caregiver_test_w_self_care.mp3",
       "teen_testimonial_audio_asset": "plh_audio/testimonials/teen/teen_test_w_self_care.mp3",
       "title": "Welcome and Self-Care",
@@ -18,25 +16,22 @@
         "title": {
           "tz_sw": true
         },
-        "in_text_title": {
-          "tz_sw": true
-        },
-        "description": {
-          "tz_sw": true
-        },
         "short_title": {
           "tz_sw": true
         },
-        "intro_title": {
+        "lower_case_title": {
           "tz_sw": true
         },
-        "tools": {
+        "description": {
           "tz_sw": true
         },
         "caregiver_testimonial_script": {
           "tz_sw": true
         },
         "teen_testimonial_script": {
+          "tz_sw": true
+        },
+        "in_text_title": {
           "tz_sw": true
         }
       },
@@ -44,44 +39,38 @@
         "title": {
           "eng": "Welcome and Self-Care"
         },
-        "in_text_title": {
-          "eng": "**Welcome and Self-Care** @global.workshop"
-        },
-        "description": {
-          "eng": "This @global.workshop is about YOU. Looking after yourself is essential for a happy family."
-        },
         "short_title": {
           "eng": "Self-Care"
         },
-        "intro_title": {
-          "eng": "Why Self-Care?"
+        "lower_case_title": {
+          "eng": "self-care"
         },
-        "tools": {
-          "eng": "How to do self-care"
+        "description": {
+          "eng": "This @global.workshop is about YOU. Looking after yourself is essential for a happy family."
         },
         "caregiver_testimonial_script": {
           "eng": "For me as a parent, it was almost impossible to find time for myself. I was always busy taking care of everyone else. Through @global.parent_app, I realised how important it is to take care of myself. It helps me AND my family! \n\nHaving a moment for myself helps me to breathe and notice how I feel. Even 5 minutes to have a cup of tea makes a big difference. Now I can deal with my stress better."
         },
         "teen_testimonial_script": {
           "eng": "My dad was always busy. He would come home from work and snap at us when we started asking him questions. \n\n@global.parent_app helped us a lot. We no longer fight. Now, when my dad comes home, he first sits down by himself for 5 minutes and then we do a relaxing activity from @global.parent_app together, so we can all take a deep breath and relax. Then we can chat about our day, about anything good or bad that happened. Everyone is so much happier now."
+        },
+        "in_text_title": {
+          "eng": "**Welcome and Self-Care** @global.workshop"
         }
       },
-      "in_text_title": "**Welcome and Self-Care** @global.workshop",
-      "description": "This @global.workshop is about YOU. Looking after yourself is essential for a happy family.",
       "short_title": "Self-Care",
-      "intro_title": "Why Self-Care?",
-      "tools": "How to do self-care",
+      "lower_case_title": "self-care",
+      "description": "This @global.workshop is about YOU. Looking after yourself is essential for a happy family.",
       "caregiver_testimonial_script": "For me as a parent, it was almost impossible to find time for myself. I was always busy taking care of everyone else. Through @global.parent_app, I realised how important it is to take care of myself. It helps me AND my family! \n\nHaving a moment for myself helps me to breathe and notice how I feel. Even 5 minutes to have a cup of tea makes a big difference. Now I can deal with my stress better.",
-      "teen_testimonial_script": "My dad was always busy. He would come home from work and snap at us when we started asking him questions. \n\n@global.parent_app helped us a lot. We no longer fight. Now, when my dad comes home, he first sits down by himself for 5 minutes and then we do a relaxing activity from @global.parent_app together, so we can all take a deep breath and relax. Then we can chat about our day, about anything good or bad that happened. Everyone is so much happier now."
+      "teen_testimonial_script": "My dad was always busy. He would come home from work and snap at us when we started asking him questions. \n\n@global.parent_app helped us a lot. We no longer fight. Now, when my dad comes home, he first sits down by himself for 5 minutes and then we do a relaxing activity from @global.parent_app together, so we can all take a deep breath and relax. Then we can chat about our day, about anything good or bad that happened. Everyone is so much happier now.",
+      "in_text_title": "**Welcome and Self-Care** @global.workshop"
     },
     {
       "id": "w_1on1",
       "number": 2,
-      "image_asset": "plh_images/workshops/w_1on1/tools.svg",
-      "relax_data": "@data.relax.relax_2",
-      "relax_title": "@data.relax.relax_2.title",
+      "group": "core",
       "something_fun_data": "@data.something_fun.co_chef",
-      "intro_audio_asset": "plh_audio/topic_intros/w_1on1_intro.mp3",
+      "image_asset": "plh_images/workshops/w_1on1/tools.svg",
       "caregiver_testimonial_audio_asset": "plh_audio/testimonials/caregiver/caregiver_test_w_1on1.mp3",
       "teen_testimonial_audio_asset": "plh_audio/testimonials/teen/teen_test_w_1on1.mp3",
       "title": "One-on-One Time",
@@ -89,22 +78,19 @@
         "title": {
           "tz_sw": true
         },
-        "in_text_title": {
+        "lower_case_title": {
           "tz_sw": true
         },
         "description": {
-          "tz_sw": true
-        },
-        "intro_title": {
-          "tz_sw": true
-        },
-        "tools": {
           "tz_sw": true
         },
         "caregiver_testimonial_script": {
           "tz_sw": true
         },
         "teen_testimonial_script": {
+          "tz_sw": true
+        },
+        "in_text_title": {
           "tz_sw": true
         }
       },
@@ -112,40 +98,34 @@
         "title": {
           "eng": "One-on-One Time"
         },
-        "in_text_title": {
-          "eng": "**One-on-One Time** @global.workshop"
+        "lower_case_title": {
+          "eng": "one-on-one time"
         },
         "description": {
           "eng": "Spending time with your teen builds a positive relationship."
-        },
-        "intro_title": {
-          "eng": "Why One-on-One Time?"
-        },
-        "tools": {
-          "eng": "How to spend one-on-one time"
         },
         "caregiver_testimonial_script": {
           "eng": "When I first heard I had to spend One-on-One Time with my teen, it was hard for me. I did not know when to do it or what to say. I did not want to spoil my teen so that he thinks we have to do everything together. \n\nBut I really wanted to build my relationship with my teen and I wanted him to open up about what was troubling him. So we tried the One-on-One Time. \n\nFirst, it felt weird, but it turned out to be fun! Now we watch his TV programme together and we chat about it. And we can even talk about how my son is changing into adolescence, and even about girlfriends and those things!"
         },
         "teen_testimonial_script": {
           "eng": "When my mother asked to spend time with me, I thought “Maybe something is wrong, maybe she is sick”. But she said “No, I just want to spend time.” I was sceptical, but I accepted. \n\nShe asked me what I like doing. It was strange and I was not comfortable, because she never ever spent time with me on my own. \n\nThe more she kept on trying and we spent this time together, it felt really nice. She got to share her own childhood with me, things I never heard before. That helped me to also share what is going on in my life. We even talk about boyfriends and about problems I have. I know I can talk to my mother now."
+        },
+        "in_text_title": {
+          "eng": "**One-on-One Time** @global.workshop"
         }
       },
-      "in_text_title": "**One-on-One Time** @global.workshop",
+      "lower_case_title": "one-on-one time",
       "description": "Spending time with your teen builds a positive relationship.",
-      "intro_title": "Why One-on-One Time?",
-      "tools": "How to spend one-on-one time",
       "caregiver_testimonial_script": "When I first heard I had to spend One-on-One Time with my teen, it was hard for me. I did not know when to do it or what to say. I did not want to spoil my teen so that he thinks we have to do everything together. \n\nBut I really wanted to build my relationship with my teen and I wanted him to open up about what was troubling him. So we tried the One-on-One Time. \n\nFirst, it felt weird, but it turned out to be fun! Now we watch his TV programme together and we chat about it. And we can even talk about how my son is changing into adolescence, and even about girlfriends and those things!",
-      "teen_testimonial_script": "When my mother asked to spend time with me, I thought “Maybe something is wrong, maybe she is sick”. But she said “No, I just want to spend time.” I was sceptical, but I accepted. \n\nShe asked me what I like doing. It was strange and I was not comfortable, because she never ever spent time with me on my own. \n\nThe more she kept on trying and we spent this time together, it felt really nice. She got to share her own childhood with me, things I never heard before. That helped me to also share what is going on in my life. We even talk about boyfriends and about problems I have. I know I can talk to my mother now."
+      "teen_testimonial_script": "When my mother asked to spend time with me, I thought “Maybe something is wrong, maybe she is sick”. But she said “No, I just want to spend time.” I was sceptical, but I accepted. \n\nShe asked me what I like doing. It was strange and I was not comfortable, because she never ever spent time with me on my own. \n\nThe more she kept on trying and we spent this time together, it felt really nice. She got to share her own childhood with me, things I never heard before. That helped me to also share what is going on in my life. We even talk about boyfriends and about problems I have. I know I can talk to my mother now.",
+      "in_text_title": "**One-on-One Time** @global.workshop"
     },
     {
       "id": "w_praise",
       "number": 3,
-      "image_asset": "plh_images/workshops/w_praise/tools.svg",
-      "relax_data": "@data.relax.relax_3",
-      "relax_title": "@data.relax.relax_3.title",
+      "group": "core",
       "something_fun_data": "@data.something_fun.reflect_positive",
-      "intro_audio_asset": "plh_audio/topic_intros/w_praise_intro.mp3",
+      "image_asset": "plh_images/workshops/w_praise/tools.svg",
       "caregiver_testimonial_audio_asset": "plh_audio/testimonials/caregiver/caregiver_test_w_praise.mp3",
       "teen_testimonial_audio_asset": "plh_audio/testimonials/teen/teen_test_w_praise.mp3",
       "title": "Praise",
@@ -153,22 +133,19 @@
         "title": {
           "tz_sw": true
         },
-        "in_text_title": {
+        "lower_case_title": {
           "tz_sw": true
         },
         "description": {
-          "tz_sw": true
-        },
-        "intro_title": {
-          "tz_sw": true
-        },
-        "tools": {
           "tz_sw": true
         },
         "caregiver_testimonial_script": {
           "tz_sw": true
         },
         "teen_testimonial_script": {
+          "tz_sw": true
+        },
+        "in_text_title": {
           "tz_sw": true
         }
       },
@@ -176,40 +153,34 @@
         "title": {
           "eng": "Praise"
         },
-        "in_text_title": {
-          "eng": "**Praise** @global.workshop"
+        "lower_case_title": {
+          "eng": "praise"
         },
         "description": {
           "eng": "Praise helps teens show more positive behaviour."
         },
-        "intro_title": {
-          "eng": "Why Praise?"
-        },
-        "tools": {
-          "eng": "How to praise"
-        },
         "caregiver_testimonial_script": {
-          "eng": "When we learned about this praising thing, I thought “We were never praised for things as teenagers, so why should we start now?”. But I got interested when I learned what the benefits of praising could be. \n\nRight after the weekly workshop, I noticed my teen doing what they do every day: Washing the dishes. And I said “Thank you for washing the dishes, my girl, it really makes me happy that you are helping out.” My teen was smiling and she even came to give me a hug, which she never does. \n\nThis praising business is hard. I still forget sometimes or give praise at the same time as criticism. But praising really makes a difference. I never thought that a simple praise could make such a change in a person!"
+          "eng": "When we learnt about this praising thing I thought, “We were never praised for things as teenagers, so why should we start now?” But I got interested when I learnt what the benefits of praising could be.\n\nRight after the weekly workshop, I noticed my teen doing what they do every day: washing the dishes. And I said “Thank you for washing the dishes, my girl, it really makes me happy that you are helping out.” My teen was smiling and she even came to give me a hug, which she never does.\n\nThis praising business is hard. I still forget sometimes or give praise at the same time as criticism. But praising really makes a difference. I never thought that a simple praise could make such a change in a person!"
         },
         "teen_testimonial_script": {
-          "eng": "I was grateful that my mother learned about praise. \n\nMy mother always noticed when I was doing something wrong. She would shout at me and hit me. \n\nBut when my mother did the workshop, she would praise me for little things. First I thought “What is going on?” but then it continued. I liked it so I did more good things I thought she would like. \n\nIt feels great that my mother sees the good things I do, and not just the bad things.\n\nI even said it to her once. During @data.workshop.w_1on1.title, I said “Thank you, mom, for saying something nice when I do things well, not only when I do things wrong.” This made us both very happy."
+          "eng": "I was grateful that my mother learnt about praise. \n\nMy mother always noticed when I was doing something wrong. She would shout at me and hit me. \n\nBut when my mother did the workshop, she would praise me for little things. First I thought “What is going on?” but then it continued. I liked it so I did more good things I thought she would like. \n\nIt feels great that my mother sees the good things I do, and not just the bad things.\n\nI even said it to her once. During @data.workshop.w_1on1.lower_case_title, I said “Thank you, mom, for saying something nice when I do things well, not only when I do things wrong.” This made us both very happy."
+        },
+        "in_text_title": {
+          "eng": "**Praise** @global.workshop"
         }
       },
-      "in_text_title": "**Praise** @global.workshop",
+      "lower_case_title": "praise",
       "description": "Praise helps teens show more positive behaviour.",
-      "intro_title": "Why Praise?",
-      "tools": "How to praise",
-      "caregiver_testimonial_script": "When we learned about this praising thing, I thought “We were never praised for things as teenagers, so why should we start now?”. But I got interested when I learned what the benefits of praising could be. \n\nRight after the weekly workshop, I noticed my teen doing what they do every day: Washing the dishes. And I said “Thank you for washing the dishes, my girl, it really makes me happy that you are helping out.” My teen was smiling and she even came to give me a hug, which she never does. \n\nThis praising business is hard. I still forget sometimes or give praise at the same time as criticism. But praising really makes a difference. I never thought that a simple praise could make such a change in a person!",
-      "teen_testimonial_script": "I was grateful that my mother learned about praise. \n\nMy mother always noticed when I was doing something wrong. She would shout at me and hit me. \n\nBut when my mother did the workshop, she would praise me for little things. First I thought “What is going on?” but then it continued. I liked it so I did more good things I thought she would like. \n\nIt feels great that my mother sees the good things I do, and not just the bad things.\n\nI even said it to her once. During @data.workshop.w_1on1.title, I said “Thank you, mom, for saying something nice when I do things well, not only when I do things wrong.” This made us both very happy."
+      "caregiver_testimonial_script": "When we learnt about this praising thing I thought, “We were never praised for things as teenagers, so why should we start now?” But I got interested when I learnt what the benefits of praising could be.\n\nRight after the weekly workshop, I noticed my teen doing what they do every day: washing the dishes. And I said “Thank you for washing the dishes, my girl, it really makes me happy that you are helping out.” My teen was smiling and she even came to give me a hug, which she never does.\n\nThis praising business is hard. I still forget sometimes or give praise at the same time as criticism. But praising really makes a difference. I never thought that a simple praise could make such a change in a person!",
+      "teen_testimonial_script": "I was grateful that my mother learnt about praise. \n\nMy mother always noticed when I was doing something wrong. She would shout at me and hit me. \n\nBut when my mother did the workshop, she would praise me for little things. First I thought “What is going on?” but then it continued. I liked it so I did more good things I thought she would like. \n\nIt feels great that my mother sees the good things I do, and not just the bad things.\n\nI even said it to her once. During @data.workshop.w_1on1.lower_case_title, I said “Thank you, mom, for saying something nice when I do things well, not only when I do things wrong.” This made us both very happy.",
+      "in_text_title": "**Praise** @global.workshop"
     },
     {
       "id": "w_instruct",
       "number": 4,
-      "image_asset": "plh_images/workshops/w_instruct/tools.svg",
-      "relax_data": "@data.relax.relax_4",
-      "relax_title": "@data.relax.relax_4.title",
+      "group": "core",
       "something_fun_data": "@data.something_fun.dance_moves",
-      "intro_audio_asset": "plh_audio/topic_intros/w_instruct_intro.mp3",
+      "image_asset": "plh_images/workshops/w_instruct/tools.svg",
       "caregiver_testimonial_audio_asset": "plh_audio/testimonials/caregiver/caregiver_test_w_instruct.mp3",
       "teen_testimonial_audio_asset": "plh_audio/testimonials/teen/teen_test_w_instruct.mp3",
       "title": "Positive Instructions",
@@ -217,22 +188,19 @@
         "title": {
           "tz_sw": true
         },
-        "in_text_title": {
+        "lower_case_title": {
           "tz_sw": true
         },
         "description": {
-          "tz_sw": true
-        },
-        "intro_title": {
-          "tz_sw": true
-        },
-        "tools": {
           "tz_sw": true
         },
         "caregiver_testimonial_script": {
           "tz_sw": true
         },
         "teen_testimonial_script": {
+          "tz_sw": true
+        },
+        "in_text_title": {
           "tz_sw": true
         }
       },
@@ -240,40 +208,34 @@
         "title": {
           "eng": "Positive Instructions"
         },
-        "in_text_title": {
-          "eng": "**Positive Instructions** @global.workshop"
+        "lower_case_title": {
+          "eng": "positive instructions"
         },
         "description": {
           "eng": "Teens follow instructions that are positive more easily."
         },
-        "intro_title": {
-          "eng": "Why Positive Instructions?"
-        },
-        "tools": {
-          "eng": "How to give positive instructions"
-        },
         "caregiver_testimonial_script": {
-          "eng": "Before, I used to raise my teens the way I was raised: I would tell them “don’t do this, don’t do that.” We used to fight a lot, but things have really changed when I learned about giving positive instructions.\n\nNow I focus on the behaviour I want to see, and give clear and simple instructions to my teens. It took time to learn to say “please do this” instead of “don’t do this.” \n\nMy teens and even my husband tell me that they love this way of doing things, because now they know what needs to be done. My teen said one day “I really love this new mom,” and my own stress levels have come down a lot."
+          "eng": "Before, I used to raise my teens the way I was raised: I would tell them “don’t do this, don’t do that.” We used to fight a lot, but things have really changed when I learnt about giving positive instructions.\n\nNow I focus on the behaviour I want to see, and give clear and simple instructions to my teens. It took time to learn to say “please do this” instead of “don’t do this.” \n\nMy teens and even my husband tell me that they love this way of doing things, because now they know what needs to be done. My teen said one day “I really love this new mom,” and my own stress levels have come down a lot."
         },
         "teen_testimonial_script": {
-          "eng": "At first, I did not care much that my mother was doing @global.parent_app. But then I started to see my mother change how she communicated with us.\n\nOne day, when I was going out with my friends, she said I must be home by 6pm. I was like “Hmmm okay,” because she normally did not give clear instructions on what she wanted - she would just say nothing and then shout at me for being late when I got home. \n\nWhen I got home around 5pm, my mother gave me a hug and said “Thank you for being on time.” It was strange, but I liked it. \n\nSince then, we have much clearer communication in the house."
+          "eng": "At first, I did not care much that my mother was doing @global.parent_app. But then I started to see my mother change how she communicated with us.\n\nOne day, when I was going out with my friends, she said I must be home by 6pm. I was like “Hmmm okay,” because she normally did not give clear instructions on what she wanted – she would just say nothing and then shout at me for being late when I got home. \n\nWhen I got home around 5pm, my mother gave me a hug and said “Thank you for being on time.” It was strange, but I liked it. \n\nSince then, we have much clearer communication in the house."
+        },
+        "in_text_title": {
+          "eng": "**Positive Instructions** @global.workshop"
         }
       },
-      "in_text_title": "**Positive Instructions** @global.workshop",
+      "lower_case_title": "positive instructions",
       "description": "Teens follow instructions that are positive more easily.",
-      "intro_title": "Why Positive Instructions?",
-      "tools": "How to give positive instructions",
-      "caregiver_testimonial_script": "Before, I used to raise my teens the way I was raised: I would tell them “don’t do this, don’t do that.” We used to fight a lot, but things have really changed when I learned about giving positive instructions.\n\nNow I focus on the behaviour I want to see, and give clear and simple instructions to my teens. It took time to learn to say “please do this” instead of “don’t do this.” \n\nMy teens and even my husband tell me that they love this way of doing things, because now they know what needs to be done. My teen said one day “I really love this new mom,” and my own stress levels have come down a lot.",
-      "teen_testimonial_script": "At first, I did not care much that my mother was doing @global.parent_app. But then I started to see my mother change how she communicated with us.\n\nOne day, when I was going out with my friends, she said I must be home by 6pm. I was like “Hmmm okay,” because she normally did not give clear instructions on what she wanted - she would just say nothing and then shout at me for being late when I got home. \n\nWhen I got home around 5pm, my mother gave me a hug and said “Thank you for being on time.” It was strange, but I liked it. \n\nSince then, we have much clearer communication in the house."
+      "caregiver_testimonial_script": "Before, I used to raise my teens the way I was raised: I would tell them “don’t do this, don’t do that.” We used to fight a lot, but things have really changed when I learnt about giving positive instructions.\n\nNow I focus on the behaviour I want to see, and give clear and simple instructions to my teens. It took time to learn to say “please do this” instead of “don’t do this.” \n\nMy teens and even my husband tell me that they love this way of doing things, because now they know what needs to be done. My teen said one day “I really love this new mom,” and my own stress levels have come down a lot.",
+      "teen_testimonial_script": "At first, I did not care much that my mother was doing @global.parent_app. But then I started to see my mother change how she communicated with us.\n\nOne day, when I was going out with my friends, she said I must be home by 6pm. I was like “Hmmm okay,” because she normally did not give clear instructions on what she wanted – she would just say nothing and then shout at me for being late when I got home. \n\nWhen I got home around 5pm, my mother gave me a hug and said “Thank you for being on time.” It was strange, but I liked it. \n\nSince then, we have much clearer communication in the house.",
+      "in_text_title": "**Positive Instructions** @global.workshop"
     },
     {
       "id": "w_stress",
       "number": 5,
-      "image_asset": "plh_images/workshops/w_stress/tools.svg",
-      "relax_data": "@data.relax.relax_7",
-      "relax_title": "@data.relax.relax_7.title",
+      "group": "core",
       "something_fun_data": "@data.something_fun.check_in_chat",
-      "intro_audio_asset": "plh_audio/topic_intros/w_stress_intro.mp3",
+      "image_asset": "plh_images/workshops/w_stress/tools.svg",
       "caregiver_testimonial_audio_asset": "plh_audio/testimonials/caregiver/caregiver_test_w_stress.mp3",
       "teen_testimonial_audio_asset": "plh_audio/testimonials/teen/teen_test_w_stress.mp3",
       "title": "Managing Stress",
@@ -281,22 +243,19 @@
         "title": {
           "tz_sw": true
         },
-        "in_text_title": {
+        "lower_case_title": {
           "tz_sw": true
         },
         "description": {
-          "tz_sw": true
-        },
-        "intro_title": {
-          "tz_sw": true
-        },
-        "tools": {
           "tz_sw": true
         },
         "caregiver_testimonial_script": {
           "tz_sw": true
         },
         "teen_testimonial_script": {
+          "tz_sw": true
+        },
+        "in_text_title": {
           "tz_sw": true
         }
       },
@@ -304,40 +263,34 @@
         "title": {
           "eng": "Managing Stress"
         },
-        "in_text_title": {
-          "eng": "**Managing Stress** @global.workshop"
+        "lower_case_title": {
+          "eng": "managing stress"
         },
         "description": {
           "eng": "Life is stressful. Staying calm helps us handle any situation better."
-        },
-        "intro_title": {
-          "eng": "Why Managing Stress?"
-        },
-        "tools": {
-          "eng": "How to manage stress"
         },
         "caregiver_testimonial_script": {
           "eng": "Life is tough sometimes. Before I joined @global.parent_app, I used to be grumpy at all times. I would take out my anger on everyone at home, not only my teens but even my husband as well. They would run away when I came home, because they knew I would start yelling at them. \n\nLearning to take a pause and breathe was difficult at first, but every time I tried it, it helped me to calm down. Now my teens are no longer running away when I come home, and they actually listen better than when I used to shout at them!"
         },
         "teen_testimonial_script": {
           "eng": "Whenever I would do something wrong, my father would get so angry at me and beat me. He would not even listen to me, and I would get so angry as well at him and everyone else. \n\nNow, when he gets angry, he first takes a few deep breaths before he responds. It makes everyone calm down instead of causing a big fight.\n\nIt really helped me at home and at school, because even me I am no longer slashing everyone and I am no longer this moody person. When I feel really angry or stressed, I also take deep breaths like my father does. I am a different person."
+        },
+        "in_text_title": {
+          "eng": "**Managing Stress** @global.workshop"
         }
       },
-      "in_text_title": "**Managing Stress** @global.workshop",
+      "lower_case_title": "managing stress",
       "description": "Life is stressful. Staying calm helps us handle any situation better.",
-      "intro_title": "Why Managing Stress?",
-      "tools": "How to manage stress",
       "caregiver_testimonial_script": "Life is tough sometimes. Before I joined @global.parent_app, I used to be grumpy at all times. I would take out my anger on everyone at home, not only my teens but even my husband as well. They would run away when I came home, because they knew I would start yelling at them. \n\nLearning to take a pause and breathe was difficult at first, but every time I tried it, it helped me to calm down. Now my teens are no longer running away when I come home, and they actually listen better than when I used to shout at them!",
-      "teen_testimonial_script": "Whenever I would do something wrong, my father would get so angry at me and beat me. He would not even listen to me, and I would get so angry as well at him and everyone else. \n\nNow, when he gets angry, he first takes a few deep breaths before he responds. It makes everyone calm down instead of causing a big fight.\n\nIt really helped me at home and at school, because even me I am no longer slashing everyone and I am no longer this moody person. When I feel really angry or stressed, I also take deep breaths like my father does. I am a different person."
+      "teen_testimonial_script": "Whenever I would do something wrong, my father would get so angry at me and beat me. He would not even listen to me, and I would get so angry as well at him and everyone else. \n\nNow, when he gets angry, he first takes a few deep breaths before he responds. It makes everyone calm down instead of causing a big fight.\n\nIt really helped me at home and at school, because even me I am no longer slashing everyone and I am no longer this moody person. When I feel really angry or stressed, I also take deep breaths like my father does. I am a different person.",
+      "in_text_title": "**Managing Stress** @global.workshop"
     },
     {
       "id": "w_solve",
       "number": 6,
-      "image_asset": "plh_images/workshops/w_solve/tools.svg",
-      "relax_data": "@data.relax.relax_11",
-      "relax_title": "@data.relax.relax_11.title",
+      "group": "core",
       "something_fun_data": "@data.something_fun.mirror",
-      "intro_audio_asset": "plh_audio/topic_intros/w_solve_intro.mp3",
+      "image_asset": "plh_images/workshops/w_solve/tools.svg",
       "caregiver_testimonial_audio_asset": "plh_audio/testimonials/caregiver/caregiver_test_w_solve.mp3",
       "teen_testimonial_audio_asset": "plh_audio/testimonials/teen/teen_test_w_solve.mp3",
       "title": "Problem Solving",
@@ -345,22 +298,19 @@
         "title": {
           "tz_sw": true
         },
-        "in_text_title": {
+        "lower_case_title": {
           "tz_sw": true
         },
         "description": {
-          "tz_sw": true
-        },
-        "intro_title": {
-          "tz_sw": true
-        },
-        "tools": {
           "tz_sw": true
         },
         "caregiver_testimonial_script": {
           "tz_sw": true
         },
         "teen_testimonial_script": {
+          "tz_sw": true
+        },
+        "in_text_title": {
           "tz_sw": true
         }
       },
@@ -368,40 +318,34 @@
         "title": {
           "eng": "Problem Solving"
         },
-        "in_text_title": {
-          "eng": "**Problem Solving** @global.workshop"
+        "lower_case_title": {
+          "eng": "problem solving"
         },
         "description": {
           "eng": "Together with your teen, you can handle any challenge."
-        },
-        "intro_title": {
-          "eng": "Why Problem Solving?"
-        },
-        "tools": {
-          "eng": "How to solve problems"
         },
         "caregiver_testimonial_script": {
           "eng": "I did not have a good relationship with my daughter. I was always shouting at her, and she was refusing to go to school. \n\nOnly when I started spending One-on-One time with her, I realised that she did not want to go to school because she was being bullied at school. We sat down and used the 6 steps of problem solving. We identified the problem, and figured out solutions together: “What can I do as a parent so you can attend school and feel safe?”\n\nWe agreed I would go talk to the teacher to find a way forward. We really found the solutions together, and we are closer now."
         },
         "teen_testimonial_script": {
           "eng": "When my father introduced the problem-solving steps to me, it helped me with my family, but it also helped me with my friends. \n\nI told my friends about the steps, and now when we are arguing we sit down and everyone comes up with solutions. We then look for the negatives and positives of each solution, and we agree “okay let’s try this one.” \n\nMy friends even took it to their own homes, and it is helping with their families as well! \n\nIt is great when others listen to you and accept your ideas even though you are young. We can all bring that harmony with our friends and family."
+        },
+        "in_text_title": {
+          "eng": "**Problem Solving** @global.workshop"
         }
       },
-      "in_text_title": "**Problem Solving** @global.workshop",
+      "lower_case_title": "problem solving",
       "description": "Together with your teen, you can handle any challenge.",
-      "intro_title": "Why Problem Solving?",
-      "tools": "How to solve problems",
       "caregiver_testimonial_script": "I did not have a good relationship with my daughter. I was always shouting at her, and she was refusing to go to school. \n\nOnly when I started spending One-on-One time with her, I realised that she did not want to go to school because she was being bullied at school. We sat down and used the 6 steps of problem solving. We identified the problem, and figured out solutions together: “What can I do as a parent so you can attend school and feel safe?”\n\nWe agreed I would go talk to the teacher to find a way forward. We really found the solutions together, and we are closer now.",
-      "teen_testimonial_script": "When my father introduced the problem-solving steps to me, it helped me with my family, but it also helped me with my friends. \n\nI told my friends about the steps, and now when we are arguing we sit down and everyone comes up with solutions. We then look for the negatives and positives of each solution, and we agree “okay let’s try this one.” \n\nMy friends even took it to their own homes, and it is helping with their families as well! \n\nIt is great when others listen to you and accept your ideas even though you are young. We can all bring that harmony with our friends and family."
+      "teen_testimonial_script": "When my father introduced the problem-solving steps to me, it helped me with my family, but it also helped me with my friends. \n\nI told my friends about the steps, and now when we are arguing we sit down and everyone comes up with solutions. We then look for the negatives and positives of each solution, and we agree “okay let’s try this one.” \n\nMy friends even took it to their own homes, and it is helping with their families as well! \n\nIt is great when others listen to you and accept your ideas even though you are young. We can all bring that harmony with our friends and family.",
+      "in_text_title": "**Problem Solving** @global.workshop"
     },
     {
       "id": "w_money",
       "number": 7,
-      "image_asset": "plh_images/workshops/w_money/tools.svg",
-      "relax_data": "@data.relax.relax_8",
-      "relax_title": "@data.relax.relax_8.title",
+      "group": "core",
       "something_fun_data": "@data.something_fun.dream_travel",
-      "intro_audio_asset": "plh_audio/topic_intros/w_money_intro.mp3",
+      "image_asset": "plh_images/workshops/w_money/tools.svg",
       "caregiver_testimonial_audio_asset": "plh_audio/testimonials/caregiver/caregiver_test_w_money.mp3",
       "teen_testimonial_audio_asset": "plh_audio/testimonials/teen/teen_test_w_money.mp3",
       "title": "Family Budgets",
@@ -409,22 +353,19 @@
         "title": {
           "tz_sw": true
         },
-        "in_text_title": {
+        "lower_case_title": {
           "tz_sw": true
         },
         "description": {
-          "tz_sw": true
-        },
-        "intro_title": {
-          "tz_sw": true
-        },
-        "tools": {
           "tz_sw": true
         },
         "caregiver_testimonial_script": {
           "tz_sw": true
         },
         "teen_testimonial_script": {
+          "tz_sw": true
+        },
+        "in_text_title": {
           "tz_sw": true
         }
       },
@@ -432,40 +373,34 @@
         "title": {
           "eng": "Family Budgets"
         },
-        "in_text_title": {
-          "eng": "**Family Budgets** @global.workshop"
+        "lower_case_title": {
+          "eng": "family budgets"
         },
         "description": {
           "eng": "Making a plan to budget and save as a family prevents disagreements."
-        },
-        "intro_title": {
-          "eng": "Why Family Budgets?"
-        },
-        "tools": {
-          "eng": "How to budget & save"
         },
         "caregiver_testimonial_script": {
           "eng": "Saving and budgeting helps me as a parent, and it helps my teens as well to understand where the money goes.\n\nMy teens always asked for a lot of things and they did not understand when I said “I do not have money.” They would say “but you have a job!” \n\nI sat down with them and showed them all the things we pay for and how much is left. They understand now and even give ideas on how we can save to work towards our goals like new shoes or a birthday and bigger goals like their school fees. For the older one, I even opened a savings account."
         },
         "teen_testimonial_script": {
           "eng": "I used to ask my mom to buy me nice clothes all the time. Each time, she would say “I do not have money,” but I knew that she was getting money from my uncle. I did not understand why she refused to buy me clothes. I thought at some point “she does not love me.”\n\nBut one day, she called me to sit down with her and asked “what are the needs and wants in our house.” I started to list all my needs and wants. Then my mother helped me to also think about the family needs. Now I understand where our money is going, towards the things we need as a family. \n\nFrom that day, I understand I cannot come in and ask any time. Now, when I want something, I wait till the month-end when we all discuss the budget together to see if it fits. We understand each other better now."
+        },
+        "in_text_title": {
+          "eng": "**Family Budgets** @global.workshop"
         }
       },
-      "in_text_title": "**Family Budgets** @global.workshop",
+      "lower_case_title": "family budgets",
       "description": "Making a plan to budget and save as a family prevents disagreements.",
-      "intro_title": "Why Family Budgets?",
-      "tools": "How to budget & save",
       "caregiver_testimonial_script": "Saving and budgeting helps me as a parent, and it helps my teens as well to understand where the money goes.\n\nMy teens always asked for a lot of things and they did not understand when I said “I do not have money.” They would say “but you have a job!” \n\nI sat down with them and showed them all the things we pay for and how much is left. They understand now and even give ideas on how we can save to work towards our goals like new shoes or a birthday and bigger goals like their school fees. For the older one, I even opened a savings account.",
-      "teen_testimonial_script": "I used to ask my mom to buy me nice clothes all the time. Each time, she would say “I do not have money,” but I knew that she was getting money from my uncle. I did not understand why she refused to buy me clothes. I thought at some point “she does not love me.”\n\nBut one day, she called me to sit down with her and asked “what are the needs and wants in our house.” I started to list all my needs and wants. Then my mother helped me to also think about the family needs. Now I understand where our money is going, towards the things we need as a family. \n\nFrom that day, I understand I cannot come in and ask any time. Now, when I want something, I wait till the month-end when we all discuss the budget together to see if it fits. We understand each other better now."
+      "teen_testimonial_script": "I used to ask my mom to buy me nice clothes all the time. Each time, she would say “I do not have money,” but I knew that she was getting money from my uncle. I did not understand why she refused to buy me clothes. I thought at some point “she does not love me.”\n\nBut one day, she called me to sit down with her and asked “what are the needs and wants in our house.” I started to list all my needs and wants. Then my mother helped me to also think about the family needs. Now I understand where our money is going, towards the things we need as a family. \n\nFrom that day, I understand I cannot come in and ask any time. Now, when I want something, I wait till the month-end when we all discuss the budget together to see if it fits. We understand each other better now.",
+      "in_text_title": "**Family Budgets** @global.workshop"
     },
     {
       "id": "w_rules",
       "number": 8,
-      "image_asset": "plh_images/workshops/w_rules/tools.svg",
-      "relax_data": "@data.relax.relax_9",
-      "relax_title": "@data.relax.relax_9.title",
+      "group": "core",
       "something_fun_data": "@data.something_fun.famous_party",
-      "intro_audio_asset": "plh_audio/topic_intros/w_rules_intro.mp3",
+      "image_asset": "plh_images/workshops/w_rules/tools.svg",
       "caregiver_testimonial_audio_asset": "plh_audio/testimonials/caregiver/caregiver_test_w_rules.mp3",
       "teen_testimonial_audio_asset": "plh_audio/testimonials/teen/teen_test_w_rules.mp3",
       "title": "Rules",
@@ -473,22 +408,19 @@
         "title": {
           "tz_sw": true
         },
-        "in_text_title": {
+        "lower_case_title": {
           "tz_sw": true
         },
         "description": {
-          "tz_sw": true
-        },
-        "intro_title": {
-          "tz_sw": true
-        },
-        "tools": {
           "tz_sw": true
         },
         "caregiver_testimonial_script": {
           "tz_sw": true
         },
         "teen_testimonial_script": {
+          "tz_sw": true
+        },
+        "in_text_title": {
           "tz_sw": true
         }
       },
@@ -496,40 +428,34 @@
         "title": {
           "eng": "Rules"
         },
-        "in_text_title": {
-          "eng": "**Rules** @global.workshop"
+        "lower_case_title": {
+          "eng": "rules"
         },
         "description": {
           "eng": "Teens follow rules more when you create them together."
         },
-        "intro_title": {
-          "eng": "Why Rules?"
-        },
-        "tools": {
-          "eng": "How to create rules"
-        },
         "caregiver_testimonial_script": {
-          "eng": "My teenagers always just disappeared. I did not know where they were, and I would get so worried and angry with them. I used to say “this is my house, and these are my rules, if you do not want to follow them you can leave and stay in your own place.” \n\nWhen we learned in @global.parent_app about rules, I learned that there are rules for teens and for adults and for everyone. If we follow the rules as parents, our teens will follow our example.\n\nI explained my worry and we all agreed: We all follow the rule and say where we are going when we leave the house. Coming up with rules together helped us a lot, as my teens do not see me anymore as that annoying parent that just makes up unnecessary rules."
+          "eng": "My teenagers always just disappeared. I did not know where they were, and I would get so worried and angry with them. I used to say “this is my house, and these are my rules, if you do not want to follow them you can leave and stay in your own place.” \n\nWhen we learnt in @global.parent_app about rules, I learnt that there are rules for teens and for adults and for everyone. If we follow the rules as parents, our teens will follow our example.\n\nI explained my worry and we all agreed: We all follow the rule and say where we are going when we leave the house. Coming up with rules together helped us a lot, as my teens do not see me anymore as that annoying parent that just makes up unnecessary rules."
         },
         "teen_testimonial_script": {
           "eng": "I never liked rules and I used to forget rules a lot. \n\nOne day, I was playing with my friends. The rule at home was that we should be in the yard by 6pm, but I forgot again. By 6.30 it was getting dark and I was still outside and playing with my phone. Then a boy came, grabbed my phone and ran away. \n\nI understood that rules can really help to keep us safe, so I changed my behaviour and I was in the yard by 5pm from then."
+        },
+        "in_text_title": {
+          "eng": "**Rules** @global.workshop"
         }
       },
-      "in_text_title": "**Rules** @global.workshop",
+      "lower_case_title": "rules",
       "description": "Teens follow rules more when you create them together.",
-      "intro_title": "Why Rules?",
-      "tools": "How to create rules",
-      "caregiver_testimonial_script": "My teenagers always just disappeared. I did not know where they were, and I would get so worried and angry with them. I used to say “this is my house, and these are my rules, if you do not want to follow them you can leave and stay in your own place.” \n\nWhen we learned in @global.parent_app about rules, I learned that there are rules for teens and for adults and for everyone. If we follow the rules as parents, our teens will follow our example.\n\nI explained my worry and we all agreed: We all follow the rule and say where we are going when we leave the house. Coming up with rules together helped us a lot, as my teens do not see me anymore as that annoying parent that just makes up unnecessary rules.",
-      "teen_testimonial_script": "I never liked rules and I used to forget rules a lot. \n\nOne day, I was playing with my friends. The rule at home was that we should be in the yard by 6pm, but I forgot again. By 6.30 it was getting dark and I was still outside and playing with my phone. Then a boy came, grabbed my phone and ran away. \n\nI understood that rules can really help to keep us safe, so I changed my behaviour and I was in the yard by 5pm from then."
+      "caregiver_testimonial_script": "My teenagers always just disappeared. I did not know where they were, and I would get so worried and angry with them. I used to say “this is my house, and these are my rules, if you do not want to follow them you can leave and stay in your own place.” \n\nWhen we learnt in @global.parent_app about rules, I learnt that there are rules for teens and for adults and for everyone. If we follow the rules as parents, our teens will follow our example.\n\nI explained my worry and we all agreed: We all follow the rule and say where we are going when we leave the house. Coming up with rules together helped us a lot, as my teens do not see me anymore as that annoying parent that just makes up unnecessary rules.",
+      "teen_testimonial_script": "I never liked rules and I used to forget rules a lot. \n\nOne day, I was playing with my friends. The rule at home was that we should be in the yard by 6pm, but I forgot again. By 6.30 it was getting dark and I was still outside and playing with my phone. Then a boy came, grabbed my phone and ran away. \n\nI understood that rules can really help to keep us safe, so I changed my behaviour and I was in the yard by 5pm from then.",
+      "in_text_title": "**Rules** @global.workshop"
     },
     {
       "id": "w_consequence",
       "number": 9,
-      "image_asset": "plh_images/workshops/w_consequence/tools.svg",
-      "relax_data": "@data.relax.relax_10",
-      "relax_title": "@data.relax.relax_10.title",
+      "group": "core",
       "something_fun_data": "@data.something_fun.two_truths",
-      "intro_audio_asset": "plh_audio/topic_intros/w_consequence_intro.mp3",
+      "image_asset": "plh_images/workshops/w_consequence/tools.svg",
       "caregiver_testimonial_audio_asset": "plh_audio/testimonials/caregiver/caregiver_test_w_consequence.mp3",
       "teen_testimonial_audio_asset": "plh_audio/testimonials/teen/teen_test_w_consequence.mp3",
       "title": "Calm Consequences",
@@ -537,22 +463,19 @@
         "title": {
           "tz_sw": true
         },
-        "in_text_title": {
+        "lower_case_title": {
           "tz_sw": true
         },
         "description": {
-          "tz_sw": true
-        },
-        "intro_title": {
-          "tz_sw": true
-        },
-        "tools": {
           "tz_sw": true
         },
         "caregiver_testimonial_script": {
           "tz_sw": true
         },
         "teen_testimonial_script": {
+          "tz_sw": true
+        },
+        "in_text_title": {
           "tz_sw": true
         }
       },
@@ -560,40 +483,34 @@
         "title": {
           "eng": "Calm Consequences"
         },
-        "in_text_title": {
-          "eng": "**Calm Consequences** @global.workshop"
+        "lower_case_title": {
+          "eng": "calm consequences"
         },
         "description": {
           "eng": "Consequences help us discipline our teens in a calm way – it works."
         },
-        "intro_title": {
-          "eng": "Why Calm Consequences?"
-        },
-        "tools": {
-          "eng": "How to give calm consequences"
-        },
         "caregiver_testimonial_script": {
-          "eng": "When my teenagers did something to make me angry, I would shout at them and punish them right away. But the next time they did it again! I could not understand why they did not hear me even when I shouted. \n\n@global.parent_app helped me understand that my teenagers will listen to me more when I am calm. So, when something happens, I take a deep breath and say “we will talk about this later when we are both calm.”\n\nWe even agree on the consequences together now before something goes wrong. This has worked wonders - I have seen a huge change in my teen’s behaviour now that they are more involved, and I have less stress. \n\nI wish I knew this long ago, but it is never too late to start!"
+          "eng": "When my teenagers did something to make me angry, I would shout at them and punish them right away. But the next time they did it again! I could not understand why they did not hear me even when I shouted. \n\n@global.parent_app helped me understand that my teenagers will listen to me more when I am calm. So, when something happens, I take a deep breath and say “we will talk about this later when we are both calm.”\n\nWe even agree on the consequences together now before something goes wrong. This has worked wonders – I have seen a huge change in my teen’s behaviour now that they are more involved, and I have less stress. \n\nI wish I knew this long ago, but it is never too late to start!"
         },
         "teen_testimonial_script": {
           "eng": "My mom and dad would always punish me when they were angry with me. They would shout at me and I would also get angry. I often did not follow the rules, because they were too harsh, I did not understand what they were saying, or I would not even bother listening to them, because we were all angry.\n\nOne day, they asked me: Let's think together what the consequence should be for not coming home in time. It was great to give my view – before something happens that makes us all angry. We are all calm and agree first. It is easier for me to follow the rules now because I know I agreed on the rule and on the consequence if I do not follow the rule."
+        },
+        "in_text_title": {
+          "eng": "**Calm Consequences** @global.workshop"
         }
       },
-      "in_text_title": "**Calm Consequences** @global.workshop",
+      "lower_case_title": "calm consequences",
       "description": "Consequences help us discipline our teens in a calm way – it works.",
-      "intro_title": "Why Calm Consequences?",
-      "tools": "How to give calm consequences",
-      "caregiver_testimonial_script": "When my teenagers did something to make me angry, I would shout at them and punish them right away. But the next time they did it again! I could not understand why they did not hear me even when I shouted. \n\n@global.parent_app helped me understand that my teenagers will listen to me more when I am calm. So, when something happens, I take a deep breath and say “we will talk about this later when we are both calm.”\n\nWe even agree on the consequences together now before something goes wrong. This has worked wonders - I have seen a huge change in my teen’s behaviour now that they are more involved, and I have less stress. \n\nI wish I knew this long ago, but it is never too late to start!",
-      "teen_testimonial_script": "My mom and dad would always punish me when they were angry with me. They would shout at me and I would also get angry. I often did not follow the rules, because they were too harsh, I did not understand what they were saying, or I would not even bother listening to them, because we were all angry.\n\nOne day, they asked me: Let's think together what the consequence should be for not coming home in time. It was great to give my view – before something happens that makes us all angry. We are all calm and agree first. It is easier for me to follow the rules now because I know I agreed on the rule and on the consequence if I do not follow the rule."
+      "caregiver_testimonial_script": "When my teenagers did something to make me angry, I would shout at them and punish them right away. But the next time they did it again! I could not understand why they did not hear me even when I shouted. \n\n@global.parent_app helped me understand that my teenagers will listen to me more when I am calm. So, when something happens, I take a deep breath and say “we will talk about this later when we are both calm.”\n\nWe even agree on the consequences together now before something goes wrong. This has worked wonders – I have seen a huge change in my teen’s behaviour now that they are more involved, and I have less stress. \n\nI wish I knew this long ago, but it is never too late to start!",
+      "teen_testimonial_script": "My mom and dad would always punish me when they were angry with me. They would shout at me and I would also get angry. I often did not follow the rules, because they were too harsh, I did not understand what they were saying, or I would not even bother listening to them, because we were all angry.\n\nOne day, they asked me: Let's think together what the consequence should be for not coming home in time. It was great to give my view – before something happens that makes us all angry. We are all calm and agree first. It is easier for me to follow the rules now because I know I agreed on the rule and on the consequence if I do not follow the rule.",
+      "in_text_title": "**Calm Consequences** @global.workshop"
     },
     {
       "id": "w_safe",
       "number": 10,
-      "image_asset": "plh_images/workshops/w_safe/tools.svg",
-      "relax_data": "@data.relax.relax_12",
-      "relax_title": "@data.relax.relax_12.title",
+      "group": "core",
       "something_fun_data": "@data.something_fun.time_machine",
-      "intro_audio_asset": "plh_audio/topic_intros/w_safe_intro.mp3",
+      "image_asset": "plh_images/workshops/w_safe/tools.svg",
       "caregiver_testimonial_audio_asset": "plh_audio/testimonials/caregiver/caregiver_test_w_safe.mp3",
       "teen_testimonial_audio_asset": "plh_audio/testimonials/teen/teen_test_w_safe.mp3",
       "title": "Teen Safety",
@@ -601,22 +518,19 @@
         "title": {
           "tz_sw": true
         },
-        "in_text_title": {
+        "lower_case_title": {
           "tz_sw": true
         },
         "description": {
-          "tz_sw": true
-        },
-        "intro_title": {
-          "tz_sw": true
-        },
-        "tools": {
           "tz_sw": true
         },
         "caregiver_testimonial_script": {
           "tz_sw": true
         },
         "teen_testimonial_script": {
+          "tz_sw": true
+        },
+        "in_text_title": {
           "tz_sw": true
         }
       },
@@ -624,40 +538,34 @@
         "title": {
           "eng": "Teen Safety"
         },
-        "in_text_title": {
-          "eng": "**Teen Safety** @global.workshop"
+        "lower_case_title": {
+          "eng": "teen safety"
         },
         "description": {
           "eng": "Talking and planning helps prevent dangerous situations, in-person and online."
-        },
-        "intro_title": {
-          "eng": "Why Teen Safety?"
-        },
-        "tools": {
-          "eng": "How to keep your teen safe"
         },
         "caregiver_testimonial_script": {
           "eng": "I was so grateful to make the safety plan with my teen. I thought I knew which areas are safe for my teen and which are not. But when we made the safety plan together, I realised that my girl knew more areas that I was not aware of. \n\nI also thought she was safe at school, but through this activity I realised she was being bullied and the teachers did not do anything about it.\n\nThe more we talked, the more I understood and got information from my teen. That really helped me to protect my teen and keep her safe."
         },
         "teen_testimonial_script": {
-          "eng": "When my friends or I got into trouble, I would always try to hide it from my mother because she would get so angry and shout at me. \n\nWhen we made the map of safe and unsafe places, I learned a lot – also why it is dangerous to share every picture online. My mother told me I can always ask her if there is a problem and she promised she would not get mad. \n\nShe kept her promise, so now if I have a problem or I do not feel safe I know we can always come up with a solution together. I can even talk to my mother about the things I do online now!"
+          "eng": "When my friends or I got into trouble, I would always try to hide it from my mother because she would get so angry and shout at me. \n\nWhen we made the map of safe and unsafe places, I learnt a lot – also why it is dangerous to share every picture online. My mother told me I can always ask her if there is a problem and she promised she would not get mad. \n\nShe kept her promise, so now if I have a problem or I do not feel safe I know we can always come up with a solution together. I can even talk to my mother about the things I do online now!"
+        },
+        "in_text_title": {
+          "eng": "**Teen Safety** @global.workshop"
         }
       },
-      "in_text_title": "**Teen Safety** @global.workshop",
+      "lower_case_title": "teen safety",
       "description": "Talking and planning helps prevent dangerous situations, in-person and online.",
-      "intro_title": "Why Teen Safety?",
-      "tools": "How to keep your teen safe",
       "caregiver_testimonial_script": "I was so grateful to make the safety plan with my teen. I thought I knew which areas are safe for my teen and which are not. But when we made the safety plan together, I realised that my girl knew more areas that I was not aware of. \n\nI also thought she was safe at school, but through this activity I realised she was being bullied and the teachers did not do anything about it.\n\nThe more we talked, the more I understood and got information from my teen. That really helped me to protect my teen and keep her safe.",
-      "teen_testimonial_script": "When my friends or I got into trouble, I would always try to hide it from my mother because she would get so angry and shout at me. \n\nWhen we made the map of safe and unsafe places, I learned a lot – also why it is dangerous to share every picture online. My mother told me I can always ask her if there is a problem and she promised she would not get mad. \n\nShe kept her promise, so now if I have a problem or I do not feel safe I know we can always come up with a solution together. I can even talk to my mother about the things I do online now!"
+      "teen_testimonial_script": "When my friends or I got into trouble, I would always try to hide it from my mother because she would get so angry and shout at me. \n\nWhen we made the map of safe and unsafe places, I learnt a lot – also why it is dangerous to share every picture online. My mother told me I can always ask her if there is a problem and she promised she would not get mad. \n\nShe kept her promise, so now if I have a problem or I do not feel safe I know we can always come up with a solution together. I can even talk to my mother about the things I do online now!",
+      "in_text_title": "**Teen Safety** @global.workshop"
     },
     {
       "id": "w_crisis",
       "number": 11,
-      "image_asset": "plh_images/workshops/w_crisis/tools.svg",
-      "relax_data": "@data.relax.relax_13",
-      "relax_title": "@data.relax.relax_13.title",
+      "group": "core",
       "something_fun_data": "@data.something_fun.superpowers",
-      "intro_audio_asset": "plh_audio/topic_intros/w_crisis_intro.mp3",
+      "image_asset": "plh_images/workshops/w_crisis/tools.svg",
       "caregiver_testimonial_audio_asset": "plh_audio/testimonials/caregiver/caregiver_test_w_crisis.mp3",
       "teen_testimonial_audio_asset": "plh_audio/testimonials/teen/teen_test_w_crisis.mp3",
       "title": "Dealing with Crisis",
@@ -665,22 +573,19 @@
         "title": {
           "tz_sw": true
         },
-        "in_text_title": {
+        "lower_case_title": {
           "tz_sw": true
         },
         "description": {
-          "tz_sw": true
-        },
-        "intro_title": {
-          "tz_sw": true
-        },
-        "tools": {
           "tz_sw": true
         },
         "caregiver_testimonial_script": {
           "tz_sw": true
         },
         "teen_testimonial_script": {
+          "tz_sw": true
+        },
+        "in_text_title": {
           "tz_sw": true
         }
       },
@@ -688,54 +593,48 @@
         "title": {
           "eng": "Dealing with Crisis"
         },
-        "in_text_title": {
-          "eng": "**Dealing with Crisis** @global.workshop"
+        "lower_case_title": {
+          "eng": "dealing with crisis"
         },
         "description": {
           "eng": "A crisis can happen in any family. You can be prepared."
-        },
-        "intro_title": {
-          "eng": "Why Dealing with Crisis?"
-        },
-        "tools": {
-          "eng": "How to deal with crisis"
         },
         "caregiver_testimonial_script": {
           "eng": "My teen used to be so angry all the time. He would never listen and we would get into big arguments every day. Through @global.parent_app, I started spending more time with my teen and strengthening our relationship. One day he shared with me that he was part of a gang but he wanted to get out. \n\nWe made short-term and long-term plans together on how we could do that. Our life looks so different now!"
         },
         "teen_testimonial_script": {
           "eng": "Two years ago, I was raped by my uncle who stayed in our yard. I did not tell my mother, because I was afraid she would hit me, shout at me, or even throw me out of the house. I did not have anywhere else to go. \n\nWhen my mother started with @global.parent_app, she started spending more time together. I was still afraid, but in the end I shared it with my mother. My mom did not shout, but she listened and told me it is not my fault. We went to the police and the clinic together. I am so grateful I do not have to carry this secret anymore."
+        },
+        "in_text_title": {
+          "eng": "**Dealing with Crisis** @global.workshop"
         }
       },
-      "in_text_title": "**Dealing with Crisis** @global.workshop",
+      "lower_case_title": "dealing with crisis",
       "description": "A crisis can happen in any family. You can be prepared.",
-      "intro_title": "Why Dealing with Crisis?",
-      "tools": "How to deal with crisis",
       "caregiver_testimonial_script": "My teen used to be so angry all the time. He would never listen and we would get into big arguments every day. Through @global.parent_app, I started spending more time with my teen and strengthening our relationship. One day he shared with me that he was part of a gang but he wanted to get out. \n\nWe made short-term and long-term plans together on how we could do that. Our life looks so different now!",
-      "teen_testimonial_script": "Two years ago, I was raped by my uncle who stayed in our yard. I did not tell my mother, because I was afraid she would hit me, shout at me, or even throw me out of the house. I did not have anywhere else to go. \n\nWhen my mother started with @global.parent_app, she started spending more time together. I was still afraid, but in the end I shared it with my mother. My mom did not shout, but she listened and told me it is not my fault. We went to the police and the clinic together. I am so grateful I do not have to carry this secret anymore."
+      "teen_testimonial_script": "Two years ago, I was raped by my uncle who stayed in our yard. I did not tell my mother, because I was afraid she would hit me, shout at me, or even throw me out of the house. I did not have anywhere else to go. \n\nWhen my mother started with @global.parent_app, she started spending more time together. I was still afraid, but in the end I shared it with my mother. My mom did not shout, but she listened and told me it is not my fault. We went to the police and the clinic together. I am so grateful I do not have to carry this secret anymore.",
+      "in_text_title": "**Dealing with Crisis** @global.workshop"
     },
     {
       "id": "w_celebrate",
       "number": 12,
+      "group": "core",
+      "something_fun_data": "@data.something_fun.get_active",
       "image_asset": "plh_images/workshops/w_celebrate/tools.svg",
-      "relax_data": "@data.relax.relax_14",
-      "relax_title": "@data.relax.relax_14.title",
-      "intro_audio_asset": "plh_audio/topic_intros/w_celebrate_intro.mp3",
+      "caregiver_testimonial_audio_asset": "plh_audio/testimonials/caregiver/caregiver_test_w_celebrate.mp3",
+      "teen_testimonial_audio_asset": "plh_audio/testimonials/teen/teen_test_w_celebrate.mp3",
       "title": "Celebration and Next Steps",
       "_translations": {
         "title": {
           "tz_sw": true
         },
-        "in_text_title": {
+        "lower_case_title": {
           "tz_sw": true
         },
         "description": {
           "tz_sw": true
         },
-        "intro_title": {
-          "tz_sw": true
-        },
-        "tools": {
+        "in_text_title": {
           "tz_sw": true
         }
       },
@@ -743,23 +642,239 @@
         "title": {
           "eng": "Celebration and Next Steps"
         },
-        "in_text_title": {
-          "eng": "**Celebration and Next Steps** @global.workshop"
+        "lower_case_title": {
+          "eng": "celebration and next steps"
         },
         "description": {
-          "eng": "Celebrate everything you learned and continue to support your family."
+          "eng": "Celebrate everything you learnt and continue to support your family."
         },
-        "intro_title": {
-          "eng": "Why Celebration and Next Steps?"
-        },
-        "tools": {
-          "eng": "How to support each other"
+        "in_text_title": {
+          "eng": "**Celebration and Next Steps** @global.workshop"
         }
       },
-      "in_text_title": "**Celebration and Next Steps** @global.workshop",
-      "description": "Celebrate everything you learned and continue to support your family.",
-      "intro_title": "Why Celebration and Next Steps?",
-      "tools": "How to support each other"
+      "lower_case_title": "celebration and next steps",
+      "description": "Celebrate everything you learnt and continue to support your family.",
+      "in_text_title": "**Celebration and Next Steps** @global.workshop"
+    },
+    {
+      "id": "w_srh",
+      "number": 13,
+      "group": "extra",
+      "something_fun_data": "@data.something_fun.friendly_chat",
+      "image_asset": "plh_images/workshops/w_srh/tools.svg",
+      "caregiver_testimonial_audio_asset": "plh_audio/testimonials/caregiver/caregiver_test_w_srh.mp3",
+      "teen_testimonial_audio_asset": "plh_audio/testimonials/teen/teen_test_w_srh.mp3",
+      "title": "Body Changes and Intimate Relationships",
+      "_translations": {
+        "title": {
+          "tz_sw": true
+        },
+        "lower_case_title": {
+          "tz_sw": true
+        },
+        "description": {
+          "tz_sw": true
+        },
+        "caregiver_testimonial_script": {
+          "tz_sw": true
+        },
+        "teen_testimonial_script": {
+          "tz_sw": true
+        },
+        "in_text_title": {
+          "tz_sw": true
+        }
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Body Changes and Intimate Relationships"
+        },
+        "lower_case_title": {
+          "eng": "body changes and intimate relationships"
+        },
+        "description": {
+          "eng": "Open discussions help your teen understand changes and make healthy choices."
+        },
+        "caregiver_testimonial_script": {
+          "eng": "Thanks to the app, I can now talk to my son about all these changes that he is going through with his body and emotions and relationships. We were both not comfortable bringing it up before, but the practical examples in the app made it possible for us to start talking. And I was really surprised by how many questions and experiences my son already has, even though he is only 14!\n\nNow he can come to me if there is something happening at school or if he is not sure how to handle something. The other day he even told me that some of his friends were making fun of him because he does not have a girlfriend yet, so we talked about it and I could explain to him that it is important to focus on school first and that it is never okay for someone to pressure him to have a relationship."
+        },
+        "teen_testimonial_script": {
+          "eng": "As teens, we hear all these things about sex from others at school and on the internet. I thought all those things were true, and I was doing a lot of things secretly, because my friends were pushing me and I was afraid of what my mother would say.\n\nWhen I did this app together with my mother, I realised that so many things I learnt were not true. I learnt I can get better information and I learnt others should never push me to do things I do not want to do. My mother and I can talk about these things now. I wish we could have done that when I was younger, because it would have helped me a lot, but I am still glad we can talk today. Whenever I have a question or problem now, I know I can ask my mother and she will help me think of answers and solutions together"
+        },
+        "in_text_title": {
+          "eng": "**Body Changes and Intimate Relationships** @global.workshop"
+        }
+      },
+      "lower_case_title": "body changes and intimate relationships",
+      "description": "Open discussions help your teen understand changes and make healthy choices.",
+      "caregiver_testimonial_script": "Thanks to the app, I can now talk to my son about all these changes that he is going through with his body and emotions and relationships. We were both not comfortable bringing it up before, but the practical examples in the app made it possible for us to start talking. And I was really surprised by how many questions and experiences my son already has, even though he is only 14!\n\nNow he can come to me if there is something happening at school or if he is not sure how to handle something. The other day he even told me that some of his friends were making fun of him because he does not have a girlfriend yet, so we talked about it and I could explain to him that it is important to focus on school first and that it is never okay for someone to pressure him to have a relationship.",
+      "teen_testimonial_script": "As teens, we hear all these things about sex from others at school and on the internet. I thought all those things were true, and I was doing a lot of things secretly, because my friends were pushing me and I was afraid of what my mother would say.\n\nWhen I did this app together with my mother, I realised that so many things I learnt were not true. I learnt I can get better information and I learnt others should never push me to do things I do not want to do. My mother and I can talk about these things now. I wish we could have done that when I was younger, because it would have helped me a lot, but I am still glad we can talk today. Whenever I have a question or problem now, I know I can ask my mother and she will help me think of answers and solutions together",
+      "in_text_title": "**Body Changes and Intimate Relationships** @global.workshop"
+    },
+    {
+      "id": "w_svp",
+      "number": 14,
+      "group": "extra",
+      "something_fun_data": "@data.something_fun.three_options",
+      "image_asset": "plh_images/workshops/w_svp/tools.svg",
+      "caregiver_testimonial_audio_asset": "plh_audio/testimonials/caregiver/caregiver_test_w_svp.mp3",
+      "teen_testimonial_audio_asset": "plh_audio/testimonials/teen/teen_test_w_svp.mp3",
+      "title": "Staying Safe",
+      "_translations": {
+        "title": {
+          "tz_sw": true
+        },
+        "lower_case_title": {
+          "tz_sw": true
+        },
+        "description": {
+          "tz_sw": true
+        },
+        "caregiver_testimonial_script": {
+          "tz_sw": true
+        },
+        "teen_testimonial_script": {
+          "tz_sw": true
+        },
+        "in_text_title": {
+          "tz_sw": true
+        }
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Staying Safe"
+        },
+        "lower_case_title": {
+          "eng": "staying safe"
+        },
+        "description": {
+          "eng": "Help your teen recognise dangerous situations and stay safe."
+        },
+        "caregiver_testimonial_script": {
+          "eng": "Learning how to stay safe really helped us. The other day, my daughter got invited to a party by an older boy, and he said he would pay for her transport. Before, she would just go secretly, but now she came to me to talk about it. \n\nWe reminded each other that it is important to see the warning signs and stay safe, and she decided to say ‘no’. I am so proud of her. Even me, I now know that others should not pressure or convince me to do something. I can give the right example to my children."
+        },
+        "teen_testimonial_script": {
+          "eng": "It helped me a lot that I learnt I can use my voice to stay safe. A while ago, I was walking home alone and some man began to follow me and I felt scared. My father taught me that the most important thing is to be safe, so I turned around and said loud and clear ‘Why are you following me, I don’t want that’. It really surprised the man and even some other people looked at us, so the man walked away. I felt so relieved and even told my father. He said I did well and I felt really good. Before, I would have been too scared, also what other people think, but now I feel confident."
+        },
+        "in_text_title": {
+          "eng": "**Staying Safe** @global.workshop"
+        }
+      },
+      "lower_case_title": "staying safe",
+      "description": "Help your teen recognise dangerous situations and stay safe.",
+      "caregiver_testimonial_script": "Learning how to stay safe really helped us. The other day, my daughter got invited to a party by an older boy, and he said he would pay for her transport. Before, she would just go secretly, but now she came to me to talk about it. \n\nWe reminded each other that it is important to see the warning signs and stay safe, and she decided to say ‘no’. I am so proud of her. Even me, I now know that others should not pressure or convince me to do something. I can give the right example to my children.",
+      "teen_testimonial_script": "It helped me a lot that I learnt I can use my voice to stay safe. A while ago, I was walking home alone and some man began to follow me and I felt scared. My father taught me that the most important thing is to be safe, so I turned around and said loud and clear ‘Why are you following me, I don’t want that’. It really surprised the man and even some other people looked at us, so the man walked away. I felt so relieved and even told my father. He said I did well and I felt really good. Before, I would have been too scared, also what other people think, but now I feel confident.",
+      "in_text_title": "**Staying Safe** @global.workshop"
+    },
+    {
+      "id": "w_grief",
+      "number": 15,
+      "group": "extra",
+      "something_fun_data": "@data.something_fun.whats_new",
+      "image_asset": "plh_images/workshops/w_grief/tools.svg",
+      "caregiver_testimonial_audio_asset": "plh_audio/testimonials/caregiver/caregiver_test_w_grief.mp3",
+      "teen_testimonial_audio_asset": "plh_audio/testimonials/teen/teen_test_w_grief.mp3",
+      "title": "Coping with Grief",
+      "_translations": {
+        "title": {
+          "tz_sw": true
+        },
+        "lower_case_title": {
+          "tz_sw": true
+        },
+        "description": {
+          "tz_sw": true
+        },
+        "caregiver_testimonial_script": {
+          "tz_sw": true
+        },
+        "teen_testimonial_script": {
+          "tz_sw": true
+        },
+        "in_text_title": {
+          "tz_sw": true
+        }
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Coping with Grief"
+        },
+        "lower_case_title": {
+          "eng": "coping with grief"
+        },
+        "description": {
+          "eng": "Help your teen cope after losing a loved one."
+        },
+        "caregiver_testimonial_script": {
+          "eng": "After I lost my husband, the parenting tips that I learnt were so helpful to me: I began breathing calmly whenever I was feeling so sad or angry, and my kids really felt the difference because I was learning to keep calm.\n\nNaming our feelings and being open about how we are feeling has helped me feel closer to my child. Before, I felt like I was the only one who was going through these emotions, but now I know that my child is feeling the same things. We can talk about it and help each other. We don’t feel alone anymore."
+        },
+        "teen_testimonial_script": {
+          "eng": "When I lost my mom, everything changed. I was so sad, but it felt like my dad couldn't understand. Our relationship suffered. We did our own things and we stopped talking to each other. But then something incredible happened.\n\nMy dad learnt all these things from the app about what to do when you lose someone. He asked me how I was doing and we started to talk again. He explained that he was sad too, and he even said he was sorry for not talking to me after my mom died. We can now see that it is hard for both of us, and we can help each other. He is supporting me and we are a lot closer."
+        },
+        "in_text_title": {
+          "eng": "**Coping with Grief** @global.workshop"
+        }
+      },
+      "lower_case_title": "coping with grief",
+      "description": "Help your teen cope after losing a loved one.",
+      "caregiver_testimonial_script": "After I lost my husband, the parenting tips that I learnt were so helpful to me: I began breathing calmly whenever I was feeling so sad or angry, and my kids really felt the difference because I was learning to keep calm.\n\nNaming our feelings and being open about how we are feeling has helped me feel closer to my child. Before, I felt like I was the only one who was going through these emotions, but now I know that my child is feeling the same things. We can talk about it and help each other. We don’t feel alone anymore.",
+      "teen_testimonial_script": "When I lost my mom, everything changed. I was so sad, but it felt like my dad couldn't understand. Our relationship suffered. We did our own things and we stopped talking to each other. But then something incredible happened.\n\nMy dad learnt all these things from the app about what to do when you lose someone. He asked me how I was doing and we started to talk again. He explained that he was sad too, and he even said he was sorry for not talking to me after my mom died. We can now see that it is hard for both of us, and we can help each other. He is supporting me and we are a lot closer.",
+      "in_text_title": "**Coping with Grief** @global.workshop"
+    },
+    {
+      "id": "w_learn",
+      "number": 16,
+      "group": "play",
+      "something_fun_data": "@data.something_fun.doing_what",
+      "image_asset": "plh_images/workshops/w_learn/tools.svg",
+      "caregiver_testimonial_audio_asset": "plh_audio/testimonials/caregiver/caregiver_test_w_learn.mp3",
+      "teen_testimonial_audio_asset": "plh_audio/testimonials/teen/teen_test_w_learn.mp3",
+      "title": "Helping Your Teen Learn",
+      "_translations": {
+        "title": {
+          "tz_sw": true
+        },
+        "lower_case_title": {
+          "tz_sw": true
+        },
+        "description": {
+          "tz_sw": true
+        },
+        "caregiver_testimonial_script": {
+          "tz_sw": true
+        },
+        "teen_testimonial_script": {
+          "tz_sw": true
+        },
+        "in_text_title": {
+          "tz_sw": true
+        }
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Helping Your Teen Learn"
+        },
+        "lower_case_title": {
+          "eng": "helping your teen learn"
+        },
+        "description": {
+          "eng": "Education is important! Learn fun ways to support your teen."
+        },
+        "caregiver_testimonial_script": {
+          "eng": "Since we started spending more one-on-one time together, we have a better bond, a better understanding between us. I feel better about how I am parenting. I am doing a better job as a parent, not just being a parent, but showing love and working with him. \n\nI like that the app encourages you to work with your children, and not just you are the parent up there and they are down there as the children, but they are involved a lot in the decisions you make that impact on them."
+        },
+        "teen_testimonial_script": {
+          "eng": "In the past there were times my mom got angry and she would shout at me before beating me. But since my mom started using @global.parent_app, she tries to create time for us to interact and for us to have fun discussions. \n\nWe play games, we sing together and other stuff… She takes time to listen before jumping to conclusions, like she listens and then she calms down and takes her time to explain, and then be like “what you did is not good” and such."
+        },
+        "in_text_title": {
+          "eng": "**Helping Your Teen Learn** @global.workshop"
+        }
+      },
+      "lower_case_title": "helping your teen learn",
+      "description": "Education is important! Learn fun ways to support your teen.",
+      "caregiver_testimonial_script": "Since we started spending more one-on-one time together, we have a better bond, a better understanding between us. I feel better about how I am parenting. I am doing a better job as a parent, not just being a parent, but showing love and working with him. \n\nI like that the app encourages you to work with your children, and not just you are the parent up there and they are down there as the children, but they are involved a lot in the decisions you make that impact on them.",
+      "teen_testimonial_script": "In the past there were times my mom got angry and she would shout at me before beating me. But since my mom started using @global.parent_app, she tries to create time for us to interact and for us to have fun discussions. \n\nWe play games, we sing together and other stuff… She takes time to listen before jumping to conclusions, like she listens and then she calms down and takes her time to explain, and then be like “what you did is not good” and such.",
+      "in_text_title": "**Helping Your Teen Learn** @global.workshop"
     }
   ],
   "_xlsxPath": "global/data/workshop_data/workshop_data_list.xlsx"

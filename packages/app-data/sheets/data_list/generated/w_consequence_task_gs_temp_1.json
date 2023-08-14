@@ -4,6 +4,25 @@
   "flow_type": "data_list",
   "rows": [
     {
+      "id": "welcome_individual",
+      "individual": true,
+      "together": false,
+      "priority": 1,
+      "has_single_task": true,
+      "title": "How are you?",
+      "_translations": {
+        "title": {
+          "tz_sw": true
+        }
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "How are you?"
+        }
+      },
+      "template": "w_consequence_welcome_individual"
+    },
+    {
       "id": "care_together",
       "individual": false,
       "together": true,
@@ -28,13 +47,13 @@
       "together": true,
       "priority": 3,
       "has_single_task": true,
-      "title": "@data.workshop[@fields.current_workshop].relax_title",
+      "title": "@data.workshop_relax[@fields.current_workshop].activity_title",
       "_translations": {
         "title": {}
       },
       "_translatedFields": {
         "title": {
-          "eng": "@data.workshop[@fields.current_workshop].relax_title"
+          "eng": "@data.workshop_relax[@fields.current_workshop].activity_title"
         }
       },
       "template": "w_consequence_relax"
@@ -62,13 +81,13 @@
       "together": true,
       "priority": 5,
       "has_single_task": true,
-      "title": "@data.workshop[@fields.current_workshop].intro_title",
+      "title": "@data.topic_intro[@fields.current_workshop].title",
       "_translations": {
         "title": {}
       },
       "_translatedFields": {
         "title": {
-          "eng": "@data.workshop[@fields.current_workshop].intro_title"
+          "eng": "@data.topic_intro[@fields.current_workshop].title"
         }
       },
       "template": "w_consequence_intro"
@@ -79,13 +98,13 @@
       "together": true,
       "priority": 70,
       "has_single_task": true,
-      "title": "@data.workshop[@fields.current_workshop].tools",
+      "title": "@data.tools[@fields.current_workshop].title",
       "_translations": {
         "title": {}
       },
       "_translatedFields": {
         "title": {
-          "eng": "@data.workshop[@fields.current_workshop].tools"
+          "eng": "@data.tools[@fields.current_workshop].title"
         }
       },
       "template": "w_consequence_tools_activity"
@@ -142,25 +161,6 @@
         }
       },
       "template": "w_consequence_hp_review"
-    },
-    {
-      "id": "welcome_individual",
-      "individual": true,
-      "together": false,
-      "priority": 1,
-      "has_single_task": true,
-      "title": "How are you?",
-      "_translations": {
-        "title": {
-          "tz_sw": true
-        }
-      },
-      "_translatedFields": {
-        "title": {
-          "eng": "How are you?"
-        }
-      },
-      "template": "w_consequence_welcome_ind"
     },
     {
       "id": "read_1",

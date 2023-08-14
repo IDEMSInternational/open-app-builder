@@ -20,6 +20,56 @@
       "_nested_name": "workshop_id"
     },
     {
+      "name": "ww_id",
+      "value": "workshop.@local.workshop_id",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "type": "set_variable",
+      "_nested_name": "ww_id",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "workshop.@local.workshop_id",
+            "matchedExpression": "@local.workshop_id",
+            "type": "local",
+            "fieldName": "workshop_id"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.workshop_id": [
+          "value"
+        ]
+      }
+    },
+    {
+      "name": "workshop_data",
+      "value": "@data.@local.ww_id",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "type": "set_variable",
+      "_nested_name": "workshop_data",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@data.@local.ww_id",
+            "matchedExpression": "@local.ww_id",
+            "type": "local",
+            "fieldName": "ww_id"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.ww_id": [
+          "value"
+        ]
+      }
+    },
+    {
       "name": "task_id",
       "value": "welcome_individual",
       "_translations": {
@@ -324,6 +374,116 @@
       "_nested_name": "card_image"
     },
     {
+      "name": "card_style",
+      "value": "button",
+      "_translations": {
+        "value": {
+          "tz_sw": true
+        }
+      },
+      "type": "set_variable",
+      "_nested_name": "card_style"
+    },
+    {
+      "name": "card_variant",
+      "value": "@local.card_style",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "type": "set_variable",
+      "_nested_name": "card_variant",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@local.card_style",
+            "matchedExpression": "@local.card_style",
+            "type": "local",
+            "fieldName": "card_style"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.card_style": [
+          "value"
+        ]
+      }
+    },
+    {
+      "name": "card_variant",
+      "value": "@local.card_style background-primary",
+      "_translations": {
+        "value": {}
+      },
+      "condition": "@local.workshop_data.group == \"extra\"",
+      "exclude_from_translation": true,
+      "type": "set_variable",
+      "_nested_name": "card_variant",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@local.card_style background-primary",
+            "matchedExpression": "@local.card_style",
+            "type": "local",
+            "fieldName": "card_style"
+          }
+        ],
+        "condition": [
+          {
+            "fullExpression": "@local.workshop_data.group == \"extra\"",
+            "matchedExpression": "@local.workshop_data.group",
+            "type": "local",
+            "fieldName": "workshop_data"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.card_style": [
+          "value"
+        ],
+        "@local.workshop_data.group": [
+          "condition"
+        ]
+      }
+    },
+    {
+      "name": "card_variant",
+      "value": "@local.card_style background-secondary",
+      "_translations": {
+        "value": {}
+      },
+      "condition": "@local.workshop_data.group == \"play\"",
+      "exclude_from_translation": true,
+      "type": "set_variable",
+      "_nested_name": "card_variant",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@local.card_style background-secondary",
+            "matchedExpression": "@local.card_style",
+            "type": "local",
+            "fieldName": "card_style"
+          }
+        ],
+        "condition": [
+          {
+            "fullExpression": "@local.workshop_data.group == \"play\"",
+            "matchedExpression": "@local.workshop_data.group",
+            "type": "local",
+            "fieldName": "workshop_data"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.card_style": [
+          "value"
+        ],
+        "@local.workshop_data.group": [
+          "condition"
+        ]
+      }
+    },
+    {
       "type": "task_card",
       "name": "task_card_1",
       "action_list": [
@@ -361,7 +521,7 @@
         "completed_field": "@local.completed_field",
         "title": "@local.card_title",
         "image": "@local.card_image",
-        "style": "button",
+        "variant": "@local.card_variant",
         "in_progress_icon": "plh_images/icons/in_progress.svg",
         "completed_icon": "plh_images/icons/tick_white.svg"
       },
@@ -459,6 +619,14 @@
               "type": "local",
               "fieldName": "card_image"
             }
+          ],
+          "variant": [
+            {
+              "fullExpression": "@local.card_variant",
+              "matchedExpression": "@local.card_variant",
+              "type": "local",
+              "fieldName": "card_variant"
+            }
           ]
         },
         "condition": [
@@ -490,6 +658,9 @@
         ],
         "@local.card_image": [
           "parameter_list.image"
+        ],
+        "@local.card_variant": [
+          "parameter_list.variant"
         ],
         "@local.with_image": [
           "condition"
@@ -533,7 +704,7 @@
         "task_id": "@local.task_id",
         "completed_field": "@local.completed_field",
         "title": "@local.card_title",
-        "style": "button",
+        "variant": "@local.card_variant",
         "in_progress_icon": "plh_images/icons/in_progress.svg",
         "completed_icon": "plh_images/icons/tick_white.svg"
       },
@@ -623,6 +794,14 @@
               "type": "local",
               "fieldName": "card_title"
             }
+          ],
+          "variant": [
+            {
+              "fullExpression": "@local.card_variant",
+              "matchedExpression": "@local.card_variant",
+              "type": "local",
+              "fieldName": "card_variant"
+            }
           ]
         },
         "condition": [
@@ -657,6 +836,9 @@
         ],
         "@local.card_title": [
           "parameter_list.title"
+        ],
+        "@local.card_variant": [
+          "parameter_list.variant"
         ],
         "!@local.with_image": [
           "condition"
@@ -733,7 +915,7 @@
         "task_id": "@local.task_id",
         "completed_field": "@local.completed_field",
         "title": "@local.card_title",
-        "style": "button",
+        "variant": "@local.card_variant",
         "in_progress_icon": "plh_images/icons/in_progress.svg",
         "completed_icon": "plh_images/icons/tick_white.svg"
       },
@@ -879,6 +1061,14 @@
               "type": "local",
               "fieldName": "card_title"
             }
+          ],
+          "variant": [
+            {
+              "fullExpression": "@local.card_variant",
+              "matchedExpression": "@local.card_variant",
+              "type": "local",
+              "fieldName": "card_variant"
+            }
           ]
         },
         "condition": [
@@ -921,6 +1111,9 @@
         ],
         "@local.card_title": [
           "parameter_list.title"
+        ],
+        "@local.card_variant": [
+          "parameter_list.variant"
         ],
         "!@local.with_image": [
           "condition"

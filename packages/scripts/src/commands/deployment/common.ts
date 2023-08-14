@@ -1,17 +1,12 @@
-import {
-  DEPLOYMENT_CONFIG_EXAMPLE_DEFAULTS,
-  getDefaultAppConfig,
-  IDeploymentConfig,
-} from "data-models";
+import { DEPLOYMENT_CONFIG_EXAMPLE_DEFAULTS, getDefaultAppConfig } from "data-models";
+import type { IDeploymentConfig, IDeploymentConfigJson } from "data-models";
 import path from "path";
+
 import { DEPLOYMENTS_PATH } from "../../paths";
 import { loadDeploymentJson } from "./utils";
 
-export interface IDeploymentConfigJson extends IDeploymentConfig {
-  _workspace_path: string;
-  _config_ts_path: string;
-  _config_version: number;
-}
+// re-export of type for convenience
+export type { IDeploymentConfigJson };
 
 /** Create a new deployment config with default values */
 export function generateDeploymentConfig(name: string): IDeploymentConfig {
@@ -28,8 +23,12 @@ export function extendDeploymentConfig(options: {
 }): IDeploymentConfig {
   const parentWorkspace = path.resolve(DEPLOYMENTS_PATH, options.parent);
   const baseConfig = loadDeploymentJson(parentWorkspace);
-  // add parent_config meta
+  // add parent_config meta, remove git references
   baseConfig._parent_config = { name: baseConfig.name, _workspace_path: parentWorkspace };
   baseConfig.name = options.name;
+  if (baseConfig.git.content_repo) {
+    baseConfig._parent_config.git = baseConfig.git;
+    delete baseConfig.git;
+  }
   return baseConfig as IDeploymentConfig;
 }

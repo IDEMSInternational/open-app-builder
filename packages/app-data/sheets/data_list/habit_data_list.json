@@ -14,13 +14,13 @@
         "title": {
           "tz_sw": true
         },
-        "in_text_title": {
-          "tz_sw": true
-        },
         "description": {
           "tz_sw": true
         },
         "mark_text": {
+          "tz_sw": true
+        },
+        "in_text_title": {
           "tz_sw": true
         },
         "short_mark_text": {
@@ -31,22 +31,22 @@
         "title": {
           "eng": "Relax"
         },
-        "in_text_title": {
-          "eng": "**Relax** @global.parent_point"
-        },
         "description": {
           "eng": "Do a short relaxation activity: Take a deep breath or open one of the relaxation activities in @global.parent_app. You can do this anytime or anywhere. Taking care of yourself helps you to take care of others."
         },
         "mark_text": {
-          "eng": "Every time you do a relax, tap the @global.parent_point and celebrate your success!"
+          "eng": "Every time you relax, tap the @global.parent_point and celebrate your success!"
+        },
+        "in_text_title": {
+          "eng": "**Relax** @global.parent_point"
         },
         "short_mark_text": {
           "eng": "Did it? Tap it!"
         }
       },
-      "in_text_title": "**Relax** @global.parent_point",
       "description": "Do a short relaxation activity: Take a deep breath or open one of the relaxation activities in @global.parent_app. You can do this anytime or anywhere. Taking care of yourself helps you to take care of others.",
-      "mark_text": "Every time you do a relax, tap the @global.parent_point and celebrate your success!",
+      "mark_text": "Every time you relax, tap the @global.parent_point and celebrate your success!",
+      "in_text_title": "**Relax** @global.parent_point",
       "short_mark_text": "Did it? Tap it!"
     },
     {
@@ -59,13 +59,13 @@
         "title": {
           "tz_sw": true
         },
-        "in_text_title": {
-          "tz_sw": true
-        },
         "description": {
           "tz_sw": true
         },
         "mark_text": {
+          "tz_sw": true
+        },
+        "in_text_title": {
           "tz_sw": true
         },
         "short_mark_text": {
@@ -76,22 +76,22 @@
         "title": {
           "eng": "Treat yourself well"
         },
-        "in_text_title": {
-          "eng": "**Treat yourself well** @global.parent_point"
-        },
         "description": {
           "eng": "Even a bit of time for yourself will make a big difference in how you feel and respond in day-to-day life!\n\nDo something that makes you feel good: Have a hot drink, call a friend or relative, have a relaxing bath, read, or watch your favourite series."
         },
         "mark_text": {
           "eng": "Every time you treat yourself well, tap the @global.parent_point and celebrate your success!"
         },
+        "in_text_title": {
+          "eng": "**Treat yourself well** @global.parent_point"
+        },
         "short_mark_text": {
           "eng": "Did it? Tap it!"
         }
       },
-      "in_text_title": "**Treat yourself well** @global.parent_point",
       "description": "Even a bit of time for yourself will make a big difference in how you feel and respond in day-to-day life!\n\nDo something that makes you feel good: Have a hot drink, call a friend or relative, have a relaxing bath, read, or watch your favourite series.",
       "mark_text": "Every time you treat yourself well, tap the @global.parent_point and celebrate your success!",
+      "in_text_title": "**Treat yourself well** @global.parent_point",
       "short_mark_text": "Did it? Tap it!"
     },
     {
@@ -104,13 +104,13 @@
         "title": {
           "tz_sw": true
         },
-        "in_text_title": {
-          "tz_sw": true
-        },
         "description": {
           "tz_sw": true
         },
         "mark_text": {
+          "tz_sw": true
+        },
+        "in_text_title": {
           "tz_sw": true
         },
         "short_mark_text": {
@@ -121,22 +121,22 @@
         "title": {
           "eng": "Praise yourself"
         },
-        "in_text_title": {
-          "eng": "**Praise yourself** @global.parent_point"
-        },
         "description": {
           "eng": "Notice when you do something well and take a moment to appreciate yourself for it. Life can be challenging, but you are moving forward - you deserve praise for the big and the small things!"
         },
         "mark_text": {
           "eng": "Every time you praise yourself, tap the @global.parent_point and celebrate your success!"
         },
+        "in_text_title": {
+          "eng": "**Praise yourself** @global.parent_point"
+        },
         "short_mark_text": {
           "eng": "Did it? Tap it!"
         }
       },
-      "in_text_title": "**Praise yourself** @global.parent_point",
       "description": "Notice when you do something well and take a moment to appreciate yourself for it. Life can be challenging, but you are moving forward - you deserve praise for the big and the small things!",
       "mark_text": "Every time you praise yourself, tap the @global.parent_point and celebrate your success!",
+      "in_text_title": "**Praise yourself** @global.parent_point",
       "short_mark_text": "Did it? Tap it!"
     },
     {
@@ -149,13 +149,13 @@
         "title": {
           "tz_sw": true
         },
-        "in_text_title": {
-          "tz_sw": true
-        },
         "description": {
           "tz_sw": true
         },
         "mark_text": {
+          "tz_sw": true
+        },
+        "in_text_title": {
           "tz_sw": true
         },
         "short_mark_text": {
@@ -166,22 +166,22 @@
         "title": {
           "eng": "One-on-one time"
         },
-        "in_text_title": {
-          "eng": "**One-on-one time** @global.parent_point"
-        },
         "description": {
           "eng": "Spend uninterrupted time together with your teen, doing something that THEY want or like to do. The more you do it the stronger your relationship gets."
         },
         "mark_text": {
           "eng": "Every time you do one-on-one time, tap the @global.parent_point and celebrate your success!"
         },
+        "in_text_title": {
+          "eng": "**One-on-one time** @global.parent_point"
+        },
         "short_mark_text": {
           "eng": "Did it? Tap it!"
         }
       },
-      "in_text_title": "**One-on-one time** @global.parent_point",
       "description": "Spend uninterrupted time together with your teen, doing something that THEY want or like to do. The more you do it the stronger your relationship gets.",
       "mark_text": "Every time you do one-on-one time, tap the @global.parent_point and celebrate your success!",
+      "in_text_title": "**One-on-one time** @global.parent_point",
       "short_mark_text": "Did it? Tap it!"
     },
     {
@@ -194,13 +194,13 @@
         "title": {
           "tz_sw": true
         },
-        "in_text_title": {
-          "tz_sw": true
-        },
         "description": {
           "tz_sw": true
         },
         "mark_text": {
+          "tz_sw": true
+        },
+        "in_text_title": {
           "tz_sw": true
         },
         "short_mark_text": {
@@ -211,22 +211,22 @@
         "title": {
           "eng": "Praise your teen"
         },
-        "in_text_title": {
-          "eng": "**Praise your teen** @global.parent_point"
-        },
         "description": {
           "eng": "Notice when your teen does something well and praise them right away - be specific and use their name. You can even praise them for trying.\n\nThe more you praise, the more positive behaviour you will see!"
         },
         "mark_text": {
           "eng": "Every time you praise your teen, tap the @global.parent_point and celebrate your success!"
         },
+        "in_text_title": {
+          "eng": "**Praise your teen** @global.parent_point"
+        },
         "short_mark_text": {
           "eng": "Did it? Tap it!"
         }
       },
-      "in_text_title": "**Praise your teen** @global.parent_point",
       "description": "Notice when your teen does something well and praise them right away - be specific and use their name. You can even praise them for trying.\n\nThe more you praise, the more positive behaviour you will see!",
       "mark_text": "Every time you praise your teen, tap the @global.parent_point and celebrate your success!",
+      "in_text_title": "**Praise your teen** @global.parent_point",
       "short_mark_text": "Did it? Tap it!"
     },
     {
@@ -239,13 +239,13 @@
         "title": {
           "tz_sw": true
         },
-        "in_text_title": {
-          "tz_sw": true
-        },
         "description": {
           "tz_sw": true
         },
         "mark_text": {
+          "tz_sw": true
+        },
+        "in_text_title": {
           "tz_sw": true
         },
         "short_mark_text": {
@@ -256,22 +256,22 @@
         "title": {
           "eng": "Positive instructions"
         },
-        "in_text_title": {
-          "eng": "**Positive instructions** @global.parent_point"
-        },
         "description": {
           "eng": "Tell your teen what you DO want them to do, instead of what you DON'T want them to do. Be realistic, positive and specific when you give your teen instructions."
         },
         "mark_text": {
           "eng": "Every time you give a positive instruction, tap the @global.parent_point and celebrate your success!"
         },
+        "in_text_title": {
+          "eng": "**Positive instructions** @global.parent_point"
+        },
         "short_mark_text": {
           "eng": "Did it? Tap it!"
         }
       },
-      "in_text_title": "**Positive instructions** @global.parent_point",
       "description": "Tell your teen what you DO want them to do, instead of what you DON'T want them to do. Be realistic, positive and specific when you give your teen instructions.",
       "mark_text": "Every time you give a positive instruction, tap the @global.parent_point and celebrate your success!",
+      "in_text_title": "**Positive instructions** @global.parent_point",
       "short_mark_text": "Did it? Tap it!"
     },
     {
@@ -284,13 +284,13 @@
         "title": {
           "tz_sw": true
         },
-        "in_text_title": {
-          "tz_sw": true
-        },
         "description": {
           "tz_sw": true
         },
         "mark_text": {
+          "tz_sw": true
+        },
+        "in_text_title": {
           "tz_sw": true
         },
         "short_mark_text": {
@@ -301,22 +301,22 @@
         "title": {
           "eng": "Respond calmly"
         },
-        "in_text_title": {
-          "eng": "**Respond calmly** @global.parent_point"
-        },
         "description": {
           "eng": "When you are feeling angry or stressed, choose to take a breath, share how you feel and respond calmly."
         },
         "mark_text": {
           "eng": "Every time you take a pause before responding, tap the @global.parent_point and celebrate your success!"
         },
+        "in_text_title": {
+          "eng": "**Respond calmly** @global.parent_point"
+        },
         "short_mark_text": {
           "eng": "Did it? Tap it!"
         }
       },
-      "in_text_title": "**Respond calmly** @global.parent_point",
       "description": "When you are feeling angry or stressed, choose to take a breath, share how you feel and respond calmly.",
       "mark_text": "Every time you take a pause before responding, tap the @global.parent_point and celebrate your success!",
+      "in_text_title": "**Respond calmly** @global.parent_point",
       "short_mark_text": "Did it? Tap it!"
     },
     {
@@ -329,13 +329,13 @@
         "title": {
           "tz_sw": true
         },
-        "in_text_title": {
-          "tz_sw": true
-        },
         "description": {
           "tz_sw": true
         },
         "mark_text": {
+          "tz_sw": true
+        },
+        "in_text_title": {
           "tz_sw": true
         },
         "short_mark_text": {
@@ -346,22 +346,22 @@
         "title": {
           "eng": "Good money choice"
         },
-        "in_text_title": {
-          "eng": "**Good money choice** @global.parent_point"
-        },
         "description": {
           "eng": "Make one of these good money choices:\n* Spend money according to your family budget. \n* Save extra money this week.\n* Respond well to a crisis that involves money.\n* Help a family member stick to your family budget.\n* Recognise something is a 'want' instead of a 'need'."
         },
         "mark_text": {
           "eng": "Every time you make a good choice about needs, wants and savings, tap the @global.parent_point and celebrate your success!"
         },
+        "in_text_title": {
+          "eng": "**Good money choice** @global.parent_point"
+        },
         "short_mark_text": {
           "eng": "Did it? Tap it!"
         }
       },
-      "in_text_title": "**Good money choice** @global.parent_point",
       "description": "Make one of these good money choices:\n* Spend money according to your family budget. \n* Save extra money this week.\n* Respond well to a crisis that involves money.\n* Help a family member stick to your family budget.\n* Recognise something is a 'want' instead of a 'need'.",
       "mark_text": "Every time you make a good choice about needs, wants and savings, tap the @global.parent_point and celebrate your success!",
+      "in_text_title": "**Good money choice** @global.parent_point",
       "short_mark_text": "Did it? Tap it!"
     },
     {
@@ -374,13 +374,13 @@
         "title": {
           "tz_sw": true
         },
-        "in_text_title": {
-          "tz_sw": true
-        },
         "description": {
           "tz_sw": true
         },
         "mark_text": {
+          "tz_sw": true
+        },
+        "in_text_title": {
           "tz_sw": true
         },
         "short_mark_text": {
@@ -391,22 +391,22 @@
         "title": {
           "eng": "Calm consequence"
         },
-        "in_text_title": {
-          "eng": "**Calm consequence** @global.parent_point"
-        },
         "description": {
           "eng": "When your child is behaving badly, take a deep breath and give a consequence in a calm way.\n\nAgree on the calm consequence with your teen before the negative behaviour happens. Make sure it is realistic, manageable and fits the behaviour you are trying to correct."
         },
         "mark_text": {
           "eng": "Every time you give a calm consequence, tap the @global.parent_point and celebrate your success!"
         },
+        "in_text_title": {
+          "eng": "**Calm consequence** @global.parent_point"
+        },
         "short_mark_text": {
           "eng": "Did it? Tap it!"
         }
       },
-      "in_text_title": "**Calm consequence** @global.parent_point",
       "description": "When your child is behaving badly, take a deep breath and give a consequence in a calm way.\n\nAgree on the calm consequence with your teen before the negative behaviour happens. Make sure it is realistic, manageable and fits the behaviour you are trying to correct.",
       "mark_text": "Every time you give a calm consequence, tap the @global.parent_point and celebrate your success!",
+      "in_text_title": "**Calm consequence** @global.parent_point",
       "short_mark_text": "Did it? Tap it!"
     },
     {
@@ -419,13 +419,13 @@
         "title": {
           "tz_sw": true
         },
-        "in_text_title": {
-          "tz_sw": true
-        },
         "description": {
           "tz_sw": true
         },
         "mark_text": {
+          "tz_sw": true
+        },
+        "in_text_title": {
           "tz_sw": true
         },
         "short_mark_text": {
@@ -436,22 +436,105 @@
         "title": {
           "eng": "Keep your teen safe"
         },
-        "in_text_title": {
-          "eng": "**Keep your teen safe** @global.parent_point"
-        },
         "description": {
           "eng": "Help your teen stay safe by doing one of these things:\n* Map out or talk about safe and unsafe spaces in your community.\n* Map out or talk about safe and unsafe spaces online.\n* Make rules with your teen about how they can stay safe in the community and online.\n* Explain, remind, or use your teen's \"@global.safety_word\": Your teen can always tell you if they are in a dangerous or difficult situation, and you won't get angry or punish them."
         },
         "mark_text": {
           "eng": "Every time you do something to keep your teen safe, tap the @global.parent_point and celebrate your success!"
         },
+        "in_text_title": {
+          "eng": "**Keep your teen safe** @global.parent_point"
+        },
         "short_mark_text": {
           "eng": "Did it? Tap it!"
         }
       },
-      "in_text_title": "**Keep your teen safe** @global.parent_point",
       "description": "Help your teen stay safe by doing one of these things:\n* Map out or talk about safe and unsafe spaces in your community.\n* Map out or talk about safe and unsafe spaces online.\n* Make rules with your teen about how they can stay safe in the community and online.\n* Explain, remind, or use your teen's \"@global.safety_word\": Your teen can always tell you if they are in a dangerous or difficult situation, and you won't get angry or punish them.",
       "mark_text": "Every time you do something to keep your teen safe, tap the @global.parent_point and celebrate your success!",
+      "in_text_title": "**Keep your teen safe** @global.parent_point",
+      "short_mark_text": "Did it? Tap it!"
+    },
+    {
+      "id": "safe_self",
+      "image_asset": "plh_images/habits/habit_safe.svg",
+      "task_id": "task_habit_safe_self",
+      "lottie_asset": "plh_lottie/habits/habit_safe_self.json",
+      "title": "Stay safe",
+      "_translations": {
+        "title": {
+          "tz_sw": true
+        },
+        "description": {
+          "tz_sw": true
+        },
+        "mark_text": {
+          "tz_sw": true
+        },
+        "in_text_title": {
+          "tz_sw": true
+        },
+        "short_mark_text": {
+          "tz_sw": true
+        }
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Stay safe"
+        },
+        "description": {
+          "eng": "Stay safe by doing one of these things:\n* Do the @data.workshop.w_svp.in_text_title with your teen.\n* Chat with your teen about how to use thoughts, feelings, voice and body to stay safe. \n* Practice with your teen how to use thoughts, feelings, voice and body to stay safe."
+        },
+        "mark_text": {
+          "eng": "Tap the @global.parent_point and celebrate your success every time you chat with your teen about staying safe, or practise how to stay safe using your thoughts, feelings, voice and body."
+        },
+        "in_text_title": {
+          "eng": "**Stay safe** @global.parent_point"
+        },
+        "short_mark_text": {
+          "eng": "Did it? Tap it!"
+        }
+      },
+      "description": "Stay safe by doing one of these things:\n* Do the @data.workshop.w_svp.in_text_title with your teen.\n* Chat with your teen about how to use thoughts, feelings, voice and body to stay safe. \n* Practice with your teen how to use thoughts, feelings, voice and body to stay safe.",
+      "mark_text": "Tap the @global.parent_point and celebrate your success every time you chat with your teen about staying safe, or practise how to stay safe using your thoughts, feelings, voice and body.",
+      "in_text_title": "**Stay safe** @global.parent_point",
+      "short_mark_text": "Did it? Tap it!"
+    },
+    {
+      "id": "play",
+      "task_id": "task_habit_play",
+      "image_asset": "plh_images/habits/habit_play.svg",
+      "lottie_asset": "plh_lottie/habits/habit_play.json",
+      "title": "Learn and have fun",
+      "_translations": {
+        "title": {
+          "tz_sw": true
+        },
+        "mark_text": {
+          "tz_sw": true
+        },
+        "in_text_title": {
+          "tz_sw": true
+        },
+        "short_mark_text": {
+          "tz_sw": true
+        }
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Learn and have fun"
+        },
+        "mark_text": {
+          "eng": "Every time you do a fun learning activity together, tap the @global.parent_point and celebrate your progress!"
+        },
+        "in_text_title": {
+          "eng": "**Learn and have fun** @global.parent_point"
+        },
+        "short_mark_text": {
+          "eng": "Did it? Tap it!"
+        }
+      },
+      "mark_text": "Every time you do a fun learning activity together, tap the @global.parent_point and celebrate your progress!",
+      "in_text_title": "**Learn and have fun** @global.parent_point",
       "short_mark_text": "Did it? Tap it!"
     }
   ],

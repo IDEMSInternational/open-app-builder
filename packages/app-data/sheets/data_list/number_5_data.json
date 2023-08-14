@@ -1,0 +1,24 @@
+{
+  "flow_type": "data_list",
+  "flow_name": "number_5_data",
+  "status": "released",
+  "data_list_name": "number_5",
+  "rows": [
+    {
+      "id": 1
+    },
+    {
+      "id": 2
+    },
+    {
+      "id": 3
+    },
+    {
+      "id": 4
+    },
+    {
+      "id": 5
+    }
+  ],
+  "_xlsxPath": "global/data/workshop_data/workshop_data_list.xlsx"
+}

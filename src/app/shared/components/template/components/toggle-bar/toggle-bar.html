@@ -1,0 +1,28 @@
+<div
+  class="container"
+  [class]="params.position"
+  [attr.data-param-style]="params.style"
+  [attr.data-variant]="params.variant"
+>
+  <ng-container [ngSwitch]="variantMap.icon">
+    <!-- Default variant -->
+    <div
+      *ngSwitchCase="false"
+      class="toggle_wrapper"
+      [class.show-tick-cross]="params.showTickAndCross"
+    >
+      <ion-toggle mode="md" [checked]="_row.value" (click)="handleClick($event)"> </ion-toggle>
+    </div>
+
+    <!-- "icon" variant, replaces ion-toggle with alternating pair of icons -->
+    <div *ngSwitchCase="true" class="toggle_wrapper">
+      <div class="icon-wrapper" (click)="handleClick($event)">
+        <img [src]="(_row.value ? params.iconTrue : params.iconFalse) | plhAsset" />
+      </div>
+    </div>
+  </ng-container>
+
+  <span class="label" *ngIf="params.trueText && params.falseText"
+    >{{ _row.value ? params.trueText : params.falseText }}
+  </span>
+</div>

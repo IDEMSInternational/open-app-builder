@@ -4,52 +4,13 @@
   "status": "released",
   "rows": [
     {
-      "name": "workshop_data",
-      "value": "@data.workshop.w_self_care",
-      "_translations": {
-        "value": {}
-      },
-      "type": "set_variable",
-      "_nested_name": "workshop_data",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "@data.workshop.w_self_care",
-            "matchedExpression": "@data.workshop.w_self_care",
-            "type": "data",
-            "fieldName": "workshop"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@data.workshop.w_self_care": [
-          "value"
-        ]
-      }
-    },
-    {
       "name": "workshop",
-      "value": "@local.workshop_data.id",
+      "value": "w_self_care",
       "_translations": {
         "value": {}
       },
       "type": "set_variable",
-      "_nested_name": "workshop",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "@local.workshop_data.id",
-            "matchedExpression": "@local.workshop_data.id",
-            "type": "local",
-            "fieldName": "workshop_data"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@local.workshop_data.id": [
-          "value"
-        ]
-      }
+      "_nested_name": "workshop"
     },
     {
       "name": "welcome_individual_answer",
@@ -157,12 +118,27 @@
       "rows": [
         {
           "name": "activity_image",
-          "value": "plh_images/workshop_modes/individual/wave.svg",
+          "value": "@local.row_data.activity_image",
           "_translations": {
             "value": {}
           },
           "type": "set_variable",
-          "_nested_name": "workshop_activity.activity_image"
+          "_nested_name": "workshop_activity.activity_image",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@local.row_data.activity_image",
+                "matchedExpression": "@local.row_data.activity_image",
+                "type": "local",
+                "fieldName": "row_data"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@local.row_data.activity_image": [
+              "value"
+            ]
+          }
         },
         {
           "name": "activity_title",

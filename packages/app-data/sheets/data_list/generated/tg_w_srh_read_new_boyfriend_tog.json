@@ -1,0 +1,17 @@
+{
+  "flow_name": "tg_w_srh_read_new_boyfriend_tog",
+  "flow_subtype": "generated",
+  "flow_type": "data_list",
+  "rows": [
+    {
+      "id": "read_new_boyfriend",
+      "group": "read_new_boyfriend",
+      "individual": true,
+      "together": true,
+      "template": "w_srh_read_new_boyfriend",
+      "rel_priority": 1,
+      "completed_field": "task_w_srh_read_new_boyfriend_completed",
+      "completed": "@fields.task_w_srh_read_new_boyfriend_completed"
+    }
+  ]
+}

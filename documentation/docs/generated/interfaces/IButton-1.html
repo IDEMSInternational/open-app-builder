@@ -297,12 +297,15 @@ export class TmplRadioGroupComponent
   @ViewChild(&quot;labelImage&quot;, { static: false, read: true }) labelImage: ElementRef;
   arrayOfBtn: Array&lt;IButton&gt;;
   groupName: string;
-  radioButtonType: string | null;
-  options_per_row: number &#x3D; 2;
   windowWidth: number;
-  style: string;
   private componentDestroyed$ &#x3D; new ReplaySubject(1);
   flexWidth: string;
+
+  // Parameters
+  answer_list: string[];
+  options_per_row: number;
+  radioButtonType: string | null;
+  style: string;
 
   ngOnInit() {
     this.getParams();
@@ -317,8 +320,8 @@ export class TmplRadioGroupComponent
     this.windowWidth &#x3D; window.innerWidth;
 
     // convert string answer lists to formatted objects
-    const answer_list: string[] &#x3D; getParamFromTemplateRow(this._row, &quot;answer_list&quot;, []);
-    this.createArrayBtnElement(answer_list);
+    this.answer_list &#x3D; getParamFromTemplateRow(this._row, &quot;answer_list&quot;, []);
+    this.arrayOfBtn &#x3D; this.createArrayBtnElement(this.answer_list);
 
     this.getFlexWidth();
     this.groupName &#x3D; this._row._nested_name;
@@ -344,7 +347,7 @@ export class TmplRadioGroupComponent
       if (typeof answer_list &#x3D;&#x3D;&#x3D; &quot;object&quot;) {
         answer_list &#x3D; objectToArray(answer_list);
       }
-      this.arrayOfBtn &#x3D; answer_list.map((item) &#x3D;&gt; {
+      const arrayOfBtn &#x3D; answer_list.map((item) &#x3D;&gt; {
         // convert string to relevant mappings
         let itemObj: IButton &#x3D; {} as any;
         if (typeof item &#x3D;&#x3D;&#x3D; &quot;string&quot;) {
@@ -363,7 +366,9 @@ export class TmplRadioGroupComponent
         const processed &#x3D; this.processButtonFields(itemObj);
         return processed;
       });
-      this.arrayOfBtn.forEach((item) &#x3D;&gt; {
+      // TODO - CC 2023-03-15 could lead to strange behaviour, to review
+      // (checks every item but keeps overriding the button type depending on what it finds)
+      arrayOfBtn.forEach((item) &#x3D;&gt; {
         if (item.image &amp;&amp; item.text) {
           this.radioButtonType &#x3D; &quot;btn_both&quot;;
         } else if (!item.image &amp;&amp; item.text) {
@@ -372,6 +377,7 @@ export class TmplRadioGroupComponent
           this.radioButtonType &#x3D; &quot;btn_image&quot;;
         }
       });
+      return arrayOfBtn;
     }
   }
   private processButtonFields(button: IButton) {

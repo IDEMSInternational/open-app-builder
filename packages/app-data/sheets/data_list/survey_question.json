@@ -82,7 +82,7 @@
       "feedback_worse::2": "I understand it can be hard to praise your child sometimes. Remember, your praise makes a big difference, even if you don’t see it right away!",
       "feedback_worse::3": "With everything that is going on, it is not always easy to focus on the positive. Try to find 10 minutes to pay attention to what your child is doing – perhaps you can praise them for helping with a chore or for doing their homework? It helps a lot!",
       "feedback_worse::4": "Sometime our children don’t seem to do or say many things that deserve praise. Start praising the small things, you will see your child showing more positive behaviour over time!",
-      "intro_text": "In our busy lives it’s hard to focus on the positive.",
+      "intro_text": "In our busy lives it is hard to focus on the positive.",
       "_translations": {
         "intro_text": {
           "tz_sw": true
@@ -96,7 +96,7 @@
       },
       "_translatedFields": {
         "intro_text": {
-          "eng": "In our busy lives it’s hard to focus on the positive."
+          "eng": "In our busy lives it is hard to focus on the positive."
         },
         "question": {
           "eng": "How many times in the past month have you praised your teen?"
@@ -520,13 +520,13 @@
           "eng": "It is so stressful when children misbehave."
         },
         "question": {
-          "eng": "How many times in the past month did you physically discipline your teen by hitting, spanking, or slapping with your hand or and object like a stick or belt?"
+          "eng": "How many times in the past month did you physically discipline your teen by hitting, spanking, or slapping with your hand or an object like a stick or belt?"
         },
         "range_description": {
           "eng": "Times in the past month"
         }
       },
-      "question": "How many times in the past month did you physically discipline your teen by hitting, spanking, or slapping with your hand or and object like a stick or belt?",
+      "question": "How many times in the past month did you physically discipline your teen by hitting, spanking, or slapping with your hand or an object like a stick or belt?",
       "range_description": "Times in the past month"
     },
     {
@@ -577,7 +577,7 @@
       "threshold": 1,
       "parent_text": false,
       "parent_text_question": "-",
-      "intro_text": "It’s hard to keep track of our teenagers when they are becoming more independent.",
+      "intro_text": "It is hard to keep track of our teenagers when they are becoming more independent.",
       "_translations": {
         "intro_text": {
           "tz_sw": true
@@ -591,7 +591,7 @@
       },
       "_translatedFields": {
         "intro_text": {
-          "eng": "It’s hard to keep track of our teenagers when they are becoming more independent."
+          "eng": "It is hard to keep track of our teenagers when they are becoming more independent."
         },
         "question": {
           "eng": "How many times in the past month did your teen stay out in the evening past the time that they are supposed to be home?"
@@ -617,7 +617,7 @@
       "range_max": 8,
       "threshold": 1,
       "parent_text": false,
-      "question": "How many times in the past month did your teen go out with friends you don’t know?",
+      "question": "How many times in the past month did your teen go out with friends you do not know?",
       "_translations": {
         "question": {
           "tz_sw": true
@@ -628,7 +628,7 @@
       },
       "_translatedFields": {
         "question": {
-          "eng": "How many times in the past month did your teen go out with friends you don’t know?"
+          "eng": "How many times in the past month did your teen go out with friends you do not know?"
         },
         "range_description": {
           "eng": "Times in the past month"
@@ -753,7 +753,7 @@
       "range_min": 0,
       "range_max": 8,
       "parent_text": false,
-      "question": "How many times in the past month has your teen walked home alone, taken a lift with someone they don’t know or hung out in a place that made you worried for their safety?",
+      "question": "How many times in the past month has your teen walked home alone, taken a lift with someone they do not know or hung out in a place that made you worried for their safety?",
       "_translations": {
         "question": {
           "tz_sw": true
@@ -764,7 +764,7 @@
       },
       "_translatedFields": {
         "question": {
-          "eng": "How many times in the past month has your teen walked home alone, taken a lift with someone they don’t know or hung out in a place that made you worried for their safety?"
+          "eng": "How many times in the past month has your teen walked home alone, taken a lift with someone they do not know or hung out in a place that made you worried for their safety?"
         },
         "range_description": {
           "eng": "Times in the past month"

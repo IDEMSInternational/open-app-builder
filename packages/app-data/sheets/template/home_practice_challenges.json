@@ -1656,10 +1656,10 @@
               "trigger": "click",
               "action_id": "go_to",
               "args": [
-                "@local.row_data.button_go_to_template_1_a"
+                "@local.row_data.button_go_to_template_3_a"
               ],
-              "_raw": "click | go_to: @local.row_data.button_go_to_template_1_a",
-              "_cleaned": "click | go_to: @local.row_data.button_go_to_template_1_a"
+              "_raw": "click | go_to: @local.row_data.button_go_to_template_3_a",
+              "_cleaned": "click | go_to: @local.row_data.button_go_to_template_3_a"
             }
           ],
           "condition": "@local.row_data.button_text_3_a&&@local.row_data.button_go_to_template_3_a",
@@ -1679,8 +1679,8 @@
                 "args": {
                   "0": [
                     {
-                      "fullExpression": "@local.row_data.button_go_to_template_1_a",
-                      "matchedExpression": "@local.row_data.button_go_to_template_1_a",
+                      "fullExpression": "@local.row_data.button_go_to_template_3_a",
+                      "matchedExpression": "@local.row_data.button_go_to_template_3_a",
                       "type": "local",
                       "fieldName": "row_data"
                     }
@@ -1688,16 +1688,16 @@
                 },
                 "_raw": [
                   {
-                    "fullExpression": "click | go_to: @local.row_data.button_go_to_template_1_a",
-                    "matchedExpression": "@local.row_data.button_go_to_template_1_a",
+                    "fullExpression": "click | go_to: @local.row_data.button_go_to_template_3_a",
+                    "matchedExpression": "@local.row_data.button_go_to_template_3_a",
                     "type": "local",
                     "fieldName": "row_data"
                   }
                 ],
                 "_cleaned": [
                   {
-                    "fullExpression": "click | go_to: @local.row_data.button_go_to_template_1_a",
-                    "matchedExpression": "@local.row_data.button_go_to_template_1_a",
+                    "fullExpression": "click | go_to: @local.row_data.button_go_to_template_3_a",
+                    "matchedExpression": "@local.row_data.button_go_to_template_3_a",
                     "type": "local",
                     "fieldName": "row_data"
                   }
@@ -1724,12 +1724,10 @@
               "value",
               "condition"
             ],
-            "@local.row_data.button_go_to_template_1_a": [
+            "@local.row_data.button_go_to_template_3_a": [
               "action_list.0.args.0",
               "action_list.0._raw",
-              "action_list.0._cleaned"
-            ],
-            "@local.row_data.button_go_to_template_3_a": [
+              "action_list.0._cleaned",
               "condition"
             ]
           }
@@ -1746,10 +1744,10 @@
               "trigger": "click",
               "action_id": "go_to",
               "args": [
-                "@local.row_data.button_go_to_template_1_b"
+                "@local.row_data.button_go_to_template_3_b"
               ],
-              "_raw": "click | go_to: @local.row_data.button_go_to_template_1_b",
-              "_cleaned": "click | go_to: @local.row_data.button_go_to_template_1_b"
+              "_raw": "click | go_to: @local.row_data.button_go_to_template_3_b",
+              "_cleaned": "click | go_to: @local.row_data.button_go_to_template_3_b"
             }
           ],
           "condition": "@local.row_data.button_text_3_b&&@local.row_data.button_go_to_template_3_b",
@@ -1769,8 +1767,8 @@
                 "args": {
                   "0": [
                     {
-                      "fullExpression": "@local.row_data.button_go_to_template_1_b",
-                      "matchedExpression": "@local.row_data.button_go_to_template_1_b",
+                      "fullExpression": "@local.row_data.button_go_to_template_3_b",
+                      "matchedExpression": "@local.row_data.button_go_to_template_3_b",
                       "type": "local",
                       "fieldName": "row_data"
                     }
@@ -1778,16 +1776,16 @@
                 },
                 "_raw": [
                   {
-                    "fullExpression": "click | go_to: @local.row_data.button_go_to_template_1_b",
-                    "matchedExpression": "@local.row_data.button_go_to_template_1_b",
+                    "fullExpression": "click | go_to: @local.row_data.button_go_to_template_3_b",
+                    "matchedExpression": "@local.row_data.button_go_to_template_3_b",
                     "type": "local",
                     "fieldName": "row_data"
                   }
                 ],
                 "_cleaned": [
                   {
-                    "fullExpression": "click | go_to: @local.row_data.button_go_to_template_1_b",
-                    "matchedExpression": "@local.row_data.button_go_to_template_1_b",
+                    "fullExpression": "click | go_to: @local.row_data.button_go_to_template_3_b",
+                    "matchedExpression": "@local.row_data.button_go_to_template_3_b",
                     "type": "local",
                     "fieldName": "row_data"
                   }
@@ -1814,12 +1812,10 @@
               "value",
               "condition"
             ],
-            "@local.row_data.button_go_to_template_1_b": [
+            "@local.row_data.button_go_to_template_3_b": [
               "action_list.0.args.0",
               "action_list.0._raw",
-              "action_list.0._cleaned"
-            ],
-            "@local.row_data.button_go_to_template_3_b": [
+              "action_list.0._cleaned",
               "condition"
             ]
           }

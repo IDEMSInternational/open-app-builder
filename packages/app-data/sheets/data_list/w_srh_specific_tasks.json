@@ -1,0 +1,47 @@
+{
+  "flow_type": "data_list",
+  "flow_name": "w_srh_specific_tasks",
+  "status": "released",
+  "rows": [
+    {
+      "id": "read_sex_talk",
+      "group": "read_sex_talk",
+      "rel_priority": 1,
+      "individual": true,
+      "together": true,
+      "template": "w_srh_read_sex_talk"
+    },
+    {
+      "id": "quiz_sex_talk",
+      "group": "read_sex_talk",
+      "rel_priority": 2,
+      "individual": true,
+      "together": false,
+      "template": "w_srh_quiz_sex_talk"
+    },
+    {
+      "id": "read_new_boyfriend",
+      "group": "read_new_boyfriend",
+      "rel_priority": 1,
+      "individual": true,
+      "together": true,
+      "template": "w_srh_read_new_boyfriend"
+    },
+    {
+      "id": "quiz_new_boyfriend",
+      "group": "read_new_boyfriend",
+      "rel_priority": 2,
+      "individual": true,
+      "together": false,
+      "template": "w_srh_quiz_new_boyfriend"
+    },
+    {
+      "id": "learn_sex_talk",
+      "group": "learn_sex_talk",
+      "individual": true,
+      "together": true,
+      "template": "w_srh_learn_sex_talk"
+    }
+  ],
+  "_xlsxPath": "global/data/workshop_data/workshop_tasks.xlsx"
+}
