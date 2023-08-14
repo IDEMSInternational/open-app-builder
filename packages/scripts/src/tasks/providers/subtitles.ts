@@ -3,7 +3,7 @@ import fs from "fs";
 import * as path from "path";
 import parser from "subtitles-parser-vtt";
 import { ROOT_DIR } from "../../paths";
-import { recursiveFindByExtension, logError, logOutput, promptOptions } from "../../utils";
+import { recursiveFindByExtension, Logger, logOutput, promptOptions } from "../../utils";
 
 // This is an interim solution for manually generating translated .vtt files,
 // to be used pending reworking the translations repo/pipeline to handle assets more generally
@@ -43,7 +43,7 @@ const translateAllVttFilesAndSave = async (
     });
     console.log(outputFiles);
   } else {
-    logError({
+    Logger.error({
       msg1: "No files generated",
     });
   }
@@ -67,7 +67,7 @@ const findVttFiles = (sourceFolder, subpath?: string) => {
   const folderPath = subpath ? path.join(sourceFolder, subpath) : sourceFolder;
   const result = recursiveFindByExtension(folderPath, "vtt");
   if (!result.length) {
-    logError({
+    Logger.error({
       msg1: "No files found",
       msg2: "No VTT files found in target folder",
     });
@@ -94,7 +94,7 @@ const translateJson = async (
     const translatedString = translationStrings[cue.text];
     if (translatedString === undefined) {
       console.log(chalk.grey(translationStringsPath));
-      return logError({
+      return Logger.error({
         msg1: `No [${languageCode}] translations found for cue text`,
         msg2: cue.text,
       });

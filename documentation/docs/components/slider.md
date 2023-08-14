@@ -1,4 +1,6 @@
 # Slider
+
+A slider allows users to adjust and set a value along a visual scale. It consists of a horizontal bar with a movable handle that users can drag (or "slide") to select a specific value within a predefined range. Sliders are often used to enable users to fine-tune settings, make selections or adjust numerical values. 
 ## Example
 
 | type      | name          |parameter_list                 |
@@ -9,7 +11,7 @@
 ![](images/slider.png)
 
 [Google Sheet Demo](https://docs.google.com/spreadsheets/d/1oSJHE2gq_WqgQM6NAKWBfuxCXIjcJ1k4aIUl422QK60/edit#gid=569531329)   
-[Live Preview Demo](https://plh-global.web.app/template/comp_slider)
+[Live Preview Demo](https://idems-debug.web.app/template/comp_slider)
 
 ## Parameters
 

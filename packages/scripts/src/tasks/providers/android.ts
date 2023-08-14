@@ -2,11 +2,11 @@ import * as path from "path";
 import { Options, run } from "cordova-res";
 import fs from "fs";
 import { ROOT_DIR } from "../../paths";
-import { logError } from "../../utils";
+import { Logger } from "../../utils";
 
 const set_splash_image = async (splashAssetPath: string) => {
   if (!fs.existsSync(splashAssetPath)) {
-    return logError({
+    return Logger.error({
       msg1: "Splash source image not found",
       msg2: `A source .png file is required to generate a splash screen. No asset was found at the path supplied in the deployment config: ${splashAssetPath}.`,
     });
@@ -46,7 +46,7 @@ const set_launcher_icon = async (options: {
   if (fs.existsSync(iconAssetPath)) {
     iconSources.push(iconAssetPath);
   } else {
-    return logError({
+    return Logger.error({
       msg1: "Icon source asset not found",
       msg2: `A source .png file is required to be used as a fall back for when the device's android version does not support adaptive icons. No asset was found at the path supplied in the deployment config: ${iconAssetPath}.`,
     });

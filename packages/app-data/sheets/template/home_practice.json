@@ -222,7 +222,7 @@
         },
         {
           "name": "activity_image",
-          "value": "plh_images/workshop_modes/guide_2/with_teen.svg",
+          "value": "plh_images/workshop_modes/individual/with_teen.svg",
           "_translations": {
             "value": {}
           },
@@ -247,35 +247,53 @@
         },
         {
           "name": "activity_title",
-          "value": "Home Practice",
+          "value": "@global.home_practice",
           "_translations": {
-            "value": {
-              "tz_sw": true,
-              "za_af": true,
-              "za_st": true,
-              "za_tn": true,
-              "za_xh": true,
-              "za_zu": true
-            }
+            "value": {}
           },
           "type": "set_variable",
-          "_nested_name": "workshop_activity.activity_title"
+          "_nested_name": "workshop_activity.activity_title",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@global.home_practice",
+                "matchedExpression": "@global.home_practice",
+                "type": "global",
+                "fieldName": "home_practice"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@global.home_practice": [
+              "value"
+            ]
+          }
         },
         {
           "name": "intro_text",
-          "value": "Small actions, big results! Parents who practice their workshop skills at home get better results.",
+          "value": "Small actions, big results! Parents who practice their @global.workshop skills at home get better results.",
           "_translations": {
             "value": {
-              "tz_sw": true,
-              "za_af": true,
-              "za_st": true,
-              "za_tn": true,
-              "za_xh": true,
-              "za_zu": true
+              "tz_sw": true
             }
           },
           "type": "set_variable",
-          "_nested_name": "workshop_activity.intro_text"
+          "_nested_name": "workshop_activity.intro_text",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "Small actions, big results! Parents who practice their @global.workshop skills at home get better results.",
+                "matchedExpression": "@global.workshop",
+                "type": "global",
+                "fieldName": "workshop"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@global.workshop": [
+              "value"
+            ]
+          }
         },
         {
           "name": "activity_banner",
@@ -406,12 +424,6 @@
                       "value"
                     ]
                   }
-                },
-                {
-                  "name": "audio_player",
-                  "hidden": true,
-                  "type": "set_variable",
-                  "_nested_name": "workshop_activity.content_box.box_2.audio_player"
                 },
                 {
                   "name": "button_1",

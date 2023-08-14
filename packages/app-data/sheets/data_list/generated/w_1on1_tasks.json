@@ -1,0 +1,97 @@
+{
+  "flow_name": "w_1on1_tasks",
+  "flow_subtype": "generated",
+  "flow_type": "data_list",
+  "rows": [
+    {
+      "id": "welcome_individual",
+      "group": "welcome_individual",
+      "individual": true,
+      "together": false,
+      "template": "w_1on1_welcome_individual",
+      "completed_field": "task_w_1on1_welcome_individual_completed",
+      "completed": "@fields.task_w_1on1_welcome_individual_completed"
+    },
+    {
+      "id": "care_together",
+      "group": "care_together",
+      "individual": false,
+      "together": true,
+      "template": "w_1on1_care_together",
+      "completed_field": "task_w_1on1_care_together_completed",
+      "completed": "@fields.task_w_1on1_care_together_completed"
+    },
+    {
+      "id": "relax",
+      "group": "relax",
+      "individual": true,
+      "together": true,
+      "template": "w_1on1_relax",
+      "completed_field": "task_w_1on1_relax_completed",
+      "completed": "@fields.task_w_1on1_relax_completed"
+    },
+    {
+      "id": "intro",
+      "group": "intro",
+      "individual": true,
+      "together": true,
+      "template": "w_1on1_intro",
+      "completed_field": "task_w_1on1_intro_completed",
+      "completed": "@fields.task_w_1on1_intro_completed"
+    },
+    {
+      "id": "tools_activity",
+      "group": "tools_activity",
+      "individual": true,
+      "together": true,
+      "template": "w_1on1_tools_activity",
+      "completed_field": "task_w_1on1_tools_activity_completed",
+      "completed": "@fields.task_w_1on1_tools_activity_completed"
+    },
+    {
+      "id": "home_practice",
+      "group": "home_practice",
+      "individual": true,
+      "together": true,
+      "template": "w_1on1_home_practice",
+      "completed_field": "task_w_1on1_home_practice_completed",
+      "completed": "@fields.task_w_1on1_home_practice_completed"
+    },
+    {
+      "id": "ending",
+      "group": "ending",
+      "individual": true,
+      "together": true,
+      "template": "w_1on1_ending",
+      "completed_field": "task_w_1on1_ending_completed",
+      "completed": "@fields.task_w_1on1_ending_completed"
+    },
+    {
+      "id": "hp_review",
+      "group": "hp_review",
+      "individual": true,
+      "together": true,
+      "template": "w_1on1_hp_review",
+      "completed_field": "task_w_1on1_hp_review_completed",
+      "completed": "@fields.task_w_1on1_hp_review_completed"
+    },
+    {
+      "id": "question",
+      "group": "question",
+      "individual": true,
+      "together": false,
+      "template": "w_1on1_question",
+      "completed_field": "task_w_1on1_question_completed",
+      "completed": "@fields.task_w_1on1_question_completed"
+    },
+    {
+      "id": "talk",
+      "group": "talk",
+      "individual": false,
+      "together": true,
+      "template": "w_1on1_talk",
+      "completed_field": "task_w_1on1_talk_completed",
+      "completed": "@fields.task_w_1on1_talk_completed"
+    }
+  ]
+}

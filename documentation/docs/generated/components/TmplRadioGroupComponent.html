@@ -1,0 +1,1253 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>frontend documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+        <link rel="stylesheet" href="../styles/material.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">frontend documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li>Components</li>
+  <li
+  >
+  TmplRadioGroupComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li >
+            <a href="#templateData" role="tab" id="templateData-tab" data-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li >
+            <a href="#styleData" role="tab" id="styleData-tab" data-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li >
+            <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/shared/components/template/components/radio-group/radio-group.component.ts</code>
+</p>
+
+
+
+    <p class="comment">
+        <h3>Extends</h3>
+    </p>
+    <p class="comment">
+                <code><a href="../components/TemplateBaseComponent.html" target="_self" >TemplateBaseComponent</a></code>
+    </p>
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                <code>ITemplateRowProps</code>
+                    <code><a href="https://angular.io/api/core/OnInit" target="_blank" >OnInit</a></code>
+                    <code><a href="../miscellaneous/variables.html#D" target="_self" >OnDestroy</a></code>
+    </p>
+
+
+<section>
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>plh-radio-group</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./radio-group.component.scss</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./radio-group.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#answer_list" >answer_list</a>
+                            </li>
+                            <li>
+                                <a href="#arrayOfBtn" >arrayOfBtn</a>
+                            </li>
+                            <li>
+                                <a href="#flexWidth" >flexWidth</a>
+                            </li>
+                            <li>
+                                <a href="#groupName" >groupName</a>
+                            </li>
+                            <li>
+                                <a href="#labelImage" >labelImage</a>
+                            </li>
+                            <li>
+                                <a href="#options_per_row" >options_per_row</a>
+                            </li>
+                            <li>
+                                <a href="#radioButtonType" >radioButtonType</a>
+                            </li>
+                            <li>
+                                <a href="#style" >style</a>
+                            </li>
+                            <li>
+                                <a href="#windowWidth" >windowWidth</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#createArrayBtnElement" >createArrayBtnElement</a>
+                            </li>
+                            <li>
+                                <a href="#getFlexWidth" >getFlexWidth</a>
+                            </li>
+                            <li>
+                                <a href="#getParams" >getParams</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                    <span class="modifier">Async</span>
+                                <a href="#handleRadioButtonClick" >handleRadioButtonClick</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Inputs</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#changeTheme" >changeTheme</a>
+                            </li>
+                            <li>
+                                <a href="#parent" >parent</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+
+    <section>
+    <h3 id="inputs">Inputs</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="changeTheme"></a>
+                        <b>changeTheme</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>EventEmitter&lt;boolean&gt;</code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="37" class="link-to-prism">src/app/shared/components/template/components/radio-group/radio-group.component.ts:37</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="parent"></a>
+                        <b>parent</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>TemplateContainerComponent</code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="38" class="link-to-prism">src/app/shared/components/template/components/radio-group/radio-group.component.ts:38</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+    <section>
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="createArrayBtnElement"></a>
+                    <span class="name">
+                        <span ><b>createArrayBtnElement</b></span>
+                        <a href="#createArrayBtnElement"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>createArrayBtnElement(answer_list: string[])</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="85"
+                            class="link-to-prism">src/app/shared/components/template/components/radio-group/radio-group.component.ts:85</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Answer lists are formatted as strings with to indicate properties, e.g.
+[
+&quot;name:happy | image:plh_images/stickers/faces/happier.svg | image_checked:plh_images/stickers/faces/happier.svg&quot;,
+&quot;name:unhappy | image:plh_images/stickers/faces/unhappy.svg&quot;
+]
+Convert to an object array, with key value pairs extracted from the string values</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>answer_list</td>
+                                    <td>
+                                            <code>string[]</code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getFlexWidth"></a>
+                    <span class="name">
+                        <span ><b>getFlexWidth</b></span>
+                        <a href="#getFlexWidth"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getFlexWidth()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="147"
+                            class="link-to-prism">src/app/shared/components/template/components/radio-group/radio-group.component.ts:147</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getParams"></a>
+                    <span class="name">
+                        <span ><b>getParams</b></span>
+                        <a href="#getParams"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getParams()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="56"
+                            class="link-to-prism">src/app/shared/components/template/components/radio-group/radio-group.component.ts:56</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="handleRadioButtonClick"></a>
+                    <span class="name">
+                        <span class="modifier">Public</span>
+                        <span class="modifier">Async</span>
+                        <span ><b>handleRadioButtonClick</b></span>
+                        <a href="#handleRadioButtonClick"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>handleRadioButtonClick(selectedValue: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="72"
+                            class="link-to-prism">src/app/shared/components/template/components/radio-group/radio-group.component.ts:72</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>selectedValue</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section>
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="answer_list"></a>
+                    <span class="name">
+                        <span ><b>answer_list</b></span>
+                        <a href="#answer_list"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>string[]</code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="47" class="link-to-prism">src/app/shared/components/template/components/radio-group/radio-group.component.ts:47</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="arrayOfBtn"></a>
+                    <span class="name">
+                        <span ><b>arrayOfBtn</b></span>
+                        <a href="#arrayOfBtn"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>Array&lt;IButton&gt;</code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="40" class="link-to-prism">src/app/shared/components/template/components/radio-group/radio-group.component.ts:40</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="flexWidth"></a>
+                    <span class="name">
+                        <span ><b>flexWidth</b></span>
+                        <a href="#flexWidth"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="44" class="link-to-prism">src/app/shared/components/template/components/radio-group/radio-group.component.ts:44</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="groupName"></a>
+                    <span class="name">
+                        <span ><b>groupName</b></span>
+                        <a href="#groupName"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="41" class="link-to-prism">src/app/shared/components/template/components/radio-group/radio-group.component.ts:41</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="labelImage"></a>
+                    <span class="name">
+                        <span ><b>labelImage</b></span>
+                        <a href="#labelImage"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://angular.io/api/core/ElementRef" target="_blank" >ElementRef</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <b>Decorators : </b>
+                        <br />
+                        <code>
+                            @ViewChild(&#x27;labelImage&#x27;, {static: false, read: true})<br />
+                        </code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="39" class="link-to-prism">src/app/shared/components/template/components/radio-group/radio-group.component.ts:39</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="options_per_row"></a>
+                    <span class="name">
+                        <span ><b>options_per_row</b></span>
+                        <a href="#options_per_row"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="48" class="link-to-prism">src/app/shared/components/template/components/radio-group/radio-group.component.ts:48</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="radioButtonType"></a>
+                    <span class="name">
+                        <span ><b>radioButtonType</b></span>
+                        <a href="#radioButtonType"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>string | null</code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="49" class="link-to-prism">src/app/shared/components/template/components/radio-group/radio-group.component.ts:49</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="style"></a>
+                    <span class="name">
+                        <span ><b>style</b></span>
+                        <a href="#style"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="50" class="link-to-prism">src/app/shared/components/template/components/radio-group/radio-group.component.ts:50</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="windowWidth"></a>
+                    <span class="name">
+                        <span ><b>windowWidth</b></span>
+                        <a href="#windowWidth"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="42" class="link-to-prism">src/app/shared/components/template/components/radio-group/radio-group.component.ts:42</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {
+  Component,
+  ElementRef,
+  EventEmitter,
+  Input,
+  OnDestroy,
+  OnInit,
+  ViewChild,
+} from &quot;@angular/core&quot;;
+import { TemplateBaseComponent } from &quot;../base&quot;;
+import { ITemplateRowProps } from &quot;../../models&quot;;
+import { TemplateContainerComponent } from &quot;../../template-container.component&quot;;
+import {
+  getNumberParamFromTemplateRow,
+  getParamFromTemplateRow,
+  getStringParamFromTemplateRow,
+} from &quot;../../../../utils&quot;;
+import { ReplaySubject } from &quot;rxjs&quot;;
+import { objectToArray } from &quot;../../utils/template-utils&quot;;
+
+interface IButton {
+  name: string | null;
+  image: string | null;
+  text: string | null;
+  image_checked: string | null;
+}
+
+@Component({
+  selector: &quot;plh-radio-group&quot;,
+  templateUrl: &quot;./radio-group.component.html&quot;,
+  styleUrls: [&quot;./radio-group.component.scss&quot;],
+})
+export class TmplRadioGroupComponent
+  extends TemplateBaseComponent
+  implements ITemplateRowProps, OnInit, OnDestroy
+{
+  @Input() changeTheme: EventEmitter&lt;boolean&gt;;
+  @Input() parent: TemplateContainerComponent;
+  @ViewChild(&quot;labelImage&quot;, { static: false, read: true }) labelImage: ElementRef;
+  arrayOfBtn: Array&lt;IButton&gt;;
+  groupName: string;
+  windowWidth: number;
+  private componentDestroyed$ &#x3D; new ReplaySubject(1);
+  flexWidth: string;
+
+  // Parameters
+  answer_list: string[];
+  options_per_row: number;
+  radioButtonType: string | null;
+  style: string;
+
+  ngOnInit() {
+    this.getParams();
+  }
+
+  getParams() {
+    const row &#x3D; this._row;
+    // extract properties from parameters
+    this.radioButtonType &#x3D; getParamFromTemplateRow(row, &quot;radio_button_type&quot;, &quot;btn_text&quot;);
+    this.options_per_row &#x3D; getNumberParamFromTemplateRow(this._row, &quot;options_per_row&quot;, 3);
+    this.style &#x3D; getStringParamFromTemplateRow(this._row, &quot;style&quot;, &quot;&quot;);
+    this.windowWidth &#x3D; window.innerWidth;
+
+    // convert string answer lists to formatted objects
+    this.answer_list &#x3D; getParamFromTemplateRow(this._row, &quot;answer_list&quot;, []);
+    this.arrayOfBtn &#x3D; this.createArrayBtnElement(this.answer_list);
+
+    this.getFlexWidth();
+    this.groupName &#x3D; this._row._nested_name;
+  }
+
+  public async handleRadioButtonClick(selectedValue: string) {
+    await this.setValue(selectedValue);
+    this.triggerActions(&quot;changed&quot;);
+  }
+
+  /**
+   * Answer lists are formatted as strings with to indicate properties, e.g.
+   * [
+   * &quot;name:happy | image:plh_images/stickers/faces/happier.svg | image_checked:plh_images/stickers/faces/happier.svg&quot;,
+   * &quot;name:unhappy | image:plh_images/stickers/faces/unhappy.svg&quot;
+   * ]
+   * Convert to an object array, with key value pairs extracted from the string values
+   */
+  createArrayBtnElement(answer_list: string[]) {
+    if (answer_list) {
+      // NOTE CC 2021-08-07 - datalists might be used which currently only format as objects
+      // manually convert to array if required (temp method until better handling found)
+      if (typeof answer_list &#x3D;&#x3D;&#x3D; &quot;object&quot;) {
+        answer_list &#x3D; objectToArray(answer_list);
+      }
+      const arrayOfBtn &#x3D; answer_list.map((item) &#x3D;&gt; {
+        // convert string to relevant mappings
+        let itemObj: IButton &#x3D; {} as any;
+        if (typeof item &#x3D;&#x3D;&#x3D; &quot;string&quot;) {
+          const stringProperties &#x3D; item.split(&quot;|&quot;);
+          stringProperties.forEach((s) &#x3D;&gt; {
+            const [field, value] &#x3D; s.split(&quot;:&quot;).map((v) &#x3D;&gt; v.trim());
+            if (field &amp;&amp; value) {
+              itemObj[field] &#x3D; value;
+            }
+          });
+        }
+        // NOTE CC 2021-08-07 - allow passing of object, not just string for conversion
+        else {
+          itemObj &#x3D; item;
+        }
+        const processed &#x3D; this.processButtonFields(itemObj);
+        return processed;
+      });
+      // TODO - CC 2023-03-15 could lead to strange behaviour, to review
+      // (checks every item but keeps overriding the button type depending on what it finds)
+      arrayOfBtn.forEach((item) &#x3D;&gt; {
+        if (item.image &amp;&amp; item.text) {
+          this.radioButtonType &#x3D; &quot;btn_both&quot;;
+        } else if (!item.image &amp;&amp; item.text) {
+          this.radioButtonType &#x3D; &quot;btn_text&quot;;
+        } else if (item.image &amp;&amp; !item.text) {
+          this.radioButtonType &#x3D; &quot;btn_image&quot;;
+        }
+      });
+      return arrayOfBtn;
+    }
+  }
+  private processButtonFields(button: IButton) {
+    const processed: IButton &#x3D; {
+      text: null,
+      image: null,
+      name: null,
+      image_checked: null,
+    };
+    Object.entries(button).forEach(([field, value]) &#x3D;&gt; {
+      switch (field) {
+        case &quot;image&quot;:
+          processed[field] &#x3D; value;
+          break;
+        case &quot;image_checked&quot;:
+          processed[field] &#x3D; value;
+          break;
+        default:
+          processed[field] &#x3D; value;
+      }
+    });
+    return processed;
+  }
+
+  getFlexWidth() {
+    this.flexWidth &#x3D; &#x60;0 1 ${100 / this.options_per_row - 7}%&#x60;;
+  }
+
+  ngOnDestroy() {
+    this.componentDestroyed$.next(true);
+    this.componentDestroyed$.complete();
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;wrapper-radio-group margin-t-large&quot;&gt;
+  &lt;div class&#x3D;&quot;container&quot; [ngSwitch]&#x3D;&quot;radioButtonType&quot;&gt;
+    &lt;div class&#x3D;&quot;btn_triangle dse&quot; *ngSwitchCase&#x3D;&quot;&#x27;btn_text&#x27;&quot;&gt;
+      &lt;div
+        class&#x3D;&quot;btn_triangle_container center&quot;
+        [style.flex]&#x3D;&quot;flexWidth&quot;
+        [class]&#x3D;&quot;style&quot;
+        *ngFor&#x3D;&quot;let item of arrayOfBtn&quot;
+      &gt;
+        &lt;label class&#x3D;&quot;center standard-label&quot; [class.checked]&#x3D;&quot;item.name &#x3D;&#x3D;&#x3D; _row.value&quot;&gt;
+          &lt;input
+            #el
+            type&#x3D;&quot;radio&quot;
+            [value]&#x3D;&quot;item.name&quot;
+            [checked]&#x3D;&quot;el.value &#x3D;&#x3D;&#x3D; _row.value&quot;
+            (click)&#x3D;&quot;handleRadioButtonClick(el.value)&quot;
+            [name]&#x3D;&quot;groupName&quot;
+            [disabled]&#x3D;&quot;_row.disabled&quot;
+          /&gt;
+          &lt;span&gt;{{ item.text | translate }}&lt;/span&gt;
+        &lt;/label&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class&#x3D;&quot;btn_square dse&quot; *ngSwitchCase&#x3D;&quot;&#x27;btn_both&#x27;&quot;&gt;
+      &lt;div
+        class&#x3D;&quot;btn_square_container center&quot;
+        [class]&#x3D;&quot;style&quot;
+        *ngFor&#x3D;&quot;let item of arrayOfBtn&quot;
+        [style.flex]&#x3D;&quot;flexWidth&quot;
+      &gt;
+        &lt;label class&#x3D;&quot;center standard-label&quot; [class.checked]&#x3D;&quot;item.name &#x3D;&#x3D;&#x3D; _row.value&quot;&gt;
+          &lt;img
+            [src]&#x3D;&quot;(el.checked &amp;&amp; item.image_checked ? item.image_checked : item.image) | plhAsset&quot;
+          /&gt;
+
+          &lt;input
+            #el
+            type&#x3D;&quot;radio&quot;
+            [value]&#x3D;&quot;item.name&quot;
+            [checked]&#x3D;&quot;el.value &#x3D;&#x3D;&#x3D; _row.value&quot;
+            (click)&#x3D;&quot;handleRadioButtonClick(el.value)&quot;
+            [name]&#x3D;&quot;groupName&quot;
+            [disabled]&#x3D;&quot;_row.disabled&quot;
+          /&gt;
+          &lt;span&gt;{{ item.text | translate }}&lt;/span&gt;
+        &lt;/label&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class&#x3D;&quot;btn_image dse&quot; *ngSwitchCase&#x3D;&quot;&#x27;btn_image&#x27;&quot;&gt;
+      &lt;div
+        class&#x3D;&quot;btn_image_container center&quot;
+        [class]&#x3D;&quot;style&quot;
+        *ngFor&#x3D;&quot;let item of arrayOfBtn&quot;
+        [style.flex]&#x3D;&quot;flexWidth&quot;
+      &gt;
+        &lt;label class&#x3D;&quot;center standard-label&quot; [class.checked]&#x3D;&quot;item.name &#x3D;&#x3D;&#x3D; _row.value&quot;&gt;
+          &lt;img
+            [src]&#x3D;&quot;(el.checked &amp;&amp; item.image_checked ? item.image_checked : item.image) | plhAsset&quot;
+          /&gt;
+          &lt;input
+            #el
+            type&#x3D;&quot;radio&quot;
+            [value]&#x3D;&quot;item.name&quot;
+            [checked]&#x3D;&quot;el.value &#x3D;&#x3D;&#x3D; _row.value&quot;
+            (click)&#x3D;&quot;handleRadioButtonClick(el.value)&quot;
+            [name]&#x3D;&quot;groupName&quot;
+            [disabled]&#x3D;&quot;_row.disabled&quot;
+          /&gt;
+          &lt;span&gt; {{ item.text | translate }} &lt;/span&gt;
+        &lt;/label&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div *ngSwitchDefault&gt;Invalid type button&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-styleData">
+                <p class="comment">
+                    <code>./radio-group.component.scss</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss">@use &quot;/src/theme/mixins&quot;;
+
+$background-selected: var(
+  --radio-group-background-selected,
+  var(--gradient-primary-light-vertical)
+);
+$primary-radio-border: 2px solid;
+$primary-radio-border-rd: 15px;
+
+img {
+  padding: 5px;
+}
+
+.wrapper-radio-group {
+  width: 100%;
+  height: 100%;
+
+  .container {
+    @include mixins.flex-centered;
+    margin-bottom: var(--regular-margin);
+
+    .btn_triangle {
+      &amp;_container {
+        width: 150px;
+        height: 44px;
+        margin: 5px;
+
+        label {
+          height: 44px;
+          background-color: var(--ion-color-primary-contrast);
+        }
+        .checked {
+          background: $background-selected;
+          transition: 0.3s linear;
+        }
+      }
+    }
+
+    .dse {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      width: 100%;
+      height: 100%;
+    }
+
+    .btn_square {
+      &amp;_container {
+        label {
+          width: 115px;
+          height: 115px;
+          padding: 5px;
+          max-width: calc(6rem * 0.9);
+          max-height: calc(115px * 0.9);
+          min-height: calc(115px * 0.9);
+          min-width: unset;
+          @media (max-width: 320px) {
+            max-height: calc(100px * 0.9);
+            max-width: calc(5rem * 0.9);
+            min-height: calc(115px * 0.8);
+          }
+          @media (max-width: 319px) {
+            max-height: 27vw;
+            max-width: 27vw;
+            min-height: unset;
+          }
+        }
+      }
+    }
+
+    .btn_image {
+      &amp;_container {
+        label {
+          width: 115px;
+          height: 115px;
+          min-width: unset;
+          max-width: calc(6rem * 0.9);
+          max-height: calc(115px * 0.9);
+          padding: 5px;
+          @media (max-width: 320px) {
+            max-height: calc(100px * 0.9);
+            max-width: calc(5rem * 0.9);
+            min-height: calc(115px * 0.8);
+          }
+          @media (max-width: 319px) {
+            max-height: 27vw;
+            max-width: 27vw;
+            min-height: unset;
+          }
+        }
+      }
+      .transparent {
+        .standard-label {
+          border: 2px solid transparent;
+          box-shadow: none;
+        }
+        .checked {
+          transition: 0.3s linear;
+          border: var(--ion-border-standard);
+          box-shadow: var(--ion-default-box-shadow);
+        }
+      }
+    }
+  }
+}
+
+.standard-label {
+  border-radius: $primary-radio-border-rd;
+  transition: 0.3s linear;
+  max-width: fit-content;
+  min-width: 100%;
+  box-shadow: var(--ion-default-box-shadow);
+  border: var(--ion-border-standard);
+  color: var(--ion-color-primary);
+  background: var(--ion-color-primary-contrast);
+}
+
+.checked {
+  background: $background-selected;
+  transition: 0.3s linear;
+}
+
+.smile-checked {
+  color: var(--ion-color-primary);
+  border: $primary-radio-border !important;
+  border-color: var(--ion-color-primary);
+}
+
+.center {
+  @include mixins.flex-centered;
+  flex-direction: column;
+}
+
+input {
+  width: 100%;
+  height: 100%;
+  display: none;
+}
+
+label {
+  height: 100%;
+  font-weight: 700;
+  text-align: center;
+  transition: 0.3s linear;
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><div class="wrapper-radio-group margin-t-large">  <div class="container" [ngSwitch]="radioButtonType">    <div class="btn_triangle dse" *ngSwitchCase="\'btn_text\'">      <div        class="btn_triangle_container center"        [style.flex]="flexWidth"        [class]="style"        *ngFor="let item of arrayOfBtn"      >        <label class="center standard-label" [class.checked]="item.name === _row.value">          <input            #el            type="radio"            [value]="item.name"            [checked]="el.value === _row.value"            (click)="handleRadioButtonClick(el.value)"            [name]="groupName"            [disabled]="_row.disabled"          />          <span>{{ item.text | translate }}</span>        </label>      </div>    </div>    <div class="btn_square dse" *ngSwitchCase="\'btn_both\'">      <div        class="btn_square_container center"        [class]="style"        *ngFor="let item of arrayOfBtn"        [style.flex]="flexWidth"      >        <label class="center standard-label" [class.checked]="item.name === _row.value">          <img            [src]="(el.checked && item.image_checked ? item.image_checked : item.image) | plhAsset"          />          <input            #el            type="radio"            [value]="item.name"            [checked]="el.value === _row.value"            (click)="handleRadioButtonClick(el.value)"            [name]="groupName"            [disabled]="_row.disabled"          />          <span>{{ item.text | translate }}</span>        </label>      </div>    </div>    <div class="btn_image dse" *ngSwitchCase="\'btn_image\'">      <div        class="btn_image_container center"        [class]="style"        *ngFor="let item of arrayOfBtn"        [style.flex]="flexWidth"      >        <label class="center standard-label" [class.checked]="item.name === _row.value">          <img            [src]="(el.checked && item.image_checked ? item.image_checked : item.image) | plhAsset"          />          <input            #el            type="radio"            [value]="item.name"            [checked]="el.value === _row.value"            (click)="handleRadioButtonClick(el.value)"            [name]="groupName"            [disabled]="_row.disabled"          />          <span> {{ item.text | translate }} </span>        </label>      </div>    </div>    <div *ngSwitchDefault>Invalid type button</div>  </div></div></div>'
+    var COMPONENTS = [{'name': 'AccordionSectionComponent', 'selector': 'plh-tmpl-accordion-section'},{'name': 'AnimatedSectionComponent', 'selector': 'plh-tmpl-animated-section'},{'name': 'AnimatedSectionGroupComponent', 'selector': 'plh-tmpl-animated-section-group'},{'name': 'ComboBoxModalComponent', 'selector': 'combo-box-modal'},{'name': 'FormComponent', 'selector': 'plh-tmpl-form'},{'name': 'NavGroupComponent', 'selector': 'plh-tmpl-nav-group'},{'name': 'RoundIconButtonComponent', 'selector': 'plh-round-button'},{'name': 'SelectTextComponent', 'selector': 'plh-select-text'},{'name': 'SquareIconButtonComponent', 'selector': 'plh-square-icon-button'},{'name': 'TemplateBaseComponent', 'selector': ''},{'name': 'TemplateDebuggerComponent', 'selector': 'plh-template-debugger'},{'name': 'TemplateHTMLComponent', 'selector': 'template-html-component'},{'name': 'TemplateLayoutComponent', 'selector': ''},{'name': 'TemplatePopupComponent', 'selector': ''},{'name': 'TmplAccordionComponent', 'selector': 'plh-accordion-component'},{'name': 'TmplAdvancedDashedBoxComponent', 'selector': 'plh-advanced-dashed-box'},{'name': 'TmplAnimatedSlidesComponent', 'selector': 'template-animated-slides'},{'name': 'TmplAudioComponent', 'selector': 'plh-audio'},{'name': 'TmplButtonComponent', 'selector': 'plh-button'},{'name': 'TmplCarouselComponent', 'selector': 'plh-carousel'},{'name': 'TmplComboBoxComponent', 'selector': 'plh-combo-box'},{'name': 'TmplDashedBoxComponent', 'selector': 'plh-dashed-box'},{'name': 'TmplDataItemsComponent', 'selector': 'plh-data-items'},{'name': 'TmplDisplayGridComponent', 'selector': 'plh-display-grid'},{'name': 'TmplDisplayGroupComponent', 'selector': 'plh-tmpl-display-group'},{'name': 'TmplDrawerComponent', 'selector': 'plh-drawer'},{'name': 'TmplHelpIconComponent', 'selector': 'plh-tmpl-help-icon'},{'name': 'TmplIconBannerComponent', 'selector': 'plh-icon-banner'},{'name': 'TmplImageComponent', 'selector': 'plh-tmpl-image'},{'name': 'TmplLatexComponent', 'selector': 'template-latex-component'},{'name': 'TmplLottieAnimation', 'selector': 'plh-tmpl-lottie-animation'},{'name': 'TmplNavigationBarComponent', 'selector': 'plh-navigation-bar'},{'name': 'TmplNumberComponent', 'selector': 'plh-number-selector'},{'name': 'TmplOdkFormComponent', 'selector': 'tmpl-odk-form'},{'name': 'TmplParentPointBoxComponent', 'selector': 'plh-points-item'},{'name': 'TmplParentPointCounterComponent', 'selector': 'plh-parent-point-counter'},{'name': 'TmplPdfComponent', 'selector': 'plh-pdf'},{'name': 'TmplQRCodeComponent', 'selector': 'plh-qr-code'},{'name': 'TmplRadioButtonGridComponent', 'selector': 'plh-radio-button-grid'},{'name': 'TmplRadioGroupComponent', 'selector': 'plh-radio-group'},{'name': 'TmplSimpleCheckboxComponent', 'selector': 'plh-simple-checkbox'},{'name': 'TmplSliderComponent', 'selector': 'plh-slider-new'},{'name': 'TmplSubtitleComponent', 'selector': 'plh-tmpl-subtitle'},{'name': 'TmplTaskCardComponent', 'selector': 'plh-task-card'},{'name': 'TmplTaskProgressBarComponent', 'selector': 'plh-task-progress-bar'},{'name': 'TmplTextAreaComponent', 'selector': 'plh-text-area'},{'name': 'TmplTextBoxComponent', 'selector': 'plh-text-box'},{'name': 'TmplTextComponent', 'selector': 'plh-tmpl-text'},{'name': 'TmplTileComponent', 'selector': 'plh-tile-component'},{'name': 'TmplTimerComponent', 'selector': 'plh-timer'},{'name': 'TmplTitleComponent', 'selector': 'plh-tmpl-title'},{'name': 'TmplToggleBarComponent', 'selector': 'plh-tmpl-toggle-bar'},{'name': 'TmplVideoComponent', 'selector': 'plh-tmpl-video'},{'name': 'WorkshopsComponent', 'selector': 'plh-tmpl-workshops-accordion'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'TmplRadioGroupComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'TmplRadioGroupComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

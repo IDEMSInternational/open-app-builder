@@ -1,0 +1,63 @@
+{
+  "flow_type": "data_list",
+  "flow_name": "w_crisis_specific_tasks",
+  "status": "released",
+  "rows": [
+    {
+      "id": "read_1",
+      "group": "read_1",
+      "rel_priority": 1,
+      "individual": true,
+      "together": true,
+      "template": "w_crisis_read_1"
+    },
+    {
+      "id": "question_1",
+      "group": "read_1",
+      "rel_priority": 2,
+      "individual": true,
+      "together": false,
+      "template": "w_crisis_question_1"
+    },
+    {
+      "id": "talk_1",
+      "group": "read_1",
+      "rel_priority": 3,
+      "individual": false,
+      "together": true,
+      "template": "w_crisis_talk_1"
+    },
+    {
+      "id": "read_2",
+      "group": "read_2",
+      "rel_priority": 1,
+      "individual": true,
+      "together": true,
+      "template": "w_crisis_read_2"
+    },
+    {
+      "id": "question_2",
+      "group": "read_2",
+      "rel_priority": 2,
+      "individual": true,
+      "together": false,
+      "template": "w_crisis_question_2"
+    },
+    {
+      "id": "talk_2",
+      "group": "read_2",
+      "rel_priority": 3,
+      "individual": false,
+      "together": true,
+      "template": "w_crisis_talk_2"
+    },
+    {
+      "id": "learn",
+      "group": "learn",
+      "individual": true,
+      "together": true,
+      "template": "w_crisis_learn_temp"
+    }
+  ],
+  "_xlsxPath": "global/data/workshop_data/workshop_tasks.xlsx"
+}

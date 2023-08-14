@@ -1,0 +1,34 @@
+@use "/src/theme/mixins";
+
+.progress-bar-wrapper {
+  @include mixins.flex-space-between;
+
+  .progress-text {
+    padding-right: var(--tiny-padding);
+    white-space: nowrap;
+  }
+  .progress-bar-background {
+    width: 100%;
+    border-radius: var(--ion-border-radius-small);
+    background-color: var(--ion-color-gray-100);
+  }
+  .progress-bar {
+    width: 1%;
+    height: 5px;
+    border-radius: var(--ion-border-radius-small);
+    background-color: var(--ion-color-gray-400);
+  }
+  &.completed {
+    .progress-bar {
+      background-color: var(--ion-color-green);
+    }
+  }
+  &.highlighted {
+    .progress-bar-background {
+      background-color: var(--ion-color-secondary-100);
+    }
+    .progress-bar {
+      background-color: var(--ion-color-secondary);
+    }
+  }
+}

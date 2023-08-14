@@ -9,7 +9,7 @@
 ![](images/video.png)
 
 [Google Sheet Demo](https://docs.google.com/spreadsheets/d/1OjY24TnAWRxiiPT9vED59DLwz2Zb9RmUHw-Lym1pCXo/edit#gid=569531329)   
-[Live Preview Demo](https://plh-global.web.app/template/comp_video)
+[Live Preview Demo](https://idems-debug.web.app/template/comp_video)
 
 ## Parameters
 

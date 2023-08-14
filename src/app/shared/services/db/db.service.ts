@@ -15,6 +15,7 @@ import {
 } from "data-models/db.model";
 import { arrayToHashmapArray, generateTimestamp } from "../../utils";
 import { EventService } from "../event/event.service";
+import { AsyncServiceBase } from "../asyncService.base";
 
 const db = new Dexie("plh-app-db");
 
@@ -29,7 +30,7 @@ db.version(DB_VERSION).stores(DB_TABLES);
 @Injectable({
   providedIn: "root",
 })
-export class DbService {
+export class DbService extends AsyncServiceBase {
   private db = db;
   /**
    * Creates a subject to emit changes at an individual table level
@@ -37,12 +38,16 @@ export class DbService {
    */
   private tableChanges$: { [key in IDBTable]: Subject<any> } = {} as any;
   constructor(private eventService: EventService) {
-    Object.keys(DB_TABLES).forEach((table_id) => (this.tableChanges$[table_id] = new Subject()));
+    super("DB");
+    this.registerInitFunction(this.init);
   }
 
-  async init() {
+  private async init() {
+    await this.ensureAsyncServicesReady([]);
+    this.ensureSyncServicesReady([this.eventService]);
+    Object.keys(DB_TABLES).forEach((table_id) => (this.tableChanges$[table_id] = new Subject()));
     this._listenToDBChanges();
-    db.open().catch((err) => {
+    await db.open().catch((err) => {
       console.error("could not open db", err);
       // NOTE - invalid state error suggests dexie not supported, so
       // try reloading with cachedb disabled (see db index for implementation)

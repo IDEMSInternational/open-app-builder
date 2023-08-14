@@ -30,6 +30,7 @@ try {
   if (error) {
     // could not parse dotenv - either not provided or running in production without file
     console.error("dotenv parse fail, existing env keys:", Object.keys(process.env));
+    console.error(error);
   }
 } catch (error) {
   console.error("caught error from parsed");

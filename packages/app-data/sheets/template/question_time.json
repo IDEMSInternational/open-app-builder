@@ -30,23 +30,16 @@
       "rows": [
         {
           "name": "activity_title",
-          "value": "Question Time",
+          "value": "Question time",
           "_translations": {
-            "value": {
-              "tz_sw": true,
-              "za_af": true,
-              "za_st": true,
-              "za_tn": true,
-              "za_xh": true,
-              "za_zu": true
-            }
+            "value": {}
           },
           "type": "set_variable",
           "_nested_name": "workshop_activity.activity_title"
         },
         {
           "name": "activity_image",
-          "value": "plh_images/workshop_modes/guide_2/write.svg",
+          "value": "plh_images/workshop_modes/individual/write.svg",
           "_translations": {
             "value": {}
           },
@@ -55,16 +48,9 @@
         },
         {
           "name": "intro_text",
-          "value": "It's time for some questions!",
+          "value": "It is time for some questions!",
           "_translations": {
-            "value": {
-              "tz_sw": true,
-              "za_af": true,
-              "za_st": true,
-              "za_tn": true,
-              "za_xh": true,
-              "za_zu": true
-            }
+            "value": {}
           },
           "type": "set_variable",
           "_nested_name": "workshop_activity.intro_text"

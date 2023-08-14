@@ -1,0 +1,6 @@
+app_data
+cache
+tasks
+config.json
+sheets/
+!sheets/demo.xlsx

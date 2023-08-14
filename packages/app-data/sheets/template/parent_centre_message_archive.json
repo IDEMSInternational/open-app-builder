@@ -55,20 +55,23 @@
     {
       "type": "text",
       "name": "text",
-      "value": "You will find the in-week messages from the previous workshops here.",
+      "value": "You will find the in-week messages from the previous @global.workshops here.",
       "_translations": {
         "value": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
+          "tz_sw": true
         }
       },
       "condition": "@data.workshop.w_self_care.number == @local.workshop_number",
       "_nested_name": "text",
       "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "You will find the in-week messages from the previous @global.workshops here.",
+            "matchedExpression": "@global.workshops",
+            "type": "global",
+            "fieldName": "workshops"
+          }
+        ],
         "condition": [
           {
             "fullExpression": "@data.workshop.w_self_care.number == @local.workshop_number",
@@ -85,6 +88,9 @@
         ]
       },
       "_dynamicDependencies": {
+        "@global.workshops": [
+          "value"
+        ],
         "@data.workshop.w_self_care.number": [
           "condition"
         ],

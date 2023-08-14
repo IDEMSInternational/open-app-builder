@@ -16,6 +16,7 @@ import {
   generateFolderFlatMapStats,
   ILocalFileWithStats,
   logProgramHelp,
+  cleanupEmptyFolders,
 } from "../utils";
 import { authorizeGDrive } from "./authorize";
 
@@ -103,7 +104,7 @@ export class GDriveDownloader {
    */
   public async updateFileEntry(serverEntry: drive_v3.Schema$File) {
     await this.setupGdrive();
-    const cachedEntry = this.contentsData.find((cached) => cached.id === serverEntry.id);
+    const cachedEntry = this.getCachedEntry(serverEntry);
     if (!cachedEntry) {
       console.log(chalk.red("Full sync required before updating file", serverEntry.name));
       return;
@@ -119,6 +120,10 @@ export class GDriveDownloader {
     actions.updated.push(entryWithFolderPath);
     await this.processSyncActions(actions);
     this.updateCacheContentsFile(entryWithFolderPath);
+  }
+
+  public getCachedEntry(serverEntry: drive_v3.Schema$File) {
+    return this.contentsData.find((cached) => cached.id === serverEntry.id);
   }
 
   private async setupGdrive() {
@@ -210,6 +215,8 @@ export class GDriveDownloader {
     logUpdate.done();
     queue.start();
     await queue.onIdle();
+    // Remove empty folders left after deletions
+    cleanupEmptyFolders(this.options.outputPath);
     // Update logs
     const actionsLogPath = path.resolve(PATHS.LOGS_DIR, `${this.options.logName}.json`);
     console.log(chalk.gray(actionsLogPath));
@@ -238,6 +245,7 @@ export class GDriveDownloader {
         // add to hashmap for use in local-server comparison
         const cacheRelativePath = getRelativeLocalPath(serverFile);
         serverFilesHashmap[cacheRelativePath] = serverFile;
+        const cacheFile = localFilesHashmap[cacheRelativePath];
 
         // run a regex test for anything ending .abc(d)
         // gdrive keeps duplicate open office formats of gsheets without extension
@@ -247,15 +255,21 @@ export class GDriveDownloader {
           output.ignored.push(serverFile);
           return;
         }
+        // Apply any server filter functions, removing files that already exist and ignoring
+        // files that do not
         if (filterFn) {
           const included = filterFn(serverFile);
           if (!included) {
-            output.ignored.push(serverFile);
-            return;
+            if (cacheFile) {
+              output.deleted.push({ folderPath: cacheRelativePath });
+              return;
+            } else {
+              output.ignored.push(serverFile);
+              return;
+            }
           }
         }
 
-        const cacheFile = localFilesHashmap[cacheRelativePath];
         if (cacheFile) {
           const isSame = this.isServerFileSameAsLocalFile(serverFile, cacheFile);
 
