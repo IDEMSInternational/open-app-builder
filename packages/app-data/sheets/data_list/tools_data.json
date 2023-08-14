@@ -946,9 +946,7 @@
         "tool_2_title": {
           "tz_sw": true
         },
-        "tool_2_text": {
-          "tz_sw": true
-        },
+        "tool_2_text": {},
         "tool_3_title": {
           "tz_sw": true
         },
@@ -974,7 +972,7 @@
           "eng": "START"
         },
         "tool_2_text": {
-          "eng": "Your teen may feel scared, so as parents we need to start the conversation on body changes and intimate relationships.\n\nStart young (before 9 years) by answering their questions in a simple, accurate way. That builds your and your child’s confidence.\n\nIt is okay to feel uncomfortable. Be open, use the correct words, and get more information for yourself if you do not have all the answers."
+          "eng": "Your teen may feel scared, so as parents we need to start the conversation on body changes and intimate relationships.\n\nStart young (before 9 years) by answering their questions in a simple and honest way. That builds your and your child’s confidence.\n\nIt is okay to feel uncomfortable. Be open, use the correct words, and get more information for yourself if you do not have all the answers."
         },
         "tool_3_title": {
           "eng": "GUIDE"
@@ -990,7 +988,7 @@
       "tool_1_title": "BUILD",
       "tool_1_text": "Build a strong relationship with your teen by spending time with them and showing them you trust them. Create a safe, encouraging space, and avoid judging them.\n\nThat will make your teen share their questions and worries with you, when they need advice or are in a potentially dangerous situation.",
       "tool_2_title": "START",
-      "tool_2_text": "Your teen may feel scared, so as parents we need to start the conversation on body changes and intimate relationships.\n\nStart young (before 9 years) by answering their questions in a simple, accurate way. That builds your and your child’s confidence.\n\nIt is okay to feel uncomfortable. Be open, use the correct words, and get more information for yourself if you do not have all the answers.",
+      "tool_2_text": "Your teen may feel scared, so as parents we need to start the conversation on body changes and intimate relationships.\n\nStart young (before 9 years) by answering their questions in a simple and honest way. That builds your and your child’s confidence.\n\nIt is okay to feel uncomfortable. Be open, use the correct words, and get more information for yourself if you do not have all the answers.",
       "tool_3_title": "GUIDE",
       "tool_3_text": "Your teen will get information about sex from many different sources. When they feel safe and comfortable with you, you can guide them and build their ability to find good information and solutions now and in the future.\n\nHelp them think about the consequences of behaviours (without shame or blame). Make sure they understand that they should never feel pressured (or pressure someone else) into any sexual activity or relationship.\n\nGet help or information for yourself from other adults or medical professionals.",
       "tool_4_title": ""
@@ -1113,9 +1111,7 @@
         "tool_2_title": {
           "tz_sw": true
         },
-        "tool_2_text": {
-          "tz_sw": true
-        },
+        "tool_2_text": {},
         "tool_3_title": {
           "tz_sw": true
         },
@@ -1138,7 +1134,7 @@
           "eng": "SAY GOODBYE"
         },
         "tool_2_text": {
-          "eng": "Find a way to say goodbye that feels right for your and your family. Some people hold a ceremony or have a special meal to celebrate the person.\n\nAsk your teen what they would want to do to say goodbye."
+          "eng": "Find a way to say goodbye that feels right for you and your family. Some people hold a ceremony or have a special meal to celebrate the person.\n\nAsk your teen what they would want to do to say goodbye."
         },
         "tool_3_title": {
           "eng": "TALK"
@@ -1153,7 +1149,7 @@
       "tool_1_title": "ACCEPT",
       "tool_1_text": "Losing someone we love can affect us for weeks, months or years. You do not have to feel better quickly, and there is no right or wrong way to grieve.\n\nYour teen may feel sad, angry, not understand or not believe it, or feel unwell. They may have pains, nightmares, or problems at school. They may seem happy, but still feel sad. All of this is normal.",
       "tool_2_title": "SAY GOODBYE",
-      "tool_2_text": "Find a way to say goodbye that feels right for your and your family. Some people hold a ceremony or have a special meal to celebrate the person.\n\nAsk your teen what they would want to do to say goodbye.",
+      "tool_2_text": "Find a way to say goodbye that feels right for you and your family. Some people hold a ceremony or have a special meal to celebrate the person.\n\nAsk your teen what they would want to do to say goodbye.",
       "tool_3_title": "TALK",
       "tool_3_text": "It can help just to talk about the person when you think about them or write down how you feel. Share your memories, the good ones and the difficult ones. \n\nChildren may feel like the person’s death was their fault or that they behaved badly. Tell them clearly that they did nothing wrong. Explain that your teen can always tell you how they feel, and encourage them by also sharing how you feel.",
       "tool_4_title": ""
