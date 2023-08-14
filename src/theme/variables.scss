@@ -12,19 +12,6 @@
 @include themes.theme-default;
 @include themes.theme-professional;
 
-// WiP - system to generate colours from base colour
-$primary: hsl(203, 76%, 21%); // 0d3f5e
-$primary-light: color.change($primary, $lightness: 80%);
-$primary-lighter: color.change($primary, $lightness: 95%); // #e9f5fc
-
-$secondary: hsl(31, 95%, 57%); // #fa9529
-
-$tertiary: hsl(47, 100%, 92%); // #fff6d6
-
-/** Gradient direction **/
-$vertical: 180deg;
-$horizontal: 90deg;
-
 /** Ionic CSS Variables **/
 :root {
   // Margins //
@@ -115,7 +102,7 @@ $horizontal: 90deg;
   // Checkbox //
   --checkbox-border-width: 2px;
   --checkbox-border-radius: 5px;
-  --checkbox-border-size: 39px;
+  --checkbox-size: 39px;
   --checkbox-label-max-width: 290px;
 
   // Text box //
@@ -162,6 +149,7 @@ $horizontal: 90deg;
   --buttons-short-height: 50px;
   --buttons-medium-height: 65px;
   --buttons-tall-height: 80px;
+  --buttons-font-size-tiny: 18px;
   --buttons-font-size-small: 20px;
   --buttons-font-size: 25px;
   --buttons-size: 64px;

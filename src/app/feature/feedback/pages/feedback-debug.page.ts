@@ -1,8 +1,6 @@
 import { Component, OnDestroy, OnInit } from "@angular/core";
-import { Subject } from "packages/api/node_modules/rxjs";
-import { interval } from "rxjs";
+import { interval, Subject } from "rxjs";
 import { debounce, takeUntil } from "rxjs/operators";
-import { DBSyncService } from "src/app/shared/services/db/db-sync.service";
 import { DbService } from "src/app/shared/services/db/db.service";
 import { FeedbackService } from "../feedback.service";
 import { IFeedbackEntryDB } from "../feedback.types";
@@ -12,18 +10,14 @@ import { IFeedbackEntryDB } from "../feedback.types";
   styleUrls: ["./feedback-debug.page.scss"],
 })
 export class FeedbackDebugPage implements OnInit, OnDestroy {
-  private destroyed$ = new Subject<boolean>();
+  private componentDestroyed$ = new Subject<boolean>();
   public feedbackPending: IFeedbackEntryDB[] = [];
   public feedbackSent: IFeedbackEntryDB[] = [];
-  constructor(
-    public feedbackService: FeedbackService,
-    private dbService: DbService,
-    private dbSyncService: DBSyncService
-  ) {}
+  constructor(public feedbackService: FeedbackService, private dbService: DbService) {}
 
   ngOnDestroy() {
-    this.destroyed$.next(true);
-    this.destroyed$.unsubscribe();
+    this.componentDestroyed$.next(true);
+    this.componentDestroyed$.unsubscribe();
   }
 
   async ngOnInit() {
@@ -31,7 +25,7 @@ export class FeedbackDebugPage implements OnInit, OnDestroy {
     this.dbService
       .table("feedback")
       .changes$.pipe(
-        takeUntil(this.destroyed$),
+        takeUntil(this.componentDestroyed$),
         debounce(() => interval(500))
       )
       .subscribe(() => this.loadDBFeedback());
@@ -41,7 +35,11 @@ export class FeedbackDebugPage implements OnInit, OnDestroy {
     console.log(feedback);
   }
   public async syncFeedback() {
-    await this.dbSyncService.syncTable("feedback");
+    await this.feedbackService.syncFeedback();
+  }
+  public async deleteFeedback(feedback: IFeedbackEntryDB) {
+    await this.feedbackService.deleteFeedback(feedback.id);
+    await this.loadDBFeedback();
   }
 
   private async loadDBFeedback() {

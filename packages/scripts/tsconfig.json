@@ -3,10 +3,13 @@
     "target": "es2015",
     "noEmit": true,
     "moduleResolution": "node",
-    "module": "commonjs",
+    "module": "CommonJS",
     "esModuleInterop": true,
     // Global type definitions.
     "typeRoots": ["./node_modules/@types"]
   },
-  "include": ["src/**/*.ts"]
+  "include": ["src/**/*.ts"],
+  "ts-node": {
+    "swc": true
+  }
 }

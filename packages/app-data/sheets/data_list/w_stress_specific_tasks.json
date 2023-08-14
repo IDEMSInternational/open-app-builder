@@ -9,7 +9,7 @@
       "rel_priority": 1,
       "individual": true,
       "together": true,
-      "template": "w_stress_read_1_temp"
+      "template": "w_stress_read_1"
     },
     {
       "id": "question",
@@ -32,14 +32,22 @@
       "group": "read_2",
       "individual": true,
       "together": true,
-      "template": "w_stress_read_2_temp"
+      "template": "w_stress_read_2"
     },
     {
       "id": "read_3",
       "group": "read_3",
       "individual": true,
       "together": true,
-      "template": "w_stress_read_3_temp"
+      "template": "w_stress_read_3"
+    },
+    {
+      "id": "question_2",
+      "group": "read_3",
+      "rel_priority": 2,
+      "individual": true,
+      "together": false,
+      "template": "w_stress_question_2"
     }
   ],
   "_xlsxPath": "global/data/workshop_data/workshop_tasks.xlsx"

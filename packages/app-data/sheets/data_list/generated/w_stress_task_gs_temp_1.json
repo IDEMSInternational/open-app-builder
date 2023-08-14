@@ -173,17 +173,16 @@
       "together": true,
       "priority": 11,
       "has_single_task": false,
-      "title": "Story",
+      "title": "@global.story @global.part_connector @data.story.ignore_emotions.title",
       "_translations": {
-        "title": {
-          "tz_sw": true
-        }
+        "title": {}
       },
       "_translatedFields": {
         "title": {
-          "eng": "Story"
+          "eng": "@global.story @global.part_connector @data.story.ignore_emotions.title"
         }
-      }
+      },
+      "story_id": "ignore_emotions"
     },
     {
       "id": "read_2",
@@ -191,37 +190,34 @@
       "together": true,
       "priority": 13,
       "has_single_task": true,
-      "title": "Story",
+      "title": "@global.story @global.part_connector @data.story.acknowledge_emotions.title",
       "_translations": {
-        "title": {
-          "tz_sw": true
-        }
+        "title": {}
       },
       "_translatedFields": {
         "title": {
-          "eng": "Story"
+          "eng": "@global.story @global.part_connector @data.story.acknowledge_emotions.title"
         }
       },
-      "template": "w_stress_read_2_temp"
+      "template": "w_stress_read_2",
+      "story_id": "acknowledge_emotions"
     },
     {
       "id": "read_3",
       "individual": true,
       "together": true,
       "priority": 14,
-      "has_single_task": true,
-      "title": "Story",
+      "has_single_task": false,
+      "title": "@global.story @global.part_connector @data.story.safety_amnesty.title",
       "_translations": {
-        "title": {
-          "tz_sw": true
-        }
+        "title": {}
       },
       "_translatedFields": {
         "title": {
-          "eng": "Story"
+          "eng": "@global.story @global.part_connector @data.story.safety_amnesty.title"
         }
       },
-      "template": "w_stress_read_3_temp"
+      "story_id": "safety_amnesty"
     }
   ]
 }

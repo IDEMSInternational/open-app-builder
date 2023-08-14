@@ -2,13 +2,13 @@
   font-weight: 500;
 }
 .activated {
-  background: hsl(130, 40, 65);
+  background: hsl(130deg, 40%, 65%);
 }
 .pending {
-  background: hsl(40, 100, 75);
+  background: hsl(40deg, 100%, 75%);
 }
 .deactivated {
-  background: hsl(0, 100, 85);
+  background: hsl(0deg, 100%, 85%);
 }
 ion-list {
   --background: white;

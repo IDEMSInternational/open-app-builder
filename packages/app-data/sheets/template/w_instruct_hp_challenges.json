@@ -203,75 +203,10 @@
           "za_zu": true
         }
       },
-      "condition": "@fields.@local.workshop_hp_mood == \"happy\" || !@fields.@local.workshop_hp_mood",
       "parameter_list": {
         "style": "emphasised"
       },
-      "_nested_name": "question_text_happy",
-      "_dynamicFields": {
-        "condition": [
-          {
-            "fullExpression": "@fields.@local.workshop_hp_mood == \"happy\" || !@fields.@local.workshop_hp_mood",
-            "matchedExpression": "@local.workshop_hp_mood",
-            "type": "local",
-            "fieldName": "workshop_hp_mood"
-          },
-          {
-            "fullExpression": "@fields.@local.workshop_hp_mood == \"happy\" || !@fields.@local.workshop_hp_mood",
-            "matchedExpression": "@local.workshop_hp_mood",
-            "type": "local",
-            "fieldName": "workshop_hp_mood"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@local.workshop_hp_mood": [
-          "condition",
-          "condition"
-        ]
-      }
-    },
-    {
-      "type": "text",
-      "name": "question_text_ok_sad",
-      "value": "What challenge did you have?",
-      "_translations": {
-        "value": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        }
-      },
-      "condition": "@fields.@local.workshop_hp_mood == \"ok\" || @fields.@local.workshop_hp_mood == \"sad\"",
-      "parameter_list": {
-        "style": "emphasised"
-      },
-      "_nested_name": "question_text_ok_sad",
-      "_dynamicFields": {
-        "condition": [
-          {
-            "fullExpression": "@fields.@local.workshop_hp_mood == \"ok\" || @fields.@local.workshop_hp_mood == \"sad\"",
-            "matchedExpression": "@local.workshop_hp_mood",
-            "type": "local",
-            "fieldName": "workshop_hp_mood"
-          },
-          {
-            "fullExpression": "@fields.@local.workshop_hp_mood == \"ok\" || @fields.@local.workshop_hp_mood == \"sad\"",
-            "matchedExpression": "@local.workshop_hp_mood",
-            "type": "local",
-            "fieldName": "workshop_hp_mood"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@local.workshop_hp_mood": [
-          "condition",
-          "condition"
-        ]
-      }
+      "_nested_name": "question_text_happy"
     },
     {
       "name": "text_challenge_1",
@@ -837,16 +772,9 @@
         {
           "type": "text",
           "name": "reply_choice_2_c",
-          "value": "Wonderful! By sharing responsibilities, you will have more time to do something fun with your teen – it’s so important!",
+          "value": "Wonderful! By sharing responsibilities, you will have more time to do something fun with your teen – it is so important!",
           "_translations": {
-            "value": {
-              "tz_sw": true,
-              "za_af": true,
-              "za_st": true,
-              "za_tn": true,
-              "za_xh": true,
-              "za_zu": true
-            }
+            "value": {}
           },
           "hidden": "@local.combo_box_challenge_2!=\"choice_2_c\"",
           "_nested_name": "challenge_2.reply_choice_2_c",
@@ -887,16 +815,9 @@
     {
       "type": "text",
       "name": "reply_challenge_3",
-      "value": "Yes, it takes some time to get used to giving positive instructions – it’s really worth trying again! Think about the behaviour you would love to see your teen do more and think of positive ways to give that instruction!",
+      "value": "Yes, it takes some time to get used to giving positive instructions – it is really worth trying again! Think about the behaviour you would love to see your teen do more and think of positive ways to give that instruction!",
       "_translations": {
-        "value": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        }
+        "value": {}
       },
       "condition": "@local.combo_box==\"challenge_3\"",
       "_nested_name": "reply_challenge_3",
@@ -1058,5 +979,5 @@
       "_nested_name": "nav_buttons"
     }
   ],
-  "_xlsxPath": "global/in_week_messages/home_practice_reviews/w_instruct_hp_review.xlsx"
+  "_xlsxPath": "global/top_templates/in_week_messages/home_practice_reviews/w_instruct_hp_review.xlsx"
 }

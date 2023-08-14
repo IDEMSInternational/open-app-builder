@@ -1,4 +1,4 @@
-import { BehaviorSubject } from "rxjs";
+import { BehaviorSubject, lastValueFrom } from "rxjs";
 import { takeWhile } from "rxjs/operators";
 import { FlowTypes } from "src/app/shared/model";
 import { TemplateContainerComponent } from "../../template-container.component";
@@ -7,18 +7,19 @@ import { TemplateProcessService } from "./template-process.service";
 import { ServerService } from "src/app/shared/services/server/server.service";
 import { AnalyticsService } from "src/app/shared/services/analytics/analytics.service";
 import { Injector } from "@angular/core";
-import { TemplateInstanceService } from "./template-instance.service";
 import { TemplateNavService } from "../template-nav.service";
 import { TemplateService } from "../template.service";
-import { TourService } from "src/app/feature/tour/tour.service";
 import { TemplateTranslateService } from "../template-translate.service";
-import { TemplateFieldService } from "../template-field.service";
 import { EventService } from "src/app/shared/services/event/event.service";
 import { DBSyncService } from "src/app/shared/services/db/db-sync.service";
 import { AuthService } from "src/app/shared/services/auth/auth.service";
 import { SkinService } from "src/app/shared/services/skin/skin.service";
 import { ThemeService } from "src/app/feature/theme/services/theme.service";
 import { TaskService } from "src/app/shared/services/task/task.service";
+import { getGlobalService } from "src/app/shared/services/global.service";
+import { SyncServiceBase } from "src/app/shared/services/syncService.base";
+import { TemplateActionRegistry } from "./template-action.registry";
+import { CampaignService } from "src/app/feature/campaign/campaign.service";
 
 /** Logging Toggle - rewrite default functions to enable or disable inline logs */
 let SHOW_DEBUG_LOGS = false;
@@ -30,41 +31,75 @@ let log_groupEnd = SHOW_DEBUG_LOGS ? console.groupEnd : () => null;
  *
  *
  */
-export class TemplateActionService extends TemplateInstanceService {
+export class TemplateActionService extends SyncServiceBase {
   private actionsQueue: FlowTypes.TemplateRowAction[] = [];
   private actionsQueueProcessing$ = new BehaviorSubject<boolean>(false);
 
-  private settingsService: SettingsService;
-  private serverService: ServerService;
-  private analyticsService: AnalyticsService;
-  private templateNavService: TemplateNavService;
-  private templateService: TemplateService;
-  private tourService: TourService;
-  private templateTranslateService: TemplateTranslateService;
-  private templateFieldService: TemplateFieldService;
-  private eventService: EventService;
-  private dbSyncService: DBSyncService;
-  private authService: AuthService;
-  private skinService: SkinService;
-  private themeService: ThemeService;
-  private taskService: TaskService;
+  constructor(private injector: Injector, public container?: TemplateContainerComponent) {
+    super("TemplateAction");
+  }
+  // Retrive all services on demand from global injector
+  private get settingsService() {
+    return getGlobalService(this.injector, SettingsService);
+  }
+  private get serverService() {
+    return getGlobalService(this.injector, ServerService);
+  }
+  private get analyticsService() {
+    return getGlobalService(this.injector, AnalyticsService);
+  }
+  private get templateNavService() {
+    return getGlobalService(this.injector, TemplateNavService);
+  }
+  private get templateService() {
+    return getGlobalService(this.injector, TemplateService);
+  }
+  private get templateTranslateService() {
+    return getGlobalService(this.injector, TemplateTranslateService);
+  }
+  private get eventService() {
+    return getGlobalService(this.injector, EventService);
+  }
+  private get dbSyncService() {
+    return getGlobalService(this.injector, DBSyncService);
+  }
+  private get authService() {
+    return getGlobalService(this.injector, AuthService);
+  }
+  private get skinService() {
+    return getGlobalService(this.injector, SkinService);
+  }
+  private get themeService() {
+    return getGlobalService(this.injector, ThemeService);
+  }
+  private get taskService() {
+    return getGlobalService(this.injector, TaskService);
+  }
+  private get campaignService() {
+    return getGlobalService(this.injector, CampaignService);
+  }
+  private get templateActionRegistry() {
+    // HACK - as only service that does not extend sync/async base just return
+    return this.injector.get(TemplateActionRegistry);
+  }
 
-  constructor(injector: Injector, public container?: TemplateContainerComponent) {
-    super(injector);
-    this.settingsService = this.getGlobalService(SettingsService);
-    this.serverService = this.getGlobalService(ServerService);
-    this.analyticsService = this.getGlobalService(AnalyticsService);
-    this.templateNavService = this.getGlobalService(TemplateNavService);
-    this.templateService = this.getGlobalService(TemplateService);
-    this.tourService = this.getGlobalService(TourService);
-    this.templateFieldService = this.getGlobalService(TemplateFieldService);
-    this.templateTranslateService = this.getGlobalService(TemplateTranslateService);
-    this.eventService = this.getGlobalService(EventService);
-    this.dbSyncService = this.getGlobalService(DBSyncService);
-    this.authService = this.getGlobalService(AuthService);
-    this.skinService = this.getGlobalService(SkinService);
-    this.themeService = this.getGlobalService(ThemeService);
-    this.taskService = this.getGlobalService(TaskService);
+  private async ensurePublicServicesReady() {
+    await this.ensureAsyncServicesReady([
+      this.templateTranslateService,
+      this.dbSyncService,
+      this.taskService,
+    ]);
+    this.ensureSyncServicesReady([
+      this.serverService,
+      this.templateNavService,
+      this.themeService,
+      this.settingsService,
+      this.analyticsService,
+      this.templateService,
+      this.eventService,
+      this.authService,
+      this.skinService,
+    ]);
   }
 
   /** Public method to add actions to processing queue and process */
@@ -72,6 +107,7 @@ export class TemplateActionService extends TemplateInstanceService {
     actions: FlowTypes.TemplateRowAction[] = [],
     _triggeredBy?: FlowTypes.TemplateRow
   ) {
+    await this.ensurePublicServicesReady();
     const unhandledActions = await this.handleActionsInterceptor(actions);
     unhandledActions.forEach((action) => this.actionsQueue.push({ ...action, _triggeredBy }));
     const res = await this.processActionQueue();
@@ -110,7 +146,9 @@ export class TemplateActionService extends TemplateInstanceService {
       log_groupEnd();
     }
     // resolve once full queue processed
-    await this.actionsQueueProcessing$.pipe(takeWhile((v) => v === true)).toPromise();
+    await lastValueFrom(this.actionsQueueProcessing$.pipe(takeWhile((v) => v === true)), {
+      defaultValue: "No action queue",
+    });
     // once all actions have been processed re-render rows (ignore if running standalone without container)
     if (processedActions.length > 0 && this.container) {
       // assume rows might need re-evaluation if actions contain set_field or set_local
@@ -126,16 +164,25 @@ export class TemplateActionService extends TemplateInstanceService {
     }
   }
   private async processAction(action: FlowTypes.TemplateRowAction) {
-    let { action_id, args } = action;
-    args = args.map((arg) => {
+    action.args = action.args.map((arg) => {
       // HACK - update any self referenced values (see note from template.parser method)
-      if (arg === "this.value") {
-        arg = this.container?.templateRowMap[action._triggeredBy?._nested_name]?.value;
+      if (typeof arg === "string" && arg.startsWith("this.")) {
+        const selfField = arg.split(".")[1];
+        arg = this.container?.templateRowMap[action._triggeredBy?._nested_name]?.[selfField];
       }
       return arg;
     });
-    let [key, value] = args;
+    const { action_id, args } = action;
 
+    // Call any action registered with global handler
+    if (this.templateActionRegistry.has(action_id)) {
+      return this.templateActionRegistry.trigger(action);
+    }
+
+    // Handle specific actions
+    // TODO - Refactor action handlers that call global services to use registry instead
+    // NOTE - instance-specific handlers will likely need to remain in service (e.g. set_local)
+    let [key, value] = args;
     switch (action_id) {
       case "reset_app":
         return this.settingsService.resetApp();
@@ -160,20 +207,7 @@ export class TemplateActionService extends TemplateInstanceService {
           return this.templateService.runStandaloneTemplate(action.args[0], action.params);
         }
         return this.templateNavService.handlePopupAction(action, this.container);
-      case "set_field":
-        console.log("[SET FIELD]", key, value);
-        return this.templateFieldService.setField(key, value);
-      case "toggle_field":
-        const currentValue = this.templateFieldService.getField(key);
-        const toggleValue = !currentValue;
-        console.log("[SET FIELD]", key, toggleValue);
-        return this.templateFieldService.setField(key, `${toggleValue}`);
-      case "start_tour":
-        return this.tourService.startTour(key);
-      case "feedback": {
-        const [subtopic, ...payload] = args;
-        return this.eventService.publish({ topic: "FEEDBACK", subtopic, payload });
-      }
+
       case "track_event":
         this.analyticsService.trackEvent(key);
         break;
@@ -195,7 +229,14 @@ export class TemplateActionService extends TemplateInstanceService {
       case "google_auth":
         return await this.authService.signInWithGoogle();
       case "task_group_set_highlighted":
-        return this.taskService.setHighlightedTaskGroup(args[0]);
+        const { previousHighlightedTaskGroup, newHighlightedTaskGroup } =
+          this.taskService.setHighlightedTaskGroup(args[0]);
+        // HACK - reschedule campaign notifications when the highlighted task group has changed,
+        // in order to handle any that are conditional on the highlighted task group
+        if (previousHighlightedTaskGroup !== newHighlightedTaskGroup) {
+          this.campaignService.scheduleCampaignNotifications();
+        }
+        return;
       case "emit":
         const [emit_value, emit_data] = args;
         const container: TemplateContainerComponent = this.container;
@@ -256,8 +297,7 @@ export class TemplateActionService extends TemplateInstanceService {
         this.container?.emittedValue.next({ emit_value, emit_data });
         break;
       default:
-        console.warn("[W] No handler for action", { action_id, args });
-        return;
+        throw new Error(`No handler for action\n${action_id} : ${args.join(", ")}`);
     }
   }
 
@@ -317,7 +357,7 @@ export class TemplateActionService extends TemplateInstanceService {
     );
     // no match found
     if (matchedRows.length === 0) {
-      console.error(`row [${name}] not found`, this.container.templateRowService.templateRowMap);
+      console.error(`row "${name}" not found`, this.container.templateRowService.templateRowMap);
       return null;
     }
     // match found - return least nested (in case of duplicates)

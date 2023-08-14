@@ -61,6 +61,7 @@
               "name": "nav_template_list",
               "value": [
                 "survey_intro",
+                "demographics_teen_age",
                 "survey_question_ppf",
                 "survey_question_ppp",
                 "survey_question_pst",
