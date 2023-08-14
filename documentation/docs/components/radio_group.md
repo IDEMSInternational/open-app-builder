@@ -1,5 +1,7 @@
 # Radio Group
 
+A radio group allows users to select a single option from a list of mutually exclusive choices. It's typically used when there are multiple options available, but the user is allowed to select only one option at a time.
+
 ## Example
 
 | type       | name              | value                                 |parameter_list |
