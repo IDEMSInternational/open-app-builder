@@ -33,7 +33,7 @@ jobs:
 
   build:
     needs: prepare_build_inputs
-    uses: ./.github/workflows/app-build.yml
+    uses: ./.github/workflows/build.yml
     secrets: inherit
     with:
       build-flags: --configuration "production,preview"

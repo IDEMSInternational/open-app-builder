@@ -6,7 +6,7 @@ on:
       - master
 jobs:
   lint:
-    uses: ./.github/workflows/app-build.yml
+    uses: ./.github/workflows/build.yml
     secrets: inherit
     with:
       should-lint: true
