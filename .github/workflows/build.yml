@@ -27,6 +27,10 @@ on:
         description: Additional flags to pass to build command (e.g. base-href)
         type: string
         default: ""
+      deployment-name:
+        description: Target deployment name (for use in workflow dispatch)
+        type: string
+        default: ""
       include-tests:
         description: "Specify whether to include running workspace lint and test before build"
         type: boolean
@@ -62,8 +66,14 @@ jobs:
           echo "DEPLOYMENT_NAME=${GITHUB_BASE_REF##*/}" >> $GITHUB_ENV;
         shell: bash
 
+      - name: Set deployment target from input
+        if: ${{ inputs.deployment-name }}
+        run: |
+          echo "DEPLOYMENT_NAME=${{inputs.deployment-name}}" >> $GITHUB_ENV;
+        shell: bash
+
       - name: Set default deployment name
-        if: ${{ !steps.configure_build.outputs.DEPLOYMENT_NAME }}
+        if: ${{ !env.DEPLOYMENT_NAME }}
         run: |
           echo "DEPLOYMENT_NAME=${{env.DEPLOYMENT_NAME_DEFAULT}}" >> $GITHUB_ENV;
         shell: bash
