@@ -2,7 +2,7 @@
 #         Configuration
 ##################################################################################
 env:
-  DEPLOYMENT_NAME: "plh_global"
+  DEPLOYMENT_NAME_DEFAULT: "plh_global"
   FIREBASE_CONFIG_TS: ${{secrets.FIREBASE_CONFIG_TS}}
 
 
@@ -27,14 +27,6 @@ on:
         description: Additional flags to pass to build command (e.g. base-href)
         type: string
         default: ""
-      deployment-name:
-        description: Identifier of deployment to build
-        type: string
-        default: ""
-      git-sha:
-        description: "(optional) git sha to assign for use in error-handler post deployment"
-        type: string
-        default: ""
       include-tests:
         description: "Specify whether to include running workspace lint and test before build"
         type: boolean
@@ -46,36 +38,59 @@ on:
 
 
 jobs:
+  # Populate variables to use as inputs in next build job
+  # Pattern found in this question: https://github.com/actions/runner/issues/998#issue-817330769  
+  configure_build:
+    outputs:
+      DEPLOYMENT_NAME: ${{ steps.configure_build.outputs.DEPLOYMENT_NAME }}
+      GIT_SHA: ${{ steps.configure_build.outputs.GIT_SHA }}
+    runs-on: ubuntu-latest
+    steps:
+        # Extract deployment name as the slug of target PR branch via string operators, e.g. /deployment/plh_tz -> plh_tz
+        # https://www.linuxjournal.com/article/8919, https://github.com/greenbone/gsa/actions/runs/1277581365/workflow
+      - name: Set deployment target from PR target branch
+        if: $GITHUB_BASE_REF && $GITHUB_BASE_REF != "master"
+        run: |
+          echo "DEPLOYMENT_NAME=${GITHUB_BASE_REF##*/}" >> $GITHUB_OUTPUT;
+        shell: bash
+
+      - name: Set default deployment name
+        if: ${{ !steps.configure_build.outputs.DEPLOYMENT_NAME }}
+        run: |
+          echo "DEPLOYMENT_NAME=${GITHUB_BASE_REF##*/}" >> $GITHUB_OUTPUT;
+        shell: bash
+
+      # Populate git sha (6-digit short version)
+      - name: Set Git SHA for PR
+        if: $GITHUB_BASE_REF
+        run: |
+          echo "GIT_SHA=`echo ${{github.event.pull_request.head.sha}} | cut -c1-6`" >> $GITHUB_OUTPUT
+    
   build:
     runs-on: ubuntu-latest
+    needs: configure_build
     steps:
       - uses: actions/checkout@v3
         with:
-          lfs: true
-
-        # TODO - populate firebase as part of deployment set
-      - name: Populate firebaseConfig.ts
-        if: ${{env.FIREBASE_CONFIG_TS}}
-        run: echo $FIREBASE_CONFIG_TS > src/environments/firebaseConfig.ts
-
-      - name: Populate Git Sha
-        if: inputs.git-sha != ''
-        env:
-          GIT_SHA: ${{inputs.git-sha}}
-        run: echo "export const GIT_SHA = \"$GIT_SHA\";" > src/environments/sha.ts
-
-      - name: Set deployment name
-        if: ${{github.inputs.deployment-name}}
-        run: echo "DEPLOYMENT_NAME=${{github.inputs.deployment-name}} >> $GITHUB_ENV
+          lfs: true       
 
       - name: Setup Node
         uses: actions/setup-node@v3
         with:
           node-version: 18.x
 
-      # Node Modules - Manually restore any previous cache to speed install. 
+      - name: Set Env
+        run: |
+          echo "GIT_SHA=${{ needs.configure_build.outputs.GIT_SHA }}" >> $GITHUB_ENV
+          echo "DEPLOYMENT_NAME=${{ needs.configure_build.outputs.DEPLOYMENT_NAME }}" >> $GITHUB_ENV
+
+      #############################################################################
+      #         Node Modules
+      # Manually restore any previous cache to speed install
       # As immutable install will not change cache only save new cache if not hit
       # Uses fine-grained methods from https://github.com/actions/cache
+      #############################################################################
+
       - uses: actions/cache/restore@v3
         id: cache
         with:
@@ -91,6 +106,21 @@ jobs:
           path: ./.yarn/cache
           key: ${{ runner.os }}-node-modules-yarn-v1-${{ hashFiles('yarn.lock') }}
 
+      #############################################################################
+      #         Prebuild
+      # Populate variables and set deployment configuration as required
+      # Exact population varies depending on whether is PR, release, dispatch etc.
+      #############################################################################
+
+      # TODO - populate firebase as part of deployment set
+      - name: Populate firebaseConfig.ts
+        if: ${{env.FIREBASE_CONFIG_TS}}
+        run: echo $FIREBASE_CONFIG_TS > src/environments/firebaseConfig.ts
+
+      - name: Populate git sha
+        if: ${{env.GIT_SHA}}
+        run: echo "export const GIT_SHA = \"$GIT_SHA\";" > src/environments/sha.ts
+
       # Ensure required packages built to enable deployment set
       # TODO - should add implicit dep to scripts when NX added
       - name: Precompile
@@ -100,12 +130,16 @@ jobs:
         run: yarn workflow deployment set ${{env.DEPLOYMENT_NAME}}
 
 
-      # Optional lint and test step before build (used as part of lint test)
+      #############################################################################
+      #         Build
+      # Run optional tests before building and uploading final build as artifact
+      # for use in other actions
+      #############################################################################
+
       - name: Lint
         if: ${{inputs.include-tests}}
         run: yarn lint && yarn workspace api lint
 
-        # Optional lint and test step before build (used as part of lint test)
       - name: Test
         if: ${{inputs.include-tests}}
         run: yarn test:workspaces
@@ -113,13 +147,13 @@ jobs:
       - name: Build
         run: yarn build ${{inputs.build-flags}}
 
-        # Use github pages upload artifact action to compress and upload
       - name: Upload artifact
         if: ${{!inputs.skip-upload}}
         uses: actions/upload-pages-artifact@v1.0.8
         with:
           path: "www/"
           name: ${{inputs.artifact-name}}
+
 
 ##################################################################################
 #         Links
