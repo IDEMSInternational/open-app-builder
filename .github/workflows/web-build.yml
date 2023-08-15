@@ -24,11 +24,15 @@ on:
     #############################################################################
     inputs:
       artifact-name:
-        description: Name of the artifact to upload
+        description: Name of the artifact to upload (source `./www` folder)
         type: string
         default: www
       build-flags:
         description: Additional flags to pass to build command (e.g. base-href)
+        type: string
+        default: ""
+      branch:
+        description: Name of branch to build (defaults to event trigger sha)
         type: string
         default: ""
       deployment-name:
@@ -118,6 +122,7 @@ jobs:
       - uses: actions/checkout@v3
         with:
           lfs: true
+          ref: ${{inputs.branch}}
 
       - name: Setup Node
         uses: actions/setup-node@v3
