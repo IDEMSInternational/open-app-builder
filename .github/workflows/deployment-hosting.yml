@@ -22,7 +22,7 @@ jobs:
       build-flags: --configuration "production,glitchtip"
       # use branch name from PR target as default
       # https://docs.github.com/en/actions/learn-github-actions/variables#default-environment-variables
-      deployment: ${GITHUB_REF} 
+      deployment: ${{ github.ref }} 
 
   sourcemaps_upload:
     needs: build
