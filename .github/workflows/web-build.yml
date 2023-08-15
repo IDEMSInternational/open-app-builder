@@ -81,7 +81,7 @@ jobs:
         shell: bash
 
       - name: Set default deployment
-        if: ${{!inputs.deployment || inputs.deployment == 'master'}}
+        if: ${{!env.DEPLOYMENT_NAME}}
         run: |
           echo "DEPLOYMENT_NAME=$DEPLOYMENT_NAME_DEFAULT" >> $GITHUB_ENV;  
         shell: bash
