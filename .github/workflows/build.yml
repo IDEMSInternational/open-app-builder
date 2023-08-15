@@ -56,7 +56,7 @@ jobs:
         # Extract deployment name as the slug of target PR branch via string operators, e.g. /deployment/plh_tz -> plh_tz
         # https://www.linuxjournal.com/article/8919, https://github.com/greenbone/gsa/actions/runs/1277581365/workflow
       - name: Set deployment target from PR target branch
-        if: $GITHUB_BASE_REF && $GITHUB_BASE_REF != "master"
+        if: ${{github.base_ref && github.base_ref != "master"}}
         run: |
           echo "DEPLOYMENT_NAME=${GITHUB_BASE_REF##*/}" >> $GITHUB_OUTPUT;
         shell: bash
@@ -69,7 +69,7 @@ jobs:
 
       # Populate git sha (6-digit short version)
       - name: Set Git SHA for PR
-        if: $GITHUB_BASE_REF
+        if: ${{github.base_ref}}
         run: |
           echo "GIT_SHA=`echo ${{github.event.pull_request.head.sha}} | cut -c1-6`" >> $GITHUB_OUTPUT
     
