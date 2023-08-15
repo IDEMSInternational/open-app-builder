@@ -7,7 +7,7 @@ name: Android - Release to Google Play
 on:
   workflow_dispatch:
     inputs:
-      build-branch:
+      branch:
         required: true
         description: "Specify branch for deployment"
         default: "deployment/plh_za"
@@ -20,7 +20,10 @@ jobs:
     uses: ./.github/workflows/android-build.yml
     secrets: inherit
     with:
-      build-branch: ${{github.event.inputs.build-branch}}
+      branch: ${{github.event.inputs.branch}}
+      deployment: ${{github.event.inputs.branch}}
+      debug-apk: false
+      release-bundle: true
     
   release:
     needs: build
