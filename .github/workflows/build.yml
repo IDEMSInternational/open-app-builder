@@ -13,7 +13,7 @@ name: Build
 
 # Only keep one active build per ref (e.g. pr branch, push branch, triggering workflow ref)
 concurrency:
-  group: build-${{ github.ref }}
+  group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
 on:
@@ -49,8 +49,8 @@ jobs:
   # Pattern found in this question: https://github.com/actions/runner/issues/998#issue-817330769  
   configure_build:
     outputs:
-      DEPLOYMENT_NAME: ${{ steps.configure_build.outputs.DEPLOYMENT_NAME }}
-      GIT_SHA: ${{ steps.configure_build.outputs.GIT_SHA }}
+      DEPLOYMENT_NAME: ${{ steps.populate.outputs.DEPLOYMENT_NAME }}
+      GIT_SHA: ${{ steps.populate.outputs.GIT_SHA }}
     runs-on: ubuntu-latest
     steps:
         # Extract deployment name as the slug of target PR branch via string operators, e.g. /deployment/plh_tz -> plh_tz
@@ -74,6 +74,7 @@ jobs:
           echo "GIT_SHA=`echo ${{github.event.pull_request.head.sha}} | cut -c1-6`" >> $GITHUB_ENV
 
       - name: Populate Outputs
+        id: populate
         run: |
           echo "DEPLOYMENT_NAME=${{env.DEPLOYMENT_NAME}}" >> $GITHUB_OUTPUT;
           echo "GIT_SHA=${{env.GIT_SHA}}" >> $GITHUB_OUTPUT;
