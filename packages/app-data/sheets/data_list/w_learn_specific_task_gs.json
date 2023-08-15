@@ -2,6 +2,58 @@
   "flow_type": "data_list",
   "flow_name": "w_learn_specific_task_gs",
   "status": "released",
-  "rows": [],
+  "rows": [
+    {
+      "id": "read_learn_conflict",
+      "individual": true,
+      "together": true,
+      "priority": 11,
+      "story_id": "grief_conflict",
+      "has_single_task": false,
+      "title": "@global.story @global.part_connector @data.story.grief_conflict.title",
+      "_translations": {
+        "title": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "@global.story @global.part_connector @data.story.grief_conflict.title"
+        }
+      }
+    },
+    {
+      "id": "read_learn_support",
+      "individual": true,
+      "together": true,
+      "priority": 13,
+      "story_id": "grief_support",
+      "has_single_task": false,
+      "title": "@global.story @global.part_connector @data.story.grief_support.title",
+      "_translations": {
+        "title": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "@global.story @global.part_connector @data.story.grief_support.title"
+        }
+      }
+    },
+    {
+      "id": "learn_activity_ideas",
+      "individual": true,
+      "together": true,
+      "priority": 15,
+      "has_single_task": true,
+      "template": "w_learn_learn_activity_ideas",
+      "title": "@data.learn.activity_ideas.title",
+      "_translations": {
+        "title": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "@data.learn.activity_ideas.title"
+        }
+      }
+    }
+  ],
   "_xlsxPath": "global/data/workshop_data/workshop_task_groups.xlsx"
 }

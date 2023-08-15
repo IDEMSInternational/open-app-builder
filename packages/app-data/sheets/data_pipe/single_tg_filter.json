@@ -344,6 +344,42 @@
         "group ==\"read_grief_support\"",
         "together"
       ]
+    },
+    {
+      "operation": "filter",
+      "input_source": "w_learn_tasks",
+      "output_target": "tg_w_learn_read_learn_conflict_ind",
+      "args_list": [
+        "group ==\"read_learn_conflict\"",
+        "individual"
+      ]
+    },
+    {
+      "operation": "filter",
+      "input_source": "w_learn_tasks",
+      "output_target": "tg_w_learn_read_learn_conflict_tog",
+      "args_list": [
+        "group ==\"read_learn_conflict\"",
+        "together"
+      ]
+    },
+    {
+      "operation": "filter",
+      "input_source": "w_learn_tasks",
+      "output_target": "tg_w_learn_read_learn_support_ind",
+      "args_list": [
+        "group ==\"read_learn_support\"",
+        "individual"
+      ]
+    },
+    {
+      "operation": "filter",
+      "input_source": "w_learn_tasks",
+      "output_target": "tg_w_learn_read_learn_support_tog",
+      "args_list": [
+        "group ==\"read_learn_support\"",
+        "together"
+      ]
     }
   ],
   "_xlsxPath": "global/data/workshop_data/workshop_task_groups_data_pipes.xlsx"

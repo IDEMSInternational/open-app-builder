@@ -158,6 +158,63 @@
       "template": "w_learn_hp_review",
       "completed_field": "task_gp_w_learn_hp_review_completed",
       "completed": "@fields.task_gp_w_learn_hp_review_completed"
+    },
+    {
+      "id": "read_learn_conflict",
+      "individual": true,
+      "together": true,
+      "priority": 11,
+      "has_single_task": false,
+      "title": "@global.story @global.part_connector @data.story.grief_conflict.title",
+      "_translations": {
+        "title": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "@global.story @global.part_connector @data.story.grief_conflict.title"
+        }
+      },
+      "story_id": "grief_conflict",
+      "completed_field": "task_gp_w_learn_read_learn_conflict_completed",
+      "completed": "@fields.task_gp_w_learn_read_learn_conflict_completed"
+    },
+    {
+      "id": "read_learn_support",
+      "individual": true,
+      "together": true,
+      "priority": 13,
+      "has_single_task": false,
+      "title": "@global.story @global.part_connector @data.story.grief_support.title",
+      "_translations": {
+        "title": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "@global.story @global.part_connector @data.story.grief_support.title"
+        }
+      },
+      "story_id": "grief_support",
+      "completed_field": "task_gp_w_learn_read_learn_support_completed",
+      "completed": "@fields.task_gp_w_learn_read_learn_support_completed"
+    },
+    {
+      "id": "learn_activity_ideas",
+      "individual": true,
+      "together": true,
+      "priority": 15,
+      "has_single_task": true,
+      "title": "@data.learn.activity_ideas.title",
+      "_translations": {
+        "title": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "@data.learn.activity_ideas.title"
+        }
+      },
+      "template": "w_learn_learn_activity_ideas",
+      "completed_field": "task_gp_w_learn_learn_activity_ideas_completed",
+      "completed": "@fields.task_gp_w_learn_learn_activity_ideas_completed"
     }
   ]
 }
