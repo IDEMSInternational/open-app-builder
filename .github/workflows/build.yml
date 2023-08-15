@@ -102,7 +102,7 @@ jobs:
 
         # Use github pages upload artifact action to compress and upload
       - name: Upload artifact
-        if: !${{inputs.skip-upload}}
+        if: ${{!inputs.skip-upload}}
         uses: actions/upload-pages-artifact@v1.0.8
         with:
           path: "www/"
