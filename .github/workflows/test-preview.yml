@@ -2,6 +2,7 @@
 # Specifies deployment target based on pr target branch
 # Master -> plh_global
 # Deployment/{deployment_name} -> {deployment_name}
+
 name: Deployment Preview
 on:
   pull_request:
@@ -10,8 +11,6 @@ on:
       - deployment/*
       - master
 jobs:
- 
-
   build:
     uses: ./.github/workflows/build.yml
     secrets: inherit
@@ -33,15 +32,12 @@ jobs:
         run: |
           mkdir www
           tar -xf artifact.tar --directory www
-      - name: Echo outputs
-        run: |
-          echo ${{needs.build.outputs.DEPLOYMENT_NAME}} ${{needs.build.outputs.GIT_SHA}}
-      # - uses: FirebaseExtended/action-hosting-deploy@v0
-      #   with:
-      #     repoToken: "${{ secrets.GITHUB_TOKEN }}"
-      #     firebaseServiceAccount: "${{ secrets.FIREBASE_SERVICE_ACCOUNT_PLH_TEENS_APP1 }}"
-      #     projectId: plh-teens-app1
-      #     target: "${{env.DEPLOYMENT_NAME}}"
-      #     expires: 14d
-      #   env:
-      #     FIREBASE_CLI_PREVIEWS: hostingchannels
+      - uses: FirebaseExtended/action-hosting-deploy@v0
+        with:
+          repoToken: "${{ secrets.GITHUB_TOKEN }}"
+          firebaseServiceAccount: "${{ secrets.FIREBASE_SERVICE_ACCOUNT_PLH_TEENS_APP1 }}"
+          projectId: plh-teens-app1
+          target: "${{needs.build.outputs.DEPLOYMENT_NAME}}"
+          expires: 14d
+        env:
+          FIREBASE_CLI_PREVIEWS: hostingchannels
