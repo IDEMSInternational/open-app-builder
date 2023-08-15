@@ -60,7 +60,7 @@ jobs:
       
       # Fallback to default branch and deployment values (testing purposes)
       - name: Set Environment Deployment
-         if: ${{ !inputs.build-branch   }}
+        if: ${{ !inputs.build-branch   }}
         run: |
           echo "BUILD_BRANCH=$BUILD_BRANCH_DEFAULT" >> $GITHUB_ENV
           echo "DEPLOYMENT_NAME=$DEPLOYMENT_NAME_DEFAULT" >> $GITHUB_ENV
