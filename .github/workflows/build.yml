@@ -3,7 +3,7 @@
 ##################################################################################
 env:
   DEPLOYMENT_NAME: "plh_global"
-  FIREBASE_CONFIG: ${{secrets.FIREBASE_CONFIG}}
+  FIREBASE_CONFIG_TS: ${{secrets.FIREBASE_CONFIG_TS}}
 
 
 ##################################################################################
@@ -48,9 +48,9 @@ jobs:
           lfs: true
 
         # TODO - populate firebase as part of deployment set
-      - name: Populate Firebase Config
-        if: env.FIREBASE_CONFIG != ''
-        run: echo 'export const firebaseConfig = ${{env.FIREBASE_CONFIG}}' > src/environments/firebaseConfig.ts
+      - name: Populate firebaseConfig.ts
+        if: ${{env.FIREBASE_CONFIG_TS}}
+        run: echo $FIREBASE_CONFIG_TS > src/environments/firebaseConfig.ts
 
       - name: Populate Git Sha
         if: inputs.git-sha != ''
