@@ -29,6 +29,7 @@ on:
     inputs:
       build-branch:
         required: true
+        type: string
         description: "Specify branch for deployment"
         default: "deployment/plh_za"
 
