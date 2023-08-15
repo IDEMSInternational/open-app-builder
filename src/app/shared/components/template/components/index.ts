@@ -6,7 +6,7 @@ import { TemplateContainerComponent } from "../template-container.component";
 /***************************************************************************************
  * Template Components
  **************************************************************************************/
-import { AccordionSectionComponent } from "./layout/accordion_section";
+import { AccordionSectionComponent } from "./layout/accordion-section/accordion-section.component";
 import { AnimatedSectionComponent } from "./layout/animated_section";
 import { AnimatedSectionGroupComponent } from "./layout/animated_section_group";
 import { ComboBoxModalComponent } from "./combo-box/combo-box-modal/combo-box-modal.component";
