@@ -456,8 +456,8 @@
     },
     {
       "id": "safe_self",
-      "image_asset": "plh_images/habits/habit_safe.svg",
       "task_id": "task_habit_safe_self",
+      "image_asset": "plh_images/habits/habit_safe_self.svg",
       "lottie_asset": "plh_lottie/habits/habit_safe_self.json",
       "title": "Stay safe",
       "_translations": {
@@ -509,6 +509,7 @@
         "title": {
           "tz_sw": true
         },
+        "description": {},
         "mark_text": {
           "tz_sw": true
         },
@@ -523,6 +524,9 @@
         "title": {
           "eng": "Learn and have fun"
         },
+        "description": {
+          "eng": "Small actions make a big difference. Help your teen learn by making your daily activities fun and doing them together. This is the first step to helping your teen’s development and education."
+        },
         "mark_text": {
           "eng": "Every time you do a fun learning activity together, tap the @global.parent_point and celebrate your progress!"
         },
@@ -533,6 +537,7 @@
           "eng": "Did it? Tap it!"
         }
       },
+      "description": "Small actions make a big difference. Help your teen learn by making your daily activities fun and doing them together. This is the first step to helping your teen’s development and education.",
       "mark_text": "Every time you do a fun learning activity together, tap the @global.parent_point and celebrate your progress!",
       "in_text_title": "**Learn and have fun** @global.parent_point",
       "short_mark_text": "Did it? Tap it!"
