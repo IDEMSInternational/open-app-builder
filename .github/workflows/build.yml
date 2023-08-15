@@ -77,8 +77,8 @@ jobs:
       # As immutable install will not change cache only save new cache if not hit
       # Uses fine-grained methods from https://github.com/actions/cache
       - uses: actions/cache/restore@v3
+        id: cache
         with:
-          id: cache
           path: ./.yarn/cache
           key: ${{ runner.os }}-node-modules-yarn-v1-${{ hashFiles('yarn.lock') }}
           restore-keys: |
