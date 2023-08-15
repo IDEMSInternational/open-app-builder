@@ -36,9 +36,11 @@ on:
         type: string
         default: ""
       include-tests:
+        description: "Specify whether to include running workspace lint and test before build"
         type: boolean
         default: true
       skip-upload:
+        description: "Specify whether to skip uploading build artifact at end"
         type: boolean
         default: false
 
