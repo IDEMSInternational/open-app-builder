@@ -21,8 +21,7 @@ jobs:
     secrets: inherit
     with:
       build-branch: ${{github.event.inputs.build-branch}}
-      
-  
+    
   release:
     needs: build
     runs-on: ubuntu-latest
