@@ -78,16 +78,16 @@ jobs:
       - uses: actions/cache/restore@v3
         with:
           path: ./.yarn/cache
-          key: ${{ runner.os }}-node-modules-yarn-v1-${{ hashFiles('**/yarn.lock') }}
+          key: ${{ runner.os }}-node-modules-yarn-v1-${{ hashFiles('yarn.lock') }}
           restore-keys: |
             ${{ runner.os }}-node-modules-yarn-v1-
       - name: Install node modules
-        run: yarn install
+        run: yarn install --immutable
       - uses: actions/cache/save@v3
         if: always()
         with:
           path: ./.yarn/cache
-          key: ${{ runner.os }}-node-modules-yarn-v1-${{ hashFiles('**/yarn.lock') }}
+          key: ${{ runner.os }}-node-modules-yarn-v1-${{ hashFiles('yarn.lock') }}
 
       # Ensure required packages built to enable deployment set
       # TODO - should add implicit dep to scripts when NX added
