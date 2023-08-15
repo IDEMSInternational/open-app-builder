@@ -5,6 +5,13 @@
   </ion-button>
   <div class="section-container">
     <ng-container *ngFor="let childRow of _row.rows; let idx = index">
+      <!-- 
+        error was found here. the images wouldnt be presented in an animated way (which is good).
+        however, there was an error on the console reading: 
+          "ERROR TypeError: Cannot read property 'animation' of undefined"
+          "TypeError: undefined is not an object (evaluating 'this.slideParams[idx].animation'
+          , read as 'ctx_r0.slideParams[ctx_r2]')" So assumed that.
+      -->
       <section *ngIf="slideParams[idx].animation !== 'none'" [@fadeInOut]="displaySection[idx]">
         <plh-template-component [row]="childRow" [parent]="parent"></plh-template-component>
       </section>
