@@ -12,7 +12,7 @@ concurrency:
 on:
   workflow_dispatch:
     inputs:
-      build-branch:
+      branch:
         required: true
         description: "Specify branch for deployment"
         default: "deployment/plh_za"
@@ -22,4 +22,4 @@ jobs:
     uses: ./.github/workflows/android-build.yml
     secrets: inherit
     with:
-      build-branch: ${{github.event.inputs.build_branch}}
+      branch: ${{github.event.inputs.build_branch}}

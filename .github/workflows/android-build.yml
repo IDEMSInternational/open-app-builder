@@ -25,13 +25,21 @@ concurrency:
 on:
   workflow_call:
     inputs:
-      build-branch:
-        required: true
+      branch:
         type: string
         description: "Specify branch for deployment"
+        default: ""
       deployment:
         type: string
         description: "Specify name of deployment"
+      debug-apk:
+        type: boolean
+        description: "Specify whether to include debug apk"
+        default: true
+      release-bundle:
+        type: boolean
+        description: "Specify whether to include release aab"
+        default: true
 
 jobs:
 
@@ -43,7 +51,7 @@ jobs:
     uses: ./.github/workflows/web-build.yml
     secrets: inherit
     with:
-      branch: ${{ inputs.build-branch }}
+      branch: ${{ inputs.branch }}
       deployment: ${{ inputs.deployment }}
 
 #############################################################################
@@ -109,13 +117,28 @@ jobs:
           cache: "gradle"
       - name: Setup Android SDK
         uses: android-actions/setup-android@v2
+
+        # Debug APK
       - name: Build Android Debug APK
+        if: ${{inputs.debug-apk}}
         working-directory: android
         run: ./gradlew :app:assembleDebug
+
+      - name: Upload debug apk
+        if: ${{inputs.debug-apk}}
+        uses: actions/upload-artifact@v2
+        with:
+          name: debug_apk
+          path: android/app/build/outputs/apk/debug/app-debug.apk
+
+        # Signed Release Bundle
       - name: Build Android Release Bundle
+        if: ${{inputs.release-bundle}}
         working-directory: android
         run: ./gradlew :app:bundleRelease
+
       - name: Sign Android Release
+        if: ${{inputs.release-bundle}}
         id: sign_aab
         uses: r0adkll/sign-android-release@v1
         with:
@@ -124,16 +147,11 @@ jobs:
           alias: ${{ env.ALIAS }}
           keyStorePassword: ${{ env.KEY_STORE_PASSWORD }}
           keyPassword: ${{ env.KEY_PASSWORD }}
-      #############################################################################
-      #         Artifacts upload
-      #############################################################################
-      - name: Upload build artifacts
+          
+      - name: Upload release bundle
+        if: ${{inputs.release-bundle}}
         uses: actions/upload-artifact@v2
         with:
           name: release_bundle
           path: android/app/build/outputs/bundle/release/app-release.aab
-      - name: Upload build artifacts
-        uses: actions/upload-artifact@v2
-        with:
-          name: debug_apk
-          path: android/app/build/outputs/apk/debug/app-debug.apk
+     
