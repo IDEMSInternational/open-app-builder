@@ -4,8 +4,10 @@
     {{ skipText }}
   </ion-button>
   <div class="section-container">
-    <section *ngFor="let childRow of _row.rows; let idx = index" [@fadeInOut]="fadeSection[idx]">
-      <plh-template-component [row]="childRow" [parent]="parent"></plh-template-component>
-    </section>
+    <ng-container *ngFor="let childRow of _row.rows; let idx = index">
+      <section *ngIf="slideParams[idx].animation !== 'none'" [@fadeInOut]="displaySection[idx]">
+        <plh-template-component [row]="childRow" [parent]="parent"></plh-template-component>
+      </section>
+    </ng-container>
   </div>
 </div>
