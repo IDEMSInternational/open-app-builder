@@ -47,7 +47,6 @@ jobs:
 #         Build web
 #############################################################################
   web_build:
-    needs: configure_build
     uses: ./.github/workflows/web-build.yml
     secrets: inherit
     with:
