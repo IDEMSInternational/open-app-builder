@@ -13,7 +13,7 @@ name: Web Build
 
 # Only keep one active build per ref (e.g. pr branch, push branch, triggering workflow ref)
 concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
+  group: web-build-${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
 on:
