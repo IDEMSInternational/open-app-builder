@@ -73,17 +73,21 @@ jobs:
         with:
           node-version: 18.x
 
-      - name: Cache node modules
-        uses: actions/cache@v3
+      # Node Modules - Manually restore any previous cache to speed install. Ensure new install cached
+      # https://github.com/actions/cache/tree/main/save#always-save-cache
+      - uses: actions/cache/restore@v3
         with:
           path: ./.yarn/cache
-          # If cachebusting required (e.g. breaking yarn changes on update) change `v1` to another number
           key: ${{ runner.os }}-node-modules-yarn-v1-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
             ${{ runner.os }}-node-modules-yarn-v1-
-
       - name: Install node modules
         run: yarn install
+      - uses: actions/cache/save@v3
+        if: always()
+        with:
+          path: path/to/dependencies
+          key: ${{ runner.os }}-node-modules-yarn-v1-${{ hashFiles('**/yarn.lock') }}
 
       # Ensure required packages built to enable deployment set
       # TODO - should add implicit dep to scripts when NX added
@@ -95,9 +99,14 @@ jobs:
 
 
       # Optional lint and test step before build (used as part of lint test)
+      - name: Lint
+        if: ${{inputs.include-tests}}
+        run: yarn lint && yarn workspace api lint
+
+        # Optional lint and test step before build (used as part of lint test)
       - name: Test
         if: ${{inputs.include-tests}}
-        run: yarn lint && yarn workspace api lint && yarn test:workspaces
+        run: yarn test:workspaces
 
       - name: Build
         run: yarn build ${{inputs.build-flags}}
