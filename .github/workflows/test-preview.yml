@@ -41,19 +41,27 @@ jobs:
       git-sha: ${{ needs.prepare_build_inputs.outputs.SHA_SHORT }}
 
 
-  # deploy_preview:
-  #   needs: build
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - uses: actions/checkout@v3
-  #       with:
-  #         lfs: true      
-  #     - uses: FirebaseExtended/action-hosting-deploy@v0
-  #       with:
-  #         repoToken: "${{ secrets.GITHUB_TOKEN }}"
-  #         firebaseServiceAccount: "${{ secrets.FIREBASE_SERVICE_ACCOUNT_PLH_TEENS_APP1 }}"
-  #         projectId: plh-teens-app1
-  #         target: "${{env.DEPLOYMENT_NAME}}"
-  #         expires: 14d
-  #       env:
-  #         FIREBASE_CLI_PREVIEWS: hostingchannels
+  deploy_preview:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          lfs: true
+      - name: Download Build Artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: www
+      - name: Extract Build folder
+        run: |
+          mkdir www
+          tar -xf artifact.tar --directory www
+      - uses: FirebaseExtended/action-hosting-deploy@v0
+        with:
+          repoToken: "${{ secrets.GITHUB_TOKEN }}"
+          firebaseServiceAccount: "${{ secrets.FIREBASE_SERVICE_ACCOUNT_PLH_TEENS_APP1 }}"
+          projectId: plh-teens-app1
+          target: "${{env.DEPLOYMENT_NAME}}"
+          expires: 14d
+        env:
+          FIREBASE_CLI_PREVIEWS: hostingchannels
