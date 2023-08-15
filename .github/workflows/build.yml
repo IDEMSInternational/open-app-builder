@@ -73,10 +73,12 @@ jobs:
         with:
           node-version: 18.x
 
-      # Node Modules - Manually restore any previous cache to speed install. Ensure new install cached
-      # https://github.com/actions/cache/tree/main/save#always-save-cache
+      # Node Modules - Manually restore any previous cache to speed install. 
+      # As immutable install will not change cache only save new cache if not hit
+      # Uses fine-grained methods from https://github.com/actions/cache
       - uses: actions/cache/restore@v3
         with:
+          id: cache
           path: ./.yarn/cache
           key: ${{ runner.os }}-node-modules-yarn-v1-${{ hashFiles('yarn.lock') }}
           restore-keys: |
@@ -84,7 +86,7 @@ jobs:
       - name: Install node modules
         run: yarn install --immutable
       - uses: actions/cache/save@v3
-        if: always()
+        if: steps.cache.outputs.cache-hit != 'true'
         with:
           path: ./.yarn/cache
           key: ${{ runner.os }}-node-modules-yarn-v1-${{ hashFiles('yarn.lock') }}
