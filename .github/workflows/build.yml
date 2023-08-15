@@ -85,17 +85,17 @@ jobs:
         run: yarn scripts compile types
 
       - name: Set deployment
-        run: yarn workflow deployment set ${{inputs.deployment-name}}
+        run: yarn workflow deployment set ${{env.DEPLOYMENT_NAME}}
 
-      # - name: Build
-      #   run: yarn build ${{inputs.build-flags}}
+      - name: Build
+        run: yarn build ${{inputs.build-flags}}
 
-      #   # Use github pages upload artifact action to compress and upload
-      # - name: Upload artifact
-      #   uses: actions/upload-pages-artifact@v1.0.8
-      #   with:
-      #     path: "www/"
-      #     name: ${{inputs.artifact-name}}
+        # Use github pages upload artifact action to compress and upload
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v1.0.8
+        with:
+          path: "www/"
+          name: ${{inputs.artifact-name}}
 ##################################################################################
 #         Links
 ##################################################################################
