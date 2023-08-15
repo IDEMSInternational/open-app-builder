@@ -180,12 +180,13 @@ jobs:
       - name: Build
         run: yarn build ${{inputs.build-flags}}
 
+        # Use github pages upload artifact action to compress and upload
       - name: Upload artifact
         if: ${{!inputs.skip-upload}}
         uses: actions/upload-pages-artifact@v1.0.8
         with:
           path: "www/"
-          name: ${{inputs.artifact-name}}
+          name: www
 
 
 ##################################################################################
