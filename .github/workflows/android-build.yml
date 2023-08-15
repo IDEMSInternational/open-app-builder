@@ -2,6 +2,9 @@
 #         Configuration
 ##################################################################################
 env:
+  # Hardcoded default (testing purposes)
+  BUILD_BRANCH_DEFAULT: deployment/plh_za
+  # Secrets
   GOOGLE_SERVICES_JSON: ${{secrets.GOOGLE_SERVICES_JSON}}
   SIGNING_KEY: ${{secrets.SIGNING_KEY}}
   ALIAS: ${{secrets.ALIAS}}
@@ -19,6 +22,9 @@ concurrency:
   cancel-in-progress: true
 
 on:
+  push:
+    branches:
+      - refactor/gh-actions
   workflow_call:
     inputs:
       build-branch:
@@ -43,8 +49,14 @@ jobs:
           ref: "${{github.event.inputs.build-branch}}"
 
       - name: Set Build Branch
+        if: ${{ env.BUILD_BRANCH   }}
         run: |
           echo "BUILD_BRANCH=${{inputs.build-branch}}" >> $GITHUB_ENV
+
+      - name: Set Default Build Branch
+        if: ${{ !env.BUILD_BRANCH   }}
+        run: |
+          echo "BUILD_BRANCH=$BUILD_BRANCH_DEFAULT" >> $GITHUB_ENV
       
       # Extract deployment name as the slug of input build branch, e.g. /deployment/plh_tz -> plh_tz
       # https://stackoverflow.com/a/40524879/5693245
