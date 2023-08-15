@@ -86,7 +86,7 @@ jobs:
       - uses: actions/cache/save@v3
         if: always()
         with:
-          path: path/to/dependencies
+          path: ./.yarn/cache
           key: ${{ runner.os }}-node-modules-yarn-v1-${{ hashFiles('**/yarn.lock') }}
 
       # Ensure required packages built to enable deployment set
