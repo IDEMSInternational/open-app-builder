@@ -19,7 +19,7 @@ jobs:
     with:
       # use branch name from PR target as default
       # https://docs.github.com/en/actions/learn-github-actions/variables#default-environment-variables
-      deployment: ${{ github.ref }} 
+      deployment: ${{ github.base_ref }} 
       debug-apk: true
       release-bundle: false
    
