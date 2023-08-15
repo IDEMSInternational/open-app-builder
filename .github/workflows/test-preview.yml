@@ -10,26 +10,7 @@ on:
       - deployment/*
       - master
 jobs:
-  # Populate variables to use as inputs in next build job
-  # Pattern found in this question: https://github.com/actions/runner/issues/998#issue-817330769
-  prepare_build_inputs:
-    if: contains(github.event.pull_request.labels.*.name, 'Test - preview')
-    outputs:
-      DEPLOYMENT_NAME: ${{ steps.prepare_build_inputs.outputs.DEPLOYMENT_NAME }}
-      SHA_SHORT: ${{ steps.prepare_build_inputs.outputs.SHA_SHORT }}
-    runs-on: ubuntu-latest
-    steps:
-    # Extract deployment name as the slug of target PR branch via string operators, e.g. /deployment/plh_tz -> plh_tz
-    # https://www.linuxjournal.com/article/8919, https://github.com/greenbone/gsa/actions/runs/1277581365/workflow
-    # Populate git sha (6-digit short version)
-    - name: Prepare Build Inputs
-      run: |
-        if [ "$GITHUB_BASE_REF" = "master" ];                    \
-        then echo "DEPLOYMENT_NAME=plh_global" >> $GITHUB_OUTPUT;              \
-        else echo "DEPLOYMENT_NAME=${GITHUB_BASE_REF##*/}" >> $GITHUB_OUTPUT;  \
-        fi;
-        echo "SHA_SHORT=`echo ${{github.event.pull_request.head.sha}} | cut -c1-6`" >> $GITHUB_ENV
-      shell: bash
+ 
 
   build:
     needs: prepare_build_inputs
@@ -37,9 +18,6 @@ jobs:
     secrets: inherit
     with:
       build-flags: --configuration "production,preview"
-      deployment-name: ${{ needs.prepare_build_inputs.outputs.DEPLOYMENT_NAME }}
-      git-sha: ${{ needs.prepare_build_inputs.outputs.SHA_SHORT }}
-
 
   deploy_preview:
     needs: build
