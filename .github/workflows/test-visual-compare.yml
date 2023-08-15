@@ -1,56 +1,69 @@
 # Generate a set of screenshots for the current branch and compare against previously generated on master
 name: Test-Visual Compare Screenshots
+concurrency:
+  group: test-visual-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 on:
   pull_request:
     types: [labeled, synchronize]
     branches:
       - master
+env:
+  # TODO - replace with dedicated screenshots deployment
+  DEPLOYMENT: plh_global
+
 jobs:
-  test_visual_compare:
+  build:
     if: contains(github.event.pull_request.labels.*.name, 'Test - visual')
+    uses: ./.github/workflows/web-build.yml
+    secrets: inherit
+    with:
+      deployment: $DEPLOYMENT
+
+  test_visual_compare:
+    needs: build
     runs-on: ubuntu-latest
     timeout-minutes: 60
     steps:
+      # Setup
       - uses: actions/checkout@v3
-        with:
-          lfs: true
-      - name: Node ${{ matrix.node-version }}
+
+      - name: Setup Node
         uses: actions/setup-node@v3
         with:
-          node-version: 16
-          cache: 'yarn'
+          node-version: 18.x 
 
-      # Alt implementation to DL artifact using action instead of download script
+      - uses: actions/cache/restore@v3
+        id: cache
+        with:
+          path: ./.yarn/cache
+          key: ${{ runner.os }}-node-modules-yarn-v1-${{ hashFiles('yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-node-modules-yarn-v1-
 
-      # Download artifact populated from latest `test-visual-generate` workflow run on master branch
-      # - name: Download artifact
-      #   uses: dawidd6/action-download-artifact@v2
-      #   with:
-      #     github_token: ${{secrets.GITHUB_TOKEN}}
-      #     workflow: test-visual-generate.yml
-      #     workflow_conclusion: success
-      #     branch: master # TODO replace with master
-      #     name: screenshots-artifact
-      #     path: extract_here
-      # - name: Test
-      #   run: cat artifact/sha | grep $GITHUB_SHA
+      - name: Install node modules
+        run: yarn install --immutable
 
-      - name: Populate firebaseConfig.ts
-        env:
-          FIREBASE_CONFIG_TS: ${{ secrets.FIREBASE_CONFIG_TS }}
-        run: echo $FIREBASE_CONFIG_TS > src/environments/firebaseConfig.ts
-      - run: yarn install
-        # Currently all tests are run against global deployment as this contains debug sheets
-        # In the future we will want to move this to a custom deployment for testing purposes
-      - name: Set Deployment
-        run: yarn workflow deployment set "plh_global"
-        # Create a production build and serve via a local webserver
-        # HACK - as lifecycle_actions block template view simply remove them all
-      - name : Create production build
+      - name: Download Build Artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: www
+
+      - name: Extract Build folder
         run: |
-          yarn build
+          mkdir www
+          tar -xf artifact.tar --directory www
+
+        # HACK - as lifecycle_actions block template view simply remove them all
+        # TODO - review if still required (CC 2023-08-15)
+      - name : HACK - Remove lifecycle actions
+        run: |
           rm -R www/assets/app_data/sheets/data_list/lifecycle_actions
+
       # Serve production build locally and generate screenshots. Gracefully terminate server after completion
+      - name: Set Deployment
+        run: yarn workflow deployment set $DEPLOYMENT
+        
       - name: Start server and compare screenshots
         run: yarn workspace test-visual start compare --concurrency 5 --serve-www
       - name: Upload artifact
@@ -92,3 +105,19 @@ jobs:
 
             **Run Details**
             https://github.com/IDEMSInternational/parenting-app-ui/actions/runs/${{github.run_id}}
+
+
+      # Alt implementation to DL artifact using action instead of download script
+
+      # Download artifact populated from latest `test-visual-generate` workflow run on master branch
+      # - name: Download artifact
+      #   uses: dawidd6/action-download-artifact@v2
+      #   with:
+      #     github_token: ${{secrets.GITHUB_TOKEN}}
+      #     workflow: test-visual-generate.yml
+      #     workflow_conclusion: success
+      #     branch: master # TODO replace with master
+      #     name: screenshots-artifact
+      #     path: extract_here
+      # - name: Test
+      #   run: cat artifact/sha | grep $GITHUB_SHA
