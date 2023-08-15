@@ -35,6 +35,13 @@ on:
         description: "(optional) git sha to assign for use in error-handler post deployment"
         type: string
         default: ""
+      should-lint:
+        type: boolean
+        default: true
+      skip-upload:
+        type: boolean
+        default: false
+
 
 jobs:
   build:
@@ -84,11 +91,18 @@ jobs:
       - name: Set deployment
         run: yarn workflow deployment set ${{env.DEPLOYMENT_NAME}}
 
+
+      # Optional lint step before build (used as part of lint test)
+      - name: Lint
+        if: ${{inputs.should-lint}}
+        run:
+
       - name: Build
         run: yarn build ${{inputs.build-flags}}
 
         # Use github pages upload artifact action to compress and upload
       - name: Upload artifact
+        if: !${{inputs.skip-upload}}
         uses: actions/upload-pages-artifact@v1.0.8
         with:
           path: "www/"
