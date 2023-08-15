@@ -65,7 +65,7 @@ jobs:
       - name: Set default deployment name
         if: ${{ !steps.configure_build.outputs.DEPLOYMENT_NAME }}
         run: |
-          echo "DEPLOYMENT_NAME=${env.DEPLOYMENT_NAME_DEFAULT}" >> $GITHUB_ENV;
+          echo "DEPLOYMENT_NAME=${{env.DEPLOYMENT_NAME_DEFAULT}}" >> $GITHUB_ENV;
         shell: bash
 
       # Populate git sha (6-digit short version)
