@@ -35,7 +35,7 @@ on:
         description: "(optional) git sha to assign for use in error-handler post deployment"
         type: string
         default: ""
-      should-lint:
+      include-tests:
         type: boolean
         default: true
       skip-upload:
@@ -92,10 +92,10 @@ jobs:
         run: yarn workflow deployment set ${{env.DEPLOYMENT_NAME}}
 
 
-      # Optional lint step before build (used as part of lint test)
-      - name: Lint
-        if: ${{inputs.should-lint}}
-        run:
+      # Optional lint and test step before build (used as part of lint test)
+      - name: Test
+        if: ${{inputs.include-tests}}
+        run: yarn lint && yarn workspace api lint && yarn test:workspaces
 
       - name: Build
         run: yarn build ${{inputs.build-flags}}
