@@ -6,7 +6,7 @@ on:
       - master
 jobs:
   test:
-    uses: ./.github/workflows/build.yml
+    uses: ./.github/workflows/web-build.yml
     secrets: inherit
     with:
       include-tests: true
