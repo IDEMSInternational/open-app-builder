@@ -35,6 +35,13 @@ on:
         description: "Specify whether to skip uploading build artifact at end"
         type: boolean
         default: false
+    outputs:
+      DEPLOYMENT_NAME:
+        description: "Name of the deployment built"
+        value: ${{ jobs.configure_build.outputs.DEPLOYMENT_NAME }}
+      GIT_SHA:
+        description: "Git SHA of build head"
+        value: ${{ jobs.configure_build.outputs.GIT_SHA }}
 
 
 jobs:
