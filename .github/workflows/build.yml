@@ -18,6 +18,10 @@ concurrency:
 
 on:
   workflow_call:
+    #############################################################################
+    #         Inputs
+    # Optional variables to configure from parent workflow via workflow_call
+    #############################################################################
     inputs:
       artifact-name:
         description: Name of the artifact to upload
@@ -39,6 +43,10 @@ on:
         description: "Specify whether to skip uploading build artifact at end"
         type: boolean
         default: false
+    #############################################################################
+    #         Outputs
+    # Variables available to parent workflows following workflow_call
+    #############################################################################
     outputs:
       DEPLOYMENT_NAME:
         description: "Name of the deployment built"
