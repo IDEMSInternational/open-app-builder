@@ -9,7 +9,7 @@ env:
 ##################################################################################
 #         Main Code
 ##################################################################################
-name: Build
+name: Web Build
 
 # Only keep one active build per ref (e.g. pr branch, push branch, triggering workflow ref)
 concurrency:
@@ -32,13 +32,13 @@ on:
         type: string
         default: ""
       deployment-name:
-        description: Target deployment name (for use in workflow dispatch)
+        description: Target deployment name to set (defaults to env.DEPLOYMENT_NAME_DEFAULT)
         type: string
         default: ""
       include-tests:
         description: "Specify whether to include running workspace lint and test before build"
         type: boolean
-        default: true
+        default: false
       skip-upload:
         description: "Specify whether to skip uploading build artifact at end"
         type: boolean
@@ -55,7 +55,6 @@ on:
         description: "Git SHA of build head"
         value: ${{ jobs.configure_build.outputs.GIT_SHA }}
 
-
 jobs:
   # Populate variables to use as inputs in next build job
   # Pattern found in this question: https://github.com/actions/runner/issues/998#issue-817330769  
@@ -66,7 +65,15 @@ jobs:
       GIT_SHA: ${{ steps.populate.outputs.GIT_SHA }}
     runs-on: ubuntu-latest
     steps:
-        # Extract deployment name as the slug of target PR branch via string operators, e.g. /deployment/plh_tz -> plh_tz
+      #############################################################################
+      #         Deployment Name
+      # Different parent actions will set deployment in differnt ways, including:
+      #
+      # PR - suffix of target branch when not master (e.g. /deployment/plh_tz -> plh_tz )
+      # Input - direct input, usually from workflow dispatch
+      # Default - hardcoded default deployment
+      #############################################################################
+
         # https://www.linuxjournal.com/article/8919, https://github.com/greenbone/gsa/actions/runs/1277581365/workflow
       - name: Set deployment target from PR target branch
         if: ${{github.base_ref && github.base_ref != 'master'}}
@@ -74,7 +81,7 @@ jobs:
           echo "DEPLOYMENT_NAME=${GITHUB_BASE_REF##*/}" >> $GITHUB_ENV;
         shell: bash
 
-      - name: Set deployment target from input
+      - name: Set deployment target from direct input
         if: ${{ inputs.deployment-name }}
         run: |
           echo "DEPLOYMENT_NAME=${{inputs.deployment-name}}" >> $GITHUB_ENV;
@@ -86,7 +93,10 @@ jobs:
           echo "DEPLOYMENT_NAME=${{env.DEPLOYMENT_NAME_DEFAULT}}" >> $GITHUB_ENV;
         shell: bash
 
-      # Populate git sha (6-digit short version)
+      #############################################################################
+      #         Git SHA
+      # Populate git SHA for use in error logging
+      #############################################################################
       - name: Set Git SHA for PR
         if: ${{github.base_ref}}
         run: |
@@ -107,7 +117,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
         with:
-          lfs: true       
+          lfs: true
 
       - name: Setup Node
         uses: actions/setup-node@v3
