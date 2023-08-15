@@ -1,3 +1,6 @@
+# DEPRECATED CC-2023-08-15
+# Not currently in use, should look to add back in the future alongside better e2e strategy
+
 # Compile and run E2E tests using Cypress.
 name: Test E2E
 on:
