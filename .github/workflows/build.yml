@@ -47,6 +47,7 @@ on:
 jobs:
   # Populate variables to use as inputs in next build job
   # Pattern found in this question: https://github.com/actions/runner/issues/998#issue-817330769  
+  # Outputs here will also be made available to parent workflows via workflow_call outputs
   configure_build:
     outputs:
       DEPLOYMENT_NAME: ${{ steps.populate.outputs.DEPLOYMENT_NAME }}
@@ -64,7 +65,7 @@ jobs:
       - name: Set default deployment name
         if: ${{ !steps.configure_build.outputs.DEPLOYMENT_NAME }}
         run: |
-          echo "DEPLOYMENT_NAME=${GITHUB_BASE_REF##*/}" >> $GITHUB_ENV;
+          echo "DEPLOYMENT_NAME=${env.DEPLOYMENT_NAME_DEFAULT}" >> $GITHUB_ENV;
         shell: bash
 
       # Populate git sha (6-digit short version)
