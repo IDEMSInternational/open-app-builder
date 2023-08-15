@@ -17,9 +17,6 @@ concurrency:
   cancel-in-progress: true
 
 on:
-  push:
-    branches:
-      - refactor/gh-actions
   workflow_call:
     inputs:
       artifact-name:
@@ -96,6 +93,7 @@ jobs:
         with:
           path: "www/"
           name: ${{inputs.artifact-name}}
+
 ##################################################################################
 #         Links
 ##################################################################################
