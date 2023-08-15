@@ -58,20 +58,25 @@ jobs:
       - name: Set deployment target from PR target branch
         if: ${{github.base_ref && github.base_ref != 'master'}}
         run: |
-          echo "DEPLOYMENT_NAME=${GITHUB_BASE_REF##*/}" >> $GITHUB_OUTPUT;
+          echo "DEPLOYMENT_NAME=${GITHUB_BASE_REF##*/}" >> $GITHUB_ENV;
         shell: bash
 
       - name: Set default deployment name
         if: ${{ !steps.configure_build.outputs.DEPLOYMENT_NAME }}
         run: |
-          echo "DEPLOYMENT_NAME=${GITHUB_BASE_REF##*/}" >> $GITHUB_OUTPUT;
+          echo "DEPLOYMENT_NAME=${GITHUB_BASE_REF##*/}" >> $GITHUB_ENV;
         shell: bash
 
       # Populate git sha (6-digit short version)
       - name: Set Git SHA for PR
         if: ${{github.base_ref}}
         run: |
-          echo "GIT_SHA=`echo ${{github.event.pull_request.head.sha}} | cut -c1-6`" >> $GITHUB_OUTPUT
+          echo "GIT_SHA=`echo ${{github.event.pull_request.head.sha}} | cut -c1-6`" >> $GITHUB_ENV
+
+      - name: Populate Outputs
+        run: |
+          echo "DEPLOYMENT_NAME=${{env.DEPLOYMENT_NAME}}" >> $GITHUB_OUTPUT;
+          echo "GIT_SHA=${{env.GIT_SHA}}" >> $GITHUB_OUTPUT;
     
   build:
     runs-on: ubuntu-latest
