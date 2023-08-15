@@ -86,10 +86,14 @@ jobs:
         with:
           node-version: 18.x
 
+      # re-assign configuration variables for easier access within future steps
       - name: Set Env
         run: |
-          echo "GIT_SHA=${{ needs.configure_build.outputs.GIT_SHA }}" >> $GITHUB_ENV
-          echo "DEPLOYMENT_NAME=${{ needs.configure_build.outputs.DEPLOYMENT_NAME }}" >> $GITHUB_ENV
+          echo "GIT_SHA=$GIT_SHA" >> $GITHUB_ENV
+          echo "DEPLOYMENT_NAME=$DEPLOYMENT_NAME" >> $GITHUB_ENV
+        env:
+          DEPLOYMENT_NAME: ${{ needs.configure_build.outputs.DEPLOYMENT_NAME }}
+          GIT_SHA: ${{ needs.configure_build.outputs.GIT_SHA }}
 
       #############################################################################
       #         Node Modules
