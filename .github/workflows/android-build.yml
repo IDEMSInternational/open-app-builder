@@ -3,7 +3,8 @@
 ##################################################################################
 env:
   # Hardcoded default (testing purposes)
-  BUILD_BRANCH_DEFAULT: deployment/plh_za
+  BUILD_BRANCH_DEFAULT: master
+  DEPLOYMENT_NAME_DEFAULT: plh_global
   # Secrets
   GOOGLE_SERVICES_JSON: ${{secrets.GOOGLE_SERVICES_JSON}}
   SIGNING_KEY: ${{secrets.SIGNING_KEY}}
@@ -49,23 +50,20 @@ jobs:
           lfs: true
           ref: "${{github.event.inputs.build-branch}}"
 
-      - name: Set Build Branch
-        if: ${{ env.BUILD_BRANCH   }}
+      # When manually setting build branch infer deployment from suffix, e.g. /deployment/plh_tz -> plh_tz
+      # https://stackoverflow.com/a/40524879/5693245
+      - name: Set build branch and deployment
+        if:  ${{ inputs.build-branch   }}
         run: |
           echo "BUILD_BRANCH=${{inputs.build-branch}}" >> $GITHUB_ENV
-
-      - name: Set Default Build Branch
-        if: ${{ !env.BUILD_BRANCH   }}
+          echo "DEPLOYMENT_NAME=$(echo ${{inputs.build-branch}} | sed 's/.*\///')" >> $GITHUB_ENV;  
+      
+      # Fallback to default branch and deployment values (testing purposes)
+      - name: Set Environment Deployment
+         if: ${{ !inputs.build-branch   }}
         run: |
           echo "BUILD_BRANCH=$BUILD_BRANCH_DEFAULT" >> $GITHUB_ENV
-      
-      # Extract deployment name as the slug of input build branch, e.g. /deployment/plh_tz -> plh_tz
-      # https://stackoverflow.com/a/40524879/5693245
-      - name: Set Environment Deployment
-        run: |
-          echo ${{env.BUILD_BRANCH}} | sed 's/.*\///'
-          echo "DEPLOYMENT_NAME=$(echo ${{env.BUILD_BRANCH}} | sed 's/.*\///')" >> $GITHUB_ENV;  
-        shell: bash
+          echo "DEPLOYMENT_NAME=$DEPLOYMENT_NAME_DEFAULT" >> $GITHUB_ENV
 
       - name: Set Git SHA
         run: |
@@ -143,7 +141,7 @@ jobs:
       #############################################################################
         # Java version mapping: https://stackoverflow.com/a/47457251/5693245
       - name: Set up JDK 11
-        uses: actions/setup-java@v2
+        uses: actions/setup-java@v3
         with:
           distribution: "zulu"
           java-version: "11"
