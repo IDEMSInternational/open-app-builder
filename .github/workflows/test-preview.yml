@@ -17,6 +17,9 @@ jobs:
     secrets: inherit
     with:
       build-flags: --configuration "production,preview"
+      # use branch name from PR target as default
+      # https://docs.github.com/en/actions/learn-github-actions/variables#default-environment-variables
+      deployment: ${GITHUB_BASE_REF} 
 
   deploy_preview:
     needs: build

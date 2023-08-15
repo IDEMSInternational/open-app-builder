@@ -23,10 +23,6 @@ on:
     # Optional variables to configure from parent workflow via workflow_call
     #############################################################################
     inputs:
-      artifact-name:
-        description: Name of the artifact to upload (source `./www` folder)
-        type: string
-        default: www
       build-flags:
         description: Additional flags to pass to build command (e.g. base-href)
         type: string
@@ -35,8 +31,8 @@ on:
         description: Name of branch to build (defaults to event trigger sha)
         type: string
         default: ""
-      deployment-name:
-        description: Target deployment name to set (defaults to env.DEPLOYMENT_NAME_DEFAULT)
+      deployment:
+        description: Target deployment name. If branch name provided will take suffix (`prod/my_deployment` -> `my_deployment`)
         type: string
         default: ""
       include-tests:
@@ -69,42 +65,34 @@ jobs:
       GIT_SHA: ${{ steps.populate.outputs.GIT_SHA }}
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v3
+        with:
+          ref: ${{inputs.branch}}
+
       #############################################################################
       #         Deployment Name
-      # Different parent actions will set deployment in differnt ways, including:
-      #
-      # PR - suffix of target branch when not master (e.g. /deployment/plh_tz -> plh_tz )
-      # Input - direct input, usually from workflow dispatch
-      # Default - hardcoded default deployment
       #############################################################################
-
-        # https://www.linuxjournal.com/article/8919, https://github.com/greenbone/gsa/actions/runs/1277581365/workflow
-      - name: Set deployment target from PR target branch
-        if: ${{github.base_ref && github.base_ref != 'master'}}
+      # Set deployment from input, replacing branch slash name with suffix (`prod/my_deployment` -> `my_deployment`)
+      # https://stackoverflow.com/a/40524879
+      - name: Set deployment
+        if: ${{inputs.deployment && inputs.deployment != 'master'}}
         run: |
-          echo "DEPLOYMENT_NAME=${GITHUB_BASE_REF##*/}" >> $GITHUB_ENV;
+          echo "DEPLOYMENT_NAME=$(echo ${{inputs.deployment}} | sed 's/.*\///')" >> $GITHUB_ENV;  
         shell: bash
 
-      - name: Set deployment target from direct input
-        if: ${{ inputs.deployment-name }}
+      - name: Set default deployment
+        if: ${{!inputs.deployment || inputs.deployment == 'master'}}
         run: |
-          echo "DEPLOYMENT_NAME=${{inputs.deployment-name}}" >> $GITHUB_ENV;
-        shell: bash
-
-      - name: Set default deployment name
-        if: ${{ !env.DEPLOYMENT_NAME }}
-        run: |
-          echo "DEPLOYMENT_NAME=${{env.DEPLOYMENT_NAME_DEFAULT}}" >> $GITHUB_ENV;
+          echo "DEPLOYMENT_NAME=$DEPLOYMENT_NAME_DEFAULT >> $GITHUB_ENV;  
         shell: bash
 
       #############################################################################
       #         Git SHA
       # Populate git SHA for use in error logging
       #############################################################################
-      - name: Set Git SHA for PR
-        if: ${{github.base_ref}}
+      - name: Set Git SHA
         run: |
-          echo "GIT_SHA=`echo ${{github.event.pull_request.head.sha}} | cut -c1-6`" >> $GITHUB_ENV
+          echo "GIT_SHA=$(git rev-parse --short=6 HEAD)" >> $GITHUB_ENV
 
       - name: Populate Outputs
         id: populate
@@ -206,3 +194,14 @@ jobs:
 
 # Create a reusable workflow to build deployment app
 # https://colinsalmcorner.com/musings-on-reusable-workflows/
+
+##################################################################################
+#         Notes
+##################################################################################
+# Alternative methods previously used:
+
+# Git SHA
+# GIT_SHA=`echo ${{github.event.pull_request.head.sha}} | cut -c1-6`
+
+# Deployment name (https://www.linuxjournal.com/article/8919)
+# DEPLOYMENT_NAME=${GITHUB_BASE_REF##*/}

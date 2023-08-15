@@ -23,58 +23,17 @@ concurrency:
   cancel-in-progress: true
 
 on:
-  push:
-    branches:
-      - refactor/gh-actions
   workflow_call:
     inputs:
       build-branch:
         required: true
         type: string
         description: "Specify branch for deployment"
-        default: "deployment/plh_za"
+      deployment:
+        type: string
+        description: "Specify name of deployment"
 
 jobs:
-#############################################################################
-#         Configure build
-#############################################################################
-  configure_build:
-    outputs:
-      BUILD_BRANCH: ${{ steps.populate.outputs.BUILD_BRANCH }}
-      DEPLOYMENT_NAME: ${{ steps.populate.outputs.DEPLOYMENT_NAME }}
-      GIT_SHA: ${{ steps.populate.outputs.GIT_SHA }}
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-        with:
-          lfs: true
-          ref: "${{github.event.inputs.build-branch}}"
-
-      # When manually setting build branch infer deployment from suffix, e.g. /deployment/plh_tz -> plh_tz
-      # https://stackoverflow.com/a/40524879/5693245
-      - name: Set build branch and deployment
-        if:  ${{ inputs.build-branch   }}
-        run: |
-          echo "BUILD_BRANCH=${{inputs.build-branch}}" >> $GITHUB_ENV
-          echo "DEPLOYMENT_NAME=$(echo ${{inputs.build-branch}} | sed 's/.*\///')" >> $GITHUB_ENV;  
-      
-      # Fallback to default branch and deployment values (testing purposes)
-      - name: Set Environment Deployment
-        if: ${{ !inputs.build-branch   }}
-        run: |
-          echo "BUILD_BRANCH=$BUILD_BRANCH_DEFAULT" >> $GITHUB_ENV
-          echo "DEPLOYMENT_NAME=$DEPLOYMENT_NAME_DEFAULT" >> $GITHUB_ENV
-
-      - name: Set Git SHA
-        run: |
-          echo "SHA_SHORT=$(git rev-parse --short=6 HEAD)" >> $GITHUB_ENV
-
-      - name: Populate Outputs
-        id: populate
-        run: |
-          echo "BUILD_BRANCH=${{env.BUILD_BRANCH}}" >> $GITHUB_OUTPUT;
-          echo "DEPLOYMENT_NAME=${{env.DEPLOYMENT_NAME}}" >> $GITHUB_OUTPUT;
-          echo "GIT_SHA=${{env.GIT_SHA}}" >> $GITHUB_OUTPUT;
 
 #############################################################################
 #         Build web
@@ -84,8 +43,8 @@ jobs:
     uses: ./.github/workflows/web-build.yml
     secrets: inherit
     with:
-      branch: ${{ needs.configure_build.outputs.BUILD_BRANCH }}
-      deployment-name: ${{ needs.configure_build.outputs.DEPLOYMENT_NAME }}
+      branch: ${{ inputs.build-branch }}
+      deployment: ${{ inputs.deployment }}
 
 #############################################################################
 #         Build android
@@ -94,12 +53,13 @@ jobs:
     runs-on: ubuntu-latest
     needs: web_build
     env:
-      DEPLOYMENT_NAME: ${{ needs.configure_build.outputs.DEPLOYMENT_NAME }}
-      GIT_SHA: ${{ needs.configure_build.outputs.GIT_SHA }}
+      DEPLOYMENT_NAME: ${{ needs.web_build.outputs.DEPLOYMENT_NAME }}
+      GIT_SHA: ${{ needs.web_build.outputs.GIT_SHA }}
     steps:
       - uses: actions/checkout@v3
         with:
           lfs: true
+          ref:  ${{ inputs.BUILD_BRANCH }}
       #############################################################################
       #         Configure
       # Setup node same way as web build to allow calling `npx cap sync` command
