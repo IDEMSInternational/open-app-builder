@@ -14,7 +14,6 @@
     "start": "yarn prepare && concurrently --kill-others --raw \"yarn data-models:serve\" \"ng serve --open\"",
     "start:local": "yarn prepare && concurrently --kill-others --raw  \"ng serve --open\" \"yarn workflow sync_local\"",
     "prepare": "node .husky/prepare.js && yarn scripts compile types && yarn workflow populate_src_assets",
-    "postinstall": "yarn prepare",
     "build": "yarn prepare && ng build --configuration=production",
     "data-models:serve": "yarn workspace data-models serve",
     "compodoc:generate": "compodoc --tsconfig tsconfig.docs.json --theme material --assetsFolder 'documentation/docs/assets' --output documentation/docs/generated --disablePrivate --disableLifeCycleHooks",
