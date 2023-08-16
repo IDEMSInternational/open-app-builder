@@ -1,0 +1,85 @@
+{
+  "flow_name": "w_learn_learn_activity_ideas_cook",
+  "flow_subtype": "generated",
+  "flow_type": "template",
+  "rows": [
+    {
+      "type": "template",
+      "name": "box_image",
+      "value": "box_image",
+      "action_list": [
+        {
+          "trigger": "completed",
+          "action_id": "emit",
+          "args": [
+            "completed"
+          ],
+          "_raw": "completed | emit:completed",
+          "_cleaned": "completed | emit:completed"
+        },
+        {
+          "trigger": "uncompleted",
+          "action_id": "emit",
+          "args": [
+            "uncompleted"
+          ],
+          "_raw": "uncompleted | emit:uncompleted",
+          "_cleaned": "uncompleted | emit:uncompleted"
+        }
+      ],
+      "rows": [
+        {
+          "name": "title",
+          "value": "Cooking or cleaning",
+          "_translations": {
+            "value": {}
+          },
+          "hidden": false,
+          "type": "set_variable",
+          "_nested_name": "box_image.title"
+        },
+        {
+          "name": "image_src",
+          "value": "@data.learn_play.cook.image_asset",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "box_image.image_src",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@data.learn_play.cook.image_asset",
+                "matchedExpression": "@data.learn_play.cook.image_asset",
+                "type": "data",
+                "fieldName": "learn_play"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@data.learn_play.cook.image_asset": [
+              "value"
+            ]
+          }
+        },
+        {
+          "name": "text",
+          "value": "There are always things that need to be done at home. This is a great way to spend time together. Ask your teen to help you with the cooking or cleaning. You can talk to each other and teach them why doing these things is important.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "box_image.text"
+        },
+        {
+          "type": "nested_properties",
+          "name": "nav_buttons",
+          "hidden": true,
+          "rows": [],
+          "_nested_name": "box_image.nav_buttons"
+        }
+      ],
+      "_nested_name": "box_image"
+    }
+  ]
+}

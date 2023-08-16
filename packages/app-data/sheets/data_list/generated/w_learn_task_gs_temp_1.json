@@ -168,16 +168,16 @@
       "together": true,
       "priority": 11,
       "has_single_task": false,
-      "title": "@global.story @global.part_connector @data.story.grief_conflict.title",
+      "title": "@global.story @global.part_connector @data.story.learn_conflict.title",
       "_translations": {
         "title": {}
       },
       "_translatedFields": {
         "title": {
-          "eng": "@global.story @global.part_connector @data.story.grief_conflict.title"
+          "eng": "@global.story @global.part_connector @data.story.learn_conflict.title"
         }
       },
-      "story_id": "grief_conflict"
+      "story_id": "learn_conflict"
     },
     {
       "id": "read_learn_support",
@@ -185,16 +185,16 @@
       "together": true,
       "priority": 13,
       "has_single_task": false,
-      "title": "@global.story @global.part_connector @data.story.grief_support.title",
+      "title": "@global.story @global.part_connector @data.story.learn_support.title",
       "_translations": {
         "title": {}
       },
       "_translatedFields": {
         "title": {
-          "eng": "@global.story @global.part_connector @data.story.grief_support.title"
+          "eng": "@global.story @global.part_connector @data.story.learn_support.title"
         }
       },
-      "story_id": "grief_support"
+      "story_id": "learn_support"
     },
     {
       "id": "learn_activity_ideas",

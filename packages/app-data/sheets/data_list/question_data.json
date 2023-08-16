@@ -663,58 +663,149 @@
       "reply_all": "Everyone copes with grief differently. We can help each other by accepting each other’s feelings and coming up with ideas together to support each other."
     },
     {
-      "reply_1_icon_asset": "She was shocked that Neema had condoms",
-      "reply_2_image_asset": "She was scared Neema was already having sex",
-      "reply_2_icon_asset": "[once user selects answer] When we are angry or scared, we can say or do things that hurt others and harm our relationships.",
-      "reply_3_image_asset": "How will this affect Bibi’s relationship with Neema?",
-      "reply_3_icon_asset": "Neema may not ask Bibi questions or advice if she has a problem",
-      "reply_4_image_asset": "[once user selects answer] Yes, all of these are true. After this argument, Neema is likely to look for information and advice from other places (also if something goes wrong with a relationship or in her life).",
-      "reply_1": "Why do you think Bibi reacted the way she did?",
+      "id": "learn_conflict_cause",
+      "workshop": "w_learn",
+      "question_text": "Why did @global.w_learn_teen_girl_1 react this way?",
       "_translations": {
-        "reply_1": {
-          "tz_sw": true
-        },
-        "option_2": {
-          "tz_sw": true
-        },
-        "reply_2": {
-          "tz_sw": true
-        },
-        "reply_3": {
-          "tz_sw": true
-        },
-        "option_4": {
-          "tz_sw": true
-        },
-        "reply_4": {
-          "tz_sw": true
-        }
+        "question_text": {},
+        "option_1": {},
+        "option_2": {},
+        "option_3": {},
+        "reply_all": {}
       },
       "_translatedFields": {
-        "reply_1": {
-          "eng": "Why do you think Bibi reacted the way she did?"
+        "question_text": {
+          "eng": "Why did @global.w_learn_teen_girl_1 react this way?"
+        },
+        "option_1": {
+          "eng": "@global.w_learn_teen_girl_1 was upset that her mother did not see how she helped at home."
         },
         "option_2": {
-          "eng": "She felt disrespected and angry at Neema"
+          "eng": "@global.w_learn_teen_girl_1 was not able to talk to her mother about her hard day at school."
         },
-        "reply_2": {
-          "eng": "She felt ashamed to talk about sex"
+        "option_3": {
+          "eng": "@global.w_learn_female_caregiver_1 blamed @global.w_learn_teen_girl_1 for the dirty house."
         },
-        "reply_3": {
-          "eng": "Neema may not trust Bibi in the future"
-        },
-        "option_4": {
-          "eng": "Neema may make bad decisions out of anger"
-        },
-        "reply_4": {
-          "eng": "She may get into situations that are not healthy or safe, and may not want to talk to Bibi about it even if she has questions or needs help. She may feel worried that Bibi will judge her choices or feel ashamed of her."
+        "reply_all": {
+          "eng": "Yes, all of these are true. @global.w_learn_teen_girl_1 reacted this way because her mother did not talk to her about her day, blamed her for the dirty house and did not thank @global.w_learn_teen_girl_1 for helping at home."
         }
       },
-      "option_2": "She felt disrespected and angry at Neema",
-      "reply_2": "She felt ashamed to talk about sex",
-      "reply_3": "Neema may not trust Bibi in the future",
-      "option_4": "Neema may make bad decisions out of anger",
-      "reply_4": "She may get into situations that are not healthy or safe, and may not want to talk to Bibi about it even if she has questions or needs help. She may feel worried that Bibi will judge her choices or feel ashamed of her."
+      "option_1": "@global.w_learn_teen_girl_1 was upset that her mother did not see how she helped at home.",
+      "option_2": "@global.w_learn_teen_girl_1 was not able to talk to her mother about her hard day at school.",
+      "option_3": "@global.w_learn_female_caregiver_1 blamed @global.w_learn_teen_girl_1 for the dirty house.",
+      "reply_all": "Yes, all of these are true. @global.w_learn_teen_girl_1 reacted this way because her mother did not talk to her about her day, blamed her for the dirty house and did not thank @global.w_learn_teen_girl_1 for helping at home."
+    },
+    {
+      "id": "learn_conflict_consequence",
+      "workshop": "w_learn",
+      "question_text": "How will this affect the relationship between @global.w_learn_female_caregiver_1 and @global.w_learn_teen_girl_1?",
+      "_translations": {
+        "question_text": {},
+        "option_1": {},
+        "option_2": {},
+        "option_3": {},
+        "option_4": {},
+        "reply_all": {}
+      },
+      "_translatedFields": {
+        "question_text": {
+          "eng": "How will this affect the relationship between @global.w_learn_female_caregiver_1 and @global.w_learn_teen_girl_1?"
+        },
+        "option_1": {
+          "eng": "@global.w_learn_teen_girl_1 will not want to help with house chores, as her mother did not appreciate it."
+        },
+        "option_2": {
+          "eng": "@global.w_learn_teen_girl_1 will not want to speak to her mother about her problems because she was not given a chance to talk about it."
+        },
+        "option_3": {
+          "eng": "@global.w_learn_teen_girl_1 will be angry at her mother and not listen to her in the future."
+        },
+        "option_4": {
+          "eng": "@global.w_learn_teen_girl_1 will treat her siblings the same way that her mother treats her."
+        },
+        "reply_all": {
+          "eng": "These are all true. @global.w_learn_teen_girl_1 will not want to help around the house or speak to her mother about her problems because her mother does not thank her or listen to her. @global.w_learn_teen_girl_1 will also treat her siblings the same way because that is what she has learnt from her mother."
+        }
+      },
+      "option_1": "@global.w_learn_teen_girl_1 will not want to help with house chores, as her mother did not appreciate it.",
+      "option_2": "@global.w_learn_teen_girl_1 will not want to speak to her mother about her problems because she was not given a chance to talk about it.",
+      "option_3": "@global.w_learn_teen_girl_1 will be angry at her mother and not listen to her in the future.",
+      "option_4": "@global.w_learn_teen_girl_1 will treat her siblings the same way that her mother treats her.",
+      "reply_all": "These are all true. @global.w_learn_teen_girl_1 will not want to help around the house or speak to her mother about her problems because her mother does not thank her or listen to her. @global.w_learn_teen_girl_1 will also treat her siblings the same way because that is what she has learnt from her mother."
+    },
+    {
+      "id": "learn_support_before",
+      "workshop": "w_learn",
+      "question_text": "How did @global.w_learn_teen_girl_1 and @global.w_learn_female_caregiver_1 feel before they got to speak to each other?",
+      "_translations": {
+        "question_text": {},
+        "reply_all": {}
+      },
+      "_translatedFields": {
+        "question_text": {
+          "eng": "How did @global.w_learn_teen_girl_1 and @global.w_learn_female_caregiver_1 feel before they got to speak to each other?"
+        },
+        "reply_all": {
+          "eng": "Yes, both of them had long, hard days."
+        }
+      },
+      "reply_all": "Yes, both of them had long, hard days."
+    },
+    {
+      "id": "learn_support_during",
+      "workshop": "w_learn",
+      "question_text": "What did @global.w_learn_female_caregiver_1 do differently this time?",
+      "_translations": {
+        "question_text": {},
+        "option_1": {},
+        "option_2": {},
+        "option_3": {},
+        "option_4": {},
+        "reply_all": {}
+      },
+      "_translatedFields": {
+        "question_text": {
+          "eng": "What did @global.w_learn_female_caregiver_1 do differently this time?"
+        },
+        "option_1": {
+          "eng": "She took a few minutes for herself to relax and get settled at home before talking with @global.w_learn_teen_girl_1."
+        },
+        "option_2": {
+          "eng": "She asked @global.w_learn_teen_girl_1 to help with cooking, so she could get dinner done AND have time to talk."
+        },
+        "option_3": {
+          "eng": "She praised @global.w_learn_teen_girl_1 for doing specific household chores."
+        },
+        "option_4": {
+          "eng": "She showed @global.w_learn_teen_girl_1 that she is available to talk and listen."
+        },
+        "reply_all": {
+          "eng": "Yes, all of these are true."
+        }
+      },
+      "option_1": "She took a few minutes for herself to relax and get settled at home before talking with @global.w_learn_teen_girl_1.",
+      "option_2": "She asked @global.w_learn_teen_girl_1 to help with cooking, so she could get dinner done AND have time to talk.",
+      "option_3": "She praised @global.w_learn_teen_girl_1 for doing specific household chores.",
+      "option_4": "She showed @global.w_learn_teen_girl_1 that she is available to talk and listen.",
+      "reply_all": "Yes, all of these are true."
+    },
+    {
+      "id": "learn_support_after",
+      "workshop": "w_learn",
+      "question_text": "How did @global.w_learn_teen_girl_1 and her mother feel afterwards?",
+      "_translations": {
+        "question_text": {},
+        "reply_all": {}
+      },
+      "_translatedFields": {
+        "question_text": {
+          "eng": "How did @global.w_learn_teen_girl_1 and her mother feel afterwards?"
+        },
+        "reply_all": {
+          "eng": "Yes, taking a moment to talk while doing house chores helped them both!\n\nBy taking time for yourself, asking your teen to do a house chore or activity with you, and giving them space to talk to you, you are creating a safe space for them to learn with you.\n\nThis is an easy way to build a healthy relationship with your teen. This will help them learn important things they do not learn at school."
+        }
+      },
+      "reply_all": "Yes, taking a moment to talk while doing house chores helped them both!\n\nBy taking time for yourself, asking your teen to do a house chore or activity with you, and giving them space to talk to you, you are creating a safe space for them to learn with you.\n\nThis is an easy way to build a healthy relationship with your teen. This will help them learn important things they do not learn at school."
     }
   ],
   "_xlsxPath": "global/data/workshop_data/workshop_data_list.xlsx"

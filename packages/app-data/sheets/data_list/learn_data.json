@@ -121,6 +121,30 @@
         }
       },
       "intro_text": "When we are going through a difficult time, it can help to talk about or write down how we feel. \n\nLet's practice naming feelings."
+    },
+    {
+      "id": "activity_ideas",
+      "workshop": "w_learn",
+      "outro_habit": "play",
+      "outro_text": "There are more ideas on activities you can do together in the @global.parent_centre. \n\nDo not worry if things do not go well the first time you try these activities with your teen. The most important thing is spending time with each other and learning together.",
+      "type": "scenario",
+      "part_1": "tell_stories",
+      "part_2": "walk",
+      "part_3": "cook",
+      "title": "What could I do?",
+      "_translations": {
+        "title": {},
+        "intro_text": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "What could I do?"
+        },
+        "intro_text": {
+          "eng": "Let’s think of activities you can do with your teen to help them learn."
+        }
+      },
+      "intro_text": "Let’s think of activities you can do with your teen to help them learn."
     }
   ],
   "_xlsxPath": "global/data/workshop_data/workshop_data_list.xlsx"
