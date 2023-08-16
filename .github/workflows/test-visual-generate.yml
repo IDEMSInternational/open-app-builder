@@ -6,7 +6,7 @@ on:
     branches:
       - master
 concurrency:
-  group: test-visual-${{ github.workflow }}-${{ github.ref }}
+  group: test-visual-generate-${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
