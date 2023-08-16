@@ -3,8 +3,7 @@
   "version": "2.0.0",
   "description": "",
   "bin": {
-    "idapp": "./build/commands.js",
-    "idems-app-scripts": "./build/commands.js"
+    "app-scripts": "./bin/app-scripts"
   },
   "main": "src/commands/index.ts",
   "scripts": {
@@ -12,7 +11,8 @@
     "dev": "ts-node-dev --respawn --watch src/**/*.ts src/commands/index.ts",
     "test": "jasmine-ts --config=jasmine.json",
     "test:watch": "nodemon --ext ts --exec 'jasmine-ts --config=jasmine.json'",
-    "build": "esbuild src/commands/index.ts --bundle --platform=node --target=node16 --outfile=build/commands.js",
+    "build": "ts-node build.ts",
+    "exec": "node build/packages/scripts/src/commands/index.js",
     "pkg": "pkg . --output ./exec/idems-app-scripts"
   },
   "pkg": {
@@ -28,6 +28,7 @@
     "chalk": "^4.1.0",
     "chokidar": "^3.5.3",
     "commander": "^8.3.0",
+    "cordova-res": "^0.15.4",
     "data-models": "workspace:*",
     "fs-extra": "^9.0.1",
     "inquirer": "^7.3.3",
@@ -39,7 +40,7 @@
     "subtitles-parser-vtt": "^0.1.0",
     "ts-morph": "^15.0.0",
     "typescript": "^4.1.2",
-    "winston": "^3.8.1",
+    "winston": "^3.10.0",
     "workflows": "workspace:*",
     "xlsx": "^0.18.5"
   },
@@ -50,7 +51,7 @@
     "@types/jasmine": "^3.10.6",
     "@types/node-rsa": "^1.1.1",
     "@types/semver": "^7.3.9",
-    "esbuild": "^0.14.2",
+    "esbuild": "^0.19.2",
     "jasmine": "^3.99.0",
     "jasmine-spec-reporter": "^7.0.0",
     "jasmine-ts": "^0.4.0",
