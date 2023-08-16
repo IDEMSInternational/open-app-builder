@@ -35,16 +35,12 @@ jobs:
         with:
           name: debug_apk
           path: ./
-      - name: DEBUG - list files
-        run: |
-          echo ${{ steps.download.outputs.download-path }}
-          ls ${{ steps.download.outputs.download-path }} -lR
       - name: Upload to Appetize.io
         id: upload
         uses: maxep/appetize-upload-action@0.1.0
         with:
           api-token: ${{ secrets.APPETIZE_TOKEN }}
-          file-path: ${{ steps.download.outputs.download-path }}
+          file-path: ${{ steps.download.outputs.download-path }}/app-debug.apk
           platform: "android"
           timeout: 30
           # Include to overwrite existing app instead of creating new (will only allow single build at a time)
