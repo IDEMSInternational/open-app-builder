@@ -30,6 +30,10 @@
     {
       "type": "display_grid",
       "name": "dg_favourite",
+      "parameter_list": {
+        "item_width": "160px",
+        "item_border": "none"
+      },
       "rows": [
         {
           "type": "items",
