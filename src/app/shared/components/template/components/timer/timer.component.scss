@@ -46,7 +46,8 @@ $button-background: var(--timer-button-background, var(--ion-color-primary-500))
   --border-radius: var(--ion-border-radius-rounded);
   --padding: 0;
   ion-icon {
-    font-size: var(--icon-size-largest);
+    position: absolute;
+    font-size: var(--icon-size-large);
   }
   .icon {
     max-width: none;
@@ -54,7 +55,7 @@ $button-background: var(--timer-button-background, var(--ion-color-primary-500))
   }
   .time-rewind-value {
     position: absolute;
-    font-size: var(--font-size-text-tiny);
+    font-size: var(--font-size-text-large);
     font-weight: var(--font-weight-bold);
   }
 }

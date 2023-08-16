@@ -27,9 +27,8 @@
       </div>
     </div>
     <ion-button class="btn" (click)="clickRightButton()">
-      <ion-icon
-        [src]="timerStarted ? '/assets/icon/timer/add-time.svg' : '/assets/icon/timer/repeat.svg'"
-      ></ion-icon>
+      <!-- Use name="none" to display no icon, as empty string does not replace the value -->
+      <ion-icon [name]="timerStarted ? 'none' : 'sync-outline'"></ion-icon>
       <span class="time-rewind-value" *ngIf="timerStarted">+{{ timerDurationExtension / 60 }}</span>
     </ion-button>
   </div>
