@@ -10,6 +10,9 @@ on:
     branches:
       - deployment/*
       - master
+concurrency:
+  group: deployment-preview-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 jobs:
   build:  
     if: contains(github.event.pull_request.labels.*.name, 'Test - preview')

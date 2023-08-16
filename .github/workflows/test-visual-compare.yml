@@ -6,7 +6,7 @@ on:
     branches:
       - master
 concurrency:
-  group: test-visual-${{ github.workflow }}-${{ github.ref }}
+  group: test-visual-compare-${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 env:
   # TODO - replace with dedicated screenshots deployment
