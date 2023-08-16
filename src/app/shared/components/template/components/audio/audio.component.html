@@ -1,10 +1,10 @@
 <div class="container-player margin-t-large">
   <div class="top-row">
     <div class="title_and_help">
-      <h3 *ngIf="titleAudio">{{ titleAudio }}</h3>
+      <h3 *ngIf="params.titleAudio">{{ params.titleAudio }}</h3>
       <ion-icon
-        *ngIf="help"
-        [pTooltip]="help"
+        *ngIf="params.help"
+        [pTooltip]="params.help"
         tooltipPosition="right"
         tooltipEvent="click"
         name="help-circle-outline"
@@ -18,7 +18,7 @@
       ></ion-icon>
     </div>
   </div>
-  <div class="progress-block" [class.disabled]="rangeBarDisabled || !player">
+  <div class="progress-block" [class.disabled]="params.rangeBarDisabled || !player">
     <ion-range
       #range
       class="audio-range"
@@ -41,18 +41,26 @@
   </div>
   <div class="controls" *ngIf="!errorTxt">
     <div class="rewind">
-      <ion-icon [name]="forwardIcon" [src]="forwardIcon" (click)="rewindPrev()"></ion-icon>
+      <ion-icon
+        [name]="params.forwardIcon"
+        [src]="params.forwardIcon"
+        (click)="rewindPrev()"
+      ></ion-icon>
     </div>
     <div class="play">
       <ion-button class="btn-play" (click)="togglePlayer()">
         <ion-icon
-          [name]="!isPlayed ? playIcon : pauseIcon"
-          [src]="!isPlayed ? playIcon : pauseIcon"
+          [name]="!isPlayed ? params.playIcon : params.pauseIcon"
+          [src]="!isPlayed ? params.playIcon : params.pauseIcon"
         ></ion-icon>
       </ion-button>
     </div>
     <div class="forward">
-      <ion-icon [name]="forwardIcon" [src]="forwardIcon" (click)="rewindNext()"></ion-icon>
+      <ion-icon
+        [name]="params.forwardIcon"
+        [src]="params.forwardIcon"
+        (click)="rewindNext()"
+      ></ion-icon>
     </div>
   </div>
   <div class="error-text" *ngIf="errorTxt">
