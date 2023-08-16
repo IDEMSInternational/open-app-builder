@@ -1161,9 +1161,6 @@
         "title": {
           "tz_sw": true
         },
-        "top_text": {
-          "tz_sw": true
-        },
         "tool_1_title": {
           "tz_sw": true
         },
@@ -1188,9 +1185,6 @@
         "title": {
           "eng": "How to help your teen learn"
         },
-        "top_text": {
-          "eng": "Here are some essential tools to help your teen learn."
-        },
         "tool_1_title": {
           "eng": "GET TOGETHER"
         },
@@ -1213,7 +1207,6 @@
           "eng": ""
         }
       },
-      "top_text": "Here are some essential tools to help your teen learn.",
       "tool_1_title": "GET TOGETHER",
       "tool_1_text": "People learn better when they learn with others. Spend time with your teen and let them learn with you. When you do activities together, you give them space to learn, make mistakes and ask you questions.",
       "tool_2_title": "SUPPORT",
