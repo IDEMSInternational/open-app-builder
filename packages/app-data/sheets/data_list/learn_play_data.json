@@ -273,16 +273,14 @@
       "tips_text": "* Take turns acting different roles. You can also swap roles to see how it changes the situation.\n* Keep the activity fun. It doesn’t always have to be role play about something real. \n* Ask your teen to act as their favourite hero. Ask what they would do if they had super powers for a day."
     },
     {
-      "id": "hide_seek",
+      "id": "find_pair",
       "group": "home",
-      "icon_asset": "plh_images/parent_centre/ltp_activities/hide_seek_icon.svg",
-      "image_asset": "plh_images/parent_centre/ltp_activities/hide_seek.svg",
-      "favourite_field": "ltp_activity_hide_seek_favourite",
-      "title": "Hide and seek (find the pair)",
+      "icon_asset": "plh_images/parent_centre/ltp_activities/find_pair_icon.svg",
+      "image_asset": "plh_images/parent_centre/ltp_activities/find_pair.svg",
+      "favourite_field": "ltp_activity_find_pair_favourite",
+      "title": "Find the pair",
       "_translations": {
-        "title": {
-          "tz_sw": true
-        },
+        "title": {},
         "intro_text": {},
         "resources_text": {},
         "steps_text": {
@@ -297,7 +295,7 @@
       },
       "_translatedFields": {
         "title": {
-          "eng": "Hide and seek (find the pair)"
+          "eng": "Find the pair"
         },
         "intro_text": {
           "eng": "Hide and seek is a fun game that many people played when they were children. \n\nIn this version of the game, you add a challenging twist for your teen."

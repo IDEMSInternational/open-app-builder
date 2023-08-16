@@ -5,27 +5,6 @@
   "status": "released",
   "rows": [
     {
-      "id": "games",
-      "title": "Fun and games",
-      "_translations": {
-        "title": {
-          "tz_sw": true
-        },
-        "text": {
-          "tz_sw": true
-        }
-      },
-      "_translatedFields": {
-        "title": {
-          "eng": "Fun and games"
-        },
-        "text": {
-          "eng": "Playing games with teens is a great way to spend quality time together while also teaching important skills."
-        }
-      },
-      "text": "Playing games with teens is a great way to spend quality time together while also teaching important skills."
-    },
-    {
       "id": "everyday",
       "title": "Everyday activities",
       "_translations": {
@@ -66,6 +45,27 @@
         }
       },
       "text": "School is not the only place where teens learn. These activities will teach them life skills that will help them at school and beyond."
+    },
+    {
+      "id": "games",
+      "title": "Fun and games",
+      "_translations": {
+        "title": {
+          "tz_sw": true
+        },
+        "text": {
+          "tz_sw": true
+        }
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Fun and games"
+        },
+        "text": {
+          "eng": "Playing games with teens is a great way to spend quality time together while also teaching important skills."
+        }
+      },
+      "text": "Playing games with teens is a great way to spend quality time together while also teaching important skills."
     },
     {
       "id": "chat",

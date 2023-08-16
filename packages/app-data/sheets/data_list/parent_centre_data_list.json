@@ -5,11 +5,37 @@
   "data_list_name": "parent_centre",
   "rows": [
     {
+      "id": "help",
+      "show": true,
+      "icon_asset": "plh_images/icons/speech_bubble_question_white.svg",
+      "tile_style": "parent_centre_3",
+      "template": "parent_centre_help",
+      "click_count_field": "click_pc_help_count",
+      "title": "Help",
+      "_translations": {
+        "title": {
+          "tz_sw": true
+        },
+        "location_text": {
+          "tz_sw": true
+        }
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Help"
+        },
+        "location_text": {
+          "eng": "**Help** in the @global.parent_centre"
+        }
+      },
+      "location_text": "**Help** in the @global.parent_centre"
+    },
+    {
       "id": "my_tips",
       "show": "@fields._app_skin == \"weekly_workshop\"",
       "icon_asset": "plh_images/icons/light_bulb_heart_white.svg",
-      "template": "parent_centre_my_tips",
       "tile_style": "parent_centre_1",
+      "template": "parent_centre_my_tips",
       "click_count_field": "click_pc_my_tips_count",
       "title": "My Tips",
       "_translations": {
@@ -34,8 +60,8 @@
       "id": "essential_tools",
       "show": true,
       "icon_asset": "plh_images/icons/light_bulb_white.svg",
+      "tile_style": "parent_centre_1",
       "template": "parent_centre_essential_tools",
-      "tile_style": "parent_centre_3",
       "click_count_field": "click_pc_essential_tools_count",
       "title": "Essential Tools",
       "_translations": {
@@ -86,8 +112,8 @@
       "id": "relax",
       "show": "@fields.post_rct_access",
       "icon_asset": "plh_images/icons/smile_eyes_down_white.svg",
-      "template": "parent_centre_relax",
       "tile_style": "parent_centre_4",
+      "template": "parent_centre_relax",
       "click_count_field": "click_pc_relax_count",
       "title": "Relaxation activities",
       "_translations": {
@@ -109,37 +135,35 @@
       "location_text": "**Relaxation activities** in the @global.parent_centre"
     },
     {
-      "id": "help",
-      "show": true,
-      "icon_asset": "plh_images/icons/question_mark_white.svg",
-      "template": "parent_centre_help",
-      "tile_style": "parent_centre_1",
-      "click_count_field": "click_pc_help_count",
-      "title": "Help",
+      "id": "activities",
+      "show": "@fields.post_rct_access",
+      "icon_asset": "plh_images/icons/parent_child_talk_white.svg",
+      "template": "activities",
+      "tile_style": "parent_centre_3",
+      "click_count_field": "click_pc_activities_count",
+      "title": "Activities",
       "_translations": {
         "title": {
           "tz_sw": true
         },
-        "location_text": {
-          "tz_sw": true
-        }
+        "location_text": {}
       },
       "_translatedFields": {
         "title": {
-          "eng": "Help"
+          "eng": "Activities"
         },
         "location_text": {
-          "eng": "**Help** in the @global.parent_centre"
+          "eng": "**Activities** in the @global.parent_centre"
         }
       },
-      "location_text": "**Help** in the @global.parent_centre"
+      "location_text": "**Activities** in the @global.parent_centre"
     },
     {
       "id": "covid",
       "show": "!@fields.post_rct_access",
       "icon_asset": "plh_images/icons/ask_question_white.svg",
-      "template": "parent_centre_covid",
       "tile_style": "parent_centre_3",
+      "template": "parent_centre_covid",
       "click_count_field": "click_pc_covid_count",
       "title": "Coping with @global.covid",
       "_translations": {
@@ -164,8 +188,8 @@
       "id": "bereavement",
       "show": "!@fields.post_rct_access",
       "icon_asset": "plh_images/icons/hands_support_heart_white.svg",
-      "template": "parent_centre_bereavement",
       "tile_style": "parent_centre_4",
+      "template": "parent_centre_bereavement",
       "click_count_field": "click_pc_bereavement_count",
       "title": "Coping with grief",
       "_translations": {
@@ -190,8 +214,8 @@
       "id": "message_archive",
       "show": "@fields._app_skin == \"weekly_workshop\"",
       "icon_asset": "plh_images/icons/letter_white.svg",
-      "template": "parent_centre_message_archive",
       "tile_style": "parent_centre_1",
+      "template": "parent_centre_message_archive",
       "click_count_field": "click_pc_message_archive_count",
       "title": "Message Archive",
       "_translations": {
