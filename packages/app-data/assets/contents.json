@@ -1938,6 +1938,16 @@
     "md5Checksum": "e3243cab6faa1e91bb1cb9276b31b0bf",
     "size_kb": 33
   },
+  "plh_images/parent_centre/ltp_activities/find_pair.svg": {
+    "filePath": "global/plh_images/parent_centre/ltp_activities/find_pair.svg",
+    "md5Checksum": "9ec3df214563fca68a39c9e305f675a9",
+    "size_kb": 36.9
+  },
+  "plh_images/parent_centre/ltp_activities/find_pair_icon.svg": {
+    "filePath": "global/plh_images/parent_centre/ltp_activities/find_pair_icon.svg",
+    "md5Checksum": "74e72009a17b9a05b4405c83a965e0c6",
+    "size_kb": 29.1
+  },
   "plh_images/parent_centre/ltp_activities/garden.svg": {
     "filePath": "global/plh_images/parent_centre/ltp_activities/garden.svg",
     "md5Checksum": "cabf8df5c9ab9146ac75cf546b11dc0c",
@@ -1947,16 +1957,6 @@
     "filePath": "global/plh_images/parent_centre/ltp_activities/garden_icon.svg",
     "md5Checksum": "4193470f7374052b39425e1c53037884",
     "size_kb": 15.4
-  },
-  "plh_images/parent_centre/ltp_activities/hide_seek.svg": {
-    "filePath": "global/plh_images/parent_centre/ltp_activities/hide_seek.svg",
-    "md5Checksum": "9ec3df214563fca68a39c9e305f675a9",
-    "size_kb": 36.9
-  },
-  "plh_images/parent_centre/ltp_activities/hide_seek_icon.svg": {
-    "filePath": "global/plh_images/parent_centre/ltp_activities/hide_seek_icon.svg",
-    "md5Checksum": "74e72009a17b9a05b4405c83a965e0c6",
-    "size_kb": 29.1
   },
   "plh_images/parent_centre/ltp_activities/long_term_goal.svg": {
     "filePath": "global/plh_images/parent_centre/ltp_activities/long_term_goal.svg",
@@ -2007,6 +2007,76 @@
     "filePath": "global/plh_images/parent_centre/ltp_activities/short_term_goal_icon.svg",
     "md5Checksum": "8227d95be780ea2055425811e8ad2420",
     "size_kb": 25
+  },
+  "plh_images/parent_centre/ltp_activities/talk_1.svg": {
+    "filePath": "global/plh_images/parent_centre/ltp_activities/talk_1.svg",
+    "md5Checksum": "4554dfb6ecb01b51f9bde46c895dd850",
+    "size_kb": 76.9
+  },
+  "plh_images/parent_centre/ltp_activities/talk_1_icon.svg": {
+    "filePath": "global/plh_images/parent_centre/ltp_activities/talk_1_icon.svg",
+    "md5Checksum": "3a69a60733e12baf2e221a05e1b9b57b",
+    "size_kb": 45
+  },
+  "plh_images/parent_centre/ltp_activities/talk_2.svg": {
+    "filePath": "global/plh_images/parent_centre/ltp_activities/talk_2.svg",
+    "md5Checksum": "d81608336cf37c88c23d91e896818b32",
+    "size_kb": 37
+  },
+  "plh_images/parent_centre/ltp_activities/talk_2_icon.svg": {
+    "filePath": "global/plh_images/parent_centre/ltp_activities/talk_2_icon.svg",
+    "md5Checksum": "13cff143122bc66f976a634e3e354d09",
+    "size_kb": 19.1
+  },
+  "plh_images/parent_centre/ltp_activities/talk_3.svg": {
+    "filePath": "global/plh_images/parent_centre/ltp_activities/talk_3.svg",
+    "md5Checksum": "9baefc918f7ed076f77b4ed6bb73fcf8",
+    "size_kb": 42.5
+  },
+  "plh_images/parent_centre/ltp_activities/talk_3_icon.svg": {
+    "filePath": "global/plh_images/parent_centre/ltp_activities/talk_3_icon.svg",
+    "md5Checksum": "1782cb7f15f2018b3184c56e3879623d",
+    "size_kb": 27.7
+  },
+  "plh_images/parent_centre/ltp_activities/talk_4.svg": {
+    "filePath": "global/plh_images/parent_centre/ltp_activities/talk_4.svg",
+    "md5Checksum": "90a3a2ebeedfa6a411e65f11d0f1df78",
+    "size_kb": 77
+  },
+  "plh_images/parent_centre/ltp_activities/talk_4_icon.svg": {
+    "filePath": "global/plh_images/parent_centre/ltp_activities/talk_4_icon.svg",
+    "md5Checksum": "0fbc40651722d35a9f567a7b1e82eab1",
+    "size_kb": 46.3
+  },
+  "plh_images/parent_centre/ltp_activities/talk_5.svg": {
+    "filePath": "global/plh_images/parent_centre/ltp_activities/talk_5.svg",
+    "md5Checksum": "9f45b0499099a5194db5b4e490b22805",
+    "size_kb": 81.3
+  },
+  "plh_images/parent_centre/ltp_activities/talk_5_icon.svg": {
+    "filePath": "global/plh_images/parent_centre/ltp_activities/talk_5_icon.svg",
+    "md5Checksum": "daa367d827df76d1925c2907210d35c5",
+    "size_kb": 53.3
+  },
+  "plh_images/parent_centre/ltp_activities/talk_6.svg": {
+    "filePath": "global/plh_images/parent_centre/ltp_activities/talk_6.svg",
+    "md5Checksum": "948c8b45543cb7096cbc92dc9839e1d8",
+    "size_kb": 37.5
+  },
+  "plh_images/parent_centre/ltp_activities/talk_6_icon.svg": {
+    "filePath": "global/plh_images/parent_centre/ltp_activities/talk_6_icon.svg",
+    "md5Checksum": "85cd3bdab5c3573d89cb5dfc84dd3e6f",
+    "size_kb": 23.5
+  },
+  "plh_images/parent_centre/ltp_activities/talk_7.svg": {
+    "filePath": "global/plh_images/parent_centre/ltp_activities/talk_7.svg",
+    "md5Checksum": "09e9bd6df5795d8d2809406fb18301f8",
+    "size_kb": 38.2
+  },
+  "plh_images/parent_centre/ltp_activities/talk_7_icon.svg": {
+    "filePath": "global/plh_images/parent_centre/ltp_activities/talk_7_icon.svg",
+    "md5Checksum": "9babcf92f284b11971cebc4d19d569c4",
+    "size_kb": 22.9
   },
   "plh_images/parent_centre/ltp_activities/tell_stories.svg": {
     "filePath": "global/plh_images/parent_centre/ltp_activities/tell_stories.svg",
@@ -2640,8 +2710,8 @@
   },
   "plh_images/workshops/w_learn/read_learn_support/slide_4.svg": {
     "filePath": "global/plh_images/workshops/w_learn/read_learn_support/slide_4.svg",
-    "md5Checksum": "f3e40a96423f98f1f0a3e0457350aa3b",
-    "size_kb": 40.5
+    "md5Checksum": "03f0f013a0040a04eabc1ff84d855a88",
+    "size_kb": 40.2
   },
   "plh_images/workshops/w_learn/tools.svg": {
     "filePath": "global/plh_images/workshops/w_learn/tools.svg",
@@ -3000,8 +3070,8 @@
   },
   "plh_images/workshops/w_srh/learn/sex_talk_age/slide_2.svg": {
     "filePath": "global/plh_images/workshops/w_srh/learn/sex_talk_age/slide_2.svg",
-    "md5Checksum": "0e261e1527452bda46b1a6f3dbe0df9d",
-    "size_kb": 43.9
+    "md5Checksum": "9d0f76b9f86ff37d34a56f384bc3d8a6",
+    "size_kb": 61.4
   },
   "plh_images/workshops/w_srh/learn/sex_talk_age/slide_3.svg": {
     "filePath": "global/plh_images/workshops/w_srh/learn/sex_talk_age/slide_3.svg",
@@ -3250,8 +3320,8 @@
   },
   "plh_images/workshops/w_svp/use_body/moves.gif": {
     "filePath": "global/plh_images/workshops/w_svp/use_body/moves.gif",
-    "md5Checksum": "bfdf81a79bd33711b2496a32a93c1fcf",
-    "size_kb": 173.2
+    "md5Checksum": "965ea1b4ffdcf683eb57f49bf88a6046",
+    "size_kb": 1111.6
   },
   "plh_images/workshops/w_svp/use_body/zone_1.gif": {
     "filePath": "global/plh_images/workshops/w_svp/use_body/zone_1.gif",
