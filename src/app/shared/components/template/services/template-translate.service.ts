@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { IAppConfig } from "packages/data-models";
+import { IAppConfig } from "data-models";
 import { BehaviorSubject } from "rxjs";
 import { AppConfigService } from "src/app/shared/services/app-config/app-config.service";
 import { AsyncServiceBase } from "src/app/shared/services/asyncService.base";

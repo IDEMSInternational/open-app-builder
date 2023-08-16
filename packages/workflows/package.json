@@ -1,21 +1,13 @@
 {
-  "name": "data-models",
+  "name": "workflows",
   "version": "1.0.0",
   "description": "",
-  "files": [
-    "dist"
-  ],
-  "main": "dist/index.js",
-  "types": "./dist/index.d.ts",
+  "main": "src/index.ts",
   "scripts": {
     "build": "tsc -b",
     "serve": "tsc -w"
   },
-  "dependencies": {
-    "clone": "^2.1.2"
-  },
   "devDependencies": {
-    "@types/clone": "^2.1.1",
     "@types/node": "^16.18.9",
     "shared": "workspace:*",
     "typescript": "~4.2.4"
