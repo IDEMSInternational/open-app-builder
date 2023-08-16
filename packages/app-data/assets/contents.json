@@ -1178,6 +1178,11 @@
     "md5Checksum": "12bb1081cda0bfcab4b289be4f4fc912",
     "size_kb": 1.7
   },
+  "plh_images/icons/cogwheels.svg": {
+    "filePath": "global/plh_images/icons/cogwheels.svg",
+    "md5Checksum": "0d4d776c0fdc8291ff7c4a45e7354c24",
+    "size_kb": 4.6
+  },
   "plh_images/icons/cross.svg": {
     "filePath": "global/plh_images/icons/cross.svg",
     "md5Checksum": "97f29794530016e7a240ad5e49f9ccab",
@@ -1192,6 +1197,11 @@
     "filePath": "global/plh_images/icons/cross_outline.svg",
     "md5Checksum": "92f1b36e28b8427f732cb35a7efa1904",
     "size_kb": 0.8
+  },
+  "plh_images/icons/cup.svg": {
+    "filePath": "global/plh_images/icons/cup.svg",
+    "md5Checksum": "e0e8d2e92e7218264f93fd8640eb66fd",
+    "size_kb": 1.2
   },
   "plh_images/icons/documents.svg": {
     "filePath": "global/plh_images/icons/documents.svg",
@@ -1212,6 +1222,11 @@
     "filePath": "global/plh_images/icons/globe_circle.svg",
     "md5Checksum": "09762126162da34a86ad978f17ef1102",
     "size_kb": 1.4
+  },
+  "plh_images/icons/hands_hold_heart.svg": {
+    "filePath": "global/plh_images/icons/hands_hold_heart.svg",
+    "md5Checksum": "5ecc4b49813c9e34fd4b1bbd320630e6",
+    "size_kb": 2.3
   },
   "plh_images/icons/hands_support_heart.svg": {
     "filePath": "global/plh_images/icons/hands_support_heart.svg",
@@ -1313,6 +1328,11 @@
     "md5Checksum": "2bf484237672df94a3bd10dcf208386a",
     "size_kb": 0.7
   },
+  "plh_images/icons/jigsaw.svg": {
+    "filePath": "global/plh_images/icons/jigsaw.svg",
+    "md5Checksum": "069c720084bfd957079f4b5b09695b65",
+    "size_kb": 1.9
+  },
   "plh_images/icons/letter.svg": {
     "filePath": "global/plh_images/icons/letter.svg",
     "md5Checksum": "640dabe883bbd3df3a8575efb78733e4",
@@ -1330,8 +1350,8 @@
   },
   "plh_images/icons/light_bulb.svg": {
     "filePath": "global/plh_images/icons/light_bulb.svg",
-    "md5Checksum": "1bb4aa716b44a53114e2d03f0aad1f3a",
-    "size_kb": 2.9
+    "md5Checksum": "f3db584a6f4c85a1c91c1f0c21f3949b",
+    "size_kb": 2.4
   },
   "plh_images/icons/light_bulb_circle.svg": {
     "filePath": "global/plh_images/icons/light_bulb_circle.svg",
@@ -1350,8 +1370,8 @@
   },
   "plh_images/icons/light_bulb_white.svg": {
     "filePath": "global/plh_images/icons/light_bulb_white.svg",
-    "md5Checksum": "1da5604970a2bee373b340b8a4fe944d",
-    "size_kb": 2.9
+    "md5Checksum": "d87fff8d4b7b69cc6f79d3a0b5062c14",
+    "size_kb": 2.4
   },
   "plh_images/icons/lock.svg": {
     "filePath": "global/plh_images/icons/lock.svg",
@@ -1368,6 +1388,16 @@
     "md5Checksum": "628f519c6ce2529b71d6ec00beaddc99",
     "size_kb": 0.9
   },
+  "plh_images/icons/magnifying_glass.svg": {
+    "filePath": "global/plh_images/icons/magnifying_glass.svg",
+    "md5Checksum": "4aa37ded543f172aa02486aaf484c4f9",
+    "size_kb": 0.9
+  },
+  "plh_images/icons/paper_pencil.svg": {
+    "filePath": "global/plh_images/icons/paper_pencil.svg",
+    "md5Checksum": "2406f8b8c72c56aa52c484124f32b8c0",
+    "size_kb": 1.2
+  },
   "plh_images/icons/paper_stack.svg": {
     "filePath": "global/plh_images/icons/paper_stack.svg",
     "md5Checksum": "0fd8aa1106f740a5dcb6b4e09f03817d",
@@ -1382,6 +1412,16 @@
     "filePath": "global/plh_images/icons/parent_child.svg",
     "md5Checksum": "99747503b2023a185d20be8e5c7d8076",
     "size_kb": 2
+  },
+  "plh_images/icons/parent_child_heart.svg": {
+    "filePath": "global/plh_images/icons/parent_child_heart.svg",
+    "md5Checksum": "e0e9374e6badd81257bbb42505fbf92b",
+    "size_kb": 3
+  },
+  "plh_images/icons/parent_child_talk_white.svg": {
+    "filePath": "global/plh_images/icons/parent_child_talk_white.svg",
+    "md5Checksum": "a4ed6864ae126ab61595344049966226",
+    "size_kb": 2.2
   },
   "plh_images/icons/parent_child_white.svg": {
     "filePath": "global/plh_images/icons/parent_child_white.svg",
@@ -1423,6 +1463,11 @@
     "md5Checksum": "f6989826fb94a865281b035fa155689d",
     "size_kb": 0.7
   },
+  "plh_images/icons/pencil.svg": {
+    "filePath": "global/plh_images/icons/pencil.svg",
+    "md5Checksum": "14a6e3768664f463e9fedc98b98d5805",
+    "size_kb": 1.1
+  },
   "plh_images/icons/person.svg": {
     "filePath": "global/plh_images/icons/person.svg",
     "md5Checksum": "444b0881c42e0de9f28495b05de5db0c",
@@ -1442,6 +1487,11 @@
     "filePath": "global/plh_images/icons/phone_heart_white.svg",
     "md5Checksum": "61c5140fe55b34c11397b8c344e1c31c",
     "size_kb": 1.3
+  },
+  "plh_images/icons/picture_book.svg": {
+    "filePath": "global/plh_images/icons/picture_book.svg",
+    "md5Checksum": "398b07248ce7b5b59ef471466d089af4",
+    "size_kb": 1.8
   },
   "plh_images/icons/play.svg": {
     "filePath": "global/plh_images/icons/play.svg",
@@ -1473,15 +1523,20 @@
     "md5Checksum": "779f1f9e3b84259d345015b601d89412",
     "size_kb": 0.8
   },
+  "plh_images/icons/smile.svg": {
+    "filePath": "global/plh_images/icons/smile.svg",
+    "md5Checksum": "f42f7fb9cb105b8bf1f465533a1362c4",
+    "size_kb": 0.6
+  },
   "plh_images/icons/smile_eyes_down.svg": {
     "filePath": "global/plh_images/icons/smile_eyes_down.svg",
-    "md5Checksum": "ff1783c1fe1f01482ab6bfc1f4780fec",
+    "md5Checksum": "3e00c1fa0db9fabcfe65d6846e833c6e",
     "size_kb": 0.9
   },
   "plh_images/icons/smile_eyes_down_white.svg": {
     "filePath": "global/plh_images/icons/smile_eyes_down_white.svg",
-    "md5Checksum": "30244517f7a0f05834b45bd964f675f1",
-    "size_kb": 1
+    "md5Checksum": "8986ef2ceb554bbc7f696cd1e0106946",
+    "size_kb": 0.9
   },
   "plh_images/icons/smile_eyes_up.svg": {
     "filePath": "global/plh_images/icons/smile_eyes_up.svg",
@@ -1492,6 +1547,11 @@
     "filePath": "global/plh_images/icons/smile_eyes_up_white.svg",
     "md5Checksum": "b033b60520fbb70b53f2c97a91b6518a",
     "size_kb": 1
+  },
+  "plh_images/icons/speech_bubble_question_white.svg": {
+    "filePath": "global/plh_images/icons/speech_bubble_question_white.svg",
+    "md5Checksum": "fd313930a23d899cf4e59a97f055e2fe",
+    "size_kb": 1.6
   },
   "plh_images/icons/star.svg": {
     "filePath": "global/plh_images/icons/star.svg",
@@ -1522,6 +1582,11 @@
     "filePath": "global/plh_images/icons/temporarily_disabled_white.svg",
     "md5Checksum": "5e779b9b284bc8170eb8a8ae54948a01",
     "size_kb": 1.2
+  },
+  "plh_images/icons/thought_bubble.svg": {
+    "filePath": "global/plh_images/icons/thought_bubble.svg",
+    "md5Checksum": "860f0a38023afb4e888fe885f4f02f9a",
+    "size_kb": 2.1
   },
   "plh_images/icons/tick.svg": {
     "filePath": "global/plh_images/icons/tick.svg",
