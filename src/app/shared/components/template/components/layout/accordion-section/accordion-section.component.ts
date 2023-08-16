@@ -15,6 +15,9 @@ export class AccordionSectionComponent extends TemplateBaseComponent implements 
   public percentComplete: number;
   public title: string;
   private launch_when_locked: boolean;
+  public completedIcon: string;
+  public inProgressIcon: string;
+  public disabledIcon: string;
 
   @Input() id: string;
   /** Emit output event so parent can respond to open/close events (e.g. close other sections when new section opened) */
@@ -40,6 +43,9 @@ export class AccordionSectionComponent extends TemplateBaseComponent implements 
       "launch_when_locked",
       false
     );
+    this.completedIcon = getStringParamFromTemplateRow(this._row, "completed_icon_asset", null);
+    this.inProgressIcon = getStringParamFromTemplateRow(this._row, "in_progress_icon_asset", null);
+    this.disabledIcon = getStringParamFromTemplateRow(this._row, "disabled_icon_asset", null);
     this.percentComplete = this._row.value ? this._row.value : 0;
     this.updateStatus(this.percentComplete);
   }

@@ -8,16 +8,21 @@
     }"
     class="accordion-status"
   >
-    <img
+    <ion-icon
       *ngIf="completed && !_row.disabled"
-      class="tick-icon"
-      [src]="'plh_images/icons/tick.svg' | plhAsset"
-    />
-    <img *ngIf="_row.disabled" [src]="'plh_images/icons/temporarily_disabled.svg' | plhAsset" />
-    <img
+      name="checkmark-outline"
+      [src]="completedIcon ? (completedIcon | plhAsset) : ''"
+    ></ion-icon>
+    <ion-icon
+      *ngIf="_row.disabled"
+      name="lock-closed-outline"
+      [src]="disabledIcon ? (disabledIcon | plhAsset) : ''"
+    ></ion-icon>
+    <ion-icon
       *ngIf="!completed && !_row.disabled"
-      [src]="'plh_images/icons/in_progress.svg' | plhAsset"
-    />
+      name="timer-outline"
+      [src]="inProgressIcon ? (inProgressIcon | plhAsset) : ''"
+    ></ion-icon>
   </div>
   <div
     class="accordion-section"

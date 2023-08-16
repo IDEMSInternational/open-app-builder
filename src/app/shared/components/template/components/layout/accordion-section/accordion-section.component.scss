@@ -33,6 +33,7 @@ $background-highlight: var(
     background: var(--ion-color-primary-contrast);
     display: flex;
     justify-content: center;
+    align-items: center;
     z-index: 2;
     &.inProgress {
       background: $background-highlight;
@@ -42,6 +43,9 @@ $background-highlight: var(
     }
     &.completed {
       background: $background-highlight;
+    }
+    ion-icon {
+      font-size: var(--icon-size-large);
     }
   }
   .accordion-section {
