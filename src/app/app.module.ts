@@ -28,6 +28,7 @@ import { TemplateComponentsModule } from "./shared/components/template/template.
 import { ContextMenuModule } from "./shared/modules/context-menu/context-menu.module";
 import { TourModule } from "./feature/tour/tour.module";
 import { ErrorHandlerService } from "./shared/services/error-handler/error-handler.service";
+import { PLHAssetPipe } from "./shared/components/template/pipes/plh-asset.pipe";
 
 // Note we need a separate function as it's required
 // by the AOT compiler.
@@ -68,6 +69,7 @@ export function lottiePlayerFactory() {
     Device,
     httpInterceptorProviders,
     { provide: ErrorHandler, useClass: ErrorHandlerService },
+    PLHAssetPipe,
   ],
   bootstrap: [AppComponent],
 })
