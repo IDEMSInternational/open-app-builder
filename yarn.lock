@@ -15037,6 +15037,7 @@ __metadata:
     qrcode: ^1.5.1
     rxdb: ^13.15.3
     rxjs: ^7.8.0
+    scripts: "workspace:*"
     shared: "workspace:*"
     signature_pad: ^4.1.5
     stacktrace-js: ^2.0.2
@@ -24417,7 +24418,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"scripts@workspace:packages/scripts":
+"scripts@workspace:*, scripts@workspace:packages/scripts":
   version: 0.0.0-use.local
   resolution: "scripts@workspace:packages/scripts"
   dependencies:
