@@ -34,11 +34,11 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: debug_apk
-          path: ./debug.apk
+          path: ./
       - name: DEBUG - list files
         run: |
           echo ${{ steps.download.outputs.download-path }}
-          ls ${{ steps.download.outputs.download-path }} -l
+          ls ${{ steps.download.outputs.download-path }} -lR
       - name: Upload to Appetize.io
         id: upload
         uses: maxep/appetize-upload-action@0.1.0
