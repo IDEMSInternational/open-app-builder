@@ -125,7 +125,7 @@ jobs:
 
       - name: Upload debug apk
         if: ${{inputs.debug-apk}}
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: debug_apk
           path: android/app/build/outputs/apk/debug/app-debug.apk
@@ -149,7 +149,7 @@ jobs:
           
       - name: Upload release bundle
         if: ${{inputs.release-bundle}}
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: release_bundle
           path: android/app/build/outputs/bundle/release/app-release.aab
