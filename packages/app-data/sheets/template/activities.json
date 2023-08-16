@@ -119,6 +119,9 @@
                   "_cleaned": "click | emit: force_reload"
                 }
               ],
+              "parameter_list": {
+                "style": "navigation"
+              },
               "_nested_name": "dg_top.items.button_random",
               "_dynamicFields": {
                 "action_list": {
