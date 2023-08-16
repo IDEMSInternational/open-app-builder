@@ -9,7 +9,7 @@ import mockFs from "mock-fs";
 
 // Use default imports to allow spying on functions and replacing with mock methods
 import { ActiveDeployment } from "../../deployment/get";
-import { Logger } from "../../../utils/logging.utils";
+import { Logger } from "../../../utils";
 import path from "path";
 import { IAssetEntryHashmap } from "data-models/deployment.model";
 

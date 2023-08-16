@@ -1,5 +1,5 @@
 import type { FlowTypes } from "data-models";
-import type { IAssetEntry } from "packages/data-models/deployment.model";
+import type { IAssetEntry } from "data-models";
 import ASSETS_CONTENT_JSON from "src/assets/app_data/assets/contents.json";
 import SHEETS_CONTENT_JSON from "src/assets/app_data/sheets/contents.json";
 import TRANSLATIONS_CONTENT_JSON from "src/assets/app_data/translations/contents.json";

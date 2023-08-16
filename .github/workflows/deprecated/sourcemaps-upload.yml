@@ -1,3 +1,7 @@
+# DEPRECATED CC-2023-08-15
+# Not currently in use, could add back if troubleshooting sourcemaps (will need refactor to common build format)
+
+
 # Secrets
 # SENTRY_AUTH_TOKEN
 
