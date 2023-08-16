@@ -66,7 +66,7 @@
       "type": "display_group",
       "name": "tiles",
       "parameter_list": {
-        "style": "parent_point"
+        "style": "column"
       },
       "rows": [
         {
@@ -115,6 +115,7 @@
                       "_cleaned": "click | set_field: @item.click_count_field : +@fields.@item.click_count_field+1"
                     }
                   ],
+                  "condition": "@item.id != \"activities\"",
                   "exclude_from_translation": true,
                   "parameter_list": {
                     "style": "@item.tile_style",
@@ -257,6 +258,14 @@
                         ]
                       }
                     },
+                    "condition": [
+                      {
+                        "fullExpression": "@item.id != \"activities\"",
+                        "matchedExpression": "@item.id",
+                        "type": "item",
+                        "fieldName": "id"
+                      }
+                    ],
                     "parameter_list": {
                       "style": [
                         {
@@ -304,6 +313,7 @@
                       "action_list.1.args.0",
                       "action_list.1._raw",
                       "action_list.1._cleaned",
+                      "condition",
                       "_nested_name"
                     ],
                     "@item.template": [
@@ -334,6 +344,65 @@
                       "parameter_list.first_line_text"
                     ],
                     "@item.id.pc_": [
+                      "_nested_name"
+                    ]
+                  }
+                },
+                {
+                  "type": "template",
+                  "name": "activities_button",
+                  "value": "activities_button",
+                  "condition": "@item.id == \"activities\"",
+                  "rows": [
+                    {
+                      "name": "location_name",
+                      "value": "parent_centre",
+                      "_translations": {
+                        "value": {}
+                      },
+                      "type": "set_variable",
+                      "_nested_name": "tiles.items.dg_@item.id.activities_button.location_name",
+                      "_dynamicFields": {
+                        "_nested_name": [
+                          {
+                            "fullExpression": "tiles.items.dg_@item.id.activities_button.location_name",
+                            "matchedExpression": "@item.id.activities_button.location_name",
+                            "type": "item",
+                            "fieldName": "id"
+                          }
+                        ]
+                      },
+                      "_dynamicDependencies": {
+                        "@item.id.activities_button.location_name": [
+                          "_nested_name"
+                        ]
+                      }
+                    }
+                  ],
+                  "_nested_name": "tiles.items.dg_@item.id.activities_button",
+                  "_dynamicFields": {
+                    "condition": [
+                      {
+                        "fullExpression": "@item.id == \"activities\"",
+                        "matchedExpression": "@item.id",
+                        "type": "item",
+                        "fieldName": "id"
+                      }
+                    ],
+                    "_nested_name": [
+                      {
+                        "fullExpression": "tiles.items.dg_@item.id.activities_button",
+                        "matchedExpression": "@item.id.activities_button",
+                        "type": "item",
+                        "fieldName": "id"
+                      }
+                    ]
+                  },
+                  "_dynamicDependencies": {
+                    "@item.id": [
+                      "condition"
+                    ],
+                    "@item.id.activities_button": [
                       "_nested_name"
                     ]
                   }
@@ -397,53 +466,6 @@
         }
       ],
       "_nested_name": "tiles"
-    },
-    {
-      "type": "button",
-      "name": "button_activities",
-      "value": "@global.activities",
-      "_translations": {
-        "value": {}
-      },
-      "action_list": [
-        {
-          "trigger": "click",
-          "action_id": "go_to",
-          "args": [
-            "activities"
-          ],
-          "_raw": "click | go_to: activities",
-          "_cleaned": "click | go_to: activities"
-        }
-      ],
-      "condition": "@fields.post_rct_access",
-      "_nested_name": "button_activities",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "@global.activities",
-            "matchedExpression": "@global.activities",
-            "type": "global",
-            "fieldName": "activities"
-          }
-        ],
-        "condition": [
-          {
-            "fullExpression": "@fields.post_rct_access",
-            "matchedExpression": "@fields.post_rct_access",
-            "type": "fields",
-            "fieldName": "post_rct_access"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@global.activities": [
-          "value"
-        ],
-        "@fields.post_rct_access": [
-          "condition"
-        ]
-      }
     }
   ],
   "_xlsxPath": "global/core_templates/core_templates_parent_centre.xlsx"

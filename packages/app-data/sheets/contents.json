@@ -326,6 +326,26 @@
       "flow_subtype": "generated",
       "flow_type": "data_list"
     },
+    "tg_w_learn_read_learn_conflict_ind": {
+      "flow_name": "tg_w_learn_read_learn_conflict_ind",
+      "flow_subtype": "generated",
+      "flow_type": "data_list"
+    },
+    "tg_w_learn_read_learn_conflict_tog": {
+      "flow_name": "tg_w_learn_read_learn_conflict_tog",
+      "flow_subtype": "generated",
+      "flow_type": "data_list"
+    },
+    "tg_w_learn_read_learn_support_ind": {
+      "flow_name": "tg_w_learn_read_learn_support_ind",
+      "flow_subtype": "generated",
+      "flow_type": "data_list"
+    },
+    "tg_w_learn_read_learn_support_tog": {
+      "flow_name": "tg_w_learn_read_learn_support_tog",
+      "flow_subtype": "generated",
+      "flow_type": "data_list"
+    },
     "tg_w_money_read_2_ind": {
       "flow_name": "tg_w_money_read_2_ind",
       "flow_subtype": "generated",
@@ -1201,6 +1221,12 @@
       "data_list_name": "safeguarding_contacts_tz",
       "_xlsxPath": "tz/data/safeguarding_data_tz.xlsx"
     },
+    "scenario_data": {
+      "flow_type": "data_list",
+      "flow_name": "scenario_data",
+      "data_list_name": "scenario",
+      "_xlsxPath": "global/data/workshop_data/workshop_data_list.xlsx"
+    },
     "scenario_question_data": {
       "flow_type": "data_list",
       "flow_name": "scenario_question_data",
@@ -1519,6 +1545,17 @@
         "output_flow_subtype": "generated"
       },
       "_xlsxPath": "global/top_templates/parent_centre_templates/gen_lib_act_tools.xlsx"
+    },
+    "gen_scenario": {
+      "flow_type": "generator",
+      "flow_name": "gen_scenario",
+      "parameter_list": {
+        "input_data_list": "scenario_data",
+        "output_flow_name": "w_learn_learn_activity_ideas_{@gen.id}",
+        "output_flow_type": "template",
+        "output_flow_subtype": "generated"
+      },
+      "_xlsxPath": "global/top_templates/workshop_templates/workshop_learn.xlsx"
     },
     "gen_scenario_question": {
       "flow_type": "generator",
@@ -1845,6 +1882,11 @@
     "activities": {
       "flow_type": "template",
       "flow_name": "activities",
+      "_xlsxPath": "global/core_templates/core_templates_relax_and_activities.xlsx"
+    },
+    "activities_button": {
+      "flow_type": "template",
+      "flow_name": "activities_button",
       "_xlsxPath": "global/core_templates/core_templates_relax_and_activities.xlsx"
     },
     "activity_relax_1": {
@@ -2187,6 +2229,12 @@
       "flow_type": "template",
       "flow_name": "box_video",
       "_xlsxPath": "global/core_templates/core_templates_workshop_boxes.xlsx"
+    },
+    "box_w_learn_home_practice": {
+      "flow_type": "template",
+      "module": "w_learn",
+      "flow_name": "box_w_learn_home_practice",
+      "_xlsxPath": "global/top_templates/workshop_templates/workshop_learn.xlsx"
     },
     "care_together": {
       "flow_type": "template",
@@ -2532,6 +2580,11 @@
       "flow_subtype": "generated",
       "flow_type": "template"
     },
+    "ltp_activity_find_pair": {
+      "flow_name": "ltp_activity_find_pair",
+      "flow_subtype": "generated",
+      "flow_type": "template"
+    },
     "ltp_activity_friendly_chat": {
       "flow_name": "ltp_activity_friendly_chat",
       "flow_subtype": "generated",
@@ -2539,11 +2592,6 @@
     },
     "ltp_activity_garden": {
       "flow_name": "ltp_activity_garden",
-      "flow_subtype": "generated",
-      "flow_type": "template"
-    },
-    "ltp_activity_hide_seek": {
-      "flow_name": "ltp_activity_hide_seek",
       "flow_subtype": "generated",
       "flow_type": "template"
     },
@@ -2844,6 +2892,21 @@
     },
     "w_learn_intro_text": {
       "flow_name": "w_learn_intro_text",
+      "flow_subtype": "generated",
+      "flow_type": "template"
+    },
+    "w_learn_learn_activity_ideas_cook": {
+      "flow_name": "w_learn_learn_activity_ideas_cook",
+      "flow_subtype": "generated",
+      "flow_type": "template"
+    },
+    "w_learn_learn_activity_ideas_tell_stories": {
+      "flow_name": "w_learn_learn_activity_ideas_tell_stories",
+      "flow_subtype": "generated",
+      "flow_type": "template"
+    },
+    "w_learn_learn_activity_ideas_walk": {
+      "flow_name": "w_learn_learn_activity_ideas_walk",
       "flow_subtype": "generated",
       "flow_type": "template"
     },
@@ -3279,11 +3342,6 @@
     },
     "w_svp_learn_suggestions_use_voice": {
       "flow_name": "w_svp_learn_suggestions_use_voice",
-      "flow_subtype": "generated",
-      "flow_type": "template"
-    },
-    "w_svp_learn_warning_signs_@gen.id": {
-      "flow_name": "w_svp_learn_warning_signs_@gen.id",
       "flow_subtype": "generated",
       "flow_type": "template"
     },
@@ -4982,6 +5040,42 @@
       "module": "instruct",
       "flow_name": "w_instruct_try_pop",
       "_xlsxPath": "global/top_templates/workshop_templates/workshop_instruct.xlsx"
+    },
+    "w_learn_home_practice": {
+      "flow_type": "template",
+      "module": "w_learn",
+      "flow_name": "w_learn_home_practice",
+      "_xlsxPath": "global/top_templates/workshop_templates/workshop_learn.xlsx"
+    },
+    "w_learn_learn_activity_ideas": {
+      "flow_type": "template",
+      "module": "w_learn",
+      "flow_name": "w_learn_learn_activity_ideas",
+      "_xlsxPath": "global/top_templates/workshop_templates/workshop_learn.xlsx"
+    },
+    "w_learn_quiz_learn_conflict": {
+      "flow_type": "template",
+      "module": "w_learn",
+      "flow_name": "w_learn_quiz_learn_conflict",
+      "_xlsxPath": "global/top_templates/workshop_templates/workshop_learn.xlsx"
+    },
+    "w_learn_quiz_learn_support": {
+      "flow_type": "template",
+      "module": "w_learn",
+      "flow_name": "w_learn_quiz_learn_support",
+      "_xlsxPath": "global/top_templates/workshop_templates/workshop_learn.xlsx"
+    },
+    "w_learn_read_learn_conflict": {
+      "flow_type": "template",
+      "module": "w_learn",
+      "flow_name": "w_learn_read_learn_conflict",
+      "_xlsxPath": "global/top_templates/workshop_templates/workshop_learn.xlsx"
+    },
+    "w_learn_read_learn_support": {
+      "flow_type": "template",
+      "module": "w_learn",
+      "flow_name": "w_learn_read_learn_support",
+      "_xlsxPath": "global/top_templates/workshop_templates/workshop_learn.xlsx"
     },
     "w_money_care_together": {
       "flow_type": "template",
