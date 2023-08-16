@@ -1143,6 +1143,12 @@
       "flow_name": "launch_actions",
       "_xlsxPath": "global/core_templates/core_templates_app_launch.xlsx"
     },
+    "mode_data": {
+      "flow_type": "data_list",
+      "flow_name": "mode_data",
+      "data_list_name": "mode",
+      "_xlsxPath": "global/data/workshop_data/workshop_data_list.xlsx"
+    },
     "name_feelings_data": {
       "flow_type": "data_list",
       "flow_name": "name_feelings_data",
@@ -1887,6 +1893,11 @@
     "activities_button": {
       "flow_type": "template",
       "flow_name": "activities_button",
+      "_xlsxPath": "global/core_templates/core_templates_relax_and_activities.xlsx"
+    },
+    "activity_button": {
+      "flow_type": "template",
+      "flow_name": "activity_button",
       "_xlsxPath": "global/core_templates/core_templates_relax_and_activities.xlsx"
     },
     "activity_relax_1": {
@@ -3706,6 +3717,11 @@
     "parent_centre_my_activities": {
       "flow_type": "template",
       "flow_name": "parent_centre_my_activities",
+      "_xlsxPath": "global/core_templates/core_templates_relax_and_activities.xlsx"
+    },
+    "parent_centre_my_ltp_activities": {
+      "flow_type": "template",
+      "flow_name": "parent_centre_my_ltp_activities",
       "_xlsxPath": "global/core_templates/core_templates_relax_and_activities.xlsx"
     },
     "parent_centre_my_relaxes": {
