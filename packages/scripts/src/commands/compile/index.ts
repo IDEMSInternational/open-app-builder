@@ -1,6 +1,5 @@
 #!/usr/bin/env node
 import { Command } from "commander";
-import { logProgramHelp } from "../../utils";
 
 import typesCmd from "./types";
 
@@ -11,12 +10,4 @@ program.addCommand(typesCmd);
 
 export default program;
 
-// Run if called directly from Node
-if (require.main === module) {
-  if (!process.argv.slice(2).length) {
-    logProgramHelp(program);
-  }
-  (async function () {
-    await program.parseAsync(process.argv);
-  })();
-}
+// allowCmdDirectCall(program)
