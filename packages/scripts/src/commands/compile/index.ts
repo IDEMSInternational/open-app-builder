@@ -9,5 +9,3 @@ const program = new Command("compile").description("Handle compilation");
 program.addCommand(typesCmd);
 
 export default program;
-
-// allowCmdDirectCall(program)

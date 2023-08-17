@@ -13,5 +13,3 @@ program.addCommand(postProcessCmd);
 program.addCommand(downloadCmd);
 
 export default program;
-
-// allowCmdDirectCall(program)

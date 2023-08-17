@@ -9,5 +9,3 @@ const program = new Command("e2e-data").description("Parse E2E data");
 program.addCommand(parseCmd);
 
 export default program;
-
-// allowCmdDirectCall(program)
