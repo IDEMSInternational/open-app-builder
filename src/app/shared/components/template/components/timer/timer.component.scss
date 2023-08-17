@@ -49,10 +49,6 @@ $button-background: var(--timer-button-background, var(--ion-color-primary-500))
     position: absolute;
     font-size: var(--icon-size-large);
   }
-  .icon {
-    max-width: none;
-    top: 0;
-  }
   .time-rewind-value {
     position: absolute;
     font-size: var(--font-size-text-large);
