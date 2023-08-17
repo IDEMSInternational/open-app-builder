@@ -851,20 +851,6 @@
     },
     "size_kb": 433.4
   },
-  "plh_audio/topic_intros/w_grief_intro.mp3": {
-    "filePath": "global/plh_audio/topic_intros/w_grief_intro.mp3",
-    "md5Checksum": "cdd5988352b7c2f1aafb2514ca23619f",
-    "overrides": {
-      "theme_default": {
-        "tz_sw": {
-          "filePath": "tz_sw/plh_audio/topic_intros/w_grief_intro.mp3",
-          "md5Checksum": "2b5f9f1919618e2a49d6a33e5863094f",
-          "size_kb": 246.6
-        }
-      }
-    },
-    "size_kb": 474.4
-  },
   "plh_audio/topic_intros/w_instruct_intro.mp3": {
     "filePath": "global/plh_audio/topic_intros/w_instruct_intro.mp3",
     "md5Checksum": "98b5a8b6b1b4d4c49200a93d7fbb3320",
@@ -878,20 +864,6 @@
       }
     },
     "size_kb": 172.6
-  },
-  "plh_audio/topic_intros/w_learn_intro.mp3": {
-    "filePath": "global/plh_audio/topic_intros/w_learn_intro.mp3",
-    "md5Checksum": "ec1afa037bf2b197157866a5224491ca",
-    "overrides": {
-      "theme_default": {
-        "tz_sw": {
-          "filePath": "tz_sw/plh_audio/topic_intros/w_learn_intro.mp3",
-          "md5Checksum": "02f8b9143867d1cd77bfd628aeb69be6",
-          "size_kb": 239.8
-        }
-      }
-    },
-    "size_kb": 398.1
   },
   "plh_audio/topic_intros/w_money_intro.mp3": {
     "filePath": "global/plh_audio/topic_intros/w_money_intro.mp3",
@@ -977,20 +949,6 @@
     },
     "size_kb": 508
   },
-  "plh_audio/topic_intros/w_srh_intro.mp3": {
-    "filePath": "global/plh_audio/topic_intros/w_srh_intro.mp3",
-    "md5Checksum": "52535a577bcc38f9b8e4f13f48b2b28d",
-    "overrides": {
-      "theme_default": {
-        "tz_sw": {
-          "filePath": "tz_sw/plh_audio/topic_intros/w_srh_intro.mp3",
-          "md5Checksum": "39f799e672289e7c7b85db7696605eda",
-          "size_kb": 237.4
-        }
-      }
-    },
-    "size_kb": 424.6
-  },
   "plh_audio/topic_intros/w_stress_intro.mp3": {
     "filePath": "global/plh_audio/topic_intros/w_stress_intro.mp3",
     "md5Checksum": "a293f9c19a4f9c06138a89dd3d229af6",
@@ -1004,20 +962,6 @@
       }
     },
     "size_kb": 370.3
-  },
-  "plh_audio/topic_intros/w_svp_intro.mp3": {
-    "filePath": "global/plh_audio/topic_intros/w_svp_intro.mp3",
-    "md5Checksum": "12ee3b0ede2db97ebf66c241609440ad",
-    "overrides": {
-      "theme_default": {
-        "tz_sw": {
-          "filePath": "tz_sw/plh_audio/topic_intros/w_svp_intro.mp3",
-          "md5Checksum": "0672f0816e9bd1f5131538b8f821a6d7",
-          "size_kb": 155.2
-        }
-      }
-    },
-    "size_kb": 343.3
   },
   "plh_audio/topic_intros/workshops_reflection.mp3": {
     "filePath": "global/plh_audio/topic_intros/workshops_reflection.mp3",
