@@ -170,14 +170,15 @@
       "individual": true,
       "together": true,
       "priority": 11,
+      "icon_asset": "@data.mode.read.icon_asset",
       "has_single_task": false,
-      "title": "@global.story @global.part_connector @data.story.sugar_daddy.title",
+      "title": "@data.story.sugar_daddy.title",
       "_translations": {
         "title": {}
       },
       "_translatedFields": {
         "title": {
-          "eng": "@global.story @global.part_connector @data.story.sugar_daddy.title"
+          "eng": "@data.story.sugar_daddy.title"
         }
       },
       "story_id": "sugar_daddy",
@@ -189,14 +190,15 @@
       "individual": true,
       "together": true,
       "priority": 13,
+      "icon_asset": "@data.mode.read.icon_asset",
       "has_single_task": false,
-      "title": "@global.story @global.part_connector @data.story.online_contact.title",
+      "title": "@data.story.online_contact.title",
       "_translations": {
         "title": {}
       },
       "_translatedFields": {
         "title": {
-          "eng": "@global.story @global.part_connector @data.story.online_contact.title"
+          "eng": "@data.story.online_contact.title"
         }
       },
       "story_id": "online_contact",
@@ -208,6 +210,7 @@
       "individual": false,
       "together": true,
       "priority": 15,
+      "icon_asset": "@data.mode.learn.icon_asset",
       "has_single_task": true,
       "title": "Learn",
       "_translations": {

@@ -130,6 +130,7 @@
       "individual": true,
       "together": true,
       "priority": 11,
+      "icon_asset": "@data.mode.think.icon_asset",
       "has_single_task": true,
       "title": "Think",
       "_translations": {

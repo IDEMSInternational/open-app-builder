@@ -21,6 +21,10 @@
       "icon_asset": "plh_images/icons/picture_book.svg"
     },
     {
+      "id": "think",
+      "icon_asset": "plh_images/icons/thought_bubble.svg"
+    },
+    {
       "id": "quiz",
       "icon_asset": "plh_images/icons/pencil.svg"
     },

@@ -192,14 +192,15 @@
       "individual": true,
       "together": true,
       "priority": 11,
+      "icon_asset": "@data.mode.read.icon_asset",
       "has_single_task": false,
-      "title": "@global.story @global.part_connector @data.story.learn_conflict.title",
+      "title": "@data.story.learn_conflict.title",
       "_translations": {
         "title": {}
       },
       "_translatedFields": {
         "title": {
-          "eng": "@global.story @global.part_connector @data.story.learn_conflict.title"
+          "eng": "@data.story.learn_conflict.title"
         }
       },
       "story_id": "learn_conflict",
@@ -211,14 +212,15 @@
       "individual": true,
       "together": true,
       "priority": 13,
+      "icon_asset": "@data.mode.read.icon_asset",
       "has_single_task": false,
-      "title": "@global.story @global.part_connector @data.story.learn_support.title",
+      "title": "@data.story.learn_support.title",
       "_translations": {
         "title": {}
       },
       "_translatedFields": {
         "title": {
-          "eng": "@global.story @global.part_connector @data.story.learn_support.title"
+          "eng": "@data.story.learn_support.title"
         }
       },
       "story_id": "learn_support",
@@ -230,6 +232,7 @@
       "individual": true,
       "together": true,
       "priority": 15,
+      "icon_asset": "@data.mode.learn.icon_asset",
       "has_single_task": true,
       "title": "@data.learn.activity_ideas.title",
       "_translations": {

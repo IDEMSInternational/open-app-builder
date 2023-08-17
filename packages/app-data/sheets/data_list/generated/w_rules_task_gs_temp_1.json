@@ -174,14 +174,15 @@
       "individual": true,
       "together": true,
       "priority": 11,
+      "icon_asset": "@data.mode.read.icon_asset",
       "has_single_task": false,
-      "title": "@global.story @global.part_connector @data.story.make_rule.title",
+      "title": "@data.story.make_rule.title",
       "_translations": {
         "title": {}
       },
       "_translatedFields": {
         "title": {
-          "eng": "@global.story @global.part_connector @data.story.make_rule.title"
+          "eng": "@data.story.make_rule.title"
         }
       },
       "story_id": "make_rule"
@@ -191,14 +192,15 @@
       "individual": true,
       "together": true,
       "priority": 71,
+      "icon_asset": "@data.mode.read.icon_asset",
       "has_single_task": true,
-      "title": "@global.story @global.part_connector @data.story.online_safety.title",
+      "title": "@data.story.online_safety.title",
       "_translations": {
         "title": {}
       },
       "_translatedFields": {
         "title": {
-          "eng": "@global.story @global.part_connector @data.story.online_safety.title"
+          "eng": "@data.story.online_safety.title"
         }
       },
       "template": "w_rules_read_2",
@@ -209,6 +211,7 @@
       "individual": true,
       "together": false,
       "priority": 72,
+      "icon_asset": "@data.mode.learn.icon_asset",
       "has_single_task": true,
       "title": "Learn",
       "_translations": {
@@ -228,6 +231,7 @@
       "individual": false,
       "together": true,
       "priority": 73,
+      "icon_asset": "@data.mode.try.icon_asset",
       "has_single_task": true,
       "title": "Try it out!",
       "_translations": {

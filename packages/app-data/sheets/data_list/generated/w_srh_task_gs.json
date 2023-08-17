@@ -192,14 +192,15 @@
       "individual": true,
       "together": true,
       "priority": 11,
+      "icon_asset": "@data.mode.read.icon_asset",
       "has_single_task": false,
-      "title": "@global.story @global.part_connector @data.story.sex_talk.title",
+      "title": "@data.story.sex_talk.title",
       "_translations": {
         "title": {}
       },
       "_translatedFields": {
         "title": {
-          "eng": "@global.story @global.part_connector @data.story.sex_talk.title"
+          "eng": "@data.story.sex_talk.title"
         }
       },
       "story_id": "sex_talk",
@@ -211,14 +212,15 @@
       "individual": true,
       "together": true,
       "priority": 13,
+      "icon_asset": "@data.mode.read.icon_asset",
       "has_single_task": false,
-      "title": "@global.story @global.part_connector @data.story.new_boyfriend.title",
+      "title": "@data.story.new_boyfriend.title",
       "_translations": {
         "title": {}
       },
       "_translatedFields": {
         "title": {
-          "eng": "@global.story @global.part_connector @data.story.new_boyfriend.title"
+          "eng": "@data.story.new_boyfriend.title"
         }
       },
       "story_id": "new_boyfriend",
@@ -230,6 +232,7 @@
       "individual": true,
       "together": true,
       "priority": 15,
+      "icon_asset": "@data.mode.learn.icon_asset",
       "has_single_task": true,
       "title": "@data.learn.sex_talk.title",
       "_translations": {

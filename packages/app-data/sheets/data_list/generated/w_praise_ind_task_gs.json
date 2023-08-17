@@ -152,6 +152,7 @@
       "individual": true,
       "together": false,
       "priority": 11,
+      "icon_asset": "@data.mode.quiz.icon_asset",
       "has_single_task": true,
       "title": "Question",
       "_translations": {
@@ -173,14 +174,15 @@
       "individual": true,
       "together": true,
       "priority": 12,
+      "icon_asset": "@data.mode.read.icon_asset",
       "has_single_task": false,
-      "title": "@global.story @global.part_connector @data.story.praise.title",
+      "title": "@data.story.praise.title",
       "_translations": {
         "title": {}
       },
       "_translatedFields": {
         "title": {
-          "eng": "@global.story @global.part_connector @data.story.praise.title"
+          "eng": "@data.story.praise.title"
         }
       },
       "story_id": "praise",

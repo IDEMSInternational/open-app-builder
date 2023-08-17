@@ -170,14 +170,15 @@
       "individual": true,
       "together": true,
       "priority": 11,
+      "icon_asset": "@data.mode.read.icon_asset",
       "has_single_task": false,
-      "title": "@global.story @global.part_connector @data.story.grief_conflict.title",
+      "title": "@data.story.grief_conflict.title",
       "_translations": {
         "title": {}
       },
       "_translatedFields": {
         "title": {
-          "eng": "@global.story @global.part_connector @data.story.grief_conflict.title"
+          "eng": "@data.story.grief_conflict.title"
         }
       },
       "story_id": "grief_conflict",
@@ -189,14 +190,15 @@
       "individual": true,
       "together": true,
       "priority": 13,
+      "icon_asset": "@data.mode.read.icon_asset",
       "has_single_task": false,
-      "title": "@global.story @global.part_connector @data.story.grief_support.title",
+      "title": "@data.story.grief_support.title",
       "_translations": {
         "title": {}
       },
       "_translatedFields": {
         "title": {
-          "eng": "@global.story @global.part_connector @data.story.grief_support.title"
+          "eng": "@data.story.grief_support.title"
         }
       },
       "story_id": "grief_support",
@@ -208,6 +210,7 @@
       "individual": true,
       "together": true,
       "priority": 71,
+      "icon_asset": "@data.mode.learn.icon_asset",
       "has_single_task": true,
       "title": "@data.learn.name_feelings.title",
       "_translations": {
