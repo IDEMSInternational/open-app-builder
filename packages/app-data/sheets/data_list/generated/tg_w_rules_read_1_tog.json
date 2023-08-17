@@ -1,0 +1,27 @@
+{
+  "flow_name": "tg_w_rules_read_1_tog",
+  "flow_subtype": "generated",
+  "flow_type": "data_list",
+  "rows": [
+    {
+      "id": "read_1",
+      "group": "read_1",
+      "individual": true,
+      "together": true,
+      "template": "w_rules_read_1",
+      "rel_priority": 1,
+      "completed_field": "task_w_rules_read_1_completed",
+      "completed": "@fields.task_w_rules_read_1_completed"
+    },
+    {
+      "id": "talk",
+      "group": "read_1",
+      "individual": false,
+      "together": true,
+      "template": "w_rules_talk",
+      "rel_priority": 3,
+      "completed_field": "task_w_rules_talk_completed",
+      "completed": "@fields.task_w_rules_talk_completed"
+    }
+  ]
+}

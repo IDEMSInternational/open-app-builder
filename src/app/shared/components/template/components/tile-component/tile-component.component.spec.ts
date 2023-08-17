@@ -1,19 +1,19 @@
 import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 import { IonicModule } from "@ionic/angular";
 
-import { TileComponentComponent } from "./tile-component.component";
+import { TmplTileComponent } from "./tile-component.component";
 
-describe("TileComponentComponent", () => {
-  let component: TileComponentComponent;
-  let fixture: ComponentFixture<TileComponentComponent>;
+describe("TmplTileComponent", () => {
+  let component: TmplTileComponent;
+  let fixture: ComponentFixture<TmplTileComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [TileComponentComponent],
+      declarations: [TmplTileComponent],
       imports: [IonicModule.forRoot()],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(TileComponentComponent);
+    fixture = TestBed.createComponent(TmplTileComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   }));

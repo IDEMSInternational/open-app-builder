@@ -5,6 +5,30 @@
   "status": "released",
   "rows": [
     {
+      "name": "do_workshops_together",
+      "value": "@fields.do_workshops_together",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "do_workshops_together",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@fields.do_workshops_together",
+            "matchedExpression": "@fields.do_workshops_together",
+            "type": "fields",
+            "fieldName": "do_workshops_together"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@fields.do_workshops_together": [
+          "value"
+        ]
+      }
+    },
+    {
       "type": "template",
       "name": "m_workshop_tomorrow",
       "value": "m_workshop_tomorrow",
@@ -50,7 +74,7 @@
                   "za_zu": true
                 }
               },
-              "condition": "!@field.do_workshops_together",
+              "condition": "!@local.do_workshops_together",
               "type": "set_variable",
               "_nested_name": "m_workshop_tomorrow.in_week_message.text",
               "_dynamicFields": {
@@ -64,9 +88,9 @@
                 ],
                 "condition": [
                   {
-                    "fullExpression": "!@field.do_workshops_together",
-                    "matchedExpression": "!@field.do_workshops_together",
-                    "type": "field",
+                    "fullExpression": "!@local.do_workshops_together",
+                    "matchedExpression": "!@local.do_workshops_together",
+                    "type": "local",
                     "fieldName": "do_workshops_together"
                   }
                 ]
@@ -75,47 +99,48 @@
                 "@global.parent_app": [
                   "value"
                 ],
-                "!@field.do_workshops_together": [
+                "!@local.do_workshops_together": [
                   "condition"
                 ]
               }
             },
             {
               "name": "text",
-              "value": "Have you told your @global.parent_app partners about the app yet? From tomorrow, you can start doing your @global.parent_app workshops together!",
+              "value": "Have you told your @global.parent_app partners about the app yet? From tomorrow, you can start doing your @global.parent_app @global.workshops together!",
               "_translations": {
                 "value": {
-                  "tz_sw": true,
-                  "za_af": true,
-                  "za_st": true,
-                  "za_tn": true,
-                  "za_xh": true,
-                  "za_zu": true
+                  "tz_sw": true
                 }
               },
-              "condition": "@field.do_workshops_together",
+              "condition": "@local.do_workshops_together",
               "type": "set_variable",
               "_nested_name": "m_workshop_tomorrow.in_week_message.text",
               "_dynamicFields": {
                 "value": [
                   {
-                    "fullExpression": "Have you told your @global.parent_app partners about the app yet? From tomorrow, you can start doing your @global.parent_app workshops together!",
+                    "fullExpression": "Have you told your @global.parent_app partners about the app yet? From tomorrow, you can start doing your @global.parent_app @global.workshops together!",
                     "matchedExpression": "@global.parent_app",
                     "type": "global",
                     "fieldName": "parent_app"
                   },
                   {
-                    "fullExpression": "Have you told your @global.parent_app partners about the app yet? From tomorrow, you can start doing your @global.parent_app workshops together!",
+                    "fullExpression": "Have you told your @global.parent_app partners about the app yet? From tomorrow, you can start doing your @global.parent_app @global.workshops together!",
                     "matchedExpression": "@global.parent_app",
                     "type": "global",
                     "fieldName": "parent_app"
+                  },
+                  {
+                    "fullExpression": "Have you told your @global.parent_app partners about the app yet? From tomorrow, you can start doing your @global.parent_app @global.workshops together!",
+                    "matchedExpression": "@global.workshops",
+                    "type": "global",
+                    "fieldName": "workshops"
                   }
                 ],
                 "condition": [
                   {
-                    "fullExpression": "@field.do_workshops_together",
-                    "matchedExpression": "@field.do_workshops_together",
-                    "type": "field",
+                    "fullExpression": "@local.do_workshops_together",
+                    "matchedExpression": "@local.do_workshops_together",
+                    "type": "local",
                     "fieldName": "do_workshops_together"
                   }
                 ]
@@ -125,7 +150,10 @@
                   "value",
                   "value"
                 ],
-                "@field.do_workshops_together": [
+                "@global.workshops": [
+                  "value"
+                ],
+                "@local.do_workshops_together": [
                   "condition"
                 ]
               }
@@ -137,5 +165,5 @@
       "_nested_name": "m_workshop_tomorrow"
     }
   ],
-  "_xlsxPath": "global/in_week_messages/in_week_message_texts/w_self_care_messages.xlsx"
+  "_xlsxPath": "global/top_templates/in_week_messages/in_week_message_texts/w_self_care_messages.xlsx"
 }

@@ -24,11 +24,11 @@
           "trigger": "click",
           "action_id": "set_field",
           "args": [
-            "w_praise_m_w_released.sent",
+            "w_praise_m_w_released_sent",
             true
           ],
-          "_raw": "click | set_field: w_praise_m_w_released.sent : true",
-          "_cleaned": "click | set_field: w_praise_m_w_released.sent : true"
+          "_raw": "click | set_field: w_praise_m_w_released_sent : true",
+          "_cleaned": "click | set_field: w_praise_m_w_released_sent : true"
         }
       ],
       "priority": 10.99,
@@ -39,13 +39,6 @@
             "calc": "!@fields.w_praise_started"
           },
           "_raw": "!@fields.w_praise_started"
-        },
-        {
-          "condition_type": "calc",
-          "condition_args": {
-            "calc": "!@fields.do_workshops_together"
-          },
-          "_raw": "!@fields.do_workshops_together"
         }
       ],
       "deactivation_condition_list": [
@@ -55,6 +48,13 @@
             "calc": "@fields.workshop_number > 3"
           },
           "_raw": "@fields.workshop_number > 3"
+        },
+        {
+          "condition_type": "calc",
+          "condition_args": {
+            "calc": "@fields.do_workshops_together"
+          },
+          "_raw": "@fields.do_workshops_together"
         }
       ],
       "campaign_list": [
@@ -67,8 +67,7 @@
       "_translations": {
         "title": {},
         "text": {
-          "tz_sw": true,
-          "za_st": true
+          "tz_sw": true
         }
       },
       "_translatedFields": {
@@ -76,10 +75,10 @@
           "eng": "@global.m_w_released"
         },
         "text": {
-          "eng": "Hi @fields.user_name! You're starting your third  @global.parent_app week. \n\nA new workshop is ready!"
+          "eng": "Hi @fields.user_name! You're starting your third  @global.parent_app week. \n\nA new @global.workshop is ready!"
         }
       },
-      "text": "Hi @fields.user_name! You're starting your third  @global.parent_app week. \n\nA new workshop is ready!"
+      "text": "Hi @fields.user_name! You're starting your third  @global.parent_app week. \n\nA new @global.workshop is ready!"
     },
     {
       "id": "w_released_w_praise_tog",
@@ -101,11 +100,11 @@
           "trigger": "click",
           "action_id": "set_field",
           "args": [
-            "w_praise_m_w_released.sent",
+            "w_praise_m_w_released_sent",
             true
           ],
-          "_raw": "click | set_field: w_praise_m_w_released.sent : true",
-          "_cleaned": "click | set_field: w_praise_m_w_released.sent : true"
+          "_raw": "click | set_field: w_praise_m_w_released_sent : true",
+          "_cleaned": "click | set_field: w_praise_m_w_released_sent : true"
         }
       ],
       "priority": 10.99,
@@ -144,8 +143,7 @@
       "_translations": {
         "title": {},
         "text": {
-          "tz_sw": true,
-          "za_st": true
+          "tz_sw": true
         }
       },
       "_translatedFields": {
@@ -153,10 +151,10 @@
           "eng": "@global.m_w_released"
         },
         "text": {
-          "eng": "Hi @fields.group_name! You're starting your third  @global.parent_app week. \n\nA new workshop is ready!"
+          "eng": "Hi @fields.group_name! You're starting your third  @global.parent_app week. \n\nA new @global.workshop is ready!"
         }
       },
-      "text": "Hi @fields.group_name! You're starting your third  @global.parent_app week. \n\nA new workshop is ready!"
+      "text": "Hi @fields.group_name! You're starting your third  @global.parent_app week. \n\nA new @global.workshop is ready!"
     },
     {
       "id": "relax_w_praise",
@@ -177,11 +175,11 @@
           "trigger": "click",
           "action_id": "set_field",
           "args": [
-            "w_praise_m_relax.sent",
+            "w_praise_m_relax_sent",
             true
           ],
-          "_raw": "click | set_field: w_praise_m_relax.sent : true",
-          "_cleaned": "click | set_field: w_praise_m_relax.sent : true"
+          "_raw": "click | set_field: w_praise_m_relax_sent : true",
+          "_cleaned": "click | set_field: w_praise_m_relax_sent : true"
         }
       ],
       "priority": 10.9,
@@ -235,11 +233,11 @@
           "trigger": "click",
           "action_id": "set_field",
           "args": [
-            "w_praise_m_something_fun.sent",
+            "w_praise_m_something_fun_sent",
             true
           ],
-          "_raw": "click | set_field: w_praise_m_something_fun.sent : true",
-          "_cleaned": "click | set_field: w_praise_m_something_fun.sent : true"
+          "_raw": "click | set_field: w_praise_m_something_fun_sent : true",
+          "_cleaned": "click | set_field: w_praise_m_something_fun_sent : true"
         }
       ],
       "priority": 10.8,
@@ -292,11 +290,11 @@
           "trigger": "click",
           "action_id": "set_field",
           "args": [
-            "w_praise_m_praise.sent",
+            "w_praise_m_praise_sent",
             true
           ],
-          "_raw": "click | set_field: w_praise_m_praise.sent : true",
-          "_cleaned": "click | set_field: w_praise_m_praise.sent : true"
+          "_raw": "click | set_field: w_praise_m_praise_sent : true",
+          "_cleaned": "click | set_field: w_praise_m_praise_sent : true"
         }
       ],
       "priority": 10.7,
@@ -319,7 +317,10 @@
       "_translations": {
         "title": {},
         "text": {
-          "tz_sw": true
+          "tz_sw": true,
+          "za_af": true,
+          "za_st": true,
+          "za_tn": true
         }
       },
       "_translatedFields": {
@@ -351,11 +352,11 @@
           "trigger": "click",
           "action_id": "set_field",
           "args": [
-            "w_praise_m_w_reminder.sent",
+            "w_praise_m_w_reminder_sent",
             true
           ],
-          "_raw": "click | set_field: w_praise_m_w_reminder.sent : true",
-          "_cleaned": "click | set_field: w_praise_m_w_reminder.sent : true"
+          "_raw": "click | set_field: w_praise_m_w_reminder_sent : true",
+          "_cleaned": "click | set_field: w_praise_m_w_reminder_sent : true"
         }
       ],
       "priority": 10.6,
@@ -387,7 +388,10 @@
       "_translations": {
         "title": {},
         "text": {
-          "tz_sw": true
+          "tz_sw": true,
+          "za_af": true,
+          "za_st": true,
+          "za_tn": true
         }
       },
       "_translatedFields": {
@@ -419,11 +423,11 @@
           "trigger": "click",
           "action_id": "set_field",
           "args": [
-            "w_praise_m_w_in_progress.sent",
+            "w_praise_m_w_in_progress_sent",
             true
           ],
-          "_raw": "click | set_field: w_praise_m_w_in_progress.sent : true",
-          "_cleaned": "click | set_field: w_praise_m_w_in_progress.sent : true"
+          "_raw": "click | set_field: w_praise_m_w_in_progress_sent : true",
+          "_cleaned": "click | set_field: w_praise_m_w_in_progress_sent : true"
         }
       ],
       "priority": 10.5,
@@ -462,7 +466,10 @@
       "_translations": {
         "title": {},
         "text": {
-          "tz_sw": true
+          "tz_sw": true,
+          "za_af": true,
+          "za_st": true,
+          "za_tn": true
         }
       },
       "_translatedFields": {
@@ -494,11 +501,11 @@
           "trigger": "click",
           "action_id": "set_field",
           "args": [
-            "w_praise_m_hp_reminder.sent",
+            "w_praise_m_hp_reminder_sent",
             true
           ],
-          "_raw": "click | set_field: w_praise_m_hp_reminder.sent : true",
-          "_cleaned": "click | set_field: w_praise_m_hp_reminder.sent : true"
+          "_raw": "click | set_field: w_praise_m_hp_reminder_sent : true",
+          "_cleaned": "click | set_field: w_praise_m_hp_reminder_sent : true"
         }
       ],
       "priority": 10.4,
@@ -530,7 +537,10 @@
       "_translations": {
         "title": {},
         "text": {
-          "tz_sw": true
+          "tz_sw": true,
+          "za_af": true,
+          "za_st": true,
+          "za_tn": true
         }
       },
       "_translatedFields": {
@@ -562,11 +572,11 @@
           "trigger": "click",
           "action_id": "set_field",
           "args": [
-            "m_parent_points_overview.sent",
+            "m_parent_points_overview_sent",
             true
           ],
-          "_raw": "click | set_field: m_parent_points_overview.sent : true",
-          "_cleaned": "click | set_field: m_parent_points_overview.sent : true"
+          "_raw": "click | set_field: m_parent_points_overview_sent : true",
+          "_cleaned": "click | set_field: m_parent_points_overview_sent : true"
         }
       ],
       "priority": 10.3,
@@ -619,11 +629,11 @@
           "trigger": "click",
           "action_id": "set_field",
           "args": [
-            "undefined.sent",
+            "w_praise_hp_review_sent",
             true
           ],
-          "_raw": "click | set_field: undefined.sent : true",
-          "_cleaned": "click | set_field: undefined.sent : true"
+          "_raw": "click | set_field: w_praise_hp_review_sent : true",
+          "_cleaned": "click | set_field: w_praise_hp_review_sent : true"
         }
       ],
       "priority": 10.2,
@@ -686,11 +696,11 @@
           "trigger": "click",
           "action_id": "set_field",
           "args": [
-            "w_praise_m_w_tomorrow.sent",
+            "w_praise_m_w_tomorrow_sent",
             true
           ],
-          "_raw": "click | set_field: w_praise_m_w_tomorrow.sent : true",
-          "_cleaned": "click | set_field: w_praise_m_w_tomorrow.sent : true"
+          "_raw": "click | set_field: w_praise_m_w_tomorrow_sent : true",
+          "_cleaned": "click | set_field: w_praise_m_w_tomorrow_sent : true"
         }
       ],
       "priority": 10.1,
@@ -730,10 +740,10 @@
           "eng": "@global.m_w_tomorrow"
         },
         "text": {
-          "eng": "Amazing, you completed the @data.workshop.w_praise.in_text_title. A new workshop is ready tomorrow. Try it - you will see a change in your teen’s behaviour."
+          "eng": "Amazing, you completed the @data.workshop.w_praise.in_text_title. A new @global.workshop is ready tomorrow. Try it - you will see a change in your teen’s behaviour."
         }
       },
-      "text": "Amazing, you completed the @data.workshop.w_praise.in_text_title. A new workshop is ready tomorrow. Try it - you will see a change in your teen’s behaviour."
+      "text": "Amazing, you completed the @data.workshop.w_praise.in_text_title. A new @global.workshop is ready tomorrow. Try it - you will see a change in your teen’s behaviour."
     },
     {
       "id": "w_tomorrow_w_praise_incompl",
@@ -755,11 +765,11 @@
           "trigger": "click",
           "action_id": "set_field",
           "args": [
-            "w_praise_m_w_tomorrow.sent",
+            "w_praise_m_w_tomorrow_sent",
             true
           ],
-          "_raw": "click | set_field: w_praise_m_w_tomorrow.sent : true",
-          "_cleaned": "click | set_field: w_praise_m_w_tomorrow.sent : true"
+          "_raw": "click | set_field: w_praise_m_w_tomorrow_sent : true",
+          "_cleaned": "click | set_field: w_praise_m_w_tomorrow_sent : true"
         }
       ],
       "priority": 10.1,
@@ -799,10 +809,10 @@
           "eng": "@global.m_w_tomorrow"
         },
         "text": {
-          "eng": "Hi @global.user_name, a new workshop awaits you tomorrow!\n\nIt seems like you haven’t finished the @data.workshop.w_praise.in_text_title. It’s short (promise!) – give it a go when you have a few minutes."
+          "eng": "Hi @global.user_name, a new @global.workshop awaits you tomorrow!\n\nIt seems like you haven’t finished the @data.workshop.w_praise.in_text_title. It’s short (promise!) – give it a go when you have a few minutes."
         }
       },
-      "text": "Hi @global.user_name, a new workshop awaits you tomorrow!\n\nIt seems like you haven’t finished the @data.workshop.w_praise.in_text_title. It’s short (promise!) – give it a go when you have a few minutes."
+      "text": "Hi @global.user_name, a new @global.workshop awaits you tomorrow!\n\nIt seems like you haven’t finished the @data.workshop.w_praise.in_text_title. It’s short (promise!) – give it a go when you have a few minutes."
     }
   ],
   "_xlsxPath": "global/campaigns/notifications_in_week_messages.xlsx"

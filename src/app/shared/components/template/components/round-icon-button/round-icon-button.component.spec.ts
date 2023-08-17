@@ -1,24 +1,24 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { IonicModule } from '@ionic/angular';
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
+import { IonicModule } from "@ionic/angular";
 
-import { RoundButtonComponent } from './round-icon-button.component';
+import { RoundIconButtonComponent } from "./round-icon-button.component";
 
-describe('RoundButtonComponent', () => {
-  let component: RoundButtonComponent;
-  let fixture: ComponentFixture<RoundButtonComponent>;
+describe("RoundIconButtonComponent", () => {
+  let component: RoundIconButtonComponent;
+  let fixture: ComponentFixture<RoundIconButtonComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ RoundButtonComponent ],
-      imports: [IonicModule.forRoot()]
+      declarations: [RoundIconButtonComponent],
+      imports: [IonicModule.forRoot()],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(RoundButtonComponent);
+    fixture = TestBed.createComponent(RoundIconButtonComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   }));
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });

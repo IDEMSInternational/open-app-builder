@@ -6,30 +6,23 @@
     {
       "type": "text",
       "name": "text_intro",
-      "value": "You can do the @global.weekly_workshops by yourself OR you can invite some other family members or friends to join you - you will learn a lot from each other. It's up to you!",
+      "value": "You can do the @global.workshops by yourself OR you can invite some other family members or friends to join you - you will learn a lot from each other. It is up to you!",
       "_translations": {
-        "value": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        }
+        "value": {}
       },
       "_nested_name": "text_intro",
       "_dynamicFields": {
         "value": [
           {
-            "fullExpression": "You can do the @global.weekly_workshops by yourself OR you can invite some other family members or friends to join you - you will learn a lot from each other. It's up to you!",
-            "matchedExpression": "@global.weekly_workshops",
+            "fullExpression": "You can do the @global.workshops by yourself OR you can invite some other family members or friends to join you - you will learn a lot from each other. It is up to you!",
+            "matchedExpression": "@global.workshops",
             "type": "global",
-            "fieldName": "weekly_workshops"
+            "fieldName": "workshops"
           }
         ]
       },
       "_dynamicDependencies": {
-        "@global.weekly_workshops": [
+        "@global.workshops": [
           "value"
         ]
       }
@@ -37,16 +30,9 @@
     {
       "type": "text",
       "name": "text_q_1",
-      "value": "How would you like to do your @global.weekly_workshops?",
+      "value": "How would you like to do your @global.workshops?",
       "_translations": {
-        "value": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        }
+        "value": {}
       },
       "parameter_list": {
         "style": "emphasised"
@@ -55,15 +41,15 @@
       "_dynamicFields": {
         "value": [
           {
-            "fullExpression": "How would you like to do your @global.weekly_workshops?",
-            "matchedExpression": "@global.weekly_workshops",
+            "fullExpression": "How would you like to do your @global.workshops?",
+            "matchedExpression": "@global.workshops",
             "type": "global",
-            "fieldName": "weekly_workshops"
+            "fieldName": "workshops"
           }
         ]
       },
       "_dynamicDependencies": {
-        "@global.weekly_workshops": [
+        "@global.workshops": [
           "value"
         ]
       }
@@ -140,6 +126,16 @@
           ],
           "_raw": "changed | set_field: workshop_path: @local.radio_group",
           "_cleaned": "changed | set_field: workshop_path: @local.radio_group"
+        },
+        {
+          "trigger": "changed",
+          "action_id": "set_field",
+          "args": [
+            "workshop_path_user_choice",
+            true
+          ],
+          "_raw": "changed | set_field: workshop_path_user_choice: TRUE",
+          "_cleaned": "changed | set_field: workshop_path_user_choice: TRUE"
         }
       ],
       "parameter_list": {
@@ -200,30 +196,6 @@
       }
     },
     {
-      "name": "local_do_workshops_together",
-      "value": "@local.radio_group===\"together\"",
-      "_translations": {
-        "value": {}
-      },
-      "type": "set_variable",
-      "_nested_name": "local_do_workshops_together",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "@local.radio_group===\"together\"",
-            "matchedExpression": "@local.radio_group",
-            "type": "local",
-            "fieldName": "radio_group"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@local.radio_group": [
-          "value"
-        ]
-      }
-    },
-    {
       "type": "display_group",
       "name": "reply_group_name",
       "condition": "@local.radio_group==\"together\"",
@@ -251,17 +223,13 @@
           "_nested_name": "reply_group_name.text_q_2"
         },
         {
-          "type": "text_box",
-          "name": "text_box",
+          "name": "initial_group_name",
           "value": "@fields.group_name",
           "_translations": {
             "value": {}
           },
-          "condition": "@fields.group_name != @global.group_name_default",
-          "parameter_list": {
-            "placeholder": "@global.tap_and_type"
-          },
-          "_nested_name": "reply_group_name.text_box",
+          "type": "set_variable",
+          "_nested_name": "reply_group_name.initial_group_name",
           "_dynamicFields": {
             "value": [
               {
@@ -270,16 +238,44 @@
                 "type": "fields",
                 "fieldName": "group_name"
               }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@fields.group_name": [
+              "value"
+            ]
+          }
+        },
+        {
+          "type": "text_box",
+          "name": "text_box",
+          "value": "@local.initial_group_name",
+          "_translations": {
+            "value": {}
+          },
+          "condition": "@local.initial_group_name != @global.group_name_default",
+          "parameter_list": {
+            "placeholder": "@global.tap_and_type"
+          },
+          "_nested_name": "reply_group_name.text_box",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@local.initial_group_name",
+                "matchedExpression": "@local.initial_group_name",
+                "type": "local",
+                "fieldName": "initial_group_name"
+              }
             ],
             "condition": [
               {
-                "fullExpression": "@fields.group_name != @global.group_name_default",
-                "matchedExpression": "@fields.group_name",
-                "type": "fields",
-                "fieldName": "group_name"
+                "fullExpression": "@local.initial_group_name != @global.group_name_default",
+                "matchedExpression": "@local.initial_group_name",
+                "type": "local",
+                "fieldName": "initial_group_name"
               },
               {
-                "fullExpression": "@fields.group_name != @global.group_name_default",
+                "fullExpression": "@local.initial_group_name != @global.group_name_default",
                 "matchedExpression": "@global.group_name_default",
                 "type": "global",
                 "fieldName": "group_name_default"
@@ -297,7 +293,7 @@
             }
           },
           "_dynamicDependencies": {
-            "@fields.group_name": [
+            "@local.initial_group_name": [
               "value",
               "condition"
             ],
@@ -312,7 +308,7 @@
         {
           "type": "text_box",
           "name": "text_box",
-          "condition": "@fields.group_name == @global.group_name_default",
+          "condition": "@local.initial_group_name == @global.group_name_default",
           "parameter_list": {
             "placeholder": "@global.tap_and_type"
           },
@@ -320,13 +316,13 @@
           "_dynamicFields": {
             "condition": [
               {
-                "fullExpression": "@fields.group_name == @global.group_name_default",
-                "matchedExpression": "@fields.group_name",
-                "type": "fields",
-                "fieldName": "group_name"
+                "fullExpression": "@local.initial_group_name == @global.group_name_default",
+                "matchedExpression": "@local.initial_group_name",
+                "type": "local",
+                "fieldName": "initial_group_name"
               },
               {
-                "fullExpression": "@fields.group_name == @global.group_name_default",
+                "fullExpression": "@local.initial_group_name == @global.group_name_default",
                 "matchedExpression": "@global.group_name_default",
                 "type": "global",
                 "fieldName": "group_name_default"
@@ -344,7 +340,7 @@
             }
           },
           "_dynamicDependencies": {
-            "@fields.group_name": [
+            "@local.initial_group_name": [
               "condition"
             ],
             "@global.group_name_default": [
@@ -376,16 +372,9 @@
     {
       "type": "text",
       "name": "text_q_3",
-      "value": "Which day of the week would you like to do your @global.weekly_workshops?",
+      "value": "Which day of the week would you like to do your @global.workshops?",
       "_translations": {
-        "value": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        }
+        "value": {}
       },
       "parameter_list": {
         "style": "emphasised"
@@ -394,15 +383,15 @@
       "_dynamicFields": {
         "value": [
           {
-            "fullExpression": "Which day of the week would you like to do your @global.weekly_workshops?",
-            "matchedExpression": "@global.weekly_workshops",
+            "fullExpression": "Which day of the week would you like to do your @global.workshops?",
+            "matchedExpression": "@global.workshops",
             "type": "global",
-            "fieldName": "weekly_workshops"
+            "fieldName": "workshops"
           }
         ]
       },
       "_dynamicDependencies": {
-        "@global.weekly_workshops": [
+        "@global.workshops": [
           "value"
         ]
       }
@@ -799,20 +788,23 @@
         {
           "type": "text",
           "name": "text_group",
-          "value": "Great! We will unlock a new workshop for your group every week. This allows all of you to try what you learned with your families before building the next skill.",
+          "value": "Great! We will unlock a new @global.workshop for your group every week. This allows all of you to try what you learned with your families before building the next skill.",
           "_translations": {
             "value": {
-              "tz_sw": true,
-              "za_af": true,
-              "za_st": true,
-              "za_tn": true,
-              "za_xh": true,
-              "za_zu": true
+              "tz_sw": true
             }
           },
           "condition": "@local.radio_group==\"together\"",
           "_nested_name": "combo_box_replies.text_group",
           "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "Great! We will unlock a new @global.workshop for your group every week. This allows all of you to try what you learned with your families before building the next skill.",
+                "matchedExpression": "@global.workshop",
+                "type": "global",
+                "fieldName": "workshop"
+              }
+            ],
             "condition": [
               {
                 "fullExpression": "@local.radio_group==\"together\"",
@@ -823,6 +815,9 @@
             ]
           },
           "_dynamicDependencies": {
+            "@global.workshop": [
+              "value"
+            ],
             "@local.radio_group": [
               "condition"
             ]
@@ -831,20 +826,23 @@
         {
           "type": "text",
           "name": "text_individual",
-          "value": "Great! We will unlock a new workshop for you every week. This allows you to try what you learned with your family before building the next skill.",
+          "value": "Great! We will unlock a new @global.workshop for you every week. This allows you to try what you learned with your family before building the next skill.",
           "_translations": {
             "value": {
-              "tz_sw": true,
-              "za_af": true,
-              "za_st": true,
-              "za_tn": true,
-              "za_xh": true,
-              "za_zu": true
+              "tz_sw": true
             }
           },
           "condition": "@local.radio_group==\"individual\"",
           "_nested_name": "combo_box_replies.text_individual",
           "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "Great! We will unlock a new @global.workshop for you every week. This allows you to try what you learned with your family before building the next skill.",
+                "matchedExpression": "@global.workshop",
+                "type": "global",
+                "fieldName": "workshop"
+              }
+            ],
             "condition": [
               {
                 "fullExpression": "@local.radio_group==\"individual\"",
@@ -855,6 +853,9 @@
             ]
           },
           "_dynamicDependencies": {
+            "@global.workshop": [
+              "value"
+            ],
             "@local.radio_group": [
               "condition"
             ]
@@ -971,26 +972,6 @@
               "trigger": "completed",
               "action_id": "set_field",
               "args": [
-                "do_workshops_together",
-                "@local.local_do_workshops_together"
-              ],
-              "_raw": "completed | set_field: do_workshops_together: @local.local_do_workshops_together",
-              "_cleaned": "completed | set_field: do_workshops_together: @local.local_do_workshops_together"
-            },
-            {
-              "trigger": "uncompleted",
-              "action_id": "set_field",
-              "args": [
-                "do_workshops_together",
-                "@local.local_do_workshops_together"
-              ],
-              "_raw": "uncompleted | set_field: do_workshops_together: @local.local_do_workshops_together",
-              "_cleaned": "uncompleted | set_field: do_workshops_together: @local.local_do_workshops_together"
-            },
-            {
-              "trigger": "completed",
-              "action_id": "set_field",
-              "args": [
                 "workshop_start_day",
                 "@local.workshop_start_day"
               ],
@@ -1117,62 +1098,6 @@
                 "args": {
                   "1": [
                     {
-                      "fullExpression": "@local.local_do_workshops_together",
-                      "matchedExpression": "@local.local_do_workshops_together",
-                      "type": "local",
-                      "fieldName": "local_do_workshops_together"
-                    }
-                  ]
-                },
-                "_raw": [
-                  {
-                    "fullExpression": "completed | set_field: do_workshops_together: @local.local_do_workshops_together",
-                    "matchedExpression": "@local.local_do_workshops_together",
-                    "type": "local",
-                    "fieldName": "local_do_workshops_together"
-                  }
-                ],
-                "_cleaned": [
-                  {
-                    "fullExpression": "completed | set_field: do_workshops_together: @local.local_do_workshops_together",
-                    "matchedExpression": "@local.local_do_workshops_together",
-                    "type": "local",
-                    "fieldName": "local_do_workshops_together"
-                  }
-                ]
-              },
-              "3": {
-                "args": {
-                  "1": [
-                    {
-                      "fullExpression": "@local.local_do_workshops_together",
-                      "matchedExpression": "@local.local_do_workshops_together",
-                      "type": "local",
-                      "fieldName": "local_do_workshops_together"
-                    }
-                  ]
-                },
-                "_raw": [
-                  {
-                    "fullExpression": "uncompleted | set_field: do_workshops_together: @local.local_do_workshops_together",
-                    "matchedExpression": "@local.local_do_workshops_together",
-                    "type": "local",
-                    "fieldName": "local_do_workshops_together"
-                  }
-                ],
-                "_cleaned": [
-                  {
-                    "fullExpression": "uncompleted | set_field: do_workshops_together: @local.local_do_workshops_together",
-                    "matchedExpression": "@local.local_do_workshops_together",
-                    "type": "local",
-                    "fieldName": "local_do_workshops_together"
-                  }
-                ]
-              },
-              "4": {
-                "args": {
-                  "1": [
-                    {
                       "fullExpression": "@local.workshop_start_day",
                       "matchedExpression": "@local.workshop_start_day",
                       "type": "local",
@@ -1197,7 +1122,7 @@
                   }
                 ]
               },
-              "5": {
+              "3": {
                 "args": {
                   "1": [
                     {
@@ -1244,23 +1169,15 @@
               "action_list.1._raw",
               "action_list.1._cleaned"
             ],
-            "@local.local_do_workshops_together": [
+            "@local.workshop_start_day": [
               "action_list.2.args.1",
               "action_list.2._raw",
-              "action_list.2._cleaned",
+              "action_list.2._cleaned"
+            ],
+            "@local.benchmark_date": [
               "action_list.3.args.1",
               "action_list.3._raw",
               "action_list.3._cleaned"
-            ],
-            "@local.workshop_start_day": [
-              "action_list.4.args.1",
-              "action_list.4._raw",
-              "action_list.4._cleaned"
-            ],
-            "@local.benchmark_date": [
-              "action_list.5.args.1",
-              "action_list.5._raw",
-              "action_list.5._cleaned"
             ],
             "!@local.text_box": [
               "condition"
@@ -1291,26 +1208,6 @@
               ],
               "_raw": "uncompleted | set_field: group_name: @local.text_box",
               "_cleaned": "uncompleted | set_field: group_name: @local.text_box"
-            },
-            {
-              "trigger": "completed",
-              "action_id": "set_field",
-              "args": [
-                "do_workshops_together",
-                "@local.local_do_workshops_together"
-              ],
-              "_raw": "completed | set_field: do_workshops_together: @local.local_do_workshops_together",
-              "_cleaned": "completed | set_field: do_workshops_together: @local.local_do_workshops_together"
-            },
-            {
-              "trigger": "uncompleted",
-              "action_id": "set_field",
-              "args": [
-                "do_workshops_together",
-                "@local.local_do_workshops_together"
-              ],
-              "_raw": "uncompleted | set_field: do_workshops_together: @local.local_do_workshops_together",
-              "_cleaned": "uncompleted | set_field: do_workshops_together: @local.local_do_workshops_together"
             },
             {
               "trigger": "completed",
@@ -1442,62 +1339,6 @@
                 "args": {
                   "1": [
                     {
-                      "fullExpression": "@local.local_do_workshops_together",
-                      "matchedExpression": "@local.local_do_workshops_together",
-                      "type": "local",
-                      "fieldName": "local_do_workshops_together"
-                    }
-                  ]
-                },
-                "_raw": [
-                  {
-                    "fullExpression": "completed | set_field: do_workshops_together: @local.local_do_workshops_together",
-                    "matchedExpression": "@local.local_do_workshops_together",
-                    "type": "local",
-                    "fieldName": "local_do_workshops_together"
-                  }
-                ],
-                "_cleaned": [
-                  {
-                    "fullExpression": "completed | set_field: do_workshops_together: @local.local_do_workshops_together",
-                    "matchedExpression": "@local.local_do_workshops_together",
-                    "type": "local",
-                    "fieldName": "local_do_workshops_together"
-                  }
-                ]
-              },
-              "3": {
-                "args": {
-                  "1": [
-                    {
-                      "fullExpression": "@local.local_do_workshops_together",
-                      "matchedExpression": "@local.local_do_workshops_together",
-                      "type": "local",
-                      "fieldName": "local_do_workshops_together"
-                    }
-                  ]
-                },
-                "_raw": [
-                  {
-                    "fullExpression": "uncompleted | set_field: do_workshops_together: @local.local_do_workshops_together",
-                    "matchedExpression": "@local.local_do_workshops_together",
-                    "type": "local",
-                    "fieldName": "local_do_workshops_together"
-                  }
-                ],
-                "_cleaned": [
-                  {
-                    "fullExpression": "uncompleted | set_field: do_workshops_together: @local.local_do_workshops_together",
-                    "matchedExpression": "@local.local_do_workshops_together",
-                    "type": "local",
-                    "fieldName": "local_do_workshops_together"
-                  }
-                ]
-              },
-              "4": {
-                "args": {
-                  "1": [
-                    {
                       "fullExpression": "@local.workshop_start_day",
                       "matchedExpression": "@local.workshop_start_day",
                       "type": "local",
@@ -1522,7 +1363,7 @@
                   }
                 ]
               },
-              "5": {
+              "3": {
                 "args": {
                   "1": [
                     {
@@ -1570,23 +1411,15 @@
               "action_list.1._cleaned",
               "condition"
             ],
-            "@local.local_do_workshops_together": [
+            "@local.workshop_start_day": [
               "action_list.2.args.1",
               "action_list.2._raw",
-              "action_list.2._cleaned",
+              "action_list.2._cleaned"
+            ],
+            "@local.benchmark_date": [
               "action_list.3.args.1",
               "action_list.3._raw",
               "action_list.3._cleaned"
-            ],
-            "@local.workshop_start_day": [
-              "action_list.4.args.1",
-              "action_list.4._raw",
-              "action_list.4._cleaned"
-            ],
-            "@local.benchmark_date": [
-              "action_list.5.args.1",
-              "action_list.5._raw",
-              "action_list.5._cleaned"
             ]
           }
         }
@@ -1643,26 +1476,6 @@
             },
             {
               "trigger": "completed",
-              "action_id": "set_field",
-              "args": [
-                "do_workshops_together",
-                "@local.local_do_workshops_together"
-              ],
-              "_raw": "completed | set_field: do_workshops_together: @local.local_do_workshops_together",
-              "_cleaned": "completed | set_field: do_workshops_together: @local.local_do_workshops_together"
-            },
-            {
-              "trigger": "uncompleted",
-              "action_id": "set_field",
-              "args": [
-                "do_workshops_together",
-                "@local.local_do_workshops_together"
-              ],
-              "_raw": "uncompleted | set_field: do_workshops_together: @local.local_do_workshops_together",
-              "_cleaned": "uncompleted | set_field: do_workshops_together: @local.local_do_workshops_together"
-            },
-            {
-              "trigger": "completed",
               "action_id": "emit",
               "args": [
                 "completed"
@@ -1748,62 +1561,6 @@
                     "fieldName": "group_name_default"
                   }
                 ]
-              },
-              "2": {
-                "args": {
-                  "1": [
-                    {
-                      "fullExpression": "@local.local_do_workshops_together",
-                      "matchedExpression": "@local.local_do_workshops_together",
-                      "type": "local",
-                      "fieldName": "local_do_workshops_together"
-                    }
-                  ]
-                },
-                "_raw": [
-                  {
-                    "fullExpression": "completed | set_field: do_workshops_together: @local.local_do_workshops_together",
-                    "matchedExpression": "@local.local_do_workshops_together",
-                    "type": "local",
-                    "fieldName": "local_do_workshops_together"
-                  }
-                ],
-                "_cleaned": [
-                  {
-                    "fullExpression": "completed | set_field: do_workshops_together: @local.local_do_workshops_together",
-                    "matchedExpression": "@local.local_do_workshops_together",
-                    "type": "local",
-                    "fieldName": "local_do_workshops_together"
-                  }
-                ]
-              },
-              "3": {
-                "args": {
-                  "1": [
-                    {
-                      "fullExpression": "@local.local_do_workshops_together",
-                      "matchedExpression": "@local.local_do_workshops_together",
-                      "type": "local",
-                      "fieldName": "local_do_workshops_together"
-                    }
-                  ]
-                },
-                "_raw": [
-                  {
-                    "fullExpression": "uncompleted | set_field: do_workshops_together: @local.local_do_workshops_together",
-                    "matchedExpression": "@local.local_do_workshops_together",
-                    "type": "local",
-                    "fieldName": "local_do_workshops_together"
-                  }
-                ],
-                "_cleaned": [
-                  {
-                    "fullExpression": "uncompleted | set_field: do_workshops_together: @local.local_do_workshops_together",
-                    "matchedExpression": "@local.local_do_workshops_together",
-                    "type": "local",
-                    "fieldName": "local_do_workshops_together"
-                  }
-                ]
               }
             },
             "condition": [
@@ -1823,14 +1580,6 @@
               "action_list.1.args.1",
               "action_list.1._raw",
               "action_list.1._cleaned"
-            ],
-            "@local.local_do_workshops_together": [
-              "action_list.2.args.1",
-              "action_list.2._raw",
-              "action_list.2._cleaned",
-              "action_list.3.args.1",
-              "action_list.3._raw",
-              "action_list.3._cleaned"
             ],
             "!@local.text_box": [
               "condition"
@@ -1861,26 +1610,6 @@
               ],
               "_raw": "uncompleted | set_field: group_name: @local.text_box",
               "_cleaned": "uncompleted | set_field: group_name: @local.text_box"
-            },
-            {
-              "trigger": "completed",
-              "action_id": "set_field",
-              "args": [
-                "do_workshops_together",
-                "@local.local_do_workshops_together"
-              ],
-              "_raw": "completed | set_field: do_workshops_together: @local.local_do_workshops_together",
-              "_cleaned": "completed | set_field: do_workshops_together: @local.local_do_workshops_together"
-            },
-            {
-              "trigger": "uncompleted",
-              "action_id": "set_field",
-              "args": [
-                "do_workshops_together",
-                "@local.local_do_workshops_together"
-              ],
-              "_raw": "uncompleted | set_field: do_workshops_together: @local.local_do_workshops_together",
-              "_cleaned": "uncompleted | set_field: do_workshops_together: @local.local_do_workshops_together"
             },
             {
               "trigger": "completed",
@@ -1969,62 +1698,6 @@
                     "fieldName": "text_box"
                   }
                 ]
-              },
-              "2": {
-                "args": {
-                  "1": [
-                    {
-                      "fullExpression": "@local.local_do_workshops_together",
-                      "matchedExpression": "@local.local_do_workshops_together",
-                      "type": "local",
-                      "fieldName": "local_do_workshops_together"
-                    }
-                  ]
-                },
-                "_raw": [
-                  {
-                    "fullExpression": "completed | set_field: do_workshops_together: @local.local_do_workshops_together",
-                    "matchedExpression": "@local.local_do_workshops_together",
-                    "type": "local",
-                    "fieldName": "local_do_workshops_together"
-                  }
-                ],
-                "_cleaned": [
-                  {
-                    "fullExpression": "completed | set_field: do_workshops_together: @local.local_do_workshops_together",
-                    "matchedExpression": "@local.local_do_workshops_together",
-                    "type": "local",
-                    "fieldName": "local_do_workshops_together"
-                  }
-                ]
-              },
-              "3": {
-                "args": {
-                  "1": [
-                    {
-                      "fullExpression": "@local.local_do_workshops_together",
-                      "matchedExpression": "@local.local_do_workshops_together",
-                      "type": "local",
-                      "fieldName": "local_do_workshops_together"
-                    }
-                  ]
-                },
-                "_raw": [
-                  {
-                    "fullExpression": "uncompleted | set_field: do_workshops_together: @local.local_do_workshops_together",
-                    "matchedExpression": "@local.local_do_workshops_together",
-                    "type": "local",
-                    "fieldName": "local_do_workshops_together"
-                  }
-                ],
-                "_cleaned": [
-                  {
-                    "fullExpression": "uncompleted | set_field: do_workshops_together: @local.local_do_workshops_together",
-                    "matchedExpression": "@local.local_do_workshops_together",
-                    "type": "local",
-                    "fieldName": "local_do_workshops_together"
-                  }
-                ]
               }
             },
             "condition": [
@@ -2045,14 +1718,6 @@
               "action_list.1._raw",
               "action_list.1._cleaned",
               "condition"
-            ],
-            "@local.local_do_workshops_together": [
-              "action_list.2.args.1",
-              "action_list.2._raw",
-              "action_list.2._cleaned",
-              "action_list.3.args.1",
-              "action_list.3._raw",
-              "action_list.3._cleaned"
             ]
           }
         }

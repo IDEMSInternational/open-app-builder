@@ -1,34 +1,36 @@
 import { Injectable } from "@nestjs/common";
-import { InjectConnection, InjectModel } from "@nestjs/sequelize";
 import { EventEmitter2 } from "@nestjs/event-emitter";
-import { Sequelize } from "sequelize";
 import { flattenJson } from "src/utils";
 import { ContactFieldEntry } from "./contact_field.model";
 import { CUSTOM_EVENTS } from "src/types";
+import { DeploymentService } from "src/modules/deployment.service";
 
 /** Legacy binding to make it easier to track expected columns for a table - could be re-introduced for efficiency */
 type ITableColumn = { column_name: string; data_type: string };
 
 @Injectable()
 export class ContactFieldService {
+  private initialised = false;
   // columns: ITableColumn[];
   // columnsHashmap: { [column_name: string]: ITableColumn };
-  tableName: string;
-  constructor(
-    @InjectModel(ContactFieldEntry)
-    private readonly model: typeof ContactFieldEntry,
-    @InjectConnection()
-    private sequelize: Sequelize,
-    private eventEmitter: EventEmitter2
-  ) {
-    this.tableName = this.model.tableName;
-    this.addFlattenJsonBindings(this.model);
+  constructor(private eventEmitter: EventEmitter2, private deploymentService: DeploymentService) {}
+
+  get model() {
+    // only complete init on first request so that deployment service can configure db connections as required
+    if (!this.initialised) {
+      this.addFlattenJsonBindings(this.deploymentService.model(ContactFieldEntry));
+      this.initialised = true;
+    }
+    return this.deploymentService.model(ContactFieldEntry);
+  }
+  get tableName() {
+    return this.model.tableName;
   }
   /** Add hook so that after docs are saved raw json is flattened */
 
-  private async addFlattenJsonBindings(model: typeof ContactFieldEntry) {
+  private addFlattenJsonBindings(model: typeof ContactFieldEntry) {
     // Bind to db save to populate flattened json
-    model.addHook("afterSave", async (instance) => {
+    this.deploymentService.registerHook("afterSave", async (instance) => {
       const rawValuesChanged = instance.changed("raw" as any);
       if (rawValuesChanged) {
         await flattenJson({
@@ -45,7 +47,7 @@ export class ContactFieldService {
       async (columns) => {
         const existing = await this.model.findAll();
         // force save hook to trigger by simpling updating the raw data field
-        await this.sequelize.transaction(async (t) => {
+        await this.deploymentService.client.transaction(async (t) => {
           const _updated = new Date().getTime();
           return Promise.all(
             existing.map((entry) => {

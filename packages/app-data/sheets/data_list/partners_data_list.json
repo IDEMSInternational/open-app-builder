@@ -1,0 +1,69 @@
+{
+  "flow_type": "data_list",
+  "flow_name": "partners_data_list",
+  "status": "released",
+  "data_list_name": "partners",
+  "rows": [
+    {
+      "id": "plh",
+      "splash_page": 1,
+      "name": "PLH",
+      "image_asset": "plh_images/logos/plh.png"
+    },
+    {
+      "id": "unicef",
+      "splash_page": 1,
+      "name": "UNICEF",
+      "image_asset": "plh_images/logos/unicef.png"
+    },
+    {
+      "id": "who",
+      "splash_page": 1,
+      "name": "WHO",
+      "image_asset": "plh_images/logos/who.png"
+    },
+    {
+      "id": "university_of_oxford",
+      "splash_page": 1,
+      "name": "University of Oxford",
+      "image_asset": "plh_images/logos/university_of_oxford.png"
+    },
+    {
+      "id": "cwb",
+      "splash_page": 1,
+      "name": "Clowns Without Borders",
+      "image_asset": "plh_images/logos/cwb.png"
+    },
+    {
+      "id": "uct",
+      "splash_page": 1,
+      "name": "UCT",
+      "image_asset": "plh_images/logos/uct.png"
+    },
+    {
+      "id": "nimr",
+      "splash_page": 2,
+      "name": "NIMR",
+      "image_asset": "plh_images/logos/nimr.png"
+    },
+    {
+      "id": "gisp",
+      "splash_page": 2,
+      "name": "Global Initiative to Support Parents",
+      "image_asset": "plh_images/logos/gisp.png"
+    },
+    {
+      "id": "ics",
+      "splash_page": 2,
+      "name": "ICS",
+      "image_asset": "plh_images/logos/ics.png"
+    },
+    {
+      "id": "idems",
+      "splash_page": 2,
+      "name": "IDEMS",
+      "image_asset": "plh_images/logos/idems.png"
+    }
+  ],
+  "_xlsxPath": "global/data/partners_data_lists.xlsx"
+}

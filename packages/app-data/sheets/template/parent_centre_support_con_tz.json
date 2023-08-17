@@ -1,0 +1,39 @@
+{
+  "flow_type": "template",
+  "flow_name": "parent_centre_support_con_tz",
+  "status": "released",
+  "override_target": "parent_centre_support_con",
+  "override_condition": "@fields._deployment_name == \"plh_tz\"",
+  "rows": [
+    {
+      "type": "template",
+      "name": "parent_centre_support_con",
+      "value": "parent_centre_support_con",
+      "action_list": [
+        {
+          "trigger": "completed",
+          "action_id": "emit",
+          "args": [
+            "completed"
+          ],
+          "_raw": "completed | emit: completed",
+          "_cleaned": "completed | emit: completed"
+        }
+      ],
+      "is_override_target": true,
+      "rows": [
+        {
+          "name": "categories_data",
+          "value": "safeguarding_categories_tz",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "parent_centre_support_con.categories_data"
+        }
+      ],
+      "_nested_name": "parent_centre_support_con"
+    }
+  ],
+  "_xlsxPath": "tz/core_templates/core_templates_parent_centre_tz.xlsx"
+}

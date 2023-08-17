@@ -12,11 +12,9 @@ export function booleanStringToBoolean(str: string) {
   return str;
 }
 
-/**
- * Simple regex to try and match standard country-language format
- * Currently restricted to any codes in the format `ab_ab` or `ab_abc`
- */
-export function isCountryLanguageCode(str: string) {
-  const regex = /[a-z]{2}_[a-z]{2,3}/gi;
-  return regex.test(str);
+/** Convert size in KB to MB with specified number of decimal places */
+export function kbToMB(kb: number, decimalPlaces = 1) {
+  const mb = kb / 1024;
+  const power = 10 ^ decimalPlaces;
+  return Math.round((mb * power) / power);
 }
