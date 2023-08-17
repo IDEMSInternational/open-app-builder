@@ -6,15 +6,7 @@ import { Command } from "commander";
 export function logError(opts: Partial<ILogErrorOptions> = {}) {
   const { msg1, msg2, error, logOnly } = { ...logErrorDefaultOptions, ...opts };
   console.log(
-    boxen(
-      `
-          ${chalk.red(msg1)}
-          
-          ${chalk.yellow(msg2)}
-          
-          `,
-      { padding: 1, borderColor: "red" }
-    )
+    boxen(`${chalk.red(msg1)}\n\n${chalk.yellow(msg2)}`, { padding: 1, borderColor: "red" })
   );
   if (error) {
     console.error(error);
