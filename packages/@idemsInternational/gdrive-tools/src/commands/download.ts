@@ -95,6 +95,13 @@ export class GDriveDownloader {
     await this.setupGdrive();
     console.log(chalk.yellow("Retrieving list of files"));
     const serverFiles = await this.listGdriveFilesRecursively(folderId);
+    if (Object.keys(serverFiles).length === 0) {
+      logError({
+        msg1: "No drive files found. Please ensure that you have access to folder",
+        msg2: `https://drive.google.com/drive/folders/${folderId}`,
+        logOnly: true,
+      });
+    }
     return this.processDownloads(serverFiles);
   }
 
@@ -145,7 +152,6 @@ export class GDriveDownloader {
     const actions = this.prepareSyncActionsList(files);
     await this.processSyncActions(actions);
     this.writeCacheContentsFile(files);
-
     console.log(chalk.green("Download Complete"));
   }
 
