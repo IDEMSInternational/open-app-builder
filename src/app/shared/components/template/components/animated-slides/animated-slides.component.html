@@ -6,7 +6,8 @@
   <div class="section-container">
     <section
       *ngFor="let childRow of _row.rows; let idx = index"
-      [@fadeInOut]="slideParams[idx].animation !== 'fade' ? null : fadeSection[idx]"
+      [@fadeInOut]="slideParams[idx].animation === 'fade' ? fadeSection[idx] : null"
+      [@noFade]="slideParams[idx].animation === 'none' ? fadeSection[idx] : null"
     >
       <plh-template-component [row]="childRow" [parent]="parent"></plh-template-component>
     </section>

@@ -9,6 +9,11 @@ const fadeInOut = [
     transition("in => out", [animate("0.5s")]),
     // todo - could use :enter and :exit properties also (need to confirm doesn't break existing functionality)
   ]),
+  trigger("noFade", [
+    state("in", style({ opacity: 1 })),
+    state("out", style({ opacity: 0 })),
+    transition("* => in", [animate("0s")]), // this line is to allow for a prior fade to actually occur
+  ]),
 ];
 
 const fadeEntryExit = [
