@@ -95,7 +95,7 @@
     },
     {
       "name": "click_history_field_name",
-      "value": "ltp_activity_@local.click_history",
+      "value": "ltp_activity_@local.activity_data.id@local.click_history",
       "_translations": {
         "value": {}
       },
@@ -104,7 +104,13 @@
       "_dynamicFields": {
         "value": [
           {
-            "fullExpression": "ltp_activity_@local.click_history",
+            "fullExpression": "ltp_activity_@local.activity_data.id@local.click_history",
+            "matchedExpression": "@local.activity_data.id",
+            "type": "local",
+            "fieldName": "activity_data"
+          },
+          {
+            "fullExpression": "ltp_activity_@local.activity_data.id@local.click_history",
             "matchedExpression": "@local.click_history",
             "type": "local",
             "fieldName": "click_history"
@@ -112,6 +118,9 @@
         ]
       },
       "_dynamicDependencies": {
+        "@local.activity_data.id": [
+          "value"
+        ],
         "@local.click_history": [
           "value"
         ]
@@ -207,7 +216,7 @@
     },
     {
       "name": "toggle_history_field_name",
-      "value": "ltp_activity_@local.activity_id@local.toggle_history",
+      "value": "ltp_activity_@local.activity_data.id@local.toggle_history",
       "_translations": {
         "value": {}
       },
@@ -216,13 +225,13 @@
       "_dynamicFields": {
         "value": [
           {
-            "fullExpression": "ltp_activity_@local.activity_id@local.toggle_history",
-            "matchedExpression": "@local.activity_id",
+            "fullExpression": "ltp_activity_@local.activity_data.id@local.toggle_history",
+            "matchedExpression": "@local.activity_data.id",
             "type": "local",
-            "fieldName": "activity_id"
+            "fieldName": "activity_data"
           },
           {
-            "fullExpression": "ltp_activity_@local.activity_id@local.toggle_history",
+            "fullExpression": "ltp_activity_@local.activity_data.id@local.toggle_history",
             "matchedExpression": "@local.toggle_history",
             "type": "local",
             "fieldName": "toggle_history"
@@ -230,7 +239,7 @@
         ]
       },
       "_dynamicDependencies": {
-        "@local.activity_id": [
+        "@local.activity_data.id": [
           "value"
         ],
         "@local.toggle_history": [
@@ -319,7 +328,7 @@
     },
     {
       "type": "button",
-      "name": "button_@local.activity_id",
+      "name": "button_@local.activity_data.id",
       "value": "@local.activity_data.title",
       "action_list": [
         {
@@ -366,14 +375,14 @@
               "_cleaned": "changed | set_field: @local.activity_data.favourite_field: this.value"
             },
             {
-              "trigger": "click",
+              "trigger": "changed",
               "action_id": "set_field",
               "args": [
                 "@local.toggle_history_field_name",
                 "@local.toggle_history_value"
               ],
-              "_raw": "click | set_field: @local.toggle_history_field_name: @local.toggle_history_value",
-              "_cleaned": "click | set_field: @local.toggle_history_field_name: @local.toggle_history_value"
+              "_raw": "changed | set_field: @local.toggle_history_field_name: @local.toggle_history_value",
+              "_cleaned": "changed | set_field: @local.toggle_history_field_name: @local.toggle_history_value"
             }
           ],
           "parameter_list": {
@@ -381,7 +390,7 @@
             "icon_true_asset": "plh_images/icons/heart_filled.svg",
             "icon_false_asset": "plh_images/icons/heart.svg"
           },
-          "_nested_name": "button_@local.activity_id.toggle_bar_@local.activity_data.id",
+          "_nested_name": "button_@local.activity_data.id.toggle_bar_@local.activity_data.id",
           "_dynamicFields": {
             "name": [
               {
@@ -449,13 +458,13 @@
                 },
                 "_raw": [
                   {
-                    "fullExpression": "click | set_field: @local.toggle_history_field_name: @local.toggle_history_value",
+                    "fullExpression": "changed | set_field: @local.toggle_history_field_name: @local.toggle_history_value",
                     "matchedExpression": "@local.toggle_history_field_name",
                     "type": "local",
                     "fieldName": "toggle_history_field_name"
                   },
                   {
-                    "fullExpression": "click | set_field: @local.toggle_history_field_name: @local.toggle_history_value",
+                    "fullExpression": "changed | set_field: @local.toggle_history_field_name: @local.toggle_history_value",
                     "matchedExpression": "@local.toggle_history_value",
                     "type": "local",
                     "fieldName": "toggle_history_value"
@@ -463,13 +472,13 @@
                 ],
                 "_cleaned": [
                   {
-                    "fullExpression": "click | set_field: @local.toggle_history_field_name: @local.toggle_history_value",
+                    "fullExpression": "changed | set_field: @local.toggle_history_field_name: @local.toggle_history_value",
                     "matchedExpression": "@local.toggle_history_field_name",
                     "type": "local",
                     "fieldName": "toggle_history_field_name"
                   },
                   {
-                    "fullExpression": "click | set_field: @local.toggle_history_field_name: @local.toggle_history_value",
+                    "fullExpression": "changed | set_field: @local.toggle_history_field_name: @local.toggle_history_value",
                     "matchedExpression": "@local.toggle_history_value",
                     "type": "local",
                     "fieldName": "toggle_history_value"
@@ -479,13 +488,13 @@
             },
             "_nested_name": [
               {
-                "fullExpression": "button_@local.activity_id.toggle_bar_@local.activity_data.id",
-                "matchedExpression": "@local.activity_id.toggle_bar_",
+                "fullExpression": "button_@local.activity_data.id.toggle_bar_@local.activity_data.id",
+                "matchedExpression": "@local.activity_data.id.toggle_bar_",
                 "type": "local",
-                "fieldName": "activity_id"
+                "fieldName": "activity_data"
               },
               {
-                "fullExpression": "button_@local.activity_id.toggle_bar_@local.activity_data.id",
+                "fullExpression": "button_@local.activity_data.id.toggle_bar_@local.activity_data.id",
                 "matchedExpression": "@local.activity_data.id",
                 "type": "local",
                 "fieldName": "activity_data"
@@ -513,20 +522,20 @@
               "action_list.1._raw",
               "action_list.1._cleaned"
             ],
-            "@local.activity_id.toggle_bar_": [
+            "@local.activity_data.id.toggle_bar_": [
               "_nested_name"
             ]
           }
         }
       ],
-      "_nested_name": "button_@local.activity_id",
+      "_nested_name": "button_@local.activity_data.id",
       "_dynamicFields": {
         "name": [
           {
-            "fullExpression": "button_@local.activity_id",
-            "matchedExpression": "@local.activity_id",
+            "fullExpression": "button_@local.activity_data.id",
+            "matchedExpression": "@local.activity_data.id",
             "type": "local",
-            "fieldName": "activity_id"
+            "fieldName": "activity_data"
           }
         ],
         "value": [
@@ -627,25 +636,23 @@
         },
         "_nested_name": [
           {
-            "fullExpression": "button_@local.activity_id",
-            "matchedExpression": "@local.activity_id",
+            "fullExpression": "button_@local.activity_data.id",
+            "matchedExpression": "@local.activity_data.id",
             "type": "local",
-            "fieldName": "activity_id"
+            "fieldName": "activity_data"
           }
         ]
       },
       "_dynamicDependencies": {
-        "@local.activity_id": [
+        "@local.activity_data.id": [
           "name",
+          "action_list.0.args.0",
+          "action_list.0._raw",
+          "action_list.0._cleaned",
           "_nested_name"
         ],
         "@local.activity_data.title": [
           "value"
-        ],
-        "@local.activity_data.id": [
-          "action_list.0.args.0",
-          "action_list.0._raw",
-          "action_list.0._cleaned"
         ],
         "@local.click_history_field_name": [
           "action_list.1.args.0",
