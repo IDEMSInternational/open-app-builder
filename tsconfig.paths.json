@@ -1,3 +1,5 @@
+// tsconfig to allow typescript import from packages (not via yarn workspace)
+// not currently in use but may migrate in future alongside nx
 {
   "compileOnSave": false,
   "compilerOptions": {
