@@ -152,6 +152,7 @@
       "individual": true,
       "together": true,
       "priority": 11,
+      "icon_asset": "@data.mode.learn.icon_asset",
       "has_single_task": true,
       "title": "@data.learn.warning_signs.title",
       "_translations": {
@@ -171,6 +172,7 @@
       "individual": true,
       "together": true,
       "priority": 12,
+      "icon_asset": "@data.mode.learn.icon_asset",
       "has_single_task": true,
       "title": "@data.learn.use_voice.title",
       "_translations": {
@@ -190,6 +192,7 @@
       "individual": true,
       "together": true,
       "priority": 13,
+      "icon_asset": "@data.mode.learn.icon_asset",
       "has_single_task": true,
       "title": "@data.learn.use_body.title",
       "_translations": {

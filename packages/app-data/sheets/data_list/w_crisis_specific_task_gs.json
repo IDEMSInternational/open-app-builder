@@ -8,15 +8,16 @@
       "individual": true,
       "together": true,
       "priority": 11,
+      "icon_asset": "@data.mode.read.icon_asset",
       "story_id": "rape",
       "has_single_task": false,
-      "title": "@global.story @global.part_connector @data.story.rape.title",
+      "title": "@data.story.rape.title",
       "_translations": {
         "title": {}
       },
       "_translatedFields": {
         "title": {
-          "eng": "@global.story @global.part_connector @data.story.rape.title"
+          "eng": "@data.story.rape.title"
         }
       }
     },
@@ -25,15 +26,16 @@
       "individual": true,
       "together": true,
       "priority": 13,
+      "icon_asset": "@data.mode.read.icon_asset",
       "story_id": "violence",
       "has_single_task": false,
-      "title": "@global.story @global.part_connector @data.story.violence.title",
+      "title": "@data.story.violence.title",
       "_translations": {
         "title": {}
       },
       "_translatedFields": {
         "title": {
-          "eng": "@global.story @global.part_connector @data.story.violence.title"
+          "eng": "@data.story.violence.title"
         }
       }
     },
@@ -42,6 +44,7 @@
       "individual": true,
       "together": true,
       "priority": 71,
+      "icon_asset": "@data.mode.learn.icon_asset",
       "has_single_task": true,
       "template": "w_crisis_learn_temp",
       "title": "Learn",

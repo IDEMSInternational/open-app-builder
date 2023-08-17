@@ -8,6 +8,7 @@
       "individual": true,
       "together": false,
       "priority": 11,
+      "icon_asset": "@data.mode.quiz.icon_asset",
       "has_single_task": true,
       "template": "w_praise_question_1",
       "title": "Question",
@@ -46,15 +47,16 @@
       "individual": true,
       "together": true,
       "priority": 12,
+      "icon_asset": "@data.mode.read.icon_asset",
       "story_id": "praise",
       "has_single_task": false,
-      "title": "@global.story @global.part_connector @data.story.praise.title",
+      "title": "@data.story.praise.title",
       "_translations": {
         "title": {}
       },
       "_translatedFields": {
         "title": {
-          "eng": "@global.story @global.part_connector @data.story.praise.title"
+          "eng": "@data.story.praise.title"
         }
       }
     },
@@ -63,6 +65,7 @@
       "individual": false,
       "together": true,
       "priority": 71,
+      "icon_asset": "@data.mode.try.icon_asset",
       "has_single_task": true,
       "template": "w_praise_try",
       "title": "Try it out!",

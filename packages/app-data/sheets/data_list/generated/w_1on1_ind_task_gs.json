@@ -152,6 +152,7 @@
       "individual": true,
       "together": false,
       "priority": 14,
+      "icon_asset": "@data.mode.quiz.icon_asset",
       "has_single_task": true,
       "title": "Question",
       "_translations": {

@@ -90,6 +90,7 @@
       "individual": true,
       "together": true,
       "priority": 11,
+      "icon_asset": "@data.mode.relax.icon_asset",
       "has_single_task": true,
       "title": "Relax",
       "_translations": {
@@ -111,6 +112,7 @@
       "individual": true,
       "together": true,
       "priority": 12,
+      "icon_asset": "@data.mode.think.icon_asset",
       "has_single_task": true,
       "title": "Recognise",
       "_translations": {
@@ -132,6 +134,7 @@
       "individual": true,
       "together": true,
       "priority": 13,
+      "icon_asset": "@data.mode.think.icon_asset",
       "has_single_task": true,
       "title": "Reward",
       "_translations": {

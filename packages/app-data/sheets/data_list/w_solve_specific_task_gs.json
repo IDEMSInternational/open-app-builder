@@ -8,16 +8,17 @@
       "individual": true,
       "together": true,
       "priority": 11,
+      "icon_asset": "@data.mode.read.icon_asset",
       "story_id": "neg_solve",
       "has_single_task": true,
       "template": "w_solve_read_1",
-      "title": "@global.story @global.part_connector @data.story.neg_solve.title",
+      "title": "@data.story.neg_solve.title",
       "_translations": {
         "title": {}
       },
       "_translatedFields": {
         "title": {
-          "eng": "@global.story @global.part_connector @data.story.neg_solve.title"
+          "eng": "@data.story.neg_solve.title"
         }
       }
     },
@@ -26,15 +27,16 @@
       "individual": true,
       "together": true,
       "priority": 71,
+      "icon_asset": "@data.mode.read.icon_asset",
       "story_id": "pos_solve",
       "has_single_task": false,
-      "title": "@global.story @global.part_connector @data.story.pos_solve.title",
+      "title": "@data.story.pos_solve.title",
       "_translations": {
         "title": {}
       },
       "_translatedFields": {
         "title": {
-          "eng": "@global.story @global.part_connector @data.story.pos_solve.title"
+          "eng": "@data.story.pos_solve.title"
         }
       }
     },
@@ -43,6 +45,7 @@
       "individual": true,
       "together": true,
       "priority": 74,
+      "icon_asset": "@data.mode.learn.icon_asset",
       "has_single_task": true,
       "template": "w_solve_learn_temp",
       "title": "Learn",
@@ -62,6 +65,7 @@
       "individual": false,
       "together": true,
       "priority": 75,
+      "icon_asset": "@data.mode.try.icon_asset",
       "has_single_task": true,
       "template": "w_solve_try",
       "title": "Try it out!",

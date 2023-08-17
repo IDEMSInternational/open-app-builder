@@ -152,6 +152,7 @@
       "individual": true,
       "together": true,
       "priority": 11,
+      "icon_asset": "@data.mode.think.icon_asset",
       "has_single_task": true,
       "title": "Think",
       "_translations": {
@@ -173,14 +174,15 @@
       "individual": true,
       "together": true,
       "priority": 12,
+      "icon_asset": "@data.mode.read.icon_asset",
       "has_single_task": false,
-      "title": "@global.story @global.part_connector @data.story.neg_instruct.title",
+      "title": "@data.story.neg_instruct.title",
       "_translations": {
         "title": {}
       },
       "_translatedFields": {
         "title": {
-          "eng": "@global.story @global.part_connector @data.story.neg_instruct.title"
+          "eng": "@data.story.neg_instruct.title"
         }
       },
       "story_id": "neg_instruct",
@@ -192,14 +194,15 @@
       "individual": true,
       "together": true,
       "priority": 14,
+      "icon_asset": "@data.mode.read.icon_asset",
       "has_single_task": false,
-      "title": "@global.story @global.part_connector @data.story.pos_instruct.title",
+      "title": "@data.story.pos_instruct.title",
       "_translations": {
         "title": {}
       },
       "_translatedFields": {
         "title": {
-          "eng": "@global.story @global.part_connector @data.story.pos_instruct.title"
+          "eng": "@data.story.pos_instruct.title"
         }
       },
       "story_id": "pos_instruct",
