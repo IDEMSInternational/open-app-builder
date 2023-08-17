@@ -55,10 +55,12 @@ const handleError = (e) => {
 process.on("SIGINT", handleExit);
 process.on("uncaughtException", handleError);
 
-async function main() {
-  await program.parseAsync(process.argv);
+if (require.main === module) {
+  program.parseAsync(process.argv).then(handleExit).catch(handleError);
 }
-main();
+
+// export program to be called via bin
+export { program };
 
 /** Allow programmatic call of command parser */
 export const parseCommand = async (cmd: string) => {
