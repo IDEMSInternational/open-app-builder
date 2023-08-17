@@ -26,9 +26,9 @@ jobs:
   test_appetize:
     needs: build
     runs-on: ubuntu-latest
-    # Load named environment which populates appetize deployment-dependent secrets
+    # Use deployment-dependent environment which populates appetize secrets accordingly
     environment: 
-      name: ${{ needs.set_deployment_name.outputs.DEPLOYMENT_NAME }}
+      name: ${{ needs.build.outputs.DEPLOYMENT_NAME }}
     env:
       DEPLOYMENT_NAME: ${{ needs.build.outputs.DEPLOYMENT_NAME }}
     steps:
