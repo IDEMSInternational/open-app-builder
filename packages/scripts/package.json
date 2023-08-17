@@ -3,20 +3,17 @@
   "version": "2.0.0",
   "description": "",
   "bin": {
-    "app-scripts": "./bin/app-scripts"
+    "app-scripts": "./bin/app-scripts",
+    "app-workflow": "./bin/app-workflow"
   },
   "main": "src/commands/index.ts",
   "scripts": {
     "start": "ts-node src/commands/index.ts",
-    "dev": "ts-node-dev --respawn --watch src/**/*.ts src/commands/index.ts",
-    "test": "jasmine-ts --config=jasmine.json",
-    "test:watch": "nodemon --ext ts --exec 'jasmine-ts --config=jasmine.json'",
+    "exec": "./bin/scripts",
     "build": "ts-node build.ts",
-    "exec": "node build/packages/scripts/src/commands/index.js",
-    "pkg": "pkg . --output ./exec/idems-app-scripts"
-  },
-  "pkg": {
-    "scripts": "build/**/*.js"
+    "dev": "ts-node-dev --transpile-only --respawn --watch src src/commands/index.ts",
+    "test": "jasmine-ts --config=jasmine.json",
+    "test:watch": "nodemon --ext ts --exec 'jasmine-ts --config=jasmine.json'"
   },
   "author": "",
   "license": "ISC",
@@ -32,7 +29,9 @@
     "data-models": "workspace:*",
     "fs-extra": "^9.0.1",
     "inquirer": "^7.3.3",
+    "log-update": "^4.0.0",
     "node-rsa": "^1.1.1",
+    "open": "^8",
     "p-queue": "^6.6.2",
     "semver": "^7.5.2",
     "shared": "workspace:*",
@@ -51,14 +50,13 @@
     "@types/jasmine": "^3.10.6",
     "@types/node-rsa": "^1.1.1",
     "@types/semver": "^7.3.9",
-    "esbuild": "^0.19.2",
     "jasmine": "^3.99.0",
     "jasmine-spec-reporter": "^7.0.0",
     "jasmine-ts": "^0.4.0",
     "mock-fs": "^5.2.0",
     "nodemon": "^2.0.19",
-    "pkg": "^5.5.1",
     "ts-node": "^10.8.0",
-    "ts-node-dev": "^1.0.0"
+    "ts-node-dev": "^2.0.0",
+    "tsup": "^7.2.0"
   }
 }

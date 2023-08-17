@@ -11,5 +11,3 @@ program.addCommand(decryptCmd);
 program.addCommand(encryptCmd);
 
 export default program;
-
-// allowCmdDirectCall(program)

@@ -16,5 +16,3 @@ program.addCommand(importCmd);
 program.addCommand(setCmd);
 
 export default program;
-
-// allowCmdDirectCall(program)

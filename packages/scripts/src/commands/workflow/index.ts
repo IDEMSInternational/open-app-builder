@@ -8,5 +8,4 @@ const program = new Command("workflow");
 /** add sub-commands from child folders */
 program.addCommand(runCmd);
 
-// allowCmdDirectCall(program)
 export default program;

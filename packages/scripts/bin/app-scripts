@@ -1,0 +1,22 @@
+#!/usr/bin/env node
+
+"use strict";
+
+const { spawnSync } = require("child_process");
+const { existsSync } = require("fs");
+const { resolve } = require("path");
+
+process.title = "app-scripts";
+
+const execPath = resolve(__dirname, "../dist/index.js");
+
+// TODO - ensure up-to-date (likely use NX)
+// Temp workaround for first run
+if (!existsSync(execPath)) {
+  console.log("Building scripts for execution...");
+  spawnSync("yarn build", { cwd: resolve(__dirname, "../"), shell: true, stdio: "inherit" });
+}
+
+const { program } = require(execPath);
+
+program.parseAsync(process.argv);

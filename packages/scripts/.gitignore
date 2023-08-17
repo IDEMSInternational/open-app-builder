@@ -3,6 +3,7 @@ config/*
 !config/public.key
 !config/*.enc
 build
+dist
 exec
 
 test/data/cache

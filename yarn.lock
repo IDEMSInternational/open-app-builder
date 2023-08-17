@@ -29546,8 +29546,8 @@ __metadata:
     workflows: "workspace:*"
     xlsx: ^0.18.5
   bin:
-    scripts: ./bin/scripts
-    workflow: ./bin/workflow
+    app-scripts: ./bin/app-scripts
+    app-workflow: ./bin/app-workflow
   languageName: unknown
   linkType: soft
 
