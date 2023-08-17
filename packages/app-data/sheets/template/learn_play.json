@@ -62,7 +62,7 @@
     },
     {
       "name": "activity",
-      "value": "ltp_activity_@local.activity_id",
+      "value": "ltp_activity_@local.activity_data.id",
       "_translations": {
         "value": {}
       },
@@ -71,15 +71,15 @@
       "_dynamicFields": {
         "value": [
           {
-            "fullExpression": "ltp_activity_@local.activity_id",
-            "matchedExpression": "@local.activity_id",
+            "fullExpression": "ltp_activity_@local.activity_data.id",
+            "matchedExpression": "@local.activity_data.id",
             "type": "local",
-            "fieldName": "activity_id"
+            "fieldName": "activity_data"
           }
         ]
       },
       "_dynamicDependencies": {
-        "@local.activity_id": [
+        "@local.activity_data.id": [
           "value"
         ]
       }
@@ -631,7 +631,7 @@
     },
     {
       "name": "toggle_history_field_name",
-      "value": "ltp_activity_@local.activity_id@local.toggle_history",
+      "value": "ltp_activity_@local.activity_data.id@local.toggle_history",
       "_translations": {
         "value": {}
       },
@@ -640,13 +640,13 @@
       "_dynamicFields": {
         "value": [
           {
-            "fullExpression": "ltp_activity_@local.activity_id@local.toggle_history",
-            "matchedExpression": "@local.activity_id",
+            "fullExpression": "ltp_activity_@local.activity_data.id@local.toggle_history",
+            "matchedExpression": "@local.activity_data.id",
             "type": "local",
-            "fieldName": "activity_id"
+            "fieldName": "activity_data"
           },
           {
-            "fullExpression": "ltp_activity_@local.activity_id@local.toggle_history",
+            "fullExpression": "ltp_activity_@local.activity_data.id@local.toggle_history",
             "matchedExpression": "@local.toggle_history",
             "type": "local",
             "fieldName": "toggle_history"
@@ -654,7 +654,7 @@
         ]
       },
       "_dynamicDependencies": {
-        "@local.activity_id": [
+        "@local.activity_data.id": [
           "value"
         ],
         "@local.toggle_history": [
@@ -760,14 +760,14 @@
           "_cleaned": "changed | set_field: @local.activity_data.favourite_field: this.value"
         },
         {
-          "trigger": "click",
+          "trigger": "changed",
           "action_id": "set_field",
           "args": [
             "@local.toggle_history_field_name",
             "@local.toggle_history_value"
           ],
-          "_raw": "click | set_field: @local.toggle_history_field_name: @local.toggle_history_value",
-          "_cleaned": "click | set_field: @local.toggle_history_field_name: @local.toggle_history_value"
+          "_raw": "changed | set_field: @local.toggle_history_field_name: @local.toggle_history_value",
+          "_cleaned": "changed | set_field: @local.toggle_history_field_name: @local.toggle_history_value"
         }
       ],
       "parameter_list": {
@@ -834,13 +834,13 @@
             },
             "_raw": [
               {
-                "fullExpression": "click | set_field: @local.toggle_history_field_name: @local.toggle_history_value",
+                "fullExpression": "changed | set_field: @local.toggle_history_field_name: @local.toggle_history_value",
                 "matchedExpression": "@local.toggle_history_field_name",
                 "type": "local",
                 "fieldName": "toggle_history_field_name"
               },
               {
-                "fullExpression": "click | set_field: @local.toggle_history_field_name: @local.toggle_history_value",
+                "fullExpression": "changed | set_field: @local.toggle_history_field_name: @local.toggle_history_value",
                 "matchedExpression": "@local.toggle_history_value",
                 "type": "local",
                 "fieldName": "toggle_history_value"
@@ -848,13 +848,13 @@
             ],
             "_cleaned": [
               {
-                "fullExpression": "click | set_field: @local.toggle_history_field_name: @local.toggle_history_value",
+                "fullExpression": "changed | set_field: @local.toggle_history_field_name: @local.toggle_history_value",
                 "matchedExpression": "@local.toggle_history_field_name",
                 "type": "local",
                 "fieldName": "toggle_history_field_name"
               },
               {
-                "fullExpression": "click | set_field: @local.toggle_history_field_name: @local.toggle_history_value",
+                "fullExpression": "changed | set_field: @local.toggle_history_field_name: @local.toggle_history_value",
                 "matchedExpression": "@local.toggle_history_value",
                 "type": "local",
                 "fieldName": "toggle_history_value"
