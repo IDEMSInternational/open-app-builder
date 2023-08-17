@@ -16,18 +16,28 @@ import { TemplateContainerComponent } from "../template-container.component";
  * e.g. `_row`
  */
 export class TemplateBaseComponent implements ITemplateRowProps {
+  /** @ignore */
   _row: FlowTypes.TemplateRow;
-  /** specific data used in component rendering */
+
+  /**
+   * @ignore
+   * specific data used in component rendering
+   **/
   @Input() set row(row: FlowTypes.TemplateRow) {
     this._row = row;
   }
-  /** reference to parent template container - does not have setter as should remain static */
+
+  /**
+   * @ignore
+   * reference to parent template container - does not have setter as should remain static
+   **/
   @Input() parent: TemplateContainerComponent;
   constructor() {}
 
   /**
    * Whenever actions are triggered handle in the parent template component
    * Actions are grouped by trigger, only emitting specific event handler (e.g. click)
+   * @ignore
    */
   triggerActions(trigger: FlowTypes.TemplateRowAction["trigger"] = "click") {
     if (this._row.disabled && this._row.type !== "accordion_section") {
@@ -39,7 +49,10 @@ export class TemplateBaseComponent implements ITemplateRowProps {
     return this.parent.handleActions(actionsForTrigger, this._row);
   }
 
-  /** Update the current value of the row by setting a local variable that matches */
+  /**
+   * Update the current value of the row by setting a local variable that matches
+   * @ignore
+   **/
   setValue(value: any) {
     // console.log("setting value", value);
     const action: FlowTypes.TemplateRowAction = {
@@ -50,5 +63,6 @@ export class TemplateBaseComponent implements ITemplateRowProps {
     return this.parent.handleActions([action], this._row);
   }
 
+  /** @ignore */
   trackByRow = (index: number, row: FlowTypes.TemplateRow) => this.parent.trackByRow(index, row);
 }

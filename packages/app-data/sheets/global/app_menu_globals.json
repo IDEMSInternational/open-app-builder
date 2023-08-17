@@ -21,7 +21,7 @@
     {
       "type": "declare_global_constant",
       "name": "test_mode_code",
-      "value": "ParentApp_test",
+      "value": "ParentApp_Test",
       "_translations": {
         "value": {}
       },
@@ -78,6 +78,31 @@
           "za_tn": true,
           "za_xh": true,
           "za_zu": true
+        }
+      }
+    },
+    {
+      "type": "declare_global_constant",
+      "name": "language",
+      "value": "Language",
+      "_translations": {
+        "value": {
+          "tz_sw": true,
+          "za_af": true,
+          "za_st": true,
+          "za_tn": true,
+          "za_xh": true,
+          "za_zu": true
+        }
+      }
+    },
+    {
+      "type": "declare_global_constant",
+      "name": "user_info",
+      "value": "Your Profile",
+      "_translations": {
+        "value": {
+          "tz_sw": true
         }
       }
     }

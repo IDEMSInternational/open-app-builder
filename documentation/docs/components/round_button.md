@@ -1,5 +1,6 @@
 # Round button
 
+A round button is an interactive element with a circular appearance. It is used to trigger actions, such as navigating through different screens or menus, or initiating specific operations within the app. Round buttons can have different colours, sizes, and even icons within them to provide visual cues about their functionality.
 ## Example
 
 | type        | name                                      |parameter_list |
@@ -10,7 +11,7 @@
 ![](images/round_button.png)
 
 [Google Sheet Demo](https://docs.google.com/spreadsheets/d/161GZue4jkQNJzyfYvMWesMp2vwvbkJgpNqkDlVIGJDw/edit#gid=569531329)   
-[Live Preview Demo](https://plh-global.web.app/template/comp_round_button)
+[Live Preview Demo](https://idems-debug.web.app/template/comp_round_button)
 
 ## Parameters
 
@@ -23,7 +24,7 @@
 |style                  |yellow                  |Button colour yellow|
 |style                  |orange                  |Button colour orange|
 |style                  |dark_orange             |Button colour dark orange|
-|style                  |home_screen             |Button colour primary positioned to the righthand side of the screen|
+|style                  |home_screen             |Button colour primary positioned to the right hand side of the screen|
 |text                   |empty string (default)|No text on the button|
 |text                   |string                  |Any string as a button text|
 |disabled	            |false (default)         |To be removed|

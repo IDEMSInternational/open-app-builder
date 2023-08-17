@@ -1,4 +1,6 @@
+import { resolve } from "path";
 import type { IDeploymentWorkflows } from "./workflow.model";
+
 /** Default workflows made available to all deployments */
 const workflows: IDeploymentWorkflows = {
   // Copy app-data assets directly to src assets
@@ -8,12 +10,7 @@ const workflows: IDeploymentWorkflows = {
     steps: [
       {
         name: "populate_src_assets",
-        function: async ({ tasks, config }) =>
-          tasks.appData.populateSrcAssets({
-            appAssetsFolder: config.app_data.assets_output_path,
-            appSheetsFolder: config.app_data.sheets_output_path,
-            appTranslationsFolder: config.app_data.translations_output_path,
-          }),
+        function: async ({ tasks }) => tasks.appData.copyDeploymentDataToApp(),
       },
     ],
   },
@@ -24,6 +21,20 @@ const workflows: IDeploymentWorkflows = {
         name: "Clear",
         function: async ({ tasks, config }) =>
           tasks.file.remove({ src: config.workflows.task_cache_path }),
+      },
+    ],
+  },
+  translate_vtt_files: {
+    label: "Find .vtt files and generate new ones translated to the target language",
+    steps: [
+      {
+        name: "translate_vtt_files",
+        function: async ({ tasks, config }) => {
+          const { output_path } = config.app_data;
+          const translationsPath = resolve(output_path, "translations");
+          const assetsPath = resolve(output_path, "assets");
+          await tasks.subtitles.translateAllVttFilesAndSave(translationsPath, assetsPath, "global");
+        },
       },
     ],
   },

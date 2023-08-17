@@ -7,5 +7,13 @@
       }
     }
   ],
-  "spec_files": ["**/*.[sS]pec.ts"]
+
+  "spec_files": ["src/**/*.[sS]pec.ts"],
+  "helpers": ["test/helpers/**/*.ts"],
+  "env": {
+    "failSpecWithNoExpectations": false,
+    "stopSpecOnExpectationFailure": false,
+    "stopOnSpecFailure": false,
+    "random": false
+  }
 }

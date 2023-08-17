@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from "@angular/router";
 import { ModalController } from "@ionic/angular";
 import { first } from "rxjs/operators";
 import { FlowTypes } from "src/app/shared/model";
+import { SyncServiceBase } from "src/app/shared/services/syncService.base";
 import { arrayToHashmapArray } from "src/app/shared/utils";
 import { ITemplatePopupComponentProps, TemplatePopupComponent } from "../components/layout/popup";
 import { ITemplateContainerProps } from "../models";
@@ -20,13 +21,15 @@ const log = SHOW_DEBUG_LOGS ? console.log : () => null;
  *
  * ...
  */
-export class TemplateNavService {
+export class TemplateNavService extends SyncServiceBase {
   constructor(
     private modalCtrl: ModalController,
     private location: Location,
     private router: Router,
     private route: ActivatedRoute
-  ) {}
+  ) {
+    super("TemplateNav");
+  }
 
   /**
    * Track list of modals created. As we can navigate repeatedly to the same page we want to avoid recreating same modals

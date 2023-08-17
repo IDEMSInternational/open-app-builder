@@ -1,0 +1,809 @@
+{
+  "flow_type": "data_list",
+  "flow_subtype": "campaign_rows",
+  "flow_name": "nf_inactive_week_month",
+  "status": "released",
+  "rows": [
+    {
+      "id": "nf_inactive_1",
+      "workshop": "independent",
+      "message_type": "inactive",
+      "action_list": [
+        {
+          "trigger": "sent",
+          "action_id": "set_field",
+          "args": [
+            "nf_inactive_1_sent",
+            true
+          ],
+          "_raw": "sent | set_field: nf_inactive_1_sent : true",
+          "_cleaned": "sent | set_field: nf_inactive_1_sent : true"
+        }
+      ],
+      "priority": 1,
+      "campaign_list": [
+        "nf_inactive_week",
+        "nf_inactive_month"
+      ],
+      "title": "Take a break with @global.parent_app",
+      "_translations": {
+        "title": {
+          "tz_sw": true
+        },
+        "text": {
+          "tz_sw": true
+        }
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Take a break with @global.parent_app"
+        },
+        "text": {
+          "eng": "Parenting can be hard, but @global.parent_app is here to help you win. Tap here to find practical tips for you and your family."
+        }
+      },
+      "text": "Parenting can be hard, but @global.parent_app is here to help you win. Tap here to find practical tips for you and your family."
+    },
+    {
+      "id": "nf_inactive_2",
+      "workshop": "independent",
+      "message_type": "inactive",
+      "action_list": [
+        {
+          "trigger": "sent",
+          "action_id": "set_field",
+          "args": [
+            "nf_inactive_2_sent",
+            true
+          ],
+          "_raw": "sent | set_field: nf_inactive_2_sent : true",
+          "_cleaned": "sent | set_field: nf_inactive_2_sent : true"
+        }
+      ],
+      "priority": 1,
+      "campaign_list": [
+        "nf_inactive_week",
+        "nf_inactive_month"
+      ],
+      "title": "@global.parent_app is here for you",
+      "_translations": {
+        "title": {
+          "tz_sw": true
+        },
+        "text": {
+          "tz_sw": true
+        }
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "@global.parent_app is here for you"
+        },
+        "text": {
+          "eng": "@fields.user_name, do you ever feel stressed as a parent? @global.parent_app is here to help you feel more calm and focused. Tap here to find out more."
+        }
+      },
+      "text": "@fields.user_name, do you ever feel stressed as a parent? @global.parent_app is here to help you feel more calm and focused. Tap here to find out more."
+    },
+    {
+      "id": "nf_inactive_3",
+      "workshop": "independent",
+      "message_type": "inactive",
+      "action_list": [
+        {
+          "trigger": "sent",
+          "action_id": "set_field",
+          "args": [
+            "nf_inactive_3_sent",
+            true
+          ],
+          "_raw": "sent | set_field: nf_inactive_3_sent : true",
+          "_cleaned": "sent | set_field: nf_inactive_3_sent : true"
+        }
+      ],
+      "priority": 1,
+      "campaign_list": [
+        "nf_inactive_week",
+        "nf_inactive_month"
+      ],
+      "title": "Get some help in @global.parent_app",
+      "_translations": {
+        "title": {
+          "tz_sw": true
+        },
+        "text": {
+          "tz_sw": true
+        }
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Get some help in @global.parent_app"
+        },
+        "text": {
+          "eng": "Millions of parents found the tips in @global.parent_app useful, and you can access them too. Tap here to explore."
+        }
+      },
+      "text": "Millions of parents found the tips in @global.parent_app useful, and you can access them too. Tap here to explore."
+    },
+    {
+      "id": "nf_inactive_4",
+      "workshop": "independent",
+      "message_type": "inactive",
+      "action_list": [
+        {
+          "trigger": "sent",
+          "action_id": "set_field",
+          "args": [
+            "nf_inactive_4_sent",
+            true
+          ],
+          "_raw": "sent | set_field: nf_inactive_4_sent : true",
+          "_cleaned": "sent | set_field: nf_inactive_4_sent : true"
+        }
+      ],
+      "priority": 1,
+      "campaign_list": [
+        "nf_inactive_week",
+        "nf_inactive_month"
+      ],
+      "title": "Make a difference with @global.parent_app",
+      "_translations": {
+        "title": {
+          "tz_sw": true
+        },
+        "text": {
+          "tz_sw": true
+        }
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Make a difference with @global.parent_app"
+        },
+        "text": {
+          "eng": "Need some help with your teen's behaviour? @global.parent_app is here for you. Tap here to check it out."
+        }
+      },
+      "text": "Need some help with your teen's behaviour? @global.parent_app is here for you. Tap here to check it out."
+    },
+    {
+      "id": "nf_inactive_5",
+      "workshop": "independent",
+      "message_type": "inactive",
+      "action_list": [
+        {
+          "trigger": "sent",
+          "action_id": "set_field",
+          "args": [
+            "nf_inactive_5_sent",
+            true
+          ],
+          "_raw": "sent | set_field: nf_inactive_5_sent : true",
+          "_cleaned": "sent | set_field: nf_inactive_5_sent : true"
+        }
+      ],
+      "priority": 1,
+      "campaign_list": [
+        "nf_inactive_week",
+        "nf_inactive_month"
+      ],
+      "title": "@global.parent_app can help you",
+      "_translations": {
+        "title": {
+          "tz_sw": true
+        },
+        "text": {
+          "tz_sw": true
+        }
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "@global.parent_app can help you"
+        },
+        "text": {
+          "eng": "Want to invest in yourself and your family? 1 minute in @global.parent_app already makes a difference! Tap here to find out more."
+        }
+      },
+      "text": "Want to invest in yourself and your family? 1 minute in @global.parent_app already makes a difference! Tap here to find out more."
+    },
+    {
+      "id": "nf_inactive_6",
+      "workshop": "independent",
+      "message_type": "inactive",
+      "action_list": [
+        {
+          "trigger": "sent",
+          "action_id": "set_field",
+          "args": [
+            "nf_inactive_6_sent",
+            true
+          ],
+          "_raw": "sent | set_field: nf_inactive_6_sent : true",
+          "_cleaned": "sent | set_field: nf_inactive_6_sent : true"
+        }
+      ],
+      "priority": 1,
+      "campaign_list": [
+        "nf_inactive_week",
+        "nf_inactive_month"
+      ],
+      "title": "See success with @global.parent_app",
+      "_translations": {
+        "title": {
+          "tz_sw": true
+        },
+        "text": {
+          "tz_sw": true
+        }
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "See success with @global.parent_app"
+        },
+        "text": {
+          "eng": "Want to set your teen and family up for success? Get practical tips and more in @global.parent_app."
+        }
+      },
+      "text": "Want to set your teen and family up for success? Get practical tips and more in @global.parent_app."
+    },
+    {
+      "id": "nf_inactive_7",
+      "workshop": "independent",
+      "message_type": "inactive",
+      "action_list": [
+        {
+          "trigger": "sent",
+          "action_id": "set_field",
+          "args": [
+            "nf_inactive_7_sent",
+            true
+          ],
+          "_raw": "sent | set_field: nf_inactive_7_sent : true",
+          "_cleaned": "sent | set_field: nf_inactive_7_sent : true"
+        }
+      ],
+      "priority": 1,
+      "campaign_list": [
+        "nf_inactive_week",
+        "nf_inactive_month"
+      ],
+      "title": "Keep growing with @global.parent_app",
+      "_translations": {
+        "title": {
+          "tz_sw": true
+        },
+        "text": {
+          "tz_sw": true
+        }
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Keep growing with @global.parent_app"
+        },
+        "text": {
+          "eng": "Remember to take care of yourself too - it will help you AND your family! Get your tips and more in @global.parent_app."
+        }
+      },
+      "text": "Remember to take care of yourself too - it will help you AND your family! Get your tips and more in @global.parent_app."
+    },
+    {
+      "id": "nf_inactive_8",
+      "workshop": "independent",
+      "message_type": "inactive",
+      "action_list": [
+        {
+          "trigger": "sent",
+          "action_id": "set_field",
+          "args": [
+            "nf_inactive_8_sent",
+            true
+          ],
+          "_raw": "sent | set_field: nf_inactive_8_sent : true",
+          "_cleaned": "sent | set_field: nf_inactive_8_sent : true"
+        }
+      ],
+      "priority": 1,
+      "campaign_list": [
+        "nf_inactive_week",
+        "nf_inactive_month"
+      ],
+      "title": "Enjoy and learn with @global.parent_app",
+      "_translations": {
+        "title": {
+          "tz_sw": true
+        },
+        "text": {
+          "tz_sw": true
+        }
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Enjoy and learn with @global.parent_app"
+        },
+        "text": {
+          "eng": "@fields.user_name, @global.parent_app is here to support you. Tap here and check it out now."
+        }
+      },
+      "text": "@fields.user_name, @global.parent_app is here to support you. Tap here and check it out now."
+    },
+    {
+      "id": "nf_inactive_9",
+      "workshop": "independent",
+      "message_type": "inactive",
+      "action_list": [
+        {
+          "trigger": "sent",
+          "action_id": "set_field",
+          "args": [
+            "nf_inactive_9_sent",
+            true
+          ],
+          "_raw": "sent | set_field: nf_inactive_9_sent : true",
+          "_cleaned": "sent | set_field: nf_inactive_9_sent : true"
+        }
+      ],
+      "priority": 1,
+      "campaign_list": [
+        "nf_inactive_week",
+        "nf_inactive_month"
+      ],
+      "title": "See the change with @global.parent_app",
+      "_translations": {
+        "title": {
+          "tz_sw": true
+        },
+        "text": {
+          "tz_sw": true
+        }
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "See the change with @global.parent_app"
+        },
+        "text": {
+          "eng": "Do you want to enjoy family life more? Tap here and find practical tips in @global.parent_app."
+        }
+      },
+      "text": "Do you want to enjoy family life more? Tap here and find practical tips in @global.parent_app."
+    },
+    {
+      "id": "nf_inactive_10",
+      "workshop": "independent",
+      "message_type": "inactive",
+      "action_list": [
+        {
+          "trigger": "sent",
+          "action_id": "set_field",
+          "args": [
+            "nf_inactive_10_sent",
+            true
+          ],
+          "_raw": "sent | set_field: nf_inactive_10_sent : true",
+          "_cleaned": "sent | set_field: nf_inactive_10_sent : true"
+        }
+      ],
+      "priority": 1,
+      "campaign_list": [
+        "nf_inactive_week",
+        "nf_inactive_month"
+      ],
+      "title": "@global.parent_app will help you grow",
+      "_translations": {
+        "title": {
+          "tz_sw": true
+        },
+        "text": {
+          "tz_sw": true
+        }
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "@global.parent_app will help you grow"
+        },
+        "text": {
+          "eng": "You are not alone! @global.parent_app has lots of tips and activities that will help you and your family. Tap here to explore."
+        }
+      },
+      "text": "You are not alone! @global.parent_app has lots of tips and activities that will help you and your family. Tap here to explore."
+    },
+    {
+      "id": "nf_inactive_11",
+      "workshop": "independent",
+      "message_type": "inactive",
+      "action_list": [
+        {
+          "trigger": "sent",
+          "action_id": "set_field",
+          "args": [
+            "nf_inactive_11_sent",
+            true
+          ],
+          "_raw": "sent | set_field: nf_inactive_11_sent : true",
+          "_cleaned": "sent | set_field: nf_inactive_11_sent : true"
+        }
+      ],
+      "priority": 1,
+      "campaign_list": [
+        "nf_inactive_week",
+        "nf_inactive_month"
+      ],
+      "title": "Get key tips in @global.parent_app",
+      "_translations": {
+        "title": {
+          "tz_sw": true
+        },
+        "text": {
+          "tz_sw": true
+        }
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Get key tips in @global.parent_app"
+        },
+        "text": {
+          "eng": "We all need a break sometimes - and you can get one right now in @global.parent_app! Tap here to find relaxation activities and more."
+        }
+      },
+      "text": "We all need a break sometimes - and you can get one right now in @global.parent_app! Tap here to find relaxation activities and more."
+    },
+    {
+      "id": "nf_inactive_12",
+      "workshop": "independent",
+      "message_type": "inactive",
+      "action_list": [
+        {
+          "trigger": "sent",
+          "action_id": "set_field",
+          "args": [
+            "nf_inactive_12_sent",
+            true
+          ],
+          "_raw": "sent | set_field: nf_inactive_12_sent : true",
+          "_cleaned": "sent | set_field: nf_inactive_12_sent : true"
+        }
+      ],
+      "priority": 1,
+      "campaign_list": [
+        "nf_inactive_week",
+        "nf_inactive_month"
+      ],
+      "title": "Help your family with @global.parent_app",
+      "_translations": {
+        "title": {
+          "tz_sw": true
+        },
+        "text": {
+          "tz_sw": true
+        }
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Help your family with @global.parent_app"
+        },
+        "text": {
+          "eng": "@fields.user_name, do you have five minutes to learn about parenting? @global.parent_app is here to help!"
+        }
+      },
+      "text": "@fields.user_name, do you have five minutes to learn about parenting? @global.parent_app is here to help!"
+    },
+    {
+      "id": "nf_inactive_13",
+      "workshop": "independent",
+      "message_type": "inactive",
+      "action_list": [
+        {
+          "trigger": "sent",
+          "action_id": "set_field",
+          "args": [
+            "nf_inactive_13_sent",
+            true
+          ],
+          "_raw": "sent | set_field: nf_inactive_13_sent : true",
+          "_cleaned": "sent | set_field: nf_inactive_13_sent : true"
+        }
+      ],
+      "priority": 1,
+      "campaign_list": [
+        "nf_inactive_week",
+        "nf_inactive_month"
+      ],
+      "title": "Keep going with @global.parent_app",
+      "_translations": {
+        "title": {
+          "tz_sw": true
+        },
+        "text": {
+          "tz_sw": true
+        }
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Keep going with @global.parent_app"
+        },
+        "text": {
+          "eng": "Looking for help with your teen? @global.parent_app is here for you!"
+        }
+      },
+      "text": "Looking for help with your teen? @global.parent_app is here for you!"
+    },
+    {
+      "id": "nf_inactive_14",
+      "workshop": "independent",
+      "message_type": "inactive",
+      "action_list": [
+        {
+          "trigger": "sent",
+          "action_id": "set_field",
+          "args": [
+            "nf_inactive_14_sent",
+            true
+          ],
+          "_raw": "sent | set_field: nf_inactive_14_sent : true",
+          "_cleaned": "sent | set_field: nf_inactive_14_sent : true"
+        }
+      ],
+      "priority": 1,
+      "campaign_list": [
+        "nf_inactive_week",
+        "nf_inactive_month"
+      ],
+      "title": "@global.parent_app can help your family",
+      "_translations": {
+        "title": {
+          "tz_sw": true
+        },
+        "text": {
+          "tz_sw": true
+        }
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "@global.parent_app can help your family"
+        },
+        "text": {
+          "eng": "It’s time to learn about parenting, use @global.parent_app now for useful tips for your family."
+        }
+      },
+      "text": "It’s time to learn about parenting, use @global.parent_app now for useful tips for your family."
+    },
+    {
+      "id": "nf_inactive_15",
+      "workshop": "independent",
+      "message_type": "inactive",
+      "action_list": [
+        {
+          "trigger": "sent",
+          "action_id": "set_field",
+          "args": [
+            "nf_inactive_15_sent",
+            true
+          ],
+          "_raw": "sent | set_field: nf_inactive_15_sent : true",
+          "_cleaned": "sent | set_field: nf_inactive_15_sent : true"
+        }
+      ],
+      "priority": 1,
+      "campaign_list": [
+        "nf_inactive_week",
+        "nf_inactive_month"
+      ],
+      "title": "Get support in @global.parent_app",
+      "_translations": {
+        "title": {
+          "tz_sw": true
+        },
+        "text": {
+          "tz_sw": true
+        }
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Get support in @global.parent_app"
+        },
+        "text": {
+          "eng": "Parents are the best! Tap here to find tips to help you with your teen."
+        }
+      },
+      "text": "Parents are the best! Tap here to find tips to help you with your teen."
+    },
+    {
+      "id": "nf_inactive_16",
+      "workshop": "independent",
+      "message_type": "inactive",
+      "action_list": [
+        {
+          "trigger": "sent",
+          "action_id": "set_field",
+          "args": [
+            "nf_inactive_16_sent",
+            true
+          ],
+          "_raw": "sent | set_field: nf_inactive_16_sent : true",
+          "_cleaned": "sent | set_field: nf_inactive_16_sent : true"
+        }
+      ],
+      "priority": 1,
+      "campaign_list": [
+        "nf_inactive_week",
+        "nf_inactive_month"
+      ],
+      "title": "@global.parent_app = peaceful family",
+      "_translations": {
+        "title": {
+          "tz_sw": true
+        },
+        "text": {
+          "tz_sw": true
+        }
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "@global.parent_app = peaceful family"
+        },
+        "text": {
+          "eng": "Teens can turn your day upside down. Let @global.parent_app help you create a happy and peaceful home."
+        }
+      },
+      "text": "Teens can turn your day upside down. Let @global.parent_app help you create a happy and peaceful home."
+    },
+    {
+      "id": "nf_inactive_17",
+      "workshop": "independent",
+      "message_type": "inactive",
+      "action_list": [
+        {
+          "trigger": "sent",
+          "action_id": "set_field",
+          "args": [
+            "nf_inactive_17_sent",
+            true
+          ],
+          "_raw": "sent | set_field: nf_inactive_17_sent : true",
+          "_cleaned": "sent | set_field: nf_inactive_17_sent : true"
+        }
+      ],
+      "priority": 1,
+      "campaign_list": [
+        "nf_inactive_week",
+        "nf_inactive_month"
+      ],
+      "title": "@global.parent_app helps you connect",
+      "_translations": {
+        "title": {
+          "tz_sw": true
+        },
+        "text": {
+          "tz_sw": true
+        }
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "@global.parent_app helps you connect"
+        },
+        "text": {
+          "eng": "Family is everything. @global.parent_app is here with many tips and activities to help you and your family."
+        }
+      },
+      "text": "Family is everything. @global.parent_app is here with many tips and activities to help you and your family."
+    },
+    {
+      "id": "nf_inactive_18",
+      "workshop": "independent",
+      "message_type": "inactive",
+      "action_list": [
+        {
+          "trigger": "sent",
+          "action_id": "set_field",
+          "args": [
+            "nf_inactive_18_sent",
+            true
+          ],
+          "_raw": "sent | set_field: nf_inactive_18_sent : true",
+          "_cleaned": "sent | set_field: nf_inactive_18_sent : true"
+        }
+      ],
+      "priority": 1,
+      "campaign_list": [
+        "nf_inactive_week",
+        "nf_inactive_month"
+      ],
+      "title": "Find good ideas in @global.parent_app",
+      "_translations": {
+        "title": {
+          "tz_sw": true
+        },
+        "text": {
+          "tz_sw": true
+        }
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Find good ideas in @global.parent_app"
+        },
+        "text": {
+          "eng": "Spending 1 minute learning about parenting makes a world of difference. Jump back into @global.parent_app here."
+        }
+      },
+      "text": "Spending 1 minute learning about parenting makes a world of difference. Jump back into @global.parent_app here."
+    },
+    {
+      "id": "nf_inactive_19",
+      "workshop": "independent",
+      "message_type": "inactive",
+      "action_list": [
+        {
+          "trigger": "sent",
+          "action_id": "set_field",
+          "args": [
+            "nf_inactive_19_sent",
+            true
+          ],
+          "_raw": "sent | set_field: nf_inactive_19_sent : true",
+          "_cleaned": "sent | set_field: nf_inactive_19_sent : true"
+        }
+      ],
+      "priority": 1,
+      "campaign_list": [
+        "nf_inactive_week",
+        "nf_inactive_month"
+      ],
+      "title": "Grow more with @global.parent_app",
+      "_translations": {
+        "title": {
+          "tz_sw": true
+        },
+        "text": {
+          "tz_sw": true
+        }
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Grow more with @global.parent_app"
+        },
+        "text": {
+          "eng": "@fields.user_name, you are doing amazing, keep up the good work. @global.parent_app is full of tips on how to look after yourself and your family."
+        }
+      },
+      "text": "@fields.user_name, you are doing amazing, keep up the good work. @global.parent_app is full of tips on how to look after yourself and your family."
+    },
+    {
+      "id": "nf_inactive_20",
+      "workshop": "independent",
+      "message_type": "inactive",
+      "action_list": [
+        {
+          "trigger": "sent",
+          "action_id": "set_field",
+          "args": [
+            "nf_inactive_20_sent",
+            true
+          ],
+          "_raw": "sent | set_field: nf_inactive_20_sent : true",
+          "_cleaned": "sent | set_field: nf_inactive_20_sent : true"
+        }
+      ],
+      "priority": 1,
+      "campaign_list": [
+        "nf_inactive_week",
+        "nf_inactive_month"
+      ],
+      "title": "Add value through @global.parent_app",
+      "_translations": {
+        "title": {
+          "tz_sw": true
+        },
+        "text": {
+          "tz_sw": true
+        }
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Add value through @global.parent_app"
+        },
+        "text": {
+          "eng": "Wow, your teen is so lucky to have you as a parent. Learn more about parenting your teen with @global.parent_app."
+        }
+      },
+      "text": "Wow, your teen is so lucky to have you as a parent. Learn more about parenting your teen with @global.parent_app."
+    }
+  ],
+  "_xlsxPath": "global/campaigns/notifications_inactive.xlsx"
+}

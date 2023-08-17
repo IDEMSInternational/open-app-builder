@@ -1,7 +1,11 @@
 import * as fs from "fs-extra";
 import * as path from "path";
-import { createHash } from "crypto";
+import * as os from "os";
+import { createHash, randomUUID } from "crypto";
 import { logWarning } from "./logging.utils";
+import { ROOT_DIR } from "../paths";
+import { spawnSync } from "child_process";
+import { tmpdir } from "os";
 
 /**
  * Retrieve a nested property from a json object
@@ -16,20 +20,33 @@ import { logWarning } from "./logging.utils";
  * getNestedProperty(obj,'a.b.c.d')  // returns null
  *
  * @param obj data object to iterate over
- * @param path nested path, such as data.subfield1.deeperfield2
+ * @param nestedPath property path, such as data.subfield1.deeperfield2
  */
-export function getNestedProperty(obj: any, path: string) {
-  return path.split(".").reduce((prev, current) => {
+export function getNestedProperty(obj: any, nestedPath: string) {
+  return nestedPath.split(".").reduce((prev, current) => {
     return prev ? prev[current] : null;
   }, obj);
 }
 
-/** Set a nested json property namespaced as parent.child1.subchild1 */
-export function setNestedProperty<T>(path: string, value: any, obj: T = {} as any) {
-  let childKeys = path.split(".");
+/**
+ * Set a nested json property namespaced as parent.child1.subchild1
+ *
+ * @param nestedPath property path, such as data.subfield1.deeperfield2
+ * @param value assigned value
+ * @param obj optional object to deep assign onto
+ *
+ * @example
+ * setNestedProperty('a.b.c',1,{})  // returns {"a":{"b":{"c":1}}}
+ * */
+export function setNestedProperty<T>(nestedPath: string, value: any, obj: T = {} as any) {
+  // if no nested path provided simply return
+  if (!nestedPath) {
+    return { ...obj, ...value } as T;
+  }
+  let childKeys = nestedPath.split(".");
   const currentKey = childKeys[0];
   if (childKeys.length > 1) {
-    const nestedValue = setNestedProperty(childKeys.slice(1).join("."), value);
+    const nestedValue = setNestedProperty(childKeys.slice(1).join("."), value, obj[currentKey]);
     obj[currentKey] = { ...obj[currentKey], ...(nestedValue as any) };
   } else {
     obj[currentKey] = value;
@@ -108,12 +125,11 @@ export function generateFolderTreeMap(folderPath: string, includeStats = true) {
 
 /**
  * Create a flat json representing nested folder structure of a given folder path.
- * Includes optional stats output that records file size and md5 checksum data
+ * Includes stats output that records file size and md5 checksum data
  * 
- * @param includeStats include basic stats such as size within nested structure.
- * If ommitted will just mark files as `TRUE`
- * @param filterFn optional filter function to be applied to relative paths for inclusion
- * 
+ * @param options.filterFn optional filter function to be applied to relative paths for inclusion
+ * @param options.includeLocalPath include full path to file on local disk
+
  * @returns Example file: i18n/flags/gb.svg
  * ```
  * "i18n/flags/gb.svg": {
@@ -124,30 +140,28 @@ export function generateFolderTreeMap(folderPath: string, includeStats = true) {
  */
 export function generateFolderFlatMap(
   folderPath: string,
-  includeStats = true,
-  filterFn = (relativePath: string) => true
+  options: {
+    filterFn?: (relativePath: string) => boolean;
+    includeLocalPath?: boolean;
+  } = {}
 ) {
   const allFiles = recursiveFindByExtension(folderPath);
-  // const relativeFiles = allFiles.map(filepath => path.relative(folderPath, filepath))
-  let flatMap: {
-    [relativePath: string]: boolean | IContentsEntry;
-  } = {};
+  let flatMap: { [relativePath: string]: IContentsEntry } = {};
   for (const filePath of allFiles) {
     const relativePath = path.relative(folderPath, filePath).split(path.sep).join("/");
-    const shouldInclude = filterFn(relativePath);
+    const shouldInclude = options.filterFn ? options.filterFn(relativePath) : true;
     if (shouldInclude) {
-      if (includeStats) {
-        // generate size and md5 checksum stats
-        const { size, mtime } = fs.statSync(filePath);
-        const modifiedTime = mtime.toISOString();
-        // write size in kb to 1 dpclear
-        const size_kb = Math.round(size / 102.4) / 10;
-        const md5Checksum = getFileMD5Checksum(filePath);
-        const entry: IContentsEntry = { relativePath, size_kb, md5Checksum, modifiedTime };
-        flatMap[relativePath] = entry;
-      } else {
-        flatMap[relativePath] = true;
+      // generate size and md5 checksum stats
+      const { size, mtime } = fs.statSync(filePath);
+      const modifiedTime = mtime.toISOString();
+      // write size in kb to 1 dpclear
+      const size_kb = Math.round(size / 102.4) / 10;
+      const md5Checksum = getFileMD5Checksum(filePath);
+      const entry: IContentsEntry = { relativePath, size_kb, md5Checksum, modifiedTime };
+      if (options.includeLocalPath) {
+        entry.localPath = filePath;
       }
+      flatMap[relativePath] = entry as any;
     }
   }
   return flatMap;
@@ -158,14 +172,33 @@ export interface IContentsEntry {
   size_kb: number;
   modifiedTime: string;
   md5Checksum: string;
+  localPath?: string;
 }
+export type IContentsEntryHashmap = { [relativePath: string]: IContentsEntry };
 
+/** Generate md5 checksum for file */
 export function getFileMD5Checksum(filePath: string) {
   const hash = createHash("md5", {});
   const fileBuffer = fs.readFileSync(filePath);
   hash.update(fileBuffer);
   const checksum = hash.digest("hex");
   return checksum;
+}
+/** Generate md5 checksum for arbitrary data */
+export function getDataMD5Checsum(data: any) {
+  if (data) {
+    if (typeof data === "object") {
+      data = JSON.stringify(data);
+    } else {
+      data = `${data}`;
+    }
+    const hash = createHash("md5");
+    hash.update(data);
+    const checksum = hash.digest("hex");
+    return checksum;
+  } else {
+    throw new Error(`Cannot generate hash from data: ${data}`);
+  }
 }
 
 /**
@@ -214,18 +247,31 @@ export function groupJsonByMultipleKeys<T>(json: T[], keys: string[], joinCharac
 /**
  * Convert an object array into a json object, with keys corresponding to array entries
  * @param keyfield any unique field which all array objects contain to use as hash keys (e.g. 'id')
+ * @param handleDuplicateKey optional function to trigger when duplicate hash key entry detected.
+ * Should return replacement key to populate instead
  */
-export function arrayToHashmap<T>(arr: T[], keyfield: string): { [key: string]: T } {
+export function arrayToHashmap<T extends object>(
+  arr: T[],
+  keyfield: keyof T,
+  handleDuplicateKey = (k: string) => k
+): { [key: string]: T } {
   const hashmap: { [key: string]: T } = {};
   for (const el of arr) {
     if (el.hasOwnProperty(keyfield)) {
-      hashmap[el[keyfield]] = el;
+      let hashKey = el[keyfield] as string;
+      if (hashKey in hashmap) {
+        hashKey = handleDuplicateKey(hashKey);
+      }
+      hashmap[hashKey] = el;
     }
   }
   return hashmap;
 }
 
 export function listFolderNames(folderPath: string) {
+  if (!fs.existsSync(folderPath)) {
+    return [];
+  }
   return fs
     .readdirSync(folderPath, { withFileTypes: true })
     .filter((v) => v.isDirectory())
@@ -326,6 +372,7 @@ export function readContentsFile(folderPath: string) {
     logWarning({ msg1: "Folder path does not exist", msg2: folderPath });
     return [];
   }
+
   const contentsFilePath = fs.readdirSync(folderPath).find((f) => f.endsWith("_contents.json"));
   if (!contentsFilePath) {
     logWarning({ msg1: "Contents file not found in folder", msg2: folderPath });
@@ -346,7 +393,7 @@ export function readContentsFileAsHashmap(
   options: { hashKey?: string; hashKeyFn?: (entry: any) => string }
 ) {
   const contentsJson = readContentsFile(folderPath);
-  const hashmap = {};
+  const hashmap: { [key: string]: IContentsEntry } = {};
   const { hashKey, hashKeyFn } = options;
   for (const entry of contentsJson) {
     if (hashKey) {
@@ -375,17 +422,18 @@ export function readContentsFileAsHashmap(
 export function replicateDir(
   src: string,
   target: string,
-  filter_fn?: (entry: IContentsEntry) => boolean
+  opts: { filter_fn?: (entry: IContentsEntry) => boolean; cleanEmpty?: boolean } = {
+    cleanEmpty: true,
+  }
 ) {
   fs.ensureDirSync(src);
   fs.ensureDirSync(target);
-  const srcFiles = generateFolderFlatMap(src, true);
-  const targetFiles = generateFolderFlatMap(target, true);
-
+  const srcFiles = generateFolderFlatMap(src);
+  const targetFiles = generateFolderFlatMap(target);
   // omit src files via filter
-  if (filter_fn) {
+  if (opts.filter_fn) {
     Object.entries(srcFiles).forEach(([key, entry]) => {
-      if (!filter_fn(entry as IContentsEntry)) {
+      if (!opts.filter_fn(entry as IContentsEntry)) {
         delete srcFiles[key];
       }
     });
@@ -427,5 +475,104 @@ export function replicateDir(
     fs.copyFileSync(srcPath, targetPath);
     fs.utimesSync(targetPath, mtime, mtime);
   });
+  // remove hanging directories]
+  if (opts.cleanEmpty) {
+    cleanupEmptyFolders(target);
+  }
   return ops;
 }
+
+/**
+ * Copy all files from src to target folder, overriding target files with src
+ * and keeping original modified times
+ */
+export function mergeFoldersRecursively(
+  src: string,
+  target: string,
+  options = { conflictStrategy: "keepSrc" }
+) {
+  fs.ensureDirSync(src);
+  fs.ensureDirSync(target);
+  const srcFiles = generateFolderFlatMap(src);
+  const targetFiles = generateFolderFlatMap(target);
+  // Copy function
+  function copySrcToTarget(filepath: string, entry: IContentsEntry) {
+    if (targetFiles.hasOwnProperty(filepath)) {
+      if (options.conflictStrategy !== "keepSrc") {
+        // TODO - add handling for other strategies if required
+        return;
+      }
+    }
+    const { relativePath, modifiedTime } = entry;
+    const srcPath = path.resolve(src, relativePath);
+    const targetPath = path.resolve(target, relativePath);
+    const mtime = new Date(modifiedTime);
+    fs.ensureDirSync(path.dirname(targetPath));
+    fs.copyFileSync(srcPath, targetPath);
+    fs.utimesSync(targetPath, mtime, mtime);
+  }
+  // Process entries
+  Object.entries(srcFiles).forEach(([filepath, entry]) =>
+    copySrcToTarget(filepath, entry as IContentsEntry)
+  );
+}
+export function createTempDir() {
+  const dirName = randomUUID();
+  const dirPath = path.join(os.tmpdir(), dirName);
+  fs.ensureDirSync(dirPath);
+  fs.emptyDirSync(dirPath);
+  return dirPath;
+}
+
+/**
+ * Run prettier to automatically format code in given folder path
+ * NOTE - by default will only format .ts files
+ */
+export function runPrettierCodeTidy(folderPath: string) {
+  const cmd = `npx prettier --config ${ROOT_DIR}/.prettierrc --write ${folderPath}/**/*.ts --loglevel error`;
+  return spawnSync(cmd, { stdio: ["inherit", "inherit", "inherit"], shell: true });
+}
+
+/** Create a randomly-named temporary folder within the os temp directory */
+export function createTemporaryFolder() {
+  const folderName = randomUUID();
+  const folderPath = path.resolve(tmpdir(), folderName);
+  fs.ensureDirSync(folderPath);
+  return folderPath;
+}
+
+/**
+ * Recursively remove any empty folders
+ * https://gist.github.com/arnoson/3237697e8c61dfaf0356f814b1500d7b
+ */
+export const cleanupEmptyFolders = (folder: string) => {
+  if (!fs.existsSync(folder)) return;
+  if (!fs.statSync(folder).isDirectory()) return;
+  let files = fs.readdirSync(folder);
+
+  if (files.length > 0) {
+    files.forEach((file) => cleanupEmptyFolders(path.join(folder, file)));
+    // Re-evaluate files; after deleting subfolders we may have an empty parent
+    // folder now.
+    files = fs.readdirSync(folder);
+  }
+
+  if (files.length === 0) {
+    fs.rmdirSync(folder);
+  }
+};
+
+/** Order a nested json-like object in alphabetical key order */
+export const sortJsonKeys = <T extends Record<string, any>>(json: T): T => {
+  // return non json-type data as-is
+  if (!json || {}.constructor !== json.constructor) {
+    return json;
+  }
+  // recursively sort any nested json by key
+  return Object.keys(json)
+    .sort()
+    .reduce((obj, key) => {
+      obj[key] = sortJsonKeys(json[key]);
+      return obj;
+    }, {}) as T;
+};

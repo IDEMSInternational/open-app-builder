@@ -1,0 +1,11 @@
+<div class="carousel-wrapper">
+  <swiper (swiper)="handleSwiperInitialised($event)" [config]="config">
+    <ng-template
+      swiperSlide
+      *ngFor="let childRow of _row.rows | filterDisplayComponent; trackBy: trackByRow"
+    >
+      <plh-template-component [row]="childRow" [parent]="parent" [attr.data-rowname]="_row.name">
+      </plh-template-component>
+    </ng-template>
+  </swiper>
+</div>

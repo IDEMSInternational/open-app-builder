@@ -8,6 +8,7 @@ import { ITemplateRowMap } from "./instance/template-row.service";
 import { extractDynamicEvaluators } from "data-models";
 import { TemplateFieldService } from "./template-field.service";
 import { AppDataService } from "src/app/shared/services/data/app-data.service";
+import { AsyncServiceBase } from "src/app/shared/services/asyncService.base";
 
 /** Logging Toggle - rewrite default functions to enable or disable inline logs */
 const SHOW_DEBUG_LOGS = false;
@@ -29,7 +30,7 @@ export interface IVariableContext {
 }
 
 @Injectable({ providedIn: "root" })
-export class TemplateVariablesService {
+export class TemplateVariablesService extends AsyncServiceBase {
   /**
    * The template variable service handles the processing and evaluation of dynamic variables, such as
    * @local.some_value or @campaign.my_campaign.
@@ -43,7 +44,20 @@ export class TemplateVariablesService {
     private templateTranslateService: TemplateTranslateService,
     private templateCalcService: TemplateCalcService,
     private appDataService: AppDataService
-  ) {}
+  ) {
+    super("TemplateVariables");
+    this.registerInitFunction(this.initialise);
+  }
+
+  private async initialise() {
+    await this.ensureAsyncServicesReady([
+      this.templateFieldService,
+      // this.campaignService, // checked during method call to avoid circular init
+      this.templateTranslateService,
+      this.templateCalcService,
+    ]);
+    this.ensureSyncServicesReady([this.appDataService]);
+  }
 
   /**
    * Data populated in PLH fields may contain references to specific helper or lookup functions,
@@ -79,9 +93,7 @@ export class TemplateVariablesService {
         if (dynamicFields) {
           for (const k of Object.keys(data)) {
             value[k] = data[k];
-            // ignore evaluation of meta, comment, and specifiedfields. Could provide single list of approved fields, but as dynamic fields
-            // also can be found in parameter lists would likely prove too restrictive
-            if (!k.startsWith("_") && !omitFields.includes(k)) {
+            if (this.shouldEvaluateField(k as any, omitFields)) {
               // evalute each object element with reference to any dynamic specified for it's index (instead of fieldname)
               const nestedContext = { ...context };
               nestedContext.field = nestedContext.field ? `${nestedContext.field}.${k}` : k;
@@ -105,6 +117,17 @@ export class TemplateVariablesService {
       }
     }
     return value;
+  }
+
+  /**
+   * Inore evaluation of meta, comment, and specifiedfields.
+   * Could provide single list of approved fields, but as dynamic fields also can be found in parameter lists
+   * would likely prove too restrictive
+   **/
+  private shouldEvaluateField(fieldName: keyof FlowTypes.TemplateRow, omitFields: string[] = []) {
+    if (omitFields.includes(fieldName)) return false;
+    if (fieldName.startsWith("_")) return false;
+    return true;
   }
 
   /** Evaluate a dynamic expression that has not been pre-processed or evaluated for dynamic expressions */
@@ -266,7 +289,14 @@ export class TemplateVariablesService {
     // check for new dynamic evaluators and reprocess
     const dynamicNested = extractDynamicEvaluators(evaluated);
     if (dynamicNested) {
-      return this.evaluatePLHString(dynamicNested, context);
+      // avoid infinite loop in cases such as items where the raw value is retained
+      const isOriginal = dynamicNested.every(
+        (nestedEvaluators, i) =>
+          nestedEvaluators.matchedExpression === evaluators[i]?.matchedExpression
+      );
+      if (!isOriginal) {
+        return this.evaluatePLHString(dynamicNested, context);
+      }
     }
     return evaluated;
   }
@@ -332,15 +362,21 @@ export class TemplateVariablesService {
       case "data":
         const [flow_name, nested_path] = fieldName.split(".");
         const sheet = await this.appDataService.getSheet("data_list", flow_name);
-        parsedValue = sheet.rowsHashmap;
-        if (nested_path) {
-          parsedValue = getNestedProperty(sheet.rowsHashmap, nested_path);
+        if (sheet) {
+          parsedValue = sheet.rowsHashmap;
+          if (nested_path) {
+            parsedValue = getNestedProperty(sheet.rowsHashmap, nested_path);
+          }
+        } else {
+          // if sheet not found return as empty object
+          parsedValue = {};
         }
         break;
       // TODO - ideally campaign lookup should be merged into data list lookup with additional query/params
       // e.g. evaluate conditions, take first etc.
       case "campaign":
-        parsedValue = (await this.campaignService.getNextCampaignRows(fieldName))[0];
+        await this.campaignService.ready();
+        parsedValue = (await this.campaignService.getNextCampaignRows(fieldName))?.[0];
         break;
       case "calc":
         const expression = fieldName.replace(/@/gi, "this.");
@@ -350,11 +386,11 @@ export class TemplateVariablesService {
         parsedValue = evaluateJSExpression(expression, thisCtxt, globalFunctions, globalConstants);
         break;
       case "item":
-        log("evaluate item", evaluator, context);
-        try {
+        // only attempt to evaluate items if context passed, otherwise leave as original unparsed string
+        if (context?.itemContext) {
           parsedValue = context.itemContext[fieldName];
-        } catch (error) {
-          // field may not exist
+        } else {
+          parsedValue = evaluator.matchedExpression;
         }
         break;
       default:
@@ -375,7 +411,7 @@ export class TemplateVariablesService {
    * TODO - could also merge with standalone global method
    */
   private ensureValueTranslated(value: any) {
-    // If translatable value should be an object with _tranlsations property
+    // If translatable value should be an object with _translations property
     // TODO - check if case needs to be added to translate arrays
     if (value && typeof value === "object" && !Array.isArray(value)) {
       if (value.hasOwnProperty("_translations")) {

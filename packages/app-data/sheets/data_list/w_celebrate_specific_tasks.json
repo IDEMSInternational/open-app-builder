@@ -1,0 +1,29 @@
+{
+  "flow_type": "data_list",
+  "flow_name": "w_celebrate_specific_tasks",
+  "status": "released",
+  "rows": [
+    {
+      "id": "think",
+      "group": "think",
+      "individual": true,
+      "together": true,
+      "template": "w_celebrate_think"
+    },
+    {
+      "id": "talk_1",
+      "group": "talk_1",
+      "individual": false,
+      "together": true,
+      "template": "w_celebrate_talk_1"
+    },
+    {
+      "id": "talk_2",
+      "group": "talk_2",
+      "individual": false,
+      "together": true,
+      "template": "w_celebrate_talk_2"
+    }
+  ],
+  "_xlsxPath": "global/data/workshop_data/workshop_tasks.xlsx"
+}

@@ -8,7 +8,6 @@ import {
 } from "src/app/shared/utils";
 import { TemplateBaseComponent } from "../base";
 import { FlowTypes, ITemplateRowProps } from "../../models";
-// RxJS v6+
 
 @Component({
   selector: "plh-select-text",
@@ -57,17 +56,11 @@ export class SelectTextComponent
     });
 
     let text = _row.value;
-    if ("clipboard" in navigator) {
-      navigator.clipboard.writeText(text).then(
-        function () {
-          console.log("Async: Copying to clipboard was successful!");
-        },
-        function (err) {
-          console.error("Async: Could not copy text: ", err);
-        }
-      );
-    } else {
-      await Clipboard.write(text).then((r) => console.log(r));
-    }
+    await Clipboard.write({ string: text });
+  }
+
+  async checkClipboard() {
+    const { type, value } = await Clipboard.read();
+    console.log(`Got ${type} from clipboard: ${value}`);
   }
 }
