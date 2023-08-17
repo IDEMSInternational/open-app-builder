@@ -1,6 +1,6 @@
 /* eslint @typescript-eslint/sort-type-constituents: "warn"  */
 
-import type { IDataPipeOperation } from "shared/src/models/dataPipe/types";
+import type { IDataPipeOperation } from "shared";
 import type { IAppConfig } from "./appConfig";
 
 /*********************************************************************************************

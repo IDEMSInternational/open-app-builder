@@ -18,8 +18,6 @@
     "data-models:serve": "yarn workspace data-models serve",
     "compodoc:generate": "compodoc --tsconfig tsconfig.docs.json --theme material --assetsFolder 'documentation/docs/assets' --output documentation/docs/generated --disablePrivate --disableLifeCycleHooks",
     "compodoc:serve": "yarn compodoc:generate --serve --watch --open",
-    "scripts": "yarn workspace scripts start",
-    "workflow": "yarn scripts workflow run",
     "server": "yarn workspace server",
     "translations": "yarn workspace translations start",
     "test:workspaces": "yarn workspace shared test && yarn workspace scripts test",
