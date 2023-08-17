@@ -170,12 +170,56 @@
       }
     },
     {
+      "name": "resources_title",
+      "value": "What you need",
+      "_translations": {
+        "value": {
+          "tz_sw": true
+        }
+      },
+      "type": "set_variable",
+      "_nested_name": "resources_title"
+    },
+    {
+      "name": "steps_title",
+      "value": "Steps",
+      "_translations": {
+        "value": {
+          "tz_sw": true
+        }
+      },
+      "type": "set_variable",
+      "_nested_name": "steps_title"
+    },
+    {
+      "name": "tips_title",
+      "value": "Tips",
+      "_translations": {
+        "value": {
+          "tz_sw": true
+        }
+      },
+      "type": "set_variable",
+      "_nested_name": "tips_title"
+    },
+    {
+      "name": "extension_title",
+      "value": "Try also",
+      "_translations": {
+        "value": {
+          "tz_sw": true
+        }
+      },
+      "type": "set_variable",
+      "_nested_name": "extension_title"
+    },
+    {
       "type": "accordion",
       "rows": [
         {
           "type": "accordion_section",
           "name": "resources",
-          "value": "What you need",
+          "value": "@local.resources_title",
           "condition": "!!(@local.activity_data.resources_text)",
           "rows": [
             {
@@ -239,6 +283,14 @@
           ],
           "_nested_name": "accordion.resources",
           "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@local.resources_title",
+                "matchedExpression": "@local.resources_title",
+                "type": "local",
+                "fieldName": "resources_title"
+              }
+            ],
             "condition": [
               {
                 "fullExpression": "!!(@local.activity_data.resources_text)",
@@ -249,6 +301,9 @@
             ]
           },
           "_dynamicDependencies": {
+            "@local.resources_title": [
+              "value"
+            ],
             "@local.activity_data.resources_text": [
               "condition"
             ]
@@ -257,7 +312,7 @@
         {
           "type": "accordion_section",
           "name": "steps",
-          "value": "Steps",
+          "value": "@local.steps_title",
           "condition": "!!(@local.activity_data.steps_text)",
           "rows": [
             {
@@ -287,6 +342,14 @@
           ],
           "_nested_name": "accordion.steps",
           "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@local.steps_title",
+                "matchedExpression": "@local.steps_title",
+                "type": "local",
+                "fieldName": "steps_title"
+              }
+            ],
             "condition": [
               {
                 "fullExpression": "!!(@local.activity_data.steps_text)",
@@ -297,6 +360,9 @@
             ]
           },
           "_dynamicDependencies": {
+            "@local.steps_title": [
+              "value"
+            ],
             "@local.activity_data.steps_text": [
               "condition"
             ]
@@ -305,7 +371,7 @@
         {
           "type": "accordion_section",
           "name": "tips",
-          "value": "Tips",
+          "value": "@local.tips_title",
           "condition": "!!(@local.activity_data.tips_text)",
           "rows": [
             {
@@ -335,6 +401,14 @@
           ],
           "_nested_name": "accordion.tips",
           "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@local.tips_title",
+                "matchedExpression": "@local.tips_title",
+                "type": "local",
+                "fieldName": "tips_title"
+              }
+            ],
             "condition": [
               {
                 "fullExpression": "!!(@local.activity_data.tips_text)",
@@ -345,6 +419,9 @@
             ]
           },
           "_dynamicDependencies": {
+            "@local.tips_title": [
+              "value"
+            ],
             "@local.activity_data.tips_text": [
               "condition"
             ]
@@ -353,7 +430,7 @@
         {
           "type": "accordion_section",
           "name": "extension",
-          "value": "Try also",
+          "value": "@local.extension_title",
           "condition": "!!(@local.activity_data.extension_text)",
           "rows": [
             {
@@ -383,6 +460,14 @@
           ],
           "_nested_name": "accordion.extension",
           "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@local.extension_title",
+                "matchedExpression": "@local.extension_title",
+                "type": "local",
+                "fieldName": "extension_title"
+              }
+            ],
             "condition": [
               {
                 "fullExpression": "!!(@local.activity_data.extension_text)",
@@ -393,6 +478,9 @@
             ]
           },
           "_dynamicDependencies": {
+            "@local.extension_title": [
+              "value"
+            ],
             "@local.activity_data.extension_text": [
               "condition"
             ]

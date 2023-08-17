@@ -31,7 +31,7 @@
       "rows": [
         {
           "name": "workshop_data",
-          "value": "@data.workshop.w_srh",
+          "value": "@data.workshop.w_learn",
           "_translations": {
             "value": {}
           },
@@ -40,15 +40,15 @@
           "_dynamicFields": {
             "value": [
               {
-                "fullExpression": "@data.workshop.w_srh",
-                "matchedExpression": "@data.workshop.w_srh",
+                "fullExpression": "@data.workshop.w_learn",
+                "matchedExpression": "@data.workshop.w_learn",
                 "type": "data",
                 "fieldName": "workshop"
               }
             ]
           },
           "_dynamicDependencies": {
-            "@data.workshop.w_srh": [
+            "@data.workshop.w_learn": [
               "value"
             ]
           }
@@ -59,7 +59,7 @@
           "rows": [
             {
               "name": "intro_text",
-              "value": "Small actions make a big difference. Helping your teen learn can be stressful. But making your daily activities fun, and doing them together is a great way to help your teen’s development and education.",
+              "value": "Small actions make a big difference. Helping your teen learn can be stressful. But making your daily activities fun and doing them together is a great way to help your teen’s development and education.",
               "_translations": {
                 "value": {}
               },

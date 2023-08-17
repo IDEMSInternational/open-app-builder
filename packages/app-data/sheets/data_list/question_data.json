@@ -684,16 +684,16 @@
           "eng": "@global.w_learn_teen_girl_1 was not able to talk to her mother about her hard day at school."
         },
         "option_3": {
-          "eng": "@global.w_learn_female_caregiver_1 blamed @global.w_learn_teen_girl_1 for the dirty house."
+          "eng": "@global.w_learn_female_caregiver_1 blamed @global.w_learn_teen_girl_1 for not cooking dinner yet."
         },
         "reply_all": {
-          "eng": "Yes, all of these are true. @global.w_learn_teen_girl_1 reacted this way because her mother did not talk to her about her day, blamed her for the dirty house and did not thank @global.w_learn_teen_girl_1 for helping at home."
+          "eng": "Yes, all of these are true. @global.w_learn_teen_girl_1 reacted this way because her mother did not talk to her about her day, blamed her for not cooking yet and did not thank @global.w_learn_teen_girl_1 for helping at home."
         }
       },
       "option_1": "@global.w_learn_teen_girl_1 was upset that her mother did not see how she helped at home.",
       "option_2": "@global.w_learn_teen_girl_1 was not able to talk to her mother about her hard day at school.",
-      "option_3": "@global.w_learn_female_caregiver_1 blamed @global.w_learn_teen_girl_1 for the dirty house.",
-      "reply_all": "Yes, all of these are true. @global.w_learn_teen_girl_1 reacted this way because her mother did not talk to her about her day, blamed her for the dirty house and did not thank @global.w_learn_teen_girl_1 for helping at home."
+      "option_3": "@global.w_learn_female_caregiver_1 blamed @global.w_learn_teen_girl_1 for not cooking dinner yet.",
+      "reply_all": "Yes, all of these are true. @global.w_learn_teen_girl_1 reacted this way because her mother did not talk to her about her day, blamed her for not cooking yet and did not thank @global.w_learn_teen_girl_1 for helping at home."
     },
     {
       "id": "learn_conflict_consequence",

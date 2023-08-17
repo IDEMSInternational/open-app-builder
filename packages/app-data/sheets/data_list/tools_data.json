@@ -1164,15 +1164,11 @@
         "tool_1_title": {
           "tz_sw": true
         },
-        "tool_1_text": {
-          "tz_sw": true
-        },
+        "tool_1_text": {},
         "tool_2_title": {
           "tz_sw": true
         },
-        "tool_2_text": {
-          "tz_sw": true
-        },
+        "tool_2_text": {},
         "tool_3_title": {
           "tz_sw": true
         },
@@ -1189,13 +1185,13 @@
           "eng": "GET TOGETHER"
         },
         "tool_1_text": {
-          "eng": "People learn better when they learn with others. Spend time with your teen and let them learn with you. When you do activities together, you give them space to learn, make mistakes and ask you questions."
+          "eng": "People learn better when they learn with others. Spend time with your teen and let them learn with you. When you do activities together, you give them space to learn, to make mistakes and to ask you questions."
         },
         "tool_2_title": {
           "eng": "SUPPORT"
         },
         "tool_2_text": {
-          "eng": "Your teen will learn from you if they know you support them. Let them try things without shouting at them. This helps them “learn how to learn”, because they feel safe with you."
+          "eng": "Your teen will learn from you if they know you support them. Let them try things and be patient with them. This helps them “learn how to learn”, because they feel safe with you."
         },
         "tool_3_title": {
           "eng": "PRAISE"
@@ -1208,9 +1204,9 @@
         }
       },
       "tool_1_title": "GET TOGETHER",
-      "tool_1_text": "People learn better when they learn with others. Spend time with your teen and let them learn with you. When you do activities together, you give them space to learn, make mistakes and ask you questions.",
+      "tool_1_text": "People learn better when they learn with others. Spend time with your teen and let them learn with you. When you do activities together, you give them space to learn, to make mistakes and to ask you questions.",
       "tool_2_title": "SUPPORT",
-      "tool_2_text": "Your teen will learn from you if they know you support them. Let them try things without shouting at them. This helps them “learn how to learn”, because they feel safe with you.",
+      "tool_2_text": "Your teen will learn from you if they know you support them. Let them try things and be patient with them. This helps them “learn how to learn”, because they feel safe with you.",
       "tool_3_title": "PRAISE",
       "tool_3_text": "Praising your teen is a powerful way to help them try again. Teens do not get things right the first time and should learn how to try again. Praise them for trying to do things, so they can learn from their mistakes.",
       "tool_4_title": ""
