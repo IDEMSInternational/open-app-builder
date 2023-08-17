@@ -1,5 +1,7 @@
 # Audio
 
+Audio refers to any form of sound or sound-related content that can be played, recorded, processed or interacted within the app. Audio can include various types of sound such as music, spoken dialogue, sound effects and other auditory elements.
+
 ## Example
 
 | type      | name          | value          |parameter_list |
