@@ -1,5 +1,6 @@
 # Combo Box
 
+A combo box combines a text input field and a drop-down list of options. Combo boxes are used when users need to choose from a predefined set of choices, but they also have the flexibility to input their value if it's not in the list.
 ## Example
 
 | type        | name               | value                                 |parameter_list |
