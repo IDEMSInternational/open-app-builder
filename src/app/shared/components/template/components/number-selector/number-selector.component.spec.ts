@@ -1,16 +1,16 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { IonicModule } from '@ionic/angular';
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
+import { IonicModule } from "@ionic/angular";
 
-import { TmplNumberComponent } from './number-selector.component';
+import { TmplNumberComponent } from "./number-selector.component";
 
-describe('NumberSelectorComponent', () => {
+describe("NumberSelectorComponent", () => {
   let component: TmplNumberComponent;
   let fixture: ComponentFixture<TmplNumberComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ TmplNumberComponent ],
-      imports: [IonicModule.forRoot()]
+      declarations: [TmplNumberComponent],
+      imports: [IonicModule.forRoot()],
     }).compileComponents();
 
     fixture = TestBed.createComponent(TmplNumberComponent);
@@ -18,7 +18,7 @@ describe('NumberSelectorComponent', () => {
     fixture.detectChanges();
   }));
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });

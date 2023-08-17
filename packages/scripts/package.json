@@ -10,8 +10,9 @@
   "scripts": {
     "start": "ts-node src/commands/index.ts",
     "dev": "ts-node-dev --respawn --watch src/**/*.ts src/commands/index.ts",
-    "test": "jasmine-ts",
-    "build": "esbuild src/commands/index.ts --bundle --platform=node --target=node12.22 --outfile=build/commands.js",
+    "test": "jasmine-ts --config=jasmine.json",
+    "test:watch": "nodemon --ext ts --exec 'jasmine-ts --config=jasmine.json'",
+    "build": "esbuild src/commands/index.ts --bundle --platform=node --target=node16 --outfile=build/commands.js",
     "pkg": "pkg . --output ./exec/idems-app-scripts"
   },
   "pkg": {
@@ -22,26 +23,43 @@
   "dependencies": {
     "@idemsInternational/gdrive-tools": "workspace:*",
     "@idemsInternational/rapidpro-excel": "workspace:*",
+    "actions": "workspace:*",
     "boxen": "^5.0.1",
     "chalk": "^4.1.0",
+    "chokidar": "^3.5.3",
     "commander": "^8.3.0",
     "data-models": "workspace:*",
     "fs-extra": "^9.0.1",
     "glob": "^7.2.0",
     "inquirer": "^7.3.3",
     "node-rsa": "^1.1.1",
+    "open": "^9.1.0",
+    "p-queue": "^6.6.2",
+    "semver": "^7.5.2",
+    "shared": "workspace:*",
+    "simple-git": "^3.7.1",
+    "subtitles-parser-vtt": "^0.1.0",
+    "ts-morph": "^15.0.0",
     "typescript": "^4.1.2",
-    "xlsx": "^0.16.6"
+    "winston": "^3.8.1",
+    "xlsx": "^0.18.5"
   },
   "devDependencies": {
+    "@swc/core": "^1.3.29",
     "@types/fs-extra": "^9.0.4",
     "@types/inquirer": "^7.3.1",
+    "@types/jasmine": "^3.10.6",
     "@types/node-rsa": "^1.1.1",
+    "@types/semver": "^7.3.9",
     "esbuild": "^0.14.2",
-    "jasmine": "^3.6.3",
-    "jasmine-ts": "^0.3.2",
+    "jasmine": "^3.99.0",
+    "jasmine-spec-reporter": "^7.0.0",
+    "jasmine-ts": "^0.4.0",
+    "mock-fs": "^5.2.0",
+    "nodemon": "^2.0.19",
     "pkg": "^5.5.1",
-    "ts-node": "~7.0.0",
-    "ts-node-dev": "^1.0.0"
+    "ts-node": "^10.8.0",
+    "ts-node-dev": "^1.0.0",
+    "tsimportlib": "^0.0.5"
   }
 }

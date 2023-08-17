@@ -1,39 +1,38 @@
 export interface AudioPlayer {
-    play(): void;
-    pause(): void;
-    stop(): void;
-    getCurrentPosition(): Promise<number>;
-    setPlaybackRate(speed: number);
+  play(): void;
+  pause(): void;
+  stop(): void;
+  getCurrentPosition(): Promise<number>;
+  setPlaybackRate(speed: number);
 }
 
 export class HTML5AudioPlayer implements AudioPlayer {
-    htmlAudioElement: HTMLAudioElement;
+  htmlAudioElement: HTMLAudioElement;
 
-    constructor(src: string) {
-        this.htmlAudioElement = new Audio(src);
-    }
+  constructor(src: string) {
+    this.htmlAudioElement = new Audio(src);
+  }
 
-    play(): void {
-        this.htmlAudioElement.play();
-    }
+  play(): void {
+    this.htmlAudioElement.play();
+  }
 
-    pause(): void {
-        this.htmlAudioElement.pause();
-    }
+  pause(): void {
+    this.htmlAudioElement.pause();
+  }
 
-    stop(): void {
-        this.htmlAudioElement.pause();
-        this.htmlAudioElement.currentTime = 0;
-    }
+  stop(): void {
+    this.htmlAudioElement.pause();
+    this.htmlAudioElement.currentTime = 0;
+  }
 
-    getCurrentPosition(): Promise<any> {
-        return new Promise((resolve, reject) => {
-            resolve(this.htmlAudioElement.currentTime);
-        });
-    }
+  getCurrentPosition(): Promise<any> {
+    return new Promise((resolve, reject) => {
+      resolve(this.htmlAudioElement.currentTime);
+    });
+  }
 
-    setPlaybackRate(speed: number) {
-        this.htmlAudioElement.playbackRate = speed;
-    }
-
+  setPlaybackRate(speed: number) {
+    this.htmlAudioElement.playbackRate = speed;
+  }
 }

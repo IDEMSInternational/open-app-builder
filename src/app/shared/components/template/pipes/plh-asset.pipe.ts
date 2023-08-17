@@ -15,7 +15,7 @@ export class PLHAssetPipe implements PipeTransform {
     if (value.startsWith("http")) {
       return value;
     }
-    const path = this.templateAssetService.getTranslatedAssetPath(value);
-    return path;
+    const translatedPath = this.templateAssetService.getTranslatedAssetPath(value);
+    return translatedPath;
   }
 }

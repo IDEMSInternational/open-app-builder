@@ -18,8 +18,20 @@ module.exports = {
     "@typescript-eslint/explicit-module-boundary-types": "off",
     "@typescript-eslint/no-explicit-any": "off",
     "@typescript-eslint/ban-types": "off",
+    "no-restricted-imports": [
+      "error",
+      {
+        paths: [
+          {
+            name: "@nestjs/sequelize",
+            importNames: ["InjectConnection", "InjectModel"],
+            message: "Do not inject from sequelize. Use deployment service instead",
+          },
+        ],
+      },
+    ],
     "prettier/prettier": [
-      "warning",
+      1,
       {
         endOfLine: "auto",
       },

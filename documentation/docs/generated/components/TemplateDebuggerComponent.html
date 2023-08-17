@@ -1,0 +1,707 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>frontend documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+        <link rel="stylesheet" href="../styles/material.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">frontend documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li>Components</li>
+  <li
+  >
+  TemplateDebuggerComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li >
+            <a href="#styleData" role="tab" id="styleData-tab" data-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li >
+            <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/shared/components/template/components/debugger.ts</code>
+</p>
+
+
+
+    <p class="comment">
+        <h3>Extends</h3>
+    </p>
+    <p class="comment">
+                <code><a href="../components/TemplateBaseComponent.html" target="_self" >TemplateBaseComponent</a></code>
+    </p>
+
+
+
+<section>
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>plh-template-debugger</code></td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-3">styles</td>
+                <td class="col-md-9"><code>
+      :host {
+        width: 100%;
+      }
+      .debug-container {
+        padding: 5px;
+        background: rgba(255, 255, 255, 0.95);
+        font-size: small;
+        overflow: auto;
+      }
+      .debug-container &gt; p {
+        text-align: left;
+        display: flex;
+        align-items: center;
+        width: 100%;
+        text-align: center;
+      }
+      .debug-container[data-hidden&#x3D;&quot;true&quot;] &gt; summary {
+        background: #e2dcf0;
+        padding: 5px;
+        margin: -5px;
+      }
+      .debug-row-type {
+      }
+      .debug-row-name {
+        margin-left: auto;
+      }
+      .debug-row-hidden {
+        margin-left: 8px;
+      }
+      table {
+        padding: 2px;
+        border-collapse: collapse;
+        margin-top: 8px;
+      }
+      td {
+        padding: 2px;
+        border: 1px solid rgba(0, 0, 0, 0.5);
+      }
+    </code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">template</td>
+                <td class="col-md-9"><pre class="line-numbers"><code class="language-html">&lt;details #details class&#x3D;&quot;debug-container&quot; [attr.data-hidden]&#x3D;&quot;_row.hidden&quot;&gt;
+  &lt;summary style&#x3D;&quot;display:flex&quot; (click)&#x3D;&quot;handleSummaryClick($event)&quot;&gt;
+    &lt;span class&#x3D;&quot;debug-row-type&quot;&gt;{{ _row.type }}&lt;/span&gt;
+    &lt;span class&#x3D;&quot;debug-row-name&quot;&gt;{{ _row._debug_name || _row.name || &quot;(no name)&quot; }}&lt;/span&gt;
+    &lt;span *ngIf&#x3D;&quot;_row.hidden &#x3D;&#x3D;&#x3D; &#x27;true&#x27;&quot; class&#x3D;&quot;debug-row-hidden&quot;
+      &gt;&lt;ion-icon name&#x3D;&quot;eye-off&quot;&gt;&lt;/ion-icon
+    &gt;&lt;/span&gt;
+  &lt;/summary&gt;
+&lt;/details&gt;
+&lt;ion-popover [isOpen]&#x3D;&quot;details.open&quot; class&#x3D;&quot;debugger-popover&quot;&gt;
+  &lt;ng-template&gt;
+    &lt;div style&#x3D;&quot;padding:8px&quot;&gt;
+      &lt;table&gt;
+        &lt;th&gt;&lt;/th&gt;
+        &lt;th&gt;&lt;/th&gt;
+        &lt;div *ngFor&#x3D;&quot;let key of _row | objectKeys&quot; style&#x3D;&quot;display:contents&quot;&gt;
+          &lt;tr *ngIf&#x3D;&quot;!debugFieldExclusions.includes(key) &amp;&amp; _row[key]&quot;&gt;
+            &lt;td&gt;{{ key }}&lt;/td&gt;
+            &lt;td&gt;{{ _row[key] | json }}&lt;/td&gt;
+          &lt;/tr&gt;
+        &lt;/div&gt;
+      &lt;/table&gt;
+      &lt;ion-button fill&#x3D;&quot;clear&quot; size&#x3D;&quot;small&quot; (click)&#x3D;&quot;logDebugInfo()&quot;&gt;
+        (log full details)
+      &lt;/ion-button&gt;
+    &lt;/div&gt;
+  &lt;/ng-template&gt;
+&lt;/ion-popover&gt;
+</code></pre></td>
+            </tr>
+
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#debugFieldExclusions" >debugFieldExclusions</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#handleSummaryClick" >handleSummaryClick</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#logDebugInfo" >logDebugInfo</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(templateFieldService: TemplateFieldService)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="80" class="link-to-prism">src/app/shared/components/template/components/debugger.ts:80</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>templateFieldService</td>
+                                                  
+                                                        <td>
+                                                                    <code>TemplateFieldService</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section>
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="handleSummaryClick"></a>
+                    <span class="name">
+                        <span class="modifier">Public</span>
+                        <span ><b>handleSummaryClick</b></span>
+                        <a href="#handleSummaryClick"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>handleSummaryClick(e: <a href="https://angular.io/api/router/Event" target="_blank">Event</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="101"
+                            class="link-to-prism">src/app/shared/components/template/components/debugger.ts:101</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>e</td>
+                                    <td>
+                                                <code><a href="https://angular.io/api/router/Event" target="_blank" >Event</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="logDebugInfo"></a>
+                    <span class="name">
+                        <span class="modifier">Public</span>
+                        <span ><b>logDebugInfo</b></span>
+                        <a href="#logDebugInfo"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>logDebugInfo()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="85"
+                            class="link-to-prism">src/app/shared/components/template/components/debugger.ts:85</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section>
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="debugFieldExclusions"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>debugFieldExclusions</b></span>
+                        <a href="#debugFieldExclusions"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[&quot;comments&quot;, &quot;rows&quot;, &quot;_dynamicFields&quot;, &quot;action_list&quot;]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="84" class="link-to-prism">src/app/shared/components/template/components/debugger.ts:84</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component } from &quot;@angular/core&quot;;
+import { TemplateFieldService } from &quot;../services/template-field.service&quot;;
+import { TemplateBaseComponent } from &quot;./base&quot;;
+
+@Component({
+  selector: &quot;plh-template-debugger&quot;,
+  template: &#x60;
+    &lt;details #details class&#x3D;&quot;debug-container&quot; [attr.data-hidden]&#x3D;&quot;_row.hidden&quot;&gt;
+      &lt;summary style&#x3D;&quot;display:flex&quot; (click)&#x3D;&quot;handleSummaryClick($event)&quot;&gt;
+        &lt;span class&#x3D;&quot;debug-row-type&quot;&gt;{{ _row.type }}&lt;/span&gt;
+        &lt;span class&#x3D;&quot;debug-row-name&quot;&gt;{{ _row._debug_name || _row.name || &quot;(no name)&quot; }}&lt;/span&gt;
+        &lt;span *ngIf&#x3D;&quot;_row.hidden &#x3D;&#x3D;&#x3D; &#x27;true&#x27;&quot; class&#x3D;&quot;debug-row-hidden&quot;
+          &gt;&lt;ion-icon name&#x3D;&quot;eye-off&quot;&gt;&lt;/ion-icon
+        &gt;&lt;/span&gt;
+      &lt;/summary&gt;
+    &lt;/details&gt;
+    &lt;ion-popover [isOpen]&#x3D;&quot;details.open&quot; class&#x3D;&quot;debugger-popover&quot;&gt;
+      &lt;ng-template&gt;
+        &lt;div style&#x3D;&quot;padding:8px&quot;&gt;
+          &lt;table&gt;
+            &lt;th&gt;&lt;/th&gt;
+            &lt;th&gt;&lt;/th&gt;
+            &lt;div *ngFor&#x3D;&quot;let key of _row | objectKeys&quot; style&#x3D;&quot;display:contents&quot;&gt;
+              &lt;tr *ngIf&#x3D;&quot;!debugFieldExclusions.includes(key) &amp;&amp; _row[key]&quot;&gt;
+                &lt;td&gt;{{ key }}&lt;/td&gt;
+                &lt;td&gt;{{ _row[key] | json }}&lt;/td&gt;
+              &lt;/tr&gt;
+            &lt;/div&gt;
+          &lt;/table&gt;
+          &lt;ion-button fill&#x3D;&quot;clear&quot; size&#x3D;&quot;small&quot; (click)&#x3D;&quot;logDebugInfo()&quot;&gt;
+            (log full details)
+          &lt;/ion-button&gt;
+        &lt;/div&gt;
+      &lt;/ng-template&gt;
+    &lt;/ion-popover&gt;
+  &#x60;,
+  styles: [
+    &#x60;
+      :host {
+        width: 100%;
+      }
+      .debug-container {
+        padding: 5px;
+        background: rgba(255, 255, 255, 0.95);
+        font-size: small;
+        overflow: auto;
+      }
+      .debug-container &gt; p {
+        text-align: left;
+        display: flex;
+        align-items: center;
+        width: 100%;
+        text-align: center;
+      }
+      .debug-container[data-hidden&#x3D;&quot;true&quot;] &gt; summary {
+        background: #e2dcf0;
+        padding: 5px;
+        margin: -5px;
+      }
+      .debug-row-type {
+      }
+      .debug-row-name {
+        margin-left: auto;
+      }
+      .debug-row-hidden {
+        margin-left: 8px;
+      }
+      table {
+        padding: 2px;
+        border-collapse: collapse;
+        margin-top: 8px;
+      }
+      td {
+        padding: 2px;
+        border: 1px solid rgba(0, 0, 0, 0.5);
+      }
+    &#x60;,
+  ],
+})
+export class TemplateDebuggerComponent extends TemplateBaseComponent {
+  constructor(private templateFieldService: TemplateFieldService) {
+    super();
+  }
+  public debugFieldExclusions &#x3D; [&quot;comments&quot;, &quot;rows&quot;, &quot;_dynamicFields&quot;, &quot;action_list&quot;];
+  public logDebugInfo() {
+    // retrieve local storage keys in the same way they would be populated in a template
+    const fields &#x3D; {};
+    Object.keys(localStorage).forEach(
+      (key) &#x3D;&gt;
+        (fields[key] &#x3D; this.templateFieldService.getField(key.replace(&quot;rp-contact-field.&quot;, &quot;&quot;)))
+    );
+    console.group(this._row.type, this._row.name);
+    console.log(&quot;row&quot;, this._row);
+    console.log(&quot;parent rows&quot;, this.parent.templateRowMap);
+    console.log(&quot;fields&quot;, fields);
+    console.log(&quot;globals&quot;, this.templateFieldService.globals);
+    console.log(&quot;parent&quot;, this.parent);
+    console.log(&quot;children&quot;, this._row.rows);
+    console.groupEnd();
+  }
+  public handleSummaryClick(e: Event) {
+    e.stopPropagation();
+  }
+}
+</code></pre>
+    </div>
+
+
+    <div class="tab-pane fade " id="c-styleData">
+            <pre class="line-numbers"><code class="language-scss">
+      :host {
+        width: 100%;
+      }
+      .debug-container {
+        padding: 5px;
+        background: rgba(255, 255, 255, 0.95);
+        font-size: small;
+        overflow: auto;
+      }
+      .debug-container &gt; p {
+        text-align: left;
+        display: flex;
+        align-items: center;
+        width: 100%;
+        text-align: center;
+      }
+      .debug-container[data-hidden&#x3D;&quot;true&quot;] &gt; summary {
+        background: #e2dcf0;
+        padding: 5px;
+        margin: -5px;
+      }
+      .debug-row-type {
+      }
+      .debug-row-name {
+        margin-left: auto;
+      }
+      .debug-row-hidden {
+        margin-left: 8px;
+      }
+      table {
+        padding: 2px;
+        border-collapse: collapse;
+        margin-top: 8px;
+      }
+      td {
+        padding: 2px;
+        border: 1px solid rgba(0, 0, 0, 0.5);
+      }
+    
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><details #details class="debug-container" [attr.data-hidden]="_row.hidden">  <summary style="display:flex" (click)="handleSummaryClick($event)">    <span class="debug-row-type">{{ _row.type }}</span>    <span class="debug-row-name">{{ _row._debug_name || _row.name || "(no name)" }}</span>    <span *ngIf="_row.hidden === \'true\'" class="debug-row-hidden"      ><ion-icon name="eye-off"></ion-icon    ></span>  </summary></details><ion-popover [isOpen]="details.open" class="debugger-popover">  <ng-template>    <div style="padding:8px">      <table>        <th></th>        <th></th>        <div *ngFor="let key of _row | objectKeys" style="display:contents">          <tr *ngIf="!debugFieldExclusions.includes(key) && _row[key]">            <td>{{ key }}</td>            <td>{{ _row[key] | json }}</td>          </tr>        </div>      </table>      <ion-button fill="clear" size="small" (click)="logDebugInfo()">        (log full details)      </ion-button>    </div>  </ng-template></ion-popover></div>'
+    var COMPONENTS = [{'name': 'AccordionSectionComponent', 'selector': 'plh-tmpl-accordion-section'},{'name': 'AnimatedSectionComponent', 'selector': 'plh-tmpl-animated-section'},{'name': 'AnimatedSectionGroupComponent', 'selector': 'plh-tmpl-animated-section-group'},{'name': 'ComboBoxModalComponent', 'selector': 'combo-box-modal'},{'name': 'FormComponent', 'selector': 'plh-tmpl-form'},{'name': 'NavGroupComponent', 'selector': 'plh-tmpl-nav-group'},{'name': 'RoundIconButtonComponent', 'selector': 'plh-round-button'},{'name': 'SelectTextComponent', 'selector': 'plh-select-text'},{'name': 'SquareIconButtonComponent', 'selector': 'plh-square-icon-button'},{'name': 'TemplateBaseComponent', 'selector': ''},{'name': 'TemplateDebuggerComponent', 'selector': 'plh-template-debugger'},{'name': 'TemplateHTMLComponent', 'selector': 'template-html-component'},{'name': 'TemplateLayoutComponent', 'selector': ''},{'name': 'TemplatePopupComponent', 'selector': ''},{'name': 'TmplAccordionComponent', 'selector': 'plh-accordion-component'},{'name': 'TmplAdvancedDashedBoxComponent', 'selector': 'plh-advanced-dashed-box'},{'name': 'TmplAnimatedSlidesComponent', 'selector': 'template-animated-slides'},{'name': 'TmplAudioComponent', 'selector': 'plh-audio'},{'name': 'TmplButtonComponent', 'selector': 'plh-button'},{'name': 'TmplCarouselComponent', 'selector': 'plh-carousel'},{'name': 'TmplComboBoxComponent', 'selector': 'plh-combo-box'},{'name': 'TmplDashedBoxComponent', 'selector': 'plh-dashed-box'},{'name': 'TmplDataItemsComponent', 'selector': 'plh-data-items'},{'name': 'TmplDisplayGridComponent', 'selector': 'plh-display-grid'},{'name': 'TmplDisplayGroupComponent', 'selector': 'plh-tmpl-display-group'},{'name': 'TmplDrawerComponent', 'selector': 'plh-drawer'},{'name': 'TmplHelpIconComponent', 'selector': 'plh-tmpl-help-icon'},{'name': 'TmplIconBannerComponent', 'selector': 'plh-icon-banner'},{'name': 'TmplImageComponent', 'selector': 'plh-tmpl-image'},{'name': 'TmplLatexComponent', 'selector': 'template-latex-component'},{'name': 'TmplLottieAnimation', 'selector': 'plh-tmpl-lottie-animation'},{'name': 'TmplNavigationBarComponent', 'selector': 'plh-navigation-bar'},{'name': 'TmplNumberComponent', 'selector': 'plh-number-selector'},{'name': 'TmplOdkFormComponent', 'selector': 'tmpl-odk-form'},{'name': 'TmplParentPointBoxComponent', 'selector': 'plh-points-item'},{'name': 'TmplParentPointCounterComponent', 'selector': 'plh-parent-point-counter'},{'name': 'TmplPdfComponent', 'selector': 'plh-pdf'},{'name': 'TmplQRCodeComponent', 'selector': 'plh-qr-code'},{'name': 'TmplRadioButtonGridComponent', 'selector': 'plh-radio-button-grid'},{'name': 'TmplRadioGroupComponent', 'selector': 'plh-radio-group'},{'name': 'TmplSimpleCheckboxComponent', 'selector': 'plh-simple-checkbox'},{'name': 'TmplSliderComponent', 'selector': 'plh-slider-new'},{'name': 'TmplSubtitleComponent', 'selector': 'plh-tmpl-subtitle'},{'name': 'TmplTaskCardComponent', 'selector': 'plh-task-card'},{'name': 'TmplTaskProgressBarComponent', 'selector': 'plh-task-progress-bar'},{'name': 'TmplTextAreaComponent', 'selector': 'plh-text-area'},{'name': 'TmplTextBoxComponent', 'selector': 'plh-text-box'},{'name': 'TmplTextComponent', 'selector': 'plh-tmpl-text'},{'name': 'TmplTileComponent', 'selector': 'plh-tile-component'},{'name': 'TmplTimerComponent', 'selector': 'plh-timer'},{'name': 'TmplTitleComponent', 'selector': 'plh-tmpl-title'},{'name': 'TmplToggleBarComponent', 'selector': 'plh-tmpl-toggle-bar'},{'name': 'TmplVideoComponent', 'selector': 'plh-tmpl-video'},{'name': 'WorkshopsComponent', 'selector': 'plh-tmpl-workshops-accordion'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'TemplateDebuggerComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'TemplateDebuggerComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

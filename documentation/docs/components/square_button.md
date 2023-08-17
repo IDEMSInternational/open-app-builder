@@ -1,5 +1,6 @@
 # Square button
 
+A square button is an interactive element with a square appearance. It is used to trigger actions, such as navigating through different screens or menus, or initiating specific operations within the app. Square buttons can have different colours, sizes, and even icons within them to provide visual cues about their functionality.
 ## Example
 
 | type         | name                  |parameter_list |
@@ -10,7 +11,7 @@
 ![](images/square_button.png)
 
 [Google Sheet Demo](https://docs.google.com/spreadsheets/d/1ptSCtSDQ-_PrgLuZiJouHa9k1nUEjg7eMzx9rVOKBUE/edit#gid=569531329)   
-[Live Preview Demo](https://plh-teens-app1.web.app/template/comp_square_button)
+[Live Preview Demo](https://idems-debug.web.app/template/comp_square_button)
 
 ## Parameters
 

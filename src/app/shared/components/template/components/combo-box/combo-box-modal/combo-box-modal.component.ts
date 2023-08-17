@@ -5,14 +5,12 @@ import {
   getNumberParamFromTemplateRow,
   getParamFromTemplateRow,
   getStringParamFromTemplateRow,
+  IAnswerListItem,
+  parseAnswerList,
 } from "src/app/shared/utils";
 import { FormBuilder, FormControl, FormGroup } from "@angular/forms";
 import { ModalController } from "@ionic/angular";
-
-interface AnswerBody {
-  name: string | null;
-  text: string | null;
-}
+import { objectToArray } from "../../../utils";
 
 @Component({
   selector: "combo-box-modal",
@@ -26,7 +24,7 @@ export class ComboBoxModalComponent implements OnInit {
   @Input() customAnswerSelected: boolean;
   @Input() style: string;
   formData: FormGroup | null;
-  valuesFromListAnswers: AnswerBody[];
+  valuesFromListAnswers: IAnswerListItem[];
   textTitle: string | null;
   inputAllowed: boolean = false;
   form: FormGroup;
@@ -41,7 +39,7 @@ export class ComboBoxModalComponent implements OnInit {
   }
 
   getParams() {
-    this.valuesFromListAnswers = this.convertToObject(
+    this.valuesFromListAnswers = parseAnswerList(
       getParamFromTemplateRow(this.row, "answer_list", null)
     );
     this.textTitle = getStringParamFromTemplateRow(this.row, "text", null);
@@ -62,27 +60,6 @@ export class ComboBoxModalComponent implements OnInit {
       this.form.get("answer").setValue(this.selectedValue);
     } else {
       this.form.get("customAnswer").setValue(this.selectedValue);
-    }
-  }
-
-  convertToObject(answers_list: string[]): AnswerBody[] {
-    let answers: AnswerBody[] = [];
-    if (answers_list) {
-      answers_list.map((item) => {
-        const obj: AnswerBody = {
-          text: null,
-          name: null,
-        };
-        const stringProperties = item.split("|");
-        stringProperties.forEach((s) => {
-          const [field, value] = s.split(":").map((v) => v.trim());
-          if (field && value) {
-            obj[field] = value;
-          }
-        });
-        answers.push(obj);
-      });
-      return answers;
     }
   }
 

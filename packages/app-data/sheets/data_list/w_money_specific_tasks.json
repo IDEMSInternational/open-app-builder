@@ -1,0 +1,114 @@
+{
+  "flow_type": "data_list",
+  "flow_name": "w_money_specific_tasks",
+  "status": "released",
+  "rows": [
+    {
+      "id": "read_1",
+      "group": "read_1",
+      "individual": true,
+      "together": true,
+      "template": "w_money_read_1"
+    },
+    {
+      "id": "learn_1",
+      "group": "learn_1",
+      "individual": true,
+      "together": true,
+      "template": "w_money_learn_1_temp"
+    },
+    {
+      "id": "learn_2",
+      "group": "learn_2",
+      "individual": true,
+      "together": true,
+      "template": "w_money_learn_2_temp"
+    },
+    {
+      "id": "learn_3",
+      "group": "learn_3",
+      "individual": true,
+      "together": true,
+      "template": "w_money_learn_3_temp"
+    },
+    {
+      "id": "learn_4",
+      "group": "learn_4",
+      "individual": true,
+      "together": true,
+      "template": "w_money_learn_4_temp"
+    },
+    {
+      "id": "read_2",
+      "group": "read_2",
+      "rel_priority": 1,
+      "individual": true,
+      "together": true,
+      "template": "w_money_read_2"
+    },
+    {
+      "id": "question_1",
+      "group": "read_2",
+      "rel_priority": 2,
+      "individual": true,
+      "together": false,
+      "template": "w_money_tq_1"
+    },
+    {
+      "id": "talk_1",
+      "group": "read_2",
+      "rel_priority": 3,
+      "individual": false,
+      "together": true,
+      "template": "w_money_tq_1"
+    },
+    {
+      "id": "read_3",
+      "group": "read_3",
+      "rel_priority": 1,
+      "individual": true,
+      "together": true,
+      "template": "w_money_read_3"
+    },
+    {
+      "id": "question_2",
+      "group": "read_3",
+      "rel_priority": 2,
+      "individual": true,
+      "together": false,
+      "template": "w_money_tq_2"
+    },
+    {
+      "id": "talk_2",
+      "group": "read_3",
+      "rel_priority": 3,
+      "individual": false,
+      "together": true,
+      "template": "w_money_tq_2"
+    },
+    {
+      "id": "question_3",
+      "group": "read_3",
+      "rel_priority": 4,
+      "individual": true,
+      "together": false,
+      "template": "w_money_tq_3"
+    },
+    {
+      "id": "talk_3",
+      "group": "read_3",
+      "rel_priority": 5,
+      "individual": false,
+      "together": true,
+      "template": "w_money_tq_3"
+    },
+    {
+      "id": "learn_5",
+      "group": "learn_5",
+      "individual": true,
+      "together": true,
+      "template": "w_money_learn_5_temp"
+    }
+  ],
+  "_xlsxPath": "global/data/workshop_data/workshop_tasks.xlsx"
+}

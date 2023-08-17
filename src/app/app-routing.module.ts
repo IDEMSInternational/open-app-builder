@@ -1,10 +1,10 @@
 import { NgModule } from "@angular/core";
 import { PreloadAllModules, Route, RouterModule, Routes } from "@angular/router";
-import { ThemeEditorComponent } from "src/app/feature/theme/theme-editor/theme-editor.component";
-import { APP_CONSTANTS } from "./data";
+import { APP_CONFIG } from "./data";
 import { TourComponent } from "./feature/tour/tour.component";
 
-const { APP_ROUTE_DEFAULTS } = APP_CONSTANTS;
+// TODO: These should come from the appConfigService
+const { APP_ROUTE_DEFAULTS } = APP_CONFIG;
 
 /** Routes specified from data-models */
 const DataRoutes: Routes = [
@@ -30,20 +30,35 @@ const FeatureRoutes: Routes = [
       import("./feature/template/template.module").then((m) => m.TemplatePageModule),
   },
   {
-    path: "theme-editor",
-    component: ThemeEditorComponent,
+    path: "theme",
+    loadChildren: () => import("./feature/theme/theme.module").then((m) => m.ThemeModule),
   },
   {
     path: "tour",
-    component: TourComponent,
+    loadChildren: () => import("./feature/tour/tour.module").then((m) => m.TourModule),
   },
   {
     path: "tour/:tourName",
     component: TourComponent,
   },
+  // Routes to show in sidebar routing
   {
     path: "feedback",
     loadChildren: () => import("./feature/feedback/feedback.module").then((m) => m.FeedbackModule),
+    outlet: "sidebar",
+  },
+  {
+    path: "template",
+    loadChildren: () =>
+      import("./feature/template/template.module").then((m) => m.TemplatePageModule),
+    outlet: "sidebar",
+  },
+  {
+    path: "component",
+    loadChildren: () =>
+      import("./feature/template/pages/component/component.module").then(
+        (m) => m.TemplateComponentModule
+      ),
   },
 ];
 
@@ -53,7 +68,6 @@ const FeatureRoutes: Routes = [
       preloadingStrategy: PreloadAllModules,
       useHash: false,
       anchorScrolling: "enabled",
-      relativeLinkResolution: "legacy",
     }),
   ],
   exports: [RouterModule],

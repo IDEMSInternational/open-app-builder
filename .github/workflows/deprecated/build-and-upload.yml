@@ -9,29 +9,23 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [12.x]
+        node-version: [16]
 
     steps:
       - name: Install crcmod
         run: |
           sudo apt-get install gcc python-dev python-setuptools
           sudo pip install -I --no-cache-dir -U crcmod
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v3
         with:
           lfs: true
       - name: Checkout LFS objects
         run: git lfs checkout
-      - name: Cache node modules
-        uses: actions/cache@v1
-        with:
-          path: ~/node_modules
-          key: ${{ runner.os }}-node-yarn-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-node-yarn-
       - name: Node ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
+          cache: 'yarn'
       - name: Setup GCloud
         uses: GoogleCloudPlatform/github-actions/setup-gcloud@master
         with:
@@ -47,7 +41,7 @@ jobs:
       - name: yarn install
         run: yarn install
       - name: Set Deployment
-        run: yarn scripts deployment set "$APP_DEPLOYMENT_NAME"
+        run: yarn workflow deployment set "$APP_DEPLOYMENT_NAME"
         env:
           APP_DEPLOYMENT_NAME: ${{ secrets.APP_DEPLOYMENT_NAME }}
       - name: yarn build

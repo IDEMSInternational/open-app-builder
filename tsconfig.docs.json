@@ -1,0 +1,18 @@
+{
+  "include": ["src/app/shared/components/template/components/**/*.ts"],
+  "exclude": [
+    "**/*.spec.ts",
+    "**/*.service.ts",
+    "**/*.pipe.ts",
+    "**/app-routing.module.ts",
+    "src/environments",
+    "src/app/feature",
+    "src/app/shared/services",
+    "src/app/shared/components/common/directives",
+    "src/app/shared/components/template/utils",
+    "src/app/shared/components/template/components/odk-form/libs",
+    ".idems_app",
+    "packages",
+    "capacitor.config.ts"
+  ]
+}

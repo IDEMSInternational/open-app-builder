@@ -29,7 +29,7 @@ nav:
 A full set of styling options can be found from the theme documentation at https://squidfunk.github.io/mkdocs-material/reference/
 
 !!! info
-    This includes how to add things like callouts (admonitions), buttons, tables and more!
+    This includes how to add things like call-outs (admonitions), buttons, tables and more!
 
 [View Theme Docs :fontawesome-solid-external-link-alt:](https://squidfunk.github.io/mkdocs-material/reference/){ .md-button .md-button--primary }
 
@@ -40,7 +40,7 @@ If editing in VSCode and adding screenshots, a handy extension to use is [Paste 
 
 If using the extension it is recommended to enable the VSCode setting  `pasteImage.showFilePathConfirmInputBox`, which will prompt a filepath for saving images
 
-![](images/paste-image.png)
+![](../images/paste-image.png)
 
 !!! tip
     When adding screenshots the recommended device width is **425px**. This is the size available in google chrome as `Mobile L` configuration. If the screenshot is unclear at this sizing the next recommendation would be 768px

@@ -1,0 +1,22 @@
+{
+  "flow_type": "data_list",
+  "flow_name": "w_1on1_specific_tasks",
+  "status": "released",
+  "rows": [
+    {
+      "id": "question",
+      "group": "question",
+      "individual": true,
+      "together": false,
+      "template": "w_1on1_question"
+    },
+    {
+      "id": "talk",
+      "group": "talk",
+      "individual": false,
+      "together": true,
+      "template": "w_1on1_talk"
+    }
+  ],
+  "_xlsxPath": "global/data/workshop_data/workshop_tasks.xlsx"
+}

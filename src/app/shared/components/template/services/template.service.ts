@@ -3,7 +3,6 @@ import { LocalStorageService } from "src/app/shared/services/local-storage/local
 import { AppDataService } from "src/app/shared/services/data/app-data.service";
 import { DbService } from "src/app/shared/services/db/db.service";
 import { FlowTypes } from "src/app/shared/model";
-import { BehaviorSubject } from "rxjs";
 import { ModalController } from "@ionic/angular";
 import { ITemplatePopupComponentProps, TemplatePopupComponent } from "../components/layout/popup";
 import { TemplateTranslateService } from "./template-translate.service";
@@ -11,13 +10,12 @@ import { IFlowEvent } from "data-models/db.model";
 import { TemplateVariablesService } from "./template-variables.service";
 import { TemplateFieldService } from "./template-field.service";
 import { arrayToHashmap } from "src/app/shared/utils";
+import { SyncServiceBase } from "src/app/shared/services/syncService.base";
 
 @Injectable({
   providedIn: "root",
 })
-export class TemplateService {
-  private themeValue = new BehaviorSubject("passive");
-  currentTheme = this.themeValue.asObservable();
+export class TemplateService extends SyncServiceBase {
   constructor(
     private localStorageService: LocalStorageService,
     private appDataService: AppDataService,
@@ -26,17 +24,31 @@ export class TemplateService {
     private translateService: TemplateTranslateService,
     private templateVariablesService: TemplateVariablesService,
     private templateFieldService: TemplateFieldService
-  ) {}
+  ) {
+    super("TemplateService");
+    this.initialise();
+    /**
+     * Avoid initialisation logic and prefer to ensure services ready
+     * on demand to avoid cyclic issues
+     * Instead services are checked before public method calls
+     * */
+  }
 
-  /** Initialise global and startup templates */
-  async init() {
-    // Re-initialise default field and globals on init in case sheets have been updated
-    // TODO - ideally this should just be triggered on first launch of new app update
-    await this.initialiseDefaultFieldAndGlobals();
+  private async initialise() {
     // Update default values when language changed to allow for global translations
     this.translateService.app_language$.subscribe(async (lang) => {
       await this.initialiseDefaultFieldAndGlobals();
     });
+  }
+
+  private async ensurePublicServicesReady() {
+    await this.ensureAsyncServicesReady([
+      this.dbService,
+      this.translateService,
+      this.templateVariablesService,
+      this.templateFieldService,
+    ]);
+    this.ensureSyncServicesReady([this.localStorageService, this.appDataService]);
   }
 
   /**
@@ -49,10 +61,12 @@ export class TemplateService {
     templatename: string,
     options: Partial<ITemplatePopupComponentProps> = {}
   ) {
+    await this.ensurePublicServicesReady();
     const props: ITemplatePopupComponentProps = {
       name: templatename,
       templatename,
       dismissOnEmit: true, // defaults will be overridden by passed options
+      waitForDismiss: true,
       fullscreen: true,
       showCloseButton: true,
       ...options,
@@ -63,9 +77,12 @@ export class TemplateService {
       componentProps: { props },
     });
     await modal.present();
-    const { data } = await modal.onDidDismiss();
-    const emitData: { emit_value?: string; emit_data?: any } = data;
-    return emitData;
+    let dismissData: { emit_value?: string; emit_data?: any } = {};
+    if (props.waitForDismiss) {
+      const { data } = await modal.onDidDismiss();
+      dismissData = data;
+    }
+    return { modal, ...dismissData };
   }
 
   /**
@@ -74,7 +91,8 @@ export class TemplateService {
    * NOTE - globals will always show the latest value as defined in app sheets (with any translations processed)
    * NOTE - fields will not update if already set
    */
-  private async initialiseDefaultFieldAndGlobals() {
+  public async initialiseDefaultFieldAndGlobals() {
+    await this.ensurePublicServicesReady();
     // Evaluate overrides
     // TODO - should be generalised with other template and datalist retrieval methods
     const allGlobals = await this.appDataService.getSheetsWithData<FlowTypes.Global>("global");
@@ -122,6 +140,7 @@ export class TemplateService {
     templateName: string,
     is_override_target: boolean
   ): Promise<FlowTypes.Template> {
+    await this.ensurePublicServicesReady();
     const foundTemplate = await this.appDataService.getSheet<FlowTypes.Template>(
       "template",
       templateName
@@ -219,20 +238,6 @@ export class TemplateService {
         value,
       };
       return this.dbService.table("flow_events").add(evt);
-    }
-  }
-
-  setTheme(template: FlowTypes.Template, event: "set_theme", value: any) {
-    if (value && value.length) {
-      const mainBgBodyColor = `var(--${
-        value[0] === "active" ? "ion-main-bg-active" : "ion-main-bg-passive"
-      })`;
-      const dgBodyColor = `var(--${
-        value[0] === "active" ? "ion-banner-secondary" : "ion-banner-primary"
-      })`;
-      document.body.style.setProperty("--ion-dg-bg-default", dgBodyColor);
-      document.body.style.setProperty("--ion-background-color", mainBgBodyColor);
-      this.themeValue.next(value[0]);
     }
   }
 }

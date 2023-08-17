@@ -1,0 +1,278 @@
+{
+  "flow_type": "data_pipe",
+  "flow_name": "single_tg_filter",
+  "status": "released",
+  "rows": [
+    {
+      "operation": "filter",
+      "input_source": "w_praise_tasks",
+      "output_target": "tg_w_praise_read_ind",
+      "args_list": [
+        "group ==\"read\"",
+        "individual"
+      ]
+    },
+    {
+      "operation": "filter",
+      "input_source": "w_praise_tasks",
+      "output_target": "tg_w_praise_read_tog",
+      "args_list": [
+        "group ==\"read\"",
+        "together"
+      ]
+    },
+    {
+      "operation": "filter",
+      "input_source": "w_instruct_tasks",
+      "output_target": "tg_w_instruct_read_1_ind",
+      "args_list": [
+        "group ==\"read_1\"",
+        "individual"
+      ]
+    },
+    {
+      "operation": "filter",
+      "input_source": "w_instruct_tasks",
+      "output_target": "tg_w_instruct_read_1_tog",
+      "args_list": [
+        "group ==\"read_1\"",
+        "together"
+      ]
+    },
+    {
+      "operation": "filter",
+      "input_source": "w_instruct_tasks",
+      "output_target": "tg_w_instruct_read_2_ind",
+      "args_list": [
+        "group ==\"read_2\"",
+        "individual"
+      ]
+    },
+    {
+      "operation": "filter",
+      "input_source": "w_instruct_tasks",
+      "output_target": "tg_w_instruct_read_2_tog",
+      "args_list": [
+        "group ==\"read_2\"",
+        "together"
+      ]
+    },
+    {
+      "operation": "filter",
+      "input_source": "w_stress_tasks",
+      "output_target": "tg_w_stress_read_1_ind",
+      "args_list": [
+        "group ==\"read_1\"",
+        "individual"
+      ]
+    },
+    {
+      "operation": "filter",
+      "input_source": "w_stress_tasks",
+      "output_target": "tg_w_stress_read_1_tog",
+      "args_list": [
+        "group ==\"read_1\"",
+        "together"
+      ]
+    },
+    {
+      "operation": "filter",
+      "input_source": "w_stress_tasks",
+      "output_target": "tg_w_stress_read_3_ind",
+      "args_list": [
+        "group ==\"read_3\"",
+        "individual"
+      ]
+    },
+    {
+      "operation": "filter",
+      "input_source": "w_stress_tasks",
+      "output_target": "tg_w_stress_read_3_tog",
+      "args_list": [
+        "group ==\"read_3\"",
+        "together"
+      ]
+    },
+    {
+      "operation": "filter",
+      "input_source": "w_money_tasks",
+      "output_target": "tg_w_money_read_2_ind",
+      "args_list": [
+        "group ==\"read_2\"",
+        "individual"
+      ]
+    },
+    {
+      "operation": "filter",
+      "input_source": "w_money_tasks",
+      "output_target": "tg_w_money_read_2_tog",
+      "args_list": [
+        "group ==\"read_2\"",
+        "together"
+      ]
+    },
+    {
+      "operation": "filter",
+      "input_source": "w_money_tasks",
+      "output_target": "tg_w_money_read_3_ind",
+      "args_list": [
+        "group ==\"read_3\"",
+        "individual"
+      ]
+    },
+    {
+      "operation": "filter",
+      "input_source": "w_money_tasks",
+      "output_target": "tg_w_money_read_3_tog",
+      "args_list": [
+        "group ==\"read_3\"",
+        "together"
+      ]
+    },
+    {
+      "operation": "filter",
+      "input_source": "w_rules_tasks",
+      "output_target": "tg_w_rules_read_1_ind",
+      "args_list": [
+        "group ==\"read_1\"",
+        "individual"
+      ]
+    },
+    {
+      "operation": "filter",
+      "input_source": "w_rules_tasks",
+      "output_target": "tg_w_rules_read_1_tog",
+      "args_list": [
+        "group ==\"read_1\"",
+        "together"
+      ]
+    },
+    {
+      "operation": "filter",
+      "input_source": "w_consequence_tasks",
+      "output_target": "tg_w_consequence_read_1_ind",
+      "args_list": [
+        "group ==\"read_1\"",
+        "individual"
+      ]
+    },
+    {
+      "operation": "filter",
+      "input_source": "w_consequence_tasks",
+      "output_target": "tg_w_consequence_read_1_tog",
+      "args_list": [
+        "group ==\"read_1\"",
+        "together"
+      ]
+    },
+    {
+      "operation": "filter",
+      "input_source": "w_consequence_tasks",
+      "output_target": "tg_w_consequence_read_2_ind",
+      "args_list": [
+        "group ==\"read_2\"",
+        "individual"
+      ]
+    },
+    {
+      "operation": "filter",
+      "input_source": "w_consequence_tasks",
+      "output_target": "tg_w_consequence_read_2_tog",
+      "args_list": [
+        "group ==\"read_2\"",
+        "together"
+      ]
+    },
+    {
+      "operation": "filter",
+      "input_source": "w_solve_tasks",
+      "output_target": "tg_w_solve_read_2_ind",
+      "args_list": [
+        "group ==\"read_2\"",
+        "individual"
+      ]
+    },
+    {
+      "operation": "filter",
+      "input_source": "w_solve_tasks",
+      "output_target": "tg_w_solve_read_2_tog",
+      "args_list": [
+        "group ==\"read_2\"",
+        "together"
+      ]
+    },
+    {
+      "operation": "filter",
+      "input_source": "w_safe_tasks",
+      "output_target": "tg_w_safe_read_1_ind",
+      "args_list": [
+        "group ==\"read_1\"",
+        "individual"
+      ]
+    },
+    {
+      "operation": "filter",
+      "input_source": "w_safe_tasks",
+      "output_target": "tg_w_safe_read_1_tog",
+      "args_list": [
+        "group ==\"read_1\"",
+        "together"
+      ]
+    },
+    {
+      "operation": "filter",
+      "input_source": "w_safe_tasks",
+      "output_target": "tg_w_safe_read_2_ind",
+      "args_list": [
+        "group ==\"read_2\"",
+        "individual"
+      ]
+    },
+    {
+      "operation": "filter",
+      "input_source": "w_safe_tasks",
+      "output_target": "tg_w_safe_read_2_tog",
+      "args_list": [
+        "group ==\"read_2\"",
+        "together"
+      ]
+    },
+    {
+      "operation": "filter",
+      "input_source": "w_crisis_tasks",
+      "output_target": "tg_w_crisis_read_1_ind",
+      "args_list": [
+        "group ==\"read_1\"",
+        "individual"
+      ]
+    },
+    {
+      "operation": "filter",
+      "input_source": "w_crisis_tasks",
+      "output_target": "tg_w_crisis_read_1_tog",
+      "args_list": [
+        "group ==\"read_1\"",
+        "together"
+      ]
+    },
+    {
+      "operation": "filter",
+      "input_source": "w_crisis_tasks",
+      "output_target": "tg_w_crisis_read_2_ind",
+      "args_list": [
+        "group ==\"read_2\"",
+        "individual"
+      ]
+    },
+    {
+      "operation": "filter",
+      "input_source": "w_crisis_tasks",
+      "output_target": "tg_w_crisis_read_2_tog",
+      "args_list": [
+        "group ==\"read_2\"",
+        "together"
+      ]
+    }
+  ],
+  "_xlsxPath": "global/data/workshop_data/workshop_task_groups_data_pipes.xlsx"
+}
