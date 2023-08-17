@@ -19,12 +19,12 @@ export enum AnimationStyle {
 export class TmplAnimatedSlidesComponent extends TemplateBaseComponent implements OnInit {
   skipText = "";
   // local tracker for which sections have been shown
-  displaySection = [];
+  fadeSection = [];
   // durations to display each faded section
-  displayTimes = [];
+  fadeTimes = [];
   private _isDismissed = false;
   style: string | null;
-  slideParams: { duration: number; animation: string }[];
+  slideParams: { duration: number; animation: string }[] = [];
 
   ngOnInit(): void {
     this.getParams();
@@ -54,7 +54,7 @@ export class TmplAnimatedSlidesComponent extends TemplateBaseComponent implement
     }
     this.style = getStringParamFromTemplateRow(this._row, "style", null);
     console.log("***this.style***", this.style);
-    console.log("***this.displayTimes***", this.displayTimes);
+    console.log("***this.fadeTimes***", this.fadeTimes);
   }
   /**
    * Iterate over each section for display, showing for
@@ -63,11 +63,11 @@ export class TmplAnimatedSlidesComponent extends TemplateBaseComponent implement
    */
   private async runFade() {
     let i = 0;
-    for (let displayTime of this.displayTimes) {
-      this.displaySection[i] = "in";
+    for (let slideParam of this.slideParams) {
+      this.fadeSection[i] = "in";
       // wait specified time plus additional animation time
-      await this._wait(displayTime + 1500);
-      this.displaySection[i] = "out";
+      await this._wait(slideParam.duration + 1500);
+      this.fadeSection[i] = "out";
       i++;
     }
     /* component may have already been dismissed with "uncompleted" event,
