@@ -1,0 +1,1456 @@
+{
+  "flow_type": "template",
+  "flow_name": "app_menu_privacy_policy",
+  "status": "released",
+  "flow_subtype": "legal_terms",
+  "rows": [
+    {
+      "type": "title",
+      "name": "title_0",
+      "value": "@global.privacy_policy",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "_nested_name": "title_0",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@global.privacy_policy",
+            "matchedExpression": "@global.privacy_policy",
+            "type": "global",
+            "fieldName": "privacy_policy"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@global.privacy_policy": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "text",
+      "name": "text_0_1",
+      "value": "Your data is important to us. This @global.privacy_policy for @global.app_id (‘@global.parent_app’ or ‘the app’) sets out our policies for the collection, use, and disclosure of personal information in the use of @global.parent_app.",
+      "_translations": {
+        "value": {
+          "tz_sw": true
+        }
+      },
+      "_nested_name": "text_0_1",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "Your data is important to us. This @global.privacy_policy for @global.app_id (‘@global.parent_app’ or ‘the app’) sets out our policies for the collection, use, and disclosure of personal information in the use of @global.parent_app.",
+            "matchedExpression": "@global.privacy_policy",
+            "type": "global",
+            "fieldName": "privacy_policy"
+          },
+          {
+            "fullExpression": "Your data is important to us. This @global.privacy_policy for @global.app_id (‘@global.parent_app’ or ‘the app’) sets out our policies for the collection, use, and disclosure of personal information in the use of @global.parent_app.",
+            "matchedExpression": "@global.app_id",
+            "type": "global",
+            "fieldName": "app_id"
+          },
+          {
+            "fullExpression": "Your data is important to us. This @global.privacy_policy for @global.app_id (‘@global.parent_app’ or ‘the app’) sets out our policies for the collection, use, and disclosure of personal information in the use of @global.parent_app.",
+            "matchedExpression": "@global.parent_app",
+            "type": "global",
+            "fieldName": "parent_app"
+          },
+          {
+            "fullExpression": "Your data is important to us. This @global.privacy_policy for @global.app_id (‘@global.parent_app’ or ‘the app’) sets out our policies for the collection, use, and disclosure of personal information in the use of @global.parent_app.",
+            "matchedExpression": "@global.parent_app",
+            "type": "global",
+            "fieldName": "parent_app"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@global.privacy_policy": [
+          "value"
+        ],
+        "@global.app_id": [
+          "value"
+        ],
+        "@global.parent_app": [
+          "value",
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "text",
+      "name": "text_0_2",
+      "value": "@global.parent_app is a free app version of the Parenting for Lifelong Health for Parents and Teens programme, hosted by UNICEF and designed for parents and caregivers of adolescents aged 10 to 17 years.",
+      "_translations": {
+        "value": {
+          "tz_sw": true
+        }
+      },
+      "_nested_name": "text_0_2",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@global.parent_app is a free app version of the Parenting for Lifelong Health for Parents and Teens programme, hosted by UNICEF and designed for parents and caregivers of adolescents aged 10 to 17 years.",
+            "matchedExpression": "@global.parent_app",
+            "type": "global",
+            "fieldName": "parent_app"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@global.parent_app": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "text",
+      "name": "text_0_3",
+      "value": "Parenting for Lifelong Health (PLH) - was designed through a worldwide collaboration between parenting experts from UNICEF, the WHO and Universities in South Africa and the UK, as well as African NGOs and families and teens all across Africa.",
+      "_translations": {
+        "value": {
+          "tz_sw": true
+        }
+      },
+      "_nested_name": "text_0_3"
+    },
+    {
+      "type": "text",
+      "name": "text_0_4",
+      "value": "The digital @global.parent_app is brought to you by the collaboration of partners including University of Oxford, IDEMS International, University of Cape Town, National Institute for Medical Research - Mwanza Centre Tanzania, and Clowns Without Borders South Africa (‘the @global.parent_app team’).",
+      "_translations": {
+        "value": {
+          "tz_sw": true
+        }
+      },
+      "_nested_name": "text_0_4",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "The digital @global.parent_app is brought to you by the collaboration of partners including University of Oxford, IDEMS International, University of Cape Town, National Institute for Medical Research - Mwanza Centre Tanzania, and Clowns Without Borders South Africa (‘the @global.parent_app team’).",
+            "matchedExpression": "@global.parent_app",
+            "type": "global",
+            "fieldName": "parent_app"
+          },
+          {
+            "fullExpression": "The digital @global.parent_app is brought to you by the collaboration of partners including University of Oxford, IDEMS International, University of Cape Town, National Institute for Medical Research - Mwanza Centre Tanzania, and Clowns Without Borders South Africa (‘the @global.parent_app team’).",
+            "matchedExpression": "@global.parent_app",
+            "type": "global",
+            "fieldName": "parent_app"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@global.parent_app": [
+          "value",
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "text",
+      "name": "text_0_5",
+      "value": "Please read this @global.privacy_policy carefully. By downloading or using the app, you agree to the collection and use of information in relation to this policy. We will not use or share your information with anyone except as described in this @global.privacy_policy.",
+      "_translations": {
+        "value": {
+          "tz_sw": true
+        }
+      },
+      "_nested_name": "text_0_5",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "Please read this @global.privacy_policy carefully. By downloading or using the app, you agree to the collection and use of information in relation to this policy. We will not use or share your information with anyone except as described in this @global.privacy_policy.",
+            "matchedExpression": "@global.privacy_policy",
+            "type": "global",
+            "fieldName": "privacy_policy"
+          },
+          {
+            "fullExpression": "Please read this @global.privacy_policy carefully. By downloading or using the app, you agree to the collection and use of information in relation to this policy. We will not use or share your information with anyone except as described in this @global.privacy_policy.",
+            "matchedExpression": "@global.privacy_policy",
+            "type": "global",
+            "fieldName": "privacy_policy"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@global.privacy_policy": [
+          "value",
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "text",
+      "name": "text_0_6",
+      "value": "The terms used in this @global.privacy_policy have the same meanings as in our @global.terms_and_conditions, which are accessible within the app, unless otherwise defined in this @global.privacy_policy.",
+      "_translations": {
+        "value": {
+          "tz_sw": true
+        }
+      },
+      "_nested_name": "text_0_6",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "The terms used in this @global.privacy_policy have the same meanings as in our @global.terms_and_conditions, which are accessible within the app, unless otherwise defined in this @global.privacy_policy.",
+            "matchedExpression": "@global.privacy_policy",
+            "type": "global",
+            "fieldName": "privacy_policy"
+          },
+          {
+            "fullExpression": "The terms used in this @global.privacy_policy have the same meanings as in our @global.terms_and_conditions, which are accessible within the app, unless otherwise defined in this @global.privacy_policy.",
+            "matchedExpression": "@global.terms_and_conditions",
+            "type": "global",
+            "fieldName": "terms_and_conditions"
+          },
+          {
+            "fullExpression": "The terms used in this @global.privacy_policy have the same meanings as in our @global.terms_and_conditions, which are accessible within the app, unless otherwise defined in this @global.privacy_policy.",
+            "matchedExpression": "@global.privacy_policy",
+            "type": "global",
+            "fieldName": "privacy_policy"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@global.privacy_policy": [
+          "value",
+          "value"
+        ],
+        "@global.terms_and_conditions": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "subtitle",
+      "name": "title_1",
+      "value": "1. What information does the app collect about you and how do we use it?",
+      "_translations": {
+        "value": {
+          "tz_sw": true
+        }
+      },
+      "parameter_list": {
+        "style": "emphasised"
+      },
+      "_nested_name": "title_1"
+    },
+    {
+      "type": "text",
+      "name": "subtitle_1_1",
+      "value": "Personal Data",
+      "_translations": {
+        "value": {
+          "tz_sw": true
+        }
+      },
+      "parameter_list": {
+        "style": "contextual"
+      },
+      "_nested_name": "subtitle_1_1"
+    },
+    {
+      "type": "text",
+      "name": "text_1_1_1",
+      "value": "For the purpose of this @global.privacy_policy, “personal data” means any information that enables us to identify an individual, directly or indirectly, by reference to an identifier such as email, name, @global.parent_app identification number, location data, or one or more factors specific to the individual. While using our app, we may require you to provide us with other personally identifiable information.",
+      "_translations": {
+        "value": {
+          "tz_sw": true
+        }
+      },
+      "_nested_name": "text_1_1_1",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "For the purpose of this @global.privacy_policy, “personal data” means any information that enables us to identify an individual, directly or indirectly, by reference to an identifier such as email, name, @global.parent_app identification number, location data, or one or more factors specific to the individual. While using our app, we may require you to provide us with other personally identifiable information.",
+            "matchedExpression": "@global.privacy_policy",
+            "type": "global",
+            "fieldName": "privacy_policy"
+          },
+          {
+            "fullExpression": "For the purpose of this @global.privacy_policy, “personal data” means any information that enables us to identify an individual, directly or indirectly, by reference to an identifier such as email, name, @global.parent_app identification number, location data, or one or more factors specific to the individual. While using our app, we may require you to provide us with other personally identifiable information.",
+            "matchedExpression": "@global.parent_app",
+            "type": "global",
+            "fieldName": "parent_app"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@global.privacy_policy": [
+          "value"
+        ],
+        "@global.parent_app": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "text",
+      "name": "text_1_1_2",
+      "value": "Specifically, this is data regarding chosen username, as well as gender.  All data collected is linked to your unique @global.parent_app identification number.  The @global.parent_app identification number produced within the app may also be used to link with any out of app surveys conducted.",
+      "_translations": {
+        "value": {
+          "tz_sw": true
+        }
+      },
+      "_nested_name": "text_1_1_2",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "Specifically, this is data regarding chosen username, as well as gender.  All data collected is linked to your unique @global.parent_app identification number.  The @global.parent_app identification number produced within the app may also be used to link with any out of app surveys conducted.",
+            "matchedExpression": "@global.parent_app",
+            "type": "global",
+            "fieldName": "parent_app"
+          },
+          {
+            "fullExpression": "Specifically, this is data regarding chosen username, as well as gender.  All data collected is linked to your unique @global.parent_app identification number.  The @global.parent_app identification number produced within the app may also be used to link with any out of app surveys conducted.",
+            "matchedExpression": "@global.parent_app",
+            "type": "global",
+            "fieldName": "parent_app"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@global.parent_app": [
+          "value",
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "text",
+      "name": "text_1_1_3",
+      "value": "We process your data to provide parenting support to you, communicate when you contact us, for security reasons as well as research purposes (see section ‘Information Sharing’). The primary research purpose includes optimising engagement of a digital parenting intervention (use of @global.parent_app) to prevent violence against adolescents. During the course of research, the study team may use aggregated and anonymised data from the app for further research projects. Finally, please note that we may process your data without your knowledge or consent, where this is required or permitted by law.",
+      "_translations": {
+        "value": {
+          "tz_sw": true
+        }
+      },
+      "_nested_name": "text_1_1_3",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "We process your data to provide parenting support to you, communicate when you contact us, for security reasons as well as research purposes (see section ‘Information Sharing’). The primary research purpose includes optimising engagement of a digital parenting intervention (use of @global.parent_app) to prevent violence against adolescents. During the course of research, the study team may use aggregated and anonymised data from the app for further research projects. Finally, please note that we may process your data without your knowledge or consent, where this is required or permitted by law.",
+            "matchedExpression": "@global.parent_app",
+            "type": "global",
+            "fieldName": "parent_app"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@global.parent_app": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "text",
+      "name": "text_1_1_4",
+      "value": "The processing of your personal data is primarily based on:",
+      "_translations": {
+        "value": {
+          "tz_sw": true
+        }
+      },
+      "_nested_name": "text_1_1_4"
+    },
+    {
+      "type": "text",
+      "name": "text_1_1_5",
+      "value": "The @global.parent_app team has legitimate interests in carrying out research activities, under Art. 6(1)(f) GDPR, regarding the sharing of limited details related to how you use the app; and",
+      "_translations": {
+        "value": {
+          "tz_sw": true
+        }
+      },
+      "_nested_name": "text_1_1_5",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "The @global.parent_app team has legitimate interests in carrying out research activities, under Art. 6(1)(f) GDPR, regarding the sharing of limited details related to how you use the app; and",
+            "matchedExpression": "@global.parent_app",
+            "type": "global",
+            "fieldName": "parent_app"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@global.parent_app": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "text",
+      "name": "text_1_1_6",
+      "value": "Your consent, under Art. 6(1)(a) GDPR, regarding the email address you provide at the point of Google Sign-in and the sharing of answers you may provide to in-app questions (those involving as stated chosen username and gender which are entirely optional).",
+      "_translations": {
+        "value": {
+          "tz_sw": true
+        }
+      },
+      "_nested_name": "text_1_1_6"
+    },
+    {
+      "type": "text",
+      "name": "subtitle_1_2",
+      "value": "Log Data",
+      "_translations": {
+        "value": {
+          "tz_sw": true
+        }
+      },
+      "parameter_list": {
+        "style": "contextual"
+      },
+      "_nested_name": "subtitle_1_2"
+    },
+    {
+      "type": "text",
+      "name": "text_1_2",
+      "value": "Whenever you use our app, we collect data and information (through third party services) on your phone called Log Data. This Log Data includes information such as a truncated device Internet Protocol (“IP”) address, device name, operating system version, the configuration of the app when utilising our app, the time, date and your intentions within the app (which include but are not limited to any app buttons clicked or pages visited.)",
+      "_translations": {
+        "value": {
+          "tz_sw": true
+        }
+      },
+      "_nested_name": "text_1_2"
+    },
+    {
+      "type": "text",
+      "name": "subtitle_1_3",
+      "value": "Cookies",
+      "_translations": {
+        "value": {
+          "tz_sw": true
+        }
+      },
+      "parameter_list": {
+        "style": "contextual"
+      },
+      "_nested_name": "subtitle_1_3"
+    },
+    {
+      "type": "text",
+      "name": "text_1_3_1",
+      "value": "Cookies are files with a small amount of data that are commonly used as anonymous unique identifiers. These are sent to your browser from the websites that you visit and are stored on your device's internal memory.",
+      "_translations": {
+        "value": {
+          "tz_sw": true
+        }
+      },
+      "_nested_name": "text_1_3_1"
+    },
+    {
+      "type": "text",
+      "name": "text_1_3_2",
+      "value": "This app does not use these “cookies” explicitly.  However, the app may use third party code and libraries that use “cookies” to collect information and improve their services. In particular, the app integrates GlitchTip and Matomo analytics as well as Firebase authentication software.",
+      "_translations": {
+        "value": {
+          "tz_sw": true
+        }
+      },
+      "_nested_name": "text_1_3_2"
+    },
+    {
+      "type": "text",
+      "name": "subtitle_1_4",
+      "value": "Legal",
+      "_translations": {
+        "value": {
+          "tz_sw": true
+        }
+      },
+      "parameter_list": {
+        "style": "contextual"
+      },
+      "_nested_name": "subtitle_1_4"
+    },
+    {
+      "type": "text",
+      "name": "text_1_4",
+      "value": "The information that we request will be retained by us and used as described in this @global.privacy_policy.",
+      "_translations": {
+        "value": {
+          "tz_sw": true
+        }
+      },
+      "_nested_name": "text_1_4",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "The information that we request will be retained by us and used as described in this @global.privacy_policy.",
+            "matchedExpression": "@global.privacy_policy",
+            "type": "global",
+            "fieldName": "privacy_policy"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@global.privacy_policy": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "text",
+      "name": "subtitle_1_5",
+      "value": "Feedback Submissions",
+      "_translations": {
+        "value": {
+          "tz_sw": true
+        }
+      },
+      "parameter_list": {
+        "style": "contextual"
+      },
+      "_nested_name": "subtitle_1_5"
+    },
+    {
+      "type": "text",
+      "name": "text_1_5",
+      "value": "Your feedback on the app is important to us. We shall always anonymise your personal information when sharing and publishing your feedback verbatim more broadly.",
+      "_translations": {
+        "value": {
+          "tz_sw": true
+        }
+      },
+      "_nested_name": "text_1_5"
+    },
+    {
+      "type": "text",
+      "name": "subtitle_1_6",
+      "value": "Aggregate Data",
+      "_translations": {
+        "value": {
+          "tz_sw": true
+        }
+      },
+      "parameter_list": {
+        "style": "contextual"
+      },
+      "_nested_name": "subtitle_1_6"
+    },
+    {
+      "type": "text",
+      "name": "text_1_6",
+      "value": "Your data is important to the @global.parent_app team for broader research purposes. Aggregate data is always anonymised.",
+      "_translations": {
+        "value": {
+          "tz_sw": true
+        }
+      },
+      "_nested_name": "text_1_6",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "Your data is important to the @global.parent_app team for broader research purposes. Aggregate data is always anonymised.",
+            "matchedExpression": "@global.parent_app",
+            "type": "global",
+            "fieldName": "parent_app"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@global.parent_app": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "text",
+      "name": "subtitle_1_7",
+      "value": "Push notifications",
+      "_translations": {
+        "value": {
+          "tz_sw": true
+        }
+      },
+      "parameter_list": {
+        "style": "contextual"
+      },
+      "_nested_name": "subtitle_1_7"
+    },
+    {
+      "type": "text",
+      "name": "text_1_7",
+      "value": "You may opt out of push notifications which will be set up to inform you of certain account features or other notifications.",
+      "_translations": {
+        "value": {
+          "tz_sw": true
+        }
+      },
+      "_nested_name": "text_1_7"
+    },
+    {
+      "type": "subtitle",
+      "name": "title_2",
+      "value": "2. Information Sharing",
+      "_translations": {
+        "value": {
+          "tz_sw": true
+        }
+      },
+      "parameter_list": {
+        "style": "emphasised"
+      },
+      "_nested_name": "title_2"
+    },
+    {
+      "type": "text",
+      "name": "text_2_1",
+      "value": "Limited internal staff to IDEMS may have access to personal data collected via the app as well as log data, as necessary to perform their duties regarding the operation of the app. These data will only be accessed on a need-to-know basis, and all team members with access to the data are bound to confidentiality.",
+      "_translations": {
+        "value": {
+          "tz_sw": true
+        }
+      },
+      "_nested_name": "text_2_1"
+    },
+    {
+      "type": "text",
+      "name": "text_2_2",
+      "value": "You agree that your personal information may be shared with third parties such as researchers and partners involved in the improvement or implementation of the app including those outside your country. Prior to the disclosure of information with research partners we will make anonymous to the extent possible and where appropriate, information such as chosen username and email address (where collected).  In reading and accepting this @global.privacy_policy , you permit us to use your anonymized data in published research.",
+      "_translations": {
+        "value": {
+          "tz_sw": true
+        }
+      },
+      "_nested_name": "text_2_2",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "You agree that your personal information may be shared with third parties such as researchers and partners involved in the improvement or implementation of the app including those outside your country. Prior to the disclosure of information with research partners we will make anonymous to the extent possible and where appropriate, information such as chosen username and email address (where collected).  In reading and accepting this @global.privacy_policy , you permit us to use your anonymized data in published research.",
+            "matchedExpression": "@global.privacy_policy",
+            "type": "global",
+            "fieldName": "privacy_policy"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@global.privacy_policy": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "text",
+      "name": "text_2_3",
+      "value": "You agree that we may transfer your personal information outside your country, for example, to administer cloud services. We will ensure that any country, company or person that we pass your personal information to agrees to treat your information with the same level of protection as we are obliged to.",
+      "_translations": {
+        "value": {
+          "tz_sw": true
+        }
+      },
+      "_nested_name": "text_2_3"
+    },
+    {
+      "type": "subtitle",
+      "name": "title_3",
+      "value": "3. Third Party Service Providers and Websites",
+      "_translations": {
+        "value": {
+          "tz_sw": true
+        }
+      },
+      "parameter_list": {
+        "style": "emphasised"
+      },
+      "_nested_name": "title_3"
+    },
+    {
+      "type": "text",
+      "name": "text_3_1",
+      "value": "The app does use third party services that may collect information used to identify you. We do so for the following reasons:\n* To facilitate our app\n* To provide the app on our behalf\n* To perform app-related services; or\n* To assist us in analysing how our app is used.",
+      "_translations": {
+        "value": {
+          "tz_sw": true
+        }
+      },
+      "_nested_name": "text_3_1"
+    },
+    {
+      "type": "text",
+      "name": "text_3_2",
+      "value": "We want to inform users of this app that these third parties have access to your Personal Information. The reason is to perform the tasks assigned to them on our behalf. However, they are obligated not to disclose or use the information for any other purpose.",
+      "_translations": {
+        "value": {
+          "tz_sw": true
+        }
+      },
+      "_nested_name": "text_3_2"
+    },
+    {
+      "type": "text",
+      "name": "text_3_3",
+      "value": "Links to the privacy policies of third-party service providers used by the app:",
+      "_translations": {
+        "value": {
+          "tz_sw": true
+        }
+      },
+      "_nested_name": "text_3_3"
+    },
+    {
+      "name": "link_3_1_text",
+      "value": "Google Play Services",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "type": "set_variable",
+      "_nested_name": "link_3_1_text"
+    },
+    {
+      "type": "tile_component",
+      "name": "link_3_1",
+      "action_list": [
+        {
+          "trigger": "click",
+          "action_id": "go_to_url",
+          "args": [
+            "https",
+            "//www.google.com/policies/privacy/"
+          ],
+          "_raw": "click | go_to_url:https://www.google.com/policies/privacy/",
+          "_cleaned": "click | go_to_url:https://www.google.com/policies/privacy/"
+        }
+      ],
+      "exclude_from_translation": true,
+      "parameter_list": {
+        "first_line_text": "@local.link_3_1_text",
+        "left_icon_src": "globe-outline",
+        "style": "button_tile",
+        "icon_src": "chevron-forward-outline"
+      },
+      "_nested_name": "link_3_1",
+      "_dynamicFields": {
+        "parameter_list": {
+          "first_line_text": [
+            {
+              "fullExpression": "@local.link_3_1_text",
+              "matchedExpression": "@local.link_3_1_text",
+              "type": "local",
+              "fieldName": "link_3_1_text"
+            }
+          ]
+        }
+      },
+      "_dynamicDependencies": {
+        "@local.link_3_1_text": [
+          "parameter_list.first_line_text"
+        ]
+      }
+    },
+    {
+      "name": "link_3_2_text",
+      "value": "Google Analytics for Firebase",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "type": "set_variable",
+      "_nested_name": "link_3_2_text"
+    },
+    {
+      "type": "tile_component",
+      "name": "link_3_2",
+      "action_list": [
+        {
+          "trigger": "click",
+          "action_id": "go_to_url",
+          "args": [
+            "https",
+            "//firebase.google.com/policies/analytics"
+          ],
+          "_raw": "click | go_to_url:https://firebase.google.com/policies/analytics",
+          "_cleaned": "click | go_to_url:https://firebase.google.com/policies/analytics"
+        }
+      ],
+      "exclude_from_translation": true,
+      "parameter_list": {
+        "first_line_text": "@local.link_3_2_text",
+        "left_icon_src": "globe-outline",
+        "style": "button_tile",
+        "icon_src": "chevron-forward-outline"
+      },
+      "_nested_name": "link_3_2",
+      "_dynamicFields": {
+        "parameter_list": {
+          "first_line_text": [
+            {
+              "fullExpression": "@local.link_3_2_text",
+              "matchedExpression": "@local.link_3_2_text",
+              "type": "local",
+              "fieldName": "link_3_2_text"
+            }
+          ]
+        }
+      },
+      "_dynamicDependencies": {
+        "@local.link_3_2_text": [
+          "parameter_list.first_line_text"
+        ]
+      }
+    },
+    {
+      "name": "link_3_3_text",
+      "value": "Sentry",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "type": "set_variable",
+      "_nested_name": "link_3_3_text"
+    },
+    {
+      "type": "tile_component",
+      "name": "link_3_3",
+      "action_list": [
+        {
+          "trigger": "click",
+          "action_id": "go_to_url",
+          "args": [
+            "https",
+            "//sentry.io/privacy/"
+          ],
+          "_raw": "click | go_to_url:https://sentry.io/privacy/",
+          "_cleaned": "click | go_to_url:https://sentry.io/privacy/"
+        }
+      ],
+      "exclude_from_translation": true,
+      "parameter_list": {
+        "first_line_text": "@local.link_3_3_text",
+        "left_icon_src": "globe-outline",
+        "style": "button_tile",
+        "icon_src": "chevron-forward-outline"
+      },
+      "_nested_name": "link_3_3",
+      "_dynamicFields": {
+        "parameter_list": {
+          "first_line_text": [
+            {
+              "fullExpression": "@local.link_3_3_text",
+              "matchedExpression": "@local.link_3_3_text",
+              "type": "local",
+              "fieldName": "link_3_3_text"
+            }
+          ]
+        }
+      },
+      "_dynamicDependencies": {
+        "@local.link_3_3_text": [
+          "parameter_list.first_line_text"
+        ]
+      }
+    },
+    {
+      "name": "link_3_4_text",
+      "value": "Matomo",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "type": "set_variable",
+      "_nested_name": "link_3_4_text"
+    },
+    {
+      "type": "tile_component",
+      "name": "link_3_4",
+      "action_list": [
+        {
+          "trigger": "click",
+          "action_id": "go_to_url",
+          "args": [
+            "https",
+            "//matomo.org/privacy-policy/"
+          ],
+          "_raw": "click | go_to_url: https://matomo.org/privacy-policy/",
+          "_cleaned": "click | go_to_url: https://matomo.org/privacy-policy/"
+        }
+      ],
+      "exclude_from_translation": true,
+      "parameter_list": {
+        "first_line_text": "@local.link_3_4_text",
+        "left_icon_src": "globe-outline",
+        "style": "button_tile",
+        "icon_src": "chevron-forward-outline"
+      },
+      "_nested_name": "link_3_4",
+      "_dynamicFields": {
+        "parameter_list": {
+          "first_line_text": [
+            {
+              "fullExpression": "@local.link_3_4_text",
+              "matchedExpression": "@local.link_3_4_text",
+              "type": "local",
+              "fieldName": "link_3_4_text"
+            }
+          ]
+        }
+      },
+      "_dynamicDependencies": {
+        "@local.link_3_4_text": [
+          "parameter_list.first_line_text"
+        ]
+      }
+    },
+    {
+      "name": "link_3_5_text",
+      "value": "GlitchTip",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "type": "set_variable",
+      "_nested_name": "link_3_5_text"
+    },
+    {
+      "type": "tile_component",
+      "name": "link_3_5",
+      "action_list": [
+        {
+          "trigger": "click",
+          "action_id": "go_to_url",
+          "args": [
+            "https",
+            "//glitchtip.com/legal/privacy"
+          ],
+          "_raw": "click | go_to_url: https://glitchtip.com/legal/privacy",
+          "_cleaned": "click | go_to_url: https://glitchtip.com/legal/privacy"
+        }
+      ],
+      "exclude_from_translation": true,
+      "parameter_list": {
+        "first_line_text": "@local.link_3_5_text",
+        "left_icon_src": "globe-outline",
+        "style": "button_tile",
+        "icon_src": "chevron-forward-outline"
+      },
+      "_nested_name": "link_3_5",
+      "_dynamicFields": {
+        "parameter_list": {
+          "first_line_text": [
+            {
+              "fullExpression": "@local.link_3_5_text",
+              "matchedExpression": "@local.link_3_5_text",
+              "type": "local",
+              "fieldName": "link_3_5_text"
+            }
+          ]
+        }
+      },
+      "_dynamicDependencies": {
+        "@local.link_3_5_text": [
+          "parameter_list.first_line_text"
+        ]
+      }
+    },
+    {
+      "type": "text",
+      "name": "text_3_4",
+      "value": "This app may contain links to other sites that are not covered by this @global.privacy_policy. If you click on a third-party link, you will be directed to that site. This @global.privacy_policy applies only to the processing of your information by this app. It does not address, and we are not responsible for, the privacy, information, or other practices of any third parties, including any third party operating any site or service to which this app links to.",
+      "_translations": {
+        "value": {
+          "tz_sw": true
+        }
+      },
+      "_nested_name": "text_3_4",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "This app may contain links to other sites that are not covered by this @global.privacy_policy. If you click on a third-party link, you will be directed to that site. This @global.privacy_policy applies only to the processing of your information by this app. It does not address, and we are not responsible for, the privacy, information, or other practices of any third parties, including any third party operating any site or service to which this app links to.",
+            "matchedExpression": "@global.privacy_policy",
+            "type": "global",
+            "fieldName": "privacy_policy"
+          },
+          {
+            "fullExpression": "This app may contain links to other sites that are not covered by this @global.privacy_policy. If you click on a third-party link, you will be directed to that site. This @global.privacy_policy applies only to the processing of your information by this app. It does not address, and we are not responsible for, the privacy, information, or other practices of any third parties, including any third party operating any site or service to which this app links to.",
+            "matchedExpression": "@global.privacy_policy",
+            "type": "global",
+            "fieldName": "privacy_policy"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@global.privacy_policy": [
+          "value",
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "subtitle",
+      "name": "title_4",
+      "value": "4. How long do we keep your data?",
+      "_translations": {
+        "value": {
+          "tz_sw": true
+        }
+      },
+      "parameter_list": {
+        "style": "emphasised"
+      },
+      "_nested_name": "title_4"
+    },
+    {
+      "type": "text",
+      "name": "text_4",
+      "value": "We will only retain your personal information for as long as we need it to fulfil our purposes, including any relating to app services as well as legal, accounting, or reporting requirements.",
+      "_translations": {
+        "value": {
+          "tz_sw": true
+        }
+      },
+      "_nested_name": "text_4"
+    },
+    {
+      "type": "subtitle",
+      "name": "title_5",
+      "value": "5. How do we keep your data secure?",
+      "_translations": {
+        "value": {
+          "tz_sw": true
+        }
+      },
+      "parameter_list": {
+        "style": "emphasised"
+      },
+      "_nested_name": "title_5"
+    },
+    {
+      "type": "text",
+      "name": "text_5",
+      "value": "We value your trust in providing us your personal information, thus we are striving to use commercially acceptable means of protecting it. But remember that no method of transmission over the internet, or method of electronic storage is 100% secure and reliable, and we cannot guarantee its absolute security.  We also reserve the right to the storage of your data on third party servers or databases outside of the listed @global.parent_app team (refer to the section on Third Party Service Providers and Websites).  Therefore usage of the app is at your own risk.",
+      "_translations": {
+        "value": {
+          "tz_sw": true
+        }
+      },
+      "_nested_name": "text_5",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "We value your trust in providing us your personal information, thus we are striving to use commercially acceptable means of protecting it. But remember that no method of transmission over the internet, or method of electronic storage is 100% secure and reliable, and we cannot guarantee its absolute security.  We also reserve the right to the storage of your data on third party servers or databases outside of the listed @global.parent_app team (refer to the section on Third Party Service Providers and Websites).  Therefore usage of the app is at your own risk.",
+            "matchedExpression": "@global.parent_app",
+            "type": "global",
+            "fieldName": "parent_app"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@global.parent_app": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "subtitle",
+      "name": "title_6",
+      "value": "6. Children’s Privacy",
+      "_translations": {
+        "value": {
+          "tz_sw": true
+        }
+      },
+      "parameter_list": {
+        "style": "emphasised"
+      },
+      "_nested_name": "title_6"
+    },
+    {
+      "type": "text",
+      "name": "text_6",
+      "value": "This app is not targeted towards anyone under the age of 18. We do not knowingly collect personally identifiable information from individuals under 18. As per our Terms and Conditions, In the case we discover that an individual under 18 has provided us with personal information (such as gender / name or nickname), we will immediately delete this data from our servers. If you are a parent or guardian and are aware that your child has provided us with personal information, please contact us so that we will be able to undertake the necessary actions.",
+      "_translations": {
+        "value": {
+          "tz_sw": true
+        }
+      },
+      "_nested_name": "text_6"
+    },
+    {
+      "type": "subtitle",
+      "name": "title_7",
+      "value": "7. Your rights",
+      "_translations": {
+        "value": {
+          "tz_sw": true
+        }
+      },
+      "parameter_list": {
+        "style": "emphasised"
+      },
+      "_nested_name": "title_7"
+    },
+    {
+      "type": "text",
+      "name": "text_7_1",
+      "value": "Under certain circumstances, by law you have the right to:\n* Request access to your data (commonly known as a \"subject access request\"). This enables you to receive a copy of your data and to check that we are lawfully processing it.\n* Request correction of your data. This enables you to ask us to correct any incomplete or inaccurate information we hold about you.\n* Request erasure of your data. This enables you to ask us to delete or remove your data under certain circumstances, for example, if you consider that there is no good reason for us continuing to process it. You also have the right to ask us to delete or remove your data where you have exercised your right to object to processing (see below).\n* Object to processing of your data where we are relying on our legitimate interests (or those of a third party) and there is something about your particular situation which makes you want to object to processing on this ground.\n* Request the restriction of processing of your data. This enables you to ask us to suspend the processing of your data, for example if you want us to establish its accuracy or the reason for processing it.\n* Request the transfer of your data to another party.",
+      "_translations": {
+        "value": {
+          "tz_sw": true
+        }
+      },
+      "_nested_name": "text_7_1"
+    },
+    {
+      "type": "text",
+      "name": "text_7_2",
+      "value": "Depending on the circumstances and the nature of your request it may not be possible for us to do what you have asked, for example, where there is a statutory or contractual requirement for us to process your data and it would not be possible to fulfil our legal obligations if we were to stop. Further information on your rights is available from the Information Commissioner’s Office (ICO).",
+      "_translations": {
+        "value": {
+          "tz_sw": true
+        }
+      },
+      "_nested_name": "text_7_2"
+    },
+    {
+      "name": "link_7_1_text",
+      "value": "ICO",
+      "_translations": {
+        "value": {
+          "tz_sw": true
+        }
+      },
+      "type": "set_variable",
+      "_nested_name": "link_7_1_text"
+    },
+    {
+      "type": "tile_component",
+      "name": "link_7_1",
+      "action_list": [
+        {
+          "trigger": "click",
+          "action_id": "go_to_url",
+          "args": [
+            "https",
+            "//ico.org.uk/your-data-matters/"
+          ],
+          "_raw": "click | go_to_url: https://ico.org.uk/your-data-matters/",
+          "_cleaned": "click | go_to_url: https://ico.org.uk/your-data-matters/"
+        }
+      ],
+      "exclude_from_translation": true,
+      "parameter_list": {
+        "first_line_text": "@local.link_7_1_text",
+        "left_icon_src": "globe-outline",
+        "style": "button_tile",
+        "icon_src": "chevron-forward-outline"
+      },
+      "_nested_name": "link_7_1",
+      "_dynamicFields": {
+        "parameter_list": {
+          "first_line_text": [
+            {
+              "fullExpression": "@local.link_7_1_text",
+              "matchedExpression": "@local.link_7_1_text",
+              "type": "local",
+              "fieldName": "link_7_1_text"
+            }
+          ]
+        }
+      },
+      "_dynamicDependencies": {
+        "@local.link_7_1_text": [
+          "parameter_list.first_line_text"
+        ]
+      }
+    },
+    {
+      "type": "subtitle",
+      "name": "title_8",
+      "value": "8. Removing the app",
+      "_translations": {
+        "value": {
+          "tz_sw": true
+        }
+      },
+      "parameter_list": {
+        "style": "emphasised"
+      },
+      "_nested_name": "title_8"
+    },
+    {
+      "type": "text",
+      "name": "text_8",
+      "value": "We are sorry if you find our app no longer useful. Should you decide to remove our app, we may still retain some of your data (although anonymised) to troubleshoot, aid in investigations, comply with legal requirements or to add to our existing research data sets.",
+      "_translations": {
+        "value": {
+          "tz_sw": true
+        }
+      },
+      "_nested_name": "text_8"
+    },
+    {
+      "type": "subtitle",
+      "name": "title_9",
+      "value": "9. Changes to the @global.privacy_policy",
+      "_translations": {
+        "value": {
+          "tz_sw": true
+        }
+      },
+      "parameter_list": {
+        "style": "emphasised"
+      },
+      "_nested_name": "title_9",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "9. Changes to the @global.privacy_policy",
+            "matchedExpression": "@global.privacy_policy",
+            "type": "global",
+            "fieldName": "privacy_policy"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@global.privacy_policy": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "text",
+      "name": "text_9",
+      "value": "We may update our @global.privacy_policy from time to time. You waive your right to be notified directly of changes and are advised to review this page periodically for any updates. Your continued use of the app suggests you agree to subsequent revisions of the @global.privacy_policy.",
+      "_translations": {
+        "value": {
+          "tz_sw": true
+        }
+      },
+      "_nested_name": "text_9",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "We may update our @global.privacy_policy from time to time. You waive your right to be notified directly of changes and are advised to review this page periodically for any updates. Your continued use of the app suggests you agree to subsequent revisions of the @global.privacy_policy.",
+            "matchedExpression": "@global.privacy_policy",
+            "type": "global",
+            "fieldName": "privacy_policy"
+          },
+          {
+            "fullExpression": "We may update our @global.privacy_policy from time to time. You waive your right to be notified directly of changes and are advised to review this page periodically for any updates. Your continued use of the app suggests you agree to subsequent revisions of the @global.privacy_policy.",
+            "matchedExpression": "@global.privacy_policy",
+            "type": "global",
+            "fieldName": "privacy_policy"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@global.privacy_policy": [
+          "value",
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "subtitle",
+      "name": "title_10",
+      "value": "10. Contact Us",
+      "_translations": {
+        "value": {
+          "tz_sw": true
+        }
+      },
+      "parameter_list": {
+        "style": "emphasised"
+      },
+      "_nested_name": "title_10"
+    },
+    {
+      "type": "text",
+      "name": "text_10_1",
+      "value": "If you have any questions or suggestions about our @global.privacy_policy, do not hesitate to contact us at apps@idems.international.",
+      "_translations": {
+        "value": {
+          "tz_sw": true
+        }
+      },
+      "_nested_name": "text_10_1",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "If you have any questions or suggestions about our @global.privacy_policy, do not hesitate to contact us at apps@idems.international.",
+            "matchedExpression": "@global.privacy_policy",
+            "type": "global",
+            "fieldName": "privacy_policy"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@global.privacy_policy": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "text",
+      "name": "text_10_2",
+      "value": "Last updated: 1 March 2023",
+      "_translations": {
+        "value": {
+          "tz_sw": true
+        }
+      },
+      "parameter_list": {
+        "style": "emphasised"
+      },
+      "_nested_name": "text_10_2"
+    },
+    {
+      "name": "link_10_1_text",
+      "value": "privacypolicytemplate.net",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "type": "set_variable",
+      "_nested_name": "link_10_1_text"
+    },
+    {
+      "name": "link_10_2_text",
+      "value": "App Privacy Policy Generator",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "type": "set_variable",
+      "_nested_name": "link_10_2_text"
+    },
+    {
+      "type": "text",
+      "name": "text_10_3",
+      "value": "This @global.privacy_policy page was based on a draft created at @local.link_10_1_text and modified/generated by @local.link_10_2_text.",
+      "_translations": {
+        "value": {
+          "tz_sw": true
+        }
+      },
+      "parameter_list": {
+        "style": "contextual"
+      },
+      "_nested_name": "text_10_3",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "This @global.privacy_policy page was based on a draft created at @local.link_10_1_text and modified/generated by @local.link_10_2_text.",
+            "matchedExpression": "@global.privacy_policy",
+            "type": "global",
+            "fieldName": "privacy_policy"
+          },
+          {
+            "fullExpression": "This @global.privacy_policy page was based on a draft created at @local.link_10_1_text and modified/generated by @local.link_10_2_text.",
+            "matchedExpression": "@local.link_10_1_text",
+            "type": "local",
+            "fieldName": "link_10_1_text"
+          },
+          {
+            "fullExpression": "This @global.privacy_policy page was based on a draft created at @local.link_10_1_text and modified/generated by @local.link_10_2_text.",
+            "matchedExpression": "@local.link_10_2_text",
+            "type": "local",
+            "fieldName": "link_10_2_text"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@global.privacy_policy": [
+          "value"
+        ],
+        "@local.link_10_1_text": [
+          "value"
+        ],
+        "@local.link_10_2_text": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "tile_component",
+      "name": "link_10_1",
+      "action_list": [
+        {
+          "trigger": "click",
+          "action_id": "go_to_url",
+          "args": [
+            "https",
+            "//www.privacypolicytemplate.net/"
+          ],
+          "_raw": "click | go_to_url: https://www.privacypolicytemplate.net/",
+          "_cleaned": "click | go_to_url: https://www.privacypolicytemplate.net/"
+        }
+      ],
+      "exclude_from_translation": true,
+      "parameter_list": {
+        "first_line_text": "@local.link_10_1_text",
+        "left_icon_src": "globe-outline",
+        "style": "button_tile",
+        "icon_src": "chevron-forward-outline"
+      },
+      "_nested_name": "link_10_1",
+      "_dynamicFields": {
+        "parameter_list": {
+          "first_line_text": [
+            {
+              "fullExpression": "@local.link_10_1_text",
+              "matchedExpression": "@local.link_10_1_text",
+              "type": "local",
+              "fieldName": "link_10_1_text"
+            }
+          ]
+        }
+      },
+      "_dynamicDependencies": {
+        "@local.link_10_1_text": [
+          "parameter_list.first_line_text"
+        ]
+      }
+    },
+    {
+      "type": "tile_component",
+      "name": "link_10_2",
+      "action_list": [
+        {
+          "trigger": "click",
+          "action_id": "go_to_url",
+          "args": [
+            "https",
+            "//app-privacy-policy-generator.firebaseapp.com/"
+          ],
+          "_raw": "click | go_to_url: https://app-privacy-policy-generator.firebaseapp.com/",
+          "_cleaned": "click | go_to_url: https://app-privacy-policy-generator.firebaseapp.com/"
+        }
+      ],
+      "exclude_from_translation": true,
+      "parameter_list": {
+        "first_line_text": "@local.link_10_2_text",
+        "left_icon_src": "globe-outline",
+        "style": "button_tile",
+        "icon_src": "chevron-forward-outline"
+      },
+      "_nested_name": "link_10_2",
+      "_dynamicFields": {
+        "parameter_list": {
+          "first_line_text": [
+            {
+              "fullExpression": "@local.link_10_2_text",
+              "matchedExpression": "@local.link_10_2_text",
+              "type": "local",
+              "fieldName": "link_10_2_text"
+            }
+          ]
+        }
+      },
+      "_dynamicDependencies": {
+        "@local.link_10_2_text": [
+          "parameter_list.first_line_text"
+        ]
+      }
+    }
+  ],
+  "_xlsxPath": "global/core_templates/core_templates_menu.xlsx"
+}

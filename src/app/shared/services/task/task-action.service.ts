@@ -3,13 +3,14 @@ import { Injectable } from "@angular/core";
 import { Subject } from "rxjs";
 import { environment } from "src/environments/environment";
 import { generateTimestamp } from "../../utils";
+import { AsyncServiceBase } from "../asyncService.base";
 import { DbService } from "../db/db.service";
 
 @Injectable({ providedIn: "root" })
 /**
  * The TaskActionService records information about started and completed tasks as well as the current session more generally
  */
-export class TaskActionService {
+export class TaskActionService extends AsyncServiceBase {
   /**
    * Tasks may be run in parallel (e.g. overall app session with specific task, or pausing one task to complete another)
    * Keep a list of all tasks that have been recorded as active
@@ -25,6 +26,11 @@ export class TaskActionService {
   /** Don't log inactivity periods lower than this number (30000ms = 30s) */
   private readonly INACTIVITY_THRESHOLD = 30000;
   constructor(private db: DbService) {
+    super("TaskActions");
+    this.registerInitFunction(this.initialise);
+  }
+  private async initialise() {
+    await this.ensureAsyncServicesReady([this.db]);
     this._addWindowListeners();
     this.recordSessionAction({ type: "started" });
   }

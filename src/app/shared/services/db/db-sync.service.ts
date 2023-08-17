@@ -8,12 +8,13 @@ import {
   IDBServerUserRecord,
   IDBTable,
 } from "packages/data-models/db.model";
-import { APP_CONSTANTS } from "src/app/data";
+import { lastValueFrom } from "rxjs";
 import { environment } from "src/environments/environment";
+import { IAppConfig } from "../../model";
+import { AppConfigService } from "../app-config/app-config.service";
+import { AsyncServiceBase } from "../asyncService.base";
 import { UserMetaService } from "../userMeta/userMeta.service";
 import { DbService } from "./db.service";
-
-const { SERVER_SYNC_FREQUENCY_MS } = APP_CONSTANTS;
 
 @Injectable({ providedIn: "root" })
 /**
@@ -23,14 +24,22 @@ const { SERVER_SYNC_FREQUENCY_MS } = APP_CONSTANTS;
  * - Websocket connect
  * - 2-way sync (possibly via sync protocol)
  */
-export class DBSyncService {
-  private syncSchedule = interval(SERVER_SYNC_FREQUENCY_MS);
+export class DBSyncService extends AsyncServiceBase {
+  syncSchedule;
   constructor(
     private dbService: DbService,
     private http: HttpClient,
-    private userMetaService: UserMetaService
-  ) {}
-  public async init() {
+    private userMetaService: UserMetaService,
+    private appConfigService: AppConfigService
+  ) {
+    super("DB Sync");
+    this.registerInitFunction(this.inititialise);
+  }
+
+  private async inititialise() {
+    await this.ensureAsyncServicesReady([this.dbService, this.userMetaService]);
+    this.ensureSyncServicesReady([this.appConfigService]);
+    this.subscribeToAppConfigChanges();
     // Automatically sync data periodically
     if (environment.production) {
       this.syncToServer();
@@ -59,7 +68,7 @@ export class DBSyncService {
         const endpoint = api_endpoint(record);
         try {
           // Use api endpoint to post update, and if successful update sync status
-          await this.http.post(endpoint, serverRecord).toPromise();
+          await lastValueFrom(this.http.post(endpoint, serverRecord));
           const _sync_status: IDBMeta["_sync_status"] = "synced";
           await this.dbService.table(table_id).update(record, { _sync_status });
           return { success: true };
@@ -85,5 +94,11 @@ export class DBSyncService {
       return serverRecord;
     }
     return record;
+  }
+
+  subscribeToAppConfigChanges() {
+    this.appConfigService.appConfig$.subscribe((appConfig: IAppConfig) => {
+      this.syncSchedule = interval(appConfig.SERVER_SYNC_FREQUENCY_MS);
+    });
   }
 }

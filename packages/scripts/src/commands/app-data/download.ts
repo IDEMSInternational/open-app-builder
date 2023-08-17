@@ -6,7 +6,7 @@ import fs from "fs-extra";
 import path from "path";
 import { CREDENTIALS_PATH, AUTH_TOKEN_PATH } from "../../paths";
 import { logWarning, promptOptions } from "../../utils";
-import { getActiveDeployment } from "../deployment/get";
+import { ActiveDeployment } from "../deployment/get";
 
 /***************************************************************************************
  * CLI
@@ -37,7 +37,7 @@ export default program
  * Read the default deployment json and retrieve parsed ts for the named active deployment
  */
 async function appDataDownload(options: IProgramOptions) {
-  const activeDeployment = getActiveDeployment();
+  const activeDeployment = ActiveDeployment.get();
   const { _workspace_path } = activeDeployment;
   const {
     assets_folder_id,
@@ -68,8 +68,7 @@ async function appDataDownload(options: IProgramOptions) {
   if (options.sheetname) {
     const cachedEntry = await getFileCacheEntry(options.sheetname, sheetsOutput);
     if (cachedEntry) {
-      const fileEntry64 = Buffer.from(JSON.stringify(cachedEntry)).toString("base64");
-      const args = `--folder-id ${sheets_folder_id} --output-path "${sheetsOutput}" --file-entry-64 ${fileEntry64} --filter-function-64 "${sheetsFilter}"`;
+      const args = `--folder-id ${sheets_folder_id} --output-path "${sheetsOutput}" --filter-function-64 "${sheetsFilter}"`;
       const singleDLCmd = `${gdriveToolsExec} download ${commonArgs} ${args}`;
       return spawnSync(singleDLCmd, { shell: true, stdio: "inherit" });
     } else {

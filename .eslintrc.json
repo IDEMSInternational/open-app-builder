@@ -1,6 +1,8 @@
 {
   "root": true,
-  "ignorePatterns": ["projects/**/*"],
+  "ignorePatterns": ["packages/api/**/*", "packages/@idemsInternational/**/*"],
+  "plugins": ["jasmine"],
+  "env": { "jasmine": true },
   "overrides": [
     {
       "files": ["*.ts"],
@@ -74,6 +76,7 @@
         "@typescript-eslint/naming-convention": ["off"],
         "@typescript-eslint/member-ordering": "off",
         "@typescript-eslint/prefer-for-of": "warn",
+        "@typescript-eslint/sort-type-constituents": "off",
         "@typescript-eslint/no-unused-expressions": "warn",
         "@typescript-eslint/no-shadow": "warn",
         "@angular-eslint/no-output-on-prefix": "warn",
@@ -93,7 +96,8 @@
         "no-fallthrough": "warn",
         "no-throw-literal": "warn",
         "use-isnan": "warn",
-        "arrow-body-style": "off"
+        "arrow-body-style": "off",
+        "sort-keys": "off"
       }
     },
     {
@@ -101,6 +105,16 @@
       "extends": ["plugin:@angular-eslint/template/recommended"],
       "rules": {
         "@angular-eslint/template/eqeqeq": "warn"
+      }
+    },
+    {
+      "files": ["*.spec.ts"],
+      "extends": ["plugin:jasmine/recommended"],
+      "rules": {
+        "jasmine/no-focused-tests": 2,
+        "jasmine/new-line-before-expect": 0,
+        "jasmine/new-line-between-declarations": 0,
+        "jasmine/prefer-toHaveBeenCalledWith": 0
       }
     }
   ]

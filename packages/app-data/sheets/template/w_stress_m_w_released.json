@@ -63,7 +63,7 @@
           "rows": [
             {
               "name": "text",
-              "value": "Hi @fields.user_name! Congratulations for starting @global.parent_app week 5.\n\nA new parenting workshop awaits you with tips on how we can stay calm and in control when our teens are driving us crazy.",
+              "value": "Hi @fields.user_name! Congratulations for starting @global.parent_app week 5.\n\nA new parenting @global.workshop awaits you with tips on how we can stay calm and in control when our teens are driving us crazy.",
               "_translations": {
                 "value": {
                   "tz_sw": true
@@ -75,16 +75,22 @@
               "_dynamicFields": {
                 "value": [
                   {
-                    "fullExpression": "Hi @fields.user_name! Congratulations for starting @global.parent_app week 5.\n\nA new parenting workshop awaits you with tips on how we can stay calm and in control when our teens are driving us crazy.",
+                    "fullExpression": "Hi @fields.user_name! Congratulations for starting @global.parent_app week 5.\n\nA new parenting @global.workshop awaits you with tips on how we can stay calm and in control when our teens are driving us crazy.",
                     "matchedExpression": "@fields.user_name",
                     "type": "fields",
                     "fieldName": "user_name"
                   },
                   {
-                    "fullExpression": "Hi @fields.user_name! Congratulations for starting @global.parent_app week 5.\n\nA new parenting workshop awaits you with tips on how we can stay calm and in control when our teens are driving us crazy.",
+                    "fullExpression": "Hi @fields.user_name! Congratulations for starting @global.parent_app week 5.\n\nA new parenting @global.workshop awaits you with tips on how we can stay calm and in control when our teens are driving us crazy.",
                     "matchedExpression": "@global.parent_app",
                     "type": "global",
                     "fieldName": "parent_app"
+                  },
+                  {
+                    "fullExpression": "Hi @fields.user_name! Congratulations for starting @global.parent_app week 5.\n\nA new parenting @global.workshop awaits you with tips on how we can stay calm and in control when our teens are driving us crazy.",
+                    "matchedExpression": "@global.workshop",
+                    "type": "global",
+                    "fieldName": "workshop"
                   }
                 ],
                 "condition": [
@@ -103,6 +109,9 @@
                 "@global.parent_app": [
                   "value"
                 ],
+                "@global.workshop": [
+                  "value"
+                ],
                 "!@local.do_workshops_together": [
                   "condition"
                 ]
@@ -110,7 +119,7 @@
             },
             {
               "name": "text",
-              "value": "Hi @fields.group_name! Congratulations for starting @global.parent_app week 5.\n\nA new parenting workshop awaits you with tips how we can stay calm and in control when our teens are driving us crazy.",
+              "value": "Hi @fields.group_name! Congratulations for starting @global.parent_app week 5.\n\nA new parenting @global.workshop awaits you with tips how we can stay calm and in control when our teens are driving us crazy.",
               "_translations": {
                 "value": {
                   "tz_sw": true
@@ -122,16 +131,22 @@
               "_dynamicFields": {
                 "value": [
                   {
-                    "fullExpression": "Hi @fields.group_name! Congratulations for starting @global.parent_app week 5.\n\nA new parenting workshop awaits you with tips how we can stay calm and in control when our teens are driving us crazy.",
+                    "fullExpression": "Hi @fields.group_name! Congratulations for starting @global.parent_app week 5.\n\nA new parenting @global.workshop awaits you with tips how we can stay calm and in control when our teens are driving us crazy.",
                     "matchedExpression": "@fields.group_name",
                     "type": "fields",
                     "fieldName": "group_name"
                   },
                   {
-                    "fullExpression": "Hi @fields.group_name! Congratulations for starting @global.parent_app week 5.\n\nA new parenting workshop awaits you with tips how we can stay calm and in control when our teens are driving us crazy.",
+                    "fullExpression": "Hi @fields.group_name! Congratulations for starting @global.parent_app week 5.\n\nA new parenting @global.workshop awaits you with tips how we can stay calm and in control when our teens are driving us crazy.",
                     "matchedExpression": "@global.parent_app",
                     "type": "global",
                     "fieldName": "parent_app"
+                  },
+                  {
+                    "fullExpression": "Hi @fields.group_name! Congratulations for starting @global.parent_app week 5.\n\nA new parenting @global.workshop awaits you with tips how we can stay calm and in control when our teens are driving us crazy.",
+                    "matchedExpression": "@global.workshop",
+                    "type": "global",
+                    "fieldName": "workshop"
                   }
                 ],
                 "condition": [
@@ -150,6 +165,9 @@
                 "@global.parent_app": [
                   "value"
                 ],
+                "@global.workshop": [
+                  "value"
+                ],
                 "@local.do_workshops_together": [
                   "condition"
                 ]
@@ -162,5 +180,5 @@
       "_nested_name": "m_workshop_released"
     }
   ],
-  "_xlsxPath": "global/in_week_messages/in_week_message_texts/w_stress_messages.xlsx"
+  "_xlsxPath": "global/top_templates/in_week_messages/in_week_message_texts/w_stress_messages.xlsx"
 }

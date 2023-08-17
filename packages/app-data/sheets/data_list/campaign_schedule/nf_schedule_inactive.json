@@ -15,6 +15,16 @@
       }
     },
     {
+      "id": "nf_inactive_progress",
+      "time": {
+        "hour": 16,
+        "minute": 0
+      },
+      "delay": {
+        "days": 3
+      }
+    },
+    {
       "id": "nf_inactive_week",
       "time": {
         "hour": 19,
@@ -32,16 +42,6 @@
       },
       "delay": {
         "days": 30
-      }
-    },
-    {
-      "id": "nf_generic",
-      "schedule": {
-        "day_of_week": 6
-      },
-      "time": {
-        "hour": 12,
-        "minute": 0
       }
     }
   ],

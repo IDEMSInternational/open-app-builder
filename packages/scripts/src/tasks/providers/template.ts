@@ -2,6 +2,7 @@ import { spawnSync } from "child_process";
 import path from "path";
 import { WorkflowRunner } from "../../commands/workflow/run";
 
+/** Process all templates within a folder */
 const process = (options: { inputFolder: string }) => {
   const { _workspace_path } = WorkflowRunner.config;
 
@@ -19,4 +20,14 @@ const process = (options: { inputFolder: string }) => {
   return outputFolder;
 };
 
-export default { process };
+/** WiP - allow processing of just a single template file */
+const processIndividualFile = (options: { inputFile: string }) => {
+  // const { inputFile } = options;
+  // const inputFolder = createTemporaryFolder();
+  // // TODO - want to check against cache and detect what sheet actually changed
+  // const targetFilePath = path.resolve(inputFolder, path.basename(inputFile));
+  // fs.copyFileSync(inputFile, targetFilePath);
+  // return process({ inputFolder });
+};
+
+export default { process, processIndividualFile };

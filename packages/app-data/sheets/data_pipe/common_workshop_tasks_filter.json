@@ -1,0 +1,152 @@
+{
+  "flow_type": "data_pipe",
+  "flow_name": "common_workshop_tasks_filter",
+  "status": "released",
+  "rows": [
+    {
+      "operation": "filter",
+      "input_source": "common_workshop_tasks",
+      "args_list": [
+        "id != \"relax\"",
+        "id != \"reflect_together\"",
+        "id != \"hp_review\""
+      ]
+    },
+    {
+      "operation": "append_columns",
+      "output_target": "w_self_care_common_tasks",
+      "args_list": [
+        "template: w_self_care_@row.id"
+      ]
+    },
+    {
+      "operation": "filter",
+      "input_source": "common_workshop_tasks",
+      "args_list": [
+        "id != \"reflect_together\""
+      ]
+    },
+    {
+      "operation": "append_columns",
+      "output_target": "w_1on1_common_tasks",
+      "args_list": [
+        "template: w_1on1_@row.id"
+      ]
+    },
+    {
+      "operation": "filter",
+      "input_source": "common_workshop_tasks"
+    },
+    {
+      "operation": "append_columns",
+      "output_target": "w_praise_common_tasks",
+      "args_list": [
+        "template: w_praise_@row.id"
+      ]
+    },
+    {
+      "operation": "filter",
+      "input_source": "common_workshop_tasks"
+    },
+    {
+      "operation": "append_columns",
+      "output_target": "w_instruct_common_tasks",
+      "args_list": [
+        "template: w_instruct_@row.id"
+      ]
+    },
+    {
+      "operation": "filter",
+      "input_source": "common_workshop_tasks"
+    },
+    {
+      "operation": "append_columns",
+      "output_target": "w_stress_common_tasks",
+      "args_list": [
+        "template: w_stress_@row.id"
+      ]
+    },
+    {
+      "operation": "filter",
+      "input_source": "common_workshop_tasks"
+    },
+    {
+      "operation": "append_columns",
+      "output_target": "w_money_common_tasks",
+      "args_list": [
+        "template: w_money_@row.id"
+      ]
+    },
+    {
+      "operation": "filter",
+      "input_source": "common_workshop_tasks"
+    },
+    {
+      "operation": "append_columns",
+      "output_target": "w_rules_common_tasks",
+      "args_list": [
+        "template: w_rules_@row.id"
+      ]
+    },
+    {
+      "operation": "filter",
+      "input_source": "common_workshop_tasks"
+    },
+    {
+      "operation": "append_columns",
+      "output_target": "w_consequence_common_tasks",
+      "args_list": [
+        "template: w_consequence_@row.id"
+      ]
+    },
+    {
+      "operation": "filter",
+      "input_source": "common_workshop_tasks"
+    },
+    {
+      "operation": "append_columns",
+      "output_target": "w_solve_common_tasks",
+      "args_list": [
+        "template: w_solve_@row.id"
+      ]
+    },
+    {
+      "operation": "filter",
+      "input_source": "common_workshop_tasks"
+    },
+    {
+      "operation": "append_columns",
+      "output_target": "w_safe_common_tasks",
+      "args_list": [
+        "template: w_safe_@row.id"
+      ]
+    },
+    {
+      "operation": "filter",
+      "input_source": "common_workshop_tasks"
+    },
+    {
+      "operation": "append_columns",
+      "output_target": "w_crisis_common_tasks",
+      "args_list": [
+        "template: w_crisis_@row.id"
+      ]
+    },
+    {
+      "operation": "filter",
+      "input_source": "common_workshop_tasks",
+      "args_list": [
+        "id != \"home_practice\"",
+        "id != \"hp_review\""
+      ]
+    },
+    {
+      "operation": "append_columns",
+      "output_target": "w_celebrate_common_tasks",
+      "args_list": [
+        "template: w_celebrate_@row.id"
+      ]
+    }
+  ],
+  "_xlsxPath": "global/data/workshop_data/workshop_tasks_data_pipes.xlsx"
+}

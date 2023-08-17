@@ -1,5 +1,20 @@
 @use "/src/theme/mixins.scss";
 
+$background-default: var(--tile-button-background-default, var(--ion-color-primary-200));
+$background-primary: var(--tile-button-background-primary, var(--gradient-primary-mid-vertical));
+$background-primary-light: var(
+  --tile-button-background-primary-light,
+  var(--gradient-primary-light-vertical)
+);
+$background-secondary: var(
+  --tile-button-background-secondary,
+  var(--gradient-secondary-mid-vertical)
+);
+$background-secondary-light: var(
+  --tile-button-background-secondary-light,
+  var(--gradient-secondary-light-vertical)
+);
+
 // NOTE CC 2021-12-16 - Presumably this is for case of rendered markdown
 // (but ideally should be handled from within markdown itself)
 .first-line-text ::ng-deep,
@@ -94,29 +109,29 @@
 }
 
 .quick_start {
-  background: var(--tile-secondary-light-gradient);
+  background: $background-secondary-light;
 }
 
 .quick_start_passive {
-  background: var(--tile-primary-gradient);
+  background: $background-primary;
 }
 .quick_start_blue {
-  background: var(--tile-primary-light-gradient);
+  background: $background-primary-light;
 }
 .quick_start_dark {
-  background: var(--tile-secondary-gradient);
+  background: $background-secondary;
 }
 .parent_centre_1 {
-  background: var(--parent-centre-primary-light-gradient);
+  background: $background-primary-light;
 }
 .parent_centre_2 {
-  background: var(--parent-centre-secondary-light-gradient);
+  background: $background-secondary-light;
 }
 .parent_centre_3 {
-  background: var(--parent-centre-secondary-gradient);
+  background: $background-secondary;
 }
 .parent_centre_4 {
-  background: var(--parent-centre-primary-gradient);
+  background: $background-primary;
 }
 
 .image_text {
@@ -128,7 +143,7 @@
   width: 10rem;
   margin-bottom: var(--regular-margin);
   max-width: var(--tile-image-text-width);
-  background: var(--points-item-bg);
+  background: $background-default;
   box-shadow: var(--ion-default-box-shadow);
   border-radius: var(--ion-border-radius-standard);
   position: relative;
@@ -169,7 +184,7 @@
 }
 
 .button_tile {
-  background: var(--tile-button-background);
+  background: $background-default;
   overflow: hidden;
   justify-content: space-between;
   height: var(--tile-button-style-height);
