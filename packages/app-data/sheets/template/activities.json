@@ -93,11 +93,9 @@
             {
               "type": "button",
               "name": "button_random",
-              "value": "Choose for me!",
+              "value": "Give me one idea",
               "_translations": {
-                "value": {
-                  "tz_sw": true
-                }
+                "value": {}
               },
               "action_list": [
                 {

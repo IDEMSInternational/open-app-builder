@@ -196,14 +196,10 @@
       "id": "pushy_friend",
       "workshop": "w_svp",
       "scenario_image_asset": "plh_images/workshops/w_svp/learn_warning_signs/pushy_friend.svg",
-      "scenario_title": "Friend pushes @global.w_svp_teen_girl_2 to accept drinks",
+      "scenario_title": "Friend pushes @global.w_svp_teen_girl_2 to accept food",
       "_translations": {
-        "scenario_title": {
-          "tz_sw": true
-        },
-        "scenario_text": {
-          "tz_sw": true
-        },
+        "scenario_title": {},
+        "scenario_text": {},
         "question_text": {
           "tz_sw": true
         },
@@ -222,10 +218,10 @@
       },
       "_translatedFields": {
         "scenario_title": {
-          "eng": "Friend pushes @global.w_svp_teen_girl_2 to accept drinks"
+          "eng": "Friend pushes @global.w_svp_teen_girl_2 to accept food"
         },
         "scenario_text": {
-          "eng": "Man: “Hi beautiful, can I buy you a drink?”\n\n@global.w_svp_teen_girl_2: “Uhmmm... I don’t…”\n\nFriend: “Yes, she’ll have it!”"
+          "eng": "Man: “Hi beautiful, can I buy you a snack?”\n\n@global.w_svp_teen_girl_2: “Uhmmm... I don’t…”\n\nFriend: “Yes, she’ll have it!”"
         },
         "question_text": {
           "eng": "What warning signs do you see here?"
@@ -243,7 +239,7 @@
           "eng": "Yes, all of these are warning signs! It is common for young women to be pressured into sex when men offer food, gifts, or money. \n\nWhenever you do not get the space to make your own decisions, that can be dangerous. Your friends, and others, should respect your choices."
         }
       },
-      "scenario_text": "Man: “Hi beautiful, can I buy you a drink?”\n\n@global.w_svp_teen_girl_2: “Uhmmm... I don’t…”\n\nFriend: “Yes, she’ll have it!”",
+      "scenario_text": "Man: “Hi beautiful, can I buy you a snack?”\n\n@global.w_svp_teen_girl_2: “Uhmmm... I don’t…”\n\nFriend: “Yes, she’ll have it!”",
       "question_text": "What warning signs do you see here?",
       "option_1": "The friend pressures and manipulates @global.w_svp_teen_girl_2.",
       "option_2": "The friend does not listen to @global.w_svp_teen_girl_2.",
@@ -271,9 +267,7 @@
         "option_2": {
           "tz_sw": true
         },
-        "reply_all": {
-          "tz_sw": true
-        }
+        "reply_all": {}
       },
       "_translatedFields": {
         "scenario_title": {
@@ -292,14 +286,14 @@
           "eng": "Breaks the law"
         },
         "reply_all": {
-          "eng": "Yes, these are important warning signs! Sharing sexual images without someone’s permission is wrong and, in many places, it is a crime (especially if someone is under 18). \n\n@global.w_svp_teen_girl_3’s may feel ashamed and may not know what to do – it is important that she knows this situation is not her fault and that she talks to her boyfriend or an adult he trusts. \n\nRemember to talk about social media and online activity as a family, so everyone stays safe."
+          "eng": "Yes, these are important warning signs! Sharing sexual images without someone’s permission is wrong and, in many places, it is a crime (especially if someone is under 18). \n\n@global.w_svp_teen_girl_3 may feel ashamed and may not know what to do. It is important that she knows this situation is not her fault and that she talks to her boyfriend or an adult she trusts. \n\nRemember to talk about social media and online activity as a family, so everyone stays safe."
         }
       },
       "scenario_text": "Boy: “Look I still have this sexy picture that @global.w_svp_teen_girl_3 sent me! I will post it online, that should teach her not to break up with me.”",
       "question_text": "What warning signs do you see here?\n\nThe ex-boyfriend:",
       "option_1": "Breaks @global.w_svp_teen_girl_3’s trust",
       "option_2": "Breaks the law",
-      "reply_all": "Yes, these are important warning signs! Sharing sexual images without someone’s permission is wrong and, in many places, it is a crime (especially if someone is under 18). \n\n@global.w_svp_teen_girl_3’s may feel ashamed and may not know what to do – it is important that she knows this situation is not her fault and that she talks to her boyfriend or an adult he trusts. \n\nRemember to talk about social media and online activity as a family, so everyone stays safe."
+      "reply_all": "Yes, these are important warning signs! Sharing sexual images without someone’s permission is wrong and, in many places, it is a crime (especially if someone is under 18). \n\n@global.w_svp_teen_girl_3 may feel ashamed and may not know what to do. It is important that she knows this situation is not her fault and that she talks to her boyfriend or an adult she trusts. \n\nRemember to talk about social media and online activity as a family, so everyone stays safe."
     },
     {
       "id": "private_tutoring",

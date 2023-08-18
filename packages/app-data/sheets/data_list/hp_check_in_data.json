@@ -1020,6 +1020,353 @@
       "button_no_text": "@global.home_practice",
       "question_how": "How did it go?",
       "outro_text": "Well done for exploring solutions to your challenges. Go try them out. Your relationship with your teen will get stronger and stronger!"
+    },
+    {
+      "id": "w_grief",
+      "habit_id": "breathe",
+      "activity_image_ind": "plh_images/workshop_modes/individual/with_teen.svg",
+      "activity_image_tog": "plh_images/workshop_modes/group/with_teen.svg",
+      "button_no_go_to_template": "w_grief_home_practice",
+      "has_highlights": false,
+      "has_challenges": true,
+      "challenges_structure": "plain",
+      "text_goal": "This week, your goal was: Share with your teen how you feel, and ask them to also name their feelings.",
+      "_translations": {
+        "text_goal": {},
+        "reply_happy": {},
+        "reply_ok": {},
+        "reply_sad": {},
+        "outro_text": {},
+        "activity_title": {},
+        "intro_text": {},
+        "question_done": {
+          "tz_sw": true
+        },
+        "reply_no": {
+          "tz_sw": true
+        },
+        "button_no_text": {},
+        "question_how": {
+          "tz_sw": true
+        }
+      },
+      "_translatedFields": {
+        "text_goal": {
+          "eng": "This week, your goal was: Share with your teen how you feel, and ask them to also name their feelings."
+        },
+        "reply_happy": {
+          "eng": "Well done! Sharing feelings will help your family to support each other and get through this difficult time together."
+        },
+        "reply_ok": {
+          "eng": "Talking about feelings can be challenging at first. Try again another time. It will help you and your family."
+        },
+        "reply_sad": {
+          "eng": "Losing someone impacts everyone differently. Be kind to yourself and take some time to notice and share how you feel when you are ready. You will see it will help you and your family."
+        },
+        "outro_text": {
+          "eng": "Well done for exploring solutions to your challenges. Go try them out. Together with your teen you can get through difficult times stronger."
+        },
+        "activity_title": {
+          "eng": "@global.hp_review"
+        },
+        "intro_text": {
+          "eng": "@global.text_hp_review"
+        },
+        "question_done": {
+          "eng": "Did you have a chance to try this?"
+        },
+        "reply_no": {
+          "eng": "That is okay, do not be too hard on yourself. We encourage you to try and do it when you can."
+        },
+        "button_no_text": {
+          "eng": "@global.home_practice"
+        },
+        "question_how": {
+          "eng": "How did it go?"
+        }
+      },
+      "reply_happy": "Well done! Sharing feelings will help your family to support each other and get through this difficult time together.",
+      "reply_ok": "Talking about feelings can be challenging at first. Try again another time. It will help you and your family.",
+      "reply_sad": "Losing someone impacts everyone differently. Be kind to yourself and take some time to notice and share how you feel when you are ready. You will see it will help you and your family.",
+      "outro_text": "Well done for exploring solutions to your challenges. Go try them out. Together with your teen you can get through difficult times stronger.",
+      "activity_title": "@global.hp_review",
+      "intro_text": "@global.text_hp_review",
+      "question_done": "Did you have a chance to try this?",
+      "reply_no": "That is okay, do not be too hard on yourself. We encourage you to try and do it when you can.",
+      "button_no_text": "@global.home_practice",
+      "question_how": "How did it go?"
+    },
+    {
+      "id": "w_learn_1",
+      "habit_id": "play",
+      "activity_image_ind": "plh_images/workshop_modes/individual/with_teen.svg",
+      "activity_image_tog": "plh_images/workshop_modes/group/with_teen.svg",
+      "button_no_go_to_template": "w_learn_1_home_practice",
+      "has_highlights": false,
+      "has_challenges": true,
+      "challenges_structure": "plain",
+      "intro_text": "Let’s talk about how your home activity with your teen went.",
+      "_translations": {
+        "intro_text": {},
+        "reply_no": {},
+        "reply_happy": {},
+        "reply_ok": {},
+        "reply_sad": {},
+        "outro_text": {},
+        "activity_title": {},
+        "question_done": {
+          "tz_sw": true
+        },
+        "button_no_text": {},
+        "question_how": {
+          "tz_sw": true
+        }
+      },
+      "_translatedFields": {
+        "intro_text": {
+          "eng": "Let’s talk about how your home activity with your teen went."
+        },
+        "reply_no": {
+          "eng": "That’s okay, hopefully you can try it soon and see how it turns out."
+        },
+        "reply_happy": {
+          "eng": "Amazing that it went so well. Keep doing more activities together and you will find that is a great way to learn together!"
+        },
+        "reply_ok": {
+          "eng": "Well done for doing the activity! It is normal to have ups and downs. Keep trying these activities and hopefully next time is great."
+        },
+        "reply_sad": {
+          "eng": "Do not be hard on yourself if things did not go as planned. Being a parent means that things will not always go as planned."
+        },
+        "outro_text": {
+          "eng": "Well done for trying one of the activities! Remember that these activities can be done many times and this will support your teen’s development and learning."
+        },
+        "activity_title": {
+          "eng": "@global.hp_review"
+        },
+        "question_done": {
+          "eng": "Did you have a chance to try this?"
+        },
+        "button_no_text": {
+          "eng": "@global.home_practice"
+        },
+        "question_how": {
+          "eng": "How did it go?"
+        }
+      },
+      "reply_no": "That’s okay, hopefully you can try it soon and see how it turns out.",
+      "reply_happy": "Amazing that it went so well. Keep doing more activities together and you will find that is a great way to learn together!",
+      "reply_ok": "Well done for doing the activity! It is normal to have ups and downs. Keep trying these activities and hopefully next time is great.",
+      "reply_sad": "Do not be hard on yourself if things did not go as planned. Being a parent means that things will not always go as planned.",
+      "outro_text": "Well done for trying one of the activities! Remember that these activities can be done many times and this will support your teen’s development and learning.",
+      "activity_title": "@global.hp_review",
+      "question_done": "Did you have a chance to try this?",
+      "button_no_text": "@global.home_practice",
+      "question_how": "How did it go?"
+    },
+    {
+      "id": "w_learn_2",
+      "habit_id": "play",
+      "activity_image_ind": "plh_images/workshop_modes/individual/with_teen.svg",
+      "activity_image_tog": "plh_images/workshop_modes/group/with_teen.svg",
+      "button_no_go_to_template": "w_learn_2_home_practice",
+      "has_highlights": false,
+      "has_challenges": true,
+      "challenges_structure": "plain",
+      "intro_text": "Let’s talk about how your home activity with your teen went.",
+      "_translations": {
+        "intro_text": {},
+        "reply_no": {},
+        "reply_happy": {},
+        "reply_ok": {},
+        "reply_sad": {},
+        "outro_text": {},
+        "activity_title": {},
+        "question_done": {
+          "tz_sw": true
+        },
+        "button_no_text": {},
+        "question_how": {
+          "tz_sw": true
+        }
+      },
+      "_translatedFields": {
+        "intro_text": {
+          "eng": "Let’s talk about how your home activity with your teen went."
+        },
+        "reply_no": {
+          "eng": "That’s okay, hopefully you can try it soon and see how it turns out."
+        },
+        "reply_happy": {
+          "eng": "Well done for spending time together! That is how your relationship will get stronger and you will help your teen learn important skills for life."
+        },
+        "reply_ok": {
+          "eng": "Good that you tried the activity! It can take some time for everyone to get used to new things. Try it again tomorrow - spending time together sets your teen up for success in life!"
+        },
+        "reply_sad": {
+          "eng": "Sorry that things did not go as you hoped. Try this or another activity again next time you have a few minutes to spare. The fact that you are here shows you want the best for your teen!"
+        },
+        "outro_text": {
+          "eng": "Well done for trying one of the activities! Remember that these activities can be done many times and this will support your teen’s development and learning."
+        },
+        "activity_title": {
+          "eng": "@global.hp_review"
+        },
+        "question_done": {
+          "eng": "Did you have a chance to try this?"
+        },
+        "button_no_text": {
+          "eng": "@global.home_practice"
+        },
+        "question_how": {
+          "eng": "How did it go?"
+        }
+      },
+      "reply_no": "That’s okay, hopefully you can try it soon and see how it turns out.",
+      "reply_happy": "Well done for spending time together! That is how your relationship will get stronger and you will help your teen learn important skills for life.",
+      "reply_ok": "Good that you tried the activity! It can take some time for everyone to get used to new things. Try it again tomorrow - spending time together sets your teen up for success in life!",
+      "reply_sad": "Sorry that things did not go as you hoped. Try this or another activity again next time you have a few minutes to spare. The fact that you are here shows you want the best for your teen!",
+      "outro_text": "Well done for trying one of the activities! Remember that these activities can be done many times and this will support your teen’s development and learning.",
+      "activity_title": "@global.hp_review",
+      "question_done": "Did you have a chance to try this?",
+      "button_no_text": "@global.home_practice",
+      "question_how": "How did it go?"
+    },
+    {
+      "id": "w_learn_3",
+      "habit_id": "play",
+      "activity_image_ind": "plh_images/workshop_modes/individual/with_teen.svg",
+      "activity_image_tog": "plh_images/workshop_modes/group/with_teen.svg",
+      "button_no_go_to_template": "w_learn_3_home_practice",
+      "has_highlights": false,
+      "has_challenges": true,
+      "challenges_structure": "plain",
+      "intro_text": "Let’s talk about how your home activity with your teen went.",
+      "_translations": {
+        "intro_text": {},
+        "reply_no": {},
+        "reply_happy": {},
+        "reply_ok": {},
+        "reply_sad": {},
+        "outro_text": {},
+        "activity_title": {},
+        "question_done": {
+          "tz_sw": true
+        },
+        "button_no_text": {},
+        "question_how": {
+          "tz_sw": true
+        }
+      },
+      "_translatedFields": {
+        "intro_text": {
+          "eng": "Let’s talk about how your home activity with your teen went."
+        },
+        "reply_no": {
+          "eng": "That’s okay, hopefully you can try it soon and see how it turns out."
+        },
+        "reply_happy": {
+          "eng": "So good that you managed to try this activity together. Doing something fun together is a great way for your teen to learn new skills."
+        },
+        "reply_ok": {
+          "eng": "Spending time together makes a big difference. With just a few minutes together every day, you will see your relationship grow and your teen learn many things they don’t learn at school."
+        },
+        "reply_sad": {
+          "eng": "We all have moments where things do not work out. Try again tomorrow. You will see the difference and your teen will thank you later for taking time for them!"
+        },
+        "outro_text": {
+          "eng": "Well done for trying one of the activities! Remember that these activities can be done many times and this will support your teen’s development and learning."
+        },
+        "activity_title": {
+          "eng": "@global.hp_review"
+        },
+        "question_done": {
+          "eng": "Did you have a chance to try this?"
+        },
+        "button_no_text": {
+          "eng": "@global.home_practice"
+        },
+        "question_how": {
+          "eng": "How did it go?"
+        }
+      },
+      "reply_no": "That’s okay, hopefully you can try it soon and see how it turns out.",
+      "reply_happy": "So good that you managed to try this activity together. Doing something fun together is a great way for your teen to learn new skills.",
+      "reply_ok": "Spending time together makes a big difference. With just a few minutes together every day, you will see your relationship grow and your teen learn many things they don’t learn at school.",
+      "reply_sad": "We all have moments where things do not work out. Try again tomorrow. You will see the difference and your teen will thank you later for taking time for them!",
+      "outro_text": "Well done for trying one of the activities! Remember that these activities can be done many times and this will support your teen’s development and learning.",
+      "activity_title": "@global.hp_review",
+      "question_done": "Did you have a chance to try this?",
+      "button_no_text": "@global.home_practice",
+      "question_how": "How did it go?"
+    },
+    {
+      "id": "w_learn_4",
+      "habit_id": "play",
+      "activity_image_ind": "plh_images/workshop_modes/individual/with_teen.svg",
+      "activity_image_tog": "plh_images/workshop_modes/group/with_teen.svg",
+      "button_no_go_to_template": "w_learn_4_home_practice",
+      "has_highlights": false,
+      "has_challenges": true,
+      "challenges_structure": "plain",
+      "intro_text": "Let’s talk about how your home activity with your teen went.",
+      "_translations": {
+        "intro_text": {},
+        "reply_no": {},
+        "reply_happy": {},
+        "reply_ok": {},
+        "reply_sad": {},
+        "outro_text": {},
+        "activity_title": {},
+        "question_done": {
+          "tz_sw": true
+        },
+        "button_no_text": {},
+        "question_how": {
+          "tz_sw": true
+        }
+      },
+      "_translatedFields": {
+        "intro_text": {
+          "eng": "Let’s talk about how your home activity with your teen went."
+        },
+        "reply_no": {
+          "eng": "That’s okay, hopefully you can try it soon and see how it turns out."
+        },
+        "reply_happy": {
+          "eng": "Great that you could try this activity with your teen! Your teen is learning so much just by spending time with you."
+        },
+        "reply_ok": {
+          "eng": "Well done for trying the activity. Things do not always go smoothly from the start. Try again tomorrow. Your teen is learning new skills and you are becoming closer as a family."
+        },
+        "reply_sad": {
+          "eng": "Sorry that today was hard. You can try again another day. By choosing to do an everyday activity or household chore together, you can spend quality time with your teen while still getting your other work done. Everyone wins!"
+        },
+        "outro_text": {
+          "eng": "Well done for trying one of the activities! Remember that these activities can be done many times and this will support your teen’s development and learning."
+        },
+        "activity_title": {
+          "eng": "@global.hp_review"
+        },
+        "question_done": {
+          "eng": "Did you have a chance to try this?"
+        },
+        "button_no_text": {
+          "eng": "@global.home_practice"
+        },
+        "question_how": {
+          "eng": "How did it go?"
+        }
+      },
+      "reply_no": "That’s okay, hopefully you can try it soon and see how it turns out.",
+      "reply_happy": "Great that you could try this activity with your teen! Your teen is learning so much just by spending time with you.",
+      "reply_ok": "Well done for trying the activity. Things do not always go smoothly from the start. Try again tomorrow. Your teen is learning new skills and you are becoming closer as a family.",
+      "reply_sad": "Sorry that today was hard. You can try again another day. By choosing to do an everyday activity or household chore together, you can spend quality time with your teen while still getting your other work done. Everyone wins!",
+      "outro_text": "Well done for trying one of the activities! Remember that these activities can be done many times and this will support your teen’s development and learning.",
+      "activity_title": "@global.hp_review",
+      "question_done": "Did you have a chance to try this?",
+      "button_no_text": "@global.home_practice",
+      "question_how": "How did it go?"
     }
   ],
   "_xlsxPath": "global/data/workshop_data/workshop_data_list.xlsx"
