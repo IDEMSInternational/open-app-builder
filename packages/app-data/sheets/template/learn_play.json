@@ -669,6 +669,7 @@
         "value": {}
       },
       "condition": "!!(@fields.@local.toggle_history_field_name)",
+      "exclude_from_translation": true,
       "type": "set_variable",
       "_nested_name": "toggle_history_value",
       "_dynamicFields": {
@@ -901,6 +902,108 @@
         "@local.toggle_bar_text": [
           "parameter_list.true_text",
           "parameter_list.false_text"
+        ]
+      }
+    },
+    {
+      "name": "review",
+      "value": "_review",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "review"
+    },
+    {
+      "type": "button",
+      "name": "button_review",
+      "value": "@global.hp_review",
+      "_translations": {
+        "value": {}
+      },
+      "action_list": [
+        {
+          "trigger": "click",
+          "action_id": "go_to",
+          "args": [
+            "ltp_activity_@local.activity_id@local.review"
+          ],
+          "_raw": "click | go_to: ltp_activity_@local.activity_id@local.review",
+          "_cleaned": "click | go_to: ltp_activity_@local.activity_id@local.review"
+        }
+      ],
+      "_nested_name": "button_review",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@global.hp_review",
+            "matchedExpression": "@global.hp_review",
+            "type": "global",
+            "fieldName": "hp_review"
+          }
+        ],
+        "action_list": {
+          "0": {
+            "args": {
+              "0": [
+                {
+                  "fullExpression": "ltp_activity_@local.activity_id@local.review",
+                  "matchedExpression": "@local.activity_id",
+                  "type": "local",
+                  "fieldName": "activity_id"
+                },
+                {
+                  "fullExpression": "ltp_activity_@local.activity_id@local.review",
+                  "matchedExpression": "@local.review",
+                  "type": "local",
+                  "fieldName": "review"
+                }
+              ]
+            },
+            "_raw": [
+              {
+                "fullExpression": "click | go_to: ltp_activity_@local.activity_id@local.review",
+                "matchedExpression": "@local.activity_id",
+                "type": "local",
+                "fieldName": "activity_id"
+              },
+              {
+                "fullExpression": "click | go_to: ltp_activity_@local.activity_id@local.review",
+                "matchedExpression": "@local.review",
+                "type": "local",
+                "fieldName": "review"
+              }
+            ],
+            "_cleaned": [
+              {
+                "fullExpression": "click | go_to: ltp_activity_@local.activity_id@local.review",
+                "matchedExpression": "@local.activity_id",
+                "type": "local",
+                "fieldName": "activity_id"
+              },
+              {
+                "fullExpression": "click | go_to: ltp_activity_@local.activity_id@local.review",
+                "matchedExpression": "@local.review",
+                "type": "local",
+                "fieldName": "review"
+              }
+            ]
+          }
+        }
+      },
+      "_dynamicDependencies": {
+        "@global.hp_review": [
+          "value"
+        ],
+        "@local.activity_id": [
+          "action_list.0.args.0",
+          "action_list.0._raw",
+          "action_list.0._cleaned"
+        ],
+        "@local.review": [
+          "action_list.0.args.0",
+          "action_list.0._raw",
+          "action_list.0._cleaned"
         ]
       }
     },

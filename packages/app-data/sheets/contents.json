@@ -1497,6 +1497,17 @@
     }
   },
   "generator": {
+    "gen_activity_review": {
+      "flow_type": "generator",
+      "flow_name": "gen_activity_review",
+      "parameter_list": {
+        "input_data_list": "learn_play_data",
+        "output_flow_name": "ltp_activity_{@gen.id}_review",
+        "output_flow_type": "template",
+        "output_flow_subtype": "generated"
+      },
+      "_xlsxPath": "global/top_templates/in_week_messages/home_practice_reviews/w_learn_hp_review.xlsx"
+    },
     "gen_ending": {
       "flow_type": "generator",
       "flow_name": "gen_ending",
@@ -2546,8 +2557,18 @@
       "flow_subtype": "generated",
       "flow_type": "template"
     },
+    "ltp_activity_bao_review": {
+      "flow_name": "ltp_activity_bao_review",
+      "flow_subtype": "generated",
+      "flow_type": "template"
+    },
     "ltp_activity_charades": {
       "flow_name": "ltp_activity_charades",
+      "flow_subtype": "generated",
+      "flow_type": "template"
+    },
+    "ltp_activity_charades_review": {
+      "flow_name": "ltp_activity_charades_review",
       "flow_subtype": "generated",
       "flow_type": "template"
     },
@@ -2556,8 +2577,18 @@
       "flow_subtype": "generated",
       "flow_type": "template"
     },
+    "ltp_activity_check_in_chat_review": {
+      "flow_name": "ltp_activity_check_in_chat_review",
+      "flow_subtype": "generated",
+      "flow_type": "template"
+    },
     "ltp_activity_chores": {
       "flow_name": "ltp_activity_chores",
+      "flow_subtype": "generated",
+      "flow_type": "template"
+    },
+    "ltp_activity_chores_review": {
+      "flow_name": "ltp_activity_chores_review",
       "flow_subtype": "generated",
       "flow_type": "template"
     },
@@ -2566,8 +2597,18 @@
       "flow_subtype": "generated",
       "flow_type": "template"
     },
+    "ltp_activity_clean_review": {
+      "flow_name": "ltp_activity_clean_review",
+      "flow_subtype": "generated",
+      "flow_type": "template"
+    },
     "ltp_activity_cook": {
       "flow_name": "ltp_activity_cook",
+      "flow_subtype": "generated",
+      "flow_type": "template"
+    },
+    "ltp_activity_cook_review": {
+      "flow_name": "ltp_activity_cook_review",
       "flow_subtype": "generated",
       "flow_type": "template"
     },
@@ -2576,8 +2617,18 @@
       "flow_subtype": "generated",
       "flow_type": "template"
     },
+    "ltp_activity_cook_traditional_review": {
+      "flow_name": "ltp_activity_cook_traditional_review",
+      "flow_subtype": "generated",
+      "flow_type": "template"
+    },
     "ltp_activity_dance": {
       "flow_name": "ltp_activity_dance",
+      "flow_subtype": "generated",
+      "flow_type": "template"
+    },
+    "ltp_activity_dance_review": {
+      "flow_name": "ltp_activity_dance_review",
       "flow_subtype": "generated",
       "flow_type": "template"
     },
@@ -2586,8 +2637,18 @@
       "flow_subtype": "generated",
       "flow_type": "template"
     },
+    "ltp_activity_dream_travel_review": {
+      "flow_name": "ltp_activity_dream_travel_review",
+      "flow_subtype": "generated",
+      "flow_type": "template"
+    },
     "ltp_activity_famous_party": {
       "flow_name": "ltp_activity_famous_party",
+      "flow_subtype": "generated",
+      "flow_type": "template"
+    },
+    "ltp_activity_famous_party_review": {
+      "flow_name": "ltp_activity_famous_party_review",
       "flow_subtype": "generated",
       "flow_type": "template"
     },
@@ -2596,8 +2657,18 @@
       "flow_subtype": "generated",
       "flow_type": "template"
     },
+    "ltp_activity_find_pair_review": {
+      "flow_name": "ltp_activity_find_pair_review",
+      "flow_subtype": "generated",
+      "flow_type": "template"
+    },
     "ltp_activity_friendly_chat": {
       "flow_name": "ltp_activity_friendly_chat",
+      "flow_subtype": "generated",
+      "flow_type": "template"
+    },
+    "ltp_activity_friendly_chat_review": {
+      "flow_name": "ltp_activity_friendly_chat_review",
       "flow_subtype": "generated",
       "flow_type": "template"
     },
@@ -2606,8 +2677,18 @@
       "flow_subtype": "generated",
       "flow_type": "template"
     },
+    "ltp_activity_garden_review": {
+      "flow_name": "ltp_activity_garden_review",
+      "flow_subtype": "generated",
+      "flow_type": "template"
+    },
     "ltp_activity_interrupter": {
       "flow_name": "ltp_activity_interrupter",
+      "flow_subtype": "generated",
+      "flow_type": "template"
+    },
+    "ltp_activity_interrupter_review": {
+      "flow_name": "ltp_activity_interrupter_review",
       "flow_subtype": "generated",
       "flow_type": "template"
     },
@@ -2616,8 +2697,18 @@
       "flow_subtype": "generated",
       "flow_type": "template"
     },
+    "ltp_activity_invent_story_review": {
+      "flow_name": "ltp_activity_invent_story_review",
+      "flow_subtype": "generated",
+      "flow_type": "template"
+    },
     "ltp_activity_long_term_goal": {
       "flow_name": "ltp_activity_long_term_goal",
+      "flow_subtype": "generated",
+      "flow_type": "template"
+    },
+    "ltp_activity_long_term_goal_review": {
+      "flow_name": "ltp_activity_long_term_goal_review",
       "flow_subtype": "generated",
       "flow_type": "template"
     },
@@ -2626,8 +2717,18 @@
       "flow_subtype": "generated",
       "flow_type": "template"
     },
+    "ltp_activity_memory_game_review": {
+      "flow_name": "ltp_activity_memory_game_review",
+      "flow_subtype": "generated",
+      "flow_type": "template"
+    },
     "ltp_activity_mystery_box": {
       "flow_name": "ltp_activity_mystery_box",
+      "flow_subtype": "generated",
+      "flow_type": "template"
+    },
+    "ltp_activity_mystery_box_review": {
+      "flow_name": "ltp_activity_mystery_box_review",
       "flow_subtype": "generated",
       "flow_type": "template"
     },
@@ -2636,8 +2737,18 @@
       "flow_subtype": "generated",
       "flow_type": "template"
     },
+    "ltp_activity_reflect_positive_review": {
+      "flow_name": "ltp_activity_reflect_positive_review",
+      "flow_subtype": "generated",
+      "flow_type": "template"
+    },
     "ltp_activity_role_play": {
       "flow_name": "ltp_activity_role_play",
+      "flow_subtype": "generated",
+      "flow_type": "template"
+    },
+    "ltp_activity_role_play_review": {
+      "flow_name": "ltp_activity_role_play_review",
       "flow_subtype": "generated",
       "flow_type": "template"
     },
@@ -2646,8 +2757,18 @@
       "flow_subtype": "generated",
       "flow_type": "template"
     },
+    "ltp_activity_short_term_goal_review": {
+      "flow_name": "ltp_activity_short_term_goal_review",
+      "flow_subtype": "generated",
+      "flow_type": "template"
+    },
     "ltp_activity_superpowers": {
       "flow_name": "ltp_activity_superpowers",
+      "flow_subtype": "generated",
+      "flow_type": "template"
+    },
+    "ltp_activity_superpowers_review": {
+      "flow_name": "ltp_activity_superpowers_review",
       "flow_subtype": "generated",
       "flow_type": "template"
     },
@@ -2656,8 +2777,18 @@
       "flow_subtype": "generated",
       "flow_type": "template"
     },
+    "ltp_activity_tell_stories_review": {
+      "flow_name": "ltp_activity_tell_stories_review",
+      "flow_subtype": "generated",
+      "flow_type": "template"
+    },
     "ltp_activity_three_options": {
       "flow_name": "ltp_activity_three_options",
+      "flow_subtype": "generated",
+      "flow_type": "template"
+    },
+    "ltp_activity_three_options_review": {
+      "flow_name": "ltp_activity_three_options_review",
       "flow_subtype": "generated",
       "flow_type": "template"
     },
@@ -2666,8 +2797,18 @@
       "flow_subtype": "generated",
       "flow_type": "template"
     },
+    "ltp_activity_time_machine_review": {
+      "flow_name": "ltp_activity_time_machine_review",
+      "flow_subtype": "generated",
+      "flow_type": "template"
+    },
     "ltp_activity_two_truths": {
       "flow_name": "ltp_activity_two_truths",
+      "flow_subtype": "generated",
+      "flow_type": "template"
+    },
+    "ltp_activity_two_truths_review": {
+      "flow_name": "ltp_activity_two_truths_review",
       "flow_subtype": "generated",
       "flow_type": "template"
     },
@@ -2676,8 +2817,18 @@
       "flow_subtype": "generated",
       "flow_type": "template"
     },
+    "ltp_activity_walk_review": {
+      "flow_name": "ltp_activity_walk_review",
+      "flow_subtype": "generated",
+      "flow_type": "template"
+    },
     "ltp_activity_yes_no_maybe": {
       "flow_name": "ltp_activity_yes_no_maybe",
+      "flow_subtype": "generated",
+      "flow_type": "template"
+    },
+    "ltp_activity_yes_no_maybe_review": {
+      "flow_name": "ltp_activity_yes_no_maybe_review",
       "flow_subtype": "generated",
       "flow_type": "template"
     },
@@ -5062,11 +5213,6 @@
       "module": "w_learn",
       "flow_name": "w_learn_home_practice",
       "_xlsxPath": "global/top_templates/workshop_templates/workshop_learn.xlsx"
-    },
-    "w_learn_hp_review": {
-      "flow_type": "template",
-      "flow_name": "w_learn_hp_review",
-      "_xlsxPath": "global/top_templates/in_week_messages/home_practice_reviews/w_learn_hp_review.xlsx"
     },
     "w_learn_learn_activity_ideas": {
       "flow_type": "template",
