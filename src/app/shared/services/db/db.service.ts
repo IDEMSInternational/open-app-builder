@@ -17,7 +17,6 @@ window.addEventListener("unhandledrejection", (event) => {
   let reason = event.reason;
   console.warn("Unhandled promise rejection:", reason && (reason.stack || reason));
 });
-console.log({ DB_VERSION, DB_TABLES });
 db.version(DB_VERSION).stores(DB_TABLES);
 
 @Injectable({
