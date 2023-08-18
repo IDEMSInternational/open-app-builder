@@ -77,7 +77,7 @@
                     },
                     {
                       "name": "question_text_done",
-                      "value": "Did you have a chance to try @local.title?"
+                      "value": "@global.chance_try @local.title?"
                     },
                     {
                       "name": "radio_group_done_tracker",

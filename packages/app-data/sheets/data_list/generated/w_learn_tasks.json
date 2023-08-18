@@ -76,15 +76,6 @@
       "completed": "@fields.task_w_learn_ending_completed"
     },
     {
-      "id": "hp_review",
-      "group": "hp_review",
-      "individual": true,
-      "together": true,
-      "template": "w_learn_hp_review",
-      "completed_field": "task_w_learn_hp_review_completed",
-      "completed": "@fields.task_w_learn_hp_review_completed"
-    },
-    {
       "id": "read_learn_conflict",
       "group": "read_learn_conflict",
       "individual": true,

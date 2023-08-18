@@ -153,7 +153,6 @@
     },
     {
       "operation": "append_columns",
-      "input_source": "common_workshop_tasks",
       "output_target": "w_learn_common_tasks",
       "args_list": [
         "template: w_learn_@row.id"

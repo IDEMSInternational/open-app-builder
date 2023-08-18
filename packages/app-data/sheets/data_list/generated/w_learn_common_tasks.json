@@ -58,13 +58,6 @@
       "individual": true,
       "together": true,
       "template": "w_learn_ending"
-    },
-    {
-      "id": "hp_review",
-      "group": "hp_review",
-      "individual": true,
-      "together": true,
-      "template": "w_learn_hp_review"
     }
   ]
 }
