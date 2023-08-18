@@ -5063,6 +5063,11 @@
       "flow_name": "w_learn_home_practice",
       "_xlsxPath": "global/top_templates/workshop_templates/workshop_learn.xlsx"
     },
+    "w_learn_hp_review": {
+      "flow_type": "template",
+      "flow_name": "w_learn_hp_review",
+      "_xlsxPath": "global/top_templates/in_week_messages/home_practice_reviews/w_learn_hp_review.xlsx"
+    },
     "w_learn_learn_activity_ideas": {
       "flow_type": "template",
       "module": "w_learn",

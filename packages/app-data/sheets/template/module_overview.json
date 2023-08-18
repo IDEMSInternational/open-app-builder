@@ -659,7 +659,7 @@
           "type": "template",
           "name": "card_hp_review",
           "value": "task_card",
-          "condition": "@local.workshop_id != \"w_self_care\" && @local.workshop_id != \"w_celebrate\"",
+          "condition": "@local.workshop_id != \"w_self_care\" && @local.workshop_id != \"w_celebrate\" && @local.workshop_id != \"w_learn\"",
           "exclude_from_translation": true,
           "rows": [
             {
@@ -702,13 +702,19 @@
           "_dynamicFields": {
             "condition": [
               {
-                "fullExpression": "@local.workshop_id != \"w_self_care\" && @local.workshop_id != \"w_celebrate\"",
+                "fullExpression": "@local.workshop_id != \"w_self_care\" && @local.workshop_id != \"w_celebrate\" && @local.workshop_id != \"w_learn\"",
                 "matchedExpression": "@local.workshop_id",
                 "type": "local",
                 "fieldName": "workshop_id"
               },
               {
-                "fullExpression": "@local.workshop_id != \"w_self_care\" && @local.workshop_id != \"w_celebrate\"",
+                "fullExpression": "@local.workshop_id != \"w_self_care\" && @local.workshop_id != \"w_celebrate\" && @local.workshop_id != \"w_learn\"",
+                "matchedExpression": "@local.workshop_id",
+                "type": "local",
+                "fieldName": "workshop_id"
+              },
+              {
+                "fullExpression": "@local.workshop_id != \"w_self_care\" && @local.workshop_id != \"w_celebrate\" && @local.workshop_id != \"w_learn\"",
                 "matchedExpression": "@local.workshop_id",
                 "type": "local",
                 "fieldName": "workshop_id"
@@ -717,6 +723,7 @@
           },
           "_dynamicDependencies": {
             "@local.workshop_id": [
+              "condition",
               "condition",
               "condition"
             ]
