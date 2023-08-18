@@ -8,7 +8,9 @@
       "name": "text_top",
       "value": "Sit with your teen and choose:\n* How could a person feel when someone they love passes away?\n* How do you feel now?",
       "_translations": {
-        "value": {}
+        "value": {
+          "tz_sw": true
+        }
       },
       "_nested_name": "text_top"
     },

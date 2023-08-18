@@ -450,11 +450,15 @@
       "audio_asset": "plh_audio/topic_intros/w_srh_intro.mp3",
       "intro_text": "Teenagers go through a lot of changes, both in their bodies and in how they feel and experience the world. By speaking with them you can help them handle this change as well. \n\nLet your teen know you may not have all the answers, but you are there to support them and find solutions together. That way your teen knows you are there to listen and talk. You will not judge or shame them and can support them to make healthy and confident decisions.",
       "_translations": {
-        "intro_text": {},
+        "intro_text": {
+          "tz_sw": true
+        },
         "text": {
           "tz_sw": true
         },
-        "script": {},
+        "script": {
+          "tz_sw": true
+        },
         "title": {
           "tz_sw": true
         },
@@ -492,7 +496,9 @@
         "intro_text": {
           "tz_sw": true
         },
-        "script": {},
+        "script": {
+          "tz_sw": true
+        },
         "title": {
           "tz_sw": true
         },
@@ -527,7 +533,9 @@
           "tz_sw": true
         },
         "intro_nav_button_completed": {},
-        "script": {},
+        "script": {
+          "tz_sw": true
+        },
         "title": {
           "tz_sw": true
         }
@@ -560,7 +568,9 @@
         "intro_text": {
           "tz_sw": true
         },
-        "script": {},
+        "script": {
+          "tz_sw": true
+        },
         "title": {
           "tz_sw": true
         },

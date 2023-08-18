@@ -9,7 +9,9 @@
       "name": "happy",
       "text": "Happy",
       "_translations": {
-        "text": {}
+        "text": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "text": {
@@ -52,7 +54,9 @@
       "name": "loved",
       "text": "Loved",
       "_translations": {
-        "text": {}
+        "text": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "text": {
@@ -80,7 +84,9 @@
       "name": "brave",
       "text": "Brave",
       "_translations": {
-        "text": {}
+        "text": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "text": {
@@ -93,7 +99,9 @@
       "name": "lost",
       "text": "Lost",
       "_translations": {
-        "text": {}
+        "text": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "text": {
@@ -121,7 +129,9 @@
       "name": "shocked",
       "text": "Shocked",
       "_translations": {
-        "text": {}
+        "text": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "text": {
@@ -134,7 +144,9 @@
       "name": "guilty",
       "text": "Guilty",
       "_translations": {
-        "text": {}
+        "text": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "text": {
@@ -147,7 +159,9 @@
       "name": "numb",
       "text": "Numb",
       "_translations": {
-        "text": {}
+        "text": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "text": {

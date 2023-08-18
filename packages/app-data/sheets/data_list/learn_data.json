@@ -14,7 +14,9 @@
       "part_4": "sex_talk_age",
       "title": "Other parents’ questions",
       "_translations": {
-        "title": {},
+        "title": {
+          "tz_sw": true
+        },
         "intro_text": {
           "tz_sw": true
         }
@@ -45,7 +47,9 @@
         "title": {
           "tz_sw": true
         },
-        "intro_text": {}
+        "intro_text": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -67,7 +71,9 @@
         "title": {
           "tz_sw": true
         },
-        "intro_text": {}
+        "intro_text": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -109,8 +115,12 @@
       "workshop": "w_grief",
       "title": "Name your feelings",
       "_translations": {
-        "title": {},
-        "intro_text": {}
+        "title": {
+          "tz_sw": true
+        },
+        "intro_text": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "title": {
