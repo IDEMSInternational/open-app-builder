@@ -1,5 +1,6 @@
 # Round button
 
+A round button is an interactive element with a circular appearance. It is used to trigger actions, such as navigating through different screens or menus, or initiating specific operations within the app. Round buttons can have different colours, sizes, and even icons within them to provide visual cues about their functionality.
 ## Example
 
 | type        | name                                      |parameter_list |
