@@ -32,6 +32,14 @@
           "tz_sw": true
         }
       }
+    },
+    {
+      "type": "declare_global_constant",
+      "name": "chance_try",
+      "value": "Did you have a chance to try",
+      "_translations": {
+        "value": {}
+      }
     }
   ],
   "_xlsxPath": "global/data/in_week_message_globals.xlsx"

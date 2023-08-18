@@ -142,7 +142,7 @@
                     },
                     {
                       "name": "question_text_done",
-                      "value": "Did you have a chance to try @local.title?",
+                      "value": "@global.chance_try @local.title?",
                       "_translations": {
                         "value": {}
                       },
@@ -151,7 +151,13 @@
                       "_dynamicFields": {
                         "value": [
                           {
-                            "fullExpression": "Did you have a chance to try @local.title?",
+                            "fullExpression": "@global.chance_try @local.title?",
+                            "matchedExpression": "@global.chance_try",
+                            "type": "global",
+                            "fieldName": "chance_try"
+                          },
+                          {
+                            "fullExpression": "@global.chance_try @local.title?",
                             "matchedExpression": "@local.title",
                             "type": "local",
                             "fieldName": "title"
@@ -159,6 +165,9 @@
                         ]
                       },
                       "_dynamicDependencies": {
+                        "@global.chance_try": [
+                          "value"
+                        ],
                         "@local.title": [
                           "value"
                         ]

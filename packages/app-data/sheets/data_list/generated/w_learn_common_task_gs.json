@@ -150,24 +150,6 @@
         }
       },
       "template": "w_learn_ending"
-    },
-    {
-      "id": "hp_review",
-      "individual": true,
-      "together": true,
-      "priority": 91,
-      "icon_asset": "@data.mode.hp_review.icon_asset",
-      "has_single_task": true,
-      "title": "@global.hp_review",
-      "_translations": {
-        "title": {}
-      },
-      "_translatedFields": {
-        "title": {
-          "eng": "@global.hp_review"
-        }
-      },
-      "template": "w_learn_hp_review"
     }
   ]
 }

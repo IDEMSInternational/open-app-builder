@@ -154,7 +154,6 @@
     },
     {
       "operation": "append_columns",
-      "input_source": "common_workshop_task_gs",
       "output_target": "w_learn_common_task_gs",
       "args_list": [
         "template: w_learn_@row.id"
