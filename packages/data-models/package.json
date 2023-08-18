@@ -5,12 +5,8 @@
   "files": [
     "dist"
   ],
-  "main": "dist/index.js",
-  "types": "./dist/index.d.ts",
-  "scripts": {
-    "build": "tsc -b",
-    "serve": "tsc -w"
-  },
+  "main": "./index.ts",
+  "types": "./index.ts",
   "dependencies": {
     "clone": "^2.1.2"
   },
