@@ -74,13 +74,15 @@ export async function listGdriveFolder(drive: drive_v3.Drive, folderId: string) 
       fields: `nextPageToken, files(${FILE_META_FIELD_LIST})`,
     })
     .catch((error) => {
-      const errData = (error as any)?.response?.data?.error;
-      logError({
-        msg1: `File list failed for folder: '${folderId}'`,
-        msg2: `query: '${folderId}' in parents and trashed=false`,
-        error: errData,
-      });
-      process.exit(1);
+      return { data: { error } };
     });
-  return res.data.files || [];
+  // errors may still return 200 response, so manually throw
+  const { files, error } = res.data as any;
+  if (error) {
+    logError({
+      msg1: `File list failed for folder: '${folderId}'`,
+      msg2: error,
+    });
+  }
+  return files || [];
 }
