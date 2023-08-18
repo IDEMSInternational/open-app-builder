@@ -1201,7 +1201,7 @@
           "eng": "Well done for spending time together! That is how your relationship will get stronger and you will help your teen learn important skills for life."
         },
         "reply_ok": {
-          "eng": "Good that you tried the activity! It can take some time for everyone to get used to new things. Try it again tomorrow - spending time together sets your teen up for success in life!"
+          "eng": "Good that you tried the activity! It can take some time for everyone to get used to new things. Try it again tomorrow – spending time together sets your teen up for success in life!"
         },
         "reply_sad": {
           "eng": "Sorry that things did not go as you hoped. Try this or another activity again next time you have a few minutes to spare. The fact that you are here shows you want the best for your teen!"
@@ -1224,7 +1224,7 @@
       },
       "reply_no": "That’s okay, hopefully you can try it soon and see how it turns out.",
       "reply_happy": "Well done for spending time together! That is how your relationship will get stronger and you will help your teen learn important skills for life.",
-      "reply_ok": "Good that you tried the activity! It can take some time for everyone to get used to new things. Try it again tomorrow - spending time together sets your teen up for success in life!",
+      "reply_ok": "Good that you tried the activity! It can take some time for everyone to get used to new things. Try it again tomorrow – spending time together sets your teen up for success in life!",
       "reply_sad": "Sorry that things did not go as you hoped. Try this or another activity again next time you have a few minutes to spare. The fact that you are here shows you want the best for your teen!",
       "outro_text": "Well done for trying one of the activities! Remember that these activities can be done many times and this will support your teen’s development and learning.",
       "activity_title": "@global.hp_review",

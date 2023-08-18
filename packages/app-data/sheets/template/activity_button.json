@@ -133,6 +133,7 @@
         "value": {}
       },
       "condition": "!!(@fields.@local.click_history_field_name)",
+      "exclude_from_translation": true,
       "type": "set_variable",
       "_nested_name": "click_history_value",
       "_dynamicFields": {
@@ -254,6 +255,7 @@
         "value": {}
       },
       "condition": "!!(@fields.@local.toggle_history_field_name)",
+      "exclude_from_translation": true,
       "type": "set_variable",
       "_nested_name": "toggle_history_value",
       "_dynamicFields": {

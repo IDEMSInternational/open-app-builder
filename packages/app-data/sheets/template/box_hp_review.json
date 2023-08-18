@@ -76,10 +76,6 @@
     {
       "type": "text",
       "name": "text_done",
-      "value": "text_done",
-      "_translations": {
-        "value": {}
-      },
       "exclude_from_translation": true,
       "_nested_name": "text_done"
     },
