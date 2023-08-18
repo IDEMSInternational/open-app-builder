@@ -19,8 +19,12 @@
         "intro_text": {
           "tz_sw": true
         },
-        "steps_text": {},
-        "tips_text": {}
+        "steps_text": {
+          "tz_sw": true
+        },
+        "tips_text": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -102,8 +106,12 @@
         "intro_text": {
           "tz_sw": true
         },
-        "steps_text": {},
-        "tips_text": {}
+        "steps_text": {
+          "tz_sw": true
+        },
+        "tips_text": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -256,7 +264,9 @@
         "intro_text": {
           "tz_sw": true
         },
-        "steps_text": {},
+        "steps_text": {
+          "tz_sw": true
+        },
         "tips_text": {
           "tz_sw": true
         }
@@ -289,8 +299,12 @@
       "title": "Find the pair",
       "_translations": {
         "title": {},
-        "intro_text": {},
-        "resources_text": {},
+        "intro_text": {
+          "tz_sw": true
+        },
+        "resources_text": {
+          "tz_sw": true
+        },
         "steps_text": {
           "tz_sw": true
         },
@@ -348,7 +362,9 @@
         "steps_text": {
           "tz_sw": true
         },
-        "tips_text": {}
+        "tips_text": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -431,11 +447,15 @@
         "title": {
           "tz_sw": true
         },
-        "intro_text": {},
+        "intro_text": {
+          "tz_sw": true
+        },
         "steps_text": {
           "tz_sw": true
         },
-        "tips_text": {}
+        "tips_text": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -470,8 +490,12 @@
         "intro_text": {
           "tz_sw": true
         },
-        "steps_text": {},
-        "tips_text": {}
+        "steps_text": {
+          "tz_sw": true
+        },
+        "tips_text": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -546,7 +570,9 @@
         "intro_text": {
           "tz_sw": true
         },
-        "steps_text": {},
+        "steps_text": {
+          "tz_sw": true
+        },
         "tips_text": {
           "tz_sw": true
         }
@@ -584,7 +610,9 @@
         "intro_text": {
           "tz_sw": true
         },
-        "steps_text": {},
+        "steps_text": {
+          "tz_sw": true
+        },
         "tips_text": {
           "tz_sw": true
         }
@@ -622,7 +650,9 @@
         "intro_text": {
           "tz_sw": true
         },
-        "steps_text": {},
+        "steps_text": {
+          "tz_sw": true
+        },
         "tips_text": {
           "tz_sw": true
         }

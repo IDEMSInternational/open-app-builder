@@ -69,7 +69,9 @@
                       "name": "text_1",
                       "value": "Discuss the @data.workshop.w_svp.in_text_title with your teens. \n\nYou can even do the activities on warning signs and how to use our voice and body together. \n\nIt can be hard to talk about these topics together, but it will give your teen skills for situations when they need it most. You can do it!",
                       "_translations": {
-                        "value": {}
+                        "value": {
+                          "tz_sw": true
+                        }
                       },
                       "type": "set_variable",
                       "_nested_name": "home_practice.workshop_activity.content_box.box_1.text_1",

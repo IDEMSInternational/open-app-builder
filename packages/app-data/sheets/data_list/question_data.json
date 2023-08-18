@@ -12,7 +12,9 @@
         "question_text": {
           "tz_sw": true
         },
-        "option_1": {},
+        "option_1": {
+          "tz_sw": true
+        },
         "option_2": {
           "tz_sw": true
         },
@@ -550,8 +552,12 @@
       "workshop": "w_grief",
       "question_text": "How did @global.w_grief_male_caregiver_1’s response make @global.w_grief_teen_girl_1 feel?",
       "_translations": {
-        "question_text": {},
-        "reply_all": {}
+        "question_text": {
+          "tz_sw": true
+        },
+        "reply_all": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "question_text": {
@@ -568,12 +574,24 @@
       "workshop": "w_grief",
       "question_text": "What could @global.w_grief_male_caregiver_1 have done differently?",
       "_translations": {
-        "question_text": {},
-        "option_1": {},
-        "option_2": {},
-        "option_3": {},
-        "option_4": {},
-        "reply_all": {}
+        "question_text": {
+          "tz_sw": true
+        },
+        "option_1": {
+          "tz_sw": true
+        },
+        "option_2": {
+          "tz_sw": true
+        },
+        "option_3": {
+          "tz_sw": true
+        },
+        "option_4": {
+          "tz_sw": true
+        },
+        "reply_all": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "question_text": {
@@ -606,10 +624,18 @@
       "workshop": "w_grief",
       "question_text": "How did @global.w_grief_teen_girl_1 and @global.w_grief_male_caregiver_1 feel after talking?",
       "_translations": {
-        "question_text": {},
-        "option_1": {},
-        "option_2": {},
-        "option_3": {}
+        "question_text": {
+          "tz_sw": true
+        },
+        "option_1": {
+          "tz_sw": true
+        },
+        "option_2": {
+          "tz_sw": true
+        },
+        "option_3": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "question_text": {
@@ -634,11 +660,21 @@
       "workshop": "w_grief",
       "question_text": "What could have happened if @global.w_grief_male_caregiver_1 got angry at @global.w_grief_teen_girl_1 when she shared that she was feeling angry?",
       "_translations": {
-        "question_text": {},
-        "option_1": {},
-        "option_2": {},
-        "option_3": {},
-        "reply_all": {}
+        "question_text": {
+          "tz_sw": true
+        },
+        "option_1": {
+          "tz_sw": true
+        },
+        "option_2": {
+          "tz_sw": true
+        },
+        "option_3": {
+          "tz_sw": true
+        },
+        "reply_all": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "question_text": {
