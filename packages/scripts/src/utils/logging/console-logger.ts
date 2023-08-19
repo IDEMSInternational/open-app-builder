@@ -40,7 +40,6 @@ export function logWarning(opts: Partial<ILogOptions> = {}) {
 
 /** Record a 2-line error message in a box with additional optional logging and exit */
 function logError(opts: Partial<ILogOptions> = {}) {
-  console.log("log error", opts);
   const { msg1, msg2, error, logOnly } = { ...defaultLog, ...opts };
   console.log(
     boxen(`${chalk.red(msg1)}\n\n${chalk.yellow(msg2)}`, {

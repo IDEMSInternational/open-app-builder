@@ -65,20 +65,22 @@ describe("App Data Converter - Error Checking", () => {
     outputFolder: path.resolve(SCRIPTS_TEST_DATA_DIR, "output", "errorChecking"),
     cacheFolder: path.resolve(SCRIPTS_TEST_DATA_DIR, "cache"),
   };
-  const errorConverter = new AppDataConverter(errorPaths);
+  let errorConverter: AppDataConverter;
   beforeAll(() => {
     if (existsSync(paths.outputFolder)) {
       emptyDirSync(paths.outputFolder);
     }
   });
+  beforeEach(() => {
+    errorConverter = new AppDataConverter(errorPaths);
+  });
   it("Tracks number of conversion errors", async () => {
-    const errorConverter = new AppDataConverter(errorPaths);
     const { errors } = await errorConverter.run();
     expect(errors.length).toBeGreaterThan(0);
   });
   it("Throws on duplicate flows", async () => {
     await errorConverter.run().catch((err) => {
-      expect(err.message.includes("Duplicate flows found"));
+      expect(err.message.includes("Duplicate flows found")).toBeTrue();
     });
   });
 });
