@@ -11,7 +11,7 @@ import { JsonFileCache } from "./cacheStrategy/jsonFile";
 import {
   generateFolderFlatMap,
   IContentsEntry,
-  createChildLogger,
+  createChildFileLogger,
   logSheetsSummary,
   getLogs,
   Logger,
@@ -59,7 +59,7 @@ export class AppDataConverter {
 
   public activeDeployment = ActiveDeployment.get();
 
-  public logger = createChildLogger({ source: "converter" });
+  public logger = createChildFileLogger({ source: "converter" });
 
   cache: JsonFileCache;
 
@@ -199,12 +199,6 @@ export class AppDataConverter {
         );
 
         fs.ensureDirSync(path.dirname(flowOutputPath));
-        if (fs.existsSync(flowOutputPath)) {
-          this.logger.error({
-            message: "Duplicate flows found",
-            details: [flow, fs.readJsonSync(flowOutputPath)],
-          });
-        }
         // ensure newline characters are standardised (i.e. replace "\r\n" with "\n")
         fs.writeFileSync(flowOutputPath, standardiseNewlines(JSON.stringify(flow, null, 2)));
       });
