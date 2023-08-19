@@ -4,7 +4,7 @@ import { IDeploymentConfigJson } from "scripts/src/commands/deployment/common";
 import type { ITasks } from "scripts/src/tasks";
 
 export interface IWorkflowContext {
-  [step_name: string]: { output: any };
+  [step_name: string]: IWorkflowStep & { output: any };
 }
 
 interface IWorkflowStep {
