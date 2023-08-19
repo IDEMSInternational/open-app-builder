@@ -4,13 +4,13 @@ import path from "path";
 import PQueue from "p-queue";
 import { Logger } from "winston";
 import { IConverterPaths } from "../types";
-import { IContentsEntry, createChildLogger } from "../utils";
+import { IContentsEntry, createChildFileLogger } from "../utils";
 import { JsonFileCache } from "../cacheStrategy/jsonFile";
 import chalk from "chalk";
 
 class BaseProcessor<T = any, V = any> {
   /** Used to invalidate cache */
-  public cacheVersion = 20221026.0;
+  public cacheVersion = 20230818.0;
 
   public logger: Logger;
 
@@ -28,7 +28,7 @@ class BaseProcessor<T = any, V = any> {
    */
   constructor(public context: { namespace: string; paths: IConverterPaths }) {
     const { namespace } = context;
-    this.logger = createChildLogger({ source: namespace });
+    this.logger = createChildFileLogger({ source: namespace });
     this.setupCache();
   }
   /**
