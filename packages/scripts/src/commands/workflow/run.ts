@@ -119,21 +119,28 @@ export class WorkflowRunnerClass {
   /**
    * Generate a child commander instance that can dynamically parse options as defined
    * within a workflow
+   * @param options list of arg options to use in the workflow, e.g. {flag: 's, --skip-download'}
+   * @param args string array to be evaluated from options, e.g. ['--skip-download'] => {skipDownload: true}
    */
   private parseWorkflowOptions(options: IWorkflow["options"] = [], args: string[]) {
     let parsedOptions: { [name: string]: string | boolean } = {};
     const subProgram = new Command().allowUnknownOption();
+    // create a dynamic list of cli options using those listed in the workflow
     for (const option of options) {
       const { flags, description, defaultValue } = option;
       subProgram.option(flags, description, defaultValue);
     }
+    // add a default workflow action, so that when triggered the included parsed command
+    // options are stored as a variable for return
     subProgram.action((cmdOptions) => {
       parsedOptions = cmdOptions;
     });
     if (args.find((arg) => ["--help", "h"].includes(arg))) {
       logProgramHelp(subProgram);
     }
-    // when passing options include 2 placeholder system options (as will be sliced out)
+    // run the command with args parsed. Include 2 additional placeholder args
+    // as these will be sliced out during processing. This will trigger the action above
+    // and use commander's parsing methods to process the args list
     const [sysArg1, sysArg2] = process.argv;
     subProgram.parse([sysArg1, sysArg2, ...args]);
     return parsedOptions;
