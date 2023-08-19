@@ -84,7 +84,7 @@ export class WorkflowRunnerClass {
     if (workflow.options) {
       this.activeWorkflowOptions = {
         ...this.activeWorkflowOptions,
-        ...this.parseWorkflowOptions(workflow.options),
+        ...this.parseWorkflowOptions(workflow.options, args),
       };
     }
     return this.executeWorkflow(workflow, workflowArgs);
@@ -120,20 +120,22 @@ export class WorkflowRunnerClass {
    * Generate a child commander instance that can dynamically parse options as defined
    * within a workflow
    */
-  private parseWorkflowOptions(options: IWorkflow["options"] = []) {
+  private parseWorkflowOptions(options: IWorkflow["options"] = [], args: string[]) {
     let parsedOptions: { [name: string]: string | boolean } = {};
     const subProgram = new Command().allowUnknownOption();
     for (const option of options) {
       const { flags, description, defaultValue } = option;
       subProgram.option(flags, description, defaultValue);
     }
-    subProgram.action((o) => {
-      parsedOptions = o;
+    subProgram.action((cmdOptions) => {
+      parsedOptions = cmdOptions;
     });
-    if (process.argv.find((arg) => ["--help", "h"].includes(arg))) {
+    if (args.find((arg) => ["--help", "h"].includes(arg))) {
       logProgramHelp(subProgram);
     }
-    subProgram.parse(process.argv);
+    // when passing options include 2 placeholder system options (as will be sliced out)
+    const [sysArg1, sysArg2] = process.argv;
+    subProgram.parse([sysArg1, sysArg2, ...args]);
     return parsedOptions;
   }
 
