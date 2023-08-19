@@ -22,10 +22,10 @@ export class FlowParserProcessor extends BaseProcessor<FlowTypes.FlowTypeWithDat
   } = {};
 
   /**
-   * Additional hashmap for use in tracking flow duplicates
+   * Additional hashmap with full flow data (not just rows), for use in tracking flow duplicates
    * (could use processedFlowHashmap but would require refactor to retain _xlsx path as well as rows)
    */
-  private flowDuplicates: {
+  public processedFlowHashmapWithMeta: {
     [flowType in FlowTypes.FlowType]?: { [flow_name: string]: FlowTypes.FlowTypeWithData };
   } = {};
 
@@ -65,9 +65,9 @@ export class FlowParserProcessor extends BaseProcessor<FlowTypes.FlowTypeWithDat
     const { flow_name, flow_type, _xlsxPath } = flow;
     if (!this.processedFlowHashmap[flow_type]) {
       this.processedFlowHashmap[flow_type] = {};
-      this.flowDuplicates[flow_type] = {};
+      this.processedFlowHashmapWithMeta[flow_type] = {};
     }
-    const duplicateFlow = this.flowDuplicates[flow_type][flow_name];
+    const duplicateFlow = this.processedFlowHashmapWithMeta[flow_type][flow_name];
     if (duplicateFlow) {
       this.logger.error({
         message: "Duplicate flow name",
@@ -75,7 +75,7 @@ export class FlowParserProcessor extends BaseProcessor<FlowTypes.FlowTypeWithDat
       });
     }
     this.processedFlowHashmap[flow_type][flow_name] = flow.rows;
-    this.flowDuplicates[flow_type][flow_name] = flow;
+    this.processedFlowHashmapWithMeta[flow_type][flow_name] = flow;
   }
 
   /**

@@ -10,6 +10,10 @@ const paths = {
   SHEETS_INPUT_FOLDER: path.resolve(testDataDir, "input"),
   SHEETS_OUTPUT_FOLDER: path.resolve(testDataDir, "output"),
 };
+// Export method to allow use in parser-specific tests (to test on multiple instances of a flow type)
+export function getTestFlowParserProcessor() {
+  return new FlowParserProcessor(paths);
+}
 
 // NOTE - inputs are just to test general structure and not run actual parser code
 const testInputs: FlowTypes.FlowTypeWithData[] = [
@@ -44,7 +48,7 @@ const testInputs: FlowTypes.FlowTypeWithData[] = [
 let processor: FlowParserProcessor;
 describe("FlowParser Processor", () => {
   beforeAll(() => {
-    processor = new FlowParserProcessor(paths);
+    processor = getTestFlowParserProcessor();
     processor.cache.clear();
   });
   beforeEach(() => {
@@ -107,7 +111,7 @@ describe("FlowParser Processor", () => {
 /** Additional tests for data pipe integration */
 describe("FlowParser Processor - Data Pipes", () => {
   beforeAll(() => {
-    processor = new FlowParserProcessor(paths);
+    processor = getTestFlowParserProcessor();
     processor.cache.clear();
   });
   beforeEach(() => {
