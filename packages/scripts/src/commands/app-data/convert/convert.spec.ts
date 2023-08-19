@@ -53,14 +53,9 @@ describe("App Data Converter", () => {
     const errors = getLogs("error");
     const errorMessages = errors.map((err) => err.message);
     expect(errorMessages).toEqual([
+      "Duplicate flow name",
       "No parser available for flow_type: test_invalid_type",
-      "Duplicate flows found",
     ]);
-  });
-  it("Throws on duplicate flows", async () => {
-    await converter.run().catch((err) => {
-      expect(err.message.includes("Duplicate flows found"));
-    });
   });
 });
 
