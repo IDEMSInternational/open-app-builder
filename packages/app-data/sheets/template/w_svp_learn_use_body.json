@@ -230,6 +230,54 @@
       }
     },
     {
+      "name": "outro_habit",
+      "value": "@local.row_data.outro_habit",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "outro_habit",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@local.row_data.outro_habit",
+            "matchedExpression": "@local.row_data.outro_habit",
+            "type": "local",
+            "fieldName": "row_data"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.row_data.outro_habit": [
+          "value"
+        ]
+      }
+    },
+    {
+      "name": "outro_habit_concat",
+      "value": "habit.@local.outro_habit",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "outro_habit_concat",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "habit.@local.outro_habit",
+            "matchedExpression": "@local.outro_habit",
+            "type": "local",
+            "fieldName": "outro_habit"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.outro_habit": [
+          "value"
+        ]
+      }
+    },
+    {
       "type": "template",
       "name": "learn",
       "value": "learn_temp",
@@ -284,7 +332,7 @@
             },
             {
               "name": "outro_habit_data",
-              "value": "@data.habit.safe_self",
+              "value": "@data.@local.outro_habit_concat",
               "_translations": {
                 "value": {}
               },
@@ -293,24 +341,42 @@
               "_dynamicFields": {
                 "value": [
                   {
-                    "fullExpression": "@data.habit.safe_self",
-                    "matchedExpression": "@data.habit.safe_self",
-                    "type": "data",
-                    "fieldName": "habit"
+                    "fullExpression": "@data.@local.outro_habit_concat",
+                    "matchedExpression": "@local.outro_habit_concat",
+                    "type": "local",
+                    "fieldName": "outro_habit_concat"
                   }
                 ]
               },
               "_dynamicDependencies": {
-                "@data.habit.safe_self": [
+                "@local.outro_habit_concat": [
                   "value"
                 ]
               }
             },
             {
               "name": "include_outro",
-              "value": true,
+              "value": "!!@local.outro_habit",
+              "_translations": {
+                "value": {}
+              },
               "type": "set_variable",
-              "_nested_name": "learn.workshop_activity.include_outro"
+              "_nested_name": "learn.workshop_activity.include_outro",
+              "_dynamicFields": {
+                "value": [
+                  {
+                    "fullExpression": "!!@local.outro_habit",
+                    "matchedExpression": "!@local.outro_habit",
+                    "type": "local",
+                    "fieldName": "outro_habit"
+                  }
+                ]
+              },
+              "_dynamicDependencies": {
+                "!@local.outro_habit": [
+                  "value"
+                ]
+              }
             },
             {
               "type": "nested_properties",

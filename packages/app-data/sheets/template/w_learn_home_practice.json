@@ -1,0 +1,101 @@
+{
+  "flow_type": "template",
+  "module": "w_learn",
+  "flow_name": "w_learn_home_practice",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "home_practice",
+      "value": "home_practice",
+      "action_list": [
+        {
+          "trigger": "completed",
+          "action_id": "emit",
+          "args": [
+            "completed"
+          ],
+          "_raw": "completed | emit:completed",
+          "_cleaned": "completed | emit:completed"
+        },
+        {
+          "trigger": "uncompleted",
+          "action_id": "emit",
+          "args": [
+            "uncompleted"
+          ],
+          "_raw": "uncompleted | emit:uncompleted",
+          "_cleaned": "uncompleted | emit:uncompleted"
+        }
+      ],
+      "rows": [
+        {
+          "name": "workshop_data",
+          "value": "@data.workshop.w_learn",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "home_practice.workshop_data",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@data.workshop.w_learn",
+                "matchedExpression": "@data.workshop.w_learn",
+                "type": "data",
+                "fieldName": "workshop"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@data.workshop.w_learn": [
+              "value"
+            ]
+          }
+        },
+        {
+          "type": "nested_properties",
+          "name": "workshop_activity",
+          "rows": [
+            {
+              "name": "intro_text",
+              "value": "Small actions make a big difference. Helping your teen learn can be stressful. But making your daily activities fun and doing them together is a great way to help your teen’s development and education.",
+              "_translations": {
+                "value": {}
+              },
+              "type": "set_variable",
+              "_nested_name": "home_practice.workshop_activity.intro_text"
+            },
+            {
+              "type": "nested_properties",
+              "name": "content_box",
+              "rows": [
+                {
+                  "type": "nested_properties",
+                  "name": "box_1",
+                  "value": "box_w_learn_home_practice",
+                  "rows": [
+                    {
+                      "name": "text_1",
+                      "value": "Here are some activities you and your teen can try at home. These activities were made with caregivers of teens like yourself, and are a great way to make learning fun.",
+                      "_translations": {
+                        "value": {}
+                      },
+                      "type": "set_variable",
+                      "_nested_name": "home_practice.workshop_activity.content_box.box_1.text_1"
+                    }
+                  ],
+                  "_nested_name": "home_practice.workshop_activity.content_box.box_1"
+                }
+              ],
+              "_nested_name": "home_practice.workshop_activity.content_box"
+            }
+          ],
+          "_nested_name": "home_practice.workshop_activity"
+        }
+      ],
+      "_nested_name": "home_practice"
+    }
+  ],
+  "_xlsxPath": "global/top_templates/workshop_templates/workshop_learn.xlsx"
+}

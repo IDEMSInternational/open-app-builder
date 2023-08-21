@@ -2,6 +2,61 @@
   "flow_type": "data_list",
   "flow_name": "w_learn_specific_task_gs",
   "status": "released",
-  "rows": [],
+  "rows": [
+    {
+      "id": "read_learn_conflict",
+      "individual": true,
+      "together": true,
+      "priority": 11,
+      "icon_asset": "@data.mode.read.icon_asset",
+      "story_id": "learn_conflict",
+      "has_single_task": false,
+      "title": "@data.story.learn_conflict.title",
+      "_translations": {
+        "title": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "@data.story.learn_conflict.title"
+        }
+      }
+    },
+    {
+      "id": "read_learn_support",
+      "individual": true,
+      "together": true,
+      "priority": 13,
+      "icon_asset": "@data.mode.read.icon_asset",
+      "story_id": "learn_support",
+      "has_single_task": false,
+      "title": "@data.story.learn_support.title",
+      "_translations": {
+        "title": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "@data.story.learn_support.title"
+        }
+      }
+    },
+    {
+      "id": "learn_activity_ideas",
+      "individual": true,
+      "together": true,
+      "priority": 15,
+      "icon_asset": "@data.mode.learn.icon_asset",
+      "has_single_task": true,
+      "template": "w_learn_learn_activity_ideas",
+      "title": "@data.learn.activity_ideas.title",
+      "_translations": {
+        "title": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "@data.learn.activity_ideas.title"
+        }
+      }
+    }
+  ],
   "_xlsxPath": "global/data/workshop_data/workshop_task_groups.xlsx"
 }

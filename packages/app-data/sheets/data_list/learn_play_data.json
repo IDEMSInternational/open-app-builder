@@ -6,6 +6,7 @@
   "rows": [
     {
       "id": "chores",
+      "number": 1,
       "group": "everyday",
       "icon_asset": "plh_images/parent_centre/ltp_activities/chores_icon.svg",
       "image_asset": "plh_images/parent_centre/ltp_activities/chores.svg",
@@ -18,8 +19,12 @@
         "intro_text": {
           "tz_sw": true
         },
-        "steps_text": {},
-        "tips_text": {}
+        "steps_text": {
+          "tz_sw": true
+        },
+        "tips_text": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -41,6 +46,7 @@
     },
     {
       "id": "bao",
+      "number": 2,
       "group": "games",
       "icon_asset": "plh_images/parent_centre/ltp_activities/bao_icon.svg",
       "image_asset": "plh_images/parent_centre/ltp_activities/bao.svg",
@@ -87,6 +93,7 @@
     },
     {
       "id": "walk",
+      "number": 3,
       "group": "everyday",
       "icon_asset": "plh_images/parent_centre/ltp_activities/walk_icon.svg",
       "image_asset": "plh_images/parent_centre/ltp_activities/walk.svg",
@@ -99,8 +106,12 @@
         "intro_text": {
           "tz_sw": true
         },
-        "steps_text": {},
-        "tips_text": {}
+        "steps_text": {
+          "tz_sw": true
+        },
+        "tips_text": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -122,6 +133,7 @@
     },
     {
       "id": "cook_traditional",
+      "number": 4,
       "group": "everyday",
       "icon_asset": "plh_images/parent_centre/ltp_activities/cook_traditional_icon.svg",
       "image_asset": "plh_images/parent_centre/ltp_activities/cook_traditional.svg",
@@ -147,18 +159,19 @@
           "eng": "Cooking traditional @global.regional food with your teen is a great way to connect, learn new skills, and share stories about your culture."
         },
         "steps_text": {
-          "eng": "1. Choose a recipe. Find a traditional recipe that you and your teen would like to prepare. You can also ask friends and family for their favourites.\n2. Gather ingredients. Ask your teen to help you get all the necessary ingredients and materials. \n3. Clean and prepare the cooking area. Make sure the kitchen area is clean and tidy before you start cooking. Teach your teen to wash their hands thoroughly when working with food.\n4. Enjoy the meal. Eat the meal you prepared together! Talk about the flavours and textures of the food and share stories about traditional food in your culture.\n5. Clean up. Once you have finished eating, clean up the cooking area together."
+          "eng": "1. Choose a recipe: Find a traditional recipe that you and your teen would like to prepare. You can also ask friends and family for their favourites.\n2. Gather ingredients: Ask your teen to help you get all the necessary ingredients and materials. \n3. Clean and prepare the cooking area: Make sure the kitchen area is clean and tidy before you start cooking. Teach your teen to wash their hands thoroughly when working with food.\n4. Enjoy the meal: Eat the meal you prepared together! Talk about the flavours and textures of the food and share stories about traditional food in your culture.\n5. Clean up: Once you have finished eating, clean up the cooking area together."
         },
         "tips_text": {
           "eng": "* Plan with your teen: Ask your teen in the morning if they can help you with the cooking tonight. This gives them time to plan their school work and time with friends.\n* Involve them: Tell them what you are cooking tonight and ask them if they know the ingredients. \n* Clear tasks: Ask your teen to chop the food or check the heat of the pots. They will be more interested if they help you and not only watch you cook.\n* Make it regular: Ask them to help you with the cooking more and let them try different jobs like chopping different vegetables or starting a fire."
         }
       },
       "intro_text": "Cooking traditional @global.regional food with your teen is a great way to connect, learn new skills, and share stories about your culture.",
-      "steps_text": "1. Choose a recipe. Find a traditional recipe that you and your teen would like to prepare. You can also ask friends and family for their favourites.\n2. Gather ingredients. Ask your teen to help you get all the necessary ingredients and materials. \n3. Clean and prepare the cooking area. Make sure the kitchen area is clean and tidy before you start cooking. Teach your teen to wash their hands thoroughly when working with food.\n4. Enjoy the meal. Eat the meal you prepared together! Talk about the flavours and textures of the food and share stories about traditional food in your culture.\n5. Clean up. Once you have finished eating, clean up the cooking area together.",
+      "steps_text": "1. Choose a recipe: Find a traditional recipe that you and your teen would like to prepare. You can also ask friends and family for their favourites.\n2. Gather ingredients: Ask your teen to help you get all the necessary ingredients and materials. \n3. Clean and prepare the cooking area: Make sure the kitchen area is clean and tidy before you start cooking. Teach your teen to wash their hands thoroughly when working with food.\n4. Enjoy the meal: Eat the meal you prepared together! Talk about the flavours and textures of the food and share stories about traditional food in your culture.\n5. Clean up: Once you have finished eating, clean up the cooking area together.",
       "tips_text": "* Plan with your teen: Ask your teen in the morning if they can help you with the cooking tonight. This gives them time to plan their school work and time with friends.\n* Involve them: Tell them what you are cooking tonight and ask them if they know the ingredients. \n* Clear tasks: Ask your teen to chop the food or check the heat of the pots. They will be more interested if they help you and not only watch you cook.\n* Make it regular: Ask them to help you with the cooking more and let them try different jobs like chopping different vegetables or starting a fire."
     },
     {
       "id": "garden",
+      "number": 5,
       "group": "games",
       "icon_asset": "plh_images/parent_centre/ltp_activities/garden_icon.svg",
       "image_asset": "plh_images/parent_centre/ltp_activities/garden.svg",
@@ -198,6 +211,7 @@
     },
     {
       "id": "charades",
+      "number": 6,
       "group": "games",
       "icon_asset": "plh_images/parent_centre/ltp_activities/charades_icon.svg",
       "image_asset": "plh_images/parent_centre/ltp_activities/charades.svg",
@@ -237,6 +251,7 @@
     },
     {
       "id": "role_play",
+      "number": 7,
       "group": "home",
       "icon_asset": "plh_images/parent_centre/ltp_activities/role_play_icon.svg",
       "image_asset": "plh_images/parent_centre/ltp_activities/role_play.svg",
@@ -249,7 +264,9 @@
         "intro_text": {
           "tz_sw": true
         },
-        "steps_text": {},
+        "steps_text": {
+          "tz_sw": true
+        },
         "tips_text": {
           "tz_sw": true
         }
@@ -273,18 +290,21 @@
       "tips_text": "* Take turns acting different roles. You can also swap roles to see how it changes the situation.\n* Keep the activity fun. It doesn’t always have to be role play about something real. \n* Ask your teen to act as their favourite hero. Ask what they would do if they had super powers for a day."
     },
     {
-      "id": "hide_seek",
+      "id": "find_pair",
+      "number": 8,
       "group": "home",
-      "icon_asset": "plh_images/parent_centre/ltp_activities/hide_seek_icon.svg",
-      "image_asset": "plh_images/parent_centre/ltp_activities/hide_seek.svg",
-      "favourite_field": "ltp_activity_hide_seek_favourite",
-      "title": "Hide and seek (find the pair)",
+      "icon_asset": "plh_images/parent_centre/ltp_activities/find_pair_icon.svg",
+      "image_asset": "plh_images/parent_centre/ltp_activities/find_pair.svg",
+      "favourite_field": "ltp_activity_find_pair_favourite",
+      "title": "Find the pair",
       "_translations": {
-        "title": {
+        "title": {},
+        "intro_text": {
           "tz_sw": true
         },
-        "intro_text": {},
-        "resources_text": {},
+        "resources_text": {
+          "tz_sw": true
+        },
         "steps_text": {
           "tz_sw": true
         },
@@ -297,7 +317,7 @@
       },
       "_translatedFields": {
         "title": {
-          "eng": "Hide and seek (find the pair)"
+          "eng": "Find the pair"
         },
         "intro_text": {
           "eng": "Hide and seek is a fun game that many people played when they were children. \n\nIn this version of the game, you add a challenging twist for your teen."
@@ -323,6 +343,7 @@
     },
     {
       "id": "mystery_box",
+      "number": 9,
       "group": "home",
       "icon_asset": "plh_images/parent_centre/ltp_activities/mystery_box_icon.svg",
       "image_asset": "plh_images/parent_centre/ltp_activities/mystery_box.svg",
@@ -341,7 +362,9 @@
         "steps_text": {
           "tz_sw": true
         },
-        "tips_text": {}
+        "tips_text": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -367,6 +390,7 @@
     },
     {
       "id": "memory_game",
+      "number": 10,
       "group": "home",
       "icon_asset": "plh_images/parent_centre/ltp_activities/memory_game_icon.svg",
       "image_asset": "plh_images/parent_centre/ltp_activities/memory_game.svg",
@@ -413,6 +437,7 @@
     },
     {
       "id": "cook",
+      "number": 11,
       "group": "everyday",
       "icon_asset": "plh_images/parent_centre/ltp_activities/cook_icon.svg",
       "image_asset": "plh_images/parent_centre/ltp_activities/cook.svg",
@@ -422,11 +447,15 @@
         "title": {
           "tz_sw": true
         },
-        "intro_text": {},
+        "intro_text": {
+          "tz_sw": true
+        },
         "steps_text": {
           "tz_sw": true
         },
-        "tips_text": {}
+        "tips_text": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -448,6 +477,7 @@
     },
     {
       "id": "tell_stories",
+      "number": 12,
       "group": "everyday",
       "icon_asset": "plh_images/parent_centre/ltp_activities/tell_stories_icon.svg",
       "image_asset": "plh_images/parent_centre/ltp_activities/tell_stories.svg",
@@ -460,8 +490,12 @@
         "intro_text": {
           "tz_sw": true
         },
-        "steps_text": {},
-        "tips_text": {}
+        "steps_text": {
+          "tz_sw": true
+        },
+        "tips_text": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -483,6 +517,7 @@
     },
     {
       "id": "dance",
+      "number": 13,
       "group": "games",
       "icon_asset": "plh_images/parent_centre/ltp_activities/dance_icon.svg",
       "image_asset": "plh_images/parent_centre/ltp_activities/dance.svg",
@@ -522,6 +557,7 @@
     },
     {
       "id": "short_term_goal",
+      "number": 14,
       "group": "home",
       "icon_asset": "plh_images/parent_centre/ltp_activities/short_term_goal_icon.svg",
       "image_asset": "plh_images/parent_centre/ltp_activities/short_term_goal.svg",
@@ -534,7 +570,9 @@
         "intro_text": {
           "tz_sw": true
         },
-        "steps_text": {},
+        "steps_text": {
+          "tz_sw": true
+        },
         "tips_text": {
           "tz_sw": true
         }
@@ -559,6 +597,7 @@
     },
     {
       "id": "long_term_goal",
+      "number": 15,
       "group": "home",
       "icon_asset": "plh_images/parent_centre/ltp_activities/long_term_goal_icon.svg",
       "image_asset": "plh_images/parent_centre/ltp_activities/long_term_goal.svg",
@@ -571,7 +610,9 @@
         "intro_text": {
           "tz_sw": true
         },
-        "steps_text": {},
+        "steps_text": {
+          "tz_sw": true
+        },
         "tips_text": {
           "tz_sw": true
         }
@@ -596,6 +637,7 @@
     },
     {
       "id": "clean",
+      "number": 16,
       "group": "everyday",
       "icon_asset": "plh_images/parent_centre/ltp_activities/clean_icon.svg",
       "image_asset": "plh_images/parent_centre/ltp_activities/clean.svg",
@@ -608,7 +650,9 @@
         "intro_text": {
           "tz_sw": true
         },
-        "steps_text": {},
+        "steps_text": {
+          "tz_sw": true
+        },
         "tips_text": {
           "tz_sw": true
         }
@@ -633,8 +677,9 @@
     },
     {
       "id": "reflect_positive",
-      "icon_asset": "plh_images/parent_centre/ltp_activities/tell_stories_icon.svg",
-      "image_asset": "plh_images/parent_centre/ltp_activities/tell_stories.svg",
+      "number": 17,
+      "icon_asset": "plh_images/parent_centre/ltp_activities/talk_1_icon.svg",
+      "image_asset": "plh_images/parent_centre/ltp_activities/talk_1.svg",
       "group": "chat",
       "favourite_field": "ltp_activity_reflect_positive_favourite",
       "title": "Reflect on the positive",
@@ -658,8 +703,9 @@
     },
     {
       "id": "check_in_chat",
-      "icon_asset": "plh_images/parent_centre/ltp_activities/tell_stories_icon.svg",
-      "image_asset": "plh_images/parent_centre/ltp_activities/tell_stories.svg",
+      "number": 18,
+      "icon_asset": "plh_images/parent_centre/ltp_activities/talk_2_icon.svg",
+      "image_asset": "plh_images/parent_centre/ltp_activities/talk_2.svg",
       "group": "chat",
       "favourite_field": "ltp_activity_check_in_chat_favourite",
       "title": "Check-in chat",
@@ -683,8 +729,9 @@
     },
     {
       "id": "dream_travel",
-      "icon_asset": "plh_images/parent_centre/ltp_activities/tell_stories_icon.svg",
-      "image_asset": "plh_images/parent_centre/ltp_activities/tell_stories.svg",
+      "number": 19,
+      "icon_asset": "plh_images/parent_centre/ltp_activities/talk_3_icon.svg",
+      "image_asset": "plh_images/parent_centre/ltp_activities/talk_3.svg",
       "group": "chat",
       "favourite_field": "ltp_activity_dream_travel_favourite",
       "title": "Dream travel",
@@ -708,8 +755,9 @@
     },
     {
       "id": "famous_party",
-      "icon_asset": "plh_images/parent_centre/ltp_activities/tell_stories_icon.svg",
-      "image_asset": "plh_images/parent_centre/ltp_activities/tell_stories.svg",
+      "number": 20,
+      "icon_asset": "plh_images/parent_centre/ltp_activities/talk_4_icon.svg",
+      "image_asset": "plh_images/parent_centre/ltp_activities/talk_4.svg",
       "group": "chat",
       "favourite_field": "ltp_activity_famous_party_favourite",
       "title": "Famous party",
@@ -733,8 +781,9 @@
     },
     {
       "id": "two_truths",
-      "icon_asset": "plh_images/parent_centre/ltp_activities/tell_stories_icon.svg",
-      "image_asset": "plh_images/parent_centre/ltp_activities/tell_stories.svg",
+      "number": 21,
+      "icon_asset": "plh_images/parent_centre/ltp_activities/talk_5_icon.svg",
+      "image_asset": "plh_images/parent_centre/ltp_activities/talk_5.svg",
       "group": "chat",
       "favourite_field": "ltp_activity_two_truths_favourite",
       "title": "Two truths, one lie",
@@ -758,8 +807,9 @@
     },
     {
       "id": "time_machine",
-      "icon_asset": "plh_images/parent_centre/ltp_activities/tell_stories_icon.svg",
-      "image_asset": "plh_images/parent_centre/ltp_activities/tell_stories.svg",
+      "number": 22,
+      "icon_asset": "plh_images/parent_centre/ltp_activities/talk_6_icon.svg",
+      "image_asset": "plh_images/parent_centre/ltp_activities/talk_6.svg",
       "group": "chat",
       "favourite_field": "ltp_activity_time_machine_favourite",
       "title": "Time machine",
@@ -783,8 +833,9 @@
     },
     {
       "id": "superpowers",
-      "icon_asset": "plh_images/parent_centre/ltp_activities/tell_stories_icon.svg",
-      "image_asset": "plh_images/parent_centre/ltp_activities/tell_stories.svg",
+      "number": 23,
+      "icon_asset": "plh_images/parent_centre/ltp_activities/talk_7_icon.svg",
+      "image_asset": "plh_images/parent_centre/ltp_activities/talk_7.svg",
       "group": "chat",
       "favourite_field": "ltp_activity_superpowers_favourite",
       "title": "Superpowers",
@@ -808,8 +859,9 @@
     },
     {
       "id": "friendly_chat",
-      "icon_asset": "plh_images/parent_centre/ltp_activities/tell_stories_icon.svg",
-      "image_asset": "plh_images/parent_centre/ltp_activities/tell_stories.svg",
+      "number": 24,
+      "icon_asset": "plh_images/parent_centre/ltp_activities/talk_1_icon.svg",
+      "image_asset": "plh_images/parent_centre/ltp_activities/talk_1.svg",
       "group": "chat",
       "favourite_field": "ltp_activity_friendly_chat_favourite",
       "title": "Just a friendly chat",
@@ -833,8 +885,9 @@
     },
     {
       "id": "interrupter",
-      "icon_asset": "plh_images/parent_centre/ltp_activities/tell_stories_icon.svg",
-      "image_asset": "plh_images/parent_centre/ltp_activities/tell_stories.svg",
+      "number": 25,
+      "icon_asset": "plh_images/parent_centre/ltp_activities/talk_2_icon.svg",
+      "image_asset": "plh_images/parent_centre/ltp_activities/talk_2.svg",
       "group": "chat",
       "favourite_field": "ltp_activity_interrupter_favourite",
       "title": "The interrupter",
@@ -858,8 +911,9 @@
     },
     {
       "id": "three_options",
-      "icon_asset": "plh_images/parent_centre/ltp_activities/tell_stories_icon.svg",
-      "image_asset": "plh_images/parent_centre/ltp_activities/tell_stories.svg",
+      "number": 26,
+      "icon_asset": "plh_images/parent_centre/ltp_activities/talk_3_icon.svg",
+      "image_asset": "plh_images/parent_centre/ltp_activities/talk_3.svg",
       "group": "chat",
       "favourite_field": "ltp_activity_three_options_favourite",
       "title": "Three options",
@@ -883,8 +937,9 @@
     },
     {
       "id": "yes_no_maybe",
-      "icon_asset": "plh_images/parent_centre/ltp_activities/tell_stories_icon.svg",
-      "image_asset": "plh_images/parent_centre/ltp_activities/tell_stories.svg",
+      "number": 27,
+      "icon_asset": "plh_images/parent_centre/ltp_activities/talk_4_icon.svg",
+      "image_asset": "plh_images/parent_centre/ltp_activities/talk_4.svg",
       "group": "chat",
       "favourite_field": "ltp_activity_yes_no_maybe_favourite",
       "title": "Yes, no or maybe",
@@ -908,8 +963,9 @@
     },
     {
       "id": "memory_game",
-      "icon_asset": "plh_images/parent_centre/ltp_activities/tell_stories_icon.svg",
-      "image_asset": "plh_images/parent_centre/ltp_activities/tell_stories.svg",
+      "number": 28,
+      "icon_asset": "plh_images/parent_centre/ltp_activities/talk_5_icon.svg",
+      "image_asset": "plh_images/parent_centre/ltp_activities/talk_5.svg",
       "group": "chat",
       "favourite_field": "ltp_activity_memory_game_favourite",
       "title": "Memory game – \"On Saturday...\"",
@@ -933,8 +989,9 @@
     },
     {
       "id": "invent_story",
-      "icon_asset": "plh_images/parent_centre/ltp_activities/tell_stories_icon.svg",
-      "image_asset": "plh_images/parent_centre/ltp_activities/tell_stories.svg",
+      "number": 29,
+      "icon_asset": "plh_images/parent_centre/ltp_activities/talk_6_icon.svg",
+      "image_asset": "plh_images/parent_centre/ltp_activities/talk_6.svg",
       "group": "chat",
       "favourite_field": "ltp_activity_invent_story_favourite",
       "title": "Make up a story",

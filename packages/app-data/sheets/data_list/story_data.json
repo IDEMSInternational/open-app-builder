@@ -1240,8 +1240,12 @@
         "text_2": {
           "tz_sw": true
         },
-        "text_3": {},
-        "text_4": {}
+        "text_3": {
+          "tz_sw": true
+        },
+        "text_4": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -1272,7 +1276,7 @@
     {
       "id": "new_boyfriend",
       "workshop": "w_srh",
-      "outro_habit": "safe_self",
+      "outro_habit": "safe",
       "image_1": "plh_images/workshops/w_srh/read_new_boyfriend/slide_1.svg",
       "image_2": "plh_images/workshops/w_srh/read_new_boyfriend/slide_2.svg",
       "image_3": "plh_images/workshops/w_srh/read_new_boyfriend/slide_3.svg",
@@ -1286,21 +1290,15 @@
         "intro_text": {
           "tz_sw": true
         },
-        "text_1": {
-          "tz_sw": true
-        },
-        "text_2": {
-          "tz_sw": true
-        },
+        "text_1": {},
+        "text_2": {},
         "text_3": {
           "tz_sw": true
         },
         "text_4": {
           "tz_sw": true
         },
-        "text_5": {
-          "tz_sw": true
-        }
+        "text_5": {}
       },
       "_translatedFields": {
         "title": {
@@ -1310,10 +1308,10 @@
           "eng": "It can be hard for parents and teens to talk about boyfriends and girlfriends. \n\nLet’s look at an example of how this can happen calmly:"
         },
         "text_1": {
-          "eng": "@global.w_srh_teen_girl_2 (looking at the ground): “@global.w_srh_female_caregiver_2, can I talk to you about something?”\n\n@global.w_srh_female_caregiver_2 (calmly): “Sure, my darling. What is the matter?”"
+          "eng": "@global.w_srh_teen_girl_2: “@global.w_srh_female_caregiver_2, can I talk to you about something?”\n\n@global.w_srh_female_caregiver_2 (calmly): “Sure, my darling. What is the matter?”"
         },
         "text_2": {
-          "eng": "@global.w_srh_teen_girl_2 sits down next to @global.w_srh_female_caregiver_2.\n\n@global.w_srh_teen_girl_2: “@global.w_srh_teen_boy_1 wants us to watch the football match together tomorrow. I really like him but I am not sure what to do.”\n\n@global.w_srh_female_caregiver_2 (thinking to herself): “How has my daughter grown up so fast? What now? Take a deep breath…”"
+          "eng": "@global.w_srh_teen_girl_2 sits down next to @global.w_srh_female_caregiver_2.\n\n@global.w_srh_teen_girl_2: “@global.w_srh_teen_boy_1 wants us to study together tomorrow. I really like him but I am not sure what to do.”\n\n@global.w_srh_female_caregiver_2 (thinking to herself): “How has my daughter grown up so fast? What now? Take a deep breath…”"
         },
         "text_3": {
           "eng": "@global.w_srh_female_caregiver_2 (calmly): “Thank you for sharing this with me, @global.w_srh_teen_girl_2. I know that you like @global.w_srh_teen_boy_1 a lot, he is a charming boy and he does great at school, but you are only 16 and he is 18. \n\nI feel worried that it is not safe for you to be alone with him. He might pressure you into doing something that you are not prepared to do. \n\nI don’t want to tell you who you can see but we need to have some rules about how you spend time together.”"
@@ -1322,15 +1320,15 @@
           "eng": "@global.w_srh_female_caregiver_2: “What do you think would be a fair rule about how you spend time together?”\n\n@global.w_srh_teen_girl_2: “How about: We can spend time together if there is an adult with us?”"
         },
         "text_5": {
-          "eng": "@global.w_srh_female_caregiver_2: “That would be fine as long as his parents also know. I will give them a call later. And we can talk again after you get back to see how it worked.”\n\n@global.w_srh_teen_girl_2 (hugs @global.w_srh_female_caregiver_2): “Okay. Thank you for coming up with a plan together, @global.w_srh_female_caregiver_2.”"
+          "eng": "@global.w_srh_female_caregiver_2: “That would be fine as long as his parents also know. I will chat with his mother when I see her later today. And after you get back, we can talk about how it went.”\n\n@global.w_srh_teen_girl_2 (hugs @global.w_srh_female_caregiver_2): “Okay. Thank you for coming up with a plan together, @global.w_srh_female_caregiver_2.”"
         }
       },
       "intro_text": "It can be hard for parents and teens to talk about boyfriends and girlfriends. \n\nLet’s look at an example of how this can happen calmly:",
-      "text_1": "@global.w_srh_teen_girl_2 (looking at the ground): “@global.w_srh_female_caregiver_2, can I talk to you about something?”\n\n@global.w_srh_female_caregiver_2 (calmly): “Sure, my darling. What is the matter?”",
-      "text_2": "@global.w_srh_teen_girl_2 sits down next to @global.w_srh_female_caregiver_2.\n\n@global.w_srh_teen_girl_2: “@global.w_srh_teen_boy_1 wants us to watch the football match together tomorrow. I really like him but I am not sure what to do.”\n\n@global.w_srh_female_caregiver_2 (thinking to herself): “How has my daughter grown up so fast? What now? Take a deep breath…”",
+      "text_1": "@global.w_srh_teen_girl_2: “@global.w_srh_female_caregiver_2, can I talk to you about something?”\n\n@global.w_srh_female_caregiver_2 (calmly): “Sure, my darling. What is the matter?”",
+      "text_2": "@global.w_srh_teen_girl_2 sits down next to @global.w_srh_female_caregiver_2.\n\n@global.w_srh_teen_girl_2: “@global.w_srh_teen_boy_1 wants us to study together tomorrow. I really like him but I am not sure what to do.”\n\n@global.w_srh_female_caregiver_2 (thinking to herself): “How has my daughter grown up so fast? What now? Take a deep breath…”",
       "text_3": "@global.w_srh_female_caregiver_2 (calmly): “Thank you for sharing this with me, @global.w_srh_teen_girl_2. I know that you like @global.w_srh_teen_boy_1 a lot, he is a charming boy and he does great at school, but you are only 16 and he is 18. \n\nI feel worried that it is not safe for you to be alone with him. He might pressure you into doing something that you are not prepared to do. \n\nI don’t want to tell you who you can see but we need to have some rules about how you spend time together.”",
       "text_4": "@global.w_srh_female_caregiver_2: “What do you think would be a fair rule about how you spend time together?”\n\n@global.w_srh_teen_girl_2: “How about: We can spend time together if there is an adult with us?”",
-      "text_5": "@global.w_srh_female_caregiver_2: “That would be fine as long as his parents also know. I will give them a call later. And we can talk again after you get back to see how it worked.”\n\n@global.w_srh_teen_girl_2 (hugs @global.w_srh_female_caregiver_2): “Okay. Thank you for coming up with a plan together, @global.w_srh_female_caregiver_2.”"
+      "text_5": "@global.w_srh_female_caregiver_2: “That would be fine as long as his parents also know. I will chat with his mother when I see her later today. And after you get back, we can talk about how it went.”\n\n@global.w_srh_teen_girl_2 (hugs @global.w_srh_female_caregiver_2): “Okay. Thank you for coming up with a plan together, @global.w_srh_female_caregiver_2.”"
     },
     {
       "id": "grief_conflict",
@@ -1338,23 +1336,29 @@
       "image_1": "plh_images/workshops/w_grief/read_grief_conflict/slide_1.svg",
       "image_2": "plh_images/workshops/w_grief/read_grief_conflict/slide_2.svg",
       "image_3": "plh_images/workshops/w_grief/read_grief_conflict/slide_3.svg",
-      "title": "Everyone is different",
+      "title": "Stop crying",
       "_translations": {
         "title": {},
-        "intro_text": {},
+        "intro_text": {
+          "tz_sw": true
+        },
         "text_1": {},
-        "text_2": {},
-        "text_3": {}
+        "text_2": {
+          "tz_sw": true
+        },
+        "text_3": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "title": {
-          "eng": "Everyone is different"
+          "eng": "Stop crying"
         },
         "intro_text": {
           "eng": "Difficult emotions can lead to difficult behaviour – especially with children. Losing a caregiver or a loved one can make your teen feel worried, insecure, or angry, and can often make them act out.\n\nLet’s see what happened with @global.w_grief_teen_girl_1 who lost her mother 6 months ago:"
         },
         "text_1": {
-          "eng": "@global.w_grief_teen_girl_1 (thinking): \"I miss @global.w_grief_female_caregiver_1 so much...\""
+          "eng": "@global.w_grief_teen_girl_1: \"I miss @global.w_grief_female_caregiver_1 so much...\""
         },
         "text_2": {
           "eng": "@global.w_grief_male_caregiver_1: \"@global.w_grief_teen_girl_1, you need to stop crying. It has been months already! This crying will not bring @global.w_grief_female_caregiver_1 back and you are doing worse and worse in school!\" \n\n@global.w_grief_teen_girl_1: \"You just don't understand how I feel! You never listen!\""
@@ -1364,7 +1368,7 @@
         }
       },
       "intro_text": "Difficult emotions can lead to difficult behaviour – especially with children. Losing a caregiver or a loved one can make your teen feel worried, insecure, or angry, and can often make them act out.\n\nLet’s see what happened with @global.w_grief_teen_girl_1 who lost her mother 6 months ago:",
-      "text_1": "@global.w_grief_teen_girl_1 (thinking): \"I miss @global.w_grief_female_caregiver_1 so much...\"",
+      "text_1": "@global.w_grief_teen_girl_1: \"I miss @global.w_grief_female_caregiver_1 so much...\"",
       "text_2": "@global.w_grief_male_caregiver_1: \"@global.w_grief_teen_girl_1, you need to stop crying. It has been months already! This crying will not bring @global.w_grief_female_caregiver_1 back and you are doing worse and worse in school!\" \n\n@global.w_grief_teen_girl_1: \"You just don't understand how I feel! You never listen!\"",
       "text_3": "@global.w_grief_male_caregiver_1: \"Stop being so dramatic! Your behaviour is unacceptable!\""
     },
@@ -1375,24 +1379,32 @@
       "image_2": "plh_images/workshops/w_grief/read_grief_support/slide_2.svg",
       "image_3": "plh_images/workshops/w_grief/read_grief_support/slide_3.svg",
       "image_4": "plh_images/workshops/w_grief/read_grief_support/slide_4.svg",
-      "title": "Saying goodbye",
+      "title": "Sharing memories",
       "_translations": {
         "title": {},
-        "intro_text": {},
+        "intro_text": {
+          "tz_sw": true
+        },
         "text_1": {},
-        "text_2": {},
-        "text_3": {},
-        "text_4": {}
+        "text_2": {
+          "tz_sw": true
+        },
+        "text_3": {
+          "tz_sw": true
+        },
+        "text_4": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "title": {
-          "eng": "Saying goodbye"
+          "eng": "Sharing memories"
         },
         "intro_text": {
           "eng": "Thank you for thinking along!\n\nLet’s see what happens if @global.w_grief_male_caregiver_1 tries to support @global.w_grief_teen_girl_1:"
         },
         "text_1": {
-          "eng": "@global.w_grief_male_caregiver_1: “I know you are sad, @global.w_grief_teen_girl_1. I also miss @global.w_grief_female_caregiver_1. What do you think we can do to help you feel better?”\n\n@global.w_grief_teen_girl_1: Maybe we can visit @global.w_grief_aunt, so we can share stories about @global.w_grief_female_caregiver_1?"
+          "eng": "@global.w_grief_male_caregiver_1: “I know you are sad, @global.w_grief_teen_girl_1. I also miss @global.w_grief_female_caregiver_1. What do you think we can do to help you feel better?”\n\n@global.w_grief_teen_girl_1: “Maybe we can visit @global.w_grief_aunt, so we can share stories about @global.w_grief_female_caregiver_1?”"
         },
         "text_2": {
           "eng": "@global.w_grief_male_caregiver_1: “I like that idea, let’s go see her on Saturday. Do you already want to tell me more about how you feel now?”"
@@ -1405,10 +1417,94 @@
         }
       },
       "intro_text": "Thank you for thinking along!\n\nLet’s see what happens if @global.w_grief_male_caregiver_1 tries to support @global.w_grief_teen_girl_1:",
-      "text_1": "@global.w_grief_male_caregiver_1: “I know you are sad, @global.w_grief_teen_girl_1. I also miss @global.w_grief_female_caregiver_1. What do you think we can do to help you feel better?”\n\n@global.w_grief_teen_girl_1: Maybe we can visit @global.w_grief_aunt, so we can share stories about @global.w_grief_female_caregiver_1?",
+      "text_1": "@global.w_grief_male_caregiver_1: “I know you are sad, @global.w_grief_teen_girl_1. I also miss @global.w_grief_female_caregiver_1. What do you think we can do to help you feel better?”\n\n@global.w_grief_teen_girl_1: “Maybe we can visit @global.w_grief_aunt, so we can share stories about @global.w_grief_female_caregiver_1?”",
       "text_2": "@global.w_grief_male_caregiver_1: “I like that idea, let’s go see her on Saturday. Do you already want to tell me more about how you feel now?”",
       "text_3": "@global.w_grief_teen_girl_1: “I honestly feel angry that she left. Is it okay to say that?”",
       "text_4": "@global.w_grief_male_caregiver_1: “Yes, it is normal to feel angry. We all have different feelings at different times, and that is okay. It is good to talk about this together, thank you for sharing with me.”"
+    },
+    {
+      "id": "learn_conflict",
+      "workshop": "w_learn",
+      "image_1": "plh_images/workshops/w_learn/read_learn_conflict/slide_1.svg",
+      "image_2": "plh_images/workshops/w_learn/read_learn_conflict/slide_2.svg",
+      "image_3": "plh_images/workshops/w_learn/read_learn_conflict/slide_3.svg",
+      "image_4": "plh_images/workshops/w_learn/read_learn_conflict/slide_4.svg",
+      "title": "Busy day",
+      "_translations": {
+        "title": {},
+        "intro_text": {},
+        "text_1": {},
+        "text_2": {},
+        "text_3": {},
+        "text_4": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Busy day"
+        },
+        "intro_text": {
+          "eng": "Caregivers and teens who spend time together are more likely to have happy and healthy relationships. But spending time together is not always easy. Sometimes we can both get angry, get annoyed and argue or fight. \n\nLet’s take a look at an example:"
+        },
+        "text_1": {
+          "eng": "One afternoon, @global.w_learn_teen_girl_1 is looking after her younger sibling @global.w_learn_girl_1. \n\n@global.w_learn_teen_girl_1 (thinking): “It has been such a hard day at school… I can’t wait for @global.w_learn_female_caregiver_1 to come home so I can tell her about it.”"
+        },
+        "text_2": {
+          "eng": "@global.w_learn_female_caregiver_1 comes home late.\n\n@global.w_learn_female_caregiver_1 (thinking): “I am so exhausted.”"
+        },
+        "text_3": {
+          "eng": "@global.w_learn_female_caregiver_1: “@global.w_learn_teen_girl_1, why did you not cook dinner yet?! Why do I always have to do everything myself?”\n\n@global.w_learn_teen_girl_1: “That is not fair, I looked after @global.w_learn_girl_1 and washed all the school clothes already! All you do is complain!”"
+        },
+        "text_4": {
+          "eng": "@global.w_learn_teen_girl_1: “Get out of my way!”"
+        }
+      },
+      "intro_text": "Caregivers and teens who spend time together are more likely to have happy and healthy relationships. But spending time together is not always easy. Sometimes we can both get angry, get annoyed and argue or fight. \n\nLet’s take a look at an example:",
+      "text_1": "One afternoon, @global.w_learn_teen_girl_1 is looking after her younger sibling @global.w_learn_girl_1. \n\n@global.w_learn_teen_girl_1 (thinking): “It has been such a hard day at school… I can’t wait for @global.w_learn_female_caregiver_1 to come home so I can tell her about it.”",
+      "text_2": "@global.w_learn_female_caregiver_1 comes home late.\n\n@global.w_learn_female_caregiver_1 (thinking): “I am so exhausted.”",
+      "text_3": "@global.w_learn_female_caregiver_1: “@global.w_learn_teen_girl_1, why did you not cook dinner yet?! Why do I always have to do everything myself?”\n\n@global.w_learn_teen_girl_1: “That is not fair, I looked after @global.w_learn_girl_1 and washed all the school clothes already! All you do is complain!”",
+      "text_4": "@global.w_learn_teen_girl_1: “Get out of my way!”"
+    },
+    {
+      "id": "learn_support",
+      "workshop": "w_learn",
+      "image_1": "plh_images/workshops/w_learn/read_learn_support/slide_1.svg",
+      "image_2": "plh_images/workshops/w_learn/read_learn_support/slide_2.svg",
+      "image_3": "plh_images/workshops/w_learn/read_learn_support/slide_3.svg",
+      "image_4": "plh_images/workshops/w_learn/read_learn_support/slide_4.svg",
+      "title": "When you are ready",
+      "_translations": {
+        "title": {},
+        "intro_text": {},
+        "text_1": {},
+        "text_2": {},
+        "text_3": {},
+        "text_4": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "When you are ready"
+        },
+        "intro_text": {
+          "eng": "Let’s go back in time and see what happens when @global.w_learn_female_caregiver_1 does things differently:"
+        },
+        "text_1": {
+          "eng": "One afternoon, @global.w_learn_teen_girl_1 is looking after her younger sibling @global.w_learn_girl_1. \n\n@global.w_learn_teen_girl_1 (thinking): “It has been such a hard day at school… I can’t wait for @global.w_learn_female_caregiver_1 to come home so I can tell her about it.”"
+        },
+        "text_2": {
+          "eng": "@global.w_learn_female_caregiver_1 comes home late.\n\n@global.w_learn_female_caregiver_1 (thinking): “I am so exhausted.”"
+        },
+        "text_3": {
+          "eng": "@global.w_learn_female_caregiver_1: “Hi everyone, I am so glad to see you! @global.w_learn_teen_girl_1, thank you for looking after your sister and washing the school clothes. I am going to wash my hands, and then we can cook together and you can tell me about your day.”\n\n@global.w_learn_teen_girl_1: “Thank you, @global.w_learn_female_caregiver_1, you can call me when you are ready.”"
+        },
+        "text_4": {
+          "eng": "15 minutes later…\n\n@global.w_learn_teen_girl_1: “I am glad we have this time together. I actually wanted to tell you about a problem I had at school today.”\n\n@global.w_learn_female_caregiver_1: “Thank you for telling me. I am sure we can come up with a solution together.”"
+        }
+      },
+      "intro_text": "Let’s go back in time and see what happens when @global.w_learn_female_caregiver_1 does things differently:",
+      "text_1": "One afternoon, @global.w_learn_teen_girl_1 is looking after her younger sibling @global.w_learn_girl_1. \n\n@global.w_learn_teen_girl_1 (thinking): “It has been such a hard day at school… I can’t wait for @global.w_learn_female_caregiver_1 to come home so I can tell her about it.”",
+      "text_2": "@global.w_learn_female_caregiver_1 comes home late.\n\n@global.w_learn_female_caregiver_1 (thinking): “I am so exhausted.”",
+      "text_3": "@global.w_learn_female_caregiver_1: “Hi everyone, I am so glad to see you! @global.w_learn_teen_girl_1, thank you for looking after your sister and washing the school clothes. I am going to wash my hands, and then we can cook together and you can tell me about your day.”\n\n@global.w_learn_teen_girl_1: “Thank you, @global.w_learn_female_caregiver_1, you can call me when you are ready.”",
+      "text_4": "15 minutes later…\n\n@global.w_learn_teen_girl_1: “I am glad we have this time together. I actually wanted to tell you about a problem I had at school today.”\n\n@global.w_learn_female_caregiver_1: “Thank you for telling me. I am sure we can come up with a solution together.”"
     }
   ],
   "_xlsxPath": "global/data/workshop_data/workshop_data_list.xlsx"

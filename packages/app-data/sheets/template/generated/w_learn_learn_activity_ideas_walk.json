@@ -1,0 +1,100 @@
+{
+  "flow_name": "w_learn_learn_activity_ideas_walk",
+  "flow_subtype": "generated",
+  "flow_type": "template",
+  "rows": [
+    {
+      "type": "template",
+      "name": "box_image",
+      "value": "box_image",
+      "action_list": [
+        {
+          "trigger": "completed",
+          "action_id": "emit",
+          "args": [
+            "completed"
+          ],
+          "_raw": "completed | emit:completed",
+          "_cleaned": "completed | emit:completed"
+        },
+        {
+          "trigger": "uncompleted",
+          "action_id": "emit",
+          "args": [
+            "uncompleted"
+          ],
+          "_raw": "uncompleted | emit:uncompleted",
+          "_cleaned": "uncompleted | emit:uncompleted"
+        }
+      ],
+      "rows": [
+        {
+          "name": "title",
+          "value": "@data.learn_play.walk.title",
+          "_translations": {
+            "value": {}
+          },
+          "hidden": false,
+          "type": "set_variable",
+          "_nested_name": "box_image.title",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@data.learn_play.walk.title",
+                "matchedExpression": "@data.learn_play.walk.title",
+                "type": "data",
+                "fieldName": "learn_play"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@data.learn_play.walk.title": [
+              "value"
+            ]
+          }
+        },
+        {
+          "name": "image_src",
+          "value": "@data.learn_play.walk.image_asset",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "box_image.image_src",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@data.learn_play.walk.image_asset",
+                "matchedExpression": "@data.learn_play.walk.image_asset",
+                "type": "data",
+                "fieldName": "learn_play"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@data.learn_play.walk.image_asset": [
+              "value"
+            ]
+          }
+        },
+        {
+          "name": "text",
+          "value": "Ask your teen if they would like to walk outside with you. This is good exercise and is a good time for you and your teen to talk about what is on your mind and how you both are feeling.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "box_image.text"
+        },
+        {
+          "type": "nested_properties",
+          "name": "nav_buttons",
+          "hidden": true,
+          "rows": [],
+          "_nested_name": "box_image.nav_buttons"
+        }
+      ],
+      "_nested_name": "box_image"
+    }
+  ]
+}

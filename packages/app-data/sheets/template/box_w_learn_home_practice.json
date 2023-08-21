@@ -1,0 +1,58 @@
+{
+  "flow_type": "template",
+  "module": "w_learn",
+  "flow_name": "box_w_learn_home_practice",
+  "status": "released",
+  "rows": [
+    {
+      "type": "text",
+      "name": "text_1",
+      "_nested_name": "text_1"
+    },
+    {
+      "type": "template",
+      "name": "activities_button",
+      "value": "activities_button",
+      "rows": [
+        {
+          "name": "location_name",
+          "value": "home_practice",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activities_button.location_name"
+        }
+      ],
+      "_nested_name": "activities_button"
+    },
+    {
+      "type": "template",
+      "name": "nav_buttons",
+      "value": "nav_buttons",
+      "action_list": [
+        {
+          "trigger": "completed",
+          "action_id": "emit",
+          "args": [
+            "completed"
+          ],
+          "_raw": "completed | emit:completed",
+          "_cleaned": "completed | emit:completed"
+        },
+        {
+          "trigger": "uncompleted",
+          "action_id": "emit",
+          "args": [
+            "uncompleted"
+          ],
+          "_raw": "uncompleted | emit:uncompleted",
+          "_cleaned": "uncompleted | emit:uncompleted"
+        }
+      ],
+      "rows": [],
+      "_nested_name": "nav_buttons"
+    }
+  ],
+  "_xlsxPath": "global/top_templates/workshop_templates/workshop_learn.xlsx"
+}

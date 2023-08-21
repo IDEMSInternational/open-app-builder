@@ -61,17 +61,8 @@
       }
     },
     {
-      "name": "favourite",
-      "value": "_favourite",
-      "_translations": {
-        "value": {}
-      },
-      "type": "set_variable",
-      "_nested_name": "favourite"
-    },
-    {
       "name": "activity",
-      "value": "ltp_activity_@local.activity_id",
+      "value": "ltp_activity_@local.activity_data.id",
       "_translations": {
         "value": {}
       },
@@ -80,48 +71,15 @@
       "_dynamicFields": {
         "value": [
           {
-            "fullExpression": "ltp_activity_@local.activity_id",
-            "matchedExpression": "@local.activity_id",
+            "fullExpression": "ltp_activity_@local.activity_data.id",
+            "matchedExpression": "@local.activity_data.id",
             "type": "local",
-            "fieldName": "activity_id"
+            "fieldName": "activity_data"
           }
         ]
       },
       "_dynamicDependencies": {
-        "@local.activity_id": [
-          "value"
-        ]
-      }
-    },
-    {
-      "name": "activity_favourite",
-      "value": "@local.activity@local.favourite",
-      "_translations": {
-        "value": {}
-      },
-      "type": "set_variable",
-      "_nested_name": "activity_favourite",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "@local.activity@local.favourite",
-            "matchedExpression": "@local.activity",
-            "type": "local",
-            "fieldName": "activity"
-          },
-          {
-            "fullExpression": "@local.activity@local.favourite",
-            "matchedExpression": "@local.favourite",
-            "type": "local",
-            "fieldName": "favourite"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@local.activity": [
-          "value"
-        ],
-        "@local.favourite": [
+        "@local.activity_data.id": [
           "value"
         ]
       }
@@ -212,12 +170,56 @@
       }
     },
     {
+      "name": "resources_title",
+      "value": "What you need",
+      "_translations": {
+        "value": {
+          "tz_sw": true
+        }
+      },
+      "type": "set_variable",
+      "_nested_name": "resources_title"
+    },
+    {
+      "name": "steps_title",
+      "value": "Steps",
+      "_translations": {
+        "value": {
+          "tz_sw": true
+        }
+      },
+      "type": "set_variable",
+      "_nested_name": "steps_title"
+    },
+    {
+      "name": "tips_title",
+      "value": "Tips",
+      "_translations": {
+        "value": {
+          "tz_sw": true
+        }
+      },
+      "type": "set_variable",
+      "_nested_name": "tips_title"
+    },
+    {
+      "name": "extension_title",
+      "value": "Try also",
+      "_translations": {
+        "value": {
+          "tz_sw": true
+        }
+      },
+      "type": "set_variable",
+      "_nested_name": "extension_title"
+    },
+    {
       "type": "accordion",
       "rows": [
         {
           "type": "accordion_section",
           "name": "resources",
-          "value": "What you need",
+          "value": "@local.resources_title",
           "condition": "!!(@local.activity_data.resources_text)",
           "rows": [
             {
@@ -281,6 +283,14 @@
           ],
           "_nested_name": "accordion.resources",
           "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@local.resources_title",
+                "matchedExpression": "@local.resources_title",
+                "type": "local",
+                "fieldName": "resources_title"
+              }
+            ],
             "condition": [
               {
                 "fullExpression": "!!(@local.activity_data.resources_text)",
@@ -291,6 +301,9 @@
             ]
           },
           "_dynamicDependencies": {
+            "@local.resources_title": [
+              "value"
+            ],
             "@local.activity_data.resources_text": [
               "condition"
             ]
@@ -299,7 +312,7 @@
         {
           "type": "accordion_section",
           "name": "steps",
-          "value": "Steps",
+          "value": "@local.steps_title",
           "condition": "!!(@local.activity_data.steps_text)",
           "rows": [
             {
@@ -329,6 +342,14 @@
           ],
           "_nested_name": "accordion.steps",
           "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@local.steps_title",
+                "matchedExpression": "@local.steps_title",
+                "type": "local",
+                "fieldName": "steps_title"
+              }
+            ],
             "condition": [
               {
                 "fullExpression": "!!(@local.activity_data.steps_text)",
@@ -339,6 +360,9 @@
             ]
           },
           "_dynamicDependencies": {
+            "@local.steps_title": [
+              "value"
+            ],
             "@local.activity_data.steps_text": [
               "condition"
             ]
@@ -347,7 +371,7 @@
         {
           "type": "accordion_section",
           "name": "tips",
-          "value": "Tips",
+          "value": "@local.tips_title",
           "condition": "!!(@local.activity_data.tips_text)",
           "rows": [
             {
@@ -377,6 +401,14 @@
           ],
           "_nested_name": "accordion.tips",
           "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@local.tips_title",
+                "matchedExpression": "@local.tips_title",
+                "type": "local",
+                "fieldName": "tips_title"
+              }
+            ],
             "condition": [
               {
                 "fullExpression": "!!(@local.activity_data.tips_text)",
@@ -387,6 +419,9 @@
             ]
           },
           "_dynamicDependencies": {
+            "@local.tips_title": [
+              "value"
+            ],
             "@local.activity_data.tips_text": [
               "condition"
             ]
@@ -395,7 +430,7 @@
         {
           "type": "accordion_section",
           "name": "extension",
-          "value": "Try also",
+          "value": "@local.extension_title",
           "condition": "!!(@local.activity_data.extension_text)",
           "rows": [
             {
@@ -425,6 +460,14 @@
           ],
           "_nested_name": "accordion.extension",
           "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@local.extension_title",
+                "matchedExpression": "@local.extension_title",
+                "type": "local",
+                "fieldName": "extension_title"
+              }
+            ],
             "condition": [
               {
                 "fullExpression": "!!(@local.activity_data.extension_text)",
@@ -435,6 +478,9 @@
             ]
           },
           "_dynamicDependencies": {
+            "@local.extension_title": [
+              "value"
+            ],
             "@local.activity_data.extension_text": [
               "condition"
             ]
@@ -551,9 +597,155 @@
       "_nested_name": "habit_box"
     },
     {
+      "name": "now",
+      "value": "@calc(timestamp())",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "now",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@calc(timestamp())",
+            "matchedExpression": "@calc(timestamp())",
+            "type": "calc",
+            "fieldName": "timestamp()"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@calc(timestamp())": [
+          "value"
+        ]
+      }
+    },
+    {
+      "name": "toggle_history",
+      "value": "_favourite_history",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "toggle_history"
+    },
+    {
+      "name": "toggle_history_field_name",
+      "value": "ltp_activity_@local.activity_data.id@local.toggle_history",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "toggle_history_field_name",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "ltp_activity_@local.activity_data.id@local.toggle_history",
+            "matchedExpression": "@local.activity_data.id",
+            "type": "local",
+            "fieldName": "activity_data"
+          },
+          {
+            "fullExpression": "ltp_activity_@local.activity_data.id@local.toggle_history",
+            "matchedExpression": "@local.toggle_history",
+            "type": "local",
+            "fieldName": "toggle_history"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.activity_data.id": [
+          "value"
+        ],
+        "@local.toggle_history": [
+          "value"
+        ]
+      }
+    },
+    {
+      "name": "toggle_history_value",
+      "value": "@fields.@local.toggle_history_field_name ;  @local.now",
+      "_translations": {
+        "value": {}
+      },
+      "condition": "!!(@fields.@local.toggle_history_field_name)",
+      "exclude_from_translation": true,
+      "type": "set_variable",
+      "_nested_name": "toggle_history_value",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@fields.@local.toggle_history_field_name ;  @local.now",
+            "matchedExpression": "@local.toggle_history_field_name",
+            "type": "local",
+            "fieldName": "toggle_history_field_name"
+          },
+          {
+            "fullExpression": "@fields.@local.toggle_history_field_name ;  @local.now",
+            "matchedExpression": "@local.now",
+            "type": "local",
+            "fieldName": "now"
+          }
+        ],
+        "condition": [
+          {
+            "fullExpression": "!!(@fields.@local.toggle_history_field_name)",
+            "matchedExpression": "@local.toggle_history_field_name",
+            "type": "local",
+            "fieldName": "toggle_history_field_name"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.toggle_history_field_name": [
+          "value",
+          "condition"
+        ],
+        "@local.now": [
+          "value"
+        ]
+      }
+    },
+    {
+      "name": "toggle_history_value",
+      "value": "@local.now",
+      "_translations": {
+        "value": {}
+      },
+      "condition": "!(@fields.@local.toggle_history_field_name)",
+      "type": "set_variable",
+      "_nested_name": "toggle_history_value",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@local.now",
+            "matchedExpression": "@local.now",
+            "type": "local",
+            "fieldName": "now"
+          }
+        ],
+        "condition": [
+          {
+            "fullExpression": "!(@fields.@local.toggle_history_field_name)",
+            "matchedExpression": "@local.toggle_history_field_name",
+            "type": "local",
+            "fieldName": "toggle_history_field_name"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.now": [
+          "value"
+        ],
+        "@local.toggle_history_field_name": [
+          "condition"
+        ]
+      }
+    },
+    {
       "type": "toggle_bar",
       "name": "toggle_bar",
-      "value": "@fields.@local.activity_favourite",
+      "value": "@fields.@local.activity_data.favourite_field",
       "_translations": {
         "value": {}
       },
@@ -562,11 +754,21 @@
           "trigger": "changed",
           "action_id": "set_field",
           "args": [
-            "@local.activity_favourite",
+            "@local.activity_data.favourite_field",
             "this.value"
           ],
-          "_raw": "changed | set_field:@local.activity_favourite : @local.toggle_bar",
-          "_cleaned": "changed | set_field:@local.activity_favourite : @local.toggle_bar"
+          "_raw": "changed | set_field: @local.activity_data.favourite_field: this.value",
+          "_cleaned": "changed | set_field: @local.activity_data.favourite_field: this.value"
+        },
+        {
+          "trigger": "changed",
+          "action_id": "set_field",
+          "args": [
+            "@local.toggle_history_field_name",
+            "@local.toggle_history_value"
+          ],
+          "_raw": "changed | set_field: @local.toggle_history_field_name: @local.toggle_history_value",
+          "_cleaned": "changed | set_field: @local.toggle_history_field_name: @local.toggle_history_value"
         }
       ],
       "parameter_list": {
@@ -577,10 +779,10 @@
       "_dynamicFields": {
         "value": [
           {
-            "fullExpression": "@fields.@local.activity_favourite",
-            "matchedExpression": "@local.activity_favourite",
+            "fullExpression": "@fields.@local.activity_data.favourite_field",
+            "matchedExpression": "@local.activity_data.favourite_field",
             "type": "local",
-            "fieldName": "activity_favourite"
+            "fieldName": "activity_data"
           }
         ],
         "action_list": {
@@ -588,39 +790,75 @@
             "args": {
               "0": [
                 {
-                  "fullExpression": "@local.activity_favourite",
-                  "matchedExpression": "@local.activity_favourite",
+                  "fullExpression": "@local.activity_data.favourite_field",
+                  "matchedExpression": "@local.activity_data.favourite_field",
                   "type": "local",
-                  "fieldName": "activity_favourite"
+                  "fieldName": "activity_data"
                 }
               ]
             },
             "_raw": [
               {
-                "fullExpression": "changed | set_field:@local.activity_favourite : @local.toggle_bar",
-                "matchedExpression": "@local.activity_favourite",
+                "fullExpression": "changed | set_field: @local.activity_data.favourite_field: this.value",
+                "matchedExpression": "@local.activity_data.favourite_field",
                 "type": "local",
-                "fieldName": "activity_favourite"
-              },
-              {
-                "fullExpression": "changed | set_field:@local.activity_favourite : @local.toggle_bar",
-                "matchedExpression": "@local.toggle_bar",
-                "type": "local",
-                "fieldName": "toggle_bar"
+                "fieldName": "activity_data"
               }
             ],
             "_cleaned": [
               {
-                "fullExpression": "changed | set_field:@local.activity_favourite : @local.toggle_bar",
-                "matchedExpression": "@local.activity_favourite",
+                "fullExpression": "changed | set_field: @local.activity_data.favourite_field: this.value",
+                "matchedExpression": "@local.activity_data.favourite_field",
                 "type": "local",
-                "fieldName": "activity_favourite"
+                "fieldName": "activity_data"
+              }
+            ]
+          },
+          "1": {
+            "args": {
+              "0": [
+                {
+                  "fullExpression": "@local.toggle_history_field_name",
+                  "matchedExpression": "@local.toggle_history_field_name",
+                  "type": "local",
+                  "fieldName": "toggle_history_field_name"
+                }
+              ],
+              "1": [
+                {
+                  "fullExpression": "@local.toggle_history_value",
+                  "matchedExpression": "@local.toggle_history_value",
+                  "type": "local",
+                  "fieldName": "toggle_history_value"
+                }
+              ]
+            },
+            "_raw": [
+              {
+                "fullExpression": "changed | set_field: @local.toggle_history_field_name: @local.toggle_history_value",
+                "matchedExpression": "@local.toggle_history_field_name",
+                "type": "local",
+                "fieldName": "toggle_history_field_name"
               },
               {
-                "fullExpression": "changed | set_field:@local.activity_favourite : @local.toggle_bar",
-                "matchedExpression": "@local.toggle_bar",
+                "fullExpression": "changed | set_field: @local.toggle_history_field_name: @local.toggle_history_value",
+                "matchedExpression": "@local.toggle_history_value",
                 "type": "local",
-                "fieldName": "toggle_bar"
+                "fieldName": "toggle_history_value"
+              }
+            ],
+            "_cleaned": [
+              {
+                "fullExpression": "changed | set_field: @local.toggle_history_field_name: @local.toggle_history_value",
+                "matchedExpression": "@local.toggle_history_field_name",
+                "type": "local",
+                "fieldName": "toggle_history_field_name"
+              },
+              {
+                "fullExpression": "changed | set_field: @local.toggle_history_field_name: @local.toggle_history_value",
+                "matchedExpression": "@local.toggle_history_value",
+                "type": "local",
+                "fieldName": "toggle_history_value"
               }
             ]
           }
@@ -645,19 +883,127 @@
         }
       },
       "_dynamicDependencies": {
-        "@local.activity_favourite": [
+        "@local.activity_data.favourite_field": [
           "value",
           "action_list.0.args.0",
           "action_list.0._raw",
           "action_list.0._cleaned"
         ],
-        "@local.toggle_bar": [
-          "action_list.0._raw",
-          "action_list.0._cleaned"
+        "@local.toggle_history_field_name": [
+          "action_list.1.args.0",
+          "action_list.1._raw",
+          "action_list.1._cleaned"
+        ],
+        "@local.toggle_history_value": [
+          "action_list.1.args.1",
+          "action_list.1._raw",
+          "action_list.1._cleaned"
         ],
         "@local.toggle_bar_text": [
           "parameter_list.true_text",
           "parameter_list.false_text"
+        ]
+      }
+    },
+    {
+      "name": "review",
+      "value": "_review",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "review"
+    },
+    {
+      "type": "button",
+      "name": "button_review",
+      "value": "@global.hp_review",
+      "_translations": {
+        "value": {}
+      },
+      "action_list": [
+        {
+          "trigger": "click",
+          "action_id": "go_to",
+          "args": [
+            "ltp_activity_@local.activity_id@local.review"
+          ],
+          "_raw": "click | go_to: ltp_activity_@local.activity_id@local.review",
+          "_cleaned": "click | go_to: ltp_activity_@local.activity_id@local.review"
+        }
+      ],
+      "_nested_name": "button_review",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@global.hp_review",
+            "matchedExpression": "@global.hp_review",
+            "type": "global",
+            "fieldName": "hp_review"
+          }
+        ],
+        "action_list": {
+          "0": {
+            "args": {
+              "0": [
+                {
+                  "fullExpression": "ltp_activity_@local.activity_id@local.review",
+                  "matchedExpression": "@local.activity_id",
+                  "type": "local",
+                  "fieldName": "activity_id"
+                },
+                {
+                  "fullExpression": "ltp_activity_@local.activity_id@local.review",
+                  "matchedExpression": "@local.review",
+                  "type": "local",
+                  "fieldName": "review"
+                }
+              ]
+            },
+            "_raw": [
+              {
+                "fullExpression": "click | go_to: ltp_activity_@local.activity_id@local.review",
+                "matchedExpression": "@local.activity_id",
+                "type": "local",
+                "fieldName": "activity_id"
+              },
+              {
+                "fullExpression": "click | go_to: ltp_activity_@local.activity_id@local.review",
+                "matchedExpression": "@local.review",
+                "type": "local",
+                "fieldName": "review"
+              }
+            ],
+            "_cleaned": [
+              {
+                "fullExpression": "click | go_to: ltp_activity_@local.activity_id@local.review",
+                "matchedExpression": "@local.activity_id",
+                "type": "local",
+                "fieldName": "activity_id"
+              },
+              {
+                "fullExpression": "click | go_to: ltp_activity_@local.activity_id@local.review",
+                "matchedExpression": "@local.review",
+                "type": "local",
+                "fieldName": "review"
+              }
+            ]
+          }
+        }
+      },
+      "_dynamicDependencies": {
+        "@global.hp_review": [
+          "value"
+        ],
+        "@local.activity_id": [
+          "action_list.0.args.0",
+          "action_list.0._raw",
+          "action_list.0._cleaned"
+        ],
+        "@local.review": [
+          "action_list.0.args.0",
+          "action_list.0._raw",
+          "action_list.0._cleaned"
         ]
       }
     },

@@ -326,6 +326,26 @@
       "flow_subtype": "generated",
       "flow_type": "data_list"
     },
+    "tg_w_learn_read_learn_conflict_ind": {
+      "flow_name": "tg_w_learn_read_learn_conflict_ind",
+      "flow_subtype": "generated",
+      "flow_type": "data_list"
+    },
+    "tg_w_learn_read_learn_conflict_tog": {
+      "flow_name": "tg_w_learn_read_learn_conflict_tog",
+      "flow_subtype": "generated",
+      "flow_type": "data_list"
+    },
+    "tg_w_learn_read_learn_support_ind": {
+      "flow_name": "tg_w_learn_read_learn_support_ind",
+      "flow_subtype": "generated",
+      "flow_type": "data_list"
+    },
+    "tg_w_learn_read_learn_support_tog": {
+      "flow_name": "tg_w_learn_read_learn_support_tog",
+      "flow_subtype": "generated",
+      "flow_type": "data_list"
+    },
     "tg_w_money_read_2_ind": {
       "flow_name": "tg_w_money_read_2_ind",
       "flow_subtype": "generated",
@@ -1123,6 +1143,18 @@
       "flow_name": "launch_actions",
       "_xlsxPath": "global/core_templates/core_templates_app_launch.xlsx"
     },
+    "mode_data": {
+      "flow_type": "data_list",
+      "flow_name": "mode_data",
+      "data_list_name": "mode",
+      "_xlsxPath": "global/data/workshop_data/workshop_data_list.xlsx"
+    },
+    "name_feelings_data": {
+      "flow_type": "data_list",
+      "flow_name": "name_feelings_data",
+      "data_list_name": "name_feelings",
+      "_xlsxPath": "global/top_templates/workshop_templates/workshop_grief.xlsx"
+    },
     "number_5_data": {
       "flow_type": "data_list",
       "flow_name": "number_5_data",
@@ -1194,6 +1226,12 @@
       "flow_name": "safeguarding_contacts_tz",
       "data_list_name": "safeguarding_contacts_tz",
       "_xlsxPath": "tz/data/safeguarding_data_tz.xlsx"
+    },
+    "scenario_data": {
+      "flow_type": "data_list",
+      "flow_name": "scenario_data",
+      "data_list_name": "scenario",
+      "_xlsxPath": "global/data/workshop_data/workshop_data_list.xlsx"
     },
     "scenario_question_data": {
       "flow_type": "data_list",
@@ -1459,6 +1497,17 @@
     }
   },
   "generator": {
+    "gen_activity_review": {
+      "flow_type": "generator",
+      "flow_name": "gen_activity_review",
+      "parameter_list": {
+        "input_data_list": "learn_play_data",
+        "output_flow_name": "ltp_activity_{@gen.id}_review",
+        "output_flow_type": "template",
+        "output_flow_subtype": "generated"
+      },
+      "_xlsxPath": "global/top_templates/in_week_messages/home_practice_reviews/w_learn_hp_review.xlsx"
+    },
     "gen_ending": {
       "flow_type": "generator",
       "flow_name": "gen_ending",
@@ -1513,6 +1562,17 @@
         "output_flow_subtype": "generated"
       },
       "_xlsxPath": "global/top_templates/parent_centre_templates/gen_lib_act_tools.xlsx"
+    },
+    "gen_scenario": {
+      "flow_type": "generator",
+      "flow_name": "gen_scenario",
+      "parameter_list": {
+        "input_data_list": "scenario_data",
+        "output_flow_name": "w_learn_learn_activity_ideas_{@gen.id}",
+        "output_flow_type": "template",
+        "output_flow_subtype": "generated"
+      },
+      "_xlsxPath": "global/top_templates/workshop_templates/workshop_learn.xlsx"
     },
     "gen_scenario_question": {
       "flow_type": "generator",
@@ -1839,6 +1899,16 @@
     "activities": {
       "flow_type": "template",
       "flow_name": "activities",
+      "_xlsxPath": "global/core_templates/core_templates_relax_and_activities.xlsx"
+    },
+    "activities_button": {
+      "flow_type": "template",
+      "flow_name": "activities_button",
+      "_xlsxPath": "global/core_templates/core_templates_relax_and_activities.xlsx"
+    },
+    "activity_button": {
+      "flow_type": "template",
+      "flow_name": "activity_button",
       "_xlsxPath": "global/core_templates/core_templates_relax_and_activities.xlsx"
     },
     "activity_relax_1": {
@@ -2182,6 +2252,12 @@
       "flow_name": "box_video",
       "_xlsxPath": "global/core_templates/core_templates_workshop_boxes.xlsx"
     },
+    "box_w_learn_home_practice": {
+      "flow_type": "template",
+      "module": "w_learn",
+      "flow_name": "box_w_learn_home_practice",
+      "_xlsxPath": "global/top_templates/workshop_templates/workshop_learn.xlsx"
+    },
     "care_together": {
       "flow_type": "template",
       "flow_name": "care_together",
@@ -2481,8 +2557,18 @@
       "flow_subtype": "generated",
       "flow_type": "template"
     },
+    "ltp_activity_bao_review": {
+      "flow_name": "ltp_activity_bao_review",
+      "flow_subtype": "generated",
+      "flow_type": "template"
+    },
     "ltp_activity_charades": {
       "flow_name": "ltp_activity_charades",
+      "flow_subtype": "generated",
+      "flow_type": "template"
+    },
+    "ltp_activity_charades_review": {
+      "flow_name": "ltp_activity_charades_review",
       "flow_subtype": "generated",
       "flow_type": "template"
     },
@@ -2491,8 +2577,18 @@
       "flow_subtype": "generated",
       "flow_type": "template"
     },
+    "ltp_activity_check_in_chat_review": {
+      "flow_name": "ltp_activity_check_in_chat_review",
+      "flow_subtype": "generated",
+      "flow_type": "template"
+    },
     "ltp_activity_chores": {
       "flow_name": "ltp_activity_chores",
+      "flow_subtype": "generated",
+      "flow_type": "template"
+    },
+    "ltp_activity_chores_review": {
+      "flow_name": "ltp_activity_chores_review",
       "flow_subtype": "generated",
       "flow_type": "template"
     },
@@ -2501,8 +2597,18 @@
       "flow_subtype": "generated",
       "flow_type": "template"
     },
+    "ltp_activity_clean_review": {
+      "flow_name": "ltp_activity_clean_review",
+      "flow_subtype": "generated",
+      "flow_type": "template"
+    },
     "ltp_activity_cook": {
       "flow_name": "ltp_activity_cook",
+      "flow_subtype": "generated",
+      "flow_type": "template"
+    },
+    "ltp_activity_cook_review": {
+      "flow_name": "ltp_activity_cook_review",
       "flow_subtype": "generated",
       "flow_type": "template"
     },
@@ -2511,8 +2617,18 @@
       "flow_subtype": "generated",
       "flow_type": "template"
     },
+    "ltp_activity_cook_traditional_review": {
+      "flow_name": "ltp_activity_cook_traditional_review",
+      "flow_subtype": "generated",
+      "flow_type": "template"
+    },
     "ltp_activity_dance": {
       "flow_name": "ltp_activity_dance",
+      "flow_subtype": "generated",
+      "flow_type": "template"
+    },
+    "ltp_activity_dance_review": {
+      "flow_name": "ltp_activity_dance_review",
       "flow_subtype": "generated",
       "flow_type": "template"
     },
@@ -2521,8 +2637,28 @@
       "flow_subtype": "generated",
       "flow_type": "template"
     },
+    "ltp_activity_dream_travel_review": {
+      "flow_name": "ltp_activity_dream_travel_review",
+      "flow_subtype": "generated",
+      "flow_type": "template"
+    },
     "ltp_activity_famous_party": {
       "flow_name": "ltp_activity_famous_party",
+      "flow_subtype": "generated",
+      "flow_type": "template"
+    },
+    "ltp_activity_famous_party_review": {
+      "flow_name": "ltp_activity_famous_party_review",
+      "flow_subtype": "generated",
+      "flow_type": "template"
+    },
+    "ltp_activity_find_pair": {
+      "flow_name": "ltp_activity_find_pair",
+      "flow_subtype": "generated",
+      "flow_type": "template"
+    },
+    "ltp_activity_find_pair_review": {
+      "flow_name": "ltp_activity_find_pair_review",
       "flow_subtype": "generated",
       "flow_type": "template"
     },
@@ -2531,13 +2667,18 @@
       "flow_subtype": "generated",
       "flow_type": "template"
     },
+    "ltp_activity_friendly_chat_review": {
+      "flow_name": "ltp_activity_friendly_chat_review",
+      "flow_subtype": "generated",
+      "flow_type": "template"
+    },
     "ltp_activity_garden": {
       "flow_name": "ltp_activity_garden",
       "flow_subtype": "generated",
       "flow_type": "template"
     },
-    "ltp_activity_hide_seek": {
-      "flow_name": "ltp_activity_hide_seek",
+    "ltp_activity_garden_review": {
+      "flow_name": "ltp_activity_garden_review",
       "flow_subtype": "generated",
       "flow_type": "template"
     },
@@ -2546,8 +2687,18 @@
       "flow_subtype": "generated",
       "flow_type": "template"
     },
+    "ltp_activity_interrupter_review": {
+      "flow_name": "ltp_activity_interrupter_review",
+      "flow_subtype": "generated",
+      "flow_type": "template"
+    },
     "ltp_activity_invent_story": {
       "flow_name": "ltp_activity_invent_story",
+      "flow_subtype": "generated",
+      "flow_type": "template"
+    },
+    "ltp_activity_invent_story_review": {
+      "flow_name": "ltp_activity_invent_story_review",
       "flow_subtype": "generated",
       "flow_type": "template"
     },
@@ -2556,8 +2707,18 @@
       "flow_subtype": "generated",
       "flow_type": "template"
     },
+    "ltp_activity_long_term_goal_review": {
+      "flow_name": "ltp_activity_long_term_goal_review",
+      "flow_subtype": "generated",
+      "flow_type": "template"
+    },
     "ltp_activity_memory_game": {
       "flow_name": "ltp_activity_memory_game",
+      "flow_subtype": "generated",
+      "flow_type": "template"
+    },
+    "ltp_activity_memory_game_review": {
+      "flow_name": "ltp_activity_memory_game_review",
       "flow_subtype": "generated",
       "flow_type": "template"
     },
@@ -2566,8 +2727,18 @@
       "flow_subtype": "generated",
       "flow_type": "template"
     },
+    "ltp_activity_mystery_box_review": {
+      "flow_name": "ltp_activity_mystery_box_review",
+      "flow_subtype": "generated",
+      "flow_type": "template"
+    },
     "ltp_activity_reflect_positive": {
       "flow_name": "ltp_activity_reflect_positive",
+      "flow_subtype": "generated",
+      "flow_type": "template"
+    },
+    "ltp_activity_reflect_positive_review": {
+      "flow_name": "ltp_activity_reflect_positive_review",
       "flow_subtype": "generated",
       "flow_type": "template"
     },
@@ -2576,8 +2747,18 @@
       "flow_subtype": "generated",
       "flow_type": "template"
     },
+    "ltp_activity_role_play_review": {
+      "flow_name": "ltp_activity_role_play_review",
+      "flow_subtype": "generated",
+      "flow_type": "template"
+    },
     "ltp_activity_short_term_goal": {
       "flow_name": "ltp_activity_short_term_goal",
+      "flow_subtype": "generated",
+      "flow_type": "template"
+    },
+    "ltp_activity_short_term_goal_review": {
+      "flow_name": "ltp_activity_short_term_goal_review",
       "flow_subtype": "generated",
       "flow_type": "template"
     },
@@ -2586,8 +2767,18 @@
       "flow_subtype": "generated",
       "flow_type": "template"
     },
+    "ltp_activity_superpowers_review": {
+      "flow_name": "ltp_activity_superpowers_review",
+      "flow_subtype": "generated",
+      "flow_type": "template"
+    },
     "ltp_activity_tell_stories": {
       "flow_name": "ltp_activity_tell_stories",
+      "flow_subtype": "generated",
+      "flow_type": "template"
+    },
+    "ltp_activity_tell_stories_review": {
+      "flow_name": "ltp_activity_tell_stories_review",
       "flow_subtype": "generated",
       "flow_type": "template"
     },
@@ -2596,8 +2787,18 @@
       "flow_subtype": "generated",
       "flow_type": "template"
     },
+    "ltp_activity_three_options_review": {
+      "flow_name": "ltp_activity_three_options_review",
+      "flow_subtype": "generated",
+      "flow_type": "template"
+    },
     "ltp_activity_time_machine": {
       "flow_name": "ltp_activity_time_machine",
+      "flow_subtype": "generated",
+      "flow_type": "template"
+    },
+    "ltp_activity_time_machine_review": {
+      "flow_name": "ltp_activity_time_machine_review",
       "flow_subtype": "generated",
       "flow_type": "template"
     },
@@ -2606,13 +2807,28 @@
       "flow_subtype": "generated",
       "flow_type": "template"
     },
+    "ltp_activity_two_truths_review": {
+      "flow_name": "ltp_activity_two_truths_review",
+      "flow_subtype": "generated",
+      "flow_type": "template"
+    },
     "ltp_activity_walk": {
       "flow_name": "ltp_activity_walk",
       "flow_subtype": "generated",
       "flow_type": "template"
     },
+    "ltp_activity_walk_review": {
+      "flow_name": "ltp_activity_walk_review",
+      "flow_subtype": "generated",
+      "flow_type": "template"
+    },
     "ltp_activity_yes_no_maybe": {
       "flow_name": "ltp_activity_yes_no_maybe",
+      "flow_subtype": "generated",
+      "flow_type": "template"
+    },
+    "ltp_activity_yes_no_maybe_review": {
+      "flow_name": "ltp_activity_yes_no_maybe_review",
       "flow_subtype": "generated",
       "flow_type": "template"
     },
@@ -2838,6 +3054,21 @@
     },
     "w_learn_intro_text": {
       "flow_name": "w_learn_intro_text",
+      "flow_subtype": "generated",
+      "flow_type": "template"
+    },
+    "w_learn_learn_activity_ideas_cook": {
+      "flow_name": "w_learn_learn_activity_ideas_cook",
+      "flow_subtype": "generated",
+      "flow_type": "template"
+    },
+    "w_learn_learn_activity_ideas_tell_stories": {
+      "flow_name": "w_learn_learn_activity_ideas_tell_stories",
+      "flow_subtype": "generated",
+      "flow_type": "template"
+    },
+    "w_learn_learn_activity_ideas_walk": {
+      "flow_name": "w_learn_learn_activity_ideas_walk",
       "flow_subtype": "generated",
       "flow_type": "template"
     },
@@ -3276,11 +3507,6 @@
       "flow_subtype": "generated",
       "flow_type": "template"
     },
-    "w_svp_learn_warning_signs_@gen.id": {
-      "flow_name": "w_svp_learn_warning_signs_@gen.id",
-      "flow_subtype": "generated",
-      "flow_type": "template"
-    },
     "w_svp_learn_warning_signs_catcalling": {
       "flow_name": "w_svp_learn_warning_signs_catcalling",
       "flow_subtype": "generated",
@@ -3642,6 +3868,11 @@
     "parent_centre_my_activities": {
       "flow_type": "template",
       "flow_name": "parent_centre_my_activities",
+      "_xlsxPath": "global/core_templates/core_templates_relax_and_activities.xlsx"
+    },
+    "parent_centre_my_ltp_activities": {
+      "flow_type": "template",
+      "flow_name": "parent_centre_my_ltp_activities",
       "_xlsxPath": "global/core_templates/core_templates_relax_and_activities.xlsx"
     },
     "parent_centre_my_relaxes": {
@@ -4976,6 +5207,42 @@
       "module": "instruct",
       "flow_name": "w_instruct_try_pop",
       "_xlsxPath": "global/top_templates/workshop_templates/workshop_instruct.xlsx"
+    },
+    "w_learn_home_practice": {
+      "flow_type": "template",
+      "module": "w_learn",
+      "flow_name": "w_learn_home_practice",
+      "_xlsxPath": "global/top_templates/workshop_templates/workshop_learn.xlsx"
+    },
+    "w_learn_learn_activity_ideas": {
+      "flow_type": "template",
+      "module": "w_learn",
+      "flow_name": "w_learn_learn_activity_ideas",
+      "_xlsxPath": "global/top_templates/workshop_templates/workshop_learn.xlsx"
+    },
+    "w_learn_quiz_learn_conflict": {
+      "flow_type": "template",
+      "module": "w_learn",
+      "flow_name": "w_learn_quiz_learn_conflict",
+      "_xlsxPath": "global/top_templates/workshop_templates/workshop_learn.xlsx"
+    },
+    "w_learn_quiz_learn_support": {
+      "flow_type": "template",
+      "module": "w_learn",
+      "flow_name": "w_learn_quiz_learn_support",
+      "_xlsxPath": "global/top_templates/workshop_templates/workshop_learn.xlsx"
+    },
+    "w_learn_read_learn_conflict": {
+      "flow_type": "template",
+      "module": "w_learn",
+      "flow_name": "w_learn_read_learn_conflict",
+      "_xlsxPath": "global/top_templates/workshop_templates/workshop_learn.xlsx"
+    },
+    "w_learn_read_learn_support": {
+      "flow_type": "template",
+      "module": "w_learn",
+      "flow_name": "w_learn_read_learn_support",
+      "_xlsxPath": "global/top_templates/workshop_templates/workshop_learn.xlsx"
     },
     "w_money_care_together": {
       "flow_type": "template",

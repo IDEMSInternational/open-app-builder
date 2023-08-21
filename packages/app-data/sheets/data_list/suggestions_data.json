@@ -151,7 +151,9 @@
         "option_1_title": {
           "tz_sw": true
         },
-        "option_1_text": {},
+        "option_1_text": {
+          "tz_sw": true
+        },
         "option_2_title": {
           "tz_sw": true
         },
@@ -248,8 +250,12 @@
         "option_5_text": {
           "tz_sw": true
         },
-        "option_6_title": {},
-        "option_6_text": {},
+        "option_6_title": {
+          "tz_sw": true
+        },
+        "option_6_text": {
+          "tz_sw": true
+        },
         "option_7_title": {
           "tz_sw": true
         },

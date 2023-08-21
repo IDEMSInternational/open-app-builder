@@ -12,7 +12,9 @@
         "question_text": {
           "tz_sw": true
         },
-        "option_1": {},
+        "option_1": {
+          "tz_sw": true
+        },
         "option_2": {
           "tz_sw": true
         },
@@ -217,19 +219,17 @@
         "question_text": {
           "tz_sw": true
         },
-        "reply_all": {
-          "tz_sw": true
-        }
+        "reply_all": {}
       },
       "_translatedFields": {
         "question_text": {
           "eng": "How did @global.w_srh_female_caregiver_2 and @global.w_srh_teen_girl_2 feel after their conversation?"
         },
         "reply_all": {
-          "eng": "When we stay calm, share how we feel, and look for solutions together, it will help us all – even if we are not sure of the right outcome. You can learn to navigate tricky situations and problems together with your teen."
+          "eng": "When we stay calm, share how we feel, and look for solutions together, it will help us all – even if we are not sure of the right outcome. You can learn to manage tricky situations and problems together with your teen."
         }
       },
-      "reply_all": "When we stay calm, share how we feel, and look for solutions together, it will help us all – even if we are not sure of the right outcome. You can learn to navigate tricky situations and problems together with your teen."
+      "reply_all": "When we stay calm, share how we feel, and look for solutions together, it will help us all – even if we are not sure of the right outcome. You can learn to manage tricky situations and problems together with your teen."
     },
     {
       "id": "sex_talk_who",
@@ -312,11 +312,9 @@
       "reply_3_icon_asset": "plh_images/icons/tick_circle.svg",
       "reply_4_image_asset": "plh_images/workshops/w_srh/learn/sex_talk_when/slide_4.svg",
       "reply_4_icon_asset": "plh_images/icons/tick_circle.svg",
-      "question_text": "When is the right time to start talking about this?",
+      "question_text": "When is the right time to start talking about body changes and intimate relationships?",
       "_translations": {
-        "question_text": {
-          "tz_sw": true
-        },
+        "question_text": {},
         "option_1": {
           "tz_sw": true
         },
@@ -332,22 +330,18 @@
         "option_3": {
           "tz_sw": true
         },
-        "reply_3": {
-          "tz_sw": true
-        },
+        "reply_3": {},
         "option_4": {
           "tz_sw": true
         },
-        "reply_4": {
-          "tz_sw": true
-        },
+        "reply_4": {},
         "reply_all": {
           "tz_sw": true
         }
       },
       "_translatedFields": {
         "question_text": {
-          "eng": "When is the right time to start talking about this?"
+          "eng": "When is the right time to start talking about body changes and intimate relationships?"
         },
         "option_1": {
           "eng": "When you find out they have a boyfriend or girlfriend"
@@ -365,13 +359,13 @@
           "eng": "Before they turn 10"
         },
         "reply_3": {
-          "eng": "Discussions around body changes and intimate relationships can start early, before the age of 9, by responding to questions a child may have. \n\nYou do not need to go into detail – just answer their questions in a simple and accurate way that works for their age."
+          "eng": "Discussions around body changes and intimate relationships can start early, before the age of 9, by responding to questions a child may have. \n\nYou do not need to go into detail – just answer their questions in a simple and honest way that works for their age."
         },
         "option_4": {
           "eng": "When you get an opportunity"
         },
         "reply_4": {
-          "eng": "No parent feels ‘ready’ to have these conversations with their teen. When your teen asks you a question or when you see a situation together that relates to body changes or relationships (for example on TV or in your community), you can use that as an opening to start the conversation. You can ask “What do you think about what we saw?” or “How did that make you feel?”. \n\nYou do not have to have all the answers, just use the opportunity when it comes up!"
+          "eng": "Parents never feel ‘ready’ to have these conversations with their teen. When your teen asks you a question or when you see a situation together that relates to body changes or relationships (for example in magazines or in your community), you can use that as an opening to start the conversation. You can ask “What do you think about what we saw?” or “How did that make you feel?”. \n\nYou do not have to have all the answers, just use the opportunity when it comes up!"
         },
         "reply_all": {
           "eng": "Check out the other options too."
@@ -382,9 +376,9 @@
       "option_2": "When they turn 10",
       "reply_2": "From the age of 10, children start to enter the puberty stage and need to already know about how their bodies and feelings may change. \n\nThis will also help them cope better with sexual feelings safely.",
       "option_3": "Before they turn 10",
-      "reply_3": "Discussions around body changes and intimate relationships can start early, before the age of 9, by responding to questions a child may have. \n\nYou do not need to go into detail – just answer their questions in a simple and accurate way that works for their age.",
+      "reply_3": "Discussions around body changes and intimate relationships can start early, before the age of 9, by responding to questions a child may have. \n\nYou do not need to go into detail – just answer their questions in a simple and honest way that works for their age.",
       "option_4": "When you get an opportunity",
-      "reply_4": "No parent feels ‘ready’ to have these conversations with their teen. When your teen asks you a question or when you see a situation together that relates to body changes or relationships (for example on TV or in your community), you can use that as an opening to start the conversation. You can ask “What do you think about what we saw?” or “How did that make you feel?”. \n\nYou do not have to have all the answers, just use the opportunity when it comes up!",
+      "reply_4": "Parents never feel ‘ready’ to have these conversations with their teen. When your teen asks you a question or when you see a situation together that relates to body changes or relationships (for example in magazines or in your community), you can use that as an opening to start the conversation. You can ask “What do you think about what we saw?” or “How did that make you feel?”. \n\nYou do not have to have all the answers, just use the opportunity when it comes up!",
       "reply_all": "Check out the other options too."
     },
     {
@@ -408,9 +402,7 @@
         "option_1": {
           "tz_sw": true
         },
-        "reply_1": {
-          "tz_sw": true
-        },
+        "reply_1": {},
         "option_2": {
           "tz_sw": true
         },
@@ -426,15 +418,11 @@
         "option_4": {
           "tz_sw": true
         },
-        "reply_4": {
-          "tz_sw": true
-        },
+        "reply_4": {},
         "option_5": {
           "tz_sw": true
         },
-        "reply_5": {
-          "tz_sw": true
-        },
+        "reply_5": {},
         "reply_all": {
           "tz_sw": true
         }
@@ -447,7 +435,7 @@
           "eng": "I determine what my teen can and cannot do"
         },
         "reply_1": {
-          "eng": "When we are too controlling, our teens may become rebellious and end up doing the things we do not want them to do. \n\nWhen we give our teens space to make their own decisions and guide them, they generally behave more responsibly."
+          "eng": "When we are too controlling, our teens may end up doing the things we do not want them to do. \n\nWhen we give our teens space to make their own decisions and guide them, they generally behave more responsibly."
         },
         "option_2": {
           "eng": "I keep information or bad influences away from them"
@@ -465,28 +453,28 @@
           "eng": "I discuss consequences and solutions with my teen"
         },
         "reply_4": {
-          "eng": "To make a good decision, we have to think through the consequences. When you have a problem, have an open discussion with your teen. Listen to each other’s opinions and discuss solutions together.\n\nEvery challenge is an opportunity to help your teen understand that each action has consequences and you can work together to find a solution.\n\nWhen you work through a tricky situation or conversation together, remember to praise and recognize yourselves for your great teamwork."
+          "eng": "To make a good decision, we have to think through the consequences. When you have a problem, have an open discussion with your teen. Listen to each other’s opinions and discuss solutions together.\n\nEvery challenge is an opportunity to help your teen understand that each action has consequences and you can work together to find a solution.\n\nWhen you work through a tricky situation or conversation together, remember to praise and recognise yourselves for your great teamwork."
         },
         "option_5": {
           "eng": "I emphasise that pressure is never okay"
         },
         "reply_5": {
-          "eng": "To stay safe, your teen needs to understand the difference between respectful behaviours and relationships (when we feel cared for, involved in decision making, happy and safe) and unhealthy ones (when we feel pressured to do something, uncomfortable with decisions or actions, or unsafe in any other way). \n\nIn any relationship or sexual activity, you should never be pushed or convinced to do something you do not feel comfortable with, and you should never force others either. \n\nYou can learn more about this in the @data.workshop.w_svp.in_text_title."
+          "eng": "To stay safe, your teen needs to understand the difference between respectful behaviours and relationships, and unhealthy ones. \n\nA respectful relationship is when we feel cared for, involved in decision making, happy and safe. An unhealthy relationship is when we feel pressured to do something, uncomfortable with decisions or actions, or unsafe in any other way. \n\nIn any relationship or sexual activity, you should never be pushed or convinced to do something you do not feel comfortable with, and you should never force others either. You can learn more about this in the @data.workshop.w_svp.in_text_title."
         },
         "reply_all": {
           "eng": "Check out the other options too."
         }
       },
       "option_1": "I determine what my teen can and cannot do",
-      "reply_1": "When we are too controlling, our teens may become rebellious and end up doing the things we do not want them to do. \n\nWhen we give our teens space to make their own decisions and guide them, they generally behave more responsibly.",
+      "reply_1": "When we are too controlling, our teens may end up doing the things we do not want them to do. \n\nWhen we give our teens space to make their own decisions and guide them, they generally behave more responsibly.",
       "option_2": "I keep information or bad influences away from them",
       "reply_2": "Teens get information and pressure from many different sources that we cannot control. \n\nIt is our role as parents to prepare them and guide them well, so they can  learn how to tell the difference between good and bad information, and be confident to make their own decisions.",
       "option_3": "I build a healthy trusting relationship with my teen",
       "reply_3": "Your teen will trust you, when they feel you trust them. They are more likely to ask for advice or share when they have a problem if they are used to talking to you.\n\nPraise and thank your teen whenever they share, and avoid judging their questions or behaviour so they feel safe to come to you again and again.",
       "option_4": "I discuss consequences and solutions with my teen",
-      "reply_4": "To make a good decision, we have to think through the consequences. When you have a problem, have an open discussion with your teen. Listen to each other’s opinions and discuss solutions together.\n\nEvery challenge is an opportunity to help your teen understand that each action has consequences and you can work together to find a solution.\n\nWhen you work through a tricky situation or conversation together, remember to praise and recognize yourselves for your great teamwork.",
+      "reply_4": "To make a good decision, we have to think through the consequences. When you have a problem, have an open discussion with your teen. Listen to each other’s opinions and discuss solutions together.\n\nEvery challenge is an opportunity to help your teen understand that each action has consequences and you can work together to find a solution.\n\nWhen you work through a tricky situation or conversation together, remember to praise and recognise yourselves for your great teamwork.",
       "option_5": "I emphasise that pressure is never okay",
-      "reply_5": "To stay safe, your teen needs to understand the difference between respectful behaviours and relationships (when we feel cared for, involved in decision making, happy and safe) and unhealthy ones (when we feel pressured to do something, uncomfortable with decisions or actions, or unsafe in any other way). \n\nIn any relationship or sexual activity, you should never be pushed or convinced to do something you do not feel comfortable with, and you should never force others either. \n\nYou can learn more about this in the @data.workshop.w_svp.in_text_title.",
+      "reply_5": "To stay safe, your teen needs to understand the difference between respectful behaviours and relationships, and unhealthy ones. \n\nA respectful relationship is when we feel cared for, involved in decision making, happy and safe. An unhealthy relationship is when we feel pressured to do something, uncomfortable with decisions or actions, or unsafe in any other way. \n\nIn any relationship or sexual activity, you should never be pushed or convinced to do something you do not feel comfortable with, and you should never force others either. You can learn more about this in the @data.workshop.w_svp.in_text_title.",
       "reply_all": "Check out the other options too."
     },
     {
@@ -564,8 +552,12 @@
       "workshop": "w_grief",
       "question_text": "How did @global.w_grief_male_caregiver_1’s response make @global.w_grief_teen_girl_1 feel?",
       "_translations": {
-        "question_text": {},
-        "reply_all": {}
+        "question_text": {
+          "tz_sw": true
+        },
+        "reply_all": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "question_text": {
@@ -582,12 +574,24 @@
       "workshop": "w_grief",
       "question_text": "What could @global.w_grief_male_caregiver_1 have done differently?",
       "_translations": {
-        "question_text": {},
-        "option_1": {},
-        "option_2": {},
-        "option_3": {},
-        "option_4": {},
-        "reply_all": {}
+        "question_text": {
+          "tz_sw": true
+        },
+        "option_1": {
+          "tz_sw": true
+        },
+        "option_2": {
+          "tz_sw": true
+        },
+        "option_3": {
+          "tz_sw": true
+        },
+        "option_4": {
+          "tz_sw": true
+        },
+        "reply_all": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "question_text": {
@@ -620,10 +624,18 @@
       "workshop": "w_grief",
       "question_text": "How did @global.w_grief_teen_girl_1 and @global.w_grief_male_caregiver_1 feel after talking?",
       "_translations": {
-        "question_text": {},
-        "option_1": {},
-        "option_2": {},
-        "option_3": {}
+        "question_text": {
+          "tz_sw": true
+        },
+        "option_1": {
+          "tz_sw": true
+        },
+        "option_2": {
+          "tz_sw": true
+        },
+        "option_3": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "question_text": {
@@ -648,11 +660,21 @@
       "workshop": "w_grief",
       "question_text": "What could have happened if @global.w_grief_male_caregiver_1 got angry at @global.w_grief_teen_girl_1 when she shared that she was feeling angry?",
       "_translations": {
-        "question_text": {},
-        "option_1": {},
-        "option_2": {},
-        "option_3": {},
-        "reply_all": {}
+        "question_text": {
+          "tz_sw": true
+        },
+        "option_1": {
+          "tz_sw": true
+        },
+        "option_2": {
+          "tz_sw": true
+        },
+        "option_3": {
+          "tz_sw": true
+        },
+        "reply_all": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "question_text": {
@@ -677,58 +699,149 @@
       "reply_all": "Everyone copes with grief differently. We can help each other by accepting each other’s feelings and coming up with ideas together to support each other."
     },
     {
-      "reply_1_icon_asset": "She was shocked that Neema had condoms",
-      "reply_2_image_asset": "She was scared Neema was already having sex",
-      "reply_2_icon_asset": "[once user selects answer] When we are angry or scared, we can say or do things that hurt others and harm our relationships.",
-      "reply_3_image_asset": "How will this affect Bibi’s relationship with Neema?",
-      "reply_3_icon_asset": "Neema may not ask Bibi questions or advice if she has a problem",
-      "reply_4_image_asset": "[once user selects answer] Yes, all of these are true. After this argument, Neema is likely to look for information and advice from other places (also if something goes wrong with a relationship or in her life).",
-      "reply_1": "Why do you think Bibi reacted the way she did?",
+      "id": "learn_conflict_cause",
+      "workshop": "w_learn",
+      "question_text": "Why did @global.w_learn_teen_girl_1 react this way?",
       "_translations": {
-        "reply_1": {
-          "tz_sw": true
-        },
-        "option_2": {
-          "tz_sw": true
-        },
-        "reply_2": {
-          "tz_sw": true
-        },
-        "reply_3": {
-          "tz_sw": true
-        },
-        "option_4": {
-          "tz_sw": true
-        },
-        "reply_4": {
-          "tz_sw": true
-        }
+        "question_text": {},
+        "option_1": {},
+        "option_2": {},
+        "option_3": {},
+        "reply_all": {}
       },
       "_translatedFields": {
-        "reply_1": {
-          "eng": "Why do you think Bibi reacted the way she did?"
+        "question_text": {
+          "eng": "Why did @global.w_learn_teen_girl_1 react this way?"
+        },
+        "option_1": {
+          "eng": "@global.w_learn_teen_girl_1 was upset that her mother did not see how she helped at home."
         },
         "option_2": {
-          "eng": "She felt disrespected and angry at Neema"
+          "eng": "@global.w_learn_teen_girl_1 was not able to talk to her mother about her hard day at school."
         },
-        "reply_2": {
-          "eng": "She felt ashamed to talk about sex"
+        "option_3": {
+          "eng": "@global.w_learn_female_caregiver_1 blamed @global.w_learn_teen_girl_1 for not cooking dinner yet."
         },
-        "reply_3": {
-          "eng": "Neema may not trust Bibi in the future"
-        },
-        "option_4": {
-          "eng": "Neema may make bad decisions out of anger"
-        },
-        "reply_4": {
-          "eng": "She may get into situations that are not healthy or safe, and may not want to talk to Bibi about it even if she has questions or needs help. She may feel worried that Bibi will judge her choices or feel ashamed of her."
+        "reply_all": {
+          "eng": "Yes, all of these are true. @global.w_learn_teen_girl_1 reacted this way because her mother did not talk to her about her day, blamed her for not cooking yet and did not thank @global.w_learn_teen_girl_1 for helping at home."
         }
       },
-      "option_2": "She felt disrespected and angry at Neema",
-      "reply_2": "She felt ashamed to talk about sex",
-      "reply_3": "Neema may not trust Bibi in the future",
-      "option_4": "Neema may make bad decisions out of anger",
-      "reply_4": "She may get into situations that are not healthy or safe, and may not want to talk to Bibi about it even if she has questions or needs help. She may feel worried that Bibi will judge her choices or feel ashamed of her."
+      "option_1": "@global.w_learn_teen_girl_1 was upset that her mother did not see how she helped at home.",
+      "option_2": "@global.w_learn_teen_girl_1 was not able to talk to her mother about her hard day at school.",
+      "option_3": "@global.w_learn_female_caregiver_1 blamed @global.w_learn_teen_girl_1 for not cooking dinner yet.",
+      "reply_all": "Yes, all of these are true. @global.w_learn_teen_girl_1 reacted this way because her mother did not talk to her about her day, blamed her for not cooking yet and did not thank @global.w_learn_teen_girl_1 for helping at home."
+    },
+    {
+      "id": "learn_conflict_consequence",
+      "workshop": "w_learn",
+      "question_text": "How will this affect the relationship between @global.w_learn_female_caregiver_1 and @global.w_learn_teen_girl_1?",
+      "_translations": {
+        "question_text": {},
+        "option_1": {},
+        "option_2": {},
+        "option_3": {},
+        "option_4": {},
+        "reply_all": {}
+      },
+      "_translatedFields": {
+        "question_text": {
+          "eng": "How will this affect the relationship between @global.w_learn_female_caregiver_1 and @global.w_learn_teen_girl_1?"
+        },
+        "option_1": {
+          "eng": "@global.w_learn_teen_girl_1 will not want to help with house chores, as her mother did not appreciate it."
+        },
+        "option_2": {
+          "eng": "@global.w_learn_teen_girl_1 will not want to speak to her mother about her problems because she was not given a chance to talk about it."
+        },
+        "option_3": {
+          "eng": "@global.w_learn_teen_girl_1 will be angry at her mother and not listen to her in the future."
+        },
+        "option_4": {
+          "eng": "@global.w_learn_teen_girl_1 will treat her siblings the same way that her mother treats her."
+        },
+        "reply_all": {
+          "eng": "These are all true. @global.w_learn_teen_girl_1 will not want to help around the house or speak to her mother about her problems because her mother does not thank her or listen to her. @global.w_learn_teen_girl_1 will also treat her siblings the same way because that is what she has learnt from her mother."
+        }
+      },
+      "option_1": "@global.w_learn_teen_girl_1 will not want to help with house chores, as her mother did not appreciate it.",
+      "option_2": "@global.w_learn_teen_girl_1 will not want to speak to her mother about her problems because she was not given a chance to talk about it.",
+      "option_3": "@global.w_learn_teen_girl_1 will be angry at her mother and not listen to her in the future.",
+      "option_4": "@global.w_learn_teen_girl_1 will treat her siblings the same way that her mother treats her.",
+      "reply_all": "These are all true. @global.w_learn_teen_girl_1 will not want to help around the house or speak to her mother about her problems because her mother does not thank her or listen to her. @global.w_learn_teen_girl_1 will also treat her siblings the same way because that is what she has learnt from her mother."
+    },
+    {
+      "id": "learn_support_before",
+      "workshop": "w_learn",
+      "question_text": "How did @global.w_learn_teen_girl_1 and @global.w_learn_female_caregiver_1 feel before they got to speak to each other?",
+      "_translations": {
+        "question_text": {},
+        "reply_all": {}
+      },
+      "_translatedFields": {
+        "question_text": {
+          "eng": "How did @global.w_learn_teen_girl_1 and @global.w_learn_female_caregiver_1 feel before they got to speak to each other?"
+        },
+        "reply_all": {
+          "eng": "Yes, both of them had long, hard days."
+        }
+      },
+      "reply_all": "Yes, both of them had long, hard days."
+    },
+    {
+      "id": "learn_support_during",
+      "workshop": "w_learn",
+      "question_text": "What did @global.w_learn_female_caregiver_1 do differently this time?",
+      "_translations": {
+        "question_text": {},
+        "option_1": {},
+        "option_2": {},
+        "option_3": {},
+        "option_4": {},
+        "reply_all": {}
+      },
+      "_translatedFields": {
+        "question_text": {
+          "eng": "What did @global.w_learn_female_caregiver_1 do differently this time?"
+        },
+        "option_1": {
+          "eng": "She took a few minutes for herself to relax and get settled at home before talking with @global.w_learn_teen_girl_1."
+        },
+        "option_2": {
+          "eng": "She asked @global.w_learn_teen_girl_1 to help with cooking, so she could get dinner done AND have time to talk."
+        },
+        "option_3": {
+          "eng": "She praised @global.w_learn_teen_girl_1 for doing specific household chores."
+        },
+        "option_4": {
+          "eng": "She showed @global.w_learn_teen_girl_1 that she is available to talk and listen."
+        },
+        "reply_all": {
+          "eng": "Yes, all of these are true."
+        }
+      },
+      "option_1": "She took a few minutes for herself to relax and get settled at home before talking with @global.w_learn_teen_girl_1.",
+      "option_2": "She asked @global.w_learn_teen_girl_1 to help with cooking, so she could get dinner done AND have time to talk.",
+      "option_3": "She praised @global.w_learn_teen_girl_1 for doing specific household chores.",
+      "option_4": "She showed @global.w_learn_teen_girl_1 that she is available to talk and listen.",
+      "reply_all": "Yes, all of these are true."
+    },
+    {
+      "id": "learn_support_after",
+      "workshop": "w_learn",
+      "question_text": "How did @global.w_learn_teen_girl_1 and her mother feel afterwards?",
+      "_translations": {
+        "question_text": {},
+        "reply_all": {}
+      },
+      "_translatedFields": {
+        "question_text": {
+          "eng": "How did @global.w_learn_teen_girl_1 and her mother feel afterwards?"
+        },
+        "reply_all": {
+          "eng": "Yes, taking a moment to talk while doing house chores helped them both!\n\nBy taking time for yourself, asking your teen to do a house chore or activity with you, and giving them space to talk to you, you are creating a safe space for them to learn with you.\n\nThis is an easy way to build a healthy relationship with your teen. This will help them learn important things they do not learn at school."
+        }
+      },
+      "reply_all": "Yes, taking a moment to talk while doing house chores helped them both!\n\nBy taking time for yourself, asking your teen to do a house chore or activity with you, and giving them space to talk to you, you are creating a safe space for them to learn with you.\n\nThis is an easy way to build a healthy relationship with your teen. This will help them learn important things they do not learn at school."
     }
   ],
   "_xlsxPath": "global/data/workshop_data/workshop_data_list.xlsx"
