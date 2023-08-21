@@ -2,9 +2,6 @@
 #         Configuration
 ##################################################################################
 env:
-  # Hardcoded default (testing purposes)
-  BUILD_BRANCH_DEFAULT: master
-  DEPLOYMENT_NAME_DEFAULT: plh_global
   # Secrets
   GOOGLE_SERVICES_JSON: ${{secrets.GOOGLE_SERVICES_JSON}}
   SIGNING_KEY: ${{secrets.SIGNING_KEY}}
@@ -66,7 +63,7 @@ jobs:
       - uses: actions/checkout@v3
         with:
           lfs: true
-          ref:  ${{ inputs.BUILD_BRANCH }}
+          ref:  ${{ inputs.branch }}
       #############################################################################
       #         Configure
       # Setup node same way as web build to allow calling `npx cap sync` command
@@ -152,5 +149,5 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: release_bundle
-          path: android/app/build/outputs/bundle/release/app-release.aab
+          path: ${{steps.sign_aab.outputs.signedReleaseFile}}
      
