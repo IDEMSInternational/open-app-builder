@@ -8,6 +8,7 @@
       "individual": true,
       "together": false,
       "priority": 1,
+      "icon_asset": "@data.mode.welcome_individual.icon_asset",
       "has_single_task": true,
       "title": "How are you?",
       "_translations": {
@@ -29,6 +30,7 @@
       "individual": true,
       "together": true,
       "priority": 3,
+      "icon_asset": "@data.mode.relax.icon_asset",
       "has_single_task": true,
       "title": "@data.workshop_relax[@fields.current_workshop].activity_title",
       "_translations": {
@@ -48,6 +50,7 @@
       "individual": true,
       "together": true,
       "priority": 5,
+      "icon_asset": "@data.mode.topic_intro.icon_asset",
       "has_single_task": true,
       "title": "@data.topic_intro[@fields.current_workshop].title",
       "_translations": {
@@ -67,6 +70,7 @@
       "individual": true,
       "together": true,
       "priority": 70,
+      "icon_asset": "@data.mode.tools.icon_asset",
       "has_single_task": true,
       "title": "@data.tools[@fields.current_workshop].title",
       "_translations": {
@@ -86,6 +90,7 @@
       "individual": true,
       "together": true,
       "priority": 80,
+      "icon_asset": "@data.mode.home_practice.icon_asset",
       "has_single_task": true,
       "title": "@global.home_practice",
       "_translations": {
@@ -105,6 +110,7 @@
       "individual": true,
       "together": true,
       "priority": 90,
+      "icon_asset": "@data.mode.ending.icon_asset",
       "has_single_task": true,
       "title": "Well done!",
       "_translations": {
@@ -126,6 +132,7 @@
       "individual": true,
       "together": true,
       "priority": 91,
+      "icon_asset": "@data.mode.hp_review.icon_asset",
       "has_single_task": true,
       "title": "@global.hp_review",
       "_translations": {
@@ -145,14 +152,15 @@
       "individual": true,
       "together": true,
       "priority": 11,
+      "icon_asset": "@data.mode.read.icon_asset",
       "has_single_task": false,
-      "title": "@global.story @global.part_connector @data.story.ignore_emotions.title",
+      "title": "@data.story.ignore_emotions.title",
       "_translations": {
         "title": {}
       },
       "_translatedFields": {
         "title": {
-          "eng": "@global.story @global.part_connector @data.story.ignore_emotions.title"
+          "eng": "@data.story.ignore_emotions.title"
         }
       },
       "story_id": "ignore_emotions",
@@ -164,14 +172,15 @@
       "individual": true,
       "together": true,
       "priority": 13,
+      "icon_asset": "@data.mode.read.icon_asset",
       "has_single_task": true,
-      "title": "@global.story @global.part_connector @data.story.acknowledge_emotions.title",
+      "title": "@data.story.acknowledge_emotions.title",
       "_translations": {
         "title": {}
       },
       "_translatedFields": {
         "title": {
-          "eng": "@global.story @global.part_connector @data.story.acknowledge_emotions.title"
+          "eng": "@data.story.acknowledge_emotions.title"
         }
       },
       "template": "w_stress_read_2",
@@ -184,14 +193,15 @@
       "individual": true,
       "together": true,
       "priority": 14,
+      "icon_asset": "@data.mode.read.icon_asset",
       "has_single_task": false,
-      "title": "@global.story @global.part_connector @data.story.safety_amnesty.title",
+      "title": "@data.story.safety_amnesty.title",
       "_translations": {
         "title": {}
       },
       "_translatedFields": {
         "title": {
-          "eng": "@global.story @global.part_connector @data.story.safety_amnesty.title"
+          "eng": "@data.story.safety_amnesty.title"
         }
       },
       "story_id": "safety_amnesty",

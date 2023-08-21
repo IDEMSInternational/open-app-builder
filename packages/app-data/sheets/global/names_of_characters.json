@@ -506,6 +506,33 @@
         "value": {}
       },
       "exclude_from_translation": true
+    },
+    {
+      "type": "declare_global_constant",
+      "name": "w_learn_girl_1",
+      "value": "@global.female_child_name_1",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true
+    },
+    {
+      "type": "declare_global_constant",
+      "name": "w_learn_teen_girl_1",
+      "value": "@global.female_child_name_2",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true
+    },
+    {
+      "type": "declare_global_constant",
+      "name": "w_learn_female_caregiver_1",
+      "value": "@global.female_caregiver_1",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true
     }
   ],
   "_xlsxPath": "global/data/localisation_globals.xlsx"

@@ -890,9 +890,9 @@
                     {
                       "name": "answer_list",
                       "value": [
-                        "name:ok | image:plh_images/stickers/faces/neutral.svg | image_checked:plh_images/stickers/faces/neutral.svg",
-                        "name:happy | image:plh_images/stickers/faces/happier.svg | image_checked:plh_images/stickers/faces/happier.svg",
-                        "name:very_happy | image:plh_images/stickers/faces/happiest.svg | image_checked:plh_images/stickers/faces/happiest.svg"
+                        "name: happy | image:plh_images/stickers/faces/happy.svg | image_checked:plh_images/stickers/faces/happy.svg",
+                        "name: happier | image:plh_images/stickers/faces/happier.svg | image_checked:plh_images/stickers/faces/happier.svg",
+                        "name: happiest | image:plh_images/stickers/faces/happiest.svg | image_checked:plh_images/stickers/faces/happiest.svg"
                       ],
                       "type": "set_variable",
                       "_nested_name": "question_time.workshop_activity.content_box.box_2.answer_list"

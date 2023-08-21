@@ -146,8 +146,14 @@
       ]
     },
     {
-      "operation": "append_columns",
+      "operation": "filter",
       "input_source": "common_workshop_task_gs",
+      "args_list": [
+        "id != \"hp_review\""
+      ]
+    },
+    {
+      "operation": "append_columns",
       "output_target": "w_learn_common_task_gs",
       "args_list": [
         "template: w_learn_@row.id"

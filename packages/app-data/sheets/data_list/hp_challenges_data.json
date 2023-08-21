@@ -773,7 +773,9 @@
         "text_challenge_1": {
           "tz_sw": true
         },
-        "reply_challenge_1": {},
+        "reply_challenge_1": {
+          "tz_sw": true
+        },
         "text_challenge_2": {
           "tz_sw": true
         },
@@ -900,6 +902,94 @@
       "reply_challenge_2": "It can be hard for teens to open up about a difficult situation or trauma they experienced, especially if it happened while they were in a place or with people that you may not approve of as a parent.\nRemember to breathe and listen to what your teen needs. You can find support together if needed.",
       "text_challenge_3": "The conversation reminded me of a difficult experience I had.",
       "reply_challenge_3": "It is normal to feel upset or angry when we are reminded of such experiences. Think about what support you may need. Taking good care of yourself is essential for taking good care of your family.\n\nOnce you are in a calmer space, you can try again to talk to your teen about how they can stay safe.",
+      "top_text": "Challenges other parents experience:"
+    },
+    {
+      "id": "w_grief",
+      "number_of_challenges": "5",
+      "question_text": "Did you have any challenges when sharing how you feel with your teen?",
+      "_translations": {
+        "question_text": {
+          "tz_sw": true
+        },
+        "text_challenge_1": {
+          "tz_sw": true
+        },
+        "reply_challenge_1": {
+          "tz_sw": true
+        },
+        "text_challenge_2": {
+          "tz_sw": true
+        },
+        "reply_challenge_2": {},
+        "text_challenge_3": {
+          "tz_sw": true
+        },
+        "reply_challenge_3": {
+          "tz_sw": true
+        },
+        "text_challenge_4": {
+          "tz_sw": true
+        },
+        "reply_challenge_4": {
+          "tz_sw": true
+        },
+        "text_challenge_5": {},
+        "reply_challenge_5": {
+          "tz_sw": true
+        },
+        "top_text": {
+          "tz_sw": true
+        }
+      },
+      "_translatedFields": {
+        "question_text": {
+          "eng": "Did you have any challenges when sharing how you feel with your teen?"
+        },
+        "text_challenge_1": {
+          "eng": "I was afraid my teen would think I was weak."
+        },
+        "reply_challenge_1": {
+          "eng": "Sharing feelings, especially the difficult ones, sets an important example for your teen! It actually makes everyone in the family stronger, because you can understand and support each other better."
+        },
+        "text_challenge_2": {
+          "eng": "I felt uncomfortable about naming specific difficult feelings."
+        },
+        "reply_challenge_2": {
+          "eng": "Being specific is not rude or insensitive – it really helps others to understand you clearly and this prevents confusion in the family. Feelings like sadness and anger are part of our lives. When we feel those emotions, it can help to share them with our teens and others. This way, our teens can also learn to share their emotions and we can support each other through difficult times."
+        },
+        "text_challenge_3": {
+          "eng": "My teen felt uncomfortable when I shared my feelings."
+        },
+        "reply_challenge_3": {
+          "eng": "Starting a new thing is always difficult at first. Give yourselves some time to get used to it and keep showing a good example by observing and sharing your feelings. Over time, your teen will learn to do the same, and they will feel even more loved and cared for!"
+        },
+        "text_challenge_4": {
+          "eng": "When I shared my feelings, my teen asked many questions, which made me uncomfortable."
+        },
+        "reply_challenge_4": {
+          "eng": "Sharing feelings helps your teen to be aware and learn to do the same. You can choose how much detail you want to share about the situation. It is up to you! You can also choose to answer questions later by saying, “I am feeling angry/stressed now. Could you please give me some time? We can talk about this more tonight.”"
+        },
+        "text_challenge_5": {
+          "eng": "I was too sad or overwhelmed to try sharing my feelings – I prefer to be alone when I feel like that."
+        },
+        "reply_challenge_5": {
+          "eng": "It is okay to not want to share at that time. Find some time to explain later, when you feel calmer, so that everyone can understand."
+        },
+        "top_text": {
+          "eng": "Challenges other parents experience:"
+        }
+      },
+      "text_challenge_1": "I was afraid my teen would think I was weak.",
+      "reply_challenge_1": "Sharing feelings, especially the difficult ones, sets an important example for your teen! It actually makes everyone in the family stronger, because you can understand and support each other better.",
+      "text_challenge_2": "I felt uncomfortable about naming specific difficult feelings.",
+      "reply_challenge_2": "Being specific is not rude or insensitive – it really helps others to understand you clearly and this prevents confusion in the family. Feelings like sadness and anger are part of our lives. When we feel those emotions, it can help to share them with our teens and others. This way, our teens can also learn to share their emotions and we can support each other through difficult times.",
+      "text_challenge_3": "My teen felt uncomfortable when I shared my feelings.",
+      "reply_challenge_3": "Starting a new thing is always difficult at first. Give yourselves some time to get used to it and keep showing a good example by observing and sharing your feelings. Over time, your teen will learn to do the same, and they will feel even more loved and cared for!",
+      "text_challenge_4": "When I shared my feelings, my teen asked many questions, which made me uncomfortable.",
+      "reply_challenge_4": "Sharing feelings helps your teen to be aware and learn to do the same. You can choose how much detail you want to share about the situation. It is up to you! You can also choose to answer questions later by saying, “I am feeling angry/stressed now. Could you please give me some time? We can talk about this more tonight.”",
+      "text_challenge_5": "I was too sad or overwhelmed to try sharing my feelings – I prefer to be alone when I feel like that.",
+      "reply_challenge_5": "It is okay to not want to share at that time. Find some time to explain later, when you feel calmer, so that everyone can understand.",
       "top_text": "Challenges other parents experience:"
     }
   ],

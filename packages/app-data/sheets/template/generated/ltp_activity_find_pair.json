@@ -1,5 +1,5 @@
 {
-  "flow_name": "ltp_activity_hide_seek",
+  "flow_name": "ltp_activity_find_pair",
   "flow_subtype": "generated",
   "flow_type": "template",
   "rows": [
@@ -21,7 +21,7 @@
       "rows": [
         {
           "name": "activity_id",
-          "value": "hide_seek",
+          "value": "find_pair",
           "_translations": {
             "value": {}
           },

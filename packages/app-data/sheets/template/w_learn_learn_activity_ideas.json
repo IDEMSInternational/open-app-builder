@@ -1,0 +1,867 @@
+{
+  "flow_type": "template",
+  "module": "w_learn",
+  "flow_name": "w_learn_learn_activity_ideas",
+  "status": "released",
+  "rows": [
+    {
+      "name": "row_id",
+      "value": "activity_ideas",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "row_id"
+    },
+    {
+      "name": "row_concat",
+      "value": "learn.@local.row_id",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "row_concat",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "learn.@local.row_id",
+            "matchedExpression": "@local.row_id",
+            "type": "local",
+            "fieldName": "row_id"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.row_id": [
+          "value"
+        ]
+      }
+    },
+    {
+      "name": "row_data",
+      "value": "@data.@local.row_concat",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "row_data",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@data.@local.row_concat",
+            "matchedExpression": "@local.row_concat",
+            "type": "local",
+            "fieldName": "row_concat"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.row_concat": [
+          "value"
+        ]
+      }
+    },
+    {
+      "name": "type",
+      "value": "@local.row_data.type",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "type",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@local.row_data.type",
+            "matchedExpression": "@local.row_data.type",
+            "type": "local",
+            "fieldName": "row_data"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.row_data.type": [
+          "value"
+        ]
+      }
+    },
+    {
+      "name": "part_id_1",
+      "value": "@local.row_data.part_1",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "part_id_1",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@local.row_data.part_1",
+            "matchedExpression": "@local.row_data.part_1",
+            "type": "local",
+            "fieldName": "row_data"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.row_data.part_1": [
+          "value"
+        ]
+      }
+    },
+    {
+      "name": "part_concat_1",
+      "value": "@local.type.@local.part_id_1",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "part_concat_1",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@local.type.@local.part_id_1",
+            "matchedExpression": "@local.type",
+            "type": "local",
+            "fieldName": "type"
+          },
+          {
+            "fullExpression": "@local.type.@local.part_id_1",
+            "matchedExpression": "@local.part_id_1",
+            "type": "local",
+            "fieldName": "part_id_1"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.type": [
+          "value"
+        ],
+        "@local.part_id_1": [
+          "value"
+        ]
+      }
+    },
+    {
+      "name": "part_data_1",
+      "value": "@data.@local.part_concat_1",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "part_data_1",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@data.@local.part_concat_1",
+            "matchedExpression": "@local.part_concat_1",
+            "type": "local",
+            "fieldName": "part_concat_1"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.part_concat_1": [
+          "value"
+        ]
+      }
+    },
+    {
+      "name": "part_id_2",
+      "value": "@local.row_data.part_2",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "part_id_2",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@local.row_data.part_2",
+            "matchedExpression": "@local.row_data.part_2",
+            "type": "local",
+            "fieldName": "row_data"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.row_data.part_2": [
+          "value"
+        ]
+      }
+    },
+    {
+      "name": "part_concat_2",
+      "value": "@local.type.@local.part_id_2",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "part_concat_2",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@local.type.@local.part_id_2",
+            "matchedExpression": "@local.type",
+            "type": "local",
+            "fieldName": "type"
+          },
+          {
+            "fullExpression": "@local.type.@local.part_id_2",
+            "matchedExpression": "@local.part_id_2",
+            "type": "local",
+            "fieldName": "part_id_2"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.type": [
+          "value"
+        ],
+        "@local.part_id_2": [
+          "value"
+        ]
+      }
+    },
+    {
+      "name": "part_data_2",
+      "value": "@data.@local.part_concat_2",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "part_data_2",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@data.@local.part_concat_2",
+            "matchedExpression": "@local.part_concat_2",
+            "type": "local",
+            "fieldName": "part_concat_2"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.part_concat_2": [
+          "value"
+        ]
+      }
+    },
+    {
+      "name": "part_id_3",
+      "value": "@local.row_data.part_3",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "part_id_3",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@local.row_data.part_3",
+            "matchedExpression": "@local.row_data.part_3",
+            "type": "local",
+            "fieldName": "row_data"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.row_data.part_3": [
+          "value"
+        ]
+      }
+    },
+    {
+      "name": "part_concat_3",
+      "value": "@local.type.@local.part_id_3",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "part_concat_3",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@local.type.@local.part_id_3",
+            "matchedExpression": "@local.type",
+            "type": "local",
+            "fieldName": "type"
+          },
+          {
+            "fullExpression": "@local.type.@local.part_id_3",
+            "matchedExpression": "@local.part_id_3",
+            "type": "local",
+            "fieldName": "part_id_3"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.type": [
+          "value"
+        ],
+        "@local.part_id_3": [
+          "value"
+        ]
+      }
+    },
+    {
+      "name": "part_data_3",
+      "value": "@data.@local.part_concat_3",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "part_data_3",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@data.@local.part_concat_3",
+            "matchedExpression": "@local.part_concat_3",
+            "type": "local",
+            "fieldName": "part_concat_3"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.part_concat_3": [
+          "value"
+        ]
+      }
+    },
+    {
+      "name": "part_id_4",
+      "value": "@local.row_data.part_4",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "part_id_4",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@local.row_data.part_4",
+            "matchedExpression": "@local.row_data.part_4",
+            "type": "local",
+            "fieldName": "row_data"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.row_data.part_4": [
+          "value"
+        ]
+      }
+    },
+    {
+      "name": "part_concat_4",
+      "value": "@local.type.@local.part_id_4",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "part_concat_4",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@local.type.@local.part_id_4",
+            "matchedExpression": "@local.type",
+            "type": "local",
+            "fieldName": "type"
+          },
+          {
+            "fullExpression": "@local.type.@local.part_id_4",
+            "matchedExpression": "@local.part_id_4",
+            "type": "local",
+            "fieldName": "part_id_4"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.type": [
+          "value"
+        ],
+        "@local.part_id_4": [
+          "value"
+        ]
+      }
+    },
+    {
+      "name": "part_data_4",
+      "value": "@data.@local.part_concat_4",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "part_data_4",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@data.@local.part_concat_4",
+            "matchedExpression": "@local.part_concat_4",
+            "type": "local",
+            "fieldName": "part_concat_4"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.part_concat_4": [
+          "value"
+        ]
+      }
+    },
+    {
+      "name": "no_1",
+      "value": "_1",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "no_1"
+    },
+    {
+      "name": "no_2",
+      "value": "_2",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "no_2"
+    },
+    {
+      "name": "no_3",
+      "value": "_3",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "no_3"
+    },
+    {
+      "name": "no_4",
+      "value": "_4",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "no_4"
+    },
+    {
+      "name": "no_5",
+      "value": "_5",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "no_5"
+    },
+    {
+      "name": "outro_habit",
+      "value": "@local.row_data.outro_habit",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "outro_habit",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@local.row_data.outro_habit",
+            "matchedExpression": "@local.row_data.outro_habit",
+            "type": "local",
+            "fieldName": "row_data"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.row_data.outro_habit": [
+          "value"
+        ]
+      }
+    },
+    {
+      "name": "outro_habit_concat",
+      "value": "habit.@local.outro_habit",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "outro_habit_concat",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "habit.@local.outro_habit",
+            "matchedExpression": "@local.outro_habit",
+            "type": "local",
+            "fieldName": "outro_habit"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.outro_habit": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "template",
+      "name": "learn",
+      "value": "learn_temp",
+      "action_list": [
+        {
+          "trigger": "completed",
+          "action_id": "emit",
+          "args": [
+            "completed"
+          ],
+          "_raw": "completed | emit:completed",
+          "_cleaned": "completed | emit:completed"
+        },
+        {
+          "trigger": "uncompleted",
+          "action_id": "emit",
+          "args": [
+            "uncompleted"
+          ],
+          "_raw": "uncompleted | emit:uncompleted",
+          "_cleaned": "uncompleted | emit:uncompleted"
+        }
+      ],
+      "rows": [
+        {
+          "type": "nested_properties",
+          "name": "workshop_activity",
+          "rows": [
+            {
+              "name": "intro_text",
+              "value": "@local.row_data.intro_text",
+              "_translations": {
+                "value": {}
+              },
+              "type": "set_variable",
+              "_nested_name": "learn.workshop_activity.intro_text",
+              "_dynamicFields": {
+                "value": [
+                  {
+                    "fullExpression": "@local.row_data.intro_text",
+                    "matchedExpression": "@local.row_data.intro_text",
+                    "type": "local",
+                    "fieldName": "row_data"
+                  }
+                ]
+              },
+              "_dynamicDependencies": {
+                "@local.row_data.intro_text": [
+                  "value"
+                ]
+              }
+            },
+            {
+              "name": "outro_habit_data",
+              "value": "@data.@local.outro_habit_concat",
+              "_translations": {
+                "value": {}
+              },
+              "type": "set_variable",
+              "_nested_name": "learn.workshop_activity.outro_habit_data",
+              "_dynamicFields": {
+                "value": [
+                  {
+                    "fullExpression": "@data.@local.outro_habit_concat",
+                    "matchedExpression": "@local.outro_habit_concat",
+                    "type": "local",
+                    "fieldName": "outro_habit_concat"
+                  }
+                ]
+              },
+              "_dynamicDependencies": {
+                "@local.outro_habit_concat": [
+                  "value"
+                ]
+              }
+            },
+            {
+              "name": "include_outro",
+              "value": "!!@local.outro_habit",
+              "_translations": {
+                "value": {}
+              },
+              "type": "set_variable",
+              "_nested_name": "learn.workshop_activity.include_outro",
+              "_dynamicFields": {
+                "value": [
+                  {
+                    "fullExpression": "!!@local.outro_habit",
+                    "matchedExpression": "!@local.outro_habit",
+                    "type": "local",
+                    "fieldName": "outro_habit"
+                  }
+                ]
+              },
+              "_dynamicDependencies": {
+                "!@local.outro_habit": [
+                  "value"
+                ]
+              }
+            },
+            {
+              "name": "outro_text",
+              "value": "@local.row_data.outro_text",
+              "_translations": {
+                "value": {}
+              },
+              "type": "set_variable",
+              "_nested_name": "learn.workshop_activity.outro_text",
+              "_dynamicFields": {
+                "value": [
+                  {
+                    "fullExpression": "@local.row_data.outro_text",
+                    "matchedExpression": "@local.row_data.outro_text",
+                    "type": "local",
+                    "fieldName": "row_data"
+                  }
+                ]
+              },
+              "_dynamicDependencies": {
+                "@local.row_data.outro_text": [
+                  "value"
+                ]
+              }
+            },
+            {
+              "type": "nested_properties",
+              "name": "content_box",
+              "value": "box_buttons",
+              "rows": [
+                {
+                  "name": "text_1",
+                  "value": "Teens are better at remembering what they learnt when it is fun. Here are some ideas you could try today:",
+                  "_translations": {
+                    "value": {}
+                  },
+                  "type": "set_variable",
+                  "_nested_name": "learn.workshop_activity.content_box.text_1"
+                },
+                {
+                  "name": "button_1",
+                  "value": "@local.part_data_1.title",
+                  "_translations": {
+                    "value": {}
+                  },
+                  "action_list": [
+                    {
+                      "trigger": "click",
+                      "action_id": "pop_up",
+                      "args": [
+                        "w_learn_learn_activity_ideas_@local.part_id_1"
+                      ],
+                      "_raw": "click | pop_up: w_learn_learn_activity_ideas_@local.part_id_1",
+                      "_cleaned": "click | pop_up: w_learn_learn_activity_ideas_@local.part_id_1"
+                    }
+                  ],
+                  "type": "set_variable",
+                  "_nested_name": "learn.workshop_activity.content_box.button_1",
+                  "_dynamicFields": {
+                    "value": [
+                      {
+                        "fullExpression": "@local.part_data_1.title",
+                        "matchedExpression": "@local.part_data_1.title",
+                        "type": "local",
+                        "fieldName": "part_data_1"
+                      }
+                    ],
+                    "action_list": {
+                      "0": {
+                        "args": {
+                          "0": [
+                            {
+                              "fullExpression": "w_learn_learn_activity_ideas_@local.part_id_1",
+                              "matchedExpression": "@local.part_id_1",
+                              "type": "local",
+                              "fieldName": "part_id_1"
+                            }
+                          ]
+                        },
+                        "_raw": [
+                          {
+                            "fullExpression": "click | pop_up: w_learn_learn_activity_ideas_@local.part_id_1",
+                            "matchedExpression": "@local.part_id_1",
+                            "type": "local",
+                            "fieldName": "part_id_1"
+                          }
+                        ],
+                        "_cleaned": [
+                          {
+                            "fullExpression": "click | pop_up: w_learn_learn_activity_ideas_@local.part_id_1",
+                            "matchedExpression": "@local.part_id_1",
+                            "type": "local",
+                            "fieldName": "part_id_1"
+                          }
+                        ]
+                      }
+                    }
+                  },
+                  "_dynamicDependencies": {
+                    "@local.part_data_1.title": [
+                      "value"
+                    ],
+                    "@local.part_id_1": [
+                      "action_list.0.args.0",
+                      "action_list.0._raw",
+                      "action_list.0._cleaned"
+                    ]
+                  }
+                },
+                {
+                  "name": "button_2",
+                  "value": "@local.part_data_2.title",
+                  "_translations": {
+                    "value": {}
+                  },
+                  "action_list": [
+                    {
+                      "trigger": "click",
+                      "action_id": "pop_up",
+                      "args": [
+                        "w_learn_learn_activity_ideas_@local.part_id_2"
+                      ],
+                      "_raw": "click | pop_up: w_learn_learn_activity_ideas_@local.part_id_2",
+                      "_cleaned": "click | pop_up: w_learn_learn_activity_ideas_@local.part_id_2"
+                    }
+                  ],
+                  "hidden": false,
+                  "type": "set_variable",
+                  "_nested_name": "learn.workshop_activity.content_box.button_2",
+                  "_dynamicFields": {
+                    "value": [
+                      {
+                        "fullExpression": "@local.part_data_2.title",
+                        "matchedExpression": "@local.part_data_2.title",
+                        "type": "local",
+                        "fieldName": "part_data_2"
+                      }
+                    ],
+                    "action_list": {
+                      "0": {
+                        "args": {
+                          "0": [
+                            {
+                              "fullExpression": "w_learn_learn_activity_ideas_@local.part_id_2",
+                              "matchedExpression": "@local.part_id_2",
+                              "type": "local",
+                              "fieldName": "part_id_2"
+                            }
+                          ]
+                        },
+                        "_raw": [
+                          {
+                            "fullExpression": "click | pop_up: w_learn_learn_activity_ideas_@local.part_id_2",
+                            "matchedExpression": "@local.part_id_2",
+                            "type": "local",
+                            "fieldName": "part_id_2"
+                          }
+                        ],
+                        "_cleaned": [
+                          {
+                            "fullExpression": "click | pop_up: w_learn_learn_activity_ideas_@local.part_id_2",
+                            "matchedExpression": "@local.part_id_2",
+                            "type": "local",
+                            "fieldName": "part_id_2"
+                          }
+                        ]
+                      }
+                    }
+                  },
+                  "_dynamicDependencies": {
+                    "@local.part_data_2.title": [
+                      "value"
+                    ],
+                    "@local.part_id_2": [
+                      "action_list.0.args.0",
+                      "action_list.0._raw",
+                      "action_list.0._cleaned"
+                    ]
+                  }
+                },
+                {
+                  "name": "button_3",
+                  "value": "@local.part_data_3.title",
+                  "_translations": {
+                    "value": {}
+                  },
+                  "action_list": [
+                    {
+                      "trigger": "click",
+                      "action_id": "pop_up",
+                      "args": [
+                        "w_learn_learn_activity_ideas_@local.part_id_3"
+                      ],
+                      "_raw": "click | pop_up: w_learn_learn_activity_ideas_@local.part_id_3",
+                      "_cleaned": "click | pop_up: w_learn_learn_activity_ideas_@local.part_id_3"
+                    }
+                  ],
+                  "hidden": false,
+                  "type": "set_variable",
+                  "_nested_name": "learn.workshop_activity.content_box.button_3",
+                  "_dynamicFields": {
+                    "value": [
+                      {
+                        "fullExpression": "@local.part_data_3.title",
+                        "matchedExpression": "@local.part_data_3.title",
+                        "type": "local",
+                        "fieldName": "part_data_3"
+                      }
+                    ],
+                    "action_list": {
+                      "0": {
+                        "args": {
+                          "0": [
+                            {
+                              "fullExpression": "w_learn_learn_activity_ideas_@local.part_id_3",
+                              "matchedExpression": "@local.part_id_3",
+                              "type": "local",
+                              "fieldName": "part_id_3"
+                            }
+                          ]
+                        },
+                        "_raw": [
+                          {
+                            "fullExpression": "click | pop_up: w_learn_learn_activity_ideas_@local.part_id_3",
+                            "matchedExpression": "@local.part_id_3",
+                            "type": "local",
+                            "fieldName": "part_id_3"
+                          }
+                        ],
+                        "_cleaned": [
+                          {
+                            "fullExpression": "click | pop_up: w_learn_learn_activity_ideas_@local.part_id_3",
+                            "matchedExpression": "@local.part_id_3",
+                            "type": "local",
+                            "fieldName": "part_id_3"
+                          }
+                        ]
+                      }
+                    }
+                  },
+                  "_dynamicDependencies": {
+                    "@local.part_data_3.title": [
+                      "value"
+                    ],
+                    "@local.part_id_3": [
+                      "action_list.0.args.0",
+                      "action_list.0._raw",
+                      "action_list.0._cleaned"
+                    ]
+                  }
+                }
+              ],
+              "_nested_name": "learn.workshop_activity.content_box"
+            }
+          ],
+          "_nested_name": "learn.workshop_activity"
+        }
+      ],
+      "_nested_name": "learn"
+    }
+  ],
+  "_xlsxPath": "global/top_templates/workshop_templates/workshop_learn.xlsx"
+}

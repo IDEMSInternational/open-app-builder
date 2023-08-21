@@ -31,7 +31,7 @@
       "rows": [
         {
           "name": "workshop_data",
-          "value": "@data.workshop.w_srh",
+          "value": "@data.workshop.w_grief",
           "_translations": {
             "value": {}
           },
@@ -40,15 +40,15 @@
           "_dynamicFields": {
             "value": [
               {
-                "fullExpression": "@data.workshop.w_srh",
-                "matchedExpression": "@data.workshop.w_srh",
+                "fullExpression": "@data.workshop.w_grief",
+                "matchedExpression": "@data.workshop.w_grief",
                 "type": "data",
                 "fieldName": "workshop"
               }
             ]
           },
           "_dynamicDependencies": {
-            "@data.workshop.w_srh": [
+            "@data.workshop.w_grief": [
               "value"
             ]
           }
@@ -69,7 +69,9 @@
                       "name": "text_1",
                       "value": "Share with your teen how you feel, and ask them to also name their feelings.\n\nThis simple activity helps families become closer and support each other well.",
                       "_translations": {
-                        "value": {}
+                        "value": {
+                          "tz_sw": true
+                        }
                       },
                       "type": "set_variable",
                       "_nested_name": "home_practice.workshop_activity.content_box.box_1.text_1"

@@ -1,0 +1,100 @@
+{
+  "flow_name": "w_learn_learn_activity_ideas_tell_stories",
+  "flow_subtype": "generated",
+  "flow_type": "template",
+  "rows": [
+    {
+      "type": "template",
+      "name": "box_image",
+      "value": "box_image",
+      "action_list": [
+        {
+          "trigger": "completed",
+          "action_id": "emit",
+          "args": [
+            "completed"
+          ],
+          "_raw": "completed | emit:completed",
+          "_cleaned": "completed | emit:completed"
+        },
+        {
+          "trigger": "uncompleted",
+          "action_id": "emit",
+          "args": [
+            "uncompleted"
+          ],
+          "_raw": "uncompleted | emit:uncompleted",
+          "_cleaned": "uncompleted | emit:uncompleted"
+        }
+      ],
+      "rows": [
+        {
+          "name": "title",
+          "value": "@data.learn_play.tell_stories.title",
+          "_translations": {
+            "value": {}
+          },
+          "hidden": false,
+          "type": "set_variable",
+          "_nested_name": "box_image.title",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@data.learn_play.tell_stories.title",
+                "matchedExpression": "@data.learn_play.tell_stories.title",
+                "type": "data",
+                "fieldName": "learn_play"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@data.learn_play.tell_stories.title": [
+              "value"
+            ]
+          }
+        },
+        {
+          "name": "image_src",
+          "value": "@data.learn_play.tell_stories.image_asset",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "box_image.image_src",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@data.learn_play.tell_stories.image_asset",
+                "matchedExpression": "@data.learn_play.tell_stories.image_asset",
+                "type": "data",
+                "fieldName": "learn_play"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@data.learn_play.tell_stories.image_asset": [
+              "value"
+            ]
+          }
+        },
+        {
+          "name": "text",
+          "value": "Share a story from your childhood or culture with your teen. Or let them share a story with you. This is a great way to learn while building a healthy relationship.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "box_image.text"
+        },
+        {
+          "type": "nested_properties",
+          "name": "nav_buttons",
+          "hidden": true,
+          "rows": [],
+          "_nested_name": "box_image.nav_buttons"
+        }
+      ],
+      "_nested_name": "box_image"
+    }
+  ]
+}

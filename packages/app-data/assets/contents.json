@@ -853,17 +853,17 @@
   },
   "plh_audio/topic_intros/w_grief_intro.mp3": {
     "filePath": "global/plh_audio/topic_intros/w_grief_intro.mp3",
-    "md5Checksum": "cdd5988352b7c2f1aafb2514ca23619f",
+    "md5Checksum": "21d816e6671e2d3d7078bd2f32145fb8",
     "overrides": {
       "theme_default": {
         "tz_sw": {
           "filePath": "tz_sw/plh_audio/topic_intros/w_grief_intro.mp3",
-          "md5Checksum": "2b5f9f1919618e2a49d6a33e5863094f",
-          "size_kb": 246.6
+          "md5Checksum": "5726b2722b4e229190d03fb5a3356730",
+          "size_kb": 113.1
         }
       }
     },
-    "size_kb": 474.4
+    "size_kb": 294.6
   },
   "plh_audio/topic_intros/w_instruct_intro.mp3": {
     "filePath": "global/plh_audio/topic_intros/w_instruct_intro.mp3",
@@ -881,17 +881,17 @@
   },
   "plh_audio/topic_intros/w_learn_intro.mp3": {
     "filePath": "global/plh_audio/topic_intros/w_learn_intro.mp3",
-    "md5Checksum": "ec1afa037bf2b197157866a5224491ca",
+    "md5Checksum": "439ac874173a190a29224a454831169e",
     "overrides": {
       "theme_default": {
         "tz_sw": {
           "filePath": "tz_sw/plh_audio/topic_intros/w_learn_intro.mp3",
-          "md5Checksum": "02f8b9143867d1cd77bfd628aeb69be6",
-          "size_kb": 239.8
+          "md5Checksum": "7b5b5202ec100785b026cab65eba7eaa",
+          "size_kb": 296.9
         }
       }
     },
-    "size_kb": 398.1
+    "size_kb": 296.9
   },
   "plh_audio/topic_intros/w_money_intro.mp3": {
     "filePath": "global/plh_audio/topic_intros/w_money_intro.mp3",
@@ -979,17 +979,17 @@
   },
   "plh_audio/topic_intros/w_srh_intro.mp3": {
     "filePath": "global/plh_audio/topic_intros/w_srh_intro.mp3",
-    "md5Checksum": "52535a577bcc38f9b8e4f13f48b2b28d",
+    "md5Checksum": "7e9a4ce5845d86b659c47111be58a136",
     "overrides": {
       "theme_default": {
         "tz_sw": {
           "filePath": "tz_sw/plh_audio/topic_intros/w_srh_intro.mp3",
-          "md5Checksum": "39f799e672289e7c7b85db7696605eda",
-          "size_kb": 237.4
+          "md5Checksum": "478cbc86eb0513a4fa9d030e95e2f801",
+          "size_kb": 135
         }
       }
     },
-    "size_kb": 424.6
+    "size_kb": 369.2
   },
   "plh_audio/topic_intros/w_stress_intro.mp3": {
     "filePath": "global/plh_audio/topic_intros/w_stress_intro.mp3",
@@ -1007,17 +1007,17 @@
   },
   "plh_audio/topic_intros/w_svp_intro.mp3": {
     "filePath": "global/plh_audio/topic_intros/w_svp_intro.mp3",
-    "md5Checksum": "12ee3b0ede2db97ebf66c241609440ad",
+    "md5Checksum": "df1b03025c789f7e681f84f72869dd94",
     "overrides": {
       "theme_default": {
         "tz_sw": {
           "filePath": "tz_sw/plh_audio/topic_intros/w_svp_intro.mp3",
-          "md5Checksum": "0672f0816e9bd1f5131538b8f821a6d7",
-          "size_kb": 155.2
+          "md5Checksum": "1577d3ba2d8b8b46e1b0e24a99a28f1b",
+          "size_kb": 116.2
         }
       }
     },
-    "size_kb": 343.3
+    "size_kb": 288.9
   },
   "plh_audio/topic_intros/workshops_reflection.mp3": {
     "filePath": "global/plh_audio/topic_intros/workshops_reflection.mp3",
@@ -1075,58 +1075,63 @@
   },
   "plh_images/habits/habit_breathe.svg": {
     "filePath": "global/plh_images/habits/habit_breathe.svg",
-    "md5Checksum": "e5ad9d538d089c88e131ab8d7722e903",
+    "md5Checksum": "906a8e90637ccdbcbd173172f890c474",
     "size_kb": 22.8
   },
   "plh_images/habits/habit_consequence.svg": {
     "filePath": "global/plh_images/habits/habit_consequence.svg",
-    "md5Checksum": "543c4c6863150a9e4bbfd640d1735cbe",
-    "size_kb": 23.4
+    "md5Checksum": "5dde5b9fd2c0d136f0c2dad7be7998e6",
+    "size_kb": 25.4
   },
   "plh_images/habits/habit_instruct_positively.svg": {
     "filePath": "global/plh_images/habits/habit_instruct_positively.svg",
-    "md5Checksum": "237a20e68e9b8292b9c1d19606192a96",
-    "size_kb": 34.1
+    "md5Checksum": "f2dbdcc948ea83661a464ac831f59f4b",
+    "size_kb": 36.8
   },
   "plh_images/habits/habit_money.svg": {
     "filePath": "global/plh_images/habits/habit_money.svg",
-    "md5Checksum": "cfec9744fba16fa141fc22173a05ec5d",
-    "size_kb": 9.8
+    "md5Checksum": "cc5b9373ea8946d0742ea389b5810561",
+    "size_kb": 9.9
   },
   "plh_images/habits/habit_play.svg": {
     "filePath": "global/plh_images/habits/habit_play.svg",
-    "md5Checksum": "05e8bb2ef0074b8532548d94deded21a",
-    "size_kb": 24.9
+    "md5Checksum": "d47e62c912b88de8ccb185e676e7f30f",
+    "size_kb": 37.8
   },
   "plh_images/habits/habit_praise_teen.svg": {
     "filePath": "global/plh_images/habits/habit_praise_teen.svg",
-    "md5Checksum": "4a6153ba427aa82b42e5d650b3a94b93",
-    "size_kb": 40.5
+    "md5Checksum": "cc576afcfe7215d63f9dec161e8a454f",
+    "size_kb": 35.4
   },
   "plh_images/habits/habit_praise_yourself.svg": {
     "filePath": "global/plh_images/habits/habit_praise_yourself.svg",
-    "md5Checksum": "e45773c0b86afbca0f02789beb131c00",
-    "size_kb": 16.7
+    "md5Checksum": "9b3a7c88e79149b63621b9169066def2",
+    "size_kb": 15.4
   },
   "plh_images/habits/habit_relax.svg": {
     "filePath": "global/plh_images/habits/habit_relax.svg",
-    "md5Checksum": "f63124cd38d7fb49dd569e5c56cecd30",
-    "size_kb": 15.5
+    "md5Checksum": "200b95ad608f709e82f1cb4c2b80ba01",
+    "size_kb": 14.8
   },
   "plh_images/habits/habit_safe.svg": {
     "filePath": "global/plh_images/habits/habit_safe.svg",
-    "md5Checksum": "60891fb68f24bafd6208045b6ba7f5a1",
-    "size_kb": 23.2
+    "md5Checksum": "99f5017ba6dbd1fcf1b680b0778bcc07",
+    "size_kb": 22.1
+  },
+  "plh_images/habits/habit_safe_self.svg": {
+    "filePath": "global/plh_images/habits/habit_safe_self.svg",
+    "md5Checksum": "e5f3f600ad29e67bb5e154dae7749304",
+    "size_kb": 22.7
   },
   "plh_images/habits/habit_spend_time.svg": {
     "filePath": "global/plh_images/habits/habit_spend_time.svg",
-    "md5Checksum": "99176158a8f1a3ae98bc6e785f0c40b8",
-    "size_kb": 23.3
+    "md5Checksum": "cab87abb9d951ab57e91159780f2e5ba",
+    "size_kb": 23.4
   },
   "plh_images/habits/habit_treat_yourself.svg": {
     "filePath": "global/plh_images/habits/habit_treat_yourself.svg",
-    "md5Checksum": "635c7f0c3150827268c39a7a9ce92176",
-    "size_kb": 14.9
+    "md5Checksum": "0b8b8a2da7c5ad8d96586a745fe6191b",
+    "size_kb": 14.6
   },
   "plh_images/icons/ask_question.svg": {
     "filePath": "global/plh_images/icons/ask_question.svg",
@@ -1173,6 +1178,11 @@
     "md5Checksum": "12bb1081cda0bfcab4b289be4f4fc912",
     "size_kb": 1.7
   },
+  "plh_images/icons/cogwheels.svg": {
+    "filePath": "global/plh_images/icons/cogwheels.svg",
+    "md5Checksum": "0d4d776c0fdc8291ff7c4a45e7354c24",
+    "size_kb": 4.6
+  },
   "plh_images/icons/cross.svg": {
     "filePath": "global/plh_images/icons/cross.svg",
     "md5Checksum": "97f29794530016e7a240ad5e49f9ccab",
@@ -1187,6 +1197,11 @@
     "filePath": "global/plh_images/icons/cross_outline.svg",
     "md5Checksum": "92f1b36e28b8427f732cb35a7efa1904",
     "size_kb": 0.8
+  },
+  "plh_images/icons/cup.svg": {
+    "filePath": "global/plh_images/icons/cup.svg",
+    "md5Checksum": "e0e8d2e92e7218264f93fd8640eb66fd",
+    "size_kb": 1.2
   },
   "plh_images/icons/documents.svg": {
     "filePath": "global/plh_images/icons/documents.svg",
@@ -1207,6 +1222,11 @@
     "filePath": "global/plh_images/icons/globe_circle.svg",
     "md5Checksum": "09762126162da34a86ad978f17ef1102",
     "size_kb": 1.4
+  },
+  "plh_images/icons/hands_hold_heart.svg": {
+    "filePath": "global/plh_images/icons/hands_hold_heart.svg",
+    "md5Checksum": "5ecc4b49813c9e34fd4b1bbd320630e6",
+    "size_kb": 2.3
   },
   "plh_images/icons/hands_support_heart.svg": {
     "filePath": "global/plh_images/icons/hands_support_heart.svg",
@@ -1308,6 +1328,11 @@
     "md5Checksum": "2bf484237672df94a3bd10dcf208386a",
     "size_kb": 0.7
   },
+  "plh_images/icons/jigsaw.svg": {
+    "filePath": "global/plh_images/icons/jigsaw.svg",
+    "md5Checksum": "069c720084bfd957079f4b5b09695b65",
+    "size_kb": 1.9
+  },
   "plh_images/icons/letter.svg": {
     "filePath": "global/plh_images/icons/letter.svg",
     "md5Checksum": "640dabe883bbd3df3a8575efb78733e4",
@@ -1325,8 +1350,8 @@
   },
   "plh_images/icons/light_bulb.svg": {
     "filePath": "global/plh_images/icons/light_bulb.svg",
-    "md5Checksum": "1bb4aa716b44a53114e2d03f0aad1f3a",
-    "size_kb": 2.9
+    "md5Checksum": "f3db584a6f4c85a1c91c1f0c21f3949b",
+    "size_kb": 2.4
   },
   "plh_images/icons/light_bulb_circle.svg": {
     "filePath": "global/plh_images/icons/light_bulb_circle.svg",
@@ -1345,8 +1370,8 @@
   },
   "plh_images/icons/light_bulb_white.svg": {
     "filePath": "global/plh_images/icons/light_bulb_white.svg",
-    "md5Checksum": "1da5604970a2bee373b340b8a4fe944d",
-    "size_kb": 2.9
+    "md5Checksum": "d87fff8d4b7b69cc6f79d3a0b5062c14",
+    "size_kb": 2.4
   },
   "plh_images/icons/lock.svg": {
     "filePath": "global/plh_images/icons/lock.svg",
@@ -1363,6 +1388,16 @@
     "md5Checksum": "628f519c6ce2529b71d6ec00beaddc99",
     "size_kb": 0.9
   },
+  "plh_images/icons/magnifying_glass.svg": {
+    "filePath": "global/plh_images/icons/magnifying_glass.svg",
+    "md5Checksum": "4aa37ded543f172aa02486aaf484c4f9",
+    "size_kb": 0.9
+  },
+  "plh_images/icons/paper_pencil.svg": {
+    "filePath": "global/plh_images/icons/paper_pencil.svg",
+    "md5Checksum": "2406f8b8c72c56aa52c484124f32b8c0",
+    "size_kb": 1.2
+  },
   "plh_images/icons/paper_stack.svg": {
     "filePath": "global/plh_images/icons/paper_stack.svg",
     "md5Checksum": "0fd8aa1106f740a5dcb6b4e09f03817d",
@@ -1377,6 +1412,16 @@
     "filePath": "global/plh_images/icons/parent_child.svg",
     "md5Checksum": "99747503b2023a185d20be8e5c7d8076",
     "size_kb": 2
+  },
+  "plh_images/icons/parent_child_heart.svg": {
+    "filePath": "global/plh_images/icons/parent_child_heart.svg",
+    "md5Checksum": "e0e9374e6badd81257bbb42505fbf92b",
+    "size_kb": 3
+  },
+  "plh_images/icons/parent_child_talk_white.svg": {
+    "filePath": "global/plh_images/icons/parent_child_talk_white.svg",
+    "md5Checksum": "a4ed6864ae126ab61595344049966226",
+    "size_kb": 2.2
   },
   "plh_images/icons/parent_child_white.svg": {
     "filePath": "global/plh_images/icons/parent_child_white.svg",
@@ -1418,6 +1463,11 @@
     "md5Checksum": "f6989826fb94a865281b035fa155689d",
     "size_kb": 0.7
   },
+  "plh_images/icons/pencil.svg": {
+    "filePath": "global/plh_images/icons/pencil.svg",
+    "md5Checksum": "14a6e3768664f463e9fedc98b98d5805",
+    "size_kb": 1.1
+  },
   "plh_images/icons/person.svg": {
     "filePath": "global/plh_images/icons/person.svg",
     "md5Checksum": "444b0881c42e0de9f28495b05de5db0c",
@@ -1437,6 +1487,11 @@
     "filePath": "global/plh_images/icons/phone_heart_white.svg",
     "md5Checksum": "61c5140fe55b34c11397b8c344e1c31c",
     "size_kb": 1.3
+  },
+  "plh_images/icons/picture_book.svg": {
+    "filePath": "global/plh_images/icons/picture_book.svg",
+    "md5Checksum": "398b07248ce7b5b59ef471466d089af4",
+    "size_kb": 1.8
   },
   "plh_images/icons/play.svg": {
     "filePath": "global/plh_images/icons/play.svg",
@@ -1468,15 +1523,20 @@
     "md5Checksum": "779f1f9e3b84259d345015b601d89412",
     "size_kb": 0.8
   },
+  "plh_images/icons/smile.svg": {
+    "filePath": "global/plh_images/icons/smile.svg",
+    "md5Checksum": "f42f7fb9cb105b8bf1f465533a1362c4",
+    "size_kb": 0.6
+  },
   "plh_images/icons/smile_eyes_down.svg": {
     "filePath": "global/plh_images/icons/smile_eyes_down.svg",
-    "md5Checksum": "ff1783c1fe1f01482ab6bfc1f4780fec",
+    "md5Checksum": "3e00c1fa0db9fabcfe65d6846e833c6e",
     "size_kb": 0.9
   },
   "plh_images/icons/smile_eyes_down_white.svg": {
     "filePath": "global/plh_images/icons/smile_eyes_down_white.svg",
-    "md5Checksum": "30244517f7a0f05834b45bd964f675f1",
-    "size_kb": 1
+    "md5Checksum": "8986ef2ceb554bbc7f696cd1e0106946",
+    "size_kb": 0.9
   },
   "plh_images/icons/smile_eyes_up.svg": {
     "filePath": "global/plh_images/icons/smile_eyes_up.svg",
@@ -1487,6 +1547,11 @@
     "filePath": "global/plh_images/icons/smile_eyes_up_white.svg",
     "md5Checksum": "b033b60520fbb70b53f2c97a91b6518a",
     "size_kb": 1
+  },
+  "plh_images/icons/speech_bubble_question_white.svg": {
+    "filePath": "global/plh_images/icons/speech_bubble_question_white.svg",
+    "md5Checksum": "fd313930a23d899cf4e59a97f055e2fe",
+    "size_kb": 1.6
   },
   "plh_images/icons/star.svg": {
     "filePath": "global/plh_images/icons/star.svg",
@@ -1517,6 +1582,11 @@
     "filePath": "global/plh_images/icons/temporarily_disabled_white.svg",
     "md5Checksum": "5e779b9b284bc8170eb8a8ae54948a01",
     "size_kb": 1.2
+  },
+  "plh_images/icons/thought_bubble.svg": {
+    "filePath": "global/plh_images/icons/thought_bubble.svg",
+    "md5Checksum": "860f0a38023afb4e888fe885f4f02f9a",
+    "size_kb": 2.1
   },
   "plh_images/icons/tick.svg": {
     "filePath": "global/plh_images/icons/tick.svg",
@@ -1868,6 +1938,16 @@
     "md5Checksum": "e3243cab6faa1e91bb1cb9276b31b0bf",
     "size_kb": 33
   },
+  "plh_images/parent_centre/ltp_activities/find_pair.svg": {
+    "filePath": "global/plh_images/parent_centre/ltp_activities/find_pair.svg",
+    "md5Checksum": "9ec3df214563fca68a39c9e305f675a9",
+    "size_kb": 36.9
+  },
+  "plh_images/parent_centre/ltp_activities/find_pair_icon.svg": {
+    "filePath": "global/plh_images/parent_centre/ltp_activities/find_pair_icon.svg",
+    "md5Checksum": "74e72009a17b9a05b4405c83a965e0c6",
+    "size_kb": 29.1
+  },
   "plh_images/parent_centre/ltp_activities/garden.svg": {
     "filePath": "global/plh_images/parent_centre/ltp_activities/garden.svg",
     "md5Checksum": "cabf8df5c9ab9146ac75cf546b11dc0c",
@@ -1877,16 +1957,6 @@
     "filePath": "global/plh_images/parent_centre/ltp_activities/garden_icon.svg",
     "md5Checksum": "4193470f7374052b39425e1c53037884",
     "size_kb": 15.4
-  },
-  "plh_images/parent_centre/ltp_activities/hide_seek.svg": {
-    "filePath": "global/plh_images/parent_centre/ltp_activities/hide_seek.svg",
-    "md5Checksum": "9ec3df214563fca68a39c9e305f675a9",
-    "size_kb": 36.9
-  },
-  "plh_images/parent_centre/ltp_activities/hide_seek_icon.svg": {
-    "filePath": "global/plh_images/parent_centre/ltp_activities/hide_seek_icon.svg",
-    "md5Checksum": "74e72009a17b9a05b4405c83a965e0c6",
-    "size_kb": 29.1
   },
   "plh_images/parent_centre/ltp_activities/long_term_goal.svg": {
     "filePath": "global/plh_images/parent_centre/ltp_activities/long_term_goal.svg",
@@ -1938,6 +2008,76 @@
     "md5Checksum": "8227d95be780ea2055425811e8ad2420",
     "size_kb": 25
   },
+  "plh_images/parent_centre/ltp_activities/talk_1.svg": {
+    "filePath": "global/plh_images/parent_centre/ltp_activities/talk_1.svg",
+    "md5Checksum": "4554dfb6ecb01b51f9bde46c895dd850",
+    "size_kb": 76.9
+  },
+  "plh_images/parent_centre/ltp_activities/talk_1_icon.svg": {
+    "filePath": "global/plh_images/parent_centre/ltp_activities/talk_1_icon.svg",
+    "md5Checksum": "3a69a60733e12baf2e221a05e1b9b57b",
+    "size_kb": 45
+  },
+  "plh_images/parent_centre/ltp_activities/talk_2.svg": {
+    "filePath": "global/plh_images/parent_centre/ltp_activities/talk_2.svg",
+    "md5Checksum": "d81608336cf37c88c23d91e896818b32",
+    "size_kb": 37
+  },
+  "plh_images/parent_centre/ltp_activities/talk_2_icon.svg": {
+    "filePath": "global/plh_images/parent_centre/ltp_activities/talk_2_icon.svg",
+    "md5Checksum": "13cff143122bc66f976a634e3e354d09",
+    "size_kb": 19.1
+  },
+  "plh_images/parent_centre/ltp_activities/talk_3.svg": {
+    "filePath": "global/plh_images/parent_centre/ltp_activities/talk_3.svg",
+    "md5Checksum": "9baefc918f7ed076f77b4ed6bb73fcf8",
+    "size_kb": 42.5
+  },
+  "plh_images/parent_centre/ltp_activities/talk_3_icon.svg": {
+    "filePath": "global/plh_images/parent_centre/ltp_activities/talk_3_icon.svg",
+    "md5Checksum": "1782cb7f15f2018b3184c56e3879623d",
+    "size_kb": 27.7
+  },
+  "plh_images/parent_centre/ltp_activities/talk_4.svg": {
+    "filePath": "global/plh_images/parent_centre/ltp_activities/talk_4.svg",
+    "md5Checksum": "90a3a2ebeedfa6a411e65f11d0f1df78",
+    "size_kb": 77
+  },
+  "plh_images/parent_centre/ltp_activities/talk_4_icon.svg": {
+    "filePath": "global/plh_images/parent_centre/ltp_activities/talk_4_icon.svg",
+    "md5Checksum": "0fbc40651722d35a9f567a7b1e82eab1",
+    "size_kb": 46.3
+  },
+  "plh_images/parent_centre/ltp_activities/talk_5.svg": {
+    "filePath": "global/plh_images/parent_centre/ltp_activities/talk_5.svg",
+    "md5Checksum": "9f45b0499099a5194db5b4e490b22805",
+    "size_kb": 81.3
+  },
+  "plh_images/parent_centre/ltp_activities/talk_5_icon.svg": {
+    "filePath": "global/plh_images/parent_centre/ltp_activities/talk_5_icon.svg",
+    "md5Checksum": "daa367d827df76d1925c2907210d35c5",
+    "size_kb": 53.3
+  },
+  "plh_images/parent_centre/ltp_activities/talk_6.svg": {
+    "filePath": "global/plh_images/parent_centre/ltp_activities/talk_6.svg",
+    "md5Checksum": "948c8b45543cb7096cbc92dc9839e1d8",
+    "size_kb": 37.5
+  },
+  "plh_images/parent_centre/ltp_activities/talk_6_icon.svg": {
+    "filePath": "global/plh_images/parent_centre/ltp_activities/talk_6_icon.svg",
+    "md5Checksum": "85cd3bdab5c3573d89cb5dfc84dd3e6f",
+    "size_kb": 23.5
+  },
+  "plh_images/parent_centre/ltp_activities/talk_7.svg": {
+    "filePath": "global/plh_images/parent_centre/ltp_activities/talk_7.svg",
+    "md5Checksum": "09e9bd6df5795d8d2809406fb18301f8",
+    "size_kb": 38.2
+  },
+  "plh_images/parent_centre/ltp_activities/talk_7_icon.svg": {
+    "filePath": "global/plh_images/parent_centre/ltp_activities/talk_7_icon.svg",
+    "md5Checksum": "9babcf92f284b11971cebc4d19d569c4",
+    "size_kb": 22.9
+  },
   "plh_images/parent_centre/ltp_activities/tell_stories.svg": {
     "filePath": "global/plh_images/parent_centre/ltp_activities/tell_stories.svg",
     "md5Checksum": "8e4bf9e23d834b7a9a5c9804b0f5be64",
@@ -1960,57 +2100,57 @@
   },
   "plh_images/stickers/faces/angry.svg": {
     "filePath": "global/plh_images/stickers/faces/angry.svg",
-    "md5Checksum": "6d192431f48bbb8af4b206967053796e",
+    "md5Checksum": "fbed8e862bed4c3a20cc76fddaa29f6f",
     "size_kb": 1.1
   },
   "plh_images/stickers/faces/confused_question_mark.svg": {
     "filePath": "global/plh_images/stickers/faces/confused_question_mark.svg",
-    "md5Checksum": "2304dec77199f522899f7765b96e114e",
-    "size_kb": 1.9
+    "md5Checksum": "1b6c3e959c1a2fb7b60a0204f3f51252",
+    "size_kb": 1.8
   },
   "plh_images/stickers/faces/happier.svg": {
     "filePath": "global/plh_images/stickers/faces/happier.svg",
-    "md5Checksum": "971f8d822fb3d3d79163d0ed327b052d",
-    "size_kb": 1.3
+    "md5Checksum": "0950af49455cc3a0f45fdb58a7729f69",
+    "size_kb": 0.6
   },
   "plh_images/stickers/faces/happiest.svg": {
     "filePath": "global/plh_images/stickers/faces/happiest.svg",
-    "md5Checksum": "895e666c011de147560520819eda519b",
-    "size_kb": 1.6
+    "md5Checksum": "daca7cda1c325c104815722f2cfc47e6",
+    "size_kb": 1.3
   },
   "plh_images/stickers/faces/happy.svg": {
     "filePath": "global/plh_images/stickers/faces/happy.svg",
-    "md5Checksum": "944098603096a04cd988ebf9554aba5f",
-    "size_kb": 0.7
+    "md5Checksum": "286df85cf5a71405938907c42a200e67",
+    "size_kb": 0.6
   },
   "plh_images/stickers/faces/neutral.svg": {
     "filePath": "global/plh_images/stickers/faces/neutral.svg",
-    "md5Checksum": "adc1012f5de15b8a2462eaca6cedcb36",
+    "md5Checksum": "8f4bc93561fb7114ea8802a04a220fb8",
     "size_kb": 0.5
   },
   "plh_images/stickers/faces/sad.svg": {
     "filePath": "global/plh_images/stickers/faces/sad.svg",
-    "md5Checksum": "78c6d7693501b2e62af8ca9af4e0f92a",
-    "size_kb": 0.7
+    "md5Checksum": "1020fc8785a8f8aeeadfa74de88c73d3",
+    "size_kb": 0.6
   },
   "plh_images/stickers/faces/sadder.svg": {
     "filePath": "global/plh_images/stickers/faces/sadder.svg",
-    "md5Checksum": "9399ec18c80f26a1567df0ad709b0db6",
+    "md5Checksum": "44f0f4aee98a30f31d445b169922f940",
     "size_kb": 1.1
   },
   "plh_images/stickers/faces/saddest.svg": {
     "filePath": "global/plh_images/stickers/faces/saddest.svg",
-    "md5Checksum": "14da2e51687b6ac5b5929665fa4a38e3",
-    "size_kb": 1.6
+    "md5Checksum": "e83831930f99740e1b6556c4aab41a1b",
+    "size_kb": 2
   },
   "plh_images/stickers/faces/scared.svg": {
     "filePath": "global/plh_images/stickers/faces/scared.svg",
-    "md5Checksum": "e42757c3a1b799ff614fa6845e78a59e",
-    "size_kb": 1.8
+    "md5Checksum": "0d9e5d9d570750a6e0e5afff188ccf3a",
+    "size_kb": 2.1
   },
   "plh_images/stickers/faces/tired.svg": {
     "filePath": "global/plh_images/stickers/faces/tired.svg",
-    "md5Checksum": "db13dd14dbc30defa2633ae82b8bfc7b",
+    "md5Checksum": "978273858b64560b36bcd41d09ca3fb5",
     "size_kb": 2.4
   },
   "plh_images/survey/welcome/busy.svg": {
@@ -2230,8 +2370,8 @@
   },
   "plh_images/workshops/w_1on1/tools.svg": {
     "filePath": "global/plh_images/workshops/w_1on1/tools.svg",
-    "md5Checksum": "636e5c4f220204a4d3869f670f57f91b",
-    "size_kb": 52.5
+    "md5Checksum": "3e99466641a7d4ac69a7d998e1318372",
+    "size_kb": 48.5
   },
   "plh_images/workshops/w_celebrate/read/slide_1.svg": {
     "filePath": "global/plh_images/workshops/w_celebrate/read/slide_1.svg",
@@ -2255,8 +2395,8 @@
   },
   "plh_images/workshops/w_celebrate/tools.svg": {
     "filePath": "global/plh_images/workshops/w_celebrate/tools.svg",
-    "md5Checksum": "63614c1d91b37cc93388b1f8dbd1bea7",
-    "size_kb": 37.4
+    "md5Checksum": "5095934242893e19bd69475afab44613",
+    "size_kb": 36.3
   },
   "plh_images/workshops/w_consequence/read_1/slide_1.svg": {
     "filePath": "global/plh_images/workshops/w_consequence/read_1/slide_1.svg",
@@ -2340,8 +2480,8 @@
   },
   "plh_images/workshops/w_consequence/tools.svg": {
     "filePath": "global/plh_images/workshops/w_consequence/tools.svg",
-    "md5Checksum": "5cfeb47f0d56169785e4fa2d69ed13fa",
-    "size_kb": 21.2
+    "md5Checksum": "7072b7093355c758b1ec36a6ea9551d2",
+    "size_kb": 23
   },
   "plh_images/workshops/w_crisis/learn/slide_1.svg": {
     "filePath": "global/plh_images/workshops/w_crisis/learn/slide_1.svg",
@@ -2430,8 +2570,8 @@
   },
   "plh_images/workshops/w_crisis/tools.svg": {
     "filePath": "global/plh_images/workshops/w_crisis/tools.svg",
-    "md5Checksum": "12e56e240b8a92617559e8f92ad5ff8f",
-    "size_kb": 57
+    "md5Checksum": "78730d6d0fb85e5ecaa7a9893c9a72c6",
+    "size_kb": 46.1
   },
   "plh_images/workshops/w_grief/read_grief_conflict/slide_1.svg": {
     "filePath": "global/plh_images/workshops/w_grief/read_grief_conflict/slide_1.svg",
@@ -2470,8 +2610,8 @@
   },
   "plh_images/workshops/w_grief/tools.svg": {
     "filePath": "global/plh_images/workshops/w_grief/tools.svg",
-    "md5Checksum": "139b9d1299043db66af9124d95fecb25",
-    "size_kb": 30.3
+    "md5Checksum": "5b9a0a0f73273e884fbeb52c2d4fdf2b",
+    "size_kb": 30.8
   },
   "plh_images/workshops/w_instruct/guide_2/think/slide_1.svg": {
     "filePath": "global/plh_images/workshops/w_instruct/guide_2/think/slide_1.svg",
@@ -2530,52 +2670,52 @@
   },
   "plh_images/workshops/w_instruct/tools.svg": {
     "filePath": "global/plh_images/workshops/w_instruct/tools.svg",
-    "md5Checksum": "7fb1a763780e827c5a939adab2fcbe5a",
-    "size_kb": 20.7
+    "md5Checksum": "a456c4da674e5c68217a0a1d0233f94f",
+    "size_kb": 40.6
   },
-  "plh_images/workshops/w_learn/Busy day (negative)_01.svg": {
-    "filePath": "global/plh_images/workshops/w_learn/Busy day (negative)_01.svg",
+  "plh_images/workshops/w_learn/read_learn_conflict/slide_1.svg": {
+    "filePath": "global/plh_images/workshops/w_learn/read_learn_conflict/slide_1.svg",
     "md5Checksum": "cf87f64046b6a28a2e5342b1e988ea85",
     "size_kb": 51.8
   },
-  "plh_images/workshops/w_learn/Busy day (negative)_02.svg": {
-    "filePath": "global/plh_images/workshops/w_learn/Busy day (negative)_02.svg",
+  "plh_images/workshops/w_learn/read_learn_conflict/slide_2.svg": {
+    "filePath": "global/plh_images/workshops/w_learn/read_learn_conflict/slide_2.svg",
     "md5Checksum": "deb3f6ef0a92bbd1966993a6d81bea25",
     "size_kb": 69.4
   },
-  "plh_images/workshops/w_learn/Busy day (negative)_03.svg": {
-    "filePath": "global/plh_images/workshops/w_learn/Busy day (negative)_03.svg",
+  "plh_images/workshops/w_learn/read_learn_conflict/slide_3.svg": {
+    "filePath": "global/plh_images/workshops/w_learn/read_learn_conflict/slide_3.svg",
     "md5Checksum": "cbe0f30bce70decb4d994fecfd7a8c91",
     "size_kb": 47.4
   },
-  "plh_images/workshops/w_learn/Busy day (negative)_04.svg": {
-    "filePath": "global/plh_images/workshops/w_learn/Busy day (negative)_04.svg",
+  "plh_images/workshops/w_learn/read_learn_conflict/slide_4.svg": {
+    "filePath": "global/plh_images/workshops/w_learn/read_learn_conflict/slide_4.svg",
     "md5Checksum": "3bf459b1de13a6d6e173f40c6b5d8888",
     "size_kb": 48.3
   },
-  "plh_images/workshops/w_learn/Busy day (positive)_01.svg": {
-    "filePath": "global/plh_images/workshops/w_learn/Busy day (positive)_01.svg",
+  "plh_images/workshops/w_learn/read_learn_support/slide_1.svg": {
+    "filePath": "global/plh_images/workshops/w_learn/read_learn_support/slide_1.svg",
     "md5Checksum": "cf87f64046b6a28a2e5342b1e988ea85",
     "size_kb": 51.8
   },
-  "plh_images/workshops/w_learn/Busy day (positive)_02.svg": {
-    "filePath": "global/plh_images/workshops/w_learn/Busy day (positive)_02.svg",
+  "plh_images/workshops/w_learn/read_learn_support/slide_2.svg": {
+    "filePath": "global/plh_images/workshops/w_learn/read_learn_support/slide_2.svg",
     "md5Checksum": "7801d0c56c25b432a7828d47b366e80f",
     "size_kb": 69.4
   },
-  "plh_images/workshops/w_learn/Busy day (positive)_03.svg": {
-    "filePath": "global/plh_images/workshops/w_learn/Busy day (positive)_03.svg",
+  "plh_images/workshops/w_learn/read_learn_support/slide_3.svg": {
+    "filePath": "global/plh_images/workshops/w_learn/read_learn_support/slide_3.svg",
     "md5Checksum": "8da31aed790b8f266159aaa9ea976b0d",
     "size_kb": 46
   },
-  "plh_images/workshops/w_learn/Busy day (positive)_04.svg": {
-    "filePath": "global/plh_images/workshops/w_learn/Busy day (positive)_04.svg",
-    "md5Checksum": "f3e40a96423f98f1f0a3e0457350aa3b",
-    "size_kb": 40.5
+  "plh_images/workshops/w_learn/read_learn_support/slide_4.svg": {
+    "filePath": "global/plh_images/workshops/w_learn/read_learn_support/slide_4.svg",
+    "md5Checksum": "03f0f013a0040a04eabc1ff84d855a88",
+    "size_kb": 40.2
   },
   "plh_images/workshops/w_learn/tools.svg": {
     "filePath": "global/plh_images/workshops/w_learn/tools.svg",
-    "md5Checksum": "34aa576e345c3bc2e3b84755ce72c5bc",
+    "md5Checksum": "334733ee0621dfe54ce1b15691e99ffe",
     "size_kb": 28.4
   },
   "plh_images/workshops/w_money/learn/slide_1.svg": {
@@ -2640,8 +2780,8 @@
   },
   "plh_images/workshops/w_money/tools.svg": {
     "filePath": "global/plh_images/workshops/w_money/tools.svg",
-    "md5Checksum": "77de144e20d06a6da8d51e620c7e8616",
-    "size_kb": 33
+    "md5Checksum": "d64d7234f31810ca4066ea857e7d5cb3",
+    "size_kb": 32.5
   },
   "plh_images/workshops/w_praise/read/slide_1.svg": {
     "filePath": "global/plh_images/workshops/w_praise/read/slide_1.svg",
@@ -2655,8 +2795,8 @@
   },
   "plh_images/workshops/w_praise/tools.svg": {
     "filePath": "global/plh_images/workshops/w_praise/tools.svg",
-    "md5Checksum": "6b55c48aa2d51ead1b92cfdbd2c3fd2f",
-    "size_kb": 32
+    "md5Checksum": "9000f96cc356ef96f2189a7a9dd03ffb",
+    "size_kb": 32.2
   },
   "plh_images/workshops/w_rules/read_1/slide_1.svg": {
     "filePath": "global/plh_images/workshops/w_rules/read_1/slide_1.svg",
@@ -2720,7 +2860,7 @@
   },
   "plh_images/workshops/w_rules/tools.svg": {
     "filePath": "global/plh_images/workshops/w_rules/tools.svg",
-    "md5Checksum": "ac18a9c7b31a23ae7f667418832acd5d",
+    "md5Checksum": "21c049c0a029ef10d68667c06979c977",
     "size_kb": 41.2
   },
   "plh_images/workshops/w_safe/learn/slide_1.svg": {
@@ -2790,8 +2930,8 @@
   },
   "plh_images/workshops/w_safe/tools.svg": {
     "filePath": "global/plh_images/workshops/w_safe/tools.svg",
-    "md5Checksum": "f9c326c18bb27635730c7fafbf5aa8cc",
-    "size_kb": 23
+    "md5Checksum": "28959f692703e53e99c1c57487ad1e45",
+    "size_kb": 23.9
   },
   "plh_images/workshops/w_self_care/individual/recognise.svg": {
     "filePath": "global/plh_images/workshops/w_self_care/individual/recognise.svg",
@@ -2805,8 +2945,8 @@
   },
   "plh_images/workshops/w_self_care/tools.svg": {
     "filePath": "global/plh_images/workshops/w_self_care/tools.svg",
-    "md5Checksum": "e6e75db632b0178ac0692ec4ecac2431",
-    "size_kb": 10.4
+    "md5Checksum": "ad69178e705a1bd95c990fa968d36a91",
+    "size_kb": 10
   },
   "plh_images/workshops/w_solve/read_1/slide_1.svg": {
     "filePath": "global/plh_images/workshops/w_solve/read_1/slide_1.svg",
@@ -2900,8 +3040,8 @@
   },
   "plh_images/workshops/w_solve/tools.svg": {
     "filePath": "global/plh_images/workshops/w_solve/tools.svg",
-    "md5Checksum": "6df9ca0c1475938765f9be70e62d36cd",
-    "size_kb": 51.3
+    "md5Checksum": "1e5cb2e3048cea776976e1181e63dcb7",
+    "size_kb": 53.7
   },
   "plh_images/workshops/w_solve/tools/tool_1.svg": {
     "filePath": "global/plh_images/workshops/w_solve/tools/tool_1.svg",
@@ -2930,8 +3070,8 @@
   },
   "plh_images/workshops/w_srh/learn/sex_talk_age/slide_2.svg": {
     "filePath": "global/plh_images/workshops/w_srh/learn/sex_talk_age/slide_2.svg",
-    "md5Checksum": "0e261e1527452bda46b1a6f3dbe0df9d",
-    "size_kb": 43.9
+    "md5Checksum": "9d0f76b9f86ff37d34a56f384bc3d8a6",
+    "size_kb": 61.4
   },
   "plh_images/workshops/w_srh/learn/sex_talk_age/slide_3.svg": {
     "filePath": "global/plh_images/workshops/w_srh/learn/sex_talk_age/slide_3.svg",
@@ -3045,8 +3185,8 @@
   },
   "plh_images/workshops/w_srh/tools.svg": {
     "filePath": "global/plh_images/workshops/w_srh/tools.svg",
-    "md5Checksum": "5b8b710a563bb2ce54df462fc64294f4",
-    "size_kb": 33
+    "md5Checksum": "85b771adb0f98c721b37a3ce6312f24f",
+    "size_kb": 46.2
   },
   "plh_images/workshops/w_stress/read_1/slide_1.svg": {
     "filePath": "global/plh_images/workshops/w_stress/read_1/slide_1.svg",
@@ -3135,8 +3275,8 @@
   },
   "plh_images/workshops/w_stress/tools.svg": {
     "filePath": "global/plh_images/workshops/w_stress/tools.svg",
-    "md5Checksum": "cd80f6c372affa44bd8fc927d0e9b701",
-    "size_kb": 10.3
+    "md5Checksum": "31fa7d295703b97885392888bf8bafa7",
+    "size_kb": 16.9
   },
   "plh_images/workshops/w_svp/learn_warning_signs/catcalling.svg": {
     "filePath": "global/plh_images/workshops/w_svp/learn_warning_signs/catcalling.svg",
@@ -3175,13 +3315,13 @@
   },
   "plh_images/workshops/w_svp/tools.svg": {
     "filePath": "global/plh_images/workshops/w_svp/tools.svg",
-    "md5Checksum": "4e2d1d746bdd0f588a055e1cb53d2762",
-    "size_kb": 24.8
+    "md5Checksum": "67a36d22ec7ac03ff60c1af08227e4df",
+    "size_kb": 25.4
   },
   "plh_images/workshops/w_svp/use_body/moves.gif": {
     "filePath": "global/plh_images/workshops/w_svp/use_body/moves.gif",
-    "md5Checksum": "bfdf81a79bd33711b2496a32a93c1fcf",
-    "size_kb": 173.2
+    "md5Checksum": "965ea1b4ffdcf683eb57f49bf88a6046",
+    "size_kb": 1111.6
   },
   "plh_images/workshops/w_svp/use_body/zone_1.gif": {
     "filePath": "global/plh_images/workshops/w_svp/use_body/zone_1.gif",
