@@ -12,7 +12,9 @@ const fadeInOut = [
   trigger("noFade", [
     state("in", style({ opacity: 1 })),
     state("out", style({ opacity: 0 })),
-    transition("* => in", [animate("0s")]), // this line is to allow for a prior fade to actually occur
+    transition("* => in", [
+      animate("0s 1.5s", style({ opacity: 0 })), // delay animation for 1.5s
+    ]),
   ]),
 ];
 
