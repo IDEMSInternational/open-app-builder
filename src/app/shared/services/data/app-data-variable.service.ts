@@ -3,8 +3,7 @@ import { ITemplatedDataContextList, JSEvaluator, TemplatedData } from "shared";
 import { AsyncServiceBase } from "../asyncService.base";
 import { DbService } from "../db/db.service";
 import { LocalStorageService } from "../local-storage/local-storage.service";
-import { FieldEvaluator } from "./variable-evaluators";
-import { AppDataEvaluatorBase } from "./variable-evaluators/base";
+import * as Handlers from "./variable-handlers";
 
 // Support both @field and @fields
 type IVariableContext = "field" | "fields";
@@ -18,10 +17,10 @@ type IVariableContext = "field" | "fields";
  */
 export class AppDataVariableService extends AsyncServiceBase {
   /**
-   * List of available evaluators
+   * List of available variable handlers, e.g. field, global, etc.
    * TODO - consider registration functionality like in template actions
    **/
-  public evaluators: { [context in IVariableContext]: AppDataEvaluatorBase };
+  public handlers: { [context in IVariableContext]: Handlers.AppDataHandlerBase };
 
   constructor(private localStorageService: LocalStorageService, private DBService: DbService) {
     super("App Data Evaluator");
@@ -31,28 +30,28 @@ export class AppDataVariableService extends AsyncServiceBase {
   private async initialise() {
     this.ensureSyncServicesReady([this.localStorageService]);
     await this.ensureAsyncServicesReady([this.DBService]);
-    this.evaluators = {
-      field: new FieldEvaluator(this.localStorageService, this.DBService),
-      fields: new FieldEvaluator(this.localStorageService, this.DBService),
+    this.handlers = {
+      field: new Handlers.Field(this.localStorageService, this.DBService),
+      fields: new Handlers.Field(this.localStorageService, this.DBService),
     };
   }
 
   public async get(context: IVariableContext, key: any) {
-    const evaluator = this.evaluators[context];
-    if (!evaluator) {
+    const handler = this.handlers[context];
+    if (!handler) {
       console.error(`[AppDataVariable] @${context} expressions not supported`);
       return undefined;
     }
-    return evaluator.get(key);
+    return handler.get(key);
   }
 
   public async set(context: IVariableContext, key: string, value: any) {
-    const evaluator = this.evaluators[context];
-    if (!evaluator) {
+    const handler = this.handlers[context];
+    if (!handler) {
       console.error(`[AppDataVariable] @${context} expressions not supported`);
       return;
     }
-    return evaluator.set(key, value);
+    return handler.set(key, value);
   }
 
   /**
@@ -64,7 +63,7 @@ export class AppDataVariableService extends AsyncServiceBase {
    */
   public async evaluateExpression(expression: string) {
     const parser = new TemplatedData();
-    const prefixes = Object.keys(this.evaluators);
+    const prefixes = Object.keys(this.handlers);
     // Step 0 - extract list of all context variables used as part of expression
     // TODO - ideally should be extracted in parser
     const contextVariables = parser.listContextVariables(expression, prefixes);
