@@ -2144,15 +2144,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@capacitor/core@npm:next":
-  version: 4.0.0-beta.2
-  resolution: "@capacitor/core@npm:4.0.0-beta.2"
-  dependencies:
-    tslib: ^2.1.0
-  checksum: 9f37fffaf4fd7817d3d8932df1ed9cda076bb2063c92cf4557854ac9a0685c2a2a3ab438aad460e54d9c87869b2dfc622503a31569609c2177f9bb758495ff76
-  languageName: node
-  linkType: hard
-
 "@capacitor/device@npm:^5.0.6":
   version: 5.0.6
   resolution: "@capacitor/device@npm:5.0.6"
@@ -9691,18 +9682,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"capacitor-firebase-auth@npm:^3.0.0":
-  version: 3.0.0
-  resolution: "capacitor-firebase-auth@npm:3.0.0"
-  dependencies:
-    "@capacitor/core": next
-  peerDependencies:
-    firebase: ^8.3.0
-    rxjs: ~6.6.6
-  checksum: 1637a6bd47712eea8f88b9b9cb4ab3b41fd61a8fcdcdc1864c7736966bad67f4b034d1e7a64724df6f8b35064ead73a672f83f7c3efc6803901e20e1f0598e81
-  languageName: node
-  linkType: hard
-
 "capture-exit@npm:^2.0.0":
   version: 2.0.0
   resolution: "capture-exit@npm:2.0.0"
@@ -14989,7 +14968,6 @@ __metadata:
     app-data: "workspace:*"
     bootstrap-datepicker: ^1.10.0
     capacitor-blob-writer: ^1.1.14
-    capacitor-firebase-auth: ^3.0.0
     clone: ^2.1.2
     codelyzer: ^6.0.2
     concurrently: ^6.2.0
