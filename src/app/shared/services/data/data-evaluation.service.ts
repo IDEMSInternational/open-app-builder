@@ -16,6 +16,14 @@ let log_group = SHOW_DEBUG_LOGS ? console.group : () => null;
 let log_groupEnd = SHOW_DEBUG_LOGS ? console.groupEnd : () => null;
 
 @Injectable({ providedIn: "root" })
+/**
+ * System used mostly to evaluate campaign feature conditions.
+ * These are defined in a different syntax to template conditions, evaluating asynchronously
+ * with access to local indexeddb (not just localstorage fields, globals etc)
+ *
+ * TODO - Ideally should be combined with template evaluation syntax, or moved to campaign service
+ * with limited common functionality extracted to shared service
+ */
 export class DataEvaluationService extends AsyncServiceBase {
   public data: IDataEvaluationCache;
   constructor(
