@@ -13,7 +13,7 @@ const fadeInOut = [
     state("in", style({ opacity: 1 })),
     state("out", style({ opacity: 0 })),
     transition("* => in", [
-      animate("0s 1.5s", style({ opacity: 0 })), // delay animation for 1.5s
+      animate("0s 0.5s", style({ opacity: 0 })), // delay animation for 1.5s
     ]),
   ]),
 ];
