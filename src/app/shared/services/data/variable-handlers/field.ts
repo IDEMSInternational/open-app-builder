@@ -9,7 +9,7 @@ import type { IFlowEvent } from "data-models/db.model";
  */
 export class Field extends AppDataHandlerBase {
   constructor(private localStorageService: LocalStorageService, private dbService: DbService) {
-    super();
+    super("field");
   }
 
   public override async get(fieldname: string) {
