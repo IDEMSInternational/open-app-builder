@@ -192,6 +192,13 @@ const APP_UPDATES = {
   app_update_downloaded_field: "_app_update_downloaded",
 };
 
+const ASSET_PACKS = {
+  enabled: false,
+  /** By convention, this should match the deployment name */
+  bucketName: "",
+  folderName: "asset_packs",
+};
+
 const APP_CONFIG = {
   APP_FIELDS,
   APP_HEADER_DEFAULTS,
@@ -205,6 +212,7 @@ const APP_CONFIG = {
   APP_SKINS,
   APP_THEMES,
   APP_UPDATES,
+  ASSET_PACKS,
   DYNAMIC_PREFIXES,
   FEEDBACK_MODULE_DEFAULTS,
   FIELD_PREFIX,
@@ -219,7 +227,7 @@ export type IAppConfig = typeof APP_CONFIG;
 /** A recursive version of Partial, making all properties, included nested ones, optional.
  * Copied from https://stackoverflow.com/a/47914631
  */
-type RecursivePartial<T> = {
+export type RecursivePartial<T> = {
   [P in keyof T]?: RecursivePartial<T[P]>;
 };
 export type IAppConfigOverride = RecursivePartial<IAppConfig>;

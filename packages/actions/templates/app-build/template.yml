@@ -1,0 +1,78 @@
+##################################################################################
+#         Configuration
+##################################################################################
+env:
+  DEPLOYMENT_NAME: "%{DEPLOYMENT_NAME}"
+  DEPLOYMENT_PRIVATE_KEY: ${{secrets.DEPLOYMENT_PRIVATE_KEY}}
+  FIREBASE_CONFIG: ${{secrets.FIREBASE_CONFIG}}
+
+##################################################################################
+#         Main Code
+##################################################################################
+name: App - Build
+on:
+  workflow_call:
+    inputs:
+      artifact-name:
+        description: Name of the artifact to upload
+        type: string
+        default: www
+      build-flags:
+        description: Additional flags to pass to build command (e.g. base-href)
+        type: string
+        default: ""
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          lfs: true
+          repository: "IDEMSInternational/parenting-app-ui.git"
+          ref: master
+      - uses: actions/checkout@v3
+        with:
+          lfs: true
+          path: ".idems_app/deployments/${{env.DEPLOYMENT_NAME}}"
+      - name: Populate Encryption key
+        if: env.DEPLOYMENT_PRIVATE_KEY != ''
+        run: echo "${{env.DEPLOYMENT_PRIVATE_KEY}}" > ./.idems_app/deployments/${{env.DEPLOYMENT_NAME}}/encrypted/private.key
+
+        # TODO - populate firebase as part of deployment set
+      - name: Populate Firebase Config
+        if: env.FIREBASE_CONFIG != ''
+        run: echo 'export const firebaseConfig = ${{env.FIREBASE_CONFIG}}' > src/environments/firebaseConfig.ts
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18.x
+      - name: Cache node modules
+        uses: actions/cache@v3
+        with:
+          path: ./.yarn/cache
+          # If cachebusting required (e.g. breaking yarn changes on update) change `v1` to another number
+          key: ${{ runner.os }}-node-modules-yarn-v1-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-node-modules-yarn-v1-
+
+      - name: Install node modules
+        run: yarn install
+
+      - name: Set deployment
+        run: yarn workflow deployment set $DEPLOYMENT_NAME
+
+      - name: Build
+        run: yarn build ${{inputs.build-flags}}
+
+        # Use github pages upload artifact action to compress and upload
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v1.0.8
+        with:
+          path: "www/"
+          name: ${{inputs.artifact-name}}
+##################################################################################
+#         Links
+##################################################################################
+
+# Create a reusable workflow to build deployment app
+# https://colinsalmcorner.com/musings-on-reusable-workflows/

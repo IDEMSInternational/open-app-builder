@@ -6,7 +6,7 @@ export class IonicNativeAudioPlayer implements AudioPlayer {
   ionicMediaObj: MediaObject;
 
   constructor(src: string) {
-    var prefix = "/android_asset/www/";
+    let prefix = "/android_asset/www/";
     if (window["device"].platform === "iPhone") {
       prefix = "";
     }

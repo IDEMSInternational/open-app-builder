@@ -5,13 +5,14 @@ import { lastValueFrom } from "rxjs";
 import { FlowTypes } from "../../model";
 import { arrayToHashmap } from "../../utils";
 import { SyncServiceBase } from "../syncService.base";
+import { ErrorHandlerService } from "../error-handler/error-handler.service";
 
 /** Default folder app_data copied into (as defined in angular.json) */
 const APP_DATA_BASE = "assets/app_data";
 
 @Injectable({ providedIn: "root" })
 export class AppDataService extends SyncServiceBase {
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private errorHandler: ErrorHandlerService) {
     super("AppData");
     this.initialise();
   }
@@ -20,6 +21,7 @@ export class AppDataService extends SyncServiceBase {
   public appDataCache: IAppDataCache = {
     data_pipe: {},
     data_list: {},
+    generator: {},
     global: {},
     template: {},
     tour: {},
@@ -75,7 +77,8 @@ export class AppDataService extends SyncServiceBase {
   ) {
     const sheetContents = this.sheetContents[flow_type][flow_name];
     if (!sheetContents) {
-      console.warn("[AppData] - Could not find sheet", flow_type, flow_name);
+      // log error but don't throw to allow further processing
+      this.errorHandler.handleError(new Error(`[${flow_type}] "${flow_name}" not found`));
       return null;
     }
     // Populate cache if not exist

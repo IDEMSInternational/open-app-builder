@@ -3,6 +3,7 @@ import { UserFeedbackDto } from "./dto/add-user-feedback.dto";
 import { AppFeedback } from "./app_feedback.model";
 import { AppFeedbackService } from "./app_feedback.service";
 import { ApiBody, ApiOperation, ApiResponse, ApiTags } from "@nestjs/swagger";
+import { DeploymentHeaders } from "src/modules/deployment.decorators";
 
 @ApiTags("Feedback")
 @Controller("app_feedback")
@@ -11,6 +12,7 @@ export class AppFeedbackController {
 
   @Get()
   @ApiOperation({ summary: "List all feedback" })
+  @DeploymentHeaders()
   findAll(): Promise<AppFeedback[]> {
     return this.appFeedbackService.findAll();
   }
@@ -23,6 +25,7 @@ export class AppFeedbackController {
     description: "Feedback Added",
     type: UserFeedbackDto,
   })
+  @DeploymentHeaders()
   async addUserFeedback(@Body() data: UserFeedbackDto) {
     try {
       const res = await this.appFeedbackService.createOrUpdate(data);

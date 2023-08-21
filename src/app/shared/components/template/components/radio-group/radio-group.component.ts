@@ -14,16 +14,10 @@ import {
   getNumberParamFromTemplateRow,
   getParamFromTemplateRow,
   getStringParamFromTemplateRow,
+  parseAnswerList,
+  IAnswerListItem,
 } from "../../../../utils";
 import { ReplaySubject } from "rxjs";
-import { objectToArray } from "../../utils/template-utils";
-
-interface IButton {
-  name: string | null;
-  image: string | null;
-  text: string | null;
-  image_checked: string | null;
-}
 
 @Component({
   selector: "plh-radio-group",
@@ -37,14 +31,17 @@ export class TmplRadioGroupComponent
   @Input() changeTheme: EventEmitter<boolean>;
   @Input() parent: TemplateContainerComponent;
   @ViewChild("labelImage", { static: false, read: true }) labelImage: ElementRef;
-  arrayOfBtn: Array<IButton>;
+  arrayOfBtn: Array<IAnswerListItem>;
   groupName: string;
-  radioButtonType: string | null;
-  options_per_row: number = 2;
   windowWidth: number;
-  style: string;
   private componentDestroyed$ = new ReplaySubject(1);
   flexWidth: string;
+
+  // Parameters
+  answer_list: string[];
+  options_per_row: number;
+  radioButtonType: string | null;
+  style: string;
 
   ngOnInit() {
     this.getParams();
@@ -59,8 +56,8 @@ export class TmplRadioGroupComponent
     this.windowWidth = window.innerWidth;
 
     // convert string answer lists to formatted objects
-    const answer_list: string[] = getParamFromTemplateRow(this._row, "answer_list", []);
-    this.createArrayBtnElement(answer_list);
+    this.answer_list = getParamFromTemplateRow(this._row, "answer_list", []);
+    this.arrayOfBtn = this.createArrayBtnElement(this.answer_list);
 
     this.getFlexWidth();
     this.groupName = this._row._nested_name;
@@ -81,31 +78,12 @@ export class TmplRadioGroupComponent
    */
   createArrayBtnElement(answer_list: string[]) {
     if (answer_list) {
-      // NOTE CC 2021-08-07 - datalists might be used which currently only format as objects
-      // manually convert to array if required (temp method until better handling found)
-      if (typeof answer_list === "object") {
-        answer_list = objectToArray(answer_list);
-      }
-      this.arrayOfBtn = answer_list.map((item) => {
-        // convert string to relevant mappings
-        let itemObj: IButton = {} as any;
-        if (typeof item === "string") {
-          const stringProperties = item.split("|");
-          stringProperties.forEach((s) => {
-            const [field, value] = s.split(":").map((v) => v.trim());
-            if (field && value) {
-              itemObj[field] = value;
-            }
-          });
-        }
-        // NOTE CC 2021-08-07 - allow passing of object, not just string for conversion
-        else {
-          itemObj = item;
-        }
-        const processed = this.processButtonFields(itemObj);
-        return processed;
-      });
-      this.arrayOfBtn.forEach((item) => {
+      let arrayOfBtn = parseAnswerList(answer_list);
+      arrayOfBtn = arrayOfBtn.map((itemObj) => this.processButtonFields(itemObj));
+
+      // TODO - CC 2023-03-15 could lead to strange behaviour, to review
+      // (checks every item but keeps overriding the button type depending on what it finds)
+      arrayOfBtn.forEach((item) => {
         if (item.image && item.text) {
           this.radioButtonType = "btn_both";
         } else if (!item.image && item.text) {
@@ -114,10 +92,11 @@ export class TmplRadioGroupComponent
           this.radioButtonType = "btn_image";
         }
       });
+      return arrayOfBtn;
     }
   }
-  private processButtonFields(button: IButton) {
-    const processed: IButton = {
+  private processButtonFields(button: IAnswerListItem) {
+    const processed: IAnswerListItem = {
       text: null,
       image: null,
       name: null,

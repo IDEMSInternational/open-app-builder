@@ -32,6 +32,7 @@ export class ConversionActionQueue {
     });
     this.queue.start();
     await this.queue.onIdle();
+    logUpdate.done();
   }
 
   private queueIgnoreActions(entries: IGDriveContentsEntry[]) {

@@ -40,6 +40,7 @@ const download = (options: { folderId: string; filterFn?: any }) => {
  */
 const gdriveExec = (cmd: string, args: string = "", sync = true) => {
   const authTokenPath = getAuthTokenPath();
+  // Can also check if really need folder ID (or just pass deployment config)... probably do for sheets vs assets
   const commonArgs = `--credentials-path "${CREDENTIALS_PATH}" --auth-token-path "${authTokenPath}"`;
   const gdriveToolsBin = `yarn workspace @idemsInternational/gdrive-tools start`;
   const fullCommand = `${gdriveToolsBin} ${cmd} ${commonArgs} ${args}`;

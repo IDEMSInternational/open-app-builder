@@ -1,0 +1,53 @@
+# DEPRECATED CC-2023-08-15
+# Not currently in use, should look to add back in the future alongside better e2e strategy
+
+# Compile and run E2E tests using Cypress.
+name: Test E2E
+on:
+  # Run manually for now.
+  workflow_dispatch:
+  # NB: Dicuss whether this workflow should be configured to run once
+  # other types of test runs are complete.
+  # workflow_run:
+  #   workflows: [Test-Visual Generate Screenshots]
+  #   types:
+  #     - completed
+jobs:
+  test_e2e:
+    # NB: Potentially use a fixed version?
+    runs-on: ubuntu-latest
+    # Use the Cypress provided Docker image with
+    # Chrome 87 and Firefox 82 pre-installed.
+    container: cypress/browsers:node12.18.3-chrome87-ff82
+    timeout-minutes: 60
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          lfs: true
+      - name: Node ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          cache: 'yarn'
+      - name: Populate firebaseConfig.ts
+        env:
+          FIREBASE_CONFIG_TS: ${{ secrets.FIREBASE_CONFIG_TS }}
+        run: echo $FIREBASE_CONFIG_TS > src/environments/firebaseConfig.ts
+      - run: yarn install
+      - run: npm run --silent scripts e2e-data parse "./../../PLH E2E Example.xlsx" > "./packages/test-e2e/projects/plh/integration/common/home.spec.clone.js"
+      - name: Cypress on Chrome
+        uses: cypress-io/github-action@v2
+        timeout-minutes: 10
+        with:
+          browser: chrome
+          build: yarn precompile
+          command: yarn workspace test-e2e run:plh
+          install: false
+          # These may be useful when not running custom command.
+          project: "packages/test-e2e"
+          spec: "packages/test-e2e/projects/plh/integration/**/*"
+          start: yarn exec ng serve
+          wait-on: "http://localhost:4200"
+          # Wait four minutes.
+          wait-on-timeout: 480

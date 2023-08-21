@@ -2,6 +2,8 @@
 
 ## Example
 
+A button allows users to click or tap to perform an action or trigger a specific action. Buttons are visually distinct and provide users with a clear and intuitive way to interact with the app's features and navigate through its functionalities.
+
 | type      | name          | value                     |parameter_list |
 | --------- | ------------  | ------                    |--------- |
 |button	    |button_par_2_1	|Style parameter Information|style: information|
@@ -10,7 +12,7 @@
 ![](images/button.png)
 
 [Google Sheet Demo](https://docs.google.com/spreadsheets/d/1OmgZICjM5EMT1KgLOU_ovDljRF_SPlpQAgkKWPrNX0s/edit#gid=569531329)   
-[Live Preview Demo](https://plh-global.web.app/template/comp_button)
+[Live Preview Demo](https://idems-debug.web.app/template/comp_button)
 
 ## Parameters
 

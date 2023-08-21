@@ -35,6 +35,12 @@
                 "glob": "**/*.svg",
                 "input": "node_modules/ionicons/dist/ionicons/svg",
                 "output": "./svg"
+              },
+              {
+                "glob": "{*.min.js,op-chaining-support.js,cmaps/*,images/*,locale/en-GB/*,locale/locale.properties,standard_fonts/**}",
+                "input": "node_modules/ngx-extended-pdf-viewer/assets/",
+                "ignore": ["**/*-es5.min.js"],
+                "output": "/assets/comp-pdf"
               }
             ],
             "styles": [
@@ -100,12 +106,12 @@
                 {
                   "type": "initial",
                   "maximumWarning": "850kb",
-                  "maximumError": "4mb"
+                  "maximumError": "5mb"
                 },
                 {
                   "type": "anyComponentStyle",
                   "maximumWarning": "3kb",
-                  "maximumError": "16kb"
+                  "maximumError": "200kb"
                 }
               ]
             },

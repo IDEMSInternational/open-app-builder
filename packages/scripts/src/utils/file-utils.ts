@@ -39,6 +39,10 @@ export function getNestedProperty(obj: any, nestedPath: string) {
  * setNestedProperty('a.b.c',1,{})  // returns {"a":{"b":{"c":1}}}
  * */
 export function setNestedProperty<T>(nestedPath: string, value: any, obj: T = {} as any) {
+  // if no nested path provided simply return
+  if (!nestedPath) {
+    return { ...obj, ...value } as T;
+  }
   let childKeys = nestedPath.split(".");
   const currentKey = childKeys[0];
   if (childKeys.length > 1) {
@@ -243,12 +247,22 @@ export function groupJsonByMultipleKeys<T>(json: T[], keys: string[], joinCharac
 /**
  * Convert an object array into a json object, with keys corresponding to array entries
  * @param keyfield any unique field which all array objects contain to use as hash keys (e.g. 'id')
+ * @param handleDuplicateKey optional function to trigger when duplicate hash key entry detected.
+ * Should return replacement key to populate instead
  */
-export function arrayToHashmap<T>(arr: T[], keyfield: string): { [key: string]: T } {
+export function arrayToHashmap<T extends object>(
+  arr: T[],
+  keyfield: keyof T,
+  handleDuplicateKey = (k: string) => k
+): { [key: string]: T } {
   const hashmap: { [key: string]: T } = {};
   for (const el of arr) {
     if (el.hasOwnProperty(keyfield)) {
-      hashmap[el[keyfield]] = el;
+      let hashKey = el[keyfield] as string;
+      if (hashKey in hashmap) {
+        hashKey = handleDuplicateKey(hashKey);
+      }
+      hashmap[hashKey] = el;
     }
   }
   return hashmap;
@@ -408,17 +422,18 @@ export function readContentsFileAsHashmap(
 export function replicateDir(
   src: string,
   target: string,
-  filter_fn?: (entry: IContentsEntry) => boolean
+  opts: { filter_fn?: (entry: IContentsEntry) => boolean; cleanEmpty?: boolean } = {
+    cleanEmpty: true,
+  }
 ) {
   fs.ensureDirSync(src);
   fs.ensureDirSync(target);
   const srcFiles = generateFolderFlatMap(src);
   const targetFiles = generateFolderFlatMap(target);
-
   // omit src files via filter
-  if (filter_fn) {
+  if (opts.filter_fn) {
     Object.entries(srcFiles).forEach(([key, entry]) => {
-      if (!filter_fn(entry as IContentsEntry)) {
+      if (!opts.filter_fn(entry as IContentsEntry)) {
         delete srcFiles[key];
       }
     });
@@ -460,8 +475,10 @@ export function replicateDir(
     fs.copyFileSync(srcPath, targetPath);
     fs.utimesSync(targetPath, mtime, mtime);
   });
-  // remove hanging directories
-  cleanupEmptyFolders(target);
+  // remove hanging directories]
+  if (opts.cleanEmpty) {
+    cleanupEmptyFolders(target);
+  }
   return ops;
 }
 
@@ -543,4 +560,19 @@ export const cleanupEmptyFolders = (folder: string) => {
   if (files.length === 0) {
     fs.rmdirSync(folder);
   }
+};
+
+/** Order a nested json-like object in alphabetical key order */
+export const sortJsonKeys = <T extends Record<string, any>>(json: T): T => {
+  // return non json-type data as-is
+  if (!json || {}.constructor !== json.constructor) {
+    return json;
+  }
+  // recursively sort any nested json by key
+  return Object.keys(json)
+    .sort()
+    .reduce((obj, key) => {
+      obj[key] = sortJsonKeys(json[key]);
+      return obj;
+    }, {}) as T;
 };

@@ -1,5 +1,7 @@
 # Radio Group
 
+A radio group allows users to select a single option from a list of mutually exclusive choices. It's typically used when there are multiple options available, but the user is allowed to select only one option at a time.
+
 ## Example
 
 | type       | name              | value                                 |parameter_list |
@@ -12,7 +14,7 @@
 ![](images/radio_group.png)
 
 [Google Sheet Demo](https://docs.google.com/spreadsheets/d/1qfatsiHKJ8sCBcJ8oqo3InLrjzT_a2Qxvw6RyxVMTxY/edit#gid=569531329)   
-[Live Preview Demo](https://plh-global.web.app/template/comp_radio_group)
+[Live Preview Demo](https://idems-debug.web.app/template/comp_radio_group)
 
 ## Parameters
 

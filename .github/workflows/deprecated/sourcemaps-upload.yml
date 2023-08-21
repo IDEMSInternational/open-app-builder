@@ -1,0 +1,74 @@
+# DEPRECATED CC-2023-08-15
+# Not currently in use, could add back if troubleshooting sourcemaps (will need refactor to common build format)
+
+
+# Secrets
+# SENTRY_AUTH_TOKEN
+
+# Upload build sourcemaps to 3rd party error monitoring service
+# NOTE - likely will merge with deploy code unless can find a tidy way to link
+
+# NOTE - currently only used for debugging as methods are integrated into build scripts
+# Not recommended for full testing as likely file changes during ci scripts across actions will invalidate sourcemaps
+
+name: Sourcemaps Upload
+on: 
+  workflow_dispatch:
+jobs:
+  sourcemaps_upload:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          lfs: true
+      - name: Set Environment Deployment
+        # NOTE - setting SHA_SHORT will have different value if target pull_request / workflow_dispatch
+        # https://github.com/orgs/community/discussions/25191
+        run: |
+          echo "SHA_SHORT=$(git rev-parse --short=6 HEAD)" >> $GITHUB_ENV
+          echo "DEPLOYMENT_NAME=plh_global" >> $GITHUB_ENV
+        shell: bash
+      - name: Node ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          cache: 'yarn'
+      - name: Populate environment config
+        env:
+          FIREBASE_CONFIG_TS: ${{ secrets.FIREBASE_CONFIG_TS }}
+        run: |
+          echo "export const GIT_SHA = \"$SHA_SHORT\";" > src/environments/sha.ts
+          echo $FIREBASE_CONFIG_TS > src/environments/firebaseConfig.ts
+      - run: yarn install
+      - name: Set Scripts Deployment
+        run: yarn workflow deployment set $DEPLOYMENT_NAME
+      ### Generate and upload sourcemaps ###
+      - run: yarn build --configuration "production,glitchtip"
+      - name: set app version
+        run: echo "APP_VERSION=$(echo "$(cat package.json | jq -r '.version')")" >> $GITHUB_ENV
+      - name: Upload sourcemaps
+        run: |
+          npx @sentry/cli releases delete ${DEPLOYMENT_NAME}-${APP_VERSION}-${SHA_SHORT}
+          npx @sentry/cli releases files ${DEPLOYMENT_NAME}-${APP_VERSION}-${SHA_SHORT} upload-sourcemaps www/
+        env:
+          SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN}}
+          SENTRY_URL: https://app.glitchtip.com/
+          SENTRY_ORG: idems
+          SENTRY_PROJECT: ${{env.DEPLOYMENT_NAME}}
+        continue-on-error: true
+      - name: Store sourcemaps artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: sourcemaps-$SHA_SHORT
+          path: www/*.map
+          # Only used for short-term debugging purposes or manual upload
+          retention-days: 30
+      - name: Remove sourcemaps from build
+        run: |
+          echo $(ls www)
+          find . -name "*.map" -type f -delete
+          echo $(ls www)
+        
+# NOTE - if testing locally equivalent commands can also be passed as args
+# npx @sentry/cli --url https://app.glitchtip.com login
+# npx @sentry/cli --url https://app.glitchtip.com releases list --org idems

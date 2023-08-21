@@ -55,7 +55,7 @@ export default program
  */
 export class AppDataConverter {
   /** Change version to invalidate all underlying caches */
-  public version = 20230314.0;
+  public version = 20230406.1;
 
   public activeDeployment = ActiveDeployment.get();
 
@@ -72,7 +72,6 @@ export class AppDataConverter {
     // Setup Folders
     const { inputFolder, outputFolder, cacheFolder } = options;
     [inputFolder, outputFolder, cacheFolder].forEach((p) => fs.ensureDir(p));
-
     if (this.options.skipCache) {
       this.cache.clear();
     }
