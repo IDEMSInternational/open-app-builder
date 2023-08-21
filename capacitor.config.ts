@@ -6,7 +6,6 @@ import { CapacitorConfig } from "@capacitor/cli";
 const config: CapacitorConfig = {
   appId: "international.idems.plh_teens",
   appName: "PLH Teens",
-  bundledWebRuntime: false,
   webDir: "www",
   plugins: {
     SplashScreen: {
