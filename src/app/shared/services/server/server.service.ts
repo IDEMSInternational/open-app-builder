@@ -55,7 +55,7 @@ export class ServerService extends SyncServiceBase {
       this.device_info = await Device.getInfo();
     }
     if (!this.app_user_id) {
-      const { uuid } = await Device.getId();
+      const { identifier: uuid } = await Device.getId();
       this.app_user_id = uuid;
     }
     console.log("[SERVER] sync data");
