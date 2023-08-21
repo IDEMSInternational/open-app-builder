@@ -1,4 +1,5 @@
 import { BehaviorSubject } from "rxjs";
+import type { IVariableContext } from "../app-data-variable.service";
 
 /**
  * Base method for interacting with context expression evaluation
@@ -13,13 +14,19 @@ import { BehaviorSubject } from "rxjs";
  * to changes, query etc.
  */
 export class AppDataHandlerBase {
-  public async get(data: any): Promise<any> {
-    console.warn("[AppDataEvaulator] get method not defined for child");
-    return undefined;
+  /** In-memory store of values */
+  private values: Record<string, any> = {};
+
+  /**
+   * @param contextNamespace Name of context prefix, e.g. 'field' for '@field'
+   */
+  protected constructor(private contextNamespace: IVariableContext) {}
+
+  public async get(key: any): Promise<any> {
+    return this.values[key];
   }
   public async set(key: string, value: any) {
-    console.warn("[AppDataEvaulator] set method not defined for child");
-    return undefined;
+    this.values[key] = value;
   }
 
   /**

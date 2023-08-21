@@ -6,7 +6,7 @@ import { LocalStorageService } from "../local-storage/local-storage.service";
 import * as Handlers from "./variable-handlers";
 
 // Support both @field and @fields
-type IVariableContext = "field" | "fields";
+export type IVariableContext = "field" | "fields";
 
 @Injectable({ providedIn: "root" })
 /**
@@ -30,9 +30,11 @@ export class AppDataVariableService extends AsyncServiceBase {
   private async initialise() {
     this.ensureSyncServicesReady([this.localStorageService]);
     await this.ensureAsyncServicesReady([this.DBService]);
+    // use same handler for both @field and @fields
+    const fieldHandler = new Handlers.Field(this.localStorageService, this.DBService);
     this.handlers = {
-      field: new Handlers.Field(this.localStorageService, this.DBService),
-      fields: new Handlers.Field(this.localStorageService, this.DBService),
+      field: fieldHandler,
+      fields: fieldHandler,
     };
   }
 
@@ -55,13 +57,12 @@ export class AppDataVariableService extends AsyncServiceBase {
   }
 
   /**
-   * Evaluate an expression that may or may not contain context variables,
-   * E.g. `@field.some_field > 2`
+   * Parse an expression that may or may not contain context variable,
+   * E.g. `hello @field.user_name`
    *
-   * As part of the evaluation process all context expressions are parsed,
-   * and the final result evaluated from within a sandboxed JavaScript environment
+   * Returns expression with variables replaced
    */
-  public async evaluateExpression(expression: string) {
+  public async parseExpression(expression: string) {
     const parser = new TemplatedData();
     const prefixes = Object.keys(this.handlers);
     // Step 0 - extract list of all context variables used as part of expression
@@ -77,13 +78,30 @@ export class AppDataVariableService extends AsyncServiceBase {
 
     // Step 2a - Evaluate recursive expression if detected
     if (isRecursive) {
-      return this.evaluateExpression(parsed);
+      return this.parseExpression(parsed);
     }
+    return parsed;
+  }
 
+  /**
+   * Evaluate an expression that may or may not contain context variables,
+   * E.g. `@field.some_field > 2`
+   *
+   * As part of the evaluation process all context expressions are parsed,
+   * and the final result evaluated from within a sandboxed JavaScript environment
+   */
+  public async evaluateExpression(expression: string) {
+    const parsed = await this.parseExpression(expression);
     // Step 3 - Evaluate parsed expression
     // NOTE - method called standalone instead of using appStringEvaluator to add support for recursive
+    // If the parsed expression not valid JS (e.g. just text) then return as-is
     const jsEvaluator = new JSEvaluator();
-    return jsEvaluator.evaluate(parsed);
+    try {
+      const evaluated = jsEvaluator.evaluate(parsed);
+      return evaluated;
+    } catch (error) {
+      return parsed;
+    }
   }
 
   /** Evaluate all context-variable expressions */
