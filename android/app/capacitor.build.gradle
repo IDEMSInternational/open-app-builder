@@ -22,7 +22,6 @@ dependencies {
     implementation project(':capacitor-splash-screen')
     implementation project(':capawesome-capacitor-app-update')
     implementation project(':capacitor-blob-writer')
-    implementation project(':capacitor-firebase-auth')
 
 }
 
