@@ -1,6 +1,7 @@
 apply plugin: 'com.android.application'
 
 android {
+    namespace "international.idems.plh_teens"
     compileSdkVersion rootProject.ext.compileSdkVersion
     defaultConfig {
         applicationId "international.idems.plh_teens"
