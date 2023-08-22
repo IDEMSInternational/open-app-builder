@@ -81,7 +81,9 @@
           "name": "text",
           "value": "Ask your teen if they would like to walk outside with you. This is good exercise and is a good time for you and your teen to talk about what is on your mind and how you both are feeling.",
           "_translations": {
-            "value": {}
+            "value": {
+              "tz_sw": true
+            }
           },
           "type": "set_variable",
           "_nested_name": "box_image.text"

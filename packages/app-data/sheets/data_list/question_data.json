@@ -219,7 +219,9 @@
         "question_text": {
           "tz_sw": true
         },
-        "reply_all": {}
+        "reply_all": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "question_text": {
@@ -314,7 +316,9 @@
       "reply_4_icon_asset": "plh_images/icons/tick_circle.svg",
       "question_text": "When is the right time to start talking about body changes and intimate relationships?",
       "_translations": {
-        "question_text": {},
+        "question_text": {
+          "tz_sw": true
+        },
         "option_1": {
           "tz_sw": true
         },
@@ -330,11 +334,15 @@
         "option_3": {
           "tz_sw": true
         },
-        "reply_3": {},
+        "reply_3": {
+          "tz_sw": true
+        },
         "option_4": {
           "tz_sw": true
         },
-        "reply_4": {},
+        "reply_4": {
+          "tz_sw": true
+        },
         "reply_all": {
           "tz_sw": true
         }
@@ -402,7 +410,9 @@
         "option_1": {
           "tz_sw": true
         },
-        "reply_1": {},
+        "reply_1": {
+          "tz_sw": true
+        },
         "option_2": {
           "tz_sw": true
         },
@@ -418,11 +428,15 @@
         "option_4": {
           "tz_sw": true
         },
-        "reply_4": {},
+        "reply_4": {
+          "tz_sw": true
+        },
         "option_5": {
           "tz_sw": true
         },
-        "reply_5": {},
+        "reply_5": {
+          "tz_sw": true
+        },
         "reply_all": {
           "tz_sw": true
         }
@@ -703,11 +717,21 @@
       "workshop": "w_learn",
       "question_text": "Why did @global.w_learn_teen_girl_1 react this way?",
       "_translations": {
-        "question_text": {},
-        "option_1": {},
-        "option_2": {},
-        "option_3": {},
-        "reply_all": {}
+        "question_text": {
+          "tz_sw": true
+        },
+        "option_1": {
+          "tz_sw": true
+        },
+        "option_2": {
+          "tz_sw": true
+        },
+        "option_3": {
+          "tz_sw": true
+        },
+        "reply_all": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "question_text": {
@@ -736,12 +760,24 @@
       "workshop": "w_learn",
       "question_text": "How will this affect the relationship between @global.w_learn_female_caregiver_1 and @global.w_learn_teen_girl_1?",
       "_translations": {
-        "question_text": {},
-        "option_1": {},
-        "option_2": {},
-        "option_3": {},
-        "option_4": {},
-        "reply_all": {}
+        "question_text": {
+          "tz_sw": true
+        },
+        "option_1": {
+          "tz_sw": true
+        },
+        "option_2": {
+          "tz_sw": true
+        },
+        "option_3": {
+          "tz_sw": true
+        },
+        "option_4": {
+          "tz_sw": true
+        },
+        "reply_all": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "question_text": {
@@ -774,8 +810,12 @@
       "workshop": "w_learn",
       "question_text": "How did @global.w_learn_teen_girl_1 and @global.w_learn_female_caregiver_1 feel before they got to speak to each other?",
       "_translations": {
-        "question_text": {},
-        "reply_all": {}
+        "question_text": {
+          "tz_sw": true
+        },
+        "reply_all": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "question_text": {
@@ -792,12 +832,24 @@
       "workshop": "w_learn",
       "question_text": "What did @global.w_learn_female_caregiver_1 do differently this time?",
       "_translations": {
-        "question_text": {},
-        "option_1": {},
-        "option_2": {},
-        "option_3": {},
-        "option_4": {},
-        "reply_all": {}
+        "question_text": {
+          "tz_sw": true
+        },
+        "option_1": {
+          "tz_sw": true
+        },
+        "option_2": {
+          "tz_sw": true
+        },
+        "option_3": {
+          "tz_sw": true
+        },
+        "option_4": {
+          "tz_sw": true
+        },
+        "reply_all": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "question_text": {
@@ -830,8 +882,12 @@
       "workshop": "w_learn",
       "question_text": "How did @global.w_learn_teen_girl_1 and her mother feel afterwards?",
       "_translations": {
-        "question_text": {},
-        "reply_all": {}
+        "question_text": {
+          "tz_sw": true
+        },
+        "reply_all": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "question_text": {

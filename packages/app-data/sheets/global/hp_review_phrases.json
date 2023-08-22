@@ -38,7 +38,9 @@
       "name": "chance_try",
       "value": "Did you have a chance to try",
       "_translations": {
-        "value": {}
+        "value": {
+          "tz_sw": true
+        }
       }
     }
   ],

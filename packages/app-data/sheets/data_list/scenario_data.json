@@ -11,7 +11,9 @@
       "title": "@data.learn_play.tell_stories.title",
       "_translations": {
         "title": {},
-        "text": {}
+        "text": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -30,7 +32,9 @@
       "title": "@data.learn_play.walk.title",
       "_translations": {
         "title": {},
-        "text": {}
+        "text": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -48,8 +52,12 @@
       "image_asset": "@data.learn_play.cook.image_asset",
       "title": "Cooking or cleaning",
       "_translations": {
-        "title": {},
-        "text": {}
+        "title": {
+          "tz_sw": true
+        },
+        "text": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "title": {
