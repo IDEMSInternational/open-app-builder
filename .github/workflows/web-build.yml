@@ -75,7 +75,7 @@ jobs:
       # Set deployment from input, replacing branch slash name with suffix (`prod/my_deployment` -> `my_deployment`)
       # https://stackoverflow.com/a/40524879
       - name: Set deployment
-        if: ${{inputs.deployment && inputs.deployment != 'master'}}
+        if: ${{inputs.deployment && inputs.deployment != 'master' && inputs.deployment!='refs/heads/master'}}
         run: |
           echo "DEPLOYMENT_NAME=$(echo ${{inputs.deployment}} | sed 's/.*\///')" >> $GITHUB_ENV;  
         shell: bash
