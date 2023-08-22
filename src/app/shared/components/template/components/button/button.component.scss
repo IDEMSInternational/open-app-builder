@@ -7,7 +7,7 @@ $background-secondary: var(--button-background-secondary, var(--gradient-seconda
     height: 100%;
   }
   span {
-    padding: var(--tiny-padding) 0;
+    padding: var(--regular-padding) 0;
     display: contents;
   }
 }
@@ -18,7 +18,7 @@ ion-button {
   text-transform: none;
   white-space: pre-line;
   min-height: var(--buttons-min-height);
-  padding: var(--regular-margin) var(--tiny-padding) 0;
+  padding: var(--regular-margin) var(--regular-padding) 0;
   --border-radius: var(--ion-border-radius-standard);
   --box-shadow: var(--ion-default-box-shadow);
   display: flex;
