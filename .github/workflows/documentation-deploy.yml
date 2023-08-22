@@ -3,7 +3,6 @@ on:
   push:
     branches:
       - master
-      - chore/git-lfs-actions
 jobs:
   build:
     name: Deploy docs
@@ -12,6 +11,7 @@ jobs:
       - name: Checkout main
         uses: actions/checkout@v3
         # Only pull lfs files for documentation folder
+        # https://github.com/git-lfs/git-lfs/issues/1351
       - name: Checkout git lfs partial files
         run: git lfs pull --include "documentation/*"
       - name: Remove Git LFS requirements
