@@ -3,6 +3,7 @@ on:
   push:
     branches:
       - master
+      - chore/git-lfs-actions
 jobs:
   build:
     name: Deploy docs
