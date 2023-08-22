@@ -636,7 +636,9 @@
                   "name": "text_1",
                   "value": "Teens are better at remembering what they learnt when it is fun. Here are some ideas you could try today:",
                   "_translations": {
-                    "value": {}
+                    "value": {
+                      "tz_sw": true
+                    }
                   },
                   "type": "set_variable",
                   "_nested_name": "learn.workshop_activity.content_box.text_1"

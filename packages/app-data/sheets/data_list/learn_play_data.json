@@ -146,7 +146,9 @@
         "intro_text": {
           "tz_sw": true
         },
-        "steps_text": {},
+        "steps_text": {
+          "tz_sw": true
+        },
         "tips_text": {
           "tz_sw": true
         }
@@ -298,7 +300,9 @@
       "favourite_field": "ltp_activity_find_pair_favourite",
       "title": "Find the pair",
       "_translations": {
-        "title": {},
+        "title": {
+          "tz_sw": true
+        },
         "intro_text": {
           "tz_sw": true
         },

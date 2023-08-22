@@ -946,7 +946,9 @@
         "tool_2_title": {
           "tz_sw": true
         },
-        "tool_2_text": {},
+        "tool_2_text": {
+          "tz_sw": true
+        },
         "tool_3_title": {
           "tz_sw": true
         },
@@ -1111,7 +1113,9 @@
         "tool_2_title": {
           "tz_sw": true
         },
-        "tool_2_text": {},
+        "tool_2_text": {
+          "tz_sw": true
+        },
         "tool_3_title": {
           "tz_sw": true
         },
@@ -1164,11 +1168,15 @@
         "tool_1_title": {
           "tz_sw": true
         },
-        "tool_1_text": {},
+        "tool_1_text": {
+          "tz_sw": true
+        },
         "tool_2_title": {
           "tz_sw": true
         },
-        "tool_2_text": {},
+        "tool_2_text": {
+          "tz_sw": true
+        },
         "tool_3_title": {
           "tz_sw": true
         },
