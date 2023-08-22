@@ -45,7 +45,9 @@
       "name": "text_bottom",
       "value": "You can choose more than one feeling (or all feelings!), and you can think of other feelings if they are not here.",
       "_translations": {
-        "value": {}
+        "value": {
+          "tz_sw": true
+        }
       },
       "_nested_name": "text_bottom"
     },

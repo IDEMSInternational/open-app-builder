@@ -32,7 +32,9 @@
           "name": "title",
           "value": "Cooking or cleaning",
           "_translations": {
-            "value": {}
+            "value": {
+              "tz_sw": true
+            }
           },
           "hidden": false,
           "type": "set_variable",
@@ -66,7 +68,9 @@
           "name": "text",
           "value": "There are always things that need to be done at home. This is a great way to spend time together. Ask your teen to help you with the cooking or cleaning. You can talk to each other and teach them why doing these things is important.",
           "_translations": {
-            "value": {}
+            "value": {
+              "tz_sw": true
+            }
           },
           "type": "set_variable",
           "_nested_name": "box_image.text"

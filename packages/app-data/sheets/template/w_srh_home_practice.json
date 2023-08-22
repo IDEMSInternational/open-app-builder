@@ -80,7 +80,9 @@
                       "name": "button_1",
                       "value": "Story @global.part_connector @data.story.sex_talk.title",
                       "_translations": {
-                        "value": {}
+                        "value": {
+                          "tz_sw": true
+                        }
                       },
                       "action_list": [
                         {
@@ -125,7 +127,9 @@
                       "name": "button_2",
                       "value": "Story @global.part_connector @data.story.new_boyfriend.title",
                       "_translations": {
-                        "value": {}
+                        "value": {
+                          "tz_sw": true
+                        }
                       },
                       "action_list": [
                         {

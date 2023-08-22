@@ -32,7 +32,9 @@
       "template": "w_money_learn_1_temp",
       "title": "Budget preparation",
       "_translations": {
-        "title": {}
+        "title": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "title": {

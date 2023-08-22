@@ -1427,7 +1427,9 @@
           "name": "reply_choice_4_b",
           "value": "This is perfect! If you need any inspiration, you can find suggestions for activities in the @global.parent_centre. Remember, let your teen choose the activity!",
           "_translations": {
-            "value": {}
+            "value": {
+              "tz_sw": true
+            }
           },
           "hidden": "@local.combo_box_challenge_4!=\"choice_4_b\"",
           "_nested_name": "challenge_4.reply_choice_4_b",
@@ -1612,7 +1614,9 @@
           "name": "reply_choice_5_b",
           "value": "That’s perfect! If you need any inspiration, you can find suggestions for activities in the @global.parent_centre. Remember, let your teen choose the activity!",
           "_translations": {
-            "value": {}
+            "value": {
+              "tz_sw": true
+            }
           },
           "hidden": "@local.combo_box_challenge_5!=\"choice_5_b\"",
           "_nested_name": "challenge_5.reply_choice_5_b",
@@ -1770,7 +1774,9 @@
           "name": "reply_choice_6_a",
           "value": "Remember, let your teen choose! You can find suggestions for activities you could do with your teen in the @global.parent_centre, if you need it.",
           "_translations": {
-            "value": {}
+            "value": {
+              "tz_sw": true
+            }
           },
           "hidden": "@local.combo_box_challenge_6!=\"choice_6_a\"",
           "_nested_name": "challenge_6.reply_choice_6_a",

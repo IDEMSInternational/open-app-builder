@@ -1032,11 +1032,21 @@
       "challenges_structure": "plain",
       "text_goal": "This week, your goal was: Share with your teen how you feel, and ask them to also name their feelings.",
       "_translations": {
-        "text_goal": {},
-        "reply_happy": {},
-        "reply_ok": {},
-        "reply_sad": {},
-        "outro_text": {},
+        "text_goal": {
+          "tz_sw": true
+        },
+        "reply_happy": {
+          "tz_sw": true
+        },
+        "reply_ok": {
+          "tz_sw": true
+        },
+        "reply_sad": {
+          "tz_sw": true
+        },
+        "outro_text": {
+          "tz_sw": true
+        },
         "activity_title": {},
         "intro_text": {},
         "question_done": {
@@ -1107,12 +1117,24 @@
       "challenges_structure": "plain",
       "intro_text": "Let’s talk about how your home activity with your teen went.",
       "_translations": {
-        "intro_text": {},
-        "reply_no": {},
-        "reply_happy": {},
-        "reply_ok": {},
-        "reply_sad": {},
-        "outro_text": {},
+        "intro_text": {
+          "tz_sw": true
+        },
+        "reply_no": {
+          "tz_sw": true
+        },
+        "reply_happy": {
+          "tz_sw": true
+        },
+        "reply_ok": {
+          "tz_sw": true
+        },
+        "reply_sad": {
+          "tz_sw": true
+        },
+        "outro_text": {
+          "tz_sw": true
+        },
         "activity_title": {},
         "question_done": {
           "tz_sw": true
@@ -1175,12 +1197,24 @@
       "challenges_structure": "plain",
       "intro_text": "Let’s talk about how your home activity with your teen went.",
       "_translations": {
-        "intro_text": {},
-        "reply_no": {},
-        "reply_happy": {},
-        "reply_ok": {},
-        "reply_sad": {},
-        "outro_text": {},
+        "intro_text": {
+          "tz_sw": true
+        },
+        "reply_no": {
+          "tz_sw": true
+        },
+        "reply_happy": {
+          "tz_sw": true
+        },
+        "reply_ok": {
+          "tz_sw": true
+        },
+        "reply_sad": {
+          "tz_sw": true
+        },
+        "outro_text": {
+          "tz_sw": true
+        },
         "activity_title": {},
         "question_done": {
           "tz_sw": true
@@ -1243,12 +1277,24 @@
       "challenges_structure": "plain",
       "intro_text": "Let’s talk about how your home activity with your teen went.",
       "_translations": {
-        "intro_text": {},
-        "reply_no": {},
-        "reply_happy": {},
-        "reply_ok": {},
-        "reply_sad": {},
-        "outro_text": {},
+        "intro_text": {
+          "tz_sw": true
+        },
+        "reply_no": {
+          "tz_sw": true
+        },
+        "reply_happy": {
+          "tz_sw": true
+        },
+        "reply_ok": {
+          "tz_sw": true
+        },
+        "reply_sad": {
+          "tz_sw": true
+        },
+        "outro_text": {
+          "tz_sw": true
+        },
         "activity_title": {},
         "question_done": {
           "tz_sw": true
@@ -1311,12 +1357,24 @@
       "challenges_structure": "plain",
       "intro_text": "Let’s talk about how your home activity with your teen went.",
       "_translations": {
-        "intro_text": {},
-        "reply_no": {},
-        "reply_happy": {},
-        "reply_ok": {},
-        "reply_sad": {},
-        "outro_text": {},
+        "intro_text": {
+          "tz_sw": true
+        },
+        "reply_no": {
+          "tz_sw": true
+        },
+        "reply_happy": {
+          "tz_sw": true
+        },
+        "reply_ok": {
+          "tz_sw": true
+        },
+        "reply_sad": {
+          "tz_sw": true
+        },
+        "outro_text": {
+          "tz_sw": true
+        },
         "activity_title": {},
         "question_done": {
           "tz_sw": true

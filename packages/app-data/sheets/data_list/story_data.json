@@ -1290,15 +1290,21 @@
         "intro_text": {
           "tz_sw": true
         },
-        "text_1": {},
-        "text_2": {},
+        "text_1": {
+          "tz_sw": true
+        },
+        "text_2": {
+          "tz_sw": true
+        },
         "text_3": {
           "tz_sw": true
         },
         "text_4": {
           "tz_sw": true
         },
-        "text_5": {}
+        "text_5": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -1338,11 +1344,15 @@
       "image_3": "plh_images/workshops/w_grief/read_grief_conflict/slide_3.svg",
       "title": "Stop crying",
       "_translations": {
-        "title": {},
+        "title": {
+          "tz_sw": true
+        },
         "intro_text": {
           "tz_sw": true
         },
-        "text_1": {},
+        "text_1": {
+          "tz_sw": true
+        },
         "text_2": {
           "tz_sw": true
         },
@@ -1381,11 +1391,15 @@
       "image_4": "plh_images/workshops/w_grief/read_grief_support/slide_4.svg",
       "title": "Sharing memories",
       "_translations": {
-        "title": {},
+        "title": {
+          "tz_sw": true
+        },
         "intro_text": {
           "tz_sw": true
         },
-        "text_1": {},
+        "text_1": {
+          "tz_sw": true
+        },
         "text_2": {
           "tz_sw": true
         },
@@ -1431,12 +1445,24 @@
       "image_4": "plh_images/workshops/w_learn/read_learn_conflict/slide_4.svg",
       "title": "Busy day",
       "_translations": {
-        "title": {},
-        "intro_text": {},
-        "text_1": {},
-        "text_2": {},
-        "text_3": {},
-        "text_4": {}
+        "title": {
+          "tz_sw": true
+        },
+        "intro_text": {
+          "tz_sw": true
+        },
+        "text_1": {
+          "tz_sw": true
+        },
+        "text_2": {
+          "tz_sw": true
+        },
+        "text_3": {
+          "tz_sw": true
+        },
+        "text_4": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -1473,12 +1499,24 @@
       "image_4": "plh_images/workshops/w_learn/read_learn_support/slide_4.svg",
       "title": "When you are ready",
       "_translations": {
-        "title": {},
-        "intro_text": {},
-        "text_1": {},
-        "text_2": {},
-        "text_3": {},
-        "text_4": {}
+        "title": {
+          "tz_sw": true
+        },
+        "intro_text": {
+          "tz_sw": true
+        },
+        "text_1": {
+          "tz_sw": true
+        },
+        "text_2": {
+          "tz_sw": true
+        },
+        "text_3": {
+          "tz_sw": true
+        },
+        "text_4": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "title": {
