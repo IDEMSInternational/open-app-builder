@@ -61,7 +61,9 @@
               "name": "intro_text",
               "value": "Small actions make a big difference. Helping your teen learn can be stressful. But making your daily activities fun and doing them together is a great way to help your teen’s development and education.",
               "_translations": {
-                "value": {}
+                "value": {
+                  "tz_sw": true
+                }
               },
               "type": "set_variable",
               "_nested_name": "home_practice.workshop_activity.intro_text"
@@ -79,7 +81,9 @@
                       "name": "text_1",
                       "value": "Here are some activities you and your teen can try at home. These activities were made with caregivers of teens like yourself, and are a great way to make learning fun.",
                       "_translations": {
-                        "value": {}
+                        "value": {
+                          "tz_sw": true
+                        }
                       },
                       "type": "set_variable",
                       "_nested_name": "home_practice.workshop_activity.content_box.box_1.text_1"

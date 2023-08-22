@@ -921,7 +921,9 @@
         "text_challenge_2": {
           "tz_sw": true
         },
-        "reply_challenge_2": {},
+        "reply_challenge_2": {
+          "tz_sw": true
+        },
         "text_challenge_3": {
           "tz_sw": true
         },
@@ -934,7 +936,9 @@
         "reply_challenge_4": {
           "tz_sw": true
         },
-        "text_challenge_5": {},
+        "text_challenge_5": {
+          "tz_sw": true
+        },
         "reply_challenge_5": {
           "tz_sw": true
         },

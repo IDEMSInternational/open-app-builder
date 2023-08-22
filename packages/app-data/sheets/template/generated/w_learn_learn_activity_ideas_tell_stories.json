@@ -81,7 +81,9 @@
           "name": "text",
           "value": "Share a story from your childhood or culture with your teen. Or let them share a story with you. This is a great way to learn while building a healthy relationship.",
           "_translations": {
-            "value": {}
+            "value": {
+              "tz_sw": true
+            }
           },
           "type": "set_variable",
           "_nested_name": "box_image.text"

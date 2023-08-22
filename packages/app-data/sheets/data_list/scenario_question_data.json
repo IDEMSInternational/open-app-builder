@@ -198,8 +198,12 @@
       "scenario_image_asset": "plh_images/workshops/w_svp/learn_warning_signs/pushy_friend.svg",
       "scenario_title": "Friend pushes @global.w_svp_teen_girl_2 to accept food",
       "_translations": {
-        "scenario_title": {},
-        "scenario_text": {},
+        "scenario_title": {
+          "tz_sw": true
+        },
+        "scenario_text": {
+          "tz_sw": true
+        },
         "question_text": {
           "tz_sw": true
         },
@@ -267,7 +271,9 @@
         "option_2": {
           "tz_sw": true
         },
-        "reply_all": {}
+        "reply_all": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "scenario_title": {

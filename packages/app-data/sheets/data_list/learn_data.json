@@ -98,7 +98,9 @@
         "title": {
           "tz_sw": true
         },
-        "intro_text": {}
+        "intro_text": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -143,8 +145,12 @@
       "part_3": "cook",
       "title": "What could I do?",
       "_translations": {
-        "title": {},
-        "intro_text": {}
+        "title": {
+          "tz_sw": true
+        },
+        "intro_text": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "title": {
