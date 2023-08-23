@@ -1,4 +1,4 @@
-import { IWorkflowContext } from "data-models/workflows";
+import { IWorkflowContext } from "workflows";
 import { parseCommand } from "../../commands";
 
 /**
