@@ -8,7 +8,7 @@ import e2eDataCmd from "./e2e-data";
 import configCmd from "./config";
 import deploymentCmd from "./deployment";
 import versionCmd from "./version";
-import workflowCmd from "./workflow";
+import workflowCmd from "./workflow/cli";
 import { logWarning, logProgramHelp } from "../utils";
 
 const program = new Command();
