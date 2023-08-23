@@ -3,7 +3,6 @@ import { Command } from "commander";
 
 // Commands
 import appDataCmd from "./app-data";
-import compileCmd from "./compile";
 import e2eDataCmd from "./e2e-data";
 import configCmd from "./config";
 import deploymentCmd from "./deployment";
@@ -18,7 +17,6 @@ program.version(version).description(`IDEMS App Scripts ${version}`);
 
 /** add sub-commands from child folders */
 program.addCommand(appDataCmd);
-program.addCommand(compileCmd);
 program.addCommand(e2eDataCmd);
 program.addCommand(configCmd);
 program.addCommand(deploymentCmd);
