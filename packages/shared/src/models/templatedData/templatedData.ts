@@ -1,5 +1,5 @@
 import { ITemplatedStringVariable } from "../../types";
-import { addStringDelimiters, extractDelimitedTemplateString } from "../../utils";
+import { addStringDelimiters, extractDelimitedTemplateString } from "../../utils/delimiters";
 
 type ITemplatedDataContext = { [prefix: string]: any };
 
