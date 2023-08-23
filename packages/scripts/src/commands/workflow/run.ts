@@ -12,27 +12,9 @@ import type { IDeploymentConfigJson } from "../deployment/common";
 
 const program = new Command("run");
 
-interface IProgramOptions {
+export interface IWorkflowRunOptions {
   parent?: string;
 }
-
-/***************************************************************************************
- * CLI
- * @example
- *************************************************************************************/
-export default program
-  .description("Run a workflow")
-  .argument("[name]", "Name of workflow to run")
-  .allowUnknownOption()
-  .helpOption("--helpIgnored", "will show help from child workflow instead of this")
-  .option("-p --parent <string>", "Name of parent workflow triggered by")
-  .action(async (name, opts: IProgramOptions) => {
-    // pass any additional args after [name] positional argument
-    const args = program.args.slice(1);
-    const runner = WorkflowRunner;
-    await runner.init();
-    return runner.run({ ...opts, name, args });
-  });
 
 /***************************************************************************
  *  Main Methods
