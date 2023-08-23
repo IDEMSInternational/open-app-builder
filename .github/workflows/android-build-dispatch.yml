@@ -22,4 +22,4 @@ jobs:
     uses: ./.github/workflows/android-build.yml
     secrets: inherit
     with:
-      branch: ${{github.event.inputs.build_branch}}
+      branch: ${{github.event.inputs.branch}}

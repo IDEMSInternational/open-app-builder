@@ -1,22 +1,44 @@
 ## Shared
 
-Common platform data structures and manipulation methods. 
+Common platform methods and utility functions.
+
 There are particularly a number of utility methods used by both scripts and workflow packages
 
 Note, some methods will only work in node-based environments (non-browser)
 
-### Import
-The shared workspace is not designed to be compiled, but instead files can be imported directly
-with the use of yarn 
+### How to import
 
+**Node**
+The workspace is designed for direct import as `.ts` files, to be compiled within parent project. Most imports are made available from the top-level `index.ts`
 ```ts
-import {arrayToHashmap} from 'shared'
+import { TemplatedData } from "shared"
+```
+If any imports are not available simply update the workspace `index.ts` to include
+
+**Angular**
+The angular compiler uses local `tsconfig.app.json` to include external dependencies, therefore if using an entry should be included
+
+```json
+{
+  "extends": "./tsconfig.json",
+  "include": [
+    "packages/shared/**/*.ts",
+  ]
+}
 ```
 
-**Limitations**
-Whilst most methods are made available from the main `src/index.ts` export, there are some cases where some compilers do not tree-shake accurately resulting in overly large imports (notable danfo-js resources which are 7mb+)
+**NOTE** - the `shared` package workspace name conflicts with local `shared` folder
+As such when importing methods a package-based path will be required, i.e
 
-Therefore some shared code is not included in the main export, and must be imported directly, e.g.
 ```ts
-import { DataPipe } from 'shared/src/models/dataPipe'
+import { TemplatedData } from "packages/shared"
 ```
+
+In addition, to avoid compiler errors thrown by non-browser shared methods, explicit paths should be included to import only the supported files as required
+
+```ts
+import { AppStringEvaluator } from "packages/shared/src/models/appStringEvaluator/appStringEvaluator";
+import { TemplatedData } from "packages/shared/src/models/templatedData/templatedData";
+```
+
+In future it may be better to move any non-compatible shared methods to own package, or polyfill missing functions (e.g. `os`)
