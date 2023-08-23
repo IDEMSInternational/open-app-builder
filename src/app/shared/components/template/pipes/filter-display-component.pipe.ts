@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from "@angular/core";
-import { FlowTypes } from "packages/data-models";
+import { FlowTypes } from "data-models";
 import { TEMPLATE_COMPONENT_MAPPING } from "../components";
 
 /**
