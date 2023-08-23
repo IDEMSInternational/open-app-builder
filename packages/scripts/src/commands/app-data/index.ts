@@ -3,8 +3,6 @@ import { Command } from "commander";
 
 import convertCmd from "./convert";
 import postProcessCmd from "./postProcess";
-import downloadCmd from "./download";
-import { logProgramHelp } from "../../utils";
 
 const program = new Command("app-data").description("Manage app data");
 
