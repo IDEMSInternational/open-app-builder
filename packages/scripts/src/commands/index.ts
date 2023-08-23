@@ -10,10 +10,11 @@ import deploymentCmd from "./deployment";
 import versionCmd from "./version";
 import workflowCmd from "./workflow";
 import { callProgramWithHelp, isTsNode, logWarning } from "../utils";
+const { version } = require("../../package.json");
 
 const program = new Command();
 
-program.version("1.0.0").description("IDEMS App Scripts");
+program.version(version).description(`IDEMS App Scripts ${version}`);
 
 /** add sub-commands from child folders */
 program.addCommand(appDataCmd);

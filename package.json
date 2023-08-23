@@ -126,6 +126,7 @@
     "@ionic/angular-toolkit": "^7.0.0",
     "@ionic/cli": "^6.18.0",
     "@schematics/angular": "~15.0.4",
+    "@swc/helpers": "^0.5.1",
     "@types/clone": "^2.1.1",
     "@types/howler": "^2.2.2",
     "@types/intro.js": "^3.0.1",

@@ -1,4 +1,6 @@
 import { spawnSync } from "child_process";
+import { copyFileSync } from "fs";
+import { resolve } from "path";
 import * as tsup from "tsup";
 
 import pkgJson from "./package.json";
@@ -9,7 +11,7 @@ import pkgJson from "./package.json";
  * with module formats, so just manually compile (for now)
  */
 function compileScriptsTs() {
-  spawnSync("tsc --project tsconfig.build.json", { shell: true, stdio: "inherit" });
+  return spawnSync("tsc --project tsconfig.build.json", { shell: true, stdio: "inherit" });
 }
 
 /**
@@ -62,8 +64,19 @@ function createBuildBundle() {
     options.minify = true;
   }
 
-  tsup.build(options);
+  return tsup.build(options);
 }
 
-compileScriptsTs();
-createBuildBundle();
+/** Copy src package.json to dist folder for reference and versioning */
+function copyPackageJson() {
+  const src = resolve(__dirname, "package.json");
+  const target = resolve(__dirname, "dist", "package.json");
+  copyFileSync(src, target);
+}
+
+async function build() {
+  compileScriptsTs();
+  await createBuildBundle();
+  copyPackageJson();
+}
+build();
