@@ -20,7 +20,7 @@ yarn workflow [workflow-name]
 This will compile typescript and execute at runtime (slower process but scripts always up-to-date)
 
 **NOTE** - this method will be deprecated in the future in favor of always running
-prebuild (once NX integrated)
+prebuild
 
 **Prebuild**
 It is also possible to pre-compile and package the scripts for direct execution from `bin`
@@ -36,8 +36,10 @@ yarn app-workflow [workflow-name]
 
 Both of these shorthand methods are exposed via the `bin` folder of this workspace
 
-**NOTE**   
-Scripts require compilation for first use. This should be automatically handled, although manual compilation can be performed via command
+The methods include a check to see if the relevant scripts workspace has been prebuilt
+(based on scripts `package.json` version number), building only if updated.
+
+If for any reason manual building is required, this can be achieved by the command
 
 ```sh
 yarn workspace scripts build

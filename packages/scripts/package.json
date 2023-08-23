@@ -9,7 +9,6 @@
   "main": "src/commands/index.ts",
   "scripts": {
     "start": "ts-node src/commands/index.ts",
-    "exec": "./bin/scripts",
     "build": "ts-node build.ts",
     "dev": "ts-node-dev --transpile-only --respawn --watch src src/commands/index.ts",
     "test": "jasmine-ts --config=jasmine.json",
