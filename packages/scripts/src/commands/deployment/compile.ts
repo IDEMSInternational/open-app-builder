@@ -51,10 +51,9 @@ export async function compileDeploymentTS(options: IOptions) {
 
 /** Additional export to call program a child process to allow sync execution of async functions */
 export function compileDeploymentTSSync(options: IOptions) {
-  const exec = `yarn workspace scripts start`;
+  const exec = `yarn app-scripts`;
   const args = `deployment compile --input "${options.input}" --output "${options.output}"`;
   const cmd = `${exec} ${args}`;
-  // console.log(chalk.yellow(cmd));
   spawnSync(cmd, { stdio: "inherit", shell: true });
 }
 
