@@ -16,6 +16,7 @@ import { TemplateBaseComponent } from "../base";
       </plh-tmpl-accordion-section>
     </div>
   </div>`,
+  styleUrls: ["./workshops_accordion.scss"],
 })
 export class WorkshopsComponent extends TemplateBaseComponent implements OnInit {
   rows: FlowTypes.TemplateRow[];

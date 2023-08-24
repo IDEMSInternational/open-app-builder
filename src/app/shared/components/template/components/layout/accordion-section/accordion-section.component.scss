@@ -5,20 +5,6 @@ $background-highlight: var(
   var(--gradient-primary-light-vertical)
 );
 
-.workshops-accordion {
-  position: relative;
-  margin-top: var(--large-margin);
-  &::after {
-    content: "";
-    width: 1px;
-    height: calc(100% - 35px);
-    background: var(--ion-color-primary);
-    position: absolute;
-    left: 21px;
-    top: 0;
-    margin-top: var(--regular-margin);
-  }
-}
 .accordion-wrapper {
   display: flex;
   justify-content: space-between;
@@ -45,7 +31,7 @@ $background-highlight: var(
       background: $background-highlight;
     }
     ion-icon {
-      font-size: var(--icon-size-large);
+      font-size: var(--icon-size-tiny);
       color: var(--ion-color-primary);
     }
   }
