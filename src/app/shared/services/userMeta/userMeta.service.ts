@@ -20,7 +20,7 @@ export class UserMetaService extends AsyncServiceBase {
     userMetaValues.forEach((v) => {
       userMeta[v.key] = v.value;
     });
-    const { uuid } = await Device.getId();
+    const { identifier: uuid } = await Device.getId();
     // fix legacy user IDs - note this can likely be removed after v0.16
     if (userMeta.uuid && userMeta.uuid !== uuid) {
       await this.setUserMeta({ uuid, uuid_temp: userMeta.uuid });

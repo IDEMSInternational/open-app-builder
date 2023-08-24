@@ -39,6 +39,10 @@ on:
         description: "Specify whether to include running workspace lint and test before build"
         type: boolean
         default: false
+      lfs:
+        description: Enable git lfs to include download of all binary assets (user-facing deployments)
+        type: boolean
+        default: true
       skip-upload:
         description: "Specify whether to skip uploading build artifact at end"
         type: boolean
@@ -109,7 +113,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
         with:
-          lfs: true
+          lfs: ${{inputs.lfs}}
           ref: ${{inputs.branch}}
 
       - name: Setup Node

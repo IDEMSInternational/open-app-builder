@@ -117,9 +117,7 @@ const workflows: IDeploymentWorkflows = {
     steps: [
       {
         name: "sync_local",
-        function: async (context) => {
-          processLocalFiles(context);
-        },
+        function: async (context) => processLocalFiles(context),
       },
       {
         name: "watch_changes",
@@ -130,7 +128,7 @@ const workflows: IDeploymentWorkflows = {
               const { assets_path, sheets_path } = context.config.local_drive;
               const only_sheets = normalize(filepath).startsWith(normalize(sheets_path));
               const only_assets = normalize(filepath).startsWith(normalize(assets_path));
-              processLocalFiles(context, { only_assets, only_sheets });
+              await processLocalFiles(context, { only_assets, only_sheets });
             },
           }),
       },
