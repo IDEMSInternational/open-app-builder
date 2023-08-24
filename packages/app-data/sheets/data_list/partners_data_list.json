@@ -42,13 +42,13 @@
     },
     {
       "id": "nimr",
-      "splash_page": 2,
+      "splash_page": 1,
       "name": "NIMR",
       "image_asset": "plh_images/logos/nimr.png"
     },
     {
       "id": "gisp",
-      "splash_page": 2,
+      "splash_page": 1,
       "name": "Global Initiative to Support Parents",
       "image_asset": "plh_images/logos/gisp.png"
     },
@@ -63,6 +63,18 @@
       "splash_page": 2,
       "name": "IDEMS",
       "image_asset": "plh_images/logos/idems.png"
+    },
+    {
+      "id": "khululeka",
+      "splash_page": 2,
+      "name": "Khululeka Grief Support",
+      "image_asset": "plh_images/logos/khululeka.png"
+    },
+    {
+      "id": "no_means_no",
+      "splash_page": 2,
+      "name": "No Means No",
+      "image_asset": "plh_images/logos/no_means_no.png"
     }
   ],
   "_xlsxPath": "global/data/partners_data_lists.xlsx"
