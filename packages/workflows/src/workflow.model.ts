@@ -7,7 +7,7 @@ import type { IDeploymentConfigJson } from "data-models";
 import type { ITasks } from "../../scripts/src/tasks";
 
 export interface IWorkflowContext {
-  [step_name: string]: { output: any };
+  [step_name: string]: IWorkflowStep & { output: any };
 }
 
 interface IWorkflowStep {
