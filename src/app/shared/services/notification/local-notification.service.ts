@@ -136,6 +136,11 @@ export class LocalNotificationService extends AsyncServiceBase {
         return false;
       }
     }
+    // Return state of already granted
+    const { display } = await LocalNotifications.checkPermissions();
+    if (display === "granted") {
+      return true;
+    }
     // Use notifications api to check permissions. Run in parallel with a 5-second
     // timeout to resolve in cases where prompt does not appear or user fails to interact with it
     const granted = await Promise.race([
