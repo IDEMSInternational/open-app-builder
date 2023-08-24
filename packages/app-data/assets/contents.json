@@ -1688,6 +1688,11 @@
     "md5Checksum": "21a95d3e386ed06e3097913311aa1364",
     "size_kb": 87.3
   },
+  "plh_images/logos/khululeka.png": {
+    "filePath": "global/plh_images/logos/khululeka.png",
+    "md5Checksum": "e6abebb33da7490beba857e6a4840a18",
+    "size_kb": 145.4
+  },
   "plh_images/logos/lego_foundation.png": {
     "filePath": "global/plh_images/logos/lego_foundation.png",
     "md5Checksum": "b65dda37d388c6f8aeea7213bf98fe54",
@@ -1707,6 +1712,11 @@
     "filePath": "global/plh_images/logos/nimr_blue.png",
     "md5Checksum": "4937f247b3e71fa05eb9885beb40c66f",
     "size_kb": 222.6
+  },
+  "plh_images/logos/no_means_no.png": {
+    "filePath": "global/plh_images/logos/no_means_no.png",
+    "md5Checksum": "4dff17585cd1858cef680d05806dd588",
+    "size_kb": 257.9
   },
   "plh_images/logos/oak_foundation.png": {
     "filePath": "global/plh_images/logos/oak_foundation.png",
@@ -3070,8 +3080,8 @@
   },
   "plh_images/workshops/w_srh/learn/sex_talk_age/slide_2.svg": {
     "filePath": "global/plh_images/workshops/w_srh/learn/sex_talk_age/slide_2.svg",
-    "md5Checksum": "9d0f76b9f86ff37d34a56f384bc3d8a6",
-    "size_kb": 61.4
+    "md5Checksum": "5dc6b53b7e2a385f47dd5c8e27f9aa03",
+    "size_kb": 70.9
   },
   "plh_images/workshops/w_srh/learn/sex_talk_age/slide_3.svg": {
     "filePath": "global/plh_images/workshops/w_srh/learn/sex_talk_age/slide_3.svg",
@@ -3105,8 +3115,8 @@
   },
   "plh_images/workshops/w_srh/learn/sex_talk_when/slide_1.svg": {
     "filePath": "global/plh_images/workshops/w_srh/learn/sex_talk_when/slide_1.svg",
-    "md5Checksum": "02f10a1fc65b2b3fa211de277ef84080",
-    "size_kb": 68
+    "md5Checksum": "ef93310548718d5243213c23e349dd31",
+    "size_kb": 58.6
   },
   "plh_images/workshops/w_srh/learn/sex_talk_when/slide_2.svg": {
     "filePath": "global/plh_images/workshops/w_srh/learn/sex_talk_when/slide_2.svg",
@@ -3285,8 +3295,8 @@
   },
   "plh_images/workshops/w_svp/learn_warning_signs/controlling_boyfriend.svg": {
     "filePath": "global/plh_images/workshops/w_svp/learn_warning_signs/controlling_boyfriend.svg",
-    "md5Checksum": "4f0a77680914ef15f48a36b6c9a93f9d",
-    "size_kb": 48.6
+    "md5Checksum": "ebe3bc94ae51b79ce0a9b36d7bbdc2ed",
+    "size_kb": 39.3
   },
   "plh_images/workshops/w_svp/learn_warning_signs/nude_pic.svg": {
     "filePath": "global/plh_images/workshops/w_svp/learn_warning_signs/nude_pic.svg",
@@ -3300,18 +3310,18 @@
   },
   "plh_images/workshops/w_svp/learn_warning_signs/pushy_boyfriend.svg": {
     "filePath": "global/plh_images/workshops/w_svp/learn_warning_signs/pushy_boyfriend.svg",
-    "md5Checksum": "d143ad57d62578e6306732192409fa8f",
-    "size_kb": 59
+    "md5Checksum": "7bee8926e61517fb2328c3cedf6891b4",
+    "size_kb": 49.8
   },
   "plh_images/workshops/w_svp/learn_warning_signs/pushy_friend.svg": {
     "filePath": "global/plh_images/workshops/w_svp/learn_warning_signs/pushy_friend.svg",
-    "md5Checksum": "a86a0e3ddbe3fb5cf18513ac41142554",
-    "size_kb": 54.7
+    "md5Checksum": "0eba3bf285360a39d81515ec6952fb25",
+    "size_kb": 65.6
   },
   "plh_images/workshops/w_svp/learn_warning_signs/rejected_ride.svg": {
     "filePath": "global/plh_images/workshops/w_svp/learn_warning_signs/rejected_ride.svg",
-    "md5Checksum": "4df26bca7b5c043416fa91cde948a672",
-    "size_kb": 63.8
+    "md5Checksum": "c965a2a4cba04693c3e225db36def8e4",
+    "size_kb": 74.4
   },
   "plh_images/workshops/w_svp/tools.svg": {
     "filePath": "global/plh_images/workshops/w_svp/tools.svg",
