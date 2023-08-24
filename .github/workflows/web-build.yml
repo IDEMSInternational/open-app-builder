@@ -39,6 +39,10 @@ on:
         description: "Specify whether to include running workspace lint and test before build"
         type: boolean
         default: false
+      lfs:
+        description: Enable git lfs to include download of all binary assets (user-facing deployments)
+        type: boolean
+        default: true
       skip-upload:
         description: "Specify whether to skip uploading build artifact at end"
         type: boolean
@@ -75,7 +79,7 @@ jobs:
       # Set deployment from input, replacing branch slash name with suffix (`prod/my_deployment` -> `my_deployment`)
       # https://stackoverflow.com/a/40524879
       - name: Set deployment
-        if: ${{inputs.deployment && inputs.deployment != 'master'}}
+        if: ${{inputs.deployment && inputs.deployment != 'master' && inputs.deployment!='refs/heads/master'}}
         run: |
           echo "DEPLOYMENT_NAME=$(echo ${{inputs.deployment}} | sed 's/.*\///')" >> $GITHUB_ENV;  
         shell: bash
@@ -109,7 +113,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
         with:
-          lfs: true
+          lfs: ${{inputs.lfs}}
           ref: ${{inputs.branch}}
 
       - name: Setup Node
@@ -153,11 +157,6 @@ jobs:
       - name: Populate git sha
         if: ${{env.GIT_SHA}}
         run: echo "export const GIT_SHA = \"$GIT_SHA\";" > src/environments/sha.ts
-
-      # Ensure required packages built to enable deployment set
-      # TODO - should add implicit dep to scripts when NX added
-      - name: Precompile
-        run: yarn scripts compile types
 
       - name: Set deployment
         run: yarn workflow deployment set ${{env.DEPLOYMENT_NAME}}

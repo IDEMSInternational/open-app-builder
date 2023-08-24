@@ -9,7 +9,7 @@ import configCmd from "./config";
 import deploymentCmd from "./deployment";
 import versionCmd from "./version";
 import workflowCmd from "./workflow";
-import { logWarning, logProgramHelp } from "../utils/logging.utils";
+import { logWarning, logProgramHelp } from "../utils";
 
 const program = new Command();
 

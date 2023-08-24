@@ -15,5 +15,8 @@
 				"google.com"
 			]
 		}
+	},
+	"server": {
+		"androidScheme": "http"
 	}
 }
