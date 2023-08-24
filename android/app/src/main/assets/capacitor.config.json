@@ -1,7 +1,6 @@
 {
 	"appId": "international.idems.plh_teens",
 	"appName": "PLH Teens",
-	"bundledWebRuntime": false,
 	"webDir": "www",
 	"plugins": {
 		"SplashScreen": {
@@ -15,5 +14,8 @@
 				"google.com"
 			]
 		}
+	},
+	"server": {
+		"androidScheme": "http"
 	}
 }
