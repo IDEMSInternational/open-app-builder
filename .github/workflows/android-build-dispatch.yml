@@ -1,0 +1,25 @@
+# Manually trigger Android build (testing purposes)
+
+##################################################################################
+#         Main Code
+##################################################################################
+name: Android Build Dispatch
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+on:
+  workflow_dispatch:
+    inputs:
+      branch:
+        required: true
+        description: "Specify branch for deployment"
+        default: "deployment/plh_za"
+
+jobs:
+  build:
+    uses: ./.github/workflows/android-build.yml
+    secrets: inherit
+    with:
+      branch: ${{github.event.inputs.branch}}
