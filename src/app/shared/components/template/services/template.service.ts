@@ -6,7 +6,7 @@ import { FlowTypes } from "src/app/shared/model";
 import { ModalController } from "@ionic/angular";
 import { ITemplatePopupComponentProps, TemplatePopupComponent } from "../components/layout/popup";
 import { TemplateTranslateService } from "./template-translate.service";
-import { IFlowEvent } from "data-models/db.model";
+import { IFlowEvent } from "data-models";
 import { TemplateVariablesService } from "./template-variables.service";
 import { TemplateFieldService } from "./template-field.service";
 import { arrayToHashmap } from "src/app/shared/utils";
