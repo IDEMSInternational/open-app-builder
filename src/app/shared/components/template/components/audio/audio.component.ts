@@ -20,19 +20,21 @@ const FORWARD_ICON_DEFAULT = "play-forward";
 interface IAudioParams {
   /** TEMPLATE PARAMETER: "src". Will be overridden by a value passed as "value" to the component. */
   src: string;
+  /** TEMPLATE PARAMETER: "title" */
+  title: string;
   /** TEMPLATE PARAMETER: "play_icon_asset". The path to an svg to override the default play icon. Default icon is ion's "play-outline" */
-  playIcon: string;
+  playIconAsset: string;
   /** TEMPLATE PARAMETER: "pause_icon_asset". The path to an svg to override the default pause icon. Default icon is ion's "pause-outline" */
-  pauseIcon: string;
+  pauseIconAsset: string;
   /** TEMPLATE PARAMETER: "forward_icon_asset". The path to an svg to override the default forward icon.
    * Will be mirrored to be used as the reqind icon. Default icon is ion's "play-forward"
    * */
-  forwardIcon: string;
-  /** TEMPLATE PARAMETER: "title" */
-  titleAudio: string;
-  /** TEMPLATE PARAMETER: "help". Text to be displayed as a tooltip when clicking the "help" icon.
+  forwardIconAsset: string;
+  /** TEMPLATE PARAMETER: "help_icon_asset". The path to an svg to override the default help icon. */
+  helpIconAsset: string;
+  /** TEMPLATE PARAMETER: "help_text". Text to be displayed as a tooltip when clicking the "help" icon.
    * Icon and tooltip will not be displayed if value not provided. Default null */
-  help: string;
+  helpText: string;
   /** TEMPLATE PARAMETER: "range_bar_disabled". If true, the use cannot scrub through the audio using the range bar.
    * Default false.
    */
@@ -57,8 +59,6 @@ export class TmplAudioComponent
 
   params: Partial<IAudioParams> = {};
 
-  /** @ignore */
-  isMute: boolean = false;
   /** @ignore */
   player: Howl = null;
   /** @ignore */
@@ -87,17 +87,21 @@ export class TmplAudioComponent
     this.params.src = this.plhAssetPipe.transform(
       this._row.value || getStringParamFromTemplateRow(this._row, "src", null)
     );
-    this.params.playIcon = this.getAssetParamFromTemplateRow("play_icon_asset", PLAY_ICON_DEFAULT);
-    this.params.pauseIcon = this.getAssetParamFromTemplateRow(
+    this.params.playIconAsset = this.getAssetParamFromTemplateRow(
+      "play_icon_asset",
+      PLAY_ICON_DEFAULT
+    );
+    this.params.pauseIconAsset = this.getAssetParamFromTemplateRow(
       "pause_icon_asset",
       PAUSE_ICON_DEFAULT
     );
-    this.params.forwardIcon = this.getAssetParamFromTemplateRow(
+    this.params.forwardIconAsset = this.getAssetParamFromTemplateRow(
       "forward_icon_asset",
       FORWARD_ICON_DEFAULT
     );
-    this.params.titleAudio = getStringParamFromTemplateRow(this._row, "title", "");
-    this.params.help = getStringParamFromTemplateRow(this._row, "help", null);
+    this.params.title = getStringParamFromTemplateRow(this._row, "title", "");
+    this.params.helpText = getStringParamFromTemplateRow(this._row, "help_text", null);
+    this.params.helpIconAsset = getStringParamFromTemplateRow(this._row, "help_icon_asset", null);
     this.params.rangeBarDisabled = getBooleanParamFromTemplateRow(
       this._row,
       "range_bar_disabled",
@@ -165,11 +169,6 @@ export class TmplAudioComponent
     this.player.seek(duration * (newValue / 100));
     this.rangeBarTouched = false;
     this.updateProgress();
-  }
-
-  toggleMute() {
-    this.isMute = !this.isMute;
-    this.player.mute(this.isMute);
   }
 
   updateProgress() {

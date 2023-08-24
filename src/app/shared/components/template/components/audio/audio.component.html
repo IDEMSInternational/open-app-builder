@@ -1,20 +1,15 @@
 <div class="container-player margin-t-large">
   <div class="top-row">
     <div class="title_and_help">
-      <h3 *ngIf="params.titleAudio">{{ params.titleAudio }}</h3>
+      <h3 *ngIf="params.title">{{ params.title }}</h3>
       <ion-icon
-        *ngIf="params.help"
-        [pTooltip]="params.help"
-        tooltipPosition="right"
+        *ngIf="params.helpText"
+        [pTooltip]="params.helpText"
+        tooltipPosition="left"
         tooltipEvent="click"
         name="help-circle-outline"
+        [src]="params.helpIconAsset"
         class="audio-help"
-      ></ion-icon>
-    </div>
-    <div class="volume" (click)="player ? toggleMute() : null">
-      <ion-icon
-        [name]="!isMute ? 'volume-high-outline' : 'volume-mute-outline'"
-        class="volume-icon"
       ></ion-icon>
     </div>
   </div>
@@ -42,23 +37,24 @@
   <div class="controls" *ngIf="!errorTxt">
     <div class="rewind">
       <ion-icon
-        [name]="params.forwardIcon"
-        [src]="params.forwardIcon"
+        [name]="params.forwardIconAsset"
+        [src]="params.forwardIconAsset"
         (click)="rewindPrev()"
       ></ion-icon>
     </div>
     <div class="play">
       <ion-button class="btn-play" (click)="togglePlayer()">
         <ion-icon
-          [name]="!isPlayed ? params.playIcon : params.pauseIcon"
-          [src]="!isPlayed ? params.playIcon : params.pauseIcon"
+          [name]="!isPlayed ? params.playIconAsset : params.pauseIconAsset"
+          [src]="!isPlayed ? params.playIconAsset : params.pauseIconAsset"
+          [class.play-icon]="!isPlayed"
         ></ion-icon>
       </ion-button>
     </div>
     <div class="forward">
       <ion-icon
-        [name]="params.forwardIcon"
-        [src]="params.forwardIcon"
+        [name]="params.forwardIconAsset"
+        [src]="params.forwardIconAsset"
         (click)="rewindNext()"
       ></ion-icon>
     </div>
