@@ -11,7 +11,7 @@
     <ion-icon *ngIf="params.icon" slot="start" src="{{ params.icon | plhAsset }}"></ion-icon>
     <span
       *ngIf="_row.value"
-      [class]="'left ' + params.textAlign"
+      [class]="'left text ' + params.textAlign"
       [innerHTML]="_row.value | markdown"
     >
     </span>
