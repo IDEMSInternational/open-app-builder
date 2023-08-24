@@ -27,7 +27,7 @@
   <div
     class="accordion-section"
     [ngClass]="{
-      openSection: _row.parameter_list.state === 'open',
+      openSection: _row.parameter_list?.state === 'open',
       disabled: _row.disabled,
       completed: completed,
       inProgress: !completed && !_row.disabled
@@ -38,7 +38,7 @@
     <div
       class="accordion-section-content"
       [ngClass]="{
-        openSection: _row.parameter_list.state === 'open'
+        openSection: _row.parameter_list?.state === 'open'
       }"
     >
       <plh-template-component
