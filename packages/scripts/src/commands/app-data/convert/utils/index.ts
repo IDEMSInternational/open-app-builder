@@ -15,7 +15,7 @@ export {
   arrayToHashmap,
   logWarning,
   groupJsonByKey,
-  createChildLogger,
+  createChildFileLogger,
   clearLogs,
   getLogFiles,
   getLogs,
