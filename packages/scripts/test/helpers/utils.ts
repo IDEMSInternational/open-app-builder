@@ -1,4 +1,4 @@
-import { Logger } from "../../src/utils/logging/console-logger";
+import { Logger } from "shared/src/utils/logging/console-logger";
 
 /*************************************************************
  * Test utilties
