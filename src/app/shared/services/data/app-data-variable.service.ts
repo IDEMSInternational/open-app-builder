@@ -1,5 +1,9 @@
 import { Injectable } from "@angular/core";
-import { ITemplatedDataContextList, JSEvaluator, TemplatedData } from "shared";
+import { JSEvaluator } from "shared/src/models/jsEvaluator/jsEvaluator";
+import {
+  ITemplatedDataContextList,
+  TemplatedData,
+} from "shared/src/models/templatedData/templatedData";
 import { AsyncServiceBase } from "../asyncService.base";
 import { DbService } from "../db/db.service";
 import { LocalStorageService } from "../local-storage/local-storage.service";
