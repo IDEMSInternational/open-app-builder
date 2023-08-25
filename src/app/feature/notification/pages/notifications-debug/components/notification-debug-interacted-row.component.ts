@@ -17,7 +17,7 @@ import { ILocalNotificationInteractionDB } from "src/app/shared/services/notific
           </div>
           <div>
             <div class="next-notification" style="color:grey">
-              {{ notification.schedule_timestamp | date: "MMM d h:mm a" }}
+              {{ notification.schedule_timestamp | date : "MMM d h:mm a" }}
             </div>
             <div style="margin-top:0.5em; text-align:right">
               <span class="tag action" *ngIf="notification.action_id">

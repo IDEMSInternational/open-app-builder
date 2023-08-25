@@ -6,7 +6,7 @@ import BaseOperator from "./base";
 type ILoadedDatalist = any; // datalist
 
 class ConcatOperator extends BaseOperator {
-  public args_list: { data: any; name: string }[];
+  public declare args_list: { data: any; name: string }[];
   private indexColumn = "id";
   /** When processing arg keep track of active for logging purposes */
   private activeArg: { data: any; name: string };
