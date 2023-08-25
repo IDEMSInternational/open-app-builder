@@ -1,13 +1,14 @@
 import { DataFrame, merge, toJSON } from "danfojs";
+import { arrayToHashmap } from "../../../utils";
 import { DataPipe } from "../pipe";
-import { replaceNaN, arrayToHashmap, setIndexColumn } from "../utils";
+import { replaceNaN, setIndexColumn } from "../utils";
 import BaseOperator from "./base";
 
 type ILoadedDatalist = any; // datalist
 
 /** Merge multiple datalists together, joining columns by id and replacing values where overrides exist **/
 class MergeOperator extends BaseOperator {
-  public args_list: ILoadedDatalist[];
+  public declare args_list: ILoadedDatalist[];
   private indexColumn = "id";
   constructor(df: DataFrame, args_list: string[], pipe: DataPipe) {
     super(df, args_list, pipe);

@@ -2,9 +2,6 @@
 #         Configuration
 ##################################################################################
 env:
-  # Hardcoded default (testing purposes)
-  BUILD_BRANCH_DEFAULT: master
-  DEPLOYMENT_NAME_DEFAULT: plh_global
   # Secrets
   GOOGLE_SERVICES_JSON: ${{secrets.GOOGLE_SERVICES_JSON}}
   SIGNING_KEY: ${{secrets.SIGNING_KEY}}
@@ -65,8 +62,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
         with:
-          lfs: true
-          ref:  ${{ inputs.BUILD_BRANCH }}
+          ref:  ${{ inputs.branch }}
       #############################################################################
       #         Configure
       # Setup node same way as web build to allow calling `npx cap sync` command
@@ -107,11 +103,11 @@ jobs:
       #         Android Build
       #############################################################################
         # Java version mapping: https://stackoverflow.com/a/47457251/5693245
-      - name: Set up JDK 11
+      - name: Set up JDK 17
         uses: actions/setup-java@v3
         with:
           distribution: "zulu"
-          java-version: "11"
+          java-version: "17"
           java-package: jdk
           cache: "gradle"
       - name: Setup Android SDK
@@ -152,5 +148,5 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: release_bundle
-          path: android/app/build/outputs/bundle/release/app-release.aab
+          path: ${{steps.sign_aab.outputs.signedReleaseFile}}
      

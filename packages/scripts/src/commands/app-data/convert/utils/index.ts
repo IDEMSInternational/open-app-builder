@@ -4,5 +4,21 @@ export * from "./app-data-override.utils";
 export * from "./app-data-string.utils";
 
 export * from "./logging";
-// Re-export common shared utils for easier import
-export * from "../../../../utils";
+
+// re-export some shared utils for ease of import
+// TODO - should refactor source code to import from shared
+export {
+  generateFolderFlatMap,
+  Logger,
+  setNestedProperty,
+  booleanStringToBoolean,
+  arrayToHashmap,
+  logWarning,
+  groupJsonByKey,
+  createChildLogger,
+  clearLogs,
+  getLogFiles,
+  getLogs,
+} from "shared";
+
+export type { IContentsEntry } from "shared";

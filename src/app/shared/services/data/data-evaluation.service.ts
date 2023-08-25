@@ -1,6 +1,6 @@
 import { Injectable, Injector } from "@angular/core";
 import { differenceInHours } from "date-fns";
-import { IDBTable } from "packages/data-models/db.model";
+import { IDBTable } from "data-models";
 import { FlowTypes } from "src/app/shared/model";
 import { TemplateFieldService } from "../../components/template/services/template-field.service";
 import { TemplateVariablesService } from "../../components/template/services/template-variables.service";

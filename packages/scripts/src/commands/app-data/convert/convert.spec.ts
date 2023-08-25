@@ -57,6 +57,11 @@ describe("App Data Converter", () => {
       "No parser available for flow_type: test_invalid_type",
     ]);
   });
+  it("Throws on duplicate flows", async () => {
+    await converter.run().catch((err) => {
+      expect(err.message.includes("Duplicate flows found")).toEqual(true);
+    });
+  });
 });
 
 describe("App Data Converter - Error Checking", () => {
@@ -65,7 +70,7 @@ describe("App Data Converter - Error Checking", () => {
     outputFolder: path.resolve(SCRIPTS_TEST_DATA_DIR, "output", "errorChecking"),
     cacheFolder: path.resolve(SCRIPTS_TEST_DATA_DIR, "cache"),
   };
-  let errorConverter: AppDataConverter;
+  let errorConverter = new AppDataConverter(errorPaths);
   beforeAll(() => {
     if (existsSync(paths.outputFolder)) {
       emptyDirSync(paths.outputFolder);
@@ -75,10 +80,11 @@ describe("App Data Converter - Error Checking", () => {
     errorConverter = new AppDataConverter(errorPaths);
   });
   it("Tracks number of conversion errors", async () => {
+    errorConverter = new AppDataConverter(errorPaths);
     const { errors } = await errorConverter.run();
     expect(errors.length).toBeGreaterThan(0);
   });
-  it("Throws on duplicate flows", async () => {
+  it("Throws on duplicate flows (2)", async () => {
     await errorConverter.run().catch((err) => {
       expect(err.message.includes("Duplicate flows found")).toBeTrue();
     });

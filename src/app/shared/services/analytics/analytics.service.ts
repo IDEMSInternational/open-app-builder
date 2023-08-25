@@ -15,7 +15,7 @@ export class AnalyticsService extends SyncServiceBase {
     this.matomoTracker.setCookieSameSite("Lax");
 
     // set user id whenever ready
-    Device.getId().then(({ uuid }) => {
+    Device.getId().then(({ identifier: uuid }) => {
       this.matomoTracker.setUserId(uuid);
     });
   }
