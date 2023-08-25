@@ -19,7 +19,9 @@ class BaseOperator {
     return this.df;
   }
 
-  private validate() {
+  // NOTE - method could technically be private however tsc build fails due to
+  // https://github.com/microsoft/TypeScript/issues/30355
+  validate() {
     const validatedArgs = this.args_list.map((a, i) => ({
       a,
       validation: this.validateArg(a, i),
