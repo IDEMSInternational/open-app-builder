@@ -1,14 +1,13 @@
-import { SCRIPTS_LOGS_DIR } from "../../paths";
-
 import winston from "winston";
 import path from "path";
 import { emptyDirSync, ensureDirSync, truncateSync } from "fs-extra";
 import { _wait } from "../cli-utils";
 import { Writable } from "stream";
 import { existsSync } from "fs";
+import { SCRIPTS_LOGS_DIR } from "../../paths";
 
 const logLevels = ["debug", "info", "warning", "error"] as const;
-type ILogLevel = typeof logLevels[number];
+type ILogLevel = (typeof logLevels)[number];
 interface ILogEntry {
   level: ILogLevel;
   message?: string;
