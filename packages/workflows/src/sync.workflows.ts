@@ -1,5 +1,5 @@
 import { normalize } from "path";
-import { replicateDir } from "scripts/src/utils";
+import { replicateDir } from "shared";
 import type { IDeploymentWorkflows, IWorkflowStepContext } from "./workflow.model";
 
 /** Default workflows made available to all deployments */

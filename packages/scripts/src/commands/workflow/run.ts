@@ -4,7 +4,7 @@ import boxen from "boxen";
 import chalk from "chalk";
 import path from "path";
 import { Command } from "commander";
-import { IDeploymentWorkflows, IWorkflow, WORKFLOW_DEFAULTS } from "data-models/workflows";
+import { IDeploymentWorkflows, IWorkflow, WORKFLOW_DEFAULTS } from "workflows";
 import ALL_TASKS from "../../tasks";
 import { Logger, logProgramHelp, pad, promptOptions } from "../../utils";
 import { ActiveDeployment } from "../deployment/get";
@@ -51,10 +51,12 @@ export class WorkflowRunnerClass {
     // load default workflows
     this.workflows = WORKFLOW_DEFAULTS;
     // load custom workflows
+    // TODO - CC 2023-08-24 custom workflows not used and compiling TS difficult at runtime
+    // so should consider removing feature
     this.config = ActiveDeployment.get({ ignoreMissing: true });
-    const { workflow, _workspace_path } = this.config as any;
+    const { _workspace_path } = this.config as any;
     const customWorkflowFiles = [];
-    if (workflow) {
+    if (_workspace_path) {
       for (const workflowPath of customWorkflowFiles) {
         const ts: IDeploymentWorkflows = await import(path.resolve(_workspace_path, workflowPath));
         const parsedWorkflows: IDeploymentWorkflows = ts?.default as any;
