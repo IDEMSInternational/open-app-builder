@@ -14,7 +14,4 @@ jobs:
       skip-upload: true
       # When testing build binary assets not required
       lfs: false 
-      # Load deployment configuration from named environment above (e.g. debug)
-      deployment: ${{vars.DEPLOYMENT_NAME}}
-      deployment-repo: ${{vars.DEPLOYMENT_REPO}}
-      deployment-private-key: ${{secrets.DEPLOYMENT_PRIVATE_KEY}}
+      deployment: debug
