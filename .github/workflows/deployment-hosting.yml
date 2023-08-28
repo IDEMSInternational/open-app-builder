@@ -1,6 +1,6 @@
 # Deploy to firebase hosting on PR merge
 # Specifies deployment target based on branch
-# Master -> plh_global
+# Master -> debug
 # Deployment/{deployment_name} -> {deployment_name}
 name: Deployment Hosting
 on:
