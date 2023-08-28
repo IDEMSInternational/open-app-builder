@@ -65,7 +65,6 @@
               "dompurify",
               "extract-math",
               "marked",
-              "app-data",
               "stacktrace-js",
               "intro.js",
               "qrcode"
