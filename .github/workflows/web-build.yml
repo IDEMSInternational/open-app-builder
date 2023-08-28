@@ -71,7 +71,7 @@ jobs:
   configure_build:
     outputs:
       DEPLOYMENT_NAME: ${{ steps.populate.outputs.DEPLOYMENT_NAME }}
-      DEPLOYMENT_REPO: ${{ steps.populate.outputs.DEPLOYMENT_NAME }}
+      DEPLOYMENT_REPO: ${{ steps.populate.outputs.DEPLOYMENT_REPO }}
       GIT_SHA: ${{ steps.populate.outputs.GIT_SHA }}
     runs-on: ubuntu-latest
     steps:
@@ -115,6 +115,7 @@ jobs:
         id: populate
         run: |
           echo "DEPLOYMENT_NAME=${{env.DEPLOYMENT_NAME}}" >> $GITHUB_OUTPUT;
+          echo "DEPLOYMENT_REPO=${{env.DEPLOYMENT_REPO}}" >> $GITHUB_OUTPUT;
           echo "GIT_SHA=${{env.GIT_SHA}}" >> $GITHUB_OUTPUT;
     
   build:
