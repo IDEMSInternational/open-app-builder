@@ -179,7 +179,7 @@ jobs:
         with:
           repository: ${{env.DEPLOYMENT_REPO}}
           lfs: ${{inputs.lfs}}
-          path: '.idems_app/deployments'
+          path: ".idems_app/deployments/${{env.DEPLOYMENT_NAME}}"
           # TODO - add support for specific branch/release
 
       - name: Set deployment
