@@ -1,0 +1,7 @@
+{
+    "debug":{
+        "label":"debug",
+        "description":"Example content used in app testing and demos",
+        "git_repo":"https://github.com/IDEMSInternational/app-debug-content.git"
+    }
+}
