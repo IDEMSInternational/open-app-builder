@@ -1,0 +1,506 @@
+{
+  "flow_type": "template",
+  "flow_name": "app_launch_calculations",
+  "status": "released",
+  "process_on_start": 2,
+  "rows": [
+    {
+      "name": "now",
+      "value": "@calc(timestamp())",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "type": "set_variable",
+      "_nested_name": "now",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@calc(timestamp())",
+            "matchedExpression": "@calc(timestamp())",
+            "type": "calc",
+            "fieldName": "timestamp()"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@calc(timestamp())": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "display_group",
+      "name": "first_launch",
+      "condition": "!@fields.app_last_launch",
+      "rows": [
+        {
+          "name": "local_app_launch_count",
+          "value": 0,
+          "exclude_from_translation": true,
+          "type": "set_variable",
+          "_nested_name": "first_launch.local_app_launch_count"
+        }
+      ],
+      "_nested_name": "first_launch",
+      "_dynamicFields": {
+        "condition": [
+          {
+            "fullExpression": "!@fields.app_last_launch",
+            "matchedExpression": "!@fields.app_last_launch",
+            "type": "fields",
+            "fieldName": "app_last_launch"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "!@fields.app_last_launch": [
+          "condition"
+        ]
+      }
+    },
+    {
+      "type": "display_group",
+      "name": "not_first_launch",
+      "condition": "@fields.app_last_launch",
+      "rows": [
+        {
+          "name": "days_since_last_app_launch",
+          "value": "@calc(window.date_fns.differenceInDays(new Date(@local.now),new Date(@fields.app_last_launch)))",
+          "_translations": {
+            "value": {}
+          },
+          "exclude_from_translation": true,
+          "type": "set_variable",
+          "_nested_name": "not_first_launch.days_since_last_app_launch",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@calc(window.date_fns.differenceInDays(new Date(@local.now),new Date(@fields.app_last_launch)))",
+                "matchedExpression": "@local.now",
+                "type": "local",
+                "fieldName": "now"
+              },
+              {
+                "fullExpression": "@calc(window.date_fns.differenceInDays(new Date(@local.now),new Date(@fields.app_last_launch)))",
+                "matchedExpression": "@fields.app_last_launch",
+                "type": "fields",
+                "fieldName": "app_last_launch"
+              },
+              {
+                "fullExpression": "@calc(window.date_fns.differenceInDays(new Date(@local.now),new Date(@fields.app_last_launch)))",
+                "matchedExpression": "@calc(window.date_fns.differenceInDays(new Date(@local.now),new Date(@fields.app_last_launch)))",
+                "type": "calc",
+                "fieldName": "window.date_fns.differenceInDays(new Date(@local.now),new Date(@fields.app_last_launch))"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@local.now": [
+              "value"
+            ],
+            "@fields.app_last_launch": [
+              "value"
+            ],
+            "@calc(window.date_fns.differenceInDays(new Date(@local.now),new Date(@fields.app_last_launch)))": [
+              "value"
+            ]
+          }
+        },
+        {
+          "name": "local_app_launch_count",
+          "value": "+@fields.app_launch_count",
+          "_translations": {
+            "value": {}
+          },
+          "exclude_from_translation": true,
+          "type": "set_variable",
+          "_nested_name": "not_first_launch.local_app_launch_count",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "+@fields.app_launch_count",
+                "matchedExpression": "@fields.app_launch_count",
+                "type": "fields",
+                "fieldName": "app_launch_count"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@fields.app_launch_count": [
+              "value"
+            ]
+          }
+        },
+        {
+          "name": "local_max_days_between_app_launches",
+          "value": "@local.days_since_last_app_launch",
+          "_translations": {
+            "value": {}
+          },
+          "condition": "!@fields.max_days_between_app_launches",
+          "exclude_from_translation": true,
+          "type": "set_variable",
+          "_nested_name": "not_first_launch.local_max_days_between_app_launches",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@local.days_since_last_app_launch",
+                "matchedExpression": "@local.days_since_last_app_launch",
+                "type": "local",
+                "fieldName": "days_since_last_app_launch"
+              }
+            ],
+            "condition": [
+              {
+                "fullExpression": "!@fields.max_days_between_app_launches",
+                "matchedExpression": "!@fields.max_days_between_app_launches",
+                "type": "fields",
+                "fieldName": "max_days_between_app_launches"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@local.days_since_last_app_launch": [
+              "value"
+            ],
+            "!@fields.max_days_between_app_launches": [
+              "condition"
+            ]
+          }
+        },
+        {
+          "type": "display_group",
+          "name": "update_maximum",
+          "condition": "@fields.max_days_between_app_launches",
+          "rows": [
+            {
+              "name": "previous_max",
+              "value": "+@fields.max_days_between_app_launches",
+              "_translations": {
+                "value": {}
+              },
+              "exclude_from_translation": true,
+              "type": "set_variable",
+              "_nested_name": "not_first_launch.update_maximum.previous_max",
+              "_dynamicFields": {
+                "value": [
+                  {
+                    "fullExpression": "+@fields.max_days_between_app_launches",
+                    "matchedExpression": "@fields.max_days_between_app_launches",
+                    "type": "fields",
+                    "fieldName": "max_days_between_app_launches"
+                  }
+                ]
+              },
+              "_dynamicDependencies": {
+                "@fields.max_days_between_app_launches": [
+                  "value"
+                ]
+              }
+            },
+            {
+              "name": "local_max_days_between_app_launches",
+              "value": "@calc(Math.max(@local.days_since_last_app_launch,@local.previous_max))",
+              "_translations": {
+                "value": {}
+              },
+              "exclude_from_translation": true,
+              "type": "set_variable",
+              "_nested_name": "not_first_launch.update_maximum.local_max_days_between_app_launches",
+              "_dynamicFields": {
+                "value": [
+                  {
+                    "fullExpression": "@calc(Math.max(@local.days_since_last_app_launch,@local.previous_max))",
+                    "matchedExpression": "@local.days_since_last_app_launch",
+                    "type": "local",
+                    "fieldName": "days_since_last_app_launch"
+                  },
+                  {
+                    "fullExpression": "@calc(Math.max(@local.days_since_last_app_launch,@local.previous_max))",
+                    "matchedExpression": "@local.previous_max",
+                    "type": "local",
+                    "fieldName": "previous_max"
+                  },
+                  {
+                    "fullExpression": "@calc(Math.max(@local.days_since_last_app_launch,@local.previous_max))",
+                    "matchedExpression": "@calc(Math.max(@local.days_since_last_app_launch,@local.previous_max))",
+                    "type": "calc",
+                    "fieldName": "Math.max(@local.days_since_last_app_launch,@local.previous_max)"
+                  }
+                ]
+              },
+              "_dynamicDependencies": {
+                "@local.days_since_last_app_launch": [
+                  "value"
+                ],
+                "@local.previous_max": [
+                  "value"
+                ],
+                "@calc(Math.max(@local.days_since_last_app_launch,@local.previous_max))": [
+                  "value"
+                ]
+              }
+            }
+          ],
+          "_nested_name": "not_first_launch.update_maximum",
+          "_dynamicFields": {
+            "condition": [
+              {
+                "fullExpression": "@fields.max_days_between_app_launches",
+                "matchedExpression": "@fields.max_days_between_app_launches",
+                "type": "fields",
+                "fieldName": "max_days_between_app_launches"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@fields.max_days_between_app_launches": [
+              "condition"
+            ]
+          }
+        },
+        {
+          "type": "set_field",
+          "name": "max_days_between_app_launches",
+          "value": "@local.local_max_days_between_app_launches",
+          "_translations": {
+            "value": {}
+          },
+          "exclude_from_translation": true,
+          "_nested_name": "not_first_launch.max_days_between_app_launches",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@local.local_max_days_between_app_launches",
+                "matchedExpression": "@local.local_max_days_between_app_launches",
+                "type": "local",
+                "fieldName": "local_max_days_between_app_launches"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@local.local_max_days_between_app_launches": [
+              "value"
+            ]
+          }
+        }
+      ],
+      "_nested_name": "not_first_launch",
+      "_dynamicFields": {
+        "condition": [
+          {
+            "fullExpression": "@fields.app_last_launch",
+            "matchedExpression": "@fields.app_last_launch",
+            "type": "fields",
+            "fieldName": "app_last_launch"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@fields.app_last_launch": [
+          "condition"
+        ]
+      }
+    },
+    {
+      "type": "set_field",
+      "name": "app_launch_count",
+      "value": "@local.local_app_launch_count +1",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "_nested_name": "app_launch_count",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@local.local_app_launch_count +1",
+            "matchedExpression": "@local.local_app_launch_count",
+            "type": "local",
+            "fieldName": "local_app_launch_count"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.local_app_launch_count": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "set_field",
+      "name": "app_last_launch",
+      "value": "@local.now",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "_nested_name": "app_last_launch",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@local.now",
+            "matchedExpression": "@local.now",
+            "type": "local",
+            "fieldName": "now"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.now": [
+          "value"
+        ]
+      }
+    },
+    {
+      "name": "weekly_app_launch_field",
+      "value": "app_launch_count_@fields.workshop_id",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "type": "set_variable",
+      "_nested_name": "weekly_app_launch_field",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "app_launch_count_@fields.workshop_id",
+            "matchedExpression": "@fields.workshop_id",
+            "type": "fields",
+            "fieldName": "workshop_id"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@fields.workshop_id": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "display_group",
+      "name": "weekly_count_not_yet_defined",
+      "condition": "!(@fields.@local.weekly_app_launch_field)",
+      "rows": [
+        {
+          "name": "weekly_app_launch_count",
+          "value": 1,
+          "exclude_from_translation": true,
+          "type": "set_variable",
+          "_nested_name": "weekly_count_not_yet_defined.weekly_app_launch_count"
+        }
+      ],
+      "_nested_name": "weekly_count_not_yet_defined",
+      "_dynamicFields": {
+        "condition": [
+          {
+            "fullExpression": "!(@fields.@local.weekly_app_launch_field)",
+            "matchedExpression": "@local.weekly_app_launch_field",
+            "type": "local",
+            "fieldName": "weekly_app_launch_field"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.weekly_app_launch_field": [
+          "condition"
+        ]
+      }
+    },
+    {
+      "type": "display_group",
+      "name": "weekly_count_already_defined",
+      "condition": "@fields.@local.weekly_app_launch_field",
+      "rows": [
+        {
+          "name": "weekly_app_launch_count",
+          "value": "+@fields.@local.weekly_app_launch_field +1",
+          "_translations": {
+            "value": {}
+          },
+          "exclude_from_translation": true,
+          "type": "set_variable",
+          "_nested_name": "weekly_count_already_defined.weekly_app_launch_count",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "+@fields.@local.weekly_app_launch_field +1",
+                "matchedExpression": "@local.weekly_app_launch_field",
+                "type": "local",
+                "fieldName": "weekly_app_launch_field"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@local.weekly_app_launch_field": [
+              "value"
+            ]
+          }
+        }
+      ],
+      "_nested_name": "weekly_count_already_defined",
+      "_dynamicFields": {
+        "condition": [
+          {
+            "fullExpression": "@fields.@local.weekly_app_launch_field",
+            "matchedExpression": "@local.weekly_app_launch_field",
+            "type": "local",
+            "fieldName": "weekly_app_launch_field"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.weekly_app_launch_field": [
+          "condition"
+        ]
+      }
+    },
+    {
+      "type": "set_field",
+      "name": "@local.weekly_app_launch_field",
+      "value": "@local.weekly_app_launch_count",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "_nested_name": "@local.weekly_app_launch_field",
+      "_dynamicFields": {
+        "name": [
+          {
+            "fullExpression": "@local.weekly_app_launch_field",
+            "matchedExpression": "@local.weekly_app_launch_field",
+            "type": "local",
+            "fieldName": "weekly_app_launch_field"
+          }
+        ],
+        "value": [
+          {
+            "fullExpression": "@local.weekly_app_launch_count",
+            "matchedExpression": "@local.weekly_app_launch_count",
+            "type": "local",
+            "fieldName": "weekly_app_launch_count"
+          }
+        ],
+        "_nested_name": [
+          {
+            "fullExpression": "@local.weekly_app_launch_field",
+            "matchedExpression": "@local.weekly_app_launch_field",
+            "type": "local",
+            "fieldName": "weekly_app_launch_field"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.weekly_app_launch_field": [
+          "name",
+          "_nested_name"
+        ],
+        "@local.weekly_app_launch_count": [
+          "value"
+        ]
+      }
+    }
+  ],
+  "_xlsxPath": "global/campaigns/timing_calculations.xlsx"
+}

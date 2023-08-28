@@ -1,0 +1,321 @@
+{
+  "flow_type": "template",
+  "flow_name": "activities_button",
+  "status": "released",
+  "rows": [
+    {
+      "name": "location_name",
+      "type": "set_variable",
+      "_nested_name": "location_name"
+    },
+    {
+      "name": "now",
+      "value": "@calc(timestamp())",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "now",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@calc(timestamp())",
+            "matchedExpression": "@calc(timestamp())",
+            "type": "calc",
+            "fieldName": "timestamp()"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@calc(timestamp())": [
+          "value"
+        ]
+      }
+    },
+    {
+      "name": "click_history",
+      "value": "_click_history",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "click_history"
+    },
+    {
+      "name": "click_history_field_name",
+      "value": "activities_@local.location_name@local.click_history",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "click_history_field_name",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "activities_@local.location_name@local.click_history",
+            "matchedExpression": "@local.location_name",
+            "type": "local",
+            "fieldName": "location_name"
+          },
+          {
+            "fullExpression": "activities_@local.location_name@local.click_history",
+            "matchedExpression": "@local.click_history",
+            "type": "local",
+            "fieldName": "click_history"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.location_name": [
+          "value"
+        ],
+        "@local.click_history": [
+          "value"
+        ]
+      }
+    },
+    {
+      "name": "click_history_value",
+      "value": "@fields.@local.click_history_field_name ;  @local.now",
+      "_translations": {
+        "value": {}
+      },
+      "condition": "!!(@fields.@local.click_history_field_name)",
+      "type": "set_variable",
+      "_nested_name": "click_history_value",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@fields.@local.click_history_field_name ;  @local.now",
+            "matchedExpression": "@local.click_history_field_name",
+            "type": "local",
+            "fieldName": "click_history_field_name"
+          },
+          {
+            "fullExpression": "@fields.@local.click_history_field_name ;  @local.now",
+            "matchedExpression": "@local.now",
+            "type": "local",
+            "fieldName": "now"
+          }
+        ],
+        "condition": [
+          {
+            "fullExpression": "!!(@fields.@local.click_history_field_name)",
+            "matchedExpression": "@local.click_history_field_name",
+            "type": "local",
+            "fieldName": "click_history_field_name"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.click_history_field_name": [
+          "value",
+          "condition"
+        ],
+        "@local.now": [
+          "value"
+        ]
+      }
+    },
+    {
+      "name": "click_history_value",
+      "value": "@local.now",
+      "_translations": {
+        "value": {}
+      },
+      "condition": "!(@fields.@local.click_history_field_name)",
+      "type": "set_variable",
+      "_nested_name": "click_history_value",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@local.now",
+            "matchedExpression": "@local.now",
+            "type": "local",
+            "fieldName": "now"
+          }
+        ],
+        "condition": [
+          {
+            "fullExpression": "!(@fields.@local.click_history_field_name)",
+            "matchedExpression": "@local.click_history_field_name",
+            "type": "local",
+            "fieldName": "click_history_field_name"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.now": [
+          "value"
+        ],
+        "@local.click_history_field_name": [
+          "condition"
+        ]
+      }
+    },
+    {
+      "type": "tile_component",
+      "name": "tile_activities",
+      "action_list": [
+        {
+          "trigger": "click",
+          "action_id": "go_to",
+          "args": [
+            "@data.parent_centre.activities.template"
+          ],
+          "_raw": "click | go_to: @data.parent_centre.activities.template",
+          "_cleaned": "click | go_to: @data.parent_centre.activities.template"
+        },
+        {
+          "trigger": "click",
+          "action_id": "set_field",
+          "args": [
+            "@local.click_history_field_name",
+            "@local.click_history_value"
+          ],
+          "_raw": "click | set_field: @local.click_history_field_name: @local.click_history_value",
+          "_cleaned": "click | set_field: @local.click_history_field_name: @local.click_history_value"
+        }
+      ],
+      "parameter_list": {
+        "style": "@data.parent_centre.activities.tile_style",
+        "icon_src": "@data.parent_centre.activities.icon_asset",
+        "first_line_text": "@data.parent_centre.activities.title"
+      },
+      "_nested_name": "tile_activities",
+      "_dynamicFields": {
+        "action_list": {
+          "0": {
+            "args": {
+              "0": [
+                {
+                  "fullExpression": "@data.parent_centre.activities.template",
+                  "matchedExpression": "@data.parent_centre.activities.template",
+                  "type": "data",
+                  "fieldName": "parent_centre"
+                }
+              ]
+            },
+            "_raw": [
+              {
+                "fullExpression": "click | go_to: @data.parent_centre.activities.template",
+                "matchedExpression": "@data.parent_centre.activities.template",
+                "type": "data",
+                "fieldName": "parent_centre"
+              }
+            ],
+            "_cleaned": [
+              {
+                "fullExpression": "click | go_to: @data.parent_centre.activities.template",
+                "matchedExpression": "@data.parent_centre.activities.template",
+                "type": "data",
+                "fieldName": "parent_centre"
+              }
+            ]
+          },
+          "1": {
+            "args": {
+              "0": [
+                {
+                  "fullExpression": "@local.click_history_field_name",
+                  "matchedExpression": "@local.click_history_field_name",
+                  "type": "local",
+                  "fieldName": "click_history_field_name"
+                }
+              ],
+              "1": [
+                {
+                  "fullExpression": "@local.click_history_value",
+                  "matchedExpression": "@local.click_history_value",
+                  "type": "local",
+                  "fieldName": "click_history_value"
+                }
+              ]
+            },
+            "_raw": [
+              {
+                "fullExpression": "click | set_field: @local.click_history_field_name: @local.click_history_value",
+                "matchedExpression": "@local.click_history_field_name",
+                "type": "local",
+                "fieldName": "click_history_field_name"
+              },
+              {
+                "fullExpression": "click | set_field: @local.click_history_field_name: @local.click_history_value",
+                "matchedExpression": "@local.click_history_value",
+                "type": "local",
+                "fieldName": "click_history_value"
+              }
+            ],
+            "_cleaned": [
+              {
+                "fullExpression": "click | set_field: @local.click_history_field_name: @local.click_history_value",
+                "matchedExpression": "@local.click_history_field_name",
+                "type": "local",
+                "fieldName": "click_history_field_name"
+              },
+              {
+                "fullExpression": "click | set_field: @local.click_history_field_name: @local.click_history_value",
+                "matchedExpression": "@local.click_history_value",
+                "type": "local",
+                "fieldName": "click_history_value"
+              }
+            ]
+          }
+        },
+        "parameter_list": {
+          "style": [
+            {
+              "fullExpression": "@data.parent_centre.activities.tile_style",
+              "matchedExpression": "@data.parent_centre.activities.tile_style",
+              "type": "data",
+              "fieldName": "parent_centre"
+            }
+          ],
+          "icon_src": [
+            {
+              "fullExpression": "@data.parent_centre.activities.icon_asset",
+              "matchedExpression": "@data.parent_centre.activities.icon_asset",
+              "type": "data",
+              "fieldName": "parent_centre"
+            }
+          ],
+          "first_line_text": [
+            {
+              "fullExpression": "@data.parent_centre.activities.title",
+              "matchedExpression": "@data.parent_centre.activities.title",
+              "type": "data",
+              "fieldName": "parent_centre"
+            }
+          ]
+        }
+      },
+      "_dynamicDependencies": {
+        "@data.parent_centre.activities.template": [
+          "action_list.0.args.0",
+          "action_list.0._raw",
+          "action_list.0._cleaned"
+        ],
+        "@local.click_history_field_name": [
+          "action_list.1.args.0",
+          "action_list.1._raw",
+          "action_list.1._cleaned"
+        ],
+        "@local.click_history_value": [
+          "action_list.1.args.1",
+          "action_list.1._raw",
+          "action_list.1._cleaned"
+        ],
+        "@data.parent_centre.activities.tile_style": [
+          "parameter_list.style"
+        ],
+        "@data.parent_centre.activities.icon_asset": [
+          "parameter_list.icon_src"
+        ],
+        "@data.parent_centre.activities.title": [
+          "parameter_list.first_line_text"
+        ]
+      }
+    }
+  ],
+  "_xlsxPath": "global/core_templates/core_templates_relax_and_activities.xlsx"
+}

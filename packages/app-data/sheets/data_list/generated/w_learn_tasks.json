@@ -1,0 +1,128 @@
+{
+  "flow_name": "w_learn_tasks",
+  "flow_subtype": "generated",
+  "flow_type": "data_list",
+  "rows": [
+    {
+      "id": "welcome_individual",
+      "group": "welcome_individual",
+      "individual": true,
+      "together": false,
+      "template": "w_learn_welcome_individual",
+      "completed_field": "task_w_learn_welcome_individual_completed",
+      "completed": "@fields.task_w_learn_welcome_individual_completed"
+    },
+    {
+      "id": "care_together",
+      "group": "care_together",
+      "individual": false,
+      "together": true,
+      "template": "w_learn_care_together",
+      "completed_field": "task_w_learn_care_together_completed",
+      "completed": "@fields.task_w_learn_care_together_completed"
+    },
+    {
+      "id": "relax",
+      "group": "relax",
+      "individual": true,
+      "together": true,
+      "template": "w_learn_relax",
+      "completed_field": "task_w_learn_relax_completed",
+      "completed": "@fields.task_w_learn_relax_completed"
+    },
+    {
+      "id": "reflect_together",
+      "group": "reflect_together",
+      "individual": false,
+      "together": true,
+      "template": "w_learn_reflect_together",
+      "completed_field": "task_w_learn_reflect_together_completed",
+      "completed": "@fields.task_w_learn_reflect_together_completed"
+    },
+    {
+      "id": "intro",
+      "group": "intro",
+      "individual": true,
+      "together": true,
+      "template": "w_learn_intro",
+      "completed_field": "task_w_learn_intro_completed",
+      "completed": "@fields.task_w_learn_intro_completed"
+    },
+    {
+      "id": "tools_activity",
+      "group": "tools_activity",
+      "individual": true,
+      "together": true,
+      "template": "w_learn_tools_activity",
+      "completed_field": "task_w_learn_tools_activity_completed",
+      "completed": "@fields.task_w_learn_tools_activity_completed"
+    },
+    {
+      "id": "home_practice",
+      "group": "home_practice",
+      "individual": true,
+      "together": true,
+      "template": "w_learn_home_practice",
+      "completed_field": "task_w_learn_home_practice_completed",
+      "completed": "@fields.task_w_learn_home_practice_completed"
+    },
+    {
+      "id": "ending",
+      "group": "ending",
+      "individual": true,
+      "together": true,
+      "template": "w_learn_ending",
+      "completed_field": "task_w_learn_ending_completed",
+      "completed": "@fields.task_w_learn_ending_completed"
+    },
+    {
+      "id": "read_learn_conflict",
+      "group": "read_learn_conflict",
+      "individual": true,
+      "together": true,
+      "template": "w_learn_read_learn_conflict",
+      "rel_priority": 1,
+      "completed_field": "task_w_learn_read_learn_conflict_completed",
+      "completed": "@fields.task_w_learn_read_learn_conflict_completed"
+    },
+    {
+      "id": "quiz_learn_conflict",
+      "group": "read_learn_conflict",
+      "individual": true,
+      "together": false,
+      "template": "w_learn_quiz_learn_conflict",
+      "rel_priority": 2,
+      "completed_field": "task_w_learn_quiz_learn_conflict_completed",
+      "completed": "@fields.task_w_learn_quiz_learn_conflict_completed"
+    },
+    {
+      "id": "read_learn_support",
+      "group": "read_learn_support",
+      "individual": true,
+      "together": true,
+      "template": "w_learn_read_learn_support",
+      "rel_priority": 1,
+      "completed_field": "task_w_learn_read_learn_support_completed",
+      "completed": "@fields.task_w_learn_read_learn_support_completed"
+    },
+    {
+      "id": "quiz_learn_support",
+      "group": "read_learn_support",
+      "individual": true,
+      "together": false,
+      "template": "w_learn_quiz_learn_support",
+      "rel_priority": 2,
+      "completed_field": "task_w_learn_quiz_learn_support_completed",
+      "completed": "@fields.task_w_learn_quiz_learn_support_completed"
+    },
+    {
+      "id": "learn_activity_ideas",
+      "group": "learn_activity_ideas",
+      "individual": true,
+      "together": true,
+      "template": "w_learn_learn_activity_ideas",
+      "completed_field": "task_w_learn_learn_activity_ideas_completed",
+      "completed": "@fields.task_w_learn_learn_activity_ideas_completed"
+    }
+  ]
+}

@@ -1,0 +1,194 @@
+{
+  "flow_type": "template",
+  "flow_name": "language_select",
+  "status": "released",
+  "rows": [
+    {
+      "type": "title",
+      "name": "title",
+      "value": "@global.language",
+      "_translations": {
+        "value": {}
+      },
+      "_nested_name": "title",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@global.language",
+            "matchedExpression": "@global.language",
+            "type": "global",
+            "fieldName": "language"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@global.language": [
+          "value"
+        ]
+      }
+    },
+    {
+      "name": "language_select_options",
+      "value": "@data.language",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "language_select_options",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@data.language",
+            "matchedExpression": "@data.language",
+            "type": "data",
+            "fieldName": "language"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@data.language": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "radio_group",
+      "name": "language_select",
+      "value": "@fields._app_language",
+      "_translations": {
+        "value": {}
+      },
+      "action_list": [
+        {
+          "trigger": "changed",
+          "action_id": "emit",
+          "args": [
+            "set_language",
+            "this.value"
+          ],
+          "_raw": "changed | emit: set_language:@local.language_select",
+          "_cleaned": "changed | emit: set_language:@local.language_select"
+        },
+        {
+          "trigger": "changed",
+          "action_id": "emit",
+          "args": [
+            "force_reload"
+          ],
+          "_raw": "changed | emit: force_reload",
+          "_cleaned": "changed | emit: force_reload"
+        }
+      ],
+      "parameter_list": {
+        "answer_list": "@local.language_select_options"
+      },
+      "_nested_name": "language_select",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@fields._app_language",
+            "matchedExpression": "@fields._app_language",
+            "type": "fields",
+            "fieldName": "_app_language"
+          }
+        ],
+        "action_list": {
+          "0": {
+            "_raw": [
+              {
+                "fullExpression": "changed | emit: set_language:@local.language_select",
+                "matchedExpression": "@local.language_select",
+                "type": "local",
+                "fieldName": "language_select"
+              }
+            ],
+            "_cleaned": [
+              {
+                "fullExpression": "changed | emit: set_language:@local.language_select",
+                "matchedExpression": "@local.language_select",
+                "type": "local",
+                "fieldName": "language_select"
+              }
+            ]
+          }
+        },
+        "parameter_list": {
+          "answer_list": [
+            {
+              "fullExpression": "@local.language_select_options",
+              "matchedExpression": "@local.language_select_options",
+              "type": "local",
+              "fieldName": "language_select_options"
+            }
+          ]
+        }
+      },
+      "_dynamicDependencies": {
+        "@fields._app_language": [
+          "value"
+        ],
+        "@local.language_select": [
+          "action_list.0._raw",
+          "action_list.0._cleaned"
+        ],
+        "@local.language_select_options": [
+          "parameter_list.answer_list"
+        ]
+      }
+    },
+    {
+      "type": "template",
+      "name": "nav_buttons",
+      "value": "nav_buttons",
+      "action_list": [
+        {
+          "trigger": "completed",
+          "action_id": "emit",
+          "args": [
+            "completed"
+          ],
+          "_raw": "completed | emit: completed",
+          "_cleaned": "completed | emit: completed"
+        }
+      ],
+      "rows": [
+        {
+          "name": "display_back",
+          "value": false,
+          "type": "set_variable",
+          "_nested_name": "nav_buttons.display_back"
+        },
+        {
+          "name": "button_completed",
+          "value": "@global.next_button",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "nav_buttons.button_completed",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@global.next_button",
+                "matchedExpression": "@global.next_button",
+                "type": "global",
+                "fieldName": "next_button"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@global.next_button": [
+              "value"
+            ]
+          }
+        }
+      ],
+      "_nested_name": "nav_buttons"
+    }
+  ],
+  "_xlsxPath": "global/core_templates/core_templates_settings.xlsx",
+  "_overrides": {
+    "language_select_za": "@fields._deployment_name == \"plh_za\"",
+    "language_select_tz": "@fields._deployment_name == \"plh_tz\""
+  }
+}

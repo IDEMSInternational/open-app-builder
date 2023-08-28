@@ -1,0 +1,605 @@
+{
+  "flow_type": "template",
+  "module": "w_grief",
+  "flow_name": "w_grief_quiz_grief_support",
+  "status": "released",
+  "rows": [
+    {
+      "name": "question_1_id",
+      "value": "grief_support_feel",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "question_1_id"
+    },
+    {
+      "name": "question_1_concat",
+      "value": "question.@local.question_1_id",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "question_1_concat",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "question.@local.question_1_id",
+            "matchedExpression": "@local.question_1_id",
+            "type": "local",
+            "fieldName": "question_1_id"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.question_1_id": [
+          "value"
+        ]
+      }
+    },
+    {
+      "name": "question_1_data",
+      "value": "@data.@local.question_1_concat",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "question_1_data",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@data.@local.question_1_concat",
+            "matchedExpression": "@local.question_1_concat",
+            "type": "local",
+            "fieldName": "question_1_concat"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.question_1_concat": [
+          "value"
+        ]
+      }
+    },
+    {
+      "name": "question_2_id",
+      "value": "grief_support_alternative",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "question_2_id"
+    },
+    {
+      "name": "question_2_concat",
+      "value": "question.@local.question_2_id",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "question_2_concat",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "question.@local.question_2_id",
+            "matchedExpression": "@local.question_2_id",
+            "type": "local",
+            "fieldName": "question_2_id"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.question_2_id": [
+          "value"
+        ]
+      }
+    },
+    {
+      "name": "question_2_data",
+      "value": "@data.@local.question_2_concat",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "question_2_data",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@data.@local.question_2_concat",
+            "matchedExpression": "@local.question_2_concat",
+            "type": "local",
+            "fieldName": "question_2_concat"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.question_2_concat": [
+          "value"
+        ]
+      }
+    },
+    {
+      "name": "option_1_1",
+      "value": "@local.question_1_data.option_1",
+      "_translations": {
+        "value": {}
+      },
+      "condition": "!!(@local.question_1_data.option_1)",
+      "type": "set_variable",
+      "_nested_name": "option_1_1",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@local.question_1_data.option_1",
+            "matchedExpression": "@local.question_1_data.option_1",
+            "type": "local",
+            "fieldName": "question_1_data"
+          }
+        ],
+        "condition": [
+          {
+            "fullExpression": "!!(@local.question_1_data.option_1)",
+            "matchedExpression": "@local.question_1_data.option_1",
+            "type": "local",
+            "fieldName": "question_1_data"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.question_1_data.option_1": [
+          "value",
+          "condition"
+        ]
+      }
+    },
+    {
+      "name": "option_1_2",
+      "value": "@local.question_1_data.option_2",
+      "_translations": {
+        "value": {}
+      },
+      "condition": "!!(@local.question_1_data.option_2)",
+      "type": "set_variable",
+      "_nested_name": "option_1_2",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@local.question_1_data.option_2",
+            "matchedExpression": "@local.question_1_data.option_2",
+            "type": "local",
+            "fieldName": "question_1_data"
+          }
+        ],
+        "condition": [
+          {
+            "fullExpression": "!!(@local.question_1_data.option_2)",
+            "matchedExpression": "@local.question_1_data.option_2",
+            "type": "local",
+            "fieldName": "question_1_data"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.question_1_data.option_2": [
+          "value",
+          "condition"
+        ]
+      }
+    },
+    {
+      "name": "option_1_3",
+      "value": "@local.question_1_data.option_3",
+      "_translations": {
+        "value": {}
+      },
+      "condition": "!!(@local.question_1_data.option_3)",
+      "type": "set_variable",
+      "_nested_name": "option_1_3",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@local.question_1_data.option_3",
+            "matchedExpression": "@local.question_1_data.option_3",
+            "type": "local",
+            "fieldName": "question_1_data"
+          }
+        ],
+        "condition": [
+          {
+            "fullExpression": "!!(@local.question_1_data.option_3)",
+            "matchedExpression": "@local.question_1_data.option_3",
+            "type": "local",
+            "fieldName": "question_1_data"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.question_1_data.option_3": [
+          "value",
+          "condition"
+        ]
+      }
+    },
+    {
+      "name": "option_2_1",
+      "value": "@local.question_2_data.option_1",
+      "_translations": {
+        "value": {}
+      },
+      "condition": "!!(@local.question_2_data.option_1)",
+      "type": "set_variable",
+      "_nested_name": "option_2_1",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@local.question_2_data.option_1",
+            "matchedExpression": "@local.question_2_data.option_1",
+            "type": "local",
+            "fieldName": "question_2_data"
+          }
+        ],
+        "condition": [
+          {
+            "fullExpression": "!!(@local.question_2_data.option_1)",
+            "matchedExpression": "@local.question_2_data.option_1",
+            "type": "local",
+            "fieldName": "question_2_data"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.question_2_data.option_1": [
+          "value",
+          "condition"
+        ]
+      }
+    },
+    {
+      "name": "option_2_2",
+      "value": "@local.question_2_data.option_2",
+      "_translations": {
+        "value": {}
+      },
+      "condition": "!!(@local.question_2_data.option_2)",
+      "type": "set_variable",
+      "_nested_name": "option_2_2",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@local.question_2_data.option_2",
+            "matchedExpression": "@local.question_2_data.option_2",
+            "type": "local",
+            "fieldName": "question_2_data"
+          }
+        ],
+        "condition": [
+          {
+            "fullExpression": "!!(@local.question_2_data.option_2)",
+            "matchedExpression": "@local.question_2_data.option_2",
+            "type": "local",
+            "fieldName": "question_2_data"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.question_2_data.option_2": [
+          "value",
+          "condition"
+        ]
+      }
+    },
+    {
+      "name": "option_2_3",
+      "value": "@local.question_2_data.option_3",
+      "_translations": {
+        "value": {}
+      },
+      "condition": "!!(@local.question_2_data.option_3)",
+      "type": "set_variable",
+      "_nested_name": "option_2_3",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@local.question_2_data.option_3",
+            "matchedExpression": "@local.question_2_data.option_3",
+            "type": "local",
+            "fieldName": "question_2_data"
+          }
+        ],
+        "condition": [
+          {
+            "fullExpression": "!!(@local.question_2_data.option_3)",
+            "matchedExpression": "@local.question_2_data.option_3",
+            "type": "local",
+            "fieldName": "question_2_data"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.question_2_data.option_3": [
+          "value",
+          "condition"
+        ]
+      }
+    },
+    {
+      "type": "template",
+      "name": "question_time",
+      "value": "question_time",
+      "action_list": [
+        {
+          "trigger": "completed",
+          "action_id": "emit",
+          "args": [
+            "completed"
+          ],
+          "_raw": "completed | emit:completed",
+          "_cleaned": "completed | emit:completed"
+        },
+        {
+          "trigger": "uncompleted",
+          "action_id": "emit",
+          "args": [
+            "uncompleted"
+          ],
+          "_raw": "uncompleted | emit:uncompleted",
+          "_cleaned": "uncompleted | emit:uncompleted"
+        }
+      ],
+      "rows": [
+        {
+          "type": "nested_properties",
+          "name": "workshop_activity",
+          "rows": [
+            {
+              "name": "intro_text",
+              "value": "Let's think about what happened in this story.",
+              "_translations": {
+                "value": {}
+              },
+              "type": "set_variable",
+              "_nested_name": "question_time.workshop_activity.intro_text"
+            },
+            {
+              "type": "nested_properties",
+              "name": "content_box",
+              "value": "box_duo_combo_box",
+              "rows": [
+                {
+                  "type": "nested_properties",
+                  "name": "combo_box_1",
+                  "rows": [
+                    {
+                      "name": "combo_box_tracker",
+                      "value": "w_grief_quiz_grief_support_a_1",
+                      "_translations": {
+                        "value": {}
+                      },
+                      "type": "set_variable",
+                      "_nested_name": "question_time.workshop_activity.content_box.combo_box_1.combo_box_tracker"
+                    },
+                    {
+                      "name": "question_text",
+                      "value": "@local.question_1_data.question_text",
+                      "_translations": {
+                        "value": {}
+                      },
+                      "type": "set_variable",
+                      "_nested_name": "question_time.workshop_activity.content_box.combo_box_1.question_text",
+                      "_dynamicFields": {
+                        "value": [
+                          {
+                            "fullExpression": "@local.question_1_data.question_text",
+                            "matchedExpression": "@local.question_1_data.question_text",
+                            "type": "local",
+                            "fieldName": "question_1_data"
+                          }
+                        ]
+                      },
+                      "_dynamicDependencies": {
+                        "@local.question_1_data.question_text": [
+                          "value"
+                        ]
+                      }
+                    },
+                    {
+                      "name": "answer_list",
+                      "value": [
+                        "name:name_1 | text:@local.option_1_1",
+                        "name:name_2 | text:@local.option_1_2",
+                        "name:name_3 | text:@local.option_1_3"
+                      ],
+                      "type": "set_variable",
+                      "_nested_name": "question_time.workshop_activity.content_box.combo_box_1.answer_list",
+                      "_dynamicFields": {
+                        "value": {
+                          "0": [
+                            {
+                              "fullExpression": "name:name_1 | text:@local.option_1_1",
+                              "matchedExpression": "@local.option_1_1",
+                              "type": "local",
+                              "fieldName": "option_1_1"
+                            }
+                          ],
+                          "1": [
+                            {
+                              "fullExpression": "name:name_2 | text:@local.option_1_2",
+                              "matchedExpression": "@local.option_1_2",
+                              "type": "local",
+                              "fieldName": "option_1_2"
+                            }
+                          ],
+                          "2": [
+                            {
+                              "fullExpression": "name:name_3 | text:@local.option_1_3",
+                              "matchedExpression": "@local.option_1_3",
+                              "type": "local",
+                              "fieldName": "option_1_3"
+                            }
+                          ]
+                        }
+                      },
+                      "_dynamicDependencies": {
+                        "@local.option_1_1": [
+                          "value.0"
+                        ],
+                        "@local.option_1_2": [
+                          "value.1"
+                        ],
+                        "@local.option_1_3": [
+                          "value.2"
+                        ]
+                      }
+                    },
+                    {
+                      "name": "reply",
+                      "value": "@local.question_1_data.reply_all",
+                      "_translations": {
+                        "value": {}
+                      },
+                      "type": "set_variable",
+                      "_nested_name": "question_time.workshop_activity.content_box.combo_box_1.reply",
+                      "_dynamicFields": {
+                        "value": [
+                          {
+                            "fullExpression": "@local.question_1_data.reply_all",
+                            "matchedExpression": "@local.question_1_data.reply_all",
+                            "type": "local",
+                            "fieldName": "question_1_data"
+                          }
+                        ]
+                      },
+                      "_dynamicDependencies": {
+                        "@local.question_1_data.reply_all": [
+                          "value"
+                        ]
+                      }
+                    }
+                  ],
+                  "_nested_name": "question_time.workshop_activity.content_box.combo_box_1"
+                },
+                {
+                  "type": "nested_properties",
+                  "name": "combo_box_2",
+                  "rows": [
+                    {
+                      "name": "combo_box_tracker",
+                      "value": "w_grief_quiz_grief_support_a_2",
+                      "_translations": {
+                        "value": {}
+                      },
+                      "type": "set_variable",
+                      "_nested_name": "question_time.workshop_activity.content_box.combo_box_2.combo_box_tracker"
+                    },
+                    {
+                      "name": "question_text",
+                      "value": "@local.question_2_data.question_text",
+                      "_translations": {
+                        "value": {}
+                      },
+                      "type": "set_variable",
+                      "_nested_name": "question_time.workshop_activity.content_box.combo_box_2.question_text",
+                      "_dynamicFields": {
+                        "value": [
+                          {
+                            "fullExpression": "@local.question_2_data.question_text",
+                            "matchedExpression": "@local.question_2_data.question_text",
+                            "type": "local",
+                            "fieldName": "question_2_data"
+                          }
+                        ]
+                      },
+                      "_dynamicDependencies": {
+                        "@local.question_2_data.question_text": [
+                          "value"
+                        ]
+                      }
+                    },
+                    {
+                      "name": "answer_list",
+                      "value": [
+                        "name:name_1 | text:@local.option_2_1",
+                        "name:name_2 | text:@local.option_2_2",
+                        "name:name_3 | text:@local.option_2_3"
+                      ],
+                      "type": "set_variable",
+                      "_nested_name": "question_time.workshop_activity.content_box.combo_box_2.answer_list",
+                      "_dynamicFields": {
+                        "value": {
+                          "0": [
+                            {
+                              "fullExpression": "name:name_1 | text:@local.option_2_1",
+                              "matchedExpression": "@local.option_2_1",
+                              "type": "local",
+                              "fieldName": "option_2_1"
+                            }
+                          ],
+                          "1": [
+                            {
+                              "fullExpression": "name:name_2 | text:@local.option_2_2",
+                              "matchedExpression": "@local.option_2_2",
+                              "type": "local",
+                              "fieldName": "option_2_2"
+                            }
+                          ],
+                          "2": [
+                            {
+                              "fullExpression": "name:name_3 | text:@local.option_2_3",
+                              "matchedExpression": "@local.option_2_3",
+                              "type": "local",
+                              "fieldName": "option_2_3"
+                            }
+                          ]
+                        }
+                      },
+                      "_dynamicDependencies": {
+                        "@local.option_2_1": [
+                          "value.0"
+                        ],
+                        "@local.option_2_2": [
+                          "value.1"
+                        ],
+                        "@local.option_2_3": [
+                          "value.2"
+                        ]
+                      }
+                    },
+                    {
+                      "name": "reply",
+                      "value": "@local.question_2_data.reply_all",
+                      "_translations": {
+                        "value": {}
+                      },
+                      "type": "set_variable",
+                      "_nested_name": "question_time.workshop_activity.content_box.combo_box_2.reply",
+                      "_dynamicFields": {
+                        "value": [
+                          {
+                            "fullExpression": "@local.question_2_data.reply_all",
+                            "matchedExpression": "@local.question_2_data.reply_all",
+                            "type": "local",
+                            "fieldName": "question_2_data"
+                          }
+                        ]
+                      },
+                      "_dynamicDependencies": {
+                        "@local.question_2_data.reply_all": [
+                          "value"
+                        ]
+                      }
+                    }
+                  ],
+                  "_nested_name": "question_time.workshop_activity.content_box.combo_box_2"
+                }
+              ],
+              "_nested_name": "question_time.workshop_activity.content_box"
+            }
+          ],
+          "_nested_name": "question_time.workshop_activity"
+        }
+      ],
+      "_nested_name": "question_time"
+    }
+  ],
+  "_xlsxPath": "global/top_templates/workshop_templates/workshop_grief.xlsx"
+}

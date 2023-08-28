@@ -1,0 +1,127 @@
+{
+  "flow_type": "template",
+  "module": "w_grief",
+  "flow_name": "w_grief_home_practice",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "home_practice",
+      "value": "home_practice",
+      "action_list": [
+        {
+          "trigger": "completed",
+          "action_id": "emit",
+          "args": [
+            "completed"
+          ],
+          "_raw": "completed | emit:completed",
+          "_cleaned": "completed | emit:completed"
+        },
+        {
+          "trigger": "uncompleted",
+          "action_id": "emit",
+          "args": [
+            "uncompleted"
+          ],
+          "_raw": "uncompleted | emit:uncompleted",
+          "_cleaned": "uncompleted | emit:uncompleted"
+        }
+      ],
+      "rows": [
+        {
+          "name": "workshop_data",
+          "value": "@data.workshop.w_grief",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "home_practice.workshop_data",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@data.workshop.w_grief",
+                "matchedExpression": "@data.workshop.w_grief",
+                "type": "data",
+                "fieldName": "workshop"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@data.workshop.w_grief": [
+              "value"
+            ]
+          }
+        },
+        {
+          "type": "nested_properties",
+          "name": "workshop_activity",
+          "rows": [
+            {
+              "type": "nested_properties",
+              "name": "content_box",
+              "rows": [
+                {
+                  "type": "nested_properties",
+                  "name": "box_1",
+                  "rows": [
+                    {
+                      "name": "text_1",
+                      "value": "Share with your teen how you feel, and ask them to also name their feelings.\n\nThis simple activity helps families become closer and support each other well.",
+                      "_translations": {
+                        "value": {}
+                      },
+                      "type": "set_variable",
+                      "_nested_name": "home_practice.workshop_activity.content_box.box_1.text_1"
+                    },
+                    {
+                      "name": "button_1",
+                      "value": "@data.learn.name_feelings.title",
+                      "_translations": {
+                        "value": {}
+                      },
+                      "action_list": [
+                        {
+                          "trigger": "click",
+                          "action_id": "go_to",
+                          "args": [
+                            "w_grief_learn_name_feelings"
+                          ],
+                          "_raw": "click | go_to: w_grief_learn_name_feelings",
+                          "_cleaned": "click | go_to: w_grief_learn_name_feelings"
+                        }
+                      ],
+                      "hidden": false,
+                      "type": "set_variable",
+                      "_nested_name": "home_practice.workshop_activity.content_box.box_1.button_1",
+                      "_dynamicFields": {
+                        "value": [
+                          {
+                            "fullExpression": "@data.learn.name_feelings.title",
+                            "matchedExpression": "@data.learn.name_feelings.title",
+                            "type": "data",
+                            "fieldName": "learn"
+                          }
+                        ]
+                      },
+                      "_dynamicDependencies": {
+                        "@data.learn.name_feelings.title": [
+                          "value"
+                        ]
+                      }
+                    }
+                  ],
+                  "_nested_name": "home_practice.workshop_activity.content_box.box_1"
+                }
+              ],
+              "_nested_name": "home_practice.workshop_activity.content_box"
+            }
+          ],
+          "_nested_name": "home_practice.workshop_activity"
+        }
+      ],
+      "_nested_name": "home_practice"
+    }
+  ],
+  "_xlsxPath": "global/top_templates/workshop_templates/workshop_grief.xlsx"
+}

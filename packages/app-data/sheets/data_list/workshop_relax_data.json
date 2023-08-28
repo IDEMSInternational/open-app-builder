@@ -1,0 +1,160 @@
+{
+  "flow_type": "data_list",
+  "flow_name": "workshop_relax_data",
+  "status": "released",
+  "data_list_name": "workshop_relax",
+  "rows": [
+    {
+      "id": "w_self_care",
+      "relax_id": "relax_5",
+      "outro_habit_box_use_short_mark_text": false,
+      "activity_title": "@data.relax.relax_5.title",
+      "activity_image_asset": "plh_images/workshop_modes/individual/relax.svg",
+      "relax_data": "@data.relax.relax_5",
+      "intro_text": "Let's try it out and do a short relaxation activity together!",
+      "_translations": {
+        "intro_text": {},
+        "outro_text": {}
+      },
+      "_translatedFields": {
+        "intro_text": {
+          "eng": "Let's try it out and do a short relaxation activity together!"
+        },
+        "outro_text": {
+          "eng": "Well done! Try to do this every day."
+        }
+      },
+      "outro_text": "Well done! Try to do this every day."
+    },
+    {
+      "id": "w_1on1",
+      "relax_id": "relax_2",
+      "activity_title": "@data.relax.relax_2.title",
+      "activity_image_asset": "plh_images/workshop_modes/individual/relax.svg",
+      "relax_data": "@data.relax.relax_2",
+      "outro_habit_box_use_short_mark_text": true,
+      "outro_text": "You are a star! \n\nEvery day, recognise something you have done well. Reward yourself with something that makes you happy. And take a deep breath to relax. \n\nRemember, you earn a @global.parent_point every time you care for yourself – you matter!",
+      "_translations": {
+        "outro_text": {}
+      },
+      "_translatedFields": {
+        "outro_text": {
+          "eng": "You are a star! \n\nEvery day, recognise something you have done well. Reward yourself with something that makes you happy. And take a deep breath to relax. \n\nRemember, you earn a @global.parent_point every time you care for yourself – you matter!"
+        }
+      }
+    },
+    {
+      "id": "w_praise",
+      "relax_id": "relax_3",
+      "activity_title": "@data.relax.relax_3.title",
+      "activity_image_asset": "plh_images/workshop_modes/individual/relax.svg",
+      "relax_data": "@data.relax.relax_3",
+      "outro_habit_box_use_short_mark_text": true
+    },
+    {
+      "id": "w_instruct",
+      "relax_id": "relax_4",
+      "activity_title": "@data.relax.relax_4.title",
+      "activity_image_asset": "plh_images/workshop_modes/individual/relax.svg",
+      "relax_data": "@data.relax.relax_4",
+      "outro_habit_box_use_short_mark_text": true
+    },
+    {
+      "id": "w_stress",
+      "relax_id": "relax_7",
+      "activity_title": "@data.relax.relax_7.title",
+      "activity_image_asset": "plh_images/workshop_modes/individual/relax.svg",
+      "relax_data": "@data.relax.relax_7",
+      "outro_habit_box_use_short_mark_text": true
+    },
+    {
+      "id": "w_solve",
+      "relax_id": "relax_11",
+      "activity_title": "@data.relax.relax_11.title",
+      "activity_image_asset": "plh_images/workshop_modes/individual/relax.svg",
+      "relax_data": "@data.relax.relax_11",
+      "outro_habit_box_use_short_mark_text": true
+    },
+    {
+      "id": "w_money",
+      "relax_id": "relax_8",
+      "activity_title": "@data.relax.relax_8.title",
+      "activity_image_asset": "plh_images/workshop_modes/individual/relax.svg",
+      "relax_data": "@data.relax.relax_8",
+      "outro_habit_box_use_short_mark_text": true
+    },
+    {
+      "id": "w_rules",
+      "relax_id": "relax_9",
+      "activity_title": "@data.relax.relax_9.title",
+      "activity_image_asset": "plh_images/workshop_modes/individual/relax.svg",
+      "relax_data": "@data.relax.relax_9",
+      "outro_habit_box_use_short_mark_text": true
+    },
+    {
+      "id": "w_consequence",
+      "relax_id": "relax_10",
+      "activity_title": "@data.relax.relax_10.title",
+      "activity_image_asset": "plh_images/workshop_modes/individual/relax.svg",
+      "relax_data": "@data.relax.relax_10",
+      "outro_habit_box_use_short_mark_text": true
+    },
+    {
+      "id": "w_safe",
+      "relax_id": "relax_12",
+      "activity_title": "@data.relax.relax_12.title",
+      "activity_image_asset": "plh_images/workshop_modes/individual/relax.svg",
+      "relax_data": "@data.relax.relax_12",
+      "outro_habit_box_use_short_mark_text": true
+    },
+    {
+      "id": "w_crisis",
+      "relax_id": "relax_13",
+      "activity_title": "@data.relax.relax_13.title",
+      "activity_image_asset": "plh_images/workshop_modes/individual/relax.svg",
+      "relax_data": "@data.relax.relax_13",
+      "outro_habit_box_use_short_mark_text": true
+    },
+    {
+      "id": "w_celebrate",
+      "activity_image_asset": "plh_images/workshop_modes/individual/final/relax.svg",
+      "relax_id": "relax_14",
+      "activity_title": "@data.relax.relax_14.title",
+      "relax_data": "@data.relax.relax_14",
+      "outro_habit_box_use_short_mark_text": true
+    },
+    {
+      "id": "w_srh",
+      "relax_id": "relax_15",
+      "activity_title": "@data.relax.relax_15.title",
+      "activity_image_asset": "plh_images/workshop_modes/individual/relax.svg",
+      "relax_data": "@data.relax.relax_15",
+      "outro_habit_box_use_short_mark_text": true
+    },
+    {
+      "id": "w_svp",
+      "relax_id": "relax_17",
+      "activity_title": "@data.relax.relax_17.title",
+      "activity_image_asset": "plh_images/workshop_modes/individual/relax.svg",
+      "relax_data": "@data.relax.relax_17",
+      "outro_habit_box_use_short_mark_text": true
+    },
+    {
+      "id": "w_grief",
+      "relax_id": "relax_22",
+      "activity_title": "@data.relax.relax_22.title",
+      "activity_image_asset": "plh_images/workshop_modes/individual/relax.svg",
+      "relax_data": "@data.relax.relax_22",
+      "outro_habit_box_use_short_mark_text": true
+    },
+    {
+      "id": "w_learn",
+      "relax_id": "relax_20",
+      "activity_title": "@data.relax.relax_20.title",
+      "activity_image_asset": "plh_images/workshop_modes/individual/relax.svg",
+      "relax_data": "@data.relax.relax_20",
+      "outro_habit_box_use_short_mark_text": true
+    }
+  ],
+  "_xlsxPath": "global/data/workshop_data/workshop_data_list.xlsx"
+}

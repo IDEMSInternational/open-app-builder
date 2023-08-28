@@ -1,0 +1,27 @@
+{
+  "flow_name": "tg_w_solve_read_2_ind",
+  "flow_subtype": "generated",
+  "flow_type": "data_list",
+  "rows": [
+    {
+      "id": "read_2",
+      "group": "read_2",
+      "individual": true,
+      "together": true,
+      "template": "w_solve_read_2",
+      "rel_priority": 1,
+      "completed_field": "task_w_solve_read_2_completed",
+      "completed": "@fields.task_w_solve_read_2_completed"
+    },
+    {
+      "id": "think",
+      "group": "read_2",
+      "individual": true,
+      "together": false,
+      "template": "w_solve_think",
+      "rel_priority": 2,
+      "completed_field": "task_w_solve_think_completed",
+      "completed": "@fields.task_w_solve_think_completed"
+    }
+  ]
+}

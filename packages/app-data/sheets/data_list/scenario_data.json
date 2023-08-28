@@ -1,0 +1,66 @@
+{
+  "flow_type": "data_list",
+  "flow_name": "scenario_data",
+  "status": "released",
+  "data_list_name": "scenario",
+  "rows": [
+    {
+      "id": "tell_stories",
+      "workshop": "w_learn",
+      "image_asset": "@data.learn_play.tell_stories.image_asset",
+      "title": "@data.learn_play.tell_stories.title",
+      "_translations": {
+        "title": {},
+        "text": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "@data.learn_play.tell_stories.title"
+        },
+        "text": {
+          "eng": "Share a story from your childhood or culture with your teen. Or let them share a story with you. This is a great way to learn while building a healthy relationship."
+        }
+      },
+      "text": "Share a story from your childhood or culture with your teen. Or let them share a story with you. This is a great way to learn while building a healthy relationship."
+    },
+    {
+      "id": "walk",
+      "workshop": "w_learn",
+      "image_asset": "@data.learn_play.walk.image_asset",
+      "title": "@data.learn_play.walk.title",
+      "_translations": {
+        "title": {},
+        "text": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "@data.learn_play.walk.title"
+        },
+        "text": {
+          "eng": "Ask your teen if they would like to walk outside with you. This is good exercise and is a good time for you and your teen to talk about what is on your mind and how you both are feeling."
+        }
+      },
+      "text": "Ask your teen if they would like to walk outside with you. This is good exercise and is a good time for you and your teen to talk about what is on your mind and how you both are feeling."
+    },
+    {
+      "id": "cook",
+      "workshop": "w_learn",
+      "image_asset": "@data.learn_play.cook.image_asset",
+      "title": "Cooking or cleaning",
+      "_translations": {
+        "title": {},
+        "text": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Cooking or cleaning"
+        },
+        "text": {
+          "eng": "There are always things that need to be done at home. This is a great way to spend time together. Ask your teen to help you with the cooking or cleaning. You can talk to each other and teach them why doing these things is important."
+        }
+      },
+      "text": "There are always things that need to be done at home. This is a great way to spend time together. Ask your teen to help you with the cooking or cleaning. You can talk to each other and teach them why doing these things is important."
+    }
+  ],
+  "_xlsxPath": "global/data/workshop_data/workshop_data_list.xlsx"
+}

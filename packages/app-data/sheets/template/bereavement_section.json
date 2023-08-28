@@ -1,0 +1,249 @@
+{
+  "flow_type": "template",
+  "flow_name": "bereavement_section",
+  "status": "released",
+  "rows": [
+    {
+      "type": "text",
+      "name": "top_text",
+      "_nested_name": "top_text"
+    },
+    {
+      "type": "accordion",
+      "name": "accordion",
+      "rows": [
+        {
+          "name": "title_1",
+          "type": "set_variable",
+          "_nested_name": "accordion.title_1"
+        },
+        {
+          "name": "title_2",
+          "type": "set_variable",
+          "_nested_name": "accordion.title_2"
+        },
+        {
+          "name": "title_3",
+          "type": "set_variable",
+          "_nested_name": "accordion.title_3"
+        },
+        {
+          "type": "accordion_section",
+          "name": "section_1",
+          "value": "@local.title_1",
+          "condition": "@local.title_1",
+          "rows": [
+            {
+              "type": "display_group",
+              "name": "dg",
+              "parameter_list": {
+                "style": "column"
+              },
+              "rows": [
+                {
+                  "type": "text",
+                  "name": "text_1",
+                  "_nested_name": "accordion.section_1.dg.text_1"
+                },
+                {
+                  "name": "button_1_text",
+                  "type": "set_variable",
+                  "_nested_name": "accordion.section_1.dg.button_1_text"
+                },
+                {
+                  "name": "button_1_go_to",
+                  "type": "set_variable",
+                  "_nested_name": "accordion.section_1.dg.button_1_go_to"
+                },
+                {
+                  "type": "button",
+                  "name": "button_1",
+                  "value": "@local.button_1_text",
+                  "_translations": {
+                    "value": {}
+                  },
+                  "condition": "@local.button_1_text",
+                  "action_list": [
+                    {
+                      "trigger": "click",
+                      "action_id": "go_to",
+                      "args": [
+                        "@local.button_1_go_to"
+                      ],
+                      "_raw": "click | go_to: @local.button_1_go_to",
+                      "_cleaned": "click | go_to: @local.button_1_go_to"
+                    }
+                  ],
+                  "_nested_name": "accordion.section_1.dg.button_1",
+                  "_dynamicFields": {
+                    "value": [
+                      {
+                        "fullExpression": "@local.button_1_text",
+                        "matchedExpression": "@local.button_1_text",
+                        "type": "local",
+                        "fieldName": "button_1_text"
+                      }
+                    ],
+                    "condition": [
+                      {
+                        "fullExpression": "@local.button_1_text",
+                        "matchedExpression": "@local.button_1_text",
+                        "type": "local",
+                        "fieldName": "button_1_text"
+                      }
+                    ],
+                    "action_list": {
+                      "0": {
+                        "args": {
+                          "0": [
+                            {
+                              "fullExpression": "@local.button_1_go_to",
+                              "matchedExpression": "@local.button_1_go_to",
+                              "type": "local",
+                              "fieldName": "button_1_go_to"
+                            }
+                          ]
+                        },
+                        "_raw": [
+                          {
+                            "fullExpression": "click | go_to: @local.button_1_go_to",
+                            "matchedExpression": "@local.button_1_go_to",
+                            "type": "local",
+                            "fieldName": "button_1_go_to"
+                          }
+                        ],
+                        "_cleaned": [
+                          {
+                            "fullExpression": "click | go_to: @local.button_1_go_to",
+                            "matchedExpression": "@local.button_1_go_to",
+                            "type": "local",
+                            "fieldName": "button_1_go_to"
+                          }
+                        ]
+                      }
+                    }
+                  },
+                  "_dynamicDependencies": {
+                    "@local.button_1_text": [
+                      "value",
+                      "condition"
+                    ],
+                    "@local.button_1_go_to": [
+                      "action_list.0.args.0",
+                      "action_list.0._raw",
+                      "action_list.0._cleaned"
+                    ]
+                  }
+                }
+              ],
+              "_nested_name": "accordion.section_1.dg"
+            }
+          ],
+          "_nested_name": "accordion.section_1",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@local.title_1",
+                "matchedExpression": "@local.title_1",
+                "type": "local",
+                "fieldName": "title_1"
+              }
+            ],
+            "condition": [
+              {
+                "fullExpression": "@local.title_1",
+                "matchedExpression": "@local.title_1",
+                "type": "local",
+                "fieldName": "title_1"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@local.title_1": [
+              "value",
+              "condition"
+            ]
+          }
+        },
+        {
+          "type": "accordion_section",
+          "name": "section_2",
+          "value": "@local.title_2",
+          "condition": "@local.title_2",
+          "rows": [
+            {
+              "type": "text",
+              "name": "text_2",
+              "_nested_name": "accordion.section_2.text_2"
+            }
+          ],
+          "_nested_name": "accordion.section_2",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@local.title_2",
+                "matchedExpression": "@local.title_2",
+                "type": "local",
+                "fieldName": "title_2"
+              }
+            ],
+            "condition": [
+              {
+                "fullExpression": "@local.title_2",
+                "matchedExpression": "@local.title_2",
+                "type": "local",
+                "fieldName": "title_2"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@local.title_2": [
+              "value",
+              "condition"
+            ]
+          }
+        },
+        {
+          "type": "accordion_section",
+          "name": "section_3",
+          "value": "@local.title_3",
+          "condition": "@local.title_3",
+          "rows": [
+            {
+              "type": "text",
+              "name": "text_3",
+              "_nested_name": "accordion.section_3.text_3"
+            }
+          ],
+          "_nested_name": "accordion.section_3",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@local.title_3",
+                "matchedExpression": "@local.title_3",
+                "type": "local",
+                "fieldName": "title_3"
+              }
+            ],
+            "condition": [
+              {
+                "fullExpression": "@local.title_3",
+                "matchedExpression": "@local.title_3",
+                "type": "local",
+                "fieldName": "title_3"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@local.title_3": [
+              "value",
+              "condition"
+            ]
+          }
+        }
+      ],
+      "_nested_name": "accordion"
+    }
+  ],
+  "_xlsxPath": "global/top_templates/parent_centre_templates/bereavement.xlsx"
+}

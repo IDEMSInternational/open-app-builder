@@ -1,0 +1,352 @@
+{
+  "flow_type": "data_list",
+  "flow_name": "scenario_question_data",
+  "status": "released",
+  "data_list_name": "scenario_question",
+  "rows": [
+    {
+      "id": "pushy_boyfriend",
+      "workshop": "w_svp",
+      "scenario_image_asset": "plh_images/workshops/w_svp/learn_warning_signs/pushy_boyfriend.svg",
+      "scenario_title": "Boyfriend pressures @global.w_svp_teen_girl_1 to go beyond kissing",
+      "_translations": {
+        "scenario_title": {},
+        "scenario_text": {},
+        "question_text": {},
+        "option_1": {},
+        "option_2": {},
+        "option_3": {},
+        "reply_all": {}
+      },
+      "_translatedFields": {
+        "scenario_title": {
+          "eng": "Boyfriend pressures @global.w_svp_teen_girl_1 to go beyond kissing"
+        },
+        "scenario_text": {
+          "eng": "@global.w_svp_teen_girl_1: \"I don't think I am ready...\"\n\nBoyfriend: \"Oh come on... We are ready for the next step. We see each other all the time and we never do anything more… You know I love you, right!\""
+        },
+        "question_text": {
+          "eng": "What warning signs do you see here?\n\nThe boyfriend:"
+        },
+        "option_1": {
+          "eng": "Does not listen to @global.w_svp_teen_girl_1 or ask what she wants"
+        },
+        "option_2": {
+          "eng": "Does not respect @global.w_svp_teen_girl_1's feelings/opinion"
+        },
+        "option_3": {
+          "eng": "Makes @global.w_svp_teen_girl_1 feel bad about how she acts"
+        },
+        "reply_all": {
+          "eng": "Yes, these are clear warning signs! Your partner (or anyone else) should never try to push or convince you to do something you do not want to do or feel unsure about. Even if you do something once, this does not mean you have to do it again – you are allowed to change your mind at any time, even during an intimate moment.\n\nA partner who really loves and respects you will ask if you are okay, listen to you, and stop if you want to. They would never push you into something you do not want to do."
+        }
+      },
+      "scenario_text": "@global.w_svp_teen_girl_1: \"I don't think I am ready...\"\n\nBoyfriend: \"Oh come on... We are ready for the next step. We see each other all the time and we never do anything more… You know I love you, right!\"",
+      "question_text": "What warning signs do you see here?\n\nThe boyfriend:",
+      "option_1": "Does not listen to @global.w_svp_teen_girl_1 or ask what she wants",
+      "option_2": "Does not respect @global.w_svp_teen_girl_1's feelings/opinion",
+      "option_3": "Makes @global.w_svp_teen_girl_1 feel bad about how she acts",
+      "reply_all": "Yes, these are clear warning signs! Your partner (or anyone else) should never try to push or convince you to do something you do not want to do or feel unsure about. Even if you do something once, this does not mean you have to do it again – you are allowed to change your mind at any time, even during an intimate moment.\n\nA partner who really loves and respects you will ask if you are okay, listen to you, and stop if you want to. They would never push you into something you do not want to do."
+    },
+    {
+      "id": "controlling_boyfriend",
+      "workshop": "w_svp",
+      "scenario_image_asset": "plh_images/workshops/w_svp/learn_warning_signs/controlling_boyfriend.svg",
+      "scenario_title": "Boyfriend stops @global.w_svp_teen_girl_1 from meeting friends",
+      "_translations": {
+        "scenario_title": {},
+        "scenario_text": {},
+        "question_text": {},
+        "option_1": {},
+        "option_2": {},
+        "option_3": {},
+        "option_4": {},
+        "option_5": {},
+        "reply_all": {}
+      },
+      "_translatedFields": {
+        "scenario_title": {
+          "eng": "Boyfriend stops @global.w_svp_teen_girl_1 from meeting friends"
+        },
+        "scenario_text": {
+          "eng": "@global.w_svp_teen_girl_1: “I just wanted to…”\n\nBoyfriend: “No, you are staying here. You always leave me alone to go see your friends. Don’t you love me? Or are you meeting your other boyfriend?!”"
+        },
+        "question_text": {
+          "eng": "What warning signs do you see here?\n\nThe boyfriend:"
+        },
+        "option_1": {
+          "eng": "Tries to control @global.w_svp_teen_girl_1"
+        },
+        "option_2": {
+          "eng": "Stops @global.w_svp_teen_girl_1 from seeing friends"
+        },
+        "option_3": {
+          "eng": "Does not listen to @global.w_svp_teen_girl_1"
+        },
+        "option_4": {
+          "eng": "Makes @global.w_svp_teen_girl_1 feel bad about how she act"
+        },
+        "option_5": {
+          "eng": "Is possessive and very jealous"
+        },
+        "reply_all": {
+          "eng": "Yes, all of these are warning signs! When we are in love, it can be hard to recognise something is wrong in our relationship. \n\nIf you have a friend in @global.w_svp_teen_girl_1’s situation, try to help them see that jealous, possessive or controlling behaviour is not healthy or loving."
+        }
+      },
+      "scenario_text": "@global.w_svp_teen_girl_1: “I just wanted to…”\n\nBoyfriend: “No, you are staying here. You always leave me alone to go see your friends. Don’t you love me? Or are you meeting your other boyfriend?!”",
+      "question_text": "What warning signs do you see here?\n\nThe boyfriend:",
+      "option_1": "Tries to control @global.w_svp_teen_girl_1",
+      "option_2": "Stops @global.w_svp_teen_girl_1 from seeing friends",
+      "option_3": "Does not listen to @global.w_svp_teen_girl_1",
+      "option_4": "Makes @global.w_svp_teen_girl_1 feel bad about how she act",
+      "option_5": "Is possessive and very jealous",
+      "reply_all": "Yes, all of these are warning signs! When we are in love, it can be hard to recognise something is wrong in our relationship. \n\nIf you have a friend in @global.w_svp_teen_girl_1’s situation, try to help them see that jealous, possessive or controlling behaviour is not healthy or loving."
+    },
+    {
+      "id": "catcalling",
+      "workshop": "w_svp",
+      "scenario_image_asset": "plh_images/workshops/w_svp/learn_warning_signs/catcalling.svg",
+      "scenario_title": "@global.w_svp_teen_boy_1’s friend shouts sexual comment at girl",
+      "_translations": {
+        "scenario_title": {},
+        "scenario_text": {},
+        "question_text": {},
+        "option_1": {},
+        "option_2": {},
+        "option_3": {},
+        "reply_all": {}
+      },
+      "_translatedFields": {
+        "scenario_title": {
+          "eng": "@global.w_svp_teen_boy_1’s friend shouts sexual comment at girl"
+        },
+        "scenario_text": {
+          "eng": "Friend: “Hey pretty, why are you walking so fast! Don’t you want to come show us what is under that skirt?”"
+        },
+        "question_text": {
+          "eng": "What warning signs do you see here?\n\nThe friend:"
+        },
+        "option_1": {
+          "eng": "Makes fun of the girl"
+        },
+        "option_2": {
+          "eng": "Makes the girl feel uncomfortable about how she looks and acts"
+        },
+        "option_3": {
+          "eng": "Acts disrespectfully"
+        },
+        "reply_all": {
+          "eng": "Yes, all of these are warning signs! Shouting sexual comments, whistling or making kissing sounds at someone is sexual harassment and a type of sexual abuse. \n\nIf @global.w_svp_teen_boy_1 stays silent, his friend will likely keep doing this. @global.w_svp_teen_boy_1 can help his friend see that his behaviour makes girls feel scared, angry, or sad, and is not okay."
+        }
+      },
+      "scenario_text": "Friend: “Hey pretty, why are you walking so fast! Don’t you want to come show us what is under that skirt?”",
+      "question_text": "What warning signs do you see here?\n\nThe friend:",
+      "option_1": "Makes fun of the girl",
+      "option_2": "Makes the girl feel uncomfortable about how she looks and acts",
+      "option_3": "Acts disrespectfully",
+      "reply_all": "Yes, all of these are warning signs! Shouting sexual comments, whistling or making kissing sounds at someone is sexual harassment and a type of sexual abuse. \n\nIf @global.w_svp_teen_boy_1 stays silent, his friend will likely keep doing this. @global.w_svp_teen_boy_1 can help his friend see that his behaviour makes girls feel scared, angry, or sad, and is not okay."
+    },
+    {
+      "id": "pushy_friend",
+      "workshop": "w_svp",
+      "scenario_image_asset": "plh_images/workshops/w_svp/learn_warning_signs/pushy_friend.svg",
+      "scenario_title": "Friend pushes @global.w_svp_teen_girl_2 to accept food",
+      "_translations": {
+        "scenario_title": {},
+        "scenario_text": {},
+        "question_text": {},
+        "option_1": {},
+        "option_2": {},
+        "option_3": {},
+        "reply_all": {}
+      },
+      "_translatedFields": {
+        "scenario_title": {
+          "eng": "Friend pushes @global.w_svp_teen_girl_2 to accept food"
+        },
+        "scenario_text": {
+          "eng": "Man: “Hi beautiful, can I buy you a snack?”\n\n@global.w_svp_teen_girl_2: “Uhmmm... I don’t…”\n\nFriend: “Yes, she’ll have it!”"
+        },
+        "question_text": {
+          "eng": "What warning signs do you see here?"
+        },
+        "option_1": {
+          "eng": "The friend pressures and manipulates @global.w_svp_teen_girl_2."
+        },
+        "option_2": {
+          "eng": "The friend does not listen to @global.w_svp_teen_girl_2."
+        },
+        "option_3": {
+          "eng": "The man abuses his status."
+        },
+        "reply_all": {
+          "eng": "Yes, all of these are warning signs! It is common for young women to be pressured into sex when men offer food, gifts, or money. \n\nWhenever you do not get the space to make your own decisions, that can be dangerous. Your friends, and others, should respect your choices."
+        }
+      },
+      "scenario_text": "Man: “Hi beautiful, can I buy you a snack?”\n\n@global.w_svp_teen_girl_2: “Uhmmm... I don’t…”\n\nFriend: “Yes, she’ll have it!”",
+      "question_text": "What warning signs do you see here?",
+      "option_1": "The friend pressures and manipulates @global.w_svp_teen_girl_2.",
+      "option_2": "The friend does not listen to @global.w_svp_teen_girl_2.",
+      "option_3": "The man abuses his status.",
+      "reply_all": "Yes, all of these are warning signs! It is common for young women to be pressured into sex when men offer food, gifts, or money. \n\nWhenever you do not get the space to make your own decisions, that can be dangerous. Your friends, and others, should respect your choices."
+    },
+    {
+      "id": "nude_pic",
+      "workshop": "w_svp",
+      "scenario_image_asset": "plh_images/workshops/w_svp/learn_warning_signs/nude_pic.svg",
+      "scenario_title": "@global.w_svp_teen_girl_3’s nude picture is shared",
+      "_translations": {
+        "scenario_title": {},
+        "scenario_text": {},
+        "question_text": {},
+        "option_1": {},
+        "option_2": {},
+        "reply_all": {}
+      },
+      "_translatedFields": {
+        "scenario_title": {
+          "eng": "@global.w_svp_teen_girl_3’s nude picture is shared"
+        },
+        "scenario_text": {
+          "eng": "Boy: “Look I still have this sexy picture that @global.w_svp_teen_girl_3 sent me! I will post it online, that should teach her not to break up with me.”"
+        },
+        "question_text": {
+          "eng": "What warning signs do you see here?\n\nThe ex-boyfriend:"
+        },
+        "option_1": {
+          "eng": "Breaks @global.w_svp_teen_girl_3’s trust"
+        },
+        "option_2": {
+          "eng": "Breaks the law"
+        },
+        "reply_all": {
+          "eng": "Yes, these are important warning signs! Sharing sexual images without someone’s permission is wrong and, in many places, it is a crime (especially if someone is under 18). \n\n@global.w_svp_teen_girl_3 may feel ashamed and may not know what to do. It is important that she knows this situation is not her fault and that she talks to her boyfriend or an adult she trusts. \n\nRemember to talk about social media and online activity as a family, so everyone stays safe."
+        }
+      },
+      "scenario_text": "Boy: “Look I still have this sexy picture that @global.w_svp_teen_girl_3 sent me! I will post it online, that should teach her not to break up with me.”",
+      "question_text": "What warning signs do you see here?\n\nThe ex-boyfriend:",
+      "option_1": "Breaks @global.w_svp_teen_girl_3’s trust",
+      "option_2": "Breaks the law",
+      "reply_all": "Yes, these are important warning signs! Sharing sexual images without someone’s permission is wrong and, in many places, it is a crime (especially if someone is under 18). \n\n@global.w_svp_teen_girl_3 may feel ashamed and may not know what to do. It is important that she knows this situation is not her fault and that she talks to her boyfriend or an adult she trusts. \n\nRemember to talk about social media and online activity as a family, so everyone stays safe."
+    },
+    {
+      "id": "private_tutoring",
+      "workshop": "w_svp",
+      "scenario_image_asset": "plh_images/workshops/w_svp/learn_warning_signs/private_tutoring.svg",
+      "scenario_title": "Teacher asks @global.w_svp_teen_girl_1 to stay after school",
+      "_translations": {
+        "scenario_title": {},
+        "scenario_text": {},
+        "question_text": {},
+        "option_1": {},
+        "option_2": {},
+        "option_3": {},
+        "option_4": {},
+        "option_5": {},
+        "reply_all": {}
+      },
+      "_translatedFields": {
+        "scenario_title": {
+          "eng": "Teacher asks @global.w_svp_teen_girl_1 to stay after school"
+        },
+        "scenario_text": {
+          "eng": "Teacher: “@global.w_svp_teen_girl_1, if you want to get good grades this year, you need to stay after school when everyone is gone so I can tutor you.”\n\n@global.w_svp_teen_girl_1: “My friend also needs support. Can I invite her too?” \n\nTeacher: “No, this will be our secret. You don’t want people to think you are stupid, right?”"
+        },
+        "question_text": {
+          "eng": "What warning signs do you see here?\n\nThe teacher:"
+        },
+        "option_1": {
+          "eng": "Abuses his power"
+        },
+        "option_2": {
+          "eng": "Pressures and manipulates @global.w_svp_teen_girl_1"
+        },
+        "option_3": {
+          "eng": "Does not listen to @global.w_svp_teen_girl_1"
+        },
+        "option_4": {
+          "eng": "Makes @global.w_svp_teen_girl_1 feel unsafe"
+        },
+        "option_5": {
+          "eng": "Lies and acts disrespectfully"
+        },
+        "reply_all": {
+          "eng": "Yes, all of these are warning signs! Schools have strict rules to keep students safe. The teacher is abusing his power and knows that what he is doing is wrong. \n\nProbably, he has tried this before and will do it again, so @global.w_svp_teen_girl_1 could try to find others with the same experience to make it easier to report the teacher to an adult who she trusts."
+        }
+      },
+      "scenario_text": "Teacher: “@global.w_svp_teen_girl_1, if you want to get good grades this year, you need to stay after school when everyone is gone so I can tutor you.”\n\n@global.w_svp_teen_girl_1: “My friend also needs support. Can I invite her too?” \n\nTeacher: “No, this will be our secret. You don’t want people to think you are stupid, right?”",
+      "question_text": "What warning signs do you see here?\n\nThe teacher:",
+      "option_1": "Abuses his power",
+      "option_2": "Pressures and manipulates @global.w_svp_teen_girl_1",
+      "option_3": "Does not listen to @global.w_svp_teen_girl_1",
+      "option_4": "Makes @global.w_svp_teen_girl_1 feel unsafe",
+      "option_5": "Lies and acts disrespectfully",
+      "reply_all": "Yes, all of these are warning signs! Schools have strict rules to keep students safe. The teacher is abusing his power and knows that what he is doing is wrong. \n\nProbably, he has tried this before and will do it again, so @global.w_svp_teen_girl_1 could try to find others with the same experience to make it easier to report the teacher to an adult who she trusts."
+    },
+    {
+      "id": "rejected_ride",
+      "workshop": "w_svp",
+      "scenario_image_asset": "plh_images/workshops/w_svp/learn_warning_signs/rejected_ride.svg",
+      "scenario_title": "@global.w_svp_teen_girl_2 says ‘no’ to offered lift",
+      "_translations": {
+        "scenario_title": {},
+        "scenario_text": {},
+        "question_text": {},
+        "option_1": {},
+        "option_2": {},
+        "option_3": {},
+        "option_4": {},
+        "option_5": {},
+        "option_6": {},
+        "option_7": {},
+        "reply_all": {}
+      },
+      "_translatedFields": {
+        "scenario_title": {
+          "eng": "@global.w_svp_teen_girl_2 says ‘no’ to offered lift"
+        },
+        "scenario_text": {
+          "eng": "@global.w_svp_teen_girl_2: “No, I don’t want to…”\n\nMan: “Your friends left, so this is the only way you can get home, you idiot!”"
+        },
+        "question_text": {
+          "eng": "What warning signs do you see here?\n\nThe man:"
+        },
+        "option_1": {
+          "eng": "Does not listen to @global.w_svp_teen_girl_2"
+        },
+        "option_2": {
+          "eng": "Yells and calls @global.w_svp_teen_girl_2 names"
+        },
+        "option_3": {
+          "eng": "May touch @global.w_svp_teen_girl_2 without permission"
+        },
+        "option_4": {
+          "eng": "May physically hurt @global.w_svp_teen_girl_2"
+        },
+        "option_5": {
+          "eng": "Makes @global.w_svp_teen_girl_2 feel unsafe"
+        },
+        "option_6": {
+          "eng": "Pressures @global.w_svp_teen_girl_2"
+        },
+        "option_7": {
+          "eng": "Lies and acts disrespectfully"
+        },
+        "reply_all": {
+          "eng": "Yes, all of these are warning signs! Your ‘no’ should alway be respected. \n\nAlso remember, if people at home or outside use alcohol and other drugs this can be a warning sign, as those can make people angry, aggressive, and even violent."
+        }
+      },
+      "scenario_text": "@global.w_svp_teen_girl_2: “No, I don’t want to…”\n\nMan: “Your friends left, so this is the only way you can get home, you idiot!”",
+      "question_text": "What warning signs do you see here?\n\nThe man:",
+      "option_1": "Does not listen to @global.w_svp_teen_girl_2",
+      "option_2": "Yells and calls @global.w_svp_teen_girl_2 names",
+      "option_3": "May touch @global.w_svp_teen_girl_2 without permission",
+      "option_4": "May physically hurt @global.w_svp_teen_girl_2",
+      "option_5": "Makes @global.w_svp_teen_girl_2 feel unsafe",
+      "option_6": "Pressures @global.w_svp_teen_girl_2",
+      "option_7": "Lies and acts disrespectfully",
+      "reply_all": "Yes, all of these are warning signs! Your ‘no’ should alway be respected. \n\nAlso remember, if people at home or outside use alcohol and other drugs this can be a warning sign, as those can make people angry, aggressive, and even violent."
+    }
+  ],
+  "_xlsxPath": "global/data/workshop_data/workshop_data_list.xlsx"
+}

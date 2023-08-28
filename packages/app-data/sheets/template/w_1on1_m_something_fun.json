@@ -1,0 +1,42 @@
+{
+  "flow_type": "template",
+  "module": "1on1",
+  "flow_name": "w_1on1_m_something_fun",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "m_something_fun",
+      "value": "m_something_fun",
+      "rows": [
+        {
+          "name": "workshop_data",
+          "value": "@data.workshop.w_1on1",
+          "_translations": {
+            "value": {}
+          },
+          "exclude_from_translation": true,
+          "type": "set_variable",
+          "_nested_name": "m_something_fun.workshop_data",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@data.workshop.w_1on1",
+                "matchedExpression": "@data.workshop.w_1on1",
+                "type": "data",
+                "fieldName": "workshop"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@data.workshop.w_1on1": [
+              "value"
+            ]
+          }
+        }
+      ],
+      "_nested_name": "m_something_fun"
+    }
+  ],
+  "_xlsxPath": "global/top_templates/in_week_messages/in_week_message_texts/w_1on1_messages.xlsx"
+}

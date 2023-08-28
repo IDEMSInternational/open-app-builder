@@ -1,0 +1,57 @@
+{
+  "flow_type": "data_list",
+  "flow_name": "mode_data",
+  "status": "released",
+  "data_list_name": "mode",
+  "rows": [
+    {
+      "id": "welcome_individual",
+      "icon_asset": "plh_images/icons/smile.svg"
+    },
+    {
+      "id": "relax",
+      "icon_asset": "plh_images/icons/smile_eyes_down.svg"
+    },
+    {
+      "id": "topic_intro",
+      "icon_asset": "plh_images/icons/magnifying_glass.svg"
+    },
+    {
+      "id": "read",
+      "icon_asset": "plh_images/icons/picture_book.svg"
+    },
+    {
+      "id": "think",
+      "icon_asset": "plh_images/icons/thought_bubble.svg"
+    },
+    {
+      "id": "quiz",
+      "icon_asset": "plh_images/icons/pencil.svg"
+    },
+    {
+      "id": "learn",
+      "icon_asset": "plh_images/icons/paper_pencil.svg"
+    },
+    {
+      "id": "try",
+      "icon_asset": "plh_images/icons/cogwheels.svg"
+    },
+    {
+      "id": "tools",
+      "icon_asset": "plh_images/icons/light_bulb.svg"
+    },
+    {
+      "id": "home_practice",
+      "icon_asset": "plh_images/icons/parent_child_heart.svg"
+    },
+    {
+      "id": "ending",
+      "icon_asset": "plh_images/icons/cup.svg"
+    },
+    {
+      "id": "hp_review",
+      "icon_asset": "plh_images/icons/hands_hold_heart.svg"
+    }
+  ],
+  "_xlsxPath": "global/data/workshop_data/workshop_data_list.xlsx"
+}

@@ -1,0 +1,938 @@
+{
+  "flow_type": "data_list",
+  "flow_name": "tools_data",
+  "status": "released",
+  "data_list_name": "tools",
+  "rows": [
+    {
+      "id": "w_self_care",
+      "tool_1_button_go_to_template": "w_self_care_relax",
+      "tool_2_button_go_to_template": "w_self_care_recognise",
+      "tool_3_button_go_to_template": "w_self_care_reward",
+      "title": "How to do self-care",
+      "_translations": {
+        "title": {},
+        "tool_1_title": {},
+        "tool_1_text": {},
+        "tool_1_button_text": {},
+        "tool_2_title": {},
+        "tool_2_text": {},
+        "tool_2_button_text": {},
+        "tool_3_title": {},
+        "tool_3_text": {},
+        "tool_3_button_text": {},
+        "tool_4_title": {},
+        "bottom_text": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "How to do self-care"
+        },
+        "tool_1_title": {
+          "eng": "RELAX"
+        },
+        "tool_1_text": {
+          "eng": "Do a 30 second quick relaxation activity."
+        },
+        "tool_1_button_text": {
+          "eng": "Relax activity"
+        },
+        "tool_2_title": {
+          "eng": "RECOGNISE"
+        },
+        "tool_2_text": {
+          "eng": "Take a moment and think of one thing YOU have done recently that you have done well! Say it aloud if you can: \"Well done for …\""
+        },
+        "tool_2_button_text": {
+          "eng": "Recognise activity"
+        },
+        "tool_3_title": {
+          "eng": "REWARD"
+        },
+        "tool_3_text": {
+          "eng": "Remember, you deserve your quality time too! What makes you happy?"
+        },
+        "tool_3_button_text": {
+          "eng": "Reward activity"
+        },
+        "tool_4_title": {
+          "eng": ""
+        },
+        "bottom_text": {
+          "eng": "One-on-one time with your teen can be fun for you, too! It might even make you feel less stressed."
+        }
+      },
+      "tool_1_title": "RELAX",
+      "tool_1_text": "Do a 30 second quick relaxation activity.",
+      "tool_1_button_text": "Relax activity",
+      "tool_2_title": "RECOGNISE",
+      "tool_2_text": "Take a moment and think of one thing YOU have done recently that you have done well! Say it aloud if you can: \"Well done for …\"",
+      "tool_2_button_text": "Recognise activity",
+      "tool_3_title": "REWARD",
+      "tool_3_text": "Remember, you deserve your quality time too! What makes you happy?",
+      "tool_3_button_text": "Reward activity",
+      "tool_4_title": "",
+      "bottom_text": "One-on-one time with your teen can be fun for you, too! It might even make you feel less stressed."
+    },
+    {
+      "id": "w_1on1",
+      "title": "How to spend one-on-one time",
+      "_translations": {
+        "title": {},
+        "tool_1_title": {},
+        "tool_1_text": {},
+        "tool_2_title": {},
+        "tool_2_text": {},
+        "tool_3_title": {},
+        "tool_3_text": {},
+        "tool_4_title": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "How to spend one-on-one time"
+        },
+        "tool_1_title": {
+          "eng": "DAY"
+        },
+        "tool_1_text": {
+          "eng": "Try to do it every day. \n\nFind 5 minutes (or more!) each day when your teen does not have something else they want to do."
+        },
+        "tool_2_title": {
+          "eng": "PLAY"
+        },
+        "tool_2_text": {
+          "eng": "Let your teen choose. \n\nTell your teen that you would like to spend some time with them and that they can choose what to do or talk about. They might think this is weird at first, but will come to enjoy this time with you!"
+        },
+        "tool_3_title": {
+          "eng": "STAY"
+        },
+        "tool_3_text": {
+          "eng": "Focus on your teen. \n\nSwitch off the TV and put phones aside. Look at your teen. Nod or say “I see” to show you are really paying attention. Accept what they say without judging them."
+        },
+        "tool_4_title": {
+          "eng": ""
+        }
+      },
+      "tool_1_title": "DAY",
+      "tool_1_text": "Try to do it every day. \n\nFind 5 minutes (or more!) each day when your teen does not have something else they want to do.",
+      "tool_2_title": "PLAY",
+      "tool_2_text": "Let your teen choose. \n\nTell your teen that you would like to spend some time with them and that they can choose what to do or talk about. They might think this is weird at first, but will come to enjoy this time with you!",
+      "tool_3_title": "STAY",
+      "tool_3_text": "Focus on your teen. \n\nSwitch off the TV and put phones aside. Look at your teen. Nod or say “I see” to show you are really paying attention. Accept what they say without judging them.",
+      "tool_4_title": ""
+    },
+    {
+      "id": "w_praise",
+      "title": "How to praise",
+      "_translations": {
+        "title": {},
+        "tool_1_title": {},
+        "tool_1_text": {},
+        "tool_2_title": {},
+        "tool_2_text": {},
+        "tool_3_title": {},
+        "tool_3_text": {},
+        "tool_4_title": {},
+        "bottom_text": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "How to praise"
+        },
+        "tool_1_title": {
+          "eng": "SEE IT"
+        },
+        "tool_1_text": {
+          "eng": "Look for anything your teen does that is helpful or good, and praise them for it. They may not show it, but you will see them doing that good thing again. It will also reassure them that you notice and care."
+        },
+        "tool_2_title": {
+          "eng": "SAY IT"
+        },
+        "tool_2_text": {
+          "eng": "Be enthusiastic – really mean it when you say it!"
+        },
+        "tool_3_title": {
+          "eng": "REPEAT IT"
+        },
+        "tool_3_text": {
+          "eng": "Try to find something to thank them for every day. Even something really small."
+        },
+        "tool_4_title": {
+          "eng": ""
+        },
+        "bottom_text": {
+          "eng": "You can also praise other adults in your household, too. Notice how they respond!"
+        }
+      },
+      "tool_1_title": "SEE IT",
+      "tool_1_text": "Look for anything your teen does that is helpful or good, and praise them for it. They may not show it, but you will see them doing that good thing again. It will also reassure them that you notice and care.",
+      "tool_2_title": "SAY IT",
+      "tool_2_text": "Be enthusiastic – really mean it when you say it!",
+      "tool_3_title": "REPEAT IT",
+      "tool_3_text": "Try to find something to thank them for every day. Even something really small.",
+      "tool_4_title": "",
+      "bottom_text": "You can also praise other adults in your household, too. Notice how they respond!"
+    },
+    {
+      "id": "w_instruct",
+      "title": "How to give positive instructions",
+      "_translations": {
+        "title": {},
+        "tool_1_title": {},
+        "tool_1_text": {},
+        "tool_2_title": {},
+        "tool_2_text": {},
+        "tool_3_title": {},
+        "tool_3_text": {},
+        "tool_4_title": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "How to give positive instructions"
+        },
+        "tool_1_title": {
+          "eng": "GET REAL"
+        },
+        "tool_1_text": {
+          "eng": "Can your teen actually do what you are about to ask? It may be impossible for them to read quietly all day, but half an hour when you really need it is realistic."
+        },
+        "tool_2_title": {
+          "eng": "GET POSITIVE"
+        },
+        "tool_2_text": {
+          "eng": "Smile, look them in the eye, and use positive words. Praise them as soon as they start to do what you ask!"
+        },
+        "tool_3_title": {
+          "eng": "GET CLEAR"
+        },
+        "tool_3_text": {
+          "eng": "Often we know what we want in our head, but we don’t say it clearly enough. Say exactly what you want your teen to do. Try ‘please come home by 7pm’ instead of ‘come home in time’."
+        },
+        "tool_4_title": {
+          "eng": ""
+        }
+      },
+      "tool_1_title": "GET REAL",
+      "tool_1_text": "Can your teen actually do what you are about to ask? It may be impossible for them to read quietly all day, but half an hour when you really need it is realistic.",
+      "tool_2_title": "GET POSITIVE",
+      "tool_2_text": "Smile, look them in the eye, and use positive words. Praise them as soon as they start to do what you ask!",
+      "tool_3_title": "GET CLEAR",
+      "tool_3_text": "Often we know what we want in our head, but we don’t say it clearly enough. Say exactly what you want your teen to do. Try ‘please come home by 7pm’ instead of ‘come home in time’.",
+      "tool_4_title": ""
+    },
+    {
+      "id": "w_stress",
+      "title": "How to manage stress",
+      "_translations": {
+        "title": {},
+        "tool_1_title": {},
+        "tool_1_text": {},
+        "tool_2_title": {},
+        "tool_2_text": {},
+        "tool_3_title": {},
+        "tool_3_text": {},
+        "tool_4_title": {},
+        "tool_4_text": {},
+        "bottom_text": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "How to manage stress"
+        },
+        "tool_1_title": {
+          "eng": "BREATHE"
+        },
+        "tool_1_text": {
+          "eng": "Breathe. Slowly. Pause. \n\nBefore you say anything, slowly breathe in and out five times. It will calm you, and give you a chance to think."
+        },
+        "tool_2_title": {
+          "eng": "SHARE"
+        },
+        "tool_2_text": {
+          "eng": "Share how you feel.\n\nThis is hard. Many of us were told not to cry, or show our feelings to our children. But take a deep breath and calmly tell them how you feel. They will understand better, and also learn from you how to deal with stress."
+        },
+        "tool_3_title": {
+          "eng": "SHOW"
+        },
+        "tool_3_text": {
+          "eng": "Show them you care.\n\nThis is also hard! Stress makes us focus on ourselves. But our teens need our support. Ask them how they feel. Listen to them and comfort them. Try a hug or say \"I understand\". It can change everything."
+        },
+        "tool_4_title": {
+          "eng": "SEEK"
+        },
+        "tool_4_text": {
+          "eng": "Seek the positive.\n\nCan you and your teen think about ideas that might help? Can you do something positive together to take your mind off the stress?"
+        },
+        "bottom_text": {
+          "eng": "If all else fails, breathe. You can do this."
+        }
+      },
+      "tool_1_title": "BREATHE",
+      "tool_1_text": "Breathe. Slowly. Pause. \n\nBefore you say anything, slowly breathe in and out five times. It will calm you, and give you a chance to think.",
+      "tool_2_title": "SHARE",
+      "tool_2_text": "Share how you feel.\n\nThis is hard. Many of us were told not to cry, or show our feelings to our children. But take a deep breath and calmly tell them how you feel. They will understand better, and also learn from you how to deal with stress.",
+      "tool_3_title": "SHOW",
+      "tool_3_text": "Show them you care.\n\nThis is also hard! Stress makes us focus on ourselves. But our teens need our support. Ask them how they feel. Listen to them and comfort them. Try a hug or say \"I understand\". It can change everything.",
+      "tool_4_title": "SEEK",
+      "tool_4_text": "Seek the positive.\n\nCan you and your teen think about ideas that might help? Can you do something positive together to take your mind off the stress?",
+      "bottom_text": "If all else fails, breathe. You can do this."
+    },
+    {
+      "id": "w_solve",
+      "tool_1_image_asset": "plh_images/workshops/w_solve/tools/tool_1.svg",
+      "tool_2_image_asset": "plh_images/workshops/w_solve/tools/tool_2.svg",
+      "tool_3_image_asset": "plh_images/workshops/w_solve/tools/tool_3.svg",
+      "tool_4_image_asset": "plh_images/workshops/w_solve/tools/tool_4.svg",
+      "title": "How to solve problems",
+      "_translations": {
+        "title": {},
+        "top_text": {},
+        "tool_1_title": {},
+        "tool_1_text": {},
+        "tool_2_title": {},
+        "tool_2_text": {},
+        "tool_3_title": {},
+        "tool_3_text": {},
+        "tool_4_title": {},
+        "tool_4_text": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "How to solve problems"
+        },
+        "top_text": {
+          "eng": "Take a few deep breaths to calm down, and"
+        },
+        "tool_1_title": {
+          "eng": "KNOW IT"
+        },
+        "tool_1_text": {
+          "eng": "Identify the problem."
+        },
+        "tool_2_title": {
+          "eng": "SOLVE IT"
+        },
+        "tool_2_text": {
+          "eng": "Think of possible solutions and what would happen if we used them."
+        },
+        "tool_3_title": {
+          "eng": "TRY IT"
+        },
+        "tool_3_text": {
+          "eng": "Choose a solution and try it out."
+        },
+        "tool_4_title": {
+          "eng": "TEST IT"
+        },
+        "tool_4_text": {
+          "eng": "Did it work? Great! If it did not work, then try another solution."
+        }
+      },
+      "top_text": "Take a few deep breaths to calm down, and",
+      "tool_1_title": "KNOW IT",
+      "tool_1_text": "Identify the problem.",
+      "tool_2_title": "SOLVE IT",
+      "tool_2_text": "Think of possible solutions and what would happen if we used them.",
+      "tool_3_title": "TRY IT",
+      "tool_3_text": "Choose a solution and try it out.",
+      "tool_4_title": "TEST IT",
+      "tool_4_text": "Did it work? Great! If it did not work, then try another solution."
+    },
+    {
+      "id": "w_money",
+      "tool_1_button_go_to_template": "w_money_learn_2_temp",
+      "tool_2_button_set_field_name": "w_money_path",
+      "tool_2_button_set_field_value": "family",
+      "tool_2_button_go_to_template": "w_money_learn_3_temp",
+      "tool_3_button_set_field_name": "w_money_path",
+      "tool_3_button_set_field_value": "family",
+      "tool_3_button_go_to_template": "w_money_learn_4_temp",
+      "tool_3_button_set_field_name_1": "w_money_path",
+      "tool_3_button_set_field_value_1": "family",
+      "tool_4_button_go_to_template": "w_money_learn_5_temp",
+      "title": "How to budget & save",
+      "_translations": {
+        "title": {},
+        "tool_1_title": {},
+        "tool_1_text": {},
+        "tool_1_button_text": {},
+        "tool_2_title": {},
+        "tool_2_text": {},
+        "tool_2_button_text": {},
+        "tool_3_title": {},
+        "tool_3_text": {},
+        "tool_3_button_text": {},
+        "tool_4_title": {},
+        "tool_4_text": {},
+        "tool_4_button_text": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "How to budget & save"
+        },
+        "tool_1_title": {
+          "eng": "STEP 1: THINK"
+        },
+        "tool_1_text": {
+          "eng": "What do we spend on now?"
+        },
+        "tool_1_button_text": {
+          "eng": "Think Activity"
+        },
+        "tool_2_title": {
+          "eng": "STEP 2: CHOOSE"
+        },
+        "tool_2_text": {
+          "eng": "Talk together about needs and wants."
+        },
+        "tool_2_button_text": {
+          "eng": "Choose Activity"
+        },
+        "tool_3_title": {
+          "eng": "STEP 3: BUILD"
+        },
+        "tool_3_text": {
+          "eng": "Make your own budget."
+        },
+        "tool_3_button_text": {
+          "eng": "Build Activity"
+        },
+        "tool_4_title": {
+          "eng": "STEP 4: PLAN"
+        },
+        "tool_4_text": {
+          "eng": "Emergencies and family goals."
+        },
+        "tool_4_button_text": {
+          "eng": "Plan Activity"
+        }
+      },
+      "tool_1_title": "STEP 1: THINK",
+      "tool_1_text": "What do we spend on now?",
+      "tool_1_button_text": "Think Activity",
+      "tool_2_title": "STEP 2: CHOOSE",
+      "tool_2_text": "Talk together about needs and wants.",
+      "tool_2_button_text": "Choose Activity",
+      "tool_3_title": "STEP 3: BUILD",
+      "tool_3_text": "Make your own budget.",
+      "tool_3_button_text": "Build Activity",
+      "tool_4_title": "STEP 4: PLAN",
+      "tool_4_text": "Emergencies and family goals.",
+      "tool_4_button_text": "Plan Activity"
+    },
+    {
+      "id": "w_rules",
+      "title": "How to create rules",
+      "_translations": {
+        "title": {},
+        "top_text": {},
+        "tool_1_title": {},
+        "tool_1_text": {},
+        "tool_2_title": {},
+        "tool_2_text": {},
+        "tool_3_title": {},
+        "tool_3_text": {},
+        "tool_4_title": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "How to create rules"
+        },
+        "top_text": {
+          "eng": "Household rules help keep our teenagers safe, and understand what is expected from them. When you involve a teenager in making rules they are more likely to follow them."
+        },
+        "tool_1_title": {
+          "eng": "TEAM RULES"
+        },
+        "tool_1_text": {
+          "eng": "Household rules help keep our teenagers safe, and understand what is expected from them. When you involve a teenager in making rules they are more likely to follow them."
+        },
+        "tool_2_title": {
+          "eng": "REAL RULES"
+        },
+        "tool_2_text": {
+          "eng": "Plan rules WITH your teenager. Start with one new rule first – you can add another one later. Discuss the reasons for the rule and listen to their views."
+        },
+        "tool_3_title": {
+          "eng": "PRAISE RULES!"
+        },
+        "tool_3_text": {
+          "eng": "Praise your teen for planning a rule with you, and praise them for keeping it!"
+        },
+        "tool_4_title": {
+          "eng": ""
+        }
+      },
+      "top_text": "Household rules help keep our teenagers safe, and understand what is expected from them. When you involve a teenager in making rules they are more likely to follow them.",
+      "tool_1_title": "TEAM RULES",
+      "tool_1_text": "Household rules help keep our teenagers safe, and understand what is expected from them. When you involve a teenager in making rules they are more likely to follow them.",
+      "tool_2_title": "REAL RULES",
+      "tool_2_text": "Plan rules WITH your teenager. Start with one new rule first – you can add another one later. Discuss the reasons for the rule and listen to their views.",
+      "tool_3_title": "PRAISE RULES!",
+      "tool_3_text": "Praise your teen for planning a rule with you, and praise them for keeping it!",
+      "tool_4_title": ""
+    },
+    {
+      "id": "w_consequence",
+      "title": "How to give calm consequences",
+      "_translations": {
+        "title": {},
+        "top_text": {},
+        "tool_1_title": {},
+        "tool_1_text": {},
+        "tool_2_title": {},
+        "tool_2_text": {},
+        "tool_3_title": {},
+        "tool_3_text": {},
+        "tool_4_title": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "How to give calm consequences"
+        },
+        "top_text": {
+          "eng": "How you introduce calm consequences is important. Remember, when you involve your teen, things usually go better!"
+        },
+        "tool_1_title": {
+          "eng": "EXPLAIN"
+        },
+        "tool_1_text": {
+          "eng": "Check you are both calm. Take a few breaths. Explain to your teen why you are concerned about their behaviour.\n\nExplain the reasons why the rule mattered. You can share your feelings – it is okay to say you are disappointed."
+        },
+        "tool_2_title": {
+          "eng": "AGREE"
+        },
+        "tool_2_text": {
+          "eng": "Plan consequences with your teen for following and not following the rule.\n\nAsk for their ideas. Talk until you agree on something realistic.\n\nMake a consequence for NOT following the rule and a privilege when they DO follow the rule."
+        },
+        "tool_3_title": {
+          "eng": "ACT"
+        },
+        "tool_3_text": {
+          "eng": "**When your teen follows the rule, give praise and privileges!**\nThey will feel respected and valued. Remember: The more we praise them, the more they will show that good behaviour!\n\n**When your teen does not follow the rule, follow through with the consequence.**\nWhen your teen breaks the rule, calmly give the consequence. This should be FAIR (not too harsh), IMMEDIATE (do it straight away), CONSISTENT (same every time)."
+        },
+        "tool_4_title": {
+          "eng": ""
+        }
+      },
+      "top_text": "How you introduce calm consequences is important. Remember, when you involve your teen, things usually go better!",
+      "tool_1_title": "EXPLAIN",
+      "tool_1_text": "Check you are both calm. Take a few breaths. Explain to your teen why you are concerned about their behaviour.\n\nExplain the reasons why the rule mattered. You can share your feelings – it is okay to say you are disappointed.",
+      "tool_2_title": "AGREE",
+      "tool_2_text": "Plan consequences with your teen for following and not following the rule.\n\nAsk for their ideas. Talk until you agree on something realistic.\n\nMake a consequence for NOT following the rule and a privilege when they DO follow the rule.",
+      "tool_3_title": "ACT",
+      "tool_3_text": "**When your teen follows the rule, give praise and privileges!**\nThey will feel respected and valued. Remember: The more we praise them, the more they will show that good behaviour!\n\n**When your teen does not follow the rule, follow through with the consequence.**\nWhen your teen breaks the rule, calmly give the consequence. This should be FAIR (not too harsh), IMMEDIATE (do it straight away), CONSISTENT (same every time).",
+      "tool_4_title": ""
+    },
+    {
+      "id": "w_safe",
+      "tool_1_button_go_to_template": "w_safe_learn_individual_temp",
+      "tool_2_button_go_to_template": "w_rules_read_2",
+      "tool_3_button_go_to_template": "w_stress_read_3",
+      "title": "How to keep your teen safe",
+      "_translations": {
+        "title": {},
+        "tool_1_title": {},
+        "tool_1_text": {},
+        "tool_1_button_text": {},
+        "tool_2_title": {},
+        "tool_2_text": {},
+        "tool_2_button_text": {},
+        "tool_3_title": {},
+        "tool_3_text": {},
+        "tool_3_button_text": {},
+        "tool_4_title": {},
+        "bottom_text": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "How to keep your teen safe"
+        },
+        "tool_1_title": {
+          "eng": "MAPS"
+        },
+        "tool_1_text": {
+          "eng": "Make maps with your teen of safe and unsafe areas in your community and online. Talk about how to keep their information, photos and videos private online. Talk about how once something goes online, it stays there forever. They might know an example from their friends."
+        },
+        "tool_1_button_text": {
+          "eng": "Safety Plan Activity"
+        },
+        "tool_2_title": {
+          "eng": "RULES"
+        },
+        "tool_2_text": {
+          "eng": "Make rules with your teen about how they can stay safe in your community (especially in risky areas that cannot be avoided) and how they can safely use the apps and websites that they like. \n\nRemember the story about Online Safety? See it again here."
+        },
+        "tool_2_button_text": {
+          "eng": "Online Safety Story"
+        },
+        "tool_3_title": {
+          "eng": "@GLOBAL.SAFETY_WORD"
+        },
+        "tool_3_text": {
+          "eng": "Agree on a @global.safety_word. If something happens that makes your teen upset, uncomfortable or scared, they can say the @global.safety_word  and you will help them without getting angry or punishing them, even if they were doing something wrong. \n\nRemember the story about the @global.safety_word? See it again here."
+        },
+        "tool_3_button_text": {
+          "eng": "@global.safety_word Story"
+        },
+        "tool_4_title": {
+          "eng": ""
+        },
+        "bottom_text": {
+          "eng": "Digital parenting is just like parenting in the real world. You have taken a BIG STEP to keeping your teen safe in the community AND online. Good for you!"
+        }
+      },
+      "tool_1_title": "MAPS",
+      "tool_1_text": "Make maps with your teen of safe and unsafe areas in your community and online. Talk about how to keep their information, photos and videos private online. Talk about how once something goes online, it stays there forever. They might know an example from their friends.",
+      "tool_1_button_text": "Safety Plan Activity",
+      "tool_2_title": "RULES",
+      "tool_2_text": "Make rules with your teen about how they can stay safe in your community (especially in risky areas that cannot be avoided) and how they can safely use the apps and websites that they like. \n\nRemember the story about Online Safety? See it again here.",
+      "tool_2_button_text": "Online Safety Story",
+      "tool_3_title": "@GLOBAL.SAFETY_WORD",
+      "tool_3_text": "Agree on a @global.safety_word. If something happens that makes your teen upset, uncomfortable or scared, they can say the @global.safety_word  and you will help them without getting angry or punishing them, even if they were doing something wrong. \n\nRemember the story about the @global.safety_word? See it again here.",
+      "tool_3_button_text": "@global.safety_word Story",
+      "tool_4_title": "",
+      "bottom_text": "Digital parenting is just like parenting in the real world. You have taken a BIG STEP to keeping your teen safe in the community AND online. Good for you!"
+    },
+    {
+      "id": "w_crisis",
+      "title": "How to deal with crisis",
+      "_translations": {
+        "title": {},
+        "top_text": {},
+        "tool_1_title": {},
+        "tool_1_text": {},
+        "tool_2_title": {},
+        "tool_2_text": {},
+        "tool_3_title": {},
+        "tool_3_text": {},
+        "tool_4_title": {},
+        "bottom_text": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "How to deal with crisis"
+        },
+        "top_text": {
+          "eng": "Crisis can make us feel angry or helpless. But this is when our teens really need us to breathe, listen and think."
+        },
+        "tool_1_title": {
+          "eng": "BREATHE"
+        },
+        "tool_1_text": {
+          "eng": "Stay calm. Ask yourself \"What does my teen need right now?\""
+        },
+        "tool_2_title": {
+          "eng": "LISTEN"
+        },
+        "tool_2_text": {
+          "eng": "Tell them you are there for them and love them."
+        },
+        "tool_3_title": {
+          "eng": "THINK"
+        },
+        "tool_3_text": {
+          "eng": "Talk with your teen. What might help the situation? You might need to make immediate plans now, and then long-term plans later."
+        },
+        "tool_4_title": {
+          "eng": ""
+        },
+        "bottom_text": {
+          "eng": "You can be proud of yourself for exploring ways to get help!"
+        }
+      },
+      "top_text": "Crisis can make us feel angry or helpless. But this is when our teens really need us to breathe, listen and think.",
+      "tool_1_title": "BREATHE",
+      "tool_1_text": "Stay calm. Ask yourself \"What does my teen need right now?\"",
+      "tool_2_title": "LISTEN",
+      "tool_2_text": "Tell them you are there for them and love them.",
+      "tool_3_title": "THINK",
+      "tool_3_text": "Talk with your teen. What might help the situation? You might need to make immediate plans now, and then long-term plans later.",
+      "tool_4_title": "",
+      "bottom_text": "You can be proud of yourself for exploring ways to get help!"
+    },
+    {
+      "id": "w_celebrate",
+      "tool_1_image_asset": "plh_images/workshops/w_celebrate/read/slide_1.svg",
+      "tool_2_image_asset": "plh_images/workshops/w_celebrate/read/slide_2.svg",
+      "tool_3_image_asset": "plh_images/workshops/w_celebrate/read/slide_3.svg",
+      "tool_4_image_asset": "plh_images/workshops/w_celebrate/read/slide_4.svg",
+      "title": "How to support each other",
+      "_translations": {
+        "title": {},
+        "tool_1_title": {},
+        "tool_1_text": {},
+        "tool_2_title": {},
+        "tool_2_text": {},
+        "tool_3_title": {},
+        "tool_3_text": {},
+        "tool_4_title": {},
+        "tool_4_text": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "How to support each other"
+        },
+        "tool_1_title": {
+          "eng": "MEET"
+        },
+        "tool_1_text": {
+          "eng": "Keep meeting regularly to give each other parenting support."
+        },
+        "tool_2_title": {
+          "eng": "CALL"
+        },
+        "tool_2_text": {
+          "eng": "Be ‘parenting buddies’ to call when you are upset or do not know what to do."
+        },
+        "tool_3_title": {
+          "eng": "TEXT"
+        },
+        "tool_3_text": {
+          "eng": "Text each other every week to share what you have done well."
+        },
+        "tool_4_title": {
+          "eng": "SHARE"
+        },
+        "tool_4_text": {
+          "eng": "Share @global.parent_app and help other families start their journey."
+        }
+      },
+      "tool_1_title": "MEET",
+      "tool_1_text": "Keep meeting regularly to give each other parenting support.",
+      "tool_2_title": "CALL",
+      "tool_2_text": "Be ‘parenting buddies’ to call when you are upset or do not know what to do.",
+      "tool_3_title": "TEXT",
+      "tool_3_text": "Text each other every week to share what you have done well.",
+      "tool_4_title": "SHARE",
+      "tool_4_text": "Share @global.parent_app and help other families start their journey."
+    },
+    {
+      "id": "w_srh",
+      "title": "How to talk about sensitive topics",
+      "_translations": {
+        "title": {},
+        "top_text": {},
+        "tool_1_title": {},
+        "tool_1_text": {},
+        "tool_2_title": {},
+        "tool_2_text": {},
+        "tool_3_title": {},
+        "tool_3_text": {},
+        "tool_4_title": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "How to talk about sensitive topics"
+        },
+        "top_text": {
+          "eng": "Discussing body changes and intimate relationships can be uncomfortable, but it is so important in order to keep your teen happy, healthy and safe."
+        },
+        "tool_1_title": {
+          "eng": "BUILD"
+        },
+        "tool_1_text": {
+          "eng": "Build a strong relationship with your teen by spending time with them and showing them you trust them. Create a safe, encouraging space, and avoid judging them.\n\nThat will make your teen share their questions and worries with you, when they need advice or are in a potentially dangerous situation."
+        },
+        "tool_2_title": {
+          "eng": "START"
+        },
+        "tool_2_text": {
+          "eng": "Your teen may feel scared, so as parents we need to start the conversation on body changes and intimate relationships.\n\nStart young (before 9 years) by answering their questions in a simple and honest way. That builds your and your child’s confidence.\n\nIt is okay to feel uncomfortable. Be open, use the correct words, and get more information for yourself if you do not have all the answers."
+        },
+        "tool_3_title": {
+          "eng": "GUIDE"
+        },
+        "tool_3_text": {
+          "eng": "Your teen will get information about sex from many different sources. When they feel safe and comfortable with you, you can guide them and build their ability to find good information and solutions now and in the future.\n\nHelp them think about the consequences of behaviours (without shame or blame). Make sure they understand that they should never feel pressured (or pressure someone else) into any sexual activity or relationship.\n\nGet help or information for yourself from other adults or medical professionals."
+        },
+        "tool_4_title": {
+          "eng": ""
+        }
+      },
+      "top_text": "Discussing body changes and intimate relationships can be uncomfortable, but it is so important in order to keep your teen happy, healthy and safe.",
+      "tool_1_title": "BUILD",
+      "tool_1_text": "Build a strong relationship with your teen by spending time with them and showing them you trust them. Create a safe, encouraging space, and avoid judging them.\n\nThat will make your teen share their questions and worries with you, when they need advice or are in a potentially dangerous situation.",
+      "tool_2_title": "START",
+      "tool_2_text": "Your teen may feel scared, so as parents we need to start the conversation on body changes and intimate relationships.\n\nStart young (before 9 years) by answering their questions in a simple and honest way. That builds your and your child’s confidence.\n\nIt is okay to feel uncomfortable. Be open, use the correct words, and get more information for yourself if you do not have all the answers.",
+      "tool_3_title": "GUIDE",
+      "tool_3_text": "Your teen will get information about sex from many different sources. When they feel safe and comfortable with you, you can guide them and build their ability to find good information and solutions now and in the future.\n\nHelp them think about the consequences of behaviours (without shame or blame). Make sure they understand that they should never feel pressured (or pressure someone else) into any sexual activity or relationship.\n\nGet help or information for yourself from other adults or medical professionals.",
+      "tool_4_title": ""
+    },
+    {
+      "id": "w_svp",
+      "tool_2_button_go_to_template": "w_svp_learn_warning_signs",
+      "tool_3_button_go_to_template": "w_svp_learn_use_voice",
+      "tool_4_button_go_to_template": "w_svp_learn_use_body",
+      "title": "How to stay safe",
+      "_translations": {
+        "title": {},
+        "top_text": {},
+        "tool_1_title": {},
+        "tool_1_text": {},
+        "tool_2_title": {},
+        "tool_2_text": {},
+        "tool_2_button_text": {},
+        "tool_3_title": {},
+        "tool_3_text": {},
+        "tool_3_button_text": {},
+        "tool_4_title": {},
+        "tool_4_text": {},
+        "tool_4_button_text": {},
+        "bottom_text": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "How to stay safe"
+        },
+        "top_text": {
+          "eng": "In a dangerous situation, we may not know what to do and freeze – this is normal. These tools can help you and your teen stay safe."
+        },
+        "tool_1_title": {
+          "eng": "KNOW IT"
+        },
+        "tool_1_text": {
+          "eng": "Know the difference between healthy and unhealthy relationships. If you are attacked, know that it is never your fault. You are allowed to say and do what is needed to stay safe and get away – do not worry about what others may think.\n\nYou are worth defending. You are strong and powerful."
+        },
+        "tool_2_title": {
+          "eng": "SEE IT"
+        },
+        "tool_2_text": {
+          "eng": "When someone makes you (or someone else) feel uncomfortable with what they say or do, that is never okay! We all have the right to feel safe, especially at home.\n\nSee the warning signs and follow your feeling. When you feel attacked with words or actions, your goal is to get away."
+        },
+        "tool_2_button_text": {
+          "eng": "@data.learn.warning_signs.title"
+        },
+        "tool_3_title": {
+          "eng": "SAY IT"
+        },
+        "tool_3_text": {
+          "eng": "Your voice can stop many attacks. Yell ‘No!’, call for help, warn of consequences, name the behaviour, act crazy, pretend to go along to buy time, use humour, calm them down, or negotiate. \n\nBe clear, confident and direct. Speak using your voice, body language and eye contact."
+        },
+        "tool_3_button_text": {
+          "eng": "@data.learn.use_voice.title"
+        },
+        "tool_4_title": {
+          "eng": "DO IT"
+        },
+        "tool_4_text": {
+          "eng": "When our voice is not changing the situation, we can use our bodies.\n\nKnow the ‘weapons’ on your body and know the ‘targets’ on your attacker’s body. Use what is free on your body that you can fight with and what is open on the attacker’s body to hit."
+        },
+        "tool_4_button_text": {
+          "eng": "@data.learn.use_body.title"
+        },
+        "bottom_text": {
+          "eng": "If you as a teen or parent do get hurt by someone, remember it is never your fault. Ask someone you trust for help. \n\nAs a parent, make sure your teen knows they can tell you anything, so you can find a solution together."
+        }
+      },
+      "top_text": "In a dangerous situation, we may not know what to do and freeze – this is normal. These tools can help you and your teen stay safe.",
+      "tool_1_title": "KNOW IT",
+      "tool_1_text": "Know the difference between healthy and unhealthy relationships. If you are attacked, know that it is never your fault. You are allowed to say and do what is needed to stay safe and get away – do not worry about what others may think.\n\nYou are worth defending. You are strong and powerful.",
+      "tool_2_title": "SEE IT",
+      "tool_2_text": "When someone makes you (or someone else) feel uncomfortable with what they say or do, that is never okay! We all have the right to feel safe, especially at home.\n\nSee the warning signs and follow your feeling. When you feel attacked with words or actions, your goal is to get away.",
+      "tool_2_button_text": "@data.learn.warning_signs.title",
+      "tool_3_title": "SAY IT",
+      "tool_3_text": "Your voice can stop many attacks. Yell ‘No!’, call for help, warn of consequences, name the behaviour, act crazy, pretend to go along to buy time, use humour, calm them down, or negotiate. \n\nBe clear, confident and direct. Speak using your voice, body language and eye contact.",
+      "tool_3_button_text": "@data.learn.use_voice.title",
+      "tool_4_title": "DO IT",
+      "tool_4_text": "When our voice is not changing the situation, we can use our bodies.\n\nKnow the ‘weapons’ on your body and know the ‘targets’ on your attacker’s body. Use what is free on your body that you can fight with and what is open on the attacker’s body to hit.",
+      "tool_4_button_text": "@data.learn.use_body.title",
+      "bottom_text": "If you as a teen or parent do get hurt by someone, remember it is never your fault. Ask someone you trust for help. \n\nAs a parent, make sure your teen knows they can tell you anything, so you can find a solution together."
+    },
+    {
+      "id": "w_grief",
+      "title": "How to cope with grief",
+      "_translations": {
+        "title": {},
+        "tool_1_title": {},
+        "tool_1_text": {},
+        "tool_2_title": {},
+        "tool_2_text": {},
+        "tool_3_title": {},
+        "tool_3_text": {},
+        "tool_4_title": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "How to cope with grief"
+        },
+        "tool_1_title": {
+          "eng": "ACCEPT"
+        },
+        "tool_1_text": {
+          "eng": "Losing someone we love can affect us for weeks, months or years. You do not have to feel better quickly, and there is no right or wrong way to grieve.\n\nYour teen may feel sad, angry, not understand or not believe it, or feel unwell. They may have pains, nightmares, or problems at school. They may seem happy, but still feel sad. All of this is normal."
+        },
+        "tool_2_title": {
+          "eng": "SAY GOODBYE"
+        },
+        "tool_2_text": {
+          "eng": "Find a way to say goodbye that feels right for you and your family. Some people hold a ceremony or have a special meal to celebrate the person.\n\nAsk your teen what they would want to do to say goodbye."
+        },
+        "tool_3_title": {
+          "eng": "TALK"
+        },
+        "tool_3_text": {
+          "eng": "It can help just to talk about the person when you think about them or write down how you feel. Share your memories, the good ones and the difficult ones. \n\nChildren may feel like the person’s death was their fault or that they behaved badly. Tell them clearly that they did nothing wrong. Explain that your teen can always tell you how they feel, and encourage them by also sharing how you feel."
+        },
+        "tool_4_title": {
+          "eng": ""
+        }
+      },
+      "tool_1_title": "ACCEPT",
+      "tool_1_text": "Losing someone we love can affect us for weeks, months or years. You do not have to feel better quickly, and there is no right or wrong way to grieve.\n\nYour teen may feel sad, angry, not understand or not believe it, or feel unwell. They may have pains, nightmares, or problems at school. They may seem happy, but still feel sad. All of this is normal.",
+      "tool_2_title": "SAY GOODBYE",
+      "tool_2_text": "Find a way to say goodbye that feels right for you and your family. Some people hold a ceremony or have a special meal to celebrate the person.\n\nAsk your teen what they would want to do to say goodbye.",
+      "tool_3_title": "TALK",
+      "tool_3_text": "It can help just to talk about the person when you think about them or write down how you feel. Share your memories, the good ones and the difficult ones. \n\nChildren may feel like the person’s death was their fault or that they behaved badly. Tell them clearly that they did nothing wrong. Explain that your teen can always tell you how they feel, and encourage them by also sharing how you feel.",
+      "tool_4_title": ""
+    },
+    {
+      "id": "w_learn",
+      "title": "How to help your teen learn",
+      "_translations": {
+        "title": {},
+        "tool_1_title": {},
+        "tool_1_text": {},
+        "tool_2_title": {},
+        "tool_2_text": {},
+        "tool_3_title": {},
+        "tool_3_text": {},
+        "tool_4_title": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "How to help your teen learn"
+        },
+        "tool_1_title": {
+          "eng": "GET TOGETHER"
+        },
+        "tool_1_text": {
+          "eng": "People learn better when they learn with others. Spend time with your teen and let them learn with you. When you do activities together, you give them space to learn, to make mistakes and to ask you questions."
+        },
+        "tool_2_title": {
+          "eng": "SUPPORT"
+        },
+        "tool_2_text": {
+          "eng": "Your teen will learn from you if they know you support them. Let them try things and be patient with them. This helps them “learn how to learn”, because they feel safe with you."
+        },
+        "tool_3_title": {
+          "eng": "PRAISE"
+        },
+        "tool_3_text": {
+          "eng": "Praising your teen is a powerful way to help them try again. Teens do not get things right the first time and should learn how to try again. Praise them for trying to do things, so they can learn from their mistakes."
+        },
+        "tool_4_title": {
+          "eng": ""
+        }
+      },
+      "tool_1_title": "GET TOGETHER",
+      "tool_1_text": "People learn better when they learn with others. Spend time with your teen and let them learn with you. When you do activities together, you give them space to learn, to make mistakes and to ask you questions.",
+      "tool_2_title": "SUPPORT",
+      "tool_2_text": "Your teen will learn from you if they know you support them. Let them try things and be patient with them. This helps them “learn how to learn”, because they feel safe with you.",
+      "tool_3_title": "PRAISE",
+      "tool_3_text": "Praising your teen is a powerful way to help them try again. Teens do not get things right the first time and should learn how to try again. Praise them for trying to do things, so they can learn from their mistakes.",
+      "tool_4_title": ""
+    }
+  ],
+  "_xlsxPath": "global/data/workshop_data/workshop_data_list.xlsx"
+}

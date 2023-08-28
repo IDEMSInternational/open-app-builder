@@ -1,0 +1,167 @@
+{
+  "flow_name": "w_grief_common_task_gs",
+  "flow_subtype": "generated",
+  "flow_type": "data_list",
+  "rows": [
+    {
+      "id": "welcome_individual",
+      "individual": true,
+      "together": false,
+      "priority": 1,
+      "icon_asset": "@data.mode.welcome_individual.icon_asset",
+      "has_single_task": true,
+      "title": "How are you?",
+      "_translations": {
+        "title": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "How are you?"
+        }
+      },
+      "template": "w_grief_welcome_individual"
+    },
+    {
+      "id": "care_together",
+      "individual": false,
+      "together": true,
+      "priority": 2,
+      "has_single_task": true,
+      "title": "How are you?",
+      "_translations": {
+        "title": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "How are you?"
+        }
+      },
+      "template": "w_grief_care_together"
+    },
+    {
+      "id": "relax",
+      "individual": true,
+      "together": true,
+      "priority": 3,
+      "icon_asset": "@data.mode.relax.icon_asset",
+      "has_single_task": true,
+      "title": "@data.workshop_relax[@fields.current_workshop].activity_title",
+      "_translations": {
+        "title": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "@data.workshop_relax[@fields.current_workshop].activity_title"
+        }
+      },
+      "template": "w_grief_relax"
+    },
+    {
+      "id": "reflect_together",
+      "individual": false,
+      "together": true,
+      "priority": 4,
+      "has_single_task": true,
+      "title": "@global.home_practice_problem_solving",
+      "_translations": {
+        "title": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "@global.home_practice_problem_solving"
+        }
+      },
+      "template": "w_grief_reflect_together"
+    },
+    {
+      "id": "intro",
+      "individual": true,
+      "together": true,
+      "priority": 5,
+      "icon_asset": "@data.mode.topic_intro.icon_asset",
+      "has_single_task": true,
+      "title": "@data.topic_intro[@fields.current_workshop].title",
+      "_translations": {
+        "title": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "@data.topic_intro[@fields.current_workshop].title"
+        }
+      },
+      "template": "w_grief_intro"
+    },
+    {
+      "id": "tools_activity",
+      "individual": true,
+      "together": true,
+      "priority": 70,
+      "icon_asset": "@data.mode.tools.icon_asset",
+      "has_single_task": true,
+      "title": "@data.tools[@fields.current_workshop].title",
+      "_translations": {
+        "title": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "@data.tools[@fields.current_workshop].title"
+        }
+      },
+      "template": "w_grief_tools_activity"
+    },
+    {
+      "id": "home_practice",
+      "individual": true,
+      "together": true,
+      "priority": 80,
+      "icon_asset": "@data.mode.home_practice.icon_asset",
+      "has_single_task": true,
+      "title": "@global.home_practice",
+      "_translations": {
+        "title": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "@global.home_practice"
+        }
+      },
+      "template": "w_grief_home_practice"
+    },
+    {
+      "id": "ending",
+      "individual": true,
+      "together": true,
+      "priority": 90,
+      "icon_asset": "@data.mode.ending.icon_asset",
+      "has_single_task": true,
+      "title": "Well done!",
+      "_translations": {
+        "title": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Well done!"
+        }
+      },
+      "template": "w_grief_ending"
+    },
+    {
+      "id": "hp_review",
+      "individual": true,
+      "together": true,
+      "priority": 91,
+      "icon_asset": "@data.mode.hp_review.icon_asset",
+      "has_single_task": true,
+      "title": "@global.hp_review",
+      "_translations": {
+        "title": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "@global.hp_review"
+        }
+      },
+      "template": "w_grief_hp_review"
+    }
+  ]
+}

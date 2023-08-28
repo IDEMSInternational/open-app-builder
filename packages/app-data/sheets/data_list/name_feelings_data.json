@@ -1,0 +1,165 @@
+{
+  "flow_type": "data_list",
+  "flow_name": "name_feelings_data",
+  "status": "released",
+  "data_list_name": "name_feelings",
+  "rows": [
+    {
+      "id": "happy",
+      "name": "happy",
+      "text": "Happy",
+      "_translations": {
+        "text": {}
+      },
+      "_translatedFields": {
+        "text": {
+          "eng": "Happy"
+        }
+      }
+    },
+    {
+      "id": "sad",
+      "name": "sad",
+      "text": "Sad",
+      "_translations": {
+        "text": {}
+      },
+      "_translatedFields": {
+        "text": {
+          "eng": "Sad"
+        }
+      }
+    },
+    {
+      "id": "scared",
+      "name": "scared",
+      "text": "Scared",
+      "_translations": {
+        "text": {}
+      },
+      "_translatedFields": {
+        "text": {
+          "eng": "Scared"
+        }
+      }
+    },
+    {
+      "id": "loved",
+      "name": "loved",
+      "text": "Loved",
+      "_translations": {
+        "text": {}
+      },
+      "_translatedFields": {
+        "text": {
+          "eng": "Loved"
+        }
+      }
+    },
+    {
+      "id": "angry",
+      "name": "angry",
+      "text": "Angry",
+      "_translations": {
+        "text": {}
+      },
+      "_translatedFields": {
+        "text": {
+          "eng": "Angry"
+        }
+      }
+    },
+    {
+      "id": "brave",
+      "name": "brave",
+      "text": "Brave",
+      "_translations": {
+        "text": {}
+      },
+      "_translatedFields": {
+        "text": {
+          "eng": "Brave"
+        }
+      }
+    },
+    {
+      "id": "lost",
+      "name": "lost",
+      "text": "Lost",
+      "_translations": {
+        "text": {}
+      },
+      "_translatedFields": {
+        "text": {
+          "eng": "Lost"
+        }
+      }
+    },
+    {
+      "id": "hopeful",
+      "name": "hopeful",
+      "text": "Hopeful",
+      "_translations": {
+        "text": {}
+      },
+      "_translatedFields": {
+        "text": {
+          "eng": "Hopeful"
+        }
+      }
+    },
+    {
+      "id": "shocked",
+      "name": "shocked",
+      "text": "Shocked",
+      "_translations": {
+        "text": {}
+      },
+      "_translatedFields": {
+        "text": {
+          "eng": "Shocked"
+        }
+      }
+    },
+    {
+      "id": "guilty",
+      "name": "guilty",
+      "text": "Guilty",
+      "_translations": {
+        "text": {}
+      },
+      "_translatedFields": {
+        "text": {
+          "eng": "Guilty"
+        }
+      }
+    },
+    {
+      "id": "numb",
+      "name": "numb",
+      "text": "Numb",
+      "_translations": {
+        "text": {}
+      },
+      "_translatedFields": {
+        "text": {
+          "eng": "Numb"
+        }
+      }
+    },
+    {
+      "id": "lonely",
+      "name": "lonely",
+      "text": "Lonely",
+      "_translations": {
+        "text": {}
+      },
+      "_translatedFields": {
+        "text": {
+          "eng": "Lonely"
+        }
+      }
+    }
+  ],
+  "_xlsxPath": "global/top_templates/workshop_templates/workshop_grief.xlsx"
+}

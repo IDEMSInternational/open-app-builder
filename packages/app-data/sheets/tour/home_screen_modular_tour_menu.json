@@ -1,0 +1,122 @@
+{
+  "flow_type": "tour",
+  "flow_name": "home_screen_modular_tour_menu",
+  "status": "released",
+  "rows": [
+    {
+      "type": "step",
+      "message_text": "This big button takes you to the @global.workshop you are currently exploring. Tap it to find:",
+      "_translations": {
+        "message_text": {
+          "tz_sw": true
+        }
+      },
+      "template_component_name": "dg_highlighted_module",
+      "route": "template/home_screen"
+    },
+    {
+      "type": "step",
+      "message_text": "A set of activities to help you build a parenting skill.",
+      "_translations": {
+        "message_text": {
+          "tz_sw": true
+        }
+      },
+      "template_component_name": "dg_full_module",
+      "route": "template/module_overview"
+    },
+    {
+      "type": "step",
+      "message_text": "Quick reminders on how to successfully use a parenting skill.",
+      "_translations": {
+        "message_text": {
+          "tz_sw": true
+        }
+      },
+      "template_component_name": "dg_card_tools",
+      "route": "template/module_overview"
+    },
+    {
+      "type": "step",
+      "message_text": "One easy idea on how you can apply a new skill with your family.",
+      "_translations": {
+        "message_text": {
+          "tz_sw": true
+        }
+      },
+      "template_component_name": "dg_card_hp",
+      "route": "template/module_overview"
+    },
+    {
+      "type": "step",
+      "message_text": "Here you can select any of the other @global.workshops in @global.parent_app. Each @global.workshop gives you one important parenting skill. Swipe to see the next @global.workshops.",
+      "_translations": {
+        "message_text": {
+          "tz_sw": true
+        }
+      },
+      "template_component_name": "dg_all_modules",
+      "route": "template/home_screen"
+    },
+    {
+      "type": "step",
+      "message_text": "You can explore any @global.workshop whenever you want. To see the biggest change in your family, complete all the activities in one @global.workshop before moving to the next one.",
+      "_translations": {
+        "message_text": {
+          "tz_sw": true
+        }
+      },
+      "template_component_name": "dg_all_modules",
+      "route": "template/home_screen"
+    },
+    {
+      "type": "step",
+      "title": "Things to do",
+      "_translations": {
+        "title": {
+          "tz_sw": true
+        },
+        "message_text": {
+          "tz_sw": true
+        }
+      },
+      "message_text": "Tap here whenever you enter @global.parent_app! You will find 3 short activities that you can do next to help yourself and your family.",
+      "template_component_name": "dg_drawer",
+      "route": "template/home_screen"
+    },
+    {
+      "type": "step",
+      "message_text": "The HOUSE button brings you back to the home screen at any time.",
+      "_translations": {
+        "message_text": {
+          "tz_sw": true
+        }
+      },
+      "element": "plh-navigation-bar",
+      "route": "template/home_screen"
+    },
+    {
+      "type": "step",
+      "message_text": "The STAR button takes you to the @global.parent_points. Each new parenting skill comes with a @global.parent_point. @global.parent_points help you celebrate your achievements.",
+      "_translations": {
+        "message_text": {
+          "tz_sw": true
+        }
+      },
+      "element": "plh-navigation-bar",
+      "route": "template/parent_points"
+    },
+    {
+      "type": "step",
+      "message_text": "Tap the BOOK button to go to the @global.parent_centre. Check out the extra relaxation activities and ideas for fun things to do with your teen! You can also find contact details for support services in your area and for technical support with @global.parent_app.",
+      "_translations": {
+        "message_text": {
+          "tz_sw": true
+        }
+      },
+      "element": "plh-navigation-bar",
+      "route": "template/parent_centre"
+    }
+  ],
+  "_xlsxPath": "global_modular/tours/home_screen_modular_tour.xlsx"
+}

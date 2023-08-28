@@ -1,0 +1,41 @@
+{
+  "flow_type": "generator",
+  "flow_name": "gen_intro_text",
+  "status": "released",
+  "parameter_list": {
+    "input_data_list": "workshop_data",
+    "output_flow_name": "{@gen.id}_intro_text",
+    "output_flow_type": "template",
+    "output_flow_subtype": "generated"
+  },
+  "rows": [
+    {
+      "name": "workshop_id",
+      "value": "@gen.id"
+    },
+    {
+      "name": "topic_intro_concat",
+      "value": "topic_intro.@local.workshop_id"
+    },
+    {
+      "name": "topic_intro_data",
+      "value": "@data.@local.topic_intro_concat"
+    },
+    {
+      "type": "template",
+      "name": "suggestions",
+      "value": "suggestions",
+      "rows": [
+        {
+          "name": "description_text",
+          "value": "@local.topic_intro_data.script"
+        },
+        {
+          "name": "list_text",
+          "hidden": true
+        }
+      ]
+    }
+  ],
+  "_xlsxPath": "global/top_templates/workshop_templates/gen_workshop_act.xlsx"
+}

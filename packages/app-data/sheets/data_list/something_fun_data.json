@@ -1,0 +1,588 @@
+{
+  "flow_type": "data_list",
+  "flow_name": "something_fun_data",
+  "data_list_name": "something_fun",
+  "status": "released",
+  "rows": [
+    {
+      "id": "reflect_positive",
+      "workshop": "praise",
+      "type": "chat_together",
+      "activity_template": "activity_reflect_positive",
+      "favourite_field": "activity_reflect_positive_favourite",
+      "spend_time": true,
+      "completed_field": "reflect_positive_completed",
+      "completed": "@fields.reflect_positive_completed",
+      "title": "Reflect on the positive",
+      "_translations": {
+        "title": {},
+        "activity_text": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Reflect on the positive"
+        },
+        "activity_text": {
+          "eng": "At the end of the day, take a minute to: \n\n* Talk to your teen about one fun thing they did. \n* Praise yourself for one thing you did well today. \n* You are a star!"
+        }
+      },
+      "activity_text": "At the end of the day, take a minute to: \n\n* Talk to your teen about one fun thing they did. \n* Praise yourself for one thing you did well today. \n* You are a star!"
+    },
+    {
+      "id": "check_in_chat",
+      "workshop": "stress",
+      "type": "chat_together",
+      "activity_template": "activity_check_in_chat",
+      "favourite_field": "activity_check_in_chat_favourite",
+      "spend_time": true,
+      "completed_field": "check_in_chat_completed",
+      "completed": "@fields.check_in_chat_completed",
+      "title": "Check-in chat",
+      "_translations": {
+        "title": {},
+        "activity_text": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Check-in chat"
+        },
+        "activity_text": {
+          "eng": "* Ask each other, “What made you happy today?”\n* Ask each other, “What difficulty did you face today?”\n* Ask each other, “How can I help you?”\n* Try to do this together every day; it could be when you are eating dinner together or before you go to bed."
+        }
+      },
+      "activity_text": "* Ask each other, “What made you happy today?”\n* Ask each other, “What difficulty did you face today?”\n* Ask each other, “How can I help you?”\n* Try to do this together every day; it could be when you are eating dinner together or before you go to bed."
+    },
+    {
+      "id": "dream_travel",
+      "workshop": "money",
+      "type": "chat_together",
+      "activity_template": "activity_dream_travel",
+      "favourite_field": "activity_dream_travel_favourite",
+      "spend_time": true,
+      "completed_field": "dream_travel_completed",
+      "completed": "@fields.dream_travel_completed",
+      "title": "Dream travel",
+      "_translations": {
+        "title": {},
+        "activity_text": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Dream travel"
+        },
+        "activity_text": {
+          "eng": "* You can’t always travel, but you can always dream! Ask your teen these questions:\n* Where would you want to travel to? How long would you be away? What would you pack? What would you do on your trip? What would you see?\n* Look at a map together or draw one.\n* Choose a country that your teen has never heard of and learn more about the country."
+        }
+      },
+      "activity_text": "* You can’t always travel, but you can always dream! Ask your teen these questions:\n* Where would you want to travel to? How long would you be away? What would you pack? What would you do on your trip? What would you see?\n* Look at a map together or draw one.\n* Choose a country that your teen has never heard of and learn more about the country."
+    },
+    {
+      "id": "famous_party",
+      "workshop": "rules",
+      "type": "chat_together",
+      "activity_template": "activity_famous_party",
+      "favourite_field": "activity_famous_party_favourite",
+      "spend_time": true,
+      "completed_field": "famous_party_completed",
+      "completed": "@fields.famous_party_completed",
+      "title": "Famous party",
+      "_translations": {
+        "title": {},
+        "activity_text": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Famous party"
+        },
+        "activity_text": {
+          "eng": "You and your teenager can plan a guestlist of the famous people you’d most like to invite to your party. You can each have five people – they can be from the past or from the present time. Who would you invite? And would your guests get on well together?"
+        }
+      },
+      "activity_text": "You and your teenager can plan a guestlist of the famous people you’d most like to invite to your party. You can each have five people – they can be from the past or from the present time. Who would you invite? And would your guests get on well together?"
+    },
+    {
+      "id": "two_truths",
+      "workshop": "consequence",
+      "type": "chat_together",
+      "activity_template": "activity_two_truths",
+      "favourite_field": "activity_two_truths_favourite",
+      "spend_time": true,
+      "completed_field": "two_truths_completed",
+      "completed": "@fields.two_truths_completed",
+      "title": "Two truths, one lie",
+      "_translations": {
+        "title": {},
+        "activity_text": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Two truths, one lie"
+        },
+        "activity_text": {
+          "eng": "* Think of three statements about yourself. Two must be true and one must be a lie.\n* It might help to think of wishes, dreams, experiences at school, likes or dislikes. For example: I hate bananas, my favourite subject is science, and I really wish I could sing. \n* Say them to your teenager and ask them to guess which one is a lie. \n* Did they guess correctly? Was it a surprise?\n* Now ask them to do the same. Did you learn something new about each other?"
+        }
+      },
+      "activity_text": "* Think of three statements about yourself. Two must be true and one must be a lie.\n* It might help to think of wishes, dreams, experiences at school, likes or dislikes. For example: I hate bananas, my favourite subject is science, and I really wish I could sing. \n* Say them to your teenager and ask them to guess which one is a lie. \n* Did they guess correctly? Was it a surprise?\n* Now ask them to do the same. Did you learn something new about each other?"
+    },
+    {
+      "id": "time_machine",
+      "workshop": "safe",
+      "type": "chat_together",
+      "activity_template": "activity_time_machine",
+      "favourite_field": "activity_time_machine_favourite",
+      "spend_time": true,
+      "completed_field": "time_machine_completed",
+      "completed": "@fields.time_machine_completed",
+      "title": "Time machine",
+      "_translations": {
+        "title": {},
+        "activity_text": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Time machine"
+        },
+        "activity_text": {
+          "eng": "Tell your teenager something about when you were a teenager yourself. What things didn’t exist then? Phones with internet? What did you do for fun? What did you worry about? Don’t worry if they don’t tell you something in return – what’s important is that they listen and remember. Sometimes our teenagers forget that their parents are people too!"
+        }
+      },
+      "activity_text": "Tell your teenager something about when you were a teenager yourself. What things didn’t exist then? Phones with internet? What did you do for fun? What did you worry about? Don’t worry if they don’t tell you something in return – what’s important is that they listen and remember. Sometimes our teenagers forget that their parents are people too!"
+    },
+    {
+      "id": "superpowers",
+      "workshop": "crisis",
+      "type": "chat_together",
+      "activity_template": "activity_superpowers",
+      "favourite_field": "activity_superpowers_favourite",
+      "spend_time": true,
+      "completed_field": "superpowers_completed",
+      "completed": "@fields.superpowers_completed",
+      "title": "Superpowers",
+      "_translations": {
+        "title": {},
+        "activity_text": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Superpowers"
+        },
+        "activity_text": {
+          "eng": "* Think of a superpower. For example, going anywhere instantly, travelling in time, reading minds. \n* Ask your teen, “If you had the superpower to […], how would you use it?”\n* Encourage them to give their superhero a name and act it out. \n* Now let your teen choose a superpower for you.\n* Make sure you act out your superpower, too!"
+        }
+      },
+      "activity_text": "* Think of a superpower. For example, going anywhere instantly, travelling in time, reading minds. \n* Ask your teen, “If you had the superpower to […], how would you use it?”\n* Encourage them to give their superhero a name and act it out. \n* Now let your teen choose a superpower for you.\n* Make sure you act out your superpower, too!"
+    },
+    {
+      "id": "friendly_chat",
+      "type": "chat_together",
+      "activity_template": "activity_friendly_chat",
+      "favourite_field": "activity_friendly_chat_favourite",
+      "spend_time": true,
+      "completed_field": "friendly_chat_completed",
+      "completed": "@fields.friendly_chat_completed",
+      "title": "Just a friendly chat",
+      "_translations": {
+        "title": {},
+        "activity_text": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Just a friendly chat"
+        },
+        "activity_text": {
+          "eng": "Have a conversation with your teen about something they like.\n\nIt can be about anything they choose to talk about: sports, friends, music, celebrities…\n\nTry to listen to your teen and give them space to talk."
+        }
+      },
+      "activity_text": "Have a conversation with your teen about something they like.\n\nIt can be about anything they choose to talk about: sports, friends, music, celebrities…\n\nTry to listen to your teen and give them space to talk."
+    },
+    {
+      "id": "interrupter",
+      "type": "chat_together",
+      "activity_template": "activity_interrupter",
+      "favourite_field": "activity_interrupter_favourite",
+      "spend_time": true,
+      "completed_field": "interrupter_completed",
+      "completed": "@fields.interrupter_completed",
+      "title": "The interrupter",
+      "_translations": {
+        "title": {},
+        "activity_text": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "The interrupter"
+        },
+        "activity_text": {
+          "eng": "* Choose a storyteller to start making up a story.\n* Story listeners can interrupt with a word at any time.\n* The storyteller needs to fit that word in their story.\n* When the story is finished, try with a different storyteller!"
+        }
+      },
+      "activity_text": "* Choose a storyteller to start making up a story.\n* Story listeners can interrupt with a word at any time.\n* The storyteller needs to fit that word in their story.\n* When the story is finished, try with a different storyteller!"
+    },
+    {
+      "id": "three_options",
+      "type": "chat_together",
+      "activity_template": "activity_three_options",
+      "favourite_field": "activity_three_options_favourite",
+      "spend_time": true,
+      "completed_field": "three_options_completed",
+      "completed": "@fields.three_options_completed",
+      "title": "Three options",
+      "_translations": {
+        "title": {},
+        "activity_text": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Three options"
+        },
+        "activity_text": {
+          "eng": "* Think of three different situations. For example, driving a car, sailing a boat or flying a plane.\n* Say them to your teen and ask, “Which would you prefer?”\n* Ask them why?\n* Now think of three more situations or ask your teen to do it for you."
+        }
+      },
+      "activity_text": "* Think of three different situations. For example, driving a car, sailing a boat or flying a plane.\n* Say them to your teen and ask, “Which would you prefer?”\n* Ask them why?\n* Now think of three more situations or ask your teen to do it for you."
+    },
+    {
+      "id": "yes_no_maybe",
+      "type": "chat_together",
+      "activity_template": "activity_yes_no_maybe",
+      "favourite_field": "activity_yes_no_maybe_favourite",
+      "spend_time": true,
+      "completed_field": "yes_no_maybe_completed",
+      "completed": "@fields.yes_no_maybe_completed",
+      "title": "Yes, no or maybe",
+      "_translations": {
+        "title": {},
+        "activity_text": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Yes, no or maybe"
+        },
+        "activity_text": {
+          "eng": "* Ask each other questions. They can be any questions about things you like or what you did today.\n* The only rule is that you can’t answer “yes”, “no” or “maybe”.\n* How long can you last? How creative can you get with your answers?\n* Swap over and play again!"
+        }
+      },
+      "activity_text": "* Ask each other questions. They can be any questions about things you like or what you did today.\n* The only rule is that you can’t answer “yes”, “no” or “maybe”.\n* How long can you last? How creative can you get with your answers?\n* Swap over and play again!"
+    },
+    {
+      "id": "memory_game",
+      "type": "chat_together",
+      "activity_template": "activity_memory_game",
+      "favourite_field": "activity_memory_game_favourite",
+      "spend_time": true,
+      "completed_field": "memory_game_completed",
+      "completed": "@fields.memory_game_completed",
+      "title": "Memory game – \"On Saturday...\"",
+      "_translations": {
+        "title": {},
+        "activity_text": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Memory game – \"On Saturday...\""
+        },
+        "activity_text": {
+          "eng": "* First person says, “On Saturday, I am going to… (e.g., go to the park)”.\n* Second person adds to first person, “On Saturday, I am going to the park and… (e.g., visit my best friend).\n* Each person adds to the previous, trying to think of all of the fun things to do on Saturday."
+        }
+      },
+      "activity_text": "* First person says, “On Saturday, I am going to… (e.g., go to the park)”.\n* Second person adds to first person, “On Saturday, I am going to the park and… (e.g., visit my best friend).\n* Each person adds to the previous, trying to think of all of the fun things to do on Saturday."
+    },
+    {
+      "id": "invent_story",
+      "type": "chat_together",
+      "activity_template": "activity_invent_story",
+      "favourite_field": "activity_invent_story_favourite",
+      "spend_time": true,
+      "completed_field": "invent_story_completed",
+      "completed": "@fields.invent_story_completed",
+      "title": "Make up a story",
+      "_translations": {
+        "title": {},
+        "activity_text": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Make up a story"
+        },
+        "activity_text": {
+          "eng": "* Start the story with “Once upon a time there was a…”\n* Let your teen make up the next sentence.\n* Then you make up a sentence.\n* Take turns until you have a wonderful new story.\n* Make sure to end the story on a positive note.\n* Ask your teen what their favourite part of the story was!"
+        }
+      },
+      "activity_text": "* Start the story with “Once upon a time there was a…”\n* Let your teen make up the next sentence.\n* Then you make up a sentence.\n* Take turns until you have a wonderful new story.\n* Make sure to end the story on a positive note.\n* Ask your teen what their favourite part of the story was!"
+    },
+    {
+      "id": "co_chef",
+      "workshop": "1on1",
+      "type": "do_together",
+      "activity_template": "activity_co_chef",
+      "favourite_field": "activity_co_chef_favourite",
+      "spend_time": true,
+      "completed_field": "co_chef_completed",
+      "completed": "@fields.co_chef_completed",
+      "title": "Co-chef",
+      "_translations": {
+        "title": {},
+        "activity_text": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Co-chef"
+        },
+        "activity_text": {
+          "eng": "* Ask your teen what kind of meal they would like to eat. \n* Prepare it together!    \n* Let them have a turn at being the head chef – they lead, and you follow their instructions. \n* You can even help them to make a budget for the ingredients! \n\nDon’t think it will work? Ask your teens what THEY would like for you and them to do together. Let them lead. Relax. Have fun."
+        }
+      },
+      "activity_text": "* Ask your teen what kind of meal they would like to eat. \n* Prepare it together!    \n* Let them have a turn at being the head chef – they lead, and you follow their instructions. \n* You can even help them to make a budget for the ingredients! \n\nDon’t think it will work? Ask your teens what THEY would like for you and them to do together. Let them lead. Relax. Have fun."
+    },
+    {
+      "id": "dance_moves",
+      "workshop": "instruct",
+      "type": "do_together",
+      "activity_template": "activity_dance_moves",
+      "favourite_field": "activity_dance_moves_favourite",
+      "spend_time": true,
+      "completed_field": "dance_moves_completed",
+      "completed": "@fields.dance_moves_completed",
+      "title": "Dance moves",
+      "_translations": {
+        "title": {},
+        "activity_text": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Dance moves"
+        },
+        "activity_text": {
+          "eng": "* Create a set of dance moves to your teen's favourite songs. \n* One person does a dance move and everyone else copies it.  \n* Everyone takes turns being the leader. \n* Perform it for the household!"
+        }
+      },
+      "activity_text": "* Create a set of dance moves to your teen's favourite songs. \n* One person does a dance move and everyone else copies it.  \n* Everyone takes turns being the leader. \n* Perform it for the household!"
+    },
+    {
+      "id": "mirror",
+      "workshop": "solve",
+      "type": "do_together",
+      "activity_template": "activity_mirror",
+      "favourite_field": "activity_mirror_favourite",
+      "spend_time": true,
+      "completed_field": "mirror_completed",
+      "completed": "@fields.mirror_completed",
+      "title": "Mirror",
+      "_translations": {
+        "title": {},
+        "activity_text": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Mirror"
+        },
+        "activity_text": {
+          "eng": "* This game can be played in pairs or with many people in a group.\n* Stand facing each other or in a circle. \n* One person leads first and everyone else copies them, trying to move exactly at the same time as the leader.\n* Make sure the leader moves slowly enough for everyone else to follow! Explore moving different body parts. Move them up in the air or close to the ground.\n* After a while, switch who is leading. Give everyone a chance to lead.\n* Try it with no leaders!"
+        }
+      },
+      "activity_text": "* This game can be played in pairs or with many people in a group.\n* Stand facing each other or in a circle. \n* One person leads first and everyone else copies them, trying to move exactly at the same time as the leader.\n* Make sure the leader moves slowly enough for everyone else to follow! Explore moving different body parts. Move them up in the air or close to the ground.\n* After a while, switch who is leading. Give everyone a chance to lead.\n* Try it with no leaders!"
+    },
+    {
+      "id": "whats_new",
+      "type": "do_together",
+      "activity_template": "activity_whats_new",
+      "favourite_field": "activity_whats_new_favourite",
+      "spend_time": true,
+      "completed_field": "whats_new_completed",
+      "completed": "@fields.whats_new_completed",
+      "title": "What's new?",
+      "_translations": {
+        "title": {},
+        "activity_text": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "What's new?"
+        },
+        "activity_text": {
+          "eng": "* Think of a new skill you could learn together with your teen. For example, keeping a ball in the air or on your foot, juggling, making soup?\n* Take turns in trying the new skill out.\n* Make sure to praise each other, and try to learn and play together!"
+        }
+      },
+      "activity_text": "* Think of a new skill you could learn together with your teen. For example, keeping a ball in the air or on your foot, juggling, making soup?\n* Take turns in trying the new skill out.\n* Make sure to praise each other, and try to learn and play together!"
+    },
+    {
+      "id": "get_active",
+      "type": "do_together",
+      "activity_template": "activity_get_active",
+      "favourite_field": "activity_get_active_favourite",
+      "spend_time": true,
+      "completed_field": "get_active_completed",
+      "completed": "@fields.get_active_completed",
+      "title": "Get active!",
+      "_translations": {
+        "title": {},
+        "activity_text": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Get active!"
+        },
+        "activity_text": {
+          "eng": "* Come up with three types of exercise together. For example, walking, jogging, soccer or dancing.\n* Pick one together and try it out. \n* If you both like it, decide how often you are going to do it. Once or twice a week? Every morning?\n* Together think of ways to make it even more fun. Can you jog to a certain point? Take turns in being the coach? Motivate each other with a small free reward?"
+        }
+      },
+      "activity_text": "* Come up with three types of exercise together. For example, walking, jogging, soccer or dancing.\n* Pick one together and try it out. \n* If you both like it, decide how often you are going to do it. Once or twice a week? Every morning?\n* Together think of ways to make it even more fun. Can you jog to a certain point? Take turns in being the coach? Motivate each other with a small free reward?"
+    },
+    {
+      "id": "name_that_tune",
+      "type": "do_together",
+      "activity_template": "activity_name_that_tune",
+      "favourite_field": "activity_name_that_tune_favourite",
+      "spend_time": true,
+      "completed_field": "name_that_tune_completed",
+      "completed": "@fields.name_that_tune_completed",
+      "title": "Name that tune",
+      "_translations": {
+        "title": {},
+        "activity_text": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Name that tune"
+        },
+        "activity_text": {
+          "eng": "* The first person gets to choose or sing a song.\n* Everyone else must guess the name of the tune (to make it harder they can guess the singer).\n* The first one to guess it right becomes the next leader."
+        }
+      },
+      "activity_text": "* The first person gets to choose or sing a song.\n* Everyone else must guess the name of the tune (to make it harder they can guess the singer).\n* The first one to guess it right becomes the next leader."
+    },
+    {
+      "id": "pass_the_snap",
+      "type": "do_together",
+      "activity_template": "activity_pass_the_snap",
+      "favourite_field": "activity_pass_the_snap_favourite",
+      "spend_time": true,
+      "completed_field": "pass_the_snap_completed",
+      "completed": "@fields.pass_the_snap_completed",
+      "title": "Pass the snap",
+      "_translations": {
+        "title": {},
+        "intro_text": {},
+        "activity_text": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Pass the snap"
+        },
+        "intro_text": {
+          "eng": "Here is a fun game you can do with your family!"
+        },
+        "activity_text": {
+          "eng": "This game is best with at least 3 people.\n* Start in a circle and pass one “snap” around the circle (or a “clap” if you cannot snap).\n* You “snap” once to throw the “snap”, and once to catch it. Look at the person you are throwing it to.  \n* The direction (up, down, straight, curved, rolling the ground) and force (hard, soft, medium) that you throw the snap should affect how the person catches it.  \n* You can bounce the “snap”, throw it in the air, and catch it a few times before passing it.  \n* When everyone gets good at this, you can start moving around the room, still passing the “snap”.  \n* Can you throw under the leg? Behind the back? Through your head? Intercept a pass? Have fun with the “snap”!"
+        }
+      },
+      "intro_text": "Here is a fun game you can do with your family!",
+      "activity_text": "This game is best with at least 3 people.\n* Start in a circle and pass one “snap” around the circle (or a “clap” if you cannot snap).\n* You “snap” once to throw the “snap”, and once to catch it. Look at the person you are throwing it to.  \n* The direction (up, down, straight, curved, rolling the ground) and force (hard, soft, medium) that you throw the snap should affect how the person catches it.  \n* You can bounce the “snap”, throw it in the air, and catch it a few times before passing it.  \n* When everyone gets good at this, you can start moving around the room, still passing the “snap”.  \n* Can you throw under the leg? Behind the back? Through your head? Intercept a pass? Have fun with the “snap”!"
+    },
+    {
+      "id": "family_workout",
+      "type": "do_together",
+      "activity_template": "activity_family_workout",
+      "favourite_field": "activity_family_workout_favourite",
+      "spend_time": true,
+      "completed_field": "family_workout_completed",
+      "completed": "@fields.family_workout_completed",
+      "title": "Family workout",
+      "_translations": {
+        "title": {},
+        "activity_text": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Family workout"
+        },
+        "activity_text": {
+          "eng": "Choose a sport or exercise to do together. Decide on a schedule. Are you going to do it every day? For how long? \n\nTry it out for a week. At the end of the week, ask yourself and your family these questions:\n* How is it going? \n* How did you feel at the start of the week? \n* How do you feel at the end of the week? \n* What can we do differently next week?"
+        }
+      },
+      "activity_text": "Choose a sport or exercise to do together. Decide on a schedule. Are you going to do it every day? For how long? \n\nTry it out for a week. At the end of the week, ask yourself and your family these questions:\n* How is it going? \n* How did you feel at the start of the week? \n* How do you feel at the end of the week? \n* What can we do differently next week?"
+    },
+    {
+      "id": "housework",
+      "has_recording": true,
+      "type": "do_together",
+      "activity_template": "activity_housework",
+      "favourite_field": "activity_housework_favourite",
+      "spend_time": true,
+      "completed_field": "housework_completed",
+      "completed": "@fields.housework_completed",
+      "title": "Make housework fun",
+      "_translations": {
+        "title": {},
+        "intro_text": {},
+        "activity_text": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Make housework fun"
+        },
+        "intro_text": {
+          "eng": "Household chores aren’t fun… or are they? You can make them into a game!"
+        },
+        "activity_text": {
+          "eng": "Take turns being the “leader”. Say the intro sentences to get everybody started. Then the “leader” gives an instruction and everyone does the activity as fast as possible:\n* Leader: “There’s a fire on the mountain!”        \n* Together: “Run, run, run!”\n* Leader: “There’s a fire on the mountain!”        \n* Together: “Run, run, run!”\n* Leader: “Touch something red.” \n* Leader: “There’s a fire on the mountain!”        \n* Together: “Run, run, run!”\n* Leader: “There’s a fire on the mountain!”        \n* Together: “Run, run, run!”\n* Leader: “Jump up and down ten times.”\n* Leader: “There’s a fire on the mountain!”        \n* Together: “Run, run, run!”\n* Leader: “There’s a fire on the mountain!”        \n* Together: “Run, run, run!”\n* Leader: “Put the shoes in the shoe rack.”"
+        }
+      },
+      "intro_text": "Household chores aren’t fun… or are they? You can make them into a game!",
+      "activity_text": "Take turns being the “leader”. Say the intro sentences to get everybody started. Then the “leader” gives an instruction and everyone does the activity as fast as possible:\n* Leader: “There’s a fire on the mountain!”        \n* Together: “Run, run, run!”\n* Leader: “There’s a fire on the mountain!”        \n* Together: “Run, run, run!”\n* Leader: “Touch something red.” \n* Leader: “There’s a fire on the mountain!”        \n* Together: “Run, run, run!”\n* Leader: “There’s a fire on the mountain!”        \n* Together: “Run, run, run!”\n* Leader: “Jump up and down ten times.”\n* Leader: “There’s a fire on the mountain!”        \n* Together: “Run, run, run!”\n* Leader: “There’s a fire on the mountain!”        \n* Together: “Run, run, run!”\n* Leader: “Put the shoes in the shoe rack.”"
+    },
+    {
+      "id": "doing_what",
+      "has_recording": true,
+      "type": "do_together",
+      "activity_template": "activity_doing_what",
+      "favourite_field": "activity_doing_what_favourite",
+      "spend_time": true,
+      "completed_field": "doing_what_completed",
+      "completed": "@fields.doing_what_completed",
+      "title": "What are you doing?",
+      "_translations": {
+        "title": {},
+        "intro_text": {},
+        "activity_text": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "What are you doing?"
+        },
+        "intro_text": {
+          "eng": "Here is a fun game you can do with your family!"
+        },
+        "activity_text": {
+          "eng": "This game is best when more than 2 people play.\n* One person pretends to be doing something – for example, combing hair or making dinner. \n* Another person asks, “What are you doing?”\n* The first person needs to say something that has nothing to do with combing hair, for example, “Tying my shoes.”  \n* The second person then starts pretending to tie their shoes until a new person asks, “What are you doing?” \n\nThe answer must always be something different than what you are actually doing!"
+        }
+      },
+      "intro_text": "Here is a fun game you can do with your family!",
+      "activity_text": "This game is best when more than 2 people play.\n* One person pretends to be doing something – for example, combing hair or making dinner. \n* Another person asks, “What are you doing?”\n* The first person needs to say something that has nothing to do with combing hair, for example, “Tying my shoes.”  \n* The second person then starts pretending to tie their shoes until a new person asks, “What are you doing?” \n\nThe answer must always be something different than what you are actually doing!"
+    },
+    {
+      "id": "crazy_chicken",
+      "type": "do_together",
+      "activity_template": "activity_crazy_chicken",
+      "favourite_field": "activity_crazy_chicken_favourite",
+      "spend_time": true,
+      "completed_field": "crazy_chicken_completed",
+      "completed": "@fields.crazy_chicken_completed",
+      "title": "Crazy chicken",
+      "_translations": {
+        "title": {},
+        "activity_text": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Crazy chicken"
+        },
+        "activity_text": {
+          "eng": "* Shake your left hands in the air 8 times while counting to 8.\n* Do it as fast and loud as you can.\n* Repeat with your other hand. Repeat with both feet.\n* Do it 7 times, then 6 times and continue until you get to 1.\n* Everyone calls out “Crazy chicken” and does their best crazy chicken dance!"
+        }
+      },
+      "activity_text": "* Shake your left hands in the air 8 times while counting to 8.\n* Do it as fast and loud as you can.\n* Repeat with your other hand. Repeat with both feet.\n* Do it 7 times, then 6 times and continue until you get to 1.\n* Everyone calls out “Crazy chicken” and does their best crazy chicken dance!"
+    }
+  ],
+  "_xlsxPath": "global/data/activity_data_list.xlsx"
+}

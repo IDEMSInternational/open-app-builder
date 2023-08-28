@@ -1,0 +1,183 @@
+{
+  "flow_type": "template",
+  "flow_name": "tool_tile",
+  "status": "released",
+  "rows": [
+    {
+      "name": "workshop_data",
+      "value": "@data.workshop.w_1on1",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "workshop_data",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@data.workshop.w_1on1",
+            "matchedExpression": "@data.workshop.w_1on1",
+            "type": "data",
+            "fieldName": "workshop"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@data.workshop.w_1on1": [
+          "value"
+        ]
+      }
+    },
+    {
+      "name": "workshop",
+      "value": "@local.workshop_data.id",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "workshop",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@local.workshop_data.id",
+            "matchedExpression": "@local.workshop_data.id",
+            "type": "local",
+            "fieldName": "workshop_data"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.workshop_data.id": [
+          "value"
+        ]
+      }
+    },
+    {
+      "name": "tools",
+      "value": "_tools",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "type": "set_variable",
+      "_nested_name": "tools"
+    },
+    {
+      "name": "workshop_tools",
+      "value": "@local.workshop@local.tools",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "workshop_tools",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@local.workshop@local.tools",
+            "matchedExpression": "@local.workshop",
+            "type": "local",
+            "fieldName": "workshop"
+          },
+          {
+            "fullExpression": "@local.workshop@local.tools",
+            "matchedExpression": "@local.tools",
+            "type": "local",
+            "fieldName": "tools"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.workshop": [
+          "value"
+        ],
+        "@local.tools": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "tile_component",
+      "action_list": [
+        {
+          "trigger": "click",
+          "action_id": "go_to",
+          "args": [
+            "lib_act_@local.workshop"
+          ],
+          "_raw": "click | go_to:lib_act_@local.workshop",
+          "_cleaned": "click | go_to:lib_act_@local.workshop"
+        }
+      ],
+      "parameter_list": {
+        "style": "image_text",
+        "first_line_text": "@local.workshop_data.tools",
+        "icon_src": "@local.workshop_data.image_asset"
+      },
+      "name": "tile_component",
+      "_nested_name": "tile_component",
+      "_dynamicFields": {
+        "action_list": {
+          "0": {
+            "args": {
+              "0": [
+                {
+                  "fullExpression": "lib_act_@local.workshop",
+                  "matchedExpression": "@local.workshop",
+                  "type": "local",
+                  "fieldName": "workshop"
+                }
+              ]
+            },
+            "_raw": [
+              {
+                "fullExpression": "click | go_to:lib_act_@local.workshop",
+                "matchedExpression": "@local.workshop",
+                "type": "local",
+                "fieldName": "workshop"
+              }
+            ],
+            "_cleaned": [
+              {
+                "fullExpression": "click | go_to:lib_act_@local.workshop",
+                "matchedExpression": "@local.workshop",
+                "type": "local",
+                "fieldName": "workshop"
+              }
+            ]
+          }
+        },
+        "parameter_list": {
+          "first_line_text": [
+            {
+              "fullExpression": "@local.workshop_data.tools",
+              "matchedExpression": "@local.workshop_data.tools",
+              "type": "local",
+              "fieldName": "workshop_data"
+            }
+          ],
+          "icon_src": [
+            {
+              "fullExpression": "@local.workshop_data.image_asset",
+              "matchedExpression": "@local.workshop_data.image_asset",
+              "type": "local",
+              "fieldName": "workshop_data"
+            }
+          ]
+        }
+      },
+      "_dynamicDependencies": {
+        "@local.workshop": [
+          "action_list.0.args.0",
+          "action_list.0._raw",
+          "action_list.0._cleaned"
+        ],
+        "@local.workshop_data.tools": [
+          "parameter_list.first_line_text"
+        ],
+        "@local.workshop_data.image_asset": [
+          "parameter_list.icon_src"
+        ]
+      }
+    }
+  ],
+  "_xlsxPath": "global/core_templates/core_templates_essential_tools.xlsx"
+}

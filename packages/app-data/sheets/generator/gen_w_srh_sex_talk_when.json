@@ -1,0 +1,106 @@
+{
+  "flow_type": "generator",
+  "module": "w_srh",
+  "flow_name": "gen_w_srh_sex_talk_when",
+  "status": "released",
+  "parameter_list": {
+    "input_data_list": "number_5_data",
+    "output_flow_name": "w_srh_sex_talk_when_{@gen.id}",
+    "output_flow_type": "template",
+    "output_flow_subtype": "generated"
+  },
+  "rows": [
+    {
+      "name": "option_no",
+      "value": "@gen.id"
+    },
+    {
+      "name": "question_id",
+      "value": "sex_talk_when"
+    },
+    {
+      "name": "question_concat",
+      "value": "question.@local.question_id"
+    },
+    {
+      "name": "option_title",
+      "value": "option_@local.option_no"
+    },
+    {
+      "name": "option_title_concat",
+      "value": "@local.question_concat.@local.option_title"
+    },
+    {
+      "name": "option_text",
+      "value": "reply_@local.option_no"
+    },
+    {
+      "name": "option_text_concat",
+      "value": "@local.question_concat.@local.option_text"
+    },
+    {
+      "name": "image",
+      "value": "_image_asset"
+    },
+    {
+      "name": "option_image",
+      "value": "reply_@local.option_no@local.image"
+    },
+    {
+      "name": "option_image_concat",
+      "value": "@local.question_concat.@local.option_image"
+    },
+    {
+      "name": "icon",
+      "value": "_icon_asset"
+    },
+    {
+      "name": "option_icon",
+      "value": "reply_@local.option_no@local.icon"
+    },
+    {
+      "name": "option_icon_concat",
+      "value": "@local.question_concat.@local.option_icon"
+    },
+    {
+      "name": "reply_all",
+      "value": "reply_all"
+    },
+    {
+      "name": "reply_all_concat",
+      "value": "@local.question_concat.@local.reply_all"
+    },
+    {
+      "name": "image",
+      "value": "_image_asset"
+    },
+    {
+      "type": "title",
+      "name": "title",
+      "value": "@data.@local.option_title_concat"
+    },
+    {
+      "type": "image",
+      "name": "image_src",
+      "value": "@data.@local.option_image_concat",
+      "parameter_list": [
+        "style: rounded_corners"
+      ]
+    },
+    {
+      "type": "dashed_box",
+      "name": "dashed_box",
+      "value": "@data.@local.option_text_concat",
+      "parameter_list": [
+        "icon_src: @data.@local.option_icon_concat",
+        "icon_position: top-left"
+      ]
+    },
+    {
+      "type": "text",
+      "name": "text",
+      "value": "@data.@local.reply_all_concat"
+    }
+  ],
+  "_xlsxPath": "global/top_templates/workshop_templates/workshop_srh.xlsx"
+}

@@ -1,0 +1,371 @@
+{
+  "flow_type": "template",
+  "flow_name": "parent_centre_activities",
+  "status": "released",
+  "rows": [
+    {
+      "type": "title",
+      "name": "title",
+      "value": "@global.all_activities",
+      "_translations": {
+        "value": {}
+      },
+      "parameter_list": {
+        "style": "tiny"
+      },
+      "_nested_name": "title",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@global.all_activities",
+            "matchedExpression": "@global.all_activities",
+            "type": "global",
+            "fieldName": "all_activities"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@global.all_activities": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "button",
+      "name": "button_ideas",
+      "value": "@global.ideas_button",
+      "_translations": {
+        "value": {}
+      },
+      "action_list": [
+        {
+          "trigger": "click",
+          "action_id": "pop_up",
+          "args": [
+            "w_1on1_talk_pop"
+          ],
+          "_raw": "click | pop_up:w_1on1_talk_pop",
+          "_cleaned": "click | pop_up:w_1on1_talk_pop"
+        }
+      ],
+      "_nested_name": "button_ideas",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@global.ideas_button",
+            "matchedExpression": "@global.ideas_button",
+            "type": "global",
+            "fieldName": "ideas_button"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@global.ideas_button": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "subtitle",
+      "name": "subtitle_chat_together",
+      "value": "@global.chat_together",
+      "_translations": {
+        "value": {}
+      },
+      "_nested_name": "subtitle_chat_together",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@global.chat_together",
+            "matchedExpression": "@global.chat_together",
+            "type": "global",
+            "fieldName": "chat_together"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@global.chat_together": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "items",
+      "name": "items",
+      "value": "@data.something_fun",
+      "rows": [
+        {
+          "type": "button",
+          "name": "button_@item.id",
+          "value": "@item.title",
+          "_translations": {
+            "value": {}
+          },
+          "action_list": [
+            {
+              "trigger": "click",
+              "action_id": "go_to",
+              "args": [
+                "@item.activity_template"
+              ],
+              "_raw": "click | go_to: @item.activity_template",
+              "_cleaned": "click | go_to: @item.activity_template"
+            }
+          ],
+          "condition": "@item.type != \"do_together\"",
+          "_nested_name": "items.button_@item.id",
+          "_dynamicFields": {
+            "name": [
+              {
+                "fullExpression": "button_@item.id",
+                "matchedExpression": "@item.id",
+                "type": "item",
+                "fieldName": "id"
+              }
+            ],
+            "value": [
+              {
+                "fullExpression": "@item.title",
+                "matchedExpression": "@item.title",
+                "type": "item",
+                "fieldName": "title"
+              }
+            ],
+            "action_list": {
+              "0": {
+                "args": {
+                  "0": [
+                    {
+                      "fullExpression": "@item.activity_template",
+                      "matchedExpression": "@item.activity_template",
+                      "type": "item",
+                      "fieldName": "activity_template"
+                    }
+                  ]
+                },
+                "_raw": [
+                  {
+                    "fullExpression": "click | go_to: @item.activity_template",
+                    "matchedExpression": "@item.activity_template",
+                    "type": "item",
+                    "fieldName": "activity_template"
+                  }
+                ],
+                "_cleaned": [
+                  {
+                    "fullExpression": "click | go_to: @item.activity_template",
+                    "matchedExpression": "@item.activity_template",
+                    "type": "item",
+                    "fieldName": "activity_template"
+                  }
+                ]
+              }
+            },
+            "condition": [
+              {
+                "fullExpression": "@item.type != \"do_together\"",
+                "matchedExpression": "@item.type",
+                "type": "item",
+                "fieldName": "type"
+              }
+            ],
+            "_nested_name": [
+              {
+                "fullExpression": "items.button_@item.id",
+                "matchedExpression": "@item.id",
+                "type": "item",
+                "fieldName": "id"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@item.id": [
+              "name",
+              "_nested_name"
+            ],
+            "@item.title": [
+              "value"
+            ],
+            "@item.activity_template": [
+              "action_list.0.args.0",
+              "action_list.0._raw",
+              "action_list.0._cleaned"
+            ],
+            "@item.type": [
+              "condition"
+            ]
+          }
+        }
+      ],
+      "_nested_name": "items",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@data.something_fun",
+            "matchedExpression": "@data.something_fun",
+            "type": "data",
+            "fieldName": "something_fun"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@data.something_fun": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "subtitle",
+      "name": "subtitle_do_together",
+      "value": "@global.do_together",
+      "_translations": {
+        "value": {}
+      },
+      "_nested_name": "subtitle_do_together",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@global.do_together",
+            "matchedExpression": "@global.do_together",
+            "type": "global",
+            "fieldName": "do_together"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@global.do_together": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "items",
+      "name": "items",
+      "value": "@data.something_fun",
+      "rows": [
+        {
+          "type": "button",
+          "name": "button_@item.id",
+          "value": "@item.title",
+          "_translations": {
+            "value": {}
+          },
+          "action_list": [
+            {
+              "trigger": "click",
+              "action_id": "go_to",
+              "args": [
+                "@item.activity_template"
+              ],
+              "_raw": "click | go_to: @item.activity_template",
+              "_cleaned": "click | go_to: @item.activity_template"
+            }
+          ],
+          "condition": "@item.type == \"do_together\"",
+          "parameter_list": {
+            "style": "navigation"
+          },
+          "_nested_name": "items.button_@item.id",
+          "_dynamicFields": {
+            "name": [
+              {
+                "fullExpression": "button_@item.id",
+                "matchedExpression": "@item.id",
+                "type": "item",
+                "fieldName": "id"
+              }
+            ],
+            "value": [
+              {
+                "fullExpression": "@item.title",
+                "matchedExpression": "@item.title",
+                "type": "item",
+                "fieldName": "title"
+              }
+            ],
+            "action_list": {
+              "0": {
+                "args": {
+                  "0": [
+                    {
+                      "fullExpression": "@item.activity_template",
+                      "matchedExpression": "@item.activity_template",
+                      "type": "item",
+                      "fieldName": "activity_template"
+                    }
+                  ]
+                },
+                "_raw": [
+                  {
+                    "fullExpression": "click | go_to: @item.activity_template",
+                    "matchedExpression": "@item.activity_template",
+                    "type": "item",
+                    "fieldName": "activity_template"
+                  }
+                ],
+                "_cleaned": [
+                  {
+                    "fullExpression": "click | go_to: @item.activity_template",
+                    "matchedExpression": "@item.activity_template",
+                    "type": "item",
+                    "fieldName": "activity_template"
+                  }
+                ]
+              }
+            },
+            "condition": [
+              {
+                "fullExpression": "@item.type == \"do_together\"",
+                "matchedExpression": "@item.type",
+                "type": "item",
+                "fieldName": "type"
+              }
+            ],
+            "_nested_name": [
+              {
+                "fullExpression": "items.button_@item.id",
+                "matchedExpression": "@item.id",
+                "type": "item",
+                "fieldName": "id"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@item.id": [
+              "name",
+              "_nested_name"
+            ],
+            "@item.title": [
+              "value"
+            ],
+            "@item.activity_template": [
+              "action_list.0.args.0",
+              "action_list.0._raw",
+              "action_list.0._cleaned"
+            ],
+            "@item.type": [
+              "condition"
+            ]
+          }
+        }
+      ],
+      "_nested_name": "items",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@data.something_fun",
+            "matchedExpression": "@data.something_fun",
+            "type": "data",
+            "fieldName": "something_fun"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@data.something_fun": [
+          "value"
+        ]
+      }
+    }
+  ],
+  "_xlsxPath": "global/core_templates/core_templates_relax_and_activities.xlsx"
+}

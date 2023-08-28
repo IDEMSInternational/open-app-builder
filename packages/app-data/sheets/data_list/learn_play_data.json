@@ -1,0 +1,832 @@
+{
+  "flow_type": "data_list",
+  "flow_name": "learn_play_data",
+  "data_list_name": "learn_play",
+  "status": "released",
+  "rows": [
+    {
+      "id": "chores",
+      "number": 1,
+      "group": "everyday",
+      "icon_asset": "plh_images/parent_centre/ltp_activities/chores_icon.svg",
+      "image_asset": "plh_images/parent_centre/ltp_activities/chores.svg",
+      "favourite_field": "ltp_activity_chores_favourite",
+      "title": "Doing chores together",
+      "_translations": {
+        "title": {},
+        "intro_text": {},
+        "steps_text": {},
+        "tips_text": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Doing chores together"
+        },
+        "intro_text": {
+          "eng": "Cleaning up is an important life skill. Get your teen to help you clean the house and make it fun!"
+        },
+        "steps_text": {
+          "eng": "1. Make a list of all the chores in the house with your teen. For example: washing dishes, sweeping, cooking, making the beds, or doing laundry.\n2. Every week, let each family member choose a chore they want to do. \n3. Agree when the chore should be done by.\n4. Agree on what the consequence will be if it is not finished, and what small reward you can give as motivation to do the chore.\n5. When the chore is done, praise your teen and let them mark it as 'done' on your list of chores. Praise and seeing progress are great motivation!"
+        },
+        "tips_text": {
+          "eng": "* When your teen is part of the decision, your teen will be more willing to help out.\n* A reward does not have to cost money and can be something small, like going to bed a bit later, having more time with friends, or doing a fun (free) activity together.\n* If your teen did not complete the chore, do not discipline them harshly. Instead, ask them why they were not able to complete the task and give them the consequence you decided on earlier."
+        }
+      },
+      "intro_text": "Cleaning up is an important life skill. Get your teen to help you clean the house and make it fun!",
+      "steps_text": "1. Make a list of all the chores in the house with your teen. For example: washing dishes, sweeping, cooking, making the beds, or doing laundry.\n2. Every week, let each family member choose a chore they want to do. \n3. Agree when the chore should be done by.\n4. Agree on what the consequence will be if it is not finished, and what small reward you can give as motivation to do the chore.\n5. When the chore is done, praise your teen and let them mark it as 'done' on your list of chores. Praise and seeing progress are great motivation!",
+      "tips_text": "* When your teen is part of the decision, your teen will be more willing to help out.\n* A reward does not have to cost money and can be something small, like going to bed a bit later, having more time with friends, or doing a fun (free) activity together.\n* If your teen did not complete the chore, do not discipline them harshly. Instead, ask them why they were not able to complete the task and give them the consequence you decided on earlier."
+    },
+    {
+      "id": "bao",
+      "number": 2,
+      "group": "games",
+      "icon_asset": "plh_images/parent_centre/ltp_activities/bao_icon.svg",
+      "image_asset": "plh_images/parent_centre/ltp_activities/bao.svg",
+      "favourite_field": "ltp_activity_bao_favourite",
+      "title": "Traditional game",
+      "_translations": {
+        "title": {},
+        "intro_text": {},
+        "resources_text": {},
+        "steps_text": {},
+        "tips_text": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Traditional game"
+        },
+        "intro_text": {
+          "eng": "Playing Bao can be a fun way to spend time with your teen. They will be excited to play a game with you and not only do chores."
+        },
+        "resources_text": {
+          "eng": "You can play by drawing a Bao board in the sand and finding 32 small seeds, stones, or other small objects.\n\nThe board has 2 rows with 8 small pits in each one, and 2 larger pits at the ends of the rows."
+        },
+        "steps_text": {
+          "eng": "1. Place 2 pieces (seeds, stones or whatever you found) in each of the smaller pits. The larger pits at the end of each row should be empty.\n2. Decide who will go first. Choose one pit from your side, pick up the stones (there should be 2) and move in a circle around the board, drop one stone into each pit. It is then the other person's turn. The goal is to get all your stones into your big pit before the other person.\n3. Keep playing until you have no more stones or no one can move any stones anymore. The person with the most stones in the big pit wins."
+        },
+        "tips_text": {
+          "eng": "* If you played before, tell your teen stories about you playing the game.\n* Play a practice game to help your teen understand the rules.\n* Celebrate your teen’s successes and encourage them to keep practising, even if they do not win right away."
+        }
+      },
+      "intro_text": "Playing Bao can be a fun way to spend time with your teen. They will be excited to play a game with you and not only do chores.",
+      "resources_text": "You can play by drawing a Bao board in the sand and finding 32 small seeds, stones, or other small objects.\n\nThe board has 2 rows with 8 small pits in each one, and 2 larger pits at the ends of the rows.",
+      "steps_text": "1. Place 2 pieces (seeds, stones or whatever you found) in each of the smaller pits. The larger pits at the end of each row should be empty.\n2. Decide who will go first. Choose one pit from your side, pick up the stones (there should be 2) and move in a circle around the board, drop one stone into each pit. It is then the other person's turn. The goal is to get all your stones into your big pit before the other person.\n3. Keep playing until you have no more stones or no one can move any stones anymore. The person with the most stones in the big pit wins.",
+      "tips_text": "* If you played before, tell your teen stories about you playing the game.\n* Play a practice game to help your teen understand the rules.\n* Celebrate your teen’s successes and encourage them to keep practising, even if they do not win right away."
+    },
+    {
+      "id": "walk",
+      "number": 3,
+      "group": "everyday",
+      "icon_asset": "plh_images/parent_centre/ltp_activities/walk_icon.svg",
+      "image_asset": "plh_images/parent_centre/ltp_activities/walk.svg",
+      "favourite_field": "ltp_activity_walk_favourite",
+      "title": "Walking together",
+      "_translations": {
+        "title": {},
+        "intro_text": {},
+        "steps_text": {},
+        "tips_text": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Walking together"
+        },
+        "intro_text": {
+          "eng": "Walking around your community is an easy and fun way to spend quality time together. It is good exercise and helps your teen learn about their community."
+        },
+        "steps_text": {
+          "eng": "1. Plan: Discuss with your teen to choose a time and a place to walk together. It could be a nearby park, market, or any interesting area. If you were going there anyway, ask your teen if they want to come with you.\n2. Observe and explore: Encourage your teen to ask questions about what they see on the walk. This could be about people, nature or buildings.\n3. Learn together: Tell your teen things you know about the area. For example, who lives in different directions, your favourite flower, or what the area looked like long ago."
+        },
+        "tips_text": {
+          "eng": "* Use technology: Bring along your smartphone to take pictures of interesting things you see on the walk. Let your teen take photos and talk about it!\n* Make it regular: Schedule regular walks and explore new locations to keep the activity fresh and fun."
+        }
+      },
+      "intro_text": "Walking around your community is an easy and fun way to spend quality time together. It is good exercise and helps your teen learn about their community.",
+      "steps_text": "1. Plan: Discuss with your teen to choose a time and a place to walk together. It could be a nearby park, market, or any interesting area. If you were going there anyway, ask your teen if they want to come with you.\n2. Observe and explore: Encourage your teen to ask questions about what they see on the walk. This could be about people, nature or buildings.\n3. Learn together: Tell your teen things you know about the area. For example, who lives in different directions, your favourite flower, or what the area looked like long ago.",
+      "tips_text": "* Use technology: Bring along your smartphone to take pictures of interesting things you see on the walk. Let your teen take photos and talk about it!\n* Make it regular: Schedule regular walks and explore new locations to keep the activity fresh and fun."
+    },
+    {
+      "id": "cook_traditional",
+      "number": 4,
+      "group": "everyday",
+      "icon_asset": "plh_images/parent_centre/ltp_activities/cook_traditional_icon.svg",
+      "image_asset": "plh_images/parent_centre/ltp_activities/cook_traditional.svg",
+      "favourite_field": "ltp_activity_cook_traditional_favourite",
+      "title": "Cooking traditional food",
+      "_translations": {
+        "title": {},
+        "intro_text": {},
+        "steps_text": {},
+        "tips_text": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Cooking traditional food"
+        },
+        "intro_text": {
+          "eng": "Cooking traditional @global.regional food with your teen is a great way to connect, learn new skills, and share stories about your culture."
+        },
+        "steps_text": {
+          "eng": "1. Choose a recipe: Find a traditional recipe that you and your teen would like to prepare. You can also ask friends and family for their favourites.\n2. Gather ingredients: Ask your teen to help you get all the necessary ingredients and materials. \n3. Clean and prepare the cooking area: Make sure the kitchen area is clean and tidy before you start cooking. Teach your teen to wash their hands thoroughly when working with food.\n4. Enjoy the meal: Eat the meal you prepared together! Talk about the flavours and textures of the food and share stories about traditional food in your culture.\n5. Clean up: Once you have finished eating, clean up the cooking area together."
+        },
+        "tips_text": {
+          "eng": "* Plan with your teen: Ask your teen in the morning if they can help you with the cooking tonight. This gives them time to plan their school work and time with friends.\n* Involve them: Tell them what you are cooking tonight and ask them if they know the ingredients. \n* Clear tasks: Ask your teen to chop the food or check the heat of the pots. They will be more interested if they help you and not only watch you cook.\n* Make it regular: Ask them to help you with the cooking more and let them try different jobs like chopping different vegetables or starting a fire."
+        }
+      },
+      "intro_text": "Cooking traditional @global.regional food with your teen is a great way to connect, learn new skills, and share stories about your culture.",
+      "steps_text": "1. Choose a recipe: Find a traditional recipe that you and your teen would like to prepare. You can also ask friends and family for their favourites.\n2. Gather ingredients: Ask your teen to help you get all the necessary ingredients and materials. \n3. Clean and prepare the cooking area: Make sure the kitchen area is clean and tidy before you start cooking. Teach your teen to wash their hands thoroughly when working with food.\n4. Enjoy the meal: Eat the meal you prepared together! Talk about the flavours and textures of the food and share stories about traditional food in your culture.\n5. Clean up: Once you have finished eating, clean up the cooking area together.",
+      "tips_text": "* Plan with your teen: Ask your teen in the morning if they can help you with the cooking tonight. This gives them time to plan their school work and time with friends.\n* Involve them: Tell them what you are cooking tonight and ask them if they know the ingredients. \n* Clear tasks: Ask your teen to chop the food or check the heat of the pots. They will be more interested if they help you and not only watch you cook.\n* Make it regular: Ask them to help you with the cooking more and let them try different jobs like chopping different vegetables or starting a fire."
+    },
+    {
+      "id": "garden",
+      "number": 5,
+      "group": "games",
+      "icon_asset": "plh_images/parent_centre/ltp_activities/garden_icon.svg",
+      "image_asset": "plh_images/parent_centre/ltp_activities/garden.svg",
+      "favourite_field": "ltp_activity_garden_favourite",
+      "title": "Gardening",
+      "_translations": {
+        "title": {},
+        "intro_text": {},
+        "steps_text": {},
+        "tips_text": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Gardening"
+        },
+        "intro_text": {
+          "eng": "Gardening is a fun way to spend quality time with your teen. It is also very useful for them to learn how to grow food."
+        },
+        "steps_text": {
+          "eng": "1. Choose some plants: Ask your teen to help you choose some plants to grow in the garden. This will make them feel involved.\nYou could choose plants you can eat, like vegetables or herbs, which you can grow and then cook together. \n2. Get creative with containers: You do not need lots of space to plant a garden. You can use old broken buckets, tin cans, or even plastic bottles as pots to plant in.\n3. Plant the seeds: Make planting the seeds a fun activity. Have a \"planting party\" where you and your teen take turns planting the seeds in the soil. \n4. Water and care for the plants: Create a time table for watering and caring for the plants. Let your teen take charge of this task and ask them to look after the plants they planted.\n5. Watch the plants grow: Encourage your teen to write down the changes they see every week to see how much the plants have grown."
+        },
+        "tips_text": {
+          "eng": "* Let your teen make some of the decisions, like where to dig the holes or which container to plant in. \n* Make gardening social by inviting friends or family to join the fun."
+        }
+      },
+      "intro_text": "Gardening is a fun way to spend quality time with your teen. It is also very useful for them to learn how to grow food.",
+      "steps_text": "1. Choose some plants: Ask your teen to help you choose some plants to grow in the garden. This will make them feel involved.\nYou could choose plants you can eat, like vegetables or herbs, which you can grow and then cook together. \n2. Get creative with containers: You do not need lots of space to plant a garden. You can use old broken buckets, tin cans, or even plastic bottles as pots to plant in.\n3. Plant the seeds: Make planting the seeds a fun activity. Have a \"planting party\" where you and your teen take turns planting the seeds in the soil. \n4. Water and care for the plants: Create a time table for watering and caring for the plants. Let your teen take charge of this task and ask them to look after the plants they planted.\n5. Watch the plants grow: Encourage your teen to write down the changes they see every week to see how much the plants have grown.",
+      "tips_text": "* Let your teen make some of the decisions, like where to dig the holes or which container to plant in. \n* Make gardening social by inviting friends or family to join the fun."
+    },
+    {
+      "id": "charades",
+      "number": 6,
+      "group": "games",
+      "icon_asset": "plh_images/parent_centre/ltp_activities/charades_icon.svg",
+      "image_asset": "plh_images/parent_centre/ltp_activities/charades.svg",
+      "favourite_field": "ltp_activity_charades_favourite",
+      "title": "Charades",
+      "_translations": {
+        "title": {},
+        "intro_text": {},
+        "steps_text": {},
+        "tips_text": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Charades"
+        },
+        "intro_text": {
+          "eng": "Charades is an easy, fun game that will teach your teen to think quickly, work together and be bold."
+        },
+        "steps_text": {
+          "eng": "1. One person thinks of a word, which they don’t tell anyone else.\n2. They then have to act out the word, without speaking, to try and get the other people to guess the word.\n3. Some words you could try to act out are things like sweeping, eating, playing a sport, or brushing teeth. \n4. If you guess the word right, it is the other person's turn."
+        },
+        "tips_text": {
+          "eng": "* Make sure everyone gets a turn to act out words or phrases.  \n* Remember to praise your teen for trying. \n* If your teen is struggling to guess, give them hints on what it could be.\n* If the game is too easy, try more difficult words. \n* Remember to have fun and support each other for the whole game."
+        }
+      },
+      "intro_text": "Charades is an easy, fun game that will teach your teen to think quickly, work together and be bold.",
+      "steps_text": "1. One person thinks of a word, which they don’t tell anyone else.\n2. They then have to act out the word, without speaking, to try and get the other people to guess the word.\n3. Some words you could try to act out are things like sweeping, eating, playing a sport, or brushing teeth. \n4. If you guess the word right, it is the other person's turn.",
+      "tips_text": "* Make sure everyone gets a turn to act out words or phrases.  \n* Remember to praise your teen for trying. \n* If your teen is struggling to guess, give them hints on what it could be.\n* If the game is too easy, try more difficult words. \n* Remember to have fun and support each other for the whole game."
+    },
+    {
+      "id": "role_play",
+      "number": 7,
+      "group": "home",
+      "icon_asset": "plh_images/parent_centre/ltp_activities/role_play_icon.svg",
+      "image_asset": "plh_images/parent_centre/ltp_activities/role_play.svg",
+      "favourite_field": "ltp_activity_role_play_favourite",
+      "title": "Role play",
+      "_translations": {
+        "title": {},
+        "intro_text": {},
+        "steps_text": {},
+        "tips_text": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Role play"
+        },
+        "intro_text": {
+          "eng": "Role-playing is when you pretend to be someone in a certain situation, and act out how you think things will go. \n\nThis is a fun way to help your teen understand how others might act or feel, and for you to learn more about how your teen thinks and feels."
+        },
+        "steps_text": {
+          "eng": "1. Ask your teen if they want to try out this “role-playing” with you.\n2. Ask your teen to choose a situation that they would like to act out. It can be something they saw at school, in your community, or on social media.  For example, being a teacher and student at their school.\n3. Let your teen decide who should play which role, and act out the scenario together. \n4. Take time to talk about what you learned through role-playing. Ask questions like, \"How did you feel acting out that role?\" or, \"What did you learn about that situation?\". This will help your teen to think about how other people think and feel."
+        },
+        "tips_text": {
+          "eng": "* Take turns acting different roles. You can also swap roles to see how it changes the situation.\n* Keep the activity fun. It doesn’t always have to be role play about something real. \n* Ask your teen to act as their favourite hero. Ask what they would do if they had super powers for a day."
+        }
+      },
+      "intro_text": "Role-playing is when you pretend to be someone in a certain situation, and act out how you think things will go. \n\nThis is a fun way to help your teen understand how others might act or feel, and for you to learn more about how your teen thinks and feels.",
+      "steps_text": "1. Ask your teen if they want to try out this “role-playing” with you.\n2. Ask your teen to choose a situation that they would like to act out. It can be something they saw at school, in your community, or on social media.  For example, being a teacher and student at their school.\n3. Let your teen decide who should play which role, and act out the scenario together. \n4. Take time to talk about what you learned through role-playing. Ask questions like, \"How did you feel acting out that role?\" or, \"What did you learn about that situation?\". This will help your teen to think about how other people think and feel.",
+      "tips_text": "* Take turns acting different roles. You can also swap roles to see how it changes the situation.\n* Keep the activity fun. It doesn’t always have to be role play about something real. \n* Ask your teen to act as their favourite hero. Ask what they would do if they had super powers for a day."
+    },
+    {
+      "id": "find_pair",
+      "number": 8,
+      "group": "home",
+      "icon_asset": "plh_images/parent_centre/ltp_activities/find_pair_icon.svg",
+      "image_asset": "plh_images/parent_centre/ltp_activities/find_pair.svg",
+      "favourite_field": "ltp_activity_find_pair_favourite",
+      "title": "Find the pair",
+      "_translations": {
+        "title": {},
+        "intro_text": {},
+        "resources_text": {},
+        "steps_text": {},
+        "tips_text": {},
+        "extension_text": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Find the pair"
+        },
+        "intro_text": {
+          "eng": "Hide and seek is a fun game that many people played when they were children. \n\nIn this version of the game, you add a challenging twist for your teen."
+        },
+        "resources_text": {
+          "eng": "Pairs of any small objects you can find around the house (for example spoons, cups, bowls, empty boxes, shoes) Make sure you have two of each object."
+        },
+        "steps_text": {
+          "eng": "1. Hide one of each object around the room. Make sure they are not too difficult to find, but also not too easy.\n2. Show your teen the objects they need to find.\n3. Let your teen look for the objects. When they find one, they must run back to you, name the object, and put it next to the matching object.\n4. Repeat the process until all pairs of objects have been found."
+        },
+        "tips_text": {
+          "eng": "* Try to make the game more challenging by making the objects harder to find. \n* You can time how long it takes your teen to find all the objects and ask them to try and beat their time. \n* Choose objects with different shapes, sizes, and colours."
+        },
+        "extension_text": {
+          "eng": "Instead of a matching pair, show your teen an object that is “connected to” the object you hid in the room. For example, show your teen a sock, and they will search for something connected with that, like a shoe."
+        }
+      },
+      "intro_text": "Hide and seek is a fun game that many people played when they were children. \n\nIn this version of the game, you add a challenging twist for your teen.",
+      "resources_text": "Pairs of any small objects you can find around the house (for example spoons, cups, bowls, empty boxes, shoes) Make sure you have two of each object.",
+      "steps_text": "1. Hide one of each object around the room. Make sure they are not too difficult to find, but also not too easy.\n2. Show your teen the objects they need to find.\n3. Let your teen look for the objects. When they find one, they must run back to you, name the object, and put it next to the matching object.\n4. Repeat the process until all pairs of objects have been found.",
+      "tips_text": "* Try to make the game more challenging by making the objects harder to find. \n* You can time how long it takes your teen to find all the objects and ask them to try and beat their time. \n* Choose objects with different shapes, sizes, and colours.",
+      "extension_text": "Instead of a matching pair, show your teen an object that is “connected to” the object you hid in the room. For example, show your teen a sock, and they will search for something connected with that, like a shoe."
+    },
+    {
+      "id": "mystery_box",
+      "number": 9,
+      "group": "home",
+      "icon_asset": "plh_images/parent_centre/ltp_activities/mystery_box_icon.svg",
+      "image_asset": "plh_images/parent_centre/ltp_activities/mystery_box.svg",
+      "favourite_field": "ltp_activity_mystery_box_favourite",
+      "title": "Mystery box",
+      "_translations": {
+        "title": {},
+        "intro_text": {},
+        "resources_text": {},
+        "steps_text": {},
+        "tips_text": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Mystery box"
+        },
+        "intro_text": {
+          "eng": "Mystery Box is a fun game in which you place an object inside a box, and let your teen ask questions to figure out what the object is."
+        },
+        "resources_text": {
+          "eng": "You can use anything as a ‘box’ (a bucket, sack, packet), as long as your teen can not see what is inside.\n\nYou also need something to hide inside the mystery box."
+        },
+        "steps_text": {
+          "eng": "1. Place any object inside the “Mystery Box”, without showing your teen.\n2. Your teen now asks you questions to try and guess what it is. You can only answer with “Yes” or “No”.\n3. When your teen is sure of the answer, they have to say, “I believe the mystery box is hiding …” and give their answer.\n4. Swap roles with your teen and let them choose an object to hide in the box and you try to guess what it is."
+        },
+        "tips_text": {
+          "eng": "* You can use different objects. You can also introduce themes, such as animals or fruits, to make the game more exciting. \n* You can allow your teen to choose the objects or themes. This makes them feel more involved and part of the game.\n* Your teen can close their eyes and touch the mystery item to guess what it is."
+        }
+      },
+      "intro_text": "Mystery Box is a fun game in which you place an object inside a box, and let your teen ask questions to figure out what the object is.",
+      "resources_text": "You can use anything as a ‘box’ (a bucket, sack, packet), as long as your teen can not see what is inside.\n\nYou also need something to hide inside the mystery box.",
+      "steps_text": "1. Place any object inside the “Mystery Box”, without showing your teen.\n2. Your teen now asks you questions to try and guess what it is. You can only answer with “Yes” or “No”.\n3. When your teen is sure of the answer, they have to say, “I believe the mystery box is hiding …” and give their answer.\n4. Swap roles with your teen and let them choose an object to hide in the box and you try to guess what it is.",
+      "tips_text": "* You can use different objects. You can also introduce themes, such as animals or fruits, to make the game more exciting. \n* You can allow your teen to choose the objects or themes. This makes them feel more involved and part of the game.\n* Your teen can close their eyes and touch the mystery item to guess what it is."
+    },
+    {
+      "id": "memory_game",
+      "number": 10,
+      "group": "home",
+      "icon_asset": "plh_images/parent_centre/ltp_activities/memory_game_icon.svg",
+      "image_asset": "plh_images/parent_centre/ltp_activities/memory_game.svg",
+      "favourite_field": "ltp_activity_memory_game_favourite",
+      "title": "Memory game",
+      "_translations": {
+        "title": {},
+        "intro_text": {},
+        "resources_text": {},
+        "steps_text": {},
+        "tips_text": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Memory game"
+        },
+        "intro_text": {
+          "eng": "Memory games are a fun way to help your teen focus more and learn how to remember information."
+        },
+        "resources_text": {
+          "eng": "Ten small items, like a leaf, spoon, cup, seed, pencil, coin, stone, key.  It can be anything you find.\n\nYou also need a cloth or something else to cover the items."
+        },
+        "steps_text": {
+          "eng": "1. Prepare a space where you can put the ten items.\n2. Ask your teen to look at the items for 1 minute.\n3. After 1 minute, cover the items with a cloth or some clothes.\n4. Ask your teen to try and name all the items. They can write down what they remember.\n5. Remove the covering and let the teen see if they remembered all the items.\n6. Ask them how they remembered each one.\n7. Now it is your turn. Let your teen be the master of the game – your teen chooses some items and tests your memory."
+        },
+        "tips_text": {
+          "eng": "* You can time the activity to make it more exciting and competitive. \n* You can also ask your teen to come up with a story that involves all the items."
+        }
+      },
+      "intro_text": "Memory games are a fun way to help your teen focus more and learn how to remember information.",
+      "resources_text": "Ten small items, like a leaf, spoon, cup, seed, pencil, coin, stone, key.  It can be anything you find.\n\nYou also need a cloth or something else to cover the items.",
+      "steps_text": "1. Prepare a space where you can put the ten items.\n2. Ask your teen to look at the items for 1 minute.\n3. After 1 minute, cover the items with a cloth or some clothes.\n4. Ask your teen to try and name all the items. They can write down what they remember.\n5. Remove the covering and let the teen see if they remembered all the items.\n6. Ask them how they remembered each one.\n7. Now it is your turn. Let your teen be the master of the game – your teen chooses some items and tests your memory.",
+      "tips_text": "* You can time the activity to make it more exciting and competitive. \n* You can also ask your teen to come up with a story that involves all the items."
+    },
+    {
+      "id": "cook",
+      "number": 11,
+      "group": "everyday",
+      "icon_asset": "plh_images/parent_centre/ltp_activities/cook_icon.svg",
+      "image_asset": "plh_images/parent_centre/ltp_activities/cook.svg",
+      "favourite_field": "ltp_activity_cook_favourite",
+      "title": "Cooking",
+      "_translations": {
+        "title": {},
+        "intro_text": {},
+        "steps_text": {},
+        "tips_text": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Cooking"
+        },
+        "intro_text": {
+          "eng": "Cooking together is a wonderful opportunity to talk and connect, while also teaching your teen life skills."
+        },
+        "steps_text": {
+          "eng": "1. Set a time and day that you and your teen are going to cook together. This will help both of you plan.\n2. Teach them about what you are going to make together. Show them the ingredients and let them help measure how much you will be using today.\n3. Give them a job to do, like fetching water, chopping, or stirring.\n4. Enjoy the meal as a family and let your teen enjoy the pride of contributing to the family"
+        },
+        "tips_text": {
+          "eng": "* Involve them in the planning process by letting them choose the recipe or ingredients.\n* Allow your teen to do as much as possible, including washing, measuring, cutting, and mixing.\n* Encourage your teen to ask questions and to share what they are learning.\n* Praise their efforts, even if the food does not turn out perfectly.\n* Your teen will learn important life skills by cooking together: How to prepare food and plan well, appreciating the effort cooking takes, and how good it feels to contribute to family life.\n* You might find that your teen has been wanting to help you cook but did not know how to ask."
+        }
+      },
+      "intro_text": "Cooking together is a wonderful opportunity to talk and connect, while also teaching your teen life skills.",
+      "steps_text": "1. Set a time and day that you and your teen are going to cook together. This will help both of you plan.\n2. Teach them about what you are going to make together. Show them the ingredients and let them help measure how much you will be using today.\n3. Give them a job to do, like fetching water, chopping, or stirring.\n4. Enjoy the meal as a family and let your teen enjoy the pride of contributing to the family",
+      "tips_text": "* Involve them in the planning process by letting them choose the recipe or ingredients.\n* Allow your teen to do as much as possible, including washing, measuring, cutting, and mixing.\n* Encourage your teen to ask questions and to share what they are learning.\n* Praise their efforts, even if the food does not turn out perfectly.\n* Your teen will learn important life skills by cooking together: How to prepare food and plan well, appreciating the effort cooking takes, and how good it feels to contribute to family life.\n* You might find that your teen has been wanting to help you cook but did not know how to ask."
+    },
+    {
+      "id": "tell_stories",
+      "number": 12,
+      "group": "everyday",
+      "icon_asset": "plh_images/parent_centre/ltp_activities/tell_stories_icon.svg",
+      "image_asset": "plh_images/parent_centre/ltp_activities/tell_stories.svg",
+      "favourite_field": "ltp_activity_tell_stories_favourite",
+      "title": "Storytelling",
+      "_translations": {
+        "title": {},
+        "intro_text": {},
+        "steps_text": {},
+        "tips_text": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Storytelling"
+        },
+        "intro_text": {
+          "eng": "Storytelling is a wonderful way to help your teen feel more connected with you, as well as with their family, history and culture."
+        },
+        "steps_text": {
+          "eng": "1. Choose a time and place where you and your teen can talk comfortably. This could be after dinner, before bedtime, or during a walk outside.\n2. Start by sharing your own story. It could be something that happened today, something you remember as a child or a memory that is special to you.\n3. After you finish your story, ask your teen if they have any questions. If they don’t have any, ask them to share their own story with you.  \n4. Listen to your teen's story, ask questions, and show interest in what they have to say.\n5. If your teen is struggling to come up with a story, ask something like \"What is your favourite childhood memory?\" or \"What is a tradition in our family that you enjoy?\". They can even make up a story."
+        },
+        "tips_text": {
+          "eng": "* Create a safe space for your teen to share their stories. They will share more with you if they feel like you won’t be upset with them.\n* Give your teen time to think and come up with their own story. This may not be easy for them to do."
+        }
+      },
+      "intro_text": "Storytelling is a wonderful way to help your teen feel more connected with you, as well as with their family, history and culture.",
+      "steps_text": "1. Choose a time and place where you and your teen can talk comfortably. This could be after dinner, before bedtime, or during a walk outside.\n2. Start by sharing your own story. It could be something that happened today, something you remember as a child or a memory that is special to you.\n3. After you finish your story, ask your teen if they have any questions. If they don’t have any, ask them to share their own story with you.  \n4. Listen to your teen's story, ask questions, and show interest in what they have to say.\n5. If your teen is struggling to come up with a story, ask something like \"What is your favourite childhood memory?\" or \"What is a tradition in our family that you enjoy?\". They can even make up a story.",
+      "tips_text": "* Create a safe space for your teen to share their stories. They will share more with you if they feel like you won’t be upset with them.\n* Give your teen time to think and come up with their own story. This may not be easy for them to do."
+    },
+    {
+      "id": "dance",
+      "number": 13,
+      "group": "games",
+      "icon_asset": "plh_images/parent_centre/ltp_activities/dance_icon.svg",
+      "image_asset": "plh_images/parent_centre/ltp_activities/dance.svg",
+      "favourite_field": "ltp_activity_dance_favourite",
+      "title": "Music and dance",
+      "_translations": {
+        "title": {},
+        "intro_text": {},
+        "steps_text": {},
+        "tips_text": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Music and dance"
+        },
+        "intro_text": {
+          "eng": "Dancing is a fun way to get exercise, and a great way to learn about your teen’s interests."
+        },
+        "steps_text": {
+          "eng": "1. Ask your teen what music they like. Show real interest by asking more questions like where they heard it and what they like about it.\n2. Teach each other your favourite dance moves or learn new ones together. \n3. Once you have learned some new dance moves, practise them together. Remember to have fun."
+        },
+        "tips_text": {
+          "eng": "* Let your teen show you music and dance moves.\n* Don't take it too seriously, be silly and have fun together."
+        }
+      },
+      "intro_text": "Dancing is a fun way to get exercise, and a great way to learn about your teen’s interests.",
+      "steps_text": "1. Ask your teen what music they like. Show real interest by asking more questions like where they heard it and what they like about it.\n2. Teach each other your favourite dance moves or learn new ones together. \n3. Once you have learned some new dance moves, practise them together. Remember to have fun.",
+      "tips_text": "* Let your teen show you music and dance moves.\n* Don't take it too seriously, be silly and have fun together."
+    },
+    {
+      "id": "short_term_goal",
+      "number": 14,
+      "group": "home",
+      "icon_asset": "plh_images/parent_centre/ltp_activities/short_term_goal_icon.svg",
+      "image_asset": "plh_images/parent_centre/ltp_activities/short_term_goal.svg",
+      "favourite_field": "ltp_activity_short_term_goal_favourite",
+      "title": "Goal setting",
+      "_translations": {
+        "title": {},
+        "intro_text": {},
+        "steps_text": {},
+        "tips_text": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Goal setting"
+        },
+        "intro_text": {
+          "eng": "Setting weekly goals together teaches your teen how to set achievable tasks and work towards their larger long-term goals. \n\nThis is a great way to bond and to support their personal growth and success in education."
+        },
+        "steps_text": {
+          "eng": "1. At the start of each week, sit down with your teen and ask them to choose one goal for that week. Make sure the goal is specific and can be done in one week. \n2. Share your own goal with your teen and try to support each other to reach your goals.\n3. During the week, praise your teen for working on their goal. Celebrate their hard work.\n4. If your teen does not reach their goal, use it as an opportunity to learn: Talk about why they did not reach it. What could they do better next time? Encourage them to re-plan their goal for next week.\n5. Do this every week to start the habit of setting goals and completing them."
+        },
+        "tips_text": {
+          "eng": "* Let your teen choose their own goal.\n* Make sure the goal is small enough for them to do in one week. Teens are more likely to set more goals if they complete their last goal. \n* Praise your teen for trying! They will put more effort in if they see that you care about their goal."
+        }
+      },
+      "intro_text": "Setting weekly goals together teaches your teen how to set achievable tasks and work towards their larger long-term goals. \n\nThis is a great way to bond and to support their personal growth and success in education.",
+      "steps_text": "1. At the start of each week, sit down with your teen and ask them to choose one goal for that week. Make sure the goal is specific and can be done in one week. \n2. Share your own goal with your teen and try to support each other to reach your goals.\n3. During the week, praise your teen for working on their goal. Celebrate their hard work.\n4. If your teen does not reach their goal, use it as an opportunity to learn: Talk about why they did not reach it. What could they do better next time? Encourage them to re-plan their goal for next week.\n5. Do this every week to start the habit of setting goals and completing them.",
+      "tips_text": "* Let your teen choose their own goal.\n* Make sure the goal is small enough for them to do in one week. Teens are more likely to set more goals if they complete their last goal. \n* Praise your teen for trying! They will put more effort in if they see that you care about their goal."
+    },
+    {
+      "id": "long_term_goal",
+      "number": 15,
+      "group": "home",
+      "icon_asset": "plh_images/parent_centre/ltp_activities/long_term_goal_icon.svg",
+      "image_asset": "plh_images/parent_centre/ltp_activities/long_term_goal.svg",
+      "favourite_field": "ltp_activity_long_term_goal_favourite",
+      "title": "Realise my strength",
+      "_translations": {
+        "title": {},
+        "intro_text": {},
+        "steps_text": {},
+        "tips_text": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Realise my strength"
+        },
+        "intro_text": {
+          "eng": "Helping your teen understand their strengths makes them feel confident in life and helps them take steps to grow in other areas as well."
+        },
+        "steps_text": {
+          "eng": "1. Talk about your teen’s strengths. Ask them:\n   * Which 3 things are you good at? (These can be small things, such as being on time for school, washing the dishes, or something they do with their friends.)\n   * What helped you to be good at these things? (Make sure to talk about hard work and practice.)\n2. Talk about your teen’s areas of improvement. Ask them:\n   * What would you love to be better at? \n   * What can you do to reach that goal, and how can I help you? (Break down the big goal into smaller achievable goals/steps.)\n3. Write down these smaller goals and encourage your teen to tick them off as they accomplish them.\n4. Celebrate each achievement and encourage your teen to keep working towards their bigger goal."
+        },
+        "tips_text": {
+          "eng": "* Remember that teens will try more if they find things fun.\n* Celebrate each step along the way and offer praise when your teen faces challenges."
+        }
+      },
+      "intro_text": "Helping your teen understand their strengths makes them feel confident in life and helps them take steps to grow in other areas as well.",
+      "steps_text": "1. Talk about your teen’s strengths. Ask them:\n   * Which 3 things are you good at? (These can be small things, such as being on time for school, washing the dishes, or something they do with their friends.)\n   * What helped you to be good at these things? (Make sure to talk about hard work and practice.)\n2. Talk about your teen’s areas of improvement. Ask them:\n   * What would you love to be better at? \n   * What can you do to reach that goal, and how can I help you? (Break down the big goal into smaller achievable goals/steps.)\n3. Write down these smaller goals and encourage your teen to tick them off as they accomplish them.\n4. Celebrate each achievement and encourage your teen to keep working towards their bigger goal.",
+      "tips_text": "* Remember that teens will try more if they find things fun.\n* Celebrate each step along the way and offer praise when your teen faces challenges."
+    },
+    {
+      "id": "clean",
+      "number": 16,
+      "group": "everyday",
+      "icon_asset": "plh_images/parent_centre/ltp_activities/clean_icon.svg",
+      "image_asset": "plh_images/parent_centre/ltp_activities/clean.svg",
+      "favourite_field": "ltp_activity_clean_favourite",
+      "title": "Cleaning and organising",
+      "_translations": {
+        "title": {},
+        "intro_text": {},
+        "steps_text": {},
+        "tips_text": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Cleaning and organising"
+        },
+        "intro_text": {
+          "eng": "Every house needs some cleaning and organising sometimes. Working with your teen to do this provides an opportunity for bonding and teamwork."
+        },
+        "steps_text": {
+          "eng": "1. Identify a specific area in your home that needs cleaning and organising, such as a room, cupboard, or area on the floor.\n2. Talk to your teen about what needs to be done to clean the space (Like sorting items into groups, or dusting a surface).\n3. Give specific tasks to each person and work together to complete them. \n4. As you clean and organise, take the opportunity to talk and connect with your teen. Ask them about their interests and share stories from your own life.\n5. When you are finished, take a moment to appreciate what you did and praise your teen for their part."
+        },
+        "tips_text": {
+          "eng": "* Let your teen come up with an idea for what they think should be cleaned or organised.\n* Take breaks and take your time. Remember to keep things fun. The goal is to spend time with your teen and teach them about being tidy and organised."
+        }
+      },
+      "intro_text": "Every house needs some cleaning and organising sometimes. Working with your teen to do this provides an opportunity for bonding and teamwork.",
+      "steps_text": "1. Identify a specific area in your home that needs cleaning and organising, such as a room, cupboard, or area on the floor.\n2. Talk to your teen about what needs to be done to clean the space (Like sorting items into groups, or dusting a surface).\n3. Give specific tasks to each person and work together to complete them. \n4. As you clean and organise, take the opportunity to talk and connect with your teen. Ask them about their interests and share stories from your own life.\n5. When you are finished, take a moment to appreciate what you did and praise your teen for their part.",
+      "tips_text": "* Let your teen come up with an idea for what they think should be cleaned or organised.\n* Take breaks and take your time. Remember to keep things fun. The goal is to spend time with your teen and teach them about being tidy and organised."
+    },
+    {
+      "id": "reflect_positive",
+      "number": 17,
+      "icon_asset": "plh_images/parent_centre/ltp_activities/talk_1_icon.svg",
+      "image_asset": "plh_images/parent_centre/ltp_activities/talk_1.svg",
+      "group": "chat",
+      "favourite_field": "ltp_activity_reflect_positive_favourite",
+      "title": "Reflect on the positive",
+      "_translations": {
+        "title": {},
+        "intro_text": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Reflect on the positive"
+        },
+        "intro_text": {
+          "eng": "At the end of the day, take a minute to: \n\n* Talk to your teen about one fun thing they did. \n* Praise yourself for one thing you did well today. \n* You are a star!"
+        }
+      },
+      "intro_text": "At the end of the day, take a minute to: \n\n* Talk to your teen about one fun thing they did. \n* Praise yourself for one thing you did well today. \n* You are a star!"
+    },
+    {
+      "id": "check_in_chat",
+      "number": 18,
+      "icon_asset": "plh_images/parent_centre/ltp_activities/talk_2_icon.svg",
+      "image_asset": "plh_images/parent_centre/ltp_activities/talk_2.svg",
+      "group": "chat",
+      "favourite_field": "ltp_activity_check_in_chat_favourite",
+      "title": "Check-in chat",
+      "_translations": {
+        "title": {},
+        "intro_text": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Check-in chat"
+        },
+        "intro_text": {
+          "eng": "* Ask each other, “What made you happy today?”\n* Ask each other, “What difficulty did you face today?”\n* Ask each other, “How can I help you?”\n* Try to do this together every day; it could be when you are eating dinner together or before you go to bed."
+        }
+      },
+      "intro_text": "* Ask each other, “What made you happy today?”\n* Ask each other, “What difficulty did you face today?”\n* Ask each other, “How can I help you?”\n* Try to do this together every day; it could be when you are eating dinner together or before you go to bed."
+    },
+    {
+      "id": "dream_travel",
+      "number": 19,
+      "icon_asset": "plh_images/parent_centre/ltp_activities/talk_3_icon.svg",
+      "image_asset": "plh_images/parent_centre/ltp_activities/talk_3.svg",
+      "group": "chat",
+      "favourite_field": "ltp_activity_dream_travel_favourite",
+      "title": "Dream travel",
+      "_translations": {
+        "title": {},
+        "intro_text": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Dream travel"
+        },
+        "intro_text": {
+          "eng": "* You can’t always travel, but you can always dream! Ask your teen these questions:\n* Where would you want to travel to? How long would you be away? What would you pack? What would you do on your trip? What would you see?\n* Look at a map together or draw one.\n* Choose a country that your teen has never heard of and learn more about the country."
+        }
+      },
+      "intro_text": "* You can’t always travel, but you can always dream! Ask your teen these questions:\n* Where would you want to travel to? How long would you be away? What would you pack? What would you do on your trip? What would you see?\n* Look at a map together or draw one.\n* Choose a country that your teen has never heard of and learn more about the country."
+    },
+    {
+      "id": "famous_party",
+      "number": 20,
+      "icon_asset": "plh_images/parent_centre/ltp_activities/talk_4_icon.svg",
+      "image_asset": "plh_images/parent_centre/ltp_activities/talk_4.svg",
+      "group": "chat",
+      "favourite_field": "ltp_activity_famous_party_favourite",
+      "title": "Famous party",
+      "_translations": {
+        "title": {},
+        "intro_text": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Famous party"
+        },
+        "intro_text": {
+          "eng": "You and your teenager can plan a guestlist of the famous people you’d most like to invite to your party. You can each have five people – they can be from the past or from the present time. Who would you invite? And would your guests get on well together?"
+        }
+      },
+      "intro_text": "You and your teenager can plan a guestlist of the famous people you’d most like to invite to your party. You can each have five people – they can be from the past or from the present time. Who would you invite? And would your guests get on well together?"
+    },
+    {
+      "id": "two_truths",
+      "number": 21,
+      "icon_asset": "plh_images/parent_centre/ltp_activities/talk_5_icon.svg",
+      "image_asset": "plh_images/parent_centre/ltp_activities/talk_5.svg",
+      "group": "chat",
+      "favourite_field": "ltp_activity_two_truths_favourite",
+      "title": "Two truths, one lie",
+      "_translations": {
+        "title": {},
+        "intro_text": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Two truths, one lie"
+        },
+        "intro_text": {
+          "eng": "* Think of three statements about yourself. Two must be true and one must be a lie.\n* It might help to think of wishes, dreams, experiences at school, likes or dislikes. For example: I hate bananas, my favourite subject is science, and I really wish I could sing. \n* Say them to your teenager and ask them to guess which one is a lie. \n* Did they guess correctly? Was it a surprise?\n* Now ask them to do the same. Did you learn something new about each other?"
+        }
+      },
+      "intro_text": "* Think of three statements about yourself. Two must be true and one must be a lie.\n* It might help to think of wishes, dreams, experiences at school, likes or dislikes. For example: I hate bananas, my favourite subject is science, and I really wish I could sing. \n* Say them to your teenager and ask them to guess which one is a lie. \n* Did they guess correctly? Was it a surprise?\n* Now ask them to do the same. Did you learn something new about each other?"
+    },
+    {
+      "id": "time_machine",
+      "number": 22,
+      "icon_asset": "plh_images/parent_centre/ltp_activities/talk_6_icon.svg",
+      "image_asset": "plh_images/parent_centre/ltp_activities/talk_6.svg",
+      "group": "chat",
+      "favourite_field": "ltp_activity_time_machine_favourite",
+      "title": "Time machine",
+      "_translations": {
+        "title": {},
+        "intro_text": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Time machine"
+        },
+        "intro_text": {
+          "eng": "Tell your teenager something about when you were a teenager yourself. What things didn’t exist then? Phones with internet? What did you do for fun? What did you worry about? Don’t worry if they don’t tell you something in return – what’s important is that they listen and remember. Sometimes our teenagers forget that their parents are people too!"
+        }
+      },
+      "intro_text": "Tell your teenager something about when you were a teenager yourself. What things didn’t exist then? Phones with internet? What did you do for fun? What did you worry about? Don’t worry if they don’t tell you something in return – what’s important is that they listen and remember. Sometimes our teenagers forget that their parents are people too!"
+    },
+    {
+      "id": "superpowers",
+      "number": 23,
+      "icon_asset": "plh_images/parent_centre/ltp_activities/talk_7_icon.svg",
+      "image_asset": "plh_images/parent_centre/ltp_activities/talk_7.svg",
+      "group": "chat",
+      "favourite_field": "ltp_activity_superpowers_favourite",
+      "title": "Superpowers",
+      "_translations": {
+        "title": {},
+        "intro_text": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Superpowers"
+        },
+        "intro_text": {
+          "eng": "* Think of a superpower. For example, going anywhere instantly, travelling in time, reading minds. \n* Ask your teen, “If you had the superpower to […], how would you use it?”\n* Encourage them to give their superhero a name and act it out. \n* Now let your teen choose a superpower for you.\n* Make sure you act out your superpower, too!"
+        }
+      },
+      "intro_text": "* Think of a superpower. For example, going anywhere instantly, travelling in time, reading minds. \n* Ask your teen, “If you had the superpower to […], how would you use it?”\n* Encourage them to give their superhero a name and act it out. \n* Now let your teen choose a superpower for you.\n* Make sure you act out your superpower, too!"
+    },
+    {
+      "id": "friendly_chat",
+      "number": 24,
+      "icon_asset": "plh_images/parent_centre/ltp_activities/talk_1_icon.svg",
+      "image_asset": "plh_images/parent_centre/ltp_activities/talk_1.svg",
+      "group": "chat",
+      "favourite_field": "ltp_activity_friendly_chat_favourite",
+      "title": "Just a friendly chat",
+      "_translations": {
+        "title": {},
+        "intro_text": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Just a friendly chat"
+        },
+        "intro_text": {
+          "eng": "Have a conversation with your teen about something they like.\n\nIt can be about anything they choose to talk about: sports, friends, music, celebrities…\n\nTry to listen to your teen and give them space to talk."
+        }
+      },
+      "intro_text": "Have a conversation with your teen about something they like.\n\nIt can be about anything they choose to talk about: sports, friends, music, celebrities…\n\nTry to listen to your teen and give them space to talk."
+    },
+    {
+      "id": "interrupter",
+      "number": 25,
+      "icon_asset": "plh_images/parent_centre/ltp_activities/talk_2_icon.svg",
+      "image_asset": "plh_images/parent_centre/ltp_activities/talk_2.svg",
+      "group": "chat",
+      "favourite_field": "ltp_activity_interrupter_favourite",
+      "title": "The interrupter",
+      "_translations": {
+        "title": {},
+        "intro_text": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "The interrupter"
+        },
+        "intro_text": {
+          "eng": "* Choose a storyteller to start making up a story.\n* Story listeners can interrupt with a word at any time.\n* The storyteller needs to fit that word in their story.\n* When the story is finished, try with a different storyteller!"
+        }
+      },
+      "intro_text": "* Choose a storyteller to start making up a story.\n* Story listeners can interrupt with a word at any time.\n* The storyteller needs to fit that word in their story.\n* When the story is finished, try with a different storyteller!"
+    },
+    {
+      "id": "three_options",
+      "number": 26,
+      "icon_asset": "plh_images/parent_centre/ltp_activities/talk_3_icon.svg",
+      "image_asset": "plh_images/parent_centre/ltp_activities/talk_3.svg",
+      "group": "chat",
+      "favourite_field": "ltp_activity_three_options_favourite",
+      "title": "Three options",
+      "_translations": {
+        "title": {},
+        "intro_text": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Three options"
+        },
+        "intro_text": {
+          "eng": "* Think of three different situations. For example, driving a car, sailing a boat or flying a plane.\n* Say them to your teen and ask, “Which would you prefer?”\n* Ask them why?\n* Now think of three more situations or ask your teen to do it for you."
+        }
+      },
+      "intro_text": "* Think of three different situations. For example, driving a car, sailing a boat or flying a plane.\n* Say them to your teen and ask, “Which would you prefer?”\n* Ask them why?\n* Now think of three more situations or ask your teen to do it for you."
+    },
+    {
+      "id": "yes_no_maybe",
+      "number": 27,
+      "icon_asset": "plh_images/parent_centre/ltp_activities/talk_4_icon.svg",
+      "image_asset": "plh_images/parent_centre/ltp_activities/talk_4.svg",
+      "group": "chat",
+      "favourite_field": "ltp_activity_yes_no_maybe_favourite",
+      "title": "Yes, no or maybe",
+      "_translations": {
+        "title": {},
+        "intro_text": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Yes, no or maybe"
+        },
+        "intro_text": {
+          "eng": "* Ask each other questions. They can be any questions about things you like or what you did today.\n* The only rule is that you can’t answer “yes”, “no” or “maybe”.\n* How long can you last? How creative can you get with your answers?\n* Swap over and play again!"
+        }
+      },
+      "intro_text": "* Ask each other questions. They can be any questions about things you like or what you did today.\n* The only rule is that you can’t answer “yes”, “no” or “maybe”.\n* How long can you last? How creative can you get with your answers?\n* Swap over and play again!"
+    },
+    {
+      "id": "memory_game",
+      "number": 28,
+      "icon_asset": "plh_images/parent_centre/ltp_activities/talk_5_icon.svg",
+      "image_asset": "plh_images/parent_centre/ltp_activities/talk_5.svg",
+      "group": "chat",
+      "favourite_field": "ltp_activity_memory_game_favourite",
+      "title": "Memory game – \"On Saturday...\"",
+      "_translations": {
+        "title": {},
+        "intro_text": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Memory game – \"On Saturday...\""
+        },
+        "intro_text": {
+          "eng": "* First person says, “On Saturday, I am going to… (e.g., go to the park)”.\n* Second person adds to first person, “On Saturday, I am going to the park and… (e.g., visit my best friend).\n* Each person adds to the previous, trying to think of all of the fun things to do on Saturday."
+        }
+      },
+      "intro_text": "* First person says, “On Saturday, I am going to… (e.g., go to the park)”.\n* Second person adds to first person, “On Saturday, I am going to the park and… (e.g., visit my best friend).\n* Each person adds to the previous, trying to think of all of the fun things to do on Saturday."
+    },
+    {
+      "id": "invent_story",
+      "number": 29,
+      "icon_asset": "plh_images/parent_centre/ltp_activities/talk_6_icon.svg",
+      "image_asset": "plh_images/parent_centre/ltp_activities/talk_6.svg",
+      "group": "chat",
+      "favourite_field": "ltp_activity_invent_story_favourite",
+      "title": "Make up a story",
+      "_translations": {
+        "title": {},
+        "intro_text": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Make up a story"
+        },
+        "intro_text": {
+          "eng": "* Start the story with “Once upon a time there was a…”\n* Let your teen make up the next sentence.\n* Then you make up a sentence.\n* Take turns until you have a wonderful new story.\n* Make sure to end the story on a positive note.\n* Ask your teen what their favourite part of the story was!"
+        }
+      },
+      "intro_text": "* Start the story with “Once upon a time there was a…”\n* Let your teen make up the next sentence.\n* Then you make up a sentence.\n* Take turns until you have a wonderful new story.\n* Make sure to end the story on a positive note.\n* Ask your teen what their favourite part of the story was!"
+    }
+  ],
+  "_xlsxPath": "global/data/activity_data_list.xlsx"
+}

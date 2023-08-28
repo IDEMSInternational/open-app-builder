@@ -1,0 +1,26 @@
+{
+  "flow_type": "template",
+  "flow_name": "app_menu_post_rct_unlocked",
+  "status": "released",
+  "rows": [
+    {
+      "type": "title",
+      "name": "title",
+      "value": "Unlock New Content",
+      "_translations": {
+        "value": {}
+      },
+      "_nested_name": "title"
+    },
+    {
+      "type": "text",
+      "name": "text",
+      "value": "The new content is already accessible.",
+      "_translations": {
+        "value": {}
+      },
+      "_nested_name": "text"
+    }
+  ],
+  "_xlsxPath": "global/core_templates/core_templates_settings.xlsx"
+}
