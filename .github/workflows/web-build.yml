@@ -1,9 +1,12 @@
 ##################################################################################
 #         Configuration
+# These variables will be populated from environment
 ##################################################################################
 env:
-  DEPLOYMENT_NAME_DEFAULT: "debug"
-  DEPLOYMENT_REPO_DEFAULT: "IDEMSInternational/app-debug-content"
+  DEPLOYMENT_NAME_DEFAULT: debug
+  DEPLOYMENT_NAME: ${{vars.DEPLOYMENT_NAME}}
+  DEPLOYMENT_REPO: ${{vars.DEPLOYMENT_REPO}}
+  DEPLOYMENT_PRIVATE_KEY: ${{secrets.DEPLOYMENT_PRIVATE_KEY}}
   FIREBASE_CONFIG_TS: ${{secrets.FIREBASE_CONFIG_TS}}
 
 
@@ -33,15 +36,9 @@ on:
         type: string
         default: ""
       deployment:
-        description: Target deployment name. If branch name provided will take suffix (`prod/my_deployment` -> `my_deployment`)
-        type: string
-        default: ""
-      deployment-repo:
-        description: Remote git target to checkout if using external deployment repo. Expected format {owner}/{repo}
-        type: string
-        default: ""
-      deployment-private-key:
-        description: Private key used to decrypt deployment (if required)
+        description: |
+          Target deployment name. If branch name provided will take suffix (`prod/my_deployment` -> `my_deployment`). 
+          Will load variables from named deployment environment 
         type: string
         default: ""
       include-tests:
@@ -69,13 +66,19 @@ on:
         value: ${{ jobs.configure_build.outputs.GIT_SHA }}
 
 jobs:
-  # Populate variables to use as inputs in next build job
+  #############################################################################
+  #         configure Build
+  # Deployment-specific variables are loaded from deployment name environment contexts
+  # stored on github actions.
+  # Determine which set of environment variables to load, depending on passed inputs,
+  # target branch names or default fallback
+  #
   # Pattern found in this question: https://github.com/actions/runner/issues/998#issue-817330769  
   # Outputs here will also be made available to parent workflows via workflow_call outputs
+  #############################################################################
   configure_build:
     outputs:
-      DEPLOYMENT_NAME: ${{ steps.populate.outputs.DEPLOYMENT_NAME }}
-      DEPLOYMENT_REPO: ${{ steps.populate.outputs.DEPLOYMENT_REPO }}
+      ENVIRONMENT_NAME: ${{ steps.populate.outputs.ENVIRONMENT_NAME }}
       GIT_SHA: ${{ steps.populate.outputs.GIT_SHA }}
     runs-on: ubuntu-latest
     steps:
@@ -83,51 +86,36 @@ jobs:
         with:
           ref: ${{inputs.branch}}
 
-      #############################################################################
-      #         Deployment Name
-      #############################################################################
-      # Set deployment from input, replacing branch slash name with suffix (`prod/my_deployment` -> `my_deployment`)
-      # https://stackoverflow.com/a/40524879
-      - name: Set deployment name
+      - name: Set named input environment
+        if: ${{ inputs.environment }}
+        run: |
+          echo "ENVIRONMENT_NAME=${{inputs.environment}}" >> $GITHUB_OUTPUT;  
+        shell: bash
+
+      - name: Set environment from target
         if: ${{inputs.deployment && inputs.deployment != 'master' && inputs.deployment!='refs/heads/master'}}
         run: |
-          echo "DEPLOYMENT_NAME=$(echo ${{inputs.deployment}} | sed 's/.*\///')" >> $GITHUB_ENV;  
+          echo "ENVIRONMENT_NAME=$(echo ${{inputs.deployment}} | sed 's/.*\///')" >> $GITHUB_OUTPUT;
         shell: bash
 
-      - name: Set deployment repo
-        if: ${{inputs.deployment-repo}}
+      - name: Set default environment
+        if: ${{ !outputs.ENVIRONMENT_NAME }}
         run: |
-         echo "DEPLOYMENT_REPO=${{inputs.deployment-repo}}" >> $GITHUB_ENV;  
+          echo "ENVIRONMENT_NAME=$DEPLOYMENT_NAME_DEFAULT" >> $GITHUB_OUTPUT;  
         shell: bash
 
-      - name: Set default deployment
-        if: ${{!env.DEPLOYMENT_NAME}}
-        run: |
-          echo "DEPLOYMENT_NAME=$DEPLOYMENT_NAME_DEFAULT" >> $GITHUB_ENV;  
-          echo "DEPLOYMENT_REPO=$DEPLOYMENT_REPO_DEFAULT" >> $GITHUB_ENV;  
-        shell: bash
-
-      #############################################################################
-      #         Git SHA
-      # Populate git SHA for use in error logging
-      #############################################################################
+      # Additionally populate git SHA for use in error logging
       - name: Set Git SHA
         run: |
-          echo "GIT_SHA=$(git rev-parse --short=6 HEAD)" >> $GITHUB_ENV
+          echo "GIT_SHA=$(git rev-parse --short=6 HEAD)" >> $GITHUB_OUTPUT
 
-      - name: Populate Outputs
-        id: populate
-        run: |
-          echo "DEPLOYMENT_NAME=${{env.DEPLOYMENT_NAME}}" >> $GITHUB_OUTPUT;
-          echo "DEPLOYMENT_REPO=${{env.DEPLOYMENT_REPO}}" >> $GITHUB_OUTPUT;
-          echo "GIT_SHA=${{env.GIT_SHA}}" >> $GITHUB_OUTPUT;
+     
     
   build:
     runs-on: ubuntu-latest
     needs: configure_build
+    environment: ${{needs.configure_build.outputs.ENVIRONMENT_NAME}}
     env:
-      DEPLOYMENT_NAME: ${{ needs.configure_build.outputs.DEPLOYMENT_NAME }}
-      DEPLOYMENT_REPO: ${{ needs.configure_build.outputs.DEPLOYMENT_REPO }}
       GIT_SHA: ${{ needs.configure_build.outputs.GIT_SHA }}
     steps:
       - uses: actions/checkout@v3
