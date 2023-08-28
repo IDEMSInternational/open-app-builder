@@ -174,7 +174,7 @@ jobs:
         run: echo "export const GIT_SHA = \"$GIT_SHA\";" > src/environments/sha.ts
 
       - name: Import remote Deployment
-        if: ${{DEPLOYMENT_NAME == "https://github.com/*"}}
+        if: ${{env.DEPLOYMENT_NAME == "https://github.com/*"}}
         uses: actions/checkout@v3
         with:
           repository: $DEPLOYMENT_NAME
