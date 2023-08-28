@@ -179,6 +179,7 @@ jobs:
         with:
           repository: $DEPLOYMENT_REPO
           lfs: ${{inputs.lfs}}
+          path: '.idems_app/deployments'
           # TODO - add support for specific branch/release
 
       - name: Set deployment
