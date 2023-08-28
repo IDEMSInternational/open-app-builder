@@ -1,0 +1,77 @@
+{
+  "flow_type": "data_list",
+  "flow_name": "activity_groups_data",
+  "data_list_name": "activity_groups",
+  "status": "released",
+  "rows": [
+    {
+      "id": "everyday",
+      "title": "Everyday activities",
+      "_translations": {
+        "title": {},
+        "text": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Everyday activities"
+        },
+        "text": {
+          "eng": "Have fun AND learn through everyday activities."
+        }
+      },
+      "text": "Have fun AND learn through everyday activities."
+    },
+    {
+      "id": "home",
+      "title": "Learning at home",
+      "_translations": {
+        "title": {},
+        "text": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Learning at home"
+        },
+        "text": {
+          "eng": "Help grow your teen’s skills for school and life."
+        }
+      },
+      "text": "Help grow your teen’s skills for school and life."
+    },
+    {
+      "id": "games",
+      "title": "Fun and games",
+      "_translations": {
+        "title": {},
+        "text": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Fun and games"
+        },
+        "text": {
+          "eng": "Play games to strengthen your relationship and your teen’s skills."
+        }
+      },
+      "text": "Play games to strengthen your relationship and your teen’s skills."
+    },
+    {
+      "id": "chat",
+      "title": "Chat together",
+      "_translations": {
+        "title": {},
+        "text": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Chat together"
+        },
+        "text": {
+          "eng": "Talk with each other to know each other better."
+        }
+      },
+      "text": "Talk with each other to know each other better."
+    }
+  ],
+  "_xlsxPath": "global/data/activity_data_list.xlsx"
+}

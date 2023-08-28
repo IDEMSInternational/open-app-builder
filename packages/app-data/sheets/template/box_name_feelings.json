@@ -1,0 +1,79 @@
+{
+  "flow_type": "template",
+  "flow_name": "box_name_feelings",
+  "status": "released",
+  "rows": [
+    {
+      "type": "text",
+      "name": "text_top",
+      "value": "Sit with your teen and choose:\n* How could a person feel when someone they love passes away?\n* How do you feel now?",
+      "_translations": {
+        "value": {}
+      },
+      "_nested_name": "text_top"
+    },
+    {
+      "type": "radio_button_grid",
+      "parameter_list": {
+        "item_width": "100px",
+        "answer_list": "@data.name_feelings"
+      },
+      "name": "radio_button_grid",
+      "_nested_name": "radio_button_grid",
+      "_dynamicFields": {
+        "parameter_list": {
+          "answer_list": [
+            {
+              "fullExpression": "@data.name_feelings",
+              "matchedExpression": "@data.name_feelings",
+              "type": "data",
+              "fieldName": "name_feelings"
+            }
+          ]
+        }
+      },
+      "_dynamicDependencies": {
+        "@data.name_feelings": [
+          "parameter_list.answer_list"
+        ]
+      }
+    },
+    {
+      "type": "text",
+      "name": "text_bottom",
+      "value": "You can choose more than one feeling (or all feelings!), and you can think of other feelings if they are not here.",
+      "_translations": {
+        "value": {}
+      },
+      "_nested_name": "text_bottom"
+    },
+    {
+      "type": "template",
+      "name": "nav_buttons",
+      "value": "nav_buttons",
+      "action_list": [
+        {
+          "trigger": "completed",
+          "action_id": "emit",
+          "args": [
+            "completed"
+          ],
+          "_raw": "completed | emit:completed",
+          "_cleaned": "completed | emit:completed"
+        },
+        {
+          "trigger": "uncompleted",
+          "action_id": "emit",
+          "args": [
+            "uncompleted"
+          ],
+          "_raw": "uncompleted | emit:uncompleted",
+          "_cleaned": "uncompleted | emit:uncompleted"
+        }
+      ],
+      "rows": [],
+      "_nested_name": "nav_buttons"
+    }
+  ],
+  "_xlsxPath": "global/top_templates/workshop_templates/workshop_grief.xlsx"
+}

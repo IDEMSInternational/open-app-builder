@@ -1,0 +1,49 @@
+{
+  "flow_type": "template",
+  "flow_name": "m_hp_reminder",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "in_week_message",
+      "value": "in_week_message",
+      "rows": [
+        {
+          "name": "title",
+          "value": "@global.m_hp_reminder",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "in_week_message.title",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@global.m_hp_reminder",
+                "matchedExpression": "@global.m_hp_reminder",
+                "type": "global",
+                "fieldName": "m_hp_reminder"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@global.m_hp_reminder": [
+              "value"
+            ]
+          }
+        },
+        {
+          "name": "image",
+          "value": "plh_images/workshop_modes/individual/with_teen.svg",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "in_week_message.image"
+        }
+      ],
+      "_nested_name": "in_week_message"
+    }
+  ],
+  "_xlsxPath": "global/top_templates/in_week_messages/in_week_message_types.xlsx"
+}

@@ -1,0 +1,265 @@
+{
+  "flow_type": "data_list",
+  "flow_name": "suggestions_data",
+  "status": "released",
+  "data_list_name": "suggestions",
+  "rows": [
+    {
+      "id": "use_voice",
+      "workshop": "w_svp",
+      "image_asset": "plh_images/workshops/w_svp/use_voice.svg",
+      "title": "Practice",
+      "_translations": {
+        "title": {},
+        "text": {},
+        "option_1_title": {},
+        "option_1_text": {},
+        "option_2_title": {},
+        "option_2_text": {},
+        "option_3_title": {},
+        "option_3_text": {},
+        "option_4_title": {},
+        "option_4_text": {},
+        "option_5_title": {},
+        "option_5_text": {},
+        "option_6_title": {},
+        "option_6_text": {},
+        "option_7_title": {},
+        "option_7_text": {},
+        "option_8_title": {},
+        "option_8_text": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Practice"
+        },
+        "text": {
+          "eng": "Find a chair and pretend it is the attacker. Practise saying/doing these responses:"
+        },
+        "option_1_title": {
+          "eng": "Yell"
+        },
+        "option_1_text": {
+          "eng": "“No!”"
+        },
+        "option_2_title": {
+          "eng": "Call for help"
+        },
+        "option_2_text": {
+          "eng": "“Someone help me!”"
+        },
+        "option_3_title": {
+          "eng": "Warn of consequences"
+        },
+        "option_3_text": {
+          "eng": "“I will call the police if you touch me again.”"
+        },
+        "option_4_title": {
+          "eng": "Name the behaviour"
+        },
+        "option_4_text": {
+          "eng": "\"Do not touch my bum.” or “Do not yell at me.”"
+        },
+        "option_5_title": {
+          "eng": "Act crazy"
+        },
+        "option_5_text": {
+          "eng": "Make a crazy scream or act like a gorilla!"
+        },
+        "option_6_title": {
+          "eng": "Pretend to go along to buy time"
+        },
+        "option_6_text": {
+          "eng": "“I will do anything you want, just please don’t hurt me.”"
+        },
+        "option_7_title": {
+          "eng": "Use humour"
+        },
+        "option_7_text": {
+          "eng": "“No lift for me, thanks. Last time I got a lift I threw up EVERYWHERE!”"
+        },
+        "option_8_title": {
+          "eng": "Give something to get what you want"
+        },
+        "option_8_text": {
+          "eng": "“I will give you my phone if you let me go.”"
+        }
+      },
+      "text": "Find a chair and pretend it is the attacker. Practise saying/doing these responses:",
+      "option_1_title": "Yell",
+      "option_1_text": "“No!”",
+      "option_2_title": "Call for help",
+      "option_2_text": "“Someone help me!”",
+      "option_3_title": "Warn of consequences",
+      "option_3_text": "“I will call the police if you touch me again.”",
+      "option_4_title": "Name the behaviour",
+      "option_4_text": "\"Do not touch my bum.” or “Do not yell at me.”",
+      "option_5_title": "Act crazy",
+      "option_5_text": "Make a crazy scream or act like a gorilla!",
+      "option_6_title": "Pretend to go along to buy time",
+      "option_6_text": "“I will do anything you want, just please don’t hurt me.”",
+      "option_7_title": "Use humour",
+      "option_7_text": "“No lift for me, thanks. Last time I got a lift I threw up EVERYWHERE!”",
+      "option_8_title": "Give something to get what you want",
+      "option_8_text": "“I will give you my phone if you let me go.”"
+    },
+    {
+      "id": "first_targets",
+      "workshop": "w_svp",
+      "image_asset": "plh_images/workshops/w_svp/use_body/zone_1.gif",
+      "title": "First targets",
+      "_translations": {
+        "title": {},
+        "option_1_title": {},
+        "option_1_text": {},
+        "option_2_title": {},
+        "option_2_text": {},
+        "option_3_title": {},
+        "option_3_text": {},
+        "option_4_title": {},
+        "option_4_text": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "First targets"
+        },
+        "option_1_title": {
+          "eng": "Eyes"
+        },
+        "option_1_text": {
+          "eng": "Use your fingers as claws and scratch the attacker’s face as hard as possible. \n\nPush your thumbs into the eye sockets of your attacker and then outward towards the sides of their head."
+        },
+        "option_2_title": {
+          "eng": "Throat"
+        },
+        "option_2_text": {
+          "eng": "Push your finger into the hole at the bottom of the attacker’s throat. \n\nPunch the throat with your fist or back of your elbow."
+        },
+        "option_3_title": {
+          "eng": "Groin"
+        },
+        "option_3_text": {
+          "eng": "Kick the attacker’s groin with your knee, or punch it with your fist or elbow.\n\nGrab, squeeze, twist and pull the attacker’s testicles with your hand."
+        },
+        "option_4_title": {
+          "eng": "Knees"
+        },
+        "option_4_text": {
+          "eng": "Kick against your attacker’s knee with your foot."
+        }
+      },
+      "option_1_title": "Eyes",
+      "option_1_text": "Use your fingers as claws and scratch the attacker’s face as hard as possible. \n\nPush your thumbs into the eye sockets of your attacker and then outward towards the sides of their head.",
+      "option_2_title": "Throat",
+      "option_2_text": "Push your finger into the hole at the bottom of the attacker’s throat. \n\nPunch the throat with your fist or back of your elbow.",
+      "option_3_title": "Groin",
+      "option_3_text": "Kick the attacker’s groin with your knee, or punch it with your fist or elbow.\n\nGrab, squeeze, twist and pull the attacker’s testicles with your hand.",
+      "option_4_title": "Knees",
+      "option_4_text": "Kick against your attacker’s knee with your foot."
+    },
+    {
+      "id": "second_targets",
+      "workshop": "w_svp",
+      "image_asset": "plh_images/workshops/w_svp/use_body/zone_2.gif",
+      "title": "Second targets",
+      "_translations": {
+        "title": {},
+        "option_1_title": {},
+        "option_1_text": {},
+        "option_2_title": {},
+        "option_2_text": {},
+        "option_3_title": {},
+        "option_3_text": {},
+        "option_4_title": {},
+        "option_4_text": {},
+        "option_5_title": {},
+        "option_5_text": {},
+        "option_6_title": {},
+        "option_6_text": {},
+        "option_7_title": {},
+        "option_7_text": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Second targets"
+        },
+        "option_1_title": {
+          "eng": "Temples"
+        },
+        "option_1_text": {
+          "eng": "Punch the attacker’s temples with your fist or the back of your elbow."
+        },
+        "option_2_title": {
+          "eng": "Nose"
+        },
+        "option_2_text": {
+          "eng": "Punch the attacker’s nose with your fist or the back of your elbow."
+        },
+        "option_3_title": {
+          "eng": "Ears"
+        },
+        "option_3_text": {
+          "eng": "With flat hands, smack the attacker’s ears from both sides as hard as possible. You can also pull or twist them."
+        },
+        "option_4_title": {
+          "eng": "Ribs"
+        },
+        "option_4_text": {
+          "eng": "Punch the attacker in the ribs with your fist or the back of your elbow."
+        },
+        "option_5_title": {
+          "eng": "Fingers"
+        },
+        "option_5_text": {
+          "eng": "Pull the attackers pinky or little finger away from the other fingers hard and fast (it breaks easily)."
+        },
+        "option_6_title": {
+          "eng": "Shins"
+        },
+        "option_6_text": {
+          "eng": "Kick against the attacker’s shins as hard as you can."
+        },
+        "option_7_title": {
+          "eng": "Top of feet"
+        },
+        "option_7_text": {
+          "eng": "Lift your foot and stomp your heel on the top of your attacker’s foot."
+        }
+      },
+      "option_1_title": "Temples",
+      "option_1_text": "Punch the attacker’s temples with your fist or the back of your elbow.",
+      "option_2_title": "Nose",
+      "option_2_text": "Punch the attacker’s nose with your fist or the back of your elbow.",
+      "option_3_title": "Ears",
+      "option_3_text": "With flat hands, smack the attacker’s ears from both sides as hard as possible. You can also pull or twist them.",
+      "option_4_title": "Ribs",
+      "option_4_text": "Punch the attacker in the ribs with your fist or the back of your elbow.",
+      "option_5_title": "Fingers",
+      "option_5_text": "Pull the attackers pinky or little finger away from the other fingers hard and fast (it breaks easily).",
+      "option_6_title": "Shins",
+      "option_6_text": "Kick against the attacker’s shins as hard as you can.",
+      "option_7_title": "Top of feet",
+      "option_7_text": "Lift your foot and stomp your heel on the top of your attacker’s foot."
+    },
+    {
+      "id": "defence_moves",
+      "workshop": "w_svp",
+      "image_asset": "plh_images/workshops/w_svp/use_body/moves.gif",
+      "title": "Examples",
+      "_translations": {
+        "title": {},
+        "text": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Examples"
+        },
+        "text": {
+          "eng": "Here are some examples of how you can use the weak spots or targets on your attacker’s body."
+        }
+      },
+      "text": "Here are some examples of how you can use the weak spots or targets on your attacker’s body."
+    }
+  ],
+  "_xlsxPath": "global/data/workshop_data/workshop_data_list.xlsx"
+}

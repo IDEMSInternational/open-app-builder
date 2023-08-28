@@ -1,0 +1,253 @@
+{
+  "flow_name": "ltp_activity_superpowers_review",
+  "flow_subtype": "generated",
+  "flow_type": "template",
+  "rows": [
+    {
+      "name": "original_number",
+      "value": "23",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "original_number"
+    },
+    {
+      "name": "number_1_to_4",
+      "value": "@calc(@local.original_number % 4 +1)",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "number_1_to_4",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@calc(@local.original_number % 4 +1)",
+            "matchedExpression": "@local.original_number",
+            "type": "local",
+            "fieldName": "original_number"
+          },
+          {
+            "fullExpression": "@calc(@local.original_number % 4 +1)",
+            "matchedExpression": "@calc(@local.original_number % 4 +1)",
+            "type": "calc",
+            "fieldName": "@local.original_number % 4 +1"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.original_number": [
+          "value"
+        ],
+        "@calc(@local.original_number % 4 +1)": [
+          "value"
+        ]
+      }
+    },
+    {
+      "name": "hp_mood",
+      "value": "_hp_mood",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "hp_mood"
+    },
+    {
+      "name": "hp_done",
+      "value": "_hp_done",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "hp_done"
+    },
+    {
+      "name": "title",
+      "value": "Superpowers",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "title"
+    },
+    {
+      "type": "template",
+      "name": "home_practice_review",
+      "value": "home_practice_review",
+      "action_list": [
+        {
+          "trigger": "completed",
+          "action_id": "emit",
+          "args": [
+            "completed"
+          ],
+          "_raw": "completed | emit:completed",
+          "_cleaned": "completed | emit:completed"
+        },
+        {
+          "trigger": "uncompleted",
+          "action_id": "emit",
+          "args": [
+            "uncompleted"
+          ],
+          "_raw": "uncompleted | emit:uncompleted",
+          "_cleaned": "uncompleted | emit:uncompleted"
+        }
+      ],
+      "rows": [
+        {
+          "name": "workshop",
+          "value": "w_learn_@local.number_1_to_4",
+          "_translations": {
+            "value": {}
+          },
+          "exclude_from_translation": true,
+          "type": "set_variable",
+          "_nested_name": "home_practice_review.workshop",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "w_learn_@local.number_1_to_4",
+                "matchedExpression": "@local.number_1_to_4",
+                "type": "local",
+                "fieldName": "number_1_to_4"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@local.number_1_to_4": [
+              "value"
+            ]
+          }
+        },
+        {
+          "type": "nested_properties",
+          "name": "workshop_activity",
+          "rows": [
+            {
+              "type": "nested_properties",
+              "name": "content_box",
+              "rows": [
+                {
+                  "type": "nested_properties",
+                  "name": "box_1",
+                  "rows": [
+                    {
+                      "name": "text_done",
+                      "condition": false,
+                      "type": "set_variable",
+                      "_nested_name": "home_practice_review.workshop_activity.content_box.box_1.text_done"
+                    },
+                    {
+                      "name": "question_text_done",
+                      "value": "@global.chance_try @local.title?",
+                      "_translations": {
+                        "value": {}
+                      },
+                      "type": "set_variable",
+                      "_nested_name": "home_practice_review.workshop_activity.content_box.box_1.question_text_done",
+                      "_dynamicFields": {
+                        "value": [
+                          {
+                            "fullExpression": "@global.chance_try @local.title?",
+                            "matchedExpression": "@global.chance_try",
+                            "type": "global",
+                            "fieldName": "chance_try"
+                          },
+                          {
+                            "fullExpression": "@global.chance_try @local.title?",
+                            "matchedExpression": "@local.title",
+                            "type": "local",
+                            "fieldName": "title"
+                          }
+                        ]
+                      },
+                      "_dynamicDependencies": {
+                        "@global.chance_try": [
+                          "value"
+                        ],
+                        "@local.title": [
+                          "value"
+                        ]
+                      }
+                    },
+                    {
+                      "name": "radio_group_done_tracker",
+                      "value": "ltp_activity_superpowers@local.hp_done",
+                      "_translations": {
+                        "value": {}
+                      },
+                      "type": "set_variable",
+                      "_nested_name": "home_practice_review.workshop_activity.content_box.box_1.radio_group_done_tracker",
+                      "_dynamicFields": {
+                        "value": [
+                          {
+                            "fullExpression": "ltp_activity_superpowers@local.hp_done",
+                            "matchedExpression": "@local.hp_done",
+                            "type": "local",
+                            "fieldName": "hp_done"
+                          }
+                        ]
+                      },
+                      "_dynamicDependencies": {
+                        "@local.hp_done": [
+                          "value"
+                        ]
+                      }
+                    },
+                    {
+                      "name": "radio_group_mood_tracker",
+                      "value": "ltp_activity_superpowers@local.hp_mood",
+                      "_translations": {
+                        "value": {}
+                      },
+                      "type": "set_variable",
+                      "_nested_name": "home_practice_review.workshop_activity.content_box.box_1.radio_group_mood_tracker",
+                      "_dynamicFields": {
+                        "value": [
+                          {
+                            "fullExpression": "ltp_activity_superpowers@local.hp_mood",
+                            "matchedExpression": "@local.hp_mood",
+                            "type": "local",
+                            "fieldName": "hp_mood"
+                          }
+                        ]
+                      },
+                      "_dynamicDependencies": {
+                        "@local.hp_mood": [
+                          "value"
+                        ]
+                      }
+                    },
+                    {
+                      "name": "button_no_go_to_template",
+                      "value": "w_learn_home_practice",
+                      "_translations": {
+                        "value": {}
+                      },
+                      "type": "set_variable",
+                      "_nested_name": "home_practice_review.workshop_activity.content_box.box_1.button_no_go_to_template"
+                    }
+                  ],
+                  "_nested_name": "home_practice_review.workshop_activity.content_box.box_1"
+                },
+                {
+                  "type": "nested_properties",
+                  "name": "box_2",
+                  "value": "w_1on1_hp_challenges",
+                  "rows": [],
+                  "_nested_name": "home_practice_review.workshop_activity.content_box.box_2"
+                }
+              ],
+              "_nested_name": "home_practice_review.workshop_activity.content_box"
+            }
+          ],
+          "_nested_name": "home_practice_review.workshop_activity"
+        }
+      ],
+      "_nested_name": "home_practice_review"
+    }
+  ]
+}

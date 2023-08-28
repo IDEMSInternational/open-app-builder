@@ -1,0 +1,97 @@
+{
+  "flow_name": "w_celebrate_tasks",
+  "flow_subtype": "generated",
+  "flow_type": "data_list",
+  "rows": [
+    {
+      "id": "welcome_individual",
+      "group": "welcome_individual",
+      "individual": true,
+      "together": false,
+      "template": "w_celebrate_welcome_individual",
+      "completed_field": "task_w_celebrate_welcome_individual_completed",
+      "completed": "@fields.task_w_celebrate_welcome_individual_completed"
+    },
+    {
+      "id": "care_together",
+      "group": "care_together",
+      "individual": false,
+      "together": true,
+      "template": "w_celebrate_care_together",
+      "completed_field": "task_w_celebrate_care_together_completed",
+      "completed": "@fields.task_w_celebrate_care_together_completed"
+    },
+    {
+      "id": "relax",
+      "group": "relax",
+      "individual": true,
+      "together": true,
+      "template": "w_celebrate_relax",
+      "completed_field": "task_w_celebrate_relax_completed",
+      "completed": "@fields.task_w_celebrate_relax_completed"
+    },
+    {
+      "id": "reflect_together",
+      "group": "reflect_together",
+      "individual": false,
+      "together": true,
+      "template": "w_celebrate_reflect_together",
+      "completed_field": "task_w_celebrate_reflect_together_completed",
+      "completed": "@fields.task_w_celebrate_reflect_together_completed"
+    },
+    {
+      "id": "intro",
+      "group": "intro",
+      "individual": true,
+      "together": true,
+      "template": "w_celebrate_intro",
+      "completed_field": "task_w_celebrate_intro_completed",
+      "completed": "@fields.task_w_celebrate_intro_completed"
+    },
+    {
+      "id": "tools_activity",
+      "group": "tools_activity",
+      "individual": true,
+      "together": true,
+      "template": "w_celebrate_tools_activity",
+      "completed_field": "task_w_celebrate_tools_activity_completed",
+      "completed": "@fields.task_w_celebrate_tools_activity_completed"
+    },
+    {
+      "id": "ending",
+      "group": "ending",
+      "individual": true,
+      "together": true,
+      "template": "w_celebrate_ending",
+      "completed_field": "task_w_celebrate_ending_completed",
+      "completed": "@fields.task_w_celebrate_ending_completed"
+    },
+    {
+      "id": "think",
+      "group": "think",
+      "individual": true,
+      "together": true,
+      "template": "w_celebrate_think",
+      "completed_field": "task_w_celebrate_think_completed",
+      "completed": "@fields.task_w_celebrate_think_completed"
+    },
+    {
+      "id": "talk_1",
+      "group": "talk_1",
+      "individual": false,
+      "together": true,
+      "template": "w_celebrate_talk_1",
+      "completed_field": "task_w_celebrate_talk_1_completed",
+      "completed": "@fields.task_w_celebrate_talk_1_completed"
+    },
+    {
+      "id": "talk_2",
+      "group": "talk_2",
+      "individual": false,
+      "together": true,
+      "template": "w_celebrate_talk_2",
+      "completed_field": "task_w_celebrate_talk_2_completed",
+      "completed": "@fields.task_w_celebrate_talk_2_completed"
+    }
+  ]
+}

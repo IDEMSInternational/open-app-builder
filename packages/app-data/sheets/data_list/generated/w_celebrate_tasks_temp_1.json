@@ -1,0 +1,77 @@
+{
+  "flow_name": "w_celebrate_tasks_temp_1",
+  "flow_subtype": "generated",
+  "flow_type": "data_list",
+  "rows": [
+    {
+      "id": "welcome_individual",
+      "group": "welcome_individual",
+      "individual": true,
+      "together": false,
+      "template": "w_celebrate_welcome_individual"
+    },
+    {
+      "id": "care_together",
+      "group": "care_together",
+      "individual": false,
+      "together": true,
+      "template": "w_celebrate_care_together"
+    },
+    {
+      "id": "relax",
+      "group": "relax",
+      "individual": true,
+      "together": true,
+      "template": "w_celebrate_relax"
+    },
+    {
+      "id": "reflect_together",
+      "group": "reflect_together",
+      "individual": false,
+      "together": true,
+      "template": "w_celebrate_reflect_together"
+    },
+    {
+      "id": "intro",
+      "group": "intro",
+      "individual": true,
+      "together": true,
+      "template": "w_celebrate_intro"
+    },
+    {
+      "id": "tools_activity",
+      "group": "tools_activity",
+      "individual": true,
+      "together": true,
+      "template": "w_celebrate_tools_activity"
+    },
+    {
+      "id": "ending",
+      "group": "ending",
+      "individual": true,
+      "together": true,
+      "template": "w_celebrate_ending"
+    },
+    {
+      "id": "think",
+      "group": "think",
+      "individual": true,
+      "together": true,
+      "template": "w_celebrate_think"
+    },
+    {
+      "id": "talk_1",
+      "group": "talk_1",
+      "individual": false,
+      "together": true,
+      "template": "w_celebrate_talk_1"
+    },
+    {
+      "id": "talk_2",
+      "group": "talk_2",
+      "individual": false,
+      "together": true,
+      "template": "w_celebrate_talk_2"
+    }
+  ]
+}

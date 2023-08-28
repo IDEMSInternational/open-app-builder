@@ -1,0 +1,503 @@
+{
+  "flow_type": "template",
+  "flow_name": "app_menu_post_rct_locked",
+  "status": "released",
+  "rows": [
+    {
+      "name": "text_box_placeholder",
+      "value": "@global.tap_and_type",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "text_box_placeholder",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@global.tap_and_type",
+            "matchedExpression": "@global.tap_and_type",
+            "type": "global",
+            "fieldName": "tap_and_type"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@global.tap_and_type": [
+          "value"
+        ]
+      }
+    },
+    {
+      "name": "reply_entered",
+      "value": false,
+      "type": "set_variable",
+      "_nested_name": "reply_entered"
+    },
+    {
+      "type": "title",
+      "name": "title",
+      "value": "Unlock New Content",
+      "_translations": {
+        "value": {}
+      },
+      "_nested_name": "title"
+    },
+    {
+      "type": "text",
+      "name": "text",
+      "value": "Enter the password in the box below and press @global.submit_button.",
+      "_translations": {
+        "value": {}
+      },
+      "_nested_name": "text",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "Enter the password in the box below and press @global.submit_button.",
+            "matchedExpression": "@global.submit_button",
+            "type": "global",
+            "fieldName": "submit_button"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@global.submit_button": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "text_box",
+      "name": "text_box",
+      "action_list": [
+        {
+          "trigger": "click",
+          "action_id": "set_local",
+          "args": [
+            "reply_entered",
+            true
+          ],
+          "_raw": "click | set_local:reply_entered:true",
+          "_cleaned": "click | set_local:reply_entered:true"
+        }
+      ],
+      "parameter_list": {
+        "placeholder": "@local.text_box_placeholder"
+      },
+      "_nested_name": "text_box",
+      "_dynamicFields": {
+        "parameter_list": {
+          "placeholder": [
+            {
+              "fullExpression": "@local.text_box_placeholder",
+              "matchedExpression": "@local.text_box_placeholder",
+              "type": "local",
+              "fieldName": "text_box_placeholder"
+            }
+          ]
+        }
+      },
+      "_dynamicDependencies": {
+        "@local.text_box_placeholder": [
+          "parameter_list.placeholder"
+        ]
+      }
+    },
+    {
+      "name": "password_correct",
+      "value": "@local.text_box == @global.post_rct_password",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "password_correct",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@local.text_box == @global.post_rct_password",
+            "matchedExpression": "@local.text_box",
+            "type": "local",
+            "fieldName": "text_box"
+          },
+          {
+            "fullExpression": "@local.text_box == @global.post_rct_password",
+            "matchedExpression": "@global.post_rct_password",
+            "type": "global",
+            "fieldName": "post_rct_password"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.text_box": [
+          "value"
+        ],
+        "@global.post_rct_password": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "button",
+      "name": "button_submit",
+      "value": "@global.submit_button",
+      "_translations": {
+        "value": {}
+      },
+      "action_list": [
+        {
+          "trigger": "click",
+          "action_id": "set_local",
+          "args": [
+            "reply_entered",
+            true
+          ],
+          "_raw": "click | set_local:reply_entered:true",
+          "_cleaned": "click | set_local:reply_entered:true"
+        },
+        {
+          "trigger": "click",
+          "action_id": "set_field",
+          "args": [
+            "post_rct_access",
+            "@local.password_correct"
+          ],
+          "_raw": "click | set_field: post_rct_access: @local.password_correct",
+          "_cleaned": "click | set_field: post_rct_access: @local.password_correct"
+        },
+        {
+          "trigger": "click",
+          "action_id": "set_field",
+          "args": [
+            "task_w_srh_skipped",
+            "!@local.password_correct"
+          ],
+          "_raw": "click | set_field: task_w_srh_skipped: !@local.password_correct",
+          "_cleaned": "click | set_field: task_w_srh_skipped: !@local.password_correct"
+        },
+        {
+          "trigger": "click",
+          "action_id": "set_field",
+          "args": [
+            "task_w_svp_skipped",
+            "!@local.password_correct"
+          ],
+          "_raw": "click | set_field: task_w_svp_skipped: !@local.password_correct",
+          "_cleaned": "click | set_field: task_w_svp_skipped: !@local.password_correct"
+        },
+        {
+          "trigger": "click",
+          "action_id": "set_field",
+          "args": [
+            "task_w_grief_skipped",
+            "!@local.password_correct"
+          ],
+          "_raw": "click | set_field: task_w_grief_skipped: !@local.password_correct",
+          "_cleaned": "click | set_field: task_w_grief_skipped: !@local.password_correct"
+        },
+        {
+          "trigger": "click",
+          "action_id": "set_field",
+          "args": [
+            "task_w_learn_skipped",
+            "!@local.password_correct"
+          ],
+          "_raw": "click | set_field: task_w_learn_skipped: !@local.password_correct",
+          "_cleaned": "click | set_field: task_w_learn_skipped: !@local.password_correct"
+        }
+      ],
+      "_nested_name": "button_submit",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@global.submit_button",
+            "matchedExpression": "@global.submit_button",
+            "type": "global",
+            "fieldName": "submit_button"
+          }
+        ],
+        "action_list": {
+          "1": {
+            "args": {
+              "1": [
+                {
+                  "fullExpression": "@local.password_correct",
+                  "matchedExpression": "@local.password_correct",
+                  "type": "local",
+                  "fieldName": "password_correct"
+                }
+              ]
+            },
+            "_raw": [
+              {
+                "fullExpression": "click | set_field: post_rct_access: @local.password_correct",
+                "matchedExpression": "@local.password_correct",
+                "type": "local",
+                "fieldName": "password_correct"
+              }
+            ],
+            "_cleaned": [
+              {
+                "fullExpression": "click | set_field: post_rct_access: @local.password_correct",
+                "matchedExpression": "@local.password_correct",
+                "type": "local",
+                "fieldName": "password_correct"
+              }
+            ]
+          },
+          "2": {
+            "args": {
+              "1": [
+                {
+                  "fullExpression": "!@local.password_correct",
+                  "matchedExpression": "!@local.password_correct",
+                  "type": "local",
+                  "fieldName": "password_correct"
+                }
+              ]
+            },
+            "_raw": [
+              {
+                "fullExpression": "click | set_field: task_w_srh_skipped: !@local.password_correct",
+                "matchedExpression": "!@local.password_correct",
+                "type": "local",
+                "fieldName": "password_correct"
+              }
+            ],
+            "_cleaned": [
+              {
+                "fullExpression": "click | set_field: task_w_srh_skipped: !@local.password_correct",
+                "matchedExpression": "!@local.password_correct",
+                "type": "local",
+                "fieldName": "password_correct"
+              }
+            ]
+          },
+          "3": {
+            "args": {
+              "1": [
+                {
+                  "fullExpression": "!@local.password_correct",
+                  "matchedExpression": "!@local.password_correct",
+                  "type": "local",
+                  "fieldName": "password_correct"
+                }
+              ]
+            },
+            "_raw": [
+              {
+                "fullExpression": "click | set_field: task_w_svp_skipped: !@local.password_correct",
+                "matchedExpression": "!@local.password_correct",
+                "type": "local",
+                "fieldName": "password_correct"
+              }
+            ],
+            "_cleaned": [
+              {
+                "fullExpression": "click | set_field: task_w_svp_skipped: !@local.password_correct",
+                "matchedExpression": "!@local.password_correct",
+                "type": "local",
+                "fieldName": "password_correct"
+              }
+            ]
+          },
+          "4": {
+            "args": {
+              "1": [
+                {
+                  "fullExpression": "!@local.password_correct",
+                  "matchedExpression": "!@local.password_correct",
+                  "type": "local",
+                  "fieldName": "password_correct"
+                }
+              ]
+            },
+            "_raw": [
+              {
+                "fullExpression": "click | set_field: task_w_grief_skipped: !@local.password_correct",
+                "matchedExpression": "!@local.password_correct",
+                "type": "local",
+                "fieldName": "password_correct"
+              }
+            ],
+            "_cleaned": [
+              {
+                "fullExpression": "click | set_field: task_w_grief_skipped: !@local.password_correct",
+                "matchedExpression": "!@local.password_correct",
+                "type": "local",
+                "fieldName": "password_correct"
+              }
+            ]
+          },
+          "5": {
+            "args": {
+              "1": [
+                {
+                  "fullExpression": "!@local.password_correct",
+                  "matchedExpression": "!@local.password_correct",
+                  "type": "local",
+                  "fieldName": "password_correct"
+                }
+              ]
+            },
+            "_raw": [
+              {
+                "fullExpression": "click | set_field: task_w_learn_skipped: !@local.password_correct",
+                "matchedExpression": "!@local.password_correct",
+                "type": "local",
+                "fieldName": "password_correct"
+              }
+            ],
+            "_cleaned": [
+              {
+                "fullExpression": "click | set_field: task_w_learn_skipped: !@local.password_correct",
+                "matchedExpression": "!@local.password_correct",
+                "type": "local",
+                "fieldName": "password_correct"
+              }
+            ]
+          }
+        }
+      },
+      "_dynamicDependencies": {
+        "@global.submit_button": [
+          "value"
+        ],
+        "@local.password_correct": [
+          "action_list.1.args.1",
+          "action_list.1._raw",
+          "action_list.1._cleaned"
+        ],
+        "!@local.password_correct": [
+          "action_list.2.args.1",
+          "action_list.2._raw",
+          "action_list.2._cleaned",
+          "action_list.3.args.1",
+          "action_list.3._raw",
+          "action_list.3._cleaned",
+          "action_list.4.args.1",
+          "action_list.4._raw",
+          "action_list.4._cleaned",
+          "action_list.5.args.1",
+          "action_list.5._raw",
+          "action_list.5._cleaned"
+        ]
+      }
+    },
+    {
+      "type": "display_group",
+      "name": "enter_replies",
+      "hidden": "!@local.reply_entered",
+      "parameter_list": {
+        "style": "column"
+      },
+      "rows": [
+        {
+          "type": "text",
+          "name": "text_correct",
+          "value": "You can now access the new content!",
+          "_translations": {
+            "value": {}
+          },
+          "condition": "@local.password_correct",
+          "_nested_name": "enter_replies.text_correct",
+          "_dynamicFields": {
+            "condition": [
+              {
+                "fullExpression": "@local.password_correct",
+                "matchedExpression": "@local.password_correct",
+                "type": "local",
+                "fieldName": "password_correct"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@local.password_correct": [
+              "condition"
+            ]
+          }
+        },
+        {
+          "type": "button",
+          "name": "button_correct",
+          "value": "Load new content",
+          "_translations": {
+            "value": {}
+          },
+          "action_list": [
+            {
+              "trigger": "click",
+              "action_id": "emit",
+              "args": [
+                "force_restart"
+              ],
+              "_raw": "click | emit:force_restart",
+              "_cleaned": "click | emit:force_restart"
+            }
+          ],
+          "condition": "@local.password_correct",
+          "parameter_list": {
+            "style": "navigation"
+          },
+          "_nested_name": "enter_replies.button_correct",
+          "_dynamicFields": {
+            "condition": [
+              {
+                "fullExpression": "@local.password_correct",
+                "matchedExpression": "@local.password_correct",
+                "type": "local",
+                "fieldName": "password_correct"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@local.password_correct": [
+              "condition"
+            ]
+          }
+        },
+        {
+          "type": "text",
+          "name": "text_incorrect",
+          "value": "You have entered an incorrect password.",
+          "_translations": {
+            "value": {}
+          },
+          "condition": "!@local.password_correct",
+          "_nested_name": "enter_replies.text_incorrect",
+          "_dynamicFields": {
+            "condition": [
+              {
+                "fullExpression": "!@local.password_correct",
+                "matchedExpression": "!@local.password_correct",
+                "type": "local",
+                "fieldName": "password_correct"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "!@local.password_correct": [
+              "condition"
+            ]
+          }
+        }
+      ],
+      "_nested_name": "enter_replies",
+      "_dynamicFields": {
+        "hidden": [
+          {
+            "fullExpression": "!@local.reply_entered",
+            "matchedExpression": "!@local.reply_entered",
+            "type": "local",
+            "fieldName": "reply_entered"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "!@local.reply_entered": [
+          "hidden"
+        ]
+      }
+    }
+  ],
+  "_xlsxPath": "global/core_templates/core_templates_settings.xlsx"
+}

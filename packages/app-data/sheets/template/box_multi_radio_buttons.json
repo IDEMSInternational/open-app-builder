@@ -1,0 +1,95 @@
+{
+  "flow_type": "template",
+  "flow_name": "box_multi_radio_buttons",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "radio_buttons_1",
+      "value": "box_radio_buttons",
+      "rows": [
+        {
+          "type": "nested_properties",
+          "name": "nav_buttons",
+          "hidden": true,
+          "rows": [],
+          "_nested_name": "radio_buttons_1.nav_buttons"
+        }
+      ],
+      "_nested_name": "radio_buttons_1"
+    },
+    {
+      "type": "template",
+      "name": "radio_buttons_2",
+      "value": "box_radio_buttons",
+      "rows": [
+        {
+          "type": "nested_properties",
+          "name": "nav_buttons",
+          "hidden": true,
+          "rows": [],
+          "_nested_name": "radio_buttons_2.nav_buttons"
+        }
+      ],
+      "_nested_name": "radio_buttons_2"
+    },
+    {
+      "type": "template",
+      "name": "radio_buttons_3",
+      "value": "box_radio_buttons",
+      "rows": [
+        {
+          "type": "nested_properties",
+          "name": "nav_buttons",
+          "hidden": true,
+          "rows": [],
+          "_nested_name": "radio_buttons_3.nav_buttons"
+        }
+      ],
+      "_nested_name": "radio_buttons_3"
+    },
+    {
+      "type": "template",
+      "name": "radio_buttons_4",
+      "value": "box_radio_buttons",
+      "rows": [
+        {
+          "type": "nested_properties",
+          "name": "nav_buttons",
+          "hidden": true,
+          "rows": [],
+          "_nested_name": "radio_buttons_4.nav_buttons"
+        }
+      ],
+      "_nested_name": "radio_buttons_4"
+    },
+    {
+      "type": "template",
+      "name": "nav_buttons",
+      "value": "nav_buttons",
+      "action_list": [
+        {
+          "trigger": "completed",
+          "action_id": "emit",
+          "args": [
+            "completed"
+          ],
+          "_raw": "completed | emit:completed",
+          "_cleaned": "completed | emit:completed"
+        },
+        {
+          "trigger": "uncompleted",
+          "action_id": "emit",
+          "args": [
+            "uncompleted"
+          ],
+          "_raw": "uncompleted | emit:uncompleted",
+          "_cleaned": "uncompleted | emit:uncompleted"
+        }
+      ],
+      "rows": [],
+      "_nested_name": "nav_buttons"
+    }
+  ],
+  "_xlsxPath": "global/core_templates/core_templates_workshop_boxes.xlsx"
+}

@@ -1,0 +1,70 @@
+{
+  "flow_name": "w_money_common_tasks",
+  "flow_subtype": "generated",
+  "flow_type": "data_list",
+  "rows": [
+    {
+      "id": "welcome_individual",
+      "group": "welcome_individual",
+      "individual": true,
+      "together": false,
+      "template": "w_money_welcome_individual"
+    },
+    {
+      "id": "care_together",
+      "group": "care_together",
+      "individual": false,
+      "together": true,
+      "template": "w_money_care_together"
+    },
+    {
+      "id": "relax",
+      "group": "relax",
+      "individual": true,
+      "together": true,
+      "template": "w_money_relax"
+    },
+    {
+      "id": "reflect_together",
+      "group": "reflect_together",
+      "individual": false,
+      "together": true,
+      "template": "w_money_reflect_together"
+    },
+    {
+      "id": "intro",
+      "group": "intro",
+      "individual": true,
+      "together": true,
+      "template": "w_money_intro"
+    },
+    {
+      "id": "tools_activity",
+      "group": "tools_activity",
+      "individual": true,
+      "together": true,
+      "template": "w_money_tools_activity"
+    },
+    {
+      "id": "home_practice",
+      "group": "home_practice",
+      "individual": true,
+      "together": true,
+      "template": "w_money_home_practice"
+    },
+    {
+      "id": "ending",
+      "group": "ending",
+      "individual": true,
+      "together": true,
+      "template": "w_money_ending"
+    },
+    {
+      "id": "hp_review",
+      "group": "hp_review",
+      "individual": true,
+      "together": true,
+      "template": "w_money_hp_review"
+    }
+  ]
+}

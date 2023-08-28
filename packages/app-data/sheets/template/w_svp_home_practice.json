@@ -1,0 +1,214 @@
+{
+  "flow_type": "template",
+  "module": "w_svp",
+  "flow_name": "w_svp_home_practice",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "home_practice",
+      "value": "home_practice",
+      "action_list": [
+        {
+          "trigger": "completed",
+          "action_id": "emit",
+          "args": [
+            "completed"
+          ],
+          "_raw": "completed | emit:completed",
+          "_cleaned": "completed | emit:completed"
+        },
+        {
+          "trigger": "uncompleted",
+          "action_id": "emit",
+          "args": [
+            "uncompleted"
+          ],
+          "_raw": "uncompleted | emit:uncompleted",
+          "_cleaned": "uncompleted | emit:uncompleted"
+        }
+      ],
+      "rows": [
+        {
+          "name": "workshop_data",
+          "value": "@data.workshop.w_svp",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "home_practice.workshop_data",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@data.workshop.w_svp",
+                "matchedExpression": "@data.workshop.w_svp",
+                "type": "data",
+                "fieldName": "workshop"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@data.workshop.w_svp": [
+              "value"
+            ]
+          }
+        },
+        {
+          "type": "nested_properties",
+          "name": "workshop_activity",
+          "rows": [
+            {
+              "type": "nested_properties",
+              "name": "content_box",
+              "rows": [
+                {
+                  "type": "nested_properties",
+                  "name": "box_1",
+                  "rows": [
+                    {
+                      "name": "text_1",
+                      "value": "Discuss the @data.workshop.w_svp.in_text_title with your teens. \n\nYou can even do the activities on warning signs and how to use our voice and body together. \n\nIt can be hard to talk about these topics together, but it will give your teen skills for situations when they need it most. You can do it!",
+                      "_translations": {
+                        "value": {}
+                      },
+                      "type": "set_variable",
+                      "_nested_name": "home_practice.workshop_activity.content_box.box_1.text_1",
+                      "_dynamicFields": {
+                        "value": [
+                          {
+                            "fullExpression": "Discuss the @data.workshop.w_svp.in_text_title with your teens. \n\nYou can even do the activities on warning signs and how to use our voice and body together. \n\nIt can be hard to talk about these topics together, but it will give your teen skills for situations when they need it most. You can do it!",
+                            "matchedExpression": "@data.workshop.w_svp.in_text_title",
+                            "type": "data",
+                            "fieldName": "workshop"
+                          }
+                        ]
+                      },
+                      "_dynamicDependencies": {
+                        "@data.workshop.w_svp.in_text_title": [
+                          "value"
+                        ]
+                      }
+                    },
+                    {
+                      "name": "button_1",
+                      "value": "@data.learn.warning_signs.title",
+                      "_translations": {
+                        "value": {}
+                      },
+                      "action_list": [
+                        {
+                          "trigger": "click",
+                          "action_id": "go_to",
+                          "args": [
+                            "w_svp_learn_warning_signs"
+                          ],
+                          "_raw": "click | go_to: w_svp_learn_warning_signs",
+                          "_cleaned": "click | go_to: w_svp_learn_warning_signs"
+                        }
+                      ],
+                      "hidden": false,
+                      "type": "set_variable",
+                      "_nested_name": "home_practice.workshop_activity.content_box.box_1.button_1",
+                      "_dynamicFields": {
+                        "value": [
+                          {
+                            "fullExpression": "@data.learn.warning_signs.title",
+                            "matchedExpression": "@data.learn.warning_signs.title",
+                            "type": "data",
+                            "fieldName": "learn"
+                          }
+                        ]
+                      },
+                      "_dynamicDependencies": {
+                        "@data.learn.warning_signs.title": [
+                          "value"
+                        ]
+                      }
+                    },
+                    {
+                      "name": "button_2",
+                      "value": "@data.learn.use_voice.title",
+                      "_translations": {
+                        "value": {}
+                      },
+                      "action_list": [
+                        {
+                          "trigger": "click",
+                          "action_id": "go_to",
+                          "args": [
+                            "w_svp_learn_use_voice"
+                          ],
+                          "_raw": "click | go_to: w_svp_learn_use_voice",
+                          "_cleaned": "click | go_to: w_svp_learn_use_voice"
+                        }
+                      ],
+                      "hidden": false,
+                      "type": "set_variable",
+                      "_nested_name": "home_practice.workshop_activity.content_box.box_1.button_2",
+                      "_dynamicFields": {
+                        "value": [
+                          {
+                            "fullExpression": "@data.learn.use_voice.title",
+                            "matchedExpression": "@data.learn.use_voice.title",
+                            "type": "data",
+                            "fieldName": "learn"
+                          }
+                        ]
+                      },
+                      "_dynamicDependencies": {
+                        "@data.learn.use_voice.title": [
+                          "value"
+                        ]
+                      }
+                    },
+                    {
+                      "name": "button_3",
+                      "value": "@data.learn.use_body.title",
+                      "_translations": {
+                        "value": {}
+                      },
+                      "action_list": [
+                        {
+                          "trigger": "click",
+                          "action_id": "go_to",
+                          "args": [
+                            "w_svp_learn_use_body"
+                          ],
+                          "_raw": "click | go_to: w_svp_learn_use_body",
+                          "_cleaned": "click | go_to: w_svp_learn_use_body"
+                        }
+                      ],
+                      "hidden": false,
+                      "type": "set_variable",
+                      "_nested_name": "home_practice.workshop_activity.content_box.box_1.button_3",
+                      "_dynamicFields": {
+                        "value": [
+                          {
+                            "fullExpression": "@data.learn.use_body.title",
+                            "matchedExpression": "@data.learn.use_body.title",
+                            "type": "data",
+                            "fieldName": "learn"
+                          }
+                        ]
+                      },
+                      "_dynamicDependencies": {
+                        "@data.learn.use_body.title": [
+                          "value"
+                        ]
+                      }
+                    }
+                  ],
+                  "_nested_name": "home_practice.workshop_activity.content_box.box_1"
+                }
+              ],
+              "_nested_name": "home_practice.workshop_activity.content_box"
+            }
+          ],
+          "_nested_name": "home_practice.workshop_activity"
+        }
+      ],
+      "_nested_name": "home_practice"
+    }
+  ],
+  "_xlsxPath": "global/top_templates/workshop_templates/workshop_svp.xlsx"
+}

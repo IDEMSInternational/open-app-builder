@@ -1,0 +1,190 @@
+{
+  "flow_type": "template",
+  "module": "w_srh",
+  "flow_name": "w_srh_home_practice",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "home_practice",
+      "value": "home_practice",
+      "action_list": [
+        {
+          "trigger": "completed",
+          "action_id": "emit",
+          "args": [
+            "completed"
+          ],
+          "_raw": "completed | emit:completed",
+          "_cleaned": "completed | emit:completed"
+        },
+        {
+          "trigger": "uncompleted",
+          "action_id": "emit",
+          "args": [
+            "uncompleted"
+          ],
+          "_raw": "uncompleted | emit:uncompleted",
+          "_cleaned": "uncompleted | emit:uncompleted"
+        }
+      ],
+      "rows": [
+        {
+          "name": "workshop_data",
+          "value": "@data.workshop.w_srh",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "home_practice.workshop_data",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@data.workshop.w_srh",
+                "matchedExpression": "@data.workshop.w_srh",
+                "type": "data",
+                "fieldName": "workshop"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@data.workshop.w_srh": [
+              "value"
+            ]
+          }
+        },
+        {
+          "type": "nested_properties",
+          "name": "workshop_activity",
+          "rows": [
+            {
+              "type": "nested_properties",
+              "name": "content_box",
+              "rows": [
+                {
+                  "type": "nested_properties",
+                  "name": "box_1",
+                  "rows": [
+                    {
+                      "name": "text_1",
+                      "value": "Your home practice is to read and discuss this module's stories together with your teen, and let it spark a conversation about body changes and intimate relationships.",
+                      "_translations": {
+                        "value": {}
+                      },
+                      "type": "set_variable",
+                      "_nested_name": "home_practice.workshop_activity.content_box.box_1.text_1"
+                    },
+                    {
+                      "name": "button_1",
+                      "value": "Story @global.part_connector @data.story.sex_talk.title",
+                      "_translations": {
+                        "value": {}
+                      },
+                      "action_list": [
+                        {
+                          "trigger": "click",
+                          "action_id": "go_to",
+                          "args": [
+                            "w_srh_read_sex_talk"
+                          ],
+                          "_raw": "click | go_to: w_srh_read_sex_talk",
+                          "_cleaned": "click | go_to: w_srh_read_sex_talk"
+                        }
+                      ],
+                      "hidden": false,
+                      "type": "set_variable",
+                      "_nested_name": "home_practice.workshop_activity.content_box.box_1.button_1",
+                      "_dynamicFields": {
+                        "value": [
+                          {
+                            "fullExpression": "Story @global.part_connector @data.story.sex_talk.title",
+                            "matchedExpression": "@global.part_connector",
+                            "type": "global",
+                            "fieldName": "part_connector"
+                          },
+                          {
+                            "fullExpression": "Story @global.part_connector @data.story.sex_talk.title",
+                            "matchedExpression": "@data.story.sex_talk.title",
+                            "type": "data",
+                            "fieldName": "story"
+                          }
+                        ]
+                      },
+                      "_dynamicDependencies": {
+                        "@global.part_connector": [
+                          "value"
+                        ],
+                        "@data.story.sex_talk.title": [
+                          "value"
+                        ]
+                      }
+                    },
+                    {
+                      "name": "button_2",
+                      "value": "Story @global.part_connector @data.story.new_boyfriend.title",
+                      "_translations": {
+                        "value": {}
+                      },
+                      "action_list": [
+                        {
+                          "trigger": "click",
+                          "action_id": "go_to",
+                          "args": [
+                            "w_srh_read_new_boyfriend"
+                          ],
+                          "_raw": "click | go_to:w_srh_read_new_boyfriend",
+                          "_cleaned": "click | go_to:w_srh_read_new_boyfriend"
+                        }
+                      ],
+                      "hidden": false,
+                      "type": "set_variable",
+                      "_nested_name": "home_practice.workshop_activity.content_box.box_1.button_2",
+                      "_dynamicFields": {
+                        "value": [
+                          {
+                            "fullExpression": "Story @global.part_connector @data.story.new_boyfriend.title",
+                            "matchedExpression": "@global.part_connector",
+                            "type": "global",
+                            "fieldName": "part_connector"
+                          },
+                          {
+                            "fullExpression": "Story @global.part_connector @data.story.new_boyfriend.title",
+                            "matchedExpression": "@data.story.new_boyfriend.title",
+                            "type": "data",
+                            "fieldName": "story"
+                          }
+                        ]
+                      },
+                      "_dynamicDependencies": {
+                        "@global.part_connector": [
+                          "value"
+                        ],
+                        "@data.story.new_boyfriend.title": [
+                          "value"
+                        ]
+                      }
+                    },
+                    {
+                      "name": "text_3",
+                      "value": "Allow your teen to ask any questions they have and look for answers together.",
+                      "_translations": {
+                        "value": {}
+                      },
+                      "type": "set_variable",
+                      "_nested_name": "home_practice.workshop_activity.content_box.box_1.text_3"
+                    }
+                  ],
+                  "_nested_name": "home_practice.workshop_activity.content_box.box_1"
+                }
+              ],
+              "_nested_name": "home_practice.workshop_activity.content_box"
+            }
+          ],
+          "_nested_name": "home_practice.workshop_activity"
+        }
+      ],
+      "_nested_name": "home_practice"
+    }
+  ],
+  "_xlsxPath": "global/top_templates/workshop_templates/workshop_srh.xlsx"
+}

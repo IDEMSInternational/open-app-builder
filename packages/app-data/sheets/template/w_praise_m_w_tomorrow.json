@@ -1,0 +1,153 @@
+{
+  "flow_type": "template",
+  "module": "praise",
+  "flow_name": "w_praise_m_w_tomorrow",
+  "status": "released",
+  "rows": [
+    {
+      "name": "workshop_data",
+      "value": "@data.workshop.w_praise",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "workshop_data",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@data.workshop.w_praise",
+            "matchedExpression": "@data.workshop.w_praise",
+            "type": "data",
+            "fieldName": "workshop"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@data.workshop.w_praise": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "template",
+      "name": "m_workshop_tomorrow",
+      "value": "m_workshop_tomorrow",
+      "rows": [
+        {
+          "name": "workshop_data",
+          "value": "@local.workshop_data",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "m_workshop_tomorrow.workshop_data",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@local.workshop_data",
+                "matchedExpression": "@local.workshop_data",
+                "type": "local",
+                "fieldName": "workshop_data"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@local.workshop_data": [
+              "value"
+            ]
+          }
+        },
+        {
+          "name": "text_not_completed",
+          "value": "Hi @global.user_name, a new @global.workshop awaits you tomorrow. It seems like you haven’t finished the @local.workshop_data.in_text_title yet. It’s really a short one (promise!) – you can even complete it while waiting for dinner to cook. Why don’t you go through it when you have a few minutes?\n\nThank you again for using @global.parent_app.",
+          "_translations": {
+            "value": {
+              "tz_sw": true
+            }
+          },
+          "type": "set_variable",
+          "_nested_name": "m_workshop_tomorrow.text_not_completed",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "Hi @global.user_name, a new @global.workshop awaits you tomorrow. It seems like you haven’t finished the @local.workshop_data.in_text_title yet. It’s really a short one (promise!) – you can even complete it while waiting for dinner to cook. Why don’t you go through it when you have a few minutes?\n\nThank you again for using @global.parent_app.",
+                "matchedExpression": "@global.user_name",
+                "type": "global",
+                "fieldName": "user_name"
+              },
+              {
+                "fullExpression": "Hi @global.user_name, a new @global.workshop awaits you tomorrow. It seems like you haven’t finished the @local.workshop_data.in_text_title yet. It’s really a short one (promise!) – you can even complete it while waiting for dinner to cook. Why don’t you go through it when you have a few minutes?\n\nThank you again for using @global.parent_app.",
+                "matchedExpression": "@global.workshop",
+                "type": "global",
+                "fieldName": "workshop"
+              },
+              {
+                "fullExpression": "Hi @global.user_name, a new @global.workshop awaits you tomorrow. It seems like you haven’t finished the @local.workshop_data.in_text_title yet. It’s really a short one (promise!) – you can even complete it while waiting for dinner to cook. Why don’t you go through it when you have a few minutes?\n\nThank you again for using @global.parent_app.",
+                "matchedExpression": "@local.workshop_data.in_text_title",
+                "type": "local",
+                "fieldName": "workshop_data"
+              },
+              {
+                "fullExpression": "Hi @global.user_name, a new @global.workshop awaits you tomorrow. It seems like you haven’t finished the @local.workshop_data.in_text_title yet. It’s really a short one (promise!) – you can even complete it while waiting for dinner to cook. Why don’t you go through it when you have a few minutes?\n\nThank you again for using @global.parent_app.",
+                "matchedExpression": "@global.parent_app",
+                "type": "global",
+                "fieldName": "parent_app"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@global.user_name": [
+              "value"
+            ],
+            "@global.workshop": [
+              "value"
+            ],
+            "@local.workshop_data.in_text_title": [
+              "value"
+            ],
+            "@global.parent_app": [
+              "value"
+            ]
+          }
+        },
+        {
+          "name": "text_completed",
+          "value": "Great that you completed the @local.workshop_data.in_text_title. Tomorrow, a new @global.workshop is unlocked. Try it - you will see the difference in your teen’s behaviour.",
+          "_translations": {
+            "value": {
+              "tz_sw": true
+            }
+          },
+          "type": "set_variable",
+          "_nested_name": "m_workshop_tomorrow.text_completed",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "Great that you completed the @local.workshop_data.in_text_title. Tomorrow, a new @global.workshop is unlocked. Try it - you will see the difference in your teen’s behaviour.",
+                "matchedExpression": "@local.workshop_data.in_text_title",
+                "type": "local",
+                "fieldName": "workshop_data"
+              },
+              {
+                "fullExpression": "Great that you completed the @local.workshop_data.in_text_title. Tomorrow, a new @global.workshop is unlocked. Try it - you will see the difference in your teen’s behaviour.",
+                "matchedExpression": "@global.workshop",
+                "type": "global",
+                "fieldName": "workshop"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@local.workshop_data.in_text_title": [
+              "value"
+            ],
+            "@global.workshop": [
+              "value"
+            ]
+          }
+        }
+      ],
+      "_nested_name": "m_workshop_tomorrow"
+    }
+  ],
+  "_xlsxPath": "global/top_templates/in_week_messages/in_week_message_texts/w_praise_messages.xlsx"
+}

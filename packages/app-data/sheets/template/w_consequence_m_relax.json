@@ -1,0 +1,41 @@
+{
+  "flow_type": "template",
+  "module": "consequence",
+  "flow_name": "w_consequence_m_relax",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "m_relax",
+      "value": "m_relax",
+      "rows": [
+        {
+          "name": "workshop_data",
+          "value": "@data.workshop.w_consequence",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "m_relax.workshop_data",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@data.workshop.w_consequence",
+                "matchedExpression": "@data.workshop.w_consequence",
+                "type": "data",
+                "fieldName": "workshop"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@data.workshop.w_consequence": [
+              "value"
+            ]
+          }
+        }
+      ],
+      "_nested_name": "m_relax"
+    }
+  ],
+  "_xlsxPath": "global/top_templates/in_week_messages/in_week_message_texts/w_consequence_messages.xlsx"
+}

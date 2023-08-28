@@ -1,0 +1,399 @@
+{
+  "flow_type": "template",
+  "module": "w_svp",
+  "flow_name": "w_svp_learn_use_voice",
+  "status": "released",
+  "rows": [
+    {
+      "name": "row_id",
+      "value": "use_voice",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "row_id"
+    },
+    {
+      "name": "row_concat",
+      "value": "learn.@local.row_id",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "row_concat",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "learn.@local.row_id",
+            "matchedExpression": "@local.row_id",
+            "type": "local",
+            "fieldName": "row_id"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.row_id": [
+          "value"
+        ]
+      }
+    },
+    {
+      "name": "row_data",
+      "value": "@data.@local.row_concat",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "row_data",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@data.@local.row_concat",
+            "matchedExpression": "@local.row_concat",
+            "type": "local",
+            "fieldName": "row_concat"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.row_concat": [
+          "value"
+        ]
+      }
+    },
+    {
+      "name": "part_id_1",
+      "value": "@local.row_data.part_1",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "part_id_1",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@local.row_data.part_1",
+            "matchedExpression": "@local.row_data.part_1",
+            "type": "local",
+            "fieldName": "row_data"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.row_data.part_1": [
+          "value"
+        ]
+      }
+    },
+    {
+      "name": "part_id_2",
+      "value": "@local.row_data.part_2",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "part_id_2",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@local.row_data.part_2",
+            "matchedExpression": "@local.row_data.part_2",
+            "type": "local",
+            "fieldName": "row_data"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.row_data.part_2": [
+          "value"
+        ]
+      }
+    },
+    {
+      "name": "part_id_3",
+      "value": "@local.row_data.part_3",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "part_id_3",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@local.row_data.part_3",
+            "matchedExpression": "@local.row_data.part_3",
+            "type": "local",
+            "fieldName": "row_data"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.row_data.part_3": [
+          "value"
+        ]
+      }
+    },
+    {
+      "name": "part_id_4",
+      "value": "@local.row_data.part_4",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "part_id_4",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@local.row_data.part_4",
+            "matchedExpression": "@local.row_data.part_4",
+            "type": "local",
+            "fieldName": "row_data"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.row_data.part_4": [
+          "value"
+        ]
+      }
+    },
+    {
+      "name": "part_id_5",
+      "value": "@local.row_data.part_5",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "part_id_5",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@local.row_data.part_5",
+            "matchedExpression": "@local.row_data.part_5",
+            "type": "local",
+            "fieldName": "row_data"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.row_data.part_5": [
+          "value"
+        ]
+      }
+    },
+    {
+      "name": "part_id_6",
+      "value": "@local.row_data.part_6",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "part_id_6",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@local.row_data.part_6",
+            "matchedExpression": "@local.row_data.part_6",
+            "type": "local",
+            "fieldName": "row_data"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.row_data.part_6": [
+          "value"
+        ]
+      }
+    },
+    {
+      "name": "part_id_7",
+      "value": "@local.row_data.part_7",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "part_id_7",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@local.row_data.part_7",
+            "matchedExpression": "@local.row_data.part_7",
+            "type": "local",
+            "fieldName": "row_data"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.row_data.part_7": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "template",
+      "name": "learn",
+      "value": "learn_temp",
+      "action_list": [
+        {
+          "trigger": "completed",
+          "action_id": "emit",
+          "args": [
+            "completed"
+          ],
+          "_raw": "completed | emit:completed",
+          "_cleaned": "completed | emit:completed"
+        },
+        {
+          "trigger": "uncompleted",
+          "action_id": "emit",
+          "args": [
+            "uncompleted"
+          ],
+          "_raw": "uncompleted | emit:uncompleted",
+          "_cleaned": "uncompleted | emit:uncompleted"
+        }
+      ],
+      "rows": [
+        {
+          "type": "nested_properties",
+          "name": "workshop_activity",
+          "rows": [
+            {
+              "name": "intro_text",
+              "value": "@local.row_data.intro_text",
+              "_translations": {
+                "value": {}
+              },
+              "type": "set_variable",
+              "_nested_name": "learn.workshop_activity.intro_text",
+              "_dynamicFields": {
+                "value": [
+                  {
+                    "fullExpression": "@local.row_data.intro_text",
+                    "matchedExpression": "@local.row_data.intro_text",
+                    "type": "local",
+                    "fieldName": "row_data"
+                  }
+                ]
+              },
+              "_dynamicDependencies": {
+                "@local.row_data.intro_text": [
+                  "value"
+                ]
+              }
+            },
+            {
+              "type": "nested_properties",
+              "name": "content_box",
+              "value": "pair",
+              "rows": [
+                {
+                  "type": "nested_properties",
+                  "name": "box_1",
+                  "value": "w_svp_learn_suggestions_use_voice",
+                  "rows": [],
+                  "_nested_name": "learn.workshop_activity.content_box.box_1"
+                },
+                {
+                  "type": "nested_properties",
+                  "name": "box_2",
+                  "value": "box_duo_radio_buttons",
+                  "rows": [
+                    {
+                      "type": "nested_properties",
+                      "name": "radio_buttons_1",
+                      "rows": [
+                        {
+                          "name": "text",
+                          "value": "Let’s think back of @global.w_svp_teen_girl_2’s dangerous situation:",
+                          "_translations": {
+                            "value": {}
+                          },
+                          "type": "set_variable",
+                          "_nested_name": "learn.workshop_activity.content_box.box_2.radio_buttons_1.text",
+                          "_dynamicFields": {
+                            "value": [
+                              {
+                                "fullExpression": "Let’s think back of @global.w_svp_teen_girl_2’s dangerous situation:",
+                                "matchedExpression": "@global.w_svp_teen_girl_2",
+                                "type": "global",
+                                "fieldName": "w_svp_teen_girl_2"
+                              }
+                            ]
+                          },
+                          "_dynamicDependencies": {
+                            "@global.w_svp_teen_girl_2": [
+                              "value"
+                            ]
+                          }
+                        },
+                        {
+                          "name": "question_text",
+                          "value": "Could this situation happen to a boy?",
+                          "_translations": {
+                            "value": {}
+                          },
+                          "type": "set_variable",
+                          "_nested_name": "learn.workshop_activity.content_box.box_2.radio_buttons_1.question_text"
+                        },
+                        {
+                          "name": "answer_list",
+                          "value": [
+                            "name:yes | text:Yes",
+                            "name:no | text:No"
+                          ],
+                          "type": "set_variable",
+                          "_nested_name": "learn.workshop_activity.content_box.box_2.radio_buttons_1.answer_list"
+                        }
+                      ],
+                      "_nested_name": "learn.workshop_activity.content_box.box_2.radio_buttons_1"
+                    },
+                    {
+                      "type": "nested_properties",
+                      "name": "radio_buttons_2",
+                      "rows": [
+                        {
+                          "name": "question_text",
+                          "value": "Could a boy use his voice to get away?",
+                          "_translations": {
+                            "value": {}
+                          },
+                          "type": "set_variable",
+                          "_nested_name": "learn.workshop_activity.content_box.box_2.radio_buttons_2.question_text"
+                        },
+                        {
+                          "name": "answer_list",
+                          "value": [
+                            "name:yes | text:Yes",
+                            "name:no | text:No"
+                          ],
+                          "type": "set_variable",
+                          "_nested_name": "learn.workshop_activity.content_box.box_2.radio_buttons_2.answer_list"
+                        },
+                        {
+                          "name": "reply",
+                          "value": "Boys and girls can both find themselves in dangerous situations. Both boys and girls are allowed to do, say, and believe anything that will help them stay safe.",
+                          "_translations": {
+                            "value": {}
+                          },
+                          "type": "set_variable",
+                          "_nested_name": "learn.workshop_activity.content_box.box_2.radio_buttons_2.reply"
+                        }
+                      ],
+                      "_nested_name": "learn.workshop_activity.content_box.box_2.radio_buttons_2"
+                    }
+                  ],
+                  "_nested_name": "learn.workshop_activity.content_box.box_2"
+                }
+              ],
+              "_nested_name": "learn.workshop_activity.content_box"
+            }
+          ],
+          "_nested_name": "learn.workshop_activity"
+        }
+      ],
+      "_nested_name": "learn"
+    }
+  ],
+  "_xlsxPath": "global/top_templates/workshop_templates/workshop_svp.xlsx"
+}

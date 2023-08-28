@@ -1,0 +1,37 @@
+{
+  "flow_name": "tg_w_money_read_3_tog",
+  "flow_subtype": "generated",
+  "flow_type": "data_list",
+  "rows": [
+    {
+      "id": "read_3",
+      "group": "read_3",
+      "individual": true,
+      "together": true,
+      "template": "w_money_read_3",
+      "rel_priority": 1,
+      "completed_field": "task_w_money_read_3_completed",
+      "completed": "@fields.task_w_money_read_3_completed"
+    },
+    {
+      "id": "talk_2",
+      "group": "read_3",
+      "individual": false,
+      "together": true,
+      "template": "w_money_tq_2",
+      "rel_priority": 3,
+      "completed_field": "task_w_money_talk_2_completed",
+      "completed": "@fields.task_w_money_talk_2_completed"
+    },
+    {
+      "id": "talk_3",
+      "group": "read_3",
+      "individual": false,
+      "together": true,
+      "template": "w_money_tq_3",
+      "rel_priority": 5,
+      "completed_field": "task_w_money_talk_3_completed",
+      "completed": "@fields.task_w_money_talk_3_completed"
+    }
+  ]
+}

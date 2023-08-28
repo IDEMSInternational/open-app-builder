@@ -1,0 +1,222 @@
+{
+  "flow_type": "data_list",
+  "flow_subtype": "campaign_schedule",
+  "flow_name": "nf_schedule_in_week_messages",
+  "status": "released",
+  "rows": [
+    {
+      "id": "nf_w_released",
+      "activation_condition_list": [
+        {
+          "condition_type": "calc",
+          "condition_args": {
+            "calc": "@fields._app_skin == \"weekly_workshop\""
+          },
+          "_raw": "@fields._app_skin == \"weekly_workshop\""
+        }
+      ],
+      "deactivation_condition_list": [
+        {
+          "condition_type": "calc",
+          "condition_args": {
+            "calc": "@fields.workshop_number == 1"
+          },
+          "_raw": "@fields.workshop_number == 1"
+        }
+      ],
+      "schedule": {
+        "day_of_week": "+@fields.workshop_start_day"
+      },
+      "time": {
+        "hour": 13,
+        "minute": 0
+      }
+    },
+    {
+      "id": "nf_relax",
+      "activation_condition_list": [
+        {
+          "condition_type": "calc",
+          "condition_args": {
+            "calc": "@fields._app_skin == \"weekly_workshop\""
+          },
+          "_raw": "@fields._app_skin == \"weekly_workshop\""
+        }
+      ],
+      "time": {
+        "hour": 19,
+        "minute": 0
+      }
+    },
+    {
+      "id": "nf_something_fun",
+      "activation_condition_list": [
+        {
+          "condition_type": "calc",
+          "condition_args": {
+            "calc": "@fields._app_skin == \"weekly_workshop\""
+          },
+          "_raw": "@fields._app_skin == \"weekly_workshop\""
+        }
+      ],
+      "deactivation_condition_list": [
+        {
+          "condition_type": "calc",
+          "condition_args": {
+            "calc": "@fields.workshop_number == 1"
+          },
+          "_raw": "@fields.workshop_number == 1"
+        }
+      ],
+      "schedule": {
+        "day_of_week": "(+@fields.workshop_start_day +2 -1)%7 +1"
+      },
+      "time": {
+        "hour": 13,
+        "minute": 0
+      }
+    },
+    {
+      "id": "nf_praise",
+      "activation_condition_list": [
+        {
+          "condition_type": "calc",
+          "condition_args": {
+            "calc": "@fields._app_skin == \"weekly_workshop\""
+          },
+          "_raw": "@fields._app_skin == \"weekly_workshop\""
+        }
+      ],
+      "deactivation_condition_list": [
+        {
+          "condition_type": "calc",
+          "condition_args": {
+            "calc": "@fields.workshop_number == 1"
+          },
+          "_raw": "@fields.workshop_number == 1"
+        }
+      ],
+      "schedule": {
+        "day_of_week": "(+@fields.workshop_start_day +3 -1)%7 +1"
+      },
+      "time": {
+        "hour": 9,
+        "minute": 0
+      }
+    },
+    {
+      "id": "nf_w_reminder",
+      "activation_condition_list": [
+        {
+          "condition_type": "calc",
+          "condition_args": {
+            "calc": "@fields._app_skin == \"weekly_workshop\""
+          },
+          "_raw": "@fields._app_skin == \"weekly_workshop\""
+        }
+      ],
+      "deactivation_condition_list": [
+        {
+          "condition_type": "calc",
+          "condition_args": {
+            "calc": "@fields.workshop_number == 1"
+          },
+          "_raw": "@fields.workshop_number == 1"
+        }
+      ],
+      "schedule": {
+        "day_of_week": "(+@fields.workshop_start_day +3 -1)%7 +1"
+      },
+      "time": {
+        "hour": 13,
+        "minute": 0
+      }
+    },
+    {
+      "id": "nf_hp_reminder",
+      "activation_condition_list": [
+        {
+          "condition_type": "calc",
+          "condition_args": {
+            "calc": "@fields._app_skin == \"weekly_workshop\""
+          },
+          "_raw": "@fields._app_skin == \"weekly_workshop\""
+        }
+      ],
+      "schedule": {
+        "day_of_week": "(+@fields.workshop_start_day +4 -1)%7 +1"
+      },
+      "time": {
+        "hour": 13,
+        "minute": 0
+      }
+    },
+    {
+      "id": "nf_parent_points_overview",
+      "activation_condition_list": [
+        {
+          "condition_type": "calc",
+          "condition_args": {
+            "calc": "@fields._app_skin == \"weekly_workshop\""
+          },
+          "_raw": "@fields._app_skin == \"weekly_workshop\""
+        }
+      ],
+      "schedule": {
+        "day_of_week": "(+@fields.workshop_start_day +5 -1)%7 +1"
+      },
+      "time": {
+        "hour": 9,
+        "minute": 0
+      }
+    },
+    {
+      "id": "nf_hp_review",
+      "activation_condition_list": [
+        {
+          "condition_type": "calc",
+          "condition_args": {
+            "calc": "@fields._app_skin == \"weekly_workshop\""
+          },
+          "_raw": "@fields._app_skin == \"weekly_workshop\""
+        }
+      ],
+      "deactivation_condition_list": [
+        {
+          "condition_type": "calc",
+          "condition_args": {
+            "calc": "@fields.workshop_number == 1"
+          },
+          "_raw": "@fields.workshop_number == 1"
+        }
+      ],
+      "schedule": {
+        "day_of_week": "(+@fields.workshop_start_day +5 -1)%7 +1"
+      },
+      "time": {
+        "hour": 13,
+        "minute": 0
+      }
+    },
+    {
+      "id": "nf_w_tomorrow",
+      "activation_condition_list": [
+        {
+          "condition_type": "calc",
+          "condition_args": {
+            "calc": "@fields._app_skin == \"weekly_workshop\""
+          },
+          "_raw": "@fields._app_skin == \"weekly_workshop\""
+        }
+      ],
+      "schedule": {
+        "day_of_week": "(+@fields.workshop_start_day +6 -1)%7 +1"
+      },
+      "time": {
+        "hour": 13,
+        "minute": 0
+      }
+    }
+  ],
+  "_xlsxPath": "global/campaigns/notifications_in_week_messages.xlsx"
+}

@@ -1,8 +1,9 @@
 # Default gitignore for master
 # Should be removed if using deployment branches
-**/*.*
-!.gitignore
-!README.md
+
+# **/*.*
+# !.gitignore
+# !README.md
 
 # Default gitignore for deployment branches
 merged

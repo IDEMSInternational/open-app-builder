@@ -1,0 +1,110 @@
+{
+  "flow_type": "generator",
+  "flow_name": "gen_activity_review",
+  "status": "released",
+  "parameter_list": {
+    "input_data_list": "learn_play_data",
+    "output_flow_name": "ltp_activity_{@gen.id}_review",
+    "output_flow_type": "template",
+    "output_flow_subtype": "generated"
+  },
+  "rows": [
+    {
+      "name": "original_number",
+      "value": "@gen.number"
+    },
+    {
+      "name": "number_1_to_4",
+      "value": "@calc(@local.original_number % 4 +1)"
+    },
+    {
+      "name": "hp_mood",
+      "value": "_hp_mood"
+    },
+    {
+      "name": "hp_done",
+      "value": "_hp_done"
+    },
+    {
+      "name": "title",
+      "value": "@gen.title"
+    },
+    {
+      "type": "template",
+      "name": "home_practice_review",
+      "value": "home_practice_review",
+      "action_list": [
+        {
+          "trigger": "completed",
+          "action_id": "emit",
+          "args": [
+            "completed"
+          ],
+          "_raw": "completed | emit:completed",
+          "_cleaned": "completed | emit:completed"
+        },
+        {
+          "trigger": "uncompleted",
+          "action_id": "emit",
+          "args": [
+            "uncompleted"
+          ],
+          "_raw": "uncompleted | emit:uncompleted",
+          "_cleaned": "uncompleted | emit:uncompleted"
+        }
+      ],
+      "rows": [
+        {
+          "name": "workshop",
+          "value": "w_learn_@local.number_1_to_4",
+          "exclude_from_translation": true
+        },
+        {
+          "type": "nested_properties",
+          "name": "workshop_activity",
+          "rows": [
+            {
+              "type": "nested_properties",
+              "name": "content_box",
+              "rows": [
+                {
+                  "type": "nested_properties",
+                  "name": "box_1",
+                  "rows": [
+                    {
+                      "name": "text_done",
+                      "condition": false
+                    },
+                    {
+                      "name": "question_text_done",
+                      "value": "@global.chance_try @local.title?"
+                    },
+                    {
+                      "name": "radio_group_done_tracker",
+                      "value": "ltp_activity_@gen.id@local.hp_done"
+                    },
+                    {
+                      "name": "radio_group_mood_tracker",
+                      "value": "ltp_activity_@gen.id@local.hp_mood"
+                    },
+                    {
+                      "name": "button_no_go_to_template",
+                      "value": "w_learn_home_practice"
+                    }
+                  ]
+                },
+                {
+                  "type": "nested_properties",
+                  "name": "box_2",
+                  "value": "w_1on1_hp_challenges",
+                  "rows": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "_xlsxPath": "global/top_templates/in_week_messages/home_practice_reviews/w_learn_hp_review.xlsx"
+}

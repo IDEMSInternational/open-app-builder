@@ -1,0 +1,2088 @@
+{
+  "flow_type": "template",
+  "module": "w_srh",
+  "flow_name": "w_srh_learn_sex_talk",
+  "status": "released",
+  "rows": [
+    {
+      "name": "row_id",
+      "value": "sex_talk",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "row_id"
+    },
+    {
+      "name": "row_concat",
+      "value": "learn.@local.row_id",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "row_concat",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "learn.@local.row_id",
+            "matchedExpression": "@local.row_id",
+            "type": "local",
+            "fieldName": "row_id"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.row_id": [
+          "value"
+        ]
+      }
+    },
+    {
+      "name": "row_data",
+      "value": "@data.@local.row_concat",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "row_data",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@data.@local.row_concat",
+            "matchedExpression": "@local.row_concat",
+            "type": "local",
+            "fieldName": "row_concat"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.row_concat": [
+          "value"
+        ]
+      }
+    },
+    {
+      "name": "type",
+      "value": "@local.row_data.type",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "type",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@local.row_data.type",
+            "matchedExpression": "@local.row_data.type",
+            "type": "local",
+            "fieldName": "row_data"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.row_data.type": [
+          "value"
+        ]
+      }
+    },
+    {
+      "name": "part_id_1",
+      "value": "@local.row_data.part_1",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "part_id_1",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@local.row_data.part_1",
+            "matchedExpression": "@local.row_data.part_1",
+            "type": "local",
+            "fieldName": "row_data"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.row_data.part_1": [
+          "value"
+        ]
+      }
+    },
+    {
+      "name": "part_concat_1",
+      "value": "@local.type.@local.part_id_1",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "part_concat_1",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@local.type.@local.part_id_1",
+            "matchedExpression": "@local.type",
+            "type": "local",
+            "fieldName": "type"
+          },
+          {
+            "fullExpression": "@local.type.@local.part_id_1",
+            "matchedExpression": "@local.part_id_1",
+            "type": "local",
+            "fieldName": "part_id_1"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.type": [
+          "value"
+        ],
+        "@local.part_id_1": [
+          "value"
+        ]
+      }
+    },
+    {
+      "name": "part_data_1",
+      "value": "@data.@local.part_concat_1",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "part_data_1",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@data.@local.part_concat_1",
+            "matchedExpression": "@local.part_concat_1",
+            "type": "local",
+            "fieldName": "part_concat_1"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.part_concat_1": [
+          "value"
+        ]
+      }
+    },
+    {
+      "name": "part_id_2",
+      "value": "@local.row_data.part_2",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "part_id_2",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@local.row_data.part_2",
+            "matchedExpression": "@local.row_data.part_2",
+            "type": "local",
+            "fieldName": "row_data"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.row_data.part_2": [
+          "value"
+        ]
+      }
+    },
+    {
+      "name": "part_concat_2",
+      "value": "@local.type.@local.part_id_2",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "part_concat_2",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@local.type.@local.part_id_2",
+            "matchedExpression": "@local.type",
+            "type": "local",
+            "fieldName": "type"
+          },
+          {
+            "fullExpression": "@local.type.@local.part_id_2",
+            "matchedExpression": "@local.part_id_2",
+            "type": "local",
+            "fieldName": "part_id_2"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.type": [
+          "value"
+        ],
+        "@local.part_id_2": [
+          "value"
+        ]
+      }
+    },
+    {
+      "name": "part_data_2",
+      "value": "@data.@local.part_concat_2",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "part_data_2",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@data.@local.part_concat_2",
+            "matchedExpression": "@local.part_concat_2",
+            "type": "local",
+            "fieldName": "part_concat_2"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.part_concat_2": [
+          "value"
+        ]
+      }
+    },
+    {
+      "name": "part_id_3",
+      "value": "@local.row_data.part_3",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "part_id_3",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@local.row_data.part_3",
+            "matchedExpression": "@local.row_data.part_3",
+            "type": "local",
+            "fieldName": "row_data"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.row_data.part_3": [
+          "value"
+        ]
+      }
+    },
+    {
+      "name": "part_concat_3",
+      "value": "@local.type.@local.part_id_3",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "part_concat_3",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@local.type.@local.part_id_3",
+            "matchedExpression": "@local.type",
+            "type": "local",
+            "fieldName": "type"
+          },
+          {
+            "fullExpression": "@local.type.@local.part_id_3",
+            "matchedExpression": "@local.part_id_3",
+            "type": "local",
+            "fieldName": "part_id_3"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.type": [
+          "value"
+        ],
+        "@local.part_id_3": [
+          "value"
+        ]
+      }
+    },
+    {
+      "name": "part_data_3",
+      "value": "@data.@local.part_concat_3",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "part_data_3",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@data.@local.part_concat_3",
+            "matchedExpression": "@local.part_concat_3",
+            "type": "local",
+            "fieldName": "part_concat_3"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.part_concat_3": [
+          "value"
+        ]
+      }
+    },
+    {
+      "name": "part_id_4",
+      "value": "@local.row_data.part_4",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "part_id_4",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@local.row_data.part_4",
+            "matchedExpression": "@local.row_data.part_4",
+            "type": "local",
+            "fieldName": "row_data"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.row_data.part_4": [
+          "value"
+        ]
+      }
+    },
+    {
+      "name": "part_concat_4",
+      "value": "@local.type.@local.part_id_4",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "part_concat_4",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@local.type.@local.part_id_4",
+            "matchedExpression": "@local.type",
+            "type": "local",
+            "fieldName": "type"
+          },
+          {
+            "fullExpression": "@local.type.@local.part_id_4",
+            "matchedExpression": "@local.part_id_4",
+            "type": "local",
+            "fieldName": "part_id_4"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.type": [
+          "value"
+        ],
+        "@local.part_id_4": [
+          "value"
+        ]
+      }
+    },
+    {
+      "name": "part_data_4",
+      "value": "@data.@local.part_concat_4",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "part_data_4",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@data.@local.part_concat_4",
+            "matchedExpression": "@local.part_concat_4",
+            "type": "local",
+            "fieldName": "part_concat_4"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.part_concat_4": [
+          "value"
+        ]
+      }
+    },
+    {
+      "name": "no_1",
+      "value": "_1",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "no_1"
+    },
+    {
+      "name": "no_2",
+      "value": "_2",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "no_2"
+    },
+    {
+      "name": "no_3",
+      "value": "_3",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "no_3"
+    },
+    {
+      "name": "no_4",
+      "value": "_4",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "no_4"
+    },
+    {
+      "name": "no_5",
+      "value": "_5",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "no_5"
+    },
+    {
+      "type": "template",
+      "name": "learn",
+      "value": "learn_temp",
+      "action_list": [
+        {
+          "trigger": "completed",
+          "action_id": "emit",
+          "args": [
+            "completed"
+          ],
+          "_raw": "completed | emit:completed",
+          "_cleaned": "completed | emit:completed"
+        },
+        {
+          "trigger": "uncompleted",
+          "action_id": "emit",
+          "args": [
+            "uncompleted"
+          ],
+          "_raw": "uncompleted | emit:uncompleted",
+          "_cleaned": "uncompleted | emit:uncompleted"
+        }
+      ],
+      "rows": [
+        {
+          "type": "nested_properties",
+          "name": "workshop_activity",
+          "rows": [
+            {
+              "name": "intro_text",
+              "value": "@local.row_data.intro_text",
+              "_translations": {
+                "value": {}
+              },
+              "type": "set_variable",
+              "_nested_name": "learn.workshop_activity.intro_text",
+              "_dynamicFields": {
+                "value": [
+                  {
+                    "fullExpression": "@local.row_data.intro_text",
+                    "matchedExpression": "@local.row_data.intro_text",
+                    "type": "local",
+                    "fieldName": "row_data"
+                  }
+                ]
+              },
+              "_dynamicDependencies": {
+                "@local.row_data.intro_text": [
+                  "value"
+                ]
+              }
+            },
+            {
+              "type": "nested_properties",
+              "name": "content_box",
+              "value": "pair",
+              "rows": [
+                {
+                  "type": "nested_properties",
+                  "name": "box_1",
+                  "value": "box_buttons",
+                  "rows": [
+                    {
+                      "name": "text_1",
+                      "value": "@local.part_data_1.question_text",
+                      "_translations": {
+                        "value": {}
+                      },
+                      "parameter_list": {
+                        "style": "emphasised"
+                      },
+                      "type": "set_variable",
+                      "_nested_name": "learn.workshop_activity.content_box.box_1.text_1",
+                      "_dynamicFields": {
+                        "value": [
+                          {
+                            "fullExpression": "@local.part_data_1.question_text",
+                            "matchedExpression": "@local.part_data_1.question_text",
+                            "type": "local",
+                            "fieldName": "part_data_1"
+                          }
+                        ]
+                      },
+                      "_dynamicDependencies": {
+                        "@local.part_data_1.question_text": [
+                          "value"
+                        ]
+                      }
+                    },
+                    {
+                      "name": "button_1",
+                      "value": "@local.part_data_1.option_1",
+                      "_translations": {
+                        "value": {}
+                      },
+                      "action_list": [
+                        {
+                          "trigger": "click",
+                          "action_id": "pop_up",
+                          "args": [
+                            "w_srh_@local.part_id_1@local.no_1"
+                          ],
+                          "_raw": "click | pop_up: w_srh_@local.part_id_1@local.no_1",
+                          "_cleaned": "click | pop_up: w_srh_@local.part_id_1@local.no_1"
+                        }
+                      ],
+                      "type": "set_variable",
+                      "_nested_name": "learn.workshop_activity.content_box.box_1.button_1",
+                      "_dynamicFields": {
+                        "value": [
+                          {
+                            "fullExpression": "@local.part_data_1.option_1",
+                            "matchedExpression": "@local.part_data_1.option_1",
+                            "type": "local",
+                            "fieldName": "part_data_1"
+                          }
+                        ],
+                        "action_list": {
+                          "0": {
+                            "args": {
+                              "0": [
+                                {
+                                  "fullExpression": "w_srh_@local.part_id_1@local.no_1",
+                                  "matchedExpression": "@local.part_id_1",
+                                  "type": "local",
+                                  "fieldName": "part_id_1"
+                                },
+                                {
+                                  "fullExpression": "w_srh_@local.part_id_1@local.no_1",
+                                  "matchedExpression": "@local.no_1",
+                                  "type": "local",
+                                  "fieldName": "no_1"
+                                }
+                              ]
+                            },
+                            "_raw": [
+                              {
+                                "fullExpression": "click | pop_up: w_srh_@local.part_id_1@local.no_1",
+                                "matchedExpression": "@local.part_id_1",
+                                "type": "local",
+                                "fieldName": "part_id_1"
+                              },
+                              {
+                                "fullExpression": "click | pop_up: w_srh_@local.part_id_1@local.no_1",
+                                "matchedExpression": "@local.no_1",
+                                "type": "local",
+                                "fieldName": "no_1"
+                              }
+                            ],
+                            "_cleaned": [
+                              {
+                                "fullExpression": "click | pop_up: w_srh_@local.part_id_1@local.no_1",
+                                "matchedExpression": "@local.part_id_1",
+                                "type": "local",
+                                "fieldName": "part_id_1"
+                              },
+                              {
+                                "fullExpression": "click | pop_up: w_srh_@local.part_id_1@local.no_1",
+                                "matchedExpression": "@local.no_1",
+                                "type": "local",
+                                "fieldName": "no_1"
+                              }
+                            ]
+                          }
+                        }
+                      },
+                      "_dynamicDependencies": {
+                        "@local.part_data_1.option_1": [
+                          "value"
+                        ],
+                        "@local.part_id_1": [
+                          "action_list.0.args.0",
+                          "action_list.0._raw",
+                          "action_list.0._cleaned"
+                        ],
+                        "@local.no_1": [
+                          "action_list.0.args.0",
+                          "action_list.0._raw",
+                          "action_list.0._cleaned"
+                        ]
+                      }
+                    },
+                    {
+                      "name": "button_2",
+                      "value": "@local.part_data_1.option_2",
+                      "_translations": {
+                        "value": {}
+                      },
+                      "action_list": [
+                        {
+                          "trigger": "click",
+                          "action_id": "pop_up",
+                          "args": [
+                            "w_srh_@local.part_id_1@local.no_2"
+                          ],
+                          "_raw": "click | pop_up: w_srh_@local.part_id_1@local.no_2",
+                          "_cleaned": "click | pop_up: w_srh_@local.part_id_1@local.no_2"
+                        }
+                      ],
+                      "hidden": false,
+                      "type": "set_variable",
+                      "_nested_name": "learn.workshop_activity.content_box.box_1.button_2",
+                      "_dynamicFields": {
+                        "value": [
+                          {
+                            "fullExpression": "@local.part_data_1.option_2",
+                            "matchedExpression": "@local.part_data_1.option_2",
+                            "type": "local",
+                            "fieldName": "part_data_1"
+                          }
+                        ],
+                        "action_list": {
+                          "0": {
+                            "args": {
+                              "0": [
+                                {
+                                  "fullExpression": "w_srh_@local.part_id_1@local.no_2",
+                                  "matchedExpression": "@local.part_id_1",
+                                  "type": "local",
+                                  "fieldName": "part_id_1"
+                                },
+                                {
+                                  "fullExpression": "w_srh_@local.part_id_1@local.no_2",
+                                  "matchedExpression": "@local.no_2",
+                                  "type": "local",
+                                  "fieldName": "no_2"
+                                }
+                              ]
+                            },
+                            "_raw": [
+                              {
+                                "fullExpression": "click | pop_up: w_srh_@local.part_id_1@local.no_2",
+                                "matchedExpression": "@local.part_id_1",
+                                "type": "local",
+                                "fieldName": "part_id_1"
+                              },
+                              {
+                                "fullExpression": "click | pop_up: w_srh_@local.part_id_1@local.no_2",
+                                "matchedExpression": "@local.no_2",
+                                "type": "local",
+                                "fieldName": "no_2"
+                              }
+                            ],
+                            "_cleaned": [
+                              {
+                                "fullExpression": "click | pop_up: w_srh_@local.part_id_1@local.no_2",
+                                "matchedExpression": "@local.part_id_1",
+                                "type": "local",
+                                "fieldName": "part_id_1"
+                              },
+                              {
+                                "fullExpression": "click | pop_up: w_srh_@local.part_id_1@local.no_2",
+                                "matchedExpression": "@local.no_2",
+                                "type": "local",
+                                "fieldName": "no_2"
+                              }
+                            ]
+                          }
+                        }
+                      },
+                      "_dynamicDependencies": {
+                        "@local.part_data_1.option_2": [
+                          "value"
+                        ],
+                        "@local.part_id_1": [
+                          "action_list.0.args.0",
+                          "action_list.0._raw",
+                          "action_list.0._cleaned"
+                        ],
+                        "@local.no_2": [
+                          "action_list.0.args.0",
+                          "action_list.0._raw",
+                          "action_list.0._cleaned"
+                        ]
+                      }
+                    },
+                    {
+                      "name": "button_3",
+                      "value": "@local.part_data_1.option_3",
+                      "_translations": {
+                        "value": {}
+                      },
+                      "action_list": [
+                        {
+                          "trigger": "click",
+                          "action_id": "pop_up",
+                          "args": [
+                            "w_srh_@local.part_id_1@local.no_3"
+                          ],
+                          "_raw": "click | pop_up: w_srh_@local.part_id_1@local.no_3",
+                          "_cleaned": "click | pop_up: w_srh_@local.part_id_1@local.no_3"
+                        }
+                      ],
+                      "hidden": false,
+                      "type": "set_variable",
+                      "_nested_name": "learn.workshop_activity.content_box.box_1.button_3",
+                      "_dynamicFields": {
+                        "value": [
+                          {
+                            "fullExpression": "@local.part_data_1.option_3",
+                            "matchedExpression": "@local.part_data_1.option_3",
+                            "type": "local",
+                            "fieldName": "part_data_1"
+                          }
+                        ],
+                        "action_list": {
+                          "0": {
+                            "args": {
+                              "0": [
+                                {
+                                  "fullExpression": "w_srh_@local.part_id_1@local.no_3",
+                                  "matchedExpression": "@local.part_id_1",
+                                  "type": "local",
+                                  "fieldName": "part_id_1"
+                                },
+                                {
+                                  "fullExpression": "w_srh_@local.part_id_1@local.no_3",
+                                  "matchedExpression": "@local.no_3",
+                                  "type": "local",
+                                  "fieldName": "no_3"
+                                }
+                              ]
+                            },
+                            "_raw": [
+                              {
+                                "fullExpression": "click | pop_up: w_srh_@local.part_id_1@local.no_3",
+                                "matchedExpression": "@local.part_id_1",
+                                "type": "local",
+                                "fieldName": "part_id_1"
+                              },
+                              {
+                                "fullExpression": "click | pop_up: w_srh_@local.part_id_1@local.no_3",
+                                "matchedExpression": "@local.no_3",
+                                "type": "local",
+                                "fieldName": "no_3"
+                              }
+                            ],
+                            "_cleaned": [
+                              {
+                                "fullExpression": "click | pop_up: w_srh_@local.part_id_1@local.no_3",
+                                "matchedExpression": "@local.part_id_1",
+                                "type": "local",
+                                "fieldName": "part_id_1"
+                              },
+                              {
+                                "fullExpression": "click | pop_up: w_srh_@local.part_id_1@local.no_3",
+                                "matchedExpression": "@local.no_3",
+                                "type": "local",
+                                "fieldName": "no_3"
+                              }
+                            ]
+                          }
+                        }
+                      },
+                      "_dynamicDependencies": {
+                        "@local.part_data_1.option_3": [
+                          "value"
+                        ],
+                        "@local.part_id_1": [
+                          "action_list.0.args.0",
+                          "action_list.0._raw",
+                          "action_list.0._cleaned"
+                        ],
+                        "@local.no_3": [
+                          "action_list.0.args.0",
+                          "action_list.0._raw",
+                          "action_list.0._cleaned"
+                        ]
+                      }
+                    }
+                  ],
+                  "_nested_name": "learn.workshop_activity.content_box.box_1"
+                },
+                {
+                  "type": "nested_properties",
+                  "name": "box_2",
+                  "value": "pair",
+                  "rows": [
+                    {
+                      "type": "nested_properties",
+                      "name": "box_1",
+                      "value": "box_buttons",
+                      "rows": [
+                        {
+                          "name": "text_1",
+                          "value": "@local.part_data_2.question_text",
+                          "_translations": {
+                            "value": {}
+                          },
+                          "parameter_list": {
+                            "style": "emphasised"
+                          },
+                          "type": "set_variable",
+                          "_nested_name": "learn.workshop_activity.content_box.box_2.box_1.text_1",
+                          "_dynamicFields": {
+                            "value": [
+                              {
+                                "fullExpression": "@local.part_data_2.question_text",
+                                "matchedExpression": "@local.part_data_2.question_text",
+                                "type": "local",
+                                "fieldName": "part_data_2"
+                              }
+                            ]
+                          },
+                          "_dynamicDependencies": {
+                            "@local.part_data_2.question_text": [
+                              "value"
+                            ]
+                          }
+                        },
+                        {
+                          "name": "button_1",
+                          "value": "@local.part_data_2.option_1",
+                          "_translations": {
+                            "value": {}
+                          },
+                          "action_list": [
+                            {
+                              "trigger": "click",
+                              "action_id": "pop_up",
+                              "args": [
+                                "w_srh_@local.part_id_2@local.no_1"
+                              ],
+                              "_raw": "click | pop_up: w_srh_@local.part_id_2@local.no_1",
+                              "_cleaned": "click | pop_up: w_srh_@local.part_id_2@local.no_1"
+                            }
+                          ],
+                          "type": "set_variable",
+                          "_nested_name": "learn.workshop_activity.content_box.box_2.box_1.button_1",
+                          "_dynamicFields": {
+                            "value": [
+                              {
+                                "fullExpression": "@local.part_data_2.option_1",
+                                "matchedExpression": "@local.part_data_2.option_1",
+                                "type": "local",
+                                "fieldName": "part_data_2"
+                              }
+                            ],
+                            "action_list": {
+                              "0": {
+                                "args": {
+                                  "0": [
+                                    {
+                                      "fullExpression": "w_srh_@local.part_id_2@local.no_1",
+                                      "matchedExpression": "@local.part_id_2",
+                                      "type": "local",
+                                      "fieldName": "part_id_2"
+                                    },
+                                    {
+                                      "fullExpression": "w_srh_@local.part_id_2@local.no_1",
+                                      "matchedExpression": "@local.no_1",
+                                      "type": "local",
+                                      "fieldName": "no_1"
+                                    }
+                                  ]
+                                },
+                                "_raw": [
+                                  {
+                                    "fullExpression": "click | pop_up: w_srh_@local.part_id_2@local.no_1",
+                                    "matchedExpression": "@local.part_id_2",
+                                    "type": "local",
+                                    "fieldName": "part_id_2"
+                                  },
+                                  {
+                                    "fullExpression": "click | pop_up: w_srh_@local.part_id_2@local.no_1",
+                                    "matchedExpression": "@local.no_1",
+                                    "type": "local",
+                                    "fieldName": "no_1"
+                                  }
+                                ],
+                                "_cleaned": [
+                                  {
+                                    "fullExpression": "click | pop_up: w_srh_@local.part_id_2@local.no_1",
+                                    "matchedExpression": "@local.part_id_2",
+                                    "type": "local",
+                                    "fieldName": "part_id_2"
+                                  },
+                                  {
+                                    "fullExpression": "click | pop_up: w_srh_@local.part_id_2@local.no_1",
+                                    "matchedExpression": "@local.no_1",
+                                    "type": "local",
+                                    "fieldName": "no_1"
+                                  }
+                                ]
+                              }
+                            }
+                          },
+                          "_dynamicDependencies": {
+                            "@local.part_data_2.option_1": [
+                              "value"
+                            ],
+                            "@local.part_id_2": [
+                              "action_list.0.args.0",
+                              "action_list.0._raw",
+                              "action_list.0._cleaned"
+                            ],
+                            "@local.no_1": [
+                              "action_list.0.args.0",
+                              "action_list.0._raw",
+                              "action_list.0._cleaned"
+                            ]
+                          }
+                        },
+                        {
+                          "name": "button_2",
+                          "value": "@local.part_data_2.option_2",
+                          "_translations": {
+                            "value": {}
+                          },
+                          "action_list": [
+                            {
+                              "trigger": "click",
+                              "action_id": "pop_up",
+                              "args": [
+                                "w_srh_@local.part_id_2@local.no_2"
+                              ],
+                              "_raw": "click | pop_up: w_srh_@local.part_id_2@local.no_2",
+                              "_cleaned": "click | pop_up: w_srh_@local.part_id_2@local.no_2"
+                            }
+                          ],
+                          "hidden": false,
+                          "type": "set_variable",
+                          "_nested_name": "learn.workshop_activity.content_box.box_2.box_1.button_2",
+                          "_dynamicFields": {
+                            "value": [
+                              {
+                                "fullExpression": "@local.part_data_2.option_2",
+                                "matchedExpression": "@local.part_data_2.option_2",
+                                "type": "local",
+                                "fieldName": "part_data_2"
+                              }
+                            ],
+                            "action_list": {
+                              "0": {
+                                "args": {
+                                  "0": [
+                                    {
+                                      "fullExpression": "w_srh_@local.part_id_2@local.no_2",
+                                      "matchedExpression": "@local.part_id_2",
+                                      "type": "local",
+                                      "fieldName": "part_id_2"
+                                    },
+                                    {
+                                      "fullExpression": "w_srh_@local.part_id_2@local.no_2",
+                                      "matchedExpression": "@local.no_2",
+                                      "type": "local",
+                                      "fieldName": "no_2"
+                                    }
+                                  ]
+                                },
+                                "_raw": [
+                                  {
+                                    "fullExpression": "click | pop_up: w_srh_@local.part_id_2@local.no_2",
+                                    "matchedExpression": "@local.part_id_2",
+                                    "type": "local",
+                                    "fieldName": "part_id_2"
+                                  },
+                                  {
+                                    "fullExpression": "click | pop_up: w_srh_@local.part_id_2@local.no_2",
+                                    "matchedExpression": "@local.no_2",
+                                    "type": "local",
+                                    "fieldName": "no_2"
+                                  }
+                                ],
+                                "_cleaned": [
+                                  {
+                                    "fullExpression": "click | pop_up: w_srh_@local.part_id_2@local.no_2",
+                                    "matchedExpression": "@local.part_id_2",
+                                    "type": "local",
+                                    "fieldName": "part_id_2"
+                                  },
+                                  {
+                                    "fullExpression": "click | pop_up: w_srh_@local.part_id_2@local.no_2",
+                                    "matchedExpression": "@local.no_2",
+                                    "type": "local",
+                                    "fieldName": "no_2"
+                                  }
+                                ]
+                              }
+                            }
+                          },
+                          "_dynamicDependencies": {
+                            "@local.part_data_2.option_2": [
+                              "value"
+                            ],
+                            "@local.part_id_2": [
+                              "action_list.0.args.0",
+                              "action_list.0._raw",
+                              "action_list.0._cleaned"
+                            ],
+                            "@local.no_2": [
+                              "action_list.0.args.0",
+                              "action_list.0._raw",
+                              "action_list.0._cleaned"
+                            ]
+                          }
+                        },
+                        {
+                          "name": "button_3",
+                          "value": "@local.part_data_2.option_3",
+                          "_translations": {
+                            "value": {}
+                          },
+                          "action_list": [
+                            {
+                              "trigger": "click",
+                              "action_id": "pop_up",
+                              "args": [
+                                "w_srh_@local.part_id_2@local.no_3"
+                              ],
+                              "_raw": "click | pop_up: w_srh_@local.part_id_2@local.no_3",
+                              "_cleaned": "click | pop_up: w_srh_@local.part_id_2@local.no_3"
+                            }
+                          ],
+                          "hidden": false,
+                          "type": "set_variable",
+                          "_nested_name": "learn.workshop_activity.content_box.box_2.box_1.button_3",
+                          "_dynamicFields": {
+                            "value": [
+                              {
+                                "fullExpression": "@local.part_data_2.option_3",
+                                "matchedExpression": "@local.part_data_2.option_3",
+                                "type": "local",
+                                "fieldName": "part_data_2"
+                              }
+                            ],
+                            "action_list": {
+                              "0": {
+                                "args": {
+                                  "0": [
+                                    {
+                                      "fullExpression": "w_srh_@local.part_id_2@local.no_3",
+                                      "matchedExpression": "@local.part_id_2",
+                                      "type": "local",
+                                      "fieldName": "part_id_2"
+                                    },
+                                    {
+                                      "fullExpression": "w_srh_@local.part_id_2@local.no_3",
+                                      "matchedExpression": "@local.no_3",
+                                      "type": "local",
+                                      "fieldName": "no_3"
+                                    }
+                                  ]
+                                },
+                                "_raw": [
+                                  {
+                                    "fullExpression": "click | pop_up: w_srh_@local.part_id_2@local.no_3",
+                                    "matchedExpression": "@local.part_id_2",
+                                    "type": "local",
+                                    "fieldName": "part_id_2"
+                                  },
+                                  {
+                                    "fullExpression": "click | pop_up: w_srh_@local.part_id_2@local.no_3",
+                                    "matchedExpression": "@local.no_3",
+                                    "type": "local",
+                                    "fieldName": "no_3"
+                                  }
+                                ],
+                                "_cleaned": [
+                                  {
+                                    "fullExpression": "click | pop_up: w_srh_@local.part_id_2@local.no_3",
+                                    "matchedExpression": "@local.part_id_2",
+                                    "type": "local",
+                                    "fieldName": "part_id_2"
+                                  },
+                                  {
+                                    "fullExpression": "click | pop_up: w_srh_@local.part_id_2@local.no_3",
+                                    "matchedExpression": "@local.no_3",
+                                    "type": "local",
+                                    "fieldName": "no_3"
+                                  }
+                                ]
+                              }
+                            }
+                          },
+                          "_dynamicDependencies": {
+                            "@local.part_data_2.option_3": [
+                              "value"
+                            ],
+                            "@local.part_id_2": [
+                              "action_list.0.args.0",
+                              "action_list.0._raw",
+                              "action_list.0._cleaned"
+                            ],
+                            "@local.no_3": [
+                              "action_list.0.args.0",
+                              "action_list.0._raw",
+                              "action_list.0._cleaned"
+                            ]
+                          }
+                        },
+                        {
+                          "name": "button_4",
+                          "value": "@local.part_data_2.option_4",
+                          "_translations": {
+                            "value": {}
+                          },
+                          "action_list": [
+                            {
+                              "trigger": "click",
+                              "action_id": "pop_up",
+                              "args": [
+                                "w_srh_@local.part_id_2@local.no_4"
+                              ],
+                              "_raw": "click | pop_up: w_srh_@local.part_id_2@local.no_4",
+                              "_cleaned": "click | pop_up: w_srh_@local.part_id_2@local.no_4"
+                            }
+                          ],
+                          "hidden": false,
+                          "type": "set_variable",
+                          "_nested_name": "learn.workshop_activity.content_box.box_2.box_1.button_4",
+                          "_dynamicFields": {
+                            "value": [
+                              {
+                                "fullExpression": "@local.part_data_2.option_4",
+                                "matchedExpression": "@local.part_data_2.option_4",
+                                "type": "local",
+                                "fieldName": "part_data_2"
+                              }
+                            ],
+                            "action_list": {
+                              "0": {
+                                "args": {
+                                  "0": [
+                                    {
+                                      "fullExpression": "w_srh_@local.part_id_2@local.no_4",
+                                      "matchedExpression": "@local.part_id_2",
+                                      "type": "local",
+                                      "fieldName": "part_id_2"
+                                    },
+                                    {
+                                      "fullExpression": "w_srh_@local.part_id_2@local.no_4",
+                                      "matchedExpression": "@local.no_4",
+                                      "type": "local",
+                                      "fieldName": "no_4"
+                                    }
+                                  ]
+                                },
+                                "_raw": [
+                                  {
+                                    "fullExpression": "click | pop_up: w_srh_@local.part_id_2@local.no_4",
+                                    "matchedExpression": "@local.part_id_2",
+                                    "type": "local",
+                                    "fieldName": "part_id_2"
+                                  },
+                                  {
+                                    "fullExpression": "click | pop_up: w_srh_@local.part_id_2@local.no_4",
+                                    "matchedExpression": "@local.no_4",
+                                    "type": "local",
+                                    "fieldName": "no_4"
+                                  }
+                                ],
+                                "_cleaned": [
+                                  {
+                                    "fullExpression": "click | pop_up: w_srh_@local.part_id_2@local.no_4",
+                                    "matchedExpression": "@local.part_id_2",
+                                    "type": "local",
+                                    "fieldName": "part_id_2"
+                                  },
+                                  {
+                                    "fullExpression": "click | pop_up: w_srh_@local.part_id_2@local.no_4",
+                                    "matchedExpression": "@local.no_4",
+                                    "type": "local",
+                                    "fieldName": "no_4"
+                                  }
+                                ]
+                              }
+                            }
+                          },
+                          "_dynamicDependencies": {
+                            "@local.part_data_2.option_4": [
+                              "value"
+                            ],
+                            "@local.part_id_2": [
+                              "action_list.0.args.0",
+                              "action_list.0._raw",
+                              "action_list.0._cleaned"
+                            ],
+                            "@local.no_4": [
+                              "action_list.0.args.0",
+                              "action_list.0._raw",
+                              "action_list.0._cleaned"
+                            ]
+                          }
+                        }
+                      ],
+                      "_nested_name": "learn.workshop_activity.content_box.box_2.box_1"
+                    },
+                    {
+                      "type": "nested_properties",
+                      "name": "box_2",
+                      "value": "pair",
+                      "rows": [
+                        {
+                          "type": "nested_properties",
+                          "name": "box_1",
+                          "value": "box_buttons",
+                          "rows": [
+                            {
+                              "name": "text_1",
+                              "value": "@local.part_data_3.question_text",
+                              "_translations": {
+                                "value": {}
+                              },
+                              "parameter_list": {
+                                "style": "emphasised"
+                              },
+                              "type": "set_variable",
+                              "_nested_name": "learn.workshop_activity.content_box.box_2.box_2.box_1.text_1",
+                              "_dynamicFields": {
+                                "value": [
+                                  {
+                                    "fullExpression": "@local.part_data_3.question_text",
+                                    "matchedExpression": "@local.part_data_3.question_text",
+                                    "type": "local",
+                                    "fieldName": "part_data_3"
+                                  }
+                                ]
+                              },
+                              "_dynamicDependencies": {
+                                "@local.part_data_3.question_text": [
+                                  "value"
+                                ]
+                              }
+                            },
+                            {
+                              "name": "button_1",
+                              "value": "@local.part_data_3.option_1",
+                              "_translations": {
+                                "value": {}
+                              },
+                              "action_list": [
+                                {
+                                  "trigger": "click",
+                                  "action_id": "pop_up",
+                                  "args": [
+                                    "w_srh_@local.part_id_3@local.no_1"
+                                  ],
+                                  "_raw": "click | pop_up: w_srh_@local.part_id_3@local.no_1",
+                                  "_cleaned": "click | pop_up: w_srh_@local.part_id_3@local.no_1"
+                                }
+                              ],
+                              "type": "set_variable",
+                              "_nested_name": "learn.workshop_activity.content_box.box_2.box_2.box_1.button_1",
+                              "_dynamicFields": {
+                                "value": [
+                                  {
+                                    "fullExpression": "@local.part_data_3.option_1",
+                                    "matchedExpression": "@local.part_data_3.option_1",
+                                    "type": "local",
+                                    "fieldName": "part_data_3"
+                                  }
+                                ],
+                                "action_list": {
+                                  "0": {
+                                    "args": {
+                                      "0": [
+                                        {
+                                          "fullExpression": "w_srh_@local.part_id_3@local.no_1",
+                                          "matchedExpression": "@local.part_id_3",
+                                          "type": "local",
+                                          "fieldName": "part_id_3"
+                                        },
+                                        {
+                                          "fullExpression": "w_srh_@local.part_id_3@local.no_1",
+                                          "matchedExpression": "@local.no_1",
+                                          "type": "local",
+                                          "fieldName": "no_1"
+                                        }
+                                      ]
+                                    },
+                                    "_raw": [
+                                      {
+                                        "fullExpression": "click | pop_up: w_srh_@local.part_id_3@local.no_1",
+                                        "matchedExpression": "@local.part_id_3",
+                                        "type": "local",
+                                        "fieldName": "part_id_3"
+                                      },
+                                      {
+                                        "fullExpression": "click | pop_up: w_srh_@local.part_id_3@local.no_1",
+                                        "matchedExpression": "@local.no_1",
+                                        "type": "local",
+                                        "fieldName": "no_1"
+                                      }
+                                    ],
+                                    "_cleaned": [
+                                      {
+                                        "fullExpression": "click | pop_up: w_srh_@local.part_id_3@local.no_1",
+                                        "matchedExpression": "@local.part_id_3",
+                                        "type": "local",
+                                        "fieldName": "part_id_3"
+                                      },
+                                      {
+                                        "fullExpression": "click | pop_up: w_srh_@local.part_id_3@local.no_1",
+                                        "matchedExpression": "@local.no_1",
+                                        "type": "local",
+                                        "fieldName": "no_1"
+                                      }
+                                    ]
+                                  }
+                                }
+                              },
+                              "_dynamicDependencies": {
+                                "@local.part_data_3.option_1": [
+                                  "value"
+                                ],
+                                "@local.part_id_3": [
+                                  "action_list.0.args.0",
+                                  "action_list.0._raw",
+                                  "action_list.0._cleaned"
+                                ],
+                                "@local.no_1": [
+                                  "action_list.0.args.0",
+                                  "action_list.0._raw",
+                                  "action_list.0._cleaned"
+                                ]
+                              }
+                            },
+                            {
+                              "name": "button_2",
+                              "value": "@local.part_data_3.option_2",
+                              "_translations": {
+                                "value": {}
+                              },
+                              "action_list": [
+                                {
+                                  "trigger": "click",
+                                  "action_id": "pop_up",
+                                  "args": [
+                                    "w_srh_@local.part_id_3@local.no_2"
+                                  ],
+                                  "_raw": "click | pop_up: w_srh_@local.part_id_3@local.no_2",
+                                  "_cleaned": "click | pop_up: w_srh_@local.part_id_3@local.no_2"
+                                }
+                              ],
+                              "hidden": false,
+                              "type": "set_variable",
+                              "_nested_name": "learn.workshop_activity.content_box.box_2.box_2.box_1.button_2",
+                              "_dynamicFields": {
+                                "value": [
+                                  {
+                                    "fullExpression": "@local.part_data_3.option_2",
+                                    "matchedExpression": "@local.part_data_3.option_2",
+                                    "type": "local",
+                                    "fieldName": "part_data_3"
+                                  }
+                                ],
+                                "action_list": {
+                                  "0": {
+                                    "args": {
+                                      "0": [
+                                        {
+                                          "fullExpression": "w_srh_@local.part_id_3@local.no_2",
+                                          "matchedExpression": "@local.part_id_3",
+                                          "type": "local",
+                                          "fieldName": "part_id_3"
+                                        },
+                                        {
+                                          "fullExpression": "w_srh_@local.part_id_3@local.no_2",
+                                          "matchedExpression": "@local.no_2",
+                                          "type": "local",
+                                          "fieldName": "no_2"
+                                        }
+                                      ]
+                                    },
+                                    "_raw": [
+                                      {
+                                        "fullExpression": "click | pop_up: w_srh_@local.part_id_3@local.no_2",
+                                        "matchedExpression": "@local.part_id_3",
+                                        "type": "local",
+                                        "fieldName": "part_id_3"
+                                      },
+                                      {
+                                        "fullExpression": "click | pop_up: w_srh_@local.part_id_3@local.no_2",
+                                        "matchedExpression": "@local.no_2",
+                                        "type": "local",
+                                        "fieldName": "no_2"
+                                      }
+                                    ],
+                                    "_cleaned": [
+                                      {
+                                        "fullExpression": "click | pop_up: w_srh_@local.part_id_3@local.no_2",
+                                        "matchedExpression": "@local.part_id_3",
+                                        "type": "local",
+                                        "fieldName": "part_id_3"
+                                      },
+                                      {
+                                        "fullExpression": "click | pop_up: w_srh_@local.part_id_3@local.no_2",
+                                        "matchedExpression": "@local.no_2",
+                                        "type": "local",
+                                        "fieldName": "no_2"
+                                      }
+                                    ]
+                                  }
+                                }
+                              },
+                              "_dynamicDependencies": {
+                                "@local.part_data_3.option_2": [
+                                  "value"
+                                ],
+                                "@local.part_id_3": [
+                                  "action_list.0.args.0",
+                                  "action_list.0._raw",
+                                  "action_list.0._cleaned"
+                                ],
+                                "@local.no_2": [
+                                  "action_list.0.args.0",
+                                  "action_list.0._raw",
+                                  "action_list.0._cleaned"
+                                ]
+                              }
+                            },
+                            {
+                              "name": "button_3",
+                              "value": "@local.part_data_3.option_3",
+                              "_translations": {
+                                "value": {}
+                              },
+                              "action_list": [
+                                {
+                                  "trigger": "click",
+                                  "action_id": "pop_up",
+                                  "args": [
+                                    "w_srh_@local.part_id_3@local.no_3"
+                                  ],
+                                  "_raw": "click | pop_up: w_srh_@local.part_id_3@local.no_3",
+                                  "_cleaned": "click | pop_up: w_srh_@local.part_id_3@local.no_3"
+                                }
+                              ],
+                              "hidden": false,
+                              "type": "set_variable",
+                              "_nested_name": "learn.workshop_activity.content_box.box_2.box_2.box_1.button_3",
+                              "_dynamicFields": {
+                                "value": [
+                                  {
+                                    "fullExpression": "@local.part_data_3.option_3",
+                                    "matchedExpression": "@local.part_data_3.option_3",
+                                    "type": "local",
+                                    "fieldName": "part_data_3"
+                                  }
+                                ],
+                                "action_list": {
+                                  "0": {
+                                    "args": {
+                                      "0": [
+                                        {
+                                          "fullExpression": "w_srh_@local.part_id_3@local.no_3",
+                                          "matchedExpression": "@local.part_id_3",
+                                          "type": "local",
+                                          "fieldName": "part_id_3"
+                                        },
+                                        {
+                                          "fullExpression": "w_srh_@local.part_id_3@local.no_3",
+                                          "matchedExpression": "@local.no_3",
+                                          "type": "local",
+                                          "fieldName": "no_3"
+                                        }
+                                      ]
+                                    },
+                                    "_raw": [
+                                      {
+                                        "fullExpression": "click | pop_up: w_srh_@local.part_id_3@local.no_3",
+                                        "matchedExpression": "@local.part_id_3",
+                                        "type": "local",
+                                        "fieldName": "part_id_3"
+                                      },
+                                      {
+                                        "fullExpression": "click | pop_up: w_srh_@local.part_id_3@local.no_3",
+                                        "matchedExpression": "@local.no_3",
+                                        "type": "local",
+                                        "fieldName": "no_3"
+                                      }
+                                    ],
+                                    "_cleaned": [
+                                      {
+                                        "fullExpression": "click | pop_up: w_srh_@local.part_id_3@local.no_3",
+                                        "matchedExpression": "@local.part_id_3",
+                                        "type": "local",
+                                        "fieldName": "part_id_3"
+                                      },
+                                      {
+                                        "fullExpression": "click | pop_up: w_srh_@local.part_id_3@local.no_3",
+                                        "matchedExpression": "@local.no_3",
+                                        "type": "local",
+                                        "fieldName": "no_3"
+                                      }
+                                    ]
+                                  }
+                                }
+                              },
+                              "_dynamicDependencies": {
+                                "@local.part_data_3.option_3": [
+                                  "value"
+                                ],
+                                "@local.part_id_3": [
+                                  "action_list.0.args.0",
+                                  "action_list.0._raw",
+                                  "action_list.0._cleaned"
+                                ],
+                                "@local.no_3": [
+                                  "action_list.0.args.0",
+                                  "action_list.0._raw",
+                                  "action_list.0._cleaned"
+                                ]
+                              }
+                            },
+                            {
+                              "name": "button_4",
+                              "value": "@local.part_data_3.option_4",
+                              "_translations": {
+                                "value": {}
+                              },
+                              "action_list": [
+                                {
+                                  "trigger": "click",
+                                  "action_id": "pop_up",
+                                  "args": [
+                                    "w_srh_@local.part_id_3@local.no_4"
+                                  ],
+                                  "_raw": "click | pop_up: w_srh_@local.part_id_3@local.no_4",
+                                  "_cleaned": "click | pop_up: w_srh_@local.part_id_3@local.no_4"
+                                }
+                              ],
+                              "hidden": false,
+                              "type": "set_variable",
+                              "_nested_name": "learn.workshop_activity.content_box.box_2.box_2.box_1.button_4",
+                              "_dynamicFields": {
+                                "value": [
+                                  {
+                                    "fullExpression": "@local.part_data_3.option_4",
+                                    "matchedExpression": "@local.part_data_3.option_4",
+                                    "type": "local",
+                                    "fieldName": "part_data_3"
+                                  }
+                                ],
+                                "action_list": {
+                                  "0": {
+                                    "args": {
+                                      "0": [
+                                        {
+                                          "fullExpression": "w_srh_@local.part_id_3@local.no_4",
+                                          "matchedExpression": "@local.part_id_3",
+                                          "type": "local",
+                                          "fieldName": "part_id_3"
+                                        },
+                                        {
+                                          "fullExpression": "w_srh_@local.part_id_3@local.no_4",
+                                          "matchedExpression": "@local.no_4",
+                                          "type": "local",
+                                          "fieldName": "no_4"
+                                        }
+                                      ]
+                                    },
+                                    "_raw": [
+                                      {
+                                        "fullExpression": "click | pop_up: w_srh_@local.part_id_3@local.no_4",
+                                        "matchedExpression": "@local.part_id_3",
+                                        "type": "local",
+                                        "fieldName": "part_id_3"
+                                      },
+                                      {
+                                        "fullExpression": "click | pop_up: w_srh_@local.part_id_3@local.no_4",
+                                        "matchedExpression": "@local.no_4",
+                                        "type": "local",
+                                        "fieldName": "no_4"
+                                      }
+                                    ],
+                                    "_cleaned": [
+                                      {
+                                        "fullExpression": "click | pop_up: w_srh_@local.part_id_3@local.no_4",
+                                        "matchedExpression": "@local.part_id_3",
+                                        "type": "local",
+                                        "fieldName": "part_id_3"
+                                      },
+                                      {
+                                        "fullExpression": "click | pop_up: w_srh_@local.part_id_3@local.no_4",
+                                        "matchedExpression": "@local.no_4",
+                                        "type": "local",
+                                        "fieldName": "no_4"
+                                      }
+                                    ]
+                                  }
+                                }
+                              },
+                              "_dynamicDependencies": {
+                                "@local.part_data_3.option_4": [
+                                  "value"
+                                ],
+                                "@local.part_id_3": [
+                                  "action_list.0.args.0",
+                                  "action_list.0._raw",
+                                  "action_list.0._cleaned"
+                                ],
+                                "@local.no_4": [
+                                  "action_list.0.args.0",
+                                  "action_list.0._raw",
+                                  "action_list.0._cleaned"
+                                ]
+                              }
+                            },
+                            {
+                              "name": "button_5",
+                              "value": "@local.part_data_3.option_5",
+                              "_translations": {
+                                "value": {}
+                              },
+                              "action_list": [
+                                {
+                                  "trigger": "click",
+                                  "action_id": "pop_up",
+                                  "args": [
+                                    "w_srh_@local.part_id_3@local.no_5"
+                                  ],
+                                  "_raw": "click | pop_up: w_srh_@local.part_id_3@local.no_5",
+                                  "_cleaned": "click | pop_up: w_srh_@local.part_id_3@local.no_5"
+                                }
+                              ],
+                              "hidden": false,
+                              "type": "set_variable",
+                              "_nested_name": "learn.workshop_activity.content_box.box_2.box_2.box_1.button_5",
+                              "_dynamicFields": {
+                                "value": [
+                                  {
+                                    "fullExpression": "@local.part_data_3.option_5",
+                                    "matchedExpression": "@local.part_data_3.option_5",
+                                    "type": "local",
+                                    "fieldName": "part_data_3"
+                                  }
+                                ],
+                                "action_list": {
+                                  "0": {
+                                    "args": {
+                                      "0": [
+                                        {
+                                          "fullExpression": "w_srh_@local.part_id_3@local.no_5",
+                                          "matchedExpression": "@local.part_id_3",
+                                          "type": "local",
+                                          "fieldName": "part_id_3"
+                                        },
+                                        {
+                                          "fullExpression": "w_srh_@local.part_id_3@local.no_5",
+                                          "matchedExpression": "@local.no_5",
+                                          "type": "local",
+                                          "fieldName": "no_5"
+                                        }
+                                      ]
+                                    },
+                                    "_raw": [
+                                      {
+                                        "fullExpression": "click | pop_up: w_srh_@local.part_id_3@local.no_5",
+                                        "matchedExpression": "@local.part_id_3",
+                                        "type": "local",
+                                        "fieldName": "part_id_3"
+                                      },
+                                      {
+                                        "fullExpression": "click | pop_up: w_srh_@local.part_id_3@local.no_5",
+                                        "matchedExpression": "@local.no_5",
+                                        "type": "local",
+                                        "fieldName": "no_5"
+                                      }
+                                    ],
+                                    "_cleaned": [
+                                      {
+                                        "fullExpression": "click | pop_up: w_srh_@local.part_id_3@local.no_5",
+                                        "matchedExpression": "@local.part_id_3",
+                                        "type": "local",
+                                        "fieldName": "part_id_3"
+                                      },
+                                      {
+                                        "fullExpression": "click | pop_up: w_srh_@local.part_id_3@local.no_5",
+                                        "matchedExpression": "@local.no_5",
+                                        "type": "local",
+                                        "fieldName": "no_5"
+                                      }
+                                    ]
+                                  }
+                                }
+                              },
+                              "_dynamicDependencies": {
+                                "@local.part_data_3.option_5": [
+                                  "value"
+                                ],
+                                "@local.part_id_3": [
+                                  "action_list.0.args.0",
+                                  "action_list.0._raw",
+                                  "action_list.0._cleaned"
+                                ],
+                                "@local.no_5": [
+                                  "action_list.0.args.0",
+                                  "action_list.0._raw",
+                                  "action_list.0._cleaned"
+                                ]
+                              }
+                            }
+                          ],
+                          "_nested_name": "learn.workshop_activity.content_box.box_2.box_2.box_1"
+                        },
+                        {
+                          "type": "nested_properties",
+                          "name": "box_2",
+                          "value": "box_buttons",
+                          "rows": [
+                            {
+                              "name": "text_1",
+                              "value": "@local.part_data_4.question_text",
+                              "_translations": {
+                                "value": {}
+                              },
+                              "parameter_list": {
+                                "style": "emphasised"
+                              },
+                              "type": "set_variable",
+                              "_nested_name": "learn.workshop_activity.content_box.box_2.box_2.box_2.text_1",
+                              "_dynamicFields": {
+                                "value": [
+                                  {
+                                    "fullExpression": "@local.part_data_4.question_text",
+                                    "matchedExpression": "@local.part_data_4.question_text",
+                                    "type": "local",
+                                    "fieldName": "part_data_4"
+                                  }
+                                ]
+                              },
+                              "_dynamicDependencies": {
+                                "@local.part_data_4.question_text": [
+                                  "value"
+                                ]
+                              }
+                            },
+                            {
+                              "name": "button_1",
+                              "value": "@local.part_data_4.option_1",
+                              "_translations": {
+                                "value": {}
+                              },
+                              "action_list": [
+                                {
+                                  "trigger": "click",
+                                  "action_id": "pop_up",
+                                  "args": [
+                                    "w_srh_@local.part_id_4@local.no_1"
+                                  ],
+                                  "_raw": "click | pop_up: w_srh_@local.part_id_4@local.no_1",
+                                  "_cleaned": "click | pop_up: w_srh_@local.part_id_4@local.no_1"
+                                }
+                              ],
+                              "type": "set_variable",
+                              "_nested_name": "learn.workshop_activity.content_box.box_2.box_2.box_2.button_1",
+                              "_dynamicFields": {
+                                "value": [
+                                  {
+                                    "fullExpression": "@local.part_data_4.option_1",
+                                    "matchedExpression": "@local.part_data_4.option_1",
+                                    "type": "local",
+                                    "fieldName": "part_data_4"
+                                  }
+                                ],
+                                "action_list": {
+                                  "0": {
+                                    "args": {
+                                      "0": [
+                                        {
+                                          "fullExpression": "w_srh_@local.part_id_4@local.no_1",
+                                          "matchedExpression": "@local.part_id_4",
+                                          "type": "local",
+                                          "fieldName": "part_id_4"
+                                        },
+                                        {
+                                          "fullExpression": "w_srh_@local.part_id_4@local.no_1",
+                                          "matchedExpression": "@local.no_1",
+                                          "type": "local",
+                                          "fieldName": "no_1"
+                                        }
+                                      ]
+                                    },
+                                    "_raw": [
+                                      {
+                                        "fullExpression": "click | pop_up: w_srh_@local.part_id_4@local.no_1",
+                                        "matchedExpression": "@local.part_id_4",
+                                        "type": "local",
+                                        "fieldName": "part_id_4"
+                                      },
+                                      {
+                                        "fullExpression": "click | pop_up: w_srh_@local.part_id_4@local.no_1",
+                                        "matchedExpression": "@local.no_1",
+                                        "type": "local",
+                                        "fieldName": "no_1"
+                                      }
+                                    ],
+                                    "_cleaned": [
+                                      {
+                                        "fullExpression": "click | pop_up: w_srh_@local.part_id_4@local.no_1",
+                                        "matchedExpression": "@local.part_id_4",
+                                        "type": "local",
+                                        "fieldName": "part_id_4"
+                                      },
+                                      {
+                                        "fullExpression": "click | pop_up: w_srh_@local.part_id_4@local.no_1",
+                                        "matchedExpression": "@local.no_1",
+                                        "type": "local",
+                                        "fieldName": "no_1"
+                                      }
+                                    ]
+                                  }
+                                }
+                              },
+                              "_dynamicDependencies": {
+                                "@local.part_data_4.option_1": [
+                                  "value"
+                                ],
+                                "@local.part_id_4": [
+                                  "action_list.0.args.0",
+                                  "action_list.0._raw",
+                                  "action_list.0._cleaned"
+                                ],
+                                "@local.no_1": [
+                                  "action_list.0.args.0",
+                                  "action_list.0._raw",
+                                  "action_list.0._cleaned"
+                                ]
+                              }
+                            },
+                            {
+                              "name": "button_2",
+                              "value": "@local.part_data_4.option_2",
+                              "_translations": {
+                                "value": {}
+                              },
+                              "action_list": [
+                                {
+                                  "trigger": "click",
+                                  "action_id": "pop_up",
+                                  "args": [
+                                    "w_srh_@local.part_id_4@local.no_2"
+                                  ],
+                                  "_raw": "click | pop_up: w_srh_@local.part_id_4@local.no_2",
+                                  "_cleaned": "click | pop_up: w_srh_@local.part_id_4@local.no_2"
+                                }
+                              ],
+                              "hidden": false,
+                              "type": "set_variable",
+                              "_nested_name": "learn.workshop_activity.content_box.box_2.box_2.box_2.button_2",
+                              "_dynamicFields": {
+                                "value": [
+                                  {
+                                    "fullExpression": "@local.part_data_4.option_2",
+                                    "matchedExpression": "@local.part_data_4.option_2",
+                                    "type": "local",
+                                    "fieldName": "part_data_4"
+                                  }
+                                ],
+                                "action_list": {
+                                  "0": {
+                                    "args": {
+                                      "0": [
+                                        {
+                                          "fullExpression": "w_srh_@local.part_id_4@local.no_2",
+                                          "matchedExpression": "@local.part_id_4",
+                                          "type": "local",
+                                          "fieldName": "part_id_4"
+                                        },
+                                        {
+                                          "fullExpression": "w_srh_@local.part_id_4@local.no_2",
+                                          "matchedExpression": "@local.no_2",
+                                          "type": "local",
+                                          "fieldName": "no_2"
+                                        }
+                                      ]
+                                    },
+                                    "_raw": [
+                                      {
+                                        "fullExpression": "click | pop_up: w_srh_@local.part_id_4@local.no_2",
+                                        "matchedExpression": "@local.part_id_4",
+                                        "type": "local",
+                                        "fieldName": "part_id_4"
+                                      },
+                                      {
+                                        "fullExpression": "click | pop_up: w_srh_@local.part_id_4@local.no_2",
+                                        "matchedExpression": "@local.no_2",
+                                        "type": "local",
+                                        "fieldName": "no_2"
+                                      }
+                                    ],
+                                    "_cleaned": [
+                                      {
+                                        "fullExpression": "click | pop_up: w_srh_@local.part_id_4@local.no_2",
+                                        "matchedExpression": "@local.part_id_4",
+                                        "type": "local",
+                                        "fieldName": "part_id_4"
+                                      },
+                                      {
+                                        "fullExpression": "click | pop_up: w_srh_@local.part_id_4@local.no_2",
+                                        "matchedExpression": "@local.no_2",
+                                        "type": "local",
+                                        "fieldName": "no_2"
+                                      }
+                                    ]
+                                  }
+                                }
+                              },
+                              "_dynamicDependencies": {
+                                "@local.part_data_4.option_2": [
+                                  "value"
+                                ],
+                                "@local.part_id_4": [
+                                  "action_list.0.args.0",
+                                  "action_list.0._raw",
+                                  "action_list.0._cleaned"
+                                ],
+                                "@local.no_2": [
+                                  "action_list.0.args.0",
+                                  "action_list.0._raw",
+                                  "action_list.0._cleaned"
+                                ]
+                              }
+                            },
+                            {
+                              "name": "button_3",
+                              "value": "@local.part_data_4.option_3",
+                              "_translations": {
+                                "value": {}
+                              },
+                              "action_list": [
+                                {
+                                  "trigger": "click",
+                                  "action_id": "pop_up",
+                                  "args": [
+                                    "w_srh_@local.part_id_4@local.no_3"
+                                  ],
+                                  "_raw": "click | pop_up: w_srh_@local.part_id_4@local.no_3",
+                                  "_cleaned": "click | pop_up: w_srh_@local.part_id_4@local.no_3"
+                                }
+                              ],
+                              "hidden": false,
+                              "type": "set_variable",
+                              "_nested_name": "learn.workshop_activity.content_box.box_2.box_2.box_2.button_3",
+                              "_dynamicFields": {
+                                "value": [
+                                  {
+                                    "fullExpression": "@local.part_data_4.option_3",
+                                    "matchedExpression": "@local.part_data_4.option_3",
+                                    "type": "local",
+                                    "fieldName": "part_data_4"
+                                  }
+                                ],
+                                "action_list": {
+                                  "0": {
+                                    "args": {
+                                      "0": [
+                                        {
+                                          "fullExpression": "w_srh_@local.part_id_4@local.no_3",
+                                          "matchedExpression": "@local.part_id_4",
+                                          "type": "local",
+                                          "fieldName": "part_id_4"
+                                        },
+                                        {
+                                          "fullExpression": "w_srh_@local.part_id_4@local.no_3",
+                                          "matchedExpression": "@local.no_3",
+                                          "type": "local",
+                                          "fieldName": "no_3"
+                                        }
+                                      ]
+                                    },
+                                    "_raw": [
+                                      {
+                                        "fullExpression": "click | pop_up: w_srh_@local.part_id_4@local.no_3",
+                                        "matchedExpression": "@local.part_id_4",
+                                        "type": "local",
+                                        "fieldName": "part_id_4"
+                                      },
+                                      {
+                                        "fullExpression": "click | pop_up: w_srh_@local.part_id_4@local.no_3",
+                                        "matchedExpression": "@local.no_3",
+                                        "type": "local",
+                                        "fieldName": "no_3"
+                                      }
+                                    ],
+                                    "_cleaned": [
+                                      {
+                                        "fullExpression": "click | pop_up: w_srh_@local.part_id_4@local.no_3",
+                                        "matchedExpression": "@local.part_id_4",
+                                        "type": "local",
+                                        "fieldName": "part_id_4"
+                                      },
+                                      {
+                                        "fullExpression": "click | pop_up: w_srh_@local.part_id_4@local.no_3",
+                                        "matchedExpression": "@local.no_3",
+                                        "type": "local",
+                                        "fieldName": "no_3"
+                                      }
+                                    ]
+                                  }
+                                }
+                              },
+                              "_dynamicDependencies": {
+                                "@local.part_data_4.option_3": [
+                                  "value"
+                                ],
+                                "@local.part_id_4": [
+                                  "action_list.0.args.0",
+                                  "action_list.0._raw",
+                                  "action_list.0._cleaned"
+                                ],
+                                "@local.no_3": [
+                                  "action_list.0.args.0",
+                                  "action_list.0._raw",
+                                  "action_list.0._cleaned"
+                                ]
+                              }
+                            }
+                          ],
+                          "_nested_name": "learn.workshop_activity.content_box.box_2.box_2.box_2"
+                        }
+                      ],
+                      "_nested_name": "learn.workshop_activity.content_box.box_2.box_2"
+                    }
+                  ],
+                  "_nested_name": "learn.workshop_activity.content_box.box_2"
+                }
+              ],
+              "_nested_name": "learn.workshop_activity.content_box"
+            }
+          ],
+          "_nested_name": "learn.workshop_activity"
+        }
+      ],
+      "_nested_name": "learn"
+    }
+  ],
+  "_xlsxPath": "global/top_templates/workshop_templates/workshop_srh.xlsx"
+}
