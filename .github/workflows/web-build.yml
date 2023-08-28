@@ -174,10 +174,10 @@ jobs:
         run: echo "export const GIT_SHA = \"$GIT_SHA\";" > src/environments/sha.ts
 
       - name: Import remote Deployment
-        if: ${{env.DEPLOYMENT_NAME == "https://github.com/*"}}
+        if: $DEPLOYMENT_REPO
         uses: actions/checkout@v3
         with:
-          repository: $DEPLOYMENT_NAME
+          repository: $DEPLOYMENT_REPO
           lfs: ${{inputs.lfs}}
           # TODO - add support for specific branch/release
 
