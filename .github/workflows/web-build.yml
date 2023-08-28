@@ -89,26 +89,27 @@ jobs:
       - name: Set named input environment
         if: ${{ inputs.environment }}
         run: |
-          echo "ENVIRONMENT_NAME=${{inputs.environment}}" >> $GITHUB_OUTPUT;  
+          echo "ENVIRONMENT_NAME=${{inputs.environment}}" >> $GITHUB_ENV;  
         shell: bash
 
       - name: Set environment from target
         if: ${{inputs.deployment && inputs.deployment != 'master' && inputs.deployment!='refs/heads/master'}}
         run: |
-          echo "ENVIRONMENT_NAME=$(echo ${{inputs.deployment}} | sed 's/.*\///')" >> $GITHUB_OUTPUT;
+          echo "ENVIRONMENT_NAME=$(echo ${{inputs.deployment}} | sed 's/.*\///')" >> $GITHUB_ENV;
         shell: bash
 
       - name: Set default environment
-        if: ${{ !outputs.ENVIRONMENT_NAME }}
+        if: ${{ !env.ENVIRONMENT_NAME }}
         run: |
-          echo "ENVIRONMENT_NAME=$DEPLOYMENT_NAME_DEFAULT" >> $GITHUB_OUTPUT;  
+          echo "ENVIRONMENT_NAME=$DEPLOYMENT_NAME_DEFAULT" >> $GITHUB_ENV;  
         shell: bash
 
-      # Additionally populate git SHA for use in error logging
-      - name: Set Git SHA
+      # Output determined environment name alongside git SHA (for use in error logging)
+      - name: Populate Outputs
+        id: populate
         run: |
           echo "GIT_SHA=$(git rev-parse --short=6 HEAD)" >> $GITHUB_OUTPUT
-
+          echo "ENVIRONMENT_NAME=$ENVIRONMENT_NAME" >> $GITHUB_OUTPUT;  
      
     
   build:
