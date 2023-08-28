@@ -166,7 +166,7 @@ jobs:
         if: ${{env.GIT_SHA}}
         run: echo "export const GIT_SHA = \"$GIT_SHA\";" > src/environments/sha.ts
 
-      - name: Import remote Deployment
+      - name: Import remote deployment
         if: ${{env.DEPLOYMENT_REPO}}
         uses: actions/checkout@v3
         with:
@@ -174,6 +174,11 @@ jobs:
           lfs: ${{inputs.lfs}}
           path: ".idems_app/deployments/${{env.DEPLOYMENT_NAME}}"
           # TODO - add support for specific branch/release
+
+      - name: Set deployment private key
+        if: ${{env.DEPLOYMENT_PRIVATE_KEY}}
+        run:
+          echo $DEPLOYMENT_PRIVATE_KEY > .idems_app/deployments/$DEPLOYMENT_NAME/encrypted/private.key
 
       - name: Set deployment
         run: yarn workflow deployment set ${{env.DEPLOYMENT_NAME}}
