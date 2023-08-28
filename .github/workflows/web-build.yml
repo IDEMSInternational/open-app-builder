@@ -40,6 +40,10 @@ on:
         description: Remote git target to checkout if using external deployment repo. Expected format {owner}/{repo}
         type: string
         default: ""
+      deployment-private-key:
+        description: Private key used to decrypt deployment (if required)
+        type: string
+        default: ""
       include-tests:
         description: "Specify whether to include running workspace lint and test before build"
         type: boolean

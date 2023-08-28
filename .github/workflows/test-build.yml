@@ -8,8 +8,13 @@ jobs:
   test:
     uses: ./.github/workflows/web-build.yml
     secrets: inherit
+    environment: debug
     with:
       include-tests: true
       skip-upload: true
-      lfs: false # When testing build binary assets not required
-      # TODO - set a testing deployment when configured
+      # When testing build binary assets not required
+      lfs: false 
+      # Load deployment configuration from named environment above (e.g. debug)
+      deployment: ${{vars.DEPLOYMENT_NAME}}
+      deployment-repo: ${{vars.DEPLOYMENT_REPO}}
+      deployment-private-key: ${{secrets.DEPLOYMENT_PRIVATE_KEY}}
