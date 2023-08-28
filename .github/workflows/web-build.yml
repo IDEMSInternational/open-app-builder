@@ -174,10 +174,10 @@ jobs:
         run: echo "export const GIT_SHA = \"$GIT_SHA\";" > src/environments/sha.ts
 
       - name: Import remote Deployment
-        if: $DEPLOYMENT_REPO
+        if: ${{env.DEPLOYMENT_REPO}}
         uses: actions/checkout@v3
         with:
-          repository: $DEPLOYMENT_REPO
+          repository: ${{env.DEPLOYMENT_REPO}}
           lfs: ${{inputs.lfs}}
           path: '.idems_app/deployments'
           # TODO - add support for specific branch/release
