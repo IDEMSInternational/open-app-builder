@@ -2,7 +2,8 @@
 #         Configuration
 ##################################################################################
 env:
-  DEPLOYMENT_NAME_DEFAULT: "plh_global"
+  DEPLOYMENT_NAME_DEFAULT: "debug"
+  DEPLOYMENT_REPO_DEFAULT: "https://github.com/IDEMSInternational/app-debug-content.git"
   FIREBASE_CONFIG_TS: ${{secrets.FIREBASE_CONFIG_TS}}
 
 
@@ -33,6 +34,10 @@ on:
         default: ""
       deployment:
         description: Target deployment name. If branch name provided will take suffix (`prod/my_deployment` -> `my_deployment`)
+        type: string
+        default: ""
+      deployment-repo:
+        description: Remote git target to checkout if using external deployment repo. 
         type: string
         default: ""
       include-tests:
@@ -66,6 +71,7 @@ jobs:
   configure_build:
     outputs:
       DEPLOYMENT_NAME: ${{ steps.populate.outputs.DEPLOYMENT_NAME }}
+      DEPLOYMENT_REPO: ${{ steps.populate.outputs.DEPLOYMENT_NAME }}
       GIT_SHA: ${{ steps.populate.outputs.GIT_SHA }}
     runs-on: ubuntu-latest
     steps:
@@ -78,16 +84,23 @@ jobs:
       #############################################################################
       # Set deployment from input, replacing branch slash name with suffix (`prod/my_deployment` -> `my_deployment`)
       # https://stackoverflow.com/a/40524879
-      - name: Set deployment
+      - name: Set deployment repo
         if: ${{inputs.deployment && inputs.deployment != 'master' && inputs.deployment!='refs/heads/master'}}
         run: |
           echo "DEPLOYMENT_NAME=$(echo ${{inputs.deployment}} | sed 's/.*\///')" >> $GITHUB_ENV;  
+        shell: bash
+
+      - name: Set deployment repo
+        if: ${{inputs.deployment-repo}}
+        run: |
+         echo "DEPLOYMENT_REPO=${{inputs.deployment-repo}}" >> $GITHUB_ENV;  
         shell: bash
 
       - name: Set default deployment
         if: ${{!env.DEPLOYMENT_NAME}}
         run: |
           echo "DEPLOYMENT_NAME=$DEPLOYMENT_NAME_DEFAULT" >> $GITHUB_ENV;  
+          echo "DEPLOYMENT_REPO=$DEPLOYMENT_REPO_DEFAULT" >> $GITHUB_ENV;  
         shell: bash
 
       #############################################################################
@@ -109,6 +122,7 @@ jobs:
     needs: configure_build
     env:
       DEPLOYMENT_NAME: ${{ needs.configure_build.outputs.DEPLOYMENT_NAME }}
+      DEPLOYMENT_REPO: ${{ needs.configure_build.outputs.DEPLOYMENT_REPO }}
       GIT_SHA: ${{ needs.configure_build.outputs.GIT_SHA }}
     steps:
       - uses: actions/checkout@v3
@@ -157,6 +171,14 @@ jobs:
       - name: Populate git sha
         if: ${{env.GIT_SHA}}
         run: echo "export const GIT_SHA = \"$GIT_SHA\";" > src/environments/sha.ts
+
+      - name: Import remote Deployment
+        if: ${{DEPLOYMENT_NAME == "https://github.com/*"}}
+        uses: actions/checkout@v3
+        with:
+          repository: $DEPLOYMENT_NAME
+          lfs: ${{inputs.lfs}}
+          # TODO - add support for specific branch/release
 
       - name: Set deployment
         run: yarn workflow deployment set ${{env.DEPLOYMENT_NAME}}
