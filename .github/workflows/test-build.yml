@@ -8,7 +8,6 @@ jobs:
   test:
     uses: ./.github/workflows/web-build.yml
     secrets: inherit
-    environment: debug
     with:
       include-tests: true
       skip-upload: true
