@@ -7,18 +7,16 @@ describe("NavigationBarComponent", () => {
   let component: TmplNavigationBarComponent;
   let fixture: ComponentFixture<TmplNavigationBarComponent>;
 
-  beforeEach(
-    waitForAsync(() => {
-      TestBed.configureTestingModule({
-        declarations: [TmplNavigationBarComponent],
-        imports: [IonicModule.forRoot()],
-      }).compileComponents();
+  beforeEach(waitForAsync(() => {
+    TestBed.configureTestingModule({
+      declarations: [TmplNavigationBarComponent],
+      imports: [IonicModule.forRoot()],
+    }).compileComponents();
 
-      fixture = TestBed.createComponent(TmplNavigationBarComponent);
-      component = fixture.componentInstance;
-      fixture.detectChanges();
-    })
-  );
+    fixture = TestBed.createComponent(TmplNavigationBarComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  }));
 
   it("should create", () => {
     expect(component).toBeTruthy();

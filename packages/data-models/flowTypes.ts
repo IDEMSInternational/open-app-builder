@@ -1,6 +1,6 @@
 /* eslint @typescript-eslint/sort-type-constituents: "warn"  */
 
-import type { IDataPipeOperation } from "shared/src/models/dataPipe/types";
+import type { IDataPipeOperation } from "shared";
 import type { IAppConfig } from "./appConfig";
 
 /*********************************************************************************************
@@ -398,7 +398,7 @@ export namespace FlowTypes {
   export interface TemplateRowAction {
     /** actions have an associated trigger */
     trigger: TemplateRowActionTrigger;
-    action_id: typeof ACTION_ID_LIST[number];
+    action_id: (typeof ACTION_ID_LIST)[number];
     args: any[]; // should be boolean | string, but breaks type-checking for templates;
     params?: any; // additional params also used by args (does not require position argument)
     // TODO - CC 2022-04-29 - ideally args should be included as part of params

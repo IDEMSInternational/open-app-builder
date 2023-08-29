@@ -1,5 +1,5 @@
 import { FlowTypes } from "data-models";
-import type { IDataPipeOperation } from "shared/src/models/dataPipe/types";
+import type { IDataPipeOperation } from "shared";
 import { DataPipeParser } from "./data_pipe.parser";
 
 const testInputSources = {
