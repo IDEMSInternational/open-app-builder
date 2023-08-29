@@ -10,8 +10,8 @@ import { DEXIE_SRC_PATH, paths } from "../config";
 import { outputCompleteMessage, outputErrorMessage, zipFolder } from "../utils";
 import { VISUAL_TEST_CONFIG } from "../config/test";
 
-type IPageConfig = typeof VISUAL_TEST_CONFIG["pageList"][number];
-type IDexieConfig = typeof VISUAL_TEST_CONFIG["dexieConfig"];
+type IPageConfig = (typeof VISUAL_TEST_CONFIG)["pageList"][number];
+type IDexieConfig = (typeof VISUAL_TEST_CONFIG)["dexieConfig"];
 
 // Import Dexie from the src folder so that same instance can be used to seed the DB
 // as is used in the app itself. Uses require import syntax for compatibility
