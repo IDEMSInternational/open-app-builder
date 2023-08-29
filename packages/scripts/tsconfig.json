@@ -1,12 +1,16 @@
 {
   "compilerOptions": {
-    "target": "es2015",
+    "declaration": false,
+    "lib": ["ESNext"],
+    "target": "ESNext",
+    "importHelpers": true,
     "noEmit": true,
     "moduleResolution": "node",
     "module": "CommonJS",
     "esModuleInterop": true,
     // Global type definitions.
-    "typeRoots": ["./node_modules/@types"]
+    "typeRoots": ["./node_modules/@types"],
+    "pretty": true
   },
   "include": ["src/**/*.ts"],
   "ts-node": {
