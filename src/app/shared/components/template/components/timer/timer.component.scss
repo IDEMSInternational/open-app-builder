@@ -37,7 +37,7 @@ $button-background: var(--timer-button-background, var(--ion-color-primary-500))
 .timer-row {
   display: flex;
 }
-.add-min {
+.btn {
   @include mixins.large-square;
   min-width: var(--buttons-size);
   position: relative;
@@ -45,13 +45,13 @@ $button-background: var(--timer-button-background, var(--ion-color-primary-500))
   --background-size: cover;
   --border-radius: var(--ion-border-radius-rounded);
   --padding: 0;
-  .right-icon {
-    max-width: none;
-    top: 0;
+  ion-icon {
+    position: absolute;
+    font-size: var(--icon-size-large);
   }
   .time-rewind-value {
     position: absolute;
-    font-size: var(--font-size-text-tiny);
+    font-size: var(--font-size-text-large);
     font-weight: var(--font-weight-bold);
   }
 }
