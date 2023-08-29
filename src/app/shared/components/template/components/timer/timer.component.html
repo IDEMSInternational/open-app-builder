@@ -14,11 +14,11 @@
     ></ion-icon>
   </div>
   <div class="timer-content">
-    <ion-button class="add-min" (click)="clickLeftButton()">
-      <img
-        [src]="!timerStarted ? '/assets/icon/timer/play.svg' : '/assets/icon/timer/pause.svg'"
-        alt=""
-      />
+    <ion-button class="btn" (click)="clickLeftButton()">
+      <ion-icon
+        [name]="!timerStarted ? playIcon : pauseIcon"
+        [src]="!timerStarted ? playIcon : pauseIcon"
+      ></ion-icon>
     </ion-button>
     <div class="timer-counter round-container round-container-br-15" (click)="openPicker()">
       <div #min>
@@ -29,13 +29,12 @@
         {{ seconds }}
       </div>
     </div>
-    <ion-button class="add-min" (click)="clickRightButton()">
-      <img
-        class="right-icon"
-        [class.left-icon]="timerStarted"
-        [src]="timerStarted ? '/assets/icon/timer/add-time.svg' : '/assets/icon/timer/repeat.svg'"
-        alt=""
-      />
+    <ion-button class="btn" (click)="clickRightButton()">
+      <!-- Use name="none" to display no icon, as empty string does not replace the value -->
+      <ion-icon
+        [name]="timerStarted ? 'none' : resetIcon"
+        [src]="timerStarted ? '' : resetIcon"
+      ></ion-icon>
       <span class="time-rewind-value" *ngIf="timerStarted">+{{ timerDurationExtension / 60 }}</span>
     </ion-button>
   </div>
