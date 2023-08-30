@@ -31,7 +31,7 @@
       "rows": [
         {
           "name": "story_id",
-          "value": "violence",
+          "value": "violence_crime",
           "_translations": {
             "value": {}
           },

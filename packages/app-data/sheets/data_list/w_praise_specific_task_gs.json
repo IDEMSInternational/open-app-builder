@@ -48,15 +48,15 @@
       "together": true,
       "priority": 12,
       "icon_asset": "@data.mode.read.icon_asset",
-      "story_id": "praise",
+      "story_id": "give_praise",
       "has_single_task": false,
-      "title": "@data.story.praise.title",
+      "title": "@data.story.give_praise.title",
       "_translations": {
         "title": {}
       },
       "_translatedFields": {
         "title": {
-          "eng": "@data.story.praise.title"
+          "eng": "@data.story.give_praise.title"
         }
       }
     },
