@@ -781,7 +781,7 @@
             },
             {
               "name": "button_1",
-              "value": "@data.workshop.w_praise.tools",
+              "value": "@data.tools.w_praise.title",
               "_translations": {
                 "value": {}
               },
@@ -802,15 +802,15 @@
               "_dynamicFields": {
                 "value": [
                   {
-                    "fullExpression": "@data.workshop.w_praise.tools",
-                    "matchedExpression": "@data.workshop.w_praise.tools",
+                    "fullExpression": "@data.tools.w_praise.title",
+                    "matchedExpression": "@data.tools.w_praise.title",
                     "type": "data",
-                    "fieldName": "workshop"
+                    "fieldName": "tools"
                   }
                 ]
               },
               "_dynamicDependencies": {
-                "@data.workshop.w_praise.tools": [
+                "@data.tools.w_praise.title": [
                   "value"
                 ]
               }
