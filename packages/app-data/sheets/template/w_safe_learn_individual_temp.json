@@ -5,6 +5,28 @@
   "status": "released",
   "rows": [
     {
+      "name": "alone",
+      "value": "Let me try it out by myself",
+      "_translations": {
+        "value": {
+          "tz_sw": true
+        }
+      },
+      "type": "set_variable",
+      "_nested_name": "alone"
+    },
+    {
+      "name": "family",
+      "value": "My family can join in now!",
+      "_translations": {
+        "value": {
+          "tz_sw": true
+        }
+      },
+      "type": "set_variable",
+      "_nested_name": "family"
+    },
+    {
       "type": "template",
       "name": "learn",
       "value": "learn_temp",
@@ -164,11 +186,39 @@
                     {
                       "name": "answer_list",
                       "value": [
-                        "name:family | text:My family can join in now!",
-                        "name:alone | text:Let me try it out by myself"
+                        "name:family | text: @local.family",
+                        "name:alone | text: @local.alone"
                       ],
                       "type": "set_variable",
-                      "_nested_name": "learn.workshop_activity.content_box.box_1.answer_list"
+                      "_nested_name": "learn.workshop_activity.content_box.box_1.answer_list",
+                      "_dynamicFields": {
+                        "value": {
+                          "0": [
+                            {
+                              "fullExpression": "name:family | text: @local.family",
+                              "matchedExpression": "@local.family",
+                              "type": "local",
+                              "fieldName": "family"
+                            }
+                          ],
+                          "1": [
+                            {
+                              "fullExpression": "name:alone | text: @local.alone",
+                              "matchedExpression": "@local.alone",
+                              "type": "local",
+                              "fieldName": "alone"
+                            }
+                          ]
+                        }
+                      },
+                      "_dynamicDependencies": {
+                        "@local.family": [
+                          "value.0"
+                        ],
+                        "@local.alone": [
+                          "value.1"
+                        ]
+                      }
                     },
                     {
                       "name": "options_per_row",

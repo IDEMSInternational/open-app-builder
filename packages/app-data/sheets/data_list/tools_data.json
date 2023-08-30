@@ -751,7 +751,7 @@
           "eng": "Online Safety Story"
         },
         "tool_3_title": {
-          "eng": "@GLOBAL.SAFETY_WORD"
+          "eng": "SAFETY WORD"
         },
         "tool_3_text": {
           "eng": "Agree on a @global.safety_word. If something happens that makes your teen upset, uncomfortable or scared, they can say the @global.safety_word  and you will help them without getting angry or punishing them, even if they were doing something wrong. \n\nRemember the story about the @global.safety_word? See it again here."
@@ -772,7 +772,7 @@
       "tool_2_title": "RULES",
       "tool_2_text": "Make rules with your teen about how they can stay safe in your community (especially in risky areas that cannot be avoided) and how they can safely use the apps and websites that they like. \n\nRemember the story about Online Safety? See it again here.",
       "tool_2_button_text": "Online Safety Story",
-      "tool_3_title": "@GLOBAL.SAFETY_WORD",
+      "tool_3_title": "SAFETY WORD",
       "tool_3_text": "Agree on a @global.safety_word. If something happens that makes your teen upset, uncomfortable or scared, they can say the @global.safety_word  and you will help them without getting angry or punishing them, even if they were doing something wrong. \n\nRemember the story about the @global.safety_word? See it again here.",
       "tool_3_button_text": "@global.safety_word Story",
       "tool_4_title": "",

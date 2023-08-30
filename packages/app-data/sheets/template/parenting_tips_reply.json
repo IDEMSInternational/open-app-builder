@@ -72,6 +72,54 @@
           }
         },
         {
+          "name": "tools",
+          "value": "tools.@local.workshop",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "workshop_specific_content.tools",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "tools.@local.workshop",
+                "matchedExpression": "@local.workshop",
+                "type": "local",
+                "fieldName": "workshop"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@local.workshop": [
+              "value"
+            ]
+          }
+        },
+        {
+          "name": "tools_data",
+          "value": "@data.@local.tools",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "workshop_specific_content.tools_data",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@data.@local.tools",
+                "matchedExpression": "@local.tools",
+                "type": "local",
+                "fieldName": "tools"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@local.tools": [
+              "value"
+            ]
+          }
+        },
+        {
           "name": "disabled",
           "value": "_disabled",
           "_translations": {
@@ -701,7 +749,7 @@
         {
           "type": "button",
           "name": "button_tools",
-          "value": "@local.workshop_data.tools",
+          "value": "@local.tools_data.title",
           "_translations": {
             "value": {}
           },
@@ -720,10 +768,10 @@
           "_dynamicFields": {
             "value": [
               {
-                "fullExpression": "@local.workshop_data.tools",
-                "matchedExpression": "@local.workshop_data.tools",
+                "fullExpression": "@local.tools_data.title",
+                "matchedExpression": "@local.tools_data.title",
                 "type": "local",
-                "fieldName": "workshop_data"
+                "fieldName": "tools_data"
               }
             ],
             "action_list": {
@@ -758,7 +806,7 @@
             }
           },
           "_dynamicDependencies": {
-            "@local.workshop_data.tools": [
+            "@local.tools_data.title": [
               "value"
             ],
             "@local.workshop_tools": [
