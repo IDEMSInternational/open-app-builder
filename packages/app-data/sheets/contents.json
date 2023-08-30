@@ -4147,6 +4147,11 @@
       "flow_name": "self_care_accordion_item",
       "_xlsxPath": "global/core_templates/core_templates_navigation.xlsx"
     },
+    "sensitive_content_warning": {
+      "flow_type": "template",
+      "flow_name": "sensitive_content_warning",
+      "_xlsxPath": "global_modular/core_templates/module_navigation.xlsx"
+    },
     "settings_customise": {
       "flow_type": "template",
       "flow_name": "settings_customise",
