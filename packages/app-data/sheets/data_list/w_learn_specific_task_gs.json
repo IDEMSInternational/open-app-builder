@@ -11,13 +11,13 @@
       "icon_asset": "@data.mode.read.icon_asset",
       "story_id": "learn_conflict",
       "has_single_task": false,
-      "title": "@data.story.learn_conflict.title",
+      "title": "@global.story: @data.story.learn_conflict.title",
       "_translations": {
         "title": {}
       },
       "_translatedFields": {
         "title": {
-          "eng": "@data.story.learn_conflict.title"
+          "eng": "@global.story: @data.story.learn_conflict.title"
         }
       }
     },
@@ -29,13 +29,13 @@
       "icon_asset": "@data.mode.read.icon_asset",
       "story_id": "learn_support",
       "has_single_task": false,
-      "title": "@data.story.learn_support.title",
+      "title": "@global.story: @data.story.learn_support.title",
       "_translations": {
         "title": {}
       },
       "_translatedFields": {
         "title": {
-          "eng": "@data.story.learn_support.title"
+          "eng": "@global.story: @data.story.learn_support.title"
         }
       }
     },
