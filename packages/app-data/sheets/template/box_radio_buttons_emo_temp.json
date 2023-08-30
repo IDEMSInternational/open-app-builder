@@ -133,7 +133,7 @@
       "_nested_name": "radio_group_answered"
     },
     {
-      "type": "radio_group",
+      "type": "radio_button_grid",
       "name": "radio_group",
       "action_list": [
         {
@@ -149,7 +149,7 @@
       ],
       "parameter_list": {
         "answer_list": "@local.answer_list",
-        "options_per_row": "@local.options_per_row"
+        "item_width": "50px"
       },
       "_nested_name": "radio_group",
       "_dynamicFields": {
@@ -203,14 +203,6 @@
               "type": "local",
               "fieldName": "answer_list"
             }
-          ],
-          "options_per_row": [
-            {
-              "fullExpression": "@local.options_per_row",
-              "matchedExpression": "@local.options_per_row",
-              "type": "local",
-              "fieldName": "options_per_row"
-            }
           ]
         }
       },
@@ -226,9 +218,6 @@
         ],
         "@local.answer_list": [
           "parameter_list.answer_list"
-        ],
-        "@local.options_per_row": [
-          "parameter_list.options_per_row"
         ]
       }
     },
