@@ -5,7 +5,7 @@
   "data_list_name": "story",
   "rows": [
     {
-      "id": "praise",
+      "id": "give_praise",
       "workshop": "w_praise",
       "image_1": "plh_images/workshops/w_praise/read/slide_1.svg",
       "image_2": "plh_images/workshops/w_praise/read/slide_2.svg",
@@ -1080,7 +1080,7 @@
       "text_3": "@global.w_safe_female_caregiver: \"Sometimes people are not who they say they are online – he could say he is your age but be a 50 year old man. Or when they break up, he could send those photos to everyone and your friend would feel awful.\""
     },
     {
-      "id": "rape",
+      "id": "rape_crisis",
       "workshop": "w_crisis",
       "image_1": "plh_images/workshops/w_crisis/read_1/slide_1.svg",
       "image_2": "plh_images/workshops/w_crisis/read_1/slide_2.svg",
@@ -1150,7 +1150,7 @@
       "text_6": "@global.w_crisis_female_caregiver: \"Of course I will. And @global.w_crisis_teen_girl_1? Remember this is not your fault. I love you. You are a good person. We will get through this.\""
     },
     {
-      "id": "violence",
+      "id": "violence_crime",
       "workshop": "w_crisis",
       "image_1": "plh_images/workshops/w_crisis/read_2/slide_1.svg",
       "image_2": "plh_images/workshops/w_crisis/read_2/slide_2.svg",
