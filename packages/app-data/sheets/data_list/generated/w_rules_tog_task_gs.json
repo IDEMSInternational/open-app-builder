@@ -172,13 +172,13 @@
       "priority": 11,
       "icon_asset": "@data.mode.read.icon_asset",
       "has_single_task": false,
-      "title": "@data.story.make_rule.title",
+      "title": "@global.story: @data.story.make_rule.title",
       "_translations": {
         "title": {}
       },
       "_translatedFields": {
         "title": {
-          "eng": "@data.story.make_rule.title"
+          "eng": "@global.story: @data.story.make_rule.title"
         }
       },
       "story_id": "make_rule",
@@ -192,13 +192,13 @@
       "priority": 71,
       "icon_asset": "@data.mode.read.icon_asset",
       "has_single_task": true,
-      "title": "@data.story.online_safety.title",
+      "title": "@global.story: @data.story.online_safety.title",
       "_translations": {
         "title": {}
       },
       "_translatedFields": {
         "title": {
-          "eng": "@data.story.online_safety.title"
+          "eng": "@global.story: @data.story.online_safety.title"
         }
       },
       "template": "w_rules_read_2",

@@ -11,13 +11,13 @@
       "icon_asset": "@data.mode.read.icon_asset",
       "story_id": "rape_crisis",
       "has_single_task": false,
-      "title": "@data.story.rape_crisis.title",
+      "title": "@global.story: @data.story.rape_crisis.title",
       "_translations": {
         "title": {}
       },
       "_translatedFields": {
         "title": {
-          "eng": "@data.story.rape_crisis.title"
+          "eng": "@global.story: @data.story.rape_crisis.title"
         }
       }
     },
@@ -29,13 +29,13 @@
       "icon_asset": "@data.mode.read.icon_asset",
       "story_id": "violence_crime",
       "has_single_task": false,
-      "title": "@data.story.violence_crime.title",
+      "title": "@global.story: @data.story.violence_crime.title",
       "_translations": {
         "title": {}
       },
       "_translatedFields": {
         "title": {
-          "eng": "@data.story.violence_crime.title"
+          "eng": "@global.story: @data.story.violence_crime.title"
         }
       }
     },

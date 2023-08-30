@@ -237,13 +237,13 @@
       "priority": 12,
       "icon_asset": "@data.mode.read.icon_asset",
       "has_single_task": false,
-      "title": "@data.story.give_praise.title",
+      "title": "@global.story: @data.story.give_praise.title",
       "_translations": {
         "title": {}
       },
       "_translatedFields": {
         "title": {
-          "eng": "@data.story.give_praise.title"
+          "eng": "@global.story: @data.story.give_praise.title"
         }
       },
       "story_id": "give_praise",
