@@ -716,7 +716,9 @@
         "tool_2_button_text": {
           "tz_sw": true
         },
-        "tool_3_title": {},
+        "tool_3_title": {
+          "tz_sw": true
+        },
         "tool_3_text": {
           "tz_sw": true
         },
