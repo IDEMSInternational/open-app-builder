@@ -8,7 +8,9 @@
       "name": "text",
       "value": "This @global.workshop includes content that may be sensitive. You can check it out by yourself first. This will prepare you well for sharing the content with your teen and others afterwards.",
       "_translations": {
-        "value": {}
+        "value": {
+          "tz_sw": true
+        }
       },
       "_nested_name": "text",
       "_dynamicFields": {
@@ -32,7 +34,9 @@
       "name": "button",
       "value": "Go to @global.workshop",
       "_translations": {
-        "value": {}
+        "value": {
+          "tz_sw": true
+        }
       },
       "action_list": [
         {

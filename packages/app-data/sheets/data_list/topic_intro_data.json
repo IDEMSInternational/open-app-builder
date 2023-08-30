@@ -533,7 +533,9 @@
           "tz_sw": true
         },
         "intro_nav_button_completed": {},
-        "script": {},
+        "script": {
+          "tz_sw": true
+        },
         "title": {
           "tz_sw": true
         }
