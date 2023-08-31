@@ -5773,7 +5773,7 @@
   },
   {
     "SourceText": "15 minutes later…\n\n@global.w_learn_teen_girl_1: “I am glad we have this time together. I actually wanted to tell you about a problem I had at school today.”\n\n@global.w_learn_female_caregiver_1: “Thank you for telling me. I am sure we can come up with a solution together.”",
-    "text": "Baada ya dakika 15...\n\n@global.w_learn_teen_girl_1: “Nimefurahi kuwa pamoja nawe muda huu. Kwa kweli nilitaka kukwambia kuhusu tatizo nililopata leo shuleni.”\n\n@global.w_learn_female_caregiver_1: “Asante kwa kuniambia. Nina hakika tunaweza kupata suluhu pamoja.”",
+    "text": "Baada ya dakika 15...\n\n@global.w_learn_teen_girl_1: “Nimefurahi kuwa pamoja nawe muda huu. Kwa kweli nilitaka kukwambia kuhusu tatizo nililopata shuleni leo.”\n\n@global.w_learn_female_caregiver_1: “Asante kwa kuniambia. Nina hakika tunaweza kupata suluhisho kwa pamoja.”",
     "type": "data_list",
     "note": "The following strings should not be translated:\n@global.w_learn_teen_girl_1:\n@global.w_learn_female_caregiver_1:"
   },
