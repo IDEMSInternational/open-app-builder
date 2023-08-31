@@ -52,7 +52,7 @@
       }
     },
     {
-      "type": "radio_group",
+      "type": "radio_button_grid",
       "name": "language_select",
       "value": "@fields._app_language",
       "_translations": {
@@ -80,7 +80,8 @@
         }
       ],
       "parameter_list": {
-        "answer_list": "@local.language_select_options"
+        "answer_list": "@local.language_select_options",
+        "item_width": "50px"
       },
       "_nested_name": "language_select",
       "_dynamicFields": {

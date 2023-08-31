@@ -11,4 +11,5 @@ jobs:
     with:
       include-tests: true
       skip-upload: true
+      lfs: false # When testing build binary assets not required
       # TODO - set a testing deployment when configured

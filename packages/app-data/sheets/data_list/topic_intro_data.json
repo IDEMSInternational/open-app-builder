@@ -548,14 +548,14 @@
           "eng": "@global.more_button"
         },
         "script": {
-          "eng": "Today's topic is coping with grief. \n\nTaking care of ourselves is important, especially when we are facing challenging and difficult times such as coping with grief. We need to stay calm in order to think act positively whenever we find ourselves overwhelmed. We may use techniques such as taking a pause to calm ourselves down."
+          "eng": "Greetings.\n\nToday's topic is coping with grief. \n\nTaking care of ourselves is important, especially when we are facing challenging and difficult times such as coping with grief. We need to stay calm in order to think and act positively whenever we find ourselves overwhelmed. We may use techniques such as taking a pause to calm ourselves down."
         },
         "title": {
           "eng": "Why @data.workshop.w_grief.lower_case_title?"
         }
       },
       "intro_nav_button_completed": "@global.more_button",
-      "script": "Today's topic is coping with grief. \n\nTaking care of ourselves is important, especially when we are facing challenging and difficult times such as coping with grief. We need to stay calm in order to think act positively whenever we find ourselves overwhelmed. We may use techniques such as taking a pause to calm ourselves down.",
+      "script": "Greetings.\n\nToday's topic is coping with grief. \n\nTaking care of ourselves is important, especially when we are facing challenging and difficult times such as coping with grief. We need to stay calm in order to think and act positively whenever we find ourselves overwhelmed. We may use techniques such as taking a pause to calm ourselves down.",
       "title": "Why @data.workshop.w_grief.lower_case_title?"
     },
     {

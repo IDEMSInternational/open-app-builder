@@ -172,16 +172,16 @@
       "priority": 11,
       "icon_asset": "@data.mode.read.icon_asset",
       "has_single_task": false,
-      "title": "@data.story.rape.title",
+      "title": "@global.story: @data.story.rape_crisis.title",
       "_translations": {
         "title": {}
       },
       "_translatedFields": {
         "title": {
-          "eng": "@data.story.rape.title"
+          "eng": "@global.story: @data.story.rape_crisis.title"
         }
       },
-      "story_id": "rape",
+      "story_id": "rape_crisis",
       "completed_field": "task_gp_w_crisis_read_1_completed",
       "completed": "@fields.task_gp_w_crisis_read_1_completed"
     },
@@ -192,16 +192,16 @@
       "priority": 13,
       "icon_asset": "@data.mode.read.icon_asset",
       "has_single_task": false,
-      "title": "@data.story.violence.title",
+      "title": "@global.story: @data.story.violence_crime.title",
       "_translations": {
         "title": {}
       },
       "_translatedFields": {
         "title": {
-          "eng": "@data.story.violence.title"
+          "eng": "@global.story: @data.story.violence_crime.title"
         }
       },
-      "story_id": "violence",
+      "story_id": "violence_crime",
       "completed_field": "task_gp_w_crisis_read_2_completed",
       "completed": "@fields.task_gp_w_crisis_read_2_completed"
     },

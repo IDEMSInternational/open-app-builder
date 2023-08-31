@@ -134,10 +134,10 @@
                       "trigger": "click",
                       "action_id": "go_to",
                       "args": [
-                        "w_solve_tools"
+                        "lib_act_w_solve"
                       ],
-                      "_raw": "click | go_to:w_solve_tools",
-                      "_cleaned": "click | go_to:w_solve_tools"
+                      "_raw": "click | go_to:lib_act_w_solve",
+                      "_cleaned": "click | go_to:lib_act_w_solve"
                     }
                   ],
                   "type": "set_variable",

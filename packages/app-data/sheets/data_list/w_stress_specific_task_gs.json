@@ -11,13 +11,13 @@
       "icon_asset": "@data.mode.read.icon_asset",
       "story_id": "ignore_emotions",
       "has_single_task": false,
-      "title": "@data.story.ignore_emotions.title",
+      "title": "@global.story: @data.story.ignore_emotions.title",
       "_translations": {
         "title": {}
       },
       "_translatedFields": {
         "title": {
-          "eng": "@data.story.ignore_emotions.title"
+          "eng": "@global.story: @data.story.ignore_emotions.title"
         }
       }
     },
@@ -30,13 +30,13 @@
       "story_id": "acknowledge_emotions",
       "has_single_task": true,
       "template": "w_stress_read_2",
-      "title": "@data.story.acknowledge_emotions.title",
+      "title": "@global.story: @data.story.acknowledge_emotions.title",
       "_translations": {
         "title": {}
       },
       "_translatedFields": {
         "title": {
-          "eng": "@data.story.acknowledge_emotions.title"
+          "eng": "@global.story: @data.story.acknowledge_emotions.title"
         }
       }
     },
@@ -48,13 +48,13 @@
       "icon_asset": "@data.mode.read.icon_asset",
       "story_id": "safety_amnesty",
       "has_single_task": false,
-      "title": "@data.story.safety_amnesty.title",
+      "title": "@global.story: @data.story.safety_amnesty.title",
       "_translations": {
         "title": {}
       },
       "_translatedFields": {
         "title": {
-          "eng": "@data.story.safety_amnesty.title"
+          "eng": "@global.story: @data.story.safety_amnesty.title"
         }
       }
     }

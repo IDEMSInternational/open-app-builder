@@ -1,0 +1,69 @@
+{
+  "flow_type": "template",
+  "flow_name": "sensitive_content_warning",
+  "status": "released",
+  "rows": [
+    {
+      "type": "text",
+      "name": "text",
+      "value": "@data.warning.sensitive_content.text",
+      "_translations": {
+        "value": {}
+      },
+      "_nested_name": "text",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@data.warning.sensitive_content.text",
+            "matchedExpression": "@data.warning.sensitive_content.text",
+            "type": "data",
+            "fieldName": "warning"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@data.warning.sensitive_content.text": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "button",
+      "name": "button",
+      "value": "Go to @global.workshop",
+      "_translations": {
+        "value": {
+          "tz_sw": true
+        }
+      },
+      "action_list": [
+        {
+          "trigger": "click",
+          "action_id": "go_to",
+          "args": [
+            "module_overview"
+          ],
+          "_raw": "click | go_to: module_overview",
+          "_cleaned": "click | go_to: module_overview"
+        }
+      ],
+      "_nested_name": "button",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "Go to @global.workshop",
+            "matchedExpression": "@global.workshop",
+            "type": "global",
+            "fieldName": "workshop"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@global.workshop": [
+          "value"
+        ]
+      }
+    }
+  ],
+  "_xlsxPath": "global_modular/core_templates/module_navigation.xlsx"
+}
