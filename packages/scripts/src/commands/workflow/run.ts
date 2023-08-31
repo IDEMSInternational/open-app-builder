@@ -4,7 +4,7 @@ import boxen from "boxen";
 import chalk from "chalk";
 import path from "path";
 import { Command } from "commander";
-import { IDeploymentWorkflows, IWorkflow, WORKFLOW_DEFAULTS } from "data-models/workflows";
+import { IDeploymentWorkflows, IWorkflow, WORKFLOW_DEFAULTS } from "workflows";
 import ALL_TASKS from "../../tasks";
 import { Logger, logProgramHelp, pad, promptOptions } from "../../utils";
 import { ActiveDeployment } from "../deployment/get";
@@ -51,10 +51,12 @@ export class WorkflowRunnerClass {
     // load default workflows
     this.workflows = WORKFLOW_DEFAULTS;
     // load custom workflows
+    // TODO - CC 2023-08-24 custom workflows not used and compiling TS difficult at runtime
+    // so should consider removing feature
     this.config = ActiveDeployment.get({ ignoreMissing: true });
-    const { workflow, _workspace_path } = this.config as any;
+    const { _workspace_path } = this.config as any;
     const customWorkflowFiles = [];
-    if (workflow) {
+    if (_workspace_path) {
       for (const workflowPath of customWorkflowFiles) {
         const ts: IDeploymentWorkflows = await import(path.resolve(_workspace_path, workflowPath));
         const parsedWorkflows: IDeploymentWorkflows = ts?.default as any;
@@ -84,7 +86,7 @@ export class WorkflowRunnerClass {
     if (workflow.options) {
       this.activeWorkflowOptions = {
         ...this.activeWorkflowOptions,
-        ...this.parseWorkflowOptions(workflow.options),
+        ...this.parseWorkflowOptions(workflow.options, args),
       };
     }
     return this.executeWorkflow(workflow, workflowArgs);
@@ -119,21 +121,30 @@ export class WorkflowRunnerClass {
   /**
    * Generate a child commander instance that can dynamically parse options as defined
    * within a workflow
+   * @param options list of arg options to use in the workflow, e.g. {flag: 's, --skip-download'}
+   * @param args string array to be evaluated from options, e.g. ['--skip-download'] => {skipDownload: true}
    */
-  private parseWorkflowOptions(options: IWorkflow["options"] = []) {
+  private parseWorkflowOptions(options: IWorkflow["options"] = [], args: string[]) {
     let parsedOptions: { [name: string]: string | boolean } = {};
     const subProgram = new Command().allowUnknownOption();
+    // create a dynamic list of cli options using those listed in the workflow
     for (const option of options) {
       const { flags, description, defaultValue } = option;
       subProgram.option(flags, description, defaultValue);
     }
-    subProgram.action((o) => {
-      parsedOptions = o;
+    // add a default workflow action, so that when triggered the included parsed command
+    // options are stored as a variable for return
+    subProgram.action((cmdOptions) => {
+      parsedOptions = cmdOptions;
     });
-    if (process.argv.find((arg) => ["--help", "h"].includes(arg))) {
+    if (args.find((arg) => ["--help", "h"].includes(arg))) {
       logProgramHelp(subProgram);
     }
-    subProgram.parse(process.argv);
+    // run the command with args parsed. Include 2 additional placeholder args
+    // as these will be sliced out during processing. This will trigger the action above
+    // and use commander's parsing methods to process the args list
+    const [sysArg1, sysArg2] = process.argv;
+    subProgram.parse([sysArg1, sysArg2, ...args]);
     return parsedOptions;
   }
 

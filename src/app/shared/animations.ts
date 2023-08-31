@@ -9,6 +9,13 @@ const fadeInOut = [
     transition("in => out", [animate("0.5s")]),
     // todo - could use :enter and :exit properties also (need to confirm doesn't break existing functionality)
   ]),
+  trigger("noFade", [
+    state("in", style({ opacity: 1 })), // these are needed for the images to actually appear (coming in)
+    // we don't require a state for out as we want the images to disappear immediately
+    transition("* => in", [
+      animate("0s 0.5s", style({ opacity: 0 })), // delay animation for 0.5s in order for previous animation to finish
+    ]),
+  ]),
 ];
 
 const fadeEntryExit = [

@@ -1441,6 +1441,11 @@
       "flow_name": "w_svp_specific_tasks",
       "_xlsxPath": "global/data/workshop_data/workshop_tasks.xlsx"
     },
+    "warning": {
+      "flow_type": "data_list",
+      "flow_name": "warning",
+      "_xlsxPath": "global/data/navigation_globals.xlsx"
+    },
     "workshop_data": {
       "flow_type": "data_list",
       "flow_name": "workshop_data",
@@ -4146,6 +4151,11 @@
       "flow_type": "template",
       "flow_name": "self_care_accordion_item",
       "_xlsxPath": "global/core_templates/core_templates_navigation.xlsx"
+    },
+    "sensitive_content_warning": {
+      "flow_type": "template",
+      "flow_name": "sensitive_content_warning",
+      "_xlsxPath": "global_modular/core_templates/module_navigation.xlsx"
     },
     "settings_customise": {
       "flow_type": "template",

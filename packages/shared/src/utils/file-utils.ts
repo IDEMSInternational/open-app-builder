@@ -3,8 +3,6 @@ import * as path from "path";
 import * as os from "os";
 import { createHash, randomUUID } from "crypto";
 import { logWarning } from "./logging.utils";
-import { ROOT_DIR } from "../paths";
-import { spawnSync } from "child_process";
 import { tmpdir } from "os";
 
 /**
@@ -522,15 +520,6 @@ export function createTempDir() {
   fs.ensureDirSync(dirPath);
   fs.emptyDirSync(dirPath);
   return dirPath;
-}
-
-/**
- * Run prettier to automatically format code in given folder path
- * NOTE - by default will only format .ts files
- */
-export function runPrettierCodeTidy(folderPath: string) {
-  const cmd = `npx prettier --config ${ROOT_DIR}/.prettierrc --write ${folderPath}/**/*.ts --loglevel error`;
-  return spawnSync(cmd, { stdio: ["inherit", "inherit", "inherit"], shell: true });
 }
 
 /** Create a randomly-named temporary folder within the os temp directory */

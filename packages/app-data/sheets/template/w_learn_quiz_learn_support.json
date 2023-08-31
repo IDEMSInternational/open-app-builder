@@ -516,6 +516,39 @@
       }
     },
     {
+      "name": "sad",
+      "value": "Sad",
+      "_translations": {
+        "value": {
+          "tz_sw": true
+        }
+      },
+      "type": "set_variable",
+      "_nested_name": "sad"
+    },
+    {
+      "name": "confused",
+      "value": "Confused",
+      "_translations": {
+        "value": {
+          "tz_sw": true
+        }
+      },
+      "type": "set_variable",
+      "_nested_name": "confused"
+    },
+    {
+      "name": "tired",
+      "value": "Tired",
+      "_translations": {
+        "value": {
+          "tz_sw": true
+        }
+      },
+      "type": "set_variable",
+      "_nested_name": "tired"
+    },
+    {
       "type": "template",
       "name": "question_time",
       "value": "question_time",
@@ -606,12 +639,51 @@
                         {
                           "name": "answer_list",
                           "value": [
-                            "name:sad | text: Sad |  image:plh_images/stickers/faces/sadder.svg | image_checked: plh_images/stickers/faces/sadder.svg",
-                            "name:confused | text:Confused | image:plh_images/stickers/faces/confused_question_mark.svg | image_checked:plh_images/stickers/faces/confused_question_mark.svg",
-                            "name:tired | text:Tired | image:plh_images/stickers/faces/tired.svg | image_checked:plh_images/stickers/faces/tired.svg"
+                            "name:sad | text: @local.sad |  image:plh_images/stickers/faces/sadder.svg | image_checked: plh_images/stickers/faces/sadder.svg",
+                            "name:confused | text: @local.confused | image:plh_images/stickers/faces/confused_question_mark.svg | image_checked:plh_images/stickers/faces/confused_question_mark.svg",
+                            "name:tired | text: @local.tired | image:plh_images/stickers/faces/tired.svg | image_checked:plh_images/stickers/faces/tired.svg"
                           ],
                           "type": "set_variable",
-                          "_nested_name": "question_time.workshop_activity.content_box.box_1.box_1.answer_list"
+                          "_nested_name": "question_time.workshop_activity.content_box.box_1.box_1.answer_list",
+                          "_dynamicFields": {
+                            "value": {
+                              "0": [
+                                {
+                                  "fullExpression": "name:sad | text: @local.sad |  image:plh_images/stickers/faces/sadder.svg | image_checked: plh_images/stickers/faces/sadder.svg",
+                                  "matchedExpression": "@local.sad",
+                                  "type": "local",
+                                  "fieldName": "sad"
+                                }
+                              ],
+                              "1": [
+                                {
+                                  "fullExpression": "name:confused | text: @local.confused | image:plh_images/stickers/faces/confused_question_mark.svg | image_checked:plh_images/stickers/faces/confused_question_mark.svg",
+                                  "matchedExpression": "@local.confused",
+                                  "type": "local",
+                                  "fieldName": "confused"
+                                }
+                              ],
+                              "2": [
+                                {
+                                  "fullExpression": "name:tired | text: @local.tired | image:plh_images/stickers/faces/tired.svg | image_checked:plh_images/stickers/faces/tired.svg",
+                                  "matchedExpression": "@local.tired",
+                                  "type": "local",
+                                  "fieldName": "tired"
+                                }
+                              ]
+                            }
+                          },
+                          "_dynamicDependencies": {
+                            "@local.sad": [
+                              "value.0"
+                            ],
+                            "@local.confused": [
+                              "value.1"
+                            ],
+                            "@local.tired": [
+                              "value.2"
+                            ]
+                          }
                         },
                         {
                           "name": "reply",

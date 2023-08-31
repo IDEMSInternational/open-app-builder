@@ -31,11 +31,9 @@
       "rows": [
         {
           "name": "story_id",
-          "value": "praise",
+          "value": "give_praise",
           "_translations": {
-            "value": {
-              "tz_sw": true
-            }
+            "value": {}
           },
           "exclude_from_translation": true,
           "type": "set_variable",

@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    /* Basic Options */
+    "outDir": "dist",
+    "typeRoots": ["node_modules/@types"],
+    "declaration": true,
+    "skipLibCheck": true,
+    "lib": ["es2016", "dom"],
+    "target": "es5",
+    "esModuleInterop": true
+  },
+  "include": ["src/index.ts"],
+  "exclude": ["**/*.d.ts", "dist", "**/node_modules"]
+}

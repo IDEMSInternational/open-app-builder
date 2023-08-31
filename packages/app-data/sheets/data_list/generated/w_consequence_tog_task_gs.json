@@ -172,13 +172,13 @@
       "priority": 11,
       "icon_asset": "@data.mode.read.icon_asset",
       "has_single_task": false,
-      "title": "@data.story.neg_consequence.title",
+      "title": "@global.story: @data.story.neg_consequence.title",
       "_translations": {
         "title": {}
       },
       "_translatedFields": {
         "title": {
-          "eng": "@data.story.neg_consequence.title"
+          "eng": "@global.story: @data.story.neg_consequence.title"
         }
       },
       "story_id": "neg_consequence",
@@ -235,13 +235,13 @@
       "priority": 72,
       "icon_asset": "@data.mode.read.icon_asset",
       "has_single_task": false,
-      "title": "@data.story.pos_consequence.title",
+      "title": "@global.story: @data.story.pos_consequence.title",
       "_translations": {
         "title": {}
       },
       "_translatedFields": {
         "title": {
-          "eng": "@data.story.pos_consequence.title"
+          "eng": "@global.story: @data.story.pos_consequence.title"
         }
       },
       "story_id": "pos_consequence",

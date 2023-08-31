@@ -12,13 +12,13 @@
       "story_id": "money_problems",
       "has_single_task": true,
       "template": "w_money_read_1",
-      "title": "@data.story.money_problems.title",
+      "title": "@global.story: @data.story.money_problems.title",
       "_translations": {
         "title": {}
       },
       "_translatedFields": {
         "title": {
-          "eng": "@data.story.money_problems.title"
+          "eng": "@global.story: @data.story.money_problems.title"
         }
       }
     },
@@ -110,13 +110,13 @@
       "icon_asset": "@data.mode.read.icon_asset",
       "story_id": "money_plan",
       "has_single_task": false,
-      "title": "@data.story.money_plan.title",
+      "title": "@global.story: @data.story.money_plan.title",
       "_translations": {
         "title": {}
       },
       "_translatedFields": {
         "title": {
-          "eng": "@data.story.money_plan.title"
+          "eng": "@global.story: @data.story.money_plan.title"
         }
       }
     },
@@ -128,13 +128,13 @@
       "icon_asset": "@data.mode.read.icon_asset",
       "story_id": "money_emergencies",
       "has_single_task": false,
-      "title": "@data.story.money_emergencies.title",
+      "title": "@global.story: @data.story.money_emergencies.title",
       "_translations": {
         "title": {}
       },
       "_translatedFields": {
         "title": {
-          "eng": "@data.story.money_emergencies.title"
+          "eng": "@global.story: @data.story.money_emergencies.title"
         }
       }
     },

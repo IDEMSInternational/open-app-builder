@@ -1,0 +1,22 @@
+{
+  "flow_type": "data_list",
+  "flow_name": "warning",
+  "status": "released",
+  "rows": [
+    {
+      "id": "sensitive_content",
+      "text": "This @global.workshop includes content that may be sensitive. You can check it out by yourself first. This will prepare you well for sharing the content with your teen and others afterwards.",
+      "_translations": {
+        "text": {
+          "tz_sw": true
+        }
+      },
+      "_translatedFields": {
+        "text": {
+          "eng": "This @global.workshop includes content that may be sensitive. You can check it out by yourself first. This will prepare you well for sharing the content with your teen and others afterwards."
+        }
+      }
+    }
+  ],
+  "_xlsxPath": "global/data/navigation_globals.xlsx"
+}

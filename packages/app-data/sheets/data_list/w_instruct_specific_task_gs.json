@@ -31,13 +31,13 @@
       "icon_asset": "@data.mode.read.icon_asset",
       "story_id": "neg_instruct",
       "has_single_task": false,
-      "title": "@data.story.neg_instruct.title",
+      "title": "@global.story: @data.story.neg_instruct.title",
       "_translations": {
         "title": {}
       },
       "_translatedFields": {
         "title": {
-          "eng": "@data.story.neg_instruct.title"
+          "eng": "@global.story: @data.story.neg_instruct.title"
         }
       }
     },
@@ -49,13 +49,13 @@
       "icon_asset": "@data.mode.read.icon_asset",
       "story_id": "pos_instruct",
       "has_single_task": false,
-      "title": "@data.story.pos_instruct.title",
+      "title": "@global.story: @data.story.pos_instruct.title",
       "_translations": {
         "title": {}
       },
       "_translatedFields": {
         "title": {
-          "eng": "@data.story.pos_instruct.title"
+          "eng": "@global.story: @data.story.pos_instruct.title"
         }
       }
     },
