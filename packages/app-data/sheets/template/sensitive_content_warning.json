@@ -6,25 +6,23 @@
     {
       "type": "text",
       "name": "text",
-      "value": "This @global.workshop includes content that may be sensitive. You can check it out by yourself first. This will prepare you well for sharing the content with your teen and others afterwards.",
+      "value": "@data.warning.sensitive_content.text",
       "_translations": {
-        "value": {
-          "tz_sw": true
-        }
+        "value": {}
       },
       "_nested_name": "text",
       "_dynamicFields": {
         "value": [
           {
-            "fullExpression": "This @global.workshop includes content that may be sensitive. You can check it out by yourself first. This will prepare you well for sharing the content with your teen and others afterwards.",
-            "matchedExpression": "@global.workshop",
-            "type": "global",
-            "fieldName": "workshop"
+            "fullExpression": "@data.warning.sensitive_content.text",
+            "matchedExpression": "@data.warning.sensitive_content.text",
+            "type": "data",
+            "fieldName": "warning"
           }
         ]
       },
       "_dynamicDependencies": {
-        "@global.workshop": [
+        "@data.warning.sensitive_content.text": [
           "value"
         ]
       }
