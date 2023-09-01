@@ -15,9 +15,10 @@ $control-background: var(--audio-control-background, var(--ion-color-primary-500
   .top-row {
     @include mixins.flex-space-between;
     .title_and_help {
-      width: 85%;
+      width: 100%;
       display: flex;
       align-items: center;
+      justify-content: space-between;
       min-height: var(--audio-title-and-help-height);
       h3 {
         margin: 0;
@@ -31,15 +32,6 @@ $control-background: var(--audio-control-background, var(--ion-color-primary-500
         color: var(--ion-color-primary);
         height: var(--help-icon-standard-size);
         width: var(--help-icon-standard-size);
-      }
-    }
-    .volume {
-      position: absolute;
-      top: 15px;
-      right: 15px;
-      .volume-icon {
-        color: var(--ion-color-primary);
-        @include mixins.small-square;
       }
     }
   }
@@ -80,20 +72,13 @@ $control-background: var(--audio-control-background, var(--ion-color-primary-500
     align-self: center;
     .rewind,
     .forward {
-      ion-button {
-        @include mixins.large-square;
-        --background: transparent;
-        --padding: 0;
-        --border-radius: var(--ion-border-radius-rounded);
-        --box-shadow: transparent;
-        img {
-          position: absolute;
-          min-width: var(--audio-controls-img-width);
-        }
+      ion-icon {
+        font-size: var(--icon-size-largest);
+        color: var(--ion-color-primary);
       }
     }
     .rewind {
-      img {
+      ion-icon {
         transform: rotate(180deg);
       }
     }
@@ -104,9 +89,13 @@ $control-background: var(--audio-control-background, var(--ion-color-primary-500
         --border-radius: var(--ion-border-radius-rounded);
         --padding: 0;
         --box-shadow: var(--ion-default-box-shadow);
-        img {
+        ion-icon {
           position: absolute;
-          width: var(--audio-play-img-width);
+          font-size: var(--icon-size-medium);
+          // Fine-tune spacing of 'play' icon so that triangle appears to be centred visually
+          &.play-icon {
+            padding-left: 4px;
+          }
         }
       }
     }
