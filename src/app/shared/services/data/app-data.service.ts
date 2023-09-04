@@ -1,6 +1,6 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { SHEETS_CONTENT_LIST, TRANSLATIONS_CONTENT_LIST } from "src/app/data";
+import { SHEETS_CONTENT_LIST, TRANSLATIONS_CONTENT_LIST } from "src/app/data/app-data";
 import { lastValueFrom } from "rxjs";
 import { FlowTypes } from "../../model";
 import { arrayToHashmap } from "../../utils";
@@ -21,8 +21,9 @@ export class AppDataService extends SyncServiceBase {
     super("AppData");
     this.initialise();
   }
-  private sheetContents = SHEETS_CONTENT_LIST;
-  private translationContents = TRANSLATIONS_CONTENT_LIST;
+  // Instantiate contents using protected method to allow mock overrides
+  protected sheetContents = SHEETS_CONTENT_LIST;
+  protected translationContents = TRANSLATIONS_CONTENT_LIST;
   public appDataCache: IAppDataCache = {
     data_pipe: {},
     data_list: {},

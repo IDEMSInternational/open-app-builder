@@ -5,7 +5,7 @@ import { HttpClientTestingModule } from "@angular/common/http/testing";
 import { DynamicDataService } from "./dynamic-data.service";
 import { firstValueFrom } from "rxjs";
 import { AppDataService } from "../data/app-data.service";
-import { MockAppDataService } from "../data/app-data-variable.service.spec";
+import { MockAppDataService } from "../data/app-data.service.spec";
 
 const DATA_MOCK = {
   test_flow: [
