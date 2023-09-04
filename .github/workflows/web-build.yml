@@ -113,10 +113,6 @@ jobs:
         with:
           lfs: ${{inputs.lfs}}
           ref: ${{inputs.branch}}
-      # Ensure test xlsx files checked out even if rest of repo not
-      - name: Checkout test files
-        if: ${{ !inputs.lfs }}
-        run: git lfs pull --include "packages/scripts/test/data/input/*"
 
       - name: Setup Node
         uses: actions/setup-node@v3
@@ -173,6 +169,11 @@ jobs:
         if: ${{inputs.include-tests}}
         run: yarn lint && yarn workspace api lint
 
+      # Ensure test xlsx files checked out
+      - name: Checkout test files
+        if: ${{ inputs.include-tests && !inputs.lfs }}
+        run: git lfs pull --include "packages/scripts/test/data/input/*"
+      
       - name: Test
         if: ${{inputs.include-tests}}
         run: yarn test:workspaces
