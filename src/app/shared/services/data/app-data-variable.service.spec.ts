@@ -1,28 +1,38 @@
 import { TestBed } from "@angular/core/testing";
 
-import { AppDataVariableService } from "./app-data-variable.service";
+import { AppDataVariableService, IVariableContext } from "./app-data-variable.service";
 import { DbService } from "../db/db.service";
 import { LocalStorageService } from "../local-storage/local-storage.service";
 import { AppDataHandlerBase } from "./variable-handlers";
 import { MockDbService } from "../db/db.service.spec";
 import { MockLocalStorageService } from "../local-storage/local-storage.service.spec";
 
-class MockHandler extends AppDataHandlerBase {
+function getMockHandlers() {
+  /** Mock handler inherits base handler which stores all get/set in-memory */
+  class MockHandler extends AppDataHandlerBase {
+    constructor() {
+      super("mock" as any);
+    }
+  }
+  const fieldHandler = new MockHandler();
+  const MockHandlers: AppDataVariableService["handlers"] = {
+    field: fieldHandler,
+    fields: fieldHandler,
+  };
+  return MockHandlers;
+}
+
+/** Export a mock in-memory service for use in other tests */
+export class MockAppDataVariableService implements Partial<AppDataVariableService> {
+  public handlers: { [context in IVariableContext]: AppDataHandlerBase };
   constructor() {
-    super("mock" as any);
+    this.handlers = getMockHandlers();
   }
 }
 
-const fieldHandler = new MockHandler();
-
-const MockHandlers: AppDataVariableService["handlers"] = {
-  field: fieldHandler,
-  fields: fieldHandler,
-};
-
-/** Mock calls for sheets from the appData service to return test data */
-export class MockAppDataVariableService implements Partial<AppDataVariableService> {}
-
+/******************************************************************
+ * Tests
+ ******************************************************************/
 describe("AppDataVariableService", () => {
   let service: AppDataVariableService;
 
@@ -37,7 +47,7 @@ describe("AppDataVariableService", () => {
     service = TestBed.inject(AppDataVariableService);
     TestBed.inject(AppDataVariableService);
     await service.ready();
-    service.handlers = MockHandlers;
+    service.handlers = getMockHandlers();
   });
 
   it("@field - set and get", async () => {
