@@ -15,6 +15,7 @@ describe("TmplDashedBoxComponent", () => {
 
     fixture = TestBed.createComponent(TmplDashedBoxComponent);
     component = fixture.componentInstance;
+    component._row = { name: "", _nested_name: "", type: "dashed_box", value: "" };
     fixture.detectChanges();
   }));
 
