@@ -1,22 +1,11 @@
 import { TestBed } from "@angular/core/testing";
 
-import { HttpClientTestingModule } from "@angular/common/http/testing";
-
 import { AppDataVariableService } from "./app-data-variable.service";
-import { AppDataService } from "./app-data.service";
-import { FlowTypes } from "../../model";
 import { DbService } from "../db/db.service";
 import { LocalStorageService } from "../local-storage/local-storage.service";
-import { MockLocalStorageService } from "../local-storage/local-storage.service.spec";
-import { MockDbService } from "../db/db.service.spec";
 import { AppDataHandlerBase } from "./variable-handlers";
-
-const DATA_MOCK = {
-  test_flow: [
-    { id: "id1", number: 1, string: "hello", boolean: true },
-    { id: "id2", number: 2, string: "goodbye", boolean: false },
-  ],
-};
+import { MockDbService } from "../db/db.service.spec";
+import { MockLocalStorageService } from "../local-storage/local-storage.service.spec";
 
 class MockHandler extends AppDataHandlerBase {
   constructor() {
@@ -32,32 +21,21 @@ const MockHandlers: AppDataVariableService["handlers"] = {
 };
 
 /** Mock calls for sheets from the appData service to return test data */
-export class MockAppDataService implements Partial<AppDataService> {
-  public async getSheet<T extends FlowTypes.FlowTypeWithData>(
-    flow_type: FlowTypes.FlowType,
-    flow_name: string
-  ): Promise<T> {
-    const rows = DATA_MOCK[flow_name] || [];
-    return { flow_name, flow_type, rows } as any;
-  }
-}
+export class MockAppDataVariableService implements Partial<AppDataVariableService> {}
 
 describe("AppDataVariableService", () => {
   let service: AppDataVariableService;
 
   beforeEach(async () => {
     TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule],
       providers: [
-        AppDataVariableService,
-        { provide: AppDataService, useValue: new MockAppDataService() },
         { provide: DbService, useValue: new MockDbService() },
         { provide: LocalStorageService, useValue: new MockLocalStorageService() },
       ],
     });
 
     service = TestBed.inject(AppDataVariableService);
-    TestBed.inject(AppDataService);
+    TestBed.inject(AppDataVariableService);
     await service.ready();
     service.handlers = MockHandlers;
   });
