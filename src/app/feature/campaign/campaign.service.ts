@@ -1,7 +1,7 @@
 import { Injectable, Injector } from "@angular/core";
 import { addDays, addSeconds } from "date-fns";
 import { addHours, addMinutes, addWeeks, endOfDay, isAfter, isBefore, setISODay } from "date-fns";
-import { extractDynamicFields, IAppConfig } from "packages/data-models";
+import { extractDynamicFields, IAppConfig } from "data-models";
 import { Subscription } from "rxjs";
 import { TemplateActionService } from "src/app/shared/components/template/services/instance/template-action.service";
 import { TemplateTranslateService } from "src/app/shared/components/template/services/template-translate.service";

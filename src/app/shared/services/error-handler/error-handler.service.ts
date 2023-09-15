@@ -83,7 +83,7 @@ export class ErrorHandlerService extends ErrorHandler {
       enabled: true,
       tracesSampleRate: 0, // ensure performance traces not sent (not installed)
     });
-    const { uuid } = await Device.getId();
+    const { identifier: uuid } = await Device.getId();
     Sentry.setUser({ id: uuid });
   }
 

@@ -1,5 +1,5 @@
 import { DeviceInfo } from "@capacitor/device";
-import { IDBMeta } from "packages/data-models/db.model";
+import { IDBMeta } from "data-models";
 import { IContextMenuType } from "src/app/shared/modules/context-menu/context-menu.types";
 
 /** Fields required to include a button in context menus */

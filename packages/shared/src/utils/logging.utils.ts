@@ -12,7 +12,7 @@ import { Writable } from "stream";
 import { existsSync } from "fs";
 
 const logLevels = ["debug", "info", "warning", "error"] as const;
-type ILogLevel = typeof logLevels[number];
+type ILogLevel = (typeof logLevels)[number];
 interface ILogEntry {
   level: ILogLevel;
   message?: string;

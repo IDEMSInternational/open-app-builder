@@ -2,7 +2,7 @@ import { Injectable } from "@angular/core";
 import { BehaviorSubject } from "rxjs";
 import { LocalStorageService } from "src/app/shared/services/local-storage/local-storage.service";
 import { AppConfigService } from "src/app/shared/services/app-config/app-config.service";
-import { IAppConfig } from "packages/data-models";
+import { IAppConfig } from "data-models";
 import { SyncServiceBase } from "src/app/shared/services/syncService.base";
 
 @Injectable({

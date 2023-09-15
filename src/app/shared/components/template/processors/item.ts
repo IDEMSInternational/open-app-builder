@@ -1,5 +1,8 @@
-// TODO - shared package name conflicts with local shared
-import { AppStringEvaluator, TemplatedData } from "packages/shared";
+// NOTE - importing from 'shared' will fail as contains non-browser packages and
+// name conflicts with local 'shared' folder. Import full path from packages instead
+import { AppStringEvaluator } from "packages/shared/src/models/appStringEvaluator/appStringEvaluator";
+import { TemplatedData } from "packages/shared/src/models/templatedData/templatedData";
+
 import { shuffleArray } from "src/app/shared/utils";
 import { FlowTypes } from "../models";
 import { objectToArray } from "../utils";

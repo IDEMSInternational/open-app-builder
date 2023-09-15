@@ -1,4 +1,7 @@
 # Text
+
+A text refers to written or typed content that is displayed on the screen to convey information, instructions, labels, descriptions, or any other form of textual communication.
+
 ## Example
 
 | type      | name            | value                       |parameter_list |

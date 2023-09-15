@@ -1,60 +1,57 @@
 # App Scripts
 
 The app scripts are designed to automated various aspects of the development and deployment cycle.
+The consist of a set of `commands` that are executed within an interactive CLI, alongside a base set of reusable `tasks`
 
-Most scripts require additional configuration files which are not publically available within this repo.
-To use the scripts you should first contact the development team for the required configurations.
+Scripts also act as a wrapper around the `workflows` package, which can be used to execute series of commands
 
-## Required Configuration
 
-In order to run most scripts require specific configuration files which are stored as encrypted in the `config` folder. In order to decrypt the files you must place the `private.key` file obtained from one of the repo admin in the folder. Files will automatically decrypt on run.
+## Running scripts 
+Both scripts and workflows are called via an interactive CLI
 
-## Running scripts from this folder
-
-Scripts may be added to the `package.json` and can also be listed in the default `index.ts` file which
-is called via `yarn start`. E.g.
-
+**Runtime**
+Scripts can be executed directly from source typescript files using utility functions defined in the root package.json
+```sh
+yarn scripts [command-name]
 ```
-yarn start
+```sh
+yarn workflow [workflow-name]
 ```
+This will compile typescript and execute at runtime (slower process but scripts always up-to-date)
 
-will call the interactive cli script selection
+**NOTE** - this method will be deprecated in the future in favor of always running
+prebuild
 
-```
-yarn version
-```
+**Prebuild**
+It is also possible to pre-compile and package the scripts for direct execution from `bin`
 
-will call the version script
-
-## Running scripts from parent folder
-
-If calling scripts from the main parent repo, all calls should be prefixed with `scripts`, i.e.
-
-```
-yarn scripts
+```sh
+yarn app-scripts [command-name]
 ```
 
-will call the interactive cli script selection
-
+or to run a pre-configured workflow
+```sh
+yarn app-workflow [workflow-name]
 ```
-yarn scripts version
-```
 
-will call the version script
+Both of these shorthand methods are exposed via the `bin` folder of this workspace
+
+The methods include a check to see if the relevant scripts workspace has been prebuilt
+(based on scripts `package.json` version number), building only if updated.
+
+If for any reason manual building is required, this can be achieved by the command
+
+```sh
+yarn workspace scripts build
+```
 
 ## Developing scripts
 
 To easy development, an additional `dev` script has been created that will start a
 nodemon server, live-reloading the chosen script whenever an input `.ts` file changes.
 
-```
-yarn dev
-```
-
-will run live-reload of the main start scripts
-
-```
-yarn dev version
+```sh
+yarn workspace scripts dev [name]
 ```
 
-will run live-reload of the version script
+will run live-reload of the named script

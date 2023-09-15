@@ -1,14 +1,13 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { interval } from "packages/api/node_modules/rxjs";
 import {
   DB_SERVER_MAPPING,
   IDBMeta,
   IDBServerMapping,
   IDBServerUserRecord,
   IDBTable,
-} from "packages/data-models/db.model";
-import { lastValueFrom } from "rxjs";
+} from "data-models";
+import { interval, lastValueFrom } from "rxjs";
 import { environment } from "src/environments/environment";
 import { IAppConfig } from "../../model";
 import { AppConfigService } from "../app-config/app-config.service";

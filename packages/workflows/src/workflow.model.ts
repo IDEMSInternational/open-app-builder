@@ -1,10 +1,13 @@
 // NOTE - this import can lead to build issues
 // https://www.codejam.info/2021/10/typescript-cannot-write-file-overwrite-input.html
-import { IDeploymentConfigJson } from "scripts/src/commands/deployment/common";
-import type { ITasks } from "scripts/src/tasks";
+import type { IDeploymentConfigJson } from "data-models";
+
+// HACK - we want type-safety for workflow tasks, however the tasks list is part of the
+// scripts workspace. Avoid circular imports by direct import from relative path
+import type { ITasks } from "../../scripts/src/tasks";
 
 export interface IWorkflowContext {
-  [step_name: string]: { output: any };
+  [step_name: string]: IWorkflowStep & { output: any };
 }
 
 interface IWorkflowStep {

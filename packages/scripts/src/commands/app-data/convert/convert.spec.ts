@@ -59,7 +59,7 @@ describe("App Data Converter", () => {
   });
   it("Throws on duplicate flows", async () => {
     await converter.run().catch((err) => {
-      expect(err.message.includes("Duplicate flows found"));
+      expect(err.message.includes("Duplicate flows found")).toEqual(true);
     });
   });
 });
@@ -70,20 +70,20 @@ describe("App Data Converter - Error Checking", () => {
     outputFolder: path.resolve(SCRIPTS_TEST_DATA_DIR, "output", "errorChecking"),
     cacheFolder: path.resolve(SCRIPTS_TEST_DATA_DIR, "cache"),
   };
-  const errorConverter = new AppDataConverter(errorPaths);
+  let errorConverter = new AppDataConverter(errorPaths);
   beforeAll(() => {
     if (existsSync(paths.outputFolder)) {
       emptyDirSync(paths.outputFolder);
     }
   });
   it("Tracks number of conversion errors", async () => {
-    const errorConverter = new AppDataConverter(errorPaths);
+    errorConverter = new AppDataConverter(errorPaths);
     const { errors } = await errorConverter.run();
     expect(errors.length).toBeGreaterThan(0);
   });
-  it("Throws on duplicate flows", async () => {
+  it("Throws on duplicate flows (2)", async () => {
     await errorConverter.run().catch((err) => {
-      expect(err.message.includes("Duplicate flows found"));
+      expect(err.message.includes("Duplicate flows found")).toBe(true);
     });
   });
 });

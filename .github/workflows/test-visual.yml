@@ -1,0 +1,161 @@
+# Generate a set of screenshots for the current branch and compare against previously generated on master
+name: Test-Visual
+on:
+  workflow_call:
+    inputs:
+      generate:
+        description: Specify whether to run generate script
+        type: boolean
+        default: false
+      compare:
+        description: Specify whether to run compare script
+        type: boolean
+        default: false
+concurrency:
+  group: test-visual-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+env:
+  # TODO - replace with dedicated screenshots deployment
+  DEPLOYMENT: plh_global
+
+jobs:
+  build:
+    if: contains(github.event.pull_request.labels.*.name, 'Test - visual')
+    uses: ./.github/workflows/web-build.yml
+    secrets: inherit
+    with:
+      deployment: $DEPLOYMENT
+
+  test_visual_compare:
+    needs: build
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+        ###########################################################################################
+        # Setup
+        ###########################################################################################
+      - uses: actions/checkout@v3
+
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18.x 
+
+      - uses: actions/cache/restore@v3
+        id: cache
+        with:
+          path: ./.yarn/cache
+          key: ${{ runner.os }}-node-modules-yarn-v1-${{ hashFiles('yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-node-modules-yarn-v1-
+
+      - name: Install node modules
+        run: yarn install --immutable
+
+      - name: Download Build Artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: www
+
+      - name: Extract Build folder
+        run: |
+          mkdir www
+          tar -xf artifact.tar --directory www
+
+        # HACK - as lifecycle_actions block template view simply remove them all
+        # TODO - review if still required (CC 2023-08-15)
+      - name : HACK - Remove lifecycle actions
+        run: |
+          rm -R www/assets/app_data/sheets/data_list/lifecycle_actions
+
+      - name: Set Deployment
+        run: yarn workflow deployment set $DEPLOYMENT
+        
+        ###########################################################################################
+        # Generate
+        ###########################################################################################
+      - name: Generate screenshots
+        if: ${{inputs.generate}}
+        run: yarn workspace test-visual start generate --concurrency 5 --serve-www
+
+      - name: Upload screenshots
+        if: ${{inputs.generate}}
+        uses: actions/upload-artifact@v3
+        with:
+          name: screenshots-artifact # NOTE - must match SCREENSHOT_ARTIFACT_NAME in code
+          path: packages/test-visual/output/screenshots
+          retention-days: 90
+          if-no-files-found: error
+        
+        ###########################################################################################
+        # Compare
+        ###########################################################################################
+      - name: Compare screenshots
+        if: ${{inputs.compare}}
+        run: yarn workspace test-visual start compare --concurrency 5 --serve-www
+
+      - name: Upload artifact
+        if: ${{inputs.compare}}
+        uses: actions/upload-artifact@v3
+        with:
+          name: test-visual-diffs-artifact
+          path: packages/test-visual/output/diffs
+          retention-days: 90
+          # if-no-files-found: error
+
+      - name: Upload Text Outputs
+        if: ${{inputs.compare}}
+        uses: actions/upload-artifact@v3
+        with:
+          name: text_output
+          path: packages/test-visual/output/*.txt
+
+      # Read from generated output txt files and save to env as multiline variables for display in comment
+      # https://docs.github.com/en/actions/learn-github-actions/workflow-commands-for-github-actions#multiline-strings
+      # Alt could be to append to existing text files and pass path to sticky comment action
+      - name: Set output summary text
+        if: ${{inputs.compare}}
+        id: set_output_summary
+        run: |
+          SUMMARY_TEXT=$(cat packages/test-visual/output/summary.txt)
+          echo "SUMMARY_TEXT<<EOF" >> $GITHUB_ENV
+          echo "$SUMMARY_TEXT" >> $GITHUB_ENV
+          echo "EOF" >> $GITHUB_ENV
+          BIGGEST_DIFFS=$(cat packages/test-visual/output/biggestDiffs.txt)
+          echo "BIGGEST_DIFFS<<EOF" >> $GITHUB_ENV
+          echo "$BIGGEST_DIFFS" >> $GITHUB_ENV
+          echo "EOF" >> $GITHUB_ENV
+
+      - name: "Post to PR"
+        if: ${{inputs.compare}}
+        uses: marocchino/sticky-pull-request-comment@v2
+        with:
+          # recreate: true
+          message: |
+            **Visual Test Summary**
+            ${{ env.SUMMARY_TEXT }}
+
+            **Largest Differences**
+            ${{ env.BIGGEST_DIFFS }}
+
+            **Download Link**
+            https://nightly.link/IDEMSInternational/parenting-app-ui/actions/runs/${{github.run_id}}
+
+            **Run Details**
+            https://github.com/IDEMSInternational/parenting-app-ui/actions/runs/${{github.run_id}}
+
+
+      # Alt implementation to DL artifact using action instead of download script
+
+      # Download artifact populated from latest `test-visual-generate` workflow run on master branch
+      # - name: Download artifact
+      #   uses: dawidd6/action-download-artifact@v2
+      #   with:
+      #     github_token: ${{secrets.GITHUB_TOKEN}}
+      #     workflow: test-visual-generate.yml
+      #     workflow_conclusion: success
+      #     branch: master # TODO replace with master
+      #     name: screenshots-artifact
+      #     path: extract_here
+      # - name: Test
+      #   run: cat artifact/sha | grep $GITHUB_SHA
