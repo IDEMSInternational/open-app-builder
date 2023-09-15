@@ -5,7 +5,7 @@
 >
   <ion-accordion
     [value]="childRow.name"
-    *ngFor="let childRow of _row.rows; index as i"
+    *ngFor="let childRow of _row.rows | filterDisplayComponent; index as i"
     toggle-icon="arrow-down-circle"
     [style.z-index]="_row.rows.length - i"
   >
