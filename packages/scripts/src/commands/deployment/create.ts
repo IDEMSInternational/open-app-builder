@@ -5,7 +5,6 @@ import path from "path";
 import { DEPLOYMENTS_PATH } from "../../paths";
 import { Logger, logOutput, logWarning, promptInput, promptOptions } from "../../utils";
 import type { IDeploymentConfigJson } from "./common";
-import { DeploymentSet } from "./set";
 import generateDefaultConfig from "./templates/config.default";
 import generateExtendedConfig from "./templates/config.extended";
 import { loadDeploymentJson } from "./utils";

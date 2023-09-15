@@ -14,7 +14,7 @@ addRxPlugin(RxDBMigrationPlugin);
 import { RxDBUpdatePlugin } from "rxdb/plugins/update";
 addRxPlugin(RxDBUpdatePlugin);
 
-import { FlowTypes } from "packages/data-models";
+import { FlowTypes } from "data-models";
 import { environment } from "src/environments/environment";
 import { deepMergeObjects, generateTimestamp } from "../../../utils";
 

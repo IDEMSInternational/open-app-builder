@@ -2,7 +2,7 @@ import { Injectable } from "@angular/core";
 import { addRxPlugin, MangoQuery, RxDocument } from "rxdb";
 import { firstValueFrom, map } from "rxjs";
 
-import { FlowTypes } from "packages/data-models";
+import { FlowTypes } from "data-models";
 import { environment } from "src/environments/environment";
 import { AppDataService } from "../data/app-data.service";
 import { AsyncServiceBase } from "../asyncService.base";

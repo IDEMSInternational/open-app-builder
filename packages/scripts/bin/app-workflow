@@ -1,0 +1,22 @@
+#!/usr/bin/env node
+
+"use strict";
+
+const { resolve } = require("path");
+const { ensureBuild } = require("./ensureBuild");
+
+// Utility method to allow calling workflow (via scripts workflow run)
+// Call via `yarn workflow`
+
+process.title = "app-workflow";
+
+const execPath = resolve(__dirname, "../dist/index.js");
+
+ensureBuild();
+
+const { program } = require(execPath);
+
+// add extra commands for workflow run
+process.argv.splice(2, 0, "workflow", "run");
+
+program.parseAsync(process.argv);

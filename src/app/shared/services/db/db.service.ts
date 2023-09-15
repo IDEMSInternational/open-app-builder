@@ -5,14 +5,7 @@ import "dexie-syncable";
 // import "./db-sync.service";
 import { ICreateChange, IDatabaseChange, IDeleteChange, IUpdateChange } from "dexie-observable/api";
 import { Subject } from "rxjs";
-import {
-  DB_TABLES,
-  DB_VERSION,
-  IDBMeta,
-  IDBEvent,
-  IDBTable,
-  IFlowEvent,
-} from "data-models/db.model";
+import { DB_TABLES, DB_VERSION, IDBMeta, IDBEvent, IDBTable, IFlowEvent } from "data-models";
 import { arrayToHashmapArray, generateTimestamp } from "../../utils";
 import { EventService } from "../event/event.service";
 import { AsyncServiceBase } from "../asyncService.base";
@@ -24,7 +17,6 @@ window.addEventListener("unhandledrejection", (event) => {
   let reason = event.reason;
   console.warn("Unhandled promise rejection:", reason && (reason.stack || reason));
 });
-
 db.version(DB_VERSION).stores(DB_TABLES);
 
 @Injectable({

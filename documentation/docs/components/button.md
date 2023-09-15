@@ -2,6 +2,8 @@
 
 ## Example
 
+A button allows users to click or tap to perform an action or trigger a specific action. Buttons are visually distinct and provide users with a clear and intuitive way to interact with the app's features and navigate through its functionalities.
+
 | type      | name          | value                     |parameter_list |
 | --------- | ------------  | ------                    |--------- |
 |button	    |button_par_2_1	|Style parameter Information|style: information|

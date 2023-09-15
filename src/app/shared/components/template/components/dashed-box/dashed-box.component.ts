@@ -24,7 +24,11 @@ export class TmplDashedBoxComponent
 
   ngOnInit() {
     this.getParams();
-    this.innerHTML = this.domSanitizer.bypassSecurityTrustHtml(marked(this._row.value.toString()));
+    if (this._row.value) {
+      this.innerHTML = this.domSanitizer.bypassSecurityTrustHtml(
+        marked(this._row.value.toString())
+      );
+    }
   }
 
   getParams() {

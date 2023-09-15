@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { IAppConfig } from "packages/data-models/appConfig";
+import { IAppConfig } from "data-models";
 import { ThemeService } from "../../services/theme.service";
 
 @Component({

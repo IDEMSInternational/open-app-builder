@@ -1,4 +1,6 @@
 # Slider
+
+A slider allows users to adjust and set a value along a visual scale. It consists of a horizontal bar with a movable handle that users can drag (or "slide") to select a specific value within a predefined range. Sliders are often used to enable users to fine-tune settings, make selections or adjust numerical values. 
 ## Example
 
 | type      | name          |parameter_list                 |

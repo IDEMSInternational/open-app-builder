@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import clone from "clone";
-import { FlowTypes } from "packages/data-models";
+import { FlowTypes } from "data-models";
 
 export type IActionId = FlowTypes.TemplateRowAction["action_id"];
 export type IActionHandlers = Record<

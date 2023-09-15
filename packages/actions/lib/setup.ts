@@ -120,11 +120,6 @@ async function writeActionOutput(
   console.log(chalk.blue("\nAction created successfully\n"), filepath);
 }
 
-if (require.main === module) {
-  // when running direct assume no deployment configured
-  setupActions({} as any);
-}
-
 /**
  * Generate a local yml tag used to store metadata
  * @returns tag representation of action config metadata, e.g.

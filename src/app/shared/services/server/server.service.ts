@@ -1,7 +1,7 @@
 import { HttpClient, HttpErrorResponse } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { DeviceInfo, Device } from "@capacitor/device";
-import { IAppConfig } from "packages/data-models";
+import { IAppConfig } from "data-models";
 import { interval } from "rxjs";
 import { throwError } from "rxjs";
 import { environment } from "src/environments/environment";
@@ -55,7 +55,7 @@ export class ServerService extends SyncServiceBase {
       this.device_info = await Device.getInfo();
     }
     if (!this.app_user_id) {
-      const { uuid } = await Device.getId();
+      const { identifier: uuid } = await Device.getId();
       this.app_user_id = uuid;
     }
     console.log("[SERVER] sync data");

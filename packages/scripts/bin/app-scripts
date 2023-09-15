@@ -1,0 +1,18 @@
+#!/usr/bin/env node
+
+"use strict";
+
+const { resolve } = require("path");
+const { ensureBuild } = require("./ensureBuild");
+const scriptsVersion = require("../package.json").version;
+
+process.title = `app-scripts-${scriptsVersion}`;
+console.log(`[Scripts ${scriptsVersion}]`);
+
+const execPath = resolve(__dirname, "../dist/index.js");
+
+ensureBuild();
+
+const { program } = require(execPath);
+
+program.parseAsync(process.argv);
