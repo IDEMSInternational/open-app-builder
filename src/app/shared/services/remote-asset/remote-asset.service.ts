@@ -86,9 +86,9 @@ export class RemoteAssetService extends AsyncServiceBase {
                 "The 'asset_pack: download' action is not available. To enable asset pack functionality, please ensure that supabase and ASSET_PACKS are enabled in the deployment config."
               );
           },
-          clear_cache: async () => {
+          reset: async () => {
             if (this.supabaseEnabled && this.remoteAssetsEnabled) {
-              await this.clearCache();
+              await this.reset();
             } else
               console.error(
                 "The 'asset_pack: clear_cache' action is not available. To enable asset pack functionality, please ensure that supabase and ASSET_PACKS are enabled in the deployment config."
@@ -271,8 +271,7 @@ export class RemoteAssetService extends AsyncServiceBase {
       "asset_pack",
       CORE_ASSET_PACK_NAME,
       relativePath,
-      update,
-      { upsert: true }
+      update
     );
   }
 
@@ -367,8 +366,8 @@ export class RemoteAssetService extends AsyncServiceBase {
    * Reset the core asset pack contents to its original state before any remote assets were downloaded.
    * Useful when testing. TODO: Also delete any downloaded assets from the device
    * */
-  async clearCache() {
-    await this.dynamicDataService.resetOverwrites("asset_pack", CORE_ASSET_PACK_NAME);
+  async reset() {
+    await this.dynamicDataService.resetFlow("asset_pack", CORE_ASSET_PACK_NAME);
   }
 
   /************************************************************************************

@@ -104,7 +104,9 @@ export class PersistedMemoryAdapter {
     if (!this.state[flow_type]) this.state[flow_type] = {};
     if (!this.state[flow_type][flow_name]) this.state[flow_type][flow_name] = {};
     const existingData = this.state[flow_type][flow_name][id];
-    const merged = deepMergeObjects({}, existingData, data);
+    let merged = data;
+    if (existingData) merged = deepMergeObjects({}, existingData, data);
+
     // Remove any values marked as undefined
     for (const [key, value] of Object.entries(merged)) {
       if (value === undefined) {
