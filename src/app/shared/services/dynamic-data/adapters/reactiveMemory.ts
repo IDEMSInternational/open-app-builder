@@ -110,6 +110,7 @@ export class ReactiveMemoryAdapater {
     return success;
   }
 
+  /** Update doc or create new if doc with that ID doesn't already exist (upsert) */
   public async updateDoc(update: IDataUpdate) {
     const { collectionName, id, data } = update;
     let collection = this.getCollection(collectionName);
@@ -128,8 +129,8 @@ export class ReactiveMemoryAdapater {
       const updatedDoc = await existingDoc.atomicPatch(data);
       return updatedDoc.toMutableJSON();
     } else {
-      await collection.insert(data);
-      return update;
+      const newDoc = await collection.insert(data);
+      return newDoc.toMutableJSON();
     }
   }
 

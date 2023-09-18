@@ -109,8 +109,7 @@ export class DynamicDataService extends AsyncServiceBase {
     flow_type: FlowTypes.FlowType,
     flow_name: string,
     row_id: string,
-    update: Partial<T>,
-    options: { upsert: boolean } = { upsert: false }
+    update: Partial<T>
   ) {
     if (update) {
       const { collectionName } = await this.ensureCollection(flow_type, flow_name);
@@ -118,8 +117,6 @@ export class DynamicDataService extends AsyncServiceBase {
       if (existingDoc) {
         const data = existingDoc.toMutableJSON();
         update = deepMergeObjects(data, update);
-      } else if (!options.upsert) {
-        throw new Error(`cannot update row that does not exist: [${flow_name}]:[${row_id}]`);
       }
       // update memory db
       await this.db.updateDoc({ collectionName, id: row_id, data: update });
@@ -128,8 +125,16 @@ export class DynamicDataService extends AsyncServiceBase {
     }
   }
 
-  public async clearCache(flow_type: FlowTypes.FlowType, flow_name: string) {
-    this.writeCache.delete(flow_type, flow_name);
+  /** Remove user writes on a flow to return it to its original state */
+  public async resetFlow(flow_type: FlowTypes.FlowType, flow_name: string) {
+    await this.writeCache.delete(flow_type, flow_name);
+    const collectionName = this.normaliseCollectionName(flow_type, flow_name);
+    if (this.db.getCollection(collectionName)) {
+      await this.db.removeCollection(collectionName);
+      await this.ensureCollection(flow_type, flow_name);
+    } else {
+      throw new Error(`Collection [${collectionName}] not found, cannot remove`);
+    }
   }
 
   /** Ensure a collection exists, creating if not and populating with corresponding list data */
@@ -145,18 +150,6 @@ export class DynamicDataService extends AsyncServiceBase {
       await this.db.bulkInsert(collectionName, initialData);
     }
     return { collectionName };
-  }
-
-  /** Remove user writes on a flow to return it to its original state */
-  public async resetOverwrites(flow_type: FlowTypes.FlowType, flow_name: string) {
-    await this.clearCache(flow_type, flow_name);
-    const collectionName = this.normaliseCollectionName(flow_type, flow_name);
-    if (this.db.getCollection(collectionName)) {
-      await this.db.removeCollection(collectionName);
-      await this.ensureCollection(flow_type, flow_name);
-    } else {
-      throw new Error(`Collection [${collectionName}] not found, cannot remove`);
-    }
   }
 
   /** Retrive json sheet data and merge with any user writes */
