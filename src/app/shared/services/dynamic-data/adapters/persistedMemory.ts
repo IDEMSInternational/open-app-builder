@@ -16,7 +16,7 @@ addRxPlugin(RxDBUpdatePlugin);
 
 import { FlowTypes } from "data-models";
 import { environment } from "src/environments/environment";
-import { deepMergeObjects, generateTimestamp } from "../../../utils";
+import { deepMergeObjects, shallowDiffObjectKeys } from "../../../utils";
 
 /**
  * All persisted docs are stored in the same format with a standard set of meta fields and doc data
@@ -116,24 +116,18 @@ export class PersistedMemoryAdapter {
     this.persistStateToDB();
   }
 
-  public delete(flow_type: FlowTypes.FlowType, flow_name: string) {
+  public async delete(flow_type: FlowTypes.FlowType, flow_name: string) {
     if (this.get(flow_type, flow_name)) {
-      const idsToDelete = [];
-      const rowHash = this.state[flow_type][flow_name];
-      for (const row_id of Object.keys(rowHash)) {
-        idsToDelete.push(`${flow_type}__${flow_name}__${row_id}`);
-      }
       delete this.state[flow_type][flow_name];
-      // Persist deletes to DB
-      this.collection.bulkRemove(idsToDelete);
+      await this.persistStateToDB();
     }
   }
 
   /**
-   *
    * TODO - could perform more incremental updates and avoid overwrite with same data
    */
   private async persistStateToDB() {
+    // Handle insertions and updates
     const updates: IPersistedDoc[] = [];
     for (const [flow_type, flowHash] of Object.entries(this.state)) {
       for (const [flow_name, rowHash] of Object.entries(flowHash)) {
@@ -144,15 +138,35 @@ export class PersistedMemoryAdapter {
       }
     }
     await this.collection.bulkUpsert(updates);
+
+    // Handle deletions (check for flows that exist in DB but not in state, and remove from DB)
+    const db = await this.mapDBToObject({});
+    const idsToDelete = [];
+    for (const flow_type of Object.keys(db)) {
+      const flowNames = shallowDiffObjectKeys(db[flow_type], this.state[flow_type]);
+      for (const flow_name of flowNames) {
+        const rowHash = db[flow_type][flow_name];
+        for (const row_id of Object.keys(rowHash)) {
+          idsToDelete.push(`${flow_type}__${flow_name}__${row_id}`);
+        }
+      }
+    }
+    this.collection.bulkRemove(idsToDelete);
   }
+
   private async mapDBToState() {
+    this.state = await this.mapDBToObject(this.state);
+  }
+
+  private async mapDBToObject(obj: typeof this.state) {
     const res: RxDocument[] = await this.collection.find().exec();
     const docs = res.map((r) => r.toMutableJSON() as IPersistedDoc);
     for (const doc of docs) {
       const { flow_type, flow_name, row_id, data } = doc;
-      if (!this.state[flow_type]) this.state[flow_type] = {};
-      if (!this.state[flow_type][flow_name]) this.state[flow_type][flow_name] = {};
-      this.state[flow_type][flow_name][row_id] = data;
+      if (!obj[flow_type]) obj[flow_type] = {};
+      if (!obj[flow_type][flow_name]) obj[flow_type][flow_name] = {};
+      obj[flow_type][flow_name][row_id] = data;
     }
+    return obj;
   }
 }

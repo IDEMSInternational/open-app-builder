@@ -326,6 +326,17 @@ export function deepDiffObjects<T extends Object, U extends Object>(a: T, b: U) 
   return diff(a, b) as RecursivePartial<T | U>;
 }
 
+/** @returns the keys from the first object that are not present in the second object. */
+export function shallowDiffObjectKeys<T extends Object, U extends Object>(a: T, b: U) {
+  const additionalKeys = [];
+  for (let key in a) {
+    if (!b.hasOwnProperty(key)) {
+      additionalKeys.push(key);
+    }
+  }
+  return additionalKeys;
+}
+
 export function isObject(item: any) {
   return item && typeof item === "object" && !Array.isArray(item);
 }
