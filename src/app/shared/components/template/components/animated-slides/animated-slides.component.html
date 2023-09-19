@@ -5,7 +5,7 @@
   </ion-button>
   <div class="section-container">
     <section
-      *ngFor="let childRow of _row.rows; let idx = index"
+      *ngFor="let childRow of _row.rows | filterDisplayComponent; let idx = index"
       [@fadeInOut]="slideParams[idx].animation === 'fade' ? fadeSection[idx] : null"
       [@noFade]="slideParams[idx].animation === 'none' ? fadeSection[idx] : null"
     >
