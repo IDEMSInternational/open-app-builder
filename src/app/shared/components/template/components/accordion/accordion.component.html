@@ -5,12 +5,14 @@
 >
   <ion-accordion
     [value]="childRow.name"
-    *ngFor="let childRow of _row.rows; index as i"
+    *ngFor="let childRow of _row.rows | filterDisplayComponent; index as i"
     toggle-icon="arrow-down-circle"
     [style.z-index]="_row.rows.length - i"
   >
     <ion-item slot="header" class="accordion-header clear" lines="none">
-      <ion-label class="accordion-section-title">{{ childRow.value || "" }}</ion-label>
+      <ion-label class="accordion-section-title ion-text-wrap">{{
+        childRow.value || ""
+      }}</ion-label>
       <!-- If custom icon supplied override. Otherwise default will be arrow -->
       <ng-template [ngIf]="_row.parameter_list?.open_icon_src" let-open_icon_src="ngIf">
         <ng-container
