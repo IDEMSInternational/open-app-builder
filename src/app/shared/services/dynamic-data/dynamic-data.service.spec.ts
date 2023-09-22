@@ -3,9 +3,9 @@ import { TestBed } from "@angular/core/testing";
 import { HttpClientTestingModule } from "@angular/common/http/testing";
 
 import { DynamicDataService } from "./dynamic-data.service";
-import { firstValueFrom, lastValueFrom, take, tap } from "rxjs";
+import { firstValueFrom } from "rxjs";
 import { AppDataService } from "../data/app-data.service";
-import { FlowTypes } from "../../model";
+import { MockAppDataService } from "../data/app-data.service.spec";
 
 const DATA_MOCK = {
   test_flow: [
@@ -13,17 +13,6 @@ const DATA_MOCK = {
     { id: "id2", number: 2, string: "goodbye", boolean: false },
   ],
 };
-
-/** Mock calls for sheets from the appData service to return test data */
-class MockAppDataService implements Partial<AppDataService> {
-  public async getSheet<T extends FlowTypes.FlowTypeWithData>(
-    flow_type: FlowTypes.FlowType,
-    flow_name: string
-  ): Promise<T> {
-    const rows = DATA_MOCK[flow_name] || [];
-    return { flow_name, flow_type, rows } as any;
-  }
-}
 
 describe("DynamicDataService", () => {
   let service: DynamicDataService;

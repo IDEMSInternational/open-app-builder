@@ -1,22 +1,24 @@
 import { ComponentFixture, TestBed, waitForAsync } from "@angular/core/testing";
 import { IonicModule } from "@ionic/angular";
 
-import { PdfComponent } from "./pdf.component";
+import { TmplPdfComponent } from "./pdf.component";
 
 describe("PdfComponent", () => {
-  let component: PdfComponent;
-  let fixture: ComponentFixture<PdfComponent>;
+  let component: TmplPdfComponent;
+  let fixture: ComponentFixture<TmplPdfComponent>;
 
-  beforeEach(waitForAsync(() => {
-    TestBed.configureTestingModule({
-      declarations: [PdfComponent],
-      imports: [IonicModule.forRoot()],
-    }).compileComponents();
+  beforeEach(
+    waitForAsync(() => {
+      TestBed.configureTestingModule({
+        declarations: [TmplPdfComponent],
+        imports: [IonicModule.forRoot()],
+      }).compileComponents();
 
-    fixture = TestBed.createComponent(PdfComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  }));
+      fixture = TestBed.createComponent(TmplPdfComponent);
+      component = fixture.componentInstance;
+      fixture.detectChanges();
+    })
+  );
 
   it("should create", () => {
     expect(component).toBeTruthy();
