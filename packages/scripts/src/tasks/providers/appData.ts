@@ -6,23 +6,23 @@ import { SRC_ASSETS_PATH } from "../../paths";
 import { IContentsEntry, replicateDir } from "../../utils";
 
 /** Prepare sourcely cached assets for population to app */
-const postProcessAssets = (options: { sourceAssetsFolder: string }) => {
+const postProcessAssets = async (options: { sourceAssetsFolder: string }) => {
   const { sourceAssetsFolder } = options;
   let args = `--source-assets-folder ${sourceAssetsFolder}`;
   let cmd = `app-data post-process assets ${args}`;
 
-  parseCommand(`${cmd}`);
+  await parseCommand(`${cmd}`);
 };
 
 /** Prepare sourcely cached seets for population to app */
-const postProcessSheets = (options: {
+const postProcessSheets = async (options: {
   sourceSheetsFolder: string;
   sourceTranslationsFolder: string;
 }) => {
   const { sourceSheetsFolder, sourceTranslationsFolder } = options;
   let args = `--source-sheets-folder ${sourceSheetsFolder} --source-translations-folder ${sourceTranslationsFolder}`;
   let cmd = `app-data post-process sheets ${args}`;
-  parseCommand(`${cmd}`);
+  await parseCommand(`${cmd}`);
 };
 
 /**

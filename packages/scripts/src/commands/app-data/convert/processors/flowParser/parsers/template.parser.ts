@@ -2,9 +2,8 @@ import { FlowTypes } from "data-models";
 import { extractDynamicFields } from "data-models";
 import { DefaultParser } from "./default.parser";
 import {
-  arrayToHashmap,
+  assignFlowOverrides,
   extractDynamicDependencies,
-  logWarning,
   parseAppDataCollectionString,
   parseAppDataListString,
 } from "../../../utils";
@@ -71,30 +70,8 @@ export class TemplateParser extends DefaultParser {
   }
 
   public postProcessFlows(flows: FlowTypes.FlowTypeWithData[]) {
-    const flowsWithOverrides = this.assignTemplateOverrides(flows);
+    const flowsWithOverrides = assignFlowOverrides(flows);
     return flowsWithOverrides;
-  }
-
-  /** Check all templates for specified overrides and link to override_target row where exists */
-  private assignTemplateOverrides(flows: FlowTypes.FlowTypeWithData[]) {
-    const flowsByName = arrayToHashmap(flows, "flow_name");
-    for (const flow of flows) {
-      const { override_target, override_condition, flow_name } = flow;
-      if (override_target) {
-        if (!flowsByName[override_target]) {
-          logWarning({
-            msg1: `Override target does not exist: ${override_target}`,
-            msg2: flow_name,
-          });
-        } else {
-          if (!flowsByName[override_target]._overrides) {
-            flowsByName[override_target]._overrides = {};
-          }
-          flowsByName[override_target]._overrides[flow_name] = override_condition;
-        }
-      }
-    }
-    return Object.values(flowsByName);
   }
 
   private parseParameterList(parameterList: string[]) {
