@@ -1,4 +1,5 @@
 import { DataListParser } from ".";
+import { FlowParserProcessor } from "../flowParser";
 import { getTestFlowParserProcessor } from "../flowParser.spec";
 
 const testFlow = {
@@ -44,11 +45,12 @@ describe("data_list Parser (single)", () => {
 });
 
 describe("data_list Parser (multiple)", () => {
-  const parser = getTestFlowParserProcessor();
-  beforeAll(() => {
+  let parser: FlowParserProcessor;
+  beforeEach(() => {
+    parser = getTestFlowParserProcessor();
     parser.cache.clear();
   });
-  afterAll(() => {
+  afterEach(() => {
     parser.cache.clear();
   });
   it("Adds override targets to flows", async () => {
