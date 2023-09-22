@@ -10,7 +10,7 @@ import { TemplateBaseComponent } from "../base";
 import { ITemplateRowProps } from "../../models";
 import { AudioService } from "src/app/shared/services/audio/audio.service";
 import { AudioPlayer } from "src/app/shared/services/audio/audio.player";
-import { TemplateAssetService } from "../../services/template-asset.service";
+import { PLHAssetPipe } from "../../pipes/plh-asset.pipe";
 
 @Component({
   selector: "plh-timer",
@@ -25,6 +25,9 @@ export class TmplTimerComponent extends TemplateBaseComponent implements ITempla
   @Input() template: FlowTypes.Template;
   @ViewChild("min", { static: false }) minInput: ElementRef;
   @ViewChild("sec", { static: false }) secInput: ElementRef;
+  playIcon: string;
+  pauseIcon: string;
+  resetIcon: string;
   state: TimerState;
   leftButtonAction: string;
   leftButtonIcon: string;
@@ -72,7 +75,7 @@ export class TmplTimerComponent extends TemplateBaseComponent implements ITempla
     private pickerController: PickerController,
     private platform: Platform,
     private audioService: AudioService,
-    private templateAssetService: TemplateAssetService
+    private plhAssetPipe: PLHAssetPipe
   ) {
     super();
     this.changeState(new PausedState(this));
@@ -82,7 +85,7 @@ export class TmplTimerComponent extends TemplateBaseComponent implements ITempla
     this.getParams();
     this.state.callOnInit();
     if (this.ping) {
-      const pingSrc = this.templateAssetService.getTranslatedAssetPath(this.ping);
+      const pingSrc = this.plhAssetPipe.transform(this.ping);
       this.player = this.audioService.createPlayer(pingSrc);
     }
   }
@@ -95,6 +98,9 @@ export class TmplTimerComponent extends TemplateBaseComponent implements ITempla
     this.title = getStringParamFromTemplateRow(this._row, "title", "Timer");
     this.help = getStringParamFromTemplateRow(this._row, "help", null);
     this.ping = getStringParamFromTemplateRow(this._row, "ping", null);
+    this.playIcon = this.getAssetParamFromTemplateRow("play_icon_asset", "play-outline");
+    this.pauseIcon = this.getAssetParamFromTemplateRow("pause_icon_asset", "pause-outline");
+    this.resetIcon = this.getAssetParamFromTemplateRow("reset_icon_asset", "sync-outline");
     this.timerDurationExtension =
       getNumberParamFromTemplateRow(this._row, "duration_extension", 1) * 60;
     this.is_editable_on_playing = getBooleanParamFromTemplateRow(
@@ -105,6 +111,11 @@ export class TmplTimerComponent extends TemplateBaseComponent implements ITempla
     this.starting_minutes = getNumberParamFromTemplateRow(this._row, "starting_minutes", 10);
     this.starting_seconds = getNumberParamFromTemplateRow(this._row, "starting_seconds", 0);
     this.value = this.getDurationFromParams();
+  }
+
+  getAssetParamFromTemplateRow(parameterName: string, _default: string | null) {
+    const value = getStringParamFromTemplateRow(this._row, parameterName, null);
+    return value ? this.plhAssetPipe.transform(value) : _default;
   }
 
   getDurationFromParams() {
@@ -238,10 +249,8 @@ class PlayingState extends State {
   constructor(timer: TmplTimerComponent) {
     super(timer);
     this.timer.leftButtonAction = "pause";
-    this.timer.leftButtonIcon = "pause-outline";
     this.timer.leftButtonName = "pause_timer";
     this.timer.rightButtonAction = "increase";
-    this.timer.rightButtonIcon = "reload-outline";
     this.timer.rightButtonName = "increase_timer";
     this.timer.timerStarted = true;
     this.timer.isTimerEditable = this.timer.is_editable_on_playing;
@@ -274,10 +283,8 @@ class PausedState extends State {
   constructor(timer: TmplTimerComponent) {
     super(timer);
     this.timer.leftButtonAction = "play";
-    this.timer.leftButtonIcon = "play-outline";
     this.timer.leftButtonName = "play_timer";
     this.timer.rightButtonAction = "refresh";
-    this.timer.rightButtonIcon = "sync-outline";
     this.timer.rightButtonName = "refresh_timer";
     this.timer.timerStarted = false;
     this.timer.isTimerEditable = true;

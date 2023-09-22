@@ -63,6 +63,8 @@ jobs:
       - uses: actions/checkout@v3
         with:
           ref:  ${{ inputs.branch }}
+      - name: Checkout git lfs partial files
+        run: git lfs pull --include "android/*"
       #############################################################################
       #         Configure
       # Setup node same way as web build to allow calling `npx cap sync` command
