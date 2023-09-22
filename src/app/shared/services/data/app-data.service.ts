@@ -1,23 +1,29 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { SHEETS_CONTENT_LIST, TRANSLATIONS_CONTENT_LIST } from "src/app/data";
+import { SHEETS_CONTENT_LIST, TRANSLATIONS_CONTENT_LIST } from "src/app/data/app-data";
 import { lastValueFrom } from "rxjs";
 import { FlowTypes } from "../../model";
 import { arrayToHashmap } from "../../utils";
 import { SyncServiceBase } from "../syncService.base";
 import { ErrorHandlerService } from "../error-handler/error-handler.service";
+import { AppDataVariableService } from "./app-data-variable.service";
 
 /** Default folder app_data copied into (as defined in angular.json) */
 const APP_DATA_BASE = "assets/app_data";
 
 @Injectable({ providedIn: "root" })
 export class AppDataService extends SyncServiceBase {
-  constructor(private http: HttpClient, private errorHandler: ErrorHandlerService) {
+  constructor(
+    private http: HttpClient,
+    private errorHandler: ErrorHandlerService,
+    private variableService: AppDataVariableService
+  ) {
     super("AppData");
     this.initialise();
   }
-  private sheetContents = SHEETS_CONTENT_LIST;
-  private translationContents = TRANSLATIONS_CONTENT_LIST;
+  // Instantiate contents using protected method to allow mock overrides
+  protected sheetContents = SHEETS_CONTENT_LIST;
+  protected translationContents = TRANSLATIONS_CONTENT_LIST;
   public appDataCache: IAppDataCache = {
     data_pipe: {},
     data_list: {},
@@ -73,25 +79,50 @@ export class AppDataService extends SyncServiceBase {
   /** Return the json data for a single sheet **/
   public async getSheet<T extends FlowTypes.FlowTypeWithData>(
     flow_type: FlowTypes.FlowType,
-    flow_name: string
+    flow_name: string,
+    /** Keep log of previous override flow names to avoid infinite loops, e.g. flow_a -> flow_b -> flow_a  */
+    overrideHistory: string[] = []
   ) {
-    const sheetContents = this.sheetContents[flow_type][flow_name];
-    if (!sheetContents) {
+    const flowContents = this.sheetContents[flow_type][flow_name];
+    if (!flowContents) {
       // log error but don't throw to allow further processing
       this.errorHandler.handleError(new Error(`[${flow_type}] "${flow_name}" not found`));
       return null;
     }
-    // Populate cache if not exist
-    if (!this.appDataCache[flow_type].hasOwnProperty(flow_name)) {
-      const flow = await this.loadSheetFromJson(sheetContents);
+    // Check for any runtime overrides to flows
+    const overrideFlowName = await this.checkFlowOverrides(flowContents);
+    if (overrideFlowName && !overrideHistory.includes(overrideFlowName)) {
+      overrideHistory.push(flow_name);
+      return this.getSheet(flow_type, overrideFlowName, overrideHistory);
+    }
+
+    // Populate flow from cache if exists, or load json if it does not
+    let flow = this.appDataCache[flow_type][flow_name];
+    if (!flow) {
+      flow = await this.loadSheetFromJson(flowContents);
       this.appDataCache[flow_type][flow_name] = flow;
       // Data lists have additional processing, default is just to populate value
       if (flow.flow_type === "data_list") {
         this.populateCacheDataList(flow);
       }
     }
+
     // return as new object to prevent modification to raw list
     return JSON.parse(JSON.stringify(this.appDataCache[flow_type][flow_name])) as T;
+  }
+
+  /** Evaluate any flow override conditions, return name of override flow if satisfied */
+  private async checkFlowOverrides(flow: FlowTypes.FlowTypeBase): Promise<string | undefined> {
+    await this.variableService.ready();
+    if (flow._overrides) {
+      for (const [overrideName, condition] of Object.entries(flow._overrides)) {
+        const satisfied = await this.variableService.evaluateExpression(condition);
+        if (satisfied) {
+          return overrideName;
+        }
+      }
+    }
+    return;
   }
 
   private async loadSheetFromJson<T extends FlowTypes.FlowTypeWithData>(
