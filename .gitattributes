@@ -8,20 +8,6 @@
 *.svg filter=lfs diff=lfs merge=lfs -text
 *.xlsx filter=lfs diff=lfs merge=lfs -text
 
-# NOTE - git-lfs should be disabled for scripts test files to
-# allow running tests without full lfs-checkout
-
-# This should be done manually following test file updates via
-# ```
-# git lfs untrack "packages\scripts\test\data\input"
-# git rm --cached -r "packages\scripts\test\data\input"
-# (manually comment out temporarily *.xlsx filter above)
-# git add "packages\scripts\test\data\input" 
-# git commit -m "chore: restore script test files from git-lfs"
-# (restore gitattributes)
-# ```
-# https://stackoverflow.com/a/41961459
-
 *.json eol=crlf
 *.ts eol=crlf
 *.scss eol=crlf

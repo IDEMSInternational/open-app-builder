@@ -8,7 +8,6 @@ env:
   DEPLOYMENT_PRIVATE_KEY: ${{secrets.DEPLOYMENT_PRIVATE_KEY}}
   FIREBASE_CONFIG_TS: ${{secrets.FIREBASE_CONFIG_TS}}
 
-
 ##################################################################################
 #         Main Code
 ##################################################################################
@@ -71,8 +70,8 @@ jobs:
   # stored on github actions.
   # Determine which set of environment variables to load, depending on passed inputs,
   # target branch names or default fallback
-  #
-  # Pattern found in this question: https://github.com/actions/runner/issues/998#issue-817330769  
+  # Populate variables to use as inputs in next build job
+  # Pattern found in this question: https://github.com/actions/runner/issues/998#issue-817330769
   # Outputs here will also be made available to parent workflows via workflow_call outputs
   #############################################################################
   configure_build:
@@ -127,7 +126,7 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v3
         with:
-          node-version: 18.x          
+          node-version: 18.x
 
       #############################################################################
       #         Node Modules
@@ -183,7 +182,6 @@ jobs:
       - name: Set deployment
         run: yarn workflow deployment set ${{env.DEPLOYMENT_NAME}}
 
-
       #############################################################################
       #         Build
       # Run optional tests before building and uploading final build as artifact
@@ -194,6 +192,11 @@ jobs:
         if: ${{inputs.include-tests}}
         run: yarn lint && yarn workspace api lint
 
+      # Ensure test xlsx files checked out
+      - name: Checkout test files
+        if: ${{ inputs.include-tests && !inputs.lfs }}
+        run: git lfs pull --include "packages/scripts/test/data/input/*"
+      
       - name: Test
         if: ${{inputs.include-tests}}
         run: yarn test:workspaces
@@ -208,8 +211,6 @@ jobs:
         with:
           path: "www/"
           name: www
-
-
 ##################################################################################
 #         Links
 ##################################################################################

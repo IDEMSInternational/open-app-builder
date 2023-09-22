@@ -1,0 +1,53 @@
+<div class="accordion-wrapper">
+  <div
+    [ngClass]="{
+      completed: completed && !_row.disabled,
+      disabled: _row.disabled,
+      inProgress: !completed && !_row.disabled && percentComplete > 0,
+      notStarted: !completed && !_row.disabled && percentComplete === 0
+    }"
+    class="accordion-status"
+  >
+    <ion-icon
+      *ngIf="completed && !_row.disabled"
+      name="checkmark-outline"
+      [src]="completedIcon ? (completedIcon | plhAsset) : ''"
+    ></ion-icon>
+    <ion-icon
+      *ngIf="_row.disabled"
+      name="lock-closed-outline"
+      [src]="disabledIcon ? (disabledIcon | plhAsset) : ''"
+    ></ion-icon>
+    <ion-icon
+      *ngIf="!completed && !_row.disabled"
+      name="timer-outline"
+      [src]="inProgressIcon ? (inProgressIcon | plhAsset) : ''"
+    ></ion-icon>
+  </div>
+  <div
+    class="accordion-section"
+    [ngClass]="{
+      openSection: _row.parameter_list?.state === 'open',
+      disabled: _row.disabled,
+      completed: completed,
+      inProgress: !completed && !_row.disabled
+    }"
+  >
+    <div class="progress" [ngStyle]="{ width: percentComplete + '%' }"></div>
+    <h2 (click)="toggleOpen()">{{ title }}</h2>
+    <div
+      class="accordion-section-content"
+      [ngClass]="{
+        openSection: _row.parameter_list?.state === 'open'
+      }"
+    >
+      <plh-template-component
+        style="z-index: 2"
+        *ngFor="let childRow of _row.rows | filterDisplayComponent; trackBy: trackByRow"
+        [row]="childRow"
+        [parent]="parent"
+      >
+      </plh-template-component>
+    </div>
+  </div>
+</div>
