@@ -76,7 +76,7 @@ describe("AppDataVariableService", () => {
   //   TODO - requires mock error logger pending refactor in open #2019
 
   // it("logs error on unknown prefix", async () => {
-  //   await service.set("unkown" as any, "test", "value_1");
+  //   await service.set("unknown" as any, "test", "value_1");
   //   expect(true).toEqual(false);
   // });
 });
