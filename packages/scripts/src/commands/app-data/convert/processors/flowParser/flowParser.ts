@@ -1,11 +1,11 @@
 import { FlowTypes } from "data-models";
 import * as Parsers from "./parsers";
 import { IConverterPaths, IFlowHashmapByType, IParsedWorkbookData } from "../../types";
-import { arrayToHashmap, groupJsonByKey, IContentsEntry } from "../../utils";
+import { arrayToHashmap, groupJsonByKey, IContentsEntry, Logger } from "../../utils";
 import BaseProcessor from "../base";
 
 export class FlowParserProcessor extends BaseProcessor<FlowTypes.FlowTypeWithData> {
-  public cacheVersion = 20230509.3;
+  public cacheVersion = 20230818.3;
 
   public parsers: { [flowType in FlowTypes.FlowType]: Parsers.DefaultParser } = {
     data_list: new Parsers.DataListParser(this),
@@ -18,14 +18,22 @@ export class FlowParserProcessor extends BaseProcessor<FlowTypes.FlowTypeWithDat
 
   /** Keep a track of all processed flows by type and name (used in data_pipes)*/
   public processedFlowHashmap: {
-    [flowType in FlowTypes.FlowType]?: { [flow_name: string]: FlowTypes.FlowTypeWithData["rows"] };
+    [flowType in FlowTypes.FlowType]?: { [flow_name: string]: any[] };
+  } = {};
+
+  /**
+   * Additional hashmap with full flow data (not just rows), for use in tracking flow duplicates
+   * (could use processedFlowHashmap but would require refactor to retain _xlsx path as well as rows)
+   */
+  public processedFlowHashmapWithMeta: {
+    [flowType in FlowTypes.FlowType]?: { [flow_name: string]: FlowTypes.FlowTypeWithData };
   } = {};
 
   constructor(paths: IConverterPaths) {
     super({ paths, namespace: "flowParser" });
   }
 
-  public processInput(flow: FlowTypes.FlowTypeWithData) {
+  public override processInput(flow: FlowTypes.FlowTypeWithData) {
     const { flow_name, flow_type, _xlsxPath } = flow;
     const parser = this.parsers[flow_type];
     if (!parser) {
@@ -54,12 +62,20 @@ export class FlowParserProcessor extends BaseProcessor<FlowTypes.FlowTypeWithDat
   }
 
   public updateProcessedFlowHashmap(flow: FlowTypes.FlowTypeWithData) {
-    const { flow_name, flow_type } = flow;
+    const { flow_name, flow_type, _xlsxPath } = flow;
     if (!this.processedFlowHashmap[flow_type]) {
       this.processedFlowHashmap[flow_type] = {};
+      this.processedFlowHashmapWithMeta[flow_type] = {};
     }
-    // Key should be unique as duplicates checked in main convert method
+    const duplicateFlow = this.processedFlowHashmapWithMeta[flow_type][flow_name];
+    if (duplicateFlow) {
+      this.logger.error({
+        message: "Duplicate flow name",
+        details: { flow_name, flow_type, _xlsxPaths: [_xlsxPath, duplicateFlow._xlsxPath] },
+      });
+    }
     this.processedFlowHashmap[flow_type][flow_name] = flow.rows;
+    this.processedFlowHashmapWithMeta[flow_type][flow_name] = flow;
   }
 
   /**

@@ -2,7 +2,7 @@ import { Injectable } from "@angular/core";
 import { Auth } from "@angular/fire/auth";
 import { FirebaseAuthentication, User } from "@capacitor-firebase/authentication";
 import { BehaviorSubject, firstValueFrom } from "rxjs";
-import { first, filter } from "rxjs/operators";
+import { filter } from "rxjs/operators";
 import { IAppConfig } from "../../model";
 import { AppConfigService } from "../app-config/app-config.service";
 import { SyncServiceBase } from "../syncService.base";

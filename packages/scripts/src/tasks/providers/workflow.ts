@@ -13,7 +13,8 @@ const runWorkflow = async (options: {
   const { name, parent, args } = options;
   const runner = WorkflowRunner;
   await runner.init();
-  return runner.run({ name, args: args || [], parent: parent.name as any });
+  const parentName = parent ? Object.values(parent)[0].name : null;
+  return runner.run({ name, args: args || [], parent: parentName });
 };
 
 export default { runWorkflow };
