@@ -13,7 +13,7 @@ const paths = {
 };
 
 describe("App Data Converter", () => {
-  const converter = new AppDataConverter(paths);
+  let converter: AppDataConverter;
   beforeAll(() => {
     if (existsSync(paths.outputFolder)) {
       path.resolve(SCRIPTS_TEST_DATA_DIR, "output");
@@ -21,6 +21,9 @@ describe("App Data Converter", () => {
   });
   afterAll(() => {
     emptyDirSync(path.resolve(SCRIPTS_TEST_DATA_DIR, "output"));
+  });
+  beforeEach(() => {
+    converter = new AppDataConverter(paths);
   });
   it("Uses child caches", async () => {
     const cacheFolders = readdirSync(paths.cacheFolder);
@@ -70,7 +73,7 @@ describe("App Data Converter - Error Checking", () => {
     outputFolder: path.resolve(SCRIPTS_TEST_DATA_DIR, "output", "errorChecking"),
     cacheFolder: path.resolve(SCRIPTS_TEST_DATA_DIR, "cache"),
   };
-  let errorConverter = new AppDataConverter(errorPaths);
+  let errorConverter: AppDataConverter;
   beforeAll(() => {
     if (existsSync(paths.outputFolder)) {
       emptyDirSync(paths.outputFolder);
