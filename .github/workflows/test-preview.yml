@@ -1,6 +1,6 @@
 # Deploy preview url for labelled PRs
 # Specifies deployment target based on pr target branch
-# Master -> plh_global
+# Master -> debug
 # Deployment/{deployment_name} -> {deployment_name}
 
 name: Deployment Preview
