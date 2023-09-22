@@ -12,7 +12,7 @@ import { Device } from "@capacitor/device";
   selector: "plh-tmpl-form",
   template: ` <div>
     <plh-template-component
-      *ngFor="let childRow of _row.rows; trackBy: trackByRow"
+      *ngFor="let childRow of _row.rows | filterDisplayComponent; trackBy: trackByRow"
       [row]="childRow"
       [parent]="parent"
     >
