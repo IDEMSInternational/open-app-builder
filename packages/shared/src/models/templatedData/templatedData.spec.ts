@@ -140,7 +140,7 @@ describe("Templated Data Extraction", () => {
       output: { row: { value_1: true } },
     },
     {
-      input: "@unkonwn_prefix.value",
+      input: "@unknown_prefix.value",
       output: {},
     },
     {

@@ -5,7 +5,7 @@ import { TemplateBaseComponent } from "../base";
   selector: "plh-tmpl-animated-section-group",
   template: `<div class="animated-section-group">
     <plh-template-component
-      *ngFor="let childRow of _row.rows; trackBy: trackByRow"
+      *ngFor="let childRow of _row.rows | filterDisplayComponent; trackBy: trackByRow"
       [row]="childRow"
       [parent]="parent"
     ></plh-template-component>
