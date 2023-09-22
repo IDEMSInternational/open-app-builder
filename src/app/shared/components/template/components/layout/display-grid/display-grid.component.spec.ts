@@ -1,17 +1,17 @@
 import { ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { TmplRadioButtonGridComponent } from "./radio-button-grid.component";
+import { TmplDisplayGridComponent } from "./display-grid.component";
 
 describe("RadioButtonGridComponent", () => {
-  let component: TmplRadioButtonGridComponent;
-  let fixture: ComponentFixture<TmplRadioButtonGridComponent>;
+  let component: TmplDisplayGridComponent;
+  let fixture: ComponentFixture<TmplDisplayGridComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [TmplRadioButtonGridComponent],
+      declarations: [TmplDisplayGridComponent],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(TmplRadioButtonGridComponent);
+    fixture = TestBed.createComponent(TmplDisplayGridComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
