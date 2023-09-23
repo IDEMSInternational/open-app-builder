@@ -1,10 +1,7 @@
 import * as fs from "fs-extra";
-import { Command } from "commander";
-
 import * as path from "path";
 import chalk from "chalk";
 import { FlowTypes } from "data-models";
-import { ActiveDeployment } from "../../deployment/get";
 import { IConverterPaths, IParsedWorkbookData } from "./types";
 import { XLSXWorkbookProcessor } from "./processors/xlsxWorkbook";
 import { JsonFileCache } from "./cacheStrategy/jsonFile";
@@ -21,31 +18,14 @@ import {
   standardiseNewlines,
 } from "./utils";
 import { FlowParserProcessor } from "./processors/flowParser/flowParser";
+import { ActiveDeployment } from "../../../models";
 
-/***************************************************************************************
- * CLI
- * @example yarn
- *************************************************************************************/
-const program = new Command("convert");
-interface IProgramOptions {
+export interface IConvertOptions {
   cacheFolder: string;
   inputFolder: string;
   outputFolder: string;
   skipCache?: boolean;
 }
-export default program
-  .description("Convert app data")
-  .requiredOption("-i --input-folder <string>", "")
-  .requiredOption("-c --cache-folder <string>", "")
-  .requiredOption("-o --output-folder <string>", "")
-  .option("-s --skip-cache", "Wipe local conversion cache and process all files")
-  .action(async (options: IProgramOptions) => {
-    await new AppDataConverter(options).run();
-  });
-
-/***************************************************************************************
- * Main Methods
- *************************************************************************************/
 
 /**
  * The AppDataConverter handles the process of converting xlsx workbooks to json
@@ -63,7 +43,9 @@ export class AppDataConverter {
 
   cache: JsonFileCache;
 
-  constructor(private options: IProgramOptions, testOverrides: Partial<AppDataConverter> = {}) {
+  constructor(private options: IConvertOptions, testOverrides: Partial<AppDataConverter> = {}) {
+    console.trace("app data convert cdm");
+
     // optional overrides, used for tests
     if (testOverrides.version) this.version = testOverrides.version;
     if (testOverrides.activeDeployment) this.activeDeployment = testOverrides.activeDeployment;

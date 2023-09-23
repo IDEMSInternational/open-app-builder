@@ -5,9 +5,9 @@ import semver from "semver";
 import simpleGit, { ResetMode } from "simple-git";
 import type { SimpleGit, FileStatusResult } from "simple-git";
 import { Project, SyntaxKind } from "ts-morph";
-import { ActiveDeployment } from "../../commands/deployment/get";
+import { ActiveDeployment } from "../../commands/";
 import { Logger, logOutput, openUrl, promptOptions } from "../../utils";
-import type { IDeploymentConfigJson } from "../../commands/deployment/common";
+import type { IDeploymentConfigJson } from "../../models/deployment.models";
 
 class GitProvider {
   private git: SimpleGit;

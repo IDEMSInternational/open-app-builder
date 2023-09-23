@@ -6,7 +6,7 @@ import appDataCmd from "./app-data";
 import compileCmd from "./compile";
 import e2eDataCmd from "./e2e-data";
 import configCmd from "./config";
-import deploymentCmd from "./deployment";
+import deploymentCmd from "./deployment/cli";
 import versionCmd from "./version";
 import workflowCmd from "./workflow";
 import { callProgramWithHelp, isTsNode, logWarning } from "../utils";
@@ -48,10 +48,6 @@ export const parseCommand = async (cmd: string) => {
   const args = [...process.argv.slice(0, 2), ...cmd.split(" ")];
   return program.parseAsync(args);
 };
-
-// Additional exports for direct consumption
-import { extendDeploymentConfig, generateDeploymentConfig } from "./deployment/common";
-export { extendDeploymentConfig, generateDeploymentConfig };
 
 // Run the program directly when called via ts-node (e.g. start script)
 if (isTsNode) {

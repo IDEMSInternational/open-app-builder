@@ -3,7 +3,7 @@ import { ensureDirSync, writeFileSync } from "fs-extra";
 import * as inquirer from "inquirer";
 import { dirname, resolve } from "path";
 
-import type { IDeploymentConfigJson } from "data-models";
+import type { IDeploymentConfig } from "data-models";
 
 import { loadActionYml } from "./utils";
 import { ACTION_TEMPLATES } from "../templates";
@@ -15,7 +15,7 @@ import { IActionConfig } from "../models";
  * @param userInputValues list of default values to populate during setup
  * Used when triggering actions from external lib, such as passing deployment information
  */
-export async function setupActions(deployment: IDeploymentConfigJson) {
+export async function setupActions(deployment: IDeploymentConfig) {
   const { selected } = await inquirer.prompt<{ selected: IActionConfig }>([
     {
       type: "list",
@@ -76,7 +76,7 @@ async function handleActionSecrets(config: IActionConfig) {
  * Process inputs defined in action config file, prompting user input as required and replacing
  * within action yml file
  */
-async function handleActionInputs(config: IActionConfig, deployment: IDeploymentConfigJson) {
+async function handleActionInputs(config: IActionConfig, deployment: IDeploymentConfig) {
   const userInputs: Record<string, any> = {};
   console.log(chalk.blue("\nPlease provide the following inputs"));
   // Record user input values
@@ -104,7 +104,7 @@ async function handleActionInputs(config: IActionConfig, deployment: IDeployment
 async function writeActionOutput(
   config: IActionConfig,
   actionYml: string,
-  deployment: IDeploymentConfigJson
+  deployment: IDeploymentConfig
 ) {
   console.log("");
   let defaultName = dirname(config.templatePath) + ".yml";
