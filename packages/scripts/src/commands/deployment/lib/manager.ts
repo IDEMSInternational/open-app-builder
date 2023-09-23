@@ -1,4 +1,4 @@
-import { IDeploymentConfig, IDeploymentConfigJson } from "data-models";
+import { IDeploymentConfig } from "data-models";
 import { existsSync, readJsonSync, removeSync, readdirSync, writeFileSync } from "fs-extra";
 import { join, resolve } from "path";
 import { DEPLOYMENTS_PATH, Logger, logOutput, promptOptions, ROOT_DIR } from "shared";
@@ -103,7 +103,7 @@ export class DeploymentManager {
   }
 
   /** Prompt user to select a deployment from list */
-  private async promptDeploymentSelect() {
+  protected async promptDeploymentSelect() {
     const deploymentNames = this.listDeploymentFolders();
     // move current deployment name to start of list if exists
     if (this.activeDeploymentName && deploymentNames.includes(this.activeDeploymentName)) {

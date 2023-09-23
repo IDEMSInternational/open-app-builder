@@ -1,8 +1,9 @@
 import fs from "fs-extra";
 import mockFs from "mock-fs";
 import path from "path";
+import inquirer from "inquirer";
+import { DeploymentManager } from "./manager";
 import { DEPLOYMENTS_PATH } from "shared";
-import { ActiveDeployment } from "../../../models";
 
 const deploymentsBase = path.resolve(DEPLOYMENTS_PATH);
 
@@ -14,8 +15,19 @@ const mockDirs = {
   },
 };
 
+class TestDeploymentManager extends DeploymentManager {
+  protected async promptDeploymentSelect() {
+    console.log("prompt deployment select");
+    return "test_1";
+  }
+}
+
 // TODO
 describe("Deployment", () => {
+  let manager: DeploymentManager;
+  beforeEach(() => {
+    manager = new TestDeploymentManager();
+  });
   fit("mock setup", () => {
     mockFs(mockDirs);
     const deploymentDirs = fs.readdirSync(deploymentsBase);
@@ -24,8 +36,9 @@ describe("Deployment", () => {
 
   fit("Lists deployments", async () => {
     mockFs(mockDirs);
+    manager.load();
     console.log("list deployments");
-    await ActiveDeployment.set();
+
     // TODO - provide mock/spy for import method as mock-fs won't have path
 
     // TODO - refactor all activedeployment.get methods to be async and remove sync method
