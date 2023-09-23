@@ -20,13 +20,15 @@ export async function compileDeployment(inputTsPath: string) {
   // (previously used, but might not be needed if moving to js file deployment)
 
   // write outputs, keeping same modified time on json as ts
-  writeFileSync(outputJsonPath, JSON.stringify(deploymentConfigJson, null, 2));
-  const { mtime } = statSync(inputTsPath);
-  utimesSync(outputJsonPath, mtime, mtime);
-  return { deploymentConfigJson, deploymentConfig };
+
+  return rewritten;
 }
 
-export async function getDeploymentJson() {}
+export function writeOutput() {
+  writeFileSync(outputJsonPath, JSON.stringify(rewritten, null, 2));
+  const { mtime } = statSync(inputTsPath);
+  utimesSync(outputJsonPath, mtime, mtime);
+}
 
 /**
  * When reading deployment json files convert stringified functions back to real functions
