@@ -1,4 +1,4 @@
-import { AppDataConverter } from "./index";
+import { AppDataConverter } from "./convert";
 
 import path from "path";
 

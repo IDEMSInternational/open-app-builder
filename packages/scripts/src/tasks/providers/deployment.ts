@@ -1,8 +1,8 @@
 import { promptInput } from "../../utils";
 
-import { createDeployment } from "../../commands/deployment/create";
-import { importRepo } from "../../commands/deployment/import";
-import { DeploymentSet } from "../../commands/deployment/set";
+import { createDeployment } from "../../commands/deployment/lib/create";
+import { importRepo } from "../../commands/deployment/lib/import";
+import { ActiveDeployment } from "../../commands/deployment/lib/manager";
 
 class DeploymentProvider {
   /** Create a new app deployment configuration */
@@ -11,7 +11,7 @@ class DeploymentProvider {
   }
 
   async set(name = "") {
-    return new DeploymentSet().setActiveDeployment(name);
+    return ActiveDeployment.set(name);
   }
 
   async import(remoteRepo?: string) {

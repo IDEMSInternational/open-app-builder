@@ -16,8 +16,8 @@ import {
   sortJsonKeys,
   getNestedProperty,
 } from "../../../utils";
-import { ActiveDeployment } from "../../deployment/get";
 import type { IAssetEntryHashmap, IContentsEntryMinimal } from "data-models/deployment.model";
+import { ActiveDeployment } from "../../../models";
 
 /**
  * Legacy folder used to differentiate language assets

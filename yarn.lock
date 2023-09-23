@@ -7328,6 +7328,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/mock-fs@npm:^4.13.1":
+  version: 4.13.1
+  resolution: "@types/mock-fs@npm:4.13.1"
+  dependencies:
+    "@types/node": "*"
+  checksum: a5fcf8212daa270e6aa560019a4bd28a66e6fa49c55c1373746d5894f4aa1aafa5588335194953cf014de3c77df6be67a041fb6638ead7124307370985880b6c
+  languageName: node
+  linkType: hard
+
 "@types/ms@npm:*":
   version: 0.7.31
   resolution: "@types/ms@npm:0.7.31"
@@ -25118,6 +25127,7 @@ __metadata:
     "@types/fs-extra": ^9.0.4
     "@types/inquirer": ^7.3.1
     "@types/jasmine": ^3.10.6
+    "@types/mock-fs": ^4.13.1
     "@types/node-rsa": ^1.1.1
     "@types/semver": ^7.3.9
     actions: "workspace:*"

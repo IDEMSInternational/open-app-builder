@@ -1,13 +1,13 @@
 import chalk from "chalk";
 import { FlowTypes } from "data-models";
 import { TemplatedData } from "shared";
+import { ActiveDeployment } from "../../../../../../models";
 import {
   parseAppDataListString,
   parseAppDataCollectionString,
   parseAppDataActionString,
   parseAppDateValue,
 } from "../../../utils";
-import { ActiveDeployment } from "../../../../../deployment/get";
 import { FlowParserProcessor } from "../flowParser";
 // When running this parser assumes there is a 'type' column
 type IRowData = { type: string; name?: string; rows?: IRowData };

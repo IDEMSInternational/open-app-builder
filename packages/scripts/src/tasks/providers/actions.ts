@@ -1,9 +1,9 @@
 import { setupActions } from "actions";
-import { ActiveDeployment } from "../../commands/deployment/get";
+import { ActiveDeployment } from "../../models";
 
 class ActionsProvider {
   async setup() {
-    const activeDeployment = ActiveDeployment.get();
+    const activeDeployment = await ActiveDeployment.load();
     setupActions(activeDeployment);
   }
 }
