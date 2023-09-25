@@ -77,19 +77,12 @@ export class FileManagerService extends SyncServiceBase {
     });
   }
 
-  /** @returns filepath and file size metadata from a file saved in local storage */
-  async generateAssetContentsEntry(relativePath: string): Promise<Partial<IAssetEntry>> {
-    const { uri, size } = await Filesystem.stat({
+  async getLocalFilepath(relativePath: string) {
+    const { uri } = await Filesystem.stat({
       path: `${this.cacheName}/${relativePath}`,
       directory: Directory.Data,
     });
     const filePath = Capacitor.convertFileSrc(uri);
-    const size_kb = Math.round(size / 102.4) / 10;
-    // TODO: handle theme/language overrides
-
-    return {
-      filePath,
-      size_kb,
-    };
+    return filePath;
   }
 }

@@ -126,24 +126,24 @@ export class RemoteAssetService extends AsyncServiceBase {
     else {
       this.manifest = this.generateManifest();
     }
-    const manifestHashmap = arrayToHashmap(this.manifest.rows, "id") as IAssetContents;
-    const relativePaths = Object.keys(manifestHashmap);
+
+    const assetEntries = this.manifest.rows as IAssetEntry[];
     // TODO: implement queue system for downloads (see template-action service, or use of 3rd party p-queue elsewhere)
-    for (const [index, relativePath] of relativePaths.entries()) {
-      const url = this.getPublicUrl(relativePath);
+    for (const [index, assetEntry] of assetEntries.entries()) {
+      const url = this.getPublicUrl(assetEntry.id);
       // If running on native device, download assets and populate to filesystem, adding local
       // filesystem path to asset entry in contents list for consumption by template asset service
       if (Capacitor.isNativePlatform()) {
-        await lastValueFrom(
-          this.handleDownload(url, relativePath, index, relativePaths.length)
-        ).catch((error) => console.error(error));
+        await lastValueFrom(this.handleDownload(url, assetEntry, index, assetEntries.length)).catch(
+          (error) => console.error(error)
+        );
       }
       // On web, update contents list with asset's public URL for consumption by template asset service
       else {
         console.log(
-          `[REMOTE ASSETS] Fetching remote URL for ${index + 1} of ${relativePaths.length} files.`
+          `[REMOTE ASSETS] Fetching remote URL for ${index + 1} of ${assetEntries.length} files.`
         );
-        await this.updateAssetContents(relativePath);
+        await this.updateAssetContents(assetEntry);
       }
     }
   }
@@ -211,7 +211,7 @@ export class RemoteAssetService extends AsyncServiceBase {
    * Download a single asset from an array of assets,
    * save to local storage and update the assets contents list
    * */
-  handleDownload(url: string, relativePath: string, fileIndex: number, totalFiles: number) {
+  handleDownload(url: string, assetEntry: IAssetEntry, fileIndex: number, totalFiles: number) {
     console.log(
       `[REMOTE ASSETS] Downloading file ${fileIndex + 1} of ${totalFiles}: ${
         this.downloadProgress
@@ -235,8 +235,8 @@ export class RemoteAssetService extends AsyncServiceBase {
       complete: async () => {
         console.log(`[REMOTE ASSETS] File ${fileIndex + 1} of ${totalFiles} downloaded to cache`);
         if (data) {
-          const filesystemPath = await this.fileManagerService.saveFile(data, relativePath);
-          await this.updateAssetContents(relativePath);
+          const filesystemPath = await this.fileManagerService.saveFile(data, assetEntry.id);
+          await this.updateAssetContents(assetEntry);
         }
         progress$.next(progress);
         progress$.complete();
@@ -246,31 +246,24 @@ export class RemoteAssetService extends AsyncServiceBase {
   }
 
   /**
-   * Fetch file info (from local storage on native platforms and supabase on web)
-   * and save updates to asset contents in dynamic data.
+   * Save updates to asset contents in dynamic data, including file path
+   * (local storage on native platforms and supabase URL on web)
    * */
-  private async updateAssetContents(relativePath: string) {
-    let update: Partial<IAssetEntry> = {};
-    // On native platforms, get the path of the local file in storage and the actual size of the downloaded file
+  private async updateAssetContents(assetEntry: IAssetEntry) {
+    let filePath: string;
+    // On native platforms, get the path of the local file in storage
     if (Capacitor.isNativePlatform()) {
-      update = await this.fileManagerService.generateAssetContentsEntry(relativePath);
+      filePath = await this.fileManagerService.getLocalFilepath(assetEntry.id);
     }
     // On web, get the remote URL of the file and the size from supabase's metadata
     else {
-      const url = this.getPublicUrl(relativePath);
-      const {
-        metadata: { size },
-      } = await this.getRemoteFileMetadata(relativePath);
-      update = {
-        id: relativePath,
-        filePath: url,
-        size_kb: Math.round(size / 102.4) / 10,
-      };
+      filePath = this.getPublicUrl(assetEntry.id);
     }
+    const update = { ...assetEntry, filePath };
     await this.dynamicDataService.update<IAssetEntry>(
       "asset_pack",
       CORE_ASSET_PACK_NAME,
-      relativePath,
+      assetEntry.id,
       update
     );
   }
