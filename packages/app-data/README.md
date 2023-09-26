@@ -1,11 +1,10 @@
-# PLH Data
-This package contains data used in the PLH version of the app
+# App Data
+This package holds deployment data not synced with any 3rd party content repo.
 
-## Syncing data updates
-Data can be syncd from corresponding google drive folders via the script
-```
-yarn scripts app-data-sync
-```
+It has been deprecated on the `master` branch but can still be used on deployment branches by updating local `.gitignore` to allow required files and syncing
+
+NOTE - it will likely be fully deprecated in the future
+As part of deprecation process large historical assets should ideally be removed also
 
 ## Translations
 Files for translation, and compiled translation strings are automatically generated during sync scripts.

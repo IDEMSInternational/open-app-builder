@@ -1,6 +1,8 @@
-export * from "./app-data-string.utils";
-export * from "./app-data-condition.utils";
 export * from "./app-data-action.utils";
+export * from "./app-data-condition.utils";
+export * from "./app-data-override.utils";
+export * from "./app-data-string.utils";
+
 export * from "./logging";
 
 // re-export some shared utils for ease of import
@@ -13,7 +15,7 @@ export {
   arrayToHashmap,
   logWarning,
   groupJsonByKey,
-  createChildLogger,
+  createChildFileLogger,
   clearLogs,
   getLogFiles,
   getLogs,
