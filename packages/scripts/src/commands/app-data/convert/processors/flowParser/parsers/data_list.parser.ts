@@ -1,5 +1,6 @@
 import { extractDynamicFields, FlowTypes } from "data-models";
 import {
+  assignFlowOverrides,
   extractConditionList,
   parseAppDataCollectionString,
   setNestedProperty,
@@ -30,5 +31,10 @@ export class DataListParser extends DefaultParser {
       // row._dynamicDependencies = extractDynamicDependencies(dynamicFields);
     }
     return row;
+  }
+
+  public postProcessFlows(flows: FlowTypes.FlowTypeWithData[]) {
+    const flowsWithOverrides = assignFlowOverrides(flows);
+    return flowsWithOverrides;
   }
 }
