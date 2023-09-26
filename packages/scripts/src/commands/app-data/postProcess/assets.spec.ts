@@ -9,9 +9,10 @@ import mockFs from "mock-fs";
 
 // Use default imports to allow spying on functions and replacing with mock methods
 import { ActiveDeployment } from "../../deployment/get";
-import { Logger } from "../../../utils";
+import { Logger, arrayToHashmap } from "../../../utils";
 import path from "path";
 import { IAssetEntryHashmap } from "data-models/deployment.model";
+import { FlowTypes } from "data-models";
 
 /** Mock file system folders for use in tests */
 const mockDirs = {
@@ -28,6 +29,12 @@ const mockErrorLogger = jasmine.createSpy("mockErrorLogger", Logger.error);
 function readAppAssetContents() {
   const contentsPath = path.resolve(mockDirs.appAssets, "contents.json");
   return readJsonSync(contentsPath) as IAssetEntryHashmap;
+}
+
+/** Parse the core_assets.json file populated to the app assets folder and return */
+function readCoreAssetPack() {
+  const assetPackPath = path.resolve(mockDirs.appAssets, "core_assets.json");
+  return readJsonSync(assetPackPath) as FlowTypes.AssetPack;
 }
 
 /** Create mock entries on file system corresponding to local assets folder */
@@ -81,6 +88,13 @@ describe("Assets PostProcess", () => {
     runAssetsPostProcessor();
     const contents = readAppAssetContents();
     expect("test.jpg" in contents).toBeTrue();
+  });
+
+  it("populates core asset pack json", () => {
+    mockLocalAssets({ "test.jpg": mockFile });
+    runAssetsPostProcessor();
+    const assetPack = readCoreAssetPack();
+    expect(assetPack.rows.some((el) => el.id === "test.jpg")).toBeTrue();
   });
 
   it("Populates global assets from named or root folder", () => {
@@ -175,6 +189,7 @@ describe("Assets PostProcess", () => {
     runAssetsPostProcessor({ app_themes_available: ["testTheme"] });
     expect(readdirSync(mockDirs.appAssets)).toEqual([
       "contents.json",
+      "core_assets.json",
       "test.jpg",
       "theme_testTheme",
     ]);
@@ -208,7 +223,12 @@ describe("Assets PostProcess", () => {
       ke_sw: { "test.jpg": mockFile },
     });
     runAssetsPostProcessor({ filter_language_codes: ["tz_sw"] });
-    expect(readdirSync(mockDirs.appAssets)).toEqual(["contents.json", "test.jpg", "tz_sw"]);
+    expect(readdirSync(mockDirs.appAssets)).toEqual([
+      "contents.json",
+      "core_assets.json",
+      "test.jpg",
+      "tz_sw",
+    ]);
   });
 
   it("supports nested lang and theme folders", () => {
@@ -241,6 +261,31 @@ describe("Assets PostProcess", () => {
         },
       },
     });
+  });
+
+  it("generates a core asset_pack file equivalent to the contents file", () => {
+    mockLocalAssets({
+      nested: {
+        "test.jpg": mockFile,
+        theme_test: {
+          tz_sw: { "test.jpg": mockFile },
+        },
+        tz_sw: {
+          "test.jpg": mockFile,
+        },
+      },
+    });
+    runAssetsPostProcessor({
+      filter_language_codes: ["tz_sw"],
+      app_themes_available: ["test"],
+    });
+    const contents = readAppAssetContents();
+    const coreAssetPack = readCoreAssetPack();
+    const convertedAssetPackRows = arrayToHashmap(coreAssetPack.rows, "id");
+    for (const key of Object.keys(convertedAssetPackRows)) {
+      delete convertedAssetPackRows[key].id;
+    }
+    expect(contents).toEqual(convertedAssetPackRows);
   });
 
   // TODO - direct support for files named `test.theme_default.tz_sw.jpg`

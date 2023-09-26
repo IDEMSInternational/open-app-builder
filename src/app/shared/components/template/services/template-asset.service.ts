@@ -3,7 +3,7 @@ import { ASSETS_CONTENTS_LIST, IAssetContents } from "src/app/data";
 import { ThemeService } from "src/app/feature/theme/services/theme.service";
 import { AsyncServiceBase } from "src/app/shared/services/asyncService.base";
 import { TemplateTranslateService } from "./template-translate.service";
-import { IAssetEntry, IContentsEntryMinimal } from "data-models";
+import { IAssetEntry, IAssetContentsEntryMinimal } from "data-models";
 import { HttpClient } from "@angular/common/http";
 import { BehaviorSubject, lastValueFrom } from "rxjs";
 
@@ -94,7 +94,7 @@ export class TemplateAssetService extends AsyncServiceBase {
 
   private getAssetPath(
     assetName: string,
-    contentsEntry: IContentsEntryMinimal | Partial<IAssetEntry>
+    contentsEntry: IAssetContentsEntryMinimal | Partial<IAssetEntry>
   ) {
     return this.convertGdriveRelativePathToAssetPath(contentsEntry.filePath || assetName);
   }
