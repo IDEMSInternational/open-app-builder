@@ -17,7 +17,8 @@ import {
   getNestedProperty,
 } from "../../../utils";
 import { ActiveDeployment } from "../../deployment/get";
-import type { IAssetEntryHashmap, IContentsEntryMinimal } from "data-models/deployment.model";
+import type { IAssetEntryHashmap, IAssetContentsEntryMinimal } from "data-models/deployment.model";
+import { FlowTypes } from "data-models";
 
 /**
  * Legacy folder used to differentiate language assets
@@ -81,6 +82,11 @@ export class AssetsPostProcessor {
 
     this.writeAssetsContentsFiles(appAssetsFolder, tracked, untracked);
 
+    // Core asset pack is a flow of type asset_pack, so must be populated to sheets folder
+    const appSheetsFolder = path.resolve(app_data.output_path, "sheets");
+    fs.ensureDirSync(appSheetsFolder);
+    this.writeCoreAssetPack(appAssetsFolder, appSheetsFolder);
+
     console.log(chalk.green("Asset Process Complete"));
   }
 
@@ -108,6 +114,34 @@ export class AssetsPostProcessor {
         fs.writeFileSync(missingTarget, JSON.stringify(sortJsonKeys(missingEntries), null, 2));
       }
     }
+  }
+
+  /**
+   * The core asset pack is the asset contents data in a data_list format.
+   * TODO: the contents.json file is potentially redundant and can be replaced by core_assets.json
+   */
+  private writeCoreAssetPack(appAssetsFolder: string, appSheetsFolder: string) {
+    const contentsPath = path.resolve(appAssetsFolder, "contents.json");
+    const contents = fs.readJsonSync(contentsPath);
+    const contentsArray = [];
+    for (const [relativePath, assetEntry] of Object.entries(contents) as any) {
+      contentsArray.push({ id: relativePath, ...assetEntry });
+    }
+    const flow_type = "asset_pack";
+    const flow_name = "core_assets";
+    const coreAssetPack: FlowTypes.AssetPack = {
+      flow_type,
+      flow_name,
+      rows: contentsArray,
+    };
+    const coreAssetPackPath = path.resolve(appSheetsFolder, flow_type, `${flow_name}.json`);
+    fs.ensureDirSync(path.dirname(coreAssetPackPath));
+    const coreAssetPackJson = JSON.stringify(coreAssetPack, null, 2);
+    fs.writeFileSync(coreAssetPackPath, coreAssetPackJson);
+    // HACK: also write the asset pack to the assets directory so that it can be repopulated
+    // to the sheets directory by the sheets postProcessor, which empties the sheets directory when ran
+    const coreAssetCopyPath = path.resolve(appAssetsFolder, `${flow_name}.json`);
+    fs.writeFileSync(coreAssetCopyPath, coreAssetPackJson);
   }
 
   private mergeParentAssets(sourceAssets: { [relativePath: string]: IContentsEntry }) {
@@ -289,7 +323,7 @@ export class AssetsPostProcessor {
   }
 
   /** Strip additional fields from contents entry to provide cleaner asset entry */
-  private contentsToAssetEntry(entry: IContentsEntry): IContentsEntryMinimal {
+  private contentsToAssetEntry(entry: IContentsEntry): IAssetContentsEntryMinimal {
     const { md5Checksum, size_kb } = entry;
     return { size_kb, md5Checksum };
   }

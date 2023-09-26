@@ -2,6 +2,7 @@
 
 import type { IDataPipeOperation } from "shared";
 import type { IAppConfig } from "./appConfig";
+import { IAssetEntry } from "./deployment.model";
 
 /*********************************************************************************************
  *  Base flow types
@@ -74,7 +75,7 @@ export namespace FlowTypes {
    ********************************************************************************************/
   export interface AssetPack extends FlowTypeWithData {
     flow_type: "asset_pack";
-    rows: Data_listRow[];
+    rows: Data_listRow<IAssetEntry>[];
   }
   export interface Data_list extends FlowTypeWithData {
     flow_type: "data_list";

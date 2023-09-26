@@ -255,10 +255,11 @@ export class RemoteAssetService extends AsyncServiceBase {
     if (Capacitor.isNativePlatform()) {
       filePath = await this.fileManagerService.getLocalFilepath(assetEntry.id);
     }
-    // On web, get the remote URL of the file and the size from supabase's metadata
+    // On web, get the remote URL of the file
     else {
       filePath = this.getPublicUrl(assetEntry.id);
     }
+
     const update = { ...assetEntry, filePath };
     await this.dynamicDataService.update<IAssetEntry>(
       "asset_pack",
