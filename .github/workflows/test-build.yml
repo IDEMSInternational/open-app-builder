@@ -5,35 +5,12 @@ on:
     branches:
       - master
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-        with:
-          lfs: true
-      # Extract deployment name as the slug of target PR branch via string operators, e.g. /deployment/plh_tz -> plh_tz
-      # https://www.linuxjournal.com/article/8919, https://github.com/greenbone/gsa/actions/runs/1277581365/workflow
-      - name: Set Environment Deployment
-        run: |
-          echo "DEPLOYMENT_NAME=plh_global" >> $GITHUB_ENV;              \
-        shell: bash
-      - run: |
-          echo $GITHUB_BASE_REF
-          echo $DEPLOYMENT_NAME
-      - name: Node ${{ matrix.node-version }}
-        uses: actions/setup-node@v3
-        with:
-          node-version: 16
-          cache: 'yarn'
-      - name: Populate firebaseConfig.ts
-        env:
-          FIREBASE_CONFIG_TS: ${{ secrets.FIREBASE_CONFIG_TS }}
-        run: echo $FIREBASE_CONFIG_TS > src/environments/firebaseConfig.ts
-      - run: yarn install
-      - name: Set Deployment
-        run: yarn workflow deployment set $DEPLOYMENT_NAME
-      - name: Lint
-        run: yarn lint && yarn workspace api lint
-      - name: Unit Test Workspaces
-        run: yarn test:workspaces  
-      - run: yarn build
+  test:
+    uses: ./.github/workflows/web-build.yml
+    secrets: inherit
+    with:
+      include-tests: true
+      skip-upload: true
+      # When testing build binary assets not required
+      lfs: false 
+      deployment: debug

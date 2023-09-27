@@ -4,7 +4,7 @@ import { getNumberParamFromTemplateRow, getStringParamFromTemplateRow } from "sr
 import { TemplateBaseComponent } from "../base";
 
 @Component({
-  animations: PLHAnimations.fadeInOut,
+  animations: [PLHAnimations.fadeInOut],
   selector: "template-animated-slides",
   templateUrl: "./animated-slides.component.html",
   styleUrls: ["./animated-slides.component.scss"],
@@ -17,6 +17,7 @@ export class TmplAnimatedSlidesComponent extends TemplateBaseComponent implement
   fadeTimes = [];
   private _isDismissed = false;
   style: string | null;
+  slideParams: { duration: number; animation: string }[] = [];
 
   ngOnInit(): void {
     this.getParams();
@@ -25,8 +26,15 @@ export class TmplAnimatedSlidesComponent extends TemplateBaseComponent implement
 
   getParams() {
     this.skipText = getStringParamFromTemplateRow(this._row, "skip_text", "Skip");
+
     for (let row of this._row.rows) {
-      this.fadeTimes.push(getNumberParamFromTemplateRow(row, "duration", 0) * 1000);
+      const duration = getNumberParamFromTemplateRow(row, "duration", 0) * 1000;
+      const animation = getStringParamFromTemplateRow(row, "animation", "fade"); // default to fade
+
+      this.slideParams.push({
+        duration,
+        animation,
+      });
     }
     this.style = getStringParamFromTemplateRow(this._row, "style", null);
   }
@@ -37,10 +45,10 @@ export class TmplAnimatedSlidesComponent extends TemplateBaseComponent implement
    */
   private async runFade() {
     let i = 0;
-    for (let fadeTime of this.fadeTimes) {
+    for (let slideParam of this.slideParams) {
       this.fadeSection[i] = "in";
       // wait specified time plus additional animation time
-      await this._wait(fadeTime + 1500);
+      await this._wait(slideParam.duration + 1500);
       this.fadeSection[i] = "out";
       i++;
     }

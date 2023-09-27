@@ -1,7 +1,7 @@
 import { Injectable, Injector } from "@angular/core";
 import { addDays, addSeconds } from "date-fns";
 import { addHours, addMinutes, addWeeks, endOfDay, isAfter, isBefore, setISODay } from "date-fns";
-import { extractDynamicFields, IAppConfig } from "packages/data-models";
+import { extractDynamicFields, IAppConfig } from "data-models";
 import { Subscription } from "rxjs";
 import { TemplateActionService } from "src/app/shared/components/template/services/instance/template-action.service";
 import { TemplateTranslateService } from "src/app/shared/components/template/services/template-translate.service";
@@ -282,7 +282,7 @@ export class CampaignService extends AsyncServiceBase {
     // process translations first as these are made with dynamic content in place (e.g. "hello @name")
     const translatedRow = this.templateTranslateService.translateRow(row as any);
     // Continue processing full row
-    translatedRow._dynamicFields = extractDynamicFields(translatedRow);
+    translatedRow._dynamicFields = extractDynamicFields(translatedRow) as FlowTypes.IDynamicField;
     const parsedRow = await this.templateVariablesService.evaluatePLHData(translatedRow, {
       row: translatedRow,
       templateRowMap: {},

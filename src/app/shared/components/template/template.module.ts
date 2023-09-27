@@ -17,6 +17,7 @@ import { TmplCompHostDirective, TemplateComponent } from "./template-component";
 
 import { appendStyleSvgDirective } from "./directives/shadowStyleSvg.directive";
 import { createCustomElement } from "@angular/elements";
+import { PLHAssetPipe } from "./pipes/plh-asset.pipe";
 
 @NgModule({
   imports: [
@@ -43,6 +44,8 @@ import { createCustomElement } from "@angular/elements";
   ],
   // Include the container component as an entry component so that we can a custom elements for it (see below)
   entryComponents: [TemplateContainerComponent],
+  // Pipes that are used in component ts files should be declared here
+  providers: [PLHAssetPipe],
 })
 export class TemplateComponentsModule {
   // Create a custom element for the template container

@@ -9,25 +9,12 @@ import configCmd from "./config";
 import deploymentCmd from "./deployment";
 import versionCmd from "./version";
 import workflowCmd from "./workflow";
-import { logWarning, logProgramHelp } from "../utils/logging.utils";
+import { callProgramWithHelp, isTsNode, logWarning } from "../utils";
+const { version } = require("../../package.json");
 
 const program = new Command();
 
-program.version("1.0.0").description("IDEMS App Scripts");
-
-// Handle legacy command renames so can still run `yarn scripts gdrive-download`
-const legacyCommandMappings = {
-  "legacy-command": ["new-command", "arg"],
-};
-const cmdName = process.argv[2] || "";
-const mapping = legacyCommandMappings[cmdName];
-if (mapping) {
-  logWarning({
-    msg1: "NOTE - Script has been renamed and will be deprecated",
-    msg2: `"${cmdName}" -> "${mapping.join(" ")}"`,
-  });
-  process.argv.splice(2, 1, ...mapping);
-}
+program.version(version).description(`IDEMS App Scripts ${version}`);
 
 /** add sub-commands from child folders */
 program.addCommand(appDataCmd);
@@ -37,10 +24,6 @@ program.addCommand(configCmd);
 program.addCommand(deploymentCmd);
 program.addCommand(versionCmd);
 program.addCommand(workflowCmd);
-
-if (!process.argv.slice(2).length) {
-  logProgramHelp(program);
-}
 
 const handleExit = () => {
   console.log("Exiting without error.");
@@ -55,10 +38,10 @@ const handleError = (e) => {
 process.on("SIGINT", handleExit);
 process.on("uncaughtException", handleError);
 
-async function main() {
-  await program.parseAsync(process.argv);
-}
-main();
+checkLegacyCommandMappings();
+
+// export program to be called via bin
+export { program };
 
 /** Allow programmatic call of command parser */
 export const parseCommand = async (cmd: string) => {
@@ -69,3 +52,24 @@ export const parseCommand = async (cmd: string) => {
 // Additional exports for direct consumption
 import { extendDeploymentConfig, generateDeploymentConfig } from "./deployment/common";
 export { extendDeploymentConfig, generateDeploymentConfig };
+
+// Run the program directly when called via ts-node (e.g. start script)
+if (isTsNode) {
+  callProgramWithHelp(program);
+}
+
+function checkLegacyCommandMappings() {
+  // Handle legacy command renames so can still run `yarn scripts gdrive-download`
+  const legacyCommandMappings = {
+    "legacy-command": ["new-command", "arg"],
+  };
+  const cmdName = process.argv[2] || "";
+  const mapping = legacyCommandMappings[cmdName];
+  if (mapping) {
+    logWarning({
+      msg1: "NOTE - Script has been renamed and will be deprecated",
+      msg2: `"${cmdName}" -> "${mapping.join(" ")}"`,
+    });
+    process.argv.splice(2, 1, ...mapping);
+  }
+}

@@ -19,7 +19,7 @@ const DYNAMIC_STRING_REGEX = /[`!]?@([a-z]+)\.([0-9a-z_]+)([0-9a-z_.]*)/gi;
  * Store these references in a separate object so they can be evaluated at runtime
  */
 export function extractDynamicFields(data: any) {
-  let dynamicFields: any = {};
+  let dynamicFields: FlowTypes.IDynamicField = {};
   switch (typeof data) {
     case "object":
       // simply convert array to object to handle in next case

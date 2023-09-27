@@ -9,6 +9,6 @@
     "target": "es5",
     "esModuleInterop": true
   },
-  "include": ["index.ts"],
+  "include": ["**/*.ts"],
   "exclude": ["**/*.d.ts", "dist", "node_modules"]
 }
