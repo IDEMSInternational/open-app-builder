@@ -1,6 +1,6 @@
 # Audio
 
-Audio refers to any form of sound or sound-related content that can be played, recorded, processed or interacted within the app. Audio can include various types of sound such as music, spoken dialogue, sound effects and other auditory elements.
+This component enables one to play audio files such as music or recorded audio within the app. It provides a means to play and pause, check audio progress and control playback.
 
 ## Example
 
