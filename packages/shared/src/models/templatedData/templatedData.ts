@@ -1,7 +1,22 @@
 import { ITemplatedStringVariable } from "../../types";
-import { addStringDelimiters, extractDelimitedTemplateString } from "../../utils";
+import { addStringDelimiters, extractDelimitedTemplateString } from "../../utils/delimiters";
 
 type ITemplatedDataContext = { [prefix: string]: any };
+
+/** Hashmap of all context-based variable names used in expression, organised by prefix, e.g.
+ * `{ field: {some_field_name: true}, row: {some_row_name:true, another_name: true}}`
+ */
+
+export interface ITemplatedDataContextList {
+  [contextPrefix: string]: {
+    [contextVariableName: string]: boolean;
+    /**
+     * Track whether variable list known to contain recursive variables that will
+     * require runtime evaluation, e.g. `{ field: {some_field_name: true, __recursive: true}`
+     */
+    __recursive?: boolean;
+  };
+}
 
 /**
  * Templated data class contains methods to to convert data containing dynamic context variables
@@ -78,6 +93,60 @@ export class TemplatedData {
       }
     }
     return value;
+  }
+
+  /**
+   * Utility method to produce a list of all dynamic expression context variables
+   * detected within data value
+   **/
+  public listContextVariables(value: any, prefixes: string[] = []) {
+    let contextVariables: ITemplatedDataContextList = {};
+
+    // Recursively extract any nested context strings
+    function extractContext(contextValue: any) {
+      if (contextValue) {
+        if ({}.constructor === contextValue.constructor) {
+          extractContext(Object.values(contextValue));
+        }
+        if (Array.isArray(contextValue)) {
+          for (const el of contextValue) {
+            extractContext(el);
+          }
+        }
+        if (typeof contextValue === "string") {
+          processStringContextValue(contextValue);
+        }
+      }
+
+      // Process any extracted context strings
+      function processStringContextValue(stringValue: string) {
+        const delimited = addStringDelimiters(stringValue, prefixes);
+        const extractedData = extractDelimitedTemplateString({ value: delimited }, prefixes);
+        const { variables } = extractedData;
+        if (variables) {
+          const entries = Object.values(variables);
+          populateContextVariables(entries);
+        }
+      }
+
+      // Populate any variables identified from processed strings to context variable list
+      // Include recursive handling when detected nested, e.g. @row.@row.nested_lookup
+      function populateContextVariables(entries: ITemplatedStringVariable[]) {
+        for (const entry of entries) {
+          let [prefix, name] = entry.value.split(".");
+          prefix = prefix.replace("@", "");
+          contextVariables[prefix] ??= {};
+          if (entry.variables) {
+            contextVariables[prefix].__recursive = true;
+            populateContextVariables(Object.values(entry.variables));
+          } else {
+            contextVariables[prefix][name] = true;
+          }
+        }
+      }
+    }
+    extractContext(value);
+    return contextVariables;
   }
 
   /**

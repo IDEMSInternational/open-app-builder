@@ -9,9 +9,9 @@ import mockFs from "mock-fs";
 
 // Use default imports to allow spying on functions and replacing with mock methods
 import { ActiveDeployment } from "../../deployment/get";
-import { Logger } from "../../../utils/logging.utils";
 import path from "path";
 import { IAssetEntryHashmap } from "data-models/deployment.model";
+import { useMockErrorLogger } from "../../../../test/helpers/utils";
 
 /** Mock file system folders for use in tests */
 const mockDirs = {
@@ -20,9 +20,6 @@ const mockDirs = {
 };
 
 const { file: mockFile, entry: mockFileEntry } = createMockFile(); // create mock 1MB file
-
-/** Mock function that will replace default `Logger` function to instead just record any invocations */
-const mockErrorLogger = jasmine.createSpy("mockErrorLogger", Logger.error);
 
 /** Parse the contents.json file populated to the app assets folder and return */
 function readAppAssetContents() {
@@ -296,12 +293,6 @@ describe("Assets PostProcess", () => {
 
    */
 });
-
-/** Replace runtime error logger with mock that can be inspected in tests */
-function useMockErrorLogger() {
-  spyOn(Logger, "error").and.callFake(mockErrorLogger);
-  return mockErrorLogger;
-}
 
 function runAssetsPostProcessor(deploymentConfig: IDeploymentConfigStub = {}) {
   stubDeploymentConfig(deploymentConfig);

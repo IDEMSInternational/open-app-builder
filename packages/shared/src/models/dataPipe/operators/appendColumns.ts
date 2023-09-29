@@ -8,7 +8,7 @@ interface IParsedArg {
 }
 
 class AppendColumnsOperator extends BaseOperator {
-  public args_list: IParsedArg[];
+  public declare args_list: IParsedArg[];
   /** Tracking hashmap used in extended map operator to remove non-mapped columns after */
   public mappedColumns: { [key: string]: boolean } = {};
   constructor(df: DataFrame, args_list: any) {

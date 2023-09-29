@@ -6,7 +6,7 @@ import { TemplateLayoutComponent } from "./layout";
   selector: "plh-tmpl-animated-section",
   template: `
     <plh-template-component
-      *ngFor="let childRow of _row.rows; trackBy: trackByRow"
+      *ngFor="let childRow of _row.rows | filterDisplayComponent; trackBy: trackByRow"
       [row]="childRow"
       [parent]="parent"
       [@fadeSection]="_row?.hidden ? 'out' : 'in'"

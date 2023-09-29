@@ -8,6 +8,10 @@
   "include": [
     "src/**/*.d.ts",
     "src/app/shared/components/template/components/odk-form/libs/**/*.js",
-    "src/app/shared/components/template/components/odk-form/libs/**/*.ts"
+    "src/app/shared/components/template/components/odk-form/libs/**/*.ts",
+    // Ensure any ts-based packages used by frontend app are listed here
+    // to allow import/live-reload within angular compiler
+    "packages/data-models/**/*.ts",
+    "packages/shared/**/*.ts"
   ]
 }

@@ -1,0 +1,230 @@
+##################################################################################
+#         Configuration
+# These variables will be populated from environment
+##################################################################################
+env:
+  DEPLOYMENT_NAME_DEFAULT: debug
+  DEPLOYMENT_REPO: ${{vars.DEPLOYMENT_REPO}}
+  DEPLOYMENT_PRIVATE_KEY: ${{secrets.DEPLOYMENT_PRIVATE_KEY}}
+  FIREBASE_CONFIG_TS: ${{secrets.FIREBASE_CONFIG_TS}}
+
+##################################################################################
+#         Main Code
+##################################################################################
+name: Web Build
+
+# Only keep one active build per ref (e.g. pr branch, push branch, triggering workflow ref)
+concurrency:
+  group: web-build-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+on:
+  workflow_call:
+    #############################################################################
+    #         Inputs
+    # Optional variables to configure from parent workflow via workflow_call
+    #############################################################################
+    inputs:
+      build-flags:
+        description: Additional flags to pass to build command (e.g. base-href)
+        type: string
+        default: ""
+      branch:
+        description: Name of branch to build (defaults to event trigger sha)
+        type: string
+        default: ""
+      deployment:
+        description: |
+          Target deployment name. If branch name provided will take suffix (`prod/my_deployment` -> `my_deployment`). 
+          Will load variables from named deployment environment 
+        type: string
+        default: ""
+      include-tests:
+        description: "Specify whether to include running workspace lint and test before build"
+        type: boolean
+        default: false
+      lfs:
+        description: Enable git lfs to include download of all binary assets (user-facing deployments)
+        type: boolean
+        default: true
+      skip-upload:
+        description: "Specify whether to skip uploading build artifact at end"
+        type: boolean
+        default: false
+    #############################################################################
+    #         Outputs
+    # Variables available to parent workflows following workflow_call
+    #############################################################################
+    outputs:
+      DEPLOYMENT_NAME:
+        description: "Name of the deployment built"
+        value: ${{ jobs.configure_build.outputs.DEPLOYMENT_NAME }}
+      GIT_SHA:
+        description: "Git SHA of build head"
+        value: ${{ jobs.configure_build.outputs.GIT_SHA }}
+
+jobs:
+  #############################################################################
+  #         configure Build
+  # Deployment-specific variables are loaded from deployment name environment contexts
+  # stored on github actions.
+  # Determine which set of environment variables to load, depending on passed inputs,
+  # target branch names or default fallback
+  # Populate variables to use as inputs in next build job
+  # Pattern found in this question: https://github.com/actions/runner/issues/998#issue-817330769
+  # Outputs here will also be made available to parent workflows via workflow_call outputs
+  #############################################################################
+  configure_build:
+    outputs:
+      DEPLOYMENT_NAME: ${{ steps.populate.outputs.DEPLOYMENT_NAME }}
+      GIT_SHA: ${{ steps.populate.outputs.GIT_SHA }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          ref: ${{inputs.branch}}
+
+      - name: Set named input environment
+        if: ${{ inputs.environment }}
+        run: |
+          echo "DEPLOYMENT_NAME=${{inputs.environment}}" >> $GITHUB_ENV;  
+        shell: bash
+
+      - name: Set environment from target
+        if: ${{inputs.deployment && inputs.deployment != 'master' && inputs.deployment!='refs/heads/master'}}
+        run: |
+          echo "DEPLOYMENT_NAME=$(echo ${{inputs.deployment}} | sed 's/.*\///')" >> $GITHUB_ENV;
+        shell: bash
+
+      - name: Set default environment
+        if: ${{ !env.DEPLOYMENT_NAME }}
+        run: |
+          echo "DEPLOYMENT_NAME=$DEPLOYMENT_NAME_DEFAULT" >> $GITHUB_ENV;  
+        shell: bash
+
+      # Output determined environment name alongside git SHA (for use in error logging)
+      - name: Populate Outputs
+        id: populate
+        run: |
+          echo "DEPLOYMENT_NAME=$DEPLOYMENT_NAME" >> $GITHUB_OUTPUT;  
+          echo "GIT_SHA=$(git rev-parse --short=6 HEAD)" >> $GITHUB_OUTPUT
+     
+    
+  build:
+    runs-on: ubuntu-latest
+    needs: configure_build
+    environment: ${{needs.configure_build.outputs.DEPLOYMENT_NAME}}
+    env:
+      GIT_SHA: ${{ needs.configure_build.outputs.GIT_SHA }}
+      DEPLOYMENT_NAME: ${{ needs.configure_build.outputs.DEPLOYMENT_NAME }}
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          lfs: ${{inputs.lfs}}
+          ref: ${{inputs.branch}}
+
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18.x
+
+      #############################################################################
+      #         Node Modules
+      # Manually restore any previous cache to speed install
+      # As immutable install will not change cache only save new cache if not hit
+      # Uses fine-grained methods from https://github.com/actions/cache
+      #############################################################################
+
+      - uses: actions/cache/restore@v3
+        id: cache
+        with:
+          path: ./.yarn/cache
+          key: ${{ runner.os }}-node-modules-yarn-v1-${{ hashFiles('yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-node-modules-yarn-v1-
+      - name: Install node modules
+        run: yarn install --immutable
+      - uses: actions/cache/save@v3
+        if: steps.cache.outputs.cache-hit != 'true'
+        with:
+          path: ./.yarn/cache
+          key: ${{ runner.os }}-node-modules-yarn-v1-${{ hashFiles('yarn.lock') }}
+
+      #############################################################################
+      #         Prebuild
+      # Populate variables and set deployment configuration as required
+      # Exact population varies depending on whether is PR, release, dispatch etc.
+      #############################################################################
+
+      # TODO - populate firebase as part of deployment set
+      - name: Populate firebaseConfig.ts
+        if: ${{env.FIREBASE_CONFIG_TS}}
+        run: echo $FIREBASE_CONFIG_TS > src/environments/firebaseConfig.ts
+
+      - name: Populate git sha
+        if: ${{env.GIT_SHA}}
+        run: echo "export const GIT_SHA = \"$GIT_SHA\";" > src/environments/sha.ts
+
+      - name: Import remote deployment
+        if: ${{env.DEPLOYMENT_REPO}}
+        uses: actions/checkout@v3
+        with:
+          repository: ${{env.DEPLOYMENT_REPO}}
+          lfs: ${{inputs.lfs}}
+          path: ".idems_app/deployments/${{env.DEPLOYMENT_NAME}}"
+          # TODO - add support for specific branch/release
+
+      - name: Set deployment private key
+        if: ${{env.DEPLOYMENT_PRIVATE_KEY}}
+        run:
+          echo $DEPLOYMENT_PRIVATE_KEY > .idems_app/deployments/$DEPLOYMENT_NAME/encrypted/private.key
+
+      - name: Set deployment
+        run: yarn workflow deployment set ${{env.DEPLOYMENT_NAME}}
+
+      #############################################################################
+      #         Build
+      # Run optional tests before building and uploading final build as artifact
+      # for use in other actions
+      #############################################################################
+
+      - name: Lint
+        if: ${{inputs.include-tests}}
+        run: yarn lint && yarn workspace api lint
+
+      # Ensure test xlsx files checked out
+      - name: Checkout test files
+        if: ${{ inputs.include-tests && !inputs.lfs }}
+        run: git lfs pull --include "packages/scripts/test/data/input/*"
+      
+      - name: Test
+        if: ${{inputs.include-tests}}
+        run: yarn test:workspaces
+
+      - name: Build
+        run: yarn build ${{inputs.build-flags}}
+
+        # Use github pages upload artifact action to compress and upload
+      - name: Upload artifact
+        if: ${{!inputs.skip-upload}}
+        uses: actions/upload-pages-artifact@v1.0.8
+        with:
+          path: "www/"
+          name: www
+##################################################################################
+#         Links
+##################################################################################
+
+# Create a reusable workflow to build deployment app
+# https://colinsalmcorner.com/musings-on-reusable-workflows/
+
+##################################################################################
+#         Notes
+##################################################################################
+# Alternative methods previously used:
+
+# Git SHA
+# GIT_SHA=`echo ${{github.event.pull_request.head.sha}} | cut -c1-6`
+
+# Deployment name (https://www.linuxjournal.com/article/8919)
+# DEPLOYMENT_NAME=${GITHUB_BASE_REF##*/}

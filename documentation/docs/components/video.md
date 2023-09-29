@@ -1,5 +1,7 @@
 # Video
 
+A video is a feature that allows users to view and interact with video content directly within the app. It enables the display of pre-recorded videos, enhancing the app's functionality and user experience.
+
 ## Example
 
 | type     | name       |value                                  |parameter_list  |

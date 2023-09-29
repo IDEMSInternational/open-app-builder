@@ -1,6 +1,6 @@
 # Deploy to firebase hosting on PR merge
 # Specifies deployment target based on branch
-# Master -> plh_global
+# Master -> debug
 # Deployment/{deployment_name} -> {deployment_name}
 name: Deployment Hosting
 on:
@@ -8,49 +8,43 @@ on:
     branches:
       - deployment/*
       - master
+
+concurrency:
+  group: deployment-hosting-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
-  build_and_deploy:
+  build:  
+    uses: ./.github/workflows/web-build.yml
+    secrets: inherit
+    with:
+      build-flags: --configuration "production,glitchtip"
+      # use branch name from PR target as default
+      # https://docs.github.com/en/actions/learn-github-actions/variables#default-environment-variables
+      deployment: ${{ github.ref }} 
+
+  sourcemaps_upload:
+    needs: build
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-        with:
-          lfs: true
-      # Extract deployment name as the slug of target PR branch via string operators, e.g. /deployment/plh_tz -> plh_tz
-      # https://www.linuxjournal.com/article/8919, https://github.com/greenbone/gsa/actions/runs/1277581365/workflow
-      - name: Set Environment Deployment
+      - name: set env
         run: |
-          if [ "$GITHUB_REF" = "refs/heads/master" ];                \
-          then echo "DEPLOYMENT_NAME=plh_global" >> $GITHUB_ENV;          \
-          else echo "DEPLOYMENT_NAME=${GITHUB_REF##*/}" >> $GITHUB_ENV;   \
-          fi;
-          echo "SHA_SHORT=$(git rev-parse --short=6 HEAD)" >> $GITHUB_ENV
-        shell: bash
-      - run: |
-          echo $GITHUB_REF
-          echo $DEPLOYMENT_NAME
-          echo $SHA_SHORT
-      - name: Node ${{ matrix.node-version }}
-        uses: actions/setup-node@v3
+          echo "APP_VERSION=$(echo "$(cat package.json | jq -r '.version')")" >> $GITHUB_ENV
+          echo "DEPLOYMENT_NAME=${{needs.build.outputs.DEPLOYMENT_NAME}}" >> $GITHUB_ENV
+          echo "GIT_SHA=${{needs.build.outputs.GIT_SHA}}" >> $GITHUB_ENV
+      - name: Download Build Artifact
+        uses: actions/download-artifact@v3
         with:
-          node-version: 16
-          cache: 'yarn'      
-      - name: Populate environment config
-        env:
-          FIREBASE_CONFIG_TS: ${{ secrets.FIREBASE_CONFIG_TS }}
+          name: www
+      - name: Extract Build folder
         run: |
-          echo "export const GIT_SHA = \"$SHA_SHORT\";" > src/environments/sha.ts
-          echo $FIREBASE_CONFIG_TS > src/environments/firebaseConfig.ts
-      - run: yarn install
-      - name: Set Scripts Deployment
-        run: yarn workflow deployment set $DEPLOYMENT_NAME
-      ### Generate and upload sourcemaps ###
-      - run: yarn build --configuration "production,glitchtip"
-      - name: set app version
-        run: echo "APP_VERSION=$(echo "$(cat package.json | jq -r '.version')")" >> $GITHUB_ENV
+          mkdir www
+          tar -xf artifact.tar --directory www
       - name: Upload sourcemaps
         run: |
-          npx @sentry/cli releases delete ${DEPLOYMENT_NAME}-${APP_VERSION}-${SHA_SHORT}
-          npx @sentry/cli releases files ${DEPLOYMENT_NAME}-${APP_VERSION}-${SHA_SHORT} upload-sourcemaps www/
+          npx @sentry/cli releases delete ${DEPLOYMENT_NAME}-${APP_VERSION}-${GIT_SHA}
+          npx @sentry/cli releases files ${DEPLOYMENT_NAME}-${APP_VERSION}-${GIT_SHA} upload-sourcemaps www/
         env:
           SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN}}
           SENTRY_URL: https://app.glitchtip.com/
@@ -60,15 +54,30 @@ jobs:
       - name: Store sourcemaps artifact
         uses: actions/upload-artifact@v3
         with:
-          name: sourcemaps-$SHA_SHORT
+          name: sourcemaps-$GIT_SHA
           path: www/*.map
           # Only used for short-term debugging purposes or manual upload
           retention-days: 30
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Download Build Artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: www
+      - name: Extract Build folder
+        run: |
+          mkdir www
+          tar -xf artifact.tar --directory www
       - name: Remove sourcemaps from build
         run: |
           echo $(ls www)
           find . -name "*.map" -type f -delete
           echo $(ls www)
+
       ###   Deploy  ###
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
@@ -76,7 +85,7 @@ jobs:
           firebaseServiceAccount: "${{ secrets.FIREBASE_SERVICE_ACCOUNT_PLH_TEENS_APP1 }}"
           projectId: plh-teens-app1
           # NOTE - deployment target should be set in firebase.json and .firebaserc
-          target: "${{env.DEPLOYMENT_NAME}}"
+          target: "${{needs.build.outputs.DEPLOYMENT_NAME}}"
           channelId: live
       # Known issue - success message does not specify correct deployment url
       # Not used anywhere else so assume fine for now (only gh action output incorrect)
