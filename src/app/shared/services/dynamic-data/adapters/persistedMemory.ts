@@ -16,7 +16,7 @@ addRxPlugin(RxDBUpdatePlugin);
 
 import { FlowTypes } from "data-models";
 import { environment } from "src/environments/environment";
-import { deepMergeObjects, shallowDiffObjectKeys } from "../../../utils";
+import { deepMergeObjects, compareObjectKeys } from "../../../utils";
 
 /**
  * All persisted docs are stored in the same format with a standard set of meta fields and doc data
@@ -104,9 +104,7 @@ export class PersistedMemoryAdapter {
     if (!this.state[flow_type]) this.state[flow_type] = {};
     if (!this.state[flow_type][flow_name]) this.state[flow_type][flow_name] = {};
     const existingData = this.state[flow_type][flow_name][id];
-    let merged = data;
-    if (existingData) merged = deepMergeObjects({}, existingData, data);
-
+    const merged = existingData ? deepMergeObjects({}, existingData, data) : data;
     // Remove any values marked as undefined
     for (const [key, value] of Object.entries(merged)) {
       if (value === undefined) {
@@ -145,8 +143,8 @@ export class PersistedMemoryAdapter {
     const db = await this.mapDBToObject({});
     const idsToDelete = [];
     for (const flow_type of Object.keys(db)) {
-      const flowNames = shallowDiffObjectKeys(db[flow_type], this.state[flow_type]);
-      for (const flow_name of flowNames) {
+      const { deleted } = compareObjectKeys(db[flow_type], this.state[flow_type]);
+      for (const flow_name of deleted) {
         const rowHash = db[flow_type][flow_name];
         for (const row_id of Object.keys(rowHash)) {
           idsToDelete.push(`${flow_type}__${flow_name}__${row_id}`);
