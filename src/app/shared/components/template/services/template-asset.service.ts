@@ -1,10 +1,9 @@
 import { Injectable } from "@angular/core";
-import { Capacitor } from "@capacitor/core";
 import { ASSETS_CONTENTS_LIST, IAssetContents } from "src/app/data";
 import { ThemeService } from "src/app/feature/theme/services/theme.service";
 import { AsyncServiceBase } from "src/app/shared/services/asyncService.base";
 import { TemplateTranslateService } from "./template-translate.service";
-import { IAssetEntry, IContentsEntryMinimal } from "packages/data-models/deployment.model";
+import { IAssetEntry, IContentsEntryMinimal } from "data-models";
 import { HttpClient } from "@angular/common/http";
 import { lastValueFrom } from "rxjs";
 

@@ -20,7 +20,7 @@ export class CrashlyticsService extends AsyncServiceBase {
   private async initialise() {
     if (Capacitor.isNativePlatform()) {
       await this.setEnabled({ enabled: true });
-      const { uuid } = await Device.getId();
+      const { identifier: uuid } = await Device.getId();
       await this.setUserId({ userId: uuid });
       // populate webview useragent info
       const { webViewVersion } = await Device.getInfo();

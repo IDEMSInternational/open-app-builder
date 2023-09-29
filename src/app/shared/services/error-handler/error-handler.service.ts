@@ -58,7 +58,7 @@ export class ErrorHandlerService extends ErrorHandler {
    * Custom error handling. Will always call default handler, as well
    * as any 3rd party integrations
    */
-  async handleError(error: Error) {
+  public async handleError(error: Error) {
     await this.logError(error);
     super.handleError(error);
   }
@@ -83,7 +83,7 @@ export class ErrorHandlerService extends ErrorHandler {
       enabled: true,
       tracesSampleRate: 0, // ensure performance traces not sent (not installed)
     });
-    const { uuid } = await Device.getId();
+    const { identifier: uuid } = await Device.getId();
     Sentry.setUser({ id: uuid });
   }
 

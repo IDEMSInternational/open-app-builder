@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "es2015",
+    "target": "ESNext",
     "noEmit": true,
     "moduleResolution": "node",
     "module": "commonjs",
@@ -9,5 +9,6 @@
     // Global type definitions.
     "typeRoots": ["./node_modules/@types"]
   },
-  "include": ["src/**/*.ts"]
+  "include": ["src/**/*.ts"],
+  "exclude": ["dist"]
 }

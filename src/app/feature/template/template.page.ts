@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
-import { FlowTypes } from "packages/data-models";
+import { FlowTypes } from "data-models";
 import { AppDataService } from "src/app/shared/services/data/app-data.service";
 
 @Component({

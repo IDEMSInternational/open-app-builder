@@ -5,19 +5,10 @@ import "dexie-syncable";
 // import "./db-sync.service";
 import { ICreateChange, IDatabaseChange, IDeleteChange, IUpdateChange } from "dexie-observable/api";
 import { Subject } from "rxjs";
-import {
-  DB_TABLES,
-  DB_VERSION,
-  IDBMeta,
-  IDBEvent,
-  IDBTable,
-  IFlowEvent,
-} from "data-models/db.model";
+import { DB_TABLES, DB_VERSION, IDBMeta, IDBEvent, IDBTable, IFlowEvent } from "data-models";
 import { arrayToHashmapArray, generateTimestamp } from "../../utils";
 import { EventService } from "../event/event.service";
 import { AsyncServiceBase } from "../asyncService.base";
-
-const db = new Dexie("plh-app-db");
 
 window.addEventListener("unhandledrejection", (event) => {
   event.preventDefault(); // Prevents default handler (would log to console).
@@ -25,13 +16,11 @@ window.addEventListener("unhandledrejection", (event) => {
   console.warn("Unhandled promise rejection:", reason && (reason.stack || reason));
 });
 
-db.version(DB_VERSION).stores(DB_TABLES);
-
 @Injectable({
   providedIn: "root",
 })
 export class DbService extends AsyncServiceBase {
-  private db = db;
+  private db = new Dexie("plh-app-db");
   /**
    * Creates a subject to emit changes at an individual table level
    * Note - this only tracks create and update events, which will emit data value to the subject
@@ -45,9 +34,10 @@ export class DbService extends AsyncServiceBase {
   private async init() {
     await this.ensureAsyncServicesReady([]);
     this.ensureSyncServicesReady([this.eventService]);
+    this.db.version(DB_VERSION).stores(DB_TABLES);
     Object.keys(DB_TABLES).forEach((table_id) => (this.tableChanges$[table_id] = new Subject()));
     this._listenToDBChanges();
-    await db.open().catch((err) => {
+    await this.db.open().catch((err) => {
       console.error("could not open db", err);
       // NOTE - invalid state error suggests dexie not supported, so
       // try reloading with cachedb disabled (see db index for implementation)
@@ -120,7 +110,7 @@ export class DbService extends AsyncServiceBase {
    */
   private _listenToDBChanges() {
     // Force typings to recognise dexie-observable plugin
-    const on = db.on as DbEvents & IDBChangEvent;
+    const on = this.db.on as DbEvents & IDBChangEvent;
     on("changes", (changes) => {
       changes.forEach((change) => {
         switch (change.type) {
@@ -148,13 +138,13 @@ export class DbService extends AsyncServiceBase {
       let res: any;
       switch (operation) {
         case "CREATE":
-          res = await db.table(tableId).add(data);
+          res = await this.db.table(tableId).add(data);
           break;
         case "UPDATE":
-          res = await db.table(tableId).update(id, data);
+          res = await this.db.table(tableId).update(id, data);
           break;
         case "DELETE":
-          res = await db.table(tableId).delete(id);
+          res = await this.db.table(tableId).delete(id);
           break;
       }
       return this.eventService.respond(eventId, res);

@@ -5,90 +5,17 @@ on:
     types: [labeled, synchronize]
     branches:
       - master
+concurrency:
+  group: test-visual-compare-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+# env:
+  # TODO - replace with dedicated screenshots deployment
+  # DEPLOYMENT: plh_global
+
 jobs:
-  test_visual_compare:
+  generate:
     if: contains(github.event.pull_request.labels.*.name, 'Test - visual')
-    runs-on: ubuntu-latest
-    timeout-minutes: 60
-    steps:
-      - uses: actions/checkout@v3
-        with:
-          lfs: true
-      - name: Node ${{ matrix.node-version }}
-        uses: actions/setup-node@v3
-        with:
-          node-version: 16
-          cache: 'yarn'
-
-      # Alt implementation to DL artifact using action instead of download script
-
-      # Download artifact populated from latest `test-visual-generate` workflow run on master branch
-      # - name: Download artifact
-      #   uses: dawidd6/action-download-artifact@v2
-      #   with:
-      #     github_token: ${{secrets.GITHUB_TOKEN}}
-      #     workflow: test-visual-generate.yml
-      #     workflow_conclusion: success
-      #     branch: master # TODO replace with master
-      #     name: screenshots-artifact
-      #     path: extract_here
-      # - name: Test
-      #   run: cat artifact/sha | grep $GITHUB_SHA
-
-      - name: Populate firebaseConfig.ts
-        env:
-          FIREBASE_CONFIG_TS: ${{ secrets.FIREBASE_CONFIG_TS }}
-        run: echo $FIREBASE_CONFIG_TS > src/environments/firebaseConfig.ts
-      - run: yarn install
-        # Currently all tests are run against global deployment as this contains debug sheets
-        # In the future we will want to move this to a custom deployment for testing purposes
-      - name: Set Deployment
-        run: yarn workflow deployment set "plh_global"
-        # Create a production build and serve via a local webserver
-        # HACK - as lifecycle_actions block template view simply remove them all
-      - name : Create production build
-        run: |
-          yarn build
-          rm -R www/assets/app_data/sheets/data_list/lifecycle_actions
-      # Serve production build locally and generate screenshots. Gracefully terminate server after completion
-      - name: Start server and compare screenshots
-        run: yarn workspace test-visual start compare --concurrency 5 --serve-www
-      - name: Upload artifact
-        uses: actions/upload-artifact@v2
-        with:
-          name: test-visual-diffs-artifact
-          path: packages/test-visual/output/diffs
-          retention-days: 90
-          # if-no-files-found: error
-
-      # Read from generated output txt files and save to env as multiline variables for display in comment
-      # https://docs.github.com/en/actions/learn-github-actions/workflow-commands-for-github-actions#multiline-strings
-      # Alt could be to append to existing text files and pass path to sticky comment action
-      - name: Set output summary text
-        id: set_output_summary
-        run: |
-          SUMMARY_TEXT=$(cat packages/test-visual/output/summary.txt)
-          echo "SUMMARY_TEXT<<EOF" >> $GITHUB_ENV
-          echo "$SUMMARY_TEXT" >> $GITHUB_ENV
-          echo "EOF" >> $GITHUB_ENV
-          BIGGEST_DIFFS=$(cat packages/test-visual/output/biggestDiffs.txt)
-          echo "BIGGEST_DIFFS<<EOF" >> $GITHUB_ENV
-          echo "$BIGGEST_DIFFS" >> $GITHUB_ENV
-          echo "EOF" >> $GITHUB_ENV
-
-      - name: "Post to PR"
-        uses: marocchino/sticky-pull-request-comment@v2
-        with:
-          # recreate: true
-          message: |
-            **Visual Test Summary**
-            ${{ env.SUMMARY_TEXT }}
-
-            **Largest Differences**
-            ${{ env.BIGGEST_DIFFS }}
-
-            **Download Link**
-            https://nightly.link/IDEMSInternational/parenting-app-ui/actions/runs/${{github.run_id}}
-
-            **Run Details**
-            https://github.com/IDEMSInternational/parenting-app-ui/actions/runs/${{github.run_id}}
+    uses: ./.github/workflows/test-visual.yml
+    secrets: inherit
+    with:
+      compare: true

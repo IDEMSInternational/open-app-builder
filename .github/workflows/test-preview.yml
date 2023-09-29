@@ -1,7 +1,8 @@
 # Deploy preview url for labelled PRs
 # Specifies deployment target based on pr target branch
-# Master -> plh_global
+# Master -> debug
 # Deployment/{deployment_name} -> {deployment_name}
+
 name: Deployment Preview
 on:
   pull_request:
@@ -9,48 +10,39 @@ on:
     branches:
       - deployment/*
       - master
+concurrency:
+  group: deployment-preview-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 jobs:
-  build_and_preview:
+  build:  
     if: contains(github.event.pull_request.labels.*.name, 'Test - preview')
+    uses: ./.github/workflows/web-build.yml
+    secrets: inherit
+    with:
+      build-flags: --configuration "production,preview"
+      # use branch name from PR target as default
+      # https://docs.github.com/en/actions/learn-github-actions/variables#default-environment-variables
+      deployment: ${{ github.base_ref }} 
+
+  deploy_preview:
+    needs: build
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+      - name: Download Build Artifact
+        uses: actions/download-artifact@v3
         with:
-          lfs: true
-      # Extract deployment name as the slug of target PR branch via string operators, e.g. /deployment/plh_tz -> plh_tz
-      # https://www.linuxjournal.com/article/8919, https://github.com/greenbone/gsa/actions/runs/1277581365/workflow
-      - name: Set Environment Deployment
+          name: www
+      - name: Extract Build folder
         run: |
-          if [ "$GITHUB_BASE_REF" = "master" ];                    \
-          then echo "DEPLOYMENT_NAME=plh_global" >> $GITHUB_ENV;              \
-          else echo "DEPLOYMENT_NAME=${GITHUB_BASE_REF##*/}" >> $GITHUB_ENV;  \
-          fi;
-          echo "SHA_SHORT=`echo ${{github.event.pull_request.head.sha}} | cut -c1-6`" >> $GITHUB_ENV
-        shell: bash
-      - run: |
-          echo $GITHUB_BASE_REF
-          echo $DEPLOYMENT_NAME
-      - name: Node ${{ matrix.node-version }}
-        uses: actions/setup-node@v3
-        with:
-          node-version: 16
-          cache: 'yarn'
-      - name: Populate environment config
-        env:
-          FIREBASE_CONFIG_TS: ${{ secrets.FIREBASE_CONFIG_TS }}
-        run: |
-          echo "export const GIT_SHA = \"$SHA_SHORT\";" > src/environments/sha.ts
-          echo $FIREBASE_CONFIG_TS > src/environments/firebaseConfig.ts
-      - run: yarn install
-      - name: Set Scripts Deployment
-        run: yarn workflow deployment set $DEPLOYMENT_NAME
-      - run: yarn build --configuration "production,preview"
+          mkdir www
+          tar -xf artifact.tar --directory www
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: "${{ secrets.GITHUB_TOKEN }}"
           firebaseServiceAccount: "${{ secrets.FIREBASE_SERVICE_ACCOUNT_PLH_TEENS_APP1 }}"
           projectId: plh-teens-app1
-          target: "${{env.DEPLOYMENT_NAME}}"
+          target: "${{needs.build.outputs.DEPLOYMENT_NAME}}"
           expires: 14d
         env:
           FIREBASE_CLI_PREVIEWS: hostingchannels

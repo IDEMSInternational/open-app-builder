@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { IFlowEvent } from "data-models/db.model";
+import { IFlowEvent } from "data-models";
 import { FlowTypes } from "data-models";
 import { DbService } from "src/app/shared/services/db/db.service";
 import { LocalStorageService } from "src/app/shared/services/local-storage/local-storage.service";

@@ -1,4 +1,4 @@
-import { IWorkflowContext } from "data-models/workflows";
+import { IWorkflowContext } from "workflows";
 import { parseCommand } from "../../commands";
 
 /**
@@ -10,12 +10,16 @@ const runWorkflow = async (options: {
   parent: IWorkflowContext;
   args?: string[];
 }) => {
-  const { name, args, parent } = options;
-  let cmd = `workflow run ${name} --parent ${parent.name}`;
+  const { name, parent, args } = options;
+  const parentName = parent ? Object.values(parent)[0].name : null;
+  let cmd = `workflow run ${name}`;
+  if (parentName) {
+    cmd += ` --parent ${parentName}`;
+  }
   if (args) {
     cmd += ` ${args.join(" ")}`;
   }
-  parseCommand(cmd);
+  await parseCommand(cmd);
 };
 
 export default { runWorkflow };
