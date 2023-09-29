@@ -326,15 +326,24 @@ export function deepDiffObjects<T extends Object, U extends Object>(a: T, b: U) 
   return diff(a, b) as RecursivePartial<T | U>;
 }
 
-/** @returns the keys from the first object that are not present in the second object. */
-export function shallowDiffObjectKeys<T extends Object, U extends Object>(a: T, b: U) {
-  const additionalKeys = [];
-  for (let key in a) {
-    if (!b.hasOwnProperty(key)) {
-      additionalKeys.push(key);
-    }
-  }
-  return additionalKeys;
+/**
+ * @returns list of keys added and deleted from `a` object
+ * @example
+ * ```ts
+ * const a = { key1: "", key2: "" };
+ * const b = { key2: "", key3: "" };
+ * compareObjectKeys(a,b)
+ * // result
+ * { added: [ 'key3' ], deleted: [ 'key1' ] }
+ * ```
+ * */
+export function compareObjectKeys<T extends Object, U extends Object>(a: T, b: U) {
+  const aKeys = Object.keys(a);
+  const bKeys = Object.keys(b);
+  return {
+    added: bKeys.filter((key) => !(key in a)),
+    deleted: aKeys.filter((key) => !(key in b)),
+  };
 }
 
 export function isObject(item: any) {

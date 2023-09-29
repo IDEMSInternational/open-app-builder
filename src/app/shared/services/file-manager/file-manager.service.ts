@@ -5,7 +5,6 @@ import write_blob from "capacitor-blob-writer";
 import { SyncServiceBase } from "../syncService.base";
 import { environment } from "src/environments/environment";
 import { IAssetContents } from "src/app/data";
-import { IAssetEntry } from "packages/data-models/deployment.model";
 
 @Injectable({
   providedIn: "root",
