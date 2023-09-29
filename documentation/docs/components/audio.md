@@ -1,5 +1,7 @@
 # Audio
 
+This component enables one to play audio files such as music or recorded audio within the app. It provides a means to play and pause, check audio progress and control playback.
+
 ## Example
 
 | type      | name          | value          |parameter_list |
