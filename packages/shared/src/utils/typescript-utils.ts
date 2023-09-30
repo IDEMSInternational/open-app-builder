@@ -69,3 +69,11 @@ export async function readTSDefaultExport(filepath: string) {
   const res = await import(filepath);
   return res.default;
 }
+
+/** Use typescript compiler to transpile TS string to JS for a given target */
+export async function tsToJS(tsData: Buffer) {
+  const js = ts.transpileModule(tsData.toString("utf-8"), {
+    compilerOptions: { module: ts.ModuleKind.CommonJS, target: ts.ScriptTarget.ESNext },
+  });
+  return js.outputText;
+}

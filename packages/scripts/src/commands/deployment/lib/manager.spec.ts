@@ -1,53 +1,73 @@
 import fs from "fs-extra";
 import mockFs from "mock-fs";
 import path from "path";
-import inquirer from "inquirer";
 import { DeploymentManager } from "./manager";
 import { DEPLOYMENTS_PATH } from "shared";
+import { IDeploymentConfig } from "data-models";
+import { mockErrorLogger, useMockErrorLogger } from "../../../../test/helpers/utils";
 
 const deploymentsBase = path.resolve(DEPLOYMENTS_PATH);
+
+const mockConfigTS = `
+  import { generateDeploymentConfig } from "scripts";
+  const config = generateDeploymentConfig("test_1");
+  export default config
+`;
 
 const mockDirs = {
   [deploymentsBase]: {
     test_1: {
-      "config.ts": `export default {}`,
+      "config.ts": mockConfigTS,
     },
   },
 };
 
 class TestDeploymentManager extends DeploymentManager {
+  // override interactive prompt method
   protected async promptDeploymentSelect() {
-    console.log("prompt deployment select");
     return "test_1";
+  }
+  // override ts compile method
+  protected async compile(configTsPath: string) {
+    return { name: "test_1", _validated: true } as IDeploymentConfig;
   }
 }
 
 // TODO
 describe("Deployment", () => {
   let manager: DeploymentManager;
+  let errorLogger: jasmine.Spy;
   beforeEach(() => {
-    manager = new TestDeploymentManager();
-  });
-  fit("mock setup", () => {
     mockFs(mockDirs);
+    manager = new TestDeploymentManager();
+    errorLogger = useMockErrorLogger();
+  });
+  it("mock setup", () => {
     const deploymentDirs = fs.readdirSync(deploymentsBase);
     expect(deploymentDirs).toEqual(["test_1"]);
   });
 
-  fit("Lists deployments", async () => {
-    mockFs(mockDirs);
-    manager.load();
-    console.log("list deployments");
-
-    // TODO - provide mock/spy for import method as mock-fs won't have path
-
-    // TODO - refactor all activedeployment.get methods to be async and remove sync method
-
-    // TODO - consider removing ts deployments in favor of JS (electron can't import at runtime)
-
-    // TODO - separate load/get methods to ideally just return from memory and await load on script start
-    // although could still use typescript dep to convert (???)
+  it("Loads named deployment", async () => {
+    const res = await manager.load("test_1");
+    expect(res.name).toEqual("test_1");
   });
+
+  it("Logs error if deployment not found", async () => {
+    await manager.load("missing");
+    expect(mockErrorLogger).toHaveBeenCalledTimes(1);
+    expect(mockErrorLogger.calls.first().args[0].msg1).toEqual(
+      "deployment does not exist, select a different deployment"
+    );
+  });
+
+  // TODO - provide mock/spy for import method as mock-fs won't have path
+
+  // TODO - refactor all activedeployment.get methods to be async and remove sync method
+
+  // TODO - consider removing ts deployments in favor of JS (electron can't import at runtime)
+
+  // TODO - separate load/get methods to ideally just return from memory and await load on script start
+  // although could still use typescript dep to convert (???)
 
   it("Writes compiled deployment to disk, stringifying functions", () => {});
 
