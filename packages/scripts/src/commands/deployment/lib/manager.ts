@@ -6,7 +6,7 @@ import { compileDeployment } from "./utils";
 
 export class DeploymentManager {
   /** List of all compiled deployments */
-  public deployments: { [name: string]: IDeploymentConfig };
+  public deployments: { [name: string]: IDeploymentConfig } = {};
 
   private activeDeploymentName: string;
 
@@ -23,7 +23,7 @@ export class DeploymentManager {
     }
     if (!this.deployments[name]) {
       Logger.error({
-        msg1: `${name} deployment has been loaded`,
+        msg1: `${name} deployment has not been loaded`,
         msg2: `Script should call load method before get`,
       });
     }
@@ -31,18 +31,19 @@ export class DeploymentManager {
   }
 
   /** Load active deployment, prompting select if unset * */
-  public async load(configPath?: string): Promise<IDeploymentConfig> {
+  public async load(deploymentName?: string): Promise<IDeploymentConfig> {
+    const configPath = resolve(DEPLOYMENTS_PATH, deploymentName, "config.ts");
     if (!configPath) return this.loadDefaultDeployment();
     // If deployment ts removed prompt set
     if (!existsSync(configPath)) {
-      Logger.warning({
+      Logger.error({
         msg1: `deployment does not exist, select a different deployment`,
         msg2: configPath,
       });
-      return this.set();
+      // return this.set();
     }
     // Compile and return
-    const deploymentConfig = await compileDeployment(configPath);
+    const deploymentConfig = await this.compile(configPath);
     if (!deploymentConfig._validated) {
       Logger.error({
         msg1: "Config file incorrectly defined",
@@ -55,6 +56,10 @@ export class DeploymentManager {
     this.deployments[name] = deploymentConfig;
     this.activeDeploymentName = name;
     return deploymentConfig;
+  }
+
+  protected async compile(configPath: string) {
+    return compileDeployment(configPath);
   }
 
   /** Set active deployment */
