@@ -10,7 +10,6 @@ import { XLSXWorkbookProcessor } from "./processors/xlsxWorkbook";
 import { JsonFileCache } from "./cacheStrategy/jsonFile";
 import {
   generateFolderFlatMap,
-  IContentsEntry,
   createChildFileLogger,
   logSheetsSummary,
   getLogs,
@@ -29,18 +28,26 @@ import { FlowParserProcessor } from "./processors/flowParser/flowParser";
 const program = new Command("convert");
 interface IProgramOptions {
   cacheFolder: string;
+  /** comma-separated list in case of multiple folders */
   inputFolder: string;
   outputFolder: string;
   skipCache?: boolean;
 }
+export interface IConverterOptions extends Omit<IProgramOptions, "inputFolder"> {
+  inputFolders: string[];
+}
 export default program
   .description("Convert app data")
-  .requiredOption("-i --input-folder <string>", "")
+  .requiredOption("-i --input-folders <string>", "")
   .requiredOption("-c --cache-folder <string>", "")
   .requiredOption("-o --output-folder <string>", "")
   .option("-s --skip-cache", "Wipe local conversion cache and process all files")
   .action(async (options: IProgramOptions) => {
-    await new AppDataConverter(options).run();
+    const mappedOptions: IConverterOptions = {
+      ...options,
+      inputFolders: options.inputFolder.split(",").map((f) => f.trim()),
+    };
+    await new AppDataConverter(mappedOptions).run();
   });
 
 /***************************************************************************************
@@ -63,15 +70,15 @@ export class AppDataConverter {
 
   cache: JsonFileCache;
 
-  constructor(private options: IProgramOptions, testOverrides: Partial<AppDataConverter> = {}) {
+  constructor(private options: IConverterOptions, testOverrides: Partial<AppDataConverter> = {}) {
     // optional overrides, used for tests
     if (testOverrides.version) this.version = testOverrides.version;
     if (testOverrides.activeDeployment) this.activeDeployment = testOverrides.activeDeployment;
 
     console.log(chalk.yellow("App Data Convert"));
     // Setup Folders
-    const { inputFolder, outputFolder, cacheFolder } = options;
-    [inputFolder, outputFolder, cacheFolder].forEach((p) => fs.ensureDir(p));
+    const { outputFolder, cacheFolder } = options;
+    [outputFolder, cacheFolder].forEach((p) => fs.ensureDir(p));
     if (this.options.skipCache) {
       this.cache.clear();
     }
@@ -84,57 +91,32 @@ export class AppDataConverter {
    * objects representing sheet names and data values
    */
   public async run() {
-    const { inputFolder, outputFolder, cacheFolder } = this.options;
+    clearLogs();
+    const { inputFolders, outputFolder, cacheFolder } = this.options;
+    const filterFn = (relativePath: string) => relativePath.endsWith(".xlsx");
+    let mergedOutputsHashmap: Record<string, FlowTypes.FlowTypeWithData> = {};
     const converterPaths: IConverterPaths = {
       SHEETS_CACHE_FOLDER: cacheFolder,
-      SHEETS_INPUT_FOLDER: inputFolder,
+      SHEETS_INPUT_FOLDER: "",
       SHEETS_OUTPUT_FOLDER: outputFolder,
     };
-    const processPipeline: {
-      name: string;
-      description: string;
-      fn: (context: any) => Promise<any>;
-    }[] = [
-      {
-        name: "xlsx_read",
-        description: "Load list of all input xlsx workbooks from folder",
-        fn: async () => {
-          const filterFn = (relativePath: string) => relativePath.endsWith(".xlsx");
-          return generateFolderFlatMap(inputFolder, { filterFn });
-        },
-      },
-      {
-        name: "xlsx_convert",
-        description: "Convert all xlsx workbooks to json arrays",
-        fn: async (list: { [key: string]: IContentsEntry }) => {
-          const xlsxConverter = new XLSXWorkbookProcessor(converterPaths);
-          return xlsxConverter.process(Object.values(list));
-        },
-      },
-      {
-        name: "jsons_clean",
-        description: "Flatten json arrays to single list of all sheets, filter and sort",
-        fn: async (data: FlowTypes.FlowTypeWithData[][]) => this.cleanFlowOutputs(data),
-      },
-      {
-        name: "flows_process",
-        description: "Apply specific parsers for flowtypes",
-        fn: async (data: FlowTypes.FlowTypeWithData[]) => {
-          const processor = new FlowParserProcessor(converterPaths);
-          return processor.process(data);
-        },
-      },
-    ];
-    let input: any;
-    let output: any;
-    clearLogs();
-    for (const step of processPipeline) {
-      output = await step.fn(input);
-      this.logger.debug({ step: step.name, output });
-      input = output;
+    // Process each input folder, converting xlsx to json
+    for (const inputFolder of inputFolders) {
+      converterPaths.SHEETS_INPUT_FOLDER = inputFolder;
+      const list = generateFolderFlatMap(inputFolder, { filterFn });
+      const xlsxConverter = new XLSXWorkbookProcessor(converterPaths);
+      const data = await xlsxConverter.process(Object.values(list));
+      const outputs = this.cleanFlowOutputs(data);
+      // merge outputs across folders, with latter processed overriding any flows with same type and name
+      for (const output of outputs) {
+        mergedOutputsHashmap[`${output.flow_type}||${output.flow_name}`] = output;
+      }
+      this.logger.debug({ step: inputFolder, outputs });
     }
-    const result = output as IParsedWorkbookData;
-
+    // Process jsons as flows
+    const processor = new FlowParserProcessor(converterPaths);
+    const jsonFlows = Object.values(mergedOutputsHashmap);
+    const result = (await processor.process(jsonFlows)) as IParsedWorkbookData;
     const { errors, warnings } = this.logOutputs(result);
     return { result, errors, warnings };
   }

@@ -1,5 +1,5 @@
 import { normalize } from "path";
-import { replicateDir } from "shared";
+import { logWarning, replicateDir } from "shared";
 import type { IDeploymentWorkflows, IWorkflowStepContext } from "./workflow.model";
 
 /** Default workflows made available to all deployments */
@@ -52,19 +52,33 @@ const workflows: IDeploymentWorkflows = {
       {
         name: "sheets_dl",
         function: async ({ tasks, config, options }) => {
-          const folderId = config.google_drive.sheets_folder_id;
+          // HACK - ensure drive id provided as array
+          let { sheets_folder_ids, sheets_folder_id } = config.google_drive;
+          if (!sheets_folder_ids) {
+            logWarning({
+              msg1: "[sheets_folder_id] config property is deprecated",
+              msg2: "use [sheets_folder_ids] instead",
+            });
+            sheets_folder_ids = [sheets_folder_id];
+          }
+          /** Return output of paths to downloaded sheets */
+          let outputs: string[] = [];
           // If skipping download still need to return download folder for next step
           if (options.skipDownload) {
-            return tasks.gdrive.getOutputFolder(folderId);
+            outputs = sheets_folder_ids.map((folder_id) => tasks.gdrive.getOutputFolder(folder_id));
           } else {
-            return tasks.gdrive.download({ folderId });
+            for (const folderId of sheets_folder_ids) {
+              const output = await tasks.gdrive.download({ folderId });
+              outputs.push(output);
+            }
           }
+          return outputs;
         },
       },
       {
         name: "sheets_process",
         function: async ({ tasks, workflow }) =>
-          tasks.template.process({ inputFolder: workflow.sheets_dl.output }),
+          tasks.template.process({ inputFolders: workflow.sheets_dl.output }),
       },
       {
         name: "translations_apply",
