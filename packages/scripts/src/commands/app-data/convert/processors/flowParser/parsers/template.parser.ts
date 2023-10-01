@@ -50,7 +50,7 @@ export class TemplateParser extends DefaultParser {
       row.action_list = this.hackUpdateActionSelfReferences(row.action_list, row.name);
     }
     // extract dynamic fields for runtime evaluation
-    const dynamicFields = extractDynamicFields(row);
+    const dynamicFields = extractDynamicFields(row) as FlowTypes.IDynamicField;
     if (dynamicFields) {
       row._dynamicFields = dynamicFields;
       row._dynamicDependencies = extractDynamicDependencies(dynamicFields);

@@ -10,7 +10,7 @@ import mockFs from "mock-fs";
 import path from "path";
 import { IAssetEntryHashmap, IDeploymentConfigJson } from "data-models/deployment.model";
 import { useMockErrorLogger } from "../../../../test/helpers/utils";
-import type { ActiveDeployment } from "../../../models";
+import { ActiveDeployment } from "../../../models";
 
 /** Mock file system folders for use in tests */
 const mockDirs = {

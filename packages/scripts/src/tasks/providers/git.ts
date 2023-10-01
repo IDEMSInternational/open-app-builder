@@ -5,13 +5,13 @@ import semver from "semver";
 import simpleGit, { ResetMode } from "simple-git";
 import type { SimpleGit, FileStatusResult } from "simple-git";
 import { Project, SyntaxKind } from "ts-morph";
-import { ActiveDeployment } from "../../commands/";
 import { Logger, logOutput, openUrl, promptOptions } from "../../utils";
-import type { IDeploymentConfigJson } from "../../models/deployment.models";
+import { IDeploymentConfig } from "data-models";
+import { ActiveDeployment } from "../../models";
 
 class GitProvider {
   private git: SimpleGit;
-  private deployment: IDeploymentConfigJson;
+  private deployment: IDeploymentConfig;
 
   /**
    * NOTE - as constructor not used all public api endpoints should call initialiseGitProvider()
@@ -162,7 +162,7 @@ class GitProvider {
    * Update the workflow config.ts git child property directly by parsing and updating ts nodes
    * https://stackoverflow.com/questions/61213501/read-and-update-object-with-typescript-compiler-api
    */
-  private async updateGitConfigTs(update: Partial<IDeploymentConfigJson["git"]>) {
+  private async updateGitConfigTs(update: Partial<IDeploymentConfig["git"]>) {
     // Setup ts reader
     const project = new Project();
     const { _config_ts_path } = this.deployment;
@@ -203,7 +203,7 @@ class GitProvider {
     const indentSize = editableNode.getChildIndentationLevel();
     // Update individual values
     // TODO - only supports string literal values
-    for (const [name, value] of Object.entries(update)) {
+    for (const [name, value] of Object.entries<any>(update)) {
       const childNode = editableNode.getProperty(name);
       if (childNode) {
         const stringLiteralNode = childNode.getFirstChildByKindOrThrow(SyntaxKind.StringLiteral);

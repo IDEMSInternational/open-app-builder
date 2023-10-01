@@ -14,7 +14,7 @@ export async function compileDeployment(inputTsPath: string) {
   const _workspace_path = resolve(inputTsPath, "../");
   deploymentConfig._workspace_path = _workspace_path;
   deploymentConfig._config_version = DEPLOYMENT_CONFIG_VERSION;
-  const rewritten = rewriteConfigPaths(deploymentConfig);
+  const rewritten = rewriteConfigPaths(deploymentConfig, _workspace_path);
 
   // TODO - consider caching methods to recompile if deployment or parent change
   // (previously used, but might not be needed if moving to js file deployment)
@@ -24,11 +24,11 @@ export async function compileDeployment(inputTsPath: string) {
   return rewritten;
 }
 
-export function writeOutput() {
-  writeFileSync(outputJsonPath, JSON.stringify(rewritten, null, 2));
-  const { mtime } = statSync(inputTsPath);
-  utimesSync(outputJsonPath, mtime, mtime);
-}
+// export function writeOutput() {
+//   writeFileSync(outputJsonPath, JSON.stringify(rewritten, null, 2));
+//   const { mtime } = statSync(inputTsPath);
+//   utimesSync(outputJsonPath, mtime, mtime);
+// }
 
 /**
  * When reading deployment json files convert stringified functions back to real functions
@@ -50,38 +50,37 @@ async function loadFileDefaultExport(input: string) {
 }
 
 /** Take a base deployment config, merge with metadata fields, evaluate relative paths */
-function convertDeploymentToJson(
-  deployment: IDeploymentConfig,
-  _config_ts_path: string
-): IDeploymentConfig {
-  const _workspace_path = resolve(_config_ts_path, "../");
-  const _config_version = DEPLOYMENT_CONFIG_VERSION;
+// function convertDeploymentToJson(
+//   deployment: IDeploymentConfig,
+//   _config_ts_path: string
+// ): IDeploymentConfig {
+//   const _workspace_path = resolve(_config_ts_path, "../");
+//   const _config_version = DEPLOYMENT_CONFIG_VERSION;
 
-  // rewrite relative urls to absolute
-  const rewritten = rewriteConfigPaths(deployment, _workspace_path);
-  const converted = convertFunctionsToStrings(rewritten);
+//   // rewrite relative urls to absolute
+//   const rewritten = rewriteConfigPaths(deployment, _workspace_path);
+//   const converted = convertFunctionsToStrings(rewritten);
 
-  return { ...converted, _workspace_path, _config_ts_path, _config_version };
-}
+//   return { ...converted, _workspace_path, _config_ts_path, _config_version };
+// }
 
-function rewriteConfigPaths<T>(config: IDeploymentConfig) {
-  const relativePathRoot = config._workspace_path;
-  Object.entries(config).forEach(([key, value]) => {
+function rewriteConfigPaths(data: Record<string, any>, workspacePath: string) {
+  Object.entries(data).forEach(([key, value]) => {
     if (value && typeof value === "object") {
-      config[key] = rewriteConfigPaths(value);
+      data[key] = rewriteConfigPaths(value, workspacePath);
     }
     if (key.endsWith("_path") && typeof value === "string") {
       // handle paths relative to config file
       if (value.startsWith(".")) {
-        config[key] = resolve(relativePathRoot, value);
+        data[key] = resolve(workspacePath, value);
       }
       // assume all other paths are relative to workspace
       else {
-        config[key] = resolve(ROOT_DIR, value);
+        data[key] = resolve(ROOT_DIR, value);
       }
     }
   });
-  return config;
+  return data;
 }
 
 /** When stringifying json functions cannot be converted, so pre-convert any using function .toString() method */

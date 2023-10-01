@@ -6,7 +6,7 @@ import { compileDeployment } from "./utils";
 
 export class DeploymentManager {
   /** List of all compiled deployments */
-  public deployments: { [name: string]: IDeploymentConfig } = {};
+  public deployments: Record<string, IDeploymentConfig> = {};
 
   private activeDeploymentName: string;
 
@@ -32,18 +32,20 @@ export class DeploymentManager {
 
   /** Load active deployment, prompting select if unset * */
   public async load(deploymentName?: string): Promise<IDeploymentConfig> {
+    console.log("load deployment", deploymentName);
+    if (!deploymentName) return this.loadDefaultDeployment();
     const configPath = resolve(DEPLOYMENTS_PATH, deploymentName, "config.ts");
-    if (!configPath) return this.loadDefaultDeployment();
+
     // If deployment ts removed prompt set
     if (!existsSync(configPath)) {
       Logger.error({
-        msg1: `deployment does not exist, select a different deployment`,
+        msg1: `Deployment does not exist, select a different deployment`,
         msg2: configPath,
       });
       // return this.set();
     }
     // Compile and return
-    const deploymentConfig = await this.compile(configPath);
+    const deploymentConfig = (await this.compile(configPath)) as IDeploymentConfig;
     if (!deploymentConfig._validated) {
       Logger.error({
         msg1: "Config file incorrectly defined",
@@ -77,8 +79,9 @@ export class DeploymentManager {
       removeSync(angularCacheDir);
     }
     // Load deployment and write active deployment json
-    const deploymentConfig = await this.load(configPath);
+    const deploymentConfig = await this.load(deploymentName);
     this.writeActiveDeploymentJson(deploymentConfig);
+    this.activeDeploymentName = deploymentName;
     return deploymentConfig;
   }
 
@@ -91,7 +94,7 @@ export class DeploymentManager {
     const deploymentJson = readJsonSync(defaultJsonPath) as IDeploymentConfig;
     // TODO - convert string back to function
 
-    return this.load(deploymentJson._config_ts_path);
+    return this.load(deploymentJson.name);
   }
 
   /** Store parsed deployment as json so can be directly accessed from frontend */

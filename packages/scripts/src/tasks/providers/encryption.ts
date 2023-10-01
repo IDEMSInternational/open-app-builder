@@ -10,7 +10,7 @@ import {
 } from "fs-extra";
 import NodeRSA from "node-rsa";
 import { basename, resolve } from "path";
-import { ActiveDeployment } from "../../commands/";
+import { ActiveDeployment } from "../../models";
 import { DEPLOYMENTS_PATH } from "../../paths";
 import { logOutput, promptConfirmation, promptEditorInput } from "../../utils";
 

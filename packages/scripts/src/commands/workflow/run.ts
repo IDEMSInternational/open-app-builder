@@ -7,7 +7,7 @@ import { Command } from "commander";
 import { IDeploymentWorkflows, IWorkflow, WORKFLOW_DEFAULTS } from "workflows";
 import ALL_TASKS from "../../tasks";
 import { Logger, logProgramHelp, pad, promptOptions } from "../../utils";
-import type { IDeploymentConfigJson } from "data-models";
+import type { IDeploymentConfig } from "data-models";
 import { ActiveDeployment } from "../../models";
 
 const program = new Command("run");
@@ -41,7 +41,7 @@ export default program
 export class WorkflowRunnerClass {
   tasks = ALL_TASKS;
   workflows: IDeploymentWorkflows = {};
-  config: IDeploymentConfigJson;
+  config: IDeploymentConfig;
   activeWorkflowOptions: { [name: string]: string | boolean } = {};
 
   /**
@@ -53,7 +53,7 @@ export class WorkflowRunnerClass {
     // load custom workflows
     // TODO - CC 2023-08-24 custom workflows not used and compiling TS difficult at runtime
     // so should consider removing feature
-    this.config = ActiveDeployment.load();
+    this.config = ActiveDeployment.get();
     const { _workspace_path } = this.config as any;
     const customWorkflowFiles = [];
     if (_workspace_path) {
