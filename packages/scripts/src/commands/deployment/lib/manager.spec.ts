@@ -56,7 +56,7 @@ describe("Deployment", () => {
     await manager.load("missing");
     expect(mockErrorLogger).toHaveBeenCalledTimes(1);
     expect(mockErrorLogger.calls.first().args[0].msg1).toEqual(
-      "deployment does not exist, select a different deployment"
+      "Deployment does not exist, select a different deployment"
     );
   });
 

@@ -2,7 +2,8 @@ import { promptInput } from "../../utils";
 
 import { createDeployment } from "../../commands/deployment/lib/create";
 import { importRepo } from "../../commands/deployment/lib/import";
-import { ActiveDeployment } from "../../commands/deployment/lib/manager";
+import { DeploymentManager } from "../../commands/deployment/lib/manager";
+import { ActiveDeployment } from "../../models";
 
 class DeploymentProvider {
   /** Create a new app deployment configuration */

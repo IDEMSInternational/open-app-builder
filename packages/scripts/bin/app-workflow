@@ -14,9 +14,10 @@ const execPath = resolve(__dirname, "../dist/index.js");
 
 ensureBuild();
 
-const { program } = require(execPath);
-
 // add extra commands for workflow run
 process.argv.splice(2, 0, "workflow", "run");
 
-program.parseAsync(process.argv);
+/** @type {import("../src/commands")} CommandRunner */
+const { CommandRunner } = require(execPath);
+
+CommandRunner.callProgramWithHelp();

@@ -13,6 +13,7 @@ const execPath = resolve(__dirname, "../dist/index.js");
 
 ensureBuild();
 
-const { program } = require(execPath);
+/** @type {import("../src/commands")} CommandRunner */
+const { CommandRunner } = require(execPath);
 
-program.parseAsync(process.argv);
+CommandRunner.callProgramWithHelp();
