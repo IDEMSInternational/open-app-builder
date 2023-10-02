@@ -16,7 +16,6 @@ import {
   Logger,
   getLogFiles,
   logWarning,
-  clearLogs,
   standardiseNewlines,
 } from "./utils";
 import { FlowParserProcessor } from "./processors/flowParser/flowParser";
@@ -91,10 +90,9 @@ export class AppDataConverter {
    * objects representing sheet names and data values
    */
   public async run() {
-    clearLogs();
     const { inputFolders, outputFolder, cacheFolder } = this.options;
     const filterFn = (relativePath: string) => relativePath.endsWith(".xlsx");
-    let mergedOutputsHashmap: Record<string, FlowTypes.FlowTypeWithData> = {};
+    const combinedOutputsHashmap: Record<string, FlowTypes.FlowTypeWithData> = {};
     const converterPaths: IConverterPaths = {
       SHEETS_CACHE_FOLDER: cacheFolder,
       SHEETS_INPUT_FOLDER: "",
@@ -102,23 +100,53 @@ export class AppDataConverter {
     };
     // Process each input folder, converting xlsx to json
     for (const inputFolder of inputFolders) {
+      const folderOutputsHashmap: Record<string, FlowTypes.FlowTypeWithData> = {};
       converterPaths.SHEETS_INPUT_FOLDER = inputFolder;
       const list = generateFolderFlatMap(inputFolder, { filterFn });
       const xlsxConverter = new XLSXWorkbookProcessor(converterPaths);
+      xlsxConverter.logger = this.logger;
       const data = await xlsxConverter.process(Object.values(list));
       const outputs = this.cleanFlowOutputs(data);
       // merge outputs across folders, with latter processed overriding any flows with same type and name
+      // keep local folder list to still track case where duplicate flows appear in same folder
       for (const output of outputs) {
-        mergedOutputsHashmap[`${output.flow_type}||${output.flow_name}`] = output;
+        const hashName = `${output.flow_type}||${output.flow_name}`;
+        if (folderOutputsHashmap[hashName]) {
+          this.logDuplicateFlowError(folderOutputsHashmap[hashName], output);
+        }
+        folderOutputsHashmap[hashName] = output;
+        if (combinedOutputsHashmap[hashName]) {
+          this.logger.debug({
+            message: "flow_override",
+            details: { flow_type: output.flow_type, flow_name: output.flow_name, inputFolder },
+          });
+        }
+        combinedOutputsHashmap[hashName] = output;
       }
       this.logger.debug({ step: inputFolder, outputs });
     }
     // Process jsons as flows
     const processor = new FlowParserProcessor(converterPaths);
-    const jsonFlows = Object.values(mergedOutputsHashmap);
+    processor.logger = this.logger;
+    const jsonFlows = Object.values(combinedOutputsHashmap);
     const result = (await processor.process(jsonFlows)) as IParsedWorkbookData;
     const { errors, warnings } = this.logOutputs(result);
     return { result, errors, warnings };
+  }
+
+  /**
+   * Log error in case duplicate flows appear in the same folder
+   * Duplicate flows across input folders are assumed overrides
+   */
+  private logDuplicateFlowError(
+    initialFlow: FlowTypes.FlowTypeWithData,
+    duplicateFlow: FlowTypes.FlowTypeWithData
+  ) {
+    const { flow_name, flow_type, _xlsxPath } = initialFlow;
+    this.logger.error({
+      message: "Duplicate flow name",
+      details: { flow_name, flow_type, _xlsxPaths: [_xlsxPath, duplicateFlow._xlsxPath] },
+    });
   }
 
   private logOutputs(result: IParsedWorkbookData) {
@@ -127,10 +155,10 @@ export class AppDataConverter {
     // warnings
     const warnings = getLogs("warning");
     if (warnings.length > 0) {
-      const errorLogFile = getLogFiles().error;
+      const warningLogFile = getLogFiles().warning;
       logWarning({
         msg1: `Completed with ${warnings.length} warnings`,
-        msg2: errorLogFile,
+        msg2: warningLogFile,
       });
     }
     // errors
