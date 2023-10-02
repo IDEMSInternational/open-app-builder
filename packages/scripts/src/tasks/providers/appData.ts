@@ -6,9 +6,9 @@ import { SRC_ASSETS_PATH } from "../../paths";
 import { IContentsEntry, replicateDir } from "../../utils";
 
 /** Prepare sourcely cached assets for population to app */
-const postProcessAssets = async (options: { sourceAssetsFolder: string }) => {
-  const { sourceAssetsFolder } = options;
-  let args = `--source-assets-folder ${sourceAssetsFolder}`;
+const postProcessAssets = async (options: { sourceAssetsFolders: string[] }) => {
+  const { sourceAssetsFolders } = options;
+  let args = `--source-assets-folders ${sourceAssetsFolders.join(",")}`;
   let cmd = `app-data post-process assets ${args}`;
 
   await parseCommand(`${cmd}`);
