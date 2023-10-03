@@ -25,6 +25,16 @@ export interface IDeploymentConfig {
     /** Location to assets folder if working from local drive instead of google */
     assets_path: string;
   };
+  canto: {
+    /** Canto API keys used for authentication. API keys are created/managed at <canto-url>/settings/basicSettings/apiKeys */
+    appId: string;
+    appSecret: string;
+    accessTokenPath?: string;
+    /** The URL of the Canto repository, e.g. "https://parentingforlifelonghealth.canto.com/" */
+    url: string;
+    /** Names of folders and albums containing asset files relevant to the deployment */
+    sourceFolders: string[];
+  };
   android: {
     /** Location of source android assets (splash and launcher source images). */
     icon_asset_path?: string;
@@ -122,6 +132,12 @@ export const DEPLOYMENT_CONFIG_EXAMPLE_DEFAULTS: IDeploymentConfig = {
     output_path: "packages/app-data",
     sheets_filter_function: (flow) => true,
     assets_filter_function: (fileEntry) => true,
+  },
+  canto: {
+    appId: "",
+    appSecret: "",
+    url: "",
+    sourceFolders: [],
   },
   supabase: {
     enabled: false,

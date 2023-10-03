@@ -171,6 +171,17 @@ const workflows: IDeploymentWorkflows = {
       },
     ],
   },
+  canto_wip: {
+    label: "Test Canto methods",
+    steps: [
+      {
+        name: "Run debug function",
+        function: async ({ tasks }) => {
+          return tasks.canto.debugFunction();
+        },
+      },
+    ],
+  },
 };
 
 export default workflows;
