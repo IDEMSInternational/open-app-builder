@@ -2,7 +2,6 @@
 import { Command } from "commander";
 
 import parseCmd from "./parse";
-import { logProgramHelp } from "../../utils";
 
 const program = new Command("e2e-data").description("Parse E2E data");
 
@@ -10,13 +9,3 @@ const program = new Command("e2e-data").description("Parse E2E data");
 program.addCommand(parseCmd);
 
 export default program;
-
-// Run if called directly from Node
-if (require.main === module) {
-  if (!process.argv.slice(2).length) {
-    logProgramHelp(program);
-  }
-  (async function () {
-    await program.parseAsync(process.argv);
-  })();
-}

@@ -1,24 +1,19 @@
 <div class="container-player margin-t-large">
   <div class="top-row">
     <div class="title_and_help">
-      <h3 *ngIf="titleAudio">{{ titleAudio }}</h3>
+      <h3 *ngIf="params.title">{{ params.title }}</h3>
       <ion-icon
-        *ngIf="help"
-        [pTooltip]="help"
-        tooltipPosition="right"
+        *ngIf="params.helpText"
+        [pTooltip]="params.helpText"
+        tooltipPosition="left"
         tooltipEvent="click"
         name="help-circle-outline"
+        [src]="params.helpIconAsset"
         class="audio-help"
       ></ion-icon>
     </div>
-    <div class="volume" (click)="player ? toggleMute() : null">
-      <ion-icon
-        [name]="!isMute ? 'volume-high-outline' : 'volume-mute-outline'"
-        class="volume-icon"
-      ></ion-icon>
-    </div>
   </div>
-  <div class="progress-block" [class.disabled]="rangeBarDisabled || !player">
+  <div class="progress-block" [class.disabled]="params.rangeBarDisabled || !player">
     <ion-range
       #range
       class="audio-range"
@@ -33,34 +28,35 @@
   </div>
   <div class="time">
     <div class="time-value">
-      {{ +currentTimeSong * 1000 | date: "mm:ss" }}
+      {{ +currentTimeSong * 1000 | date : "mm:ss" }}
     </div>
     <div class="time-value">
-      {{ !player ? "00:00" : (player.duration() * 1000 | date: "mm:ss") }}
+      {{ !player ? "00:00" : (player.duration() * 1000 | date : "mm:ss") }}
     </div>
   </div>
   <div class="controls" *ngIf="!errorTxt">
     <div class="rewind">
-      <ion-button (click)="rewindPrev()"
-        ><img src="/assets/icon/audio/arrow.svg" alt=""
-      /></ion-button>
+      <ion-icon
+        [name]="params.forwardIconAsset"
+        [src]="params.forwardIconAsset"
+        (click)="rewindPrev()"
+      ></ion-icon>
     </div>
     <div class="play">
       <ion-button class="btn-play" (click)="togglePlayer()">
-        <img
-          [class.ml-5]="!isPlayed"
-          [src]="
-            (!isPlayed ? 'plh_images/icons/play_white.svg' : 'plh_images/icons/pause_white.svg')
-              | plhAsset
-          "
-          alt=""
-        />
+        <ion-icon
+          [name]="!isPlayed ? params.playIconAsset : params.pauseIconAsset"
+          [src]="!isPlayed ? params.playIconAsset : params.pauseIconAsset"
+          [class.play-icon]="!isPlayed"
+        ></ion-icon>
       </ion-button>
     </div>
     <div class="forward">
-      <ion-button (click)="rewindNext()">
-        <img src="/assets/icon/audio/arrow.svg" alt="" />
-      </ion-button>
+      <ion-icon
+        [name]="params.forwardIconAsset"
+        [src]="params.forwardIconAsset"
+        (click)="rewindNext()"
+      ></ion-icon>
     </div>
   </div>
   <div class="error-text" *ngIf="errorTxt">

@@ -1,5 +1,6 @@
 import * as inquirer from "inquirer";
-import { dynamicImport } from "tsimportlib";
+
+const isCI = process.env.CI ? true : false;
 
 /**
  * Provide an interactive list of cli options for a user to selet from
@@ -16,6 +17,7 @@ export async function promptOptions<T = any>(
   return res.selected as T;
 }
 export async function promptInput(message: string, defaultValue?: string) {
+  if (isCI && defaultValue) return defaultValue;
   const name = "inputValue";
   const res = await inquirer.prompt([{ type: "input", message, name, default: defaultValue }]);
   return res[name];
@@ -26,17 +28,10 @@ export async function promptEditorInput(message: string) {
   return res[name];
 }
 export async function promptConfirmation(message: string, defaultValue = true) {
+  if (isCI) return true;
   const name = "confirm";
   const res = await inquirer.prompt([{ type: "confirm", name, message, default: defaultValue }]);
   return res[name] as boolean;
-}
-
-/** Open an external URL using system default program */
-export async function openUrl(url: string) {
-  // Import 3rd party 'open' module dynamically as it requires esm compatibility
-  // https://github.com/TypeStrong/ts-node/discussions/1290
-  const open = (await dynamicImport("open", module)) as typeof import("open");
-  return open.default(url);
 }
 
 export function pad(str: string | number, chars: number) {
