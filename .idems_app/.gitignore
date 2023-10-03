@@ -9,3 +9,6 @@ deployments/*
 # Renamed to activeDeployment.json, include here so people can remove
 !/deployments/default.json
 !public.json
+
+# Temp deployments used for development purposes:
+!deployments/debug_gdrive_multiple
