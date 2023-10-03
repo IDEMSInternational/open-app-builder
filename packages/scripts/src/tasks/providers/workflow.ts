@@ -1,5 +1,5 @@
 import { IWorkflowContext } from "workflows";
-import { parseCommand } from "../../commands";
+import { WorkflowRunner } from "../../commands/workflow/run";
 
 /**
  * Call another workflow to run.
@@ -11,15 +11,10 @@ const runWorkflow = async (options: {
   args?: string[];
 }) => {
   const { name, parent, args } = options;
+  const runner = WorkflowRunner;
+  await runner.init();
   const parentName = parent ? Object.values(parent)[0].name : null;
-  let cmd = `workflow run ${name}`;
-  if (parentName) {
-    cmd += ` --parent ${parentName}`;
-  }
-  if (args) {
-    cmd += ` ${args.join(" ")}`;
-  }
-  await parseCommand(cmd);
+  return runner.run({ name, args: args || [], parent: parentName });
 };
 
 export default { runWorkflow };

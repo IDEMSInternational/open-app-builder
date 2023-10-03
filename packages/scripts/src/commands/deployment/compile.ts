@@ -1,9 +1,10 @@
 #!/usr/bin/env node
-import { spawnSync } from "child_process";
 import { Command } from "commander";
 import { IDeploymentConfig, DEPLOYMENT_CONFIG_VERSION } from "data-models";
 import fs from "fs-extra";
 import path from "path";
+
+import { parseAsyncCommandSync } from "..";
 import { ROOT_DIR } from "../../paths";
 import { Logger } from "../../utils";
 import { IDeploymentConfigJson } from "./common";
@@ -35,6 +36,8 @@ export default program
 
 export async function compileDeploymentTS(options: IOptions) {
   // load ts file and convert to deployment json
+  // NOTE - requires user environment with typescript available
+  // (TBC - works fine running in ts-node but not sure running compiled js depending on cjs/esm)
   const ts: IDeploymentConfig = await loadTSFileDefaultExport(options.input);
   const json = convertDeploymentTsToJson(ts, options.input);
   if (!json._validated) {
@@ -51,11 +54,8 @@ export async function compileDeploymentTS(options: IOptions) {
 
 /** Additional export to call program a child process to allow sync execution of async functions */
 export function compileDeploymentTSSync(options: IOptions) {
-  const exec = `yarn workspace scripts start`;
-  const args = `deployment compile --input "${options.input}" --output "${options.output}"`;
-  const cmd = `${exec} ${args}`;
-  // console.log(chalk.yellow(cmd));
-  spawnSync(cmd, { stdio: "inherit", shell: true });
+  const cmd = `deployment compile --input "${options.input}" --output "${options.output}"`;
+  return parseAsyncCommandSync(cmd, true);
 }
 
 /** Load a .ts file and return the default export */

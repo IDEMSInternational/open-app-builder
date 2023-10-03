@@ -28,7 +28,7 @@ function createBuildBundle() {
     sourcemap: true,
     clean: true,
     entry: ["build/commands/index.js"],
-    format: ["cjs"],
+    format: ["esm"],
     target: "node18",
 
     // NOTE - this is the default outDir, but important to ensure it sits
@@ -55,6 +55,14 @@ function createBuildBundle() {
 
     // Additionally exclude pnpapi as directed by build warning output
     external: ["sharp", "pnpapi"],
+    // https://github.com/evanw/esbuild/issues/1921
+    banner: {
+      js: `
+      const require = (await import("node:module")).createRequire(import.meta.url);
+      const __filename = (await import("node:url")).fileURLToPath(import.meta.url);
+      const __dirname = (await import("node:path")).dirname(__filename);
+      `,
+    },
   };
 
   // TODO - prod build changes

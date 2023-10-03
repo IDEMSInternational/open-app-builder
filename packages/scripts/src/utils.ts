@@ -18,7 +18,7 @@ import { logProgramHelp } from "shared";
  * }
  * ```
  */
-export function callProgramWithHelp(program: Command) {
+export async function callProgramWithHelp(program: Command) {
   if (!process.argv.slice(2).length) {
     return logProgramHelp(program);
   }

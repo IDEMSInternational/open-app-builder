@@ -4670,7 +4670,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@idemsInternational/rapidpro-excel@workspace:*, @idemsInternational/rapidpro-excel@workspace:packages/@idemsInternational/rapidpro-excel":
+"@idemsInternational/rapidpro-excel@workspace:packages/@idemsInternational/rapidpro-excel":
   version: 0.0.0-use.local
   resolution: "@idemsInternational/rapidpro-excel@workspace:packages/@idemsInternational/rapidpro-excel"
   dependencies:
@@ -25113,7 +25113,6 @@ __metadata:
   resolution: "scripts@workspace:packages/scripts"
   dependencies:
     "@idemsInternational/gdrive-tools": "workspace:*"
-    "@idemsInternational/rapidpro-excel": "workspace:*"
     "@swc/core": ^1.3.29
     "@types/fs-extra": ^9.0.4
     "@types/inquirer": ^7.3.1
@@ -25151,8 +25150,8 @@ __metadata:
     workflows: "workspace:*"
     xlsx: ^0.18.5
   bin:
-    app-scripts: ./bin/app-scripts
-    app-workflow: ./bin/app-workflow
+    app-scripts: ./bin/app-scripts.mjs
+    app-workflow: ./bin/app-workflow.mjs
   languageName: unknown
   linkType: soft
 

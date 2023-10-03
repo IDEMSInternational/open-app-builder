@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 import { Command } from "commander";
 
-import runCmd from "./run";
+import runCmd from "./cli";
 
 const program = new Command("workflow");
 

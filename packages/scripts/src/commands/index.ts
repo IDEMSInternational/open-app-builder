@@ -1,15 +1,22 @@
 #!/usr/bin/env node
+import chalk from "chalk";
 import { Command } from "commander";
+import { spawnSync } from "child_process";
+import { SCRIPTS_WORKSPACE_PATH } from "shared";
 
 // Commands
 import appDataCmd from "./app-data";
-import compileCmd from "./compile";
 import e2eDataCmd from "./e2e-data";
 import configCmd from "./config";
 import deploymentCmd from "./deployment";
 import versionCmd from "./version";
 import workflowCmd from "./workflow";
 import { callProgramWithHelp, isTsNode, logWarning } from "../utils";
+
+// Additional exports for direct consumption
+import { extendDeploymentConfig, generateDeploymentConfig } from "./deployment/common";
+export { extendDeploymentConfig, generateDeploymentConfig };
+
 const { version } = require("../../package.json");
 
 const program = new Command();
@@ -18,7 +25,6 @@ program.version(version).description(`IDEMS App Scripts ${version}`);
 
 /** add sub-commands from child folders */
 program.addCommand(appDataCmd);
-program.addCommand(compileCmd);
 program.addCommand(e2eDataCmd);
 program.addCommand(configCmd);
 program.addCommand(deploymentCmd);
@@ -49,9 +55,27 @@ export const parseCommand = async (cmd: string) => {
   return program.parseAsync(args);
 };
 
-// Additional exports for direct consumption
-import { extendDeploymentConfig, generateDeploymentConfig } from "./deployment/common";
-export { extendDeploymentConfig, generateDeploymentConfig };
+/**
+ * Hack utility method to allow processing an async command synchronously
+ * by using child process spawn. This is preferred to calling spawnsync direct to
+ * ensure that only scripts bin is accessed (other workspaces may not be compiled with build)
+ *
+ * @param useTsNode - if script requires access to typescript environment (e.g. deployment compile)
+ * then set as true to
+ * */
+export const parseAsyncCommandSync = (cmd: string, useTsNode = false) => {
+  // If command requires
+  let exec = "";
+  if (useTsNode) {
+    // TODO - should make fully programattic to work from compiled version
+    // TODO - also as only used for deployments
+    exec = `ts-node src/commands/index.ts`;
+  } else {
+    exec = `yarn app-scripts`;
+  }
+  console.log(chalk.gray(`${exec} ${cmd}`));
+  spawnSync(`${exec} ${cmd}`, { stdio: "inherit", shell: true, cwd: SCRIPTS_WORKSPACE_PATH });
+};
 
 // Run the program directly when called via ts-node (e.g. start script)
 if (isTsNode) {

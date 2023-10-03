@@ -198,7 +198,7 @@ const workflows: IDeploymentWorkflows = {
       {
         name: "authorize",
         function: async ({ tasks }) => {
-          tasks.gdrive.authorize();
+          await tasks.gdrive.authorize();
           process.exit(0);
         },
       },
