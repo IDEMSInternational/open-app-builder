@@ -9,6 +9,15 @@ import { GDriveDownloader, IDownloadOptions } from "../lib/download";
  * @example download
  *************************************************************************************/
 
+interface IProgramOptions {
+  folderId: string;
+  outputPath: string;
+  credentialsPath: string;
+  authTokenPath: string;
+  logName: string;
+  filterFunction64?: string;
+}
+
 const program = new Command("download");
 export default program
   .description("Get active deployment")
@@ -33,6 +42,18 @@ export default program
     "-filter --filter-function-64 <base64>",
     "Function applied to omit downloads based on file entry, encoded as base64. e.g. decoded: (entry)=>entry.folderPath.includes('temp/')"
   )
-  .action(async (options: IDownloadOptions) => {
-    return new GDriveDownloader(options).downloadFolder(options.folderId);
+  .action(async (options: IProgramOptions) => {
+    const { filterFunction64, ...keptOptions } = options;
+    const downloadOptions: IDownloadOptions = { ...keptOptions };
+    if (filterFunction64) {
+      downloadOptions.filterFn = convertBase64Function(filterFunction64);
+    }
+    return new GDriveDownloader(downloadOptions).downloadFolder(options.folderId);
   });
+
+function convertBase64Function(filterFunction64?: string) {
+  // convert string filter function to function if included
+  return filterFunction64
+    ? new Function(`return ${Buffer.from(filterFunction64, "base64").toString()}`)()
+    : null;
+}

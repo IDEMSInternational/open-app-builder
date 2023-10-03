@@ -17,6 +17,7 @@ import {
   cleanupEmptyFolders,
 } from "../utils";
 import { authorizeGDrive } from "./authorize";
+import { IGdriveEntry } from "../models";
 
 const GOOGLE_FOLDER_MIMETYPE = "application/vnd.google-apps.folder";
 
@@ -26,7 +27,7 @@ export interface IDownloadOptions {
   credentialsPath: string;
   authTokenPath: string;
   logName: string;
-  filterFunction64?: string;
+  filterFn?: (entry: IGdriveEntry) => boolean;
 }
 
 export class GDriveDownloader {
@@ -187,17 +188,12 @@ export class GDriveDownloader {
    * Compare list of server files with local cache to determine new/updated/same/deleted
    */
   private prepareSyncActionsList(serverFiles: IGDriveFileWithFolder[]) {
-    const { outputPath, filterFunction64 } = this.options;
+    const { outputPath, filterFn } = this.options;
     const output: ISyncActions = { new: [], updated: [], same: [], deleted: [], ignored: [] };
 
     // generate hashmaps for easier lookup and compare of server and local files
     const localFilesHashmap = generateFolderFlatMapStats(outputPath);
     const serverFilesHashmap: { [relative_path: string]: IGDriveFileWithFolder } = {};
-
-    // convert string filter function to function if included
-    const filterFn: Function = filterFunction64
-      ? new Function(`return ${Buffer.from(filterFunction64, "base64").toString()}`)()
-      : null;
 
     // Compare server with local
     for (const serverFile of serverFiles) {
@@ -218,7 +214,7 @@ export class GDriveDownloader {
         // Apply any server filter functions, removing files that already exist and ignoring
         // files that do not
         if (filterFn) {
-          const included = filterFn(serverFile);
+          const included = filterFn(serverFile as IGdriveEntry);
           if (!included) {
             if (cacheFile) {
               output.deleted.push({ folderPath: cacheRelativePath });

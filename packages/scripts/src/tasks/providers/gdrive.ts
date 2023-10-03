@@ -3,6 +3,7 @@ import {
   IDownloadOptions,
   authorizeGDrive,
   GDriveWatcher,
+  IGdriveEntry,
 } from "@idemsInternational/gdrive-tools";
 import chokidar from "chokidar";
 import { existsSync, removeSync } from "fs-extra";
@@ -31,7 +32,10 @@ const authorize = async () => {
  * @returns path to output files
  * }
  */
-const download = async (options: { folderId: string; filterFn?: any }) => {
+const download = async (options: {
+  folderId: string;
+  filterFn?: (entry: IGdriveEntry) => boolean;
+}) => {
   const { folderId, filterFn } = options;
   const outputPath = getOutputFolder(folderId);
   const dlOptions: IDownloadOptions = {
@@ -39,12 +43,8 @@ const download = async (options: { folderId: string; filterFn?: any }) => {
     folderId,
     logName: `${folderId}.log`,
     outputPath,
+    filterFn,
   };
-  if (filterFn) {
-    // TODO - direct invocation no longer should require converting function to base64 (used when running from cli)
-    const filterFnBase64 = Buffer.from(filterFn.toString()).toString("base64");
-    dlOptions.filterFunction64 = filterFnBase64;
-  }
   const gdriveDownloader = new GDriveDownloader(dlOptions);
   await gdriveDownloader.downloadFolder(options.folderId);
   return outputPath;
