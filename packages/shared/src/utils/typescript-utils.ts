@@ -1,4 +1,6 @@
+import chalk from "chalk";
 import ts, { CompilerOptions, ProjectReference } from "typescript";
+import { Logger } from "./logging.utils";
 
 /**
  * Prints out particular nodes from a typescript source file
@@ -85,7 +87,7 @@ export async function transpileTsToJS(tsData: Buffer) {
  * Compile TS source files to corresponding JS
  * https://github.com/microsoft/TypeScript-wiki/blob/main/Using-the-Compiler-API.md
  */
-export function compileTsToJS(options: {
+export function compileTsToJS(config: {
   fileNames: string[];
   projectReferences?: ProjectReference[];
   compilerOptions?: CompilerOptions;
@@ -96,32 +98,34 @@ export function compileTsToJS(options: {
   const compilerDefaults: CompilerOptions = {
     // TODO - decide if ESNext would be better default target (depends on how will be imported)
     target: ts.ScriptTarget.ES5,
-    noEmit: false,
-    noEmitOnError: true,
     skipLibCheck: true,
     moduleResolution: ts.ModuleResolutionKind.Node16,
     module: ts.ModuleKind.CommonJS,
     esModuleInterop: true,
     resolveJsonModule: true,
+    // Specify emit settings to be able to determine successful operation or not
+    noEmit: false,
+    noEmitOnError: true,
+    listEmittedFiles: true,
   };
+  const options = { ...compilerDefaults, ...config.compilerOptions };
   const program = ts.createProgram({
-    rootNames: options.fileNames,
-    projectReferences: options.projectReferences || [],
-    options: { ...compilerDefaults, ...options.compilerOptions },
+    rootNames: config.fileNames,
+    projectReferences: config.projectReferences || [],
+    options,
   });
+
   const emitResult = program.emit();
-  // Log diagnostic messages
-  let allDiagnostics = ts.getPreEmitDiagnostics(program).concat(emitResult.diagnostics);
-  allDiagnostics.forEach((diagnostic) => {
-    if (diagnostic.file) {
-      let { line, character } = ts.getLineAndCharacterOfPosition(
-        diagnostic.file,
-        diagnostic.start!
-      );
-      let message = ts.flattenDiagnosticMessageText(diagnostic.messageText, "\n");
-      console.log(`${diagnostic.file.fileName} (${line + 1},${character + 1}): ${message}`);
-    } else {
-      console.log(ts.flattenDiagnosticMessageText(diagnostic.messageText, "\n"));
-    }
-  });
+  // assume files should be emitted (noEmit: false), absense implies error
+  if (emitResult.emittedFiles.length === 0) {
+    let allDiagnostics = ts.getPreEmitDiagnostics(program).concat(emitResult.diagnostics);
+    const messages: string[] = [];
+    allDiagnostics.forEach((diagnostic) => {
+      messages.push(ts.flattenDiagnosticMessageText(diagnostic.messageText, "\n"));
+    });
+    // remove duplicate error messages and log
+    Logger.error({ msg1: "Failed to compile", msg2: config.fileNames.join(", "), logOnly: true });
+    console.log(chalk.red([...new Set(messages)].join("\n")));
+    throw new Error();
+  }
 }
