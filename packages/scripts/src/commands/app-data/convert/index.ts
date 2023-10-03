@@ -70,11 +70,11 @@ export class AppDataConverter {
   cache: JsonFileCache;
 
   constructor(private options: IConverterOptions, testOverrides: Partial<AppDataConverter> = {}) {
+    console.log(chalk.yellow("App Data Convert"));
     // optional overrides, used for tests
     if (testOverrides.version) this.version = testOverrides.version;
     if (testOverrides.activeDeployment) this.activeDeployment = testOverrides.activeDeployment;
 
-    console.log(chalk.yellow("App Data Convert"));
     // Setup Folders
     const { outputFolder, cacheFolder } = options;
     [outputFolder, cacheFolder].forEach((p) => fs.ensureDir(p));
@@ -85,10 +85,6 @@ export class AppDataConverter {
     this.cache = new JsonFileCache(cacheFolder, this.version);
   }
 
-  /**
-   * Reads xlsx files from gdrive-download output and converts to json
-   * objects representing sheet names and data values
-   */
   public async run() {
     const { inputFolders, outputFolder, cacheFolder } = this.options;
     const filterFn = (relativePath: string) => relativePath.endsWith(".xlsx");
@@ -98,17 +94,18 @@ export class AppDataConverter {
       SHEETS_INPUT_FOLDER: "",
       SHEETS_OUTPUT_FOLDER: outputFolder,
     };
-    // Process each input folder, converting xlsx to json
+    // Processing Steps
     for (const inputFolder of inputFolders) {
+      // 1.1 Generate a list of xlsx files in data source and convert to json
       const folderOutputsHashmap: Record<string, FlowTypes.FlowTypeWithData> = {};
       converterPaths.SHEETS_INPUT_FOLDER = inputFolder;
       const list = generateFolderFlatMap(inputFolder, { filterFn });
       const xlsxConverter = new XLSXWorkbookProcessor(converterPaths);
       xlsxConverter.logger = this.logger;
       const data = await xlsxConverter.process(Object.values(list));
+      // 1.2 Sort and filter output jsons
       const outputs = this.cleanFlowOutputs(data);
-      // merge outputs across folders, with latter processed overriding any flows with same type and name
-      // keep local folder list to still track case where duplicate flows appear in same folder
+      // 1.3 Merge jsons both within input sources (duplicate are errors) and across input sources (duplicates are overrrides)
       for (const output of outputs) {
         const hashName = `${output.flow_type}||${output.flow_name}`;
         if (folderOutputsHashmap[hashName]) {
@@ -125,7 +122,7 @@ export class AppDataConverter {
       }
       this.logger.debug({ step: inputFolder, outputs });
     }
-    // Process jsons as flows
+    // 2.1 - Convert all merged jsons to flow data using flow parsers
     const processor = new FlowParserProcessor(converterPaths);
     processor.logger = this.logger;
     const jsonFlows = Object.values(combinedOutputsHashmap);
@@ -149,10 +146,10 @@ export class AppDataConverter {
     });
   }
 
+  /** Create log of total warnings and errors */
   private logOutputs(result: IParsedWorkbookData) {
     this.writeOutputJsons(result);
     logSheetsSummary(result);
-    // warnings
     const warnings = getLogs("warning");
     if (warnings.length > 0) {
       const warningLogFile = getLogFiles().warning;
@@ -161,7 +158,6 @@ export class AppDataConverter {
         msg2: warningLogFile,
       });
     }
-    // errors
     const errors = getLogs("error");
     if (errors.length > 0) {
       const errorLogFile = getLogFiles().error;
@@ -171,15 +167,14 @@ export class AppDataConverter {
         logOnly: true,
       });
     }
-    // logSheetErrorSummary(this.conversionWarnings, this.conversionErrors);
     console.log(chalk.yellow("Conversion Complete"));
     return { errors, warnings };
   }
 
+  /** Filter undefined, non-released and filter-fn excluded sheets, and apply custom sort ordering */
   private cleanFlowOutputs(data: FlowTypes.FlowTypeWithData[][]) {
-    // concat array or arrays to single array
+    // concat array of arrays to single array
     const flattened: FlowTypes.FlowTypeWithData[] = [].concat.apply([], data);
-    // filter undefined, non-released and according to deployment filter
     const { sheets_filter_function } = this.activeDeployment.app_data;
     const filtered = flattened
       .filter((flow) => flow.status === "released")
