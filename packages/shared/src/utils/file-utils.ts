@@ -504,16 +504,21 @@ export function mergeFoldersRecursively(
     const { relativePath, modifiedTime } = entry;
     const srcPath = path.resolve(src, relativePath);
     const targetPath = path.resolve(target, relativePath);
-    const mtime = new Date(modifiedTime);
-    fs.ensureDirSync(path.dirname(targetPath));
-    fs.copyFileSync(srcPath, targetPath);
-    fs.utimesSync(targetPath, mtime, mtime);
+    copyFileWithTimestamp(srcPath, targetPath, modifiedTime);
   }
   // Process entries
   Object.entries(srcFiles).forEach(([filepath, entry]) =>
     copySrcToTarget(filepath, entry as IContentsEntry)
   );
 }
+
+export function copyFileWithTimestamp(srcPath: string, targetPath: string, modifiedTime: string) {
+  const mtime = new Date(modifiedTime);
+  fs.ensureDirSync(path.dirname(targetPath));
+  fs.copyFileSync(srcPath, targetPath);
+  fs.utimesSync(targetPath, mtime, mtime);
+}
+
 export function createTempDir() {
   const dirName = randomUUID();
   const dirPath = path.join(os.tmpdir(), dirName);
