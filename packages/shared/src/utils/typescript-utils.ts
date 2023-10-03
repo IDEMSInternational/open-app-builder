@@ -1,4 +1,4 @@
-import ts from "typescript";
+import ts, { CompilerOptions, ProjectReference } from "typescript";
 
 /**
  * Prints out particular nodes from a typescript source file
@@ -70,10 +70,58 @@ export async function readTSDefaultExport(filepath: string) {
   return res.default;
 }
 
-/** Use typescript compiler to transpile TS string to JS for a given target */
-export async function tsToJS(tsData: Buffer) {
+/**
+ * Use typescript compiler to transpile TS string to JS
+ * https://github.com/microsoft/TypeScript-wiki/blob/main/Using-the-Compiler-API.md#a-simple-transform-function
+ **/
+export async function transpileTsToJS(tsData: Buffer) {
   const js = ts.transpileModule(tsData.toString("utf-8"), {
     compilerOptions: { module: ts.ModuleKind.CommonJS, target: ts.ScriptTarget.ESNext },
   });
   return js.outputText;
+}
+
+/**
+ * Compile TS source files to corresponding JS
+ * https://github.com/microsoft/TypeScript-wiki/blob/main/Using-the-Compiler-API.md
+ */
+export function compileTsToJS(options: {
+  fileNames: string[];
+  projectReferences?: ProjectReference[];
+  compilerOptions?: CompilerOptions;
+}) {
+  // TODO - ideally refactor to deployment workspace and include tsconfig.json
+  // which can be read for defaults, like in strapi `resolveConfigOptions` method
+  // https://github.com/strapi/strapi/blob/main/packages/utils/typescript/lib/compilers/basic.js
+  const compilerDefaults: CompilerOptions = {
+    // TODO - decide if ESNext would be better default target (depends on how will be imported)
+    target: ts.ScriptTarget.ES5,
+    noEmit: false,
+    noEmitOnError: true,
+    skipLibCheck: true,
+    moduleResolution: ts.ModuleResolutionKind.Node16,
+    module: ts.ModuleKind.CommonJS,
+    esModuleInterop: true,
+    resolveJsonModule: true,
+  };
+  const program = ts.createProgram({
+    rootNames: options.fileNames,
+    projectReferences: options.projectReferences || [],
+    options: { ...compilerDefaults, ...options.compilerOptions },
+  });
+  const emitResult = program.emit();
+  // Log diagnostic messages
+  let allDiagnostics = ts.getPreEmitDiagnostics(program).concat(emitResult.diagnostics);
+  allDiagnostics.forEach((diagnostic) => {
+    if (diagnostic.file) {
+      let { line, character } = ts.getLineAndCharacterOfPosition(
+        diagnostic.file,
+        diagnostic.start!
+      );
+      let message = ts.flattenDiagnosticMessageText(diagnostic.messageText, "\n");
+      console.log(`${diagnostic.file.fileName} (${line + 1},${character + 1}): ${message}`);
+    } else {
+      console.log(ts.flattenDiagnosticMessageText(diagnostic.messageText, "\n"));
+    }
+  });
 }
