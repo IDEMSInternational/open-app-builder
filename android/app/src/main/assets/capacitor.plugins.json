@@ -50,9 +50,5 @@
 	{
 		"pkg": "capacitor-blob-writer",
 		"classpath": "com.equimaps.capacitorblobwriter.BlobWriter"
-	},
-	{
-		"pkg": "capacitor-firebase-auth",
-		"classpath": "com.baumblatt.capacitor.firebase.auth.CapacitorFirebaseAuth"
 	}
 ]

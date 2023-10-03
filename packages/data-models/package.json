@@ -2,9 +2,6 @@
   "name": "data-models",
   "version": "1.0.0",
   "description": "",
-  "files": [
-    "dist"
-  ],
   "main": "./index.ts",
   "types": "./index.ts",
   "dependencies": {

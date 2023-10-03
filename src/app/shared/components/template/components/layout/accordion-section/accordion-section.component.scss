@@ -1,0 +1,106 @@
+@use "/src/theme/mixins";
+
+$background-highlight: var(
+  --accordion-background-highlight,
+  var(--gradient-primary-light-vertical)
+);
+
+.accordion-wrapper {
+  display: flex;
+  justify-content: space-between;
+  // align-items: center; // aligns dot in center while closed but open will connecting line looks off
+  margin-bottom: var(--regular-margin);
+  height: 100%;
+  .accordion-status {
+    @include mixins.medium-square;
+    border-radius: var(--ion-border-radius-rounded);
+    border: var(--ion-border-thin-standard);
+    padding: var(--tiny-padding);
+    background: var(--ion-color-primary-contrast);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+    &.inProgress {
+      background: $background-highlight;
+    }
+    &.disabled {
+      background: var(--ion-color-primary-contrast);
+    }
+    &.completed {
+      background: $background-highlight;
+    }
+    ion-icon {
+      font-size: var(--icon-size-tiny);
+      color: var(--ion-color-primary);
+    }
+  }
+  .accordion-section {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    width: var(--accordion-section-width);
+    border-radius: var(--ion-border-radius-standard);
+    overflow: hidden;
+    padding: var(--small-padding);
+    border: var(--ion-border-thin-standard);
+    transition: max-height 0.4s;
+    overflow-y: hidden;
+    &.completed {
+      background: $background-highlight;
+      color: var(--ion-color-primary);
+      .progress {
+        opacity: 0;
+      }
+    }
+    &.disabled {
+      background: var(--ion-color-primary-contrast);
+      color: var(--ion-color-primary);
+      .progress {
+        opacity: 0;
+      }
+    }
+    &.inProgress {
+      background: var(--ion-color-primary-contrast);
+      color: var(--ion-color-primary);
+    }
+    &.openSection {
+      background: $background-highlight;
+      transition: max-height 0.4s;
+      .progress {
+        opacity: 0;
+        transition: none !important;
+      }
+    }
+    .progress {
+      position: absolute;
+      height: 100%;
+      left: 0;
+      z-index: 1;
+      background: $background-highlight;
+      opacity: 1;
+      transition: opacity 0.4s ease-in;
+      margin-top: calc(var(--small-padding) * -1); // offset for padding in .accordion-section
+    }
+  }
+  .accordion-section {
+    h2 {
+      z-index: 2;
+      text-align: left;
+      margin: 0;
+      font-size: var(--font-size-subtitle-small);
+      font-weight: var(--font-weight-bold);
+      @media (max-width: 320px) {
+        font-size: var(--font-size-subtitle-small-device);
+      }
+    }
+  }
+  .accordion-section-content {
+    max-height: 0;
+    z-index: 2;
+    transition: max-height 0.4s;
+    &.openSection {
+      max-height: var(--accordion-section-open-height);
+    }
+  }
+}

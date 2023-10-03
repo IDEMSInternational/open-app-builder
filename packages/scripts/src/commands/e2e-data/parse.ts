@@ -1,7 +1,7 @@
 import { Command } from "commander";
 import fs from "fs-extra";
 import path from "path";
-import XLSX from "xlsx";
+import * as XLSX from "xlsx";
 import prettier from "prettier";
 import * as mappings from "./mappings";
 import snippets from "./snippets";

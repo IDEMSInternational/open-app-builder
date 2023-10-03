@@ -8,9 +8,9 @@ on:
 concurrency:
   group: test-visual-compare-${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
-env:
+# env:
   # TODO - replace with dedicated screenshots deployment
-  DEPLOYMENT: plh_global
+  # DEPLOYMENT: plh_global
 
 jobs:
   generate:

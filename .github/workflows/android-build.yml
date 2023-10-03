@@ -62,8 +62,9 @@ jobs:
     steps:
       - uses: actions/checkout@v3
         with:
-          lfs: true
           ref:  ${{ inputs.branch }}
+      - name: Checkout git lfs partial files
+        run: git lfs pull --include "android/*"
       #############################################################################
       #         Configure
       # Setup node same way as web build to allow calling `npx cap sync` command
@@ -104,11 +105,11 @@ jobs:
       #         Android Build
       #############################################################################
         # Java version mapping: https://stackoverflow.com/a/47457251/5693245
-      - name: Set up JDK 11
+      - name: Set up JDK 17
         uses: actions/setup-java@v3
         with:
           distribution: "zulu"
-          java-version: "11"
+          java-version: "17"
           java-package: jdk
           cache: "gradle"
       - name: Setup Android SDK

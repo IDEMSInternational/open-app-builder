@@ -7,18 +7,16 @@ describe("QrCodeComponent", () => {
   let component: TmplQRCodeComponent;
   let fixture: ComponentFixture<TmplQRCodeComponent>;
 
-  beforeEach(
-    waitForAsync(() => {
-      TestBed.configureTestingModule({
-        declarations: [TmplQRCodeComponent],
-        imports: [IonicModule.forRoot()],
-      }).compileComponents();
+  beforeEach(waitForAsync(() => {
+    TestBed.configureTestingModule({
+      declarations: [TmplQRCodeComponent],
+      imports: [IonicModule.forRoot()],
+    }).compileComponents();
 
-      fixture = TestBed.createComponent(TmplQRCodeComponent);
-      component = fixture.componentInstance;
-      fixture.detectChanges();
-    })
-  );
+    fixture = TestBed.createComponent(TmplQRCodeComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  }));
 
   it("should create", () => {
     expect(component).toBeTruthy();
