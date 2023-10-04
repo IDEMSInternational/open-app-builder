@@ -128,4 +128,5 @@ export function compileTsToJS(config: {
     console.log(chalk.red([...new Set(messages)].join("\n")));
     throw new Error();
   }
+  return emitResult;
 }
