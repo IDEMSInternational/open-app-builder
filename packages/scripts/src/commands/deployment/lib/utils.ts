@@ -1,70 +1,76 @@
 import { DEPLOYMENT_CONFIG_VERSION, IDeploymentConfig } from "data-models";
-import { statSync, utimesSync, writeFileSync } from "fs-extra";
+import { existsSync, statSync, utimesSync } from "fs";
 import { resolve } from "path";
-import { Logger, ROOT_DIR } from "shared";
+import { Logger, ROOT_DIR, compileTsToJS } from "shared";
 
-/** Parses input deployment ts and additionally converts to json */
-export async function compileDeployment(inputTsPath: string) {
-  const outputJsonPath = inputTsPath.replace(".ts", ".json");
-
-  // parse config ts
-  const deploymentConfig: IDeploymentConfig = await loadFileDefaultExport(inputTsPath);
-
-  // Apply metadata and rewrite relative paths
-  const _workspace_path = resolve(inputTsPath, "../");
-  deploymentConfig._workspace_path = _workspace_path;
-  deploymentConfig._config_version = DEPLOYMENT_CONFIG_VERSION;
-  const rewritten = rewriteConfigPaths(deploymentConfig, _workspace_path);
-
-  // TODO - consider caching methods to recompile if deployment or parent change
-  // (previously used, but might not be needed if moving to js file deployment)
-
-  // write outputs, keeping same modified time on json as ts
-
-  return rewritten;
+/** Ensure latest deployment config.ts has been transpiled to .js */
+export function ensureDeploymentTranspiled(inputTsPath: string) {
+  const { mtime } = statSync(inputTsPath);
+  let configJSPath = inputTsPath.replace(".ts", "js");
+  let transpileRequired = true;
+  if (existsSync(configJSPath)) {
+    const { mtime: jsConfigMTime } = statSync(configJSPath);
+    if (new Date(mtime).getTime() === new Date(jsConfigMTime).getTime()) {
+      transpileRequired = false;
+    }
+  }
+  if (transpileRequired) {
+    configJSPath = transpileDeployment(inputTsPath);
+  }
+  return { configJSPath, transpileRequired };
 }
 
-// export function writeOutput() {
-//   writeFileSync(outputJsonPath, JSON.stringify(rewritten, null, 2));
-//   const { mtime } = statSync(inputTsPath);
-//   utimesSync(outputJsonPath, mtime, mtime);
-// }
+/** Dynamically import config js file and return default export */
+export async function loadDeploymentJS(inputJSPath: string) {
+  const config = await loadDefaultImport<IDeploymentConfig>(inputJSPath);
+  // Assign metadata and rewrite relative paths
+  const _workspace_path = resolve(inputJSPath, "../");
+  const _config_version = DEPLOYMENT_CONFIG_VERSION;
+  const _config_ts_path = inputJSPath.replace(".js", ".ts");
+  const rewritten = rewriteConfigPaths(config, _workspace_path);
+
+  return { ...rewritten, _workspace_path, _config_ts_path, _config_version };
+}
 
 /**
- * When reading deployment json files convert stringified functions back to real functions
- */
-export function parseDeploymentJson(json: IDeploymentConfig) {
-  const convertedJson = convertStringsToFunctions(json);
-  return convertedJson;
+ * Transpile config files written in typescript to javascript
+ * for runtime use in non ts-node environments
+ * */
+function transpileDeployment(inputTsPath: string) {
+  const { emittedFiles } = compileTsToJS({
+    fileNames: [inputTsPath],
+    compilerOptions: { downlevelIteration: true },
+  });
+  const outputJsPath = emittedFiles[0];
+  // Update mtime to reflect input TS
+  const { atime, mtime } = statSync(inputTsPath);
+  utimesSync(outputJsPath, atime, mtime);
+  return outputJsPath;
 }
 
-/** Load a .ts file and return the default export */
-async function loadFileDefaultExport(input: string) {
+/** Convert deployment into json-friendly object for writing to file */
+export function deploymentToJSON(config: IDeploymentConfig) {
+  const writeableConfig = convertFunctionsToStrings(config);
+  return writeableConfig;
+}
+
+/** Convert deployment json back to parsed deployment config */
+function deploymentFromJSON(json: any) {
+  const config = convertStringsToFunctions(json);
+  return config as IDeploymentConfig;
+}
+
+async function loadDefaultImport<T>(filepath: string) {
   try {
-    const res = await import(input);
-    return res.default;
+    const res = await import(filepath);
+    return res.default as T;
   } catch (error) {
     console.error(error);
-    Logger.error({ msg1: "Could not compile", msg2: input });
+    Logger.error({ msg1: "Deployment load error", msg2: filepath });
   }
 }
 
-/** Take a base deployment config, merge with metadata fields, evaluate relative paths */
-// function convertDeploymentToJson(
-//   deployment: IDeploymentConfig,
-//   _config_ts_path: string
-// ): IDeploymentConfig {
-//   const _workspace_path = resolve(_config_ts_path, "../");
-//   const _config_version = DEPLOYMENT_CONFIG_VERSION;
-
-//   // rewrite relative urls to absolute
-//   const rewritten = rewriteConfigPaths(deployment, _workspace_path);
-//   const converted = convertFunctionsToStrings(rewritten);
-
-//   return { ...converted, _workspace_path, _config_ts_path, _config_version };
-// }
-
-function rewriteConfigPaths(data: Record<string, any>, workspacePath: string) {
+function rewriteConfigPaths<T>(data: T, workspacePath: string) {
   Object.entries(data).forEach(([key, value]) => {
     if (value && typeof value === "object") {
       data[key] = rewriteConfigPaths(value, workspacePath);
