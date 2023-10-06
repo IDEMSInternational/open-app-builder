@@ -43,8 +43,8 @@ const config = generateDeploymentConfig("example");
 
 // Main Deployment config
 config.google_drive = {
-    sheets_folder_id: "",
-    assets_folder_id: "",
+    sheets_folder_ids: [],
+    assets_folder_ids: [],
   }
 };
 
@@ -68,7 +68,7 @@ yarn workflow deployment set [name]
 The final processed config can be found in the local `config.json` file, e.g. `.idems_app/deployments/example/config.json`
 
 ## Google Drive Management
-The deployment configuration requires IDs for two created Google Drive folders, one for template sheets and one for global assets. 
+The deployment configuration requires IDs for at least two created Google Drive folders: one or more for template sheets and one or more for assets. 
 
 The folders should again be named without spaces or special characters, and once created their unique IDs can be found by looking at the end of the URL bar when navigating inside the folder on Google Drive.
 
