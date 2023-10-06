@@ -5,13 +5,20 @@ import * as tsup from "tsup";
 
 import pkgJson from "./package.json";
 
+const SCRIPTS_DIR = resolve(__dirname);
+
 /**
  * Compile Typescript to JS
  * Whilst this can be done automatically via tsup there seem to be some issues
  * with module formats, so just manually compile (for now)
  */
 function compileScriptsTs() {
-  return spawnSync("tsc --project tsconfig.build.json", { shell: true, stdio: "inherit" });
+  const tscBin = resolve(SCRIPTS_DIR, "node_modules", ".bin", "tsc");
+  return spawnSync(`${tscBin} --project tsconfig.build.json`, {
+    shell: true,
+    stdio: "inherit",
+    cwd: SCRIPTS_DIR,
+  });
 }
 
 /**
@@ -27,7 +34,7 @@ function createBuildBundle() {
     splitting: false,
     sourcemap: true,
     clean: true,
-    entry: ["build/commands/index.js"],
+    entry: ["build/src/commands/index.js"],
     format: ["cjs"],
     target: "node18",
 
@@ -75,8 +82,11 @@ function copyPackageJson() {
 }
 
 async function build() {
+  console.log("compiling...");
   compileScriptsTs();
+  console.log("bundling...");
   await createBuildBundle();
   copyPackageJson();
+  console.log("build complete");
 }
 build();

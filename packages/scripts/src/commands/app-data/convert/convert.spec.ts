@@ -1,4 +1,4 @@
-import { AppDataConverter } from "./index";
+import { AppDataConverter } from "./convert";
 
 import path, { resolve } from "path";
 
@@ -27,6 +27,9 @@ describe("App Data Converter", () => {
   });
   afterAll(() => {
     emptyDirSync(path.resolve(SCRIPTS_TEST_DATA_DIR, "output"));
+  });
+  beforeEach(() => {
+    converter = new AppDataConverter(paths);
   });
   it("Uses child caches", async () => {
     const cacheFolders = readdirSync(paths.cacheFolder);

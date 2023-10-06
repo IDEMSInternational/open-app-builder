@@ -1,6 +1,6 @@
 import { writeFileSync } from "fs-extra";
 import path from "path";
-import { parseCommand } from "../../commands";
+import { CommandRunner } from "../../commands";
 import { WorkflowRunner } from "../../commands/workflow/run";
 import { SRC_ASSETS_PATH } from "../../paths";
 import { IContentsEntry, replicateDir } from "../../utils";
@@ -11,7 +11,7 @@ const postProcessAssets = async (options: { sourceAssetsFolders: string[] }) => 
   let args = `--source-assets-folders ${sourceAssetsFolders.join(",")}`;
   let cmd = `app-data post-process assets ${args}`;
 
-  await parseCommand(`${cmd}`);
+  await CommandRunner.parseCommand(`${cmd}`);
 };
 
 /** Prepare sourcely cached seets for population to app */
@@ -22,7 +22,7 @@ const postProcessSheets = async (options: {
   const { sourceSheetsFolder, sourceTranslationsFolder } = options;
   let args = `--source-sheets-folder ${sourceSheetsFolder} --source-translations-folder ${sourceTranslationsFolder}`;
   let cmd = `app-data post-process sheets ${args}`;
-  await parseCommand(`${cmd}`);
+  await CommandRunner.parseCommand(`${cmd}`);
 };
 
 /**

@@ -1,4 +1,6 @@
-import ts from "typescript";
+import chalk from "chalk";
+import ts, { CompilerOptions, ProjectReference } from "typescript";
+import { Logger } from "./logging.utils";
 
 /**
  * Prints out particular nodes from a typescript source file
@@ -68,4 +70,63 @@ export function extractTsNode(file: string, identifiers: string[]) {
 export async function readTSDefaultExport(filepath: string) {
   const res = await import(filepath);
   return res.default;
+}
+
+/**
+ * Use typescript compiler to transpile TS string to JS
+ * https://github.com/microsoft/TypeScript-wiki/blob/main/Using-the-Compiler-API.md#a-simple-transform-function
+ **/
+export async function transpileTsToJS(tsData: Buffer) {
+  const js = ts.transpileModule(tsData.toString("utf-8"), {
+    compilerOptions: { module: ts.ModuleKind.CommonJS, target: ts.ScriptTarget.ESNext },
+  });
+  return js.outputText;
+}
+
+/**
+ * Compile TS source files to corresponding JS
+ * https://github.com/microsoft/TypeScript-wiki/blob/main/Using-the-Compiler-API.md
+ */
+export function compileTsToJS(config: {
+  fileNames: string[];
+  projectReferences?: ProjectReference[];
+  compilerOptions?: CompilerOptions;
+}) {
+  // TODO - ideally refactor to deployment workspace and include tsconfig.json
+  // which can be read for defaults, like in strapi `resolveConfigOptions` method
+  // https://github.com/strapi/strapi/blob/main/packages/utils/typescript/lib/compilers/basic.js
+  const compilerDefaults: CompilerOptions = {
+    // TODO - decide if ESNext would be better default target (depends on how will be imported)
+    target: ts.ScriptTarget.ES5,
+    skipLibCheck: true,
+    moduleResolution: ts.ModuleResolutionKind.Node16,
+    module: ts.ModuleKind.CommonJS,
+    esModuleInterop: true,
+    resolveJsonModule: true,
+    // Specify emit settings to be able to determine successful operation or not
+    noEmit: false,
+    noEmitOnError: true,
+    listEmittedFiles: true,
+  };
+  const options = { ...compilerDefaults, ...config.compilerOptions };
+  const program = ts.createProgram({
+    rootNames: config.fileNames,
+    projectReferences: config.projectReferences || [],
+    options,
+  });
+
+  const emitResult = program.emit();
+  // assume files should be emitted (noEmit: false), absense implies error
+  if (emitResult.emittedFiles.length === 0) {
+    let allDiagnostics = ts.getPreEmitDiagnostics(program).concat(emitResult.diagnostics);
+    const messages: string[] = [];
+    allDiagnostics.forEach((diagnostic) => {
+      messages.push(ts.flattenDiagnosticMessageText(diagnostic.messageText, "\n"));
+    });
+    // remove duplicate error messages and log
+    Logger.error({ msg1: "Failed to compile", msg2: config.fileNames.join(", "), logOnly: true });
+    console.log(chalk.red([...new Set(messages)].join("\n")));
+    throw new Error();
+  }
+  return emitResult;
 }

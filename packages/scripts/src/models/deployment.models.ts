@@ -2,8 +2,8 @@ import { DEPLOYMENT_CONFIG_EXAMPLE_DEFAULTS, getDefaultAppConfig } from "data-mo
 import type { IDeploymentConfig, IDeploymentConfigJson } from "data-models";
 import path from "path";
 
-import { DEPLOYMENTS_PATH } from "../../paths";
-import { loadDeploymentJson } from "./utils";
+import { DEPLOYMENTS_PATH } from "../paths";
+import { DeploymentManager } from "../commands/deployment/lib/manager";
 
 // re-export of type for convenience
 export type { IDeploymentConfigJson };
@@ -22,7 +22,10 @@ export function extendDeploymentConfig(options: {
   name: string;
 }): IDeploymentConfig {
   const parentWorkspace = path.resolve(DEPLOYMENTS_PATH, options.parent);
-  const baseConfig = loadDeploymentJson(parentWorkspace);
+
+  // TODO - create ref that can be populated later
+  const baseConfig = {} as IDeploymentConfig;
+
   // add parent_config meta, remove git references
   baseConfig._parent_config = { name: baseConfig.name, _workspace_path: parentWorkspace };
   baseConfig.name = options.name;
@@ -32,3 +35,6 @@ export function extendDeploymentConfig(options: {
   }
   return baseConfig as IDeploymentConfig;
 }
+
+/** Create a single manager for tracking active deployment */
+export const ActiveDeployment = new DeploymentManager();

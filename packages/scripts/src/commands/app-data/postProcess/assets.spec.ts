@@ -1,17 +1,16 @@
 import { createHash } from "crypto";
 
 import { AssetsPostProcessor } from "./assets";
-import type { IDeploymentConfigJson } from "../../deployment/common";
 import type { RecursivePartial } from "data-models/appConfig";
 
 import fs, { readJsonSync, readdirSync } from "fs-extra";
 import mockFs from "mock-fs";
 
 // Use default imports to allow spying on functions and replacing with mock methods
-import { ActiveDeployment } from "../../deployment/get";
+import { IAssetEntryHashmap, IDeploymentConfigJson } from "data-models/deployment.model";
 import path, { resolve } from "path";
-import { IAssetEntryHashmap } from "data-models/deployment.model";
 import { useMockErrorLogger } from "../../../../test/helpers/utils";
+import { ActiveDeployment } from "../../../models";
 
 /** Mock file system folders for use in tests */
 const mockDirs = {

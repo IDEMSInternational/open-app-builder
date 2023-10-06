@@ -17,8 +17,8 @@ import {
   getNestedProperty,
   copyFileWithTimestamp,
 } from "../../../utils";
-import { ActiveDeployment } from "../../deployment/get";
 import type { IAssetEntryHashmap, IContentsEntryMinimal } from "data-models/deployment.model";
+import { ActiveDeployment } from "../../../models";
 import { resolve } from "path";
 
 /**

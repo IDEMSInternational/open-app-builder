@@ -1,29 +1,7 @@
-import { Command } from "commander";
 import open from "open";
 
 // re-export shared utils for ease of import
 export * from "shared/src/utils";
-
-import { logProgramHelp } from "shared";
-
-/**
- * Invoke the commander CLI with current process args,
- * displaying help if no args defined.
- * This is typically only used in the context of direct execution,
- * e.g. ts-node environments
- * @example
- * ```ts
- * if(isTsNode){
- *  callProgramWithHelp(program)
- * }
- * ```
- */
-export function callProgramWithHelp(program: Command) {
-  if (!process.argv.slice(2).length) {
-    return logProgramHelp(program);
-  }
-  return program.parseAsync(process.argv);
-}
 
 /**
  * Detect if running in ts-node environment

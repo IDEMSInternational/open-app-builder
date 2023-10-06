@@ -1,5 +1,5 @@
 import path from "path";
-import { AppDataConverter } from "../../commands/app-data/convert";
+import { AppDataConverter } from "../../commands/app-data/convert/convert";
 import { WorkflowRunner } from "../../commands/workflow/run";
 
 /** Process all templates within a folder */

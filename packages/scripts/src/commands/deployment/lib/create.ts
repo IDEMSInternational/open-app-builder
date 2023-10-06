@@ -1,30 +1,13 @@
 #!/usr/bin/env node
-import { Command } from "commander";
 import fs from "fs-extra";
 import path from "path";
-import { DEPLOYMENTS_PATH } from "../../paths";
-import { Logger, logOutput, logWarning, promptInput, promptOptions } from "../../utils";
-import type { IDeploymentConfigJson } from "./common";
-import generateDefaultConfig from "./templates/config.default";
-import generateExtendedConfig from "./templates/config.extended";
-import { loadDeploymentJson } from "./utils";
+import { DEPLOYMENTS_PATH } from "../../../paths";
+import { Logger, logOutput, logWarning, promptInput, promptOptions } from "../../../utils";
+import type { IDeploymentConfigJson } from "../../../models/deployment.models";
+import generateDefaultConfig from "../templates/config.default";
+import generateExtendedConfig from "../templates/config.extended";
+import { compileDeployment } from "./utils";
 
-const program = new Command("create");
-
-/***************************************************************************************
- * CLI
- * @example yarn
- *************************************************************************************/
-export default program
-  .description("Create new deployment")
-  // options copied from/passed to generate
-  .action(async () => {
-    await createDeployment();
-  });
-
-/***************************************************************************************
- * Main Methods
- *************************************************************************************/
 /**
  * Read the default deployment json and return compiled json of previously set active
  * deployment.
@@ -77,7 +60,7 @@ async function generateExtendedDeployment(): Promise<IGeneratedDeployment> {
 
 /** Prompt select of an existing config to extend */
 async function selectParentConfigToExtend() {
-  const allDeployments = listValidDeployments();
+  const allDeployments = await listValidDeployments();
   const options = Object.values(allDeployments).map((deployment) => ({
     name: deployment.name,
     value: {
@@ -97,7 +80,7 @@ async function selectParentConfigToExtend() {
  * Iterate over deployment folder config.ts files, parse typescript to see which
  * can be successfully generated
  */
-export function listValidDeployments() {
+async function listValidDeployments() {
   const deploymentsHashmap: { [name: string]: IDeploymentConfigJson } = {};
 
   const deploymentTSPaths = fs
@@ -108,8 +91,8 @@ export function listValidDeployments() {
 
   for (const tsPath of deploymentTSPaths) {
     try {
-      const deploymentJson = loadDeploymentJson(path.dirname(tsPath));
-      deploymentsHashmap[deploymentJson.name] = deploymentJson;
+      const { deploymentConfigJson } = await compileDeployment(path.dirname(tsPath));
+      deploymentsHashmap[deploymentConfigJson.name] = deploymentConfigJson;
     } catch (error) {
       logWarning({
         msg1: `Could not load deployment: ${tsPath}`,

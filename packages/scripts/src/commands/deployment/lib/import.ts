@@ -1,34 +1,12 @@
 #!/usr/bin/env node
 import chalk from "chalk";
-import { Command } from "commander";
 import fs, { moveSync, rmSync } from "fs-extra";
 import { resolve } from "path";
-import GitProvider from "../../tasks/providers/git";
-import { DEPLOYMENTS_PATH } from "../../paths";
-import { Logger, logOutput, logWarning, promptConfirmation, promptInput } from "../../utils";
-import { loadDeploymentJson } from "./utils";
+import GitProvider from "../../../tasks/providers/git";
+import { DEPLOYMENTS_PATH } from "../../../paths";
+import { Logger, logOutput, logWarning, promptConfirmation, promptInput } from "../../../utils";
 import { existsSync } from "fs";
-
-const program = new Command("import");
-interface IOptions {
-  /** Url of remote repo to import */
-  remoteRepo: string;
-}
-
-/***************************************************************************************
- * CLI
- * @example yarn
- *************************************************************************************/
-export default program
-  .description("Import remote git repo")
-  .requiredOption("-r --remote-repo <string>")
-  .action(async (options: IOptions) => {
-    await importRepo(options.remoteRepo);
-  });
-
-/***************************************************************************************
- * Main Methods
- *************************************************************************************/
+import { compileDeployment } from "./utils";
 
 export async function importRepo(remoteTarget: string) {
   // Clone to temp dir for analysis
@@ -42,7 +20,8 @@ export async function importRepo(remoteTarget: string) {
   console.log(chalk.gray(`Cloning ${remoteTarget}`));
   await git.cloneRepo(remoteTarget, tmpDir);
 
-  const { name, valid, shouldContinue } = await validateImportDeployment(tmpDir);
+  const importedConfigTs = resolve(tmpDir, "config.ts");
+  const { name, valid, shouldContinue } = await validateImportDeployment(importedConfigTs);
   if (!shouldContinue) {
     rmSync(tmpDir, { recursive: true, force: true });
     process.exit(0);
@@ -79,13 +58,12 @@ function createTempDeploymentName(remoteTarget: string) {
 
 /** Check if deployment config can be compiled */
 async function validateImportDeployment(deploymentPath: string) {
-  const deploymentJson = loadDeploymentJson(deploymentPath, { exitOnError: false });
-  if (deploymentJson) {
-    return { valid: true, name: deploymentJson.name, shouldContinue: true };
-  } else {
-    logWarning({ msg1: "The external repo does not appear to have a valid configuration" });
-    const shouldContinue = await promptConfirmation("Would you like to import anyway?", false);
-    // Although deployment may not be valid still pass back if user specified continue
-    return { valid: false, name: "", shouldContinue };
-  }
+  try {
+    const { deploymentConfig } = await compileDeployment(deploymentPath);
+    return { valid: true, name: deploymentConfig.name, shouldContinue: true };
+  } catch (error) {}
+  logWarning({ msg1: "The external repo does not appear to have a valid configuration" });
+  const shouldContinue = await promptConfirmation("Would you like to import anyway?", false);
+  // Although deployment may not be valid still pass back if user specified continue
+  return { valid: false, name: "", shouldContinue };
 }

@@ -4,8 +4,8 @@ import chalk from "chalk";
 import { Command } from "commander";
 import { Logger, recursiveFindByExtension } from "../../../utils";
 
-import { ActiveDeployment } from "../../deployment/get";
 import { FlowTypes } from "data-models";
+import { ActiveDeployment } from "../../../models";
 
 /***************************************************************************************
  * CLI

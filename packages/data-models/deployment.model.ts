@@ -92,6 +92,10 @@ export interface IDeploymentConfig {
   _version: number;
   /** track parent config  */
   _parent_config?: Partial<IDeploymentConfig & { _workspace_path: string }>;
+
+  _workspace_path?: string;
+  _config_ts_path?: string;
+  _config_version?: number;
 }
 
 /** Deployment with additional metadata when set as active deployment */

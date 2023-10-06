@@ -1,10 +1,7 @@
 import * as fs from "fs-extra";
-import { Command } from "commander";
-
 import * as path from "path";
 import chalk from "chalk";
 import { FlowTypes } from "data-models";
-import { ActiveDeployment } from "../../deployment/get";
 import { IConverterPaths, IParsedWorkbookData } from "./types";
 import { XLSXWorkbookProcessor } from "./processors/xlsxWorkbook";
 import { JsonFileCache } from "./cacheStrategy/jsonFile";
@@ -19,35 +16,15 @@ import {
   standardiseNewlines,
 } from "./utils";
 import { FlowParserProcessor } from "./processors/flowParser/flowParser";
+import { ActiveDeployment } from "../../../models";
 
-/***************************************************************************************
- * CLI
- * @example yarn
- *************************************************************************************/
-const program = new Command("convert");
-interface IProgramOptions {
+export interface IConvertOptions {
   cacheFolder: string;
   /** comma-separated list in case of multiple folders */
-  inputFolder: string;
+  inputFolders: string[];
   outputFolder: string;
   skipCache?: boolean;
 }
-export interface IConverterOptions extends Omit<IProgramOptions, "inputFolder"> {
-  inputFolders: string[];
-}
-export default program
-  .description("Convert app data")
-  .requiredOption("-i --input-folders <string>", "")
-  .requiredOption("-c --cache-folder <string>", "")
-  .requiredOption("-o --output-folder <string>", "")
-  .option("-s --skip-cache", "Wipe local conversion cache and process all files")
-  .action(async (options: IProgramOptions) => {
-    const mappedOptions: IConverterOptions = {
-      ...options,
-      inputFolders: options.inputFolder.split(",").map((f) => f.trim()),
-    };
-    await new AppDataConverter(mappedOptions).run();
-  });
 
 /***************************************************************************************
  * Main Methods
@@ -69,7 +46,7 @@ export class AppDataConverter {
 
   cache: JsonFileCache;
 
-  constructor(private options: IConverterOptions, testOverrides: Partial<AppDataConverter> = {}) {
+  constructor(private options: IConvertOptions, testOverrides: Partial<AppDataConverter> = {}) {
     console.log(chalk.yellow("App Data Convert"));
     // optional overrides, used for tests
     if (testOverrides.version) this.version = testOverrides.version;
