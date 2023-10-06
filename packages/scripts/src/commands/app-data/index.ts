@@ -9,15 +9,24 @@ const program = new Command("app-data").description("Manage app data");
 /** add sub-commands from child folders */
 program.addCommand(postProcessCmd);
 
+interface IConvertProgramOptions {
+  inputFolders: string;
+  cacheFolder: string;
+  outputFolder: string;
+  skipCache?: boolean;
+}
 program
-  .command("convert")
   .description("Convert app data")
-  .requiredOption("-i --input-folder <string>", "")
+  .requiredOption("-i --input-folders <string>", "")
   .requiredOption("-c --cache-folder <string>", "")
   .requiredOption("-o --output-folder <string>", "")
   .option("-s --skip-cache", "Wipe local conversion cache and process all files")
-  .action(async (options: IConvertOptions) => {
-    await new AppDataConverter(options).run();
+  .action(async (options: IConvertProgramOptions) => {
+    const mappedOptions: IConvertOptions = {
+      ...options,
+      inputFolders: options.inputFolders.split(",").map((f) => f.trim()),
+    };
+    await new AppDataConverter(mappedOptions).run();
   });
 
 export default program;

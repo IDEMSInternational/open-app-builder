@@ -65,10 +65,12 @@ describe("FlowParser Processor", () => {
     await processor.process([invalidFlow]);
     const errorLogs = getLogs("error");
     expect(errorLogs.length).toEqual(1);
-    expect(errorLogs[0].message).toEqual("No parser available for flow_type: test_invalid_type");
+    const [{ message, details }] = errorLogs;
+    expect(message).toEqual("No parser available for flow_type: test_invalid_type");
+    expect(details.flow_type).toEqual("test_invalid_type");
+    expect(details.flow_name).toEqual("test_data_list");
   });
   it("Logs flow parse errors", async () => {
-    clearLogs();
     const brokenFlow: FlowTypes.FlowTypeWithData = {
       flow_name: "test_broken_flow",
       flow_type: "data_list",
