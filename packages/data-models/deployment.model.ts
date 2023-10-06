@@ -1,3 +1,4 @@
+import type { IGdriveEntry } from "../@idemsInternational/gdrive-tools";
 import type { IAppConfig } from "./appConfig";
 
 /** Update version to force recompile next time deployment set (e.g. after default config update) */
@@ -153,20 +154,6 @@ interface IContentsEntry {
   md5Checksum: string;
   /** specific path to file when not the same as relativePath, e.g. asset overrides */
   filePath?: string;
-}
-
-/** Duplicate type definition from gdrive-downloader (TODO - find better way to share) */
-interface IGdriveEntry {
-  id: string;
-  name: string;
-  mimeType: string;
-  modifiedTime: string;
-  folderPath: string;
-  // only appears on xlsx uploaded files (not gsheet)
-  fullFileExtension?: string;
-  fileExtension?: string;
-  md5Checksum?: string;
-  size?: string;
 }
 
 /** Duplicate type defintion from data-models (TODO - find better way to share) */
