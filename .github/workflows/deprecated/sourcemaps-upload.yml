@@ -46,7 +46,7 @@ jobs:
       - run: yarn build --configuration "production,glitchtip"
         env:
             # Fix possible out-of-memory issues
-            NODE_OPTIONS: --max_old_space_size=4096
+            NODE_OPTIONS: --max_old_space_size=6144
       - name: set app version
         run: echo "APP_VERSION=$(echo "$(cat package.json | jq -r '.version')")" >> $GITHUB_ENV
       - name: Upload sourcemaps
