@@ -173,21 +173,27 @@ const workflows: IDeploymentWorkflows = {
       {
         name: "sync_watch",
         function: async ({ tasks, config, workflow }) => {
-          tasks.gdrive.liveReload({
-            folderId: config.google_drive.sheets_folder_id,
-            onUpdate: async (filepath) => {
-              // only respond to xlsx file changes
-              if (filepath.endsWith(".xlsx")) {
-                // TODO - add better methods to process single sheet instead of all
-                await tasks.workflow.runWorkflow({
-                  name: "sync_sheets",
-                  parent: workflow,
-                  args: ["--skip-download"],
-                });
-                tasks.appData.copyDeploymentDataToApp();
-              }
-            },
-          });
+          let { sheets_folder_ids, sheets_folder_id } = config.google_drive;
+          if (!sheets_folder_ids) {
+            sheets_folder_ids = [sheets_folder_id];
+          }
+          for (const folderId of sheets_folder_ids) {
+            tasks.gdrive.liveReload({
+              folderId,
+              onUpdate: async (filepath) => {
+                // only respond to xlsx file changes
+                if (filepath.endsWith(".xlsx")) {
+                  // TODO - add better methods to process single sheet instead of all
+                  await tasks.workflow.runWorkflow({
+                    name: "sync_sheets",
+                    parent: workflow,
+                    args: ["--skip-download"],
+                  });
+                  tasks.appData.copyDeploymentDataToApp();
+                }
+              },
+            });
+          }
         },
       },
     ],
