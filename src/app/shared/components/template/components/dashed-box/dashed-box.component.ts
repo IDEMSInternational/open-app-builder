@@ -1,9 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { TemplateBaseComponent } from "../base";
 import { ITemplateRowProps } from "../../models";
-import { getStringParamFromTemplateRow } from "../../../../utils";
+import { getStringParamFromTemplateRow, parseMarkdown } from "src/app/shared/utils";
 import { DomSanitizer, SafeHtml } from "@angular/platform-browser";
-import { parseMarkdown } from "../../../../utils";
 
 @Component({
   selector: "plh-dashed-box",
