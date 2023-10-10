@@ -449,7 +449,7 @@ export function parseMarkdown(src: string, options?: marked.MarkedOptions) {
   const renderer = new marked.Renderer();
   renderer.link = function (href, title, text) {
     const link = marked.Renderer.prototype.link.apply(this, arguments);
-    return link.replace("<a", "<a target='_blank'");
+    return link.replace("<a", "<a target='_blank' rel='noopener noreferrer'");
   };
   marked.setOptions({
     renderer,
