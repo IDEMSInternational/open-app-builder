@@ -1,17 +1,22 @@
+import type { IGdriveEntry } from "../@idemsInternational/gdrive-tools";
 import type { IAppConfig } from "./appConfig";
 
 /** Update version to force recompile next time deployment set (e.g. after default config update) */
-export const DEPLOYMENT_CONFIG_VERSION = 20230428;
+export const DEPLOYMENT_CONFIG_VERSION = 20230930;
 
 export interface IDeploymentConfig {
   /** Friendly name used to identify the deployment name */
   name: string;
 
   google_drive: {
-    /** ID of folder containing app sheets, as seen in end of url */
-    sheets_folder_id: string;
-    /** ID of folder containing app assets, as seen in end of url */
-    assets_folder_id: string;
+    /** @deprecated Use `sheets_folder_ids` array instead */
+    sheets_folder_id?: string;
+    /** IDs of folders containing app sheets, as seen in end of url */
+    sheets_folder_ids?: string[];
+    /** @deprecated Use `assets_folder_ids` array instead */
+    assets_folder_id?: string;
+    /** IDs of folders containing app assets, as seen in end of url */
+    assets_folder_ids?: string[];
     /** generated gdrive access token. Default `packages/scripts/config/token.json` */
     auth_token_path?: string;
     /** filter function applied to sheets download that receives basic file info such as folder and id. Default `(gdriveEntry)=>true` */
@@ -165,20 +170,6 @@ interface IContentsEntry {
   md5Checksum: string;
   /** specific path to file when not the same as relativePath, e.g. asset overrides */
   filePath?: string;
-}
-
-/** Duplicate type definition from gdrive-downloader (TODO - find better way to share) */
-interface IGdriveEntry {
-  id: string;
-  name: string;
-  mimeType: string;
-  modifiedTime: string;
-  folderPath: string;
-  // only appears on xlsx uploaded files (not gsheet)
-  fullFileExtension?: string;
-  fileExtension?: string;
-  md5Checksum?: string;
-  size?: string;
 }
 
 /** Duplicate type defintion from data-models (TODO - find better way to share) */

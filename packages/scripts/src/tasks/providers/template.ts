@@ -3,14 +3,14 @@ import { AppDataConverter } from "../../commands/app-data/convert";
 import { WorkflowRunner } from "../../commands/workflow/run";
 
 /** Process all templates within a folder */
-const process = async (options: { inputFolder: string }) => {
+const process = async (options: { inputFolders: string[] }) => {
   const { _workspace_path } = WorkflowRunner.config;
 
-  const { inputFolder } = options;
+  const { inputFolders } = options;
   const outputFolder = path.resolve(_workspace_path, "tasks", "template", "outputs");
   const cacheFolder = path.resolve(_workspace_path, "tasks", "template", "cache");
   const skipCache = false;
-  const converter = new AppDataConverter({ inputFolder, outputFolder, cacheFolder, skipCache });
+  const converter = new AppDataConverter({ inputFolders, outputFolder, cacheFolder, skipCache });
   await converter.run();
   return outputFolder;
 };
