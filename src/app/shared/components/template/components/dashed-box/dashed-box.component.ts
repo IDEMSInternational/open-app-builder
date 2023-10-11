@@ -1,9 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { TemplateBaseComponent } from "../base";
 import { ITemplateRowProps } from "../../models";
-import { getStringParamFromTemplateRow } from "../../../../utils";
+import { getStringParamFromTemplateRow, parseMarkdown } from "src/app/shared/utils";
 import { DomSanitizer, SafeHtml } from "@angular/platform-browser";
-import marked from "marked";
 
 @Component({
   selector: "plh-dashed-box",
@@ -26,7 +25,7 @@ export class TmplDashedBoxComponent
     this.getParams();
     if (this._row.value) {
       this.innerHTML = this.domSanitizer.bypassSecurityTrustHtml(
-        marked(this._row.value.toString())
+        parseMarkdown(this._row.value.toString())
       );
     }
   }
