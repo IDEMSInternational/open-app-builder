@@ -216,13 +216,13 @@ const workflows: IDeploymentWorkflows = {
       {
         name: "run_debug_function",
         function: async ({ tasks }) => {
-          return await tasks.canto.debugFunction();
+          return await tasks.canto.download.debugFunction();
         },
       },
       {
         name: "restructure_files",
         function: async ({ tasks, workflow }) => {
-          return tasks.copyFiles(workflow.run_debug_function.output);
+          return tasks.canto.copy.copyFiles(workflow.run_debug_function.output);
         },
       },
       {
