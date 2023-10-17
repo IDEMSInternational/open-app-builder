@@ -1,9 +1,17 @@
-import { WorkflowRunner } from "../../commands/workflow/run";
+import { WorkflowRunner } from "../../../commands/workflow/run";
 import fetch from "node-fetch";
 import * as fs from "fs-extra";
 import path from "path";
-import { CANTO_ACCESS_TOKEN_PATH } from "../../paths";
+import { CANTO_ACCESS_TOKEN_PATH } from "../../../paths";
 import { differenceInCalendarDays } from "date-fns";
+import {
+  CantoResponseSearchUnderFolder,
+  CantoResponseBatchContentDetails,
+  CantoManifest,
+  CantoManifestEntry,
+} from "./types";
+import { getJsonFromFile } from "../../../utils";
+import { getFilePath, getOutputFolder } from "./utils";
 
 const OAUTH_BASE_URL = "https://oauth.canto.com";
 
@@ -23,23 +31,42 @@ interface CantoQueryParams {
   scheme?: string;
 }
 type CantoQueryType = "search" | "folder" | "album" | "batch/content";
+interface CantoBatchManifestEntry {
+  id: string;
+  scheme: string;
+}
+
+const FOLDER_ID = "V0DQB";
 
 const debugFunction = async () => {
-  const response = await searchUnderFolder("V0DQB");
-  const { results } = response;
-  // for (const file of results) {
-  //   console.log("tags", file.tag)
-  //   await downloadFileFromUrl(file.url.directUrlOriginal, file.name)
-  // }
-  const batchManifest = results.map((file) => {
+  const { config } = WorkflowRunner;
+  // const { sourceFolders } = config.canto
+  const sourceFolders = [FOLDER_ID];
+
+  console.log(sourceFolders);
+  const outputFolders = [];
+  for (const folderId of sourceFolders) {
+    outputFolders.push(await downloadFilesFromCantoFolder(folderId));
+  }
+  return outputFolders;
+};
+
+const downloadFilesFromCantoFolder = async (folderId: string) => {
+  const { results } = await searchUnderFolder(folderId);
+
+  // Make a request for additional info for all files in batch
+  const batchFiles = results.map((file) => {
     return { id: file.id, scheme: file.scheme };
   });
-  const response2 = await queryCanto({
-    queryType: "batch/content",
-    method: "POST",
-    body: batchManifest,
-  });
-  console.log("response2:", response2);
+  const manifest = await batchGetContentDetails(batchFiles);
+  for (const file of manifest) {
+    await downloadFile(file, folderId);
+  }
+  const outputFolder = getOutputFolder("original");
+  const fullPath = path.join(outputFolder, folderId, "manifest.json");
+  fs.ensureDirSync(path.dirname(outputFolder));
+  fs.writeFileSync(fullPath, JSON.stringify(manifest, null, 2));
+  return path.join(outputFolder, folderId);
 };
 
 /**
@@ -68,6 +95,7 @@ const queryCanto = async (opts: {
     params ? "?" + params : ""
   }`;
 
+  console.log("query url:", url);
   const options = {
     method,
     headers: {
@@ -77,11 +105,7 @@ const queryCanto = async (opts: {
     body: JSON.stringify(body),
   };
   const response = await fetch(url, options);
-  console.log("body:", body);
-  console.log("method:", method);
-  console.log("url:", url);
   const data = await response.json();
-  console.log(data);
   return data;
 };
 
@@ -95,7 +119,16 @@ const searchUnderFolder = async (
     params = { ...params, scheme: "image|video|audio|document|other" };
   }
   const data = await queryCanto({ queryType: "folder", folderId, queryParams: params });
-  return data;
+  return data as CantoResponseSearchUnderFolder;
+};
+
+const batchGetContentDetails = async (batchFiles: CantoBatchManifestEntry[]) => {
+  const response = (await queryCanto({
+    queryType: "batch/content",
+    method: "POST",
+    body: batchFiles,
+  })) as CantoResponseBatchContentDetails;
+  return response.docResult as CantoManifest;
 };
 
 const ensureValidAccessToken = async () => {
@@ -143,27 +176,15 @@ const getAccessTokenPath = () => {
   return accessTokenPath;
 };
 
-const getOutputFolder = (folderId: string) => {
-  const { _workspace_path } = WorkflowRunner.config;
-  return path.resolve(_workspace_path, "tasks", "canto", "outputs", folderId);
-};
-
-const getJsonFromFile = (filepath: string) => {
-  try {
-    const jsonString = fs.readFileSync(filepath).toString();
-    return JSON.parse(jsonString);
-  } catch (ex) {
-    console.log("Failed to parse JSON for file ", filepath);
-    return null;
-  }
-};
-
-const downloadFileFromUrl = async (url: string, filePath: string) => {
+const downloadFile = async (fileEntry: CantoManifestEntry, folderId: string) => {
+  const url = fileEntry.url.directUrlOriginal;
+  const filePath = getFilePath(fileEntry, folderId);
   const response = await fetch(url);
   const buffer = await response.buffer();
-  const outputFolder = getOutputFolder("assets");
-  fs.ensureDirSync(outputFolder);
-  fs.writeFileSync(outputFolder + "/" + filePath, buffer);
+  const outputFolder = getOutputFolder("original/" + folderId);
+  const fullPath = outputFolder + "/" + filePath;
+  fs.ensureDirSync(path.dirname(fullPath));
+  fs.writeFileSync(fullPath, buffer);
 };
 
 export default { authorize, debugFunction };

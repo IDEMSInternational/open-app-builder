@@ -1,6 +1,6 @@
 import { Command } from "commander";
 import open from "open";
-
+import * as fs from "fs-extra";
 // re-export shared utils for ease of import
 export * from "shared/src/utils";
 
@@ -57,4 +57,14 @@ export async function openUrl(url: string) {
 export async function openUrlDynamic(url: string) {
   // const open = (await dynamicImport("open", module)) as typeof import("open");
   // return open.default(url);
+}
+
+export function getJsonFromFile(filepath: string) {
+  try {
+    const jsonString = fs.readFileSync(filepath).toString();
+    return JSON.parse(jsonString);
+  } catch (ex) {
+    console.log("Failed to parse JSON for file ", filepath);
+    return null;
+  }
 }

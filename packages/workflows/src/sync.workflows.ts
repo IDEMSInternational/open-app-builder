@@ -214,10 +214,23 @@ const workflows: IDeploymentWorkflows = {
     label: "Test Canto methods",
     steps: [
       {
-        name: "Run debug function",
+        name: "run_debug_function",
         function: async ({ tasks }) => {
-          return tasks.canto.debugFunction();
+          return await tasks.canto.debugFunction();
         },
+      },
+      {
+        name: "restructure_files",
+        function: async ({ tasks, workflow }) => {
+          return tasks.copyFiles(workflow.run_debug_function.output);
+        },
+      },
+      {
+        name: "assets_post_process",
+        function: async ({ tasks, workflow }) =>
+          tasks.appData.postProcessAssets({
+            sourceAssetsFolders: workflow.restructure_files.output,
+          }),
       },
     ],
   },
