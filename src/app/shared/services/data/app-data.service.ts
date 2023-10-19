@@ -81,7 +81,7 @@ export class AppDataService extends SyncServiceBase {
     flow_type: FlowTypes.FlowType,
     flow_name: string,
     /** Keep log of previous override flow names to avoid infinite loops, e.g. flow_a -> flow_b -> flow_a  */
-    overrideHistory: string[] = []
+    is_override_target: boolean = false
   ) {
     const flowContents = this.sheetContents[flow_type][flow_name];
     if (!flowContents) {
@@ -91,9 +91,8 @@ export class AppDataService extends SyncServiceBase {
     }
     // Check for any runtime overrides to flows
     const overrideFlowName = await this.checkFlowOverrides(flowContents);
-    if (overrideFlowName && !overrideHistory.includes(overrideFlowName)) {
-      overrideHistory.push(flow_name);
-      return this.getSheet(flow_type, overrideFlowName, overrideHistory);
+    if (overrideFlowName && !is_override_target) {
+      return this.getSheet(flow_type, overrideFlowName, true);
     }
 
     // Populate flow from cache if exists, or load json if it does not

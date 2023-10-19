@@ -104,6 +104,7 @@ export class AppDataVariableService extends AsyncServiceBase {
       const evaluated = jsEvaluator.evaluate(parsed);
       return evaluated;
     } catch (error) {
+      console.warn(`Error evaluating expression, "${expression}"`, error);
       return parsed;
     }
   }
@@ -120,7 +121,10 @@ export class AppDataVariableService extends AsyncServiceBase {
           isRecursive = true;
         }
         for (const variableName of Object.keys(variableNameHashmap)) {
-          const evaluated = await this.get(contextPrefix as IVariableContext, variableName);
+          let evaluated = await this.get(contextPrefix as IVariableContext, variableName);
+          if (typeof evaluated === "string" || evaluated instanceof String) {
+            evaluated = `"${evaluated}"`;
+          }
           evaluatedContext[contextPrefix][variableName] = evaluated;
         }
       }
