@@ -154,6 +154,16 @@ export class AppDataService extends SyncServiceBase {
     }
   }
 
+  /** Add flow at runtime - adds to sheet contents and app data cache */
+  public addFlow(flow: FlowTypes.FlowTypeWithData) {
+    const { flow_type, flow_name } = flow;
+    this.sheetContents[flow_type][flow_name] = { flow_type, flow_name, flow_subtype: "runtime" };
+    this.appDataCache[flow_type][flow_name] = flow;
+    if (flow_type === "data_list" || flow_type === "asset_pack") {
+      this.populateCacheDataList(flow);
+    }
+  }
+
   /**
    * Datalists can include alias `data_list_name` used as an accessor,
    * So include these aliases in the default list for faster lookup
