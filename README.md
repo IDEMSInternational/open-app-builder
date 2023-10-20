@@ -40,10 +40,13 @@ Note - you may have to do this from time to time when content is updated)
 ### Set Deployment
 The app supports using different workspace or deployment configurations. These are stored in [.idems_app/deployments](./.idems_app/deployments)
 
-An initial deployment should be specified via the command
+To use an existing deployment, run the following script:
 ```
 yarn workflow deployment set
 ```
+This will present an interactive list of deployments to select from.
+
+See [Deployment Documentation](https://idemsinternational.github.io/parenting-app-ui/developers/deployments/) for information about creating and configuring deployments.
 
 ### Firebase
 To be able to run the full project a specific configuration file needs to be included to access
