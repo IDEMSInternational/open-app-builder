@@ -1,7 +1,7 @@
 import { FlowTypes } from "data-models";
 import * as Parsers from "./parsers";
 import { IConverterPaths, IFlowHashmapByType, IParsedWorkbookData } from "../../types";
-import { arrayToHashmap, groupJsonByKey, IContentsEntry, Logger } from "../../utils";
+import { arrayToHashmap, groupJsonByKey, IContentsEntry } from "../../utils";
 import BaseProcessor from "../base";
 
 export class FlowParserProcessor extends BaseProcessor<FlowTypes.FlowTypeWithData> {
@@ -67,13 +67,7 @@ export class FlowParserProcessor extends BaseProcessor<FlowTypes.FlowTypeWithDat
       this.processedFlowHashmap[flow_type] = {};
       this.processedFlowHashmapWithMeta[flow_type] = {};
     }
-    const duplicateFlow = this.processedFlowHashmapWithMeta[flow_type][flow_name];
-    if (duplicateFlow) {
-      this.logger.error({
-        message: "Duplicate flow name",
-        details: { flow_name, flow_type, _xlsxPaths: [_xlsxPath, duplicateFlow._xlsxPath] },
-      });
-    }
+    // NOTE - duplicate flows are identified up during main converter
     this.processedFlowHashmap[flow_type][flow_name] = flow.rows;
     this.processedFlowHashmapWithMeta[flow_type][flow_name] = flow;
   }
