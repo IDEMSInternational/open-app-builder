@@ -7581,6 +7581,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/pg@npm:^8.10.7":
+  version: 8.10.7
+  resolution: "@types/pg@npm:8.10.7"
+  dependencies:
+    "@types/node": "*"
+    pg-protocol: "*"
+    pg-types: ^4.0.1
+  checksum: 90a616360844b6f877be21a24839af2115f5eb9c8e3eeaf577fa0f036c6c56ad140113fdd8268e63cf215bd0953d89caa1af05191dd89cb2e6d96eb6db6074d2
+  languageName: node
+  linkType: hard
+
 "@types/pg@npm:^8.6.0":
   version: 8.10.2
   resolution: "@types/pg@npm:8.10.2"
@@ -9066,6 +9077,7 @@ __metadata:
     "@types/express": ^4.17.11
     "@types/jest": ^29.5.6
     "@types/node": ^16.11.26
+    "@types/pg": ^8.10.7
     "@types/sequelize": 4.28.9
     "@types/supertest": ^2.0.10
     "@types/ws": ^7.4.6
