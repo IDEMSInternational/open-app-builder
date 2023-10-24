@@ -9,8 +9,7 @@ import { Umzug, SequelizeStorage } from "umzug";
 import { ADMIN_CLIENT_CONFIG, USER_DB_CONFIG } from "./config";
 
 const MIGRATIONS_DIR = path.resolve(__dirname, "migrations");
-const APP_DB_PASSWORD = environment.APP_DB_PASSWORD;
-const APP_DB_USER = environment.APP_DB_USER;
+const { APP_DB_USER, APP_DB_PASSWORD } = environment;
 
 export class DBInstance {
   constructor(private dbName = environment.APP_DB_NAME) {}

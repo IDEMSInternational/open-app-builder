@@ -37,6 +37,22 @@ Ensure `API_BASE_PATH=""` to allow running standalone (as opposed to part of ful
 4. Interact with app.
 By default any app running locally via `yarn start` will target the localhost api, so in-app operations such as contact field syncing can be tested in the same way as production
 
+### API Tests
+E2E tests can be run via
+```sh
+yarn workspace api test:e2e
+```
+If developing tests an option `--watch` flag can be added at the end to live-reload
+
+An additional admin user will need to be created on the local db as an alternative to the postgres admin. This will also require creation of a database to support initial bootstrap connection
+
+```
+username: test_admin
+password: test_admin
+
+database: test_admin
+```
+
 
 ## Stack development
 Requires [docker desktop](https://www.docker.com/products/docker-desktop/) installed locally
