@@ -14,7 +14,7 @@
     "test:watch": "jest --watch",
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
-    "test:e2e": "jest --config ./test/jest-e2e.json",
+    "test:e2e": "jest --config jest.config-e2e.ts",
     "docker:build": "echo $npm_package_version && DOCKER_BUILDKIT=1 docker build -f Dockerfile --tag idems/apps-api:$npm_package_version .",
     "docker:run": "docker run -p 3000:3000 --name apps-api --rm idems/apps-api:$npm_package_version"
   },
@@ -39,11 +39,11 @@
     "umzug": "3.2.1"
   },
   "devDependencies": {
-    "@nestjs/cli": "^7.6.0",
-    "@nestjs/schematics": "^7.3.0",
-    "@nestjs/testing": "7.6.15",
+    "@nestjs/cli": "^9.5.0",
+    "@nestjs/schematics": "^9.2.0",
+    "@nestjs/testing": "9.4.3",
     "@types/express": "^4.17.11",
-    "@types/jest": "^26.0.22",
+    "@types/jest": "^29.5.6",
     "@types/node": "^16.11.26",
     "@types/sequelize": "4.28.9",
     "@types/supertest": "^2.0.10",
@@ -53,29 +53,12 @@
     "eslint": "^8.12.0",
     "eslint-config-prettier": "^8.1.0",
     "eslint-plugin-prettier": "^4.0.0",
-    "jest": "^26.6.3",
+    "jest": "^29.7.0",
     "prettier": "^2.4.1",
     "rimraf": "^5.0.0",
     "supertest": "^6.1.3",
-    "ts-jest": "^26.5.4",
+    "ts-jest": "^29.1.1",
     "ts-loader": "^8.0.18",
     "tsconfig-paths": "^3.9.0"
-  },
-  "jest": {
-    "moduleFileExtensions": [
-      "js",
-      "json",
-      "ts"
-    ],
-    "rootDir": "src",
-    "testRegex": ".*\\.spec\\.ts$",
-    "transform": {
-      "^.+\\.(t|j)s$": "ts-jest"
-    },
-    "collectCoverageFrom": [
-      "**/*.(t|j)s"
-    ],
-    "coverageDirectory": "../coverage",
-    "testEnvironment": "node"
   }
 }
