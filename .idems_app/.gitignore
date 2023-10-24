@@ -1,9 +1,9 @@
 deployments/*
+
+# Demo deployments that don't have their own repo
 !deployments/local
+!deployments/sandbox
 
 # Renamed to activeDeployment.json, include here so people can remove
 !/deployments/default.json
 !public.json
-
-# Temp deployments used for development purposes:
-!deployments/debug_gdrive_multiple
