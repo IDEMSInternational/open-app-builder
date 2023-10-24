@@ -12,7 +12,7 @@
         <ion-title>{{ sideMenuDefaults.title }}</ion-title>
         <div class="app-version" slot="end">
           <span *ngIf="sideMenuDefaults.should_show_version"
-            >{{ CONTENT_VERSION }}({{ APP_VERSION }})
+            >{{ APP_VERSION }}{{ CONTENT_VERSION ? "(" + CONTENT_VERSION + ")" : "" }}
           </span>
           <span *ngIf="sideMenuDefaults.should_show_deployment_name" style="margin-left: 16px"
             >({{ DEPLOYMENT_NAME }})</span
