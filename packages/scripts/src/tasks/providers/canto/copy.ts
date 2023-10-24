@@ -1,20 +1,10 @@
-// Copy files from Canto folder structure into generic folder structure (matching those from gdrive) for consumption by the app
-// Also filter/translate metadata file into a standard contents file
+// Copy files from Canto folder structure into generic folder structure (matching those from gdrive)
+// for consumption by the assets post-processor
 import * as fs from "fs-extra";
 import path from "path";
 import { getJsonFromFile } from "../../../utils";
 import { CantoManifest } from "./types";
 import { getFilePath, getOutputFolder } from "./utils";
-
-// Filter for the fields we want to keep
-// const filteredManifest = fullManifest.map((file) => {
-//   return {
-//     id: file.id,
-//     md5Checksum: file.md5,
-//     customFields: file.additional,
-//     modifiedTime: file.time
-//   }
-// })
 
 const FOLDER_ID = "V0DQB";
 const CUSTOM_FIELD_THEME = "app_theme";
