@@ -10,7 +10,7 @@ const config: JestConfigWithTsJest = {
   moduleNameMapper: {
     "^src/(.*)$": "<rootDir>/src/$1",
   },
-  setupFilesAfterEnv: ["<rootDir>/test/e2e-setup.ts"],
+  // setupFiles: ["<rootDir>/test/e2e-setup.ts"],
 };
 
 export default config;
