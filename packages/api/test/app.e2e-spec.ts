@@ -81,7 +81,7 @@ describe("AppController (e2e)", () => {
    * Doesn't work - seems to be strange memory management issue when creating/injecting requests
    * Often 1 request gets dropped or 2 may go into same db
    */
-  it.only("Handles multiple concurrent requests to different dbs", async () => {
+  it("Handles multiple concurrent requests to different dbs", async () => {
     const dbNameBase = `test_e2e_${generateTestID()}`;
     const deploymentDBNames = new Array(5).fill(0).map((_, i) => `${dbNameBase}_${i}`);
 
