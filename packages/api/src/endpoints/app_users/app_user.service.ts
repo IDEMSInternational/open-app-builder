@@ -27,15 +27,17 @@ export class AppUsersService {
     });
   }
 
-  getUserData(app_user_id: string): any {
-    return { app_user_id, contact_fields: { example: "hellow" } };
-  }
   async setUserData(app_user_id: string, data: ContactFieldDto) {
-    let user = await this.model.findOne({ where: { app_user_id } });
+    const user = await this.model.findOne({ where: { app_user_id } });
     if (!user) {
-      user = new AppUser();
+      return await this.model.create({ ...data, app_user_id });
+      // HACK - instantiating as appUser object does not generate correct sequelize queryInterface
+      // Alternatively could try to manually re bind
+
+      // user = new AppUser();
       user.app_user_id = app_user_id;
     }
+    // await this.model.upsert({ ...user, ...data, app_user_id });
     return user.update({ ...data, app_user_id });
   }
 }
