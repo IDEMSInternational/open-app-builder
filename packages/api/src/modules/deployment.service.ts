@@ -1,38 +1,43 @@
-import { Injectable } from "@nestjs/common";
-import { ModuleRef } from "@nestjs/core";
-import { DBInstance } from "src/db";
+import { Inject, Injectable, Scope } from "@nestjs/common";
+import { REQUEST } from "@nestjs/core";
 
-import { Sequelize } from "sequelize-typescript";
-import { USER_DB_CONFIG } from "src/db/config";
-import { SequelizeModuleOptions } from "@nestjs/sequelize";
-import { EntitiesMetadataStorage } from "@nestjs/sequelize/dist/entities-metadata.storage";
-import { DEFAULT_CONNECTION_NAME } from "@nestjs/sequelize/dist/sequelize.constants";
 import { SequelizeHooks } from "sequelize/types/hooks";
+import { Request } from "express";
+import { ConnectionManagerService } from "src/services/connection-manager";
+import { environment } from "src/environment";
 
-@Injectable()
 /**
- *
- * Keep track of connections to multiple admin and client databases
- * Admin connections setup tables
- * Client connections used for operations
- *
- * This is used instead of initialising sequelize via module import forRoot,
- * as that will populate a single global service used in all requests whereas
- * the api will want to switch connection depending on request
+ * Handle requests targetting different database endpoints
+ * Created per-request to try ensure model operations are carried out via correct db connection
  */
+@Injectable({ scope: Scope.REQUEST })
 export class DeploymentService {
-  /** Active sequelize client */
-  public client: Sequelize;
+  public dbName: string;
 
-  /** List of all user clients initialised */
-  private userClients: Record<string, Sequelize> = {};
-  private globalClient: Sequelize;
-  private models: Function[];
-
-  private hooks: { hookType: keyof SequelizeHooks; fn: any }[] = [];
-
-  constructor(private moduleRef: ModuleRef) {
+  constructor(
+    private connectionManager: ConnectionManagerService,
+    @Inject(REQUEST) readonly request: Request
+  ) {
     DeploymentService.service = this;
+    this.dbName = (request.headers["x-deployment-db-name"] as string) || environment.APP_DB_NAME;
+  }
+
+  public get client() {
+    const client = this.connectionManager.userClients[this.dbName || "_invalid_"];
+    // Client init depends on middleware. Ensure currently in use
+    if (!client) {
+      throw new Error("Deployment client not initialized: " + this.dbName);
+    }
+    return client;
+  }
+
+  public get queryInterface() {
+    const queryInterface = this.connectionManager.queryInterfaces[this.dbName || "_invalid_"];
+    // queryInterface init depends on middleware. Ensure currently in use
+    if (!queryInterface) {
+      throw new Error("Deployment queryInterface not initialized: " + this.dbName);
+    }
+    return queryInterface;
   }
 
   /**
@@ -46,6 +51,7 @@ export class DeploymentService {
     }
     return DeploymentService.service;
   }
+
   private static service: DeploymentService | undefined = undefined;
 
   /**
@@ -53,109 +59,30 @@ export class DeploymentService {
    * @param entity Sequelize model representation of db table and columns
    */
   public model<T extends Function>(entity: T) {
-    // Client init depends on middleware. Ensure currently in use
-    if (!this.client) {
-      throw new Error("Deployment client not initialized");
-    }
-    const model = this.client.model<T, T>(entity.name) as any;
-    return model as T;
+    const model = this.client.model<T, T>(entity.name);
+    // HACK - when accessing client model ensure using correct query interface
+    // (appears issue when creating models globally will assume default interface)
+    // (this interface is used when calling various set/upsert operations)
+    model.sequelize.getQueryInterface = () => {
+      // console.log( "[MODEL] get query interface", this.dbName, model.sequelize.config.database, this.queryInterface.sequelize.config.database);
+      return this.queryInterface;
+    };
+    return model as any as T;
   }
 
   /** Specify sequelize hooks to apply to clients. Updates all existing clients and will be registered on future **/
   public registerHook<K extends keyof SequelizeHooks>(hookType: K, fn: SequelizeHooks[K]) {
-    for (const client of Object.values(this.userClients)) {
-      client.addHook(hookType, fn);
-    }
-    this.hooks.push({ hookType, fn });
+    return this.connectionManager.registerHook(hookType, fn);
   }
 
-  /** Specify default db connection to be used for any subsequent operations */
-  async setDeploymentDB(dbName: string) {
-    // Ensure sequelize has been initialised with default credentials to use as a base
-    if (!this.globalClient) {
-      this.globalClient = this.moduleRef.get(Sequelize, { strict: false });
-      // TODO - want to prevent connection being used
-      this.models = EntitiesMetadataStorage.getEntitiesByConnection(DEFAULT_CONNECTION_NAME);
-    }
-
+  /**
+   * Specify default db connection to be used for any subsequent operations
+   * Called in middleware to ensure client ready when time to process request synchronously
+   * */
+  async ensureDeploymentClient(dbName: string) {
     // Create new client for custom db connection
-    if (!this.userClients[dbName]) {
-      await new DBInstance(dbName).setup();
-      await this.createNewClient(dbName);
+    if (!this.connectionManager.userClients[dbName]) {
+      await this.connectionManager.setupConnection(dbName);
     }
-
-    this.client = this.userClients[dbName];
-    return this.client;
-  }
-
-  /**
-   * Create a new sequelize user client for the named DB
-   * @param dbName
-   */
-  private async createNewClient(dbName: string) {
-    const userClient = await this.createConnectionFactory({
-      ...USER_DB_CONFIG,
-      database: dbName,
-      autoLoadModels: true,
-      name: dbName,
-      // tables will be initialised via sequelize
-      synchronize: false,
-      // TODO - expose env pooling options
-      pool: {
-        max: 50,
-        min: 0,
-        idle: 10000,
-      },
-    });
-    // ensure all hooks are registered
-    for (const { hookType, fn } of this.hooks) {
-      userClient.addHook(hookType, fn);
-    }
-    // store globally to allow future access
-    this.userClients[dbName] = userClient;
-  }
-
-  /**
-   * Adapted from nestjs/sequelize core module
-   * @param options
-   * @returns
-   */
-  private async createConnectionFactory(options: SequelizeModuleOptions): Promise<Sequelize> {
-    const sequelize = new Sequelize(options);
-
-    if (!options.autoLoadModels) {
-      return sequelize;
-    }
-
-    // Load default client models to new sequelize client
-    sequelize.addModels(this.models as any);
-
-    await sequelize.authenticate();
-
-    if (typeof options.synchronize === "undefined" || options.synchronize) {
-      await sequelize.sync(options.sync);
-    }
-    return sequelize;
   }
 }
-
-// DEPRECATED - CC 2023-04-29 - prefer set sequelize client via service instead
-// of extracting from request
-
-// @Injectable({ scope: Scope.REQUEST })
-// /**
-//  * Alternative to param decorator used for services
-//  * */
-// export class DeploymentRequestService {
-//   constructor(@Inject(REQUEST) private request: Request, private service: DeploymentService) {}
-
-//   get<T extends Function>(entity: T) {
-//     // TODO - add better typings
-//     const sequelize: Sequelize = (this.request.body as any).sequelize;
-//     const model = sequelize.model<T, T>(entity.name) as any;
-//     return model as T;
-//     // NOTE - assumes already gone through middleware
-//     // const sequelize:Sequelize = this.request.body.sequelize
-//     // console.log("get model", this.request, this.service);
-//   }
-// }

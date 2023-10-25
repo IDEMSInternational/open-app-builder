@@ -27,7 +27,12 @@ export class DBInstance {
       await this.setupUsers(adminClient);
       await adminClient.end();
       // create additional client on target db to perform migrations
-      const migrationClient = new Sequelize({ ...USER_DB_CONFIG, database: this.dbName });
+      const migrationClient = new Sequelize({
+        ...USER_DB_CONFIG,
+        database: this.dbName,
+        // disable verbose migration logs in test
+        logging: process.env.NODE_ENV === "test" ? false : true,
+      });
       await this.runMigrations(migrationClient);
       await migrationClient.close();
     } catch (error) {
@@ -76,7 +81,8 @@ export class DBInstance {
       },
       context: client.getQueryInterface(),
       storage: new SequelizeStorage({ sequelize: client }),
-      logger: console,
+      // Limit migrator logs only to error and warn
+      logger: { error: console.error, warn: console.warn, info: () => null, debug: () => null },
     });
     const pending = await migrator.pending();
     console.log("[Migrations] pending", pending);
