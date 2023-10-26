@@ -49,3 +49,12 @@ export async function testDBTeardown() {
 export function generateTestID() {
   return randomUUID().substring(0, 6);
 }
+
+/** Wait for an arbitrary amount of time (may be used in test debugging) */
+export async function testWait(ms = 1000) {
+  return new Promise((resolve) =>
+    setTimeout(() => {
+      resolve(true);
+    }, ms)
+  );
+}
