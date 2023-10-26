@@ -3,12 +3,14 @@ import { INestApplication } from "@nestjs/common";
 import * as request from "supertest";
 import { AppModule } from "../src/app.module";
 import { randomUUID } from "crypto";
-import { bootstrapTestDB, DBQuery } from "./test.utils";
+import { testDBBootstrap, testDBQuery, testDBTeardown, generateTestID } from "./test.utils";
 
 describe("AppController (e2e)", () => {
   let app: INestApplication;
 
-  beforeAll(async () => await bootstrapTestDB());
+  beforeAll(async () => await testDBBootstrap());
+
+  afterAll(async () => await testDBTeardown());
 
   beforeEach(async () => {
     const moduleFixture: TestingModule = await Test.createTestingModule({
@@ -44,7 +46,7 @@ describe("AppController (e2e)", () => {
 
     expect(status).toEqual(201);
     expect(body.app_user_id).toEqual(app_user_id);
-    const { rowCount } = await DBQuery("SELECT * from app_users", deploymentDBName);
+    const { rowCount } = await testDBQuery("SELECT * from app_users", deploymentDBName);
     expect(rowCount).toEqual(1);
   });
 
@@ -68,7 +70,7 @@ describe("AppController (e2e)", () => {
     console.log(JSON.stringify(responses, null, 2));
     const rowCounts: number[] = [];
     for (const deploymentDBName of deploymentDBNames) {
-      const { rowCount, rows } = await DBQuery("SELECT * from app_users", deploymentDBName);
+      const { rowCount, rows } = await testDBQuery("SELECT * from app_users", deploymentDBName);
       console.log({ deploymentDBName, rowCount, rows });
       rowCounts.push(rowCount);
     }
@@ -106,7 +108,7 @@ describe("AppController (e2e)", () => {
 
     const rowCounts: number[] = [];
     for (const deploymentDBName of deploymentDBNames) {
-      const { rowCount, rows } = await DBQuery("SELECT * from app_users", deploymentDBName);
+      const { rowCount, rows } = await testDBQuery("SELECT * from app_users", deploymentDBName);
       console.log({ deploymentDBName, rowCount, rows });
       rowCounts.push(rowCount);
     }
@@ -124,6 +126,10 @@ async function requestUserPost(app: INestApplication, dbName: string, app_user_i
     .send(payload);
 }
 
+/**
+ * Send a GET request to the /status endpoint
+ * Include custom db name header which should be intercepted and trigger DB bootstrap for the custom DB
+ */
 async function requestDBSetup(app: INestApplication, dbName: string) {
   const endpoint = `/status`;
   return request(app.getHttpServer()).get(endpoint).set("x-deployment-db-name", dbName);
@@ -137,11 +143,6 @@ function mockPostUser(app_user_id: string) {
     contact_fields: {},
     device_info: {},
   };
-}
-
-/** Generate a random 6-character id for testing */
-function generateTestID() {
-  return randomUUID().substring(0, 6);
 }
 
 async function _wait(ms = 1000) {
