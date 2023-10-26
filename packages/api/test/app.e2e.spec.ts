@@ -1,7 +1,7 @@
 import { Test, TestingModule } from "@nestjs/testing";
 import { INestApplication } from "@nestjs/common";
 import * as request from "supertest";
-import { AppModule } from "./../src/app.module";
+import { AppModule } from "../src/app.module";
 import { randomUUID } from "crypto";
 import { bootstrapTestDB, DBQuery } from "./test.utils";
 
@@ -48,6 +48,7 @@ describe("AppController (e2e)", () => {
     expect(rowCount).toEqual(1);
   });
 
+  /** Send 5 user create tests with a 500ms delay between requests */
   it("Handles multiple near-concurrent requests to different dbs", async () => {
     const dbNameBase = `test_e2e_${generateTestID()}`;
     const deploymentDBNames = new Array(5).fill(0).map((_, i) => `${dbNameBase}_${i}`);
@@ -77,15 +78,12 @@ describe("AppController (e2e)", () => {
   // TODO - appears to be issue related to model creation and possibly object memory allocation
   // (sequelize model retains wrong db connection)
 
-  /**
-   * Doesn't work - seems to be strange memory management issue when creating/injecting requests
-   * Often 1 request gets dropped or 2 may go into same db
-   */
+  /** Send 5 user create requests in parallel to different databases  */
   it("Handles multiple concurrent requests to different dbs", async () => {
     const dbNameBase = `test_e2e_${generateTestID()}`;
     const deploymentDBNames = new Array(5).fill(0).map((_, i) => `${dbNameBase}_${i}`);
 
-    // HACK - parallel requests appear to only
+    // Initialise databases before sending requests for easier logging (db setup logs mixed with requests)
     const setupRequests = deploymentDBNames.map(async (deploymentDBName) => {
       const { status } = await requestDBSetup(app, deploymentDBName);
       return status;
