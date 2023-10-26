@@ -1,5 +1,10 @@
-import chalk from "chalk";
-import { spawn, spawnSync } from "child_process";
+import {
+  GDriveDownloader,
+  IDownloadOptions,
+  authorizeGDrive,
+  GDriveWatcher,
+  IGdriveEntry,
+} from "@idemsInternational/gdrive-tools";
 import chokidar from "chokidar";
 import { existsSync, removeSync } from "fs-extra";
 import path from "path";
@@ -7,13 +12,18 @@ import path from "path";
 import { WorkflowRunner } from "../../commands/workflow/run";
 import { AUTH_TOKEN_PATH, CREDENTIALS_PATH } from "../../paths";
 
-const authorize = () => {
+const getCommonOptions = () => {
+  const authTokenPath = getAuthTokenPath();
+  return { authTokenPath, credentialsPath: CREDENTIALS_PATH };
+};
+
+const authorize = async () => {
   // remove any pre-existing auth token
   const authTokenPath = getAuthTokenPath();
   if (existsSync(authTokenPath)) {
     removeSync(authTokenPath);
   }
-  gdriveExec("authorize");
+  return authorizeGDrive(getCommonOptions());
 };
 
 /**
@@ -22,32 +32,22 @@ const authorize = () => {
  * @returns path to output files
  * }
  */
-const download = (options: { folderId: string; filterFn?: any }) => {
+const download = async (options: {
+  folderId: string;
+  filterFn?: (entry: IGdriveEntry) => boolean;
+}) => {
   const { folderId, filterFn } = options;
   const outputPath = getOutputFolder(folderId);
-  let dlArgs = `--folder-id ${folderId} --output-path "${outputPath}" --log-name "${folderId}.log"`;
-  if (filterFn) {
-    const filterFnBase64 = Buffer.from(filterFn.toString()).toString("base64");
-    dlArgs += ` --filter-function-64 "${filterFnBase64}"`;
-  }
-  gdriveExec("download", dlArgs);
+  const dlOptions: IDownloadOptions = {
+    ...getCommonOptions(),
+    folderId,
+    logName: `${folderId}.log`,
+    outputPath,
+    filterFn,
+  };
+  const gdriveDownloader = new GDriveDownloader(dlOptions);
+  await gdriveDownloader.downloadFolder(options.folderId);
   return outputPath;
-};
-
-/**
- * Execute a google drive workspace command
- * Populates common args such as auth and credential token paths
- */
-const gdriveExec = (cmd: string, args: string = "", sync = true) => {
-  const authTokenPath = getAuthTokenPath();
-  // Can also check if really need folder ID (or just pass deployment config)... probably do for sheets vs assets
-  const commonArgs = `--credentials-path "${CREDENTIALS_PATH}" --auth-token-path "${authTokenPath}"`;
-  const gdriveToolsBin = `yarn workspace @idemsInternational/gdrive-tools start`;
-  const fullCommand = `${gdriveToolsBin} ${cmd} ${commonArgs} ${args}`;
-  console.log(chalk.gray(fullCommand));
-  return sync
-    ? spawnSync(fullCommand, { stdio: "inherit", shell: true })
-    : spawn(fullCommand, { stdio: "inherit", shell: true });
 };
 
 const getOutputFolder = (folderId: string) => {
@@ -79,17 +79,30 @@ const liveReload = async (options: {
 }) => {
   const { folderId } = options;
   const outputPath = getOutputFolder(folderId);
-  const dlArgs = `--folder-id ${folderId} --output-path "${outputPath}" --log-name "${folderId}.log"`;
-  const child = gdriveExec("watch", dlArgs, false);
+  const logName = `${folderId}.log`;
+
+  const gdriveWatcher = new GDriveWatcher({
+    ...getCommonOptions(),
+    folderId,
+    logName,
+    outputPath,
+  });
+  gdriveWatcher.start();
 
   // As it's not easy to communicate directly with spawned child, instead
   // set-up a file watcher for locally updated files
-  const watcher = chokidar
+
+  // TODO - now using non-cli version so should be fine to communicate direct
+
+  const fileWatcher = chokidar
     .watch(outputPath, { ignoreInitial: true, awaitWriteFinish: true })
     .on("change", (e, stats) => {
       options.onUpdate(e);
     });
-  process.on("SIGINT", () => watcher.close().then(() => process.exit(0)));
+  process.on("SIGINT", () => {
+    gdriveWatcher.stop();
+    fileWatcher.close().then(() => process.exit(0));
+  });
 };
 
 // WiP - allow manual intervention to force actions

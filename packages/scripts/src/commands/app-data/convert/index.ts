@@ -10,14 +10,12 @@ import { XLSXWorkbookProcessor } from "./processors/xlsxWorkbook";
 import { JsonFileCache } from "./cacheStrategy/jsonFile";
 import {
   generateFolderFlatMap,
-  IContentsEntry,
   createChildFileLogger,
   logSheetsSummary,
   getLogs,
   Logger,
   getLogFiles,
   logWarning,
-  clearLogs,
   standardiseNewlines,
 } from "./utils";
 import { FlowParserProcessor } from "./processors/flowParser/flowParser";
@@ -29,18 +27,26 @@ import { FlowParserProcessor } from "./processors/flowParser/flowParser";
 const program = new Command("convert");
 interface IProgramOptions {
   cacheFolder: string;
+  /** comma-separated list in case of multiple folders */
   inputFolder: string;
   outputFolder: string;
   skipCache?: boolean;
 }
+export interface IConverterOptions extends Omit<IProgramOptions, "inputFolder"> {
+  inputFolders: string[];
+}
 export default program
   .description("Convert app data")
-  .requiredOption("-i --input-folder <string>", "")
+  .requiredOption("-i --input-folders <string>", "")
   .requiredOption("-c --cache-folder <string>", "")
   .requiredOption("-o --output-folder <string>", "")
   .option("-s --skip-cache", "Wipe local conversion cache and process all files")
   .action(async (options: IProgramOptions) => {
-    await new AppDataConverter(options).run();
+    const mappedOptions: IConverterOptions = {
+      ...options,
+      inputFolders: options.inputFolder.split(",").map((f) => f.trim()),
+    };
+    await new AppDataConverter(mappedOptions).run();
   });
 
 /***************************************************************************************
@@ -55,7 +61,7 @@ export default program
  */
 export class AppDataConverter {
   /** Change version to invalidate all underlying caches */
-  public version = 20230406.1;
+  public version = 20231002.0;
 
   public activeDeployment = ActiveDeployment.get();
 
@@ -63,15 +69,15 @@ export class AppDataConverter {
 
   cache: JsonFileCache;
 
-  constructor(private options: IProgramOptions, testOverrides: Partial<AppDataConverter> = {}) {
+  constructor(private options: IConverterOptions, testOverrides: Partial<AppDataConverter> = {}) {
+    console.log(chalk.yellow("App Data Convert"));
     // optional overrides, used for tests
     if (testOverrides.version) this.version = testOverrides.version;
     if (testOverrides.activeDeployment) this.activeDeployment = testOverrides.activeDeployment;
 
-    console.log(chalk.yellow("App Data Convert"));
     // Setup Folders
-    const { inputFolder, outputFolder, cacheFolder } = options;
-    [inputFolder, outputFolder, cacheFolder].forEach((p) => fs.ensureDir(p));
+    const { outputFolder, cacheFolder } = options;
+    [outputFolder, cacheFolder].forEach((p) => fs.ensureDir(p));
     if (this.options.skipCache) {
       this.cache.clear();
     }
@@ -79,79 +85,79 @@ export class AppDataConverter {
     this.cache = new JsonFileCache(cacheFolder, this.version);
   }
 
-  /**
-   * Reads xlsx files from gdrive-download output and converts to json
-   * objects representing sheet names and data values
-   */
   public async run() {
-    const { inputFolder, outputFolder, cacheFolder } = this.options;
+    const { inputFolders, outputFolder, cacheFolder } = this.options;
+    const filterFn = (relativePath: string) => relativePath.endsWith(".xlsx");
+    const combinedOutputsHashmap: Record<string, FlowTypes.FlowTypeWithData> = {};
     const converterPaths: IConverterPaths = {
       SHEETS_CACHE_FOLDER: cacheFolder,
-      SHEETS_INPUT_FOLDER: inputFolder,
+      SHEETS_INPUT_FOLDER: "",
       SHEETS_OUTPUT_FOLDER: outputFolder,
     };
-    const processPipeline: {
-      name: string;
-      description: string;
-      fn: (context: any) => Promise<any>;
-    }[] = [
-      {
-        name: "xlsx_read",
-        description: "Load list of all input xlsx workbooks from folder",
-        fn: async () => {
-          const filterFn = (relativePath: string) => relativePath.endsWith(".xlsx");
-          return generateFolderFlatMap(inputFolder, { filterFn });
-        },
-      },
-      {
-        name: "xlsx_convert",
-        description: "Convert all xlsx workbooks to json arrays",
-        fn: async (list: { [key: string]: IContentsEntry }) => {
-          const xlsxConverter = new XLSXWorkbookProcessor(converterPaths);
-          return xlsxConverter.process(Object.values(list));
-        },
-      },
-      {
-        name: "jsons_clean",
-        description: "Flatten json arrays to single list of all sheets, filter and sort",
-        fn: async (data: FlowTypes.FlowTypeWithData[][]) => this.cleanFlowOutputs(data),
-      },
-      {
-        name: "flows_process",
-        description: "Apply specific parsers for flowtypes",
-        fn: async (data: FlowTypes.FlowTypeWithData[]) => {
-          const processor = new FlowParserProcessor(converterPaths);
-          return processor.process(data);
-        },
-      },
-    ];
-    let input: any;
-    let output: any;
-    clearLogs();
-    for (const step of processPipeline) {
-      output = await step.fn(input);
-      this.logger.debug({ step: step.name, output });
-      input = output;
+    // Processing Steps
+    for (const inputFolder of inputFolders) {
+      // 1.1 Generate a list of xlsx files in data source and convert to json
+      const folderOutputsHashmap: Record<string, FlowTypes.FlowTypeWithData> = {};
+      converterPaths.SHEETS_INPUT_FOLDER = inputFolder;
+      const list = generateFolderFlatMap(inputFolder, { filterFn });
+      const xlsxConverter = new XLSXWorkbookProcessor(converterPaths);
+      xlsxConverter.logger = this.logger;
+      const data = await xlsxConverter.process(Object.values(list));
+      // 1.2 Sort and filter output jsons
+      const outputs = this.cleanFlowOutputs(data);
+      // 1.3 Merge jsons both within input sources (duplicate are errors) and across input sources (duplicates are overrrides)
+      for (const output of outputs) {
+        const hashName = `${output.flow_type}||${output.flow_name}`;
+        if (folderOutputsHashmap[hashName]) {
+          this.logDuplicateFlowError(folderOutputsHashmap[hashName], output);
+        }
+        folderOutputsHashmap[hashName] = output;
+        if (combinedOutputsHashmap[hashName]) {
+          this.logger.debug({
+            message: "flow_override",
+            details: { flow_type: output.flow_type, flow_name: output.flow_name, inputFolder },
+          });
+        }
+        combinedOutputsHashmap[hashName] = output;
+      }
+      this.logger.debug({ step: inputFolder, outputs });
     }
-    const result = output as IParsedWorkbookData;
-
+    // 2.1 - Convert all merged jsons to flow data using flow parsers
+    const processor = new FlowParserProcessor(converterPaths);
+    processor.logger = this.logger;
+    const jsonFlows = Object.values(combinedOutputsHashmap);
+    const result = (await processor.process(jsonFlows)) as IParsedWorkbookData;
     const { errors, warnings } = this.logOutputs(result);
     return { result, errors, warnings };
   }
 
+  /**
+   * Log error in case duplicate flows appear in the same folder
+   * Duplicate flows across input folders are assumed overrides
+   */
+  private logDuplicateFlowError(
+    initialFlow: FlowTypes.FlowTypeWithData,
+    duplicateFlow: FlowTypes.FlowTypeWithData
+  ) {
+    const { flow_name, flow_type, _xlsxPath } = initialFlow;
+    this.logger.error({
+      message: "Duplicate flow name",
+      details: { flow_name, flow_type, _xlsxPaths: [_xlsxPath, duplicateFlow._xlsxPath] },
+    });
+  }
+
+  /** Create log of total warnings and errors */
   private logOutputs(result: IParsedWorkbookData) {
     this.writeOutputJsons(result);
     logSheetsSummary(result);
-    // warnings
     const warnings = getLogs("warning");
     if (warnings.length > 0) {
-      const errorLogFile = getLogFiles().error;
+      const warningLogFile = getLogFiles().warning;
       logWarning({
         msg1: `Completed with ${warnings.length} warnings`,
-        msg2: errorLogFile,
+        msg2: warningLogFile,
       });
     }
-    // errors
     const errors = getLogs("error");
     if (errors.length > 0) {
       const errorLogFile = getLogFiles().error;
@@ -161,15 +167,14 @@ export class AppDataConverter {
         logOnly: true,
       });
     }
-    // logSheetErrorSummary(this.conversionWarnings, this.conversionErrors);
     console.log(chalk.yellow("Conversion Complete"));
     return { errors, warnings };
   }
 
+  /** Filter undefined, non-released and filter-fn excluded sheets, and apply custom sort ordering */
   private cleanFlowOutputs(data: FlowTypes.FlowTypeWithData[][]) {
-    // concat array or arrays to single array
+    // concat array of arrays to single array
     const flattened: FlowTypes.FlowTypeWithData[] = [].concat.apply([], data);
-    // filter undefined, non-released and according to deployment filter
     const { sheets_filter_function } = this.activeDeployment.app_data;
     const filtered = flattened
       .filter((flow) => flow.status === "released")

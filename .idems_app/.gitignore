@@ -1,9 +1,7 @@
 deployments/*
-!deployments/early_family_math
+
+# Demo deployments that don't have their own repo
 !deployments/local
-!deployments/plh*
-!deployments/wash
-!deployments/pfr
 !deployments/sandbox
 
 # Renamed to activeDeployment.json, include here so people can remove

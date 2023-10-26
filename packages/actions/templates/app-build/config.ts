@@ -24,6 +24,6 @@ export const AppBuild: IActionConfig = {
   ],
   metadata: {
     id: "app_build",
-    version: "1.0.0",
+    version: "1.0.1",
   },
 };

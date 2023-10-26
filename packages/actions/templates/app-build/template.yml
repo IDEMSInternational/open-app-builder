@@ -63,6 +63,9 @@ jobs:
 
       - name: Build
         run: yarn build ${{inputs.build-flags}}
+        env:
+          # Fix possible out-of-memory issues
+          NODE_OPTIONS: --max_old_space_size=6144
 
         # Use github pages upload artifact action to compress and upload
       - name: Upload artifact
