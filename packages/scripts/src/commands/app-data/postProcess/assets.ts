@@ -15,9 +15,11 @@ import {
   replicateDir,
   sortJsonKeys,
   getNestedProperty,
+  copyFileWithTimestamp,
 } from "../../../utils";
 import { ActiveDeployment } from "../../deployment/get";
 import type { IAssetEntryHashmap, IContentsEntryMinimal } from "data-models/deployment.model";
+import { resolve } from "path";
 
 /**
  * Legacy folder used to differentiate language assets
@@ -38,14 +40,23 @@ const APP_CORE_SIZE_KB = {
  * @example yarn
  *************************************************************************************/
 interface IProgramOptions {
-  sourceAssetsFolder: string;
+  sourceAssetsFolders: string; // comma-separated string
+}
+interface IAssetPostProcessorOptions {
+  sourceAssetsFolders: string[];
 }
 const program = new Command("assets");
 export default program
   .description("Copy app data")
-  .requiredOption("--source-assets-folder <string>", "path to source assets folder")
+  .requiredOption(
+    "--source-assets-folders <string>",
+    "comma-separated paths to source assets folders"
+  )
   .action(async (options: IProgramOptions) => {
-    new AssetsPostProcessor(options).run();
+    const mappedOptions: IAssetPostProcessorOptions = {
+      sourceAssetsFolders: options.sourceAssetsFolders.split(",").map((s) => s.trim()),
+    };
+    new AssetsPostProcessor(mappedOptions).run();
   });
 
 /***************************************************************************************
@@ -54,24 +65,47 @@ export default program
 export class AssetsPostProcessor {
   private activeDeployment = ActiveDeployment.get();
   private stagingDir: string;
-  constructor(private options: IProgramOptions) {}
+  constructor(private options: IAssetPostProcessorOptions) {}
 
   public run() {
     const { app_data } = this.activeDeployment;
-    const { sourceAssetsFolder } = this.options;
+    const { sourceAssetsFolders } = this.options;
+    const { _parent_config } = this.activeDeployment;
     const appAssetsFolder = path.resolve(app_data.output_path, "assets");
     fs.ensureDirSync(appAssetsFolder);
-    // Generate a list of all deployment assets, merge with list of assets from parent
-    const sourceAssets = generateFolderFlatMap(sourceAssetsFolder, { includeLocalPath: true });
-    const sourceAssetsFiltered = this.filterAppAssets(sourceAssets);
-    const mergedAssets = this.mergeParentAssets(sourceAssetsFiltered);
     // Populate merged assets staging to run quality control checks and generate full contents lists
     this.stagingDir = createTempDir();
-    replicateDir(sourceAssetsFolder, this.stagingDir, {
-      filter_fn: ({ relativePath }) => relativePath in mergedAssets,
-    });
+    const mergedAssetsHashmap: IContentsEntryHashmap = {};
+
+    // Include parent config in list of source assets
+    // TODO - may want to reconsider this functionality in the future given ability to use
+    // multiple input sources instead
+    if (_parent_config) {
+      const parentAssetsFolder = path.resolve(_parent_config._workspace_path, "app_data", "assets");
+      fs.ensureDirSync(parentAssetsFolder);
+      sourceAssetsFolders.unshift(parentAssetsFolder);
+    }
+
+    // Generate a list of all deployment assets, merged across input sources
+    for (const sourceAssetsFolder of sourceAssetsFolders) {
+      const sourceAssets = generateFolderFlatMap(sourceAssetsFolder, { includeLocalPath: true });
+      const sourceAssetsFiltered = this.filterAppAssets(sourceAssets);
+      Object.entries(sourceAssetsFiltered).forEach(([relativePath, entry]) => {
+        if (mergedAssetsHashmap.hasOwnProperty(relativePath)) {
+          //  TODO - log override
+        }
+        mergedAssetsHashmap[relativePath] = entry;
+      });
+    }
+
+    // Copy all assets to staging directory, preserving timestamps
+    for (const entry of Object.values(mergedAssetsHashmap)) {
+      const targetPath = resolve(this.stagingDir, entry.relativePath);
+      copyFileWithTimestamp(entry.localPath, targetPath, entry.modifiedTime);
+    }
+
     this.assetsQualityCheck(this.stagingDir);
-    const assetsByType = this.handleAssetOverrides(mergedAssets);
+    const assetsByType = this.handleAssetOverrides(mergedAssetsHashmap);
     const { tracked, untracked } = assetsByType;
     this.checkTotalAssetSize(assetsByType);
 

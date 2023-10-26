@@ -9,7 +9,7 @@ import mockFs from "mock-fs";
 
 // Use default imports to allow spying on functions and replacing with mock methods
 import { ActiveDeployment } from "../../deployment/get";
-import path from "path";
+import path, { resolve } from "path";
 import { IAssetEntryHashmap } from "data-models/deployment.model";
 import { useMockErrorLogger } from "../../../../test/helpers/utils";
 
@@ -38,7 +38,7 @@ function mockLocalAssets(assets: Record<string, any>) {
   });
 }
 
-function createMockFile(size_kb = 1024) {
+function createMockFile(size_kb: number = 1024) {
   const file = Buffer.alloc(1 * 1024 * size_kb);
   const entry = { size_kb, md5Checksum: createHash("md5").update(file).digest("hex") };
   return { file, entry };
@@ -71,6 +71,35 @@ describe("Assets PostProcess", () => {
     runAssetsPostProcessor();
     const testFilePath = path.resolve(mockDirs.appAssets, "folder", "file.jpg");
     expect(fs.statSync(testFilePath).size).toEqual(1 * 1024 * 1024);
+  });
+
+  it("Supports multiple input folders", () => {
+    // Use override file with specified size for testing output
+    const overrideFileSize = 123;
+    const { file: mockFileOverride } = createMockFile(overrideFileSize);
+    // Instead of testing all assets from top-level folder test as 2 independent folders
+    // which happen to both sit as subfolders within the testing folder structures
+    mockLocalAssets({
+      source_a: { folder: { "file_a.jpg": mockFile, "file_b.jpg": mockFile } },
+      source_b: {
+        folder: { "file_b.jpg": mockFileOverride, "file_c.jpg": mockFile },
+      },
+    });
+    stubDeploymentConfig();
+    const processor = new AssetsPostProcessor({
+      sourceAssetsFolders: [
+        resolve(mockDirs.localAssets, "source_a"),
+        resolve(mockDirs.localAssets, "source_b"),
+      ],
+    });
+    processor.run();
+    // test merged file outputs
+    const contents = readAppAssetContents();
+    const expectedFiles = ["folder/file_a.jpg", "folder/file_b.jpg", "folder/file_c.jpg"];
+    expect(Object.keys(contents)).toEqual(expectedFiles);
+    // test file_b overidden from source_b
+    const overiddenFilePath = path.resolve(mockDirs.appAssets, "folder", "file_b.jpg");
+    expect(fs.statSync(overiddenFilePath).size).toEqual(1 * 1024 * overrideFileSize);
   });
 
   it("populates contents json", () => {
@@ -297,7 +326,7 @@ describe("Assets PostProcess", () => {
 function runAssetsPostProcessor(deploymentConfig: IDeploymentConfigStub = {}) {
   stubDeploymentConfig(deploymentConfig);
   const { localAssets } = mockDirs;
-  const processor = new AssetsPostProcessor({ sourceAssetsFolder: localAssets });
+  const processor = new AssetsPostProcessor({ sourceAssetsFolders: [localAssets] });
   processor.run();
 }
 

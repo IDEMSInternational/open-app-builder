@@ -4,6 +4,7 @@ import { Observable } from "rxjs";
 import { map, pairwise, filter, share } from "rxjs/operators";
 import { FlowTypes } from "../model";
 import { objectToArray } from "../components/template/utils";
+import marked from "marked";
 
 /**
  * Generate a random string of characters in base-36 (a-z and 0-9 characters)
@@ -437,4 +438,21 @@ function parseAnswerListItem(item: any) {
     return itemObj;
   }
   return item;
+}
+
+/**
+ * Compiles markdown to HTML synchronously.
+ * Extends the renderer of "marked" plugin to ensure that links open in new tags.
+ * Code from https://github.com/markedjs/marked/pull/1371#issuecomment-434320596
+ */
+export function parseMarkdown(src: string, options?: marked.MarkedOptions) {
+  const renderer = new marked.Renderer();
+  renderer.link = function (href, title, text) {
+    const link = marked.Renderer.prototype.link.apply(this, arguments);
+    return link.replace("<a", "<a target='_blank' rel='noopener noreferrer'");
+  };
+  marked.setOptions({
+    renderer,
+  });
+  return marked(src, options);
 }
