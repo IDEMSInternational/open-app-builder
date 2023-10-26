@@ -9,6 +9,7 @@ const config: JestConfigWithTsJest = {
   testRegex: ".e2e.spec.ts$",
   moduleNameMapper: {
     "^src/(.*)$": "<rootDir>/src/$1",
+    "^test/(.*)$": "<rootDir>/test/$1",
   },
   // setupFiles: ["<rootDir>/test/e2e-setup.ts"],
 };
