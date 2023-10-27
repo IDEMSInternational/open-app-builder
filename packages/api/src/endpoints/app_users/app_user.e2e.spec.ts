@@ -28,7 +28,7 @@ describe("app_user (e2e)", () => {
     await app.init();
   });
 
-  it("Creates new user", async () => {
+  it("[Post] create", async () => {
     app_user_id = randomUUID();
     const payload = mockUser(app_user_id);
     const { status, body } = await request(app.getHttpServer())
@@ -38,7 +38,7 @@ describe("app_user (e2e)", () => {
     expect(body.app_user_id).toEqual(app_user_id);
   });
 
-  it("Updates a user", async () => {
+  it("[Post] update", async () => {
     const { status, body } = await request(app.getHttpServer())
       .post(`${ENDPOINT_BASE}/${app_user_id}`)
       .send({ contact_fields: { myField: "updated" } });
@@ -47,7 +47,7 @@ describe("app_user (e2e)", () => {
     expect(body.contact_fields).toEqual({ myField: "updated" });
   });
 
-  it("Lists one user", async () => {
+  it("[Get] list one", async () => {
     const { status, body } = await request(app.getHttpServer()).get(
       `${ENDPOINT_BASE}/${app_user_id}`
     );
@@ -55,7 +55,7 @@ describe("app_user (e2e)", () => {
     expect(body.app_user_id).toEqual(app_user_id);
   });
 
-  it("Lists all users", async () => {
+  it("[Get] list all", async () => {
     const { status, body } = await request(app.getHttpServer()).get(`${ENDPOINT_BASE}`);
     expect(status).toEqual(200);
     expect(Array.isArray(body)).toBe(true);
@@ -64,7 +64,7 @@ describe("app_user (e2e)", () => {
     expect(record.app_user_id).toBeTruthy();
   });
 
-  it("Creates user on custom DB", async () => {
+  it("[Post] create on deployment DB", async () => {
     const deploymentDBName = `test_e2e_${generateTestID()}`;
     const app_user_id = randomUUID();
     const endpoint = `/app_users/${app_user_id}`;

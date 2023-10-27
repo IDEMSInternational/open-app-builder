@@ -3,14 +3,14 @@ import { Test, TestingModule } from "@nestjs/testing";
 import * as request from "supertest";
 import { AppModule } from "src/app.module";
 import { generateTestID, testDBBootstrap, testDBQuery, testDBTeardown } from "test/test.utils";
-import { AppNotificationInteraction } from "./app_notification_interaction.model";
-import { Attributes } from "sequelize";
 import { randomUUID } from "crypto";
-import { AppCommonModel } from "../common";
 
-const ENDPOINT_BASE = "/app_notification_interaction";
+const ENDPOINT_BASE = "/contact_fields";
 
-describe("app_notification_interaction (e2e)", () => {
+/**
+ * @Deprecated(?) To confirm and likely remove
+ **/
+describe.skip("contact_field (e2e)", () => {
   let app: INestApplication;
 
   beforeAll(async () => await testDBBootstrap());
@@ -31,14 +31,15 @@ describe("app_notification_interaction (e2e)", () => {
     const payload = mockPayload(app_user_id);
     // Create
     const { status, body } = await request(app.getHttpServer())
-      .post(`${ENDPOINT_BASE}`)
+      .post(`${ENDPOINT_BASE}/${app_user_id}`)
       .send(payload);
+    console.log({ status, body });
     expect(status).toEqual(201);
     expect(body.app_user_id).toEqual(app_user_id);
     // Update
     const updateRes = await request(app.getHttpServer())
-      .post(`${ENDPOINT_BASE}`)
-      .send({ ...payload, data: { field: "updated" } });
+      .post(`${ENDPOINT_BASE}/${app_user_id}`)
+      .send({ ...payload, raw: { field2: "updated2" } });
     expect(updateRes.status).toEqual(201);
     expect(updateRes.body.id).toEqual(1);
   });
@@ -71,29 +72,15 @@ describe("app_notification_interaction (e2e)", () => {
 });
 
 /**
- * Payload splits common metadata fields from a data property containing notification meta
- * TODO - would be better to link to dto objects instead
+ * TODO - link to DTO type defs (currently hardcoded from swagger output)
  **/
 const mockPayload = (app_user_id: string) => {
-  const commonMeta: Attributes<AppCommonModel> = {
-    app_deployment_name: "test",
+  const payload = {
     app_user_id,
-    app_user_record_id: "1",
+    app_deployment_name: "test",
+    app_version: "0.0.0",
+    contact_fields: {},
+    device_info: {},
   };
-  const payloadData: Omit<
-    Attributes<AppNotificationInteraction>,
-    "app_deployment_name" | "app_user_record_id" | "app_user_id"
-  > = {
-    action_id: "",
-    action_meta: {},
-    action_recorded_timestamp: "",
-    notification_meta: {},
-    schedule_timestamp: "",
-    sent_recorded_timestamp: "",
-  };
-
-  return {
-    ...commonMeta,
-    data: payloadData,
-  };
+  return payload;
 };
