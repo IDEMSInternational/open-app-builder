@@ -1,4 +1,5 @@
 import * as dotenv from "dotenv";
+import { resolve } from "path";
 
 /** Environment variables set from `.env` file */
 interface IParsedEnvironment {
@@ -23,7 +24,18 @@ interface IEnvironment extends IParsedEnvironment {
 let parsedEnv: IParsedEnvironment = {} as any;
 
 try {
-  const { error, parsed } = dotenv.config();
+  const { NODE_ENV } = process.env;
+
+  let envFilePath = resolve(__dirname, "../../.env");
+  if (NODE_ENV === "test") {
+    envFilePath = resolve(__dirname, "../../test/.test.env");
+  }
+  console.log(`Loading environment: [${NODE_ENV}]\n`, envFilePath);
+  const { error, parsed } = dotenv.config({
+    override: false,
+    debug: NODE_ENV === "test" ? true : false,
+    path: envFilePath,
+  });
   if (parsed) {
     parsedEnv = parsed as any;
   }
@@ -37,8 +49,8 @@ try {
 }
 
 const environment: IEnvironment = {
-  ...process.env,
   ...parsedEnv,
+  ...process.env,
   production: parsedEnv.NODE_ENV !== "development",
 };
 export { environment };
