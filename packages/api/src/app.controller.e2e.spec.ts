@@ -1,8 +1,8 @@
 import { Test, TestingModule } from "@nestjs/testing";
 import { INestApplication } from "@nestjs/common";
 import * as request from "supertest";
-import { AppModule } from "../src/app.module";
-import { testDBBootstrap, testDBTeardown } from "./test.utils";
+import { AppModule } from "./app.module";
+import { testDBBootstrap, testDBTeardown } from "../test/test.utils";
 
 /**
  * Simple check for /status endpoint that checks app up status
@@ -29,8 +29,10 @@ describe("AppController (e2e)", () => {
   });
 
   it("/status (GET)", async () => {
-    const { status, body } = await request(app.getHttpServer()).get("/status");
+    const { status, text } = await request(app.getHttpServer())
+      .get("/status")
+      .set("x-deployment-db-name", "test_e2e");
     expect(status).toEqual(200);
-    expect(body).toEqual("[test_e2e] API Up");
+    expect(text).toEqual("[test_e2e] API Up");
   });
 });
