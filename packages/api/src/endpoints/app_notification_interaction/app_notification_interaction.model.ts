@@ -1,9 +1,13 @@
+import { InferAttributes, InferCreationAttributes } from "sequelize";
 import { Column, DataType, Table } from "sequelize-typescript";
 import { AppCommonModel } from "../common";
 
 // NOTE - the table will not be created from this model, but instead via db migration scripts
 @Table({ tableName: "app_notification_interaction", timestamps: true })
-export class AppNotificationInteraction extends AppCommonModel {
+export class AppNotificationInteraction extends AppCommonModel<
+  InferAttributes<AppNotificationInteraction>,
+  InferCreationAttributes<AppNotificationInteraction>
+> {
   @Column({})
   sent_recorded_timestamp: string;
 
