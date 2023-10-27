@@ -25,8 +25,7 @@ export class AppNotificationInteractionService {
     });
     if (!foundItem) {
       // Item not found, create a new one
-      const entry = new AppNotificationInteraction();
-      return entry.update(update);
+      return this.model.create(update);
     }
     return foundItem.update(update);
   }
