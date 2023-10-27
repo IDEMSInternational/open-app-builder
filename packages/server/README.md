@@ -9,6 +9,7 @@ The Apps Server contains various docker containers for managing IDEMS Apps, incl
 - Matomo Analytics (Dashboard + DB + Webserver)
 
 ## Configure Environment Variables
+
 Copy the sample environment file
 ```bash
 cp .env.example .env
@@ -131,7 +132,7 @@ Your site ID: 1
 ```
 
 **Handling Redirects**
-An extra configuration step is required to allow matomo to be hosted from a subdirectly (e.g. `/analytics`). See instructions in [docker/config/analytics_dashboard/config.ini](./docker/config/analytics_dashboard/config.ini).
+An extra configuration step is required to allow Matomo to be hosted from a sub-directory (e.g. `/analytics`). See instructions in [docker/config/analytics_dashboard/config.ini](./docker/config/analytics_dashboard/config.ini).
 General reference notes are also available in [docker/config/nginx/conf/locations.conf](./docker/config/nginx/conf/locations.conf)
 
 These changes can only be applied after initial setup, as it is during this process that a `config.ini` file is populated to the matomo volume and exposed to the local matomo config folder.
@@ -164,20 +165,23 @@ Roughly the issue is:
 - Handle nginx proxy pass config and headers (tbc - possibly adaptable from [example traefik docker-compose.yml](https://github.com/n8n-io/n8n/tree/master/docker/compose/subfolderWithSSL) )
 
 
-## Server Deployment (WiP docs)
-Production deployments can be managed in the same way as local deployments,
-although docker installation may vary depending on platform.
+## Server deployment
+
+Production deployments can be managed in the same way as local deployments, although Docker installation may vary depending on platform.
 
 Additional care should also be taken to ensure all passwords set in the `.env` file are changed to strong variants.
 
-### Securing automaticatlly
-The docker container will automatically generate https certificates and renew for the `SERVER_NAME` specified in the `.env` file, with additional config options. I.e.
+### Securing automatically
+
+The Docker container will automatically create and renew TLS certificates (for HTTPS) for the `SERVER_NAME` specified in the `.env` file, with additional config options.
 
 ```
 CERTBOT_EMAIL=myEmail@mydomain.com
 SERVER_NAME=example.mydomain.com
 USE_LOCAL_CA=0
 ```
+
+The nginx container uses these environment variables to handle the certificates. When the nginx container starts up, an initialisation process detects any configuration templates from /etc/nginx/templates and passes the files to the `envsubst` command, which resolves all references to environment variables in the templates. The resulting configuration files are output to the directory specified by the `NGINX_ENVSUBST_OUTPUT_DIR` environment variable, which should be /etc/nginx/user\_conf.d. From there the container will work out what certificates need to be created or renewed.
 
 ### WiP - Alternate deployment
 Another way to deploy on a standalone server is via [Swarmlet](https://swarmlet.dev/docs) - an automation service that handles installing and managing docker containers
