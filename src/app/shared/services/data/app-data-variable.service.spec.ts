@@ -30,9 +30,10 @@ export class MockAppDataVariableService implements Partial<AppDataVariableServic
   }
 }
 
-/******************************************************************
+/********************************************************************************
  * Tests
- ******************************************************************/
+ * yarn ng test --include src\app\shared\services\data\app-data-variable.service.spec.ts
+ *******************************************************************************/
 describe("AppDataVariableService", () => {
   let service: AppDataVariableService;
 

@@ -44,6 +44,10 @@ class AppDataServiceExtended extends AppDataService {
   protected translationContents = {};
 }
 
+/********************************************************************************
+ * Tests
+ * yarn ng test --include src\app\shared\services\data\app-data.service.spec.ts
+ *******************************************************************************/
 describe("AppDataService", () => {
   let service: AppDataServiceExtended;
 
