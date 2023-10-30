@@ -9,10 +9,8 @@ import mockFs from "mock-fs";
 
 // Use default imports to allow spying on functions and replacing with mock methods
 import { ActiveDeployment } from "../../deployment/get";
-import { arrayToHashmap } from "../../../utils";
 import path, { resolve } from "path";
 import { IAssetEntryHashmap } from "data-models/deployment.model";
-import { FlowTypes } from "data-models";
 import { useMockErrorLogger } from "../../../../test/helpers/utils";
 
 /** Mock file system folders for use in tests */
