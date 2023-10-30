@@ -19,7 +19,6 @@ import {
 } from "../../../utils";
 import { ActiveDeployment } from "../../deployment/get";
 import type { IAssetEntryHashmap, IAssetContentsEntryMinimal } from "data-models/deployment.model";
-import { FlowTypes } from "data-models";
 import { resolve } from "path";
 
 /**

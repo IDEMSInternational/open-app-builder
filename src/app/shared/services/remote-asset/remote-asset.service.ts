@@ -131,7 +131,7 @@ export class RemoteAssetService extends AsyncServiceBase {
       flow_name: CORE_ASSET_PACK_NAME,
       rows: contentsArray,
     };
-    this.appDataService.addFlow(coreAssetPack);
+    this.appDataService.addRuntimeFlowToContents(coreAssetPack);
     return coreAssetPack;
   }
 
