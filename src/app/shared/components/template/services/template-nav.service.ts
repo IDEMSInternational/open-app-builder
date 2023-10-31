@@ -304,6 +304,7 @@ export class TemplateNavService extends SyncServiceBase {
       templatename: popup_child,
       parent: container,
       showCloseButton: true,
+      dismissOnEmit: true,
     };
     // If trying to recreate a popup that already exists simply mark as visible
     const existingPopup = this.openPopupsByName[popup_child];
