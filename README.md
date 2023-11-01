@@ -4,7 +4,6 @@
 
 [Online Documentation](https://idemsinternational.github.io/parenting-app-ui/)
 
-
 # Quickstart
 
 ## Prequisites
