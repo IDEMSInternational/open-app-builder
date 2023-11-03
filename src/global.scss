@@ -39,6 +39,10 @@
 @import "~nouislider/distribute/nouislider.min.css";
 @import "~swiper/swiper.min.css";
 
+a {
+  word-break: break-word;
+}
+
 $tour-next-button-background: var(
   --tour-next-button-background,
   var(--gradient-secondary-mid-vertical)
