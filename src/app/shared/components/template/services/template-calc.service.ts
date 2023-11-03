@@ -5,6 +5,7 @@ import * as date_fns from "date-fns";
 import { ServerService } from "src/app/shared/services/server/server.service";
 import { DataEvaluationService } from "src/app/shared/services/data/data-evaluation.service";
 import { AsyncServiceBase } from "src/app/shared/services/asyncService.base";
+import { PLH_CALC_FUNCTIONS } from "./template-calc-functions/plh-calc-functions";
 
 @Injectable({ providedIn: "root" })
 export class TemplateCalcService extends AsyncServiceBase {
@@ -94,6 +95,7 @@ export class TemplateCalcService extends AsyncServiceBase {
  * ```
  */
 const CALC_FUNCTIONS: IFunctionHashmap = {
+  ...PLH_CALC_FUNCTIONS,
   /** Shortcut method to generate current datetime as Date object */
   now: () => new Date(),
 
@@ -116,31 +118,6 @@ const CALC_FUNCTIONS: IFunctionHashmap = {
     } catch (error) {
       console.error("[pick_random] error", { items, error });
       return items;
-    }
-  },
-
-  /**
-   * Mutate an array of arrays (expects a partition of a set): look for the sub-array
-   * containing one value and merge it with the sub-array containing another
-   * @param partition e.g. [[1, 2], [3], [4, 5, 6]]
-   * @param value1 e.g. 3
-   * @param value2 e.g. 5
-   * @returns A new partition, e.g. [[1, 2], [3, 4, 5, 6]]
-   */
-  merge_sub_arrays: (partition: any[][] | string, value1: string, value2: string) => {
-    try {
-      if (typeof partition === "string" || partition instanceof String)
-        partition = JSON.parse(partition as string) as any[];
-      const mergedArray = partition
-        .filter((arr) => arr.includes(value1) || arr.includes(value2))
-        .flat();
-      const partitionUpdated = partition.filter(
-        (arr) => !arr.includes(value1) && !arr.includes(value2)
-      );
-      partitionUpdated.push(mergedArray);
-      return partitionUpdated;
-    } catch (error) {
-      console.error("[merge_sub_arrays] error", { partition, value1, value2, error });
     }
   },
 
