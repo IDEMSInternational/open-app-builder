@@ -1,5 +1,5 @@
 // TODO - not working in prod - should check if still required
-require("ts-node/register");
+// require("ts-node/register");
 
 import * as path from "path";
 import { Client } from "pg";
