@@ -4,6 +4,7 @@ import * as fs from "fs";
 import { AppModule } from "./app.module";
 import { DBInstance } from "./db";
 import { environment } from "./environment";
+import { version } from "../package.json";
 
 async function bootstrap() {
   // DB Bootstrap (could be managed outside repo)
@@ -17,7 +18,7 @@ async function bootstrap() {
   const config = new DocumentBuilder()
     .setTitle("IDEMS Apps API")
     .setDescription("App-Server Communication")
-    .setVersion(environment.npm_package_version || "0.0.0")
+    .setVersion(version)
     .addTag("api")
     // .setBasePath("/api")
     // Fix swagger redirection issue
@@ -33,7 +34,7 @@ async function bootstrap() {
   app.enableShutdownHooks();
   const port = process.env.API_PORT || 3000;
   await app.listen(port);
-  console.log(`app v${environment.npm_package_version} running on port ${port}`);
+  console.log(`app v${version} running on port ${port}`);
 }
 bootstrap();
 
