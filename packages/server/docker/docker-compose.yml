@@ -46,7 +46,7 @@ services:
     #   context: ../../api
     #   dockerfile: Dockerfile
     #   target: prod-env
-    image: idems/apps-api:1.4.1
+    image: idems/apps-api:1.4.3
     env_file:
       - ../../api/.env
     environment:
