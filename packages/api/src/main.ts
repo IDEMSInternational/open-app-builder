@@ -17,7 +17,7 @@ async function bootstrap() {
   const config = new DocumentBuilder()
     .setTitle("IDEMS Apps API")
     .setDescription("App-Server Communication")
-    .setVersion(environment.npm_package_version || "1.2")
+    .setVersion(environment.npm_package_version || "0.0.0")
     .addTag("api")
     // .setBasePath("/api")
     // Fix swagger redirection issue
