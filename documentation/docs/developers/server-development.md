@@ -53,6 +53,11 @@ password: test_admin
 database: test_admin
 ```
 
+In order to run only a subset of tests filters can be used, e.g. to only run the app_user specs a [testNamePatter](https://jestjs.io/docs/cli#--testnamepatternregex) filter flag can be used:
+```sh
+yarn workspace api test:e2e -t app_user
+```
+
 
 ## Stack development
 Requires [docker desktop](https://www.docker.com/products/docker-desktop/) installed locally
