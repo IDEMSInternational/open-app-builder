@@ -21,7 +21,11 @@ describe("Template Calc - PLH Functions", () => {
     const res = PLH_CALC_FUNCTIONS.plh_merge_families(MOCK_FAMILES(), "Daniel", "Ada");
     expect(res).toEqual([["Ada", "Blaise", "Daniel", "Eva"], ["Charles"]]);
   });
-  it("Removes family member", () => {
+  it("Removes family member from family of more than 1", () => {
+    const res = PLH_CALC_FUNCTIONS.plh_remove_family_member(MOCK_FAMILES(), "Blaise");
+    expect(res).toEqual([["Ada"], ["Charles"], ["Daniel", "Eva"]]);
+  });
+  it("Removes family member from family of 1", () => {
     const res = PLH_CALC_FUNCTIONS.plh_remove_family_member(MOCK_FAMILES(), "Charles");
     expect(res).toEqual([
       ["Ada", "Blaise"],

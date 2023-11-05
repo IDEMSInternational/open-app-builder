@@ -1,8 +1,10 @@
+import { IFunctionHashmap } from "packages/shared/src";
+
 /**
  * Temporary functions used for plh sheets
  * Eventually this will be migrated to read from data_list instead (once able to define functions within list)
  */
-export const PLH_CALC_FUNCTIONS = {
+export const PLH_CALC_FUNCTIONS: IFunctionHashmap = {
   /**
    * Add a new family to the list of all families
    * Family members are identified uniquely by string id, avoiding duplication if already exists
@@ -10,7 +12,7 @@ export const PLH_CALC_FUNCTIONS = {
    * @param members List of members to add to family, e.g. ['Daniel','Eva']
    * @returns Combined list [['Ada','Blaise'],['Charles'],['Daniel','Eva']]
    */
-  plh_add_family(families: string[][], ...members: string[]) {
+  plh_add_family: (families: any, ...members: string[]) => {
     // Generate a list of all unique family members to ensure duplicates not added
     const memberList: string[] = [].concat.apply([], families);
     if (members.find((member) => memberList.includes(member))) {
@@ -38,7 +40,7 @@ export const PLH_CALC_FUNCTIONS = {
    * [["Ada", "Blaise", "Charles"],["Daniel", "Eva"]]
    * ```
    */
-  plh_merge_families(families: string[][], sourceMemberRef: string, targetMemberRef: string) {
+  plh_merge_families: (families: string[][], sourceMemberRef: string, targetMemberRef: string) => {
     let sourceFamily: string[] = [];
     let targetFamily: string[] = [];
     let sourceIndex = -1;
@@ -77,7 +79,7 @@ export const PLH_CALC_FUNCTIONS = {
    * @param sourceMemberRef
    * @returns
    */
-  plh_remove_family_member(families: string[][], sourceMemberRef: string) {
+  plh_remove_family_member: (families: string[][], sourceMemberRef: string) => {
     return families
       .map((members) => members.filter((member) => member !== sourceMemberRef))
       .filter((members) => members.length > 0);
