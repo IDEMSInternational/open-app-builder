@@ -147,6 +147,10 @@
             },
             "ci": {
               "progress": false
+            },
+            "external": {
+              "browserTarget": "app:build:development",
+              "host": "0.0.0.0"
             }
           }
         },
