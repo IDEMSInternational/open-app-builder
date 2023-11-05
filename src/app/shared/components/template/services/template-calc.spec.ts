@@ -1,3 +1,74 @@
+import { TestBed } from "@angular/core/testing";
+import { DataEvaluationService } from "src/app/shared/services/data/data-evaluation.service";
+import { MockDataEvaluationService } from "src/app/shared/services/data/data-evaluation.service.spec";
+import { ServerService } from "src/app/shared/services/server/server.service";
+import { MockServerService } from "src/app/shared/services/server/server.service.spec";
+import { TemplateCalcService } from "./template-calc.service";
+
+/** Mock class instance for use in tests */
+export class MockTemplateCalcService extends TemplateCalcService {
+  constructor() {
+    super(new MockServerService() as any, new MockDataEvaluationService() as any);
+  }
+}
+
+/**
+ * Unit tests for TemplateCalcService
+ * yarn ng test --include src\app\shared\components\template\services\template-calc.spec.ts
+ */
+describe("TemplateCalcService", () => {
+  let service: TemplateCalcService;
+  let serverService: ServerService;
+  let dataEvaluationService: DataEvaluationService;
+
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      providers: [
+        TemplateCalcService,
+        { provide: ServerService, useValue: new MockServerService() },
+        { provide: DataEvaluationService, useValue: new MockDataEvaluationService() },
+        // { provide: TemplateCalcService, useValue: new MockTemplateCalcService() },
+      ],
+    });
+    service = TestBed.inject(TemplateCalcService);
+    serverService = TestBed.inject(ServerService);
+    dataEvaluationService = TestBed.inject(DataEvaluationService);
+  });
+
+  // Ensure mock implementations working for dependent services
+  it("test service setup", () => {
+    expect(serverService).toBeTruthy();
+    expect(serverService.app_user_id).toEqual("test_1234");
+    expect(dataEvaluationService).toBeTruthy();
+    expect(dataEvaluationService.data?.app_day).toEqual(5);
+  });
+
+  it("should be created", () => {
+    expect(service).toBeTruthy();
+  });
+
+  // Test global constants populated
+  // NOTE - currently these are not really used, just a couple hardcoded values in service
+  it("generates global constants", () => {
+    const { globalConstants } = service.getCalcContext();
+    expect(globalConstants).toEqual({ test_var: "hello" });
+  });
+
+  // Test global functions defined
+  it("generates global functions", () => {
+    const { globalFunctions } = service.getCalcContext();
+    const globalFunctionNames = Object.keys(globalFunctions);
+    expect(globalFunctionNames.length).toBeGreaterThan(0);
+  });
+
+  // Test global `now()` function can execute and return date object
+  it("executes global now function", () => {
+    const { globalFunctions } = service.getCalcContext();
+    const res = globalFunctions.now();
+    expect(res instanceof Date).toEqual(true);
+  });
+});
+
 /**
  * TODO - Add testing data and methods
  * 
