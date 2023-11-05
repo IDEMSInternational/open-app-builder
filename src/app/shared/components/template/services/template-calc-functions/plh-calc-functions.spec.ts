@@ -33,3 +33,16 @@ describe("Template Calc - PLH Functions", () => {
     ]);
   });
 });
+
+describe("Template Calc - PLH Functions QA", () => {
+  it("Handles string input", () => {
+    const stringInput = JSON.stringify(MOCK_FAMILES());
+    const res = PLH_CALC_FUNCTIONS.plh_add_family(stringInput, "Friedrich", "Graham", "Hannah");
+    expect(res).toEqual([
+      ["Ada", "Blaise"],
+      ["Charles"],
+      ["Daniel", "Eva"],
+      ["Friedrich", "Graham", "Hannah"],
+    ]);
+  });
+});
