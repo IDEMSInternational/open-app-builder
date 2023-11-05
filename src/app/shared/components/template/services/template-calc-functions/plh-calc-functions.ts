@@ -117,40 +117,4 @@ export const PLH_CALC_FUNCTIONS: IFunctionHashmap = {
       .map((members) => members.filter((member) => member !== sourceMemberRef))
       .filter((members) => members.length > 0);
   },
-  /**
-   * Reallocate entries of an array that has been divided into partitions
-   *
-   *
-   * Mutate an array of arrays (expects a partition of a set): look for the sub-array
-   * containing one value and merge it with the sub-array containing another
-   * @param partition e.g. [[1, 2], [3], [4, 5, 6]]
-   * @param sourcePartitionValue Reference value to lookup. This will be moved to target partition
-   * @param targetPartitionValue Reference value to lookup. This will be extended with source value
-   * @returns A new partition, e.g. [[1, 2], [3, 4, 5, 6]]
-   */
-  merge_sub_arrays: (
-    partition: any[][] | string,
-    sourcePartitionValue: string,
-    targetPartitionValue: string
-  ) => {
-    try {
-      if (typeof partition === "string" || partition instanceof String)
-        partition = JSON.parse(partition as string) as any[];
-      const mergedArray = partition
-        .filter((arr) => arr.includes(sourcePartitionValue) || arr.includes(targetPartitionValue))
-        .flat();
-      const partitionUpdated = partition.filter(
-        (arr) => !arr.includes(sourcePartitionValue) && !arr.includes(targetPartitionValue)
-      );
-      partitionUpdated.push(mergedArray);
-      return partitionUpdated;
-    } catch (error) {
-      console.error("[merge_sub_arrays] error", {
-        partition,
-        sourcePartitionValue,
-        targetPartitionValue,
-        error,
-      });
-    }
-  },
 };
