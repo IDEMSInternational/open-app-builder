@@ -27,7 +27,7 @@ Note - this file will only be populated after initial config has been completed 
 ## Build API
 This will create a docker image from the local api workspace. It should be rebuilt
 whenever changed
-```
+```sh
 yarn workspace api docker:build
 ```
 
