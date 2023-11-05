@@ -13,6 +13,17 @@ export const PLH_CALC_FUNCTIONS: IFunctionHashmap = {
    * @returns Combined list [['Ada','Blaise'],['Charles'],['Daniel','Eva']]
    */
   plh_add_family: (families: any, ...members: string[]) => {
+    // Handle case where families is passed as a string representation (assumed to be of string[][])
+    if (typeof families === "string") {
+      try {
+        families = JSON.parse(families) as string[][];
+      } catch (error) {
+        console.warn(
+          "Skip adding family - 'families' input string is not a valid array representation:",
+          families
+        );
+      }
+    }
     // Generate a list of all unique family members to ensure duplicates not added
     const memberList: string[] = [].concat.apply([], families);
     if (members.find((member) => memberList.includes(member))) {
@@ -41,6 +52,17 @@ export const PLH_CALC_FUNCTIONS: IFunctionHashmap = {
    * ```
    */
   plh_merge_families: (families: string[][], sourceMemberRef: string, targetMemberRef: string) => {
+    // Handle case where families is passed as a string representation (assumed to be of string[][])
+    if (typeof families === "string") {
+      try {
+        families = JSON.parse(families) as string[][];
+      } catch (error) {
+        console.warn(
+          "Skip merging families - 'families' input string is not a valid array representation:",
+          families
+        );
+      }
+    }
     let sourceFamily: string[] = [];
     let targetFamily: string[] = [];
     let sourceIndex = -1;
@@ -80,6 +102,17 @@ export const PLH_CALC_FUNCTIONS: IFunctionHashmap = {
    * @returns
    */
   plh_remove_family_member: (families: string[][], sourceMemberRef: string) => {
+    // Handle case where families is passed as a string representation (assumed to be of string[][])
+    if (typeof families === "string") {
+      try {
+        families = JSON.parse(families) as string[][];
+      } catch (error) {
+        console.warn(
+          "Skip removing family member - 'families' input string is not a valid array representation:",
+          families
+        );
+      }
+    }
     return families
       .map((members) => members.filter((member) => member !== sourceMemberRef))
       .filter((members) => members.length > 0);
@@ -100,7 +133,6 @@ export const PLH_CALC_FUNCTIONS: IFunctionHashmap = {
     sourcePartitionValue: string,
     targetPartitionValue: string
   ) => {
-    console.log("merge sub arrays", { partition, sourcePartitionValue, targetPartitionValue });
     try {
       if (typeof partition === "string" || partition instanceof String)
         partition = JSON.parse(partition as string) as any[];
