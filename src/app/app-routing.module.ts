@@ -1,10 +1,10 @@
 import { NgModule } from "@angular/core";
 import { PreloadAllModules, Route, RouterModule, Routes } from "@angular/router";
-import { APP_CONFIG } from "./data";
+import { getAppConfig } from "./data";
 import { TourComponent } from "./feature/tour/tour.component";
 
 // TODO: These should come from the appConfigService
-const { APP_ROUTE_DEFAULTS } = APP_CONFIG;
+const { APP_ROUTE_DEFAULTS } = getAppConfig();
 
 /** Routes specified from data-models */
 const DataRoutes: Routes = [
