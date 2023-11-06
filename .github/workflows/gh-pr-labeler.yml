@@ -9,7 +9,6 @@ on:
 jobs:
   label:
     runs-on: ubuntu-latest
-    
     steps:
         # Check if PR title matches conventional commit standard
         # Not strictly enforced so allow continue on error
@@ -33,7 +32,7 @@ jobs:
             }
       # Assign labels based on files modified
       - name: Assign PR path Labels
-      - uses: actions/labeler@v4
+        uses: actions/labeler@v4
         with:
           configuration-path: .github/pr-labeler.config.yml
 
