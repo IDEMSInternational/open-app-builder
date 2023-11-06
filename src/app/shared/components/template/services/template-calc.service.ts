@@ -5,11 +5,18 @@ import * as date_fns from "date-fns";
 import { ServerService } from "src/app/shared/services/server/server.service";
 import { DataEvaluationService } from "src/app/shared/services/data/data-evaluation.service";
 import { AsyncServiceBase } from "src/app/shared/services/asyncService.base";
+import { PLH_CALC_FUNCTIONS } from "./template-calc-functions/plh-calc-functions";
+import { CORE_CALC_FUNCTIONS } from "./template-calc-functions/core-calc-functions";
 
 @Injectable({ providedIn: "root" })
 export class TemplateCalcService extends AsyncServiceBase {
   /** list of all variables accessible directly within calculations */
   private calcContext: ICalcContext;
+
+  private calcFunctions: IFunctionHashmap = {
+    ...CORE_CALC_FUNCTIONS,
+    ...PLH_CALC_FUNCTIONS,
+  };
 
   constructor(
     private serverService: ServerService,
@@ -29,6 +36,8 @@ export class TemplateCalcService extends AsyncServiceBase {
       this.addWindowCalcFunctions();
       this.calcContext = this.generateCalcContext();
     }
+    // Assign all calc functions also to window object to allow calling between functions
+    (window as any).calc = this.calcFunctions;
     return this.calcContext;
   }
 
@@ -38,7 +47,7 @@ export class TemplateCalcService extends AsyncServiceBase {
    */
   private generateCalcContext(): ICalcContext {
     const globalConstants = this.generateGlobalConstants();
-    const globalFunctions = { ...CALC_FUNCTIONS };
+    const globalFunctions = { ...this.calcFunctions };
     const thisCtxt = this.generateThisCtxt();
     return { globalConstants, globalFunctions, thisCtxt };
   }
@@ -86,69 +95,6 @@ export class TemplateCalcService extends AsyncServiceBase {
     (window as any).date_fns = date_fns;
   }
 }
-
-/**
- * Declare any functions that can be called from within `@calc(....)` statements, e.g.
- * ```
- * @calc(pick_random(@local.list_to_pick_from))
- * ```
- */
-const CALC_FUNCTIONS: IFunctionHashmap = {
-  /** Shortcut method to generate current datetime as Date object */
-  now: () => new Date(),
-
-  /**
-   * Same code used in app generateTimestamp method to generate a string representation
-   * of a given date (or current date if no input specified)
-   */
-  timestamp: (value?: string | Date) => {
-    const date = value ? new Date(value) : new Date();
-    return (window as any).date_fns.format(date, "yyyy-MM-dd'T'HH:mm:ss");
-  },
-  /**
-   * Pick a random item from a list
-   * @param arr array of items to pick from
-   */
-  pick_random: (items: any[] = []) => {
-    try {
-      const randomItem = items[Math.floor(Math.random() * items.length)];
-      return randomItem;
-    } catch (error) {
-      console.error("[pick_random] error", { items, error });
-      return items;
-    }
-  },
-
-  /**
-   * Most input elements display a 'text' (label) property but store a 'name' (value) property
-   * Lookup a list of items by name, and return the text)
-   * @param list string array containing answer options, e.g.
-   * ```[name:name_var_1 | text:Option 1, name:name_var_2 | text: Option 2]```
-   * @param name the name to lookup from the list of items
-   * @param returnField specify a single field from the item to return, default: 'text'
-   */
-  lookup_answer_list: (list: string[] = [], name: string, returnField: string = "text") => {
-    // Convert the list key-value pairs. Note - whilst this function is shared in template-utils
-    // we cannot import into this function as it is created dynamically
-    try {
-      const items = list.map((item) => {
-        const props: any = {};
-        item
-          .split("|")
-          .map((i) => i.trim())
-          .forEach((i) => {
-            const [key, value] = i.split(":").map((v) => v.trim());
-            props[key] = value;
-          });
-        return props;
-      });
-      const foundItem = items.find((el) => el.name === name);
-      return foundItem ? foundItem[returnField] : name;
-    } catch (error) {
-      return name;
-    }
-  },
-};
 
 /**
  * When evaluating functions we have a custom context, so that variables can be specified to both 'this',

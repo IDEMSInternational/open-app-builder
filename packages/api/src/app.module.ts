@@ -4,7 +4,7 @@ import { ConfigModule } from "@nestjs/config";
 import { SequelizeModule } from "@nestjs/sequelize";
 import { USER_DB_CONFIG } from "./db/config";
 import * as Endpoints from "./endpoints";
-import { DefaultModule } from "./endpoints/default";
+import { DefaultModule } from "./endpoints/status";
 import { DeploymentModule } from "./modules";
 
 @Module({

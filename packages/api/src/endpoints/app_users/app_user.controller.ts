@@ -4,15 +4,11 @@ import { AppUser } from "./app_user.model";
 import { AppUsersService } from "./app_user.service";
 import { ApiBody, ApiOperation, ApiParam, ApiResponse, ApiTags } from "@nestjs/swagger";
 import { DeploymentHeaders } from "src/modules/deployment.decorators";
-import { DeploymentService } from "src/modules/deployment.service";
 
 @ApiTags("Users")
 @Controller("app_users")
 export class AppUsersController {
-  constructor(
-    private readonly appUsersService: AppUsersService,
-    private dbService: DeploymentService
-  ) {}
+  constructor(private readonly appUsersService: AppUsersService) {}
 
   // @Post()
   // create(@Body() createUserDto: CreateAppUserDto): Promise<AppUser> {
@@ -23,7 +19,7 @@ export class AppUsersController {
   @ApiOperation({ summary: "List users" })
   @DeploymentHeaders()
   findAll() {
-    return this.dbService.model(AppUser).findAll();
+    return this.appUsersService.model.findAll();
   }
 
   // @Get(":app_user_id")

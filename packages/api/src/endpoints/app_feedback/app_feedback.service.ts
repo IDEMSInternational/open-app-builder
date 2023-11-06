@@ -22,8 +22,7 @@ export class AppFeedbackService {
     });
     if (!foundItem) {
       // Item not found, create a new one
-      const feedback = new AppFeedback();
-      return feedback.update({ data, app_user_id, app_user_record_id, app_deployment_name });
+      return this.model.create({ data, app_user_id, app_user_record_id, app_deployment_name });
     }
     return foundItem.update({ data });
   }
