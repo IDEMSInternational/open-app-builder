@@ -1,6 +1,6 @@
 {
   "name": "api",
-  "version": "1.3.0",
+  "version": "1.4.3",
   "scripts": {
     "prebuild": "rimraf dist",
     "build": "nest build",
@@ -16,7 +16,8 @@
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config jest.config-e2e.ts",
     "docker:build": "echo $npm_package_version && DOCKER_BUILDKIT=1 docker build -f Dockerfile --tag idems/apps-api:$npm_package_version .",
-    "docker:run": "docker run -p 3000:3000 --name apps-api --rm idems/apps-api:$npm_package_version"
+    "docker:run": "docker run -p 3000:3000 --name apps-api --rm idems/apps-api:$npm_package_version",
+    "docker:debug": "docker run -d --name apps-api-debug --rm idems/apps-api:$npm_package_version sleep infinity"
   },
   "dependencies": {
     "@nestjs/common": "^9.4.3",
@@ -36,7 +37,7 @@
     "swagger-ui-express": "^4.6.3",
     "ts-node": "^10.9.1",
     "typescript": "4.3.5",
-    "umzug": "^3.3.1"
+    "umzug": "3.2.1"
   },
   "devDependencies": {
     "@nestjs/cli": "^9.5.0",
