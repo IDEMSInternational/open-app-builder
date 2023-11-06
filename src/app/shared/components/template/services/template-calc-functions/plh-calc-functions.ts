@@ -1,34 +1,35 @@
 import { IFunctionHashmap } from "packages/shared/src";
 
 /**
- * Handle case where families is passed as a string representation (assumed to be of string[][])
- * This will be a common function available to all the plh methods below
- * @returns parsed family array of string arrays, or undefined
- */
-function plh_parse_family_input(familiesInput: any): string[][] | null {
-  if (Array.isArray(familiesInput)) return familiesInput as string[][];
-  if (typeof familiesInput === "string") {
-    try {
-      const families = JSON.parse(familiesInput) as string[][];
-      return families;
-    } catch (error) {
-      console.warn(
-        "Skip adding family - 'families' input string is not a valid array representation:",
-        familiesInput
-      );
-    }
-  }
-  return null;
-}
-
-/**
  * Temporary functions used for plh sheets
  * Eventually this will be migrated to read from data_list instead (once able to define functions within list)
- *
- * NOTE - all functions also have access to common functions
  */
 export const PLH_CALC_FUNCTIONS: IFunctionHashmap = {
-  plh_parse_family_input,
+  /**
+   * Handle case where families is passed as a string representation (assumed to be of string[][])
+   * This will be a common function available to all the plh methods below
+   *
+   * NOTE - calc functions can't refer to each other by direct import, instead use `window.calc`, i.e.
+   * ```
+   * (window as any).calc.plh_parse_family_input(...)
+   * ```
+   * @returns parsed family array of string arrays, or undefined
+   */
+  plh_parse_family_input: (familiesInput: any): string[][] | null => {
+    if (Array.isArray(familiesInput)) return familiesInput as string[][];
+    if (typeof familiesInput === "string") {
+      try {
+        const families = JSON.parse(familiesInput) as string[][];
+        return families;
+      } catch (error) {
+        console.warn(
+          "Skip adding family - 'families' input string is not a valid array representation:",
+          familiesInput
+        );
+      }
+    }
+    return null;
+  },
   /**
    * Add a new family to the list of all families
    * Family members are identified uniquely by string id, avoiding duplication if already exists
@@ -37,7 +38,7 @@ export const PLH_CALC_FUNCTIONS: IFunctionHashmap = {
    * @returns Combined list [['Ada','Blaise'],['Charles'],['Daniel','Eva']]
    */
   plh_add_family: (familiesInput: any, ...members: string[]) => {
-    const families = plh_parse_family_input(familiesInput);
+    const families = (window as any).calc.plh_parse_family_input(familiesInput);
     if (!families) return familiesInput;
 
     // Generate a list of all unique family members to ensure duplicates not added
@@ -67,7 +68,7 @@ export const PLH_CALC_FUNCTIONS: IFunctionHashmap = {
    * ```
    */
   plh_merge_families: (familiesInput: any, sourceMemberRef: string, targetMemberRef: string) => {
-    const families = plh_parse_family_input(familiesInput);
+    const families = (window as any).calc.plh_parse_family_input(familiesInput);
     if (!families) return familiesInput;
 
     let sourceFamily: string[] = [];
@@ -109,7 +110,7 @@ export const PLH_CALC_FUNCTIONS: IFunctionHashmap = {
    * @returns
    */
   plh_remove_family_member: (familiesInput: any, sourceMemberRef: string) => {
-    const families = plh_parse_family_input(familiesInput);
+    const families = (window as any).calc.plh_parse_family_input(familiesInput);
     if (!families) return familiesInput;
     return families
       .map((members) => members.filter((member) => member !== sourceMemberRef))
