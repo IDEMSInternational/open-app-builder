@@ -37,7 +37,11 @@ export const PLH_CALC_FUNCTIONS: IFunctionHashmap = {
    * @returns Combined list [['Ada','Blaise'],['Charles'],['Daniel','Eva']]
    */
   plh_add_family: (familiesInput: any, ...members: string[]) => {
-    const families = plh_parse_family_input(familiesInput);
+    // NOTE - functions code below is minified on production build, however when evaluating
+    // within dynamic calc statements names are preserved, creating a mismatch between
+    // minified and non-minified reference. As a result the only (known) way to refer to one
+    // function from another is via the window.calc object which preserves name references
+    const families = (window as any).calc.plh_parse_family_input(familiesInput);
     if (!families) return familiesInput;
 
     // Generate a list of all unique family members to ensure duplicates not added
@@ -67,7 +71,7 @@ export const PLH_CALC_FUNCTIONS: IFunctionHashmap = {
    * ```
    */
   plh_merge_families: (familiesInput: any, sourceMemberRef: string, targetMemberRef: string) => {
-    const families = plh_parse_family_input(familiesInput);
+    const families = (window as any).calc.plh_parse_family_input(familiesInput);
     if (!families) return familiesInput;
 
     let sourceFamily: string[] = [];
@@ -109,7 +113,7 @@ export const PLH_CALC_FUNCTIONS: IFunctionHashmap = {
    * @returns
    */
   plh_remove_family_member: (familiesInput: any, sourceMemberRef: string) => {
-    const families = plh_parse_family_input(familiesInput);
+    const families = (window as any).calc.plh_parse_family_input(familiesInput);
     if (!families) return familiesInput;
     return families
       .map((members) => members.filter((member) => member !== sourceMemberRef))
