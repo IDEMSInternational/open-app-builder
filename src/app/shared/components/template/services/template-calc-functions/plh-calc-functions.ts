@@ -38,10 +38,6 @@ export const PLH_CALC_FUNCTIONS: IFunctionHashmap = {
    * @returns Combined list [['Ada','Blaise'],['Charles'],['Daniel','Eva']]
    */
   plh_add_family: (familiesInput: any, ...members: string[]) => {
-    // NOTE - functions code below is minified on production build, however when evaluating
-    // within dynamic calc statements names are preserved, creating a mismatch between
-    // minified and non-minified reference. As a result the only (known) way to refer to one
-    // function from another is via the window.calc object which preserves name references
     const families = (window as any).calc.plh_parse_family_input(familiesInput);
     if (!families) return familiesInput;
 
