@@ -21,7 +21,7 @@ jobs:
         # Assign labels based on conventional PR title
         # https://github.com/marketplace/actions/conventional-release-labels
       - name: Assign PR Name Labels
-        uses: bcoe/conventional-release-labels@v1
+        uses: bcoe/conventional-release-labels@v1.3.1
         with:
           # Labels assigned based on pr name prefix
           type_labels: |
