@@ -76,7 +76,7 @@ export class TemplateNavService extends SyncServiceBase {
   /*****************************************************************************************************
    *  Nav Actions
    ****************************************************************************************************/
-  public handleNavAction(action: FlowTypes.TemplateRowAction) {
+  public async handleNavAction(action: FlowTypes.TemplateRowAction) {
     // TODO: Find more elegant way to get current root level template name
     const parentName = location.pathname.replace("/template/", "");
     const [templatename, key, value] = action.args;
@@ -87,7 +87,23 @@ export class TemplateNavService extends SyncServiceBase {
 
     // If "dismiss_on_return" is set to true for the go_to action, dismiss the current popup before navigating away
     if (key === "dismiss_on_return" && parseBoolean(value)) {
-      history.replaceState({}, "", location.pathname);
+      const { popup_child } = this.route.snapshot.queryParams;
+      if (popup_child) {
+        const popupDismissParams: INavQueryParams = {
+          popup_child: null,
+          popup_parent: null,
+          popup_parent_triggered_by: null,
+        };
+        // alter route history so that on back-nav popup will not be present
+        await this.router.navigate([], {
+          relativeTo: this.route,
+          queryParams: popupDismissParams,
+          queryParamsHandling: "merge",
+          replaceUrl: true,
+        });
+        // Dismiss open popup (without await to allow rest of nav to proceed await)
+        this.dismissPopup(popup_child);
+      }
     }
     return this.router.navigate(navTarget, {
       queryParams,
