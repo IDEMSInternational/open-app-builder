@@ -24,3 +24,8 @@ jobs:
         with:
           name: v${{env.APP_VERSION}}
           tag: v${{env.APP_VERSION}}
+
+
+# TODO - consider alternatives:
+# - https://github.com/semantic-release/semantic-release
+# - https://github.com/marketplace/actions/release-please-action
