@@ -36,6 +36,8 @@ export class TemplateCalcService extends AsyncServiceBase {
       this.addWindowCalcFunctions();
       this.calcContext = this.generateCalcContext();
     }
+    // Assign all calc functions also to window object to allow calling between functions
+    (window as any).calc = this.calcFunctions;
     return this.calcContext;
   }
 
