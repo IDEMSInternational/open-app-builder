@@ -28,8 +28,12 @@ jobs:
             {
             "feat": "feature",
             "fix": "fix",
-            "breaking": "breaking"
+            "breaking": "breaking",
+            "refactor": "maintenance",
+            "chore":"maintenance"
             }
+          # Do not ignore any labels (default ignores chore:)
+          ignored_types: []
       # Assign labels based on files modified
       - name: Assign PR path Labels
         uses: actions/labeler@v4
