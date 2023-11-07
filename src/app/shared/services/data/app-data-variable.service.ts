@@ -121,10 +121,7 @@ export class AppDataVariableService extends AsyncServiceBase {
           isRecursive = true;
         }
         for (const variableName of Object.keys(variableNameHashmap)) {
-          let evaluated = await this.get(contextPrefix as IVariableContext, variableName);
-          if (typeof evaluated === "string" || evaluated instanceof String) {
-            evaluated = `"${evaluated}"`;
-          }
+          const evaluated = await this.get(contextPrefix as IVariableContext, variableName);
           evaluatedContext[contextPrefix][variableName] = evaluated;
         }
       }
