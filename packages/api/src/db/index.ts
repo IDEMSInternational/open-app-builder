@@ -1,5 +1,5 @@
 // TODO - not working in prod - should check if still required
-require("ts-node/register");
+// require("ts-node/register");
 
 import * as path from "path";
 import { Client } from "pg";
@@ -9,8 +9,7 @@ import { Umzug, SequelizeStorage } from "umzug";
 import { ADMIN_CLIENT_CONFIG, USER_DB_CONFIG } from "./config";
 
 const MIGRATIONS_DIR = path.resolve(__dirname, "migrations");
-const APP_DB_PASSWORD = environment.APP_DB_PASSWORD;
-const APP_DB_USER = environment.APP_DB_USER;
+const { APP_DB_USER, APP_DB_PASSWORD } = environment;
 
 export class DBInstance {
   constructor(private dbName = environment.APP_DB_NAME) {}
@@ -28,7 +27,12 @@ export class DBInstance {
       await this.setupUsers(adminClient);
       await adminClient.end();
       // create additional client on target db to perform migrations
-      const migrationClient = new Sequelize({ ...USER_DB_CONFIG, database: this.dbName });
+      const migrationClient = new Sequelize({
+        ...USER_DB_CONFIG,
+        database: this.dbName,
+        // disable verbose migration logs in test
+        logging: process.env.NODE_ENV === "test" ? false : true,
+      });
       await this.runMigrations(migrationClient);
       await migrationClient.close();
     } catch (error) {
@@ -77,7 +81,8 @@ export class DBInstance {
       },
       context: client.getQueryInterface(),
       storage: new SequelizeStorage({ sequelize: client }),
-      logger: console,
+      // Limit migrator logs only to error and warn
+      logger: { error: console.error, warn: console.warn, info: () => null, debug: () => null },
     });
     const pending = await migrator.pending();
     console.log("[Migrations] pending", pending);
