@@ -85,8 +85,8 @@ export class TemplateNavService extends SyncServiceBase {
     // handle direct page or template navigation
     const navTarget = templatename.startsWith("/") ? [templatename] : ["template", templatename];
 
-    // If "dismiss_on_return" is set to true for the go_to action, dismiss the current popup before navigating away
-    if (key === "dismiss_on_return" && parseBoolean(value)) {
+    // If "dismiss_pop_up" is set to true for the go_to action, dismiss the current popup before navigating away
+    if (key === "dismiss_pop_up" && parseBoolean(value)) {
       const { popup_child } = this.route.snapshot.queryParams;
       if (popup_child) {
         const popupDismissParams: INavQueryParams = {
