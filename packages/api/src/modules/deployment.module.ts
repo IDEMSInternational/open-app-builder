@@ -1,10 +1,11 @@
 import { Global, MiddlewareConsumer, Module, NestModule, RequestMethod } from "@nestjs/common";
+import { ConnectionManagerService } from "src/services/connection-manager";
 import { DeploymentMiddleware } from "./deployment.middleware";
 import { DeploymentService } from "./deployment.service";
 
 @Global()
 @Module({
-  providers: [DeploymentService, DeploymentMiddleware],
+  providers: [DeploymentService, DeploymentMiddleware, ConnectionManagerService],
   exports: [DeploymentService, DeploymentMiddleware],
 })
 /**

@@ -5,7 +5,7 @@ import { ModalController } from "@ionic/angular";
 import { first } from "rxjs/operators";
 import { FlowTypes } from "src/app/shared/model";
 import { SyncServiceBase } from "src/app/shared/services/syncService.base";
-import { arrayToHashmapArray } from "src/app/shared/utils";
+import { arrayToHashmapArray, parseBoolean } from "src/app/shared/utils";
 import { ITemplatePopupComponentProps, TemplatePopupComponent } from "../components/layout/popup";
 import { ITemplateContainerProps } from "../models";
 import { TemplateContainerComponent } from "../template-container.component";
@@ -79,11 +79,16 @@ export class TemplateNavService extends SyncServiceBase {
   public handleNavAction(action: FlowTypes.TemplateRowAction) {
     // TODO: Find more elegant way to get current root level template name
     const parentName = location.pathname.replace("/template/", "");
-    const [templatename] = action.args;
+    const [templatename, key, value] = action.args;
     const nav_parent_triggered_by = action._triggeredBy?.name;
     const queryParams: INavQueryParams = { nav_parent: parentName, nav_parent_triggered_by };
     // handle direct page or template navigation
     const navTarget = templatename.startsWith("/") ? [templatename] : ["template", templatename];
+
+    // If "dismiss_on_return" is set to true for the go_to action, dismiss the current popup before navigating away
+    if (key === "dismiss_on_return" && parseBoolean(value)) {
+      history.replaceState({}, "", location.pathname);
+    }
     return this.router.navigate(navTarget, {
       queryParams,
       queryParamsHandling: "merge",
@@ -160,8 +165,8 @@ export class TemplateNavService extends SyncServiceBase {
       // // if we have navigated from a popup we need to return to the popup parent template
       // // otherwise return to the template of the element that initiated the navigation
       // const navTargetTemplate = popup_parent || nav_parent;
-      // router.navigate(["../", navTargetTemplate], {
-      //   relativeTo: route,
+      // this.router.navigate(["../template/", navTargetTemplate], {
+      //   relativeTo: this.route,
       //   queryParams,
       //   replaceUrl: true,
       //   queryParamsHandling: "merge",
@@ -304,6 +309,7 @@ export class TemplateNavService extends SyncServiceBase {
       templatename: popup_child,
       parent: container,
       showCloseButton: true,
+      dismissOnEmit: true,
     };
     // If trying to recreate a popup that already exists simply mark as visible
     const existingPopup = this.openPopupsByName[popup_child];

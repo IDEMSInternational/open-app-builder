@@ -136,22 +136,33 @@ export class LocalNotificationService extends AsyncServiceBase {
         return false;
       }
     }
-    // Return state of already granted
-    const { display } = await LocalNotifications.checkPermissions();
-    if (display === "granted") {
-      return true;
+
+    try {
+      // Return state of already granted
+      const { display } = await LocalNotifications.checkPermissions();
+      if (display === "granted") {
+        return true;
+      }
+      // Use notifications api to check permissions. Run in parallel with a 5-second
+      // timeout to resolve in cases where prompt does not appear or user fails to interact with it
+      const granted = await Promise.race([
+        new Promise<boolean>((resolve) => setTimeout(resolve, 5000, false)),
+        new Promise<boolean>(async (resolve) => {
+          const { display } = await LocalNotifications.requestPermissions();
+          resolve(display === "granted");
+        }),
+      ]);
+      // console.log("[Notifications Enabled]", granted);
+      return granted;
+    } catch (error) {
+      // Catch case where capacitor throws error on android web
+      // (notifications supported in browser but method of constructing fails)
+      // https://github.com/ionic-team/capacitor/issues/3472
+      // https://github.com/ionic-team/capacitor-plugins/blob/main/local-notifications/src/web.ts
+      console.log("[Notifications]", error.message);
+      // When testing on android pwa error thrown from capacitor (not supported)
+      return false;
     }
-    // Use notifications api to check permissions. Run in parallel with a 5-second
-    // timeout to resolve in cases where prompt does not appear or user fails to interact with it
-    const granted = await Promise.race([
-      new Promise<boolean>((resolve) => setTimeout(resolve, 5000, false)),
-      new Promise<boolean>(async (resolve) => {
-        const { display } = await LocalNotifications.requestPermissions();
-        resolve(display === "granted");
-      }),
-    ]);
-    // console.log("[Notifications Enabled]", granted);
-    return granted;
   }
   /** Trigger notification loader to reprocess on next defer cycle */
   private loadNotifications() {
