@@ -1,4 +1,4 @@
-name: Github Release Labeler
+name: Github PR Labeler
 on:
   # TODO - replace with pull_request_target when working in master
   pull_request:
