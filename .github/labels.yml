@@ -99,12 +99,27 @@
   },
   {
     "color": "A02AB2",
-    "description": "Impacts terms and conditions, should be communicated to partners",       
+    "description": "Impacts terms and conditions, should be communicated to partners",
     "name": "compliance"
   },
   {
     "color": "D93F0B",
     "description": "",
     "name": "glitchtip"
+  },
+  {
+    "color": "3A3895",
+    "description": "",
+    "name": "fix"
+  },
+  {
+    "color": "000000",
+    "description": "Introduces breaking changes to how content is authored",
+    "name": "breaking"
+  },
+  {
+    "color": "DDCD15",
+    "description": "Core updates, refactoring and code quality improvements",
+    "name": "maintenance"
   }
 ]
