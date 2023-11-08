@@ -33,7 +33,7 @@ jobs:
             "chore":"maintenance"
             }
           # Do not ignore any labels (default ignores chore:)
-          ignored_types: []
+          ignored_types: '[]'
       # Assign labels based on files modified
       - name: Assign PR path Labels
         uses: actions/labeler@v4
