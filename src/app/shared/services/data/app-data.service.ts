@@ -80,8 +80,9 @@ export class AppDataService extends SyncServiceBase {
   public async getSheet<T extends FlowTypes.FlowTypeWithData>(
     flow_type: FlowTypes.FlowType,
     flow_name: string,
+    is_override_target: boolean = false,
     /** Keep log of previous override flow names to avoid infinite loops, e.g. flow_a -> flow_b -> flow_a  */
-    is_override_target: boolean = false
+    overrideHistory: string[] = []
   ) {
     const flowContents = this.sheetContents[flow_type][flow_name];
     if (!flowContents) {
@@ -89,12 +90,17 @@ export class AppDataService extends SyncServiceBase {
       this.errorHandler.handleError(new Error(`[${flow_type}] "${flow_name}" not found`));
       return null;
     }
-    // Check for any runtime overrides to flows
-    const overrideFlowName = await this.checkFlowOverrides(flowContents);
-    if (overrideFlowName && !is_override_target) {
-      return this.getSheet(flow_type, overrideFlowName, true);
-    }
 
+    // is_override_target is true for a template in the case of a reference to that original template
+    // from another template that overrides it. In this case, do not apply override to nested template
+    if (!is_override_target) {
+      // Check for any runtime overrides to flows
+      const overrideFlowName = await this.checkFlowOverrides(flowContents);
+      if (overrideFlowName && !overrideHistory.includes(overrideFlowName)) {
+        overrideHistory.push(flow_name);
+        return this.getSheet(flow_type, overrideFlowName, is_override_target, overrideHistory);
+      }
+    }
     // Populate flow from cache if exists, or load json if it does not
     let flow = this.appDataCache[flow_type][flow_name];
     if (!flow) {
