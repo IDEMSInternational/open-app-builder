@@ -74,6 +74,27 @@ describe("AppDataVariableService", () => {
     expect(evaluated).toEqual(true);
   });
 
+  // TODO - String evaluation: currently string values stored in fields require string delimters
+  // to be manually authored in order to use the values in expressions
+  it("evaluates expressions with string value - string method", async () => {
+    await service.set("field", "test_value", "hello");
+    const evaluated = await service.evaluateExpression("'@field.test_value'.startsWith('h')");
+    expect(evaluated).toEqual(true);
+  });
+  it("evaluates expressions with string value", async () => {
+    await service.set("field", "test_value", "hello");
+    const evaluated = await service.evaluateExpression("'@field.test_value' === 'hello'");
+    console.log("evaluated", evaluated);
+    expect(evaluated).toEqual(true);
+  });
+  // Using '{}' delimters does not work, evaluated returns `hello.startsWith('h')`
+  // it("evaluates expressions with string methods applied to field values - delimited", async () => {
+  //   await service.set("field", "test_value", "hello");
+  //   const evaluated = await service.evaluateExpression("{@field.test_value}.startsWith('h')");
+  //   console.log("evaluated", evaluated)
+  //   expect(evaluated).toEqual(true);
+  // });
+
   //   TODO - requires mock error logger pending refactor in open #2019
 
   // it("logs error on unknown prefix", async () => {
