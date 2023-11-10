@@ -28,6 +28,12 @@ export class MockAppDataVariableService implements Partial<AppDataVariableServic
   constructor() {
     this.handlers = getMockHandlers();
   }
+  public async ready() {
+    return true;
+  }
+  public async evaluateExpression(expression: string) {
+    return true;
+  }
 }
 
 /********************************************************************************
