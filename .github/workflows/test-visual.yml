@@ -16,7 +16,7 @@ concurrency:
   cancel-in-progress: true
 env:
   # TODO - replace with dedicated screenshots deployment
-  DEPLOYMENT: plh_global
+  DEPLOYMENT: debug
 
 jobs:
   build:
