@@ -1,6 +1,6 @@
 env:
   # TODO: create a dedicated screenshots deployment
-  DEPLOYMENT_NAME: debug
+  DEPLOYMENT_NAME_DEFAULT: debug
   DEPLOYMENT_REPO: ${{vars.DEPLOYMENT_REPO}}
   DEPLOYMENT_PRIVATE_KEY: ${{secrets.DEPLOYMENT_PRIVATE_KEY}}
 
@@ -22,6 +22,42 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  # Copied from web-build.yml
+  configure_build:
+    outputs:
+      DEPLOYMENT_NAME: ${{ steps.populate.outputs.DEPLOYMENT_NAME }}
+      GIT_SHA: ${{ steps.populate.outputs.GIT_SHA }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          ref: ${{inputs.branch}}
+
+      - name: Set named input environment
+        if: ${{ inputs.environment }}
+        run: |
+          echo "DEPLOYMENT_NAME=${{inputs.environment}}" >> $GITHUB_ENV;  
+        shell: bash
+
+      - name: Set environment from target
+        if: ${{inputs.deployment && inputs.deployment != 'master' && inputs.deployment!='refs/heads/master'}}
+        run: |
+          echo "DEPLOYMENT_NAME=$(echo ${{inputs.deployment}} | sed 's/.*\///')" >> $GITHUB_ENV;
+        shell: bash
+
+      - name: Set default environment
+        if: ${{ !env.DEPLOYMENT_NAME }}
+        run: |
+          echo "DEPLOYMENT_NAME=$DEPLOYMENT_NAME_DEFAULT" >> $GITHUB_ENV;  
+        shell: bash
+
+      # Output determined environment name alongside git SHA (for use in error logging)
+      - name: Populate Outputs
+        id: populate
+        run: |
+          echo "DEPLOYMENT_NAME=$DEPLOYMENT_NAME" >> $GITHUB_OUTPUT;  
+          echo "GIT_SHA=$(git rev-parse --short=6 HEAD)" >> $GITHUB_OUTPUT
+
   build:
     if: contains(github.event.pull_request.labels.*.name, 'Test - visual')
     uses: ./.github/workflows/web-build.yml
