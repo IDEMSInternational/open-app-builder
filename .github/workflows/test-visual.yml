@@ -1,3 +1,9 @@
+env:
+  # TODO: create a dedicated screenshots deployment
+  DEPLOYMENT_NAME: debug
+  DEPLOYMENT_REPO: ${{vars.DEPLOYMENT_REPO}}
+  DEPLOYMENT_PRIVATE_KEY: ${{secrets.DEPLOYMENT_PRIVATE_KEY}}
+
 # Generate a set of screenshots for the current branch and compare against previously generated on master
 name: Test-Visual
 on:
@@ -14,9 +20,6 @@ on:
 concurrency:
   group: test-visual-${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
-env:
-  # TODO - replace with dedicated screenshots deployment
-  DEPLOYMENT: debug
 
 jobs:
   build:
@@ -68,8 +71,21 @@ jobs:
         run: |
           rm -f -R www/assets/app_data/sheets/data_list/lifecycle_actions
 
+      - name: Import remote deployment
+        if: ${{env.DEPLOYMENT_REPO}}
+        uses: actions/checkout@v3
+        with:
+          repository: ${{env.DEPLOYMENT_REPO}}
+          lfs: true
+          path: ".idems_app/deployments/${{env.DEPLOYMENT_NAME}}"
+
+      - name: Set deployment private key
+        if: ${{env.DEPLOYMENT_PRIVATE_KEY}}
+        run:
+          echo $DEPLOYMENT_PRIVATE_KEY > .idems_app/deployments/$DEPLOYMENT_NAME/encrypted/private.key
+
       - name: Set Deployment
-        run: yarn workflow deployment set $DEPLOYMENT
+        run: yarn workflow deployment set ${{env.DEPLOYMENT_NAME}}
         
         ###########################################################################################
         # Generate
