@@ -66,7 +66,7 @@ jobs:
         # TODO - review if still required (CC 2023-08-15)
       - name : HACK - Remove lifecycle actions
         run: |
-          rm -R www/assets/app_data/sheets/data_list/lifecycle_actions
+          rm -f -R www/assets/app_data/sheets/data_list/lifecycle_actions
 
       - name: Set Deployment
         run: yarn workflow deployment set $DEPLOYMENT
