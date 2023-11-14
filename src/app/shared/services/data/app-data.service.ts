@@ -91,14 +91,20 @@ export class AppDataService extends SyncServiceBase {
       return null;
     }
 
-    // is_override_target is true for a template in the case of a reference to that original template
-    // from another template that overrides it. In this case, do not apply override to nested template
+    // is_override_target is true for a template in the case that there is a reference to that original template
+    // in another template that overrides it. In this case, do not apply override to nested template
     if (!is_override_target) {
       // Check for any runtime overrides to flows
       const overrideFlowName = await this.checkFlowOverrides(flowContents);
-      if (overrideFlowName && !overrideHistory.includes(overrideFlowName)) {
-        overrideHistory.push(flow_name);
-        return this.getSheet(flow_type, overrideFlowName, is_override_target, overrideHistory);
+      if (overrideFlowName) {
+        if (overrideHistory.includes(overrideFlowName)) {
+          console.error(
+            `Circular overrides detected: ${flow_name} and ${overrideFlowName} override each other.`
+          );
+        } else {
+          overrideHistory.push(flow_name);
+          return this.getSheet(flow_type, overrideFlowName, is_override_target, overrideHistory);
+        }
       }
     }
     // Populate flow from cache if exists, or load json if it does not
