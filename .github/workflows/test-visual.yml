@@ -22,42 +22,6 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  # Copied from web-build.yml
-  configure_build:
-    outputs:
-      DEPLOYMENT_NAME: ${{ steps.populate.outputs.DEPLOYMENT_NAME }}
-      GIT_SHA: ${{ steps.populate.outputs.GIT_SHA }}
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-        with:
-          ref: ${{inputs.branch}}
-
-      - name: Set named input environment
-        if: ${{ inputs.environment }}
-        run: |
-          echo "DEPLOYMENT_NAME=${{inputs.environment}}" >> $GITHUB_ENV;  
-        shell: bash
-
-      - name: Set environment from target
-        if: ${{inputs.deployment && inputs.deployment != 'master' && inputs.deployment!='refs/heads/master'}}
-        run: |
-          echo "DEPLOYMENT_NAME=$(echo ${{inputs.deployment}} | sed 's/.*\///')" >> $GITHUB_ENV;
-        shell: bash
-
-      - name: Set default environment
-        if: ${{ !env.DEPLOYMENT_NAME }}
-        run: |
-          echo "DEPLOYMENT_NAME=$DEPLOYMENT_NAME_DEFAULT" >> $GITHUB_ENV;  
-        shell: bash
-
-      # Output determined environment name alongside git SHA (for use in error logging)
-      - name: Populate Outputs
-        id: populate
-        run: |
-          echo "DEPLOYMENT_NAME=$DEPLOYMENT_NAME" >> $GITHUB_OUTPUT;  
-          echo "GIT_SHA=$(git rev-parse --short=6 HEAD)" >> $GITHUB_OUTPUT
-
   build:
     if: contains(github.event.pull_request.labels.*.name, 'Test - visual')
     uses: ./.github/workflows/web-build.yml
@@ -107,21 +71,8 @@ jobs:
         run: |
           rm -f -R www/assets/app_data/sheets/data_list/lifecycle_actions
 
-      - name: Import remote deployment
-        if: ${{env.DEPLOYMENT_REPO}}
-        uses: actions/checkout@v3
-        with:
-          repository: ${{env.DEPLOYMENT_REPO}}
-          lfs: true
-          path: ".idems_app/deployments/${{env.DEPLOYMENT_NAME}}"
-
-      - name: Set deployment private key
-        if: ${{env.DEPLOYMENT_PRIVATE_KEY}}
-        run:
-          echo $DEPLOYMENT_PRIVATE_KEY > .idems_app/deployments/$DEPLOYMENT_NAME/encrypted/private.key
-
       - name: Set Deployment
-        run: yarn workflow deployment set ${{env.DEPLOYMENT_NAME}}
+        run: yarn workflow deployment set ${{ needs.build.outputs.DEPLOYMENT_NAME }}
         
         ###########################################################################################
         # Generate
