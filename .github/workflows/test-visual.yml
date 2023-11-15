@@ -1,8 +1,6 @@
 env:
   # TODO: create a dedicated screenshots deployment
-  DEPLOYMENT_NAME_DEFAULT: debug
-  DEPLOYMENT_REPO: ${{vars.DEPLOYMENT_REPO}}
-  DEPLOYMENT_PRIVATE_KEY: ${{secrets.DEPLOYMENT_PRIVATE_KEY}}
+  DEPLOYMENT: debug
 
 # Generate a set of screenshots for the current branch and compare against previously generated on master
 name: Test-Visual
