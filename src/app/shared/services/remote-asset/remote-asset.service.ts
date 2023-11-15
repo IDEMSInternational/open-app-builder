@@ -2,32 +2,43 @@ import { Injectable } from "@angular/core";
 import { HttpClient, HttpEventType } from "@angular/common/http";
 import { Capacitor } from "@capacitor/core";
 import { createClient, SupabaseClient } from "@supabase/supabase-js";
+import { FileObject } from "@supabase/storage-js";
 import { environment } from "src/environments/environment";
 import { TemplateActionRegistry } from "../../components/template/services/instance/template-action.registry";
-import { IAppConfig } from "../../model";
+import { FlowTypes, IAppConfig } from "../../model";
 import { AppConfigService } from "../app-config/app-config.service";
 import { FileManagerService } from "../file-manager/file-manager.service";
-import { IAssetContents } from "src/app/data";
+import { ASSETS_CONTENTS_LIST, IAssetContents } from "src/app/data";
 import { BehaviorSubject, Subject, Subscription, lastValueFrom } from "rxjs";
+import { AppDataService } from "src/app/shared/services/data/app-data.service";
 import { TemplateAssetService } from "../../components/template/services/template-asset.service";
 import { AsyncServiceBase } from "../asyncService.base";
+import { IAssetEntry } from "packages/data-models/deployment.model";
+import { DynamicDataService } from "../dynamic-data/dynamic-data.service";
+import { arrayToHashmap } from "../../utils";
+
+const CORE_ASSET_PACK_NAME = "core_assets";
 
 @Injectable({
   providedIn: "root",
 })
 export class RemoteAssetService extends AsyncServiceBase {
   remoteAssetsEnabled: boolean;
+  supabaseEnabled: boolean;
   bucketName: string;
   folderName: string;
   supabase: SupabaseClient;
   downloading: boolean = false;
   downloadProgress: number;
+  manifest: FlowTypes.AssetPack;
 
   constructor(
-    private templateActionRegistry: TemplateActionRegistry,
     private appConfigService: AppConfigService,
+    private appDataService: AppDataService,
+    private dynamicDataService: DynamicDataService,
     private fileManagerService: FileManagerService,
     private templateAssetService: TemplateAssetService,
+    private templateActionRegistry: TemplateActionRegistry,
     private http: HttpClient
   ) {
     super("RemoteAsset");
@@ -35,15 +46,28 @@ export class RemoteAssetService extends AsyncServiceBase {
   }
 
   private async initialise() {
+    this.registerTemplateActionHandlers();
     // require supabase to be configured to use remote asset service
-    const { enabled: supabaseEnabled, publicApiKey, url } = environment.deploymentConfig.supabase;
-    if (supabaseEnabled) {
-      await this.ensureAsyncServicesReady([this.templateAssetService]);
-      this.ensureSyncServicesReady([this.appConfigService, this.fileManagerService]);
+    const { enabled, publicApiKey, url } = environment.deploymentConfig.supabase;
+    this.supabaseEnabled = enabled;
+    if (this.supabaseEnabled) {
+      await this.ensureAsyncServicesReady([this.templateAssetService, this.dynamicDataService]);
+      this.ensureSyncServicesReady([
+        this.appConfigService,
+        this.appDataService,
+        this.fileManagerService,
+      ]);
       this.subscribeToAppConfigChanges();
       if (this.remoteAssetsEnabled) {
         this.supabase = createClient(url, publicApiKey);
-        this.registerTemplateActionHandlers();
+        const { flow_type, flow_name } = this.generateCoreAssetPack();
+        // Share updates to asset contents list with template asset service for lookup
+        const obs = await this.dynamicDataService.query$(flow_type, flow_name);
+        obs.subscribe((dataRows) => {
+          const assetContentsHashmap = arrayToHashmap(dataRows, "id") as IAssetContents;
+          this.templateAssetService.updateContentsList(assetContentsHashmap);
+          console.log("asset contents list", this.templateAssetService.assetsContentsList$.value);
+        });
       }
     }
   }
@@ -55,10 +79,24 @@ export class RemoteAssetService extends AsyncServiceBase {
   private registerTemplateActionHandlers() {
     this.templateActionRegistry.register({
       asset_pack: async ({ args }) => {
-        const [actionId] = args;
+        const [actionId, ...assetPackArgs] = args;
         const childActions = {
           download: async () => {
-            await this.downloadAndPopulateRequiredAssets();
+            if (this.supabaseEnabled && this.remoteAssetsEnabled) {
+              const assetPackName = assetPackArgs[0];
+              await this.downloadAndPopulateRequiredAssets(assetPackName);
+            } else
+              console.error(
+                "The 'asset_pack: download' action is not available. To enable asset pack functionality, please ensure that supabase and ASSET_PACKS are enabled in the deployment config."
+              );
+          },
+          reset: async () => {
+            if (this.supabaseEnabled && this.remoteAssetsEnabled) {
+              await this.reset();
+            } else
+              console.error(
+                "The 'asset_pack: clear_cache' action is not available. To enable asset pack functionality, please ensure that supabase and ASSET_PACKS are enabled in the deployment config."
+              );
           },
         };
         if (!(actionId in childActions)) {
@@ -79,55 +117,123 @@ export class RemoteAssetService extends AsyncServiceBase {
     });
   }
 
+  /**
+   * Convert the asset contents generated by the post-processor into asset_pack format,
+   * and write to appData cache for lookup by dynamic data service
+   * */
+  private generateCoreAssetPack() {
+    const contentsArray = [];
+    for (const [relativePath, assetEntry] of Object.entries(ASSETS_CONTENTS_LIST) as any) {
+      contentsArray.push({ id: relativePath, ...assetEntry });
+    }
+    const coreAssetPack: FlowTypes.AssetPack = {
+      flow_type: "asset_pack",
+      flow_name: CORE_ASSET_PACK_NAME,
+      rows: contentsArray,
+    };
+    this.appDataService.addRuntimeFlowToContents(coreAssetPack);
+    return coreAssetPack;
+  }
+
   /************************************************************************************
    *  Download methods
    ************************************************************************************/
-  async downloadAndPopulateRequiredAssets() {
-    // Get manifest of files to download
-    const manifest = this.generateManifest();
-    const relativePaths = Object.keys(manifest);
+  async downloadAndPopulateRequiredAssets(assetPack?: string) {
+    // If a named asset pack is provided, download its manifest from supabase
+    if (assetPack) {
+      await lastValueFrom(this.getManifest(assetPack)).catch((error) => console.error(error));
+    }
+    // TODO: Else, somehow generate a manifest of files to download
+    // (e.g. look at what files are available locally vs required in accordance with current app config)
+    else {
+      this.manifest = this.generateManifest();
+    }
+
+    const assetEntries = this.manifest.rows as IAssetEntry[];
     // TODO: implement queue system for downloads (see template-action service, or use of 3rd party p-queue elsewhere)
-    for (const [index, relativePath] of relativePaths.entries()) {
-      const url = this.getPublicUrl(relativePath);
+    for (const [index, assetEntry] of assetEntries.entries()) {
+      const url = this.getPublicUrl(assetEntry.id);
       // If running on native device, download assets and populate to filesystem, adding local
       // filesystem path to asset entry in contents list for consumption by template asset service
       if (Capacitor.isNativePlatform()) {
-        await lastValueFrom(
-          this.handleDownload(url, relativePath, index, relativePaths.length)
-        ).catch((error) => console.error(error));
+        await lastValueFrom(this.handleDownload(url, assetEntry, index, assetEntries.length)).catch(
+          (error) => console.error(error)
+        );
       }
-      // On web, add asset's public URL to contents list for consumption by template asset service
+      // On web, update contents list with asset's public URL for consumption by template asset service
       else {
         console.log(
-          `[REMOTE ASSETS] Fetching remote URL for ${index + 1} of ${relativePaths.length} files.`
+          `[REMOTE ASSETS] Fetching remote URL for ${index + 1} of ${assetEntries.length} files.`
         );
-        this.templateAssetService.updateContentsList(relativePath, { uri: url });
+        await this.updateAssetContents(assetEntry);
       }
     }
   }
 
-  private generateManifest(): IAssetContents {
-    // TODO: Check config and download relevant manifest of expected files, compare
-    // this to manifest of cached files, and generate a manifest of files to download.
-    // Return dummy manifest for now
-    const manifest: IAssetContents = {
-      "debug_asset_pack/test_image.png": {
-        size_kb: 2,
-        md5Checksum: "e6d6c6a12ca13a6277084e01c088378c",
+  private getManifest(assetPack: string) {
+    let data: Blob;
+    let progress: number;
+    const url = this.getPublicUrl(`${assetPack}/${assetPack}.json`);
+    console.log(url);
+    const progress$ = new Subject<number>();
+    this.downloadFileFromUrl(url, "blob").subscribe({
+      error: (err) => {
+        this.downloadProgress = undefined;
+        progress$.error(err);
       },
-      "debug_asset_pack/example_asset.png": {
-        size_kb: 2,
-        md5Checksum: "e6d6c6a12ca13a6277084e01c088378c",
+      next: async (res) => {
+        data = res.data as Blob;
+        progress = res.progress;
+        console.log(`[REMOTE ASSETS] Downloading: ${progress}%`);
+        progress$.next(progress);
       },
+      complete: async () => {
+        console.log(`[REMOTE ASSETS] Manifest file downloaded for asset pack: ${assetPack}`);
+        if (data) {
+          this.manifest = JSON.parse(await data.text());
+        }
+        progress$.next(progress);
+        progress$.complete();
+      },
+    });
+    return progress$;
+  }
+
+  /**
+   * TODO: generate a manifest of files to download. E.g. by comparing which assets are
+   * available locally to a manifest of required assets (e.g. deepDiffObjects()?).
+   * Return a dummy manifest for now
+   */
+  private generateManifest(): FlowTypes.AssetPack {
+    const manifest = {
+      flow_type: "asset_pack",
+      flow_name: "debug_asset_pack_1",
+      rows: [
+        {
+          id: "debug_asset_pack_1/test_image.png",
+          md5Checksum: "e6d6c6a12ca13a6277084e01c088378c",
+          size_kb: 2,
+        },
+        {
+          id: "debug_asset_pack_1/test_image_2.png",
+          md5Checksum: "52ec3256ba473e6a19987b4d766bc5f9",
+          size_kb: 6.5,
+        },
+        {
+          id: "debug_asset_pack_1/test_remote_only.png",
+          md5Checksum: "dcb0c69c2e0bcb696086dffca903b7f5",
+          size_kb: 14.2,
+        },
+      ],
     };
-    return manifest;
+    return manifest as FlowTypes.AssetPack;
   }
 
   /**
    * Download a single asset from an array of assets,
    * save to local storage and update the assets contents list
    * */
-  handleDownload(url: string, relativePath: string, fileIndex: number, totalFiles: number) {
+  handleDownload(url: string, assetEntry: IAssetEntry, fileIndex: number, totalFiles: number) {
     console.log(
       `[REMOTE ASSETS] Downloading file ${fileIndex + 1} of ${totalFiles}: ${
         this.downloadProgress
@@ -151,16 +257,38 @@ export class RemoteAssetService extends AsyncServiceBase {
       complete: async () => {
         console.log(`[REMOTE ASSETS] File ${fileIndex + 1} of ${totalFiles} downloaded to cache`);
         if (data) {
-          const filesystemPath = await this.fileManagerService.saveFile(data, relativePath);
-          await this.templateAssetService.updateContentsList(relativePath, {
-            uri: filesystemPath,
-          });
+          const filesystemPath = await this.fileManagerService.saveFile(data, assetEntry.id);
+          await this.updateAssetContents(assetEntry);
         }
         progress$.next(progress);
         progress$.complete();
       },
     });
     return progress$;
+  }
+
+  /**
+   * Save updates to asset contents in dynamic data, including file path
+   * (local storage on native platforms and supabase URL on web)
+   * */
+  private async updateAssetContents(assetEntry: IAssetEntry) {
+    let filePath: string;
+    // On native platforms, get the path of the local file in storage
+    if (Capacitor.isNativePlatform()) {
+      filePath = await this.fileManagerService.getLocalFilepath(assetEntry.id);
+    }
+    // On web, get the remote URL of the file
+    else {
+      filePath = this.getPublicUrl(assetEntry.id);
+    }
+
+    const update = { ...assetEntry, filePath };
+    await this.dynamicDataService.update<IAssetEntry>(
+      "asset_pack",
+      CORE_ASSET_PACK_NAME,
+      assetEntry.id,
+      update
+    );
   }
 
   /** A general function to download a file from a URL */
@@ -224,7 +352,10 @@ export class RemoteAssetService extends AsyncServiceBase {
     return updates$;
   }
 
-  /** Download from a private supabase bucket using the SDK method. NB this method does not support tracking download progress */
+  /**
+   * Download from a private supabase bucket using the SDK method. Not currently used.
+   * NB this method does not support tracking download progress
+   * */
   async downloadFileFromPrivateBucket(filepath: string) {
     let data: Blob;
     try {
@@ -245,6 +376,14 @@ export class RemoteAssetService extends AsyncServiceBase {
       this.downloading = false;
       return data;
     }
+  }
+
+  /**
+   * Reset the core asset pack contents to its original state before any remote assets were downloaded.
+   * Useful when testing. TODO: Also delete any downloaded assets from the device
+   * */
+  async reset() {
+    await this.dynamicDataService.resetFlow("asset_pack", CORE_ASSET_PACK_NAME);
   }
 
   /************************************************************************************
@@ -268,6 +407,19 @@ export class RemoteAssetService extends AsyncServiceBase {
     } finally {
       return url;
     }
+  }
+
+  /** Fetch metadata for a specific file from supabase */
+  async getRemoteFileMetadata(relativePath: string): Promise<FileObject> {
+    const pathSegments = relativePath.split("/");
+    const fileName = pathSegments.pop();
+    const dirname = pathSegments.join("/");
+
+    const { data } = await this.supabase.storage
+      .from(this.bucketName)
+      .list(`${this.folderName}/${dirname}`);
+    const fileObject = data.find((element) => element.name === fileName);
+    return fileObject;
   }
 
   /** Convert base filepath to match supabase storage folder structure */
