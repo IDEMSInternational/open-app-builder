@@ -36,13 +36,14 @@ const FIELD_PREFIX = "rp-contact-field";
  * TODO - these have not been consistently applied so refactoring required
  * */
 const APP_FIELDS = {
-  SERVER_SYNC_LATEST: `${FIELD_PREFIX}._server_sync_latest`,
-  APP_LANGUAGE: `${FIELD_PREFIX}._app_language`,
-  DEPLOYMENT_NAME: `${FIELD_PREFIX}._deployment_name`,
-  APP_VERSION: `${FIELD_PREFIX}._app_version`,
   APP_AUTH_USER: `${FIELD_PREFIX}._app_auth_user`,
+  APP_LANGUAGE: `${FIELD_PREFIX}._app_language`,
   APP_SKIN: `${FIELD_PREFIX}._app_skin`,
   APP_THEME: `${FIELD_PREFIX}._app_theme`,
+  APP_VERSION: `${FIELD_PREFIX}._app_version`,
+  CONTENT_VERSION: `${FIELD_PREFIX}._content_version`,
+  DEPLOYMENT_NAME: `${FIELD_PREFIX}._deployment_name`,
+  SERVER_SYNC_LATEST: `${FIELD_PREFIX}._server_sync_latest`,
 };
 
 const APP_LANGUAGES = {

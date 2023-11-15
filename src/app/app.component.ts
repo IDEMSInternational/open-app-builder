@@ -47,6 +47,7 @@ import { ShareService } from "./shared/services/share/share.service";
 })
 export class AppComponent {
   APP_VERSION = environment.version;
+  CONTENT_VERSION = environment.deploymentConfig.git.content_tag_latest;
   DEPLOYMENT_NAME = environment.deploymentName;
   appConfig: IAppConfig;
   appFields: IAppConfig["APP_FIELDS"];
@@ -104,6 +105,7 @@ export class AppComponent {
       // ensure deployment field set correctly for use in any startup services or templates
       localStorage.setItem(this.appFields.DEPLOYMENT_NAME, this.DEPLOYMENT_NAME);
       localStorage.setItem(this.appFields.APP_VERSION, this.APP_VERSION);
+      localStorage.setItem(this.appFields.CONTENT_VERSION, this.CONTENT_VERSION);
       await this.initialiseCoreServices();
       this.hackSetDeveloperOptions();
       const isDeveloperMode = this.templateFieldService.getField("user_mode") === false;

@@ -7,6 +7,22 @@
   opacity: 0.5;
   display: flex;
   align-items: center;
+  // Funcitonal styling to add a tooltip-style reveal on click on mobile
+  // From https://stackoverflow.com/a/60660207
+  @media (pointer: coarse), (hover: none) {
+    [title] {
+      position: relative;
+      display: inline-flex;
+      justify-content: center;
+    }
+    [title]:focus::after {
+      content: attr(title);
+      position: absolute;
+      right: 100%;
+      width: fit-content;
+      padding: 0 var(--tiny-padding);
+    }
+  }
 }
 #main-content {
   position: relative;
