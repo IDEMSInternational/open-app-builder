@@ -16,7 +16,23 @@ export class AppCommonDto {
 }
 
 import { Column, Model } from "sequelize-typescript";
-export class AppCommonModel extends Model<AppCommonModel> {
+
+/**
+ * Common model providing metadata fields such as `app_user_id`
+ * and `app_user_record_id`
+ *
+ * Can be used to infer attributes in same way as sequelize model i.e.
+ * ```ts
+ * class myModel extends AppCommonModel<
+ *  InferAttributes<myModel>,
+ *  InferCreationAttributes<myModel>
+ * >
+ * ```
+ */
+export class AppCommonModel<
+  TModelAttributes extends {} = any,
+  TCreationAttributes extends {} = TModelAttributes
+> extends Model<TModelAttributes, TCreationAttributes> {
   @Column({ allowNull: false })
   app_user_id: string;
 

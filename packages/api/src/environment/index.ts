@@ -1,4 +1,6 @@
 import * as dotenv from "dotenv";
+import { existsSync } from "fs";
+import { resolve } from "path";
 
 /** Environment variables set from `.env` file */
 interface IParsedEnvironment {
@@ -13,7 +15,6 @@ interface IParsedEnvironment {
   APP_DB_USER: string;
   APP_DB_PASSWORD: string;
   NODE_ENV: string;
-  npm_package_version?: string;
 }
 
 interface IEnvironment extends IParsedEnvironment {
@@ -22,23 +23,38 @@ interface IEnvironment extends IParsedEnvironment {
 
 let parsedEnv: IParsedEnvironment = {} as any;
 
-try {
-  const { error, parsed } = dotenv.config();
+function loadEnv() {
+  const { NODE_ENV } = process.env;
+
+  let envFilePath = resolve(__dirname, "../../.env");
+  if (NODE_ENV === "test") {
+    envFilePath = resolve(__dirname, "../../test/.test.env");
+  }
+  // In production env vars are passed from docker container instead of local file
+  if (!existsSync(envFilePath)) {
+    console.warn("Env file does not exist, using local env variables", Object.keys(process.env));
+    return;
+  }
+  console.log(`Loading environment: [${NODE_ENV}]\n`, envFilePath);
+  const { error, parsed } = dotenv.config({
+    override: false,
+    debug: NODE_ENV === "test" ? true : false,
+    path: envFilePath,
+  });
   if (parsed) {
     parsedEnv = parsed as any;
   }
   if (error) {
     // could not parse dotenv - either not provided or running in production without file
-    console.error("dotenv parse fail, existing env keys:", Object.keys(process.env));
+    console.error("dotenv parse fail");
     console.error(error);
   }
-} catch (error) {
-  console.error("caught error from parsed");
 }
+loadEnv();
 
 const environment: IEnvironment = {
-  ...process.env,
   ...parsedEnv,
+  ...process.env,
   production: parsedEnv.NODE_ENV !== "development",
 };
 export { environment };
