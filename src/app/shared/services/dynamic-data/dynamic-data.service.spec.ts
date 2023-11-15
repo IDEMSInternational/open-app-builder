@@ -33,7 +33,7 @@ describe("DynamicDataService", () => {
     TestBed.inject(AppDataService);
 
     await service.ready();
-    service.clearCache("data_list", "test_flow");
+    service.resetFlow("data_list", "test_flow");
   });
 
   it("populates initial flows from json", async () => {
