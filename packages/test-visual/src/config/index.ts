@@ -24,8 +24,8 @@ Object.values(paths).forEach((p) => {
 /** path to src dexie installation to use during db seed methods */
 export const DEXIE_SRC_PATH = path.resolve(ROOT_FOLDER, "node_modules/dexie/dist/dexie.js");
 export const TEMPLATE_CONTENTS_PATH = path.resolve(
-  ROOT_FOLDER,
-  "src/assets/app_data/sheets/contents.json"
+  paths.WWW_FOLDER,
+  "assets/app_data/sheets/contents.json"
 );
 export const GH_REPO_ORG = env.GH_REPO_ORG;
 export const GH_REPO_NAME = env.GH_REPO_NAME;
