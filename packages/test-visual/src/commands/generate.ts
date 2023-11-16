@@ -20,7 +20,7 @@ const Dexie = require(DEXIE_SRC_PATH);
 /***************************************************************************************
  * Configuration
  *************************************************************************************/
-const APP_SERVER_URL = VISUAL_TEST_CONFIG.appServerUrl;
+const APP_SERVER_URL = "http://localhost:5000";
 const SCREENSHOTS_OUTPUT_ZIP = path.resolve(paths.OUTPUT_FOLDER, "screenshots-generated.zip");
 
 /***************************************************************************************
@@ -110,6 +110,7 @@ export class ScreenshotGenerate {
 
   /** Run a local webserver to server to serve frontend build from www folder */
   private async startFrontendServer() {
+    const targetPort = new URL(APP_SERVER_URL).port;
     return new Promise((resolve, reject) => {
       this.server = http.createServer((request, response) => {
         // https://github.com/vercel/serve-handler#options
@@ -118,8 +119,8 @@ export class ScreenshotGenerate {
           rewrites: [{ source: "**", destination: "/index.html" }],
         });
       });
-      this.server.listen(5000, () => {
-        console.log("Serving www folder on http://localhost:5000");
+      this.server.listen(targetPort, () => {
+        console.log(`Serving www folder on http://localhost:${targetPort}`);
         resolve(this.server);
       });
     });
