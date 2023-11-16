@@ -74,6 +74,7 @@ class SheetsPostProcessor {
   private sheetsGenerateContents(baseFolder: string) {
     // Generate contents
     const contents: ISheetContents = {
+      asset_pack: {},
       data_list: {},
       data_pipe: {},
       generator: {},
