@@ -74,7 +74,7 @@ jobs:
         ###########################################################################################
       - name: Generate screenshots
         if: ${{inputs.generate}}
-        run: yarn workspace test-visual start generate --concurrency 5 --serve-www
+        run: yarn workspace test-visual start generate --concurrency 5
 
       - name: Upload screenshots
         if: ${{inputs.generate}}
@@ -90,7 +90,7 @@ jobs:
         ###########################################################################################
       - name: Compare screenshots
         if: ${{inputs.compare}}
-        run: yarn workspace test-visual start compare --concurrency 5 --serve-www
+        run: yarn workspace test-visual start compare --concurrency 5
 
       - name: Upload artifact
         if: ${{inputs.compare}}
