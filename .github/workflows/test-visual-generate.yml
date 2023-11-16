@@ -5,6 +5,7 @@ on:
   push:
     branches:
       - master
+      - fix/test-visual
 concurrency:
   group: test-visual-generate-${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
