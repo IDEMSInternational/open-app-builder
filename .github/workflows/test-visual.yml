@@ -21,7 +21,6 @@ concurrency:
 
 jobs:
   build:
-    if: contains(github.event.pull_request.labels.*.name, 'Test - visual')
     uses: ./.github/workflows/web-build.yml
     secrets: inherit
     with:
