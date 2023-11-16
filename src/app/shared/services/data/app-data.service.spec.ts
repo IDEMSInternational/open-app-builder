@@ -52,6 +52,7 @@ const DATA_MOCK: { [flow_name: string]: FlowTypes.FlowTypeWithData } = {
 };
 
 const CONTENTS_MOCK: ISheetContents = {
+  asset_pack: {},
   data_list: {
     flow_a: {
       flow_name: "flow_a",
@@ -97,6 +98,7 @@ class AppDataServiceExtended extends AppDataService {
   protected sheetContents = CONTENTS_MOCK;
   protected translationContents = {};
   public appDataCache = {
+    asset_pack: {},
     data_list: { ...DATA_MOCK },
     data_pipe: {},
     generator: {},
