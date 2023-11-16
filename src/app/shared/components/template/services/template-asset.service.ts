@@ -3,9 +3,9 @@ import { ASSETS_CONTENTS_LIST, IAssetContents } from "src/app/data";
 import { ThemeService } from "src/app/feature/theme/services/theme.service";
 import { AsyncServiceBase } from "src/app/shared/services/asyncService.base";
 import { TemplateTranslateService } from "./template-translate.service";
-import { IAssetEntry, IContentsEntryMinimal } from "data-models";
+import { IAssetEntry, IAssetContentsEntryMinimal } from "data-models";
 import { HttpClient } from "@angular/common/http";
-import { lastValueFrom } from "rxjs";
+import { BehaviorSubject, lastValueFrom } from "rxjs";
 
 /** Synced assets are automatically copied during build to asset subfolder */
 const ASSETS_BASE = `assets/app_data/assets`;
@@ -16,7 +16,8 @@ const DEFAULT_THEME_NAME = "theme_default";
 
 @Injectable({ providedIn: "root" })
 export class TemplateAssetService extends AsyncServiceBase {
-  public assetsContentsList: IAssetContents = ASSETS_CONTENTS_LIST;
+  public assetsContentsList$ = new BehaviorSubject<IAssetContents>(ASSETS_CONTENTS_LIST);
+
   constructor(
     private translateService: TemplateTranslateService,
     private themeService: ThemeService,
@@ -55,7 +56,7 @@ export class TemplateAssetService extends AsyncServiceBase {
    */
   getTranslatedAssetPath(value: string) {
     let assetName = this.cleanAssetName(value);
-    const assetEntry = this.assetsContentsList[assetName];
+    const assetEntry = this.assetsContentsList$.value[assetName];
     if (!assetEntry) {
       console.error("Asset missing", value, assetName);
       return `${ASSETS_GLOBAL_FOLDER_NAME}/${assetName}`;
@@ -93,7 +94,7 @@ export class TemplateAssetService extends AsyncServiceBase {
 
   private getAssetPath(
     assetName: string,
-    contentsEntry: IContentsEntryMinimal | Partial<IAssetEntry>
+    contentsEntry: IAssetContentsEntryMinimal | Partial<IAssetEntry>
   ) {
     return this.convertGdriveRelativePathToAssetPath(contentsEntry.filePath || assetName);
   }
@@ -122,17 +123,8 @@ export class TemplateAssetService extends AsyncServiceBase {
     return transformed;
   }
 
-  public async updateContentsList(assetName: string, updates?: { uri?: string }) {
-    // TODO: Store contents list overrides in rxdb via dynamicData service to enable persitence.
-    // For now, just update this.assetsContentsList
-    const { uri } = updates;
-    if (uri) {
-      this.assetsContentsList[assetName] ??= {};
-      this.assetsContentsList[assetName].filePath = uri;
-      // TODO: theme/language overrides. Possibly use "setNestedProperty", e.g.:
-      // setNestedProperty(overrides.theme_default.tz_sw, uri, this.templateAssetService.assetsContentList[assetName])
-    }
-    console.log("[TEMPLATE ASSET] updated asset entry:", this.assetsContentsList[assetName]);
+  public updateContentsList(value: IAssetContents) {
+    this.assetsContentsList$.next(value);
   }
 }
 

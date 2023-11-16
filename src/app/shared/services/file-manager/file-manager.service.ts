@@ -75,4 +75,13 @@ export class FileManagerService extends SyncServiceBase {
       encoding: Encoding.UTF8,
     });
   }
+
+  async getLocalFilepath(relativePath: string) {
+    const { uri } = await Filesystem.stat({
+      path: `${this.cacheName}/${relativePath}`,
+      directory: Directory.Data,
+    });
+    const filePath = Capacitor.convertFileSrc(uri);
+    return filePath;
+  }
 }
