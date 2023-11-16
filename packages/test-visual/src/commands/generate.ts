@@ -20,7 +20,7 @@ const Dexie = require(DEXIE_SRC_PATH);
 /***************************************************************************************
  * Configuration
  *************************************************************************************/
-const APP_SERVER_URL = VISUAL_TEST_CONFIG.appServerUrl;
+const APP_SERVER_URL = "http://localhost:5000";
 const SCREENSHOTS_OUTPUT_ZIP = path.resolve(paths.OUTPUT_FOLDER, "screenshots-generated.zip");
 
 /***************************************************************************************
@@ -43,8 +43,6 @@ interface IProgramOptions {
   debug?: boolean;
   /** maximum templates to process in parallel. Default: 10 */
   concurrency?: string;
-  /** Serve content from local www folder (e.g. ci). Default: false */
-  serveWww?: boolean;
 }
 
 const DEFAULT_OPTIONS: IProgramOptions = {
@@ -71,7 +69,6 @@ export default program
   .option("-c, --clean", "Clean output folder before generating")
   .option("-D --debug", "Run in debug mode (not headless)")
   .option("-C --concurrency <string>", "Max number of browser pages to process in parallel")
-  .option("-S --serve-www", "Serve production build from local www folder")
   .action(async (opts) => {
     console.log("Generating screenshots...");
     await new ScreenshotGenerate(opts).run().then(() => process.exit(0));
@@ -113,21 +110,20 @@ export class ScreenshotGenerate {
 
   /** Run a local webserver to server to serve frontend build from www folder */
   private async startFrontendServer() {
-    if (this.options.serveWww) {
-      return new Promise((resolve, reject) => {
-        this.server = http.createServer((request, response) => {
-          // https://github.com/vercel/serve-handler#options
-          return handler(request, response, {
-            public: paths.WWW_FOLDER,
-            rewrites: [{ source: "**", destination: "/index.html" }],
-          });
-        });
-        this.server.listen(4200, () => {
-          console.log("server listening on http://localhost:4200");
-          resolve(this.server);
+    const targetPort = new URL(APP_SERVER_URL).port;
+    return new Promise((resolve, reject) => {
+      this.server = http.createServer((request, response) => {
+        // https://github.com/vercel/serve-handler#options
+        return handler(request, response, {
+          public: paths.WWW_FOLDER,
+          rewrites: [{ source: "**", destination: "/index.html" }],
         });
       });
-    }
+      this.server.listen(targetPort, () => {
+        console.log(`Serving www folder on http://localhost:${targetPort}`);
+        resolve(this.server);
+      });
+    });
   }
   private stopFrontendServer() {
     if (this.server) {
