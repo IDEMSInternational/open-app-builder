@@ -26,12 +26,12 @@ jobs:
           # Labels assigned based on pr name prefix
           type_labels: |
             {
+            "breaking": "breaking",
+            "chore": "maintenance",
+            "docs": "documentation"
             "feat": "feature",
             "fix": "fix",
-            "breaking": "breaking",
-            "refactor": "maintenance",
-            "chore":"maintenance"
-            "docs":"documentation"
+            "refactor": "maintenance"
             }
           # Do not ignore any labels (default ignores chore:)
           ignored_types: '[]'
