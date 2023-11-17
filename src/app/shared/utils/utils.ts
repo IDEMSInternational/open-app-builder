@@ -327,6 +327,26 @@ export function deepDiffObjects<T extends Object, U extends Object>(a: T, b: U) 
   return diff(a, b) as RecursivePartial<T | U>;
 }
 
+/**
+ * @returns list of keys added and deleted from `a` object
+ * @example
+ * ```ts
+ * const a = { key1: "", key2: "" };
+ * const b = { key2: "", key3: "" };
+ * compareObjectKeys(a,b)
+ * // result
+ * { added: [ 'key3' ], deleted: [ 'key1' ] }
+ * ```
+ * */
+export function compareObjectKeys<T extends Object, U extends Object>(a: T, b: U) {
+  const aKeys = Object.keys(a);
+  const bKeys = Object.keys(b);
+  return {
+    added: bKeys.filter((key) => !(key in a)),
+    deleted: aKeys.filter((key) => !(key in b)),
+  };
+}
+
 export function isObject(item: any) {
   return item && typeof item === "object" && !Array.isArray(item);
 }
