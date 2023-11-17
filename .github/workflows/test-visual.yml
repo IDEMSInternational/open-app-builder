@@ -1,3 +1,7 @@
+env:
+  # TODO: create a dedicated screenshots deployment
+  DEPLOYMENT: debug
+
 # Generate a set of screenshots for the current branch and compare against previously generated on master
 name: Test-Visual
 on:
@@ -14,13 +18,9 @@ on:
 concurrency:
   group: test-visual-${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
-env:
-  # TODO - replace with dedicated screenshots deployment
-  DEPLOYMENT: plh_global
 
 jobs:
   build:
-    if: contains(github.event.pull_request.labels.*.name, 'Test - visual')
     uses: ./.github/workflows/web-build.yml
     secrets: inherit
     with:
@@ -66,17 +66,14 @@ jobs:
         # TODO - review if still required (CC 2023-08-15)
       - name : HACK - Remove lifecycle actions
         run: |
-          rm -R www/assets/app_data/sheets/data_list/lifecycle_actions
-
-      - name: Set Deployment
-        run: yarn workflow deployment set $DEPLOYMENT
+          rm -f -R www/assets/app_data/sheets/data_list/lifecycle_actions
         
         ###########################################################################################
         # Generate
         ###########################################################################################
       - name: Generate screenshots
         if: ${{inputs.generate}}
-        run: yarn workspace test-visual start generate --concurrency 5 --serve-www
+        run: yarn workspace test-visual start generate --concurrency 5
 
       - name: Upload screenshots
         if: ${{inputs.generate}}
@@ -92,7 +89,7 @@ jobs:
         ###########################################################################################
       - name: Compare screenshots
         if: ${{inputs.compare}}
-        run: yarn workspace test-visual start compare --concurrency 5 --serve-www
+        run: yarn workspace test-visual start compare --concurrency 5
 
       - name: Upload artifact
         if: ${{inputs.compare}}
