@@ -31,6 +31,7 @@ jobs:
             "breaking": "breaking",
             "refactor": "maintenance",
             "chore":"maintenance"
+            "docs":"documentation"
             }
           # Do not ignore any labels (default ignores chore:)
           ignored_types: '[]'

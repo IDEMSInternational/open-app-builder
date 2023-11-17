@@ -8,6 +8,10 @@ categories:
   - title: "🧰 Maintenance"
     labels: 
       - "maintenance"
+
+  - title: "📄 Documentation"
+    labels: 
+      - "documentation"
 change-template: "- $TITLE @$AUTHOR (#$NUMBER)"
 template: |
   ## What’s Changed
