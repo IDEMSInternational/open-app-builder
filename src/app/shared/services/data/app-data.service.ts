@@ -99,9 +99,8 @@ export class AppDataService extends SyncServiceBase {
       const overrideFlowName = await this.checkFlowOverrides(flowContents);
       if (overrideFlowName) {
         if (overrideHistory.includes(overrideFlowName)) {
-          console.error(
-            `Circular overrides detected: ${flow_name} and ${overrideFlowName} override each other.`
-          );
+          const msg = `Circular overrides detected: ${flow_name} and ${overrideFlowName} override each other.`;
+          console.error(msg);
         } else {
           overrideHistory.push(flow_name);
           return this.getSheet(flow_type, overrideFlowName, is_override_target, overrideHistory);
