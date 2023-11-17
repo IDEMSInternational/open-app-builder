@@ -28,7 +28,7 @@ jobs:
             {
             "breaking": "breaking",
             "chore": "maintenance",
-            "docs": "documentation"
+            "docs": "documentation",
             "feat": "feature",
             "fix": "fix",
             "refactor": "maintenance"
