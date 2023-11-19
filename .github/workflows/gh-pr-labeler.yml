@@ -1,0 +1,44 @@
+name: Github PR Labeler
+on:
+  # TODO - replace with pull_request_target when working in master
+  pull_request:
+    types:  
+      - opened
+      - edited
+      - synchronize
+jobs:
+  label:
+    runs-on: ubuntu-latest
+    steps:
+        # Check if PR title matches conventional commit standard
+        # Not strictly enforced so allow continue on error
+        # https://github.com/marketplace/actions/semantic-pull-request
+      - name: Validate PR title
+        uses: amannn/action-semantic-pull-request@v5
+        continue-on-error: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        # Assign labels based on conventional PR title
+        # https://github.com/marketplace/actions/conventional-release-labels
+      - name: Assign PR Name Labels
+        uses: bcoe/conventional-release-labels@v1.3.1
+        with:
+          # Labels assigned based on pr name prefix
+          type_labels: |
+            {
+            "breaking": "breaking",
+            "chore": "maintenance",
+            "docs": "documentation",
+            "feat": "feature",
+            "fix": "fix",
+            "refactor": "maintenance"
+            }
+          # Do not ignore any labels (default ignores chore:)
+          ignored_types: '[]'
+      # Assign labels based on files modified
+      - name: Assign PR path Labels
+        uses: actions/labeler@v4
+        with:
+          configuration-path: .github/pr-labeler.config.yml
+
+      

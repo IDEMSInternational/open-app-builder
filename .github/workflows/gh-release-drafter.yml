@@ -1,5 +1,5 @@
 # Automatically draft release notes based on any pull requests made to master
-name: Release Drafter
+name: Github Release Drafter
 on:
   push:
     branches:
@@ -24,3 +24,8 @@ jobs:
         with:
           name: v${{env.APP_VERSION}}
           tag: v${{env.APP_VERSION}}
+
+
+# TODO - consider alternatives:
+# - https://github.com/semantic-release/semantic-release
+# - https://github.com/marketplace/actions/release-please-action
