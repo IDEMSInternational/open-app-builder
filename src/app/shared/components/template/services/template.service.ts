@@ -143,7 +143,8 @@ export class TemplateService extends SyncServiceBase {
     await this.ensurePublicServicesReady();
     const foundTemplate = await this.appDataService.getSheet<FlowTypes.Template>(
       "template",
-      templateName
+      templateName,
+      is_override_target
     );
     // const foundTemplate: FlowTypes.Template = template.find((t) => t.flow_name === templateName);
     if (foundTemplate) {
