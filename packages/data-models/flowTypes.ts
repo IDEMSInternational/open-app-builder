@@ -373,7 +373,6 @@ export namespace FlowTypes {
     "audio_end",
     "audio_play",
     "changed",
-    "close_pop_up",
     "emit",
     "feedback",
     "go_to",
