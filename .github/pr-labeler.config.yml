@@ -1,0 +1,3 @@
+# Additional labels to assign based on file changes
+"documentation":
+  - documentation/**/*
