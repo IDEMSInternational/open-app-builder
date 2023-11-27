@@ -66,25 +66,28 @@ export class AppDataVariableService extends AsyncServiceBase {
    *
    * Returns expression with variables replaced
    */
-  public async parseExpression(expression: string) {
+  public async parseExpression(
+    expression: string,
+    evaluatedVariables: Record<string, any> = {}
+  ): Promise<{ parsed: string; evaluatedVariables: Record<string, any> }> {
     const parser = new TemplatedData();
     const prefixes = Object.keys(this.handlers);
     // Step 0 - extract list of all context variables used as part of expression
     // TODO - ideally should be extracted in parser
     const contextVariables = parser.listContextVariables(expression, prefixes);
-
-    // Step 1 - populate context variable values
-    const { evaluatedContext, isRecursive } = await this.processContextVariables(contextVariables);
-
+    // Step 1 - populate context variable values and retain list for use in further evaluation
+    const { evaluatedContext, isRecursive, evaluatedContextFlatmap } =
+      await this.processContextVariables(contextVariables);
+    evaluatedVariables = { ...evaluatedVariables, ...evaluatedContextFlatmap };
     // Step 2 - Parse expression, replacing with dynamic variables with populated values
     parser.updateContext(evaluatedContext);
     const parsed = parser.parse(expression);
-
     // Step 2a - Evaluate recursive expression if detected
     if (isRecursive) {
-      return this.parseExpression(parsed);
+      return this.parseExpression(parsed, evaluatedVariables);
     }
-    return parsed;
+
+    return { parsed, evaluatedVariables };
   }
 
   /**
@@ -95,11 +98,24 @@ export class AppDataVariableService extends AsyncServiceBase {
    * and the final result evaluated from within a sandboxed JavaScript environment
    */
   public async evaluateExpression(expression: string) {
-    const parsed = await this.parseExpression(expression);
+    const { parsed, evaluatedVariables } = await this.parseExpression(expression);
+
     // Step 3 - Evaluate parsed expression
     // NOTE - method called standalone instead of using appStringEvaluator to add support for recursive
     // If the parsed expression not valid JS (e.g. just text) then return as-is
     const jsEvaluator = new JSEvaluator();
+
+    // Note - assign all replaced string values as javascript contants to support further operation, E.g.
+    // `@field.name.startsWith('A')` -> my_name.startsWith('A'); constants: {my_name: "my_name"} (will evaulate string variable)
+    // `hello @field.name` -> `hello my_name`; constants: {my_name: "my_name"} (fails to evaluate hello and returns as text)
+    const constants: Record<string, string> = {};
+    for (const value of Object.values(evaluatedVariables)) {
+      if (typeof value === "string") {
+        constants[value] = value;
+      }
+    }
+    jsEvaluator.setGlobalContext({ constants });
+
     try {
       const evaluated = jsEvaluator.evaluate(parsed);
       return evaluated;
@@ -109,9 +125,10 @@ export class AppDataVariableService extends AsyncServiceBase {
     }
   }
 
-  /** Evaluate all context-variable expressions */
+  /** Evaluate all context-variable expressions - return as both nested and flat map */
   private async processContextVariables(variables: ITemplatedDataContextList) {
     const evaluatedContext = {};
+    const evaluatedContextFlatmap = {};
     let isRecursive = false;
     if (Object.keys(variables).length > 0) {
       //   TODO - idelly all evaluators should have caching for quick retrieval
@@ -123,9 +140,10 @@ export class AppDataVariableService extends AsyncServiceBase {
         for (const variableName of Object.keys(variableNameHashmap)) {
           const evaluated = await this.get(contextPrefix as IVariableContext, variableName);
           evaluatedContext[contextPrefix][variableName] = evaluated;
+          evaluatedContextFlatmap[`${contextPrefix}.${variableName}`] = evaluated;
         }
       }
     }
-    return { evaluatedContext, isRecursive };
+    return { evaluatedContext, isRecursive, evaluatedContextFlatmap };
   }
 }

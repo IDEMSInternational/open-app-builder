@@ -70,8 +70,8 @@ describe("AppDataVariableService", () => {
 
   it("parses expressions", async () => {
     await service.set("field", "expression_field_1", "value_expression_field_1");
-    const evaluated = await service.parseExpression("hello @field.expression_field_1");
-    expect(evaluated).toEqual("hello value_expression_field_1");
+    const { parsed } = await service.parseExpression("hello @field.expression_field_1");
+    expect(parsed).toEqual("hello value_expression_field_1");
   });
 
   it("evaluates expressions", async () => {
@@ -80,17 +80,14 @@ describe("AppDataVariableService", () => {
     expect(evaluated).toEqual(true);
   });
 
-  // TODO - String evaluation: currently string values stored in fields require string delimters
-  // to be manually authored in order to use the values in expressions
-  it("evaluates expressions with string value - string method", async () => {
+  it("supports JS evaluation on replaced string values", async () => {
     await service.set("field", "test_value", "hello");
-    const evaluated = await service.evaluateExpression("'@field.test_value'.startsWith('h')");
+    const evaluated = await service.evaluateExpression("@field.test_value.startsWith('h')");
     expect(evaluated).toEqual(true);
   });
   it("evaluates expressions with string value", async () => {
     await service.set("field", "test_value", "hello");
-    const evaluated = await service.evaluateExpression("'@field.test_value' === 'hello'");
-    console.log("evaluated", evaluated);
+    const evaluated = await service.evaluateExpression("@field.test_value === 'hello'");
     expect(evaluated).toEqual(true);
   });
   // Using '{}' delimters does not work, evaluated returns `hello.startsWith('h')`
