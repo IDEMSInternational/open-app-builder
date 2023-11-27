@@ -6,7 +6,7 @@ import TRANSLATIONS_CONTENT_JSON from "src/assets/app_data/translations/contents
 
 // Enforce type declaration for contents to avoid inferring from large file
 
-type ISheetContents = {
+export type ISheetContents = {
   [flow_type in FlowTypes.FlowType]: { [flow_name: string]: FlowTypes.FlowTypeBase };
 };
 
