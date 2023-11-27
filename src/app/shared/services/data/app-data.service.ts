@@ -25,6 +25,7 @@ export class AppDataService extends SyncServiceBase {
   protected sheetContents = SHEETS_CONTENT_LIST;
   protected translationContents = TRANSLATIONS_CONTENT_LIST;
   public appDataCache: IAppDataCache = {
+    asset_pack: {},
     data_pipe: {},
     data_list: {},
     generator: {},
@@ -100,15 +101,31 @@ export class AppDataService extends SyncServiceBase {
     let flow = this.appDataCache[flow_type][flow_name];
     if (!flow) {
       flow = await this.loadSheetFromJson(flowContents);
-      this.appDataCache[flow_type][flow_name] = flow;
-      // Data lists have additional processing, default is just to populate value
-      if (flow.flow_type === "data_list") {
-        this.populateCacheDataList(flow);
-      }
+      this.addFlowToCache(flow);
     }
 
     // return as new object to prevent modification to raw list
     return JSON.parse(JSON.stringify(this.appDataCache[flow_type][flow_name])) as T;
+  }
+
+  /**
+   * Add a custom flow to contents at runtime
+   * This can be used to populate a dynamic flow which does not exist in contents json
+   * */
+  public addRuntimeFlowToContents(flow: FlowTypes.FlowTypeWithData) {
+    const { flow_type, flow_name } = flow;
+    this.sheetContents[flow_type][flow_name] = { flow_type, flow_name };
+    this.addFlowToCache(flow);
+  }
+
+  /** Store a retrieved flow in cache for future lookup */
+  private addFlowToCache(flow: FlowTypes.FlowTypeWithData) {
+    const { flow_type, flow_name } = flow;
+    this.appDataCache[flow_type][flow_name] = flow;
+    // Data lists have additional processing, default is just to populate value
+    if (flow.flow_type === "data_list" || flow.flow_type === "asset_pack") {
+      this.populateCacheDataList(flow);
+    }
   }
 
   /** Evaluate any flow override conditions, return name of override flow if satisfied */
