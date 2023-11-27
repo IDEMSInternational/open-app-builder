@@ -114,12 +114,9 @@ export class DynamicDataService extends AsyncServiceBase {
     if (update) {
       const { collectionName } = await this.ensureCollection(flow_type, flow_name);
       const existingDoc = await this.db.getDoc<any>(collectionName, row_id);
-
       if (existingDoc) {
         const data = existingDoc.toMutableJSON();
         update = deepMergeObjects(data, update);
-      } else {
-        throw new Error(`cannot update row that does not exist: [${flow_name}]:[${row_id}]`);
       }
       // update memory db
       await this.db.updateDoc({ collectionName, id: row_id, data: update });
@@ -128,8 +125,16 @@ export class DynamicDataService extends AsyncServiceBase {
     }
   }
 
-  public async clearCache(flow_type: FlowTypes.FlowType, flow_name: string) {
-    this.writeCache.delete(flow_type, flow_name);
+  /** Remove user writes on a flow to return it to its original state */
+  public async resetFlow(flow_type: FlowTypes.FlowType, flow_name: string) {
+    await this.writeCache.delete(flow_type, flow_name);
+    const collectionName = this.normaliseCollectionName(flow_type, flow_name);
+    if (this.db.getCollection(collectionName)) {
+      await this.db.removeCollection(collectionName);
+      await this.ensureCollection(flow_type, flow_name);
+    } else {
+      throw new Error(`Collection [${collectionName}] not found, cannot remove`);
+    }
   }
 
   /** Ensure a collection exists, creating if not and populating with corresponding list data */

@@ -5,8 +5,8 @@ Visual regression testing tools to compare screenshots taken from within the cur
 ## Compare screenshots
 Compare screenshots of the current local repo with 
 
-1. Ensure the local app server is running
-`yarn start`
+1. Ensure the local app is built
+`yarn build`
 
 2. Run screenshot comparison script
 `yarn workspace test-visual start compare --clean`

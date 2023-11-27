@@ -75,5 +75,4 @@ export const VISUAL_TEST_CONFIG = {
     // e.g. https://stackoverflow.com/questions/61886891/how-to-get-maximum-scroll-height-for-ion-content
   },
   pageList: VISUAL_TEST_TEMPLATE_LIST,
-  appServerUrl: "http://localhost:4200",
 } as const;

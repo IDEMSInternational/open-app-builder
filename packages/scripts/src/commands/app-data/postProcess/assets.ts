@@ -18,7 +18,7 @@ import {
   copyFileWithTimestamp,
 } from "../../../utils";
 import { ActiveDeployment } from "../../deployment/get";
-import type { IAssetEntryHashmap, IContentsEntryMinimal } from "data-models/deployment.model";
+import type { IAssetEntryHashmap, IAssetContentsEntryMinimal } from "data-models/deployment.model";
 import { resolve } from "path";
 
 /**
@@ -114,7 +114,6 @@ export class AssetsPostProcessor {
     fs.removeSync(this.stagingDir);
 
     this.writeAssetsContentsFiles(appAssetsFolder, tracked, untracked);
-
     console.log(chalk.green("Asset Process Complete"));
   }
 
@@ -323,7 +322,7 @@ export class AssetsPostProcessor {
   }
 
   /** Strip additional fields from contents entry to provide cleaner asset entry */
-  private contentsToAssetEntry(entry: IContentsEntry): IContentsEntryMinimal {
+  private contentsToAssetEntry(entry: IContentsEntry): IAssetContentsEntryMinimal {
     const { md5Checksum, size_kb } = entry;
     return { size_kb, md5Checksum };
   }
