@@ -32,7 +32,7 @@ export class MockAppDataVariableService implements Partial<AppDataVariableServic
     return true;
   }
   public async evaluateExpression(expression: string) {
-    return true;
+    return expression;
   }
 }
 
