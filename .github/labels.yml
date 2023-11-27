@@ -1,0 +1,125 @@
+# List of labels used in project (will be synced on updated)
+# Original list generated from gh cli via
+# `gh label list --json color,description,name`
+[ 
+  {
+    "color": "d73a4a",
+    "description": "Something isn't working",
+    "name": "bug"
+  },
+  {
+    "color": "0075ca",
+    "description": "Improvements or additions to documentation",
+    "name": "documentation"
+  },
+  {
+    "color": "a2eeef",
+    "description": "Work on app features/modules",
+    "name": "feature"
+  },
+  {
+    "color": "d876e3",
+    "description": "Further information is requested",
+    "name": "question"
+  },
+  {
+    "color": "ffffff",
+    "description": "This will not be worked on",
+    "name": "wontfix"
+  },
+  {
+    "color": "fcf2b8",
+    "description": "",
+    "name": "content"
+  },
+  {
+    "color": "c5def5",
+    "description": "Work on backend scripts and devops",
+    "name": "scripts"
+  },
+  {
+    "color": "0366d6",
+    "description": "Pull requests that update a dependency file",
+    "name": "dependencies"
+  },
+  {
+    "color": "d4c5f9",
+    "description": "Story board points",
+    "name": "1 - x-small"
+  },
+  {
+    "color": "32E1C7",
+    "description": "Story board points",
+    "name": "2 - small"
+  },
+  {
+    "color": "DCF3A8",
+    "description": "Story board points",
+    "name": "4 -medium"
+  },
+  {
+    "color": "F0F90B",
+    "description": "Story board points",
+    "name": "8 - large"
+  },
+  {
+    "color": "8EBA4C",
+    "description": "Story board points",
+    "name": "16 - extra large"
+  },
+  {
+    "color": "0e8a16",
+    "description": "Needs discussion",
+    "name": "needs discussion"
+  },
+  {
+    "color": "585858",
+    "description": "Run visual regression tests",
+    "name": "test - visual"
+  },
+  {
+    "color": "585858",
+    "description": "Create a preview deployment of the PR",
+    "name": "test - preview"
+  },
+  {
+    "color": "585858",
+    "description": "Build and deploy android apk to appetize.io",
+    "name": "test - appetize"
+  },
+  {
+    "color": "0E8A16",
+    "description": "",
+    "name": "help wanted"
+  },
+  {
+    "color": "D73A4A",
+    "description": "",
+    "name": "crashlytics"
+  },
+  {
+    "color": "A02AB2",
+    "description": "Impacts terms and conditions, should be communicated to partners",
+    "name": "compliance"
+  },
+  {
+    "color": "D93F0B",
+    "description": "",
+    "name": "glitchtip"
+  },
+  {
+    "color": "3A3895",
+    "description": "",
+    "name": "fix"
+  },
+  {
+    "color": "000000",
+    "description": "Introduces breaking changes to how content is authored",
+    "name": "breaking"
+  },
+  {
+    "color": "DDCD15",
+    "description": "Core updates, refactoring and code quality improvements",
+    "name": "maintenance"
+  }
+]
