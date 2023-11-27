@@ -2,6 +2,7 @@
 
 import type { IDataPipeOperation } from "shared";
 import type { IAppConfig } from "./appConfig";
+import { IAssetEntry } from "./deployment.model";
 
 /*********************************************************************************************
  *  Base flow types
@@ -9,6 +10,8 @@ import type { IAppConfig } from "./appConfig";
 
 export namespace FlowTypes {
   export type FlowType =
+    // A manifest/contents file of assets
+    | "asset_pack"
     // data_lists are a general catch for any data that will be used throughout the app, but
     // without defined typings (such as habit_list).
     | "data_list"
@@ -70,6 +73,10 @@ export namespace FlowTypes {
   /*********************************************************************************************
    *  Specific flow types
    ********************************************************************************************/
+  export interface AssetPack extends FlowTypeWithData {
+    flow_type: "asset_pack";
+    rows: Data_listRow<IAssetEntry>[];
+  }
   export interface Data_list extends FlowTypeWithData {
     flow_type: "data_list";
     rows: Data_listRow[];

@@ -34,6 +34,7 @@ export class MockAppDataService implements Partial<AppDataService> {
 @Injectable({ providedIn: "root" })
 class AppDataServiceExtended extends AppDataService {
   protected sheetContents = {
+    asset_pack: {},
     data_list: {},
     data_pipe: {},
     generator: {},
