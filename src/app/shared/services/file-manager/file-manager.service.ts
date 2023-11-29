@@ -22,13 +22,15 @@ export class FileManagerService extends SyncServiceBase {
   }
 
   /**
-   * Save a file to the local filesystem (native only)
-   * @returns the local filesystem path to the saved file
+   * Save a file to the local filesystem (native only),
+   * @param directory the name of the directory in which to save the file.
+   * E.g. the permenent "Data" directory (default) or the temporary "Cache" (see https://capacitorjs.com/docs/apis/filesystem#directory)
+   * @returns the local filesystem path to the saved file, in both "file://*" format and usable src format
    */
-  async saveFile(blob: Blob, relativePath: string) {
+  async saveFile(blob: Blob, relativePath: string, directory: keyof typeof Directory = "Data") {
     // Docs for write_blob are here: https://github.com/diachedelic/capacitor-blob-writer#readme
-    const src = await write_blob({
-      directory: Directory.Data,
+    const localFilepath = await write_blob({
+      directory: Directory[directory],
       path: `${this.cacheName}/${relativePath}`,
       blob,
       fast_mode: true,
@@ -37,7 +39,7 @@ export class FileManagerService extends SyncServiceBase {
         console.error(error);
       },
     });
-    return Capacitor.convertFileSrc(src);
+    return { localFilepath, src: Capacitor.convertFileSrc(localFilepath) };
   }
 
   /**

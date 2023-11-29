@@ -3,14 +3,22 @@ import { SyncServiceBase } from "../syncService.base";
 import { Share, ShareOptions } from "@capacitor/share";
 import { TemplateActionRegistry } from "../../components/template/services/instance/template-action.registry";
 import { ErrorHandlerService } from "../error-handler/error-handler.service";
+import { FileManagerService } from "../file-manager/file-manager.service";
+import { TemplateAssetService } from "../../components/template/services/template-asset.service";
+import { Capacitor } from "@capacitor/core";
+
+const SHARE_NOT_SUPPORTED_ON_PLATFORM_ERROR_MESSAGE =
+  "[SHARE] Sharing is not supported on this platform";
 
 @Injectable({
   providedIn: "root",
 })
 export class ShareService extends SyncServiceBase {
   constructor(
+    private errorHandler: ErrorHandlerService,
+    private fileManagerService: FileManagerService,
     private templateActionRegistry: TemplateActionRegistry,
-    private errorHandler: ErrorHandlerService
+    private templateAssetService: TemplateAssetService
   ) {
     super("Share");
     this.initialise();
@@ -23,6 +31,7 @@ export class ShareService extends SyncServiceBase {
   private registerTemplateActionHandlers() {
     this.templateActionRegistry.register({
       share: async ({ args }) => await this.share({ text: args[0] }),
+      share_file: async ({ args }) => await this.shareFile(args[0]),
     });
   }
 
@@ -38,6 +47,52 @@ export class ShareService extends SyncServiceBase {
         }
         this.errorHandler.handleError(error);
       }
-    } else console.error("[SHARE] Sharing is not supported on this device");
+    } else console.error(SHARE_NOT_SUPPORTED_ON_PLATFORM_ERROR_MESSAGE);
+  }
+
+  async shareFile(relativePath: string) {
+    try {
+      if (relativePath) {
+        this.templateAssetService.ready();
+        // On native platforms, try to share file using @capacitor/share
+        if (Capacitor.isNativePlatform()) {
+          const { value: canShare } = await Share.canShare();
+          if (canShare) {
+            this.fileManagerService.ready();
+            const blob = (await this.templateAssetService.fetchAsset(relativePath, "blob")) as Blob;
+            // @capacitor/share can only share files saved to "Cache" directory
+            const { localFilepath } = await this.fileManagerService.saveFile(
+              blob,
+              relativePath,
+              "Cache"
+            );
+            if (localFilepath) {
+              const { activityType } = await Share.share({ url: localFilepath });
+              console.log("[SHARE] Content shared to", activityType);
+            }
+          } else console.error(SHARE_NOT_SUPPORTED_ON_PLATFORM_ERROR_MESSAGE);
+        }
+        // On web platforms, try to share file using Web Share API
+        else {
+          if (navigator.canShare) {
+            const blob = (await this.templateAssetService.fetchAsset(relativePath, "blob")) as Blob;
+            const filename = relativePath.split("/").pop();
+            const data = { files: [new File([blob], filename, { type: blob.type })] };
+            if (navigator.canShare(data)) {
+              await navigator.share(data);
+            } else {
+              console.error("Unable to share file:", data);
+            }
+          } else {
+            console.error(SHARE_NOT_SUPPORTED_ON_PLATFORM_ERROR_MESSAGE);
+          }
+        }
+      }
+    } catch (error) {
+      if (error.message === "Abort due to cancellation of share.") {
+        console.log("[SHARE] Share cancelled by user");
+      }
+      this.errorHandler.handleError(error);
+    }
   }
 }

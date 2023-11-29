@@ -476,3 +476,12 @@ export function parseMarkdown(src: string, options?: marked.MarkedOptions) {
   });
   return marked(src, options);
 }
+
+export function convertBlobToBase64(blob: Blob): Promise<string> {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onerror = reject;
+    reader.onload = () => resolve(reader.result as string);
+    reader.readAsDataURL(blob);
+  });
+}
