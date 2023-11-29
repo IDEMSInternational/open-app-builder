@@ -8,6 +8,7 @@
 # words - list of words to be always considered correct
 "words":
   [
+    "danfojs",
     "firebaserc",
     "fontawesome",
     "gdrive",
@@ -23,6 +24,7 @@
     "Nouislider",
     "overidden",
     "quickstart",
+    "rxdb",
     "sidemenu",
     "sourcemaps",
     "swiper",
@@ -35,4 +37,4 @@
 # For example "hte" should be "the"
 "flagWords": ["hte"]
 
-"ignorePaths": ["node_modules/**"]
+"ignorePaths": ["node_modules/**", "angular.json"]

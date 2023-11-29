@@ -10,11 +10,11 @@ import {
 } from "rxdb";
 import { RxDBJsonDumpPlugin } from "rxdb/plugins/json-dump";
 addRxPlugin(RxDBJsonDumpPlugin);
-import { getRxStorageMemory } from "rxdb/plugins/memory";
+import { getRxStorageMemory } from "rxdb/plugins/storage-memory";
 import type {
   MemoryStorageInternals,
   RxStorageMemoryInstanceCreationOptions,
-} from "rxdb/dist/types/plugins/memory";
+} from "rxdb/dist/types/plugins/storage-memory";
 import { RxDBMigrationPlugin } from "rxdb/plugins/migration";
 addRxPlugin(RxDBMigrationPlugin);
 import { RxDBUpdatePlugin } from "rxdb/plugins/update";
@@ -78,7 +78,7 @@ export class ReactiveMemoryAdapater {
     if (!collection) {
       return undefined;
     }
-    const matchedDocs = await collection.findByIds([docId]);
+    const matchedDocs = await collection.findByIds([docId]).exec();
     const existingDoc: RxDocument<T> = matchedDocs.get(docId);
     return existingDoc;
   }
@@ -117,7 +117,7 @@ export class ReactiveMemoryAdapater {
     if (!collection) {
       throw new Error("Collection does not exist: " + collectionName);
     }
-    const matchedDocs = await collection.findByIds([id]);
+    const matchedDocs = await collection.findByIds([id]).exec();
     const existingDoc: RxDocument = matchedDocs.get(id);
     if (existingDoc) {
       // Remove any values marked as undefined
@@ -126,7 +126,7 @@ export class ReactiveMemoryAdapater {
           delete data[key];
         }
       }
-      const updatedDoc = await existingDoc.atomicPatch(data);
+      const updatedDoc = await existingDoc.incrementalPatch(data);
       return updatedDoc.toMutableJSON();
     } else {
       const newDoc = await collection.insert(data);

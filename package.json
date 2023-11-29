@@ -94,7 +94,7 @@
     "ngx-lottie": "^10.0.0",
     "nouislider": "^15.7.1",
     "qrcode": "^1.5.1",
-    "rxdb": "^13.15.3",
+    "rxdb": "^14.17.1",
     "rxjs": "^7.8.0",
     "scripts": "workspace:*",
     "shared": "workspace:*",
