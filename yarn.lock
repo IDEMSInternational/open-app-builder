@@ -7599,7 +7599,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@typescript-eslint/eslint-plugin@npm:^6.10.0":
+"@typescript-eslint/eslint-plugin@npm:^6.13.1":
   version: 6.13.1
   resolution: "@typescript-eslint/eslint-plugin@npm:6.13.1"
   dependencies:
@@ -7641,7 +7641,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@typescript-eslint/parser@npm:^6.10.0, @typescript-eslint/parser@npm:^6.4.0":
+"@typescript-eslint/parser@npm:^6.13.1, @typescript-eslint/parser@npm:^6.4.0":
   version: 6.13.1
   resolution: "@typescript-eslint/parser@npm:6.13.1"
   dependencies:
@@ -13341,7 +13341,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint@npm:^8.12.0, eslint@npm:^8.52.0, eslint@npm:^8.53.0":
+"eslint@npm:^8.12.0, eslint@npm:^8.52.0, eslint@npm:^8.54.0":
   version: 8.54.0
   resolution: "eslint@npm:8.54.0"
   dependencies:
@@ -14548,8 +14548,8 @@ __metadata:
     "@types/node": ^18.18.13
     "@types/nouislider": ^15.0.0
     "@types/swiper": ~4.2.0
-    "@typescript-eslint/eslint-plugin": ^6.10.0
-    "@typescript-eslint/parser": ^6.10.0
+    "@typescript-eslint/eslint-plugin": ^6.13.1
+    "@typescript-eslint/parser": ^6.13.1
     bootstrap-datepicker: ^1.10.0
     capacitor-blob-writer: ^1.1.14
     clone: ^2.1.2
@@ -14565,7 +14565,7 @@ __metadata:
     dexie-syncable: ^3.0.0-beta.10
     document-register-element: ^1.14.10
     dompurify: ^3.0.6
-    eslint: ^8.53.0
+    eslint: ^8.54.0
     eslint-config-prettier: ^8.8.0
     eslint-config-standard-with-typescript: latest
     eslint-plugin-import: ^2.27.5
