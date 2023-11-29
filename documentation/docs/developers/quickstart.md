@@ -2,9 +2,9 @@
 
 The main tech stack comprises of:
 
-- Angular 12
-- Ionic v5
-- Android Native via Capacitor
+- Angular
+- Ionic
+- Capacitor
 
 ## Additional Developer Prerequisites
 
