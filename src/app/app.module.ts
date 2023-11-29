@@ -37,8 +37,6 @@ export function lottiePlayerFactory() {
 
 @NgModule({
   declarations: [AppComponent],
-
-  entryComponents: [],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
