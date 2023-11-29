@@ -8,7 +8,7 @@ import {
   getStringParamFromTemplateRow,
 } from "../../../../utils";
 import { NouisliderComponent } from "ng2-nouislider";
-import { Options } from "nouislider";
+import { Options, PipsMode } from "nouislider";
 
 @Component({
   selector: "plh-slider-new",
@@ -48,7 +48,7 @@ export class TmplSliderComponent
       max: this.maxValue,
     },
     pips: {
-      mode: "count",
+      mode: PipsMode.Count,
       density: 1,
       values: 7,
       stepped: true,
@@ -94,6 +94,6 @@ export class TmplSliderComponent
     this.sliderConfig.range.max = this.maxValue;
     this.sliderConfig.step = this.step;
     this.sliderConfig.start = Number(this._row.value) || 0;
-    this.sliderConfig.pips.values = this.labels_count;
+    (this.sliderConfig.pips as any).values = this.labels_count;
   }
 }
