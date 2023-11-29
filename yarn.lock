@@ -10665,7 +10665,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"commander@npm:^8.0.0, commander@npm:^8.1.0, commander@npm:^8.2.0, commander@npm:^8.3.0":
+"commander@npm:^8.1.0, commander@npm:^8.2.0, commander@npm:^8.3.0":
   version: 8.3.0
   resolution: "commander@npm:8.3.0"
   checksum: 0f82321821fc27b83bd409510bb9deeebcfa799ff0bf5d102128b500b7af22872c0c92cb6a0ebc5a4cf19c6b550fba9cedfa7329d18c6442a625f851377bacf0
@@ -14577,24 +14577,24 @@ __metadata:
     extract-math: ^1.2.3
     firebase: ^10.7.0
     firebase-tools: ^12.9.1
-    globalthis: ^1.0.2
-    howler: ^2.2.1
+    globalthis: ^1.0.3
+    howler: ^2.2.4
     html5sortable: ^0.13.3
     husky: ^8.0.3
-    intro.js: ^3.2.1
+    intro.js: ^3.4.0
     jasmine-core: ~4.5.0
     jasmine-spec-reporter: ~7.0.0
-    jquery: ^3.7.0
+    jquery: ^3.7.1
     jquery-touchswipe: ^1.6.19
     karma: ~6.4.0
     karma-chrome-launcher: ~3.1.0
     karma-coverage: ~2.2.0
     karma-jasmine: ~5.1.0
     karma-jasmine-html-reporter: ~2.0.0
-    katex: ^0.15.3
+    katex: ^0.16.9
     lint-staged: ^13.0.3
-    lottie-web: ^5.7.14
-    marked: ^2.0.1
+    lottie-web: ^5.12.2
+    marked: ^2.1.3
     mergexml: ^1.2.3
     ng2-nouislider: ^2.0.0
     ngx-extended-pdf-viewer: 18.1.9
@@ -14602,14 +14602,14 @@ __metadata:
     ngx-matomo-client: ^6.0.0
     nouislider: ^15.7.1
     prettier: ^2.6.2
-    qrcode: ^1.5.1
+    qrcode: ^1.5.3
     rxdb: ^14.17.1
-    rxjs: ^7.8.0
+    rxjs: ^7.8.1
     scripts: "workspace:*"
     shared: "workspace:*"
-    signature_pad: ^4.1.5
+    signature_pad: ^4.1.7
     stacktrace-js: ^2.0.2
-    swiper: ^8.4.4
+    swiper: ^8.4.7
     trusted-types: ^2.0.0
     typescript: 5.2.2
     zone.js: ~0.14.2
@@ -15203,7 +15203,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"globalthis@npm:^1.0.2, globalthis@npm:^1.0.3":
+"globalthis@npm:^1.0.3":
   version: 1.0.3
   resolution: "globalthis@npm:1.0.3"
   dependencies:
@@ -15628,7 +15628,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"howler@npm:^2.2.1":
+"howler@npm:^2.2.4":
   version: 2.2.4
   resolution: "howler@npm:2.2.4"
   checksum: 14ad7ed8825ac4439a63429d25f3ba6f44daca1d6df4ad6b04f33e342269b80db5608d9f1e6e980e2d47027c7ceba7811068eba7f56e8e75f2601086e07f0b73
@@ -16268,7 +16268,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"intro.js@npm:^3.2.1":
+"intro.js@npm:^3.4.0":
   version: 3.4.0
   resolution: "intro.js@npm:3.4.0"
   checksum: d46f3c38ccc1e32e76006ac3743a189cbbc8287393c45eaa6221e48651836543d9962df7b71077ddb84dbff10e4000168402982cd4048784a21dd7c4d34d60ae
@@ -17611,7 +17611,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"jquery@npm:>=3.4.0 <4.0.0, jquery@npm:^3.7.0":
+"jquery@npm:>=3.4.0 <4.0.0, jquery@npm:^3.7.1":
   version: 3.7.1
   resolution: "jquery@npm:3.7.1"
   checksum: 4370b8139d6ae82867eb6f7f21d1edccf1d1bdf41c0840920ea80d366c2cd5dbe1ceebb110ee9772aa839b04400faa1572c5c560b507c688ed7b61cea26c0e27
@@ -18122,14 +18122,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"katex@npm:^0.15.3":
-  version: 0.15.6
-  resolution: "katex@npm:0.15.6"
+"katex@npm:^0.16.9":
+  version: 0.16.9
+  resolution: "katex@npm:0.16.9"
   dependencies:
-    commander: ^8.0.0
+    commander: ^8.3.0
   bin:
     katex: cli.js
-  checksum: 2da808bbd1d3be27715006cd86767dd3fcce3e317fb3bbd64d407328d2d90de17b5d83062b2cfd0e0d0de32e340efbac214862bc96892a5d1492462e553728d4
+  checksum: 861194dfd4d86505e657f688fb73048d46ac498edafce71199502a35b03c0ecc35ba930c631be79c4a09d90a0d23476673cd52f6bc367c7a161854d64005fa95
   languageName: node
   linkType: hard
 
@@ -18901,7 +18901,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"lottie-web@npm:^5.7.14":
+"lottie-web@npm:^5.12.2":
   version: 5.12.2
   resolution: "lottie-web@npm:5.12.2"
   checksum: af5bc3bc405fd760de8b17a36158d5a8c3e8c586c711d0c63681ddf056b65bc6b54ea36b1fcad782fb02dbe12e696a40e0ba72daf41b8f10ab5b5d1113793636
@@ -19137,7 +19137,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"marked@npm:^2.0.1":
+"marked@npm:^2.1.3":
   version: 2.1.3
   resolution: "marked@npm:2.1.3"
   bin:
@@ -22295,7 +22295,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"qrcode@npm:^1.5.1":
+"qrcode@npm:^1.5.3":
   version: 1.5.3
   resolution: "qrcode@npm:1.5.3"
   dependencies:
@@ -23133,7 +23133,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"rxjs@npm:7.8.1, rxjs@npm:^7.2.0, rxjs@npm:^7.5.1, rxjs@npm:^7.5.4, rxjs@npm:^7.5.5, rxjs@npm:^7.8.0, rxjs@npm:^7.8.1":
+"rxjs@npm:7.8.1, rxjs@npm:^7.2.0, rxjs@npm:^7.5.1, rxjs@npm:^7.5.4, rxjs@npm:^7.5.5, rxjs@npm:^7.8.1":
   version: 7.8.1
   resolution: "rxjs@npm:7.8.1"
   dependencies:
@@ -23846,7 +23846,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"signature_pad@npm:^4.1.5":
+"signature_pad@npm:^4.1.7":
   version: 4.1.7
   resolution: "signature_pad@npm:4.1.7"
   checksum: 4a680991b9d718784c9612cd5485eb74c69b4e194263c8fcc8af26c40936dfcea0ba5a2221b00b4a59440d95b8d59e9742200d48f7c54d18bbaa88abd86789b2
@@ -24917,7 +24917,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"swiper@npm:^8.4.4":
+"swiper@npm:^8.4.7":
   version: 8.4.7
   resolution: "swiper@npm:8.4.7"
   dependencies:
