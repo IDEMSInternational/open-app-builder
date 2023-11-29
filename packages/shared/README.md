@@ -22,7 +22,7 @@ The angular compiler uses local `tsconfig.app.json` to include external dependen
 {
   "extends": "./tsconfig.json",
   "include": [
-    "packages/shared/**/*.ts",
+    "packages/shared/shared/src/models/jsEvaluator/jsEvaluator.ts",
   ]
 }
 ```
