@@ -13,5 +13,6 @@
     // to allow import/live-reload within angular compiler
     "packages/data-models/**/*.ts",
     "packages/shared/**/*.ts"
-  ]
+  ],
+  "exclude": ["**/*.spec.ts"]
 }
