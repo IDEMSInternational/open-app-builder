@@ -169,7 +169,7 @@
     "fs": false
   },
   "engines": {
-    "node": ">=14.20.0"
+    "node": ">=18.x"
   },
   "packageManager": "yarn@3.3.1"
 }
