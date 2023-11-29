@@ -9,6 +9,7 @@
 "words":
   [
     "danfojs",
+    "dexie",
     "firebaserc",
     "fontawesome",
     "gdrive",
@@ -37,4 +38,4 @@
 # For example "hte" should be "the"
 "flagWords": ["hte"]
 
-"ignorePaths": ["node_modules/**", "angular.json"]
+"ignorePaths": ["node_modules/**", "angular.json", "cspell.config.yml"]
