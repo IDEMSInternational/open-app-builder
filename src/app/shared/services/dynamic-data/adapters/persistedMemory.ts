@@ -6,7 +6,7 @@ import {
   RxDocument,
   RxJsonSchema,
 } from "rxdb";
-import { getRxStorageDexie } from "rxdb/plugins/dexie";
+import { getRxStorageDexie } from "rxdb/plugins/storage-dexie";
 import { RxDBJsonDumpPlugin } from "rxdb/plugins/json-dump";
 addRxPlugin(RxDBJsonDumpPlugin);
 import { RxDBMigrationPlugin } from "rxdb/plugins/migration";

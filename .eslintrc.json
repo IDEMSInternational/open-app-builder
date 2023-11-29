@@ -1,7 +1,7 @@
 {
   "root": true,
   "ignorePatterns": ["packages/api/**/*", "packages/@idemsInternational/**/*"],
-  "plugins": ["jasmine"],
+  "plugins": ["jasmine", "@typescript-eslint"],
   "env": {
     "jasmine": true
   },
