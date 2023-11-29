@@ -5263,32 +5263,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@ngx-matomo/router@npm:^4.1.2":
-  version: 4.1.2
-  resolution: "@ngx-matomo/router@npm:4.1.2"
-  dependencies:
-    tslib: ^2.0.0
-  peerDependencies:
-    "@angular/common": ^15.0.0 || ^16.0.0
-    "@angular/core": ^15.0.0 || ^16.0.0
-    "@angular/router": ^15.0.0 || ^16.0.0
-    "@ngx-matomo/tracker": 4.1.2
-  checksum: 1681c81620d273697a8705a6f5a522a7cdc206196851c6ba95c44cf5fc2a6b9e98cdcc206c6ba3f785f52b014a9f54704b0577938f470e0ad6605b8eaa389e32
-  languageName: node
-  linkType: hard
-
-"@ngx-matomo/tracker@npm:^4.1.2":
-  version: 4.1.2
-  resolution: "@ngx-matomo/tracker@npm:4.1.2"
-  dependencies:
-    tslib: ^2.0.0
-  peerDependencies:
-    "@angular/common": ^15.0.0 || ^16.0.0
-    "@angular/core": ^15.0.0 || ^16.0.0
-  checksum: 7100fd9929ae71b0ac8e3b693d2ff2b2f0bfea8d03000f17b67960bf7d80dbe4dc99e784af59b7816e1abe665005278b047fc7919c7dcec93b9c3c3793c3ea03
-  languageName: node
-  linkType: hard
-
 "@nodelib/fs.scandir@npm:2.1.5":
   version: 2.1.5
   resolution: "@nodelib/fs.scandir@npm:2.1.5"
@@ -14561,8 +14535,6 @@ __metadata:
     "@ionic/angular-toolkit": ^10.0.0
     "@ionic/cli": ^7.1.5
     "@ionic/pwa-elements": ^3.2.2
-    "@ngx-matomo/router": ^4.1.2
-    "@ngx-matomo/tracker": ^4.1.2
     "@schematics/angular": ~17.0.3
     "@sentry/angular": ^7.83.0
     "@supabase/supabase-js": ^2.39.0
@@ -14627,6 +14599,7 @@ __metadata:
     ng2-nouislider: ^2.0.0
     ngx-extended-pdf-viewer: 18.1.9
     ngx-lottie: ^10.0.0
+    ngx-matomo-client: ^6.0.0
     nouislider: ^15.7.1
     prettier: ^2.6.2
     qrcode: ^1.5.1
@@ -20021,6 +19994,18 @@ __metadata:
     "@angular/core": ">=15"
     lottie-web: ">=5.9.2"
   checksum: 1e7abd8baab02f3ae365bff90272ead63db9fc2b6a4c1775ad58ce7349300c14e824d294804ceb045c5dae6e07beceacbbbf7350eb3d5d52f71940c6ba24b997
+  languageName: node
+  linkType: hard
+
+"ngx-matomo-client@npm:^6.0.0":
+  version: 6.0.0
+  resolution: "ngx-matomo-client@npm:6.0.0"
+  dependencies:
+    tslib: ^2.3.0
+  peerDependencies:
+    "@angular/common": ^17.0.0
+    "@angular/core": ^17.0.0
+  checksum: daf3d7964b222ee3879c12a98312eac9945fd4d2f99dc0940d8f9c36b627299bda58f44d09cd6a8fe91d5d13ab3758f0f81a758ad0ba9e986eb0e68294dfd637
   languageName: node
   linkType: hard
 
@@ -25719,7 +25704,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"tslib@npm:2.6.2, tslib@npm:^2.0.0, tslib@npm:^2.0.1, tslib@npm:^2.0.3, tslib@npm:^2.1.0, tslib@npm:^2.3.0, tslib@npm:^2.4.0, tslib@npm:^2.4.1":
+"tslib@npm:2.6.2, tslib@npm:^2.0.1, tslib@npm:^2.0.3, tslib@npm:^2.1.0, tslib@npm:^2.3.0, tslib@npm:^2.4.0, tslib@npm:^2.4.1":
   version: 2.6.2
   resolution: "tslib@npm:2.6.2"
   checksum: 329ea56123005922f39642318e3d1f0f8265d1e7fcb92c633e0809521da75eeaca28d2cf96d7248229deb40e5c19adf408259f4b9640afd20d13aecc1430f3ad
