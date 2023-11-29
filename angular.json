@@ -56,17 +56,24 @@
             ],
             "scripts": ["./node_modules/intro.js/intro.js"],
             "allowedCommonJsDependencies": [
-              "lottie-web",
-              "firebase/app",
               "@firebase/auth",
               "clone",
-              "howler",
               "dompurify",
               "extract-math",
-              "marked",
-              "stacktrace-js",
+              "fast-deep-equal",
+              "firebase/app",
+              "howler",
+              "html5sortable/dist/html5sortable.cjs",
               "intro.js",
-              "qrcode"
+              "jquery",
+              "lottie-web",
+              "marked",
+              "mingo/operators/pipeline",
+              "mingo/operators/query",
+              "mingo/query",
+              "qrcode",
+              "stacktrace-js",
+              "websocket"
             ]
           },
           "configurations": {
