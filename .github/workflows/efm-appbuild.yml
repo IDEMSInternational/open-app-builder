@@ -61,10 +61,9 @@ jobs:
         if: env.DEPLOYMENT_PRIVATE_KEY != ''
         run: echo "${{env.DEPLOYMENT_PRIVATE_KEY}}" > ./.idems_app/deployments/${{env.DEPLOYMENT_NAME}}/encrypted/private.key
 
-        # TODO - populate firebase as part of deployment set
-      - name: Populate Firebase Config
-        if: env.FIREBASE_CONFIG != ''
-        run: echo ${{env.FIREBASE_CONFIG}} > src/environments/firebaseConfig.ts
+      - name: Populate firebaseConfig.ts
+        if: ${{env.FIREBASE_CONFIG}}
+        run: echo $FIREBASE_CONFIG > src/environments/firebaseConfig.ts
         
       - name: Setup Node
         uses: actions/setup-node@v3
