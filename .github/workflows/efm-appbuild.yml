@@ -8,7 +8,7 @@
 #         Configuration
 ##################################################################################
 env:
-  DEPLOYMENT_NAME: ${{vars.DEPLOYMENT_NAME}}
+  DEPLOYMENT_NAME: 'early_family_math'
   APP_CODE_BRANCH: 'master'
   DEPLOYMENT_REPO: 'IDEMSInternational/efm-app-content.git'
   PARENT_DEPLOYMENT_REPO: ''
