@@ -10,7 +10,7 @@
 env:
   DEPLOYMENT_NAME: ${{vars.DEPLOYMENT_NAME}}
   APP_CODE_BRANCH: 'master'
-  DEPLOYMENT_REPO: 'https://github.com/IDEMSInternational/efm-app-content'
+  DEPLOYMENT_REPO: 'https://github.com/IDEMSInternational/efm-app-content.git'
   PARENT_DEPLOYMENT_REPO: ''
   PARENT_DEPLOYMENT_NAME: ''
   PARENT_DEPLOYMENT_BRANCH: ''
