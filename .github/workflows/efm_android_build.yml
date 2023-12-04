@@ -71,6 +71,7 @@ jobs:
         with:
           repository: ${{env.DEPLOYMENT_REPO}}
           path: ".idems_app/deployments/${{env.DEPLOYMENT_NAME}}"
+          ref: "main"
 
      # - name: Checkout git lfs partial files
      #   run: git lfs pull --include "android/*"
