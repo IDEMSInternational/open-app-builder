@@ -11,7 +11,7 @@ env:
   APP_NAME: 'Early Family Math'
   DEPLOYMENT_NAME: 'early_family_math'
   APP_CODE_BRANCH: 'master'
-  DEPLOYMENT_REPO: 'https://github.com/IDEMSInternational/efm-app-content.git'
+  DEPLOYMENT_REPO: 'IDEMSInternational/efm-app-content.git'
   PARENT_DEPLOYMENT_REPO: ''
   PARENT_DEPLOYMENT_NAME: ''
   PARENT_DEPLOYMENT_BRANCH: ''
