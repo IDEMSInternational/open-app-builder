@@ -1,0 +1,101 @@
+##################################################################################
+#         About
+##################################################################################
+#Temporary action to he
+#Must specify all below secrets and variables - see documentation for details
+
+##################################################################################
+#         Configuration
+##################################################################################
+env:
+  DEPLOYMENT_NAME: 'early_family_math'
+  APP_CODE_BRANCH: 'master'
+  DEPLOYMENT_REPO: 'IDEMSInternational/efm-app-content.git'
+  PARENT_DEPLOYMENT_REPO: ''
+  PARENT_DEPLOYMENT_NAME: ''
+  PARENT_DEPLOYMENT_BRANCH: ''
+  DEPLOYMENT_PRIVATE_KEY: ${{secrets.DEPLOYMENT_PRIVATE_KEY}}
+  FIREBASE_CONFIG: ${{secrets.FIREBASE_CONFIG_TS}}
+
+##################################################################################
+#         Main Code
+##################################################################################
+name: EFM App - Build
+on:
+  workflow_call:
+    inputs:
+      artifact-name:
+        description: Name of the artifact to upload
+        type: string
+        default: www
+      build-flags:
+        description: Additional flags to pass to build command (e.g. base-href)
+        type: string
+        default: ""
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out app code
+        uses: actions/checkout@v3
+        with: 
+          fetch-depth: 0 
+          ref: ${{env.APP_CODE_BRANCH}}
+
+      - name: Checkout parent repo if needed
+        if: env.PARENT_DEPLOYMENT_REPO != ''
+        uses: actions/checkout@v3
+        with:
+          path: ".idems_app/deployments/${{env.PARENT_DEPLOYMENT_NAME}}"
+          repository: ${{env.PARENT_DEPLOYMENT_REPO}}
+          ref: ${{env.PARENT_DEPLOYMENT_BRANCH}}
+
+      - name: Checkout deployment
+        uses: actions/checkout@v3
+        with:
+          repository: ${{env.DEPLOYMENT_REPO}}
+          path: ".idems_app/deployments/${{env.DEPLOYMENT_NAME}}"
+          ref: 'main'
+          
+      - name: Populate Encryption key
+        if: env.DEPLOYMENT_PRIVATE_KEY != ''
+        run: echo "${{env.DEPLOYMENT_PRIVATE_KEY}}" > ./.idems_app/deployments/${{env.DEPLOYMENT_NAME}}/encrypted/private.key
+
+      - name: Populate firebaseConfig.ts
+        if: ${{env.FIREBASE_CONFIG}}
+        run: echo $FIREBASE_CONFIG > src/environments/firebaseConfig.ts
+        
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18.x
+      - name: Cache node modules
+        uses: actions/cache@v3
+        with:
+          path: ./.yarn/cache
+          # If cachebusting required (e.g. breaking yarn changes on update) change `v1` to another number
+          key: ${{ runner.os }}-node-modules-yarn-v1-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-node-modules-yarn-v1-
+
+      - name: Install node modules
+        run: yarn install
+
+      - name: Set deployment
+        run: yarn workflow deployment set $DEPLOYMENT_NAME
+
+      - name: Build
+        run: yarn build ${{inputs.build-flags}}
+
+        # Use github pages upload artifact action to compress and upload
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v1.0.8
+        with:
+          path: "www/"
+          name: ${{inputs.artifact-name}}
+##################################################################################
+#         Links
+##################################################################################
+
+# Create a reusable workflow to build deployment app
+# https://colinsalmcorner.com/musings-on-reusable-workflows/
