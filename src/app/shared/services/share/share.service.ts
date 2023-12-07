@@ -53,7 +53,7 @@ export class ShareService extends SyncServiceBase {
   async shareFile(relativePath: string) {
     try {
       if (relativePath) {
-        this.templateAssetService.ready();
+        await this.templateAssetService.ready();
         // On native platforms, try to share file using @capacitor/share
         if (Capacitor.isNativePlatform()) {
           const { value: canShare } = await Share.canShare();

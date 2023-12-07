@@ -380,6 +380,7 @@ export namespace FlowTypes {
     "audio_end",
     "audio_play",
     "changed",
+    "download",
     "emit",
     "feedback",
     "go_to",
