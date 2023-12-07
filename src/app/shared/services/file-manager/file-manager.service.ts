@@ -1,10 +1,13 @@
 import { Injectable } from "@angular/core";
 import { Directory, Encoding, Filesystem } from "@capacitor/filesystem";
+import { FileOpener } from "@capacitor-community/file-opener";
 import { Capacitor } from "@capacitor/core";
 import write_blob from "capacitor-blob-writer";
 import { SyncServiceBase } from "../syncService.base";
 import { environment } from "src/environments/environment";
 import { IAssetContents } from "src/app/data";
+import { TemplateActionRegistry } from "../../components/template/services/instance/template-action.registry";
+import { TemplateAssetService } from "../../components/template/services/template-asset.service";
 
 @Injectable({
   providedIn: "root",
@@ -12,13 +15,40 @@ import { IAssetContents } from "src/app/data";
 export class FileManagerService extends SyncServiceBase {
   cacheName: string;
 
-  constructor() {
+  constructor(
+    private templateActionRegistry: TemplateActionRegistry,
+    private templateAssetService: TemplateAssetService
+  ) {
     super("FileManager");
     this.initialise();
   }
 
   private initialise() {
     this.cacheName = environment.deploymentConfig.name;
+    this.registerTemplateActionHandlers();
+  }
+
+  private registerTemplateActionHandlers() {
+    this.templateActionRegistry.register({
+      download: async ({ args }) => {
+        await this.downloadAndOpenTemplateAsset(args[0]);
+      },
+    });
+  }
+
+  private async downloadAndOpenTemplateAsset(relativePath: string) {
+    await this.templateAssetService.ready();
+    const blob = (await this.templateAssetService.fetchAsset(relativePath, "blob")) as Blob;
+    // On native devices, download file to native storage and trigger prompt to open with native apps
+    if (Capacitor.isNativePlatform()) {
+      const { localFilepath } = await this.saveFile(blob, relativePath);
+      FileOpener.open({ filePath: localFilepath, openWithDefault: false });
+    }
+    // On web, open the file in the browser, ready for download
+    else {
+      const fileUrl = window.URL.createObjectURL(blob);
+      window.open(fileUrl);
+    }
   }
 
   /**
