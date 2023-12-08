@@ -148,15 +148,14 @@ export class DynamicDataService extends AsyncServiceBase {
     // If collection previously initialised ensure method call complete and return
     if (initialiser) {
       await firstValueFrom(initialiser.pipe(filter((initComplete) => initComplete === true)));
-      return { collectionName };
     }
     // Otherwise create new initialisation observable and wait for complete
     else {
       this.collectionInitialisers$[collectionName] = new BehaviorSubject(false);
       await this.initialiseCollection(flow_type, flow_name);
       this.collectionInitialisers$[collectionName].next(true);
-      return { collectionName };
     }
+    return { collectionName };
   }
 
   private async initialiseCollection(flow_type: FlowTypes.FlowType, flow_name: string) {
