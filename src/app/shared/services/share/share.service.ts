@@ -90,7 +90,7 @@ export class ShareService extends SyncServiceBase {
             if (navigator.canShare(data)) {
               await navigator.share(data);
             } else {
-              console.error("Unable to share file:", data);
+              console.error("[SHARE] Unable to share file:", data);
             }
           } else {
             console.error(SHARE_NOT_SUPPORTED_ON_PLATFORM_ERROR_MESSAGE);
