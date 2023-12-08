@@ -30,8 +30,19 @@ export class ShareService extends SyncServiceBase {
 
   private registerTemplateActionHandlers() {
     this.templateActionRegistry.register({
-      share: async ({ args }) => await this.share({ text: args[0] }),
-      share_file: async ({ args }) => await this.shareFile(args[0]),
+      share: async ({ args }) => {
+        const [actionId, ...shareArgs] = args;
+        const childActions = {
+          text: () => this.share({ text: shareArgs[0] }),
+          file: async () => await this.shareFile(shareArgs[0]),
+        };
+        // To support deprecated "share" action (previously used to share text only),
+        // assume text is being shared if first arg is not an actionId
+        if (!(actionId in childActions)) {
+          return await this.share({ text: args[0] });
+        }
+        return childActions[actionId]();
+      },
     });
   }
 
