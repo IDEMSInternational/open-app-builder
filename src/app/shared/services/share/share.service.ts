@@ -33,8 +33,9 @@ export class ShareService extends SyncServiceBase {
       share: async ({ args }) => {
         const [actionId, ...shareArgs] = args;
         const childActions = {
-          text: () => this.share({ text: shareArgs[0] }),
           file: async () => await this.shareFile(shareArgs[0]),
+          text: () => this.share({ text: shareArgs[0] }),
+          url: () => this.share({ url: shareArgs[0] }),
         };
         // To support deprecated "share" action (previously used to share text only),
         // assume text is being shared if first arg is not an actionId
@@ -53,10 +54,7 @@ export class ShareService extends SyncServiceBase {
         const { activityType } = await Share.share(options);
         console.log("[SHARE] Content shared to", activityType);
       } catch (error) {
-        if (error.message === "Abort due to cancellation of share.") {
-          console.log("[SHARE] Share cancelled by user");
-        }
-        this.errorHandler.handleError(error);
+        this.handleShareError(error);
       }
     } else console.error(SHARE_NOT_SUPPORTED_ON_PLATFORM_ERROR_MESSAGE);
   }
@@ -100,9 +98,14 @@ export class ShareService extends SyncServiceBase {
         }
       }
     } catch (error) {
-      if (error.message === "Abort due to cancellation of share.") {
-        console.log("[SHARE] Share cancelled by user");
-      }
+      this.handleShareError(error);
+    }
+  }
+
+  private handleShareError(error) {
+    if (error.message === "Abort due to cancellation of share.") {
+      console.warn("[SHARE] Share cancelled by user");
+    } else {
       this.errorHandler.handleError(error);
     }
   }
