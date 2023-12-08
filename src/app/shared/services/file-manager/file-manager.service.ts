@@ -8,6 +8,7 @@ import { environment } from "src/environments/environment";
 import { IAssetContents } from "src/app/data";
 import { TemplateActionRegistry } from "../../components/template/services/instance/template-action.registry";
 import { TemplateAssetService } from "../../components/template/services/template-asset.service";
+import { ErrorHandlerService } from "../error-handler/error-handler.service";
 
 @Injectable({
   providedIn: "root",
@@ -16,6 +17,7 @@ export class FileManagerService extends SyncServiceBase {
   cacheName: string;
 
   constructor(
+    private errorHandler: ErrorHandlerService,
     private templateActionRegistry: TemplateActionRegistry,
     private templateAssetService: TemplateAssetService
   ) {
@@ -39,15 +41,19 @@ export class FileManagerService extends SyncServiceBase {
   private async downloadAndOpenTemplateAsset(relativePath: string) {
     await this.templateAssetService.ready();
     const blob = (await this.templateAssetService.fetchAsset(relativePath, "blob")) as Blob;
-    // On native devices, download file to native storage and trigger prompt to open with native apps
-    if (Capacitor.isNativePlatform()) {
-      const { localFilepath } = await this.saveFile(blob, relativePath);
-      FileOpener.open({ filePath: localFilepath, openWithDefault: false });
-    }
-    // On web, open the file in the browser, ready for download
-    else {
-      const fileUrl = window.URL.createObjectURL(blob);
-      window.open(fileUrl);
+    try {
+      // On native devices, download file to native storage and trigger prompt to open with native apps
+      if (Capacitor.isNativePlatform()) {
+        const { localFilepath } = await this.saveFile(blob, relativePath);
+        FileOpener.open({ filePath: localFilepath, openWithDefault: false });
+      }
+      // On web, open the file in the browser, ready for download
+      else {
+        const fileUrl = window.URL.createObjectURL(blob);
+        window.open(fileUrl);
+      }
+    } catch (err) {
+      this.errorHandler.handleError(err);
     }
   }
 

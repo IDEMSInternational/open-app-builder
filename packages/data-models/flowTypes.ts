@@ -394,7 +394,6 @@ export namespace FlowTypes {
     "set_items",
     "set_local",
     "share",
-    "share_file",
     "style",
     "start_tour",
     "task_group_set_highlighted",
