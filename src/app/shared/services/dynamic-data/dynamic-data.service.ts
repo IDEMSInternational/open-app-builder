@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { addRxPlugin, MangoQuery, RxDocument } from "rxdb";
-import { firstValueFrom, map } from "rxjs";
+import { firstValueFrom, map, filter } from "rxjs";
 
 import { FlowTypes } from "data-models";
 import { environment } from "src/environments/environment";
@@ -11,6 +11,7 @@ import { PersistedMemoryAdapter } from "./adapters/persistedMemory";
 import { ReactiveMemoryAdapater, REACTIVE_SCHEMA_BASE } from "./adapters/reactiveMemory";
 import { TemplateActionRegistry } from "../../components/template/services/instance/template-action.registry";
 import { TopLevelProperty } from "rxdb/dist/types/types";
+import { BehaviorSubject } from "rxjs/internal/BehaviorSubject";
 
 type IDocWithID = { id: string };
 
@@ -40,6 +41,9 @@ export class DynamicDataService extends AsyncServiceBase {
    * flow type so that all data_list updates are stored in a single table
    */
   private writeCache: PersistedMemoryAdapter;
+
+  /** Track collection initialisation process to avoid duplicate invocations */
+  private collectionInitialisers$: Record<string, BehaviorSubject<boolean>> = {};
 
   constructor(
     private appDataService: AppDataService,
@@ -140,16 +144,30 @@ export class DynamicDataService extends AsyncServiceBase {
   /** Ensure a collection exists, creating if not and populating with corresponding list data */
   private async ensureCollection(flow_type: FlowTypes.FlowType, flow_name: string) {
     const collectionName = this.normaliseCollectionName(flow_type, flow_name);
-    if (!this.db.getCollection(collectionName)) {
-      const initialData = await this.getInitialData(flow_type, flow_name);
-      if (initialData.length === 0) {
-        throw new Error(`No data exists for collection [${flow_name}], cannot initialise`);
-      }
-      const schema = this.inferSchema(initialData[0]);
-      await this.db.createCollection(collectionName, schema);
-      await this.db.bulkInsert(collectionName, initialData);
+    const initialiser = this.collectionInitialisers$[collectionName];
+    // If collection previously initialised ensure method call complete and return
+    if (initialiser) {
+      await firstValueFrom(initialiser.pipe(filter((initComplete) => initComplete === true)));
+      return { collectionName };
     }
-    return { collectionName };
+    // Otherwise create new initialisation observable and wait for complete
+    else {
+      this.collectionInitialisers$[collectionName] = new BehaviorSubject(false);
+      await this.initialiseCollection(flow_type, flow_name);
+      this.collectionInitialisers$[collectionName].next(true);
+      return { collectionName };
+    }
+  }
+
+  private async initialiseCollection(flow_type: FlowTypes.FlowType, flow_name: string) {
+    const collectionName = this.normaliseCollectionName(flow_type, flow_name);
+    const initialData = await this.getInitialData(flow_type, flow_name);
+    if (initialData.length === 0) {
+      throw new Error(`No data exists for collection [${flow_name}], cannot initialise`);
+    }
+    const schema = this.inferSchema(initialData[0]);
+    await this.db.createCollection(collectionName, schema);
+    await this.db.bulkInsert(collectionName, initialData);
   }
 
   /** Retrive json sheet data and merge with any user writes */
