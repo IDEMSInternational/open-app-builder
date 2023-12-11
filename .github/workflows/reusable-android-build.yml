@@ -39,7 +39,7 @@ on:
 jobs:
   
     build_action:
-        uses: ./.github/workflows/contentflows/reusable-app-build.yml
+        uses: ./.github/workflows/reusable-app-build.yml
         secrets: inherit
   
     build_android:
