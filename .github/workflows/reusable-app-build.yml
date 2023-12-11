@@ -52,7 +52,7 @@ on:
 jobs:
     build:
       outputs:
-        artifactname: ${{ steps.populate.outputs.artifactname }}
+        artifactname: ${{ steps.set_version.outputs.artifactname }}
         GIT_SHA: ${{ steps.populate.outputs.GIT_SHA }}
   
       runs-on: ubuntu-latest
@@ -79,6 +79,7 @@ jobs:
             path: ".idems_app/deployments/${{env.DEPLOYMENT_NAME}}"
 
         - name: Update artifact name to be version number
+          id: set_version
           run: |
             # Define the path to the file
             FILE_PATH="./.idems_app/deployments/${{env.DEPLOYMENT_NAME}}/config.ts"
@@ -86,7 +87,7 @@ jobs:
             # Extract the version number
             VERSION=$(grep 'content_tag_latest:' $FILE_PATH | sed 's/content_tag_latest: *"\(.*\)",/\1/')
             echo "Extracted Version: $VERSION" 
-            echo "artifactname=$VERSION" >> $GITHUB_OUTPUT 
+            echo "artifactname=$VERSION" >> $GITHUB_ENV 
                  
         - name: Populate Encryption key
           if: env.DEPLOYMENT_PRIVATE_KEY != ''
@@ -120,7 +121,7 @@ jobs:
           run: yarn build ${{inputs.build-flags}}
   
         - name: Upload artifact
-          uses: actions/upload-pages-artifact@v1.0.8
+          uses: actions/upload-artifact@v2
           with:
             path: "www/"
             name: ${{ needs.build.outputs.artifactname }}
