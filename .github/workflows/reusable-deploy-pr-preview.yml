@@ -30,7 +30,7 @@ on:
 jobs:
   build:    
     if: contains(github.event.pull_request.labels.*.name, 'test - preview')
-    uses: ./.github/workflows/contentflows/reusable-app-build.yml
+    uses: ./.github/workflows/reusable-app-build.yml
     with: 
       build-flags: --configuration "production,preview"
     secrets: inherit
