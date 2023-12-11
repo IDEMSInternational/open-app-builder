@@ -46,7 +46,8 @@ jobs:
       - name: Download Build Artifact
         uses: actions/download-artifact@v3
         with:
-          name: needs.build.outputs.artifactname
+          name: ${{ needs.build.outputs.artifactname }}
+          path: www/ 
           
       - name: Extract Build folder
         run: |
