@@ -1,0 +1,47 @@
+##################################################################################
+#         About
+##################################################################################
+# Reuseable workflow to be called from content repos. 
+# Creates a internal release in play console
+#
+#         Version : 1.0
+#
+##################################################################################
+#         Configuration
+##################################################################################
+env:
+    APP_ID: ${{vars.APP_ID}}
+    GOOGLE_PLAY_SERVICE_ACCOUNT_JSON: ${{secrets.GOOGLE_PLAY_SERVICE_ACCOUNT_JSON}}
+    
+  ##################################################################################
+  #         Main Code
+  ##################################################################################
+  name: Android - Release to Google Play
+  
+  on:
+    workflow_call:
+  
+  jobs:
+    build:
+      uses: ./.github/workflows/contentflows/reusable-android-build.yml
+      secrets: inherit
+      
+    release:
+      needs: build
+      runs-on: ubuntu-latest
+      steps:
+
+        - name: Download Build Artifact
+          id: download
+          uses: actions/download-artifact@v3
+          with:
+            name: release_bundle
+            path: ./
+  
+        - name: Upload to Google play
+          uses: r0adkll/upload-google-play@v1.1.2
+          with:
+            serviceAccountJsonPlainText: ${{ env.GOOGLE_PLAY_SERVICE_ACCOUNT_JSON}}
+            packageName: ${{env.APP_ID}}
+            releaseFiles: ${{steps.download.outputs.download-path}}/app-release.aab
+            track: internal

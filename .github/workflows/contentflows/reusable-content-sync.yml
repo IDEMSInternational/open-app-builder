@@ -1,0 +1,99 @@
+##################################################################################
+#         About
+##################################################################################
+# Reuseable workflow to be called from content repos. 
+# Syncs assests and data from google sheets and creates a PR with changes
+
+##################################################################################
+#         Configuration 
+##################################################################################
+env:
+    DEPLOYMENT_NAME: ${{vars.DEPLOYMENT_NAME}}
+    APP_CODE_BRANCH: ${{vars.APP_CODE_BRANCH}}
+    PARENT_DEPLOYMENT_REPO: ${{vars.PARENT_DEPLOYMENT_REPO}}
+    PARENT_DEPLOYMENT_NAME: ${{vars.PARENT_DEPLOYMENT_NAME}}
+    PARENT_DEPLOYMENT_BRANCH: ${{vars.PARENT_DEPLOYMENT_BRANCH}}
+    DEPLOYMENT_PRIVATE_KEY: ${{secrets.DEPLOYMENT_PRIVATE_KEY}}
+    FIREBASE_CONFIG: ${{secrets.FIREBASE_CONFIG}}
+  
+  
+  name: Perform content sync and create a PR
+  
+
+##################################################################################
+#         Main Code
+##################################################################################
+on:
+    workflow_call:
+   
+  jobs:
+   build:
+      runs-on: ubuntu-latest
+      steps:
+  
+        - name: Check out app code
+          uses: actions/checkout@v3
+          with:
+            lfs: true
+            repository: "IDEMSInternational/parenting-app-ui.git"
+            ref: ${{env.APP_CODE_BRANCH}}
+  
+        - name: Checkout parent repo if needed
+          if: env.PARENT_DEPLOYMENT_REPO != ''
+          uses: actions/checkout@v3
+          with:
+            lfs: true
+            path: ".idems_app/deployments/${{env.PARENT_DEPLOYMENT_NAME}}"
+            repository: ${{env.PARENT_DEPLOYMENT_REPO}}
+            ref: ${{env.PARENT_DEPLOYMENT_BRANCH}}
+    
+        - name: Checkout deployment
+          uses: actions/checkout@v3
+          with:
+            lfs: true
+            path: ".idems_app/deployments/${{env.DEPLOYMENT_NAME}}"
+        - name: Populate Encryption key
+          if: env.DEPLOYMENT_PRIVATE_KEY != ''
+          run: echo "${{env.DEPLOYMENT_PRIVATE_KEY}}" > ./.idems_app/deployments/${{env.DEPLOYMENT_NAME}}/encrypted/private.key
+  
+          # TODO - populate firebase as part of deployment set
+        - name: Populate Firebase Config
+          if: env.FIREBASE_CONFIG != ''
+          run: echo 'export const firebaseConfig = ${{env.FIREBASE_CONFIG}}' > src/environments/firebaseConfig.ts
+        - name: Setup Node
+          uses: actions/setup-node@v3
+          with:
+            node-version: 18.x
+        - name: Cache node modules
+          uses: actions/cache@v3
+          with:
+            path: ./.yarn/cache
+            # If cachebusting required (e.g. breaking yarn changes on update) change `v1` to another number
+            key: ${{ runner.os }}-node-modules-yarn-v1-${{ hashFiles('**/yarn.lock') }}
+            restore-keys: |
+              ${{ runner.os }}-node-modules-yarn-v1-
+    
+        - name: Install node modules
+          run: yarn install
+  
+        - name: Set parent deployment
+          run: yarn workflow deployment set $PARENT_DEPLOYMENT_NAME
+    
+        - name: Build parent
+          run: yarn build
+          
+        - name: Set deployment
+          run: yarn workflow deployment set $DEPLOYMENT_NAME
+    
+        - name: Build
+          run: yarn build
+                
+        - name: Sync sheets
+          run: yarn workflow sync
+  
+        - name: Create pull request
+          uses: peter-evans/create-pull-request@v5.0.2
+          with:
+            path: ".idems_app/deployments/${{env.DEPLOYMENT_NAME}}"
+            title: "Testing"
+            body: "Automated content sync"
