@@ -16,12 +16,12 @@ env:
   ##################################################################################
   #         Main Code
   ##################################################################################
-  name: Android - Release to Google Play
+name: Android - Release to Google Play
   
-  on:
-    workflow_call:
+on:
+ workflow_call:
   
-  jobs:
+jobs:
     build:
       uses: ./.github/workflows/reusable-android-build.yml
       secrets: inherit
