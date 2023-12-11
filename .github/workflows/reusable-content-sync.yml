@@ -39,7 +39,7 @@ on:
           type: string
           default: Automated PR creation from actions
    
-  jobs:
+jobs:
    build:
       runs-on: ubuntu-latest
       steps:
