@@ -88,9 +88,15 @@ jobs:
             # Extract the version number
             VERSION=$(grep 'content_tag_latest:' $FILE_PATH | sed 's/content_tag_latest: *"\(.*\)",/\1/')
             echo "Extracted Version: $VERSION" 
-            echo "::set-env name=ARTIFACT::$version"
-            echo "artifactname=$VERSION" >> $GITHUB_ENV 
-                 
+            #echo "::set-env name=ARTIFACT::$version"
+            echo "artifactname=$VERSION" >> "$GITHUB_OUTPUT"
+            echo "artifactname: $artifactname"
+            
+        - name: debug
+          run: |
+            echo "artifactname: ${{ outputs.artifactname }}"
+            echo "artifactname: ${{ needs.build.outputs.artifactname }}"
+            
         - name: Populate Encryption key
           if: env.DEPLOYMENT_PRIVATE_KEY != ''
           run: echo "${{env.DEPLOYMENT_PRIVATE_KEY}}" > ./.idems_app/deployments/${{env.DEPLOYMENT_NAME}}/encrypted/private.key
@@ -126,5 +132,5 @@ jobs:
           uses: actions/upload-artifact@v2
           with:
             path: "www/"
-            name: ${{ env.ARTIFACT }}.exe
+            name: ${{ needs.build.outputs.artifactname }}
   
