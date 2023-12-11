@@ -22,14 +22,14 @@ env:
   ##################################################################################
   #         Main Code
   ##################################################################################
-  name: Build App
+name: Build App
   
   # Only keep one active build per ref (e.g. pr branch, push branch, triggering workflow ref)
-  concurrency:
+concurrency:
     group: app-build-${{ github.workflow }}-${{ github.ref }}
     cancel-in-progress: true
   
-  on:
+on:
     workflow_call:
       inputs:
         build-flags:
@@ -44,12 +44,12 @@ env:
       outputs:
         artifactname:
             description: artifact to be given version number for readable reference
-            default: ${{ jobs.build.outputs.artifactname }}
+            value: ${{ jobs.build.outputs.artifactname }}
         GIT_SHA:
           description: "Git SHA of build head"
           value: ${{ jobs.build.outputs.GIT_SHA }}
   
-  jobs:
+jobs:
     build:
       outputs:
         artifactname: ${{ steps.populate.outputs.artifactname }}
