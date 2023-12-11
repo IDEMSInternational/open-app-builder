@@ -23,7 +23,7 @@ env:
   
   jobs:
     build:
-      uses: ./.github/workflows/contentflows/reusable-android-build.yml
+      uses: ./.github/workflows/reusable-android-build.yml
       secrets: inherit
       
     release:
