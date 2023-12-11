@@ -1,0 +1,119 @@
+##################################################################################
+#         About
+##################################################################################
+# Reuseable workflow to be called from content repos. 
+# Build and deploy app to firebase
+# Supports deploying to custom hosting channel for long-lived preview urls (30d)
+# Or using custom hosting target
+#
+#         Version : 1.0
+#
+##################################################################################
+#         Configuration 
+##################################################################################
+
+env:
+  FIREBASE_PROJECT_ID: ${{vars.FIREBASE_PROJECT_ID}} # | ID of firebase project used (in case of multiple deployment targets just specify default)
+  FIREBASE_HOSTING_CHANNEL: ${{vars.FIREBASE_HOSTING_CHANNEL}} # | Name of channel to deploy to (default 'live' is main site, any other word, e.g. 'pr' will create random temp preview site)
+  FIREBASE_HOSTING_TARGET: ${{vars.FIREBASE_HOSTING_TARGET}}  # | Optional override if using multiple hosting target sites (default target project ID)
+  FIREBASE_SERVICE_ACCOUNT: ${{secrets.FIREBASE_SERVICE_ACCOUNT}} # | JSON export of firebase service account (from console)
+
+
+
+##################################################################################
+#         Main Code
+##################################################################################
+name: Deploy Web Preview
+# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
+concurrency:
+  group: "deploy_preview"
+  cancel-in-progress: true
+
+on:
+  workflow_call:
+
+jobs:
+  build_action:
+    uses: ./.github/workflows/contentflows/reusable-app-build.yml
+    secrets: inherit
+
+  deploy:
+    needs: build_action
+    runs-on: ubuntu-latest
+    outputs:
+      urls: ${{ steps.deploy.outputs.urls }}
+    steps:
+      # Extract build artifact
+      - uses: actions/checkout@v3
+
+      - name: Download Build Artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: needs.build.outputs.artifactname
+
+      - name: Extract Build folder
+        run: |
+          mkdir www
+          tar -xf artifact.tar --directory www
+
+      # Ensure FIREBASE_HOSTING_TARGET set (default fallback to projectId)
+      - name: Populate Env
+        if: ${{env.FIREBASE_HOSTING_TARGET == ''}}
+        run: echo "FIREBASE_HOSTING_TARGET=${{env.FIREBASE_PROJECT_ID}}" >> "$GITHUB_ENV"
+
+      # Create a .firebaserc file mapping any firebase deployment host targets (required if multi-host projects)
+      # e.g. {"projects": {"default": "my_app"},"targets": {"my_app": {"hosting": {"my_app_dev":["my_app_dev"]} } }
+      - name: Populate Firebase Targets
+        run: |
+          FIREBASE_RC_TARGETS=$(jq -n \
+            --argjson "${{env.FIREBASE_PROJECT_ID}}" \
+            '{"hosting":{"${{env.FIREBASE_HOSTING_TARGET}}":["${{env.FIREBASE_HOSTING_TARGET}}"]}}' \
+            '$ARGS.named'
+            )
+          FIREBASE_RC=$(jq -n \
+          --argjson projects '{"default":"${{env.FIREBASE_PROJECT_ID}}"}' \
+          --argjson targets "$FIREBASE_RC_TARGETS" \
+          '$ARGS.named'
+          )
+          echo $FIREBASE_RC | jq '.'
+          echo $FIREBASE_RC > .firebaserc
+
+      # Create a firebase.json file to handle single-page-app hosting redirects
+      # e.g. {"hosting": [{"target": "app","public": "www","ignore": ["firebase.json"], "rewrites": [{"source": "**","destination": "/index.html"}] }]}
+      - name: Populate Firebase JSON
+        run: |
+          FIREBASE_JSON_HOSTING=$(jq -n \
+          --arg target "${{ env.FIREBASE_HOSTING_TARGET }}" \
+          --arg public "www" \
+          --argjson ignore '["firebase.json"]' \
+          --argjson rewrites '[{"source": "**","destination": "/index.html"}]' \
+          '$ARGS.named'
+          )
+          FIREBASE_JSON=$(jq -n \
+          --argjson hosting "[$FIREBASE_JSON_HOSTING]" \
+          '$ARGS.named'
+          )
+          echo $FIREBASE_JSON | jq '.'
+          echo $FIREBASE_JSON > firebase.json
+
+      # Deploy to firebase
+      - id: deploy
+        uses: FirebaseExtended/action-hosting-deploy@v0
+        with:
+          repoToken: "${{ secrets.GITHUB_TOKEN }}"
+          firebaseServiceAccount: "${{ env.FIREBASE_SERVICE_ACCOUNT }}"
+          projectId: "${{ env.FIREBASE_PROJECT_ID }}"
+          channelId: "${{ env.FIREBASE_HOSTING_CHANNEL }}"
+          target: "${{ env.FIREBASE_HOSTING_TARGET }}"
+          expires: "30d"
+##################################################################################
+#         Useful Links
+##################################################################################
+# https://firebase.google.com/docs/hosting/full-config
+# https://firebase.google.com/docs/cli/targets
+
+# https://www.baeldung.com/linux/jq-command-json
+# https://jqlang.github.io/jq/manual/
+# https://jqplay.org/
+
+# echo $FIREBASE_JSON | jq '.hosting[0]'
