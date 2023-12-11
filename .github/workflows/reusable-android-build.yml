@@ -26,17 +26,17 @@ env:
   ##################################################################################
   #         Main Code
   ##################################################################################
-  name: Android Build
+name: Android Build
   
   # Only keep one active build per ref (e.g. pr branch, push branch, triggering workflow ref)
-  concurrency:
+concurrency:
     group: android-build-${{ github.workflow }}-${{ github.ref }}
     cancel-in-progress: true
   
-  on:
+on:
     workflow_call:
   
-  jobs:
+jobs:
   
     build_action:
         uses: ./.github/workflows/contentflows/reusable-app-build.yml
