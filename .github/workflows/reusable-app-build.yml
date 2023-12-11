@@ -94,7 +94,6 @@ jobs:
             
         - name: debug
           run: |
-            echo "artifactname: ${{ outputs.artifactname }}"
             echo "artifactname: ${{ needs.build.outputs.artifactname }}"
             
         - name: Populate Encryption key
