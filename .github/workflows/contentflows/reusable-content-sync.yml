@@ -2,98 +2,159 @@
 #         About
 ##################################################################################
 # Reuseable workflow to be called from content repos. 
-# Syncs assests and data from google sheets and creates a PR with changes
-
+# Syncs content from Google Drive and creates a pull request. Can be run 
+# manually by users with access to actions without the need to use git or vscode.
+# Needs gdrive credentails set up on repository and a PAT for the pull request
+#
+#         Version : 1.0
+#
 ##################################################################################
 #         Configuration 
 ##################################################################################
 env:
-    DEPLOYMENT_NAME: ${{vars.DEPLOYMENT_NAME}}
-    APP_CODE_BRANCH: ${{vars.APP_CODE_BRANCH}}
-    PARENT_DEPLOYMENT_REPO: ${{vars.PARENT_DEPLOYMENT_REPO}}
-    PARENT_DEPLOYMENT_NAME: ${{vars.PARENT_DEPLOYMENT_NAME}}
-    PARENT_DEPLOYMENT_BRANCH: ${{vars.PARENT_DEPLOYMENT_BRANCH}}
-    DEPLOYMENT_PRIVATE_KEY: ${{secrets.DEPLOYMENT_PRIVATE_KEY}}
-    FIREBASE_CONFIG: ${{secrets.FIREBASE_CONFIG}}
+  DEPLOYMENT_NAME: ${{vars.DEPLOYMENT_NAME}}
+  APP_CODE_BRANCH: ${{vars.APP_CODE_BRANCH}}
+  PARENT_DEPLOYMENT_REPO: ${{vars.PARENT_DEPLOYMENT_REPO}}
+  PARENT_DEPLOYMENT_NAME: ${{vars.PARENT_DEPLOYMENT_NAME}}
+  PARENT_DEPLOYMENT_BRANCH: ${{vars.PARENT_DEPLOYMENT_BRANCH}}
+  DEPLOYMENT_PRIVATE_KEY: ${{secrets.DEPLOYMENT_PRIVATE_KEY}}
+  FIREBASE_CONFIG: ${{secrets.FIREBASE_CONFIG}}  
+  GDRIVE_CREDENTIALS: ${{ secrets.GDRIVE_CREDENTIALS }} 
+  GDRIVE_TOKEN:  ${{ secrets.GDRIVE_TOKEN }}
   
   
-  name: Perform content sync and create a PR
-  
-
+name: Perform content sync and create a PR
 ##################################################################################
 #         Main Code
 ##################################################################################
 on:
     workflow_call:
+      inputs:
+        pr-title:
+          description: Title for PR
+          type: string
+          default: sync content from google sheets
+        pr-body:
+          description: Description for PR
+          type: string
+          default: Automated PR creation from actions
    
   jobs:
    build:
       runs-on: ubuntu-latest
       steps:
   
-        - name: Check out app code
-          uses: actions/checkout@v3
-          with:
-            lfs: true
-            repository: "IDEMSInternational/parenting-app-ui.git"
-            ref: ${{env.APP_CODE_BRANCH}}
-  
-        - name: Checkout parent repo if needed
-          if: env.PARENT_DEPLOYMENT_REPO != ''
-          uses: actions/checkout@v3
-          with:
-            lfs: true
-            path: ".idems_app/deployments/${{env.PARENT_DEPLOYMENT_NAME}}"
-            repository: ${{env.PARENT_DEPLOYMENT_REPO}}
-            ref: ${{env.PARENT_DEPLOYMENT_BRANCH}}
-    
-        - name: Checkout deployment
-          uses: actions/checkout@v3
-          with:
-            lfs: true
-            path: ".idems_app/deployments/${{env.DEPLOYMENT_NAME}}"
-        - name: Populate Encryption key
-          if: env.DEPLOYMENT_PRIVATE_KEY != ''
-          run: echo "${{env.DEPLOYMENT_PRIVATE_KEY}}" > ./.idems_app/deployments/${{env.DEPLOYMENT_NAME}}/encrypted/private.key
-  
-          # TODO - populate firebase as part of deployment set
-        - name: Populate Firebase Config
-          if: env.FIREBASE_CONFIG != ''
-          run: echo 'export const firebaseConfig = ${{env.FIREBASE_CONFIG}}' > src/environments/firebaseConfig.ts
-        - name: Setup Node
-          uses: actions/setup-node@v3
-          with:
-            node-version: 18.x
-        - name: Cache node modules
-          uses: actions/cache@v3
-          with:
-            path: ./.yarn/cache
-            # If cachebusting required (e.g. breaking yarn changes on update) change `v1` to another number
-            key: ${{ runner.os }}-node-modules-yarn-v1-${{ hashFiles('**/yarn.lock') }}
-            restore-keys: |
-              ${{ runner.os }}-node-modules-yarn-v1-
-    
-        - name: Install node modules
-          run: yarn install
-  
-        - name: Set parent deployment
-          run: yarn workflow deployment set $PARENT_DEPLOYMENT_NAME
-    
-        - name: Build parent
-          run: yarn build
+      - name: Check out app code
+        uses: actions/checkout@v3
+        with:
+          repository: "IDEMSInternational/parenting-app-ui.git"
+          ref: ${{env.APP_CODE_BRANCH}}
+
+      - name: Remove .git from the repository in order to nest
+        run: |
+          rm -rf .git
+
+      - name: Checkout parent repo if needed
+        if: env.PARENT_DEPLOYMENT_REPO != ''
+        uses: actions/checkout@v3
+        with:
+          path: ".idems_app/deployments/${{env.PARENT_DEPLOYMENT_NAME}}"
+          repository: ${{env.PARENT_DEPLOYMENT_REPO}}
+          ref: ${{env.PARENT_DEPLOYMENT_BRANCH}}
+
+      - name: Checkout deployment
+        uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.PAT }}
+          path: ".idems_app/deployments/${{env.DEPLOYMENT_NAME}}"
           
-        - name: Set deployment
-          run: yarn workflow deployment set $DEPLOYMENT_NAME
+      - name: Populate Encryption key
+        if: env.DEPLOYMENT_PRIVATE_KEY != ''
+        run: echo "${{env.DEPLOYMENT_PRIVATE_KEY}}" > ./.idems_app/deployments/${{env.DEPLOYMENT_NAME}}/encrypted/private.key
+
+        # TODO - populate firebase as part of deployment set
+      - name: Populate Firebase Config
+        if: env.FIREBASE_CONFIG != ''
+        run: echo 'export const firebaseConfig = ${{env.FIREBASE_CONFIG}}' > src/environments/firebaseConfig.ts
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18.x
+
+      - name: Cache node modules
+        uses: actions/cache@v3
+        with:
+          path: ./.yarn/cache
+          # If cachebusting required (e.g. breaking yarn changes on update) change `v1` to another number
+          key: ${{ runner.os }}-node-modules-yarn-v1-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-node-modules-yarn-v1-
+
+      - name: Install node modules
+        run: yarn install
+
+      - name: Set deployment
+        run: yarn workflow deployment set $DEPLOYMENT_NAME
+          
+      - name: Add google credentials
+        run: |
+          echo "${{env.GDRIVE_CREDENTIALS}}" > ./packages/scripts/config/credentials.json
     
-        - name: Build
-          run: yarn build
-                
-        - name: Sync sheets
-          run: yarn workflow sync
-  
-        - name: Create pull request
-          uses: peter-evans/create-pull-request@v5.0.2
-          with:
-            path: ".idems_app/deployments/${{env.DEPLOYMENT_NAME}}"
-            title: "Testing"
-            body: "Automated content sync"
+      - name: Add google token
+        run: echo "$GDRIVE_TOKEN" > ./packages/scripts/config/token.json
+        env:
+          GDRIVE_TOKEN: ${{ env.GDRIVE_TOKEN }}
+
+      - name: Sync content
+        run: yarn workflow sync
+
+      - name: Increment version number
+        run: |
+          # Define the path to the file
+          FILE_PATH="./.idems_app/deployments/${{env.DEPLOYMENT_NAME}}/config.ts"
+          
+          # Extract the version number
+          VERSION=$(grep 'content_tag_latest:' $FILE_PATH | sed 's/content_tag_latest: *"\(.*\)",/\1/')
+          echo "Extracted Version: $VERSION"
+    
+          # Split the version into major, minor, and patch components
+          IFS='.' read -ra VERSION_PARTS <<< "$VERSION"
+          
+          if [[ ${#VERSION_PARTS[@]} -ne 3 ]]; then
+             echo "Error: Version format is not as expected."
+             exit 1
+          fi
+          
+          PATCH_VERSION="${VERSION_PARTS[2]}"
+          
+          # Increment the patch version
+          NEW_PATCH_VERSION=$((PATCH_VERSION + 1))
+          
+          # Construct the new version
+          NEW_VERSION="${VERSION_PARTS[0]}.${VERSION_PARTS[1]}.$NEW_PATCH_VERSION"
+          
+          echo "New Version: $NEW_VERSION"
+          echo "Command: s/$VERSION/$NEW_VERSION/ $FILE_PATH"
+
+          sed -i 's/\(content_tag_latest: "\)\([0-9]\+\.[0-9]\+\.\)\([0-9]\+\)"/\1\2'$((NEW_PATCH_VERSION))'"/' $FILE_PATH
+      
+      - name: Commit changes
+        working-directory: .idems_app/deployments/${{env.DEPLOYMENT_NAME}}
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"        
+          git add .  # This adds all changes to the staging area
+          git diff --quiet && git diff --staged --quiet || git commit -m "Automated commit message" # Only commit if there are changes
+        #  git checkout -b automated-changes
+
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v5.0.2
+        with:
+          token: ${{ secrets.PAT }}
+          # Relative path under $GITHUB_WORKSPACE to the repository. Defaults to $GITHUB_WORKSPACE.
+          path: .idems_app/deployments/${{env.DEPLOYMENT_NAME}}             
+          # The title of the pull request.
+          title: ${{ inputs.pr-title }}
+          # The body of the pull request.
+          body: ${{ inputs.pr-body }}
+          labels: test - preview
