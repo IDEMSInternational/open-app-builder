@@ -123,5 +123,5 @@ jobs:
           uses: actions/upload-pages-artifact@v1.0.8
           with:
             path: "www/"
-            name: ${{outputs.artifactname}}
+            name: ${{ needs.build.outputs.artifactname }}
   
