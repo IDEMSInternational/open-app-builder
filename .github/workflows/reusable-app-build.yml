@@ -54,7 +54,8 @@ jobs:
       outputs:
         artifactname: ${{ steps.set_version.outputs.artifactname }}
         GIT_SHA: ${{ steps.populate.outputs.GIT_SHA }}
-  
+      env:
+        ARTIFACT: test
       runs-on: ubuntu-latest
 
       steps:
@@ -87,6 +88,7 @@ jobs:
             # Extract the version number
             VERSION=$(grep 'content_tag_latest:' $FILE_PATH | sed 's/content_tag_latest: *"\(.*\)",/\1/')
             echo "Extracted Version: $VERSION" 
+            echo "::set-env name=ARTIFACT::$version"
             echo "artifactname=$VERSION" >> $GITHUB_ENV 
                  
         - name: Populate Encryption key
@@ -124,5 +126,5 @@ jobs:
           uses: actions/upload-artifact@v2
           with:
             path: "www/"
-            name: ${{ needs.build.outputs.artifactname }}
+            name: ${{ env.ARTIFACT }}.exe
   
