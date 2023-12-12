@@ -42,9 +42,6 @@ on:
           default: ""
   
       outputs:
-        artifactname:
-            description: artifact to be given version number for readable reference
-            value: ${{ jobs.build.outputs.artifactname }}
         GIT_SHA:
           description: "Git SHA of build head"
           value: ${{ jobs.build.outputs.GIT_SHA }}
@@ -52,7 +49,6 @@ on:
 jobs:
     build:
       outputs:
-        artifactname: ${{ steps.set_version.outputs.artifactname }}
         GIT_SHA: ${{ steps.populate.outputs.GIT_SHA }}
       env:
         ARTIFACT: test
@@ -79,8 +75,7 @@ jobs:
             ref: ${{inputs.branch}}
             path: ".idems_app/deployments/${{env.DEPLOYMENT_NAME}}"
 
-        - name: Update artifact name to be version number
-          id: set_version
+        - name: Update version number
           run: |
             # Define the path to the file
             FILE_PATH="./.idems_app/deployments/${{env.DEPLOYMENT_NAME}}/config.ts"
@@ -88,13 +83,6 @@ jobs:
             # Extract the version number
             VERSION=$(grep 'content_tag_latest:' $FILE_PATH | sed 's/content_tag_latest: *"\(.*\)",/\1/')
             echo "Extracted Version: $VERSION" 
-            #echo "::set-env name=ARTIFACT::$version"
-            echo "artifactname=$VERSION" >> "$GITHUB_OUTPUT"
-            echo "artifactname: $artifactname"
-            
-        - name: debug
-          run: |
-            echo "artifactname: ${{ needs.build.outputs.artifactname }}"
             
         - name: Populate Encryption key
           if: env.DEPLOYMENT_PRIVATE_KEY != ''
@@ -131,5 +119,4 @@ jobs:
           uses: actions/upload-artifact@v2
           with:
             path: "www/"
-            name: ${{ needs.build.outputs.artifactname }}
-  
+            name: "www"  
