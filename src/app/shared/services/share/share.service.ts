@@ -60,6 +60,7 @@ export class ShareService extends SyncServiceBase {
   }
 
   async shareFile(relativePath: string) {
+    let localFilepath: string;
     try {
       if (relativePath) {
         await this.templateAssetService.ready();
@@ -70,11 +71,11 @@ export class ShareService extends SyncServiceBase {
             this.fileManagerService.ready();
             const blob = (await this.templateAssetService.fetchAsset(relativePath, "blob")) as Blob;
             // @capacitor/share can only share files saved to "Cache" directory
-            const { localFilepath } = await this.fileManagerService.saveFile(
+            ({ localFilepath } = await this.fileManagerService.saveFile(
               blob,
               relativePath,
               "Cache"
-            );
+            ));
             if (localFilepath) {
               const { activityType } = await Share.share({ url: localFilepath });
               console.log("[SHARE] Content shared to", activityType);
@@ -99,11 +100,17 @@ export class ShareService extends SyncServiceBase {
       }
     } catch (error) {
       this.handleShareError(error);
+    } finally {
+      // If a temporary file was saved for sharing, delete it
+      if (localFilepath) {
+        this.fileManagerService.deleteFile(localFilepath);
+      }
     }
   }
 
-  private handleShareError(error) {
-    if (error.message === "Abort due to cancellation of share.") {
+  private handleShareError(error: Error) {
+    const cancellationMessages = ["Abort due to cancellation of share.", "Share canceled"];
+    if (cancellationMessages.includes(error.message)) {
       console.warn("[SHARE] Share cancelled by user");
     } else {
       this.errorHandler.handleError(error);

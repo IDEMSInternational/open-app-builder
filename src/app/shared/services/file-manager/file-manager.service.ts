@@ -3,6 +3,7 @@ import { Directory, Encoding, Filesystem } from "@capacitor/filesystem";
 import { FileOpener } from "@capacitor-community/file-opener";
 import { Capacitor } from "@capacitor/core";
 import write_blob from "capacitor-blob-writer";
+import { saveAs } from "file-saver";
 import { SyncServiceBase } from "../syncService.base";
 import { environment } from "src/environments/environment";
 import { IAssetContents } from "src/app/data";
@@ -47,10 +48,10 @@ export class FileManagerService extends SyncServiceBase {
         const { localFilepath } = await this.saveFile(blob, relativePath);
         FileOpener.open({ filePath: localFilepath, openWithDefault: false });
       }
-      // On web, open the file in the browser, ready for download
+      // On web, prompt standard browser download
       else {
-        const fileUrl = window.URL.createObjectURL(blob);
-        window.open(fileUrl);
+        const filename = relativePath.split("/").pop();
+        saveAs(blob, filename);
       }
     } catch (err) {
       this.errorHandler.handleError(err);
@@ -76,6 +77,11 @@ export class FileManagerService extends SyncServiceBase {
       },
     });
     return { localFilepath, src: Capacitor.convertFileSrc(localFilepath) };
+  }
+
+  public async deleteFile(localFilepath: string) {
+    console.log("hellp");
+    return await Filesystem.deleteFile({ path: localFilepath });
   }
 
   /**
