@@ -71,11 +71,11 @@ export class ShareService extends SyncServiceBase {
             this.fileManagerService.ready();
             const blob = (await this.templateAssetService.fetchAsset(relativePath, "blob")) as Blob;
             // @capacitor/share can only share files saved to "Cache" directory
-            ({ localFilepath } = await this.fileManagerService.saveFile(
-              blob,
-              relativePath,
-              "Cache"
-            ));
+            ({ localFilepath } = await this.fileManagerService.saveFile({
+              data: blob,
+              targetPath: relativePath,
+              directory: "Cache",
+            }));
             if (localFilepath) {
               const { activityType } = await Share.share({ url: localFilepath });
               console.log("[SHARE] Content shared to", activityType);
