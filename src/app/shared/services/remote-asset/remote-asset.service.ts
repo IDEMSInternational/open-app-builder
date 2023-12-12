@@ -257,7 +257,7 @@ export class RemoteAssetService extends AsyncServiceBase {
       complete: async () => {
         console.log(`[REMOTE ASSETS] File ${fileIndex + 1} of ${totalFiles} downloaded to cache`);
         if (data) {
-          const filesystemPath = await this.fileManagerService.saveFile(data, assetEntry.id);
+          await this.fileManagerService.saveFile({ data, targetPath: assetEntry.id });
           await this.updateAssetContents(assetEntry);
         }
         progress$.next(progress);
