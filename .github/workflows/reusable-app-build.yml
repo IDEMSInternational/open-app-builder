@@ -116,7 +116,7 @@ jobs:
           run: yarn build ${{inputs.build-flags}}
   
         - name: Upload artifact
-          uses: actions/upload-artifact@v2
+          uses: actions/upload-pages-artifact@v1.0.8
           with:
             path: "www/"
-            name: "www"  
+            name: www  
