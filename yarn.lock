@@ -7308,6 +7308,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/file-saver@npm:^2.0.7":
+  version: 2.0.7
+  resolution: "@types/file-saver@npm:2.0.7"
+  checksum: c3d1cd80eab1214767922cabac97681f3fb688e82b74890450d70deaca49537949bbc96d80d363d91e8f0a4752c7164909cc8902d9721c5c4809baafc42a3801
+  languageName: node
+  linkType: hard
+
 "@types/fs-extra@npm:^8.0.0":
   version: 8.1.2
   resolution: "@types/fs-extra@npm:8.1.2"
@@ -15035,6 +15042,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"file-saver@npm:^2.0.5":
+  version: 2.0.5
+  resolution: "file-saver@npm:2.0.5"
+  checksum: c62d96e5cebc58b4bdf3ae8a60d5cf9607ad82f75f798c33a4ee63435ac2203002584d5256a2a780eda7feb5e19dc3b6351c2212e58b3f529e63d265a7cc79f7
+  languageName: node
+  linkType: hard
+
 "file-uri-to-path@npm:2":
   version: 2.0.0
   resolution: "file-uri-to-path@npm:2.0.0"
@@ -15541,6 +15555,7 @@ __metadata:
     "@supabase/supabase-js": ^2.13.1
     "@swc/helpers": ^0.5.1
     "@types/clone": ^2.1.1
+    "@types/file-saver": ^2.0.7
     "@types/howler": ^2.2.2
     "@types/intro.js": ^3.0.1
     "@types/jasmine": ~4.3.0
@@ -15576,6 +15591,7 @@ __metadata:
     eslint-plugin-prefer-arrow: 1.2.3
     eslint-plugin-promise: ^6.1.1
     extract-math: ^1.2.3
+    file-saver: ^2.0.5
     firebase: ^9.8.1
     firebase-tools: ^9.14.0
     globalthis: ^1.0.2
