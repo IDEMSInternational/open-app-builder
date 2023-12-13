@@ -47,7 +47,6 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: www
-          path: www/ 
           
       - name: Extract Build folder
         run: |
