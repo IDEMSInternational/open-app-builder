@@ -33,34 +33,48 @@ export class FileManagerService extends SyncServiceBase {
 
   private registerTemplateActionHandlers() {
     this.templateActionRegistry.register({
-      download: async ({ args }) => {
-        await this.downloadTemplateAsset(args[0]);
-        // await this.openTemplateAsset(args[0])
+      // Native: save file to Downloads folder in external device storage and open;
+      // Web: download file
+      save_to_device: async ({ args }) => {
+        await this.downloadTemplateAsset({ relativePath: args[0] });
       },
-      // Above should download file on both native and web
-      // Below should download and open on native, and just open in new tab on web
-      // open_external
+      // Native: save file to app's internal cache on device and open it externally to the app
+      // (file is not permanently saved and is not accessible through external storage);
+      // Web: open file in new tab, or download if not viewable in browser
+      open_external: async ({ args }) => {
+        await this.openTemplateAsset(args[0]);
+      },
     });
   }
 
   /**
-   * Download an asset file.
-   * On native devices, download file to native storage and optionally trigger prompt to open with native apps.
+   * Save an asset file to device storage.
+   * On native devices, save file to native storage and optionally trigger prompt to open with native apps.
    * On web, prompt standard browser download.
-   * @param relativePath The relative path to an asset, in standard authoring syntax
-   * @param [open=true] On native devices, open the file after download. Default: true
+   * @param options.relativePath The relative path to an asset, in standard authoring syntax
+   * @param options.open On native devices, open the file after download. Default: true
    */
-  private async downloadTemplateAsset(relativePath: string, open: boolean = true) {
+  private async downloadTemplateAsset(options: {
+    relativePath: string;
+    open?: boolean;
+    directory?: keyof typeof Directory;
+    subdirectory?: string;
+  }) {
+    const {
+      relativePath,
+      open = true,
+      directory = "ExternalStorage",
+      subdirectory = "Download",
+    } = options;
     await this.templateAssetService.ready();
     const blob = (await this.templateAssetService.fetchAsset(relativePath, "blob")) as Blob;
     try {
       if (Capacitor.isNativePlatform()) {
-        const targetPath = "Download/" + relativePath;
         const { localFilepath } = await this.saveFile({
           data: blob,
-          targetPath,
-          isAbsolutePath: true,
-          directory: "ExternalStorage",
+          targetPath: relativePath,
+          directory,
+          subdirectory,
         });
         if (open) FileOpener.open({ filePath: localFilepath, openWithDefault: false });
       } else {
@@ -80,8 +94,15 @@ export class FileManagerService extends SyncServiceBase {
    */
   private async openTemplateAsset(relativePath: string) {
     if (Capacitor.isNativePlatform()) {
-      this.downloadTemplateAsset(relativePath, true);
+      // Save to "Cache" directory, which may be deleted in cases of low memory. See https://capacitorjs.com/docs/apis/filesystem#directory
+      this.downloadTemplateAsset({
+        relativePath,
+        open: true,
+        directory: "Cache",
+        subdirectory: "",
+      });
     } else {
+      await this.templateAssetService.ready();
       const fileUrl = this.templateAssetService.getTranslatedAssetPath(relativePath);
       window.open(fileUrl, "_blank");
     }
@@ -91,20 +112,21 @@ export class FileManagerService extends SyncServiceBase {
    * Save a file to the local filesystem (native only),
    * @param options.directory the name of the directory in which to save the file.
    * E.g. the permenent "Data" directory (default) or the temporary "Cache" (see https://capacitorjs.com/docs/apis/filesystem#directory)
-   * @param options.isAbsolutePath Ignore deployment-specific cacheName folder when saving
+   * @param options.subdirectory Additional folder path to be added between "directory" and target path. The app deployment name is always added.
    * @returns the local filesystem path to the saved file, in both "file://*" format and usable src format
    */
   async saveFile(options: {
     data: Blob;
     targetPath: string;
-    isAbsolutePath?: boolean;
     directory?: keyof typeof Directory;
+    subdirectory?: string;
   }) {
-    const { data, targetPath, isAbsolutePath = false, directory = "Data" } = options;
+    const { data, targetPath, directory = "Data", subdirectory = "" } = options;
+    const path = (subdirectory ? subdirectory + "/" : "") + `${this.cacheName}/${targetPath}`;
     // Docs for write_blob are here: https://github.com/diachedelic/capacitor-blob-writer#readme
     const localFilepath = await write_blob({
       directory: Directory[directory],
-      path: isAbsolutePath ? targetPath : `${this.cacheName}/${targetPath}`,
+      path,
       blob: data,
       fast_mode: true,
       recursive: true,
