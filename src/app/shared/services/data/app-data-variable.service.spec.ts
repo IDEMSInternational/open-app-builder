@@ -28,11 +28,18 @@ export class MockAppDataVariableService implements Partial<AppDataVariableServic
   constructor() {
     this.handlers = getMockHandlers();
   }
+  public async ready() {
+    return true;
+  }
+  public async evaluateExpression(expression: string) {
+    return expression;
+  }
 }
 
-/******************************************************************
+/********************************************************************************
  * Tests
- ******************************************************************/
+ * yarn ng test --include src\app\shared\services\data\app-data-variable.service.spec.ts
+ *******************************************************************************/
 describe("AppDataVariableService", () => {
   let service: AppDataVariableService;
 
@@ -63,8 +70,8 @@ describe("AppDataVariableService", () => {
 
   it("parses expressions", async () => {
     await service.set("field", "expression_field_1", "value_expression_field_1");
-    const evaluated = await service.parseExpression("hello @field.expression_field_1");
-    expect(evaluated).toEqual("hello value_expression_field_1");
+    const { parsed } = await service.parseExpression("hello @field.expression_field_1");
+    expect(parsed).toEqual("hello value_expression_field_1");
   });
 
   it("evaluates expressions", async () => {
@@ -72,6 +79,24 @@ describe("AppDataVariableService", () => {
     const evaluated = await service.evaluateExpression("@field.test_value < 3");
     expect(evaluated).toEqual(true);
   });
+
+  it("supports JS evaluation on replaced string values", async () => {
+    await service.set("field", "test_value", "hello");
+    const evaluated = await service.evaluateExpression("@field.test_value.startsWith('h')");
+    expect(evaluated).toEqual(true);
+  });
+  it("evaluates expressions with string value", async () => {
+    await service.set("field", "test_value", "hello");
+    const evaluated = await service.evaluateExpression("@field.test_value === 'hello'");
+    expect(evaluated).toEqual(true);
+  });
+  // Using '{}' delimters does not work, evaluated returns `hello.startsWith('h')`
+  // it("evaluates expressions with string methods applied to field values - delimited", async () => {
+  //   await service.set("field", "test_value", "hello");
+  //   const evaluated = await service.evaluateExpression("{@field.test_value}.startsWith('h')");
+  //   console.log("evaluated", evaluated)
+  //   expect(evaluated).toEqual(true);
+  // });
 
   //   TODO - requires mock error logger pending refactor in open #2019
 
