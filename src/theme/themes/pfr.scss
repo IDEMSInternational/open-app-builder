@@ -4,11 +4,10 @@
 @mixin theme-pfr {
   [data-theme="pfr"] {
     /** Authoring variables **/
-    $color-primary: #174168;
-    $color-secondary: #f8a530;
+    $color-primary: black;
+    $color-secondary: #e24000;
     $page-background: white;
     $green: #289b4c;
-    $red: #e24000;
 
     /** Authoring component overrides **/
     $variable-overrides: (
@@ -49,13 +48,7 @@
       // radio-button-font-color: var(--ion-color-primary),
       ion-item-background: var(--ion-color-gray-light),
     );
-    @include utils.generateTheme(
-      $color-primary,
-      $color-secondary,
-      $page-background,
-      $g: $green,
-      $r: $red
-    );
+    @include utils.generateTheme($color-primary, $color-secondary, $page-background, $g: $green);
     @each $name, $value in $variable-overrides {
       --#{$name}: #{$value};
     }
