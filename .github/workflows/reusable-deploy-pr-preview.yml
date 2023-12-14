@@ -1,0 +1,95 @@
+##################################################################################
+#         About
+##################################################################################
+# Reuseable workflow to be called from content repos. 
+# Deploy preview url for labelled PRs
+# Specifies deployment target based on pr target branch
+# Must specify all below secrets and variables - see documentation for details
+#
+#         Version : 1.0
+#
+##################################################################################
+#         Configuration
+##################################################################################
+env:
+  FIREBASE_PROJECT_ID: ${{vars.FIREBASE_PROJECT_ID}} # | ID of firebase project used (in case of multiple deployment targets just specify default)
+  FIREBASE_HOSTING_CHANNEL: ${{vars.FIREBASE_HOSTING_CHANNEL}} # | Name of channel to deploy to (default 'live' is main site, any other word, e.g. 'pr' will create random temp preview site)
+  FIREBASE_HOSTING_TARGET: ${{vars.FIREBASE_HOSTING_TARGET}}  # | Optional override if using multiple hosting target sites (default target project ID)
+  FIREBASE_SERVICE_ACCOUNT: ${{secrets.FIREBASE_SERVICE_ACCOUNT}} # | JSON export of firebase service account (from console)
+
+##################################################################################
+#         Main Code
+##################################################################################
+name: Deploy PR Preview
+concurrency:
+  group: deploy-pr-preview-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+on:
+  workflow_call:
+
+jobs:
+  build:    
+    if: contains(github.event.pull_request.labels.*.name, 'test - preview')
+    uses: ./.github/workflows/reusable-app-build.yml
+    with: 
+      build-flags: --configuration "production,preview"
+    secrets: inherit
+  
+  deploy_preview:  
+    needs: build
+    runs-on: ubuntu-latest
+    outputs:
+      urls: ${{ steps.deploy.outputs.urls }}
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Download Build Artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: www
+          
+      - name: Extract Build folder
+        run: |
+          mkdir www
+          tar -xf artifact.tar --directory www
+
+      - name: Populate Firebase Targets
+        run: |
+          FIREBASE_RC_TARGETS=$(jq -n \
+            --argjson "${{env.FIREBASE_PROJECT_ID}}" \
+            '{"hosting":{"${{env.FIREBASE_HOSTING_TARGET}}":["${{env.FIREBASE_HOSTING_TARGET}}"]}}' \
+            '$ARGS.named'
+            )
+          FIREBASE_RC=$(jq -n \
+          --argjson projects '{"default":"${{env.FIREBASE_PROJECT_ID}}"}' \
+          --argjson targets "$FIREBASE_RC_TARGETS" \
+          '$ARGS.named'
+          )
+          echo $FIREBASE_RC | jq '.'
+          echo $FIREBASE_RC > .firebaserc
+
+      - name: Populate Firebase JSON
+        run: |
+          FIREBASE_JSON_HOSTING=$(jq -n \
+          --arg target "${{ env.FIREBASE_HOSTING_TARGET }}" \
+          --arg public "www" \
+          --argjson ignore '["firebase.json"]' \
+          --argjson rewrites '[{"source": "**","destination": "/index.html"}]' \
+          '$ARGS.named'
+          )
+          FIREBASE_JSON=$(jq -n \
+          --argjson hosting "[$FIREBASE_JSON_HOSTING]" \
+          '$ARGS.named'
+          )
+          echo $FIREBASE_JSON | jq '.'
+          echo $FIREBASE_JSON > firebase.json
+          
+      - uses: FirebaseExtended/action-hosting-deploy@v0
+        with:
+          repoToken: "${{ secrets.GITHUB_TOKEN }}"
+          firebaseServiceAccount: "${{ env.FIREBASE_SERVICE_ACCOUNT }}"
+          projectId: "${{ env.FIREBASE_PROJECT_ID }}"
+          target: "${{ env.FIREBASE_HOSTING_TARGET }}"
+          expires: 14d
+        env:
+          FIREBASE_CLI_PREVIEWS: hostingchannels
