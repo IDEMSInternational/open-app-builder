@@ -33,7 +33,7 @@ jobs:
     uses: ./.github/workflows/reusable-app-build.yml
     with: 
       build-flags: --configuration "production,preview"
-      branch: ${{github.event.pull_request.head.ref}}
+      branch: ${{ github.ref }}
     secrets: inherit
   
   deploy_preview:  
