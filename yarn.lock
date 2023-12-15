@@ -8640,7 +8640,7 @@ __metadata:
     rimraf: ^5.0.0
     rxjs: ^7.8.1
     sequelize: ^6.33.0
-    sequelize-typescript: ^2.1.5
+    sequelize-typescript: ^2.1.6
     supertest: ^6.3.3
     swagger-ui-express: ^4.6.3
     ts-jest: ^29.1.1
@@ -23504,7 +23504,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"sequelize-typescript@npm:^2.1.5":
+"sequelize-typescript@npm:^2.1.6":
   version: 2.1.6
   resolution: "sequelize-typescript@npm:2.1.6"
   dependencies:
