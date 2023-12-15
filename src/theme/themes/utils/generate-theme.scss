@@ -10,6 +10,8 @@
   $secondary,
   $page-background: null,
   $weights: (50, 100, 200, 300, 400, 500, 600, 700, 800, 900),
+  $green: null,
+  $red: null,
   $yellow: #ffd333,
   $gray: hsl(0, 0%, 93%)
 ) {
@@ -37,8 +39,15 @@
   $result: map.merge($result, generateColourVariants($yellow, "yellow", $weights));
   $result: map.merge($result, generateColourVariants($gray, "gray", $weights));
 
+  // Handle default values for optional params
   @if ($page-background != null) {
     $result: map.set($result, "background-color", $page-background);
+  }
+  @if ($green != null) {
+    $result: map.set($result, "color-green", $green);
+  }
+  @if ($red != null) {
+    $result: map.set($result, "color-red", $red);
   }
   @return $result;
 }
@@ -98,8 +107,8 @@
   @return $gradientPalette;
 }
 
-@mixin generateTheme($p, $s, $bg: null) {
-  $colorPalette: getColorPalette($p, $s, $bg);
+@mixin generateTheme($p, $s, $bg: null, $r: null, $g: null) {
+  $colorPalette: getColorPalette($p, $s, $bg, $red: $r, $green: $g);
   $gradientPalette: getGradientPalette($colorPalette);
   @include colorVariables($colorPalette, $gradientPalette);
 }
