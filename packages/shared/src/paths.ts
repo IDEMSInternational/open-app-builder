@@ -22,3 +22,7 @@ export const RESOURCE_FOLDER_PATH = path.join(ROOT_DIR, "resources");
 
 export const ANDROID_RES_PATH = path.join(ROOT_DIR, "android/app/src/main/res");
 export const APP_BUILD_GRADLE_PATH = path.join(ROOT_DIR, "android/app/build.gradle");
+export const ANDROID_BUILD_ACTION_PATH = path.join(
+  ROOT_DIR,
+  ".github/workflows/reusable-android-build.yml"
+);
