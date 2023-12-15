@@ -9,7 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        android:usesCleartextTraffic="true">
+        android:usesCleartextTraffic="true"
+        android:requestLegacyExternalStorage="true">
+        <!-- requestLegacyExternalStorage is required to save files to "Documents" folder on Android 10 -->
 
         <activity
             android:exported="true"
@@ -72,8 +74,8 @@
 
   <!-- Requested permissions, required in the app -->
   <!-- Camera, Photos, input file -->
-  <uses-permission android:required="false" android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-  <uses-permission android:required="false" android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+  <!-- <uses-permission android:required="false" android:name="android.permission.READ_EXTERNAL_STORAGE"/> -->
+  <!-- <uses-permission android:required="false" android:name="android.permission.WRITE_EXTERNAL_STORAGE" /> -->
   
   <!-- Navigator.getUserMedia -->
   <!-- Video -->

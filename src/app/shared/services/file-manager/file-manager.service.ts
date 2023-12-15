@@ -63,8 +63,10 @@ export class FileManagerService extends SyncServiceBase {
     const {
       relativePath,
       open = true,
-      directory = "ExternalStorage",
-      subdirectory = "Download",
+      // To save to user's general Download folder, requires saving to to the "ExternalStorage" directory, with subdirectory "Download".
+      //However this requires additional permissions on Android versions <= 10, which are considered "dangerous"
+      directory = "Documents",
+      subdirectory,
     } = options;
     await this.templateAssetService.ready();
     const blob = (await this.templateAssetService.fetchAsset(relativePath, "blob")) as Blob;
