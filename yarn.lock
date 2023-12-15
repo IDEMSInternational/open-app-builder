@@ -2593,6 +2593,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@capacitor-community/file-opener@npm:^1.0.5":
+  version: 1.0.5
+  resolution: "@capacitor-community/file-opener@npm:1.0.5"
+  peerDependencies:
+    "@capacitor/core": ^3.0.0 || ^4.0.0 || ^5.0.0
+  checksum: c98847e7f083df313911ad85eedbaf07869ea09d88acb6eff738f5c162b614b12683adaa4571d71b1dd808d29e1ec9e4365372482c8a7d16e21bbd3f6b63a306
+  languageName: node
+  linkType: hard
+
 "@capacitor-community/firebase-crashlytics@npm:^3.0.0":
   version: 3.0.0
   resolution: "@capacitor-community/firebase-crashlytics@npm:3.0.0"
@@ -7296,6 +7305,13 @@ __metadata:
     "@types/qs": "*"
     "@types/serve-static": "*"
   checksum: bf8a97d283128e5129f9ccabbeef728ff3f0484465e0ae74a304bd0588fa6cb715ae68845650caba9a641944b7791ba125d02ddbd47a7e62aaefdd036570c6c5
+  languageName: node
+  linkType: hard
+
+"@types/file-saver@npm:^2.0.7":
+  version: 2.0.7
+  resolution: "@types/file-saver@npm:2.0.7"
+  checksum: c3d1cd80eab1214767922cabac97681f3fb688e82b74890450d70deaca49537949bbc96d80d363d91e8f0a4752c7164909cc8902d9721c5c4809baafc42a3801
   languageName: node
   linkType: hard
 
@@ -15026,6 +15042,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"file-saver@npm:^2.0.5":
+  version: 2.0.5
+  resolution: "file-saver@npm:2.0.5"
+  checksum: c62d96e5cebc58b4bdf3ae8a60d5cf9607ad82f75f798c33a4ee63435ac2203002584d5256a2a780eda7feb5e19dc3b6351c2212e58b3f529e63d265a7cc79f7
+  languageName: node
+  linkType: hard
+
 "file-uri-to-path@npm:2":
   version: 2.0.0
   resolution: "file-uri-to-path@npm:2.0.0"
@@ -15499,6 +15522,7 @@ __metadata:
     "@angular/platform-browser": ~15.0.4
     "@angular/platform-browser-dynamic": ~15.0.4
     "@angular/router": ~15.0.4
+    "@capacitor-community/file-opener": ^1.0.5
     "@capacitor-community/firebase-crashlytics": ^3.0.0
     "@capacitor-firebase/authentication": ^5.1.0
     "@capacitor-firebase/performance": ^5.1.0
@@ -15531,6 +15555,7 @@ __metadata:
     "@supabase/supabase-js": ^2.13.1
     "@swc/helpers": ^0.5.1
     "@types/clone": ^2.1.1
+    "@types/file-saver": ^2.0.7
     "@types/howler": ^2.2.2
     "@types/intro.js": ^3.0.1
     "@types/jasmine": ~4.3.0
@@ -15566,6 +15591,7 @@ __metadata:
     eslint-plugin-prefer-arrow: 1.2.3
     eslint-plugin-promise: ^6.1.1
     extract-math: ^1.2.3
+    file-saver: ^2.0.5
     firebase: ^9.8.1
     firebase-tools: ^9.14.0
     globalthis: ^1.0.2
