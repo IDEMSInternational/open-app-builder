@@ -11,6 +11,7 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         android:requestLegacyExternalStorage="true">
+        <!-- usesCleartextTraffic is required by capacitor-blob-writer -->
         <!-- requestLegacyExternalStorage is required to save files to "Documents" folder on Android 10 -->
 
         <activity
