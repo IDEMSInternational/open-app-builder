@@ -1,6 +1,9 @@
 import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
 import { TaskService } from "src/app/shared/services/task/task.service";
-import { getStringParamFromTemplateRow } from "src/app/shared/utils";
+import {
+  getBooleanParamFromTemplateRow,
+  getStringParamFromTemplateRow,
+} from "src/app/shared/utils";
 import { TemplateBaseComponent } from "../base";
 import { TemplateFieldService } from "../../services/template-field.service";
 import { AppDataService } from "src/app/shared/services/data/app-data.service";
@@ -39,6 +42,8 @@ export class TmplTaskProgressBarComponent extends TemplateBaseComponent implemen
   }
 
   getParams() {
+    // If component is being instantiated by a parent component (e.g. task-card), use Input() values for properties.
+    // If component is being explicitly instantiated from a template, get the params from the template row
     if (this._row) {
       this.taskGroupDataList = getStringParamFromTemplateRow(this._row, "task_group_data", null);
       this.taskGroupCompletedField = getStringParamFromTemplateRow(
@@ -51,6 +56,7 @@ export class TmplTaskProgressBarComponent extends TemplateBaseComponent implemen
         "progress_units_name",
         "sections"
       );
+      this.showText = getBooleanParamFromTemplateRow(this._row, "show_text", false);
     }
   }
 
