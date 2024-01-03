@@ -1,6 +1,9 @@
 import { Component, OnInit } from "@angular/core";
 import { TaskService } from "src/app/shared/services/task/task.service";
-import { getStringParamFromTemplateRow } from "src/app/shared/utils";
+import {
+  getBooleanParamFromTemplateRow,
+  getStringParamFromTemplateRow,
+} from "src/app/shared/utils";
 import { TemplateBaseComponent } from "../base";
 import { IProgressStatus } from "src/app/shared/services/task/task.service";
 import { TemplateFieldService } from "../../services/template-field.service";
@@ -67,6 +70,12 @@ interface ITaskCardParams {
    * Default "sections"
    */
   progress_units_name: string;
+  /**
+   * Show the text associated with progress bar,
+   * e.g. "8 sections"
+   * Default true
+   */
+  show_progress_text: boolean;
 }
 
 @Component({
@@ -82,6 +91,7 @@ export class TmplTaskCardComponent extends TemplateBaseComponent implements OnIn
   highlighted: boolean;
   highlightedText: string;
   progressUnitsName: string;
+  showProgressText: boolean;
   progressStatus: IProgressStatus = "notStarted";
   taskGroupId: string | null;
   taskGroupDataList: string | null;
@@ -135,6 +145,7 @@ export class TmplTaskCardComponent extends TemplateBaseComponent implements OnIn
       "progress_units_name",
       "sections"
     );
+    this.showProgressText = getBooleanParamFromTemplateRow(this._row, "show_progress_text", true);
   }
 
   checkProgressStatus() {
