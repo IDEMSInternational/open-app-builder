@@ -3,20 +3,24 @@ import { TemplateFieldService } from "../../components/template/services/templat
 import { AppDataService } from "../data/app-data.service";
 import { arrayToHashmap } from "../../utils";
 import { AsyncServiceBase } from "../asyncService.base";
+import { AppConfigService } from "../app-config/app-config.service";
+import { IAppConfig } from "../../model";
 
 @Injectable({
   providedIn: "root",
 })
 export class TaskService extends AsyncServiceBase {
-  // TODO: These should be set from the deployment/skin level (ultimately should come from templates)
-  highlightedTaskFieldName = "_task_highlighted_group_id";
-  taskGroupsListName = "workshop_tasks";
+  // The name of the field that tracks the currently highlighted task group
+  highlightedTaskField: string;
+  // The top-level list of task groups (e.g. modules)
+  taskGroupsListName: string;
 
   taskGroups: any[] = [];
   taskGroupsHashmap: Record<string, any> = {};
   constructor(
     private templateFieldService: TemplateFieldService,
-    private appDataService: AppDataService
+    private appDataService: AppDataService,
+    private appConfigService: AppConfigService
   ) {
     super("Task");
     this.registerInitFunction(this.initialise);
@@ -24,11 +28,19 @@ export class TaskService extends AsyncServiceBase {
 
   private async initialise() {
     await this.ensureAsyncServicesReady([this.templateFieldService]);
-    this.ensureSyncServicesReady([this.appDataService]);
+    this.ensureSyncServicesReady([this.appDataService, this.appConfigService]);
+    this.subscribeToAppConfigChanges();
     await this.getListOfTaskGroups();
     if (this.taskGroups.length > 0) {
       this.evaluateHighlightedTaskGroup();
     }
+  }
+
+  subscribeToAppConfigChanges() {
+    this.appConfigService.appConfig$.subscribe((appConfig: IAppConfig) => {
+      this.highlightedTaskField = appConfig.TASKS.highlightedTaskField;
+      this.taskGroupsListName = appConfig.TASKS.taskGroupsListName;
+    });
   }
 
   /** Get the list of highlight-able task groups, from the relevant data_list */
@@ -60,7 +72,7 @@ export class TaskService extends AsyncServiceBase {
     // If all task groups are completed or skipped (e.g. when user completes final task group),
     // then un-set highlighted task group
     if (taskGroupsNotCompletedAndNotSkipped.length === 0) {
-      this.templateFieldService.setField(this.highlightedTaskFieldName, "");
+      this.templateFieldService.setField(this.highlightedTaskField, "");
       console.log("[HIGHLIGHTED TASK GROUP] - No highlighted task group is set");
     }
     // Else set the highlighted task group to the task group with the highest priority of those
@@ -72,7 +84,7 @@ export class TaskService extends AsyncServiceBase {
       );
       newHighlightedTaskGroup = highestPriorityTaskGroup.id;
       if (newHighlightedTaskGroup !== previousHighlightedTaskGroup) {
-        this.templateFieldService.setField(this.highlightedTaskFieldName, newHighlightedTaskGroup);
+        this.templateFieldService.setField(this.highlightedTaskField, newHighlightedTaskGroup);
       }
       console.log("[HIGHLIGHTED TASK GROUP] - ", newHighlightedTaskGroup);
     }
@@ -81,7 +93,7 @@ export class TaskService extends AsyncServiceBase {
 
   /** Get the id of the task group stored as higlighted */
   public getHighlightedTaskGroup() {
-    return this.templateFieldService.getField(this.highlightedTaskFieldName);
+    return this.templateFieldService.getField(this.highlightedTaskField);
   }
 
   /**
