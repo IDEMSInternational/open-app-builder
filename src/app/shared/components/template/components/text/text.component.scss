@@ -1,0 +1,7 @@
+[data-variant~="caption"] {
+  font-size: var(--font-size-text-small);
+  text-align: center;
+  position: relative;
+  top: calc(0px - var(--large-margin));
+  padding: 0 var(--tiny-padding);
+}
