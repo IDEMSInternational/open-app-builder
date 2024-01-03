@@ -18,12 +18,14 @@
     border-radius: var(--ion-border-radius-small);
     background-color: var(--ion-color-gray-400);
   }
-  &.completed {
+  &.completed,
+  &[data-variant~="green"] {
     .progress-bar {
       background-color: var(--ion-color-green);
     }
   }
-  &.highlighted {
+  &.highlighted,
+  &[data-variant~="secondary"] {
     .progress-bar-background {
       background-color: var(--ion-color-secondary-100);
     }

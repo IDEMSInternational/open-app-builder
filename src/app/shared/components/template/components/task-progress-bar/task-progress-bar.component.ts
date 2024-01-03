@@ -10,6 +10,26 @@ import { AppDataService } from "src/app/shared/services/data/app-data.service";
 import { IProgressStatus } from "src/app/shared/services/task/task.service";
 import { CampaignService } from "src/app/feature/campaign/campaign.service";
 
+interface ITaskProgressBarParams {
+  /** The name of the task group for which to track the completion of its subtasks */
+  taskGroupDataList: string;
+  /** The name of the field that stores the completion status of the task group */
+  taskGroupCompletedField: string;
+  /**
+   * The displayed name of the units of progress associated with
+   * the constituent tasks of the task group.
+   * Default "sections"
+   */
+  progressUnitsName: string;
+  /**
+   * Show the text associated with progress bar, e.g. "8 sections"
+   * Default true
+   */
+  showText: boolean;
+  /** A list of named style variants of the component, separated by spaces or commas. */
+  variant: "green" | "secondary";
+}
+
 @Component({
   selector: "plh-task-progress-bar",
   templateUrl: "./task-progress-bar.component.html",
@@ -21,11 +41,12 @@ export class TmplTaskProgressBarComponent extends TemplateBaseComponent implemen
   @Input() highlighted: boolean | null;
   @Input() progressStatus: IProgressStatus;
   @Input() progressUnitsName: string;
+  @Input() showText: boolean;
   @Output() progressStatusChange = new EventEmitter<IProgressStatus>();
   @Output() newlyCompleted = new EventEmitter<boolean>();
+  params: Partial<ITaskProgressBarParams> = {};
   subtasksTotal: number;
   subtasksCompleted: number;
-  showText = true;
 
   constructor(
     private taskService: TaskService,
@@ -42,21 +63,34 @@ export class TmplTaskProgressBarComponent extends TemplateBaseComponent implemen
   }
 
   getParams() {
-    // If component is being instantiated by a parent component (e.g. task-card), use Input() values for properties.
     // If component is being explicitly instantiated from a template, get the params from the template row
     if (this._row) {
-      this.taskGroupDataList = getStringParamFromTemplateRow(this._row, "task_group_data", null);
-      this.taskGroupCompletedField = getStringParamFromTemplateRow(
+      this.params.taskGroupDataList = getStringParamFromTemplateRow(
+        this._row,
+        "task_group_data",
+        null
+      );
+      this.params.taskGroupCompletedField = getStringParamFromTemplateRow(
         this._row,
         "completed_field",
         null
       );
-      this.progressUnitsName = getStringParamFromTemplateRow(
+      this.params.progressUnitsName = getStringParamFromTemplateRow(
         this._row,
         "progress_units_name",
         "sections"
       );
-      this.showText = getBooleanParamFromTemplateRow(this._row, "show_text", false);
+      this.params.showText = getBooleanParamFromTemplateRow(this._row, "show_text", false);
+      this.params.variant = getStringParamFromTemplateRow(this._row, "variant", "")
+        .split(",")
+        .join(" ") as ITaskProgressBarParams["variant"];
+    }
+    // If component is being instantiated by a parent component (e.g. task-card), use Input() values for params.
+    else {
+      this.params.taskGroupDataList = this.taskGroupDataList;
+      this.params.taskGroupCompletedField = this.taskGroupCompletedField;
+      this.params.progressUnitsName = this.progressUnitsName;
+      this.params.showText = this.showText;
     }
   }
 
@@ -65,7 +99,7 @@ export class TmplTaskProgressBarComponent extends TemplateBaseComponent implemen
   }
 
   async evaluateTaskGroupData() {
-    const dataList = await this.appDataService.getSheet("data_list", this.taskGroupDataList);
+    const dataList = await this.appDataService.getSheet("data_list", this.params.taskGroupDataList);
     const subtasks = dataList?.rows || [];
     this.subtasksTotal = subtasks.length;
     this.subtasksCompleted = subtasks.filter((task) =>
@@ -75,13 +109,13 @@ export class TmplTaskProgressBarComponent extends TemplateBaseComponent implemen
       this.progressStatus = "completed";
       this.progressStatusChange.emit(this.progressStatus);
       // Check whether task group has already been completed
-      if (this.templateFieldService.getField(this.taskGroupCompletedField) !== true) {
+      if (this.templateFieldService.getField(this.params.taskGroupCompletedField) !== true) {
         // If not, set completed field to "true"
-        await this.setTaskGroupCompletedStatus(this.taskGroupCompletedField, true);
+        await this.setTaskGroupCompletedStatus(this.params.taskGroupCompletedField, true);
         this.newlyCompleted.emit(true);
       }
     } else {
-      await this.setTaskGroupCompletedStatus(this.taskGroupCompletedField, false);
+      await this.setTaskGroupCompletedStatus(this.params.taskGroupCompletedField, false);
       if (this.subtasksCompleted) {
         this.progressStatus = "inProgress";
         this.progressStatusChange.emit(this.progressStatus);
