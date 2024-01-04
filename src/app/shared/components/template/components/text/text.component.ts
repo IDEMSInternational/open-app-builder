@@ -7,14 +7,14 @@ interface ITextParams {
   textAlign: string;
   /**
    * TEMPLATE PARAMETER: style
-   * Apply named text style. Styles may be considered deprecated except for "numbered"
+   * Legacy: use variants for text styles instead
    * */
   style: "numbered" | "contextual" | "emphasised" | "alternative" | string | null;
   /**
    * TEMPLATE PARAMETER: variant
    * A list of named style variants of the component, separated by spaces or commas
    * */
-  variant: "caption" | string | null;
+  variant: "caption" | "numbered" | "contextual" | "emphasised" | "alternative" | "";
 }
 
 @Component({
@@ -37,8 +37,13 @@ export class TmplTextComponent extends TemplateBaseComponent implements OnInit {
   getParams() {
     this.params.textAlign = getStringParamFromTemplateRow(this._row, "text_align", null);
     this.params.style = getStringParamFromTemplateRow(this._row, "style", null);
-    this.params.variant = getStringParamFromTemplateRow(this._row, "variant", null);
+    this.params.variant = getStringParamFromTemplateRow(this._row, "variant", "")
+      .split(",")
+      .join(" ") as ITextParams["variant"];
     this.isFalsy = ["undefined", "NaN", "null", '""'].includes(this._row.value);
-    this.type = this._row.parameter_list?.style?.includes("numbered") ? "numbered" : "marked";
+    this.type =
+      this.params.style?.includes("numbered") || this.params.variant?.includes("numbered")
+        ? "numbered"
+        : "marked";
   }
 }

@@ -5,3 +5,17 @@
   top: calc(0px - var(--large-margin));
   padding: 0 var(--tiny-padding);
 }
+
+[data-variant~="alternative"] {
+  color: var(--ion-color-primary-contrast);
+}
+
+[data-variant~="contextual"] {
+  font-weight: var(--font-weight-standard);
+  font-style: italic;
+}
+
+[data-variant~="emphasised"] {
+  font-weight: 700;
+  font-style: normal;
+}
