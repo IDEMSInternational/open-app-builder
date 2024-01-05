@@ -1,4 +1,12 @@
-import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
+import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  EventEmitter,
+  Input,
+  OnInit,
+  Output,
+} from "@angular/core";
 import { TaskService } from "src/app/shared/services/task/task.service";
 import {
   getBooleanParamFromTemplateRow,
@@ -9,31 +17,52 @@ import { TemplateFieldService } from "../../services/template-field.service";
 import { AppDataService } from "src/app/shared/services/data/app-data.service";
 import { IProgressStatus } from "src/app/shared/services/task/task.service";
 import { CampaignService } from "src/app/feature/campaign/campaign.service";
+import { Subscription, debounceTime } from "rxjs";
+import { DynamicDataService } from "src/app/shared/services/dynamic-data/dynamic-data.service";
 
 interface ITaskProgressBarParams {
-  /** The name of the task group for which to track the completion of its subtasks */
+  /**
+   * TEMPLATE PARAMETER: task_group_data.
+   * The name of the task group for which to track the completion of its subtasks
+   */
   taskGroupDataList: string;
-  /** The name of the field that stores the completion status of the task group */
+  /**
+   * TEMPLATE PARAMETER: completed_field.
+   * The name of the field that stores the completion status of the task group
+   */
   taskGroupCompletedField: string;
   /**
+   * TEMPLATE PARAMETER: progress_units_name.
    * The displayed name of the units of progress associated with
    * the constituent tasks of the task group.
    * Default "sections"
    */
   progressUnitsName: string;
   /**
+   * TEMPLATE PARAMETER: show_text.
    * Show the text associated with progress bar, e.g. "8 sections"
-   * Default true
+   * Default false
    */
   showText: boolean;
-  /** A list of named style variants of the component, separated by spaces or commas. */
+  /**
+   * TEMPLATE PARAMETER: variant.
+   * A list of named style variants of the component, separated by spaces or commas.
+   * */
   variant: "green" | "secondary";
+  /**
+   * TEMPLATE PARAMETER: dynamic.
+   * Specify whether to use the dynamic data feature:
+   * Should be true if the task_group_data has a "completed" column,
+   * else should be false if the task_group_data has a "completed_field" column
+   * */
+  useDynamicData: boolean;
 }
 
 @Component({
   selector: "plh-task-progress-bar",
   templateUrl: "./task-progress-bar.component.html",
   styleUrls: ["./task-progress-bar.component.scss"],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TmplTaskProgressBarComponent extends TemplateBaseComponent implements OnInit {
   @Input() taskGroupDataList: string | null;
@@ -47,19 +76,27 @@ export class TmplTaskProgressBarComponent extends TemplateBaseComponent implemen
   params: Partial<ITaskProgressBarParams> = {};
   subtasksTotal: number;
   subtasksCompleted: number;
+  private dataQuery$: Subscription;
 
   constructor(
     private taskService: TaskService,
     private templateFieldService: TemplateFieldService,
     private appDataService: AppDataService,
-    private campaignService: CampaignService
+    private campaignService: CampaignService,
+    private cdr: ChangeDetectorRef,
+    private dynamicDataService: DynamicDataService
   ) {
     super();
   }
 
-  ngOnInit() {
+  async ngOnInit() {
     this.getParams();
-    this.evaluateTaskGroupData();
+    if (this.params.useDynamicData) {
+      this.subscribeToData();
+    } else {
+      const taskGroupDataRows = await this.getTaskGroupDataRows();
+      this.evaluateTaskGroupData(taskGroupDataRows);
+    }
   }
 
   getParams() {
@@ -81,6 +118,7 @@ export class TmplTaskProgressBarComponent extends TemplateBaseComponent implemen
         "sections"
       );
       this.params.showText = getBooleanParamFromTemplateRow(this._row, "show_text", false);
+      this.params.useDynamicData = getBooleanParamFromTemplateRow(this._row, "dynamic", false);
       this.params.variant = getStringParamFromTemplateRow(this._row, "variant", "")
         .split(",")
         .join(" ") as ITaskProgressBarParams["variant"];
@@ -98,24 +136,40 @@ export class TmplTaskProgressBarComponent extends TemplateBaseComponent implemen
     return (this.subtasksCompleted / this.subtasksTotal) * 100;
   }
 
-  async evaluateTaskGroupData() {
+  async getTaskGroupDataRows() {
     const dataList = await this.appDataService.getSheet("data_list", this.params.taskGroupDataList);
-    const subtasks = dataList?.rows || [];
+    return dataList?.rows;
+  }
+
+  /**
+   * Fetch the completion status for each subtask of the task group
+   * and calculate the task group's completion percentage to display.
+   * Task group data lists can store their completion status in one of two ways:
+   * 1. A "completed_field" column, referencing a field that stores the completion status
+   * 2. A "completed" column, with values updated dynamically
+   * @param dataRows The data rows of the task group
+   */
+  async evaluateTaskGroupData(dataRows: any[]) {
+    const subtasks = dataRows || [];
     this.subtasksTotal = subtasks.length;
-    this.subtasksCompleted = subtasks.filter((task) =>
-      this.templateFieldService.getField(task.completed_field)
-    ).length;
+    this.subtasksCompleted = subtasks.filter((task) => {
+      if (task.completed_field) {
+        return this.templateFieldService.getField(task.completed_field);
+      } else if (task.completed !== undefined) {
+        return task.completed;
+      }
+    }).length;
     if (this.subtasksCompleted === this.subtasksTotal) {
       this.progressStatus = "completed";
       this.progressStatusChange.emit(this.progressStatus);
       // Check whether task group has already been completed
       if (this.templateFieldService.getField(this.params.taskGroupCompletedField) !== true) {
         // If not, set completed field to "true"
-        await this.setTaskGroupCompletedStatus(this.params.taskGroupCompletedField, true);
+        await this.setTaskGroupCompletedStatus(true);
         this.newlyCompleted.emit(true);
       }
     } else {
-      await this.setTaskGroupCompletedStatus(this.params.taskGroupCompletedField, false);
+      await this.setTaskGroupCompletedStatus(false);
       if (this.subtasksCompleted) {
         this.progressStatus = "inProgress";
         this.progressStatusChange.emit(this.progressStatus);
@@ -128,10 +182,28 @@ export class TmplTaskProgressBarComponent extends TemplateBaseComponent implemen
     if (previousHighlightedTaskGroup !== newHighlightedTaskGroup) {
       this.campaignService.scheduleCampaignNotifications();
     }
+    this.cdr.markForCheck();
   }
 
-  async setTaskGroupCompletedStatus(taskGroupCompletedField: string, isCompleted: boolean) {
-    console.log(`Setting ${taskGroupCompletedField} to ${isCompleted}`);
-    await this.templateFieldService.setField(taskGroupCompletedField, `${isCompleted}`);
+  async setTaskGroupCompletedStatus(isCompleted: boolean) {
+    console.log(`Setting ${this.params.taskGroupCompletedField} to ${isCompleted}`);
+    await this.templateFieldService.setField(this.params.taskGroupCompletedField, `${isCompleted}`);
+  }
+
+  // Adapted from data-items component
+  private async subscribeToData() {
+    if (this.dataQuery$) {
+      this.dataQuery$.unsubscribe();
+    }
+    if (this.params.taskGroupDataList) {
+      await this.dynamicDataService.ready();
+      const query = await this.dynamicDataService.query$(
+        "data_list",
+        this.params.taskGroupDataList
+      );
+      this.dataQuery$ = query.pipe(debounceTime(50)).subscribe(async (data) => {
+        await this.evaluateTaskGroupData(data);
+      });
+    }
   }
 }
