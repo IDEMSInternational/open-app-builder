@@ -7,14 +7,14 @@ interface ITextParams {
   textAlign: string;
   /**
    * TEMPLATE PARAMETER: style
-   * Legacy: use variants for text styles instead
+   * "numbered" style is legacy, "numbered" variant should be used instead
    * */
   style: "numbered" | "contextual" | "emphasised" | "alternative" | string | null;
   /**
    * TEMPLATE PARAMETER: variant
    * A list of named style variants of the component, separated by spaces or commas
    * */
-  variant: "caption" | "numbered" | "contextual" | "emphasised" | "alternative" | "";
+  variant: "caption" | "numbered" | "";
 }
 
 @Component({
