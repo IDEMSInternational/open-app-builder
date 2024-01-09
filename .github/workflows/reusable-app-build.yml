@@ -112,6 +112,12 @@ jobs:
   
         - name: Set deployment
           run: yarn workflow deployment set $DEPLOYMENT_NAME
+
+        - name: Revert changes done by setting the deployment
+          run: |
+            git reset --hard
+          working-directory: .idems_app/deployments/${{ env.DEPLOYMENT_NAME }}
+
   
         - name: Build
           run: yarn build ${{inputs.build-flags}}
