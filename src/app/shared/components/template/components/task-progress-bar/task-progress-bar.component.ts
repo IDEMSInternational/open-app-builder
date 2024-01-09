@@ -23,7 +23,7 @@ import { DynamicDataService } from "src/app/shared/services/dynamic-data/dynamic
 interface ITaskProgressBarParams {
   /**
    * TEMPLATE PARAMETER: task_group_data.
-   * The name of the task group for which to track the completion of its subtasks
+   * The name of the task group to track the progress of (through the completion of its subtasks)
    */
   taskGroupDataList: string;
   /**
@@ -153,10 +153,10 @@ export class TmplTaskProgressBarComponent extends TemplateBaseComponent implemen
     const subtasks = dataRows || [];
     this.subtasksTotal = subtasks.length;
     this.subtasksCompleted = subtasks.filter((task) => {
-      if (task.completed_field) {
-        return this.templateFieldService.getField(task.completed_field);
-      } else if (task.completed !== undefined) {
+      if (this.params.useDynamicData) {
         return task.completed;
+      } else {
+        return this.templateFieldService.getField(task.completed_field);
       }
     }).length;
     if (this.subtasksCompleted === this.subtasksTotal) {
