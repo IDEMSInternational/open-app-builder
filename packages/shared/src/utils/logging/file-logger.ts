@@ -1,7 +1,7 @@
 import winston from "winston";
 import path from "path";
 import { emptyDirSync, ensureDirSync, truncateSync } from "fs-extra";
-import { _wait } from "../cli-utils";
+import { _wait } from "../async-utils";
 import { Writable } from "stream";
 import { existsSync } from "fs";
 import { SCRIPTS_LOGS_DIR } from "../../paths";
