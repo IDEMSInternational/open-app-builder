@@ -14,9 +14,10 @@ export class TaskService extends AsyncServiceBase {
   highlightedTaskField: string;
   // The top-level list of task groups (e.g. modules)
   taskGroupsListName: string;
-
   taskGroups: any[] = [];
   taskGroupsHashmap: Record<string, any> = {};
+  tasksFeatureEnabled: boolean;
+
   constructor(
     private templateFieldService: TemplateFieldService,
     private appDataService: AppDataService,
@@ -30,9 +31,11 @@ export class TaskService extends AsyncServiceBase {
     await this.ensureAsyncServicesReady([this.templateFieldService]);
     this.ensureSyncServicesReady([this.appDataService, this.appConfigService]);
     this.subscribeToAppConfigChanges();
-    await this.getListOfTaskGroups();
-    if (this.taskGroups.length > 0) {
-      this.evaluateHighlightedTaskGroup();
+    if (this.tasksFeatureEnabled) {
+      await this.getListOfTaskGroups();
+      if (this.taskGroups.length > 0) {
+        this.evaluateHighlightedTaskGroup();
+      }
     }
   }
 
@@ -40,6 +43,7 @@ export class TaskService extends AsyncServiceBase {
     this.appConfigService.appConfig$.subscribe((appConfig: IAppConfig) => {
       this.highlightedTaskField = appConfig.TASKS.highlightedTaskField;
       this.taskGroupsListName = appConfig.TASKS.taskGroupsListName;
+      this.tasksFeatureEnabled = appConfig.TASKS.enabled;
     });
   }
 
