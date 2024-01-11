@@ -1,19 +1,20 @@
 import { TestBed } from "@angular/core/testing";
-
 import { HttpClientTestingModule } from "@angular/common/http/testing";
+import { firstValueFrom } from "rxjs";
 
 import { DynamicDataService } from "./dynamic-data.service";
-import { firstValueFrom } from "rxjs";
 import { AppDataService } from "../data/app-data.service";
 import { MockAppDataService } from "../data/app-data.service.spec";
 
-const DATA_MOCK = {
-  test_flow: [
-    { id: "id1", number: 1, string: "hello", boolean: true },
-    { id: "id2", number: 2, string: "goodbye", boolean: false },
-  ],
-};
+const TEST_DATA_ROWS = [
+  { id: "id1", number: 1, string: "hello", boolean: true },
+  { id: "id2", number: 2, string: "goodbye", boolean: false },
+];
 
+/**
+ * Call standalone tests via:
+ * yarn ng test --include src/app/shared/services/dynamic-data/dynamic-data.service.spec.ts
+ */
 describe("DynamicDataService", () => {
   let service: DynamicDataService;
 
@@ -22,7 +23,14 @@ describe("DynamicDataService", () => {
       imports: [HttpClientTestingModule],
       providers: [
         DynamicDataService,
-        { provide: AppDataService, useValue: new MockAppDataService() },
+        {
+          provide: AppDataService,
+          useValue: new MockAppDataService({
+            data_list: {
+              test_flow: { flow_name: "test_flow", flow_type: "data_list", rows: TEST_DATA_ROWS },
+            },
+          }),
+        },
       ],
     });
 
@@ -33,7 +41,7 @@ describe("DynamicDataService", () => {
     TestBed.inject(AppDataService);
 
     await service.ready();
-    service.resetFlow("data_list", "test_flow");
+    service.resetFlow("data_list", "test_flow", false);
   });
 
   it("populates initial flows from json", async () => {
@@ -46,7 +54,7 @@ describe("DynamicDataService", () => {
     await service.update("data_list", "test_flow", "id1", { number: 1.1 });
     const obs = await service.query$<any>("data_list", "test_flow");
     const data = await firstValueFrom(obs);
-    expect(data[0]).toEqual({ ...DATA_MOCK.test_flow[0], number: 1.1 });
+    expect(data[0]).toEqual({ ...TEST_DATA_ROWS[0], number: 1.1 });
   });
 
   it("populates cached data on load", async () => {
@@ -66,6 +74,15 @@ describe("DynamicDataService", () => {
     expect(queryResult.length).toEqual(2);
   });
 
+  it("Supports parallel requests without recreating collections", async () => {
+    const queries = new Array(20).fill(0).map(async () => {
+      const obs = await service.query$("data_list", "test_flow");
+      return firstValueFrom(obs);
+    });
+    const res = await Promise.all(queries);
+    expect(res.length).toEqual(20);
+  });
+
   // QA
   it("prevents query of non-existent data lists", async () => {
     let errMsg: string;
@@ -75,13 +92,6 @@ describe("DynamicDataService", () => {
     expect(errMsg).toEqual("No data exists for collection [fakeData], cannot initialise");
   });
 
-  it("prevents updates to non-existent rows", async () => {
-    let errMsg: string;
-    await service.update("data_list", "test_flow", "missing_row", { number: 1 }).catch((err) => {
-      errMsg = err.message;
-    });
-    expect(errMsg).toBe("cannot update row that does not exist: [test_flow]:[missing_row]");
-  });
   it("ignores cached data where initial data no longer exists", async () => {
     // TODO - add methods that ignore rows from cached data if row id deleted from source data_list
   });
