@@ -4,6 +4,7 @@ import {
   Component,
   EventEmitter,
   Input,
+  OnDestroy,
   OnInit,
   Output,
 } from "@angular/core";
@@ -64,7 +65,10 @@ interface ITaskProgressBarParams {
   styleUrls: ["./task-progress-bar.component.scss"],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TmplTaskProgressBarComponent extends TemplateBaseComponent implements OnInit {
+export class TmplTaskProgressBarComponent
+  extends TemplateBaseComponent
+  implements OnInit, OnDestroy
+{
   @Input() taskGroupDataList: string | null;
   @Input() taskGroupCompletedField: string | null;
   @Input() highlighted: boolean | null;
@@ -204,6 +208,12 @@ export class TmplTaskProgressBarComponent extends TemplateBaseComponent implemen
       this.dataQuery$ = query.pipe(debounceTime(50)).subscribe(async (data) => {
         await this.evaluateTaskGroupData(data);
       });
+    }
+  }
+
+  ngOnDestroy() {
+    if (this.dataQuery$) {
+      this.dataQuery$.unsubscribe();
     }
   }
 }
