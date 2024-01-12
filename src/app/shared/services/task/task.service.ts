@@ -6,6 +6,8 @@ import { AsyncServiceBase } from "../asyncService.base";
 import { AppConfigService } from "../app-config/app-config.service";
 import { IAppConfig } from "../../model";
 
+export type IProgressStatus = "notStarted" | "inProgress" | "completed";
+
 @Injectable({
   providedIn: "root",
 })
@@ -25,36 +27,6 @@ export class TaskService extends AsyncServiceBase {
   ) {
     super("Task");
     this.registerInitFunction(this.initialise);
-  }
-
-  private async initialise() {
-    await this.ensureAsyncServicesReady([this.templateFieldService]);
-    this.ensureSyncServicesReady([this.appDataService, this.appConfigService]);
-    this.subscribeToAppConfigChanges();
-    if (this.tasksFeatureEnabled) {
-      await this.getListOfTaskGroups();
-      if (this.taskGroups.length > 0) {
-        this.evaluateHighlightedTaskGroup();
-      }
-    }
-  }
-
-  subscribeToAppConfigChanges() {
-    this.appConfigService.appConfig$.subscribe((appConfig: IAppConfig) => {
-      this.highlightedTaskField = appConfig.TASKS.highlightedTaskField;
-      this.taskGroupsListName = appConfig.TASKS.taskGroupsListName;
-      this.tasksFeatureEnabled = appConfig.TASKS.enabled;
-    });
-  }
-
-  /** Get the list of highlight-able task groups, from the relevant data_list */
-  private async getListOfTaskGroups() {
-    const taskGroupsDataList = await this.appDataService.getSheet(
-      "data_list",
-      this.taskGroupsListName
-    );
-    this.taskGroups = taskGroupsDataList?.rows || [];
-    this.taskGroupsHashmap = arrayToHashmap(this.taskGroups, "id");
   }
 
   /**
@@ -145,6 +117,34 @@ export class TaskService extends AsyncServiceBase {
     if (!taskGroupId) return false;
     return taskGroupId === this.getHighlightedTaskGroup();
   }
-}
 
-export type IProgressStatus = "notStarted" | "inProgress" | "completed";
+  private async initialise() {
+    await this.ensureAsyncServicesReady([this.templateFieldService]);
+    this.ensureSyncServicesReady([this.appDataService, this.appConfigService]);
+    this.subscribeToAppConfigChanges();
+    if (this.tasksFeatureEnabled) {
+      await this.getListOfTaskGroups();
+      if (this.taskGroups.length > 0) {
+        this.evaluateHighlightedTaskGroup();
+      }
+    }
+  }
+
+  private subscribeToAppConfigChanges() {
+    this.appConfigService.appConfig$.subscribe((appConfig: IAppConfig) => {
+      this.highlightedTaskField = appConfig.TASKS.highlightedTaskField;
+      this.taskGroupsListName = appConfig.TASKS.taskGroupsListName;
+      this.tasksFeatureEnabled = appConfig.TASKS.enabled;
+    });
+  }
+
+  /** Get the list of highlight-able task groups, from the relevant data_list */
+  private async getListOfTaskGroups() {
+    const taskGroupsDataList = await this.appDataService.getSheet(
+      "data_list",
+      this.taskGroupsListName
+    );
+    this.taskGroups = taskGroupsDataList?.rows || [];
+    this.taskGroupsHashmap = arrayToHashmap(this.taskGroups, "id");
+  }
+}
