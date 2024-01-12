@@ -46,11 +46,6 @@ interface ITaskProgressBarParams {
    */
   showText: boolean;
   /**
-   * TEMPLATE PARAMETER: variant.
-   * A list of named style variants of the component, separated by spaces or commas.
-   * */
-  variant: "green" | "secondary";
-  /**
    * TEMPLATE PARAMETER: dynamic.
    * Specify whether to use the dynamic data feature:
    * Should be true if the task_group_data has a "completed" column,
@@ -80,6 +75,7 @@ export class TmplTaskProgressBarComponent
   params: Partial<ITaskProgressBarParams> = {};
   subtasksTotal: number;
   subtasksCompleted: number;
+  standalone: boolean = false;
   private dataQuery$: Subscription;
 
   constructor(
@@ -106,6 +102,7 @@ export class TmplTaskProgressBarComponent
   getParams() {
     // If component is being explicitly instantiated from a template, get the params from the template row
     if (this._row) {
+      this.standalone = true;
       this.params.dataListName = getStringParamFromTemplateRow(this._row, "task_group_data", null);
       this.params.completedField = getStringParamFromTemplateRow(
         this._row,
@@ -119,9 +116,6 @@ export class TmplTaskProgressBarComponent
       );
       this.params.showText = getBooleanParamFromTemplateRow(this._row, "show_text", false);
       this.params.useDynamicData = getBooleanParamFromTemplateRow(this._row, "dynamic", false);
-      this.params.variant = getStringParamFromTemplateRow(this._row, "variant", "")
-        .split(",")
-        .join(" ") as ITaskProgressBarParams["variant"];
     }
     // If component is being instantiated by a parent component (e.g. task-card), use Input() values for params.
     else {
