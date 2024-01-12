@@ -59,8 +59,8 @@
         <!-- If a taskGroupId is provided, show the progress bar for the relevant task group -->
         <div *ngIf="taskGroupId && !taskId">
           <plh-task-progress-bar
-            [taskGroupDataList]="taskGroupDataList"
-            [taskGroupCompletedField]="completedField"
+            [dataListName]="taskGroupDataList"
+            [completedField]="completedField"
             [highlighted]="highlighted"
             [progressUnitsName]="progressUnitsName"
             [showText]="showProgressText"

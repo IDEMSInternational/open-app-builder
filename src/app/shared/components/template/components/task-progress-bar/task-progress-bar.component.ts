@@ -26,12 +26,12 @@ interface ITaskProgressBarParams {
    * TEMPLATE PARAMETER: task_group_data.
    * The name of the task group to track the progress of (through the completion of its subtasks)
    */
-  taskGroupDataList: string;
+  dataListName: string;
   /**
    * TEMPLATE PARAMETER: completed_field.
    * The name of the field that stores the completion status of the task group
    */
-  taskGroupCompletedField: string;
+  completedField: string;
   /**
    * TEMPLATE PARAMETER: progress_units_name.
    * The displayed name of the units of progress associated with
@@ -69,8 +69,8 @@ export class TmplTaskProgressBarComponent
   extends TemplateBaseComponent
   implements OnInit, OnDestroy
 {
-  @Input() taskGroupDataList: string | null;
-  @Input() taskGroupCompletedField: string | null;
+  @Input() dataListName: string | null;
+  @Input() completedField: string | null;
   @Input() highlighted: boolean | null;
   @Input() progressStatus: IProgressStatus;
   @Input() progressUnitsName: string;
@@ -106,12 +106,8 @@ export class TmplTaskProgressBarComponent
   getParams() {
     // If component is being explicitly instantiated from a template, get the params from the template row
     if (this._row) {
-      this.params.taskGroupDataList = getStringParamFromTemplateRow(
-        this._row,
-        "task_group_data",
-        null
-      );
-      this.params.taskGroupCompletedField = getStringParamFromTemplateRow(
+      this.params.dataListName = getStringParamFromTemplateRow(this._row, "task_group_data", null);
+      this.params.completedField = getStringParamFromTemplateRow(
         this._row,
         "completed_field",
         null
@@ -129,8 +125,8 @@ export class TmplTaskProgressBarComponent
     }
     // If component is being instantiated by a parent component (e.g. task-card), use Input() values for params.
     else {
-      this.params.taskGroupDataList = this.taskGroupDataList;
-      this.params.taskGroupCompletedField = this.taskGroupCompletedField;
+      this.params.dataListName = this.dataListName;
+      this.params.completedField = this.completedField;
       this.params.progressUnitsName = this.progressUnitsName;
       this.params.showText = this.showText;
     }
@@ -141,7 +137,7 @@ export class TmplTaskProgressBarComponent
   }
 
   async getTaskGroupDataRows() {
-    const dataList = await this.appDataService.getSheet("data_list", this.params.taskGroupDataList);
+    const dataList = await this.appDataService.getSheet("data_list", this.params.dataListName);
     return dataList?.rows;
   }
 
@@ -167,7 +163,7 @@ export class TmplTaskProgressBarComponent
       this.progressStatus = "completed";
       this.progressStatusChange.emit(this.progressStatus);
       // Check whether task group has already been completed
-      if (this.templateFieldService.getField(this.params.taskGroupCompletedField) !== true) {
+      if (this.templateFieldService.getField(this.params.completedField) !== true) {
         // If not, set completed field to "true"
         await this.setTaskGroupCompletedStatus(true);
         this.newlyCompleted.emit(true);
@@ -190,8 +186,8 @@ export class TmplTaskProgressBarComponent
   }
 
   async setTaskGroupCompletedStatus(isCompleted: boolean) {
-    console.log(`Setting ${this.params.taskGroupCompletedField} to ${isCompleted}`);
-    await this.templateFieldService.setField(this.params.taskGroupCompletedField, `${isCompleted}`);
+    console.log(`Setting ${this.params.completedField} to ${isCompleted}`);
+    await this.templateFieldService.setField(this.params.completedField, `${isCompleted}`);
   }
 
   // Adapted from data-items component
@@ -199,12 +195,9 @@ export class TmplTaskProgressBarComponent
     if (this.dataQuery$) {
       this.dataQuery$.unsubscribe();
     }
-    if (this.params.taskGroupDataList) {
+    if (this.params.dataListName) {
       await this.dynamicDataService.ready();
-      const query = await this.dynamicDataService.query$(
-        "data_list",
-        this.params.taskGroupDataList
-      );
+      const query = await this.dynamicDataService.query$("data_list", this.params.dataListName);
       this.dataQuery$ = query.pipe(debounceTime(50)).subscribe(async (data) => {
         await this.evaluateTaskGroupData(data);
       });
