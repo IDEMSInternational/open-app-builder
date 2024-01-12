@@ -2,7 +2,7 @@
   class="progress-bar-wrapper"
   [class.highlighted]="highlighted"
   [class]="progressStatus"
-  [attr.data-variant]="params.variant"
+  [class.standalone]="standalone"
 >
   <p *ngIf="params.showText" class="tiny progress-text">
     {{ subtasksTotal + " " + params.progressUnitsName }}

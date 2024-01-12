@@ -1,5 +1,10 @@
 @use "/src/theme/mixins";
 
+// Colour to be used for the progress bar when the component is standalone (explicitly instantiated from a template)
+// Within the task-card component, the progress bar colour is determined by the status of the task group, i.e.,
+// "notStarted" | "inProgress" | "completed" | "highlighted"
+$progress-colour: var(--task-progress-bar-color, var(--ion-color-primary));
+
 .progress-bar-wrapper {
   @include mixins.flex-space-between;
 
@@ -16,21 +21,30 @@
     width: 1%;
     height: 5px;
     border-radius: var(--ion-border-radius-small);
-    background-color: var(--ion-color-gray-400);
+    background-color: $progress-colour;
   }
-  &.completed,
-  &[data-variant~="green"] {
+  &.notStarted,
+  &.inProgress {
+    .progress-bar {
+      background-color: var(--ion-color-gray-400);
+    }
+  }
+  &.completed {
     .progress-bar {
       background-color: var(--ion-color-green);
     }
   }
-  &.highlighted,
-  &[data-variant~="secondary"] {
+  &.highlighted {
     .progress-bar-background {
       background-color: var(--ion-color-secondary-100);
     }
     .progress-bar {
       background-color: var(--ion-color-secondary);
+    }
+  }
+  &.standalone {
+    .progress-bar {
+      background-color: $progress-colour;
     }
   }
 }
