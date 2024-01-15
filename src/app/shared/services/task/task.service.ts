@@ -5,6 +5,7 @@ import { arrayToHashmap } from "../../utils";
 import { AsyncServiceBase } from "../asyncService.base";
 import { AppConfigService } from "../app-config/app-config.service";
 import { IAppConfig } from "../../model";
+import { CampaignService } from "src/app/feature/campaign/campaign.service";
 
 export type IProgressStatus = "notStarted" | "inProgress" | "completed";
 
@@ -23,7 +24,8 @@ export class TaskService extends AsyncServiceBase {
   constructor(
     private templateFieldService: TemplateFieldService,
     private appDataService: AppDataService,
-    private appConfigService: AppConfigService
+    private appConfigService: AppConfigService,
+    private campaignService: CampaignService
   ) {
     super("Task");
     this.registerInitFunction(this.initialise);
@@ -121,6 +123,72 @@ export class TaskService extends AsyncServiceBase {
   public async getTaskGroupDataRows(dataListName: string) {
     const dataList = await this.appDataService.getSheet("data_list", dataListName);
     return dataList?.rows;
+  }
+
+  /**
+   * For given task group data, fetch the completion status for each subtask of the
+   * task group and calculate the task group's completion progress.
+   * Task group data lists can store their completion status in one of two ways:
+   * 1. A "completed" column, with values updated dynamically
+   * 2. A "completed_field" column, referencing fields that store each subtask's the completion status
+   * @param dataRows The data rows of the task group
+   */
+  public async evaluateTaskGroupData(
+    dataRows: any[],
+    options: {
+      completedColumnName: string;
+      completedField: string;
+      dataListName: string;
+      useDynamicData: boolean;
+    }
+  ) {
+    const { useDynamicData, completedColumnName, completedField, dataListName } = options;
+    const subtasks = dataRows || [];
+    const subtasksTotal = subtasks.length;
+    const subtasksCompleted = subtasks.filter((task) => {
+      if (useDynamicData) {
+        return task[completedColumnName];
+      } else {
+        try {
+          return this.templateFieldService.getField(task["completed_field"]);
+        } catch {
+          console.error(
+            `[TASK] - Source data list ${dataListName} has no column "completed_field" nor "${completedColumnName}". It is mandatory for at least one of these columns to be present to task subtask progress.`
+          );
+        }
+      }
+    }).length;
+    let progressStatus: IProgressStatus;
+    let newlyCompleted: boolean;
+    if (subtasksCompleted === subtasksTotal) {
+      progressStatus = "completed";
+      // Check whether task group has already been completed
+      if (this.templateFieldService.getField(completedField) !== true) {
+        // If not, set completed field to "true"
+        await this.setTaskGroupCompletedStatus(completedField, true);
+        newlyCompleted = true;
+      }
+    } else {
+      await this.setTaskGroupCompletedStatus(completedField, false);
+      if (subtasksCompleted) {
+        progressStatus = "inProgress";
+      } else {
+        progressStatus = "notStarted";
+      }
+    }
+    const { previousHighlightedTaskGroup, newHighlightedTaskGroup } =
+      this.evaluateHighlightedTaskGroup();
+    // HACK - reschedule campaign notifications when the highlighted task group has changed,
+    // in order to handle any that are conditional on the highlighted task group
+    if (previousHighlightedTaskGroup !== newHighlightedTaskGroup) {
+      this.campaignService.scheduleCampaignNotifications();
+    }
+    return { subtasksTotal, subtasksCompleted, progressStatus, newlyCompleted };
+  }
+
+  async setTaskGroupCompletedStatus(completedField: string, isCompleted: boolean) {
+    console.log(`Setting ${completedField} to ${isCompleted}`);
+    await this.templateFieldService.setField(completedField, `${isCompleted}`);
   }
 
   private async initialise() {
