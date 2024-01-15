@@ -15,7 +15,8 @@ interface ITaskCardParams {
    */
   task_id: string;
   /**
-   * The ID of a task group, used to track whether it is the highlighted task group.
+   * The ID of a task group, within the config-level list app_config.TASKS.taskGroupsListName.
+   * Used to track whether it is the highlighted task group.
    * If provided, the task card will display a progress bar for the task group
    * **/
   task_group_id: string;
