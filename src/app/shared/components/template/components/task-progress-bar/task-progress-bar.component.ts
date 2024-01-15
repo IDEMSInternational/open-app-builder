@@ -15,7 +15,6 @@ import {
 } from "src/app/shared/utils";
 import { TemplateBaseComponent } from "../base";
 import { TemplateFieldService } from "../../services/template-field.service";
-import { AppDataService } from "src/app/shared/services/data/app-data.service";
 import { IProgressStatus } from "src/app/shared/services/task/task.service";
 import { CampaignService } from "src/app/feature/campaign/campaign.service";
 import { Subscription, debounceTime } from "rxjs";
@@ -75,6 +74,7 @@ export class TmplTaskProgressBarComponent
   @Output() progressStatusChange = new EventEmitter<IProgressStatus>();
   @Output() newlyCompleted = new EventEmitter<boolean>();
   params: Partial<ITaskProgressBarParams> = {};
+  dataRows: any[];
   subtasksTotal: number;
   subtasksCompleted: number;
   standalone: boolean = false;
@@ -84,7 +84,6 @@ export class TmplTaskProgressBarComponent
   constructor(
     private taskService: TaskService,
     private templateFieldService: TemplateFieldService,
-    private appDataService: AppDataService,
     private campaignService: CampaignService,
     private cdr: ChangeDetectorRef,
     private dynamicDataService: DynamicDataService
@@ -94,12 +93,12 @@ export class TmplTaskProgressBarComponent
 
   async ngOnInit() {
     this.getParams();
-    await this.checkAndSetUseDynamicData();
+    await this.getTaskGroupDataRows();
+    this.checkAndSetUseDynamicData();
     if (this.useDynamicData) {
       this.subscribeToData();
     } else {
-      const taskGroupDataRows = await this.getTaskGroupDataRows();
-      this.evaluateTaskGroupData(taskGroupDataRows);
+      this.evaluateTaskGroupData(this.dataRows);
     }
   }
 
@@ -139,13 +138,12 @@ export class TmplTaskProgressBarComponent
   }
 
   async getTaskGroupDataRows() {
-    const dataList = await this.appDataService.getSheet("data_list", this.params.dataListName);
-    return dataList?.rows;
+    await this.taskService.ready();
+    this.dataRows = await this.taskService.getTaskGroupDataRows(this.params.dataListName);
   }
 
-  async checkAndSetUseDynamicData() {
-    const dataRows = await this.getTaskGroupDataRows();
-    this.useDynamicData = dataRows[0].hasOwnProperty(this.params.completedColumnName);
+  checkAndSetUseDynamicData() {
+    this.useDynamicData = this.dataRows[0].hasOwnProperty(this.params.completedColumnName);
   }
 
   /**
@@ -212,7 +210,8 @@ export class TmplTaskProgressBarComponent
       await this.dynamicDataService.ready();
       const query = await this.dynamicDataService.query$("data_list", this.params.dataListName);
       this.dataQuery$ = query.pipe(debounceTime(50)).subscribe(async (data) => {
-        await this.evaluateTaskGroupData(data);
+        this.dataRows = data;
+        await this.evaluateTaskGroupData(this.dataRows);
       });
     }
   }

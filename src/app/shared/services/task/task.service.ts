@@ -118,6 +118,11 @@ export class TaskService extends AsyncServiceBase {
     return taskGroupId === this.getHighlightedTaskGroup();
   }
 
+  public async getTaskGroupDataRows(dataListName: string) {
+    const dataList = await this.appDataService.getSheet("data_list", dataListName);
+    return dataList?.rows;
+  }
+
   private async initialise() {
     await this.ensureAsyncServicesReady([this.templateFieldService]);
     this.ensureSyncServicesReady([this.appDataService, this.appConfigService]);
