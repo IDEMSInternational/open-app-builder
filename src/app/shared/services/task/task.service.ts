@@ -138,11 +138,18 @@ export class TaskService extends AsyncServiceBase {
     options: {
       completedColumnName: string;
       completedField: string;
+      completedFieldColumnName: string;
       dataListName: string;
       useDynamicData: boolean;
     }
   ) {
-    const { useDynamicData, completedColumnName, completedField, dataListName } = options;
+    const {
+      useDynamicData,
+      completedColumnName,
+      completedFieldColumnName,
+      completedField,
+      dataListName,
+    } = options;
     const subtasks = dataRows || [];
     const subtasksTotal = subtasks.length;
     const subtasksCompleted = subtasks.filter((task) => {
@@ -150,10 +157,10 @@ export class TaskService extends AsyncServiceBase {
         return task[completedColumnName];
       } else {
         try {
-          return this.templateFieldService.getField(task["completed_field"]);
+          return this.templateFieldService.getField(task[completedFieldColumnName]);
         } catch {
           console.error(
-            `[TASK] - Source data list ${dataListName} has no column "completed_field" nor "${completedColumnName}". It is mandatory for at least one of these columns to be present to task subtask progress.`
+            `[TASK] - Source data list ${dataListName} has no column "${completedFieldColumnName}" nor "${completedColumnName}". It is mandatory for at least one of these columns to be present to task subtask progress.`
           );
         }
       }

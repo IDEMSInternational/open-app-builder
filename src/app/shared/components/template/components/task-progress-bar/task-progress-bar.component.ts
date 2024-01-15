@@ -45,12 +45,19 @@ interface ITaskProgressBarParams {
   /**
    * TEMPLATE PARAMETER: completed_column_name.
    * The name of the column in the source data list that tracks the completed value of each subtask.
-   * If there is no column with this name, the component will look for a column called "completed_field",
-   * and use corresponding app fields to track the completion status of subtasks. In this case, the
-   * task progress bar will not update without a page reload.
+   * If there is no column with this name, the component will look for a column matching completed_field_column_name,
+   * and use the corresponding app fields to track the completion status of subtasks.
    * Deafult "completed"
    * */
   completedColumnName: string;
+  /**
+   * TEMPLATE PARAMETER: completed_field_column_name.
+   * The name of the column in the source data list which stores the name of the completed field of each subtask.
+   * The app fields corresponding to the values in this column are used to evaluate the completion of subtasks iff the
+   * completed_column_name column is not present. In this case, the task progress bar will not update without a page reload.
+   * Deafult "completed_field"
+   * */
+  completedFieldColumnName: string;
 }
 
 @Component({
@@ -119,6 +126,11 @@ export class TmplTaskProgressBarComponent
         "completed_column_name",
         "completed"
       );
+      this.params.completedFieldColumnName = getStringParamFromTemplateRow(
+        this._row,
+        "completed_field_column_name",
+        "completed_field"
+      );
     }
     // If component is being instantiated by a parent component (e.g. task-card), use Input() values for params.
     else {
@@ -126,6 +138,8 @@ export class TmplTaskProgressBarComponent
       this.params.completedField = this.completedField;
       this.params.progressUnitsName = this.progressUnitsName;
       this.params.showText = this.showText;
+      this.params.completedColumnName = "completed";
+      this.params.completedFieldColumnName = "completed_field";
     }
   }
 
@@ -148,6 +162,7 @@ export class TmplTaskProgressBarComponent
       await this.taskService.evaluateTaskGroupData(this.dataRows, {
         completedColumnName: this.params.completedColumnName,
         completedField: this.params.completedField,
+        completedFieldColumnName: this.params.completedFieldColumnName,
         dataListName: this.params.dataListName,
         useDynamicData: this.useDynamicData,
       });
