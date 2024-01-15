@@ -46,12 +46,14 @@ interface ITaskProgressBarParams {
    */
   showText: boolean;
   /**
-   * TEMPLATE PARAMETER: dynamic.
-   * Specify whether to use the dynamic data feature:
-   * Should be true if the task_group_data has a "completed" column,
-   * else should be false if the task_group_data has a "completed_field" column
+   * TEMPLATE PARAMETER: completed_column_name.
+   * The name of the column in the source data list that tracks the completed value of each subtask.
+   * If there is no column with this name, the component will look for a column called "completed_field",
+   * and use corresponding app fields to track the completion status of subtasks. In this case, the
+   * task progress bar will not update without a page reload.
+   * Deafult "completed"
    * */
-  useDynamicData: boolean;
+  completedColumnName: string;
 }
 
 @Component({
@@ -76,6 +78,7 @@ export class TmplTaskProgressBarComponent
   subtasksTotal: number;
   subtasksCompleted: number;
   standalone: boolean = false;
+  useDynamicData: boolean;
   private dataQuery$: Subscription;
 
   constructor(
@@ -91,7 +94,8 @@ export class TmplTaskProgressBarComponent
 
   async ngOnInit() {
     this.getParams();
-    if (this.params.useDynamicData) {
+    await this.checkAndSetUseDynamicData();
+    if (this.useDynamicData) {
       this.subscribeToData();
     } else {
       const taskGroupDataRows = await this.getTaskGroupDataRows();
@@ -115,7 +119,11 @@ export class TmplTaskProgressBarComponent
         "sections"
       );
       this.params.showText = getBooleanParamFromTemplateRow(this._row, "show_text", false);
-      this.params.useDynamicData = getBooleanParamFromTemplateRow(this._row, "dynamic", false);
+      this.params.completedColumnName = getStringParamFromTemplateRow(
+        this._row,
+        "completed_column_name",
+        "completed"
+      );
     }
     // If component is being instantiated by a parent component (e.g. task-card), use Input() values for params.
     else {
@@ -135,6 +143,11 @@ export class TmplTaskProgressBarComponent
     return dataList?.rows;
   }
 
+  async checkAndSetUseDynamicData() {
+    const dataRows = await this.getTaskGroupDataRows();
+    this.useDynamicData = dataRows[0].hasOwnProperty(this.params.completedColumnName);
+  }
+
   /**
    * Fetch the completion status for each subtask of the task group
    * and calculate the task group's completion percentage to display.
@@ -147,10 +160,16 @@ export class TmplTaskProgressBarComponent
     const subtasks = dataRows || [];
     this.subtasksTotal = subtasks.length;
     this.subtasksCompleted = subtasks.filter((task) => {
-      if (this.params.useDynamicData) {
-        return task.completed;
+      if (this.useDynamicData) {
+        return task[this.params.completedColumnName];
       } else {
-        return this.templateFieldService.getField(task.completed_field);
+        try {
+          return this.templateFieldService.getField(task["completed_field"]);
+        } catch {
+          console.error(
+            `[TASK] - Source data list ${this.params.dataListName} has no column "completed_field" nor "${this.params.completedColumnName}". It is mandatory for at least one of these columns to be present to task subtask progress.`
+          );
+        }
       }
     }).length;
     if (this.subtasksCompleted === this.subtasksTotal) {
