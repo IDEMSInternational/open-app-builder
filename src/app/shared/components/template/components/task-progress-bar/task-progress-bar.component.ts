@@ -14,9 +14,7 @@ import {
   getStringParamFromTemplateRow,
 } from "src/app/shared/utils";
 import { TemplateBaseComponent } from "../base";
-import { TemplateFieldService } from "../../services/template-field.service";
 import { IProgressStatus } from "src/app/shared/services/task/task.service";
-import { CampaignService } from "src/app/feature/campaign/campaign.service";
 import { Subscription, debounceTime } from "rxjs";
 import { DynamicDataService } from "src/app/shared/services/dynamic-data/dynamic-data.service";
 
@@ -82,11 +80,9 @@ export class TmplTaskProgressBarComponent
   private dataQuery$: Subscription;
 
   constructor(
-    private taskService: TaskService,
-    private templateFieldService: TemplateFieldService,
-    private campaignService: CampaignService,
     private cdr: ChangeDetectorRef,
-    private dynamicDataService: DynamicDataService
+    private dynamicDataService: DynamicDataService,
+    private taskService: TaskService
   ) {
     super();
   }
@@ -98,7 +94,7 @@ export class TmplTaskProgressBarComponent
     if (this.useDynamicData) {
       this.subscribeToData();
     } else {
-      this.evaluateTaskGroupData(this.dataRows);
+      this.evaluateTaskGroupData();
     }
   }
 
@@ -137,68 +133,33 @@ export class TmplTaskProgressBarComponent
     return (this.subtasksCompleted / this.subtasksTotal) * 100;
   }
 
-  async getTaskGroupDataRows() {
+  private async getTaskGroupDataRows() {
     await this.taskService.ready();
     this.dataRows = await this.taskService.getTaskGroupDataRows(this.params.dataListName);
   }
 
-  checkAndSetUseDynamicData() {
+  private checkAndSetUseDynamicData() {
     this.useDynamicData = this.dataRows[0].hasOwnProperty(this.params.completedColumnName);
   }
 
-  /**
-   * Fetch the completion status for each subtask of the task group
-   * and calculate the task group's completion percentage to display.
-   * Task group data lists can store their completion status in one of two ways:
-   * 1. A "completed_field" column, referencing a field that stores the completion status
-   * 2. A "completed" column, with values updated dynamically
-   * @param dataRows The data rows of the task group
-   */
-  async evaluateTaskGroupData(dataRows: any[]) {
-    const subtasks = dataRows || [];
-    this.subtasksTotal = subtasks.length;
-    this.subtasksCompleted = subtasks.filter((task) => {
-      if (this.useDynamicData) {
-        return task[this.params.completedColumnName];
-      } else {
-        try {
-          return this.templateFieldService.getField(task["completed_field"]);
-        } catch {
-          console.error(
-            `[TASK] - Source data list ${this.params.dataListName} has no column "completed_field" nor "${this.params.completedColumnName}". It is mandatory for at least one of these columns to be present to task subtask progress.`
-          );
-        }
-      }
-    }).length;
-    if (this.subtasksCompleted === this.subtasksTotal) {
-      this.progressStatus = "completed";
-      this.progressStatusChange.emit(this.progressStatus);
-      // Check whether task group has already been completed
-      if (this.templateFieldService.getField(this.params.completedField) !== true) {
-        // If not, set completed field to "true"
-        await this.setTaskGroupCompletedStatus(true);
-        this.newlyCompleted.emit(true);
-      }
-    } else {
-      await this.setTaskGroupCompletedStatus(false);
-      if (this.subtasksCompleted) {
-        this.progressStatus = "inProgress";
-        this.progressStatusChange.emit(this.progressStatus);
-      }
-    }
-    const { previousHighlightedTaskGroup, newHighlightedTaskGroup } =
-      this.taskService.evaluateHighlightedTaskGroup();
-    // HACK - reschedule campaign notifications when the highlighted task group has changed,
-    // in order to handle any that are conditional on the highlighted task group
-    if (previousHighlightedTaskGroup !== newHighlightedTaskGroup) {
-      this.campaignService.scheduleCampaignNotifications();
-    }
-    this.cdr.markForCheck();
-  }
+  private async evaluateTaskGroupData() {
+    const previousProgressStatus = this.progressStatus;
+    const { subtasksTotal, subtasksCompleted, progressStatus, newlyCompleted } =
+      await this.taskService.evaluateTaskGroupData(this.dataRows, {
+        completedColumnName: this.params.completedColumnName,
+        completedField: this.params.completedField,
+        dataListName: this.params.dataListName,
+        useDynamicData: this.useDynamicData,
+      });
+    this.progressStatus = progressStatus;
+    this.subtasksCompleted = subtasksCompleted;
+    this.subtasksTotal = subtasksTotal;
 
-  async setTaskGroupCompletedStatus(isCompleted: boolean) {
-    console.log(`Setting ${this.params.completedField} to ${isCompleted}`);
-    await this.templateFieldService.setField(this.params.completedField, `${isCompleted}`);
+    if (previousProgressStatus !== this.progressStatus)
+      this.progressStatusChange.emit(this.progressStatus);
+    if (newlyCompleted) this.newlyCompleted.emit(true);
+
+    this.cdr.markForCheck();
   }
 
   // Adapted from data-items component
@@ -211,7 +172,7 @@ export class TmplTaskProgressBarComponent
       const query = await this.dynamicDataService.query$("data_list", this.params.dataListName);
       this.dataQuery$ = query.pipe(debounceTime(50)).subscribe(async (data) => {
         this.dataRows = data;
-        await this.evaluateTaskGroupData(this.dataRows);
+        await this.evaluateTaskGroupData();
       });
     }
   }
