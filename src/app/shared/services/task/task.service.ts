@@ -170,7 +170,7 @@ export class TaskService extends AsyncServiceBase {
     if (subtasksCompleted === subtasksTotal) {
       progressStatus = "completed";
       // Check whether task group has already been completed
-      if (this.templateFieldService.getField(completedField) !== true) {
+      if (!this.templateFieldService.getField(completedField)) {
         // If not, set completed field to "true"
         await this.setTaskGroupCompletedStatus(completedField, true);
         newlyCompleted = true;

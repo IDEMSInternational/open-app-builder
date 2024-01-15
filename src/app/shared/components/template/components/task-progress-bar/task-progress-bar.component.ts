@@ -153,7 +153,7 @@ export class TmplTaskProgressBarComponent
   }
 
   private checkAndSetUseDynamicData() {
-    this.useDynamicData = this.dataRows[0].hasOwnProperty(this.params.completedColumnName);
+    this.useDynamicData = this.dataRows?.[0]?.hasOwnProperty(this.params.completedColumnName);
   }
 
   private async evaluateTaskGroupData() {
