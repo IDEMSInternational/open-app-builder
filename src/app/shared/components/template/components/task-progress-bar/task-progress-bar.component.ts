@@ -138,7 +138,7 @@ export class TmplTaskProgressBarComponent
       this.params.completedField = this.completedField;
       this.params.progressUnitsName = this.progressUnitsName;
       this.params.showText = this.showText;
-      this.params.completedColumnName = "completed";
+      this.params.completedColumnName = null;
       this.params.completedFieldColumnName = "completed_field";
     }
   }
