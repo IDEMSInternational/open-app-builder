@@ -201,10 +201,10 @@ const ASSET_PACKS = {
 };
 
 const TASKS = {
-  enabled: true,
+  enabled: false,
   // The name of the field that tracks the currently highlighted task group
   highlightedTaskField: "_task_highlighted_group_id",
-  // The top-level list of task groups (e.g. modules)
+  // The top-level list of task groups (e.g. modules), containing task groups that can be highlighted
   taskGroupsListName: "workshop_tasks",
 };
 
