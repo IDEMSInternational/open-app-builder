@@ -1,4 +1,4 @@
-import { Injectable } from "@angular/core";
+import { Inject, Injectable } from "@angular/core";
 import { TemplateFieldService } from "../../components/template/services/template-field.service";
 import { AppDataService } from "../data/app-data.service";
 import { arrayToHashmap } from "../../utils";
