@@ -1,5 +1,5 @@
 import { HttpClient } from "@angular/common/http";
-import { Injectable } from "@angular/core";
+import { Injectable, InjectionToken } from "@angular/core";
 import { SHEETS_CONTENT_LIST, TRANSLATIONS_CONTENT_LIST } from "src/app/data/app-data";
 import { lastValueFrom } from "rxjs";
 import { FlowTypes } from "../../model";
@@ -109,6 +109,8 @@ export class AppDataService extends SyncServiceBase {
     }
     // Populate flow from cache if exists, or load json if it does not
     let flow = this.appDataCache[flow_type][flow_name];
+    console.log("***flow_name", flow_name);
+    console.log("***flow", flow);
     if (!flow) {
       flow = await this.loadSheetFromJson(flowContents);
       this.addFlowToCache(flow);
@@ -196,3 +198,6 @@ export class AppDataService extends SyncServiceBase {
 export type IAppDataCache = {
   [flow_type in FlowTypes.FlowType]: { [flow_name: string]: FlowTypes.FlowTypeWithData };
 };
+
+// For testing, provide an injection token
+export const APP_DATA_SERVICE_TOKEN = new InjectionToken<AppDataService>("AppDataService");
