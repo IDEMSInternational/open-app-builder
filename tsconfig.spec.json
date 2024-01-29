@@ -5,10 +5,12 @@
     "outDir": "./out-tsc/spec",
     "types": ["jasmine"]
   },
+  "files": [],
   "include": [
     "src/**/*.spec.ts",
     "src/**/*.d.ts",
-    // Ensure odk-form components incluided to fix console error
+    "src/test/**/*.ts",
+    // Ensure odk-form components included to fix console error
     "src/app/shared/components/template/components/odk-form/libs/**/*.ts",
     // Ensure any ts-based packages used by frontend app are listed here
     // to allow import/live-reload within angular compiler
