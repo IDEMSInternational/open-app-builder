@@ -109,8 +109,6 @@ export class AppDataService extends SyncServiceBase {
     }
     // Populate flow from cache if exists, or load json if it does not
     let flow = this.appDataCache[flow_type][flow_name];
-    console.log("***flow_name", flow_name);
-    console.log("***flow", flow);
     if (!flow) {
       flow = await this.loadSheetFromJson(flowContents);
       this.addFlowToCache(flow);
