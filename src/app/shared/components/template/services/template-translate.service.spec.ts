@@ -6,6 +6,10 @@ export class MockTemplateTranslateService implements Partial<TemplateTranslateSe
   public translateValue(value: string) {
     return value;
   }
+
+  public async ready(timeoutValue?: number): Promise<boolean> {
+    return true;
+  }
 }
 
 describe("TaskService", () => {
