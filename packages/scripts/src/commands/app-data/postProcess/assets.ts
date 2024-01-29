@@ -1,5 +1,6 @@
 import * as path from "path";
-import * as fs from "fs-extra";
+import fse from "fs-extra";
+import fs from "fs/promises";
 import chalk from "chalk";
 import { Command } from "commander";
 import {
@@ -8,7 +9,7 @@ import {
   IContentsEntry,
   logOutput,
   logWarning,
-  createTempDir,
+  createTempDirAsync,
   IContentsEntryHashmap,
   kbToMB,
   setNestedProperty,
@@ -56,7 +57,7 @@ export default program
     const mappedOptions: IAssetPostProcessorOptions = {
       sourceAssetsFolders: options.sourceAssetsFolders.split(",").map((s) => s.trim()),
     };
-    new AssetsPostProcessor(mappedOptions).run();
+    await new AssetsPostProcessor(mappedOptions).run();
   });
 
 /***************************************************************************************
@@ -67,14 +68,14 @@ export class AssetsPostProcessor {
   private stagingDir: string;
   constructor(private options: IAssetPostProcessorOptions) {}
 
-  public run() {
+  public async run() {
     const { app_data } = this.activeDeployment;
     const { sourceAssetsFolders } = this.options;
     const { _parent_config } = this.activeDeployment;
     const appAssetsFolder = path.resolve(app_data.output_path, "assets");
-    fs.ensureDirSync(appAssetsFolder);
+    await fs.mkdir(appAssetsFolder, { recursive: true });
     // Populate merged assets staging to run quality control checks and generate full contents lists
-    this.stagingDir = createTempDir();
+    this.stagingDir = await createTempDirAsync();
     const mergedAssetsHashmap: IContentsEntryHashmap = {};
 
     // Include parent config in list of source assets
@@ -82,7 +83,7 @@ export class AssetsPostProcessor {
     // multiple input sources instead
     if (_parent_config) {
       const parentAssetsFolder = path.resolve(_parent_config._workspace_path, "app_data", "assets");
-      fs.ensureDirSync(parentAssetsFolder);
+      await fs.mkdir(parentAssetsFolder);
       sourceAssetsFolders.unshift(parentAssetsFolder);
     }
 
@@ -111,9 +112,9 @@ export class AssetsPostProcessor {
 
     // copy deployment assets to main folder and write merged contents file
     replicateDir(this.stagingDir, appAssetsFolder);
-    fs.removeSync(this.stagingDir);
+    await fs.rm(this.stagingDir, { recursive: true, force: true });
 
-    this.writeAssetsContentsFiles(appAssetsFolder, tracked, untracked);
+    await this.writeAssetsContentsFiles(appAssetsFolder, tracked, untracked);
     console.log(chalk.green("Asset Process Complete"));
   }
 
@@ -123,34 +124,37 @@ export class AssetsPostProcessor {
    * `untracked-assets.json` provides a summary of all assets that appear in translation or theme folders
    * but do not have corresponding default global entries (only populated if entries exist)
    */
-  private writeAssetsContentsFiles(
+  private async writeAssetsContentsFiles(
     appAssetsFolder: string,
     assetEntries: IAssetEntryHashmap,
     missingEntries: IAssetEntryHashmap
   ) {
-    if (fs.existsSync(appAssetsFolder)) {
+    if (await fse.pathExists(appAssetsFolder)) {
       const contentsTarget = path.resolve(appAssetsFolder, "contents.json");
-      fs.writeFileSync(contentsTarget, JSON.stringify(sortJsonKeys(assetEntries), null, 2));
+      await fs.writeFile(contentsTarget, JSON.stringify(sortJsonKeys(assetEntries), null, 2));
       const missingTarget = path.resolve(appAssetsFolder, "untracked-assets.json");
-      if (fs.existsSync(missingTarget)) fs.removeSync(missingTarget);
+      if (await fse.pathExists(missingTarget)) {
+        await fs.rm(missingTarget, { recursive: true, force: true });
+      }
+
       if (Object.keys(missingEntries).length > 0) {
         logWarning({
           msg1: "Assets override found without corresponding entry",
           msg2: Object.keys(missingEntries).join("\n"),
         });
-        fs.writeFileSync(missingTarget, JSON.stringify(sortJsonKeys(missingEntries), null, 2));
+        await fs.writeFile(missingTarget, JSON.stringify(sortJsonKeys(missingEntries), null, 2));
       }
     }
   }
 
-  private mergeParentAssets(sourceAssets: { [relativePath: string]: IContentsEntry }) {
+  private async mergeParentAssets(sourceAssets: { [relativePath: string]: IContentsEntry }) {
     const { _parent_config } = this.activeDeployment;
     const mergedAssets = { ...sourceAssets };
 
     // If parent config exists also include any parent files that would not be overwritten by source
     if (_parent_config) {
       const parentAssetsFolder = path.resolve(_parent_config._workspace_path, "app_data", "assets");
-      fs.ensureDirSync(parentAssetsFolder);
+      await fs.mkdir(parentAssetsFolder);
       const parentAssets = generateFolderFlatMap(parentAssetsFolder, { includeLocalPath: true });
       const filteredParentAssets = this.filterAppAssets(parentAssets);
       Object.keys(filteredParentAssets).forEach((relativePath) => {
