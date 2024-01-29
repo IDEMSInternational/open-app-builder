@@ -12,6 +12,10 @@ export class MockAppConfigService implements Partial<AppConfigService> {
   constructor(mockAppConfig: Partial<IAppConfig> = {}) {
     this.appConfig$.next(mockAppConfig as any);
   }
+
+  public ready(timeoutValue?: number) {
+    return true;
+  }
 }
 
 describe("AppConfigService", () => {
