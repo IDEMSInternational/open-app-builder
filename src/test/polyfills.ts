@@ -7,4 +7,6 @@
 // https://github.com/angular/angular/issues/21440
 // https://stackoverflow.com/questions/55398923/error-cant-resolve-core-js-es7-reflect-in-node-modules-angular-devkit-bui
 
-import "core-js/proposals/reflect-metadata";
+// CC NOTE - No longer required but keeping file in case needed in future
+
+// import "core-js/proposals/reflect-metadata";
