@@ -1,21 +1,20 @@
 import { TestBed } from "@angular/core/testing";
-
-import { TaskService } from "./task.service";
-import {
-  TemplateFieldService,
-  TEMPLATE_FIELD_SERVICE_TOKEN,
-} from "../../components/template/services/template-field.service";
 import { HttpClientTestingModule } from "@angular/common/http/testing";
-import { MockTemplateFieldService } from "../../components/template/services/template-field.service.spec";
-import { AppConfigService } from "../app-config/app-config.service";
-import { MockAppConfigService } from "../app-config/app-config.service.spec";
-import { IAppConfig } from "../../model";
-import { AppDataService, IAppDataCache, APP_DATA_SERVICE_TOKEN } from "../data/app-data.service";
-import { MockAppDataService } from "../data/app-data.service.spec";
-import { TemplateTranslateService } from "../../components/template/services/template-translate.service";
-import { MockTemplateTranslateService } from "../../components/template/services/template-translate.service.spec";
 
-// This must match the corresponding vallue in the deployment config, if the default value is overridden
+import { IAppConfig } from "../../model";
+import { TaskService } from "./task.service";
+
+// Mock Services
+import { MockTemplateFieldService } from "../../components/template/services/template-field.service.spec";
+import { MockAppConfigService } from "../app-config/app-config.service.spec";
+import { MockAppDataService } from "../data/app-data.service.spec";
+// Mocked Services
+import { AppDataService, IAppDataCache } from "../data/app-data.service";
+import { AppConfigService } from "../app-config/app-config.service";
+import { CampaignService } from "../../../feature/campaign/campaign.service";
+import { TemplateFieldService } from "../../components/template/services/template-field.service";
+
+// This must match the corresponding value in the deployment config, if the default value is overridden
 const highlightedTaskField = "_task_highlighted_group_id" as Partial<
   IAppConfig["TASKS"]["highlightedTaskField"]
 >;
@@ -28,6 +27,7 @@ const MOCK_CONFIG = {
   TASKS: {
     highlightedTaskField: "_task_highlighted_group_id",
     taskGroupsListName: "mock_task_groups_data",
+    enabled: true,
   },
 } as Partial<IAppConfig>;
 
@@ -67,27 +67,31 @@ const MOCK_DATA: Partial<IAppDataCache> = {
  */
 describe("TaskService", () => {
   let service: TaskService;
+  let scheduleCampaignNotificationsSpy: jasmine.Spy<jasmine.Func>;
 
-  beforeEach(() => {
+  beforeEach(async () => {
+    scheduleCampaignNotificationsSpy = jasmine.createSpy();
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule],
       providers: [
-        TaskService,
-        {
-          provide: AppConfigService,
-          useValue: new MockAppConfigService(MOCK_CONFIG),
-        },
         {
           provide: TemplateFieldService,
-          useValue: new MockTemplateFieldService(MOCK_FIELDS),
-        },
-        {
-          provide: TemplateTranslateService,
-          useValue: new MockTemplateTranslateService(),
+          useValue: new MockTemplateFieldService({ highlightedTaskField }),
         },
         {
           provide: AppDataService,
           useValue: new MockAppDataService(MOCK_DATA),
+        },
+        {
+          provide: AppConfigService,
+          useValue: new MockAppConfigService(MOCK_CONFIG),
+        },
+        // Mock single method from campaign service called
+        {
+          provide: CampaignService,
+          useValue: {
+            scheduleCampaignNotifications: scheduleCampaignNotificationsSpy,
+          },
         },
       ],
     });
@@ -97,8 +101,27 @@ describe("TaskService", () => {
   it("should be created", () => {
     expect(service).toBeTruthy();
   });
-
-  it("should return the name of the current highlighted task", () => {
-    expect(service.getHighlightedTaskGroup()).toBe("task_a");
+  it("enables service via app config", async () => {
+    await service.ready();
+    expect(service.tasksFeatureEnabled).toEqual(true);
   });
+
+  it("should return the name of the current highlighted task", async () => {
+    await service.ready();
+    expect(service.getHighlightedTaskGroup()).toBe("task_group_1");
+  });
+
+  // TODO - test if campaign service mock functions as intended
+
+  // fit("schedules campaign notifications", async () => {
+  //   await service.ready();
+  //   await service.evaluateTaskGroupData(MOCK_DATA.data_list.mock_task_groups_data.rows, {
+  //     completedColumnName: "",
+  //     completedField: "",
+  //     completedFieldColumnName: "",
+  //     dataListName: "",
+  //     useDynamicData: false,
+  //   });
+  //   expect(scheduleCampaignNotificationsSpy).toHaveBeenCalledTimes(1);
+  // });
 });
