@@ -3,8 +3,11 @@ import { createHash } from "crypto";
 import { AssetsPostProcessor } from "./assets";
 import type { IDeploymentConfigJson } from "../../deployment/common";
 import type { RecursivePartial } from "data-models/appConfig";
+// Prefer to use async fs methods due to node-20 incompatibility with mock-fs
+// https://github.com/tschaub/mock-fs/issues/380
+// https://github.com/tschaub/mock-fs/issues/384
 
-import fs, { readJsonSync, readdirSync } from "fs-extra";
+import fse from "fs-extra";
 import mockFs from "mock-fs";
 
 // Use default imports to allow spying on functions and replacing with mock methods
@@ -22,14 +25,15 @@ const mockDirs = {
 const { file: mockFile, entry: mockFileEntry } = createMockFile(); // create mock 1MB file
 
 /** Parse the contents.json file populated to the app assets folder and return */
-function readAppAssetContents() {
+async function readAppAssetContents() {
   const contentsPath = path.resolve(mockDirs.appAssets, "contents.json");
-  return readJsonSync(contentsPath) as IAssetEntryHashmap;
+  const data = await fse.readJSON(contentsPath);
+  return data as IAssetEntryHashmap;
 }
 
 /** Create mock entries on file system corresponding to local assets folder */
 function mockLocalAssets(assets: Record<string, any>) {
-  return mockFs({
+  mockFs({
     mock: {
       local: {
         assets,
@@ -58,22 +62,26 @@ describe("Assets PostProcess", () => {
     mockFs.restore();
   });
 
-  /** Mock setup testing (can be removed once working consistenctly) */
-  it("mocks file system for testing", () => {
+  /** Mock setup testing (can be removed once working consistently) */
+  fit("mocks file system for testing", async () => {
     mockLocalAssets({ folder: { "file.jpg": mockFile } });
     const testFilePath = path.resolve(mockDirs.localAssets, "folder", "file.jpg");
-    expect(fs.statSync(testFilePath).size).toEqual(1 * 1024 * 1024);
+    const fileStat = await fse.stat(testFilePath);
+    expect(fileStat.size).toEqual(1 * 1024 * 1024);
   });
 
   /** Main tests */
-  it("Copies assets from local to app", () => {
+  fit("Copies assets from local to app", async () => {
     mockLocalAssets({ folder: { "file.jpg": mockFile } });
     runAssetsPostProcessor();
     const testFilePath = path.resolve(mockDirs.appAssets, "folder", "file.jpg");
-    expect(fs.statSync(testFilePath).size).toEqual(1 * 1024 * 1024);
+    const fileExists = await fse.pathExists(testFilePath);
+    expect(fileExists).toEqual(true);
+    const fileStat = await fse.stat(testFilePath);
+    expect(fileStat.size).toEqual(1 * 1024 * 1024);
   });
 
-  it("Supports multiple input folders", () => {
+  it("Supports multiple input folders", async () => {
     // Use override file with specified size for testing output
     const overrideFileSize = 123;
     const { file: mockFileOverride } = createMockFile(overrideFileSize);
@@ -94,70 +102,70 @@ describe("Assets PostProcess", () => {
     });
     processor.run();
     // test merged file outputs
-    const contents = readAppAssetContents();
+    const contents = await readAppAssetContents();
     const expectedFiles = ["folder/file_a.jpg", "folder/file_b.jpg", "folder/file_c.jpg"];
     expect(Object.keys(contents)).toEqual(expectedFiles);
     // test file_b overidden from source_b
     const overiddenFilePath = path.resolve(mockDirs.appAssets, "folder", "file_b.jpg");
-    expect(fs.statSync(overiddenFilePath).size).toEqual(1 * 1024 * overrideFileSize);
+    const fileStat = await fse.stat(overiddenFilePath);
+    expect(fileStat.size).toEqual(1 * 1024 * overrideFileSize);
   });
 
-  it("populates contents json", () => {
+  it("populates contents json", async () => {
     mockLocalAssets({ "test.jpg": mockFile });
     runAssetsPostProcessor();
-    const contents = readAppAssetContents();
+    const contents = await readAppAssetContents();
     expect("test.jpg" in contents).toBeTrue();
   });
 
-  it("Populates global assets from named or root folder", () => {
+  it("Populates global assets from named or root folder", async () => {
     mockLocalAssets({
       global: { "test1.jpg": mockFile },
       nested: { "test2.jpg": mockFile },
       "test3.jpg": mockFile,
     });
     runAssetsPostProcessor();
-    const contents = readAppAssetContents();
+    const contents = await readAppAssetContents();
     expect(contents).toEqual({
       "nested/test2.jpg": mockFileEntry,
       "test1.jpg": { ...mockFileEntry, filePath: "global/test1.jpg" },
       "test3.jpg": mockFileEntry,
     });
-    mockFs.restore();
   });
 
-  it("Populates assets with no overrides", () => {
+  it("Populates assets with no overrides", async () => {
     mockLocalAssets({ "test.jpg": mockFile });
     runAssetsPostProcessor();
-    const contents = readAppAssetContents();
+    const contents = await readAppAssetContents();
     const assetEntry = contents["test.jpg"];
     expect(assetEntry.overrides).toBeUndefined();
   });
 
-  it("Populates translation override with default theme", () => {
+  it("Populates translation override with default theme", async () => {
     mockLocalAssets({
       "test.jpg": mockFile,
       tz_sw: { "test.jpg": mockFile },
     });
     runAssetsPostProcessor({ filter_language_codes: ["tz_sw"] });
-    const contents = readAppAssetContents();
+    const contents = await readAppAssetContents();
     const assetEntry = contents["test.jpg"];
     expect(assetEntry.overrides["theme_default"]).toEqual({
       tz_sw: { ...mockFileEntry, filePath: "tz_sw/test.jpg" },
     });
   });
 
-  it("Populates theme override with global translation", () => {
+  it("Populates theme override with global translation", async () => {
     mockLocalAssets({
       "test.jpg": mockFile,
       theme_test: { "test.jpg": mockFile },
     });
     runAssetsPostProcessor({ app_themes_available: ["test"] });
-    const contents = readAppAssetContents();
+    const contents = await readAppAssetContents();
     expect(contents["test.jpg"].overrides).toEqual({
       theme_test: { global: { ...mockFileEntry, filePath: "theme_test/test.jpg" } },
     });
   });
-  it("Populates combined theme and language overrides in any folder order ", () => {
+  it("Populates combined theme and language overrides in any folder order ", async () => {
     mockLocalAssets({
       "test1.jpg": mockFile,
       "test2.jpg": mockFile,
@@ -171,7 +179,7 @@ describe("Assets PostProcess", () => {
       },
     });
     runAssetsPostProcessor({ app_themes_available: ["test"], filter_language_codes: ["tz_sw"] });
-    const contents = readAppAssetContents();
+    const contents = await readAppAssetContents();
     expect(contents).toEqual({
       "test1.jpg": {
         ...mockFileEntry,
@@ -192,28 +200,25 @@ describe("Assets PostProcess", () => {
     });
   });
 
-  it("Filters theme assets", () => {
+  it("Filters theme assets", async () => {
     mockLocalAssets({
       "test.jpg": mockFile,
       theme_testTheme: { "test.jpg": mockFile },
       theme_ignored: { "test.jpg": mockFile },
     });
     runAssetsPostProcessor({ app_themes_available: ["testTheme"] });
-    expect(readdirSync(mockDirs.appAssets)).toEqual([
-      "contents.json",
-      "test.jpg",
-      "theme_testTheme",
-    ]);
+    const res = await fse.readdir(mockDirs.appAssets);
+    expect(res).toEqual(["contents.json", "test.jpg", "theme_testTheme"]);
   });
 
-  it("Includes all language assets by default", () => {
+  it("Includes all language assets by default", async () => {
     mockLocalAssets({
       "test.jpg": mockFile,
       tz_sw: { "test.jpg": mockFile },
       ke_sw: { "test.jpg": mockFile },
     });
     runAssetsPostProcessor({ filter_language_codes: undefined });
-    const contents = readAppAssetContents();
+    const contents = await readAppAssetContents();
     expect(contents).toEqual({
       "test.jpg": {
         ...mockFileEntry,
@@ -227,17 +232,18 @@ describe("Assets PostProcess", () => {
     });
   });
 
-  it("Filters language assets", () => {
+  it("Filters language assets", async () => {
     mockLocalAssets({
       "test.jpg": mockFile,
       tz_sw: { "test.jpg": mockFile },
       ke_sw: { "test.jpg": mockFile },
     });
     runAssetsPostProcessor({ filter_language_codes: ["tz_sw"] });
-    expect(readdirSync(mockDirs.appAssets)).toEqual(["contents.json", "test.jpg", "tz_sw"]);
+    const res = await fse.readdir(mockDirs.appAssets);
+    expect(res).toEqual(["contents.json", "test.jpg", "tz_sw"]);
   });
 
-  it("supports nested lang and theme folders", () => {
+  it("supports nested lang and theme folders", async () => {
     mockLocalAssets({
       nested: {
         "test.jpg": mockFile,
@@ -253,7 +259,7 @@ describe("Assets PostProcess", () => {
       filter_language_codes: ["tz_sw"],
       app_themes_available: ["test"],
     });
-    const contents = readAppAssetContents();
+    const contents = await readAppAssetContents();
     expect(contents).toEqual({
       "nested/test.jpg": {
         ...mockFileEntry,
@@ -312,7 +318,7 @@ describe("Assets PostProcess", () => {
   it("warns on untracked assets", () => {
     const { localAssets } = mockDirs;
     const untrackedPath = path.resolve(localAssets, "tz_sw", "untracked.jpg");
-    fs.writeFileSync(untrackedPath, mockFile);
+    fse.writeFileSync(untrackedPath, mockFile);
     runAssetsPostProcessor();
     expect(mockWarningLogger).toHaveBeenCalledWith({
       msg1: "Translated assets found without corresponding global",
