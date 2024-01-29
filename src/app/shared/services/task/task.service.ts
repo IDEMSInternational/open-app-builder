@@ -1,11 +1,11 @@
-import { Inject, Injectable } from "@angular/core";
+import { Injectable } from "@angular/core";
 import { TemplateFieldService } from "../../components/template/services/template-field.service";
 import { AppDataService } from "../data/app-data.service";
 import { arrayToHashmap } from "../../utils";
 import { AsyncServiceBase } from "../asyncService.base";
 import { AppConfigService } from "../app-config/app-config.service";
 import { IAppConfig } from "../../model";
-import { CampaignService } from "src/app/feature/campaign/campaign.service";
+import { CampaignService } from "../../../feature/campaign/campaign.service";
 
 export type IProgressStatus = "notStarted" | "inProgress" | "completed";
 
