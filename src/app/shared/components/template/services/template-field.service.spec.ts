@@ -1,6 +1,7 @@
+import { HttpClientTestingModule } from "@angular/common/http/testing";
 import { TestBed } from "@angular/core/testing";
 import { TemplateFieldService } from "./template-field.service";
-import { PromiseExtended } from "dexie";
+import type { PromiseExtended } from "dexie";
 
 /** Mock calls for field values from the template field service to return test data */
 export class MockTemplateFieldService implements Partial<TemplateFieldService> {
@@ -17,13 +18,18 @@ export class MockTemplateFieldService implements Partial<TemplateFieldService> {
     this.mockFields[key] = value;
     return new Promise(() => {}) as PromiseExtended;
   }
+  public async ready(timeoutValue?: number): Promise<boolean> {
+    return true;
+  }
 }
 
-describe("TaskService", () => {
+describe("TemplateFieldService", () => {
   let service: TemplateFieldService;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({});
+    TestBed.configureTestingModule({
+      imports: [HttpClientTestingModule],
+    });
     service = TestBed.inject(TemplateFieldService);
   });
 
