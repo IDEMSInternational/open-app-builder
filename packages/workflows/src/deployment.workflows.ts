@@ -77,6 +77,12 @@ const workflows: IDeploymentWorkflows = {
         ],
       },
       set: {
+        options: [
+          {
+            flags: "--skip-refresh",
+            description: "Skip remote content refresh",
+          },
+        ],
         label: "Set active deployment",
         steps: [
           {
@@ -94,6 +100,7 @@ const workflows: IDeploymentWorkflows = {
           },
           {
             name: "refresh_remote_content",
+            condition: async ({ options }) => !options.skipRefresh,
             function: async ({ tasks, config }) => {
               if (config.git?.content_repo) {
                 await tasks.git().refreshRemoteRepo();
