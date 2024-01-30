@@ -2,7 +2,7 @@ import boxen from "boxen";
 import chalk from "chalk";
 import { Command } from "commander";
 
-import { _wait } from "../cli-utils";
+import { _wait } from "../async-utils";
 
 /**
  * HACK - export error within a Logger const to allow easier mocking in tests

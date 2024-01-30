@@ -129,7 +129,7 @@ jobs:
             echo "Version Code: $VERSION_CODE"
             echo "Version: $VERSION"
             # This will need to change currently looking for specific version and not place holder
-            sed -i -e "s/16022/$VERSION_CODE/g" -e "s/0.16.22/$VERSION/g" ./android/app/build.gradle 
+            sed -i -e "s/16024/$VERSION_CODE/g" -e "s/0.16.24/$VERSION/g" ./android/app/build.gradle 
             
         - name: Download Build Artifact
           uses: actions/download-artifact@v3
