@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { addRxPlugin, MangoQuery, RxDocument } from "rxdb";
-import { firstValueFrom, map } from "rxjs";
+import { firstValueFrom, lastValueFrom, map, AsyncSubject } from "rxjs";
 
 import { FlowTypes } from "data-models";
 import { environment } from "src/environments/environment";
@@ -40,6 +40,9 @@ export class DynamicDataService extends AsyncServiceBase {
    * flow type so that all data_list updates are stored in a single table
    */
   private writeCache: PersistedMemoryAdapter;
+
+  /** Hashmap to track pending collection creation and avoid duplicate requests */
+  private collectionCreators: Record<string, AsyncSubject<string>> = {};
 
   constructor(
     private appDataService: AppDataService,
@@ -126,14 +129,16 @@ export class DynamicDataService extends AsyncServiceBase {
   }
 
   /** Remove user writes on a flow to return it to its original state */
-  public async resetFlow(flow_type: FlowTypes.FlowType, flow_name: string) {
+  public async resetFlow(flow_type: FlowTypes.FlowType, flow_name: string, throwOnError = true) {
     await this.writeCache.delete(flow_type, flow_name);
     const collectionName = this.normaliseCollectionName(flow_type, flow_name);
     if (this.db.getCollection(collectionName)) {
       await this.db.removeCollection(collectionName);
       await this.ensureCollection(flow_type, flow_name);
     } else {
-      throw new Error(`Collection [${collectionName}] not found, cannot remove`);
+      if (throwOnError) {
+        throw new Error(`Collection [${collectionName}] not found, cannot remove`);
+      }
     }
   }
 
@@ -141,6 +146,21 @@ export class DynamicDataService extends AsyncServiceBase {
   private async ensureCollection(flow_type: FlowTypes.FlowType, flow_name: string) {
     const collectionName = this.normaliseCollectionName(flow_type, flow_name);
     if (!this.db.getCollection(collectionName)) {
+      await this.createCollection(flow_type, flow_name);
+    }
+    return { collectionName };
+  }
+
+  private async createCollection(flow_type: FlowTypes.FlowType, flow_name: string) {
+    const collectionName = this.normaliseCollectionName(flow_type, flow_name);
+    // avoid duplicate creation requests by tracking create requests
+    if (this.collectionCreators[collectionName]) {
+      await lastValueFrom(this.collectionCreators[collectionName]);
+      return;
+    }
+    // create collection and insert initial data. Use AsyncSubject to notify only when complete
+    else {
+      this.collectionCreators[collectionName] = new AsyncSubject();
       const initialData = await this.getInitialData(flow_type, flow_name);
       if (initialData.length === 0) {
         throw new Error(`No data exists for collection [${flow_name}], cannot initialise`);
@@ -148,8 +168,11 @@ export class DynamicDataService extends AsyncServiceBase {
       const schema = this.inferSchema(initialData[0]);
       await this.db.createCollection(collectionName, schema);
       await this.db.bulkInsert(collectionName, initialData);
+      // notify any observers that collection has been created
+      this.collectionCreators[collectionName].next(collectionName);
+      this.collectionCreators[collectionName].complete();
+      delete this.collectionCreators[collectionName];
     }
-    return { collectionName };
   }
 
   /** Retrive json sheet data and merge with any user writes */
