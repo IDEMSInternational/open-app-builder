@@ -63,8 +63,9 @@ export class JSEvaluator {
    */
   evaluate(expression: string, executionContext = {}) {
     const funcString = `${this.evaluationContextBase} (${expression});`;
+    const cleanedFuncString = this.cleanFunctionString(funcString);
     try {
-      const func = new Function(funcString);
+      const func = new Function(cleanedFuncString);
       const evaluated = func.apply(executionContext);
       return evaluated;
     } catch (error) {
@@ -88,6 +89,11 @@ export class JSEvaluator {
       if (typeof value === "string") return `'${value}'`;
     }
     return value;
+  }
+
+  private cleanFunctionString(str: string) {
+    // Linebreak characters will break JS evaluator so add additional escape
+    return str.replace(/(?:\r)/g, "\\r").replace(/(?:\n)/g, "\\n");
   }
 }
 
