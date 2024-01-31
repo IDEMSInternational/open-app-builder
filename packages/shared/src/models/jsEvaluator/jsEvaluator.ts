@@ -86,7 +86,11 @@ export class JSEvaluator {
   private parseContextValue(value: any) {
     if (value) {
       if (typeof value === "object") value = JSON.stringify(value);
-      if (typeof value === "string") return `'${value}'`;
+      if (typeof value === "string") {
+        // when returning a string value escape single quote which would otherwise conflict with return
+        const escapedValue = value.replace(/'/g, "\\'");
+        return `'${escapedValue}'`;
+      }
     }
     return value;
   }
