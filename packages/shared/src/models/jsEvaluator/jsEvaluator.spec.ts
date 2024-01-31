@@ -49,4 +49,9 @@ describe("JS Evaluator", () => {
     evaluator.setGlobalContext({ constants: { name: "\nAda" } });
     expect(evaluator.evaluate("'Hello'+name", { name: "\nAda" })).toEqual("Hello\nAda");
   });
+  it("handles special characters", () => {
+    // Case 1 - single quotation (used to wrap string values in evaluator)
+    evaluator.setGlobalContext({ constants: { name: "Ada'" } });
+    expect(evaluator.evaluate("'Hello '+name")).toEqual("Hello Ada'");
+  });
 });
