@@ -1,16 +1,21 @@
 import { JSEvaluator } from "./jsEvaluator";
 
+const constants = {
+  a: 1,
+  b: 2,
+  nestedConstant: { array: [1] },
+};
+const functions = {
+  isEven: (n) => n % 2 === 0,
+};
+
 describe("JS Evaluator", () => {
-  const constants = {
-    a: 1,
-    b: 2,
-    nestedConstant: { array: [1] },
-  };
-  const functions = {
-    isEven: (n) => n % 2 === 0,
-  };
-  const evaluator = new JSEvaluator();
-  evaluator.setGlobalContext({ constants, functions });
+  let evaluator: JSEvaluator;
+  beforeEach(() => {
+    evaluator = new JSEvaluator();
+    evaluator.setGlobalContext({ constants, functions });
+  });
+
   it("expression: Math.min(5,7)", () => {
     expect(evaluator.evaluate("Math.min(5,7)")).toEqual(5);
   });
@@ -34,5 +39,19 @@ describe("JS Evaluator", () => {
     const invalidConstants = { default: "hello", new: "test" };
     evaluator.setGlobalContext({ constants: { ...invalidConstants, ...constants } });
     expect(() => evaluator.evaluate("Math.min(a,b)")).toThrowError("Unexpected token 'default'");
+  });
+  it("handles escape characters", () => {
+    // Case 1 - evaluation string with linebreak
+    expect(evaluator.evaluate("'Hello\n'+this.name", { name: "Ada" })).toEqual("Hello\nAda");
+    // Case 2 - this context with linebreak
+    expect(evaluator.evaluate("'Hello'+this.name", { name: "\nAda" })).toEqual("Hello\nAda");
+    // Case 3 - global constant with linebreak
+    evaluator.setGlobalContext({ constants: { name: "\nAda" } });
+    expect(evaluator.evaluate("'Hello'+name", { name: "\nAda" })).toEqual("Hello\nAda");
+  });
+  it("handles special characters", () => {
+    // Case 1 - single quotation (used to wrap string values in evaluator)
+    evaluator.setGlobalContext({ constants: { name: "Ada'" } });
+    expect(evaluator.evaluate("'Hello '+name")).toEqual("Hello Ada'");
   });
 });
