@@ -63,8 +63,9 @@ export class JSEvaluator {
    */
   evaluate(expression: string, executionContext = {}) {
     const funcString = `${this.evaluationContextBase} (${expression});`;
+    const cleanedFuncString = this.cleanFunctionString(funcString);
     try {
-      const func = new Function(funcString);
+      const func = new Function(cleanedFuncString);
       const evaluated = func.apply(executionContext);
       return evaluated;
     } catch (error) {
@@ -85,9 +86,18 @@ export class JSEvaluator {
   private parseContextValue(value: any) {
     if (value) {
       if (typeof value === "object") value = JSON.stringify(value);
-      if (typeof value === "string") return `'${value}'`;
+      if (typeof value === "string") {
+        // when returning a string value escape single quote which would otherwise conflict with return
+        const escapedValue = value.replace(/'/g, "\\'");
+        return `'${escapedValue}'`;
+      }
     }
     return value;
+  }
+
+  private cleanFunctionString(str: string) {
+    // Linebreak characters will break JS evaluator so add additional escape
+    return str.replace(/(?:\r)/g, "\\r").replace(/(?:\n)/g, "\\n");
   }
 }
 
