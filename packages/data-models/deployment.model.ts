@@ -56,6 +56,7 @@ export interface IDeploymentConfig {
     /** filter function that receives basic file info such as relativePath and size. Default `(fileEntry)=>true`*/
     assets_filter_function: (fileEntry: IContentsEntry) => boolean;
   };
+  favicon_asset?: string;
   git: {
     /** Url of external git repo to store content */
     content_repo?: string;
@@ -140,6 +141,7 @@ export const DEPLOYMENT_CONFIG_EXAMPLE_DEFAULTS: IDeploymentConfig = {
     custom_ts_files: [],
     task_cache_path: "./tasks",
   },
+  favicon_asset: "",
   git: {},
   _validated: true,
   _parent_config: null,

@@ -64,10 +64,13 @@ export class SeoService extends SyncServiceBase {
    */
   private getDefaultSEOTags(): ISEOMeta {
     const PUBLIC_URL = location.origin;
+    const faviconPath = environment.deploymentConfig.favicon_asset
+      ? "assets/app_data/assets/" + environment.deploymentConfig.favicon_asset
+      : "assets/icon/favicon.png";
     return {
       title: environment.deploymentConfig.app_config.APP_HEADER_DEFAULTS.title,
       description: "",
-      faviconUrl: `${PUBLIC_URL}/assets/icon/favicon.png`,
+      faviconUrl: `${PUBLIC_URL}/${faviconPath}`,
       imageUrl: ``,
     };
   }
