@@ -56,7 +56,6 @@ export interface IDeploymentConfig {
     /** filter function that receives basic file info such as relativePath and size. Default `(fileEntry)=>true`*/
     assets_filter_function: (fileEntry: IContentsEntry) => boolean;
   };
-  favicon_asset?: string;
   git: {
     /** Url of external git repo to store content */
     content_repo?: string;
@@ -76,6 +75,9 @@ export interface IDeploymentConfig {
     source_strings_path?: string;
     /** translated string for import. Default `./app_data/translations_source/translated_strings */
     translated_strings_path?: string;
+  };
+  web: {
+    favicon_asset?: string;
   };
   workflows: {
     /** path to custom workflow files to include */
@@ -137,11 +139,11 @@ export const DEPLOYMENT_CONFIG_EXAMPLE_DEFAULTS: IDeploymentConfig = {
     source_strings_path: "./app_data/translations_source/source_strings",
     translated_strings_path: "./app_data/translations_source/translated_strings",
   },
+  web: {},
   workflows: {
     custom_ts_files: [],
     task_cache_path: "./tasks",
   },
-  favicon_asset: "",
   git: {},
   _validated: true,
   _parent_config: null,
