@@ -1,5 +1,6 @@
 import { TestBed } from "@angular/core/testing";
 import { HttpClientTestingModule } from "@angular/common/http/testing";
+import clone from "clone";
 
 import { IAppConfig } from "../../model";
 import { TaskService } from "./task.service";
@@ -15,18 +16,18 @@ import { CampaignService } from "../../../feature/campaign/campaign.service";
 import { TemplateFieldService } from "../../components/template/services/template-field.service";
 
 // This must match the corresponding value in the deployment config, if the default value is overridden
-const highlightedTaskField = "_task_highlighted_group_id" as Partial<
-  IAppConfig["TASKS"]["highlightedTaskField"]
->;
+const highlightedTaskFieldName = "_task_highlighted_group_id";
+
+const taskGroupsListName = "mock_task_groups_data";
 
 const MOCK_FIELDS = {
-  [highlightedTaskField]: "task_a",
+  [highlightedTaskFieldName]: "_placeholder",
 };
 
 const MOCK_CONFIG = {
   TASKS: {
-    highlightedTaskField: "_task_highlighted_group_id",
-    taskGroupsListName: "mock_task_groups_data",
+    highlightedTaskField: highlightedTaskFieldName,
+    taskGroupsListName,
     enabled: true,
   },
 } as Partial<IAppConfig>;
@@ -35,7 +36,7 @@ const MOCK_DATA: Partial<IAppDataCache> = {
   data_list: {
     mock_task_groups_data: {
       flow_type: "data_list",
-      flow_name: "mock_task_groups_data",
+      flow_name: taskGroupsListName,
       data_list_name: "feat_task_groups",
       rows: [
         {
@@ -61,6 +62,9 @@ const MOCK_DATA: Partial<IAppDataCache> = {
   },
 };
 
+// Define at this namespace to allow tests to call methods to update fields.
+let mockTemplateFieldService: MockTemplateFieldService;
+
 /**
  * Call standalone tests via:
  * yarn ng test --include src/app/shared/services/task/task.service.spec.ts
@@ -71,12 +75,15 @@ describe("TaskService", () => {
 
   beforeEach(async () => {
     scheduleCampaignNotificationsSpy = jasmine.createSpy();
+    // Clone MOCK_FIELDS data so that updates do not persist between tests
+    mockTemplateFieldService = new MockTemplateFieldService(clone(MOCK_FIELDS));
+
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule],
       providers: [
         {
           provide: TemplateFieldService,
-          useValue: new MockTemplateFieldService({ highlightedTaskField }),
+          useValue: mockTemplateFieldService,
         },
         {
           provide: AppDataService,
@@ -105,23 +112,58 @@ describe("TaskService", () => {
     await service.ready();
     expect(service.tasksFeatureEnabled).toEqual(true);
   });
-
-  it("should return the name of the current highlighted task", async () => {
+  it("Initial highlighted task is set to first in list", async () => {
     await service.ready();
-    expect(service.getHighlightedTaskGroup()).toBe("task_group_1");
+    expect(service.evaluateHighlightedTaskGroup().newHighlightedTaskGroup).toBe(
+      MOCK_DATA.data_list[taskGroupsListName].rows[0].id
+    );
+  });
+  it("Highlighted task field is updated correctly", async () => {
+    await service.ready();
+    expect(service.getHighlightedTaskGroup()).toBe(
+      MOCK_DATA.data_list[taskGroupsListName].rows[0].id
+    );
+  });
+  it("checking whether a task group is highlighted returns the correct value", async () => {
+    await service.ready();
+    expect(
+      service.checkHighlightedTaskGroup(MOCK_DATA.data_list[taskGroupsListName].rows[1].id)
+    ).toBe(false);
+    expect(
+      service.checkHighlightedTaskGroup(MOCK_DATA.data_list[taskGroupsListName].rows[0].id)
+    ).toBe(true);
+  });
+  it("completing a task causes the next highest priority task to be made the highlighted one upon re-evaluation", async () => {
+    await service.ready();
+    mockTemplateFieldService.setField(
+      MOCK_DATA.data_list[taskGroupsListName].rows[0].completed_field,
+      "true"
+    );
+    expect(service.evaluateHighlightedTaskGroup().previousHighlightedTaskGroup).toBe(
+      MOCK_DATA.data_list[taskGroupsListName].rows[0].id
+    );
+    expect(service.evaluateHighlightedTaskGroup().newHighlightedTaskGroup).toBe(
+      MOCK_DATA.data_list[taskGroupsListName].rows[2].id
+    );
   });
 
   // TODO - test if campaign service mock functions as intended
-
-  // fit("schedules campaign notifications", async () => {
+  // it("schedules campaign notifications on change of highlighted task", async () => {
   //   await service.ready();
-  //   await service.evaluateTaskGroupData(MOCK_DATA.data_list.mock_task_groups_data.rows, {
-  //     completedColumnName: "",
-  //     completedField: "",
-  //     completedFieldColumnName: "",
-  //     dataListName: "",
-  //     useDynamicData: false,
-  //   });
-  //   expect(scheduleCampaignNotificationsSpy).toHaveBeenCalledTimes(1);
+  //   // Update task group
+  //   // service.setHighlightedTaskGroup(MOCK_DATA.data_list[taskGroupsListName].rows[1].id)
+  //   // await service.evaluateTaskGroupData(MOCK_DATA.data_list.mock_task_groups_data.rows, {
+  //   //   completedColumnName: "",
+  //   //   completedField: "",
+  //   //   completedFieldColumnName: "",
+  //   //   dataListName: "",
+  //   //   useDynamicData: false,
+  //   // });
+  //   // expect(scheduleCampaignNotificationsSpy).toHaveBeenCalledTimes(1);
+  // });
+  // TODO: test setHighlightedTaskGroup
+  // it("setting...", async () => {
+  //   await service.ready();
+  //   service.setHighlightedTaskGroup(MOCK_DATA.data_list[taskGroupsListName].rows[1].id);
   // });
 });
