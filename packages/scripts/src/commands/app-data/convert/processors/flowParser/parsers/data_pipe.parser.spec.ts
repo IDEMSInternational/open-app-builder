@@ -96,4 +96,33 @@ describe("data_pipe Parser", () => {
     });
     expect(deferred).toEqual(["data_pipe.test_pipe_defer"]);
   });
+
+  // QA - https://github.com/IDEMSInternational/parenting-app-ui/issues/2184
+  // NOTE - test case more explicitly handled by jsEvaluator.spec
+  it("Supports text with line break characters", async () => {
+    const parser = new DataPipeParser({
+      processedFlowHashmap: {
+        data_list: {
+          test_data_list: [{ id: 1, text: "normal" }, { id: 2, text: "line\nbreak" }, { id: 3 }],
+        },
+      },
+    } as any);
+    const ops: IDataPipeOperation[] = [
+      {
+        input_source: "test_data_list",
+        operation: "filter",
+        args_list: "id < 3" as any, // will be parsed during process
+        output_target: "test_output",
+      },
+    ];
+    const output = parser.run({
+      flow_name: "test_line_breaks",
+      flow_type: "data_pipe",
+      rows: ops,
+    });
+    expect(output._generated.data_list.test_output.rows).toEqual([
+      { id: 1, text: "normal" },
+      { id: 2, text: "line\nbreak" },
+    ]);
+  });
 });
