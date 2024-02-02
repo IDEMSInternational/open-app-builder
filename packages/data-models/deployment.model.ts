@@ -77,6 +77,7 @@ export interface IDeploymentConfig {
     translated_strings_path?: string;
   };
   web: {
+    /** Relative path of custom favicon asset to load from app_data assets */
     favicon_asset?: string;
   };
   workflows: {
