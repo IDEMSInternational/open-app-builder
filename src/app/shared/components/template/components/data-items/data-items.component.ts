@@ -4,6 +4,7 @@ import {
   Component,
   Injector,
   Input,
+  OnDestroy,
 } from "@angular/core";
 import { debounceTime, Subscription } from "rxjs";
 import { DynamicDataService } from "src/app/shared/services/dynamic-data/dynamic-data.service";
@@ -28,7 +29,7 @@ import { TemplateBaseComponent } from "../base";
  * - Should be refactored into structural container instead of display component
  * - Could possibly refactor to feature module including services
  */
-export class TmplDataItemsComponent extends TemplateBaseComponent {
+export class TmplDataItemsComponent extends TemplateBaseComponent implements OnDestroy {
   public itemRows: FlowTypes.TemplateRow[] = [];
 
   private dataListName: string;
@@ -168,5 +169,11 @@ export class TmplDataItemsComponent extends TemplateBaseComponent {
       }
     }
     return parsed;
+  }
+
+  ngOnDestroy() {
+    if (this.dataQuery$) {
+      this.dataQuery$.unsubscribe();
+    }
   }
 }
