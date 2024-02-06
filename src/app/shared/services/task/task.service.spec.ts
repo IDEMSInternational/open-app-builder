@@ -14,6 +14,7 @@ import { AppDataService, IAppDataCache } from "../data/app-data.service";
 import { AppConfigService } from "../app-config/app-config.service";
 import { CampaignService } from "../../../feature/campaign/campaign.service";
 import { TemplateFieldService } from "../../components/template/services/template-field.service";
+import { _wait } from "packages/shared/src/utils/async-utils";
 
 // This must match the corresponding value in the deployment config, if the default value is overridden
 const highlightedTaskFieldName = "_task_highlighted_group_id";
@@ -97,6 +98,9 @@ describe("TaskService", () => {
         {
           provide: CampaignService,
           useValue: {
+            ready: async () => {
+              return true;
+            },
             scheduleCampaignNotifications: scheduleCampaignNotificationsSpy,
           },
         },
@@ -112,15 +116,18 @@ describe("TaskService", () => {
     await service.ready();
     expect(service.tasksFeatureEnabled).toEqual(true);
   });
-  it("Initial highlighted task is set to first in list", async () => {
+  it("can get highlighted task group (set to highest priority task group on init)", async () => {
     await service.ready();
-    expect(service.evaluateHighlightedTaskGroup().newHighlightedTaskGroup).toBe(
+    expect(service.getHighlightedTaskGroup()).toBe(
       MOCK_DATA.data_list[taskGroupsListName].rows[0].id
     );
   });
-  it("Highlighted task field is updated correctly", async () => {
+  it("evaluates highlighted task group correctly after init", async () => {
     await service.ready();
-    expect(service.getHighlightedTaskGroup()).toBe(
+    expect(service.evaluateHighlightedTaskGroup().previousHighlightedTaskGroup).toBe(
+      MOCK_DATA.data_list[taskGroupsListName].rows[0].id
+    );
+    expect(service.evaluateHighlightedTaskGroup().newHighlightedTaskGroup).toBe(
       MOCK_DATA.data_list[taskGroupsListName].rows[0].id
     );
   });
@@ -133,34 +140,32 @@ describe("TaskService", () => {
       service.checkHighlightedTaskGroup(MOCK_DATA.data_list[taskGroupsListName].rows[0].id)
     ).toBe(true);
   });
-  it("completing a task causes the next highest priority task to be made the highlighted one upon re-evaluation", async () => {
+  it("completing the highlighted task causes the next highest priority task to be highlighted upon re-evaluation", async () => {
     await service.ready();
+    // Complete highlighted task by setting its associated completed field to true
     mockTemplateFieldService.setField(
       MOCK_DATA.data_list[taskGroupsListName].rows[0].completed_field,
       "true"
     );
-    expect(service.evaluateHighlightedTaskGroup().previousHighlightedTaskGroup).toBe(
-      MOCK_DATA.data_list[taskGroupsListName].rows[0].id
+    const { previousHighlightedTaskGroup, newHighlightedTaskGroup } =
+      service.evaluateHighlightedTaskGroup();
+    expect(previousHighlightedTaskGroup).toBe(MOCK_DATA.data_list[taskGroupsListName].rows[0].id);
+    expect(newHighlightedTaskGroup).toBe(MOCK_DATA.data_list[taskGroupsListName].rows[2].id);
+  });
+  it("schedules campaign notifications on change of highlighted task", async () => {
+    await service.ready();
+    // Complete highlighted task by setting its associated completed field to true
+    mockTemplateFieldService.setField(
+      MOCK_DATA.data_list[taskGroupsListName].rows[0].completed_field,
+      "true"
     );
-    expect(service.evaluateHighlightedTaskGroup().newHighlightedTaskGroup).toBe(
-      MOCK_DATA.data_list[taskGroupsListName].rows[2].id
-    );
+    service.evaluateHighlightedTaskGroup();
+    await _wait(50);
+    // scheduleCampaignNotifications() should be called once on init (since the highlighted task group changes),
+    // and again on the evaluation called above
+    expect(scheduleCampaignNotificationsSpy).toHaveBeenCalledTimes(2);
   });
 
-  // TODO - test if campaign service mock functions as intended
-  // it("schedules campaign notifications on change of highlighted task", async () => {
-  //   await service.ready();
-  //   // Update task group
-  //   // service.setHighlightedTaskGroup(MOCK_DATA.data_list[taskGroupsListName].rows[1].id)
-  //   // await service.evaluateTaskGroupData(MOCK_DATA.data_list.mock_task_groups_data.rows, {
-  //   //   completedColumnName: "",
-  //   //   completedField: "",
-  //   //   completedFieldColumnName: "",
-  //   //   dataListName: "",
-  //   //   useDynamicData: false,
-  //   // });
-  //   // expect(scheduleCampaignNotificationsSpy).toHaveBeenCalledTimes(1);
-  // });
   // TODO: test setHighlightedTaskGroup
   // it("setting...", async () => {
   //   await service.ready();

@@ -66,6 +66,12 @@ export class TaskService extends AsyncServiceBase {
       }
       console.log("[HIGHLIGHTED TASK GROUP] - ", newHighlightedTaskGroup);
     }
+    // HACK - reschedule campaign notifications when the highlighted task group has changed,
+    // in order to handle any that are conditional on the highlighted task group
+    if (previousHighlightedTaskGroup !== newHighlightedTaskGroup) {
+      // Doesn't need to be awaited – use .then() to avoid making parent function async
+      this.campaignService.ready().then(() => this.campaignService.scheduleCampaignNotifications());
+    }
     return { previousHighlightedTaskGroup, newHighlightedTaskGroup };
   }
 
@@ -183,13 +189,7 @@ export class TaskService extends AsyncServiceBase {
         progressStatus = "notStarted";
       }
     }
-    const { previousHighlightedTaskGroup, newHighlightedTaskGroup } =
-      this.evaluateHighlightedTaskGroup();
-    // HACK - reschedule campaign notifications when the highlighted task group has changed,
-    // in order to handle any that are conditional on the highlighted task group
-    if (previousHighlightedTaskGroup !== newHighlightedTaskGroup) {
-      this.campaignService.scheduleCampaignNotifications();
-    }
+    this.evaluateHighlightedTaskGroup();
     return { subtasksTotal, subtasksCompleted, progressStatus, newlyCompleted };
   }
 
