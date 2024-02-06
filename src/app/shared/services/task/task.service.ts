@@ -5,7 +5,7 @@ import { arrayToHashmap } from "../../utils";
 import { AsyncServiceBase } from "../asyncService.base";
 import { AppConfigService } from "../app-config/app-config.service";
 import { IAppConfig } from "../../model";
-import { CampaignService } from "src/app/feature/campaign/campaign.service";
+import { CampaignService } from "../../../feature/campaign/campaign.service";
 
 export type IProgressStatus = "notStarted" | "inProgress" | "completed";
 
@@ -65,6 +65,12 @@ export class TaskService extends AsyncServiceBase {
         this.templateFieldService.setField(this.highlightedTaskField, newHighlightedTaskGroup);
       }
       console.log("[HIGHLIGHTED TASK GROUP] - ", newHighlightedTaskGroup);
+    }
+    // HACK - reschedule campaign notifications when the highlighted task group has changed,
+    // in order to handle any that are conditional on the highlighted task group
+    if (previousHighlightedTaskGroup !== newHighlightedTaskGroup) {
+      // Doesn't need to be awaited – use .then() to avoid making parent function async
+      this.campaignService.ready().then(() => this.campaignService.scheduleCampaignNotifications());
     }
     return { previousHighlightedTaskGroup, newHighlightedTaskGroup };
   }
@@ -183,13 +189,7 @@ export class TaskService extends AsyncServiceBase {
         progressStatus = "notStarted";
       }
     }
-    const { previousHighlightedTaskGroup, newHighlightedTaskGroup } =
-      this.evaluateHighlightedTaskGroup();
-    // HACK - reschedule campaign notifications when the highlighted task group has changed,
-    // in order to handle any that are conditional on the highlighted task group
-    if (previousHighlightedTaskGroup !== newHighlightedTaskGroup) {
-      this.campaignService.scheduleCampaignNotifications();
-    }
+    this.evaluateHighlightedTaskGroup();
     return { subtasksTotal, subtasksCompleted, progressStatus, newlyCompleted };
   }
 
