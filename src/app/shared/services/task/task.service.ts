@@ -52,6 +52,7 @@ export class TaskService extends AsyncServiceBase {
     if (taskGroupsNotCompletedAndNotSkipped.length === 0) {
       this.templateFieldService.setField(this.highlightedTaskField, "");
       console.log("[HIGHLIGHTED TASK GROUP] - No highlighted task group is set");
+      newHighlightedTaskGroup = "";
     }
     // Else set the highlighted task group to the task group with the highest priority of those
     // not completed or skipped
@@ -83,39 +84,19 @@ export class TaskService extends AsyncServiceBase {
   /**
    * For a given task groups list, lookup the current highlighted task group and return the index
    * of the highlighted task within it
-   * @return the index of the highlighted task group within that list, or 0 if not found
-   * */
-  public async getHighlightedTaskGroupIndex(highlightedTaskGroup: string, taskGroupsList: string) {
-    const taskGroupsDataList = await this.appDataService.getSheet("data_list", taskGroupsList);
-    const arrayOfIds = taskGroupsDataList.rows.map((taskGroup) => taskGroup.id);
-    const indexOfHighlightedTask = arrayOfIds.indexOf(highlightedTaskGroup);
-    return indexOfHighlightedTask === -1 ? 0 : indexOfHighlightedTask;
-  }
-
-  /**
-   * Set the value of the skipped field to true for all uncompleted tasks groups with
-   * a priority lower than the target task group. Then re-evaluate the highlighted task group
-   * NB "highest priority" is defined as having the lowest numerical value for the "number" column
+   * @param taskGroupsListName The name of the data list of hilightable task groups
+   * (currently only the list matching this.taskGroupsListName will return a positive match)
+   * @return the index of the highlighted task group within that list (-1 if not found)
    **/
-  public setHighlightedTaskGroup(targetTaskGroupId: string) {
-    const taskGroupsNotCompleted = this.taskGroups.filter((taskGroup) => {
-      return !this.templateFieldService.getField(taskGroup.completed_field);
-    });
-    const targetTaskGroupPriority = this.taskGroupsHashmap[targetTaskGroupId].number;
-    taskGroupsNotCompleted.forEach((taskGroup) => {
-      // Case: "skipping forward" – target task group is lower in priority than current highlighted task,
-      // so "skip" all tasks with lower priority than target task
-      if (taskGroup.number < targetTaskGroupPriority) {
-        this.templateFieldService.setField(taskGroup.skipped_field, "true");
-      }
-      // Case: "skipping backward" – target task group is higher in priority than current highlighted task,
-      // so "un-skip" all tasks with equal or higher priority than target task (including target task)
-      if (taskGroup.number >= targetTaskGroupPriority) {
-        this.templateFieldService.setField(taskGroup.skipped_field, "false");
-      }
-    });
-    // Re-evaluate highlighted task group
-    return this.evaluateHighlightedTaskGroup();
+  public async getHighlightedTaskGroupIndex(taskGroupsListName: string) {
+    let indexOfHighlightedTask = -1;
+    const highlightedTaskGroup = this.getHighlightedTaskGroup();
+    if (highlightedTaskGroup) {
+      const taskGroupDataRows = await this.getTaskGroupDataRows(taskGroupsListName);
+      const arrayOfIds = taskGroupDataRows.map((taskGroup) => taskGroup.id);
+      indexOfHighlightedTask = arrayOfIds.indexOf(highlightedTaskGroup);
+    }
+    return indexOfHighlightedTask;
   }
 
   /**
@@ -203,7 +184,8 @@ export class TaskService extends AsyncServiceBase {
     this.ensureSyncServicesReady([this.appDataService, this.appConfigService]);
     this.subscribeToAppConfigChanges();
     if (this.tasksFeatureEnabled) {
-      await this.getListOfTaskGroups();
+      this.taskGroups = await this.getTaskGroupDataRows(this.taskGroupsListName);
+      this.taskGroupsHashmap = arrayToHashmap(this.taskGroups, "id");
       if (this.taskGroups.length > 0) {
         this.evaluateHighlightedTaskGroup();
       }
@@ -218,13 +200,31 @@ export class TaskService extends AsyncServiceBase {
     });
   }
 
-  /** Get the list of highlight-able task groups, from the relevant data_list */
-  private async getListOfTaskGroups() {
-    const taskGroupsDataList = await this.appDataService.getSheet(
-      "data_list",
-      this.taskGroupsListName
-    );
-    this.taskGroups = taskGroupsDataList?.rows || [];
-    this.taskGroupsHashmap = arrayToHashmap(this.taskGroups, "id");
-  }
+  /**
+   * TODO: this is not currently implemented, and should likely be reworked as part of a broader overhaul of the task system
+   *
+   * Set the value of the skipped field to true for all uncompleted tasks groups with
+   * a priority lower than the target task group. Then re-evaluate the highlighted task group
+   * NB "highest priority" is defined as having the lowest numerical value for the "number" column
+   **/
+  // public setHighlightedTaskGroup(targetTaskGroupId: string) {
+  //   const taskGroupsNotCompleted = this.taskGroups.filter((taskGroup) => {
+  //     return !this.templateFieldService.getField(taskGroup.completed_field);
+  //   });
+  //   const targetTaskGroupPriority = this.taskGroupsHashmap[targetTaskGroupId].number;
+  //   taskGroupsNotCompleted.forEach((taskGroup) => {
+  //     // Case: "skipping forward" – target task group is lower in priority than current highlighted task,
+  //     // so "skip" all tasks with lower priority than target task
+  //     if (taskGroup.number < targetTaskGroupPriority) {
+  //       this.templateFieldService.setField(taskGroup.skipped_field, "true");
+  //     }
+  //     // Case: "skipping backward" – target task group is higher in priority than current highlighted task,
+  //     // so "un-skip" all tasks with equal or higher priority than target task (including target task)
+  //     if (taskGroup.number >= targetTaskGroupPriority) {
+  //       this.templateFieldService.setField(taskGroup.skipped_field, "false");
+  //     }
+  //   });
+  //   // Re-evaluate highlighted task group
+  //   return this.evaluateHighlightedTaskGroup();
+  // }
 }
