@@ -1,5 +1,5 @@
 import { HttpClient } from "@angular/common/http";
-import { Injectable, InjectionToken } from "@angular/core";
+import { Injectable } from "@angular/core";
 import { SHEETS_CONTENT_LIST, TRANSLATIONS_CONTENT_LIST } from "src/app/data/app-data";
 import { lastValueFrom } from "rxjs";
 import { FlowTypes } from "../../model";
@@ -196,6 +196,3 @@ export class AppDataService extends SyncServiceBase {
 export type IAppDataCache = {
   [flow_type in FlowTypes.FlowType]: { [flow_name: string]: FlowTypes.FlowTypeWithData };
 };
-
-// For testing, provide an injection token
-export const APP_DATA_SERVICE_TOKEN = new InjectionToken<AppDataService>("AppDataService");

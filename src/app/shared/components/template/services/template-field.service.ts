@@ -1,4 +1,4 @@
-import { Injectable, InjectionToken } from "@angular/core";
+import { Injectable } from "@angular/core";
 import { IFlowEvent } from "data-models";
 import { FlowTypes } from "data-models";
 import { DbService } from "src/app/shared/services/db/db.service";
@@ -110,8 +110,3 @@ export class TemplateFieldService extends AsyncServiceBase {
     this.globals[row.name] = row;
   }
 }
-
-// For testing, provide an injection token
-export const TEMPLATE_FIELD_SERVICE_TOKEN = new InjectionToken<TemplateFieldService>(
-  "TemplateFieldService"
-);
