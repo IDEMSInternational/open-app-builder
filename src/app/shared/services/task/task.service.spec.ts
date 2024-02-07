@@ -116,11 +116,21 @@ describe("TaskService", () => {
     await service.ready();
     expect(service.tasksFeatureEnabled).toEqual(true);
   });
+  it("can get task group data rows", async () => {
+    await service.ready();
+    expect(await service.getTaskGroupDataRows(taskGroupsListName)).toEqual(
+      MOCK_DATA.data_list[taskGroupsListName].rows
+    );
+  });
   it("can get highlighted task group (set to highest priority task group on init)", async () => {
     await service.ready();
     expect(service.getHighlightedTaskGroup()).toBe(
       MOCK_DATA.data_list[taskGroupsListName].rows[0].id
     );
+  });
+  it("can get highlighted task group index", async () => {
+    await service.ready();
+    expect(await service.getHighlightedTaskGroupIndex(taskGroupsListName)).toBe(0);
   });
   it("evaluates highlighted task group correctly after init", async () => {
     await service.ready();
@@ -140,24 +150,53 @@ describe("TaskService", () => {
       service.checkHighlightedTaskGroup(MOCK_DATA.data_list[taskGroupsListName].rows[0].id)
     ).toBe(true);
   });
+  it("can set a task group's completed status", async () => {
+    await service.ready();
+    await service.setTaskGroupCompletedStatus(
+      MOCK_DATA.data_list[taskGroupsListName].rows[0].completed_field,
+      true
+    );
+    expect(
+      await mockTemplateFieldService.getField(
+        MOCK_DATA.data_list[taskGroupsListName].rows[0].completed_field
+      )
+    ).toBe(true);
+  });
   it("completing the highlighted task causes the next highest priority task to be highlighted upon re-evaluation", async () => {
     await service.ready();
-    // Complete highlighted task by setting its associated completed field to true
-    mockTemplateFieldService.setField(
+    // Complete highlighted task
+    await service.setTaskGroupCompletedStatus(
       MOCK_DATA.data_list[taskGroupsListName].rows[0].completed_field,
-      "true"
+      true
     );
     const { previousHighlightedTaskGroup, newHighlightedTaskGroup } =
       service.evaluateHighlightedTaskGroup();
     expect(previousHighlightedTaskGroup).toBe(MOCK_DATA.data_list[taskGroupsListName].rows[0].id);
     expect(newHighlightedTaskGroup).toBe(MOCK_DATA.data_list[taskGroupsListName].rows[2].id);
   });
+  it("when all tasks are completed, the highlighted task group is set to ''", async () => {
+    await service.ready();
+    // Complete all tasks
+    await service.setTaskGroupCompletedStatus(
+      MOCK_DATA.data_list[taskGroupsListName].rows[0].completed_field,
+      true
+    );
+    await service.setTaskGroupCompletedStatus(
+      MOCK_DATA.data_list[taskGroupsListName].rows[1].completed_field,
+      true
+    );
+    await service.setTaskGroupCompletedStatus(
+      MOCK_DATA.data_list[taskGroupsListName].rows[2].completed_field,
+      true
+    );
+    expect(service.evaluateHighlightedTaskGroup().newHighlightedTaskGroup).toBe("");
+  });
   it("schedules campaign notifications on change of highlighted task", async () => {
     await service.ready();
-    // Complete highlighted task by setting its associated completed field to true
-    mockTemplateFieldService.setField(
+    // Complete highlighted task
+    await service.setTaskGroupCompletedStatus(
       MOCK_DATA.data_list[taskGroupsListName].rows[0].completed_field,
-      "true"
+      true
     );
     service.evaluateHighlightedTaskGroup();
     await _wait(50);
@@ -165,10 +204,4 @@ describe("TaskService", () => {
     // and again on the evaluation called above
     expect(scheduleCampaignNotificationsSpy).toHaveBeenCalledTimes(2);
   });
-
-  // TODO: test setHighlightedTaskGroup
-  // it("setting...", async () => {
-  //   await service.ready();
-  //   service.setHighlightedTaskGroup(MOCK_DATA.data_list[taskGroupsListName].rows[1].id);
-  // });
 });
