@@ -93,7 +93,7 @@ jobs:
           run: yarn install --immutable
   
         - name: Set deployment
-          run: yarn workflow deployment set $DEPLOYMENT_NAME
+          run: yarn workflow deployment set $DEPLOYMENT_NAME --skip-refresh
   
         - name: Populate android assets
           run: yarn workflow populate_android_assets
