@@ -1,0 +1,66 @@
+###################################################################################
+#         About
+##################################################################################
+# Reuseable workflow to be called from content repos. 
+# Appetize.io for labelled PRs
+# Specifies deployment target based on pr target branch
+# Must specify all below secrets and variables - see documentation for details
+#
+#         Version : 1.0
+#
+##################################################################################
+#         Configuration 
+##################################################################################
+name: Test Appetize
+concurrency:
+  group: test-appetize-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  APPETIZE_TOKEN: ${{secrets.APPETIZE_TOKEN}} 
+  APPETIZE_APP_KEY: ${{secrets.APPETIZE_APP_KEY}} 
+
+
+on:
+ workflow_call:
+
+jobs:
+
+  build:
+      if: contains(github.event.pull_request.labels.*.name, 'Test - appetize')
+      uses: ./.github/workflows/reusable-android-build.yml
+      secrets: inherit
+      with:
+        branch: ${{ github.base_ref }} 
+   
+  test_appetize:
+    needs: build
+    runs-on: ubuntu-latest
+    outputs:
+      urls: ${{ steps.deploy.outputs.urls }}
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Download Build Artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: debug_apk
+          path: ./
+
+      - name: Upload to Appetize.io
+        id: upload
+        uses: maxep/appetize-upload-action@0.1.0
+        with:
+          api-token: ${{ env.APPETIZE_TOKEN }}
+          file-path: ${{ steps.download.outputs.download-path }}/app-debug.apk
+          platform: "android"
+          timeout: 30
+          # Include to overwrite existing app instead of creating new (will only allow single build at a time)
+          public-key: ${{env.APPETIZE_APP_KEY}}
+          
+      - name: "Post to PR"
+        uses: marocchino/sticky-pull-request-comment@v2
+        with:
+          message: |
+            **Android Appetize URL**
+            ${{ steps.upload.outputs.APPETIZE_APP_URL }}?device=pixel4&osVersion=12.0&scale=75

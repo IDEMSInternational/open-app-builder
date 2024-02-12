@@ -4,7 +4,7 @@
 # Reuseable workflow to be called from content repos. 
 # Build and deploy app bundle for android
 #
-#         Version : 1.0
+#         Version : 1.1
 #
 ##################################################################################
 #         Configuration
@@ -35,11 +35,18 @@ concurrency:
   
 on:
     workflow_call:
+      inputs:
+        branch:
+          type: string
+          description: "Specify branch for deployment"
+          default: ""
   
 jobs:
   
     build_action:
         uses: ./.github/workflows/reusable-app-build.yml
+        with: 
+          branch: ${{ inputs.branch }}
         secrets: inherit
   
     build_android:
