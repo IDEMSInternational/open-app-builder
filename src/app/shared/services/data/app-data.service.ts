@@ -193,6 +193,6 @@ export class AppDataService extends SyncServiceBase {
   }
 }
 
-type IAppDataCache = {
+export type IAppDataCache = {
   [flow_type in FlowTypes.FlowType]: { [flow_name: string]: FlowTypes.FlowTypeWithData };
 };
