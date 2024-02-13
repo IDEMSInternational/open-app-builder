@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { addRxPlugin, MangoQuery, RxDocument } from "rxdb";
-import { firstValueFrom, map, filter } from "rxjs";
+import { firstValueFrom, lastValueFrom, map, AsyncSubject } from "rxjs";
 
 import { FlowTypes } from "data-models";
 import { environment } from "src/environments/environment";
@@ -11,7 +11,6 @@ import { PersistedMemoryAdapter } from "./adapters/persistedMemory";
 import { ReactiveMemoryAdapater, REACTIVE_SCHEMA_BASE } from "./adapters/reactiveMemory";
 import { TemplateActionRegistry } from "../../components/template/services/instance/template-action.registry";
 import { TopLevelProperty } from "rxdb/dist/types/types";
-import { BehaviorSubject } from "rxjs/internal/BehaviorSubject";
 
 type IDocWithID = { id: string };
 
@@ -42,8 +41,8 @@ export class DynamicDataService extends AsyncServiceBase {
    */
   private writeCache: PersistedMemoryAdapter;
 
-  /** Track collection initialisation process to avoid duplicate invocations */
-  private collectionInitialisers$: Record<string, BehaviorSubject<boolean>> = {};
+  /** Hashmap to track pending collection creation and avoid duplicate requests */
+  private collectionCreators: Record<string, AsyncSubject<string>> = {};
 
   constructor(
     private appDataService: AppDataService,
@@ -130,43 +129,50 @@ export class DynamicDataService extends AsyncServiceBase {
   }
 
   /** Remove user writes on a flow to return it to its original state */
-  public async resetFlow(flow_type: FlowTypes.FlowType, flow_name: string) {
+  public async resetFlow(flow_type: FlowTypes.FlowType, flow_name: string, throwOnError = true) {
     await this.writeCache.delete(flow_type, flow_name);
     const collectionName = this.normaliseCollectionName(flow_type, flow_name);
     if (this.db.getCollection(collectionName)) {
       await this.db.removeCollection(collectionName);
       await this.ensureCollection(flow_type, flow_name);
     } else {
-      throw new Error(`Collection [${collectionName}] not found, cannot remove`);
+      if (throwOnError) {
+        throw new Error(`Collection [${collectionName}] not found, cannot remove`);
+      }
     }
   }
 
   /** Ensure a collection exists, creating if not and populating with corresponding list data */
   private async ensureCollection(flow_type: FlowTypes.FlowType, flow_name: string) {
     const collectionName = this.normaliseCollectionName(flow_type, flow_name);
-    const initialiser = this.collectionInitialisers$[collectionName];
-    // If collection previously initialised ensure method call complete and return
-    if (initialiser) {
-      await firstValueFrom(initialiser.pipe(filter((initComplete) => initComplete === true)));
-    }
-    // Otherwise create new initialisation observable and wait for complete
-    else {
-      this.collectionInitialisers$[collectionName] = new BehaviorSubject(false);
-      await this.initialiseCollection(flow_type, flow_name);
-      this.collectionInitialisers$[collectionName].next(true);
+    if (!this.db.getCollection(collectionName)) {
+      await this.createCollection(flow_type, flow_name);
     }
     return { collectionName };
   }
 
-  private async initialiseCollection(flow_type: FlowTypes.FlowType, flow_name: string) {
+  private async createCollection(flow_type: FlowTypes.FlowType, flow_name: string) {
     const collectionName = this.normaliseCollectionName(flow_type, flow_name);
-    const initialData = await this.getInitialData(flow_type, flow_name);
-    if (initialData.length === 0) {
-      throw new Error(`No data exists for collection [${flow_name}], cannot initialise`);
+    // avoid duplicate creation requests by tracking create requests
+    if (this.collectionCreators[collectionName]) {
+      await lastValueFrom(this.collectionCreators[collectionName]);
+      return;
     }
-    const schema = this.inferSchema(initialData[0]);
-    await this.db.createCollection(collectionName, schema);
-    await this.db.bulkInsert(collectionName, initialData);
+    // create collection and insert initial data. Use AsyncSubject to notify only when complete
+    else {
+      this.collectionCreators[collectionName] = new AsyncSubject();
+      const initialData = await this.getInitialData(flow_type, flow_name);
+      if (initialData.length === 0) {
+        throw new Error(`No data exists for collection [${flow_name}], cannot initialise`);
+      }
+      const schema = this.inferSchema(initialData[0]);
+      await this.db.createCollection(collectionName, schema);
+      await this.db.bulkInsert(collectionName, initialData);
+      // notify any observers that collection has been created
+      this.collectionCreators[collectionName].next(collectionName);
+      this.collectionCreators[collectionName].complete();
+      delete this.collectionCreators[collectionName];
+    }
   }
 
   /** Retrive json sheet data and merge with any user writes */

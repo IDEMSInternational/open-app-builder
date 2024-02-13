@@ -34,6 +34,7 @@ import { IAppConfig } from "./shared/model";
 import { TaskService } from "./shared/services/task/task.service";
 import { AppUpdateService } from "./shared/services/app-update/app-update.service";
 import { RemoteAssetService } from "./shared/services/remote-asset/remote-asset.service";
+import { FileManagerService } from "./shared/services/file-manager/file-manager.service";
 import { AsyncServiceBase } from "./shared/services/asyncService.base";
 import { SyncServiceBase } from "./shared/services/syncService.base";
 import { SeoService } from "./shared/services/seo/seo.service";
@@ -94,7 +95,8 @@ export class AppComponent {
     private serverService: ServerService,
     private appUpdateService: AppUpdateService,
     private remoteAssetService: RemoteAssetService,
-    private shareService: ShareService
+    private shareService: ShareService,
+    private fileManagerService: FileManagerService
   ) {
     this.initializeApp();
   }
@@ -214,6 +216,7 @@ export class AppComponent {
         this.seoService,
         this.feedbackService,
         this.shareService,
+        this.fileManagerService,
       ],
       deferred: [this.analyticsService],
       implicit: [

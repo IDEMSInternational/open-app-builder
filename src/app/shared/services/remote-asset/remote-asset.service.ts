@@ -15,7 +15,7 @@ import { TemplateAssetService } from "../../components/template/services/templat
 import { AsyncServiceBase } from "../asyncService.base";
 import { IAssetEntry } from "packages/data-models/deployment.model";
 import { DynamicDataService } from "../dynamic-data/dynamic-data.service";
-import { arrayToHashmap } from "../../utils";
+import { arrayToHashmap, convertBlobToBase64 } from "../../utils";
 
 const CORE_ASSET_PACK_NAME = "core_assets";
 
@@ -257,7 +257,7 @@ export class RemoteAssetService extends AsyncServiceBase {
       complete: async () => {
         console.log(`[REMOTE ASSETS] File ${fileIndex + 1} of ${totalFiles} downloaded to cache`);
         if (data) {
-          const filesystemPath = await this.fileManagerService.saveFile(data, assetEntry.id);
+          await this.fileManagerService.saveFile({ data, targetPath: assetEntry.id });
           await this.updateAssetContents(assetEntry);
         }
         progress$.next(progress);
@@ -343,7 +343,7 @@ export class RemoteAssetService extends AsyncServiceBase {
         },
         complete: async () => {
           if (responseType === "base64") {
-            data = await this.convertBlobToBase64(data as Blob);
+            data = await convertBlobToBase64(data as Blob);
           }
           updates$.next({ progress: 100, data, subscription });
           updates$.complete();
@@ -425,14 +425,5 @@ export class RemoteAssetService extends AsyncServiceBase {
   /** Convert base filepath to match supabase storage folder structure */
   private getSupabaseFilepath(relativePath: string) {
     return `${this.folderName}/${relativePath}`;
-  }
-
-  private convertBlobToBase64(blob: Blob): Promise<string> {
-    return new Promise((resolve, reject) => {
-      const reader = new FileReader();
-      reader.onerror = reject;
-      reader.onload = () => resolve(reader.result as string);
-      reader.readAsDataURL(blob);
-    });
   }
 }

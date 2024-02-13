@@ -228,15 +228,6 @@ export class TemplateActionService extends SyncServiceBase {
         return processor.processTemplateWithoutRender(templateToProcess);
       case "google_auth":
         return await this.authService.signInWithGoogle();
-      case "task_group_set_highlighted":
-        const { previousHighlightedTaskGroup, newHighlightedTaskGroup } =
-          this.taskService.setHighlightedTaskGroup(args[0]);
-        // HACK - reschedule campaign notifications when the highlighted task group has changed,
-        // in order to handle any that are conditional on the highlighted task group
-        if (previousHighlightedTaskGroup !== newHighlightedTaskGroup) {
-          this.campaignService.scheduleCampaignNotifications();
-        }
-        return;
       case "emit":
         const [emit_value, emit_data] = args;
         const container: TemplateContainerComponent = this.container;
