@@ -64,7 +64,7 @@ export class SeoService extends SyncServiceBase {
    */
   private getDefaultSEOTags(): ISEOMeta {
     const PUBLIC_URL = location.origin;
-    let faviconUrl = `${PUBLIC_URL}/assets/icon/favicon.png`;
+    let faviconUrl = `${PUBLIC_URL}/assets/icon/favicon.svg`;
     const { web, app_config } = environment.deploymentConfig;
     if (web?.favicon_asset) {
       faviconUrl = `${PUBLIC_URL}/assets/app_data/assets/${web.favicon_asset}`;
