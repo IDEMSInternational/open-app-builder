@@ -99,6 +99,14 @@ export class ReactiveMemoryAdapater {
     const collections: { [x: string]: RxCollectionCreator<any> } = {};
     collections[name] = { schema };
     await this.db.addCollections(collections);
+    const collection = this.db.collections[name];
+    // HACK - sometimes rxdb keeps data in memory during repeated create/delete cycles
+    // (e.g. test runners), so ensure all data fully removed post creation
+    const data = await collection.find().exec();
+    if (data.length > 0) {
+      await collection.bulkRemove(data.map((d) => d.id));
+    }
+    return collection;
   }
 
   public async bulkInsert(name: string, docs: any[]) {
@@ -135,6 +143,6 @@ export class ReactiveMemoryAdapater {
   }
 
   public async removeCollection(collectionName: string) {
-    return await this.db.collections[collectionName].remove();
+    await this.db.collections[collectionName].remove();
   }
 }
