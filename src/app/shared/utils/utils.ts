@@ -437,7 +437,15 @@ export function parseAnswerList(answerList: any) {
       return parseAnswerListItem(item);
     }
   );
-  return answerListItems;
+  // Remove any items from the list which only have a value for "name",
+  // e.g. "image" and "text" are undefined because the list has been generated within a template
+  const filteredAnswerListItems = answerListItems.filter((item: IAnswerListItem) => {
+    for (let [key, value] of Object.entries(item)) {
+      if (key !== "name" && value !== undefined) return true;
+    }
+    return false;
+  });
+  return filteredAnswerListItems;
 }
 
 /**
@@ -449,8 +457,9 @@ function parseAnswerListItem(item: any) {
   if (typeof item === "string") {
     const stringProperties = item.split("|");
     stringProperties.forEach((s) => {
-      const [field, value] = s.split(":").map((v) => v.trim());
+      let [field, value] = s.split(":").map((v) => v.trim());
       if (field && value) {
+        if (["undefined", "NaN", "null", '""'].includes(value)) value = undefined;
         itemObj[field] = value;
       }
     });
