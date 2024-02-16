@@ -1,7 +1,7 @@
 import * as fs from "fs-extra";
 import { Command } from "commander";
 import inquirer from "inquirer";
-import { APP_BUILD_GRADLE_PATH, MAIN_PACKAGE_PATH, ANDROID_BUILD_ACTION_PATH } from "../paths";
+import { APP_BUILD_GRADLE_PATH, MAIN_PACKAGE_PATH } from "../paths";
 
 /***************************************************************************************
  * CLI
@@ -26,7 +26,6 @@ async function version(options: IProgramOptions) {
   const newVersion = await promptNewVersion(oldVersion);
   updatePackageJson(newVersion);
   updateGradleBuild(newVersion);
-  updateAndroidBuildAction(newVersion);
 }
 
 function updateGradleBuild(newVersionName: string) {
@@ -46,20 +45,6 @@ async function updatePackageJson(newVersion: string) {
   const packageJson = fs.readJSONSync(MAIN_PACKAGE_PATH);
   packageJson.version = newVersion;
   fs.writeJSONSync(MAIN_PACKAGE_PATH, packageJson, { spaces: 2 });
-}
-
-function updateAndroidBuildAction(newVersionName) {
-  let androidBuildAction = fs.readFileSync(ANDROID_BUILD_ACTION_PATH, { encoding: "utf-8" });
-  const newVersionCode = _generateVersionCode(newVersionName);
-  androidBuildAction = androidBuildAction.replace(
-    /[0-9]+\/\$VERSION_CODE\//g,
-    `${newVersionCode}/$VERSION_CODE/`
-  );
-  androidBuildAction = androidBuildAction.replace(
-    /[0-9]+\.[0-9]+\.[0-9]+\/\$VERSION\//g,
-    `${newVersionName}/$VERSION/`
-  );
-  fs.writeFileSync(ANDROID_BUILD_ACTION_PATH, androidBuildAction, { encoding: "utf-8" });
 }
 
 async function promptNewVersion(currentVersion: string) {
