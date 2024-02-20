@@ -440,10 +440,10 @@ export function parseAnswerList(answerList: any) {
   // Remove any items from the list which only have a value for "name",
   // e.g. "image" and "text" are undefined because the list has been generated within a template
   const filteredAnswerListItems = answerListItems.filter((item: IAnswerListItem) => {
-    for (let [key, value] of Object.entries(item)) {
-      if (key !== "name" && value !== undefined) return true;
-    }
-    return false;
+    const hadItemData = Object.entries(item).find(
+      ([key, value]) => key !== "name" && value !== undefined
+    );
+    return hadItemData ? true : false;
   });
   return filteredAnswerListItems;
 }
