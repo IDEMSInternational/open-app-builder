@@ -18,6 +18,7 @@ export class TmplCarouselComponent extends TemplateBaseComponent implements OnIn
   config: SwiperOptions = {};
   swiper: Swiper;
   initialSlide: number;
+  taskGroupsListName: string;
 
   constructor(private taskService: TaskService) {
     super();
@@ -25,7 +26,10 @@ export class TmplCarouselComponent extends TemplateBaseComponent implements OnIn
 
   async ngOnInit() {
     await this.getParams();
-    await this.hackSetHighlightedTask();
+    // When using carousel within task group context, set initial slide based on highlighted task
+    if (this.taskGroupsListName) {
+      this.hackSetInitialSlide();
+    }
   }
 
   async getParams() {
@@ -39,6 +43,7 @@ export class TmplCarouselComponent extends TemplateBaseComponent implements OnIn
     }
     this.config.centeredSlides = getBooleanParamFromTemplateRow(this._row, "centred_slides", true);
     this.initialSlide = getNumberParamFromTemplateRow(this._row, "initial_slide_index", 0);
+    this.taskGroupsListName = getStringParamFromTemplateRow(this._row, "task_group_data", null);
   }
 
   /** Event emitter called when swiper initialised */
@@ -47,17 +52,16 @@ export class TmplCarouselComponent extends TemplateBaseComponent implements OnIn
     this.swiper.slideTo(this.initialSlide, 0, false);
   }
 
-  /** When using carousel within task_group context set additional highlighted slide from task data */
-  private async hackSetHighlightedTask() {
-    const taskGroupsList = getStringParamFromTemplateRow(this._row, "task_group_data", null);
-    if (taskGroupsList) {
-      const highlightedTaskGroup = this.taskService.getHighlightedTaskGroup();
-      if (highlightedTaskGroup) {
-        this.initialSlide = await this.taskService.getHighlightedTaskGroupIndex(
-          highlightedTaskGroup,
-          taskGroupsList
-        );
-      }
+  /** Set initial slide based on highlighted task */
+  private async hackSetInitialSlide() {
+    const indexOfHighlightedTask = await this.taskService.getHighlightedTaskGroupIndex(
+      this.taskGroupsListName
+    );
+    // if highlightes task is not in list, default to 0 for initial slide
+    if (indexOfHighlightedTask === -1) {
+      this.initialSlide = 0;
+    } else {
+      this.initialSlide = indexOfHighlightedTask;
     }
   }
 }
