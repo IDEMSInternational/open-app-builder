@@ -104,12 +104,20 @@ export class MockAppDataService implements Partial<AppDataService> {
   constructor(mockData: Partial<IAppDataCache> = {}) {
     this.appDataCache = { ...DATA_CACHE_CLEAN, ...mockData };
   }
+
+  public ready() {
+    return true;
+  }
+
   public async getSheet<T extends FlowTypes.FlowTypeWithData>(
     flow_type: FlowTypes.FlowType,
     flow_name: string
   ): Promise<T> {
     await _wait(50);
     return this.appDataCache[flow_type]?.[flow_name] as T;
+  }
+  public async getTranslationStrings(language_code: string) {
+    return {};
   }
 }
 
