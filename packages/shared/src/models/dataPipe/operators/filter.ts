@@ -23,8 +23,8 @@ class FilterOperator extends BaseOperator {
 
   public satisfiesFilters(row: any) {
     const evaluator = new JSEvaluator();
-    evaluator.setGlobalContext({ constants: row });
     return this.filterConditions.every((condition) => {
+      evaluator.setGlobalContext({ constants: this.generateEvaluatorConstants(condition, row) });
       try {
         /**
          * row fields can be accessed both from global and local context, e.g.
@@ -38,6 +38,20 @@ class FilterOperator extends BaseOperator {
         throw error;
       }
     });
+  }
+
+  /**
+   * Create a list of all key-value pairs of row data whose keys appear within condition string
+   * This reduces the complexity of later JS evaluation
+   **/
+  private generateEvaluatorConstants(condition: string, row: Record<string, any>) {
+    const constants: Record<string, any> = {};
+    for (const [key, value] of Object.entries(row)) {
+      if (condition.includes(key)) {
+        constants[key] = value;
+      }
+    }
+    return constants;
   }
 }
 
