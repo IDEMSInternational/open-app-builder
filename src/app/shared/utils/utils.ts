@@ -459,7 +459,7 @@ function parseAnswerListItem(item: any) {
     stringProperties.forEach((s) => {
       let [field, value] = s.split(":").map((v) => v.trim());
       if (field && value) {
-        if (["undefined", "NaN", "null", '""'].includes(value)) value = undefined;
+        if (value === "undefined") value = undefined;
         itemObj[field] = value;
       }
     });
