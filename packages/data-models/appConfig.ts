@@ -200,6 +200,14 @@ const ASSET_PACKS = {
   folderName: "asset_packs",
 };
 
+const TASKS = {
+  enabled: false,
+  // The name of the field that tracks the currently highlighted task group
+  highlightedTaskField: "_task_highlighted_group_id",
+  // The top-level list of task groups (e.g. modules), containing task groups that can be highlighted
+  taskGroupsListName: "workshop_tasks",
+};
+
 const APP_CONFIG = {
   APP_FIELDS,
   APP_HEADER_DEFAULTS,
@@ -220,6 +228,7 @@ const APP_CONFIG = {
   NOTIFICATIONS_SYNC_FREQUENCY_MS,
   NOTIFICATION_DEFAULTS,
   SERVER_SYNC_FREQUENCY_MS,
+  TASKS,
 };
 // Export as a clone to avoid risk one import could alter another
 export const getDefaultAppConfig = () => clone(APP_CONFIG);
