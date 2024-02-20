@@ -39,6 +39,12 @@
 @import "~nouislider/dist/nouislider.min.css";
 @import "~swiper/swiper.min.css";
 
+/* Ionic overrides */
+// Remove default underline from focused ion-input
+ion-input {
+  --highlight-color-focused: none !important;
+}
+
 a {
   word-break: break-word;
 }
