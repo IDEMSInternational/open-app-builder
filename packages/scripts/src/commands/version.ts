@@ -1,5 +1,7 @@
-import * as fs from "fs-extra";
+import boxen from "boxen";
+import chalk from "chalk";
 import { Command } from "commander";
+import * as fs from "fs-extra";
 import inquirer from "inquirer";
 import { APP_BUILD_GRADLE_PATH, MAIN_PACKAGE_PATH } from "../paths";
 
@@ -7,11 +9,13 @@ import { APP_BUILD_GRADLE_PATH, MAIN_PACKAGE_PATH } from "../paths";
  * CLI
  * @example yarn
  *************************************************************************************/
-interface IProgramOptions {}
 const program = new Command("version");
-export default program.description("Set app version").action(async (options: IProgramOptions) => {
-  await version(options);
-});
+export default program
+  .description("Set app version")
+  .argument("[newVersion]", "newVersion")
+  .action(async (newVersion: string | undefined) => {
+    await version(newVersion);
+  });
 
 /***************************************************************************************
  * Main Methods
@@ -21,9 +25,16 @@ export default program.description("Set app version").action(async (options: IPr
  * Set a consistent version number by incrementing the current
  * package.json version and also assigning to android version codes
  */
-async function version(options: IProgramOptions) {
-  const oldVersion = fs.readJSONSync(MAIN_PACKAGE_PATH).version;
-  const newVersion = await promptNewVersion(oldVersion);
+async function version(newVersion?: string) {
+  const currentVersion = fs.readJSONSync(MAIN_PACKAGE_PATH).version;
+  if (!newVersion) newVersion = await promptNewVersion(currentVersion);
+  if (!isNextVersionValid(currentVersion, newVersion)) {
+    const heading = chalk.yellow(
+      `Version number must be increased\n${currentVersion} -> ${newVersion}`
+    );
+    console.log(boxen(heading, { padding: 1, borderColor: "red" }));
+    process.exit(1);
+  }
   updatePackageJson(newVersion);
   updateGradleBuild(newVersion);
 }
@@ -33,11 +44,8 @@ function updateGradleBuild(newVersionName: string) {
     encoding: "utf-8",
   });
   const newVersionCode = _generateVersionCode(newVersionName);
-  gradleBuildFile = gradleBuildFile.replace(/versionCode [0-9]+/g, `versionCode ${newVersionCode}`);
-  gradleBuildFile = gradleBuildFile.replace(
-    /versionName "[0-9]+\.[0-9]+\.[0-9]+"/g,
-    `versionName "${newVersionName}"`
-  );
+  gradleBuildFile = gradleBuildFile.replace(/versionCode .*$/gm, `versionCode ${newVersionCode}`);
+  gradleBuildFile = gradleBuildFile.replace(/versionName .*$/gm, `versionName "${newVersionName}"`);
   fs.writeFileSync(APP_BUILD_GRADLE_PATH, gradleBuildFile, { encoding: "utf-8" });
 }
 
@@ -52,19 +60,22 @@ async function promptNewVersion(currentVersion: string) {
     {
       message: `Specify a version number (current: ${currentVersion})`,
       name: "version",
-      validate: (v) => {
-        const nextCode = Number(_generateVersionCode(v));
-        const currentCode = Number(_generateVersionCode(currentVersion));
-        return nextCode > currentCode ? true : "Version number must be increased";
-      },
+      validate: (v) =>
+        isNextVersionValid(currentVersion, version) ? true : "Version number must be increased",
     },
   ]);
   return version;
+}
+
+function isNextVersionValid(currentVersion: string, newVersion: string) {
+  const nextCode = Number(_generateVersionCode(newVersion));
+  const currentCode = Number(_generateVersionCode(currentVersion));
+  return nextCode > currentCode;
 }
 
 // 2.4.1 =>   2004001
 // 2.40.1 =>  2040001
 function _generateVersionCode(versionName: string) {
   const v = versionName.split(".");
-  return `${Number(v[0]) * 1000000 + Number(v[1]) * 1000 + Number(v[2])}`;
+  return `${Number(v[0]) * 1000000 + Number(v[1] || 0) * 1000 + Number(v[2] || 0)}`;
 }
