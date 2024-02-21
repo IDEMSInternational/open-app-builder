@@ -1,16 +1,14 @@
 import { Component, Input, OnInit } from "@angular/core";
 import { FlowTypes } from "src/app/shared/model";
 import {
+  getAnswerListParamFromTemplateRow,
   getBooleanParamFromTemplateRow,
   getNumberParamFromTemplateRow,
-  getParamFromTemplateRow,
   getStringParamFromTemplateRow,
   IAnswerListItem,
-  parseAnswerList,
 } from "src/app/shared/utils";
 import { FormBuilder, FormControl, FormGroup } from "@angular/forms";
 import { ModalController } from "@ionic/angular";
-import { objectToArray } from "../../../utils";
 
 @Component({
   selector: "combo-box-modal",
@@ -39,9 +37,7 @@ export class ComboBoxModalComponent implements OnInit {
   }
 
   getParams() {
-    this.valuesFromListAnswers = parseAnswerList(
-      getParamFromTemplateRow(this.row, "answer_list", null)
-    );
+    this.valuesFromListAnswers = getAnswerListParamFromTemplateRow(this.row, "answer_list", null);
     this.textTitle = getStringParamFromTemplateRow(this.row, "text", null);
     this.inputAllowed = getBooleanParamFromTemplateRow(this.row, "input_allowed", false);
     this.inputPosition =

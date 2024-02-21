@@ -209,6 +209,45 @@ export function getBooleanParamFromTemplateRow(
   return params.hasOwnProperty(name) ? params[name] === "true" : _default;
 }
 
+export function getAnswerListParamFromTemplateRow(
+  row: FlowTypes.TemplateRow,
+  name: string,
+  _default: IAnswerListItem[]
+): IAnswerListItem[] {
+  const params = row.parameter_list || {};
+  console.log(params[name]);
+  return params.hasOwnProperty(name) ? parseAnswerList(params[name]) : _default;
+}
+
+export interface IAnswerListItem {
+  name: string;
+  image?: string;
+  text?: string;
+  image_checked?: string | null;
+}
+
+/**
+ * Parse an answer_list parameter and return an array of AnswerListItems
+ * @param answerList an answer_list parameter, either an array of IAnswerListItems
+ * or a data list (hashmap of IAnswerListItems)
+ */
+function parseAnswerList(answerList: any) {
+  if (!answerList) return [];
+  // If a data_list (hashmap) is provided as input, convert to an array
+  if (answerList.constructor === {}.constructor) {
+    answerList = objectToArray(answerList);
+  }
+
+  // Remove any items from the list which only have a value for "name",
+  // e.g. "image" and "text" are undefined because the list has been generated within a template
+  return (answerList as IAnswerListItem[]).filter((item: IAnswerListItem) => {
+    const hadItemData = Object.entries(item).find(
+      ([key, value]) => key !== "name" && value !== undefined
+    );
+    return hadItemData ? true : false;
+  });
+}
+
 /**
  * Evaluate a javascript expression in a safe context
  * @param expression string expression, e.g. "!true", "5 - 4"
@@ -413,30 +452,6 @@ function supportsOptionalChaining() {
     return false;
   }
   return true;
-}
-
-export interface IAnswerListItem {
-  name: string;
-  image?: string;
-  text?: string;
-  image_checked?: string | null;
-}
-
-/**
- * Parse an answer_list parameter and return an array of AnswerListItems
- * @param answerList an answer_list parameter, either an array of IAnswerListItems
- * or a data list (hashmap of IAnswerListItems)
- */
-export function parseAnswerList(answerList: any) {
-  // If a data_list (hashmap) is provided as input, convert to an array
-  if (answerList.constructor === {}.constructor) {
-    answerList = objectToArray(answerList);
-  }
-  return (answerList as IAnswerListItem[]).filter((item: IAnswerListItem) => {
-    // remove items where there are no values defined (excluding name)
-    const { name, ...answerItem } = item;
-    return Object.values(answerItem).find((v) => v !== undefined);
-  });
 }
 
 /**
