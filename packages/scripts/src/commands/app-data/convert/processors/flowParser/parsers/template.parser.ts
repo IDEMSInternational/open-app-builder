@@ -33,11 +33,10 @@ export class TemplateParser extends DefaultParser {
     }
     // track path to row when nested
     row._nested_name = nestedPath ? `${nestedPath}.${row.name}` : row.name;
-
     // convert any variables (local/global) list or collection strings (e.g. 'my_list_1')
     if (row.value && typeof row.value === "string") {
-      if (row.name?.includes("_list") && row.value && typeof row.value === "string") {
-        row.value = parseAppDataListString(row.value);
+      if (row.name?.includes("_list")) {
+        row.value = this.parseTemplateList(row.value);
       }
       if (row.name?.includes("_collection") && row.value && typeof row.value === "string") {
         row.value = parseAppDataCollectionString(row.value);
@@ -72,6 +71,36 @@ export class TemplateParser extends DefaultParser {
   public postProcessFlows(flows: FlowTypes.FlowTypeWithData[]) {
     const flowsWithOverrides = assignFlowOverrides(flows);
     return flowsWithOverrides;
+  }
+
+  /**
+   * Ensure any local variables defined with `_list` in their name are correctly
+   * parsed into list format
+   * TODO - add tests
+   */
+  private parseTemplateList(value: any) {
+    // Assume all falsy values indicate an empty array
+    if (!value) return [];
+
+    // Assume any non-string values already parsed
+    if (typeof value !== "string") return value;
+
+    // HACK - use list separator to infer whether an actual list or not
+    // E.g. avoid parsing reference `my_list : @local.some_other_list`
+    // TODO - make clear to authors new convention
+    if (!value.includes(";")) return value;
+
+    // HACK - assume any list with | characters designed as parameter list
+    const isCollectionList = value.includes("|");
+
+    // convert to array
+    let parsed: any[] = parseAppDataListString(value);
+
+    // map array elements if collection list
+    if (isCollectionList) {
+      parsed = parsed.map((el: string) => parseAppDataCollectionString(el, "|"));
+    }
+    return parsed;
   }
 
   private parseParameterList(parameterList: string[]) {
