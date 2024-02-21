@@ -14,8 +14,8 @@ import {
   getNumberParamFromTemplateRow,
   getParamFromTemplateRow,
   getStringParamFromTemplateRow,
-  parseAnswerList,
   IAnswerListItem,
+  getAnswerListParamFromTemplateRow,
 } from "../../../../utils";
 import { ReplaySubject } from "rxjs";
 
@@ -38,7 +38,7 @@ export class TmplRadioGroupComponent
   flexWidth: string;
 
   // Parameters
-  answer_list: string[];
+  answerList: IAnswerListItem[];
   options_per_row: number;
   radioButtonType: string | null;
   style: string;
@@ -56,8 +56,8 @@ export class TmplRadioGroupComponent
     this.windowWidth = window.innerWidth;
 
     // convert string answer lists to formatted objects
-    this.answer_list = getParamFromTemplateRow(this._row, "answer_list", []);
-    this.arrayOfBtn = this.createArrayBtnElement(this.answer_list);
+    this.answerList = getAnswerListParamFromTemplateRow(this._row, "answer_list", []);
+    this.arrayOfBtn = this.createArrayBtnElement(this.answerList);
 
     this.getFlexWidth();
     this.groupName = this._row._nested_name;
@@ -76,10 +76,9 @@ export class TmplRadioGroupComponent
    * ]
    * Convert to an object array, with key value pairs extracted from the string values
    */
-  createArrayBtnElement(answer_list: string[]) {
-    if (answer_list) {
-      let arrayOfBtn = parseAnswerList(answer_list);
-      arrayOfBtn = arrayOfBtn.map((itemObj) => this.processButtonFields(itemObj));
+  createArrayBtnElement(answerList: IAnswerListItem[]) {
+    if (answerList) {
+      const arrayOfBtn = answerList.map((itemObj) => this.processButtonFields(itemObj));
 
       // TODO - CC 2023-03-15 could lead to strange behaviour, to review
       // (checks every item but keeps overriding the button type depending on what it finds)

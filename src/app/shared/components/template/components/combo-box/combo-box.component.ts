@@ -3,10 +3,10 @@ import { FlowTypes } from "../../../../model";
 import { ModalController } from "@ionic/angular";
 import { ComboBoxModalComponent } from "./combo-box-modal/combo-box-modal.component";
 import {
+  IAnswerListItem,
+  getAnswerListParamFromTemplateRow,
   getBooleanParamFromTemplateRow,
-  getParamFromTemplateRow,
   getStringParamFromTemplateRow,
-  parseAnswerList,
 } from "src/app/shared/utils";
 import { TemplateBaseComponent } from "../base";
 import { ITemplateRowProps } from "../../models";
@@ -29,25 +29,26 @@ export class TmplComboBoxComponent
   text = "";
   customAnswerSelected: boolean = false;
   customAnswerText: string;
+  answerList: IAnswerListItem[];
   private componentDestroyed$ = new ReplaySubject(1);
+
   constructor(private modalController: ModalController, private templateService: TemplateService) {
     super();
   }
 
   ngOnInit(): void {
     this.getParams();
-    const answerList = parseAnswerList(getParamFromTemplateRow(this._row, "answer_list", []));
 
     this.customAnswerSelected =
-      answerList.length > 0 && this._row.value
-        ? !answerList.find((x) => x.name === this._row.value)
+      this.answerList.length > 0 && this._row.value
+        ? !this.answerList.find((x) => x.name === this._row.value)
         : false;
 
     this.text = "";
     if (this._row.value) {
       this.text = this.customAnswerSelected
         ? this.customAnswerText
-        : answerList.find((answerListItem) => answerListItem.name === this._row.value)?.text;
+        : this.answerList.find((answerListItem) => answerListItem.name === this._row.value)?.text;
     }
   }
 
@@ -59,6 +60,7 @@ export class TmplComboBoxComponent
       false
     );
     this.style = getStringParamFromTemplateRow(this._row, "style", "");
+    this.answerList = getAnswerListParamFromTemplateRow(this._row, "answer_list", []);
   }
 
   async openModal() {
