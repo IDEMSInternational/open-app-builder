@@ -209,6 +209,71 @@ export function getBooleanParamFromTemplateRow(
   return params.hasOwnProperty(name) ? params[name] === "true" : _default;
 }
 
+export function getAnswerListParamFromTemplateRow(
+  row: FlowTypes.TemplateRow,
+  name: string,
+  _default: IAnswerListItem[]
+): IAnswerListItem[] {
+  const params = row.parameter_list || {};
+  console.log(params[name]);
+  return params.hasOwnProperty(name) ? parseAnswerList(params[name]) : _default;
+}
+
+export interface IAnswerListItem {
+  name: string;
+  image?: string;
+  text?: string;
+  image_checked?: string | null;
+}
+
+/**
+ * Parse an answer_list parameter and return an array of AnswerListItems
+ * @param answerList an answer_list parameter, either an array of IAnswerListItems
+ * (possibly still in string representation) or a data list (hashmap of IAnswerListItems)
+ */
+function parseAnswerList(answerList: any) {
+  if (!answerList) return [];
+  // If a data_list (hashmap) is provided as input, convert to an array
+  if (answerList.constructor === {}.constructor) {
+    answerList = objectToArray(answerList);
+  }
+  const answerListItems: IAnswerListItem[] = answerList.map(
+    (item: string | Record<string, string>) => {
+      return parseAnswerListItem(item);
+    }
+  );
+  // Remove any items from the list which only have a value for "name",
+  // e.g. "image" and "text" are undefined because the list has been generated within a template
+  const filteredAnswerListItems = answerListItems.filter((item: IAnswerListItem) => {
+    const hadItemData = Object.entries(item).find(
+      ([key, value]) => key !== "name" && value !== undefined
+    );
+    return hadItemData ? true : false;
+  });
+  return filteredAnswerListItems;
+}
+
+/**
+ * Convert answer list item (string or object) to relevant mappings
+ * TODO - CC 2023-03-16 - should ideally convert in parsers instead of at runtime
+ */
+function parseAnswerListItem(item: any) {
+  const itemObj: IAnswerListItem = {} as any;
+  if (typeof item === "string") {
+    const stringProperties = item.split("|");
+    stringProperties.forEach((s) => {
+      let [field, value] = s.split(":").map((v) => v.trim());
+      if (field && value) {
+        if (value === "undefined") value = undefined;
+        itemObj[field] = value;
+      }
+    });
+    // NOTE CC 2021-08-07 - allow passing of object, not just string for conversion
+    return itemObj;
+  }
+  return item;
+}
+
 /**
  * Evaluate a javascript expression in a safe context
  * @param expression string expression, e.g. "!true", "5 - 4"
@@ -413,60 +478,6 @@ function supportsOptionalChaining() {
     return false;
   }
   return true;
-}
-
-export interface IAnswerListItem {
-  name: string;
-  image?: string;
-  text?: string;
-  image_checked?: string | null;
-}
-
-/**
- * Parse an answer_list parameter and return an array of AnswerListItems
- * @param answerList an answer_list parameter, either an array of IAnswerListItems
- * (possibly still in string representation) or a data list (hashmap of IAnswerListItems)
- */
-export function parseAnswerList(answerList: any) {
-  // If a data_list (hashmap) is provided as input, convert to an array
-  if (answerList.constructor === {}.constructor) {
-    answerList = objectToArray(answerList);
-  }
-  const answerListItems: IAnswerListItem[] = answerList.map(
-    (item: string | Record<string, string>) => {
-      return parseAnswerListItem(item);
-    }
-  );
-  // Remove any items from the list which only have a value for "name",
-  // e.g. "image" and "text" are undefined because the list has been generated within a template
-  const filteredAnswerListItems = answerListItems.filter((item: IAnswerListItem) => {
-    const hadItemData = Object.entries(item).find(
-      ([key, value]) => key !== "name" && value !== undefined
-    );
-    return hadItemData ? true : false;
-  });
-  return filteredAnswerListItems;
-}
-
-/**
- * Convert answer list item (string or object) to relevant mappings
- * TODO - CC 2023-03-16 - should ideally convert in parsers instead of at runtime
- */
-function parseAnswerListItem(item: any) {
-  const itemObj: IAnswerListItem = {} as any;
-  if (typeof item === "string") {
-    const stringProperties = item.split("|");
-    stringProperties.forEach((s) => {
-      let [field, value] = s.split(":").map((v) => v.trim());
-      if (field && value) {
-        if (value === "undefined") value = undefined;
-        itemObj[field] = value;
-      }
-    });
-    // NOTE CC 2021-08-07 - allow passing of object, not just string for conversion
-    return itemObj;
-  }
-  return item;
 }
 
 /**
