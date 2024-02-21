@@ -6,7 +6,7 @@ import { arrayToHashmap } from "../../utils";
 import { AppConfigService } from "../app-config/app-config.service";
 import { TemplateService } from "../../components/template/services/template.service";
 import { Router } from "@angular/router";
-import { APP_CONFIG } from "src/app/data";
+import { getAppConfig } from "src/app/data";
 import { ThemeService } from "src/app/feature/theme/services/theme.service";
 import { SyncServiceBase } from "../syncService.base";
 
@@ -85,7 +85,7 @@ export class SkinService extends SyncServiceBase {
     const newRouteDefaults = newSkin?.appConfig?.APP_ROUTE_DEFAULTS;
     let routes = this.router.config;
     if (newRouteDefaults) {
-      const { APP_ROUTE_DEFAULTS: oldRouteDefaults } = oldSkin?.appConfig || APP_CONFIG;
+      const { APP_ROUTE_DEFAULTS: oldRouteDefaults } = oldSkin?.appConfig || getAppConfig();
       // Replace default home route
       // { path: "", redirectTo: APP_ROUTE_DEFAULTS.home_route, pathMatch: "full" },
       if (
