@@ -119,7 +119,7 @@ jobs:
             echo "Extracted Version: $VERSION"
       
             # Run versioning script
-            yarn run version $VERSION
+            yarn run version $VERSION --android
              
         - name: Download Build Artifact
           uses: actions/download-artifact@v3
