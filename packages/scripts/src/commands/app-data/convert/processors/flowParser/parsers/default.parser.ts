@@ -44,16 +44,16 @@ export class DefaultParser<
       this.queue.shift();
     }
     // Process queue
-    let rowIndex = 0;
+    let rowNumber = 1;
     while (this.queue.length > 0) {
-      // Start rowIndex from 1 to match sheet (without header row)
-      rowIndex++;
+      // Start rowNumber from 2 to match sheet (without header row)
+      rowNumber++;
       const row = this.queue[0];
       try {
         const processed = new RowProcessor(row, this, rowDefaultValues).run();
         // some rows may be omitted during processing so ignore
         if (processed) {
-          const postProcessed = this.postProcessRow(processed, rowIndex);
+          const postProcessed = this.postProcessRow(processed, rowNumber);
           if (postProcessed) {
             processedRows.push(postProcessed);
           }
@@ -90,7 +90,7 @@ export class DefaultParser<
 
   /** Overridable method called by parser to apply any additional processing
    * on each individual row. By default the original row is simply returned */
-  public postProcessRow(row: any, index: number) {
+  public postProcessRow(row: any, rowNumber: number) {
     return row;
   }
 

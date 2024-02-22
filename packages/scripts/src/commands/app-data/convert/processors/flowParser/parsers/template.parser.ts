@@ -9,7 +9,12 @@ import {
 } from "../../../utils";
 
 export class TemplateParser extends DefaultParser {
-  postProcessRow(row: FlowTypes.TemplateRow, index = 1, nestedPath?: string, nestedIndex?: number) {
+  postProcessRow(
+    row: FlowTypes.TemplateRow,
+    rowNumber = 2,
+    nestedPath?: string,
+    nestedRowNumber?: number
+  ) {
     // remove empty rows
     if (Object.keys(row).length === 0) {
       return;
@@ -28,11 +33,11 @@ export class TemplateParser extends DefaultParser {
       if (row.type === "template") {
         row.name = row.value;
       } else {
-        row.name = `${row.type}_${index}`;
+        row.name = `${row.type}_${rowNumber}`;
       }
     }
     // track path to row when nested
-    row._nested_name = nestedPath ? `${nestedPath}.${row.name}` : row.name;
+    row._nested_name = nestedPath ? `${nestedPath}.${row.name}_${nestedRowNumber}` : row.name;
     // convert any variables (local/global) list or collection strings (e.g. 'my_list_1')
     // in similar way to how top-level properties get converted by default parser
     if (row.value && typeof row.value === "string") {
@@ -58,7 +63,7 @@ export class TemplateParser extends DefaultParser {
 
     // handle nested rows in same way
     if (row.rows) {
-      row.rows = row.rows.map((r, i) => this.postProcessRow(r, index, row._nested_name, i));
+      row.rows = row.rows.map((r, i) => this.postProcessRow(r, rowNumber, row._nested_name, i + 1));
     }
 
     if (row.exclude_from_translation) {
