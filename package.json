@@ -27,7 +27,8 @@
     "test:e2e": "yarn workspace test-e2e start",
     "lint": "ng lint",
     "lint:docs": "cspell \"documentation/docs/**/*.md\" --config \"cspell.config.yml\"",
-    "analyse": "ng build --configuration=production --stats-json && npx webpack-bundle-analyzer www/stats.json"
+    "analyse": "ng build --configuration=production --stats-json && npx webpack-bundle-analyzer www/stats.json",
+    "version": "yarn workspace scripts start version"
   },
   "private": true,
   "dependencies": {
@@ -178,3 +179,4 @@
   },
   "packageManager": "yarn@3.3.1"
 }
+
