@@ -9,7 +9,7 @@ import {
 } from "../../../utils";
 
 export class TemplateParser extends DefaultParser {
-  postProcessRow(row: FlowTypes.TemplateRow, nestedPath?: string) {
+  postProcessRow(row: FlowTypes.TemplateRow, index = 1, nestedPath?: string, nestedIndex?: number) {
     // remove empty rows
     if (Object.keys(row).length === 0) {
       return;
@@ -28,12 +28,13 @@ export class TemplateParser extends DefaultParser {
       if (row.type === "template") {
         row.name = row.value;
       } else {
-        row.name = row.type;
+        row.name = `${row.type}_${index}`;
       }
     }
     // track path to row when nested
     row._nested_name = nestedPath ? `${nestedPath}.${row.name}` : row.name;
     // convert any variables (local/global) list or collection strings (e.g. 'my_list_1')
+    // in similar way to how top-level properties get converted by default parser
     if (row.value && typeof row.value === "string") {
       if (row.name?.includes("_list")) {
         row.value = this.parseTemplateList(row.value);
@@ -57,13 +58,18 @@ export class TemplateParser extends DefaultParser {
 
     // handle nested rows in same way
     if (row.rows) {
-      row.rows = row.rows.map((r) => this.postProcessRow(r, row._nested_name));
+      row.rows = row.rows.map((r, i) => this.postProcessRow(r, index, row._nested_name, i));
     }
 
     if (row.exclude_from_translation) {
       row.exclude_from_translation = this.parseExcludeFromTranslation(
         row.exclude_from_translation as any
       );
+    }
+
+    const errors = this.qualityControlCheck(row);
+    if (errors.length > 0) {
+      throw JSON.stringify(errors, null, 2);
     }
     return row;
   }
@@ -103,6 +109,7 @@ export class TemplateParser extends DefaultParser {
     return parsed;
   }
 
+  /** Convert parameter list string array (as provided by default parser) to key-value pairs */
   private parseParameterList(parameterList: string[]) {
     const parameterObj: FlowTypes.TemplateRow["parameter_list"] = {};
     parameterList.forEach((p) => {
@@ -144,5 +151,11 @@ export class TemplateParser extends DefaultParser {
       }
       return action;
     });
+  }
+
+  private qualityControlCheck(row: FlowTypes.TemplateRow) {
+    const errors: string[] = [];
+
+    return errors;
   }
 }
