@@ -9,12 +9,7 @@ import {
 } from "../../../utils";
 
 export class TemplateParser extends DefaultParser {
-  postProcessRow(
-    row: FlowTypes.TemplateRow,
-    rowNumber = 2,
-    nestedPath?: string,
-    nestedRowNumber?: number
-  ) {
+  postProcessRow(row: FlowTypes.TemplateRow, rowNumber = 1, nestedPath?: string) {
     // remove empty rows
     if (Object.keys(row).length === 0) {
       return;
@@ -37,7 +32,7 @@ export class TemplateParser extends DefaultParser {
       }
     }
     // track path to row when nested
-    row._nested_name = nestedPath ? `${nestedPath}.${row.name}_${nestedRowNumber}` : row.name;
+    row._nested_name = nestedPath ? `${nestedPath}.${row.name}` : row.name;
     // convert any variables (local/global) list or collection strings (e.g. 'my_list_1')
     // in similar way to how top-level properties get converted by default parser
     if (row.value && typeof row.value === "string") {
@@ -63,7 +58,7 @@ export class TemplateParser extends DefaultParser {
 
     // handle nested rows in same way
     if (row.rows) {
-      row.rows = row.rows.map((r, i) => this.postProcessRow(r, rowNumber, row._nested_name, i + 1));
+      row.rows = row.rows.map((r, i) => this.postProcessRow(r, i + 1, row._nested_name));
     }
 
     if (row.exclude_from_translation) {
@@ -87,7 +82,6 @@ export class TemplateParser extends DefaultParser {
   /**
    * Ensure any local variables defined with `_list` in their name are correctly
    * parsed into list format
-   * TODO - add tests
    */
   private parseTemplateList(value: any) {
     // Assume all falsy values indicate an empty array
