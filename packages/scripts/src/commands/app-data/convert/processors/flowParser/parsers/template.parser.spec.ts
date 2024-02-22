@@ -19,8 +19,8 @@ describe("Template Parser PostProcessor", () => {
   });
 
   it("Replaces empty row type with set_variable", () => {
-    const res = parser.postProcessRow({ ...ROW_BASE });
-    expect(res).toEqual({ ...ROW_BASE, type: "set_variable" });
+    const res = parser.postProcessRow({ ...ROW_BASE, type: "" as any });
+    expect(res.type).toEqual("set_variable");
   });
 
   // TODO - notify authors of change (can now auto gen multiple)
@@ -34,14 +34,15 @@ describe("Template Parser PostProcessor", () => {
       ],
     });
     expect(res.rows).toEqual([
-      {
-        _nested_name: "accordion_1",
-        name: "accordion_1",
-        type: "accordion",
-      },
+      // Note - suffix numbers start at 2 as flow sheet would typically have row 1 as header row
       {
         _nested_name: "accordion_2",
         name: "accordion_2",
+        type: "accordion",
+      },
+      {
+        _nested_name: "accordion_3",
+        name: "accordion_3",
         type: "accordion",
       },
     ]);
@@ -119,7 +120,6 @@ describe("Template Parser PostProcessor", () => {
         { trigger: "click", action_id: "", args: ["@local.my_action_list", "some_value"] },
       ],
     });
-    console.log("action", res.action_list);
     expect(res.action_list[0].args).toEqual(["this.value", "some_value"]);
   });
 
@@ -148,33 +148,32 @@ describe("Template Parser PostProcessor", () => {
     expect(res._dynamicDependencies).toEqual({ "@local.dynamic_value": ["value"] });
   });
 
-  fit("Creates nested path names for child rows", () => {
+  it("Creates nested path names for child rows", () => {
     const rows: FlowTypes.TemplateRow[] = [
       {
         _nested_name: "my_items",
         name: "my_items",
         type: "items",
-        rows: [{ name: "nested_text", type: "text", _nested_name: "nested_text" }],
+        // Handle case of both named and unnamed nested row names
+        rows: [
+          {
+            ...ROW_BASE,
+            type: "text",
+            name: "named_text",
+          },
+          { ...ROW_BASE, type: "text" },
+        ],
       },
     ];
     const res = parser.run({ flow_type: "template", flow_name: "test_nested", rows });
     const itemRows = res.rows[0].rows;
-    console.log("itemRows", itemRows);
-    expect(itemRows).toEqual([
-      { name: "nested_text", type: "text", _nested_name: "my_items.nested_text" },
-    ]);
-    // TODO - include auto-gen nested names
+    const nestedNames = itemRows.map((n) => n._nested_name);
+    expect(nestedNames).toEqual(["my_items.named_text", "my_items.text_2"]);
   });
 });
 
 describe("Template Parser [QC]", () => {
-  it("Ensures answer_list parameters refer to list variables", () => {
-    const res = parser.postProcessRow({ ...ROW_BASE });
-    expect(res).toEqual({ ...ROW_BASE });
-  });
-
-  it("Warns if ", () => {
-    const res = parser.postProcessRow({ ...ROW_BASE });
-    expect(res).toEqual({ ...ROW_BASE });
-  });
+  // TODO - confirm what checks to include and add to code
+  // it("Ensures answer_list parameters refer to list variables", () => {
+  // });
 });
