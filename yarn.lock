@@ -4663,11 +4663,11 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@ionic/angular@npm:^7.5.6":
-  version: 7.7.1
-  resolution: "@ionic/angular@npm:7.7.1"
+"@ionic/angular@npm:^7.7.3":
+  version: 7.7.3
+  resolution: "@ionic/angular@npm:7.7.3"
   dependencies:
-    "@ionic/core": 7.7.1
+    "@ionic/core": 7.7.3
     ionicons: ^7.0.0
     jsonc-parser: ^3.0.0
     tslib: ^2.3.0
@@ -4677,7 +4677,7 @@ __metadata:
     "@angular/router": ">=14.0.0"
     rxjs: ">=7.5.0"
     zone.js: ">=0.11.0"
-  checksum: dfccb35147a130f77488a94b3a5b258844265a14dd7001274c5942544556a7bd86b445e67dd05f43c7db0d62a1a2e4778d860ac348e97dc38284805a2ccfcbef
+  checksum: 0541a6e49f919913d2e7648faa6b8588e32700eb4bc8e5069075d26c62f7d3bc586c61709688b5a1d0414c212c34bf63d2c824851fa5b2e9334a8cdc72647e5b
   languageName: node
   linkType: hard
 
@@ -4763,14 +4763,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@ionic/core@npm:7.7.1":
-  version: 7.7.1
-  resolution: "@ionic/core@npm:7.7.1"
+"@ionic/core@npm:7.7.3":
+  version: 7.7.3
+  resolution: "@ionic/core@npm:7.7.3"
   dependencies:
-    "@stencil/core": ^4.12.0
+    "@stencil/core": ^4.12.2
     ionicons: ^7.2.2
     tslib: ^2.1.0
-  checksum: e8256aea0c64844dde272798929b0eed66c7377faffff4019dbd931f92e4357eacb9f6106ef3dd54dba0382a40191a2b1a069faf3dcdb997a85aa43ad73d4591
+  checksum: 0aff6fc607a5da1dcc1afffd6178ab73b229d26e1b3bf5b27594b8798bbc622b4673abca9c7a76c1f03b633468f1e9f23350f65face8526c41a6a8d4c7f8b9cb
   languageName: node
   linkType: hard
 
@@ -6605,12 +6605,21 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@stencil/core@npm:^4.0.3, @stencil/core@npm:^4.12.0":
+"@stencil/core@npm:^4.0.3":
   version: 4.12.2
   resolution: "@stencil/core@npm:4.12.2"
   bin:
     stencil: bin/stencil
   checksum: 85bcb310448cf3647b80cdc3df061ff2fac5879a56920ba7e24150722a773024dbe6522be3e3ae206c66d4a3a10e4547318a5568d32aaafbf2e8dd089d55f3f9
+  languageName: node
+  linkType: hard
+
+"@stencil/core@npm:^4.12.2":
+  version: 4.12.3
+  resolution: "@stencil/core@npm:4.12.3"
+  bin:
+    stencil: bin/stencil
+  checksum: 83403cd94cc14e75fe6a4d53f54dbaacdb82c351902444e6da309a7f8f467ea05edfd16ed5751ec0ba6327813a7db5eee75a88efee96df3231a1cad40df78921
   languageName: node
   linkType: hard
 
@@ -14968,7 +14977,7 @@ __metadata:
     "@ionic-native/http": ^5.36.0
     "@ionic-native/media": ^5.36.0
     "@ionic-native/status-bar": ^5.36.0
-    "@ionic/angular": ^7.5.6
+    "@ionic/angular": ^7.7.3
     "@ionic/angular-toolkit": ^10.0.0
     "@ionic/cli": ^7.1.5
     "@ionic/pwa-elements": ^3.2.2

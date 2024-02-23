@@ -11,7 +11,7 @@
       class="toggle_wrapper"
       [class.show-tick-cross]="params.showTickAndCross"
     >
-      <ion-toggle mode="md" [checked]="_row.value" (click)="handleClick($event)" legacy="true">
+      <ion-toggle mode="md" [checked]="!!_row.value" (click)="handleClick($event)" legacy="true">
       </ion-toggle>
     </div>
 
