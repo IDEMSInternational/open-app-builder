@@ -11,8 +11,12 @@
       class="toggle_wrapper"
       [class.show-tick-cross]="params.showTickAndCross"
     >
-      <ion-toggle mode="md" [checked]="!!_row.value" (click)="handleClick($event)" legacy="true">
-      </ion-toggle>
+      <ion-toggle
+        mode="md"
+        [checked]="!!_row.value"
+        (click)="handleClick($event)"
+        legacy="true"
+      ></ion-toggle>
     </div>
 
     <!-- "icon" variant, replaces ion-toggle with alternating pair of icons -->
