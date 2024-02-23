@@ -32,4 +32,11 @@ describe("Filter", () => {
     const outputIDs = output.column("first_name").values;
     expect(outputIDs).toEqual(["Ada"]);
   });
+  it("Ignores context variables that do not appear in condition string", () => {
+    // Passing a function to evaluator would throw error if not ignored
+    const testDf = new DataFrame([{ first_name: "Ada", invalid: new Function() }]);
+    const output = new filter(testDf, ["first_name === 'Ada'"]).apply();
+    const outputIDs = output.column("first_name").values;
+    expect(outputIDs).toEqual(["Ada"]);
+  });
 });
