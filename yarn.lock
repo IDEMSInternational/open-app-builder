@@ -5575,29 +5575,29 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@ngx-matomo/router@npm:^1.3.3":
-  version: 1.3.6
-  resolution: "@ngx-matomo/router@npm:1.3.6"
+"@ngx-matomo/router@npm:^4.1.2":
+  version: 4.1.2
+  resolution: "@ngx-matomo/router@npm:4.1.2"
   dependencies:
     tslib: ^2.0.0
   peerDependencies:
-    "@angular/common": ">=9.0.0 <13.0.0"
-    "@angular/core": ">=9.0.0 <13.0.0"
-    "@angular/router": ">=9.0.0 <13.0.0"
-    "@ngx-matomo/tracker": 1.3.6
-  checksum: e0f681da59d7e4bcb1c8767c04eec7dae9c9185854223ad2b07cd336e63ac8c37ad5bdc37a9cc183c26f7d75816336defb81782374e63ddf08736de2a36b85c7
+    "@angular/common": ^15.0.0 || ^16.0.0
+    "@angular/core": ^15.0.0 || ^16.0.0
+    "@angular/router": ^15.0.0 || ^16.0.0
+    "@ngx-matomo/tracker": 4.1.2
+  checksum: 1681c81620d273697a8705a6f5a522a7cdc206196851c6ba95c44cf5fc2a6b9e98cdcc206c6ba3f785f52b014a9f54704b0577938f470e0ad6605b8eaa389e32
   languageName: node
   linkType: hard
 
-"@ngx-matomo/tracker@npm:^1.3.3":
-  version: 1.3.6
-  resolution: "@ngx-matomo/tracker@npm:1.3.6"
+"@ngx-matomo/tracker@npm:^4.1.2":
+  version: 4.1.2
+  resolution: "@ngx-matomo/tracker@npm:4.1.2"
   dependencies:
     tslib: ^2.0.0
   peerDependencies:
-    "@angular/common": ">=9.0.0 <13.0.0"
-    "@angular/core": ">=9.0.0 <13.0.0"
-  checksum: 2bc2f995ec682376b5c62428cdf2791f00dda9dec1410d68b99f77089133a26fc6900f6205b14fc8a70845facd39141fb3f4036cdbc08a7edb14dc09a12954d1
+    "@angular/common": ^15.0.0 || ^16.0.0
+    "@angular/core": ^15.0.0 || ^16.0.0
+  checksum: 7100fd9929ae71b0ac8e3b693d2ff2b2f0bfea8d03000f17b67960bf7d80dbe4dc99e784af59b7816e1abe665005278b047fc7919c7dcec93b9c3c3793c3ea03
   languageName: node
   linkType: hard
 
@@ -15005,8 +15005,8 @@ __metadata:
     "@ionic/angular-toolkit": ^10.0.0
     "@ionic/cli": ^7.1.5
     "@ionic/pwa-elements": ^3.2.2
-    "@ngx-matomo/router": ^1.3.3
-    "@ngx-matomo/tracker": ^1.3.3
+    "@ngx-matomo/router": ^4.1.2
+    "@ngx-matomo/tracker": ^4.1.2
     "@schematics/angular": ~17.0.3
     "@sentry/angular": ^7.83.0
     "@supabase/supabase-js": ^2.39.0
