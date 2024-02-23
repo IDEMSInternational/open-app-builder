@@ -39,9 +39,9 @@
 @import "~nouislider/dist/nouislider.min.css";
 @import "~swiper/swiper.min.css";
 
-/* Overrides for inoic components */
-// Remove default underline from focused ion-input
+/* Overrides for ionic components */
 ion-input {
+  // do not apply underline when focused
   --highlight-color-focused: none !important;
 }
 ion-checkbox {
