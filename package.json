@@ -65,7 +65,7 @@
     "@ionic/pwa-elements": "^3.2.2",
     "@ngx-matomo/router": "^4.1.2",
     "@ngx-matomo/tracker": "^4.1.2",
-    "@sentry/angular": "^7.102.1",
+    "@sentry/angular-ivy": "^7.102.1",
     "@supabase/supabase-js": "^2.39.0",
     "@types/file-saver": "^2.0.7",
     "bootstrap-datepicker": "^1.10.0",
