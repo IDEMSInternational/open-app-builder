@@ -1,7 +1,7 @@
 import { Component, Input } from "@angular/core";
 import { TemplateBaseComponent } from "../base";
 import { FlowTypes, ITemplateRowProps } from "../../models";
-import { getParamFromTemplateRow, IAnswerListItem, parseAnswerList } from "src/app/shared/utils";
+import { getAnswerListParamFromTemplateRow, IAnswerListItem } from "src/app/shared/utils";
 
 interface IRadioButtonGridParams {
   /** List of options presented as radio items */
@@ -65,8 +65,7 @@ export class TmplRadioButtonGridComponent
 
   private setParams() {
     this.parameter_list = this._row.parameter_list || ({} as any);
-    const answerList = getParamFromTemplateRow(this._row, "answer_list", []);
-    this.radioItems = parseAnswerList(answerList);
+    this.radioItems = getAnswerListParamFromTemplateRow(this._row, "answer_list", []);
     this.gridStyle = this.generateGridStyle();
   }
 

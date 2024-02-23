@@ -70,7 +70,7 @@ _Build -> Build Bundles / APKs -> Build Bundle_
 
 7. Increase version and repeat steps 1-4
 ```
-yarn scripts version
+yarn run version --android
 ```
 
 8. Follow link to new internal update but do not install (assume this makes device aware of potential update instead of waiting for store periodic check)
