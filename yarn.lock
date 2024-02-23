@@ -6540,9 +6540,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sentry/angular@npm:^7.102.1":
+"@sentry/angular-ivy@npm:^7.102.1":
   version: 7.102.1
-  resolution: "@sentry/angular@npm:7.102.1"
+  resolution: "@sentry/angular-ivy@npm:7.102.1"
   dependencies:
     "@sentry/browser": 7.102.1
     "@sentry/core": 7.102.1
@@ -6550,11 +6550,11 @@ __metadata:
     "@sentry/utils": 7.102.1
     tslib: ^2.4.1
   peerDependencies:
-    "@angular/common": ">= 10.x <= 15.x"
-    "@angular/core": ">= 10.x <= 15.x"
-    "@angular/router": ">= 10.x <= 15.x"
+    "@angular/common": ">= 12.x <= 17.x"
+    "@angular/core": ">= 12.x <= 17.x"
+    "@angular/router": ">= 12.x <= 17.x"
     rxjs: ^6.5.5 || ^7.x
-  checksum: d84ceba6028e350f357e4726d8d89163a090e972b6b29b39650190a20fb825947b6a45615f67154b2db5ee4827691569adf9685b8e4fa63c17970c16706b557b
+  checksum: b7ff72ddf1bf8e9c226a0f3164794274dd845c001107e339b0b0139748fefbda34e98b13d6d063a43423cff57633aa93bd2eede09af088a5f51bff1f5af9f96c
   languageName: node
   linkType: hard
 
@@ -15008,7 +15008,7 @@ __metadata:
     "@ngx-matomo/router": ^4.1.2
     "@ngx-matomo/tracker": ^4.1.2
     "@schematics/angular": ~17.0.3
-    "@sentry/angular": ^7.102.1
+    "@sentry/angular-ivy": ^7.102.1
     "@supabase/supabase-js": ^2.39.0
     "@swc/helpers": ^0.5.1
     "@types/clone": ^2.1.1
