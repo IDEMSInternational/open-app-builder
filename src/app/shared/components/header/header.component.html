@@ -1,0 +1,19 @@
+<ion-header [class.ion-no-border]="minimal">
+  <ion-toolbar [color]="minimal ? undefined : 'primary'" [class.minimal]="minimal">
+    <ion-buttons slot="start" style="position: absolute">
+      <ion-menu-button *ngIf="showMenuButton" autoHide="false" menu="start"></ion-menu-button>
+      <ion-button
+        [style.display]="showBackButton ? 'block' : 'none'"
+        (click)="handleBackButtonClick()"
+      >
+        <ion-icon name="chevron-back-outline" slot="icon-only"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ng-container *ngIf="!minimal">
+      <ion-title style="text-align: center" routerLink="/">
+        <span>{{ headerConfig.title }}</span>
+      </ion-title>
+    </ng-container>
+    <ion-buttons slot="end"> </ion-buttons>
+  </ion-toolbar>
+</ion-header>

@@ -1,0 +1,7 @@
+ion-toolbar {
+  --background: var(--ion-color-primary);
+  &.minimal {
+    --background: none;
+    --min-height: 38px;
+  }
+}

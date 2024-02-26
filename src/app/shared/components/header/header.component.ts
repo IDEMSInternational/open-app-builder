@@ -4,34 +4,20 @@ import { NavigationEnd, NavigationStart, Router } from "@angular/router";
 import { App } from "@capacitor/app";
 import { Capacitor, PluginListenerHandle } from "@capacitor/core";
 import { Subscription } from "rxjs";
-import { IAppConfig } from "../model";
-import { AppConfigService } from "../services/app-config/app-config.service";
+import { IAppConfig } from "../../model";
+import { AppConfigService } from "../../services/app-config/app-config.service";
 
 @Component({
   selector: "plh-main-header",
-  template: `<ion-header>
-    <ion-toolbar color="primary">
-      <ion-buttons slot="start" style="position:absolute">
-        <ion-menu-button *ngIf="showMenuButton" autoHide="false" menu="start"></ion-menu-button>
-        <ion-button
-          [style.display]="showBackButton ? 'block' : 'none'"
-          (click)="handleBackButtonClick()"
-        >
-          <ion-icon name="chevron-back-outline" slot="icon-only"></ion-icon>
-        </ion-button>
-      </ion-buttons>
-      <ion-title style="text-align: center" routerLink="/">
-        <span>{{ headerConfig.title }}</span>
-      </ion-title>
-      <ion-buttons slot="end"> </ion-buttons>
-    </ion-toolbar>
-  </ion-header>`,
+  templateUrl: "./header.component.html",
+  styleUrls: ["./header.component.scss"],
 })
 export class PLHMainHeaderComponent implements OnInit, OnDestroy {
   showMenuButton = false;
   showBackButton = false;
   appConfigChanges$: Subscription;
   headerConfig: IAppConfig["APP_HEADER_DEFAULTS"];
+  minimal = true;
   routeChanges$: Subscription;
   /** listen to hardware back button presses (on android device only) */
   hardwareBackButton$: PluginListenerHandle;
