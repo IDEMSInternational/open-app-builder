@@ -43,6 +43,9 @@
 ion-input {
   // do not apply underline when focused
   --highlight-color-focused: none !important;
+  --highlight-color: none !important;
+  --highlight-color-valid: none !important;
+  --highlight-color-invalid: none !important;
 }
 ion-checkbox {
   --checkbox-background: var(--checkbox-background-color, white);
