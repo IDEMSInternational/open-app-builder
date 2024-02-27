@@ -4,7 +4,7 @@
 # Reuseable workflow to be called from content repos. 
 # Build and deploy app bundle for android
 #
-#         Version : 1.0
+#         Version : 1.1
 #
 ##################################################################################
 #         Configuration
@@ -35,11 +35,18 @@ concurrency:
   
 on:
     workflow_call:
+      inputs:
+        branch:
+          type: string
+          description: "Specify branch for deployment"
+          default: ""
   
 jobs:
   
     build_action:
         uses: ./.github/workflows/reusable-app-build.yml
+        with: 
+          branch: ${{ inputs.branch }}
         secrets: inherit
   
     build_android:
@@ -93,7 +100,7 @@ jobs:
           run: yarn install --immutable
   
         - name: Set deployment
-          run: yarn workflow deployment set $DEPLOYMENT_NAME
+          run: yarn workflow deployment set $DEPLOYMENT_NAME --skip-refresh
   
         - name: Populate android assets
           run: yarn workflow populate_android_assets
@@ -111,26 +118,9 @@ jobs:
             VERSION=$(grep 'content_tag_latest:' $FILE_PATH | sed 's/content_tag_latest: *"\(.*\)",/\1/')
             echo "Extracted Version: $VERSION"
       
-            # Split the version into major, minor, and patch components
-            IFS='.' read -ra VERSION_PARTS <<< "$VERSION"
-            
-            if [[ ${#VERSION_PARTS[@]} -ne 3 ]]; then
-               echo "Error: Version format is not as expected."
-               exit 1
-            fi
-                      
-            # Convert minor and patch segment to 3-digit representation
-            MINOR=$(printf "%03d" "${VERSION_PARTS[1]}")
-            PATCH=$(printf "%03d" "${VERSION_PARTS[2]}")
-                
-            # Construct the new version
-            VERSION_CODE="${VERSION_PARTS[0]}${MINOR}${PATCH}"
-            
-            echo "Version Code: $VERSION_CODE"
-            echo "Version: $VERSION"
-            # This will need to change currently looking for specific version and not place holder
-            sed -i -e "s/16023/$VERSION_CODE/g" -e "s/0.16.23/$VERSION/g" ./android/app/build.gradle 
-            
+            # Run versioning script
+            yarn run version $VERSION --android
+             
         - name: Download Build Artifact
           uses: actions/download-artifact@v3
           with:
