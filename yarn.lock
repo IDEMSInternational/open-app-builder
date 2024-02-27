@@ -6657,12 +6657,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@supabase/gotrue-js@npm:^2.60.0":
-  version: 2.62.2
-  resolution: "@supabase/gotrue-js@npm:2.62.2"
+"@supabase/gotrue-js@npm:2.61.0":
+  version: 2.61.0
+  resolution: "@supabase/gotrue-js@npm:2.61.0"
   dependencies:
     "@supabase/node-fetch": ^2.6.14
-  checksum: d77f5075c56dc8529b137f8aba3e4f5ee7da30c21f519202fd63d2b71aef459b6b61daee0a7e199eaa31ab14206336efa0141baafebfe3f1fb94c0e1f15dfbf5
+  checksum: 2955fed1870460e80a2888da69b9c59213cdb40cfc7b88447d4d95cdcfc250fed2412dbd9b5a1f06e8555e72b252025fea20201654b84e31b4ba8386779b3f37
   languageName: node
   linkType: hard
 
