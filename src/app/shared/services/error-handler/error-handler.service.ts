@@ -1,7 +1,7 @@
 import { ErrorHandler, Injectable, Injector } from "@angular/core";
 import { Capacitor } from "@capacitor/core";
 import { Device } from "@capacitor/device";
-import * as Sentry from "@sentry/angular";
+import * as Sentry from "@sentry/angular-ivy";
 import { environment } from "src/environments/environment";
 import { GIT_SHA } from "src/environments/sha";
 import { fromError as getStacktraceFromError } from "stacktrace-js";

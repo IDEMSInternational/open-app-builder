@@ -35,6 +35,8 @@ export class TmplSliderComponent
   labels_count: number | null = 8;
   /** Track the previous value when toggling NA on/off */
   previousValue: number;
+  // Not used as we rely on (change) event, but required by nouislider component
+  sliderValue: number;
 
   // Note - not all config options are actually supported by ng2-nouislider (need to dig into code to see what is)
   sliderConfig: Options = {
