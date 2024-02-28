@@ -10,6 +10,7 @@ const TEST_DATA_ROWS = [
   { id: "id1", number: 1, string: "hello", boolean: true },
   { id: "id2", number: 2, string: "goodbye", boolean: false },
 ];
+type ITestRow = (typeof TEST_DATA_ROWS)[number];
 
 /**
  * Call standalone tests via:
@@ -27,7 +28,12 @@ describe("DynamicDataService", () => {
           provide: AppDataService,
           useValue: new MockAppDataService({
             data_list: {
-              test_flow: { flow_name: "test_flow", flow_type: "data_list", rows: TEST_DATA_ROWS },
+              test_flow: {
+                flow_name: "test_flow",
+                flow_type: "data_list",
+                // Make deep clone of data to avoid data overwrite issues
+                rows: JSON.parse(JSON.stringify(TEST_DATA_ROWS)),
+              },
             },
           }),
         },
@@ -39,9 +45,9 @@ describe("DynamicDataService", () => {
 
     service = TestBed.inject(DynamicDataService);
     TestBed.inject(AppDataService);
-
     await service.ready();
-    service.resetFlow("data_list", "test_flow", false);
+    // Ensure any data previously persisted is cleared
+    await service.resetFlow("data_list", "test_flow");
   });
 
   it("populates initial flows from json", async () => {
@@ -54,7 +60,14 @@ describe("DynamicDataService", () => {
     await service.update("data_list", "test_flow", "id1", { number: 1.1 });
     const obs = await service.query$<any>("data_list", "test_flow");
     const data = await firstValueFrom(obs);
-    expect(data[0]).toEqual({ ...TEST_DATA_ROWS[0], number: 1.1 });
+    expect(data[0].number).toEqual(1.1);
+  });
+  it("allows reset to initial data", async () => {
+    await service.update("data_list", "test_flow", "id1", { number: 1.1 });
+    await service.resetFlow("data_list", "test_flow");
+    const obs = await service.query$<any>("data_list", "test_flow");
+    const data = await firstValueFrom(obs);
+    expect(data[0].number).toEqual(1);
   });
 
   it("populates cached data on load", async () => {
@@ -62,16 +75,22 @@ describe("DynamicDataService", () => {
   });
 
   it("provides live querying", async () => {
-    let queryResult: any;
+    // HACK - ensure any previous data cleared before running test
+    await service.resetFlow("data_list", "test_flow");
+    const queryResults: ITestRow[][] = [];
     const obs = await service.query$("data_list", "test_flow", {
       selector: { number: { $gt: 1 } },
     });
-    obs.subscribe((v) => (queryResult = v));
-    await firstValueFrom(obs);
-    expect(queryResult.length).toEqual(1);
+    obs.subscribe((v) => {
+      queryResults.push(v as ITestRow[]);
+    });
     await service.update("data_list", "test_flow", "id1", { number: 5 });
     await firstValueFrom(obs);
-    expect(queryResult.length).toEqual(2);
+    // should have 2 updates, initial result and updated query result
+    expect(queryResults.length).toEqual(2);
+    const [beforeQuery, afterQuery] = queryResults;
+    expect(beforeQuery.map((row) => row.id)).toEqual(["id2"]);
+    expect(afterQuery.map((row) => row.id)).toEqual(["id1", "id2"]);
   });
 
   it("Supports parallel requests without recreating collections", async () => {

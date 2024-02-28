@@ -17,6 +17,7 @@
       [class.hide-handle]="_row.value === 'no_value' || _row.value === undefined"
       [config]="sliderConfig"
       [style.width.%]="100"
+      [(ngModel)]="sliderValue"
     ></nouislider>
     <div class="checkbox-block" (click)="toggleNACheckbox()">
       <ion-checkbox
