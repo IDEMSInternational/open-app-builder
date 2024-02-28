@@ -42,8 +42,6 @@ import { PLHAssetPipe } from "./pipes/plh-asset.pipe";
     TemplateContainerComponent,
     appendStyleSvgDirective,
   ],
-  // Include the container component as an entry component so that we can a custom elements for it (see below)
-  entryComponents: [TemplateContainerComponent],
   // Pipes that are used in component ts files should be declared here
   providers: [PLHAssetPipe],
 })

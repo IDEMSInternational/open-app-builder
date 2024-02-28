@@ -11,8 +11,7 @@ import { IonicModule, IonicRouteStrategy } from "@ionic/angular";
 // Libs
 import { LottieModule } from "ngx-lottie";
 import player from "lottie-web";
-import { NgxMatomoTrackerModule } from "@ngx-matomo/tracker";
-import { NgxMatomoRouterModule } from "@ngx-matomo/router";
+import { MatomoModule, MatomoRouterModule } from "ngx-matomo-client";
 
 // Native
 import { HTTP } from "@ionic-native/http/ngx";
@@ -37,8 +36,6 @@ export function lottiePlayerFactory() {
 
 @NgModule({
   declarations: [AppComponent],
-
-  entryComponents: [],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -55,11 +52,11 @@ export function lottiePlayerFactory() {
     // LottieCacheModule.forRoot(),
     TemplateComponentsModule,
     TourModule,
-    NgxMatomoTrackerModule.forRoot({
+    MatomoModule.forRoot({
       siteId: environment.analytics.siteId,
       trackerUrl: environment.analytics.endpoint,
     }),
-    NgxMatomoRouterModule,
+    MatomoRouterModule,
     ContextMenuModule,
   ],
   providers: [
