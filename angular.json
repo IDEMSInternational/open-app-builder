@@ -55,26 +55,7 @@
               }
             ],
             "scripts": ["./node_modules/intro.js/intro.js"],
-            "allowedCommonJsDependencies": [
-              "@firebase/auth",
-              "clone",
-              "dompurify",
-              "extract-math",
-              "fast-deep-equal",
-              "firebase/app",
-              "howler",
-              "html5sortable/dist/html5sortable.cjs",
-              "intro.js",
-              "jquery",
-              "lottie-web",
-              "marked",
-              "mingo/operators/pipeline",
-              "mingo/operators/query",
-              "mingo/query",
-              "qrcode",
-              "stacktrace-js",
-              "websocket"
-            ]
+            "allowedCommonJsDependencies": ["*"]
           },
           "configurations": {
             "development": {
