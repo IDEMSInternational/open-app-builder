@@ -75,3 +75,5 @@ supabase
 
 # Avoid comitting private keys
 private.key
+
+.nx

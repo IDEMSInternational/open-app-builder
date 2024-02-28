@@ -10,11 +10,11 @@ import {
 } from "rxdb";
 import { RxDBJsonDumpPlugin } from "rxdb/plugins/json-dump";
 addRxPlugin(RxDBJsonDumpPlugin);
-import { getRxStorageMemory } from "rxdb/plugins/memory";
+import { getRxStorageMemory } from "rxdb/plugins/storage-memory";
 import type {
   MemoryStorageInternals,
   RxStorageMemoryInstanceCreationOptions,
-} from "rxdb/dist/types/plugins/memory";
+} from "rxdb/dist/types/plugins/storage-memory";
 import { RxDBMigrationPlugin } from "rxdb/plugins/migration";
 addRxPlugin(RxDBMigrationPlugin);
 import { RxDBUpdatePlugin } from "rxdb/plugins/update";
@@ -78,7 +78,7 @@ export class ReactiveMemoryAdapater {
     if (!collection) {
       return undefined;
     }
-    const matchedDocs = await collection.findByIds([docId]);
+    const matchedDocs = await collection.findByIds([docId]).exec();
     const existingDoc: RxDocument<T> = matchedDocs.get(docId);
     return existingDoc;
   }
@@ -99,6 +99,14 @@ export class ReactiveMemoryAdapater {
     const collections: { [x: string]: RxCollectionCreator<any> } = {};
     collections[name] = { schema };
     await this.db.addCollections(collections);
+    const collection = this.db.collections[name];
+    // HACK - sometimes rxdb keeps data in memory during repeated create/delete cycles
+    // (e.g. test runners), so ensure all data fully removed post creation
+    const data = await collection.find().exec();
+    if (data.length > 0) {
+      await collection.bulkRemove(data.map((d) => d.id));
+    }
+    return collection;
   }
 
   public async bulkInsert(name: string, docs: any[]) {
@@ -117,7 +125,7 @@ export class ReactiveMemoryAdapater {
     if (!collection) {
       throw new Error("Collection does not exist: " + collectionName);
     }
-    const matchedDocs = await collection.findByIds([id]);
+    const matchedDocs = await collection.findByIds([id]).exec();
     const existingDoc: RxDocument = matchedDocs.get(id);
     if (existingDoc) {
       // Remove any values marked as undefined
@@ -126,7 +134,7 @@ export class ReactiveMemoryAdapater {
           delete data[key];
         }
       }
-      const updatedDoc = await existingDoc.atomicPatch(data);
+      const updatedDoc = await existingDoc.incrementalPatch(data);
       return updatedDoc.toMutableJSON();
     } else {
       const newDoc = await collection.insert(data);
@@ -135,6 +143,6 @@ export class ReactiveMemoryAdapater {
   }
 
   public async removeCollection(collectionName: string) {
-    return await this.db.collections[collectionName].remove();
+    await this.db.collections[collectionName].remove();
   }
 }

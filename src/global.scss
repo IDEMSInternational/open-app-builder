@@ -36,8 +36,20 @@
 @import "./theme/deployment/deployment.scss";
 
 /* Styles for 3rd prty libraries */
-@import "~nouislider/distribute/nouislider.min.css";
+@import "~nouislider/dist/nouislider.min.css";
 @import "~swiper/swiper.min.css";
+
+/* Overrides for ionic components */
+ion-input {
+  // do not apply underline when focused
+  --highlight-color-focused: none !important;
+  --highlight-color: none !important;
+  --highlight-color-valid: none !important;
+  --highlight-color-invalid: none !important;
+}
+ion-checkbox {
+  --checkbox-background: var(--checkbox-background-color, white);
+}
 
 a {
   word-break: break-word;

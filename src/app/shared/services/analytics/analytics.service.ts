@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { Device } from "@capacitor/device";
-import { MatomoTracker } from "@ngx-matomo/tracker";
+import { MatomoTracker } from "ngx-matomo-client";
 import { SyncServiceBase } from "../syncService.base";
 
 @Injectable({ providedIn: "root" })
