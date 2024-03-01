@@ -1,12 +1,13 @@
 import {
   addRxPlugin,
   createRxDatabase,
+  MigrationStrategies,
   RxCollection,
   RxDatabase,
   RxDocument,
   RxJsonSchema,
 } from "rxdb";
-import { getRxStorageDexie } from "rxdb/plugins/dexie";
+import { getRxStorageDexie } from "rxdb/plugins/storage-dexie";
 import { RxDBJsonDumpPlugin } from "rxdb/plugins/json-dump";
 addRxPlugin(RxDBJsonDumpPlugin);
 import { RxDBMigrationPlugin } from "rxdb/plugins/migration";
@@ -35,7 +36,7 @@ const SCHEMA: RxJsonSchema<any> = {
   title: "base schema for id-primary key data",
   // NOTE - important to start at 0 and not timestamp (e.g. 20221220) as will check
   // for migration strategies for each version which is hugely inefficient
-  version: 0,
+  version: 1,
   primaryKey: "id",
   type: "object",
   properties: {
@@ -52,6 +53,11 @@ const SCHEMA: RxJsonSchema<any> = {
   },
   required: ["id", "flow_type", "flow_name", "row_id", "data"],
   indexes: ["flow_type", "flow_name", "row_id"],
+};
+const MIGRATIONS: MigrationStrategies = {
+  // As part of RXDb v14 update all data requires migrating to change metadata fields (no doc data changes)
+  // https://rxdb.info/releases/14.0.0.html
+  1: (doc) => doc,
 };
 
 interface IDataUpdate {
@@ -85,7 +91,9 @@ export class PersistedMemoryAdapter {
       ignoreDuplicate: true,
     });
     if (!this.collection) {
-      await this.db.addCollections({ user: { schema: SCHEMA } });
+      await this.db.addCollections({
+        user: { schema: SCHEMA, migrationStrategies: MIGRATIONS },
+      });
     }
     await this.mapDBToState();
     return this;
