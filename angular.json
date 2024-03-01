@@ -1,7 +1,6 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "version": 1,
-  "defaultProject": "app",
   "newProjectRoot": "projects",
   "projects": {
     "app": {
@@ -56,19 +55,7 @@
               }
             ],
             "scripts": ["./node_modules/intro.js/intro.js"],
-            "allowedCommonJsDependencies": [
-              "lottie-web",
-              "firebase/app",
-              "@firebase/auth",
-              "clone",
-              "howler",
-              "dompurify",
-              "extract-math",
-              "marked",
-              "stacktrace-js",
-              "intro.js",
-              "qrcode"
-            ]
+            "allowedCommonJsDependencies": ["*"]
           },
           "configurations": {
             "development": {
@@ -212,9 +199,9 @@
     }
   },
   "cli": {
-    "defaultCollection": "@ionic/angular-toolkit",
     "packageManager": "yarn",
-    "analytics": false
+    "analytics": false,
+    "schematicCollections": ["@ionic/angular-toolkit"]
   },
   "schematics": {
     "@ionic/angular-toolkit:component": {

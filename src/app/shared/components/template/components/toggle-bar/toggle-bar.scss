@@ -8,9 +8,9 @@ ion-toggle {
 }
 
 ion-toggle {
-  --background: #b4b7b7;
+  --track-background: #b4b7b7;
   --handle-spacing: 2px;
-  --background-checked: var(--ion-color-primary, "darkblue");
+  --track-background-checked: var(--ion-color-primary, "darkblue");
   --handle-background: var(--ion-item-background, #fefefe);
   --handle-background-checked: #fff;
   --padding-inline: $togglePadding;

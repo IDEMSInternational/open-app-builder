@@ -48,6 +48,7 @@
       // radio-button-font-color: var(--ion-color-primary),
       ion-item-background: var(--ion-color-gray-light),
       // task-progress-bar-color: var(--ion-color-primary),
+      // checkbox-background-color: white,,,
     );
     @include utils.generateTheme($color-primary, $color-secondary, $page-background, $g: $green);
     @each $name, $value in $variable-overrides {

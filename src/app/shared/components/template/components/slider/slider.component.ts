@@ -8,7 +8,7 @@ import {
   getStringParamFromTemplateRow,
 } from "../../../../utils";
 import { NouisliderComponent } from "ng2-nouislider";
-import { Options } from "nouislider";
+import { Options, PipsMode } from "nouislider";
 
 @Component({
   selector: "plh-slider-new",
@@ -35,6 +35,8 @@ export class TmplSliderComponent
   labels_count: number | null = 8;
   /** Track the previous value when toggling NA on/off */
   previousValue: number;
+  // Not used as we rely on (change) event, but required by nouislider component
+  sliderValue: number;
 
   // Note - not all config options are actually supported by ng2-nouislider (need to dig into code to see what is)
   sliderConfig: Options = {
@@ -48,7 +50,7 @@ export class TmplSliderComponent
       max: this.maxValue,
     },
     pips: {
-      mode: "count",
+      mode: PipsMode.Count,
       density: 1,
       values: 7,
       stepped: true,
@@ -94,6 +96,6 @@ export class TmplSliderComponent
     this.sliderConfig.range.max = this.maxValue;
     this.sliderConfig.step = this.step;
     this.sliderConfig.start = Number(this._row.value) || 0;
-    this.sliderConfig.pips.values = this.labels_count;
+    (this.sliderConfig.pips as any).values = this.labels_count;
   }
 }
