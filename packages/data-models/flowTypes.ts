@@ -392,6 +392,7 @@ export namespace FlowTypes {
     "save_to_device",
     "set_field",
     "set_item",
+    "set_item_at_index",
     "set_items",
     "set_local",
     "share",

@@ -80,6 +80,13 @@ export class TmplDataItemsComponent extends TemplateBaseComponent implements OnD
     // TODO - deep diff and only update changed
     this.itemRows = replacedActionRows;
     this.cdr.markForCheck();
+    // Without this second check, and without the delay, the nested template does not render. Must be something async somewhere but I'm not sure what
+    await new Promise<void>((resolve) => {
+      setTimeout(() => {
+        resolve();
+      }, 500);
+    });
+    this.cdr.markForCheck();
   }
 
   /**
@@ -102,6 +109,11 @@ export class TmplDataItemsComponent extends TemplateBaseComponent implements OnD
             // TODO - add a check for @item refs and replace parameter list with correct values
             // for each individual item (default will be just to pick the first)
             a.args = [this.dataListName, Object.values(dataList).map((v) => v.id)];
+          }
+          if (a.action_id === "set_item_at_index") {
+            const row_ids = Object.values(dataList).map((v) => v.id);
+            const currentItemIndex = row_ids.indexOf(r._evalContext.itemContext.id);
+            a.args = a.args.concat([this.dataListName, currentItemIndex, row_ids]);
           }
           return a;
         });
