@@ -80,7 +80,8 @@ export class TmplDataItemsComponent extends TemplateBaseComponent implements OnD
     // TODO - deep diff and only update changed
     this.itemRows = replacedActionRows;
     this.cdr.markForCheck();
-    // Without this second check, and without the delay, the nested template does not render. Must be something async somewhere but I'm not sure what
+    // Without this second check, and without the delay, templates nested inside data-items loops do not render.
+    // There must be some async process somewhere but I'm not sure what it is
     await new Promise<void>((resolve) => {
       setTimeout(() => {
         resolve();
