@@ -87,6 +87,10 @@ export class DynamicDataService extends AsyncServiceBase {
           await this.update("data_list", flow_name, row_id, params);
         }
       },
+      // "Reset" the data of a given data list by removing its dynamic user overwrites
+      reset_data: async ({ args }) => {
+        this.resetFlow("data_list", args[0]);
+      },
     });
   }
 
