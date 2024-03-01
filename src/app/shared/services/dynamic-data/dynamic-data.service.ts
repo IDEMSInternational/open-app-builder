@@ -6,7 +6,7 @@ import { FlowTypes } from "data-models";
 import { environment } from "src/environments/environment";
 import { AppDataService } from "../data/app-data.service";
 import { AsyncServiceBase } from "../asyncService.base";
-import { arrayToHashmap, deepMergeObjects } from "../../utils";
+import { arrayToHashmap, deepMergeObjects, evaluateJSExpression } from "../../utils";
 import { PersistedMemoryAdapter } from "./adapters/persistedMemory";
 import { ReactiveMemoryAdapater, REACTIVE_SCHEMA_BASE } from "./adapters/reactiveMemory";
 import { TemplateActionRegistry } from "../../components/template/services/instance/template-action.registry";
@@ -69,6 +69,16 @@ export class DynamicDataService extends AsyncServiceBase {
       set_item: async ({ args, params }) => {
         const [flow_name, row_id] = args;
         await this.update("data_list", flow_name, row_id, params);
+      },
+      set_item_at_index: async ({ args, params }) => {
+        const [targetIndexString, flow_name, currentItemIndex, row_ids] = args;
+        const targetIndex = this.evaluateItemIndexString(targetIndexString, currentItemIndex);
+        const targetRowId = row_ids[targetIndex];
+        if (targetRowId) {
+          await this.update("data_list", flow_name, targetRowId, params);
+        } else {
+          console.warn(`[SET ITEM AT INDEX] - No item at index ${targetIndex}`);
+        }
       },
       set_items: async ({ args, params }) => {
         const [flow_name, row_ids] = args;
@@ -222,5 +232,19 @@ export class DynamicDataService extends AsyncServiceBase {
       }
     }
     return schema;
+  }
+
+  evaluateItemIndexString(targetIndexString: string, currentIndex: number) {
+    if (isNaN(Number(targetIndexString))) {
+      try {
+        // HACK use keyword "item_index" to refer to index of current item in loop
+        const jsExpression = targetIndexString.replace("item_index", currentIndex.toString());
+        return evaluateJSExpression(jsExpression);
+      } catch {
+        console.error(`[SET ITEM AT INDEX] - Invalid index selector, "${targetIndexString}"`);
+      }
+    } else {
+      return Number(targetIndexString);
+    }
   }
 }
