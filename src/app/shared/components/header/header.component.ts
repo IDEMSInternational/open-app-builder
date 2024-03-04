@@ -1,5 +1,5 @@
 import { Location } from "@angular/common";
-import { Component, OnDestroy, OnInit } from "@angular/core";
+import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from "@angular/core";
 import { NavigationEnd, NavigationStart, Router } from "@angular/router";
 import { App } from "@capacitor/app";
 import { Capacitor, PluginListenerHandle } from "@capacitor/core";
@@ -7,12 +7,16 @@ import { Subscription } from "rxjs";
 import { IAppConfig } from "../../model";
 import { AppConfigService } from "../../services/app-config/app-config.service";
 
+const COLOUR_OPTIONS = ["primary", "secondary", "none"] as const;
+
 @Component({
   selector: "plh-main-header",
   templateUrl: "./header.component.html",
   styleUrls: ["./header.component.scss"],
 })
 export class PLHMainHeaderComponent implements OnInit, OnDestroy {
+  @ViewChild("headerElement") headerElement: ElementRef;
+
   showMenuButton = false;
   showBackButton = false;
   appConfigChanges$: Subscription;
@@ -22,6 +26,8 @@ export class PLHMainHeaderComponent implements OnInit, OnDestroy {
   hardwareBackButton$: PluginListenerHandle;
   /** track if navigation has been used to handle back button click behaviour */
   hasBackHistory = false;
+  colour: (typeof COLOUR_OPTIONS)[number] | undefined;
+
   constructor(
     private router: Router,
     private location: Location,
@@ -29,9 +35,7 @@ export class PLHMainHeaderComponent implements OnInit, OnDestroy {
   ) {}
 
   async ngOnInit() {
-    this.appConfigChanges$ = this.appConfigService.appConfig$.subscribe((appConfig: IAppConfig) => {
-      this.headerConfig = appConfig.APP_HEADER_DEFAULTS;
-    });
+    this.subscribeToAppConfigChanges();
     // subscribe to and handle route changes
     this.routeChanges$ = this.router.events.subscribe((e) => {
       if (e instanceof NavigationEnd) {
@@ -49,6 +53,27 @@ export class PLHMainHeaderComponent implements OnInit, OnDestroy {
       });
     }
   }
+
+  subscribeToAppConfigChanges() {
+    this.appConfigChanges$ = this.appConfigService.appConfig$.subscribe((appConfig: IAppConfig) => {
+      this.headerConfig = appConfig.APP_HEADER_DEFAULTS;
+      if (
+        COLOUR_OPTIONS.includes(this.headerConfig.colour) &&
+        this.headerConfig.colour !== "none"
+      ) {
+        this.colour = this.headerConfig.colour;
+      }
+      console.log("this.headerConfig.colour", this.headerConfig.colour);
+      console.log("this.colour", this.colour);
+      const { compact, heightCompact, heightDefault } = this.headerConfig;
+      // Set CSS property dynamically in component so that it can be exposed to deployment config/skins
+      document.documentElement.style.setProperty(
+        "--header-height",
+        compact ? `${heightCompact}px` : `${heightDefault}px`
+      );
+    });
+  }
+
   ngOnDestroy() {
     this.appConfigChanges$.unsubscribe();
     this.routeChanges$.unsubscribe();
