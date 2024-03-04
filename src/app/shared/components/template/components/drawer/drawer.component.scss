@@ -2,8 +2,6 @@
 
 $navigation-bar-height: var(--navigation-bar-height);
 $handle-height: var(--drawer-handle-height);
-// The value of the property --min-height applied to ion-toolbar, not directly accessible
-$header-height: 56px;
 
 // Element to remain inline within scrollable content to ensure no content lost behind drawer handle
 .bottom-spacer {
@@ -13,7 +11,8 @@ $header-height: 56px;
 
 .drawer {
   position: fixed;
-  top: calc(100vh - $header-height - $navigation-bar-height - $handle-height);
+  bottom: 0;
+  transform: translateY(calc(100% - $handle-height - $navigation-bar-height));
   left: 0px;
   width: 100%;
   border-style: solid solid none solid;
