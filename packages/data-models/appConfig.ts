@@ -108,6 +108,7 @@ const APP_ROUTE_DEFAULTS = {
 
 const APP_HEADER_DEFAULTS = {
   title: "App",
+  collapsing: false,
   // default only show menu button on home screen
   should_show_menu_button: (location: Location) =>
     activeRoute(location) === APP_ROUTE_DEFAULTS.home_route,

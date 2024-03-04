@@ -27,6 +27,7 @@ import { TemplateComponentsModule } from "./shared/components/template/template.
 import { ContextMenuModule } from "./shared/modules/context-menu/context-menu.module";
 import { TourModule } from "./feature/tour/tour.module";
 import { ErrorHandlerService } from "./shared/services/error-handler/error-handler.service";
+import { CollapseOnScrollDirective } from "./shared/components/common/directives/collapse-on-scroll.directive";
 
 // Note we need a separate function as it's required
 // by the AOT compiler.
@@ -35,7 +36,7 @@ export function lottiePlayerFactory() {
 }
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, CollapseOnScrollDirective],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,

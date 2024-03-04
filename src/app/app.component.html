@@ -36,7 +36,11 @@
   <!-- Main content: shows in split-pane when sidebar route active -->
   <ion-split-pane when="lg" contentId="main" [disabled]="!sidebarRouter.isActivated">
     <div style="display: flex; flex-direction: column; height: 100%; width: 100%" id="main">
+      @if (shouldCollapseHeader) {
+      <plh-main-header [plhCollapseOnScroll]="scrollEvents$"></plh-main-header>
+      } @else {
       <plh-main-header></plh-main-header>
+      }
       <div class="route-container">
         <ion-router-outlet id="main-content"></ion-router-outlet>
       </div>

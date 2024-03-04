@@ -17,7 +17,6 @@ export class PLHMainHeaderComponent implements OnInit, OnDestroy {
   showBackButton = false;
   appConfigChanges$: Subscription;
   headerConfig: IAppConfig["APP_HEADER_DEFAULTS"];
-  minimal = true;
   routeChanges$: Subscription;
   /** listen to hardware back button presses (on android device only) */
   hardwareBackButton$: PluginListenerHandle;

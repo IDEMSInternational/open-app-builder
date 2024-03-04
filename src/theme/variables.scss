@@ -38,6 +38,9 @@
     --content-max-width: #{map-get(breakpoints.$sizes, "desktop")};
   }
 
+  // Header
+  --header-height: 56px;
+
   // Borders //
   // --- border-radiuses
   --ion-border-radius-small: 8px;
