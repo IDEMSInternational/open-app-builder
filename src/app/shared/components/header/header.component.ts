@@ -64,8 +64,6 @@ export class PLHMainHeaderComponent implements OnInit, OnDestroy {
       } else {
         this.colour = "primary";
       }
-      console.log("this.headerConfig.colour", this.headerConfig.colour);
-      console.log("this.colour", this.colour);
       const { compact, heightCompact, heightDefault } = this.headerConfig;
       // Set CSS property dynamically in component so that it can be exposed to deployment config/skins
       document.documentElement.style.setProperty(
