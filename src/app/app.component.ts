@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component } from "@angular/core";
+import { ChangeDetectorRef, Component, HostListener } from "@angular/core";
 import { Platform, MenuController } from "@ionic/angular";
 import { Router } from "@angular/router";
 import { Capacitor } from "@capacitor/core";
@@ -40,6 +40,7 @@ import { SyncServiceBase } from "./shared/services/syncService.base";
 import { SeoService } from "./shared/services/seo/seo.service";
 import { FeedbackService } from "./feature/feedback/feedback.service";
 import { ShareService } from "./shared/services/share/share.service";
+import { Subject } from "rxjs/internal/Subject";
 
 @Component({
   selector: "app-root",
@@ -57,6 +58,8 @@ export class AppComponent {
   footerDefaults: IAppConfig["APP_FOOTER_DEFAULTS"];
   /** Track when app ready to render sidebar and route templates */
   public renderAppTemplates = false;
+  scrollEvents$ = new Subject<any>();
+  shouldCollapseHeader = false;
 
   constructor(
     // 3rd Party Services
@@ -164,7 +167,16 @@ export class AppComponent {
       this.footerDefaults = this.appConfig.APP_FOOTER_DEFAULTS;
       this.appAuthenticationDefaults = this.appConfig.APP_AUTHENTICATION_DEFAULTS;
       this.appFields = this.appConfig.APP_FIELDS;
+      this.shouldCollapseHeader = this.appConfig.APP_HEADER_DEFAULTS.collapsing;
     });
+  }
+
+  /** Listen to scroll events to trigger header collapse */
+  @HostListener("ionScroll", ["$event"])
+  scrolling($event: any) {
+    if (this.shouldCollapseHeader) {
+      this.scrollEvents$.next($event);
+    }
   }
 
   /**
