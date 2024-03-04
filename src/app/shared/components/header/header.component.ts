@@ -57,7 +57,7 @@ export class PLHMainHeaderComponent implements OnInit, OnDestroy {
   subscribeToAppConfigChanges() {
     this.appConfigChanges$ = this.appConfigService.appConfig$.subscribe((appConfig: IAppConfig) => {
       this.headerConfig = appConfig.APP_HEADER_DEFAULTS;
-      if (this.headerConfig.colour !== "none") {
+      if (this.headerConfig.colour === "none") {
         this.colour = undefined;
       } else if (COLOUR_OPTIONS.includes(this.headerConfig.colour)) {
         this.colour = this.headerConfig.colour;
