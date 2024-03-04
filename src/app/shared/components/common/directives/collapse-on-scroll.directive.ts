@@ -2,6 +2,8 @@ import { Directive, ElementRef, Input, OnDestroy, OnInit, Renderer2 } from "@ang
 import { DomController, ScrollDetail } from "@ionic/angular";
 import { Subscription } from "rxjs/internal/Subscription";
 import { Subject, filter, map } from "rxjs";
+import { AppConfigService } from "src/app/shared/services/app-config/app-config.service";
+import { IAppConfig } from "src/app/shared/model";
 
 /** The id of the ion-content component upon which scrolling will trigger the collapse */
 const SCROLL_AREA_ID = "collapseOnScrollTargetScrollArea";
@@ -15,31 +17,45 @@ export class CollapseOnScrollDirective implements OnInit, OnDestroy {
   private hidden: boolean = false;
   private triggerDistance: number = 20;
   subscription: Subscription;
+  defaultHeight: number;
+  collapsing: boolean;
 
   constructor(
     private element: ElementRef,
     private renderer: Renderer2,
-    private domCtrl: DomController
+    private domCtrl: DomController,
+    private appConfigService: AppConfigService
   ) {}
 
   ngOnInit() {
-    this.initStyles();
-    const scrollAreaStream$ = this.scrollEvents$.pipe(
-      filter(
-        (scrollEvent: CustomEvent) => (scrollEvent.target as HTMLElement).id === SCROLL_AREA_ID
-      ),
-      map((scrollEvent) => scrollEvent.detail)
-    );
-    this.subscription = scrollAreaStream$.subscribe((scrollDetail: ScrollDetail) => {
-      let delta = scrollDetail.deltaY;
+    this.subscribeToAppConfigChanges();
+    if (this.collapsing) {
+      this.initStyles();
+      const scrollAreaStream$ = this.scrollEvents$.pipe(
+        filter(
+          (scrollEvent: CustomEvent) => (scrollEvent.target as HTMLElement).id === SCROLL_AREA_ID
+        ),
+        map((scrollEvent) => scrollEvent.detail)
+      );
+      this.subscription = scrollAreaStream$.subscribe((scrollDetail: ScrollDetail) => {
+        let delta = scrollDetail.deltaY;
 
-      if (scrollDetail.currentY === 0 && this.hidden) {
-        this.show();
-      } else if (!this.hidden && delta > this.triggerDistance) {
-        this.hide();
-      } else if (this.hidden && delta < -this.triggerDistance) {
-        this.show();
-      }
+        if (scrollDetail.currentY === 0 && this.hidden) {
+          this.show();
+        } else if (!this.hidden && delta > this.triggerDistance) {
+          this.hide();
+        } else if (this.hidden && delta < -this.triggerDistance) {
+          this.show();
+        }
+      });
+    }
+  }
+
+  subscribeToAppConfigChanges() {
+    this.appConfigService.appConfig$.subscribe((appConfig: IAppConfig) => {
+      const { collapsing, compact, heightCompact, heightDefault } = appConfig.APP_HEADER_DEFAULTS;
+      this.collapsing = collapsing;
+      this.defaultHeight = compact ? heightCompact : heightDefault;
     });
   }
 
@@ -50,7 +66,7 @@ export class CollapseOnScrollDirective implements OnInit, OnDestroy {
   initStyles() {
     this.domCtrl.write(() => {
       this.renderer.setStyle(this.element.nativeElement, "transition", "0.2s linear");
-      this.renderer.setStyle(this.element.nativeElement, "height", "56px");
+      this.renderer.setStyle(this.element.nativeElement, "height", `${this.defaultHeight}px`);
     });
   }
 
@@ -66,7 +82,7 @@ export class CollapseOnScrollDirective implements OnInit, OnDestroy {
 
   show() {
     this.domCtrl.write(() => {
-      this.renderer.setStyle(this.element.nativeElement, "height", "56px");
+      this.renderer.setStyle(this.element.nativeElement, "height", `${this.defaultHeight}px`);
       this.renderer.removeStyle(this.element.nativeElement, "opacity");
       this.renderer.removeStyle(this.element.nativeElement, "min-height");
       this.renderer.removeStyle(this.element.nativeElement, "padding");

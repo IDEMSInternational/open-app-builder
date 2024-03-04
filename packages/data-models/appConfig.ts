@@ -106,9 +106,16 @@ const APP_ROUTE_DEFAULTS = {
   ],
 };
 
+type IHeaderColourOptions = "primary" | "secondary" | "none";
+
 const APP_HEADER_DEFAULTS = {
   title: "App",
   collapsing: false,
+  colour: "primary" as IHeaderColourOptions,
+  compact: false,
+  // expose heights (in px) so that "compact" can be applied by config/skin independent of theme
+  heightDefault: 56,
+  heightCompact: 36,
   // default only show menu button on home screen
   should_show_menu_button: (location: Location) =>
     activeRoute(location) === APP_ROUTE_DEFAULTS.home_route,
