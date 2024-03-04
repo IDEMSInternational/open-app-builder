@@ -1,6 +1,5 @@
 @use "/src/theme/mixins";
 
-$navigation-bar-height: var(--navigation-bar-height);
 $handle-height: var(--drawer-handle-height);
 
 // Element to remain inline within scrollable content to ensure no content lost behind drawer handle

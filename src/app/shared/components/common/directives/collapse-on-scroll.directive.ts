@@ -16,7 +16,7 @@ export class CollapseOnScrollDirective implements OnInit, OnDestroy {
 
   private hidden: boolean = false;
   private triggerDistance: number = 20;
-  subscription: Subscription;
+  scrollSubscription$: Subscription;
   defaultHeight: number;
   collapsing: boolean;
 
@@ -37,7 +37,7 @@ export class CollapseOnScrollDirective implements OnInit, OnDestroy {
         ),
         map((scrollEvent) => scrollEvent.detail)
       );
-      this.subscription = scrollAreaStream$.subscribe((scrollDetail: ScrollDetail) => {
+      this.scrollSubscription$ = scrollAreaStream$.subscribe((scrollDetail: ScrollDetail) => {
         let delta = scrollDetail.deltaY;
 
         if (scrollDetail.currentY === 0 && this.hidden) {
@@ -60,7 +60,7 @@ export class CollapseOnScrollDirective implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.subscription.unsubscribe();
+    this.scrollSubscription$.unsubscribe();
   }
 
   initStyles() {
