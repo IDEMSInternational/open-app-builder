@@ -66,18 +66,35 @@ export class DynamicDataService extends AsyncServiceBase {
   }
   private registerTemplateActionHandlers() {
     this.templateActionRegistry.register({
+      /**
+       * Write properties on the current item (default), or on an explicitly targeted item,
+       * e.g.
+       * click | set_item | completed:true;
+       * click | set_item | id: @item.id, completed:true;
+       * click | set_item | _index: @item._index + 1, completed:true;
+       */
       set_item: async ({ args, params }) => {
-        const [flow_name, row_id] = args;
-        await this.update("data_list", flow_name, row_id, params);
-      },
-      set_item_at_index: async ({ args, params }) => {
-        const [targetIndexString, flow_name, currentItemIndex, row_ids] = args;
-        const targetIndex = this.evaluateItemIndexString(targetIndexString, currentItemIndex);
-        const targetRowId = row_ids[targetIndex];
-        if (targetRowId) {
-          await this.update("data_list", flow_name, targetRowId, params);
+        const [flow_name, row_ids, row_id] = args;
+        const { _index, id, ...writeableProps } = params;
+
+        // Target current row if another target is not explicitly provided
+        let targetRowId = row_id;
+        if (_index) {
+          targetRowId = row_ids[_index];
+        }
+        if (id) {
+          targetRowId = id;
+        }
+
+        if (row_ids.includes(targetRowId)) {
+          await this.update("data_list", flow_name, targetRowId, writeableProps);
         } else {
-          console.warn(`[SET ITEM AT INDEX] - No item at index ${targetIndex}`);
+          if (id) {
+            console.warn(`[SET ITEM] - No item with ID ${id}`);
+          }
+          if (_index !== undefined) {
+            console.warn(`[SET ITEM] - No item at index ${_index}`);
+          }
         }
       },
       set_items: async ({ args, params }) => {

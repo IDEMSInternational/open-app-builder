@@ -126,7 +126,7 @@ export class TemplateVariablesService extends AsyncServiceBase {
    **/
   private shouldEvaluateField(fieldName: keyof FlowTypes.TemplateRow, omitFields: string[] = []) {
     if (omitFields.includes(fieldName)) return false;
-    if (fieldName.startsWith("_")) return false;
+    if (fieldName.startsWith("_") && fieldName !== "_index") return false;
     return true;
   }
 
