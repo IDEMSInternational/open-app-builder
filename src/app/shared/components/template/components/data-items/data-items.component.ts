@@ -95,13 +95,9 @@ export class TmplDataItemsComponent extends TemplateBaseComponent implements OnD
   ) {
     const lastRowIndex = rows.length - 1;
     return rows.map((r, i) => {
-      // Update row dynamic context to allow reference to rendered row metadata, including
-      // item index, id, and whether first or last item in list
+      // Reassign metadata fields previously assigned by item as rendered row count may have changed
       r._evalContext.itemContext = {
         ...r._evalContext.itemContext,
-        _index: i,
-        // HACK - items provide 'id' itemContext, duplicate as _id for consistency
-        _id: r._evalContext.itemContext["id"],
         _first: i === 0,
         _last: i === lastRowIndex,
       };

@@ -36,9 +36,20 @@ export class ItemProcessor {
    */
   private generateLoopItemRows(templateRows: FlowTypes.TemplateRow[], items: any[]) {
     const loopItemRows: FlowTypes.TemplateRow[] = [];
-    for (const [index, item] of Object.entries(items)) {
-      item._index = index;
-      const evalContext = { itemContext: item };
+    const lastItemIndex = items.length - 1;
+    for (const [indexKey, item] of Object.entries(items)) {
+      const _index = Number(indexKey);
+      const evalContext = {
+        itemContext: {
+          ...item,
+          // Assign row dynamic context to allow reference to rendered row metadata, including
+          // item index, id, and whether first or last item in list
+          _index,
+          _id: item["id"],
+          _first: _index === 0,
+          _last: _index === lastItemIndex,
+        },
+      };
       for (const r of templateRows) {
         const itemRow = this.setRecursiveRowEvalContext(r, evalContext);
         loopItemRows.push(itemRow);
