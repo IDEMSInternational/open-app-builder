@@ -104,17 +104,14 @@ export class TmplDataItemsComponent extends TemplateBaseComponent implements OnD
       if (r.action_list) {
         r.action_list = r.action_list.map((a) => {
           if (a.action_id === "set_item") {
-            a.args = [this.dataListName, r._evalContext.itemContext.id];
+            const row_ids = Object.values(dataList).map((v) => v.id);
+            const row_id = r._evalContext.itemContext.id;
+            a.args = [this.dataListName, row_ids, row_id];
           }
           if (a.action_id === "set_items") {
             // TODO - add a check for @item refs and replace parameter list with correct values
             // for each individual item (default will be just to pick the first)
             a.args = [this.dataListName, Object.values(dataList).map((v) => v.id)];
-          }
-          if (a.action_id === "set_item_at_index") {
-            const row_ids = Object.values(dataList).map((v) => v.id);
-            const currentItemIndex = row_ids.indexOf(r._evalContext.itemContext.id);
-            a.args = a.args.concat([this.dataListName, currentItemIndex, row_ids]);
           }
           return a;
         });

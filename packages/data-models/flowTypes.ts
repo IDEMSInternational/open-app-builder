@@ -338,8 +338,10 @@ export namespace FlowTypes {
     _dynamicDependencies?: { [reference: string]: string[] };
     _translatedFields?: { [field: string]: any };
     _evalContext?: { itemContext: any }; // force specific context variables when calculating eval statements (such as loop items)
+    _index?: number; // Added dynamically to some rows, i.e. those in item loops
     __EMPTY?: any; // empty cells (can be removed after pr 679 merged)
   }
+
   export type IDynamicField = { [key: string]: IDynamicField | TemplateRowDynamicEvaluator[] };
 
   type IDynamicPrefix = IAppConfig["DYNAMIC_PREFIXES"][number];
@@ -393,7 +395,6 @@ export namespace FlowTypes {
     "save_to_device",
     "set_field",
     "set_item",
-    "set_item_at_index",
     "set_items",
     "set_local",
     "share",

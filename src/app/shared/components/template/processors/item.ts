@@ -37,7 +37,7 @@ export class ItemProcessor {
   private generateLoopItemRows(templateRows: FlowTypes.TemplateRow[], items: any[]) {
     const loopItemRows: FlowTypes.TemplateRow[] = [];
     for (const [index, item] of Object.entries(items)) {
-      item._index = index;
+      item._index = Number(index);
       const evalContext = { itemContext: item };
       for (const r of templateRows) {
         const itemRow = this.setRecursiveRowEvalContext(r, evalContext);
