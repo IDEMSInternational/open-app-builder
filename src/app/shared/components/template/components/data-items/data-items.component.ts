@@ -75,24 +75,34 @@ export class TmplDataItemsComponent extends TemplateBaseComponent implements OnD
   ) {
     const parsedItemDataList = await this.parseDataList(itemDataList);
     const itemRows = new ItemProcessor(parsedItemDataList, parameterList).process(rows);
-    const parsedItemRows = await this.hackProcessRows(itemRows);
-    const replacedActionRows = this.setActionListMeta(parsedItemRows, parsedItemDataList);
+    const itemRowsWithMeta = this.setItemMeta(itemRows, parsedItemDataList);
+
+    const parsedItemRows = await this.hackProcessRows(itemRowsWithMeta);
     // TODO - deep diff and only update changed
-    this.itemRows = replacedActionRows;
+    this.itemRows = parsedItemRows;
     this.cdr.markForCheck();
   }
 
   /**
-   * Update any action list set_item args to contain name of current data list and item id
-   * and set_items action to include all currently displayed rows
+   * Update item dynamic evaluation context and action lists to include relevant
+   * item data
    * */
-  private setActionListMeta(
+  private setItemMeta(
     rows: FlowTypes.TemplateRow[],
     dataList: {
       [index: string]: any;
     }
   ) {
-    return rows.map((r) => {
+    const lastRowIndex = rows.length - 1;
+    return rows.map((r, i) => {
+      // Reassign metadata fields previously assigned by item as rendered row count may have changed
+      r._evalContext.itemContext = {
+        ...r._evalContext.itemContext,
+        _first: i === 0,
+        _last: i === lastRowIndex,
+      };
+      // Update any action list set_item args to contain name of current data list and item id
+      // and set_items action to include all currently displayed rows
       if (r.action_list) {
         r.action_list = r.action_list.map((a) => {
           if (a.action_id === "set_item") {
@@ -116,7 +126,7 @@ export class TmplDataItemsComponent extends TemplateBaseComponent implements OnD
    * Ordinarily rows would be processed as part of the regular template processing,
    * however this must be bypassed to allow multiple reprocessing on item updates
    */
-  private async hackProcessRows(rows) {
+  private async hackProcessRows(rows: FlowTypes.TemplateRow[]) {
     const processor = new TemplateRowService(this.injector, {
       name: "",
       template: {
