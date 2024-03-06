@@ -1,4 +1,5 @@
 import {
+  ChangeDetectorRef,
   Component,
   ElementRef,
   EventEmitter,
@@ -59,6 +60,7 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
   templateBreadcrumbs: string[] = [];
   private componentDestroyed$ = new Subject<boolean>();
   debugMode: boolean;
+  private cdr: ChangeDetectorRef;
 
   constructor(
     private templateService: TemplateService,
@@ -70,6 +72,7 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
   ) {
     this.templateActionService = new TemplateActionService(injector, this);
     this.templateRowService = new TemplateRowService(injector, this);
+    this.cdr = injector.get(ChangeDetectorRef);
   }
   /** Assign the templatename as metdaata on the component for easier debugging and testing */
   @HostBinding("attr.data-templatename") get getTemplatename() {
@@ -191,6 +194,8 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
       this.parent.children[this.name] = this;
     }
     log_groupEnd();
+    // Ensure any parents using onPush are notified of changes (e.g. data-items)
+    this.cdr.markForCheck();
   }
 
   /**
