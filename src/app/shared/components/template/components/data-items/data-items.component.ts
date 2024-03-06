@@ -93,13 +93,15 @@ export class TmplDataItemsComponent extends TemplateBaseComponent implements OnD
       [index: string]: any;
     }
   ) {
-    const lastRowIndex = rows.length - 1;
-    return rows.map((r, i) => {
+    const rowIds = Object.values(dataList).map((v) => v.id);
+    const lastRowIndex = rowIds.length - 1;
+    return rows.map((r) => {
       // Reassign metadata fields previously assigned by item as rendered row count may have changed
+      const itemIndex = rowIds.indexOf(r);
       r._evalContext.itemContext = {
         ...r._evalContext.itemContext,
-        _first: i === 0,
-        _last: i === lastRowIndex,
+        _first: itemIndex === 0,
+        _last: itemIndex === lastRowIndex,
       };
       // Update any action list set_item args to contain name of current data list and item id
       // and set_items action to include all currently displayed rows
