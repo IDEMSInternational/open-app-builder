@@ -79,7 +79,7 @@ export class DynamicDataService extends AsyncServiceBase {
 
         // Target current row if another target is not explicitly provided
         let targetRowId = row_id;
-        if (_index) {
+        if (_index !== undefined) {
           targetRowId = row_ids[_index];
         }
         if (id) {
