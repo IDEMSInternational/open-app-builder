@@ -8,6 +8,7 @@ import {
   Input,
   OnDestroy,
   OnInit,
+  Optional,
   Output,
 } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
@@ -60,7 +61,7 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
   templateBreadcrumbs: string[] = [];
   private componentDestroyed$ = new Subject<boolean>();
   debugMode: boolean;
-  private cdr: ChangeDetectorRef;
+  @Optional() private cdr: ChangeDetectorRef;
 
   constructor(
     private templateService: TemplateService,
