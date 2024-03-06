@@ -183,6 +183,11 @@ export class TemplateVariablesService extends AsyncServiceBase {
         return evaluator.fullExpression.replace(/`/gi, "");
       }
 
+      // Do not evaluate if the appropriate context is not available
+      if (type === "item" && !context.itemContext) {
+        return evaluator.fullExpression;
+      }
+
       // process the main lookup, e.g. @local.some_val, @campaign.some_val
       // NOTE - if parse fail an empty string will be returned
       let { parsedValue, parseSuccess } = await this.processDynamicEvaluator(evaluator, context);

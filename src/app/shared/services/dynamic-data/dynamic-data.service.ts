@@ -87,6 +87,9 @@ export class DynamicDataService extends AsyncServiceBase {
         }
 
         if (row_ids.includes(targetRowId)) {
+          console.log(
+            `[SET ITEM] -  Setting props on ${targetRowId}: ${JSON.stringify(writeableProps)}`
+          );
           await this.update("data_list", flow_name, targetRowId, writeableProps);
         } else {
           if (id) {
