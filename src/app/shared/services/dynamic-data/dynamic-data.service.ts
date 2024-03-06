@@ -75,15 +75,15 @@ export class DynamicDataService extends AsyncServiceBase {
        */
       set_item: async ({ args, params }) => {
         const [flow_name, row_ids, row_id] = args;
-        const { _index, id, ...writeableProps } = params;
+        const { _index, _id, ...writeableProps } = params;
 
         // Target current row if another target is not explicitly provided
         let targetRowId = row_id;
         if (_index !== undefined) {
           targetRowId = row_ids[_index];
         }
-        if (id) {
-          targetRowId = id;
+        if (_id) {
+          targetRowId = _id;
         }
 
         if (row_ids.includes(targetRowId)) {
@@ -92,8 +92,8 @@ export class DynamicDataService extends AsyncServiceBase {
           );
           await this.update("data_list", flow_name, targetRowId, writeableProps);
         } else {
-          if (id) {
-            console.warn(`[SET ITEM] - No item with ID ${id}`);
+          if (_id) {
+            console.warn(`[SET ITEM] - No item with ID ${_id}`);
           }
           if (_index !== undefined) {
             console.warn(`[SET ITEM] - No item at index ${_index}`);
@@ -106,10 +106,6 @@ export class DynamicDataService extends AsyncServiceBase {
         for (const row_id of row_ids) {
           await this.update("data_list", flow_name, row_id, params);
         }
-      },
-      // "Reset" the data of a given data list by removing its dynamic user overwrites
-      reset_data: async ({ args }) => {
-        this.resetFlow("data_list", args[0]);
       },
     });
   }

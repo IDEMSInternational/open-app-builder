@@ -96,8 +96,10 @@ export class TmplDataItemsComponent extends TemplateBaseComponent implements OnD
     const rowIds = Object.values(dataList).map((v) => v.id);
     const lastRowIndex = rowIds.length - 1;
     return rows.map((r) => {
+      const rowId = r._evalContext.itemContext.id;
+
       // Reassign metadata fields previously assigned by item as rendered row count may have changed
-      const itemIndex = rowIds.indexOf(r._evalContext.itemContext.id);
+      const itemIndex = rowIds.indexOf(rowId);
       r._evalContext.itemContext = {
         ...r._evalContext.itemContext,
         _first: itemIndex === 0,
@@ -108,14 +110,12 @@ export class TmplDataItemsComponent extends TemplateBaseComponent implements OnD
       if (r.action_list) {
         r.action_list = r.action_list.map((a) => {
           if (a.action_id === "set_item") {
-            const row_ids = Object.values(dataList).map((v) => v.id);
-            const row_id = r._evalContext.itemContext.id;
-            a.args = [this.dataListName, row_ids, row_id];
+            a.args = [this.dataListName, rowIds, rowId];
           }
           if (a.action_id === "set_items") {
             // TODO - add a check for @item refs and replace parameter list with correct values
             // for each individual item (default will be just to pick the first)
-            a.args = [this.dataListName, Object.values(dataList).map((v) => v.id)];
+            a.args = [this.dataListName, rowIds];
           }
           return a;
         });
