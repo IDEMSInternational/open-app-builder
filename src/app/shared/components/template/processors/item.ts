@@ -50,8 +50,6 @@ export class ItemProcessor {
           _last: _index === lastItemIndex,
         },
       };
-      console.log("first:", evalContext.itemContext._first);
-      console.log("last:", evalContext.itemContext._last);
       for (const r of templateRows) {
         const itemRow = this.setRecursiveRowEvalContext(r, evalContext);
         loopItemRows.push(itemRow);
