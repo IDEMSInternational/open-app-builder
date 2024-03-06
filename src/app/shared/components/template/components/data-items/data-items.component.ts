@@ -97,7 +97,7 @@ export class TmplDataItemsComponent extends TemplateBaseComponent implements OnD
     const lastRowIndex = rowIds.length - 1;
     return rows.map((r) => {
       // Reassign metadata fields previously assigned by item as rendered row count may have changed
-      const itemIndex = rowIds.indexOf(r);
+      const itemIndex = rowIds.indexOf(r._evalContext.itemContext.id);
       r._evalContext.itemContext = {
         ...r._evalContext.itemContext,
         _first: itemIndex === 0,
