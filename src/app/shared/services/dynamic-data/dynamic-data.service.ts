@@ -88,7 +88,7 @@ export class DynamicDataService extends AsyncServiceBase {
 
         if (row_ids.includes(targetRowId)) {
           console.log(
-            `[SET ITEM] -  Setting props on ${targetRowId}: ${JSON.stringify(writeableProps)}`
+            `[SET ITEM] - Setting properties on ${targetRowId}: ${JSON.stringify(writeableProps)}`
           );
           await this.update("data_list", flow_name, targetRowId, writeableProps);
         } else {
@@ -256,19 +256,5 @@ export class DynamicDataService extends AsyncServiceBase {
       }
     }
     return schema;
-  }
-
-  evaluateItemIndexString(targetIndexString: string, currentIndex: number) {
-    if (isNaN(Number(targetIndexString))) {
-      try {
-        // HACK use keyword "item_index" to refer to index of current item in loop
-        const jsExpression = targetIndexString.replace("item_index", currentIndex.toString());
-        return evaluateJSExpression(jsExpression);
-      } catch {
-        console.error(`[SET ITEM AT INDEX] - Invalid index selector, "${targetIndexString}"`);
-      }
-    } else {
-      return Number(targetIndexString);
-    }
   }
 }
