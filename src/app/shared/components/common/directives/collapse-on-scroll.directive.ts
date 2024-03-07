@@ -30,25 +30,29 @@ export class CollapseOnScrollDirective implements OnInit, OnDestroy {
   ngOnInit() {
     this.subscribeToAppConfigChanges();
     if (this.collapse) {
-      this.initStyles();
-      const scrollAreaStream$ = this.scrollEvents$.pipe(
-        filter(
-          (scrollEvent: CustomEvent) => (scrollEvent.target as HTMLElement).id === SCROLL_AREA_ID
-        ),
-        map((scrollEvent) => scrollEvent.detail)
-      );
-      this.scrollSubscription$ = scrollAreaStream$.subscribe((scrollDetail: ScrollDetail) => {
-        let delta = scrollDetail.deltaY;
-
-        if (scrollDetail.currentY === 0 && this.hidden) {
-          this.show();
-        } else if (!this.hidden && delta > this.triggerDistance) {
-          this.hide();
-        } else if (this.hidden && delta < -this.triggerDistance) {
-          this.show();
-        }
-      });
+      this.handleCollapseOnScroll();
     }
+  }
+
+  private handleCollapseOnScroll() {
+    this.initStyles();
+    const scrollAreaStream$ = this.scrollEvents$.pipe(
+      filter(
+        (scrollEvent: CustomEvent) => (scrollEvent.target as HTMLElement).id === SCROLL_AREA_ID
+      ),
+      map((scrollEvent) => scrollEvent.detail)
+    );
+    this.scrollSubscription$ = scrollAreaStream$.subscribe((scrollDetail: ScrollDetail) => {
+      let delta = scrollDetail.deltaY;
+
+      if (scrollDetail.currentY === 0 && this.hidden) {
+        this.show();
+      } else if (!this.hidden && delta > this.triggerDistance) {
+        this.hide();
+      } else if (this.hidden && delta < -this.triggerDistance) {
+        this.show();
+      }
+    });
   }
 
   subscribeToAppConfigChanges() {

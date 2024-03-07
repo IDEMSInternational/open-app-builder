@@ -4,17 +4,15 @@ import { NavigationEnd, NavigationStart, Router } from "@angular/router";
 import { App } from "@capacitor/app";
 import { Capacitor, PluginListenerHandle } from "@capacitor/core";
 import { Subscription } from "rxjs";
-import { IAppConfig } from "../../model";
+import { IAppConfig, IHeaderColourOptions, IHeaderVariantOptions } from "../../model";
 import { AppConfigService } from "../../services/app-config/app-config.service";
-
-const COLOUR_OPTIONS = ["primary", "secondary", "none"] as const;
 
 @Component({
   selector: "plh-main-header",
   templateUrl: "./header.component.html",
   styleUrls: ["./header.component.scss"],
 })
-export class PLHMainHeaderComponent implements OnInit, OnDestroy {
+export class headerComponent implements OnInit, OnDestroy {
   @ViewChild("headerElement") headerElement: ElementRef;
 
   showMenuButton = false;
@@ -26,7 +24,8 @@ export class PLHMainHeaderComponent implements OnInit, OnDestroy {
   hardwareBackButton$: PluginListenerHandle;
   /** track if navigation has been used to handle back button click behaviour */
   hasBackHistory = false;
-  colour: (typeof COLOUR_OPTIONS)[number] | undefined;
+  colour: IHeaderColourOptions;
+  variant: IHeaderVariantOptions;
 
   constructor(
     private router: Router,
@@ -57,28 +56,8 @@ export class PLHMainHeaderComponent implements OnInit, OnDestroy {
   subscribeToAppConfigChanges() {
     this.appConfigChanges$ = this.appConfigService.appConfig$.subscribe((appConfig: IAppConfig) => {
       this.headerConfig = appConfig.APP_HEADER_DEFAULTS;
-      if (this.headerConfig.colour === "none") {
-        this.colour = undefined;
-      } else if (COLOUR_OPTIONS.includes(this.headerConfig.colour)) {
-        this.colour = this.headerConfig.colour;
-      } else {
-        this.colour = "primary";
-      }
-      const { variant, heightsMap } = this.headerConfig;
-      // Set CSS property dynamically in component so that it can be exposed to deployment config/skins
-      document.documentElement.style.setProperty(
-        "--header-height",
-        `${heightsMap[variant] || heightsMap.default}px`
-      );
+      this.updateHeaderConfig();
     });
-  }
-
-  ngOnDestroy() {
-    this.appConfigChanges$.unsubscribe();
-    this.routeChanges$.unsubscribe();
-    if (this.hardwareBackButton$) {
-      this.hardwareBackButton$.remove();
-    }
   }
 
   public handleBackButtonClick() {
@@ -104,6 +83,25 @@ export class PLHMainHeaderComponent implements OnInit, OnDestroy {
     const { should_minimize_app_on_back } = this.headerConfig;
     if (should_minimize_app_on_back(location)) {
       App.minimizeApp();
+    }
+  }
+
+  private updateHeaderConfig() {
+    this.colour = this.headerConfig.colour;
+    const { variant, heightsMap } = this.headerConfig;
+    this.variant = variant;
+    // Set CSS property dynamically in component so that it can be exposed to deployment config/skins
+    document.documentElement.style.setProperty(
+      "--header-height",
+      `${heightsMap[this.variant] || heightsMap.default}px`
+    );
+  }
+
+  ngOnDestroy() {
+    this.appConfigChanges$.unsubscribe();
+    this.routeChanges$.unsubscribe();
+    if (this.hardwareBackButton$) {
+      this.hardwareBackButton$.remove();
     }
   }
 }

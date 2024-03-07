@@ -106,8 +106,8 @@ const APP_ROUTE_DEFAULTS = {
   ],
 };
 
-type IHeaderColourOptions = "primary" | "secondary" | "none";
-type IHeaderVariantOptions = "default" | "compact";
+export type IHeaderColourOptions = "primary" | "secondary" | "none";
+export type IHeaderVariantOptions = "default" | "compact";
 
 const APP_HEADER_DEFAULTS = {
   title: "App",
