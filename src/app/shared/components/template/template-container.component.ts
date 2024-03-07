@@ -60,19 +60,21 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
   templateBreadcrumbs: string[] = [];
   private componentDestroyed$ = new Subject<boolean>();
   debugMode: boolean;
-  private cdr: ChangeDetectorRef;
+
+  private get cdr() {
+    return this.injector.get(ChangeDetectorRef);
+  }
 
   constructor(
     private templateService: TemplateService,
     private templateNavService: TemplateNavService,
-    injector: Injector,
+    private injector: Injector,
     // Containers created in headless context may not have specific injectors
     public elRef?: ElementRef,
     private route?: ActivatedRoute
   ) {
     this.templateActionService = new TemplateActionService(injector, this);
     this.templateRowService = new TemplateRowService(injector, this);
-    this.cdr = injector.get(ChangeDetectorRef);
   }
   /** Assign the templatename as metdaata on the component for easier debugging and testing */
   @HostBinding("attr.data-templatename") get getTemplatename() {
