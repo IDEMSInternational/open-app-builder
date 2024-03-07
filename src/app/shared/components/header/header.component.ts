@@ -64,11 +64,11 @@ export class PLHMainHeaderComponent implements OnInit, OnDestroy {
       } else {
         this.colour = "primary";
       }
-      const { compact, heightCompact, heightDefault } = this.headerConfig;
+      const { variant, heightsMap } = this.headerConfig;
       // Set CSS property dynamically in component so that it can be exposed to deployment config/skins
       document.documentElement.style.setProperty(
         "--header-height",
-        compact ? `${heightCompact}px` : `${heightDefault}px`
+        `${heightsMap[variant] || heightsMap.default}px`
       );
     });
   }
