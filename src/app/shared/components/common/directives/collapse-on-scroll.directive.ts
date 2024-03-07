@@ -18,7 +18,7 @@ export class CollapseOnScrollDirective implements OnInit, OnDestroy {
   private triggerDistance: number = 20;
   scrollSubscription$: Subscription;
   defaultHeight: number;
-  collapsing: boolean;
+  collapse: boolean;
 
   constructor(
     private element: ElementRef,
@@ -29,7 +29,7 @@ export class CollapseOnScrollDirective implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.subscribeToAppConfigChanges();
-    if (this.collapsing) {
+    if (this.collapse) {
       this.initStyles();
       const scrollAreaStream$ = this.scrollEvents$.pipe(
         filter(
@@ -53,9 +53,9 @@ export class CollapseOnScrollDirective implements OnInit, OnDestroy {
 
   subscribeToAppConfigChanges() {
     this.appConfigService.appConfig$.subscribe((appConfig: IAppConfig) => {
-      const { collapsing, compact, heightCompact, heightDefault } = appConfig.APP_HEADER_DEFAULTS;
-      this.collapsing = collapsing;
-      this.defaultHeight = compact ? heightCompact : heightDefault;
+      const { collapse, variant, heightsMap } = appConfig.APP_HEADER_DEFAULTS;
+      this.collapse = collapse;
+      this.defaultHeight = heightsMap[variant] || heightsMap.default;
     });
   }
 

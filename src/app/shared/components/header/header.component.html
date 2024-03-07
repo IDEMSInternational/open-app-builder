@@ -10,7 +10,11 @@
       </ion-button>
     </ion-buttons>
     <ng-container>
-      <ion-title *ngIf="!headerConfig.compact" style="text-align: center" routerLink="/">
+      <ion-title
+        *ngIf="!(headerConfig.variant === 'compact')"
+        style="text-align: center"
+        routerLink="/"
+      >
         <span>{{ headerConfig.title }}</span>
       </ion-title>
     </ng-container>

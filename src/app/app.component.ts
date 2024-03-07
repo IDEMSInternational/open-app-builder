@@ -167,7 +167,7 @@ export class AppComponent {
       this.footerDefaults = this.appConfig.APP_FOOTER_DEFAULTS;
       this.appAuthenticationDefaults = this.appConfig.APP_AUTHENTICATION_DEFAULTS;
       this.appFields = this.appConfig.APP_FIELDS;
-      this.shouldCollapseHeader = this.appConfig.APP_HEADER_DEFAULTS.collapsing;
+      this.shouldCollapseHeader = this.appConfig.APP_HEADER_DEFAULTS.collapse;
     });
   }
 
