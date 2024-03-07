@@ -9,6 +9,6 @@
     <div class="image-wrapper">
       <img [src]="button.image | plhAsset" />
     </div>
-    <p>{{ button.text }}</p>
+    <p *ngIf="button.text">{{ button.text }}</p>
   </a>
 </div>
