@@ -15,7 +15,8 @@ export class ItemProcessor {
     const pipedData = this.pipeData(data, this.parameterList);
     const itemRows = this.generateLoopItemRows(templateRows, pipedData);
     const parsedItemRows = this.hackSetNestedName(itemRows);
-    return parsedItemRows;
+    // Return both rows for rendering and list of itemData used (post pipe operations)
+    return { itemRows: parsedItemRows, itemData: pipedData };
   }
 
   private pipeData(data: any[], parameter_list: any) {
@@ -32,22 +33,29 @@ export class ItemProcessor {
   /**
    * Takes a row and list of items to iterate over, creating a new entry for each item with
    * the same row values but a unique evaluation context for populating dynamic variables from the item
-   * @param items - list of items to iterate over
+   * @param templateRows - list of template rows to iterate over for each item
+   * @param itemData - list of items to iterate over
    */
-  private generateLoopItemRows(templateRows: FlowTypes.TemplateRow[], items: any[]) {
+  private generateLoopItemRows(
+    templateRows: FlowTypes.TemplateRow[],
+    itemData: FlowTypes.Data_listRow[]
+  ) {
     const loopItemRows: FlowTypes.TemplateRow[] = [];
-    const lastItemIndex = items.length - 1;
-    for (const [indexKey, item] of Object.entries(items)) {
+    const lastItemIndex = itemData.length - 1;
+    for (const [indexKey, item] of Object.entries(itemData)) {
       const _index = Number(indexKey);
-      const evalContext = {
+      const itemContextMeta: FlowTypes.TemplateRowItemEvalContext = {
+        _index,
+        _id: item["id"],
+        _first: _index === 0,
+        _last: _index === lastItemIndex,
+      };
+      const evalContext: FlowTypes.TemplateRow["_evalContext"] = {
         itemContext: {
           ...item,
+          ...itemContextMeta,
           // Assign row dynamic context to allow reference to rendered row metadata, including
           // item index, id, and whether first or last item in list
-          _index,
-          _id: item["id"],
-          _first: _index === 0,
-          _last: _index === lastItemIndex,
         },
       };
       for (const r of templateRows) {
