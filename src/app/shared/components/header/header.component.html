@@ -1,4 +1,4 @@
-<ion-header #headerElement [class.ion-no-border]="!colour">
+<ion-header #headerElement [class.ion-no-border]="colour === 'none'">
   <ion-toolbar [color]="colour">
     <ion-buttons slot="start" style="position: absolute">
       <ion-menu-button *ngIf="showMenuButton" autoHide="false" menu="start"></ion-menu-button>
@@ -10,11 +10,7 @@
       </ion-button>
     </ion-buttons>
     <ng-container>
-      <ion-title
-        *ngIf="!(headerConfig.variant === 'compact')"
-        style="text-align: center"
-        routerLink="/"
-      >
+      <ion-title *ngIf="!(variant === 'compact')" style="text-align: center" routerLink="/">
         <span>{{ headerConfig.title }}</span>
       </ion-title>
     </ng-container>
