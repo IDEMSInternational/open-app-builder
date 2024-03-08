@@ -199,5 +199,6 @@
   --tile-button-style-height: 60px;
 
   --drawer-handle-height: 42px;
-  --navigation-bar-height: 90px;
+  // Odd number, but means that the icons inside will be 32px high (without text)
+  --navigation-bar-height: 67px;
 }
