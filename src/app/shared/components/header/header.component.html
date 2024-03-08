@@ -1,4 +1,4 @@
-<ion-header #headerElement [class.ion-no-border]="colour === 'none'">
+<ion-header [class.ion-no-border]="colour === 'none'" [style.marginTop]="marginTop">
   <ion-toolbar [color]="colour">
     <ion-buttons slot="start" style="position: absolute">
       <ion-menu-button *ngIf="showMenuButton" autoHide="false" menu="start"></ion-menu-button>

@@ -115,11 +115,6 @@ const APP_HEADER_DEFAULTS = {
   colour: "primary" as IHeaderColourOptions,
   // The "compact" variant reduces the header height and removes the title
   variant: "default" as IHeaderVariantOptions,
-  // Heights (in px) of different header variants
-  heightsMap: {
-    compact: 36,
-    default: 56,
-  },
   // default only show menu button on home screen
   should_show_menu_button: (location: Location) =>
     activeRoute(location) === APP_ROUTE_DEFAULTS.home_route,
