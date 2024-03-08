@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, Renderer2 } from "@angular/core";
+import { ChangeDetectorRef, Component } from "@angular/core";
 import { Platform, MenuController } from "@ionic/angular";
 import { Router } from "@angular/router";
 import { Capacitor } from "@capacitor/core";
@@ -40,7 +40,6 @@ import { SyncServiceBase } from "./shared/services/syncService.base";
 import { SeoService } from "./shared/services/seo/seo.service";
 import { FeedbackService } from "./feature/feedback/feedback.service";
 import { ShareService } from "./shared/services/share/share.service";
-import { Subject } from "rxjs/internal/Subject";
 
 @Component({
   selector: "app-root",
@@ -58,16 +57,12 @@ export class AppComponent {
   footerDefaults: IAppConfig["APP_FOOTER_DEFAULTS"];
   /** Track when app ready to render sidebar and route templates */
   public renderAppTemplates = false;
-  scrollEvents$ = new Subject<any>();
-  shouldCollapseHeader = false;
-  scrollListenFunc: () => void;
 
   constructor(
     // 3rd Party Services
     private platform: Platform,
     private cdr: ChangeDetectorRef,
     private menuController: MenuController,
-    private renderer: Renderer2,
     private router: Router,
     // App services
     private skinService: SkinService,
@@ -144,9 +139,6 @@ export class AppComponent {
       this.renderAppTemplates = true;
       // Detect changes in case expression changed prior to render (e.g. feedback sidebar)
       this.cdr.detectChanges();
-      if (this.shouldCollapseHeader) {
-        this.listenToScrollEvents();
-      }
       this.scheduleReinitialisation();
     });
   }
@@ -166,23 +158,12 @@ export class AppComponent {
 
   /** Initialise appConfig and set dependent properties */
   private subscribeToAppConfigChanges() {
-    this.appConfigService.appConfig$.subscribe((appConfig: IAppConfig) => {
-      this.appConfig = appConfig;
+    this.appConfigService.changesWithInitialValue$.subscribe((changes: IAppConfig) => {
+      this.appConfig = { ...this.appConfig, ...changes };
       this.sideMenuDefaults = this.appConfig.APP_SIDEMENU_DEFAULTS;
       this.footerDefaults = this.appConfig.APP_FOOTER_DEFAULTS;
       this.appAuthenticationDefaults = this.appConfig.APP_AUTHENTICATION_DEFAULTS;
       this.appFields = this.appConfig.APP_FIELDS;
-
-      // Only make a new scroll event listener if this value has changed
-      // (initial scroll event listener is handled outside of this subscription)
-      const shouldCollapseHeaderChanged =
-        this.shouldCollapseHeader !== this.appConfig.APP_HEADER_DEFAULTS.collapse;
-      this.shouldCollapseHeader = this.appConfig.APP_HEADER_DEFAULTS.collapse;
-      if (this.shouldCollapseHeader && shouldCollapseHeaderChanged) {
-        this.listenToScrollEvents();
-      } else {
-        this.unlistenToScrollEvents();
-      }
     });
   }
 
@@ -282,18 +263,6 @@ export class AppComponent {
       window.console.warn = function (...args: any) {};
       window.console.error = function (...args: any) {};
     }
-  }
-
-  /** Listen to scroll events to trigger header collapse */
-  private listenToScrollEvents() {
-    this.scrollListenFunc = this.renderer.listen("window", "ionScroll", ($event) => {
-      this.scrollEvents$.next($event);
-    });
-  }
-
-  /** Unlisten to dispose of handler https://angular.io/api/core/Renderer2#listen */
-  private unlistenToScrollEvents() {
-    this.scrollListenFunc();
   }
 
   /**
