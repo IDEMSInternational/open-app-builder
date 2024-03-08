@@ -70,7 +70,7 @@ export class headerComponent implements OnInit, OnDestroy {
       });
     }
     // HACK - uncomment to test collapse
-    this.appConfigService.updateAppConfig({ APP_HEADER_DEFAULTS: { collapse: true } });
+    // this.appConfigService.updateAppConfig({ APP_HEADER_DEFAULTS: { collapse: true } });
   }
 
   subscribeToAppConfigChanges() {
