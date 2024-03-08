@@ -1,11 +1,22 @@
 import { Location } from "@angular/common";
-import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from "@angular/core";
+import { Component, OnDestroy, OnInit, ViewChild } from "@angular/core";
 import { NavigationEnd, NavigationStart, Router } from "@angular/router";
 import { App } from "@capacitor/app";
 import { Capacitor, PluginListenerHandle } from "@capacitor/core";
-import { Subscription } from "rxjs";
+import { Subscription, fromEvent, debounceTime, map } from "rxjs";
 import { IAppConfig, IHeaderColourOptions, IHeaderVariantOptions } from "../../model";
 import { AppConfigService } from "../../services/app-config/app-config.service";
+import { IonHeader, ScrollBaseCustomEvent, ScrollDetail } from "@ionic/angular";
+
+interface ScrollCustomEvent extends ScrollBaseCustomEvent {
+  detail: ScrollDetail;
+}
+
+// Heights (in px) of different header variants
+const heightsMap = {
+  compact: 36,
+  default: 56,
+};
 
 @Component({
   selector: "plh-main-header",
@@ -13,7 +24,7 @@ import { AppConfigService } from "../../services/app-config/app-config.service";
   styleUrls: ["./header.component.scss"],
 })
 export class headerComponent implements OnInit, OnDestroy {
-  @ViewChild("headerElement") headerElement: ElementRef;
+  @ViewChild(IonHeader) headerElement: IonHeader & { el: HTMLElement };
 
   showMenuButton = false;
   showBackButton = false;
@@ -26,6 +37,12 @@ export class headerComponent implements OnInit, OnDestroy {
   hasBackHistory = false;
   colour: IHeaderColourOptions;
   variant: IHeaderVariantOptions;
+
+  /** Modify margin to move off-screen when using collapsed mode */
+  public marginTop = "0px";
+
+  /** Track scroll events when using header collapse mode */
+  private scrollEvents$: Subscription;
 
   constructor(
     private router: Router,
@@ -51,13 +68,24 @@ export class headerComponent implements OnInit, OnDestroy {
         this.handleHardwareBackPress();
       });
     }
+    // HACK - uncomment to test collapse
+    this.appConfigService.updateAppConfig({ APP_HEADER_DEFAULTS: { collapse: true } });
   }
 
   subscribeToAppConfigChanges() {
-    this.appConfigChanges$ = this.appConfigService.appConfig$.subscribe((appConfig: IAppConfig) => {
-      this.headerConfig = appConfig.APP_HEADER_DEFAULTS;
-      this.updateHeaderConfig();
-    });
+    this.appConfigChanges$ = this.appConfigService.changesWithInitialValue$.subscribe(
+      (changes: IAppConfig) => {
+        if (changes.APP_HEADER_DEFAULTS) {
+          const headerConfig = this.appConfigService.APP_CONFIG.APP_HEADER_DEFAULTS;
+          this.headerConfig = headerConfig;
+          this.updateHeaderConfig();
+          // handle collapse config changes
+          if (changes.APP_HEADER_DEFAULTS?.collapse !== undefined) {
+            this.handleHeaderCollapseConfigChange(changes.APP_HEADER_DEFAULTS?.collapse);
+          }
+        }
+      }
+    );
   }
 
   public handleBackButtonClick() {
@@ -76,6 +104,7 @@ export class headerComponent implements OnInit, OnDestroy {
     const { should_show_back_button, should_show_menu_button } = this.headerConfig;
     this.showBackButton = should_show_back_button(location);
     this.showMenuButton = should_show_menu_button(location);
+    this.marginTop = `0px`;
   }
 
   /** When device back button evaluate conditions to handle app minimise */
@@ -88,13 +117,53 @@ export class headerComponent implements OnInit, OnDestroy {
 
   private updateHeaderConfig() {
     this.colour = this.headerConfig.colour;
-    const { variant, heightsMap } = this.headerConfig;
+    const { variant } = this.headerConfig;
     this.variant = variant;
     // Set CSS property dynamically in component so that it can be exposed to deployment config/skins
     document.documentElement.style.setProperty(
       "--header-height",
       `${heightsMap[this.variant] || heightsMap.default}px`
     );
+  }
+
+  /**
+   * When enabling header collapse listen add scroll event listeners to detect when to collapse
+   * If disabling dispose of previous scroll event listeners
+   */
+  private handleHeaderCollapseConfigChange(shouldCollapse: boolean) {
+    // If previously scroll events were subscribed then should be able to unsubscribe.
+    // If initial config change undefined->false can ignore
+    if (this.scrollEvents$) {
+      this.scrollEvents$.unsubscribe();
+      this.scrollEvents$ = undefined;
+      this.marginTop = "0px";
+      // unset height
+    }
+    if (shouldCollapse) {
+      this.listenToScrollEvents();
+    }
+  }
+
+  /** Listen to scroll events to trigger header collapse */
+  private listenToScrollEvents() {
+    this.scrollEvents$ = fromEvent(window, "ionScroll")
+      .pipe(
+        debounceTime(50),
+        map((e: ScrollCustomEvent) => e.detail)
+      )
+      .subscribe((detail) => {
+        const { deltaY, currentY } = detail;
+        // bring header into view when scrolling in reverse
+        if (deltaY <= 0) {
+          this.marginTop = "0px";
+        } else {
+          // hide header after scrolled further than header height
+          const headerHeight = this.headerElement.el.clientHeight;
+          if (currentY >= headerHeight) {
+            this.marginTop = `-${headerHeight}px`;
+          }
+        }
+      });
   }
 
   ngOnDestroy() {
