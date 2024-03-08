@@ -106,8 +106,15 @@ const APP_ROUTE_DEFAULTS = {
   ],
 };
 
+export type IHeaderColourOptions = "primary" | "secondary" | "none";
+export type IHeaderVariantOptions = "default" | "compact";
+
 const APP_HEADER_DEFAULTS = {
   title: "App",
+  collapse: false,
+  colour: "primary" as IHeaderColourOptions,
+  // The "compact" variant reduces the header height and removes the title
+  variant: "default" as IHeaderVariantOptions,
   // default only show menu button on home screen
   should_show_menu_button: (location: Location) =>
     activeRoute(location) === APP_ROUTE_DEFAULTS.home_route,
