@@ -105,7 +105,7 @@ export class headerComponent implements OnInit, OnDestroy {
     const { should_show_back_button, should_show_menu_button } = this.headerConfig;
     this.showBackButton = should_show_back_button(location);
     this.showMenuButton = should_show_menu_button(location);
-    this.marginTop = `0px`;
+    this.marginTop = "0px";
   }
 
   /** When device back button evaluate conditions to handle app minimise */
@@ -148,18 +148,15 @@ export class headerComponent implements OnInit, OnDestroy {
   /** Listen to scroll events to trigger header collapse */
   private listenToScrollEvents() {
     this.scrollEvents$ = fromEvent(window, "ionScroll")
-      .pipe(
-        debounceTime(50),
-        map((e: ScrollCustomEvent) => e.detail)
-      )
+      .pipe(map((e: ScrollCustomEvent) => e.detail))
       .subscribe(async (detail) => {
+        const headerHeight = this.headerElement.el.clientHeight;
         const { deltaY, currentY } = detail;
-        // bring header into view when scrolling in reverse
-        if (deltaY < 0) {
+        // bring header into view when scrolling in reverse or at top of page
+        if (deltaY <= 0 || currentY < headerHeight) {
           this.marginTop = "0px";
         } else {
           // hide header after scrolled further than header height
-          const headerHeight = this.headerElement.el.clientHeight;
           if (currentY >= headerHeight) {
             // temporarily disable scroll events whilst animation moves bar
             // as that would trigger negative scroll direction
