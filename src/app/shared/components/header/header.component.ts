@@ -7,6 +7,7 @@ import { Subscription, fromEvent, debounceTime, map } from "rxjs";
 import { IAppConfig, IHeaderColourOptions, IHeaderVariantOptions } from "../../model";
 import { AppConfigService } from "../../services/app-config/app-config.service";
 import { IonHeader, ScrollBaseCustomEvent, ScrollDetail } from "@ionic/angular";
+import { _wait } from "packages/shared/src/utils/async-utils";
 
 interface ScrollCustomEvent extends ScrollBaseCustomEvent {
   detail: ScrollDetail;
@@ -151,16 +152,22 @@ export class headerComponent implements OnInit, OnDestroy {
         debounceTime(50),
         map((e: ScrollCustomEvent) => e.detail)
       )
-      .subscribe((detail) => {
+      .subscribe(async (detail) => {
         const { deltaY, currentY } = detail;
         // bring header into view when scrolling in reverse
-        if (deltaY <= 0) {
+        if (deltaY < 0) {
           this.marginTop = "0px";
         } else {
           // hide header after scrolled further than header height
           const headerHeight = this.headerElement.el.clientHeight;
           if (currentY >= headerHeight) {
+            // temporarily disable scroll events whilst animation moves bar
+            // as that would trigger negative scroll direction
+            this.scrollEvents$.unsubscribe();
+            // set negative margin to move header off-screen
             this.marginTop = `-${headerHeight}px`;
+            await _wait(500);
+            this.listenToScrollEvents();
           }
         }
       });
