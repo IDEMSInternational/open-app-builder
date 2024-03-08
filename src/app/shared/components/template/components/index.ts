@@ -31,7 +31,7 @@ import { TmplComboBoxComponent } from "./combo-box/combo-box.component";
 import { TmplDashedBoxComponent } from "./dashed-box/dashed-box.component";
 import { TmplDataItemsComponent } from "./data-items/data-items.component";
 import { TmplDisplayGridComponent } from "./layout/display-grid/display-grid.component";
-import { TmplDisplayGroupComponent } from "./layout/display_group";
+import { TmplDisplayGroupComponent } from "./layout/display-group/display-group.component";
 import { TmplDrawerComponent } from "./drawer/drawer.component";
 import { TmplHelpIconComponent } from "./help-icon";
 import { TmplIconBannerComponent } from "./icon-banner/icon-banner.component";
