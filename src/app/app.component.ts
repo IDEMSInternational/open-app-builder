@@ -158,8 +158,8 @@ export class AppComponent {
 
   /** Initialise appConfig and set dependent properties */
   private subscribeToAppConfigChanges() {
-    this.appConfigService.appConfig$.subscribe((appConfig: IAppConfig) => {
-      this.appConfig = appConfig;
+    this.appConfigService.changesWithInitialValue$.subscribe((changes: IAppConfig) => {
+      this.appConfig = { ...this.appConfig, ...changes };
       this.sideMenuDefaults = this.appConfig.APP_SIDEMENU_DEFAULTS;
       this.footerDefaults = this.appConfig.APP_FOOTER_DEFAULTS;
       this.appAuthenticationDefaults = this.appConfig.APP_AUTHENTICATION_DEFAULTS;

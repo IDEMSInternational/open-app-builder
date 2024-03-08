@@ -29,14 +29,9 @@ export class TmplDrawerComponent extends TemplateBaseComponent implements OnInit
       this.isOpen = false;
     } else {
       drawer.style.transition = "transform .3s ease-out";
-      drawer.style.transform = `translateY(${-this.getOpenHeight()}px)`;
+      // default position is set using translateY (see css), so reducing the pixel value opens the drawer
+      drawer.style.transform = `translateY(10px)`;
       this.isOpen = true;
     }
-  }
-
-  private getOpenHeight() {
-    const drawer = this.drawer.nativeElement;
-    const handle = drawer.children[0];
-    return drawer.offsetHeight - handle.offsetHeight - 10;
   }
 }
