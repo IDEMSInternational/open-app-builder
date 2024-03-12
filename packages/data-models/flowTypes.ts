@@ -379,6 +379,7 @@ export namespace FlowTypes {
     "asset_pack",
     "audio_end",
     "audio_play",
+    "auth_sign_out",
     "changed",
     "emit",
     "feedback",
