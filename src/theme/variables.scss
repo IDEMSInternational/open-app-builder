@@ -38,6 +38,10 @@
     --content-max-width: #{map-get(breakpoints.$sizes, "desktop")};
   }
 
+  // Header
+  // Default value, overridden programmatically by header component
+  --header-height: 56px;
+
   // Borders //
   // --- border-radiuses
   --ion-border-radius-small: 8px;
