@@ -43,8 +43,6 @@ dependencies {
     // When using the BoM, you don't specify versions in Firebase library dependencies
     implementation 'com.google.firebase:firebase-crashlytics'
     implementation 'com.google.firebase:firebase-perf'
-    // https://github.com/mixpanel/mixpanel-android/issues/744
-    implementation("com.google.firebase:firebase-iid")
 }
 
 apply from: 'capacitor.build.gradle'
