@@ -228,6 +228,8 @@ export class TemplateActionService extends SyncServiceBase {
         return processor.processTemplateWithoutRender(templateToProcess);
       case "google_auth":
         return await this.authService.signInWithGoogle();
+      case "auth_sign_out":
+        return await this.authService.signOut();
       case "emit":
         const [emit_value, emit_data] = args;
         const container: TemplateContainerComponent = this.container;
