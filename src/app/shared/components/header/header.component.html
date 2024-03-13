@@ -1,5 +1,5 @@
 <ion-header [class.ion-no-border]="colour === 'none'" [style.marginTop]="marginTop">
-  <ion-toolbar [color]="colour">
+  <ion-toolbar [color]="colour" [attr.data-colour]="colour">
     <ion-buttons slot="start" style="position: absolute">
       <ion-menu-button *ngIf="showMenuButton" autoHide="false" menu="start"></ion-menu-button>
       <ion-button
