@@ -30,11 +30,11 @@ export class AuthService extends SyncServiceBase {
   }
 
   public async signInWithGoogle() {
-    return await FirebaseAuthentication.signInWithGoogle();
+    return FirebaseAuthentication.signInWithGoogle();
   }
 
   public async signOut() {
-    return await FirebaseAuthentication.signOut();
+    return FirebaseAuthentication.signOut();
   }
 
   public async getCurrentUser() {
