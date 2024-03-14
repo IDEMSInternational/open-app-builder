@@ -2082,15 +2082,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@capacitor-community/firebase-crashlytics@npm:^3.0.0":
-  version: 3.0.0
-  resolution: "@capacitor-community/firebase-crashlytics@npm:3.0.0"
-  peerDependencies:
-    "@capacitor/core": ^5.0.0
-  checksum: 60b612896cd077dae0cbb9103bca3a2660199e13463a15e28bbf1260d9dd76148fee65f643cc8df3888b43dfccb7b7aad006f142397a23deec8cf266cdc7d07a
-  languageName: node
-  linkType: hard
-
 "@capacitor-firebase/authentication@npm:^5.3.0":
   version: 5.4.0
   resolution: "@capacitor-firebase/authentication@npm:5.4.0"
@@ -2101,6 +2092,18 @@ __metadata:
     firebase:
       optional: true
   checksum: 4eebfa95392d76c2e7a24ab815c7be2b4a1c7a16a7f8f67a1d72db0ccf4f3eab92965aa3f2811bbaacf15ca42c5e05d3b5a78c5deb383accaa86324b104a0482
+  languageName: node
+  linkType: hard
+
+"@capacitor-firebase/crashlytics@npm:^5.4.1":
+  version: 5.4.1
+  resolution: "@capacitor-firebase/crashlytics@npm:5.4.1"
+  peerDependencies:
+    "@capacitor/core": ^5.0.0
+  peerDependenciesMeta:
+    firebase:
+      optional: true
+  checksum: d7b4d6b75e693653931e5a0ace47a546cd2b8c2122acbc066dc04ffacce0e6a5e1a1569610305f7dc2cb877218449f8d2c856ab41f15a797bc89ec734eaf64e6
   languageName: node
   linkType: hard
 
@@ -2196,6 +2199,15 @@ __metadata:
   peerDependencies:
     "@capacitor/core": ^5.1.1
   checksum: d043feaf0a9608e15b307f06421603f20c865fa6ff2108d1ae4efa486e9b9979215e8f4f036109a2d12dd1dfb76b0cd4bf4f9c471f375480f03c55f9dc01acd4
+  languageName: node
+  linkType: hard
+
+"@capacitor/ios@npm:^5.7.2":
+  version: 5.7.2
+  resolution: "@capacitor/ios@npm:5.7.2"
+  peerDependencies:
+    "@capacitor/core": ^5.7.0
+  checksum: 63d54bc5e44da159730928ad352dff2f9f13fbef132c8ba151b26d4c460fbca9fae32e8be3022d99409d9f3a8ab654637a837e961b092c73efa1e55b3501c9f1
   languageName: node
   linkType: hard
 
@@ -14740,8 +14752,8 @@ __metadata:
     "@angular/platform-browser-dynamic": ~17.2.2
     "@angular/router": ~17.2.2
     "@capacitor-community/file-opener": ^1.0.5
-    "@capacitor-community/firebase-crashlytics": ^3.0.0
     "@capacitor-firebase/authentication": ^5.3.0
+    "@capacitor-firebase/crashlytics": ^5.4.1
     "@capacitor-firebase/performance": ^5.3.0
     "@capacitor/android": ^5.5.1
     "@capacitor/app": ^5.0.6
@@ -14750,6 +14762,7 @@ __metadata:
     "@capacitor/core": ^5.5.1
     "@capacitor/device": ^5.0.6
     "@capacitor/filesystem": ^5.1.4
+    "@capacitor/ios": ^5.7.2
     "@capacitor/local-notifications": ^5.0.6
     "@capacitor/push-notifications": ^5.1.0
     "@capacitor/share": ^5.0.6
