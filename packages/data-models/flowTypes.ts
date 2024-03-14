@@ -379,11 +379,16 @@ export namespace FlowTypes {
     "asset_pack",
     "audio_end",
     "audio_play",
+    "auth",
     "changed",
     "emit",
     "feedback",
     "go_to",
     "go_to_url",
+    /**
+     * @deprecated since v0.16.27
+     * Use `auth: sign_in_google` instead
+     * */
     "google_auth",
     "open_external",
     "pop_up",
