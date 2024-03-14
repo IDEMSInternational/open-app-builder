@@ -2,7 +2,7 @@ import type { IGdriveEntry } from "../@idemsInternational/gdrive-tools";
 import type { IAppConfig } from "./appConfig";
 
 /** Update version to force recompile next time deployment set (e.g. after default config update) */
-export const DEPLOYMENT_CONFIG_VERSION = 20230930;
+export const DEPLOYMENT_CONFIG_VERSION = 20240314.0;
 
 export interface IDeploymentConfig {
   /** Friendly name used to identify the deployment name */
@@ -60,6 +60,17 @@ export interface IDeploymentConfig {
    * Specify if using firebase for auth and crashlytics.
    * Requires firebase config available through encrypted config */
   firebase: {
+    /** Project config as specified in firebase console (recommend loading from encrypted environment) */
+    config?: {
+      apiKey: string;
+      authDomain: string;
+      databaseURL: string;
+      projectId: string;
+      storageBucket: string;
+      messagingSenderId: string;
+      appId: string;
+      measurementId: string;
+    };
     auth: {
       /** Enables `auth` actions to allow user sign-in/out */
       enabled: boolean;
@@ -146,6 +157,7 @@ export const DEPLOYMENT_CONFIG_EXAMPLE_DEFAULTS: IDeploymentConfig = {
     assets_filter_function: (fileEntry) => true,
   },
   firebase: {
+    config: null,
     auth: { enabled: false },
     crashlytics: { enabled: true },
   },
