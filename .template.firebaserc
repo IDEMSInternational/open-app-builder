@@ -1,0 +1,15 @@
+{
+  "projects": {
+    "default": "${FIREBASE_PROJECT_ID}"
+  },
+  "targets": {
+    "${FIREBASE_PROJECT_ID}": {
+      "hosting": {
+        "${FIREBASE_HOSTING_TARGET}": [
+          "${FIREBASE_PROJECT_ID}"
+        ]
+      }
+    }
+  },
+  "etags": {}
+}
