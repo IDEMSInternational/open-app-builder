@@ -1,8 +1,8 @@
 import { Injectable } from "@angular/core";
-import { Auth } from "@angular/fire/auth";
 import { FirebaseAuthentication, User } from "@capacitor-firebase/authentication";
 import { BehaviorSubject, firstValueFrom } from "rxjs";
 import { filter } from "rxjs/operators";
+import { environment } from "src/environments/environment";
 import { IAppConfig } from "../../model";
 import { AppConfigService } from "../app-config/app-config.service";
 import { SyncServiceBase } from "../syncService.base";
@@ -17,7 +17,6 @@ export class AuthService extends SyncServiceBase {
 
   // include auth import to ensure app registered
   constructor(
-    auth: Auth,
     private appConfigService: AppConfigService,
     private templateActionRegistry: TemplateActionRegistry
   ) {
@@ -25,9 +24,16 @@ export class AuthService extends SyncServiceBase {
     this.initialise();
   }
   private initialise() {
-    this.subscribeToAppConfigChanges();
-    this.addAuthListeners();
-    this.registerTemplateActionHandlers();
+    const { firebase } = environment.deploymentConfig;
+    if (firebase?.auth?.enabled) {
+      if (!firebase?.config) {
+        console.warn("[Auth Service] cannot initialise, firebase config missing");
+        return;
+      }
+      this.subscribeToAppConfigChanges();
+      this.addAuthListeners();
+      this.registerTemplateActionHandlers();
+    }
   }
 
   /** Return a promise that resolves after a signed in user defined */

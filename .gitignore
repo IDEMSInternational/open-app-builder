@@ -74,7 +74,6 @@ yarn.auto-install
 supabase
 
 # Firebase
-src/environments/firebaseConfig.ts
 firebase.json
 .firebase
 .firebaserc
