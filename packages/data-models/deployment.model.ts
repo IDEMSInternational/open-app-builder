@@ -56,6 +56,19 @@ export interface IDeploymentConfig {
     /** filter function that receives basic file info such as relativePath and size. Default `(fileEntry)=>true`*/
     assets_filter_function: (fileEntry: IContentsEntry) => boolean;
   };
+  /**
+   * Specify if using firebase for auth and crashlytics.
+   * Requires firebase config available through encrypted config */
+  firebase: {
+    auth: {
+      /** Enables `auth` actions to allow user sign-in/out */
+      enabled: boolean;
+    };
+    crashlytics: {
+      /** Enables app crash reports to firebase crashlytics */
+      enabled: boolean;
+    };
+  };
   git: {
     /** Url of external git repo to store content */
     content_repo?: string;
@@ -131,6 +144,10 @@ export const DEPLOYMENT_CONFIG_EXAMPLE_DEFAULTS: IDeploymentConfig = {
     output_path: "packages/app-data",
     sheets_filter_function: (flow) => true,
     assets_filter_function: (fileEntry) => true,
+  },
+  firebase: {
+    auth: { enabled: false },
+    crashlytics: { enabled: true },
   },
   supabase: {
     enabled: false,
