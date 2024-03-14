@@ -64,7 +64,10 @@ export class AuthService extends SyncServiceBase {
         }
         return childActions[actionId]();
       },
-      // Legacy action, prefer `auth | sign_in_google`
+      /**
+       * @deprecated since v0.16.27
+       * Use `auth: sign_in_google` instead
+       * */
       google_auth: async () => {
         return await this.signInWithGoogle();
       },
