@@ -34,31 +34,34 @@ export function lottiePlayerFactory() {
   return player;
 }
 
+// Common imports
+const imports = [
+  BrowserModule,
+  BrowserAnimationsModule,
+  IonicModule.forRoot(),
+  AppRoutingModule,
+  HttpClientModule,
+  SharedModule,
+  FormsModule,
+  LottieModule.forRoot({ player: lottiePlayerFactory }),
+  // NOTE CC 2021-11-04 not sure if cache causes issues or not https://github.com/ngx-lottie/ngx-lottie/issues/115
+  // LottieCacheModule.forRoot(),
+  TemplateComponentsModule,
+  TourModule,
+  MatomoModule.forRoot({
+    siteId: environment.analytics.siteId,
+    trackerUrl: environment.analytics.endpoint,
+  }),
+  MatomoRouterModule,
+  ContextMenuModule,
+];
+
+// Deployment-specific imports
+loadFirebaseImports();
+
 @NgModule({
   declarations: [AppComponent],
-  imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
-    IonicModule.forRoot(),
-    AppRoutingModule,
-    HttpClientModule,
-    SharedModule,
-    // Firebase
-    provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
-    provideAuth(() => getAuth()),
-    FormsModule,
-    LottieModule.forRoot({ player: lottiePlayerFactory }),
-    // NOTE CC 2021-11-04 not sure if cache causes issues or not https://github.com/ngx-lottie/ngx-lottie/issues/115
-    // LottieCacheModule.forRoot(),
-    TemplateComponentsModule,
-    TourModule,
-    MatomoModule.forRoot({
-      siteId: environment.analytics.siteId,
-      trackerUrl: environment.analytics.endpoint,
-    }),
-    MatomoRouterModule,
-    ContextMenuModule,
-  ],
+  imports,
   providers: [
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     HTTP,
@@ -69,3 +72,32 @@ export function lottiePlayerFactory() {
   bootstrap: [AppComponent],
 })
 export class AppModule {}
+
+/**
+ * Configure app module imports dependent on what firebase features should be enabled
+ */
+function loadFirebaseImports() {
+  const { firebase } = environment.deploymentConfig;
+
+  // Check if any services are enabled, simply return if not
+  const enabledServices = Object.entries(firebase)
+    .filter(([key, v]) => v && v.constructor === {}.constructor && v["enabled"])
+    .map(([key]) => key);
+  if (enabledServices.length === 0) return;
+
+  // Check config exists if services are enabled
+  if (!firebase.config) {
+    console.warn(`[Firebase] config missing, services disabled:\n`, enabledServices.join(", "));
+    return;
+  }
+
+  // Add main firebase initialisation import
+  imports.push(
+    provideFirebaseApp(() => initializeApp(environment.deploymentConfig.firebase.config))
+  );
+
+  // Add feature-dependent imports
+  if (firebase.auth.enabled) {
+    imports.push(provideAuth(() => getAuth()));
+  }
+}

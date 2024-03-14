@@ -29,14 +29,15 @@ export class ErrorHandlerService extends ErrorHandler {
    * (although workaround required as cannot extend multiple services)
    */
   private async initialise() {
-    const { production, deploymentConfig, firebaseConfig } = environment;
-    if (production && deploymentConfig?.error_logging?.dsn) {
+    const { production, deploymentConfig } = environment;
+    const { error_logging, firebase } = deploymentConfig;
+    if (production && error_logging?.dsn) {
       await this.initialiseSentry();
       this.sentryEnabled = true;
     }
-    if (production && firebaseConfig?.apiKey && Capacitor.isNativePlatform()) {
+    if (production && firebase?.config?.apiKey && Capacitor.isNativePlatform()) {
       // crashlytics initialised in app component so omitted here
-      this.crashlyticsEnabled = true;
+      this.crashlyticsEnabled = firebase.crashlytics.enabled;
     }
     this.initialised = true;
   }
