@@ -385,6 +385,10 @@ export namespace FlowTypes {
     "feedback",
     "go_to",
     "go_to_url",
+    /**
+     * @deprecated since v0.16.27
+     * Use `auth: sign_in_google` instead
+     * */
     "google_auth",
     "open_external",
     "pop_up",
