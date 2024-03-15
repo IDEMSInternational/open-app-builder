@@ -90,33 +90,6 @@ function flattenJson<T>(json: any, tree = {}, nestedPath?: string): { [key: stri
 }
 
 /**
- * Radio group and other value lists are often formatted with both name and text properties,
- * which are (currently) separated out at runtime. This function takes the value_list
- * string array and formats into an object array
- * @param items
- * ```
- * [name:name_var_1 | text:Option 1, name:name_var_2 | text: Option 2]
- * ```
- * @returns
- * ```
- * [{name:"name_var_1", text:"Option 1"}, {name:"name_var_2", text: "Option 2"}]
- * ```
- */
-export function parseValueListItems(items: string[]): any[] {
-  return items.map((item) => {
-    const props = {};
-    item
-      .split("|")
-      .map((i) => i.trim())
-      .forEach((i) => {
-        const [key, value] = i.split(":").map((v) => v.trim());
-        props[key] = value;
-      });
-    return props;
-  });
-}
-
-/**
  * Take an object and return an array via the object.values method.
  * Provide additional check in case already is array (return array), or is not an object
  * (return empty array)
