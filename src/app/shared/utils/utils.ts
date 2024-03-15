@@ -2,7 +2,7 @@ import { format } from "date-fns";
 import { diff } from "deep-object-diff";
 import { Observable } from "rxjs";
 import { map, pairwise, filter, share } from "rxjs/operators";
-import * as Sentry from "@sentry/angular";
+import * as Sentry from "@sentry/angular-ivy";
 import { FlowTypes } from "../model";
 import { objectToArray } from "../components/template/utils";
 import marked from "marked";
