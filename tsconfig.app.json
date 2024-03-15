@@ -11,7 +11,9 @@
     "src/app/shared/components/template/components/odk-form/libs/**/*.ts",
     // Ensure any ts-based packages used by frontend app are listed here
     // to allow import/live-reload within angular compiler
-    "packages/data-models/**/*.ts",
-    "packages/shared/**/*.ts"
-  ]
+    "packages/data-models/index.ts",
+    "packages/data-models/db.model.ts",
+    "packages/shared/shared/src/models/jsEvaluator/jsEvaluator.ts"
+  ],
+  "exclude": ["**/*.spec.ts"]
 }

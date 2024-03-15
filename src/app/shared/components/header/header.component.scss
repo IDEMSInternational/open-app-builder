@@ -1,0 +1,11 @@
+ion-toolbar {
+  --min-height: var(--header-height);
+  &[data-colour~="none"] {
+    // Override default ionic settings to make icons and text appear as primary colour
+    --ion-color-contrast: var(--ion-color-primary);
+  }
+}
+ion-header {
+  // animate header collapse animation as margin moves off-screen
+  transition: margin 500ms;
+}
