@@ -6,6 +6,7 @@ import { environment } from "src/environments/environment";
 import { GIT_SHA } from "src/environments/sha";
 import { fromError as getStacktraceFromError } from "stacktrace-js";
 import { CrashlyticsService } from "../crashlytics/crashlytics.service";
+import { FirebaseService } from "../firebase/firebase.service";
 
 @Injectable({
   providedIn: "root",
@@ -17,7 +18,7 @@ export class ErrorHandlerService extends ErrorHandler {
 
   // Error handling is important and needs to be loaded first.
   // Because of this we should manually inject the services with Injector.
-  constructor(private injector: Injector) {
+  constructor(private injector: Injector, private firebaseService: FirebaseService) {
     super();
   }
 
@@ -35,7 +36,7 @@ export class ErrorHandlerService extends ErrorHandler {
       await this.initialiseSentry();
       this.sentryEnabled = true;
     }
-    if (production && firebase?.config?.apiKey && Capacitor.isNativePlatform()) {
+    if (production && this.firebaseService.app && Capacitor.isNativePlatform()) {
       // crashlytics initialised in app component so omitted here
       this.crashlyticsEnabled = firebase.crashlytics.enabled;
     }

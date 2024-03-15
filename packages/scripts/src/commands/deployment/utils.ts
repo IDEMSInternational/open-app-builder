@@ -106,6 +106,7 @@ export function convertStringsToFunctions<T>(data: T) {
  * Utility function to determine the filename stack of current function invocation.
  * Uses Node v8 stack trace api to determine call stacks (in same way error stacks are managed)
  * Adapted from https://github.com/sindresorhus/callsites and https://v8.dev/docs/stack-trace-api
+ * @returns string[] list of filenames included in call stack
  */
 export function getStackFileNames() {
   // take a copy of default stack track prepare method to revert after use

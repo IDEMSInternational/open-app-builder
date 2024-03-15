@@ -7,6 +7,7 @@ import { IAppConfig } from "../../model";
 import { AppConfigService } from "../app-config/app-config.service";
 import { SyncServiceBase } from "../syncService.base";
 import { TemplateActionRegistry } from "../../components/template/services/instance/template-action.registry";
+import { FirebaseService } from "../firebase/firebase.service";
 
 @Injectable({
   providedIn: "root",
@@ -18,18 +19,15 @@ export class AuthService extends SyncServiceBase {
   // include auth import to ensure app registered
   constructor(
     private appConfigService: AppConfigService,
-    private templateActionRegistry: TemplateActionRegistry
+    private templateActionRegistry: TemplateActionRegistry,
+    private firebaseService: FirebaseService
   ) {
     super("Auth");
     this.initialise();
   }
   private initialise() {
     const { firebase } = environment.deploymentConfig;
-    if (firebase?.auth?.enabled) {
-      if (!firebase?.config) {
-        console.warn("[Auth Service] cannot initialise, firebase config missing");
-        return;
-      }
+    if (firebase?.auth?.enabled && this.firebaseService.app) {
       this.subscribeToAppConfigChanges();
       this.addAuthListeners();
       this.registerTemplateActionHandlers();
