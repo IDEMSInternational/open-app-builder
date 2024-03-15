@@ -47,7 +47,7 @@ interface IODKFormComponentParameters {
   selector: "tmpl-odk-form",
   templateUrl: "./odk-form.component.html",
   styleUrls: ["./odk-form.component.scss"],
-  encapsulation: ViewEncapsulation.None,
+  encapsulation: ViewEncapsulation.ShadowDom,
 })
 /**
  * A lightweight port of enketo-core to render a form within an angular component

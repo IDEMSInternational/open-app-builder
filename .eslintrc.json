@@ -1,8 +1,10 @@
 {
   "root": true,
   "ignorePatterns": ["packages/api/**/*", "packages/@idemsInternational/**/*"],
-  "plugins": ["jasmine"],
-  "env": { "jasmine": true },
+  "plugins": ["jasmine", "@typescript-eslint"],
+  "env": {
+    "jasmine": true
+  },
   "overrides": [
     {
       "files": ["*.ts"],
@@ -119,3 +121,4 @@
     }
   ]
 }
+

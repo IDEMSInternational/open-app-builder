@@ -1,4 +1,5 @@
 import {
+  ChangeDetectorRef,
   Component,
   ElementRef,
   EventEmitter,
@@ -60,10 +61,14 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
   private componentDestroyed$ = new Subject<boolean>();
   debugMode: boolean;
 
+  private get cdr() {
+    return this.injector.get(ChangeDetectorRef);
+  }
+
   constructor(
     private templateService: TemplateService,
     private templateNavService: TemplateNavService,
-    injector: Injector,
+    private injector: Injector,
     // Containers created in headless context may not have specific injectors
     public elRef?: ElementRef,
     private route?: ActivatedRoute
@@ -191,6 +196,8 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
       this.parent.children[this.name] = this;
     }
     log_groupEnd();
+    // Ensure any parents using onPush are notified of changes (e.g. data-items)
+    this.cdr.markForCheck();
   }
 
   /**

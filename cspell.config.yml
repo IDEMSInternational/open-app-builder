@@ -8,6 +8,8 @@
 # words - list of words to be always considered correct
 "words":
   [
+    "danfojs",
+    "dexie",
     "firebaserc",
     "fontawesome",
     "gdrive",
@@ -20,10 +22,13 @@
     "metabase",
     "mkdocs",
     "nocheck",
+    "Nouislider",
     "overidden",
     "quickstart",
+    "rxdb",
     "sidemenu",
     "sourcemaps",
+    "swiper",
     "templatename",
     "tmpl",
     "venv",
@@ -33,4 +38,4 @@
 # For example "hte" should be "the"
 "flagWords": ["hte"]
 
-"ignorePaths": ["node_modules/**"]
+"ignorePaths": ["node_modules/**", "angular.json", "cspell.config.yml"]

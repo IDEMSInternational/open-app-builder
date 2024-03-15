@@ -129,23 +129,32 @@ export class DynamicDataService extends AsyncServiceBase {
   }
 
   /** Remove user writes on a flow to return it to its original state */
-  public async resetFlow(flow_type: FlowTypes.FlowType, flow_name: string, throwOnError = true) {
-    await this.writeCache.delete(flow_type, flow_name);
+  public async resetFlow(flow_type: FlowTypes.FlowType, flow_name: string) {
     const collectionName = this.normaliseCollectionName(flow_type, flow_name);
-    if (this.db.getCollection(collectionName)) {
-      await this.db.removeCollection(collectionName);
-      await this.ensureCollection(flow_type, flow_name);
-    } else {
-      if (throwOnError) {
-        throw new Error(`Collection [${collectionName}] not found, cannot remove`);
-      }
+    // Wait for collection to finish creating if reset called during creation process
+    if (this.collectionCreators[collectionName]) {
+      await lastValueFrom(this.collectionCreators[collectionName]);
     }
+    // Ensure any persisted data deleted
+    await this.writeCache.delete(flow_type, flow_name);
+
+    // Remove in-memory db if exists
+    const existingCollection = this.db.getCollection(collectionName);
+    if (existingCollection) {
+      await this.db.removeCollection(collectionName);
+    }
+    await this.createCollection(flow_type, flow_name);
   }
 
   /** Ensure a collection exists, creating if not and populating with corresponding list data */
   private async ensureCollection(flow_type: FlowTypes.FlowType, flow_name: string) {
     const collectionName = this.normaliseCollectionName(flow_type, flow_name);
-    if (!this.db.getCollection(collectionName)) {
+    // Wait for any pending creation operations
+    if (this.collectionCreators[collectionName]) {
+      await lastValueFrom(this.collectionCreators[collectionName]);
+    }
+    const existingCollection = this.db.getCollection(collectionName);
+    if (!existingCollection) {
       await this.createCollection(flow_type, flow_name);
     }
     return { collectionName };
@@ -153,26 +162,19 @@ export class DynamicDataService extends AsyncServiceBase {
 
   private async createCollection(flow_type: FlowTypes.FlowType, flow_name: string) {
     const collectionName = this.normaliseCollectionName(flow_type, flow_name);
-    // avoid duplicate creation requests by tracking create requests
-    if (this.collectionCreators[collectionName]) {
-      await lastValueFrom(this.collectionCreators[collectionName]);
-      return;
-    }
     // create collection and insert initial data. Use AsyncSubject to notify only when complete
-    else {
-      this.collectionCreators[collectionName] = new AsyncSubject();
-      const initialData = await this.getInitialData(flow_type, flow_name);
-      if (initialData.length === 0) {
-        throw new Error(`No data exists for collection [${flow_name}], cannot initialise`);
-      }
-      const schema = this.inferSchema(initialData[0]);
-      await this.db.createCollection(collectionName, schema);
-      await this.db.bulkInsert(collectionName, initialData);
-      // notify any observers that collection has been created
-      this.collectionCreators[collectionName].next(collectionName);
-      this.collectionCreators[collectionName].complete();
-      delete this.collectionCreators[collectionName];
+    this.collectionCreators[collectionName] = new AsyncSubject();
+    const initialData = await this.getInitialData(flow_type, flow_name);
+    if (initialData.length === 0) {
+      throw new Error(`No data exists for collection [${flow_name}], cannot initialise`);
     }
+    const schema = this.inferSchema(initialData[0]);
+    await this.db.createCollection(collectionName, schema);
+    await this.db.bulkInsert(collectionName, initialData);
+    // notify any observers that collection has been created
+    this.collectionCreators[collectionName].next(collectionName);
+    this.collectionCreators[collectionName].complete();
+    delete this.collectionCreators[collectionName];
   }
 
   /** Retrive json sheet data and merge with any user writes */

@@ -19,6 +19,7 @@ $text-color: var(--radio-button-font-color, var(--ion-color-primary));
   padding: 8px;
   background: white;
   cursor: pointer;
+  box-shadow: var(--ion-default-box-shadow);
 }
 .item[data-selected="true"] {
   background: $background-selected;
