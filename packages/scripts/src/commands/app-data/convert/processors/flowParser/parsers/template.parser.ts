@@ -25,11 +25,7 @@ export class TemplateParser extends DefaultParser {
     // when unique name not specified assume namespacing with template value (flow_name)
     // or the row type for non-templates
     if (!row.name) {
-      if (row.type === "template") {
-        row.name = row.value;
-      } else {
-        row.name = `${row.type}_${rowNumber}`;
-      }
+      row.name = this.generateRowName(row, rowNumber);
     }
     // track path to row when nested
     row._nested_name = nestedPath ? `${nestedPath}.${row.name}` : row.name;
@@ -150,6 +146,18 @@ export class TemplateParser extends DefaultParser {
       }
       return action;
     });
+  }
+
+  /** Automatically generate a row name when not provided by author */
+  private generateRowName(row: FlowTypes.TemplateRow, rowNumber: Number) {
+    switch (row.type) {
+      // template row name assigned to target template name
+      case "template":
+        return row.value;
+      // default use combination of row type and row number
+      default:
+        return `${row.type}_${rowNumber}`;
+    }
   }
 
   private qualityControlCheck(row: FlowTypes.TemplateRow) {
