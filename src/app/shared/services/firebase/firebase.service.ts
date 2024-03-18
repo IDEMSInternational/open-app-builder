@@ -6,7 +6,7 @@ import { SyncServiceBase } from "../syncService.base";
 /** Service used to configure initialize firebase app core configuration */
 @Injectable({ providedIn: "root" })
 export class FirebaseService extends SyncServiceBase {
-  /** Initialised firebase app. Will be undefined if firebase config available */
+  /** Initialised firebase app. Will be undefined if firebase config unavailable */
   app: FirebaseApp | undefined;
 
   constructor() {

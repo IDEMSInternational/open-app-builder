@@ -22,7 +22,6 @@ export function generateDeploymentConfig(name: string): IDeploymentConfig {
 
 /**
  * Read a json file from deployment encrypted folder
- * @param deploymentName name of deployment folder to read config from
  * @param filename name of json to read config from (should already be decrypted)
  * @returns parsed json if exists, null if does not exist
  **/
