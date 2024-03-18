@@ -60,8 +60,6 @@ export class AuthService extends SyncServiceBase {
           sign_in_google: async () => await this.signInWithGoogle(),
           sign_out: async () => await this.signOut(),
         };
-        // To support deprecated "share" action (previously used to share text only),
-        // assume text is being shared if first arg is not an actionId
         if (!(actionId in childActions)) {
           console.error(`[AUTH] - No action, "${actionId}"`);
           return;
