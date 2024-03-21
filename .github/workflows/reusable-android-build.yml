@@ -10,8 +10,8 @@
 #         Configuration
 ##################################################################################
 env:
-    APP_ID: ${{vars.APP_ID}}
-    APP_NAME: ${{vars.APP_NAME}}
+    # APP_ID: ${{vars.APP_ID}}
+    # APP_NAME: ${{vars.APP_NAME}}
     DEPLOYMENT_NAME: ${{vars.DEPLOYMENT_NAME}}
     APP_CODE_BRANCH: ${{vars.APP_CODE_BRANCH}}
     PARENT_DEPLOYMENT_REPO: ${{vars.PARENT_DEPLOYMENT_REPO}}
@@ -102,24 +102,8 @@ jobs:
         - name: Set deployment
           run: yarn workflow deployment set $DEPLOYMENT_NAME --skip-refresh
   
-        - name: Populate android assets
-          run: yarn workflow populate_android_assets
-  
-        - name: Update config names in android files
-          run: |
-            sed -i -e "s/international.idems.plh_teens/$APP_ID/g" -e "s/PLH Teens/$APP_NAME/g" ./capacitor.config.ts ./android/app/src/main/assets/capacitor.config.json ./android/app/src/main/res/values/strings.xml ./android/app/src/main/AndroidManifest.xml ./android/app/src/main/java/international/idems/plh_teens/MainActivity.java ./android/app/build.gradle
-  
-        - name: Add version number to build.gradle
-          run: |
-            # Define the path to the file
-            FILE_PATH="./.idems_app/deployments/${{env.DEPLOYMENT_NAME}}/config.ts"
-            
-            # Extract the version number
-            VERSION=$(grep 'content_tag_latest:' $FILE_PATH | sed 's/content_tag_latest: *"\(.*\)",/\1/')
-            echo "Extracted Version: $VERSION"
-      
-            # Run versioning script
-            yarn run version $VERSION --android
+        - name: Prepare android configuration
+          run: yarn workflow android
              
         - name: Download Build Artifact
           uses: actions/download-artifact@v3
