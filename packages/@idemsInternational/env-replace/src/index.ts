@@ -184,9 +184,11 @@ class EnvReplaceClass {
     // create match patterns for all included folders and file name patters
     const globs = [];
     for (const folder of includeFolders) {
-      globs.push(`${folder}/**/*${fileNameFind}*`);
+      if (folder === ".") globs.push(`*${fileNameFind}*`);
+      else globs.push(`${folder}/*${fileNameFind}*`);
     }
-    return globs.join("|");
+    // use multiple input syntax https://github.com/isaacs/node-glob/issues/217
+    return `{${globs.join(",")}}`;
   }
 
   /** convert summary to array object for easier table logging */
