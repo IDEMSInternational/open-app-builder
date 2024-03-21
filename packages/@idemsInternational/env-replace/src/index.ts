@@ -100,6 +100,10 @@ class EnvReplaceClass {
       posix: true,
       ...rawGlobOptions,
     });
+    if (inputNames.length === 0) {
+      console.log({ inputGlob, cwd, excludeFolders });
+      throw new Error(`No files found matching params`);
+    }
 
     for (const inputName of inputNames) {
       const filepath = resolve(cwd, inputName);
@@ -180,7 +184,7 @@ class EnvReplaceClass {
     // create match patterns for all included folders and file name patters
     const globs = [];
     for (const folder of includeFolders) {
-      globs.push(`${folder}/*${fileNameFind}*`);
+      globs.push(`${folder}/**/*${fileNameFind}*`);
     }
     return globs.join("|");
   }
