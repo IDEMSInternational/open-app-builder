@@ -10,8 +10,6 @@
 #         Configuration
 ##################################################################################
 env:
-    # APP_ID: ${{vars.APP_ID}}
-    # APP_NAME: ${{vars.APP_NAME}}
     DEPLOYMENT_NAME: ${{vars.DEPLOYMENT_NAME}}
     APP_CODE_BRANCH: ${{vars.APP_CODE_BRANCH}}
     PARENT_DEPLOYMENT_REPO: ${{vars.PARENT_DEPLOYMENT_REPO}}
