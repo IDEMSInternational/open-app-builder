@@ -3,25 +3,28 @@ import chalk from "chalk";
 import { Command } from "commander";
 import * as fs from "fs-extra";
 import inquirer from "inquirer";
-import { APP_BUILD_GRADLE_PATH, MAIN_PACKAGE_PATH } from "../paths";
+import { MAIN_PACKAGE_PATH } from "../paths";
+import { ActiveDeployment } from "./deployment/get";
+import { readFileSync, writeFileSync } from "fs";
+import { Logger } from "shared";
 
 interface IProgramOptions {
   /** Set package.json version  */
   package?: boolean;
-  /** Set android version  */
-  android?: boolean;
+  /** Set content version  */
+  content?: boolean;
 }
 
 /***************************************************************************************
  * CLI
- * @example yarn worksapce scripts run version --package --android 1.0.6
+ * @example yarn scripts version --package 1.0.6
  *************************************************************************************/
 const program = new Command("version");
 export default program
   .description("Set app version")
   .argument("[version]", "version number to apply")
   .option("-p, --package", "apply versioning to package.json")
-  .option("-a, --android", "apply versioning to android build")
+  .option("-c, --content", "apply versioning to deployment content")
   .action(async (version: string | undefined, options: IProgramOptions) => {
     await setVersion(version, options);
   });
@@ -31,12 +34,12 @@ export default program
  *************************************************************************************/
 
 async function setVersion(version: string | undefined, options: IProgramOptions) {
-  if (!options.package && !options.android) {
-    console.log(chalk.yellow(`Specify what to version, e.g. --android --package`));
+  if (!options.package && !options.content) {
+    console.log(chalk.yellow(`Specify what to version, e.g. --package --content`));
     process.exit(1);
   }
   if (options.package) await setPackageVersion(version);
-  if (options.android) await setAndroidBuildVersion(version);
+  if (options.content) await setContentVersion(version);
 }
 
 /** Update root package.json version, ensuring increment  */
@@ -50,14 +53,15 @@ async function setPackageVersion(version?: string) {
   updatePackageJson(version);
 }
 
-async function setAndroidBuildVersion(version?: string) {
-  const previousVersion = getGradleBuildVersion();
+async function setContentVersion(version: string) {
+  const { git, _config_ts_path } = ActiveDeployment.get({ skipRecompileCheck: true });
+  const previousVersion = git.content_tag_latest || "0.0.0";
   if (!version) {
-    version = await promptVersion("Android", previousVersion);
+    version = await promptVersion("Content", previousVersion);
   }
-  // additional increment check in case version supplied directly (non prompt)
   ensureVersionIncremented(previousVersion, version);
-  updateGradleBuild(version);
+  updateConfigTS(_config_ts_path, version);
+  console.log("updating content version", version);
 }
 
 async function promptVersion(prefix: string, previousVersion: string) {
@@ -73,30 +77,31 @@ async function promptVersion(prefix: string, previousVersion: string) {
   return input;
 }
 
-function getGradleBuildVersion() {
-  const gradleBuildFile = fs.readFileSync(APP_BUILD_GRADLE_PATH, {
-    encoding: "utf-8",
-  });
-  const match = gradleBuildFile.match(/versionName .*$/gm);
-  const code = match?.[0].replace("versionName", "").replace(/[^0-9.]/g, "");
-  return code || "0.0.0";
-}
-
-function updateGradleBuild(newVersionName: string) {
-  let gradleBuildFile = fs.readFileSync(APP_BUILD_GRADLE_PATH, {
-    encoding: "utf-8",
-  });
-  const newVersionCode = _generateVersionCode(newVersionName);
-  gradleBuildFile = gradleBuildFile.replace(/versionCode .*$/gm, `versionCode ${newVersionCode}`);
-  gradleBuildFile = gradleBuildFile.replace(/versionName .*$/gm, `versionName "${newVersionName}"`);
-  fs.writeFileSync(APP_BUILD_GRADLE_PATH, gradleBuildFile, { encoding: "utf-8" });
-}
-
 async function updatePackageJson(newVersion: string) {
   const packageJson = fs.readJSONSync(MAIN_PACKAGE_PATH);
   packageJson.version = newVersion;
   fs.writeJSONSync(MAIN_PACKAGE_PATH, packageJson, { spaces: 2 });
 }
+
+async function updateConfigTS(tsPath: string, newVersion: string) {
+  const configStr = readFileSync(tsPath, { encoding: "utf-8" });
+  // Avoid replacing config if not defined by user (prone to error)
+  if (!configStr.includes("content_tag_latest")) {
+    console.log(tsPath);
+    Logger.error({
+      msg1: "Existing content version not detected, Please update config.ts with:",
+      msg2: `git.content_tag_latest = ${newVersion}`,
+    });
+  }
+  // use regex to capture content_tag both inline and nested. E.g.
+  // `git: {config_tag_latest: "1.2.3"}` or `git.config_tag_latest = 1.2.3`
+  // and keep existing formatting (just replace matched version code between quotation marks)
+  const regex = /(content_tag_latest.*)"(.*)"/g;
+  const replaced = configStr.replace(regex, "$1" + '"' + newVersion + '"');
+  writeFileSync(tsPath, replaced);
+  // TODO - recompile config
+}
+
 function ensureVersionIncremented(previousVersion: string, nextVersion: string) {
   if (previousVersion && nextVersion && isVersionIncremented(previousVersion, nextVersion)) {
     return true;
