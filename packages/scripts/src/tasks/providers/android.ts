@@ -33,7 +33,8 @@ const configure = async ({ appId, appName, versionName }: IAndroidBuildOptions) 
   const versionCode = generateVersionCode(versionName);
   return envReplace.replaceFiles({
     cwd: PATHS.ROOT_DIR,
-    includeFolders: ["android"],
+    // include both android folder and root (capacitor.config.ts)
+    includeFolders: ["android/**", "."],
     envAdditional: {
       APP_ID: appId,
       APP_NAME: appName,
