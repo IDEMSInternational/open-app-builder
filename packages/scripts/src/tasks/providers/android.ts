@@ -1,4 +1,4 @@
-import * as path from "path";
+import { resolve, dirname, join } from "path";
 import { Options, run } from "cordova-res";
 import fs from "fs";
 import { envReplace } from "@idemsInternational/env-replace";
@@ -31,7 +31,9 @@ const configure = async ({ appId, appName, versionName }: IAndroidBuildOptions) 
       msg2: `Please set [git.content_tag_latest] in deployment config.ts`,
     });
   const versionCode = generateVersionCode(versionName);
-  return envReplace.replaceFiles({
+
+  // Populate templated android files
+  await envReplace.replaceFiles({
     cwd: PATHS.ROOT_DIR,
     // include both android folder and root (capacitor.config.ts)
     includeFolders: ["android/**", "."],
@@ -44,6 +46,28 @@ const configure = async ({ appId, appName, versionName }: IAndroidBuildOptions) 
     // do not overwrite ${applicationId} variable in AndroidManifest template
     excludeVariables: ["applicationId"],
   });
+
+  // Move files where template not already located in correct folder (various reasons below)
+  const androidTemplatesPath = resolve(PATHS.ANDROID_PATH, "templates");
+  const androidJavaPath = resolve(PATHS.ANDROID_PATH, "app", "src", "main", "java");
+  const androidResPath = resolve(PATHS.ANDROID_PATH, "app", "src", "main", "res");
+
+  const ops = [
+    // MainActivity.java needs to sit at nested /org/example/app folder derived from appId
+    {
+      src: resolve(androidTemplatesPath, "MainActivity.java"),
+      target: resolve(androidJavaPath, ...appId.split("."), "MainActivity.java"),
+    },
+    // strings.xml template outside android dir as will still be read by gradle build as conflict
+    {
+      src: resolve(androidTemplatesPath, "strings.xml"),
+      target: resolve(androidResPath, "values", "strings.xml"),
+    },
+  ];
+  for (const { src, target } of ops) {
+    fs.mkdirSync(dirname(target), { recursive: true });
+    fs.renameSync(src, target);
+  }
 };
 
 const set_splash_image = async (splashAssetPath: string) => {
@@ -56,7 +80,7 @@ const set_splash_image = async (splashAssetPath: string) => {
 
   const cordovaOptions: Options = {
     directory: ROOT_DIR,
-    resourcesDirectory: path.join(ROOT_DIR, "resources"),
+    resourcesDirectory: join(ROOT_DIR, "resources"),
     logstream: process.stdout,
     platforms: {
       android: {
@@ -69,7 +93,7 @@ const set_splash_image = async (splashAssetPath: string) => {
     copy: true,
     projectConfig: {
       android: {
-        directory: path.join(ROOT_DIR, "android"),
+        directory: join(ROOT_DIR, "android"),
       },
     },
   };
@@ -99,7 +123,7 @@ const set_launcher_icon = async (options: {
 
   const cordovaOptions: Options = {
     directory: ROOT_DIR,
-    resourcesDirectory: path.join(ROOT_DIR, "resources"),
+    resourcesDirectory: join(ROOT_DIR, "resources"),
     logstream: process.stdout,
     platforms: {
       android: includeAdaptiveIcons
@@ -116,7 +140,7 @@ const set_launcher_icon = async (options: {
     copy: true,
     projectConfig: {
       android: {
-        directory: path.join(ROOT_DIR, "android"),
+        directory: join(ROOT_DIR, "android"),
       },
     },
   };

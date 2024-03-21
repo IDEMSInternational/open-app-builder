@@ -1,4 +1,4 @@
-package international.idems.plh_teens;
+package ${APP_ID};
 
 import android.os.Bundle;
 
