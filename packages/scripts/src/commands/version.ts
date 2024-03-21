@@ -13,7 +13,11 @@ interface IProgramOptions {
   package?: boolean;
   /** Set content version  */
   content?: boolean;
+  /** Automatically increment version patch number */
+  autoPatch?: boolean;
 }
+
+let options: IProgramOptions = {};
 
 /***************************************************************************************
  * CLI
@@ -25,17 +29,20 @@ export default program
   .argument("[version]", "version number to apply")
   .option("-p, --package", "apply versioning to package.json")
   .option("-c, --content", "apply versioning to deployment content")
-  .action(async (version: string | undefined, options: IProgramOptions) => {
-    await setVersion(version, options);
+  .option("-ap, --auto-patch", "automatically increment patch version number")
+  .action(async (version: string | undefined, opts: IProgramOptions) => {
+    options = opts;
+    console.table(options);
+    await setVersion(version);
   });
 
 /***************************************************************************************
  * Main Methods
  *************************************************************************************/
 
-async function setVersion(version: string | undefined, options: IProgramOptions) {
+async function setVersion(version: string | undefined) {
   if (!options.package && !options.content) {
-    console.log(chalk.yellow(`Specify what to version, e.g. --package --content`));
+    console.log(chalk.yellow(`Specify what to version, e.g. --package or --content`));
     process.exit(1);
   }
   if (options.package) await setPackageVersion(version);
@@ -46,7 +53,7 @@ async function setVersion(version: string | undefined, options: IProgramOptions)
 async function setPackageVersion(version?: string) {
   const previousVersion = fs.readJSONSync(MAIN_PACKAGE_PATH).version;
   if (!version) {
-    version = await promptVersion("Package", previousVersion);
+    version = await getNextVersion(previousVersion);
   }
   // additional increment check in case version supplied directly (non prompt)
   ensureVersionIncremented(previousVersion, version);
@@ -54,18 +61,31 @@ async function setPackageVersion(version?: string) {
 }
 
 async function setContentVersion(version: string) {
-  const { git, _config_ts_path } = ActiveDeployment.get({ skipRecompileCheck: true });
+  const { git, _config_ts_path } = ActiveDeployment.get({ skipRecompileCheck: false });
   const previousVersion = git.content_tag_latest || "0.0.0";
   if (!version) {
-    version = await promptVersion("Content", previousVersion);
+    version = await getNextVersion(previousVersion);
   }
   ensureVersionIncremented(previousVersion, version);
   updateConfigTS(_config_ts_path, version);
-  console.log("updating content version", version);
 }
 
-async function promptVersion(prefix: string, previousVersion: string) {
-  const message = `[${prefix}] Specify a version number (current: ${previousVersion})`;
+/**
+ * Determine next version number. Automatically updates previous version if option set,
+ * otherwise prompts user input
+ */
+async function getNextVersion(previousVersion: string = "0.0.0") {
+  if (options.autoPatch) {
+    const [major, minor, patch] = previousVersion.split(".");
+    const patchNext = parseInt(patch, 10) + 1;
+    return `${major}.${minor}.${patchNext}`;
+  } else {
+    return promptVersion(previousVersion);
+  }
+}
+
+async function promptVersion(previousVersion: string) {
+  const message = `Specify a version number (current: ${previousVersion})`;
   const { input } = await inquirer.prompt([
     {
       message,
