@@ -1,8 +1,49 @@
 import * as path from "path";
 import { Options, run } from "cordova-res";
 import fs from "fs";
+import { envReplace } from "@idemsInternational/env-replace";
 import { ROOT_DIR } from "../../paths";
 import { Logger } from "../../utils";
+import { PATHS } from "shared";
+
+interface IAndroidBuildOptions {
+  appId: string;
+  appName: string;
+  versionName: string;
+}
+
+/** Populate android template files with variables from deployment */
+const configure = async ({ appId, appName, versionName }: IAndroidBuildOptions) => {
+  // TODO - allow user to input and update config where variables not defined (?)
+  if (!appId)
+    Logger.error({
+      msg1: `No appId configured for deployment`,
+      msg2: `Please set [android.appId] in deployment config.ts`,
+    });
+  if (!appName)
+    Logger.error({
+      msg1: `No appName configured for deployment`,
+      msg2: `Please set [android.appName] in deployment config.ts`,
+    });
+  if (!versionName)
+    Logger.error({
+      msg1: `No content version set configured for deployment`,
+      msg2: `Please set [git.content_tag_latest] in deployment config.ts`,
+    });
+  const versionCode = generateVersionCode(versionName);
+  return envReplace.replaceFiles({
+    cwd: PATHS.ROOT_DIR,
+    includeFolders: ["android"],
+    envAdditional: {
+      APP_ID: appId,
+      APP_NAME: appName,
+      VERSION_CODE: versionCode,
+      VERSION_NAME: versionName,
+    },
+    // do not overwrite ${applicationId} variable in AndroidManifest template
+    excludeVariables: ["applicationId"],
+  });
+};
 
 const set_splash_image = async (splashAssetPath: string) => {
   if (!fs.existsSync(splashAssetPath)) {
@@ -82,12 +123,19 @@ const set_launcher_icon = async (options: {
   return await run(cordovaOptions);
 };
 
-const add_assets = () => null;
-const set_app_meta = () => null;
+/**
+ * Convert version string formatted as "MAJOR.MINOR.PATCH" to numeric code
+ * Uses 3 placeholder digits (0-999) representing each segment. E.g.
+ * 2.4.1 =>         2|004|001
+ * 200.40.125 =>  200|040|125
+ */
+function generateVersionCode(versionName: string) {
+  const v = versionName.split(".");
+  return `${Number(v[0]) * 1000000 + Number(v[1] || 0) * 1000 + Number(v[2] || 0)}`;
+}
 
 export default {
-  // add_assets,
+  configure,
   set_launcher_icon,
   set_splash_image,
-  // set_app_meta,
 };
