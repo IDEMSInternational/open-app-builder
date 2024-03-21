@@ -32,7 +32,6 @@ export default program
   .option("-ap, --auto-patch", "automatically increment patch version number")
   .action(async (version: string | undefined, opts: IProgramOptions) => {
     options = opts;
-    console.table(options);
     await setVersion(version);
   });
 
@@ -78,6 +77,7 @@ async function getNextVersion(previousVersion: string = "0.0.0") {
   if (options.autoPatch) {
     const [major, minor, patch] = previousVersion.split(".");
     const patchNext = parseInt(patch, 10) + 1;
+    console.log(`Auto Version: ${previousVersion} -> ${major}.${minor}.${patchNext}`);
     return `${major}.${minor}.${patchNext}`;
   } else {
     return promptVersion(previousVersion);
