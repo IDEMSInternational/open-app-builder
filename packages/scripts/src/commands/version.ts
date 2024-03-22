@@ -114,9 +114,9 @@ async function updateConfigTS(tsPath: string, newVersion: string) {
     });
   }
   // use regex to capture content_tag both inline and nested. E.g.
-  // `git: {config_tag_latest: "1.2.3"}` or `git.config_tag_latest = 1.2.3`
+  // `git: {config_tag_latest: "1.2.3"}` or `git.config_tag_latest = "1.2.3"`
   // and keep existing formatting (just replace matched version code between quotation marks)
-  const regex = /(content_tag_latest.*)"(.*)"/g;
+  const regex = /(content_tag_latest.*)['"](.*)['"]/g;
   const replaced = configStr.replace(regex, "$1" + '"' + newVersion + '"');
   writeFileSync(tsPath, replaced);
   // TODO - recompile config
