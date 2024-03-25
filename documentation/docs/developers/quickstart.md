@@ -17,7 +17,7 @@ The main tech stack comprises of:
 
 1. Install Android Studio (https://developer.android.com/studio)
 2. Install Android SDK Tools (26.0.1 or greater), as illustrated here: https://capacitorjs.com/docs/android#getting-started
-3. Ensure that the active deployment is fully configured in accordance with the requirements detailed in [Android app mangement](./deployments.md#android-app-management).
+3. Ensure that the active deployment is fully configured in accordance with the requirements detailed in [Android app management](./deployments.md#android-app-management).
 4. To populate the Android build files with the app ID, app name and version number (`content_tag_latest`) defined in the deployment config, run
    ```sh
    yarn workflow android configure
