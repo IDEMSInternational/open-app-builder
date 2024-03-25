@@ -156,7 +156,7 @@ config.android.app_name = "My Example App";
 ```
 
 ### Versioning
-In order to build for Android, the deployment config must contain a valid value for the property `config.git.content_tag_latest` (see [Github management](#github-management)). This value can be changed manualy, or via the command:
+In order to build for Android, the deployment config must contain a valid value for the property `config.git.content_tag_latest` (see [Github management](#github-management)). This value can be changed manually, or via the command:
 ```sh
 yarn scripts version --content (--auto-patch)
 ```
