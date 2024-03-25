@@ -18,18 +18,17 @@ The main tech stack comprises of:
 1. Install Android Studio (https://developer.android.com/studio)
 2. Install Android SDK Tools (26.0.1 or greater), as illustrated here: https://capacitorjs.com/docs/android#getting-started
 3. Ensure that the active deployment is fully configured in accordance with the requirements detailed in [Android app mangement](./deployments.md#android-app-management).
-4. To populate the Android build files with the app ID and app name defined in the deployment config, run
+4. To populate the Android build files with the app ID, app name and version number (`content_tag_latest`) defined in the deployment config, run
    ```sh
    yarn workflow android configure
    ```
-5. To populate a 
-6. Build the project locally and sync android files
+5. Build the project locally and sync android files
    ```sh
    yarn build
    npx cap sync
    ```
-7. Open the project in Android Studio `npx cap open android`
-8. From Android studio you can manage the app build, emulate and run processes, as illustrated here: https://capacitorjs.com/docs/android#running-your-app
+6. Open the project in Android Studio `npx cap open android`
+7. From Android studio you can manage the app build, emulate and run processes, as illustrated here: https://capacitorjs.com/docs/android#running-your-app
 
 Android studio should handle the process of downloading required tools, find below guidance for manual configuration.
 
