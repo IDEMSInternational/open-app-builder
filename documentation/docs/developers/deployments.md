@@ -147,7 +147,15 @@ The content repo can be opened via shortcut `yarn workflow repo open`
 For deployments that are intended to be published to the Google Play Store, some additional configuration is required.
 
 ### App ID and App Name
-The App ID uniquely identifies an Android app on devices and in the Google Play Store (see the official [Android developer docs](https://developer.android.com/build/configure-app-module#set-application-id) for more details). The App Name is the name that will be displayed to users on devices and in the Google Play Store. These values must be set in the deployment config before the app can be built as an Android bundle.
+The App ID uniquely identifies an Android app on devices and in the Google Play Store (see the official [Android developer docs](https://developer.android.com/build/configure-app-module#set-application-id) for more details). It is common to use the segments to identify your organisation and app in a reverse-dns format, e.g. `international.idems.my_example_app`, or `com.mycompany.example_app`.
+
+!!! warning
+    Android app IDs must contain at least 2 segments (one or more dots) and once set cannot be changed. So consider carefully how the id may be used in the future to represent your app. 
+
+
+The App Name is the name that will be displayed to users on devices and in the Google Play Store.
+
+These values must be set in the deployment config before the app can be built as an Android bundle.
 
 For example:
 ```ts
