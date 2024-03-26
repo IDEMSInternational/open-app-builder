@@ -1,0 +1,8 @@
+{
+  "test_string": "${STRING_VAR}",
+  "test_global": "${GLOBAL_VAR}",
+  "test_excluded": "${EXCLUDED_VAR}",
+  "test_non_var":"example non var",
+  "test_boolean": ${BOOL_VAR},
+  "test_int": ${INT_VAR}
+}
