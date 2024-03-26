@@ -53,8 +53,8 @@ Manually delete folders from `www\assets\app_data\assets` to reduce size for eas
 
 2. Sync to android and open in android studio
 ```
-npx cap sync
-npx cap open
+npx cap sync android
+npx cap open android
 ```
 
 3. Create a debug build from android studio menu (assumes google.json populated locally)

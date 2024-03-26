@@ -25,7 +25,7 @@ The main tech stack comprises of:
 5. Build the project locally and sync android files
    ```sh
    yarn build
-   npx cap sync
+   npx cap sync android
    ```
 6. Open the project in Android Studio `npx cap open android`
 7. From Android studio you can manage the app build, emulate and run processes, as illustrated here: https://capacitorjs.com/docs/android#running-your-app
