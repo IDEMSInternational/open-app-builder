@@ -4520,7 +4520,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@idemsInternational/env-replace@workspace:packages/@idemsInternational/env-replace":
+"@idemsInternational/env-replace@workspace:*, @idemsInternational/env-replace@workspace:packages/@idemsInternational/env-replace":
   version: 0.0.0-use.local
   resolution: "@idemsInternational/env-replace@workspace:packages/@idemsInternational/env-replace"
   dependencies:
@@ -23363,6 +23363,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "scripts@workspace:packages/scripts"
   dependencies:
+    "@idemsInternational/env-replace": "workspace:*"
     "@idemsInternational/gdrive-tools": "workspace:*"
     "@idemsInternational/rapidpro-excel": "workspace:*"
     "@swc/core": ^1.3.29

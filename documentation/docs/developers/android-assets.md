@@ -35,15 +35,15 @@ const config: IDeploymentConfig = {
 ```
 To generate the android assets, run
 ```sh
-yarn workflow populate_android_assets
+yarn workflow android
 ```
 Or, to generate just the splash screens or just the app icons, run
 ```sh
-yarn workflow set_splash_image
+yarn workflow android set_splash_image
 ```
 or
 ```sh
-yarn workflow set_launcher_icon
+yarn workflow android set_launcher_icon
 ```
 respectively.
 
