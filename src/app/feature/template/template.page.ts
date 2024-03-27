@@ -47,10 +47,9 @@ export class TemplatePage implements OnInit, OnDestroy {
     this.appConfigChanges$ = this.appConfigService.changesWithInitialValue$.subscribe(
       (changes: IAppConfig) => {
         // TODO: current header collapse implementation does not work on ios, so do not enable on this platform
-        if (
-          changes.APP_HEADER_DEFAULTS?.collapse !== undefined &&
-          Capacitor.getPlatform() !== "ios"
-        ) {
+        if (Capacitor.getPlatform() === "ios") return;
+
+        if (changes.APP_HEADER_DEFAULTS?.collapse !== undefined) {
           this.shouldEmitScrollEvents = changes.APP_HEADER_DEFAULTS?.collapse;
         }
       }

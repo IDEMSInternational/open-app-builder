@@ -133,18 +133,18 @@ export class headerComponent implements OnInit, OnDestroy {
    */
   private handleHeaderCollapseConfigChange(shouldCollapse: boolean) {
     // TODO: current header collapse implementation does not work on ios, so do not enable on this platform
-    if (Capacitor.getPlatform() !== "ios") {
-      // If previously scroll events were subscribed then should be able to unsubscribe.
-      // If initial config change undefined->false can ignore
-      if (this.scrollEvents$) {
-        this.scrollEvents$.unsubscribe();
-        this.scrollEvents$ = undefined;
-        this.marginTop = "0px";
-        // unset height
-      }
-      if (shouldCollapse) {
-        this.listenToScrollEvents();
-      }
+    if (Capacitor.getPlatform() === "ios") return;
+
+    // If previously scroll events were subscribed then should be able to unsubscribe.
+    // If initial config change undefined->false can ignore
+    if (this.scrollEvents$) {
+      this.scrollEvents$.unsubscribe();
+      this.scrollEvents$ = undefined;
+      this.marginTop = "0px";
+      // unset height
+    }
+    if (shouldCollapse) {
+      this.listenToScrollEvents();
     }
   }
 
