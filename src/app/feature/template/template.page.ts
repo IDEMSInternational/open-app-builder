@@ -17,7 +17,7 @@ export class TemplatePage implements OnInit, OnDestroy {
   allTemplates: FlowTypes.FlowTypeBase[] = [];
   filteredTemplates: FlowTypes.FlowTypeBase[] = [];
   appConfigChanges$: Subscription;
-  shouldEmitScrollEvents: boolean;
+  shouldEmitScrollEvents: boolean = false;
   constructor(
     private route: ActivatedRoute,
     private appDataService: AppDataService,
@@ -49,9 +49,7 @@ export class TemplatePage implements OnInit, OnDestroy {
         // TODO: current header collapse implementation does not work on ios, so do not enable on this platform
         if (Capacitor.getPlatform() === "ios") return;
 
-        if (changes.APP_HEADER_DEFAULTS?.collapse !== undefined) {
-          this.shouldEmitScrollEvents = changes.APP_HEADER_DEFAULTS?.collapse;
-        }
+        this.shouldEmitScrollEvents = changes.APP_HEADER_DEFAULTS?.collapse === true;
       }
     );
   }
