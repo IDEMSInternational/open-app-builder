@@ -1,7 +1,0 @@
-<?xml version='1.0' encoding='utf-8'?>
-<resources>
-    <string name="app_name">PLH Teens</string>
-    <string name="title_activity_main">PLH Teens</string>
-    <string name="package_name">international.idems.plh_teens</string>
-    <string name="custom_url_scheme">international.idems.plh_teens</string>
-</resources>
