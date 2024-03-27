@@ -94,3 +94,9 @@ capacitor-cordova-android-plugins
 
 # Copied web assets
 app/src/main/assets/public
+
+# Files populated from templates
+capacitor.config.json
+# build.gradle
+# AndroidManifest.xml
+# strings.xml

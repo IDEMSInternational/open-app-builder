@@ -284,7 +284,7 @@ export class TemplateRowService extends SyncServiceBase {
       const itemDataList: { [id: string]: any } = row.value;
       const parameterList = this.hackUnparseItemParameterList(row);
       const parsedItemDataList = await this.parseDataList(itemDataList);
-      const itemRows = new ItemProcessor(parsedItemDataList, parameterList).process(row.rows);
+      const { itemRows } = new ItemProcessor(parsedItemDataList, parameterList).process(row.rows);
       const parsedItemRows = await this.processRows(itemRows, isNestedTemplate, row.name);
       return parsedItemRows;
     }
