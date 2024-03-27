@@ -31,6 +31,10 @@ export interface IDeploymentConfig {
     assets_path: string;
   };
   android: {
+    /** Play store unique app identifier, e.g. international.idems.example_app" */
+    app_id?: string;
+    /** Play store app name, e.g. "Example App" */
+    app_name?: string;
     /** Location of source android assets (splash and launcher source images). */
     icon_asset_path?: string;
     splash_asset_path?: string;
