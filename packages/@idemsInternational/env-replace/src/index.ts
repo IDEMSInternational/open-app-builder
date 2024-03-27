@@ -26,6 +26,9 @@ export interface IEnvReplaceConfig {
   /** Specify list of variable names to include, default includes all */
   includeVariables: string[];
 
+  /** Output a summary of variable replacements to console log */
+  logSummary: boolean;
+
   /** Override generated globs from input folder and filename patters */
   rawGlobInput: string;
 
@@ -45,6 +48,7 @@ const DEFAULT_CONFIG: IEnvReplaceConfig = {
   fileNameReplace: ".",
   includeFolders: ["**"],
   includeVariables: [],
+  logSummary: true,
   rawGlobInput: "",
   rawGlobOptions: {},
   throwOnMissing: true,
@@ -96,6 +100,10 @@ class EnvReplaceClass {
       posix: true,
       ...rawGlobOptions,
     });
+    if (inputNames.length === 0) {
+      console.log({ inputGlob, cwd, excludeFolders });
+      throw new Error(`No files found matching params`);
+    }
 
     for (const inputName of inputNames) {
       const filepath = resolve(cwd, inputName);
@@ -112,6 +120,9 @@ class EnvReplaceClass {
       const replaceContent = this.generateReplaceContent(outputName, sourceContent, replacementEnv);
       const outputPath = resolve(cwd, outputName);
       writeFileSync(outputPath, replaceContent);
+    }
+    if (this.config.logSummary) {
+      this.logSummary();
     }
     return this.summary;
   }
@@ -173,9 +184,22 @@ class EnvReplaceClass {
     // create match patterns for all included folders and file name patters
     const globs = [];
     for (const folder of includeFolders) {
-      globs.push(`${folder}/*${fileNameFind}*`);
+      if (folder === ".") globs.push(`*${fileNameFind}*`);
+      else globs.push(`${folder}/*${fileNameFind}*`);
     }
-    return globs.join("|");
+    // use multiple input syntax https://github.com/isaacs/node-glob/issues/217
+    return `{${globs.join(",")}}`;
+  }
+
+  /** convert summary to array object for easier table logging */
+  private logSummary() {
+    const tableSummary = [];
+    for (const [fileName, replacements] of Object.entries(this.summary)) {
+      for (const [varName, value] of Object.entries(replacements)) {
+        tableSummary.push({ fileName, varName, value });
+      }
+    }
+    console.table(tableSummary);
   }
 }
 const envReplace = new EnvReplaceClass();
