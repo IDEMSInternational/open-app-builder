@@ -49,7 +49,7 @@ export class TemplatePage implements OnInit, OnDestroy {
         // TODO: current header collapse implementation does not work on ios, so do not enable on this platform
         if (Capacitor.getPlatform() === "ios") return;
 
-        this.shouldEmitScrollEvents = changes.APP_HEADER_DEFAULTS?.collapse === true;
+        this.shouldEmitScrollEvents = !!changes.APP_HEADER_DEFAULTS?.collapse;
       }
     );
   }
