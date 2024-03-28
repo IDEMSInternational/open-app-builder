@@ -31,6 +31,7 @@ node_modules
 /www
 yarn.lock.json
 google-services.json
+GoogleService-Info.plist
 
 resources/android
 resources/ios
