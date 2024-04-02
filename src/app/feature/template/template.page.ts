@@ -1,5 +1,6 @@
 import { Component, OnDestroy, OnInit } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
+import { Capacitor } from "@capacitor/core";
 import { FlowTypes, IAppConfig } from "data-models";
 import { Subscription } from "rxjs";
 import { AppConfigService } from "src/app/shared/services/app-config/app-config.service";
@@ -16,7 +17,7 @@ export class TemplatePage implements OnInit, OnDestroy {
   allTemplates: FlowTypes.FlowTypeBase[] = [];
   filteredTemplates: FlowTypes.FlowTypeBase[] = [];
   appConfigChanges$: Subscription;
-  shouldEmitScrollEvents: boolean;
+  shouldEmitScrollEvents: boolean = false;
   constructor(
     private route: ActivatedRoute,
     private appDataService: AppDataService,
@@ -45,9 +46,10 @@ export class TemplatePage implements OnInit, OnDestroy {
   private subscribeToAppConfigChanges() {
     this.appConfigChanges$ = this.appConfigService.changesWithInitialValue$.subscribe(
       (changes: IAppConfig) => {
-        if (changes.APP_HEADER_DEFAULTS?.collapse !== undefined) {
-          this.shouldEmitScrollEvents = changes.APP_HEADER_DEFAULTS?.collapse;
-        }
+        // TODO: current header collapse implementation does not work on ios, so do not enable on this platform
+        if (Capacitor.getPlatform() === "ios") return;
+
+        this.shouldEmitScrollEvents = !!changes.APP_HEADER_DEFAULTS?.collapse;
       }
     );
   }
