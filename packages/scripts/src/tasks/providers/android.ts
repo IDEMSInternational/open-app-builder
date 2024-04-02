@@ -3,7 +3,7 @@ import { Options, run } from "cordova-res";
 import fs from "fs";
 import { envReplace } from "@idemsInternational/env-replace";
 import { ROOT_DIR } from "../../paths";
-import { Logger } from "../../utils";
+import { Logger, generateVersionCode } from "../../utils";
 import { PATHS } from "shared";
 
 interface IAndroidBuildOptions {
@@ -147,17 +147,6 @@ const set_launcher_icon = async (options: {
 
   return await run(cordovaOptions);
 };
-
-/**
- * Convert version string formatted as "MAJOR.MINOR.PATCH" to numeric code
- * Uses 3 placeholder digits (0-999) representing each segment. E.g.
- * 2.4.1 =>         2|004|001
- * 200.40.125 =>  200|040|125
- */
-function generateVersionCode(versionName: string) {
-  const v = versionName.split(".");
-  return `${Number(v[0]) * 1000000 + Number(v[1] || 0) * 1000 + Number(v[2] || 0)}`;
-}
 
 export default {
   configure,
