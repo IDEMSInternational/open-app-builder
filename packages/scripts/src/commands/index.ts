@@ -50,8 +50,12 @@ export const parseCommand = async (cmd: string) => {
 };
 
 // Additional exports for direct consumption
-import { extendDeploymentConfig, generateDeploymentConfig } from "./deployment/common";
-export { extendDeploymentConfig, generateDeploymentConfig };
+import {
+  extendDeploymentConfig,
+  generateDeploymentConfig,
+  loadEncryptedConfig,
+} from "./deployment/common";
+export { extendDeploymentConfig, generateDeploymentConfig, loadEncryptedConfig };
 
 // Run the program directly when called via ts-node (e.g. start script)
 if (isTsNode) {

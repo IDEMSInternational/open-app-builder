@@ -2,7 +2,7 @@ import type { IGdriveEntry } from "../@idemsInternational/gdrive-tools";
 import type { IAppConfig } from "./appConfig";
 
 /** Update version to force recompile next time deployment set (e.g. after default config update) */
-export const DEPLOYMENT_CONFIG_VERSION = 20230930;
+export const DEPLOYMENT_CONFIG_VERSION = 20240314.0;
 
 export interface IDeploymentConfig {
   /** Friendly name used to identify the deployment name */
@@ -59,6 +59,30 @@ export interface IDeploymentConfig {
     sheets_filter_function: (flow: IFlowTypeBase) => boolean;
     /** filter function that receives basic file info such as relativePath and size. Default `(fileEntry)=>true`*/
     assets_filter_function: (fileEntry: IContentsEntry) => boolean;
+  };
+  /**
+   * Specify if using firebase for auth and crashlytics.
+   * Requires firebase config available through encrypted config */
+  firebase: {
+    /** Project config as specified in firebase console (recommend loading from encrypted environment) */
+    config?: {
+      apiKey: string;
+      authDomain: string;
+      databaseURL: string;
+      projectId: string;
+      storageBucket: string;
+      messagingSenderId: string;
+      appId: string;
+      measurementId: string;
+    };
+    auth: {
+      /** Enables `auth` actions to allow user sign-in/out */
+      enabled: boolean;
+    };
+    crashlytics: {
+      /** Enables app crash reports to firebase crashlytics */
+      enabled: boolean;
+    };
   };
   git: {
     /** Url of external git repo to store content */
@@ -141,6 +165,11 @@ export const DEPLOYMENT_CONFIG_EXAMPLE_DEFAULTS: IDeploymentConfig = {
     output_path: "packages/app-data",
     sheets_filter_function: (flow) => true,
     assets_filter_function: (fileEntry) => true,
+  },
+  firebase: {
+    config: null,
+    auth: { enabled: false },
+    crashlytics: { enabled: true },
   },
   ios: {},
   supabase: {

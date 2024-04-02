@@ -3,6 +3,7 @@ import { FirebaseCrashlytics } from "@capacitor-firebase/crashlytics";
 import { Capacitor } from "@capacitor/core";
 import { Device } from "@capacitor/device";
 import { AsyncServiceBase } from "../asyncService.base";
+import { environment } from "src/environments/environment";
 
 @Injectable({
   providedIn: "root",
@@ -19,7 +20,10 @@ export class CrashlyticsService extends AsyncServiceBase {
   }
   private async initialise() {
     if (Capacitor.isNativePlatform()) {
-      await this.setEnabled({ enabled: true });
+      const { firebase } = environment.deploymentConfig;
+      // Crashlytics is still supported on native device without firebase config (uses google-services.json)
+      // so use config property to toggle enabled instead
+      await this.setEnabled({ enabled: firebase?.crashlytics?.enabled });
       const { identifier: uuid } = await Device.getId();
       await this.setUserId({ userId: uuid });
       // populate webview useragent info
