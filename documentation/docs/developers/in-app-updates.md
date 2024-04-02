@@ -53,8 +53,8 @@ Manually delete folders from `www\assets\app_data\assets` to reduce size for eas
 
 2. Sync to android and open in android studio
 ```
-npx cap sync
-npx cap open
+npx cap sync android
+npx cap open android
 ```
 
 3. Create a debug build from android studio menu (assumes google.json populated locally)
@@ -68,7 +68,10 @@ _Build -> Build Bundles / APKs -> Build Bundle_
 
 6. Download the app from the internal link created. 
 
-7. Increase version (defined in deployment config `git.content_tag_latest`) and repeat steps 1-4
+7. Increase version (defined in deployment config `git.content_tag_latest`) and repeat steps 1-4. Increasing the version can be achieved by manually updating the deployment config file, or via the command
+```sh
+yarn run version --content
+```
 
 8. Follow link to new internal update but do not install (assume this makes device aware of potential update instead of waiting for store periodic check)
 
