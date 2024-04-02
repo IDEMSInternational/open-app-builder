@@ -47,16 +47,6 @@ This will present an interactive list of deployments to select from.
 
 See [Deployment Documentation](https://idemsinternational.github.io/parenting-app-ui/developers/deployments/) for information about creating and configuring deployments.
 
-### Firebase
-To be able to run the full project a specific configuration file needs to be included to access
-the online database and authentication methods.
-```
-$ cp src/environments/firebaseConfig.sample.ts src/environments/firebaseConfig.ts
-```
-The default file is blank. It should be replaced with a version requested from the dev team.
-
-(Note - this process will likely be simplified in the future)
-
 ## Running locally
 
 ### Start the local server

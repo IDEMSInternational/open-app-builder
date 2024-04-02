@@ -112,11 +112,8 @@ export class AppComponent {
       this.hackSetDeveloperOptions();
       const isDeveloperMode = this.templateFieldService.getField("user_mode") === false;
       const user = this.userMetaService.userMeta;
-      // Authentication requires verified domain and app ids populated to firebase console
-      // Currently only run on native where specified (but can comment out for testing locally)
-      if (this.appAuthenticationDefaults.enforceLogin && Capacitor.isNativePlatform()) {
-        await this.ensureUserSignedIn();
-      }
+      await this.loadAuthConfig();
+
       if (!user.first_app_open) {
         await this.userMetaService.setUserMeta({ first_app_open: new Date().toISOString() });
       }
@@ -143,16 +140,26 @@ export class AppComponent {
     });
   }
 
-  private async ensureUserSignedIn() {
-    const authUser = await this.authService.getCurrentUser();
-    if (!authUser) {
-      const templatename = this.appAuthenticationDefaults.signInTemplate;
-      const { modal } = await this.templateService.runStandaloneTemplate(templatename, {
-        showCloseButton: false,
-        waitForDismiss: false,
-      });
-      await this.authService.waitForSignInComplete();
-      await modal.dismiss();
+  /**
+   * Authentication requires verified domain and app ids populated to firebase console
+   * Currently only run on native where specified (but can comment out for testing locally)
+   */
+  private async loadAuthConfig() {
+    const { firebase } = environment.deploymentConfig;
+    const { enforceLogin } = this.appAuthenticationDefaults;
+    const ensureLogin = firebase.config && enforceLogin && Capacitor.isNativePlatform();
+    if (ensureLogin) {
+      this.authService.ready();
+      const authUser = await this.authService.getCurrentUser();
+      if (!authUser) {
+        const templatename = this.appAuthenticationDefaults.signInTemplate;
+        const { modal } = await this.templateService.runStandaloneTemplate(templatename, {
+          showCloseButton: false,
+          waitForDismiss: false,
+        });
+        await this.authService.waitForSignInComplete();
+        await modal.dismiss();
+      }
     }
   }
 

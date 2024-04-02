@@ -1,5 +1,28 @@
 # Web Previews
+Web previews can be configured for a deployment using the [reusable-deploy-web-preview](../../../.github\workflows\reusable-deploy-web-preview.yml) github action.
 
+The action requires a Firebase project to be setup, and environment variables set to specify the `FIREBASE_PROJECT_ID` and `FIREBASE_DEPLOYMENT_TARGET`
+
+This action should be called from a child content repo and configured as required. E.g.
+
+_.github/workflows/deploy-firebase.yml_
+```yml
+name: Deploy - Firebase
+
+on:
+  push:
+    branches:
+      - "main"
+
+jobs:
+  web_preview:
+    uses: IDEMSInternational/parenting-app-ui/.github/workflows/reusable-deploy-web-preview.yml@master
+    secrets: inherit
+```
+
+
+---
+# Legacy Docs
 A preview for a given app deployment, running in browser, can be generated via GitHub. The URL for this preview can then be shared. In general, these previews are accessible at `<deployment_name>.web.app`, e.g. [wash.web.app](https://wash.web.app/). When viewing a web preview, it is recommended to [enable device mode] in Chrome DevTools in order to simulate the mobile experience.
 
 ## Updating an existing web preview
