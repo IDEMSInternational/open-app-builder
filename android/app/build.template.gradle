@@ -1,14 +1,14 @@
 apply plugin: 'com.android.application'
 
 android {
-    namespace "international.idems.plh_teens"
+    namespace "${APP_ID}"
     compileSdkVersion rootProject.ext.compileSdkVersion
     defaultConfig {
-        applicationId "international.idems.plh_teens"
+        applicationId "${APP_ID}"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode *version_code*
-        versionName "*version_name*"
+        versionCode ${VERSION_CODE}
+        versionName "${VERSION_NAME}"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
