@@ -90,6 +90,12 @@ export interface IDeploymentConfig {
     /** Current tag of content for release */
     content_tag_latest?: string;
   };
+  ios: {
+    /** App Store unique app identifier, e.g. "international.idems.example_app" */
+    app_id?: string;
+    /** App Store app name, e.g. "Example App" */
+    app_name?: string;
+  };
   /** 3rd party integration for remote asset storage and sync */
   supabase: {
     enabled: boolean;
@@ -165,6 +171,7 @@ export const DEPLOYMENT_CONFIG_EXAMPLE_DEFAULTS: IDeploymentConfig = {
     auth: { enabled: false },
     crashlytics: { enabled: true },
   },
+  ios: {},
   supabase: {
     enabled: false,
   },
