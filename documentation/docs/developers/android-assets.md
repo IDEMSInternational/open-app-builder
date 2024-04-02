@@ -13,7 +13,7 @@ The splash image must be at least 2732×2732px. The static icon image must be at
 |![](./images/splash.png)|![](./images/icon.png)|![](./images/icon-background.png)|![](./images/icon-foreground.png)|
 
 
-## Generating splash screens and app icons
+## Configuring splash screens and app icons
 With `.png` files provided from which to generate the splash screen and app icons, their paths must be provided in the deployment `config` defined in the `.config.ts` file (see [Deployment Configuration](../deployments/) for a specification of this file). These paths are relative the root directory.
 
 For example:
@@ -33,11 +33,17 @@ const config: IDeploymentConfig = {
 };
 ...
 ```
-To generate the android assets, run
+## Generating Android assets through Github
+With the assets correctly configured as above, the splash screen and launch icon will automatically be generated when the `Android - Release to Google Play` action is run.
+
+## Generating Android assets locally
+To generate the android assets locally, run
 ```sh
 yarn workflow android
 ```
-Or, to generate just the splash screens or just the app icons, run
+This will also populate the Android configuration files with the values of `app_id` and `app_name` as specified in the [deployment config](./deployments.md#android-app-management).
+
+Alternatively, to generate just the splash screens or just the app icons, run
 ```sh
 yarn workflow android set_splash_image
 ```
