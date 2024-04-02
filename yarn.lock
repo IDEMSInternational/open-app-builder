@@ -4486,7 +4486,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@idemsInternational/env-replace@workspace:packages/@idemsInternational/env-replace":
+"@idemsInternational/env-replace@workspace:*, @idemsInternational/env-replace@workspace:packages/@idemsInternational/env-replace":
   version: 0.0.0-use.local
   resolution: "@idemsInternational/env-replace@workspace:packages/@idemsInternational/env-replace"
   dependencies:
@@ -14824,7 +14824,7 @@ __metadata:
     karma-coverage: ~2.2.0
     karma-jasmine: ~5.1.0
     karma-jasmine-html-reporter: ~2.0.0
-    katex: ^0.16.9
+    katex: ^0.16.10
     lint-staged: ^13.0.3
     lottie-web: ^5.12.2
     marked: ^2.1.3
@@ -18215,14 +18215,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"katex@npm:^0.16.9":
-  version: 0.16.9
-  resolution: "katex@npm:0.16.9"
+"katex@npm:^0.16.10":
+  version: 0.16.10
+  resolution: "katex@npm:0.16.10"
   dependencies:
     commander: ^8.3.0
   bin:
     katex: cli.js
-  checksum: 861194dfd4d86505e657f688fb73048d46ac498edafce71199502a35b03c0ecc35ba930c631be79c4a09d90a0d23476673cd52f6bc367c7a161854d64005fa95
+  checksum: 108e9d810e17840c43eef8d46171096f4cc97852bfd1e2dd1890d9b3435846816e3e98678a31d38bd064eb97eea83b18ff224cb65d5f9511b54ce7ff4359b591
   languageName: node
   linkType: hard
 
@@ -23303,6 +23303,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "scripts@workspace:packages/scripts"
   dependencies:
+    "@idemsInternational/env-replace": "workspace:*"
     "@idemsInternational/gdrive-tools": "workspace:*"
     "@idemsInternational/rapidpro-excel": "workspace:*"
     "@swc/core": ^1.3.29
