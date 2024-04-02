@@ -4,8 +4,8 @@
 import { CapacitorConfig } from "@capacitor/cli";
 
 const config: CapacitorConfig = {
-  appId: "international.idems.plh_teens",
-  appName: "PLH Teens",
+  appId: "international.idems.plh-facilitator-mx",
+  appName: "Formando Conciencia+",
   webDir: "www",
   plugins: {
     SplashScreen: {
