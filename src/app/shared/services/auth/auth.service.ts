@@ -1,12 +1,13 @@
 import { Injectable } from "@angular/core";
-import { Auth } from "@angular/fire/auth";
 import { FirebaseAuthentication, User } from "@capacitor-firebase/authentication";
 import { BehaviorSubject, firstValueFrom } from "rxjs";
 import { filter } from "rxjs/operators";
+import { environment } from "src/environments/environment";
 import { IAppConfig } from "../../model";
 import { AppConfigService } from "../app-config/app-config.service";
 import { SyncServiceBase } from "../syncService.base";
 import { TemplateActionRegistry } from "../../components/template/services/instance/template-action.registry";
+import { FirebaseService } from "../firebase/firebase.service";
 
 @Injectable({
   providedIn: "root",
@@ -17,17 +18,20 @@ export class AuthService extends SyncServiceBase {
 
   // include auth import to ensure app registered
   constructor(
-    auth: Auth,
     private appConfigService: AppConfigService,
-    private templateActionRegistry: TemplateActionRegistry
+    private templateActionRegistry: TemplateActionRegistry,
+    private firebaseService: FirebaseService
   ) {
     super("Auth");
     this.initialise();
   }
   private initialise() {
-    this.subscribeToAppConfigChanges();
-    this.addAuthListeners();
-    this.registerTemplateActionHandlers();
+    const { firebase } = environment.deploymentConfig;
+    if (firebase?.auth?.enabled && this.firebaseService.app) {
+      this.subscribeToAppConfigChanges();
+      this.addAuthListeners();
+      this.registerTemplateActionHandlers();
+    }
   }
 
   /** Return a promise that resolves after a signed in user defined */
@@ -56,8 +60,6 @@ export class AuthService extends SyncServiceBase {
           sign_in_google: async () => await this.signInWithGoogle(),
           sign_out: async () => await this.signOut(),
         };
-        // To support deprecated "share" action (previously used to share text only),
-        // assume text is being shared if first arg is not an actionId
         if (!(actionId in childActions)) {
           console.error(`[AUTH] - No action, "${actionId}"`);
           return;
