@@ -83,3 +83,12 @@ firebase.json
 private.key
 
 .nx
+
+# Native config files populated by scripts
+capacitor.config.ts
+capacitor.config.json
+android/app/build.gradle
+android/app/src/main/AndroidManifest.xml
+android/app/src/main/java/international/idems/debug_app/MainActivity.java
+android/app/src/main/res/values/strings.xml
+ios/App/App.xcodeproj/project.pbxproj
