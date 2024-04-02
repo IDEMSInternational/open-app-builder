@@ -156,11 +156,6 @@ jobs:
       # Exact population varies depending on whether is PR, release, dispatch etc.
       #############################################################################
 
-      # TODO - populate firebase as part of deployment set
-      - name: Populate firebaseConfig.ts
-        if: ${{env.FIREBASE_CONFIG_TS}}
-        run: echo $FIREBASE_CONFIG_TS > src/environments/firebaseConfig.ts
-
       - name: Populate git sha
         if: ${{env.GIT_SHA}}
         run: echo "export const GIT_SHA = \"$GIT_SHA\";" > src/environments/sha.ts

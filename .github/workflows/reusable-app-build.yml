@@ -80,10 +80,6 @@ jobs:
           if: env.DEPLOYMENT_PRIVATE_KEY != ''
           run: echo "${{env.DEPLOYMENT_PRIVATE_KEY}}" > ./.idems_app/deployments/${{env.DEPLOYMENT_NAME}}/encrypted/private.key
   
-        - name: Populate Firebase Config
-          if: env.FIREBASE_CONFIG != ''
-          run: echo 'export const firebaseConfig = ${{env.FIREBASE_CONFIG}}' > src/environments/firebaseConfig.ts
-  
         - name: Setup Node
           uses: actions/setup-node@v3
           with:

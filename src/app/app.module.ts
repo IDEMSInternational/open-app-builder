@@ -4,8 +4,6 @@ import { FormsModule } from "@angular/forms";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { RouteReuseStrategy } from "@angular/router";
 import { HttpClientModule } from "@angular/common/http";
-import { provideFirebaseApp, initializeApp } from "@angular/fire/app";
-import { getAuth, provideAuth } from "@angular/fire/auth";
 import { IonicModule, IonicRouteStrategy } from "@ionic/angular";
 
 // Libs
@@ -43,9 +41,6 @@ export function lottiePlayerFactory() {
     AppRoutingModule,
     HttpClientModule,
     SharedModule,
-    // Firebase
-    provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
-    provideAuth(() => getAuth()),
     FormsModule,
     LottieModule.forRoot({ player: lottiePlayerFactory }),
     // NOTE CC 2021-11-04 not sure if cache causes issues or not https://github.com/ngx-lottie/ngx-lottie/issues/115
