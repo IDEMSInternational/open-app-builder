@@ -32,11 +32,13 @@ export class TemplateParser extends DefaultParser {
     // convert any variables (local/global) list or collection strings (e.g. 'my_list_1')
     // in similar way to how top-level properties get converted by default parser
     if (row.value && typeof row.value === "string") {
-      if (row.name?.includes("_list")) {
+      if (row.name?.endsWith("_list") || row.name?.includes("_list_")) {
         row.value = this.parseTemplateList(row.value);
       }
-      if (row.name?.includes("_collection") && row.value && typeof row.value === "string") {
-        row.value = parseAppDataCollectionString(row.value);
+      if (row.name?.endsWith("_collection") || row.name?.includes("_collection_")) {
+        if (row.value && typeof row.value === "string") {
+          row.value = parseAppDataCollectionString(row.value);
+        }
       }
     }
     if (row.parameter_list) {

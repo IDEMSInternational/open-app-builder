@@ -5,7 +5,7 @@ import { arrayToHashmap, groupJsonByKey, IContentsEntry } from "../../utils";
 import BaseProcessor from "../base";
 
 export class FlowParserProcessor extends BaseProcessor<FlowTypes.FlowTypeWithData> {
-  public cacheVersion = 20240315.0;
+  public cacheVersion = 20240402.0;
 
   public parsers: { [flowType in FlowTypes.FlowType]: Parsers.DefaultParser } = {
     data_list: new Parsers.DataListParser(this),
@@ -14,6 +14,7 @@ export class FlowParserProcessor extends BaseProcessor<FlowTypes.FlowTypeWithDat
     global: new Parsers.DefaultParser(this),
     template: new Parsers.TemplateParser(this),
     tour: new Parsers.DefaultParser(this),
+    asset_pack: new Parsers.DefaultParser(this),
   };
 
   /** Keep a track of all processed flows by type and name (used in data_pipes)*/
