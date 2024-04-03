@@ -17,6 +17,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@idemsInternational/env-replace": "workspace:*",
     "@idemsInternational/gdrive-tools": "workspace:*",
     "@idemsInternational/rapidpro-excel": "workspace:*",
     "actions": "workspace:*",

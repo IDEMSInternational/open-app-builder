@@ -58,3 +58,14 @@ export async function openUrlDynamic(url: string) {
   // const open = (await dynamicImport("open", module)) as typeof import("open");
   // return open.default(url);
 }
+
+/**
+ * Convert version string formatted as "MAJOR.MINOR.PATCH" to numeric code
+ * Uses 3 placeholder digits (0-999) representing each segment. E.g.
+ * 2.4.1 =>         2|004|001
+ * 200.40.125 =>  200|040|125
+ */
+export function generateVersionCode(versionName: string) {
+  const v = versionName.split(".");
+  return `${Number(v[0]) * 1000000 + Number(v[1] || 0) * 1000 + Number(v[2] || 0)}`;
+}

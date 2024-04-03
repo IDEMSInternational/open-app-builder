@@ -337,12 +337,21 @@ export namespace FlowTypes {
     /** Keep a list of dynamic dependencies used within a template, by reference (e.g. {@local.var1 : ["text_1"]}) */
     _dynamicDependencies?: { [reference: string]: string[] };
     _translatedFields?: { [field: string]: any };
-    _evalContext?: { itemContext: any }; // force specific context variables when calculating eval statements (such as loop items)
-    _index?: number; // Added dynamically to some rows, i.e. those in item loops
+    _evalContext?: { itemContext: TemplateRowItemEvalContext }; // force specific context variables when calculating eval statements (such as loop items)
     __EMPTY?: any; // empty cells (can be removed after pr 679 merged)
   }
 
   export type IDynamicField = { [key: string]: IDynamicField | TemplateRowDynamicEvaluator[] };
+
+  export interface TemplateRowItemEvalContext {
+    // item metadata
+    _id: string;
+    _index: number;
+    _first: boolean;
+    _last: boolean;
+    // item data
+    [key: string]: any;
+  }
 
   type IDynamicPrefix = IAppConfig["DYNAMIC_PREFIXES"][number];
 
@@ -381,11 +390,16 @@ export namespace FlowTypes {
     "asset_pack",
     "audio_end",
     "audio_play",
+    "auth",
     "changed",
     "emit",
     "feedback",
     "go_to",
     "go_to_url",
+    /**
+     * @deprecated since v0.16.27
+     * Use `auth: sign_in_google` instead
+     * */
     "google_auth",
     "open_external",
     "pop_up",

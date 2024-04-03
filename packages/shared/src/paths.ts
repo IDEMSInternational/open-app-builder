@@ -20,5 +20,7 @@ export const AUTH_TOKEN_PATH = path.join(CONFIG_FOLDER_PATH, "token.json");
 
 export const RESOURCE_FOLDER_PATH = path.join(ROOT_DIR, "resources");
 
+export const ANDROID_PATH = path.join(ROOT_DIR, "android");
+
 export const ANDROID_RES_PATH = path.join(ROOT_DIR, "android/app/src/main/res");
 export const APP_BUILD_GRADLE_PATH = path.join(ROOT_DIR, "android/app/build.gradle");

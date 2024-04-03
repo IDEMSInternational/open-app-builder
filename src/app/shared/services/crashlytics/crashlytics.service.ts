@@ -1,8 +1,9 @@
 import { Injectable } from "@angular/core";
-import { FirebaseCrashlytics } from "@capacitor-community/firebase-crashlytics";
+import { FirebaseCrashlytics } from "@capacitor-firebase/crashlytics";
 import { Capacitor } from "@capacitor/core";
 import { Device } from "@capacitor/device";
 import { AsyncServiceBase } from "../asyncService.base";
+import { environment } from "src/environments/environment";
 
 @Injectable({
   providedIn: "root",
@@ -10,7 +11,7 @@ import { AsyncServiceBase } from "../asyncService.base";
 /**
  * Automates reporting of crash data to firebase crashlytics, and adds methods
  * to allow custom reporting for non-fatal exceptions (e.g. error messages)
- * https://github.com/capacitor-community/firebase-crashlytics
+ * https://github.com/capawesome-team/capacitor-firebase/tree/main/packages/crashlytics
  */
 export class CrashlyticsService extends AsyncServiceBase {
   constructor() {
@@ -19,22 +20,25 @@ export class CrashlyticsService extends AsyncServiceBase {
   }
   private async initialise() {
     if (Capacitor.isNativePlatform()) {
-      await this.setEnabled({ enabled: true });
+      const { firebase } = environment.deploymentConfig;
+      // Crashlytics is still supported on native device without firebase config (uses google-services.json)
+      // so use config property to toggle enabled instead
+      await this.setEnabled({ enabled: firebase?.crashlytics?.enabled });
       const { identifier: uuid } = await Device.getId();
       await this.setUserId({ userId: uuid });
       // populate webview useragent info
       const { webViewVersion } = await Device.getInfo();
-      await this.setContext({
+      await this.setCustomKey({
         key: "userAgent",
         type: "string",
         value: navigator.userAgent || "",
       });
-      await this.setContext({
+      await this.setCustomKey({
         key: "webViewVersion",
         type: "string",
         value: webViewVersion || "",
       });
-      await this.setContext({
+      await this.setCustomKey({
         key: "pathname",
         type: "string",
         value: location.pathname || "",
@@ -45,9 +49,9 @@ export class CrashlyticsService extends AsyncServiceBase {
 
   public recordException = FirebaseCrashlytics.recordException;
 
-  public addLogMessage = FirebaseCrashlytics.addLogMessage;
+  public log = FirebaseCrashlytics.log;
 
-  public setContext = FirebaseCrashlytics.setContext;
+  public setCustomKey = FirebaseCrashlytics.setCustomKey;
 
   private setUserId = FirebaseCrashlytics.setUserId;
 

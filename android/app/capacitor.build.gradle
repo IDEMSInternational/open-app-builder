@@ -10,8 +10,8 @@ android {
 apply from: "../capacitor-cordova-android-plugins/cordova.variables.gradle"
 dependencies {
     implementation project(':capacitor-community-file-opener')
-    implementation project(':capacitor-community-firebase-crashlytics')
     implementation project(':capacitor-firebase-authentication')
+    implementation project(':capacitor-firebase-crashlytics')
     implementation project(':capacitor-firebase-performance')
     implementation project(':capacitor-app')
     implementation project(':capacitor-clipboard')
