@@ -1,4 +1,4 @@
-<ion-content>
+<ion-content [scrollEvents]="shouldEmitScrollEvents">
   <plh-template-container
     *ngIf="templateName"
     [templatename]="templateName"

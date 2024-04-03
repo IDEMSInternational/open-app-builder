@@ -41,17 +41,6 @@ You will be prompted to specify the deployment type, this should be a `New Local
 
 See [Deployment Documentation](./developers/deployments.md) for more information about configuring deployments
 
-### Firebase
-To be able to run the full project a specific configuration file needs to be included to access
-the online database and authentication methods.
-```
-$ cp src/environments/firebaseConfig.sample.ts src/environments/firebaseConfig.ts
-```
-The default file is blank and so some features may not be available (e.g. testing google sign-in)
-It can be replaced with a version requested from the dev team.
-
-(Note - this process will likely be simplified in the future)
-
 ## Running locally
 
 ### Start the local server
