@@ -235,10 +235,10 @@ class RowProcessor {
       // handle custom fields
       if (!shouldSkip) {
         if (typeof value === "string") {
-          if (field.endsWith("_list")) {
+          if (field.endsWith("_list") || field.includes("_list_")) {
             this.row[field] = parseAppDataListString(value);
           }
-          if (field.endsWith("_collection")) {
+          if (field.endsWith("_collection") || field.includes("_collection_")) {
             this.row[field] = parseAppDataCollectionString(this.row[field]);
           }
           if (field.endsWith("action_list")) {

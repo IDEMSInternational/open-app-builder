@@ -48,13 +48,14 @@ describe("Template Parser PostProcessor", () => {
     ]);
   });
 
-  it("Converts rows with _list in name to templated list", () => {
-    // CASE 0 - Do not convert rows without _list in name
-    const case0 = parser.postProcessRow({
+  it("Converts rows ending _list or containing _list_ in name to templated list", () => {
+    // CASE 0 - Do not convert rows unless explicit includes _list_ or ends _list
+    const case0_1 = parser.postProcessRow({
       ...ROW_BASE,
+      name: "test_listen",
       value: "item_1; item_2; item_3;",
     });
-    expect(case0.value).toEqual("item_1; item_2; item_3;");
+    expect(case0_1.value).toEqual("item_1; item_2; item_3;");
 
     // CASE 1 - List items defined inline
     const case1 = parser.postProcessRow({
@@ -66,21 +67,21 @@ describe("Template Parser PostProcessor", () => {
     // CASE 2 - List refers to variable (do not parse)
     const case2 = parser.postProcessRow({
       ...ROW_BASE,
-      name: "test_list",
+      name: "test_list_2",
       value: "@local.some_list",
     });
     expect(case2.value).toEqual("@local.some_list");
     // CASE 3 - List items include variables
     const case3 = parser.postProcessRow({
       ...ROW_BASE,
-      name: "test_list",
+      name: "test_list_3",
       value: "@local.item_1; @local.item_2",
     });
     expect(case3.value).toEqual(["@local.item_1", "@local.item_2"]);
     // CASE 4 - List items as json (mix dynamic and missing)
     const case4 = parser.postProcessRow({
       ...ROW_BASE,
-      name: "test_list",
+      name: "test_list_4",
       value: "key_1a: textValue | key_1b: @local.value; key_2a:  | key_2b: 5",
     });
     expect(case4.value).toEqual([
