@@ -1,0 +1,54 @@
+.popup-backdrop {
+  height: 100vh;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.popup-backdrop[data-fullscreen] {
+  background: white;
+}
+.popup-container {
+  position: relative;
+  width: var(--content-max-width);
+  padding: 0 2rem;
+  margin: auto;
+}
+
+.popup-content {
+  margin: 30px auto;
+  max-height: calc(100vh - 60px);
+  background: white;
+  border-radius: 20px;
+  padding: 20px;
+  overflow: auto;
+}
+.popup-content[data-fullscreen] {
+  width: 100%;
+  height: 100vh;
+  max-height: 100vh;
+  border-radius: 0;
+  margin: 0;
+}
+.popup-content::-webkit-scrollbar {
+  display: none;
+}
+.close-button {
+  position: absolute;
+  top: 16px;
+  right: 22px;
+  background: white;
+  width: 40px;
+  height: 40px;
+  border-radius: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--ion-color-primary);
+  font-size: 24px;
+  z-index: 1;
+  box-shadow: var(--ion-default-box-shadow);
+  color: var(--ion-color-primary);
+}
