@@ -14,7 +14,9 @@ let { db_name, endpoint: API_ENDPOINT } = environment.deploymentConfig.api;
 
 // Override development credentials when running locally
 if (!environment.production) {
+  // Docker endpoint. Replace :3000 with /api if running standalone api
   API_ENDPOINT = "http://localhost:3000";
+  db_name = "dev";
 }
 
 /** Handle updating urls intended for api server */
