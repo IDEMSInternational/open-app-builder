@@ -6,6 +6,7 @@ import encryption from "./providers/encryption";
 import file from "./providers/file";
 import gdrive from "./providers/gdrive";
 import git from "./providers/git";
+import ios from "./providers/ios";
 import subtitles from "./providers/subtitles";
 import template from "./providers/template";
 import translate from "./providers/translate";
@@ -27,6 +28,7 @@ const ALL_TASKS = {
   file,
   gdrive,
   git,
+  ios,
   subtitles,
   template,
   translate,
