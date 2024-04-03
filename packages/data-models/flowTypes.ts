@@ -352,6 +352,7 @@ export namespace FlowTypes {
     // item data
     [key: string]: any;
   }
+  export const itemMetadataFieldNames = ["_id", "_index", "_first", "_last"];
 
   type IDynamicPrefix = IAppConfig["DYNAMIC_PREFIXES"][number];
 

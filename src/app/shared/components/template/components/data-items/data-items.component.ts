@@ -110,7 +110,7 @@ export class TmplDataItemsComponent extends TemplateBaseComponent implements OnD
       if (r.action_list) {
         r.action_list = r.action_list.map((a) => {
           if (a.action_id === "set_item") {
-            a.args = [this.dataListName, r._evalContext.itemContext._id];
+            a.args = [this.dataListName, itemDataIDs, itemIndex];
           }
           if (a.action_id === "set_items") {
             // TODO - add a check for @item refs and replace parameter list with correct values

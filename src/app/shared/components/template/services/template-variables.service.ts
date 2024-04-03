@@ -124,9 +124,15 @@ export class TemplateVariablesService extends AsyncServiceBase {
    * Could provide single list of approved fields, but as dynamic fields also can be found in parameter lists
    * would likely prove too restrictive
    **/
-  private shouldEvaluateField(fieldName: keyof FlowTypes.TemplateRow, omitFields: string[] = []) {
+  private shouldEvaluateField(
+    fieldName: keyof FlowTypes.TemplateRow | (typeof FlowTypes.itemMetadataFieldNames)[number],
+    omitFields: string[] = []
+  ) {
     if (omitFields.includes(fieldName)) return false;
-    if (fieldName.startsWith("_") && fieldName !== "_index") return false;
+    // Explicitly approve fields that are names of item metadata fields,
+    // E.g. for use in actions such as `click | set_item | _index: @item._index + 1, completed:false`
+    if (FlowTypes.itemMetadataFieldNames.includes(fieldName)) return true;
+    if (fieldName.startsWith("_")) return false;
     return true;
   }
 
