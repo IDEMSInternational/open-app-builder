@@ -20,11 +20,11 @@ async function bootstrap() {
     .setDescription("App-Server Communication")
     .setVersion(version)
     .addTag("api")
-    // .setBasePath("/api")
     // Fix swagger redirection issue
     // https://github.com/nestjs/swagger/issues/448
     // https://stackoverflow.com/questions/63954037/nestjs-swagger-missing-base-path
-    .addServer(environment.API_BASE_PATH ? `/${environment.API_BASE_PATH}` : "")
+    // Ensure api base path populated as /api (not /api/ or similar)
+    .addServer(environment.API_BASE_PATH ? `/${environment.API_BASE_PATH.replace(/\//g, "")}` : "")
     .build();
   const document = SwaggerModule.createDocument(app, config, { ignoreGlobalPrefix: true });
   // add export for docs (https://github.com/nestjs/swagger/issues/158)

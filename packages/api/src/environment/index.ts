@@ -27,11 +27,16 @@ function loadEnv() {
   const { NODE_ENV } = process.env;
 
   let envFilePath = resolve(__dirname, "../../.env");
+  // Hack - update path if running from compiled dist folder
+  if (envFilePath.includes("dist")) {
+    envFilePath = resolve(envFilePath, "../../.env");
+  }
   if (NODE_ENV === "test") {
     envFilePath = resolve(__dirname, "../../test/.test.env");
   }
   // In production env vars are passed from docker container instead of local file
   if (!existsSync(envFilePath)) {
+    console.log(envFilePath);
     console.warn("Env file does not exist, using local env variables", Object.keys(process.env));
     return;
   }
