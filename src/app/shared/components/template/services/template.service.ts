@@ -4,7 +4,10 @@ import { AppDataService } from "src/app/shared/services/data/app-data.service";
 import { DbService } from "src/app/shared/services/db/db.service";
 import { FlowTypes } from "src/app/shared/model";
 import { ModalController } from "@ionic/angular";
-import { ITemplatePopupComponentProps, TemplatePopupComponent } from "../components/layout/popup";
+import {
+  ITemplatePopupComponentProps,
+  TemplatePopupComponent,
+} from "../components/layout/popup/popup.component";
 import { TemplateTranslateService } from "./template-translate.service";
 import { IFlowEvent } from "data-models";
 import { TemplateVariablesService } from "./template-variables.service";
