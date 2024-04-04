@@ -19,7 +19,7 @@ import { SquareIconButtonComponent } from "./square-icon-button/square-icon-butt
 import { TemplateBaseComponent } from "./base";
 import { TemplateDebuggerComponent } from "./debugger";
 import { TemplateHTMLComponent } from "./html/html.component";
-import { TemplatePopupComponent } from "./layout/popup";
+import { TemplatePopupComponent } from "./layout/popup/popup.component";
 
 import { TmplAccordionComponent } from "./accordion/accordion.component";
 import { TmplAdvancedDashedBoxComponent } from "./layout/advanced-dashed-box/advanced-dashed-box.component";
