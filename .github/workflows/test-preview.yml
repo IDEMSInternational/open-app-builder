@@ -1,7 +1,7 @@
 env:
   # Actions environment to load for secrets and variables
   # See child web-build action for vars and secrets required
-  DEPLOYMENT_ENV: DEBUG
+  DEPLOYMENT_ENV: debug
   FIREBASE_HOSTING_TARGET: ${{vars.FIREBASE_HOSTING_TARGET}}
 
 name: Deployment Preview
