@@ -23,9 +23,11 @@ const config: CapacitorConfig = {
     /**
      * NOTE - to support live-reload on external device (e.g. emulator)
      * 1) Uncomment url and replace with local ip to serve live-reload on local device
-     * 2) Sync to capacitor `npx cap sync`
-     * 3) Serve via `yarn ng serve --configuration=external`
-     * 4) Run app from android studio `npx cap open android` and run
+     * 2) Either edit capacitor.config.ts directly, or if editing capacitor.config.template.ts,
+     *    run `yarn workflow <platform> configure`, replacing `<platform>` with either ios or android
+     * 3) Sync to capacitor `npx cap sync`
+     * 4) Serve via `yarn ng serve --configuration=external`
+     * 5) Run app from android studio or xcode: `npx cap open <platform>` and run
      * Local browser (localhost:4000), device app and device browser ([ip]:4200) should all be able to access served app
      **/
     // url: "http://192.168.50.67:4200",
