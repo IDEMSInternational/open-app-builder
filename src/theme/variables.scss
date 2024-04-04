@@ -15,6 +15,9 @@
 
 /** Ionic CSS Variables **/
 :root {
+  // The total height of the central safe area of the device viewport
+  --safe-area-height: calc(100vh - var(--ion-safe-area-top, 0) - var(--ion-safe-area-bottom, 0));
+
   // Margins //
   --tiny-margin: 5px;
   --small-margin: 10px;
