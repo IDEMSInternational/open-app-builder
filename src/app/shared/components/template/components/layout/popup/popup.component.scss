@@ -10,18 +10,18 @@
     width: var(--content-max-width);
     padding: 0 2rem;
     margin: auto;
+    margin-top: var(--ion-safe-area-top, 0);
+    margin-bottom: var(--ion-safe-area-bottom, 0);
   }
   &[data-fullscreen] {
     background: white;
     .popup-container {
-      margin-top: var(--ion-safe-area-top, 0);
-      margin-bottom: var(--ion-safe-area-bottom, 0);
       height: var(--safe-area-height);
     }
   }
   .popup-content {
     margin: 30px auto;
-    max-height: calc(100vh - 60px);
+    max-height: calc(var(--safe-area-height) - 60px);
     background: white;
     border-radius: 20px;
     padding: 20px;
