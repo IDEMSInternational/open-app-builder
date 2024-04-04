@@ -120,7 +120,7 @@ export class TemplateVariablesService extends AsyncServiceBase {
   }
 
   /**
-   * Inore evaluation of meta, comment, and specifiedfields.
+   * Ignore evaluation of meta, comment, and specifiedfields.
    * Could provide single list of approved fields, but as dynamic fields also can be found in parameter lists
    * would likely prove too restrictive
    **/
@@ -129,7 +129,7 @@ export class TemplateVariablesService extends AsyncServiceBase {
     omitFields: string[] = []
   ) {
     if (omitFields.includes(fieldName)) return false;
-    // Explicitly approve fields that are names of item metadata fields,
+    // Evaluate fields that are names of item metadata fields, e.g. "_index", "_id",
     // E.g. for use in actions such as `click | set_item | _index: @item._index + 1, completed:false`
     if (FlowTypes.itemMetadataFieldNames.includes(fieldName)) return true;
     if (fieldName.startsWith("_")) return false;
