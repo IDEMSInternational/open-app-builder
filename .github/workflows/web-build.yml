@@ -70,7 +70,7 @@ jobs:
       GIT_SHA: ${{ steps.populate.outputs.GIT_SHA }}
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           ref: ${{inputs.branch}}
 
@@ -89,7 +89,7 @@ jobs:
     env:
       GIT_SHA: ${{ needs.configure_build.outputs.GIT_SHA }}
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           lfs: ${{inputs.lfs}}
           ref: ${{inputs.branch}}
@@ -132,7 +132,7 @@ jobs:
         run: echo "export const GIT_SHA = \"$GIT_SHA\";" > src/environments/sha.ts
 
       - name: Import remote deployment
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           repository: ${{env.DEPLOYMENT_REPO}}
           lfs: ${{inputs.lfs}}
