@@ -2,6 +2,7 @@ env:
   # Actions environment to load for secrets and variables
   # See child web-build action for vars and secrets required
   FIREBASE_HOSTING_TARGET: ${{vars.FIREBASE_HOSTING_TARGET}}
+  FIREBASE_PROJECT_ID: ${{vars.FIREBASE_PROJECT_ID}}
 
 name: Deployment Preview
 on:
@@ -24,8 +25,7 @@ jobs:
   deploy_preview:
     needs: build
     runs-on: ubuntu-latest
-    environment: 
-      name: debug
+    environment: debug
     steps:
       - uses: actions/checkout@v3
       - name: Download Build Artifact
@@ -38,15 +38,18 @@ jobs:
           tar -xf artifact.tar --directory www
       # HACK - although deployments set their firebase.json from config the file is
       # not passed back from artifact so hardcode via action
-      - name: Populate firebase.json
+      - name: Populate firebase config
         run: |
           cp firebase.template.json firebase.json
           sed -i 's/${FIREBASE_HOSTING_TARGET}/${{ env.FIREBASE_HOSTING_TARGET }}/g' firebase.json
+          cp .template.firebaserc .firebaserc
+          sed -i 's/${FIREBASE_HOSTING_TARGET}/${{ env.FIREBASE_HOSTING_TARGET }}/g' .firebaserc
+          sed -i 's/${FIREBASE_PROJECT_ID}/${{ env.FIREBASE_PROJECT_ID }}/g' .firebaserc
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: "${{ secrets.GITHUB_TOKEN }}"
           firebaseServiceAccount: "${{ secrets.FIREBASE_SERVICE_ACCOUNT_PLH_TEENS_APP1 }}"
-          projectId: plh-teens-app1
+          projectId: ${{env.FIREBASE_PROJECT_ID}}
           target: "${{env.FIREBASE_HOSTING_TARGET}}"
           expires: 14d
         env:
