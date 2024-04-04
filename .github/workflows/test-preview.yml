@@ -20,7 +20,7 @@ jobs:
     secrets: inherit
     with:
       build-flags: --configuration "production,preview"
-      deployment-env: ${{env.DEPLOYMENT_ENV}}
+      deployment-env: ${{github.env.DEPLOYMENT_ENV}}
 
   deploy_preview:
     needs: build
