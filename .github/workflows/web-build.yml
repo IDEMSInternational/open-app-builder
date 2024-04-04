@@ -26,6 +26,7 @@ on:
     inputs:
       deployment-env:
         description: Name of environment to load deployment variables from
+        type: string
         required: true
         default: debug
       build-flags:
