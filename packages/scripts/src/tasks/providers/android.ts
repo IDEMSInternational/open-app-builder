@@ -43,8 +43,9 @@ const configure = async ({ appId, appName, versionName }: IAndroidBuildOptions) 
       VERSION_CODE: versionCode,
       VERSION_NAME: versionName,
     },
-    // do not overwrite ${applicationId} variable in AndroidManifest template
-    excludeVariables: ["applicationId"],
+    // Only replace the following variables
+    includeVariables: ["APP_ID", "APP_NAME", "VERSION_CODE", "VERSION_NAME"],
+    // excludeVariables: ["applicationId"],
   });
 
   // Move files where template not already located in correct folder (various reasons below)
