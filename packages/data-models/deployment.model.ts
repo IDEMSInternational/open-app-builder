@@ -161,8 +161,7 @@ export const DEPLOYMENT_CONFIG_EXAMPLE_DEFAULTS: IDeploymentConfig = {
     sheets_path: "./sheets",
   },
   app_data: {
-    // TODO - change to local ./app-data folder once git repos in use
-    output_path: "packages/app-data",
+    output_path: "./app-data",
     sheets_filter_function: (flow) => true,
     assets_filter_function: (fileEntry) => true,
   },
