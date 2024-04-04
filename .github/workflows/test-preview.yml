@@ -1,7 +1,6 @@
 env:
   # Actions environment to load for secrets and variables
   # See child web-build action for vars and secrets required
-  DEPLOYMENT_ENV: debug
   FIREBASE_HOSTING_TARGET: ${{vars.FIREBASE_HOSTING_TARGET}}
 
 name: Deployment Preview
@@ -20,13 +19,13 @@ jobs:
     secrets: inherit
     with:
       build-flags: --configuration "production,preview"
-      deployment-env: ${{github.env.DEPLOYMENT_ENV}}
+      deployment-env: debug
 
   deploy_preview:
     needs: build
     runs-on: ubuntu-latest
     environment: 
-      name: ${{github.env.DEPLOYMENT_ENV}}
+      name: debug
     steps:
       - uses: actions/checkout@v3
       - name: Download Build Artifact
