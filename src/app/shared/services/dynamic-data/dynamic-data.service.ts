@@ -74,19 +74,22 @@ export class DynamicDataService extends AsyncServiceBase {
        * click | set_item | _index: @item._index + 1, completed:true;
        */
       set_item: async ({ args, params }) => {
-        const [flow_name, row_ids, row_id] = args;
+        const [flow_name, itemDataIDs, itemIndex] = args;
         const { _index, _id, ...writeableProps } = params;
 
+        console.log("_index", _index);
+        console.log("_id", _id);
+        console.log("writeableProps", writeableProps);
         // Target current row if another target is not explicitly provided
-        let targetRowId = row_id;
+        let targetRowId = itemDataIDs[itemIndex];
         if (_index !== undefined) {
-          targetRowId = row_ids[_index];
+          targetRowId = itemDataIDs[_index];
         }
         if (_id) {
           targetRowId = _id;
         }
 
-        if (row_ids.includes(targetRowId)) {
+        if (itemDataIDs.includes(targetRowId)) {
           console.log(
             `[SET ITEM] - Setting properties on ${targetRowId}: ${JSON.stringify(writeableProps)}`
           );
