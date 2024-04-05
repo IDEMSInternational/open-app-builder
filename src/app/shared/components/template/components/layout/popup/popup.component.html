@@ -1,0 +1,21 @@
+<div
+  class="popup-backdrop"
+  (click)="dismissOnBackdrop($event)"
+  [attr.data-fullscreen]="props.fullscreen ? true : null"
+>
+  <div class="popup-container">
+    <div (click)="dismiss()" class="close-button" fill="clear" *ngIf="props.showCloseButton">
+      <ion-icon slot="icon-only" name="close"></ion-icon>
+    </div>
+    <div class="popup-content" [attr.data-fullscreen]="props.fullscreen ? true : null">
+      <plh-template-container
+        class="template-container"
+        [name]="props.name"
+        [templatename]="props.templatename"
+        [parent]="props.parent"
+        [row]="props.row"
+        (emittedValue)="handleEmittedValue($event)"
+      ></plh-template-container>
+    </div>
+  </div>
+</div>

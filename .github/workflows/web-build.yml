@@ -3,10 +3,9 @@
 # These variables will be populated from environment
 ##################################################################################
 env:
-  DEPLOYMENT_NAME_DEFAULT: debug
   DEPLOYMENT_REPO: ${{vars.DEPLOYMENT_REPO}}
-  DEPLOYMENT_PRIVATE_KEY: ${{secrets.DEPLOYMENT_PRIVATE_KEY}}
-  FIREBASE_CONFIG_TS: ${{secrets.FIREBASE_CONFIG_TS}}
+  DEPLOYMENT_NAME: ${{vars.DEPLOYMENT_NAME}}
+  DEPLOYMENT_REPO_PRIVATE_KEY: ${{secrets.DEPLOYMENT_PRIVATE_KEY}}
 
 ##################################################################################
 #         Main Code
@@ -25,18 +24,17 @@ on:
     # Optional variables to configure from parent workflow via workflow_call
     #############################################################################
     inputs:
+      deployment-env:
+        description: Name of environment to load deployment variables from
+        type: string
+        required: true
+        default: debug
       build-flags:
         description: Additional flags to pass to build command (e.g. base-href)
         type: string
         default: ""
       branch:
         description: Name of branch to build (defaults to event trigger sha)
-        type: string
-        default: ""
-      deployment:
-        description: |
-          Target deployment name. If branch name provided will take suffix (`prod/my_deployment` -> `my_deployment`). 
-          Will load variables from named deployment environment 
         type: string
         default: ""
       include-tests:
@@ -64,43 +62,17 @@ on:
         value: ${{ jobs.configure_build.outputs.GIT_SHA }}
 
 jobs:
-  #############################################################################
-  #         configure Build
-  # Deployment-specific variables are loaded from deployment name environment contexts
-  # stored on github actions.
-  # Determine which set of environment variables to load, depending on passed inputs,
-  # target branch names or default fallback
-  # Populate variables to use as inputs in next build job
-  # Pattern found in this question: https://github.com/actions/runner/issues/998#issue-817330769
-  # Outputs here will also be made available to parent workflows via workflow_call outputs
-  #############################################################################
+
   configure_build:
+    environment: ${{inputs.deployment-env}}
     outputs:
       DEPLOYMENT_NAME: ${{ steps.populate.outputs.DEPLOYMENT_NAME }}
       GIT_SHA: ${{ steps.populate.outputs.GIT_SHA }}
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           ref: ${{inputs.branch}}
-
-      - name: Set named input environment
-        if: ${{ inputs.environment }}
-        run: |
-          echo "DEPLOYMENT_NAME=${{inputs.environment}}" >> $GITHUB_ENV;  
-        shell: bash
-
-      - name: Set environment from target
-        if: ${{inputs.deployment && inputs.deployment != 'master' && inputs.deployment!='refs/heads/master'}}
-        run: |
-          echo "DEPLOYMENT_NAME=$(echo ${{inputs.deployment}} | sed 's/.*\///')" >> $GITHUB_ENV;
-        shell: bash
-
-      - name: Set default environment
-        if: ${{ !env.DEPLOYMENT_NAME }}
-        run: |
-          echo "DEPLOYMENT_NAME=$DEPLOYMENT_NAME_DEFAULT" >> $GITHUB_ENV;  
-        shell: bash
 
       # Output determined environment name alongside git SHA (for use in error logging)
       - name: Populate Outputs
@@ -116,9 +88,8 @@ jobs:
     environment: ${{needs.configure_build.outputs.DEPLOYMENT_NAME}}
     env:
       GIT_SHA: ${{ needs.configure_build.outputs.GIT_SHA }}
-      DEPLOYMENT_NAME: ${{ needs.configure_build.outputs.DEPLOYMENT_NAME }}
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           lfs: ${{inputs.lfs}}
           ref: ${{inputs.branch}}
@@ -161,8 +132,7 @@ jobs:
         run: echo "export const GIT_SHA = \"$GIT_SHA\";" > src/environments/sha.ts
 
       - name: Import remote deployment
-        if: ${{env.DEPLOYMENT_REPO}}
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           repository: ${{env.DEPLOYMENT_REPO}}
           lfs: ${{inputs.lfs}}
@@ -170,9 +140,9 @@ jobs:
           # TODO - add support for specific branch/release
 
       - name: Set deployment private key
-        if: ${{env.DEPLOYMENT_PRIVATE_KEY}}
+        if: ${{env.DEPLOYMENT_REPO_PRIVATE_KEY}}
         run:
-          echo $DEPLOYMENT_PRIVATE_KEY > .idems_app/deployments/$DEPLOYMENT_NAME/encrypted/private.key
+          echo $DEPLOYMENT_REPO_PRIVATE_KEY > .idems_app/deployments/$DEPLOYMENT_NAME/encrypted/private.key
 
       - name: Set deployment
         run: yarn workflow deployment set ${{env.DEPLOYMENT_NAME}}
