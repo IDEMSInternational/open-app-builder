@@ -22,16 +22,6 @@ export class AppUsersController {
     return this.appUsersService.model.findAll();
   }
 
-  // @Get(":app_user_id")
-  // findOne(@Param("app_user_id") app_user_id: string): Promise<AppUser> {
-  //   return this.appUsersService.findOne(app_user_id);
-  // }
-
-  // @Delete(":id")
-  // remove(@Param("id") id: string): Promise<void> {
-  //   return this.appUsersService.remove(id);
-  // }
-
   @Get(":app_user_id")
   @ApiParam({ name: "app_user_id", type: String })
   @ApiOperation({ summary: "Get user profile" })
