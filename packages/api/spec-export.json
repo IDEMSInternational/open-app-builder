@@ -8,6 +8,7 @@
         "parameters": [
           {
             "name": "x-deployment-db-name",
+            "required": true,
             "in": "header",
             "description": "Name of db for deployment to populate",
             "schema": {
@@ -520,7 +521,7 @@
   "info": {
     "title": "IDEMS Apps API",
     "description": "App-Server Communication",
-    "version": "1.3.0",
+    "version": "1.4.4",
     "contact": {}
   },
   "tags": [
