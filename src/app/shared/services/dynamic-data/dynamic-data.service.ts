@@ -77,9 +77,6 @@ export class DynamicDataService extends AsyncServiceBase {
         const [flow_name, itemDataIDs, itemIndex] = args;
         const { _index, _id, ...writeableProps } = params;
 
-        console.log("_index", _index);
-        console.log("_id", _id);
-        console.log("writeableProps", writeableProps);
         // Target current row if another target is not explicitly provided
         let targetRowId = itemDataIDs[itemIndex];
         if (_index !== undefined) {
