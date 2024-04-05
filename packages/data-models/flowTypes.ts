@@ -406,7 +406,6 @@ export namespace FlowTypes {
     "pop_up",
     "process_template",
     "reset_app",
-    "reset_data",
     "save_to_device",
     "set_field",
     "set_item",

@@ -70,7 +70,7 @@ export class DynamicDataService extends AsyncServiceBase {
        * Write properties on the current item (default), or on an explicitly targeted item,
        * e.g.
        * click | set_item | completed:true;
-       * click | set_item | id: @item.id, completed:true;
+       * click | set_item | _id: @item.id, completed:true;
        * click | set_item | _index: @item._index + 1, completed:true;
        */
       set_item: async ({ args, params }) => {
