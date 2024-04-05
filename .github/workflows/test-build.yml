@@ -13,4 +13,4 @@ jobs:
       skip-upload: true
       # When testing build binary assets not required
       lfs: false 
-      deployment: debug
+      deployment-env: debug
