@@ -52,7 +52,7 @@ You should be able to access the dashboard at http://localhost (will redirect)
 http://localhost/dbadmin/
 
 Login details
-```
+```yml
 System: PostgreSQL
 Server: db
 Username: (POSTGRES_USER in .env)
@@ -79,7 +79,7 @@ http://localhost/dashboard/
 A new database will need to be created to allow access for metabase. This should be automatically configured in [docker/config/db/init.sh](./docker/config/db/init.sh), however if these steps fail they can be run manually (currently a bit temperamental - TODO ISSUE - will know if successful if can see a database created that matches the provided $MB_DB_DBNAME).
 
 Manual SQL can be executed from the Adminer DB interface, e.g. using the example config:
-```
+```sql
 CREATE USER metabase WITH PASSWORD 'metabase';
 CREATE DATABASE metabase;
 GRANT ALL PRIVILEGES ON DATABASE metabase to metabase;
@@ -88,13 +88,13 @@ GRANT ALL PRIVILEGES ON DATABASE metabase to metabase;
 Once running complete configuration from within the dashboard app. 
 
 Create a user account using preferred credentials and retain securely elsewhere. As a default when running test servers in docker the following credentials are used
-```
+```yml
 email: demo@demo.com
 password: demo1234
 ```
 
 Configure connection to the same database created by the api:
-```
+```yml
 Database type: PostgreSQL
 Name: (any)
 Host: db
@@ -111,7 +111,7 @@ You should then see the main dashboard page
 http://localhost/analytics/
 
 An initial set of configuration screens should walk through the process of setting up users and a database connection. If connection fails or additional users need to be created the database can be accessed via the same Adminer `/dbadmin` path and `root` user credentials
-```
+```yml
 System: MySQL
 Server: analytics_db
 Username: root
@@ -120,13 +120,13 @@ Database: (blank)
 ```
 You will be asked to create a super user login and password. This information should be stored safely.
 As a default when running test servers in docker the following credentials are used
-```
+```yml
 email: demo@demo.com
 password: demo1234
 ```
 
 To enable data collection from the frontend application follow instructions in the dashboard. You may need to record the Matomo Url and site ID as seen on the initial page, e.g.
-```
+```yml
 Matomo URL: http://localhost/
 Your site ID: 1
 ```
@@ -150,7 +150,7 @@ http://localhost/triggers/
 This uses the tool [N8N](https://n8n.io/) to provide access to automation and triggers based on events.
 Currently the tool only supports single user authentication provided by username and password provided in the `.env` file
 
-```
+```yml
 Username: ($N8N_BASIC_AUTH_USER in .env)
 Password: ($N8N_BASIC_AUTH_PASSWORD in .env)
 ```

@@ -1,17 +1,17 @@
-# Deploy preview url for labelled PRs
-# Specifies deployment target based on pr target branch
-# Master -> debug
-# Deployment/{deployment_name} -> {deployment_name}
+env:
+  # Actions environment to load for secrets and variables
+  # See child web-build action for vars and secrets required
+  FIREBASE_HOSTING_TARGET: ${{vars.FIREBASE_HOSTING_TARGET}}
+  FIREBASE_PROJECT_ID: ${{vars.FIREBASE_PROJECT_ID}}
 
 name: Deployment Preview
 on:
   pull_request:
     types: [labeled, synchronize]
     branches:
-      - deployment/*
       - master
 concurrency:
-  group: deployment-preview-${{ github.workflow }}-${{ github.ref }}
+  group: test-preview-${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 jobs:
   build:  
@@ -20,15 +20,14 @@ jobs:
     secrets: inherit
     with:
       build-flags: --configuration "production,preview"
-      # use branch name from PR target as default
-      # https://docs.github.com/en/actions/learn-github-actions/variables#default-environment-variables
-      deployment: ${{ github.base_ref }} 
+      deployment-env: debug
 
   deploy_preview:
     needs: build
     runs-on: ubuntu-latest
+    environment: debug
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Download Build Artifact
         uses: actions/download-artifact@v3
         with:
@@ -37,12 +36,21 @@ jobs:
         run: |
           mkdir www
           tar -xf artifact.tar --directory www
+      # HACK - although deployments set their firebase.json from config the file is
+      # not passed back from artifact so hardcode via action
+      - name: Populate firebase config
+        run: |
+          cp firebase.template.json firebase.json
+          sed -i 's/${FIREBASE_HOSTING_TARGET}/${{ env.FIREBASE_HOSTING_TARGET }}/g' firebase.json
+          cp .template.firebaserc .firebaserc
+          sed -i 's/${FIREBASE_HOSTING_TARGET}/${{ env.FIREBASE_HOSTING_TARGET }}/g' .firebaserc
+          sed -i 's/${FIREBASE_PROJECT_ID}/${{ env.FIREBASE_PROJECT_ID }}/g' .firebaserc
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: "${{ secrets.GITHUB_TOKEN }}"
           firebaseServiceAccount: "${{ secrets.FIREBASE_SERVICE_ACCOUNT_PLH_TEENS_APP1 }}"
-          projectId: plh-teens-app1
-          target: "${{needs.build.outputs.DEPLOYMENT_NAME}}"
+          projectId: ${{env.FIREBASE_PROJECT_ID}}
+          target: "${{env.FIREBASE_HOSTING_TARGET}}"
           expires: 14d
         env:
           FIREBASE_CLI_PREVIEWS: hostingchannels

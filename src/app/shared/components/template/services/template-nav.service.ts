@@ -6,7 +6,10 @@ import { first } from "rxjs/operators";
 import { FlowTypes } from "src/app/shared/model";
 import { SyncServiceBase } from "src/app/shared/services/syncService.base";
 import { arrayToHashmapArray, parseBoolean } from "src/app/shared/utils";
-import { ITemplatePopupComponentProps, TemplatePopupComponent } from "../components/layout/popup";
+import {
+  ITemplatePopupComponentProps,
+  TemplatePopupComponent,
+} from "../components/layout/popup/popup.component";
 import { ITemplateContainerProps } from "../models";
 import { TemplateContainerComponent } from "../template-container.component";
 
