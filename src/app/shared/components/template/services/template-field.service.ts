@@ -7,25 +7,31 @@ import { booleanStringToBoolean } from "src/app/shared/utils";
 import { TemplateTranslateService } from "./template-translate.service";
 import { AsyncServiceBase } from "src/app/shared/services/asyncService.base";
 import { TemplateActionRegistry } from "./instance/template-action.registry";
+import { AppConfigService } from "src/app/shared/services/app-config/app-config.service";
 
 @Injectable({ providedIn: "root" })
 export class TemplateFieldService extends AsyncServiceBase {
   globals: { [name: string]: FlowTypes.GlobalRow } = {};
 
+  /** App config prefix used */
+  public prefix: string;
+
   constructor(
     private localStorageService: LocalStorageService,
     private dbService: DbService,
     private translateService: TemplateTranslateService,
-    private templateActionRegistry: TemplateActionRegistry
+    private templateActionRegistry: TemplateActionRegistry,
+    private appConfigService: AppConfigService
   ) {
     super("TemplateField");
     this.registerInitFunction(this.initialise);
     this.registerTemplateActionHandlers();
+    this.prefix = appConfigService.APP_CONFIG.FIELD_PREFIX;
   }
 
   private async initialise() {
     await this.ensureAsyncServicesReady([this.dbService, this.translateService]);
-    this.ensureSyncServicesReady([this.localStorageService]);
+    this.ensureSyncServicesReady([this.localStorageService, this.appConfigService]);
   }
 
   private registerTemplateActionHandlers() {
@@ -49,7 +55,7 @@ export class TemplateFieldService extends AsyncServiceBase {
    * TODO - ideally showWarnings should be linked to some sort of debug mode
    */
   public getField(key: string, showWarnings = true) {
-    let val: any = this.localStorageService.getString("rp-contact-field." + key);
+    let val: any = this.localStorageService.getString(`${this.prefix}.${key}`);
     // provide a fallback if the target variable does not exist in local storage
     if (val === null && showWarnings) {
       // console.warn("field value not found for key:", key);
@@ -80,7 +86,7 @@ export class TemplateFieldService extends AsyncServiceBase {
       }
     }
     // write to local storage - this will cast to string
-    this.localStorageService.setString("rp-contact-field." + key, value);
+    this.localStorageService.setString(`${this.prefix}.${key}`, value);
 
     // write to db - note this can handle more data formats but only string/number will be available to queries
     if (typeof value === "boolean") value = "value";
