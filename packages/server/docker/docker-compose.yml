@@ -46,7 +46,7 @@ services:
     #   context: ../../api
     #   dockerfile: Dockerfile
     #   target: prod-env
-    image: idems/apps-api:1.4.3
+    image: idems/apps-api:1.4.4
     env_file:
       - ../../api/.env
     environment:
@@ -89,7 +89,7 @@ services:
   # Postgres DB admin (pgadmin)
   ####################################################################
   pgadmin:
-    image: dpage/pgadmin4:6
+    image: dpage/pgadmin4:8
     container_name: plh_pg_admin
     restart: unless-stopped
     env_file:
