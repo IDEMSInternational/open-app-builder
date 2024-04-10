@@ -11,6 +11,10 @@ $background-secondary: var(--button-background-secondary, var(--gradient-seconda
     display: contents;
   }
 }
+// ensure relative position on parent if absolute position children nested inside
+[data-has-children] {
+  position: relative;
+}
 ion-button {
   font-size: var(--buttons-font-size-small);
   font-weight: var(--font-weight-standard);
