@@ -1,6 +1,8 @@
 $background-primary: var(--button-background-primary, var(--gradient-primary-mid-vertical));
 $background-secondary: var(--button-background-secondary, var(--gradient-secondary-mid-vertical));
 
+@use "src/theme/mixins";
+
 :host {
   width: 100%;
   ion-button {
@@ -43,6 +45,7 @@ ion-button[data-variant~="nested_color"] {
 
 ion-button[data-param-style~="card"],
 ion-button[data-variant~="card"] {
+  @include mixins.hack-webkit-reset;
   --background: white;
   --background-activated: var(--ion-color-gray-light);
   --padding-top: var(--tiny-padding);
@@ -75,6 +78,7 @@ ion-button[data-variant~="card"] {
 }
 
 .button-container[data-variant~="card-portrait"] {
+  @include mixins.hack-webkit-reset;
   background-color: white;
   color: var(--ion-color-primary);
   font-size: var(--buttons-font-size-tiny);
