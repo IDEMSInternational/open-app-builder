@@ -10,6 +10,7 @@ import { getStringParamFromTemplateRow } from "../../../utils";
     [class]="style"
     [ngStyle]="isFalsy ? { display: 'none' } : { display: 'block' }"
     [innerHTML]="type === 'numbered' ? (_row.value | number) : (_row.value?.toString() | markdown)"
+    [style]="_row.style_list | styleList"
     [style.textAlign]="textAlign"
   ></div> `,
   styleUrls: ["./tmpl-components-common.scss"],
