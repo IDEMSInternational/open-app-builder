@@ -18,34 +18,37 @@ const DYNAMIC_STRING_REGEX = /[`!]?@([a-z]+)\.([0-9a-z_]+)([0-9a-z_.]*)/gi;
  *
  * Store these references in a separate object so they can be evaluated at runtime
  */
-export function extractDynamicFields(data: any) {
+export function extractDynamicFields(data: any): FlowTypes.IDynamicField | undefined {
+  // validate input
+  if (!data) return;
+  if (typeof data !== "object") return;
+
+  // extract fields
   let dynamicFields: FlowTypes.IDynamicField = {};
-  switch (typeof data) {
-    case "object":
-      // simply convert array to object to handle in next case
-      // ie. ["a","b"] => {0: "a", 1: "b"}
-      if (Array.isArray(data)) {
-        data = _arrayToObject(data);
+  if (typeof data === "object") {
+    // simply convert array to object to handle in next case
+    // ie. ["a","b"] => {0: "a", 1: "b"}
+    if (Array.isArray(data)) {
+      data = _arrayToObject(data);
+    }
+    // data is a json-like object
+    Object.entries(data).forEach(([key, value]) => {
+      // skip processing some columns (remember these can be nested in other objects like parameter_list)
+      if (!["comments", "_dynamicFields"].includes(key)) {
+        let nestedDynamic: FlowTypes.IDynamicField | FlowTypes.TemplateRowDynamicEvaluator[] =
+          undefined;
+        if (typeof value === "string") {
+          nestedDynamic = extractDynamicEvaluators(value);
+        } else {
+          nestedDynamic = extractDynamicFields(value);
+        }
+        if (nestedDynamic) {
+          dynamicFields[key] = nestedDynamic;
+        }
       }
-      if (data !== null) {
-        // data is a json-like object
-        Object.entries(data).forEach(([key, value]) => {
-          // skip processing some columns (remember these can be nested in other objects like parameter_list)
-          if (!["comments", "_dynamicFields"].includes(key)) {
-            const nestedDynamic = extractDynamicFields(value);
-            if (nestedDynamic) {
-              dynamicFields[key] = nestedDynamic;
-            }
-          }
-        });
-      }
-      break;
-    case "string":
-      const dynamicEvaluators = extractDynamicEvaluators(data as string);
-      if (dynamicEvaluators) {
-        return dynamicEvaluators;
-      }
+    });
   }
+
   // nested dynamic fields are managed in the row themselves
   if (dynamicFields.hasOwnProperty("rows")) {
     delete dynamicFields["rows"];
