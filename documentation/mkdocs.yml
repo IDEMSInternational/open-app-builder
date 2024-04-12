@@ -33,6 +33,7 @@ nav:
       - developers/error-logs.md
       - developers/web-previews.md
       - developers/code-releases.md
+      - developers/building-and-deploying-to-ios.md
   - Display Components:
       - components/audio.md
       - components/button.md
