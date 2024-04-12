@@ -6,7 +6,7 @@ import { FlowTypes } from "data-models";
 import { environment } from "src/environments/environment";
 import { AppDataService } from "../data/app-data.service";
 import { AsyncServiceBase } from "../asyncService.base";
-import { arrayToHashmap, deepMergeObjects, evaluateJSExpression } from "../../utils";
+import { arrayToHashmap, deepMergeObjects } from "../../utils";
 import { PersistedMemoryAdapter } from "./adapters/persistedMemory";
 import { ReactiveMemoryAdapater, REACTIVE_SCHEMA_BASE } from "./adapters/reactiveMemory";
 import { TemplateActionRegistry } from "../../components/template/services/instance/template-action.registry";
@@ -74,6 +74,8 @@ export class DynamicDataService extends AsyncServiceBase {
        * click | set_item | _index: @item._index + 1, completed:true;
        */
       set_item: async ({ args, params }) => {
+        // data-items component populates data_list name, along with an array of all item ids
+        // and the index of the current item triggering the action
         const [flow_name, itemDataIDs, itemIndex] = args;
         const { _index, _id, ...writeableProps } = params;
 

@@ -343,16 +343,21 @@ export namespace FlowTypes {
 
   export type IDynamicField = { [key: string]: IDynamicField | TemplateRowDynamicEvaluator[] };
 
-  export interface TemplateRowItemEvalContext {
+  export interface TemplateRowItemEvalContextMetadata {
     // item metadata
     _id: string;
     _index: number;
     _first: boolean;
     _last: boolean;
-    // item data
-    [key: string]: any;
   }
-  export const itemMetadataFieldNames = ["_id", "_index", "_first", "_last"];
+  // Enumerable list of metadata columns for use by processing functions
+  export const TEMPLATE_ROW_ITEM_METADATA_FIELDS: Array<keyof TemplateRowItemEvalContextMetadata> =
+    ["_id", "_index", "_first", "_last"];
+
+  // General interface for row items which can contain any key-value pairs with metadata
+  export type TemplateRowItemEvalContext = TemplateRowItemEvalContextMetadata & {
+    [key: string]: any;
+  };
 
   type IDynamicPrefix = IAppConfig["DYNAMIC_PREFIXES"][number];
 
