@@ -23,6 +23,7 @@ $navigation-bar-height: var(--navigation-bar-height);
       padding: var(--tiny-padding) 0;
       // Apply max-height to adapt to case where button has no text
       max-height: calc($navigation-bar-height - var(--large-padding));
+      width: 100%;
 
       img {
         height: 100%;

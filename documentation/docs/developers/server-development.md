@@ -63,7 +63,7 @@ yarn workspace api test:e2e -t app_user
 Requires [docker desktop](https://www.docker.com/products/docker-desktop/) installed locally
 
 1. Configure .env variables as per `packages\server\README.md`
-Ensure `API_BASE_PATH="/api/"` to allow running as part of full stack
+Ensure `API_BASE_PATH="/api"` to allow running as part of full stack
    
 2. Build api
 ```bash

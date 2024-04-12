@@ -32,7 +32,7 @@ RUN yarn build
 # Add secondary set of production-only node_modules to dist (not sure why yarn berry needs re-init but seems to be the case)
 # NOTE - if updating to yarn 4 will require additional plugin import line
 RUN yarn set version 3.3.1 && \
-    # yarn plugin import workspace-tools && \
+    yarn plugin import workspace-tools && \
     yarn workspaces focus api --production
 
 ### STAGE 2: Serve Dashboard ###

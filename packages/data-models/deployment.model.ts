@@ -53,7 +53,7 @@ export interface IDeploymentConfig {
   /** Optional override of any provided constants from data-models/constants */
   app_config: IAppConfig;
   app_data: {
-    /** Folder to populate processed content. Default `packages/app-data` */
+    /** Folder to populate processed content. Default `./app_data` */
     output_path: string;
     /** filter function that receives converted flows. Default `(flow)=>true`*/
     sheets_filter_function: (flow: IFlowTypeBase) => boolean;
@@ -161,7 +161,7 @@ export const DEPLOYMENT_CONFIG_EXAMPLE_DEFAULTS: IDeploymentConfig = {
     sheets_path: "./sheets",
   },
   app_data: {
-    output_path: "./app-data",
+    output_path: "./app_data",
     sheets_filter_function: (flow) => true,
     assets_filter_function: (fileEntry) => true,
   },
