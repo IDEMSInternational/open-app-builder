@@ -7,10 +7,11 @@ import BaseProcessor from "./base";
 import { existsSync } from "fs-extra";
 import { IContentsEntry, parseAppDataCollectionString } from "../utils";
 
+const cacheVersion = 20230509.1;
+
 export class XLSXWorkbookProcessor extends BaseProcessor<IContentsEntry> {
-  public cacheVersion = 20230509.1;
   constructor(paths: IConverterPaths) {
-    super({ paths, namespace: "xlsxWorkbookProcessor" });
+    super({ paths, namespace: "xlsxWorkbookProcessor", cacheVersion });
   }
 
   public async processInput(entry: IContentsEntry) {
