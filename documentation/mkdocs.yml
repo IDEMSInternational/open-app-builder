@@ -32,6 +32,7 @@ nav:
       - developers/in-app-updates.md
       - developers/error-logs.md
       - developers/web-previews.md
+      - developers/code-releases.md
   - Display Components:
       - components/audio.md
       - components/button.md
