@@ -7,6 +7,7 @@
     (click)="triggerActions('click')"
     [attr.data-param-style]="params.style"
     [attr.data-variant]="params.variant"
+    [attr.data-has-children]="_row.rows ? true : false"
   >
     <ion-icon *ngIf="params.icon" slot="start" src="{{ params.icon | plhAsset }}"></ion-icon>
     <span
@@ -32,6 +33,7 @@
     class="button-container"
     (click)="triggerActions('click')"
     [attr.data-variant]="params.variant"
+    [attr.data-has-children]="_row.rows ? true : false"
   >
     <img *ngIf="params.image" src="{{ params.image | plhAsset }}" />
     <div *ngIf="_row.value" [class]="'button-text ' + params.textAlign">
