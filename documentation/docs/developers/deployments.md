@@ -143,43 +143,48 @@ If for any reason the local content repo gets into a bad/conflicted state, it ca
 The content repo can be opened via shortcut `yarn workflow repo open`
 
 
-## Android Management
-For deployments that are intended to be published to the Google Play Store, some additional configuration is required.
+## Android and iOS Management
+For deployments that are intended to be published to the Google Play Store or the iOS App Store, some additional configuration is required.
 
 ### App ID and App Name
-The App ID uniquely identifies an Android app on devices and in the Google Play Store (see the official [Android developer docs](https://developer.android.com/build/configure-app-module#set-application-id) for more details). It is common to use the segments to identify your organisation and app in a reverse-dns format, e.g. `international.idems.my_example_app`, or `com.mycompany.example_app`.
+The App ID uniquely identifies an Android or iOS app on devices and in the Google Play Store (see the official [Android](https://developer.android.com/build/configure-app-module#set-application-id) and [Apple](https://developer.apple.com/help/account/manage-identifiers/register-an-app-id/) documentation for more details). It is common to use the segments to identify your organisation and app in a reverse-dns format, e.g. `international.idems.app`, or `com.mycompany.app`. The specifications for Android and iOS platforms are slightly different: for the Android app ID, all characters in each section must be alphanumeric or an underscore, e.g. `international.idems.my_example_app`, whereas for the Apple app ID, all characters must be alphanumeric or a hyphen, e.g. `international.idems.my-example-app`.
 
 !!! warning
-    Android app IDs must contain at least 2 segments (one or more dots) and once set cannot be changed. So consider carefully how the id may be used in the future to represent your app. 
+    App IDs must contain at least 2 segments (one or more dots) and once set cannot be changed. So consider carefully how the id may be used in the future to represent your app. 
 
 
-The App Name is the name that will be displayed to users on devices and in the Google Play Store.
+The App Name is the name that will be displayed to users on devices and in the Google Play Store or App Store.
 
-These values must be set in the deployment config before the app can be built as an Android bundle.
+These values must be set in the deployment config before the app can be built as an app bundle.
 
 For example:
 ```ts
 config.android.app_id = "international.idems.my_example_app";
 config.android.app_name = "My Example App";
+
+config.ios.app_id = "international.idems.my-example-app";
+config.ios.app_name = "My Example App";
 ```
 
 ### Versioning
-In order to build for Android, the deployment config must contain a valid value for the property `config.git.content_tag_latest` (see [Github management](#github-management)). This value can be changed manually, or via the command:
+In order to build for Android or iOS, the deployment config must contain a valid value for the property `config.git.content_tag_latest` (see [Github management](#github-management)). This value can be changed manually, or via the command:
 ```sh
 yarn scripts version --content (--auto-patch)
 ```
 
 ### Google Services
-Connecting to Firebase is currently required by all Android apps. Follow the instructions for [Firebase management](#firebase-management) for native platforms in order to set this up for a new deployment.
+Connecting to Firebase is currently required by all native apps. Follow the instructions for [Firebase management](#firebase-management) for native platforms in order to set this up for a new deployment.
 
 ### Generating an app icon and splash screen
-See [Android Assets](./android-assets.md).
+For generating Android assets, see [Android Assets](./android-assets.md).
+
+For generating iOS assets, it is recommended to use [xcode directly](https://developer.apple.com/documentation/xcode/configuring-your-app-icon), or the [capacitor-assets](https://github.com/ionic-team/capacitor-assets) package. This process should be streamlined in the future.
 
 ## Firebase management
 Firebase is used to provide some services such as authentication and crashlytics. Currently, even apps that do not use these services explicitly must be linked to a corresponding Firebase project in order to be built for native devices. Exclusively local and web deployments do not require Firebase to be configured, unless they make use of these features.
 
 ### Native platforms
-For apps that target Android, a corresponding "Android app" should be added to a linked Firebase project, with an `Android package name` matching the `app_id` for the deployment (see [Android Management](#android-management)). The relevant `google-services.json` file should be downloaded, and copied to `android/app/google-services.json` for building the Android app locally, or its contents copied into a `GOOGLE_SERVICES_JSON` secret in the deployment's Github repo, for building the Android app via github action.
+For apps that target native platforms (Android or iOS), a corresponding "Android app" or "Apple app" should be added to a linked Firebase project, with an `Android package name` or `Apple budle ID` matching the `app_id` for the respective platform specified in the deployment config (see [Android and iOS Management](#android-and-ios-management)). The relevant `google-services.json` or `GoogleService-Info.plist` file should be downloaded, and copied to `android/app/google-services.json` or `ios/App/App/GoogleService-Info.plist` for building the native app locally, or its contents copied into a `GOOGLE_SERVICES_JSON` secret in the deployment's Github repo, for building the Android app via github action.
 
 ### Enabling Firebase features
 To enable Firebase features, a Firebase config must be included in the deployment config. 
