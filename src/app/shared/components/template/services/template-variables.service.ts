@@ -16,6 +16,8 @@ const log = SHOW_DEBUG_LOGS ? console.log : () => null;
 const log_group = SHOW_DEBUG_LOGS ? console.group : () => null;
 const log_groupEnd = SHOW_DEBUG_LOGS ? console.groupEnd : () => null;
 
+const { TEMPLATE_ROW_ITEM_METADATA_FIELDS } = FlowTypes;
+
 /**
  * Most methods in this class depend on factors relating to the execution context
  * (e.g.row, variables etc.). Store as a single object to make it easier to pass between methods
@@ -125,13 +127,14 @@ export class TemplateVariablesService extends AsyncServiceBase {
    * would likely prove too restrictive
    **/
   private shouldEvaluateField(
-    fieldName: keyof FlowTypes.TemplateRow | (typeof FlowTypes.itemMetadataFieldNames)[number],
+    fieldName: keyof FlowTypes.TemplateRow | keyof FlowTypes.TemplateRowItemEvalContextMetadata,
     omitFields: string[] = []
   ) {
     if (omitFields.includes(fieldName)) return false;
+
     // Evaluate fields that are names of item metadata fields, e.g. "_index", "_id",
     // E.g. for use in actions such as `click | set_item | _index: @item._index + 1, completed:false`
-    if (FlowTypes.itemMetadataFieldNames.includes(fieldName)) return true;
+    if (TEMPLATE_ROW_ITEM_METADATA_FIELDS.includes(fieldName as any)) return true;
     if (fieldName.startsWith("_")) return false;
     return true;
   }
