@@ -6,7 +6,7 @@ Building and deploying an app to iOS must be performed by a developer on a Mac c
 
 ### Apple Developer Account
 
-In order to create iOS applications, you will need to enroll in the [Apple Developer Program](https://developer.apple.com/programs/), which can be done as an individual or organisation.
+In order to create iOS applications, you will need to enrol in the [Apple Developer Program](https://developer.apple.com/programs/), which can be done as an individual or organisation.
 
 ### XCode
 
@@ -43,7 +43,7 @@ config.ios.app_name = "My Example App"
 9. Now build the app to a target simulator to test functionality.
 10. When ready to upload the app to App Store Connect, set the target as "Any iOS device (arm64)", and go to `Product > Archive`.
     ![](./images/xcode-target.png)
-11. The process of "archiving" converts your application into the format required to upload it to the App Store. Select "Distribute App" to publish the app to App Store Connect. You will still be able to test the app through TestFlight once it is uploaded before submitting to Apple for review. Choose the options to automatically manage signing and generate a cetrtificate. Click "Upload", and once the process is complete, the app will be available for management through [App Store Connect](https://appstoreconnect.apple.com/apps). 
+11. The process of "archiving" converts your application into the format required to upload it to the App Store. Select "Distribute App" to publish the app to App Store Connect. You will still be able to test the app through TestFlight once it is uploaded before submitting to Apple for review. Choose the options to automatically manage signing and generate a certificate. Click "Upload", and once the process is complete, the app will be available for management through [App Store Connect](https://appstoreconnect.apple.com/apps). 
 
 ### Subsequent builds
 
@@ -56,4 +56,4 @@ If the deployment has previously been built for iOS, follow these simplified ste
 5. Now build the app to a target simulator to test functionality.
 6. When ready to upload the app to App Store Connect, set the target as "Any iOS device (arm64)", and go to `Product > Archive`.
     ![](./images/xcode-target.png)
-7. The process of "archiving" converts your application into the format required to upload it to the App Store. Select "Distribute App" to publish the app to App Store Connect. You will still be able to test the app through TestFlight once it is uploaded before submitting to Apple for review. Choose the options to automatically manage signing and generate a cetrtificate. Click "Upload", and once the process is complete, the app will be available for management through [App Store Connect](https://appstoreconnect.apple.com/apps). 
+7. The process of "archiving" converts your application into the format required to upload it to the App Store. Select "Distribute App" to publish the app to App Store Connect. You will still be able to test the app through TestFlight once it is uploaded before submitting to Apple for review. Choose the options to automatically manage signing and generate a certificate. Click "Upload", and once the process is complete, the app will be available for management through [App Store Connect](https://appstoreconnect.apple.com/apps). 
