@@ -31,6 +31,11 @@ concurrency:
 
 on:
   workflow_call:
+    inputs:
+      firebase-host:
+        description: Firebase site for hosting
+        type: string
+        default: ${{vars.FIREBASE_HOSTING_TARGET}}
 
 jobs:
   build_action:
@@ -56,18 +61,13 @@ jobs:
           mkdir www
           tar -xf artifact.tar --directory www
 
-      # Ensure FIREBASE_HOSTING_TARGET set (default fallback to projectId)
-      - name: Populate Env
-        if: ${{env.FIREBASE_HOSTING_TARGET == ''}}
-        run: echo "FIREBASE_HOSTING_TARGET=${{env.FIREBASE_PROJECT_ID}}" >> "$GITHUB_ENV"
-
       # Create a .firebaserc file mapping any firebase deployment host targets (required if multi-host projects)
       # e.g. {"projects": {"default": "my_app"},"targets": {"my_app": {"hosting": {"my_app_dev":["my_app_dev"]} } }
       - name: Populate Firebase Targets
         run: |
           FIREBASE_RC_TARGETS=$(jq -n \
             --argjson "${{env.FIREBASE_PROJECT_ID}}" \
-            '{"hosting":{"${{env.FIREBASE_HOSTING_TARGET}}":["${{env.FIREBASE_HOSTING_TARGET}}"]}}' \
+            '{"hosting":{"${{inputs.firebase-host}}":["${{inputs.firebase-host}}"]}}' \
             '$ARGS.named'
             )
           FIREBASE_RC=$(jq -n \
@@ -83,7 +83,7 @@ jobs:
       - name: Populate Firebase JSON
         run: |
           FIREBASE_JSON_HOSTING=$(jq -n \
-          --arg target "${{ env.FIREBASE_HOSTING_TARGET }}" \
+          --arg target "${{inputs.firebase-host}}" \
           --arg public "www" \
           --argjson ignore '["firebase.json"]' \
           --argjson rewrites '[{"source": "**","destination": "/index.html"}]' \
@@ -104,7 +104,7 @@ jobs:
           firebaseServiceAccount: "${{ env.FIREBASE_SERVICE_ACCOUNT }}"
           projectId: "${{ env.FIREBASE_PROJECT_ID }}"
           channelId: "${{ env.FIREBASE_HOSTING_CHANNEL }}"
-          target: "${{ env.FIREBASE_HOSTING_TARGET }}"
+          target: "${{inputs.firebase-host}}"
           expires: "30d"
 ##################################################################################
 #         Useful Links

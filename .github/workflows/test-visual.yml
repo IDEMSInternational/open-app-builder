@@ -1,7 +1,3 @@
-env:
-  # TODO: create a dedicated screenshots deployment
-  DEPLOYMENT: debug
-
 # Generate a set of screenshots for the current branch and compare against previously generated on master
 name: Test-Visual
 on:
@@ -24,23 +20,22 @@ jobs:
     uses: ./.github/workflows/web-build.yml
     secrets: inherit
     with:
-      deployment: $DEPLOYMENT
+      # TODO: create a dedicated screenshots env
+      deployment-env: debug
 
-  test_visual_compare:
+  test_visual:
     needs: build
     runs-on: ubuntu-latest
     timeout-minutes: 60
     steps:
-        ###########################################################################################
-        # Setup
-        ###########################################################################################
-      - uses: actions/checkout@v3
-
+      ###########################################################################################
+      # Setup
+      ###########################################################################################
+      - uses: actions/checkout@v4
       - name: Setup Node
         uses: actions/setup-node@v3
         with:
-          node-version: 18.x 
-
+          node-version: 18.x
       - uses: actions/cache/restore@v3
         id: cache
         with:
@@ -48,10 +43,17 @@ jobs:
           key: ${{ runner.os }}-node-modules-yarn-v1-${{ hashFiles('yarn.lock') }}
           restore-keys: |
             ${{ runner.os }}-node-modules-yarn-v1-
-
       - name: Install node modules
         run: yarn install --immutable
+      - uses: actions/cache/save@v3
+        if: steps.cache.outputs.cache-hit != 'true'
+        with:
+          path: ./.yarn/cache
+          key: ${{ runner.os }}-node-modules-yarn-v1-${{ hashFiles('yarn.lock') }}
 
+      #############################################################################
+      #         Download build
+      #############################################################################
       - name: Download Build Artifact
         uses: actions/download-artifact@v3
         with:
@@ -64,10 +66,10 @@ jobs:
 
         # HACK - as lifecycle_actions block template view simply remove them all
         # TODO - review if still required (CC 2023-08-15)
-      - name : HACK - Remove lifecycle actions
+      - name: HACK - Remove lifecycle actions
         run: |
           rm -f -R www/assets/app_data/sheets/data_list/lifecycle_actions
-        
+
         ###########################################################################################
         # Generate
         ###########################################################################################
@@ -83,7 +85,7 @@ jobs:
           path: packages/test-visual/output/screenshots
           retention-days: 90
           if-no-files-found: error
-        
+
         ###########################################################################################
         # Compare
         ###########################################################################################
@@ -140,7 +142,6 @@ jobs:
 
             **Run Details**
             https://github.com/IDEMSInternational/parenting-app-ui/actions/runs/${{github.run_id}}
-
 
       # Alt implementation to DL artifact using action instead of download script
 
