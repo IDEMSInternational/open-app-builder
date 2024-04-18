@@ -1,6 +1,6 @@
 # Building and deploying to iOS
 
-Building and deploying an app to iOS must be performed by a developer on a Mac computer. This guide does not include the process for managing the app within Apple's App Store Connect console, which is documented elsewhere.
+Building and deploying an app to iOS must be performed by a developer on a Mac computer. This guide does not include the process for managing the app within Apple's App Store Connect console, which is documented elsewhere (see [Apple's official documentation](https://developer.apple.com/help/app-store-connect/), or organisation-specific documentation is available from IDEMS devs on request).
 
 ## Prerequisites
 
@@ -20,7 +20,7 @@ You will also need XCode CLI tools. These may have been installed with XCode, ru
 
 ### Capacitor iOS setup
 
-The project is already configured to build to iOS using Capacitor.
+The project is already configured to build to iOS using Capacitor. See the [Capacitor iOS Documentation](https://capacitorjs.com/docs/ios) for full details, or follow the steps below.
 
 ## Build, sign and upload the iOS app
 
