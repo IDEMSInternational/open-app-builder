@@ -1,4 +1,5 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, Injector, OnInit } from "@angular/core";
+import { TemplateActionService } from "src/app/shared/components/template/services/instance/template-action.service";
 import { TemplateFieldService } from "src/app/shared/components/template/services/template-field.service";
 import { DynamicDataService } from "src/app/shared/services/dynamic-data/dynamic-data.service";
 
@@ -17,7 +18,8 @@ interface IDynamicDataEntry {
 export class UserDebugPage implements OnInit {
   constructor(
     private fieldService: TemplateFieldService,
-    private dynamicDataService: DynamicDataService
+    private dynamicDataService: DynamicDataService,
+    private injector: Injector
   ) {}
 
   public contactFields: { key: string; value: string }[] = [];
@@ -25,9 +27,12 @@ export class UserDebugPage implements OnInit {
   public dynamicDataTable: { headers: string[]; rows: any[] };
   public userId = "";
 
+  private actionService = new TemplateActionService(this.injector);
+
   async ngOnInit() {
     await this.fieldService.ready();
     await this.dynamicDataService.ready();
+    this.actionService.ready();
     this.contactFields = this.getUserContactFields();
     this.userId = this.fieldService.getField("_app_user_id");
     this.dynamicDataEntries = await this.getDynamicDataEntries();
@@ -37,6 +42,15 @@ export class UserDebugPage implements OnInit {
   public setDynamicEntryView(entry: IDynamicDataEntry) {
     const rows = Object.values(entry.data);
     this.dynamicDataTable = { headers: Object.keys(rows[0]), rows };
+  }
+
+  public async syncUserData() {
+    // mimic `emit: server_sync` template action
+    await this.actionService.handleActions([
+      { trigger: "click", action_id: "emit", args: ["server_sync"] },
+    ]);
+    // repopulate contact fields to reflect server sync meta
+    this.getUserContactFields();
   }
 
   /** Retrieve localStorage entries prefixed by field service prefix */
