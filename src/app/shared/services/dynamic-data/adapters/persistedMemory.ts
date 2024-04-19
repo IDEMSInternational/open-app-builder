@@ -72,7 +72,7 @@ export class PersistedMemoryAdapter {
     [key: string]: RxCollection<any, {}, {}, {}>;
   }>;
 
-  private state: {
+  public state: {
     [flow_type in FlowTypes.FlowType]?: {
       [flow_name: string]: {
         [row_id: string]: { [key: string]: any };
