@@ -4,9 +4,9 @@ import { IConverterPaths, IFlowHashmapByType, IParsedWorkbookData } from "../../
 import { arrayToHashmap, groupJsonByKey, IContentsEntry } from "../../utils";
 import BaseProcessor from "../base";
 
-export class FlowParserProcessor extends BaseProcessor<FlowTypes.FlowTypeWithData> {
-  public cacheVersion = 20230818.3;
+const cacheVersion = 20240412.0;
 
+export class FlowParserProcessor extends BaseProcessor<FlowTypes.FlowTypeWithData> {
   public parsers: { [flowType in FlowTypes.FlowType]: Parsers.DefaultParser } = {
     data_list: new Parsers.DataListParser(this),
     data_pipe: new Parsers.DataPipeParser(this),
@@ -14,6 +14,7 @@ export class FlowParserProcessor extends BaseProcessor<FlowTypes.FlowTypeWithDat
     global: new Parsers.DefaultParser(this),
     template: new Parsers.TemplateParser(this),
     tour: new Parsers.DefaultParser(this),
+    asset_pack: new Parsers.DefaultParser(this),
   };
 
   /** Keep a track of all processed flows by type and name (used in data_pipes)*/
@@ -30,7 +31,7 @@ export class FlowParserProcessor extends BaseProcessor<FlowTypes.FlowTypeWithDat
   } = {};
 
   constructor(paths: IConverterPaths) {
-    super({ paths, namespace: "flowParser" });
+    super({ paths, namespace: "flowParser", cacheVersion });
   }
 
   public override processInput(flow: FlowTypes.FlowTypeWithData) {

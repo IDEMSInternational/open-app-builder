@@ -2,6 +2,7 @@ import { format } from "date-fns";
 import { diff } from "deep-object-diff";
 import { Observable } from "rxjs";
 import { map, pairwise, filter, share } from "rxjs/operators";
+import * as Sentry from "@sentry/angular-ivy";
 import { FlowTypes } from "../model";
 import { objectToArray } from "../components/template/utils";
 import marked from "marked";
@@ -229,7 +230,7 @@ export interface IAnswerListItem {
 /**
  * Parse an answer_list parameter and return an array of AnswerListItems
  * @param answerList an answer_list parameter, either an array of IAnswerListItems
- * (possibly still in string representation) or a data list (hashmap of IAnswerListItems)
+ * or a data list (hashmap of IAnswerListItems)
  */
 function parseAnswerList(answerList: any) {
   if (!answerList) return [];
@@ -237,29 +238,32 @@ function parseAnswerList(answerList: any) {
   if (answerList.constructor === {}.constructor) {
     answerList = objectToArray(answerList);
   }
-  const answerListItems: IAnswerListItem[] = answerList.map(
-    (item: string | Record<string, string>) => {
-      return parseAnswerListItem(item);
-    }
-  );
+
   // Remove any items from the list which only have a value for "name",
   // e.g. "image" and "text" are undefined because the list has been generated within a template
-  const filteredAnswerListItems = answerListItems.filter((item: IAnswerListItem) => {
-    const hadItemData = Object.entries(item).find(
-      ([key, value]) => key !== "name" && value !== undefined
-    );
-    return hadItemData ? true : false;
-  });
-  return filteredAnswerListItems;
+  return (answerList as IAnswerListItem[])
+    .map((item) => parseAnswerListItem(item))
+    .filter((item: IAnswerListItem) => {
+      const hadItemData = Object.entries(item).find(
+        ([key, value]) => key !== "name" && value !== undefined
+      );
+      return hadItemData ? true : false;
+    });
 }
 
 /**
+ * @deprecated 2024-02-22 main method moved to parser however may still be required for edge cases
+ * where user passes answer list directly to parameter_list, or uses local variable not named `_list`
+ *
  * Convert answer list item (string or object) to relevant mappings
- * TODO - CC 2023-03-16 - should ideally convert in parsers instead of at runtime
  */
 function parseAnswerListItem(item: any) {
   const itemObj: IAnswerListItem = {} as any;
   if (typeof item === "string") {
+    const msg =
+      "Unexpected answerList item as string. It should be set from local with '_list' in name";
+    Sentry.captureException(msg, { extra: { item } });
+    console.warn(msg, item);
     const stringProperties = item.split("|");
     stringProperties.forEach((s) => {
       let [field, value] = s.split(":").map((v) => v.trim());
@@ -271,7 +275,7 @@ function parseAnswerListItem(item: any) {
     // NOTE CC 2021-08-07 - allow passing of object, not just string for conversion
     return itemObj;
   }
-  return item;
+  return item || {};
 }
 
 /**
