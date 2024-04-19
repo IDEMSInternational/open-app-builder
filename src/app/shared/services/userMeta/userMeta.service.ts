@@ -68,6 +68,7 @@ export class UserMetaService extends AsyncServiceBase {
         return;
       }
       const { contact_fields, dynamic_data } = profile as any;
+      console.log("[User Import]", { contact_fields, dynamic_data });
       await this.importUserContactFields(contact_fields);
       await this.importUserDynamicData(dynamic_data);
     } catch (error) {
