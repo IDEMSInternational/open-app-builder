@@ -1,6 +1,10 @@
 <ion-content class="ion-padding">
-  <div>App User ID:<span style="margin-left: 8px">{{userId}}</span></div>
-  <ion-button (click)="syncUserData()">Sync</ion-button>
+  <div style="display: flex; align-items: center; gap: 8px">
+    <span>App User ID:</span>
+    <ion-input [(ngModel)]="importUserId" style="flex: 1"></ion-input>
+    <ion-button (click)="importUserData()" [disabled]="importUserId===userId">Import</ion-button>
+    <ion-button (click)="syncUserData()">Sync</ion-button>
+  </div>
   <h2>Contact Fields</h2>
   <div class="table-container">
     <table>
@@ -25,8 +29,10 @@
   <ion-select
     #dynamicDataSelect
     placeholder="Select Data"
+    [(ngModel)]="dynamicDataSelected"
     (ionChange)="setDynamicEntryView(dynamicDataSelect.value)"
     style="margin-bottom: 1rem"
+    [compareWith]="dynamicEntryCompareFn"
   >
     @for(entry of dynamicDataEntries; track entry.id){
     <ion-select-option [value]="entry">{{entry.flow_name}}</ion-select-option>

@@ -21,11 +21,18 @@ export class UserDebugPage implements OnInit {
     private dynamicDataService: DynamicDataService,
     private injector: Injector
   ) {}
-
-  public contactFields: { key: string; value: string }[] = [];
-  public dynamicDataEntries: IDynamicDataEntry[] = [];
-  public dynamicDataTable: { headers: string[]; rows: any[] };
+  /** Id of current user */
   public userId = "";
+  /** ID of user to import */
+  public importUserId = "";
+  /** List of user contact fields */
+  public contactFields: { key: string; value: string }[] = [];
+  /** List of user dynamic_data entries */
+  public dynamicDataEntries: IDynamicDataEntry[] = [];
+  /** Active row selected from list of user dynamic_data entries */
+  public dynamicDataSelected: IDynamicDataEntry;
+  /** Table configuration to display data from active dynamic_data row */
+  public dynamicDataTable: { headers: string[]; rows: any[] };
 
   private actionService = new TemplateActionService(this.injector);
 
@@ -33,15 +40,27 @@ export class UserDebugPage implements OnInit {
     await this.fieldService.ready();
     await this.dynamicDataService.ready();
     this.actionService.ready();
-    this.contactFields = this.getUserContactFields();
-    this.userId = this.fieldService.getField("_app_user_id");
-    this.dynamicDataEntries = await this.getDynamicDataEntries();
+    await this.loadUserData();
   }
 
-  /** Prepare table data to display for provided dynamic data entry */
-  public setDynamicEntryView(entry: IDynamicDataEntry) {
-    const rows = Object.values(entry.data);
-    this.dynamicDataTable = { headers: Object.keys(rows[0]), rows };
+  /** Retrieve current user contact fields and dynamic data */
+  private async loadUserData() {
+    this.contactFields = this.getUserContactFields();
+    this.userId = this.fieldService.getField("_app_user_id");
+    this.importUserId = this.userId;
+    this.dynamicDataEntries = await this.getDynamicDataEntries();
+    // populate dynamic data table with first entry if available
+    this.dynamicDataSelected = this.dynamicDataEntries[0];
+    this.setDynamicEntryView(this.dynamicDataEntries[0]);
+  }
+
+  public async importUserData() {
+    // mimic `user: import : [id]` template action
+    await this.actionService.handleActions([
+      { trigger: "click", action_id: "user", args: ["import", this.importUserId] },
+    ]);
+    // repopulate contact fields to reflect server sync meta
+    await this.loadUserData();
   }
 
   public async syncUserData() {
@@ -50,7 +69,20 @@ export class UserDebugPage implements OnInit {
       { trigger: "click", action_id: "emit", args: ["server_sync"] },
     ]);
     // repopulate contact fields to reflect server sync meta
-    this.getUserContactFields();
+    await this.loadUserData();
+  }
+
+  /** Prepare table data to display for provided dynamic data entry */
+  public setDynamicEntryView(entry?: IDynamicDataEntry) {
+    if (entry) {
+      const rows = Object.values(entry.data);
+      this.dynamicDataTable = { headers: Object.keys(rows[0]), rows };
+    } else {
+      this.dynamicDataTable = { headers: [], rows: [] };
+    }
+  }
+  public dynamicEntryCompareFn(a: IDynamicDataEntry, b: IDynamicDataEntry) {
+    return a.id === b.id;
   }
 
   /** Retrieve localStorage entries prefixed by field service prefix */
