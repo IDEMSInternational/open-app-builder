@@ -147,7 +147,9 @@ export class DynamicDataService extends AsyncServiceBase {
   }
 
   /** Access full state of all persisted data layers */
-  public getState() {
+  public async getState() {
+    // ensure all writes are complete before returning overall state
+    await this.writeCache.persistStateToDB();
     return this.writeCache.state;
   }
 

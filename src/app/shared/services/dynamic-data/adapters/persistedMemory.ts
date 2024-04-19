@@ -14,6 +14,7 @@ import { RxDBMigrationPlugin } from "rxdb/plugins/migration";
 addRxPlugin(RxDBMigrationPlugin);
 import { RxDBUpdatePlugin } from "rxdb/plugins/update";
 addRxPlugin(RxDBUpdatePlugin);
+import { debounceTime, filter, firstValueFrom, Subject } from "rxjs";
 
 import { FlowTypes } from "data-models";
 import { environment } from "src/environments/environment";
@@ -72,6 +73,13 @@ export class PersistedMemoryAdapter {
     [key: string]: RxCollection<any, {}, {}, {}>;
   }>;
 
+  constructor() {
+    this.subscribeToStatePersist();
+  }
+
+  /** Track pending/complete state persist operations to allow for debouncing*/
+  private statePersist$ = new Subject<"pending" | "complete">();
+
   public state: {
     [flow_type in FlowTypes.FlowType]?: {
       [flow_name: string]: {
@@ -120,21 +128,43 @@ export class PersistedMemoryAdapter {
       }
     }
     this.state[flow_type][flow_name][id] = merged;
-    // TODO - debounce write to disk
     this.persistStateToDB();
   }
 
   public async delete(flow_type: FlowTypes.FlowType, flow_name: string) {
     if (this.get(flow_type, flow_name)) {
       delete this.state[flow_type][flow_name];
-      await this.persistStateToDB();
+      this.persistStateToDB();
     }
+  }
+
+  /** Trigger persist handler. Requests will be debounced and notified when complete */
+  public async persistStateToDB() {
+    this.statePersist$.next("pending");
+    // Wait for persist handler to notify of successful operation
+    await firstValueFrom(this.statePersist$.pipe(filter((v) => v === "complete")));
+  }
+
+  /**
+   * Subscribe to state persist tracker, handling persist operation
+   * when requested and with 500ms debounce between operations
+   **/
+  private subscribeToStatePersist() {
+    this.statePersist$
+      .pipe(
+        filter((v) => v === "pending"),
+        debounceTime(500)
+      )
+      .subscribe(async () => {
+        await this.handleStatePersist();
+        this.statePersist$.next("complete");
+      });
   }
 
   /**
    * TODO - could perform more incremental updates and avoid overwrite with same data
    */
-  private async persistStateToDB() {
+  private async handleStatePersist() {
     // Handle insertions and updates
     const updates: IPersistedDoc[] = [];
     for (const [flow_type, flowHash] of Object.entries(this.state)) {
