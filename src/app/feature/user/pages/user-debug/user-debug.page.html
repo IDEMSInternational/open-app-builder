@@ -1,0 +1,57 @@
+<ion-content class="ion-padding">
+  <div>App User ID:<span style="margin-left: 8px">{{userId}}</span></div>
+  <h2>Contact Fields</h2>
+  <div class="table-container">
+    <table>
+      <thead>
+        <tr>
+          <th>Field</th>
+          <th>Value</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for(contactField of contactFields; track contactField.key){
+        <tr>
+          <td>{{contactField.key}}</td>
+          <td>{{contactField.value}}</td>
+        </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+
+  <h2>Dynamic Data</h2>
+  <ion-select
+    #dynamicDataSelect
+    placeholder="Select Data"
+    (ionChange)="setDynamicEntryView(dynamicDataSelect.value)"
+    style="margin-bottom: 1rem"
+  >
+    @for(entry of dynamicDataEntries; track entry.id){
+    <ion-select-option [value]="entry">{{entry.flow_name}}</ion-select-option>
+    }
+  </ion-select>
+  @if(dynamicDataTable; as table){
+  <div class="table-container">
+    <table>
+      <thead>
+        <tr>
+          @for(header of table.headers; track header){
+          <th>{{header}}</th>
+          }
+        </tr>
+      </thead>
+      <tbody>
+        @for(row of table.rows; track row.id){
+        <tr>
+          @for(header of table.headers; track header){
+          <td>{{row[header]}}</td>
+          }
+        </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+
+  }
+</ion-content>

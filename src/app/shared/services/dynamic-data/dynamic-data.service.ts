@@ -146,6 +146,11 @@ export class DynamicDataService extends AsyncServiceBase {
     await this.createCollection(flow_type, flow_name);
   }
 
+  /** Access full state of all persisted data layers */
+  public async getState() {
+    return this.writeCache.state;
+  }
+
   /** Ensure a collection exists, creating if not and populating with corresponding list data */
   private async ensureCollection(flow_type: FlowTypes.FlowType, flow_name: string) {
     const collectionName = this.normaliseCollectionName(flow_type, flow_name);
