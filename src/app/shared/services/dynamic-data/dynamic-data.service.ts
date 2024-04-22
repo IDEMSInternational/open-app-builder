@@ -79,14 +79,7 @@ export class DynamicDataService extends AsyncServiceBase {
         const [flow_name, itemDataIDs, itemIndex] = args;
         const { _index, _id, ...writeableProps } = params;
 
-        // Target current row if another target is not explicitly provided
-        let targetRowId = itemDataIDs[itemIndex];
-        if (_index !== undefined) {
-          targetRowId = itemDataIDs[_index];
-        }
-        if (_id) {
-          targetRowId = _id;
-        }
+        const targetRowId = this.getTargetItemRowId(itemDataIDs, itemIndex, _id, _index);
 
         if (itemDataIDs.includes(targetRowId)) {
           await this.update("data_list", flow_name, targetRowId, writeableProps);
@@ -246,5 +239,22 @@ export class DynamicDataService extends AsyncServiceBase {
       }
     }
     return schema;
+  }
+
+  /**
+   * Get the ID of an item row to target for update:
+   * If a target _id is specified, this is returned,
+   * else if a target _index is specified, the corresponding item ID is returned,
+   * if neither is specified, then the ID of the current item is returned
+   */
+  private getTargetItemRowId(
+    itemDataIDs: any[],
+    currentItemIndex: number,
+    _id: string,
+    _index: number
+  ) {
+    if (_id) return _id;
+    if (_index !== undefined) return itemDataIDs[_index];
+    return itemDataIDs[currentItemIndex];
   }
 }
