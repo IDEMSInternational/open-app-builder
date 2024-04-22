@@ -282,7 +282,7 @@ export class CampaignService extends AsyncServiceBase {
     // process translations first as these are made with dynamic content in place (e.g. "hello @name")
     const translatedRow = this.templateTranslateService.translateRow(row as any);
     // Continue processing full row
-    translatedRow._dynamicFields = extractDynamicFields(translatedRow) as FlowTypes.IDynamicField;
+    translatedRow._dynamicFields = extractDynamicFields(translatedRow);
     const parsedRow = await this.templateVariablesService.evaluatePLHData(translatedRow, {
       row: translatedRow,
       templateRowMap: {},
