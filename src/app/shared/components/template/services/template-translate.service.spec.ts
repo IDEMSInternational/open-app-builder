@@ -12,7 +12,7 @@ export class MockTemplateTranslateService implements Partial<TemplateTranslateSe
   }
 }
 
-describe("TaskService", () => {
+describe("TemplateTranslateService", () => {
   let service: TemplateTranslateService;
 
   beforeEach(() => {
