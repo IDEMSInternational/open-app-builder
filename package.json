@@ -28,7 +28,8 @@
     "lint": "ng lint",
     "lint:docs": "cspell \"documentation/docs/**/*.md\" --config \"cspell.config.yml\"",
     "analyse": "ng build --configuration=production --stats-json && npx webpack-bundle-analyzer www/stats.json",
-    "version": "yarn workspace scripts start version"
+    "version": "yarn workspace scripts start version",
+    "format": "yarn prettier . --write --log-level silent"
   },
   "private": true,
   "dependencies": {

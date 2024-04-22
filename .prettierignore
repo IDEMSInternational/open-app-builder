@@ -9,9 +9,19 @@ node_modules
 .idems_app
 .vscode
 .yarn
-android
 documentation
 .venv
 packages/app-data/**
 .d.ts
 dist
+
+# Ignore generated capacitor folders
+ios
+android
+
+# Ignore some packages (which may have own format scripts)
+packages/api
+packages/@idemsInternational/gdrive-tools
+
+# Ignore odk-form component which used 3rd party code
+src/app/shared/components/template/components/odk-form
