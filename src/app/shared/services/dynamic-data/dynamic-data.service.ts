@@ -89,17 +89,9 @@ export class DynamicDataService extends AsyncServiceBase {
         }
 
         if (itemDataIDs.includes(targetRowId)) {
-          console.log(
-            `[SET ITEM] - Setting properties on ${targetRowId}: ${JSON.stringify(writeableProps)}`
-          );
           await this.update("data_list", flow_name, targetRowId, writeableProps);
         } else {
-          if (_id) {
-            console.warn(`[SET ITEM] - No item with ID ${_id}`);
-          }
-          if (_index !== undefined) {
-            console.warn(`[SET ITEM] - No item at index ${_index}`);
-          }
+          console.warn(`[SET ITEM] - No item ${_id ? "with ID " + _id : "at index " + _index}`);
         }
       },
       set_items: async ({ args, params }) => {
