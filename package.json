@@ -142,7 +142,7 @@
     "concurrently": "^6.2.0",
     "cspell": "^6.20.1",
     "eslint": "^8.54.0",
-    "eslint-config-prettier": "^8.8.0",
+    "eslint-config-prettier": "^9.1.0",
     "eslint-config-standard-with-typescript": "latest",
     "eslint-plugin-import": "^2.27.5",
     "eslint-plugin-jasmine": "^4.1.3",
