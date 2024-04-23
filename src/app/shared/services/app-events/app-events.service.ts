@@ -3,7 +3,8 @@ import { generateTimestamp } from "../../utils";
 import { DbService } from "../db/db.service";
 import { LocalStorageService } from "../local-storage/local-storage.service";
 import { AsyncServiceBase } from "../asyncService.base";
-import { TemplateFieldService } from "../../components/template/services/template-field.service";
+import { AppConfigService } from "../app-config/app-config.service";
+import { IAppConfig } from "../../model";
 
 @Injectable({ providedIn: "root" })
 /**
@@ -19,11 +20,12 @@ export class AppEventService extends AsyncServiceBase {
   summary: IAppEventSummary;
   /** Keep a copy of all app events saved in the database in memoery also, by event_id */
   appEventsById: { [key in IEventId]: IAppEvent[] };
+  appFields: IAppConfig["APP_FIELDS"];
 
   constructor(
     private db: DbService,
     private localStorageService: LocalStorageService,
-    private templateFieldService: TemplateFieldService
+    private appConfigService: AppConfigService
   ) {
     super("App Events");
     this.registerInitFunction(this.intialise);
@@ -31,8 +33,9 @@ export class AppEventService extends AsyncServiceBase {
 
   /** Initialise the app events service by recording an app_launch instance */
   private async intialise() {
-    await this.ensureAsyncServicesReady([this.db, this.templateFieldService]);
-    this.ensureSyncServicesReady([this.localStorageService]);
+    await this.ensureAsyncServicesReady([this.db]);
+    this.ensureSyncServicesReady([this.localStorageService, this.appConfigService]);
+    this.subscribeToAppConfigChanges();
     this.setAppEventsById([]);
     this.loadSummary();
 
@@ -56,6 +59,12 @@ export class AppEventService extends AsyncServiceBase {
     await this.loadAppEvents();
     // recalculate any summary data that might have changed due ot this
     this.calculateEventSummaries();
+  }
+
+  private subscribeToAppConfigChanges() {
+    this.appConfigService.appConfig$.subscribe((appConfig: IAppConfig) => {
+      this.appFields = appConfig.APP_FIELDS;
+    });
   }
 
   private getDBAppEvents(event_id?: IAppEvent["event_id"]) {
@@ -84,7 +93,7 @@ export class AppEventService extends AsyncServiceBase {
     // current app day calculated by finding length of array of subset of all unique app open event dates
     const app_day = [...new Set(appOpenEvents.map((e) => e._created.substring(0, 10)))].length;
     const first_app_launch = this.appEventsById.app_launch?.[0]?._created || generateTimestamp();
-    this.templateFieldService.setField("_app_first_launch", first_app_launch);
+    this.localStorageService.setString(this.appFields.APP_FIRST_LAUNCH, first_app_launch);
     return this.setSummaryValues({ app_day, first_app_launch });
   }
 
