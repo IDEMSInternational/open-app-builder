@@ -37,6 +37,7 @@ const FIELD_PREFIX = "rp-contact-field";
  * */
 const APP_FIELDS = {
   APP_AUTH_USER: `${FIELD_PREFIX}._app_auth_user`,
+  APP_FIRST_LAUNCH: `${FIELD_PREFIX}._app_first_launch`,
   APP_LANGUAGE: `${FIELD_PREFIX}._app_language`,
   APP_SKIN: `${FIELD_PREFIX}._app_skin`,
   APP_THEME: `${FIELD_PREFIX}._app_theme`,
