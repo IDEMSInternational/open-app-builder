@@ -1,15 +1,21 @@
 import { TestBed } from "@angular/core/testing";
 import { IVariableContext, TemplateVariablesService } from "./template-variables.service";
 import { FlowTypes } from "src/app/shared/model";
+import { HttpClientTestingModule } from "@angular/common/http/testing";
+import { TemplateFieldService } from "./template-field.service";
+import { MockTemplateFieldService } from "./template-field.service.spec";
+import { AppDataService } from "src/app/shared/services/data/app-data.service";
+import { CampaignService } from "src/app/feature/campaign/campaign.service";
+import { MockAppDataService } from "src/app/shared/services/data/app-data.service.spec";
 
-const EVALUATOR: FlowTypes.TemplateRowDynamicEvaluator = {
+const MOCK_EVALUATOR: FlowTypes.TemplateRowDynamicEvaluator = {
   fullExpression: "text_completed_@item.id",
   matchedExpression: "@item.id",
   type: "item",
   fieldName: "id",
 };
 
-const CONTEXT: IVariableContext = {
+const MOCK_CONTEXT: IVariableContext = {
   itemContext: {
     id: "id_3",
     label: "Task 3",
@@ -84,11 +90,37 @@ const CONTEXT: IVariableContext = {
   },
 };
 
+const MOCK_DATA = {};
+
 describe("TemplateVariablesService", () => {
   let service: TemplateVariablesService;
+  let getNextCampaignRowsSpy: jasmine.Spy<jasmine.Func>;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({});
+    getNextCampaignRowsSpy = jasmine.createSpy();
+    TestBed.configureTestingModule({
+      imports: [HttpClientTestingModule],
+      providers: [
+        {
+          provide: TemplateFieldService,
+          useValue: MockTemplateFieldService,
+        },
+        {
+          provide: AppDataService,
+          useValue: new MockAppDataService(MOCK_DATA),
+        },
+        // Mock single method from campaign service called
+        {
+          provide: CampaignService,
+          useValue: {
+            ready: async () => {
+              return true;
+            },
+            getNextCampaignRows: getNextCampaignRowsSpy,
+          },
+        },
+      ],
+    });
     service = TestBed.inject(TemplateVariablesService);
   });
 
