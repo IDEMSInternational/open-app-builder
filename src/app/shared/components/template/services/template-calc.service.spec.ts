@@ -1,3 +1,19 @@
+import { ICalcContext, TemplateCalcService } from "./template-calc.service";
+
+export class MockTemplateCalcService implements Partial<TemplateCalcService> {
+  public async ready(): Promise<boolean> {
+    return true;
+  }
+
+  public getCalcContext(): ICalcContext {
+    return {
+      thisCtxt: {},
+      globalConstants: {},
+      globalFunctions: {},
+    };
+  }
+}
+
 /**
  * TODO - Add testing data and methods
  * 
