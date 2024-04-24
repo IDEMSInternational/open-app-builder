@@ -74,23 +74,16 @@ export class DynamicDataService extends AsyncServiceBase {
        * click | set_item | _index: @item._index + 1, completed:true;
        */
       set_item: async ({ args, params }) => {
-        // data-items component populates data_list name, along with an array of all item ids
-        // and the index of the current item triggering the action
-        const [flow_name, itemDataIDs, itemIndex] = args;
+        // The data-items component populates the context for evaluating the target item to be updated
+        const context = args[0] as ISetItemContext;
+        // The params come directly from the authored action
         const { _index, _id, ...writeableProps } = params;
-
-        const targetRowId = this.getTargetItemRowId(itemDataIDs, itemIndex, _id, _index);
-
-        if (itemDataIDs.includes(targetRowId)) {
-          await this.update("data_list", flow_name, targetRowId, writeableProps);
-        } else {
-          console.warn(`[SET ITEM] - No item ${_id ? "with ID " + _id : "at index " + _index}`);
-        }
+        await this.setItem({ context, _index, _id, writeableProps });
       },
       set_items: async ({ args, params }) => {
-        const [flow_name, row_ids] = args;
+        const { flow_name, itemDataIDs } = args[0] as ISetItemContext;
         // Hack, no current method for bulk update so make successive (changes debounced in component)
-        for (const row_id of row_ids) {
+        for (const row_id of itemDataIDs) {
           await this.update("data_list", flow_name, row_id, params);
         }
       },
@@ -242,19 +235,45 @@ export class DynamicDataService extends AsyncServiceBase {
   }
 
   /**
-   * Get the ID of an item row to target for update:
-   * If a target _id is specified, this is returned,
-   * else if a target _index is specified, the corresponding item ID is returned,
-   * if neither is specified, then the ID of the current item is returned
+   * Update an "item", a row within a data-items loop, e.g. as triggered by the set_item action.
+   * If an _id is specified, the row with that ID is updated,
+   * else if an _index is specified, the row with corresponding to the item at that index is updated,
+   * if neither is specified, then the current item (as defined in context) is updated
    */
-  private getTargetItemRowId(
-    itemDataIDs: any[],
-    currentItemIndex: number,
-    _id: string,
-    _index: number
-  ) {
-    if (_id) return _id;
-    if (_index !== undefined) return itemDataIDs[_index];
-    return itemDataIDs[currentItemIndex];
+  public async setItem(params: {
+    context: ISetItemContext;
+    /** the index of a specific item to update */
+    _index?: number;
+    /** the id of a specific item to update */
+    _id?: string;
+    /** the property key/values to update on the targeted item */
+    writeableProps: any;
+  }) {
+    const { flow_name, itemDataIDs, currentItemId } = params.context;
+    const { _index, _id, writeableProps } = params;
+
+    let targetRowId = currentItemId;
+    if (_id) {
+      targetRowId = _id;
+    }
+    if (_index !== undefined) {
+      targetRowId = itemDataIDs[_index];
+    }
+
+    if (itemDataIDs.includes(targetRowId)) {
+      await this.update("data_list", flow_name, targetRowId, writeableProps);
+    } else {
+      console.warn(`[SET ITEM] - No item ${_id ? "with ID " + _id : "at index " + _index}`);
+    }
   }
+}
+
+/** the context for evaluating the target item to be updated, provided by the data-items component */
+export interface ISetItemContext {
+  /** the name of the data_list containing the item to update */
+  flow_name: string;
+  /** an array of the IDs of all the item rows in the loop */
+  itemDataIDs: string[];
+  /** the ID of the current item */
+  currentItemId: string;
 }
