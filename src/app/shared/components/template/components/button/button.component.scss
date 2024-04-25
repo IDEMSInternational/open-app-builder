@@ -48,6 +48,9 @@ ion-button[data-variant~="nested_color"] {
 ion-button[data-param-style~="card"],
 ion-button[data-variant~="card"] {
   --background: white;
+  // HACK: on iOS, the background does not always appear correctly without this additional rule,
+  // see https://github.com/IDEMSInternational/parenting-app-ui/issues/2287
+  background-color: white;
   --background-activated: var(--ion-color-gray-light);
   --padding-top: var(--tiny-padding);
   --padding-bottom: var(--tiny-padding);
@@ -56,7 +59,6 @@ ion-button[data-variant~="card"] {
   border: 1px solid var(--ion-color-gray-light);
   border-radius: var(--ion-border-radius-secondary);
   min-height: var(--buttons-short-height);
-  filter: drop-shadow(var(--ion-default-box-shadow));
 
   .text ::ng-deep {
     p {
