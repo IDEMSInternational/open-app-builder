@@ -1,8 +1,8 @@
 import { Location } from "@angular/common";
 import { Injectable } from "@angular/core";
-import { ActivatedRoute, Router } from "@angular/router";
+import { ActivatedRoute, NavigationSkipped, NavigationStart, Router } from "@angular/router";
 import { ModalController } from "@ionic/angular";
-import { first } from "rxjs/operators";
+import { filter, first, take } from "rxjs/operators";
 import { FlowTypes } from "src/app/shared/model";
 import { SyncServiceBase } from "src/app/shared/services/syncService.base";
 import { arrayToHashmapArray, parseBoolean } from "src/app/shared/utils";
@@ -329,6 +329,7 @@ export class TemplateNavService extends SyncServiceBase {
       parent: container,
       showCloseButton: true,
       dismissOnEmit: true,
+      fullscreen: true,
     };
     // If trying to recreate a popup that already exists simply mark as visible
     const existingPopup = this.openPopupsByName[popup_child];
@@ -336,7 +337,8 @@ export class TemplateNavService extends SyncServiceBase {
       existingPopup.modal.classList.remove("hide-popup-on-template");
       return;
     }
-
+    // add a state to history so we can navigate back from fullscreen popup
+    if (childContainerProps.fullscreen) history.pushState({}, "", location.href);
     const modal = await this.modalCtrl.create({
       component: TemplatePopupComponent,
       componentProps: { props: childContainerProps },
@@ -346,6 +348,34 @@ export class TemplateNavService extends SyncServiceBase {
       showBackdrop: false,
     });
     this.openPopupsByName[popup_child] = { modal, props: childContainerProps };
+    // console.log("this.openPopupsByName", this.openPopupsByName)
+    if (childContainerProps.fullscreen) {
+      //   this.router.events.pipe(first()).subscribe(() => {
+      //     this.dismissPopup(popup_child)
+      //   //   history.replaceState({}, "", location.href);
+      //   });
+
+      // this.router.events.pipe(take(1)).subscribe((event: NavigationStart) => {
+      //   console.log("hi")
+      //   this.dismissPopup(popup_child)
+      // //   history.replaceState({}, "", location.href);
+      // });
+      this.router.events
+        .pipe(
+          filter((event) => event instanceof NavigationSkipped),
+          first()
+        )
+        .subscribe((event: NavigationSkipped) => {
+          console.log("hi");
+          console.log("event", event);
+          if (event.code === 0) {
+            console.log("navigation skipped");
+            this.dismissPopup(popup_child);
+            // need to also remove record from history so that back doesn't reopen the popup...
+            history.replaceState({}, "", location.href);
+          }
+        });
+    }
     return modal;
   }
 }
