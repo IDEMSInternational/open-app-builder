@@ -37,6 +37,9 @@ export class TemplatePopupComponent {
   }
 
   dismiss(value?: { emit_value: string; emit_data: any }) {
+    // if !includeInHistory {
+    // this.templateNavService.removeFromHistory() // i.e. history.replaceState({}, "", location.href);
+    // }
     this.modalCtrl.dismiss(value);
   }
 }
