@@ -318,36 +318,48 @@ export class TemplateVariablesService extends AsyncServiceBase {
         // TODO - assumed 'value' field will be returned but this could be provided instead as an arg
         const returnField: keyof FlowTypes.TemplateRow = "value";
 
-        // find any rows where nested path corresponds to match path
-        let matchedRows: { row: FlowTypes.TemplateRow; nestedName: string }[] = [];
-        Object.entries(templateRowMap).forEach(([nestedName, row]) => {
-          if (nestedName === fieldName || nestedName.endsWith(`.${fieldName}`)) {
-            matchedRows.push({ row, nestedName });
-          }
-        });
-        // no match found. If condition assume this is fine, otherwise authoring error
-        if (matchedRows.length === 0) {
-          if (field === "condition") {
-            parsedValue = false;
-          } else {
+        // If there is itemContext, then we're in an items loop and the templateRowMap is only of the items rows.
+        // In this case, we can look at the calcContext to see if the local variable value has already been parsed, and return this value
+        if (context.itemContext) {
+          parsedValue = context.calcContext.thisCtxt?.local?.[evaluator.fieldName];
+          if (!parsedValue && parsedValue !== 0) {
             parseSuccess = false;
             console.error(`@local.${fieldName} not found`, {
               evaluator,
               rowMap: templateRowMap,
             });
           }
-        }
-        // match found - return least nested (in case of duplicates)
-        else {
-          matchedRows = matchedRows.sort(
-            (a, b) => a.nestedName.split(".").length - b.nestedName.split(".").length
-          );
-          if (matchedRows.length > 1) {
-            console.warn(`@local.${fieldName} found multiple`, { matchedRows });
+        } else {
+          // find any rows where nested path corresponds to match path
+          let matchedRows: { row: FlowTypes.TemplateRow; nestedName: string }[] = [];
+          Object.entries(templateRowMap).forEach(([nestedName, row]) => {
+            if (nestedName === fieldName || nestedName.endsWith(`.${fieldName}`)) {
+              matchedRows.push({ row, nestedName });
+            }
+          });
+          // no match found. If condition assume this is fine, otherwise authoring error
+          if (matchedRows.length === 0) {
+            if (field === "condition") {
+              parsedValue = false;
+            } else {
+              parseSuccess = false;
+              console.error(`@local.${fieldName} not found`, {
+                evaluator,
+                rowMap: templateRowMap,
+              });
+            }
           }
-          parsedValue = matchedRows[0].row[returnField];
+          // match found - return least nested (in case of duplicates)
+          else {
+            matchedRows = matchedRows.sort(
+              (a, b) => a.nestedName.split(".").length - b.nestedName.split(".").length
+            );
+            if (matchedRows.length > 1) {
+              console.warn(`@local.${fieldName} found multiple`, { matchedRows });
+            }
+            parsedValue = matchedRows[0].row[returnField];
+          }
         }
-
         break;
       case "field":
         // console.warn("To keep consistency with rapidpro, @fields should be used instead of @field");
