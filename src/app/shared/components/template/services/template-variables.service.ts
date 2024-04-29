@@ -320,8 +320,8 @@ export class TemplateVariablesService extends AsyncServiceBase {
 
         // In a data-items loop, the templateRowMap is only of the items rows.
         // In this case, we can look at the calcContext to see if the local variable value has already been parsed, and return this value
-        if (context.itemContext) {
-          parsedValue = context.calcContext.thisCtxt?.local?.[evaluator.fieldName];
+        if (context.itemContext && field !== "condition") {
+          parsedValue = context.calcContext.thisCtxt?.local?.[fieldName];
           if (!parsedValue && parsedValue !== 0) {
             parseSuccess = false;
             console.error(`@local.${fieldName} not found`, {
