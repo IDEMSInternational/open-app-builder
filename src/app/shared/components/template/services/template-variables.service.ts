@@ -318,7 +318,7 @@ export class TemplateVariablesService extends AsyncServiceBase {
         // TODO - assumed 'value' field will be returned but this could be provided instead as an arg
         const returnField: keyof FlowTypes.TemplateRow = "value";
 
-        // If there is itemContext, then we're in an items loop and the templateRowMap is only of the items rows.
+        // In a data-items loop, the templateRowMap is only of the items rows.
         // In this case, we can look at the calcContext to see if the local variable value has already been parsed, and return this value
         if (context.itemContext) {
           parsedValue = context.calcContext.thisCtxt?.local?.[evaluator.fieldName];
