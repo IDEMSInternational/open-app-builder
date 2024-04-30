@@ -133,7 +133,7 @@ describe("TemplateVariablesService", () => {
     expect(service).toBeTruthy();
   });
 
-  fit("Evaluates PLH Data String", async () => {
+  it("Evaluates PLH Data String", async () => {
     console.log({ TEST_FIELD_CONTEXT });
     const res = await service.evaluatePLHData("Hello @fields.string_field", TEST_FIELD_CONTEXT);
     expect(res).toEqual("Hello test_string_value");
