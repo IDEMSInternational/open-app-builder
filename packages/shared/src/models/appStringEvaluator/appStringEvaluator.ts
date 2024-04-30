@@ -1,6 +1,7 @@
 import { JSEvaluator } from "../jsEvaluator/jsEvaluator";
 import { TemplatedData } from "..";
-import { booleanStringToBoolean } from "../../utils";
+import { booleanStringToBoolean } from "../../utils/string-utils";
+// import { booleanStringToBoolean } from "../../utils";
 
 /**
  * Utility class to allow evaluation of strings that contain a mix of context expressions,
