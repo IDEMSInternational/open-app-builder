@@ -19,6 +19,10 @@ const MOCK_FIELDS = {
   number_field: 2,
 };
 
+const MOCK_LOCALS = {
+  string_local: "test_local_string_value",
+};
+
 const MOCK_CONTEXT_BASE: IVariableContext = {
   // Assume the row will have a dynamic 'field' entry
   field: "value",
@@ -34,7 +38,7 @@ const MOCK_CONTEXT_BASE: IVariableContext = {
     globalFunctions: {},
     thisCtxt: {
       fields: MOCK_FIELDS,
-      local: {},
+      local: MOCK_LOCALS,
     },
   },
 };
@@ -72,6 +76,34 @@ const TEST_ITEM_CONTEXT: IVariableContext = {
           matchedExpression: "@item._index",
           type: "item",
           fieldName: "_index",
+        },
+      ],
+    },
+  },
+  itemContext: {
+    id: "id1",
+    number: 1,
+    string: "hello",
+    boolean: true,
+    _index: 0,
+    _id: "id1",
+    _first: true,
+    _last: false,
+  },
+};
+
+const TEST_LOCAL_CONTEXT: IVariableContext = {
+  ...MOCK_CONTEXT_BASE,
+  row: {
+    ...MOCK_CONTEXT_BASE.row,
+    value: "Hello @local.string_local",
+    _dynamicFields: {
+      value: [
+        {
+          fullExpression: "Hello @local.string_local",
+          matchedExpression: "@local.string_local",
+          type: "local",
+          fieldName: "string_local",
         },
       ],
     },
@@ -177,5 +209,20 @@ describe("TemplateVariablesService", () => {
       TEST_ITEM_CONTEXT
     );
     expect(resWithoutItemContext).toEqual(MOCK_ITEM_STRING);
+  });
+
+  it("evaluates string containing local variable", async () => {
+    const MOCK_LOCAL_STRING = "Hello @local.string_local";
+    // Parse expression when item context included
+    const resWithItemContext = await service.evaluatePLHData(MOCK_LOCAL_STRING, TEST_LOCAL_CONTEXT);
+    expect(resWithItemContext).toEqual("Hello test_local_string_value");
+    // Retain raw expression if evaluating outside of item context
+    // https://github.com/IDEMSInternational/parenting-app-ui/pull/2215#discussion_r1514757364
+    // delete TEST_ITEM_CONTEXT.itemContext;
+    // const resWithoutItemContext = await service.evaluatePLHData(
+    //   MOCK_ITEM_STRING,
+    //   TEST_ITEM_CONTEXT
+    // );
+    // expect(resWithoutItemContext).toEqual(MOCK_ITEM_STRING);
   });
 });
