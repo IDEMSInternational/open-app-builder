@@ -1,6 +1,5 @@
 import { JSEvaluator } from "../jsEvaluator/jsEvaluator";
 import { TemplatedData } from "..";
-import { booleanStringToBoolean } from "../../utils/string-utils";
 
 /**
  * Utility class to allow evaluation of strings that contain a mix of context expressions,
@@ -48,7 +47,7 @@ export class AppStringEvaluator {
       const evaluated = this.evaluator.evaluate(parsed);
       return evaluated;
     } catch (error) {
-      return booleanStringToBoolean(parsed);
+      return parsed;
     }
   }
 }

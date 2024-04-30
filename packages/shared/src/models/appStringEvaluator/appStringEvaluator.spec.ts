@@ -16,13 +16,4 @@ describe("App String Evaluator", () => {
       "Hello Ada Lovelace"
     );
   });
-
-  it("Evaluates boolean strings as booleans", () => {
-    expect(evaluator.evaluate("false")).toEqual(false);
-    expect(evaluator.evaluate("FALSE")).toEqual(false);
-    expect(evaluator.evaluate("False")).toEqual(false);
-    expect(evaluator.evaluate("true")).toEqual(true);
-    expect(evaluator.evaluate("TRUE")).toEqual(true);
-    expect(evaluator.evaluate("True")).toEqual(true);
-  });
 });
