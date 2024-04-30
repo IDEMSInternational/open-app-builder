@@ -1,6 +1,6 @@
 import { ICalcContext, TemplateCalcService } from "./template-calc.service";
 
-const EMPTY_CALC_CONTEXT: ICalcContext = {
+const CALC_CONTEXT_BASE: ICalcContext = {
   thisCtxt: {},
   globalConstants: {},
   globalFunctions: {},
@@ -9,7 +9,7 @@ const EMPTY_CALC_CONTEXT: ICalcContext = {
 export class MockTemplateCalcService implements Partial<TemplateCalcService> {
   private calcContext: ICalcContext;
   constructor(mockCalcContext?: Partial<ICalcContext>) {
-    this.calcContext = { ...EMPTY_CALC_CONTEXT, ...mockCalcContext };
+    this.calcContext = { ...CALC_CONTEXT_BASE, ...mockCalcContext };
   }
 
   public async ready(): Promise<boolean> {
