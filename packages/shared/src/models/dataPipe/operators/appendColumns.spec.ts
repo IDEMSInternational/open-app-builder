@@ -14,4 +14,15 @@ describe("Append Columns Operator", () => {
     const testOutputGreeting = output.column("greeting").values[2];
     expect(testOutputGreeting).toEqual("Hello Charles Babbage");
   });
+  it("appends columns with boolean values", () => {
+    const testDf = new DataFrame(testData.names);
+    const output = new append_columns(testDf, [
+      "full_name : Ada Lovelace",
+      "boolean : FALSE",
+    ]).apply();
+    const testOutputFullName = output.column("full_name").values[2];
+    expect(testOutputFullName).toEqual("Ada Lovelace");
+    const testOutputGreeting = output.column("boolean").values[2];
+    expect(testOutputGreeting).toEqual(false);
+  });
 });
