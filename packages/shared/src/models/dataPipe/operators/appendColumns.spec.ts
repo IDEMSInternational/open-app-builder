@@ -19,10 +19,13 @@ describe("Append Columns Operator", () => {
     const output = new append_columns(testDf, [
       "full_name : Ada Lovelace",
       "boolean : FALSE",
+      "number : -3.75 ",
     ]).apply();
     const testOutputFullName = output.column("full_name").values[2];
     expect(testOutputFullName).toEqual("Ada Lovelace");
-    const testOutputGreeting = output.column("boolean").values[2];
-    expect(testOutputGreeting).toEqual(false);
+    const testOutputBoolean = output.column("boolean").values[2];
+    expect(testOutputBoolean).toEqual(false);
+    const testOutputNumber = output.column("number").values[2];
+    expect(testOutputNumber).toEqual(-3.75);
   });
 });
