@@ -4,6 +4,8 @@ describe("string-utils", () => {
   it("parses string values", () => {
     const test_non_string = parseStringValue({ test: "hello" } as any);
     expect(test_non_string).toEqual({ test: "hello" });
+    const test_a_string = parseStringValue("My test string");
+    expect(test_a_string).toEqual("My test string");
     const test_empty_string = parseStringValue("");
     expect(test_empty_string).toEqual("");
     const test_float = parseStringValue("-5.25");
