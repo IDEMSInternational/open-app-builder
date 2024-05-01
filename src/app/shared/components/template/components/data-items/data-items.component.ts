@@ -80,7 +80,7 @@ export class TmplDataItemsComponent extends TemplateBaseComponent implements OnD
     const { itemRows, itemData } = new ItemProcessor(parsedItemDataList, parameterList).process(
       rows
     );
-    const itemRowsWithMeta = this.setItemMeta(itemRows, itemData);
+    const itemRowsWithMeta = this.setItemMeta(itemRows, itemData, this.dataListName);
 
     const parsedItemRows = await this.hackProcessRows(itemRowsWithMeta);
     // TODO - deep diff and only update changed
@@ -93,44 +93,59 @@ export class TmplDataItemsComponent extends TemplateBaseComponent implements OnD
    * item data
    * @param templateRows List of template rows generated from itemData by item processor
    * @param itemData List of original item data used to create item rows (post operations such as filter/sort)
+   * @param dataListName The name of the source data list (i.e. this.dataListName, extracted for ease of testing)
    * */
-  private setItemMeta(templateRows: FlowTypes.TemplateRow[], itemData: FlowTypes.Data_listRow[]) {
+  private setItemMeta(
+    templateRows: FlowTypes.TemplateRow[],
+    itemData: FlowTypes.Data_listRow[],
+    dataListName: string
+  ) {
+    return templateRows.map((row) => this.setItemMetaOnRowRecursive(row, itemData, dataListName));
+  }
+
+  private setItemMetaOnRowRecursive(
+    row: FlowTypes.TemplateRow,
+    itemData: FlowTypes.Data_listRow[],
+    dataListName: string
+  ) {
     const lastItemIndex = itemData.length - 1;
     const itemDataIDs = itemData.map((item) => item.id);
     // Reassign metadata fields previously assigned by item as rendered row count may have changed
-    return templateRows.map((r) => {
-      const itemId = r._evalContext.itemContext._id;
-      // Map the row item context to the original list of items rendered to know position in item list.
-      const itemIndex = itemDataIDs.indexOf(itemId);
-      // Update metadata fields as _first, _last and index may have changed based on dynamic updates
-      r._evalContext.itemContext = {
-        ...r._evalContext.itemContext,
-        _index: itemIndex,
-        _first: itemIndex === 0,
-        _last: itemIndex === lastItemIndex,
+
+    const itemId = row._evalContext.itemContext._id;
+    // Map the row item context to the original list of items rendered to know position in item list.
+    const itemIndex = itemDataIDs.indexOf(itemId);
+    // Update metadata fields as _first, _last and index may have changed based on dynamic updates
+    row._evalContext.itemContext = {
+      ...row._evalContext.itemContext,
+      _index: itemIndex,
+      _first: itemIndex === 0,
+      _last: itemIndex === lastItemIndex,
+    };
+    // Update any action list set_item args to contain name of current data list and item id
+    // and set_items action to include all currently displayed rows
+    if (row.action_list) {
+      const setItemContext: ISetItemContext = {
+        flow_name: dataListName,
+        itemDataIDs,
+        currentItemId: itemId,
       };
-      // Update any action list set_item args to contain name of current data list and item id
-      // and set_items action to include all currently displayed rows
-      if (r.action_list) {
-        const setItemContext: ISetItemContext = {
-          flow_name: this.dataListName,
-          itemDataIDs,
-          currentItemId: itemId,
-        };
-        r.action_list = r.action_list.map((a) => {
-          if (a.action_id === "set_item") {
-            a.args = [setItemContext];
-          }
-          if (a.action_id === "set_items") {
-            // TODO - add a check for @item refs and replace parameter list with correct values
-            // for each individual item (default will be just to pick the first)
-            a.args = [setItemContext];
-          }
-          return a;
-        });
-      }
-      return r;
-    });
+      row.action_list = row.action_list.map((a) => {
+        if (a.action_id === "set_item") {
+          a.args = [setItemContext];
+        }
+        if (a.action_id === "set_items") {
+          // TODO - add a check for @item refs and replace parameter list with correct values
+          // for each individual item (default will be just to pick the first)
+          a.args = [setItemContext];
+        }
+        return a;
+      });
+    }
+    if (row.rows) {
+      row.rows = row.rows.map((r) => this.setItemMetaOnRowRecursive(r, itemData, dataListName));
+    }
+    return row;
   }
 
   /**
@@ -185,9 +200,8 @@ export class TmplDataItemsComponent extends TemplateBaseComponent implements OnD
       parsed[listKey] = listValue;
       for (const [itemKey, itemValue] of Object.entries(listValue)) {
         if (typeof itemValue === "string") {
-          parsed[listKey][itemKey] = await this.templateVariablesService.evaluateConditionString(
-            itemValue
-          );
+          parsed[listKey][itemKey] =
+            await this.templateVariablesService.evaluateConditionString(itemValue);
         }
       }
     }
