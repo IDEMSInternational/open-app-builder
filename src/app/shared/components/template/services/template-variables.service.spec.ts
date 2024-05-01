@@ -6,8 +6,9 @@ import { MockTemplateFieldService } from "./template-field.service.spec";
 import { AppDataService } from "src/app/shared/services/data/app-data.service";
 import { CampaignService } from "src/app/feature/campaign/campaign.service";
 import { MockAppDataService } from "src/app/shared/services/data/app-data.service.spec";
-import { TemplateCalcService } from "./template-calc.service";
+import { ICalcContext, TemplateCalcService } from "./template-calc.service";
 import { MockTemplateCalcService } from "./template-calc.service.spec";
+import clone from "clone";
 
 const MOCK_APP_DATA = {};
 
@@ -17,10 +18,6 @@ const MOCK_FIELDS = {
   _app_skin: "default",
   string_field: "test_string_value",
   number_field: 2,
-};
-
-const MOCK_LOCALS = {
-  string_local: "test_local_string_value",
 };
 
 const MOCK_CONTEXT_BASE: IVariableContext = {
@@ -36,10 +33,7 @@ const MOCK_CONTEXT_BASE: IVariableContext = {
   calcContext: {
     globalConstants: {},
     globalFunctions: {},
-    thisCtxt: {
-      fields: MOCK_FIELDS,
-      local: MOCK_LOCALS,
-    },
+    thisCtxt: {},
   },
 };
 
@@ -61,6 +55,17 @@ const TEST_FIELD_CONTEXT: IVariableContext = {
   },
 };
 
+const MOCK_ITEM_CONTEXT: IVariableContext["itemContext"] = {
+  id: "id1",
+  number: 1,
+  string: "hello",
+  boolean: true,
+  _index: 0,
+  _id: "id1",
+  _first: true,
+  _last: false,
+};
+
 // Context adapted from this debug template:
 // https://docs.google.com/spreadsheets/d/1tL6CPHEIW-GPMYjdhVKQToy_hZ1H5qNIBkkh9XnA5QM/edit#gid=114708400
 const TEST_ITEM_CONTEXT: IVariableContext = {
@@ -80,20 +85,19 @@ const TEST_ITEM_CONTEXT: IVariableContext = {
       ],
     },
   },
-  itemContext: {
-    id: "id1",
-    number: 1,
-    string: "hello",
-    boolean: true,
-    _index: 0,
-    _id: "id1",
-    _first: true,
-    _last: false,
-  },
+  itemContext: MOCK_ITEM_CONTEXT,
 };
 
 const TEST_LOCAL_CONTEXT: IVariableContext = {
   ...MOCK_CONTEXT_BASE,
+  templateRowMap: {
+    string_local: {
+      name: "string_local",
+      value: "Jasper",
+      type: "set_variable",
+      _nested_name: "string_local",
+    },
+  },
   row: {
     ...MOCK_CONTEXT_BASE.row,
     value: "Hello @local.string_local",
@@ -108,16 +112,15 @@ const TEST_LOCAL_CONTEXT: IVariableContext = {
       ],
     },
   },
-  itemContext: {
-    id: "id1",
-    number: 1,
-    string: "hello",
-    boolean: true,
-    _index: 0,
-    _id: "id1",
-    _first: true,
-    _last: false,
-  },
+};
+
+const TEST_LOCAL_CONTEXT_WITH_ITEM_CONTEXT = {
+  ...TEST_LOCAL_CONTEXT,
+  itemContext: MOCK_ITEM_CONTEXT,
+};
+
+const MOCK_CALC_CONTEXT: Partial<ICalcContext> = {
+  thisCtxt: { local: { string_local: "Jasper2" } },
 };
 
 /**
@@ -143,7 +146,9 @@ describe("TemplateVariablesService", () => {
         },
         {
           provide: TemplateCalcService,
-          useValue: new MockTemplateCalcService(),
+          // HACK: hardcoded calcContext from mock context is overridden by calcContext returned from MockTemplateCalcService,
+          // so insert values here for testing evaluation of local variable inside item loop
+          useValue: new MockTemplateCalcService(clone(MOCK_CALC_CONTEXT)),
         },
         // Mock single method from campaign service called
         {
@@ -211,18 +216,22 @@ describe("TemplateVariablesService", () => {
     expect(resWithoutItemContext).toEqual(MOCK_ITEM_STRING);
   });
 
-  it("evaluates string containing local variable", async () => {
+  it("Evaluates string containing local variable", async () => {
     const MOCK_LOCAL_STRING = "Hello @local.string_local";
-    // Parse expression when item context included
-    const resWithItemContext = await service.evaluatePLHData(MOCK_LOCAL_STRING, TEST_LOCAL_CONTEXT);
-    expect(resWithItemContext).toEqual("Hello test_local_string_value");
-    // Retain raw expression if evaluating outside of item context
-    // https://github.com/IDEMSInternational/parenting-app-ui/pull/2215#discussion_r1514757364
-    // delete TEST_ITEM_CONTEXT.itemContext;
-    // const resWithoutItemContext = await service.evaluatePLHData(
-    //   MOCK_ITEM_STRING,
-    //   TEST_ITEM_CONTEXT
-    // );
-    // expect(resWithoutItemContext).toEqual(MOCK_ITEM_STRING);
+    const resWithLocalContext = await service.evaluatePLHData(
+      MOCK_LOCAL_STRING,
+      TEST_LOCAL_CONTEXT
+    );
+    expect(resWithLocalContext).toEqual("Hello Jasper");
+  });
+
+  it("Evaluates string containing local variable, inside item loop", async () => {
+    const MOCK_LOCAL_STRING = "Hello @local.string_local";
+    // When itemContext is included (i.e. in an item loop), look to thisCtxt for the parsed local var
+    const resWithLocalContext = await service.evaluatePLHData(
+      MOCK_LOCAL_STRING,
+      TEST_LOCAL_CONTEXT_WITH_ITEM_CONTEXT
+    );
+    expect(resWithLocalContext).toEqual("Hello Jasper2");
   });
 });
