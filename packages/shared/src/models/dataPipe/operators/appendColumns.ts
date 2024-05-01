@@ -15,7 +15,6 @@ class AppendColumnsOperator extends BaseOperator {
   constructor(df: DataFrame, args_list: any) {
     super(df, args_list);
   }
-  // args are simply evaluated as JS statements and do not require additional parsing
   parseArg(arg: string): IParsedArg {
     const [key, value] = arg.split(":").map((a) => a.trim());
     const valueExpression = parseStringValue(value);

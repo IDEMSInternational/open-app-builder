@@ -20,7 +20,7 @@ export function kbToMB(kb: number, decimalPlaces = 1) {
 }
 
 /**
- * Take an input string value and empty to parse as native data type, including
+ * Take an input string value and attempt to parse as native data type, including
  * numeric, boolean, null and undefined string representations
  */
 export function parseStringValue(v: string): any {
