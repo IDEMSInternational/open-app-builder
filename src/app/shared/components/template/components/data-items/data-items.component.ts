@@ -147,6 +147,10 @@ export class TmplDataItemsComponent extends TemplateBaseComponent implements OnD
         rows: [],
       },
     } as any);
+    // HACK - still want to be able to use localContext from parent rows so copy to child processor
+    processor.templateRowMap = JSON.parse(
+      JSON.stringify(this.parent.templateRowService.templateRowMap)
+    );
     await processor.processContainerTemplateRows();
     return processor.renderedRows;
   }
@@ -185,9 +189,8 @@ export class TmplDataItemsComponent extends TemplateBaseComponent implements OnD
       parsed[listKey] = listValue;
       for (const [itemKey, itemValue] of Object.entries(listValue)) {
         if (typeof itemValue === "string") {
-          parsed[listKey][itemKey] = await this.templateVariablesService.evaluateConditionString(
-            itemValue
-          );
+          parsed[listKey][itemKey] =
+            await this.templateVariablesService.evaluateConditionString(itemValue);
         }
       }
     }
