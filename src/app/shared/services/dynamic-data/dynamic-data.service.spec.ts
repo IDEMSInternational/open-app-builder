@@ -143,6 +143,13 @@ describe("DynamicDataService", () => {
     expect(data[1].string).toEqual("sets an item correctly for a given _index");
   });
 
+  it("adds metadata (original index) to docs", async () => {
+    const obs = await service.query$<any>("data_list", "test_flow");
+    const data = await firstValueFrom(obs);
+    expect(data[0].index_original).toEqual(0);
+    expect(data[1].index_original).toEqual(1);
+  });
+
   // QA
   it("prevents query of non-existent data lists", async () => {
     let errMsg: string;
