@@ -38,6 +38,7 @@ export class ServerService extends SyncServiceBase {
 
   private initialise() {
     this.ensureSyncServicesReady([this.appConfigService]);
+    this.ensureAsyncServicesReady([this.dynamicDataService]);
     this.subscribeToAppConfigChanges();
     if (environment.production) {
       this.syncUserData();

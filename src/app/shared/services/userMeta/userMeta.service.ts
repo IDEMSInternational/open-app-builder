@@ -28,7 +28,11 @@ export class UserMetaService extends AsyncServiceBase {
 
   /** When first initialising ensure a default profile created and any newer defaults are merged with older user profiles */
   private async initialise() {
-    await this.ensureAsyncServicesReady([this.dbService, this.fieldService]);
+    await this.ensureAsyncServicesReady([
+      this.dbService,
+      this.fieldService,
+      this.dynamicDataService,
+    ]);
     this.registerUserActions();
     const userMetaValues = await this.dbService.table<IUserMetaEntry>("user_meta").toArray();
     const userMeta: IUserMeta = USER_DEFAULTS;
