@@ -64,7 +64,10 @@ export class TmplDataItemsComponent extends TemplateBaseComponent implements OnD
       await this.dynamicDataService.ready();
       const query = await this.dynamicDataService.query$("data_list", this.dataListName);
       this.dataQuery$ = query.pipe(debounceTime(50)).subscribe(async (data) => {
-        await this.renderItems(data, this._row.rows, this.parameterList);
+        // By default, sort the items into the order they appeared in the original data list.
+        // Can be overridden with a `sort` operator applied in the data-items component params
+        const sortedData = data.sort((a, b) => a.index_original - b.index_original);
+        await this.renderItems(sortedData, this._row.rows, this.parameterList);
       });
     } else {
       await this.renderItems([], [], {});
@@ -185,9 +188,8 @@ export class TmplDataItemsComponent extends TemplateBaseComponent implements OnD
       parsed[listKey] = listValue;
       for (const [itemKey, itemValue] of Object.entries(listValue)) {
         if (typeof itemValue === "string") {
-          parsed[listKey][itemKey] = await this.templateVariablesService.evaluateConditionString(
-            itemValue
-          );
+          parsed[listKey][itemKey] =
+            await this.templateVariablesService.evaluateConditionString(itemValue);
         }
       }
     }
