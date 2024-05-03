@@ -76,6 +76,8 @@ export class TemplateRowService extends SyncServiceBase {
    * process dynamic variables and filter conditions
    */
   public async processContainerTemplateRows() {
+    this.templateRowMap = {};
+    this.renderedRows = [];
     await this.ensurePublicMethodServices();
     const { name, template, row } = this.container;
     log_group("[Rows Init]", name, row?.value || "");
@@ -83,6 +85,7 @@ export class TemplateRowService extends SyncServiceBase {
     const rowsWithOverrides = this.processParentOverrides(template?.rows, overrides, name);
     await this.processRows(rowsWithOverrides);
     log_groupEnd();
+    return this.renderedRows;
   }
 
   /***************************************************************************************

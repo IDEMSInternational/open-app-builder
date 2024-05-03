@@ -40,6 +40,8 @@ export class TmplDataItemsComponent extends TemplateBaseComponent implements OnD
 
   private dataQuery$: Subscription;
 
+  private templateRowService: TemplateRowService;
+
   @Input() set row(row: FlowTypes.TemplateRow) {
     this._row = row;
     this.dataListName = this.hackGetRawDataListName(row);
@@ -50,10 +52,20 @@ export class TmplDataItemsComponent extends TemplateBaseComponent implements OnD
   constructor(
     private dynamicDataService: DynamicDataService,
     private templateVariablesService: TemplateVariablesService,
-    private injector: Injector,
+    injector: Injector,
     private cdr: ChangeDetectorRef
   ) {
     super();
+    // HACK - create shell of templateRowService used to process rows
+    this.templateRowService = new TemplateRowService(injector, {
+      name: "",
+      template: {
+        rows: [],
+      },
+      row: {
+        rows: [],
+      },
+    } as any);
   }
 
   private async subscribeToData() {
@@ -138,21 +150,13 @@ export class TmplDataItemsComponent extends TemplateBaseComponent implements OnD
    * however this must be bypassed to allow multiple reprocessing on item updates
    */
   private async hackProcessRows(rows: FlowTypes.TemplateRow[]) {
-    const processor = new TemplateRowService(this.injector, {
-      name: "",
-      template: {
-        rows,
-      },
-      row: {
-        rows: [],
-      },
-    } as any);
+    this.templateRowService.container.template.rows = rows;
+
     // HACK - still want to be able to use localContext from parent rows so copy to child processor
-    processor.templateRowMap = JSON.parse(
+    this.templateRowService.templateRowMap = JSON.parse(
       JSON.stringify(this.parent.templateRowService.templateRowMap)
     );
-    await processor.processContainerTemplateRows();
-    return processor.renderedRows;
+    return this.templateRowService.processContainerTemplateRows();
   }
 
   /**
