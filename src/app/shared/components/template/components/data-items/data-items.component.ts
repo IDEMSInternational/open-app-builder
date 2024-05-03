@@ -66,7 +66,7 @@ export class TmplDataItemsComponent extends TemplateBaseComponent implements OnD
       this.dataQuery$ = query.pipe(debounceTime(50)).subscribe(async (data) => {
         // By default, sort the items into the order they appeared in the original data list.
         // Can be overridden with a `sort` operator applied in the data-items component params
-        const sortedData = data.sort((a, b) => a.index_original - b.index_original);
+        const sortedData = data.sort((a, b) => a.row_index - b.row_index);
         await this.renderItems(sortedData, this._row.rows, this.parameterList);
       });
     } else {
