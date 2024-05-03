@@ -146,8 +146,8 @@ describe("DynamicDataService", () => {
   it("adds metadata (original index) to docs", async () => {
     const obs = await service.query$<any>("data_list", "test_flow");
     const data = await firstValueFrom(obs);
-    expect(data[0].index_original).toEqual(0);
-    expect(data[1].index_original).toEqual(1);
+    expect(data[0].row_index).toEqual(0);
+    expect(data[1].row_index).toEqual(1);
   });
 
   // QA

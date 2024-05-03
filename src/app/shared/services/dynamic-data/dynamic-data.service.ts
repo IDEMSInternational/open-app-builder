@@ -182,7 +182,7 @@ export class DynamicDataService extends AsyncServiceBase {
     const initialDataWithMeta = initialData.map((el) => {
       return {
         ...el,
-        index_original: initialData.indexOf(el),
+        row_index: initialData.indexOf(el),
       };
     });
 
