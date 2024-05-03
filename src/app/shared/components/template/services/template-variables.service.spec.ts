@@ -88,6 +88,33 @@ const TEST_ITEM_CONTEXT: IVariableContext = {
   },
 };
 
+const TEST_LOCAL_CONTEXT: IVariableContext = {
+  ...MOCK_CONTEXT_BASE,
+  templateRowMap: {
+    // Mock row setting a local variable
+    string_local: {
+      name: "string_local",
+      value: "Jasper",
+      type: "set_variable",
+      _nested_name: "string_local",
+    },
+  },
+  row: {
+    ...MOCK_CONTEXT_BASE.row,
+    value: "Hello @local.string_local",
+    _dynamicFields: {
+      value: [
+        {
+          fullExpression: "Hello @local.string_local",
+          matchedExpression: "@local.string_local",
+          type: "local",
+          fieldName: "string_local",
+        },
+      ],
+    },
+  },
+};
+
 /**
  * Call standalone tests via:
  * yarn ng test --include src/app/shared/components/template/services/template-variables.service.spec.ts
@@ -177,5 +204,14 @@ describe("TemplateVariablesService", () => {
       TEST_ITEM_CONTEXT
     );
     expect(resWithoutItemContext).toEqual(MOCK_ITEM_STRING);
+  });
+
+  it("Evaluates string containing local variable", async () => {
+    const MOCK_LOCAL_STRING = "Hello @local.string_local";
+    const resWithLocalContext = await service.evaluatePLHData(
+      MOCK_LOCAL_STRING,
+      TEST_LOCAL_CONTEXT
+    );
+    expect(resWithLocalContext).toEqual("Hello Jasper");
   });
 });
