@@ -228,7 +228,7 @@ describe("DataItemsComponent", () => {
       TEST_ITEM_DATA,
       "test_data_list"
     );
-    // get rows at one level of nesting
+    // get rows at one level of nesting (e.g. those within a display group)
     const nestedRowsWithItemMeta = rowsWithItemMeta[0].rows;
     // get action args for a set_item action (args object is passed within an array)
     const setItemContext = nestedRowsWithItemMeta[0].action_list.find(
