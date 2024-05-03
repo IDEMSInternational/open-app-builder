@@ -38,7 +38,6 @@ export class ServerService extends SyncServiceBase {
 
   private initialise() {
     this.ensureSyncServicesReady([this.appConfigService]);
-    this.ensureAsyncServicesReady([this.dynamicDataService]);
     this.subscribeToAppConfigChanges();
     if (environment.production) {
       this.syncUserData();
@@ -57,6 +56,7 @@ export class ServerService extends SyncServiceBase {
   }
 
   public async syncUserData() {
+    await this.dynamicDataService.ready();
     if (!this.device_info) {
       this.device_info = await Device.getInfo();
     }
