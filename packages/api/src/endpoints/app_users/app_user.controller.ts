@@ -1,5 +1,5 @@
 import { Body, Controller, Get, HttpException, HttpStatus, Param, Post } from "@nestjs/common";
-import { ContactFieldDto } from "./dto/set-user-data.dto";
+import { UserDataPostDTO } from "./dto/set-user-data.dto";
 import { AppUser } from "./app_user.model";
 import { AppUsersService } from "./app_user.service";
 import { ApiBody, ApiOperation, ApiParam, ApiResponse, ApiTags } from "@nestjs/swagger";
@@ -33,14 +33,14 @@ export class AppUsersController {
   @Post(":app_user_id")
   @ApiParam({ name: "app_user_id", type: String })
   @ApiOperation({ summary: "Update user profile" })
-  @ApiBody({ type: ContactFieldDto })
+  @ApiBody({ type: UserDataPostDTO })
   @ApiResponse({
     status: 200,
     description: "User Updated",
-    type: ContactFieldDto,
+    type: UserDataPostDTO,
   })
   @DeploymentHeaders()
-  async setUserData(@Param() params: { app_user_id: string }, @Body() data: ContactFieldDto) {
+  async setUserData(@Param() params: { app_user_id: string }, @Body() data: UserDataPostDTO) {
     try {
       const res = await this.appUsersService.setUserData(params.app_user_id, data);
       return res;

@@ -18,4 +18,7 @@ export class AppUser extends Model<InferAttributes<AppUser>, InferCreationAttrib
 
   @Column({ type: DataType.JSONB })
   device_info: any;
+
+  @Column({ type: DataType.JSONB })
+  dynamic_data: any;
 }
