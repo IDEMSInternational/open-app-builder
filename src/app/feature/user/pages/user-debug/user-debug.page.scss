@@ -1,0 +1,28 @@
+table {
+  border-collapse: separate;
+  border-spacing: 0;
+  position: relative;
+  width: 100%;
+}
+td,
+th {
+  padding: 4px;
+  border-bottom: 1px solid var(--ion-color-gray-light);
+  text-align: left;
+}
+// https://codyhouse.co/nuggets/sticky-table-header
+th {
+  position: sticky;
+  top: 0;
+  background-color: #f9f8f8;
+}
+.table-container {
+  max-height: 300px;
+  overflow: auto;
+  background: white;
+}
+
+ion-select {
+  background-color: white;
+  padding: 4px;
+}
