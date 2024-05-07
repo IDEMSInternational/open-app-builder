@@ -157,6 +157,10 @@ export class TmplDataItemsComponent extends TemplateBaseComponent implements OnD
         rows: [],
       },
     } as any);
+    // HACK - still want to be able to use localContext from parent rows so copy to child processor
+    processor.templateRowMap = JSON.parse(
+      JSON.stringify(this.parent.templateRowService.templateRowMap)
+    );
     await processor.processContainerTemplateRows();
     return processor.renderedRows;
   }
