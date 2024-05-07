@@ -30,7 +30,7 @@ import { AppDataService } from "./shared/services/data/app-data.service";
 import { AuthService } from "./shared/services/auth/auth.service";
 import { LifecycleActionsService } from "./shared/services/lifecycle-actions/lifecycle-actions.service";
 import { AppConfigService } from "./shared/services/app-config/app-config.service";
-import { IAppConfig } from "./shared/model";
+import { IAppConfig, ILanguageMeta } from "./shared/model";
 import { TaskService } from "./shared/services/task/task.service";
 import { AppUpdateService } from "./shared/services/app-update/app-update.service";
 import { RemoteAssetService } from "./shared/services/remote-asset/remote-asset.service";
@@ -57,6 +57,8 @@ export class AppComponent {
   footerDefaults: IAppConfig["APP_FOOTER_DEFAULTS"];
   /** Track when app ready to render sidebar and route templates */
   public renderAppTemplates = false;
+  languagesMeta: { [languageCode: string]: ILanguageMeta };
+  languageRtl: boolean;
 
   constructor(
     // 3rd Party Services
@@ -104,6 +106,8 @@ export class AppComponent {
   private async initializeApp() {
     this.platform.ready().then(async () => {
       this.subscribeToAppConfigChanges();
+      this.subscribeToLanguageChanges();
+
       // ensure deployment field set correctly for use in any startup services or templates
       localStorage.setItem(this.appFields.DEPLOYMENT_NAME, this.DEPLOYMENT_NAME);
       localStorage.setItem(this.appFields.APP_VERSION, this.APP_VERSION);
@@ -171,6 +175,14 @@ export class AppComponent {
       this.footerDefaults = this.appConfig.APP_FOOTER_DEFAULTS;
       this.appAuthenticationDefaults = this.appConfig.APP_AUTHENTICATION_DEFAULTS;
       this.appFields = this.appConfig.APP_FIELDS;
+      this.languagesMeta = this.appConfig.APP_LANGUAGES_META;
+    });
+  }
+
+  /** Update meta for current language */
+  private subscribeToLanguageChanges() {
+    this.templateTranslateService.app_language$.subscribe((lang) => {
+      this.languageRtl = this.languagesMeta?.[lang]?.rtl;
     });
   }
 

@@ -1,4 +1,4 @@
-<ion-app *ngIf="renderAppTemplates" contentId="main">
+<ion-app *ngIf="renderAppTemplates" contentId="main" [dir]="languageRtl ? 'rtl' : 'ltr'">
   <!-- Left Sidebar -->
   <ion-menu
     *ngIf="sideMenuDefaults.enabled"
