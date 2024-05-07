@@ -151,7 +151,7 @@
     "eslint-plugin-n": "^15.7.0",
     "eslint-plugin-prefer-arrow": "1.2.3",
     "eslint-plugin-promise": "^6.1.1",
-    "firebase-tools": "^13.3.1",
+    "firebase-tools": "^13.6.0",
     "husky": "^8.0.3",
     "jasmine-core": "~4.5.0",
     "jasmine-spec-reporter": "~7.0.0",
