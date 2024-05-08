@@ -59,7 +59,6 @@ ion-button[data-variant~="card"] {
   border: 1px solid var(--ion-color-gray-light);
   border-radius: var(--ion-border-radius-secondary);
   min-height: var(--buttons-short-height);
-  filter: drop-shadow(var(--ion-default-box-shadow));
 
   .text ::ng-deep {
     p {
