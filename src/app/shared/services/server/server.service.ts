@@ -8,6 +8,7 @@ import { environment } from "src/environments/environment";
 import { generateTimestamp } from "../../utils";
 import { AppConfigService } from "../app-config/app-config.service";
 import { SyncServiceBase } from "../syncService.base";
+import { DynamicDataService } from "../dynamic-data/dynamic-data.service";
 
 /**
  * Backend API
@@ -26,7 +27,11 @@ export class ServerService extends SyncServiceBase {
   appFields: IAppConfig["APP_FIELDS"];
   //   Requires update (?) - https://angular.io/api/common/http/HttpContext
   //   context =  new HttpContext().set(SERVER_API, true),
-  constructor(private http: HttpClient, private appConfigService: AppConfigService) {
+  constructor(
+    private http: HttpClient,
+    private appConfigService: AppConfigService,
+    private dynamicDataService: DynamicDataService
+  ) {
     super("Server");
     this.initialise();
   }
@@ -51,6 +56,7 @@ export class ServerService extends SyncServiceBase {
   }
 
   public async syncUserData() {
+    await this.dynamicDataService.ready();
     if (!this.device_info) {
       this.device_info = await Device.getInfo();
     }
@@ -58,8 +64,9 @@ export class ServerService extends SyncServiceBase {
       const { identifier: uuid } = await Device.getId();
       this.app_user_id = uuid;
     }
-    console.log("[SERVER] sync data");
+
     const contact_fields = this.getUserStorageData();
+    const dynamic_data = await this.dynamicDataService.getState();
 
     // apply temp timestamp to contact fields to sync as latest
     const timestamp = generateTimestamp();
@@ -71,7 +78,9 @@ export class ServerService extends SyncServiceBase {
       app_version: environment.version,
       device_info: this.device_info,
       app_deployment_name: environment.deploymentName,
+      dynamic_data,
     };
+    console.log("[SERVER] sync data", data);
     return new Promise<string>((resolve, reject) => {
       this.http
         .post(`/app_users/${this.app_user_id}`, data)
@@ -88,7 +97,7 @@ export class ServerService extends SyncServiceBase {
         // )
         .subscribe(
           (res) => {
-            console.log("User data synced", res);
+            console.log("[SERVER] synced", res);
             // finalise timestamp by storing locally
             localStorage.setItem(this.appFields.SERVER_SYNC_LATEST, timestamp);
             resolve(timestamp);

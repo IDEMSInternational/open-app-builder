@@ -20,7 +20,7 @@ type IRowData = { type: string; name?: string; rows?: IRowData };
  * - Rewrite `_list` content as string array
  */
 export class DefaultParser<
-  FlowType extends FlowTypes.FlowTypeWithData = FlowTypes.FlowTypeWithData
+  FlowType extends FlowTypes.FlowTypeWithData = FlowTypes.FlowTypeWithData,
 > {
   activeDeployment = ActiveDeployment.get();
 
@@ -44,13 +44,16 @@ export class DefaultParser<
       this.queue.shift();
     }
     // Process queue
+    let rowNumber = 1;
     while (this.queue.length > 0) {
+      // Start rowNumber from 2 to match sheet (without header row)
+      rowNumber++;
       const row = this.queue[0];
       try {
         const processed = new RowProcessor(row, this, rowDefaultValues).run();
         // some rows may be omitted during processing so ignore
         if (processed) {
-          const postProcessed = this.postProcessRow(processed);
+          const postProcessed = this.postProcessRow(processed, rowNumber);
           if (postProcessed) {
             processedRows.push(postProcessed);
           }
@@ -87,7 +90,7 @@ export class DefaultParser<
 
   /** Overridable method called by parser to apply any additional processing
    * on each individual row. By default the original row is simply returned */
-  public postProcessRow(row: any) {
+  public postProcessRow(row: any, rowNumber: number) {
     return row;
   }
 
@@ -109,7 +112,11 @@ export class DefaultParser<
  * migrating deprecated columns, processing default values and self-references and handling translations
  */
 class RowProcessor {
-  constructor(public row: IRowData, public parent: DefaultParser, public defaultValues?: any) {}
+  constructor(
+    public row: IRowData,
+    public parent: DefaultParser,
+    public defaultValues?: any
+  ) {}
 
   public run() {
     this.processRowDefaultValues();
@@ -232,10 +239,10 @@ class RowProcessor {
       // handle custom fields
       if (!shouldSkip) {
         if (typeof value === "string") {
-          if (field.endsWith("_list")) {
+          if (field.endsWith("_list") || field.includes("_list_")) {
             this.row[field] = parseAppDataListString(value);
           }
-          if (field.endsWith("_collection")) {
+          if (field.endsWith("_collection") || field.includes("_collection_")) {
             this.row[field] = parseAppDataCollectionString(this.row[field]);
           }
           if (field.endsWith("action_list")) {

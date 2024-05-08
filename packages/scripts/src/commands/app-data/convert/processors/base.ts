@@ -9,9 +9,6 @@ import { JsonFileCache } from "../cacheStrategy/jsonFile";
 import chalk from "chalk";
 
 class BaseProcessor<T = any, V = any> {
-  /** Used to invalidate cache */
-  public cacheVersion = 20231001.0;
-
   public logger: Logger;
 
   public cache: JsonFileCache;
@@ -26,7 +23,7 @@ class BaseProcessor<T = any, V = any> {
    * Create a base processor instance. Sets up logging and cache
    * @param context.namespace - Name used as prefix for cache and logging
    */
-  constructor(public context: { namespace: string; paths: IConverterPaths }) {
+  constructor(public context: { namespace: string; paths: IConverterPaths; cacheVersion: number }) {
     const { namespace } = context;
     this.logger = createChildFileLogger({ source: namespace });
     this.setupCache();
@@ -36,9 +33,9 @@ class BaseProcessor<T = any, V = any> {
    * included relative path, md5 checksum and modified time
    */
   private setupCache() {
-    const { paths, namespace } = this.context;
+    const { paths, namespace, cacheVersion } = this.context;
     const cacheFolder = path.resolve(paths.SHEETS_CACHE_FOLDER, namespace);
-    this.cache = new JsonFileCache(cacheFolder, this.cacheVersion);
+    this.cache = new JsonFileCache(cacheFolder, cacheVersion);
   }
 
   /**

@@ -16,6 +16,8 @@ const log = SHOW_DEBUG_LOGS ? console.log : () => null;
 const log_group = SHOW_DEBUG_LOGS ? console.group : () => null;
 const log_groupEnd = SHOW_DEBUG_LOGS ? console.groupEnd : () => null;
 
+const { TEMPLATE_ROW_ITEM_METADATA_FIELDS } = FlowTypes;
+
 /**
  * Most methods in this class depend on factors relating to the execution context
  * (e.g.row, variables etc.). Store as a single object to make it easier to pass between methods
@@ -120,12 +122,19 @@ export class TemplateVariablesService extends AsyncServiceBase {
   }
 
   /**
-   * Inore evaluation of meta, comment, and specifiedfields.
+   * Ignore evaluation of meta, comment, and specifiedfields.
    * Could provide single list of approved fields, but as dynamic fields also can be found in parameter lists
    * would likely prove too restrictive
    **/
-  private shouldEvaluateField(fieldName: keyof FlowTypes.TemplateRow, omitFields: string[] = []) {
+  private shouldEvaluateField(
+    fieldName: keyof FlowTypes.TemplateRow | keyof FlowTypes.TemplateRowItemEvalContextMetadata,
+    omitFields: string[] = []
+  ) {
     if (omitFields.includes(fieldName)) return false;
+
+    // Evaluate fields that are names of item metadata fields, e.g. "_index", "_id",
+    // E.g. for use in actions such as `click | set_item | _index: @item._index + 1, completed:false`
+    if (TEMPLATE_ROW_ITEM_METADATA_FIELDS.includes(fieldName as any)) return true;
     if (fieldName.startsWith("_")) return false;
     return true;
   }
@@ -181,6 +190,11 @@ export class TemplateVariablesService extends AsyncServiceBase {
       // e.g. "Example syntax is `@field.my_name`" -> "Example syntax is @field.my_name"
       if (type === "raw") {
         return evaluator.fullExpression.replace(/`/gi, "");
+      }
+
+      // Do not evaluate if the appropriate context is not available
+      if (type === "item" && !context.itemContext) {
+        return evaluator.fullExpression;
       }
 
       // process the main lookup, e.g. @local.some_val, @campaign.some_val

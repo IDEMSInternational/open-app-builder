@@ -66,14 +66,24 @@ export class DynamicDataService extends AsyncServiceBase {
   }
   private registerTemplateActionHandlers() {
     this.templateActionRegistry.register({
+      /**
+       * Write properties on the current item (default), or on an explicitly targeted item,
+       * e.g.
+       * click | set_item | completed:true;
+       * click | set_item | _id: @item.id, completed:true;
+       * click | set_item | _index: @item._index + 1, completed:true;
+       */
       set_item: async ({ args, params }) => {
-        const [flow_name, row_id] = args;
-        await this.update("data_list", flow_name, row_id, params);
+        // The data-items component populates the context for evaluating the target item to be updated
+        const context = args[0] as ISetItemContext;
+        // The params come directly from the authored action
+        const { _index, _id, ...writeableProps } = params;
+        await this.setItem({ context, _index, _id, writeableProps });
       },
       set_items: async ({ args, params }) => {
-        const [flow_name, row_ids] = args;
+        const { flow_name, itemDataIDs } = args[0] as ISetItemContext;
         // Hack, no current method for bulk update so make successive (changes debounced in component)
-        for (const row_id of row_ids) {
+        for (const row_id of itemDataIDs) {
           await this.update("data_list", flow_name, row_id, params);
         }
       },
@@ -144,6 +154,13 @@ export class DynamicDataService extends AsyncServiceBase {
       await this.db.removeCollection(collectionName);
     }
     await this.createCollection(flow_type, flow_name);
+  }
+
+  /** Access full state of all persisted data layers */
+  public async getState() {
+    // ensure all writes are complete before returning overall state
+    await this.writeCache.persistStateToDB();
+    return this.writeCache.state;
   }
 
   /** Ensure a collection exists, creating if not and populating with corresponding list data */
@@ -223,4 +240,47 @@ export class DynamicDataService extends AsyncServiceBase {
     }
     return schema;
   }
+
+  /**
+   * Update an "item", a row within a data-items loop, e.g. as triggered by the set_item action.
+   * If an _id is specified, the row with that ID is updated,
+   * else if an _index is specified, the row with corresponding to the item at that index is updated,
+   * if neither is specified, then the current item (as defined in context) is updated
+   */
+  public async setItem(params: {
+    context: ISetItemContext;
+    /** the index of a specific item to update */
+    _index?: number;
+    /** the id of a specific item to update */
+    _id?: string;
+    /** the property key/values to update on the targeted item */
+    writeableProps: any;
+  }) {
+    const { flow_name, itemDataIDs, currentItemId } = params.context;
+    const { _index, _id, writeableProps } = params;
+
+    let targetRowId = currentItemId;
+    if (_id) {
+      targetRowId = _id;
+    }
+    if (_index !== undefined) {
+      targetRowId = itemDataIDs[_index];
+    }
+
+    if (itemDataIDs.includes(targetRowId)) {
+      await this.update("data_list", flow_name, targetRowId, writeableProps);
+    } else {
+      console.warn(`[SET ITEM] - No item ${_id ? "with ID " + _id : "at index " + _index}`);
+    }
+  }
+}
+
+/** the context for evaluating the target item to be updated, provided by the data-items component */
+export interface ISetItemContext {
+  /** the name of the data_list containing the item to update */
+  flow_name: string;
+  /** an array of the IDs of all the item rows in the loop */
+  itemDataIDs: string[];
+  /** the ID of the current item */
+  currentItemId: string;
 }
