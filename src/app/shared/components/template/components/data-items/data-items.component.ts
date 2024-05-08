@@ -83,7 +83,7 @@ export class TmplDataItemsComponent extends TemplateBaseComponent implements OnD
     const { itemRows, itemData } = new ItemProcessor(parsedItemDataList, parameterList).process(
       rows
     );
-    const itemRowsWithMeta = this.setItemMeta(itemRows, itemData);
+    const itemRowsWithMeta = this.setItemMeta(itemRows, itemData, this.dataListName);
 
     const parsedItemRows = await this.hackProcessRows(itemRowsWithMeta);
     // TODO - deep diff and only update changed
@@ -92,12 +92,16 @@ export class TmplDataItemsComponent extends TemplateBaseComponent implements OnD
   }
 
   /**
-   * Update item dynamic evaluation context and action lists to include relevant
-   * item data
+   * Update item dynamic evaluation context and action lists to include relevant item data.
    * @param templateRows List of template rows generated from itemData by item processor
    * @param itemData List of original item data used to create item rows (post operations such as filter/sort)
+   * @param dataListName The name of the source data list (i.e. this.dataListName, extracted for ease of testing)
    * */
-  private setItemMeta(templateRows: FlowTypes.TemplateRow[], itemData: FlowTypes.Data_listRow[]) {
+  private setItemMeta(
+    templateRows: FlowTypes.TemplateRow[],
+    itemData: FlowTypes.Data_listRow[],
+    dataListName: string
+  ) {
     const lastItemIndex = itemData.length - 1;
     const itemDataIDs = itemData.map((item) => item.id);
     // Reassign metadata fields previously assigned by item as rendered row count may have changed
@@ -132,6 +136,12 @@ export class TmplDataItemsComponent extends TemplateBaseComponent implements OnD
           return a;
         });
       }
+
+      // Apply recursively to ensure item children with nested rows (e.g. display groups) also inherit item context
+      if (r.rows) {
+        r.rows = this.setItemMeta(r.rows, itemData, dataListName);
+      }
+
       return r;
     });
   }
@@ -150,6 +160,10 @@ export class TmplDataItemsComponent extends TemplateBaseComponent implements OnD
         rows: [],
       },
     } as any);
+    // HACK - still want to be able to use localContext from parent rows so copy to child processor
+    processor.templateRowMap = JSON.parse(
+      JSON.stringify(this.parent.templateRowService.templateRowMap)
+    );
     await processor.processContainerTemplateRows();
     return processor.renderedRows;
   }

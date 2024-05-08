@@ -1,0 +1,64 @@
+<ion-content class="ion-padding">
+  <div style="display: flex; align-items: center; gap: 8px">
+    <span>App User ID:</span>
+    <ion-input [(ngModel)]="importUserId" style="flex: 1"></ion-input>
+    <ion-button (click)="importUserData()">Import</ion-button>
+    <ion-button (click)="syncUserData()">Sync</ion-button>
+  </div>
+  <h2>Contact Fields</h2>
+  <div class="table-container">
+    <table>
+      <thead>
+        <tr>
+          <th>Field</th>
+          <th>Value</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for(contactField of contactFields; track contactField.key){
+        <tr>
+          <td>{{contactField.key}}</td>
+          <td>{{contactField.value}}</td>
+        </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+
+  <h2>Dynamic Data</h2>
+  <ion-select
+    #dynamicDataSelect
+    placeholder="Select Data"
+    [(ngModel)]="dynamicDataSelected"
+    (ionChange)="setDynamicEntryView(dynamicDataSelect.value)"
+    style="margin-bottom: 1rem"
+    [compareWith]="dynamicEntryCompareFn"
+  >
+    @for(entry of dynamicDataEntries; track entry.id){
+    <ion-select-option [value]="entry">{{entry.flow_name}}</ion-select-option>
+    }
+  </ion-select>
+  @if(dynamicDataTable; as table){
+  <div class="table-container">
+    <table>
+      <thead>
+        <tr>
+          @for(header of table.headers; track header){
+          <th>{{header}}</th>
+          }
+        </tr>
+      </thead>
+      <tbody>
+        @for(row of table.rows; track row.id){
+        <tr>
+          @for(header of table.headers; track header){
+          <td>{{row[header]}}</td>
+          }
+        </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+
+  }
+</ion-content>

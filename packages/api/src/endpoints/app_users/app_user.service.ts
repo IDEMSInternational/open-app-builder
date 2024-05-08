@@ -1,7 +1,7 @@
 import { Injectable } from "@nestjs/common";
 import { DeploymentService } from "src/modules/deployment.service";
 import { AppUser } from "./app_user.model";
-import { ContactFieldDto } from "./dto/set-user-data.dto";
+import { UserDataPostDTO } from "./dto/set-user-data.dto";
 
 @Injectable()
 export class AppUsersService {
@@ -11,7 +11,7 @@ export class AppUsersService {
     return this.deploymentService.model(AppUser);
   }
 
-  // create(app_user_id: string, createUserDto: ContactFieldDto): Promise<AppUser> {
+  // create(app_user_id: string, createUserDto: UserDataPostDTO): Promise<AppUser> {
   //   const user = new AppUser();
   //   user.app_user_id = app_user_id;
   //   user.contact_fields = createUserDto.contact_fields;
@@ -27,7 +27,7 @@ export class AppUsersService {
     });
   }
 
-  async setUserData(app_user_id: string, data: ContactFieldDto) {
+  async setUserData(app_user_id: string, data: UserDataPostDTO) {
     const user = await this.model.findOne({ where: { app_user_id } });
     if (!user) {
       return await this.model.create({ ...data, app_user_id });
