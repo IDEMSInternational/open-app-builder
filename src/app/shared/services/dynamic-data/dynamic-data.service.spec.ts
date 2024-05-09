@@ -159,6 +159,12 @@ describe("DynamicDataService", () => {
     expect(data[2].id).toEqual("id0");
   });
 
+  it("does not allow manual updates to row_index property", async () => {
+    await expectAsync(
+      service.update("data_list", "test_flow", "id1", { row_index: 5 })
+    ).toBeRejectedWithError();
+  });
+
   // QA
   it("prevents query of non-existent data lists", async () => {
     let errMsg: string;
