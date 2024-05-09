@@ -34,7 +34,8 @@ import { DeploymentModule } from "./modules";
     Endpoints.ContactFieldsModule,
     Endpoints.AppFeedbackModule,
     Endpoints.AppNotificationInteractionModule,
-    Endpoints.TablesModule,
+    // Deprecated CC 2024-04-18 - TBC if used by any IDEMS tooling
+    // Endpoints.TablesModule,
   ],
   providers: [],
 })
