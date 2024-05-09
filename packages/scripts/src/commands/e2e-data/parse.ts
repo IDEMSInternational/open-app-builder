@@ -17,7 +17,7 @@ export default program
   .description("Parse worksheet into JS!")
   .requiredOption("-i --input <string>", "path to input xlsx file (relative to project root)")
   .requiredOption("-o --output <string>", "path to output spec file (relative to project root")
-  .action((options: IProgramOptions) => {
+  .action(async (options: IProgramOptions) => {
     // Setup Input and Outputs
     const { input, output } = options;
     const inputPath = path.resolve(ROOT_DIR, input);
@@ -54,7 +54,7 @@ export default program
       outputs.push(output);
     });
     const specData = outputs.join("\n");
-    const formattedOutput = prettier.format(specData, { parser: "babel" });
+    const formattedOutput = await prettier.format(specData, { parser: "babel" });
     fs.writeFileSync(outputPath, formattedOutput);
   });
 

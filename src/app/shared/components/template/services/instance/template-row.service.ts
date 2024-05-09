@@ -36,7 +36,10 @@ export class TemplateRowService extends SyncServiceBase {
   public templateRowMap: ITemplateRowMap = {};
   public renderedRows: FlowTypes.TemplateRow[]; // rows processed and filtered by condition
 
-  constructor(private injector: Injector, public container: TemplateContainerComponent) {
+  constructor(
+    private injector: Injector,
+    public container: TemplateContainerComponent
+  ) {
     super("TemplateRow");
     /**
      * Avoid initialisation logic and prefer to ensure services ready
@@ -278,6 +281,9 @@ export class TemplateRowService extends SyncServiceBase {
 
     if (type === "template") isNestedTemplate = true;
 
+    // data_items still need to process on render so avoid populating child rows to templateRowMap
+    if (type === "data_items") isNestedTemplate = true;
+
     // Instead of returning themselves items looped child rows
     if (type === "items") {
       // extract raw parameter list
@@ -358,9 +364,8 @@ export class TemplateRowService extends SyncServiceBase {
       parsed[listKey] = listValue;
       for (const [itemKey, itemValue] of Object.entries(listValue)) {
         if (typeof itemValue === "string") {
-          parsed[listKey][itemKey] = await this.templateVariablesService.evaluateConditionString(
-            itemValue
-          );
+          parsed[listKey][itemKey] =
+            await this.templateVariablesService.evaluateConditionString(itemValue);
         }
       }
     }

@@ -7,6 +7,9 @@ import { AsyncServiceBase } from "../asyncService.base";
 import { DbService } from "../db/db.service";
 import { TemplateActionRegistry } from "../../components/template/services/instance/template-action.registry";
 import { TemplateFieldService } from "../../components/template/services/template-field.service";
+import { DynamicDataService } from "../dynamic-data/dynamic-data.service";
+
+type IDynamicDataState = ReturnType<DynamicDataService["getState"]>;
 
 @Injectable({ providedIn: "root" })
 export class UserMetaService extends AsyncServiceBase {
@@ -16,7 +19,8 @@ export class UserMetaService extends AsyncServiceBase {
     private dbService: DbService,
     private templateActionRegistry: TemplateActionRegistry,
     private http: HttpClient,
-    private fieldService: TemplateFieldService
+    private fieldService: TemplateFieldService,
+    private dynamicDataService: DynamicDataService
   ) {
     super("UserMetaService");
     this.registerInitFunction(this.initialise);
@@ -24,7 +28,11 @@ export class UserMetaService extends AsyncServiceBase {
 
   /** When first initialising ensure a default profile created and any newer defaults are merged with older user profiles */
   private async initialise() {
-    await this.ensureAsyncServicesReady([this.dbService, this.fieldService]);
+    await this.ensureAsyncServicesReady([
+      this.dbService,
+      this.fieldService,
+      this.dynamicDataService,
+    ]);
     this.registerUserActions();
     const userMetaValues = await this.dbService.table<IUserMetaEntry>("user_meta").toArray();
     const userMeta: IUserMeta = USER_DEFAULTS;
@@ -53,7 +61,7 @@ export class UserMetaService extends AsyncServiceBase {
   }
 
   /** Import existing user contact fields and replace current user */
-  private async importUserFields(id: string) {
+  private async importUser(id: string) {
     try {
       // TODO - get type-safe return types using openapi http client
       const profile = await firstValueFrom(
@@ -63,22 +71,42 @@ export class UserMetaService extends AsyncServiceBase {
         console.error("[User Import] not found:" + id);
         return;
       }
-      const { contact_fields } = profile as any;
-      for (const [key, value] of Object.entries(contact_fields)) {
-        const fieldName = key.replace(`${this.fieldService.prefix}.`, "");
-        // TODO - handle special contact fields as required (e.g. _app_skin, _app_theme)
-        if (!fieldName.startsWith("_")) {
-          await this.fieldService.setField(fieldName, value as string);
-        }
-      }
+      const { contact_fields, dynamic_data } = profile as any;
+      console.log("[User Import]", { contact_fields, dynamic_data });
+      await this.importUserContactFields(contact_fields);
+      await this.importUserDynamicData(dynamic_data);
     } catch (error) {
       console.error("[User Import] failed", error);
     }
   }
 
+  private async importUserContactFields(contact_fields = {}) {
+    for (const [key, value] of Object.entries(contact_fields)) {
+      const fieldName = key.replace(`${this.fieldService.prefix}.`, "");
+      // TODO - handle special contact fields as required (e.g. _app_skin, _app_theme)
+      if (!fieldName.startsWith("_")) {
+        await this.fieldService.setField(fieldName, value as string);
+      }
+    }
+  }
+
+  private async importUserDynamicData(dynamic_data?: IDynamicDataState) {
+    if (!dynamic_data) return;
+    for (const [flow_type, entriesByFlowName] of Object.entries(dynamic_data)) {
+      for (const [flow_name, entriesByRowId] of Object.entries(entriesByFlowName)) {
+        for (const [row_id, entry] of Object.entries(entriesByRowId)) {
+          // as no batch update method exists simply send writes and wait at end
+          this.dynamicDataService.update(flow_type as any, flow_name, row_id, entry);
+        }
+      }
+    }
+    // call the getState operation as this forces wait for all pending writes to be persisted
+    await this.dynamicDataService.getState();
+  }
+
   private registerUserActions() {
     const childActions = {
-      import: this.importUserFields.bind(this),
+      import: this.importUser.bind(this),
     };
     const childActionNames = Object.keys(childActions).join(",");
     this.templateActionRegistry.register({
