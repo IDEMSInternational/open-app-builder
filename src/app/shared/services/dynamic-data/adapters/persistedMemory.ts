@@ -37,7 +37,7 @@ const SCHEMA: RxJsonSchema<any> = {
   title: "base schema for id-primary key data",
   // NOTE - important to start at 0 and not timestamp (e.g. 20221220) as will check
   // for migration strategies for each version which is hugely inefficient
-  version: 1,
+  version: 2,
   primaryKey: "id",
   type: "object",
   properties: {
@@ -48,17 +48,22 @@ const SCHEMA: RxJsonSchema<any> = {
     flow_name: { type: "string", maxLength: 64 },
     flow_type: { type: "string", maxLength: 64 },
     row_id: { type: "string", maxLength: 64 },
+    row_index: { type: "integer", minimum: 0, maximum: 10000, multipleOf: 1 },
     data: {
       type: "object",
     },
   },
-  required: ["id", "flow_type", "flow_name", "row_id", "data"],
-  indexes: ["flow_type", "flow_name", "row_id"],
+  required: ["id", "flow_type", "flow_name", "row_id", "data", "row_index"],
+  indexes: ["flow_type", "flow_name", "row_id", "row_index"],
 };
 const MIGRATIONS: MigrationStrategies = {
   // As part of RXDb v14 update all data requires migrating to change metadata fields (no doc data changes)
   // https://rxdb.info/releases/14.0.0.html
   1: (doc) => doc,
+  2: (oldDoc) => {
+    const newDoc = { ...oldDoc, row_index: 0 };
+    return newDoc;
+  },
 };
 
 interface IDataUpdate {

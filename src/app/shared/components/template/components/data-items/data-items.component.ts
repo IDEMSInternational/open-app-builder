@@ -64,10 +64,7 @@ export class TmplDataItemsComponent extends TemplateBaseComponent implements OnD
       await this.dynamicDataService.ready();
       const query = await this.dynamicDataService.query$("data_list", this.dataListName);
       this.dataQuery$ = query.pipe(debounceTime(50)).subscribe(async (data) => {
-        // By default, sort the items into the order they appeared in the original data list.
-        // Can be overridden with a `sort` operator applied in the data-items component params
-        const sortedData = data.sort((a, b) => a.row_index - b.row_index);
-        await this.renderItems(sortedData, this._row.rows, this.parameterList);
+        await this.renderItems(data, this._row.rows, this.parameterList);
       });
     } else {
       await this.renderItems([], [], {});

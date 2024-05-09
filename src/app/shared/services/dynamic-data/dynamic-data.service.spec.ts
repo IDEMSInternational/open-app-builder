@@ -9,6 +9,7 @@ import { MockAppDataService } from "../data/app-data.service.spec";
 const TEST_DATA_ROWS = [
   { id: "id1", number: 1, string: "hello", boolean: true },
   { id: "id2", number: 2, string: "goodbye", boolean: false },
+  { id: "id0", number: 3, string: "goodbye", boolean: false },
 ];
 type ITestRow = (typeof TEST_DATA_ROWS)[number];
 
@@ -59,7 +60,7 @@ describe("DynamicDataService", () => {
   it("populates initial flows from json", async () => {
     const obs = await service.query$("data_list", "test_flow");
     const data = await firstValueFrom(obs);
-    expect(data.length).toEqual(2);
+    expect(data.length).toEqual(3);
   });
 
   it("supports partial flow row updates", async () => {
@@ -85,7 +86,7 @@ describe("DynamicDataService", () => {
     await service.resetFlow("data_list", "test_flow");
     const queryResults: ITestRow[][] = [];
     const obs = await service.query$("data_list", "test_flow", {
-      selector: { number: { $gt: 1 } },
+      selector: { number: { $gt: 2 } },
     });
     obs.subscribe((v) => {
       queryResults.push(v as ITestRow[]);
@@ -95,8 +96,8 @@ describe("DynamicDataService", () => {
     // should have 2 updates, initial result and updated query result
     expect(queryResults.length).toEqual(2);
     const [beforeQuery, afterQuery] = queryResults;
-    expect(beforeQuery.map((row) => row.id)).toEqual(["id2"]);
-    expect(afterQuery.map((row) => row.id)).toEqual(["id1", "id2"]);
+    expect(beforeQuery.map((row) => row.id)).toEqual(["id0"]);
+    expect(afterQuery.map((row) => row.id)).toEqual(["id1", "id0"]);
   });
 
   it("Supports parallel requests without recreating collections", async () => {
@@ -143,11 +144,19 @@ describe("DynamicDataService", () => {
     expect(data[1].string).toEqual("sets an item correctly for a given _index");
   });
 
-  it("adds metadata (original index) to docs", async () => {
+  it("adds metadata (row_index) to docs", async () => {
     const obs = await service.query$<any>("data_list", "test_flow");
     const data = await firstValueFrom(obs);
     expect(data[0].row_index).toEqual(0);
     expect(data[1].row_index).toEqual(1);
+  });
+
+  it("returns data sorted by row_index", async () => {
+    const obs = await service.query$<any>("data_list", "test_flow");
+    const data = await firstValueFrom(obs);
+    expect(data[0].id).toEqual("id1");
+    expect(data[1].id).toEqual("id2");
+    expect(data[2].id).toEqual("id0");
   });
 
   // QA
