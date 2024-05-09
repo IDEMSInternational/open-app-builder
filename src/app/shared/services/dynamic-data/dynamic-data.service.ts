@@ -97,6 +97,10 @@ export class DynamicDataService extends AsyncServiceBase {
     queryObj?: MangoQuery
   ) {
     const { collectionName } = await this.ensureCollection(flow_type, flow_name);
+
+    // by default, use `row_index` as query index to return results sorted on this property
+    const defaultQueryObj = { index: ["row_index", "id"] };
+    queryObj = { ...defaultQueryObj, ...queryObj };
     // use a live query to return all documents in the collection, converting
     // from reactive documents to json data instead
     let query = this.db.query(collectionName, queryObj);
