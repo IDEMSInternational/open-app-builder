@@ -17,6 +17,14 @@ import { TemplateContainerComponent } from "../template-container.component";
 const SHOW_DEBUG_LOGS = false;
 const log = SHOW_DEBUG_LOGS ? console.log : () => null;
 
+// Used to clear any existing popup query params
+const POPUP_DISMISS_PARAMS: INavQueryParams = {
+  popup_child: null,
+  popup_parent: null,
+  popup_parent_triggered_by: null,
+  popup_fullscreen: null,
+};
+
 @Injectable({
   providedIn: "root",
 })
@@ -92,15 +100,10 @@ export class TemplateNavService extends SyncServiceBase {
     if (key === "dismiss_pop_up" && parseBoolean(value)) {
       const { popup_child } = this.route.snapshot.queryParams;
       if (popup_child) {
-        const popupDismissParams: INavQueryParams = {
-          popup_child: null,
-          popup_parent: null,
-          popup_parent_triggered_by: null,
-        };
         // alter route history so that on back-nav popup will not be present
         await this.router.navigate([], {
           relativeTo: this.route,
-          queryParams: popupDismissParams,
+          queryParams: POPUP_DISMISS_PARAMS,
           queryParamsHandling: "merge",
           replaceUrl: true,
         });
@@ -210,11 +213,12 @@ export class TemplateNavService extends SyncServiceBase {
     container?: TemplateContainerComponent
   ) {
     const templatename = action.args[0];
+    const fullscreen = !!action.params?.fullscreen_alt;
     // if triggered outside templating system (e.g. via notification action) still enable
     // popup creation and dismiss on nav changes
     if (!container) {
       this.router.events.pipe(first()).subscribe(() => this.dismissPopup(templatename));
-      return this.createPopupAndWaitForDismiss(templatename, null);
+      return this.createPopupAndWaitForDismiss(templatename, null, fullscreen);
     }
 
     const { name } = container;
@@ -224,6 +228,7 @@ export class TemplateNavService extends SyncServiceBase {
       popup_child: templatename,
       popup_parent: name,
       popup_parent_triggered_by: action._triggeredBy?.name || null,
+      popup_fullscreen: fullscreen,
     };
     this.router.navigate([], { queryParams, replaceUrl: true, queryParamsHandling: "merge" });
   }
@@ -232,7 +237,7 @@ export class TemplateNavService extends SyncServiceBase {
     params: INavQueryParams,
     container: TemplateContainerComponent
   ) {
-    const { popup_child, nav_child_emit, popup_parent_triggered_by } = params;
+    const { popup_child, nav_child_emit, popup_parent_triggered_by, popup_fullscreen } = params;
     const { template } = container;
     const existingPopup = this.openPopupsByName[popup_child];
     log("[Popup] - parent", { params, parent: container.name });
@@ -272,15 +277,16 @@ export class TemplateNavService extends SyncServiceBase {
     }
     // If no popup already exists, create, present, and react to dismiss
     else {
-      await this.createPopupAndWaitForDismiss(popup_child, container);
+      await this.createPopupAndWaitForDismiss(popup_child, container, popup_fullscreen);
     }
   }
 
   private async createPopupAndWaitForDismiss(
     popup_child: string,
-    container: TemplateContainerComponent
+    container: TemplateContainerComponent,
+    fullscreen?: boolean
   ) {
-    const childTemplateModal = await this.createChildPopupModal(popup_child, container);
+    const childTemplateModal = await this.createChildPopupModal(popup_child, container, fullscreen);
     if (childTemplateModal) {
       await childTemplateModal.present();
       const { data } = await childTemplateModal.onDidDismiss();
@@ -290,14 +296,14 @@ export class TemplateNavService extends SyncServiceBase {
       }
       log("dismissed", data);
       // clear any existing popup query params on dismiss
-      const queryParams: INavQueryParams = {
-        popup_child: null,
-        popup_parent: null,
-        popup_parent_triggered_by: null,
-      };
-      this.router.navigate([], { queryParams, replaceUrl: true, queryParamsHandling: "merge" });
+      this.router.navigate([], {
+        queryParams: POPUP_DISMISS_PARAMS,
+        replaceUrl: true,
+        queryParamsHandling: "merge",
+      });
     }
   }
+
   private async dismissPopup(name: string, data: any = undefined) {
     const existingPopup = this.openPopupsByName[name];
     if (existingPopup) {
@@ -312,16 +318,20 @@ export class TemplateNavService extends SyncServiceBase {
     container: TemplateContainerComponent
   ) {
     // Hide any open popup that was trigggered on a previous page prior to navigation (unless new popup)
-    const { popup_child } = params;
+    const { popup_child, popup_fullscreen } = params;
     const existingPopup = this.openPopupsByName[popup_child];
     if (existingPopup) {
       existingPopup.modal.classList.add("hide-popup-on-template");
     } else {
-      this.createPopupAndWaitForDismiss(params.popup_child, container);
+      this.createPopupAndWaitForDismiss(params.popup_child, container, popup_fullscreen);
     }
   }
 
-  private async createChildPopupModal(popup_child: string, container: TemplateContainerComponent) {
+  private async createChildPopupModal(
+    popup_child: string,
+    container: TemplateContainerComponent,
+    fullscreen?: boolean
+  ) {
     const childContainerProps: ITemplatePopupComponentProps = {
       // make the popup share the same name as the container so that nav events return to parent container page
       name: popup_child,
@@ -329,7 +339,7 @@ export class TemplateNavService extends SyncServiceBase {
       parent: container,
       showCloseButton: true,
       dismissOnEmit: true,
-      fullscreen: true,
+      fullscreen,
     };
     // If trying to recreate a popup that already exists simply mark as visible
     const existingPopup = this.openPopupsByName[popup_child];
@@ -337,8 +347,6 @@ export class TemplateNavService extends SyncServiceBase {
       existingPopup.modal.classList.remove("hide-popup-on-template");
       return;
     }
-    // add a state to history so we can navigate back from fullscreen popup
-    if (childContainerProps.fullscreen) history.pushState({}, "", location.href);
     const modal = await this.modalCtrl.create({
       component: TemplatePopupComponent,
       componentProps: { props: childContainerProps },
@@ -348,30 +356,20 @@ export class TemplateNavService extends SyncServiceBase {
       showBackdrop: false,
     });
     this.openPopupsByName[popup_child] = { modal, props: childContainerProps };
-    // console.log("this.openPopupsByName", this.openPopupsByName)
-    if (childContainerProps.fullscreen) {
-      //   this.router.events.pipe(first()).subscribe(() => {
-      //     this.dismissPopup(popup_child)
-      //   //   history.replaceState({}, "", location.href);
-      //   });
 
-      // this.router.events.pipe(take(1)).subscribe((event: NavigationStart) => {
-      //   console.log("hi")
-      //   this.dismissPopup(popup_child)
-      // //   history.replaceState({}, "", location.href);
-      // });
+    if (childContainerProps.fullscreen) {
+      // add a state to history so that navigating back from fullscreen popup effectively closes it
+      history.pushState({}, "", location.href);
+      // subscribe to nav events where the nav is skipped because URL is the same (i.e. navigating back from popup)
       this.router.events
         .pipe(
           filter((event) => event instanceof NavigationSkipped),
           first()
         )
         .subscribe((event: NavigationSkipped) => {
-          console.log("hi");
-          console.log("event", event);
           if (event.code === 0) {
-            console.log("navigation skipped");
             this.dismissPopup(popup_child);
-            // need to also remove record from history so that back doesn't reopen the popup...
+            // need to also remove record from history so that navigating back again doesn't reopen the popup
             history.replaceState({}, "", location.href);
           }
         });
@@ -391,4 +389,5 @@ export interface INavQueryParams {
   popup_child?: string; //
   popup_parent?: string;
   popup_parent_triggered_by?: string; //
+  popup_fullscreen?: boolean;
 }
