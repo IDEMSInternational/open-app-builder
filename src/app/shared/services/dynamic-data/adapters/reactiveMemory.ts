@@ -41,7 +41,7 @@ export const REACTIVE_SCHEMA_BASE: RxJsonSchema<any> = {
       type: "string",
       maxLength: 128, // <- the primary key must have set maxLength
     },
-    row_index: { type: "integer", minimum: 0, maximum: 10000, multipleOf: 1 },
+    row_index: { type: "integer", minimum: 0, maximum: 10000, multipleOf: 1, final: true },
   },
   required: ["id"],
   indexes: ["row_index"],
