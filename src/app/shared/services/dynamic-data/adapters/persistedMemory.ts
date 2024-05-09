@@ -48,7 +48,7 @@ const SCHEMA: RxJsonSchema<any> = {
     flow_name: { type: "string", maxLength: 64 },
     flow_type: { type: "string", maxLength: 64 },
     row_id: { type: "string", maxLength: 64 },
-    row_index: { type: "integer", minimum: 0, maximum: 10000, multipleOf: 1 },
+    row_index: { type: "integer", minimum: 0, maximum: 10000, multipleOf: 1, final: true },
     data: {
       type: "object",
     },
