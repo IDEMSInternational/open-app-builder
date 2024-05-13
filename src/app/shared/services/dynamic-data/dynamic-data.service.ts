@@ -209,10 +209,8 @@ export class DynamicDataService extends AsyncServiceBase {
   /** Retrive json sheet data and merge with any user writes */
   private async getInitialData(flow_type: FlowTypes.FlowType, flow_name: string) {
     const flowData = await this.appDataService.getSheet(flow_type, flow_name);
-    const writeData = this.writeCache.get(flow_type, flow_name);
-    const writeDataArray = Object.entries(writeData || {}).map(([id, v]) => ({ ...v, id })) as
-      | IDocWithID[]
-      | [];
+    const writeData = this.writeCache.get(flow_type, flow_name) || {};
+    const writeDataArray: IDocWithID[] = Object.entries(writeData).map(([id, v]) => ({ ...v, id }));
     const mergedData = this.mergeData(flowData?.rows, writeDataArray);
     return mergedData;
   }
