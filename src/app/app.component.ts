@@ -59,8 +59,9 @@ export class AppComponent {
   public renderAppTemplates = false;
   /**
    * A space-separated list of values, hierarchically representing the current platform,
-   * e.g. on iPhone the value would be "mobile ios iphone"
+   * e.g. on iPhone the value would be "mobile ios iphone".
    * See https://ionicframework.com/docs/angular/platform#platforms-1
+   * Store as string to use with css [attribute~=value] selector as part of platform-specific overrides
    * */
   platforms: string;
 
