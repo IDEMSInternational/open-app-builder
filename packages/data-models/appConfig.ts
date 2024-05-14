@@ -159,9 +159,6 @@ const FEEDBACK_MODULE_DEFAULTS = {
       displayedTemplate: "feature_feedback_text_select",
     },
   ],
-  /** Field to populate with selected text for use in templates */
-  selected_text_field: "_feedback_selected_text",
-  sidebar_open_field: "_feedback_sidebar_open",
 };
 
 const APP_UPDATES = {
@@ -173,10 +170,6 @@ const APP_UPDATES = {
    * If no template is provided provided, installation of the downloaded flexible update will be completed on next app init
    */
   completeUpdateTemplate: "app_update_complete",
-  /** Track whether an update is available for download */
-  app_update_available_field: "_app_update_available",
-  /** Track whether an update has been downloaded and is available for install */
-  app_update_downloaded_field: "_app_update_downloaded",
 };
 
 const ASSET_PACKS = {
