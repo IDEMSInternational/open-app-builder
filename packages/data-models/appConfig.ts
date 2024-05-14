@@ -25,28 +25,6 @@ const DYNAMIC_PREFIXES = [
   "raw",
 ] as const;
 
-/**
- * All localstorage fields will be prefixed with this
- * TODO - this has not been consistently applied so refactoring required
- * */
-const FIELD_PREFIX = "rp-contact-field";
-
-/**
- * Fieldnames hardcoded into the app
- * TODO - these have not been consistently applied so refactoring required
- * */
-const APP_FIELDS = {
-  APP_AUTH_USER: `${FIELD_PREFIX}._app_auth_user`,
-  APP_FIRST_LAUNCH: `${FIELD_PREFIX}._app_first_launch`,
-  APP_LANGUAGE: `${FIELD_PREFIX}._app_language`,
-  APP_SKIN: `${FIELD_PREFIX}._app_skin`,
-  APP_THEME: `${FIELD_PREFIX}._app_theme`,
-  APP_VERSION: `${FIELD_PREFIX}._app_version`,
-  CONTENT_VERSION: `${FIELD_PREFIX}._content_version`,
-  DEPLOYMENT_NAME: `${FIELD_PREFIX}._deployment_name`,
-  SERVER_SYNC_LATEST: `${FIELD_PREFIX}._server_sync_latest`,
-};
-
 const APP_LANGUAGES = {
   /** Language used during first load. If translations do not exist will default to source strings (gb_en) */
   default: "gb_en",
@@ -217,7 +195,6 @@ const TASKS = {
 };
 
 const APP_CONFIG = {
-  APP_FIELDS,
   APP_HEADER_DEFAULTS,
   APP_INITIALISATION_DEFAULTS,
   APP_AUTHENTICATION_DEFAULTS,
@@ -232,7 +209,6 @@ const APP_CONFIG = {
   ASSET_PACKS,
   DYNAMIC_PREFIXES,
   FEEDBACK_MODULE_DEFAULTS,
-  FIELD_PREFIX,
   NOTIFICATIONS_SYNC_FREQUENCY_MS,
   NOTIFICATION_DEFAULTS,
   SERVER_SYNC_FREQUENCY_MS,

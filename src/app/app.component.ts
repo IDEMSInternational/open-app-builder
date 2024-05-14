@@ -40,6 +40,7 @@ import { SyncServiceBase } from "./shared/services/syncService.base";
 import { SeoService } from "./shared/services/seo/seo.service";
 import { FeedbackService } from "./feature/feedback/feedback.service";
 import { ShareService } from "./shared/services/share/share.service";
+import { LocalStorageService } from "./shared/services/local-storage/local-storage.service";
 
 @Component({
   selector: "app-root",
@@ -51,7 +52,6 @@ export class AppComponent {
   CONTENT_VERSION = environment.deploymentConfig.git.content_tag_latest;
   DEPLOYMENT_NAME = environment.deploymentName;
   appConfig: IAppConfig;
-  appFields: IAppConfig["APP_FIELDS"];
   appAuthenticationDefaults: IAppConfig["APP_AUTHENTICATION_DEFAULTS"];
   sideMenuDefaults: IAppConfig["APP_SIDEMENU_DEFAULTS"];
   footerDefaults: IAppConfig["APP_FOOTER_DEFAULTS"];
@@ -65,6 +65,7 @@ export class AppComponent {
     private menuController: MenuController,
     private router: Router,
     // App services
+    private localStorageService: LocalStorageService,
     private skinService: SkinService,
     private appConfigService: AppConfigService,
     private dynamicDataService: DynamicDataService,
@@ -105,9 +106,9 @@ export class AppComponent {
     this.platform.ready().then(async () => {
       this.subscribeToAppConfigChanges();
       // ensure deployment field set correctly for use in any startup services or templates
-      localStorage.setItem(this.appFields.DEPLOYMENT_NAME, this.DEPLOYMENT_NAME);
-      localStorage.setItem(this.appFields.APP_VERSION, this.APP_VERSION);
-      localStorage.setItem(this.appFields.CONTENT_VERSION, this.CONTENT_VERSION);
+      this.localStorageService.setProtected("DEPLOYMENT_NAME", this.DEPLOYMENT_NAME);
+      this.localStorageService.setProtected("APP_VERSION", this.APP_VERSION);
+      this.localStorageService.setProtected("CONTENT_VERSION", this.CONTENT_VERSION);
       await this.initialiseCoreServices();
       this.hackSetDeveloperOptions();
       const isDeveloperMode = this.templateFieldService.getField("user_mode") === false;
@@ -170,7 +171,6 @@ export class AppComponent {
       this.sideMenuDefaults = this.appConfig.APP_SIDEMENU_DEFAULTS;
       this.footerDefaults = this.appConfig.APP_FOOTER_DEFAULTS;
       this.appAuthenticationDefaults = this.appConfig.APP_AUTHENTICATION_DEFAULTS;
-      this.appFields = this.appConfig.APP_FIELDS;
     });
   }
 
