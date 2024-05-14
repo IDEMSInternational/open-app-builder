@@ -2,7 +2,7 @@ import { Body, Controller, Get, HttpException, HttpStatus, Param, Post } from "@
 import { ContactFieldEntry } from "./contact_field.model";
 import { ContactFieldService } from "./contact_field.service";
 import { ApiBody, ApiOperation, ApiParam, ApiResponse, ApiTags } from "@nestjs/swagger";
-import { ContactFieldDto } from "../app_users/dto/set-user-data.dto";
+import { UserDataPostDTO } from "../app_users/dto/set-user-data.dto";
 import { DeploymentHeaders } from "src/modules/deployment.decorators";
 
 @ApiTags("Contact Fields")
@@ -21,12 +21,12 @@ export class ContactFieldController {
 
   @Post(":app_user_id")
   @ApiOperation({ summary: "Set User Contact Fields" })
-  @ApiBody({ type: ContactFieldDto })
+  @ApiBody({ type: UserDataPostDTO })
   @ApiParam({ name: "app_user_id", type: "string" })
   @ApiResponse({
     status: 200,
     description: "User Updated",
-    type: ContactFieldDto,
+    type: UserDataPostDTO,
   })
   @DeploymentHeaders()
   async setUserContactFields(@Param() params: { app_user_id: string }, @Body() data: any) {

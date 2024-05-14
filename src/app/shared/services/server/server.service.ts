@@ -9,6 +9,7 @@ import { generateTimestamp } from "../../utils";
 import { AppConfigService } from "../app-config/app-config.service";
 import { SyncServiceBase } from "../syncService.base";
 import { LocalStorageService } from "../local-storage/local-storage.service";
+import { DynamicDataService } from "../dynamic-data/dynamic-data.service";
 
 /**
  * Backend API
@@ -29,7 +30,8 @@ export class ServerService extends SyncServiceBase {
   constructor(
     private http: HttpClient,
     private appConfigService: AppConfigService,
-    private localStorageService: LocalStorageService
+    private localStorageService: LocalStorageService,
+    private dynamicDataService: DynamicDataService
   ) {
     super("Server");
     this.initialise();
@@ -55,6 +57,7 @@ export class ServerService extends SyncServiceBase {
   }
 
   public async syncUserData() {
+    await this.dynamicDataService.ready();
     if (!this.device_info) {
       this.device_info = await Device.getInfo();
     }
@@ -64,6 +67,7 @@ export class ServerService extends SyncServiceBase {
     }
     console.log("[SERVER] sync data");
     const contact_fields = this.localStorageService.getAll();
+    const dynamic_data = await this.dynamicDataService.getState();
 
     // apply temp timestamp to contact fields to sync as latest
     const timestamp = generateTimestamp();
@@ -75,7 +79,9 @@ export class ServerService extends SyncServiceBase {
       app_version: environment.version,
       device_info: this.device_info,
       app_deployment_name: environment.deploymentName,
+      dynamic_data,
     };
+    console.log("[SERVER] sync data", data);
     return new Promise<string>((resolve, reject) => {
       this.http
         .post(`/app_users/${this.app_user_id}`, data)
@@ -92,7 +98,7 @@ export class ServerService extends SyncServiceBase {
         // )
         .subscribe(
           (res) => {
-            console.log("User data synced", res);
+            console.log("[SERVER] synced", res);
             // finalise timestamp by storing locally
             this.localStorageService.setProtected("SERVER_SYNC_LATEST", timestamp);
             resolve(timestamp);
