@@ -21,7 +21,7 @@ export class LocalStorageService extends SyncServiceBase {
 
   private set(key: string, value: string, allowProtected = false) {
     if (!allowProtected && this.isProtected(key)) {
-      throw new Error(`Cannot set protected field: ${key}`);
+      console.warn(`[DEPRECATED] - set local-storage with protected name: ${key}`);
     }
     if (!key.startsWith(STORAGE_PREFIX)) {
       key = `${STORAGE_PREFIX}.${key}`;
