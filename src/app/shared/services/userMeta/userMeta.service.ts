@@ -7,12 +7,14 @@ import { AsyncServiceBase } from "../asyncService.base";
 import { DbService } from "../db/db.service";
 import { TemplateActionRegistry } from "../../components/template/services/instance/template-action.registry";
 import { TemplateFieldService } from "../../components/template/services/template-field.service";
+import { LocalStorageService } from "../local-storage/local-storage.service";
 
 @Injectable({ providedIn: "root" })
 export class UserMetaService extends AsyncServiceBase {
   /** keep an in-memory copy of user to provide synchronously */
   public userMeta: IUserMeta;
   constructor(
+    private localStorageService: LocalStorageService,
     private dbService: DbService,
     private templateActionRegistry: TemplateActionRegistry,
     private http: HttpClient,
@@ -65,10 +67,9 @@ export class UserMetaService extends AsyncServiceBase {
       }
       const { contact_fields } = profile as any;
       for (const [key, value] of Object.entries(contact_fields)) {
-        const fieldName = key.replace(`${this.fieldService.prefix}.`, "");
         // TODO - handle special contact fields as required (e.g. _app_skin, _app_theme)
-        if (!fieldName.startsWith("_")) {
-          await this.fieldService.setField(fieldName, value as string);
+        if (!this.localStorageService.isProtected(key)) {
+          this.localStorageService.setString(key, value as string);
         }
       }
     } catch (error) {

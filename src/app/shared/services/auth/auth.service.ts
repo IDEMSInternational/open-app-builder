@@ -3,24 +3,22 @@ import { FirebaseAuthentication, User } from "@capacitor-firebase/authentication
 import { BehaviorSubject, firstValueFrom } from "rxjs";
 import { filter } from "rxjs/operators";
 import { environment } from "src/environments/environment";
-import { IAppConfig } from "../../model";
-import { AppConfigService } from "../app-config/app-config.service";
 import { SyncServiceBase } from "../syncService.base";
 import { TemplateActionRegistry } from "../../components/template/services/instance/template-action.registry";
 import { FirebaseService } from "../firebase/firebase.service";
+import { LocalStorageService } from "../local-storage/local-storage.service";
 
 @Injectable({
   providedIn: "root",
 })
 export class AuthService extends SyncServiceBase {
   private authUser$ = new BehaviorSubject<User | null>(null);
-  appFields: IAppConfig["APP_FIELDS"];
 
   // include auth import to ensure app registered
   constructor(
-    private appConfigService: AppConfigService,
     private templateActionRegistry: TemplateActionRegistry,
-    private firebaseService: FirebaseService
+    private firebaseService: FirebaseService,
+    private localStorageService: LocalStorageService
   ) {
     super("Auth");
     this.initialise();
@@ -28,7 +26,6 @@ export class AuthService extends SyncServiceBase {
   private initialise() {
     const { firebase } = environment.deploymentConfig;
     if (firebase?.auth?.enabled && this.firebaseService.app) {
-      this.subscribeToAppConfigChanges();
       this.addAuthListeners();
       this.registerTemplateActionHandlers();
     }
@@ -89,15 +86,9 @@ export class AuthService extends SyncServiceBase {
   private addStorageEntry(user?: User) {
     if (user) {
       const { uid } = user;
-      localStorage.setItem(this.appFields.APP_AUTH_USER, JSON.stringify({ uid }));
+      this.localStorageService.setProtected("APP_AUTH_USER", JSON.stringify({ uid }));
     } else {
-      localStorage.removeItem(this.appFields.APP_AUTH_USER);
+      this.localStorageService.removeProtected("APP_AUTH_USER");
     }
-  }
-
-  subscribeToAppConfigChanges() {
-    this.appConfigService.appConfig$.subscribe((appConfig: IAppConfig) => {
-      this.appFields = appConfig.APP_FIELDS;
-    });
   }
 }

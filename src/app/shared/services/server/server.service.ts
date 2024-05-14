@@ -1,13 +1,14 @@
 import { HttpClient, HttpErrorResponse } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { DeviceInfo, Device } from "@capacitor/device";
-import { IAppConfig } from "data-models";
+import { IAppConfig, PROTECTED_FIELDS } from "data-models";
 import { interval } from "rxjs";
 import { throwError } from "rxjs";
 import { environment } from "src/environments/environment";
 import { generateTimestamp } from "../../utils";
 import { AppConfigService } from "../app-config/app-config.service";
 import { SyncServiceBase } from "../syncService.base";
+import { LocalStorageService } from "../local-storage/local-storage.service";
 
 /**
  * Backend API
@@ -23,16 +24,19 @@ export class ServerService extends SyncServiceBase {
   app_user_id: string;
   device_info: DeviceInfo;
   syncSchedule;
-  appFields: IAppConfig["APP_FIELDS"];
   //   Requires update (?) - https://angular.io/api/common/http/HttpContext
   //   context =  new HttpContext().set(SERVER_API, true),
-  constructor(private http: HttpClient, private appConfigService: AppConfigService) {
+  constructor(
+    private http: HttpClient,
+    private appConfigService: AppConfigService,
+    private localStorageService: LocalStorageService
+  ) {
     super("Server");
     this.initialise();
   }
 
   private initialise() {
-    this.ensureSyncServicesReady([this.appConfigService]);
+    this.ensureSyncServicesReady([this.appConfigService, this.localStorageService]);
     this.subscribeToAppConfigChanges();
     if (environment.production) {
       this.syncUserData();
@@ -59,11 +63,11 @@ export class ServerService extends SyncServiceBase {
       this.app_user_id = uuid;
     }
     console.log("[SERVER] sync data");
-    const contact_fields = this.getUserStorageData();
+    const contact_fields = this.localStorageService.getAll();
 
     // apply temp timestamp to contact fields to sync as latest
     const timestamp = generateTimestamp();
-    contact_fields[this.appFields.SERVER_SYNC_LATEST] = timestamp;
+    contact_fields[PROTECTED_FIELDS.SERVER_SYNC_LATEST] = timestamp;
 
     // TODO - get DTO from api (?)
     const data = {
@@ -90,20 +94,12 @@ export class ServerService extends SyncServiceBase {
           (res) => {
             console.log("User data synced", res);
             // finalise timestamp by storing locally
-            localStorage.setItem(this.appFields.SERVER_SYNC_LATEST, timestamp);
+            this.localStorageService.setProtected("SERVER_SYNC_LATEST", timestamp);
             resolve(timestamp);
           },
           (err) => resolve(null)
         );
     });
-  }
-
-  private getUserStorageData() {
-    const values = {};
-    Object.keys(localStorage)
-      .filter((k) => k.startsWith("rp-contact-field"))
-      .forEach((k) => (values[k] = localStorage.getItem(k)));
-    return values;
   }
 
   private handleError(error: HttpErrorResponse) {
@@ -113,7 +109,6 @@ export class ServerService extends SyncServiceBase {
 
   subscribeToAppConfigChanges() {
     this.appConfigService.appConfig$.subscribe((appConfig: IAppConfig) => {
-      this.appFields = appConfig.APP_FIELDS;
       this.syncSchedule = interval(appConfig.SERVER_SYNC_FREQUENCY_MS);
     });
   }

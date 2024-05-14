@@ -19,7 +19,6 @@ export class TemplateTranslateService extends AsyncServiceBase {
    * Formatted as country-language code, e.g. za-en
    **/
   app_language$ = new BehaviorSubject<string>(null);
-  appFields: IAppConfig["APP_FIELDS"];
   appLanguages: IAppConfig["APP_LANGUAGES"];
   translation_strings = {};
 
@@ -39,7 +38,7 @@ export class TemplateTranslateService extends AsyncServiceBase {
       this.appConfigService,
     ]);
     this.subscribeToAppConfigChanges();
-    const currentLanguage = this.localStorageService.getString(this.appFields.APP_LANGUAGE);
+    const currentLanguage = this.localStorageService.getProtected("APP_LANGUAGE");
     if (currentLanguage) {
       await this.setLanguage(currentLanguage, false);
     } else {
@@ -55,7 +54,7 @@ export class TemplateTranslateService extends AsyncServiceBase {
   async setLanguage(code: string, updateDB = true) {
     if (code) {
       if (updateDB) {
-        this.localStorageService.setString(this.appFields.APP_LANGUAGE, code);
+        this.localStorageService.setProtected("APP_LANGUAGE", code);
       }
       const translationStrings = await this.appDataService.getTranslationStrings(code);
       this.translation_strings = translationStrings || {};
@@ -139,7 +138,6 @@ export class TemplateTranslateService extends AsyncServiceBase {
 
   subscribeToAppConfigChanges() {
     this.appConfigService.appConfig$.subscribe((appConfig: IAppConfig) => {
-      this.appFields = appConfig.APP_FIELDS;
       this.appLanguages = appConfig.APP_LANGUAGES;
     });
   }
