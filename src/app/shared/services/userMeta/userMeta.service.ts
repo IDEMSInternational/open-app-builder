@@ -41,7 +41,7 @@ export class UserMetaService extends AsyncServiceBase {
     userMeta.uuid = uuid;
     this.userMeta = userMeta;
     // populate user id contact field
-    this.fieldService.setField("_app_user_id", uuid);
+    this.localStorageService.setProtected("APP_USER_ID", uuid);
   }
 
   getUserMeta(key: keyof IUserMeta) {
