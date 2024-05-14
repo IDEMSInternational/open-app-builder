@@ -1,6 +1,7 @@
 import { DataFrame, toJSON } from "danfojs";
 import { AppStringEvaluator } from "../../appStringEvaluator/appStringEvaluator";
 import BaseOperator from "./base";
+import { parseStringValue } from "../../../utils";
 
 interface IParsedArg {
   key: string;
@@ -14,9 +15,9 @@ class AppendColumnsOperator extends BaseOperator {
   constructor(df: DataFrame, args_list: any) {
     super(df, args_list);
   }
-  // args are simply evaluated as JS statements and do not require additional parsing
   parseArg(arg: string): IParsedArg {
-    const [key, valueExpression] = arg.split(":").map((a) => a.trim());
+    const [key, value] = arg.split(":").map((a) => a.trim());
+    const valueExpression = parseStringValue(value);
     return { key, valueExpression };
   }
   validateArg(arg: IParsedArg): boolean {
