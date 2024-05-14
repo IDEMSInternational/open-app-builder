@@ -84,7 +84,6 @@ export class AppEventService extends AsyncServiceBase {
     // current app day calculated by finding length of array of subset of all unique app open event dates
     const app_day = [...new Set(appOpenEvents.map((e) => e._created.substring(0, 10)))].length;
     const first_app_launch = this.appEventsById.app_launch?.[0]?._created || generateTimestamp();
-    this.localStorageService.setProtected("APP_FIRST_LAUNCH", first_app_launch);
     return this.setSummaryValues({ app_day, first_app_launch });
   }
 
@@ -97,7 +96,7 @@ export class AppEventService extends AsyncServiceBase {
     return this.setSummaryValues(cache);
   }
 
-  /** Update cached valuese and save to localstorage */
+  /** Update cached values and save to localstorage */
   private setSummaryValues(values: Partial<IAppEventSummary>) {
     this.summary = { ...DEFAULT_SUMMARY, ...this.summary, ...values };
     return this.localStorageService.setJSON("app_events_summary", this.summary);

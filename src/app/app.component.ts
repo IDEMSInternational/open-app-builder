@@ -105,10 +105,7 @@ export class AppComponent {
   private async initializeApp() {
     this.platform.ready().then(async () => {
       this.subscribeToAppConfigChanges();
-      // ensure deployment field set correctly for use in any startup services or templates
-      this.localStorageService.setProtected("DEPLOYMENT_NAME", this.DEPLOYMENT_NAME);
-      this.localStorageService.setProtected("APP_VERSION", this.APP_VERSION);
-      this.localStorageService.setProtected("CONTENT_VERSION", this.CONTENT_VERSION);
+      await this.populateAppInitFields();
       await this.initialiseCoreServices();
       this.hackSetDeveloperOptions();
       const isDeveloperMode = this.templateFieldService.getField("user_mode") === false;
@@ -139,6 +136,18 @@ export class AppComponent {
       this.cdr.detectChanges();
       this.scheduleReinitialisation();
     });
+  }
+  /** Populate contact fields that may be used by other services during initialisation */
+  private async populateAppInitFields() {
+    this.localStorageService.setProtected("DEPLOYMENT_NAME", this.DEPLOYMENT_NAME);
+    this.localStorageService.setProtected("APP_VERSION", this.APP_VERSION);
+    this.localStorageService.setProtected("CONTENT_VERSION", this.CONTENT_VERSION);
+    // HACK - ensure first_app_launch migrated from event service
+    if (!this.localStorageService.getProtected("APP_FIRST_LAUNCH")) {
+      await this.appEventService.ready();
+      const { first_app_launch } = this.appEventService.summary;
+      this.localStorageService.setProtected("APP_FIRST_LAUNCH", first_app_launch);
+    }
   }
 
   /**
@@ -303,7 +312,7 @@ export class AppComponent {
     if (location.hostname === "localhost" && !environment.production) {
       const isUserMode = this.templateFieldService.getField("user_mode");
       if (isUserMode !== false) {
-        this.templateFieldService.setField("user_mode", "false");
+        this.localStorageService.setString("user_mode", "false");
       }
     }
   }
