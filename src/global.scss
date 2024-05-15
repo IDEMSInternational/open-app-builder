@@ -39,6 +39,9 @@
 @import "~nouislider/dist/nouislider.min.css";
 @import "~swiper/swiper.min.css";
 
+/* Platform-specific overrides */
+@import "./theme/overrides.ios.scss";
+
 /* Overrides for ionic components */
 ion-input {
   // do not apply underline when focused
