@@ -108,7 +108,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/ContactFieldDto"
+                "$ref": "#/components/schemas/UserDataPostDTO"
               }
             }
           }
@@ -119,7 +119,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ContactFieldDto"
+                  "$ref": "#/components/schemas/UserDataPostDTO"
                 }
               }
             }
@@ -183,7 +183,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/ContactFieldDto"
+                "$ref": "#/components/schemas/UserDataPostDTO"
               }
             }
           }
@@ -194,7 +194,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ContactFieldDto"
+                  "$ref": "#/components/schemas/UserDataPostDTO"
                 }
               }
             }
@@ -334,188 +334,6 @@
           "Notification Interaction"
         ]
       }
-    },
-    "/tables": {
-      "get": {
-        "operationId": "TablesController_listTables",
-        "summary": "List tables",
-        "parameters": [
-          {
-            "name": "x-deployment-db-name",
-            "in": "header",
-            "description": "Name of db for deployment to populate",
-            "schema": {
-              "type": "string",
-              "default": "plh"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "List of table_names",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/STRING"
-                  }
-                }
-              }
-            }
-          }
-        },
-        "tags": [
-          "DB Tables"
-        ]
-      }
-    },
-    "/tables/{table_name}": {
-      "get": {
-        "operationId": "TablesController_getTableMeta",
-        "summary": "Get table meta",
-        "parameters": [
-          {
-            "name": "x-deployment-db-name",
-            "in": "header",
-            "description": "Name of db for deployment to populate",
-            "schema": {
-              "type": "string",
-              "default": "plh"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": ""
-          }
-        },
-        "tags": [
-          "DB Tables"
-        ]
-      }
-    },
-    "/tables/{table_name}/columns": {
-      "get": {
-        "operationId": "TablesController_getTableColumns",
-        "summary": "Add columns to map raw field data",
-        "parameters": [
-          {
-            "name": "x-deployment-db-name",
-            "in": "header",
-            "description": "Name of db for deployment to populate",
-            "schema": {
-              "type": "string",
-              "default": "plh"
-            }
-          }
-        ],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/TableColumnMappingDto"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "User Updated",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/TableColumnMappingDto"
-                }
-              }
-            }
-          }
-        },
-        "tags": [
-          "DB Tables"
-        ]
-      },
-      "post": {
-        "operationId": "TablesController_addMappedTableColumns",
-        "summary": "Add columns to map raw field data",
-        "parameters": [
-          {
-            "name": "x-deployment-db-name",
-            "in": "header",
-            "description": "Name of db for deployment to populate",
-            "schema": {
-              "type": "string",
-              "default": "plh"
-            }
-          }
-        ],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/TableColumnMappingDto"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "User Updated",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/TableColumnMappingDto"
-                }
-              }
-            }
-          }
-        },
-        "tags": [
-          "DB Tables"
-        ]
-      },
-      "delete": {
-        "operationId": "TablesController_removeMappedTableColumns",
-        "summary": "Remove columns used to map raw field data",
-        "parameters": [
-          {
-            "name": "x-deployment-db-name",
-            "in": "header",
-            "description": "Name of db for deployment to populate",
-            "schema": {
-              "type": "string",
-              "default": "plh"
-            }
-          }
-        ],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/TableColumnMappingDto"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "User Updated",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/TableColumnMappingDto"
-                }
-              }
-            }
-          }
-        },
-        "tags": [
-          "DB Tables"
-        ]
-      }
     }
   },
   "info": {
@@ -541,7 +359,7 @@
         "type": "object",
         "properties": {}
       },
-      "ContactFieldDto": {
+      "UserDataPostDTO": {
         "type": "object",
         "properties": {
           "app_user_id": {
@@ -575,6 +393,15 @@
                 "$ref": "#/components/schemas/JSONB"
               }
             ]
+          },
+          "dynamic_data": {
+            "description": "Dynamic data entries",
+            "default": {},
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/JSONB"
+              }
+            ]
           }
         },
         "required": [
@@ -582,7 +409,8 @@
           "app_deployment_name",
           "app_version",
           "contact_fields",
-          "device_info"
+          "device_info",
+          "dynamic_data"
         ]
       },
       "UserFeedbackDto": {
@@ -659,47 +487,6 @@
           "app_version",
           "app_user_record_id",
           "data"
-        ]
-      },
-      "STRING": {
-        "type": "object",
-        "properties": {}
-      },
-      "TableColumnMappingDto": {
-        "type": "object",
-        "properties": {
-          "columns": {
-            "description": "Column Field Mapping",
-            "default": [
-              {
-                "field_name": "test_text",
-                "field_type": "text"
-              },
-              {
-                "field_name": "test_integer",
-                "field_type": "integer"
-              },
-              {
-                "field_name": "test_number",
-                "field_type": "number"
-              },
-              {
-                "field_name": "test_date",
-                "field_type": "date"
-              },
-              {
-                "field_name": "test_boolean",
-                "field_type": "boolean"
-              }
-            ],
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          }
-        },
-        "required": [
-          "columns"
         ]
       }
     }
