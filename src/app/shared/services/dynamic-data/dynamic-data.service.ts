@@ -12,7 +12,7 @@ import { ReactiveMemoryAdapater, REACTIVE_SCHEMA_BASE } from "./adapters/reactiv
 import { TemplateActionRegistry } from "../../components/template/services/instance/template-action.registry";
 import { TopLevelProperty } from "rxdb/dist/types/types";
 
-type IDocWithID = { id: string };
+type IDocWithID = { [key: string]: any; id: string };
 
 @Injectable({ providedIn: "root" })
 /**
@@ -97,6 +97,10 @@ export class DynamicDataService extends AsyncServiceBase {
     queryObj?: MangoQuery
   ) {
     const { collectionName } = await this.ensureCollection(flow_type, flow_name);
+
+    // by default, use `row_index` as query index to return results sorted on this property
+    const defaultQueryObj = { index: ["row_index", "id"] };
+    queryObj = { ...defaultQueryObj, ...queryObj };
     // use a live query to return all documents in the collection, converting
     // from reactive documents to json data instead
     let query = this.db.query(collectionName, queryObj);
@@ -185,9 +189,17 @@ export class DynamicDataService extends AsyncServiceBase {
     if (initialData.length === 0) {
       throw new Error(`No data exists for collection [${flow_name}], cannot initialise`);
     }
-    const schema = this.inferSchema(initialData[0]);
+    // add index property to each element before insert, for sorting queried data by original order
+    const initialDataWithMeta = initialData.map((el) => {
+      return {
+        ...el,
+        row_index: initialData.indexOf(el),
+      };
+    });
+
+    const schema = this.inferSchema(initialDataWithMeta[0]);
     await this.db.createCollection(collectionName, schema);
-    await this.db.bulkInsert(collectionName, initialData);
+    await this.db.bulkInsert(collectionName, initialDataWithMeta);
     // notify any observers that collection has been created
     this.collectionCreators[collectionName].next(collectionName);
     this.collectionCreators[collectionName].complete();
@@ -197,8 +209,8 @@ export class DynamicDataService extends AsyncServiceBase {
   /** Retrive json sheet data and merge with any user writes */
   private async getInitialData(flow_type: FlowTypes.FlowType, flow_name: string) {
     const flowData = await this.appDataService.getSheet(flow_type, flow_name);
-    const writeData = this.writeCache.get(flow_type, flow_name);
-    const writeDataArray = Object.entries(writeData || {}).map(([id, v]) => ({ ...v, id }));
+    const writeData = this.writeCache.get(flow_type, flow_name) || {};
+    const writeDataArray: IDocWithID[] = Object.entries(writeData).map(([id, v]) => ({ ...v, id }));
     const mergedData = this.mergeData(flowData?.rows, writeDataArray);
     return mergedData;
   }
@@ -208,7 +220,7 @@ export class DynamicDataService extends AsyncServiceBase {
     return `${flow_type}${flow_name}`.toLowerCase().replace(/[^a-z0-9]/g, "");
   }
 
-  private mergeData<T extends { id: string }>(flowData: T[] = [], dbData: T[] = []) {
+  private mergeData<T extends IDocWithID>(flowData: T[] = [], dbData: T[] = []) {
     const flowHashmap = arrayToHashmap(flowData, "id");
     const dbDataHashmap = arrayToHashmap(dbData, "id");
     const merged = deepMergeObjects(flowHashmap, dbDataHashmap);
