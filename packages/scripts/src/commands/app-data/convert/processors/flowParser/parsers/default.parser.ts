@@ -20,7 +20,7 @@ type IRowData = { type: string; name?: string; rows?: IRowData };
  * - Rewrite `_list` content as string array
  */
 export class DefaultParser<
-  FlowType extends FlowTypes.FlowTypeWithData = FlowTypes.FlowTypeWithData
+  FlowType extends FlowTypes.FlowTypeWithData = FlowTypes.FlowTypeWithData,
 > {
   activeDeployment = ActiveDeployment.get();
 
@@ -112,7 +112,11 @@ export class DefaultParser<
  * migrating deprecated columns, processing default values and self-references and handling translations
  */
 class RowProcessor {
-  constructor(public row: IRowData, public parent: DefaultParser, public defaultValues?: any) {}
+  constructor(
+    public row: IRowData,
+    public parent: DefaultParser,
+    public defaultValues?: any
+  ) {}
 
   public run() {
     this.processRowDefaultValues();
