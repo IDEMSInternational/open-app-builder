@@ -50,6 +50,7 @@ export class TemplateFieldService extends AsyncServiceBase {
    * TODO - ideally showWarnings should be linked to some sort of debug mode
    */
   public getField(key: string, showWarnings = true) {
+    if (!key) return undefined;
     let val: any = this.localStorageService.getString(key);
     // provide a fallback if the target variable does not exist in local storage
     if (val === null && showWarnings) {
