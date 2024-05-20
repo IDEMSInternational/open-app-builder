@@ -1,0 +1,17 @@
+/*
+* A bug on iOS (native capacitor and safari) causes some CSS rules to sporadically not be applied on some elements.
+* E.g. https://github.com/IDEMSInternational/parenting-app-ui/issues/2274
+* A workaround is to apply an empty transformation to the element (see, for example https://michaeluloth.com/css-translate-z/)
+*/
+@mixin force-gpu-acceleration {
+  -webkit-transform: translateZ(0);
+}
+
+ion-app[data-platform~="ios"] {
+  // popup component
+  .popup-backdrop {
+    .close-button {
+      @include force-gpu-acceleration;
+    }
+  }
+}
