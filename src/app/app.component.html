@@ -1,6 +1,7 @@
 <ion-app
   *ngIf="renderAppTemplates"
   contentId="main"
+  [attr.data-platform]="platforms"
   [dir]="templateTranslateService.languageDirection()"
 >
   <!-- Left Sidebar -->
