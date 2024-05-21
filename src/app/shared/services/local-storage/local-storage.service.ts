@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { IProtectedFieldName, PROTECTED_FIELDS } from "data-models";
+import { IProtectedFieldName, getProtectedFieldName } from "data-models";
 import { SyncServiceBase } from "../syncService.base";
 
 const STORAGE_PREFIX = "rp-contact-field";
@@ -76,15 +76,15 @@ export class LocalStorageService extends SyncServiceBase {
   }
 
   setProtected(field: IProtectedFieldName, value: string) {
-    const fieldName = PROTECTED_FIELDS[field];
-    return this.set(`_${fieldName}`, value, true);
+    const fieldName = getProtectedFieldName(field);
+    return this.set(fieldName, value, true);
   }
   getProtected(field: IProtectedFieldName) {
-    const fieldName = PROTECTED_FIELDS[field];
-    return this.get(`_${fieldName}`);
+    const fieldName = getProtectedFieldName(field);
+    return this.get(fieldName);
   }
   removeProtected(field: IProtectedFieldName) {
-    const fieldName = PROTECTED_FIELDS[field];
+    const fieldName = getProtectedFieldName(field);
     return this.remove(fieldName);
   }
   /** Check if a field name is protected (starts with underscore prefixed or non-prefixed) */

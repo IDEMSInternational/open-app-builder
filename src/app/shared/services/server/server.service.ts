@@ -1,7 +1,7 @@
 import { HttpClient, HttpErrorResponse } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { DeviceInfo, Device } from "@capacitor/device";
-import { IAppConfig, PROTECTED_FIELDS } from "data-models";
+import { IAppConfig, getProtectedFieldName } from "data-models";
 import { interval } from "rxjs";
 import { throwError } from "rxjs";
 import { environment } from "src/environments/environment";
@@ -71,7 +71,7 @@ export class ServerService extends SyncServiceBase {
 
     // apply temp timestamp to contact fields to sync as latest
     const timestamp = generateTimestamp();
-    contact_fields[PROTECTED_FIELDS.SERVER_SYNC_LATEST] = timestamp;
+    contact_fields[getProtectedFieldName("SERVER_SYNC_LATEST")] = timestamp;
 
     // TODO - get DTO from api (?)
     const data = {
