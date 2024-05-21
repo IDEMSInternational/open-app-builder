@@ -12,7 +12,7 @@ import { ReactiveMemoryAdapater, REACTIVE_SCHEMA_BASE } from "./adapters/reactiv
 import { TemplateActionRegistry } from "../../components/template/services/instance/template-action.registry";
 import { TopLevelProperty } from "rxdb/dist/types/types";
 
-type IDocWithID = { id: string };
+type IDocWithMeta = { id: string; APP_META?: Record<string, any> };
 
 @Injectable({ providedIn: "root" })
 /**
@@ -91,7 +91,7 @@ export class DynamicDataService extends AsyncServiceBase {
   }
 
   /** Watch for changes to a specific flow */
-  public async query$<T extends IDocWithID>(
+  public async query$<T extends IDocWithMeta>(
     flow_type: FlowTypes.FlowType,
     flow_name: string,
     queryObj?: MangoQuery
@@ -106,7 +106,8 @@ export class DynamicDataService extends AsyncServiceBase {
         return docs.map((doc) => {
           // we need mutable json so that we can replace dynamic references as required
           const data = doc.toMutableJSON();
-          return data as T;
+          // ensure any previously extracted metadata fields are repopulated
+          return this.populateMeta(data) as T;
         });
       })
     );
@@ -194,13 +195,15 @@ export class DynamicDataService extends AsyncServiceBase {
     delete this.collectionCreators[collectionName];
   }
 
-  /** Retrive json sheet data and merge with any user writes */
+  /** Retrieve json sheet data and merge with any user writes */
   private async getInitialData(flow_type: FlowTypes.FlowType, flow_name: string) {
     const flowData = await this.appDataService.getSheet(flow_type, flow_name);
     const writeData = this.writeCache.get(flow_type, flow_name);
     const writeDataArray = Object.entries(writeData || {}).map(([id, v]) => ({ ...v, id }));
     const mergedData = this.mergeData(flowData?.rows, writeDataArray);
-    return mergedData;
+    // HACK - rxdb can't write any fields prefixed with `_` so extract all to top-level APP_META key
+    const cleaned = mergedData.map((el) => this.extractMeta(el));
+    return cleaned;
   }
 
   /** When working with rxdb collections only alphanumeric lower case names allowed  */
@@ -272,6 +275,29 @@ export class DynamicDataService extends AsyncServiceBase {
     } else {
       console.warn(`[SET ITEM] - No item ${_id ? "with ID " + _id : "at index " + _index}`);
     }
+  }
+
+  /**
+   * Iterate over a document's key-value pairs and populate any properties starting with
+   * an underscore to a single top-level APP_META property
+   */
+  private extractMeta(doc: IDocWithMeta) {
+    const APP_META: Record<string, any> = {};
+    for (const [key, value] of Object.entries(doc)) {
+      if (key.startsWith("_")) {
+        APP_META[key] = value;
+        delete doc[key];
+      }
+    }
+    if (Object.keys(APP_META).length > 0) {
+      doc.APP_META = APP_META;
+    }
+    return doc;
+  }
+  /** Populate any previously extracted APP_META properties back to document */
+  private populateMeta(doc: IDocWithMeta) {
+    const { APP_META, ...data } = doc;
+    return { ...data, ...APP_META };
   }
 }
 
