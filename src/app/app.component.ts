@@ -89,7 +89,8 @@ export class AppComponent {
     private analyticsService: AnalyticsService,
     private localNotificationService: LocalNotificationService,
     private localNotificationInteractionService: LocalNotificationInteractionService,
-    private templateTranslateService: TemplateTranslateService,
+    // make public so that language direction signal can be read directly in template
+    public templateTranslateService: TemplateTranslateService,
     private crashlyticsService: CrashlyticsService,
     private appDataService: AppDataService,
     private authService: AuthService,
@@ -112,6 +113,7 @@ export class AppComponent {
     this.platform.ready().then(async () => {
       this.platforms = this.platform.platforms().join(" ");
       this.subscribeToAppConfigChanges();
+
       // ensure deployment field set correctly for use in any startup services or templates
       localStorage.setItem(this.appFields.DEPLOYMENT_NAME, this.DEPLOYMENT_NAME);
       localStorage.setItem(this.appFields.APP_VERSION, this.APP_VERSION);
