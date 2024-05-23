@@ -43,7 +43,7 @@ export class TmplDataItemsComponent extends TemplateBaseComponent implements OnD
   @Input() set row(row: FlowTypes.TemplateRow) {
     this._row = row;
     this.dataListName = this.hackGetRawDataListName(row);
-    this.parameterList = this.row.parameter_list;
+    this.parameterList = row.parameter_list;
     this.subscribeToData();
   }
 
