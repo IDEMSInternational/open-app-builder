@@ -30,6 +30,15 @@ const APP_LANGUAGES = {
   default: "gb_en",
 };
 
+export interface ILanguageMeta {
+  rtl?: boolean;
+}
+const APP_LANGUAGES_META: { [languageCode: string]: ILanguageMeta } = {
+  en_rtl: {
+    rtl: true,
+  },
+};
+
 /** Specifies the skins available to the current app build.
  * "defaultSkinName": the name of the skin used by default for a given build
  * "available": an array of all skins that are available to the current build */
@@ -192,6 +201,7 @@ const APP_CONFIG = {
   APP_INITIALISATION_DEFAULTS,
   APP_AUTHENTICATION_DEFAULTS,
   APP_LANGUAGES,
+  APP_LANGUAGES_META,
   APP_ROUTE_DEFAULTS,
   APP_SIDEMENU_DEFAULTS,
   APP_FOOTER_DEFAULTS,
