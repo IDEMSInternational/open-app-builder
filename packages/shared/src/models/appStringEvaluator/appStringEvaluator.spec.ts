@@ -20,7 +20,7 @@ describe("App String Evaluator", () => {
   // TODO - doesn't work, should address in follow-up
   // replaces string part first without quotation, i.e.
   // `Ada === 'Ada'` and returns just as a string (can't evaluate)
-  fit("@row.first_name === 'Ada'", () => {
+  it("@row.first_name === 'Ada'", () => {
     pending("TODO - fix implementation to support");
     expect(evaluator.evaluate("@row.first_name === 'Ada'")).toEqual(true);
   });
