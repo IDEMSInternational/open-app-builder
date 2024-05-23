@@ -193,8 +193,10 @@ export class TemplateVariablesService extends AsyncServiceBase {
       }
 
       // Do not evaluate if the appropriate context is not available
+      // NOTE - this will mean compound expressions will need to be evaluated later
+      // E.g. @item.some_field = @local.other_field
       if (type === "item" && !context.itemContext) {
-        return evaluator.fullExpression;
+        return this.hackProcessItemEvaluators(evaluators, context);
       }
 
       // process the main lookup, e.g. @local.some_val, @campaign.some_val
@@ -231,6 +233,41 @@ export class TemplateVariablesService extends AsyncServiceBase {
     log("[evaluated]", fullExpression, { evaluated, evaluators, context });
     log_groupEnd();
     return evaluated;
+  }
+
+  /**
+   * If an item contains dynamic parameter list then the template-variable service simply skips evaluation
+   * as it is unaware of the item context.
+   * e.g `filter: @item.id === @local.some_field`
+   *
+   * Template row evaluators do not have the item context and so only evaluate the local context,
+   * and the partial evaluation leaves `@item.id=== some_value` (without string quotation)
+   *
+   * This method reprocesses the original parameter list, retaining item references and quoting string values
+   * e.g. `filter: this.item.id === "local value"`
+   */
+  private async hackProcessItemEvaluators(
+    evaluators: FlowTypes.TemplateRowDynamicEvaluator[],
+    context: IVariableContext
+  ) {
+    let expression = evaluators[0].fullExpression;
+    for (const evaluator of evaluators) {
+      let parsedValue = evaluator.matchedExpression;
+      // replace @item.some_field with this.some_field in preparation for item JS processor
+      if (evaluator.type === "item") {
+        parsedValue = parsedValue.replace("@", "this.");
+      }
+      // replace all other dynamic references in the same way as the template variable service
+      if (evaluator.type !== "item") {
+        const evaluated = await this.processDynamicEvaluator(evaluator, context);
+        parsedValue = evaluated.parsedValue;
+        if (typeof parsedValue === "string") {
+          parsedValue = `"${parsedValue}"`;
+        }
+      }
+      expression = expression.replace(evaluator.matchedExpression, parsedValue);
+    }
+    return expression;
   }
 
   /**

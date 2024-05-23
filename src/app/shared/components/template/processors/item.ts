@@ -1,6 +1,6 @@
 // NOTE - importing from 'shared' will fail as contains non-browser packages and
 // name conflicts with local 'shared' folder. Import full path from packages instead
-import { AppStringEvaluator } from "packages/shared/src/models/appStringEvaluator/appStringEvaluator";
+import { JSEvaluator } from "packages/shared/src/models/jsEvaluator/jsEvaluator";
 import { TemplatedData } from "packages/shared/src/models/templatedData/templatedData";
 
 import { shuffleArray } from "src/app/shared/utils";
@@ -8,7 +8,10 @@ import { FlowTypes } from "../models";
 import { objectToArray } from "../utils";
 
 export class ItemProcessor {
-  constructor(private dataList: any, private parameterList?: any) {}
+  constructor(
+    private dataList: any,
+    private parameterList?: any
+  ) {}
 
   public process(templateRows: any) {
     const data = objectToArray(this.dataList);
@@ -131,9 +134,10 @@ class ItemDataPipe {
     filter: (items: any[] = [], expression: string) => {
       if (!expression) return;
       return items.filter((item) => {
-        const evaluator = new AppStringEvaluator();
-        evaluator.setExecutionContext({ item });
-        const evaluated = evaluator.evaluate(expression);
+        // NOTE - expects all non-item condition to be evaluated
+        // e.g. @item.field > @local.other_value
+        const evaluator = new JSEvaluator();
+        const evaluated = evaluator.evaluate(expression, { item });
         return evaluated;
       });
     },
