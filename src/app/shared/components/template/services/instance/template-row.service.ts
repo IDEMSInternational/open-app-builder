@@ -288,9 +288,9 @@ export class TemplateRowService extends SyncServiceBase {
     if (type === "items") {
       // extract raw parameter list
       const itemDataList: { [id: string]: any } = row.value;
-      const parameterList = this.hackUnparseItemParameterList(row);
       const parsedItemDataList = await this.parseDataList(itemDataList);
-      const { itemRows } = new ItemProcessor(parsedItemDataList, parameterList).process(row.rows);
+      const { parameter_list, rows } = row;
+      const { itemRows } = new ItemProcessor(parsedItemDataList, parameter_list).process(rows);
       const parsedItemRows = await this.processRows(itemRows, isNestedTemplate, row.name);
       return parsedItemRows;
     }
@@ -370,19 +370,6 @@ export class TemplateRowService extends SyncServiceBase {
       }
     }
     return parsed;
-  }
-
-  /**
-   * When parsing item parameter lists filter references to @item will be replaced before processing
-   * Hacky workaround to replace back with unparsed value
-   */
-  private hackUnparseItemParameterList(row: FlowTypes.TemplateRow) {
-    const list = row.parameter_list;
-    const unparsedFilter = row._dynamicFields?.parameter_list?.filter?.[0].fullExpression;
-    if (list && unparsedFilter) {
-      list.filter = unparsedFilter;
-    }
-    return list;
   }
 
   /** recursively filter out any rows that have a false condition */
