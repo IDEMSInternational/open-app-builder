@@ -1,4 +1,4 @@
-import { Injectable } from "@angular/core";
+import { Injectable, WritableSignal, signal } from "@angular/core";
 import { IAppConfig } from "data-models";
 import { BehaviorSubject } from "rxjs";
 import { AppConfigService } from "src/app/shared/services/app-config/app-config.service";
@@ -20,6 +20,8 @@ export class TemplateTranslateService extends AsyncServiceBase {
    **/
   app_language$ = new BehaviorSubject<string>(null);
   appLanguages: IAppConfig["APP_LANGUAGES"];
+  appLanguagesMeta: IAppConfig["APP_LANGUAGES_META"];
+  languageDirection: WritableSignal<"ltr" | "rtl"> = signal("ltr");
   translation_strings = {};
 
   constructor(
@@ -53,6 +55,7 @@ export class TemplateTranslateService extends AsyncServiceBase {
   /** Set the local storage variable that tracks the app language */
   async setLanguage(code: string, updateDB = true) {
     if (code) {
+      console.log("[SET LANGUAGE]", code);
       if (updateDB) {
         this.localStorageService.setProtected("APP_LANGUAGE", code);
       }
@@ -60,7 +63,8 @@ export class TemplateTranslateService extends AsyncServiceBase {
       this.translation_strings = translationStrings || {};
       // update observable for subscribers
       this.app_language$.next(code);
-      // console.log("[Language Set]", code);
+      // update language direction signal
+      this.languageDirection.set(this.appLanguagesMeta?.[code]?.rtl ? "rtl" : "ltr");
     }
   }
 
@@ -139,6 +143,7 @@ export class TemplateTranslateService extends AsyncServiceBase {
   subscribeToAppConfigChanges() {
     this.appConfigService.appConfig$.subscribe((appConfig: IAppConfig) => {
       this.appLanguages = appConfig.APP_LANGUAGES;
+      this.appLanguagesMeta = appConfig.APP_LANGUAGES_META;
     });
   }
 }

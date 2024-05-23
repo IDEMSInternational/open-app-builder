@@ -90,7 +90,8 @@ export class AppComponent {
     private analyticsService: AnalyticsService,
     private localNotificationService: LocalNotificationService,
     private localNotificationInteractionService: LocalNotificationInteractionService,
-    private templateTranslateService: TemplateTranslateService,
+    // make public so that language direction signal can be read directly in template
+    public templateTranslateService: TemplateTranslateService,
     private crashlyticsService: CrashlyticsService,
     private appDataService: AppDataService,
     private authService: AuthService,
