@@ -57,6 +57,13 @@ export class AppComponent {
   footerDefaults: IAppConfig["APP_FOOTER_DEFAULTS"];
   /** Track when app ready to render sidebar and route templates */
   public renderAppTemplates = false;
+  /**
+   * A space-separated list of values, hierarchically representing the current platform,
+   * e.g. on iPhone the value would be "mobile ios iphone".
+   * See https://ionicframework.com/docs/angular/platform#platforms-1
+   * Store as string to use with css [attribute~=value] selector as part of platform-specific overrides
+   * */
+  platforms: string;
 
   constructor(
     // 3rd Party Services
@@ -82,7 +89,8 @@ export class AppComponent {
     private analyticsService: AnalyticsService,
     private localNotificationService: LocalNotificationService,
     private localNotificationInteractionService: LocalNotificationInteractionService,
-    private templateTranslateService: TemplateTranslateService,
+    // make public so that language direction signal can be read directly in template
+    public templateTranslateService: TemplateTranslateService,
     private crashlyticsService: CrashlyticsService,
     private appDataService: AppDataService,
     private authService: AuthService,
@@ -103,7 +111,9 @@ export class AppComponent {
 
   private async initializeApp() {
     this.platform.ready().then(async () => {
+      this.platforms = this.platform.platforms().join(" ");
       this.subscribeToAppConfigChanges();
+
       // ensure deployment field set correctly for use in any startup services or templates
       localStorage.setItem(this.appFields.DEPLOYMENT_NAME, this.DEPLOYMENT_NAME);
       localStorage.setItem(this.appFields.APP_VERSION, this.APP_VERSION);

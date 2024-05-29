@@ -1,4 +1,9 @@
-<ion-app *ngIf="renderAppTemplates" contentId="main">
+<ion-app
+  *ngIf="renderAppTemplates"
+  contentId="main"
+  [attr.data-platform]="platforms"
+  [dir]="templateTranslateService.languageDirection()"
+>
   <!-- Left Sidebar -->
   <ion-menu
     *ngIf="sideMenuDefaults.enabled"
