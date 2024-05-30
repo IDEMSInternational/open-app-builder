@@ -1,9 +1,8 @@
-import { Component, HostListener, Input, OnDestroy, OnInit } from "@angular/core";
+import { Component, HostListener, Input } from "@angular/core";
 import { ModalController } from "@ionic/angular";
 import { FlowTypes, ITemplateContainerProps } from "../../../models";
 import { TemplateContainerComponent } from "../../../template-container.component";
-import { Router } from "@angular/router";
-import { POPUP_DISMISS_PARAMS, TemplateNavService } from "../../../services/template-nav.service";
+import { TemplateNavService } from "../../../services/template-nav.service";
 
 @Component({
   templateUrl: "./popup.component.html",
@@ -13,46 +12,16 @@ import { POPUP_DISMISS_PARAMS, TemplateNavService } from "../../../services/temp
  * When opening a template as a popup, provide a minimal interface and load
  * the template directly as a regular template-container element
  */
-export class TemplatePopupComponent implements OnInit {
+export class TemplatePopupComponent {
   @Input() props: ITemplatePopupComponentProps;
 
   constructor(
     private modalCtrl: ModalController,
-    private router: Router,
     private templateNavService: TemplateNavService
   ) {}
 
-  ngOnInit() {
-    console.log("adding state");
-    const modalState = {
-      modal: true,
-      popUpName: this.props.name,
-      fullscreen: this.props.fullscreen,
-      description: "custom state when presenting modal",
-    };
-    history.pushState(modalState, null);
-  }
-
-  // ngOnDestroy() {
-  //   // console.log("window.history.state", window.history.state)
-  //   // if (window.history.state.modal) {
-  //   // Navigate back and remove query params
-
-  //   //   history.back();
-  //   //   setTimeout(() => {
-  //   //     this.router.navigate([], {
-  //   //       queryParams: POPUP_DISMISS_PARAMS,
-  //   //       replaceUrl: true,
-  //   //       queryParamsHandling: "merge",
-  //   //     });
-  //   //   }, 100)
-  //   // }
-  //   console.log("hi")
-  //   this.dismiss()
-  // }
-
   @HostListener("window:popstate", ["$event"])
-  dismissOnBack() {
+  dismissOnNavBack() {
     this.dismiss();
   }
 
@@ -77,16 +46,11 @@ export class TemplatePopupComponent implements OnInit {
   }
 
   async dismiss(value?: { emit_value: string; emit_data: any }) {
-    // For popups that are not fullscreen, remove record from history when dismissing
-    // if (history.state.modal && !history.state.fullscreen) {
-    //   history.replaceState({}, "", location.href);
-    //   // history.back();
-    // }
     // If launched as popup via template nav service, dismiss via service to ensure proper handling
     if (this.templateNavService.openPopupsByName[this.props.name]) {
       await this.templateNavService.dismissPopup(this.props.name, value);
     }
-    // Else, e.g. if launched by templateService.runStandaloneTemplate(), simply dismiss
+    // Else, e.g. if launched by TemplateService.runStandaloneTemplate(), simply dismiss
     else {
       await this.modalCtrl.dismiss(value);
     }
@@ -105,4 +69,6 @@ export interface ITemplatePopupComponentProps extends ITemplateContainerProps {
   waitForDismiss?: boolean;
   /** Display fullscreen overlayed on top of all other app content */
   fullscreen?: boolean;
+  /** Track value of "triggered by" on action to repopulate query params */
+  popupParentTriggeredBy?: string;
 }
