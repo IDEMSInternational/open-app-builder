@@ -300,6 +300,7 @@ export class TemplateNavService extends SyncServiceBase {
     const childTemplateModal = await this.createChildPopupModal(popup_child, container, fullscreen);
     if (childTemplateModal) {
       // For fullscreen popups, add a state to history so that navigation functions as if popup is a new page
+      // Inspired by https://dev.to/nicolus/closing-a-modal-with-the-back-button-in-ionic-5-angular-9-50pk
       if (fullscreen) {
         const modalState: IPopupHistoryState = {
           modal: true,
@@ -337,6 +338,7 @@ export class TemplateNavService extends SyncServiceBase {
       }, 100);
     }
     // HACK: Else assume one other open popup and update query params to reflect this
+    // TODO: handle case of arbitrary levels of popups
     else {
       const [openPopup] = Object.values(this.openPopupsByName);
       this.setPopupQueryParams(openPopup.props);
