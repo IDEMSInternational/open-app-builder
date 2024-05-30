@@ -1,8 +1,8 @@
 import { Location } from "@angular/common";
 import { Injectable } from "@angular/core";
-import { ActivatedRoute, NavigationSkipped, NavigationStart, Router } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 import { ModalController } from "@ionic/angular";
-import { filter, first, take } from "rxjs/operators";
+import { first } from "rxjs/operators";
 import { FlowTypes } from "src/app/shared/model";
 import { SyncServiceBase } from "src/app/shared/services/syncService.base";
 import { arrayToHashmapArray, parseBoolean } from "src/app/shared/utils";
@@ -10,7 +10,6 @@ import {
   ITemplatePopupComponentProps,
   TemplatePopupComponent,
 } from "../components/layout/popup/popup.component";
-import { ITemplateContainerProps } from "../models";
 import { TemplateContainerComponent } from "../template-container.component";
 
 // Toggle logs used across full service for debugging purposes (there's quite a few and tedious to comment)
@@ -48,7 +47,7 @@ export class TemplateNavService extends SyncServiceBase {
    * unless specifically closed (e.g. nav triggered from modal)
    */
   public openPopupsByName: {
-    [templatename: string]: { modal: HTMLIonModalElement; props: ITemplateContainerProps };
+    [templatename: string]: { modal: HTMLIonModalElement; props: ITemplatePopupComponentProps };
   } = {};
 
   public async handleQueryParamChange(
@@ -152,7 +151,7 @@ export class TemplateNavService extends SyncServiceBase {
         const triggeredActions = triggerRow.action_list.filter((a) => a.trigger === nav_child_emit);
         await container.templateActionService.handleActions(triggeredActions, triggerRow);
         // back history will have changed (2 duplicate pages), so nav back to restore correct back button
-        history.back();
+        this.location.back();
       } else {
         log("nav trigger row not found");
       }
@@ -221,13 +220,24 @@ export class TemplateNavService extends SyncServiceBase {
       return this.createPopupAndWaitForDismiss(templatename, null, fullscreen);
     }
 
-    const { name } = container;
-    // simply set the query params which will be handled in method below so that
-    // opening can also be handled following navigation or on refresh
+    this.setPopupQueryParams({
+      templatename,
+      parent: container,
+      fullscreen,
+      popupParentTriggeredBy: action._triggeredBy?.name,
+    });
+  }
+
+  /**
+   * Set query params related to popup, which will be handled in separate method so that
+   * opening can also be handled following navigation or on refresh
+   * */
+  private async setPopupQueryParams(popupProps: Partial<ITemplatePopupComponentProps>) {
+    const { templatename, parent, fullscreen, popupParentTriggeredBy } = popupProps;
     const queryParams: INavQueryParams = {
       popup_child: templatename,
-      popup_parent: name,
-      popup_parent_triggered_by: action._triggeredBy?.name || null,
+      popup_parent: parent.name,
+      popup_parent_triggered_by: popupParentTriggeredBy || null,
       popup_fullscreen: fullscreen,
     };
     this.router.navigate([], { queryParams, replaceUrl: true, queryParamsHandling: "merge" });
@@ -289,20 +299,19 @@ export class TemplateNavService extends SyncServiceBase {
   ) {
     const childTemplateModal = await this.createChildPopupModal(popup_child, container, fullscreen);
     if (childTemplateModal) {
-      console.log("presenting");
+      // For fullscreen popups, add a state to history so that navigation functions as if popup is a new page
+      if (fullscreen) {
+        const modalState: IPopupHistoryState = {
+          modal: true,
+          popUpName: popup_child,
+          fullscreen,
+          description: "custom state when presenting modal",
+        };
+        history.pushState(modalState, null);
+      }
       await childTemplateModal.present();
       const { data } = await childTemplateModal.onDidDismiss();
-      // remove reference to popup (will be auto removed if dismissed programatically, but not by background dismiss)
-      if (this.openPopupsByName[popup_child]) {
-        delete this.openPopupsByName[popup_child];
-      }
       log("dismissed", data);
-      // clear any existing popup query params on dismiss
-      this.router.navigate([], {
-        queryParams: POPUP_DISMISS_PARAMS,
-        replaceUrl: true,
-        queryParamsHandling: "merge",
-      });
     }
   }
 
@@ -312,6 +321,26 @@ export class TemplateNavService extends SyncServiceBase {
       await existingPopup.modal.dismiss(data);
       delete this.openPopupsByName[name];
     }
+    const historyState = this.location.getState() as IPopupHistoryState;
+    if (historyState.modal && historyState.popUpName === name) {
+      this.location.back();
+    }
+    // If no other popups are open, clear any existing popup query params
+    if (Object.keys(this.openPopupsByName).length === 0) {
+      // set timeout to allow back navigation to complete first
+      setTimeout(() => {
+        this.router.navigate([], {
+          queryParams: POPUP_DISMISS_PARAMS,
+          replaceUrl: true,
+          queryParamsHandling: "merge",
+        });
+      }, 100);
+    }
+    // HACK: Else assume one other open popup and update query params to reflect this
+    else {
+      const [openPopup] = Object.values(this.openPopupsByName);
+      this.setPopupQueryParams(openPopup.props);
+    }
   }
 
   /** Popups persist nav operations, so also need to handle from top-level templates that are not the parent */
@@ -319,7 +348,7 @@ export class TemplateNavService extends SyncServiceBase {
     params: INavQueryParams,
     container: TemplateContainerComponent
   ) {
-    // Hide any open popup that was trigggered on a previous page prior to navigation (unless new popup)
+    // Hide any open popup that was triggered on a previous page prior to navigation (unless new popup)
     const { popup_child, popup_fullscreen } = params;
     const fullscreen = parseBoolean(popup_fullscreen);
     const existingPopup = this.openPopupsByName[popup_child];
@@ -376,4 +405,12 @@ export interface INavQueryParams {
   popup_parent?: string;
   popup_parent_triggered_by?: string; //
   popup_fullscreen?: boolean;
+}
+
+// A custom state that can be added to the history to keep track of popups
+interface IPopupHistoryState {
+  modal: boolean;
+  popUpName: string;
+  fullscreen: boolean;
+  description: "custom state when presenting modal";
 }
