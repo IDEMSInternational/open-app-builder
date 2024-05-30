@@ -8,7 +8,10 @@ import type { IFlowEvent } from "data-models/db.model";
  * Evaluate `@field` get and set methods
  */
 export class Field extends AppDataHandlerBase {
-  constructor(private localStorageService: LocalStorageService, private dbService: DbService) {
+  constructor(
+    private localStorageService: LocalStorageService,
+    private dbService: DbService
+  ) {
     super("field");
   }
 
@@ -24,7 +27,7 @@ export class Field extends AppDataHandlerBase {
    * Should be combined
    */
   private getField(key: string, showWarnings = true) {
-    let val: any = this.localStorageService.getString("rp-contact-field." + key);
+    let val: any = this.localStorageService.getString(key);
     // provide a fallback if the target variable does not exist in local storage
     if (val === null && showWarnings) {
       // console.warn("field value not found for key:", key);
@@ -53,7 +56,7 @@ export class Field extends AppDataHandlerBase {
       }
     }
     // write to local storage - this will cast to string
-    this.localStorageService.setString("rp-contact-field." + key, value);
+    this.localStorageService.setString(key, value);
 
     // write to db - note this can handle more data formats but only string/number will be available to queries
     if (typeof value === "boolean") value = "value";
