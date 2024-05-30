@@ -116,7 +116,7 @@ export class TemplateService extends SyncServiceBase {
       flow.rows?.forEach((row) => {
         switch (row.type) {
           case "declare_field_default":
-            if (this.localStorageService.getString("rp-contact-field." + row.name) === null) {
+            if (this.localStorageService.getString(row.name) === null) {
               this.templateFieldService.setField(row.name, row.value);
             }
             break;
@@ -188,38 +188,11 @@ export class TemplateService extends SyncServiceBase {
     }
     return foundTemplate;
   }
-  //   // write to local storage - this will cast to string
-  //   this.localStorageService.setString("rp-contact-field." + key, value);
-
-  //   // write to db - note this can handle more data formats but only string/number will be available to queries
-  //   if (typeof value === "boolean") value = "value";
-  //   const evt: IFlowEvent = {
-  //     ...this.dbService.generateDBMeta(),
-  //     event: "set",
-  //     value,
-  //     name: key,
-  //     type: "contact_field" as any,
-  //   };
-  //   return this.dbService.table("data_events").add(evt);
-  // }
 
   getGlobal(key: string): string {
     alert("TODO - getGlobal");
     return null as any;
-    // // provide a fallback if the target global variable has never been set
-    // if (!this.globals.hasOwnProperty(key)) {
-    //   console.warn("global value not found for key:", key);
-    //   return undefined;
-    // }
-    // let global = this.globals[key];
-    // // HACK - ensure global value is translated (if exists)
-    // // (could possibly be handled better from within translate service)
-    // return this.translateService.translateValue(global.value);
   }
-
-  // private setGlobal(row: FlowTypes.GlobalRow) {
-  //   this.globals[row.name] = row;
-  // }
 
   // /** Get the value of a data_list item as defined within templates */
   getDataListByPath(path: string) {

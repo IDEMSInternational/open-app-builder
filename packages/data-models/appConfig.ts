@@ -25,27 +25,6 @@ const DYNAMIC_PREFIXES = [
   "raw",
 ] as const;
 
-/**
- * All localstorage fields will be prefixed with this
- * TODO - this has not been consistently applied so refactoring required
- * */
-const FIELD_PREFIX = "rp-contact-field";
-
-/**
- * Fieldnames hardcoded into the app
- * TODO - these have not been consistently applied so refactoring required
- * */
-const APP_FIELDS = {
-  APP_AUTH_USER: `${FIELD_PREFIX}._app_auth_user`,
-  APP_LANGUAGE: `${FIELD_PREFIX}._app_language`,
-  APP_SKIN: `${FIELD_PREFIX}._app_skin`,
-  APP_THEME: `${FIELD_PREFIX}._app_theme`,
-  APP_VERSION: `${FIELD_PREFIX}._app_version`,
-  CONTENT_VERSION: `${FIELD_PREFIX}._content_version`,
-  DEPLOYMENT_NAME: `${FIELD_PREFIX}._deployment_name`,
-  SERVER_SYNC_LATEST: `${FIELD_PREFIX}._server_sync_latest`,
-};
-
 const APP_LANGUAGES = {
   /** Language used during first load. If translations do not exist will default to source strings (gb_en) */
   default: "gb_en",
@@ -189,9 +168,6 @@ const FEEDBACK_MODULE_DEFAULTS = {
       displayedTemplate: "feature_feedback_text_select",
     },
   ],
-  /** Field to populate with selected text for use in templates */
-  selected_text_field: "_feedback_selected_text",
-  sidebar_open_field: "_feedback_sidebar_open",
 };
 
 const APP_UPDATES = {
@@ -203,10 +179,6 @@ const APP_UPDATES = {
    * If no template is provided provided, installation of the downloaded flexible update will be completed on next app init
    */
   completeUpdateTemplate: "app_update_complete",
-  /** Track whether an update is available for download */
-  app_update_available_field: "_app_update_available",
-  /** Track whether an update has been downloaded and is available for install */
-  app_update_downloaded_field: "_app_update_downloaded",
 };
 
 const ASSET_PACKS = {
@@ -225,7 +197,6 @@ const TASKS = {
 };
 
 const APP_CONFIG = {
-  APP_FIELDS,
   APP_HEADER_DEFAULTS,
   APP_INITIALISATION_DEFAULTS,
   APP_AUTHENTICATION_DEFAULTS,
@@ -241,7 +212,6 @@ const APP_CONFIG = {
   ASSET_PACKS,
   DYNAMIC_PREFIXES,
   FEEDBACK_MODULE_DEFAULTS,
-  FIELD_PREFIX,
   NOTIFICATIONS_SYNC_FREQUENCY_MS,
   NOTIFICATION_DEFAULTS,
   SERVER_SYNC_FREQUENCY_MS,
