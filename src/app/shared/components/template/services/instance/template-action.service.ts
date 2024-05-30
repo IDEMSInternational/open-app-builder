@@ -35,7 +35,10 @@ export class TemplateActionService extends SyncServiceBase {
   private actionsQueue: FlowTypes.TemplateRowAction[] = [];
   private actionsQueueProcessing$ = new BehaviorSubject<boolean>(false);
 
-  constructor(private injector: Injector, public container?: TemplateContainerComponent) {
+  constructor(
+    private injector: Injector,
+    public container?: TemplateContainerComponent
+  ) {
     super("TemplateAction");
   }
   // Retrive all services on demand from global injector
@@ -205,6 +208,9 @@ export class TemplateActionService extends SyncServiceBase {
       case "pop_up":
         if (action.params?.fullscreen) {
           return this.templateService.runStandaloneTemplate(action.args[0], action.params);
+        }
+        if (action.params?.fullscreen_alt) {
+          return this.templateNavService.handlePopupAction(action, this.container);
         }
         return this.templateNavService.handlePopupAction(action, this.container);
 
