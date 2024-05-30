@@ -13,9 +13,6 @@ import { AppConfigService } from "src/app/shared/services/app-config/app-config.
 export class TemplateFieldService extends AsyncServiceBase {
   globals: { [name: string]: FlowTypes.GlobalRow } = {};
 
-  /** App config prefix used */
-  public prefix: string;
-
   constructor(
     private localStorageService: LocalStorageService,
     private dbService: DbService,
@@ -26,7 +23,6 @@ export class TemplateFieldService extends AsyncServiceBase {
     super("TemplateField");
     this.registerInitFunction(this.initialise);
     this.registerTemplateActionHandlers();
-    this.prefix = appConfigService.APP_CONFIG.FIELD_PREFIX;
   }
 
   private async initialise() {
@@ -50,12 +46,12 @@ export class TemplateFieldService extends AsyncServiceBase {
   }
 
   /**
-   * Retrieve fields from localstorage. These are automatically prefixed with 'rp-contact-field'
-   * and will be returned as string or boolean
+   * Retrieve fields from localstorage and return as string or boolean
    * TODO - ideally showWarnings should be linked to some sort of debug mode
    */
   public getField(key: string, showWarnings = true) {
-    let val: any = this.localStorageService.getString(`${this.prefix}.${key}`);
+    if (!key) return undefined;
+    let val: any = this.localStorageService.getString(key);
     // provide a fallback if the target variable does not exist in local storage
     if (val === null && showWarnings) {
       // console.warn("field value not found for key:", key);
@@ -86,7 +82,7 @@ export class TemplateFieldService extends AsyncServiceBase {
       }
     }
     // write to local storage - this will cast to string
-    this.localStorageService.setString(`${this.prefix}.${key}`, value);
+    this.localStorageService.setString(key, value);
 
     // write to db - note this can handle more data formats but only string/number will be available to queries
     if (typeof value === "boolean") value = "value";

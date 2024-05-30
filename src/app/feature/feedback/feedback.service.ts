@@ -17,7 +17,6 @@ import { UserMetaService } from "src/app/shared/services/userMeta/userMeta.servi
 import { TemplateService } from "src/app/shared/components/template/services/template.service";
 import { generateTimestamp } from "src/app/shared/utils";
 import { environment } from "src/environments/environment";
-import { TemplateFieldService } from "src/app/shared/components/template/services/template-field.service";
 import { DbService } from "src/app/shared/services/db/db.service";
 import { DBSyncService } from "src/app/shared/services/db/db-sync.service";
 import {
@@ -38,6 +37,7 @@ import {
   TemplateActionRegistry,
 } from "src/app/shared/components/template/services/instance/template-action.registry";
 import { SyncServiceBase } from "src/app/shared/services/syncService.base";
+import { LocalStorageService } from "src/app/shared/services/local-storage/local-storage.service";
 
 @Injectable({
   providedIn: "root",
@@ -71,7 +71,7 @@ export class FeedbackService extends SyncServiceBase {
   constructor(
     private contextMenuService: ContextMenuService,
     private templateService: TemplateService,
-    private templateFieldService: TemplateFieldService,
+    private localStorageService: LocalStorageService,
     private userMetaService: UserMetaService,
     private toastController: ToastController,
     private dbService: DbService,
@@ -183,17 +183,10 @@ export class FeedbackService extends SyncServiceBase {
   }
 
   public async sidebarOpen() {
-    await this.setSidebarField(true);
     this.router.navigate([{ outlets: { sidebar: ["feedback"] } }]);
   }
   public async sidebarClose() {
-    await this.setSidebarField(false);
     this.router.navigate([{ outlets: { sidebar: [] } }]);
-  }
-
-  private async setSidebarField(isOpen: boolean) {
-    const { sidebar_open_field } = this.feedbackModuleDefaults;
-    await this.templateFieldService.setField(sidebar_open_field, `${isOpen}`);
   }
 
   /**
@@ -332,17 +325,15 @@ export class FeedbackService extends SyncServiceBase {
     feedbackButton: IFeedbackContextMenuButton,
     contextData: IContextMenuActionData = {}
   ) {
-    // set selected text to field for access in templates
-    const { selected_text_field } = this.feedbackModuleDefaults;
     if (contextData?.selectedText) {
-      await this.templateFieldService.setField(selected_text_field, contextData.selectedText);
+      this.localStorageService.setProtected("FEEDBACK_SELECTED_TEXT", contextData.selectedText);
     }
     // launch feedback template, disable feedback mode to prevent actions on feedback poup
     const additional = { ...contextData, id: feedbackButton.id };
     await this.runFeedbackTemplate(feedbackButton.displayedTemplate, additional, ev);
 
     // clear previously set field
-    await this.templateFieldService.setField(selected_text_field, null);
+    this.localStorageService.setProtected("FEEDBACK_SELECTED_TEXT", null);
   }
 
   /**
