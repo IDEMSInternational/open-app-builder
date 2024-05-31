@@ -220,6 +220,8 @@ export class TemplateNavService extends SyncServiceBase {
       return this.createPopupAndWaitForDismiss(templatename, null, fullscreen);
     }
 
+    // Set query params related to popup, which will be handled in separate method so that
+    // opening can also be handled following navigation or on refresh
     this.setPopupQueryParams({
       templatename,
       parent: container,
@@ -228,10 +230,7 @@ export class TemplateNavService extends SyncServiceBase {
     });
   }
 
-  /**
-   * Set query params related to popup, which will be handled in separate method so that
-   * opening can also be handled following navigation or on refresh
-   * */
+  /** Set query params related to popup */
   private async setPopupQueryParams(popupProps: Partial<ITemplatePopupComponentProps>) {
     const { templatename, parent, fullscreen, popupParentTriggeredBy } = popupProps;
     const queryParams: INavQueryParams = {
@@ -313,6 +312,7 @@ export class TemplateNavService extends SyncServiceBase {
       await childTemplateModal.present();
       const { data } = await childTemplateModal.onDidDismiss();
       log("dismissed", data);
+      return data;
     }
   }
 
@@ -338,7 +338,7 @@ export class TemplateNavService extends SyncServiceBase {
       }, 100);
     }
     // HACK: Else assume one other open popup and update query params to reflect this
-    // TODO: handle case of arbitrary levels of popups
+    // TODO: handle case of an arbitrary number of nested popups
     else {
       const [openPopup] = Object.values(this.openPopupsByName);
       this.setPopupQueryParams(openPopup.props);
