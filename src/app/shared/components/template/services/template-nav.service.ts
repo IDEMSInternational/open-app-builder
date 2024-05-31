@@ -296,8 +296,12 @@ export class TemplateNavService extends SyncServiceBase {
     container: TemplateContainerComponent,
     fullscreen?: boolean
   ) {
-    const childTemplateModal = await this.createChildPopupModal(popup_child, container, fullscreen);
-    if (childTemplateModal) {
+    const newChildTemplateModal = await this.ensureChildPopupModal(
+      popup_child,
+      container,
+      fullscreen
+    );
+    if (newChildTemplateModal) {
       // For fullscreen popups, add a state to history so that navigation functions as if popup is a new page
       // Inspired by https://dev.to/nicolus/closing-a-modal-with-the-back-button-in-ionic-5-angular-9-50pk
       if (fullscreen) {
@@ -309,8 +313,8 @@ export class TemplateNavService extends SyncServiceBase {
         };
         history.pushState(modalState, null);
       }
-      await childTemplateModal.present();
-      const { data } = await childTemplateModal.onDidDismiss();
+      await newChildTemplateModal.present();
+      const { data } = await newChildTemplateModal.onDidDismiss();
       log("dismissed", data);
       return data;
     }
@@ -323,7 +327,7 @@ export class TemplateNavService extends SyncServiceBase {
       delete this.openPopupsByName[name];
     }
     const historyState = this.location.getState() as IPopupHistoryState;
-    if (historyState.modal && historyState.popUpName === name) {
+    if (historyState?.modal && historyState?.popUpName === name) {
       this.location.back();
     }
     // If no other popups are open, clear any existing popup query params
@@ -337,7 +341,7 @@ export class TemplateNavService extends SyncServiceBase {
         });
       }, 100);
     }
-    // HACK: Else assume one other open popup and update query params to reflect this
+    // HACK: Else assume first other open popup should be visible and update query params to reflect this
     // TODO: handle case of an arbitrary number of nested popups
     else {
       const [openPopup] = Object.values(this.openPopupsByName);
@@ -361,7 +365,7 @@ export class TemplateNavService extends SyncServiceBase {
     }
   }
 
-  private async createChildPopupModal(
+  private async ensureChildPopupModal(
     popup_child: string,
     container: TemplateContainerComponent,
     fullscreen?: boolean
