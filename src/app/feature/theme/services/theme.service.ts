@@ -11,7 +11,6 @@ import { SyncServiceBase } from "src/app/shared/services/syncService.base";
 export class ThemeService extends SyncServiceBase {
   currentTheme$ = new BehaviorSubject<string>(null);
   availableThemes: IAppConfig["APP_THEMES"]["available"];
-  appFields: IAppConfig["APP_FIELDS"];
   defaultThemeName: string;
 
   constructor(
@@ -41,14 +40,14 @@ export class ThemeService extends SyncServiceBase {
       document.body.dataset.theme = themeName;
       this.currentTheme$.next(themeName);
       // Use local storage so that the current theme persists across app launches
-      this.localStorageService.setString(this.appFields.APP_THEME, themeName);
+      this.localStorageService.setProtected("APP_THEME", themeName);
     } else {
       console.error(`No theme found with name "${themeName}"`);
     }
   }
 
   public getCurrentTheme() {
-    return this.localStorageService.getString(this.appFields.APP_THEME);
+    return this.localStorageService.getProtected("APP_THEME");
   }
 
   /** Calculate all custom properties inherited for a particular element */
@@ -91,7 +90,6 @@ export class ThemeService extends SyncServiceBase {
 
   subscribeToAppConfigChanges() {
     this.appConfigService.appConfig$.subscribe((appConfig: IAppConfig) => {
-      this.appFields = appConfig.APP_FIELDS;
       this.availableThemes = appConfig.APP_THEMES.available;
       this.defaultThemeName = appConfig.APP_THEMES.defaultThemeName;
     });

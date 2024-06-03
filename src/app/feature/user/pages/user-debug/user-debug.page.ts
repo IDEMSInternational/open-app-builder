@@ -2,6 +2,7 @@ import { Component, Injector, OnInit } from "@angular/core";
 import { TemplateActionService } from "src/app/shared/components/template/services/instance/template-action.service";
 import { TemplateFieldService } from "src/app/shared/components/template/services/template-field.service";
 import { DynamicDataService } from "src/app/shared/services/dynamic-data/dynamic-data.service";
+import { LocalStorageService } from "src/app/shared/services/local-storage/local-storage.service";
 
 interface IDynamicDataEntry {
   id: string;
@@ -19,6 +20,7 @@ export class UserDebugPage implements OnInit {
   constructor(
     private fieldService: TemplateFieldService,
     private dynamicDataService: DynamicDataService,
+    private localStorageService: LocalStorageService,
     private injector: Injector
   ) {}
   /** Id of current user */
@@ -87,16 +89,11 @@ export class UserDebugPage implements OnInit {
 
   /** Retrieve localStorage entries prefixed by field service prefix */
   private getUserContactFields() {
-    const contactFields: { key: string; value: string }[] = [];
-    const prefix = `${this.fieldService.prefix}.`;
-    for (const key in localStorage) {
-      if (key.startsWith(prefix)) {
-        contactFields.push({
-          key: key.replace(prefix, ""),
-          value: localStorage.getItem(key),
-        });
-      }
-    }
+    const localStorageHashmap = this.localStorageService.getAll();
+    const contactFields = Object.entries<string>(localStorageHashmap).map(([key, value]) => ({
+      key,
+      value,
+    }));
     return contactFields.sort((a, b) => (a.key > b.key ? 1 : -1));
   }
 

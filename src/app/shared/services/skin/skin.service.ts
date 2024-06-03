@@ -71,7 +71,7 @@ export class SkinService extends SyncServiceBase {
         this.applySkinThemeChanges();
       }
       // Use local storage so that the active skin persists across app launches
-      this.localStorageService.setString(this.appConfig.APP_FIELDS.APP_SKIN, targetSkin.name);
+      this.localStorageService.setProtected("APP_SKIN", targetSkin.name);
       this.updateRoutingDefaults(targetSkin, oldSkin);
     } else {
       console.error(`No skin found with name "${skinName}"`, {
@@ -125,7 +125,7 @@ export class SkinService extends SyncServiceBase {
 
   /** Get the name of the active skin, as saved in local storage */
   public getActiveSkinName() {
-    return this.localStorageService.getString(this.appConfig.APP_FIELDS.APP_SKIN);
+    return this.localStorageService.getProtected("APP_SKIN");
   }
 
   /** Get the full active skin, from the skin name saved in local storage */
