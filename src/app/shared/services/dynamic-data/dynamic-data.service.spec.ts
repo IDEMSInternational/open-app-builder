@@ -7,7 +7,7 @@ import { AppDataService } from "../data/app-data.service";
 import { MockAppDataService } from "../data/app-data.service.spec";
 
 const TEST_DATA_ROWS = [
-  { id: "id1", number: 1, string: "hello", boolean: true },
+  { id: "id1", number: 1, string: "hello", boolean: true, _meta_field: { test: "hello" } },
   { id: "id2", number: 2, string: "goodbye", boolean: false },
   { id: "id0", number: 3, string: "goodbye", boolean: false },
 ];
@@ -144,6 +144,21 @@ describe("DynamicDataService", () => {
     expect(data[1].string).toEqual("sets an item correctly for a given _index");
   });
 
+  it("supports reading data with protected fields", async () => {
+    const obs = await service.query$("data_list", "test_flow");
+    const data = await firstValueFrom(obs);
+    expect(data[0]["_meta_field"]).toEqual({ test: "hello" });
+  });
+  it("ignores writes to protected fields", async () => {
+    await service.setItem({
+      context: SET_ITEM_CONTEXT,
+      writeableProps: { _meta_field: "updated", string: "updated" },
+    });
+    const obs = await service.query$("data_list", "test_flow");
+    const data = await firstValueFrom(obs);
+    expect(data[0]["string"]).toEqual("updated");
+    expect(data[0]["_meta_field"]).toEqual({ test: "hello" });
+  });
   it("adds metadata (row_index) to docs", async () => {
     const obs = await service.query$<any>("data_list", "test_flow");
     const data = await firstValueFrom(obs);
