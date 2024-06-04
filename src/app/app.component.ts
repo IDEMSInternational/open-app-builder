@@ -40,6 +40,7 @@ import { SyncServiceBase } from "./shared/services/syncService.base";
 import { SeoService } from "./shared/services/seo/seo.service";
 import { FeedbackService } from "./feature/feedback/feedback.service";
 import { ShareService } from "./shared/services/share/share.service";
+import { LocalStorageService } from "./shared/services/local-storage/local-storage.service";
 
 @Component({
   selector: "app-root",
@@ -51,7 +52,6 @@ export class AppComponent {
   CONTENT_VERSION = environment.deploymentConfig.git.content_tag_latest;
   DEPLOYMENT_NAME = environment.deploymentName;
   appConfig: IAppConfig;
-  appFields: IAppConfig["APP_FIELDS"];
   appAuthenticationDefaults: IAppConfig["APP_AUTHENTICATION_DEFAULTS"];
   sideMenuDefaults: IAppConfig["APP_SIDEMENU_DEFAULTS"];
   footerDefaults: IAppConfig["APP_FOOTER_DEFAULTS"];
@@ -72,6 +72,7 @@ export class AppComponent {
     private menuController: MenuController,
     private router: Router,
     // App services
+    private localStorageService: LocalStorageService,
     private skinService: SkinService,
     private appConfigService: AppConfigService,
     private dynamicDataService: DynamicDataService,
@@ -89,7 +90,8 @@ export class AppComponent {
     private analyticsService: AnalyticsService,
     private localNotificationService: LocalNotificationService,
     private localNotificationInteractionService: LocalNotificationInteractionService,
-    private templateTranslateService: TemplateTranslateService,
+    // make public so that language direction signal can be read directly in template
+    public templateTranslateService: TemplateTranslateService,
     private crashlyticsService: CrashlyticsService,
     private appDataService: AppDataService,
     private authService: AuthService,
@@ -112,10 +114,7 @@ export class AppComponent {
     this.platform.ready().then(async () => {
       this.platforms = this.platform.platforms().join(" ");
       this.subscribeToAppConfigChanges();
-      // ensure deployment field set correctly for use in any startup services or templates
-      localStorage.setItem(this.appFields.DEPLOYMENT_NAME, this.DEPLOYMENT_NAME);
-      localStorage.setItem(this.appFields.APP_VERSION, this.APP_VERSION);
-      localStorage.setItem(this.appFields.CONTENT_VERSION, this.CONTENT_VERSION);
+      await this.populateAppInitFields();
       await this.initialiseCoreServices();
       this.hackSetDeveloperOptions();
       const isDeveloperMode = this.templateFieldService.getField("user_mode") === false;
@@ -146,6 +145,18 @@ export class AppComponent {
       this.cdr.detectChanges();
       this.scheduleReinitialisation();
     });
+  }
+  /** Populate contact fields that may be used by other services during initialisation */
+  private async populateAppInitFields() {
+    this.localStorageService.setProtected("DEPLOYMENT_NAME", this.DEPLOYMENT_NAME);
+    this.localStorageService.setProtected("APP_VERSION", this.APP_VERSION);
+    this.localStorageService.setProtected("CONTENT_VERSION", this.CONTENT_VERSION);
+    // HACK - ensure first_app_launch migrated from event service
+    if (!this.localStorageService.getProtected("APP_FIRST_LAUNCH")) {
+      await this.appEventService.ready();
+      const { first_app_launch } = this.appEventService.summary;
+      this.localStorageService.setProtected("APP_FIRST_LAUNCH", first_app_launch);
+    }
   }
 
   /**
@@ -178,7 +189,6 @@ export class AppComponent {
       this.sideMenuDefaults = this.appConfig.APP_SIDEMENU_DEFAULTS;
       this.footerDefaults = this.appConfig.APP_FOOTER_DEFAULTS;
       this.appAuthenticationDefaults = this.appConfig.APP_AUTHENTICATION_DEFAULTS;
-      this.appFields = this.appConfig.APP_FIELDS;
     });
   }
 
@@ -311,7 +321,7 @@ export class AppComponent {
     if (location.hostname === "localhost" && !environment.production) {
       const isUserMode = this.templateFieldService.getField("user_mode");
       if (isUserMode !== false) {
-        this.templateFieldService.setField("user_mode", "false");
+        this.localStorageService.setString("user_mode", "false");
       }
     }
   }
