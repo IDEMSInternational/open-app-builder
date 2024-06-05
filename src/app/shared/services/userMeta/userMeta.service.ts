@@ -7,6 +7,7 @@ import { AsyncServiceBase } from "../asyncService.base";
 import { DbService } from "../db/db.service";
 import { TemplateActionRegistry } from "../../components/template/services/instance/template-action.registry";
 import { TemplateFieldService } from "../../components/template/services/template-field.service";
+import { LocalStorageService } from "../local-storage/local-storage.service";
 import { DynamicDataService } from "../dynamic-data/dynamic-data.service";
 
 type IDynamicDataState = ReturnType<DynamicDataService["getState"]>;
@@ -16,6 +17,7 @@ export class UserMetaService extends AsyncServiceBase {
   /** keep an in-memory copy of user to provide synchronously */
   public userMeta: IUserMeta;
   constructor(
+    private localStorageService: LocalStorageService,
     private dbService: DbService,
     private templateActionRegistry: TemplateActionRegistry,
     private http: HttpClient,
@@ -47,7 +49,7 @@ export class UserMetaService extends AsyncServiceBase {
     userMeta.uuid = uuid;
     this.userMeta = userMeta;
     // populate user id contact field
-    this.fieldService.setField("_app_user_id", uuid);
+    this.localStorageService.setProtected("APP_USER_ID", uuid);
   }
 
   getUserMeta(key: keyof IUserMeta) {
@@ -82,10 +84,9 @@ export class UserMetaService extends AsyncServiceBase {
 
   private async importUserContactFields(contact_fields = {}) {
     for (const [key, value] of Object.entries(contact_fields)) {
-      const fieldName = key.replace(`${this.fieldService.prefix}.`, "");
       // TODO - handle special contact fields as required (e.g. _app_skin, _app_theme)
-      if (!fieldName.startsWith("_")) {
-        await this.fieldService.setField(fieldName, value as string);
+      if (!this.localStorageService.isProtected(key)) {
+        this.localStorageService.setString(key, value as string);
       }
     }
   }

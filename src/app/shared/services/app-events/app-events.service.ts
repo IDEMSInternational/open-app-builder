@@ -3,6 +3,7 @@ import { generateTimestamp } from "../../utils";
 import { DbService } from "../db/db.service";
 import { LocalStorageService } from "../local-storage/local-storage.service";
 import { AsyncServiceBase } from "../asyncService.base";
+import { AppConfigService } from "../app-config/app-config.service";
 
 @Injectable({ providedIn: "root" })
 /**
@@ -19,7 +20,11 @@ export class AppEventService extends AsyncServiceBase {
   /** Keep a copy of all app events saved in the database in memoery also, by event_id */
   appEventsById: { [key in IEventId]: IAppEvent[] };
 
-  constructor(private db: DbService, private localStorageService: LocalStorageService) {
+  constructor(
+    private db: DbService,
+    private localStorageService: LocalStorageService,
+    private appConfigService: AppConfigService
+  ) {
     super("App Events");
     this.registerInitFunction(this.intialise);
   }
@@ -27,7 +32,7 @@ export class AppEventService extends AsyncServiceBase {
   /** Initialise the app events service by recording an app_launch instance */
   private async intialise() {
     await this.ensureAsyncServicesReady([this.db]);
-    this.ensureSyncServicesReady([this.localStorageService]);
+    this.ensureSyncServicesReady([this.localStorageService, this.appConfigService]);
     this.setAppEventsById([]);
     this.loadSummary();
 
@@ -91,7 +96,7 @@ export class AppEventService extends AsyncServiceBase {
     return this.setSummaryValues(cache);
   }
 
-  /** Update cached valuese and save to localstorage */
+  /** Update cached values and save to localstorage */
   private setSummaryValues(values: Partial<IAppEventSummary>) {
     this.summary = { ...DEFAULT_SUMMARY, ...this.summary, ...values };
     return this.localStorageService.setJSON("app_events_summary", this.summary);
@@ -99,7 +104,7 @@ export class AppEventService extends AsyncServiceBase {
 }
 
 const APP_EVENT_IDs = ["app_launch"] as const;
-type IEventId = typeof APP_EVENT_IDs[number];
+type IEventId = (typeof APP_EVENT_IDs)[number];
 
 export interface IAppEvent {
   _created: string;
