@@ -135,7 +135,7 @@ class ItemDataPipe {
       if (!expression) return;
       return items.filter((item) => {
         // NOTE - expects all non-item condition to be evaluated
-        // e.g. @item.field > @local.other_value
+        // e.g. `@item.field > @local.some_value` already be evaluated to `this.item.field > "local value"`
         const evaluator = new JSEvaluator();
         const evaluated = evaluator.evaluate(expression, { item });
         return evaluated;
