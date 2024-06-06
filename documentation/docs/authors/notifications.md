@@ -63,4 +63,4 @@ Notifications are automatically evaluated and scheduled on app start
 !!! warning
     When the app is not in active use sync timers pause and so no new notifications will be evaluated. That means that if the user closes the app 
 
-There is currently no workaround for this unfortunately except for reducing the re-schedule sync timer, however if this is required than it is suggested to [create an issue](https://github.com/IDEMSInternational/parenting-app-ui/issues/new/choose) for the feature (likely best handled by a trigger that can be called from authoring).
+There is currently no workaround for this unfortunately except for reducing the re-schedule sync timer, however if this is required than it is suggested to [create an issue](https://github.com/IDEMSInternational/open-app-builder/issues/new/choose) for the feature (likely best handled by a trigger that can be called from authoring).
