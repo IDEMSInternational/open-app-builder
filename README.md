@@ -1,8 +1,8 @@
 [![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/IDEMSInternational/parenting-app-ui.git)
 
-# Parenting App UI
+# Open App Builder
 
-[Online Documentation](https://idemsinternational.github.io/parenting-app-ui/)
+[Online Documentation](https://idemsinternational.github.io/open-app-builder/)
 
 # Quickstart
 
