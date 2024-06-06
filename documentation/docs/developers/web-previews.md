@@ -16,7 +16,7 @@ on:
 
 jobs:
   web_preview:
-    uses: IDEMSInternational/parenting-app-ui/.github/workflows/reusable-deploy-web-preview.yml@master
+    uses: IDEMSInternational/open-app-builder/.github/workflows/reusable-deploy-web-preview.yml@master
     secrets: inherit
 ```
 
