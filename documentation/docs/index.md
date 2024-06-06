@@ -18,13 +18,13 @@
 
 ### Download the repo with binary assets
 ```
-$ git lfs clone https://github.com/IDEMSInternational/parenting-app-ui.git
+$ git lfs clone https://github.com/IDEMSInternational/open-app-builder.git
 ```
 Note - if you do a regular git clone, you can always run `git lfs fetch --all` later to sync assets
 
 ### Install required dependencies
 ```
-$ cd parenting-app-ui
+$ cd open-app-builder
 $ yarn install
 ```
 Note - you may have to do this from time to time when content is updated)
