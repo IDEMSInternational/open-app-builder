@@ -192,9 +192,9 @@ export class TemplateVariablesService extends AsyncServiceBase {
         return evaluator.fullExpression.replace(/`/gi, "");
       }
 
-      // Do not evaluate if the appropriate context is not available
+      // If the appropriate context is not available, do not evaluate that particular evaluator
       // NOTE - this will mean compound expressions will need to be evaluated later
-      // E.g. @item.some_field = @local.other_field
+      // E.g. @item.some_field === @local.other_field -> this.item.id === "local value", which needs further evaluation
       if (type === "item" && !context.itemContext) {
         return this.hackProcessItemEvaluators(evaluators, context);
       }
