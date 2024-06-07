@@ -47,7 +47,7 @@ jobs:
       - name: Check out app code
         uses: actions/checkout@v3
         with:
-          repository: "IDEMSInternational/parenting-app-ui.git"
+          repository: "IDEMSInternational/open-app-builder.git"
           ref: ${{env.APP_CODE_BRANCH}}
 
       - name: Remove .git from the repository in order to nest
