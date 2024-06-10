@@ -6,7 +6,7 @@ theme:
     accent: a mber
   font:
     text: "Open Sans"
-repo_url: https://github.com/IDEMSInternational/parenting-app-ui
+repo_url: https://github.com/IDEMSInternational/open-app-builder
 edit_uri: edit/master/documentation/docs/
 
 nav:

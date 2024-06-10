@@ -60,7 +60,7 @@ npx cap open android
 3. Create a debug build from android studio menu (assumes google.json populated locally)
 _Build -> Build Bundles / APKs -> Build Bundle_
 
-    It should prompt a message on complete to locate the bundle, e.g. `...\parenting-app-ui\android\app\build\outputs\bundle\debug`
+    It should prompt a message on complete to locate the bundle, e.g. `...\open-app-builder\android\app\build\outputs\bundle\debug`
 
 4. Upload to [internal app sharing](https://play.google.com/console/internal-app-sharing) (each user maintains their own list of uploaded apps, so you won't be able to see what others have uploaded)
 
