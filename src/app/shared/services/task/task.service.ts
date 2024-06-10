@@ -4,10 +4,28 @@ import { AppDataService } from "../data/app-data.service";
 import { arrayToHashmap } from "../../utils";
 import { AsyncServiceBase } from "../asyncService.base";
 import { AppConfigService } from "../app-config/app-config.service";
-import { IAppConfig } from "../../model";
+import { FlowTypes, IAppConfig } from "../../model";
 import { CampaignService } from "../../../feature/campaign/campaign.service";
+import { TemplateActionRegistry } from "../../components/template/services/instance/template-action.registry";
+import { DynamicDataService } from "../dynamic-data/dynamic-data.service";
 
 export type IProgressStatus = "notStarted" | "inProgress" | "completed";
+// This is the definition of a task: a row of a data list that has a "completed" column
+export type TaskRow = FlowTypes.Data_listRow<{ completed: boolean }>;
+// A task group consists of a task row (identified here by a parentDataListName and rowId) and a list of subtasks
+interface TaskGroup {
+  /** The name of the data list that contains the subtasks that constitute the task group */
+  subtasksDataListName: string;
+  /** The row id that identifies the task row corresponding to the task group within its parent data list */
+  rowId: string;
+  /**
+   * The name of the data list that contains the task row corresponding to the task group
+   * NB if that data list is itself a task group, this will be identical to the parentTaskGroup's subtasksDataListName
+   */
+  parentDataListName: string;
+  /** If the parent data list is itself a task group, include its reference */
+  parentTaskGroup?: TaskGroup;
+}
 
 @Injectable({
   providedIn: "root",
@@ -22,13 +40,16 @@ export class TaskService extends AsyncServiceBase {
   tasksFeatureEnabled: boolean;
 
   constructor(
-    private templateFieldService: TemplateFieldService,
-    private appDataService: AppDataService,
     private appConfigService: AppConfigService,
-    private campaignService: CampaignService
+    private appDataService: AppDataService,
+    private campaignService: CampaignService,
+    private dynamicDataService: DynamicDataService,
+    private templateFieldService: TemplateFieldService,
+    private templateActionRegistry: TemplateActionRegistry
   ) {
     super("Task");
     this.registerInitFunction(this.initialise);
+    this.registerTemplateActionHandlers();
   }
 
   /**
@@ -200,6 +221,115 @@ export class TaskService extends AsyncServiceBase {
     });
   }
 
+  private registerTemplateActionHandlers() {
+    this.templateActionRegistry.register({
+      task: async ({ args, params }) => {
+        const [actionId] = args;
+        const childActions = {
+          /**
+           * HACK: evaluate completion status of task groups. ...
+           */
+          evaluate_group_completion: async () => {
+            const taskGroupRefs = params.task_groups.split(" ");
+            console.log("taskGroupRefs", taskGroupRefs);
+            const nestedTaskGroups = this.parseTaskGroupRefsToTaskGroups(taskGroupRefs);
+            await this.evaluateTaskGroupCompletion(nestedTaskGroups);
+          },
+        };
+        if (!(actionId in childActions)) {
+          console.error("task does not have action", actionId);
+          return;
+        }
+        return childActions[actionId]();
+      },
+    });
+  }
+
+  /**
+   * Parses an array of task group references into a nested TaskGroup object structure.
+   *
+   * Each task group reference is expected to be in the format "parentDataListName.rowId", where
+   * The function processes the references in reverse order to build the nested TaskGroup
+   * objects, linking each task group to its parent appropriately.
+   *
+   * @param {string[]} taskGroupRefs - An array of task group references in the format "parentDataListName.rowId",
+   * starting with the initial subtasks data list name
+   * @returns {TaskGroup} - The TaskGroup object corresponding to the last child task group, with anyu parent task groups nested within it.
+   *
+   * @example
+   * For taskGroupRefs = ["debug_task_group_c", "debug_task_group_b.b_2", "debug_task_group_a.a_1"];
+   * the method will return:
+   * {
+   *   subtasksDataListName: "debug_task_group_c",
+   *   rowId: "b_2",
+   *   parentDataListName: "debug_task_group_b",
+   *   parentTaskGroup: {
+   *     subtasksDataListName: "debug_task_group_b",
+   *     rowId: "a_1",
+   *     parentDataListName: "debug_task_group_a",
+   *     parentTaskGroup: undefined
+   *   }
+   * }
+   */
+  public parseTaskGroupRefsToTaskGroups(taskGroupRefs: string[]): TaskGroup {
+    let parentTaskGroup: TaskGroup | undefined;
+
+    // Iterate over the references in reverse order, stopping before first entry
+    for (let i = taskGroupRefs.length - 1; i > 0; i--) {
+      const ref = taskGroupRefs[i];
+      const [parentDataListName, rowId] = ref.split(".");
+
+      // Create the TaskGroup object
+      const taskGroup: TaskGroup = {
+        subtasksDataListName: taskGroupRefs[i - 1].split(".")[0],
+        rowId,
+        parentDataListName,
+        parentTaskGroup,
+      };
+
+      // Update the parentTaskGroup for the next iteration
+      parentTaskGroup = taskGroup;
+    }
+
+    // The last child TaskGroup is the last one created
+    return parentTaskGroup;
+  }
+
+  /**
+   * Evaluates the completion status of a given task group, including its nested parent task groups
+   * @param {TaskGroup} taskGroup The task group to evaluate, included any parent task groups nested within it
+   * @return {Promise<boolean>} A boolean indicating whether the the last child task group (the top level of the TaskGroup object) is completed.
+   */
+  private async evaluateTaskGroupCompletion(taskGroup: TaskGroup): Promise<boolean> {
+    const { subtasksDataListName, rowId, parentDataListName, parentTaskGroup } = taskGroup;
+    const taskGroupData = await this.dynamicDataService.snapshot<TaskRow>(
+      "data_list",
+      subtasksDataListName
+    );
+    const taskGroupCompleted = taskGroupData.every((row) => row.completed);
+
+    // Update completion of task group in dynamic data
+    await this.dynamicDataService.update("data_list", parentDataListName, rowId, {
+      completed: taskGroupCompleted,
+    });
+
+    // Support legacy task group implementation, where task completion is tracked in fields
+    const taskGroupRow = (
+      await this.dynamicDataService.snapshot<TaskRow>("data_list", subtasksDataListName)
+    ).find((row) => row.id === rowId);
+    const taskGroupCompletedField = taskGroupRow?.["completed_field"];
+    if (taskGroupCompletedField) {
+      await this.setTaskGroupCompletedStatus(taskGroupCompletedField, taskGroupCompleted);
+      this.evaluateHighlightedTaskGroup();
+    }
+
+    // recursively evaluate any parent task groups
+    if (parentTaskGroup) {
+      this.evaluateTaskGroupCompletion(parentTaskGroup);
+    }
+    return taskGroupCompleted;
+  }
+
   /**
    * TODO: this is not currently implemented, and should likely be reworked as part of a broader overhaul of the task system
    *
@@ -228,3 +358,19 @@ export class TaskService extends AsyncServiceBase {
   //   return this.evaluateHighlightedTaskGroup();
   // }
 }
+
+const taskGroupA: TaskGroup = {
+  subtasksDataListName: "debug_task_group_b",
+  parentDataListName: "debug_task_group_a",
+  rowId: "a_1",
+};
+
+// e.g.
+const taskGroupB: TaskGroup = {
+  subtasksDataListName: "debug_task_group_c",
+  rowId: "b_2",
+  parentDataListName: "debug_task_group_b",
+  parentTaskGroup: taskGroupA,
+};
+
+// Alternatively, could remove the subtasksDataListName property and somehow read it in at the bottom level...

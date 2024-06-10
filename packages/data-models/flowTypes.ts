@@ -419,6 +419,7 @@ export namespace FlowTypes {
     "share",
     "style",
     "start_tour",
+    "task",
     "task_group_set_highlighted",
     "toggle_field",
     "track_event",

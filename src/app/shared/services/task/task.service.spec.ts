@@ -204,4 +204,23 @@ describe("TaskService", () => {
     // and again on the evaluation called above
     expect(scheduleCampaignNotificationsSpy).toHaveBeenCalledTimes(2);
   });
+  it("parses task group refs to TaskGroup array", () => {
+    const taskGroupRefs = [
+      "debug_task_group_c",
+      "debug_task_group_b.b_2",
+      "debug_task_group_a.a_1",
+    ];
+    const taskGroups = service.parseTaskGroupRefsToTaskGroups(taskGroupRefs);
+    expect(taskGroups).toEqual({
+      subtasksDataListName: "debug_task_group_c",
+      rowId: "b_2",
+      parentDataListName: "debug_task_group_b",
+      parentTaskGroup: {
+        subtasksDataListName: "debug_task_group_b",
+        rowId: "a_1",
+        parentDataListName: "debug_task_group_a",
+        parentTaskGroup: undefined,
+      },
+    });
+  });
 });
