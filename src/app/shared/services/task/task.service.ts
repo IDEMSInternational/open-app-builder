@@ -227,12 +227,20 @@ export class TaskService extends AsyncServiceBase {
         const [actionId] = args;
         const childActions = {
           /**
-           * HACK: evaluate completion status of task groups. ...
+           * HACK: evaluate completion status of task groups. Pending an overhaul of the task system,
+           * this action offers a way to evaluate task group completion status over multiple nested task groups.
+           *
+           * @param {string} task_groups A space-separated list of task group references in the format "parentDataListName.rowId",
+           * starting with the highest level task group and working down to the lowest level.
+           * The final entry is just a data list name corresponding the the list of subtasks of the last child task group
            */
           evaluate_group_completion: async () => {
             const taskGroupRefs = params.task_groups.split(" ");
-            console.log("taskGroupRefs", taskGroupRefs);
             const nestedTaskGroups = this.parseTaskGroupRefsToTaskGroups(taskGroupRefs);
+            console.log(
+              "[TASK] Debug - evaluating task group completion status. Nested task groups object:",
+              nestedTaskGroups
+            );
             await this.evaluateTaskGroupCompletion(nestedTaskGroups);
           },
         };
@@ -248,16 +256,16 @@ export class TaskService extends AsyncServiceBase {
   /**
    * Parses an array of task group references into a nested TaskGroup object structure.
    *
-   * Each task group reference is expected to be in the format "parentDataListName.rowId", where
-   * The function processes the references in reverse order to build the nested TaskGroup
-   * objects, linking each task group to its parent appropriately.
+   * Each task group reference is expected to be in the format "parentDataListName.rowId".
+   * This method processes the references in order to build the nested TaskGroup object,
+   * linking each task group to its parent appropriately.
    *
    * @param {string[]} taskGroupRefs - An array of task group references in the format "parentDataListName.rowId",
-   * starting with the initial subtasks data list name
-   * @returns {TaskGroup} - The TaskGroup object corresponding to the last child task group, with anyu parent task groups nested within it.
+   * where the final entry is just a data list name corresponding the the list of subtasks of the last child task group.
+   * @returns {TaskGroup} - The TaskGroup object corresponding to the last child task group, including any parent task groups nested within it.
    *
    * @example
-   * For taskGroupRefs = ["debug_task_group_c", "debug_task_group_b.b_2", "debug_task_group_a.a_1"];
+   * For taskGroupRefs = ["debug_task_group_a.a_1","debug_task_group_b.b_2", "debug_task_group_c"];
    * the method will return:
    * {
    *   subtasksDataListName: "debug_task_group_c",
@@ -274,14 +282,13 @@ export class TaskService extends AsyncServiceBase {
   public parseTaskGroupRefsToTaskGroups(taskGroupRefs: string[]): TaskGroup {
     let parentTaskGroup: TaskGroup | undefined;
 
-    // Iterate over the references in reverse order, stopping before first entry
-    for (let i = taskGroupRefs.length - 1; i > 0; i--) {
+    // Iterate over the references in order, stopping before last entry
+    for (let i = 0; i < taskGroupRefs.length - 1; i++) {
       const ref = taskGroupRefs[i];
       const [parentDataListName, rowId] = ref.split(".");
 
-      // Create the TaskGroup object
       const taskGroup: TaskGroup = {
-        subtasksDataListName: taskGroupRefs[i - 1].split(".")[0],
+        subtasksDataListName: taskGroupRefs[i + 1].split(".")[0],
         rowId,
         parentDataListName,
         parentTaskGroup,
@@ -291,7 +298,7 @@ export class TaskService extends AsyncServiceBase {
       parentTaskGroup = taskGroup;
     }
 
-    // The last child TaskGroup is the last one created
+    // The TaskGroup representing the last child, including its nested parents, is the last one created
     return parentTaskGroup;
   }
 
