@@ -4,7 +4,7 @@
 
 _Asked on 10 February 2022_
 
-The `parameter_list` takes only parameters that are specifically defined by us for every specific component. As such, these are going to be pretty impossible for you to guess without documentation. For what it's worth, [this file](https://github.com/IDEMSInternational/parenting-app-ui/blob/master/documentation/docs/authors/template-component-parameter-list.md) is the closest thing to documentation of those parameters that we have at the moment.  
+The `parameter_list` takes only parameters that are specifically defined by us for every specific component. As such, these are going to be pretty impossible for you to guess without documentation. For what it's worth, [this file](https://github.com/IDEMSInternational/open-app-builder/blob/master/documentation/docs/authors/template-component-parameter-list.md) is the closest thing to documentation of those parameters that we have at the moment.  
 
 Instead, the `style_list` does indeed interpret CSS directly. My knowledge of CSS is limited as well so I can't be of much help here, but [this documentation website](https://www.w3schools.com/cssref/default.asp) has proven handy to me in the past. 
 

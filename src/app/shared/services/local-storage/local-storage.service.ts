@@ -13,6 +13,7 @@ export class LocalStorageService extends SyncServiceBase {
   }
 
   private get(key: string): string | null {
+    if (!key) return null;
     if (!key.startsWith(STORAGE_PREFIX)) {
       key = `${STORAGE_PREFIX}.${key}`;
     }
@@ -20,6 +21,7 @@ export class LocalStorageService extends SyncServiceBase {
   }
 
   private set(key: string, value: string, allowProtected = false) {
+    if (!key) return;
     if (!allowProtected && this.isProtected(key)) {
       console.warn(`[DEPRECATED] - set local-storage with protected name: ${key}`);
     }
@@ -30,6 +32,7 @@ export class LocalStorageService extends SyncServiceBase {
   }
 
   private remove(key: string) {
+    if (!key) return;
     if (!key.startsWith(STORAGE_PREFIX)) {
       key = `${STORAGE_PREFIX}.${key}`;
     }
