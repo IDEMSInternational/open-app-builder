@@ -235,6 +235,10 @@ export class TaskService extends AsyncServiceBase {
            * The final entry is just a data list name corresponding the the list of subtasks of the last child task group
            */
           evaluate_group_completion: async () => {
+            if (!params.task_groups)
+              return console.warn(
+                "[TASK] evaluate_group_completion action - To evaluate task group completion, a list of task group references must be provided via the task_groups param"
+              );
             const taskGroupRefs = params.task_groups.split(" ");
             const nestedTaskGroups = this.parseTaskGroupRefsToTaskGroups(taskGroupRefs);
             console.log(
@@ -365,19 +369,3 @@ export class TaskService extends AsyncServiceBase {
   //   return this.evaluateHighlightedTaskGroup();
   // }
 }
-
-const taskGroupA: TaskGroup = {
-  subtasksDataListName: "debug_task_group_b",
-  parentDataListName: "debug_task_group_a",
-  rowId: "a_1",
-};
-
-// e.g.
-const taskGroupB: TaskGroup = {
-  subtasksDataListName: "debug_task_group_c",
-  rowId: "b_2",
-  parentDataListName: "debug_task_group_b",
-  parentTaskGroup: taskGroupA,
-};
-
-// Alternatively, could remove the subtasksDataListName property and somehow read it in at the bottom level...
