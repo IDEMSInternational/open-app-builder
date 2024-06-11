@@ -51,4 +51,4 @@ It is also possible to replace any other flow type during sync and build by spec
 This can be useful in cases where multiple apps share some of the same core content, and want to only apply a number of replacements/additions. 
 
 !!! example "Experimental"
-See open issue [2081](https://github.com/IDEMSInternational/parenting-app-ui/issues/2081) for proposals to add multiple data sources to make this type of override system more easy to implement
+See open issue [2081](https://github.com/IDEMSInternational/open-app-builder/issues/2081) for proposals to add multiple data sources to make this type of override system more easy to implement

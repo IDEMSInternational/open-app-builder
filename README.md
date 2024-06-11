@@ -1,8 +1,8 @@
-[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/IDEMSInternational/parenting-app-ui.git)
+[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/IDEMSInternational/open-app-builder.git)
 
-# Parenting App UI
+# Open App Builder
 
-[Online Documentation](https://idemsinternational.github.io/parenting-app-ui/)
+[Online Documentation](https://idemsinternational.github.io/open-app-builder/)
 
 # Quickstart
 
@@ -24,13 +24,13 @@
 
 ### Download the repo with binary assets
 ```
-$ git lfs clone https://github.com/IDEMSInternational/parenting-app-ui.git
+$ git lfs clone https://github.com/IDEMSInternational/open-app-builder.git
 ```
 Note - if you do a regular git clone, you can always run `git lfs fetch --all` later to sync assets
 
 ### Install required dependencies
 ```
-$ cd parenting-app-ui
+$ cd open-app-builder
 $ yarn install
 ```
 Note - you may have to do this from time to time when content is updated)
@@ -45,7 +45,7 @@ yarn workflow deployment set
 ```
 This will present an interactive list of deployments to select from.
 
-See [Deployment Documentation](https://idemsinternational.github.io/parenting-app-ui/developers/deployments/) for information about creating and configuring deployments.
+See [Deployment Documentation](https://idemsinternational.github.io/open-app-builder/developers/deployments/) for information about creating and configuring deployments.
 
 ## Running locally
 
@@ -57,8 +57,8 @@ This will start a local server and serve the app in your browser on http://local
 
 # For Content Coders
 
-Please see [Quickstart Authors](https://idemsinternational.github.io/parenting-app-ui/authors/quickstart/)
+Please see [Quickstart Authors](https://idemsinternational.github.io/open-app-builder/authors/quickstart/)
 
 # For Developers
 
-Please see [Quickstart Developers](https://idemsinternational.github.io/parenting-app-ui/developers/quickstart/)
+Please see [Quickstart Developers](https://idemsinternational.github.io/open-app-builder/developers/quickstart/)
