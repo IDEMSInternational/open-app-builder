@@ -206,9 +206,9 @@ describe("TaskService", () => {
   });
   it("parses task group refs to TaskGroup array", () => {
     const taskGroupRefs = [
-      "debug_task_group_c",
-      "debug_task_group_b.b_2",
       "debug_task_group_a.a_1",
+      "debug_task_group_b.b_2",
+      "debug_task_group_c",
     ];
     const taskGroups = service.parseTaskGroupRefsToTaskGroups(taskGroupRefs);
     expect(taskGroups).toEqual({
