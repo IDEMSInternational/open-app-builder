@@ -43,7 +43,7 @@ export class TmplDataItemsComponent extends TemplateBaseComponent implements OnD
   @Input() set row(row: FlowTypes.TemplateRow) {
     this._row = row;
     this.dataListName = this.hackGetRawDataListName(row);
-    this.parameterList = this.hackGetRawParameterList(row);
+    this.parameterList = row.parameter_list;
     this.subscribeToData();
   }
 
@@ -183,15 +183,6 @@ export class TmplDataItemsComponent extends TemplateBaseComponent implements OnD
     return row._dynamicFields?.value?.[0]?.fieldName;
   }
 
-  /** Copied from template-row service */
-  private hackGetRawParameterList(row: FlowTypes.TemplateRow) {
-    const list = row.parameter_list;
-    const unparsedFilter = row._dynamicFields?.parameter_list?.filter?.[0].fullExpression;
-    if (list && unparsedFilter) {
-      list.filter = unparsedFilter;
-    }
-    return list;
-  }
   /** Copied from template-row service */
   private async parseDataList(dataList: { [id: string]: any }) {
     const parsed: { [id: string]: any } = {};
