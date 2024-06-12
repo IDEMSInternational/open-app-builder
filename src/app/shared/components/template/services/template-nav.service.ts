@@ -220,8 +220,8 @@ export class TemplateNavService extends SyncServiceBase {
       return this.createPopupAndWaitForDismiss(templatename, null, fullscreen);
     }
 
-    // Set query params related to popup, which will be handled in separate method so that
-    // opening can also be handled following navigation or on refresh
+    // Set query params related to popup, which will trigger pop up creation to be handled
+    // in separate method so that opening can also be handled following navigation or on refresh
     this.setPopupQueryParams({
       templatename,
       parent: container,
@@ -301,18 +301,20 @@ export class TemplateNavService extends SyncServiceBase {
       container,
       fullscreen
     );
+    // When presenting a popup, add a custom state to history so that navigation from fullscreen popups can function as if popup is a new page
+    // Inspired by https://dev.to/nicolus/closing-a-modal-with-the-back-button-in-ionic-5-angular-9-50pk
+    const modalState: IPopupHistoryState = {
+      modal: true,
+      popUpName: popup_child,
+      fullscreen,
+      description: "custom state when presenting modal",
+    };
+    if (fullscreen) {
+      history.pushState(modalState, null);
+    } else {
+      history.replaceState(modalState, null);
+    }
     if (newChildTemplateModal) {
-      // For fullscreen popups, add a state to history so that navigation functions as if popup is a new page
-      // Inspired by https://dev.to/nicolus/closing-a-modal-with-the-back-button-in-ionic-5-angular-9-50pk
-      if (fullscreen) {
-        const modalState: IPopupHistoryState = {
-          modal: true,
-          popUpName: popup_child,
-          fullscreen,
-          description: "custom state when presenting modal",
-        };
-        history.pushState(modalState, null);
-      }
       await newChildTemplateModal.present();
       const { data } = await newChildTemplateModal.onDidDismiss();
       log("dismissed", data);
@@ -320,32 +322,42 @@ export class TemplateNavService extends SyncServiceBase {
     }
   }
 
-  public async dismissPopup(name: string, data: any = undefined) {
+  public async dismissPopup(
+    name: string,
+    data: any = undefined,
+    parentPopUpParams?: ITemplatePopupComponentProps
+  ) {
     const existingPopup = this.openPopupsByName[name];
     if (existingPopup) {
       await existingPopup.modal.dismiss(data);
       delete this.openPopupsByName[name];
+      const historyState = this.location.getState() as IPopupHistoryState;
+      if (historyState?.modal && historyState?.popUpName === name && historyState?.fullscreen) {
+        this.location.back();
+        // wait for back navigation to complete before updating query params
+        this.router.events.pipe(first()).subscribe(async () => {
+          await this.updateQueryParamsOnDismiss();
+        });
+      } else {
+        await this.updateQueryParamsOnDismiss();
+      }
     }
-    const historyState = this.location.getState() as IPopupHistoryState;
-    if (historyState?.modal && historyState?.popUpName === name) {
-      this.location.back();
-    }
+  }
+
+  async updateQueryParamsOnDismiss() {
     // If no other popups are open, clear any existing popup query params
     if (Object.keys(this.openPopupsByName).length === 0) {
-      // set timeout to allow back navigation to complete first
-      setTimeout(() => {
-        this.router.navigate([], {
-          queryParams: POPUP_DISMISS_PARAMS,
-          replaceUrl: true,
-          queryParamsHandling: "merge",
-        });
-      }, 100);
+      this.router.navigate([], {
+        queryParams: POPUP_DISMISS_PARAMS,
+        replaceUrl: true,
+        queryParamsHandling: "merge",
+      });
     }
-    // HACK: Else assume first other open popup should be visible and update query params to reflect this
-    // TODO: handle case of an arbitrary number of nested popups
+    // HACK: else, dismiss popup and update query params to represent the last created popup
+    // (assume this popup should be open)
     else {
-      const [openPopup] = Object.values(this.openPopupsByName);
-      this.setPopupQueryParams(openPopup.props);
+      const lastCreatedPopup = Object.values(this.openPopupsByName).pop();
+      await this.setPopupQueryParams(lastCreatedPopup.props);
     }
   }
 
