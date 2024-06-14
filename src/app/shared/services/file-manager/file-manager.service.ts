@@ -6,7 +6,6 @@ import write_blob from "capacitor-blob-writer";
 import { saveAs } from "file-saver";
 import { SyncServiceBase } from "../syncService.base";
 import { environment } from "src/environments/environment";
-import { IAssetContents } from "src/app/data";
 import { TemplateActionRegistry } from "../../components/template/services/instance/template-action.registry";
 import { TemplateAssetService } from "../../components/template/services/template-asset.service";
 import { ErrorHandlerService } from "../error-handler/error-handler.service";
@@ -33,7 +32,7 @@ export class FileManagerService extends SyncServiceBase {
 
   private registerTemplateActionHandlers() {
     this.templateActionRegistry.register({
-      // Native: save file to Downloads folder in external device storage and open;
+      // Native: save file to Documents folder in external device storage and open;
       // Web: download file
       save_to_device: async ({ args }) => {
         await this.downloadTemplateAsset({ relativePath: args[0] });
@@ -48,11 +47,54 @@ export class FileManagerService extends SyncServiceBase {
   }
 
   /**
-   * Save an asset file to device storage.
+   * Save a file to the local filesystem (native only), for internal use by the app.
+   * @param options.directory the name of the directory in which to save the file.
+   * E.g. the permenent "Data" directory (default) or the temporary "Cache" (see https://capacitorjs.com/docs/apis/filesystem#directory)
+   * @param options.subdirectory Additional folder path to be added between "directory" and target path. The app deployment name is always added.
+   * @returns the local filesystem path to the saved file, in both "file://*" format and usable src format
+   */
+  public async saveFile(options: {
+    data: Blob;
+    targetPath: string;
+    directory?: keyof typeof Directory;
+    subdirectory?: string;
+  }) {
+    const { data, targetPath, directory = "Data", subdirectory = "" } = options;
+    const path = (subdirectory ? subdirectory + "/" : "") + `${this.cacheName}/${targetPath}`;
+    // Docs for write_blob are here: https://github.com/diachedelic/capacitor-blob-writer#readme
+    const localFilepath = await write_blob({
+      directory: Directory[directory],
+      path,
+      blob: data,
+      fast_mode: true,
+      recursive: true,
+      on_fallback(error) {
+        console.error(error);
+      },
+    });
+    return { localFilepath, src: Capacitor.convertFileSrc(localFilepath) };
+  }
+
+  /** Delete a file from the local filesystem */
+  public async deleteFile(localFilepath: string) {
+    return await Filesystem.deleteFile({ path: localFilepath });
+  }
+
+  public async getLocalFilepath(relativePath: string) {
+    const { uri } = await Filesystem.stat({
+      path: `${this.cacheName}/${relativePath}`,
+      directory: Directory.Data,
+    });
+    const filePath = Capacitor.convertFileSrc(uri);
+    return filePath;
+  }
+
+  /**
+   * Save an asset file to device storage, to be accessible to the user.
    * On native devices, save file to native storage and optionally trigger prompt to open with native apps.
    * On web, prompt standard browser download.
    * @param options.relativePath The relative path to an asset, in standard authoring syntax
-   * @param options.open On native devices, open the file after download. Default: true
+   * @param options.open If true, then the file will be opened after download on native devices. Default: true
    */
   private async downloadTemplateAsset(options: {
     relativePath: string;
@@ -111,43 +153,10 @@ export class FileManagerService extends SyncServiceBase {
   }
 
   /**
-   * Save a file to the local filesystem (native only),
-   * @param options.directory the name of the directory in which to save the file.
-   * E.g. the permenent "Data" directory (default) or the temporary "Cache" (see https://capacitorjs.com/docs/apis/filesystem#directory)
-   * @param options.subdirectory Additional folder path to be added between "directory" and target path. The app deployment name is always added.
-   * @returns the local filesystem path to the saved file, in both "file://*" format and usable src format
-   */
-  async saveFile(options: {
-    data: Blob;
-    targetPath: string;
-    directory?: keyof typeof Directory;
-    subdirectory?: string;
-  }) {
-    const { data, targetPath, directory = "Data", subdirectory = "" } = options;
-    const path = (subdirectory ? subdirectory + "/" : "") + `${this.cacheName}/${targetPath}`;
-    // Docs for write_blob are here: https://github.com/diachedelic/capacitor-blob-writer#readme
-    const localFilepath = await write_blob({
-      directory: Directory[directory],
-      path,
-      blob: data,
-      fast_mode: true,
-      recursive: true,
-      on_fallback(error) {
-        console.error(error);
-      },
-    });
-    return { localFilepath, src: Capacitor.convertFileSrc(localFilepath) };
-  }
-
-  public async deleteFile(localFilepath: string) {
-    return await Filesystem.deleteFile({ path: localFilepath });
-  }
-
-  /**
    * @returns a URL to access the file (not currently used)
    * Adapted from https://www.npmjs.com/package/capacitor-blob-writer
    */
-  async getLocalUrl(relativePath: string) {
+  private async getLocalUrl(relativePath: string) {
     // How the URI is obtained depends on the platform
     if (Capacitor.isNativePlatform()) {
       const { uri } = await Filesystem.getUri({
@@ -164,27 +173,5 @@ export class FileManagerService extends SyncServiceBase {
       });
       return URL.createObjectURL(new Blob([data]));
     }
-  }
-
-  /**
-   * WIP: method to save list of cached assets to file. May not be needed if we utilize rxdb/dynamicDataService
-   */
-  async writeCacheListToFile(cachedFilesList: IAssetContents) {
-    return await Filesystem.writeFile({
-      directory: Directory.Data,
-      path: `${this.cacheName}/cachedFiles.json`,
-      data: JSON.stringify(cachedFilesList),
-      recursive: true,
-      encoding: Encoding.UTF8,
-    });
-  }
-
-  async getLocalFilepath(relativePath: string) {
-    const { uri } = await Filesystem.stat({
-      path: `${this.cacheName}/${relativePath}`,
-      directory: Directory.Data,
-    });
-    const filePath = Capacitor.convertFileSrc(uri);
-    return filePath;
   }
 }
