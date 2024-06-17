@@ -138,18 +138,9 @@ export class FileManagerService extends SyncServiceBase {
     return { localFilepath, src: Capacitor.convertFileSrc(localFilepath) };
   }
 
-  /** Delete a file from the local filesystem */
+  /** Delete a file from the local filesystem (native only) */
   public async deleteFile(localFilepath: string) {
     return await Filesystem.deleteFile({ path: localFilepath });
-  }
-
-  public async getLocalFilepath(relativePath: string) {
-    const { uri } = await Filesystem.stat({
-      path: `${this.cacheName}/${relativePath}`,
-      directory: Directory.Data,
-    });
-    const filePath = Capacitor.convertFileSrc(uri);
-    return filePath;
   }
 
   /**
@@ -173,5 +164,14 @@ export class FileManagerService extends SyncServiceBase {
       });
       return URL.createObjectURL(new Blob([data]));
     }
+  }
+
+  private async getLocalFilepath(relativePath: string) {
+    const { uri } = await Filesystem.stat({
+      path: `${this.cacheName}/${relativePath}`,
+      directory: Directory.Data,
+    });
+    const filePath = Capacitor.convertFileSrc(uri);
+    return filePath;
   }
 }
