@@ -47,49 +47,6 @@ export class FileManagerService extends SyncServiceBase {
   }
 
   /**
-   * Save a file to the local filesystem (native only), for internal use by the app.
-   * @param options.directory the name of the directory in which to save the file.
-   * E.g. the permenent "Data" directory (default) or the temporary "Cache" (see https://capacitorjs.com/docs/apis/filesystem#directory)
-   * @param options.subdirectory Additional folder path to be added between "directory" and target path. The app deployment name is always added.
-   * @returns the local filesystem path to the saved file, in both "file://*" format and usable src format
-   */
-  public async saveFile(options: {
-    data: Blob;
-    targetPath: string;
-    directory?: keyof typeof Directory;
-    subdirectory?: string;
-  }) {
-    const { data, targetPath, directory = "Data", subdirectory = "" } = options;
-    const path = (subdirectory ? subdirectory + "/" : "") + `${this.cacheName}/${targetPath}`;
-    // Docs for write_blob are here: https://github.com/diachedelic/capacitor-blob-writer#readme
-    const localFilepath = await write_blob({
-      directory: Directory[directory],
-      path,
-      blob: data,
-      fast_mode: true,
-      recursive: true,
-      on_fallback(error) {
-        console.error(error);
-      },
-    });
-    return { localFilepath, src: Capacitor.convertFileSrc(localFilepath) };
-  }
-
-  /** Delete a file from the local filesystem */
-  public async deleteFile(localFilepath: string) {
-    return await Filesystem.deleteFile({ path: localFilepath });
-  }
-
-  public async getLocalFilepath(relativePath: string) {
-    const { uri } = await Filesystem.stat({
-      path: `${this.cacheName}/${relativePath}`,
-      directory: Directory.Data,
-    });
-    const filePath = Capacitor.convertFileSrc(uri);
-    return filePath;
-  }
-
-  /**
    * Save an asset file to device storage, to be accessible to the user.
    * On native devices, save file to native storage and optionally trigger prompt to open with native apps.
    * On web, prompt standard browser download.
@@ -150,6 +107,49 @@ export class FileManagerService extends SyncServiceBase {
       const fileUrl = this.templateAssetService.getTranslatedAssetPath(relativePath);
       window.open(fileUrl, "_blank");
     }
+  }
+
+  /**
+   * Save a file to the local filesystem (native only), for internal use by the app.
+   * @param options.directory the name of the directory in which to save the file.
+   * E.g. the permenent "Data" directory (default) or the temporary "Cache" (see https://capacitorjs.com/docs/apis/filesystem#directory)
+   * @param options.subdirectory Additional folder path to be added between "directory" and target path. The app deployment name is always added.
+   * @returns the local filesystem path to the saved file, in both "file://*" format and usable src format
+   */
+  public async saveFile(options: {
+    data: Blob;
+    targetPath: string;
+    directory?: keyof typeof Directory;
+    subdirectory?: string;
+  }) {
+    const { data, targetPath, directory = "Data", subdirectory = "" } = options;
+    const path = (subdirectory ? subdirectory + "/" : "") + `${this.cacheName}/${targetPath}`;
+    // Docs for write_blob are here: https://github.com/diachedelic/capacitor-blob-writer#readme
+    const localFilepath = await write_blob({
+      directory: Directory[directory],
+      path,
+      blob: data,
+      fast_mode: true,
+      recursive: true,
+      on_fallback(error) {
+        console.error(error);
+      },
+    });
+    return { localFilepath, src: Capacitor.convertFileSrc(localFilepath) };
+  }
+
+  /** Delete a file from the local filesystem */
+  public async deleteFile(localFilepath: string) {
+    return await Filesystem.deleteFile({ path: localFilepath });
+  }
+
+  public async getLocalFilepath(relativePath: string) {
+    const { uri } = await Filesystem.stat({
+      path: `${this.cacheName}/${relativePath}`,
+      directory: Directory.Data,
+    });
+    const filePath = Capacitor.convertFileSrc(uri);
+    return filePath;
   }
 
   /**
