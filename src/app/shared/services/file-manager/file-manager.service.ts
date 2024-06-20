@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { Directory, Encoding, Filesystem } from "@capacitor/filesystem";
+import { Directory, Filesystem } from "@capacitor/filesystem";
 import { FileOpener } from "@capacitor-community/file-opener";
 import { Capacitor } from "@capacitor/core";
 import write_blob from "capacitor-blob-writer";
@@ -166,7 +166,7 @@ export class FileManagerService extends SyncServiceBase {
     }
   }
 
-  private async getLocalFilepath(relativePath: string) {
+  public async getLocalFilepath(relativePath: string) {
     const { uri } = await Filesystem.stat({
       path: `${this.cacheName}/${relativePath}`,
       directory: Directory.Data,
