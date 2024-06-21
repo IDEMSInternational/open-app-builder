@@ -40,10 +40,29 @@ describe("Merge Operator", () => {
     const expectedNames = ["override", "Blaise", "Charles", "Daniel"];
     expect(output.column("first_name").values).toEqual(expectedNames);
   });
+  // TODO: currently fails
+  it("Merges multiple lists including list with nested data", () => {
+    const nestedData = testData.names.map((entry) => {
+      entry["nested"] = { first_name: entry.first_name };
+      return entry;
+    });
+    const testDfWithNestedData = new DataFrame(nestedData);
+
+    // merges data - additional nationality column appended for all entries and populated for available
+    const output = new merge(testDfWithNestedData, ["merge_nationality"], testPipe).apply();
+    expect(output.index).toEqual(["id_1", "id_2", "id_3", "id_4"]);
+    // merges new nationality column
+    const expectedNationalities = ["British", "French", undefined, undefined];
+    expect(output.column("nationality").values).toEqual(expectedNationalities);
+    // merges existing name overrides
+    const expectedNames = ["override", "Blaise", "Charles", "Daniel"];
+    expect(output.column("first_name").values).toEqual(expectedNames);
+  });
   it("Merges multiple lists from args_list, with no input_source", () => {
     const emptyDf = new DataFrame([]);
     // merges data - additional nationality column appended for all entries and populated for available
     const output = new merge(emptyDf, ["names", "merge_nationality"], testPipe).apply();
+
     expect(output.index).toEqual(["id_1", "id_2", "id_3", "id_4"]);
     // merges new nationality column
     const expectedNationalities = ["British", "French", undefined, undefined];
