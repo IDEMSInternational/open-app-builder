@@ -12,6 +12,8 @@ class MergeOperator extends BaseOperator {
   private indexColumn = "id";
   constructor(df: DataFrame, args_list: string[], pipe: DataPipe) {
     super(df, args_list, pipe);
+    // If dataframe from input_source is empty, use first datalist from args_list as base dataframe
+    if (this.df.shape[0] === 0) this.df = new DataFrame(this.args_list.shift());
   }
   // load input data list from arg, populate error object if not exist for use in validation step
   parseArg(arg: string): ILoadedDatalist {
