@@ -1,4 +1,5 @@
 import { DataFrame } from "danfojs";
+import testData from "../testData.spec";
 import { DataPipe } from "../pipe";
 import merge from "./merge";
 
@@ -28,16 +29,8 @@ const nested_data = [
 ];
 
 describe("Merge Operator", () => {
-  let testDf: DataFrame;
-  let testPipe: DataPipe;
-
-  beforeEach(async () => {
-    // HACK - some other test suites appear to
-    const { default: importedData } = await import("../testData.spec");
-    testDf = new DataFrame(importedData.names);
-    // ensure testPipe has access to all required data lists
-    testPipe = new DataPipe([], { ...importedData, nationality_data, nested_data });
-  });
+  const testDf = new DataFrame(testData.names);
+  const testPipe = new DataPipe([], { ...testData, nationality_data, nested_data });
 
   it("Throws on missing list", () => {
     // throws on missing list
