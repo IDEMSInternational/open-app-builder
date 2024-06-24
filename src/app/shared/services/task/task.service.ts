@@ -260,6 +260,7 @@ export class TaskService extends AsyncServiceBase {
             if (row_id) {
               await this.evaluateTaskCompletion(data_list_name, row_id);
             } else {
+              await this.bulkEvaluateTaskCompletion(data_list_name);
             }
           },
         };
@@ -272,17 +273,13 @@ export class TaskService extends AsyncServiceBase {
     });
   }
 
-  private async bulkEvaluateTaskCompletion(dataListName: string, rowId?: string) {
-    if (rowId) {
-      await this.evaluateTaskCompletion(dataListName, rowId);
-    } else {
-      const parentDataList = await this.dynamicDataService.snapshot<TaskRowWithChildTasks>(
-        "data_list",
-        dataListName
-      );
-      for (const taskRow of parentDataList) {
-        await this.evaluateTaskCompletion(dataListName, taskRow.id, taskRow);
-      }
+  private async bulkEvaluateTaskCompletion(dataListName: string) {
+    const parentDataList = await this.dynamicDataService.snapshot<TaskRowWithChildTasks>(
+      "data_list",
+      dataListName
+    );
+    for (const taskRow of parentDataList) {
+      await this.evaluateTaskCompletion(dataListName, taskRow.id, taskRow);
     }
   }
 
@@ -300,6 +297,7 @@ export class TaskService extends AsyncServiceBase {
     rowId: string,
     taskRow?: TaskRowWithChildTasks
   ): Promise<boolean> {
+    // Fetch task row if not provided explicitly
     if (!taskRow) {
       const parentDataList = await this.dynamicDataService.snapshot<TaskRowWithChildTasks>(
         "data_list",
@@ -307,10 +305,13 @@ export class TaskService extends AsyncServiceBase {
       );
       taskRow = parentDataList.find((row) => row.id === rowId);
     }
-
+    if (!taskRow) {
+      console.warn(`[TASK] evaluate - row "${rowId}" in "${dataListName}" not found`);
+      return false;
+    }
     let taskGroupCompleted = taskRow.completed;
 
-    const subtasksDataListName = taskRow?.task_child;
+    const subtasksDataListName = taskRow.task_child;
     if (!subtasksDataListName) {
       console.warn(
         `[TASK] evaluate - row "${rowId}" in "${dataListName}" has no child tasks to evaluate`
