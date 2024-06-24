@@ -12,6 +12,9 @@ import { DynamicDataService } from "../dynamic-data/dynamic-data.service";
 export type IProgressStatus = "notStarted" | "inProgress" | "completed";
 // This is the definition of a task: a row of a data list that has a "completed" column
 export type TaskRow = FlowTypes.Data_listRow<{ completed: boolean }>;
+// Or "TaskGroupRow?"
+export type TaskRowWithChildTasks = TaskRow & { task_child: string };
+
 // A task group consists of a task row (identified here by a parentDataListName and rowId) and a list of subtasks
 interface TaskGroup {
   /** The name of the data list that contains the subtasks that constitute the task group */
@@ -247,6 +250,18 @@ export class TaskService extends AsyncServiceBase {
             );
             await this.evaluateTaskGroupCompletion(nestedTaskGroups);
           },
+          evaluate: async () => {
+            const { data_list_name, row_id } = params;
+            if (!data_list_name) {
+              return console.warn(
+                "[TASK] evaluate action - To evaluate task completion, a data list name must be provided via the data_list_name param"
+              );
+            }
+            if (row_id) {
+              await this.evaluateTaskCompletion(data_list_name, row_id);
+            } else {
+            }
+          },
         };
         if (!(actionId in childActions)) {
           console.error("task does not have action", actionId);
@@ -255,6 +270,71 @@ export class TaskService extends AsyncServiceBase {
         return childActions[actionId]();
       },
     });
+  }
+
+  private async bulkEvaluateTaskCompletion(dataListName: string, rowId?: string) {
+    if (rowId) {
+      await this.evaluateTaskCompletion(dataListName, rowId);
+    } else {
+      const parentDataList = await this.dynamicDataService.snapshot<TaskRowWithChildTasks>(
+        "data_list",
+        dataListName
+      );
+      for (const taskRow of parentDataList) {
+        await this.evaluateTaskCompletion(dataListName, taskRow.id, taskRow);
+      }
+    }
+  }
+
+  /**
+   * Evaluate the completion status of a task based on the provided dataListName and rowId.
+   * Expects the task to have a "task_child" column that contains the name of the data list of subtasks
+   *
+   * @param {string} dataListName - The name of the data list that contains the task row
+   * @param {string} rowId - The ID of the task row to evaluate
+   * @param {TaskRowWithChildTasks} [taskRow] - Optionally provide task row explicitly to avoid duplicate dynamic data query
+   * @return {boolean} The completion status of the task group
+   */
+  private async evaluateTaskCompletion(
+    dataListName: string,
+    rowId: string,
+    taskRow?: TaskRowWithChildTasks
+  ): Promise<boolean> {
+    if (!taskRow) {
+      const parentDataList = await this.dynamicDataService.snapshot<TaskRowWithChildTasks>(
+        "data_list",
+        dataListName
+      );
+      taskRow = parentDataList.find((row) => row.id === rowId);
+    }
+
+    let taskGroupCompleted = taskRow.completed;
+
+    const subtasksDataListName = taskRow?.task_child;
+    if (!subtasksDataListName) {
+      console.warn(
+        `[TASK] evaluate - row "${rowId}" in "${dataListName}" has no child tasks to evaluate`
+      );
+    } else {
+      const taskGroupData = await this.dynamicDataService.snapshot<TaskRow>(
+        "data_list",
+        subtasksDataListName
+      );
+      taskGroupCompleted = taskGroupData.every((row) => row.completed);
+
+      // Update completion of task group in dynamic data
+      await this.dynamicDataService.update("data_list", dataListName, rowId, {
+        completed: taskGroupCompleted,
+      });
+
+      // Support legacy task group implementation, where task completion is tracked in fields
+      const taskGroupCompletedField = taskRow?.["completed_field"];
+      if (taskGroupCompletedField) {
+        await this.setTaskGroupCompletedStatus(taskGroupCompletedField, taskGroupCompleted);
+        this.evaluateHighlightedTaskGroup();
+      }
+    }
+    return taskGroupCompleted;
   }
 
   /**
