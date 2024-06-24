@@ -23,10 +23,10 @@ describe("Filter", () => {
     expect(outputIDs).toEqual(["id_1", "id_3", "id_4"]);
   });
   it("Filters with 'this' context", () => {
-    const nestedData = testData.names.map((entry) => {
-      entry["nested"] = { first_name: entry.first_name };
-      return entry;
-    });
+    const nestedData = testData.names.map((entry) => ({
+      ...entry,
+      nested: { first_name: entry.first_name },
+    }));
     const testDf = new DataFrame(nestedData);
     const output = new filter(testDf, ["this.nested.first_name === 'Ada'"]).apply();
     const outputIDs = output.column("first_name").values;
