@@ -58,17 +58,4 @@ describe("Merge Operator", () => {
     const expectedNested = ['{"value":"test"}', "undefined", "undefined", "undefined"];
     expect(output.column("nested").values).toEqual(expectedNested as any);
   });
-  it("Merges multiple lists from args_list, with no input_source", () => {
-    const emptyDf = new DataFrame([]);
-    // merges data - additional nationality column appended for all entries and populated for available
-    const output = new merge(emptyDf, ["names", "nationality_data"], testPipe).apply();
-
-    expect(output.index).toEqual(["id_1", "id_2", "id_3", "id_4"]);
-    // merges new nationality column
-    const expectedNationalities = ["British", "French", undefined, undefined];
-    expect(output.column("nationality").values).toEqual(expectedNationalities);
-    // merges existing name overrides
-    const expectedNames = ["override", "Blaise", "Charles", "Daniel"];
-    expect(output.column("first_name").values).toEqual(expectedNames);
-  });
 });

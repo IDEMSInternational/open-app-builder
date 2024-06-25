@@ -12,8 +12,6 @@ class MergeOperator extends BaseOperator {
   private indexColumn = "id";
   constructor(df: DataFrame, args_list: string[], pipe: DataPipe) {
     super(df, args_list, pipe);
-    // If a base dataframe is not explicitly provided, e.g. input_source is empty, use first data list from args_list as base dataframe
-    if (this.df.shape[0] === 0) this.df = new DataFrame(this.args_list.shift());
   }
   // load input data list from arg, populate error object if not exist for use in validation step
   parseArg(arg: string): ILoadedDatalist {
@@ -24,6 +22,8 @@ class MergeOperator extends BaseOperator {
   }
 
   apply() {
+    if (this.df.shape[0] === 0)
+      console.error("Merge: No data in base dataframe - an input_source must be provided");
     setIndexColumn(this.df, this.indexColumn);
     for (const dataList of this.args_list) {
       this.df = this.replaceUpdatedValues(dataList);
