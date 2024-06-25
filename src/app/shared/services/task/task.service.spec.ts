@@ -73,6 +73,8 @@ let mockTemplateFieldService: MockTemplateFieldService;
 describe("TaskService", () => {
   let service: TaskService;
   let scheduleCampaignNotificationsSpy: jasmine.Spy<jasmine.Func>;
+  let fetchTaskRowSpy: jasmine.Spy<jasmine.Func>;
+  let fetchTaskRowsSpy: jasmine.Spy<jasmine.Func>;
 
   beforeEach(async () => {
     scheduleCampaignNotificationsSpy = jasmine.createSpy();
@@ -107,6 +109,30 @@ describe("TaskService", () => {
       ],
     });
     service = TestBed.inject(TaskService);
+
+    fetchTaskRowSpy = spyOn<TaskService, any>(service, "fetchTaskRow").and.callFake(
+      (dataListName, rowId) => {
+        if (rowId === "validRowId") {
+          return Promise.resolve({
+            completed: false,
+            task_child: "childDataList",
+            completed_field: "completed_field",
+          });
+        }
+        return Promise.resolve(null);
+      }
+    );
+
+    fetchTaskRowsSpy = spyOn<TaskService, any>(service, "fetchTaskRows").and.callFake(
+      (dataListName) => {
+        if (dataListName === "childDataList") {
+          return Promise.resolve([{ completed: true }, { completed: true }]);
+        }
+        return Promise.resolve([]);
+      }
+    );
+
+    spyOn<TaskService, any>(service, "setTaskCompletion").and.resolveTo(true);
   });
 
   it("should be created", () => {
@@ -204,23 +230,43 @@ describe("TaskService", () => {
     // and again on the evaluation called above
     expect(scheduleCampaignNotificationsSpy).toHaveBeenCalledTimes(2);
   });
-  // it("parses task group refs to TaskGroup array", () => {
-  //   const taskGroupRefs = [
-  //     "debug_task_group_a.a_1",
-  //     "debug_task_group_b.b_2",
-  //     "debug_task_group_c",
-  //   ];
-  //   const taskGroups = service.parseTaskGroupRefsToTaskGroups(taskGroupRefs);
-  //   expect(taskGroups).toEqual({
-  //     subtasksDataListName: "debug_task_group_c",
-  //     rowId: "b_2",
-  //     parentDataListName: "debug_task_group_b",
-  //     parentTaskGroup: {
-  //       subtasksDataListName: "debug_task_group_b",
-  //       rowId: "a_1",
-  //       parentDataListName: "debug_task_group_a",
-  //       parentTaskGroup: undefined,
-  //     },
-  //   });
-  // });
+
+  it("evaluate task completion: should return null if taskRow is not found", async () => {
+    const result = await service["evaluateTaskCompletion"]("dataList", "invalidRowId");
+    expect(result).toBeNull();
+  });
+  it("evaluate task completion: should set parent task completion to true if all child tasks are completed", async () => {
+    const result = await service["evaluateTaskCompletion"]("dataList", "validRowId");
+    expect(service["setTaskCompletion"]).toHaveBeenCalledWith(
+      "dataList",
+      "validRowId",
+      true,
+      "completed_field"
+    );
+    expect(result).toBeTrue();
+  });
+  it("evaluate task completion: should set parent task completion to false if not all child tasks are completed", async () => {
+    fetchTaskRowsSpy.and.resolveTo([
+      { id: "a", completed: true },
+      { id: "b", completed: false },
+    ]);
+    const result = await service["evaluateTaskCompletion"]("dataList", "validRowId");
+    expect(service["setTaskCompletion"]).toHaveBeenCalledWith(
+      "dataList",
+      "validRowId",
+      false,
+      "completed_field"
+    );
+    expect(result).toBeFalse();
+  });
+  it("evaluate task completion: should log a warning if task row does not have a 'task_child' property", async () => {
+    spyOn(console, "warn");
+    fetchTaskRowSpy.and.resolveTo({
+      completed: false,
+    });
+    await service["evaluateTaskCompletion"]("dataList", "validRowId");
+    expect(console.warn).toHaveBeenCalledWith(
+      '[TASK] evaluate - row "validRowId" in "dataList" has no child tasks to evaluate'
+    );
+  });
 });
