@@ -241,11 +241,8 @@ export class TaskService extends AsyncServiceBase {
   }
 
   private async bulkEvaluateTaskCompletion(dataListName: string) {
-    const parentDataList = await this.dynamicDataService.snapshot<TaskRowWithChildTasks>(
-      "data_list",
-      dataListName
-    );
-    for (const taskRow of parentDataList) {
+    const taskRows = await this.fetchTaskRows(dataListName);
+    for (const taskRow of taskRows) {
       await this.evaluateTaskCompletion(dataListName, taskRow.id, taskRow);
     }
   }
@@ -267,7 +264,7 @@ export class TaskService extends AsyncServiceBase {
     taskRow?: TaskRowWithChildTasks
   ): Promise<boolean> {
     taskRow = taskRow || (await this.fetchTaskRow(dataListName, rowId));
-    if (!taskRow) return false;
+    if (!taskRow) return null;
 
     let taskCompleted = taskRow.completed;
 
@@ -277,10 +274,7 @@ export class TaskService extends AsyncServiceBase {
         `[TASK] evaluate - row "${rowId}" in "${dataListName}" has no child tasks to evaluate`
       );
     } else {
-      const subtasks = await this.dynamicDataService.snapshot<TaskRow>(
-        "data_list",
-        subtasksDataListName
-      );
+      const subtasks = await this.fetchTaskRows(subtasksDataListName);
       taskCompleted = subtasks.every((row) => row.completed);
 
       const taskCompletedField = taskRow["completed_field"];
@@ -289,13 +283,22 @@ export class TaskService extends AsyncServiceBase {
     return taskCompleted;
   }
 
-  /** Fetch task row from dynamic data */
-  private async fetchTaskRow(dataListName: string, rowId: string) {
-    const parentDataList = await this.dynamicDataService.snapshot<TaskRowWithChildTasks>(
+  /** Fetch task rows for a whole data list from dynamic data */
+  private async fetchTaskRows(dataListName: string) {
+    const taskRows = await this.dynamicDataService.snapshot<TaskRowWithChildTasks>(
       "data_list",
       dataListName
     );
-    const taskRow = parentDataList.find((row) => row.id === rowId);
+    if (!taskRows) {
+      console.warn(`[TASK] - data list "${dataListName}" not found`);
+    }
+    return taskRows || null;
+  }
+
+  /** Fetch task row from dynamic data */
+  private async fetchTaskRow(dataListName: string, rowId: string) {
+    const taskRows = await this.fetchTaskRows(dataListName);
+    const taskRow = taskRows?.find((row) => row.id === rowId);
     if (!taskRow) {
       console.warn(`[TASK] - row "${rowId}" in "${dataListName}" not found`);
     }
