@@ -1,9 +1,9 @@
 import { DataFrame } from "danfojs";
-import { DataPipe } from "../pipe";
 import testData from "../testData.spec";
+import { DataPipe } from "../pipe";
 import merge from "./merge";
 
-(testData as any).merge_nationality = [
+const nationality_data = [
   {
     id: "invalid_id",
     nationality: "German",
@@ -19,9 +19,18 @@ import merge from "./merge";
   },
 ];
 
+const nested_data = [
+  {
+    id: "id_1",
+    nested: {
+      value: "test",
+    },
+  },
+];
+
 describe("Merge Operator", () => {
   const testDf = new DataFrame(testData.names);
-  const testPipe: DataPipe = new DataPipe([], testData);
+  const testPipe = new DataPipe([], { ...testData, nationality_data, nested_data });
 
   it("Throws on missing list", () => {
     // throws on missing list
@@ -31,7 +40,7 @@ describe("Merge Operator", () => {
   });
   it("Merges multiple lists", () => {
     // merges data - additional nationality column appended for all entries and populated for available
-    const output = new merge(testDf, ["merge_nationality"], testPipe).apply();
+    const output = new merge(testDf, ["nationality_data"], testPipe).apply();
     expect(output.index).toEqual(["id_1", "id_2", "id_3", "id_4"]);
     // merges new nationality column
     const expectedNationalities = ["British", "French", undefined, undefined];
@@ -39,5 +48,14 @@ describe("Merge Operator", () => {
     // merges existing name overrides
     const expectedNames = ["override", "Blaise", "Charles", "Daniel"];
     expect(output.column("first_name").values).toEqual(expectedNames);
+  });
+  it("Merges multiple lists including list with nested data", () => {
+    // merges data - additional nationality column appended for all entries and populated for available
+    const output = new merge(testDf, ["nested_data"], testPipe).apply();
+    expect(output.index).toEqual(["id_1", "id_2", "id_3", "id_4"]);
+    // merges nested column
+    // TODO - danfo stringifies nested data, should it be handled differently?
+    const expectedNested = ['{"value":"test"}', "undefined", "undefined", "undefined"];
+    expect(output.column("nested").values).toEqual(expectedNested as any);
   });
 });
