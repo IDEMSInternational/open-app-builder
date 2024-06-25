@@ -3,7 +3,8 @@ on:
   push:
     branches:
       - master
-      - fix/docs-deploy-action
+  workflow_dispatch:
+    
 jobs:
   build:
     name: Deploy docs
