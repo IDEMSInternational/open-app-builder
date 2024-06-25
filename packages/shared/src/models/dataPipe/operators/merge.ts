@@ -1,5 +1,5 @@
 import { DataFrame, merge, toJSON } from "danfojs";
-import { arrayToHashmap } from "../../../utils";
+import { arrayToHashmap, Logger } from "../../../utils";
 import { DataPipe } from "../pipe";
 import { replaceNaN, setIndexColumn } from "../utils";
 import BaseOperator from "./base";
@@ -22,8 +22,9 @@ class MergeOperator extends BaseOperator {
   }
 
   apply() {
-    if (this.df.shape[0] === 0)
-      console.error("Merge: No data in base dataframe - an input_source must be provided");
+    if (this.df.shape[0] === 0) {
+      throw new Error("Merge: No data in base dataframe - an input_source must be provided");
+    }
     setIndexColumn(this.df, this.indexColumn);
     for (const dataList of this.args_list) {
       this.df = this.replaceUpdatedValues(dataList);
