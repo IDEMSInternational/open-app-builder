@@ -1,5 +1,5 @@
 import { DataFrame, merge, toJSON } from "danfojs";
-import { arrayToHashmap, Logger } from "../../../utils";
+import { arrayToHashmap } from "../../../utils";
 import { DataPipe } from "../pipe";
 import { replaceNaN, setIndexColumn } from "../utils";
 import BaseOperator from "./base";
