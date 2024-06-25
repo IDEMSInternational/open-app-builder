@@ -72,4 +72,13 @@ describe("Merge Operator", () => {
     expect(output.values.length).toEqual(1);
     expect(output.values[0] as any).toEqual(["id_1", "Hello", { eng: "Hello" }, 2, 2]);
   });
+
+  // QC
+  it("Throws error if no no input_source provided", () => {
+    const emptyDf = new DataFrame([]);
+    // merges data - additional nationality column appended for all entries and populated for available
+    expect(() => new merge(emptyDf, ["names", "nationality_data"], testPipe).apply()).toThrowError(
+      "Merge: No data in base dataframe - an input_source must be provided"
+    );
+  });
 });
