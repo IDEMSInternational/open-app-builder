@@ -68,8 +68,15 @@ class MergeOperator extends BaseOperator {
 
     // handle replacement by looping over all rows and replacing values where override defined
     const replaceDf = this.df.apply((row: any[]) => {
-      const id = row[0];
-      return row.map((value, columnIndex) => {
+      const [id] = row;
+
+      // HACK - apply operator fails to include array entry for any columns where
+      // data formatted as nested json, returning data with invalid dimensions (assumed bug).
+      // Manually lookup the original row and iterate on that instead of included row
+      const index = this.df.index.indexOf(id);
+      const rowComplete = this.df.values[index] as any[];
+
+      return rowComplete.map((value, columnIndex) => {
         const columnName = this.df.columns[columnIndex];
         const replaceValue = replaceHashmap[id]?.[columnName];
         if (replaceValue !== undefined && replaceValue !== value) {
