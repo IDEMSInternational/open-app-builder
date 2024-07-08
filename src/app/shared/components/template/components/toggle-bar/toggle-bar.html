@@ -9,14 +9,12 @@
     <div
       *ngSwitchCase="false"
       class="toggle_wrapper"
-      [class.show-tick-cross]="params.showTickAndCross"
+      [class.show_tick_and_cross]="params.showTickAndCross"
     >
-      <ion-toggle
-        mode="md"
-        [checked]="!!_row.value"
-        (click)="handleClick($event)"
-        legacy="true"
-      ></ion-toggle>
+      <ion-toggle 
+        [enableOnOffLabels]="true"
+      >
+      </ion-toggle>
     </div>
 
     <!-- "icon" variant, replaces ion-toggle with alternating pair of icons -->
