@@ -3,6 +3,7 @@ import { FlowTypes } from "data-models";
 import { ActiveDeployment } from "../../../../../deployment/get";
 import { FlowParserProcessor } from "../flowParser";
 import { DefaultParser } from "./default.parser";
+import { RowProcessor } from "./row.processor";
 
 // class MockFlowParserProcessor extends FlowParserProcessor {
 //   constructor() {
@@ -31,9 +32,9 @@ describe("RowProcessor", () => {
       field7: '\r\rvalue with carriage returns' // carriage returns
     };
 
-  rowProcessor = new RowProcessor(mockRow, parser, );
+  const rowProcessor = new RowProcessor(mockRow, this, undefined);
 
-
+  rowProcesso
   });
 
   // it should define first check if the row is just whitespace
