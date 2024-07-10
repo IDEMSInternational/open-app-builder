@@ -285,6 +285,9 @@ class RowProcessor {
       if (typeof this.row[field] === "string") {
         // remove whitespace
         this.row[field] = this.row[field].trim();
+
+        // remove all line breaks in the field using replaceAll() and regex
+        this.row[field] = this.row[field].replaceAll(/^((\n)*|(\r)*|(\n\r)*)+$/gm, "");
       }
     });
   }

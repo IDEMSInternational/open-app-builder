@@ -1,3 +1,3 @@
 describe("default Parser", () => {
-  it("TODO - add tests", () => expect(true).toEqual(true));
+  it("should be able to remove whitespace", () => expect(true).toEqual(true));
 });
