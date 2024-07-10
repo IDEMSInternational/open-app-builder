@@ -19,7 +19,7 @@ describe("RowProcessor", () => {
   let parser: DefaultParser;
 
   beforeEach(() => {
-    parser = new DefaultParser(new MockFlowParserProcessor());
+    parser = new DefaultParser(new FlowParserProcessor());
     const mockRow = {
       type: 'test', 
       field1: '  value with spaces  ', // leading and trailing whitespace
@@ -30,6 +30,8 @@ describe("RowProcessor", () => {
       field6: '\t', // tab
       field7: '\r\rvalue with carriage returns' // carriage returns
     };
+
+  rowProcessor = new RowProcessor(mockRow, parser, );
 
 
   });
