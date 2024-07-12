@@ -36,6 +36,8 @@ export class DefaultParser<
   /** Default function to call a start the process of parsing rows */
   public run(flow: FlowTypes.FlowTypeWithData): FlowTypes.FlowTypeWithData {
     this.flow = JSON.parse(JSON.stringify(flow));
+
+    console.log("Flow", this.flow)
     this.queue = flow.rows;
     const processedRows = [];
     // If first row specifies default values extract them and remove row from queue
@@ -287,7 +289,9 @@ class RowProcessor {
         this.row[field] = this.row[field].trim();
 
         // remove all line breaks in the field using replaceAll() and regex
-        this.row[field] = this.row[field].replaceAll(/^((\n)*|(\r)*|(\n\r)*)+$/gm, "");
+        if (!this.row[field].match(/\S/)) {
+          this.row[field] = ""; 
+        }
       }
     });
   }
