@@ -128,7 +128,7 @@ const testFlowInputNonEmpty: FlowTypes.FlowTypeWithData = {
 
 describe("default Parser", () => {
   it('should remove any spaces and tabs from the input string', () => {
-    const expectedOutput = 'thisisateststringwithspacesandtabs'; // this is the expected output
+    const parser: DefaultParser = new DefaultParser<testFlowInputEmpty,>;
 
     // not possible to use the actual objects as the function used is not exported
     expect(input.trim()).toBe(expectedOutput); // this is the actual operation that will be tested
