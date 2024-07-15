@@ -22,6 +22,9 @@ class MergeOperator extends BaseOperator {
   }
 
   apply() {
+    if (this.df.shape[0] === 0) {
+      throw new Error("Merge: No data in base dataframe - an input_source must be provided");
+    }
     setIndexColumn(this.df, this.indexColumn);
     for (const dataList of this.args_list) {
       this.df = this.replaceUpdatedValues(dataList);
@@ -49,25 +52,32 @@ class MergeOperator extends BaseOperator {
 
   /** Replace any values updated from the data in the original dataframe **/
   private replaceUpdatedValues(data: any[]) {
-    const replacments = new DataFrame(data);
-    setIndexColumn(replacments, this.indexColumn);
+    const replacements = new DataFrame(data);
+    setIndexColumn(replacements, this.indexColumn);
 
     // remove any columns that does not exist in left
-    const droppedColumns = replacments.columns.filter(
+    const droppedColumns = replacements.columns.filter(
       (column) => column !== this.indexColumn && !this.df.columns.includes(column)
     );
-    replacments.drop({ columns: droppedColumns, inplace: true });
+    replacements.drop({ columns: droppedColumns, inplace: true });
     // remove any rows that does not exist in left
-    const droppedIndexes = replacments.index.filter((i) => !this.df.index.includes(i));
-    replacments.drop({ index: droppedIndexes, inplace: true });
+    const droppedIndexes = replacements.index.filter((i) => !this.df.index.includes(i));
+    replacements.drop({ index: droppedIndexes, inplace: true });
 
-    // replace all values in left with values from replacments where defined
-    const replaceHashmap = arrayToHashmap(toJSON(replacments) as any, this.indexColumn);
+    // replace all values in left with values from replacements where defined
+    const replaceHashmap = arrayToHashmap(toJSON(replacements) as any, this.indexColumn);
 
     // handle replacement by looping over all rows and replacing values where override defined
     const replaceDf = this.df.apply((row: any[]) => {
-      const id = row[0];
-      return row.map((value, columnIndex) => {
+      const [id] = row;
+
+      // HACK - apply operator fails to include array entry for any columns where
+      // data formatted as nested json, returning data with invalid dimensions (assumed bug).
+      // Manually lookup the original row and iterate on that instead of included row
+      const index = this.df.index.indexOf(id);
+      const rowComplete = this.df.values[index] as any[];
+
+      return rowComplete.map((value, columnIndex) => {
         const columnName = this.df.columns[columnIndex];
         const replaceValue = replaceHashmap[id]?.[columnName];
         if (replaceValue !== undefined && replaceValue !== value) {
