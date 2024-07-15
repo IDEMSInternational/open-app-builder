@@ -37,7 +37,7 @@ export class DefaultParser<
   public run(flow: FlowTypes.FlowTypeWithData): FlowTypes.FlowTypeWithData {
     this.flow = JSON.parse(JSON.stringify(flow));
 
-    console.log("Flow before:", this.flow)
+    console.log("Flow before:", this.flow.rows)
     this.queue = flow.rows;
     const processedRows = [];
     // If first row specifies default values extract them and remove row from queue
@@ -72,7 +72,7 @@ export class DefaultParser<
     this.flow.rows = processedRows;
     this.flow = this.postProcessFlow(this.flow);
     
-    console.log("Flow after", this.flow)
+    console.log("Flow after", this.flow.rows)
 
     return this.flow;
   }
