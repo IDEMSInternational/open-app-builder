@@ -122,6 +122,9 @@ export class FileManagerService extends SyncServiceBase {
     directory?: keyof typeof Directory;
     subdirectory?: string;
   }) {
+    if (!Capacitor.isNativePlatform()) {
+      throw new Error("saveFile() is only supported on native platforms");
+    }
     const { data, targetPath, directory = "Data", subdirectory = "" } = options;
     const path = (subdirectory ? subdirectory + "/" : "") + `${this.cacheName}/${targetPath}`;
     // Docs for write_blob are here: https://github.com/diachedelic/capacitor-blob-writer#readme
@@ -140,6 +143,9 @@ export class FileManagerService extends SyncServiceBase {
 
   /** Delete a file from the local filesystem (native only) */
   public async deleteFile(localFilepath: string) {
+    if (!Capacitor.isNativePlatform()) {
+      throw new Error("deleteFile() is only supported on native platforms");
+    }
     return await Filesystem.deleteFile({ path: localFilepath });
   }
 
