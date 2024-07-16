@@ -9,10 +9,10 @@
     <div
       *ngSwitchCase="false"
       class="toggle_wrapper"
+      [class.show-tick-cross]="params.showTickAndCross"
     >
       <ion-toggle 
-        [enableOnOffLabels]="true"
-        [class.show_tick_and_cross]="params.showTickAndCross"
+        [enableOnOffLabels]="params.showTickAndCross || params.showIcons"
       >
       </ion-toggle>
     </div>

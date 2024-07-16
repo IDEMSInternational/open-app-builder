@@ -11,8 +11,9 @@ interface IToggleParams {
   variant: "" | "icon" | "in_button";
   /** TEMPLATE PARAMETER: "style". Legacy, use "variant" instead. */
   style: string;
-  /** TEMPLATE PARAMETER: "show_tick_and_cross" */
+  /** TEMPLATE PARAMETER: "show_tick_and_cross". Legacy, use "show-icons" instead */
   showTickAndCross: boolean;
+  showIcons: boolean;
   /** TEMPLATE PARAMETER: "position". Default "left" */
   position: "left" | "center" | "right";
   /** TEMPLATE PARAMETER: "false_text". Label text to display when value is false */
