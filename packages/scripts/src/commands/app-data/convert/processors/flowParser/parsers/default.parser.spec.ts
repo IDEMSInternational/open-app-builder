@@ -6,8 +6,8 @@ const testInputSources = {
 };
 
 
-describe("default Parser", () => {
-  it('should remove any spaces and tabs from the input string', () => {
+describe("Default Parser", () => {
+  it('Cleans field values - removes whitespace within empty strings', () => {
     const parser = new DefaultParser({ processedFlowHashmap: testInputSources } as any);
     const output = parser.run({
       flow_name: "test_flow_input_empty",
@@ -42,10 +42,36 @@ describe("default Parser", () => {
       ],
     }) as FlowTypes.FlowTypeWithData; 
     // not possible to use the actual objects as the function used is not exported
-    expect(output.rows).toEqual([]);
+    expect(output.rows).toEqual([
+        {
+          type: "text",
+          name: "empty",
+          value: "",
+        },
+        {
+          type: "text",
+          name: "tab_empty",
+          value: "",
+        },
+        {
+          type: "text",
+          name: "newline_empty",
+          value: "",
+        },
+        {
+          type: "text",
+          name: "return_empty",
+          value: "",
+        },
+        {
+          type: "text",
+          name: "newline_return_empty",
+          value: "",
+        },
+      ]);
   });
 
-  it('should remove any line breaks from the input string, if it is empty', () => {
+  it('Cleans field values - Replaces string consisting of only line breaks and new lines', () => {
     const parser = new DefaultParser({ processedFlowHashmap: testInputSources } as any);
     const output = parser.run({
       flow_name: "test_flow_input_nonempty",
@@ -79,7 +105,7 @@ describe("default Parser", () => {
         },
       ]
     }) as FlowTypes.FlowTypeWithData;
-    expect(output.rows).toBe([
+    expect(output.rows).toEqual([
       {
         type: "text",
         name: "spaces",
