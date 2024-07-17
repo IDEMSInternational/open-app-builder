@@ -12,8 +12,8 @@
       [class.show-tick-cross]="params.showTickAndCross"
     >
       <ion-toggle 
-        mode="ios"
-        [enableOnOffLabels]="params.showTickAndCross || params.showIcons"
+        [mode]="params.toggleMode"
+        [enableOnOffLabels]="params.showTickAndCross && params.showIcons"
       >
       </ion-toggle>
     </div>

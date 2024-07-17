@@ -8,8 +8,8 @@ ion-toggle {
 }
 
 ion-toggle {
-  --track-background: #b4b7b7;
-  --handle-spacing: 0px;
+  --track-background: var(--ion-color-gray-200);
+  --handle-spacing: 1.5px;
   --track-background-checked: var(--ion-color-primary, "darkblue");
   --handle-background: var(--ion-item-background, #fefefe);
   --handle-background-checked: #fff;
@@ -68,9 +68,4 @@ ion-toggle {
 .toggle_wrapper {
   align-self: baseline;
   margin-top: 5px;
-}
-
-.native-wrapper .toggle-icon {
-  width: 36px;
-  height: $toggleHeight;
 }
