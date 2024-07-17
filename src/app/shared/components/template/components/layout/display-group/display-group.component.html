@@ -4,6 +4,7 @@
   [attr.data-param-style]="params.style"
   [attr.data-rowname]="_row.name"
   [attr.data-variant]="params.variant"
+  [attr.data-speaker-position]="params.speakerPosition"
   [style.marginBottom.px]="params.offset"
   [ngSwitch]="type"
   [style]="_row.style_list | styleList"
@@ -28,3 +29,10 @@
   <!-- Form layout -->
   <plh-tmpl-form *ngSwitchCase="'form'" [inputRow]="_row" [parent]="parent"></plh-tmpl-form>
 </div>
+@if (params.variant.includes("speech_bubble") && params.speakerImageAsset) {
+  <img
+    class="speaker-image"
+    [attr.data-speaker-position]="params.speakerPosition"
+    [src]="params.speakerImageAsset | plhAsset"
+  />
+}
