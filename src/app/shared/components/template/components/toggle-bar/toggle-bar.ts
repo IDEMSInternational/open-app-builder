@@ -14,6 +14,8 @@ interface IToggleParams {
   /** TEMPLATE PARAMETER: "show_tick_and_cross". Legacy, use "show-icons" instead */
   showTickAndCross: boolean;
   showIcons: boolean;
+  /** TEMPLATE PARAMETER: "mode". Enables toggle to have a certain appearance .*/
+  toggleMode: "md" | "ios";
   /** TEMPLATE PARAMETER: "position". Default "left" */
   position: "left" | "center" | "right";
   /** TEMPLATE PARAMETER: "false_text". Label text to display when value is false */
@@ -67,6 +69,16 @@ export class TmplToggleBarComponent
       "show_tick_and_cross",
       true
     );
+    this.params.showTickAndCross = getBooleanParamFromTemplateRow(
+      this._row,
+      "show_icons",
+      true
+    );
+    this.params.toggleMode = getStringParamFromTemplateRow(
+      this._row,
+      "mode",
+      "md"
+    ) as IToggleParams["toggleMode"];
     this.params.style = getStringParamFromTemplateRow(this._row, "style", "");
     this.params.variant = getStringParamFromTemplateRow(this._row, "variant", "")
       .split(",")
