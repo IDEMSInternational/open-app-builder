@@ -7,7 +7,6 @@ $imageSize: 64px;
   /* triangle dimension */
   --b: 2em; /* base */
   --h: 1em; /* height*/
-
   --p: 50%; /* main position (0%:left 100%:right) */
 
   min-width: 200px;
@@ -29,10 +28,10 @@ $imageSize: 64px;
   );
 
   &[data-position="right"] {
-    --p: calc(100% - 76px - 8px);
+    --p: calc(100% - #{$imageSize} - 8px);
   }
   &[data-position="left"] {
-    --p: calc(0% + 76px + 8px);
+    --p: calc(0% + #{$imageSize} + 8px);
   }
 }
 .container {
