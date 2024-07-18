@@ -1,0 +1,110 @@
+// Adapted from https://www.smashingmagazine.com/2024/03/modern-css-tooltips-speech-bubbles-part1/
+// WIth code available here https://css-generators.com/tooltip-speech-bubble/
+// NOTE - when copying css border-image double-slash // misinterpreted so replace with / 0 /
+
+$imageSize: 64px;
+
+.container {
+  position: relative;
+  width: fit-content;
+  margin-bottom: calc($imageSize + 8px);
+
+  &[data-position="right"] {
+    float: right;
+  }
+
+  &[data-variant~="gray"] {
+    --background-color: var(--ion-color-gray-100);
+    --border-color: var(--ion-color-gray-300);
+  }
+
+  &[data-variant~="primary"] {
+    --background-color: var(--ion-color-primary-200);
+    --border-color: var(--ion-color-primary-500);
+  }
+
+  &[data-variant~="secondary"] {
+    --background-color: var(--ion-color-secondary-200);
+    --border-color: var(--ion-color-secondary-500);
+  }
+
+  &[data-variant~="no_border"] {
+    --border-color: transparent;
+  }
+}
+
+.speaker-image {
+  position: absolute;
+  bottom: -$imageSize - 8px;
+  width: $imageSize;
+  height: $imageSize;
+  &[data-position="left"] {
+    left: 8px;
+  }
+  &[data-position="right"] {
+    right: 8px;
+  }
+}
+
+.text-bubble {
+  /* triangle dimension */
+  --a: 75deg; /* angle */
+  --h: 1em; /* height */
+
+  --p: 50%; /* triangle position (0%:left 100%:right) */
+  &[data-position="left"] {
+    --p: calc(0% + #{$imageSize} + 12px);
+  }
+  &[data-position="right"] {
+    --p: calc(100% - #{$imageSize} - 12px);
+  }
+  --r: var(--ion-border-radius-secondary); /* border radius */
+  --b: 2px; /* border width  */
+  --c1: var(--border-color, var(--ion-color-gray-300)); /* border color */
+  --c2: var(--background-color, var(--ion-color-gray-100)); /* background color */
+
+  padding: 1em;
+  border-radius: var(--r) var(--r) min(var(--r), 100% - var(--p) - var(--h) * tan(var(--a) / 2))
+    min(var(--r), var(--p) - var(--h) * tan(var(--a) / 2)) / var(--r);
+  clip-path: polygon(
+    0 100%,
+    0 0,
+    100% 0,
+    100% 100%,
+    min(100%, var(--p) + var(--h) * tan(var(--a) / 2)) 100%,
+    var(--p) calc(100% + var(--h)),
+    max(0%, var(--p) - var(--h) * tan(var(--a) / 2)) 100%
+  );
+  background: var(--c1);
+  border-image: conic-gradient(var(--c1) 0 0) fill 0 / var(--r)
+    max(0%, 100% - var(--p) - var(--h) * tan(var(--a) / 2)) 0
+    max(0%, var(--p) - var(--h) * tan(var(--a) / 2)) / 0 0 var(--h) 0;
+  position: relative;
+}
+// This is used to create the border
+.text-bubble:before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  padding: var(--b);
+  border-radius: inherit;
+  clip-path: polygon(
+    0 100%,
+    0 0,
+    100% 0,
+    100% 100%,
+    min(
+        100% - var(--b),
+        var(--p) + var(--h) * tan(var(--a) / 2) - var(--b) * tan(45deg - var(--a) / 4)
+      )
+      calc(100% - var(--b)),
+    var(--p) calc(100% + var(--h) - var(--b) / sin(var(--a) / 2)),
+    max(var(--b), var(--p) - var(--h) * tan(var(--a) / 2) + var(--b) * tan(45deg - var(--a) / 4))
+      calc(100% - var(--b))
+  );
+  background: var(--c2) content-box;
+  border-image: conic-gradient(var(--c2) 0 0) fill 0 / var(--r)
+    max(var(--b), 100% - var(--p) - var(--h) * tan(var(--a) / 2)) 0
+    max(var(--b), var(--p) - var(--h) * tan(var(--a) / 2)) / 0 0 var(--h) 0;
+}

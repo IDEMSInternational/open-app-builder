@@ -4,15 +4,11 @@ import { getNumberParamFromTemplateRow, getStringParamFromTemplateRow } from "..
 
 interface IDisplayGroupParams {
   /** TEMPLATE PARAMETER: "variant" */
-  variant: "box_gray" | "box_primary" | "box_secondary" | "dashed_box" | "speech_bubble";
+  variant: "box_gray" | "box_primary" | "box_secondary" | "dashed_box";
   /** TEMPLATE PARAMETER: "style". TODO: Various additional legacy styles, review and convert some to variants */
   style: "form" | "default" | string | null;
   /** TEMPLATE PARAMETER: "offset". Add a custom bottom margin */
   offset: number;
-  /** TEMPLATE PARAMETER: "speaker_image_asset". The path to an image to be used as the speaker for the 'speech_bubble' variant */
-  speakerImageAsset: string;
-  /** TEMPLATE PARAMETER: "speaker_position". The position of the speaker image and speech bubble tail for the 'speech_bubble' variant. Default 'left' */
-  speakerPosition: "left" | "right";
 }
 
 @Component({
@@ -40,16 +36,6 @@ export class TmplDisplayGroupComponent extends TemplateBaseComponent implements 
       .split(",")
       .join(" ")
       .concat(" " + this.params.style) as IDisplayGroupParams["variant"];
-    this.params.speakerImageAsset = getStringParamFromTemplateRow(
-      this._row,
-      "speaker_image_asset",
-      ""
-    );
-    this.params.speakerPosition = getStringParamFromTemplateRow(
-      this._row,
-      "speaker_position",
-      "left"
-    ) as "left" | "right";
     this.type = this.getTypeFromStyles();
   }
 
