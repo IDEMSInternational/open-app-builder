@@ -1,6 +1,3 @@
-// Used for speech_bubble variant
-$speaker-image-width: 84px;
-
 :host {
   width: 100%;
 }
@@ -70,51 +67,5 @@ $speaker-image-width: 84px;
   &[data-variant~="box_secondary"] {
     --background-color: var(--ion-color-secondary-200);
     --border-color: var(--ion-color-secondary-500);
-  }
-}
-
-.display-group-wrapper[data-variant~="speech_bubble"] {
-  position: relative;
-  --speech-bubble-tail-offset: calc(#{$speaker-image-width} + (2 * var(--small-margin)));
-
-  &:before,
-  &:after {
-    content: "";
-    position: absolute;
-    width: 0;
-    height: 0;
-  }
-  &:before {
-    left: calc(var(--speech-bubble-tail-offset) - 2px);
-    bottom: -33px;
-    border: 16px solid;
-    border-color: var(--border-color) transparent transparent var(--border-color);
-  }
-  &:after {
-    left: var(--speech-bubble-tail-offset);
-    bottom: -28px;
-    border: 14px solid;
-    border-color: var(--background-color) transparent transparent var(--background-color);
-  }
-
-  &[data-speaker-position="right"] {
-    &:before {
-      border-color: var(--border-color) var(--border-color) transparent transparent;
-      left: unset;
-      right: calc(var(--speech-bubble-tail-offset) - 2px);
-    }
-    &:after {
-      border-color: var(--background-color) var(--background-color) transparent transparent;
-      left: unset;
-      right: var(--speech-bubble-tail-offset);
-    }
-  }
-}
-
-.speaker-image {
-  width: $speaker-image-width;
-  margin: var(--small-margin);
-  &[data-speaker-position="right"] {
-    float: right;
   }
 }
