@@ -14,7 +14,6 @@ ion-toggle {
   --handle-background: var(--ion-item-background, #fefefe);
   --handle-background-checked: #fff;
   --padding-inline: $togglePadding;
-  --checked-icon-color: #000000;
 }
 
 .container {
@@ -69,4 +68,8 @@ ion-toggle {
 .toggle_wrapper {
   align-self: baseline;
   margin-top: 5px;
+}
+
+.icon_inner  {
+  color: var(--track-background-checked);
 }

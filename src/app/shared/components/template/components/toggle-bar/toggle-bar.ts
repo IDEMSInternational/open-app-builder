@@ -69,7 +69,7 @@ export class TmplToggleBarComponent
       "show_tick_and_cross",
       true
     );
-    this.params.showTickAndCross = getBooleanParamFromTemplateRow(
+    this.params.showIcons = getBooleanParamFromTemplateRow(
       this._row,
       "show_icons",
       true
@@ -86,6 +86,8 @@ export class TmplToggleBarComponent
     this.populateVariantMap();
     this.params.iconTrue = getStringParamFromTemplateRow(this._row, "icon_true_asset", "");
     this.params.iconFalse = getStringParamFromTemplateRow(this._row, "icon_false_asset", "");
+
+    console.log("params", this.params);
   }
 
   private populateVariantMap() {
