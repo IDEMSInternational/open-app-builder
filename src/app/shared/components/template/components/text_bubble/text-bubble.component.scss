@@ -1,0 +1,55 @@
+// Adapted from https://www.smashingmagazine.com/2024/03/modern-css-tooltips-speech-bubbles-part1/
+// NOTE - when copying css border-image double-slash // misinterpreted so replace with / 0 /
+
+$imageSize: 64px;
+
+.tooltip {
+  /* triangle dimension */
+  --b: 2em; /* base */
+  --h: 1em; /* height*/
+
+  --p: 50%; /* main position (0%:left 100%:right) */
+
+  min-width: 200px;
+  max-width: 400px;
+  text-align: center;
+
+  border-image: fill 0 / 0 / var(--h) conic-gradient(var(--c, #cc333f) 0 0);
+  color: #fff;
+  padding: 1em;
+
+  clip-path: polygon(
+    0 100%,
+    0 0,
+    100% 0,
+    100% 100%,
+    calc(var(--p) + var(--b) / 2) 100%,
+    var(--p) calc(100% + var(--h)),
+    calc(var(--p) - var(--b) / 2) 100%
+  );
+
+  &[data-position="right"] {
+    --p: calc(100% - 76px - 8px);
+  }
+  &[data-position="left"] {
+    --p: calc(0% + 76px + 8px);
+  }
+}
+.container {
+  position: relative;
+  width: fit-content;
+  margin-bottom: calc($imageSize + 8px);
+}
+
+.speaker-image {
+  position: absolute;
+  bottom: -$imageSize - 8px;
+  width: $imageSize;
+  height: $imageSize;
+  &[data-position="left"] {
+    left: 8px;
+  }
+  &[data-position="right"] {
+    right: 8px;
+  }
+}
