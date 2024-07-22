@@ -6,9 +6,22 @@ import { IAssetContents } from "src/app/data";
 import { FlowTypes } from "../../model";
 
 const MOCK_ASSETS_CONTENTS_LIST: IAssetContents = {
-  "audio/test_audio.mp3": {
+  "images/asset.png": {
+    md5Checksum: "b4e6f1e9ba6e5bcdd2e404bc432ba745",
+    size_kb: 100,
+  },
+  "audio/asset_with_overrides.mp3": {
     md5Checksum: "5ddddf934d2187d084c75b7e27797fae",
     size_kb: 43.4,
+    overrides: {
+      theme_default: {
+        tz_sw: {
+          filePath: "tz_sw/audio/asset_with_overrides.mp3",
+          md5Checksum: "d851eef52c8d12fdbf0497210961a407",
+          size_kb: 21.6,
+        },
+      },
+    },
   },
 };
 
@@ -17,16 +30,44 @@ const MOCK_CORE_ASSET_PACK: FlowTypes.AssetPack = {
   flow_name: "core_assets",
   rows: [
     {
-      id: "audio/test_audio.mp3",
+      id: "images/asset.png",
+      md5Checksum: "b4e6f1e9ba6e5bcdd2e404bc432ba745",
+      size_kb: 100,
+    },
+    {
+      id: "audio/asset_with_overrides.mp3",
       md5Checksum: "5ddddf934d2187d084c75b7e27797fae",
       size_kb: 43.4,
+      overrides: {
+        theme_default: {
+          tz_sw: {
+            filePath: "tz_sw/audio/asset_with_overrides.mp3",
+            md5Checksum: "d851eef52c8d12fdbf0497210961a407",
+            size_kb: 21.6,
+          },
+        },
+      },
     },
   ],
   rowsHashmap: {
-    "audio/test_audio.mp3": {
-      id: "audio/test_audio.mp3",
+    "images/asset.png": {
+      id: "images/asset.png",
+      md5Checksum: "b4e6f1e9ba6e5bcdd2e404bc432ba745",
+      size_kb: 100,
+    },
+    "audio/asset_with_overrides.mp3": {
+      id: "audio/asset_with_overrides.mp3",
       md5Checksum: "5ddddf934d2187d084c75b7e27797fae",
       size_kb: 43.4,
+      overrides: {
+        theme_default: {
+          tz_sw: {
+            filePath: "tz_sw/audio/asset_with_overrides.mp3",
+            md5Checksum: "d851eef52c8d12fdbf0497210961a407",
+            size_kb: 21.6,
+          },
+        },
+      },
     },
   },
 };
