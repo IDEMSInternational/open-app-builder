@@ -7,6 +7,7 @@ $imageSize: 64px;
 .container {
   position: relative;
   width: fit-content;
+  min-width: $imageSize;
   margin-bottom: calc($imageSize + 8px);
 
   &[data-position="right"] {
@@ -47,6 +48,17 @@ $imageSize: 64px;
 }
 
 .text-bubble {
+  padding: var(--large-padding);
+  p {
+    line-height: inherit;
+    margin: 0;
+    font-size: var(--font-size-text-large);
+    color: var(--ion-color-primary);
+  }
+}
+
+// This creates the bubble shape, including the tail
+.text-bubble {
   /* triangle dimension */
   --a: 75deg; /* angle */
   --h: 1em; /* height */
@@ -63,7 +75,6 @@ $imageSize: 64px;
   --c1: var(--border-color, var(--ion-color-gray-300)); /* border color */
   --c2: var(--background-color, var(--ion-color-gray-100)); /* background color */
 
-  padding: 1em;
   border-radius: var(--r) var(--r) min(var(--r), 100% - var(--p) - var(--h) * tan(var(--a) / 2))
     min(var(--r), var(--p) - var(--h) * tan(var(--a) / 2)) / var(--r);
   clip-path: polygon(
@@ -81,7 +92,7 @@ $imageSize: 64px;
     max(0%, var(--p) - var(--h) * tan(var(--a) / 2)) / 0 0 var(--h) 0;
   position: relative;
 }
-// This is used to create the border
+// This creates the border around the bubble
 .text-bubble:before {
   content: "";
   position: absolute;
