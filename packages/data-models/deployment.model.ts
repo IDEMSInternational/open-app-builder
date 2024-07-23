@@ -133,6 +133,14 @@ export interface IDeploymentConfig {
   _parent_config?: Partial<IDeploymentConfig & { _workspace_path: string }>;
 }
 
+/** Duplicate type defintion from data-models (TODO - find better way to share) */
+interface IFlowTypeBase {
+  flow_type: string;
+  flow_name: string;
+  flow_subtype?: string;
+  status: "draft" | "released";
+}
+
 /** Deployment with additional metadata when set as active deployment */
 export interface IDeploymentConfigJson extends IDeploymentConfig {
   _workspace_path: string;
@@ -207,24 +215,23 @@ interface IAssetContentsEntry extends IContentsEntry {
    * 3. For remote assets, on web: The public URL for the remotely hosted file (in supabase storage)
    * */
   filePath?: string;
-  /** id field is required to convert asset contents to and from data_list format */
-  id?: string;
-}
-
-/** Duplicate type defintion from data-models (TODO - find better way to share) */
-interface IFlowTypeBase {
-  flow_type: string;
-  flow_name: string;
-  flow_subtype?: string;
-  status: "draft" | "released";
 }
 
 export type IAssetContentsEntryMinimal = Omit<IAssetContentsEntry, "relativePath" | "modifiedTime">;
 
+export interface IOverrideProps {
+  themeName: string;
+  languageCode: string;
+}
+
 export interface IAssetEntry extends IAssetContentsEntryMinimal {
+  /** id field is required to convert asset contents to and from data_list format */
+  id?: string;
+  /** Used to indicate that the asset pack contains only overrides for the associated file, not the default asset file */
+  overridesOnly?: boolean;
   overrides?: {
-    [theme_name: string]: {
-      [language_code: string]: IAssetContentsEntryMinimal;
+    [themeName: IOverrideProps["themeName"]]: {
+      [languageCode: IOverrideProps["languageCode"]]: IAssetContentsEntryMinimal;
     };
   };
 }
