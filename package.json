@@ -91,6 +91,7 @@
     "katex": "^0.16.10",
     "lottie-web": "^5.12.2",
     "marked": "^2.1.3",
+    "marked-smartypants-lite": "^1.0.2",
     "mergexml": "^1.2.3",
     "ng2-nouislider": "^2.0.0",
     "ngx-extended-pdf-viewer": "18.1.9",
