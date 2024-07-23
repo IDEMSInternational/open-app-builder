@@ -101,7 +101,7 @@ describe("Default Parser", () => {
         {
           type: "text",
           name: "return_not_empty",
-          value: "\this is a test string with spaces and tabs\t",
+          value: "\tThis is a test string with spaces and tabs\t",
         },
       ]
     }) as FlowTypes.FlowTypeWithData;
@@ -114,7 +114,7 @@ describe("Default Parser", () => {
       {
         type: "text",
         name: "tab_and_spaces",
-        value: "\tthis is a test string with spaces and tabs\t",
+        value: "this is a test string with spaces and tabs",
       },
       {
         type: "text",
@@ -129,9 +129,8 @@ describe("Default Parser", () => {
       {
         type: "text",
         name: "return_not_empty",
-        value: "\this is a test string with spaces and tabs\t",
+        value: "This is a test string with spaces and tabs",
       },
     ]);
   });
 });
-
