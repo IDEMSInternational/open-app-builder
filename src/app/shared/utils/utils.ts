@@ -496,10 +496,24 @@ export function parseMarkdown(src: string, options?: marked.MarkedOptions) {
     const link = marked.Renderer.prototype.link.apply(this, arguments);
     return link.replace("<a", "<a target='_blank' rel='noopener noreferrer'");
   };
-  marked.use(markedSmartypantsLite());
   marked.setOptions({
     renderer,
   });
+
+  /**
+   * Interpret quotes and dashes into typographic HTML entities
+   * e.g.
+   * `She said, -- "A 'simple' sentence..." --- unknown`
+   * becomes
+   * `She said, – “A ‘simple’ sentence…” — unknown`
+   *
+   * See
+   * https://github.com/calculuschild/marked-smartypants-lite
+   * and
+   * https://marked.js.org/using_advanced#extensions
+   */
+  marked.use(markedSmartypantsLite());
+
   return marked(src, options);
 }
 
