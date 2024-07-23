@@ -4,6 +4,11 @@
   [attr.data-variant]="params.variant"
 >
   <div class="text-bubble" [attr.data-position]="params.speakerPosition">
+    @if (_row.value) {
+      <p class="text">
+        {{ _row.value }}
+      </p>
+    }
     <plh-template-component
       *ngFor="let childRow of _row.rows | filterDisplayComponent; trackBy: trackByRow"
       [row]="childRow"
