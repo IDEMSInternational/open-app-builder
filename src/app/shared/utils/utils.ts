@@ -6,6 +6,7 @@ import * as Sentry from "@sentry/angular-ivy";
 import { FlowTypes } from "../model";
 import { objectToArray } from "../components/template/utils";
 import marked from "marked";
+import { markedSmartypantsLite } from "marked-smartypants-lite";
 
 /**
  * Generate a random string of characters in base-36 (a-z and 0-9 characters)
@@ -495,6 +496,7 @@ export function parseMarkdown(src: string, options?: marked.MarkedOptions) {
     const link = marked.Renderer.prototype.link.apply(this, arguments);
     return link.replace("<a", "<a target='_blank' rel='noopener noreferrer'");
   };
+  marked.use(markedSmartypantsLite());
   marked.setOptions({
     renderer,
   });
