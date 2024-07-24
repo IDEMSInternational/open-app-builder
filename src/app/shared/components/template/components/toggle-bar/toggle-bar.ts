@@ -8,14 +8,13 @@ import {
 
 interface IToggleParams {
   /** TEMPLATE PARAMETER: "variant" */
-  variant: "" | "icon" | "in_button";
+  variant: "" | "icon" | "in_button" | "ios" | "android";
   /** TEMPLATE PARAMETER: "style". Legacy, use "variant" instead. */
   style: string;
+  /** TEMPLATE PARAMETER: "show_icons". Display icons within toggle to represent enabled/disabled state. Default true. */
+  showIcons: boolean;
   /** TEMPLATE PARAMETER: "show_tick_and_cross". Legacy, use "show-icons" instead */
   showTickAndCross: boolean;
-  showIcons: boolean;
-  /** TEMPLATE PARAMETER: "mode". Enables toggle to have a certain appearance .*/
-  toggleMode: "md" | "ios";
   /** TEMPLATE PARAMETER: "position". Default "left" */
   position: "left" | "center" | "right";
   /** TEMPLATE PARAMETER: "false_text". Label text to display when value is false */
@@ -38,6 +37,7 @@ export class TmplToggleBarComponent
   implements ITemplateRowProps, OnInit
 {
   params: Partial<IToggleParams> = {};
+  platformVariant: "ios" | "md" = "ios";
   /** @ignore */
   variantMap: { icon: boolean };
 
@@ -69,20 +69,12 @@ export class TmplToggleBarComponent
       "show_tick_and_cross",
       true
     );
-    this.params.showIcons = getBooleanParamFromTemplateRow(
-      this._row,
-      "show_icons",
-      true
-    );
-    this.params.toggleMode = getStringParamFromTemplateRow(
-      this._row,
-      "mode",
-      "md"
-    ) as IToggleParams["toggleMode"];
+    this.params.showIcons = getBooleanParamFromTemplateRow(this._row, "show_icons", true);
     this.params.style = getStringParamFromTemplateRow(this._row, "style", "");
     this.params.variant = getStringParamFromTemplateRow(this._row, "variant", "")
       .split(",")
       .join(" ") as IToggleParams["variant"];
+    this.platformVariant = this.params.variant.split(" ").includes("android") ? "md" : "ios";
     this.populateVariantMap();
     this.params.iconTrue = getStringParamFromTemplateRow(this._row, "icon_true_asset", "");
     this.params.iconFalse = getStringParamFromTemplateRow(this._row, "icon_false_asset", "");
