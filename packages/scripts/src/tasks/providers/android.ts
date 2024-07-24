@@ -6,7 +6,7 @@ import { ROOT_DIR } from "../../paths";
 import { Logger, generateVersionCode } from "../../utils";
 import { PATHS } from "shared";
 import { spawnSync } from "child_process";
-import * as path from 'path';
+import * as path from "path";
 
 interface IAndroidBuildOptions {
   appId: string;
@@ -80,12 +80,13 @@ const set_splash_image = async (splashAssetPath: string) => {
     });
   }
 
-  // we do want it to strip the file name and use the directory, so we can run that if the path is to a file
+  // we do want it to strip the file name and use the directory
+  // so we can check if the directory exists
   const splashAssetDirPath = path.dirname(splashAssetPath);
-  
+
   // if it does not, then otherwise, run the following command
   const cmd = `npx @capacitor/assets generate --assetPath ${splashAssetDirPath} --android`;
-  spawnSync(cmd); 
+  spawnSync(cmd);
 
   const cordovaOptions: Options = {
     directory: ROOT_DIR,
