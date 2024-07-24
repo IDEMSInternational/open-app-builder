@@ -9,11 +9,17 @@ ion-toggle {
 
 ion-toggle {
   --track-background: var(--ion-color-gray-200);
-  --handle-spacing: 1.5px;
-  --track-background-checked: var(--ion-color-primary, "darkblue");
-  --handle-background: var(--ion-item-background, #fefefe);
-  --handle-background-checked: #fff;
+  --track-background-checked: var(--ion-color-primary-500);
+  --handle-background: var(--ion-item-background, white);
   --padding-inline: $togglePadding;
+
+  &[data-mode~="ios"] {
+    --handle-background-checked: white;
+  }
+  &[data-mode~="md"] {
+    --handle-background-checked: var(--ion-color-primary);
+    --padding-inline: $togglePadding;
+  }
 }
 
 .container {
