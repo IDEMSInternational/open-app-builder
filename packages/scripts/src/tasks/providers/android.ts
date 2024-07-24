@@ -5,6 +5,7 @@ import { envReplace } from "@idemsInternational/env-replace";
 import { ROOT_DIR } from "../../paths";
 import { Logger, generateVersionCode } from "../../utils";
 import { PATHS } from "shared";
+import { spawnSync } from "child_process";
 
 interface IAndroidBuildOptions {
   appId: string;
@@ -77,6 +78,13 @@ const set_splash_image = async (splashAssetPath: string) => {
       msg2: `A source .png file is required to generate a splash screen. No asset was found at the path supplied in the deployment config: ${splashAssetPath}.`,
     });
   }
+
+  // check if the splashAsetPath is to a file or another directory
+  // we do want it to strip the file name and use the directory, so we can run that if the path is to a file
+
+  // if it does not, then otherwise, run the following command
+  const cmd = `npx @capacitor/assets generate --assetPath ${splashAssetPath} --android`;
+  spawnSync(cmd); 
 
   const cordovaOptions: Options = {
     directory: ROOT_DIR,
