@@ -85,7 +85,7 @@ const set_splash_image = async (splashAssetPath: string) => {
   const splashAssetDirPath = path.dirname(splashAssetPath);
 
   // if it does not, then otherwise, run the following command
-  const cmd = `npx @capacitor/assets generate --asset-path ${splashAssetDirPath} --android`;
+  const cmd = `npx @capacitor/assets generate --assetPath ${splashAssetDirPath} --android`;
   console.log(cmd);
   spawnSync(cmd);
 };
