@@ -85,31 +85,9 @@ const set_splash_image = async (splashAssetPath: string) => {
   const splashAssetDirPath = path.dirname(splashAssetPath);
 
   // if it does not, then otherwise, run the following command
-  const cmd = `npx @capacitor/assets generate --assetPath ${splashAssetDirPath} --android`;
+  const cmd = `npx @capacitor/assets generate --asset-path ${splashAssetDirPath} --android`;
   console.log(cmd);
   spawnSync(cmd);
-
-  const cordovaOptions: Options = {
-    directory: ROOT_DIR,
-    resourcesDirectory: join(ROOT_DIR, "resources"),
-    logstream: process.stdout,
-    platforms: {
-      android: {
-        splash: {
-          sources: [splashAssetPath],
-        },
-      },
-    },
-    skipConfig: true,
-    copy: true,
-    projectConfig: {
-      android: {
-        directory: join(ROOT_DIR, "android"),
-      },
-    },
-  };
-
-  return await run(cordovaOptions);
 };
 
 const set_launcher_icon = async (options: {
