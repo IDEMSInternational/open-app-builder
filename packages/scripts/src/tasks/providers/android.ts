@@ -86,6 +86,7 @@ const set_splash_image = async (splashAssetPath: string) => {
 
   // if it does not, then otherwise, run the following command
   const cmd = `npx @capacitor/assets generate --assetPath ${splashAssetDirPath} --android`;
+  console.log(cmd);
   spawnSync(cmd);
 
   const cordovaOptions: Options = {
