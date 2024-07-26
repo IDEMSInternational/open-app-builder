@@ -3,6 +3,8 @@ on:
   push:
     branches:
       - master
+  workflow_dispatch:
+    
 jobs:
   build:
     name: Deploy docs
@@ -18,7 +20,8 @@ jobs:
         # Github pages fails when expecting LFS, so remove hook
         run: rm .git/hooks/pre-push
       - name: Deploy docs
-        uses: mhausenblas/mkdocs-deploy-gh-pages@master
+        # TODO - check if working on latest or pin to version (rather than commit)
+        uses: mhausenblas/mkdocs-deploy-gh-pages@e55ecab6718b449a90ebd4313f1320f9327f1386
         # Or use mhausenblas/mkdocs-deploy-gh-pages@nomaterial to build without the mkdocs-material theme
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
