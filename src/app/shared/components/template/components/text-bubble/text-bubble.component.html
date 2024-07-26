@@ -9,13 +9,13 @@
         {{ _row.value }}
       </p>
     }
-    <plh-template-component
-      *ngFor="let childRow of _row.rows | filterDisplayComponent; trackBy: trackByRow"
-      [row]="childRow"
-      [parent]="parent"
-      [attr.data-rowname]="_row.name"
-    >
-    </plh-template-component>
+    @for (childRow of _row.rows | filterDisplayComponent; track trackByRow($index, childRow)) {
+      <plh-template-component
+        [row]="childRow"
+        [parent]="parent"
+        [attr.data-rowname]="_row.name"
+      ></plh-template-component>
+    }
   </div>
   <img
     [src]="params.speakerImageAsset | plhAsset"
