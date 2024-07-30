@@ -1,0 +1,1624 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../adding-components/">
+      
+      
+        <link rel="next" href="../server-development/">
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.0.3">
+    
+    
+      
+        <title>Deployments - IDEMS Apps</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.6b71719e.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.2505c338.min.css">
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Open Sans";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="a-mber">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#deployments" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="IDEMS Apps" class="md-header__button md-logo" aria-label="IDEMS Apps" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            IDEMS Apps
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Deployments
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/IDEMSInternational/open-app-builder" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="IDEMS Apps" class="md-nav__button md-logo" aria-label="IDEMS Apps" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    IDEMS Apps
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/IDEMSInternational/open-app-builder" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Intro
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2" tabindex="0" aria-expanded="false">
+          Authors
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Authors" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Authors
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../authors/quickstart/" class="md-nav__link">
+        Quickstart
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../authors/notifications/" class="md-nav__link">
+        Notifications
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../authors/feedback/" class="md-nav__link">
+        Feedback
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_2_4" type="checkbox" id="__nav_2_4" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_4" tabindex="0" aria-expanded="false">
+          Advanced
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Advanced" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_4">
+          <span class="md-nav__icon md-icon"></span>
+          Advanced
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../authors/advanced/looping-data/" class="md-nav__link">
+        Looping Data
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../authors/advanced/overrides/" class="md-nav__link">
+        Template Overrides
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../authors/local-sheets/" class="md-nav__link">
+        Local Sheets
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3" tabindex="0" aria-expanded="false">
+          Contributors
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Contributors" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Contributors
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contributors/documentation/running-server/" class="md-nav__link">
+        Running Documentation Server
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contributors/documentation/authoring/" class="md-nav__link">
+        Adding Documentation
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_4" type="checkbox" id="__nav_4" checked>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4" tabindex="0" aria-expanded="true">
+          Developers
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Developers" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Developers
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../quickstart/" class="md-nav__link">
+        Quickstart
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../adding-components/" class="md-nav__link">
+        Adding Components
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Deployments
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Deployments
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#create-deployment" class="md-nav__link">
+    Create Deployment
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#change-deployment" class="md-nav__link">
+    Change Deployment
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#customise-configuration" class="md-nav__link">
+    Customise Configuration
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#google-drive-management" class="md-nav__link">
+    Google Drive Management
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#github-management" class="md-nav__link">
+    GitHub Management
+  </a>
+  
+    <nav class="md-nav" aria-label="GitHub Management">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#import-existing" class="md-nav__link">
+    Import Existing
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sync-content" class="md-nav__link">
+    Sync Content
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#push-changes" class="md-nav__link">
+    Push Changes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#github-actions" class="md-nav__link">
+    Github Actions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#troubleshooting" class="md-nav__link">
+    Troubleshooting
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#android-and-ios-management" class="md-nav__link">
+    Android and iOS Management
+  </a>
+  
+    <nav class="md-nav" aria-label="Android and iOS Management">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#app-id-and-app-name" class="md-nav__link">
+    App ID and App Name
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#versioning" class="md-nav__link">
+    Versioning
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#google-services" class="md-nav__link">
+    Google Services
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#generating-an-app-icon-and-splash-screen" class="md-nav__link">
+    Generating an app icon and splash screen
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#firebase-management" class="md-nav__link">
+    Firebase management
+  </a>
+  
+    <nav class="md-nav" aria-label="Firebase management">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#native-platforms" class="md-nav__link">
+    Native platforms
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enabling-firebase-features" class="md-nav__link">
+    Enabling Firebase features
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#file-encryption" class="md-nav__link">
+    File Encryption
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../server-development/" class="md-nav__link">
+        Server Development
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../device-testing/" class="md-nav__link">
+        On-device Testing
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../android-assets/" class="md-nav__link">
+        Android Assets
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../in-app-updates/" class="md-nav__link">
+        In-App Updates
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../error-logs/" class="md-nav__link">
+        Error Logs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../web-previews/" class="md-nav__link">
+        Web Previews
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../code-releases/" class="md-nav__link">
+        Code Releases
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../building-and-deploying-to-ios/" class="md-nav__link">
+        Building and deploying to iOS
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5" tabindex="0" aria-expanded="false">
+          Display Components
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Display Components" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Display Components
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../components/audio/" class="md-nav__link">
+        Audio
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../components/button/" class="md-nav__link">
+        Button
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../components/simple_checkbox/" class="md-nav__link">
+        Checkbox
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../components/combo_box/" class="md-nav__link">
+        Combo Box
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../components/html/" class="md-nav__link">
+        HTML
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../components/latex/" class="md-nav__link">
+        LaTeX
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../components/pdf/" class="md-nav__link">
+        PDF
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../components/radio_group/" class="md-nav__link">
+        Radio Group
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../components/round_button/" class="md-nav__link">
+        Round button
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../components/slider/" class="md-nav__link">
+        Slider
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../components/square_button/" class="md-nav__link">
+        Square button
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../components/text/" class="md-nav__link">
+        Text
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../components/timer/" class="md-nav__link">
+        Timer
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../components/video/" class="md-nav__link">
+        Video
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6" tabindex="0" aria-expanded="false">
+          Q & A
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Q & A" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          Q & A
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../questions/parameters_styles/" class="md-nav__link">
+        Parameters vs styles
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../questions/positioning_components/" class="md-nav__link">
+        Positioning components
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../questions/hidden_condition/" class="md-nav__link">
+        Hidden vs condition
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../questions/dynamic_content/" class="md-nav__link">
+        Dynamic content
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_7" tabindex="0" aria-expanded="false">
+          External
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="External" data-md-level="1">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          External
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../generated/components/TmplButtonComponent.html" target="_blank" class="md-nav__link">
+        Compodoc Generated
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#create-deployment" class="md-nav__link">
+    Create Deployment
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#change-deployment" class="md-nav__link">
+    Change Deployment
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#customise-configuration" class="md-nav__link">
+    Customise Configuration
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#google-drive-management" class="md-nav__link">
+    Google Drive Management
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#github-management" class="md-nav__link">
+    GitHub Management
+  </a>
+  
+    <nav class="md-nav" aria-label="GitHub Management">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#import-existing" class="md-nav__link">
+    Import Existing
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sync-content" class="md-nav__link">
+    Sync Content
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#push-changes" class="md-nav__link">
+    Push Changes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#github-actions" class="md-nav__link">
+    Github Actions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#troubleshooting" class="md-nav__link">
+    Troubleshooting
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#android-and-ios-management" class="md-nav__link">
+    Android and iOS Management
+  </a>
+  
+    <nav class="md-nav" aria-label="Android and iOS Management">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#app-id-and-app-name" class="md-nav__link">
+    App ID and App Name
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#versioning" class="md-nav__link">
+    Versioning
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#google-services" class="md-nav__link">
+    Google Services
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#generating-an-app-icon-and-splash-screen" class="md-nav__link">
+    Generating an app icon and splash screen
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#firebase-management" class="md-nav__link">
+    Firebase management
+  </a>
+  
+    <nav class="md-nav" aria-label="Firebase management">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#native-platforms" class="md-nav__link">
+    Native platforms
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enabling-firebase-features" class="md-nav__link">
+    Enabling Firebase features
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#file-encryption" class="md-nav__link">
+    File Encryption
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+
+<h1 id="deployments">Deployments<a class="headerlink" href="#deployments" title="Permanent link">&para;</a></h1>
+<p>All user-generated content are stored within deployments, alongside app-specific settings such as remote data sources and app strings.</p>
+<h2 id="create-deployment">Create Deployment<a class="headerlink" href="#create-deployment" title="Permanent link">&para;</a></h2>
+<p>All deployments are stored in the <code>.idems_app/deployments</code> folder, and new deployments can be added by calling the script:</p>
+<p><div class="highlight"><pre><span></span><code>yarn<span class="w"> </span>workflow<span class="w"> </span>deployment<span class="w"> </span>create
+</code></pre></div>
+This will prompt for a deployment type</p>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Details</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>New Local Deployment</td>
+<td>A new standalone deployment, will have a clean configuration. This could be an entirely new app, or related to another deployment but managed independently</td>
+</tr>
+<tr>
+<td>Extend Existing Local</td>
+<td>Will inherit the configuration of another deployment for modification. This could be a country-specific or A/B testing version</td>
+</tr>
+</tbody>
+</table>
+<h2 id="change-deployment">Change Deployment<a class="headerlink" href="#change-deployment" title="Permanent link">&para;</a></h2>
+<p>To set the active deployment for the workspace run the following script:
+<div class="highlight"><pre><span></span><code>yarn<span class="w"> </span>workflow<span class="w"> </span>deployment<span class="w"> </span><span class="nb">set</span>
+</code></pre></div>
+This will present an interactive list of deployments to select from</p>
+<p>Alternative a name can be provided to select directly
+<div class="highlight"><pre><span></span><code>yarn<span class="w"> </span>workflow<span class="w"> </span>deployment<span class="w"> </span><span class="nb">set</span><span class="w"> </span>example
+</code></pre></div></p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>If the deployment name contains spaces use quotation marks when specifying, e.g. <code>yarn workflow deployment set "another example"</code></p>
+</div>
+<h2 id="customise-configuration">Customise Configuration<a class="headerlink" href="#customise-configuration" title="Permanent link">&para;</a></h2>
+<p>When a deployment is created a default configuration will be created in the <code>.idems_app/deployments</code> folder. E.g. for a deployment named <em>example</em></p>
+<p><div class="highlight"><span class="filename">.idems_app/deployments/example/config.ts</span><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">generateDeploymentConfig</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;scripts&quot;</span><span class="p">;</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">config</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">generateDeploymentConfig</span><span class="p">(</span><span class="s2">&quot;example&quot;</span><span class="p">);</span>
+
+<span class="c1">// Main Deployment config</span>
+<span class="nx">config</span><span class="p">.</span><span class="nx">google_drive</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">sheets_folder_ids</span><span class="o">:</span><span class="w"> </span><span class="p">[],</span>
+<span class="w">    </span><span class="nx">assets_folder_ids</span><span class="o">:</span><span class="w"> </span><span class="p">[],</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">};</span>
+
+<span class="c1">// Deployment app config overrides</span>
+<span class="nx">app_config</span><span class="p">.</span><span class="nx">APP_HEADER_DEFAULTS</span><span class="p">.</span><span class="nx">title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Example Deployment&#39;</span>
+<span class="nx">app_config</span><span class="p">.</span><span class="nx">APP_SIDEMENU_DEFAULTS</span><span class="p">.</span><span class="nx">title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Example Deployment&#39;</span>
+
+<span class="k">export</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="nx">config</span><span class="p">;</span>
+</code></pre></div>
+This configuration provides a minimal set of options to override the default header and sidemenu text, as well as configuring a remote google_drive data source (more information below)</p>
+<p>A full list of general configuration options can be found in <a href="https://github.com/IDEMSInternational/open-app-builder/blob/master/packages/data-models/deployment.model.ts">packages/data-models/deployment.model.ts</a></p>
+<p>A full list of app_config and their default values can be found in <a href="https://github.com/IDEMSInternational/open-app-builder/blob/master/packages/data-models/appConfig.ts">packages/data-models/appConfig.ts</a></p>
+<p>Any configuration changes can be applied by setting the deployment
+<div class="highlight"><pre><span></span><code>yarn workflow deployment set [name]
+</code></pre></div></p>
+<p>The final processed config can be found in the local <code>config.json</code> file, e.g. <code>.idems_app/deployments/example/config.json</code></p>
+<h2 id="google-drive-management">Google Drive Management<a class="headerlink" href="#google-drive-management" title="Permanent link">&para;</a></h2>
+<p>The deployment configuration requires IDs for at least two created Google Drive folders: one or more for template sheets and one or more for assets. </p>
+<p>The folders should again be named without spaces or special characters, and once created their unique IDs can be found by looking at the end of the URL bar when navigating inside the folder on Google Drive.</p>
+<!-- cspell:disable-next-line -->
+<p>E.g. <code>1ja6lzbphZaxnVv5mpQ4YHnn2qmxMiEBW</code></p>
+<p><img alt="" src="../images/deployment-gdrive-ids.png" /></p>
+<h2 id="github-management">GitHub Management<a class="headerlink" href="#github-management" title="Permanent link">&para;</a></h2>
+<p>Deployments are designed to have their content managed via external github repos. To configure a deployment to sync with an external git repository, first create the repo on github and then provide the url within the <code>git.content_repo</code> configuration object</p>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">config</span><span class="o">:</span><span class="w"> </span><span class="kt">IDeploymentConfig</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;example&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">git</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">content_repo</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;https://github.com/my-org/my-git-repo&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">content_tag_latest</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;1.0.0&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="p">},</span>
+</code></pre></div>
+<h3 id="import-existing">Import Existing<a class="headerlink" href="#import-existing" title="Permanent link">&para;</a></h3>
+<p>If an external content repo already exists it is possible to directly import into the local workspace, instead of first creating a new deployment and then configuring for import. </p>
+<p>This can be done via the script
+<div class="highlight"><pre><span></span><code>yarn workflow deployment import [url]
+</code></pre></div>
+Where [url] can be replaced with the url of a github repository where content is stored</p>
+<p>You will see the new deployment appear in the <code>.idems_app</code> folder and be available for selection</p>
+<h3 id="sync-content">Sync Content<a class="headerlink" href="#sync-content" title="Permanent link">&para;</a></h3>
+<p>Content from external repos can be synced in the usual way</p>
+<p><div class="highlight"><pre><span></span><code>yarn<span class="w"> </span>workflow<span class="w"> </span>sync
+</code></pre></div>
+This will first update any content from the remote repo, and then proceed to also sync from external google drive</p>
+<h3 id="push-changes">Push Changes<a class="headerlink" href="#push-changes" title="Permanent link">&para;</a></h3>
+<p>A local repo can have its changes pushed to github by publishing a new release
+<div class="highlight"><pre><span></span><code>yarn<span class="w"> </span>workflow<span class="w"> </span>repo<span class="w"> </span>publish
+</code></pre></div>
+This will create a new git branch, apply local changes and push to github. From there a pull request can be created to merge into the main branch.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>If multiple authors are updating content and creating releases there is a high probability of conflicts arising. </p>
+<p>Open pull requests should be merged before creating new content releases, and running <code>yarn workflow sync</code> to update local content from remotes.</p>
+</div>
+<h3 id="github-actions">Github Actions<a class="headerlink" href="#github-actions" title="Permanent link">&para;</a></h3>
+<p>Content repos may also wish to configure github actions to support common tasks like building web previews on pull requests, or deploying releases.</p>
+<p>Several action templates have been prepared and can be configured using the command
+<div class="highlight"><pre><span></span><code>yarn<span class="w"> </span>workflow<span class="w"> </span>repo<span class="w"> </span>actions
+</code></pre></div>
+This will provide interactive prompts to setup required actions</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Several actions require additional variables configured as <em>Secrets</em> within the Github Repo <br />
+See the following link for more information about using <a href="https://docs.github.com/en/actions/security-guides/encrypted-secrets">Github Secrets</a></p>
+</div>
+<h3 id="troubleshooting">Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permanent link">&para;</a></h3>
+<p>If for any reason the local content repo gets into a bad/conflicted state, it can be manually resolved by opening the deployment repo in vscode and resolving using git commands. </p>
+<p>The content repo can be opened via shortcut <code>yarn workflow repo open</code></p>
+<h2 id="android-and-ios-management">Android and iOS Management<a class="headerlink" href="#android-and-ios-management" title="Permanent link">&para;</a></h2>
+<p>For deployments that are intended to be published to the Google Play Store or the iOS App Store, some additional configuration is required.</p>
+<h3 id="app-id-and-app-name">App ID and App Name<a class="headerlink" href="#app-id-and-app-name" title="Permanent link">&para;</a></h3>
+<p>The App ID uniquely identifies an Android or iOS app on devices and in the Google Play Store (see the official <a href="https://developer.android.com/build/configure-app-module#set-application-id">Android</a> and <a href="https://developer.apple.com/help/account/manage-identifiers/register-an-app-id/">Apple</a> documentation for more details). It is common to use the segments to identify your organisation and app in a reverse-dns format, e.g. <code>international.idems.app</code>, or <code>com.mycompany.app</code>. The specifications for Android and iOS platforms are slightly different: for the Android app ID, all characters in each section must be alphanumeric or an underscore, e.g. <code>international.idems.my_example_app</code>, whereas for the Apple app ID, all characters must be alphanumeric or a hyphen, e.g. <code>international.idems.my-example-app</code>.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>App IDs must contain at least 2 segments (one or more dots) and once set cannot be changed. So consider carefully how the id may be used in the future to represent your app. </p>
+</div>
+<p>The App Name is the name that will be displayed to users on devices and in the Google Play Store or App Store.</p>
+<p>These values must be set in the deployment config before the app can be built as an app bundle.</p>
+<p>For example:
+<div class="highlight"><pre><span></span><code><span class="nx">config</span><span class="p">.</span><span class="nx">android</span><span class="p">.</span><span class="nx">app_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;international.idems.my_example_app&quot;</span><span class="p">;</span>
+<span class="nx">config</span><span class="p">.</span><span class="nx">android</span><span class="p">.</span><span class="nx">app_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;My Example App&quot;</span><span class="p">;</span>
+
+<span class="nx">config</span><span class="p">.</span><span class="nx">ios</span><span class="p">.</span><span class="nx">app_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;international.idems.my-example-app&quot;</span><span class="p">;</span>
+<span class="nx">config</span><span class="p">.</span><span class="nx">ios</span><span class="p">.</span><span class="nx">app_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;My Example App&quot;</span><span class="p">;</span>
+</code></pre></div></p>
+<h3 id="versioning">Versioning<a class="headerlink" href="#versioning" title="Permanent link">&para;</a></h3>
+<p>In order to build for Android or iOS, the deployment config must contain a valid value for the property <code>config.git.content_tag_latest</code> (see <a href="#github-management">Github management</a>). This value can be changed manually, or via the command:
+<div class="highlight"><pre><span></span><code>yarn<span class="w"> </span>scripts<span class="w"> </span>version<span class="w"> </span>--content<span class="w"> </span><span class="o">(</span>--auto-patch<span class="o">)</span>
+</code></pre></div></p>
+<h3 id="google-services">Google Services<a class="headerlink" href="#google-services" title="Permanent link">&para;</a></h3>
+<p>Connecting to Firebase is currently required by all native apps. Follow the instructions for <a href="#firebase-management">Firebase management</a> for native platforms in order to set this up for a new deployment.</p>
+<h3 id="generating-an-app-icon-and-splash-screen">Generating an app icon and splash screen<a class="headerlink" href="#generating-an-app-icon-and-splash-screen" title="Permanent link">&para;</a></h3>
+<p>For generating Android assets, see <a href="../android-assets/">Android Assets</a>.</p>
+<p>For generating iOS assets, it is recommended to use <a href="https://developer.apple.com/documentation/xcode/configuring-your-app-icon">xcode directly</a>, or the <a href="https://github.com/ionic-team/capacitor-assets">capacitor-assets</a> package. This process should be streamlined in the future.</p>
+<h2 id="firebase-management">Firebase management<a class="headerlink" href="#firebase-management" title="Permanent link">&para;</a></h2>
+<p>Firebase is used to provide some services such as authentication and crashlytics. Currently, even apps that do not use these services explicitly must be linked to a corresponding Firebase project in order to be built for native devices. Exclusively local and web deployments do not require Firebase to be configured, unless they make use of these features.</p>
+<h3 id="native-platforms">Native platforms<a class="headerlink" href="#native-platforms" title="Permanent link">&para;</a></h3>
+<p>For apps that target native platforms (Android or iOS), a corresponding "Android app" or "Apple app" should be added to a linked Firebase project, with an <code>Android package name</code> or <code>Apple bundle ID</code> matching the <code>app_id</code> for the respective platform specified in the deployment config (see <a href="#android-and-ios-management">Android and iOS Management</a>). The relevant <code>google-services.json</code> or <code>GoogleService-Info.plist</code> file should be downloaded, and copied to <code>android/app/google-services.json</code> or <code>ios/App/App/GoogleService-Info.plist</code> for building the native app locally, or its contents copied into a <code>GOOGLE_SERVICES_JSON</code> secret in the deployment's Github repo, for building the Android app via github action.</p>
+<h3 id="enabling-firebase-features">Enabling Firebase features<a class="headerlink" href="#enabling-firebase-features" title="Permanent link">&para;</a></h3>
+<p>To enable Firebase features, a Firebase config must be included in the deployment config. </p>
+<p>In accordance with the instructions on deployment <a href="#file-encryption">file encryption</a>:</p>
+<ol>
+<li>If the deployment does not already have a <code>encrypted</code> folder, run <code>yarn workflow deployment encrypt</code> to create one.</li>
+<li>
+<p>Create a new file in the <code>encrypted</code> folder called <code>firebase.json</code>, and populate the file with the JSON representation of the <code>firebaseConfig</code> object associated with the target app, available from the Project Settings section of the Firebase console.</p>
+<ul>
+<li>e.g. </li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;apiKey&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;...&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;authDomain&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;...&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;databaseURL&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;...&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;projectId&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;...&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;storageBucket&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;...&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;messagingSenderId&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;...&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;appId&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;...&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;measurementId&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;...&quot;</span>
+<span class="p">}</span>
+</code></pre></div>
+</li>
+<li>
+<p>Run <code>yarn workflow deployment encrypt</code> to encrypt this file. </p>
+</li>
+<li>
+<p>The deployment config will then need to be updated to include the following:</p>
+<p><div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">loadEncryptedConfig</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;scripts&quot;</span><span class="p">;</span>
+
+<span class="nx">config</span><span class="p">.</span><span class="nx">firebase</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">config</span><span class="o">:</span><span class="w"> </span><span class="nx">loadEncryptedConfig</span><span class="p">(</span><span class="s1">&#39;firebase.json&#39;</span><span class="p">),</span>
+<span class="w">  </span><span class="nx">auth</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">enabled</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">},</span>
+<span class="w">  </span><span class="nx">crashlytics</span><span class="o">:</span><span class="p">{</span><span class="w"> </span><span class="nx">enabled</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+   where enabling the various features is optional.</p>
+</li>
+</ol>
+<h2 id="file-encryption">File Encryption<a class="headerlink" href="#file-encryption" title="Permanent link">&para;</a></h2>
+<p>In cases where deployments need to share private information, such as API keys or service accounts, a special encryption folder can be used to handle encryption and decryption processes</p>
+<p>To setup an encryption folder run
+<div class="highlight"><pre><span></span><code>yarn<span class="w"> </span>workflow<span class="w"> </span>deployment<span class="w"> </span>encrypt
+</code></pre></div></p>
+<p>This will create a new folder named <em>encrypted</em> inside the deployment folder (if not already existing). It will also populate a private key file used to decrypt data</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The <code>private.key</code> file should NOT be checked into a public repo, and should be backed up securely. If lost, encrypted files will not be able to be decrypted and will have to be regenerated with a new key</p>
+</div>
+<p>With the encryption folder generated any files placed inside the encryption folder will by default be marked for encryption and ignored from associated github repositories. To trigger the encryption process simply run the workflow again</p>
+<div class="highlight"><pre><span></span><code>yarn<span class="w"> </span>workflow<span class="w"> </span>deployment<span class="w"> </span>encrypt
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>With the encryption folder setup anybody will be able to encrypt files using the <code>public.key</code> file, however only people with access to the <code>private.key</code> can decrypt. This can be securely shared with anybody who you wish to provide access to the encrypted files</p>
+</div>
+<p>In order to decrypt files the decryption workflow should be run</p>
+<div class="highlight"><pre><span></span><code>yarn<span class="w"> </span>workflow<span class="w"> </span>deployment<span class="w"> </span>decrypt
+</code></pre></div>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.e5c33ebb.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.ba449ae6.min.js"></script>
+      
+    
+  </body>
+</html>

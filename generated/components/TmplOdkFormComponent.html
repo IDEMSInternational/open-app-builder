@@ -1,0 +1,748 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>frontend documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+        <link rel="stylesheet" href="../styles/material.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">frontend documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li>Components</li>
+  <li
+  >
+  TmplOdkFormComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li >
+            <a href="#templateData" role="tab" id="templateData-tab" data-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li >
+            <a href="#styleData" role="tab" id="styleData-tab" data-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li >
+            <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/shared/components/template/components/odk-form/odk-form.component.ts</code>
+</p>
+
+
+
+    <p class="comment">
+        <h3>Extends</h3>
+    </p>
+    <p class="comment">
+                <code><a href="../components/TemplateBaseComponent.html" target="_self" >TemplateBaseComponent</a></code>
+    </p>
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                    <code><a href="https://angular.io/api/core/OnInit" target="_blank" >OnInit</a></code>
+    </p>
+
+
+<section>
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+            <tr>
+                <td class="col-md-3">encapsulation</td>
+                <td class="col-md-9"><code>ViewEncapsulation.None</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>tmpl-odk-form</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./odk-form.component.scss</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./odk-form.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#parameter_list" >parameter_list</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Public</span>
+                                    <span class="modifier">Async</span>
+                                <a href="#save" >save</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(templateAssetService: TemplateAssetService)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="76" class="link-to-prism">src/app/shared/components/template/components/odk-form/odk-form.component.ts:76</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>templateAssetService</td>
+                                                  
+                                                        <td>
+                                                                    <code>TemplateAssetService</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section>
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="save"></a>
+                    <span class="name">
+                        <span class="modifier">Public</span>
+                        <span class="modifier">Async</span>
+                        <span ><b>save</b></span>
+                        <a href="#save"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>save(opts: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/object" target="_blank">object</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="104"
+                            class="link-to-prism">src/app/shared/components/template/components/odk-form/odk-form.component.ts:104</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Default value</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>opts</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/object" target="_blank" >object</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+                                    <td>
+                                        <code>{ draft: false }</code>
+                                    </td>
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section>
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="parameter_list"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>parameter_list</b></span>
+                        <a href="#parameter_list"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/IODKFormComponentParameters.html" target="_self" >IODKFormComponentParameters</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="70" class="link-to-prism">src/app/shared/components/template/components/odk-form/odk-form.component.ts:70</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Authoring parameters</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, ElementRef, OnInit, ViewChild, ViewEncapsulation } from &quot;@angular/core&quot;;
+
+import Events from &quot;./libs/enketo/js/event&quot;;
+import { Form } from &quot;./libs/enketo/js/form&quot;;
+import { TemplateBaseComponent } from &quot;../base&quot;;
+import { TemplateAssetService } from &quot;../../services/template-asset.service&quot;;
+
+/** Enketo-transformed form representation */
+interface IEnketoFormData {
+  enketoId: string;
+  externalData: [];
+  /** html string representation of form */
+  form: string;
+  hash: string;
+  languageMap: {};
+  maxSize: number;
+  media: {};
+  /** xml string representation of model */
+  model: string;
+  theme: &quot;grid&quot;;
+}
+
+interface IFormEntry {
+  created: number;
+  draft: boolean;
+  enketoId: string;
+  files: any[];
+  instanceId: string;
+  name: string;
+  // TODO - check if actually updated
+  updated: number;
+  xml: string;
+}
+
+interface IEventFormSaved {
+  entry: IFormEntry;
+}
+
+interface IODKFormComponentParameters {
+  /**
+   * Path to asset file containing form data in enketo-transformed json format
+   */
+  form_asset?: string;
+}
+
+@Component({
+  selector: &quot;tmpl-odk-form&quot;,
+  templateUrl: &quot;./odk-form.component.html&quot;,
+  styleUrls: [&quot;./odk-form.component.scss&quot;],
+  encapsulation: ViewEncapsulation.None,
+})
+/**
+ * A lightweight port of enketo-core to render a form within an angular component
+ *
+ * NOTE - this component is also under development as part of an external repo,
+ * and as such the implementation included may be lacking features
+ *
+ * It is preferable to import from external project when available to remove additional
+ * imports as noted below
+ *
+ * Opt-Out (additional changes to make if removing component)
+ * - Remove modules:
+ *   jquery jquery-touchswipe mergexml/mergexml bootstrap-datepicker signature_pad html5sortable node-forge
+ * - Remove js file import in tsconfig.app.json
+ * - Reduce build budget styles 200kb -&gt; 16kb
+ * - Reduce build budget js 5MB -&gt; 4MB
+ */
+export class TmplOdkFormComponent extends TemplateBaseComponent implements OnInit {
+  /** Authoring parameters */
+  public parameter_list: IODKFormComponentParameters;
+
+  /**
+   * Form container element binding to render form
+   * @ignore
+   */
+  @ViewChild(&quot;formContainerEl&quot;, { static: true }) formContainerEl: ElementRef&lt;HTMLDivElement&gt;;
+
+  constructor(private templateAssetService: TemplateAssetService) {
+    super();
+  }
+
+  ngOnInit() {
+    this.processParameterList();
+  }
+
+  private async processParameterList() {
+    this.parameter_list &#x3D; this._row.parameter_list || ({} as any);
+    // load form from form_asset parameter
+    const { form_asset } &#x3D; this.parameter_list;
+    if (!form_asset) {
+      console.error(&quot;[odk_form] form_asset parameter required&quot;);
+      return;
+    }
+    const formData: IEnketoFormData &#x3D; await this.templateAssetService.fetchAsset(form_asset);
+    if (!formData) {
+      console.error(&quot;[odk_form] form_asset does not exist&quot;);
+      return;
+    }
+    this.loadForm(formData);
+  }
+
+  private enketoForm: Form;
+
+  public async save(opts &#x3D; { draft: false }) {
+    await this.setValue(this.xmlFormValue);
+    await this.triggerActions(&quot;changed&quot;);
+  }
+
+  private get xmlFormValue() {
+    return this.enketoForm.getDataStr();
+  }
+
+  private async handleEventDataUpdate(e: ReturnType&lt;typeof Events.DataUpdate&gt;) {
+    await this.setValue(this.xmlFormValue);
+    await this.triggerActions(&quot;changed&quot;);
+  }
+
+  private async handleEventXmlFormChange(e: ReturnType&lt;typeof Events.XFormsValueChanged&gt;) {
+    // Value saved in autoSave method of https://github.com/enketo/enketo-express/blob/master/public/js/src/module/controller-webform.js
+    // await this.setValue(this.xmlFormValue);
+  }
+
+  /**
+   * Load the form xml and data models and render intial form components
+   * https://github.com/enketo/enketo-core#usage-as-a-library
+   */
+  private loadForm(formData: IEnketoFormData) {
+    const { formContainerEl } &#x3D; this;
+    const { form, model } &#x3D; formData;
+    console.log({ form, model, formContainerEl });
+    if (form &amp;&amp; model &amp;&amp; formContainerEl) {
+      this.formContainerEl.nativeElement.innerHTML &#x3D; form;
+      const formEl &#x3D; this.formContainerEl.nativeElement.querySelector(&quot;form&quot;);
+      if (formEl) {
+        this.enketoForm &#x3D; new Form(formEl, model, {});
+        // Initialize the form and capture any load errors
+        let loadErrors &#x3D; this.enketoForm.init();
+        if (loadErrors.length &gt; 0) {
+          console.error(loadErrors);
+        }
+        // If desired, scroll to a specific question with any XPath location expression,
+        // and aggregate any loadErrors.
+        loadErrors &#x3D; loadErrors.concat(this.enketoForm.goTo(&quot;//repeat[3]/node&quot;));
+
+        // Additional events can be bound directly to form (as opposed to component-propogated)
+        this.enketoForm.model.events.addEventListener(
+          Events.DataUpdate().type,
+          this.handleEventDataUpdate.bind(this)
+        );
+
+        // Extract updated form xml on change (triggered at document and form level)
+        this.enketoForm.view.html.addEventListener(
+          Events.XFormsValueChanged().type,
+          this.handleEventXmlFormChange.bind(this)
+        );
+      }
+    }
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;ng-container *ngTemplateOutlet&#x3D;&quot;enketoLogo&quot;&gt; &lt;/ng-container&gt;
+
+&lt;div #formContainerEl&gt;&lt;/div&gt;
+&lt;section id&#x3D;&quot;form-footer&quot;&gt;
+  &lt;button class&#x3D;&quot;btn btn-default&quot; id&#x3D;&quot;save-draft&quot; (click)&#x3D;&quot;save({ draft: true })&quot;&gt;
+    &lt;i class&#x3D;&quot;icon icon-pencil&quot;&gt; &lt;/i&gt;
+    &lt;span data-i18n&#x3D;&quot;formfooter.savedraft.btn&quot;&gt;Save Draft&lt;/span&gt;
+  &lt;/button&gt;
+  &lt;button class&#x3D;&quot;btn btn-primary&quot; id&#x3D;&quot;submit-form&quot; (click)&#x3D;&quot;save()&quot;&gt;
+    &lt;i class&#x3D;&quot;icon icon-check&quot;&gt;✔️&lt;/i&gt;
+    &lt;span data-i18n&#x3D;&quot;formfooter.submit.btn&quot;&gt;Submit&lt;/span&gt;
+  &lt;/button&gt;
+  &lt;!--  TODO - add next/prev page button and bindings (remove custom css to display all)  --&gt;
+&lt;/section&gt;
+
+&lt;!-- enketo logo (rendered above but kept here for tidiness) --&gt;
+&lt;ng-template #enketoLogo&gt;
+  &lt;svg xmlns&#x3D;&quot;http://www.w3.org/2000/svg&quot; width&#x3D;&quot;220&quot; height&#x3D;&quot;100&quot;&gt;
+    &lt;path
+      d&#x3D;&quot;M17.952 72.482V38.541a4.75 4.75 0 0 1 4.786-4.787h13.758a4.298 4.298 0 0 1 4.29 4.29c0 2.363-1.927 4.227-4.29 4.227h-9.032v8.827h6.235a4.299 4.299 0 0 1 4.29 4.29c0 2.362-1.928 4.227-4.29 4.227h-6.235v9.139h9.344a4.298 4.298 0 0 1 4.29 4.289c0 2.361-1.928 4.227-4.29 4.227H22.739a4.75 4.75 0 0 1-4.787-4.788zM117.918 72.482V38.541a4.75 4.75 0 0 1 4.787-4.787h13.758a4.298 4.298 0 0 1 4.289 4.29c0 2.363-1.927 4.227-4.289 4.227h-9.033v8.827h6.237a4.298 4.298 0 0 1 4.288 4.29c0 2.362-1.927 4.227-4.288 4.227h-6.237v9.139h9.345a4.298 4.298 0 0 1 4.289 4.289c0 2.361-1.928 4.227-4.289 4.227h-14.069a4.751 4.751 0 0 1-4.788-4.788zM153.902 42.582h-4.021c-2.424 0-4.414-1.989-4.414-4.414 0-2.424 1.99-4.414 4.414-4.414h17.612c2.424 0 4.414 1.989 4.414 4.414s-1.99 4.414-4.414 4.414h-4.02v30.273a4.748 4.748 0 0 1-4.785 4.787 4.748 4.748 0 0 1-4.787-4.787V42.582zM74.383 77.977a4.483 4.483 0 0 1-3.811-2.116l-21.9-35.227a4.48 4.48 0 0 1 1.44-6.172 4.48 4.48 0 0 1 6.171 1.439l21.9 35.227a4.48 4.48 0 0 1-3.8 6.849z&quot;
+    /&gt;
+    &lt;path
+      d&#x3D;&quot;M75.001 77.976a4.481 4.481 0 0 1-4.481-4.48V38.268a4.482 4.482 0 0 1 8.962 0v35.228a4.48 4.48 0 0 1-4.481 4.48zM51.053 77.976a4.48 4.48 0 0 1-4.481-4.48V38.268a4.48 4.48 0 1 1 8.962 0v35.228a4.48 4.48 0 0 1-4.481 4.48zM89.648 77.976a4.48 4.48 0 0 1-4.481-4.48V38.268a4.481 4.481 0 0 1 8.962 0v35.228a4.48 4.48 0 0 1-4.481 4.48z&quot;
+    /&gt;
+    &lt;path
+      d&#x3D;&quot;M90.679 68.004a4.483 4.483 0 0 1-3.706-6.994l17.095-25.255a4.482 4.482 0 0 1 7.424 5.024L94.396 66.034a4.48 4.48 0 0 1-3.717 1.97z&quot;
+    /&gt;
+    &lt;path
+      d&#x3D;&quot;M109.08 77.977a4.482 4.482 0 0 1-3.741-2.007L92.433 56.495a4.482 4.482 0 0 1 7.472-4.951l12.906 19.475a4.481 4.481 0 0 1-3.731 6.958zM188.191 78.028c-7.642 0-13.858-6.217-13.858-13.858V47.593c0-7.641 6.217-13.857 13.858-13.857 7.641 0 13.857 6.216 13.857 13.857V64.17c0 7.641-6.216 13.858-13.857 13.858zm0-35.227a4.797 4.797 0 0 0-4.793 4.792V64.17a4.798 4.798 0 0 0 4.793 4.793 4.798 4.798 0 0 0 4.792-4.793V47.593a4.797 4.797 0 0 0-4.792-4.792z&quot;
+    /&gt;
+    &lt;path
+      fill&#x3D;&quot;#F15A29&quot;
+      d&#x3D;&quot;m127.483 29.343-.101-.001a4.145 4.145 0 0 1-2.923-1.309l-5.825-6.215a4.144 4.144 0 1 1 6.046-5.668l2.944 3.14 9.442-9.148a4.144 4.144 0 1 1 5.767 5.953l-12.469 12.079a4.128 4.128 0 0 1-2.881 1.169z&quot;
+    /&gt;
+  &lt;/svg&gt;
+&lt;/ng-template&gt;
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-styleData">
+                <p class="comment">
+                    <code>./odk-form.component.scss</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss">@import &quot;./libs/enketo/sass/grid/grid.scss&quot;;
+
+// apply :host style bindings for non-encapsulated component
+tmpl-odk-form {
+  background: white;
+  padding: 8px;
+  display: block;
+  position: relative;
+}
+// apply margin to fit section dropdown arrows. Breakpoints defined in
+// ./libs/enketo/sass/core/_responsive.scss
+tmpl-odk-form form {
+  margin-left: 30px;
+  @media screen and (max-width: 600px) {
+    margin-left: 24px;
+  }
+}
+#form-title {
+  margin: 0;
+}
+#form-unavailable {
+  // give form a chance to load/render before showing unavailable message
+  animation: appearDelayed 2s;
+  -webkit-animation: appearDelayed 2s;
+  -moz-animation: appearDelayed 2s;
+  -o-animation: appearDelayed 2s;
+  -ms-animation: appearDelayed 2s;
+}
+
+.enketo-logo-container {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  margin-bottom: -25px;
+  font-size: 18px;
+}
+.enketo-logo {
+  height: 25px;
+}
+// HACK - show all form sections (need to add buttons for page nave)
+.pages.or .or-group-data {
+  display: block !important;
+}
+// HACK - using emojis instead of icons so recolor as required
+.icon {
+  color: transparent;
+  text-shadow: 0 0 0 white;
+  margin-left: -12px;
+  margin-right: 12px;
+}
+
+#form-footer {
+  display: flex;
+  padding: 20px;
+  justify-content: center;
+}
+#form-footer &gt; button {
+  min-width: 180px;
+  min-height: 48px;
+  margin: 0 10px;
+}
+
+// Animations
+@keyframes appearDelayed {
+  0% {
+    opacity: 0;
+  }
+  90% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><ng-container *ngTemplateOutlet="enketoLogo"> </ng-container><div #formContainerEl></div><section id="form-footer">  <button class="btn btn-default" id="save-draft" (click)="save({ draft: true })">    <i class="icon icon-pencil"> </i>    <span data-i18n="formfooter.savedraft.btn">Save Draft</span>  </button>  <button class="btn btn-primary" id="submit-form" (click)="save()">    <i class="icon icon-check">✔️</i>    <span data-i18n="formfooter.submit.btn">Submit</span>  </button>  <!--  TODO - add next/prev page button and bindings (remove custom css to display all)  --></section><!-- enketo logo (rendered above but kept here for tidiness) --><ng-template #enketoLogo>  <svg xmlns="http://www.w3.org/2000/svg" width="220" height="100">    <path      d="M17.952 72.482V38.541a4.75 4.75 0 0 1 4.786-4.787h13.758a4.298 4.298 0 0 1 4.29 4.29c0 2.363-1.927 4.227-4.29 4.227h-9.032v8.827h6.235a4.299 4.299 0 0 1 4.29 4.29c0 2.362-1.928 4.227-4.29 4.227h-6.235v9.139h9.344a4.298 4.298 0 0 1 4.29 4.289c0 2.361-1.928 4.227-4.29 4.227H22.739a4.75 4.75 0 0 1-4.787-4.788zM117.918 72.482V38.541a4.75 4.75 0 0 1 4.787-4.787h13.758a4.298 4.298 0 0 1 4.289 4.29c0 2.363-1.927 4.227-4.289 4.227h-9.033v8.827h6.237a4.298 4.298 0 0 1 4.288 4.29c0 2.362-1.927 4.227-4.288 4.227h-6.237v9.139h9.345a4.298 4.298 0 0 1 4.289 4.289c0 2.361-1.928 4.227-4.289 4.227h-14.069a4.751 4.751 0 0 1-4.788-4.788zM153.902 42.582h-4.021c-2.424 0-4.414-1.989-4.414-4.414 0-2.424 1.99-4.414 4.414-4.414h17.612c2.424 0 4.414 1.989 4.414 4.414s-1.99 4.414-4.414 4.414h-4.02v30.273a4.748 4.748 0 0 1-4.785 4.787 4.748 4.748 0 0 1-4.787-4.787V42.582zM74.383 77.977a4.483 4.483 0 0 1-3.811-2.116l-21.9-35.227a4.48 4.48 0 0 1 1.44-6.172 4.48 4.48 0 0 1 6.171 1.439l21.9 35.227a4.48 4.48 0 0 1-3.8 6.849z"    />    <path      d="M75.001 77.976a4.481 4.481 0 0 1-4.481-4.48V38.268a4.482 4.482 0 0 1 8.962 0v35.228a4.48 4.48 0 0 1-4.481 4.48zM51.053 77.976a4.48 4.48 0 0 1-4.481-4.48V38.268a4.48 4.48 0 1 1 8.962 0v35.228a4.48 4.48 0 0 1-4.481 4.48zM89.648 77.976a4.48 4.48 0 0 1-4.481-4.48V38.268a4.481 4.481 0 0 1 8.962 0v35.228a4.48 4.48 0 0 1-4.481 4.48z"    />    <path      d="M90.679 68.004a4.483 4.483 0 0 1-3.706-6.994l17.095-25.255a4.482 4.482 0 0 1 7.424 5.024L94.396 66.034a4.48 4.48 0 0 1-3.717 1.97z"    />    <path      d="M109.08 77.977a4.482 4.482 0 0 1-3.741-2.007L92.433 56.495a4.482 4.482 0 0 1 7.472-4.951l12.906 19.475a4.481 4.481 0 0 1-3.731 6.958zM188.191 78.028c-7.642 0-13.858-6.217-13.858-13.858V47.593c0-7.641 6.217-13.857 13.858-13.857 7.641 0 13.857 6.216 13.857 13.857V64.17c0 7.641-6.216 13.858-13.857 13.858zm0-35.227a4.797 4.797 0 0 0-4.793 4.792V64.17a4.798 4.798 0 0 0 4.793 4.793 4.798 4.798 0 0 0 4.792-4.793V47.593a4.797 4.797 0 0 0-4.792-4.792z"    />    <path      fill="#F15A29"      d="m127.483 29.343-.101-.001a4.145 4.145 0 0 1-2.923-1.309l-5.825-6.215a4.144 4.144 0 1 1 6.046-5.668l2.944 3.14 9.442-9.148a4.144 4.144 0 1 1 5.767 5.953l-12.469 12.079a4.128 4.128 0 0 1-2.881 1.169z"    />  </svg></ng-template></div>'
+    var COMPONENTS = [{'name': 'AccordionSectionComponent', 'selector': 'plh-tmpl-accordion-section'},{'name': 'AnimatedSectionComponent', 'selector': 'plh-tmpl-animated-section'},{'name': 'AnimatedSectionGroupComponent', 'selector': 'plh-tmpl-animated-section-group'},{'name': 'ComboBoxModalComponent', 'selector': 'combo-box-modal'},{'name': 'FormComponent', 'selector': 'plh-tmpl-form'},{'name': 'NavGroupComponent', 'selector': 'plh-tmpl-nav-group'},{'name': 'RoundIconButtonComponent', 'selector': 'plh-round-button'},{'name': 'SelectTextComponent', 'selector': 'plh-select-text'},{'name': 'SquareIconButtonComponent', 'selector': 'plh-square-icon-button'},{'name': 'TemplateBaseComponent', 'selector': ''},{'name': 'TemplateDebuggerComponent', 'selector': 'plh-template-debugger'},{'name': 'TemplateHTMLComponent', 'selector': 'template-html-component'},{'name': 'TemplateLayoutComponent', 'selector': ''},{'name': 'TemplatePopupComponent', 'selector': ''},{'name': 'TmplAccordionComponent', 'selector': 'plh-accordion-component'},{'name': 'TmplAdvancedDashedBoxComponent', 'selector': 'plh-advanced-dashed-box'},{'name': 'TmplAnimatedSlidesComponent', 'selector': 'template-animated-slides'},{'name': 'TmplAudioComponent', 'selector': 'plh-audio'},{'name': 'TmplButtonComponent', 'selector': 'plh-button'},{'name': 'TmplCarouselComponent', 'selector': 'plh-carousel'},{'name': 'TmplComboBoxComponent', 'selector': 'plh-combo-box'},{'name': 'TmplDashedBoxComponent', 'selector': 'plh-dashed-box'},{'name': 'TmplDataItemsComponent', 'selector': 'plh-data-items'},{'name': 'TmplDisplayGridComponent', 'selector': 'plh-display-grid'},{'name': 'TmplDisplayGroupComponent', 'selector': 'plh-tmpl-display-group'},{'name': 'TmplDrawerComponent', 'selector': 'plh-drawer'},{'name': 'TmplHelpIconComponent', 'selector': 'plh-tmpl-help-icon'},{'name': 'TmplIconBannerComponent', 'selector': 'plh-icon-banner'},{'name': 'TmplImageComponent', 'selector': 'plh-tmpl-image'},{'name': 'TmplLatexComponent', 'selector': 'template-latex-component'},{'name': 'TmplLottieAnimation', 'selector': 'plh-tmpl-lottie-animation'},{'name': 'TmplNavigationBarComponent', 'selector': 'plh-navigation-bar'},{'name': 'TmplNumberComponent', 'selector': 'plh-number-selector'},{'name': 'TmplOdkFormComponent', 'selector': 'tmpl-odk-form'},{'name': 'TmplParentPointBoxComponent', 'selector': 'plh-points-item'},{'name': 'TmplParentPointCounterComponent', 'selector': 'plh-parent-point-counter'},{'name': 'TmplPdfComponent', 'selector': 'plh-pdf'},{'name': 'TmplQRCodeComponent', 'selector': 'plh-qr-code'},{'name': 'TmplRadioButtonGridComponent', 'selector': 'plh-radio-button-grid'},{'name': 'TmplRadioGroupComponent', 'selector': 'plh-radio-group'},{'name': 'TmplSimpleCheckboxComponent', 'selector': 'plh-simple-checkbox'},{'name': 'TmplSliderComponent', 'selector': 'plh-slider-new'},{'name': 'TmplSubtitleComponent', 'selector': 'plh-tmpl-subtitle'},{'name': 'TmplTaskCardComponent', 'selector': 'plh-task-card'},{'name': 'TmplTaskProgressBarComponent', 'selector': 'plh-task-progress-bar'},{'name': 'TmplTextAreaComponent', 'selector': 'plh-text-area'},{'name': 'TmplTextBoxComponent', 'selector': 'plh-text-box'},{'name': 'TmplTextComponent', 'selector': 'plh-tmpl-text'},{'name': 'TmplTileComponent', 'selector': 'plh-tile-component'},{'name': 'TmplTimerComponent', 'selector': 'plh-timer'},{'name': 'TmplTitleComponent', 'selector': 'plh-tmpl-title'},{'name': 'TmplToggleBarComponent', 'selector': 'plh-tmpl-toggle-bar'},{'name': 'TmplVideoComponent', 'selector': 'plh-tmpl-video'},{'name': 'WorkshopsComponent', 'selector': 'plh-tmpl-workshops-accordion'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'TmplOdkFormComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'TmplOdkFormComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

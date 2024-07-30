@@ -1,0 +1,1641 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>frontend documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+        <link rel="stylesheet" href="../styles/material.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">frontend documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li>Components</li>
+  <li
+  >
+  TmplAudioComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li >
+            <a href="#templateData" role="tab" id="templateData-tab" data-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li >
+            <a href="#styleData" role="tab" id="styleData-tab" data-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li >
+            <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/shared/components/template/components/audio/audio.component.ts</code>
+</p>
+
+
+
+    <p class="comment">
+        <h3>Extends</h3>
+    </p>
+    <p class="comment">
+                <code><a href="../components/TemplateBaseComponent.html" target="_self" >TemplateBaseComponent</a></code>
+    </p>
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                <code>ITemplateRowProps</code>
+                    <code><a href="https://angular.io/api/core/OnInit" target="_blank" >OnInit</a></code>
+                    <code><a href="../miscellaneous/variables.html#D" target="_self" >OnDestroy</a></code>
+    </p>
+
+
+<section>
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>plh-audio</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./audio.component.scss</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./audio.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#currentTimeSong" >currentTimeSong</a>
+                            </li>
+                            <li>
+                                <a href="#errorTxt" >errorTxt</a>
+                            </li>
+                            <li>
+                                <a href="#hasStarted" >hasStarted</a>
+                            </li>
+                            <li>
+                                <a href="#help" >help</a>
+                            </li>
+                            <li>
+                                <a href="#isMute" >isMute</a>
+                            </li>
+                            <li>
+                                <a href="#isPlayed" >isPlayed</a>
+                            </li>
+                            <li>
+                                <a href="#player" >player</a>
+                            </li>
+                            <li>
+                                <a href="#progress" >progress</a>
+                            </li>
+                            <li>
+                                <a href="#range" >range</a>
+                            </li>
+                            <li>
+                                <a href="#rangeBarDisabled" >rangeBarDisabled</a>
+                            </li>
+                            <li>
+                                <a href="#rangeBarTouched" >rangeBarTouched</a>
+                            </li>
+                            <li>
+                                <a href="#src" >src</a>
+                            </li>
+                            <li>
+                                <a href="#timeToRewind" >timeToRewind</a>
+                            </li>
+                            <li>
+                                <a href="#titleAudio" >titleAudio</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#checkChange" >checkChange</a>
+                            </li>
+                            <li>
+                                <a href="#checkFocus" >checkFocus</a>
+                            </li>
+                            <li>
+                                <a href="#customUpdateWhenRewind" >customUpdateWhenRewind</a>
+                            </li>
+                            <li>
+                                <a href="#getParams" >getParams</a>
+                            </li>
+                            <li>
+                                <a href="#initPlayer" >initPlayer</a>
+                            </li>
+                            <li>
+                                <a href="#rewindNext" >rewindNext</a>
+                            </li>
+                            <li>
+                                <a href="#rewindPrev" >rewindPrev</a>
+                            </li>
+                            <li>
+                                <a href="#seek" >seek</a>
+                            </li>
+                            <li>
+                                <a href="#toggleMute" >toggleMute</a>
+                            </li>
+                            <li>
+                                <a href="#togglePlayer" >togglePlayer</a>
+                            </li>
+                            <li>
+                                <a href="#updateProgress" >updateProgress</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Inputs</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#template" >template</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(templateAssetService: TemplateAssetService)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="37" class="link-to-prism">src/app/shared/components/template/components/audio/audio.component.ts:37</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>templateAssetService</td>
+                                                  
+                                                        <td>
+                                                                    <code>TemplateAssetService</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+    <section>
+    <h3 id="inputs">Inputs</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="template"></a>
+                        <b>template</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>FlowTypes.Template</code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">src/app/shared/components/template/components/audio/audio.component.ts:23</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+    <section>
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="checkChange"></a>
+                    <span class="name">
+                        <span ><b>checkChange</b></span>
+                        <a href="#checkChange"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>checkChange()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="135"
+                            class="link-to-prism">src/app/shared/components/template/components/audio/audio.component.ts:135</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="checkFocus"></a>
+                    <span class="name">
+                        <span ><b>checkFocus</b></span>
+                        <a href="#checkFocus"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>checkFocus()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="131"
+                            class="link-to-prism">src/app/shared/components/template/components/audio/audio.component.ts:131</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="customUpdateWhenRewind"></a>
+                    <span class="name">
+                        <span ><b>customUpdateWhenRewind</b></span>
+                        <a href="#customUpdateWhenRewind"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>customUpdateWhenRewind()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="144"
+                            class="link-to-prism">src/app/shared/components/template/components/audio/audio.component.ts:144</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getParams"></a>
+                    <span class="name">
+                        <span ><b>getParams</b></span>
+                        <a href="#getParams"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getParams()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="48"
+                            class="link-to-prism">src/app/shared/components/template/components/audio/audio.component.ts:48</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="initPlayer"></a>
+                    <span class="name">
+                        <span ><b>initPlayer</b></span>
+                        <a href="#initPlayer"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>initPlayer()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="58"
+                            class="link-to-prism">src/app/shared/components/template/components/audio/audio.component.ts:58</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="rewindNext"></a>
+                    <span class="name">
+                        <span ><b>rewindNext</b></span>
+                        <a href="#rewindNext"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>rewindNext()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="92"
+                            class="link-to-prism">src/app/shared/components/template/components/audio/audio.component.ts:92</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="rewindPrev"></a>
+                    <span class="name">
+                        <span ><b>rewindPrev</b></span>
+                        <a href="#rewindPrev"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>rewindPrev()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="97"
+                            class="link-to-prism">src/app/shared/components/template/components/audio/audio.component.ts:97</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="seek"></a>
+                    <span class="name">
+                        <span ><b>seek</b></span>
+                        <a href="#seek"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>seek()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="106"
+                            class="link-to-prism">src/app/shared/components/template/components/audio/audio.component.ts:106</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="toggleMute"></a>
+                    <span class="name">
+                        <span ><b>toggleMute</b></span>
+                        <a href="#toggleMute"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>toggleMute()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="114"
+                            class="link-to-prism">src/app/shared/components/template/components/audio/audio.component.ts:114</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="togglePlayer"></a>
+                    <span class="name">
+                        <span ><b>togglePlayer</b></span>
+                        <a href="#togglePlayer"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>togglePlayer()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="87"
+                            class="link-to-prism">src/app/shared/components/template/components/audio/audio.component.ts:87</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="updateProgress"></a>
+                    <span class="name">
+                        <span ><b>updateProgress</b></span>
+                        <a href="#updateProgress"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>updateProgress()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="119"
+                            class="link-to-prism">src/app/shared/components/template/components/audio/audio.component.ts:119</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section>
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="currentTimeSong"></a>
+                    <span class="name">
+                        <span ><b>currentTimeSong</b></span>
+                        <a href="#currentTimeSong"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&quot;0&quot;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="35" class="link-to-prism">src/app/shared/components/template/components/audio/audio.component.ts:35</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="errorTxt"></a>
+                    <span class="name">
+                        <span ><b>errorTxt</b></span>
+                        <a href="#errorTxt"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>string | null</code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">src/app/shared/components/template/components/audio/audio.component.ts:31</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="hasStarted"></a>
+                    <span class="name">
+                        <span ><b>hasStarted</b></span>
+                        <a href="#hasStarted"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="37" class="link-to-prism">src/app/shared/components/template/components/audio/audio.component.ts:37</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="help"></a>
+                    <span class="name">
+                        <span ><b>help</b></span>
+                        <a href="#help"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>string | null</code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="27" class="link-to-prism">src/app/shared/components/template/components/audio/audio.component.ts:27</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="isMute"></a>
+                    <span class="name">
+                        <span ><b>isMute</b></span>
+                        <a href="#isMute"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">src/app/shared/components/template/components/audio/audio.component.ts:28</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="isPlayed"></a>
+                    <span class="name">
+                        <span ><b>isPlayed</b></span>
+                        <a href="#isPlayed"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="30" class="link-to-prism">src/app/shared/components/template/components/audio/audio.component.ts:30</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="player"></a>
+                    <span class="name">
+                        <span ><b>player</b></span>
+                        <a href="#player"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>Howl</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>null</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="29" class="link-to-prism">src/app/shared/components/template/components/audio/audio.component.ts:29</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="progress"></a>
+                    <span class="name">
+                        <span ><b>progress</b></span>
+                        <a href="#progress"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>0</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="32" class="link-to-prism">src/app/shared/components/template/components/audio/audio.component.ts:32</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="range"></a>
+                    <span class="name">
+                        <span ><b>range</b></span>
+                        <a href="#range"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>IonRange</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <b>Decorators : </b>
+                        <br />
+                        <code>
+                            @ViewChild(&#x27;range&#x27;, {static: false})<br />
+                        </code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">src/app/shared/components/template/components/audio/audio.component.ts:24</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="rangeBarDisabled"></a>
+                    <span class="name">
+                        <span ><b>rangeBarDisabled</b></span>
+                        <a href="#rangeBarDisabled"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="36" class="link-to-prism">src/app/shared/components/template/components/audio/audio.component.ts:36</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="rangeBarTouched"></a>
+                    <span class="name">
+                        <span ><b>rangeBarTouched</b></span>
+                        <a href="#rangeBarTouched"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="34" class="link-to-prism">src/app/shared/components/template/components/audio/audio.component.ts:34</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="src"></a>
+                    <span class="name">
+                        <span ><b>src</b></span>
+                        <a href="#src"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>string | null</code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">src/app/shared/components/template/components/audio/audio.component.ts:25</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="timeToRewind"></a>
+                    <span class="name">
+                        <span ><b>timeToRewind</b></span>
+                        <a href="#timeToRewind"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>15</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="33" class="link-to-prism">src/app/shared/components/template/components/audio/audio.component.ts:33</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="titleAudio"></a>
+                    <span class="name">
+                        <span ><b>titleAudio</b></span>
+                        <a href="#titleAudio"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>string | null</code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="26" class="link-to-prism">src/app/shared/components/template/components/audio/audio.component.ts:26</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, Input, OnDestroy, OnInit, ViewChild } from &quot;@angular/core&quot;;
+import { FlowTypes } from &quot;../../../../model&quot;;
+import {
+  getBooleanParamFromTemplateRow,
+  getNumberParamFromTemplateRow,
+  getStringParamFromTemplateRow,
+} from &quot;../../../../utils&quot;;
+import { Howl } from &quot;howler&quot;;
+import { IonRange } from &quot;@ionic/angular&quot;;
+import { ITemplateRowProps } from &quot;../../models&quot;;
+import { TemplateBaseComponent } from &quot;../base&quot;;
+import { TemplateAssetService } from &quot;../../services/template-asset.service&quot;;
+
+@Component({
+  selector: &quot;plh-audio&quot;,
+  templateUrl: &quot;./audio.component.html&quot;,
+  styleUrls: [&quot;./audio.component.scss&quot;],
+})
+export class TmplAudioComponent
+  extends TemplateBaseComponent
+  implements ITemplateRowProps, OnInit, OnDestroy
+{
+  @Input() template: FlowTypes.Template;
+  @ViewChild(&quot;range&quot;, { static: false }) range: IonRange;
+  src: string | null;
+  titleAudio: string | null;
+  help: string | null;
+  isMute: boolean &#x3D; false;
+  player: Howl &#x3D; null;
+  isPlayed: boolean &#x3D; false;
+  errorTxt: string | null;
+  progress &#x3D; 0;
+  timeToRewind: number &#x3D; 15;
+  rangeBarTouched: boolean &#x3D; false;
+  currentTimeSong: string &#x3D; &quot;0&quot;;
+  rangeBarDisabled: boolean &#x3D; false;
+  hasStarted: boolean &#x3D; false;
+
+  constructor(private templateAssetService: TemplateAssetService) {
+    super();
+  }
+
+  ngOnInit() {
+    this.getParams();
+    this.initPlayer();
+  }
+
+  getParams() {
+    this.src &#x3D; this.templateAssetService.getTranslatedAssetPath(
+      this._row.value || getStringParamFromTemplateRow(this._row, &quot;src&quot;, null)
+    );
+    this.titleAudio &#x3D; getStringParamFromTemplateRow(this._row, &quot;title&quot;, &quot;Title&quot;);
+    this.help &#x3D; getStringParamFromTemplateRow(this._row, &quot;help&quot;, null);
+    this.rangeBarDisabled &#x3D; getBooleanParamFromTemplateRow(this._row, &quot;range_bar_disabled&quot;, false);
+    this.timeToRewind &#x3D; getNumberParamFromTemplateRow(this._row, &quot;time_to_rewind&quot;, 15);
+  }
+
+  initPlayer() {
+    return this.src
+      ? (this.player &#x3D; new Howl({
+          src: [this.src],
+          onplay: () &#x3D;&gt; {
+            this.isPlayed &#x3D; true;
+            this.updateProgress();
+            if (!this.hasStarted) {
+              this.hasStarted &#x3D; true;
+              this.triggerActions(&quot;audio_first_start&quot;);
+            }
+            this.triggerActions(&quot;audio_play&quot;);
+          },
+          onend: () &#x3D;&gt; {
+            this.isPlayed &#x3D; false;
+            this.range.value &#x3D; 0;
+            this.currentTimeSong &#x3D; &quot;0&quot;;
+            this.updateProgress();
+            this.triggerActions(&quot;audio_end&quot;);
+          },
+          onpause: () &#x3D;&gt; {
+            this.isPlayed &#x3D; false;
+            this.updateProgress();
+            this.triggerActions(&quot;audio_pause&quot;);
+          },
+        }))
+      : (this.errorTxt &#x3D; &quot;Src is undefined, player not initialized&quot;);
+  }
+
+  togglePlayer() {
+    this.isPlayed &#x3D; !this.isPlayed;
+    return this.isPlayed ? this.player.play() : this.player.pause();
+  }
+
+  rewindNext() {
+    this.player.seek((this.player.seek() as any) + this.timeToRewind);
+    this.customUpdateWhenRewind();
+  }
+
+  rewindPrev() {
+    this.player.seek(
+      (this.player.seek() as any) &lt; this.timeToRewind
+        ? (this.player.seek(0) as any)
+        : (this.player.seek() as any) - this.timeToRewind
+    );
+    this.customUpdateWhenRewind();
+  }
+
+  seek() {
+    let newValue &#x3D; +this.range.value;
+    let duration &#x3D; this.player.duration();
+    this.player.seek(duration * (newValue / 100));
+    this.rangeBarTouched &#x3D; false;
+    this.updateProgress();
+  }
+
+  toggleMute() {
+    this.isMute &#x3D; !this.isMute;
+    this.player.mute(this.isMute);
+  }
+
+  updateProgress() {
+    const ref &#x3D; setInterval(() &#x3D;&gt; {
+      if (!this.isPlayed || this.rangeBarTouched) {
+        clearInterval(ref);
+        return;
+      }
+      let seek: any &#x3D; this.player.seek();
+      this.progress &#x3D; (seek / this.player.duration()) * 100 || 0;
+      this.currentTimeSong &#x3D; this.player.seek() ? (this.player.seek() as any).toString() : &quot;0&quot;;
+    }, 1000);
+  }
+
+  checkFocus() {
+    this.rangeBarTouched &#x3D; true;
+  }
+
+  checkChange() {
+    if (this.rangeBarTouched) {
+      let newValue &#x3D; +this.range.value;
+      let duration &#x3D; this.player.duration();
+      this.player.seek(duration * (newValue / 100));
+      this.currentTimeSong &#x3D; this.player.seek() ? (this.player.seek() as any).toString() : &quot;0&quot;;
+    }
+  }
+
+  customUpdateWhenRewind() {
+    if (!this.isPlayed) {
+      let seek: any &#x3D; this.player.seek();
+      this.progress &#x3D; (seek / this.player.duration()) * 100 || 0;
+      this.currentTimeSong &#x3D; this.player.seek() ? (this.player.seek() as any).toString() : &quot;0&quot;;
+    }
+  }
+
+  ngOnDestroy() {
+    this.player.stop();
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;container-player margin-t-large&quot;&gt;
+  &lt;div class&#x3D;&quot;top-row&quot;&gt;
+    &lt;div class&#x3D;&quot;title_and_help&quot;&gt;
+      &lt;h3 *ngIf&#x3D;&quot;titleAudio&quot;&gt;{{ titleAudio }}&lt;/h3&gt;
+      &lt;ion-icon
+        *ngIf&#x3D;&quot;help&quot;
+        [pTooltip]&#x3D;&quot;help&quot;
+        tooltipPosition&#x3D;&quot;right&quot;
+        tooltipEvent&#x3D;&quot;click&quot;
+        name&#x3D;&quot;help-circle-outline&quot;
+        class&#x3D;&quot;audio-help&quot;
+      &gt;&lt;/ion-icon&gt;
+    &lt;/div&gt;
+    &lt;div class&#x3D;&quot;volume&quot; (click)&#x3D;&quot;player ? toggleMute() : null&quot;&gt;
+      &lt;ion-icon
+        [name]&#x3D;&quot;!isMute ? &#x27;volume-high-outline&#x27; : &#x27;volume-mute-outline&#x27;&quot;
+        class&#x3D;&quot;volume-icon&quot;
+      &gt;&lt;/ion-icon&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class&#x3D;&quot;progress-block&quot; [class.disabled]&#x3D;&quot;rangeBarDisabled || !player&quot;&gt;
+    &lt;ion-range
+      #range
+      class&#x3D;&quot;audio-range&quot;
+      max&#x3D;&quot;100&quot;
+      aria-readonly&#x3D;&quot;true&quot;
+      [value]&#x3D;&quot;progress&quot;
+      (ionChange)&#x3D;&quot;checkChange()&quot;
+      (touchstart)&#x3D;&quot;checkFocus()&quot;
+      (touchend)&#x3D;&quot;seek()&quot;
+      (mouseup)&#x3D;&quot;seek()&quot;
+    &gt;&lt;/ion-range&gt;
+  &lt;/div&gt;
+  &lt;div class&#x3D;&quot;time&quot;&gt;
+    &lt;div class&#x3D;&quot;time-value&quot;&gt;
+      {{ +currentTimeSong * 1000 | date: &quot;mm:ss&quot; }}
+    &lt;/div&gt;
+    &lt;div class&#x3D;&quot;time-value&quot;&gt;
+      {{ !player ? &quot;00:00&quot; : (player.duration() * 1000 | date: &quot;mm:ss&quot;) }}
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class&#x3D;&quot;controls&quot; *ngIf&#x3D;&quot;!errorTxt&quot;&gt;
+    &lt;div class&#x3D;&quot;rewind&quot;&gt;
+      &lt;ion-button (click)&#x3D;&quot;rewindPrev()&quot;
+        &gt;&lt;img src&#x3D;&quot;/assets/icon/audio/arrow.svg&quot; alt&#x3D;&quot;&quot;
+      /&gt;&lt;/ion-button&gt;
+    &lt;/div&gt;
+    &lt;div class&#x3D;&quot;play&quot;&gt;
+      &lt;ion-button class&#x3D;&quot;btn-play&quot; (click)&#x3D;&quot;togglePlayer()&quot;&gt;
+        &lt;img
+          [class.ml-5]&#x3D;&quot;!isPlayed&quot;
+          [src]&#x3D;&quot;
+            (!isPlayed ? &#x27;plh_images/icons/play_white.svg&#x27; : &#x27;plh_images/icons/pause_white.svg&#x27;)
+              | plhAsset
+          &quot;
+          alt&#x3D;&quot;&quot;
+        /&gt;
+      &lt;/ion-button&gt;
+    &lt;/div&gt;
+    &lt;div class&#x3D;&quot;forward&quot;&gt;
+      &lt;ion-button (click)&#x3D;&quot;rewindNext()&quot;&gt;
+        &lt;img src&#x3D;&quot;/assets/icon/audio/arrow.svg&quot; alt&#x3D;&quot;&quot; /&gt;
+      &lt;/ion-button&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class&#x3D;&quot;error-text&quot; *ngIf&#x3D;&quot;errorTxt&quot;&gt;
+    {{ errorTxt }}
+  &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-styleData">
+                <p class="comment">
+                    <code>./audio.component.scss</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss">@use &quot;/src/theme/mixins&quot;;
+
+$control-background: var(--audio-control-background, var(--ion-color-primary-500));
+
+.container-player {
+  background: var(--ion-color-primary-contrast);
+  border: var(--ion-border-standard);
+  box-sizing: border-box;
+  box-shadow: var(--ion-default-box-shadow);
+  border-radius: var(--ion-border-radius-standard);
+  padding: var(--regular-padding);
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  .top-row {
+    @include mixins.flex-space-between;
+    .title_and_help {
+      width: 85%;
+      display: flex;
+      align-items: center;
+      min-height: var(--audio-title-and-help-height);
+      h3 {
+        margin: 0;
+        margin-right: var(--small-margin);
+        color: var(--ion-color-primary);
+        max-width: 85%;
+        font-weight: var(--font-weight-bold);
+        font-size: var(--audio-title-size);
+      }
+      .audio-help {
+        color: var(--ion-color-primary);
+        height: var(--help-icon-standard-size);
+        width: var(--help-icon-standard-size);
+      }
+    }
+    .volume {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      .volume-icon {
+        color: var(--ion-color-primary);
+        @include mixins.small-square;
+      }
+    }
+  }
+  .progress-block {
+    .audio-range {
+      --bar-background-active: #{$control-background};
+      --bar-background: transparent;
+      --bar-height: 4px;
+      --bar-border-radius: var(--ion-border-radius-secondary);
+      --knob-size: 0px;
+      --pin-background: var(--ion-color-primary);
+      --knob-background: var(--ion-color-primary);
+      padding-inline: 0;
+    }
+
+    ion-range::part(bar) {
+      border: var(--ion-border-thin-standard);
+      height: var(--audio-bar-height);
+    }
+
+    ion-range::part(bar-active) {
+      top: 23px;
+      margin-left: 3px;
+    }
+  }
+  .time {
+    margin-top: -12px;
+    @include mixins.flex-space-between;
+    &amp;-value {
+      font-size: var(--font-size-text-large);
+      line-height: var(--line-height-text-small);
+      color: var(--ion-color-primary);
+    }
+  }
+  .controls {
+    @include mixins.flex-space-between;
+    min-width: var(--audio-controls-width);
+    align-self: center;
+    .rewind,
+    .forward {
+      ion-button {
+        @include mixins.large-square;
+        --background: transparent;
+        --padding: 0;
+        --border-radius: var(--ion-border-radius-rounded);
+        --box-shadow: transparent;
+        img {
+          position: absolute;
+          min-width: var(--audio-controls-img-width);
+        }
+      }
+    }
+    .rewind {
+      img {
+        transform: rotate(180deg);
+      }
+    }
+    .play {
+      .btn-play {
+        @include mixins.large-square;
+        --background: #{$control-background};
+        --border-radius: var(--ion-border-radius-rounded);
+        --padding: 0;
+        --box-shadow: var(--ion-default-box-shadow);
+        img {
+          position: absolute;
+          width: var(--audio-play-img-width);
+        }
+      }
+    }
+  }
+  .error-text {
+    margin: var(--small-margin) 0;
+    text-align: center;
+  }
+}
+.disabled {
+  pointer-events: none;
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><div class="container-player margin-t-large">  <div class="top-row">    <div class="title_and_help">      <h3 *ngIf="titleAudio">{{ titleAudio }}</h3>      <ion-icon        *ngIf="help"        [pTooltip]="help"        tooltipPosition="right"        tooltipEvent="click"        name="help-circle-outline"        class="audio-help"      ></ion-icon>    </div>    <div class="volume" (click)="player ? toggleMute() : null">      <ion-icon        [name]="!isMute ? \'volume-high-outline\' : \'volume-mute-outline\'"        class="volume-icon"      ></ion-icon>    </div>  </div>  <div class="progress-block" [class.disabled]="rangeBarDisabled || !player">    <ion-range      #range      class="audio-range"      max="100"      aria-readonly="true"      [value]="progress"      (ionChange)="checkChange()"      (touchstart)="checkFocus()"      (touchend)="seek()"      (mouseup)="seek()"    ></ion-range>  </div>  <div class="time">    <div class="time-value">      {{ +currentTimeSong * 1000 | date: "mm:ss" }}    </div>    <div class="time-value">      {{ !player ? "00:00" : (player.duration() * 1000 | date: "mm:ss") }}    </div>  </div>  <div class="controls" *ngIf="!errorTxt">    <div class="rewind">      <ion-button (click)="rewindPrev()"        ><img src="/assets/icon/audio/arrow.svg" alt=""      /></ion-button>    </div>    <div class="play">      <ion-button class="btn-play" (click)="togglePlayer()">        <img          [class.ml-5]="!isPlayed"          [src]="            (!isPlayed ? \'plh_images/icons/play_white.svg\' : \'plh_images/icons/pause_white.svg\')              | plhAsset          "          alt=""        />      </ion-button>    </div>    <div class="forward">      <ion-button (click)="rewindNext()">        <img src="/assets/icon/audio/arrow.svg" alt="" />      </ion-button>    </div>  </div>  <div class="error-text" *ngIf="errorTxt">    {{ errorTxt }}  </div></div></div>'
+    var COMPONENTS = [{'name': 'AccordionSectionComponent', 'selector': 'plh-tmpl-accordion-section'},{'name': 'AnimatedSectionComponent', 'selector': 'plh-tmpl-animated-section'},{'name': 'AnimatedSectionGroupComponent', 'selector': 'plh-tmpl-animated-section-group'},{'name': 'ComboBoxModalComponent', 'selector': 'combo-box-modal'},{'name': 'FormComponent', 'selector': 'plh-tmpl-form'},{'name': 'NavGroupComponent', 'selector': 'plh-tmpl-nav-group'},{'name': 'RoundIconButtonComponent', 'selector': 'plh-round-button'},{'name': 'SelectTextComponent', 'selector': 'plh-select-text'},{'name': 'SquareIconButtonComponent', 'selector': 'plh-square-icon-button'},{'name': 'TemplateBaseComponent', 'selector': ''},{'name': 'TemplateDebuggerComponent', 'selector': 'plh-template-debugger'},{'name': 'TemplateHTMLComponent', 'selector': 'template-html-component'},{'name': 'TemplateLayoutComponent', 'selector': ''},{'name': 'TemplatePopupComponent', 'selector': ''},{'name': 'TmplAccordionComponent', 'selector': 'plh-accordion-component'},{'name': 'TmplAdvancedDashedBoxComponent', 'selector': 'plh-advanced-dashed-box'},{'name': 'TmplAnimatedSlidesComponent', 'selector': 'template-animated-slides'},{'name': 'TmplAudioComponent', 'selector': 'plh-audio'},{'name': 'TmplButtonComponent', 'selector': 'plh-button'},{'name': 'TmplCarouselComponent', 'selector': 'plh-carousel'},{'name': 'TmplComboBoxComponent', 'selector': 'plh-combo-box'},{'name': 'TmplDashedBoxComponent', 'selector': 'plh-dashed-box'},{'name': 'TmplDataItemsComponent', 'selector': 'plh-data-items'},{'name': 'TmplDisplayGridComponent', 'selector': 'plh-display-grid'},{'name': 'TmplDisplayGroupComponent', 'selector': 'plh-tmpl-display-group'},{'name': 'TmplDrawerComponent', 'selector': 'plh-drawer'},{'name': 'TmplHelpIconComponent', 'selector': 'plh-tmpl-help-icon'},{'name': 'TmplIconBannerComponent', 'selector': 'plh-icon-banner'},{'name': 'TmplImageComponent', 'selector': 'plh-tmpl-image'},{'name': 'TmplLatexComponent', 'selector': 'template-latex-component'},{'name': 'TmplLottieAnimation', 'selector': 'plh-tmpl-lottie-animation'},{'name': 'TmplNavigationBarComponent', 'selector': 'plh-navigation-bar'},{'name': 'TmplNumberComponent', 'selector': 'plh-number-selector'},{'name': 'TmplOdkFormComponent', 'selector': 'tmpl-odk-form'},{'name': 'TmplParentPointBoxComponent', 'selector': 'plh-points-item'},{'name': 'TmplParentPointCounterComponent', 'selector': 'plh-parent-point-counter'},{'name': 'TmplPdfComponent', 'selector': 'plh-pdf'},{'name': 'TmplQRCodeComponent', 'selector': 'plh-qr-code'},{'name': 'TmplRadioButtonGridComponent', 'selector': 'plh-radio-button-grid'},{'name': 'TmplRadioGroupComponent', 'selector': 'plh-radio-group'},{'name': 'TmplSimpleCheckboxComponent', 'selector': 'plh-simple-checkbox'},{'name': 'TmplSliderComponent', 'selector': 'plh-slider-new'},{'name': 'TmplSubtitleComponent', 'selector': 'plh-tmpl-subtitle'},{'name': 'TmplTaskCardComponent', 'selector': 'plh-task-card'},{'name': 'TmplTaskProgressBarComponent', 'selector': 'plh-task-progress-bar'},{'name': 'TmplTextAreaComponent', 'selector': 'plh-text-area'},{'name': 'TmplTextBoxComponent', 'selector': 'plh-text-box'},{'name': 'TmplTextComponent', 'selector': 'plh-tmpl-text'},{'name': 'TmplTileComponent', 'selector': 'plh-tile-component'},{'name': 'TmplTimerComponent', 'selector': 'plh-timer'},{'name': 'TmplTitleComponent', 'selector': 'plh-tmpl-title'},{'name': 'TmplToggleBarComponent', 'selector': 'plh-tmpl-toggle-bar'},{'name': 'TmplVideoComponent', 'selector': 'plh-tmpl-video'},{'name': 'WorkshopsComponent', 'selector': 'plh-tmpl-workshops-accordion'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'TmplAudioComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'TmplAudioComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

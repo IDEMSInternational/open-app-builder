@@ -1,0 +1,4757 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.0.3">
+    
+    
+      
+        <title>Template Components - IDEMS Apps</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.6b71719e.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.2505c338.min.css">
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Open Sans";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="a-mber">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#template-components" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="IDEMS Apps" class="md-header__button md-logo" aria-label="IDEMS Apps" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            IDEMS Apps
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Template Components
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/IDEMSInternational/open-app-builder" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="IDEMS Apps" class="md-nav__button md-logo" aria-label="IDEMS Apps" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    IDEMS Apps
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/IDEMSInternational/open-app-builder" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Intro
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2" tabindex="0" aria-expanded="false">
+          Authors
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Authors" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Authors
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../quickstart/" class="md-nav__link">
+        Quickstart
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../notifications/" class="md-nav__link">
+        Notifications
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../feedback/" class="md-nav__link">
+        Feedback
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_2_4" type="checkbox" id="__nav_2_4" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_4" tabindex="0" aria-expanded="false">
+          Advanced
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Advanced" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_4">
+          <span class="md-nav__icon md-icon"></span>
+          Advanced
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../advanced/looping-data/" class="md-nav__link">
+        Looping Data
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../advanced/overrides/" class="md-nav__link">
+        Template Overrides
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../local-sheets/" class="md-nav__link">
+        Local Sheets
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3" tabindex="0" aria-expanded="false">
+          Contributors
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Contributors" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Contributors
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contributors/documentation/running-server/" class="md-nav__link">
+        Running Documentation Server
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contributors/documentation/authoring/" class="md-nav__link">
+        Adding Documentation
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4" tabindex="0" aria-expanded="false">
+          Developers
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Developers" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Developers
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developers/quickstart/" class="md-nav__link">
+        Quickstart
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developers/adding-components/" class="md-nav__link">
+        Adding Components
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developers/deployments/" class="md-nav__link">
+        Deployments
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developers/server-development/" class="md-nav__link">
+        Server Development
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developers/device-testing/" class="md-nav__link">
+        On-device Testing
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developers/android-assets/" class="md-nav__link">
+        Android Assets
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developers/in-app-updates/" class="md-nav__link">
+        In-App Updates
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developers/error-logs/" class="md-nav__link">
+        Error Logs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developers/web-previews/" class="md-nav__link">
+        Web Previews
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developers/code-releases/" class="md-nav__link">
+        Code Releases
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developers/building-and-deploying-to-ios/" class="md-nav__link">
+        Building and deploying to iOS
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5" tabindex="0" aria-expanded="false">
+          Display Components
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Display Components" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Display Components
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../components/audio/" class="md-nav__link">
+        Audio
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../components/button/" class="md-nav__link">
+        Button
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../components/simple_checkbox/" class="md-nav__link">
+        Checkbox
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../components/combo_box/" class="md-nav__link">
+        Combo Box
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../components/html/" class="md-nav__link">
+        HTML
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../components/latex/" class="md-nav__link">
+        LaTeX
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../components/pdf/" class="md-nav__link">
+        PDF
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../components/radio_group/" class="md-nav__link">
+        Radio Group
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../components/round_button/" class="md-nav__link">
+        Round button
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../components/slider/" class="md-nav__link">
+        Slider
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../components/square_button/" class="md-nav__link">
+        Square button
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../components/text/" class="md-nav__link">
+        Text
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../components/timer/" class="md-nav__link">
+        Timer
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../components/video/" class="md-nav__link">
+        Video
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6" tabindex="0" aria-expanded="false">
+          Q & A
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Q & A" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          Q & A
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../questions/parameters_styles/" class="md-nav__link">
+        Parameters vs styles
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../questions/positioning_components/" class="md-nav__link">
+        Positioning components
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../questions/hidden_condition/" class="md-nav__link">
+        Hidden vs condition
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../questions/dynamic_content/" class="md-nav__link">
+        Dynamic content
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_7" tabindex="0" aria-expanded="false">
+          External
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="External" data-md-level="1">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          External
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../generated/components/TmplButtonComponent.html" target="_blank" class="md-nav__link">
+        Compodoc Generated
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#button-tmplbuttoncomponent" class="md-nav__link">
+    Button - TmplButtonComponent
+  </a>
+  
+    <nav class="md-nav" aria-label="Button - TmplButtonComponent">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#type" class="md-nav__link">
+    Type
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#value" class="md-nav__link">
+    Value
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parameters" class="md-nav__link">
+    Parameters
+  </a>
+  
+    <nav class="md-nav" aria-label="Parameters">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#parameter-1" class="md-nav__link">
+    Parameter 1
+  </a>
+  
+    <nav class="md-nav" aria-label="Parameter 1">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#values-and-descriptions" class="md-nav__link">
+    Values and descriptions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parameter-2" class="md-nav__link">
+    Parameter 2
+  </a>
+  
+    <nav class="md-nav" aria-label="Parameter 2">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#values-and-descriptions_1" class="md-nav__link">
+    Values and descriptions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parameter-3" class="md-nav__link">
+    Parameter 3
+  </a>
+  
+    <nav class="md-nav" aria-label="Parameter 3">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#values-and-descriptions_2" class="md-nav__link">
+    Values and descriptions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parameter-4" class="md-nav__link">
+    Parameter 4
+  </a>
+  
+    <nav class="md-nav" aria-label="Parameter 4">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#values-and-descriptions_3" class="md-nav__link">
+    Values and descriptions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#squarebutton-squareiconbuttoncomponent" class="md-nav__link">
+    SquareButton - SquareIconButtonComponent
+  </a>
+  
+    <nav class="md-nav" aria-label="SquareButton - SquareIconButtonComponent">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#type_1" class="md-nav__link">
+    Type
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parameters_1" class="md-nav__link">
+    Parameters
+  </a>
+  
+    <nav class="md-nav" aria-label="Parameters">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#parameter-1_1" class="md-nav__link">
+    Parameter 1
+  </a>
+  
+    <nav class="md-nav" aria-label="Parameter 1">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#values-and-descriptions_4" class="md-nav__link">
+    Values and descriptions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parameter-2_1" class="md-nav__link">
+    Parameter 2
+  </a>
+  
+    <nav class="md-nav" aria-label="Parameter 2">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#values-and-descriptions_5" class="md-nav__link">
+    Values and descriptions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parameter-3_1" class="md-nav__link">
+    Parameter 3
+  </a>
+  
+    <nav class="md-nav" aria-label="Parameter 3">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#values-and-descriptions_6" class="md-nav__link">
+    Values and descriptions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#roundiconbutton-roundiconbuttoncomponent" class="md-nav__link">
+    RoundIconButton - RoundIconButtonComponent
+  </a>
+  
+    <nav class="md-nav" aria-label="RoundIconButton - RoundIconButtonComponent">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#type_2" class="md-nav__link">
+    Type
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parameters_2" class="md-nav__link">
+    Parameters
+  </a>
+  
+    <nav class="md-nav" aria-label="Parameters">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#parameter-1_2" class="md-nav__link">
+    Parameter 1
+  </a>
+  
+    <nav class="md-nav" aria-label="Parameter 1">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#values-and-descriptions_7" class="md-nav__link">
+    Values and descriptions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parameter-2_2" class="md-nav__link">
+    Parameter 2
+  </a>
+  
+    <nav class="md-nav" aria-label="Parameter 2">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#values-and-descriptions_8" class="md-nav__link">
+    Values and descriptions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parameter-3_2" class="md-nav__link">
+    Parameter 3
+  </a>
+  
+    <nav class="md-nav" aria-label="Parameter 3">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#values-and-descriptions_9" class="md-nav__link">
+    Values and descriptions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parameter-4_1" class="md-nav__link">
+    Parameter 4
+  </a>
+  
+    <nav class="md-nav" aria-label="Parameter 4">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#values-and-descriptions_10" class="md-nav__link">
+    Values and descriptions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parameter-5" class="md-nav__link">
+    Parameter 5
+  </a>
+  
+    <nav class="md-nav" aria-label="Parameter 5">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#values-and-descriptions_11" class="md-nav__link">
+    Values and descriptions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parameter-6" class="md-nav__link">
+    Parameter 6
+  </a>
+  
+    <nav class="md-nav" aria-label="Parameter 6">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#values-and-descriptions_12" class="md-nav__link">
+    Values and descriptions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parameter-7" class="md-nav__link">
+    Parameter 7
+  </a>
+  
+    <nav class="md-nav" aria-label="Parameter 7">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#values-and-descriptions_13" class="md-nav__link">
+    Values and descriptions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#number-selector-tmplnumbercomponent" class="md-nav__link">
+    Number Selector - TmplNumberComponent
+  </a>
+  
+    <nav class="md-nav" aria-label="Number Selector - TmplNumberComponent">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#type_3" class="md-nav__link">
+    Type
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#value_1" class="md-nav__link">
+    Value
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parameters_3" class="md-nav__link">
+    Parameters
+  </a>
+  
+    <nav class="md-nav" aria-label="Parameters">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#parameter-1_3" class="md-nav__link">
+    Parameter 1
+  </a>
+  
+    <nav class="md-nav" aria-label="Parameter 1">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#values-and-descriptions_14" class="md-nav__link">
+    Values and descriptions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parameter-2_3" class="md-nav__link">
+    Parameter 2
+  </a>
+  
+    <nav class="md-nav" aria-label="Parameter 2">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#values-and-descriptions_15" class="md-nav__link">
+    Values and descriptions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parameter-3_3" class="md-nav__link">
+    Parameter 3
+  </a>
+  
+    <nav class="md-nav" aria-label="Parameter 3">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#values-and-descriptions_16" class="md-nav__link">
+    Values and descriptions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parameter-4_2" class="md-nav__link">
+    Parameter 4
+  </a>
+  
+    <nav class="md-nav" aria-label="Parameter 4">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#values-and-descriptions_17" class="md-nav__link">
+    Values and descriptions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parameter-5_1" class="md-nav__link">
+    Parameter 5
+  </a>
+  
+    <nav class="md-nav" aria-label="Parameter 5">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#values-and-descriptions_18" class="md-nav__link">
+    Values and descriptions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parameter-6_1" class="md-nav__link">
+    Parameter 6
+  </a>
+  
+    <nav class="md-nav" aria-label="Parameter 6">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#values-and-descriptions_19" class="md-nav__link">
+    Values and descriptions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parameter-7_1" class="md-nav__link">
+    Parameter 7
+  </a>
+  
+    <nav class="md-nav" aria-label="Parameter 7">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#values-and-descriptions_20" class="md-nav__link">
+    Values and descriptions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#checkbox-tmplsimplecheckboxcomponent" class="md-nav__link">
+    Checkbox - TmplSimpleCheckboxComponent
+  </a>
+  
+    <nav class="md-nav" aria-label="Checkbox - TmplSimpleCheckboxComponent">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#type_4" class="md-nav__link">
+    Type
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#value_2" class="md-nav__link">
+    Value
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parameters_4" class="md-nav__link">
+    Parameters
+  </a>
+  
+    <nav class="md-nav" aria-label="Parameters">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#parameter-1_4" class="md-nav__link">
+    Parameter 1
+  </a>
+  
+    <nav class="md-nav" aria-label="Parameter 1">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#values-and-descriptions_21" class="md-nav__link">
+    Values and descriptions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parameter-2_4" class="md-nav__link">
+    Parameter 2
+  </a>
+  
+    <nav class="md-nav" aria-label="Parameter 2">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#values-and-descriptions_22" class="md-nav__link">
+    Values and descriptions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parameter-3_4" class="md-nav__link">
+    Parameter 3
+  </a>
+  
+    <nav class="md-nav" aria-label="Parameter 3">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#values-and-descriptions_23" class="md-nav__link">
+    Values and descriptions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parameter-4_3" class="md-nav__link">
+    Parameter 4
+  </a>
+  
+    <nav class="md-nav" aria-label="Parameter 4">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#values-and-descriptions_24" class="md-nav__link">
+    Values and descriptions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#slider-tmplslidercomponent" class="md-nav__link">
+    Slider - TmplSliderComponent
+  </a>
+  
+    <nav class="md-nav" aria-label="Slider - TmplSliderComponent">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#type_5" class="md-nav__link">
+    Type
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#value_3" class="md-nav__link">
+    Value
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parameters_5" class="md-nav__link">
+    Parameters
+  </a>
+  
+    <nav class="md-nav" aria-label="Parameters">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#parameter-1_5" class="md-nav__link">
+    Parameter 1
+  </a>
+  
+    <nav class="md-nav" aria-label="Parameter 1">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#values-and-descriptions_25" class="md-nav__link">
+    Values and descriptions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parameter-2_5" class="md-nav__link">
+    Parameter 2
+  </a>
+  
+    <nav class="md-nav" aria-label="Parameter 2">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#values-and-descriptions_26" class="md-nav__link">
+    Values and descriptions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parameter-3_5" class="md-nav__link">
+    Parameter 3
+  </a>
+  
+    <nav class="md-nav" aria-label="Parameter 3">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#values-and-descriptions_27" class="md-nav__link">
+    Values and descriptions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parameter-4_4" class="md-nav__link">
+    Parameter 4
+  </a>
+  
+    <nav class="md-nav" aria-label="Parameter 4">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#values-and-descriptions_28" class="md-nav__link">
+    Values and descriptions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parameter-5_2" class="md-nav__link">
+    Parameter 5
+  </a>
+  
+    <nav class="md-nav" aria-label="Parameter 5">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#values-and-descriptions_29" class="md-nav__link">
+    Values and descriptions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parameter-6_2" class="md-nav__link">
+    Parameter 6
+  </a>
+  
+    <nav class="md-nav" aria-label="Parameter 6">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#values-and-descriptions_30" class="md-nav__link">
+    Values and descriptions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parameter-7_2" class="md-nav__link">
+    Parameter 7
+  </a>
+  
+    <nav class="md-nav" aria-label="Parameter 7">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#values-and-descriptions_31" class="md-nav__link">
+    Values and descriptions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parameter-8" class="md-nav__link">
+    Parameter 8
+  </a>
+  
+    <nav class="md-nav" aria-label="Parameter 8">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#values-and-descriptions_32" class="md-nav__link">
+    Values and descriptions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parameter-9" class="md-nav__link">
+    Parameter 9
+  </a>
+  
+    <nav class="md-nav" aria-label="Parameter 9">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#values-and-descriptions_33" class="md-nav__link">
+    Values and descriptions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parameter-10" class="md-nav__link">
+    Parameter 10
+  </a>
+  
+    <nav class="md-nav" aria-label="Parameter 10">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#values-and-descriptions_34" class="md-nav__link">
+    Values and descriptions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#timer-tmpltimercomponent" class="md-nav__link">
+    Timer - TmplTimerComponent
+  </a>
+  
+    <nav class="md-nav" aria-label="Timer - TmplTimerComponent">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#type_6" class="md-nav__link">
+    Type
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#value_4" class="md-nav__link">
+    Value
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parameters_6" class="md-nav__link">
+    Parameters
+  </a>
+  
+    <nav class="md-nav" aria-label="Parameters">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#parameter-1_6" class="md-nav__link">
+    Parameter 1
+  </a>
+  
+    <nav class="md-nav" aria-label="Parameter 1">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#values-and-descriptions_35" class="md-nav__link">
+    Values and descriptions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parameter-2_6" class="md-nav__link">
+    Parameter 2
+  </a>
+  
+    <nav class="md-nav" aria-label="Parameter 2">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#values-and-descriptions_36" class="md-nav__link">
+    Values and descriptions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parameter-3_6" class="md-nav__link">
+    Parameter 3
+  </a>
+  
+    <nav class="md-nav" aria-label="Parameter 3">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#values-and-descriptions_37" class="md-nav__link">
+    Values and descriptions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parameter-4_5" class="md-nav__link">
+    Parameter 4
+  </a>
+  
+    <nav class="md-nav" aria-label="Parameter 4">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#values-and-descriptions_38" class="md-nav__link">
+    Values and descriptions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parameter-5_3" class="md-nav__link">
+    Parameter 5
+  </a>
+  
+    <nav class="md-nav" aria-label="Parameter 5">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#values-and-descriptions_39" class="md-nav__link">
+    Values and descriptions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parameter-6_3" class="md-nav__link">
+    Parameter 6
+  </a>
+  
+    <nav class="md-nav" aria-label="Parameter 6">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#values-and-descriptions_40" class="md-nav__link">
+    Values and descriptions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#radio-buttons-tmplradiogroupcomponent" class="md-nav__link">
+    Radio Buttons - TmplRadioGroupComponent
+  </a>
+  
+    <nav class="md-nav" aria-label="Radio Buttons - TmplRadioGroupComponent">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#type_7" class="md-nav__link">
+    Type
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#value_5" class="md-nav__link">
+    Value
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parameters_7" class="md-nav__link">
+    Parameters
+  </a>
+  
+    <nav class="md-nav" aria-label="Parameters">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#parameter-1_7" class="md-nav__link">
+    Parameter 1
+  </a>
+  
+    <nav class="md-nav" aria-label="Parameter 1">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#values-and-descriptions_41" class="md-nav__link">
+    Values and descriptions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parameter-2_7" class="md-nav__link">
+    Parameter 2
+  </a>
+  
+    <nav class="md-nav" aria-label="Parameter 2">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#values-and-descriptions_42" class="md-nav__link">
+    Values and descriptions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parameter-3_7" class="md-nav__link">
+    Parameter 3
+  </a>
+  
+    <nav class="md-nav" aria-label="Parameter 3">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#values-and-descriptions_43" class="md-nav__link">
+    Values and descriptions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parameter-4_6" class="md-nav__link">
+    Parameter 4
+  </a>
+  
+    <nav class="md-nav" aria-label="Parameter 4">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#values-and-descriptions_44" class="md-nav__link">
+    Values and descriptions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#combobox-tmplcomboboxcomponent" class="md-nav__link">
+    ComboBox - TmplComboBoxComponent
+  </a>
+  
+    <nav class="md-nav" aria-label="ComboBox - TmplComboBoxComponent">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#type_8" class="md-nav__link">
+    Type
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#value_6" class="md-nav__link">
+    Value
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parameters_8" class="md-nav__link">
+    Parameters
+  </a>
+  
+    <nav class="md-nav" aria-label="Parameters">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#parameter-1_8" class="md-nav__link">
+    Parameter 1
+  </a>
+  
+    <nav class="md-nav" aria-label="Parameter 1">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#values-and-descriptions_45" class="md-nav__link">
+    Values and descriptions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parameter-2_8" class="md-nav__link">
+    Parameter 2
+  </a>
+  
+    <nav class="md-nav" aria-label="Parameter 2">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#values-and-descriptions_46" class="md-nav__link">
+    Values and descriptions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parameter-3_8" class="md-nav__link">
+    Parameter 3
+  </a>
+  
+    <nav class="md-nav" aria-label="Parameter 3">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#values-and-descriptions_47" class="md-nav__link">
+    Values and descriptions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parameter-4_7" class="md-nav__link">
+    Parameter 4
+  </a>
+  
+    <nav class="md-nav" aria-label="Parameter 4">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#values-and-descriptions_48" class="md-nav__link">
+    Values and descriptions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parameter-5_4" class="md-nav__link">
+    Parameter 5
+  </a>
+  
+    <nav class="md-nav" aria-label="Parameter 5">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#values-and-descriptions_49" class="md-nav__link">
+    Values and descriptions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#textbox-tmpltextboxcomponent" class="md-nav__link">
+    TextBox - TmplTextBoxComponent
+  </a>
+  
+    <nav class="md-nav" aria-label="TextBox - TmplTextBoxComponent">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#type_9" class="md-nav__link">
+    Type
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#value_7" class="md-nav__link">
+    Value
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parameters_9" class="md-nav__link">
+    Parameters
+  </a>
+  
+    <nav class="md-nav" aria-label="Parameters">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#parameter-1_9" class="md-nav__link">
+    Parameter 1
+  </a>
+  
+    <nav class="md-nav" aria-label="Parameter 1">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#values-and-descriptions_50" class="md-nav__link">
+    Values and descriptions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parameter-2_9" class="md-nav__link">
+    Parameter 2
+  </a>
+  
+    <nav class="md-nav" aria-label="Parameter 2">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#values-and-descriptions_51" class="md-nav__link">
+    Values and descriptions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parameter-3_9" class="md-nav__link">
+    Parameter 3
+  </a>
+  
+    <nav class="md-nav" aria-label="Parameter 3">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#values-and-descriptions_52" class="md-nav__link">
+    Values and descriptions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parameter-4_8" class="md-nav__link">
+    Parameter 4
+  </a>
+  
+    <nav class="md-nav" aria-label="Parameter 4">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#values-and-descriptions_53" class="md-nav__link">
+    Values and descriptions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parameter-5_5" class="md-nav__link">
+    Parameter 5
+  </a>
+  
+    <nav class="md-nav" aria-label="Parameter 5">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#values-and-descriptions_54" class="md-nav__link">
+    Values and descriptions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tilecomponent-tmpltilecomponent" class="md-nav__link">
+    TileComponent - TmplTileComponent
+  </a>
+  
+    <nav class="md-nav" aria-label="TileComponent - TmplTileComponent">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#type_10" class="md-nav__link">
+    Type
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#value_8" class="md-nav__link">
+    Value
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parameters_10" class="md-nav__link">
+    Parameters
+  </a>
+  
+    <nav class="md-nav" aria-label="Parameters">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#parameter-1_10" class="md-nav__link">
+    Parameter 1
+  </a>
+  
+    <nav class="md-nav" aria-label="Parameter 1">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#values-and-descriptions_55" class="md-nav__link">
+    Values and descriptions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parameter-2_10" class="md-nav__link">
+    Parameter 2
+  </a>
+  
+    <nav class="md-nav" aria-label="Parameter 2">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#values-and-descriptions_56" class="md-nav__link">
+    Values and descriptions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parameter-3_10" class="md-nav__link">
+    Parameter 3
+  </a>
+  
+    <nav class="md-nav" aria-label="Parameter 3">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#values-and-descriptions_57" class="md-nav__link">
+    Values and descriptions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parameter-4_9" class="md-nav__link">
+    Parameter 4
+  </a>
+  
+    <nav class="md-nav" aria-label="Parameter 4">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#values-and-descriptions_58" class="md-nav__link">
+    Values and descriptions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parameter-5_6" class="md-nav__link">
+    Parameter 5
+  </a>
+  
+    <nav class="md-nav" aria-label="Parameter 5">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#values-and-descriptions_59" class="md-nav__link">
+    Values and descriptions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dashedbox-tmpldashedboxcomponent" class="md-nav__link">
+    DashedBox - TmplDashedBoxComponent
+  </a>
+  
+    <nav class="md-nav" aria-label="DashedBox - TmplDashedBoxComponent">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#type_11" class="md-nav__link">
+    Type
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#value_9" class="md-nav__link">
+    Value
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parameters_11" class="md-nav__link">
+    Parameters
+  </a>
+  
+    <nav class="md-nav" aria-label="Parameters">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#parameter-1_11" class="md-nav__link">
+    Parameter 1
+  </a>
+  
+    <nav class="md-nav" aria-label="Parameter 1">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#values-and-descriptions_60" class="md-nav__link">
+    Values and descriptions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parameter-2_11" class="md-nav__link">
+    Parameter 2
+  </a>
+  
+    <nav class="md-nav" aria-label="Parameter 2">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#values-and-descriptions_61" class="md-nav__link">
+    Values and descriptions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parameter-3_11" class="md-nav__link">
+    Parameter 3
+  </a>
+  
+    <nav class="md-nav" aria-label="Parameter 3">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#values-and-descriptions_62" class="md-nav__link">
+    Values and descriptions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#title-tmpltitlecomponent" class="md-nav__link">
+    Title - TmplTitleComponent
+  </a>
+  
+    <nav class="md-nav" aria-label="Title - TmplTitleComponent">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#type_12" class="md-nav__link">
+    Type
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#value_10" class="md-nav__link">
+    Value
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parameters_12" class="md-nav__link">
+    Parameters
+  </a>
+  
+    <nav class="md-nav" aria-label="Parameters">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#parameter-1_12" class="md-nav__link">
+    Parameter 1
+  </a>
+  
+    <nav class="md-nav" aria-label="Parameter 1">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#values-and-descriptions_63" class="md-nav__link">
+    Values and descriptions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parameter-2_12" class="md-nav__link">
+    Parameter 2
+  </a>
+  
+    <nav class="md-nav" aria-label="Parameter 2">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#values-and-descriptions_64" class="md-nav__link">
+    Values and descriptions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parameter-3_12" class="md-nav__link">
+    Parameter 3
+  </a>
+  
+    <nav class="md-nav" aria-label="Parameter 3">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#values-and-descriptions_65" class="md-nav__link">
+    Values and descriptions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parameter-4_10" class="md-nav__link">
+    Parameter 4
+  </a>
+  
+    <nav class="md-nav" aria-label="Parameter 4">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#values-and-descriptions_66" class="md-nav__link">
+    Values and descriptions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#subtitlecomponent-tmplsubtitlecomponent" class="md-nav__link">
+    SubtitleComponent - TmplSubtitleComponent
+  </a>
+  
+    <nav class="md-nav" aria-label="SubtitleComponent - TmplSubtitleComponent">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#type_13" class="md-nav__link">
+    Type
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#value_11" class="md-nav__link">
+    Value
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parameters_13" class="md-nav__link">
+    Parameters
+  </a>
+  
+    <nav class="md-nav" aria-label="Parameters">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#parameter-1_13" class="md-nav__link">
+    Parameter 1
+  </a>
+  
+    <nav class="md-nav" aria-label="Parameter 1">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#values-and-descriptions_67" class="md-nav__link">
+    Values and descriptions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#textcomponent-tmpltextcomponent" class="md-nav__link">
+    TextComponent - TmplTextComponent
+  </a>
+  
+    <nav class="md-nav" aria-label="TextComponent - TmplTextComponent">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#type_14" class="md-nav__link">
+    Type
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#value_12" class="md-nav__link">
+    Value
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parameters_14" class="md-nav__link">
+    Parameters
+  </a>
+  
+    <nav class="md-nav" aria-label="Parameters">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#parameter-1_14" class="md-nav__link">
+    Parameter 1
+  </a>
+  
+    <nav class="md-nav" aria-label="Parameter 1">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#values-and-descriptions_68" class="md-nav__link">
+    Values and descriptions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parameter-2_13" class="md-nav__link">
+    Parameter 2
+  </a>
+  
+    <nav class="md-nav" aria-label="Parameter 2">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#values-and-descriptions_69" class="md-nav__link">
+    Values and descriptions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#displaygroupcomponent-tmpldisplaygroupcomponent" class="md-nav__link">
+    DisplayGroupComponent - TmplDisplayGroupComponent
+  </a>
+  
+    <nav class="md-nav" aria-label="DisplayGroupComponent - TmplDisplayGroupComponent">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#type_15" class="md-nav__link">
+    Type
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parameters_15" class="md-nav__link">
+    Parameters
+  </a>
+  
+    <nav class="md-nav" aria-label="Parameters">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#parameter-1_15" class="md-nav__link">
+    Parameter 1
+  </a>
+  
+    <nav class="md-nav" aria-label="Parameter 1">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#values-and-descriptions_70" class="md-nav__link">
+    Values and descriptions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parameter-2_14" class="md-nav__link">
+    Parameter 2
+  </a>
+  
+    <nav class="md-nav" aria-label="Parameter 2">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#values-and-descriptions_71" class="md-nav__link">
+    Values and descriptions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#to-display-the-element-display_group-with-style-navigation-correctly-the-element-must-be-the-last-one-in-the-spreadsheets" class="md-nav__link">
+    To display the element display_group with style === navigation correctly, the element must be the last one in the spreadsheets
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#if-style-banner-and-action_id-set_theme-active-passive-its-will-be-changed-main-background-color-and-display_group-background-color" class="md-nav__link">
+    If style === 'banner' and action_id === 'set_theme: active | passive' it's will be changed main background color and display_group background color.
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pointboxcomponent-tmplpointboxcomponent" class="md-nav__link">
+    PointBoxComponent - TmplPointBoxComponent
+  </a>
+  
+    <nav class="md-nav" aria-label="PointBoxComponent - TmplPointBoxComponent">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#type_16" class="md-nav__link">
+    Type
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#value_13" class="md-nav__link">
+    Value
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parameters_16" class="md-nav__link">
+    Parameters
+  </a>
+  
+    <nav class="md-nav" aria-label="Parameters">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#parameter-1_16" class="md-nav__link">
+    Parameter 1
+  </a>
+  
+    <nav class="md-nav" aria-label="Parameter 1">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#values-and-descriptions_72" class="md-nav__link">
+    Values and descriptions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parameter-2_15" class="md-nav__link">
+    Parameter 2
+  </a>
+  
+    <nav class="md-nav" aria-label="Parameter 2">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#values-and-descriptions_73" class="md-nav__link">
+    Values and descriptions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parameter-3_13" class="md-nav__link">
+    Parameter 3
+  </a>
+  
+    <nav class="md-nav" aria-label="Parameter 3">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#values-and-descriptions_74" class="md-nav__link">
+    Values and descriptions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parameter-4_11" class="md-nav__link">
+    Parameter 4
+  </a>
+  
+    <nav class="md-nav" aria-label="Parameter 4">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#values-and-descriptions_75" class="md-nav__link">
+    Values and descriptions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#imagecomponent-tmplimagecomponent" class="md-nav__link">
+    ImageComponent - TmplImageComponent
+  </a>
+  
+    <nav class="md-nav" aria-label="ImageComponent - TmplImageComponent">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#type_17" class="md-nav__link">
+    Type
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#value_14" class="md-nav__link">
+    Value
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parameters_17" class="md-nav__link">
+    Parameters
+  </a>
+  
+    <nav class="md-nav" aria-label="Parameters">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#parameter-1_17" class="md-nav__link">
+    Parameter 1
+  </a>
+  
+    <nav class="md-nav" aria-label="Parameter 1">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#values-and-descriptions_76" class="md-nav__link">
+    Values and descriptions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#parentpointcountercomponent-tmplparentpointcountercomponent" class="md-nav__link">
+    ParentPointCounterComponent - TmplParentPointCounterComponent
+  </a>
+  
+    <nav class="md-nav" aria-label="ParentPointCounterComponent - TmplParentPointCounterComponent">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#type_18" class="md-nav__link">
+    Type
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#value_15" class="md-nav__link">
+    Value
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parameters_18" class="md-nav__link">
+    Parameters
+  </a>
+  
+    <nav class="md-nav" aria-label="Parameters">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#parameter-1_18" class="md-nav__link">
+    Parameter 1
+  </a>
+  
+    <nav class="md-nav" aria-label="Parameter 1">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#values-and-descriptions_77" class="md-nav__link">
+    Values and descriptions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parameter-1_19" class="md-nav__link">
+    Parameter 1
+  </a>
+  
+    <nav class="md-nav" aria-label="Parameter 1">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#values-and-descriptions_78" class="md-nav__link">
+    Values and descriptions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#textareacomponent-tmpltextareacomponent" class="md-nav__link">
+    TextAreaComponent - TmplTextAreaComponent
+  </a>
+  
+    <nav class="md-nav" aria-label="TextAreaComponent - TmplTextAreaComponent">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#type_19" class="md-nav__link">
+    Type
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parameters_19" class="md-nav__link">
+    Parameters
+  </a>
+  
+    <nav class="md-nav" aria-label="Parameters">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#parameter-1_20" class="md-nav__link">
+    Parameter 1
+  </a>
+  
+    <nav class="md-nav" aria-label="Parameter 1">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#values-and-descriptions_79" class="md-nav__link">
+    Values and descriptions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#togglebarcomponent-tmpltogglebarcomponent" class="md-nav__link">
+    ToggleBarComponent - TmplToggleBarComponent
+  </a>
+  
+    <nav class="md-nav" aria-label="ToggleBarComponent - TmplToggleBarComponent">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#type_20" class="md-nav__link">
+    Type
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parameters_20" class="md-nav__link">
+    Parameters
+  </a>
+  
+    <nav class="md-nav" aria-label="Parameters">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#parameter-1_21" class="md-nav__link">
+    Parameter 1
+  </a>
+  
+    <nav class="md-nav" aria-label="Parameter 1">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#values-and-descriptions_80" class="md-nav__link">
+    Values and descriptions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parameter-2_16" class="md-nav__link">
+    Parameter 2
+  </a>
+  
+    <nav class="md-nav" aria-label="Parameter 2">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#values-and-descriptions_81" class="md-nav__link">
+    Values and descriptions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parameter-3_14" class="md-nav__link">
+    Parameter 3
+  </a>
+  
+    <nav class="md-nav" aria-label="Parameter 3">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#values-and-descriptions_82" class="md-nav__link">
+    Values and descriptions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parameter-4_12" class="md-nav__link">
+    Parameter 4
+  </a>
+  
+    <nav class="md-nav" aria-label="Parameter 4">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#values-and-descriptions_83" class="md-nav__link">
+    Values and descriptions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#formcomponent" class="md-nav__link">
+    FormComponent
+  </a>
+  
+    <nav class="md-nav" aria-label="FormComponent">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#type_21" class="md-nav__link">
+    Type
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parameters_21" class="md-nav__link">
+    Parameters
+  </a>
+  
+    <nav class="md-nav" aria-label="Parameters">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#parameter-1_22" class="md-nav__link">
+    Parameter 1
+  </a>
+  
+    <nav class="md-nav" aria-label="Parameter 1">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#values-and-descriptions_84" class="md-nav__link">
+    Values and descriptions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parameter-2_17" class="md-nav__link">
+    Parameter 2
+  </a>
+  
+    <nav class="md-nav" aria-label="Parameter 2">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#values-and-descriptions_85" class="md-nav__link">
+    Values and descriptions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parameter-3_15" class="md-nav__link">
+    Parameter 3
+  </a>
+  
+    <nav class="md-nav" aria-label="Parameter 3">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#values-and-descriptions_86" class="md-nav__link">
+    Values and descriptions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parameter-4_13" class="md-nav__link">
+    Parameter 4
+  </a>
+  
+    <nav class="md-nav" aria-label="Parameter 4">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#values-and-descriptions_87" class="md-nav__link">
+    Values and descriptions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#advanceddashedboxcomponent-tmpladvanceddashedboxcomponent" class="md-nav__link">
+    AdvancedDashedBoxComponent - TmplAdvancedDashedBoxComponent
+  </a>
+  
+    <nav class="md-nav" aria-label="AdvancedDashedBoxComponent - TmplAdvancedDashedBoxComponent">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#type_22" class="md-nav__link">
+    Type
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parameters_22" class="md-nav__link">
+    Parameters
+  </a>
+  
+    <nav class="md-nav" aria-label="Parameters">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#parameter-1_23" class="md-nav__link">
+    Parameter 1
+  </a>
+  
+    <nav class="md-nav" aria-label="Parameter 1">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#values-and-descriptions_88" class="md-nav__link">
+    Values and descriptions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parameter-2_18" class="md-nav__link">
+    Parameter 2
+  </a>
+  
+    <nav class="md-nav" aria-label="Parameter 2">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#values-and-descriptions_89" class="md-nav__link">
+    Values and descriptions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parameter-3_16" class="md-nav__link">
+    Parameter 3
+  </a>
+  
+    <nav class="md-nav" aria-label="Parameter 3">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#values-and-descriptions_90" class="md-nav__link">
+    Values and descriptions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#helpiconcomponent-tmplhelpiconcomponent" class="md-nav__link">
+    HelpIconComponent - TmplHelpIconComponent
+  </a>
+  
+    <nav class="md-nav" aria-label="HelpIconComponent - TmplHelpIconComponent">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#type_23" class="md-nav__link">
+    Type
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parameters_23" class="md-nav__link">
+    Parameters
+  </a>
+  
+    <nav class="md-nav" aria-label="Parameters">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#parameter-1_24" class="md-nav__link">
+    Parameter 1
+  </a>
+  
+    <nav class="md-nav" aria-label="Parameter 1">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#values-and-descriptions_91" class="md-nav__link">
+    Values and descriptions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#padding-and-margins-control" class="md-nav__link">
+    Padding and Margins control:
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+
+<h1 id="template-components">Template Components<a class="headerlink" href="#template-components" title="Permanent link">&para;</a></h1>
+<h2 id="button-tmplbuttoncomponent">Button - TmplButtonComponent<a class="headerlink" href="#button-tmplbuttoncomponent" title="Permanent link">&para;</a></h2>
+<h3 id="type">Type<a class="headerlink" href="#type" title="Permanent link">&para;</a></h3>
+<p>type: button </p>
+<h3 id="value">Value<a class="headerlink" href="#value" title="Permanent link">&para;</a></h3>
+<p>value: text - button text</p>
+<h3 id="parameters">Parameters<a class="headerlink" href="#parameters" title="Permanent link">&para;</a></h3>
+<h4 id="parameter-1">Parameter 1<a class="headerlink" href="#parameter-1" title="Permanent link">&para;</a></h4>
+<p>Parameter Name: disabled</p>
+<h5 id="values-and-descriptions">Values and descriptions<a class="headerlink" href="#values-and-descriptions" title="Permanent link">&para;</a></h5>
+<p>value_1: false (default) 
+description: Available click event
+value_2: true 
+description: Disabled click event</p>
+<h4 id="parameter-2">Parameter 2<a class="headerlink" href="#parameter-2" title="Permanent link">&para;</a></h4>
+<p>Parameter Name: style </p>
+<h5 id="values-and-descriptions_1">Values and descriptions<a class="headerlink" href="#values-and-descriptions_1" title="Permanent link">&para;</a></h5>
+<p>description: String. Class name for button. 
+value_1: information - (default) 
+description: Primary background color. (--ion-btn-primary)
+value_2: full - (default) 
+description: Full width
+value_3: standard - (default) 
+description: Text color white (--ion-color-primary-contrast) 
+value_4: medium - (default) 
+description: Medium height (--buttons-medium-height)
+value_5: short
+description: Short height (--buttons-short-height)
+value_6: tall
+description: Tall height (--buttons-tall-height)
+value_7: medium_round
+description: Medium border radius (--ion-border-radius-secondary)
+value_8: no_shadow
+description: No box shadow
+value_9: flexible
+description: Button width equal to its content width
+value_10: alternative
+description: Text color primary  (--ion-color-primary)</p>
+<h4 id="parameter-3">Parameter 3<a class="headerlink" href="#parameter-3" title="Permanent link">&para;</a></h4>
+<p>Parameter Name: text_align </p>
+<h5 id="values-and-descriptions_2">Values and descriptions<a class="headerlink" href="#values-and-descriptions_2" title="Permanent link">&para;</a></h5>
+<p>value_1: left - (default) 
+description: Text position inside
+value_2: center 
+description: Text position inside 
+value_3: right 
+description: Text position inside</p>
+<h4 id="parameter-4">Parameter 4<a class="headerlink" href="#parameter-4" title="Permanent link">&para;</a></h4>
+<p>Parameter Name: button_align </p>
+<h5 id="values-and-descriptions_3">Values and descriptions<a class="headerlink" href="#values-and-descriptions_3" title="Permanent link">&para;</a></h5>
+<p>value_1: center - (default) 
+description: Button position
+value_2: left 
+description: Button position <br />
+value_3: right 
+description: Button position   </p>
+<h2 id="squarebutton-squareiconbuttoncomponent">SquareButton - SquareIconButtonComponent<a class="headerlink" href="#squarebutton-squareiconbuttoncomponent" title="Permanent link">&para;</a></h2>
+<h3 id="type_1">Type<a class="headerlink" href="#type_1" title="Permanent link">&para;</a></h3>
+<p>type: square_button </p>
+<h3 id="parameters_1">Parameters<a class="headerlink" href="#parameters_1" title="Permanent link">&para;</a></h3>
+<h4 id="parameter-1_1">Parameter 1<a class="headerlink" href="#parameter-1_1" title="Permanent link">&para;</a></h4>
+<p>Parameter Name: disabled</p>
+<h5 id="values-and-descriptions_4">Values and descriptions<a class="headerlink" href="#values-and-descriptions_4" title="Permanent link">&para;</a></h5>
+<p>value_1: false (default) 
+description: Available click event
+value_2: true 
+description: Disabled click event</p>
+<h4 id="parameter-2_1">Parameter 2<a class="headerlink" href="#parameter-2_1" title="Permanent link">&para;</a></h4>
+<p>Parameter Name: icon_src</p>
+<h5 id="values-and-descriptions_5">Values and descriptions<a class="headerlink" href="#values-and-descriptions_5" title="Permanent link">&para;</a></h5>
+<p>value_1: empty string (default) 
+description: no icon
+value_2: string 
+description: path for icon</p>
+<h4 id="parameter-3_1">Parameter 3<a class="headerlink" href="#parameter-3_1" title="Permanent link">&para;</a></h4>
+<p>Parameter Name: style </p>
+<h5 id="values-and-descriptions_6">Values and descriptions<a class="headerlink" href="#values-and-descriptions_6" title="Permanent link">&para;</a></h5>
+<p>description: String. Class name for button. 
+value_1: information - (default) 
+description: Primary background color. (--ion-btn-primary)
+value_2: navigation 
+description: Secondary background color. (--ion-btn-secondary)</p>
+<h2 id="roundiconbutton-roundiconbuttoncomponent">RoundIconButton - RoundIconButtonComponent<a class="headerlink" href="#roundiconbutton-roundiconbuttoncomponent" title="Permanent link">&para;</a></h2>
+<h3 id="type_2">Type<a class="headerlink" href="#type_2" title="Permanent link">&para;</a></h3>
+<p>type: round_button </p>
+<h3 id="parameters_2">Parameters<a class="headerlink" href="#parameters_2" title="Permanent link">&para;</a></h3>
+<h4 id="parameter-1_2">Parameter 1<a class="headerlink" href="#parameter-1_2" title="Permanent link">&para;</a></h4>
+<p>Parameter Name: disabled</p>
+<h5 id="values-and-descriptions_7">Values and descriptions<a class="headerlink" href="#values-and-descriptions_7" title="Permanent link">&para;</a></h5>
+<p>value_1: false (default) 
+description: Available click event
+value_2: true 
+description: Disabled click event</p>
+<h4 id="parameter-2_2">Parameter 2<a class="headerlink" href="#parameter-2_2" title="Permanent link">&para;</a></h4>
+<p>Parameter Name: icon_src</p>
+<h5 id="values-and-descriptions_8">Values and descriptions<a class="headerlink" href="#values-and-descriptions_8" title="Permanent link">&para;</a></h5>
+<p>value_1: empty string (default) 
+description: no icon
+value_2: string 
+description: path for icon</p>
+<h4 id="parameter-3_2">Parameter 3<a class="headerlink" href="#parameter-3_2" title="Permanent link">&para;</a></h4>
+<p>Parameter Name: style </p>
+<h5 id="values-and-descriptions_9">Values and descriptions<a class="headerlink" href="#values-and-descriptions_9" title="Permanent link">&para;</a></h5>
+<p>description: String. Class name for button. 
+value_1: information - (default) 
+description: Primary background color. (--ion-btn-primary)
+value_2: navigation 
+description: Secondary background color. (--ion-btn-secondary)
+value_3: yellow 
+description: yellow background (--round-icon-button-light)
+value_4: orange 
+description: orange background (--round-icon-button)
+value_5: dark_orange 
+description: dark_orange background (--round-icon-button-dark)
+value_6: home_screen 
+description: specific styles to place the button on home screen </p>
+<h4 id="parameter-4_1">Parameter 4<a class="headerlink" href="#parameter-4_1" title="Permanent link">&para;</a></h4>
+<p>Parameter Name: button_align </p>
+<h5 id="values-and-descriptions_10">Values and descriptions<a class="headerlink" href="#values-and-descriptions_10" title="Permanent link">&para;</a></h5>
+<p>value_1: center - (default) 
+description: Button position
+value_2: left 
+description: Button position <br />
+value_3: right 
+description: Button position </p>
+<h4 id="parameter-5">Parameter 5<a class="headerlink" href="#parameter-5" title="Permanent link">&para;</a></h4>
+<p>Parameter Name: text </p>
+<h5 id="values-and-descriptions_11">Values and descriptions<a class="headerlink" href="#values-and-descriptions_11" title="Permanent link">&para;</a></h5>
+<p>value_1: empty string - (default) 
+description: no text for the button
+value_2: string 
+description: any string as a button text</p>
+<h4 id="parameter-6">Parameter 6<a class="headerlink" href="#parameter-6" title="Permanent link">&para;</a></h4>
+<p>Parameter Name: starting_seconds</p>
+<h5 id="values-and-descriptions_12">Values and descriptions<a class="headerlink" href="#values-and-descriptions_12" title="Permanent link">&para;</a></h5>
+<p>value_1: 0 - (default) 
+description: 0 seconds by default
+value_2: number
+description: any number as starting seconds</p>
+<h4 id="parameter-7">Parameter 7<a class="headerlink" href="#parameter-7" title="Permanent link">&para;</a></h4>
+<p>Parameter Name: ping</p>
+<h5 id="values-and-descriptions_13">Values and descriptions<a class="headerlink" href="#values-and-descriptions_13" title="Permanent link">&para;</a></h5>
+<p>value_1: '' - (default) </p>
+<h2 id="number-selector-tmplnumbercomponent">Number Selector - TmplNumberComponent<a class="headerlink" href="#number-selector-tmplnumbercomponent" title="Permanent link">&para;</a></h2>
+<h3 id="type_3">Type<a class="headerlink" href="#type_3" title="Permanent link">&para;</a></h3>
+<p>type: number_selector </p>
+<h3 id="value_1">Value<a class="headerlink" href="#value_1" title="Permanent link">&para;</a></h3>
+<p>value: number or null. If null - don't display slider picker circle.</p>
+<h3 id="parameters_3">Parameters<a class="headerlink" href="#parameters_3" title="Permanent link">&para;</a></h3>
+<h4 id="parameter-1_3">Parameter 1<a class="headerlink" href="#parameter-1_3" title="Permanent link">&para;</a></h4>
+<p>Parameter Name: min_value</p>
+<h5 id="values-and-descriptions_14">Values and descriptions<a class="headerlink" href="#values-and-descriptions_14" title="Permanent link">&para;</a></h5>
+<p>value_1: 0 - (default) 
+description: min value of selector
+value_2: number 
+description: Any number as a min value of selector</p>
+<h4 id="parameter-2_3">Parameter 2<a class="headerlink" href="#parameter-2_3" title="Permanent link">&para;</a></h4>
+<p>Parameter Name: max_value </p>
+<h5 id="values-and-descriptions_15">Values and descriptions<a class="headerlink" href="#values-and-descriptions_15" title="Permanent link">&para;</a></h5>
+<p>value_1: 6 - (default) 
+description: Max value of selector
+value_2: number 
+description: Any number as a max value of selector </p>
+<h4 id="parameter-3_3">Parameter 3<a class="headerlink" href="#parameter-3_3" title="Permanent link">&para;</a></h4>
+<p>Parameter Name: title </p>
+<h5 id="values-and-descriptions_16">Values and descriptions<a class="headerlink" href="#values-and-descriptions_16" title="Permanent link">&para;</a></h5>
+<p>value_1: null - (default) 
+description: No title for Number Selector
+value_2: string 
+description: Any string as a title for Number Selector</p>
+<h4 id="parameter-4_2">Parameter 4<a class="headerlink" href="#parameter-4_2" title="Permanent link">&para;</a></h4>
+<p>Parameter Name: height </p>
+<h5 id="values-and-descriptions_17">Values and descriptions<a class="headerlink" href="#values-and-descriptions_17" title="Permanent link">&para;</a></h5>
+<p>value_1: short - (default) 
+description: Short height
+value_2: normal 
+description: Normal height</p>
+<h4 id="parameter-5_1">Parameter 5<a class="headerlink" href="#parameter-5_1" title="Permanent link">&para;</a></h4>
+<p>Parameter Name: category_list </p>
+<h5 id="values-and-descriptions_18">Values and descriptions<a class="headerlink" href="#values-and-descriptions_18" title="Permanent link">&para;</a></h5>
+<p>value_1: null - (default) 
+description: no list
+value_2: strings array 
+description: list of text values for component</p>
+<h4 id="parameter-6_1">Parameter 6<a class="headerlink" href="#parameter-6_1" title="Permanent link">&para;</a></h4>
+<p>Parameter Name: first_display_term 
+description: category list index, or generated list index</p>
+<h5 id="values-and-descriptions_19">Values and descriptions<a class="headerlink" href="#values-and-descriptions_19" title="Permanent link">&para;</a></h5>
+<p>value_1: 1 - (default) 
+description: first display term
+value_2: number 
+description: category list index</p>
+<h4 id="parameter-7_1">Parameter 7<a class="headerlink" href="#parameter-7_1" title="Permanent link">&para;</a></h4>
+<p>Parameter Name: category_size </p>
+<h5 id="values-and-descriptions_20">Values and descriptions<a class="headerlink" href="#values-and-descriptions_20" title="Permanent link">&para;</a></h5>
+<p>value_1: 1 - (default) 
+description: step for generated list
+value_2: number 
+description: step for generated list
+If category_list available we take list of values from it.
+If category_list is not available we generate list of values based on min_value, max_value, category_size</p>
+<h2 id="checkbox-tmplsimplecheckboxcomponent">Checkbox - TmplSimpleCheckboxComponent<a class="headerlink" href="#checkbox-tmplsimplecheckboxcomponent" title="Permanent link">&para;</a></h2>
+<h3 id="type_4">Type<a class="headerlink" href="#type_4" title="Permanent link">&para;</a></h3>
+<p>type: simple_checkbox </p>
+<h3 id="value_2">Value<a class="headerlink" href="#value_2" title="Permanent link">&para;</a></h3>
+<p>value: boolean value of checkbox. If true - checked</p>
+<h3 id="parameters_4">Parameters<a class="headerlink" href="#parameters_4" title="Permanent link">&para;</a></h3>
+<h4 id="parameter-1_4">Parameter 1<a class="headerlink" href="#parameter-1_4" title="Permanent link">&para;</a></h4>
+<p>Parameter Name: align</p>
+<h5 id="values-and-descriptions_21">Values and descriptions<a class="headerlink" href="#values-and-descriptions_21" title="Permanent link">&para;</a></h5>
+<p>value_1: center - (default) 
+value_2: left
+value_3: right
+description: checkbox position</p>
+<h4 id="parameter-2_4">Parameter 2<a class="headerlink" href="#parameter-2_4" title="Permanent link">&para;</a></h4>
+<p>Parameter Name: label_text</p>
+<h5 id="values-and-descriptions_22">Values and descriptions<a class="headerlink" href="#values-and-descriptions_22" title="Permanent link">&para;</a></h5>
+<p>value_1: null - (default) 
+description: no label for checkbox
+value_2: string
+description: label text</p>
+<h4 id="parameter-3_4">Parameter 3<a class="headerlink" href="#parameter-3_4" title="Permanent link">&para;</a></h4>
+<p>Parameter Name: style</p>
+<h5 id="values-and-descriptions_23">Values and descriptions<a class="headerlink" href="#values-and-descriptions_23" title="Permanent link">&para;</a></h5>
+<p>description: string - class name.
+value_1: '' - (default) </p>
+<h4 id="parameter-4_3">Parameter 4<a class="headerlink" href="#parameter-4_3" title="Permanent link">&para;</a></h4>
+<p>Parameter Name: reverse</p>
+<h5 id="values-and-descriptions_24">Values and descriptions<a class="headerlink" href="#values-and-descriptions_24" title="Permanent link">&para;</a></h5>
+<p>value_1: false - (default) 
+description: default position - (checkbox label).
+value_1: true
+description: reversed - (label checkbox).</p>
+<h2 id="slider-tmplslidercomponent">Slider - TmplSliderComponent<a class="headerlink" href="#slider-tmplslidercomponent" title="Permanent link">&para;</a></h2>
+<h3 id="type_5">Type<a class="headerlink" href="#type_5" title="Permanent link">&para;</a></h3>
+<p>type: slider </p>
+<h3 id="value_3">Value<a class="headerlink" href="#value_3" title="Permanent link">&para;</a></h3>
+<p>value: select value on slide</p>
+<h3 id="parameters_5">Parameters<a class="headerlink" href="#parameters_5" title="Permanent link">&para;</a></h3>
+<h4 id="parameter-1_5">Parameter 1<a class="headerlink" href="#parameter-1_5" title="Permanent link">&para;</a></h4>
+<p>Parameter Name: help</p>
+<h5 id="values-and-descriptions_25">Values and descriptions<a class="headerlink" href="#values-and-descriptions_25" title="Permanent link">&para;</a></h5>
+<p>value_1: null - (default) 
+description: no help tooltip
+value_2: string
+description: any text for help tooltip</p>
+<h4 id="parameter-2_5">Parameter 2<a class="headerlink" href="#parameter-2_5" title="Permanent link">&para;</a></h4>
+<p>Parameter Name: min</p>
+<h5 id="values-and-descriptions_26">Values and descriptions<a class="headerlink" href="#values-and-descriptions_26" title="Permanent link">&para;</a></h5>
+<p>value_1: 0 - (default) 
+description: minimum value on slider
+value_2: number
+description: any number as min value</p>
+<h4 id="parameter-3_5">Parameter 3<a class="headerlink" href="#parameter-3_5" title="Permanent link">&para;</a></h4>
+<p>Parameter Name: max</p>
+<h5 id="values-and-descriptions_27">Values and descriptions<a class="headerlink" href="#values-and-descriptions_27" title="Permanent link">&para;</a></h5>
+<p>value_1: 7 - (default) 
+description: maximum value on slider
+value_2: number
+description: any number as max value</p>
+<h4 id="parameter-4_4">Parameter 4<a class="headerlink" href="#parameter-4_4" title="Permanent link">&para;</a></h4>
+<p>Parameter Name: title</p>
+<h5 id="values-and-descriptions_28">Values and descriptions<a class="headerlink" href="#values-and-descriptions_28" title="Permanent link">&para;</a></h5>
+<p>value_1: null - (default) 
+description: no title
+value_2: string
+description: any text as a title</p>
+<h4 id="parameter-5_2">Parameter 5<a class="headerlink" href="#parameter-5_2" title="Permanent link">&para;</a></h4>
+<p>Parameter Name: step</p>
+<h5 id="values-and-descriptions_29">Values and descriptions<a class="headerlink" href="#values-and-descriptions_29" title="Permanent link">&para;</a></h5>
+<p>value_1: 1 - (default) 
+description: step for slider
+value_2: number
+description: any number as a step for slider</p>
+<h4 id="parameter-6_2">Parameter 6<a class="headerlink" href="#parameter-6_2" title="Permanent link">&para;</a></h4>
+<p>Parameter Name: min_value_label</p>
+<h5 id="values-and-descriptions_30">Values and descriptions<a class="headerlink" href="#values-and-descriptions_30" title="Permanent link">&para;</a></h5>
+<p>value_1: null - (default) 
+description: no select value on slider
+value_2: string
+description: select value on slider  </p>
+<h4 id="parameter-7_2">Parameter 7<a class="headerlink" href="#parameter-7_2" title="Permanent link">&para;</a></h4>
+<p>Parameter Name: max_value_label</p>
+<h5 id="values-and-descriptions_31">Values and descriptions<a class="headerlink" href="#values-and-descriptions_31" title="Permanent link">&para;</a></h5>
+<p>value_1: null - (default) 
+description: no select value on slider
+value_2: string
+description: select value on slider </p>
+<h4 id="parameter-8">Parameter 8<a class="headerlink" href="#parameter-8" title="Permanent link">&para;</a></h4>
+<p>Parameter Name: labels_count</p>
+<h5 id="values-and-descriptions_32">Values and descriptions<a class="headerlink" href="#values-and-descriptions_32" title="Permanent link">&para;</a></h5>
+<p>value_1: 8 - (default) 
+description: labels count for slider
+value_2: number
+description: any number as labels count for slider </p>
+<h4 id="parameter-9">Parameter 9<a class="headerlink" href="#parameter-9" title="Permanent link">&para;</a></h4>
+<p>Parameter Name: no_value</p>
+<h5 id="values-and-descriptions_33">Values and descriptions<a class="headerlink" href="#values-and-descriptions_33" title="Permanent link">&para;</a></h5>
+<p>value_1: false - (default) 
+description: Control is no_value selected
+value_2: true
+description: Control is value selected</p>
+<h4 id="parameter-10">Parameter 10<a class="headerlink" href="#parameter-10" title="Permanent link">&para;</a></h4>
+<p>Parameter Name: no_value_text</p>
+<h5 id="values-and-descriptions_34">Values and descriptions<a class="headerlink" href="#values-and-descriptions_34" title="Permanent link">&para;</a></h5>
+<p>value_1: 'no_value' - (default) 
+description: Control is no_value selected
+value_2: string
+description: any text for control is no_value selected</p>
+<h2 id="timer-tmpltimercomponent">Timer - TmplTimerComponent<a class="headerlink" href="#timer-tmpltimercomponent" title="Permanent link">&para;</a></h2>
+<h3 id="type_6">Type<a class="headerlink" href="#type_6" title="Permanent link">&para;</a></h3>
+<p>type: timer </p>
+<h3 id="value_4">Value<a class="headerlink" href="#value_4" title="Permanent link">&para;</a></h3>
+<p>value: number - timer duration in minutes</p>
+<h3 id="parameters_6">Parameters<a class="headerlink" href="#parameters_6" title="Permanent link">&para;</a></h3>
+<h4 id="parameter-1_6">Parameter 1<a class="headerlink" href="#parameter-1_6" title="Permanent link">&para;</a></h4>
+<p>Parameter Name: title</p>
+<h5 id="values-and-descriptions_35">Values and descriptions<a class="headerlink" href="#values-and-descriptions_35" title="Permanent link">&para;</a></h5>
+<p>value_1: null - (default) 
+description: no title
+value_2: string
+description: any text as a title</p>
+<h4 id="parameter-2_6">Parameter 2<a class="headerlink" href="#parameter-2_6" title="Permanent link">&para;</a></h4>
+<p>Parameter Name: help</p>
+<h5 id="values-and-descriptions_36">Values and descriptions<a class="headerlink" href="#values-and-descriptions_36" title="Permanent link">&para;</a></h5>
+<p>value_1: null - (default) 
+description: no help tooltip
+value_2: string
+description: any text for help tooltip</p>
+<h4 id="parameter-3_6">Parameter 3<a class="headerlink" href="#parameter-3_6" title="Permanent link">&para;</a></h4>
+<p>Parameter Name: is_editable_on_playing</p>
+<h5 id="values-and-descriptions_37">Values and descriptions<a class="headerlink" href="#values-and-descriptions_37" title="Permanent link">&para;</a></h5>
+<p>value_1: false - (default) 
+description: Not possible to change the values of the timer when it is running
+value_2: true
+description: Possible to change the values of the timer when it is running</p>
+<h4 id="parameter-4_5">Parameter 4<a class="headerlink" href="#parameter-4_5" title="Permanent link">&para;</a></h4>
+<p>Parameter Name: duration_extension</p>
+<h5 id="values-and-descriptions_38">Values and descriptions<a class="headerlink" href="#values-and-descriptions_38" title="Permanent link">&para;</a></h5>
+<p>value_1: 1 - (default) 
+description: Value for increase the time on the timer
+value_2: number
+description: any number as value for increase the time on the timer</p>
+<h4 id="parameter-5_3">Parameter 5<a class="headerlink" href="#parameter-5_3" title="Permanent link">&para;</a></h4>
+<p>Parameter Name: starting_minutes</p>
+<h5 id="values-and-descriptions_39">Values and descriptions<a class="headerlink" href="#values-and-descriptions_39" title="Permanent link">&para;</a></h5>
+<p>value_1: 10 - (default) 
+description: 10 minutes by default
+value_2: number
+description: any number as starting minutes</p>
+<h4 id="parameter-6_3">Parameter 6<a class="headerlink" href="#parameter-6_3" title="Permanent link">&para;</a></h4>
+<p>Parameter Name: starting_seconds</p>
+<h5 id="values-and-descriptions_40">Values and descriptions<a class="headerlink" href="#values-and-descriptions_40" title="Permanent link">&para;</a></h5>
+<p>value_1: 0 - (default) 
+description: 0 seconds by default
+value_2: number
+description: any number as starting seconds</p>
+<h2 id="radio-buttons-tmplradiogroupcomponent">Radio Buttons - TmplRadioGroupComponent<a class="headerlink" href="#radio-buttons-tmplradiogroupcomponent" title="Permanent link">&para;</a></h2>
+<h3 id="type_7">Type<a class="headerlink" href="#type_7" title="Permanent link">&para;</a></h3>
+<p>type: radio_group </p>
+<h3 id="value_5">Value<a class="headerlink" href="#value_5" title="Permanent link">&para;</a></h3>
+<p>value: string or null. Result or selected by default</p>
+<h3 id="parameters_7">Parameters<a class="headerlink" href="#parameters_7" title="Permanent link">&para;</a></h3>
+<h4 id="parameter-1_7">Parameter 1<a class="headerlink" href="#parameter-1_7" title="Permanent link">&para;</a></h4>
+<p>Parameter Name: answer_list</p>
+<h5 id="values-and-descriptions_41">Values and descriptions<a class="headerlink" href="#values-and-descriptions_41" title="Permanent link">&para;</a></h5>
+<p>value_1: null - (default) 
+description: No buttons presented<br />
+value_2: strings array
+description: List of buttons with parameters</p>
+<h4 id="parameter-2_7">Parameter 2<a class="headerlink" href="#parameter-2_7" title="Permanent link">&para;</a></h4>
+<p>Parameter Name: radio_button_type</p>
+<h5 id="values-and-descriptions_42">Values and descriptions<a class="headerlink" href="#values-and-descriptions_42" title="Permanent link">&para;</a></h5>
+<p>value_1: btn_text - (default) 
+description: text button by default
+value_2: btn_square
+description: button with icon and text
+value_2: btn_image
+description: button image only</p>
+<h4 id="parameter-3_7">Parameter 3<a class="headerlink" href="#parameter-3_7" title="Permanent link">&para;</a></h4>
+<p>Parameter Name: options_per_row</p>
+<h5 id="values-and-descriptions_43">Values and descriptions<a class="headerlink" href="#values-and-descriptions_43" title="Permanent link">&para;</a></h5>
+<p>description: Count of radio button in one row
+value_1: 2 - (default) 
+description: by default two buttons in one row
+value_2: number
+description: any number for buttons in one row</p>
+<h4 id="parameter-4_6">Parameter 4<a class="headerlink" href="#parameter-4_6" title="Permanent link">&para;</a></h4>
+<p>Parameter Name: style</p>
+<h5 id="values-and-descriptions_44">Values and descriptions<a class="headerlink" href="#values-and-descriptions_44" title="Permanent link">&para;</a></h5>
+<p>description: String. Class name for button. 
+value_1: '' - (default) 
+description: Primary background color for label  (--ion-color-primary-contrast)
+value_2: full - (default) 
+description: Full width
+value_3: standard - (default) 
+description: Text color white (--ion-color-primary-contrast) 
+value_4: '' - (default)
+description: active radio button background color  (--ion-color-primary-contrast)</p>
+<h2 id="combobox-tmplcomboboxcomponent">ComboBox - TmplComboBoxComponent<a class="headerlink" href="#combobox-tmplcomboboxcomponent" title="Permanent link">&para;</a></h2>
+<h3 id="type_8">Type<a class="headerlink" href="#type_8" title="Permanent link">&para;</a></h3>
+<p>type: combo_box </p>
+<h3 id="value_6">Value<a class="headerlink" href="#value_6" title="Permanent link">&para;</a></h3>
+<p>value: string or null. Result or selected by default</p>
+<h3 id="parameters_8">Parameters<a class="headerlink" href="#parameters_8" title="Permanent link">&para;</a></h3>
+<h4 id="parameter-1_8">Parameter 1<a class="headerlink" href="#parameter-1_8" title="Permanent link">&para;</a></h4>
+<p>Parameter Name: answer_list</p>
+<h5 id="values-and-descriptions_45">Values and descriptions<a class="headerlink" href="#values-and-descriptions_45" title="Permanent link">&para;</a></h5>
+<p>value_1: null - (default) 
+description: No answers to be displayed 
+value_2: strings array
+description: List of the answers to be displayed</p>
+<h4 id="parameter-2_8">Parameter 2<a class="headerlink" href="#parameter-2_8" title="Permanent link">&para;</a></h4>
+<p>Parameter Name: input_allowed</p>
+<h5 id="values-and-descriptions_46">Values and descriptions<a class="headerlink" href="#values-and-descriptions_46" title="Permanent link">&para;</a></h5>
+<p>value_1: false - (default) 
+description: user can not set a custom response
+value_2: true
+description: user can set a custom response</p>
+<h4 id="parameter-3_8">Parameter 3<a class="headerlink" href="#parameter-3_8" title="Permanent link">&para;</a></h4>
+<p>Parameter Name: input_position</p>
+<h5 id="values-and-descriptions_47">Values and descriptions<a class="headerlink" href="#values-and-descriptions_47" title="Permanent link">&para;</a></h5>
+<p>value_1: top - (default) 
+description: Position of input element
+value_2: bottom
+description: Position of input element</p>
+<h4 id="parameter-4_7">Parameter 4<a class="headerlink" href="#parameter-4_7" title="Permanent link">&para;</a></h4>
+<p>Parameter Name: answer_placeholder</p>
+<h5 id="values-and-descriptions_48">Values and descriptions<a class="headerlink" href="#values-and-descriptions_48" title="Permanent link">&para;</a></h5>
+<p>value_1: empty string - (default) 
+description: No input placeholder
+value_2: string
+description: Any input placeholder</p>
+<h4 id="parameter-5_4">Parameter 5<a class="headerlink" href="#parameter-5_4" title="Permanent link">&para;</a></h4>
+<p>Parameter Name: placeholder</p>
+<h5 id="values-and-descriptions_49">Values and descriptions<a class="headerlink" href="#values-and-descriptions_49" title="Permanent link">&para;</a></h5>
+<p>value_1: null - (default) 
+description: No placeholder for button open pop_up window
+value_2: string
+description: Any placeholder for button open pop_up window</p>
+<h2 id="textbox-tmpltextboxcomponent">TextBox - TmplTextBoxComponent<a class="headerlink" href="#textbox-tmpltextboxcomponent" title="Permanent link">&para;</a></h2>
+<h3 id="type_9">Type<a class="headerlink" href="#type_9" title="Permanent link">&para;</a></h3>
+<p>type: text_box </p>
+<h3 id="value_7">Value<a class="headerlink" href="#value_7" title="Permanent link">&para;</a></h3>
+<p>value: string or null. Input value</p>
+<h3 id="parameters_9">Parameters<a class="headerlink" href="#parameters_9" title="Permanent link">&para;</a></h3>
+<h4 id="parameter-1_9">Parameter 1<a class="headerlink" href="#parameter-1_9" title="Permanent link">&para;</a></h4>
+<p>Parameter Name: max_length</p>
+<h5 id="values-and-descriptions_50">Values and descriptions<a class="headerlink" href="#values-and-descriptions_50" title="Permanent link">&para;</a></h5>
+<p>value_1: 30 - (default) 
+description: Max length input value 
+value_2: number
+description: Any number as a max length input value</p>
+<h4 id="parameter-2_9">Parameter 2<a class="headerlink" href="#parameter-2_9" title="Permanent link">&para;</a></h4>
+<p>Parameter Name: placeholder</p>
+<h5 id="values-and-descriptions_51">Values and descriptions<a class="headerlink" href="#values-and-descriptions_51" title="Permanent link">&para;</a></h5>
+<p>value_1: empty string - (default) 
+description: No placeholder 
+value_2: string
+description: Any string input placeholder</p>
+<h4 id="parameter-3_9">Parameter 3<a class="headerlink" href="#parameter-3_9" title="Permanent link">&para;</a></h4>
+<p>Parameter Name: text_align</p>
+<h5 id="values-and-descriptions_52">Values and descriptions<a class="headerlink" href="#values-and-descriptions_52" title="Permanent link">&para;</a></h5>
+<p>description: Input position
+value_1: center - (default) 
+value_2: left
+value_2: right</p>
+<h4 id="parameter-4_8">Parameter 4<a class="headerlink" href="#parameter-4_8" title="Permanent link">&para;</a></h4>
+<p>Parameter Name: number_input</p>
+<h5 id="values-and-descriptions_53">Values and descriptions<a class="headerlink" href="#values-and-descriptions_53" title="Permanent link">&para;</a></h5>
+<p>value_1: false - (default)
+description: default text type input
+value_2: true
+description: number type input (allows only number)</p>
+<h4 id="parameter-5_5">Parameter 5<a class="headerlink" href="#parameter-5_5" title="Permanent link">&para;</a></h4>
+<p>Parameter Name: prioritise_placeholder</p>
+<h5 id="values-and-descriptions_54">Values and descriptions<a class="headerlink" href="#values-and-descriptions_54" title="Permanent link">&para;</a></h5>
+<p>value_1: false - (default)
+description: placeholder is not prioritised
+value_2: true
+description: placeholder is prioritised</p>
+<h2 id="tilecomponent-tmpltilecomponent">TileComponent - TmplTileComponent<a class="headerlink" href="#tilecomponent-tmpltilecomponent" title="Permanent link">&para;</a></h2>
+<h3 id="type_10">Type<a class="headerlink" href="#type_10" title="Permanent link">&para;</a></h3>
+<p>type: tile_component </p>
+<h3 id="value_8">Value<a class="headerlink" href="#value_8" title="Permanent link">&para;</a></h3>
+<p>value: any. Default - undefined</p>
+<h3 id="parameters_10">Parameters<a class="headerlink" href="#parameters_10" title="Permanent link">&para;</a></h3>
+<h4 id="parameter-1_10">Parameter 1<a class="headerlink" href="#parameter-1_10" title="Permanent link">&para;</a></h4>
+<p>Parameter Name: first_line_tex</p>
+<h5 id="values-and-descriptions_55">Values and descriptions<a class="headerlink" href="#values-and-descriptions_55" title="Permanent link">&para;</a></h5>
+<p>value_1: null - (default) 
+description: No text for first line 
+value_2: string
+description: Any string as a text for first line</p>
+<h4 id="parameter-2_10">Parameter 2<a class="headerlink" href="#parameter-2_10" title="Permanent link">&para;</a></h4>
+<p>Parameter Name: second_line_text</p>
+<h5 id="values-and-descriptions_56">Values and descriptions<a class="headerlink" href="#values-and-descriptions_56" title="Permanent link">&para;</a></h5>
+<p>value_1: null - (default) 
+description: No text for second line 
+value_2: string
+description: Any string as a text for second line</p>
+<h4 id="parameter-3_10">Parameter 3<a class="headerlink" href="#parameter-3_10" title="Permanent link">&para;</a></h4>
+<p>Parameter Name: icon_src</p>
+<h5 id="values-and-descriptions_57">Values and descriptions<a class="headerlink" href="#values-and-descriptions_57" title="Permanent link">&para;</a></h5>
+<p>value_1: null - (default) 
+description: No image 
+value_2: string
+description: image file source link</p>
+<h4 id="parameter-4_9">Parameter 4<a class="headerlink" href="#parameter-4_9" title="Permanent link">&para;</a></h4>
+<p>Parameter Name: left_icon_src</p>
+<h5 id="values-and-descriptions_58">Values and descriptions<a class="headerlink" href="#values-and-descriptions_58" title="Permanent link">&para;</a></h5>
+<p>value_1: null - (default) 
+description: No image 
+value_2: string
+description: image file source link</p>
+<h4 id="parameter-5_6">Parameter 5<a class="headerlink" href="#parameter-5_6" title="Permanent link">&para;</a></h4>
+<p>Parameter Name: style</p>
+<h5 id="values-and-descriptions_59">Values and descriptions<a class="headerlink" href="#values-and-descriptions_59" title="Permanent link">&para;</a></h5>
+<p>description: Name of css class 
+value_1: quick_start - (default) 
+description: light gradient color (--tile-secondary-light-gradient) 
+value_2: quick_start_passive 
+description: primary gradient color (--tile-primary-gradient)
+value_3: quick_start_blue 
+description: primary light gradient color (--tile-primary-light-gradient)
+value_4: quick_start_dark 
+description: secondary gradient color (--tile-secondary-gradient)
+value_5: workshop_page 
+description: tile workshop
+value_6: parent_point 
+description: tile parent point
+value_7: image_text 
+description: tile image text
+value_8: button 
+description: tile button</p>
+<h2 id="dashedbox-tmpldashedboxcomponent">DashedBox - TmplDashedBoxComponent<a class="headerlink" href="#dashedbox-tmpldashedboxcomponent" title="Permanent link">&para;</a></h2>
+<h3 id="type_11">Type<a class="headerlink" href="#type_11" title="Permanent link">&para;</a></h3>
+<p>type: dashed_box </p>
+<h3 id="value_9">Value<a class="headerlink" href="#value_9" title="Permanent link">&para;</a></h3>
+<p>value: any. Default - undefined</p>
+<h3 id="parameters_11">Parameters<a class="headerlink" href="#parameters_11" title="Permanent link">&para;</a></h3>
+<h4 id="parameter-1_11">Parameter 1<a class="headerlink" href="#parameter-1_11" title="Permanent link">&para;</a></h4>
+<p>Parameter Name: icon_src</p>
+<h5 id="values-and-descriptions_60">Values and descriptions<a class="headerlink" href="#values-and-descriptions_60" title="Permanent link">&para;</a></h5>
+<p>value_1: empty string - (default) 
+description: No icon 
+value_2: strings 
+description: Path to image</p>
+<h4 id="parameter-2_11">Parameter 2<a class="headerlink" href="#parameter-2_11" title="Permanent link">&para;</a></h4>
+<p>Parameter Name: icon_position</p>
+<h5 id="values-and-descriptions_61">Values and descriptions<a class="headerlink" href="#values-and-descriptions_61" title="Permanent link">&para;</a></h5>
+<p>description: Position of icon
+value_1: top-left - (default) 
+value_2: top-right 
+value_3: bottom-left
+value_4: bottom-right</p>
+<h4 id="parameter-3_11">Parameter 3<a class="headerlink" href="#parameter-3_11" title="Permanent link">&para;</a></h4>
+<p>Parameter Name: style</p>
+<h5 id="values-and-descriptions_62">Values and descriptions<a class="headerlink" href="#values-and-descriptions_62" title="Permanent link">&para;</a></h5>
+<p>description: Name of class
+value_1: default - (default) 
+description: Primary text and border color
+value_2: alert 
+description: Text color white and secondary border color</p>
+<h2 id="title-tmpltitlecomponent">Title - TmplTitleComponent<a class="headerlink" href="#title-tmpltitlecomponent" title="Permanent link">&para;</a></h2>
+<h3 id="type_12">Type<a class="headerlink" href="#type_12" title="Permanent link">&para;</a></h3>
+<p>type: title </p>
+<h3 id="value_10">Value<a class="headerlink" href="#value_10" title="Permanent link">&para;</a></h3>
+<p>value: Text of title</p>
+<h3 id="parameters_12">Parameters<a class="headerlink" href="#parameters_12" title="Permanent link">&para;</a></h3>
+<h4 id="parameter-1_12">Parameter 1<a class="headerlink" href="#parameter-1_12" title="Permanent link">&para;</a></h4>
+<p>Parameter Name: help</p>
+<h5 id="values-and-descriptions_63">Values and descriptions<a class="headerlink" href="#values-and-descriptions_63" title="Permanent link">&para;</a></h5>
+<p>value_1: null - (default) 
+description: No help tooltip
+value_2: strings 
+description: Any string for help tooltip</p>
+<h4 id="parameter-2_12">Parameter 2<a class="headerlink" href="#parameter-2_12" title="Permanent link">&para;</a></h4>
+<p>Parameter Name: tooltip_position</p>
+<h5 id="values-and-descriptions_64">Values and descriptions<a class="headerlink" href="#values-and-descriptions_64" title="Permanent link">&para;</a></h5>
+<p>description: Position of a tooltip
+value_1: right - (default) 
+value_2: left </p>
+<h4 id="parameter-3_12">Parameter 3<a class="headerlink" href="#parameter-3_12" title="Permanent link">&para;</a></h4>
+<p>Parameter Name: text_align</p>
+<h5 id="values-and-descriptions_65">Values and descriptions<a class="headerlink" href="#values-and-descriptions_65" title="Permanent link">&para;</a></h5>
+<p>value_1: left - (default)
+description: text left aligned 
+value_2: center 
+description: text center aligned
+value_3: right 
+description: text right aligned</p>
+<h4 id="parameter-4_10">Parameter 4<a class="headerlink" href="#parameter-4_10" title="Permanent link">&para;</a></h4>
+<p>Parameter Name: style</p>
+<h5 id="values-and-descriptions_66">Values and descriptions<a class="headerlink" href="#values-and-descriptions_66" title="Permanent link">&para;</a></h5>
+<p>value_1: tiny - (default) 
+description: Tiny font size (--font-size-title-tiny)
+value_2: standard 
+description: Primary color (--ion-color-primary)
+value_3: center
+description: Position center
+value_4: left - (default)
+description: Position left
+value_5: right 
+description: Position right
+value_6: alternative 
+description: White text color
+value_7: contextual 
+description: Italic font style
+value_7: emphasised 
+description: Bold font style</p>
+<h2 id="subtitlecomponent-tmplsubtitlecomponent">SubtitleComponent - TmplSubtitleComponent<a class="headerlink" href="#subtitlecomponent-tmplsubtitlecomponent" title="Permanent link">&para;</a></h2>
+<h3 id="type_13">Type<a class="headerlink" href="#type_13" title="Permanent link">&para;</a></h3>
+<p>type: subtitle </p>
+<h3 id="value_11">Value<a class="headerlink" href="#value_11" title="Permanent link">&para;</a></h3>
+<p>value: Text of title</p>
+<h3 id="parameters_13">Parameters<a class="headerlink" href="#parameters_13" title="Permanent link">&para;</a></h3>
+<h4 id="parameter-1_13">Parameter 1<a class="headerlink" href="#parameter-1_13" title="Permanent link">&para;</a></h4>
+<p>Parameter Name: style</p>
+<h5 id="values-and-descriptions_67">Values and descriptions<a class="headerlink" href="#values-and-descriptions_67" title="Permanent link">&para;</a></h5>
+<p>value_1: standard - (default)
+description: Primary color (--ion-color-primary)
+value_2: medium - (default)
+description: Medium font size (--font-size-subtitle-medium)
+value_3: small 
+description: Small font size (--font-size-subtitle-small)
+value_4: large 
+description: Large font size (--font-size-subtitle-large)
+value_5: center
+description: Position center
+value_6: left
+description: Position left
+value_7: right 
+description: Position right
+value_8: alternative 
+description: White text color
+value_9: contextual 
+description: Italic font style
+value_10: emphasised 
+description: Bold font style</p>
+<h2 id="textcomponent-tmpltextcomponent">TextComponent - TmplTextComponent<a class="headerlink" href="#textcomponent-tmpltextcomponent" title="Permanent link">&para;</a></h2>
+<h3 id="type_14">Type<a class="headerlink" href="#type_14" title="Permanent link">&para;</a></h3>
+<p>type: text </p>
+<h3 id="value_12">Value<a class="headerlink" href="#value_12" title="Permanent link">&para;</a></h3>
+<p>value: string. Text. Default null.</p>
+<h3 id="parameters_14">Parameters<a class="headerlink" href="#parameters_14" title="Permanent link">&para;</a></h3>
+<h4 id="parameter-1_14">Parameter 1<a class="headerlink" href="#parameter-1_14" title="Permanent link">&para;</a></h4>
+<p>Parameter Name: style</p>
+<h5 id="values-and-descriptions_68">Values and descriptions<a class="headerlink" href="#values-and-descriptions_68" title="Permanent link">&para;</a></h5>
+<p>value_1: standard - (default)
+description: Primary color (--ion-color-primary)
+value_2: medium
+description: Medium font size (--font-size-text-medium)
+value_3: large - (default)
+description: large font size (--font-size-text-small)
+value_4: small 
+description: small font size (--font-size-text-large)
+value_5: center
+description: Position center
+value_6: left
+description: Position left
+value_7: right 
+description: Position right
+value_8: alternative 
+description: White text color
+value_9: contextual 
+description: Italic font style
+value_10: emphasised 
+description: Bold font style</p>
+<h4 id="parameter-2_13">Parameter 2<a class="headerlink" href="#parameter-2_13" title="Permanent link">&para;</a></h4>
+<p>Parameter Name: text_align</p>
+<h5 id="values-and-descriptions_69">Values and descriptions<a class="headerlink" href="#values-and-descriptions_69" title="Permanent link">&para;</a></h5>
+<p>description: text align inside box
+value_1: left - (default)
+value_2: right
+value_3: center</p>
+<h2 id="displaygroupcomponent-tmpldisplaygroupcomponent">DisplayGroupComponent - TmplDisplayGroupComponent<a class="headerlink" href="#displaygroupcomponent-tmpldisplaygroupcomponent" title="Permanent link">&para;</a></h2>
+<h3 id="type_15">Type<a class="headerlink" href="#type_15" title="Permanent link">&para;</a></h3>
+<p>type: display_group </p>
+<h3 id="parameters_15">Parameters<a class="headerlink" href="#parameters_15" title="Permanent link">&para;</a></h3>
+<h4 id="parameter-1_15">Parameter 1<a class="headerlink" href="#parameter-1_15" title="Permanent link">&para;</a></h4>
+<p>Parameter Name: offset</p>
+<h5 id="values-and-descriptions_70">Values and descriptions<a class="headerlink" href="#values-and-descriptions_70" title="Permanent link">&para;</a></h5>
+<p>description: Offset to move abroad component
+value_1: 0 - (default) 
+description: No offset
+value_2: number 
+description: Any number for offset</p>
+<h4 id="parameter-2_14">Parameter 2<a class="headerlink" href="#parameter-2_14" title="Permanent link">&para;</a></h4>
+<p>Parameter Name: style</p>
+<h5 id="values-and-descriptions_71">Values and descriptions<a class="headerlink" href="#values-and-descriptions_71" title="Permanent link">&para;</a></h5>
+<p>description: Class name
+value_1: null - (default) 
+description: default display group
+value_2: tool_1 
+description: essential tool style with (--tool-one-bg)
+value_3: tool_2 
+description: essential tool style with (--tool-two-bg)
+value_4: tool_3 
+description: essential tool style with (--tool-three-bg)
+value_5: tool_4 
+description: essential tool style with (--tool-four-bg)
+value_6: tool_5 
+description: essential tool style with (--tool-five-bg)
+value_7: white_box 
+description: essential tool style with white bg (--ion-color-primary-contrast)
+value_8: active_banner 
+description: banner style with secondary bg (--ion-banner-secondary)
+value_9: passive_banner 
+description: banner style with primary bg (--ion-banner-primary)
+value_10: navigation 
+description: used for buttons in order to get them beneath content
+value_11: banner 
+description: banner style with primary bg (--ion-dg-bg-default)
+value_11: column 
+description: column style
+value_12: two_column 
+description: two column style
+value_13: two_column_images
+description: two column for images (splash screen)</p>
+<h5 id="to-display-the-element-display_group-with-style-navigation-correctly-the-element-must-be-the-last-one-in-the-spreadsheets">To display the element display_group with style === navigation correctly, the element must be the last one in the spreadsheets<a class="headerlink" href="#to-display-the-element-display_group-with-style-navigation-correctly-the-element-must-be-the-last-one-in-the-spreadsheets" title="Permanent link">&para;</a></h5>
+<h5 id="if-style-banner-and-action_id-set_theme-active-passive-its-will-be-changed-main-background-color-and-display_group-background-color">If style === 'banner' and action_id === 'set_theme: active | passive' it's will be changed main background color and display_group background color.<a class="headerlink" href="#if-style-banner-and-action_id-set_theme-active-passive-its-will-be-changed-main-background-color-and-display_group-background-color" title="Permanent link">&para;</a></h5>
+<h2 id="pointboxcomponent-tmplpointboxcomponent">PointBoxComponent - TmplPointBoxComponent<a class="headerlink" href="#pointboxcomponent-tmplpointboxcomponent" title="Permanent link">&para;</a></h2>
+<h3 id="type_16">Type<a class="headerlink" href="#type_16" title="Permanent link">&para;</a></h3>
+<p>type: parent_point_box </p>
+<h3 id="value_13">Value<a class="headerlink" href="#value_13" title="Permanent link">&para;</a></h3>
+<p>value: number. Counter number</p>
+<h3 id="parameters_16">Parameters<a class="headerlink" href="#parameters_16" title="Permanent link">&para;</a></h3>
+<h4 id="parameter-1_16">Parameter 1<a class="headerlink" href="#parameter-1_16" title="Permanent link">&para;</a></h4>
+<p>Parameter Name: icon_src</p>
+<h5 id="values-and-descriptions_72">Values and descriptions<a class="headerlink" href="#values-and-descriptions_72" title="Permanent link">&para;</a></h5>
+<p>value_1: null - (default) 
+description: no icon
+value_2: string 
+description: Path to icon</p>
+<h4 id="parameter-2_15">Parameter 2<a class="headerlink" href="#parameter-2_15" title="Permanent link">&para;</a></h4>
+<p>Parameter Name: lottie_src</p>
+<h5 id="values-and-descriptions_73">Values and descriptions<a class="headerlink" href="#values-and-descriptions_73" title="Permanent link">&para;</a></h5>
+<p>value_1: null - (default) 
+description: no lottie animation
+value_2: string 
+description: Path to lottie animation</p>
+<h4 id="parameter-3_13">Parameter 3<a class="headerlink" href="#parameter-3_13" title="Permanent link">&para;</a></h4>
+<p>Parameter Name: text</p>
+<h5 id="values-and-descriptions_74">Values and descriptions<a class="headerlink" href="#values-and-descriptions_74" title="Permanent link">&para;</a></h5>
+<p>value_1: null - (default) 
+description: no text
+value_2: string 
+description: Any string as a text</p>
+<h4 id="parameter-4_11">Parameter 4<a class="headerlink" href="#parameter-4_11" title="Permanent link">&para;</a></h4>
+<p>Parameter Name: play_celebration</p>
+<h5 id="values-and-descriptions_75">Values and descriptions<a class="headerlink" href="#values-and-descriptions_75" title="Permanent link">&para;</a></h5>
+<p>value_1: true - (default) 
+description: show falling stars when item is clicked
+value_2: false 
+description: disable falling stars</p>
+<h2 id="imagecomponent-tmplimagecomponent">ImageComponent - TmplImageComponent<a class="headerlink" href="#imagecomponent-tmplimagecomponent" title="Permanent link">&para;</a></h2>
+<h3 id="type_17">Type<a class="headerlink" href="#type_17" title="Permanent link">&para;</a></h3>
+<p>type: image </p>
+<h3 id="value_14">Value<a class="headerlink" href="#value_14" title="Permanent link">&para;</a></h3>
+<p>value: string. Path to image. Default null</p>
+<h3 id="parameters_17">Parameters<a class="headerlink" href="#parameters_17" title="Permanent link">&para;</a></h3>
+<h4 id="parameter-1_17">Parameter 1<a class="headerlink" href="#parameter-1_17" title="Permanent link">&para;</a></h4>
+<p>Parameter Name: style</p>
+<h5 id="values-and-descriptions_76">Values and descriptions<a class="headerlink" href="#values-and-descriptions_76" title="Permanent link">&para;</a></h5>
+<p>description: Class name
+value_1: null - (default) 
+value_2: rounded_corners 
+description: rounded image corners</p>
+<h2 id="parentpointcountercomponent-tmplparentpointcountercomponent">ParentPointCounterComponent - TmplParentPointCounterComponent<a class="headerlink" href="#parentpointcountercomponent-tmplparentpointcountercomponent" title="Permanent link">&para;</a></h2>
+<h3 id="type_18">Type<a class="headerlink" href="#type_18" title="Permanent link">&para;</a></h3>
+<p>type: parent_point_counter </p>
+<h3 id="value_15">Value<a class="headerlink" href="#value_15" title="Permanent link">&para;</a></h3>
+<p>value: string. Counter text</p>
+<h3 id="parameters_18">Parameters<a class="headerlink" href="#parameters_18" title="Permanent link">&para;</a></h3>
+<h4 id="parameter-1_18">Parameter 1<a class="headerlink" href="#parameter-1_18" title="Permanent link">&para;</a></h4>
+<p>Parameter Name: icon_src</p>
+<h5 id="values-and-descriptions_77">Values and descriptions<a class="headerlink" href="#values-and-descriptions_77" title="Permanent link">&para;</a></h5>
+<p>value_1: null - (default) 
+description: No icon
+value_2: string 
+description: Path to icon</p>
+<h4 id="parameter-1_19">Parameter 1<a class="headerlink" href="#parameter-1_19" title="Permanent link">&para;</a></h4>
+<p>Parameter Name: count</p>
+<h5 id="values-and-descriptions_78">Values and descriptions<a class="headerlink" href="#values-and-descriptions_78" title="Permanent link">&para;</a></h5>
+<p>value_1: null - (default) 
+description: No completed Parent Points
+value_2: number 
+description: number of completed Parent Points</p>
+<h2 id="textareacomponent-tmpltextareacomponent">TextAreaComponent - TmplTextAreaComponent<a class="headerlink" href="#textareacomponent-tmpltextareacomponent" title="Permanent link">&para;</a></h2>
+<h3 id="type_19">Type<a class="headerlink" href="#type_19" title="Permanent link">&para;</a></h3>
+<p>type: text_area </p>
+<h3 id="parameters_19">Parameters<a class="headerlink" href="#parameters_19" title="Permanent link">&para;</a></h3>
+<h4 id="parameter-1_20">Parameter 1<a class="headerlink" href="#parameter-1_20" title="Permanent link">&para;</a></h4>
+<p>Parameter Name: placeholder</p>
+<h5 id="values-and-descriptions_79">Values and descriptions<a class="headerlink" href="#values-and-descriptions_79" title="Permanent link">&para;</a></h5>
+<p>value_1: null - (default) 
+description: No placeholder
+value_2: string 
+description: Any string as a placeholder</p>
+<h2 id="togglebarcomponent-tmpltogglebarcomponent">ToggleBarComponent - TmplToggleBarComponent<a class="headerlink" href="#togglebarcomponent-tmpltogglebarcomponent" title="Permanent link">&para;</a></h2>
+<h3 id="type_20">Type<a class="headerlink" href="#type_20" title="Permanent link">&para;</a></h3>
+<p>type: toggle-bar </p>
+<h3 id="parameters_20">Parameters<a class="headerlink" href="#parameters_20" title="Permanent link">&para;</a></h3>
+<h4 id="parameter-1_21">Parameter 1<a class="headerlink" href="#parameter-1_21" title="Permanent link">&para;</a></h4>
+<p>Parameter Name: false_text</p>
+<h5 id="values-and-descriptions_80">Values and descriptions<a class="headerlink" href="#values-and-descriptions_80" title="Permanent link">&para;</a></h5>
+<p>value_1: empty string - (default) 
+description: No text for false value
+value_2: string 
+description: Any string for false value</p>
+<h4 id="parameter-2_16">Parameter 2<a class="headerlink" href="#parameter-2_16" title="Permanent link">&para;</a></h4>
+<p>Parameter Name: true_text</p>
+<h5 id="values-and-descriptions_81">Values and descriptions<a class="headerlink" href="#values-and-descriptions_81" title="Permanent link">&para;</a></h5>
+<p>value_1: empty string - (default) 
+description: No text for true value
+value_2: string 
+description: Any string for true value</p>
+<h4 id="parameter-3_14">Parameter 3<a class="headerlink" href="#parameter-3_14" title="Permanent link">&para;</a></h4>
+<p>Parameter Name: position</p>
+<h5 id="values-and-descriptions_82">Values and descriptions<a class="headerlink" href="#values-and-descriptions_82" title="Permanent link">&para;</a></h5>
+<p>description: Position of the toggle-bar
+value_1: left - (default) 
+value_2: right
+value_3: center </p>
+<h4 id="parameter-4_12">Parameter 4<a class="headerlink" href="#parameter-4_12" title="Permanent link">&para;</a></h4>
+<p>Parameter Name: show_tick_and_cross</p>
+<h5 id="values-and-descriptions_83">Values and descriptions<a class="headerlink" href="#values-and-descriptions_83" title="Permanent link">&para;</a></h5>
+<p>value_1: true - (default) 
+description: icon tick and cross presented no icons
+value_2: false
+description: no icons</p>
+<h2 id="formcomponent">FormComponent<a class="headerlink" href="#formcomponent" title="Permanent link">&para;</a></h2>
+<h3 id="type_21">Type<a class="headerlink" href="#type_21" title="Permanent link">&para;</a></h3>
+<p>type: form </p>
+<h3 id="parameters_21">Parameters<a class="headerlink" href="#parameters_21" title="Permanent link">&para;</a></h3>
+<h4 id="parameter-1_22">Parameter 1<a class="headerlink" href="#parameter-1_22" title="Permanent link">&para;</a></h4>
+<p>Parameter Name: button_text</p>
+<h5 id="values-and-descriptions_84">Values and descriptions<a class="headerlink" href="#values-and-descriptions_84" title="Permanent link">&para;</a></h5>
+<p>value_1: Submit - (default) 
+description: default text for form button
+value_2: string 
+description: Any string name for form button</p>
+<h4 id="parameter-2_17">Parameter 2<a class="headerlink" href="#parameter-2_17" title="Permanent link">&para;</a></h4>
+<p>Parameter Name: button_pop_up</p>
+<h5 id="values-and-descriptions_85">Values and descriptions<a class="headerlink" href="#values-and-descriptions_85" title="Permanent link">&para;</a></h5>
+<p>value_1: null - (default) 
+description: No pop_up action
+value_2: template name 
+description: pop_up with value_2 inside after click form button</p>
+<h4 id="parameter-3_15">Parameter 3<a class="headerlink" href="#parameter-3_15" title="Permanent link">&para;</a></h4>
+<p>Parameter Name: button_go_to</p>
+<h5 id="values-and-descriptions_86">Values and descriptions<a class="headerlink" href="#values-and-descriptions_86" title="Permanent link">&para;</a></h5>
+<p>value_1: null - (default) 
+description: No go_to action
+value_2: template name 
+description: go_to value_2 after click form button</p>
+<h4 id="parameter-4_13">Parameter 4<a class="headerlink" href="#parameter-4_13" title="Permanent link">&para;</a></h4>
+<p>Parameter Name: get_device_info</p>
+<h5 id="values-and-descriptions_87">Values and descriptions<a class="headerlink" href="#values-and-descriptions_87" title="Permanent link">&para;</a></h5>
+<p>value_1: false - (default) 
+description: Submit without device info
+value_2: true 
+description: Submit with device info</p>
+<h2 id="advanceddashedboxcomponent-tmpladvanceddashedboxcomponent">AdvancedDashedBoxComponent - TmplAdvancedDashedBoxComponent<a class="headerlink" href="#advanceddashedboxcomponent-tmpladvanceddashedboxcomponent" title="Permanent link">&para;</a></h2>
+<h3 id="type_22">Type<a class="headerlink" href="#type_22" title="Permanent link">&para;</a></h3>
+<p>type: advanced_dashed_box </p>
+<h3 id="parameters_22">Parameters<a class="headerlink" href="#parameters_22" title="Permanent link">&para;</a></h3>
+<h4 id="parameter-1_23">Parameter 1<a class="headerlink" href="#parameter-1_23" title="Permanent link">&para;</a></h4>
+<p>Parameter Name: icon_src</p>
+<h5 id="values-and-descriptions_88">Values and descriptions<a class="headerlink" href="#values-and-descriptions_88" title="Permanent link">&para;</a></h5>
+<p>value_1: empty string - (default) 
+description: No icon 
+value_2: strings 
+description: Path to image</p>
+<h4 id="parameter-2_18">Parameter 2<a class="headerlink" href="#parameter-2_18" title="Permanent link">&para;</a></h4>
+<p>Parameter Name: icon_position</p>
+<h5 id="values-and-descriptions_89">Values and descriptions<a class="headerlink" href="#values-and-descriptions_89" title="Permanent link">&para;</a></h5>
+<p>description: Position of icon
+value_1: top-left - (default) 
+value_2: top-right 
+value_3: bottom-left
+value_4: bottom-right</p>
+<h4 id="parameter-3_16">Parameter 3<a class="headerlink" href="#parameter-3_16" title="Permanent link">&para;</a></h4>
+<p>Parameter Name: style</p>
+<h5 id="values-and-descriptions_90">Values and descriptions<a class="headerlink" href="#values-and-descriptions_90" title="Permanent link">&para;</a></h5>
+<p>description: Name of class
+value_1: default - (default) 
+description: Primary text and border color
+value_2: alert 
+description: Text color white and secondary border color</p>
+<h2 id="helpiconcomponent-tmplhelpiconcomponent">HelpIconComponent - TmplHelpIconComponent<a class="headerlink" href="#helpiconcomponent-tmplhelpiconcomponent" title="Permanent link">&para;</a></h2>
+<h3 id="type_23">Type<a class="headerlink" href="#type_23" title="Permanent link">&para;</a></h3>
+<p>type: help_icon </p>
+<h3 id="parameters_23">Parameters<a class="headerlink" href="#parameters_23" title="Permanent link">&para;</a></h3>
+<h4 id="parameter-1_24">Parameter 1<a class="headerlink" href="#parameter-1_24" title="Permanent link">&para;</a></h4>
+<p>Parameter Name: icon_src</p>
+<h5 id="values-and-descriptions_91">Values and descriptions<a class="headerlink" href="#values-and-descriptions_91" title="Permanent link">&para;</a></h5>
+<p>value_1: help-circle-outline - (default) 
+description: No icon 
+value_2: strings 
+description: Path to icon</p>
+<h3 id="padding-and-margins-control">Padding and Margins control:<a class="headerlink" href="#padding-and-margins-control" title="Permanent link">&para;</a></h3>
+<ul>
+<li>no_margin_t - remove top margin;</li>
+<li>no_margin_lr - remove left and right margin;</li>
+<li>no_margin - remove all margins;</li>
+<li>no_padding_t - remove top padding;</li>
+<li>no_padding_lr - remove left and right padding</li>
+<li>no_padding - remove all paddings</li>
+</ul>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.e5c33ebb.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.ba449ae6.min.js"></script>
+      
+    
+  </body>
+</html>
