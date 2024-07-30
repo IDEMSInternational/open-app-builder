@@ -38,6 +38,7 @@ import { TmplIconBannerComponent } from "./icon-banner/icon-banner.component";
 import { TmplImageComponent } from "./image";
 import { TmplLatexComponent } from "./latex/latex.component";
 import { TmplLottieAnimation } from "./lottie-animation";
+import { TmplMapComponent } from "./map/map.component";
 import { TmplNavigationBarComponent } from "./navigation-bar/navigation-bar.component";
 import { TmplNumberComponent } from "./number-selector/number-selector.component";
 import { TmplOdkFormComponent } from "./odk-form/odk-form.component";
@@ -98,6 +99,7 @@ export const TEMPLATE_COMPONENTS = [
   TmplImageComponent,
   TmplLatexComponent,
   TmplLottieAnimation,
+  // TmplMapComponent, // Standalone component should not need to be declared in a module
   TmplNavigationBarComponent,
   TmplNumberComponent,
   TmplOdkFormComponent,
@@ -157,6 +159,7 @@ export const TEMPLATE_COMPONENT_MAPPING: Record<
   items: null,
   latex: TmplLatexComponent,
   lottie_animation: TmplLottieAnimation,
+  map: TmplMapComponent,
   nav_group: NavGroupComponent,
   nav_section: AnimatedSectionComponent,
   navigation_bar: TmplNavigationBarComponent,
