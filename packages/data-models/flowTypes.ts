@@ -293,7 +293,7 @@ export namespace FlowTypes {
     | "round_button"
     | "select_text"
     | "set_default"
-    | "set_field" // TODO - requires global implementation (and possibly rename to set_field_default as value does not override)
+    | "set_field"
     | "set_local"
     | "set_variable"
     | "simple_checkbox"
@@ -305,12 +305,13 @@ export namespace FlowTypes {
     | "template"
     | "text_area"
     | "text_box"
+    | "text_bubble"
     | "text"
     | "tile_component"
     | "timer"
     | "title"
     | "toggle_bar"
-    | "update_action_list" // update own action list
+    | "update_action_list"
     | "video"
     | "workshops_accordion";
 
