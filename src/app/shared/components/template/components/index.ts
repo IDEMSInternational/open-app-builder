@@ -62,6 +62,7 @@ import { TmplToggleBarComponent } from "./toggle-bar/toggle-bar";
 import { TmplVideoComponent } from "./video";
 
 import { WorkshopsComponent } from "./layout/workshops_accordion";
+import { TmplTextBubbleComponent } from "./text-bubble/text-bubble.component";
 
 /** All components should be exported as a single array for easy module import */
 export const TEMPLATE_COMPONENTS = [
@@ -113,6 +114,7 @@ export const TEMPLATE_COMPONENTS = [
   TmplTaskProgressBarComponent,
   TmplTextAreaComponent,
   TmplTextBoxComponent,
+  TmplTextBubbleComponent,
   TmplTextComponent,
   TmplTileComponent,
   TmplTimerComponent,
@@ -183,6 +185,7 @@ export const TEMPLATE_COMPONENT_MAPPING: Record<
   text: TmplTextComponent,
   text_area: TmplTextAreaComponent,
   text_box: TmplTextBoxComponent,
+  text_bubble: TmplTextBubbleComponent,
   tile_component: TmplTileComponent,
   timer: TmplTimerComponent,
   title: TmplTitleComponent,
