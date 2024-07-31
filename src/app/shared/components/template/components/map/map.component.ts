@@ -16,13 +16,6 @@ import { TemplateAssetService } from "../../services/template-asset.service";
 import { getParamFromTemplateRow, getStringParamFromTemplateRow } from "src/app/shared/utils";
 import { AppDataService } from "src/app/shared/services/data/app-data.service";
 
-// const kenyaExtent = proj.transformExtent(
-//   [33.9098, -4.6781, 41.8994, 5.0199],
-//   "EPSG:4326",
-//   "EPSG:3857"
-// );
-const kenyaExtent = [3773864.3, -520876.1, 4661891.1, 636925.3];
-
 interface IMapLayer {
   id: string;
   type: "vector" | "heatmap";
@@ -32,14 +25,14 @@ interface IMapLayer {
 interface IMapParams {
   /**
    * TEMPLATE PARAMETER: extent.
-   * Optional. The extent of the map to be displayed, in EPSG:3857 co-ordinates
+   * Optional. The extent of the map to be displayed, i.e. the boundaries of the visible map, in EPSG:3857 co-ordinates
    */
   extent: number[];
   /**
    * TEMPLATE PARAMETER: layers.
    * A data list or data list name containeing a list of layers to be added to the map. Format IMapLayer
    */
-  rawLayers: string;
+  layers: IMapLayer[];
 }
 
 @Component({
@@ -56,14 +49,13 @@ export class TmplMapComponent extends TemplateBaseComponent implements OnInit {
     super();
   }
   public params: Partial<IMapParams> = {};
-  private layers: IMapLayer[] = [];
 
   public map: Map;
 
   async ngOnInit() {
-    await this.initialiseMap();
     await this.getParams();
-    this.addLayers(this.layers);
+    await this.initialiseMap();
+    this.addLayers(this.params.layers);
   }
 
   private async initialiseMap() {
@@ -76,7 +68,7 @@ export class TmplMapComponent extends TemplateBaseComponent implements OnInit {
       target: "map",
       view: new View({
         center: [0, 0],
-        extent: extent.buffer(kenyaExtent, 100000),
+        extent: this.params.extent,
         showFullExtent: true,
         zoom: 2,
         maxZoom: 18,
@@ -85,16 +77,20 @@ export class TmplMapComponent extends TemplateBaseComponent implements OnInit {
   }
 
   private async getParams() {
-    this.params.rawLayers = getParamFromTemplateRow(this._row, "layers", null);
-    console.log("rawLayers", this.params.rawLayers);
+    const layersRaw = getParamFromTemplateRow(this._row, "layers", null);
     // If raw value is a string, assume it is a data list name and fetch the associated data
-    if (typeof this.params.rawLayers === "string") {
-      const dataList = await this.appDataService.getSheet("data_list", this.params.rawLayers);
-      this.layers = dataList?.rows;
+    if (typeof layersRaw === "string") {
+      const dataList = await this.appDataService.getSheet("data_list", layersRaw);
+      this.params.layers = dataList?.rows;
     }
     // Else assume it is a parsed data list, as passed by e.g. @data.my_map_data_list
     else {
-      this.layers = Object.values(this.params.rawLayers);
+      this.params.layers = Object.values(layersRaw);
+    }
+
+    const extentRaw = getStringParamFromTemplateRow(this._row, "extent", null);
+    if (extentRaw) {
+      this.params.extent = extentRaw.split(",").map((num) => parseFloat(num.trim()));
     }
   }
 
