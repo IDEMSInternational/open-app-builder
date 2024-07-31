@@ -1,4 +1,4 @@
-import * as fs from "fs-extra";
+import fs from "fs-extra";
 import * as path from "path";
 import * as os from "os";
 import { createHash, randomUUID } from "crypto";
@@ -524,6 +524,14 @@ export function createTempDir() {
   const dirPath = path.join(os.tmpdir(), dirName);
   fs.ensureDirSync(dirPath);
   fs.emptyDirSync(dirPath);
+  return dirPath;
+}
+export async function createTempDirAsync() {
+  const dirName = randomUUID();
+  const dirPath = path.join(os.tmpdir(), dirName);
+  await fs.promises.mkdir(dirPath, { recursive: true });
+  await fs.promises.rm(dirPath, { recursive: true, force: true });
+  await fs.promises.mkdir(dirPath, { recursive: true });
   return dirPath;
 }
 

@@ -97,6 +97,8 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v3
         with:
+          # NOTE - if upgrading to node 20 will need to resolve issue with scripts tests
+          # https://github.com/tschaub/mock-fs/issues/384
           node-version: 18.x
 
       #############################################################################
