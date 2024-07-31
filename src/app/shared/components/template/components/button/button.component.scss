@@ -92,6 +92,7 @@ ion-button[data-variant~="card"] {
   padding: 1.5rem 0.5rem 0.5rem;
   // TODO: make a variable
   width: 160px;
+  overflow: hidden;
 
   &:active {
     background-color: var(--ion-color-gray-light);

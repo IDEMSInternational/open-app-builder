@@ -25,16 +25,18 @@
         [attr.data-rowname]="_row.name"
       ></plh-template-component>
     </span>
+    <ion-ripple-effect></ion-ripple-effect>
   </ion-button>
 
   <!-- "card-portrait" variant. This variant is not achievable using an ion-button -->
   <div
     *ngSwitchCase="true"
-    class="button-container"
+    class="button-container ion-activatable"
     (click)="triggerActions('click')"
     [attr.data-variant]="params.variant"
     [attr.data-has-children]="_row.rows ? true : false"
   >
+    <ion-ripple-effect></ion-ripple-effect>
     <img *ngIf="params.image" src="{{ params.image | plhAsset }}" />
     <div *ngIf="_row.value" [class]="'button-text ' + params.textAlign">
       {{ _row.value }}
@@ -47,6 +49,7 @@
         [parent]="parent"
         [attr.data-rowname]="_row.name"
       ></plh-template-component>
+      <ion-ripple-effect></ion-ripple-effect>
     </span>
   </div>
 </ng-container>
