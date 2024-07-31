@@ -73,6 +73,8 @@ let mockTemplateFieldService: MockTemplateFieldService;
 describe("TaskService", () => {
   let service: TaskService;
   let scheduleCampaignNotificationsSpy: jasmine.Spy<jasmine.Func>;
+  let fetchTaskRowSpy: jasmine.Spy<jasmine.Func>;
+  let fetchTaskRowsSpy: jasmine.Spy<jasmine.Func>;
 
   beforeEach(async () => {
     scheduleCampaignNotificationsSpy = jasmine.createSpy();
@@ -107,6 +109,30 @@ describe("TaskService", () => {
       ],
     });
     service = TestBed.inject(TaskService);
+
+    fetchTaskRowSpy = spyOn<TaskService, any>(service, "fetchTaskRow").and.callFake(
+      (dataListName, rowId) => {
+        if (rowId === "validRowId") {
+          return Promise.resolve({
+            completed: false,
+            task_child: "childDataList",
+            completed_field: "completed_field",
+          });
+        }
+        return Promise.resolve(null);
+      }
+    );
+
+    fetchTaskRowsSpy = spyOn<TaskService, any>(service, "fetchTaskRows").and.callFake(
+      (dataListName) => {
+        if (dataListName === "childDataList") {
+          return Promise.resolve([{ completed: true }, { completed: true }]);
+        }
+        return Promise.resolve([]);
+      }
+    );
+
+    spyOn<TaskService, any>(service, "setTaskCompletion").and.resolveTo(true);
   });
 
   it("should be created", () => {
@@ -152,7 +178,7 @@ describe("TaskService", () => {
   });
   it("can set a task group's completed status", async () => {
     await service.ready();
-    await service.setTaskGroupCompletedStatus(
+    await service.setTaskGroupCompletedField(
       MOCK_DATA.data_list[taskGroupsListName].rows[0].completed_field,
       true
     );
@@ -165,7 +191,7 @@ describe("TaskService", () => {
   it("completing the highlighted task causes the next highest priority task to be highlighted upon re-evaluation", async () => {
     await service.ready();
     // Complete highlighted task
-    await service.setTaskGroupCompletedStatus(
+    await service.setTaskGroupCompletedField(
       MOCK_DATA.data_list[taskGroupsListName].rows[0].completed_field,
       true
     );
@@ -177,15 +203,15 @@ describe("TaskService", () => {
   it("when all tasks are completed, the highlighted task group is set to ''", async () => {
     await service.ready();
     // Complete all tasks
-    await service.setTaskGroupCompletedStatus(
+    await service.setTaskGroupCompletedField(
       MOCK_DATA.data_list[taskGroupsListName].rows[0].completed_field,
       true
     );
-    await service.setTaskGroupCompletedStatus(
+    await service.setTaskGroupCompletedField(
       MOCK_DATA.data_list[taskGroupsListName].rows[1].completed_field,
       true
     );
-    await service.setTaskGroupCompletedStatus(
+    await service.setTaskGroupCompletedField(
       MOCK_DATA.data_list[taskGroupsListName].rows[2].completed_field,
       true
     );
@@ -194,7 +220,7 @@ describe("TaskService", () => {
   it("schedules campaign notifications on change of highlighted task", async () => {
     await service.ready();
     // Complete highlighted task
-    await service.setTaskGroupCompletedStatus(
+    await service.setTaskGroupCompletedField(
       MOCK_DATA.data_list[taskGroupsListName].rows[0].completed_field,
       true
     );
@@ -203,5 +229,44 @@ describe("TaskService", () => {
     // scheduleCampaignNotifications() should be called once on init (since the highlighted task group changes),
     // and again on the evaluation called above
     expect(scheduleCampaignNotificationsSpy).toHaveBeenCalledTimes(2);
+  });
+
+  it("evaluate task completion: should return null if taskRow is not found", async () => {
+    const result = await service["evaluateTaskCompletion"]("dataList", "invalidRowId");
+    expect(result).toBeNull();
+  });
+  it("evaluate task completion: should set parent task completion to true if all child tasks are completed", async () => {
+    const result = await service["evaluateTaskCompletion"]("dataList", "validRowId");
+    expect(service["setTaskCompletion"]).toHaveBeenCalledWith(
+      "dataList",
+      "validRowId",
+      true,
+      "completed_field"
+    );
+    expect(result).toBeTrue();
+  });
+  it("evaluate task completion: should set parent task completion to false if not all child tasks are completed", async () => {
+    fetchTaskRowsSpy.and.resolveTo([
+      { id: "a", completed: true },
+      { id: "b", completed: false },
+    ]);
+    const result = await service["evaluateTaskCompletion"]("dataList", "validRowId");
+    expect(service["setTaskCompletion"]).toHaveBeenCalledWith(
+      "dataList",
+      "validRowId",
+      false,
+      "completed_field"
+    );
+    expect(result).toBeFalse();
+  });
+  it("evaluate task completion: should log a warning if task row does not have a 'task_child' property", async () => {
+    spyOn(console, "warn");
+    fetchTaskRowSpy.and.resolveTo({
+      completed: false,
+    });
+    await service["evaluateTaskCompletion"]("dataList", "validRowId");
+    expect(console.warn).toHaveBeenCalledWith(
+      '[TASK] evaluate - row "validRowId" in "dataList" has no child tasks to evaluate'
+    );
   });
 });

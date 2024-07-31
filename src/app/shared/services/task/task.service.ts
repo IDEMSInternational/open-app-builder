@@ -4,10 +4,19 @@ import { AppDataService } from "../data/app-data.service";
 import { arrayToHashmap } from "../../utils";
 import { AsyncServiceBase } from "../asyncService.base";
 import { AppConfigService } from "../app-config/app-config.service";
-import { IAppConfig } from "../../model";
+import { FlowTypes, IAppConfig } from "../../model";
 import { CampaignService } from "../../../feature/campaign/campaign.service";
+import { TemplateActionRegistry } from "../../components/template/services/instance/template-action.registry";
+import { DynamicDataService } from "../dynamic-data/dynamic-data.service";
 
 export type IProgressStatus = "notStarted" | "inProgress" | "completed";
+// This is the definition of a task: a row of a data list that has a "completed" column
+export type TaskRow = FlowTypes.Data_listRow<{ completed: boolean }>;
+/**
+ * A task row that includes a value for `task_child`. This value is the name of the data list that contains
+ * a list of subtasks: when all subtasks are completed, the parent task is considered completed
+ */
+export type TaskRowWithChildTasks = TaskRow & { task_child: string };
 
 @Injectable({
   providedIn: "root",
@@ -22,13 +31,16 @@ export class TaskService extends AsyncServiceBase {
   tasksFeatureEnabled: boolean;
 
   constructor(
-    private templateFieldService: TemplateFieldService,
-    private appDataService: AppDataService,
     private appConfigService: AppConfigService,
-    private campaignService: CampaignService
+    private appDataService: AppDataService,
+    private campaignService: CampaignService,
+    private dynamicDataService: DynamicDataService,
+    private templateFieldService: TemplateFieldService,
+    private templateActionRegistry: TemplateActionRegistry
   ) {
     super("Task");
     this.registerInitFunction(this.initialise);
+    this.registerTemplateActionHandlers();
   }
 
   /**
@@ -159,11 +171,11 @@ export class TaskService extends AsyncServiceBase {
       // Check whether task group has already been completed
       if (!this.templateFieldService.getField(completedField)) {
         // If not, set completed field to "true"
-        await this.setTaskGroupCompletedStatus(completedField, true);
+        await this.setTaskGroupCompletedField(completedField, true);
         newlyCompleted = true;
       }
     } else {
-      await this.setTaskGroupCompletedStatus(completedField, false);
+      await this.setTaskGroupCompletedField(completedField, false);
       if (subtasksCompleted) {
         progressStatus = "inProgress";
       } else {
@@ -174,7 +186,7 @@ export class TaskService extends AsyncServiceBase {
     return { subtasksTotal, subtasksCompleted, progressStatus, newlyCompleted };
   }
 
-  async setTaskGroupCompletedStatus(completedField: string, isCompleted: boolean) {
+  async setTaskGroupCompletedField(completedField: string, isCompleted: boolean) {
     console.log(`Setting ${completedField} to ${isCompleted}`);
     await this.templateFieldService.setField(completedField, `${isCompleted}`);
   }
@@ -198,6 +210,119 @@ export class TaskService extends AsyncServiceBase {
       this.taskGroupsListName = appConfig.TASKS.taskGroupsListName;
       this.tasksFeatureEnabled = appConfig.TASKS.enabled;
     });
+  }
+
+  private registerTemplateActionHandlers() {
+    this.templateActionRegistry.register({
+      task: async ({ args, params }) => {
+        const [actionId] = args;
+        const childActions = {
+          evaluate: async () => {
+            const { data_list_name, row_id } = params;
+            if (!data_list_name) {
+              return console.warn(
+                "[TASK] evaluate action - To evaluate task completion, a data list name must be provided via the data_list_name param"
+              );
+            }
+            if (row_id) {
+              await this.evaluateTaskCompletion(data_list_name, row_id);
+            } else {
+              await this.bulkEvaluateTaskCompletion(data_list_name);
+            }
+          },
+        };
+        if (!(actionId in childActions)) {
+          console.error("task does not have action", actionId);
+          return;
+        }
+        return childActions[actionId]();
+      },
+    });
+  }
+
+  private async bulkEvaluateTaskCompletion(dataListName: string) {
+    const taskRows = await this.fetchTaskRows(dataListName);
+    for (const taskRow of taskRows) {
+      await this.evaluateTaskCompletion(dataListName, taskRow.id, taskRow);
+    }
+  }
+
+  /**
+   * For a given parent task (a row specified by the provided dataListName and rowId),
+   * evaluate its completion status based upon the completion status of its child tasks:
+   * if all child tasks are completed, the "completed" value of parent task is set to `true`, else it is set to `false`.
+   * Expects the task row to have a "task_child" column that contains the name of the data list containing the child tasks.
+   *
+   * @param {string} dataListName - The name of the data list that contains the task row
+   * @param {string} rowId - The ID of the task row to evaluate
+   * @param {TaskRowWithChildTasks} [taskRow] - Optionally provide a task row explicitly to avoid duplicate query to dynamic data
+   * @return {boolean} The completion status of the task group
+   */
+  private async evaluateTaskCompletion(
+    dataListName: string,
+    rowId: string,
+    taskRow?: TaskRowWithChildTasks
+  ): Promise<boolean> {
+    taskRow = taskRow || (await this.fetchTaskRow(dataListName, rowId));
+    if (!taskRow) return null;
+
+    let taskCompleted = taskRow.completed;
+
+    const subtasksDataListName = taskRow.task_child;
+    if (!subtasksDataListName) {
+      console.warn(
+        `[TASK] evaluate - row "${rowId}" in "${dataListName}" has no child tasks to evaluate`
+      );
+    } else {
+      const subtasks = await this.fetchTaskRows(subtasksDataListName);
+      taskCompleted = subtasks.every((row) => row.completed);
+
+      const taskCompletedField = taskRow["completed_field"];
+      await this.setTaskCompletion(dataListName, rowId, taskCompleted, taskCompletedField);
+    }
+    return taskCompleted;
+  }
+
+  /** Fetch task rows for a whole data list from dynamic data */
+  private async fetchTaskRows(dataListName: string) {
+    const taskRows = await this.dynamicDataService.snapshot<TaskRowWithChildTasks>(
+      "data_list",
+      dataListName
+    );
+    if (!taskRows) {
+      console.warn(`[TASK] - data list "${dataListName}" not found`);
+    }
+    return taskRows || null;
+  }
+
+  /** Fetch task row from dynamic data */
+  private async fetchTaskRow(dataListName: string, rowId: string) {
+    const taskRows = await this.fetchTaskRows(dataListName);
+    const taskRow = taskRows?.find((row) => row.id === rowId);
+    if (!taskRow) {
+      console.warn(`[TASK] - row "${rowId}" in "${dataListName}" not found`);
+    }
+    return taskRow || null;
+  }
+
+  /**
+   * Update the "completed" value for a given task group.
+   * @param {string} completed_field - If provided, this field will also be updated to support legacy field-based functionality
+   * */
+  private async setTaskCompletion(
+    dataListName: string,
+    rowId: string,
+    completed: boolean,
+    completed_field?: string
+  ) {
+    // Update task's "completed" value in dynamic data
+    await this.dynamicDataService.update("data_list", dataListName, rowId, { completed });
+
+    // Support legacy task group implementation, where task completion is tracked in fields
+    if (completed_field) {
+      await this.setTaskGroupCompletedField(completed_field, completed);
+      this.evaluateHighlightedTaskGroup();
+    }
   }
 
   /**
