@@ -1,17 +1,13 @@
-import { FlowTypes } from "data-models";
 import { DefaultParser } from "./default.parser";
-
-const testInputSources = {
-  data_list: { test_data_list: [{ id: 1 }, { id: 2 }, { id: 3 }] },
-};
+import { FlowTypes } from "data-models";
+import { getTestFlowParserProcessor } from "../flowParser.spec";
 
 describe("Default Parser", () => {
-  it("Cleans field values - removes whitespace within empty strings", () => {
-    const parser = new DefaultParser({ processedFlowHashmap: testInputSources } as any);
+  const parser = new DefaultParser({ processedFlowHashmap: {} } as any);
+  it("Cleans field values - handles strings consisting only of whitespace", () => {
     const output = parser.run({
       flow_name: "test_flow_input_empty",
-      flow_subtype: "generator",
-      flow_type: "generated",
+      flow_type: "data_list",
       rows: [
         {
           type: "text",
@@ -70,12 +66,10 @@ describe("Default Parser", () => {
     ]);
   });
 
-  it("Cleans field values - Replaces string consisting of only line breaks and new lines", () => {
-    const parser = new DefaultParser({ processedFlowHashmap: testInputSources } as any);
+  it("Cleans field values - trims whitespace from beginning and end of strings", () => {
     const output = parser.run({
       flow_name: "test_flow_input_nonempty",
-      flow_subtype: "generator",
-      flow_type: "generated",
+      flow_type: "data_list",
       rows: [
         {
           type: "text",
