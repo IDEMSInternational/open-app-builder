@@ -70,7 +70,6 @@ export class DefaultParser<
     }
     this.flow.rows = processedRows;
     this.flow = this.postProcessFlow(this.flow);
-    
     return this.flow;
   }
 
@@ -288,9 +287,9 @@ class RowProcessor {
         // remove whitespace
         this.row[field] = this.row[field].trim();
 
-        // remove all line breaks in the field using replaceAll() and regex
+        // replace any strings that consist only of whitespace with the empty string
         if (!this.row[field].match(/\S/)) {
-          this.row[field] = ""; 
+          this.row[field] = "";
         }
       }
     });
