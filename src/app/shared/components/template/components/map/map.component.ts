@@ -15,11 +15,15 @@ import * as extent from "ol/extent";
 import { TemplateAssetService } from "../../services/template-asset.service";
 import { getParamFromTemplateRow, getStringParamFromTemplateRow } from "src/app/shared/utils";
 import { AppDataService } from "src/app/shared/services/data/app-data.service";
+import Style from "ol/style/Style";
+import Fill from "ol/style/Fill";
+import Stroke from "ol/style/Stroke";
 
 interface IMapLayer {
   id: string;
-  type: "vector" | "heatmap";
+  property: string;
   source_asset: string | any;
+  type: "vector" | "heatmap";
 }
 
 interface IMapParams {
@@ -113,9 +117,42 @@ export class TmplMapComponent extends TemplateBaseComponent implements OnInit {
       }),
     });
 
+    console.log("layer.property", layer.property);
+    if (layer.property) {
+      vectorLayer.set("style", (feature) => {
+        console.log("feature", feature);
+        const propertyToPlot = feature.get(layer.property);
+        console.log("propertyToPlot", propertyToPlot);
+        const style = new Style({
+          fill: new Fill({
+            // color: this.getColorForProperty(propertyToPlot)
+            color: [255, 0, 0],
+          }),
+          stroke: new Stroke({
+            color: "black",
+            width: 1,
+          }),
+        });
+        return style;
+      });
+    }
+
     this.map.addLayer(vectorLayer);
   }
 
+  private getColorForProperty(property: number) {
+    {
+      if (property > 1000000) {
+        return "red";
+      } else if (property > 500000) {
+        return "orange";
+      } else if (property > 100000) {
+        return "yellow";
+      } else {
+        return "green";
+      }
+    }
+  }
   async getFeatures(assetRef: string) {
     let data = await this.templateAssetService.fetchAsset(assetRef);
 
