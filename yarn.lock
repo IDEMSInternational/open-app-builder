@@ -10465,6 +10465,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"chroma-js@npm:^2.6.0":
+  version: 2.6.0
+  resolution: "chroma-js@npm:2.6.0"
+  checksum: 6b361e4a35fb13af8772ca537d83bae6e0c3b8deebe71957227f5c59b197a8ad5062e3ca826d0578f726f978a94d08948147e567f96bbe9ed27f516061e27cb8
+  languageName: node
+  linkType: hard
+
 "chrome-trace-event@npm:^1.0.2":
   version: 1.0.3
   resolution: "chrome-trace-event@npm:1.0.3"
@@ -14877,6 +14884,7 @@ __metadata:
     "@typescript-eslint/parser": ^6.13.1
     bootstrap-datepicker: ^1.10.0
     capacitor-blob-writer: ^1.1.14
+    chroma-js: ^2.6.0
     clone: ^2.1.2
     codelyzer: ^6.0.2
     concurrently: ^6.2.0
