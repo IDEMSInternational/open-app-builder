@@ -1,6 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { TemplateBaseComponent } from "../base";
-// import 'ol/ol.css';
+import { TemplateAssetService } from "../../services/template-asset.service";
+import { getParamFromTemplateRow, getStringParamFromTemplateRow } from "src/app/shared/utils";
+import { AppDataService } from "src/app/shared/services/data/app-data.service";
 import Map from "ol/Map";
 import View from "ol/View";
 import { OSM, Vector } from "ol/source";
@@ -11,13 +13,10 @@ import VectorLayer from "ol/layer/Vector";
 import GeoJSON from "ol/format/GeoJSON";
 import * as proj from "ol/proj";
 import * as extent from "ol/extent";
-
-import { TemplateAssetService } from "../../services/template-asset.service";
-import { getParamFromTemplateRow, getStringParamFromTemplateRow } from "src/app/shared/utils";
-import { AppDataService } from "src/app/shared/services/data/app-data.service";
 import Style from "ol/style/Style";
 import Fill from "ol/style/Fill";
 import Stroke from "ol/style/Stroke";
+import chroma from "chroma-js";
 
 interface IMapLayer {
   id: string;
@@ -119,14 +118,13 @@ export class TmplMapComponent extends TemplateBaseComponent implements OnInit {
 
     console.log("layer.property", layer.property);
     if (layer.property) {
-      vectorLayer.set("style", (feature) => {
+      vectorLayer.setStyle((feature) => {
         console.log("feature", feature);
         const propertyToPlot = feature.get(layer.property);
         console.log("propertyToPlot", propertyToPlot);
         const style = new Style({
           fill: new Fill({
-            // color: this.getColorForProperty(propertyToPlot)
-            color: [255, 0, 0],
+            color: this.getColorForProperty(propertyToPlot),
           }),
           stroke: new Stroke({
             color: "black",
@@ -140,18 +138,15 @@ export class TmplMapComponent extends TemplateBaseComponent implements OnInit {
     this.map.addLayer(vectorLayer);
   }
 
-  private getColorForProperty(property: number) {
-    {
-      if (property > 1000000) {
-        return "red";
-      } else if (property > 500000) {
-        return "orange";
-      } else if (property > 100000) {
-        return "yellow";
-      } else {
-        return "green";
-      }
-    }
+  private getColorForProperty(property: number, rangeMax: number = 2000000, rangeMin: number = 0) {
+    const colourScale = chroma
+      .scale(["purple", "blue", "green", "yellow"])
+      .domain([rangeMin, rangeMax])
+      .mode("lab");
+    // .gamma(2)
+    // .correctLightness()
+    console.log("colour", colourScale(property).alpha(0.6).css());
+    return colourScale(property).alpha(0.6).css();
   }
   async getFeatures(assetRef: string) {
     let data = await this.templateAssetService.fetchAsset(assetRef);
