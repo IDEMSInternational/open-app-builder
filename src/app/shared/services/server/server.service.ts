@@ -7,9 +7,10 @@ import { throwError } from "rxjs";
 import { environment } from "src/environments/environment";
 import { generateTimestamp } from "../../utils";
 import { AppConfigService } from "../app-config/app-config.service";
-import { SyncServiceBase } from "../syncService.base";
 import { LocalStorageService } from "../local-storage/local-storage.service";
 import { DynamicDataService } from "../dynamic-data/dynamic-data.service";
+import { UserMetaService } from "../userMeta/userMeta.service";
+import { AsyncServiceBase } from "../asyncService.base";
 
 /**
  * Backend API
@@ -21,7 +22,7 @@ import { DynamicDataService } from "../dynamic-data/dynamic-data.service";
  *
  **/
 @Injectable({ providedIn: "root" })
-export class ServerService extends SyncServiceBase {
+export class ServerService extends AsyncServiceBase {
   app_user_id: string;
   device_info: DeviceInfo;
   syncSchedule;
@@ -31,15 +32,18 @@ export class ServerService extends SyncServiceBase {
     private http: HttpClient,
     private appConfigService: AppConfigService,
     private localStorageService: LocalStorageService,
-    private dynamicDataService: DynamicDataService
+    private dynamicDataService: DynamicDataService,
+    private userMetaService: UserMetaService
   ) {
     super("Server");
-    this.initialise();
+    this.registerInitFunction(this.initialise);
   }
 
-  private initialise() {
+  private async initialise() {
     this.ensureSyncServicesReady([this.appConfigService, this.localStorageService]);
+    this.ensureAsyncServicesReady([this.userMetaService]);
     this.subscribeToAppConfigChanges();
+    await this.setUserMetaData();
     if (environment.production) {
       this.syncUserData();
       this.syncSchedule.subscribe(() => {
@@ -58,13 +62,7 @@ export class ServerService extends SyncServiceBase {
 
   public async syncUserData() {
     await this.dynamicDataService.ready();
-    if (!this.device_info) {
-      this.device_info = await Device.getInfo();
-    }
-    if (!this.app_user_id) {
-      const { identifier: uuid } = await Device.getId();
-      this.app_user_id = uuid;
-    }
+    await this.setUserMetaData();
     console.log("[SERVER] sync data");
     const contact_fields = this.localStorageService.getAll();
     const dynamic_data = await this.dynamicDataService.getState();
@@ -106,6 +104,15 @@ export class ServerService extends SyncServiceBase {
           (err) => resolve(null)
         );
     });
+  }
+
+  private async setUserMetaData() {
+    if (!this.device_info) {
+      this.device_info = await Device.getInfo();
+    }
+    if (!this.app_user_id) {
+      this.app_user_id = this.localStorageService.getProtected("APP_USER_ID");
+    }
   }
 
   private handleError(error: HttpErrorResponse) {
