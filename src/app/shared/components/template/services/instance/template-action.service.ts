@@ -35,7 +35,10 @@ export class TemplateActionService extends SyncServiceBase {
   private actionsQueue: FlowTypes.TemplateRowAction[] = [];
   private actionsQueueProcessing$ = new BehaviorSubject<boolean>(false);
 
-  constructor(private injector: Injector, public container?: TemplateContainerComponent) {
+  constructor(
+    private injector: Injector,
+    public container?: TemplateContainerComponent
+  ) {
     super("TemplateAction");
   }
   // Retrive all services on demand from global injector
@@ -87,10 +90,10 @@ export class TemplateActionService extends SyncServiceBase {
     await this.ensureAsyncServicesReady([
       this.templateTranslateService,
       this.dbSyncService,
+      this.serverService,
       this.taskService,
     ]);
     this.ensureSyncServicesReady([
-      this.serverService,
       this.templateNavService,
       this.themeService,
       this.settingsService,

@@ -26,8 +26,8 @@ export class TemplateCalcService extends AsyncServiceBase {
     this.registerInitFunction(this.initialise);
   }
   private async initialise() {
-    this.ensureSyncServicesReady([this.serverService]);
-    await this.ensureAsyncServicesReady([this.dataEvaluationService]);
+    await this.ensureAsyncServicesReady([this.dataEvaluationService, this.serverService]);
+    this.getCalcContext();
   }
 
   /** Provide calc context, initialising only once */
