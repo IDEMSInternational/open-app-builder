@@ -5,7 +5,7 @@ import { envReplace } from "@idemsInternational/env-replace";
 import { ROOT_DIR } from "../../paths";
 import { Logger, generateVersionCode } from "../../utils";
 import { PATHS } from "shared";
-import { spawnSync } from "child_process";
+import { execSync, spawnSync } from "child_process";
 import * as path from "path";
 
 interface IAndroidBuildOptions {
@@ -86,8 +86,7 @@ const set_splash_image = async (splashAssetPath: string) => {
 
   // if it does not, then otherwise, run the following command
   const cmd = `npx @capacitor/assets generate --assetPath ${splashAssetDirPath} --android`;
-  console.log(cmd);
-  spawnSync(cmd);
+  execSync(cmd); // command should work, mine (Jody) is not working for some reason
 };
 
 const set_launcher_icon = async (options: {
@@ -107,34 +106,12 @@ const set_launcher_icon = async (options: {
     });
   }
 
-  const includeAdaptiveIcons =
-    fs.existsSync(iconAssetForegroundPath) && fs.existsSync(iconAssetBackgroundPath);
+  // all paths for the icons have the same diretory
+  const iconAssetDirPath = path.dirname(iconAssetPath);
+  const cmd = `npx @capacitor/assets generate --assetPath ${iconAssetDirPath} --android`;
+  execSync(cmd);
 
-  const cordovaOptions: Options = {
-    directory: ROOT_DIR,
-    resourcesDirectory: join(ROOT_DIR, "resources"),
-    logstream: process.stdout,
-    platforms: {
-      android: includeAdaptiveIcons
-        ? {
-            "adaptive-icon": {
-              icon: { sources: iconSources },
-              foreground: { sources: [iconAssetForegroundPath] },
-              background: { sources: [iconAssetBackgroundPath] },
-            },
-          }
-        : { icon: { sources: iconSources } },
-    },
-    skipConfig: true,
-    copy: true,
-    projectConfig: {
-      android: {
-        directory: join(ROOT_DIR, "android"),
-      },
-    },
-  };
-
-  return await run(cordovaOptions);
+  console.log(cmd);
 };
 
 export default {
