@@ -99,7 +99,7 @@ export const TEMPLATE_COMPONENTS = [
   TmplImageComponent,
   TmplLatexComponent,
   TmplLottieAnimation,
-  // TmplMapComponent, // Standalone component should not need to be declared in a module
+  TmplMapComponent,
   TmplNavigationBarComponent,
   TmplNumberComponent,
   TmplOdkFormComponent,
