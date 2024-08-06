@@ -17,10 +17,16 @@ import Style from "ol/style/Style";
 import Fill from "ol/style/Fill";
 import Stroke from "ol/style/Stroke";
 import chroma from "chroma-js";
+import BaseLayer from "ol/layer/Base";
 
 interface IMapLayer {
   id: string;
+  name: string;
+  // a property of the dataset to be plotted
   property: string;
+  scale_max: number;
+  scale_min: number;
+  // the path to the GeoJSON file containing the data to be plotted
   source_asset: string | any;
   type: "vector" | "heatmap";
 }
@@ -33,16 +39,15 @@ interface IMapParams {
   extent: number[];
   /**
    * TEMPLATE PARAMETER: layers.
-   * A data list or data list name containeing a list of layers to be added to the map. Format IMapLayer
+   * A data list or data list name containing a list of layers to be added to the map. Format IMapLayer
    */
   layers: IMapLayer[];
 }
 
 @Component({
   selector: "plh-map",
-  templateUrl: "./map.component.html",
   styleUrls: ["./map.component.scss"],
-  standalone: true,
+  templateUrl: "./map.component.html",
 })
 export class TmplMapComponent extends TemplateBaseComponent implements OnInit {
   constructor(
@@ -52,6 +57,7 @@ export class TmplMapComponent extends TemplateBaseComponent implements OnInit {
     super();
   }
   public params: Partial<IMapParams> = {};
+  public mapLayers: BaseLayer[] = [];
 
   public map: Map;
 
@@ -102,11 +108,15 @@ export class TmplMapComponent extends TemplateBaseComponent implements OnInit {
       if (layer.type === "vector") {
         this.addVectorLayer(layer);
       }
+      // TODO: handle other layer types, e.g. heatmap
     }
   }
 
   private addVectorLayer(layer: IMapLayer) {
-    if (!layer?.source_asset) return;
+    if (!layer) return;
+    const { property: propertyToPlot, source_asset, scale_max, scale_min, name } = layer;
+    if (!source_asset) return;
+
     const assetPath = this.templateAssetService.getTranslatedAssetPath(layer.source_asset);
 
     const vectorLayer = new VectorLayer({
@@ -116,15 +126,14 @@ export class TmplMapComponent extends TemplateBaseComponent implements OnInit {
       }),
     });
 
-    console.log("layer.property", layer.property);
-    if (layer.property) {
+    vectorLayer.set("name", name);
+
+    if (propertyToPlot) {
       vectorLayer.setStyle((feature) => {
-        console.log("feature", feature);
-        const propertyToPlot = feature.get(layer.property);
-        console.log("propertyToPlot", propertyToPlot);
+        const value = feature.get(propertyToPlot);
         const style = new Style({
           fill: new Fill({
-            color: this.getColorForProperty(propertyToPlot),
+            color: this.getColourForValue(value, scale_max, scale_min),
           }),
           stroke: new Stroke({
             color: "black",
@@ -135,18 +144,28 @@ export class TmplMapComponent extends TemplateBaseComponent implements OnInit {
       });
     }
 
+    console.log("vectorLayer", vectorLayer);
     this.map.addLayer(vectorLayer);
+    this.mapLayers.push(vectorLayer);
   }
 
-  private getColorForProperty(property: number, rangeMax: number = 2000000, rangeMin: number = 0) {
+  public handleToggleChange(event: any, mapLayer: BaseLayer) {
+    const toggleValue = event.detail.checked;
+    mapLayer.setVisible(toggleValue);
+  }
+
+  private toggleLayer(mapLayer: BaseLayer) {
+    mapLayer.setVisible(!mapLayer.getVisible());
+  }
+
+  private getColourForValue(value: number, scaleMax: number = 2000000, sacleMin: number = 0) {
     const colourScale = chroma
       .scale(["purple", "blue", "green", "yellow"])
-      .domain([rangeMin, rangeMax])
+      .domain([sacleMin, scaleMax])
       .mode("lab");
     // .gamma(2)
     // .correctLightness()
-    console.log("colour", colourScale(property).alpha(0.6).css());
-    return colourScale(property).alpha(0.6).css();
+    return colourScale(value).alpha(0.6).css();
   }
   async getFeatures(assetRef: string) {
     let data = await this.templateAssetService.fetchAsset(assetRef);
