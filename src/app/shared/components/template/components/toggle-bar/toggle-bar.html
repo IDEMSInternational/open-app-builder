@@ -13,10 +13,10 @@
     >
       <ion-toggle
         [attr.data-mode]="platformVariant"
+        [mode]="platformVariant"
         [enableOnOffLabels]="params.showTickAndCross && params.showIcons"
         [checked]="!!_row.value"
         (click)="handleClick($event)"
-        legacy="true"
       >
       </ion-toggle>
     </div>
