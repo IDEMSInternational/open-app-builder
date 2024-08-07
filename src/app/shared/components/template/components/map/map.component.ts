@@ -5,14 +5,11 @@ import { getParamFromTemplateRow, getStringParamFromTemplateRow } from "src/app/
 import { AppDataService } from "src/app/shared/services/data/app-data.service";
 import Map from "ol/Map";
 import View from "ol/View";
-import { OSM, Vector } from "ol/source";
+import { OSM } from "ol/source";
 import TileLayer from "ol/layer/Tile";
-import HeatmapLayer from "ol/layer/Heatmap";
 import VectorSource from "ol/source/Vector";
 import VectorLayer from "ol/layer/Vector";
 import GeoJSON from "ol/format/GeoJSON";
-import * as proj from "ol/proj";
-import * as extent from "ol/extent";
 import Style from "ol/style/Style";
 import Fill from "ol/style/Fill";
 import Stroke from "ol/style/Stroke";
@@ -21,13 +18,18 @@ import BaseLayer from "ol/layer/Base";
 
 interface IMapLayer {
   id: string;
+  description: string;
+  fill: string;
   name: string;
+  opacity: number;
   // a property of the dataset to be plotted
   property: string;
+  scale_fill: string;
   scale_max: number;
   scale_min: number;
   // the path to the GeoJSON file containing the data to be plotted
   source_asset: string | any;
+  stroke: string;
   type: "vector" | "heatmap";
 }
 
@@ -50,16 +52,16 @@ interface IMapParams {
   templateUrl: "./map.component.html",
 })
 export class TmplMapComponent extends TemplateBaseComponent implements OnInit {
+  public params: Partial<IMapParams> = {};
+  public map: Map;
+  public mapLayers: BaseLayer[] = [];
+
   constructor(
     private templateAssetService: TemplateAssetService,
     private appDataService: AppDataService
   ) {
     super();
   }
-  public params: Partial<IMapParams> = {};
-  public mapLayers: BaseLayer[] = [];
-
-  public map: Map;
 
   async ngOnInit() {
     await this.getParams();
@@ -114,7 +116,18 @@ export class TmplMapComponent extends TemplateBaseComponent implements OnInit {
 
   private addVectorLayer(layer: IMapLayer) {
     if (!layer) return;
-    const { property: propertyToPlot, source_asset, scale_max, scale_min, name } = layer;
+    const {
+      property: propertyToPlot,
+      source_asset,
+      scale_max,
+      scale_min,
+      name,
+      description,
+      opacity,
+      fill,
+      stroke,
+      scale_fill,
+    } = layer;
     if (!source_asset) return;
 
     const assetPath = this.templateAssetService.getTranslatedAssetPath(layer.source_asset);
@@ -124,16 +137,25 @@ export class TmplMapComponent extends TemplateBaseComponent implements OnInit {
         format: new GeoJSON(),
         url: assetPath,
       }),
+      style: new Style({
+        fill: new Fill({
+          color: fill && fill !== "none" ? fill : "transparent",
+        }),
+        stroke: new Stroke({
+          color: stroke || "black",
+          width: 1,
+        }),
+      }),
     });
 
-    vectorLayer.set("name", name);
-
     if (propertyToPlot) {
+      const scaleColours = scale_fill?.split(",").map((str) => str.trim());
+      const colourScale = this.generateColourScale(scale_max, scale_min, scaleColours);
       vectorLayer.setStyle((feature) => {
         const value = feature.get(propertyToPlot);
         const style = new Style({
           fill: new Fill({
-            color: this.getColourForValue(value, scale_max, scale_min),
+            color: this.getColourForValue(colourScale, value),
           }),
           stroke: new Stroke({
             color: "black",
@@ -144,7 +166,11 @@ export class TmplMapComponent extends TemplateBaseComponent implements OnInit {
       });
     }
 
-    console.log("vectorLayer", vectorLayer);
+    if (opacity || opacity === 0) vectorLayer.setOpacity(opacity);
+    // Add custom properties to the layer
+    vectorLayer.set("name", name);
+    vectorLayer.set("description", description);
+
     this.map.addLayer(vectorLayer);
     this.mapLayers.push(vectorLayer);
   }
@@ -154,29 +180,20 @@ export class TmplMapComponent extends TemplateBaseComponent implements OnInit {
     mapLayer.setVisible(toggleValue);
   }
 
-  private toggleLayer(mapLayer: BaseLayer) {
+  public toggleLayer(mapLayer: BaseLayer) {
     mapLayer.setVisible(!mapLayer.getVisible());
   }
 
-  private getColourForValue(value: number, scaleMax: number = 2000000, sacleMin: number = 0) {
-    const colourScale = chroma
-      .scale(["purple", "blue", "green", "yellow"])
-      .domain([sacleMin, scaleMax])
-      .mode("lab");
-    // .gamma(2)
+  private generateColourScale(
+    scaleMax: number = 100,
+    scaleMin: number = 0,
+    scaleColors = ["black", "white"]
+  ) {
+    return chroma.scale(scaleColors).domain([scaleMin, scaleMax]).mode("hsl");
+    // .gamma(1)
     // .correctLightness()
-    return colourScale(value).alpha(0.6).css();
   }
-  async getFeatures(assetRef: string) {
-    let data = await this.templateAssetService.fetchAsset(assetRef);
-
-    const features = new GeoJSON().readFeatures(
-      data
-      // {
-      // dataProjection: "EPSG:32643",
-      // featureProjection: "EPSG:3857"
-      // }
-    );
-    return features;
+  private getColourForValue(colourScale: chroma.Scale, value: number) {
+    return colourScale(value).css();
   }
 }

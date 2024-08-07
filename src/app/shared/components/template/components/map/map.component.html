@@ -1,18 +1,27 @@
-<div id="map" class="map"></div>
-<div class="map-controls">
-  <div class="layer-control"></div>
-  @if (mapLayers.length > 0) {
-    <ion-list>
-      @for (mapLayer of mapLayers; track $index) {
-        <ion-item>
-          <ion-toggle
-            [checked]="mapLayer.getVisible()"
-            (ionChange)="handleToggleChange($event, mapLayer)"
-          >
-            {{ mapLayer.get("name") }}
-          </ion-toggle>
-        </ion-item>
-      }
-    </ion-list>
-  }
+<div class="map-container">
+  <div id="map" class="map"></div>
+  <div class="map-controls">
+    <div class="layer-control"></div>
+    @if (mapLayers.length > 0) {
+      <ion-list>
+        @for (mapLayer of mapLayers; track $index) {
+          <ion-item>
+            <ion-label>
+              <ion-toggle
+                [checked]="mapLayer.getVisible()"
+                (ionChange)="handleToggleChange($event, mapLayer)"
+              >
+                {{ mapLayer.get("name") }}
+              </ion-toggle>
+              @if (mapLayer.get("description")) {
+                <p>
+                  {{ mapLayer.get("description") }}
+                </p>
+              }
+            </ion-label>
+          </ion-item>
+        }
+      </ion-list>
+    }
+  </div>
 </div>
