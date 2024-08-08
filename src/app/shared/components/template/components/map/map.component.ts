@@ -31,6 +31,7 @@ interface IMapLayer {
   source_asset: string | any;
   stroke: string;
   type: "vector" | "heatmap";
+  visible_default: boolean;
 }
 
 interface IMapParams {
@@ -117,16 +118,17 @@ export class TmplMapComponent extends TemplateBaseComponent implements OnInit {
   private addVectorLayer(layer: IMapLayer) {
     if (!layer) return;
     const {
+      description,
+      fill,
+      name,
+      opacity,
       property: propertyToPlot,
-      source_asset,
+      scale_fill,
       scale_max,
       scale_min,
-      name,
-      description,
-      opacity,
-      fill,
+      source_asset,
       stroke,
-      scale_fill,
+      visible_default,
     } = layer;
     if (!source_asset) return;
 
@@ -167,6 +169,8 @@ export class TmplMapComponent extends TemplateBaseComponent implements OnInit {
     }
 
     if (opacity || opacity === 0) vectorLayer.setOpacity(opacity);
+    // Set default layer visibility, defaulting to visible if not defined
+    vectorLayer.setVisible(visible_default === undefined || !!visible_default);
     // Add custom properties to the layer
     vectorLayer.set("name", name);
     vectorLayer.set("description", description);
