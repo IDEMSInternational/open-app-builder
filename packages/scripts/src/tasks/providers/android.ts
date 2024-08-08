@@ -114,8 +114,30 @@ const set_launcher_icon = async (options: {
   console.log(cmd);
 };
 
+const set_icons_and_splash_images = async (options: { assetPath: string }) => {
+  const { assetPath } = options;
+
+  const iconAndSplashSources = [];
+  if (fs.existsSync(assetPath)) {
+    iconAndSplashSources.push(assetPath);
+  } else {
+    return Logger.error({
+      msg1: "Icon and splash source assets not found",
+      msg2: `A source .png file is required to be used as a fall back for when the device's android version does not support adaptive icons. No asset was found at the path supplied in the deployment config: ${assetPath}.`,
+    });
+  }
+
+  // all paths for the icons have the same diretory
+  const assetDirPath = path.dirname(assetPath);
+  const cmd = `npx @capacitor/assets generate --assetPath ${assetDirPath} --android`;
+  execSync(cmd);
+
+  console.log(cmd);
+};
+
 export default {
   configure,
   set_launcher_icon,
   set_splash_image,
+  set_icons_and_splash_images,
 };
