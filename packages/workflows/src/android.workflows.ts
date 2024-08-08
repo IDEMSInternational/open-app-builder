@@ -47,6 +47,17 @@ const childWorkflows: IDeploymentWorkflows = {
       },
     ],
   },
+  set_icons_and_splash_images: {
+    label:
+      "Generate app launcher icon and splash screen image from icon.png and splash.png assets respectively. Copy generated files to relevant folders",
+    steps: [
+      {
+        name: "set_icons_and_splash_images",
+        function: async ({ tasks, config }) =>
+          tasks.android.set_icons_and_splash_images({ assetPath: config.android.icon_asset_path }),
+      },
+    ],
+  },
 };
 
 /** Default workflows made available to all deployments */
@@ -70,6 +81,14 @@ const defaultWorkflows: IDeploymentWorkflows = {
         name: "Set Launcher Icon",
         function: async ({ tasks, workflow }) =>
           await tasks.workflow.runWorkflow({ name: "android set_launcher_icon", parent: workflow }),
+      },
+      {
+        name: "Set Icons and Splash Images",
+        function: async ({ tasks, workflow }) =>
+          await tasks.workflow.runWorkflow({
+            name: "android set_icons_and_splash_images",
+            parent: workflow,
+          }),
       },
     ],
     children: childWorkflows,
