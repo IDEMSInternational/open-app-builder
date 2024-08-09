@@ -131,7 +131,6 @@ const set_icons_and_splash_images = async (options: { assetPath: string }) => {
   const assetDirPath = path.dirname(assetPath);
   const cmd = `npx @capacitor/assets generate --assetPath ${assetDirPath} --android`;
   execSync(cmd);
-
   console.log(cmd);
 };
 
