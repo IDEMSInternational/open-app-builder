@@ -45,6 +45,25 @@ const configure = async ({ appId, appName, versionName }: IiOSBuildOptions) => {
   });
 };
 
+const set_icons_and_splash_images = async (options: { assetPath: string }) => {
+  const { assetPath } = options;
+
+  const iconAndSplashSources = [];
+  if (fs.existsSync(assetPath)) {
+    iconAndSplashSources.push(assetPath);
+  } else {
+    return Logger.error({
+      msg1: "Icon and splash source assets not found",
+      msg2: `A source .png file is required to be used as a fall back for when the device's android version does not support adaptive icons. No asset was found at the path supplied in the deployment config: ${assetPath}.`,
+    });
+  }
+
+  // all paths for the icons have the same diretory
+  const assetDirPath = path.dirname(assetPath);
+  const cmd = `npx @capacitor/assets generate --assetPath ${assetDirPath} --ios`;
+  execSync(cmd);
+};
+
 /**
  * iOS app ID (aka "bundle ID") only supports alphanumeric characters (A–Z, a–z, and 0–9), hyphens (-), and periods (.),
  * see https://developer.apple.com/documentation/bundleresources/information_property_list/cfbundleidentifier#discussion
