@@ -1,12 +1,11 @@
 import { Injectable } from "@angular/core";
-import { Directory, Encoding, Filesystem } from "@capacitor/filesystem";
+import { Directory, Filesystem } from "@capacitor/filesystem";
 import { FileOpener } from "@capacitor-community/file-opener";
 import { Capacitor } from "@capacitor/core";
 import write_blob from "capacitor-blob-writer";
 import { saveAs } from "file-saver";
 import { SyncServiceBase } from "../syncService.base";
 import { environment } from "src/environments/environment";
-import { IAssetContents } from "src/app/data";
 import { TemplateActionRegistry } from "../../components/template/services/instance/template-action.registry";
 import { TemplateAssetService } from "../../components/template/services/template-asset.service";
 import { ErrorHandlerService } from "../error-handler/error-handler.service";
@@ -33,7 +32,7 @@ export class FileManagerService extends SyncServiceBase {
 
   private registerTemplateActionHandlers() {
     this.templateActionRegistry.register({
-      // Native: save file to Downloads folder in external device storage and open;
+      // Native: save file to Documents folder in external device storage and open;
       // Web: download file
       save_to_device: async ({ args }) => {
         await this.downloadTemplateAsset({ relativePath: args[0] });
@@ -48,11 +47,11 @@ export class FileManagerService extends SyncServiceBase {
   }
 
   /**
-   * Save an asset file to device storage.
+   * Save an asset file to device storage, to be accessible to the user.
    * On native devices, save file to native storage and optionally trigger prompt to open with native apps.
    * On web, prompt standard browser download.
    * @param options.relativePath The relative path to an asset, in standard authoring syntax
-   * @param options.open On native devices, open the file after download. Default: true
+   * @param options.open If true, then the file will be opened after download on native devices. Default: true
    */
   private async downloadTemplateAsset(options: {
     relativePath: string;
@@ -111,18 +110,21 @@ export class FileManagerService extends SyncServiceBase {
   }
 
   /**
-   * Save a file to the local filesystem (native only),
+   * Save a file to the local filesystem (native only), for internal use by the app.
    * @param options.directory the name of the directory in which to save the file.
    * E.g. the permenent "Data" directory (default) or the temporary "Cache" (see https://capacitorjs.com/docs/apis/filesystem#directory)
    * @param options.subdirectory Additional folder path to be added between "directory" and target path. The app deployment name is always added.
    * @returns the local filesystem path to the saved file, in both "file://*" format and usable src format
    */
-  async saveFile(options: {
+  public async saveFile(options: {
     data: Blob;
     targetPath: string;
     directory?: keyof typeof Directory;
     subdirectory?: string;
   }) {
+    if (!Capacitor.isNativePlatform()) {
+      throw new Error("saveFile() is only supported on native platforms");
+    }
     const { data, targetPath, directory = "Data", subdirectory = "" } = options;
     const path = (subdirectory ? subdirectory + "/" : "") + `${this.cacheName}/${targetPath}`;
     // Docs for write_blob are here: https://github.com/diachedelic/capacitor-blob-writer#readme
@@ -139,7 +141,11 @@ export class FileManagerService extends SyncServiceBase {
     return { localFilepath, src: Capacitor.convertFileSrc(localFilepath) };
   }
 
+  /** Delete a file from the local filesystem (native only) */
   public async deleteFile(localFilepath: string) {
+    if (!Capacitor.isNativePlatform()) {
+      throw new Error("deleteFile() is only supported on native platforms");
+    }
     return await Filesystem.deleteFile({ path: localFilepath });
   }
 
@@ -147,7 +153,7 @@ export class FileManagerService extends SyncServiceBase {
    * @returns a URL to access the file (not currently used)
    * Adapted from https://www.npmjs.com/package/capacitor-blob-writer
    */
-  async getLocalUrl(relativePath: string) {
+  private async getLocalUrl(relativePath: string) {
     // How the URI is obtained depends on the platform
     if (Capacitor.isNativePlatform()) {
       const { uri } = await Filesystem.getUri({
@@ -166,20 +172,7 @@ export class FileManagerService extends SyncServiceBase {
     }
   }
 
-  /**
-   * WIP: method to save list of cached assets to file. May not be needed if we utilize rxdb/dynamicDataService
-   */
-  async writeCacheListToFile(cachedFilesList: IAssetContents) {
-    return await Filesystem.writeFile({
-      directory: Directory.Data,
-      path: `${this.cacheName}/cachedFiles.json`,
-      data: JSON.stringify(cachedFilesList),
-      recursive: true,
-      encoding: Encoding.UTF8,
-    });
-  }
-
-  async getLocalFilepath(relativePath: string) {
+  public async getLocalFilepath(relativePath: string) {
     const { uri } = await Filesystem.stat({
       path: `${this.cacheName}/${relativePath}`,
       directory: Directory.Data,

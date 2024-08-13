@@ -14874,6 +14874,7 @@ __metadata:
     lint-staged: ^15.2.2
     lottie-web: ^5.12.2
     marked: ^2.1.3
+    marked-smartypants-lite: ^1.0.2
     mergexml: ^1.2.3
     ng2-nouislider: ^2.0.0
     ngx-extended-pdf-viewer: 18.1.9
@@ -19253,6 +19254,15 @@ __metadata:
   bin:
     markdown-it: bin/markdown-it.js
   checksum: 890555711c1c00fa03b936ca2b213001a3b9b37dea140d8445ae4130ce16628392aad24b12e2a0a9935336ca5951f2957a38f4e5309a2e38eab44e25ff32a41e
+  languageName: node
+  linkType: hard
+
+"marked-smartypants-lite@npm:^1.0.2":
+  version: 1.0.2
+  resolution: "marked-smartypants-lite@npm:1.0.2"
+  peerDependencies:
+    marked: ">=4 <12"
+  checksum: 0ae237f603e43e628d56c11d4b2910a586757bcf6818ad9503203cc819f99f5ee5deecaeec749533bdf980f3b75441a039d7bbed932b649936c5b07916edf13c
   languageName: node
   linkType: hard
 

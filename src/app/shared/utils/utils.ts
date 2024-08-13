@@ -6,6 +6,7 @@ import * as Sentry from "@sentry/angular-ivy";
 import { FlowTypes } from "../model";
 import { objectToArray } from "../components/template/utils";
 import marked from "marked";
+import { markedSmartypantsLite } from "marked-smartypants-lite";
 
 /**
  * Generate a random string of characters in base-36 (a-z and 0-9 characters)
@@ -498,6 +499,21 @@ export function parseMarkdown(src: string, options?: marked.MarkedOptions) {
   marked.setOptions({
     renderer,
   });
+
+  /**
+   * Interpret quotes and dashes into typographic HTML entities
+   * e.g.
+   * `She said, -- "A 'simple' sentence..." --- unknown`
+   * becomes
+   * `She said, – “A ‘simple’ sentence…” — unknown`
+   *
+   * See
+   * https://github.com/calculuschild/marked-smartypants-lite
+   * and
+   * https://marked.js.org/using_advanced#extensions
+   */
+  marked.use(markedSmartypantsLite());
+
   return marked(src, options);
 }
 
