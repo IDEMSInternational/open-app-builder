@@ -5,6 +5,8 @@ import { envReplace } from "@idemsInternational/env-replace";
 import { ROOT_DIR } from "../../paths";
 import { Logger, generateVersionCode } from "../../utils";
 import { PATHS } from "shared";
+import { execSync } from "child_process";
+import * as path from "path";
 
 interface IAndroidBuildOptions {
   appId: string;
@@ -78,27 +80,13 @@ const set_splash_image = async (splashAssetPath: string) => {
     });
   }
 
-  const cordovaOptions: Options = {
-    directory: ROOT_DIR,
-    resourcesDirectory: join(ROOT_DIR, "resources"),
-    logstream: process.stdout,
-    platforms: {
-      android: {
-        splash: {
-          sources: [splashAssetPath],
-        },
-      },
-    },
-    skipConfig: true,
-    copy: true,
-    projectConfig: {
-      android: {
-        directory: join(ROOT_DIR, "android"),
-      },
-    },
-  };
+  // we do want it to strip the file name and use the directory
+  // so we can check if the directory exists
+  const splashAssetDirPath = path.dirname(splashAssetPath);
 
-  return await run(cordovaOptions);
+  // if it does not, then otherwise, run the following command
+  const cmd = `npx @capacitor/assets generate --assetPath ${splashAssetDirPath} --android`;
+  execSync(cmd); // command should work, mine (Jody) is not working for some reason
 };
 
 const set_launcher_icon = async (options: {
@@ -118,38 +106,36 @@ const set_launcher_icon = async (options: {
     });
   }
 
-  const includeAdaptiveIcons =
-    fs.existsSync(iconAssetForegroundPath) && fs.existsSync(iconAssetBackgroundPath);
+  // all paths for the icons have the same diretory
+  const iconAssetDirPath = path.dirname(iconAssetPath);
+  const cmd = `npx @capacitor/assets generate --assetPath ${iconAssetDirPath} --android`;
+  execSync(cmd);
 
-  const cordovaOptions: Options = {
-    directory: ROOT_DIR,
-    resourcesDirectory: join(ROOT_DIR, "resources"),
-    logstream: process.stdout,
-    platforms: {
-      android: includeAdaptiveIcons
-        ? {
-            "adaptive-icon": {
-              icon: { sources: iconSources },
-              foreground: { sources: [iconAssetForegroundPath] },
-              background: { sources: [iconAssetBackgroundPath] },
-            },
-          }
-        : { icon: { sources: iconSources } },
-    },
-    skipConfig: true,
-    copy: true,
-    projectConfig: {
-      android: {
-        directory: join(ROOT_DIR, "android"),
-      },
-    },
-  };
+  console.log(cmd);
+};
 
-  return await run(cordovaOptions);
+const set_icons_and_splash_images = async (options: { assetPath: string }) => {
+  const { assetPath } = options;
+
+  const iconAndSplashSources = [];
+  if (fs.existsSync(assetPath)) {
+    iconAndSplashSources.push(assetPath);
+  } else {
+    return Logger.error({
+      msg1: "Icon and splash source assets not found",
+      msg2: `A source .png file is required to be used as a fall back for when the device's android version does not support adaptive icons. No asset was found at the path supplied in the deployment config: ${assetPath}.`,
+    });
+  }
+
+  // all paths for the icons have the same diretory
+  const assetDirPath = path.dirname(assetPath);
+  const cmd = `npx @capacitor/assets generate --assetPath ${assetDirPath} --android`;
+  execSync(cmd);
 };
 
 export default {
   configure,
   set_launcher_icon,
   set_splash_image,
+  set_icons_and_splash_images,
 };

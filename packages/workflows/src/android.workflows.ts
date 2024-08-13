@@ -22,6 +22,8 @@ const childWorkflows: IDeploymentWorkflows = {
   // Generate Android assets from source images (splash.png, icon.png and, optionally, icon-foreground.png and icon-background.png)
   // Icon images must be at least 1024×1024px, splash image must be at least 2732×2732px
   // Further specifications provided here: https://www.npmjs.com/package/cordova-res
+  // Cordova-res is considered legacy, so we now are migrating to using capacitor-assets instead
+  // Further specification here: https://capacitorjs.com/docs/guides/splash-screens-and-icons
   set_splash_image: {
     label: "Generate splash screen image from splash.png asset and copy to relevant folders",
     steps: [
@@ -44,6 +46,17 @@ const childWorkflows: IDeploymentWorkflows = {
             iconAssetForegroundPath: config.android.icon_asset_foreground_path,
             iconAssetBackgroundPath: config.android.icon_asset_background_path,
           }),
+      },
+    ],
+  },
+  set_icons_and_splash_images: {
+    label:
+      "Generate app launcher icon and splash screen image from icon.png and splash.png assets respectively. Copy generated files to relevant folders",
+    steps: [
+      {
+        name: "set_icons_and_splash_images",
+        function: async ({ tasks, config }) =>
+          tasks.android.set_icons_and_splash_images({ assetPath: config.android.icon_asset_path }),
       },
     ],
   },
@@ -70,6 +83,14 @@ const defaultWorkflows: IDeploymentWorkflows = {
         name: "Set Launcher Icon",
         function: async ({ tasks, workflow }) =>
           await tasks.workflow.runWorkflow({ name: "android set_launcher_icon", parent: workflow }),
+      },
+      {
+        name: "Set Icons and Splash Images",
+        function: async ({ tasks, workflow }) =>
+          await tasks.workflow.runWorkflow({
+            name: "android set_icons_and_splash_images",
+            parent: workflow,
+          }),
       },
     ],
     children: childWorkflows,
