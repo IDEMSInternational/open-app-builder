@@ -4,9 +4,9 @@ import { getNumberParamFromTemplateRow, getStringParamFromTemplateRow } from "..
 
 interface IDisplayGroupParams {
   /** TEMPLATE PARAMETER: "variant" */
-  variant: "box_gray" | "box_primary" | "box_secondary";
+  variant: "box_gray" | "box_primary" | "box_secondary" | "dashed_box";
   /** TEMPLATE PARAMETER: "style". TODO: Various additional legacy styles, review and convert some to variants */
-  style: "form" | "dashed_box" | "default" | string | null;
+  style: "form" | "default" | string | null;
   /** TEMPLATE PARAMETER: "offset". Add a custom bottom margin */
   offset: number;
 }
@@ -34,15 +34,15 @@ export class TmplDisplayGroupComponent extends TemplateBaseComponent implements 
     this.params.offset = getNumberParamFromTemplateRow(this._row, "offset", 0);
     this.params.variant = getStringParamFromTemplateRow(this._row, "variant", "")
       .split(",")
-      .join(" ") as IDisplayGroupParams["variant"];
-    this.type = this.getTypeFromStyles(this.params.style || "");
+      .join(" ")
+      .concat(" " + this.params.style) as IDisplayGroupParams["variant"];
+    this.type = this.getTypeFromStyles();
   }
 
-  private getTypeFromStyles(styles: string) {
-    if (styles) {
-      if (styles.includes("form")) return "form";
-      if (styles.includes("dashed_box")) return "dashed_box";
-    }
+  private getTypeFromStyles() {
+    if (this.params.style?.includes("form") || this.params.variant?.includes("form")) return "form";
+    if (this.params.style?.includes("dashed_box") || this.params.variant?.includes("dashed_box"))
+      return "dashed_box";
     return "default";
   }
 }
