@@ -62,7 +62,9 @@ const set_icons_and_splash_images = async (options: { assetPath: string }) => {
     });
   }
 
-  const cmd = `npx @capacitor/assets generate --assetPath ${assetPath} --ios`;
+  const relativeAssetPath = path.relative(process.cwd(), assetPath).replace(/^(\.\.\/|\.\/)+/, "");
+
+  const cmd = `npx @capacitor/assets generate --assetPath ${relativeAssetPath} --ios`;
   const cwd = process.cwd().replace("/packages/scripts", ""); // output will be: "/../../idems/open-app-builder/packages/scripts"
 
   execSync(cmd, { stdio: "inherit", cwd });
