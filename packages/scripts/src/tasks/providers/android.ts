@@ -128,7 +128,7 @@ const set_icons_and_splash_images = async (options: { assetPath: string }) => {
   // make a check for the direo
 
   // all paths for the icons have the same diretory
-  const assetDirPath = path.dirname(assetPath);
+  const assetDirPath = assetPath.includes(".png") ? path.dirname(assetPath) : assetPath;
   const relativeAssetPath = path
     .relative(process.cwd(), assetDirPath)
     .replace(/^(\.\.\/|\.\/)+/, "");
