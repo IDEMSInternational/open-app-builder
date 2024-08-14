@@ -1,8 +1,6 @@
 import { resolve, dirname, join } from "path";
-import { Options, run } from "cordova-res";
 import fs from "fs";
 import { envReplace } from "@idemsInternational/env-replace";
-import { ROOT_DIR } from "../../paths";
 import { Logger, generateVersionCode } from "../../utils";
 import { PATHS } from "shared";
 import { execSync } from "child_process";
@@ -129,8 +127,13 @@ const set_icons_and_splash_images = async (options: { assetPath: string }) => {
 
   // all paths for the icons have the same diretory
   const assetDirPath = path.dirname(assetPath);
-  const cmd = `npx @capacitor/assets generate --assetPath ${assetDirPath} --android`;
-  execSync(cmd);
+  const relativeAssetPath = path
+    .relative(process.cwd(), assetDirPath)
+    .replace(/^(\.\.\/|\.\/)+/, "");
+  const cmd = `npx @capacitor/assets generate --assetPath ${relativeAssetPath} --android`;
+  const cwd = process.cwd().replace("/packages/scripts", ""); // output will be: "/../../idems/open-app-builder/packages/scripts"
+
+  execSync(cmd, { cwd: cwd });
 };
 
 export default {
