@@ -28,8 +28,10 @@ const childWorkflows: IDeploymentWorkflows = {
     steps: [
       {
         name: "set_icons_and_splash_images",
-        function: async ({ tasks, config }) =>
-          tasks.ios.set_icons_and_splash_images({ assetPath: config.android.icon_asset_path }),
+        function: async ({ tasks, config }) => {
+          const { ios, git } = config;
+          tasks.ios.set_icons_and_splash_images({ assetPath: config.android.icon_asset_path });
+        },
       },
     ],
   },

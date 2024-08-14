@@ -2,6 +2,10 @@ import { envReplace } from "@idemsInternational/env-replace";
 import { Logger, generateVersionCode } from "../../utils";
 import { PATHS } from "shared";
 
+import fs from "fs";
+import { execSync } from "child_process";
+import * as path from "path";
+
 interface IiOSBuildOptions {
   appId: string;
   appName: string;
@@ -60,8 +64,13 @@ const set_icons_and_splash_images = async (options: { assetPath: string }) => {
 
   // all paths for the icons have the same diretory
   const assetDirPath = path.dirname(assetPath);
-  const cmd = `npx @capacitor/assets generate --assetPath ${assetDirPath} --ios`;
-  execSync(cmd);
+  const relativeAssetPath = path
+    .relative(process.cwd(), assetDirPath)
+    .replace(/^(\.\.\/|\.\/)+/, "");
+  const cmd = `npx @capacitor/assets generate --assetPath ${relativeAssetPath} --ios`;
+  const cwd = process.cwd().replace("/packages/scripts", ""); // output will be: "/../../idems/open-app-builder/packages/scripts"
+
+  execSync(cmd, { cwd: cwd });
 };
 
 /**
