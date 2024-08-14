@@ -62,15 +62,10 @@ const set_icons_and_splash_images = async (options: { assetPath: string }) => {
     });
   }
 
-  // all paths for the icons have the same diretory
-  const assetDirPath = path.dirname(assetPath);
-  const relativeAssetPath = path
-    .relative(process.cwd(), assetDirPath)
-    .replace(/^(\.\.\/|\.\/)+/, "");
-  const cmd = `npx @capacitor/assets generate --assetPath ${relativeAssetPath} --ios`;
+  const cmd = `npx @capacitor/assets generate --assetPath ${assetPath} --ios`;
   const cwd = process.cwd().replace("/packages/scripts", ""); // output will be: "/../../idems/open-app-builder/packages/scripts"
 
-  execSync(cmd, { cwd: cwd });
+  execSync(cmd, { stdio: "inherit", cwd });
 };
 
 /**
@@ -84,4 +79,5 @@ function convertToValidIOSAppId(appId: string) {
 
 export default {
   configure,
+  set_icons_and_splash_images,
 };
