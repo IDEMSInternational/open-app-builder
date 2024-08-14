@@ -19,22 +19,20 @@ const childWorkflows: IDeploymentWorkflows = {
       },
     ],
   },
-  // Generate iOS assets from source images (splash.png, icon.png and, optionally, icon-foreground.png and icon-background.png)
-  // Icon images must be at least 1024×1024px, splash image must be at least 2732×2732px
-  // Further specification here: https://capacitorjs.com/docs/guides/splash-screens-and-icons
   set_icons_and_splash_images: {
     label:
-      "Generate app launcher icon and splash screen image from icon.png and splash.png assets respectively. Copy generated files to relevant folders",
+      "Generate app launcher icon and splash screen image from icon.png and splash.png asset respectively. Then if provided, it will generate adaptive icon from icon-foreground.png and icon-background.png. Copy generated files to relevant folders.",
     steps: [
       {
         name: "set_icons_and_splash_images",
-        function: async ({ tasks, config }) => {
-          const { ios, git } = config;
-          tasks.ios.set_icons_and_splash_images({ assetPath: config.android.icon_asset_path });
-        },
+        function: async ({ tasks, config }) =>
+          tasks.ios.set_icons_and_splash_images({ assetPath: config.ios.assets_path }),
       },
     ],
   },
+  // Generate iOS assets from source images (splash.png, icon.png and, optionally, icon-foreground.png and icon-background.png)
+  // Icon images must be at least 1024×1024px, splash image must be at least 2732×2732px
+  // Further specification here: https://capacitorjs.com/docs/guides/splash-screens-and-icons
 };
 
 /** Default workflows made available to all deployments */

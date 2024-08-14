@@ -35,7 +35,9 @@ export interface IDeploymentConfig {
     app_id?: string;
     /** Play store app name, e.g. "Example App" */
     app_name?: string;
-    /** Location of source android assets (splash and launcher source images). */
+    /** Path to source assets used to generate the app icon and splash screen. */
+    assets_path?: string;
+    /** LEGACT: Location of source android assets (splash and launcher source images). */
     icon_asset_path?: string;
     splash_asset_path?: string;
     icon_asset_foreground_path?: string;
@@ -95,6 +97,8 @@ export interface IDeploymentConfig {
     app_id?: string;
     /** App Store app name, e.g. "Example App" */
     app_name?: string;
+    /** Path to source assets used to generate the app icon and splash screen */
+    assets_path?: string;
   };
   /** 3rd party integration for remote asset storage and sync */
   supabase: {

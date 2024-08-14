@@ -125,6 +125,8 @@ const set_icons_and_splash_images = async (options: { assetPath: string }) => {
     });
   }
 
+  // make a check for the direo
+
   // all paths for the icons have the same diretory
   const assetDirPath = path.dirname(assetPath);
   const relativeAssetPath = path
@@ -133,7 +135,7 @@ const set_icons_and_splash_images = async (options: { assetPath: string }) => {
   const cmd = `npx @capacitor/assets generate --assetPath ${relativeAssetPath} --android`;
   const cwd = process.cwd().replace("/packages/scripts", ""); // output will be: "/../../idems/open-app-builder/packages/scripts"
 
-  execSync(cmd, { cwd: cwd });
+  execSync(cmd, { stdio: "inherit", cwd });
 };
 
 export default {
