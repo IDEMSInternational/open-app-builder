@@ -35,7 +35,10 @@ export class TemplateActionService extends SyncServiceBase {
   private actionsQueue: FlowTypes.TemplateRowAction[] = [];
   private actionsQueueProcessing$ = new BehaviorSubject<boolean>(false);
 
-  constructor(private injector: Injector, public container?: TemplateContainerComponent) {
+  constructor(
+    private injector: Injector,
+    public container?: TemplateContainerComponent
+  ) {
     super("TemplateAction");
   }
   // Retrive all services on demand from global injector
@@ -182,6 +185,8 @@ export class TemplateActionService extends SyncServiceBase {
     // Handle specific actions
     // TODO - Refactor action handlers that call global services to use registry instead
     // NOTE - instance-specific handlers will likely need to remain in service (e.g. set_local)
+    console.log(args);
+    console.log(action_id);
     let [key, value] = args;
     switch (action_id) {
       case "reset_app":
@@ -194,11 +199,16 @@ export class TemplateActionService extends SyncServiceBase {
       case "go_to_url":
         // because a normal url starts with https://, the ':' separates it into a key and a value and the value
         // is sufficient for the url to launch.
+        console.log(key);
+        console.log(value);
         console.log("[GO TO URL]", { key, value });
         // if there is no http or https then there is no : to separate and we only have a key in the url. This
         // case then adds '//' to the key so it recognises it as external and not local
         // This removes the need to have http or https in the url.
-        if (!value) {
+        // make a prior check for if the key starts with https:// and if it does then it is a url and should be opened
+        if (!value && key.startsWith("https://")) {
+          return this.templateNavService.handleNavActionExternal(key);
+        } else if (!value) {
           value = "//" + key;
         }
         return this.templateNavService.handleNavActionExternal(value);
