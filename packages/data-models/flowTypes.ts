@@ -278,6 +278,7 @@ export namespace FlowTypes {
     | "items"
     | "latex"
     | "lottie_animation"
+    | "map"
     | "nav_group"
     | "nav_section"
     | "navigation_bar"
