@@ -186,8 +186,6 @@ export class TemplateActionService extends SyncServiceBase {
     // Handle specific actions
     // TODO - Refactor action handlers that call global services to use registry instead
     // NOTE - instance-specific handlers will likely need to remain in service (e.g. set_local)
-    console.log(args);
-    console.log(action_id);
     let [key, value] = args;
     switch (action_id) {
       case "reset_app":
@@ -201,12 +199,12 @@ export class TemplateActionService extends SyncServiceBase {
         // because a normal url starts with https://, the ':' separates it into a key and a value and the value
         // is sufficient for the url to launch.
         console.log("[GO TO URL]", { key, value });
-        // if there is no http or https then there is no : to separate and we only have a key in the url. This
-        // case then adds '//' to the key so it recognises it as external and not local
-        // This removes the need to have http or https in the url.
-        // make a prior check for if the key starts with https:// and if it does then it is a url and should be opened
+        // form the url to generate the url from the key and value
+        // it does so by using a ternary operator to check if the key and value are present
+        // if so. it concatenates the key and value with a colon in between
+        // otherwise, it uses the key or value as the url (whichever is present will used, if both, then the key is taken)
+        // because sometimes when generating {key, value}, they may assign the url in just the key or value
         const url = key && value ? key + ":" + value : key || value;
-        console.log(url);
         return this.templateNavService.handleNavActionExternal(
           normalizeUrl(url, { forceHttps: true })
         );
