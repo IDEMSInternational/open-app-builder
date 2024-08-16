@@ -97,6 +97,7 @@
     "ngx-extended-pdf-viewer": "18.1.9",
     "ngx-lottie": "^10.0.0",
     "ngx-matomo-client": "^6.0.2",
+    "normalize-url": "^8.0.1",
     "nouislider": "^15.7.1",
     "qrcode": "^1.5.3",
     "rxdb": "^14.17.1",
