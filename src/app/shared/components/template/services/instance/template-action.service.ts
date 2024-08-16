@@ -20,6 +20,7 @@ import { getGlobalService } from "src/app/shared/services/global.service";
 import { SyncServiceBase } from "src/app/shared/services/syncService.base";
 import { TemplateActionRegistry } from "./template-action.registry";
 import { CampaignService } from "src/app/feature/campaign/campaign.service";
+import normalizeUrl from "normalize-url";
 
 /** Logging Toggle - rewrite default functions to enable or disable inline logs */
 let SHOW_DEBUG_LOGS = false;
@@ -199,19 +200,16 @@ export class TemplateActionService extends SyncServiceBase {
       case "go_to_url":
         // because a normal url starts with https://, the ':' separates it into a key and a value and the value
         // is sufficient for the url to launch.
-        console.log(key);
-        console.log(value);
         console.log("[GO TO URL]", { key, value });
         // if there is no http or https then there is no : to separate and we only have a key in the url. This
         // case then adds '//' to the key so it recognises it as external and not local
         // This removes the need to have http or https in the url.
         // make a prior check for if the key starts with https:// and if it does then it is a url and should be opened
-        if (!value && key.startsWith("https://")) {
-          return this.templateNavService.handleNavActionExternal(key);
-        } else if (!value) {
-          value = "//" + key;
-        }
-        return this.templateNavService.handleNavActionExternal(value);
+        const url = key && value ? key + ":" + value : key || value;
+        console.log(url);
+        return this.templateNavService.handleNavActionExternal(
+          normalizeUrl(url, { forceHttps: true })
+        );
       case "pop_up":
         if (action.params?.fullscreen) {
           return this.templateService.runStandaloneTemplate(action.args[0], action.params);

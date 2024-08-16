@@ -14880,6 +14880,7 @@ __metadata:
     ngx-extended-pdf-viewer: 18.1.9
     ngx-lottie: ^10.0.0
     ngx-matomo-client: ^6.0.2
+    normalize-url: ^8.0.1
     nouislider: ^15.7.1
     prettier: ^3.2.5
     qrcode: ^1.5.3
@@ -20472,6 +20473,13 @@ __metadata:
   version: 0.1.2
   resolution: "normalize-range@npm:0.1.2"
   checksum: 9b2f14f093593f367a7a0834267c24f3cb3e887a2d9809c77d8a7e5fd08738bcd15af46f0ab01cc3a3d660386f015816b5c922cea8bf2ee79777f40874063184
+  languageName: node
+  linkType: hard
+
+"normalize-url@npm:^8.0.1":
+  version: 8.0.1
+  resolution: "normalize-url@npm:8.0.1"
+  checksum: 43ea9ef0d6d135dd1556ab67aa4b74820f0d9d15aa504b59fa35647c729f1147dfce48d3ad504998fd1010f089cfb82c86c6d9126eb5c5bd2e9bd25f3a97749b
   languageName: node
   linkType: hard
 
