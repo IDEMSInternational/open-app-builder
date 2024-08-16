@@ -90,10 +90,13 @@ export class TmplMapComponent extends TemplateBaseComponent implements OnInit {
 
   private async getParams() {
     const layersRaw = getParamFromTemplateRow(this._row, "layers", null);
+    if (!layersRaw) {
+      this.params.layers = [];
+    }
     // If raw value is a string, assume it is a data list name and fetch the associated data
-    if (typeof layersRaw === "string") {
+    else if (typeof layersRaw === "string") {
       const dataList = await this.appDataService.getSheet("data_list", layersRaw);
-      this.params.layers = dataList?.rows;
+      this.params.layers = dataList?.rows || [];
     }
     // Else assume it is a parsed data list, as passed by e.g. @data.my_map_data_list
     else {
