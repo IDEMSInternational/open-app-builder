@@ -1,0 +1,47 @@
+.journey-group-wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.journey-child-wrapper {
+  position: relative;
+  margin-bottom: -34px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .path-segment {
+    position: absolute;
+    top: 25%;
+    z-index: -1;
+    width: 90%;
+    height: 90%;
+  }
+
+  .journey-child-content {
+    width: 150px;
+    text-align: center;
+  }
+
+  &.odd {
+    .journey-child-content {
+      align-self: flex-start;
+    }
+  }
+
+  &.even {
+    .journey-child-content {
+      align-self: flex-end;
+    }
+    .path-segment {
+      transform: scaleX(-1);
+    }
+  }
+
+  &:last-child {
+    .path-segment {
+      display: none;
+    }
+  }
+}

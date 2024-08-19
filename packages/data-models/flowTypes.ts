@@ -276,6 +276,7 @@ export namespace FlowTypes {
     | "icon_banner"
     | "image"
     | "items"
+    | "journey"
     | "latex"
     | "lottie_animation"
     | "nav_group"

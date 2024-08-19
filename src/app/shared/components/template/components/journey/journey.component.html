@@ -1,0 +1,11 @@
+<div class="journey-group-wrapper">
+  @for (childRow of _row.rows | filterDisplayComponent; track trackByRow($index, childRow)) {
+    <div class="journey-child-wrapper" [class]="{ odd: $index % 2 === 0, even: $index % 2 !== 0 }">
+      <div class="journey-child-content">
+        <plh-template-component [row]="childRow" [parent]="parent" [attr.data-rowname]="_row.name">
+        </plh-template-component>
+      </div>
+      <img class="path-segment" [src]="params.pathSegmentAsset | plhAsset" />
+    </div>
+  }
+</div>
