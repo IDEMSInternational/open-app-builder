@@ -36,6 +36,7 @@ import { TmplDrawerComponent } from "./drawer/drawer.component";
 import { TmplHelpIconComponent } from "./help-icon";
 import { TmplIconBannerComponent } from "./icon-banner/icon-banner.component";
 import { TmplImageComponent } from "./image";
+import { TmplJourneyComponent } from "./journey/journey.component";
 import { TmplLatexComponent } from "./latex/latex.component";
 import { TmplLottieAnimation } from "./lottie-animation";
 import { TmplNavigationBarComponent } from "./navigation-bar/navigation-bar.component";
@@ -96,6 +97,7 @@ export const TEMPLATE_COMPONENTS = [
   TmplHelpIconComponent,
   TmplIconBannerComponent,
   TmplImageComponent,
+  TmplJourneyComponent,
   TmplLatexComponent,
   TmplLottieAnimation,
   TmplNavigationBarComponent,
@@ -155,6 +157,7 @@ export const TEMPLATE_COMPONENT_MAPPING: Record<
   icon_banner: TmplIconBannerComponent,
   image: TmplImageComponent,
   items: null,
+  journey: TmplJourneyComponent,
   latex: TmplLatexComponent,
   lottie_animation: TmplLottieAnimation,
   nav_group: NavGroupComponent,
