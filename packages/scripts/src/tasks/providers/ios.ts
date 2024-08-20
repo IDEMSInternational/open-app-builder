@@ -57,11 +57,14 @@ const set_icons_and_splash_images = async (options: { assetPath: string }) => {
     iconAndSplashSources.push(assetPath);
   } else {
     return Logger.error({
-      msg1: "Icon and splash source assets not found",
-      msg2: `A source .png file is required to be used as a fall back for when the device's android version does not support adaptive icons. No asset was found at the path supplied in the deployment config: ${assetPath}.`,
+      msg1: "Launcher icon and splash images source assets not found",
+      msg2: `No folder was found at the path supplied in the deployment config: ${assetPath}.`,
     });
   }
 
+  // using process.cwd(), it returns the output of `cwd` command, which is the current working directory of the program
+  // Using path.relative() to get the relative path of the assetPath from the current working directory
+  // we then use .replace() to remove any leading "../" or "./" from the path
   const relativeAssetPath = path.relative(process.cwd(), assetPath).replace(/^(\.\.\/|\.\/)+/, "");
 
   const cmd = `npx @capacitor/assets generate --assetPath ${relativeAssetPath} --ios`;
