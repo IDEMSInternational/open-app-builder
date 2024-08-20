@@ -78,6 +78,17 @@
   </div>
 } @else {
   <div class="circle-card-wrapper">
+    <div *ngIf="taskGroupId && !taskId">
+      <plh-task-progress-bar
+        [dataListName]="taskGroupDataList"
+        [completedField]="completedField"
+        [highlighted]="highlighted"
+        [progressUnitsName]="progressUnitsName"
+        [showText]="false"
+        [(progressStatus)]="progressStatus"
+        (newlyCompleted)="handleNewlyCompleted($event)"
+      ></plh-task-progress-bar>
+    </div>
     <span class="badge progress-badge">
       <span class="circle" [class]="progressStatus"></span>
       <img
@@ -96,9 +107,9 @@
     </div>
     @if (title) {
       <div class="title-wrapper">
-        <h1>
+        <p>
           {{ title }}
-        </h1>
+        </p>
       </div>
     }
   </div>
