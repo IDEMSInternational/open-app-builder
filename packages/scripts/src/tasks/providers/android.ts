@@ -70,48 +70,6 @@ const configure = async ({ appId, appName, versionName }: IAndroidBuildOptions) 
   }
 };
 
-const set_splash_image = async (splashAssetPath: string) => {
-  if (!fs.existsSync(splashAssetPath)) {
-    return Logger.error({
-      msg1: "Splash source image not found",
-      msg2: `A source .png file is required to generate a splash screen. No asset was found at the path supplied in the deployment config: ${splashAssetPath}.`,
-    });
-  }
-
-  // we do want it to strip the file name and use the directory
-  // so we can check if the directory exists
-  const splashAssetDirPath = path.dirname(splashAssetPath);
-
-  // if it does not, then otherwise, run the following command
-  const cmd = `npx @capacitor/assets generate --assetPath ${splashAssetDirPath} --android`;
-  execSync(cmd); // command should work, mine (Jody) is not working for some reason
-};
-
-const set_launcher_icon = async (options: {
-  iconAssetPath: string;
-  iconAssetForegroundPath?: string;
-  iconAssetBackgroundPath?: string;
-}) => {
-  const { iconAssetPath, iconAssetForegroundPath, iconAssetBackgroundPath } = options;
-
-  const iconSources = [];
-  if (fs.existsSync(iconAssetPath)) {
-    iconSources.push(iconAssetPath);
-  } else {
-    return Logger.error({
-      msg1: "Icon source asset not found",
-      msg2: `A source .png file is required to be used as a fall back for when the device's android version does not support adaptive icons. No asset was found at the path supplied in the deployment config: ${iconAssetPath}.`,
-    });
-  }
-
-  // all paths for the icons have the same diretory
-  const iconAssetDirPath = path.dirname(iconAssetPath);
-  const cmd = `npx @capacitor/assets generate --assetPath ${iconAssetDirPath} --android`;
-  execSync(cmd);
-
-  console.log(cmd);
-};
-
 const set_icons_and_splash_images = async (options: { assetPath: string }) => {
   const { assetPath } = options;
 
@@ -120,14 +78,12 @@ const set_icons_and_splash_images = async (options: { assetPath: string }) => {
     iconAndSplashSources.push(assetPath);
   } else {
     return Logger.error({
-      msg1: "Icon and splash source assets not found",
-      msg2: `A source .png file is required to be used as a fall back for when the device's android version does not support adaptive icons. No asset was found at the path supplied in the deployment config: ${assetPath}.`,
+      msg1: "Launcher icon and splash images source assets not found",
+      msg2: `No folder was found at the path supplied in the deployment config: ${assetPath}.`,
     });
   }
 
-  // make a check for the direo
-
-  // all paths for the icons have the same diretory
+  // Generate android assets
   const assetDirPath = assetPath.includes(".png") ? path.dirname(assetPath) : assetPath;
   const relativeAssetPath = path
     .relative(process.cwd(), assetDirPath)
@@ -140,7 +96,5 @@ const set_icons_and_splash_images = async (options: { assetPath: string }) => {
 
 export default {
   configure,
-  set_launcher_icon,
-  set_splash_image,
   set_icons_and_splash_images,
 };
