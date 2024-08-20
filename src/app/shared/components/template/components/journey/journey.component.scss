@@ -1,7 +1,12 @@
+$path-segment-width: 264px;
+
 .journey-group-wrapper {
   position: relative;
   display: flex;
   flex-direction: column;
+  min-width: $path-segment-width;
+  max-width: 380px;
+  margin: auto;
 }
 
 .journey-child-wrapper {
@@ -15,8 +20,7 @@
     position: absolute;
     top: 25%;
     z-index: -1;
-    width: 90%;
-    height: 90%;
+    width: $path-segment-width;
   }
 
   .journey-child-content {
@@ -28,6 +32,9 @@
     .journey-child-content {
       align-self: flex-start;
     }
+    .path-segment {
+      margin-left: 32px;
+    }
   }
 
   &.even {
@@ -35,7 +42,9 @@
       align-self: flex-end;
     }
     .path-segment {
+      // Flip horizontally for alternate instances
       transform: scaleX(-1);
+      margin-right: 32px;
     }
   }
 
