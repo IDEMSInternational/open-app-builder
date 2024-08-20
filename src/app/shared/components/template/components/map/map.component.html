@@ -1,5 +1,32 @@
 <div class="map-container">
-  <div id="map" class="map"></div>
+  <div class="map-and-legend-container">
+    <div id="map" class="map"></div>
+    <div class="legend">
+      @for (mapLayer of mapLayers; track $index) {
+        @if (mapLayer.getVisible() && mapLayer.get("gradientFill")) {
+          <div class="legend-item">
+            <div class="title">
+              {{ mapLayer.get("scaleTitle") }}
+            </div>
+            <div class="scale-container">
+              <div class="scale-labels">
+                <div class="scale-label max">
+                  {{ mapLayer.get("scaleMax") }}
+                </div>
+                <div class="scale-label min">
+                  {{ mapLayer.get("scaleMin") }}
+                </div>
+              </div>
+              <div
+                class="colour-scale"
+                [ngStyle]="{ 'background-image': mapLayer.get('gradientFill') }"
+              ></div>
+            </div>
+          </div>
+        }
+      }
+    </div>
+  </div>
   <div class="map-controls">
     <div class="layer-control"></div>
     @if (mapLayers.length > 0) {

@@ -22,12 +22,13 @@ interface IMapLayer {
   fill: string;
   name: string;
   opacity: number;
-  // a property of the dataset to be plotted
+  /** a property of the dataset to be plotted */
   property: string;
   scale_fill: string;
   scale_max: number;
   scale_min: number;
-  // the path to the GeoJSON file containing the data to be plotted
+  scale_title: string;
+  /** the path to the GeoJSON file containing the data to be plotted */
   source_asset: string | any;
   stroke: string;
   type: "vector" | "heatmap";
@@ -90,10 +91,13 @@ export class TmplMapComponent extends TemplateBaseComponent implements OnInit {
 
   private async getParams() {
     const layersRaw = getParamFromTemplateRow(this._row, "layers", null);
+    if (!layersRaw) {
+      this.params.layers = [];
+    }
     // If raw value is a string, assume it is a data list name and fetch the associated data
-    if (typeof layersRaw === "string") {
+    else if (typeof layersRaw === "string") {
       const dataList = await this.appDataService.getSheet("data_list", layersRaw);
-      this.params.layers = dataList?.rows;
+      this.params.layers = dataList?.rows || [];
     }
     // Else assume it is a parsed data list, as passed by e.g. @data.my_map_data_list
     else {
@@ -126,6 +130,7 @@ export class TmplMapComponent extends TemplateBaseComponent implements OnInit {
       scale_fill,
       scale_max,
       scale_min,
+      scale_title,
       source_asset,
       stroke,
       visible_default,
@@ -166,6 +171,14 @@ export class TmplMapComponent extends TemplateBaseComponent implements OnInit {
         });
         return style;
       });
+      const equidistantScaleColours = colourScale.colors(5);
+      vectorLayer.set(
+        "gradientFill",
+        `linear-gradient(0deg, ${equidistantScaleColours.join(", ")})`
+      );
+      vectorLayer.set("scaleMax", scale_max);
+      vectorLayer.set("scaleMin", scale_min);
+      vectorLayer.set("scaleTitle", scale_title);
     }
 
     if (opacity || opacity === 0) vectorLayer.setOpacity(opacity);
