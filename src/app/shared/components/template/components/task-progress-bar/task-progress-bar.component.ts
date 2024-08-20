@@ -153,13 +153,11 @@ export class TmplTaskProgressBarComponent
   }
 
   private checkAndSetUseDynamicData() {
-    console.log("this.completedColumnName", this.params.completedColumnName);
     this.useDynamicData = this.dataRows?.[0]?.hasOwnProperty(this.params.completedColumnName);
   }
 
   private async evaluateTaskGroupData() {
     const previousProgressStatus = this.progressStatus;
-    console.log("this.dataRows", this.dataRows);
     const { subtasksTotal, subtasksCompleted, progressStatus, newlyCompleted } =
       await this.taskService.evaluateTaskGroupData(this.dataRows, {
         completedColumnName: this.params.completedColumnName,
