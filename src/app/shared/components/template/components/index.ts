@@ -36,7 +36,6 @@ import { TmplDrawerComponent } from "./drawer/drawer.component";
 import { TmplHelpIconComponent } from "./help-icon";
 import { TmplIconBannerComponent } from "./icon-banner/icon-banner.component";
 import { TmplImageComponent } from "./image";
-import { TmplJourneyComponent } from "./journey/journey.component";
 import { TmplLatexComponent } from "./latex/latex.component";
 import { TmplLottieAnimation } from "./lottie-animation";
 import { TmplNavigationBarComponent } from "./navigation-bar/navigation-bar.component";
@@ -45,6 +44,7 @@ import { TmplOdkFormComponent } from "./odk-form/odk-form.component";
 import { TmplParentPointBoxComponent } from "./points-item/points-item.component";
 import { TmplParentPointCounterComponent } from "./parent-point-counter/parent-point-counter.component";
 import { TmplPdfComponent } from "./pdf/pdf.component";
+import { TmplProgressPathComponent } from "./progress-path/progress-path.component";
 import { TmplQRCodeComponent } from "./qr-code/qr-code.component";
 import { TmplRadioButtonGridComponent } from "./radio-button-grid/radio-button-grid.component";
 import { TmplRadioGroupComponent } from "./radio-group/radio-group.component";
@@ -97,7 +97,6 @@ export const TEMPLATE_COMPONENTS = [
   TmplHelpIconComponent,
   TmplIconBannerComponent,
   TmplImageComponent,
-  TmplJourneyComponent,
   TmplLatexComponent,
   TmplLottieAnimation,
   TmplNavigationBarComponent,
@@ -106,6 +105,7 @@ export const TEMPLATE_COMPONENTS = [
   TmplParentPointBoxComponent,
   TmplParentPointCounterComponent,
   TmplPdfComponent,
+  TmplProgressPathComponent,
   TmplQRCodeComponent,
   TmplRadioButtonGridComponent,
   TmplRadioGroupComponent,
@@ -157,7 +157,6 @@ export const TEMPLATE_COMPONENT_MAPPING: Record<
   icon_banner: TmplIconBannerComponent,
   image: TmplImageComponent,
   items: null,
-  journey: TmplJourneyComponent,
   latex: TmplLatexComponent,
   lottie_animation: TmplLottieAnimation,
   nav_group: NavGroupComponent,
@@ -169,6 +168,7 @@ export const TEMPLATE_COMPONENT_MAPPING: Record<
   parent_point_box: TmplParentPointBoxComponent,
   parent_point_counter: TmplParentPointCounterComponent,
   pdf: TmplPdfComponent,
+  progress_path: TmplProgressPathComponent,
   qr_code: TmplQRCodeComponent,
   radio_button_grid: TmplRadioButtonGridComponent,
   radio_group: TmplRadioGroupComponent,

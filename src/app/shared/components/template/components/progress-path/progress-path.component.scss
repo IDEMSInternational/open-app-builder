@@ -1,6 +1,6 @@
 $path-segment-width: 264px;
 
-.journey-group-wrapper {
+.progress-path-wrapper {
   position: relative;
   display: flex;
   flex-direction: column;
@@ -9,7 +9,7 @@ $path-segment-width: 264px;
   margin: auto;
 }
 
-.journey-child-wrapper {
+.progress-path-child-wrapper {
   position: relative;
   margin-bottom: -34px;
   display: flex;
@@ -23,13 +23,13 @@ $path-segment-width: 264px;
     width: $path-segment-width;
   }
 
-  .journey-child-content {
+  .progress-path-child-content {
     width: 150px;
     text-align: center;
   }
 
   &.odd {
-    .journey-child-content {
+    .progress-path-child-content {
       align-self: flex-start;
     }
     .path-segment {
@@ -38,7 +38,7 @@ $path-segment-width: 264px;
   }
 
   &.even {
-    .journey-child-content {
+    .progress-path-child-content {
       align-self: flex-end;
     }
     .path-segment {
