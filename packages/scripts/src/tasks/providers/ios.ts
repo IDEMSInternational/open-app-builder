@@ -52,22 +52,18 @@ const configure = async ({ appId, appName, versionName }: IiOSBuildOptions) => {
 const set_icons_and_splash_images = async (options: { assetPath: string }) => {
   const { assetPath } = options;
 
-  const iconAndSplashSources = [];
   if (fs.existsSync(assetPath)) {
-    iconAndSplashSources.push(assetPath);
+    // Generate iOS assets from source images
+    const relativeAssetPath = path.relative(ROOT_DIR, assetPath);
+    const cmd = `npx @capacitor/assets generate --assetPath ${relativeAssetPath} --ios`;
+
+    execSync(cmd, { stdio: "inherit", cwd: ROOT_DIR });
   } else {
     return Logger.error({
       msg1: "Launcher icon and splash images source assets not found",
       msg2: `No folder was found at the path supplied in the deployment config: ${assetPath}.`,
     });
   }
-
-  // using process.cwd(), it returns the output of `cwd` command, which is the current working directory of the program
-  // Using path.relative() to get the relative path of the assetPath from the root directory
-  const relativeAssetPath = path.relative(ROOT_DIR, assetPath);
-  const cmd = `npx @capacitor/assets generate --assetPath ${relativeAssetPath} --ios`;
-
-  execSync(cmd, { stdio: "inherit", cwd: ROOT_DIR });
 };
 
 /**

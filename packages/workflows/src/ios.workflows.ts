@@ -21,7 +21,7 @@ const childWorkflows: IDeploymentWorkflows = {
   },
   set_icons_and_splash_images: {
     label:
-      "Generate app launcher icon and splash screen image from icon.png and splash.png asset respectively. Then if provided, it will generate adaptive icon from icon-foreground.png and icon-background.png. Copy generated files to relevant folders.",
+      "Generate app launcher icon and splash screen image from icon-only.png and splash.png asset respectively. Then if provided, it will generate adaptive icon from icon-foreground.png and icon-background.png. Copy generated files to relevant folders.",
     steps: [
       {
         name: "set_icons_and_splash_images",
