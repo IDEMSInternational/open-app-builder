@@ -1,19 +1,19 @@
 import { ComponentFixture, TestBed, waitForAsync } from "@angular/core/testing";
 import { IonicModule } from "@ionic/angular";
 
-import { TmplJourneyComponent } from "./journey.component";
+import { TmplProgressPathComponent } from "./progress-path.component";
 
-describe("JourneyComponent", () => {
-  let component: TmplJourneyComponent;
-  let fixture: ComponentFixture<TmplJourneyComponent>;
+describe("TmplProgressPathComponent", () => {
+  let component: TmplProgressPathComponent;
+  let fixture: ComponentFixture<TmplProgressPathComponent>;
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [TmplJourneyComponent],
+      declarations: [TmplProgressPathComponent],
       imports: [IonicModule.forRoot()],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(TmplJourneyComponent);
+    fixture = TestBed.createComponent(TmplProgressPathComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   }));

@@ -2,17 +2,17 @@ import { Component, OnInit } from "@angular/core";
 import { TemplateBaseComponent } from "../base";
 import { getStringParamFromTemplateRow } from "src/app/shared/utils";
 
-interface IJourneyParams {
+interface IProgressPathParams {
   /** TEMPLATE PARAMETER: path_segment_asset */
   pathSegmentAsset: string;
 }
 @Component({
-  selector: "plh-journey",
-  templateUrl: "./journey.component.html",
-  styleUrls: ["./journey.component.scss"],
+  selector: "plh-progress-path",
+  templateUrl: "./progress-path.component.html",
+  styleUrls: ["./progress-path.component.scss"],
 })
-export class TmplJourneyComponent extends TemplateBaseComponent implements OnInit {
-  params: Partial<IJourneyParams> = {};
+export class TmplProgressPathComponent extends TemplateBaseComponent implements OnInit {
+  params: Partial<IProgressPathParams> = {};
 
   ngOnInit() {
     this.getParams();
