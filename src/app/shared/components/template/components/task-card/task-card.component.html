@@ -89,19 +89,25 @@
         (newlyCompleted)="handleNewlyCompleted($event)"
       ></plh-task-progress-bar>
     </div>
-    <span class="badge progress-badge">
-      <span class="circle" [class]="progressStatus"></span>
-      <img
-        *ngIf="progressStatus === 'inProgress'"
-        class="icon"
-        src="{{ inProgressIcon | plhAsset }}"
-      />
-      <img
-        *ngIf="progressStatus === 'completed'"
-        class="icon completed"
-        src="{{ completedIcon | plhAsset }}"
-      />
-    </span>
+    @if (highlighted) {
+      <span class="badge highlighted-badge">
+        {{ highlightedText }}
+      </span>
+    } @else {
+      <span class="badge progress-badge">
+        <span class="circle" [class]="progressStatus"></span>
+        <img
+          *ngIf="progressStatus === 'inProgress'"
+          class="icon"
+          src="{{ inProgressIcon | plhAsset }}"
+        />
+        <img
+          *ngIf="progressStatus === 'completed'"
+          class="icon completed"
+          src="{{ completedIcon | plhAsset }}"
+        />
+      </span>
+    }
     <div class="circle-wrapper">
       <img [src]="image | plhAsset" />
     </div>

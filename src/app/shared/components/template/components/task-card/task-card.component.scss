@@ -159,17 +159,10 @@
   .badge {
     position: absolute;
     top: -6px;
+    right: 14px;
+    z-index: 2;
     &.highlighted-badge {
-      right: -10px;
-      padding: 5px 10px;
-      border-radius: var(--ion-border-radius-small);
-      background: var(--ion-color-secondary);
-      color: white;
-      font-weight: var(--font-weight-bold);
-    }
-    &.progress-badge {
-      z-index: 2;
-      right: 32px;
+      right: -4px;
     }
   }
 
@@ -193,7 +186,8 @@
     width: 140px;
 
     p {
-      line-height: inherit;
+      text-align: center;
+      line-height: var(--line-height-text);
       font-size: var(--font-size-text-large);
       color: var(--ion-color-primary);
       font-weight: var(--font-weight-bold);
