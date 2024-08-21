@@ -2,7 +2,7 @@ import { resolve, dirname, join } from "path";
 import fs from "fs";
 import { envReplace } from "@idemsInternational/env-replace";
 import { Logger, generateVersionCode } from "../../utils";
-import { PATHS } from "shared";
+import { PATHS, ROOT_DIR } from "shared";
 import { execSync } from "child_process";
 import * as path from "path";
 
@@ -85,13 +85,10 @@ const set_icons_and_splash_images = async (options: { assetPath: string }) => {
 
   // Generate android assets
   const assetDirPath = assetPath.includes(".png") ? path.dirname(assetPath) : assetPath;
-  const relativeAssetPath = path
-    .relative(process.cwd(), assetDirPath)
-    .replace(/^(\.\.\/|\.\/)+/, "");
+  const relativeAssetPath = path.relative(ROOT_DIR, assetPath);
   const cmd = `npx @capacitor/assets generate --assetPath ${relativeAssetPath} --android`;
-  const cwd = process.cwd().replace("/packages/scripts", ""); // output will be: "/../../idems/open-app-builder/packages/scripts"
 
-  execSync(cmd, { stdio: "inherit", cwd });
+  execSync(cmd, { stdio: "inherit", cwd: ROOT_DIR });
 };
 
 export default {
