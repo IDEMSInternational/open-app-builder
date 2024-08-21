@@ -1,6 +1,6 @@
 import { envReplace } from "@idemsInternational/env-replace";
 import { Logger, generateVersionCode } from "../../utils";
-import { PATHS } from "shared";
+import { PATHS, ROOT_DIR } from "shared";
 
 import fs from "fs";
 import { execSync } from "child_process";
@@ -63,14 +63,11 @@ const set_icons_and_splash_images = async (options: { assetPath: string }) => {
   }
 
   // using process.cwd(), it returns the output of `cwd` command, which is the current working directory of the program
-  // Using path.relative() to get the relative path of the assetPath from the current working directory
-  // we then use .replace() to remove any leading "../" or "./" from the path
-  const relativeAssetPath = path.relative(process.cwd(), assetPath).replace(/^(\.\.\/|\.\/)+/, "");
-
+  // Using path.relative() to get the relative path of the assetPath from the root directory
+  const relativeAssetPath = path.relative(ROOT_DIR, assetPath);
   const cmd = `npx @capacitor/assets generate --assetPath ${relativeAssetPath} --ios`;
-  const cwd = process.cwd().replace("/packages/scripts", ""); // output will be: "/../../idems/open-app-builder/packages/scripts"
 
-  execSync(cmd, { stdio: "inherit", cwd });
+  execSync(cmd, { stdio: "inherit", cwd: ROOT_DIR });
 };
 
 /**
