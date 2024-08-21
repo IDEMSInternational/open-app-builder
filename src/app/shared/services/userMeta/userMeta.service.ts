@@ -30,6 +30,7 @@ export class UserMetaService extends AsyncServiceBase {
 
   /** When first initialising ensure a default profile created and any newer defaults are merged with older user profiles */
   private async initialise() {
+    this.ensureSyncServicesReady([this.localStorageService]);
     await this.ensureAsyncServicesReady([
       this.dbService,
       this.fieldService,
