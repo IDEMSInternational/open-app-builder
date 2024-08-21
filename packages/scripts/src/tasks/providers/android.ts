@@ -73,22 +73,20 @@ const configure = async ({ appId, appName, versionName }: IAndroidBuildOptions) 
 const set_icons_and_splash_images = async (options: { assetPath: string }) => {
   const { assetPath } = options;
 
-  const iconAndSplashSources = [];
   if (fs.existsSync(assetPath)) {
-    iconAndSplashSources.push(assetPath);
+    // Generate android assets
+    const assetDirPath =
+      path.extname(assetPath).toLowerCase() === ".png" ? path.dirname(assetPath) : assetPath;
+    const relativeAssetPath = path.relative(ROOT_DIR, assetPath);
+    const cmd = `npx @capacitor/assets generate --assetPath ${relativeAssetPath} --android`;
+
+    execSync(cmd, { stdio: "inherit", cwd: ROOT_DIR });
   } else {
     return Logger.error({
       msg1: "Launcher icon and splash images source assets not found",
       msg2: `No folder was found at the path supplied in the deployment config: ${assetPath}.`,
     });
   }
-
-  // Generate android assets
-  const assetDirPath = assetPath.includes(".png") ? path.dirname(assetPath) : assetPath;
-  const relativeAssetPath = path.relative(ROOT_DIR, assetPath);
-  const cmd = `npx @capacitor/assets generate --assetPath ${relativeAssetPath} --android`;
-
-  execSync(cmd, { stdio: "inherit", cwd: ROOT_DIR });
 };
 
 export default {
