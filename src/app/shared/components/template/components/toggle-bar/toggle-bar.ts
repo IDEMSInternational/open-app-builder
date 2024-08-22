@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { Capacitor } from "@capacitor/core";
 import { TemplateBaseComponent } from "../base";
 import { ITemplateRowProps } from "../../models";
 import {
@@ -7,7 +8,10 @@ import {
 } from "src/app/shared/utils";
 
 interface IToggleParams {
-  /** TEMPLATE PARAMETER: "variant" */
+  /**
+   * TEMPLATE PARAMETER: "variant". Setting "ios" or "android" will style the toggle to match the respective
+   * platform, otherwise the default is to match the current device platform, using "ios" on web.
+   * */
   variant: "" | "icon" | "in_button" | "ios" | "android";
   /** TEMPLATE PARAMETER: "style". Legacy, use "variant" instead. */
   style: string;
@@ -37,6 +41,10 @@ export class TmplToggleBarComponent
   implements ITemplateRowProps, OnInit
 {
   params: Partial<IToggleParams> = {};
+  /**
+   * The ion-toggle component uses "md" ("material design") and "ios" to refer to visual styles of the component
+   * corresponding to the respective platforms. See docs here: https://ionicframework.com/docs/api/toggle
+   */
   platformVariant: "ios" | "md" = "ios";
   /** @ignore */
   variantMap: { icon: boolean };
@@ -74,10 +82,27 @@ export class TmplToggleBarComponent
     this.params.variant = getStringParamFromTemplateRow(this._row, "variant", "")
       .split(",")
       .join(" ") as IToggleParams["variant"];
-    this.platformVariant = this.params.variant.split(" ").includes("android") ? "md" : "ios";
+    this.setPlatformVariant(this.params.variant);
     this.populateVariantMap();
     this.params.iconTrue = getStringParamFromTemplateRow(this._row, "icon_true_asset", "");
     this.params.iconFalse = getStringParamFromTemplateRow(this._row, "icon_false_asset", "");
+  }
+
+  /**
+   * Use the platform variant explicitly set by the author,
+   * otherwise default to "ios" on iOS, and "md" on Android and web
+   * @param variantString A space-separated string of variants
+   */
+  private setPlatformVariant(variantString: string) {
+    const variantArray = variantString.split(" ");
+
+    if (variantArray.includes("ios")) {
+      this.platformVariant = "ios";
+    } else if (variantArray.includes("android")) {
+      this.platformVariant = "md";
+    } else {
+      this.platformVariant = Capacitor.getPlatform() === "ios" ? "ios" : "md";
+    }
   }
 
   private populateVariantMap() {
