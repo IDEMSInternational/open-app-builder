@@ -1,3 +1,5 @@
+$path-background: var(--progress-path-line-background, var(--ion-color-primary-200));
+$path-weight: var(--progress-path-line-weight, 72px);
 $path-segment-width: 264px;
 
 .progress-path-wrapper {
@@ -27,6 +29,8 @@ $path-segment-width: 264px;
     svg {
       inline-size: 100%;
       block-size: 100%;
+      stroke: $path-background;
+      stroke-width: $path-weight;
     }
   }
 
