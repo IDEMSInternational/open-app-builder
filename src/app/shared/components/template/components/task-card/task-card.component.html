@@ -78,38 +78,40 @@
   </div>
 } @else {
   <div class="circle-card-wrapper">
-    <div *ngIf="taskGroupId && !taskId">
-      <plh-task-progress-bar
-        [dataListName]="taskGroupDataList"
-        [completedField]="completedField"
-        [highlighted]="highlighted"
-        [progressUnitsName]="progressUnitsName"
-        [showText]="false"
-        [(progressStatus)]="progressStatus"
-        (newlyCompleted)="handleNewlyCompleted($event)"
-      ></plh-task-progress-bar>
-    </div>
-    @if (highlighted) {
-      <span class="badge highlighted-badge">
-        {{ highlightedText }}
-      </span>
-    } @else {
-      <span class="badge progress-badge">
-        <span class="circle" [class]="progressStatus"></span>
-        <img
-          *ngIf="progressStatus === 'inProgress'"
-          class="icon"
-          src="{{ inProgressIcon | plhAsset }}"
-        />
-        <img
-          *ngIf="progressStatus === 'completed'"
-          class="icon completed"
-          src="{{ completedIcon | plhAsset }}"
-        />
-      </span>
-    }
-    <div class="circle-wrapper">
-      <img [src]="image | plhAsset" />
+    <div class="image-and-badge-wrapper">
+      <div *ngIf="taskGroupId && !taskId">
+        <plh-task-progress-bar
+          [dataListName]="taskGroupDataList"
+          [completedField]="completedField"
+          [highlighted]="highlighted"
+          [progressUnitsName]="progressUnitsName"
+          [showText]="false"
+          [(progressStatus)]="progressStatus"
+          (newlyCompleted)="handleNewlyCompleted($event)"
+        ></plh-task-progress-bar>
+      </div>
+      @if (highlighted) {
+        <span class="badge highlighted-badge">
+          {{ highlightedText }}
+        </span>
+      } @else {
+        <span class="badge progress-badge">
+          <span class="circle" [class]="progressStatus"></span>
+          <img
+            *ngIf="progressStatus === 'inProgress'"
+            class="icon"
+            src="{{ inProgressIcon | plhAsset }}"
+          />
+          <img
+            *ngIf="progressStatus === 'completed'"
+            class="icon completed"
+            src="{{ completedIcon | plhAsset }}"
+          />
+        </span>
+      }
+      <div class="circle-wrapper">
+        <img [src]="image | plhAsset" />
+      </div>
     </div>
     @if (title) {
       <div class="title-wrapper">
