@@ -31,7 +31,12 @@ ion-toggle {
   &[data-param-style~="in_button"],
   &[data-variant~="in_button"] {
     ion-toggle {
-      transform: translate(4px, 4px);
+      transform: translate(12px, -4px);
+    }
+    &[data-variant~="ios"] {
+      ion-toggle {
+        transform: translate(4px, 4px);
+      }
     }
   }
 
