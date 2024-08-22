@@ -11,7 +11,7 @@ $path-segment-width: 264px;
 
 .progress-path-child-wrapper {
   position: relative;
-  margin-bottom: -34px;
+  margin-bottom: 34px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -21,27 +21,21 @@ $path-segment-width: 264px;
     top: 25%;
     z-index: -1;
     width: $path-segment-width;
+    margin-left: 32px;
   }
 
   .progress-path-child-content {
     width: 150px;
+    align-self: flex-start;
   }
 
-  &.odd {
-    .progress-path-child-content {
-      align-self: flex-start;
-    }
-    .path-segment {
-      margin-left: 32px;
-    }
-  }
-
-  &.even {
+  // For alternate instances, mirror the way the content displays for a staggered effect
+  &.odd-index {
     .progress-path-child-content {
       align-self: flex-end;
     }
     .path-segment {
-      // Flip horizontally for alternate instances
+      // Flip horizontally
       transform: scaleX(-1);
       margin-right: 32px;
     }
