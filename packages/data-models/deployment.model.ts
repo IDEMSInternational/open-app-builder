@@ -35,7 +35,18 @@ export interface IDeploymentConfig {
     app_id?: string;
     /** Play store app name, e.g. "Example App" */
     app_name?: string;
-    /** Location of source android assets (splash and launcher source images). */
+    /**
+     * Path to folder (relative to app-data assets directory) containing source assets used to generate the app icon and splash screen.
+     * This folder should contain files with the following names:
+     * icon-only.png
+     * icon-foreground.png
+     * icon-background.png
+     * splash.png
+     * splash-dark.png (optional)
+     * See https://capacitorjs.com/docs/guides/splash-screens-and-icons for details
+     */
+    assets_path?: string;
+    /** LEGACY: Location of source android assets (splash and launcher source images). */
     icon_asset_path?: string;
     splash_asset_path?: string;
     icon_asset_foreground_path?: string;
@@ -95,6 +106,17 @@ export interface IDeploymentConfig {
     app_id?: string;
     /** App Store app name, e.g. "Example App" */
     app_name?: string;
+    /**
+     * Path to folder (relative to app-data assets directory) containing source assets used to generate the app icon and splash screen.
+     * This folder should contain files with the following names:
+     * icon-only.png
+     * icon-foreground.png
+     * icon-background.png
+     * splash.png
+     * splash-dark.png (optional)
+     * See https://capacitorjs.com/docs/guides/splash-screens-and-icons for details
+     */
+    assets_path?: string;
   };
   /** 3rd party integration for remote asset storage and sync */
   supabase: {

@@ -1,6 +1,10 @@
 import { envReplace } from "@idemsInternational/env-replace";
 import { Logger, generateVersionCode } from "../../utils";
-import { PATHS } from "shared";
+import { PATHS, ROOT_DIR } from "shared";
+
+import fs from "fs";
+import { execSync } from "child_process";
+import * as path from "path";
 
 interface IiOSBuildOptions {
   appId: string;
@@ -45,6 +49,23 @@ const configure = async ({ appId, appName, versionName }: IiOSBuildOptions) => {
   });
 };
 
+const set_icons_and_splash_images = async (options: { assetPath: string }) => {
+  const { assetPath } = options;
+
+  if (fs.existsSync(assetPath)) {
+    // Generate iOS assets from source images
+    const relativeAssetPath = path.relative(ROOT_DIR, assetPath);
+    const cmd = `npx @capacitor/assets generate --assetPath ${relativeAssetPath} --ios`;
+
+    execSync(cmd, { stdio: "inherit", cwd: ROOT_DIR });
+  } else {
+    return Logger.error({
+      msg1: "Launcher icon and splash images source assets not found",
+      msg2: `No folder was found at the path supplied in the deployment config: ${assetPath}.`,
+    });
+  }
+};
+
 /**
  * iOS app ID (aka "bundle ID") only supports alphanumeric characters (A–Z, a–z, and 0–9), hyphens (-), and periods (.),
  * see https://developer.apple.com/documentation/bundleresources/information_property_list/cfbundleidentifier#discussion
@@ -56,4 +77,5 @@ function convertToValidIOSAppId(appId: string) {
 
 export default {
   configure,
+  set_icons_and_splash_images,
 };

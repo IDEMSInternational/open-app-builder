@@ -21,28 +21,16 @@ const childWorkflows: IDeploymentWorkflows = {
   },
   // Generate Android assets from source images (splash.png, icon.png and, optionally, icon-foreground.png and icon-background.png)
   // Icon images must be at least 1024×1024px, splash image must be at least 2732×2732px
-  // Further specifications provided here: https://www.npmjs.com/package/cordova-res
-  set_splash_image: {
-    label: "Generate splash screen image from splash.png asset and copy to relevant folders",
-    steps: [
-      {
-        name: "set_splash_image",
-        function: async ({ tasks, config }) =>
-          tasks.android.set_splash_image(config.android.splash_asset_path),
-      },
-    ],
-  },
-  set_launcher_icon: {
+  // Further specification here: https://capacitorjs.com/docs/guides/splash-screens-and-icons
+  set_icons_and_splash_images: {
     label:
-      "Generate app launcher icon from icon.png asset and, if provided, generate adaptive icon from icon-foreground.png and icon-background.png. Copy generated files to relevant folders",
+      "Generate app launcher icon and splash screen image from icon-only.png and splash.png asset respectively. Then if provided, it will generate adaptive icon from icon-foreground.png and icon-background.png. Copy generated files to relevant folders.",
     steps: [
       {
-        name: "set_launcher_icon",
+        name: "set_icons_and_splash_images",
         function: async ({ tasks, config }) =>
-          tasks.android.set_launcher_icon({
-            iconAssetPath: config.android.icon_asset_path,
-            iconAssetForegroundPath: config.android.icon_asset_foreground_path,
-            iconAssetBackgroundPath: config.android.icon_asset_background_path,
+          tasks.android.set_icons_and_splash_images({
+            assetPath: config.android.assets_path || config.android.icon_asset_path,
           }),
       },
     ],
@@ -62,14 +50,12 @@ const defaultWorkflows: IDeploymentWorkflows = {
           await tasks.workflow.runWorkflow({ name: "android configure", parent: workflow }),
       },
       {
-        name: "Set Splash Image",
+        name: "Set Icons and Splash Images",
         function: async ({ tasks, workflow }) =>
-          await tasks.workflow.runWorkflow({ name: "android set_splash_image", parent: workflow }),
-      },
-      {
-        name: "Set Launcher Icon",
-        function: async ({ tasks, workflow }) =>
-          await tasks.workflow.runWorkflow({ name: "android set_launcher_icon", parent: workflow }),
+          await tasks.workflow.runWorkflow({
+            name: "android set_icons_and_splash_images",
+            parent: workflow,
+          }),
       },
     ],
     children: childWorkflows,
