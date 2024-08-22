@@ -147,43 +147,60 @@
 }
 
 .circle-card-wrapper {
-  position: relative;
+  $circle-width: 100px;
+
   width: 100%;
-  height: 160px;
-  border-radius: 50%;
-  padding: 0;
   display: flex;
   flex-direction: column;
-  align-items: center;
 
-  .badge {
-    position: absolute;
-    top: -6px;
-    right: 14px;
-    z-index: 2;
-    &.highlighted-badge {
-      right: -4px;
-    }
-  }
+  // HACK: use custom CSS variable, set in progress-path component, to set flex alignment
+  // based on the index parity of the card component within progress-path.
+  // Default to center when not a child of progress-path
+  align-items: var(--progress-path-flex-align, center);
 
-  .circle-wrapper {
-    width: 100px;
-    height: 100px;
+  .image-and-badge-wrapper {
+    position: relative;
+    width: 100%;
     border-radius: 50%;
-    overflow: hidden;
-    background-color: white;
-    border: 1px solid rgba(black, 0.07);
-    filter: drop-shadow(var(--ion-default-box-shadow));
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 
-    .img {
-      width: 100px;
+    .badge {
+      position: absolute;
+      top: -6px;
+      right: 14px;
+      z-index: 2;
+      &.highlighted-badge {
+        right: -4px;
+      }
+    }
+
+    .circle-wrapper {
+      width: $circle-width;
+      height: $circle-width;
+      border-radius: 50%;
+      overflow: hidden;
+      background-color: white;
+      border: 1px solid rgba(black, 0.07);
+      filter: drop-shadow(var(--ion-default-box-shadow));
+
+      .img {
+        width: $circle-width;
+      }
+    }
+
+    plh-task-progress-bar {
+      position: absolute;
+      visibility: none;
     }
   }
-
   .title-wrapper {
     position: absolute;
-    top: 100px;
-    width: 140px;
+    top: $circle-width;
+    min-width: 150px;
+    max-width: 240px;
 
     p {
       text-align: center;
@@ -192,10 +209,6 @@
       color: var(--ion-color-primary);
       font-weight: var(--font-weight-bold);
     }
-  }
-
-  plh-task-progress-bar {
-    position: absolute;
   }
 }
 

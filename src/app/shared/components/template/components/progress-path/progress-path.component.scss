@@ -10,18 +10,24 @@ $path-segment-width: 264px;
 }
 
 .progress-path-child-wrapper {
+  $path-segment-spacing: 24px;
+
   position: relative;
-  margin-bottom: 34px;
+  margin-bottom: 96px;
   display: flex;
   flex-direction: column;
   align-items: center;
 
   .path-segment {
     position: absolute;
-    top: 25%;
+    top: 40px;
+    margin-left: $path-segment-spacing;
     z-index: -1;
     width: $path-segment-width;
-    margin-left: 32px;
+    svg {
+      inline-size: 100%;
+      block-size: 100%;
+    }
   }
 
   .progress-path-child-content {
@@ -37,7 +43,8 @@ $path-segment-width: 264px;
     .path-segment {
       // Flip horizontally
       transform: scaleX(-1);
-      margin-right: 32px;
+      margin-left: 0px;
+      margin-right: $path-segment-spacing;
     }
   }
 
