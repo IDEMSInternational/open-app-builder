@@ -1,5 +1,6 @@
-$path-background: var(--progress-path-line-background, var(--ion-color-gray-100));
+$path-background: var(--progress-path-line-background, var(--ion-color-primary-200));
 $path-segment-width: 264px;
+$path-stroke-width: 51px;
 
 .progress-path-wrapper {
   position: relative;
@@ -29,7 +30,7 @@ $path-segment-width: 264px;
       inline-size: 100%;
       block-size: 100%;
       stroke: $path-background;
-      stroke-width: 51px;
+      stroke-width: $path-stroke-width;
     }
   }
 
