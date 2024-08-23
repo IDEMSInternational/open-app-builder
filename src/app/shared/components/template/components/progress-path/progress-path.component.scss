@@ -1,31 +1,28 @@
 $path-background: var(--progress-path-line-background, var(--ion-color-primary-200));
-$path-segment-width: 264px;
-$path-stroke-width: 51px;
+$path-stroke-width: 32px;
 
 .progress-path-wrapper {
   position: relative;
   display: flex;
   flex-direction: column;
-  min-width: $path-segment-width;
-  max-width: 380px;
   margin: auto;
+  align-items: center;
 }
 
 .progress-path-child-wrapper {
   $path-segment-spacing: 24px;
 
   position: relative;
-  margin-bottom: 27px;
   display: flex;
   flex-direction: column;
   align-items: center;
 
   .path-segment {
     position: absolute;
-    top: 40px;
-    margin-left: $path-segment-spacing;
+    top: 0;
+    left: 0;
+    width: 100%;
     z-index: -1;
-    width: $path-segment-width;
     svg {
       inline-size: 100%;
       block-size: 100%;
