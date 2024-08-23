@@ -10269,13 +10269,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"capacitor-blob-writer@npm:^1.1.14":
-  version: 1.1.14
-  resolution: "capacitor-blob-writer@npm:1.1.14"
+"capacitor-blob-writer@npm:^1.1.17":
+  version: 1.1.17
+  resolution: "capacitor-blob-writer@npm:1.1.17"
   peerDependencies:
     "@capacitor/core": ">=3.0.0"
     "@capacitor/filesystem": ">=1.0.0"
-  checksum: 5af741c985ec7ac3e73b2fd5ebd091a63428e51df453fdb868fbfd43ea4b50bb67cdacc904a9ace581501d739648650db68edc3bb5251297aa117c37ce707d7c
+  checksum: 7a2fa2113a00c32e547b7883264823301f8d9ea76259c2b48385e490884db7b3988b6f93c89dd1d37a0b24c3bc043675d5e13fa3f8b59e73374ebff13374d268
   languageName: node
   linkType: hard
 
@@ -14873,7 +14873,7 @@ __metadata:
     "@typescript-eslint/eslint-plugin": ^6.13.1
     "@typescript-eslint/parser": ^6.13.1
     bootstrap-datepicker: ^1.10.0
-    capacitor-blob-writer: ^1.1.14
+    capacitor-blob-writer: ^1.1.17
     clone: ^2.1.2
     codelyzer: ^6.0.2
     concurrently: ^6.2.0
