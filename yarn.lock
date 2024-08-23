@@ -2086,25 +2086,25 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@capacitor/android@npm:^5.5.1":
-  version: 5.7.0
-  resolution: "@capacitor/android@npm:5.7.0"
+"@capacitor/android@npm:^6.0.0":
+  version: 6.1.2
+  resolution: "@capacitor/android@npm:6.1.2"
   peerDependencies:
-    "@capacitor/core": ^5.7.0
-  checksum: 94d1266dba7c23a297edfb597347c9ad77dca6e812024ac2a2898590423dc6fc4b71b52f7e3d5a3967a75fcbc33d3712625b58905b624a95dc6d9fca5c733c98
+    "@capacitor/core": ^6.1.0
+  checksum: 5738cd4777a992b09a2d791c0e90f3933e27cf22a0c5793ac60d34ba4541585c22d602f9252340b2df02eb4a004ec0d4043d1cb86a51825b18169109a27ca984
   languageName: node
   linkType: hard
 
-"@capacitor/app@npm:^5.0.6":
-  version: 5.0.7
-  resolution: "@capacitor/app@npm:5.0.7"
+"@capacitor/app@npm:^6.0.0":
+  version: 6.0.1
+  resolution: "@capacitor/app@npm:6.0.1"
   peerDependencies:
-    "@capacitor/core": ^5.0.0
-  checksum: 29a2615f3c11f8a4e060179418dab5b799207e7c516317853e3505327799d5ad8e8db2b76eaba3363578e417b5f0200dd99375bfaabf0b57420688299b501235
+    "@capacitor/core": ^6.0.0
+  checksum: 3fa08f10421de609e900f8f95fadb674afb54cf7670a7b925b1b98c4c89f9a0676e31da3916347a098347cec48538b1297165ab0bb3525b6acc96c126475591a
   languageName: node
   linkType: hard
 
-"@capacitor/cli@npm:^6.1.2":
+"@capacitor/cli@npm:^6.0.0":
   version: 6.1.2
   resolution: "@capacitor/cli@npm:6.1.2"
   dependencies:
@@ -2133,84 +2133,84 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@capacitor/clipboard@npm:^5.0.6":
-  version: 5.0.7
-  resolution: "@capacitor/clipboard@npm:5.0.7"
+"@capacitor/clipboard@npm:^6.0.0":
+  version: 6.0.1
+  resolution: "@capacitor/clipboard@npm:6.0.1"
   peerDependencies:
-    "@capacitor/core": ^5.0.0
-  checksum: e56e0fcd6d5bd82f978763843809b1bafa66976223e8b69b9eaa00eed666f100c2873db94aa8e1a84ecf04f050a8ddb44c9299dbc7ced18635cd005af643997e
+    "@capacitor/core": ^6.0.0
+  checksum: 10c33561676bf24fc189527370acc2a46232ae176fbe1375324340c96ac1c287b2615cb45d76f2c91e3173adc4b94936749fe54ef58c89d586d419623dd542da
   languageName: node
   linkType: hard
 
-"@capacitor/core@npm:^5.5.1":
-  version: 5.7.0
-  resolution: "@capacitor/core@npm:5.7.0"
+"@capacitor/core@npm:^6.0.0":
+  version: 6.1.2
+  resolution: "@capacitor/core@npm:6.1.2"
   dependencies:
     tslib: ^2.1.0
-  checksum: 3c7a0ed4bfd3942c333f141adfa6d356d2cf26adef82d5a3a0c73f19137d8285f270f8146bc232ea75705714dac19c9cf9968ba32ac33f6c3fbee89a0e5d9227
+  checksum: 51e5f575c4d96290902c6421fd6c4493e4e865cc95cfd1a207bf80956945cc06e724beb3fc9bfb21f44b0a3559c6a0064137b9dcf2b03b2550bb496c7043dc4e
   languageName: node
   linkType: hard
 
-"@capacitor/device@npm:^5.0.6":
-  version: 5.0.7
-  resolution: "@capacitor/device@npm:5.0.7"
+"@capacitor/device@npm:^6.0.0":
+  version: 6.0.1
+  resolution: "@capacitor/device@npm:6.0.1"
   peerDependencies:
-    "@capacitor/core": ^5.0.0
-  checksum: 5e5d5caa394b9c986b2e0f4f4d85cec6a814e7008e3b6ea410883857b86ecd9b146f2996266d6a1086582bc9471941620f33f4b6dc4683f5b53dc30253b0fcf0
+    "@capacitor/core": ^6.0.0
+  checksum: 65431aba87ca7b5a405897eebea33a27920b7efc19160a0a4d0b0a16fa77590613369c65e5abce904a1c027bcc4280d3cd71535dbcc4ae72c86d3fcb4868dcc5
   languageName: node
   linkType: hard
 
-"@capacitor/filesystem@npm:^5.1.4":
-  version: 5.2.1
-  resolution: "@capacitor/filesystem@npm:5.2.1"
+"@capacitor/filesystem@npm:^6.0.0":
+  version: 6.0.1
+  resolution: "@capacitor/filesystem@npm:6.0.1"
   peerDependencies:
-    "@capacitor/core": ^5.1.1
-  checksum: d043feaf0a9608e15b307f06421603f20c865fa6ff2108d1ae4efa486e9b9979215e8f4f036109a2d12dd1dfb76b0cd4bf4f9c471f375480f03c55f9dc01acd4
+    "@capacitor/core": ^6.0.0
+  checksum: 92e4caa6c66c35a244585002318a6945927bfe6894b4b1b36e16363001301698dba39cfd2e5148807c65b60f9334d69c155b2b48a33ef5edf843c41cf23d509a
   languageName: node
   linkType: hard
 
-"@capacitor/ios@npm:^5.7.2":
-  version: 5.7.2
-  resolution: "@capacitor/ios@npm:5.7.2"
+"@capacitor/ios@npm:^6.0.0":
+  version: 6.1.2
+  resolution: "@capacitor/ios@npm:6.1.2"
   peerDependencies:
-    "@capacitor/core": ^5.7.0
-  checksum: 63d54bc5e44da159730928ad352dff2f9f13fbef132c8ba151b26d4c460fbca9fae32e8be3022d99409d9f3a8ab654637a837e961b092c73efa1e55b3501c9f1
+    "@capacitor/core": ^6.1.0
+  checksum: 452ff6149ca573c29f90fd9be3add3e4e87d32cedecc6e5d9bc79704330c35b10fc161eecfcf00922c80c15c7ddf090abf03fd322c7d376e6529882b00a9212d
   languageName: node
   linkType: hard
 
-"@capacitor/local-notifications@npm:^5.0.6":
-  version: 5.0.7
-  resolution: "@capacitor/local-notifications@npm:5.0.7"
+"@capacitor/local-notifications@npm:^6.0.0":
+  version: 6.1.0
+  resolution: "@capacitor/local-notifications@npm:6.1.0"
   peerDependencies:
-    "@capacitor/core": ^5.0.0
-  checksum: ed68c6b824c8f90b7819a1a9d61897dea0f828957582be3725e9d3c7969e2f23fe62d8a2904c119f1558cb43d6c288604f4d2bdf18656de3fc49e872d778d59e
+    "@capacitor/core": ^6.0.0
+  checksum: 34ea1de959f8362c4d7d42a7621bb2e1df1f6c41054a643ee148303dd406d6d8c9395318e358e7b717b42b505fe1e9abfb45828a85c42d644334ffcf532f2bba
   languageName: node
   linkType: hard
 
-"@capacitor/push-notifications@npm:^5.1.0":
-  version: 5.1.1
-  resolution: "@capacitor/push-notifications@npm:5.1.1"
+"@capacitor/push-notifications@npm:^6.0.0":
+  version: 6.0.2
+  resolution: "@capacitor/push-notifications@npm:6.0.2"
   peerDependencies:
-    "@capacitor/core": ^5.0.0
-  checksum: 3f817e9a1a3f2b81e108c405d0c960c7da53a2dd03697e99b9b314667412fb0d690d6a1aa8b484a8a7b15f5eb24ff285e7e8f2f6b2186e86e3a267fd70124f41
+    "@capacitor/core": ^6.0.0
+  checksum: 293aa7180eb6ff182902ab4655e6cbf10d78788b80ee079a6f9d2011b1f5fa9c66620896ef54ee98ab34621df29b75acbd6c1b20d1153d68527970f2c486d592
   languageName: node
   linkType: hard
 
-"@capacitor/share@npm:^5.0.6":
-  version: 5.0.7
-  resolution: "@capacitor/share@npm:5.0.7"
+"@capacitor/share@npm:^6.0.0":
+  version: 6.0.2
+  resolution: "@capacitor/share@npm:6.0.2"
   peerDependencies:
-    "@capacitor/core": ^5.0.0
-  checksum: a0e2633e154e4edcbe4b0581838e3c17c21e83850efff4f91ea37d833856352eb6843831364196a921bf9ad90b3d12886410b72dbc0d1be34e693abf21161122
+    "@capacitor/core": ^6.0.0
+  checksum: edc0c665ee751a597a399587f0298a5190ec568f8ae776903fdfce9e50e46318c9a1e9a5b05db57e67c8a63dad0194e44e3f60e445bbe8f84e3ed78793203492
   languageName: node
   linkType: hard
 
-"@capacitor/splash-screen@npm:^5.0.6":
-  version: 5.0.7
-  resolution: "@capacitor/splash-screen@npm:5.0.7"
+"@capacitor/splash-screen@npm:^6.0.0":
+  version: 6.0.2
+  resolution: "@capacitor/splash-screen@npm:6.0.2"
   peerDependencies:
-    "@capacitor/core": ^5.0.0
-  checksum: e8062bfbe5e86221b29c60644587094f050428208dae431bcda08d5f171f42b0cc724e2b548ecff08c45239ea400baf3ef592ae012ac615c398ffc9c8e2d7f63
+    "@capacitor/core": ^6.0.0
+  checksum: 9093c476084681d2b60d9a9a740ceaad6c9147b7b68bc08def9da6b56ff5a0aee28f8216c7f6d1a1aeb1f378e5f1cee44521d3517a8df928d3bde1c5d943dc05
   languageName: node
   linkType: hard
 
@@ -14833,18 +14833,18 @@ __metadata:
     "@capacitor-firebase/authentication": ^5.3.0
     "@capacitor-firebase/crashlytics": ^5.4.1
     "@capacitor-firebase/performance": ^5.3.0
-    "@capacitor/android": ^5.5.1
-    "@capacitor/app": ^5.0.6
-    "@capacitor/cli": ^6.1.2
-    "@capacitor/clipboard": ^5.0.6
-    "@capacitor/core": ^5.5.1
-    "@capacitor/device": ^5.0.6
-    "@capacitor/filesystem": ^5.1.4
-    "@capacitor/ios": ^5.7.2
-    "@capacitor/local-notifications": ^5.0.6
-    "@capacitor/push-notifications": ^5.1.0
-    "@capacitor/share": ^5.0.6
-    "@capacitor/splash-screen": ^5.0.6
+    "@capacitor/android": ^6.0.0
+    "@capacitor/app": ^6.0.0
+    "@capacitor/cli": ^6.0.0
+    "@capacitor/clipboard": ^6.0.0
+    "@capacitor/core": ^6.0.0
+    "@capacitor/device": ^6.0.0
+    "@capacitor/filesystem": ^6.0.0
+    "@capacitor/ios": ^6.0.0
+    "@capacitor/local-notifications": ^6.0.0
+    "@capacitor/push-notifications": ^6.0.0
+    "@capacitor/share": ^6.0.0
+    "@capacitor/splash-screen": ^6.0.0
     "@capawesome/capacitor-app-update": ^5.0.1
     "@compodoc/compodoc": ^1.1.23
     "@ionic-native/core": ^5.36.0
