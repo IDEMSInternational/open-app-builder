@@ -2104,13 +2104,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@capacitor/cli@npm:^5.5.1":
-  version: 5.7.0
-  resolution: "@capacitor/cli@npm:5.7.0"
+"@capacitor/cli@npm:^6.1.2":
+  version: 6.1.2
+  resolution: "@capacitor/cli@npm:6.1.2"
   dependencies:
     "@ionic/cli-framework-output": ^2.2.5
     "@ionic/utils-fs": ^3.1.6
-    "@ionic/utils-subprocess": ^2.1.11
+    "@ionic/utils-process": ^2.1.11
+    "@ionic/utils-subprocess": 2.1.11
     "@ionic/utils-terminal": ^2.3.3
     commander: ^9.3.0
     debug: ^4.3.4
@@ -2128,7 +2129,7 @@ __metadata:
   bin:
     cap: bin/capacitor
     capacitor: bin/capacitor
-  checksum: ae41ea5176817c8e83edecb45ff6158edf1c49b1cb4b052f7a9ff180fa0663045c6bbf2ffb443531b1eb329c08d92a44d0cb0bb18443d6f1dcfb7b2859570601
+  checksum: f3f6b4f134998606cbeb1b2c4e99212d11d88153d2be7be161681d1b362fdebf9aeb8e8bcb67b79e0e74e6e19d42a41c82bfcca5f62e6b154f4f8d22ef0748d9
   languageName: node
   linkType: hard
 
@@ -4756,6 +4757,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@ionic/utils-array@npm:2.1.5":
+  version: 2.1.5
+  resolution: "@ionic/utils-array@npm:2.1.5"
+  dependencies:
+    debug: ^4.0.0
+    tslib: ^2.0.1
+  checksum: eab54e5ae6c3a7d435e420986cd7a0766c00506a829e001ddfc4124542adace6dd0f0c1fc51fa8f5eaa69bd09354a0b5541ff9b39b61763cb0e415936578fd4b
+  languageName: node
+  linkType: hard
+
 "@ionic/utils-array@npm:2.1.6, @ionic/utils-array@npm:^2.1.5":
   version: 2.1.6
   resolution: "@ionic/utils-array@npm:2.1.6"
@@ -4763,6 +4774,18 @@ __metadata:
     debug: ^4.0.0
     tslib: ^2.0.1
   checksum: 13d7b56906bb394a9362622c001578f0788f06ee2d8c724a51fb415cf4bdc1ccf1f92c2358935524f0089a660a4323d5f0bfa9403a0b3050ed921c039125b5e8
+  languageName: node
+  linkType: hard
+
+"@ionic/utils-fs@npm:3.1.6":
+  version: 3.1.6
+  resolution: "@ionic/utils-fs@npm:3.1.6"
+  dependencies:
+    "@types/fs-extra": ^8.0.0
+    debug: ^4.0.0
+    fs-extra: ^9.0.0
+    tslib: ^2.0.1
+  checksum: 7cdd69c1aca348192edb588bc24b13491198d4c16428d3b3a176b2d6862a48e3dbb42cf3b677c3c36f3d9ceaf87739c0f633f2ac964092fefe58978863350f04
   languageName: node
   linkType: hard
 
@@ -4788,6 +4811,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@ionic/utils-object@npm:2.1.5":
+  version: 2.1.5
+  resolution: "@ionic/utils-object@npm:2.1.5"
+  dependencies:
+    debug: ^4.0.0
+    tslib: ^2.0.1
+  checksum: 123d1fe5aabe984bd5c93f7e70b3166e47007673218fd9347747c9005be0b10b0c639a8eaf36b77e12337d1cc90171624af06620bf9e9cccb2b8414ad80bc4a5
+  languageName: node
+  linkType: hard
+
 "@ionic/utils-object@npm:2.1.6":
   version: 2.1.6
   resolution: "@ionic/utils-object@npm:2.1.6"
@@ -4798,21 +4831,21 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@ionic/utils-process@npm:2.1.11":
-  version: 2.1.11
-  resolution: "@ionic/utils-process@npm:2.1.11"
+"@ionic/utils-process@npm:2.1.10":
+  version: 2.1.10
+  resolution: "@ionic/utils-process@npm:2.1.10"
   dependencies:
-    "@ionic/utils-object": 2.1.6
-    "@ionic/utils-terminal": 2.3.4
+    "@ionic/utils-object": 2.1.5
+    "@ionic/utils-terminal": 2.3.3
     debug: ^4.0.0
     signal-exit: ^3.0.3
     tree-kill: ^1.2.2
     tslib: ^2.0.1
-  checksum: 376994e15774778af7b951c22d20c19510fa2009b5ff1c2e1244be6a0d2b059eba5e7b6db6ddd9e3764c326ab35e4446a17e49f2e1deab66b4eccd008f66cc49
+  checksum: 4aa84bcdee08dae2ca0cce37e9109de1de43cba2cb4e4b2aa2324b6fc958ac751251efbf3883959d0d8b02f3ce3beff94f07bd20c4c895ccb270a10aa1360545
   languageName: node
   linkType: hard
 
-"@ionic/utils-process@npm:2.1.12":
+"@ionic/utils-process@npm:2.1.12, @ionic/utils-process@npm:^2.1.11":
   version: 2.1.12
   resolution: "@ionic/utils-process@npm:2.1.12"
   dependencies:
@@ -4826,13 +4859,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@ionic/utils-stream@npm:3.1.6":
-  version: 3.1.6
-  resolution: "@ionic/utils-stream@npm:3.1.6"
+"@ionic/utils-stream@npm:3.1.5":
+  version: 3.1.5
+  resolution: "@ionic/utils-stream@npm:3.1.5"
   dependencies:
     debug: ^4.0.0
     tslib: ^2.0.1
-  checksum: cd207a12fdcfa39c3f215620dee17491aca6bf0fa39cd9c7a9a21188013113aa3f3f9e50e2eae590f2dae9f5411e54a6f9cd3916cd87837be9206ea3fedd65f3
+  checksum: 6211825c64295df1c368650b445c8cb1220417855aa6f0cdec68f4ccd3c5368b5f825911708a7242386e9546aa9050a5f85f9b1a0356c8dd9280d1dd33bcb33a
   languageName: node
   linkType: hard
 
@@ -4843,6 +4876,22 @@ __metadata:
     debug: ^4.0.0
     tslib: ^2.0.1
   checksum: 23667cfeaa4f710e556cd4f055ae6a99a59bf9f83ed7224fea5cf82d2e0539b8d42c4bf133db82f8a2156c004145fdb2e252837388b552c5775126700bce4a95
+  languageName: node
+  linkType: hard
+
+"@ionic/utils-subprocess@npm:2.1.11":
+  version: 2.1.11
+  resolution: "@ionic/utils-subprocess@npm:2.1.11"
+  dependencies:
+    "@ionic/utils-array": 2.1.5
+    "@ionic/utils-fs": 3.1.6
+    "@ionic/utils-process": 2.1.10
+    "@ionic/utils-stream": 3.1.5
+    "@ionic/utils-terminal": 2.3.3
+    cross-spawn: ^7.0.3
+    debug: ^4.0.0
+    tslib: ^2.0.1
+  checksum: f93be70bd164c1386bf4323ebdf6e8672bd0b677cee302d4952162229253639ec3eefd78b955afa752b2571f567e13e4635c23d51969e7d565cfd12b7a0b7df7
   languageName: node
   linkType: hard
 
@@ -4862,25 +4911,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@ionic/utils-subprocess@npm:^2.1.11":
-  version: 2.1.14
-  resolution: "@ionic/utils-subprocess@npm:2.1.14"
-  dependencies:
-    "@ionic/utils-array": 2.1.6
-    "@ionic/utils-fs": 3.1.7
-    "@ionic/utils-process": 2.1.11
-    "@ionic/utils-stream": 3.1.6
-    "@ionic/utils-terminal": 2.3.4
-    cross-spawn: ^7.0.3
-    debug: ^4.0.0
-    tslib: ^2.0.1
-  checksum: 26959f40d6bf287f258063ede17da3fe392eb2817db81ef77593f3ea6ac59710d5b3bc437a1713624899c885514797bc1d9170083e31cd271035d2e2694598ea
-  languageName: node
-  linkType: hard
-
-"@ionic/utils-terminal@npm:2.3.4":
-  version: 2.3.4
-  resolution: "@ionic/utils-terminal@npm:2.3.4"
+"@ionic/utils-terminal@npm:2.3.3":
+  version: 2.3.3
+  resolution: "@ionic/utils-terminal@npm:2.3.3"
   dependencies:
     "@types/slice-ansi": ^4.0.0
     debug: ^4.0.0
@@ -4891,7 +4924,7 @@ __metadata:
     tslib: ^2.0.1
     untildify: ^4.0.0
     wrap-ansi: ^7.0.0
-  checksum: d32fbeb6c7b355717a28ea2b0741c50c2fee5f959c25373f17887f6d8150523bffc54caaa1cd8c585809f94bdcbfd7f13ade63d02a9f122e93ff7d4ca1645698
+  checksum: c551a2c8c094405c1a636638a1e1f2cbac0afe29e9a20c726d7571f20aec5e177cf7ed38c785735808c9bccf7e4f71bd04ee291865dc6f70ac009074fa064974
   languageName: node
   linkType: hard
 
@@ -14802,7 +14835,7 @@ __metadata:
     "@capacitor-firebase/performance": ^5.3.0
     "@capacitor/android": ^5.5.1
     "@capacitor/app": ^5.0.6
-    "@capacitor/cli": ^5.5.1
+    "@capacitor/cli": ^6.1.2
     "@capacitor/clipboard": ^5.0.6
     "@capacitor/core": ^5.5.1
     "@capacitor/device": ^5.0.6
