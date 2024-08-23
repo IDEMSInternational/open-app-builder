@@ -48,10 +48,4 @@ $path-stroke-width: 32px;
       margin-right: $path-segment-spacing;
     }
   }
-
-  &:last-child {
-    .path-segment {
-      display: none;
-    }
-  }
 }

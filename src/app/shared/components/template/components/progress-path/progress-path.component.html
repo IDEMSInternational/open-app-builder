@@ -5,6 +5,7 @@
       [class.odd-index]="$odd"
       [style.margin-bottom]="contentHeight"
       [style.width]="width"
+      #childRow
     >
       <div class="progress-path-child-content">
         <plh-template-component
@@ -15,11 +16,25 @@
         >
         </plh-template-component>
       </div>
-      <div class="path-segment">
-        <svg [attr.viewBox]="svgViewBox" stroke="currentColor">
-          <path fill="none" [attr.d]="svgPath" />
-        </svg>
-      </div>
+      <!-- Render individual path segments -->
+      @if (svgSegmentPath && !$last) {
+        <div class="path-segment">
+          <svg [attr.viewBox]="svgViewBox" stroke="currentColor">
+            <path fill="none" [attr.d]="svgSegmentPath" />
+          </svg>
+        </div>
+      }
     </div>
+  }
+  <!-- Alt implementation with single svg element -->
+  @if (svgCombinedPath) {
+    <svg
+      stroke="currentColor"
+      stroke-linejoin="round"
+      stroke-width="26px"
+      style="position: absolute; top: 0; left: 0; height: 100%; width: 100%; z-index: -1"
+    >
+      <path fill="none" [attr.d]="svgCombinedPath"></path>
+    </svg>
   }
 </div>

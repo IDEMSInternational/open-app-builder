@@ -1,5 +1,6 @@
-import { Component } from "@angular/core";
+import { Component, ElementRef, viewChildren } from "@angular/core";
 import { TemplateBaseComponent } from "../base";
+import { _wait } from "packages/shared/src/utils/async-utils";
 
 // HACK - hardcoded sizing values to make content fit reasonably well
 const SIZING = {
@@ -19,14 +20,21 @@ const SIZING = {
   styleUrls: ["./progress-path.component.scss"],
 })
 export class TmplProgressPathComponent extends TemplateBaseComponent {
-  public svgPath: string;
+  public svgSegmentPath: string;
   public svgViewBox: string;
-  public contentHeight: string;
+
+  public contentHeight = `${SIZING.textContentHeight}px`;
   public width = `${SIZING.widthPx}px`;
+
+  /** Alt implementation - single path for entire svg */
+  public svgCombinedPath: string;
+  /** Track size of rendered children to help generate combined svg */
+  private renderedChildren = viewChildren<ElementRef<HTMLDivElement>>("childRow");
 
   constructor() {
     super();
     this.generateSVGPath("wavy");
+    this.wipGenerateDynamicSVGPath();
   }
 
   /**
@@ -66,8 +74,59 @@ export class TmplProgressPathComponent extends TemplateBaseComponent {
     c 48,0 72,64 48,${viewboxHeight - yOffset - 16}
     `.trim();
 
-    this.svgPath = variant === "basic" ? basic() : wavy();
+    this.svgSegmentPath = variant === "basic" ? basic() : wavy();
     this.svgViewBox = `0 0 ${widthPx} ${viewboxHeight}`;
-    this.contentHeight = `${textContentHeight}px`;
+  }
+
+  /**
+   * WiP - generate a single svg that traces a path between all
+   * rendered items
+   *
+   * NOTE - should be triggered in ngAfterViewInit block
+   *
+   * TODO
+   * - Consider using defs and multiple repeated segments
+   *   https://developer.mozilla.org/en-US/docs/Web/SVG/Element/defs
+   *
+   * - Improve curve to look more natural
+   */
+  private async wipGenerateDynamicSVGPath() {
+    // HACK - ensure components rendered to calc heights correctly
+    // TODO - consider fixed heights or some sort of render listener
+    await _wait(500);
+
+    // Get coordinate reference points for child rows, alternate LHS, RHS
+    // Points are adjusted to accommodate expected task circle cards
+    const nodes = this.renderedChildren().map(({ nativeElement }, i) => {
+      // TODO - handle RTL lang
+      const { left, right, top } = nativeElement.getBoundingClientRect();
+      const x = i % 2 === 0 ? left + 32 : right - 104;
+      return [x, top - 32];
+    });
+
+    // Generate a path connecting each node
+    let path = "";
+    nodes.forEach(([x1, y1], i) => {
+      // initial point
+      if (i === 0) {
+        path += `M ${x1},${y1}`;
+      }
+      // path to next
+      const next = nodes[i + 1];
+      if (next) {
+        const [x2, y2] = next;
+        // even
+        if (i % 2 === 0) {
+          // right-bend path (basic / wavy)
+          // path += ` h ${x2 - x1 - 32 + 8} c 32,0 32,32 32,32  v ${y2 - y1 - 32}`;
+          path += ` h ${x2 - x1 - 32} c 64,0 96,86 32,172`;
+        } else {
+          // left-bend path (basic / wavy)
+          // path += ` h ${x2 - x1 + 32 + 8} c -32,0 -32,32 -32,32  v ${y2 - y1 - 32}`;
+          path += ` h -${x1 - x2 - 32} c -64,0 -96,86 -32,172`;
+        }
+      }
+    });
+    this.svgCombinedPath = path;
   }
 }
