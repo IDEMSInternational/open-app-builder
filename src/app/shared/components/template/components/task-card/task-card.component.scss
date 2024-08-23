@@ -201,11 +201,12 @@
     top: $circle-width;
     min-width: 150px;
     max-width: 240px;
+    padding: 0 12px;
 
     p {
       text-align: center;
       line-height: var(--line-height-text);
-      font-size: var(--font-size-text-large);
+      font-size: var(--font-size-text-medium);
       color: var(--ion-color-primary);
       font-weight: var(--font-weight-bold);
     }

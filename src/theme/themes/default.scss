@@ -53,7 +53,6 @@
       // task-progress-bar-color: var(--ion-color-primary),
       // checkbox-background-color: white,
       // progress-path-line-background, var(--ion-color-gray-100),
-      // progress-path-line-weight: 72px,
     );
     @include utils.generateTheme($color-primary, $color-secondary, $page-background);
     @each $name, $value in $variable-overrides {
