@@ -2214,12 +2214,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@capawesome/capacitor-app-update@npm:^5.0.1":
-  version: 5.1.0
-  resolution: "@capawesome/capacitor-app-update@npm:5.1.0"
+"@capawesome/capacitor-app-update@npm:^6.0.0":
+  version: 6.0.0
+  resolution: "@capawesome/capacitor-app-update@npm:6.0.0"
   peerDependencies:
-    "@capacitor/core": ^5.0.0
-  checksum: f2e829492e0f65bef77b9e8901e1927c07656d6834ce3b59d68236a89abc01c9846c1b0cf6df271d6fd1b713ef06552f73f582f823b00a387c2c7b8a84151118
+    "@capacitor/core": ^6.0.0
+  checksum: 8fe893f8fcb953b2520e38e395502820d3f633d3a77159584890631393c5beb42462d78a1139c7aa84a46c5316589ca2b1cf4d19222583a9e589416d7df848db
   languageName: node
   linkType: hard
 
@@ -14845,7 +14845,7 @@ __metadata:
     "@capacitor/push-notifications": ^6.0.0
     "@capacitor/share": ^6.0.0
     "@capacitor/splash-screen": ^6.0.0
-    "@capawesome/capacitor-app-update": ^5.0.1
+    "@capawesome/capacitor-app-update": ^6.0.0
     "@compodoc/compodoc": ^1.1.23
     "@ionic-native/core": ^5.36.0
     "@ionic-native/device": ^5.36.0
