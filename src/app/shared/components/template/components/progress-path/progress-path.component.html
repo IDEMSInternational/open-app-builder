@@ -1,38 +1,25 @@
 <div class="progress-path-wrapper">
   @for (childRow of _row.rows | filterDisplayComponent; track trackByRow($index, childRow)) {
-    <div class="progress-path-child-wrapper" [class.odd-index]="$odd">
-      <div class="progress-path-child-content">
-        <plh-template-component
-          [row]="childRow"
-          [parent]="parent"
-          [attr.data-rowname]="_row.name"
-          [style.--progress-path-flex-align]="$odd ? 'flex-end' : 'flex-start'"
-        >
-        </plh-template-component>
+    <div
+      class="progress-path-child-wrapper"
+      [class.odd-index]="$odd"
+      [style.margin-bottom]="contentHeight"
+      [style.width]="width"
+    >
+      <div class="progress-path-child-content-wrapper" [style.--container-width]="width">
+        <div class="progress-path-child-content">
+          <plh-template-component
+            [row]="childRow"
+            [parent]="parent"
+            [attr.data-rowname]="_row.name"
+            [style.--progress-path-flex-align]="$odd ? 'flex-end' : 'flex-start'"
+          >
+          </plh-template-component>
+        </div>
       </div>
       <div class="path-segment">
-        <svg
-          viewBox="0 0 574 478"
-          version="1.1"
-          xmlns="http://www.w3.org/2000/svg"
-          xmlns:xlink="http://www.w3.org/1999/xlink"
-          xml:space="preserve"
-          xmlns:serif="http://www.serif.com/"
-          style="
-            fill-rule: evenodd;
-            clip-rule: evenodd;
-            stroke-linejoin: round;
-            stroke-miterlimit: 1.5;
-          "
-        >
-          <g transform="matrix(1,0,0,1,-278.796,-1016.63)">
-            <g transform="matrix(-0.70439,0,0,0.70439,1238.73,580.835)">
-              <path
-                d="M798.413,1259.89C692.245,1259.89 604.118,1182.03 588.072,1080.34C586.355,1069.46 585.463,1058.3 585.463,1046.94L585.463,867.833C585.463,750.303 680.883,654.883 798.413,654.883L1326.58,654.883"
-                style="fill: none"
-              />
-            </g>
-          </g>
+        <svg [attr.viewBox]="svgViewBox" stroke="currentColor">
+          <path fill="none" [attr.d]="svgPath" />
         </svg>
       </div>
     </div>
