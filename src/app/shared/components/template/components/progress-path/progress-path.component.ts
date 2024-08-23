@@ -1,5 +1,11 @@
-import { Component } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { TemplateBaseComponent } from "../base";
+import { getStringParamFromTemplateRow } from "src/app/shared/utils";
+
+interface IProgressPathParams {
+  /** TEMPLATE_PARAMETER: "variant" */
+  variant: "basic" | "wavy";
+}
 
 // HACK - hardcoded sizing values to make content fit reasonably well
 const SIZING = {
@@ -18,15 +24,25 @@ const SIZING = {
   templateUrl: "./progress-path.component.html",
   styleUrls: ["./progress-path.component.scss"],
 })
-export class TmplProgressPathComponent extends TemplateBaseComponent {
+export class TmplProgressPathComponent extends TemplateBaseComponent implements OnInit {
+  private params: Partial<IProgressPathParams> = {};
+  private pathVariant: "basic" | "wavy";
+
   public svgPath: string;
   public svgViewBox: string;
   public contentHeight: string;
   public width = `${SIZING.widthPx}px`;
 
-  constructor() {
-    super();
-    this.generateSVGPath("wavy");
+  ngOnInit() {
+    this.getParams();
+    this.generateSVGPath(this.pathVariant);
+  }
+
+  private getParams() {
+    this.params.variant = getStringParamFromTemplateRow(this._row, "variant", "basic")
+      .split(",")
+      .join(" ") as IProgressPathParams["variant"];
+    this.pathVariant = this.params.variant.includes("wavy") ? "wavy" : "basic";
   }
 
   /**
