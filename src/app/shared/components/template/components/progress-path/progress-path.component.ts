@@ -7,9 +7,9 @@ const SIZING = {
   widthPx: 384,
   /** Target height for text content */
   textContentHeight: 72,
-  /** Adjust start of line for task card */
+  /** Adjust x for task card overlap */
   xOffset: 64,
-  /** Adjust start of line for task card */
+  /** Adjust y for task card overlap */
   yOffset: 56,
 };
 
@@ -58,7 +58,7 @@ export class TmplProgressPathComponent extends TemplateBaseComponent {
     `.trim();
 
     // Alt generation that is a bit more wavy
-    // https://svg-path-visualizer.netlify.app/#M%20128%2C128%0Ah%20384%20%0Ac%2064%2C0%20128%2C64%2064%2C200%0A
+    // https://svg-path-visualizer.netlify.app/#M%2064%2C56%0Ah%20208%0Ac%2048%2C0%2072%2C64%2048%2C128%0A
     const wavy = () =>
       `
     M ${xOffset},${yOffset}
