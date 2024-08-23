@@ -2039,12 +2039,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@capacitor-community/file-opener@npm:^1.0.5":
-  version: 1.0.5
-  resolution: "@capacitor-community/file-opener@npm:1.0.5"
+"@capacitor-community/file-opener@npm:^6.0.0":
+  version: 6.0.0
+  resolution: "@capacitor-community/file-opener@npm:6.0.0"
   peerDependencies:
-    "@capacitor/core": ^3.0.0 || ^4.0.0 || ^5.0.0
-  checksum: c98847e7f083df313911ad85eedbaf07869ea09d88acb6eff738f5c162b614b12683adaa4571d71b1dd808d29e1ec9e4365372482c8a7d16e21bbd3f6b63a306
+    "@capacitor/core": ^6.0.0
+  checksum: 008200294bf280bdc10a1fea0d883b0846eb0c5dd336818e4cdd40950a153d45610362327db194b516ac8ffc917c1c061103edaef3b00ce012cdb1c8b8fe1d54
   languageName: node
   linkType: hard
 
@@ -14829,7 +14829,7 @@ __metadata:
     "@angular/platform-browser": ~17.2.2
     "@angular/platform-browser-dynamic": ~17.2.2
     "@angular/router": ~17.2.2
-    "@capacitor-community/file-opener": ^1.0.5
+    "@capacitor-community/file-opener": ^6.0.0
     "@capacitor-firebase/authentication": ^5.3.0
     "@capacitor-firebase/crashlytics": ^5.4.1
     "@capacitor-firebase/performance": ^5.3.0
