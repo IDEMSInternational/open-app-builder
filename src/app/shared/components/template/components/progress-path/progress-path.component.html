@@ -6,14 +6,16 @@
       [style.margin-bottom]="contentHeight"
       [style.width]="width"
     >
-      <div class="progress-path-child-content">
-        <plh-template-component
-          [row]="childRow"
-          [parent]="parent"
-          [attr.data-rowname]="_row.name"
-          [style.--progress-path-flex-align]="$odd ? 'flex-end' : 'flex-start'"
-        >
-        </plh-template-component>
+      <div class="progress-path-child-content-wrapper" [style.--container-width]="width">
+        <div class="progress-path-child-content">
+          <plh-template-component
+            [row]="childRow"
+            [parent]="parent"
+            [attr.data-rowname]="_row.name"
+            [style.--progress-path-flex-align]="$odd ? 'flex-end' : 'flex-start'"
+          >
+          </plh-template-component>
+        </div>
       </div>
       <div class="path-segment">
         <svg [attr.viewBox]="svgViewBox" stroke="currentColor">

@@ -4,13 +4,13 @@ import { TemplateBaseComponent } from "../base";
 // HACK - hardcoded sizing values to make content fit reasonably well
 const SIZING = {
   /** Total width for container */
-  widthPx: 384,
+  widthPx: 364,
   /** Target height for text content */
-  textContentHeight: 72,
+  textContentHeight: 82,
   /** Adjust x for task card overlap */
-  xOffset: 64,
+  xOffset: 68,
   /** Adjust y for task card overlap */
-  yOffset: 56,
+  yOffset: 48,
 };
 
 @Component({
@@ -63,7 +63,7 @@ export class TmplProgressPathComponent extends TemplateBaseComponent {
       `
     M ${xOffset},${yOffset}
     h ${widthPx - 2 * xOffset - 48}
-    c 48,0 72,64 48,${viewboxHeight - yOffset - 16}
+    c 48,0 72,64 48,${viewboxHeight - yOffset - 4}
     `.trim();
 
     this.svgPath = variant === "basic" ? basic() : wavy();

@@ -1,5 +1,5 @@
 $path-background: var(--progress-path-line-background, var(--ion-color-primary-200));
-$path-stroke-width: 32px;
+$path-stroke-width: 28px;
 
 .progress-path-wrapper {
   position: relative;
@@ -31,6 +31,13 @@ $path-stroke-width: 32px;
     }
   }
 
+  .progress-path-child-content-wrapper {
+    width: 100vw;
+    max-width: calc(var(--container-width) + 20px);
+    min-width: calc(var(--container-width) - 44px);
+    display: flex;
+    flex-direction: column;
+  }
   .progress-path-child-content {
     width: 150px;
     align-self: flex-start;
