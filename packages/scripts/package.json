@@ -11,8 +11,8 @@
     "start": "ts-node src/commands/index.ts",
     "build": "ts-node build.ts",
     "dev": "ts-node-dev --transpile-only --respawn --watch src src/commands/index.ts",
-    "test": "jest",
-    "test:watch": "nodemon --ext ts --exec 'jasmine-ts --config=jasmine.json'"
+    "test": "jest --",
+    "test:watch": "jest --watchAll --"
   },
   "author": "",
   "license": "ISC",
@@ -52,7 +52,6 @@
     "@types/semver": "^7.3.9",
     "jest": "^29.7.0",
     "mock-fs": "^5.2.0",
-    "nodemon": "^2.0.19",
     "ts-jest": "^29.2.5",
     "ts-node": "^10.8.0",
     "ts-node-dev": "^2.0.0",
