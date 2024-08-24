@@ -44,6 +44,7 @@ export class TaskService extends AsyncServiceBase {
   }
 
   /**
+   * Determine which task group should be highlighted.
    * The highlighted task group should always be the ID of the highest
    * priority task_group that is not completed and not skipped
    * NB "highest priority" is defined as having the lowest numerical value for the "number" column
@@ -88,7 +89,7 @@ export class TaskService extends AsyncServiceBase {
     return { previousHighlightedTaskGroup, newHighlightedTaskGroup };
   }
 
-  /** Get the id of the task group stored as higlighted */
+  /** Get the id of the task group stored as highlighted */
   public getHighlightedTaskGroup() {
     return this.templateFieldService.getField(this.highlightedTaskField);
   }
