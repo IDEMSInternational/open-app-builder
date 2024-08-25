@@ -77,7 +77,7 @@ describe("FlowParser Processor", () => {
       rows: null,
     };
     await processor.process([brokenFlow]);
-    const errorLogs = getLogs("error", "Template parse error");
+    const errorLogs = getLogs("error").filter(({ message }) => message === "Template parse error");
     expect(errorLogs).toEqual([
       {
         source: "flowParser",

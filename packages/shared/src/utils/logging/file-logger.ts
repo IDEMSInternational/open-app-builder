@@ -88,6 +88,7 @@ export function getGlobalFileLogger() {
   return logger;
 }
 
+/** Create a child instance of the file logger with additional context meta */
 export function createChildFileLogger(meta = {}) {
   const logger = getGlobalFileLogger();
   return logger.child(meta);

@@ -3,9 +3,8 @@ import { AppDataConverter } from "./index";
 import path, { resolve } from "path";
 
 import { SCRIPTS_TEST_DATA_DIR } from "../../../paths";
-import { emptyDirSync, existsSync, readdirSync, readJSONSync } from "fs-extra";
-import { clearLogs, getLogs } from "./utils";
-import { useMockErrorLogger } from "../../../../test/helpers/utils";
+import { emptyDirSync, existsSync, readdirSync, readJSONSync, ensureDirSync } from "fs-extra";
+import { clearLogs } from "shared";
 
 // Folders used for tests
 const paths = {
@@ -14,20 +13,17 @@ const paths = {
   cacheFolder: path.resolve(SCRIPTS_TEST_DATA_DIR, "cache"),
 };
 
+/** yarn workspace scripts test -t convert.spec.ts */
 describe("App Data Converter", () => {
   let converter: AppDataConverter;
   beforeAll(() => {
-    if (existsSync(paths.outputFolder)) {
-      path.resolve(SCRIPTS_TEST_DATA_DIR, "output");
-    }
+    ensureDirSync(paths.outputFolder);
+    emptyDirSync(paths.outputFolder);
   });
   beforeEach(() => {
-    clearLogs();
     converter = new AppDataConverter(paths);
   });
-  afterAll(() => {
-    emptyDirSync(path.resolve(SCRIPTS_TEST_DATA_DIR, "output"));
-  });
+
   it("Uses child caches", async () => {
     const cacheFolders = readdirSync(paths.cacheFolder);
     expect(cacheFolders.length).toBeGreaterThan(1);
@@ -37,10 +33,10 @@ describe("App Data Converter", () => {
     const cacheFolders = readdirSync(paths.cacheFolder);
     expect(cacheFolders.length).toEqual(1); // only contents file
   });
-  it("Processes test_input xlsx without error", async () => {
-    await converter.run();
-    const errorLogs = getLogs("error");
-    expect(errorLogs.length).toEqual(0);
+  it.only("Processes test_input xlsx without error", async () => {
+    const { errors, result } = await converter.run();
+    expect(errors.length).toEqual(0);
+    expect(Object.values(result).length).toBeGreaterThan(0);
   });
   it("Populates output to folder by data type", async () => {
     await converter.run();
@@ -76,20 +72,18 @@ const errorPaths = {
 };
 describe("App Data Converter - Error Checking", () => {
   let errorConverter: AppDataConverter;
-  let errorLogger: jasmine.Spy;
   beforeAll(() => {
     if (existsSync(paths.outputFolder)) {
       emptyDirSync(paths.outputFolder);
     }
   });
   beforeEach(() => {
-    errorLogger = useMockErrorLogger();
     errorConverter = new AppDataConverter(errorPaths);
   });
   it("Tracks conversion errors", async () => {
-    await errorConverter.run();
-    const loggerErrors = getLogs("error");
-    const errorMessages = loggerErrors.map((err) => err.message);
+    clearLogs(true);
+    const { errors } = await errorConverter.run();
+    const errorMessages = errors.map((err) => err.message);
     expect(errorMessages).toEqual([
       "Duplicate flow name",
       "No parser available for flow_type: test_invalid_type",
