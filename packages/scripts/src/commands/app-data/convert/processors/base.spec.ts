@@ -23,9 +23,15 @@ class TestProcessor extends BaseProcessor<string, any> {
   }
 }
 let processor: TestProcessor;
+
+/** yarn workspace scripts test -t base.spec.ts */
 describe("Base Processor", () => {
   beforeAll(() => {
-    processor = new TestProcessor({ namespace: "BaseProcessor", paths });
+    processor = new TestProcessor({
+      namespace: "BaseProcessor",
+      paths,
+      cacheVersion: new Date().getTime(),
+    });
     processor.cache.clear();
   });
   afterAll(() => {
@@ -58,7 +64,11 @@ describe("Deferred Processor", () => {
   }
   let deferredProcessor: DeferredProcessor;
   beforeEach(() => {
-    deferredProcessor = new DeferredProcessor({ namespace: "BaseProcessor", paths });
+    deferredProcessor = new DeferredProcessor({
+      namespace: "BaseProcessor",
+      paths,
+      cacheVersion: new Date().getTime(),
+    });
     deferredProcessor.cache.clear();
   });
   afterAll(() => {

@@ -15,6 +15,7 @@ const testFlow = {
   ],
 };
 
+/** yarn workspace scripts test -t  data_list.parser.spec.ts **/
 describe("data_list Parser (single)", () => {
   let outputRows: any[];
   beforeAll(() => {
