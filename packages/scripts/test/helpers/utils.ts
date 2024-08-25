@@ -1,19 +1,20 @@
 import { Logger } from "shared/src/utils/logging/console-logger";
 
 /*************************************************************
- * Test utilties
+ * Test utilities
  *************************************************************/
 
-/** Mock function that will replace default `Logger` function to instead just record any invocations */
-export function useMockErrorLogger() {
-  const mockErrorLogger = jest.fn();
-  jest.spyOn(Logger, "error").mockImplementation(mockErrorLogger);
-  return mockErrorLogger;
-}
-
-/** Mock function that will replace default `Logger` function to instead just record any invocations */
-export function useMockWarningLogger() {
-  const mockWarningLogger = jest.fn();
-  jest.spyOn(Logger, "warning").mockImplementation(mockWarningLogger);
-  return mockWarningLogger;
+/**
+ * Create spy to track usage of console Logger method
+ * @param callOriginal specify whether to still call original Logger
+ * methods after spy intercept
+ */
+export function useMockLogger(callOriginal = true) {
+  const error = jest.spyOn(Logger, "error");
+  const warning = jest.spyOn(Logger, "warning");
+  if (!callOriginal) {
+    error.mockImplementation(jest.fn());
+    warning.mockImplementation(jest.fn());
+  }
+  return { error, warning };
 }

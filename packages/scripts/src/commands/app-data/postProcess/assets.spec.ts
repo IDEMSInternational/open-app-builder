@@ -11,7 +11,7 @@ import mockFs from "mock-fs";
 import { ActiveDeployment } from "../../deployment/get";
 import path, { resolve } from "path";
 import { IAssetEntryHashmap } from "data-models/deployment.model";
-import { useMockErrorLogger } from "../../../../test/helpers/utils";
+import { useMockLogger } from "../../../../test/helpers/utils";
 
 /** Mock file system folders for use in tests */
 const mockDirs = {
@@ -106,7 +106,7 @@ describe("Assets PostProcess", () => {
     mockLocalAssets({ "test.jpg": mockFile });
     runAssetsPostProcessor();
     const contents = readAppAssetContents();
-    expect("test.jpg" in contents).toBeTrue();
+    expect("test.jpg" in contents).toEqual(true);
   });
 
   it("Populates global assets from named or root folder", () => {
@@ -274,7 +274,7 @@ describe("Assets PostProcess", () => {
 
   /** QA tests */
   it("throws error on duplicate overrides", () => {
-    const errorLogger = useMockErrorLogger();
+    const mockLogger = useMockLogger();
     mockLocalAssets({
       "test.jpg": mockFile,
       theme_test: {
@@ -288,7 +288,8 @@ describe("Assets PostProcess", () => {
       filter_language_codes: ["tz_sw"],
       app_themes_available: ["test"],
     });
-    expect(errorLogger).toHaveBeenCalledOnceWith({
+    expect(mockLogger.error).toHaveBeenCalledTimes(1);
+    expect(mockLogger.error).toHaveBeenCalledWith({
       msg1: "Duplicate overrides detected",
       msg2: "test.jpg [theme_test] [tz_sw]",
       logOnly: true,
@@ -358,5 +359,5 @@ function stubDeploymentConfig(stub: IDeploymentConfigStub = {}) {
       APP_THEMES: { available: app_themes_available },
     } as any,
   };
-  spyOn(ActiveDeployment, "get").and.returnValue(stubDeployment as IDeploymentConfigJson);
+  jest.spyOn(ActiveDeployment, "get").mockReturnValue(stubDeployment as IDeploymentConfigJson);
 }
