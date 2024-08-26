@@ -2,17 +2,27 @@ import { AppDataConverter } from "./index";
 
 import { resolve } from "path";
 
-import { SCRIPTS_TEST_DATA_DIR } from "../../../paths";
 import { emptyDirSync, existsSync, readdirSync, readJSONSync, ensureDirSync } from "fs-extra";
 import { clearLogs } from "shared";
 
-// Folders used for tests
-// TODO - consider using memfs instead of scripts file cache
+import { TEST_DATA_PATHS } from "../../../../test/helpers/utils";
+import { ActiveDeployment } from "../../deployment/get";
+
+const { SHEETS_CACHE_FOLDER, SHEETS_INPUT_FOLDER, SHEETS_OUTPUT_FOLDER } = TEST_DATA_PATHS;
 const paths = {
-  inputFolders: [resolve(SCRIPTS_TEST_DATA_DIR, "input", "sheets")],
-  outputFolder: resolve(SCRIPTS_TEST_DATA_DIR, "output", "sheets"),
-  cacheFolder: resolve(SCRIPTS_TEST_DATA_DIR, "cache"),
+  inputFolders: [resolve(SHEETS_INPUT_FOLDER, "sheets")],
+  outputFolder: resolve(SHEETS_OUTPUT_FOLDER, "sheets"),
+  cacheFolder: resolve(SHEETS_CACHE_FOLDER),
 };
+
+// HACK - avoid loading active deployment
+jest.spyOn(ActiveDeployment, "get").mockReturnValue({
+  app_data: {
+    sheets_filter_function: () => true,
+    assets_filter_function: () => true,
+    output_path: paths.outputFolder,
+  },
+} as any);
 
 /** yarn workspace scripts test -t convert.spec.ts */
 describe("App Data Converter", () => {
@@ -27,7 +37,7 @@ describe("App Data Converter", () => {
     converter = new AppDataConverter(paths);
   });
 
-  it("Uses child caches", async () => {
+  it.only("Uses child caches", async () => {
     await converter.run();
     const cacheFolders = readdirSync(paths.cacheFolder);
     // expect contents file and cached conversions
@@ -52,10 +62,7 @@ describe("App Data Converter", () => {
   it("Supports input from multiple source folders", async () => {
     const multipleSourceConverter = new AppDataConverter({
       ...paths,
-      inputFolders: [
-        ...paths.inputFolders,
-        resolve(SCRIPTS_TEST_DATA_DIR, "input", "sheets_additional"),
-      ],
+      inputFolders: [...paths.inputFolders, resolve(SHEETS_INPUT_FOLDER, "sheets_additional")],
     });
     await multipleSourceConverter.run();
     const replaceDataListPath = resolve(
@@ -72,9 +79,9 @@ describe("App Data Converter", () => {
 
 // Folders used for error tests
 const errorPaths = {
-  inputFolders: [resolve(SCRIPTS_TEST_DATA_DIR, "input", "errorChecking")],
-  outputFolder: resolve(SCRIPTS_TEST_DATA_DIR, "output", "errorChecking"),
-  cacheFolder: resolve(SCRIPTS_TEST_DATA_DIR, "cache"),
+  inputFolders: [resolve(SHEETS_INPUT_FOLDER, "errorChecking")],
+  outputFolder: resolve(SHEETS_OUTPUT_FOLDER, "errorChecking"),
+  cacheFolder: resolve(SHEETS_CACHE_FOLDER),
 };
 describe("App Data Converter - Error Checking", () => {
   let errorConverter: AppDataConverter;

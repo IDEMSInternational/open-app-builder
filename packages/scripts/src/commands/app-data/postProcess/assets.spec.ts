@@ -9,16 +9,12 @@ import { vol } from "memfs";
 
 // Use default imports to allow spying on functions and replacing with mock methods
 import { ActiveDeployment } from "../../deployment/get";
-import { posix } from "path";
+import { resolve } from "path";
 import { IAssetEntryHashmap } from "data-models/deployment.model";
 import { useMockLogger } from "../../../../test/helpers/utils";
 
 // Mock all fs calls to use memfs implementation
 jest.mock("fs", () => require("memfs"));
-
-// HACK - resolve all paths using posix (/) file system as memfs does not support
-// windows paths https://github.com/streamich/memfs/issues/327
-const { resolve } = posix;
 
 /** Mock file system folders for use in tests */
 const mockDirs = {
@@ -157,7 +153,7 @@ describe("Assets PostProcess", () => {
       theme_test: { global: { ...mockFileEntry, filePath: "theme_test/test.jpg" } },
     });
   });
-  it("Populates combined theme and language overrides in any folder order ", () => {
+  it("Populates combined theme and language overrides in any folder order", () => {
     mockLocalAssets({
       "test1.jpg": mockFile,
       "test2.jpg": mockFile,

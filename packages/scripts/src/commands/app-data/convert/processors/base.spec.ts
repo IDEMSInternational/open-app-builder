@@ -1,14 +1,7 @@
-import path from "path";
 import BaseProcessor from "./base";
 
-import { SCRIPTS_WORKSPACE_PATH } from "../../../../paths";
 import { clearLogs, getLogs } from "../utils";
-const testDataDir = path.resolve(SCRIPTS_WORKSPACE_PATH, "test", "data");
-const paths = {
-  SHEETS_CACHE_FOLDER: path.resolve(testDataDir, "cache"),
-  SHEETS_INPUT_FOLDER: path.resolve(testDataDir, "input"),
-  SHEETS_OUTPUT_FOLDER: path.resolve(testDataDir, "output"),
-};
+import { TEST_DATA_PATHS } from "../../../../../test/helpers/utils";
 
 const testData = [
   {
@@ -29,7 +22,7 @@ describe("Base Processor", () => {
   beforeAll(() => {
     processor = new TestProcessor({
       namespace: "BaseProcessor",
-      paths,
+      paths: TEST_DATA_PATHS,
       cacheVersion: new Date().getTime(),
     });
     processor.cache.clear();
@@ -66,7 +59,7 @@ describe("Deferred Processor", () => {
   beforeEach(() => {
     deferredProcessor = new DeferredProcessor({
       namespace: "BaseProcessor",
-      paths,
+      paths: TEST_DATA_PATHS,
       cacheVersion: new Date().getTime(),
     });
     deferredProcessor.cache.clear();

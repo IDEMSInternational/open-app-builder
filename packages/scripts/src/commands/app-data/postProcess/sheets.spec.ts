@@ -15,6 +15,6 @@ const mockDirs = {
 
 // TODO
 /** yarn workspace scripts test -t sheets.spec.ts */
-describe.skip("PostProcess Sheets", () => {
-  it.skip("TODO", () => {});
+describe("PostProcess Sheets", () => {
+  it.skip("TODO", () => expect(true).toEqual(true));
 });
