@@ -11,8 +11,8 @@
     "start": "ts-node src/commands/index.ts",
     "build": "ts-node build.ts",
     "dev": "ts-node-dev --transpile-only --respawn --watch src src/commands/index.ts",
-    "test": "jest --",
-    "test:watch": "jest --watchAll --"
+    "test": "jest --runInBand --",
+    "test:watch": "jest --runInBand --watchAll --"
   },
   "author": "",
   "license": "ISC",
