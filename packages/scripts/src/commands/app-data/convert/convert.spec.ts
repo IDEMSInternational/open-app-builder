@@ -1,16 +1,17 @@
 import { AppDataConverter } from "./index";
 
-import path, { resolve } from "path";
+import { resolve } from "path";
 
 import { SCRIPTS_TEST_DATA_DIR } from "../../../paths";
 import { emptyDirSync, existsSync, readdirSync, readJSONSync, ensureDirSync } from "fs-extra";
 import { clearLogs } from "shared";
 
 // Folders used for tests
+// TODO - consider using memfs instead of scripts file cache
 const paths = {
-  inputFolders: [path.resolve(SCRIPTS_TEST_DATA_DIR, "input", "sheets")],
-  outputFolder: path.resolve(SCRIPTS_TEST_DATA_DIR, "output", "sheets"),
-  cacheFolder: path.resolve(SCRIPTS_TEST_DATA_DIR, "cache"),
+  inputFolders: [resolve(SCRIPTS_TEST_DATA_DIR, "input", "sheets")],
+  outputFolder: resolve(SCRIPTS_TEST_DATA_DIR, "output", "sheets"),
+  cacheFolder: resolve(SCRIPTS_TEST_DATA_DIR, "cache"),
 };
 
 /** yarn workspace scripts test -t convert.spec.ts */
@@ -19,23 +20,28 @@ describe("App Data Converter", () => {
   beforeAll(() => {
     ensureDirSync(paths.outputFolder);
     emptyDirSync(paths.outputFolder);
+    ensureDirSync(paths.cacheFolder);
+    emptyDirSync(paths.cacheFolder);
   });
   beforeEach(() => {
     converter = new AppDataConverter(paths);
   });
 
   it("Uses child caches", async () => {
+    await converter.run();
     const cacheFolders = readdirSync(paths.cacheFolder);
+    // expect contents file and cached conversions
     expect(cacheFolders.length).toBeGreaterThan(1);
   });
   it("Clears child caches on version change", async () => {
-    const updatedConverter = new AppDataConverter(paths, { version: -1 });
+    const updatedConverter = new AppDataConverter(paths, { version: new Date().getTime() });
+    // no need to run the converter, simply creating should clear the cache
     const cacheFolders = readdirSync(paths.cacheFolder);
-    expect(cacheFolders.length).toEqual(1); // only contents file
+    expect(cacheFolders).toHaveLength(1); // only contents file
   });
-  it.only("Processes test_input xlsx without error", async () => {
+  it("Processes test_input xlsx without error", async () => {
     const { errors, result } = await converter.run();
-    expect(errors.length).toEqual(0);
+    expect(errors).toHaveLength(0);
     expect(Object.values(result).length).toBeGreaterThan(0);
   });
   it("Populates output to folder by data type", async () => {
@@ -48,7 +54,7 @@ describe("App Data Converter", () => {
       ...paths,
       inputFolders: [
         ...paths.inputFolders,
-        path.resolve(SCRIPTS_TEST_DATA_DIR, "input", "sheets_additional"),
+        resolve(SCRIPTS_TEST_DATA_DIR, "input", "sheets_additional"),
       ],
     });
     await multipleSourceConverter.run();
@@ -66,9 +72,9 @@ describe("App Data Converter", () => {
 
 // Folders used for error tests
 const errorPaths = {
-  inputFolders: [path.resolve(SCRIPTS_TEST_DATA_DIR, "input", "errorChecking")],
-  outputFolder: path.resolve(SCRIPTS_TEST_DATA_DIR, "output", "errorChecking"),
-  cacheFolder: path.resolve(SCRIPTS_TEST_DATA_DIR, "cache"),
+  inputFolders: [resolve(SCRIPTS_TEST_DATA_DIR, "input", "errorChecking")],
+  outputFolder: resolve(SCRIPTS_TEST_DATA_DIR, "output", "errorChecking"),
+  cacheFolder: resolve(SCRIPTS_TEST_DATA_DIR, "cache"),
 };
 describe("App Data Converter - Error Checking", () => {
   let errorConverter: AppDataConverter;
