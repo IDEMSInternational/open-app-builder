@@ -37,7 +37,7 @@ describe("App Data Converter", () => {
     converter = new AppDataConverter(paths);
   });
 
-  it.only("Uses child caches", async () => {
+  it("Uses child caches", async () => {
     await converter.run();
     const cacheFolders = readdirSync(paths.cacheFolder);
     // expect contents file and cached conversions
