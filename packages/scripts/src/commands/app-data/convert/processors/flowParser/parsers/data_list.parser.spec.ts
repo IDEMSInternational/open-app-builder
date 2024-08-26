@@ -1,5 +1,6 @@
 import { DataListParser } from ".";
-import { getTestFlowParserProcessor } from "../flowParser.spec";
+import { TEST_DATA_PATHS } from "../../../../../../../test/helpers/utils";
+import { FlowParserProcessor } from "../flowParser";
 
 const testFlow = {
   flow_type: "data_list",
@@ -45,7 +46,7 @@ describe("data_list Parser (single)", () => {
 });
 
 describe("data_list Parser (multiple)", () => {
-  const parser = getTestFlowParserProcessor();
+  const parser = new FlowParserProcessor(TEST_DATA_PATHS);
   beforeAll(() => {
     parser.cache.clear();
   });
