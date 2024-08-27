@@ -3,7 +3,7 @@ import { TemplateBaseComponent } from "../base";
 import { getStringParamFromTemplateRow } from "src/app/shared/utils";
 
 interface IProgressPathParams {
-  /** TEMPLATE_PARAMETER: "variant" */
+  /** TEMPLATE_PARAMETER: "variant". Default "wavy" */
   variant: "basic" | "wavy";
 }
 
@@ -39,17 +39,17 @@ export class TmplProgressPathComponent extends TemplateBaseComponent implements 
   }
 
   private getParams() {
-    this.params.variant = getStringParamFromTemplateRow(this._row, "variant", "basic")
+    this.params.variant = getStringParamFromTemplateRow(this._row, "variant", "wavy")
       .split(",")
       .join(" ") as IProgressPathParams["variant"];
-    this.pathVariant = this.params.variant.includes("wavy") ? "wavy" : "basic";
+    this.pathVariant = this.params.variant.includes("basic") ? "basic" : "wavy";
   }
 
   /**
    * Generate a base SVG segment used to connect 2 progress items together
    * Roughly a horizontal line and smooth bend, adjusted for sizing
    */
-  private generateSVGPath(variant: "basic" | "wavy" = "basic") {
+  private generateSVGPath(variant: "basic" | "wavy" = "wavy") {
     // arbitrary values used to make base width/height fit
     const { widthPx, xOffset, yOffset, textContentHeight } = SIZING;
 
