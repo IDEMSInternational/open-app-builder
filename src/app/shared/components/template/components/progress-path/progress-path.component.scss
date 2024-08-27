@@ -1,0 +1,64 @@
+$path-background: var(--progress-path-line-background, var(--ion-color-primary-200));
+$path-stroke-width: 28px;
+
+.progress-path-wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  align-items: center;
+}
+
+.progress-path-child-wrapper {
+  $path-segment-spacing: 24px;
+
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .path-segment {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: -1;
+    svg {
+      inline-size: 100%;
+      block-size: 100%;
+      stroke: $path-background;
+      stroke-width: $path-stroke-width;
+    }
+  }
+
+  .progress-path-child-content-wrapper {
+    width: 100vw;
+    max-width: calc(var(--container-width) + 20px);
+    min-width: calc(var(--container-width) - 44px);
+    display: flex;
+    flex-direction: column;
+  }
+  .progress-path-child-content {
+    width: 150px;
+    align-self: flex-start;
+  }
+
+  // For alternate instances, mirror the way the content displays for a staggered effect
+  &.odd-index {
+    .progress-path-child-content {
+      align-self: flex-end;
+    }
+    .path-segment {
+      // Flip horizontally
+      transform: scaleX(-1);
+      margin-left: 0px;
+      margin-right: $path-segment-spacing;
+    }
+  }
+
+  &:last-child {
+    .path-segment {
+      display: none;
+    }
+  }
+}
