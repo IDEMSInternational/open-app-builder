@@ -1,7 +1,12 @@
 import { DefaultParser } from "./default.parser";
 import { FlowTypes } from "data-models";
-import { getTestFlowParserProcessor } from "../flowParser.spec";
 
+/**
+ * yarn workspace scripts test -t default.parser.spec.ts
+ *
+ * TODO - add tests for rest of functionality, e.g. `@default` syntax, translated fields,
+ * nested group extract, special field types, `@row` self-reference, metadata fields etc.
+ */
 describe("Default Parser", () => {
   const parser = new DefaultParser({ processedFlowHashmap: {} } as any);
   it("Cleans field values - handles strings consisting only of whitespace", () => {
