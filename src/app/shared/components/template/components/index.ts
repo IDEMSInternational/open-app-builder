@@ -44,6 +44,7 @@ import { TmplOdkFormComponent } from "./odk-form/odk-form.component";
 import { TmplParentPointBoxComponent } from "./points-item/points-item.component";
 import { TmplParentPointCounterComponent } from "./parent-point-counter/parent-point-counter.component";
 import { TmplPdfComponent } from "./pdf/pdf.component";
+import { TmplProgressPathComponent } from "./progress-path/progress-path.component";
 import { TmplQRCodeComponent } from "./qr-code/qr-code.component";
 import { TmplRadioButtonGridComponent } from "./radio-button-grid/radio-button-grid.component";
 import { TmplRadioGroupComponent } from "./radio-group/radio-group.component";
@@ -62,6 +63,7 @@ import { TmplToggleBarComponent } from "./toggle-bar/toggle-bar";
 import { TmplVideoComponent } from "./video";
 
 import { WorkshopsComponent } from "./layout/workshops_accordion";
+import { TmplTextBubbleComponent } from "./text-bubble/text-bubble.component";
 
 /** All components should be exported as a single array for easy module import */
 export const TEMPLATE_COMPONENTS = [
@@ -103,6 +105,7 @@ export const TEMPLATE_COMPONENTS = [
   TmplParentPointBoxComponent,
   TmplParentPointCounterComponent,
   TmplPdfComponent,
+  TmplProgressPathComponent,
   TmplQRCodeComponent,
   TmplRadioButtonGridComponent,
   TmplRadioGroupComponent,
@@ -113,6 +116,7 @@ export const TEMPLATE_COMPONENTS = [
   TmplTaskProgressBarComponent,
   TmplTextAreaComponent,
   TmplTextBoxComponent,
+  TmplTextBubbleComponent,
   TmplTextComponent,
   TmplTileComponent,
   TmplTimerComponent,
@@ -164,6 +168,7 @@ export const TEMPLATE_COMPONENT_MAPPING: Record<
   parent_point_box: TmplParentPointBoxComponent,
   parent_point_counter: TmplParentPointCounterComponent,
   pdf: TmplPdfComponent,
+  progress_path: TmplProgressPathComponent,
   qr_code: TmplQRCodeComponent,
   radio_button_grid: TmplRadioButtonGridComponent,
   radio_group: TmplRadioGroupComponent,
@@ -183,6 +188,7 @@ export const TEMPLATE_COMPONENT_MAPPING: Record<
   text: TmplTextComponent,
   text_area: TmplTextAreaComponent,
   text_box: TmplTextBoxComponent,
+  text_bubble: TmplTextBubbleComponent,
   tile_component: TmplTileComponent,
   timer: TmplTimerComponent,
   title: TmplTitleComponent,
