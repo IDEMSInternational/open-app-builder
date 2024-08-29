@@ -44,6 +44,11 @@
     align-items: center;
     padding: var(--small-padding);
     min-height: 56px;
+
+    plh-task-progress-bar {
+      display: none;
+    }
+
     .content-wrapper {
       height: 100%;
       flex-direction: row-reverse;
@@ -193,7 +198,7 @@
 
     plh-task-progress-bar {
       position: absolute;
-      visibility: none;
+      display: none;
     }
   }
   .title-wrapper {
