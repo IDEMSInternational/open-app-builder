@@ -118,8 +118,8 @@ export class DynamicDataService extends AsyncServiceBase {
   }
 
   /** Take a snapshot of the current state of a table */
-  public async snapshot(flow_type: FlowTypes.FlowType, flow_name: string) {
-    const obs = await this.query$(flow_type, flow_name);
+  public async snapshot<T extends IDocWithMeta>(flow_type: FlowTypes.FlowType, flow_name: string) {
+    const obs = await this.query$<T>(flow_type, flow_name);
     return firstValueFrom(obs);
   }
 
