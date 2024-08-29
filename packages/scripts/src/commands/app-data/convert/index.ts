@@ -69,7 +69,10 @@ export class AppDataConverter {
 
   cache: JsonFileCache;
 
-  constructor(private options: IConverterOptions, testOverrides: Partial<AppDataConverter> = {}) {
+  constructor(
+    private options: IConverterOptions,
+    testOverrides: Partial<AppDataConverter> = {}
+  ) {
     console.log(chalk.yellow("App Data Convert"));
     // optional overrides, used for tests
     if (testOverrides.version) this.version = testOverrides.version;
