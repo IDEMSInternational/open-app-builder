@@ -1,19 +1,7 @@
-import path from "path";
 import { FlowTypes } from "data-models";
-import { SCRIPTS_WORKSPACE_PATH } from "../../../../../paths";
 import { clearLogs, getLogs } from "../../utils";
 import { FlowParserProcessor } from "./flowParser";
-
-const testDataDir = path.resolve(SCRIPTS_WORKSPACE_PATH, "test", "data");
-const paths = {
-  SHEETS_CACHE_FOLDER: path.resolve(testDataDir, "cache"),
-  SHEETS_INPUT_FOLDER: path.resolve(testDataDir, "input"),
-  SHEETS_OUTPUT_FOLDER: path.resolve(testDataDir, "output"),
-};
-// Export method to allow use in parser-specific tests (to test on multiple instances of a flow type)
-export function getTestFlowParserProcessor() {
-  return new FlowParserProcessor(paths);
-}
+import { TEST_DATA_PATHS } from "../../../../../../test/helpers/utils";
 
 // NOTE - inputs are just to test general structure and not run actual parser code
 const testInputs: FlowTypes.FlowTypeWithData[] = [
@@ -48,7 +36,7 @@ const testInputs: FlowTypes.FlowTypeWithData[] = [
 let processor: FlowParserProcessor;
 describe("FlowParser Processor", () => {
   beforeAll(() => {
-    processor = getTestFlowParserProcessor();
+    processor = new FlowParserProcessor(TEST_DATA_PATHS);
     processor.cache.clear();
   });
   beforeEach(() => {
@@ -77,7 +65,7 @@ describe("FlowParser Processor", () => {
       rows: null,
     };
     await processor.process([brokenFlow]);
-    const errorLogs = getLogs("error", "Template parse error");
+    const errorLogs = getLogs("error").filter(({ message }) => message === "Template parse error");
     expect(errorLogs).toEqual([
       {
         source: "flowParser",
@@ -113,7 +101,7 @@ describe("FlowParser Processor", () => {
 /** Additional tests for data pipe integration */
 describe("FlowParser Processor - Data Pipes", () => {
   beforeAll(() => {
-    processor = getTestFlowParserProcessor();
+    processor = new FlowParserProcessor(TEST_DATA_PATHS);
     processor.cache.clear();
   });
   beforeEach(() => {
