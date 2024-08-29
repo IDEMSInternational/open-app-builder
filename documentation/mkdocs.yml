@@ -18,6 +18,7 @@ nav:
       - Advanced:
           - authors/advanced/looping-data.md
           - authors/advanced/overrides.md
+          - authors/advanced/tasks.md
       - authors/local-sheets.md
   - Contributors:
       - contributors/documentation/running-server.md
