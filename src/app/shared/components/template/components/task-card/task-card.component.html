@@ -77,7 +77,7 @@
     </div>
   </div>
 } @else {
-  <div class="circle-card-wrapper">
+  <div class="circle-card-wrapper" (click)="triggerActions('click')">
     <div class="image-and-badge-wrapper">
       <div *ngIf="taskGroupId && !taskId">
         <plh-task-progress-bar
