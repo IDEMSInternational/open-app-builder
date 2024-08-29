@@ -29,6 +29,10 @@ $path-stroke-width: 28px;
       stroke: $path-background;
       stroke-width: $path-stroke-width;
     }
+    // For right-to-left languages, flip the path to match the content position
+    &[data-language-direction~="rtl"] {
+      transform: scaleX(-1);
+    }
   }
 
   .progress-path-child-content-wrapper {
@@ -53,6 +57,10 @@ $path-stroke-width: 28px;
       transform: scaleX(-1);
       margin-left: 0px;
       margin-right: $path-segment-spacing;
+      // For right-to-left languages, flip the path to match the content position
+      &[data-language-direction~="rtl"] {
+        transform: none;
+      }
     }
   }
 

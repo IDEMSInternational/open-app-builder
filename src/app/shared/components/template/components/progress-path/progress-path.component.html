@@ -17,7 +17,10 @@
           </plh-template-component>
         </div>
       </div>
-      <div class="path-segment">
+      <div
+        class="path-segment"
+        [attr.data-language-direction]="templateTranslateService.languageDirection()"
+      >
         <svg [attr.viewBox]="svgViewBox" stroke="currentColor">
           <path fill="none" [attr.d]="svgPath" />
         </svg>
