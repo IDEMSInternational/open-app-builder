@@ -1,14 +1,7 @@
-import path from "path";
 import BaseProcessor from "./base";
 
-import { SCRIPTS_WORKSPACE_PATH } from "../../../../paths";
 import { clearLogs, getLogs } from "../utils";
-const testDataDir = path.resolve(SCRIPTS_WORKSPACE_PATH, "test", "data");
-const paths = {
-  SHEETS_CACHE_FOLDER: path.resolve(testDataDir, "cache"),
-  SHEETS_INPUT_FOLDER: path.resolve(testDataDir, "input"),
-  SHEETS_OUTPUT_FOLDER: path.resolve(testDataDir, "output"),
-};
+import { TEST_DATA_PATHS } from "../../../../../test/helpers/utils";
 
 const testData = [
   {
@@ -23,9 +16,15 @@ class TestProcessor extends BaseProcessor<string, any> {
   }
 }
 let processor: TestProcessor;
+
+/** yarn workspace scripts test -t base.spec.ts */
 describe("Base Processor", () => {
   beforeAll(() => {
-    processor = new TestProcessor({ namespace: "BaseProcessor", paths });
+    processor = new TestProcessor({
+      namespace: "BaseProcessor",
+      paths: TEST_DATA_PATHS,
+      cacheVersion: new Date().getTime(),
+    });
     processor.cache.clear();
   });
   afterAll(() => {
@@ -58,7 +57,11 @@ describe("Deferred Processor", () => {
   }
   let deferredProcessor: DeferredProcessor;
   beforeEach(() => {
-    deferredProcessor = new DeferredProcessor({ namespace: "BaseProcessor", paths });
+    deferredProcessor = new DeferredProcessor({
+      namespace: "BaseProcessor",
+      paths: TEST_DATA_PATHS,
+      cacheVersion: new Date().getTime(),
+    });
     deferredProcessor.cache.clear();
   });
   afterAll(() => {
