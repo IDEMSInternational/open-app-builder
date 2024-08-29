@@ -1,35 +1,20 @@
 import winston from "winston";
 import path from "path";
-import { emptyDirSync, ensureDirSync, truncateSync } from "fs-extra";
+import { truncateSync } from "fs-extra";
 import { _wait } from "../async-utils";
-import { Writable } from "stream";
 import { existsSync } from "fs";
 import { SCRIPTS_LOGS_DIR } from "../../paths";
+import { getGlobalMemoryLoggerTransport } from "./memory-logger";
 
 const logLevels = ["debug", "info", "warning", "error"] as const;
 type ILogLevel = (typeof logLevels)[number];
-interface ILogEntry {
-  level: ILogLevel;
-  message?: string;
-  details?: any;
-  source?: string;
-}
-
-// Declare a history variable that can be written to via a stream
-let logHistory = "";
 
 /** Retrieve all logs from current session for a given variable */
-export function getLogs(level: ILogLevel, message?: string) {
-  const logEntries: ILogEntry[] = logHistory
-    .split("\n")
-    .filter((v) => v)
-    .map((v) => JSON.parse(v));
-  const logLevelEntries = logEntries.filter((entry) => entry.level === level);
-  if (message) {
-    return logLevelEntries.filter((entry) => entry.message === message);
-  }
-  return logLevelEntries;
+export function getLogs(level: ILogLevel) {
+  const logger = getGlobalMemoryLoggerTransport();
+  return logger.get(level);
 }
+
 export function getLogFiles() {
   const logFiles: { [level in ILogLevel]: string } = {} as any;
   for (const level of logLevels) {
@@ -38,40 +23,52 @@ export function getLogFiles() {
   return logFiles;
 }
 
-export function clearLogs(attempt = 0) {
-  logHistory = "";
-  try {
-    const logFiles = getLogFiles();
-    for (const logFile of Object.values(logFiles)) {
-      if (existsSync(logFile)) {
-        truncateSync(logFile);
+/**
+ * Clear existing log data. Clears all in-memory logs and optional persisted file
+ * @param includeFiles - clear log files written to disk.
+ * Operation will fail if open during parallel operations
+ */
+export function clearLogs(includeFiles = false, attempt = 0) {
+  // Clear in-memory logs
+  const memoryLogger = getGlobalMemoryLoggerTransport();
+  memoryLogger.clear();
+  // Clear file-based logs
+  if (includeFiles) {
+    try {
+      const logFiles = getLogFiles();
+      for (const logFile of Object.values(logFiles)) {
+        if (existsSync(logFile)) {
+          truncateSync(logFile);
+        }
       }
+    } catch (error) {
+      attempt++;
+      if (attempt > 5) {
+        throw error;
+      }
+      console.log("could not clear logs, retrying...", attempt);
+      return clearLogs(includeFiles, attempt);
     }
-  } catch (error) {
-    attempt++;
-    if (attempt > 5) {
-      throw error;
-    }
-    console.log("could not clear logs, retrying...", attempt);
-    return clearLogs(attempt);
   }
 }
 
 /**
- * Create loggers that write to file based on level and also save all logs to a single string
+ * Create loggers that write to file based on level and also save to memory
  * for easy querying
  */
-function getGlobalFileLogger() {
+export function getGlobalFileLogger() {
   const g = global as any;
   if (g.logger) {
     return g.logger as winston.Logger;
   }
-  // setup files
-  logHistory = "";
-  ensureDirSync(SCRIPTS_LOGS_DIR);
-  emptyDirSync(SCRIPTS_LOGS_DIR);
+  // remove any previous log files
+  clearLogs(true);
+
+  // create in-memory logger transport
+  const memoryLogger = getGlobalMemoryLoggerTransport();
+
+  // create file-write logger transports
   const logFiles = getLogFiles();
-  // file transports
   const fileTransports = logLevels.map(
     (level) =>
       new winston.transports.File({
@@ -80,25 +77,18 @@ function getGlobalFileLogger() {
         format: winston.format.prettyPrint(),
       })
   );
+
+  // create unified logger
   const logger = winston.createLogger({
     level: "info",
-    transports: fileTransports,
+    transports: [memoryLogger, ...fileTransports],
   });
-  // stream (memory) transport
-  const logStream = new Writable();
-  logStream._write = (chunk, encoding, next) => {
-    logHistory = logHistory += chunk.toString();
-    next();
-  };
-  const streamTransport = new winston.transports.Stream({
-    stream: logStream,
-    format: winston.format.json(),
-  });
-  logger.add(streamTransport);
+
   g.logger = logger;
   return logger;
 }
 
+/** Create a child instance of the file logger with additional context meta */
 export function createChildFileLogger(meta = {}) {
   const logger = getGlobalFileLogger();
   return logger.child(meta);
