@@ -74,7 +74,7 @@ See the full list of components available for use with tasks below
 ## Actions
 
 **Re-evaluate list**   
-When tasks are marked as complete the full list is not automatically re-evalauted.
+When tasks are marked as complete the full list is not automatically re-evaluated.
 Instead a manual `task: evaluate` must be triggered to update relevant fields
 
 *Example*
