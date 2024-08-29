@@ -15,7 +15,6 @@ import { DBSyncService } from "src/app/shared/services/db/db-sync.service";
 import { AuthService } from "src/app/shared/services/auth/auth.service";
 import { SkinService } from "src/app/shared/services/skin/skin.service";
 import { ThemeService } from "src/app/feature/theme/services/theme.service";
-import { TaskService } from "src/app/shared/services/task/task.service";
 import { getGlobalService } from "src/app/shared/services/global.service";
 import { SyncServiceBase } from "src/app/shared/services/syncService.base";
 import { TemplateActionRegistry } from "./template-action.registry";
@@ -35,7 +34,10 @@ export class TemplateActionService extends SyncServiceBase {
   private actionsQueue: FlowTypes.TemplateRowAction[] = [];
   private actionsQueueProcessing$ = new BehaviorSubject<boolean>(false);
 
-  constructor(private injector: Injector, public container?: TemplateContainerComponent) {
+  constructor(
+    private injector: Injector,
+    public container?: TemplateContainerComponent
+  ) {
     super("TemplateAction");
   }
   // Retrive all services on demand from global injector
@@ -72,9 +74,7 @@ export class TemplateActionService extends SyncServiceBase {
   private get themeService() {
     return getGlobalService(this.injector, ThemeService);
   }
-  private get taskService() {
-    return getGlobalService(this.injector, TaskService);
-  }
+
   private get campaignService() {
     return getGlobalService(this.injector, CampaignService);
   }
@@ -84,11 +84,7 @@ export class TemplateActionService extends SyncServiceBase {
   }
 
   private async ensurePublicServicesReady() {
-    await this.ensureAsyncServicesReady([
-      this.templateTranslateService,
-      this.dbSyncService,
-      this.taskService,
-    ]);
+    await this.ensureAsyncServicesReady([this.templateTranslateService, this.dbSyncService]);
     this.ensureSyncServicesReady([
       this.serverService,
       this.templateNavService,
