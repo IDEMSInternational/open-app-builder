@@ -3,10 +3,8 @@ import clone from "clone";
 import { FlowTypes } from "data-models";
 
 export type IActionId = FlowTypes.TemplateRowAction["action_id"];
-export type IActionHandlers = Record<
-  IActionId,
-  (action: FlowTypes.TemplateRowAction) => Promise<any>
->;
+export type IActionHandler = (action: FlowTypes.TemplateRowAction) => Promise<any>;
+export type IActionHandlers = Record<IActionId, IActionHandler>;
 
 @Injectable({ providedIn: "root" })
 /**

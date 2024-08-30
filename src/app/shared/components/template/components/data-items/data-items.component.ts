@@ -7,15 +7,18 @@ import {
   OnDestroy,
 } from "@angular/core";
 import { debounceTime, Subscription } from "rxjs";
-import {
-  DynamicDataService,
-  ISetItemContext,
-} from "src/app/shared/services/dynamic-data/dynamic-data.service";
+import { DynamicDataService } from "src/app/shared/services/dynamic-data/dynamic-data.service";
 import { FlowTypes } from "../../models";
 import { ItemProcessor } from "../../processors/item";
 import { TemplateRowService } from "../../services/instance/template-row.service";
 import { TemplateVariablesService } from "../../services/template-variables.service";
 import { TemplateBaseComponent } from "../base";
+import {
+  IActionSetItemArgs,
+  IActionSetItemParams,
+  IActionSetItemsArgs,
+  IActionSetItemsParams,
+} from "src/app/shared/services/dynamic-data/dynamic-data.actions";
 
 @Component({
   selector: "plh-data-items",
@@ -116,19 +119,34 @@ export class TmplDataItemsComponent extends TemplateBaseComponent implements OnD
       // Update any action list set_item args to contain name of current data list and item id
       // and set_items action to include all currently displayed rows
       if (r.action_list) {
-        const setItemContext: ISetItemContext = {
-          flow_name: this.dataListName,
-          itemDataIDs,
-          currentItemId: itemId,
-        };
         r.action_list = r.action_list.map((a) => {
           if (a.action_id === "set_item") {
-            a.args = [setItemContext];
+            // set default list and id args (unless overridden within item action)
+            const params: IActionSetItemParams = {
+              _list: this.dataListName,
+              _id: itemId,
+              ...a.args[0],
+            };
+            // support passing _index and use to lookup and populate _id+
+            if (params._index) {
+              params._id = itemDataIDs[params._index];
+              delete params._index;
+            }
+            const args: IActionSetItemArgs = [
+              { _list: this.dataListName, _id: itemId, ...a.args[0] },
+            ];
+            a.args = args;
           }
           if (a.action_id === "set_items") {
+            const params: IActionSetItemsParams = {
+              _list: this.dataListName,
+              _ids: [itemDataIDs],
+              ...a.args[0],
+            };
             // TODO - add a check for @item refs and replace parameter list with correct values
             // for each individual item (default will be just to pick the first)
-            a.args = [setItemContext];
+            const args: IActionSetItemsArgs = [params];
+            a.args = args;
           }
           return a;
         });

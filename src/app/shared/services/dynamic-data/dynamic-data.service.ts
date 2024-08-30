@@ -11,6 +11,7 @@ import { PersistedMemoryAdapter } from "./adapters/persistedMemory";
 import { ReactiveMemoryAdapater, REACTIVE_SCHEMA_BASE } from "./adapters/reactiveMemory";
 import { TemplateActionRegistry } from "../../components/template/services/instance/template-action.registry";
 import { TopLevelProperty } from "rxdb/dist/types/types";
+import actionsFactory from "./dynamic-data.actions";
 
 type IDocWithMeta = { id: string; APP_META?: Record<string, any> };
 
@@ -50,7 +51,9 @@ export class DynamicDataService extends AsyncServiceBase {
   ) {
     super("Dynamic Data");
     this.registerInitFunction(this.initialise);
-    this.registerTemplateActionHandlers();
+    // register action handlers
+    const { set_item, set_items } = actionsFactory(this);
+    this.templateActionRegistry.register({ set_item, set_items });
   }
 
   private async initialise() {
@@ -63,31 +66,6 @@ export class DynamicDataService extends AsyncServiceBase {
     }
     this.writeCache = await new PersistedMemoryAdapter().create();
     this.db = await new ReactiveMemoryAdapater().createDB();
-  }
-  private registerTemplateActionHandlers() {
-    this.templateActionRegistry.register({
-      /**
-       * Write properties on the current item (default), or on an explicitly targeted item,
-       * e.g.
-       * click | set_item | completed:true;
-       * click | set_item | _id: @item.id, completed:true;
-       * click | set_item | _index: @item._index + 1, completed:true;
-       */
-      set_item: async ({ args, params }) => {
-        // The data-items component populates the context for evaluating the target item to be updated
-        const context = args[0] as ISetItemContext;
-        // The params come directly from the authored action
-        const { _index, _id, ...writeableProps } = params;
-        await this.setItem({ context, _index, _id, writeableProps });
-      },
-      set_items: async ({ args, params }) => {
-        const { flow_name, itemDataIDs } = args[0] as ISetItemContext;
-        // Hack, no current method for bulk update so make successive (changes debounced in component)
-        for (const row_id of itemDataIDs) {
-          await this.update("data_list", flow_name, row_id, params);
-        }
-      },
-    });
   }
 
   /** Watch for changes to a specific flow */
@@ -123,6 +101,7 @@ export class DynamicDataService extends AsyncServiceBase {
     return firstValueFrom(obs);
   }
 
+  /** */
   public async update<T>(
     flow_type: FlowTypes.FlowType,
     flow_name: string,
@@ -135,11 +114,15 @@ export class DynamicDataService extends AsyncServiceBase {
       if (existingDoc) {
         const data = existingDoc.toMutableJSON();
         update = deepMergeObjects(data, update);
+        // update memory db
+        await this.db.updateDoc({ collectionName, id: row_id, data: update });
+        // update persisted db
+        this.writeCache.update({ flow_name, flow_type, id: row_id, data: update });
+      } else {
+        throw new Error(
+          `[Update Fail] no doc exists for ${flow_type}:${flow_name} with row_id: ${row_id}`
+        );
       }
-      // update memory db
-      await this.db.updateDoc({ collectionName, id: row_id, data: update });
-      // update persisted db
-      this.writeCache.update({ flow_name, flow_type, id: row_id, data: update });
     }
   }
 
@@ -260,39 +243,6 @@ export class DynamicDataService extends AsyncServiceBase {
   }
 
   /**
-   * Update an "item", a row within a data-items loop, e.g. as triggered by the set_item action.
-   * If an _id is specified, the row with that ID is updated,
-   * else if an _index is specified, the row with corresponding to the item at that index is updated,
-   * if neither is specified, then the current item (as defined in context) is updated
-   */
-  public async setItem(params: {
-    context: ISetItemContext;
-    /** the index of a specific item to update */
-    _index?: number;
-    /** the id of a specific item to update */
-    _id?: string;
-    /** the property key/values to update on the targeted item */
-    writeableProps: any;
-  }) {
-    const { flow_name, itemDataIDs, currentItemId } = params.context;
-    const { _index, _id, writeableProps } = params;
-
-    let targetRowId = currentItemId;
-    if (_id) {
-      targetRowId = _id;
-    }
-    if (_index !== undefined) {
-      targetRowId = itemDataIDs[_index];
-    }
-
-    if (itemDataIDs.includes(targetRowId)) {
-      await this.update("data_list", flow_name, targetRowId, writeableProps);
-    } else {
-      console.warn(`[SET ITEM] - No item ${_id ? "with ID " + _id : "at index " + _index}`);
-    }
-  }
-
-  /**
    * Iterate over a document's key-value pairs and populate any properties starting with
    * an underscore to a single top-level APP_META property
    */
@@ -314,14 +264,4 @@ export class DynamicDataService extends AsyncServiceBase {
     const { APP_META, ...data } = doc;
     return { ...data, ...APP_META };
   }
-}
-
-/** the context for evaluating the target item to be updated, provided by the data-items component */
-export interface ISetItemContext {
-  /** the name of the data_list containing the item to update */
-  flow_name: string;
-  /** an array of the IDs of all the item rows in the loop */
-  itemDataIDs: string[];
-  /** the ID of the current item */
-  currentItemId: string;
 }
