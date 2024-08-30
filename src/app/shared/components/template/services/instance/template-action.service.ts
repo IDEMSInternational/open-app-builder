@@ -199,11 +199,9 @@ export class TemplateActionService extends SyncServiceBase {
         // because a normal url starts with https://, the ':' separates it into a key and a value and the value
         // is sufficient for the url to launch.
         console.log("[GO TO URL]", { key, value });
-        // form the url to generate the url from the key and value
-        // it does so by using a ternary operator to check if the key and value are present
-        // if so. it concatenates the key and value with a colon in between
-        // otherwise, it uses the key or value as the url (whichever is present will used, if both, then the key is taken)
-        // because sometimes when generating {key, value}, they may assign the url in just the key or value
+        // HACK: URL strings that include the ":" character (as in `https://`) are split on that character into a key-value pair
+        // If both the key and value are present, they are concatenated with a colon to form the URL
+        // Otherwise, whichever of the key or value is present is used as the URL
         const url = key && value ? key + ":" + value : key || value;
         return this.templateNavService.handleNavActionExternal(
           normalizeUrl(url, { forceHttps: true })
