@@ -1,3 +1,4 @@
+import { FlowTypes } from "packages/data-models";
 import { IActionHandler } from "../../components/template/services/instance/template-action.registry";
 import type { DynamicDataService } from "./dynamic-data.service";
 
@@ -11,7 +12,7 @@ export type IActionSetItemsArgs = [IActionSetItemsParams];
  **/
 export interface IActionSetItemParams {
   /** ID of data_list for items */
-  _list: string;
+  _list_id: string;
   /** ID of item to update */
   _id: string;
   /**
@@ -21,13 +22,13 @@ export interface IActionSetItemParams {
   _index?: number;
 }
 
-/**
- * Metadata passed to set_items action used to lookup correct DB row
- * Full payload can also include arbitrary key-value pairs (omitted for type-checking)
- **/
+/** Metadata passed to set_items action **/
 export interface IActionSetItemsParams {
-  _list: string;
-  _ids: string[];
+  /**
+   * Reference to source data_list to update
+   * All rows in list will be updated (should be filtered in advance for partial)
+   */
+  _items: FlowTypes.Data_list;
 }
 
 const actions = (service: DynamicDataService) => {
@@ -48,8 +49,8 @@ const actions = (service: DynamicDataService) => {
    */
   const set_item: IActionHandler = async ({ args }) => {
     // parse args and separate data lookup metadata from writeable update data
-    const { _list, _id, _index, ...writeableProps } = parseSetItemArgs(args);
-    await service.update("data_list", _list, _id, writeableProps);
+    const { _list_id, _id, writeableProps } = parseSetItemArgs(args);
+    await service.update("data_list", _list_id, _id, writeableProps);
   };
 
   /**
@@ -59,25 +60,27 @@ const actions = (service: DynamicDataService) => {
    * click | set_items | completed:true;
    *
    * or from outside a loop can specify
-   * click | set_items | _list: "example_list", _ids: "example_id_1; example_id_2", completed:true;
+   * click | set_items | _list: @data.example_list, completed:true;
    */
   const set_items: IActionHandler = async ({ args }) => {
-    const { _list, _ids, ...writeableProps } = parseSetItemsArgs(args);
+    const { _list_id, _ids, writeableProps } = parseSetItemsArgs(args);
     // Hack, no current method for bulk update so make successive (changes debounced in component)
     for (const _id of _ids) {
-      await service.update("data_list", _list, _id, writeableProps);
+      await service.update("data_list", _list_id, _id, writeableProps);
     }
   };
-
   return { set_item, set_items };
 };
 
 function parseSetItemArgs(args: any[] = []) {
   if (Array.isArray(args)) {
     const [params] = args as IActionSetItemArgs;
-    // ensure a list name row id included (index should have been already converted to id)
-    if (params._list && params._id) {
-      return params;
+    if (params && params.constructor === {}.constructor) {
+      const { _id, _list_id, _index, ...writeableProps } = params;
+      // ensure a list name row id included (index should have been already converted to id)
+      if (_list_id && _id) {
+        return { _id, _list_id, writeableProps };
+      }
     }
   }
   // throw error if args not parsed correctly
@@ -88,11 +91,14 @@ function parseSetItemArgs(args: any[] = []) {
 function parseSetItemsArgs(args: any[] = []) {
   if (Array.isArray(args)) {
     const [params] = args as IActionSetItemsArgs;
-    // ensure a list name provided and either _ids or _indexes included
-    if (params._list && Array.isArray(params._ids) && params._ids.length > 0) {
-      // TODO - check from frontend if params need conversion
-      // TODO - maybe better to use _id_list property?
-      return params;
+    if (params && params.constructor === {}.constructor) {
+      const { _items, ...writeableProps } = params;
+      // ensure a list name provided and either _ids or _indexes included
+      if (_items && _items.constructor === {}.constructor) {
+        const { flow_name, rows } = _items;
+        const _ids = rows.filter((r) => r.id).map((r) => r.id);
+        return { _list_id: flow_name, _ids, writeableProps };
+      }
     }
   }
   // throw error if args not parsed correctly
