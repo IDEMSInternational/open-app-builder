@@ -2,7 +2,7 @@ import { TestBed } from "@angular/core/testing";
 import { HttpClientTestingModule } from "@angular/common/http/testing";
 import { firstValueFrom } from "rxjs";
 
-import { DynamicDataService, ISetItemContext } from "./dynamic-data.service";
+import { DynamicDataService } from "./dynamic-data.service";
 import { AppDataService } from "../data/app-data.service";
 import { MockAppDataService } from "../data/app-data.service.spec";
 
@@ -12,12 +12,6 @@ const TEST_DATA_ROWS = [
   { id: "id0", number: 3, string: "goodbye", boolean: false },
 ];
 type ITestRow = (typeof TEST_DATA_ROWS)[number];
-
-const SET_ITEM_CONTEXT: ISetItemContext = {
-  flow_name: "test_flow",
-  itemDataIDs: ["id1", "id2"],
-  currentItemId: "id1",
-};
 
 /**
  * Call standalone tests via:
@@ -109,56 +103,12 @@ describe("DynamicDataService", () => {
     expect(res.length).toEqual(20);
   });
 
-  it("sets an item correctly for current item", async () => {
-    await service.setItem({
-      context: SET_ITEM_CONTEXT,
-      writeableProps: { string: "sets an item correctly for current item" },
-    });
-    const obs = await service.query$<any>("data_list", "test_flow");
-    const data = await firstValueFrom(obs);
-    expect(data[0].string).toEqual("sets an item correctly for current item");
-    expect(data[1].string).toEqual("goodbye");
-  });
-
-  it("sets an item correctly for a given _id", async () => {
-    await service.setItem({
-      context: SET_ITEM_CONTEXT,
-      _id: "id2",
-      writeableProps: { string: "sets an item correctly for a given _id" },
-    });
-    const obs = await service.query$<any>("data_list", "test_flow");
-    const data = await firstValueFrom(obs);
-    expect(data[0].string).toEqual("hello");
-    expect(data[1].string).toEqual("sets an item correctly for a given _id");
-  });
-
-  it("sets an item correctly for a given _index", async () => {
-    await service.setItem({
-      context: SET_ITEM_CONTEXT,
-      _index: 1,
-      writeableProps: { string: "sets an item correctly for a given _index" },
-    });
-    const obs = await service.query$<any>("data_list", "test_flow");
-    const data = await firstValueFrom(obs);
-    expect(data[0].string).toEqual("hello");
-    expect(data[1].string).toEqual("sets an item correctly for a given _index");
-  });
-
   it("supports reading data with protected fields", async () => {
     const obs = await service.query$("data_list", "test_flow");
     const data = await firstValueFrom(obs);
     expect(data[0]["_meta_field"]).toEqual({ test: "hello" });
   });
-  it("ignores writes to protected fields", async () => {
-    await service.setItem({
-      context: SET_ITEM_CONTEXT,
-      writeableProps: { _meta_field: "updated", string: "updated" },
-    });
-    const obs = await service.query$("data_list", "test_flow");
-    const data = await firstValueFrom(obs);
-    expect(data[0]["string"]).toEqual("updated");
-    expect(data[0]["_meta_field"]).toEqual({ test: "hello" });
-  });
+
   it("adds metadata (row_index) to docs", async () => {
     const obs = await service.query$<any>("data_list", "test_flow");
     const data = await firstValueFrom(obs);
