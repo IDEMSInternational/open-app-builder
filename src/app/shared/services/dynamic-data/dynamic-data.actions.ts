@@ -47,8 +47,8 @@ const actions = (service: DynamicDataService) => {
    *
    */
   const set_item: IActionHandler = async ({ args }) => {
-    // validate args and separate data lookup metadata from writeable update data
-    const { _list, _id, _index, ...writeableProps } = await validateSetItemArgs(args);
+    // parse args and separate data lookup metadata from writeable update data
+    const { _list, _id, _index, ...writeableProps } = parseSetItemArgs(args);
     await service.update("data_list", _list, _id, writeableProps);
   };
 
@@ -62,7 +62,7 @@ const actions = (service: DynamicDataService) => {
    * click | set_items | _list: "example_list", _ids: "example_id_1; example_id_2", completed:true;
    */
   const set_items: IActionHandler = async ({ args }) => {
-    const { _list, _ids, ...writeableProps } = await validateSetItemsArgs(args);
+    const { _list, _ids, ...writeableProps } = parseSetItemsArgs(args);
     // Hack, no current method for bulk update so make successive (changes debounced in component)
     for (const _id of _ids) {
       await service.update("data_list", _list, _id, writeableProps);
@@ -72,34 +72,32 @@ const actions = (service: DynamicDataService) => {
   return { set_item, set_items };
 };
 
-async function validateSetItemArgs(args: any[] = []) {
+function parseSetItemArgs(args: any[] = []) {
   if (Array.isArray(args)) {
     const [params] = args as IActionSetItemArgs;
-    // ensure a list name provided and either _id or _index included
-    if (params._list) {
-      if (typeof params._id === "string" || typeof params._index === "number") {
-        return params;
-      }
+    // ensure a list name row id included (index should have been already converted to id)
+    if (params._list && params._id) {
+      return params;
     }
   }
-  console.error(args);
+  // throw error if args not parsed correctly
+  console.error({ args });
   throw new Error("[set_item] invalid args");
 }
 
-async function validateSetItemsArgs(args: any[] = []) {
+function parseSetItemsArgs(args: any[] = []) {
   if (Array.isArray(args)) {
     const [params] = args as IActionSetItemsArgs;
     // ensure a list name provided and either _ids or _indexes included
-    if (params._list) {
-      if (Array.isArray(params._ids) || Array.isArray(params._ids)) {
-        return params;
-      }
+    if (params._list && Array.isArray(params._ids) && params._ids.length > 0) {
+      // TODO - check from frontend if params need conversion
+      // TODO - maybe better to use _id_list property?
+      return params;
     }
-
-    return params;
   }
-  console.error(args);
-  throw new Error("[set_item] invalid args");
+  // throw error if args not parsed correctly
+  console.error({ args });
+  throw new Error("[set_items] invalid args");
 }
 
 export default actions;

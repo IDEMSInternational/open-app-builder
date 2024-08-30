@@ -8,6 +8,7 @@ import { IActionSetItemParams, IActionSetItemsParams } from "./dynamic-data.acti
 import { DynamicDataService } from "./dynamic-data.service";
 import ActionFactory from "./dynamic-data.actions";
 import { firstValueFrom } from "rxjs";
+import { FlowTypes } from "packages/data-models";
 
 const TEST_DATA_ROWS = [
   { id: "id1", number: 1, string: "hello", boolean: true, _meta_field: { test: "hello" } },
@@ -16,16 +17,30 @@ const TEST_DATA_ROWS = [
 ];
 type ITestRow = (typeof TEST_DATA_ROWS)[number];
 
-const SET_ITEM_PARAMS: IActionSetItemParams = {
-  _list: "test_flow",
-  _id: "id1",
-};
+function getSetItemArgs(params: Partial<IActionSetItemParams & Record<string, any>>) {
+  params._list = "test_flow";
+  const mockAction: FlowTypes.TemplateRowAction = {
+    action_id: "set_item",
+    trigger: "click",
+    args: [params],
+  };
+  return mockAction;
+}
 
-const SET_ITEMS_PARAMS: IActionSetItemsParams = {
-  _list: "test_flow",
-  _ids: ["id1", "id2"],
-};
+function getSetItemsArgs(params: Partial<IActionSetItemsParams & Record<string, any>>) {
+  params._list = "test_flow";
+  const mockAction: FlowTypes.TemplateRowAction = {
+    action_id: "set_item",
+    trigger: "click",
+    args: [params],
+  };
+  return mockAction;
+}
 
+/********************************************************************************
+ * Tests
+ * yarn ng test --include src/app/shared/services/dynamic-data/dynamic-data.actions.spec.ts
+ *******************************************************************************/
 describe("DynamicDataService Actions", () => {
   let service: DynamicDataService;
   let actions: ReturnType<typeof ActionFactory>;
@@ -59,53 +74,84 @@ describe("DynamicDataService Actions", () => {
     await service.ready();
     // Ensure any data previously persisted is cleared
     await service.resetFlow("data_list", "test_flow");
-
-    const actions = ActionFactory(service);
+    actions = ActionFactory(service);
   });
 
-  it("sets an item correctly for current item", async () => {
-    await actions.set_item({
-      context: SET_ITEM_CONTEXT,
-      writeableProps: { string: "sets an item correctly for current item" },
-    });
+  /*************************************************************
+   *  Main Tests
+   ************************************************************/
+  it("set_item action sets by _id", async () => {
+    const args = getSetItemArgs({ _id: "id1", string: "updated string" });
+    await actions.set_item(args);
     const obs = await service.query$<any>("data_list", "test_flow");
     const data = await firstValueFrom(obs);
-    expect(data[0].string).toEqual("sets an item correctly for current item");
+    expect(data[0].string).toEqual("updated string");
     expect(data[1].string).toEqual("goodbye");
   });
 
-  it("sets an item correctly for a given _id", async () => {
-    await actions.set_item({
-      context: SET_ITEM_CONTEXT,
-      _id: "id2",
-      writeableProps: { string: "sets an item correctly for a given _id" },
-    });
+  it("set_items action sets by _ids", async () => {
+    const args = getSetItemsArgs({ _ids: ["id1", "id2"], string: "updated string" });
+    await actions.set_items(args);
     const obs = await service.query$<any>("data_list", "test_flow");
     const data = await firstValueFrom(obs);
-    expect(data[0].string).toEqual("hello");
-    expect(data[1].string).toEqual("sets an item correctly for a given _id");
+    expect(data[0].string).toEqual("updated string");
+    expect(data[1].string).toEqual("updated string");
   });
 
-  it("sets an item correctly for a given _index", async () => {
-    await actions.set_item({
-      context: SET_ITEM_CONTEXT,
-      _index: 1,
-      writeableProps: { string: "sets an item correctly for a given _index" },
+  it("ignores writes to readonly '_' fields", async () => {
+    const args = getSetItemArgs({
+      _id: "id1",
+      _meta_field: "updated string",
+      string: "updated string",
     });
+    await actions.set_item(args);
     const obs = await service.query$<any>("data_list", "test_flow");
     const data = await firstValueFrom(obs);
-    expect(data[0].string).toEqual("hello");
-    expect(data[1].string).toEqual("sets an item correctly for a given _index");
+    expect(data[0].string).toEqual("updated string");
+    expect(data[0]._meta_field).toEqual({ test: "hello" });
+  });
+  // TODO - update data_loops to replace _index with _id and populate _id
+
+  // TODO - check from frontend whether _ids are passed as array
+
+  /*************************************************************
+   *  Quality Control
+   ************************************************************/
+  it("throws error if no _id provided", async () => {
+    const args = getSetItemArgs({ string: "sets an item correctly a given id" });
+    let errMsg: string;
+    await actions.set_item(args).catch((err) => (errMsg = err.message));
+    expect(errMsg).toEqual("[set_item] invalid args");
+  });
+  it("throws error if no _ids provided", async () => {
+    const args = getSetItemsArgs({ string: "sets an item correctly a given id" });
+    let errMsg: string;
+    await actions.set_items(args).catch((err) => (errMsg = err.message));
+    expect(errMsg).toEqual("[set_items] invalid args");
   });
 
-  it("ignores writes to protected fields", async () => {
-    await actions.set_item({
-      context: SET_ITEM_CONTEXT,
-      writeableProps: { _meta_field: "updated", string: "updated" },
-    });
-    const obs = await service.query$("data_list", "test_flow");
+  it("throws error if provided _id does not exist", async () => {
+    const args = getSetItemArgs({ _id: "missing_id", string: "sets an item correctly a given id" });
+    let errMsg: string;
+    await actions.set_item(args).catch((err) => (errMsg = err.message));
+    expect(errMsg).toEqual(
+      "[Update Fail] no doc exists for data_list:test_flow with row_id: missing_id"
+    );
+    // also ensure new item not created
+    const obs = await service.query$<any>("data_list", "test_flow");
     const data = await firstValueFrom(obs);
-    expect(data[0]["string"]).toEqual("updated");
-    expect(data[0]["_meta_field"]).toEqual({ test: "hello" });
+    expect(data.length).toEqual(3);
   });
+
+  // it("sets an item correctly for a given _index", async () => {
+  //   await actions.set_item({
+  //     context: SET_ITEM_CONTEXT,
+  //     _index: 1,
+  //     writeableProps: { string: "sets an item correctly for a given _index" },
+  //   });
+  //   const obs = await service.query$<any>("data_list", "test_flow");
+  //   const data = await firstValueFrom(obs);
+  //   expect(data[0].string).toEqual("hello");
+  //   expect(data[1].string).toEqual("sets an item correctly for a given _index");
+  // });
 });
