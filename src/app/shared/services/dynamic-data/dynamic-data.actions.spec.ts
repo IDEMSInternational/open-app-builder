@@ -15,7 +15,6 @@ const TEST_DATA_ROWS = [
   { id: "id2", number: 2, string: "goodbye", boolean: false },
   { id: "id0", number: 3, string: "goodbye", boolean: false },
 ];
-type ITestRow = (typeof TEST_DATA_ROWS)[number];
 
 function getSetItemArgs(params: Partial<IActionSetItemParams & Record<string, any>>) {
   params._list = "test_flow";
@@ -27,8 +26,15 @@ function getSetItemArgs(params: Partial<IActionSetItemParams & Record<string, an
   return mockAction;
 }
 
-function getSetItemsArgs(params: Partial<IActionSetItemsParams & Record<string, any>>) {
-  params._list = "test_flow";
+function getSetItemsArgs(
+  ids: string[],
+  params: Partial<IActionSetItemsParams & Record<string, any>>
+) {
+  params._items = {
+    flow_name: "test_flow",
+    flow_type: "data_list",
+    rows: ids.map((id) => ({ id })),
+  };
   const mockAction: FlowTypes.TemplateRowAction = {
     action_id: "set_item",
     trigger: "click",
@@ -89,8 +95,8 @@ describe("DynamicDataService Actions", () => {
     expect(data[1].string).toEqual("goodbye");
   });
 
-  it("set_items action sets by _ids", async () => {
-    const args = getSetItemsArgs({ _ids: ["id1", "id2"], string: "updated string" });
+  it("set_items action by _items ref", async () => {
+    const args = getSetItemsArgs(["id1", "id2"], { string: "updated string" });
     await actions.set_items(args);
     const obs = await service.query$<any>("data_list", "test_flow");
     const data = await firstValueFrom(obs);
@@ -110,31 +116,24 @@ describe("DynamicDataService Actions", () => {
     expect(data[0].string).toEqual("updated string");
     expect(data[0]._meta_field).toEqual({ test: "hello" });
   });
-  // TODO - update data_loops to replace _index with _id and populate _id
 
-  // TODO - check from frontend whether _ids are passed as array
+  // TODO - frontend template example
 
   /*************************************************************
    *  Quality Control
    ************************************************************/
   it("throws error if no _id provided", async () => {
     const args = getSetItemArgs({ string: "sets an item correctly a given id" });
-    let errMsg: string;
-    await actions.set_item(args).catch((err) => (errMsg = err.message));
-    expect(errMsg).toEqual("[set_item] invalid args");
+    await expectAsync(actions.set_item(args)).toBeRejectedWithError("[set_item] invalid args");
   });
   it("throws error if no _ids provided", async () => {
-    const args = getSetItemsArgs({ string: "sets an item correctly a given id" });
-    let errMsg: string;
-    await actions.set_items(args).catch((err) => (errMsg = err.message));
-    expect(errMsg).toEqual("[set_items] invalid args");
+    const args = getSetItemsArgs([], { string: "sets an item correctly a given id" });
+    await expectAsync(actions.set_items(args)).toBeRejectedWithError("[set_items] invalid args");
   });
 
   it("throws error if provided _id does not exist", async () => {
     const args = getSetItemArgs({ _id: "missing_id", string: "sets an item correctly a given id" });
-    let errMsg: string;
-    await actions.set_item(args).catch((err) => (errMsg = err.message));
-    expect(errMsg).toEqual(
+    await expectAsync(actions.set_item(args)).toBeRejectedWithError(
       "[Update Fail] no doc exists for data_list:test_flow with row_id: missing_id"
     );
     // also ensure new item not created

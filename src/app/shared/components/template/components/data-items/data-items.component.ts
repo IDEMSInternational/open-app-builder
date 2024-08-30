@@ -116,40 +116,10 @@ export class TmplDataItemsComponent extends TemplateBaseComponent implements OnD
         _first: itemIndex === 0,
         _last: itemIndex === lastItemIndex,
       };
-      // Update any action list set_item args to contain name of current data list and item id
-      // and set_items action to include all currently displayed rows
+
+      // Update any action list set_item args to auto-populate current context data
       if (r.action_list) {
-        r.action_list = r.action_list.map((a) => {
-          if (a.action_id === "set_item") {
-            // set default list and id args (unless overridden within item action)
-            const params: IActionSetItemParams = {
-              _list: this.dataListName,
-              _id: itemId,
-              ...a.args[0],
-            };
-            // support passing _index and use to lookup and populate _id+
-            if (params._index) {
-              params._id = itemDataIDs[params._index];
-              delete params._index;
-            }
-            const args: IActionSetItemArgs = [
-              { _list: this.dataListName, _id: itemId, ...a.args[0] },
-            ];
-            a.args = args;
-          }
-          if (a.action_id === "set_items") {
-            const params: IActionSetItemsParams = {
-              _list: this.dataListName,
-              _ids: [itemDataIDs],
-              ...a.args[0],
-            };
-            // TODO - add a check for @item refs and replace parameter list with correct values
-            // for each individual item (default will be just to pick the first)
-            const args: IActionSetItemsArgs = [params];
-            a.args = args;
-          }
-          return a;
-        });
+        r.action_list = this.updateActionList(r.action_list, itemId, itemDataIDs);
       }
 
       // Apply recursively to ensure item children with nested rows (e.g. display groups) also inherit item context
@@ -158,6 +128,50 @@ export class TmplDataItemsComponent extends TemplateBaseComponent implements OnD
       }
 
       return r;
+    });
+  }
+
+  /**
+   *
+   */
+  private updateActionList(
+    action_list: FlowTypes.TemplateRowAction[],
+    itemId: string,
+    itemDataIDs: string[]
+  ) {
+    return action_list.map((a) => {
+      // set_item - auto-populate list id and row id parameters from current item context (can be overridden)
+      if (a.action_id === "set_item") {
+        const params: IActionSetItemParams = {
+          _list: this.dataListName,
+          _id: itemId,
+          ...a.args[0],
+        };
+        // if _index used lookup and replace _id
+        if (params._index) {
+          params._id = itemDataIDs[params._index];
+          delete params._index;
+        }
+        const args: IActionSetItemArgs = [{ _list: this.dataListName, _id: itemId, ...a.args[0] }];
+        a.args = args;
+      }
+
+      // set_items -auto-populate list items to match currently rendered
+      if (a.action_id === "set_items") {
+        const params: IActionSetItemsParams = {
+          _items: {
+            flow_type: "data_list",
+            flow_name: this.dataListName,
+            rows: itemDataIDs.map((id) => ({ id })),
+          },
+          ...a.args[0],
+        };
+        // TODO - add a check for @item refs and replace parameter list with correct values
+        // for each individual item (default will be just to pick the first)
+        const args: IActionSetItemsArgs = [params];
+        a.args = args;
+      }
+      return a;
     });
   }
 
