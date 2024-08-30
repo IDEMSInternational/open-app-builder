@@ -14,9 +14,7 @@ import { TemplateRowService } from "../../services/instance/template-row.service
 import { TemplateVariablesService } from "../../services/template-variables.service";
 import { TemplateBaseComponent } from "../base";
 import {
-  IActionSetItemArgs,
   IActionSetItemParams,
-  IActionSetItemsArgs,
   IActionSetItemsParams,
 } from "src/app/shared/services/dynamic-data/dynamic-data.actions";
 
@@ -145,17 +143,16 @@ export class TmplDataItemsComponent extends TemplateBaseComponent implements OnD
       // set_item - auto-populate list id and row id parameters from current item context (can be overridden)
       if (a.action_id === "set_item") {
         const params: IActionSetItemParams = {
-          _list: this.dataListName,
+          _list_id: this.dataListName,
           _id: itemId,
-          ...a.args[0],
+          ...a.params,
         };
         // if _index used lookup and replace _id
         if (params._index) {
           params._id = itemDataIDs[params._index];
           delete params._index;
         }
-        const args: IActionSetItemArgs = [{ _list: this.dataListName, _id: itemId, ...a.args[0] }];
-        a.args = args;
+        a.params = params;
       }
 
       // set_items -auto-populate list items to match currently rendered
@@ -166,12 +163,11 @@ export class TmplDataItemsComponent extends TemplateBaseComponent implements OnD
             flow_name: this.dataListName,
             rows: itemDataIDs.map((id) => ({ id })),
           },
-          ...a.args[0],
+          ...a.params,
         };
         // TODO - add a check for @item refs and replace parameter list with correct values
         // for each individual item (default will be just to pick the first)
-        const args: IActionSetItemsArgs = [params];
-        a.args = args;
+        a.params = params;
       }
       return a;
     });

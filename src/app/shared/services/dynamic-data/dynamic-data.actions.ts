@@ -2,10 +2,6 @@ import { FlowTypes } from "packages/data-models";
 import { IActionHandler } from "../../components/template/services/instance/template-action.registry";
 import type { DynamicDataService } from "./dynamic-data.service";
 
-export type IActionSetItemArgs = [IActionSetItemParams];
-
-export type IActionSetItemsArgs = [IActionSetItemsParams];
-
 /**
  * Metadata passed to set_item action used to lookup correct DB row
  * Full payload can also include arbitrary key-value pairs (omitted for type-checking)
@@ -44,12 +40,12 @@ const actions = (service: DynamicDataService) => {
    * click | set_item | _index: @item._index + 1, completed:true;
    *
    * Or from outside a loop
-   * click | set_item | _list: example_list, _id: example_id, completed:true;
+   * click | set_item | _list_id: example_list, _id: example_id, completed:true;
    *
    */
-  const set_item: IActionHandler = async ({ args }) => {
+  const set_item: IActionHandler = async ({ params }) => {
     // parse args and separate data lookup metadata from writeable update data
-    const { _list_id, _id, writeableProps } = parseSetItemArgs(args);
+    const { _list_id, _id, writeableProps } = parseSetItemArgs(params);
     await service.update("data_list", _list_id, _id, writeableProps);
   };
 
@@ -62,8 +58,8 @@ const actions = (service: DynamicDataService) => {
    * or from outside a loop can specify
    * click | set_items | _list: @data.example_list, completed:true;
    */
-  const set_items: IActionHandler = async ({ args }) => {
-    const { _list_id, _ids, writeableProps } = parseSetItemsArgs(args);
+  const set_items: IActionHandler = async ({ params }) => {
+    const { _list_id, _ids, writeableProps } = parseSetItemsArgs(params);
     // Hack, no current method for bulk update so make successive (changes debounced in component)
     for (const _id of _ids) {
       await service.update("data_list", _list_id, _id, writeableProps);
@@ -72,38 +68,33 @@ const actions = (service: DynamicDataService) => {
   return { set_item, set_items };
 };
 
-function parseSetItemArgs(args: any[] = []) {
-  if (Array.isArray(args)) {
-    const [params] = args as IActionSetItemArgs;
-    if (params && params.constructor === {}.constructor) {
-      const { _id, _list_id, _index, ...writeableProps } = params;
-      // ensure a list name row id included (index should have been already converted to id)
-      if (_list_id && _id) {
-        return { _id, _list_id, writeableProps };
-      }
+function parseSetItemArgs(params: IActionSetItemParams) {
+  if (params && params.constructor === {}.constructor) {
+    const { _id, _list_id, _index, ...writeableProps } = params;
+    // ensure a list name row id included (index should have been already converted to id)
+    if (_list_id && _id) {
+      return { _id, _list_id, writeableProps };
     }
   }
   // throw error if args not parsed correctly
-  console.error({ args });
-  throw new Error("[set_item] invalid args");
+  console.error({ params });
+  throw new Error("[set_item] invalid params");
 }
 
-function parseSetItemsArgs(args: any[] = []) {
-  if (Array.isArray(args)) {
-    const [params] = args as IActionSetItemsArgs;
-    if (params && params.constructor === {}.constructor) {
-      const { _items, ...writeableProps } = params;
-      // ensure a list name provided and either _ids or _indexes included
-      if (_items && _items.constructor === {}.constructor) {
-        const { flow_name, rows } = _items;
-        const _ids = rows.filter((r) => r.id).map((r) => r.id);
-        return { _list_id: flow_name, _ids, writeableProps };
-      }
+function parseSetItemsArgs(params: IActionSetItemsParams) {
+  if (params && params.constructor === {}.constructor) {
+    const { _items, ...writeableProps } = params;
+    // ensure a list name provided and either _ids or _indexes included
+    if (_items && _items.constructor === {}.constructor) {
+      const { flow_name, rows } = _items;
+      const _ids = rows.filter((r) => r.id).map((r) => r.id);
+      return { _list_id: flow_name, _ids, writeableProps };
     }
   }
+
   // throw error if args not parsed correctly
-  console.error({ args });
-  throw new Error("[set_items] invalid args");
+  console.error({ params });
+  throw new Error("[set_items] invalid params");
 }
 
 export default actions;
