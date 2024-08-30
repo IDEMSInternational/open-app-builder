@@ -132,7 +132,9 @@ export class TmplDataItemsComponent extends TemplateBaseComponent implements OnD
   }
 
   /**
-   *
+   * When calling set_item or set_items actions from within a data_items loop automatically populate data list
+   * and row id references where not already specified. Additionally add support for populating set_item row id reference
+   * from _index of currently rendered items, and set_items list of ids from currently rendered items
    */
   private updateActionList(
     action_list: FlowTypes.TemplateRowAction[],
