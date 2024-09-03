@@ -53,7 +53,7 @@ function getSetItemsParams(
  *******************************************************************************/
 describe("DynamicDataService Actions", () => {
   let service: DynamicDataService;
-  let actions: ReturnType<typeof ActionFactory>;
+  let actions: ActionFactory;
 
   beforeEach(async () => {
     TestBed.configureTestingModule({
@@ -84,7 +84,7 @@ describe("DynamicDataService Actions", () => {
     await service.ready();
     // Ensure any data previously persisted is cleared
     await service.resetFlow("data_list", "test_flow");
-    actions = ActionFactory(service);
+    actions = new ActionFactory(service);
   });
 
   /*************************************************************
@@ -100,12 +100,21 @@ describe("DynamicDataService Actions", () => {
   });
 
   it("set_items action by _items ref", async () => {
-    const params = getSetItemsParams({ string: "updated string" }, ["id1", "id2"]);
+    const params = getSetItemsParams({ string: "batch updated" }, ["id1", "id2"]);
     await actions.set_items(params);
     const obs = await service.query$<any>("data_list", "test_flow");
     const data = await firstValueFrom(obs);
-    expect(data[0].string).toEqual("updated string");
-    expect(data[1].string).toEqual("updated string");
+    expect(data[0].string).toEqual("batch updated");
+    expect(data[1].string).toEqual("batch updated");
+  });
+
+  it("set_items action by _list_id", async () => {
+    const params = getSetItemsParams({ _list_id: "test_flow", string: "batch updated" });
+    await actions.set_items(params);
+    const obs = await service.query$<any>("data_list", "test_flow");
+    const data = await firstValueFrom(obs);
+    expect(data[0].string).toEqual("batch updated");
+    expect(data[1].string).toEqual("batch updated");
   });
 
   it("ignores writes to readonly '_' fields", async () => {
