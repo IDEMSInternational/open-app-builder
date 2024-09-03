@@ -100,6 +100,8 @@ class DynamicDataActionFactory {
       }
       // handle parse from processed item list (e.g. data_items loop)
       if (_items && _items.constructor === {}.constructor) {
+        // TODO - consider support for _items ref to local variable
+        // (would likely need templating system to track more generally and pass)
         const { flow_name, rows } = _items;
         const _ids = rows.filter((r) => r.id).map((r) => r.id);
         return { _list_id: flow_name, _ids, writeableProps };
