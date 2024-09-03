@@ -13,7 +13,7 @@ import { ItemProcessor } from "../../processors/item";
 import { TemplateRowService } from "../../services/instance/template-row.service";
 import { TemplateVariablesService } from "../../services/template-variables.service";
 import { TemplateBaseComponent } from "../base";
-import {
+import type {
   IActionSetItemParams,
   IActionSetItemsParams,
 } from "src/app/shared/services/dynamic-data/dynamic-data.actions";

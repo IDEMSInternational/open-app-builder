@@ -11,7 +11,7 @@ import { PersistedMemoryAdapter } from "./adapters/persistedMemory";
 import { ReactiveMemoryAdapater, REACTIVE_SCHEMA_BASE } from "./adapters/reactiveMemory";
 import { TemplateActionRegistry } from "../../components/template/services/instance/template-action.registry";
 import { TopLevelProperty } from "rxdb/dist/types/types";
-import actionsFactory from "./dynamic-data.actions";
+import ActionsFactory from "./dynamic-data.actions";
 
 type IDocWithMeta = { id: string; APP_META?: Record<string, any> };
 
@@ -52,7 +52,7 @@ export class DynamicDataService extends AsyncServiceBase {
     super("Dynamic Data");
     this.registerInitFunction(this.initialise);
     // register action handlers
-    const { set_item, set_items } = actionsFactory(this);
+    const { set_item, set_items } = new ActionsFactory(this);
     this.templateActionRegistry.register({ set_item, set_items });
   }
 
