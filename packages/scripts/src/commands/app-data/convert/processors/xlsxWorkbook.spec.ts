@@ -32,7 +32,7 @@ describe("XLSX Workbook Processor", () => {
   // an array of arrays
   it("Converts XLSXs to array of JSON sheet arrays", async () => {
     const outputs = await processor.process(testInputs);
-    expect(Array.isArray(outputs)).toBeTrue();
+    expect(Array.isArray(outputs)).toEqual(true);
     expect(outputs.length).toEqual(testInputs.length);
     // each entry may contain multiple sheets from workbook
     const testInputsheets = outputs[0];
