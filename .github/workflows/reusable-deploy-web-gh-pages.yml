@@ -23,18 +23,11 @@ concurrency:
 
 on:
   workflow_call:
-  # TODO - remove after testing
-  push:
-    branches: feat/gh-pages-deploy-action
 
 jobs:
   build:
     uses: ./.github/workflows/reusable-app-build.yml
     secrets: inherit
-    # TODO - remove after testing
-    with:
-      build-flags: --configuration "production,preview"
-      deployment-env: debug
 
   # Github pages doesn't support single-page-apps, so use post-build to add 404 workaround
   # https://github.com/isaacs/github/issues/408
