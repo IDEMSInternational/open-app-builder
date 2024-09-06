@@ -1,0 +1,84 @@
+##################################################################################
+#         About
+##################################################################################
+# Reuseable workflow to be called from content repos.
+# Build and deploy app to github pages
+#
+#         Version : 1.0
+#
+##################################################################################
+#         Configuration
+##################################################################################
+
+# env:
+
+##################################################################################
+#         Main Code
+##################################################################################
+name: Deploy Web GH Pages
+# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
+concurrency:
+  group: "deploy_web_gh_pages"
+  cancel-in-progress: true
+
+on:
+  workflow_call:
+  # TODO - remove after testing
+  push:
+    branches: feat/gh-pages-deploy-action
+
+jobs:
+  build:
+    uses: ./.github/workflows/reusable-app-build.yml
+    secrets: inherit
+    # TODO - remove after testing
+    with:
+      build-flags: --configuration "production,preview"
+      deployment-env: debug
+
+  # Github pages doesn't support single-page-apps, so use post-build to add 404 workaround
+  # https://github.com/isaacs/github/issues/408
+  # https://github.com/orgs/community/discussions/64096
+  # TODO - could consider populating individual files for all known template paths (for better SEO)
+  post_build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Download Build Artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: www
+      - name: Extract Build folder
+        run: |
+          mkdir www
+          tar -xf artifact.tar --directory www
+      - name: Add fallback redirect
+        run: |
+          cp www/index.html www/404.html
+      - name: Upload updated artifact
+        uses: actions/upload-pages-artifact@v1.0.8
+        with:
+          path: "www/"
+          name: www
+        
+
+  deploy:
+    needs: post_build
+    permissions:
+      pages: write     
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    outputs:
+      urls: ${{ steps.deploy.outputs.urls }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+
+##################################################################################
+#         Useful Links
+##################################################################################
+# https://github.com/marketplace/actions/deploy-github-pages-site
