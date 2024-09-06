@@ -34,6 +34,7 @@ jobs:
   # https://github.com/orgs/community/discussions/64096
   # TODO - could consider populating individual files for all known template paths (for better SEO)
   post_build:
+    needs: build
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
