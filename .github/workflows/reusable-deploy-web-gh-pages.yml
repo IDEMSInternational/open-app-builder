@@ -35,13 +35,20 @@ concurrency:
 
 on:
   workflow_call:
+    inputs:
+      GH_PAGES_BASE:
+        description: 'URL prefix used when deploying to folder path, e.g. /my-repo-name'
+        default: ${{github.env.GH_PAGES_BASE}}
+        required: false
+        type: string
+      
 
 jobs:
   build:
     uses: ./.github/workflows/reusable-app-build.yml
     secrets: inherit
     with: 
-      build-flags: --base-href ${{github.env.GH_PAGES_BASE}}
+      build-flags: --base-href ${{inputs.GH_PAGES_BASE}}
 
   # Github pages doesn't support single-page-apps, so use post-build to add 404 workaround
   # https://github.com/isaacs/github/issues/408
