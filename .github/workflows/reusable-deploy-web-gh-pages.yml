@@ -10,9 +10,19 @@
 #         Configuration
 # Must enable github pages in settings, e.g.
 # https://github.com/{org}/{repo}/settings/pages
+# 
+# Variables
+# GH_PAGES_BASE - url path that pages deployed to
+# If using gh pages domain should be name of repo for page to display at
+# https://{org}.github.io/{repo}
+# 
+# If using a custom domain or subdomain can leave use folder name if deployed
+# to a child path, e.g. https://my-domain.com/app, or leave blank if not using
+# child folder, e.g. https://my-domain.com
 ##################################################################################
 
-# env:
+env:
+  GH_PAGES_BASE: ${{vars.GH_PAGES_BASE || ''}}
 
 ##################################################################################
 #         Main Code
@@ -30,6 +40,8 @@ jobs:
   build:
     uses: ./.github/workflows/reusable-app-build.yml
     secrets: inherit
+    with: 
+      build-flags: --base-href ${{github.env.GH_PAGES_BASE}}
 
   # Github pages doesn't support single-page-apps, so use post-build to add 404 workaround
   # https://github.com/isaacs/github/issues/408
