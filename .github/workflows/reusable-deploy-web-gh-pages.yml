@@ -22,7 +22,7 @@
 ##################################################################################
 
 env:
-  GH_PAGES_BASE: ${{vars.GH_PAGES_BASE || ''}}
+  GH_PAGES_BASE: ${{vars.GH_PAGES_BASE || 'test-env'}}
 
 ##################################################################################
 #         Main Code
@@ -38,7 +38,7 @@ on:
     inputs:
       GH_PAGES_BASE:
         description: 'URL prefix used when deploying to folder path, e.g. /my-repo-name'
-        default: ${{github.env.GH_PAGES_BASE}}
+        default: ${{vars.GH_PAGES_BASE || 'test-vars'}}
         required: false
         type: string
       
