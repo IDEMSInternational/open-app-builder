@@ -47,7 +47,9 @@ jobs:
     uses: ./.github/workflows/reusable-app-build.yml
     secrets: inherit
     with: 
-      build-flags: --base-href ${{inputs.GH_PAGES_BASE}}
+      # If base url provided pass to build command with both initial and trailing '/', i.e. /my-repo/
+      # https://stackoverflow.com/a/54409380
+      build-flags: ${{inputs.GH_PAGES_BASE && format('--base-href /{1}/',inputs.GH_PAGES_BASE) }}
 
   # Github pages doesn't support single-page-apps, so use post-build to add 404 workaround
   # https://github.com/isaacs/github/issues/408
