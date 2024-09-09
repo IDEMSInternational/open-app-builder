@@ -189,12 +189,11 @@ export class TemplateActionService extends SyncServiceBase {
       case "go_to":
         return this.templateNavService.handleNavAction(action);
       case "go_to_url":
-        // because a normal url starts with https://, the ':' separates it into a key and a value and the value
-        // is sufficient for the url to launch.
         console.log("[GO TO URL]", { key, value });
-        // HACK: URL strings that include the ":" character (as in `https://`) are split on that character into a key-value pair
-        // If both the key and value are present, they are concatenated with a colon to form the URL
-        // Otherwise, whichever of the key or value is present is used as the URL
+        // HACK: As part of the parser (currently version 20240502.0), URL strings passed to this action
+        // that include the ":" character (as in `https://`) will be split on that character into a key-value pair.
+        // Therefore, if both a key and a value are populated for this action call, assume this to be the case
+        // and join with a ":" character. Otherwise, use the populated key or value to handle other edge cases
         const url = key && value ? key + ":" + value : key || value;
         return this.templateNavService.handleNavActionExternal(
           normalizeUrl(url, { forceHttps: true })
