@@ -1,4 +1,4 @@
-import { Component, Input, OnDestroy, OnInit, ViewChild } from "@angular/core";
+import { Component, Input, OnDestroy, OnInit, signal, ViewChild } from "@angular/core";
 import { FlowTypes } from "../../../../model";
 import {
   getBooleanParamFromTemplateRow,
@@ -66,7 +66,7 @@ export class TmplAudioComponent
   /** @ignore */
   errorTxt: string | null;
   /** @ignore */
-  progress = 0;
+  progress = signal(0);
   /** @ignore */
   rangeBarTouched: boolean = false;
   /** @ignore */
@@ -178,7 +178,7 @@ export class TmplAudioComponent
         return;
       }
       let seek: any = this.player.seek();
-      this.progress = (seek / this.player.duration()) * 100 || 0;
+      this.progress.set((seek / this.player.duration()) * 100 || 0);
       this.currentTimeSong = this.player.seek() ? (this.player.seek() as any).toString() : "0";
     }, 1000);
   }
@@ -199,7 +199,7 @@ export class TmplAudioComponent
   customUpdateWhenRewind() {
     if (!this.isPlayed) {
       let seek: any = this.player.seek();
-      this.progress = (seek / this.player.duration()) * 100 || 0;
+      this.progress.set((seek / this.player.duration()) * 100 || 0);
       this.currentTimeSong = this.player.seek() ? (this.player.seek() as any).toString() : "0";
     }
   }
