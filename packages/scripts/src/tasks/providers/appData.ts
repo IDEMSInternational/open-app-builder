@@ -1,5 +1,6 @@
 import { writeFileSync } from "fs-extra";
 import path from "path";
+import packageJSON from "../../../../../package.json";
 import { parseCommand } from "../../commands";
 import { WorkflowRunner } from "../../commands/workflow/run";
 import { SRC_ASSETS_PATH } from "../../paths";
@@ -59,8 +60,18 @@ const copyDeploymentDataToApp = () => {
 };
 
 function generateRuntimeConfig(deploymentConfig: IDeploymentConfigJson): IDeploymentRuntimeConfig {
-  const { api, app_config, firebase, supabase, error_logging } = deploymentConfig;
-  return { api, app_config, firebase, supabase, error_logging };
+  const { api, app_config, firebase, supabase, error_logging, git, name } = deploymentConfig;
+
+  return {
+    api,
+    app_config,
+    firebase,
+    supabase,
+    error_logging,
+    _core_version: packageJSON.version,
+    _content_version: git.content_tag_latest || "",
+    name,
+  };
 }
 
 export default { postProcessAssets, postProcessSheets, copyDeploymentDataToApp };
