@@ -1,5 +1,5 @@
 import { FlowTypes } from "data-models";
-import { useMockWarningLogger } from "../../../../../test/helpers/utils";
+import { useMockLogger } from "../../../../../test/helpers/utils";
 import { assignFlowOverrides } from "./app-data-override.utils";
 
 const TEST_INPUTS: FlowTypes.FlowTypeWithData[] = [
@@ -24,6 +24,7 @@ const TEST_INPUTS: FlowTypes.FlowTypeWithData[] = [
   },
 ];
 
+/** yarn workspace scripts test -t app-data-override.utils.spec.ts */
 describe("App Data Override", () => {
   it("Assigns flow override mapping", () => {
     const output = assignFlowOverrides(TEST_INPUTS);
@@ -36,7 +37,7 @@ describe("App Data Override", () => {
   });
 
   it("Logs warning on missing override target", () => {
-    const warningLogger = useMockWarningLogger();
+    const loggerSpy = useMockLogger(true);
     assignFlowOverrides([
       ...TEST_INPUTS,
       {
@@ -47,7 +48,8 @@ describe("App Data Override", () => {
         override_condition: "test_condition_3",
       },
     ]);
-    expect(warningLogger).toHaveBeenCalledOnceWith({
+    expect(loggerSpy.warning).toHaveBeenCalledTimes(1);
+    expect(loggerSpy.warning).toHaveBeenCalledWith({
       msg1: "Override target does not exist: missing_list",
       msg2: "override_invalid",
     });

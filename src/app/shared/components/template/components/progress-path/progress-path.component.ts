@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { TemplateBaseComponent } from "../base";
 import { getStringParamFromTemplateRow } from "src/app/shared/utils";
+import { TemplateTranslateService } from "../../services/template-translate.service";
 
 interface IProgressPathParams {
   /** TEMPLATE_PARAMETER: "variant". Default "wavy" */
@@ -32,6 +33,10 @@ export class TmplProgressPathComponent extends TemplateBaseComponent implements 
   public svgViewBox: string;
   public contentHeight: string;
   public width = `${SIZING.widthPx}px`;
+
+  constructor(public templateTranslateService: TemplateTranslateService) {
+    super();
+  }
 
   ngOnInit() {
     this.getParams();

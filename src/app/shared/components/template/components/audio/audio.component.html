@@ -19,7 +19,7 @@
       class="audio-range"
       max="100"
       aria-readonly="true"
-      [value]="progress"
+      [value]="progress()"
       (ionChange)="checkChange()"
       (touchstart)="checkFocus()"
       (touchend)="seek()"
@@ -28,10 +28,10 @@
   </div>
   <div class="time">
     <div class="time-value">
-      {{ +currentTimeSong * 1000 | date : "mm:ss" }}
+      {{ +currentTimeSong * 1000 | date: "mm:ss" }}
     </div>
     <div class="time-value">
-      {{ !player ? "00:00" : (player.duration() * 1000 | date : "mm:ss") }}
+      {{ !player ? "00:00" : (player.duration() * 1000 | date: "mm:ss") }}
     </div>
   </div>
   <div class="controls" *ngIf="!errorTxt">
