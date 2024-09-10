@@ -37,7 +37,6 @@ export class DeploymentService extends AsyncServiceBase {
         console.warn("No deployment config available");
         return of(null);
       }),
-      // HACK - json config converts functions to strings, not strongly typed
       map((v) => v as IDeploymentRuntimeConfig)
     );
   }
