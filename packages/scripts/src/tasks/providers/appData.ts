@@ -68,7 +68,7 @@ function generateRuntimeConfig(deploymentConfig: IDeploymentConfigJson): IDeploy
     firebase,
     supabase,
     error_logging,
-    _core_version: packageJSON.version,
+    _app_builder_version: packageJSON.version,
     _content_version: git.content_tag_latest || "",
     name,
   };
