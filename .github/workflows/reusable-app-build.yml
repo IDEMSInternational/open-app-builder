@@ -56,21 +56,21 @@ jobs:
 
       steps:
         - name: Check out app code
-          uses: actions/checkout@v3
+          uses: actions/checkout@v4
           with:
             repository: "IDEMSInternational/open-app-builder.git"
             ref: ${{env.APP_CODE_BRANCH}}
   
         - name: Checkout parent repo if needed
           if: env.PARENT_DEPLOYMENT_REPO != ''
-          uses: actions/checkout@v3
+          uses: actions/checkout@v4
           with:
             path: ".idems_app/deployments/${{env.PARENT_DEPLOYMENT_NAME}}"
             repository: ${{env.PARENT_DEPLOYMENT_REPO}}
             ref: ${{env.PARENT_DEPLOYMENT_BRANCH}}
   
         - name: Checkout deployment
-          uses: actions/checkout@v3
+          uses: actions/checkout@v4
           with:
             ref: ${{inputs.branch}}
             path: ".idems_app/deployments/${{env.DEPLOYMENT_NAME}}"
@@ -81,30 +81,39 @@ jobs:
           run: echo "${{env.DEPLOYMENT_PRIVATE_KEY}}" > ./.idems_app/deployments/${{env.DEPLOYMENT_NAME}}/encrypted/private.key
   
         - name: Setup Node
-          uses: actions/setup-node@v3
+          uses: actions/setup-node@v4
           with:
-            node-version: 18.x
+            node-version: 20.x
   
-        - name: Cache node modules
-          uses: actions/cache@v3
+      #############################################################################
+      #         Node Modules
+      # Manually restore any previous cache to speed install
+      # As immutable install will not change cache only save new cache if not hit
+      # Uses fine-grained methods from https://github.com/actions/cache
+      #############################################################################
+        - uses: actions/cache/restore@v4
+          id: cache
           with:
             path: ./.yarn/cache
-            # If cachebusting required (e.g. breaking yarn changes on update) change `v1` to another number
-            key: ${{ runner.os }}-node-modules-yarn-v1-${{ hashFiles('**/yarn.lock') }}
+            key: ${{ runner.os }}-node-modules-yarn-v1-${{ hashFiles('yarn.lock') }}
             restore-keys: |
               ${{ runner.os }}-node-modules-yarn-v1-
-  
         - name: Install node modules
-          run: yarn install
-  
+          run: yarn install --immutable
+        - uses: actions/cache/save@v4
+          if: steps.cache.outputs.cache-hit != 'true'
+          with:
+            path: ./.yarn/cache
+            key: ${{ runner.os }}-node-modules-yarn-v1-${{ hashFiles('yarn.lock') }}
+    
         - name: Set deployment
           run: yarn workflow deployment set $DEPLOYMENT_NAME --skip-refresh
- 
+
         - name: Build
           run: yarn build ${{inputs.build-flags}}
   
         - name: Upload artifact
-          uses: actions/upload-pages-artifact@v1.0.8
+          uses: actions/upload-pages-artifact@v3
           with:
             path: "www/"
             name: www  

@@ -1,0 +1,98 @@
+##################################################################################
+#         About
+##################################################################################
+# Reuseable workflow to be called from content repos.
+# Build and deploy app to github pages
+#
+#         Version : 1.0
+#
+##################################################################################
+#         Configuration
+# Must enable github pages in settings, e.g.
+# https://github.com/{org}/{repo}/settings/pages
+# 
+# Variables
+# 
+# GH_PAGES_BASE - url path that pages deployed to.
+# If using gh pages domain should be name of repo for page to display at
+# https://{org}.github.io/{repo}, e.g. 'my-repo'
+# 
+# If using a custom domain or subdomain can leave use folder name if deployed
+# to a child path, e.g. https://my-domain.com/app, or leave blank if not using
+# child folder, e.g. https://my-domain.com
+##################################################################################
+
+
+##################################################################################
+#         Main Code
+##################################################################################
+name: Deploy Web GH Pages
+# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
+concurrency:
+  group: "deploy_web_gh_pages"
+  cancel-in-progress: true
+
+on:
+  workflow_call:
+    inputs:
+      GH_PAGES_BASE:
+        description: 'URL prefix used when deploying to folder path, e.g. /my-repo-name'
+        default: ${{vars.GH_PAGES_BASE || ''}}
+        required: false
+        type: string
+      
+
+jobs:
+  build:
+    uses: ./.github/workflows/reusable-app-build.yml
+    secrets: inherit
+    with: 
+      # If base url provided pass to build command with both initial and trailing '/', i.e. /my-repo/
+      # https://stackoverflow.com/a/54409380
+      build-flags: ${{inputs.GH_PAGES_BASE && format('--base-href /{0}/',inputs.GH_PAGES_BASE) }}
+
+  # Github pages doesn't support single-page-apps, so use post-build to add 404 workaround
+  # https://github.com/isaacs/github/issues/408
+  # https://github.com/orgs/community/discussions/64096
+  # TODO - could consider populating individual files for all known template paths (for better SEO)
+  post_build:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Download Build Artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: www
+      - name: Extract Build folder
+        run: |
+          mkdir www
+          tar -xf artifact.tar --directory www
+      - name: Add fallback redirect
+        run: |
+          cp www/index.html www/404.html
+      - name: Upload updated artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: "www/"        
+
+  deploy:
+    needs: post_build
+    permissions:
+      pages: write     
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    outputs:
+      urls: ${{ steps.deploy.outputs.urls }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+
+##################################################################################
+#         Useful Links
+##################################################################################
+# https://github.com/marketplace/actions/deploy-github-pages-site
