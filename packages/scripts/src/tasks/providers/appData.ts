@@ -34,7 +34,7 @@ const copyDeploymentDataToApp = () => {
   const { app_data } = WorkflowRunner.config;
 
   // copy filtered subset of app_data
-  const copiedFolders = ["assets", "sheets", "translations", "config.json"];
+  const copiedFolders = ["assets", "sheets", "translations"];
   const filter_fn = (entry: IContentsEntry) => {
     const [baseDir] = entry.relativePath.split("/");
     return copiedFolders.includes(baseDir);
