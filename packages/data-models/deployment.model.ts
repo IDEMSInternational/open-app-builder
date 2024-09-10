@@ -4,10 +4,60 @@ import type { IAppConfig } from "./appConfig";
 /** Update version to force recompile next time deployment set (e.g. after default config update) */
 export const DEPLOYMENT_CONFIG_VERSION = 20240314.0;
 
-export interface IDeploymentConfig {
+/** Configuration settings available to runtime application */
+export interface IDeploymentRuntimeConfig {
+  api: {
+    /** Name of target db for api operations. Default `plh` */
+    db_name?: string;
+    /**
+     * Target endpoint for api. Default `https://apps-server.idems.international/api`
+     * Will be replaced when running locally as per `src\app\shared\services\server\interceptors.ts`
+     * */
+    endpoint?: string;
+  };
+  /** Optional override of any provided constants from data-models/constants */
+  app_config: IAppConfig;
+  /** 3rd party integration for logging services */
+  error_logging?: {
+    /** sentry/glitchtip logging dsn */
+    dsn: string;
+  };
+  /**
+   * Specify if using firebase for auth and crashlytics.
+   * Requires firebase config available through encrypted config */
+  firebase: {
+    /** Project config as specified in firebase console (recommend loading from encrypted environment) */
+    config?: {
+      apiKey: string;
+      authDomain: string;
+      databaseURL: string;
+      projectId: string;
+      storageBucket: string;
+      messagingSenderId: string;
+      appId: string;
+      measurementId: string;
+    };
+    auth: {
+      /** Enables `auth` actions to allow user sign-in/out */
+      enabled: boolean;
+    };
+    crashlytics: {
+      /** Enables app crash reports to firebase crashlytics */
+      enabled: boolean;
+    };
+  };
+  /** 3rd party integration for remote asset storage and sync */
+  supabase: {
+    enabled: boolean;
+    url?: string;
+    publicApiKey?: string;
+  };
+}
+
+/** Deployment settings not available at runtime  */
+interface IDeploymentCoreConfig {
   /** Friendly name used to identify the deployment name */
   name: string;
-
   google_drive: {
     /** @deprecated Use `sheets_folder_ids` array instead */
     sheets_folder_id?: string;
@@ -41,17 +91,6 @@ export interface IDeploymentConfig {
     icon_asset_foreground_path?: string;
     icon_asset_background_path?: string;
   };
-  api: {
-    /** Name of target db for api operations. Default `plh` */
-    db_name?: string;
-    /**
-     * Target endpoint for api. Default `https://apps-server.idems.international/api`
-     * Will be replaced when running locally as per `src\app\shared\services\server\interceptors.ts`
-     * */
-    endpoint?: string;
-  };
-  /** Optional override of any provided constants from data-models/constants */
-  app_config: IAppConfig;
   app_data: {
     /** Folder to populate processed content. Default `./app_data` */
     output_path: string;
@@ -59,30 +98,6 @@ export interface IDeploymentConfig {
     sheets_filter_function: (flow: IFlowTypeBase) => boolean;
     /** filter function that receives basic file info such as relativePath and size. Default `(fileEntry)=>true`*/
     assets_filter_function: (fileEntry: IContentsEntry) => boolean;
-  };
-  /**
-   * Specify if using firebase for auth and crashlytics.
-   * Requires firebase config available through encrypted config */
-  firebase: {
-    /** Project config as specified in firebase console (recommend loading from encrypted environment) */
-    config?: {
-      apiKey: string;
-      authDomain: string;
-      databaseURL: string;
-      projectId: string;
-      storageBucket: string;
-      messagingSenderId: string;
-      appId: string;
-      measurementId: string;
-    };
-    auth: {
-      /** Enables `auth` actions to allow user sign-in/out */
-      enabled: boolean;
-    };
-    crashlytics: {
-      /** Enables app crash reports to firebase crashlytics */
-      enabled: boolean;
-    };
   };
   git: {
     /** Url of external git repo to store content */
@@ -95,12 +110,6 @@ export interface IDeploymentConfig {
     app_id?: string;
     /** App Store app name, e.g. "Example App" */
     app_name?: string;
-  };
-  /** 3rd party integration for remote asset storage and sync */
-  supabase: {
-    enabled: boolean;
-    url?: string;
-    publicApiKey?: string;
   };
   translations: {
     /** List of all language codes to include. Default null (includes all) */
@@ -120,11 +129,6 @@ export interface IDeploymentConfig {
     /** path for task working directory. Default `./tasks` */
     task_cache_path: string;
   };
-  /** 3rd party integration for logging services */
-  error_logging?: {
-    /** sentry/glitchtip logging dsn */
-    dsn: string;
-  };
   /** track whether deployment processed from default config */
   _validated: boolean;
   /** version number added from scripts to recompile on core changes */
@@ -132,6 +136,8 @@ export interface IDeploymentConfig {
   /** track parent config  */
   _parent_config?: Partial<IDeploymentConfig & { _workspace_path: string }>;
 }
+
+export type IDeploymentConfig = IDeploymentCoreConfig & IDeploymentRuntimeConfig;
 
 /** Deployment with additional metadata when set as active deployment */
 export interface IDeploymentConfigJson extends IDeploymentConfig {
