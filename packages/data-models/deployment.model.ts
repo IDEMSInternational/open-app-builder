@@ -2,10 +2,15 @@ import type { IGdriveEntry } from "../@idemsInternational/gdrive-tools";
 import type { IAppConfig } from "./appConfig";
 
 /** Update version to force recompile next time deployment set (e.g. after default config update) */
-export const DEPLOYMENT_CONFIG_VERSION = 20240314.0;
+export const DEPLOYMENT_CONFIG_VERSION = 20240910.0;
 
 /** Configuration settings available to runtime application */
 export interface IDeploymentRuntimeConfig {
+  /** version of open-app-builder used to compile */
+  _core_version: string;
+  /** tag of content version provided by content git repo*/
+  _content_version: string;
+
   api: {
     /** Name of target db for api operations. Default `plh` */
     db_name?: string;
@@ -46,6 +51,8 @@ export interface IDeploymentRuntimeConfig {
       enabled: boolean;
     };
   };
+  /** Friendly name used to identify the deployment name */
+  name: string;
   /** 3rd party integration for remote asset storage and sync */
   supabase: {
     enabled: boolean;
@@ -56,8 +63,6 @@ export interface IDeploymentRuntimeConfig {
 
 /** Deployment settings not available at runtime  */
 interface IDeploymentCoreConfig {
-  /** Friendly name used to identify the deployment name */
-  name: string;
   google_drive: {
     /** @deprecated Use `sheets_folder_ids` array instead */
     sheets_folder_id?: string;
@@ -146,8 +151,29 @@ export interface IDeploymentConfigJson extends IDeploymentConfig {
   _config_version: number;
 }
 
+export const DEPLOYMENT_RUNTIME_CONFIG_DEFAULTS: IDeploymentRuntimeConfig = {
+  _content_version: "",
+  _core_version: "",
+  name: "",
+  api: {
+    db_name: "plh",
+    endpoint: "https://apps-server.idems.international/api",
+  },
+  app_config: {} as any, // populated by `getDefaultAppConstants()`,
+
+  firebase: {
+    config: null,
+    auth: { enabled: false },
+    crashlytics: { enabled: true },
+  },
+  supabase: {
+    enabled: false,
+  },
+};
+
 /** Full example of just all config once merged with defaults */
 export const DEPLOYMENT_CONFIG_EXAMPLE_DEFAULTS: IDeploymentConfig = {
+  ...DEPLOYMENT_RUNTIME_CONFIG_DEFAULTS,
   name: "Full Config Example",
   google_drive: {
     assets_folder_id: "",
@@ -157,11 +183,6 @@ export const DEPLOYMENT_CONFIG_EXAMPLE_DEFAULTS: IDeploymentConfig = {
     assets_filter_function: (gdriveEntry) => true,
   },
   android: {},
-  api: {
-    db_name: "plh",
-    endpoint: "https://apps-server.idems.international/api",
-  },
-  app_config: {} as any, // populated by `getDefaultAppConstants()`,
   local_drive: {
     assets_path: "./assets",
     sheets_path: "./sheets",
@@ -171,15 +192,7 @@ export const DEPLOYMENT_CONFIG_EXAMPLE_DEFAULTS: IDeploymentConfig = {
     sheets_filter_function: (flow) => true,
     assets_filter_function: (fileEntry) => true,
   },
-  firebase: {
-    config: null,
-    auth: { enabled: false },
-    crashlytics: { enabled: true },
-  },
   ios: {},
-  supabase: {
-    enabled: false,
-  },
   translations: {
     filter_language_codes: null,
     source_strings_path: "./app_data/translations_source/source_strings",
