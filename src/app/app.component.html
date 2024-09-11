@@ -17,18 +17,18 @@
         <ion-title>{{ sideMenuDefaults.title }}</ion-title>
         <div class="app-version" slot="end">
           @if (sideMenuDefaults.should_show_version) {
-            @if (deploymentService.config()._content_version; as CONTENT_VERSION) {
+            @if (deploymentConfig()._content_version; as CONTENT_VERSION) {
               <span>
-                <abbr [title]="deploymentService.config()._app_builder_version" tabindex="1">
+                <abbr [title]="deploymentConfig()._app_builder_version" tabindex="1">
                   {{ CONTENT_VERSION }}
                 </abbr>
               </span>
             } @else {
-              <span>{{ this.deploymentService.config()._app_builder_version }} </span>
+              <span>{{ deploymentConfig()._app_builder_version }} </span>
             }
           }
           <span *ngIf="sideMenuDefaults.should_show_deployment_name" style="margin-left: 16px"
-            >({{ this.deploymentService.config().name }})</span
+            >({{ deploymentConfig().name }})</span
           >
         </div>
       </ion-toolbar>
