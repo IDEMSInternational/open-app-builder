@@ -18,7 +18,6 @@ import { debounceTime, filter, firstValueFrom, Subject } from "rxjs";
 
 import { FlowTypes } from "data-models";
 import { deepMergeObjects, compareObjectKeys } from "../../../utils";
-import { DeploymentService } from "../../deployment/deployment.service";
 
 /**
  * All persisted docs are stored in the same format with a standard set of meta fields and doc data
@@ -78,7 +77,7 @@ export class PersistedMemoryAdapter {
     [key: string]: RxCollection<any, {}, {}, {}>;
   }>;
 
-  constructor(private deploymentService: DeploymentService) {
+  constructor(private dbName: string) {
     this.subscribeToStatePersist();
   }
 
@@ -98,9 +97,8 @@ export class PersistedMemoryAdapter {
   }
 
   public async create() {
-    const { name } = this.deploymentService.config();
     this.db = await createRxDatabase({
-      name: `${name}_user`,
+      name: `${this.dbName}_user`,
       storage: getRxStorageDexie({ autoOpen: true }),
       ignoreDuplicate: true,
     });
