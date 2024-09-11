@@ -8,9 +8,10 @@ import { AppDataService } from "../data/app-data.service";
 import { AsyncServiceBase } from "../asyncService.base";
 import { arrayToHashmap, deepMergeObjects } from "../../utils";
 import { PersistedMemoryAdapter } from "./adapters/persistedMemory";
-import { ReactiveMemoryAdapater, REACTIVE_SCHEMA_BASE } from "./adapters/reactiveMemory";
+import { ReactiveMemoryAdapter, REACTIVE_SCHEMA_BASE } from "./adapters/reactiveMemory";
 import { TemplateActionRegistry } from "../../components/template/services/instance/template-action.registry";
 import { TopLevelProperty } from "rxdb/dist/types/types";
+import { DeploymentService } from "../deployment/deployment.service";
 
 type IDocWithMeta = { id: string; APP_META?: Record<string, any> };
 
@@ -27,7 +28,7 @@ export class DynamicDataService extends AsyncServiceBase {
    * Each flow is represented in its own collection, and populated as requested.
    * This allows users to query and subscribe to data changes in an efficient way
    */
-  private db: ReactiveMemoryAdapater;
+  private db: ReactiveMemoryAdapter;
 
   /**
    * A separate cache stores user edits flow data, initially in memory
@@ -46,7 +47,8 @@ export class DynamicDataService extends AsyncServiceBase {
 
   constructor(
     private appDataService: AppDataService,
-    private templateActionRegistry: TemplateActionRegistry
+    private templateActionRegistry: TemplateActionRegistry,
+    private deploymentService: DeploymentService
   ) {
     super("Dynamic Data");
     this.registerInitFunction(this.initialise);
@@ -54,6 +56,7 @@ export class DynamicDataService extends AsyncServiceBase {
   }
 
   private async initialise() {
+    const { name } = this.deploymentService.config();
     // Enable dev mode when not in production
     // NOTE - calls 'global' so requires polyfill
     if (!environment.production) {
@@ -61,8 +64,8 @@ export class DynamicDataService extends AsyncServiceBase {
         addRxPlugin(module.RxDBDevModePlugin);
       });
     }
-    this.writeCache = await new PersistedMemoryAdapter().create();
-    this.db = await new ReactiveMemoryAdapater().createDB();
+    this.writeCache = await new PersistedMemoryAdapter(name).create();
+    this.db = await new ReactiveMemoryAdapter(name).createDB();
   }
   private registerTemplateActionHandlers() {
     this.templateActionRegistry.register({

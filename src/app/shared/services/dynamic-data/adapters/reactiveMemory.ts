@@ -22,8 +22,6 @@ import { RxDBUpdatePlugin } from "rxdb/plugins/update";
 addRxPlugin(RxDBUpdatePlugin);
 import { BehaviorSubject } from "rxjs";
 
-import { DeploymentService } from "../../deployment/deployment.service";
-
 /**
  * Create a base schema for data
  * NOTE - by default assumes data has an id field which will be used as primary key
@@ -59,7 +57,7 @@ interface IDataUpdate {
   data?: Record<string, any>;
 }
 
-export class ReactiveMemoryAdapater {
+export class ReactiveMemoryAdapter {
   private db: RxDatabase<
     {
       [key: string]: RxCollection<any, {}, {}, {}>;
@@ -67,12 +65,11 @@ export class ReactiveMemoryAdapater {
     MemoryStorageInternals<any>,
     RxStorageMemoryInstanceCreationOptions
   >;
-  constructor(private deploymentService: DeploymentService) {}
+  constructor(private dbName: string) {}
 
   public async createDB() {
-    const { name } = this.deploymentService.config();
     this.db = await createRxDatabase({
-      name,
+      name: this.dbName,
       storage: getRxStorageMemory(),
       ignoreDuplicate: true,
     });
