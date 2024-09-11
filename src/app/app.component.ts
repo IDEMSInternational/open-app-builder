@@ -56,6 +56,10 @@ export class AppComponent {
   /** Track when app ready to render sidebar and route templates */
   public renderAppTemplates = false;
 
+  public get deploymentConfig() {
+    return this.deploymentService.config;
+  }
+
   /**
    * A space-separated list of values, hierarchically representing the current platform,
    * e.g. on iPhone the value would be "mobile ios iphone".
@@ -65,8 +69,8 @@ export class AppComponent {
   platforms: string;
 
   constructor(
-    // Public services (for UI)
-    public deploymentService: DeploymentService,
+    // Component UI
+    private deploymentService: DeploymentService,
 
     // 3rd Party Services
     private platform: Platform,
@@ -113,9 +117,6 @@ export class AppComponent {
   }
 
   private async initializeApp() {
-    // eagerly load deployment config to make available throughout app
-    await this.deploymentService.ready();
-
     this.platform.ready().then(async () => {
       this.platforms = this.platform.platforms().join(" ");
       this.subscribeToAppConfigChanges();

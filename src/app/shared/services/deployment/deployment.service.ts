@@ -8,8 +8,8 @@ import { DEPLOYMENT_RUNTIME_CONFIG_DEFAULTS, IDeploymentRuntimeConfig } from "pa
 /**
  * Deployment runtime config settings
  *
- * NOTE - this is populated as a blocking service during init,
- * so no need to await service initialisation before access
+ * NOTE - this is intialized using an `APP_INITIALIZER` token within
+ * the main app.module.ts
  */
 export class DeploymentService extends AsyncServiceBase {
   constructor(private http: HttpClient) {
@@ -32,7 +32,7 @@ export class DeploymentService extends AsyncServiceBase {
   }
 
   private loadDeployment() {
-    return this.http.get("assets/deployment.json").pipe(
+    return this.http.get("assets/app_data/deployment.json").pipe(
       catchError(() => {
         console.warn("No deployment config available");
         return of(null);
