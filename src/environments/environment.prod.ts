@@ -1,9 +1,7 @@
-import packageJson from "../../package.json";
 import deploymentJson from "../../.idems_app/deployments/activeDeployment.json";
 import type { IDeploymentConfig } from "data-models";
 
 export const environment = {
-  version: packageJson.version,
   // HACK - json config converts functions to strings, not strongly typed
   deploymentConfig: deploymentJson as any as IDeploymentConfig,
   production: true,

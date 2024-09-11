@@ -7,6 +7,7 @@ import { GIT_SHA } from "src/environments/sha";
 import { fromError as getStacktraceFromError } from "stacktrace-js";
 import { CrashlyticsService } from "../crashlytics/crashlytics.service";
 import { FirebaseService } from "../firebase/firebase.service";
+import { DeploymentService } from "../deployment/deployment.service";
 
 @Injectable({
   providedIn: "root",
@@ -18,7 +19,11 @@ export class ErrorHandlerService extends ErrorHandler {
 
   // Error handling is important and needs to be loaded first.
   // Because of this we should manually inject the services with Injector.
-  constructor(private injector: Injector, private firebaseService: FirebaseService) {
+  constructor(
+    private injector: Injector,
+    private firebaseService: FirebaseService,
+    private deploymentService: DeploymentService
+  ) {
     super();
   }
 
@@ -30,13 +35,12 @@ export class ErrorHandlerService extends ErrorHandler {
    * (although workaround required as cannot extend multiple services)
    */
   private async initialise() {
-    const { production, deploymentConfig } = environment;
-    const { error_logging, firebase } = deploymentConfig;
-    if (production && error_logging?.dsn) {
+    const { error_logging, firebase } = this.deploymentService.config();
+    if (environment.production && error_logging?.dsn) {
       await this.initialiseSentry();
       this.sentryEnabled = true;
     }
-    if (production && this.firebaseService.app && Capacitor.isNativePlatform()) {
+    if (environment.production && this.firebaseService.app && Capacitor.isNativePlatform()) {
       // crashlytics initialised in app component so omitted here
       this.crashlyticsEnabled = firebase.crashlytics.enabled;
     }
@@ -74,12 +78,11 @@ export class ErrorHandlerService extends ErrorHandler {
    * https://docs.sentry.io/platforms/javascript/guides/capacitor/
    */
   private async initialiseSentry() {
-    const { deploymentConfig, version, production } = environment;
-    const { error_logging, name } = deploymentConfig;
+    const { error_logging, name, _app_builder_version } = this.deploymentService.config();
     Sentry.init({
       dsn: error_logging?.dsn,
-      environment: production ? "production" : "development",
-      release: `${name}-${version}-${GIT_SHA}`,
+      environment: environment.production ? "production" : "development",
+      release: `${name}-${_app_builder_version}-${GIT_SHA}`,
       autoSessionTracking: false,
       attachStacktrace: true,
       enabled: true,
