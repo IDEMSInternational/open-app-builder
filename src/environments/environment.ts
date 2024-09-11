@@ -5,7 +5,6 @@ import type { IDeploymentConfig } from "data-models";
 export const environment = {
   /** App version, as provided by package.json */
   version: packageJson.version,
-  deploymentName: deploymentJson.name,
   // HACK - json config converts functions to strings, not strongly typed
   deploymentConfig: deploymentJson as any as IDeploymentConfig,
   production: false,

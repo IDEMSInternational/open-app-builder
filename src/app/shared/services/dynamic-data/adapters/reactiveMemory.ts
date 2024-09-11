@@ -22,7 +22,7 @@ import { RxDBUpdatePlugin } from "rxdb/plugins/update";
 addRxPlugin(RxDBUpdatePlugin);
 import { BehaviorSubject } from "rxjs";
 
-import { environment } from "src/environments/environment";
+import { DeploymentService } from "../../deployment/deployment.service";
 
 /**
  * Create a base schema for data
@@ -67,10 +67,12 @@ export class ReactiveMemoryAdapater {
     MemoryStorageInternals<any>,
     RxStorageMemoryInstanceCreationOptions
   >;
+  constructor(private deploymentService: DeploymentService) {}
 
   public async createDB() {
+    const { name } = this.deploymentService.config();
     this.db = await createRxDatabase({
-      name: `${environment.deploymentName}`,
+      name,
       storage: getRxStorageMemory(),
       ignoreDuplicate: true,
     });
