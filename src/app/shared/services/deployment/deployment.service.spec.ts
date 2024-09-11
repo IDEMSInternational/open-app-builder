@@ -29,7 +29,7 @@ describe("Deployment Service", () => {
     expect(service.config().name).toEqual(mockConfig.name);
   });
 
-  it("Handles handles missing deployment json", async () => {
+  it("Handles missing deployment json", async () => {
     const errorResponse = new HttpErrorResponse({
       error: "test 404 error",
       status: 404,
