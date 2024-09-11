@@ -56,6 +56,9 @@ export function lottiePlayerFactory() {
     ContextMenuModule,
   ],
   providers: [
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    HTTP,
+    Device,
     // ensure deployment service initialized before app component load
     {
       provide: APP_INITIALIZER,
@@ -65,9 +68,6 @@ export function lottiePlayerFactory() {
       },
       deps: [DeploymentService],
     },
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
-    HTTP,
-    Device,
     httpInterceptorProviders,
     { provide: ErrorHandler, useClass: ErrorHandlerService },
   ],
