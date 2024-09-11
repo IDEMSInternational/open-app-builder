@@ -236,4 +236,16 @@ describe("DataItemsComponent", () => {
     ).args[0];
     expect(setItemContext.currentItemId).toBe(rowItemId);
   });
+  // TODO
+  // it("sets an item correctly for a given _index", async () => {
+  //   await actions.set_item({
+  //     context: SET_ITEM_CONTEXT,
+  //     _index: 1,
+  //     writeableProps: { string: "sets an item correctly for a given _index" },
+  //   });
+  //   const obs = await service.query$<any>("data_list", "test_flow");
+  //   const data = await firstValueFrom(obs);
+  //   expect(data[0].string).toEqual("hello");
+  //   expect(data[1].string).toEqual("sets an item correctly for a given _index");
+  // });
 });
