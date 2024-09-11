@@ -7,7 +7,6 @@ import { DataEvaluationService } from "src/app/shared/services/data/data-evaluat
 import { AsyncServiceBase } from "src/app/shared/services/asyncService.base";
 import { PLH_CALC_FUNCTIONS } from "./template-calc-functions/plh-calc-functions";
 import { CORE_CALC_FUNCTIONS } from "./template-calc-functions/core-calc-functions";
-import { UserMetaService } from "src/app/shared/services/userMeta/userMeta.service";
 import { LocalStorageService } from "src/app/shared/services/local-storage/local-storage.service";
 
 @Injectable({ providedIn: "root" })
@@ -25,15 +24,14 @@ export class TemplateCalcService extends AsyncServiceBase {
   constructor(
     private serverService: ServerService,
     private dataEvaluationService: DataEvaluationService,
-    private localStorageService: LocalStorageService,
-    private userMetaService: UserMetaService
+    private localStorageService: LocalStorageService
   ) {
     super("TemplateCalc");
     this.registerInitFunction(this.initialise);
   }
   private async initialise() {
     this.ensureSyncServicesReady([this.serverService, this.localStorageService]);
-    await this.ensureAsyncServicesReady([this.dataEvaluationService, this.userMetaService]);
+    await this.ensureAsyncServicesReady([this.dataEvaluationService]);
     await this.setUserMetaData();
     this.getCalcContext();
   }
@@ -47,6 +45,10 @@ export class TemplateCalcService extends AsyncServiceBase {
     // Assign all calc functions also to window object to allow calling between functions
     (window as any).calc = this.calcFunctions;
     return this.calcContext;
+  }
+
+  public updateThisCtxt<K extends keyof IThisCtxt>(field: K, value: IThisCtxt[K]) {
+    this.calcContext.thisCtxt[field] = value;
   }
 
   /**
@@ -67,7 +69,7 @@ export class TemplateCalcService extends AsyncServiceBase {
       app_first_launch: this.dataEvaluationService.data.first_app_launch,
       app_user_id: this.app_user_id,
       device_info: this.device_info,
-    };
+    } as IThisCtxt;
   }
 
   private async setUserMetaData() {
@@ -119,9 +121,15 @@ export class TemplateCalcService extends AsyncServiceBase {
  * `pick_random(this.local.some_list)`
  */
 export interface ICalcContext {
-  thisCtxt: {
-    [name: string]: any;
-  };
+  thisCtxt: IThisCtxt;
   globalFunctions: IFunctionHashmap;
   globalConstants: IConstantHashmap;
+}
+
+interface IThisCtxt {
+  calc: Function;
+  app_day: number;
+  app_first_launch: string;
+  app_user_id: string;
+  device_info: DeviceInfo;
 }
