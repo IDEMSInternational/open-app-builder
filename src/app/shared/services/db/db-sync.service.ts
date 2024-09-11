@@ -14,6 +14,7 @@ import { AppConfigService } from "../app-config/app-config.service";
 import { AsyncServiceBase } from "../asyncService.base";
 import { UserMetaService } from "../userMeta/userMeta.service";
 import { DbService } from "./db.service";
+import { DeploymentService } from "../deployment/deployment.service";
 
 @Injectable({ providedIn: "root" })
 /**
@@ -29,7 +30,8 @@ export class DBSyncService extends AsyncServiceBase {
     private dbService: DbService,
     private http: HttpClient,
     private userMetaService: UserMetaService,
-    private appConfigService: AppConfigService
+    private appConfigService: AppConfigService,
+    private deploymentService: DeploymentService
   ) {
     super("DB Sync");
     this.registerInitFunction(this.inititialise);
@@ -81,12 +83,13 @@ export class DBSyncService extends AsyncServiceBase {
 
   /** Populate common app_meta to local record */
   private generateServerRecord(record: any, mapping: IDBServerMapping) {
+    const { name } = this.deploymentService.config();
     const { is_user_record, user_record_id_field } = mapping;
     if (is_user_record && user_record_id_field) {
       const serverRecord: IDBServerUserRecord = {
         app_user_id: this.userMetaService.getUserMeta("uuid"),
         app_user_record_id: record[user_record_id_field],
-        app_deployment_name: environment.deploymentName,
+        app_deployment_name: name,
         app_version: environment.version,
         data: record,
       };

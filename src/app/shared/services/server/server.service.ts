@@ -10,6 +10,7 @@ import { AppConfigService } from "../app-config/app-config.service";
 import { SyncServiceBase } from "../syncService.base";
 import { LocalStorageService } from "../local-storage/local-storage.service";
 import { DynamicDataService } from "../dynamic-data/dynamic-data.service";
+import { DeploymentService } from "../deployment/deployment.service";
 
 /**
  * Backend API
@@ -31,7 +32,8 @@ export class ServerService extends SyncServiceBase {
     private http: HttpClient,
     private appConfigService: AppConfigService,
     private localStorageService: LocalStorageService,
-    private dynamicDataService: DynamicDataService
+    private dynamicDataService: DynamicDataService,
+    private deploymentService: DeploymentService
   ) {
     super("Server");
     this.initialise();
@@ -57,6 +59,7 @@ export class ServerService extends SyncServiceBase {
   }
 
   public async syncUserData() {
+    const { name } = this.deploymentService.config();
     await this.dynamicDataService.ready();
     if (!this.device_info) {
       this.device_info = await Device.getInfo();
@@ -78,7 +81,7 @@ export class ServerService extends SyncServiceBase {
       contact_fields,
       app_version: environment.version,
       device_info: this.device_info,
-      app_deployment_name: environment.deploymentName,
+      app_deployment_name: name,
       dynamic_data,
     };
     console.log("[SERVER] sync data", data);

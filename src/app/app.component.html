@@ -16,16 +16,19 @@
       <ion-toolbar color="primary">
         <ion-title>{{ sideMenuDefaults.title }}</ion-title>
         <div class="app-version" slot="end">
-          <span *ngIf="sideMenuDefaults.should_show_version && CONTENT_VERSION">
-            <abbr [title]="APP_VERSION" tabindex="1">
-              {{ CONTENT_VERSION }}
-            </abbr>
-          </span>
-          <span *ngIf="sideMenuDefaults.should_show_version && !CONTENT_VERSION"
-            >{{ APP_VERSION }}
-          </span>
+          @if (sideMenuDefaults.should_show_version) {
+            @if (deploymentService.config()._content_version; as CONTENT_VERSION) {
+              <span>
+                <abbr [title]="deploymentService.config()._app_builder_version" tabindex="1">
+                  {{ CONTENT_VERSION }}
+                </abbr>
+              </span>
+            } @else {
+              <span>{{ this.deploymentService.config()._app_builder_version }} </span>
+            }
+          }
           <span *ngIf="sideMenuDefaults.should_show_deployment_name" style="margin-left: 16px"
-            >({{ DEPLOYMENT_NAME }})</span
+            >({{ this.deploymentService.config().name }})</span
           >
         </div>
       </ion-toolbar>

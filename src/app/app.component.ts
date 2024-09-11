@@ -41,6 +41,7 @@ import { SeoService } from "./shared/services/seo/seo.service";
 import { FeedbackService } from "./feature/feedback/feedback.service";
 import { ShareService } from "./shared/services/share/share.service";
 import { LocalStorageService } from "./shared/services/local-storage/local-storage.service";
+import { DeploymentService } from "./shared/services/deployment/deployment.service";
 
 @Component({
   selector: "app-root",
@@ -48,15 +49,13 @@ import { LocalStorageService } from "./shared/services/local-storage/local-stora
   styleUrls: ["app.component.scss"],
 })
 export class AppComponent {
-  APP_VERSION = environment.version;
-  CONTENT_VERSION = environment.deploymentConfig.git.content_tag_latest;
-  DEPLOYMENT_NAME = environment.deploymentName;
   appConfig: IAppConfig;
   appAuthenticationDefaults: IAppConfig["APP_AUTHENTICATION_DEFAULTS"];
   sideMenuDefaults: IAppConfig["APP_SIDEMENU_DEFAULTS"];
   footerDefaults: IAppConfig["APP_FOOTER_DEFAULTS"];
   /** Track when app ready to render sidebar and route templates */
   public renderAppTemplates = false;
+
   /**
    * A space-separated list of values, hierarchically representing the current platform,
    * e.g. on iPhone the value would be "mobile ios iphone".
@@ -66,6 +65,9 @@ export class AppComponent {
   platforms: string;
 
   constructor(
+    // Public services (for UI)
+    public deploymentService: DeploymentService,
+
     // 3rd Party Services
     private platform: Platform,
     private cdr: ChangeDetectorRef,
@@ -111,6 +113,9 @@ export class AppComponent {
   }
 
   private async initializeApp() {
+    // eagerly load deployment config to make available throughout app
+    await this.deploymentService.ready();
+
     this.platform.ready().then(async () => {
       this.platforms = this.platform.platforms().join(" ");
       this.subscribeToAppConfigChanges();
@@ -148,9 +153,10 @@ export class AppComponent {
   }
   /** Populate contact fields that may be used by other services during initialisation */
   private async populateAppInitFields() {
-    this.localStorageService.setProtected("DEPLOYMENT_NAME", this.DEPLOYMENT_NAME);
-    this.localStorageService.setProtected("APP_VERSION", this.APP_VERSION);
-    this.localStorageService.setProtected("CONTENT_VERSION", this.CONTENT_VERSION);
+    const { _content_version, _app_builder_version, name } = this.deploymentService.config();
+    this.localStorageService.setProtected("DEPLOYMENT_NAME", name);
+    this.localStorageService.setProtected("APP_VERSION", _app_builder_version);
+    this.localStorageService.setProtected("CONTENT_VERSION", _content_version);
     // HACK - ensure first_app_launch migrated from event service
     if (!this.localStorageService.getProtected("APP_FIRST_LAUNCH")) {
       await this.appEventService.ready();
@@ -164,7 +170,7 @@ export class AppComponent {
    * Currently only run on native where specified (but can comment out for testing locally)
    */
   private async loadAuthConfig() {
-    const { firebase } = environment.deploymentConfig;
+    const { firebase } = this.deploymentService.config();
     const { enforceLogin } = this.appAuthenticationDefaults;
     const ensureLogin = firebase.config && enforceLogin && Capacitor.isNativePlatform();
     if (ensureLogin) {
