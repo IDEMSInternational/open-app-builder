@@ -10,7 +10,7 @@ import {
 interface IToggleParams {
   /**
    * TEMPLATE PARAMETER: "variant". Setting "ios" or "android" will style the toggle to match the respective
-   * platform, otherwise the default is to match the current device platform, using "ios" on web.
+   * platform, otherwise the default is to match the current device platform, using "android" on web.
    * */
   variant: "" | "icon" | "in_button" | "ios" | "android";
   /** TEMPLATE PARAMETER: "style". Legacy, use "variant" instead. */
