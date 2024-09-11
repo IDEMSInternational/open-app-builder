@@ -9,6 +9,7 @@ import { TemplateActionRegistry } from "../../components/template/services/insta
 import { TemplateFieldService } from "../../components/template/services/template-field.service";
 import { LocalStorageService } from "../local-storage/local-storage.service";
 import { DynamicDataService } from "../dynamic-data/dynamic-data.service";
+import { TemplateCalcService } from "../../components/template/services/template-calc.service";
 
 type IDynamicDataState = ReturnType<DynamicDataService["getState"]>;
 
@@ -17,12 +18,13 @@ export class UserMetaService extends AsyncServiceBase {
   /** keep an in-memory copy of user to provide synchronously */
   public userMeta: IUserMeta;
   constructor(
-    private localStorageService: LocalStorageService,
     private dbService: DbService,
-    private templateActionRegistry: TemplateActionRegistry,
-    private http: HttpClient,
+    private dynamicDataService: DynamicDataService,
     private fieldService: TemplateFieldService,
-    private dynamicDataService: DynamicDataService
+    private http: HttpClient,
+    private localStorageService: LocalStorageService,
+    private templateActionRegistry: TemplateActionRegistry,
+    private templateCalcService: TemplateCalcService
   ) {
     super("UserMetaService");
     this.registerInitFunction(this.initialise);
@@ -35,22 +37,16 @@ export class UserMetaService extends AsyncServiceBase {
       this.dbService,
       this.fieldService,
       this.dynamicDataService,
+      this.templateCalcService,
     ]);
     this.registerUserActions();
     const userMetaValues = await this.dbService.table<IUserMetaEntry>("user_meta").toArray();
-    const userMeta: IUserMeta = USER_DEFAULTS;
+    this.userMeta = USER_DEFAULTS;
     userMetaValues.forEach((v) => {
-      userMeta[v.key] = v.value;
+      this.userMeta[v.key] = v.value;
     });
     const { identifier: uuid } = await Device.getId();
-    // fix legacy user IDs - note this can likely be removed after v0.16
-    if (userMeta.uuid && userMeta.uuid !== uuid) {
-      await this.setUserMeta({ uuid, uuid_temp: userMeta.uuid });
-    }
-    userMeta.uuid = uuid;
-    this.userMeta = userMeta;
-    // populate user id contact field
-    this.localStorageService.setProtected("APP_USER_ID", uuid);
+    await this.updateUuid(uuid);
   }
 
   getUserMeta(key: keyof IUserMeta) {
@@ -83,11 +79,27 @@ export class UserMetaService extends AsyncServiceBase {
     }
   }
 
+  private async updateUuid(uuid: string) {
+    // fix legacy user IDs - note this can likely be removed after v0.16
+    if (this.userMeta.uuid && this.userMeta.uuid !== uuid) {
+      await this.setUserMeta({ uuid, uuid_temp: this.userMeta.uuid });
+    }
+    this.userMeta.uuid = uuid;
+    // populate user id contact field
+    this.localStorageService.setProtected("APP_USER_ID", uuid);
+    // update calc context
+    this.templateCalcService.updateThisCtxt("app_user_id", uuid);
+  }
+
   private async importUserContactFields(contact_fields = {}) {
     for (const [key, value] of Object.entries(contact_fields)) {
       // TODO - handle special contact fields as required (e.g. _app_skin, _app_theme)
       if (!this.localStorageService.isProtected(key)) {
         this.localStorageService.setString(key, value as string);
+      }
+      // handle user ID import
+      if (key === this.localStorageService.getProtectedFieldNameWithPrefix("APP_USER_ID")) {
+        await this.updateUuid(String(value));
       }
     }
   }
