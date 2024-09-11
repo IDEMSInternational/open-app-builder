@@ -59,6 +59,10 @@ export interface IDeploymentRuntimeConfig {
     url?: string;
     publicApiKey?: string;
   };
+  web: {
+    /** Relative path of custom favicon asset to load from app_data assets */
+    favicon_asset?: string;
+  };
 }
 
 /** Deployment settings not available at runtime  */
@@ -124,10 +128,6 @@ interface IDeploymentCoreConfig {
     /** translated string for import. Default `./app_data/translations_source/translated_strings */
     translated_strings_path?: string;
   };
-  web: {
-    /** Relative path of custom favicon asset to load from app_data assets */
-    favicon_asset?: string;
-  };
   workflows: {
     /** path to custom workflow files to include */
     custom_ts_files: string[];
@@ -169,6 +169,7 @@ export const DEPLOYMENT_RUNTIME_CONFIG_DEFAULTS: IDeploymentRuntimeConfig = {
   supabase: {
     enabled: false,
   },
+  web: {},
 };
 
 /** Full example of just all config once merged with defaults */
@@ -198,7 +199,6 @@ export const DEPLOYMENT_CONFIG_EXAMPLE_DEFAULTS: IDeploymentConfig = {
     source_strings_path: "./app_data/translations_source/source_strings",
     translated_strings_path: "./app_data/translations_source/translated_strings",
   },
-  web: {},
   workflows: {
     custom_ts_files: [],
     task_cache_path: "./tasks",
