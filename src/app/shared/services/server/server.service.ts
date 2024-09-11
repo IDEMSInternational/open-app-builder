@@ -59,7 +59,7 @@ export class ServerService extends SyncServiceBase {
   }
 
   public async syncUserData() {
-    const { name } = this.deploymentService.config();
+    const { name, _app_builder_version } = this.deploymentService.config();
     await this.dynamicDataService.ready();
     if (!this.device_info) {
       this.device_info = await Device.getInfo();
@@ -79,7 +79,7 @@ export class ServerService extends SyncServiceBase {
     // TODO - get DTO from api (?)
     const data = {
       contact_fields,
-      app_version: environment.version,
+      app_version: _app_builder_version,
       device_info: this.device_info,
       app_deployment_name: name,
       dynamic_data,

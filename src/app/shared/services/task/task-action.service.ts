@@ -1,10 +1,10 @@
 import { Injectable } from "@angular/core";
 
 import { Subject } from "rxjs";
-import { environment } from "src/environments/environment";
 import { generateTimestamp } from "../../utils";
 import { AsyncServiceBase } from "../asyncService.base";
 import { DbService } from "../db/db.service";
+import { DeploymentService } from "../deployment/deployment.service";
 
 @Injectable({ providedIn: "root" })
 /**
@@ -25,7 +25,10 @@ export class TaskActionService extends AsyncServiceBase {
   private appInactiveStartTime = new Date().getTime();
   /** Don't log inactivity periods lower than this number (30000ms = 30s) */
   private readonly INACTIVITY_THRESHOLD = 30000;
-  constructor(private db: DbService) {
+  constructor(
+    private db: DbService,
+    private deploymentService: DeploymentService
+  ) {
     super("TaskActions");
     this.registerInitFunction(this.initialise);
   }
@@ -130,13 +133,14 @@ export class TaskActionService extends AsyncServiceBase {
   }
 
   private createNewEntry(task_id: string) {
+    const { _app_builder_version } = this.deploymentService.config();
     const timestamp = generateTimestamp();
     const entry: ITaskEntry = {
       id: `${task_id}_${timestamp}`,
       task_id,
       actions: [],
       _created: timestamp,
-      _appVersion: environment.version,
+      _appVersion: _app_builder_version,
       _completed: false,
       _duration: 0,
     };

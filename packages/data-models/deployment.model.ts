@@ -6,7 +6,7 @@ export const DEPLOYMENT_CONFIG_VERSION = 20240910.0;
 
 /** Configuration settings available to runtime application */
 export interface IDeploymentRuntimeConfig {
-  /** version of open-app-builder used to compile */
+  /** version of open-app-builder used to compile, read from builder repo package.json */
   _app_builder_version: string;
   /** tag of content version provided by content git repo*/
   _content_version: string;
