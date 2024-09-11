@@ -16,6 +16,9 @@
 
 ## Installation
 
+### Choosing a location to download the repo
+Before running the commands, make sure you’re in the correct folder (the "current working directory") where you want to save the repo locally. You can use the `pwd` command to print the current directory, and `cd` to change the directory. You should ensure that there are no spaces at any point in the current working directory path. For example, if your top level user folder contains a space in the name, consider downloading the repo to a folder located outside of the user folder, e.g. in a new top-level `C:/apps` folder on Windows.
+
 ### Download the repo with binary assets
 ```
 git lfs clone https://github.com/IDEMSInternational/open-app-builder.git
