@@ -25,7 +25,7 @@ export class AuthService extends SyncServiceBase {
     this.initialise();
   }
   private initialise() {
-    const { firebase } = this.deploymentService.config();
+    const { firebase } = this.deploymentService.config;
     if (firebase?.auth?.enabled && this.firebaseService.app) {
       this.addAuthListeners();
       this.registerTemplateActionHandlers();

@@ -368,7 +368,7 @@ export class FeedbackService extends SyncServiceBase {
    * device info and user uuid
    */
   public generateFeedbackMetadata() {
-    const { _app_builder_version, name } = this.deploymentService.config();
+    const { _app_builder_version, name } = this.deploymentService.config;
     const metadata: IFeedbackMetadata = {
       deviceInfo: this.deviceInfo,
       pathname: location.pathname,

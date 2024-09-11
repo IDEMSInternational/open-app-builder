@@ -133,7 +133,7 @@ export class TaskActionService extends AsyncServiceBase {
   }
 
   private createNewEntry(task_id: string) {
-    const { _app_builder_version } = this.deploymentService.config();
+    const { _app_builder_version } = this.deploymentService.config;
     const timestamp = generateTimestamp();
     const entry: ITaskEntry = {
       id: `${task_id}_${timestamp}`,

@@ -83,7 +83,7 @@ export class DBSyncService extends AsyncServiceBase {
 
   /** Populate common app_meta to local record */
   private generateServerRecord(record: any, mapping: IDBServerMapping) {
-    const { name, _app_builder_version } = this.deploymentService.config();
+    const { name, _app_builder_version } = this.deploymentService.config;
     const { is_user_record, user_record_id_field } = mapping;
     if (is_user_record && user_record_id_field) {
       const serverRecord: IDBServerUserRecord = {

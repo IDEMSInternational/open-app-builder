@@ -18,7 +18,7 @@ export class FirebaseService extends SyncServiceBase {
    * Configure app module imports dependent on what firebase features should be enabled
    */
   private initialise() {
-    const { firebase } = this.deploymentService.config();
+    const { firebase } = this.deploymentService.config;
 
     // Check if any services are enabled, simply return if not
     const enabledServices = Object.entries(firebase)

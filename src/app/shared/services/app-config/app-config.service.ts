@@ -47,8 +47,7 @@ export class AppConfigService extends SyncServiceBase {
   }
 
   private initialise() {
-    const deploymentOverrides: IAppConfigOverride =
-      this.deploymentService.config().app_config || {};
+    const deploymentOverrides: IAppConfigOverride = this.deploymentService.config.app_config || {};
     this.APP_CONFIG = getDefaultAppConfig();
     // Store app config with deployment overrides applied, to be merged with additional overrides when applied
     this.deploymentAppConfig = this.applyAppConfigOverrides(this.APP_CONFIG, deploymentOverrides);

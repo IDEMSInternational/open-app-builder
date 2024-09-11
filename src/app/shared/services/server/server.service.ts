@@ -59,7 +59,7 @@ export class ServerService extends SyncServiceBase {
   }
 
   public async syncUserData() {
-    const { name, _app_builder_version } = this.deploymentService.config();
+    const { name, _app_builder_version } = this.deploymentService.config;
     await this.dynamicDataService.ready();
     if (!this.device_info) {
       this.device_info = await Device.getInfo();

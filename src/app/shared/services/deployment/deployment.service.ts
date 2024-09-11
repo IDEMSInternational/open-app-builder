@@ -1,4 +1,4 @@
-import { Injectable, signal } from "@angular/core";
+import { Injectable } from "@angular/core";
 import { AsyncServiceBase } from "../asyncService.base";
 import { HttpClient } from "@angular/common/http";
 import { catchError, map, of, firstValueFrom } from "rxjs";
@@ -18,16 +18,18 @@ export class DeploymentService extends AsyncServiceBase {
   }
 
   /** Private writeable config to allow population from JSON */
-  private _config = signal(DEPLOYMENT_RUNTIME_CONFIG_DEFAULTS);
+  private _config = DEPLOYMENT_RUNTIME_CONFIG_DEFAULTS;
 
   /** Read-only access to deployment runtime config */
-  public config = this._config.asReadonly();
+  public get config() {
+    return this._config;
+  }
 
   /** Load active deployment configuration from JSON file */
   private async initialise() {
     const deployment = await firstValueFrom(this.loadDeployment());
     if (deployment) {
-      this._config.set(deployment);
+      this._config = deployment;
     }
   }
 
