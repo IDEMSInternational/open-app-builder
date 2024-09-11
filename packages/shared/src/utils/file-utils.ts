@@ -497,8 +497,6 @@ export function replicateFile(src: string, target: string) {
       return;
     }
   }
-  // copy from src to target
-  fs.ensureDir(path.dirname(target));
   fs.ensureDirSync(path.dirname(target));
   fs.copyFileSync(src, target);
   const mtime = new Date(srcStats.modifiedTime);
