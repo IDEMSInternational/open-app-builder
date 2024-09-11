@@ -17,6 +17,7 @@ nav:
       - authors/feedback.md
       - Advanced:
           - authors/advanced/looping-data.md
+          - authors/advanced/data-generators.md
           - authors/advanced/overrides.md
       - authors/local-sheets.md
   - Contributors:

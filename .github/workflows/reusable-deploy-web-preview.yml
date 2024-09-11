@@ -36,6 +36,9 @@ on:
         description: Firebase site for hosting
         type: string
         default: ${{vars.FIREBASE_HOSTING_TARGET}}
+    secrets:  # Declare secrets you expect to receive
+      FIREBASE_SERVICE_ACCOUNT:
+        required: true
 
 jobs:
   build_action:
@@ -101,7 +104,7 @@ jobs:
         uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: "${{ secrets.GITHUB_TOKEN }}"
-          firebaseServiceAccount: "${{ env.FIREBASE_SERVICE_ACCOUNT }}"
+          firebaseServiceAccount: "${{ secrets.FIREBASE_SERVICE_ACCOUNT }}"
           projectId: "${{ env.FIREBASE_PROJECT_ID }}"
           channelId: "${{ env.FIREBASE_HOSTING_CHANNEL }}"
           target: "${{inputs.firebase-host}}"
