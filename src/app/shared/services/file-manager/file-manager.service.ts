@@ -27,7 +27,7 @@ export class FileManagerService extends SyncServiceBase {
   }
 
   private initialise() {
-    this.cacheName = this.deploymentService.config().name;
+    this.cacheName = this.deploymentService.config.name;
     this.registerTemplateActionHandlers();
   }
 

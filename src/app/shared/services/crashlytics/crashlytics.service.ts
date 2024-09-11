@@ -20,7 +20,7 @@ export class CrashlyticsService extends AsyncServiceBase {
   }
   private async initialise() {
     if (Capacitor.isNativePlatform()) {
-      const { firebase } = this.deploymentService.config();
+      const { firebase } = this.deploymentService.config;
       // Crashlytics is still supported on native device without firebase config (uses google-services.json)
       // so use config property to toggle enabled instead
       await this.setEnabled({ enabled: firebase?.crashlytics?.enabled });

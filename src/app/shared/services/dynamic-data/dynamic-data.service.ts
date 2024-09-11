@@ -56,7 +56,7 @@ export class DynamicDataService extends AsyncServiceBase {
   }
 
   private async initialise() {
-    const { name } = this.deploymentService.config();
+    const { name } = this.deploymentService.config;
     // Enable dev mode when not in production
     // NOTE - calls 'global' so requires polyfill
     if (!environment.production) {

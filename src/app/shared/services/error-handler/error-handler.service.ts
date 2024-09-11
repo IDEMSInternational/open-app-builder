@@ -35,7 +35,7 @@ export class ErrorHandlerService extends ErrorHandler {
    * (although workaround required as cannot extend multiple services)
    */
   private async initialise() {
-    const { error_logging, firebase } = this.deploymentService.config();
+    const { error_logging, firebase } = this.deploymentService.config;
     if (environment.production && error_logging?.dsn) {
       await this.initialiseSentry();
       this.sentryEnabled = true;
@@ -78,7 +78,7 @@ export class ErrorHandlerService extends ErrorHandler {
    * https://docs.sentry.io/platforms/javascript/guides/capacitor/
    */
   private async initialiseSentry() {
-    const { error_logging, name, _app_builder_version } = this.deploymentService.config();
+    const { error_logging, name, _app_builder_version } = this.deploymentService.config;
     Sentry.init({
       dsn: error_logging?.dsn,
       environment: environment.production ? "production" : "development",

@@ -49,7 +49,7 @@ export class RemoteAssetService extends AsyncServiceBase {
   private async initialise() {
     this.registerTemplateActionHandlers();
     // require supabase to be configured to use remote asset service
-    const { enabled, publicApiKey, url } = this.deploymentService.config().supabase;
+    const { enabled, publicApiKey, url } = this.deploymentService.config.supabase;
     this.supabaseEnabled = enabled;
     if (this.supabaseEnabled) {
       await this.ensureAsyncServicesReady([this.templateAssetService, this.dynamicDataService]);

@@ -154,7 +154,7 @@ export class AppComponent {
   }
   /** Populate contact fields that may be used by other services during initialisation */
   private async populateAppInitFields() {
-    const { _content_version, _app_builder_version, name } = this.deploymentService.config();
+    const { _content_version, _app_builder_version, name } = this.deploymentService.config;
     this.localStorageService.setProtected("DEPLOYMENT_NAME", name);
     this.localStorageService.setProtected("APP_VERSION", _app_builder_version);
     this.localStorageService.setProtected("CONTENT_VERSION", _content_version);
@@ -171,7 +171,7 @@ export class AppComponent {
    * Currently only run on native where specified (but can comment out for testing locally)
    */
   private async loadAuthConfig() {
-    const { firebase } = this.deploymentService.config();
+    const { firebase } = this.deploymentService.config;
     const { enforceLogin } = this.appAuthenticationDefaults;
     const ensureLogin = firebase.config && enforceLogin && Capacitor.isNativePlatform();
     if (ensureLogin) {
