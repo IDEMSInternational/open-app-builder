@@ -55,7 +55,7 @@ jobs:
       #         Download build
       #############################################################################
       - name: Download Build Artifact
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: www
 
@@ -79,7 +79,7 @@ jobs:
 
       - name: Upload screenshots
         if: ${{inputs.generate}}
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: screenshots-artifact # NOTE - must match SCREENSHOT_ARTIFACT_NAME in code
           path: packages/test-visual/output/screenshots
@@ -95,7 +95,7 @@ jobs:
 
       - name: Upload artifact
         if: ${{inputs.compare}}
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: test-visual-diffs-artifact
           path: packages/test-visual/output/diffs
@@ -104,7 +104,7 @@ jobs:
 
       - name: Upload Text Outputs
         if: ${{inputs.compare}}
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: text_output
           path: packages/test-visual/output/*.txt
