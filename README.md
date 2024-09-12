@@ -14,8 +14,8 @@
 2. Download and install [Git LFS](https://git-lfs.github.com/)  
    This will be used to download any required binary assets, such as images or pdfs
 
-3. Download and install [Node](https://nodejs.org/en/download/) (choose v18.20.4)  
-   This is the programming language required to run the project
+3. Download and install [Node](https://nodejs.org/en/download/)   
+   This is the programming language required to run the project. We currently support any of the versions prefixed `v20.x.x` or `v18.x.x`
 
 4. Download and Install [Yarn](https://classic.yarnpkg.com/en/docs/install)  
    This manages all 3rd-party code dependencies
