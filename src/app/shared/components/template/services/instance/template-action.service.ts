@@ -111,6 +111,10 @@ export class TemplateActionService extends SyncServiceBase {
     if (!this.container?.parent) {
       await this.templateNavService.handleNavActionsFromChild(actions, this.container);
     }
+    // HACK - ensure components checked for updates after processing
+    if (this.container?.cdr) {
+      this.container.cdr.markForCheck();
+    }
   }
   /** Optional method child component can add to handle post-action callback */
   public async handleActionsCallback(actions: FlowTypes.TemplateRowAction[], results: any) {}
