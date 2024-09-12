@@ -19,7 +19,7 @@
 ### Download the repo with binary assets
 !!! tip "Choosing a location to download the repo"
 
-      Before running the commands, make sure you’re in the correct folder (the "current working directory") where you want to save the repo locally. You can use the `pwd` command to print the current directory, and `cd` to change the directory. You should ensure that there are no spaces at any point in the current working directory path. For example, if your top level user folder contains a space in the name, consider downloading the repo to a folder located outside of the user folder, e.g. in a new top-level `C:/apps` folder on Windows.
+      It is best to download the repo to a folder path that does not include any spaces. If using a user documents directory that includes spaces, e.g. `/user/my name`, you may need to re-open the terminal in a different folder instead.
 
 To download the repo into the current working directory, run:
 ```
