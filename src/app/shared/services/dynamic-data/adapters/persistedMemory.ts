@@ -17,7 +17,6 @@ addRxPlugin(RxDBUpdatePlugin);
 import { debounceTime, filter, firstValueFrom, Subject } from "rxjs";
 
 import { FlowTypes } from "data-models";
-import { environment } from "src/environments/environment";
 import { deepMergeObjects, compareObjectKeys } from "../../../utils";
 
 /**
@@ -78,7 +77,7 @@ export class PersistedMemoryAdapter {
     [key: string]: RxCollection<any, {}, {}, {}>;
   }>;
 
-  constructor() {
+  constructor(private dbName: string) {
     this.subscribeToStatePersist();
   }
 
@@ -99,7 +98,7 @@ export class PersistedMemoryAdapter {
 
   public async create() {
     this.db = await createRxDatabase({
-      name: `${environment.deploymentName}_user`,
+      name: `${this.dbName}_user`,
       storage: getRxStorageDexie({ autoOpen: true }),
       ignoreDuplicate: true,
     });
