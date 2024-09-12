@@ -9,7 +9,11 @@ import { DEPLOYMENT_RUNTIME_CONFIG_DEFAULTS, IDeploymentRuntimeConfig } from "pa
  * Deployment runtime config settings
  *
  * NOTE - this is intialized using an `APP_INITIALIZER` token within
- * the main app.module.ts
+ * the main app.module.ts and will block all other services from loading until
+ * it is fully initialised
+ *
+ * Services that access the deployment config therefore do not need to await
+ * DeploymentService init/ready methods.
  */
 export class DeploymentService extends AsyncServiceBase {
   constructor(private http: HttpClient) {
