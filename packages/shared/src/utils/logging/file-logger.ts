@@ -6,7 +6,7 @@ import { existsSync } from "fs";
 import { SCRIPTS_LOGS_DIR } from "../../paths";
 import { getGlobalMemoryLoggerTransport } from "./memory-logger";
 
-const logLevels = ["debug", "info", "warning", "error"] as const;
+const logLevels = ["debug", "info", "warn", "error"] as const;
 type ILogLevel = (typeof logLevels)[number];
 
 /** Retrieve all logs from current session for a given variable */

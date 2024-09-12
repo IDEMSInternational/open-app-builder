@@ -44,6 +44,11 @@
     align-items: center;
     padding: var(--small-padding);
     min-height: 56px;
+
+    plh-task-progress-bar {
+      display: none;
+    }
+
     .content-wrapper {
       height: 100%;
       flex-direction: row-reverse;
@@ -186,14 +191,16 @@
       border: 1px solid rgba(black, 0.07);
       filter: drop-shadow(var(--ion-default-box-shadow));
 
-      .img {
-        width: $circle-width;
+      img {
+        width: 100%;
+        height: 100%;
+        clip-path: circle(#{$circle-width / 2 - 4px} at center);
       }
     }
 
     plh-task-progress-bar {
       position: absolute;
-      visibility: none;
+      display: none;
     }
   }
   .title-wrapper {

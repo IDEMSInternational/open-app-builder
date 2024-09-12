@@ -1,6 +1,6 @@
 import Transport from "winston-transport";
 
-const logLevels = ["debug", "info", "warning", "error"] as const;
+const logLevels = ["debug", "info", "warn", "error"] as const;
 type ILogLevel = (typeof logLevels)[number];
 
 interface ILogEntry {
@@ -29,7 +29,7 @@ export class MemoryLogger extends Transport {
       debug: [],
       error: [],
       info: [],
-      warning: [],
+      warn: [],
     };
   }
   log(entry: ILogEntry, callback) {
