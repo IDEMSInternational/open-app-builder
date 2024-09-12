@@ -61,7 +61,7 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
   private componentDestroyed$ = new Subject<boolean>();
   debugMode: boolean;
 
-  private get cdr() {
+  public get cdr() {
     return this.injector.get(ChangeDetectorRef);
   }
 
