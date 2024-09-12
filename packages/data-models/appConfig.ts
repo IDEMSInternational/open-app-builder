@@ -114,9 +114,14 @@ const APP_HEADER_DEFAULTS = {
     activeRoute(location) === APP_ROUTE_DEFAULTS.home_route,
 };
 
-/** Utility function to return the active pathname without any sidebar routing e.g. /home(sidebar:alt)  */
+/**
+ * Utility function to return the active pathname without any sidebar routing e.g. /home(sidebar:alt)
+ * or basename when deployed to subfolder path, e.g. /my-repo/template/home (provided by <base href='' /> in head)
+ * */
 const activeRoute = (location: Location) => {
-  return location.pathname.replace(/\(.+\)/, "");
+  const baseHref = document.querySelector("base")?.getAttribute("href");
+  const path = location.pathname.replace(baseHref, "/").replace(/\(.+\)/, "");
+  return path;
 };
 
 const APP_FOOTER_DEFAULTS: { templateName: string | null } = {
