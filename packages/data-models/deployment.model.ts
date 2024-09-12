@@ -219,7 +219,7 @@ interface IAssetContentsEntry extends IContentsEntry {
 
 export type IAssetContentsEntryMinimal = Omit<IAssetContentsEntry, "relativePath" | "modifiedTime">;
 
-export interface IOverrideProps {
+export interface IAssetOverrideProps {
   themeName: string;
   languageCode: string;
 }
@@ -230,8 +230,8 @@ export interface IAssetEntry extends IAssetContentsEntryMinimal {
   /** Used to indicate that the asset pack contains only overrides for the associated file, not the default asset file */
   overridesOnly?: boolean;
   overrides?: {
-    [themeName: IOverrideProps["themeName"]]: {
-      [languageCode: IOverrideProps["languageCode"]]: IAssetContentsEntryMinimal;
+    [themeName: IAssetOverrideProps["themeName"]]: {
+      [languageCode: IAssetOverrideProps["languageCode"]]: IAssetContentsEntryMinimal;
     };
   };
 }

@@ -13,7 +13,7 @@ import { BehaviorSubject, Subject, Subscription, lastValueFrom } from "rxjs";
 import { AppDataService } from "src/app/shared/services/data/app-data.service";
 import { TemplateAssetService } from "../../components/template/services/template-asset.service";
 import { AsyncServiceBase } from "../asyncService.base";
-import { IAssetEntry, IOverrideProps } from "packages/data-models/deployment.model";
+import { IAssetEntry, IAssetOverrideProps } from "packages/data-models/deployment.model";
 import { DynamicDataService } from "../dynamic-data/dynamic-data.service";
 import {
   arrayToHashmap,
@@ -277,7 +277,7 @@ export class RemoteAssetService extends AsyncServiceBase {
     assetEntry: IAssetEntry,
     fileIndex: number,
     totalFiles: number,
-    overrideProps?: IOverrideProps
+    overrideProps?: IAssetOverrideProps
   ) {
     console.log(
       `[REMOTE ASSETS] Downloading file ${fileIndex + 1} of ${totalFiles}: ${this.downloadProgress}%`
@@ -314,7 +314,7 @@ export class RemoteAssetService extends AsyncServiceBase {
    * Save updates to asset contents in dynamic data, including file path
    * (local storage on native platforms and supabase URL on web)
    * */
-  private async updateAssetContents(assetEntry: IAssetEntry, overrideProps?: IOverrideProps) {
+  private async updateAssetContents(assetEntry: IAssetEntry, overrideProps?: IAssetOverrideProps) {
     const filePath = await this.getFilePathForRemoteAsset(assetEntry);
     const update = this.addFilePathToAssetEntry(assetEntry, filePath, overrideProps);
     // Update the core asset pack in dynamic data, adding an entry for the asset or
@@ -343,7 +343,7 @@ export class RemoteAssetService extends AsyncServiceBase {
   private addFilePathToAssetEntry(
     assetEntry: IAssetEntry,
     filePath: string,
-    overrideProps?: IOverrideProps
+    overrideProps?: IAssetOverrideProps
   ): IAssetEntry {
     // In the case that the asset is an override, add the new filepath to the nested override entry
     if (overrideProps) {
