@@ -56,6 +56,9 @@ export class DynamicDataService extends AsyncServiceBase {
   }
 
   private async initialise() {
+    // Use the deployment name as unique database identifier
+    // This will allow multiple databases to be used on the same origin
+    // for different deployments (e.g. dev sites running on localhost)
     const { name } = this.deploymentService.config;
     // Enable dev mode when not in production
     // NOTE - calls 'global' so requires polyfill
