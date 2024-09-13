@@ -60,17 +60,20 @@ const copyDeploymentDataToApp = () => {
 };
 
 function generateRuntimeConfig(deploymentConfig: IDeploymentConfigJson): IDeploymentRuntimeConfig {
-  const { api, app_config, firebase, supabase, error_logging, git, name } = deploymentConfig;
+  const { analytics, api, app_config, error_logging, firebase, git, name, supabase, web } =
+    deploymentConfig;
 
   return {
-    api,
-    app_config,
-    firebase,
-    supabase,
-    error_logging,
     _app_builder_version: packageJSON.version,
     _content_version: git.content_tag_latest || "",
+    analytics,
+    api,
+    app_config,
+    error_logging,
+    firebase,
     name,
+    supabase,
+    web,
   };
 }
 
