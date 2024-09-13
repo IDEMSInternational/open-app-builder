@@ -1,0 +1,22 @@
+# Automatically apply labels to PR based on filepaths of modified files
+name: Github PR Label Paths
+on:
+  pull_request:
+jobs:
+  label:
+    if: ${{ !contains(github.event.pull_request.labels.*.name , 'no-autolabel')}}
+    permissions:
+      contents: read
+      pull-requests: write
+    runs-on: ubuntu-latest
+    steps:
+      # Checkout repo to access local templates (if updated)
+      - name: checkout
+        uses: actions/checkout@main
+      # Assign labels based on files modified
+      # https://github.com/actions/labeler
+      - name: Assign PR path Labels
+        uses: actions/labeler@v5
+        with:
+          configuration-path: .github/pr-labeler.config.yml
+          sync-labels: false
