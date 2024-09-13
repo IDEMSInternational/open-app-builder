@@ -1,5 +1,5 @@
 import type { IGdriveEntry } from "../@idemsInternational/gdrive-tools";
-import type { IAppConfig } from "./appConfig";
+import type { IAppConfigOverride } from "./appConfig";
 
 /** Update version to force recompile next time deployment set (e.g. after default config update) */
 export const DEPLOYMENT_CONFIG_VERSION = 20240910.0;
@@ -21,7 +21,7 @@ export interface IDeploymentRuntimeConfig {
     endpoint?: string;
   };
   /** Optional override of any provided constants from data-models/constants */
-  app_config: IAppConfig;
+  app_config: IAppConfigOverride;
   /** 3rd party integration for logging services */
   error_logging?: {
     /** sentry/glitchtip logging dsn */
@@ -159,7 +159,7 @@ export const DEPLOYMENT_RUNTIME_CONFIG_DEFAULTS: IDeploymentRuntimeConfig = {
     db_name: "plh",
     endpoint: "https://apps-server.idems.international/api",
   },
-  app_config: {} as any, // populated by `getDefaultAppConstants()`,
+  app_config: {},
 
   firebase: {
     config: null,
