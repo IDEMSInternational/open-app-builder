@@ -13,7 +13,7 @@ if (environment.production) {
 }
 
 /** Load deployment config from asset json, returning default config if not available*/
-const loadConfig = async () => {
+const loadConfig = async (): Promise<IDeploymentRuntimeConfig> => {
   const res = await fetch("/assets/app_data/deployment.json");
   if (res.status === 200) {
     const deploymentConfig = <IDeploymentRuntimeConfig>await res.json();
@@ -21,13 +21,18 @@ const loadConfig = async () => {
     return deploymentConfig;
   } else {
     console.warn("[DEPLOYMENT] config not found, using defaults");
-    return DEPLOYMENT_RUNTIME_CONFIG_DEFAULTS;
+    return { ...DEPLOYMENT_RUNTIME_CONFIG_DEFAULTS, app_config: {} as any };
   }
 };
 
-// Initialise platform once deployment config has loaded, setting the value of the
-// global DEPLOYMENT_CONFIG injection token from the loaded json
-// https://stackoverflow.com/a/62151011
+/**
+ * Initialise platform once deployment config has loaded, setting the value of the
+ * global DEPLOYMENT_CONFIG injection token from the loaded json
+ * https://stackoverflow.com/a/62151011
+ *
+ * The configuration is loaded before the rest of the platform so that config values
+ * can be used to configure modules imported in app.module.ts
+ */
 loadConfig().then((deploymentConfig) => {
   platformBrowserDynamic([{ provide: DEPLOYMENT_CONFIG, useValue: deploymentConfig }])
     .bootstrapModule(AppModule)
