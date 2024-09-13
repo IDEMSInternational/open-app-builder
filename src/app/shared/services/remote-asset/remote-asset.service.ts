@@ -87,7 +87,20 @@ export class RemoteAssetService extends AsyncServiceBase {
           download: async () => {
             if (this.supabaseEnabled && this.remoteAssetsEnabled) {
               const assetPackName = assetPackArgs[0];
-              await this.downloadAndIntegrateAssetPack(assetPackName);
+              if (assetPackName) {
+                try {
+                  await lastValueFrom(this.getAssetPackManifest(assetPackName));
+                  await this.downloadAndIntegrateAssetPack(this.manifest);
+                } catch (e) {
+                  console.error(e);
+                }
+              } else {
+                console.error("[REMOTE ASSETS] Please provide an asset pack name to download");
+                // TODO: Implement default behaviour of generating a manifest of files to download in case of no named asset pack
+                // (e.g. look at what files are available locally vs required in accordance with current app config)
+                // const assetPackManifest = this.generateManifest()
+                // await this.downloadAndIntegrateAssetPack(assetPackManifest)
+              }
             } else
               console.error(
                 "The 'asset_pack: download' action is not available. To enable asset pack functionality, please ensure that supabase and ASSET_PACKS are enabled in the deployment config."
@@ -142,17 +155,8 @@ export class RemoteAssetService extends AsyncServiceBase {
   /************************************************************************************
    *  Download methods
    ************************************************************************************/
-  private async downloadAndIntegrateAssetPack(assetPack?: string) {
-    // If a named asset pack is provided, download its manifest from supabase
-    if (assetPack) {
-      await lastValueFrom(this.getManifest(assetPack)).catch((error) => console.error(error));
-    }
-    // TODO: Else, somehow generate a manifest of files to download
-    // (e.g. look at what files are available locally vs required in accordance with current app config)
-    else {
-      this.manifest = this.generateManifest();
-    }
-    const assetEntries = this.manifest.rows as IAssetEntry[];
+  private async downloadAndIntegrateAssetPack(assetPackManifest: FlowTypes.AssetPack) {
+    const assetEntries = assetPackManifest.rows as IAssetEntry[];
 
     // If running on native device, download assets and populate to filesystem, adding local
     // filesystem path to asset entry in contents list for consumption by template asset service
@@ -175,10 +179,13 @@ export class RemoteAssetService extends AsyncServiceBase {
     }
   }
 
-  private getManifest(assetPack: string) {
+  /**
+   * Download the asset pack manifest for a named asset pack from supabase and store the result in this.manifest
+   */
+  private getAssetPackManifest(assetPackName: string) {
     let data: Blob;
     let progress: number;
-    const url = this.getPublicUrl(`${assetPack}/${assetPack}.json`);
+    const url = this.getPublicUrl(`${assetPackName}/${assetPackName}.json`);
     const progress$ = new Subject<number>();
     this.downloadFileFromUrl(url, "blob").subscribe({
       error: (err) => {
@@ -192,7 +199,7 @@ export class RemoteAssetService extends AsyncServiceBase {
         progress$.next(progress);
       },
       complete: async () => {
-        console.log(`[REMOTE ASSETS] Manifest file downloaded for asset pack: ${assetPack}`);
+        console.log(`[REMOTE ASSETS] Manifest file downloaded for asset pack: ${assetPackName}`);
         if (data) {
           this.manifest = JSON.parse(await data.text());
           console.log("[REMOTE ASSETS] Manifest loaded", this.manifest);
