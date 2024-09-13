@@ -23,6 +23,8 @@
 ## Installation
 
 ### Download the repo with binary assets
+
+To download the repo into the current working directory, run:
 ```
 git lfs clone https://github.com/IDEMSInternational/open-app-builder.git
 ```

@@ -17,6 +17,11 @@
 ## Installation
 
 ### Download the repo with binary assets
+!!! tip "Choosing a location to download the repo"
+
+      It is best to download the repo to a folder path that does not include any spaces. If using a user documents directory that includes spaces, e.g. `/user/my name`, you may need to re-open the terminal in a different folder instead.
+
+To download the repo into the current working directory, run:
 ```
 git lfs clone https://github.com/IDEMSInternational/open-app-builder.git
 ```
