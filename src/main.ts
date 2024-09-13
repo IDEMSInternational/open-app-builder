@@ -21,7 +21,7 @@ const loadConfig = async (): Promise<IDeploymentRuntimeConfig> => {
     return deploymentConfig;
   } else {
     console.warn("[DEPLOYMENT] config not found, using defaults");
-    return { ...DEPLOYMENT_RUNTIME_CONFIG_DEFAULTS, app_config: {} as any };
+    return DEPLOYMENT_RUNTIME_CONFIG_DEFAULTS;
   }
 };
 
