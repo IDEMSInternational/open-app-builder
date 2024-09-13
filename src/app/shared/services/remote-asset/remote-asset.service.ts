@@ -15,13 +15,7 @@ import { TemplateAssetService } from "../../components/template/services/templat
 import { AsyncServiceBase } from "../asyncService.base";
 import { IAssetEntry, IAssetOverrideProps } from "packages/data-models/deployment.model";
 import { DynamicDataService } from "../dynamic-data/dynamic-data.service";
-import {
-  arrayToHashmap,
-  convertBlobToBase64,
-  deepMergeObjects,
-  getNestedProperty,
-  setNestedProperty,
-} from "../../utils";
+import { arrayToHashmap, convertBlobToBase64, deepMergeObjects } from "../../utils";
 
 const CORE_ASSET_PACK_NAME = "core_assets";
 
@@ -93,7 +87,7 @@ export class RemoteAssetService extends AsyncServiceBase {
           download: async () => {
             if (this.supabaseEnabled && this.remoteAssetsEnabled) {
               const assetPackName = assetPackArgs[0];
-              await this.downloadAndPopulateRequiredAssets(assetPackName);
+              await this.downloadAndIntegrateAssetPack(assetPackName);
             } else
               console.error(
                 "The 'asset_pack: download' action is not available. To enable asset pack functionality, please ensure that supabase and ASSET_PACKS are enabled in the deployment config."
@@ -148,7 +142,7 @@ export class RemoteAssetService extends AsyncServiceBase {
   /************************************************************************************
    *  Download methods
    ************************************************************************************/
-  private async downloadAndPopulateRequiredAssets(assetPack?: string) {
+  private async downloadAndIntegrateAssetPack(assetPack?: string) {
     // If a named asset pack is provided, download its manifest from supabase
     if (assetPack) {
       await lastValueFrom(this.getManifest(assetPack)).catch((error) => console.error(error));
@@ -158,27 +152,26 @@ export class RemoteAssetService extends AsyncServiceBase {
     else {
       this.manifest = this.generateManifest();
     }
-
     const assetEntries = this.manifest.rows as IAssetEntry[];
-    // TODO: implement queue system for downloads (see template-action service, or use of 3rd party p-queue elsewhere)
-    for (const [index, assetEntry] of assetEntries.entries()) {
-      const url = this.getPublicUrl(assetEntry.id);
-      // If running on native device, download assets and populate to filesystem, adding local
-      // filesystem path to asset entry in contents list for consumption by template asset service
-      if (Capacitor.isNativePlatform()) {
-        // await lastValueFrom(this.handleDownload(url, assetEntry, index, assetEntries.length)).catch(
-        //   (error) => console.error(error)
-        // );
-        await this.handleDownloadIncludingOverrides(assetEntry, index, assetEntries.length);
+
+    // If running on native device, download assets and populate to filesystem, adding local
+    // filesystem path to asset entry in contents list for consumption by template asset service
+    if (Capacitor.isNativePlatform()) {
+      // TODO: implement queue system for downloads (see template-action service, or use of 3rd party p-queue elsewhere)
+      for (const [index, assetEntry] of assetEntries.entries()) {
+        await this.handleAssetDownload(assetEntry, index, assetEntries.length);
       }
-      // On web, update contents list with asset's public URL for consumption by template asset service
-      else {
+    }
+
+    // On web, update contents list with asset's public URL for consumption by template asset service
+    // (files will be served remotely via supabse CDN)
+    else {
+      for (const [index, assetEntry] of assetEntries.entries()) {
         console.log(
           `[REMOTE ASSETS] Fetching remote URL for ${index + 1} of ${assetEntries.length} files.`
         );
         await this.updateAssetContents(assetEntry);
       }
-      // NEXT: ^ put this logic into a wrapper function around `handleDownload` that either handles download or updates contents list. E.g. `fetchRemoteAsset()`
     }
   }
 
@@ -241,16 +234,20 @@ export class RemoteAssetService extends AsyncServiceBase {
     return manifest as FlowTypes.AssetPack;
   }
 
-  async handleDownloadIncludingOverrides(
+  /**
+   * Native platforms only:
+   * Download an asset from an asset pack, including any overrides, and update the contents list accordingly
+   */
+  private async handleAssetDownload(
     assetEntry: IAssetEntry,
     fileIndex: number,
-    totalFiles: number
+    totalFiles?: number
   ) {
     // Download the top level asset, unless overridesOnly is specified
     if (!assetEntry.overridesOnly) {
       const topLevelAssetUrl = this.getPublicUrl(assetEntry.id);
       await lastValueFrom(
-        this.handleDownload(topLevelAssetUrl, assetEntry, fileIndex, totalFiles)
+        this.downloadAssetAndUpdateContentsList(topLevelAssetUrl, assetEntry, fileIndex, totalFiles)
       ).catch((error) => console.error(error));
     }
 
@@ -261,7 +258,13 @@ export class RemoteAssetService extends AsyncServiceBase {
           const assetUrl = this.getPublicUrl(assetContentsEntry.filePath);
           const overrideProps = { themeName, languageCode };
           await lastValueFrom(
-            this.handleDownload(assetUrl, assetEntry, fileIndex, totalFiles, overrideProps)
+            this.downloadAssetAndUpdateContentsList(
+              assetUrl,
+              assetEntry,
+              fileIndex,
+              totalFiles,
+              overrideProps
+            )
           ).catch((error) => console.error(error));
         }
       }
@@ -269,18 +272,18 @@ export class RemoteAssetService extends AsyncServiceBase {
   }
 
   /**
-   * Download a single asset from an array of assets,
-   * save to local storage and update the assets contents list
+   * Native platforms only:
+   * Download a single asset from an asset pack, save to local native storage and update the assets contents list
    * */
-  handleDownload(
+  private downloadAssetAndUpdateContentsList(
     url: string,
     assetEntry: IAssetEntry,
     fileIndex: number,
-    totalFiles: number,
+    totalFiles?: number,
     overrideProps?: IAssetOverrideProps
   ) {
     console.log(
-      `[REMOTE ASSETS] Downloading file ${fileIndex + 1} of ${totalFiles}: ${this.downloadProgress}%`
+      `[REMOTE ASSETS] Downloading file ${fileIndex + 1} of ${totalFiles || "?"}: ${this.downloadProgress}%`
     );
     let data: Blob;
     let progress: number;
@@ -315,7 +318,7 @@ export class RemoteAssetService extends AsyncServiceBase {
    * (local storage on native platforms and supabase URL on web)
    * */
   private async updateAssetContents(assetEntry: IAssetEntry, overrideProps?: IAssetOverrideProps) {
-    const filePath = await this.getFilePathForRemoteAsset(assetEntry);
+    const filePath = await this.getRemoteAssetFilePath(assetEntry);
     const update = this.addFilePathToAssetEntry(assetEntry, filePath, overrideProps);
     // Update the core asset pack in dynamic data, adding an entry for the asset or
     // updating an existing entry if it already exists
@@ -328,11 +331,11 @@ export class RemoteAssetService extends AsyncServiceBase {
   }
 
   /**
-   * @returns the filepath from which to read the file at runtime:
+   * @returns the path from which to read the file at runtime:
    * - on native platforms, the path of the local file in storage
    * - on web, the remote supabase URL
    * */
-  private async getFilePathForRemoteAsset(assetEntry: IAssetEntry) {
+  private async getRemoteAssetFilePath(assetEntry: IAssetEntry) {
     if (Capacitor.isNativePlatform()) {
       return await this.fileManagerService.getLocalFilepath(assetEntry.id);
     } else {
@@ -454,7 +457,7 @@ export class RemoteAssetService extends AsyncServiceBase {
    * Reset the core asset pack contents to its original state before any remote assets were downloaded.
    * Useful when testing. TODO: Also delete any downloaded assets from the device
    * */
-  async reset() {
+  private async reset() {
     await this.dynamicDataService.resetFlow("asset_pack", CORE_ASSET_PACK_NAME);
   }
 
@@ -498,99 +501,4 @@ export class RemoteAssetService extends AsyncServiceBase {
   private getSupabaseFilepath(relativePath: string) {
     return `${this.folderName}/${relativePath}`;
   }
-
-  /************************************************************************************
-   *  Asset contents method utils
-   * Copied/adapted from `packages/scripts/src/commands/app-data/postProcess/assets.ts`
-   ************************************************************************************/
-
-  /**
-   * Adapted from `handleAssetOverrides()` method in `packages/scripts/src/commands/app-data/postProcess/assets.ts`
-   *
-   * We're essentially interpreting our folder structure in the supabase bucket and converting to our own
-   * asset manifest structure. This could be replaced modularly if we have a different way of specifiying the metadata
-   *
-   * Make a list of any source assets that have language-code or theme overrides,
-   * and any language assets that are missing corresponding globals.
-   * Flatten override files to sit alongside their target assets
-   */
-  // private handleAssetOverrides(assetEntry: IAssetEntry) {
-  //   const entries: IAssetEntriesByType = {
-  //     tracked: {},
-  //     untracked: {},
-  //   };
-
-  //   let { id } = assetEntry
-  //   // split assets to separate global, translated and theme assets
-  //   const pathSegments = id.split("/");
-
-  //   let themeVariation = pathSegments.find((segment) => this.isThemeAssetsFolderName(segment));
-  //   let langVariation = pathSegments.find((segment) => this.isCountryLanguageCode(segment));
-
-  //   let overridePath = "";
-
-  //   // Remove additional nesting for default lang and theme folders
-  //   id = id
-  //     .replace(`${ASSETS_GLOBAL_FOLDER_NAME}/`, "")
-  //     .replace(`theme_default/`, "");
-
-  //   // If using overrides ensure both theme and language provided, and place in corresponding folder
-  //   if (themeVariation || langVariation) {
-  //     themeVariation ??= "theme_default";
-  //     langVariation ??= ASSETS_GLOBAL_FOLDER_NAME;
-  //     // Replace override segments to leave named asset segment path
-  //     id = id
-  //       .replace(`${themeVariation}/`, "")
-  //       .replace(`${langVariation}/`, "");
-
-  //     overridePath = `overrides.${themeVariation}.${langVariation}`;
-  //   }
-
-  //   // Provide explicit path to file when not same as entry name (e.g. overrides)
-  //   if (assetEntry.relativePath !== id) {
-  //     assetEntry.filePath = id;
-  //   }
-
-  //   if (getNestedProperty(entries.tracked[id], overridePath)) {
-  //     Logger.error({
-  //       msg1: "Duplicate overrides detected",
-  //       msg2: `${id} [${themeVariation}] [${langVariation}]`,
-  //       logOnly: true,
-  //     });
-  //   }
-
-  //   // Merge overrides or top-level asset data into main entries
-  //   entries.tracked[id] = setNestedProperty(
-  //     overridePath,
-  //     assetEntry,
-  //     entries.tracked[id]
-  //   );
-
-  //   // Check for assets which have no default version, and move them to "untracked"
-  //   Object.entries(entries.tracked).forEach(([assetPathName, assetEntry]) => {
-  //     if (assetEntry.overrides && !assetEntry.md5Checksum) {
-  //       entries.untracked[assetPathName] = assetEntry;
-  //       delete entries.tracked[assetPathName];
-  //     }
-  //   });
-  //   return entries;
-  // }
-
-  // /**
-  //  * Check whether a string matches the expected format for the
-  //  * name of a folder containing theme-specific assets.
-  //  * Currently expects name to begin 'theme_'
-  //  */
-  // isThemeAssetsFolderName(str: string) {
-  //   return str.startsWith("theme_");
-  // }
-
-  // /**
-  //  * Simple regex to try and match standard country-language format
-  //  * Currently restricted to any codes in the format `ab_ab` or `ab_abc`
-  //  */
-  // isCountryLanguageCode(str: string) {
-  //   const regex = /^[a-z]{2}_[a-z]{2,3}$/gi;
-  //   return regex.test(str);
-  // }
 }
