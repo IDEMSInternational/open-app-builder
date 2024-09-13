@@ -2,6 +2,10 @@
 name: Github PR Label Paths
 on:
   pull_request:
+    # https://frontside.com/blog/2020-05-26-github-actions-pull_request/
+    types:
+        - opened
+        - synchronize
 jobs:
   label:
     if: ${{ !contains(github.event.pull_request.labels.*.name , 'no-autolabel')}}
