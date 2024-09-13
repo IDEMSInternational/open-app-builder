@@ -5,6 +5,7 @@ import { HttpClientTestingModule } from "@angular/common/http/testing";
 import { IAssetContents } from "src/app/data";
 import { FlowTypes, IAssetEntry } from "../../model";
 import clone from "clone";
+import { arrayToHashmap } from "../../utils";
 
 const MOCK_ASSETS_CONTENTS_LIST: IAssetContents = {
   "images/asset.png": {
@@ -46,17 +47,21 @@ const MOCK_ASSET_ENTRY_WITH_OVERRIDES: IAssetEntry = {
   },
 };
 
+const MOCK_CORE_ASSET_PACK_ROWS: FlowTypes.Data_listRow<IAssetEntry>[] = [
+  clone(MOCK_ASSET_ENTRY) as FlowTypes.Data_listRow<IAssetEntry>,
+  clone(MOCK_ASSET_ENTRY_WITH_OVERRIDES) as FlowTypes.Data_listRow<IAssetEntry>,
+];
+
+const MOCK_CORE_ASSET_PACK_ROWS_HASHMAP: Record<
+  string,
+  FlowTypes.Data_listRow<IAssetEntry>
+> = arrayToHashmap(MOCK_CORE_ASSET_PACK_ROWS, "id");
+
 const MOCK_CORE_ASSET_PACK: FlowTypes.AssetPack = {
   flow_type: "asset_pack",
   flow_name: "core_assets",
-  rows: [
-    clone(MOCK_ASSET_ENTRY) as FlowTypes.Data_listRow<IAssetEntry>,
-    clone(MOCK_ASSET_ENTRY_WITH_OVERRIDES) as FlowTypes.Data_listRow<IAssetEntry>,
-  ],
-  rowsHashmap: {
-    "images/asset.png": clone(MOCK_ASSET_ENTRY),
-    "audio/asset_with_overrides.mp3": clone(MOCK_ASSET_ENTRY_WITH_OVERRIDES),
-  },
+  rows: MOCK_CORE_ASSET_PACK_ROWS,
+  rowsHashmap: MOCK_CORE_ASSET_PACK_ROWS_HASHMAP,
 };
 
 /**
