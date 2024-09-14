@@ -2,7 +2,7 @@
 
 import type { IDataPipeOperation } from "shared";
 import type { IAppConfig } from "./appConfig";
-import { IAssetEntry } from "./deployment.model";
+import type { IAssetEntry } from "./deployment.model";
 
 /*********************************************************************************************
  *  Base flow types
