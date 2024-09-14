@@ -4,19 +4,27 @@ import { readJSONSync } from "fs-extra";
 import path from "path";
 
 import { DEPLOYMENT_CONFIG_EXAMPLE_DEFAULTS, getDefaultAppConfig } from "data-models";
-import type { IDeploymentConfig, IDeploymentConfigJson } from "data-models";
+import type {
+  IDeploymentConfig,
+  IDeploymentConfigGenerated,
+  IDeploymentConfigJson,
+} from "data-models";
 
 import { DEPLOYMENTS_PATH } from "../../paths";
 import { getStackFileNames, loadDeploymentJson } from "./utils";
+import { toEmptyObject } from "shared/src/utils/object-utils";
 
 // re-export of type for convenience
 export type { IDeploymentConfigJson };
 
 /** Create a new deployment config with default values */
-export function generateDeploymentConfig(name: string): IDeploymentConfig {
-  const config = DEPLOYMENT_CONFIG_EXAMPLE_DEFAULTS;
+export function generateDeploymentConfig(name: string) {
+  // populate placeholder properties for all nested appConfig to make it easier to
+  // apply overrides to single nested properties
+  const app_config = toEmptyObject(getDefaultAppConfig());
+  // combine with deployment config defaults
+  const config: IDeploymentConfigGenerated = { ...DEPLOYMENT_CONFIG_EXAMPLE_DEFAULTS, app_config };
   config.name = name;
-  config.app_config = getDefaultAppConfig();
   return config;
 }
 
