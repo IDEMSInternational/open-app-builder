@@ -5,8 +5,6 @@ import { IAppConfig, IAppSkin } from "data-models";
 import { arrayToHashmap } from "../../utils";
 import { AppConfigService } from "../app-config/app-config.service";
 import { TemplateService } from "../../components/template/services/template.service";
-import { Router } from "@angular/router";
-import { APP_CONFIG } from "src/app/data";
 import { ThemeService } from "src/app/feature/theme/services/theme.service";
 import { SyncServiceBase } from "../syncService.base";
 
@@ -24,8 +22,7 @@ export class SkinService extends SyncServiceBase {
     private localStorageService: LocalStorageService,
     private appConfigService: AppConfigService,
     private templateService: TemplateService,
-    private themeService: ThemeService,
-    private router: Router
+    private themeService: ThemeService
   ) {
     super("Skin Service");
     this.initialise();
@@ -57,12 +54,11 @@ export class SkinService extends SyncServiceBase {
    * */
   public setSkin(skinName: string, isInit = false) {
     if (skinName in this.availableSkins) {
-      const oldSkin = this.activeSkin$.value;
       const targetSkin = this.availableSkins[skinName];
       // console.log("[SET SKIN]", skinName, targetSkin);
       this.activeSkin$.next(targetSkin);
       // Update appConfig to reflect any overrides defined by the skin
-      this.appConfigService.updateAppConfig(targetSkin.appConfig);
+      this.appConfigService.setAppConfig(targetSkin.appConfig);
       if (!isInit) {
         // Update default values when skin changed to allow for skin-specific global overrides
         // Don't run on initialisation, since the skin and appConfig services must init before the template service and its dependencies
@@ -72,54 +68,10 @@ export class SkinService extends SyncServiceBase {
       }
       // Use local storage so that the active skin persists across app launches
       this.localStorageService.setProtected("APP_SKIN", targetSkin.name);
-      this.updateRoutingDefaults(targetSkin, oldSkin);
     } else {
       console.error(`No skin found with name "${skinName}"`, {
         availableSkins: this.availableSkins,
       });
-    }
-  }
-
-  /** Override changes to config-dependent routing config inherited in app-routing.module */
-  private updateRoutingDefaults(newSkin?: IAppSkin, oldSkin?: IAppSkin) {
-    const newRouteDefaults = newSkin?.appConfig?.APP_ROUTE_DEFAULTS;
-    let routes = this.router.config;
-    if (newRouteDefaults) {
-      const { APP_ROUTE_DEFAULTS: oldRouteDefaults } = oldSkin?.appConfig || APP_CONFIG;
-      // Replace default home route
-      // { path: "", redirectTo: APP_ROUTE_DEFAULTS.home_route, pathMatch: "full" },
-      if (
-        newRouteDefaults.home_route &&
-        newRouteDefaults.home_route !== oldRouteDefaults.home_route
-      ) {
-        const homeRouteIndex = routes.findIndex((route) => route.path === "");
-        if (homeRouteIndex > -1) {
-          routes[homeRouteIndex].redirectTo = newRouteDefaults.home_route;
-        }
-      }
-      // Replace fallbackRoute
-      // { path: "**", redirectTo: APP_ROUTE_DEFAULTS.fallback_route };
-      if (
-        newRouteDefaults.fallback_route &&
-        newRouteDefaults.fallback_route !== oldRouteDefaults.fallback_route
-      ) {
-        const fallbackRouteIndex = routes.findIndex((route) => route.path === "**");
-        if (fallbackRouteIndex > -1) {
-          routes[fallbackRouteIndex].redirectTo = newRouteDefaults.fallback_route;
-        }
-      }
-      if (newRouteDefaults.redirects) {
-        // Remove old redirects
-        if (oldRouteDefaults.redirects) {
-          const redirectedPaths = oldRouteDefaults.redirects.map((route) => route.path);
-          routes = routes.filter((route) => !redirectedPaths.includes(route.path));
-        }
-        // Add new redirects
-        for (const { path, redirectTo } of newRouteDefaults.redirects) {
-          routes.push({ path, redirectTo });
-        }
-      }
-      this.router.resetConfig(routes);
     }
   }
 
