@@ -37,7 +37,9 @@ describe("Object Utils", () => {
 
   it("toEmptyObject", () => {
     const res = toEmptyObject(MOCK_NESTED_OBJECT);
-    expect(res).toEqual({ obj_1: { obj_1_1: { obj_1_1_1: {} }, obj_1_2: { obj_1_2_1: {} } } });
+    expect(res).toEqual({
+      obj_1: { obj_1_1: { obj_1_1_1: {} }, obj_1_2: { obj_1_2_1: {} } },
+    } as any);
   });
 
   it("cleanEmptyObject", () => {
