@@ -1,11 +1,9 @@
 /**
  * TODO
- * - migrate manifest to standalone util + tests
  * - Organise structures for individual sub-reports (e.g. assets, sheets, components)
  * - Include sheet types/subtypes in manifest
  * - short summary text that links to breakdown
  * - possible recommendations/optimisations from manifest
- * - move manifest generator here?
  * - how to handle implicit deps (one component uses another)
  * - possibly will require runtime error/warning/prompt
  * - handle dynamic
@@ -54,7 +52,7 @@ export function generateManifest(data: IParsedWorkbookData): IFlowManifest {
   return manifest;
 }
 
-//  TODO - move to generic location
+//  TODO - move to generic location (possibly object-utils once #2423 merged)
 export function sortJsonByKey<T extends Record<string, any>>(json: T) {
   const sorted = {};
   for (const [key, value] of Object.entries(json).sort((a, b) => (a[0] > b[0] ? 1 : -1))) {

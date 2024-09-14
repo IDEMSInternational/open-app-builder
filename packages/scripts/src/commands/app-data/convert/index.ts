@@ -19,7 +19,7 @@ import {
   standardiseNewlines,
 } from "./utils";
 import { FlowParserProcessor } from "./processors/flowParser/flowParser";
-import { generateManifest } from "./utils/app-data-manifest.utils";
+import { generateManifest } from "./manifest/manifest";
 
 /***************************************************************************************
  * CLI
