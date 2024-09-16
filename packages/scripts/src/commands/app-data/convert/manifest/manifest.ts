@@ -1,6 +1,8 @@
 /**
  * TODO
  * - Organise structures for individual sub-reports (e.g. assets, sheets, components)
+ * - Decide whether to run report row-by-row or just allow repeated loops
+ * - Generate output html
  * - Include sheet types/subtypes in manifest
  * - short summary text that links to breakdown
  * - possible recommendations/optimisations from manifest
