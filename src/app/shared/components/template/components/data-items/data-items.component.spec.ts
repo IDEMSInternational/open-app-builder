@@ -55,10 +55,10 @@ const TEST_ROWS: FlowTypes.TemplateRow[] = [
     action_list: [
       {
         trigger: "click",
-        action_id: "set_item",
+        action_id: "set_items",
         args: [],
-        _raw: "click | set_item | completed: true",
-        _cleaned: "click | set_item | completed: true",
+        _raw: "click | set_items | completed: true",
+        _cleaned: "click | set_items | completed: true",
         params: {
           completed: true,
         },
@@ -207,19 +207,19 @@ describe("DataItemsComponent", () => {
     expect(component).toBeTruthy();
   });
 
-  it("adds item meta to action arguments", () => {
+  it("updates 'set_item' action params relative to item meta", () => {
     // ID of original item
     const rowItemId = TEST_ROWS[0]._evalContext.itemContext._id;
     // add item meta
     const rowsWithItemMeta = component["setItemMeta"](TEST_ROWS, TEST_ITEM_DATA, "test_data_list");
-    // get action args for a set_item action (setItemContext object is passed within an array)
-    const setItemContext = rowsWithItemMeta[0].action_list.find(
+    // get action params for a set_item action
+    const actionParams = rowsWithItemMeta[0].action_list.find(
       (action) => action.action_id === "set_item"
-    ).args[0];
-    expect(setItemContext.currentItemId).toBe(rowItemId);
+    ).params;
+    expect(actionParams._id).toBe(rowItemId);
   });
 
-  it("adds item meta to action arguments nested inside child rows", () => {
+  it("updates 'set_item' action params relative to item meta for nested child rows", () => {
     // ID of original item
     const rowItemId = TEST_ROWS_NESTED[0]._evalContext.itemContext._id;
     // add item meta
@@ -230,11 +230,29 @@ describe("DataItemsComponent", () => {
     );
     // get rows at one level of nesting (e.g. those within a display group)
     const nestedRowsWithItemMeta = rowsWithItemMeta[0].rows;
-    // get action args for a set_item action (args object is passed within an array)
-    const setItemContext = nestedRowsWithItemMeta[0].action_list.find(
+    // get action params for a set_item action
+    const actionParams = nestedRowsWithItemMeta[0].action_list.find(
       (action) => action.action_id === "set_item"
-    ).args[0];
-    expect(setItemContext.currentItemId).toBe(rowItemId);
+    ).params;
+    expect(actionParams._id).toBe(rowItemId);
+  });
+
+  it("updates 'set_items' action params relative to item meta", () => {
+    const rowsWithItemMeta = component["setItemMeta"](TEST_ROWS, TEST_ITEM_DATA, "test_data_list");
+    // get action params for a set_items action
+    const actionParams = rowsWithItemMeta[1].action_list.find(
+      (action) => action.action_id === "set_items"
+    ).params;
+    expect(actionParams).toEqual({
+      _items: {
+        flow_type: "data_list",
+        // flow_name will be undefined because TmplDataItemsComponent.dataListName is only set when setting TmplDataItemsComponent.row
+        // TODO: test setting TmplDataItemsComponent.row
+        flow_name: undefined,
+        rows: TEST_ITEM_DATA.map((item) => ({ id: item.id })),
+      },
+      completed: true,
+    });
   });
 });
 
