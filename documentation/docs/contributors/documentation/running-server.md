@@ -21,7 +21,7 @@ The scripts below will create a python [virtual environment](https://docs.python
 
     ```sh linenums="1"
     cd documentation
-    python -m venv .venv
+    python -m venv .venv # Or `python3`, depending on python installation
     source .venv/bin/activate
     pip install -r requirements.txt
     mkdocs serve
