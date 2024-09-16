@@ -8,8 +8,8 @@
 2. Download and install [Git LFS](https://git-lfs.github.com/)  
    This will be used to download any required binary assets, such as images or pdfs
 
-3. Download and install [Node](https://nodejs.org/en/download/) (choose v18.20.4)  
-   This is the programming language required to run the project
+3. Download and install [Node](https://nodejs.org/en/download/)   
+   This is the programming language required to run the project. We currently support any of the versions prefixed `v20.x.x` or `v18.x.x`
 
 4. Download and Install [Yarn](https://classic.yarnpkg.com/en/docs/install)  
    This manages all 3rd-party code dependencies
@@ -17,6 +17,11 @@
 ## Installation
 
 ### Download the repo with binary assets
+!!! tip "Choosing a location to download the repo"
+
+      It is best to download the repo to a folder path that does not include any spaces. If using a user documents directory that includes spaces, e.g. `/user/my name`, you may need to re-open the terminal in a different folder instead.
+
+To download the repo into the current working directory, run:
 ```
 git lfs clone https://github.com/IDEMSInternational/open-app-builder.git
 ```
