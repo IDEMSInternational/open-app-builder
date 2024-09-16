@@ -1,15 +1,14 @@
-import { APP_INITIALIZER, ErrorHandler, NgModule } from "@angular/core";
+import { ErrorHandler, NgModule } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
 import { FormsModule } from "@angular/forms";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { RouteReuseStrategy } from "@angular/router";
-import { HttpClientModule } from "@angular/common/http";
+import { HTTP_INTERCEPTORS, HttpClientModule } from "@angular/common/http";
 import { IonicModule, IonicRouteStrategy } from "@ionic/angular";
 
 // Libs
 import { LottieModule } from "ngx-lottie";
 import player from "lottie-web";
-import { MatomoModule, MatomoRouterModule } from "ngx-matomo-client";
 
 // Native
 import { HTTP } from "@ionic-native/http/ngx";
@@ -19,13 +18,12 @@ import { Device } from "@ionic-native/device/ngx";
 import { AppComponent } from "./app.component";
 import { AppRoutingModule } from "./app-routing.module";
 import { SharedModule } from "./shared/shared.module";
-import { environment } from "src/environments/environment";
-import { httpInterceptorProviders } from "./shared/services/server/interceptors";
 import { TemplateComponentsModule } from "./shared/components/template/template.module";
 import { ContextMenuModule } from "./shared/modules/context-menu/context-menu.module";
 import { TourModule } from "./feature/tour/tour.module";
 import { ErrorHandlerService } from "./shared/services/error-handler/error-handler.service";
-import { DeploymentService } from "./shared/services/deployment/deployment.service";
+import { ServerAPIInterceptor } from "./shared/services/server/interceptors";
+import { DeploymentFeaturesModule } from "./deployment-features.module";
 
 // Note we need a separate function as it's required
 // by the AOT compiler.
@@ -48,27 +46,16 @@ export function lottiePlayerFactory() {
     // LottieCacheModule.forRoot(),
     TemplateComponentsModule,
     TourModule,
-    MatomoModule.forRoot({
-      siteId: environment.analytics.siteId,
-      trackerUrl: environment.analytics.endpoint,
-    }),
-    MatomoRouterModule,
     ContextMenuModule,
+    DeploymentFeaturesModule,
   ],
   providers: [
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     HTTP,
     Device,
-    // ensure deployment service initialized before app component load
-    {
-      provide: APP_INITIALIZER,
-      multi: true,
-      useFactory: (deploymentService: DeploymentService) => {
-        return () => deploymentService.ready();
-      },
-      deps: [DeploymentService],
-    },
-    httpInterceptorProviders,
+    // Use custom api interceptor to handle interaction with server backend
+    { provide: HTTP_INTERCEPTORS, useClass: ServerAPIInterceptor, multi: true },
+    // Use custom error handler
     { provide: ErrorHandler, useClass: ErrorHandlerService },
   ],
   bootstrap: [AppComponent],
