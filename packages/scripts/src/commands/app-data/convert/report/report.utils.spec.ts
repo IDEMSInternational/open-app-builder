@@ -1,7 +1,7 @@
-import { generateMarkdownTable, sortJsonByKey } from "./manifest.utils";
+import { generateMarkdownTable, sortJsonByKey } from "./report.utils";
 
-/** yarn workspace scripts test -t manifest.utils.spec.ts */
-describe("manifest utils", () => {
+/** yarn workspace scripts test -t report.utils.spec.ts */
+describe("report utils", () => {
   it("sortJsonByKey", () => {
     const mockJson = { b: "first entry", a: "second entry" };
     const res = sortJsonByKey(mockJson);
