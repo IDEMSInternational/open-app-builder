@@ -19,7 +19,7 @@ import {
   standardiseNewlines,
 } from "./utils";
 import { FlowParserProcessor } from "./processors/flowParser/flowParser";
-import { generateManifest } from "./manifest/manifest";
+import { ManifestGenerator } from "./manifest/manifest";
 
 /***************************************************************************************
  * CLI
@@ -131,9 +131,8 @@ export class AppDataConverter {
     processor.logger = this.logger;
     const jsonFlows = Object.values(combinedOutputsHashmap);
     const result = (await processor.process(jsonFlows)) as IParsedWorkbookData;
-    const manifest = generateManifest(result);
-    console.table(manifest.actions);
-    console.table(manifest.components);
+    await new ManifestGenerator(this.activeDeployment).process(result);
+
     // TODO - write to disk and log
     const { errors, warnings } = this.logOutputs(result);
     return { result, errors, warnings };

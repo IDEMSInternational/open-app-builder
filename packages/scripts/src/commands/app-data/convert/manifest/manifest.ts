@@ -1,64 +1,79 @@
 /**
  * TODO
- * - Organise structures for individual sub-reports (e.g. assets, sheets, components)
- * - Decide whether to run report row-by-row or just allow repeated loops
- * - Generate output html
- * - Include sheet types/subtypes in manifest
- * - short summary text that links to breakdown
+ * - Include sheet types/subtypes reporter
+ * - Include asset references
+ * - Better to name as manifest or report
+ * - Document authors to gitignore outputs (if not wanted)
+ *
+ * Future
+ * - Specific feature manifests that declare action/component namespaces
  * - possible recommendations/optimisations from manifest
  * - how to handle implicit deps (one component uses another)
  * - possibly will require runtime error/warning/prompt
  * - handle dynamic
- * - handle multiple emit types
  * - QA components/actions that don't exist
  * - possibly export list of COMPONENTS_AVAILABLE (or similar... or just use main list lookup)
  * - also consider asset manifest (but would need to ensure dynamic assets included, plus param list + template value)
  * - handle implicit components (check imports (?))
  */
 
+import { IDeploymentConfigJson } from "data-models";
+import { IParsedWorkbookData } from "../types";
+import { TemplateSummaryReport } from "./reporters";
+import { IManifestReport } from "./manifest.types";
+import { resolve, dirname } from "path";
+import { writeFile, ensureDir, emptyDir } from "fs-extra";
+import { generateMarkdownTable } from "./manifest.utils";
+import { logOutput } from "shared";
+import chalk from "chalk";
+
 // Testing notes
 // yarn workflow sync_sheets --skip-download
 
-import { FlowTypes } from "data-models";
-import { IParsedWorkbookData } from "../types";
-
-interface IFlowManifest {
-  components: Record<string, number>;
-  actions: Record<string, number>;
-  // TODO - also may need to consider imported from data_list or other sources
-}
-
 /**
- * Create a manifest of components and action handlers referenced by templates
- * NOTE - this will not explicitly identify any variables injected dynamically
- * TODO - add tests and example to catch?
- * */
-export function generateManifest(data: IParsedWorkbookData): IFlowManifest {
-  const manifest: IFlowManifest = { actions: {}, components: {} };
-  // TODO - consider extracting dynamic data_list actions if exist
-  for (const flow of data.template || []) {
-    for (const row of flow.rows) {
-      const { action_list = [], type } = row as FlowTypes.TemplateRow;
-      for (const action of action_list) {
-        manifest.actions[action.action_id] ??= 0;
-        manifest.actions[action.action_id]++;
-      }
-      manifest.components[type] ??= 0;
-      manifest.components[type]++;
-    }
-  }
-  //   sort data alphabetically
-  for (const key of Object.keys(manifest)) {
-    manifest[key] = sortJsonByKey(manifest[key]);
-  }
-  return manifest;
-}
+ *
+ **/
+export class ManifestGenerator {
+  constructor(private deployment: IDeploymentConfigJson) {}
 
-//  TODO - move to generic location (possibly object-utils once #2423 merged)
-export function sortJsonByKey<T extends Record<string, any>>(json: T) {
-  const sorted = {};
-  for (const [key, value] of Object.entries(json).sort((a, b) => (a[0] > b[0] ? 1 : -1))) {
-    sorted[key] = value;
+  public async process(data: IParsedWorkbookData) {
+    const { template_actions, template_components } = await new TemplateSummaryReport().process(
+      data
+    );
+
+    const outputReports = { template_actions, template_components };
+    await this.writeOutputs(outputReports);
   }
-  return sorted as T;
+
+  private async writeOutputs(reports: Record<string, IManifestReport>) {
+    const outputDir = resolve(this.deployment._workspace_path, "reports");
+    await ensureDir(dirname(outputDir));
+    await emptyDir(outputDir);
+    await this.writeOutputJson(reports, resolve(outputDir, "summary.json"));
+    await this.writeOutputMarkdown(reports, resolve(outputDir, "summary.md"));
+    logOutput({ msg1: "Reports Generated", msg2: outputDir });
+    // repeat log in case boxed output broken
+    console.log(chalk.gray(outputDir));
+  }
+
+  private async writeOutputJson(reports: Record<string, IManifestReport>, target: string) {
+    const output: Record<string, any> = {};
+    for (const [key, { data }] of Object.entries(reports)) {
+      output[key] = data;
+    }
+    await writeFile(target, JSON.stringify(output, null, 2));
+  }
+
+  private async writeOutputMarkdown(reports: Record<string, IManifestReport>, target: string) {
+    const contents = ["# Summary"];
+    for (const report of Object.values(reports)) {
+      if (report.type === "table") {
+        contents.push("");
+        contents.push(`## ${report.title}`);
+        const mdTable = generateMarkdownTable(report.data);
+        contents.push(mdTable);
+      }
+    }
+    await writeFile(target, contents.join("\n"));
+  }
 }
