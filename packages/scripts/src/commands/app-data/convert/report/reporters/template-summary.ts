@@ -2,7 +2,7 @@ import { FlowTypes } from "data-models";
 
 import { IParsedWorkbookData } from "../../types";
 import { sortJsonByKey } from "../manifest.utils";
-import { IManifestReport } from "../manifest.types";
+import { IReport } from "../manifest.types";
 
 interface ITemplateSummary {
   components: Record<string, { count: number }>;
@@ -38,7 +38,7 @@ export class TemplateSummaryReport {
       }
     }
 
-    const reports: Record<"template_components" | "template_actions", IManifestReport> = {
+    const reports: Record<"template_components" | "template_actions", IReport> = {
       template_components: {
         type: "table",
         title: "Components",

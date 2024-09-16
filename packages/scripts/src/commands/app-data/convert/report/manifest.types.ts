@@ -1,19 +1,19 @@
 // Use union types to allow strong typing by manifest display type
-export type IManifestReport = IManifestReportTable | IManifestReportText;
+export type IReport = IReportTable | IReportText;
 
-interface IManifestReportTypeBase {
+interface IReportBase {
   /** Reporting level, default "info" (future will include warnings/recommendations). */
   level: "info";
   /** Title to display on top of report */
   title: string;
 }
 
-interface IManifestReportTable extends IManifestReportTypeBase {
+interface IReportTable extends IReportBase {
   data: Record<string, any>[];
   type: "table";
 }
 
-interface IManifestReportText extends IManifestReportTypeBase {
+interface IReportText extends IReportBase {
   data: string;
   type: "text";
 }

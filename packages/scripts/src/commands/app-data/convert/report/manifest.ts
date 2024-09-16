@@ -20,7 +20,7 @@
 import { IDeploymentConfigJson } from "data-models";
 import { IParsedWorkbookData } from "../types";
 import { TemplateSummaryReport } from "./reporters";
-import { IManifestReport } from "./manifest.types";
+import { IReport } from "./manifest.types";
 import { resolve, dirname } from "path";
 import { writeFile, ensureDir, emptyDir } from "fs-extra";
 import { generateMarkdownTable } from "./manifest.utils";
@@ -33,7 +33,7 @@ import chalk from "chalk";
 /**
  *
  **/
-export class ManifestGenerator {
+export class ReportGenerator {
   constructor(private deployment: IDeploymentConfigJson) {}
 
   public async process(data: IParsedWorkbookData) {
@@ -45,7 +45,7 @@ export class ManifestGenerator {
     await this.writeOutputs(outputReports);
   }
 
-  private async writeOutputs(reports: Record<string, IManifestReport>) {
+  private async writeOutputs(reports: Record<string, IReport>) {
     const outputDir = resolve(this.deployment._workspace_path, "reports");
     await ensureDir(dirname(outputDir));
     await emptyDir(outputDir);
@@ -56,7 +56,7 @@ export class ManifestGenerator {
     console.log(chalk.gray(outputDir));
   }
 
-  private async writeOutputJson(reports: Record<string, IManifestReport>, target: string) {
+  private async writeOutputJson(reports: Record<string, IReport>, target: string) {
     const output: Record<string, any> = {};
     for (const [key, { data }] of Object.entries(reports)) {
       output[key] = data;
@@ -64,7 +64,7 @@ export class ManifestGenerator {
     await writeFile(target, JSON.stringify(output, null, 2));
   }
 
-  private async writeOutputMarkdown(reports: Record<string, IManifestReport>, target: string) {
+  private async writeOutputMarkdown(reports: Record<string, IReport>, target: string) {
     const contents = ["# Summary"];
     for (const report of Object.values(reports)) {
       if (report.type === "table") {
