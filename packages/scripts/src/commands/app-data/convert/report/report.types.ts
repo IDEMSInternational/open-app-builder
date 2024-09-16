@@ -1,4 +1,4 @@
-// Use union types to allow strong typing by manifest display type
+// Use union types to allow strong typing by report display type
 export type IReport = IReportTable | IReportText;
 
 interface IReportBase {

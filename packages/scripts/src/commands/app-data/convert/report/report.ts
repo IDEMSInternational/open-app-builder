@@ -2,28 +2,27 @@
  * TODO
  * - Include sheet types/subtypes reporter
  * - Include asset references
- * - Better to name as manifest or report
  * - Document authors to gitignore outputs (if not wanted)
  *
  * Future
  * - Specific feature manifests that declare action/component namespaces
- * - possible recommendations/optimisations from manifest
+ * - possible recommendations/optimisations from reports
  * - how to handle implicit deps (one component uses another)
  * - possibly will require runtime error/warning/prompt
  * - handle dynamic
  * - QA components/actions that don't exist
  * - possibly export list of COMPONENTS_AVAILABLE (or similar... or just use main list lookup)
- * - also consider asset manifest (but would need to ensure dynamic assets included, plus param list + template value)
+ * - also consider asset report (but would need to ensure dynamic assets included, plus param list + template value)
  * - handle implicit components (check imports (?))
  */
 
 import { IDeploymentConfigJson } from "data-models";
 import { IParsedWorkbookData } from "../types";
 import { TemplateSummaryReport } from "./reporters";
-import { IReport } from "./manifest.types";
+import { IReport } from "./report.types";
 import { resolve, dirname } from "path";
 import { writeFile, ensureDir, emptyDir } from "fs-extra";
-import { generateMarkdownTable } from "./manifest.utils";
+import { generateMarkdownTable } from "./report.utils";
 import { logOutput } from "shared";
 import chalk from "chalk";
 

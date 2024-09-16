@@ -1,8 +1,8 @@
 import { FlowTypes } from "data-models";
 
 import { IParsedWorkbookData } from "../../types";
-import { sortJsonByKey } from "../manifest.utils";
-import { IReport } from "../manifest.types";
+import { sortJsonByKey } from "../report.utils";
+import { IReport } from "../report.types";
 
 interface ITemplateSummary {
   components: Record<string, { count: number }>;
