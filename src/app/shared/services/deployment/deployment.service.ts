@@ -1,49 +1,33 @@
-import { Injectable } from "@angular/core";
-import { AsyncServiceBase } from "../asyncService.base";
-import { HttpClient } from "@angular/common/http";
-import { catchError, map, of, firstValueFrom } from "rxjs";
-import { DEPLOYMENT_RUNTIME_CONFIG_DEFAULTS, IDeploymentRuntimeConfig } from "packages/data-models";
+import { Inject, Injectable, InjectionToken } from "@angular/core";
+import { IDeploymentRuntimeConfig } from "packages/data-models";
+import { SyncServiceBase } from "../syncService.base";
 
-@Injectable({ providedIn: "root" })
 /**
- * Deployment runtime config settings
+ * Token to inject deployment config value into any service.
+ * This is populated from json file before platform load, as part of src\main.ts
  *
- * NOTE - this is intialized using an `APP_INITIALIZER` token within
- * the main app.module.ts and will block all other services from loading until
- * it is fully initialised
+ * Can be used directly by any service or module initialised at any time
+ * (including app.module.ts).
  *
- * Services that access the deployment config therefore do not need to await
- * DeploymentService init/ready methods.
+ * @example Inject into service
+ * ```ts
+ * constructor(@Inject(DEPLOYMENT_CONFIG))
+ * ```
+ * @example Inject into module
+ * ```
+ * {provide: MyModule, useFactory:(config)=>{...}, deps: [DEPLOYMENT_CONFIG]`}
+ * ```
  */
-export class DeploymentService extends AsyncServiceBase {
-  constructor(private http: HttpClient) {
+export const DEPLOYMENT_CONFIG: InjectionToken<IDeploymentRuntimeConfig> =
+  new InjectionToken<IDeploymentRuntimeConfig>("Application Configuration");
+
+/**
+ * The deployment service provides access to values loaded from the deployment json file
+ * It is an alternative to injecting directly via `@Inject(DEPLOYMENT_CONFIG)`
+ */
+@Injectable({ providedIn: "root" })
+export class DeploymentService extends SyncServiceBase {
+  constructor(@Inject(DEPLOYMENT_CONFIG) public readonly config: IDeploymentRuntimeConfig) {
     super("Deployment Service");
-    this.registerInitFunction(this.initialise);
-  }
-
-  /** Private writeable config to allow population from JSON */
-  private _config = DEPLOYMENT_RUNTIME_CONFIG_DEFAULTS;
-
-  /** Read-only access to deployment runtime config */
-  public get config() {
-    return this._config;
-  }
-
-  /** Load active deployment configuration from JSON file */
-  private async initialise() {
-    const deployment = await firstValueFrom(this.loadDeployment());
-    if (deployment) {
-      this._config = deployment;
-    }
-  }
-
-  private loadDeployment() {
-    return this.http.get("assets/app_data/deployment.json").pipe(
-      catchError(() => {
-        console.warn("No deployment config available");
-        return of(null);
-      }),
-      map((v) => v as IDeploymentRuntimeConfig)
-    );
   }
 }
