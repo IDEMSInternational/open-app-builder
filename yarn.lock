@@ -12543,10 +12543,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"dompurify@npm:^3.0.6":
-  version: 3.0.8
-  resolution: "dompurify@npm:3.0.8"
-  checksum: cac660ccae15a9603f06a85344da868a4c3732d8b57f7998de0f421eb4b9e67d916be52e9bb2a57b2f95b49e994cc50bcd06bb87f2cb2849cf058bdf15266237
+"dompurify@npm:^3.1.3":
+  version: 3.1.6
+  resolution: "dompurify@npm:3.1.6"
+  checksum: cc4fc4ccd9261fbceb2a1627a985c70af231274a26ddd3f643fd0616a0a44099bd9e4480940ce3655612063be4a1fe9f5e9309967526f8c0a99f931602323866
   languageName: node
   linkType: hard
 
@@ -14996,7 +14996,7 @@ __metadata:
     dexie-observable: 3.0.0-beta.11
     dexie-syncable: ^3.0.0-beta.10
     document-register-element: ^1.14.10
-    dompurify: ^3.0.6
+    dompurify: ^3.1.3
     eslint: ^8.54.0
     eslint-config-prettier: ^9.1.0
     eslint-config-standard-with-typescript: latest
