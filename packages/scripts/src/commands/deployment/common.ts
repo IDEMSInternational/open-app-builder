@@ -3,7 +3,7 @@ import { logWarning } from "shared";
 import { readJSONSync } from "fs-extra";
 import path from "path";
 
-import { DEPLOYMENT_CONFIG_EXAMPLE_DEFAULTS, getDefaultAppConfig } from "data-models";
+import { DEPLOYMENT_CONFIG_DEFAULTS, getDefaultAppConfig } from "data-models";
 import type {
   IDeploymentConfig,
   IDeploymentConfigGenerated,
@@ -23,7 +23,7 @@ export function generateDeploymentConfig(name: string) {
   // apply overrides to single nested properties
   const app_config = toEmptyObject(getDefaultAppConfig());
   // combine with deployment config defaults
-  const config: IDeploymentConfigGenerated = { ...DEPLOYMENT_CONFIG_EXAMPLE_DEFAULTS, app_config };
+  const config: IDeploymentConfigGenerated = { ...DEPLOYMENT_CONFIG_DEFAULTS, app_config };
   config.name = name;
   return config;
 }

@@ -193,11 +193,11 @@ export const DEPLOYMENT_RUNTIME_CONFIG_DEFAULTS: IDeploymentRuntimeConfig = {
 };
 
 /** Full example of just all config once merged with defaults */
-export const DEPLOYMENT_CONFIG_EXAMPLE_DEFAULTS: IDeploymentConfig = {
+export const DEPLOYMENT_CONFIG_DEFAULTS: IDeploymentConfig = {
   ...DEPLOYMENT_RUNTIME_CONFIG_DEFAULTS,
   // NOTE - app_config will be populated during config generation
   app_config: {} as any,
-  name: "Full Config Example",
+  name: "",
   google_drive: {
     assets_folder_id: "",
     sheets_folder_id: "",
