@@ -2,12 +2,11 @@
  * TODO
  * - Include sheet types/subtypes reporter
  * - Include asset references
- * - Document authors to gitignore outputs (if not wanted)
+ * - Handle test fail trying to run from app data converter spec
+ * - Add spec to app data converter that it generates reports (just folder)
  *
  * Future
- * - Specific feature manifests that declare action/component namespaces
  * - possible recommendations/optimisations from reports
- * - how to handle implicit deps (one component uses another)
  * - possibly will require runtime error/warning/prompt
  * - handle dynamic
  * - QA components/actions that don't exist
@@ -26,11 +25,10 @@ import { generateMarkdownTable } from "./report.utils";
 import { logOutput } from "shared";
 import chalk from "chalk";
 
-// Testing notes
-// yarn workflow sync_sheets --skip-download
-
 /**
- *
+ * Create summary reports based on converted app data
+ * Individual reports are created by child reporters, with outputs stored in both
+ * json and markdown formats for easier interpretation
  **/
 export class ReportGenerator {
   constructor(private deployment: IDeploymentConfigJson) {}
@@ -39,7 +37,6 @@ export class ReportGenerator {
     const { template_actions, template_components } = await new TemplateSummaryReport().process(
       data
     );
-
     const outputReports = { template_actions, template_components };
     await this.writeOutputs(outputReports);
   }
