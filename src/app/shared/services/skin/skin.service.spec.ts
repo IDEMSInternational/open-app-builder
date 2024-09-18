@@ -48,6 +48,9 @@ const MOCK_APP_CONFIG: Partial<IAppConfig> = {
     available: ["MOCK_THEME_1", "MOCK_THEME_2"],
     defaultThemeName: "MOCK_THEME_1",
   },
+  APP_FOOTER_DEFAULTS: {
+    templateName: "mock_footer",
+  },
 };
 
 /**
@@ -80,6 +83,12 @@ describe("SkinService", () => {
 
   it("loads default skin on init", () => {
     expect(service.getActiveSkinName()).toEqual("MOCK_SKIN_1");
+  });
+
+  it("does not change non-overridden values", () => {
+    expect(service["appConfigService"].appConfig().APP_FOOTER_DEFAULTS).toEqual({
+      templateName: "mock_footer",
+    });
   });
 
   it("loads active skin from local storage on init if available", () => {

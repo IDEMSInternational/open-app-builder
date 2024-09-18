@@ -7,6 +7,17 @@ const mockConfig: IDeploymentRuntimeConfig = {
   name: "test",
 };
 
+export class MockDeploymentService implements Partial<DeploymentService> {
+  public readonly config: IDeploymentRuntimeConfig;
+
+  constructor(config: Partial<IDeploymentRuntimeConfig>) {
+    this.config = { ...DEPLOYMENT_RUNTIME_CONFIG_DEFAULTS, ...config };
+  }
+  public ready(): boolean {
+    return true;
+  }
+}
+
 /**
  * Call standalone tests via:
  * yarn ng test --include src/app/shared/services/deployment/deployment.service.spec.ts
