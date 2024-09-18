@@ -7,7 +7,6 @@ import { AppConfigService } from "../app-config/app-config.service";
 import { TemplateService } from "../../components/template/services/template.service";
 import { ThemeService } from "src/app/feature/theme/services/theme.service";
 import { SyncServiceBase } from "../syncService.base";
-import { DeploymentService } from "../deployment/deployment.service";
 
 @Injectable({
   providedIn: "root",
@@ -21,7 +20,6 @@ export class SkinService extends SyncServiceBase {
 
   constructor(
     private appConfigService: AppConfigService,
-    private deploymentService: DeploymentService,
     private localStorageService: LocalStorageService,
     private templateService: TemplateService,
     private themeService: ThemeService
@@ -83,7 +81,7 @@ export class SkinService extends SyncServiceBase {
    */
   private generateOverrideConfig(skin: IAppSkin) {
     // Merge onto new object to avoid changing stored revertOverride
-    const base: RecursivePartial<IAppConfig> = this.deploymentService.config.app_config || {};
+    const base: RecursivePartial<IAppConfig> = {};
     return deepMergeObjects(base, this.revertOverride, skin.appConfig);
   }
 
