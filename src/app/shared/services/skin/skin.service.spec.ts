@@ -7,17 +7,10 @@ import { AppConfigService } from "../app-config/app-config.service";
 import { MockAppConfigService } from "../app-config/app-config.service.spec";
 import { TemplateService } from "../../components/template/services/template.service";
 import { ThemeService } from "src/app/feature/theme/services/theme.service";
+import { MockThemeService } from "src/app/feature/theme/services/theme.service.spec";
 import { IAppConfig, IAppSkin } from "packages/data-models";
-
-class MockThemeService implements Partial<ThemeService> {
-  ready() {
-    return true;
-  }
-  setTheme() {}
-  getCurrentTheme() {
-    return "mock_theme";
-  }
-}
+import { deepMergeObjects } from "../../utils";
+import clone from "clone";
 
 class MockTemplateService implements Partial<TemplateService> {
   ready() {
@@ -50,6 +43,10 @@ const MOCK_APP_CONFIG: Partial<IAppConfig> = {
   APP_SKINS: {
     available: [MOCK_SKIN_1, MOCK_SKIN_2],
     defaultSkinName: "MOCK_SKIN_1",
+  },
+  APP_THEMES: {
+    available: ["MOCK_THEME_1", "MOCK_THEME_2"],
+    defaultThemeName: "MOCK_THEME_1",
   },
 };
 
@@ -85,6 +82,11 @@ describe("SkinService", () => {
     expect(service.getActiveSkinName()).toEqual("MOCK_SKIN_1");
   });
 
+  it("loads active skin from local storage on init if available", () => {
+    service["localStorageService"].setProtected("APP_SKIN", "MOCK_SKIN_2");
+    expect(service.getActiveSkinName()).toEqual("MOCK_SKIN_2");
+  });
+
   it("generates override and revert configs", () => {
     expect(service["revertOverride"]).toEqual({
       APP_HEADER_DEFAULTS: { title: "default", colour: "none" },
@@ -116,5 +118,31 @@ describe("SkinService", () => {
     });
   });
 
-  // TODO - add tests for setSkin method and side-effects
+  it("sets skin: sets active skin name", () => {
+    service["setSkin"](MOCK_SKIN_2.name);
+    expect(service.getActiveSkinName()).toEqual("MOCK_SKIN_2");
+    service["setSkin"](MOCK_SKIN_1.name);
+    expect(service.getActiveSkinName()).toEqual("MOCK_SKIN_1");
+  });
+
+  it("sets skin: sets revertOverride correctly", () => {
+    // MOCK_SKIN_1 will already be applied on load
+    service["setSkin"](MOCK_SKIN_2.name);
+    expect(service["revertOverride"]).toEqual({
+      APP_HEADER_DEFAULTS: {
+        title: "default",
+        variant: "default",
+      },
+    });
+  });
+
+  it("sets skin: updates AppConfigService.appConfig values", () => {
+    // MOCK_SKIN_1 will already be applied on load
+    service["setSkin"](MOCK_SKIN_2.name);
+    expect(service["appConfigService"].appConfig() as Partial<IAppConfig>).toEqual(
+      deepMergeObjects(clone(MOCK_APP_CONFIG), clone(MOCK_SKIN_2).appConfig)
+    );
+  });
+
+  // TODO - add further tests for setSkin method and side-effects
 });
