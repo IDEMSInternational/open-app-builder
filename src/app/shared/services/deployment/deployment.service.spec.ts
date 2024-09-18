@@ -1,7 +1,6 @@
-import { DeploymentService } from "./deployment.service";
-import { HttpClient, HttpErrorResponse } from "@angular/common/http";
+import { DEPLOYMENT_CONFIG, DeploymentService } from "./deployment.service";
+import { TestBed } from "@angular/core/testing";
 import { DEPLOYMENT_RUNTIME_CONFIG_DEFAULTS, IDeploymentRuntimeConfig } from "packages/data-models";
-import { asyncData, asyncError } from "src/test/utils";
 
 const mockConfig: IDeploymentRuntimeConfig = {
   ...DEPLOYMENT_RUNTIME_CONFIG_DEFAULTS,
@@ -14,7 +13,28 @@ const mockConfig: IDeploymentRuntimeConfig = {
  */
 describe("Deployment Service", () => {
   let service: DeploymentService;
-  let httpClientSpy: jasmine.SpyObj<HttpClient>;
+
+  beforeEach(async () => {
+    TestBed.configureTestingModule({
+      providers: [{ provide: DEPLOYMENT_CONFIG, useValue: mockConfig }],
+    });
+    service = TestBed.inject(DeploymentService);
+  });
+
+  it("Loads deployment from injection token", async () => {
+    expect(service.config.name).toEqual(mockConfig.name);
+  });
+});
+
+// LEGACY - should be refactored to test json load during bootstrap
+
+/**
+ * 
+// NOTE - prefer use of spy to `HttpTestingController` as allows to specify responses
+// in advance of request (controller must be called after start of init but before complete)
+
+import { asyncData, asyncError } from "src/test/utils";
+
 
   beforeEach(async () => {
     // NOTE - prefer use of spy to `HttpTestingController` as allows to specify responses
@@ -29,7 +49,7 @@ describe("Deployment Service", () => {
     expect(service.config().name).toEqual(mockConfig.name);
   });
 
-  it("Handles missing deployment json", async () => {
+   it("Handles missing deployment json", async () => {
     const errorResponse = new HttpErrorResponse({
       error: "test 404 error",
       status: 404,
@@ -40,4 +60,5 @@ describe("Deployment Service", () => {
     expect(service.config().name).toEqual(DEPLOYMENT_RUNTIME_CONFIG_DEFAULTS.name);
     // TODO - could also consider check that logger gets called
   });
-});
+
+ */
