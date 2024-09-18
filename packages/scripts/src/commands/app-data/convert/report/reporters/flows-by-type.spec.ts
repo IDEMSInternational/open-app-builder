@@ -31,7 +31,6 @@ const MOCK_WORKBOOK_DATA: IParsedWorkbookData = {
 describe("Flows By Type Report", () => {
   it("Enumerates flows by type and subtype", async () => {
     const { flows_by_type } = await new FlowByTypeReport().process(MOCK_WORKBOOK_DATA);
-    console.log(flows_by_type);
     expect(flows_by_type.data).toEqual([
       { type: "data_list", subtype: null, total: 2 },
       { type: "data_list", subtype: "mock_subtype", total: 1 },
