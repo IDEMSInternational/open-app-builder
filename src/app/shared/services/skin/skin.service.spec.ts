@@ -15,7 +15,7 @@ class MockThemeService implements Partial<ThemeService> {
   }
   setTheme() {}
   getCurrentTheme() {
-    return "mock_them";
+    return "mock_theme";
   }
 }
 
@@ -94,7 +94,6 @@ describe("SkinService", () => {
   it("reverts previous override when applying another skin", () => {
     // MOCK_SKIN_1 will already be applied on load
     const override = service["generateOverrideConfig"](MOCK_SKIN_2);
-    console.log({ override });
     // creates a deep merge of override properties on top of current
     expect(override).toEqual({
       APP_HEADER_DEFAULTS: {
