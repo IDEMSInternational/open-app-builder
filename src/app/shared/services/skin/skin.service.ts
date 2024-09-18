@@ -1,8 +1,8 @@
 import { Injectable } from "@angular/core";
-import { BehaviorSubject } from "rxjs";
 import { LocalStorageService } from "src/app/shared/services/local-storage/local-storage.service";
 import { IAppConfig, IAppSkin } from "data-models";
-import { arrayToHashmap } from "../../utils";
+import { updatedDiff } from "deep-object-diff";
+import { arrayToHashmap, deepMergeObjects, RecursivePartial } from "../../utils";
 import { AppConfigService } from "../app-config/app-config.service";
 import { TemplateService } from "../../components/template/services/template.service";
 import { ThemeService } from "src/app/feature/theme/services/theme.service";
@@ -12,11 +12,11 @@ import { SyncServiceBase } from "../syncService.base";
   providedIn: "root",
 })
 export class SkinService extends SyncServiceBase {
-  // A hashmap of all skins available to the current deployment
+  /**  A hashmap of all skins available to the current deployment */
   private availableSkins: Record<string, IAppSkin>;
-  private activeSkin$ = new BehaviorSubject<IAppSkin | undefined>(undefined);
-  private appConfig: IAppConfig;
-  private skinsConfig: IAppConfig["APP_SKINS"];
+
+  /** Track overrides required to undo a previously applied skin (if applying another) */
+  private revertOverride: RecursivePartial<IAppConfig> = {};
 
   constructor(
     private localStorageService: LocalStorageService,
@@ -34,17 +34,8 @@ export class SkinService extends SyncServiceBase {
       this.appConfigService,
       this.themeService,
       this.templateService,
-      this.appConfigService,
     ]);
-    this.subscribeToAppConfigChanges();
-    // Retrieve the last active skin and apply it. Fallback on deployment's default skin
-    // if there is no last active skin, or if it is not "available" in current appConfig
-    const lastActiveSkinName = this.getActiveSkinName();
-    let targetSkinName = this.skinsConfig.defaultSkinName;
-    if (lastActiveSkinName && this.availableSkins.hasOwnProperty(lastActiveSkinName)) {
-      targetSkinName = lastActiveSkinName;
-    }
-    this.setSkin(targetSkinName, true);
+    this.loadActiveSkin();
   }
 
   /**
@@ -53,12 +44,10 @@ export class SkinService extends SyncServiceBase {
    * @param [isInit=false] Whether or not the function is being triggered by the service's initialisation
    * */
   public setSkin(skinName: string, isInit = false) {
-    if (skinName in this.availableSkins) {
+    if (this.availableSkins.hasOwnProperty(skinName)) {
       const targetSkin = this.availableSkins[skinName];
-      // console.log("[SET SKIN]", skinName, targetSkin);
-      this.activeSkin$.next(targetSkin);
-      // Update appConfig to reflect any overrides defined by the skin
-      this.appConfigService.setAppConfig(targetSkin.appConfig);
+      this.applyConfigOverride(targetSkin);
+
       if (!isInit) {
         // Update default values when skin changed to allow for skin-specific global overrides
         // Don't run on initialisation, since the skin and appConfig services must init before the template service and its dependencies
@@ -80,34 +69,65 @@ export class SkinService extends SyncServiceBase {
     return this.localStorageService.getProtected("APP_SKIN");
   }
 
-  /** Get the full active skin, from the skin name saved in local storage */
-  public getActiveSkin() {
-    const activeSkinName = this.getActiveSkin();
-    return this.availableSkins[activeSkinName];
+  /**
+   * Skin overrides are designed to be merged on top of the default app config
+   * When applying a new skin calculate the config changes required to both
+   * revert any previous skin override and apply new
+   */
+  private applyConfigOverride(skin: IAppSkin) {
+    // Base override combines previous skin revert and current skin config
+    const baseConfig = deepMergeObjects(this.revertOverride, skin.appConfig);
+
+    // Generate full overrides and revert
+    const override: RecursivePartial<IAppConfig> = {};
+    const revert: RecursivePartial<IAppConfig> = {};
+    const config = this.appConfigService.appConfig();
+
+    for (const [key, value] of Object.entries(baseConfig)) {
+      // As skins only provide partial update for app config, merge each partial
+      // update with the current value
+      const update = deepMergeObjects({}, config[key], value);
+      override[key] = update;
+      // Track what has changed to be able to revert back in future
+      revert[key] = updatedDiff(update, config[key]);
+    }
+
+    // Apply Changes
+    console.log("[SKIN] SET", { skin, override, revert });
+    this.appConfigService.setAppConfig(override);
+    this.revertOverride = revert;
+    return override;
+  }
+
+  /**
+   * Load the active app skin. Loads previously stored configuration if available,
+   * with fallback to default app skin
+   */
+  private loadActiveSkin() {
+    const { available, defaultSkinName } = this.appConfigService.appConfig().APP_SKINS;
+    this.availableSkins = arrayToHashmap(available, "name");
+    const activeSkinName = this.getActiveSkinName();
+    if (activeSkinName && this.availableSkins.hasOwnProperty(activeSkinName)) {
+      this.setSkin(activeSkinName, true);
+    } else {
+      this.setSkin(defaultSkinName, true);
+    }
   }
 
   private applySkinThemeChanges() {
-    const targetSkinDefaultTheme = this.appConfig.APP_THEMES.defaultThemeName;
-    if (targetSkinDefaultTheme) {
-      this.themeService.setTheme(targetSkinDefaultTheme);
+    const { available, defaultThemeName } = this.appConfigService.appConfig().APP_THEMES;
+    if (defaultThemeName) {
+      this.themeService.setTheme(defaultThemeName);
     }
     // If target skin has no default theme and the current theme is not available in the target skin,
     // then set theme to the first available theme of the target skin
     else if (!this.isCurrentThemeAvailableInTargetSkin()) {
-      this.themeService.setTheme(this.appConfig.APP_THEMES.available[0]);
+      this.themeService.setTheme(available[0]);
     }
   }
 
   private isCurrentThemeAvailableInTargetSkin() {
     const currentTheme = this.themeService.getCurrentTheme();
-    return this.appConfig.APP_THEMES.available.includes(currentTheme);
-  }
-
-  subscribeToAppConfigChanges() {
-    this.appConfigService.appConfig$.subscribe((appConfig: IAppConfig) => {
-      this.appConfig = appConfig;
-      this.skinsConfig = this.appConfig.APP_SKINS;
-      this.availableSkins = arrayToHashmap(this.skinsConfig.available, "name");
-    });
+    return this.appConfigService.appConfig().APP_THEMES.available.includes(currentTheme);
   }
 }
