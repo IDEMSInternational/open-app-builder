@@ -1,7 +1,6 @@
 /**
  * TODO
- * - Include sheet types/subtypes reporter
- * - Include asset references
+ * - Report referenced assets
  * - Handle test fail trying to run from app data converter spec
  * - Add spec to app data converter that it generates reports (just folder)
  *
@@ -24,11 +23,14 @@ import { writeFile, ensureDir, emptyDir } from "fs-extra";
 import { generateMarkdownTable } from "./report.utils";
 import { logOutput } from "shared";
 import chalk from "chalk";
+import { FlowByTypeReport } from "./reporters/flows-by-type";
 
 /**
  * Create summary reports based on converted app data
  * Individual reports are created by child reporters, with outputs stored in both
  * json and markdown formats for easier interpretation
+ *
+ * Run on existing data via `yarn workflow sync_sheets --skip-download`
  **/
 export class ReportGenerator {
   constructor(private deployment: IDeploymentConfigJson) {}
@@ -37,7 +39,8 @@ export class ReportGenerator {
     const { template_actions, template_components } = await new TemplateSummaryReport().process(
       data
     );
-    const outputReports = { template_actions, template_components };
+    const { flows_by_type } = await new FlowByTypeReport().process(data);
+    const outputReports = { template_actions, template_components, flows_by_type };
     await this.writeOutputs(outputReports);
   }
 
