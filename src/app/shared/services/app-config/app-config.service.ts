@@ -77,8 +77,8 @@ export class AppConfigService extends SyncServiceBase {
 
     const mergedConfig = deepMergeObjects(getDefaultAppConfig(), overrides);
     this.handleConfigSideEffects(overrides, mergedConfig);
-    this.appConfig$.next(mergedConfig);
     this.appConfig.set(mergedConfig);
+    this.appConfig$.next(mergedConfig);
   }
 
   private handleConfigSideEffects(overrides: IAppConfigOverride = {}, config: IAppConfig) {
