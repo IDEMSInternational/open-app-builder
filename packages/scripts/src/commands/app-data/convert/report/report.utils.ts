@@ -18,9 +18,11 @@ export function sortJsonByKey<T extends Record<string, any>>(json: T) {
  * | value_1 | value_2 |
  * ```
  */
-export function generateMarkdownTable(data: Record<string, any>[]) {
-  const columns = Object.keys(data[0]);
-
+export function generateMarkdownTable(data: Record<string, any>[], columns?: string[]) {
+  // infer columns from data if not provided
+  if (!columns) {
+    columns = Object.keys(data[0] || {});
+  }
   const rows: string[][] = [];
   rows.push(columns);
   rows.push(columns.map(() => "---"));

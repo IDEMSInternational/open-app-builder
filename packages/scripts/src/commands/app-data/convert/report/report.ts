@@ -1,29 +1,23 @@
 /**
- * TODO
- * - Report referenced assets
- * - Handle test fail trying to run from app data converter spec
- * - Add spec to app data converter that it generates reports (just folder)
  *
- * Future
- * - possible recommendations/optimisations from reports
- * - possibly will require runtime error/warning/prompt
- * - handle dynamic
- * - QA components/actions that don't exist
- * - possibly export list of COMPONENTS_AVAILABLE (or similar... or just use main list lookup)
- * - also consider asset report (but would need to ensure dynamic assets included, plus param list + template value)
- * - handle implicit components (check imports (?))
+ * Potential Reports
+ * - Referenced assets (incl. param list, template value and data _asset columns)
+ * - Unused templates
+ * - Recommended Optimisations
+ *
  */
 
-import { IDeploymentConfigJson } from "data-models";
-import { IParsedWorkbookData } from "../types";
-import { TemplateSummaryReport } from "./reporters";
-import { IReport } from "./report.types";
-import { resolve, dirname } from "path";
-import { writeFile, ensureDir, emptyDir } from "fs-extra";
-import { generateMarkdownTable } from "./report.utils";
-import { logOutput } from "shared";
 import chalk from "chalk";
+import { IDeploymentConfigJson } from "data-models";
+import { writeFile, ensureDir, emptyDir } from "fs-extra";
+import { resolve, dirname } from "path";
+import { logOutput } from "shared";
+
+import { IParsedWorkbookData } from "../types";
+import { IReport } from "./report.types";
+import { generateMarkdownTable } from "./report.utils";
 import { FlowByTypeReport } from "./reporters/flows-by-type";
+import { TemplateSummaryReport } from "./reporters/template-summary";
 
 /**
  * Create summary reports based on converted app data
