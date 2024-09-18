@@ -1,12 +1,3 @@
-/**
- *
- * Potential Reports
- * - Referenced assets (incl. param list, template value and data _asset columns)
- * - Unused templates
- * - Recommended Optimisations
- *
- */
-
 import chalk from "chalk";
 import { IDeploymentConfigJson } from "data-models";
 import { writeFile, ensureDir, emptyDir } from "fs-extra";
