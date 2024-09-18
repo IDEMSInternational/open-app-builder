@@ -12,11 +12,6 @@ interface ITemplateSummary {
 /**
  * Generate a list of all components and action types used within templates
  * This will later be used to develop a list of features required
- *
- * TODO (future improvements)
- * - Handle implicit components (will require component manifests or checking imports)
- * - QA components and actions to flag ones that don't exist
- * - Identify dynamic references and track separately (initially just text @data.some_ref, later could be populated)
  */
 export class TemplateSummaryReport {
   private summary: ITemplateSummary = { actions: {}, components: {} };
