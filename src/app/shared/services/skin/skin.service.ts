@@ -46,7 +46,12 @@ export class SkinService extends SyncServiceBase {
   public setSkin(skinName: string, isInit = false) {
     if (this.availableSkins.hasOwnProperty(skinName)) {
       const targetSkin = this.availableSkins[skinName];
-      this.applyConfigOverride(targetSkin);
+
+      const override = this.generateOverrideConfig(targetSkin);
+      const revert = this.generateRevertConfig(targetSkin);
+      console.log("[SKIN] SET", { targetSkin, override, revert });
+      this.appConfigService.setAppConfig(override);
+      this.revertOverride = revert;
 
       if (!isInit) {
         // Update default values when skin changed to allow for skin-specific global overrides
@@ -74,29 +79,24 @@ export class SkinService extends SyncServiceBase {
    * When applying a new skin calculate the config changes required to both
    * revert any previous skin override and apply new
    */
-  private applyConfigOverride(skin: IAppSkin) {
-    // Base override combines previous skin revert and current skin config
-    const baseConfig = deepMergeObjects(this.revertOverride, skin.appConfig);
+  private generateOverrideConfig(skin: IAppSkin) {
+    // Merge onto new object to avoid changing stored revertOverride
+    const base: RecursivePartial<IAppConfig> = {};
+    return deepMergeObjects(base, this.revertOverride, skin.appConfig);
+  }
 
-    // Generate full overrides and revert
-    const override: RecursivePartial<IAppConfig> = {};
+  /** Determine config that would need to be applied to revert the new update */
+  private generateRevertConfig(skin: IAppSkin) {
     const revert: RecursivePartial<IAppConfig> = {};
     const config = this.appConfigService.appConfig();
-
-    for (const [key, value] of Object.entries(baseConfig)) {
-      // As skins only provide partial update for app config, merge each partial
-      // update with the current value
-      const update = deepMergeObjects({}, config[key], value);
-      override[key] = update;
+    for (const key of Object.keys(skin.appConfig)) {
+      // When reverting the skin, should target the current config value unless
+      // previously overridden (in which case target initial value)
+      const revertTarget = deepMergeObjects({}, config[key], this.revertOverride[key]);
       // Track what has changed to be able to revert back in future
-      revert[key] = updatedDiff(update, config[key]);
+      revert[key] = updatedDiff(skin.appConfig[key], revertTarget);
     }
-
-    // Apply Changes
-    console.log("[SKIN] SET", { skin, override, revert });
-    this.appConfigService.setAppConfig(override);
-    this.revertOverride = revert;
-    return override;
+    return revert;
   }
 
   /**
