@@ -10,7 +10,7 @@ interface ITemplateSummary {
 }
 
 /**
- * Generates a list of all components and action types used within templates
+ * Generate a list of all components and action types used within templates
  * This will later be used to develop a list of features required
  *
  * TODO
