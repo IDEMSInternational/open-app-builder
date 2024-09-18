@@ -89,7 +89,7 @@ export class SkinService extends SyncServiceBase {
   private generateRevertConfig(skin: IAppSkin) {
     const revert: RecursivePartial<IAppConfig> = {};
     const config = this.appConfigService.appConfig();
-    for (const key of Object.keys(skin.appConfig)) {
+    for (const key of Object.keys(skin.appConfig || {})) {
       // When reverting the skin, should target the current config value unless
       // previously overridden (in which case target initial value)
       const revertTarget = deepMergeObjects({}, config[key], this.revertOverride[key]);
