@@ -2,7 +2,16 @@ import { FlowTypes } from "data-models";
 import { sortJsonKeys } from "shared/src/utils";
 
 import { IParsedWorkbookData } from "../../types";
-import { IReport } from "../report.types";
+import { IReportTable } from "../report.types";
+
+interface IReportData {
+  type: string;
+  count: number;
+}
+
+interface ITemplateSummaryReport extends IReportTable {
+  data: IReportData[];
+}
 
 interface ITemplateSummary {
   components: Record<string, { count: number }>;
@@ -35,26 +44,24 @@ export class TemplateSummaryReport {
       }
     }
 
-    const reports: Record<"template_components" | "template_actions", IReport> = {
-      template_components: {
-        type: "table",
-        title: "Components",
-        level: "info",
-        data: this.getReportData(this.summary.components),
-      },
-      template_actions: {
-        type: "table",
-        title: "Actions",
-        level: "info",
-        data: this.getReportData(this.summary.actions),
-      },
+    const template_components: ITemplateSummaryReport = {
+      type: "table",
+      title: "Components",
+      level: "info",
+      data: this.getReportData(this.summary.components),
+    };
+    const template_actions: ITemplateSummaryReport = {
+      type: "table",
+      title: "Actions",
+      level: "info",
+      data: this.getReportData(this.summary.actions),
     };
 
-    return reports;
+    return { template_components, template_actions };
   }
 
   /** Convert type records to array for report */
-  private getReportData(data: Record<string, { count: number }>) {
+  private getReportData(data: Record<string, { count: number }>): IReportData[] {
     const sorted = sortJsonKeys(data);
     return Object.entries(sorted).map(([type, { count }]) => ({ type, count }));
   }

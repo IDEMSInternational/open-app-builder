@@ -1,5 +1,15 @@
 import { IParsedWorkbookData } from "../../types";
-import { IReport } from "../report.types";
+import { IReportTable } from "../report.types";
+
+interface IReportData {
+  type: string;
+  subtype: string;
+  total: number;
+}
+
+interface IFlowByTypeReport extends IReportTable {
+  data: IReportData[];
+}
 
 /** Generate a list of all flows by type and subtype */
 export class FlowByTypeReport {
@@ -13,22 +23,20 @@ export class FlowByTypeReport {
         countBySubtype[type]++;
       });
     });
-    const summary = Object.keys(countBySubtype)
+    const summary: IReportData[] = Object.keys(countBySubtype)
       .sort()
       .map((key) => {
         const [type, subtype] = key.split(".");
         return { type, subtype: subtype || null, total: countBySubtype[key] };
       });
 
-    const reports: Record<"flows_by_type", IReport> = {
-      flows_by_type: {
-        type: "table",
-        title: "Flows By Type",
-        level: "info",
-        data: summary,
-      },
+    const flows_by_type: IFlowByTypeReport = {
+      type: "table",
+      title: "Flows By Type",
+      level: "info",
+      data: summary,
     };
 
-    return reports;
+    return { flows_by_type };
   }
 }

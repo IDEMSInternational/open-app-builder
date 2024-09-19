@@ -8,7 +8,7 @@ interface IReportBase {
   title: string;
 }
 
-interface IReportTable extends IReportBase {
+export interface IReportTable extends IReportBase {
   data: Record<string, any>[];
   type: "table";
 }
