@@ -1,6 +1,7 @@
 /// <reference lib="dom" />
 import APP_CONFIG_GLOBALS from "./app-config/globals";
 import clone from "clone";
+import { type RecursivePartial } from "shared/src/types";
 import { IAppSkin } from "./skin.model";
 
 /*********************************************************************************************
@@ -222,14 +223,14 @@ const APP_CONFIG = {
   SERVER_SYNC_FREQUENCY_MS,
   TASKS,
 };
-// Export as a clone to avoid risk one import could alter another
-export const getDefaultAppConfig = () => clone(APP_CONFIG);
+
+/**
+ * Get full app config populated with default values
+ * Returned as an editable clone so that changes will not impact original
+ */
+export const getDefaultAppConfig = (): IAppConfig => clone(APP_CONFIG);
+
 export type IAppConfig = typeof APP_CONFIG;
 
-/** A recursive version of Partial, making all properties, included nested ones, optional.
- * Copied from https://stackoverflow.com/a/47914631
- */
-export type RecursivePartial<T> = {
-  [P in keyof T]?: RecursivePartial<T[P]>;
-};
+/** Config overrides support deep-nested partials, merged with defaults at runtime */
 export type IAppConfigOverride = RecursivePartial<IAppConfig>;
