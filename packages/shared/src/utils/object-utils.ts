@@ -62,3 +62,18 @@ export function cleanEmptyObject(obj: Record<string, any>) {
   }
   return cleaned;
 }
+
+/** Order a nested json object literal in alphabetical key order */
+export const sortJsonKeys = <T extends Record<string, any>>(json: T): T => {
+  // return non json-type data as-is
+  if (!isObjectLiteral(json)) {
+    return json;
+  }
+  // recursively sort any nested json by key
+  return Object.keys(json)
+    .sort()
+    .reduce((obj, key) => {
+      obj[key] = sortJsonKeys(json[key]);
+      return obj;
+    }, {}) as T;
+};
