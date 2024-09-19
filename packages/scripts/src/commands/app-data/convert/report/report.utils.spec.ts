@@ -1,12 +1,7 @@
-import { generateMarkdownTable, sortJsonByKey } from "./report.utils";
+import { generateMarkdownTable } from "./report.utils";
 
 /** yarn workspace scripts test -t report.utils.spec.ts */
 describe("report utils", () => {
-  it("sortJsonByKey", () => {
-    const mockJson = { b: "first entry", a: "second entry" };
-    const res = sortJsonByKey(mockJson);
-    expect(Object.keys(res)).toStrictEqual(["a", "b"]);
-  });
   it("generateMarkdownTable", () => {
     const res = generateMarkdownTable([
       { key_1: "value_1a", key_2: "value_1b" },
