@@ -38,7 +38,7 @@
     "simple-git": "^3.7.1",
     "subtitles-parser-vtt": "^0.1.0",
     "ts-morph": "^15.0.0",
-    "typescript": "^4.1.2",
+    "typescript": "5.5.4",
     "winston": "^3.10.0",
     "workflows": "workspace:*",
     "xlsx": "^0.18.5"
