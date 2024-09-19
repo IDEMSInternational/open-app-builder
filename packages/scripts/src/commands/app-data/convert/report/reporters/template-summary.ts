@@ -1,7 +1,7 @@
 import { FlowTypes } from "data-models";
+import { sortJsonKeys } from "shared/src/utils";
 
 import { IParsedWorkbookData } from "../../types";
-import { sortJsonByKey } from "../report.utils";
 import { IReport } from "../report.types";
 
 interface ITemplateSummary {
@@ -55,7 +55,7 @@ export class TemplateSummaryReport {
 
   /** Convert type records to array for report */
   private getReportData(data: Record<string, { count: number }>) {
-    const sorted = sortJsonByKey(data);
+    const sorted = sortJsonKeys(data);
     return Object.entries(sorted).map(([type, { count }]) => ({ type, count }));
   }
 }

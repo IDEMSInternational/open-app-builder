@@ -1,12 +1,3 @@
-//  TODO - move to generic location (possibly object-utils once #2423 merged)
-export function sortJsonByKey<T extends Record<string, any>>(json: T) {
-  const sorted = {};
-  for (const [key, value] of Object.entries(json).sort((a, b) => (a[0] > b[0] ? 1 : -1))) {
-    sorted[key] = value;
-  }
-  return sorted as T;
-}
-
 /**
  * Convert an array to a basic markdown-formatted table
  * @example
