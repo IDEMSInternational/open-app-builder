@@ -1,6 +1,6 @@
 import { TestBed } from "@angular/core/testing";
 
-import { HttpClientTestingModule } from "@angular/common/http/testing";
+import { provideHttpClientTesting } from "@angular/common/http/testing";
 
 import { AppDataVariableService } from "./app-data-variable.service";
 import { AppDataService, IAppDataCache } from "./app-data.service";
@@ -13,6 +13,7 @@ import { MockDbService } from "../db/db.service.spec";
 import { Injectable } from "@angular/core";
 import { ISheetContents } from "src/app/data";
 import { _wait } from "packages/shared/src/utils/async-utils";
+import { provideHttpClient, withInterceptorsFromDi } from "@angular/common/http";
 
 /** Base mock data for use with any services calling mock app-data handlers */
 const DATA_CACHE_CLEAN: IAppDataCache = {
@@ -138,12 +139,14 @@ describe("AppDataService", () => {
 
   beforeEach(async () => {
     TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule],
+      imports: [],
       providers: [
         { provide: AppDataVariableService, useValue: new MockAppDataVariableService() },
         { provide: ErrorHandlerService, useValue: new MockErrorHandlerService() },
         { provide: DbService, useValue: new MockDbService() },
         AppDataServiceExtended,
+        provideHttpClient(withInterceptorsFromDi()),
+        provideHttpClientTesting(),
       ],
     });
 
