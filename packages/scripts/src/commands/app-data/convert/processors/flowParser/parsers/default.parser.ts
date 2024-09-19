@@ -316,7 +316,7 @@ class RowProcessor {
         } else {
           if (typeof this.row[key] === "string") {
             if (this.row[key].includes("@include_default")) {
-              this.row[key] = this.row[key].replace("@include_default", value);
+              this.row[key] = this.row[key].replace("@include_default", value as any);
             }
             if (this.row[key].includes("@omit_default")) {
               delete this.row[key];
