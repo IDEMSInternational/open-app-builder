@@ -9,6 +9,7 @@ import { IReport } from "./report.types";
 import { generateMarkdownTable } from "./report.utils";
 import { FlowByTypeReport } from "./reporters/flows-by-type";
 import { TemplateSummaryReport } from "./reporters/template-summary";
+import { AssetsSummaryReport } from "./reporters/asset-summary";
 
 /**
  * Create summary reports based on converted app data
@@ -25,7 +26,8 @@ export class ReportGenerator {
       data
     );
     const { flows_by_type } = await new FlowByTypeReport().process(data);
-    const outputReports = { template_actions, template_components, flows_by_type };
+    const { asset_summary } = await new AssetsSummaryReport().process(data);
+    const outputReports = { template_actions, template_components, asset_summary, flows_by_type };
     await this.writeOutputs(outputReports);
   }
 
