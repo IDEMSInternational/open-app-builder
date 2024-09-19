@@ -3,7 +3,7 @@ import { BrowserModule } from "@angular/platform-browser";
 import { FormsModule } from "@angular/forms";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { RouteReuseStrategy } from "@angular/router";
-import { HTTP_INTERCEPTORS, HttpClientModule } from "@angular/common/http";
+import { HTTP_INTERCEPTORS, provideHttpClient, withInterceptorsFromDi } from "@angular/common/http";
 import { IonicModule, IonicRouteStrategy } from "@ionic/angular";
 
 // Libs
@@ -38,7 +38,6 @@ export function lottiePlayerFactory() {
     BrowserAnimationsModule,
     IonicModule.forRoot(),
     AppRoutingModule,
-    HttpClientModule,
     SharedModule,
     FormsModule,
     LottieModule.forRoot({ player: lottiePlayerFactory }),
@@ -57,6 +56,7 @@ export function lottiePlayerFactory() {
     { provide: HTTP_INTERCEPTORS, useClass: ServerAPIInterceptor, multi: true },
     // Use custom error handler
     { provide: ErrorHandler, useClass: ErrorHandlerService },
+    provideHttpClient(withInterceptorsFromDi()),
   ],
   bootstrap: [AppComponent],
 })
