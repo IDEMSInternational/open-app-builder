@@ -1,6 +1,6 @@
 import { FlowTypes, IAssetEntryHashmap } from "data-models";
 import { IReportTable } from "../report.types";
-import { isObjectLiteral, sortJsonKeys } from "shared";
+import { isObjectLiteral, kbToMB, sortJsonKeys } from "shared";
 import { IParsedWorkbookData } from "../../convert/types";
 
 interface IReportData {
@@ -57,11 +57,12 @@ export class AssetsSummaryReport {
       }
     );
 
-    // Generate report summarising how many times each asset is referenced, and whether missing
-    // from data
+    // Generate multiple output reports
+
+    const assetSummaryData = summaryData.filter((v) => !v.missing);
     const asset_summary: IAssetsSummary = {
-      data: summaryData.filter((v) => !v.missing),
-      level: "info",
+      data: assetSummaryData,
+      display: "collapse_closed",
       title: "Matched Assets",
       description:
         "Assets that are used within sheets and also can be found in the synced asset data",
@@ -69,26 +70,37 @@ export class AssetsSummaryReport {
       columns: ["path", "size_kb", "count"],
     };
 
-    // Generate report summarising
+    const assetMissingData = summaryData.filter((v) => v.missing);
     const assets_missing: IReportTable = {
-      data: summaryData.filter((v) => v.missing),
-      level: "advisory",
+      data: assetMissingData,
+      display: "collapse_open",
       title: "Missing Assets",
       description: "Assets that have references within sheets but do not appear in app-data",
       type: "table",
       columns: ["path", "count"],
     };
 
-    // Generate report summarising
+    const assetUnusedData = this.generateUnusedAssetsList();
     const assets_unused: IReportTable = {
-      data: this.generateUnusedAssetsList(),
-      level: "advisory",
+      data: assetUnusedData,
+      display: "collapse_open",
       title: "Unused Assets",
       description: "Assets that appear in app-data but do not have references within sheets",
       type: "table",
       columns: ["path", "size_kb"],
     };
-    return { assets_missing, assets_unused, asset_summary };
+
+    const assets_size: IReportTable = {
+      data: this.generateAssetSizeList(summaryData, assetUnusedData),
+      display: "collapse_open",
+      title: "Asset Size",
+      description: "Assets that appear in app-data but do not have references within sheets",
+      type: "table",
+      columns: ["assets", "KB", "MB"],
+    };
+
+    // when returning the order of return will be used to order the rendered sections
+    return { assets_size, assets_unused, assets_missing, asset_summary };
   }
 
   /**
@@ -131,9 +143,25 @@ export class AssetsSummaryReport {
       .map(([path, { size_kb }]) => ({ path, size_kb }));
   }
 
+  private generateAssetSizeList(
+    allAssets: { size_kb?: number }[],
+    unusedAssets: { size_kb?: number }[]
+  ) {
+    const total_kb = this.calcTotalAssetSizeKB(allAssets);
+    const unused_kb = this.calcTotalAssetSizeKB(unusedAssets);
+    return [
+      { assets: "total", KB: `${Math.round(total_kb)} KB`, MB: `${kbToMB(total_kb, 1)} MB` },
+      { assets: "unused", KB: `${Math.round(unused_kb)} KB`, MB: `${kbToMB(unused_kb, 1)} MB` },
+    ];
+  }
+
   private markAsset(name: string) {
     this.reportSummary[name] ??= 0;
     this.reportSummary[name]++;
+  }
+
+  private calcTotalAssetSizeKB(assets: { size_kb?: number }[]) {
+    return assets.reduce((previous, current) => previous + (current.size_kb || 0), 0);
   }
 
   /**
