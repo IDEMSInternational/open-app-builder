@@ -11,6 +11,7 @@ import VectorSource from "ol/source/Vector";
 import VectorLayer from "ol/layer/Vector";
 import GeoJSON from "ol/format/GeoJSON";
 import Style from "ol/style/Style";
+import CircleStyle from "ol/style/Circle";
 import Fill from "ol/style/Fill";
 import Stroke from "ol/style/Stroke";
 import chroma from "chroma-js";
@@ -144,15 +145,36 @@ export class TmplMapComponent extends TemplateBaseComponent implements OnInit {
         format: new GeoJSON(),
         url: assetPath,
       }),
-      style: new Style({
-        fill: new Fill({
-          color: fill && fill !== "none" ? fill : "transparent",
-        }),
-        stroke: new Stroke({
-          color: stroke || "black",
-          width: 1,
-        }),
-      }),
+      style: (feature) => {
+        const geometryType = feature.getGeometry().getType();
+
+        if (geometryType === "Polygon") {
+          return new Style({
+            fill: new Fill({
+              color: fill && fill !== "none" ? fill : "transparent",
+            }),
+            stroke: new Stroke({
+              color: stroke || "black",
+              width: 1,
+            }),
+          });
+        }
+
+        if (geometryType === "Point") {
+          return new Style({
+            image: new CircleStyle({
+              radius: 2,
+              fill: new Fill({
+                color: fill && fill !== "none" ? fill : "transparent",
+              }),
+              stroke: new Stroke({
+                color: stroke || "black",
+                width: 1,
+              }),
+            }),
+          });
+        }
+      },
     });
 
     if (propertyToPlot) {
