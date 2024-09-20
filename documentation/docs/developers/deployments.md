@@ -2,8 +2,16 @@
 
 All user-generated content are stored within deployments, alongside app-specific settings such as remote data sources and app strings.
 
+## Import Existing
+If an external content repo already exists it is possible to directly import it into the local workspace, instead of first creating a new deployment and then configuring for import. 
 
+This can be done via the script
+```
+yarn workflow deployment import [url]
+```
+Where [url] can be replaced with the url of a github repository where content is stored, e.g. https://github.com/IDEMSInternational/app-debug-content.
 
+You will see the new deployment appear in the `.idems_app` folder and be available for selection
 
 ## Create Deployment
 All deployments are stored in the `.idems_app/deployments` folder, and new deployments can be added by calling the script:
@@ -43,9 +51,8 @@ const config = generateDeploymentConfig("example");
 
 // Main Deployment config
 config.google_drive = {
-    sheets_folder_ids: [],
-    assets_folder_ids: [],
-  }
+  sheets_folder_ids: [],
+  assets_folder_ids: [],
 };
 
 // Deployment app config overrides
@@ -89,17 +96,6 @@ const config: IDeploymentConfig = {
     content_tag_latest: "1.0.0",
   },
 ```
-
-### Import Existing
-If an external content repo already exists it is possible to directly import into the local workspace, instead of first creating a new deployment and then configuring for import. 
-
-This can be done via the script
-```
-yarn workflow deployment import [url]
-```
-Where [url] can be replaced with the url of a github repository where content is stored
-
-You will see the new deployment appear in the `.idems_app` folder and be available for selection
 
 ### Sync Content
 Content from external repos can be synced in the usual way

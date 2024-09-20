@@ -31,7 +31,7 @@ jobs:
       - name: Node ${{ matrix.node-version }}
         uses: actions/setup-node@v3
         with:
-          node-version: 16
+          node-version: 20.17.0
           cache: 'yarn'
       - name: Populate environment config
         env:
@@ -60,7 +60,7 @@ jobs:
           SENTRY_PROJECT: ${{env.DEPLOYMENT_NAME}}
         continue-on-error: true
       - name: Store sourcemaps artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: sourcemaps-$SHA_SHORT
           path: www/*.map
