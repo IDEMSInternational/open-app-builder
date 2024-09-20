@@ -1,0 +1,51 @@
+# Automatically apply labels to PR based on title (if written in semantic format)
+name: Github PR Label Title
+on:
+  pull_request:
+    # https://frontside.com/blog/2020-05-26-github-actions-pull_request/
+    types:
+      - opened
+      - ready_for_review
+jobs:
+  label:
+    # Avoid re-label if title not changed or using custom label to prevent
+    # https://github.com/orgs/community/discussions/101695
+    if: |
+      ${{ !contains(github.event.pull_request.labels.*.name , 'no-autolabel')}} &&
+      (event.type == 'opened' || event.changes.title.from)
+    runs-on: ubuntu-latest
+    steps:
+      # Checkout repo to access local templates (if updated)
+      - name: checkout
+        uses: actions/checkout@main
+      # Check if PR title matches conventional commit standard
+      # Not strictly enforced so allow continue on error
+      # https://github.com/marketplace/actions/semantic-pull-request
+      - name: Validate PR title
+        uses: amannn/action-semantic-pull-request@v5
+        continue-on-error: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        # Assign labels based on conventional PR title
+        # https://github.com/marketplace/actions/conventional-release-labels
+      - name: Assign PR Name Labels
+        uses: bcoe/conventional-release-labels@v1.3.1
+        with:
+          # Labels assigned based on pr name prefix
+          type_labels: |
+            {
+              "breaking": "breaking",
+              "chore": "maintenance",
+              "docs": "documentation",
+              "feat": "feature",
+              "fix": "fix",
+              "refactor": "maintenance",
+              "Breaking": "breaking",
+              "Chore": "maintenance",
+              "Docs": "documentation",
+              "Feat": "feature",
+              "Fix": "fix",
+              "Refactor": "maintenance"
+            }
+          # Do not ignore any labels (default ignores chore:)
+          ignored_types: '[]'

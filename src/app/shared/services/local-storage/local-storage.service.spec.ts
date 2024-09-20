@@ -1,6 +1,7 @@
 import { TestBed } from "@angular/core/testing";
 
 import { LocalStorageService } from "./local-storage.service";
+import { IProtectedFieldName } from "packages/data-models";
 
 /** Mock calls to localstorage to store values in-memory */
 export class MockLocalStorageService implements Partial<LocalStorageService> {
@@ -13,6 +14,12 @@ export class MockLocalStorageService implements Partial<LocalStorageService> {
   }
   public ready(): boolean {
     return true;
+  }
+  public getProtected(field: IProtectedFieldName): string {
+    return this.getString(`_${field}`);
+  }
+  public setProtected(field: IProtectedFieldName, value: string) {
+    return this.setString(`_${field}`, value);
   }
 }
 
