@@ -50,7 +50,6 @@ src/assets/app_data
 scripts/config/token.json
 
 .eslintcache
-report.*
 
 # Ignore yarn-v2 dependencies
 # https://yarnpkg.com/getting-started/qa#which-files-should-be-gitignored
