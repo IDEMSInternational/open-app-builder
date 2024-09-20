@@ -66,10 +66,14 @@ describe("Asset Summary Report", () => {
   it("Enumerates assets from template and data_lists", async () => {
     const { asset_summary } = await reporter.process(MOCK_WORKBOOK_DATA);
     expect(asset_summary.data).toEqual([
-      { path: "missing_audio.mp3", count: 1, missing: true },
       { path: "mock_audio.mp3", count: 1 },
       { path: "path/to/mock_image.jpg", count: 2 },
     ]);
+  });
+
+  it("identifies missing assets", async () => {
+    const { assets_missing } = await reporter.process(MOCK_WORKBOOK_DATA);
+    expect(assets_missing.data).toEqual([{ path: "missing_audio.mp3", count: 1, missing: true }]);
   });
 
   it("identifies unused assets", async () => {
