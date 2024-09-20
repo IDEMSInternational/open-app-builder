@@ -1,4 +1,4 @@
-import { FlowTypes, IAssetEntryHashmap } from "data-models";
+import { FlowTypes, IAssetEntryHashmap, IDeploymentConfigJson } from "data-models";
 import { IReportTable } from "../report.types";
 import { isObjectLiteral, kbToMB, sortJsonKeys } from "shared";
 import { IParsedWorkbookData } from "../../convert/types";
@@ -14,21 +14,7 @@ interface IAssetsSummary extends IReportTable {
   data: IReportData[];
 }
 
-/**
- * TODO
- * - Extract assets from config (e.g. android splash)
- * - Extract assets from app_config defaults (if required)
- * - Separate web and local assets
- * - Include total asset size report (flag too large like in console logs)
- */
-
-/**
- * Generate a list of all assets referenced
- *
- * NOTE - this does not account for asset post-processing where filters and overrides may
- * be applied. Follow-up reports required to identify unused/hanging assets
- * (these reports are generated as part of sync-sheets... TODO - should it be later?)
- * */
+/** Generate summary reports for assets */
 export class AssetsSummaryReport {
   /** List of known extensions to search assets for */
   private assetExtensions: string[] = [];
@@ -44,6 +30,11 @@ export class AssetsSummaryReport {
     // Could be replaced with more fine-grained checks like example `extractTemplateAssets`
     this.checkForAssets(sheetData);
 
+    // NOTE - could also consider checking for assets within the deployment config itself
+    // although as these are absolute paths and also may not be required by frontend.
+    // So for now just leave to authors judgement whether assets like android/icon.jpg
+    // are actually 'unused' or not from report
+
     const summaryData: IReportData[] = Object.entries(sortJsonKeys(this.reportSummary)).map(
       ([path, count]) => {
         const entry: IReportData = { path, count };
@@ -57,7 +48,7 @@ export class AssetsSummaryReport {
       }
     );
 
-    // Generate multiple output reports
+    // Reports
 
     const assetSummaryData = summaryData.filter((v) => !v.missing);
     const asset_summary: IAssetsSummary = {
