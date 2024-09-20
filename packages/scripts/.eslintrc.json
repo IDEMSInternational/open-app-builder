@@ -2,5 +2,14 @@
   "parserOptions": {
     "sourceType": "module",
     "ecmaVersion": "latest"
-  }
+  },
+  "plugins": ["jest"],
+  "overrides": [
+    {
+      "files": ["**/*.spec.ts"],
+      "plugins": ["jest"],
+      "extends": ["plugin:jest/recommended"],
+      "rules": {}
+    }
+  ]
 }

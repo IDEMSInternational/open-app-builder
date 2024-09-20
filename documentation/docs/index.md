@@ -8,8 +8,8 @@
 2. Download and install [Git LFS](https://git-lfs.github.com/)  
    This will be used to download any required binary assets, such as images or pdfs
 
-3. Download and install [Node](https://nodejs.org/en/download/)  
-   This is the programming language required to run the project
+3. Download and install [Node](https://nodejs.org/en/download/)   
+   This is the programming language required to run the project. We currently support any of the versions prefixed `v20.x.x` or `v18.x.x`
 
 4. Download and Install [Yarn](https://classic.yarnpkg.com/en/docs/install)  
    This manages all 3rd-party code dependencies
@@ -17,29 +17,39 @@
 ## Installation
 
 ### Download the repo with binary assets
+!!! tip "Choosing a location to download the repo"
+
+      It is best to download the repo to a folder path that does not include any spaces. If using a user documents directory that includes spaces, e.g. `/user/my name`, you may need to re-open the terminal in a different folder instead.
+
+To download the repo into the current working directory, run:
 ```
-$ git lfs clone https://github.com/IDEMSInternational/open-app-builder.git
+git lfs clone https://github.com/IDEMSInternational/open-app-builder.git
 ```
 Note - if you do a regular git clone, you can always run `git lfs fetch --all` later to sync assets
 
 ### Install required dependencies
+Navigate to the newly cloned directory if you have not done so already:
 ```
-$ cd open-app-builder
-$ yarn install
+cd open-app-builder
 ```
-Note - you may have to do this from time to time when content is updated)
+
+From the route of the project, run the following command to download and install the required dependencies:
+```
+yarn install
+```
+Note - you may have to do this from time to time when the code is updated
 
 ## Configuration
 ### Set Deployment
-Deployments are used to configure data sources (such as google drive) and store generated content.   
+The app supports using different workspace or deployment configurations. These are stored in [.idems_app/deployments](./.idems_app/deployments)
 
-An initial deployment can be created via the command
+To use an existing deployment, run the following script:
 ```
-yarn workflow deployment create
+yarn workflow deployment set
 ```
-You will be prompted to specify the deployment type, this should be a `New Local Deployment`. You will also be prompted to provide a name.
+If you have already imported or created a deployment, this will present an interactive list of deployments to select from.
 
-See [Deployment Documentation](./developers/deployments.md) for more information about configuring deployments
+If you have no available deployments, see [Deployment Documentation](https://idemsinternational.github.io/open-app-builder/developers/deployments/) for information about creating and configuring deployments.
 
 ## Running locally
 
@@ -47,12 +57,16 @@ See [Deployment Documentation](./developers/deployments.md) for more information
 ```
 yarn start
 ```
-This will start a local server and serve the app in your browser on http://localhost:4200
+This will start a local server and serve the app in your browser on http://localhost:4200.
 
-# For Content Coders
+## Finishing setup
+
+In order to complete the setup process, navigate to the relevant section of the documentation from the options below, and continue with the steps outlined.
+
+### For Content Authors
 
 Please see [Quickstart Authors](./authors/quickstart.md)
 
-# For Developers
+### For Developers
 
-Please see [Quickstart Developers](./developers/quickstart.md)
+Please see [Quickstart Developers](/developers/quickstart.md)

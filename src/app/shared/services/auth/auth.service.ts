@@ -2,11 +2,11 @@ import { Injectable } from "@angular/core";
 import { FirebaseAuthentication, User } from "@capacitor-firebase/authentication";
 import { BehaviorSubject, firstValueFrom } from "rxjs";
 import { filter } from "rxjs/operators";
-import { environment } from "src/environments/environment";
 import { SyncServiceBase } from "../syncService.base";
 import { TemplateActionRegistry } from "../../components/template/services/instance/template-action.registry";
 import { FirebaseService } from "../firebase/firebase.service";
 import { LocalStorageService } from "../local-storage/local-storage.service";
+import { DeploymentService } from "../deployment/deployment.service";
 
 @Injectable({
   providedIn: "root",
@@ -18,13 +18,14 @@ export class AuthService extends SyncServiceBase {
   constructor(
     private templateActionRegistry: TemplateActionRegistry,
     private firebaseService: FirebaseService,
-    private localStorageService: LocalStorageService
+    private localStorageService: LocalStorageService,
+    private deploymentService: DeploymentService
   ) {
     super("Auth");
     this.initialise();
   }
   private initialise() {
-    const { firebase } = environment.deploymentConfig;
+    const { firebase } = this.deploymentService.config;
     if (firebase?.auth?.enabled && this.firebaseService.app) {
       this.addAuthListeners();
       this.registerTemplateActionHandlers();

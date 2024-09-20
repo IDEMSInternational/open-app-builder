@@ -85,7 +85,7 @@ jobs:
         - name: Setup Node
           uses: actions/setup-node@v3
           with:
-            node-version: 18.x          
+            node-version: 20.17.0          
         - uses: actions/cache/restore@v3
           id: cache
           with:
@@ -104,7 +104,7 @@ jobs:
           run: yarn workflow android
              
         - name: Download Build Artifact
-          uses: actions/download-artifact@v3
+          uses: actions/download-artifact@v4
           with:
             name: www
 
@@ -134,7 +134,7 @@ jobs:
           run: ./gradlew :app:assembleDebug
   
         - name: Upload debug apk
-          uses: actions/upload-artifact@v3
+          uses: actions/upload-artifact@v4
           with:
             name: debug_apk
             path: android/app/build/outputs/apk/debug/app-debug.apk
@@ -155,7 +155,7 @@ jobs:
             keyPassword: ${{ env.KEY_PASSWORD }}
             
         - name: Upload release bundle
-          uses: actions/upload-artifact@v3
+          uses: actions/upload-artifact@v4
           with:
             name: release_bundle
             path: ${{steps.sign_aab.outputs.signedReleaseFile}}
