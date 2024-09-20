@@ -1,8 +1,8 @@
 import type { IGdriveEntry } from "../@idemsInternational/gdrive-tools";
-import type { IAppConfig } from "./appConfig";
+import type { IAppConfig, IAppConfigOverride } from "./appConfig";
 
 /** Update version to force recompile next time deployment set (e.g. after default config update) */
-export const DEPLOYMENT_CONFIG_VERSION = 20240910.0;
+export const DEPLOYMENT_CONFIG_VERSION = 20240914.0;
 
 /** Configuration settings available to runtime application */
 export interface IDeploymentRuntimeConfig {
@@ -12,6 +12,8 @@ export interface IDeploymentRuntimeConfig {
   _content_version: string;
 
   api: {
+    /** Specify whether to enable communication with backend API (default true)*/
+    enabled: boolean;
     /** Name of target db for api operations. Default `plh` */
     db_name?: string;
     /**
@@ -20,8 +22,14 @@ export interface IDeploymentRuntimeConfig {
      * */
     endpoint?: string;
   };
+  analytics: {
+    enabled: boolean;
+    provider: "matomo";
+    endpoint: string;
+    siteId: number;
+  };
   /** Optional override of any provided constants from data-models/constants */
-  app_config: IAppConfig;
+  app_config: IAppConfigOverride;
   /** 3rd party integration for logging services */
   error_logging?: {
     /** sentry/glitchtip logging dsn */
@@ -144,6 +152,12 @@ interface IDeploymentCoreConfig {
 
 export type IDeploymentConfig = IDeploymentCoreConfig & IDeploymentRuntimeConfig;
 
+/**
+ * Generated config includes placeholders for all app_config entries to allow specific
+ * overrides for deeply nested properties, e.g. `app_config.NOTIFICATION_DEFAULTS.time.hour`
+ */
+export type IDeploymentConfigGenerated = IDeploymentConfig & { app_config: IAppConfig };
+
 /** Deployment with additional metadata when set as active deployment */
 export interface IDeploymentConfigJson extends IDeploymentConfig {
   _workspace_path: string;
@@ -156,11 +170,17 @@ export const DEPLOYMENT_RUNTIME_CONFIG_DEFAULTS: IDeploymentRuntimeConfig = {
   _app_builder_version: "",
   name: "",
   api: {
+    enabled: true,
     db_name: "plh",
     endpoint: "https://apps-server.idems.international/api",
   },
-  app_config: {} as any, // populated by `getDefaultAppConstants()`,
-
+  analytics: {
+    enabled: true,
+    provider: "matomo",
+    siteId: 1,
+    endpoint: "https://apps-server.idems.international/analytics",
+  },
+  app_config: {},
   firebase: {
     config: null,
     auth: { enabled: false },
@@ -173,9 +193,11 @@ export const DEPLOYMENT_RUNTIME_CONFIG_DEFAULTS: IDeploymentRuntimeConfig = {
 };
 
 /** Full example of just all config once merged with defaults */
-export const DEPLOYMENT_CONFIG_EXAMPLE_DEFAULTS: IDeploymentConfig = {
+export const DEPLOYMENT_CONFIG_DEFAULTS: IDeploymentConfig = {
   ...DEPLOYMENT_RUNTIME_CONFIG_DEFAULTS,
-  name: "Full Config Example",
+  // NOTE - app_config will be populated during config generation
+  app_config: {} as any,
+  name: "",
   google_drive: {
     assets_folder_id: "",
     sheets_folder_id: "",

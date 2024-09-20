@@ -1,23 +1,5 @@
-import deploymentJson from "../../.idems_app/deployments/activeDeployment.json";
-import type { IDeploymentConfig } from "data-models";
-
 export const environment = {
-  // HACK - json config converts functions to strings, not strongly typed
-  deploymentConfig: deploymentJson as any as IDeploymentConfig,
   production: false,
-  rapidPro: {
-    receiveUrl:
-      "https://rapidpro.idems.international/c/fcm/a459e9bf-6462-41fe-9bde-98dbed64e687/receive",
-    contactRegisterUrl:
-      "https://rapidpro.idems.international/c/fcm/a459e9bf-6462-41fe-9bde-98dbed64e687/register",
-  },
-  domains: ["plh-demo1.idems.international", "plh-demo.idems.international"],
-  chatNonNavigatePaths: ["/chat/action", "/chat/msg-info"],
-  variableNameFlows: ["character_names"],
-  /** Local Settings */
-  analytics: { endpoint: "http://localhost/analytics", siteId: 1 },
-  /** Production Settings **/
-  // analytics: { endpoint: "https://apps-server.idems.international/analytics", siteId: 1 },
 };
 
 // This file can be replaced during build by using the `fileReplacements` array.

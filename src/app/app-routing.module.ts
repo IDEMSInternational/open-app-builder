@@ -1,20 +1,13 @@
 import { NgModule } from "@angular/core";
-import { PreloadAllModules, Route, RouterModule, Routes } from "@angular/router";
-import { APP_CONFIG } from "./data";
+import { PreloadAllModules, RouterModule, Routes } from "@angular/router";
 import { TourComponent } from "./feature/tour/tour.component";
 
-// TODO: These should come from the appConfigService
-const { APP_ROUTE_DEFAULTS } = APP_CONFIG;
-
-/** Routes specified from data-models */
-const DataRoutes: Routes = [
-  { path: "", redirectTo: APP_ROUTE_DEFAULTS.home_route, pathMatch: "full" },
-  ...APP_ROUTE_DEFAULTS.redirects,
-];
-const fallbackRoute: Route = { path: "**", redirectTo: APP_ROUTE_DEFAULTS.fallback_route };
-
-/** Routes required for main app features */
-const FeatureRoutes: Routes = [
+/**
+ * Routes required for main app features
+ * Additional home template redirects and fallback routes will be specified
+ * from deployment config via the AppConfigService
+ **/
+export const APP_FEATURE_ROUTES: Routes = [
   {
     path: "campaigns",
     loadChildren: () => import("./feature/campaign/campaign.module").then((m) => m.CampaignModule),
@@ -68,7 +61,7 @@ const FeatureRoutes: Routes = [
 
 @NgModule({
   imports: [
-    RouterModule.forRoot([...FeatureRoutes, ...DataRoutes, fallbackRoute], {
+    RouterModule.forRoot(APP_FEATURE_ROUTES, {
       preloadingStrategy: PreloadAllModules,
       useHash: false,
       anchorScrolling: "enabled",

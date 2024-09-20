@@ -375,7 +375,7 @@ export function stringToIntegerHash(str: string) {
  * @param target
  * @param ...sources
  */
-export function deepMergeObjects(target: any = {}, ...sources: any) {
+export function deepMergeObjects<T = Record<string, any>>(target: T = {} as T, ...sources: any) {
   if (!sources.length) return target;
   const source = sources.shift();
 
@@ -393,8 +393,8 @@ export function deepMergeObjects(target: any = {}, ...sources: any) {
   return deepMergeObjects(target, ...sources);
 }
 
-export function deepDiffObjects<T extends Object, U extends Object>(a: T, b: U) {
-  return diff(a, b) as RecursivePartial<T | U>;
+export function deepDiffObjects<T extends Object, U extends Object>(original: T, updated: U) {
+  return diff(original, updated) as RecursivePartial<T | U>;
 }
 
 /**

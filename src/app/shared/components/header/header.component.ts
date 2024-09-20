@@ -3,8 +3,12 @@ import { Component, OnDestroy, OnInit, ViewChild } from "@angular/core";
 import { NavigationEnd, NavigationStart, Router } from "@angular/router";
 import { App } from "@capacitor/app";
 import { Capacitor, PluginListenerHandle } from "@capacitor/core";
-import { Subscription, fromEvent, debounceTime, map } from "rxjs";
-import { IAppConfig, IHeaderColourOptions, IHeaderVariantOptions } from "../../model";
+import { Subscription, fromEvent, map } from "rxjs";
+import type {
+  IAppConfig,
+  IHeaderColourOptions,
+  IHeaderVariantOptions,
+} from "data-models/appConfig";
 import { AppConfigService } from "../../services/app-config/app-config.service";
 import { IonHeader, ScrollBaseCustomEvent, ScrollDetail } from "@ionic/angular";
 import { _wait } from "packages/shared/src/utils/async-utils";
@@ -70,14 +74,14 @@ export class headerComponent implements OnInit, OnDestroy {
       });
     }
     // HACK - uncomment to test collapse
-    // this.appConfigService.updateAppConfig({ APP_HEADER_DEFAULTS: { collapse: true } });
+    // this.appConfigService.setAppConfig({ APP_HEADER_DEFAULTS: { collapse: true } });
   }
 
   subscribeToAppConfigChanges() {
     this.appConfigChanges$ = this.appConfigService.changesWithInitialValue$.subscribe(
       (changes: IAppConfig) => {
         if (changes.APP_HEADER_DEFAULTS) {
-          const headerConfig = this.appConfigService.APP_CONFIG.APP_HEADER_DEFAULTS;
+          const headerConfig = this.appConfigService.appConfig().APP_HEADER_DEFAULTS;
           this.headerConfig = headerConfig;
           this.updateHeaderConfig();
           // handle collapse config changes
