@@ -45,7 +45,7 @@ describe("report utils", () => {
     });
     const expected = `
     <details >
-    <summary><h2>Mock Info</h2</summary>
+    <summary><h2>Mock Info</h2></summary>
     
     Mock Description
 
