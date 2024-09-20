@@ -16,7 +16,6 @@ import {
 import { UserMetaService } from "src/app/shared/services/userMeta/userMeta.service";
 import { TemplateService } from "src/app/shared/components/template/services/template.service";
 import { generateTimestamp } from "src/app/shared/utils";
-import { environment } from "src/environments/environment";
 import { DbService } from "src/app/shared/services/db/db.service";
 import { DBSyncService } from "src/app/shared/services/db/db-sync.service";
 import {
@@ -38,6 +37,7 @@ import {
 } from "src/app/shared/components/template/services/instance/template-action.registry";
 import { SyncServiceBase } from "src/app/shared/services/syncService.base";
 import { LocalStorageService } from "src/app/shared/services/local-storage/local-storage.service";
+import { DeploymentService } from "src/app/shared/services/deployment/deployment.service";
 
 @Injectable({
   providedIn: "root",
@@ -80,7 +80,8 @@ export class FeedbackService extends SyncServiceBase {
     private router: Router,
     private themeService: ThemeService,
     private skinService: SkinService,
-    private templateActionRegistry: TemplateActionRegistry
+    private templateActionRegistry: TemplateActionRegistry,
+    private deploymentService: DeploymentService
   ) {
     super("Feedback");
     this.subscribeToAppConfigChanges();
@@ -367,13 +368,14 @@ export class FeedbackService extends SyncServiceBase {
    * device info and user uuid
    */
   public generateFeedbackMetadata() {
+    const { _app_builder_version, name } = this.deploymentService.config;
     const metadata: IFeedbackMetadata = {
       deviceInfo: this.deviceInfo,
       pathname: location.pathname,
       uuid: this.userMetaService.getUserMeta("uuid"),
       timestamp: generateTimestamp(),
-      app_version: environment.version,
-      app_deployment_name: environment.deploymentName,
+      app_version: _app_builder_version,
+      app_deployment_name: name,
       app_theme: this.themeService.getCurrentTheme(),
       app_skin: this.skinService.getActiveSkinName(),
     };

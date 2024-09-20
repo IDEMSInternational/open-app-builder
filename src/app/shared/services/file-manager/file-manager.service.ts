@@ -5,10 +5,10 @@ import { Capacitor } from "@capacitor/core";
 import write_blob from "capacitor-blob-writer";
 import { saveAs } from "file-saver";
 import { SyncServiceBase } from "../syncService.base";
-import { environment } from "src/environments/environment";
 import { TemplateActionRegistry } from "../../components/template/services/instance/template-action.registry";
 import { TemplateAssetService } from "../../components/template/services/template-asset.service";
 import { ErrorHandlerService } from "../error-handler/error-handler.service";
+import { DeploymentService } from "../deployment/deployment.service";
 
 @Injectable({
   providedIn: "root",
@@ -19,14 +19,15 @@ export class FileManagerService extends SyncServiceBase {
   constructor(
     private errorHandler: ErrorHandlerService,
     private templateActionRegistry: TemplateActionRegistry,
-    private templateAssetService: TemplateAssetService
+    private templateAssetService: TemplateAssetService,
+    private deploymentService: DeploymentService
   ) {
     super("FileManager");
     this.initialise();
   }
 
   private initialise() {
-    this.cacheName = environment.deploymentConfig.name;
+    this.cacheName = this.deploymentService.config.name;
     this.registerTemplateActionHandlers();
   }
 

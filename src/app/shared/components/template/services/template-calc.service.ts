@@ -1,15 +1,19 @@
 import { IFunctionHashmap, IConstantHashmap } from "src/app/shared/utils";
-
 import { Injectable } from "@angular/core";
+import { Device, DeviceInfo } from "@capacitor/device";
 import * as date_fns from "date-fns";
 import { ServerService } from "src/app/shared/services/server/server.service";
 import { DataEvaluationService } from "src/app/shared/services/data/data-evaluation.service";
 import { AsyncServiceBase } from "src/app/shared/services/asyncService.base";
 import { PLH_CALC_FUNCTIONS } from "./template-calc-functions/plh-calc-functions";
 import { CORE_CALC_FUNCTIONS } from "./template-calc-functions/core-calc-functions";
+import { UserMetaService } from "src/app/shared/services/userMeta/userMeta.service";
+import { LocalStorageService } from "src/app/shared/services/local-storage/local-storage.service";
 
 @Injectable({ providedIn: "root" })
 export class TemplateCalcService extends AsyncServiceBase {
+  private app_user_id: string;
+  private device_info: DeviceInfo;
   /** list of all variables accessible directly within calculations */
   private calcContext: ICalcContext;
 
@@ -20,14 +24,18 @@ export class TemplateCalcService extends AsyncServiceBase {
 
   constructor(
     private serverService: ServerService,
-    private dataEvaluationService: DataEvaluationService
+    private dataEvaluationService: DataEvaluationService,
+    private localStorageService: LocalStorageService,
+    private userMetaService: UserMetaService
   ) {
     super("TemplateCalc");
     this.registerInitFunction(this.initialise);
   }
   private async initialise() {
-    this.ensureSyncServicesReady([this.serverService]);
-    await this.ensureAsyncServicesReady([this.dataEvaluationService]);
+    this.ensureSyncServicesReady([this.serverService, this.localStorageService]);
+    await this.ensureAsyncServicesReady([this.dataEvaluationService, this.userMetaService]);
+    await this.setUserMetaData();
+    this.getCalcContext();
   }
 
   /** Provide calc context, initialising only once */
@@ -57,9 +65,18 @@ export class TemplateCalcService extends AsyncServiceBase {
       calc: (v: any) => v, // include simple function so @calc(...) returns the value already parsed inside
       app_day: this.dataEvaluationService.data.app_day,
       app_first_launch: this.dataEvaluationService.data.first_app_launch,
-      app_user_id: this.serverService.app_user_id,
-      device_info: this.serverService.device_info,
+      app_user_id: this.app_user_id,
+      device_info: this.device_info,
     };
+  }
+
+  private async setUserMetaData() {
+    if (!this.device_info) {
+      this.device_info = await Device.getInfo();
+    }
+    if (!this.app_user_id) {
+      this.app_user_id = this.localStorageService.getProtected("APP_USER_ID");
+    }
   }
 
   /**
