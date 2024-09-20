@@ -170,7 +170,8 @@ export class AssetsPostProcessor {
     const filtered: typeof sourceAssets = {};
     const { assets_filter_function } = this.activeDeployment.app_data;
     const { filter_language_codes } = this.activeDeployment.translations;
-    const filter_theme_names = this.activeDeployment.app_config.APP_THEMES.available;
+    // themes are defined in runtime app config which may not be available during scripts
+    const filter_theme_names = this.activeDeployment.app_config.APP_THEMES?.available || [];
 
     // remove contents file from gdrive download
     delete sourceAssets["_contents.json"];
