@@ -6,6 +6,7 @@ import { IParsedWorkbookData } from "../../convert/types";
 interface IReportData {
   path: string;
   count: number;
+  size_kb?: number;
   missing?: true;
 }
 
@@ -46,7 +47,10 @@ export class AssetsSummaryReport {
     const summaryData: IReportData[] = Object.entries(sortJsonKeys(this.reportSummary)).map(
       ([path, count]) => {
         const entry: IReportData = { path, count };
-        if (!this.assetData.hasOwnProperty(path)) {
+        const assetDataEntry = this.assetData[path];
+        if (assetDataEntry) {
+          entry.size_kb = assetDataEntry.size_kb;
+        } else {
           entry.missing = true;
         }
         return entry;
@@ -62,7 +66,7 @@ export class AssetsSummaryReport {
       description:
         "Assets that are used within sheets and also can be found in the synced asset data",
       type: "table",
-      columns: ["path", "count"],
+      columns: ["path", "size_kb", "count"],
     };
 
     // Generate report summarising
