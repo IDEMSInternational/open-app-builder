@@ -5,7 +5,7 @@ import { resolve, dirname } from "path";
 import { logOutput } from "shared";
 
 import { IReport } from "./report.types";
-import { generateMarkdownTable } from "./report.utils";
+import { generateReportMarkdown } from "./report.utils";
 import { FlowByTypeReport } from "./reporters/flows-by-type";
 import { TemplateSummaryReport } from "./reporters/template-summary";
 import { AssetsSummaryReport } from "./reporters/asset-summary";
@@ -84,19 +84,10 @@ export class ReportGenerator {
   }
 
   private async writeOutputMarkdown(reports: Record<string, IReport>, target: string) {
-    const contents = ["# Summary"];
-    for (const report of Object.values(reports)) {
-      contents.push("");
-      contents.push(`## ${report.title}`);
-      if (report.description) {
-        contents.push(report.description);
-      }
-      contents.push("");
-      if (report.type === "table") {
-        const mdTable = generateMarkdownTable(report.data, report.columns);
-        contents.push(mdTable);
-      }
-    }
-    await writeFile(target, contents.join("\n"));
+    const reportContent = Object.values(reports)
+      .map((report) => generateReportMarkdown(report))
+      .join("\n\n");
+
+    await writeFile(target, reportContent);
   }
 }

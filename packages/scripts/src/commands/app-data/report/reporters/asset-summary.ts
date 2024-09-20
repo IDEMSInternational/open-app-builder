@@ -72,7 +72,7 @@ export class AssetsSummaryReport {
     // Generate report summarising
     const assets_missing: IReportTable = {
       data: summaryData.filter((v) => v.missing),
-      level: "info",
+      level: "advisory",
       title: "Missing Assets",
       description: "Assets that have references within sheets but do not appear in app-data",
       type: "table",
@@ -82,13 +82,13 @@ export class AssetsSummaryReport {
     // Generate report summarising
     const assets_unused: IReportTable = {
       data: this.generateUnusedAssetsList(),
-      level: "info",
+      level: "advisory",
       title: "Unused Assets",
       description: "Assets that appear in app-data but do not have references within sheets",
       type: "table",
       columns: ["path", "size_kb"],
     };
-    return { asset_summary, assets_missing, assets_unused };
+    return { assets_missing, assets_unused, asset_summary };
   }
 
   /**

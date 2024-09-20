@@ -1,4 +1,4 @@
-import { generateMarkdownTable } from "./report.utils";
+import { generateMarkdownTable, generateReportMarkdown } from "./report.utils";
 
 /** yarn workspace scripts test -t report.utils.spec.ts */
 describe("report utils", () => {
@@ -7,16 +7,14 @@ describe("report utils", () => {
       { key_1: "value_1a", key_2: "value_1b" },
       { key_1: "value_2a", key_2: "value_2b" },
     ]);
-    expect(res).toEqual(
-      `| key_1 | key_2 |\n| --- | --- |\n| value_1a | value_1b |\n| value_2a | value_2b |`
-      /* When formatted output in form:
-        
-        | key_1 | key_2 |
-        | --- | --- |
-        | value_1a | value_1b |
-        | value_2a | value_2b |
-    */
-    );
+    const expected = `
+    | key_1 | key_2 |
+    | --- | --- |
+    | value_1a | value_1b |
+    | value_2a | value_2b |
+    `;
+    // when checking against expected remove additional whitespace indents
+    expect(res).toEqual(expected.trim().replace(/    /g, ""));
   });
 
   it("generateMarkdownTable with named columns", () => {
@@ -27,15 +25,36 @@ describe("report utils", () => {
       ],
       ["key_1"]
     );
-    expect(res).toEqual(
-      `| key_1 |\n| --- |\n| value_1a |\n| value_2a |`
-      /* When formatted output in form:
-        
-        | key_1 |
-        | --- |
-        | value_1a |
-        | value_2a |
-    */
-    );
+    const expected = `
+    | key_1 |
+    | --- |
+    | value_1a |
+    | value_2a |
+    `;
+    expect(res).toEqual(expected.trim().replace(/    /g, ""));
+  });
+
+  it("generates info report with collapsed section", () => {
+    const res = generateReportMarkdown({
+      data: [{ key: "value" }],
+      level: "info",
+      title: "Mock Info",
+      type: "table",
+      description: "Mock Description",
+      footer: "Mock Footer",
+    });
+    const expected = `
+    <details >
+    <summary><h2>Mock Info</h2</summary>
+    Mock Description
+
+    | key |
+    | --- |
+    | value |
+
+    Mock Footer
+    </details>
+    `;
+    expect(res).toEqual(expected.trim().replace(/    /g, ""));
   });
 });
