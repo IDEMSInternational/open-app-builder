@@ -66,8 +66,8 @@ describe("Asset Summary Report", () => {
   it("Enumerates assets from template and data_lists", async () => {
     const { asset_summary } = await reporter.process(MOCK_WORKBOOK_DATA);
     expect(asset_summary.data).toEqual([
-      { path: "mock_audio.mp3", count: 1 },
-      { path: "path/to/mock_image.jpg", count: 2 },
+      { path: "mock_audio.mp3", size_kb: 512, count: 1 },
+      { path: "path/to/mock_image.jpg", size_kb: 512, count: 2 },
     ]);
   });
 
