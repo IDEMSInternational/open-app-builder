@@ -47,7 +47,7 @@ class ReportMarkdownGenerator {
   private generateCollapsibleReport() {
     const { display, title } = this.report;
     const sectionOpen = display === "collapse_open" ? true : false;
-    const sectionTitle = `<h2>${title}</h2`;
+    const sectionTitle = `<h2>${title}</h2>`;
     const sectionContent = this.generateReportContent();
     return this.collapsibleSection(sectionTitle, sectionContent, sectionOpen);
   }
