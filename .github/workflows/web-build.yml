@@ -97,7 +97,7 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v3
         with:
-          node-version: 18.x
+          node-version: 20.17.0
 
       #############################################################################
       #         Node Modules
@@ -175,7 +175,7 @@ jobs:
         # Use github pages upload artifact action to compress and upload
       - name: Upload artifact
         if: ${{!inputs.skip-upload}}
-        uses: actions/upload-pages-artifact@v1.0.8
+        uses: actions/upload-pages-artifact@v3
         with:
           path: "www/"
           name: www

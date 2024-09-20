@@ -115,10 +115,7 @@ export class TmplTaskCardComponent extends TemplateBaseComponent implements OnIn
 
   ngOnInit() {
     this.getParams();
-    this.highlighted =
-      this.taskGroupId && !this.taskId
-        ? this.taskService.checkHighlightedTaskGroup(this.taskGroupId)
-        : false;
+    this.highlighted = this.checkGroupHighlighted();
     this.checkProgressStatus();
   }
 
@@ -160,5 +157,12 @@ export class TmplTaskCardComponent extends TemplateBaseComponent implements OnIn
     if (isNewlyCompleted) {
       this.triggerActions("completed");
     }
+  }
+
+  private checkGroupHighlighted() {
+    if (this.taskGroupId && !this.taskId) {
+      return this.taskService.checkHighlightedTaskGroup(this.taskGroupId);
+    }
+    return false;
   }
 }

@@ -1,10 +1,7 @@
-import packageJson from "../../package.json";
 import deploymentJson from "../../.idems_app/deployments/activeDeployment.json";
 import type { IDeploymentConfig } from "data-models";
 
 export const environment = {
-  version: packageJson.version,
-  deploymentName: deploymentJson.name,
   // HACK - json config converts functions to strings, not strongly typed
   deploymentConfig: deploymentJson as any as IDeploymentConfig,
   production: true,
@@ -17,5 +14,4 @@ export const environment = {
   domains: ["plh-demo1.idems.international", "plh-demo.idems.international"],
   chatNonNavigatePaths: ["/chat/action", "/chat/msg-info"],
   variableNameFlows: ["character_names"],
-  analytics: { endpoint: "https://apps-server.idems.international/analytics", siteId: 1 },
 };

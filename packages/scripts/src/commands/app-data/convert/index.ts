@@ -69,7 +69,10 @@ export class AppDataConverter {
 
   cache: JsonFileCache;
 
-  constructor(private options: IConverterOptions, testOverrides: Partial<AppDataConverter> = {}) {
+  constructor(
+    private options: IConverterOptions,
+    testOverrides: Partial<AppDataConverter> = {}
+  ) {
     console.log(chalk.yellow("App Data Convert"));
     // optional overrides, used for tests
     if (testOverrides.version) this.version = testOverrides.version;
@@ -150,9 +153,9 @@ export class AppDataConverter {
   private logOutputs(result: IParsedWorkbookData) {
     this.writeOutputJsons(result);
     logSheetsSummary(result);
-    const warnings = getLogs("warning");
+    const warnings = getLogs("warn");
     if (warnings.length > 0) {
-      const warningLogFile = getLogFiles().warning;
+      const warningLogFile = getLogFiles().warn;
       logWarning({
         msg1: `Completed with ${warnings.length} warnings`,
         msg2: warningLogFile,
