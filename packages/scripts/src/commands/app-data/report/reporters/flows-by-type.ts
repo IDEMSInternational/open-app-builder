@@ -33,7 +33,7 @@ export class FlowByTypeReport {
     const flows_by_type: IFlowByTypeReport = {
       type: "table",
       title: "Flows By Type",
-      level: "info",
+      display: "collapse_closed",
       data: summary,
     };
 

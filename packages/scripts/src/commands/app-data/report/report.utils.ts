@@ -35,8 +35,8 @@ class ReportMarkdownGenerator {
   constructor(private report: IReport) {}
 
   public generate() {
-    const { level } = this.report;
-    if (level === "info" || level === "advisory") {
+    const { display } = this.report;
+    if (display === "collapse_open" || display === "collapse_closed") {
       return this.generateCollapsibleReport();
     } else {
       // add handling for other levels as created
@@ -45,8 +45,8 @@ class ReportMarkdownGenerator {
 
   /** generate markdown text to populate within section content */
   private generateCollapsibleReport() {
-    const { level, title } = this.report;
-    const sectionOpen = level === "advisory" ? true : false;
+    const { display, title } = this.report;
+    const sectionOpen = display === "collapse_open" ? true : false;
     const sectionTitle = `<h2>${title}</h2`;
     const sectionContent = this.generateReportContent();
     return this.collapsibleSection(sectionTitle, sectionContent, sectionOpen);
@@ -58,6 +58,7 @@ class ReportMarkdownGenerator {
     const { type, description, footer } = this.report;
     const { lineBreak, text } = this;
     if (description) {
+      content.push(lineBreak);
       content.push(text(description));
     }
     if (type === "table") {

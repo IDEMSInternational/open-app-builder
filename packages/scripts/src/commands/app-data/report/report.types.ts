@@ -2,13 +2,8 @@
 export type IReport = IReportTable | IReportText;
 
 interface IReportBase {
-  /**
-   * Reporting level. Reports designated at different levels will be displayed in different ways
-   * Info - collapsible section, collapsed by default
-   * Advisory - collapsible section, expanded by default
-   * Warning (TODO) -
-   *  */
-  level: "info" | "advisory";
+  /** Markdown structure to use when generating display content **/
+  display: "collapse_open" | "collapse_closed";
   /** Title to display on top of report */
   title: string;
   /** Optional description to include below title */

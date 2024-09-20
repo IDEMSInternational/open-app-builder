@@ -47,13 +47,13 @@ export class TemplateSummaryReport {
     const template_components: ITemplateSummaryReport = {
       type: "table",
       title: "Components",
-      level: "info",
+      display: "collapse_closed",
       data: this.getReportData(this.summary.components),
     };
     const template_actions: ITemplateSummaryReport = {
       type: "table",
       title: "Actions",
-      level: "info",
+      display: "collapse_closed",
       data: this.getReportData(this.summary.actions),
     };
 

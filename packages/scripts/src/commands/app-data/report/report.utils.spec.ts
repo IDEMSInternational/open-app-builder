@@ -34,10 +34,10 @@ describe("report utils", () => {
     expect(res).toEqual(expected.trim().replace(/    /g, ""));
   });
 
-  it("generates info report with collapsed section", () => {
+  it("generates report with collapsed section", () => {
     const res = generateReportMarkdown({
       data: [{ key: "value" }],
-      level: "info",
+      display: "collapse_closed",
       title: "Mock Info",
       type: "table",
       description: "Mock Description",
@@ -46,6 +46,7 @@ describe("report utils", () => {
     const expected = `
     <details >
     <summary><h2>Mock Info</h2</summary>
+    
     Mock Description
 
     | key |

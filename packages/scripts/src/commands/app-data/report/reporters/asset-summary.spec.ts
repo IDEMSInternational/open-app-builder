@@ -4,8 +4,8 @@ import { IParsedWorkbookData } from "../../convert/types";
 
 const MOCK_PROJECT_ASSETS: IAssetEntryHashmap = {
   "path/to/mock_image.jpg": { md5Checksum: "", size_kb: 512 },
-  "mock_audio.mp3": { md5Checksum: "", size_kb: 512 },
-  "unused_asset.png": { md5Checksum: "", size_kb: 512 },
+  "mock_audio.mp3": { md5Checksum: "", size_kb: 2048 },
+  "unused_asset.png": { md5Checksum: "", size_kb: 256 },
 };
 
 const MOCK_TEMPLATE_ROWS: FlowTypes.TemplateRow[] = [
@@ -66,18 +66,26 @@ describe("Asset Summary Report", () => {
   it("Enumerates assets from template and data_lists", async () => {
     const { asset_summary } = await reporter.process(MOCK_WORKBOOK_DATA);
     expect(asset_summary.data).toEqual([
-      { path: "mock_audio.mp3", size_kb: 512, count: 1 },
+      { path: "mock_audio.mp3", size_kb: 2048, count: 1 },
       { path: "path/to/mock_image.jpg", size_kb: 512, count: 2 },
     ]);
   });
 
-  it("identifies missing assets", async () => {
+  it("Reports missing assets", async () => {
     const { assets_missing } = await reporter.process(MOCK_WORKBOOK_DATA);
     expect(assets_missing.data).toEqual([{ path: "missing_audio.mp3", count: 1, missing: true }]);
   });
 
-  it("identifies unused assets", async () => {
+  it("Reports unused assets", async () => {
     const { assets_unused } = await reporter.process(MOCK_WORKBOOK_DATA);
-    expect(assets_unused.data).toEqual([{ path: "unused_asset.png", size_kb: 512 }]);
+    expect(assets_unused.data).toEqual([{ path: "unused_asset.png", size_kb: 256 }]);
+  });
+
+  it("Reports asset sizes", async () => {
+    const { assets_size } = await reporter.process(MOCK_WORKBOOK_DATA);
+    expect(assets_size.data).toEqual([
+      { assets: "total", KB: "2560 KB", MB: "2.6 MB" },
+      { assets: "unused", KB: "256 KB", MB: "0.3 MB" },
+    ]);
   });
 });
