@@ -1,7 +1,7 @@
 import { FlowTypes } from "data-models";
-import { IParsedWorkbookData } from "../../types";
 import { IReportTable } from "../report.types";
 import { isObjectLiteral, sortJsonKeys } from "shared";
+import { IParsedWorkbookData } from "../../convert/types";
 
 interface IReportData {
   path: string;
