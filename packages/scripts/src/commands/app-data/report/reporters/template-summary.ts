@@ -1,7 +1,7 @@
 import { FlowTypes } from "data-models";
 import { sortJsonKeys } from "shared/src/utils";
 
-import { IParsedWorkbookData } from "../../types";
+import { IParsedWorkbookData } from "../../convert/types";
 import { IReportTable } from "../report.types";
 
 interface IReportData {

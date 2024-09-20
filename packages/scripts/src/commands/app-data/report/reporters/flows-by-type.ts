@@ -1,4 +1,4 @@
-import { IParsedWorkbookData } from "../../types";
+import { IParsedWorkbookData } from "../../convert/types";
 import { IReportTable } from "../report.types";
 
 interface IReportData {

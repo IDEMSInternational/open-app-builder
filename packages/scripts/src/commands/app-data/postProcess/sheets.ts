@@ -150,6 +150,6 @@ class SheetsPostProcessor {
 /**********************************************************************************************************
  *                                            Types and Utilities
  *********************************************************************************************************/
-type ISheetContents = {
+export type ISheetContents = {
   [flow_type in FlowTypes.FlowType]: { [flow_name: string]: FlowTypes.FlowTypeBase };
 };
