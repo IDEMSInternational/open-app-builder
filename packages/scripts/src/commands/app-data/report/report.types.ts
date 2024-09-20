@@ -2,12 +2,19 @@
 export type IReport = IReportTable | IReportText;
 
 interface IReportBase {
-  /** Reporting level, default "info" (future will include warnings/recommendations). */
-  level: "info";
+  /**
+   * Reporting level. Reports designated at different levels will be displayed in different ways
+   * Info - collapsible section, collapsed by default
+   * Advisory - collapsible section, expanded by default
+   * Warning (TODO) -
+   *  */
+  level: "info" | "advisory";
   /** Title to display on top of report */
   title: string;
   /** Optional description to include below title */
   description?: string;
+  /** Optional footer content to appear at bottom */
+  footer?: string;
 }
 
 export interface IReportTable extends IReportBase {
