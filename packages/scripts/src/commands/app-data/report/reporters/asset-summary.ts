@@ -1,4 +1,4 @@
-import { FlowTypes } from "data-models";
+import { FlowTypes, IAssetEntryHashmap } from "data-models";
 import { IReportTable } from "../report.types";
 import { isObjectLiteral, sortJsonKeys } from "shared";
 import { IParsedWorkbookData } from "../../convert/types";
@@ -14,22 +14,11 @@ interface IAssetsSummary extends IReportTable {
 
 /**
  * TODO
- * - Refactor all reports to have access to entire context (e.g. assets contents)
  * - Compare assets against contents
  * - Extract assets from config (e.g. android splash)
  * - Extract assets from app_config defaults (if required)
  * - Separate web and local assets
  */
-
-/**
- * List of known valid extensions used within assets
- *
- * TODO - list of valid extensions can first be generated from asset contents , e.g.
- * ```ts
- * const extensions = [...new Set(Object.keys(assets).map(v=>v.split('.').pop()))]
- * ```
- */
-const EXTENSIONS = ["jpeg", "jpg", "json", "mov", "mp3", "mp4", "png", "pdf", "svg", "wav"];
 
 /**
  * Generate a list of all assets referenced
@@ -39,12 +28,19 @@ const EXTENSIONS = ["jpeg", "jpg", "json", "mov", "mp3", "mp4", "png", "pdf", "s
  * (these reports are generated as part of sync-sheets... TODO - should it be later?)
  * */
 export class AssetsSummaryReport {
+  /** List of known extensions to search assets for */
+  private assetExtensions: string[] = [];
+
   private assetSummary: Record<string, number> = {};
 
-  public async process(data: IParsedWorkbookData) {
+  constructor(private assetData: IAssetEntryHashmap) {
+    this.generateAssetExtensionList(Object.keys(this.assetData));
+  }
+
+  public async process(sheetData: IParsedWorkbookData) {
     // HACK - check for assets within all the content of all the flows
     // Could be replaced with more fine-grained checks like example `extractTemplateAssets`
-    this.checkForAssets(data);
+    this.checkForAssets(sheetData);
 
     const summaryData: IReportData[] = Object.entries(sortJsonKeys(this.assetSummary)).map(
       ([path, count]) => ({ path, count })
@@ -59,8 +55,20 @@ export class AssetsSummaryReport {
     return { asset_summary };
   }
 
+  /**
+   * When trying to identify whether text that appears in a sheet might refer to an asset,
+   * the text is compared against a list of known asset extensions to see if the text
+   * ends in the same way (e.g. `.pdf`, `jpg` etc.).
+   *
+   * Use the list of all project assets to generate the list of extensions to watch for
+   */
+  private generateAssetExtensionList(assetNames: string[]) {
+    this.assetExtensions = [...new Set(assetNames.map((v) => v.split(".").pop()))];
+  }
+
   private checkForAssets(v: any, logName = "") {
     if (v) {
+      // check if string references an asset
       if (typeof v === "string") {
         if (this.isAssetPath(v)) {
           // Debugging - use logNames to understand where v originated
@@ -69,11 +77,11 @@ export class AssetsSummaryReport {
         }
         return;
       }
-      //
+      // check each array entry for assets
       if (Array.isArray(v)) {
         return v.map((el) => this.checkForAssets(el, logName));
       }
-      //
+      // check each object literal value for assets
       if (isObjectLiteral(v)) {
         logName += ` ${v.name || v.id || "json"}`;
         return Object.values(v).map((el) => this.checkForAssets(el, logName));
@@ -96,7 +104,7 @@ export class AssetsSummaryReport {
       // avoid single word, e.g. 'PDF'
       if (segments.length > 1) {
         const extension = segments.pop();
-        if (EXTENSIONS.includes(extension.toLowerCase())) {
+        if (this.assetExtensions.includes(extension.toLowerCase())) {
           return true;
         }
       }
