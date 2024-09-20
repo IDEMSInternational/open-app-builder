@@ -64,7 +64,6 @@ export class ReportGenerator {
         workbookData[flow_type].push(data);
       }
     }
-    await writeJson("workbook_data.json", workbookData);
     return workbookData;
   }
 
@@ -87,10 +86,14 @@ export class ReportGenerator {
   private async writeOutputMarkdown(reports: Record<string, IReport>, target: string) {
     const contents = ["# Summary"];
     for (const report of Object.values(reports)) {
+      contents.push("");
+      contents.push(`## ${report.title}`);
+      if (report.description) {
+        contents.push(report.description);
+      }
+      contents.push("");
       if (report.type === "table") {
-        contents.push("");
-        contents.push(`## ${report.title}`);
-        const mdTable = generateMarkdownTable(report.data);
+        const mdTable = generateMarkdownTable(report.data, report.columns);
         contents.push(mdTable);
       }
     }

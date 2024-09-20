@@ -4,7 +4,8 @@ import { IParsedWorkbookData } from "../../convert/types";
 
 const MOCK_PROJECT_ASSETS: IAssetEntryHashmap = {
   "path/to/mock_image.jpg": { md5Checksum: "", size_kb: 512 },
-  "unused_asset.mp3": { md5Checksum: "", size_kb: 512 },
+  "mock_audio.mp3": { md5Checksum: "", size_kb: 512 },
+  "unused_asset.png": { md5Checksum: "", size_kb: 512 },
 };
 
 const MOCK_TEMPLATE_ROWS: FlowTypes.TemplateRow[] = [
@@ -12,14 +13,15 @@ const MOCK_TEMPLATE_ROWS: FlowTypes.TemplateRow[] = [
     type: "button",
     _nested_name: "",
     name: "",
-    parameter_list: {},
+    parameter_list: {
+      icon: "path/to/mock_image.jpg",
+    },
   },
   {
     type: "audio",
     _nested_name: "",
     name: "",
     value: "mock_audio.mp3",
-    parameter_list: {},
   },
 ];
 
@@ -27,8 +29,10 @@ const MOCK_DATA_LIST_ROWS: FlowTypes.Data_listRow[] = [
   {
     text: "mock_text",
     icon: "path/to/mock_image.jpg",
-    audio: "mock_audio.mp3",
-    pdf: "mock_pdf.pdf",
+    audio: "missing_audio.mp3",
+    // NOTE - this will not be captured. No other pdf assets
+    // exist in project assets, so file extension not checked.
+    pdf: "missing_pdf.pdf",
   },
 ];
 
@@ -56,14 +60,20 @@ describe("Asset Summary Report", () => {
   });
 
   it("Generates a list of file extension matches from asset data", () => {
-    expect(reporter["assetExtensions"]).toEqual(["jpg", "mp3"]);
+    expect(reporter["assetExtensions"]).toEqual(["jpg", "mp3", "png"]);
   });
 
   it("Enumerates assets from template and data_lists", async () => {
     const { asset_summary } = await reporter.process(MOCK_WORKBOOK_DATA);
     expect(asset_summary.data).toEqual([
-      { path: "mock_audio.mp3", count: 2 },
-      { path: "path/to/mock_image.jpg", count: 1 },
+      { path: "missing_audio.mp3", count: 1, missing: true },
+      { path: "mock_audio.mp3", count: 1 },
+      { path: "path/to/mock_image.jpg", count: 2 },
     ]);
+  });
+
+  it("identifies unused assets", async () => {
+    const { assets_unused } = await reporter.process(MOCK_WORKBOOK_DATA);
+    expect(assets_unused.data).toEqual([{ path: "unused_asset.png", size_kb: 512 }]);
   });
 });

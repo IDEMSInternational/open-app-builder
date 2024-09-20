@@ -6,6 +6,7 @@ import { IParsedWorkbookData } from "../../convert/types";
 interface IReportData {
   path: string;
   count: number;
+  missing?: true;
 }
 
 interface IAssetsSummary extends IReportTable {
@@ -14,10 +15,10 @@ interface IAssetsSummary extends IReportTable {
 
 /**
  * TODO
- * - Compare assets against contents
  * - Extract assets from config (e.g. android splash)
  * - Extract assets from app_config defaults (if required)
  * - Separate web and local assets
+ * - Include total asset size report (flag too large like in console logs)
  */
 
 /**
@@ -31,7 +32,7 @@ export class AssetsSummaryReport {
   /** List of known extensions to search assets for */
   private assetExtensions: string[] = [];
 
-  private assetSummary: Record<string, number> = {};
+  private reportSummary: Record<string, number> = {};
 
   constructor(private assetData: IAssetEntryHashmap) {
     this.generateAssetExtensionList(Object.keys(this.assetData));
@@ -42,17 +43,48 @@ export class AssetsSummaryReport {
     // Could be replaced with more fine-grained checks like example `extractTemplateAssets`
     this.checkForAssets(sheetData);
 
-    const summaryData: IReportData[] = Object.entries(sortJsonKeys(this.assetSummary)).map(
-      ([path, count]) => ({ path, count })
+    const summaryData: IReportData[] = Object.entries(sortJsonKeys(this.reportSummary)).map(
+      ([path, count]) => {
+        const entry: IReportData = { path, count };
+        if (!this.assetData.hasOwnProperty(path)) {
+          entry.missing = true;
+        }
+        return entry;
+      }
     );
 
+    // Generate report summarising how many times each asset is referenced, and whether missing
+    // from data
     const asset_summary: IAssetsSummary = {
-      data: sortJsonKeys(summaryData),
+      data: summaryData.filter((v) => !v.missing),
       level: "info",
-      title: "Assets",
+      title: "Assets Summary",
+      description:
+        "Assets that are used within sheets and also can be found in the synced asset data",
       type: "table",
+      columns: ["path", "count"],
     };
-    return { asset_summary };
+
+    // Generate report summarising
+    const assets_missing: IReportTable = {
+      data: summaryData.filter((v) => v.missing),
+      level: "info",
+      title: "Missing Assets",
+      description: "Assets that appear in app-data but do not have references within sheets",
+      type: "table",
+      columns: ["path", "count"],
+    };
+
+    // Generate report summarising
+    const assets_unused: IReportTable = {
+      data: this.generateUnusedAssetsList(),
+      level: "info",
+      title: "Unused Assets",
+      description: "Assets that appear in app-data but do not have references within sheets",
+      type: "table",
+      columns: ["path", "size_kb"],
+    };
+    return { asset_summary, assets_missing, assets_unused };
   }
 
   /**
@@ -88,9 +120,16 @@ export class AssetsSummaryReport {
       }
     }
   }
+
+  private generateUnusedAssetsList() {
+    return Object.entries(this.assetData)
+      .filter(([path]) => !this.reportSummary.hasOwnProperty(path))
+      .map(([path, { size_kb }]) => ({ path, size_kb }));
+  }
+
   private markAsset(name: string) {
-    this.assetSummary[name] ??= 0;
-    this.assetSummary[name]++;
+    this.reportSummary[name] ??= 0;
+    this.reportSummary[name]++;
   }
 
   /**

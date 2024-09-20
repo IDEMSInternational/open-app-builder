@@ -6,11 +6,15 @@ interface IReportBase {
   level: "info";
   /** Title to display on top of report */
   title: string;
+  /** Optional description to include below title */
+  description?: string;
 }
 
 export interface IReportTable extends IReportBase {
   data: Record<string, any>[];
   type: "table";
+  /** Names of columns provided in data. Will be inferred from first row if not provided */
+  columns?: string[];
 }
 
 interface IReportText extends IReportBase {
