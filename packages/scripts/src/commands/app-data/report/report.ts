@@ -18,7 +18,7 @@ import { ISheetContents } from "../postProcess/sheets";
  * Individual reports are created by child reporters, with outputs stored in both
  * json and markdown formats for easier interpretation
  *
- * Run on existing data via `yarn workflow sync_sheets --skip-download`
+ * Run on existing data via `yarn workflow report`
  **/
 export class ReportGenerator {
   constructor(private deployment: IDeploymentConfigJson) {}
