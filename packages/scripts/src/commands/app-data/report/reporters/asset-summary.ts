@@ -62,7 +62,7 @@ export class AssetsSummaryReport {
     const asset_summary: IAssetsSummary = {
       data: summaryData.filter((v) => !v.missing),
       level: "info",
-      title: "Assets Summary",
+      title: "Matched Assets",
       description:
         "Assets that are used within sheets and also can be found in the synced asset data",
       type: "table",
@@ -74,7 +74,7 @@ export class AssetsSummaryReport {
       data: summaryData.filter((v) => v.missing),
       level: "info",
       title: "Missing Assets",
-      description: "Assets that appear in app-data but do not have references within sheets",
+      description: "Assets that have references within sheets but do not appear in app-data",
       type: "table",
       columns: ["path", "count"],
     };
