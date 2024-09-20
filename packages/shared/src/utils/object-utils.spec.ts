@@ -2,6 +2,7 @@ import {
   cleanEmptyObject,
   isEmptyObjectDeep,
   isObjectLiteral,
+  sortJsonKeys,
   toEmptyObject,
 } from "./object-utils";
 
@@ -53,5 +54,21 @@ describe("Object Utils", () => {
       string: "hi",
       number: 1,
     });
+  });
+
+  it("sortJsonKeys", () => {
+    const input = {
+      b: "foo",
+      c: null,
+      a: {
+        f: 6,
+        e: 5,
+      },
+      d: [],
+    };
+    const res = sortJsonKeys(input);
+    expect(Object.keys(res)).toEqual(["a", "b", "c", "d"]);
+    expect(Object.keys(res.a)).toEqual(["e", "f"]);
+    expect(Object.values(res.a)).toEqual([5, 6]);
   });
 });
