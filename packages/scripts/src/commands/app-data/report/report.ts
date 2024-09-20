@@ -24,15 +24,13 @@ export class ReportGenerator {
   constructor(private deployment: IDeploymentConfigJson) {}
 
   public async process() {
-    const workbookData = await this.loadSheetsData();
+    const sheetsData = await this.loadSheetsData();
     const assetData = await this.loadAssetsData();
 
-    const { template_actions, template_components } = await new TemplateSummaryReport().process(
-      workbookData
-    );
-    const { flows_by_type } = await new FlowByTypeReport().process(workbookData);
-    const { asset_summary } = await new AssetsSummaryReport().process(workbookData);
-    const outputReports = { template_actions, template_components, asset_summary, flows_by_type };
+    const TemplateReports = await new TemplateSummaryReport().process(sheetsData);
+    const FlowReports = await new FlowByTypeReport().process(sheetsData);
+    const AssetReports = await new AssetsSummaryReport(assetData).process(sheetsData);
+    const outputReports = { ...TemplateReports, ...AssetReports, ...FlowReports };
     await this.writeOutputs(outputReports);
   }
 
