@@ -89,11 +89,11 @@ describe("Json File Cache", () => {
     // Add entry
     const data = Math.random();
     const { entryName, filePath } = cache.add(data);
-    expect(existsSync(filePath)).toBeTrue();
+    expect(existsSync(filePath)).toEqual(true);
     expect(cache.get(entryName)).toEqual(data);
     // Remove entry
     cache.remove(entryName);
-    expect(existsSync(filePath)).toBeFalse();
+    expect(existsSync(filePath)).toEqual(false);
     expect(cache.get(entryName)).toBeUndefined();
   });
 

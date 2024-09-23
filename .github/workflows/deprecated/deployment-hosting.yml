@@ -34,7 +34,7 @@ jobs:
           echo "DEPLOYMENT_NAME=${{needs.build.outputs.DEPLOYMENT_NAME}}" >> $GITHUB_ENV
           echo "GIT_SHA=${{needs.build.outputs.GIT_SHA}}" >> $GITHUB_ENV
       - name: Download Build Artifact
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: www
       - name: Extract Build folder
@@ -52,7 +52,7 @@ jobs:
           SENTRY_PROJECT: ${{env.DEPLOYMENT_NAME}}
         continue-on-error: true
       - name: Store sourcemaps artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: sourcemaps-$GIT_SHA
           path: www/*.map
@@ -65,7 +65,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Download Build Artifact
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: www
       - name: Extract Build folder

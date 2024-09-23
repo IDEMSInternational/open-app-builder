@@ -71,6 +71,7 @@ export function extractDynamicFields(data: any): FlowTypes.IDynamicField | undef
 export function extractDynamicEvaluators(
   fullExpression: string
 ): FlowTypes.TemplateRowDynamicEvaluator[] | null {
+  const appConfigDefault = getDefaultAppConfig();
   // match fields such as @local.someField
   // deeper nesting will be need to be handled after evaluation as part of JSEvaluation
   // (e.g. @local.somefield.nestedProperty or even !@local.@local.dynamicNested)
@@ -89,7 +90,7 @@ export function extractDynamicEvaluators(
           type = "raw";
         }
         // cross-check to ensure lookup matches one of the pre-defined dynamic field types (e.g. not email@domain.com)
-        if (!getDefaultAppConfig().DYNAMIC_PREFIXES.includes(type)) {
+        if (!appConfigDefault.DYNAMIC_PREFIXES.includes(type)) {
           return undefined;
         }
         return { fullExpression, matchedExpression, type, fieldName };

@@ -3,7 +3,6 @@ import { HttpClient, HttpEventType } from "@angular/common/http";
 import { Capacitor } from "@capacitor/core";
 import { createClient, SupabaseClient } from "@supabase/supabase-js";
 import { FileObject } from "@supabase/storage-js";
-import { environment } from "src/environments/environment";
 import { TemplateActionRegistry } from "../../components/template/services/instance/template-action.registry";
 import { FlowTypes, IAppConfig } from "../../model";
 import { AppConfigService } from "../app-config/app-config.service";
@@ -16,6 +15,7 @@ import { AsyncServiceBase } from "../asyncService.base";
 import { IAssetEntry, IAssetOverrideProps } from "packages/data-models/deployment.model";
 import { DynamicDataService } from "../dynamic-data/dynamic-data.service";
 import { arrayToHashmap, convertBlobToBase64, deepMergeObjects } from "../../utils";
+import { DeploymentService } from "../deployment/deployment.service";
 
 const CORE_ASSET_PACK_NAME = "core_assets";
 
@@ -39,7 +39,8 @@ export class RemoteAssetService extends AsyncServiceBase {
     private fileManagerService: FileManagerService,
     private templateAssetService: TemplateAssetService,
     private templateActionRegistry: TemplateActionRegistry,
-    private http: HttpClient
+    private http: HttpClient,
+    private deploymentService: DeploymentService
   ) {
     super("RemoteAsset");
     this.registerInitFunction(this.initialise);
@@ -48,7 +49,7 @@ export class RemoteAssetService extends AsyncServiceBase {
   private async initialise() {
     this.registerTemplateActionHandlers();
     // require supabase to be configured to use remote asset service
-    const { enabled, publicApiKey, url } = environment.deploymentConfig.supabase;
+    const { enabled, publicApiKey, url } = this.deploymentService.config.supabase;
     this.supabaseEnabled = enabled;
     if (this.supabaseEnabled) {
       await this.ensureAsyncServicesReady([this.templateAssetService, this.dynamicDataService]);
