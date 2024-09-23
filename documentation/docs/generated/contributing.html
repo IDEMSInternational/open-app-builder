@@ -13,8 +13,66 @@
         <link rel="stylesheet" href="./styles/material.css">
     </head>
     <body>
+          <script>
+               // Blocking script to avaoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
 
-        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+
+               if ($darkModeToggles.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-block d-sm-none">
             <a href="./" class="navbar-brand">frontend documentation</a>
             <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
         </div>
@@ -32,16 +90,16 @@
                <div class="content getting-started">
                    <div class="content-data">
 
-<h1 id="contributing-to-the-parenting-for-lifelong-health-app">Contributing to the Parenting for Lifelong Health App</h1>
+<h1>Contributing to the Parenting for Lifelong Health App</h1>
 <p>👍🎉 First off, thanks for taking the time to contribute! 🎉👍</p>
 <p>The following is a set of guidelines for contributing to the Parenting for Lifelong Health (PLH) Mobile App.
 By submitting code for inclusion in the PLH App you agree to this contributor agreement aswell as the <a href="./LICENCE.md">software licence</a>.</p>
-<h1 id="code-of-conduct">Code of Conduct</h1>
+<h1>Code of Conduct</h1>
 <p>Everyone developing on this project yourself included, must adhere to the <a href="./CODE_OF_CONDUCT.md">PLH App Code of Conduct</a></p>
-<h1 id="how-to-contribute">How to contribute</h1>
+<h1>How to contribute</h1>
 <p>Create a Github issue if you want have a feature request or bug fix.</p>
 <p>If you know how to make your changes in code please submit a pull request and mention your pull request in the Github issue you created.</p>
-<h1 id="derivatives-and-certification">Derivatives and Certification</h1>
+<h1>Derivatives and Certification</h1>
 <p>You may create your own derivatives of this app using content from within the app. However all official organisation branding and trademarks must be removed unless you receive approval and certification from those organisations. These organisations include:</p>
 <ul>
 <li>Parenting For Lifelong Health</li>

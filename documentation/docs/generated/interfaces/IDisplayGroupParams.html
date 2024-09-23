@@ -106,7 +106,7 @@
   <li class="breadcrumb-item">Interfaces</li>
   <li class="breadcrumb-item"
   >
-  IODKFormComponentParameters</li>
+  IDisplayGroupParams</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
@@ -130,7 +130,7 @@
             <h3>File</h3>
         </p>
         <p class="comment">
-            <code>src/app/shared/components/template/components/odk-form/odk-form.component.ts</code>
+            <code>src/app/shared/components/template/components/layout/display-group/display-group.component.ts</code>
         </p>
 
 
@@ -149,10 +149,21 @@
                         <td class="col-md-4">
                             <ul class="index-list">
                                 <li>
-                                            <span class="modifier">Optional</span>
-                                        <a href="#form_asset" 
+                                        <a href="#offset" 
 >
-                                            form_asset
+                                            offset
+                                        </a>
+                                </li>
+                                <li>
+                                        <a href="#style" 
+>
+                                            style
+                                        </a>
+                                </li>
+                                <li>
+                                        <a href="#variant" 
+>
+                                            variant
                                         </a>
                                 </li>
                             </ul>
@@ -170,9 +181,9 @@
                         <tbody>
                                 <tr>
                                     <td class="col-md-4">
-                                        <a name="form_asset"></a>
-                                        <span class="name "><b>form_asset</b>
-                                            <a href="#form_asset">
+                                        <a name="offset"></a>
+                                        <span class="name "><b>offset</b>
+                                            <a href="#offset">
                                                 <span class="icon ion-ios-link"></span>
                                             </a>
                                         </span>
@@ -180,7 +191,7 @@
                                 </tr>
                                 <tr>
                                     <td class="col-md-4">
-                                        <code>form_asset:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                        <code>offset:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
 </code>
                                     </td>
                                 </tr>
@@ -188,23 +199,96 @@
 
                                     <tr>
                                         <td class="col-md-4">
-                                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
 
                                         </td>
                                     </tr>
 
-                                    <tr>
-                                        <td class="col-md-4">
-                                            <i>Optional</i>
-                                        </td>
-                                    </tr>
 
 
 
 
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-description"><p>Path to asset file containing form data in enketo-transformed json format</p>
+                                    <div class="io-description"><p>TEMPLATE PARAMETER: &quot;offset&quot;. Add a custom bottom margin</p>
+</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="style"></a>
+                                        <span class="name "><b>style</b>
+                                            <a href="#style">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>style:     <code>&quot;form&quot; | &quot;default&quot; | string | null</code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>    <code>&quot;form&quot; | &quot;default&quot; | string | null</code>
+
+                                        </td>
+                                    </tr>
+
+
+
+
+
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>TEMPLATE PARAMETER: &quot;style&quot;. TODO: Various additional legacy styles, review and convert some to variants</p>
+</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="variant"></a>
+                                        <span class="name "><b>variant</b>
+                                            <a href="#variant">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>variant:     <code>&quot;box_gray&quot; | &quot;box_primary&quot; | &quot;box_secondary&quot; | &quot;dashed_box&quot;</code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>    <code>&quot;box_gray&quot; | &quot;box_primary&quot; | &quot;box_secondary&quot; | &quot;dashed_box&quot;</code>
+
+                                        </td>
+                                    </tr>
+
+
+
+
+
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>TEMPLATE PARAMETER: &quot;variant&quot;</p>
 </div>
                                 </td>
                             </tr>
@@ -215,163 +299,52 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, ElementRef, OnInit, ViewChild, ViewEncapsulation } from &quot;@angular/core&quot;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit } from &quot;@angular/core&quot;;
+import { TemplateBaseComponent } from &quot;../../base&quot;;
+import { getNumberParamFromTemplateRow, getStringParamFromTemplateRow } from &quot;../../../../../utils&quot;;
 
-import Events from &quot;./libs/enketo/js/event&quot;;
-import { Form } from &quot;./libs/enketo/js/form&quot;;
-import { TemplateBaseComponent } from &quot;../base&quot;;
-import { TemplateAssetService } from &quot;../../services/template-asset.service&quot;;
-
-/** Enketo-transformed form representation */
-interface IEnketoFormData {
-  enketoId: string;
-  externalData: [];
-  /** html string representation of form */
-  form: string;
-  hash: string;
-  languageMap: {};
-  maxSize: number;
-  media: {};
-  /** xml string representation of model */
-  model: string;
-  theme: &quot;grid&quot;;
-}
-
-interface IFormEntry {
-  created: number;
-  draft: boolean;
-  enketoId: string;
-  files: any[];
-  instanceId: string;
-  name: string;
-  // TODO - check if actually updated
-  updated: number;
-  xml: string;
-}
-
-interface IEventFormSaved {
-  entry: IFormEntry;
-}
-
-interface IODKFormComponentParameters {
-  /**
-   * Path to asset file containing form data in enketo-transformed json format
-   */
-  form_asset?: string;
+interface IDisplayGroupParams {
+  /** TEMPLATE PARAMETER: &quot;variant&quot; */
+  variant: &quot;box_gray&quot; | &quot;box_primary&quot; | &quot;box_secondary&quot; | &quot;dashed_box&quot;;
+  /** TEMPLATE PARAMETER: &quot;style&quot;. TODO: Various additional legacy styles, review and convert some to variants */
+  style: &quot;form&quot; | &quot;default&quot; | string | null;
+  /** TEMPLATE PARAMETER: &quot;offset&quot;. Add a custom bottom margin */
+  offset: number;
 }
 
 @Component({
-  selector: &quot;tmpl-odk-form&quot;,
-  templateUrl: &quot;./odk-form.component.html&quot;,
-  styleUrls: [&quot;./odk-form.component.scss&quot;],
-  encapsulation: ViewEncapsulation.ShadowDom,
+  selector: &quot;plh-tmpl-display-group&quot;,
+  templateUrl: &quot;./display-group.component.html&quot;,
+  styleUrls: [&quot;../../tmpl-components-common.scss&quot;, &quot;./display-group.component.scss&quot;],
 })
-/**
- * A lightweight port of enketo-core to render a form within an angular component
- *
- * NOTE - this component is also under development as part of an external repo,
- * and as such the implementation included may be lacking features
- *
- * It is preferable to import from external project when available to remove additional
- * imports as noted below
- *
- * Opt-Out (additional changes to make if removing component)
- * - Remove modules:
- *   jquery jquery-touchswipe mergexml/mergexml bootstrap-datepicker signature_pad html5sortable node-forge
- * - Remove js file import in tsconfig.app.json
- * - Reduce build budget styles 200kb -&gt; 16kb
- * - Reduce build budget js 5MB -&gt; 4MB
- */
-export class TmplOdkFormComponent extends TemplateBaseComponent implements OnInit {
-  /** Authoring parameters */
-  public parameter_list: IODKFormComponentParameters;
-
-  /**
-   * Form container element binding to render form
-   * @ignore
-   */
-  @ViewChild(&quot;formContainerEl&quot;, { static: true }) formContainerEl: ElementRef&lt;HTMLDivElement&gt;;
-
-  constructor(private templateAssetService: TemplateAssetService) {
-    super();
-  }
+export class TmplDisplayGroupComponent extends TemplateBaseComponent implements OnInit {
+  params: Partial&lt;IDisplayGroupParams&gt; &#x3D; {};
+  bgColor: string;
+  type: &quot;form&quot; | &quot;dashed_box&quot; | &quot;default&quot;;
 
   ngOnInit() {
-    this.processParameterList();
+    this.getParams();
   }
 
-  private async processParameterList() {
-    this.parameter_list &#x3D; this._row.parameter_list || ({} as any);
-    // load form from form_asset parameter
-    const { form_asset } &#x3D; this.parameter_list;
-    if (!form_asset) {
-      console.error(&quot;[odk_form] form_asset parameter required&quot;);
-      return;
-    }
-    const formData: IEnketoFormData &#x3D; await this.templateAssetService.fetchAsset(form_asset);
-    if (!formData) {
-      console.error(&quot;[odk_form] form_asset does not exist&quot;);
-      return;
-    }
-    this.loadForm(formData);
+  clickDisplayGroup() {
+    this.triggerActions(&quot;click&quot;);
   }
 
-  private enketoForm: Form;
-
-  public async save(opts &#x3D; { draft: false }) {
-    await this.setValue(this.xmlFormValue);
-    await this.triggerActions(&quot;changed&quot;);
+  getParams() {
+    this.params.style &#x3D; getStringParamFromTemplateRow(this._row, &quot;style&quot;, &quot;row&quot;);
+    this.params.offset &#x3D; getNumberParamFromTemplateRow(this._row, &quot;offset&quot;, 0);
+    this.params.variant &#x3D; getStringParamFromTemplateRow(this._row, &quot;variant&quot;, &quot;&quot;)
+      .split(&quot;,&quot;)
+      .join(&quot; &quot;)
+      .concat(&quot; &quot; + this.params.style) as IDisplayGroupParams[&quot;variant&quot;];
+    this.type &#x3D; this.getTypeFromStyles();
   }
 
-  private get xmlFormValue() {
-    return this.enketoForm.getDataStr();
-  }
-
-  private async handleEventDataUpdate(e: ReturnType&lt;typeof Events.DataUpdate&gt;) {
-    await this.setValue(this.xmlFormValue);
-    await this.triggerActions(&quot;changed&quot;);
-  }
-
-  private async handleEventXmlFormChange(e: ReturnType&lt;typeof Events.XFormsValueChanged&gt;) {
-    // Value saved in autoSave method of https://github.com/enketo/enketo-express/blob/master/public/js/src/module/controller-webform.js
-    // await this.setValue(this.xmlFormValue);
-  }
-
-  /**
-   * Load the form xml and data models and render intial form components
-   * https://github.com/enketo/enketo-core#usage-as-a-library
-   */
-  private loadForm(formData: IEnketoFormData) {
-    const { formContainerEl } &#x3D; this;
-    const { form, model } &#x3D; formData;
-    console.log({ form, model, formContainerEl });
-    if (form &amp;&amp; model &amp;&amp; formContainerEl) {
-      this.formContainerEl.nativeElement.innerHTML &#x3D; form;
-      const formEl &#x3D; this.formContainerEl.nativeElement.querySelector(&quot;form&quot;);
-      if (formEl) {
-        this.enketoForm &#x3D; new Form(formEl, model, {});
-        // Initialize the form and capture any load errors
-        let loadErrors &#x3D; this.enketoForm.init();
-        if (loadErrors.length &gt; 0) {
-          console.error(loadErrors);
-        }
-        // If desired, scroll to a specific question with any XPath location expression,
-        // and aggregate any loadErrors.
-        loadErrors &#x3D; loadErrors.concat(this.enketoForm.goTo(&quot;//repeat[3]/node&quot;));
-
-        // Additional events can be bound directly to form (as opposed to component-propogated)
-        this.enketoForm.model.events.addEventListener(
-          Events.DataUpdate().type,
-          this.handleEventDataUpdate.bind(this)
-        );
-
-        // Extract updated form xml on change (triggered at document and form level)
-        this.enketoForm.view.html.addEventListener(
-          Events.XFormsValueChanged().type,
-          this.handleEventXmlFormChange.bind(this)
-        );
-      }
-    }
+  private getTypeFromStyles() {
+    if (this.params.style?.includes(&quot;form&quot;) || this.params.variant?.includes(&quot;form&quot;)) return &quot;form&quot;;
+    if (this.params.style?.includes(&quot;dashed_box&quot;) || this.params.variant?.includes(&quot;dashed_box&quot;))
+      return &quot;dashed_box&quot;;
+    return &quot;default&quot;;
   }
 }
 </code></pre>
@@ -411,7 +384,7 @@ export class TmplOdkFormComponent extends TemplateBaseComponent implements OnIni
        <script>
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'interface';
-            var COMPODOC_CURRENT_PAGE_URL = 'IODKFormComponentParameters.html';
+            var COMPODOC_CURRENT_PAGE_URL = 'IDisplayGroupParams.html';
             var MAX_SEARCH_RESULTS = 15;
        </script>
 
