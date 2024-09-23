@@ -70,7 +70,6 @@ export class RemoteAssetService extends AsyncServiceBase {
         obs.subscribe((dataRows) => {
           const assetContentsHashmap = arrayToHashmap(dataRows, "id") as IAssetContents;
           this.templateAssetService.updateContentsList(assetContentsHashmap);
-          console.log("asset contents list", this.templateAssetService.assetsContentsList$.value);
         });
       }
     }
@@ -175,7 +174,7 @@ export class RemoteAssetService extends AsyncServiceBase {
         console.log(
           `[REMOTE ASSETS] Fetching remote URL for ${index + 1} of ${assetEntries.length} files.`
         );
-        await this.updateAssetContents(assetEntry);
+        await this.addRemoteFilepathToAssetContentsEntry(assetEntry);
       }
     }
   }
@@ -244,7 +243,8 @@ export class RemoteAssetService extends AsyncServiceBase {
 
   /**
    * Native platforms only:
-   * Download an asset from an asset pack, including any overrides, and update the contents list accordingly
+   * Download an asset from an asset pack, including any overrides,
+   * and update the contents list so that the filepath is the path to the file in local storage
    */
   private async handleAssetDownload(
     assetEntry: IAssetEntry,
@@ -254,9 +254,18 @@ export class RemoteAssetService extends AsyncServiceBase {
     // Download the top level asset, unless overridesOnly is specified
     if (!assetEntry.overridesOnly) {
       const topLevelAssetUrl = this.getPublicUrl(assetEntry.id);
-      await lastValueFrom(
-        this.downloadAssetAndUpdateContentsList(topLevelAssetUrl, assetEntry, fileIndex, totalFiles)
-      ).catch((error) => console.error(error));
+      try {
+        await lastValueFrom(
+          this.downloadAssetAndUpdateContentsList(
+            topLevelAssetUrl,
+            assetEntry,
+            fileIndex,
+            totalFiles
+          )
+        );
+      } catch (error) {
+        console.error(error);
+      }
     }
 
     const { overrides } = assetEntry;
@@ -265,15 +274,42 @@ export class RemoteAssetService extends AsyncServiceBase {
         for (const [languageCode, assetContentsEntry] of Object.entries(languageOverrides)) {
           const assetUrl = this.getPublicUrl(assetContentsEntry.filePath);
           const overrideProps = { themeName, languageCode };
-          await lastValueFrom(
-            this.downloadAssetAndUpdateContentsList(
-              assetUrl,
-              assetEntry,
-              fileIndex,
-              totalFiles,
-              overrideProps
-            )
-          ).catch((error) => console.error(error));
+          try {
+            await lastValueFrom(
+              this.downloadAssetAndUpdateContentsList(
+                assetUrl,
+                assetEntry,
+                fileIndex,
+                totalFiles,
+                overrideProps
+              )
+            );
+          } catch (error) {
+            console.error(error);
+          }
+        }
+      }
+    }
+  }
+
+  /**
+   * Web platform only:
+   * Update the contents list with the contents of an asset pack, including any overrides,
+   * updating filepath to be a public supabase CDN URL
+   */
+  async addRemoteFilepathToAssetContentsEntry(assetEntry: IAssetEntry) {
+    // Update the contents entry for the top level asset, unless overridesOnly is specified
+    if (!assetEntry.overridesOnly) {
+      const topLevelAssetUrl = this.getPublicUrl(assetEntry.id);
+      await this.updateAssetContents(assetEntry, topLevelAssetUrl);
+    }
+    const { overrides } = assetEntry;
+    if (overrides) {
+      for (const [themeName, languageOverrides] of Object.entries(overrides)) {
+        for (const [languageCode, assetContentsEntry] of Object.entries(languageOverrides)) {
+          const overrideProps = { themeName, languageCode };
+          const filepath = this.getPublicUrl(assetContentsEntry.filePath);
+          await this.updateAssetContents(assetEntry, filepath, overrideProps);
         }
       }
     }
@@ -312,7 +348,8 @@ export class RemoteAssetService extends AsyncServiceBase {
         console.log(`[REMOTE ASSETS] File ${fileIndex + 1} of ${totalFiles} downloaded to cache`);
         if (data) {
           await this.fileManagerService.saveFile({ data, targetPath: assetEntry.id });
-          await this.updateAssetContents(assetEntry, overrideProps);
+          const filepath = await this.fileManagerService.getLocalFilepath(assetEntry.id);
+          await this.updateAssetContents(assetEntry, filepath, overrideProps);
         }
         progress$.next(progress);
         progress$.complete();
@@ -323,11 +360,14 @@ export class RemoteAssetService extends AsyncServiceBase {
 
   /**
    * Save updates to asset contents in dynamic data, including file path
-   * (local storage on native platforms and supabase URL on web)
+   * (filepath should be local storage on native platforms and supabase URL on web)
    * */
-  private async updateAssetContents(assetEntry: IAssetEntry, overrideProps?: IAssetOverrideProps) {
-    const filePath = await this.getRemoteAssetFilePath(assetEntry);
-    const update = this.addFilePathToAssetEntry(assetEntry, filePath, overrideProps);
+  private async updateAssetContents(
+    assetEntry: IAssetEntry,
+    filepath: string,
+    overrideProps?: IAssetOverrideProps
+  ) {
+    const update = this.addFilePathToAssetEntry(assetEntry, filepath, overrideProps);
     // Update the core asset pack in dynamic data, adding an entry for the asset or
     // updating an existing entry if it already exists
     await this.dynamicDataService.update<IAssetEntry>(
@@ -336,19 +376,6 @@ export class RemoteAssetService extends AsyncServiceBase {
       assetEntry.id,
       update
     );
-  }
-
-  /**
-   * @returns the path from which to read the file at runtime:
-   * - on native platforms, the path of the local file in storage
-   * - on web, the remote supabase URL
-   * */
-  private async getRemoteAssetFilePath(assetEntry: IAssetEntry) {
-    if (Capacitor.isNativePlatform()) {
-      return await this.fileManagerService.getLocalFilepath(assetEntry.id);
-    } else {
-      return this.getPublicUrl(assetEntry.id);
-    }
   }
 
   private addFilePathToAssetEntry(
