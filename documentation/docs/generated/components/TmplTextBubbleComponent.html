@@ -97,7 +97,7 @@
   <li class="breadcrumb-item">Components</li>
   <li class="breadcrumb-item"
   >
-  TemplateBaseComponent</li>
+  TmplTextBubbleComponent</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
@@ -110,8 +110,8 @@
                 role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
         </li>
         <li class="nav-item">
-            <a href="#styleData" class="nav-link"
-                role="tab" id="styleData-tab" data-bs-toggle="tab" data-link="style">Styles</a>
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
         </li>
         <li class="nav-item">
             <a href="#tree" class="nav-link"
@@ -124,17 +124,23 @@
     <h3>File</h3>
 </p>
 <p class="comment">
-    <code>src/app/shared/components/template/components/base.ts</code>
+    <code>src/app/shared/components/template/components/text-bubble/text-bubble.component.ts</code>
 </p>
 
 
 
+    <p class="comment">
+        <h3>Extends</h3>
+    </p>
+    <p class="comment">
+                    <code><a href="../components/TemplateBaseComponent.html" target="_self" >TemplateBaseComponent</a></code>
+    </p>
 
     <p class="comment">
         <h3>Implements</h3>
     </p>
     <p class="comment">
-                <code>ITemplateRowProps</code>
+                <code>OnInit</code>
     </p>
 
 
@@ -154,12 +160,9 @@
 
 
 
-
-
-
             <tr>
-                <td class="col-md-3">styleUrls</td>
-                <td class="col-md-9"><code>./tmpl-components-common.scss</code></td>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>tmpl-text-bubble</code></td>
             </tr>
 
 
@@ -167,6 +170,59 @@
 
 
 
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>text-bubble.component.html</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">styleUrl</td>
+                <td class="col-md-9"><code>text-bubble.component.scss</code></td>
+            </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#params" >params</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#getParams" >getParams</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
 
 
 
@@ -177,146 +233,167 @@
 </section>
 
 
-    <section data-compodoc="block-constructor">
-    <h3 id="constructor">Constructor</h3>
-        <table class="table table-sm table-bordered">
-            <tbody>
+
+
+
+
+    <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getParams"></a>
+                    <span class="name">
+                        <span ><b>getParams</b></span>
+                        <a href="#getParams"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getParams()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="25"
+                                    class="link-to-prism">src/app/shared/components/template/components/text-bubble/text-bubble.component.ts:25</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="params"></a>
+                    <span class="name">
+                        <span ><b>params</b></span>
+                        <a href="#params"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
                 <tr>
                     <td class="col-md-4">
-<code>constructor()</code>
+                        <i>Type : </i>        <code><a href="../interfaces/ITextBubbleParams.html" target="_self" >Partial&lt;ITextBubbleParams&gt;</a></code>
+
                     </td>
                 </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="34" class="link-to-prism">src/app/shared/components/template/components/base.ts:34</a></div>
-                            </td>
-                        </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{}</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">src/app/shared/components/template/components/text-bubble/text-bubble.component.ts:20</a></div>
+                        </td>
+                    </tr>
 
-            </tbody>
-        </table>
+
+        </tbody>
+    </table>
 </section>
-
-
-
-
-
-
 
 </div>
 
 
     <div class="tab-pane fade  tab-source-code" id="source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, Input } from &quot;@angular/core&quot;;
-import { FlowTypes, ITemplateRowProps } from &quot;../models&quot;;
-import { TemplateContainerComponent } from &quot;../template-container.component&quot;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit, ViewEncapsulation } from &quot;@angular/core&quot;;
+import { TemplateBaseComponent } from &quot;../base&quot;;
+import { getStringParamFromTemplateRow } from &quot;src/app/shared/utils&quot;;
+
+interface ITextBubbleParams {
+  /** TEMPLATE PARAMETER: &quot;speaker_image_asset&quot;. The path to an image to be used as the speaker */
+  speakerImageAsset: string;
+  /** TEMPLATE PARAMETER: &quot;speaker_position&quot;. The position of the speaker image and speech bubble tail */
+  speakerPosition: &quot;left&quot; | &quot;right&quot;;
+  /** TEMPLATE PARAMETER: &quot;variant&quot; */
+  variant: &quot;gray&quot; | &quot;primary&quot; | &quot;secondary&quot; | &quot;no-border&quot;;
+}
 
 @Component({
-  template: &#x60;&#x60;,
-  styleUrls: [&quot;./tmpl-components-common.scss&quot;],
+  selector: &quot;tmpl-text-bubble&quot;,
+  templateUrl: &quot;text-bubble.component.html&quot;,
+  styleUrl: &quot;text-bubble.component.scss&quot;,
 })
-/**
- * Common methods and data made available to all other components
- * By default it provides input setters, and mapping to local variables
- *
- * Other components can either extend this one, or implement ITemplateRowProps
- * in their own way.
- * Note, if extending the base component access to data is provided by the declared properties,
- * e.g. &#x60;_row&#x60;
- */
-export class TemplateBaseComponent implements ITemplateRowProps {
-  /** @ignore */
-  _row: FlowTypes.TemplateRow;
-
-  /**
-   * @ignore
-   * specific data used in component rendering
-   **/
-  @Input() set row(row: FlowTypes.TemplateRow) {
-    this._row &#x3D; row;
+export class TmplTextBubbleComponent extends TemplateBaseComponent implements OnInit {
+  params: Partial&lt;ITextBubbleParams&gt; &#x3D; {};
+  ngOnInit() {
+    this.getParams();
   }
 
-  /**
-   * @ignore
-   * reference to parent template container - does not have setter as should remain static
-   **/
-  @Input() parent: TemplateContainerComponent;
-  constructor() {}
+  getParams() {
+    this.params.speakerImageAsset &#x3D; getStringParamFromTemplateRow(
+      this._row,
+      &quot;speaker_image_asset&quot;,
+      &quot;&quot;
+    );
+    this.params.speakerPosition &#x3D; getStringParamFromTemplateRow(
+      this._row,
+      &quot;speaker_position&quot;,
+      &quot;left&quot;
+    ) as &quot;left&quot; | &quot;right&quot;;
+    this.params.variant &#x3D; getStringParamFromTemplateRow(this._row, &quot;variant&quot;, &quot;&quot;)
+      .split(&quot;,&quot;)
+      .join(&quot; &quot;) as ITextBubbleParams[&quot;variant&quot;];
+  }
+}
+</code></pre>
+    </div>
 
-  /**
-   * Whenever actions are triggered handle in the parent template component
-   * Actions are grouped by trigger, only emitting specific event handler (e.g. click)
-   * @ignore
-   */
-  triggerActions(trigger: FlowTypes.TemplateRowAction[&quot;trigger&quot;] &#x3D; &quot;click&quot;) {
-    if (this._row.disabled &amp;&amp; this._row.type !&#x3D;&#x3D; &quot;accordion_section&quot;) {
-      console.log(&quot;Click action disabled for &quot;, this._row.name);
-      return;
+    <div class="tab-pane fade " id="templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;div
+  class&#x3D;&quot;container&quot;
+  [attr.data-position]&#x3D;&quot;params.speakerPosition&quot;
+  [attr.data-variant]&#x3D;&quot;params.variant&quot;
+&gt;
+  &lt;div class&#x3D;&quot;text-bubble&quot; [attr.data-position]&#x3D;&quot;params.speakerPosition&quot;&gt;
+    @if (_row.value) {
+      &lt;p class&#x3D;&quot;text&quot;&gt;
+        {{ _row.value }}
+      &lt;/p&gt;
     }
-    const action_list &#x3D; this._row.action_list || [];
-    const actionsForTrigger &#x3D; action_list.filter((a) &#x3D;&gt; a.trigger &#x3D;&#x3D;&#x3D; trigger);
-    return this.parent.handleActions(actionsForTrigger, this._row);
-  }
-
-  /**
-   * Update the current value of the row by setting a local variable that matches
-   * @ignore
-   **/
-  setValue(value: any) {
-    // console.log(&quot;setting value&quot;, value);
-    const action: FlowTypes.TemplateRowAction &#x3D; {
-      action_id: &quot;set_local&quot;,
-      args: [this._row._nested_name, value],
-      trigger: &quot;click&quot;,
-    };
-    return this.parent.handleActions([action], this._row);
-  }
-
-  /** @ignore */
-  trackByRow &#x3D; (index: number, row: FlowTypes.TemplateRow) &#x3D;&gt; this.parent.trackByRow(index, row);
-}
+    @for (childRow of _row.rows | filterDisplayComponent; track trackByRow($index, childRow)) {
+      &lt;plh-template-component
+        [row]&#x3D;&quot;childRow&quot;
+        [parent]&#x3D;&quot;parent&quot;
+        [attr.data-rowname]&#x3D;&quot;_row.name&quot;
+      &gt;&lt;/plh-template-component&gt;
+    }
+  &lt;/div&gt;
+  &lt;img
+    [src]&#x3D;&quot;params.speakerImageAsset | plhAsset&quot;
+    class&#x3D;&quot;speaker-image&quot;
+    [attr.data-position]&#x3D;&quot;params.speakerPosition&quot;
+  /&gt;
+&lt;/div&gt;
 </code></pre>
     </div>
 
-
-    <div class="tab-pane fade " id="styleData">
-                <p class="comment">
-                    <code>./tmpl-components-common.scss</code>
-                </p>
-                <pre class="line-numbers"><code class="language-scss">@use &quot;/src/theme/mixins.scss&quot;;
-
-.tmpl-video-container {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-
-  video {
-    width: 100%;
-    max-width: var(--video-max-width);
-    border-radius: var(--ion-border-radius-secondary);
-  }
-}
-
-.left {
-  justify-content: start;
-}
-.right {
-  justify-content: flex-end;
-}
-.center {
-  justify-content: center;
-}
-.rounded_corners {
-  border-radius: var(--ion-border-radius-standard);
-
-  img {
-    border-radius: var(--ion-border-radius-standard);
-  }
-}
-.whiteText {
-  color: var(--ion-color-primary-contrast);
-}
-</code></pre>
-    </div>
 
     <div class="tab-pane fade " id="tree">
         <div id="tree-container"></div>
@@ -343,10 +420,10 @@ export class TemplateBaseComponent implements ITemplateRowProps {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div></div>'
+        var COMPONENT_TEMPLATE = '<div><div  class="container"  [attr.data-position]="params.speakerPosition"  [attr.data-variant]="params.variant">  <div class="text-bubble" [attr.data-position]="params.speakerPosition">    @if (_row.value) {      <p class="text">        {{ _row.value }}      </p>    }    @for (childRow of _row.rows | filterDisplayComponent; track trackByRow($index, childRow)) {      <plh-template-component        [row]="childRow"        [parent]="parent"        [attr.data-rowname]="_row.name"      ></plh-template-component>    }  </div>  <img    [src]="params.speakerImageAsset | plhAsset"    class="speaker-image"    [attr.data-position]="params.speakerPosition"  /></div></div>'
     var COMPONENTS = [{'name': 'AccordionSectionComponent', 'selector': 'plh-tmpl-accordion-section'},{'name': 'AnimatedSectionComponent', 'selector': 'plh-tmpl-animated-section'},{'name': 'AnimatedSectionGroupComponent', 'selector': 'plh-tmpl-animated-section-group'},{'name': 'ComboBoxModalComponent', 'selector': 'combo-box-modal'},{'name': 'FormComponent', 'selector': 'plh-tmpl-form'},{'name': 'NavGroupComponent', 'selector': 'plh-tmpl-nav-group'},{'name': 'RoundIconButtonComponent', 'selector': 'plh-round-button'},{'name': 'SelectTextComponent', 'selector': 'plh-select-text'},{'name': 'SquareIconButtonComponent', 'selector': 'plh-square-icon-button'},{'name': 'TemplateBaseComponent', 'selector': ''},{'name': 'TemplateDebuggerComponent', 'selector': 'plh-template-debugger'},{'name': 'TemplateHTMLComponent', 'selector': 'template-html-component'},{'name': 'TemplateLayoutComponent', 'selector': ''},{'name': 'TemplatePopupComponent', 'selector': ''},{'name': 'TmplAccordionComponent', 'selector': 'plh-accordion-component'},{'name': 'TmplAdvancedDashedBoxComponent', 'selector': 'plh-advanced-dashed-box'},{'name': 'TmplAnimatedSlidesComponent', 'selector': 'template-animated-slides'},{'name': 'TmplAudioComponent', 'selector': 'plh-audio'},{'name': 'TmplButtonComponent', 'selector': 'plh-button'},{'name': 'TmplCarouselComponent', 'selector': 'plh-carousel'},{'name': 'TmplComboBoxComponent', 'selector': 'plh-combo-box'},{'name': 'TmplDashedBoxComponent', 'selector': 'plh-dashed-box'},{'name': 'TmplDataItemsComponent', 'selector': 'plh-data-items'},{'name': 'TmplDisplayGridComponent', 'selector': 'plh-display-grid'},{'name': 'TmplDisplayGroupComponent', 'selector': 'plh-tmpl-display-group'},{'name': 'TmplDrawerComponent', 'selector': 'plh-drawer'},{'name': 'TmplHelpIconComponent', 'selector': 'plh-tmpl-help-icon'},{'name': 'TmplIconBannerComponent', 'selector': 'plh-icon-banner'},{'name': 'TmplImageComponent', 'selector': 'plh-tmpl-image'},{'name': 'TmplLatexComponent', 'selector': 'template-latex-component'},{'name': 'TmplLottieAnimation', 'selector': 'plh-tmpl-lottie-animation'},{'name': 'TmplNavigationBarComponent', 'selector': 'plh-navigation-bar'},{'name': 'TmplNumberComponent', 'selector': 'plh-number-selector'},{'name': 'TmplOdkFormComponent', 'selector': 'tmpl-odk-form'},{'name': 'TmplParentPointBoxComponent', 'selector': 'plh-points-item'},{'name': 'TmplParentPointCounterComponent', 'selector': 'plh-parent-point-counter'},{'name': 'TmplPdfComponent', 'selector': 'plh-pdf'},{'name': 'TmplProgressPathComponent', 'selector': 'plh-progress-path'},{'name': 'TmplQRCodeComponent', 'selector': 'plh-qr-code'},{'name': 'TmplRadioButtonGridComponent', 'selector': 'plh-radio-button-grid'},{'name': 'TmplRadioGroupComponent', 'selector': 'plh-radio-group'},{'name': 'TmplSimpleCheckboxComponent', 'selector': 'plh-simple-checkbox'},{'name': 'TmplSliderComponent', 'selector': 'plh-slider-new'},{'name': 'TmplSubtitleComponent', 'selector': 'plh-tmpl-subtitle'},{'name': 'TmplTaskCardComponent', 'selector': 'plh-task-card'},{'name': 'TmplTaskProgressBarComponent', 'selector': 'plh-task-progress-bar'},{'name': 'TmplTextAreaComponent', 'selector': 'plh-text-area'},{'name': 'TmplTextBoxComponent', 'selector': 'plh-text-box'},{'name': 'TmplTextBubbleComponent', 'selector': 'tmpl-text-bubble'},{'name': 'TmplTextComponent', 'selector': 'plh-tmpl-text'},{'name': 'TmplTileComponent', 'selector': 'plh-tile-component'},{'name': 'TmplTimerComponent', 'selector': 'plh-timer'},{'name': 'TmplTitleComponent', 'selector': 'plh-tmpl-title'},{'name': 'TmplToggleBarComponent', 'selector': 'plh-tmpl-toggle-bar'},{'name': 'TmplVideoComponent', 'selector': 'plh-tmpl-video'},{'name': 'WorkshopsComponent', 'selector': 'plh-tmpl-workshops-accordion'}];
     var DIRECTIVES = [];
-    var ACTUAL_COMPONENT = {'name': 'TemplateBaseComponent'};
+    var ACTUAL_COMPONENT = {'name': 'TmplTextBubbleComponent'};
 </script>
 <script src="../js/tree.js"></script>
 
@@ -392,7 +469,7 @@ export class TemplateBaseComponent implements ITemplateRowProps {
        <script>
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
-            var COMPODOC_CURRENT_PAGE_URL = 'TemplateBaseComponent.html';
+            var COMPODOC_CURRENT_PAGE_URL = 'TmplTextBubbleComponent.html';
             var MAX_SEARCH_RESULTS = 15;
        </script>
 
