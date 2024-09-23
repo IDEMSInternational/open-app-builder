@@ -16,7 +16,7 @@
     "@types/node": "^15.12.4",
     "chalk": "^4.1.1",
     "ts-node-dev": "^1.1.8",
-    "typescript": "~4.2.4"
+    "typescript": "5.5.4"
   },
   "dependencies": {
     "boxen": "^5.0.1",

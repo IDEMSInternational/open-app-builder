@@ -1,6 +1,7 @@
 import { TestBed } from "@angular/core/testing";
 import { FileManagerService } from "./file-manager.service";
-import { HttpClientTestingModule } from "@angular/common/http/testing";
+import { provideHttpClientTesting } from "@angular/common/http/testing";
+import { provideHttpClient, withInterceptorsFromDi } from "@angular/common/http";
 
 /**
  * Call standalone tests via:
@@ -11,7 +12,8 @@ describe("FileManagerService", () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule],
+      imports: [],
+      providers: [provideHttpClient(withInterceptorsFromDi()), provideHttpClientTesting()],
     });
     service = TestBed.inject(FileManagerService);
   });

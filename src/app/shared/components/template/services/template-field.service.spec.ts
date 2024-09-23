@@ -1,10 +1,11 @@
-import { HttpClientTestingModule } from "@angular/common/http/testing";
+import { provideHttpClientTesting } from "@angular/common/http/testing";
 import { TestBed } from "@angular/core/testing";
 import { TemplateFieldService } from "./template-field.service";
 import type { PromiseExtended } from "dexie";
 import { booleanStringToBoolean } from "src/app/shared/utils";
 import { ErrorHandlerService } from "src/app/shared/services/error-handler/error-handler.service";
 import { MockErrorHandlerService } from "src/app/shared/services/error-handler/error-handler.service.spec";
+import { provideHttpClient, withInterceptorsFromDi } from "@angular/common/http";
 
 /** Mock calls for field values from the template field service to return test data */
 export class MockTemplateFieldService implements Partial<TemplateFieldService> {
@@ -31,8 +32,12 @@ describe("TemplateFieldService", () => {
 
   beforeEach(async () => {
     TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule],
-      providers: [{ provide: ErrorHandlerService, useValue: new MockErrorHandlerService() }],
+      imports: [],
+      providers: [
+        { provide: ErrorHandlerService, useValue: new MockErrorHandlerService() },
+        provideHttpClient(withInterceptorsFromDi()),
+        provideHttpClientTesting(),
+      ],
     });
     service = TestBed.inject(TemplateFieldService);
     await service.ready();

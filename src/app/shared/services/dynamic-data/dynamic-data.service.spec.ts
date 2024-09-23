@@ -1,10 +1,11 @@
 import { TestBed } from "@angular/core/testing";
-import { HttpClientTestingModule } from "@angular/common/http/testing";
+import { provideHttpClientTesting } from "@angular/common/http/testing";
 import { firstValueFrom } from "rxjs";
 
 import { DynamicDataService, ISetItemContext } from "./dynamic-data.service";
 import { AppDataService } from "../data/app-data.service";
 import { MockAppDataService } from "../data/app-data.service.spec";
+import { provideHttpClient, withInterceptorsFromDi } from "@angular/common/http";
 
 const TEST_DATA_ROWS = [
   { id: "id1", number: 1, string: "hello", boolean: true, _meta_field: { test: "hello" } },
@@ -28,7 +29,7 @@ describe("DynamicDataService", () => {
 
   beforeEach(async () => {
     TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule],
+      imports: [],
       providers: [
         DynamicDataService,
         {
@@ -44,6 +45,8 @@ describe("DynamicDataService", () => {
             },
           }),
         },
+        provideHttpClient(withInterceptorsFromDi()),
+        provideHttpClientTesting(),
       ],
     });
 

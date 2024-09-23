@@ -1,9 +1,10 @@
 import { TestBed } from "@angular/core/testing";
 
 import { RemoteAssetService } from "./remote-asset.service";
-import { HttpClientTestingModule } from "@angular/common/http/testing";
+import { provideHttpClientTesting } from "@angular/common/http/testing";
 import { IAssetContents } from "src/app/data";
 import { FlowTypes } from "../../model";
+import { provideHttpClient, withInterceptorsFromDi } from "@angular/common/http";
 
 const MOCK_ASSETS_CONTENTS_LIST: IAssetContents = {
   "audio/test_audio.mp3": {
@@ -40,7 +41,8 @@ describe("RemoteAssetsService", () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule],
+      imports: [],
+      providers: [provideHttpClient(withInterceptorsFromDi()), provideHttpClientTesting()],
     });
     service = TestBed.inject(RemoteAssetService);
   });

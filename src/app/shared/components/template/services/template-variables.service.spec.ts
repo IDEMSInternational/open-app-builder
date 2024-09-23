@@ -1,6 +1,6 @@
 import { TestBed } from "@angular/core/testing";
 import { IVariableContext, TemplateVariablesService } from "./template-variables.service";
-import { HttpClientTestingModule } from "@angular/common/http/testing";
+import { provideHttpClientTesting } from "@angular/common/http/testing";
 import { TemplateFieldService } from "./template-field.service";
 import { MockTemplateFieldService } from "./template-field.service.spec";
 import { AppDataService } from "src/app/shared/services/data/app-data.service";
@@ -8,6 +8,7 @@ import { CampaignService } from "src/app/feature/campaign/campaign.service";
 import { MockAppDataService } from "src/app/shared/services/data/app-data.service.spec";
 import { TemplateCalcService } from "./template-calc.service";
 import { MockTemplateCalcService } from "./template-calc.service.spec";
+import { provideHttpClient, withInterceptorsFromDi } from "@angular/common/http";
 
 const MOCK_APP_DATA = {};
 
@@ -126,7 +127,7 @@ describe("TemplateVariablesService", () => {
   beforeEach(async () => {
     getNextCampaignRowsSpy = jasmine.createSpy();
     TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule],
+      imports: [],
       providers: [
         {
           provide: TemplateFieldService,
@@ -150,6 +151,8 @@ describe("TemplateVariablesService", () => {
             getNextCampaignRows: getNextCampaignRowsSpy,
           },
         },
+        provideHttpClient(withInterceptorsFromDi()),
+        provideHttpClientTesting(),
       ],
     });
     service = TestBed.inject(TemplateVariablesService);
