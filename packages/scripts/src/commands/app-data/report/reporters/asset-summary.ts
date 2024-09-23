@@ -85,7 +85,7 @@ export class AssetsSummaryReport {
       data: this.generateAssetSizeList(summaryData, assetUnusedData),
       display: "collapse_open",
       title: "Asset Size",
-      description: "Assets that appear in app-data but do not have references within sheets",
+      description: "",
       type: "table",
       columns: ["assets", "KB", "MB"],
     };
