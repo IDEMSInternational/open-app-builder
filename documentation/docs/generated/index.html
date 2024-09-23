@@ -13,8 +13,66 @@
         <link rel="stylesheet" href="./styles/material.css">
     </head>
     <body>
+          <script>
+               // Blocking script to avaoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
 
-        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+
+               if ($darkModeToggles.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-block d-sm-none">
             <a href="./" class="navbar-brand">frontend documentation</a>
             <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
         </div>
@@ -32,43 +90,44 @@
                <div class="content getting-started">
                    <div class="content-data">
 
-<p><a href="https://gitpod.io/#https://github.com/IDEMSInternational/parenting-app-ui.git"><img src="https://gitpod.io/button/open-in-gitpod.svg" alt="Open in Gitpod" class="img-responsive"></a></p>
-<h1 id="parenting-app-ui">Parenting App UI</h1>
-<p><a href="https://idemsinternational.github.io/parenting-app-ui/">Online Documentation</a></p>
-<h1 id="quickstart">Quickstart</h1>
-<h2 id="prequisites">Prequisites</h2>
+<p><a href="https://gitpod.io/#https://github.com/IDEMSInternational/open-app-builder.git"><img src="https://gitpod.io/button/open-in-gitpod.svg" alt="Open in Gitpod" class="img-responsive"></a></p>
+<h1>Open App Builder</h1>
+<p><a href="https://idemsinternational.github.io/open-app-builder/">Online Documentation</a></p>
+<h1>Quickstart</h1>
+<h2>Prerequisites</h2>
 <ol>
 <li><p>Download and install <a href="https://git-scm.com/downloads">Git</a><br>This will be used to download the repository</p>
 </li>
 <li><p>Download and install <a href="https://git-lfs.github.com/">Git LFS</a><br>This will be used to download any required binary assets, such as images or pdfs</p>
 </li>
-<li><p>Download and install <a href="https://nodejs.org/en/download/">Node</a><br>This is the programming lanugage required to run the project</p>
+<li><p>Download and install <a href="https://nodejs.org/en/download/">Node</a><br>This is the programming language required to run the project. We currently support any of the versions prefixed <code>v20.x.x</code> or <code>v18.x.x</code></p>
 </li>
 <li><p>Download and Install <a href="https://classic.yarnpkg.com/en/docs/install">Yarn</a><br>This manages all 3rd-party code dependencies</p>
 </li>
 </ol>
-<h2 id="installation">Installation</h2>
-<h3 id="download-the-repo-with-binary-assets">Download the repo with binary assets</h3>
-<div><pre class="line-numbers"><code class="language-none">$ git lfs clone https://github.com/IDEMSInternational/parenting-app-ui.git</code></pre></div><p>Note - if you do a regular git clone, you can always run <code>git lfs fetch --all</code> later to sync assets</p>
-<h3 id="install-required-dependencies">Install required dependencies</h3>
-<div><pre class="line-numbers"><code class="language-none">$ cd parenting-app-ui
-$ yarn install</code></pre></div><p>Note - you may have to do this from time to time when content is updated)</p>
-<h2 id="configuration">Configuration</h2>
-<h3 id="set-deployment">Set Deployment</h3>
+<h2>Installation</h2>
+<h3>Download the repo with binary assets</h3>
+<p>To download the repo into the current working directory, run:</p>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-none">git lfs clone https://github.com/IDEMSInternational/open-app-builder.git</code></pre></div><p>Note - if you do a regular git clone, you can always run <code>git lfs fetch --all</code> later to sync assets</p>
+<h3>Install required dependencies</h3>
+<p>Navigate to the newly cloned directory if you have not done so already:</p>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-none">cd open-app-builder</code></pre></div><p>From the route of the project, run the following command to download and install the required dependencies:</p>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-none">yarn install</code></pre></div><p>Note - you may have to do this from time to time when the code is updated</p>
+<h2>Configuration</h2>
+<h3>Set Deployment</h3>
 <p>The app supports using different workspace or deployment configurations. These are stored in <a href="./.idems_app/deployments">.idems_app/deployments</a></p>
-<p>An initial deployment should be specified via the command</p>
-<div><pre class="line-numbers"><code class="language-none">yarn workflow deployment set</code></pre></div><h3 id="firebase">Firebase</h3>
-<p>To be able to run the full project a specific configuration file needs to be included to access
-the online database and authentication methods.</p>
-<div><pre class="line-numbers"><code class="language-none">$ cp src/environments/firebaseConfig.sample.ts src/environments/firebaseConfig.ts</code></pre></div><p>The default file is blank. It should be replaced with a version requested from the dev team.</p>
-<p>(Note - this process will likely be simplified in the future)</p>
-<h2 id="running-locally">Running locally</h2>
-<h3 id="start-the-local-server">Start the local server</h3>
-<div><pre class="line-numbers"><code class="language-none">yarn start</code></pre></div><p>This will start a local server and serve the app in your browser on <a href="http://localhost:4200">http://localhost:4200</a></p>
-<h1 id="for-content-coders">For Content Coders</h1>
-<p>Please see <a href="https://idemsinternational.github.io/parenting-app-ui/authors/quickstart/">Quickstart Authors</a></p>
-<h1 id="for-developers">For Developers</h1>
-<p>Please see <a href="https://idemsinternational.github.io/parenting-app-ui/developers/quickstart/">Quickstart Developers</a></p>
+<p>To use an existing deployment, run the following script:</p>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-none">yarn workflow deployment set</code></pre></div><p>If you have already imported or created a deployment, this will present an interactive list of deployments to select from.</p>
+<p>If you have no available deployments, see <a href="https://idemsinternational.github.io/open-app-builder/developers/deployments/">Deployment Documentation</a> for information about creating and configuring deployments.</p>
+<h2>Running locally</h2>
+<h3>Start the local server</h3>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-none">yarn start</code></pre></div><p>This will start a local server and serve the app in your browser on <a href="http://localhost:4200">http://localhost:4200</a>.</p>
+<h2>Finishing setup</h2>
+<p>In order to complete the setup process, navigate to the relevant section of the documentation from the options below, and continue with the steps outlined.</p>
+<h3>For Content Authors</h3>
+<p>Please see <a href="https://idemsinternational.github.io/open-app-builder/authors/quickstart/">Quickstart Authors</a></p>
+<h3>For Developers</h3>
+<p>Please see <a href="https://idemsinternational.github.io/open-app-builder/developers/quickstart/">Quickstart Developers</a></p>
 
 
 

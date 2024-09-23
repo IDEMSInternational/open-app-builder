@@ -13,8 +13,66 @@
         <link rel="stylesheet" href="../styles/material.css">
     </head>
     <body>
+          <script>
+               // Blocking script to avaoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
 
-        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+
+               if ($darkModeToggles.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-block d-sm-none">
             <a href="../" class="navbar-brand">frontend documentation</a>
             <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
         </div>
@@ -36,32 +94,37 @@
 
 
 <ol class="breadcrumb">
-  <li>Components</li>
-  <li
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
   >
   TmplRadioButtonGridComponent</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
-        <li class="active">
-            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
         </li>
-        <li >
-            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
         </li>
-        <li >
-            <a href="#templateData" role="tab" id="templateData-tab" data-toggle="tab" data-link="template">Template</a>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
         </li>
-        <li >
-            <a href="#styleData" role="tab" id="styleData-tab" data-toggle="tab" data-link="style">Styles</a>
+        <li class="nav-item">
+            <a href="#styleData" class="nav-link"
+                role="tab" id="styleData-tab" data-bs-toggle="tab" data-link="style">Styles</a>
         </li>
-        <li >
-            <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
         </li>
 </ul>
 
 <div class="tab-content">
-    <div class="tab-pane fade active in" id="c-info"><p class="comment">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
     <h3>File</h3>
 </p>
 <p class="comment">
@@ -74,7 +137,7 @@
         <h3>Extends</h3>
     </p>
     <p class="comment">
-                <code><a href="../components/TemplateBaseComponent.html" target="_self" >TemplateBaseComponent</a></code>
+                    <code><a href="../components/TemplateBaseComponent.html" target="_self" >TemplateBaseComponent</a></code>
     </p>
 
     <p class="comment">
@@ -85,10 +148,11 @@
     </p>
 
 
-<section>
+<section data-compodoc="block-metadata">
     <h3>Metadata</h3>
     <table class="table table-sm table-hover metadata">
         <tbody>
+
 
 
 
@@ -104,6 +168,8 @@
                 <td class="col-md-3">selector</td>
                 <td class="col-md-9"><code>plh-radio-button-grid</code></td>
             </tr>
+
+
 
             <tr>
                 <td class="col-md-3">styleUrls</td>
@@ -128,7 +194,7 @@
     </table>
 </section>
 
-    <section>
+    <section data-compodoc="block-index">
     <h3 id="index">Index</h3>
     <table class="table table-sm table-bordered index-table">
         <tbody>
@@ -186,7 +252,7 @@
 </section>
 
 
-    <section>
+    <section data-compodoc="block-inputs">
     <h3 id="inputs">Inputs</h3>
         <table class="table table-sm table-bordered">
             <tbody>
@@ -204,7 +270,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="59" class="link-to-prism">src/app/shared/components/template/components/radio-button-grid/radio-button-grid.component.ts:59</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="52" class="link-to-prism">src/app/shared/components/template/components/radio-button-grid/radio-button-grid.component.ts:52</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -214,7 +280,7 @@
 
 
 
-    <section>
+    <section data-compodoc="block-properties">
     
     <h3 id="inputs">
         Properties
@@ -239,7 +305,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="57" class="link-to-prism">src/app/shared/components/template/components/radio-button-grid/radio-button-grid.component.ts:57</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="50" class="link-to-prism">src/app/shared/components/template/components/radio-button-grid/radio-button-grid.component.ts:50</a></div>
                         </td>
                     </tr>
 
@@ -254,7 +320,7 @@
     </table>
 </section>
 
-    <section>
+    <section data-compodoc="block-accessors">
     <h3 id="accessors">
         Accessors
     </h3>
@@ -275,7 +341,7 @@
                 </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="59" class="link-to-prism">src/app/shared/components/template/components/radio-button-grid/radio-button-grid.component.ts:59</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="52" class="link-to-prism">src/app/shared/components/template/components/radio-button-grid/radio-button-grid.component.ts:52</a></div>
                                 </td>
                             </tr>
                     <tr>
@@ -321,18 +387,11 @@
 </div>
 
 
-    <div class="tab-pane fade  tab-source-code" id="c-source">
+    <div class="tab-pane fade  tab-source-code" id="source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, Input } from &quot;@angular/core&quot;;
 import { TemplateBaseComponent } from &quot;../base&quot;;
 import { FlowTypes, ITemplateRowProps } from &quot;../../models&quot;;
-import { getParamFromTemplateRow } from &quot;src/app/shared/utils&quot;;
-import { objectToArray } from &quot;../../utils&quot;;
-
-interface IAnswerListItem {
-  name: string;
-  image?: string;
-  text?: string;
-}
+import { getAnswerListParamFromTemplateRow, IAnswerListItem } from &quot;src/app/shared/utils&quot;;
 
 interface IRadioButtonGridParams {
   /** List of options presented as radio items */
@@ -396,7 +455,7 @@ export class TmplRadioButtonGridComponent
 
   private setParams() {
     this.parameter_list &#x3D; this._row.parameter_list || ({} as any);
-    this.radioItems &#x3D; this.generateItemList();
+    this.radioItems &#x3D; getAnswerListParamFromTemplateRow(this._row, &quot;answer_list&quot;, []);
     this.gridStyle &#x3D; this.generateGridStyle();
   }
 
@@ -422,48 +481,11 @@ export class TmplRadioButtonGridComponent
     };
     return style;
   }
-
-  /**
-   * Adapted from radio-group.component
-   * Convert input answer_list to rendered item list
-   */
-  private generateItemList() {
-    let answerList &#x3D; getParamFromTemplateRow(this._row, &quot;answer_list&quot;, []);
-    // Convert if datalist input (hashmap to array)
-    if (answerList.constructor &#x3D;&#x3D;&#x3D; {}.constructor) {
-      answerList &#x3D; objectToArray(answerList);
-    }
-    const radioItems: IAnswerListItem[] &#x3D; answerList.map(
-      (item: string | Record&lt;string, string&gt;) &#x3D;&gt; {
-        if (typeof item &#x3D;&#x3D;&#x3D; &quot;string&quot;) {
-          return this.parseAnswerListItemString(item);
-        }
-        return item as any;
-      }
-    );
-    return radioItems;
-  }
-
-  /**
-   * convert string to relevant mappings
-   * TODO - CC 2023-03-16 - should ideally convert in parsers instead of at runtime
-   */
-  private parseAnswerListItemString(item: string) {
-    const itemObj: IAnswerListItem &#x3D; {} as any;
-    const stringProperties &#x3D; item.split(&quot;|&quot;);
-    stringProperties.forEach((s) &#x3D;&gt; {
-      const [field, value] &#x3D; s.split(&quot;:&quot;).map((v) &#x3D;&gt; v.trim());
-      if (field &amp;&amp; value) {
-        itemObj[field] &#x3D; value;
-      }
-    });
-    return itemObj;
-  }
 }
 </code></pre>
     </div>
 
-    <div class="tab-pane fade " id="c-templateData">
+    <div class="tab-pane fade " id="templateData">
         <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;radio-grid&quot; [ngStyle]&#x3D;&quot;gridStyle&quot;&gt;
   &lt;div
     *ngFor&#x3D;&quot;let item of radioItems&quot;
@@ -480,7 +502,7 @@ export class TmplRadioButtonGridComponent
 </code></pre>
     </div>
 
-    <div class="tab-pane fade " id="c-styleData">
+    <div class="tab-pane fade " id="styleData">
                 <p class="comment">
                     <code>./radio-button-grid.component.scss</code>
                 </p>
@@ -505,6 +527,7 @@ $text-color: var(--radio-button-font-color, var(--ion-color-primary));
   padding: 8px;
   background: white;
   cursor: pointer;
+  box-shadow: var(--ion-default-box-shadow);
 }
 .item[data-selected&#x3D;&quot;true&quot;] {
   background: $background-selected;
@@ -516,7 +539,7 @@ $text-color: var(--radio-button-font-color, var(--ion-color-primary));
 </code></pre>
     </div>
 
-    <div class="tab-pane fade " id="c-tree">
+    <div class="tab-pane fade " id="tree">
         <div id="tree-container"></div>
         <div class="tree-legend">
             <div class="title">
@@ -542,7 +565,7 @@ $text-color: var(--radio-button-font-color, var(--ion-color-primary));
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
         var COMPONENT_TEMPLATE = '<div><div class="radio-grid" [ngStyle]="gridStyle">  <div    *ngFor="let item of radioItems"    class="item"    (click)="handleItemClick(item)"    [attr.data-selected]="item.name === _row.value"  >    <div class="item-image-container" *ngIf="item.image">      <img class="item-image" [src]="item.image | plhAsset" />    </div>    <div class="item-text">{{ item.text }}</div>  </div></div></div>'
-    var COMPONENTS = [{'name': 'AccordionSectionComponent', 'selector': 'plh-tmpl-accordion-section'},{'name': 'AnimatedSectionComponent', 'selector': 'plh-tmpl-animated-section'},{'name': 'AnimatedSectionGroupComponent', 'selector': 'plh-tmpl-animated-section-group'},{'name': 'ComboBoxModalComponent', 'selector': 'combo-box-modal'},{'name': 'FormComponent', 'selector': 'plh-tmpl-form'},{'name': 'NavGroupComponent', 'selector': 'plh-tmpl-nav-group'},{'name': 'RoundIconButtonComponent', 'selector': 'plh-round-button'},{'name': 'SelectTextComponent', 'selector': 'plh-select-text'},{'name': 'SquareIconButtonComponent', 'selector': 'plh-square-icon-button'},{'name': 'TemplateBaseComponent', 'selector': ''},{'name': 'TemplateDebuggerComponent', 'selector': 'plh-template-debugger'},{'name': 'TemplateHTMLComponent', 'selector': 'template-html-component'},{'name': 'TemplateLayoutComponent', 'selector': ''},{'name': 'TemplatePopupComponent', 'selector': ''},{'name': 'TmplAccordionComponent', 'selector': 'plh-accordion-component'},{'name': 'TmplAdvancedDashedBoxComponent', 'selector': 'plh-advanced-dashed-box'},{'name': 'TmplAnimatedSlidesComponent', 'selector': 'template-animated-slides'},{'name': 'TmplAudioComponent', 'selector': 'plh-audio'},{'name': 'TmplButtonComponent', 'selector': 'plh-button'},{'name': 'TmplCarouselComponent', 'selector': 'plh-carousel'},{'name': 'TmplComboBoxComponent', 'selector': 'plh-combo-box'},{'name': 'TmplDashedBoxComponent', 'selector': 'plh-dashed-box'},{'name': 'TmplDataItemsComponent', 'selector': 'plh-data-items'},{'name': 'TmplDisplayGridComponent', 'selector': 'plh-display-grid'},{'name': 'TmplDisplayGroupComponent', 'selector': 'plh-tmpl-display-group'},{'name': 'TmplDrawerComponent', 'selector': 'plh-drawer'},{'name': 'TmplHelpIconComponent', 'selector': 'plh-tmpl-help-icon'},{'name': 'TmplIconBannerComponent', 'selector': 'plh-icon-banner'},{'name': 'TmplImageComponent', 'selector': 'plh-tmpl-image'},{'name': 'TmplLatexComponent', 'selector': 'template-latex-component'},{'name': 'TmplLottieAnimation', 'selector': 'plh-tmpl-lottie-animation'},{'name': 'TmplNavigationBarComponent', 'selector': 'plh-navigation-bar'},{'name': 'TmplNumberComponent', 'selector': 'plh-number-selector'},{'name': 'TmplOdkFormComponent', 'selector': 'tmpl-odk-form'},{'name': 'TmplParentPointBoxComponent', 'selector': 'plh-points-item'},{'name': 'TmplParentPointCounterComponent', 'selector': 'plh-parent-point-counter'},{'name': 'TmplPdfComponent', 'selector': 'plh-pdf'},{'name': 'TmplQRCodeComponent', 'selector': 'plh-qr-code'},{'name': 'TmplRadioButtonGridComponent', 'selector': 'plh-radio-button-grid'},{'name': 'TmplRadioGroupComponent', 'selector': 'plh-radio-group'},{'name': 'TmplSimpleCheckboxComponent', 'selector': 'plh-simple-checkbox'},{'name': 'TmplSliderComponent', 'selector': 'plh-slider-new'},{'name': 'TmplSubtitleComponent', 'selector': 'plh-tmpl-subtitle'},{'name': 'TmplTaskCardComponent', 'selector': 'plh-task-card'},{'name': 'TmplTaskProgressBarComponent', 'selector': 'plh-task-progress-bar'},{'name': 'TmplTextAreaComponent', 'selector': 'plh-text-area'},{'name': 'TmplTextBoxComponent', 'selector': 'plh-text-box'},{'name': 'TmplTextComponent', 'selector': 'plh-tmpl-text'},{'name': 'TmplTileComponent', 'selector': 'plh-tile-component'},{'name': 'TmplTimerComponent', 'selector': 'plh-timer'},{'name': 'TmplTitleComponent', 'selector': 'plh-tmpl-title'},{'name': 'TmplToggleBarComponent', 'selector': 'plh-tmpl-toggle-bar'},{'name': 'TmplVideoComponent', 'selector': 'plh-tmpl-video'},{'name': 'WorkshopsComponent', 'selector': 'plh-tmpl-workshops-accordion'}];
+    var COMPONENTS = [{'name': 'AccordionSectionComponent', 'selector': 'plh-tmpl-accordion-section'},{'name': 'AnimatedSectionComponent', 'selector': 'plh-tmpl-animated-section'},{'name': 'AnimatedSectionGroupComponent', 'selector': 'plh-tmpl-animated-section-group'},{'name': 'ComboBoxModalComponent', 'selector': 'combo-box-modal'},{'name': 'FormComponent', 'selector': 'plh-tmpl-form'},{'name': 'NavGroupComponent', 'selector': 'plh-tmpl-nav-group'},{'name': 'RoundIconButtonComponent', 'selector': 'plh-round-button'},{'name': 'SelectTextComponent', 'selector': 'plh-select-text'},{'name': 'SquareIconButtonComponent', 'selector': 'plh-square-icon-button'},{'name': 'TemplateBaseComponent', 'selector': ''},{'name': 'TemplateDebuggerComponent', 'selector': 'plh-template-debugger'},{'name': 'TemplateHTMLComponent', 'selector': 'template-html-component'},{'name': 'TemplateLayoutComponent', 'selector': ''},{'name': 'TemplatePopupComponent', 'selector': ''},{'name': 'TmplAccordionComponent', 'selector': 'plh-accordion-component'},{'name': 'TmplAdvancedDashedBoxComponent', 'selector': 'plh-advanced-dashed-box'},{'name': 'TmplAnimatedSlidesComponent', 'selector': 'template-animated-slides'},{'name': 'TmplAudioComponent', 'selector': 'plh-audio'},{'name': 'TmplButtonComponent', 'selector': 'plh-button'},{'name': 'TmplCarouselComponent', 'selector': 'plh-carousel'},{'name': 'TmplComboBoxComponent', 'selector': 'plh-combo-box'},{'name': 'TmplDashedBoxComponent', 'selector': 'plh-dashed-box'},{'name': 'TmplDataItemsComponent', 'selector': 'plh-data-items'},{'name': 'TmplDisplayGridComponent', 'selector': 'plh-display-grid'},{'name': 'TmplDisplayGroupComponent', 'selector': 'plh-tmpl-display-group'},{'name': 'TmplDrawerComponent', 'selector': 'plh-drawer'},{'name': 'TmplHelpIconComponent', 'selector': 'plh-tmpl-help-icon'},{'name': 'TmplIconBannerComponent', 'selector': 'plh-icon-banner'},{'name': 'TmplImageComponent', 'selector': 'plh-tmpl-image'},{'name': 'TmplLatexComponent', 'selector': 'template-latex-component'},{'name': 'TmplLottieAnimation', 'selector': 'plh-tmpl-lottie-animation'},{'name': 'TmplNavigationBarComponent', 'selector': 'plh-navigation-bar'},{'name': 'TmplNumberComponent', 'selector': 'plh-number-selector'},{'name': 'TmplOdkFormComponent', 'selector': 'tmpl-odk-form'},{'name': 'TmplParentPointBoxComponent', 'selector': 'plh-points-item'},{'name': 'TmplParentPointCounterComponent', 'selector': 'plh-parent-point-counter'},{'name': 'TmplPdfComponent', 'selector': 'plh-pdf'},{'name': 'TmplProgressPathComponent', 'selector': 'plh-progress-path'},{'name': 'TmplQRCodeComponent', 'selector': 'plh-qr-code'},{'name': 'TmplRadioButtonGridComponent', 'selector': 'plh-radio-button-grid'},{'name': 'TmplRadioGroupComponent', 'selector': 'plh-radio-group'},{'name': 'TmplSimpleCheckboxComponent', 'selector': 'plh-simple-checkbox'},{'name': 'TmplSliderComponent', 'selector': 'plh-slider-new'},{'name': 'TmplSubtitleComponent', 'selector': 'plh-tmpl-subtitle'},{'name': 'TmplTaskCardComponent', 'selector': 'plh-task-card'},{'name': 'TmplTaskProgressBarComponent', 'selector': 'plh-task-progress-bar'},{'name': 'TmplTextAreaComponent', 'selector': 'plh-text-area'},{'name': 'TmplTextBoxComponent', 'selector': 'plh-text-box'},{'name': 'TmplTextBubbleComponent', 'selector': 'tmpl-text-bubble'},{'name': 'TmplTextComponent', 'selector': 'plh-tmpl-text'},{'name': 'TmplTileComponent', 'selector': 'plh-tile-component'},{'name': 'TmplTimerComponent', 'selector': 'plh-timer'},{'name': 'TmplTitleComponent', 'selector': 'plh-tmpl-title'},{'name': 'TmplToggleBarComponent', 'selector': 'plh-tmpl-toggle-bar'},{'name': 'TmplVideoComponent', 'selector': 'plh-tmpl-video'},{'name': 'WorkshopsComponent', 'selector': 'plh-tmpl-workshops-accordion'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'TmplRadioButtonGridComponent'};
 </script>
