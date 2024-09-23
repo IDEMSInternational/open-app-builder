@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { initializeApp, FirebaseApp } from "firebase/app";
-import { environment } from "src/environments/environment";
 import { SyncServiceBase } from "../syncService.base";
+import { DeploymentService } from "../deployment/deployment.service";
 
 /** Service used to configure initialize firebase app core configuration */
 @Injectable({ providedIn: "root" })
@@ -9,7 +9,7 @@ export class FirebaseService extends SyncServiceBase {
   /** Initialised firebase app. Will be undefined if firebase config unavailable */
   app: FirebaseApp | undefined;
 
-  constructor() {
+  constructor(private deploymentService: DeploymentService) {
     super("Firebase");
     this.initialise();
   }
@@ -18,7 +18,7 @@ export class FirebaseService extends SyncServiceBase {
    * Configure app module imports dependent on what firebase features should be enabled
    */
   private initialise() {
-    const { firebase } = environment.deploymentConfig;
+    const { firebase } = this.deploymentService.config;
 
     // Check if any services are enabled, simply return if not
     const enabledServices = Object.entries(firebase)
@@ -32,6 +32,6 @@ export class FirebaseService extends SyncServiceBase {
       return;
     }
 
-    this.app = initializeApp(environment.deploymentConfig.firebase.config);
+    this.app = initializeApp(firebase.config);
   }
 }

@@ -1,3 +1,12 @@
-# Additional labels to assign based on file changes
-"documentation":
-  - documentation/**/*
+# Patterns to match to auto-assign labels based on path changes
+# https://github.com/actions/labeler/tree/v5/?tab=readme-ov-file#match-object
+
+# Documentation
+'documentation':
+  - changed-files:
+      - any-glob-to-any-file: 'documentation/**/*'
+
+# Scripts
+'scripts':
+  - changed-files:
+      - any-glob-to-any-file: 'packages/scripts/**/*'

@@ -50,7 +50,6 @@ src/assets/app_data
 scripts/config/token.json
 
 .eslintcache
-report.*
 
 # Ignore yarn-v2 dependencies
 # https://yarnpkg.com/getting-started/qa#which-files-should-be-gitignored
@@ -92,3 +91,5 @@ android/app/src/main/AndroidManifest.xml
 android/app/src/main/java/international/idems/debug_app/MainActivity.java
 android/app/src/main/res/values/strings.xml
 ios/App/App.xcodeproj/project.pbxproj
+ios/App/App/capacitor.config.json
+ios/App/App/config.xml

@@ -9,7 +9,7 @@ import {
 } from "../../../utils";
 
 export class TemplateParser extends DefaultParser {
-  postProcessRow(row: FlowTypes.TemplateRow, rowNumber = 1, nestedPath?: string) {
+  public override postProcessRow(row: FlowTypes.TemplateRow, rowNumber = 1, nestedPath?: string) {
     // remove empty rows
     if (Object.keys(row).length === 0) {
       return;
@@ -72,7 +72,7 @@ export class TemplateParser extends DefaultParser {
     return row;
   }
 
-  public postProcessFlows(flows: FlowTypes.FlowTypeWithData[]) {
+  public override postProcessFlows(flows: FlowTypes.FlowTypeWithData[]) {
     const flowsWithOverrides = assignFlowOverrides(flows);
     return flowsWithOverrides;
   }

@@ -8,6 +8,7 @@ import { ROOT_DIR } from "../../paths";
 import { Logger } from "../../utils";
 import { IDeploymentConfigJson } from "./common";
 import { convertFunctionsToStrings } from "./utils";
+import { cleanEmptyObject } from "shared/src/utils/object-utils";
 
 const program = new Command("compile");
 interface IOptions {
@@ -81,6 +82,9 @@ function convertDeploymentTsToJson(
   const rewritten = rewriteConfigPaths(deployment, _workspace_path);
 
   const converted = convertFunctionsToStrings(rewritten);
+
+  // remove empty placeholders populated by override config
+  converted.app_config = cleanEmptyObject(converted.app_config);
 
   return { ...converted, _workspace_path, _config_ts_path, _config_version };
 }

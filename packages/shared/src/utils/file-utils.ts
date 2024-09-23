@@ -2,7 +2,7 @@ import * as fs from "fs-extra";
 import * as path from "path";
 import * as os from "os";
 import { createHash, randomUUID } from "crypto";
-import { logWarning } from "./logging.utils";
+import { Logger, logWarning } from "./logging.utils";
 import { tmpdir } from "os";
 
 /**
@@ -149,12 +149,7 @@ export function generateFolderFlatMap(
     const relativePath = path.relative(folderPath, filePath).split(path.sep).join("/");
     const shouldInclude = options.filterFn ? options.filterFn(relativePath) : true;
     if (shouldInclude) {
-      // generate size and md5 checksum stats
-      const { size, mtime } = fs.statSync(filePath);
-      const modifiedTime = mtime.toISOString();
-      // write size in kb to 1 dpclear
-      const size_kb = Math.round(size / 102.4) / 10;
-      const md5Checksum = getFileMD5Checksum(filePath);
+      const { md5Checksum, modifiedTime, size_kb } = getFileStats(filePath);
       const entry: IContentsEntry = { relativePath, size_kb, md5Checksum, modifiedTime };
       if (options.includeLocalPath) {
         entry.localPath = filePath;
@@ -163,6 +158,16 @@ export function generateFolderFlatMap(
     }
   }
   return flatMap;
+}
+
+function getFileStats(filePath: string) {
+  // generate size and md5 checksum stats
+  const { size, mtime } = fs.statSync(filePath);
+  const modifiedTime = mtime.toISOString();
+  // write size in kb to 1 dpclear
+  const size_kb = Math.round(size / 102.4) / 10;
+  const md5Checksum = getFileMD5Checksum(filePath);
+  return { size_kb, md5Checksum, modifiedTime };
 }
 
 export interface IContentsEntry {
@@ -480,6 +485,24 @@ export function replicateDir(
   return ops;
 }
 
+/** Copy a file from src to target, only replacing if unchanged */
+export function replicateFile(src: string, target: string) {
+  const srcExists = fs.pathExistsSync(src);
+  if (!srcExists) return Logger.error({ msg1: "File not found", msg2: src });
+  const srcStats = getFileStats(src);
+  // skip if target file same contents as src
+  if (fs.pathExistsSync(target)) {
+    const targetStats = getFileStats(target);
+    if (srcStats.md5Checksum === targetStats.md5Checksum) {
+      return;
+    }
+  }
+  fs.ensureDirSync(path.dirname(target));
+  fs.copyFileSync(src, target);
+  const mtime = new Date(srcStats.modifiedTime);
+  fs.utimesSync(target, mtime, mtime);
+}
+
 /**
  * Copy all files from src to target folder, overriding target files with src
  * and keeping original modified times
@@ -554,19 +577,4 @@ export const cleanupEmptyFolders = (folder: string) => {
   if (files.length === 0) {
     fs.rmdirSync(folder);
   }
-};
-
-/** Order a nested json-like object in alphabetical key order */
-export const sortJsonKeys = <T extends Record<string, any>>(json: T): T => {
-  // return non json-type data as-is
-  if (!json || {}.constructor !== json.constructor) {
-    return json;
-  }
-  // recursively sort any nested json by key
-  return Object.keys(json)
-    .sort()
-    .reduce((obj, key) => {
-      obj[key] = sortJsonKeys(json[key]);
-      return obj;
-    }, {}) as T;
 };

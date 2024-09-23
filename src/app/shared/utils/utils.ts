@@ -6,6 +6,7 @@ import * as Sentry from "@sentry/angular-ivy";
 import { FlowTypes } from "../model";
 import { objectToArray } from "../components/template/utils";
 import marked from "marked";
+import { markedSmartypantsLite } from "marked-smartypants-lite";
 
 /**
  * Generate a random string of characters in base-36 (a-z and 0-9 characters)
@@ -374,7 +375,7 @@ export function stringToIntegerHash(str: string) {
  * @param target
  * @param ...sources
  */
-export function deepMergeObjects(target: any = {}, ...sources: any) {
+export function deepMergeObjects<T = Record<string, any>>(target: T = {} as T, ...sources: any) {
   if (!sources.length) return target;
   const source = sources.shift();
 
@@ -392,8 +393,8 @@ export function deepMergeObjects(target: any = {}, ...sources: any) {
   return deepMergeObjects(target, ...sources);
 }
 
-export function deepDiffObjects<T extends Object, U extends Object>(a: T, b: U) {
-  return diff(a, b) as RecursivePartial<T | U>;
+export function deepDiffObjects<T extends Object, U extends Object>(original: T, updated: U) {
+  return diff(original, updated) as RecursivePartial<T | U>;
 }
 
 /**
@@ -498,6 +499,21 @@ export function parseMarkdown(src: string, options?: marked.MarkedOptions) {
   marked.setOptions({
     renderer,
   });
+
+  /**
+   * Interpret quotes and dashes into typographic HTML entities
+   * e.g.
+   * `She said, -- "A 'simple' sentence..." --- unknown`
+   * becomes
+   * `She said, – “A ‘simple’ sentence…” — unknown`
+   *
+   * See
+   * https://github.com/calculuschild/marked-smartypants-lite
+   * and
+   * https://marked.js.org/using_advanced#extensions
+   */
+  marked.use(markedSmartypantsLite());
+
   return marked(src, options);
 }
 
