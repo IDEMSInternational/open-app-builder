@@ -13,8 +13,66 @@
         <link rel="stylesheet" href="../styles/material.css">
     </head>
     <body>
+          <script>
+               // Blocking script to avaoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
 
-        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+
+               if ($darkModeToggles.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-block d-sm-none">
             <a href="../" class="navbar-brand">frontend documentation</a>
             <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
         </div>
@@ -36,32 +94,37 @@
 
 
 <ol class="breadcrumb">
-  <li>Components</li>
-  <li
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
   >
   TmplDataItemsComponent</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
-        <li class="active">
-            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
         </li>
-        <li >
-            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
         </li>
-        <li >
-            <a href="#templateData" role="tab" id="templateData-tab" data-toggle="tab" data-link="template">Template</a>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
         </li>
-        <li >
-            <a href="#styleData" role="tab" id="styleData-tab" data-toggle="tab" data-link="style">Styles</a>
+        <li class="nav-item">
+            <a href="#styleData" class="nav-link"
+                role="tab" id="styleData-tab" data-bs-toggle="tab" data-link="style">Styles</a>
         </li>
-        <li >
-            <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
         </li>
 </ul>
 
 <div class="tab-content">
-    <div class="tab-pane fade active in" id="c-info"><p class="comment">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
     <h3>File</h3>
 </p>
 <p class="comment">
@@ -74,12 +137,18 @@
         <h3>Extends</h3>
     </p>
     <p class="comment">
-                <code><a href="../components/TemplateBaseComponent.html" target="_self" >TemplateBaseComponent</a></code>
+                    <code><a href="../components/TemplateBaseComponent.html" target="_self" >TemplateBaseComponent</a></code>
+    </p>
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                <code>OnDestroy</code>
     </p>
 
 
-
-<section>
+<section data-compodoc="block-metadata">
     <h3>Metadata</h3>
     <table class="table table-sm table-hover metadata">
         <tbody>
@@ -98,10 +167,13 @@
 
 
 
+
             <tr>
                 <td class="col-md-3">selector</td>
                 <td class="col-md-9"><code>plh-data-items</code></td>
             </tr>
+
+
 
             <tr>
                 <td class="col-md-3">styleUrls</td>
@@ -126,7 +198,7 @@
     </table>
 </section>
 
-    <section>
+    <section data-compodoc="block-index">
     <h3 id="index">Index</h3>
     <table class="table table-sm table-bordered index-table">
         <tbody>
@@ -183,18 +255,18 @@
     </table>
 </section>
 
-    <section>
+    <section data-compodoc="block-constructor">
     <h3 id="constructor">Constructor</h3>
         <table class="table table-sm table-bordered">
             <tbody>
                 <tr>
                     <td class="col-md-4">
-<code>constructor(dynamicDataService: <a href="../numbers/D.html" target="_self">DynamicDataService</a>, templateVariablesService: TemplateVariablesService, injector: <a href="https://angular.io/api/core/Injector" target="_blank">Injector</a>, cdr: <a href="../numbers/D.html" target="_self">ChangeDetectorRef</a>)</code>
+<code>constructor(dynamicDataService: DynamicDataService, templateVariablesService: TemplateVariablesService, injector: Injector, cdr: ChangeDetectorRef)</code>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="44" class="link-to-prism">src/app/shared/components/template/components/data-items/data-items.component.ts:44</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="48" class="link-to-prism">src/app/shared/components/template/components/data-items/data-items.component.ts:48</a></div>
                             </td>
                         </tr>
 
@@ -215,7 +287,7 @@
                                                         <td>dynamicDataService</td>
                                                   
                                                         <td>
-                                                                        <code><a href="../miscellaneous/variables.html#D" target="_self" >DynamicDataService</a></code>
+                                                                    <code>DynamicDataService</code>
                                                         </td>
                                                   
                                                     <td>
@@ -239,7 +311,7 @@
                                                         <td>injector</td>
                                                   
                                                         <td>
-                                                                        <code><a href="https://angular.io/api/core/Injector" target="_blank" >Injector</a></code>
+                                                                    <code>Injector</code>
                                                         </td>
                                                   
                                                     <td>
@@ -251,7 +323,7 @@
                                                         <td>cdr</td>
                                                   
                                                         <td>
-                                                                        <code><a href="../miscellaneous/variables.html#D" target="_self" >ChangeDetectorRef</a></code>
+                                                                    <code>ChangeDetectorRef</code>
                                                         </td>
                                                   
                                                     <td>
@@ -268,7 +340,7 @@
         </table>
 </section>
 
-    <section>
+    <section data-compodoc="block-inputs">
     <h3 id="inputs">Inputs</h3>
         <table class="table table-sm table-bordered">
             <tbody>
@@ -286,7 +358,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="39" class="link-to-prism">src/app/shared/components/template/components/data-items/data-items.component.ts:39</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="43" class="link-to-prism">src/app/shared/components/template/components/data-items/data-items.component.ts:43</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -296,7 +368,7 @@
 
 
 
-    <section>
+    <section data-compodoc="block-properties">
     
     <h3 id="inputs">
         Properties
@@ -326,7 +398,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="32" class="link-to-prism">src/app/shared/components/template/components/data-items/data-items.component.ts:32</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="36" class="link-to-prism">src/app/shared/components/template/components/data-items/data-items.component.ts:36</a></div>
                         </td>
                     </tr>
 
@@ -335,7 +407,7 @@
     </table>
 </section>
 
-    <section>
+    <section data-compodoc="block-accessors">
     <h3 id="accessors">
         Accessors
     </h3>
@@ -356,7 +428,7 @@
                 </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="39" class="link-to-prism">src/app/shared/components/template/components/data-items/data-items.component.ts:39</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="43" class="link-to-prism">src/app/shared/components/template/components/data-items/data-items.component.ts:43</a></div>
                                 </td>
                             </tr>
                     <tr>
@@ -402,16 +474,20 @@
 </div>
 
 
-    <div class="tab-pane fade  tab-source-code" id="c-source">
+    <div class="tab-pane fade  tab-source-code" id="source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
   Injector,
   Input,
+  OnDestroy,
 } from &quot;@angular/core&quot;;
 import { debounceTime, Subscription } from &quot;rxjs&quot;;
-import { DynamicDataService } from &quot;src/app/shared/services/dynamic-data/dynamic-data.service&quot;;
+import {
+  DynamicDataService,
+  ISetItemContext,
+} from &quot;src/app/shared/services/dynamic-data/dynamic-data.service&quot;;
 import { FlowTypes } from &quot;../../models&quot;;
 import { ItemProcessor } from &quot;../../processors/item&quot;;
 import { TemplateRowService } from &quot;../../services/instance/template-row.service&quot;;
@@ -433,7 +509,7 @@ import { TemplateBaseComponent } from &quot;../base&quot;;
  * - Should be refactored into structural container instead of display component
  * - Could possibly refactor to feature module including services
  */
-export class TmplDataItemsComponent extends TemplateBaseComponent {
+export class TmplDataItemsComponent extends TemplateBaseComponent implements OnDestroy {
   public itemRows: FlowTypes.TemplateRow[] &#x3D; [];
 
   private dataListName: string;
@@ -444,7 +520,7 @@ export class TmplDataItemsComponent extends TemplateBaseComponent {
   @Input() set row(row: FlowTypes.TemplateRow) {
     this._row &#x3D; row;
     this.dataListName &#x3D; this.hackGetRawDataListName(row);
-    this.parameterList &#x3D; this.hackGetRawParameterList(row);
+    this.parameterList &#x3D; row.parameter_list;
     this.subscribeToData();
   }
 
@@ -478,38 +554,68 @@ export class TmplDataItemsComponent extends TemplateBaseComponent {
     parameterList: any
   ) {
     const parsedItemDataList &#x3D; await this.parseDataList(itemDataList);
-    const itemRows &#x3D; new ItemProcessor(parsedItemDataList, parameterList).process(rows);
-    const parsedItemRows &#x3D; await this.hackProcessRows(itemRows);
-    const replacedActionRows &#x3D; this.setActionListMeta(parsedItemRows, parsedItemDataList);
+    const { itemRows, itemData } &#x3D; new ItemProcessor(parsedItemDataList, parameterList).process(
+      rows
+    );
+    const itemRowsWithMeta &#x3D; this.setItemMeta(itemRows, itemData, this.dataListName);
+
+    const parsedItemRows &#x3D; await this.hackProcessRows(itemRowsWithMeta);
     // TODO - deep diff and only update changed
-    this.itemRows &#x3D; replacedActionRows;
+    this.itemRows &#x3D; parsedItemRows;
     this.cdr.markForCheck();
   }
 
   /**
-   * Update any action list set_item args to contain name of current data list and item id
-   * and set_items action to include all currently displayed rows
+   * Update item dynamic evaluation context and action lists to include relevant item data.
+   * @param templateRows List of template rows generated from itemData by item processor
+   * @param itemData List of original item data used to create item rows (post operations such as filter/sort)
+   * @param dataListName The name of the source data list (i.e. this.dataListName, extracted for ease of testing)
    * */
-  private setActionListMeta(
-    rows: FlowTypes.TemplateRow[],
-    dataList: {
-      [index: string]: any;
-    }
+  private setItemMeta(
+    templateRows: FlowTypes.TemplateRow[],
+    itemData: FlowTypes.Data_listRow[],
+    dataListName: string
   ) {
-    return rows.map((r) &#x3D;&gt; {
+    const lastItemIndex &#x3D; itemData.length - 1;
+    const itemDataIDs &#x3D; itemData.map((item) &#x3D;&gt; item.id);
+    // Reassign metadata fields previously assigned by item as rendered row count may have changed
+    return templateRows.map((r) &#x3D;&gt; {
+      const itemId &#x3D; r._evalContext.itemContext._id;
+      // Map the row item context to the original list of items rendered to know position in item list.
+      const itemIndex &#x3D; itemDataIDs.indexOf(itemId);
+      // Update metadata fields as _first, _last and index may have changed based on dynamic updates
+      r._evalContext.itemContext &#x3D; {
+        ...r._evalContext.itemContext,
+        _index: itemIndex,
+        _first: itemIndex &#x3D;&#x3D;&#x3D; 0,
+        _last: itemIndex &#x3D;&#x3D;&#x3D; lastItemIndex,
+      };
+      // Update any action list set_item args to contain name of current data list and item id
+      // and set_items action to include all currently displayed rows
       if (r.action_list) {
+        const setItemContext: ISetItemContext &#x3D; {
+          flow_name: this.dataListName,
+          itemDataIDs,
+          currentItemId: itemId,
+        };
         r.action_list &#x3D; r.action_list.map((a) &#x3D;&gt; {
           if (a.action_id &#x3D;&#x3D;&#x3D; &quot;set_item&quot;) {
-            a.args &#x3D; [this.dataListName, r._evalContext.itemContext.id];
+            a.args &#x3D; [setItemContext];
           }
           if (a.action_id &#x3D;&#x3D;&#x3D; &quot;set_items&quot;) {
             // TODO - add a check for @item refs and replace parameter list with correct values
             // for each individual item (default will be just to pick the first)
-            a.args &#x3D; [this.dataListName, Object.values(dataList).map((v) &#x3D;&gt; v.id)];
+            a.args &#x3D; [setItemContext];
           }
           return a;
         });
       }
+
+      // Apply recursively to ensure item children with nested rows (e.g. display groups) also inherit item context
+      if (r.rows) {
+        r.rows &#x3D; this.setItemMeta(r.rows, itemData, dataListName);
+      }
+
       return r;
     });
   }
@@ -518,7 +624,7 @@ export class TmplDataItemsComponent extends TemplateBaseComponent {
    * Ordinarily rows would be processed as part of the regular template processing,
    * however this must be bypassed to allow multiple reprocessing on item updates
    */
-  private async hackProcessRows(rows) {
+  private async hackProcessRows(rows: FlowTypes.TemplateRow[]) {
     const processor &#x3D; new TemplateRowService(this.injector, {
       name: &quot;&quot;,
       template: {
@@ -528,6 +634,10 @@ export class TmplDataItemsComponent extends TemplateBaseComponent {
         rows: [],
       },
     } as any);
+    // HACK - still want to be able to use localContext from parent rows so copy to child processor
+    processor.templateRowMap &#x3D; JSON.parse(
+      JSON.stringify(this.parent.templateRowService.templateRowMap)
+    );
     await processor.processContainerTemplateRows();
     return processor.renderedRows;
   }
@@ -551,34 +661,30 @@ export class TmplDataItemsComponent extends TemplateBaseComponent {
   }
 
   /** Copied from template-row service */
-  private hackGetRawParameterList(row: FlowTypes.TemplateRow) {
-    const list &#x3D; row.parameter_list;
-    const unparsedFilter &#x3D; row._dynamicFields?.parameter_list?.filter?.[0].fullExpression;
-    if (list &amp;&amp; unparsedFilter) {
-      list.filter &#x3D; unparsedFilter;
-    }
-    return list;
-  }
-  /** Copied from template-row service */
   private async parseDataList(dataList: { [id: string]: any }) {
     const parsed: { [id: string]: any } &#x3D; {};
     for (const [listKey, listValue] of Object.entries(dataList)) {
       parsed[listKey] &#x3D; listValue;
       for (const [itemKey, itemValue] of Object.entries(listValue)) {
         if (typeof itemValue &#x3D;&#x3D;&#x3D; &quot;string&quot;) {
-          parsed[listKey][itemKey] &#x3D; await this.templateVariablesService.evaluateConditionString(
-            itemValue
-          );
+          parsed[listKey][itemKey] &#x3D;
+            await this.templateVariablesService.evaluateConditionString(itemValue);
         }
       }
     }
     return parsed;
   }
+
+  ngOnDestroy() {
+    if (this.dataQuery$) {
+      this.dataQuery$.unsubscribe();
+    }
+  }
 }
 </code></pre>
     </div>
 
-    <div class="tab-pane fade " id="c-templateData">
+    <div class="tab-pane fade " id="templateData">
         <pre class="line-numbers"><code class="language-html">&lt;plh-template-component
   *ngFor&#x3D;&quot;let row of itemRows&quot;
   [row]&#x3D;&quot;row&quot;
@@ -589,7 +695,7 @@ export class TmplDataItemsComponent extends TemplateBaseComponent {
 </code></pre>
     </div>
 
-    <div class="tab-pane fade " id="c-styleData">
+    <div class="tab-pane fade " id="styleData">
                 <p class="comment">
                     <code>./data-items.component.scss</code>
                 </p>
@@ -599,7 +705,7 @@ export class TmplDataItemsComponent extends TemplateBaseComponent {
 </code></pre>
     </div>
 
-    <div class="tab-pane fade " id="c-tree">
+    <div class="tab-pane fade " id="tree">
         <div id="tree-container"></div>
         <div class="tree-legend">
             <div class="title">
@@ -625,7 +731,7 @@ export class TmplDataItemsComponent extends TemplateBaseComponent {
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
         var COMPONENT_TEMPLATE = '<div><plh-template-component  *ngFor="let row of itemRows"  [row]="row"  [parent]="parent"  [attr.data-rowname]="row.name"  trackBy:row.name></plh-template-component></div>'
-    var COMPONENTS = [{'name': 'AccordionSectionComponent', 'selector': 'plh-tmpl-accordion-section'},{'name': 'AnimatedSectionComponent', 'selector': 'plh-tmpl-animated-section'},{'name': 'AnimatedSectionGroupComponent', 'selector': 'plh-tmpl-animated-section-group'},{'name': 'ComboBoxModalComponent', 'selector': 'combo-box-modal'},{'name': 'FormComponent', 'selector': 'plh-tmpl-form'},{'name': 'NavGroupComponent', 'selector': 'plh-tmpl-nav-group'},{'name': 'RoundIconButtonComponent', 'selector': 'plh-round-button'},{'name': 'SelectTextComponent', 'selector': 'plh-select-text'},{'name': 'SquareIconButtonComponent', 'selector': 'plh-square-icon-button'},{'name': 'TemplateBaseComponent', 'selector': ''},{'name': 'TemplateDebuggerComponent', 'selector': 'plh-template-debugger'},{'name': 'TemplateHTMLComponent', 'selector': 'template-html-component'},{'name': 'TemplateLayoutComponent', 'selector': ''},{'name': 'TemplatePopupComponent', 'selector': ''},{'name': 'TmplAccordionComponent', 'selector': 'plh-accordion-component'},{'name': 'TmplAdvancedDashedBoxComponent', 'selector': 'plh-advanced-dashed-box'},{'name': 'TmplAnimatedSlidesComponent', 'selector': 'template-animated-slides'},{'name': 'TmplAudioComponent', 'selector': 'plh-audio'},{'name': 'TmplButtonComponent', 'selector': 'plh-button'},{'name': 'TmplCarouselComponent', 'selector': 'plh-carousel'},{'name': 'TmplComboBoxComponent', 'selector': 'plh-combo-box'},{'name': 'TmplDashedBoxComponent', 'selector': 'plh-dashed-box'},{'name': 'TmplDataItemsComponent', 'selector': 'plh-data-items'},{'name': 'TmplDisplayGridComponent', 'selector': 'plh-display-grid'},{'name': 'TmplDisplayGroupComponent', 'selector': 'plh-tmpl-display-group'},{'name': 'TmplDrawerComponent', 'selector': 'plh-drawer'},{'name': 'TmplHelpIconComponent', 'selector': 'plh-tmpl-help-icon'},{'name': 'TmplIconBannerComponent', 'selector': 'plh-icon-banner'},{'name': 'TmplImageComponent', 'selector': 'plh-tmpl-image'},{'name': 'TmplLatexComponent', 'selector': 'template-latex-component'},{'name': 'TmplLottieAnimation', 'selector': 'plh-tmpl-lottie-animation'},{'name': 'TmplNavigationBarComponent', 'selector': 'plh-navigation-bar'},{'name': 'TmplNumberComponent', 'selector': 'plh-number-selector'},{'name': 'TmplOdkFormComponent', 'selector': 'tmpl-odk-form'},{'name': 'TmplParentPointBoxComponent', 'selector': 'plh-points-item'},{'name': 'TmplParentPointCounterComponent', 'selector': 'plh-parent-point-counter'},{'name': 'TmplPdfComponent', 'selector': 'plh-pdf'},{'name': 'TmplQRCodeComponent', 'selector': 'plh-qr-code'},{'name': 'TmplRadioButtonGridComponent', 'selector': 'plh-radio-button-grid'},{'name': 'TmplRadioGroupComponent', 'selector': 'plh-radio-group'},{'name': 'TmplSimpleCheckboxComponent', 'selector': 'plh-simple-checkbox'},{'name': 'TmplSliderComponent', 'selector': 'plh-slider-new'},{'name': 'TmplSubtitleComponent', 'selector': 'plh-tmpl-subtitle'},{'name': 'TmplTaskCardComponent', 'selector': 'plh-task-card'},{'name': 'TmplTaskProgressBarComponent', 'selector': 'plh-task-progress-bar'},{'name': 'TmplTextAreaComponent', 'selector': 'plh-text-area'},{'name': 'TmplTextBoxComponent', 'selector': 'plh-text-box'},{'name': 'TmplTextComponent', 'selector': 'plh-tmpl-text'},{'name': 'TmplTileComponent', 'selector': 'plh-tile-component'},{'name': 'TmplTimerComponent', 'selector': 'plh-timer'},{'name': 'TmplTitleComponent', 'selector': 'plh-tmpl-title'},{'name': 'TmplToggleBarComponent', 'selector': 'plh-tmpl-toggle-bar'},{'name': 'TmplVideoComponent', 'selector': 'plh-tmpl-video'},{'name': 'WorkshopsComponent', 'selector': 'plh-tmpl-workshops-accordion'}];
+    var COMPONENTS = [{'name': 'AccordionSectionComponent', 'selector': 'plh-tmpl-accordion-section'},{'name': 'AnimatedSectionComponent', 'selector': 'plh-tmpl-animated-section'},{'name': 'AnimatedSectionGroupComponent', 'selector': 'plh-tmpl-animated-section-group'},{'name': 'ComboBoxModalComponent', 'selector': 'combo-box-modal'},{'name': 'FormComponent', 'selector': 'plh-tmpl-form'},{'name': 'NavGroupComponent', 'selector': 'plh-tmpl-nav-group'},{'name': 'RoundIconButtonComponent', 'selector': 'plh-round-button'},{'name': 'SelectTextComponent', 'selector': 'plh-select-text'},{'name': 'SquareIconButtonComponent', 'selector': 'plh-square-icon-button'},{'name': 'TemplateBaseComponent', 'selector': ''},{'name': 'TemplateDebuggerComponent', 'selector': 'plh-template-debugger'},{'name': 'TemplateHTMLComponent', 'selector': 'template-html-component'},{'name': 'TemplateLayoutComponent', 'selector': ''},{'name': 'TemplatePopupComponent', 'selector': ''},{'name': 'TmplAccordionComponent', 'selector': 'plh-accordion-component'},{'name': 'TmplAdvancedDashedBoxComponent', 'selector': 'plh-advanced-dashed-box'},{'name': 'TmplAnimatedSlidesComponent', 'selector': 'template-animated-slides'},{'name': 'TmplAudioComponent', 'selector': 'plh-audio'},{'name': 'TmplButtonComponent', 'selector': 'plh-button'},{'name': 'TmplCarouselComponent', 'selector': 'plh-carousel'},{'name': 'TmplComboBoxComponent', 'selector': 'plh-combo-box'},{'name': 'TmplDashedBoxComponent', 'selector': 'plh-dashed-box'},{'name': 'TmplDataItemsComponent', 'selector': 'plh-data-items'},{'name': 'TmplDisplayGridComponent', 'selector': 'plh-display-grid'},{'name': 'TmplDisplayGroupComponent', 'selector': 'plh-tmpl-display-group'},{'name': 'TmplDrawerComponent', 'selector': 'plh-drawer'},{'name': 'TmplHelpIconComponent', 'selector': 'plh-tmpl-help-icon'},{'name': 'TmplIconBannerComponent', 'selector': 'plh-icon-banner'},{'name': 'TmplImageComponent', 'selector': 'plh-tmpl-image'},{'name': 'TmplLatexComponent', 'selector': 'template-latex-component'},{'name': 'TmplLottieAnimation', 'selector': 'plh-tmpl-lottie-animation'},{'name': 'TmplNavigationBarComponent', 'selector': 'plh-navigation-bar'},{'name': 'TmplNumberComponent', 'selector': 'plh-number-selector'},{'name': 'TmplOdkFormComponent', 'selector': 'tmpl-odk-form'},{'name': 'TmplParentPointBoxComponent', 'selector': 'plh-points-item'},{'name': 'TmplParentPointCounterComponent', 'selector': 'plh-parent-point-counter'},{'name': 'TmplPdfComponent', 'selector': 'plh-pdf'},{'name': 'TmplProgressPathComponent', 'selector': 'plh-progress-path'},{'name': 'TmplQRCodeComponent', 'selector': 'plh-qr-code'},{'name': 'TmplRadioButtonGridComponent', 'selector': 'plh-radio-button-grid'},{'name': 'TmplRadioGroupComponent', 'selector': 'plh-radio-group'},{'name': 'TmplSimpleCheckboxComponent', 'selector': 'plh-simple-checkbox'},{'name': 'TmplSliderComponent', 'selector': 'plh-slider-new'},{'name': 'TmplSubtitleComponent', 'selector': 'plh-tmpl-subtitle'},{'name': 'TmplTaskCardComponent', 'selector': 'plh-task-card'},{'name': 'TmplTaskProgressBarComponent', 'selector': 'plh-task-progress-bar'},{'name': 'TmplTextAreaComponent', 'selector': 'plh-text-area'},{'name': 'TmplTextBoxComponent', 'selector': 'plh-text-box'},{'name': 'TmplTextBubbleComponent', 'selector': 'tmpl-text-bubble'},{'name': 'TmplTextComponent', 'selector': 'plh-tmpl-text'},{'name': 'TmplTileComponent', 'selector': 'plh-tile-component'},{'name': 'TmplTimerComponent', 'selector': 'plh-timer'},{'name': 'TmplTitleComponent', 'selector': 'plh-tmpl-title'},{'name': 'TmplToggleBarComponent', 'selector': 'plh-tmpl-toggle-bar'},{'name': 'TmplVideoComponent', 'selector': 'plh-tmpl-video'},{'name': 'WorkshopsComponent', 'selector': 'plh-tmpl-workshops-accordion'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'TmplDataItemsComponent'};
 </script>
