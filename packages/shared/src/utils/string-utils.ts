@@ -14,9 +14,11 @@ export function booleanStringToBoolean(str: string) {
 
 /** Convert size in KB to MB with specified number of decimal places */
 export function kbToMB(kb: number, decimalPlaces = 1) {
-  const mb = kb / 1024;
-  const power = 10 ^ decimalPlaces;
-  return Math.round((mb * power) / power);
+  // using convention of 1000 kb in mb (not 1024 KiB in MiB)
+  // https://ux.stackexchange.com/questions/13815/files-size-units-kib-vs-kb-vs-kb
+  const mb = kb / 1000;
+  const power = 10 ** decimalPlaces;
+  return Math.round(mb * power) / power;
 }
 
 /**

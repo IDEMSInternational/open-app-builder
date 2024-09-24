@@ -1,5 +1,5 @@
 import { FlowTypes } from "data-models";
-import { IParsedWorkbookData } from "../../types";
+import { IParsedWorkbookData } from "../../convert/types";
 import { TemplateSummaryReport } from "./template-summary";
 
 const MOCK_ROWS_1: FlowTypes.TemplateRow[] = [
