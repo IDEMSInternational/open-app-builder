@@ -9,7 +9,7 @@ export class GeneratorParser extends DefaultParser<FlowTypes.GeneratorFlow> {
    */
   public static populateProcessedFlows() {}
 
-  public postProcessFlow(flow: FlowTypes.GeneratorFlow): FlowTypes.GeneratorFlow {
+  public override postProcessFlow(flow: FlowTypes.GeneratorFlow): FlowTypes.GeneratorFlow {
     flow.parameter_list = this.validateParameterList(flow);
 
     const inputSources = this.loadInputSources();
@@ -23,13 +23,20 @@ export class GeneratorParser extends DefaultParser<FlowTypes.GeneratorFlow> {
       return;
     }
     try {
-      this.flow._generated = this.generateFlows(flow, dataListRows);
-      // this.handleOutputs(generated);
+      const generated = this.generateFlows(flow, dataListRows);
+
+      // Pass all generated flows to the back of the current processing queue so that they can be
+      // populated to processed hashmap and referenced from other processes as required
+      for (const generatedFlow of generated) {
+        const deferId = `${generatedFlow.flow_type}.${generatedFlow.flow_subtype}.${generatedFlow.flow_name}`;
+        this.flowProcessor.deferInputProcess(generatedFlow, deferId);
+      }
     } catch (error) {
       console.trace(error);
       throw error;
     }
-    return this.flow;
+    // As the generator has been fully used it no longer needs to be stored, so just return undefined
+    return undefined;
   }
 
   private validateParameterList(
@@ -61,7 +68,7 @@ export class GeneratorParser extends DefaultParser<FlowTypes.GeneratorFlow> {
     generator: FlowTypes.GeneratorFlow,
     dataListRows: FlowTypes.Data_listRow[]
   ) {
-    const generated: FlowTypes.FlowTypeWithData["_generated"] = {};
+    const generated: FlowTypes.FlowTypeWithData[] = [];
 
     for (const listRow of dataListRows) {
       const parser = new TemplatedData({
@@ -82,8 +89,7 @@ export class GeneratorParser extends DefaultParser<FlowTypes.GeneratorFlow> {
         flow_type: output_flow_type,
         rows: parsedRows,
       };
-      generated[output_flow_type] ??= {};
-      generated[output_flow_type][output_flow_name] = generatedFlow;
+      generated.push(generatedFlow);
     }
     return generated;
   }
