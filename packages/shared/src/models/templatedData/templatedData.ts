@@ -1,5 +1,6 @@
 import { ITemplatedStringVariable } from "../../types";
 import { addStringDelimiters, extractDelimitedTemplateString } from "../../utils/delimiters";
+import { isObjectLiteral } from "../../utils";
 
 type ITemplatedDataContext = { [prefix: string]: any };
 
@@ -27,9 +28,6 @@ export interface ITemplatedDataContextList {
  * E.g. {row:{id:'example_1'}} will replace `@row.id` with 'example_1`
  */
 export class TemplatedData {
-  /** Value containing templated data, e.g. `"Hello @row.id"` */
-  private initialValue: any;
-
   /** Value returned after parsing templated data, e.g. `"Hello example_1"` */
   public parsedValue: any;
 
@@ -46,14 +44,12 @@ export class TemplatedData {
   /** A list of all variable replacements carried out during parse (for tracking dependencies list) */
   public replacedVariablesList: { [key: string]: string } = {};
 
-  constructor(options?: { initialValue?: any; context?: ITemplatedDataContext }) {
-    this.updateValue(options?.initialValue ?? "");
+  constructor(options?: { context?: ITemplatedDataContext }) {
     this.updateContext(options?.context ?? {});
   }
 
   /** Change the initial value whilst keeping existing context same */
   public updateValue(value: any) {
-    this.initialValue = value;
     this.replacedVariablesList = {};
     return this;
   }
@@ -77,18 +73,18 @@ export class TemplatedData {
    * Main data conversion method
    * Iterate over data, parse string values and nested objects and arrays recursively
    */
-  public parse<T>(value: T = this.initialValue) {
+  public parse<T>(value: T) {
     if (value) {
       if (typeof value === "string") {
         value = this.parseTemplatedString(value);
       }
-      // recurssively convert array and json-like objects
-      if (typeof value === "object") {
-        if (Array.isArray(value)) {
-          value = value.map((v) => this.parse(v)) as any;
-        }
-        if (value.constructor === {}.constructor) {
-          Object.keys(value).forEach((key) => (value[key] = this.parse(value[key])));
+      // recursively convert array and json-like objects
+      if (Array.isArray(value)) {
+        value = value.map((v) => this.parse(v)) as any;
+      }
+      if (isObjectLiteral(value)) {
+        for (const [key, nestedValue] of Object.entries(value)) {
+          value[key] = this.parse(nestedValue);
         }
       }
     }

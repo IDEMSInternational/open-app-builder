@@ -64,7 +64,7 @@ describe("App Data Converter", () => {
   it("Populates output to folder by data type", async () => {
     await converter.run();
     const outputFolders = readdirSync(paths.outputFolder);
-    expect(outputFolders).toEqual(["data_list", "data_pipe", "template"]);
+    expect(outputFolders).toEqual(["data_list", "template"]);
   });
   it("Supports input from multiple source folders", async () => {
     const multipleSourceConverter = new AppDataConverter({
