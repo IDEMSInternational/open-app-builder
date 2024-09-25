@@ -29,8 +29,6 @@ export class DataPipeParser extends DefaultParser<FlowTypes.DataPipeFlow> {
   }
 
   private populateGeneratedFlows(outputs: { [output_name: string]: any[] }) {
-    this.flowProcessor.processedFlowHashmap.data_list ??= {};
-
     for (const [flow_name, rows] of Object.entries(outputs)) {
       const flow: FlowTypes.FlowTypeWithData = {
         flow_name,

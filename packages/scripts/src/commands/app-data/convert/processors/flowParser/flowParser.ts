@@ -64,10 +64,8 @@ export class FlowParserProcessor extends BaseProcessor<FlowTypes.FlowTypeWithDat
 
   public updateProcessedFlowHashmap(flow: FlowTypes.FlowTypeWithData) {
     const { flow_name, flow_type, _xlsxPath } = flow;
-    if (!this.processedFlowHashmap[flow_type]) {
-      this.processedFlowHashmap[flow_type] = {};
-      this.processedFlowHashmapWithMeta[flow_type] = {};
-    }
+    this.processedFlowHashmap[flow_type] ??= {};
+    this.processedFlowHashmapWithMeta[flow_type] ??= {};
     // NOTE - duplicate flows are identified up during main converter
     this.processedFlowHashmap[flow_type][flow_name] = flow.rows;
     this.processedFlowHashmapWithMeta[flow_type][flow_name] = flow;
