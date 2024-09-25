@@ -3,6 +3,9 @@ import { DataPipe } from "shared/src/models/dataPipe";
 import { DefaultParser } from "./default.parser";
 
 export class DataPipeParser extends DefaultParser<FlowTypes.DataPipeFlow> {
+  /** local hashmap of generated outputs. Used for tests  */
+  private outputHashmap: { [flow_name: string]: { [output_name: string]: any } } = {};
+
   /** If extending the class add additional postprocess pipeline here */
 
   public postProcessFlow(flow: FlowTypes.DataPipeFlow): FlowTypes.DataPipeFlow {
@@ -18,6 +21,9 @@ export class DataPipeParser extends DefaultParser<FlowTypes.DataPipeFlow> {
     }
     try {
       const outputs = pipe.run();
+      // HACK - populate to output hashmap for use in tests. Clone output due to deep nest issues
+      this.outputHashmap[flow.flow_name] = JSON.parse(JSON.stringify(outputs));
+
       this.populateGeneratedFlows(outputs);
       // As the populated flows will be passed directly to the processor queue
       // can just return undefined so that the data pipe will not be stored in outputs
