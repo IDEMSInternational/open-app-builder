@@ -4,9 +4,9 @@ import { DataPipeParser } from "./data_pipe.parser";
 import { FlowParserProcessor } from "../flowParser";
 import { MockJsonFileCache } from "../../../cacheStrategy/jsonFile.mock";
 
-const testInputSources = {
+const getTestData = () => ({
   data_list: { test_data_list: [{ id: 1 }, { id: 2 }, { id: 3 }] },
-};
+});
 
 /** yarn workspace scripts test -t data_pipe.parser.spec.ts */
 describe("data_pipe Parser", () => {
@@ -15,9 +15,9 @@ describe("data_pipe Parser", () => {
     // HACK - setup parser with in-memory cache to avoid writing to disk
     parser = new DataPipeParser(new FlowParserProcessor(null as any));
     parser.flowProcessor.cache = new MockJsonFileCache();
+    parser.flowProcessor.processedFlowHashmap = getTestData();
   });
   it("Populates generated data lists", async () => {
-    parser.flowProcessor.processedFlowHashmap = testInputSources;
     parser.run({
       flow_name: "test_pipe_parse",
       flow_type: "data_pipe",
@@ -41,14 +41,13 @@ describe("data_pipe Parser", () => {
     await parser.flowProcessor.queue.onIdle();
 
     expect(parser.flowProcessor.processedFlowHashmap.data_list).toEqual({
-      ...testInputSources.data_list,
+      ...getTestData().data_list,
       test_output_1: [{ id: 2 }, { id: 3 }],
       test_output_2: [{ id: 3 }],
     });
   });
 
   it("Allows outputs from one pipe to be used in another", async () => {
-    parser.flowProcessor.processedFlowHashmap = testInputSources;
     const ops1: IDataPipeOperation[] = [
       {
         input_source: "test_data_list",

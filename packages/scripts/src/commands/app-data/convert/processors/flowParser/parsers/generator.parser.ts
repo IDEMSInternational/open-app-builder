@@ -3,11 +3,8 @@ import { DefaultParser } from "./default.parser";
 import { TemplatedData } from "shared";
 
 export class GeneratorParser extends DefaultParser<FlowTypes.GeneratorFlow> {
-  /**
-   * Method applied after all flow processing and processing methods to populate
-   * generated flows to main list
-   */
-  public static populateProcessedFlows() {}
+  /** local hashmap of generated outputs. Used for tests  */
+  private outputHashmap: { [flow_name: string]: { [output_name: string]: any } } = {};
 
   public override postProcessFlow(flow: FlowTypes.GeneratorFlow): FlowTypes.GeneratorFlow {
     flow.parameter_list = this.validateParameterList(flow);
@@ -24,6 +21,8 @@ export class GeneratorParser extends DefaultParser<FlowTypes.GeneratorFlow> {
     }
     try {
       const generated = this.generateFlows(flow, dataListRows);
+      // HACK - populate to output hashmap for use in tests. Clone output due to deep nest issues
+      this.outputHashmap[flow.flow_name] = JSON.parse(JSON.stringify(generated));
 
       // Pass all generated flows to the back of the current processing queue so that they can be
       // populated to processed hashmap and referenced from other processes as required
@@ -31,12 +30,13 @@ export class GeneratorParser extends DefaultParser<FlowTypes.GeneratorFlow> {
         const deferId = `${generatedFlow.flow_type}.${generatedFlow.flow_subtype}.${generatedFlow.flow_name}`;
         this.flowProcessor.deferInputProcess(generatedFlow, deferId);
       }
+      // As the populated flows will be passed directly to the processor queue
+      // can just return undefined so that the data pipe will not be stored in outputs
+      return undefined;
     } catch (error) {
       console.trace(error);
       throw error;
     }
-    // As the generator has been fully used it no longer needs to be stored, so just return undefined
-    return undefined;
   }
 
   private validateParameterList(
