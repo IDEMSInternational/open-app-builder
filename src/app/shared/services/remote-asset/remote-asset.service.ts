@@ -306,9 +306,9 @@ export class RemoteAssetService extends AsyncServiceBase {
     const { overrides } = assetEntry;
     if (overrides) {
       for (const [themeName, languageOverrides] of Object.entries(overrides)) {
-        for (const [languageCode, assetContentsEntry] of Object.entries(languageOverrides)) {
+        for (const [languageCode, overrideAssetEntry] of Object.entries(languageOverrides)) {
           const overrideProps = { themeName, languageCode };
-          const filepath = this.getPublicUrl(assetContentsEntry.filePath);
+          const filepath = this.getPublicUrl(overrideAssetEntry.filePath);
           await this.updateAssetContents(assetEntry, filepath, overrideProps);
         }
       }
@@ -347,9 +347,16 @@ export class RemoteAssetService extends AsyncServiceBase {
       complete: async () => {
         console.log(`[REMOTE ASSETS] File ${fileIndex + 1} of ${totalFiles} downloaded to cache`);
         if (data) {
-          await this.fileManagerService.saveFile({ data, targetPath: assetEntry.id });
-          const filepath = await this.fileManagerService.getLocalFilepath(assetEntry.id);
-          await this.updateAssetContents(assetEntry, filepath, overrideProps);
+          let targetPath = assetEntry.id;
+
+          // For overrides, use the nested override filepath as the path to save the file in local storage
+          if (overrideProps) {
+            const { themeName, languageCode } = overrideProps;
+            const overrideAssetEntry = assetEntry.overrides[themeName][languageCode];
+            targetPath = overrideAssetEntry.filePath;
+          }
+          const { src } = await this.fileManagerService.saveFile({ data, targetPath });
+          await this.updateAssetContents(assetEntry, src, overrideProps);
         }
         progress$.next(progress);
         progress$.complete();
