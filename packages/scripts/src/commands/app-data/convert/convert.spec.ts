@@ -41,6 +41,8 @@ describe("App Data Converter", () => {
     ensureDirSync(paths.cacheFolder);
     emptyDirSync(paths.cacheFolder);
     converter = new AppDataConverter(paths);
+    // HACK - Tests failing on CI due to logs persisting between runs
+    clearLogs(true);
   });
 
   it("Uses child caches", async () => {
