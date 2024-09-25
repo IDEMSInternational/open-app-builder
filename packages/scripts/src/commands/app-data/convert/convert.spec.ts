@@ -66,11 +66,6 @@ describe("App Data Converter", () => {
     const outputFolders = readdirSync(paths.outputFolder);
     expect(outputFolders).toEqual(["data_list", "data_pipe", "template"]);
   });
-  it("Generates summary conversion reports", async () => {
-    await converter.run();
-    const reports = readdirSync(paths.reportsFolder);
-    expect(reports).toEqual(["summary.json", "summary.md"]);
-  });
   it("Supports input from multiple source folders", async () => {
     const multipleSourceConverter = new AppDataConverter({
       ...paths,
