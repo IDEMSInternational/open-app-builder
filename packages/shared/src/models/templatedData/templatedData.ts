@@ -1,6 +1,6 @@
 import { ITemplatedStringVariable } from "../../types";
 import { addStringDelimiters, extractDelimitedTemplateString } from "../../utils/delimiters";
-import { isObjectLiteral } from "../../utils";
+import { isObjectLiteral } from "../../utils/object-utils";
 
 type ITemplatedDataContext = { [prefix: string]: any };
 
