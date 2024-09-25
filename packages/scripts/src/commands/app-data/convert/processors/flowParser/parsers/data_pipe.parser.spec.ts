@@ -1,15 +1,24 @@
 import { FlowTypes } from "data-models";
 import type { IDataPipeOperation } from "shared";
 import { DataPipeParser } from "./data_pipe.parser";
+import { FlowParserProcessor } from "../flowParser";
+import { MockJsonFileCache } from "../../../cacheStrategy/jsonFile.mock";
 
 const testInputSources = {
   data_list: { test_data_list: [{ id: 1 }, { id: 2 }, { id: 3 }] },
 };
 
+/** yarn workspace scripts test -t data_pipe.parser.spec.ts */
 describe("data_pipe Parser", () => {
+  let parser: DataPipeParser;
+  beforeEach(() => {
+    // HACK - setup parser with in-memory cache to avoid writing to disk
+    parser = new DataPipeParser(new FlowParserProcessor(null as any));
+    parser.flowProcessor.cache = new MockJsonFileCache();
+  });
   it("Populates generated data lists", async () => {
-    const parser = new DataPipeParser({ processedFlowHashmap: testInputSources } as any);
-    const output = parser.run({
+    parser.flowProcessor.processedFlowHashmap = testInputSources;
+    parser.run({
       flow_name: "test_pipe_parse",
       flow_type: "data_pipe",
       rows: [
@@ -27,24 +36,19 @@ describe("data_pipe Parser", () => {
         },
       ],
     }) as FlowTypes.DataPipeFlow;
-    expect(output._generated.data_list).toEqual({
-      test_output_1: {
-        flow_name: "test_output_1",
-        flow_subtype: "generated",
-        flow_type: "data_list",
-        rows: [{ id: 2 }, { id: 3 }],
-      },
-      test_output_2: {
-        flow_name: "test_output_2",
-        flow_subtype: "generated",
-        flow_type: "data_list",
-        rows: [{ id: 3 }],
-      },
+
+    // Ensure all flow processing completed, included deferred processing of generated
+    await parser.flowProcessor.queue.onIdle();
+
+    expect(parser.flowProcessor.processedFlowHashmap.data_list).toEqual({
+      ...testInputSources.data_list,
+      test_output_1: [{ id: 2 }, { id: 3 }],
+      test_output_2: [{ id: 3 }],
     });
   });
 
-  it("Allows outputs from one pipe to be used in another", () => {
-    const parser = new DataPipeParser({ processedFlowHashmap: testInputSources } as any);
+  it("Allows outputs from one pipe to be used in another", async () => {
+    parser.flowProcessor.processedFlowHashmap = testInputSources;
     const ops1: IDataPipeOperation[] = [
       {
         input_source: "test_data_list",
@@ -54,10 +58,10 @@ describe("data_pipe Parser", () => {
       },
     ];
     parser.run({ flow_name: "flow1", flow_type: "data_pipe", rows: ops1 });
-    expect(parser.flowProcessor.processedFlowHashmap.data_list.test_output_1).toEqual([
-      { id: 2 },
-      { id: 3 },
-    ]);
+    expect(parser["outputHashmap"].flow1).toEqual({ test_output_1: [{ id: 2 }, { id: 3 }] });
+
+    // Ensure all flow processing completed, included deferred processing of generated
+    await parser.flowProcessor.queue.onIdle();
     const ops2: IDataPipeOperation[] = [
       {
         input_source: "test_output_1",
@@ -66,47 +70,37 @@ describe("data_pipe Parser", () => {
         output_target: "test_output_2",
       },
     ];
-    const output = parser.run({
+    parser.run({
       flow_name: "flow2",
       flow_type: "data_pipe",
       rows: ops2,
     }) as FlowTypes.DataPipeFlow;
-    expect(output._generated.data_list).toEqual({
-      test_output_2: {
-        flow_name: "test_output_2",
-        flow_subtype: "generated",
-        flow_type: "data_list",
-        rows: [{ id: 3 }],
-      },
+    expect(parser["outputHashmap"].flow2).toEqual({
+      test_output_2: [{ id: 3 }],
     });
   });
 
-  it("Defers processing when inputs not available", async () => {
-    let deferred = [];
-    const parser = new DataPipeParser({
-      processedFlowHashmap: {},
-      deferInputProcess: (input: any, id: string) => {
-        deferred.push(id);
-      },
-    } as any);
+  it("Defers processing when inputs not available max 5 times", async () => {
+    parser.flowProcessor.processedFlowHashmap = {};
+
     parser.run({
       flow_name: "test_pipe_defer",
       flow_type: "data_pipe",
       rows: [{ input_source: "missing_list" }],
     });
-    expect(deferred).toEqual(["data_pipe.test_pipe_defer"]);
+    await parser.flowProcessor.queue.onIdle();
+    expect(parser.flowProcessor.deferredCounter).toEqual({ "data_pipe.test_pipe_defer": 5 });
   });
 
   // QA - https://github.com/IDEMSInternational/parenting-app-ui/issues/2184
   // NOTE - test case more explicitly handled by jsEvaluator.spec
   it("Supports text with line break characters", async () => {
-    const parser = new DataPipeParser({
-      processedFlowHashmap: {
-        data_list: {
-          test_data_list: [{ id: 1, text: "normal" }, { id: 2, text: "line\nbreak" }, { id: 3 }],
-        },
+    parser.flowProcessor.processedFlowHashmap = {
+      data_list: {
+        test_data_list: [{ id: 1, text: "normal" }, { id: 2, text: "line\nbreak" }, { id: 3 }],
       },
-    } as any);
+    };
+
     const ops: IDataPipeOperation[] = [
       {
         input_source: "test_data_list",
@@ -115,14 +109,16 @@ describe("data_pipe Parser", () => {
         output_target: "test_output",
       },
     ];
-    const output = parser.run({
+    parser.run({
       flow_name: "test_line_breaks",
       flow_type: "data_pipe",
       rows: ops,
     });
-    expect(output._generated.data_list.test_output.rows).toEqual([
-      { id: 1, text: "normal" },
-      { id: 2, text: "line\nbreak" },
-    ]);
+    expect(parser["outputHashmap"].test_line_breaks).toEqual({
+      test_output: [
+        { id: 1, text: "normal" },
+        { id: 2, text: "line\nbreak" },
+      ],
+    });
   });
 });
