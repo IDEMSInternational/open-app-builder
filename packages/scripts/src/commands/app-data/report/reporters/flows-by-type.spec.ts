@@ -1,4 +1,4 @@
-import { IParsedWorkbookData } from "../../types";
+import { IParsedWorkbookData } from "../../convert/types";
 import { FlowByTypeReport } from "./flows-by-type";
 
 const MOCK_WORKBOOK_DATA: IParsedWorkbookData = {
