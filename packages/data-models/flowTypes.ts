@@ -66,8 +66,6 @@ export namespace FlowTypes {
     rows: any[];
     /** Datalists populate rows as a hashmap instead to allow easier access to nested structures */
     rowsHashmap?: { [id: string]: any };
-    /** Additional flows generated during parsing, such as data pipe or generator flow outputs */
-    _generated?: { [flow_type in FlowType]?: { [flow_name: string]: FlowTypeWithData } };
   }
 
   /*********************************************************************************************

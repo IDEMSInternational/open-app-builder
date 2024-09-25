@@ -19,28 +19,31 @@ export class DataPipeParser extends DefaultParser<FlowTypes.DataPipeFlow> {
     try {
       const outputs = pipe.run();
       this.populateGeneratedFlows(outputs);
+      // As the populated flows will be passed directly to the processor queue
+      // can just return undefined so that the data pipe will not be stored in outputs
+      return undefined;
     } catch (error) {
       console.trace(error);
       throw error;
     }
-    return this.flow;
   }
 
   private populateGeneratedFlows(outputs: { [output_name: string]: any[] }) {
-    const generated: FlowTypes.DataPipeFlow["_generated"] = { data_list: {} };
     this.flowProcessor.processedFlowHashmap.data_list ??= {};
 
     for (const [flow_name, rows] of Object.entries(outputs)) {
-      generated.data_list[flow_name] = {
+      const flow: FlowTypes.FlowTypeWithData = {
         flow_name,
         flow_subtype: "generated",
         flow_type: "data_list",
         rows,
       };
-      // also populate generated outputs to be available for future input sources
-      this.flowProcessor.processedFlowHashmap.data_list[flow_name] = rows;
+      const deferId = `${flow.flow_type}.${flow.flow_subtype}.${flow.flow_name}`;
+
+      // Pass all generated flows to the back of the current processing queue so that they can be
+      // populated to processed hashmap and referenced from other processes as required
+      this.flowProcessor.deferInputProcess(flow, deferId);
     }
-    this.flow._generated = generated;
   }
 
   private loadInputSources() {
