@@ -1,4 +1,4 @@
-import { Component, Input, OnDestroy, OnInit, signal, ViewChild } from "@angular/core";
+import { Component, computed, Input, OnDestroy, OnInit, signal } from "@angular/core";
 import { FlowTypes } from "../../../../model";
 import {
   getBooleanParamFromTemplateRow,
@@ -6,7 +6,6 @@ import {
   getStringParamFromTemplateRow,
 } from "../../../../utils";
 import { Howl } from "howler";
-import { IonRange } from "@ionic/angular";
 import { ITemplateRowProps } from "../../models";
 import { TemplateBaseComponent } from "../base";
 import { PLHAssetPipe } from "../../pipes/plh-asset.pipe";
@@ -18,6 +17,8 @@ const PAUSE_ICON_DEFAULT = "pause-outline";
 const FORWARD_ICON_DEFAULT = "play-forward";
 
 interface IAudioParams {
+  /** TEMPLATE PARAMETER: "variant". Default "large". */
+  variant: "large" | "compact";
   /** TEMPLATE PARAMETER: "src". Will be overridden by a value passed as "value" to the component. */
   src: string;
   /** TEMPLATE PARAMETER: "title" */
@@ -30,19 +31,18 @@ interface IAudioParams {
    * Will be mirrored to be used as the reqind icon. Default icon is ion's "play-forward"
    * */
   forwardIconAsset: string;
-  /** TEMPLATE PARAMETER: "help_icon_asset". The path to an svg to override the default help icon. */
-  helpIconAsset: string;
-  /** TEMPLATE PARAMETER: "help_text". Text to be displayed as a tooltip when clicking the "help" icon.
-   * Icon and tooltip will not be displayed if value not provided. Default null */
-  helpText: string;
+  /** TEMPLATE PARAMETER: "show_info_button". Should show the info button. Default false (unless info_icon_asset is provided) */
+  showInfoButton: boolean;
+  /** TEMPLATE PARAMETER: "info_icon_asset". The path to an svg to override the default info icon. The default is an icon indicating a transcript */
+  infoIconAsset: string;
   /** TEMPLATE PARAMETER: "range_bar_disabled". If true, the use cannot scrub through the audio using the range bar.
    * Default false.
    */
   rangeBarDisabled: boolean;
-  /** TEMPLATE PARAMETER: "time_to_rewind". The increment of time, in seconds, that will be applied when clicking the forward or backward buttons.
+  /** TEMPLATE PARAMETER: "time_to_skip". The increment of time, in seconds, that will be applied when clicking the forward or backward buttons.
    * Default 15.
    */
-  timeToRewind: number;
+  timeToSkip: number;
 }
 
 @Component({
@@ -55,24 +55,35 @@ export class TmplAudioComponent
   implements ITemplateRowProps, OnInit, OnDestroy
 {
   @Input() template: FlowTypes.Template;
-  @ViewChild("range", { static: false }) range: IonRange;
 
   params: Partial<IAudioParams> = {};
 
   /** @ignore */
   player: Howl = null;
-  /** @ignore */
-  isPlayed: boolean = false;
+  /**
+   * Track the playing state of the player UI. Decoupled from whether the actual audio is playing (this.player.playing())
+   * so that manually seeking works as expected: if player is playing before dragging the slider, playing continues after dragging
+   * @ignore
+   * */
+  isPlaying: boolean = false;
+  /**
+   * Progress, as a percentage of total duration
+   * @ignore
+   * */
+  progress = signal(0);
+  /**
+   * Progress in seconds
+   * @ignore
+   * */
+  progressSeconds = computed(() => {
+    return (this.progress() / 100) * this.player.duration();
+  });
   /** @ignore */
   errorTxt: string | null;
   /** @ignore */
-  progress = signal(0);
-  /** @ignore */
-  rangeBarTouched: boolean = false;
-  /** @ignore */
-  currentTimeSong: string = "0";
-  /** @ignore */
   hasStarted: boolean = false;
+  /** @ignore */
+  trackerInterval: NodeJS.Timeout;
 
   constructor(private plhAssetPipe: PLHAssetPipe) {
     super();
@@ -83,7 +94,10 @@ export class TmplAudioComponent
     this.initPlayer();
   }
 
-  getParams() {
+  private getParams() {
+    this.params.variant = getStringParamFromTemplateRow(this._row, "variant", "compact")
+      .split(",")
+      .join(" ") as IAudioParams["variant"];
     this.params.src = this.plhAssetPipe.transform(
       this._row.value || getStringParamFromTemplateRow(this._row, "src", null)
     );
@@ -100,107 +114,121 @@ export class TmplAudioComponent
       FORWARD_ICON_DEFAULT
     );
     this.params.title = getStringParamFromTemplateRow(this._row, "title", "");
-    this.params.helpText = getStringParamFromTemplateRow(this._row, "help_text", null);
-    this.params.helpIconAsset = getStringParamFromTemplateRow(this._row, "help_icon_asset", null);
+    this.params.infoIconAsset = getStringParamFromTemplateRow(this._row, "info_icon_asset", null);
+    this.params.showInfoButton =
+      !!this.params.infoIconAsset ||
+      getBooleanParamFromTemplateRow(this._row, "show_info_button", false);
     this.params.rangeBarDisabled = getBooleanParamFromTemplateRow(
       this._row,
       "range_bar_disabled",
       false
     );
-    this.params.timeToRewind = getNumberParamFromTemplateRow(this._row, "time_to_rewind", 15);
+    this.params.timeToSkip = getNumberParamFromTemplateRow(this._row, "time_to_skip", 15);
   }
 
-  getAssetParamFromTemplateRow(parameterName: string, _default: string | null) {
+  private getAssetParamFromTemplateRow(parameterName: string, _default: string | null) {
     const value = getStringParamFromTemplateRow(this._row, parameterName, null);
     return value ? this.plhAssetPipe.transform(value) : _default;
   }
 
-  initPlayer() {
-    return this.params.src
-      ? (this.player = new Howl({
-          src: [this.params.src],
-          onplay: () => {
-            this.isPlayed = true;
-            this.updateProgress();
-            if (!this.hasStarted) {
-              this.hasStarted = true;
-              this.triggerActions("audio_first_start");
-            }
-            this.triggerActions("audio_play");
-          },
-          onend: () => {
-            this.isPlayed = false;
-            this.range.value = 0;
-            this.currentTimeSong = "0";
-            this.updateProgress();
-            this.triggerActions("audio_end");
-          },
-          onpause: () => {
-            this.isPlayed = false;
-            this.updateProgress();
-            this.triggerActions("audio_pause");
-          },
-        }))
-      : (this.errorTxt = "Src is undefined, player not initialized");
-  }
-
-  togglePlayer() {
-    this.isPlayed = !this.isPlayed;
-    return this.isPlayed ? this.player.play() : this.player.pause();
-  }
-
-  rewindNext() {
-    this.player.seek((this.player.seek() as any) + this.params.timeToRewind);
-    this.customUpdateWhenRewind();
-  }
-
-  rewindPrev() {
-    this.player.seek(
-      (this.player.seek() as any) < this.params.timeToRewind
-        ? (this.player.seek(0) as any)
-        : (this.player.seek() as any) - this.params.timeToRewind
-    );
-    this.customUpdateWhenRewind();
-  }
-
-  seek() {
-    let newValue = +this.range.value;
-    let duration = this.player.duration();
-    this.player.seek(duration * (newValue / 100));
-    this.rangeBarTouched = false;
-    this.updateProgress();
-  }
-
-  updateProgress() {
-    const ref = setInterval(() => {
-      if (!this.isPlayed || this.rangeBarTouched) {
-        clearInterval(ref);
-        return;
-      }
-      let seek: any = this.player.seek();
-      this.progress.set((seek / this.player.duration()) * 100 || 0);
-      this.currentTimeSong = this.player.seek() ? (this.player.seek() as any).toString() : "0";
-    }, 1000);
-  }
-
-  checkFocus() {
-    this.rangeBarTouched = true;
-  }
-
-  checkChange() {
-    if (this.rangeBarTouched) {
-      let newValue = +this.range.value;
-      let duration = this.player.duration();
-      this.player.seek(duration * (newValue / 100));
-      this.currentTimeSong = this.player.seek() ? (this.player.seek() as any).toString() : "0";
+  private initPlayer() {
+    if (this.params.src) {
+      this.player = new Howl({
+        src: [this.params.src],
+        onplay: () => {
+          this.startProgressTracker();
+          if (!this.hasStarted) {
+            this.hasStarted = true;
+            this.triggerActions("audio_first_start");
+          }
+          this.triggerActions("audio_play");
+        },
+        onend: () => {
+          this.isPlaying = false;
+          this.progress.set(0);
+          this.startProgressTracker();
+          this.triggerActions("audio_end");
+        },
+        onpause: () => {
+          this.startProgressTracker();
+          this.triggerActions("audio_pause");
+        },
+      });
+    } else {
+      this.errorTxt = "Src is undefined, player not initialized";
     }
   }
 
-  customUpdateWhenRewind() {
-    if (!this.isPlayed) {
-      let seek: any = this.player.seek();
-      this.progress.set((seek / this.player.duration()) * 100 || 0);
-      this.currentTimeSong = this.player.seek() ? (this.player.seek() as any).toString() : "0";
+  public async clickInfo() {
+    await this.triggerActions("info_click");
+  }
+
+  public togglePlay() {
+    if (this.isPlaying) {
+      this.player.pause();
+    } else {
+      this.player.play();
+    }
+    this.isPlaying = !this.isPlaying;
+  }
+
+  /**
+   * Handle dragging of the range bar. Does not seek within the actual audio file,
+   * this should only be triggered when the handle is released (on ionChange)
+   */
+  public handleProgressDrag(event) {
+    this.progress.set(event.detail.value);
+  }
+
+  /**
+   * Jump to a specific time in the audio (i.e. "seek")
+   * @param targetTime in milliseconds, default is current progress
+   */
+  public setTime(targetTime: number = this.progressSeconds()) {
+    // Ensure targetTime does not go below 0
+    if (targetTime < 0) {
+      targetTime = 0;
+    }
+    this.player.seek(targetTime);
+    this.progress.set((targetTime / this.player.duration()) * 100 || 0);
+  }
+
+  public skipForward() {
+    this.skip(this.params.timeToSkip);
+  }
+
+  public skipBackward() {
+    this.skip(-this.params.timeToSkip);
+  }
+
+  /**
+   * Skip forward or backward by a specified interval
+   * @param timeToSkip in seconds
+   */
+  public skip(timeToSkip: number) {
+    const currentTime = this.player.seek();
+    const targetTime = currentTime + timeToSkip;
+    this.setTime(targetTime);
+  }
+
+  /**
+   * Starts tracking the progress of the audio and updates the value of this.progress() accordingly
+   */
+  private startProgressTracker() {
+    this.stopProgressTracker(); // Ensure any existing tracker is stopped
+    this.trackerInterval = setInterval(() => {
+      if (!this.player.playing()) {
+        this.stopProgressTracker();
+        return;
+      }
+      this.progress.set((this.player.seek() / this.player.duration()) * 100 || 0);
+    }, 10);
+  }
+
+  private stopProgressTracker() {
+    if (this.trackerInterval) {
+      clearInterval(this.trackerInterval);
+      this.trackerInterval = null;
     }
   }
 

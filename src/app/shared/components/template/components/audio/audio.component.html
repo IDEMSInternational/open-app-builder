@@ -1,65 +1,76 @@
-<div class="container-player margin-t-large">
-  <div class="top-row">
-    <div class="title_and_help">
-      <h3 *ngIf="params.title">{{ params.title }}</h3>
-      <ion-icon
-        *ngIf="params.helpText"
-        [pTooltip]="params.helpText"
-        tooltipPosition="left"
-        tooltipEvent="click"
-        name="help-circle-outline"
-        [src]="params.helpIconAsset"
-        class="audio-help"
-      ></ion-icon>
+<div class="container-player margin-t-large" [attr.data-variant]="params.variant">
+  @if (params.title) {
+    <div class="top-row">
+      <h3>{{ params.title }}</h3>
+      @if (params.variant.includes("large") && params.showInfoButton) {
+        <div class="info-icon-container">
+          <ion-icon
+            name="document-text-outline"
+            [src]="params.infoIconAsset"
+            (click)="clickInfo()"
+          ></ion-icon>
+        </div>
+      }
     </div>
-  </div>
-  <div class="progress-block" [class.disabled]="params.rangeBarDisabled || !player">
-    <ion-range
-      #range
-      class="audio-range"
-      max="100"
-      aria-readonly="true"
-      [value]="progress()"
-      (ionChange)="checkChange()"
-      (touchstart)="checkFocus()"
-      (touchend)="seek()"
-      (mouseup)="seek()"
-    ></ion-range>
-  </div>
-  <div class="time">
-    <div class="time-value">
-      {{ +currentTimeSong * 1000 | date: "mm:ss" }}
-    </div>
-    <div class="time-value">
-      {{ !player ? "00:00" : (player.duration() * 1000 | date: "mm:ss") }}
-    </div>
-  </div>
-  <div class="controls" *ngIf="!errorTxt">
-    <div class="rewind">
-      <ion-icon
-        [name]="params.forwardIconAsset"
-        [src]="params.forwardIconAsset"
-        (click)="rewindPrev()"
-      ></ion-icon>
-    </div>
-    <div class="play">
-      <ion-button class="btn-play" (click)="togglePlayer()">
+  }
+  <div class="second-row">
+    @if (params.variant.includes("compact") && params.showInfoButton) {
+      <div class="info-icon-container">
         <ion-icon
-          [name]="!isPlayed ? params.playIconAsset : params.pauseIconAsset"
-          [src]="!isPlayed ? params.playIconAsset : params.pauseIconAsset"
-          [class.play-icon]="!isPlayed"
+          name="document-text-outline"
+          [src]="params.infoIconAsset"
+          (click)="clickInfo()"
+        ></ion-icon>
+      </div>
+    }
+    <div class="progress-block" [class.disabled]="params.rangeBarDisabled || !player">
+      <ion-range
+        #range
+        class="audio-range"
+        max="100"
+        aria-readonly="true"
+        [value]="progress()"
+        (ionInput)="handleProgressDrag($event)"
+        (ionChange)="setTime()"
+        (touchstart)="player.pause()"
+        (touchend)="this.isPlaying ? player.play() : player.pause()"
+      ></ion-range>
+      <div class="time">
+        <div class="time-value">
+          {{ progressSeconds() * 1000 | date: "mm:ss" }}
+        </div>
+        @if (params.variant.includes("large")) {
+          <div class="time-value">
+            {{ !player ? "00:00" : (player.duration() * 1000 | date: "mm:ss") }}
+          </div>
+        }
+      </div>
+    </div>
+    <div class="controls" *ngIf="!errorTxt">
+      <div class="rewind">
+        <ion-icon
+          [name]="params.forwardIconAsset"
+          [src]="params.forwardIconAsset"
+          (click)="skipBackward()"
+        ></ion-icon>
+      </div>
+      <ion-button class="btn-play" (click)="togglePlay()">
+        <ion-icon
+          [name]="!isPlaying ? params.playIconAsset : params.pauseIconAsset"
+          [src]="!isPlaying ? params.playIconAsset : params.pauseIconAsset"
+          [class.play-icon]="!isPlaying"
         ></ion-icon>
       </ion-button>
+      <div class="forward">
+        <ion-icon
+          [name]="params.forwardIconAsset"
+          [src]="params.forwardIconAsset"
+          (click)="skipForward()"
+        ></ion-icon>
+      </div>
     </div>
-    <div class="forward">
-      <ion-icon
-        [name]="params.forwardIconAsset"
-        [src]="params.forwardIconAsset"
-        (click)="rewindNext()"
-      ></ion-icon>
+    <div class="error-text" *ngIf="errorTxt">
+      {{ errorTxt }}
     </div>
-  </div>
-  <div class="error-text" *ngIf="errorTxt">
-    {{ errorTxt }}
   </div>
 </div>
