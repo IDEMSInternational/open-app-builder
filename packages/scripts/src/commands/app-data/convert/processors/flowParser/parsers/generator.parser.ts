@@ -84,9 +84,9 @@ export class GeneratorParser extends DefaultParser<FlowTypes.GeneratorFlow> {
       });
       // populate as generated flow
       const generatedFlow: FlowTypes.FlowTypeWithData = {
-        flow_type: output_flow_type,
-        flow_subtype: output_flow_subtype,
         flow_name: output_flow_name,
+        flow_subtype: output_flow_subtype,
+        flow_type: output_flow_type,
         rows: parsedRows,
       };
       generated.push(generatedFlow);

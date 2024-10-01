@@ -44,7 +44,7 @@ export class DataPipeParser extends DefaultParser<FlowTypes.DataPipeFlow> {
   private generateFlows(outputs: { [output_name: string]: any[] }) {
     const generatedFlows: FlowTypes.Data_list[] = Object.entries(outputs).map(
       ([flow_name, rows]) => {
-        return { flow_type: "data_list", flow_subtype: "generated", flow_name, rows };
+        return { flow_name, flow_subtype: "generated", flow_type: "data_list", rows };
       }
     );
     return generatedFlows;
