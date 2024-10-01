@@ -79,8 +79,6 @@ export class TmplAudioComponent
     return (this.progress() / 100) * this.player?.duration();
   });
   /** @ignore */
-  sourceMissing: boolean = false;
-  /** @ignore */
   hasStarted: boolean = false;
   /** @ignore */
   trackerInterval: NodeJS.Timeout;
@@ -156,9 +154,8 @@ export class TmplAudioComponent
       });
     } else {
       console.error(
-        "[AUDIO COMPONENT] No audio source provided (path to audio asset should be passed as value)"
+        "[AUDIO COMPONENT] No audio source provided (path to audio asset should be passed as value or 'src' param)"
       );
-      this.sourceMissing = true;
     }
   }
 
