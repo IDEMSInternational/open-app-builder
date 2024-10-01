@@ -35,7 +35,6 @@ $control-background: var(--audio-control-background, var(--ion-color-primary-500
 
     .controls {
       @include mixins.flex-space-between;
-      // width: var(--audio-controls-width);
       align-self: center;
       .rewind,
       .forward {
@@ -87,11 +86,6 @@ $control-background: var(--audio-control-background, var(--ion-color-primary-500
         color: var(--ion-color-primary);
         font-size: var(--icon-size-tiny);
       }
-    }
-
-    .error-text {
-      margin: var(--small-margin) 0;
-      text-align: center;
     }
   }
 }
@@ -196,10 +190,6 @@ $control-background: var(--audio-control-background, var(--ion-color-primary-500
           }
         }
       }
-    }
-    .error-text {
-      margin: var(--small-margin) 0;
-      text-align: center;
     }
   }
 }
