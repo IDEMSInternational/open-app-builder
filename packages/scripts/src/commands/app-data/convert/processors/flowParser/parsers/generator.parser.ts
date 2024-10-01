@@ -30,9 +30,9 @@ export class GeneratorParser extends DefaultParser<FlowTypes.GeneratorFlow> {
         const deferId = `${generatedFlow.flow_type}.${generatedFlow.flow_subtype}.${generatedFlow.flow_name}`;
         this.flowProcessor.deferInputProcess(generatedFlow, deferId);
       }
-      // As the populated flows will be passed directly to the processor queue
-      // can just return undefined so that the data pipe will not be stored in outputs
-      return undefined;
+      // Return the parsed generator along with a summary of output flows to store within outputs
+      flow._output_flows = generated.map(({ rows, ...keptFields }) => keptFields);
+      return flow;
     } catch (error) {
       console.trace(error);
       throw error;
@@ -84,9 +84,9 @@ export class GeneratorParser extends DefaultParser<FlowTypes.GeneratorFlow> {
       });
       // populate as generated flow
       const generatedFlow: FlowTypes.FlowTypeWithData = {
-        flow_name: output_flow_name,
-        flow_subtype: output_flow_subtype,
         flow_type: output_flow_type,
+        flow_subtype: output_flow_subtype,
+        flow_name: output_flow_name,
         rows: parsedRows,
       };
       generated.push(generatedFlow);
