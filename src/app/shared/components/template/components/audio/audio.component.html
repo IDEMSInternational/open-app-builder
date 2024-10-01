@@ -46,7 +46,7 @@
         }
       </div>
     </div>
-    <div class="controls" *ngIf="!errorTxt">
+    <div class="controls">
       <div class="rewind">
         <ion-icon
           [name]="params.forwardIconAsset"
@@ -54,7 +54,7 @@
           (click)="skipBackward()"
         ></ion-icon>
       </div>
-      <ion-button class="btn-play" (click)="togglePlay()">
+      <ion-button class="btn-play" (click)="togglePlay()" [disabled]="sourceMissing">
         <ion-icon
           [name]="!isPlaying ? params.playIconAsset : params.pauseIconAsset"
           [src]="!isPlaying ? params.playIconAsset : params.pauseIconAsset"
@@ -68,9 +68,6 @@
           (click)="skipForward()"
         ></ion-icon>
       </div>
-    </div>
-    <div class="error-text" *ngIf="errorTxt">
-      {{ errorTxt }}
     </div>
   </div>
 </div>

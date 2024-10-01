@@ -76,10 +76,10 @@ export class TmplAudioComponent
    * @ignore
    * */
   progressSeconds = computed(() => {
-    return (this.progress() / 100) * this.player.duration();
+    return (this.progress() / 100) * this.player?.duration();
   });
   /** @ignore */
-  errorTxt: string | null;
+  sourceMissing: boolean = false;
   /** @ignore */
   hasStarted: boolean = false;
   /** @ignore */
@@ -155,7 +155,10 @@ export class TmplAudioComponent
         },
       });
     } else {
-      this.errorTxt = "Src is undefined, player not initialized";
+      console.error(
+        "[AUDIO COMPONENT] No audio source provided (path to audio asset should be passed as value)"
+      );
+      this.sourceMissing = true;
     }
   }
 
