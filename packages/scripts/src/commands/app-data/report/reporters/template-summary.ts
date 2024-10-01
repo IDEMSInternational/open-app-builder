@@ -1,7 +1,7 @@
 import { FlowTypes } from "data-models";
 import { sortJsonKeys } from "shared/src/utils";
 
-import { IParsedWorkbookData } from "../../types";
+import { IParsedWorkbookData } from "../../convert/types";
 import { IReportTable } from "../report.types";
 
 interface IReportData {
@@ -47,13 +47,13 @@ export class TemplateSummaryReport {
     const template_components: ITemplateSummaryReport = {
       type: "table",
       title: "Components",
-      level: "info",
+      display: "collapse_closed",
       data: this.getReportData(this.summary.components),
     };
     const template_actions: ITemplateSummaryReport = {
       type: "table",
       title: "Actions",
-      level: "info",
+      display: "collapse_closed",
       data: this.getReportData(this.summary.actions),
     };
 

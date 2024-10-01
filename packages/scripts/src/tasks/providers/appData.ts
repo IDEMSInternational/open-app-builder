@@ -2,6 +2,7 @@ import { writeFileSync } from "fs-extra";
 import path from "path";
 import packageJSON from "../../../../../package.json";
 import { parseCommand } from "../../commands";
+import { ReportGenerator } from "../../commands/app-data/report/report";
 import { WorkflowRunner } from "../../commands/workflow/run";
 import { SRC_ASSETS_PATH } from "../../paths";
 import { IContentsEntry, replicateDir } from "../../utils";
@@ -25,6 +26,11 @@ const postProcessSheets = async (options: {
   let args = `--source-sheets-folder ${sourceSheetsFolder} --source-translations-folder ${sourceTranslationsFolder}`;
   let cmd = `app-data post-process sheets ${args}`;
   await parseCommand(`${cmd}`);
+};
+
+const generateReports = async () => {
+  const config = WorkflowRunner.config;
+  return new ReportGenerator(config).process();
 };
 
 /**
@@ -77,4 +83,4 @@ function generateRuntimeConfig(deploymentConfig: IDeploymentConfigJson): IDeploy
   };
 }
 
-export default { postProcessAssets, postProcessSheets, copyDeploymentDataToApp };
+export default { generateReports, postProcessAssets, postProcessSheets, copyDeploymentDataToApp };
