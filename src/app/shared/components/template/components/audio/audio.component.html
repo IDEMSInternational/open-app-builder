@@ -30,8 +30,8 @@
         max="100"
         aria-readonly="true"
         [value]="progress()"
-        (ionInput)="handleProgressDrag($event)"
-        (ionChange)="setTime()"
+        (ionInput)="onProgressDrag($event)"
+        (ionChange)="seekToTime()"
         (touchstart)="player.pause()"
         (touchend)="this.isPlaying ? player.play() : player.pause()"
       ></ion-range>
@@ -54,7 +54,7 @@
           (click)="skipBackward()"
         ></ion-icon>
       </div>
-      <ion-button class="btn-play" (click)="togglePlay()" [disabled]="sourceMissing">
+      <ion-button class="btn-play" (click)="togglePlaying()" [disabled]="sourceMissing">
         <ion-icon
           [name]="!isPlaying ? params.playIconAsset : params.pauseIconAsset"
           [src]="!isPlaying ? params.playIconAsset : params.pauseIconAsset"

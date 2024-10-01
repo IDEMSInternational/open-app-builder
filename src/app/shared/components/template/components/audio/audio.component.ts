@@ -162,11 +162,7 @@ export class TmplAudioComponent
     }
   }
 
-  public async clickInfo() {
-    await this.triggerActions("info_click");
-  }
-
-  public togglePlay() {
+  public togglePlaying() {
     if (this.isPlaying) {
       this.player.pause();
     } else {
@@ -175,11 +171,15 @@ export class TmplAudioComponent
     this.isPlaying = !this.isPlaying;
   }
 
+  public async clickInfo() {
+    await this.triggerActions("info_click");
+  }
+
   /**
    * Handle dragging of the range bar. Does not seek within the actual audio file,
    * this should only be triggered when the handle is released (on ionChange)
    */
-  public handleProgressDrag(event) {
+  public onProgressDrag(event) {
     this.progress.set(event.detail.value);
   }
 
@@ -187,7 +187,7 @@ export class TmplAudioComponent
    * Jump to a specific time in the audio (i.e. "seek")
    * @param targetTime in milliseconds, default is current progress
    */
-  public setTime(targetTime: number = this.progressSeconds()) {
+  public seekToTime(targetTime: number = this.progressSeconds()) {
     // Ensure targetTime does not go below 0
     if (targetTime < 0) {
       targetTime = 0;
@@ -211,11 +211,11 @@ export class TmplAudioComponent
   public skip(timeToSkip: number) {
     const currentTime = this.player.seek();
     const targetTime = currentTime + timeToSkip;
-    this.setTime(targetTime);
+    this.seekToTime(targetTime);
   }
 
   /**
-   * Starts tracking the progress of the audio and updates the value of this.progress() accordingly
+   * Begins tracking audio playback progress, updating this.progress() with the current playback percentage
    */
   private startProgressTracker() {
     this.stopProgressTracker(); // Ensure any existing tracker is stopped
