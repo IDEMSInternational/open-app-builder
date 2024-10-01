@@ -80,7 +80,8 @@ describe("FlowParser Processor", () => {
   });
   it("Outputs flows by type", async () => {
     const output = await processor.process(testInputs);
-    expect(Object.keys(output)).toEqual(["data_list", "template", "data_pipe"]);
+    // NOTE - data_pipe and generator flows will not populate self but instead generated outputs
+    expect(Object.keys(output)).toEqual(["data_list", "template"]);
     const errorLogs = getLogs("error");
     if (errorLogs.length > 0) {
       console.log("Unexpected Errors:\n", errorLogs);
