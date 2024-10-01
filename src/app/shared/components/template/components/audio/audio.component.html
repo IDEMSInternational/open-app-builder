@@ -6,7 +6,7 @@
         <div class="info-icon-container">
           <ion-icon
             name="document-text-outline"
-            [src]="params.infoIconAsset"
+            [src]="params.infoIconAsset | plhAsset"
             (click)="clickInfo()"
           ></ion-icon>
         </div>
@@ -18,7 +18,7 @@
       <div class="info-icon-container">
         <ion-icon
           name="document-text-outline"
-          [src]="params.infoIconAsset"
+          [src]="params.infoIconAsset | plhAsset"
           (click)="clickInfo()"
         ></ion-icon>
       </div>
@@ -54,7 +54,7 @@
           (click)="skipBackward()"
         ></ion-icon>
       </div>
-      <ion-button class="btn-play" (click)="togglePlaying()" [disabled]="sourceMissing">
+      <ion-button class="btn-play" (click)="togglePlaying()" [disabled]="!player">
         <ion-icon
           [name]="!isPlaying ? params.playIconAsset : params.pauseIconAsset"
           [src]="!isPlaying ? params.playIconAsset : params.pauseIconAsset"
