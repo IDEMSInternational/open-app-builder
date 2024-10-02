@@ -18,7 +18,7 @@ describe("data_pipe Parser", () => {
     parser.flowProcessor.processedFlowHashmap = getTestData();
   });
   it("Populates generated data lists", async () => {
-    parser.run({
+    const res = parser.run({
       flow_name: "test_pipe_parse",
       flow_type: "data_pipe",
       rows: [
@@ -45,6 +45,20 @@ describe("data_pipe Parser", () => {
       test_output_1: [{ id: 2 }, { id: 3 }],
       test_output_2: [{ id: 3 }],
     });
+
+    // Also check output references stored
+    expect(res._output_flows).toEqual([
+      {
+        flow_type: "data_list",
+        flow_subtype: "generated",
+        flow_name: "test_output_1",
+      },
+      {
+        flow_type: "data_list",
+        flow_subtype: "generated",
+        flow_name: "test_output_2",
+      },
+    ]);
   });
 
   it("Allows outputs from one pipe to be used in another", async () => {
