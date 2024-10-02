@@ -95,7 +95,7 @@ class SheetsPostProcessor {
 
   private extractContentsData(flow: FlowTypes.FlowTypeWithData): FlowTypes.FlowTypeBase {
     // remove rows property (if exists)
-    const { rows, status, _generated, ...keptFields } = flow;
+    const { rows, status, ...keptFields } = flow;
     return keptFields as FlowTypes.FlowTypeBase;
   }
   private sheetsWriteContents(baseFolder: string, contents: ISheetContents) {

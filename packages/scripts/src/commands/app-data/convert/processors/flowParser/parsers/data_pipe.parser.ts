@@ -3,6 +3,9 @@ import { DataPipe } from "shared/src/models/dataPipe";
 import { DefaultParser } from "./default.parser";
 
 export class DataPipeParser extends DefaultParser<FlowTypes.DataPipeFlow> {
+  /** local hashmap of generated outputs. Used for tests  */
+  private outputHashmap: { [flow_name: string]: { [output_name: string]: any } } = {};
+
   /** If extending the class add additional postprocess pipeline here */
 
   public postProcessFlow(flow: FlowTypes.DataPipeFlow): FlowTypes.DataPipeFlow {
@@ -18,29 +21,33 @@ export class DataPipeParser extends DefaultParser<FlowTypes.DataPipeFlow> {
     }
     try {
       const outputs = pipe.run();
+      // HACK - populate to output hashmap for use in tests. Clone output due to deep nest issues
+      this.outputHashmap[flow.flow_name] = JSON.parse(JSON.stringify(outputs));
+
       this.populateGeneratedFlows(outputs);
+      // As the populated flows will be passed directly to the processor queue
+      // can just return undefined so that the data pipe will not be stored in outputs
+      return undefined;
     } catch (error) {
       console.trace(error);
       throw error;
     }
-    return this.flow;
   }
 
   private populateGeneratedFlows(outputs: { [output_name: string]: any[] }) {
-    const generated: FlowTypes.DataPipeFlow["_generated"] = { data_list: {} };
-    this.flowProcessor.processedFlowHashmap.data_list ??= {};
-
     for (const [flow_name, rows] of Object.entries(outputs)) {
-      generated.data_list[flow_name] = {
+      const flow: FlowTypes.FlowTypeWithData = {
         flow_name,
         flow_subtype: "generated",
         flow_type: "data_list",
         rows,
       };
-      // also populate generated outputs to be available for future input sources
-      this.flowProcessor.processedFlowHashmap.data_list[flow_name] = rows;
+      const deferId = `${flow.flow_type}.${flow.flow_subtype}.${flow.flow_name}`;
+
+      // Pass all generated flows to the back of the current processing queue so that they can be
+      // populated to processed hashmap and referenced from other processes as required
+      this.flowProcessor.deferInputProcess(flow, deferId);
     }
-    this.flow._generated = generated;
   }
 
   private loadInputSources() {
