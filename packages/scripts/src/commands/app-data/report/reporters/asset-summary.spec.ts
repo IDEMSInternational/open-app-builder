@@ -71,6 +71,19 @@ describe("Asset Summary Report", () => {
     ]);
   });
 
+  it("Allows authors to specify assets with preceding forward slash", async () => {
+    const { asset_summary } = await reporter.process({
+      template: [
+        {
+          flow_type: "template",
+          flow_name: "test_forward_slash",
+          rows: [{ type: "audio", value: "/mock_audio.mp3" }],
+        },
+      ],
+    });
+    expect(asset_summary.data).toEqual([{ path: "mock_audio.mp3", size_kb: 2048, count: 1 }]);
+  });
+
   it("Reports missing assets", async () => {
     const { assets_missing } = await reporter.process(MOCK_WORKBOOK_DATA);
     expect(assets_missing.data).toEqual([{ path: "missing_audio.mp3", count: 1, missing: true }]);
