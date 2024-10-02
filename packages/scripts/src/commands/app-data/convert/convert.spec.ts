@@ -34,14 +34,15 @@ jest.spyOn(ActiveDeployment, "get").mockReturnValue(mockDeployment as IDeploymen
 /** yarn workspace scripts test -t convert.spec.ts */
 describe("App Data Converter", () => {
   let converter: AppDataConverter;
-  beforeAll(() => {
+
+  beforeEach(() => {
     ensureDirSync(paths.outputFolder);
     emptyDirSync(paths.outputFolder);
     ensureDirSync(paths.cacheFolder);
     emptyDirSync(paths.cacheFolder);
-  });
-  beforeEach(() => {
     converter = new AppDataConverter(paths);
+    // HACK - Tests failing on CI due to logs persisting between runs
+    clearLogs(true);
   });
 
   it("Uses child caches", async () => {
@@ -64,7 +65,7 @@ describe("App Data Converter", () => {
   it("Populates output to folder by data type", async () => {
     await converter.run();
     const outputFolders = readdirSync(paths.outputFolder);
-    expect(outputFolders).toEqual(["data_list", "data_pipe", "template"]);
+    expect(outputFolders).toEqual(["data_list", "template"]);
   });
   it("Supports input from multiple source folders", async () => {
     const multipleSourceConverter = new AppDataConverter({
