@@ -22,6 +22,5 @@ jobs:
         uses: mhausenblas/mkdocs-deploy-gh-pages@e55ecab6718b449a90ebd4313f1320f9327f1386
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          CUSTOM_DOMAIN: open-app-builder.com
           CONFIG_FILE: documentation/mkdocs.yml
           REQUIREMENTS: documentation/requirements.txt
