@@ -1,7 +1,9 @@
 import { FlowTypes } from "data-models";
 import { GeneratorParser } from "./generator.parser";
+import { FlowParserProcessor } from "../flowParser";
+import { MockJsonFileCache } from "../../../cacheStrategy/jsonFile.mock";
 
-const dataListInputs = {
+const getTestData = () => ({
   test_data_list: [
     {
       id: 1,
@@ -12,10 +14,10 @@ const dataListInputs = {
     },
     { id: 2, title: "Workshop 2", main_image: "img2", img_condition: true, subtype: "type_2" },
   ],
-};
+});
 
-const generatorInput: FlowTypes.GeneratorFlow = {
-  flow_name: "test_pipe_parse",
+const generatorInput = (): FlowTypes.GeneratorFlow => ({
+  flow_name: "test_generator",
   flow_type: "generator",
   parameter_list: {
     input_data_list: "test_data_list",
@@ -38,57 +40,122 @@ const generatorInput: FlowTypes.GeneratorFlow = {
       value: "End of workshop",
     },
   ],
-};
+});
 
+/** yarn workspace scripts test -t generator.parser.spec.ts */
 describe("generator Parser", () => {
+  let parser: GeneratorParser;
+  beforeEach(() => {
+    // HACK - setup parser with in-memory cache to avoid writing to disk
+    parser = new GeneratorParser(new FlowParserProcessor(null as any));
+    parser.flowProcessor.cache = new MockJsonFileCache();
+    parser.flowProcessor.processedFlowHashmap = {
+      data_list: getTestData(),
+    };
+  });
+
   it("Parses generator flow", async () => {
-    const parser = new GeneratorParser({
-      processedFlowHashmap: { data_list: dataListInputs },
-    } as any);
-    const output = parser.run(generatorInput);
-    expect(output._generated).toEqual({
-      template: {
-        generated_template_1: {
-          flow_type: "template",
-          flow_subtype: "generated_type_1",
-          flow_name: "generated_template_1",
-          rows: [
-            {
-              name: "title",
-              value: "Welcome to Workshop 1",
-            },
-            {
-              name: "image",
-              value: "img1",
-              condition: "@fields.showImg1",
-            },
-            {
-              name: "text",
-              value: "End of workshop",
-            },
-          ],
-        },
-        generated_template_2: {
-          flow_type: "template",
-          flow_subtype: "generated_type_2",
-          flow_name: "generated_template_2",
-          rows: [
-            {
-              name: "title",
-              value: "Welcome to Workshop 2",
-            },
-            {
-              name: "image",
-              value: "img2",
-              condition: "true",
-            },
-            {
-              name: "text",
-              value: "End of workshop",
-            },
-          ],
-        },
+    parser.run(generatorInput());
+    expect(parser["outputHashmap"].test_generator).toEqual([
+      {
+        flow_type: "template",
+        flow_subtype: "generated_type_1",
+        flow_name: "generated_template_1",
+        rows: [
+          {
+            name: "title",
+            value: "Welcome to Workshop 1",
+          },
+          {
+            name: "image",
+            value: "img1",
+            condition: "@fields.showImg1",
+          },
+          {
+            name: "text",
+            value: "End of workshop",
+          },
+        ],
       },
+      {
+        flow_type: "template",
+        flow_subtype: "generated_type_2",
+        flow_name: "generated_template_2",
+        rows: [
+          {
+            name: "title",
+            value: "Welcome to Workshop 2",
+          },
+          {
+            name: "image",
+            value: "img2",
+            condition: "true",
+          },
+          {
+            name: "text",
+            value: "End of workshop",
+          },
+        ],
+      },
+    ]);
+  });
+  it("parses generated flows using type parser", async () => {
+    parser.run(generatorInput());
+    await parser.flowProcessor.queue.onIdle();
+    expect(parser.flowProcessor.processedFlowHashmap.template).toEqual({
+      generated_template_1: [
+        {
+          name: "title",
+          value: "Welcome to Workshop 1",
+          type: "set_variable",
+          _nested_name: "title",
+        },
+        {
+          name: "image",
+          value: "img1",
+          condition: "@fields.showImg1",
+          type: "set_variable",
+          _nested_name: "image",
+          _dynamicFields: {
+            condition: [
+              {
+                fieldName: "showImg1",
+                fullExpression: "@fields.showImg1",
+                matchedExpression: "@fields.showImg1",
+                type: "fields",
+              },
+            ],
+          },
+          _dynamicDependencies: { "@fields.showImg1": ["condition"] },
+        },
+        {
+          name: "text",
+          value: "End of workshop",
+          type: "set_variable",
+          _nested_name: "text",
+        },
+      ],
+      generated_template_2: [
+        {
+          name: "title",
+          value: "Welcome to Workshop 2",
+          type: "set_variable",
+          _nested_name: "title",
+        },
+        {
+          name: "image",
+          value: "img2",
+          condition: "true",
+          type: "set_variable",
+          _nested_name: "image",
+        },
+        {
+          name: "text",
+          value: "End of workshop",
+          type: "set_variable",
+          _nested_name: "text",
+        },
+      ],
     });
   });
 });
