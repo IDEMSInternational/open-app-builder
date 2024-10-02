@@ -26,6 +26,9 @@ concurrency:
   cancel-in-progress: true
 on:
   workflow_call:
+    secrets:  # Declare secrets you expect to receive
+      FIREBASE_SERVICE_ACCOUNT:
+        required: true
 
 jobs:
   build:    

@@ -13,8 +13,66 @@
         <link rel="stylesheet" href="../styles/material.css">
     </head>
     <body>
+          <script>
+               // Blocking script to avaoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
 
-        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+
+               if ($darkModeToggles.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-block d-sm-none">
             <a href="../" class="navbar-brand">frontend documentation</a>
             <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
         </div>
@@ -45,23 +103,29 @@
 
 
 <ol class="breadcrumb">
-  <li>Interfaces</li>
-  <li
+  <li class="breadcrumb-item">Interfaces</li>
+  <li class="breadcrumb-item"
   >
   IRadioButtonGridParams</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
-        <li class="active">
-            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        <li class="nav-item">
+            <a href="#info" 
+                class="nav-link"
+                class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
         </li>
-        <li >
-            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        <li class="nav-item">
+            <a href="#source" 
+                class="nav-link"
+                
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
         </li>
 </ul>
 
 <div class="tab-content">
-    <div class="tab-pane fade active in" id="c-info">
+    <div class="tab-pane fade active in" id="info">
         <p class="comment">
             <h3>File</h3>
         </p>
@@ -72,7 +136,7 @@
 
 
 
-        <section>
+        <section data-compodoc="block-index">
             <h3 id="index">Index</h3>
             <table class="table table-sm table-bordered index-table">
                 <tbody>
@@ -117,7 +181,7 @@
 
 
 
-            <section>
+            <section data-compodoc="block-properties">
                 <h3 id="inputs">Properties</h3>
                     <table class="table table-sm table-bordered">
                         <tbody>
@@ -133,7 +197,7 @@
                                 </tr>
                                 <tr>
                                     <td class="col-md-4">
-                                        <code>answer_list:         <code><a href="../interfaces/IAnswerListItem.html" target="_self" >IAnswerListItem[]</a></code>
+                                        <code>answer_list:     <code>IAnswerListItem[]</code>
 </code>
                                     </td>
                                 </tr>
@@ -141,7 +205,7 @@
 
                                     <tr>
                                         <td class="col-md-4">
-                                            <i>Type : </i>        <code><a href="../interfaces/IAnswerListItem.html" target="_self" >IAnswerListItem[]</a></code>
+                                            <i>Type : </i>    <code>IAnswerListItem[]</code>
 
                                         </td>
                                     </tr>
@@ -282,18 +346,11 @@ Default &#39;200px&#39;</p>
     </div>
 
 
-    <div class="tab-pane fade  tab-source-code" id="c-source">
+    <div class="tab-pane fade  tab-source-code" id="source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, Input } from &quot;@angular/core&quot;;
 import { TemplateBaseComponent } from &quot;../base&quot;;
 import { FlowTypes, ITemplateRowProps } from &quot;../../models&quot;;
-import { getParamFromTemplateRow } from &quot;src/app/shared/utils&quot;;
-import { objectToArray } from &quot;../../utils&quot;;
-
-interface IAnswerListItem {
-  name: string;
-  image?: string;
-  text?: string;
-}
+import { getAnswerListParamFromTemplateRow, IAnswerListItem } from &quot;src/app/shared/utils&quot;;
 
 interface IRadioButtonGridParams {
   /** List of options presented as radio items */
@@ -357,7 +414,7 @@ export class TmplRadioButtonGridComponent
 
   private setParams() {
     this.parameter_list &#x3D; this._row.parameter_list || ({} as any);
-    this.radioItems &#x3D; this.generateItemList();
+    this.radioItems &#x3D; getAnswerListParamFromTemplateRow(this._row, &quot;answer_list&quot;, []);
     this.gridStyle &#x3D; this.generateGridStyle();
   }
 
@@ -382,43 +439,6 @@ export class TmplRadioButtonGridComponent
       gridAutoRows: &quot;1fr&quot;,
     };
     return style;
-  }
-
-  /**
-   * Adapted from radio-group.component
-   * Convert input answer_list to rendered item list
-   */
-  private generateItemList() {
-    let answerList &#x3D; getParamFromTemplateRow(this._row, &quot;answer_list&quot;, []);
-    // Convert if datalist input (hashmap to array)
-    if (answerList.constructor &#x3D;&#x3D;&#x3D; {}.constructor) {
-      answerList &#x3D; objectToArray(answerList);
-    }
-    const radioItems: IAnswerListItem[] &#x3D; answerList.map(
-      (item: string | Record&lt;string, string&gt;) &#x3D;&gt; {
-        if (typeof item &#x3D;&#x3D;&#x3D; &quot;string&quot;) {
-          return this.parseAnswerListItemString(item);
-        }
-        return item as any;
-      }
-    );
-    return radioItems;
-  }
-
-  /**
-   * convert string to relevant mappings
-   * TODO - CC 2023-03-16 - should ideally convert in parsers instead of at runtime
-   */
-  private parseAnswerListItemString(item: string) {
-    const itemObj: IAnswerListItem &#x3D; {} as any;
-    const stringProperties &#x3D; item.split(&quot;|&quot;);
-    stringProperties.forEach((s) &#x3D;&gt; {
-      const [field, value] &#x3D; s.split(&quot;:&quot;).map((v) &#x3D;&gt; v.trim());
-      if (field &amp;&amp; value) {
-        itemObj[field] &#x3D; value;
-      }
-    });
-    return itemObj;
   }
 }
 </code></pre>
