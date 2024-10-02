@@ -99,6 +99,21 @@ describe("generator Parser", () => {
       },
     ]);
   });
+  it("populates list of outputs", async () => {
+    const res = parser.run(generatorInput()) as FlowTypes.GeneratorFlow;
+    expect(res._output_flows).toEqual([
+      {
+        flow_type: "template",
+        flow_subtype: "generated_type_1",
+        flow_name: "generated_template_1",
+      },
+      {
+        flow_type: "template",
+        flow_subtype: "generated_type_2",
+        flow_name: "generated_template_2",
+      },
+    ]);
+  });
   it("parses generated flows using type parser", async () => {
     parser.run(generatorInput());
     await parser.flowProcessor.queue.onIdle();
