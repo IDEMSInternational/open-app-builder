@@ -1,7 +1,7 @@
-<plh-template-component
-  *ngFor="let row of itemRows()"
-  [row]="row"
-  [parent]="parent"
-  [attr.data-rowname]="row.name"
-  trackBy:row.name
-></plh-template-component>
+@for (row of itemRows(); track row._nested_name) {
+  <plh-template-component
+    [row]="row"
+    [parent]="parent"
+    [attr.data-rowname]="row.name"
+  ></plh-template-component>
+}
