@@ -16,6 +16,9 @@ describe("App String Evaluator", () => {
       "Hello Ada Lovelace"
     );
   });
+  it("{nested:[@row.first_name]}", () => {
+    expect(evaluator.evaluate({ nested: ["@row.first_name"] })).toEqual({ nested: ["Ada"] });
+  });
 
   // TODO - doesn't work, should address in follow-up
   // replaces string part first without quotation, i.e.
