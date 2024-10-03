@@ -97,4 +97,9 @@ export class LocalStorageService extends SyncServiceBase {
     }
     return key.startsWith("_");
   }
+  /** Check if a field name is protected (starts with underscore prefixed or non-prefixed) */
+  getProtectedFieldNameWithPrefix(field: IProtectedFieldName) {
+    const fieldName = getProtectedFieldName(field);
+    return `${STORAGE_PREFIX}.${fieldName}`;
+  }
 }
