@@ -1,10 +1,10 @@
 import {
   ChangeDetectionStrategy,
-  ChangeDetectorRef,
   Component,
   Injector,
   Input,
   OnDestroy,
+  signal,
 } from "@angular/core";
 import { debounceTime, Subscription } from "rxjs";
 import { DynamicDataService } from "src/app/shared/services/dynamic-data/dynamic-data.service";
@@ -13,10 +13,25 @@ import { ItemProcessor } from "../../processors/item";
 import { TemplateRowService } from "../../services/instance/template-row.service";
 import { TemplateVariablesService } from "../../services/template-variables.service";
 import { TemplateBaseComponent } from "../base";
-import type {
-  IActionSetItemParams,
-  IActionSetItemsParams,
-} from "src/app/shared/services/dynamic-data/dynamic-data.actions";
+import type { IActionSetDataParamsMeta } from "src/app/shared/services/dynamic-data/dynamic-data.actions";
+import { AppStringEvaluator } from "packages/shared/src/models/appStringEvaluator/appStringEvaluator";
+import { TemplatedData } from "packages/shared/src/models/templatedData/templatedData";
+
+/** Metadata passed to `set_item` and `set_items` action **/
+interface IActionSetItemParamsMeta {
+  /**
+   * Optional id of single item to update.
+   * Default will target current item in `set_item` or all items in `set_items`
+   **/
+  _id?: string;
+  /**
+   * Optional index of item to update, relative to rendered rows.
+   * Supports `@item` expressions
+   * */
+  _index?: number | string;
+}
+/** Full payload can also include arbitrary key-value pairs (omitted for type-checking) */
+export type IActionSetItemParams = IActionSetItemParamsMeta & Record<string, any>;
 
 @Component({
   selector: "plh-data-items",
@@ -34,11 +49,10 @@ import type {
  * - Could possibly refactor to feature module including services
  */
 export class TmplDataItemsComponent extends TemplateBaseComponent implements OnDestroy {
-  public itemRows: FlowTypes.TemplateRow[] = [];
+  public itemRows = signal<FlowTypes.TemplateRow[]>([]);
 
   private dataListName: string;
   private parameterList: Record<string, string>;
-
   private dataQuery$: Subscription;
 
   @Input() set row(row: FlowTypes.TemplateRow) {
@@ -51,8 +65,7 @@ export class TmplDataItemsComponent extends TemplateBaseComponent implements OnD
   constructor(
     private dynamicDataService: DynamicDataService,
     private templateVariablesService: TemplateVariablesService,
-    private injector: Injector,
-    private cdr: ChangeDetectorRef
+    private injector: Injector
   ) {
     super();
   }
@@ -75,7 +88,7 @@ export class TmplDataItemsComponent extends TemplateBaseComponent implements OnD
   private async renderItems(
     itemDataList: any[],
     rows: FlowTypes.TemplateRow[],
-    parameterList: any
+    parameterList?: any
   ) {
     const parsedItemDataList = await this.parseDataList(itemDataList);
     const { itemRows, itemData } = new ItemProcessor(parsedItemDataList, parameterList).process(
@@ -83,10 +96,18 @@ export class TmplDataItemsComponent extends TemplateBaseComponent implements OnD
     );
     const itemRowsWithMeta = this.setItemMeta(itemRows, itemData, this.dataListName);
 
-    const parsedItemRows = await this.hackProcessRows(itemRowsWithMeta);
-    // TODO - deep diff and only update changed
-    this.itemRows = parsedItemRows;
-    this.cdr.markForCheck();
+    // Process action list before rest of row to handle case where action targets a different item context
+    const parsedItemRowsWithActions = itemRowsWithMeta.map((r) => {
+      if (r.action_list) {
+        r.action_list = this.updateActionList(r, itemData);
+      }
+      return r;
+    });
+
+    // Parse rows fully, including item, local, field or any other context variables
+    const parsedItemRows = await this.hackProcessRows(parsedItemRowsWithActions);
+
+    this.itemRows.set(parsedItemRows);
   }
 
   /**
@@ -115,62 +136,85 @@ export class TmplDataItemsComponent extends TemplateBaseComponent implements OnD
         _last: itemIndex === lastItemIndex,
       };
 
-      // Update any action list set_item args to auto-populate current context data
-      if (r.action_list) {
-        r.action_list = this.updateActionList(r.action_list, itemId, itemDataIDs);
-      }
-
       // Apply recursively to ensure item children with nested rows (e.g. display groups) also inherit item context
       if (r.rows) {
         r.rows = this.setItemMeta(r.rows, itemData, dataListName);
       }
-
       return r;
     });
   }
 
   /**
-   * When calling set_item or set_items actions from within a data_items loop automatically populate data list
-   * and row id references where not already specified. Additionally add support for populating set_item row id reference
-   * from _index of currently rendered items, and set_items list of ids from currently rendered items
+   * When calling `set_item` or `set_items` actions from within a data_items loop convert the action to the global
+   * `set_data` action, using item context data to specify parameters
+   *
+   * Additionally add support for updating a different row item either by id or index of rendered items
    */
-  private updateActionList(
-    action_list: FlowTypes.TemplateRowAction[],
-    itemId: string,
-    itemDataIDs: string[]
-  ) {
-    return action_list.map((a) => {
-      // set_item - auto-populate list id and row id parameters from current item context (can be overridden)
+  private updateActionList(row: FlowTypes.TemplateRow, itemData: FlowTypes.Data_listRow[]) {
+    return row.action_list.map((a) => {
       if (a.action_id === "set_item") {
-        const params: IActionSetItemParams = {
-          _list_id: this.dataListName,
-          _id: itemId,
-          ...a.params,
-        };
-        // if _index used lookup and replace _id
-        if (params._index) {
-          params._id = itemDataIDs[params._index];
-          delete params._index;
+        const { _id, _index, ...update } = a.params as IActionSetItemParams;
+        // action can target either specified id, self id, or a named index
+        let targetItem = row._evalContext.itemContext;
+        if (_id) {
+          targetItem = itemData.find((v) => v.id === _id);
         }
-        a.params = params;
+        if (_index) {
+          // update parameter index in case defined dynamicaly
+          a.params._index = this.evaluateItemExpression(row._evalContext.itemContext, _index);
+          targetItem = itemData[a.params._index];
+        }
+        if (!targetItem) {
+          const debugInfo = { itemData, params: a.params };
+          console.error(`[Data Items] could not find item to update`, debugInfo);
+          return a;
+        }
+        return this.convertItemActionToSetDataAction(a, [targetItem], update);
       }
 
-      // set_items -auto-populate list items to match currently rendered
+      // set_data -auto-populate list items to match currently rendered
+      // TODO - this method should be deprecated once possible to set_data with query
       if (a.action_id === "set_items") {
-        const params: IActionSetItemsParams = {
-          _items: {
-            flow_type: "data_list",
-            flow_name: this.dataListName,
-            rows: itemDataIDs.map((id) => ({ id })),
-          },
-          ...a.params,
-        };
-        // TODO - add a check for @item refs and replace parameter list with correct values
-        // for each individual item (default will be just to pick the first)
-        a.params = params;
+        const { _id, _index, ...update } = a.params as IActionSetItemParams;
+        return this.convertItemActionToSetDataAction(a, itemData, update);
       }
       return a;
     });
+  }
+
+  /**
+   * Items use `set_item` or `set_items` actions to provide update to item rows
+   * These actions are just wrappers around the global `set_data` action, but require
+   * evaluation before calling as they can refer to different items (by _id or _index)
+   * so shouldn't be parsed at the same time the row is parsed
+   */
+  private convertItemActionToSetDataAction(
+    action: FlowTypes.TemplateRowAction,
+    items: FlowTypes.Data_listRow[],
+    update: Record<string, any>
+  ) {
+    // check if update contains any `@item` self references so that these can be evaluated as required
+    const contextVariables = new TemplatedData().listContextVariables(update, ["item"]);
+    const _updates = items.map((item) => {
+      if (contextVariables.item) {
+        const evaluated = this.evaluateItemExpression(item, update);
+        return { ...evaluated, id: item.id };
+      } else {
+        return { ...update, id: item.id };
+      }
+    });
+    const _items: IActionSetDataParamsMeta = {
+      _list_id: this.dataListName,
+      _updates,
+    };
+    action.action_id = "set_data";
+    action.params = _items;
+    return action;
+  }
+
+  /** Evaluate data that includes `@item` expressions, such as `@item.number + 1` **/
+  private evaluateItemExpression(item: FlowTypes.TemplateRowItemEvalContext, data: any) {
+    return new AppStringEvaluator({ item }).evaluate(data);
   }
 
   /**
