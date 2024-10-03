@@ -56,8 +56,8 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                     </ul>
                 </li>
                     <li class="chapter">
-                        <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ? 'data-target="#components-links"' :
-                            'data-target="#xs-components-links"' }>
+                        <div class="simple menu-toggler" data-bs-toggle="collapse" ${ isNormalMode ? 'data-bs-target="#components-links"' :
+                            'data-bs-target="#xs-components-links"' }>
                             <span class="icon ion-md-cog"></span>
                             <span>Components</span>
                             <span class="icon ion-ios-arrow-down"></span>
@@ -175,6 +175,9 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="components/TmplPdfComponent.html" data-type="entity-link" >TmplPdfComponent</a>
                             </li>
                             <li class="link">
+                                <a href="components/TmplProgressPathComponent.html" data-type="entity-link" >TmplProgressPathComponent</a>
+                            </li>
+                            <li class="link">
                                 <a href="components/TmplQRCodeComponent.html" data-type="entity-link" >TmplQRCodeComponent</a>
                             </li>
                             <li class="link">
@@ -205,6 +208,9 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="components/TmplTextBoxComponent.html" data-type="entity-link" >TmplTextBoxComponent</a>
                             </li>
                             <li class="link">
+                                <a href="components/TmplTextBubbleComponent.html" data-type="entity-link" >TmplTextBubbleComponent</a>
+                            </li>
+                            <li class="link">
                                 <a href="components/TmplTextComponent.html" data-type="entity-link" >TmplTextComponent</a>
                             </li>
                             <li class="link">
@@ -228,22 +234,13 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                         </ul>
                     </li>
                     <li class="chapter">
-                        <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ? 'data-target="#classes-links"' :
-                            'data-target="#xs-classes-links"' }>
+                        <div class="simple menu-toggler" data-bs-toggle="collapse" ${ isNormalMode ? 'data-bs-target="#classes-links"' :
+                            'data-bs-target="#xs-classes-links"' }>
                             <span class="icon ion-ios-paper"></span>
                             <span>Classes</span>
                             <span class="icon ion-ios-arrow-down"></span>
                         </div>
                         <ul class="links collapse " ${ isNormalMode ? 'id="classes-links"' : 'id="xs-classes-links"' }>
-                            <li class="link">
-                                <a href="classes/BlankDate.html" data-type="entity-link" >BlankDate</a>
-                            </li>
-                            <li class="link">
-                                <a href="classes/Form.html" data-type="entity-link" >Form</a>
-                            </li>
-                            <li class="link">
-                                <a href="classes/MutationsTracker.html" data-type="entity-link" >MutationsTracker</a>
-                            </li>
                             <li class="link">
                                 <a href="classes/PausedState.html" data-type="entity-link" >PausedState</a>
                             </li>
@@ -253,36 +250,33 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                             <li class="link">
                                 <a href="classes/State.html" data-type="entity-link" >State</a>
                             </li>
-                            <li class="link">
-                                <a href="classes/Widget.html" data-type="entity-link" >Widget</a>
-                            </li>
                         </ul>
                     </li>
                     <li class="chapter">
-                        <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ? 'data-target="#interfaces-links"' :
-                            'data-target="#xs-interfaces-links"' }>
+                        <div class="simple menu-toggler" data-bs-toggle="collapse" ${ isNormalMode ? 'data-bs-target="#interfaces-links"' :
+                            'data-bs-target="#xs-interfaces-links"' }>
                             <span class="icon ion-md-information-circle-outline"></span>
                             <span>Interfaces</span>
                             <span class="icon ion-ios-arrow-down"></span>
                         </div>
                         <ul class="links collapse " ${ isNormalMode ? ' id="interfaces-links"' : 'id="xs-interfaces-links"' }>
                             <li class="link">
-                                <a href="interfaces/AnswerBody.html" data-type="entity-link" >AnswerBody</a>
-                            </li>
-                            <li class="link">
-                                <a href="interfaces/IAnswerListItem.html" data-type="entity-link" >IAnswerListItem</a>
+                                <a href="interfaces/IAudioParams.html" data-type="entity-link" >IAudioParams</a>
                             </li>
                             <li class="link">
                                 <a href="interfaces/IButton.html" data-type="entity-link" >IButton</a>
                             </li>
                             <li class="link">
-                                <a href="interfaces/IButton-1.html" data-type="entity-link" >IButton</a>
+                                <a href="interfaces/IButtonParams.html" data-type="entity-link" >IButtonParams</a>
                             </li>
                             <li class="link">
                                 <a href="interfaces/ICategoryList.html" data-type="entity-link" >ICategoryList</a>
                             </li>
                             <li class="link">
                                 <a href="interfaces/IDisplayGridParams.html" data-type="entity-link" >IDisplayGridParams</a>
+                            </li>
+                            <li class="link">
+                                <a href="interfaces/IDisplayGroupParams.html" data-type="entity-link" >IDisplayGroupParams</a>
                             </li>
                             <li class="link">
                                 <a href="interfaces/IEnketoFormData.html" data-type="entity-link" >IEnketoFormData</a>
@@ -297,10 +291,25 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="interfaces/IODKFormComponentParameters.html" data-type="entity-link" >IODKFormComponentParameters</a>
                             </li>
                             <li class="link">
+                                <a href="interfaces/IProgressPathParams.html" data-type="entity-link" >IProgressPathParams</a>
+                            </li>
+                            <li class="link">
                                 <a href="interfaces/IRadioButtonGridParams.html" data-type="entity-link" >IRadioButtonGridParams</a>
                             </li>
                             <li class="link">
+                                <a href="interfaces/ITaskCardParams.html" data-type="entity-link" >ITaskCardParams</a>
+                            </li>
+                            <li class="link">
+                                <a href="interfaces/ITaskProgressBarParams.html" data-type="entity-link" >ITaskProgressBarParams</a>
+                            </li>
+                            <li class="link">
                                 <a href="interfaces/ITemplatePopupComponentProps.html" data-type="entity-link" >ITemplatePopupComponentProps</a>
+                            </li>
+                            <li class="link">
+                                <a href="interfaces/ITextBubbleParams.html" data-type="entity-link" >ITextBubbleParams</a>
+                            </li>
+                            <li class="link">
+                                <a href="interfaces/IToggleParams.html" data-type="entity-link" >IToggleParams</a>
                             </li>
                             <li class="link">
                                 <a href="interfaces/TimerState.html" data-type="entity-link" >TimerState</a>
@@ -308,8 +317,8 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                         </ul>
                     </li>
                     <li class="chapter">
-                        <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ? 'data-target="#miscellaneous-links"'
-                            : 'data-target="#xs-miscellaneous-links"' }>
+                        <div class="simple menu-toggler" data-bs-toggle="collapse" ${ isNormalMode ? 'data-bs-target="#miscellaneous-links"'
+                            : 'data-bs-target="#xs-miscellaneous-links"' }>
                             <span class="icon ion-ios-cube"></span>
                             <span>Miscellaneous</span>
                             <span class="icon ion-ios-arrow-down"></span>
@@ -317,9 +326,6 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                         <ul class="links collapse " ${ isNormalMode ? 'id="miscellaneous-links"' : 'id="xs-miscellaneous-links"' }>
                             <li class="link">
                                 <a href="miscellaneous/functions.html" data-type="entity-link">Functions</a>
-                            </li>
-                            <li class="link">
-                                <a href="miscellaneous/typealiases.html" data-type="entity-link">Type aliases</a>
                             </li>
                             <li class="link">
                                 <a href="miscellaneous/variables.html" data-type="entity-link">Variables</a>
@@ -331,7 +337,7 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                     </li>
                     <li class="divider"></li>
                     <li class="copyright">
-                        Documentation generated using <a href="https://compodoc.app/" target="_blank">
+                        Documentation generated using <a href="https://compodoc.app/" target="_blank" rel="noopener noreferrer">
                             <img data-src="images/compodoc-vectorise.png" class="img-responsive" data-type="compodoc-logo">
                         </a>
                     </li>

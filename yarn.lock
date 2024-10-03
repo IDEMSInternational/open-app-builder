@@ -9807,9 +9807,11 @@ __metadata:
   linkType: hard
 
 "basic-auth-connect@npm:^1.0.0":
-  version: 1.0.0
-  resolution: "basic-auth-connect@npm:1.0.0"
-  checksum: f62e7fd17c9fce3915956707878a2bed9670a0f179ca82cc413882d24acd4d7f42eb6a17ccc3b863c401ab0ba06ffe9f8dd24c295374494fd616e0acaa69f669
+  version: 1.1.0
+  resolution: "basic-auth-connect@npm:1.1.0"
+  dependencies:
+    tsscmp: ^1.0.6
+  checksum: 29eff1dd06a32885e480b715f978a9ee38eb38e22155bd69196a536ee4f9295edad61d39485a178aa82673302d33c1e343c75c73c6b8642a9f132c2f35028dbd
   languageName: node
   linkType: hard
 
@@ -23431,8 +23433,8 @@ __metadata:
   linkType: hard
 
 "rollup@npm:^3.2.5":
-  version: 3.29.4
-  resolution: "rollup@npm:3.29.4"
+  version: 3.29.5
+  resolution: "rollup@npm:3.29.5"
   dependencies:
     fsevents: ~2.3.2
   dependenciesMeta:
@@ -23440,7 +23442,7 @@ __metadata:
       optional: true
   bin:
     rollup: dist/bin/rollup
-  checksum: 8bb20a39c8d91130825159c3823eccf4dc2295c9a0a5c4ed851a5bf2167dbf24d9a29f23461a54c955e5506395e6cc188eafc8ab0e20399d7489fb33793b184e
+  checksum: 6f8304e58ac8170a715e61e46c4aa674b2ae2587ed2a712dab58f72e5e54803ae40b485fbe6b3e6a694f4c8f7a59ab936ccf9f6b686c7cfd1f1970fa9ecadf1a
   languageName: node
   linkType: hard
 
@@ -26225,6 +26227,13 @@ __metadata:
   version: 2.7.0
   resolution: "tslib@npm:2.7.0"
   checksum: 1606d5c89f88d466889def78653f3aab0f88692e80bb2066d090ca6112ae250ec1cfa9dbfaab0d17b60da15a4186e8ec4d893801c67896b277c17374e36e1d28
+  languageName: node
+  linkType: hard
+
+"tsscmp@npm:^1.0.6":
+  version: 1.0.6
+  resolution: "tsscmp@npm:1.0.6"
+  checksum: 1512384def36bccc9125cabbd4c3b0e68608d7ee08127ceaa0b84a71797263f1a01c7f82fa69be8a3bd3c1396e2965d2f7b52d581d3a5eeaf3967fbc52e3b3bf
   languageName: node
   linkType: hard
 
