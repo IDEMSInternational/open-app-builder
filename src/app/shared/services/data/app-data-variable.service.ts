@@ -26,7 +26,10 @@ export class AppDataVariableService extends AsyncServiceBase {
    **/
   public handlers: { [context in IVariableContext]: Handlers.AppDataHandlerBase };
 
-  constructor(private localStorageService: LocalStorageService, private DBService: DbService) {
+  constructor(
+    private localStorageService: LocalStorageService,
+    private DBService: DbService
+  ) {
     super("App Data Evaluator");
     this.registerInitFunction(this.initialise);
   }
@@ -105,7 +108,7 @@ export class AppDataVariableService extends AsyncServiceBase {
     // If the parsed expression not valid JS (e.g. just text) then return as-is
     const jsEvaluator = new JSEvaluator();
 
-    // Note - assign all replaced string values as javascript contants to support further operation, E.g.
+    // Note - assign all replaced string values as javascript constants to support further operation, E.g.
     // `@field.name.startsWith('A')` -> my_name.startsWith('A'); constants: {my_name: "my_name"} (will evaulate string variable)
     // `hello @field.name` -> `hello my_name`; constants: {my_name: "my_name"} (fails to evaluate hello and returns as text)
     const constants: Record<string, string> = {};

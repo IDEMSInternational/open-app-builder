@@ -413,8 +413,11 @@ export namespace FlowTypes {
     "reset_app",
     "save_to_device",
     "set_field",
+    /** NOTE - only available from with data_items loop */
     "set_item",
+    /** NOTE - only available from with data_items loop */
     "set_items",
+    "set_data",
     "set_local",
     "share",
     "style",
