@@ -268,7 +268,7 @@ class RowProcessor {
     if (this.parent.flow.flow_type === "data_pipe") return this.row;
     // Handle replacements
     const context = { row: this.row };
-    return new TemplatedData({ context, initialValue: this.row }).parse();
+    return new TemplatedData({ context }).parse(this.row);
   }
 
   private removeMetaFields() {
