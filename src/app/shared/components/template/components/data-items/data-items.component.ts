@@ -159,7 +159,7 @@ export class TmplDataItemsComponent extends TemplateBaseComponent implements OnD
         if (_id) {
           targetItem = itemData.find((v) => v.id === _id);
         }
-        if (_index) {
+        if (_index !== undefined) {
           // update parameter index in case defined dynamicaly
           a.params._index = this.evaluateItemExpression(row._evalContext.itemContext, _index);
           targetItem = itemData[a.params._index];
