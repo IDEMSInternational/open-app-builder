@@ -578,18 +578,3 @@ export const cleanupEmptyFolders = (folder: string) => {
     fs.rmdirSync(folder);
   }
 };
-
-/** Order a nested json-like object in alphabetical key order */
-export const sortJsonKeys = <T extends Record<string, any>>(json: T): T => {
-  // return non json-type data as-is
-  if (!json || {}.constructor !== json.constructor) {
-    return json;
-  }
-  // recursively sort any nested json by key
-  return Object.keys(json)
-    .sort()
-    .reduce((obj, key) => {
-      obj[key] = sortJsonKeys(json[key]);
-      return obj;
-    }, {}) as T;
-};
