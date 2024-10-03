@@ -11,7 +11,6 @@ import { JsonFileCache } from "./cacheStrategy/jsonFile";
 import {
   generateFolderFlatMap,
   createChildFileLogger,
-  logSheetsSummary,
   getLogs,
   Logger,
   getLogFiles,
@@ -130,6 +129,8 @@ export class AppDataConverter {
     processor.logger = this.logger;
     const jsonFlows = Object.values(combinedOutputsHashmap);
     const result = (await processor.process(jsonFlows)) as IParsedWorkbookData;
+
+    // TODO - write to disk and log
     const { errors, warnings } = this.logOutputs(result);
     return { result, errors, warnings };
   }
@@ -152,7 +153,6 @@ export class AppDataConverter {
   /** Create log of total warnings and errors */
   private logOutputs(result: IParsedWorkbookData) {
     this.writeOutputJsons(result);
-    logSheetsSummary(result);
     const warnings = getLogs("warn");
     if (warnings.length > 0) {
       const warningLogFile = getLogFiles().warn;

@@ -2,7 +2,7 @@ import { createHash } from "crypto";
 
 import { AssetsPostProcessor } from "./assets";
 import type { IDeploymentConfigJson } from "../../deployment/common";
-import type { RecursivePartial } from "data-models/appConfig";
+import { type RecursivePartial } from "shared/src/types";
 
 import { readJsonSync, readdirSync, statSync, existsSync } from "fs-extra";
 import { vol } from "memfs";

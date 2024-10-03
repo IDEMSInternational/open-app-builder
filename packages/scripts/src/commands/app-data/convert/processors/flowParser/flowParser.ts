@@ -4,7 +4,7 @@ import { IConverterPaths, IFlowHashmapByType, IParsedWorkbookData } from "../../
 import { arrayToHashmap, groupJsonByKey, IContentsEntry } from "../../utils";
 import BaseProcessor from "../base";
 
-const cacheVersion = 20240502.0;
+const cacheVersion = 20241001.2;
 
 export class FlowParserProcessor extends BaseProcessor<FlowTypes.FlowTypeWithData> {
   public parsers: { [flowType in FlowTypes.FlowType]: Parsers.DefaultParser } = {
@@ -64,10 +64,8 @@ export class FlowParserProcessor extends BaseProcessor<FlowTypes.FlowTypeWithDat
 
   public updateProcessedFlowHashmap(flow: FlowTypes.FlowTypeWithData) {
     const { flow_name, flow_type, _xlsxPath } = flow;
-    if (!this.processedFlowHashmap[flow_type]) {
-      this.processedFlowHashmap[flow_type] = {};
-      this.processedFlowHashmapWithMeta[flow_type] = {};
-    }
+    this.processedFlowHashmap[flow_type] ??= {};
+    this.processedFlowHashmapWithMeta[flow_type] ??= {};
     // NOTE - duplicate flows are identified up during main converter
     this.processedFlowHashmap[flow_type][flow_name] = flow.rows;
     this.processedFlowHashmapWithMeta[flow_type][flow_name] = flow;
@@ -93,47 +91,13 @@ export class FlowParserProcessor extends BaseProcessor<FlowTypes.FlowTypeWithDat
         return k;
       });
     }
-    // populate any generated flows to main list
-    const flowTypesWithGenerated = this.populateGeneratedFlows(flowHashmapByType);
 
     // convert back from hashmap to hashArrays for final output
     const outputData: IParsedWorkbookData = {};
-    for (const [type, typeHashmap] of Object.entries(flowTypesWithGenerated)) {
+    for (const [type, typeHashmap] of Object.entries(flowHashmapByType)) {
       outputData[type] = Object.values(typeHashmap);
     }
     return outputData;
-  }
-
-  /**
-   * Iterate over all flows to check for any that populate additional _generated flows
-   * that should be extracted to top-level
-   */
-  private populateGeneratedFlows(flowsByType: IFlowHashmapByType) {
-    // handle any additional methods that operate on full list of processed flows,
-    // e.g. populating additional generated flows
-    for (const typeFlows of Object.values(flowsByType)) {
-      for (const { _generated, ...flow } of Object.values(typeFlows)) {
-        if (_generated) {
-          // remove _generated field from flow
-          flowsByType[flow.flow_type][flow.flow_name] = flow;
-          // populate generated to main list, ensure generated flows are also fully processed
-          for (const generatedFlows of Object.values(_generated)) {
-            for (const generatedFlow of Object.values(generatedFlows)) {
-              flowsByType[generatedFlow.flow_type] ??= {};
-              if (flowsByType[generatedFlow.flow_type][generatedFlow.flow_name]) {
-                this.logger.error({
-                  message: "Generated flow will override existing flow",
-                  details: [generatedFlow.flow_type, generatedFlow.flow_name],
-                });
-              }
-              const processed = this.processInput(JSON.parse(JSON.stringify(generatedFlow)));
-              flowsByType[generatedFlow.flow_type][generatedFlow.flow_name] = processed;
-            }
-          }
-        }
-      }
-    }
-    return flowsByType;
   }
 
   public shouldUseCachedEntry(
