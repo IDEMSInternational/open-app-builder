@@ -9,6 +9,7 @@ import { OSM } from "ol/source";
 import TileLayer from "ol/layer/Tile";
 import VectorSource from "ol/source/Vector";
 import VectorLayer from "ol/layer/Vector";
+import HeatmapLayer from "ol/layer/Heatmap";
 import GeoJSON from "ol/format/GeoJSON";
 import Style from "ol/style/Style";
 import CircleStyle from "ol/style/Circle";
@@ -19,18 +20,23 @@ import BaseLayer from "ol/layer/Base";
 
 interface IMapLayer {
   id: string;
-  description: string;
-  fill: string;
   name: string;
+  description: string;
+  /** the path to the GeoJSON file containing the data to be plotted */
+  source_asset: string | any;
+  point_radius_max: number;
+  point_radius_property: string;
+  point_radius_property_max: number;
+  blur: number;
+  fill: string;
   opacity: number;
   /** a property of the dataset to be plotted */
   property: string;
-  scale_fill: string;
+  gradient_palette: string[];
   scale_max: number;
   scale_min: number;
+  scale_bins: number[];
   scale_title: string;
-  /** the path to the GeoJSON file containing the data to be plotted */
-  source_asset: string | any;
   stroke: string;
   type: "vector" | "heatmap";
   visible_default: boolean;
@@ -58,6 +64,9 @@ export class TmplMapComponent extends TemplateBaseComponent implements OnInit {
   public params: Partial<IMapParams> = {};
   public map: Map;
   public mapLayers: BaseLayer[] = [];
+  get mapLayersReversed(): any[] {
+    return [...this.mapLayers].reverse();
+  }
 
   constructor(
     private templateAssetService: TemplateAssetService,
@@ -70,6 +79,15 @@ export class TmplMapComponent extends TemplateBaseComponent implements OnInit {
     await this.getParams();
     await this.initialiseMap();
     this.addLayers(this.params.layers);
+  }
+
+  public handleToggleChange(event: any, mapLayer: BaseLayer) {
+    const toggleValue = event.detail.checked;
+    mapLayer.setVisible(toggleValue);
+  }
+
+  public toggleLayer(mapLayer: BaseLayer) {
+    mapLayer.setVisible(!mapLayer.getVisible());
   }
 
   private async initialiseMap() {
@@ -91,19 +109,21 @@ export class TmplMapComponent extends TemplateBaseComponent implements OnInit {
   }
 
   private async getParams() {
-    const layersRaw = getParamFromTemplateRow(this._row, "layers", null);
-    if (!layersRaw) {
-      this.params.layers = [];
+    const layersReference = getParamFromTemplateRow(this._row, "layers", null);
+    let layersRaw;
+    if (!layersReference) {
+      layersRaw = [];
     }
     // If raw value is a string, assume it is a data list name and fetch the associated data
-    else if (typeof layersRaw === "string") {
-      const dataList = await this.appDataService.getSheet("data_list", layersRaw);
-      this.params.layers = dataList?.rows || [];
+    else if (typeof layersReference === "string") {
+      const dataList = await this.appDataService.getSheet("data_list", layersReference);
+      layersRaw = dataList?.rows || [];
     }
     // Else assume it is a parsed data list, as passed by e.g. @data.my_map_data_list
     else {
-      this.params.layers = Object.values(layersRaw);
+      layersRaw = Object.values(layersReference);
     }
+    this.params.layers = layersRaw.map((layer) => this.parseLayerParams(layer));
 
     const extentRaw = getStringParamFromTemplateRow(this._row, "extent", null);
     if (extentRaw) {
@@ -111,15 +131,80 @@ export class TmplMapComponent extends TemplateBaseComponent implements OnInit {
     }
   }
 
+  private parseLayerParams(layer: any) {
+    layer.source_asset = this.templateAssetService.getTranslatedAssetPath(layer.source_asset);
+    layer.blur = Number(layer.blur);
+    layer.point_radius_max = Number(layer.point_radius_max);
+    layer.point_radius_property_max = Number(layer.point_radius_property_max);
+    layer.scale_bins = layer.scale_bins?.split(", ").map(Number);
+    layer.gradient_palette = layer.gradient_palette?.split(",").map((str) => str.trim());
+    return layer;
+  }
+
   private addLayers(layers: IMapLayer[]) {
     for (const layer of layers) {
-      if (layer.type === "vector") {
-        this.addVectorLayer(layer);
+      switch (layer.type) {
+        case "vector":
+          this.addVectorLayer(layer);
+          break;
+        case "heatmap":
+          this.addHeatmapLayer(layer);
+          break;
+        default:
+          console.warn(`[MAP] Unknown layer type for ${layer.name}: ${layer.type}`);
       }
-      // TODO: handle other layer types, e.g. heatmap
     }
   }
 
+  private addHeatmapLayer(layer: IMapLayer) {
+    if (!layer) return;
+    const {
+      description,
+      name,
+      blur,
+      point_radius_max,
+      opacity,
+      property: propertyToPlot,
+      gradient_palette,
+      scale_max,
+      scale_min,
+      scale_bins,
+      scale_title,
+      source_asset,
+      visible_default,
+    } = layer;
+    if (!source_asset) return;
+
+    const heatmapLayer = new HeatmapLayer({
+      source: new VectorSource({
+        format: new GeoJSON(),
+        url: source_asset,
+      }),
+      blur: blur || blur === 0 ? blur : 8,
+      radius: point_radius_max || 12,
+      weight: (feature) => {
+        const value = feature.get(propertyToPlot);
+        return scale_bins ? this.mapValueToBin(value, scale_bins) : value;
+      },
+    });
+
+    // Set custom gradient palette if specified, otherwise openLayers' default will be used
+    if (gradient_palette) {
+      heatmapLayer.setGradient(gradient_palette);
+    }
+
+    this.setCustomLayerProperties(heatmapLayer, {
+      visible: visible_default,
+      name,
+      description,
+      opacity,
+      scaleMax: scale_max,
+      scaleMin: scale_min,
+      scaleTitle: scale_title,
+      scaleColours: gradient_palette,
+    });
+    this.addLayer(heatmapLayer);
+  }
   private addVectorLayer(layer: IMapLayer) {
     if (!layer) return;
     const {
@@ -128,22 +213,23 @@ export class TmplMapComponent extends TemplateBaseComponent implements OnInit {
       name,
       opacity,
       property: propertyToPlot,
-      scale_fill,
+      gradient_palette,
       scale_max,
       scale_min,
       scale_title,
       source_asset,
       stroke,
       visible_default,
+      point_radius_max,
+      point_radius_property,
+      point_radius_property_max,
     } = layer;
     if (!source_asset) return;
-
-    const assetPath = this.templateAssetService.getTranslatedAssetPath(layer.source_asset);
 
     const vectorLayer = new VectorLayer({
       source: new VectorSource({
         format: new GeoJSON(),
-        url: assetPath,
+        url: source_asset,
       }),
       style: (feature) => {
         const geometryType = feature.getGeometry().getType();
@@ -161,14 +247,21 @@ export class TmplMapComponent extends TemplateBaseComponent implements OnInit {
         }
 
         if (geometryType === "Point") {
+          const radius = point_radius_property
+            ? this.calcPointRadius(
+                feature.get(point_radius_property),
+                point_radius_property_max,
+                point_radius_max
+              )
+            : 2;
           return new Style({
             image: new CircleStyle({
-              radius: 2,
+              radius,
               fill: new Fill({
                 color: fill && fill !== "none" ? fill : "transparent",
               }),
               stroke: new Stroke({
-                color: stroke || "black",
+                color: stroke === "none" ? "transparent" : stroke || "black",
                 width: 1,
               }),
             }),
@@ -177,9 +270,10 @@ export class TmplMapComponent extends TemplateBaseComponent implements OnInit {
       },
     });
 
+    let scaleColours;
+
     if (propertyToPlot) {
-      const scaleColours = scale_fill?.split(",").map((str) => str.trim());
-      const colourScale = this.generateColourScale(scale_max, scale_min, scaleColours);
+      const colourScale = this.generateColourScale(scale_max, scale_min, gradient_palette);
       vectorLayer.setStyle((feature) => {
         const value = feature.get(propertyToPlot);
         const style = new Style({
@@ -194,33 +288,82 @@ export class TmplMapComponent extends TemplateBaseComponent implements OnInit {
         return style;
       });
       const equidistantScaleColours = colourScale.colors(5);
-      vectorLayer.set(
-        "gradientFill",
-        `linear-gradient(0deg, ${equidistantScaleColours.join(", ")})`
-      );
-      vectorLayer.set("scaleMax", scale_max);
-      vectorLayer.set("scaleMin", scale_min);
-      vectorLayer.set("scaleTitle", scale_title);
+      scaleColours = equidistantScaleColours;
     }
 
-    if (opacity || opacity === 0) vectorLayer.setOpacity(opacity);
-    // Set default layer visibility, defaulting to visible if not defined
-    vectorLayer.setVisible(visible_default === undefined || !!visible_default);
-    // Add custom properties to the layer
-    vectorLayer.set("name", name);
-    vectorLayer.set("description", description);
-
-    this.map.addLayer(vectorLayer);
-    this.mapLayers.push(vectorLayer);
+    this.setCustomLayerProperties(vectorLayer, {
+      visible: visible_default,
+      name,
+      description,
+      scaleMax: scale_max,
+      scaleMin: scale_min,
+      scaleTitle: scale_title,
+      scaleColours,
+      opacity,
+    });
+    this.addLayer(vectorLayer);
   }
 
-  public handleToggleChange(event: any, mapLayer: BaseLayer) {
-    const toggleValue = event.detail.checked;
-    mapLayer.setVisible(toggleValue);
+  private mapValueToBin(value, bins: number[]) {
+    const numBins = bins.length - 1;
+    if (value <= bins[0]) {
+      return 0;
+    }
+    if (value >= bins[numBins]) {
+      return 1;
+    }
+    // Find which bin the value falls into
+    for (let i = 0; i < numBins; i++) {
+      if (value >= bins[i] && value < bins[i + 1]) {
+        // Normalize the value within the bin
+        return ((value - bins[i]) / (bins[i + 1] - bins[i])) * (1 / numBins) + i / numBins;
+      }
+    }
+    // Fallback for inconsistent data
+    return 0;
   }
 
-  public toggleLayer(mapLayer: BaseLayer) {
-    mapLayer.setVisible(!mapLayer.getVisible());
+  private addLayer(layer: BaseLayer) {
+    this.map.addLayer(layer);
+    this.mapLayers.push(layer);
+  }
+
+  private setCustomLayerProperties(
+    layer: BaseLayer,
+    setCustomLayerProperties: {
+      visible?: boolean;
+      name: string;
+      description?: string;
+      scaleMax?: number;
+      scaleMin?: number;
+      scaleTitle?: string;
+      scaleColours?: string[];
+      opacity?: number;
+    }
+  ) {
+    const { visible, name, description, scaleMax, scaleMin, scaleTitle, scaleColours, opacity } =
+      setCustomLayerProperties;
+
+    const cssGradientFill = scaleColours
+      ? `linear-gradient(0deg, ${scaleColours.join(", ")})`
+      : undefined;
+    layer.setVisible(visible === undefined || !!visible);
+    if (opacity || opacity === 0) layer.setOpacity(opacity);
+    layer.set("name", name);
+    layer.set("description", description);
+    layer.set("gradientFill", cssGradientFill);
+    layer.set("scaleMax", scaleMax);
+    layer.set("scaleMin", scaleMin);
+    layer.set("scaleTitle", scaleTitle);
+  }
+
+  private calcPointRadius(value: number, maxvalue: number, maxRadius: number) {
+    if (value <= 0 || maxvalue <= 0) {
+      return 0;
+    }
+
+    const ratio = value / maxvalue;
+    return Math.min(ratio * maxRadius, maxRadius);
   }
 
   private generateColourScale(
