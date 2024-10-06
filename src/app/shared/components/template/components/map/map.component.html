@@ -31,7 +31,7 @@
     <div class="layer-control"></div>
     @if (mapLayers.length > 0) {
       <ion-list>
-        @for (mapLayer of mapLayers; track $index) {
+        @for (mapLayer of mapLayersReversed; track $index) {
           <ion-item>
             <ion-label>
               <ion-toggle
