@@ -16,8 +16,6 @@ $control-background: var(--audio-control-background, var(--ion-color-primary-500
     @include mixins.flex-space-between;
     width: 100%;
     display: flex;
-    align-items: center;
-    justify-content: space-between;
     min-height: var(--audio-title-and-help-height);
     h3 {
       margin: 0;

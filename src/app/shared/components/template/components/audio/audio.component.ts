@@ -215,14 +215,17 @@ export class TmplAudioComponent
    * Begins tracking audio playback progress, updating this.progress() with the current playback percentage
    */
   private startProgressTracker() {
+    const duration = this.player.duration();
+    // Caculate interval (in milliseconds) as 1/200th of the audio duration (in seconds)
+    const interval = duration * 5;
     this.stopProgressTracker(); // Ensure any existing tracker is stopped
     this.trackerInterval = setInterval(() => {
       if (!this.player.playing()) {
         this.stopProgressTracker();
         return;
       }
-      this.progress.set((this.player.seek() / this.player.duration()) * 100 || 0);
-    }, 10);
+      this.progress.set((this.player.seek() / duration) * 100 || 0);
+    }, interval);
   }
 
   private stopProgressTracker() {
