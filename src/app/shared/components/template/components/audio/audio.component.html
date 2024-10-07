@@ -37,16 +37,20 @@
         (touchend)="this.isPlaying ? player.play() : player.pause()"
       ></ion-range>
       <div class="time">
-        <div class="time-value">
-          {{
-            hasStarted
-              ? (progressSeconds() * 1000 | date: "mm:ss")
-              : (player?.duration() * 1000 | date: "mm:ss")
-          }}
-        </div>
         @if (params.variant.includes("large")) {
           <div class="time-value">
+            {{ progressSeconds() * 1000 | date: "mm:ss" }}
+          </div>
+          <div class="time-value">
             {{ !player ? "00:00" : (player?.duration() * 1000 | date: "mm:ss") }}
+          </div>
+        } @else {
+          <div class="time-value">
+            {{
+              hasStarted
+                ? (progressSeconds() * 1000 | date: "mm:ss")
+                : (player?.duration() * 1000 | date: "mm:ss")
+            }}
           </div>
         }
       </div>
