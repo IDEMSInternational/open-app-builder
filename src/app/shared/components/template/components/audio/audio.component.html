@@ -4,6 +4,7 @@
       <h3>{{ params.title }}</h3>
       @if (params.variant.includes("large") && params.showInfoButton) {
         <div class="info-icon-container">
+          <!-- the ion-icon component will use the name attribute unless the src attribute is set -->
           <ion-icon
             name="document-text-outline"
             [src]="params.infoIconAsset | plhAsset"
@@ -37,11 +38,15 @@
       ></ion-range>
       <div class="time">
         <div class="time-value">
-          {{ progressSeconds() * 1000 | date: "mm:ss" }}
+          {{
+            hasStarted
+              ? (progressSeconds() * 1000 | date: "mm:ss")
+              : (player?.duration() * 1000 | date: "mm:ss")
+          }}
         </div>
         @if (params.variant.includes("large")) {
           <div class="time-value">
-            {{ !player ? "00:00" : (player.duration() * 1000 | date: "mm:ss") }}
+            {{ !player ? "00:00" : (player?.duration() * 1000 | date: "mm:ss") }}
           </div>
         }
       </div>
