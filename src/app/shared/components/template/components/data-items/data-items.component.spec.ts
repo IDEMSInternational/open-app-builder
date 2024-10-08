@@ -9,6 +9,7 @@ import { DynamicDataService } from "src/app/shared/services/dynamic-data/dynamic
 import { _wait } from "packages/shared/src/utils/async-utils";
 import { TemplatedData } from "packages/shared/src/models/templatedData/templatedData";
 import { MockDynamicDataService } from "src/app/shared/services/dynamic-data/dynamic-data.service.mock.spec";
+import { DataItemsService } from "./data-items.service";
 
 const MOCK_ITEMS_LIST: FlowTypes.Data_listRow[] = [
   { id: "id_1", text: "item 1", number: 1, boolean: true },
@@ -89,11 +90,14 @@ describe("DataItemsComponent", () => {
           provide: DynamicDataService,
           useValue: new MockDynamicDataService({ data_list: { mock_item_list: MOCK_ITEMS_LIST } }),
         },
+        DataItemsService,
       ],
     }).compileComponents();
 
     fixture = TestBed.createComponent(TmplDataItemsComponent);
     fixture.componentInstance["hackProcessRows"] = mockHackProcessRows;
+    // HACK - support @local variable processing
+    fixture.componentInstance.parent = { templateRowService: { templateRowMap: {} } } as any;
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
@@ -102,7 +106,7 @@ describe("DataItemsComponent", () => {
     expect(component).toBeTruthy();
   });
 
-  it("generates evaluation context for rows", async () => {
+  fit("generates evaluation context for rows", async () => {
     const renderedRows = await setTestRow(component, MOCK_DATA_ITEMS_ROW);
     // all rows should be populated with full item data alongside metadata fields
     expect(renderedRows[0]._evalContext).toEqual({

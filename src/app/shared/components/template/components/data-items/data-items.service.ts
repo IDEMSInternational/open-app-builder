@@ -2,8 +2,7 @@ import { Injectable } from "@angular/core";
 import { TemplateVariablesService } from "../../services/template-variables.service";
 import { FlowTypes } from "packages/data-models";
 import { flattenJson } from "../../utils";
-import { getNestedProperty, setNestedProperty } from "src/app/shared/utils";
-import { addStringDelimiters } from "packages/shared/src/utils/delimiters";
+import { setNestedProperty } from "src/app/shared/utils";
 
 type IDynamicHashmap = Record<string, { type: FlowTypes.IDynamicPrefix; fieldName: string }>;
 export type IDataItemsEvalContext = {
@@ -15,6 +14,7 @@ export class DataItemsService {
   constructor(private templateVariablesService: TemplateVariablesService) {}
 
   public async parseRow(row: FlowTypes.TemplateRow, templateRowMap = {}) {
+    console.log("parse row", row);
     const parser = new DataItemsParser();
     const parsed = parser.parse(row);
     const evalContext: IDataItemsEvalContext = {};
@@ -62,22 +62,19 @@ class DataItemsParser {
 
     if (_dynamicFields) {
       const flattened = flattenJson<FlowTypes.TemplateRowDynamicEvaluator[]>(_dynamicFields);
-      for (const [key, evaluators] of Object.entries(flattened)) {
-        const expressionVariables: { [prefix in FlowTypes.IDynamicPrefix]?: boolean } = {};
-        for (const evaluator of evaluators) {
-          const { fieldName, type } = evaluator;
-          // mark fields that are being tracked
-          expressionVariables[type] = true;
-          this.variables[`${type}.${fieldName}`] = { type, fieldName };
-        }
+      console.log({ flattened });
 
-        const existing = getNestedProperty(parsed, key) as string;
-        const delimited = addStringDelimiters(existing, Object.keys(expressionVariables));
-        // add delimeters but remove initial curly braces and replace all curly braces for `[]`
-        // so that can be directly evaluated in JS
-        const replaced = delimtedToJS(delimited);
-        setNestedProperty(key, replaced, parsed);
-      }
+      //   for (const [key, evaluators] of Object.entries(flattened)) {
+      //     const expressionVariables: { [prefix in FlowTypes.IDynamicPrefix]?: boolean } = {};
+      //     for (const evaluator of evaluators) {
+      //       const { fieldName, type } = evaluator;
+      //       // mark fields that are being tracked
+      //       expressionVariables[type] = true;
+      //       this.variables[`${type}.${fieldName}`] = { type, fieldName };
+      //     }
+
+      //     // setNestedProperty(key, replaced, parsed);
+      //   }
       delete parsed._dynamicFields;
       delete parsed._dynamicDependencies;
     }

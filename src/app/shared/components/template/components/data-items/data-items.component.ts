@@ -62,6 +62,7 @@ export class TmplDataItemsComponent extends TemplateBaseComponent implements OnD
   }
 
   private async handleRowUpdate(row: FlowTypes.TemplateRow) {
+    console.log("handle row update", row);
     const { templateRowMap } = this.parent.templateRowService;
     // HACK -
     row.value = row.value.replace(`@data.`, "");
