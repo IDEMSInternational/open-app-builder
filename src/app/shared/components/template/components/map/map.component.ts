@@ -227,8 +227,6 @@ export class TmplMapComponent extends TemplateBaseComponent implements OnInit {
     } = layer;
     if (!source_asset) return;
 
-    console.log("source_asset", source_asset);
-
     const vectorLayer = new VectorLayer({
       source: new VectorSource({
         format: new GeoJSON(),
