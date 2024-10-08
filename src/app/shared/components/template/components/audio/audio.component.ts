@@ -9,6 +9,8 @@ import { Howl } from "howler";
 import { ITemplateRowProps } from "../../models";
 import { TemplateBaseComponent } from "../base";
 import { PLHAssetPipe } from "../../pipes/plh-asset.pipe";
+import { ModalController } from "@ionic/angular";
+import { TemplatePopupComponent } from "../layout/popup/popup.component";
 
 // Names of ion-icons to be used by default in the player.
 // Will be overridden if user provides values for play_icon_asset, pause_icon_asset or forward_icon_asset
@@ -27,7 +29,8 @@ interface IAudioParams {
   playIconAsset: string;
   /** TEMPLATE PARAMETER: "pause_icon_asset". The path to an svg to override the default pause icon. Default icon is ion's "pause-outline" */
   pauseIconAsset: string;
-  /** TEMPLATE PARAMETER: "forward_icon_asset". The path to an svg to override the default forward icon.
+  /**
+   * TEMPLATE PARAMETER: "forward_icon_asset". The path to an svg to override the default forward icon.
    * Will be mirrored to be used as the reqind icon. Default icon is ion's "play-forward"
    * */
   forwardIconAsset: string;
@@ -35,11 +38,18 @@ interface IAudioParams {
   showInfoButton: boolean;
   /** TEMPLATE PARAMETER: "info_icon_asset". The path to an svg to override the default info icon. The default is an icon indicating a transcript */
   infoIconAsset: string;
-  /** TEMPLATE PARAMETER: "range_bar_disabled". If true, the use cannot scrub through the audio using the range bar.
+  /**
+   * TEMPLATE PARAMETER: "transcript_text". A string representing the transcript of the audio.
+   * If provided, the transcript button will be shown and will launch a popup containing the this text
+   */
+  transcriptText: string;
+  /**
+   * TEMPLATE PARAMETER: "range_bar_disabled". If true, the use cannot scrub through the audio using the range bar.
    * Default false.
    */
   rangeBarDisabled: boolean;
-  /** TEMPLATE PARAMETER: "time_to_skip". The increment of time, in seconds, that will be applied when clicking the forward or backward buttons.
+  /**
+   * TEMPLATE PARAMETER: "time_to_skip". The increment of time, in seconds, that will be applied when clicking the forward or backward buttons.
    * Default 15.
    */
   timeToSkip: number;
@@ -83,13 +93,35 @@ export class TmplAudioComponent
   /** @ignore */
   trackerInterval: NodeJS.Timeout;
 
-  constructor(private plhAssetPipe: PLHAssetPipe) {
+  constructor(
+    private plhAssetPipe: PLHAssetPipe,
+    private modalCtrl: ModalController
+  ) {
     super();
   }
 
   ngOnInit() {
     this.getParams();
     this.initPlayer();
+  }
+
+  async openTranscriptPopup() {
+    const modal = await this.modalCtrl.create({
+      component: TemplatePopupComponent,
+      componentProps: {
+        props: {
+          textOnly: true,
+          text: "My string",
+          fullscreen: false,
+          showCloseButton: true,
+        },
+      },
+      id: "popup-audio-transcript",
+      // update to this styling must be done in global theme scss as the modal is injected dynamically into the dom
+      cssClass: "template-popup-modal",
+      showBackdrop: false,
+    });
+    modal.present();
   }
 
   private getParams() {
@@ -115,6 +147,7 @@ export class TmplAudioComponent
     this.params.infoIconAsset = getStringParamFromTemplateRow(this._row, "info_icon_asset", null);
     this.params.showInfoButton =
       !!this.params.infoIconAsset ||
+      !!this.params.transcriptText ||
       getBooleanParamFromTemplateRow(this._row, "show_info_button", false);
     this.params.rangeBarDisabled = getBooleanParamFromTemplateRow(
       this._row,
@@ -235,7 +268,11 @@ export class TmplAudioComponent
     }
   }
 
-  ngOnDestroy() {
-    this.player.stop();
+  async ngOnDestroy() {
+    this.player?.stop();
+    const activeModal = await this.modalCtrl.getTop();
+    if (activeModal) {
+      await activeModal.dismiss();
+    }
   }
 }
