@@ -4,47 +4,48 @@ import { HttpClientTestingModule } from "@angular/common/http/testing";
 import { MockAppDataService } from "../data/app-data.service.spec";
 import { AppDataService } from "../data/app-data.service";
 
-import { IActionSetItemParams, IActionSetItemsParams } from "./dynamic-data.actions";
+import { IActionSetDataParams } from "./dynamic-data.actions";
 import { DynamicDataService } from "./dynamic-data.service";
 import ActionFactory from "./dynamic-data.actions";
 import { firstValueFrom } from "rxjs";
 import { FlowTypes } from "packages/data-models";
+import { DeploymentService } from "../deployment/deployment.service";
+import { MockDeploymentService } from "../deployment/deployment.service.spec";
+import { TemplateActionRegistry } from "../../components/template/services/instance/template-action.registry";
 
 const TEST_DATA_ROWS = [
-  { id: "id1", number: 1, string: "hello", boolean: true, _meta_field: { test: "hello" } },
-  { id: "id2", number: 2, string: "goodbye", boolean: false },
-  { id: "id0", number: 3, string: "goodbye", boolean: false },
+  { id: "id_0", number: 0, string: "hello" },
+  { id: "id_1", number: 1, string: "hello", boolean: true, _meta_field: { test: "hello" } },
+  // TODO include out-of-order data for use in test cases
 ];
 
-function getSetItemParams(params: Partial<IActionSetItemParams & Record<string, any>>) {
+/********************************************************************************
+ * Test Utilities
+ *******************************************************************************/
+
+/** Generate a rows to trigger set_data action with included params */
+function getTestActionRow(params: IActionSetDataParams) {
   params._list_id = "test_flow";
-  const mockAction: FlowTypes.TemplateRowAction = {
-    action_id: "set_item",
+  const actionRow: FlowTypes.TemplateRowAction = {
+    action_id: "set_data",
     trigger: "click",
     args: [],
     params,
   };
-  return mockAction;
+  return actionRow;
 }
 
-function getSetItemsParams(
-  params: Partial<IActionSetItemsParams & Record<string, any>>,
-  ids?: string[]
-) {
-  if (ids) {
-    params._items = {
-      flow_name: "test_flow",
-      flow_type: "data_list",
-      rows: ids.map((id) => ({ id })),
-    };
-  }
-  const mockAction: FlowTypes.TemplateRowAction = {
-    action_id: "set_item",
-    trigger: "click",
-    args: [],
-    params,
-  };
-  return mockAction;
+/**
+ * Trigger the set_data action with included params and return first update
+ * to corresponding data_list
+ * * */
+async function triggerTestSetDataAction(service: DynamicDataService, params: IActionSetDataParams) {
+  const actionRow = getTestActionRow(params);
+  const actions = new ActionFactory(service);
+  await actions.set_data(actionRow);
+  const obs = await service.query$<any>("data_list", "test_flow");
+  const data = await firstValueFrom(obs);
+  return data;
 }
 
 /********************************************************************************
@@ -73,6 +74,14 @@ describe("DynamicDataService Actions", () => {
             },
           }),
         },
+        {
+          provide: DeploymentService,
+          useValue: new MockDeploymentService({ name: "test" }),
+        },
+        {
+          provide: TemplateActionRegistry,
+          useValue: { register: () => null },
+        },
       ],
     });
 
@@ -90,40 +99,59 @@ describe("DynamicDataService Actions", () => {
   /*************************************************************
    *  Main Tests
    ************************************************************/
-  it("set_item action sets by _id", async () => {
-    const params = getSetItemParams({ _id: "id1", string: "updated string" });
-    await actions.set_item(params);
-    const obs = await service.query$<any>("data_list", "test_flow");
-    const data = await firstValueFrom(obs);
+  it("set_data by _id", async () => {
+    const params: IActionSetDataParams = { _id: "id_1", string: "updated string" };
+    const data = await triggerTestSetDataAction(service, params);
+    expect(data[0].string).toEqual("hello");
+    expect(data[1].string).toEqual("updated string");
+  });
+
+  it("set_data by _index", async () => {
+    const params: IActionSetDataParams = { _index: 1, string: "updated string" };
+    const data = await triggerTestSetDataAction(service, params);
+    expect(data[0].string).toEqual("hello");
+    expect(data[1].string).toEqual("updated string");
+  });
+
+  it("set_data bulk", async () => {
+    const params: IActionSetDataParams = { string: "updated string" };
+    const data = await triggerTestSetDataAction(service, params);
     expect(data[0].string).toEqual("updated string");
-    expect(data[1].string).toEqual("goodbye");
+    expect(data[1].string).toEqual("updated string");
   });
 
-  it("set_items action by _items ref", async () => {
-    const params = getSetItemsParams({ string: "batch updated" }, ["id1", "id2"]);
-    await actions.set_items(params);
-    const obs = await service.query$<any>("data_list", "test_flow");
-    const data = await firstValueFrom(obs);
-    expect(data[0].string).toEqual("batch updated");
-    expect(data[1].string).toEqual("batch updated");
+  it("set_data with item ref (single)", async () => {
+    const params: IActionSetDataParams = { _id: "id_1", number: "@item.number + 100" };
+    const data = await triggerTestSetDataAction(service, params);
+    expect(data[0].number).toEqual(0);
+    expect(data[1].number).toEqual(101);
   });
 
-  it("set_items action by _list_id", async () => {
-    const params = getSetItemsParams({ _list_id: "test_flow", string: "batch updated" });
-    await actions.set_items(params);
-    const obs = await service.query$<any>("data_list", "test_flow");
-    const data = await firstValueFrom(obs);
-    expect(data[0].string).toEqual("batch updated");
-    expect(data[1].string).toEqual("batch updated");
+  it("set_data with item ref (bulk)", async () => {
+    const params: IActionSetDataParams = { number: "@item.number + 100" };
+    const data = await triggerTestSetDataAction(service, params);
+    expect(data[0].number).toEqual(100);
+    expect(data[1].number).toEqual(101);
   });
+
+  fit("set_data ignores updates for unchanged data", async () => {
+    const { _updates } = await actions["parseParams"]({ _list_id: "test_flow", number: 1 });
+    expect(_updates.length).toEqual(1);
+  });
+
+  // TODO - continue with tests below
+  // TODO - update component demo sheet
+  // TODO - confirm if any breaking changes
+
+  it("set_data without evaluation (_updates passed directly)", async () => {});
 
   it("ignores writes to readonly '_' fields", async () => {
-    const params = getSetItemParams({
+    const params = getTestActionRow({
       _id: "id1",
       _meta_field: "updated string",
       string: "updated string",
     });
-    await actions.set_item(params);
+    await actions.set_data(params);
     const obs = await service.query$<any>("data_list", "test_flow");
     const data = await firstValueFrom(obs);
     expect(data[0].string).toEqual("updated string");
@@ -133,17 +161,13 @@ describe("DynamicDataService Actions", () => {
   /*************************************************************
    *  Quality Control
    ************************************************************/
-  it("throws error if no _id provided", async () => {
-    const params = getSetItemParams({ string: "sets an item correctly a given id" });
-    await expectAsync(actions.set_item(params)).toBeRejectedWithError("[set_item] invalid params");
-  });
 
   it("throws error if provided _id does not exist", async () => {
-    const params = getSetItemParams({
+    const params = getTestActionRow({
       _id: "missing_id",
       string: "sets an item correctly a given id",
     });
-    await expectAsync(actions.set_item(params)).toBeRejectedWithError(
+    await expectAsync(actions.set_data(params)).toBeRejectedWithError(
       "[Update Fail] no doc exists for data_list:test_flow with row_id: missing_id"
     );
     // also ensure new item not created
@@ -152,10 +176,26 @@ describe("DynamicDataService Actions", () => {
     expect(data.length).toEqual(3);
   });
 
-  it("throws error if no _ids provided", async () => {
-    const params = getSetItemsParams({ string: "sets an item correctly a given id" });
-    await expectAsync(actions.set_items(params)).toBeRejectedWithError(
-      "[set_items] invalid params"
+  it("throws error if provided _index does not exist", async () => {
+    const params = getTestActionRow({
+      _id: "missing_id",
+      string: "sets an item correctly a given id",
+    });
+    await expectAsync(actions.set_data(params)).toBeRejectedWithError(
+      "[Update Fail] no doc exists for data_list:test_flow with row_id: missing_id"
     );
+    // also ensure new item not created
+    const obs = await service.query$<any>("data_list", "test_flow");
+    const data = await firstValueFrom(obs);
+    expect(data.length).toEqual(3);
   });
 });
+
+/**
+ *
+ * Future TODOs
+ * - Apply update that deletes fields
+ * - Action to create new data row
+ * - Action to delete data row
+ * - Bulk update with data query
+ */

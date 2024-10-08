@@ -54,8 +54,8 @@ export class DynamicDataService extends AsyncServiceBase {
     super("Dynamic Data");
     this.registerInitFunction(this.initialise);
     // register action handlers
-    const { set_item, set_items } = new ActionsFactory(this);
-    this.templateActionRegistry.register({ set_item, set_items });
+    const { set_data } = new ActionsFactory(this);
+    this.templateActionRegistry.register({ set_data });
   }
 
   private async initialise() {

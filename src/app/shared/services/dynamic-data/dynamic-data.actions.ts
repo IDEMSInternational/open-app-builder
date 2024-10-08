@@ -1,116 +1,87 @@
-import { FlowTypes } from "packages/data-models";
 import { IActionHandler } from "../../components/template/services/instance/template-action.registry";
 import type { DynamicDataService } from "./dynamic-data.service";
 import { firstValueFrom } from "rxjs";
+import { isObjectLiteral } from "packages/shared/src/utils/object-utils";
+import { FlowTypes } from "packages/data-models";
+import { MangoQuery } from "rxdb";
+import { evaluateDynamicDataUpdate, isItemChanged } from "./dynamic-data.utils";
 
-/**
- * Metadata passed to set_item action used to lookup correct DB row
- * Full payload can also include arbitrary key-value pairs (omitted for type-checking)
- **/
-export interface IActionSetItemParams {
-  /** ID of data_list for items */
-  _list_id: string;
-  /** ID of item to update */
-  _id: string;
-  /**
-   * Index of item to update (only works when calling within a data_items loop)
-   * TODO - might be better to remove altogether and extract from within template instead
-   */
-  _index?: number;
-}
-
-/** Metadata passed to set_items action **/
-export interface IActionSetItemsParams {
+/** Metadata passed to set_data action to specify data for update **/
+interface IActionSetDataParamsMeta {
   /** Reference to source data_list id. All rows in list will be updated */
   _list_id?: string;
 
-  /** Parsed items to update (e.g. from data_items). All rows in list will be updated  */
-  _items?: FlowTypes.Data_list;
+  /** ID of data_list row for single update */
+  _id?: string;
+
+  /** Index of data_list row for single update */
+  _index?: number;
+
+  /** List of compiled data updates if computed outside of action (e.g. data_items)  */
+  _updates?: FlowTypes.Data_listRow[];
 }
+
+/** Key-value pairs to update. These support reference to self `@item` context */
+export type IActionSetDataParams = IActionSetDataParamsMeta & Record<string, any>;
 
 class DynamicDataActionFactory {
   constructor(private service: DynamicDataService) {}
 
   /**
-   * Write properties on data_list row items,
-   *
-   * When populated from a `data_items` loop current list row implied (can override)
-   *
-   * click | set_item | completed:true;
-   * click | set_item | _id: another_item_id, completed:true;
-   *
-   * It is also possible to specify a different row by index in `data_items` loops
-   * click | set_item | _index: @item._index + 1, completed:true;
-   *
-   * Or from outside a loop
-   * click | set_item | _list_id: example_list, _id: example_id, completed:true;
-   *
-   */
-  public set_item: IActionHandler = async ({ params }) => {
-    // parse args and separate data lookup metadata from writeable update data
-    const { _list_id, _id, writeableProps } = this.parseSetItemParams(params);
-    await this.service.update("data_list", _list_id, _id, writeableProps);
-  };
-
-  /**
    * Similar syntax can be used for multiple items.
    *
-   * When populated from a `data_items` loop all currently rendered rows implied
-   * click | set_items | completed:true;
-   *
    * or from outside a loop can specify
-   * click | set_items | _list: @data.example_list, completed:true;
+   * click | set_data | _list: @data.example_list, completed:true;
    */
-  public set_items: IActionHandler = async ({ params }) => {
-    const { _list_id, _ids, writeableProps } = await this.parseSetItemsParams(params);
+  public set_data: IActionHandler = async ({ params }: { params?: IActionSetDataParams }) => {
+    const { _list_id, _updates } = await this.parseParams(params);
     // Hack, no current method for bulk update so make successive (changes debounced in component)
-    for (const _id of _ids) {
-      await this.service.update("data_list", _list_id, _id, writeableProps);
+    for (const { id, ...writeableProps } of _updates) {
+      await this.service.update("data_list", _list_id, id, writeableProps);
     }
   };
 
-  private parseSetItemParams(params: IActionSetItemParams) {
-    if (params && params.constructor === {}.constructor) {
-      const { _id, _list_id, _index, ...writeableProps } = params;
-      // ensure a list name row id included (index should have been already converted to id)
-      if (_list_id && _id) {
-        return { _id, _list_id, writeableProps };
-      }
-    }
-    // throw error if args not parsed correctly
-    console.error({ params });
-    throw new Error("[set_item] invalid params");
-  }
-
-  private async parseSetItemsParams(params: IActionSetItemsParams) {
+  private async parseParams(params: IActionSetDataParams) {
     // util to log item params and add name prefix as part of thrown errors
     function throwParseError(msg: string) {
       console.error(params);
-      throw new Error("[set_items] " + msg);
+      throw new Error("[set_data] " + msg);
     }
-    if (params && params.constructor === {}.constructor) {
-      const { _items, _list_id, ...writeableProps } = params;
+    if (isObjectLiteral(params)) {
+      let { _updates, _list_id } = params;
+
       // handle parse from item reference string
       if (_list_id) {
-        // TODO - consider refactoring service to take full list and do lookup there instead
-        const ref = await this.service.query$<any>("data_list", _list_id);
-        const data = await firstValueFrom(ref);
-        const _ids = data.map((el) => el.id);
-        return { _list_id, _ids, writeableProps };
-      }
-      // handle parse from processed item list (e.g. data_items loop)
-      if (_items && _items.constructor === {}.constructor) {
-        // TODO - consider support for _items ref to local variable
-        // (would likely need templating system to track more generally and pass)
-        const { flow_name, rows } = _items;
-        const _ids = rows.filter((r) => r.id).map((r) => r.id);
-        return { _list_id: flow_name, _ids, writeableProps };
+        if (!_updates) {
+          _updates = await this.generateItemUpdates(params);
+        }
+
+        return { _updates, _list_id };
       }
     }
 
     // throw error if args not parsed correctly
-    console.error({ params });
     throwParseError("invalid params");
+  }
+
+  private async generateItemUpdates(params: IActionSetDataParams) {
+    const { _id, _index, _list_id, _updates, ...writeableProps } = params;
+    const query: MangoQuery = {};
+    if (_id) {
+      query.selector = { id: _id };
+    }
+    let ref = await this.service.query$<any>("data_list", _list_id, query);
+    let items = await firstValueFrom(ref);
+    // NOTE - RXDB doesn't support querying by index or pagination so still retrieve all and then reduce
+    if (typeof _index === "number") {
+      items = [items[_index]];
+    }
+
+    // Evaluate item updates for any `@item` self-references
+    const evaluated = evaluateDynamicDataUpdate(items, writeableProps);
+
+    // Filter to only include updates that will change original item
+    return evaluated.filter((update, i) => isItemChanged(items[i], update));
   }
 }
 
