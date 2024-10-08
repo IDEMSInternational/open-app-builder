@@ -37,7 +37,7 @@ import { TemplatedData } from "packages/shared"
 In addition, to avoid compiler errors thrown by non-browser shared methods, explicit paths should be included to import only the supported files as required
 
 ```ts
-import { AppStringEvaluator } from "packages/shared/src/models/appStringEvaluator/appStringEvaluator";
+import { AppDataEvaluator } from "packages/shared/src/models/appDataEvaluator/appDataEvaluator";
 import { TemplatedData } from "packages/shared/src/models/templatedData/templatedData";
 ```
 
