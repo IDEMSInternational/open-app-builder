@@ -4,12 +4,11 @@
       <h3>{{ params.title }}</h3>
       @if (params.variant.includes("large") && params.showInfoButton) {
         <div class="info-icon-container">
-          <!-- the ion-icon component will use the name attribute unless the src attribute is set -->
-          <ion-icon
-            name="document-text-outline"
-            [src]="params.infoIconAsset | plhAsset"
-            (click)="clickInfo()"
-          ></ion-icon>
+          @if (params.infoIconAsset) {
+            <ion-icon [src]="params.infoIconAsset | plhAsset" (click)="clickInfo()"></ion-icon>
+          } @else {
+            <ion-icon name="document-text-outline" (click)="clickInfo()"></ion-icon>
+          }
         </div>
       }
     </div>
@@ -17,11 +16,11 @@
   <div class="second-row">
     @if (params.variant.includes("compact") && params.showInfoButton) {
       <div class="info-icon-container">
-        <ion-icon
-          name="document-text-outline"
-          [src]="params.infoIconAsset | plhAsset"
-          (click)="clickInfo()"
-        ></ion-icon>
+        @if (params.infoIconAsset) {
+          <ion-icon [src]="params.infoIconAsset | plhAsset" (click)="clickInfo()"></ion-icon>
+        } @else {
+          <ion-icon name="document-text-outline" (click)="clickInfo()"></ion-icon>
+        }
       </div>
     }
     <div class="progress-block" [class.disabled]="params.rangeBarDisabled || !player">
