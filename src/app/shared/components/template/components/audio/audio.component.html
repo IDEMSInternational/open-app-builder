@@ -5,9 +5,15 @@
       @if (params.variant.includes("large") && params.showInfoButton) {
         <div class="info-icon-container">
           @if (params.infoIconAsset) {
-            <ion-icon [src]="params.infoIconAsset | plhAsset" (click)="clickInfo()"></ion-icon>
+            <ion-icon
+              [src]="params.infoIconAsset | plhAsset"
+              (click)="params.transcriptText ? openTranscriptPopup() : clickInfo()"
+            ></ion-icon>
           } @else {
-            <ion-icon name="document-text-outline" (click)="clickInfo()"></ion-icon>
+            <ion-icon
+              name="document-text-outline"
+              (click)="params.transcriptText ? openTranscriptPopup() : clickInfo()"
+            ></ion-icon>
           }
         </div>
       }
@@ -17,9 +23,15 @@
     @if (params.variant.includes("compact") && params.showInfoButton) {
       <div class="info-icon-container">
         @if (params.infoIconAsset) {
-          <ion-icon [src]="params.infoIconAsset | plhAsset" (click)="clickInfo()"></ion-icon>
+          <ion-icon
+            [src]="params.infoIconAsset | plhAsset"
+            (click)="params.transcriptText ? openTranscriptPopup() : clickInfo()"
+          ></ion-icon>
         } @else {
-          <ion-icon name="document-text-outline" (click)="clickInfo()"></ion-icon>
+          <ion-icon
+            name="document-text-outline"
+            (click)="params.transcriptText ? openTranscriptPopup() : clickInfo()"
+          ></ion-icon>
         }
       </div>
     }
