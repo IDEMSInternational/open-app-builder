@@ -111,7 +111,7 @@ export class TmplAudioComponent
       componentProps: {
         props: {
           textOnly: true,
-          text: "My string",
+          text: this.params.transcriptText,
           fullscreen: false,
           showCloseButton: true,
         },
@@ -145,6 +145,7 @@ export class TmplAudioComponent
     );
     this.params.title = getStringParamFromTemplateRow(this._row, "title", "");
     this.params.infoIconAsset = getStringParamFromTemplateRow(this._row, "info_icon_asset", null);
+    this.params.transcriptText = getStringParamFromTemplateRow(this._row, "transcript_text", null);
     this.params.showInfoButton =
       !!this.params.infoIconAsset ||
       !!this.params.transcriptText ||
