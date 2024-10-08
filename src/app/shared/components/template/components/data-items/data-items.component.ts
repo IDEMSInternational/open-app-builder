@@ -13,9 +13,8 @@ import { ItemProcessor } from "../../processors/item";
 import { TemplateRowService } from "../../services/instance/template-row.service";
 import { TemplateVariablesService } from "../../services/template-variables.service";
 import { TemplateBaseComponent } from "../base";
-import type { IActionSetDataParamsMeta } from "src/app/shared/services/dynamic-data/dynamic-data.actions";
-import { AppStringEvaluator } from "packages/shared/src/models/appStringEvaluator/appStringEvaluator";
-import { TemplatedData } from "packages/shared/src/models/templatedData/templatedData";
+import type { IActionSetDataParams } from "src/app/shared/services/dynamic-data/dynamic-data.actions";
+import { evaluateDynamicDataUpdate } from "src/app/shared/services/dynamic-data/dynamic-data.utils";
 
 /** Metadata passed to `set_item` and `set_items` action **/
 interface IActionSetItemParamsMeta {
@@ -56,6 +55,7 @@ export class TmplDataItemsComponent extends TemplateBaseComponent implements OnD
   private dataQuery$: Subscription;
 
   @Input() set row(row: FlowTypes.TemplateRow) {
+    console.log("data items row set", JSON.parse(JSON.stringify(row)));
     this._row = row;
     this.dataListName = this.hackGetRawDataListName(row);
     this.parameterList = row.parameter_list;
@@ -160,12 +160,21 @@ export class TmplDataItemsComponent extends TemplateBaseComponent implements OnD
           targetItem = itemData.find((v) => v.id === _id);
         }
         if (_index !== undefined) {
-          // update parameter index in case defined dynamicaly
-          a.params._index = this.evaluateItemExpression(row._evalContext.itemContext, _index);
+          // update parameter index in case defined dynamically
+          // use the same method used to more generally merge update object to rows (and just extract as needed)
+          const [evaluated] = evaluateDynamicDataUpdate([row._evalContext.itemContext], { _index });
+
+          // TODO - items actually receives data formatted this.items instead of @items
+          a.params._index = parseInt(evaluated._index, 10);
+          console.log("evaluate target index", {
+            _index,
+            evaluated: a.params._index,
+            row: JSON.parse(JSON.stringify(row)),
+          });
           targetItem = itemData[a.params._index];
         }
         if (!targetItem) {
-          const debugInfo = { itemData, params: a.params };
+          const debugInfo = { itemData, params: { ...a.params, _index_raw: _index } };
           console.error(`[Data Items] could not find item to update`, debugInfo);
           return a;
         }
@@ -194,27 +203,15 @@ export class TmplDataItemsComponent extends TemplateBaseComponent implements OnD
     update: Record<string, any>
   ) {
     // check if update contains any `@item` self references so that these can be evaluated as required
-    const contextVariables = new TemplatedData().listContextVariables(update, ["item"]);
-    const _updates = items.map((item) => {
-      if (contextVariables.item) {
-        const evaluated = this.evaluateItemExpression(item, update);
-        return { ...evaluated, id: item.id };
-      } else {
-        return { ...update, id: item.id };
-      }
-    });
-    const _items: IActionSetDataParamsMeta = {
+    const _updates = evaluateDynamicDataUpdate(items, update);
+
+    const _items: IActionSetDataParams = {
       _list_id: this.dataListName,
       _updates,
     };
     action.action_id = "set_data";
     action.params = _items;
     return action;
-  }
-
-  /** Evaluate data that includes `@item` expressions, such as `@item.number + 1` **/
-  private evaluateItemExpression(item: FlowTypes.TemplateRowItemEvalContext, data: any) {
-    return new AppStringEvaluator({ item }).evaluate(data);
   }
 
   /**
