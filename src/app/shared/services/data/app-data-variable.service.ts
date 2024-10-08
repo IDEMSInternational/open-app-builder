@@ -104,7 +104,7 @@ export class AppDataVariableService extends AsyncServiceBase {
     const { parsed, evaluatedVariables } = await this.parseExpression(expression);
 
     // Step 3 - Evaluate parsed expression
-    // NOTE - method called standalone instead of using appStringEvaluator to add support for recursive
+    // NOTE - method called standalone instead of using AppDataEvaluator to add support for recursive
     // If the parsed expression not valid JS (e.g. just text) then return as-is
     const jsEvaluator = new JSEvaluator();
 
