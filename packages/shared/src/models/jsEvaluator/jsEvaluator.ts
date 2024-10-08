@@ -69,7 +69,6 @@ export class JSEvaluator {
       const evaluated = func.apply(executionContext);
       return evaluated;
     } catch (error) {
-      console.error({ error, expression, executionContext });
       // still throw error so that calling function can decide how to handle, e.g. attempt string replace
       throw error;
     }
