@@ -148,7 +148,7 @@ export class TemplatedData {
 
   /**
    * Take a string and replace instances of context variables, such as `"hello {@row.name}"`
-   * Will convert non-delimited strings to delimted, extract list of variables and parse
+   * Will convert non-delimited strings to delimited, extract list of variables and parse
    */
   private parseTemplatedString(value: string) {
     const delimited = addStringDelimiters(value, this.contextPrefixes);
