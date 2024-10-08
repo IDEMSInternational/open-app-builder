@@ -2,6 +2,8 @@ import { JSEvaluator } from "../jsEvaluator/jsEvaluator";
 import { TemplatedData } from "..";
 import { isObjectLiteral } from "../../utils/object-utils";
 
+type IContext = { [nameSpace: string]: { [field: string]: any } };
+
 /**
  * Utility class to allow evaluation of strings that contain a mix of context expressions,
  * JavaScript and static strings. It combines both TemplatedData and jsEvaluator models
@@ -25,12 +27,16 @@ import { isObjectLiteral } from "../../utils/object-utils";
 export class AppStringEvaluator {
   private parser: TemplatedData;
   private evaluator: JSEvaluator;
-  constructor(context = {}) {
+  constructor(private context = {}) {
     this.evaluator = new JSEvaluator();
     this.setExecutionContext(context);
   }
-  setExecutionContext(context: any) {
+  public setExecutionContext(context: IContext) {
+    this.context = context;
     this.parser = new TemplatedData({ context });
+  }
+  public updateExecutionContext(update: IContext) {
+    this.setExecutionContext({ ...this.context, update });
   }
 
   /**
