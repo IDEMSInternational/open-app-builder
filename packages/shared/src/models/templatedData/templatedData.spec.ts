@@ -5,7 +5,7 @@ interface ITestData {
   output: any; // Expected end parsed data
 }
 
-/** This context is applied to all tests. Input will be processed for subsitition into output */
+/** This context is applied to all tests. Input will be processed for substitution into output */
 const context = {
   input: {
     row: {
