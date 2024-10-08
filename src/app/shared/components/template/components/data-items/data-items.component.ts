@@ -1,20 +1,13 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  Injector,
-  Input,
-  OnDestroy,
-  signal,
-} from "@angular/core";
+import { ChangeDetectionStrategy, Component, Input, OnDestroy, signal } from "@angular/core";
 import { debounceTime, Subscription } from "rxjs";
 import { DynamicDataService } from "src/app/shared/services/dynamic-data/dynamic-data.service";
 import { FlowTypes } from "../../models";
 import { ItemProcessor } from "../../processors/item";
-import { TemplateRowService } from "../../services/instance/template-row.service";
-import { TemplateVariablesService } from "../../services/template-variables.service";
 import { TemplateBaseComponent } from "../base";
 import type { IActionSetDataParams } from "src/app/shared/services/dynamic-data/dynamic-data.actions";
 import { evaluateDynamicDataUpdate } from "src/app/shared/services/dynamic-data/dynamic-data.utils";
+import { DataItemsService, IDataItemsEvalContext } from "./data-items.service";
+import { AppDataEvaluator } from "packages/shared/src/models/appDataEvaluator/appDataEvaluator";
 
 /** Metadata passed to `set_item` and `set_items` action **/
 interface IActionSetItemParamsMeta {
@@ -51,23 +44,53 @@ export class TmplDataItemsComponent extends TemplateBaseComponent implements OnD
   public itemRows = signal<FlowTypes.TemplateRow[]>([]);
 
   private dataListName: string;
-  private parameterList: Record<string, string>;
   private dataQuery$: Subscription;
 
+  private evalContext: IDataItemsEvalContext;
+
+  private appDataEvaluator = new AppDataEvaluator();
+
   @Input() set row(row: FlowTypes.TemplateRow) {
-    console.log("data items row set", JSON.parse(JSON.stringify(row)));
-    this._row = row;
-    this.dataListName = this.hackGetRawDataListName(row);
-    this.parameterList = row.parameter_list;
-    this.subscribeToData();
+    this.handleRowUpdate(row);
   }
 
   constructor(
-    private dynamicDataService: DynamicDataService,
-    private templateVariablesService: TemplateVariablesService,
-    private injector: Injector
+    private service: DataItemsService,
+    private dynamicDataService: DynamicDataService
   ) {
     super();
+  }
+
+  private async handleRowUpdate(row: FlowTypes.TemplateRow) {
+    const { templateRowMap } = this.parent.templateRowService;
+    // HACK -
+    row.value = row.value.replace(`@data.`, "");
+    const { parsed, evalContext } = await this.service.parseRow(row, templateRowMap);
+    this.evalContext = evalContext;
+    // parse row with current eval context
+    this._row = parsed;
+
+    // hack - clear data list reference from dynamic context to avoid passing to processor
+    if (this.evalContext.data && this.evalContext.data[this.dataListName]) {
+      delete this.evalContext.data[this.dataListName];
+    }
+    this.appDataEvaluator.setExecutionContext(this.evalContext);
+
+    console.log({ parsed, evalContext });
+    this.dataListName = this.getDataListName(parsed.value);
+    console.log("data list name", {
+      parsed: JSON.parse(JSON.stringify(parsed)),
+      evalContext: JSON.parse(JSON.stringify(evalContext)),
+      dataListName: this.dataListName,
+    });
+
+    //TODO - use signals (?)
+    this.subscribeToData();
+  }
+
+  private getDataListName(value: string) {
+    if (value.startsWith("this")) return this.appDataEvaluator.evaluate(value);
+    return value;
   }
 
   private async subscribeToData() {
@@ -78,35 +101,39 @@ export class TmplDataItemsComponent extends TemplateBaseComponent implements OnD
       await this.dynamicDataService.ready();
       const query = await this.dynamicDataService.query$("data_list", this.dataListName);
       this.dataQuery$ = query.pipe(debounceTime(50)).subscribe(async (data) => {
-        await this.renderItems(data, this._row.rows, this.parameterList);
+        // render items
+        await this.renderItems(data, this._row.rows);
       });
     } else {
-      await this.renderItems([], [], {});
+      await this.renderItems([], []);
     }
   }
 
-  private async renderItems(
-    itemDataList: any[],
-    rows: FlowTypes.TemplateRow[],
-    parameterList?: any
-  ) {
-    const parsedItemDataList = await this.parseDataList(itemDataList);
-    const { itemRows, itemData } = new ItemProcessor(parsedItemDataList, parameterList).process(
-      rows
-    );
+  private async renderItems(itemDataList: any[], rows: FlowTypes.TemplateRow[]) {
+    const parsedItemDataList = await this.service.parseDataList(itemDataList);
+    console.log("render items", { itemDataList, rows });
+    // TODO - process dynamic parameter list as it shouldn't self-refer to item (?)
+    // TODO - does nested display group actually work?
+    // TODO - do we actually need to store evalContext anymore
+    const parameterList = this._row.parameter_list;
+    // TODO - maybe decouple from legacy Item Processor
+    const { itemRows, itemData } = new ItemProcessor({
+      dataList: parsedItemDataList,
+      parameterList,
+    }).process(rows);
     const itemRowsWithMeta = this.setItemMeta(itemRows, itemData, this.dataListName);
 
     // Process action list before rest of row to handle case where action targets a different item context
-    const parsedItemRowsWithActions = itemRowsWithMeta.map((r) => {
-      if (r.action_list) {
-        r.action_list = this.updateActionList(r, itemData);
-      }
-      return r;
-    });
+    const parsedItemRowsWithActions = itemRowsWithMeta.map((row) =>
+      this.updateActionList(row, itemData)
+    );
 
     // Parse rows fully, including item, local, field or any other context variables
     const parsedItemRows = await this.hackProcessRows(parsedItemRowsWithActions);
+    // console.log("itemRows", this._row._nested_name, parsedItemRows);
 
+    // TODO - handle rest of parsing without parent parser
+    console.log("parsed item rows", parsedItemRows);
     this.itemRows.set(parsedItemRows);
   }
 
@@ -151,7 +178,16 @@ export class TmplDataItemsComponent extends TemplateBaseComponent implements OnD
    * Additionally add support for updating a different row item either by id or index of rendered items
    */
   private updateActionList(row: FlowTypes.TemplateRow, itemData: FlowTypes.Data_listRow[]) {
-    return row.action_list.map((a) => {
+    //
+    if (row.rows) {
+      row.rows = row.rows.map((r) => this.updateActionList(r, itemData));
+    }
+
+    //
+    if (!row.action_list) return row;
+    console.log("map action list", row.action_list);
+
+    row.action_list = row.action_list.map((a) => {
       if (a.action_id === "set_item") {
         const { _id, _index, ...update } = a.params as IActionSetItemParams;
         // action can target either specified id, self id, or a named index
@@ -162,15 +198,10 @@ export class TmplDataItemsComponent extends TemplateBaseComponent implements OnD
         if (_index !== undefined) {
           // update parameter index in case defined dynamically
           // use the same method used to more generally merge update object to rows (and just extract as needed)
-          const [evaluated] = evaluateDynamicDataUpdate([row._evalContext.itemContext], { _index });
 
-          // TODO - items actually receives data formatted this.items instead of @items
-          a.params._index = parseInt(evaluated._index, 10);
-          console.log("evaluate target index", {
-            _index,
-            evaluated: a.params._index,
-            row: JSON.parse(JSON.stringify(row)),
-          });
+          // TODO - should probalby just use current evaluator
+
+          a.params._index = this.appDataEvaluator.evaluate(a.params._index);
           targetItem = itemData[a.params._index];
         }
         if (!targetItem) {
@@ -189,6 +220,8 @@ export class TmplDataItemsComponent extends TemplateBaseComponent implements OnD
       }
       return a;
     });
+
+    return row;
   }
 
   /**
@@ -219,54 +252,23 @@ export class TmplDataItemsComponent extends TemplateBaseComponent implements OnD
    * however this must be bypassed to allow multiple reprocessing on item updates
    */
   private async hackProcessRows(rows: FlowTypes.TemplateRow[]) {
-    const processor = new TemplateRowService(this.injector, {
-      name: "",
-      template: {
-        rows,
-      },
-      row: {
-        rows: [],
-      },
-    } as any);
-    // HACK - still want to be able to use localContext from parent rows so copy to child processor
-    processor.templateRowMap = JSON.parse(
-      JSON.stringify(this.parent.templateRowService.templateRowMap)
-    );
-    await processor.processContainerTemplateRows();
-    return processor.renderedRows;
-  }
+    // const processor = new TemplateRowService(this.injector, {
+    //   name: "",
+    //   template: {
+    //     rows,
+    //   },
+    //   row: {
+    //     rows: [],
+    //   },
+    // } as any);
+    // // HACK - still want to be able to use localContext from parent rows so copy to child processor
+    // processor.templateRowMap = JSON.parse(
+    //   JSON.stringify(this.parent.templateRowService.templateRowMap)
+    // );
+    // await processor.processContainerTemplateRows();
+    // return processor.renderedRows;
 
-  /**
-   * If datalist referenced as @data.some_list it will already be parsed, so extract
-   * name from raw values.
-   * Alternatively any list provided as a string value can be returned directly
-   * */
-  private hackGetRawDataListName(row: FlowTypes.TemplateRow) {
-    if (!row.value) return;
-    if (typeof row.value === "string") {
-      return row.value;
-    }
-    // HACK - if list name contains '_list' template.parser will parse as an array instead of string
-    if (Array.isArray(row.value)) {
-      return row.value[0];
-    }
-    // Extract raw name in case full datalist object supplied in place of name
-    return row._dynamicFields?.value?.[0]?.fieldName;
-  }
-
-  /** Copied from template-row service */
-  private async parseDataList(dataList: { [id: string]: any }) {
-    const parsed: { [id: string]: any } = {};
-    for (const [listKey, listValue] of Object.entries(dataList)) {
-      parsed[listKey] = listValue;
-      for (const [itemKey, itemValue] of Object.entries(listValue)) {
-        if (typeof itemValue === "string") {
-          parsed[listKey][itemKey] =
-            await this.templateVariablesService.evaluateConditionString(itemValue);
-        }
-      }
-    }
-    return parsed;
+    return rows;
   }
 
   ngOnDestroy() {
