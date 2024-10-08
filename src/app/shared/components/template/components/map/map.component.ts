@@ -184,7 +184,8 @@ export class TmplMapComponent extends TemplateBaseComponent implements OnInit {
       radius: point_radius_max || 12,
       weight: (feature) => {
         const value = feature.get(propertyToPlot);
-        return scale_bins ? this.mapValueToBin(value, scale_bins) : value;
+        const normalisedValue = (value - scale_min) / (scale_max - scale_min);
+        return scale_bins ? this.mapValueToBin(normalisedValue, scale_bins) : normalisedValue;
       },
     });
 
