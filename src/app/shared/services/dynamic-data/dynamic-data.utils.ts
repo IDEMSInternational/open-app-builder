@@ -1,6 +1,6 @@
 import type { FlowTypes } from "packages/data-models/flowTypes";
 import { TemplatedData } from "packages/shared/src/models/templatedData/templatedData";
-import { AppStringEvaluator } from "packages/shared/src/models/appStringEvaluator/appStringEvaluator";
+import { AppDataEvaluator } from "packages/shared/src/models/appDataEvaluator/appDataEvaluator";
 
 /**
  * Given an update to apply to a list of items check whether the update self-references
@@ -14,7 +14,7 @@ export function evaluateDynamicDataUpdate(
   update: Record<string, any>
 ) {
   if (hasDynamicDataItemReferences(update)) {
-    const evaluator = new AppStringEvaluator();
+    const evaluator = new AppDataEvaluator();
     return items.map((item) => {
       evaluator.setExecutionContext({ item });
       const evaluated = evaluator.evaluate(update);
