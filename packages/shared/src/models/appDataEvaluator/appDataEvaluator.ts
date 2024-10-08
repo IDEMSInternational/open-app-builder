@@ -1,7 +1,7 @@
 import { JSEvaluator } from "../jsEvaluator/jsEvaluator";
-import { TemplatedData } from "..";
+import { TemplatedData } from "../templatedData/templatedData";
 import { isObjectLiteral } from "../../utils/object-utils";
-import { addJSDelimeters } from "../../utils";
+import { addJSDelimeters } from "../../utils/delimiters";
 
 type IContext = { [nameSpace: string]: { [field: string]: any } };
 
