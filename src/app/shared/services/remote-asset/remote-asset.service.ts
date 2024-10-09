@@ -12,7 +12,7 @@ import { BehaviorSubject, Subject, Subscription, lastValueFrom } from "rxjs";
 import { AppDataService } from "src/app/shared/services/data/app-data.service";
 import { TemplateAssetService } from "../../components/template/services/template-asset.service";
 import { AsyncServiceBase } from "../asyncService.base";
-import { IAssetEntry, IAssetOverrideProps } from "packages/data-models/deployment.model";
+import type { IAssetEntry, IAssetOverrideProps } from "packages/data-models";
 import { DynamicDataService } from "../dynamic-data/dynamic-data.service";
 import { arrayToHashmap, convertBlobToBase64, deepMergeObjects } from "../../utils";
 import { DeploymentService } from "../deployment/deployment.service";
@@ -297,7 +297,7 @@ export class RemoteAssetService extends AsyncServiceBase {
    * Update the contents list with the contents of an asset pack, including any overrides,
    * updating filepath to be a public supabase CDN URL
    */
-  async addRemoteFilepathToAssetContentsEntry(assetEntry: IAssetEntry) {
+  public async addRemoteFilepathToAssetContentsEntry(assetEntry: IAssetEntry) {
     // Update the contents entry for the top level asset, unless overridesOnly is specified
     if (!assetEntry.overridesOnly) {
       const topLevelAssetUrl = this.getPublicUrl(assetEntry.id);
@@ -473,7 +473,7 @@ export class RemoteAssetService extends AsyncServiceBase {
    * Download from a private supabase bucket using the SDK method. Not currently used.
    * NB this method does not support tracking download progress
    * */
-  async downloadFileFromPrivateBucket(filepath: string) {
+  public async downloadFileFromPrivateBucket(filepath: string) {
     let data: Blob;
     try {
       this.downloading = true;
