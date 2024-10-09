@@ -97,6 +97,7 @@ const MOCK_CORE_ASSET_PACK: FlowTypes.AssetPack = {
 };
 
 const MOCK_DEPLOYMENT_CONFIG: Partial<IDeploymentRuntimeConfig> = {
+  name: "MOCK",
   supabase: {
     enabled: true,
   },
