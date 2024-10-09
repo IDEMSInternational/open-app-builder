@@ -77,6 +77,11 @@ ion-button[data-variant~="card"] {
   }
 }
 
+// set the speed of the ripple effect to ensure that it is consistent across all buttons
+.ion-ripple-effect {
+  --ion-ripple-duration: 500ms;
+}
+
 .button-container[data-variant~="card-portrait"] {
   background-color: white;
   color: var(--ion-color-primary);
@@ -92,6 +97,7 @@ ion-button[data-variant~="card"] {
   padding: 1.5rem 0.5rem 0.5rem;
   // TODO: make a variable
   width: 160px;
+  overflow: hidden;
 
   &:active {
     background-color: var(--ion-color-gray-light);

@@ -30,11 +30,12 @@
   <!-- "card-portrait" variant. This variant is not achievable using an ion-button -->
   <div
     *ngSwitchCase="true"
-    class="button-container"
+    class="button-container ion-activatable"
     (click)="triggerActions('click')"
     [attr.data-variant]="params.variant"
     [attr.data-has-children]="_row.rows ? true : false"
   >
+    <ion-ripple-effect></ion-ripple-effect>
     <img *ngIf="params.image" src="{{ params.image | plhAsset }}" />
     <div *ngIf="_row.value" [class]="'button-text ' + params.textAlign">
       {{ _row.value }}
