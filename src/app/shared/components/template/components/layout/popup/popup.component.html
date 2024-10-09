@@ -8,8 +8,8 @@
       <ion-icon slot="icon-only" name="close"></ion-icon>
     </div>
     <div class="popup-content" [attr.data-fullscreen]="props.fullscreen ? true : null">
-      @if (props.textOnly) {
-        <div class="large standard normal" [innerHTML]="props.text | markdown"></div>
+      @if (props.popupText) {
+        <div class="large standard normal" [innerHTML]="props.popupText | markdown"></div>
       } @else {
         <plh-template-container
           class="template-container"

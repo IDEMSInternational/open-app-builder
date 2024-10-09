@@ -259,8 +259,7 @@ export class TmplAudioComponent
       component: TemplatePopupComponent,
       componentProps: {
         props: {
-          textOnly: true,
-          text: this.params.transcriptText,
+          popupText: this.params.transcriptText,
           fullscreen: false,
           showCloseButton: true,
         },
