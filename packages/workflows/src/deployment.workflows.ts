@@ -1,3 +1,4 @@
+import { DeploymentSet } from "../../scripts/src/commands/deployment/set";
 import type { IDeploymentWorkflows } from "./workflow.model";
 /** Default workflows made available to all deployments */
 const workflows: IDeploymentWorkflows = {
@@ -85,17 +86,26 @@ const workflows: IDeploymentWorkflows = {
         ],
         label: "Set active deployment",
         steps: [
+          // Prompt deployment name if not specified
+          {
+            name: "deployment prompt",
+            condition: async ({ args }) => !args[0],
+            function: async ({ args }) => {
+              const deploymentName = await new DeploymentSet().promptDeploymentSelect();
+              args[0] = deploymentName;
+            },
+          },
+          // Attempt to decrypt config before setting (so that it can populate to config json)
+          {
+            name: "decrypt",
+            function: async ({ tasks, args }) => {
+              await tasks.encryption.decrypt(args[0]);
+            },
+          },
           {
             name: "deployment set",
             function: async ({ tasks, args }) => {
               await tasks.deployment.set(args[0]);
-            },
-          },
-          // Ensure deployment decrypted once set
-          {
-            name: "decrypt",
-            function: async ({ tasks }) => {
-              await tasks.encryption.decrypt();
             },
           },
           {
