@@ -2,7 +2,93 @@
 
 $control-background: var(--audio-control-background, var(--ion-color-primary-500));
 
-.container-player {
+.container-player[data-variant~="compact"] {
+  background: white;
+  border: var(--ion-border-standard);
+  box-sizing: border-box;
+  box-shadow: var(--ion-default-box-shadow);
+  border-radius: var(--ion-border-radius-standard);
+  padding: var(--small-padding);
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  .top-row {
+    @include mixins.flex-space-between;
+    width: 100%;
+    display: flex;
+    min-height: var(--audio-title-and-help-height);
+    h3 {
+      margin: 0;
+      margin-right: var(--small-margin);
+      color: var(--ion-color-primary);
+      max-width: 85%;
+      font-weight: var(--font-weight-bold);
+      font-size: var(--audio-title-size);
+    }
+  }
+
+  .second-row {
+    display: flex;
+    flex-direction: row-reverse;
+
+    .controls {
+      @include mixins.flex-space-between;
+      align-self: center;
+      .rewind,
+      .forward {
+        display: none;
+      }
+      ion-button.btn-play {
+        @include mixins.medium-square;
+        margin-right: var(--small-margin);
+        --background: #{$control-background};
+        --border-radius: var(--ion-border-radius-rounded);
+        --box-shadow: var(--ion-default-box-shadow);
+        ion-icon {
+          position: absolute;
+          font-size: var(--icon-size-tiny);
+          // Fine-tune spacing of 'play' icon so that triangle appears to be centred visually
+          &.play-icon {
+            padding-left: 4px;
+          }
+        }
+      }
+    }
+
+    .progress-block {
+      width: 100%;
+      display: flex;
+      margin-left: var(--small-margin);
+      ion-range {
+        width: 100%;
+        --bar-background: var(--ion-color-gray-200);
+        --bar-height: 4px;
+        --knob-size: 18px;
+        --knob-background: var(--ion-color-primary);
+        --bar-border-radius: 10px;
+      }
+      .time {
+        @include mixins.flex-space-between;
+        margin-left: var(--small-margin);
+        .time-value {
+          font-size: var(--font-size-text-small);
+          line-height: var(--line-height-text-small);
+          color: var(--ion-color-primary);
+        }
+      }
+    }
+    .info-icon-container {
+      @include mixins.flex-centered;
+      margin-left: var(--small-margin);
+      ion-icon {
+        color: var(--ion-color-primary);
+        font-size: var(--icon-size-tiny);
+      }
+    }
+  }
+}
+
+.container-player[data-variant~="large"] {
   background: var(--ion-color-primary-contrast);
   border: var(--ion-border-standard);
   box-sizing: border-box;
@@ -14,74 +100,79 @@ $control-background: var(--audio-control-background, var(--ion-color-primary-500
   flex-direction: column;
   .top-row {
     @include mixins.flex-space-between;
-    .title_and_help {
-      width: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      min-height: var(--audio-title-and-help-height);
-      h3 {
-        margin: 0;
-        margin-right: var(--small-margin);
-        color: var(--ion-color-primary);
-        max-width: 85%;
-        font-weight: var(--font-weight-bold);
-        font-size: var(--audio-title-size);
-      }
-      .audio-help {
-        color: var(--ion-color-primary);
-        height: var(--help-icon-standard-size);
-        width: var(--help-icon-standard-size);
-      }
-    }
-  }
-  .progress-block {
-    .audio-range {
-      --bar-background-active: #{$control-background};
-      --bar-background: transparent;
-      --bar-height: 4px;
-      --bar-border-radius: var(--ion-border-radius-secondary);
-      --knob-size: 0px;
-      --pin-background: var(--ion-color-primary);
-      --knob-background: var(--ion-color-primary);
-      padding-inline: 0;
-    }
-
-    ion-range::part(bar) {
-      border: var(--ion-border-thin-standard);
-      height: var(--audio-bar-height);
-    }
-
-    ion-range::part(bar-active) {
-      top: 4px;
-      margin-left: 3px;
-    }
-  }
-  .time {
-    @include mixins.flex-space-between;
-    &-value {
-      font-size: var(--font-size-text-large);
-      line-height: var(--line-height-text-small);
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: var(--audio-title-and-help-height);
+    h3 {
+      margin: 0;
+      margin-right: var(--small-margin);
       color: var(--ion-color-primary);
+      max-width: 85%;
+      font-weight: var(--font-weight-bold);
+      font-size: var(--audio-title-size);
+    }
+    .info-icon-container {
+      @include mixins.flex-centered;
+      ion-icon {
+        color: var(--ion-color-primary);
+        font-size: var(--icon-size-small);
+      }
     }
   }
-  .controls {
-    @include mixins.flex-space-between;
-    min-width: var(--audio-controls-width);
-    align-self: center;
-    .rewind,
-    .forward {
-      ion-icon {
-        font-size: var(--icon-size-largest);
-        color: var(--ion-color-primary);
+
+  .second-row {
+    display: flex;
+    flex-direction: column;
+
+    .progress-block {
+      width: 100%;
+      .audio-range {
+        --bar-background-active: #{$control-background};
+        --bar-background: transparent;
+        --bar-height: 4px;
+        --bar-border-radius: var(--ion-border-radius-secondary);
+        --knob-size: 0px;
+        --pin-background: var(--ion-color-primary);
+        --knob-background: var(--ion-color-primary);
+        padding-inline: 0;
+      }
+
+      ion-range::part(bar) {
+        border: var(--ion-border-thin-standard);
+        height: var(--audio-bar-height);
+      }
+
+      ion-range::part(bar-active) {
+        top: 4px;
+        margin-left: 3px;
+      }
+      .time {
+        @include mixins.flex-space-between;
+        &-value {
+          font-size: var(--font-size-text-large);
+          line-height: var(--line-height-text-small);
+          color: var(--ion-color-primary);
+        }
       }
     }
-    .rewind {
-      ion-icon {
-        transform: rotate(180deg);
+    .controls {
+      @include mixins.flex-space-between;
+      width: var(--audio-controls-width);
+      align-self: center;
+      .rewind,
+      .forward {
+        ion-icon {
+          font-size: var(--icon-size-largest);
+          color: var(--ion-color-primary);
+        }
       }
-    }
-    .play {
+      .rewind {
+        ion-icon {
+          transform: rotate(180deg);
+        }
+      }
       .btn-play {
         @include mixins.large-square;
         --background: #{$control-background};
@@ -98,10 +189,6 @@ $control-background: var(--audio-control-background, var(--ion-color-primary-500
         }
       }
     }
-  }
-  .error-text {
-    margin: var(--small-margin) 0;
-    text-align: center;
   }
 }
 .disabled {

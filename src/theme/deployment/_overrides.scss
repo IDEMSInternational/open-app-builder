@@ -9,6 +9,12 @@ ion-content {
   --padding-bottom: 24px;
   --padding-start: 24px;
   --padding-end: 24px;
+
+  // HACK: prevent scrollbar from hiding when interacting with ion-range, for example (this can cause visual glitches).
+  // see https://github.com/ionic-team/ionic-framework/issues/25595#issuecomment-1330293954
+  &::part(scroll) {
+    overflow-y: auto !important;
+  }
 }
 ion-content.no-padding {
   --padding-top: 0;
