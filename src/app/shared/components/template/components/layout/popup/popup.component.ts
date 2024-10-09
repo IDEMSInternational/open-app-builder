@@ -54,5 +54,5 @@ export interface ITemplatePopupComponentProps extends ITemplateContainerProps {
   /** Display fullscreen overlayed on top of all other app content */
   fullscreen?: boolean;
   /** Pass text only to render that text in a popup, bypassing any templates */
-  popupText?: boolean;
+  popupText?: string;
 }
