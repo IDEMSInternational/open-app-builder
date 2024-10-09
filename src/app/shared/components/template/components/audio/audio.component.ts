@@ -105,23 +105,12 @@ export class TmplAudioComponent
     this.initPlayer();
   }
 
-  async openTranscriptPopup() {
-    const modal = await this.modalCtrl.create({
-      component: TemplatePopupComponent,
-      componentProps: {
-        props: {
-          textOnly: true,
-          text: this.params.transcriptText,
-          fullscreen: false,
-          showCloseButton: true,
-        },
-      },
-      id: "popup-audio-transcript",
-      // update to this styling must be done in global theme scss as the modal is injected dynamically into the dom
-      cssClass: "template-popup-modal",
-      showBackdrop: false,
-    });
-    modal.present();
+  public async handleActionButtonClick() {
+    if (this.params.transcriptText) {
+      await this.openTranscriptPopup();
+    } else {
+      await this.triggerActions("info_click");
+    }
   }
 
   private getParams() {
@@ -202,10 +191,6 @@ export class TmplAudioComponent
     this.isPlaying = !this.isPlaying;
   }
 
-  public async clickInfo() {
-    await this.triggerActions("info_click");
-  }
-
   /**
    * Handle dragging of the range bar. Does not seek within the actual audio file,
    * this should only be triggered when the handle is released (on ionChange)
@@ -267,6 +252,25 @@ export class TmplAudioComponent
       clearInterval(this.trackerInterval);
       this.trackerInterval = null;
     }
+  }
+
+  private async openTranscriptPopup() {
+    const modal = await this.modalCtrl.create({
+      component: TemplatePopupComponent,
+      componentProps: {
+        props: {
+          textOnly: true,
+          text: this.params.transcriptText,
+          fullscreen: false,
+          showCloseButton: true,
+        },
+      },
+      id: "popup-audio-transcript",
+      // update to this styling must be done in global theme scss as the modal is injected dynamically into the dom
+      cssClass: "template-popup-modal",
+      showBackdrop: false,
+    });
+    modal.present();
   }
 
   async ngOnDestroy() {
