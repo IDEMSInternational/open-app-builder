@@ -6,10 +6,11 @@ interface IiOSBuildOptions {
   appId: string;
   appName: string;
   versionName: string;
+  zoomEnabled: boolean;
 }
 
 /** Populate iOS template files with variables from deployment */
-const configure = async ({ appId, appName, versionName }: IiOSBuildOptions) => {
+const configure = async ({ appId, appName, versionName, zoomEnabled }: IiOSBuildOptions) => {
   // TODO - allow user to input and update config where variables not defined (?)
   if (!appId)
     Logger.error({
@@ -38,6 +39,7 @@ const configure = async ({ appId, appName, versionName }: IiOSBuildOptions) => {
       APP_NAME: appName,
       VERSION_CODE: versionCode,
       VERSION_NAME: versionName,
+      ZOOM_ENABLED: zoomEnabled,
     },
     // As the default project.pbxproj file contains various variables env variables in ${...} format that
     // are populated by xcode, target the specific variables that we've added into the template file

@@ -7,6 +7,7 @@ const config: CapacitorConfig = {
   appId: "${APP_ID}",
   appName: "${APP_NAME}",
   webDir: "www",
+  zoomEnabled: "${ZOOM_ENABLED}" as any,
   plugins: {
     SplashScreen: {
       launchShowDuration: 7000, // app.component.ts should manually dismiss before duration
