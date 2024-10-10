@@ -46,7 +46,7 @@ const configure = async ({ appId, appName, versionName, zoomEnabled }: IAndroidB
       ZOOM_ENABLED: zoomEnabled,
     },
     // Only replace the following variables
-    includeVariables: ["APP_ID", "APP_NAME", "VERSION_CODE", "VERSION_NAME"],
+    includeVariables: ["APP_ID", "APP_NAME", "VERSION_CODE", "VERSION_NAME", "ZOOM_ENABLED"],
   });
 
   // Move files where template not already located in correct folder (various reasons below)

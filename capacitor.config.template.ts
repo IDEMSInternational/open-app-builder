@@ -7,7 +7,7 @@ const config: CapacitorConfig = {
   appId: "${APP_ID}",
   appName: "${APP_NAME}",
   webDir: "www",
-  zoomEnabled: "${ZOOM_ENABLED}" as any,
+  zoomEnabled: toBoolean("${ZOOM_ENABLED}"),
   plugins: {
     SplashScreen: {
       launchShowDuration: 7000, // app.component.ts should manually dismiss before duration
@@ -36,3 +36,7 @@ const config: CapacitorConfig = {
 };
 
 export default config;
+
+function toBoolean(v: string) {
+  return !!v;
+}

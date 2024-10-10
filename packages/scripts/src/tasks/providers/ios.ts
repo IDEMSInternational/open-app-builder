@@ -43,7 +43,7 @@ const configure = async ({ appId, appName, versionName, zoomEnabled }: IiOSBuild
     },
     // As the default project.pbxproj file contains various variables env variables in ${...} format that
     // are populated by xcode, target the specific variables that we've added into the template file
-    includeVariables: ["APP_ID", "APP_NAME", "VERSION_CODE", "VERSION_NAME"],
+    includeVariables: ["APP_ID", "APP_NAME", "VERSION_CODE", "VERSION_NAME", "ZOOM_ENABLED"],
   });
 };
 
