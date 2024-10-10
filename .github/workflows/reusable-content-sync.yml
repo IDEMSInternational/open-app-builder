@@ -17,10 +17,9 @@ env:
   PARENT_DEPLOYMENT_REPO: ${{vars.PARENT_DEPLOYMENT_REPO}}
   PARENT_DEPLOYMENT_NAME: ${{vars.PARENT_DEPLOYMENT_NAME}}
   PARENT_DEPLOYMENT_BRANCH: ${{vars.PARENT_DEPLOYMENT_BRANCH}}
-  DEPLOYMENT_PRIVATE_KEY: ${{secrets.DEPLOYMENT_PRIVATE_KEY}}
-  FIREBASE_CONFIG: ${{secrets.FIREBASE_CONFIG}}  
   GDRIVE_CREDENTIALS: ${{ secrets.GDRIVE_CREDENTIALS }} 
   GDRIVE_TOKEN:  ${{ secrets.GDRIVE_TOKEN }}
+  PAT: ${{ secrets.PAT }}
   
   
 name: Perform content sync and create a PR
@@ -33,11 +32,18 @@ on:
         pr-title:
           description: Title for PR
           type: string
-          default: sync content from google sheets
+          default: sync content from Google Sheets
         pr-body:
           description: Description for PR
           type: string
           default: Automated PR creation from actions
+      secrets:  # Declare secrets you expect to receive
+        GDRIVE_CREDENTIALS:
+          required: true
+        GDRIVE_TOKEN:
+          required: true
+        PAT:
+          required: true
    
 jobs:
    build:
@@ -67,11 +73,7 @@ jobs:
         with:
           token: ${{ secrets.PAT }}
           path: ".idems_app/deployments/${{env.DEPLOYMENT_NAME}}"
-          
-      - name: Populate Encryption key
-        if: env.DEPLOYMENT_PRIVATE_KEY != ''
-        run: echo "${{env.DEPLOYMENT_PRIVATE_KEY}}" > ./.idems_app/deployments/${{env.DEPLOYMENT_NAME}}/encrypted/private.key
-
+         
       - name: Setup Node
         uses: actions/setup-node@v3
         with:
@@ -119,7 +121,7 @@ jobs:
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v5.0.2
         with:
-          token: ${{ secrets.PAT }}
+          token: ${{ env.PAT }}
           # Relative path under $GITHUB_WORKSPACE to the repository. Defaults to $GITHUB_WORKSPACE.
           path: .idems_app/deployments/${{env.DEPLOYMENT_NAME}}             
           # The title of the pull request.
