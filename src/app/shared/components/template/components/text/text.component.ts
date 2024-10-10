@@ -15,7 +15,7 @@ interface ITextParams {
 })
 export class TmplTextComponent extends TemplateBaseComponent implements OnInit {
   params: Partial<ITextParams> = {};
-  isFalsy: boolean;
+  hasTextValue: boolean;
 
   constructor() {
     super();
@@ -26,7 +26,7 @@ export class TmplTextComponent extends TemplateBaseComponent implements OnInit {
   }
 
   getParams() {
-    this.isFalsy = ["undefined", "NaN", "null", '""'].includes(this._row.value);
+    this.hasTextValue = !["undefined", "NaN", "null", '""'].includes(this._row.value);
     this.params.textAlign = getStringParamFromTemplateRow(this._row, "text_align", null);
     this.params.type = this._row.parameter_list?.style?.includes("numbered")
       ? "numbered"

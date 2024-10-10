@@ -2,7 +2,7 @@
   <div
     class="large standard normal margin-t-large"
     [class]="params.style"
-    [ngStyle]="isFalsy ? { display: 'none' } : { display: 'block' }"
+    [ngStyle]="!hasTextValue ? { display: 'none' } : { display: 'block' }"
     [innerHTML]="
       params.type === 'numbered'
         ? (this._row.value | number)
