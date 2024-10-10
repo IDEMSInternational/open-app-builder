@@ -8,12 +8,13 @@ const childWorkflows: IDeploymentWorkflows = {
         name: "configure",
         function: async ({ config, tasks }) => {
           const { android, git } = config;
-          const { app_id, app_name } = android;
+          const { app_id, app_name, zoom_enabled } = android;
           const { content_tag_latest } = git;
           return tasks.android.configure({
             appId: app_id,
             appName: app_name,
             versionName: content_tag_latest,
+            zoomEnabled: zoom_enabled || false,
           });
         },
       },
