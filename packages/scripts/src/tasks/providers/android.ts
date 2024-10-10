@@ -10,10 +10,11 @@ interface IAndroidBuildOptions {
   appId: string;
   appName: string;
   versionName: string;
+  zoomEnabled: boolean;
 }
 
 /** Populate android template files with variables from deployment */
-const configure = async ({ appId, appName, versionName }: IAndroidBuildOptions) => {
+const configure = async ({ appId, appName, versionName, zoomEnabled }: IAndroidBuildOptions) => {
   // TODO - allow user to input and update config where variables not defined (?)
   if (!appId)
     Logger.error({
@@ -42,6 +43,7 @@ const configure = async ({ appId, appName, versionName }: IAndroidBuildOptions) 
       APP_NAME: appName,
       VERSION_CODE: versionCode,
       VERSION_NAME: versionName,
+      ZOOM_ENABLED: zoomEnabled,
     },
     // Only replace the following variables
     includeVariables: ["APP_ID", "APP_NAME", "VERSION_CODE", "VERSION_NAME"],
