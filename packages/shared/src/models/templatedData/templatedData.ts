@@ -74,19 +74,20 @@ export class TemplatedData {
    * Iterate over data, parse string values and nested objects and arrays recursively
    */
   public parse<T>(value: T) {
-    if (value) {
-      if (typeof value === "string") {
-        value = this.parseTemplatedString(value);
+    if (typeof value === "string") {
+      return this.parseTemplatedString(value);
+    }
+    // recursively convert array and json-like objects
+    if (Array.isArray(value)) {
+      return value.map((v) => this.parse(v)) as any;
+    }
+    if (isObjectLiteral(value)) {
+      // create a new object to avoid changes to input
+      const parsed = {};
+      for (const [key, nestedValue] of Object.entries(value)) {
+        parsed[key] = this.parse(nestedValue);
       }
-      // recursively convert array and json-like objects
-      if (Array.isArray(value)) {
-        value = value.map((v) => this.parse(v)) as any;
-      }
-      if (isObjectLiteral(value)) {
-        for (const [key, nestedValue] of Object.entries(value)) {
-          value[key] = this.parse(nestedValue);
-        }
-      }
+      return parsed;
     }
     return value;
   }
@@ -147,7 +148,7 @@ export class TemplatedData {
 
   /**
    * Take a string and replace instances of context variables, such as `"hello {@row.name}"`
-   * Will convert non-delimited strings to delimted, extract list of variables and parse
+   * Will convert non-delimited strings to delimited, extract list of variables and parse
    */
   private parseTemplatedString(value: string) {
     const delimited = addStringDelimiters(value, this.contextPrefixes);

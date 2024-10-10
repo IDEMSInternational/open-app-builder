@@ -7,7 +7,7 @@ interface IDelimitedTestData {
 }
 
 const prefixes = ["row"];
-const delimitedTests: IDelimitedTestData[] = [
+const stringDelimiterTests: IDelimitedTestData[] = [
   // basic
   {
     input: "Name: @row.first_name",
@@ -39,6 +39,80 @@ interface IParseTestData {
   delimited: string;
   extracted: ITemplatedStringVariable;
 }
+
+describe("addStringDelimiters", () => {
+  // Test individual string parsing
+  for (const testData of stringDelimiterTests) {
+    execTest(testData);
+  }
+
+  // Use a function wrapper to allow looping tests
+  function execTest(testData: IDelimitedTestData) {
+    const { input, delimited } = testData;
+
+    it(JSON.stringify(input), () => {
+      const parsedValue = Delimiters.addStringDelimiters(input, prefixes);
+      expect(parsedValue).toEqual(delimited);
+      process.nextTick(() => console.log(`      ${JSON.stringify(parsedValue)}\n`));
+      // NOTE - in case of errors additional tests can be carried out just on intermediate
+    });
+  }
+});
+
+const jsDelimterTests: IDelimitedTestData[] = [
+  // nested
+  {
+    input: "@row.@row.first_name",
+    delimited: "this.row[this.row.first_name]",
+  },
+
+  // basic
+  {
+    input: "@row.first_name",
+    delimited: "this.row.first_name",
+  },
+  // expression
+  {
+    input: "@row.first_name === 'Ada'",
+    delimited: "this.row.first_name === 'Ada'",
+  },
+
+  // nested with braces
+  {
+    input: "@row.{@row.first_name}",
+    delimited: "this.row[this.row.first_name]",
+  },
+  // invalid (will need to be parsed as templated string)
+  {
+    input: "Hello @row.first_name @row.last_name",
+    delimited: "Hello this.row.first_name this.row.last_name",
+  },
+];
+
+interface IParseTestData {
+  delimited: string;
+  extracted: ITemplatedStringVariable;
+}
+
+describe("addJSDelimiters", () => {
+  // Test individual string parsing
+  for (const testData of jsDelimterTests) {
+    execTest(testData);
+  }
+
+  // Use a function wrapper to allow looping tests
+  function execTest(testData: IDelimitedTestData) {
+    const { input, delimited } = testData;
+
+    it(JSON.stringify(input), () => {
+      const parsedValue = Delimiters.addJSDelimeters(input, prefixes);
+      expect(parsedValue).toEqual(delimited);
+      process.nextTick(() => console.log(`      ${JSON.stringify(parsedValue)}\n`));
+      // NOTE - in case of errors additional tests can be carried out just on intermediate
+    });
+  }
+});
+
 const parseTests: IParseTestData[] = [
   // basic
   {
@@ -92,25 +166,6 @@ const parseTests: IParseTestData[] = [
     },
   },
 ];
-
-describe("Converts non-delimited variables", () => {
-  // Test individual string parsing
-  for (const testData of delimitedTests) {
-    execTest(testData);
-  }
-
-  // Use a function wrapper to allow looping tests
-  function execTest(testData: IDelimitedTestData) {
-    const { input, delimited } = testData;
-
-    it(JSON.stringify(input), () => {
-      const parsedValue = Delimiters.addStringDelimiters(input, prefixes);
-      expect(parsedValue).toEqual(delimited);
-      process.nextTick(() => console.log(`      ${JSON.stringify(parsedValue)}\n`));
-      // NOTE - in case of errors additional tests can be carried out just on intermediate
-    });
-  }
-});
 
 describe("Parses delimiters", () => {
   // Test individual string parsing

@@ -77,7 +77,7 @@ function extractDynamicDependencies(dynamicFields: FlowTypes.TemplateRow["_dynam
   });
   return dynamicDependencies;
 }
-function flattenJson<T>(json: any, tree = {}, nestedPath?: string): { [key: string]: T } {
+export function flattenJson<T>(json: any, tree = {}, nestedPath?: string): { [key: string]: T } {
   Object.entries<T>(json).forEach(([key, value]) => {
     const nestedName = nestedPath ? `${nestedPath}.${key}` : key;
     if (value && typeof value === "object" && !Array.isArray(value)) {
