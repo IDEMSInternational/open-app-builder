@@ -16,11 +16,11 @@ _Specify the version of the app where this bug was first identified._
 **To Reproduce**
 _Describe the steps to reproduce this bug._
 
-**Template Name**
-_Specify the template name and include a link where the bug appears if appropriate._
+**Deployment Sheet(s)**
+_Specify the sheet name and include a link where the bug appears if appropriate._
 
-**Debug Template**
-_If you have a debug template to show demonstrate the bug specify its name and provide a link._
+**Debug Sheet(s)**
+_If you have a debug sheet to show demonstrate the bug specify its name and provide a link._
 
 **Screenshots and videos**
 _If applicable, add screenshots or videos to help explain your problem._
