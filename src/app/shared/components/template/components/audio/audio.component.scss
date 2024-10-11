@@ -30,6 +30,7 @@ $control-background: var(--audio-control-background, var(--ion-color-primary-500
   .second-row {
     display: flex;
     flex-direction: row-reverse;
+    align-items: center;
 
     .controls {
       @include mixins.flex-space-between;
@@ -58,7 +59,7 @@ $control-background: var(--audio-control-background, var(--ion-color-primary-500
     .progress-block {
       width: 100%;
       display: flex;
-      margin-left: var(--small-margin);
+      margin: 0 var(--tiny-margin);
       ion-range {
         width: 100%;
         --bar-background: var(--ion-color-gray-200);
@@ -77,13 +78,9 @@ $control-background: var(--audio-control-background, var(--ion-color-primary-500
         }
       }
     }
-    .info-icon-container {
-      @include mixins.flex-centered;
-      margin-left: var(--small-margin);
-      ion-icon {
-        color: var(--ion-color-primary);
-        font-size: var(--icon-size-tiny);
-      }
+    ion-button.action-button {
+      --padding-start: 2px;
+      --padding-end: 2px;
     }
   }
 }
@@ -113,12 +110,9 @@ $control-background: var(--audio-control-background, var(--ion-color-primary-500
       font-weight: var(--font-weight-bold);
       font-size: var(--audio-title-size);
     }
-    .info-icon-container {
-      @include mixins.flex-centered;
-      ion-icon {
-        color: var(--ion-color-primary);
-        font-size: var(--icon-size-small);
-      }
+    ion-button.action-button {
+      --padding-start: 2px;
+      --padding-end: 2px;
     }
   }
 
