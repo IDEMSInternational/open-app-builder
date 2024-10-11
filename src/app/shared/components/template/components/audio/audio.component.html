@@ -4,24 +4,26 @@
       <h3>{{ params.title }}</h3>
       @if (params.variant.includes("large") && params.showInfoButton) {
         <div class="info-icon-container">
-          @if (params.infoIconAsset) {
-            <ion-icon [src]="params.infoIconAsset | plhAsset" (click)="clickInfo()"></ion-icon>
-          } @else {
-            <ion-icon name="document-text-outline" (click)="clickInfo()"></ion-icon>
-          }
+          <ion-button fill="clear" class="action-button" (click)="handleActionButtonClick()">
+            @if (params.infoIconAsset) {
+              <ion-icon slot="icon-only" [src]="params.infoIconAsset | plhAsset"></ion-icon>
+            } @else {
+              <ion-icon slot="icon-only" name="document-text-outline"></ion-icon>
+            }
+          </ion-button>
         </div>
       }
     </div>
   }
   <div class="second-row">
     @if (params.variant.includes("compact") && params.showInfoButton) {
-      <div class="info-icon-container">
+      <ion-button fill="clear" class="action-button" (click)="handleActionButtonClick()">
         @if (params.infoIconAsset) {
-          <ion-icon [src]="params.infoIconAsset | plhAsset" (click)="clickInfo()"></ion-icon>
+          <ion-icon slot="icon-only" [src]="params.infoIconAsset | plhAsset"></ion-icon>
         } @else {
-          <ion-icon name="document-text-outline" (click)="clickInfo()"></ion-icon>
+          <ion-icon slot="icon-only" name="document-text-outline"></ion-icon>
         }
-      </div>
+      </ion-button>
     }
     <div class="progress-block" [class.disabled]="params.rangeBarDisabled || !player">
       <ion-range
