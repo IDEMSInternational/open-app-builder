@@ -11,6 +11,7 @@ export class PLHAssetPipe implements PipeTransform {
   constructor(private templateAssetService: TemplateAssetService) {}
 
   transform(value: string) {
+    if (!value) return "";
     // keep external links
     if (value.startsWith("http")) {
       return value;
