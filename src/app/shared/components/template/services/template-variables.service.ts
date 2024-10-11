@@ -352,6 +352,24 @@ export class TemplateVariablesService extends AsyncServiceBase {
     return evaluated;
   }
 
+  /**  */
+  public async getDynamicFieldValue(
+    type: FlowTypes.IDynamicPrefix,
+    fieldName: string,
+    templateRowMap = {}
+  ) {
+    const expression = `${fieldName}.${type}`;
+    return this.processDynamicEvaluator(
+      {
+        fieldName,
+        type,
+        fullExpression: expression,
+        matchedExpression: expression,
+      },
+      { templateRowMap, row: null as any }
+    );
+  }
+
   /**
    * Lookup evaluators from statements such as @local.someVar or @data.anotherVar and return the
    * value depending on the required method
@@ -363,7 +381,7 @@ export class TemplateVariablesService extends AsyncServiceBase {
     let parsedValue: any;
     let parseSuccess = true;
     const { type, fieldName } = evaluator;
-    const { templateRowMap, field } = context;
+    const { templateRowMap, field, calcContext, row, itemContext } = context;
     switch (type) {
       case "local":
         // TODO - assumed 'value' field will be returned but this could be provided instead as an arg
@@ -431,15 +449,15 @@ export class TemplateVariablesService extends AsyncServiceBase {
         break;
       case "calc":
         const expression = fieldName.replace(/@/gi, "this.");
-        const { thisCtxt, globalFunctions, globalConstants } = context.calcContext;
+        const { thisCtxt, globalFunctions, globalConstants } = calcContext;
         log("evaluate calc", { expression, thisCtxt, globalFunctions });
         // TODO - merge string replacements with above methods
         parsedValue = evaluateJSExpression(expression, thisCtxt, globalFunctions, globalConstants);
         break;
       case "item":
         // only attempt to evaluate items if context passed, otherwise leave as original unparsed string
-        if (context?.itemContext) {
-          parsedValue = context.itemContext[fieldName];
+        if (itemContext) {
+          parsedValue = itemContext[fieldName];
         } else {
           parsedValue = evaluator.matchedExpression;
         }

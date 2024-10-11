@@ -363,7 +363,7 @@ export namespace FlowTypes {
     [key: string]: any;
   };
 
-  type IDynamicPrefix = IAppConfig["DYNAMIC_PREFIXES"][number];
+  export type IDynamicPrefix = IAppConfig["DYNAMIC_PREFIXES"][number];
 
   /** Data passed back from regex match, e.g. expression @local.someField => type:local, fieldName: someField */
   export interface TemplateRowDynamicEvaluator {
@@ -417,8 +417,11 @@ export namespace FlowTypes {
     "reset_app",
     "save_to_device",
     "set_field",
+    /** NOTE - only available from with data_items loop */
     "set_item",
+    /** NOTE - only available from with data_items loop */
     "set_items",
+    "set_data",
     "set_local",
     "share",
     "style",
