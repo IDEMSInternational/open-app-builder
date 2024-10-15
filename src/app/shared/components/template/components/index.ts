@@ -55,7 +55,7 @@ import { TmplTaskCardComponent } from "./task-card/task-card.component";
 import { TmplTaskProgressBarComponent } from "./task-progress-bar/task-progress-bar.component";
 import { TmplTextAreaComponent } from "./text-area/text-area.component";
 import { TmplTextBoxComponent } from "./text-box/text-box.component";
-import { TmplTextComponent } from "./text";
+import { TmplTextComponent } from "./text/text.component";
 import { TmplTileComponent } from "./tile-component/tile-component.component";
 import { TmplTitleComponent } from "./title";
 import { TmplTimerComponent } from "./timer/timer.component";
