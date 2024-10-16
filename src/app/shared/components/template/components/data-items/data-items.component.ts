@@ -7,15 +7,16 @@ import {
   OnDestroy,
 } from "@angular/core";
 import { debounceTime, Subscription } from "rxjs";
-import {
-  DynamicDataService,
-  ISetItemContext,
-} from "src/app/shared/services/dynamic-data/dynamic-data.service";
+import { DynamicDataService } from "src/app/shared/services/dynamic-data/dynamic-data.service";
 import { FlowTypes } from "../../models";
 import { ItemProcessor } from "../../processors/item";
 import { TemplateRowService } from "../../services/instance/template-row.service";
 import { TemplateVariablesService } from "../../services/template-variables.service";
 import { TemplateBaseComponent } from "../base";
+import type {
+  IActionSetItemParams,
+  IActionSetItemsParams,
+} from "src/app/shared/services/dynamic-data/dynamic-data.actions";
 
 @Component({
   selector: "plh-data-items",
@@ -113,25 +114,10 @@ export class TmplDataItemsComponent extends TemplateBaseComponent implements OnD
         _first: itemIndex === 0,
         _last: itemIndex === lastItemIndex,
       };
-      // Update any action list set_item args to contain name of current data list and item id
-      // and set_items action to include all currently displayed rows
+
+      // Update any action list set_item args to auto-populate current context data
       if (r.action_list) {
-        const setItemContext: ISetItemContext = {
-          flow_name: this.dataListName,
-          itemDataIDs,
-          currentItemId: itemId,
-        };
-        r.action_list = r.action_list.map((a) => {
-          if (a.action_id === "set_item") {
-            a.args = [setItemContext];
-          }
-          if (a.action_id === "set_items") {
-            // TODO - add a check for @item refs and replace parameter list with correct values
-            // for each individual item (default will be just to pick the first)
-            a.args = [setItemContext];
-          }
-          return a;
-        });
+        r.action_list = this.updateActionList(r.action_list, itemId, itemDataIDs);
       }
 
       // Apply recursively to ensure item children with nested rows (e.g. display groups) also inherit item context
@@ -140,6 +126,50 @@ export class TmplDataItemsComponent extends TemplateBaseComponent implements OnD
       }
 
       return r;
+    });
+  }
+
+  /**
+   * When calling set_item or set_items actions from within a data_items loop automatically populate data list
+   * and row id references where not already specified. Additionally add support for populating set_item row id reference
+   * from _index of currently rendered items, and set_items list of ids from currently rendered items
+   */
+  private updateActionList(
+    action_list: FlowTypes.TemplateRowAction[],
+    itemId: string,
+    itemDataIDs: string[]
+  ) {
+    return action_list.map((a) => {
+      // set_item - auto-populate list id and row id parameters from current item context (can be overridden)
+      if (a.action_id === "set_item") {
+        const params: IActionSetItemParams = {
+          _list_id: this.dataListName,
+          _id: itemId,
+          ...a.params,
+        };
+        // if _index used lookup and replace _id
+        if (params._index) {
+          params._id = itemDataIDs[params._index];
+          delete params._index;
+        }
+        a.params = params;
+      }
+
+      // set_items -auto-populate list items to match currently rendered
+      if (a.action_id === "set_items") {
+        const params: IActionSetItemsParams = {
+          _items: {
+            flow_type: "data_list",
+            flow_name: this.dataListName,
+            rows: itemDataIDs.map((id) => ({ id })),
+          },
+          ...a.params,
+        };
+        // TODO - add a check for @item refs and replace parameter list with correct values
+        // for each individual item (default will be just to pick the first)
+        a.params = params;
+      }
+      return a;
     });
   }
 
