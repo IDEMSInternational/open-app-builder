@@ -179,9 +179,6 @@ ion-button[data-variant~="card"] {
 .center {
   text-align: center;
 }
-.centre {
-  text-align: center;
-}
 
 // width
 .full {
@@ -219,5 +216,62 @@ ion-button[data-variant~="card"] {
   }
   @media (max-width: 320px) {
     max-width: 10rem;
+  }
+}
+
+// KUWAIT THEME STYLING
+:host-context([data-theme="plh_kids_kw"]){
+  ion-button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+    min-height: var(--buttons-medium-height);
+    height: var(--buttons-full-height);
+    width: var(--buttons-full-width);
+    margin: 0 auto;
+    --border-radius: var(--ion-border-radius-rounded);
+    --box-shadow: none;
+
+    font-size: var(--buttons-font-size-large);
+    font-weight: var(--font-weight-bold);
+    letter-spacing: var(--font-letter-spacing);
+    line-height: var(--line-height-text);
+    text-transform: none;
+  }
+  ion-button:disabled,
+  ion-button[disabled] {
+    filter: none;
+  }
+  // Center align all button text by default
+  .left.null ::ng-deep{
+    p{
+      text-align: center;
+    }
+  }
+  .left ::ng-deep{
+    p{
+      text-align: left;
+    }
+  }
+  .left.centre ::ng-deep{
+    p{
+      text-align: center;
+    }
+  }
+  .left.right ::ng-deep{
+    p{
+      text-align: right;
+    }
+  }
+  //Alignment Buttons
+  ion-button.left {
+    width: 50%;
+    margin-left: 0;
+  }
+  ion-button.right {
+    width: 50%;
+    margin-right: 0;
   }
 }
