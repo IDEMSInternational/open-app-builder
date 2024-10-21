@@ -40,6 +40,28 @@ export function addStringDelimiters(value: string, contextPrefixes: string[], fi
   return value;
 }
 
+/**
+ * Take a string with templated expressions and add delimeters for evaluation within a JS context
+ * @example
+ * ```
+ * "@row.@row.lookup_variable"
+ * // output
+ * "this.row[this.row.lookup_variable]"
+ */
+export function addJSDelimeters(value: string, contextPrefixes: string[]) {
+  const delimited = addStringDelimiters(value, contextPrefixes);
+  let replaced = delimited;
+  // inner variables, e.g. `@row.@row.inner_variable`
+  // E.g. Regex /\.{@(row.[a-z0-9_.]*)}/gi
+  const innerRegex = new RegExp(`\\.{@(${contextPrefixes.join("|")}.[a-z0-9_.]*)}`, "gi");
+  replaced = replaced.replace(innerRegex, "[this.$1]");
+  // outer variables, e.g. `@row[this.inner_variable]` or `@row.outer_variable`
+  // E.g. Regex /{@(row.[a-z0-9_.\[\]]*)}/gi
+  const outerRegex = new RegExp(`{@(${contextPrefixes.join("|")}.[a-z0-9_.\\[\\]]*)}`, "gi");
+  replaced = replaced.replace(outerRegex, "this.$1");
+  return replaced;
+}
+
 function shouldAddDelimiter(expression: string) {
   const [startDelimiter] = [expression[0]];
   // skip adding delimiters if starts with delimiter and contains an end delimiter within string
