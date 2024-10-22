@@ -222,11 +222,6 @@ ion-button[data-variant~="card"] {
 // KUWAIT THEME STYLING
 :host-context([data-theme="plh_kids_kw"]){
   ion-button{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-
     min-height: var(--buttons-medium-height);
     height: var(--buttons-full-height);
     width: var(--buttons-full-width);
@@ -273,5 +268,21 @@ ion-button[data-variant~="card"] {
   ion-button.right {
     width: 50%;
     margin-right: 0;
+  }
+  // Color Alternatives
+  .standard {
+    color: white;
+  }
+  .card.standard{
+    color: var(--ion-color-primary-800);
+  }
+  .alternative {
+    color: var(--ion-color-primary-50);
+  }
+  .information {
+    --background: var(--ion-color-primary-600);
+    &:hover{
+      --background: var(--ion-color-primary-500)
+    }
   }
 }
