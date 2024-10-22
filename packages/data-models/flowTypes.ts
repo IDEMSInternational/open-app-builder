@@ -272,6 +272,7 @@ export namespace FlowTypes {
     | "display_group"
     | "display_theme"
     | "drawer"
+    | "example"
     | "form"
     | "help_icon"
     | "html"

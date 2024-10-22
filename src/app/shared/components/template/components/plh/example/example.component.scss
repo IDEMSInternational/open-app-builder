@@ -1,0 +1,10 @@
+.example-container {
+  width: 80px;
+  &[data-variant="red_square"] {
+    background-color: red;
+  }
+  &[data-variant="yellow_circle"] {
+    background-color: yellow;
+    border-radius: 50%;
+  }
+}
