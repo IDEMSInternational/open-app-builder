@@ -33,7 +33,6 @@ import { TmplDataItemsComponent } from "./data-items/data-items.component";
 import { TmplDisplayGridComponent } from "./layout/display-grid/display-grid.component";
 import { TmplDisplayGroupComponent } from "./layout/display-group/display-group.component";
 import { TmplDrawerComponent } from "./drawer/drawer.component";
-import { TmplExampleComponent } from "./plh/example/example.component";
 import { TmplHelpIconComponent } from "./help-icon";
 import { TmplIconBannerComponent } from "./icon-banner/icon-banner.component";
 import { TmplImageComponent } from "./image";
@@ -65,6 +64,7 @@ import { TmplVideoComponent } from "./video";
 
 import { WorkshopsComponent } from "./layout/workshops_accordion";
 import { TmplTextBubbleComponent } from "./text-bubble/text-bubble.component";
+import { DEMO_COMPONENT_MAPPING } from "packages/components/demo";
 
 /** All components should be exported as a single array for easy module import */
 export const TEMPLATE_COMPONENTS = [
@@ -95,7 +95,6 @@ export const TEMPLATE_COMPONENTS = [
   TmplDisplayGridComponent,
   TmplDisplayGroupComponent,
   TmplDrawerComponent,
-  TmplExampleComponent,
   TmplHelpIconComponent,
   TmplIconBannerComponent,
   TmplImageComponent,
@@ -132,10 +131,7 @@ export const TEMPLATE_COMPONENTS = [
 /***************************************************************************************
  * Template component mapping
  **************************************************************************************/
-export const TEMPLATE_COMPONENT_MAPPING: Record<
-  FlowTypes.TemplateRowType,
-  Type<ITemplateRowProps>
-> = {
+const CORE_COMPONENT_MAPPING: Record<FlowTypes.TemplateRowType, Type<ITemplateRowProps>> = {
   accordion: TmplAccordionComponent,
   accordion_section: AccordionSectionComponent,
   advanced_dashed_box: TmplAdvancedDashedBoxComponent,
@@ -153,7 +149,6 @@ export const TEMPLATE_COMPONENT_MAPPING: Record<
   display_group: TmplDisplayGroupComponent,
   display_theme: null as any,
   drawer: TmplDrawerComponent,
-  example: TmplExampleComponent,
   form: FormComponent,
   help_icon: TmplHelpIconComponent,
   html: TemplateHTMLComponent,
@@ -199,4 +194,9 @@ export const TEMPLATE_COMPONENT_MAPPING: Record<
   update_action_list: null as any,
   video: TmplVideoComponent,
   workshops_accordion: WorkshopsComponent,
+};
+
+export const TEMPLATE_COMPONENT_MAPPING = {
+  ...CORE_COMPONENT_MAPPING,
+  ...DEMO_COMPONENT_MAPPING,
 };
