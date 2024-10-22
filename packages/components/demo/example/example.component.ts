@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { TemplateBaseComponent } from "../../base";
+import { TemplateBaseComponent } from "../../../../src/app/shared/components/template/components/base";
 import {
   getBooleanParamFromTemplateRow,
   getStringParamFromTemplateRow,
