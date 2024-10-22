@@ -33,6 +33,7 @@ import { TmplDataItemsComponent } from "./data-items/data-items.component";
 import { TmplDisplayGridComponent } from "./layout/display-grid/display-grid.component";
 import { TmplDisplayGroupComponent } from "./layout/display-group/display-group.component";
 import { TmplDrawerComponent } from "./drawer/drawer.component";
+import { TmplExampleComponent } from "./plh/example/example.component";
 import { TmplHelpIconComponent } from "./help-icon";
 import { TmplIconBannerComponent } from "./icon-banner/icon-banner.component";
 import { TmplImageComponent } from "./image";
@@ -94,6 +95,7 @@ export const TEMPLATE_COMPONENTS = [
   TmplDisplayGridComponent,
   TmplDisplayGroupComponent,
   TmplDrawerComponent,
+  TmplExampleComponent,
   TmplHelpIconComponent,
   TmplIconBannerComponent,
   TmplImageComponent,
@@ -151,6 +153,7 @@ export const TEMPLATE_COMPONENT_MAPPING: Record<
   display_group: TmplDisplayGroupComponent,
   display_theme: null as any,
   drawer: TmplDrawerComponent,
+  example: TmplExampleComponent,
   form: FormComponent,
   help_icon: TmplHelpIconComponent,
   html: TemplateHTMLComponent,
