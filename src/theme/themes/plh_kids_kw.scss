@@ -13,89 +13,67 @@
       font-family: "Nunito";
       font-style: normal;
       font-weight: 300;
-      src:
-        local(""),
-        url("../../assets/fonts/nunito-v26-latin/nunito-v26-latin-300.woff2") format("woff2");
+      src: local(""), url("../../assets/fonts/nunito-v26-latin/nunito-v26-latin-300.woff2") format("woff2")
     }
     @font-face {
       font-family: "Nunito";
       font-style: normal;
       font-weight: 500;
-      src:
-        local(""),
-        url("../../assets/fonts/nunito-v26-latin/nunito-v26-latin-500.woff2") format("woff2");
+      src: local(""), url("../../assets/fonts/nunito-v26-latin/nunito-v26-latin-500.woff2") format("woff2")
     }
     @font-face {
       font-family: "Nunito";
       font-style: italic;
       font-weight: 500;
-      src:
-        local(""),
-        url("../../assets/fonts/nunito-v26-latin/nunito-v26-latin-500italic.woff2") format("woff2");
+      src: local(""), url("../../assets/fonts/nunito-v26-latin/nunito-v26-latin-500italic.woff2") format("woff2")
     }
     @font-face {
       font-family: "Nunito";
       font-style: normal;
       font-weight: 600;
-      src:
-        local(""),
-        url("../../assets/fonts/nunito-v26-latin/nunito-v26-latin-600.woff2") format("woff2");
+      src: local(""), url("../../assets/fonts/nunito-v26-latin/nunito-v26-latin-600.woff2") format("woff2")
     }
     @font-face {
       font-family: "Nunito";
       font-style: italic;
       font-weight: 600;
-      src:
-        local(""),
-        url("../../assets/fonts/nunito-v26-latin/nunito-v26-latin-600italic.woff2") format("woff2");
+      src: local(""), url("../../assets/fonts/nunito-v26-latin/nunito-v26-latin-600italic.woff2") format("woff2")
     }
     @font-face {
       font-family: "Nunito";
       font-style: normal;
       font-weight: 700;
-      src:
-        local(""),
-        url("../../assets/fonts/nunito-v26-latin/nunito-v26-latin-700.woff2") format("woff2");
+      src: local(""), url("../../assets/fonts/nunito-v26-latin/nunito-v26-latin-700.woff2") format("woff2")
     }
     @font-face {
       font-family: "Nunito";
       font-style: italic;
       font-weight: 700;
-      src:
-        local(""),
-        url("../../assets/fonts/nunito-v26-latin/nunito-v26-latin-700italic.woff2") format("woff2");
+      src: local(""), url("../../assets/fonts/nunito-v26-latin/nunito-v26-latin-700italic.woff2") format("woff2")
     }
     @font-face {
       font-family: "Nunito";
       font-style: normal;
       font-weight: 800;
-      src:
-        local(""),
-        url("../../assets/fonts/nunito-v26-latin/nunito-v26-latin-800.woff2") format("woff2");
+      src: local(""), url("../../assets/fonts/nunito-v26-latin/nunito-v26-latin-800.woff2") format("woff2")
     }
     @font-face {
       font-family: "Nunito";
       font-style: italic;
       font-weight: 800;
-      src:
-        local(""),
-        url("../../assets/fonts/nunito-v26-latin/nunito-v26-latin-800italic.woff2") format("woff2");
+      src: local(""), url("../../assets/fonts/nunito-v26-latin/nunito-v26-latin-800italic.woff2") format("woff2")
     }
     @font-face {
       font-family: "Nunito";
       font-style: normal;
       font-weight: 900;
-      src:
-        local(""),
-        url("../../assets/fonts/nunito-v26-latin/nunito-v26-latin-900.woff2") format("woff2");
+      src: local(""), url("../../assets/fonts/nunito-v26-latin/nunito-v26-latin-900.woff2") format("woff2")
     }
     @font-face {
       font-family: "Nunito";
       font-style: italic;
       font-weight: 900;
-      src:
-        local(""),
-        url("../../assets/fonts/nunito-v26-latin/nunito-v26-latin-900italic.woff2") format("woff2");
+      src: local(""), url("../../assets/fonts/nunito-v26-latin/nunito-v26-latin-900italic.woff2") format("woff2")
     }
 
     /** Authoring component overrides **/
@@ -103,7 +81,7 @@
       ion-font-family: "Nunito",
       font-weight-standard: 500,
       font-weight-bold: 800,
-
+      
       font-size-text-tiny: 14px,
       font-size-text-small: 16px,
       font-size-text-medium: 18px,
@@ -113,7 +91,7 @@
       line-height-text: 26px,
       line-height-text-large: 32px,
       line-height-text-largest: 40px,
-
+      
       ion-border-radius-small: 8px,
       ion-border-radius-standard: 12px,
       ion-border-radius-secondary: 20px,
