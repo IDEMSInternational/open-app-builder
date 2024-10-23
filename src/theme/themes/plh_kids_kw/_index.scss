@@ -1,5 +1,7 @@
-@use "./utils";
+@use "../utils";
 @use "sass:color";
+@use "./overrides";
+@use "./typography";
 
 @mixin theme-plh_kids_kw {
   [data-theme="plh_kids_kw"] {
@@ -8,84 +10,16 @@
     $color-secondary: hsl(199 100% 41.6%); // #0092D4
     $page-background: white;
 
-    // Nunito Variable weights
-    @font-face {
-      font-family: "Nunito";
-      font-style: normal;
-      font-weight: 300;
-      src: local(""), url("../../assets/fonts/nunito-v26-latin/nunito-v26-latin-300.woff2") format("woff2")
-    }
-    @font-face {
-      font-family: "Nunito";
-      font-style: normal;
-      font-weight: 500;
-      src: local(""), url("../../assets/fonts/nunito-v26-latin/nunito-v26-latin-500.woff2") format("woff2")
-    }
-    @font-face {
-      font-family: "Nunito";
-      font-style: italic;
-      font-weight: 500;
-      src: local(""), url("../../assets/fonts/nunito-v26-latin/nunito-v26-latin-500italic.woff2") format("woff2")
-    }
-    @font-face {
-      font-family: "Nunito";
-      font-style: normal;
-      font-weight: 600;
-      src: local(""), url("../../assets/fonts/nunito-v26-latin/nunito-v26-latin-600.woff2") format("woff2")
-    }
-    @font-face {
-      font-family: "Nunito";
-      font-style: italic;
-      font-weight: 600;
-      src: local(""), url("../../assets/fonts/nunito-v26-latin/nunito-v26-latin-600italic.woff2") format("woff2")
-    }
-    @font-face {
-      font-family: "Nunito";
-      font-style: normal;
-      font-weight: 700;
-      src: local(""), url("../../assets/fonts/nunito-v26-latin/nunito-v26-latin-700.woff2") format("woff2")
-    }
-    @font-face {
-      font-family: "Nunito";
-      font-style: italic;
-      font-weight: 700;
-      src: local(""), url("../../assets/fonts/nunito-v26-latin/nunito-v26-latin-700italic.woff2") format("woff2")
-    }
-    @font-face {
-      font-family: "Nunito";
-      font-style: normal;
-      font-weight: 800;
-      src: local(""), url("../../assets/fonts/nunito-v26-latin/nunito-v26-latin-800.woff2") format("woff2")
-    }
-    @font-face {
-      font-family: "Nunito";
-      font-style: italic;
-      font-weight: 800;
-      src: local(""), url("../../assets/fonts/nunito-v26-latin/nunito-v26-latin-800italic.woff2") format("woff2")
-    }
-    @font-face {
-      font-family: "Nunito";
-      font-style: normal;
-      font-weight: 900;
-      src: local(""), url("../../assets/fonts/nunito-v26-latin/nunito-v26-latin-900.woff2") format("woff2")
-    }
-    @font-face {
-      font-family: "Nunito";
-      font-style: italic;
-      font-weight: 900;
-      src: local(""), url("../../assets/fonts/nunito-v26-latin/nunito-v26-latin-900italic.woff2") format("woff2")
-    }
-
     /** Authoring component overrides **/
     $variable-overrides: (
       ion-font-family: "Nunito",
       font-weight-standard: 500,
-      font-weight-medium:600,
+      font-weight-medium: 600,
       font-weight-bold: 700,
       font-weight-extra-bold: 800,
       font-letter-spacing: -0.2px,
       font-letter-spacing-large: -0.5px,
-      
+
       font-size-text-tiny: 14px,
       font-size-text-small: 16px,
       font-size-text-medium: 20px,
@@ -96,7 +30,7 @@
       line-height-text-medium: 28px,
       line-height-text-large: 32px,
       line-height-text-extra-large: 40px,
-      
+
       ion-border-radius-small: 8px,
       ion-border-radius-standard: 12px,
       ion-border-radius-secondary: 20px,
@@ -118,41 +52,30 @@
       button-background-secondary: var(--ion-color-secondary),
       button-background-option: var(--ion-color-primary-800),
       round-button-background-secondary-light: var(--ion-color-yellow),
-
       tile-button-background-primary: var(--ion-color-primary-500),
       tile-button-background-primary-light: var(--ion-color-primary-300),
       tile-button-background-secondary: var(--ion-color-secondary),
       tile-button-background-secondary-light: var(--ion-color-yellow),
-
       points-item-background: var(--ion-background-color),
       points-item-background-complete: var(--ion-color-primary-200),
       points-item-border: rgba(black, 0.07),
-
       display-group-background-banner-primary: var(--ion-color-primary-200),
       display-group-background-banner-secondary: var(--ion-color-secondary-300),
       display-group-background-home-light: var(--ion-color-primary-300),
       display-group-background-home-mid: var(--ion-color-primary-600),
       display-group-background-home-dark: var(--ion-color-primary-800),
-
       combo-box-background-with-value: var(--ion-color-primary-300),
-
       accordion-background-highlight: var(--ion-color-primary-300),
-
       tour-next-button-background: var(--ion-color-secondary),
-
       radio-group-background-selected: var(--ion-color-primary-300),
-
       ion-item-background: var(--ion-color-gray-light),
-
       task-progress-bar-color: var(--ion-color-green),
-
       progress-path-line-background: var(--ion-color-gray-100),
-
       icon-size-small: 16px,
       icon-size-medium: 24px,
       icon-size-large: 32px,
-      icon-size-extra-large: 40px, 
-      icon-size-largest: 48px,      
+      icon-size-extra-large: 40px,
+      icon-size-largest: 48px,
     );
     @include utils.generateTheme($color-primary, $color-secondary, $page-background);
     @each $name, $value in $variable-overrides {
