@@ -18,38 +18,3 @@ ion-label.accordion-section-title {
 ion-item.accordion-content {
   padding-bottom: 1rem;
 }
-
-// KUWAIT THEME STYLING
-:host-context([data-theme="plh_kids_kw"]){
-  ion-accordion {
-    background: var(--ion-color-primary-600);
-
-    border: none;
-    border-radius: var(--ion-border-radius-small);
-    box-shadow: none;
-    .accordion-section-title{
-      color: white;
-
-      font-size: var(--font-size-text-large);
-      font-weight: var(--font-weight-bold);
-    }
-  }
-  .accordion-header::ng-deep ion-icon{
-    color: white;
-  }
-  ion-item.accordion-content{
-    border-top: 1px solid #C4C7C9;
-    margin:0px 16px;
-
-    &::ng-deep {
-      p{
-        color:white;
-        font-size: var(--font-size-text-medium);
-        line-height: var(--line-height-text-medium);
-        font-weight: var(--font-weight-standard);
-      } 
-    }
-  }
-  
-}
-
