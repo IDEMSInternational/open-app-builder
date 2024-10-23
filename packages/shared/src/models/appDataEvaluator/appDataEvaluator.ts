@@ -40,6 +40,11 @@ export class AppDataEvaluator {
     this.setExecutionContext({ ...this.context, update });
   }
 
+  /** Wrapper around templatedData method to list all variables within data **/
+  public listContextVariables(data: any, prefixes: string[]) {
+    return this.templatedData.listContextVariables(data, prefixes);
+  }
+
   /**
    * Evaluate app expression in two stages
    *  1) Replace any instances of context variables with values
