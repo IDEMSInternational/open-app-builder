@@ -1,6 +1,6 @@
-import { FlowTypes, IAssetEntryHashmap, IDeploymentConfigJson } from "data-models";
+import { FlowTypes, IAssetEntryHashmap } from "data-models";
 import { IReportTable } from "../report.types";
-import { isObjectLiteral, kbToMB, sortJsonKeys } from "shared";
+import { cleanAssetName, isObjectLiteral, kbToMB, sortJsonKeys } from "shared";
 import { IParsedWorkbookData } from "../../convert/types";
 
 interface IReportData {
@@ -147,6 +147,8 @@ export class AssetsSummaryReport {
   }
 
   private markAsset(name: string) {
+    // NOTE - use same method as frontend asset service to allow assets with preceding `/`
+    name = cleanAssetName(name);
     this.reportSummary[name] ??= 0;
     this.reportSummary[name]++;
   }

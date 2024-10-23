@@ -43,3 +43,9 @@ export function parseStringValue(v: string): any {
   if (v.match(/^"[a-z0-9.]*"$/gi)) return v.replace(/"/g, "");
   return v;
 }
+
+/** Remove preceding `/` from any named asset paths */
+export function cleanAssetName(value: string) {
+  if (value.startsWith("/")) value = value.substring(1);
+  return value;
+}
