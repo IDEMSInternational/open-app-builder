@@ -1,4 +1,9 @@
-#!/usr/bin/env sh
-. "$(dirname -- "$0")/_/husky.sh"
+#!/usr/bin/env bash
+
+# HACK - if runnning via fnm on windows then bash subshell may not have access to node/yarn commands
+# fix by re-evaluating fnm env
+if which fnm >/dev/null; then
+    eval "$(fnm env --use-on-cd --shell bash)"
+fi
 
 yarn lint-staged
