@@ -5,7 +5,7 @@ import {
   getStringParamFromTemplateRow,
 } from "src/app/shared/utils";
 
-interface IExampleComponentParams {
+interface IDemoBasicComponentParams {
   /** TEMPLATE_PARAMETER: "variant". Default "square_primary" */
   variant: "square_primary" | "circle_secondary";
   /** TEMPLATE_PARAMETER: "my_boolean_param". A paramater that takes a boolean value. Default true */
@@ -15,12 +15,12 @@ interface IExampleComponentParams {
 }
 
 @Component({
-  selector: "plh-example",
-  templateUrl: "./example.component.html",
-  styleUrls: ["./example.component.scss"],
+  selector: "demo-basic",
+  templateUrl: "./basic.component.html",
+  styleUrls: ["./basic.component.scss"],
 })
-export class TmplExampleComponent extends TemplateBaseComponent implements OnInit {
-  params: Partial<IExampleComponentParams> = {};
+export class DemoBasicComponent extends TemplateBaseComponent implements OnInit {
+  params: Partial<IDemoBasicComponentParams> = {};
 
   ngOnInit() {
     this.getParams();
@@ -30,7 +30,7 @@ export class TmplExampleComponent extends TemplateBaseComponent implements OnIni
   private getParams() {
     this.params.variant = getStringParamFromTemplateRow(this._row, "variant", "square_primary")
       .split(",")
-      .join(" ") as IExampleComponentParams["variant"];
+      .join(" ") as IDemoBasicComponentParams["variant"];
     this.params.myBooleanParam = getBooleanParamFromTemplateRow(
       this._row,
       "my_boolean_param",
