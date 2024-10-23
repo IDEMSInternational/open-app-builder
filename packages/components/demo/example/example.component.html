@@ -1,5 +1,13 @@
-@if (params.myBooleanParam) {
-  <div class="example-container" [attr.data-variant]="params.variant" (click)="handleClick()">
+<div class="example-container" [attr.data-variant]="params.variant" (click)="handleClick()">
+  <div>
+    {{ _row.value }}
+  </div>
+  <div>
     {{ params.myStringParam }}
   </div>
-}
+  @if (params.myBooleanParam) {
+    <div>
+      {{ ":)" }}
+    </div>
+  }
+</div>
