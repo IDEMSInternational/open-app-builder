@@ -82,6 +82,8 @@ export namespace FlowTypes {
   export interface DataPipeFlow extends FlowTypeWithData {
     flow_type: "data_pipe";
     rows: IDataPipeOperation[];
+    /** Generated list of output flows created by generator */
+    _output_flows?: FlowTypeBase[];
   }
   export interface GeneratorFlow extends FlowTypeWithData {
     flow_type: "generator";
@@ -91,6 +93,8 @@ export namespace FlowTypes {
       output_flow_subtype?: string;
       output_flow_type?: FlowType;
     };
+    /** Generated list of output flows created by generator */
+    _output_flows?: FlowTypeBase[];
   }
   export interface Translation_strings {
     [sourceText: string]: string;

@@ -3,6 +3,7 @@ import { TemplatedData } from "../templatedData/templatedData";
 import { isObjectLiteral } from "../../utils/object-utils";
 import { addJSDelimeters } from "../../utils/delimiters";
 
+/** Variable context is stored in namespaces, e.g. `{item:{key:'value'},field:{key:'value'}}` */
 type IContext = { [nameSpace: string]: { [field: string]: any } };
 
 /**
@@ -51,7 +52,7 @@ export class AppDataEvaluator {
    * @param data Input data to evaluated. This can be any data type, including
    * nested objects or arrays. All string entries within will be evaulated
    */
-  evaluate(data: any) {
+  public evaluate(data: any) {
     if (typeof data === "string") {
       return this.evaluateExpression(data);
     }
