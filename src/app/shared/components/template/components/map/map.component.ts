@@ -241,7 +241,7 @@ export class TmplMapComponent extends TemplateBaseComponent implements OnInit {
               color: fill && fill !== "none" ? fill : "transparent",
             }),
             stroke: new Stroke({
-              color: stroke || "black",
+              color: stroke && stroke !== "none" ? stroke : "transparent",
               width: 1,
             }),
           });
@@ -282,7 +282,7 @@ export class TmplMapComponent extends TemplateBaseComponent implements OnInit {
             color: this.getColourForValue(colourScale, value),
           }),
           stroke: new Stroke({
-            color: "black",
+            color: stroke && stroke !== "none" ? stroke : "transparent",
             width: 1,
           }),
         });
