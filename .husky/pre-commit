@@ -2,7 +2,7 @@
 . "$(dirname -- "$0")/_/husky.sh"
 
 # HACK - if runnning via fnm on windows then bash subshell may not have access to node/yarn commands
-# fix by re-evaluating fnm env
+# fix by re-evaluating fnm env if the fnm command exists
 if which fnm >/dev/null; then
     eval "$(fnm env --use-on-cd --shell bash)"
 fi
