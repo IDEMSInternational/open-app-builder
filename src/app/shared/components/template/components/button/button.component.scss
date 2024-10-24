@@ -218,3 +218,28 @@ ion-button[data-variant~="card"] {
     max-width: 10rem;
   }
 }
+
+// KUWAIT THEME STYLING
+:host-context([data-theme="plh_kids_kw"]){
+    // Center align all button text by default
+  .left.null ::ng-deep{
+    p{
+      text-align: center;
+    }
+  }
+  .left ::ng-deep{
+    p{
+      text-align: left;
+    }
+  }
+  .left.centre ::ng-deep{
+    p{
+      text-align: center;
+    }
+  }
+  .left.right ::ng-deep{
+    p{
+      text-align: right;
+    }
+  }
+}
