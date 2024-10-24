@@ -21,6 +21,27 @@ body[data-theme="plh_kids_kw"] {
     ion-button[disabled] {
       filter: none;
     }
+    // Center align all button text by default
+    .left.null ::ng-deep {
+      p {
+        text-align: center !important;
+      }
+    }
+    .left ::ng-deep {
+      p {
+        text-align: left !important;
+      }
+    }
+    .left.centre ::ng-deep {
+      p {
+        text-align: center !important;
+      }
+    }
+    .left.right ::ng-deep {
+      p {
+        text-align: right !important;
+      }
+    }
     //Alignment Buttons
     ion-button.left {
       width: 50%;
@@ -29,9 +50,6 @@ body[data-theme="plh_kids_kw"] {
     ion-button.right {
       width: 50%;
       margin-right: 0;
-    }
-    ion-button.centre {
-      width: 100%;
     }
     // Color Alternatives
     .standard {
@@ -66,9 +84,9 @@ body[data-theme="plh_kids_kw"] {
       padding-right: 24px;
 
       .top-row {
-        min-height: 0px;
+        min-height: 0;
         position: absolute;
-        top: -56px;
+        top: -52px;
         margin: 0 0 0 -14px;
         h3 {
           margin: 0;
@@ -79,6 +97,38 @@ body[data-theme="plh_kids_kw"] {
           font-size: var(var(--font-size-text-medium) + 2);
         }
       }
+      .second-row {
+        .controls {
+          ion-button.btn-play {
+            --background: var(--ion-color-secondary-600) !important;
+            --border-radius: var(--ion-border-radius-rounded) !important;
+            --box-shadow: none !important;
+            height: 52px !important;
+            width: 52px !important;
+            ion-icon {
+              font-size: var(--icon-size-large) !important;
+            }
+          }
+        }
+        .progress-block {
+          ion-range {
+            width: 100% !important;
+            --bar-background: white !important;
+            --bar-height: 12px !important;
+            --knob-size: 20px !important;
+            --knob-background: var(--ion-color-secondary-600) !important;
+            --bar-border-radius: var(--ion-border-radius-standard) !important;
+          }
+          .time {
+            .time-value {
+              font-size: var(--font-size-text-small) !important;
+              font-weight: var(--font-weight-medium) !important;
+              line-height: var(--line-height-text-tiny) !important;
+              color: var(--ion-color-gray-700) !important;
+            }
+          }
+        }
+      }
     }
     .container-player[data-variant~="large"] {
       background: var(--ion-color-primary-50);
@@ -87,9 +137,12 @@ body[data-theme="plh_kids_kw"] {
       box-shadow: none;
       border-radius: var(--ion-border-radius-standard);
       padding: 12px 16px;
+      display: flex;
+      position: relative;
+      flex-direction: column;
       .top-row {
         position: absolute;
-        top: -52px;
+        top: -56px;
         margin: 0 0 0 -14px;
         h3 {
           margin: 0;
@@ -107,6 +160,57 @@ body[data-theme="plh_kids_kw"] {
       .second-row {
         display: flex;
         flex-direction: column-reverse;
+        .controls {
+          width: var(--audio-controls-width) !important;
+          .rewind,
+          .forward {
+            ion-icon {
+              font-size: var(--icon-size-extra-large) !important;
+              color: var(--ion-color-secondary-600) !important;
+              border-radius: 2px !important;
+            }
+          }
+          .btn-play {
+            @include mixins.large-square;
+            --background: var(--ion-color-primary-50) !important;
+            --border-radius: var(--ion-border-radius-rounded) !important;
+            --padding: 0 !important;
+            --box-shadow: none !important;
+            ion-icon {
+              position: absolute !important;
+              font-size: var(--icon-size-largest) !important;
+              color: var(--ion-color-secondary-600) !important;
+            }
+          }
+        }
+        .progress-block {
+          .audio-range {
+            --bar-background-active: var(--ion-color-primary-400) !important;
+            --bar-background: white !important;
+            --bar-height: 12px !important;
+            --bar-border-radius: var(--ion-border-radius-standard) !important;
+            --knob-size: 0px !important;
+            --pin-background: var(--ion-color-primary-300) !important;
+            --knob-background: var(--ion-color-primary-300) !important;
+            padding-inline: 0;
+          }
+
+          ion-range::part(bar) {
+            border: none !important;
+          }
+
+          ion-range::part(bar-active) {
+            top: -1.5px !important;
+            margin-left: 0 !important;
+          }
+          .time {
+            &-value {
+              font-size: var(--font-size-text-small) !important;
+              line-height: var(--line-height-text-tiny) !important;
+              color: var(--ion-color-gray-700) !important;
+            }
+          }
+        }
       }
     }
   }
@@ -125,6 +229,22 @@ body[data-theme="plh_kids_kw"] {
 
         font-size: var(--font-size-text-large);
         font-weight: var(--font-weight-bold);
+      }
+    }
+    .accordion-header::ng-deep ion-icon {
+      color: white !important;
+    }
+    ion-item.accordion-content {
+      border-top: 1px solid #c4c7c9 !important;
+      margin: 0px 16px !important;
+
+      &::ng-deep {
+        p {
+          color: white !important;
+          font-size: var(--font-size-text-medium) !important;
+          line-height: var(--line-height-text-medium) !important;
+          font-weight: var(--font-weight-standard) !important;
+        }
       }
     }
   }
