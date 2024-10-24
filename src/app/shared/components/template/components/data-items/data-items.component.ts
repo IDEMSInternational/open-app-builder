@@ -36,14 +36,14 @@ export class TmplDataItemsComponent extends TemplateBaseComponent implements OnD
   public itemRows: FlowTypes.TemplateRow[] = [];
 
   private dataListName: string;
-  private parameterList: Record<string, string>;
+  private _parameterList: Record<string, string>;
 
   private dataQuery$: Subscription;
 
   @Input() set row(row: FlowTypes.TemplateRow) {
     this._row = row;
     this.dataListName = this.hackGetRawDataListName(row);
-    this.parameterList = row.parameter_list;
+    this._parameterList = row.parameter_list;
     this.subscribeToData();
   }
 
@@ -64,7 +64,7 @@ export class TmplDataItemsComponent extends TemplateBaseComponent implements OnD
       await this.dynamicDataService.ready();
       const query = await this.dynamicDataService.query$("data_list", this.dataListName);
       this.dataQuery$ = query.pipe(debounceTime(50)).subscribe(async (data) => {
-        await this.renderItems(data, this._row.rows, this.parameterList);
+        await this.renderItems(data, this._row.rows, this._parameterList);
       });
     } else {
       await this.renderItems([], [], {});
