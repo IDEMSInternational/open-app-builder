@@ -1,18 +1,12 @@
 import { ITemplatedStringVariable } from "../../types";
 import { addStringDelimiters, extractDelimitedTemplateString } from "../../utils/delimiters";
 import { isObjectLiteral } from "../../utils/object-utils";
-
-type ITemplatedDataContext = { [prefix: string]: any };
+import type { FlowTypes } from "data-models";
 
 /** Hashmap of all context-based variable names used in expression, organised by prefix, e.g.
  * `{ field: {some_field_name: ""}, row: {some_row_name:"", another_name: ""}}`
  */
-
-export interface ITemplatedDataContextList {
-  [contextPrefix: string]: {
-    [contextVariableName: string]: string;
-  };
-}
+export type ITemplatedDataContext = { [prefix in FlowTypes.IDynamicPrefix]?: Record<string, any> };
 
 /**
  * Templated data class contains methods to to convert data containing dynamic context variables
@@ -26,12 +20,15 @@ export class TemplatedData {
   /** Value returned after parsing templated data, e.g. `"Hello example_1"` */
   public parsedValue: any;
 
-  /** json object containing namespaced values for context replacements
+  /** json object containing flattened values for context replacements
    * ```
-   * {row:{id:"example_1"}}
+   * {
+   *  "@row":{id:"example_1"}
+   *  "@row.id": "example_1"
+   * }
    * ```
    */
-  public parsedContext: ITemplatedDataContext;
+  public parsedContext: Record<string, any>;
 
   /** List of all prefixes used in context, e.g `["row"]` */
   private contextPrefixes: string[] = [];
@@ -92,7 +89,7 @@ export class TemplatedData {
    * detected within data value
    **/
   public listContextVariables(value: any, prefixes: string[] = []) {
-    let contextVariables: ITemplatedDataContextList = {};
+    let contextVariables: ITemplatedDataContext = {};
 
     // Recursively extract any nested context strings
     function extractContext(contextValue: any) {
