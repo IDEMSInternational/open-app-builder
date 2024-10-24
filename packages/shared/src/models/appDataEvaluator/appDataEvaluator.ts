@@ -1,7 +1,7 @@
 import { JSEvaluator } from "../jsEvaluator/jsEvaluator";
 import { TemplatedData } from "../templatedData/templatedData";
 import { isObjectLiteral } from "../../utils/object-utils";
-import { addJSDelimeters } from "../../utils/delimiters";
+import { addJSDelimiters } from "../../utils/delimiters";
 
 /** Variable context is stored in namespaces, e.g. `{item:{key:'value'},field:{key:'value'}}` */
 type IContext = { [nameSpace: string]: { [field: string]: any } };
@@ -102,13 +102,30 @@ export class AppDataEvaluator {
    * "Hello Ada"
    */
   private evaluateExpression(expression: string) {
-    try {
-      const jsDelimited = addJSDelimeters(expression, Object.keys(this.context));
-      const evaluated = this.jsEvaluator.evaluate(jsDelimited, this.context);
-      return evaluated;
-    } catch (error) {
-      const parsed = this.templatedData.parse(expression);
-      return parsed;
+    if (this.shouldEvaluateJS(expression)) {
+      try {
+        const jsDelimited = addJSDelimiters(expression, Object.keys(this.context));
+        const evaluated = this.jsEvaluator.evaluate(jsDelimited, this.context);
+        return evaluated;
+      } catch (error) {
+        // Ignore errors as may be intended as templated data (will attempt next)
+      }
     }
+    // If error or if not evaluated in JS continue as templated data replacement
+    const parsed = this.templatedData.parse(expression);
+    return parsed;
+  }
+
+  private shouldEvaluateJS(expression: string) {
+    // HACK - assume any expressions that have been manually delimited are likely
+    // intended as string replacements, I.E.
+    // JS:       `{@row.name}_suffix` -> this.Ada_suffix -> undefined
+    // Template: `{@row.name}_suffix` -> "Ada_suffix"
+    for (const prefix of Object.keys(this.context)) {
+      if (expression.includes(`{@${prefix}.`)) {
+        return false;
+      }
+    }
+    return true;
   }
 }
