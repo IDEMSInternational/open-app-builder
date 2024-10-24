@@ -1,6 +1,7 @@
 import {
   cleanEmptyObject,
   isEmptyObjectDeep,
+  isEqual,
   isObjectLiteral,
   sortJsonKeys,
   toEmptyObject,
@@ -70,5 +71,49 @@ describe("Object Utils", () => {
     expect(Object.keys(res)).toEqual(["a", "b", "c", "d"]);
     expect(Object.keys(res.a)).toEqual(["e", "f"]);
     expect(Object.values(res.a)).toEqual([5, 6]);
+  });
+  it("isEqual", () => {
+    // equality deep check
+    expect(
+      isEqual(
+        {
+          string: "hello",
+          array: [1, "a", null],
+          nested: {
+            array: [2],
+          },
+          null: null,
+        },
+        {
+          string: "hello",
+          array: [1, "a", null],
+          nested: {
+            array: [2],
+          },
+          null: null,
+        }
+      )
+    ).toEqual(true);
+    // inequality deep check
+    expect(
+      isEqual(
+        {
+          string: "hello",
+          array: [1, "a", null, "additional"],
+          nested: {
+            array: [2],
+          },
+          null: null,
+        },
+        {
+          string: "hello",
+          array: [1, "a", null],
+          nested: {
+            array: [2],
+          },
+          null: null,
+        }
+      )
+    ).toEqual(false);
   });
 });

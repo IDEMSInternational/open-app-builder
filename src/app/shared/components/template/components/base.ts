@@ -1,6 +1,7 @@
-import { Component, Input } from "@angular/core";
+import { Component, Input, signal } from "@angular/core";
 import { FlowTypes, ITemplateRowProps } from "../models";
 import { TemplateContainerComponent } from "../template-container.component";
+import { isEqual } from "packages/shared/src/utils/object-utils";
 
 @Component({
   template: ``,
@@ -19,12 +20,18 @@ export class TemplateBaseComponent implements ITemplateRowProps {
   /** @ignore */
   _row: FlowTypes.TemplateRow;
 
+  value = signal<FlowTypes.TemplateRow["value"]>(undefined, { equal: isEqual });
+
+  parameterList = signal<FlowTypes.TemplateRow["parameter_list"]>({}, { equal: isEqual });
+
   /**
    * @ignore
    * specific data used in component rendering
    **/
   @Input() set row(row: FlowTypes.TemplateRow) {
     this._row = row;
+    this.value.set(row.value);
+    this.parameterList.set(row.parameter_list);
   }
 
   /**
