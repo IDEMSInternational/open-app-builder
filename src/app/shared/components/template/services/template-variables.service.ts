@@ -352,13 +352,16 @@ export class TemplateVariablesService extends AsyncServiceBase {
     return evaluated;
   }
 
-  /**  */
+  /**
+   * Evaluate a single dynamic field value
+   * Used by services outside of template-variables (e.g. data-items)
+   **/
   public async getDynamicFieldValue(
     type: FlowTypes.IDynamicPrefix,
     fieldName: string,
     templateRowMap = {}
   ) {
-    const expression = `${fieldName}.${type}`;
+    const expression = `${type}.${fieldName}`;
     return this.processDynamicEvaluator(
       {
         fieldName,

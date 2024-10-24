@@ -7,9 +7,12 @@ import { DeploymentService } from "src/app/shared/services/deployment/deployment
 import { MockDeploymentService } from "src/app/shared/services/deployment/deployment.service.spec";
 import { DynamicDataService } from "src/app/shared/services/dynamic-data/dynamic-data.service";
 import { _wait } from "packages/shared/src/utils/async-utils";
-import { TemplatedData } from "packages/shared/src/models/templatedData/templatedData";
 import { MockDynamicDataService } from "src/app/shared/services/dynamic-data/dynamic-data.service.mock.spec";
 import { DataItemsService } from "./data-items.service";
+
+/***********************************************************************************************
+ * Mock Data
+ **********************************************************************************************/
 
 const MOCK_ITEMS_LIST: FlowTypes.Data_listRow[] = [
   { id: "id_1", text: "item 1", number: 1, boolean: true },
@@ -32,18 +35,13 @@ const MOCK_DATA_ITEMS_ROW: FlowTypes.TemplateRow = {
   _nested_name: "",
   name: "",
   type: "data_items",
-  value: "mock_item_list",
+  value: "@data.mock_item_list",
   rows: [MOCK_TEMPLATE_ROW],
 };
 
-// HACK - ordinarily rows would be processed using a one-off templateRowService instance
-// however mocking this is incredibly difficult (lots of tangled code)
-// As we still want to test full functionality, replace the service with a more lightweight
-// alternative which should handle dynamic replacement in a similar way
-const mockHackProcessRows: TmplDataItemsComponent["hackProcessRows"] = async (rows) =>
-  rows.map((row) =>
-    new TemplatedData({ context: { item: row._evalContext.itemContext } }).parse(row)
-  );
+/***********************************************************************************************
+ * Test Utils
+ **********************************************************************************************/
 
 // Utility to make it easier to test setting setting component row and returning rendered items
 // It triggers row set side-effects and returns rendered item rows
@@ -72,10 +70,19 @@ const setTestActionList = async (
   return setTestRow(component, row);
 };
 
-/**
+const setupFixture = () => {
+  const fixture = TestBed.createComponent(TmplDataItemsComponent);
+  // HACK - support @local variable processing
+  fixture.componentInstance.parent = { templateRowService: { templateRowMap: {} } } as any;
+  return fixture;
+};
+
+/***********************************************************************************************
+ * Data Item Processing
+ *
  * Call standalone tests via:
  * yarn ng test --include src/app/shared/components/template/components/data-items/data-items.component.spec.ts
- */
+ **********************************************************************************************/
 describe("DataItemsComponent", () => {
   let component: TmplDataItemsComponent;
   let fixture: ComponentFixture<TmplDataItemsComponent>;
@@ -94,10 +101,7 @@ describe("DataItemsComponent", () => {
       ],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(TmplDataItemsComponent);
-    fixture.componentInstance["hackProcessRows"] = mockHackProcessRows;
-    // HACK - support @local variable processing
-    fixture.componentInstance.parent = { templateRowService: { templateRowMap: {} } } as any;
+    fixture = setupFixture();
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
@@ -106,7 +110,7 @@ describe("DataItemsComponent", () => {
     expect(component).toBeTruthy();
   });
 
-  fit("generates evaluation context for rows", async () => {
+  it("generates evaluation context for rows", async () => {
     const renderedRows = await setTestRow(component, MOCK_DATA_ITEMS_ROW);
     // all rows should be populated with full item data alongside metadata fields
     expect(renderedRows[0]._evalContext).toEqual({
@@ -136,6 +140,39 @@ describe("DataItemsComponent", () => {
     await _wait(50);
     expect(component["dataListName"]).toEqual("mock_item_list");
     // TODO - could also test different ways to pass row name used in `hackGetRawDataListName`
+  });
+
+  // TODO - data_list with dynamic field/global variables
+});
+
+/***********************************************************************************************
+ * Actions
+ *
+ * Call standalone tests via:
+ * yarn ng test --include src/app/shared/components/template/components/data-items/data-items.component.spec.ts
+ **********************************************************************************************/
+
+describe("DataItemsComponent Actions", () => {
+  let component: TmplDataItemsComponent;
+  let fixture: ComponentFixture<TmplDataItemsComponent>;
+
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      imports: [HttpClientTestingModule],
+      declarations: [TmplDataItemsComponent],
+      providers: [
+        { provide: DeploymentService, useValue: new MockDeploymentService({ name: "test" }) },
+        {
+          provide: DynamicDataService,
+          useValue: new MockDynamicDataService({ data_list: { mock_item_list: MOCK_ITEMS_LIST } }),
+        },
+        DataItemsService,
+      ],
+    }).compileComponents();
+
+    fixture = setupFixture();
+    component = fixture.componentInstance;
+    fixture.detectChanges();
   });
 
   it("set_item action uses global set_data", async () => {
@@ -208,7 +245,7 @@ describe("DataItemsComponent", () => {
     });
   });
 
-  it("set_item by dynamic _index", async () => {
+  fit("set_item by dynamic _index", async () => {
     const params = { hello: "test", _index: `@item._index + 1` };
     // NOTE - will log error due to final item not having target reference
     const parsedRows = await setTestActionList(component, { action_id: "set_item", params });
