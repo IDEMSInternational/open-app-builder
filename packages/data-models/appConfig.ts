@@ -24,6 +24,7 @@ const DYNAMIC_PREFIXES = [
   "calc",
   "item",
   "raw",
+  "row",
 ] as const;
 
 const APP_LANGUAGES = {
