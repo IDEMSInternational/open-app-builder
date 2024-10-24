@@ -48,7 +48,7 @@ export function addStringDelimiters(value: string, contextPrefixes: string[], fi
  * // output
  * "this.row[this.row.lookup_variable]"
  */
-export function addJSDelimeters(value: string, contextPrefixes: string[]) {
+export function addJSDelimiters(value: string, contextPrefixes: string[]) {
   const delimited = addStringDelimiters(value, contextPrefixes);
   let replaced = delimited;
   // inner variables, e.g. `@row.@row.inner_variable`

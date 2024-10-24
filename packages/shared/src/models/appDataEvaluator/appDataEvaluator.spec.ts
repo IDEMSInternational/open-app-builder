@@ -1,6 +1,6 @@
 import { AppDataEvaluator } from "./appDataEvaluator";
 
-describe("App String Evaluator - String Replacement", () => {
+describe("AppDataEvaluator - String Replacement", () => {
   const evaluator = new AppDataEvaluator();
 
   evaluator.setExecutionContext({
@@ -15,9 +15,13 @@ describe("App String Evaluator - String Replacement", () => {
   it("{nested:[@row.first_name]}", () => {
     expect(evaluator.evaluate({ nested: ["@row.first_name"] })).toEqual({ nested: ["Ada"] });
   });
+
+  it("prefix_{@row.first_name}_suffix", () => {
+    expect(evaluator.evaluate("prefix_{@row.first_name}_suffix")).toEqual("prefix_Ada_suffix");
+  });
 });
 
-describe("App String Evaluator - JS Evaluate", () => {
+describe("AppDataEvaluator - JS Evaluate", () => {
   const evaluator = new AppDataEvaluator();
 
   beforeEach(() => {

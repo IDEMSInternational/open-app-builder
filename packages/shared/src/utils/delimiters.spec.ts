@@ -119,7 +119,7 @@ describe("addJSDelimiters", () => {
     const { input, delimited } = testData;
 
     it(JSON.stringify(input), () => {
-      const parsedValue = Delimiters.addJSDelimeters(input, prefixes);
+      const parsedValue = Delimiters.addJSDelimiters(input, prefixes);
       expect(parsedValue).toEqual(delimited);
       process.nextTick(() => console.log(`      ${JSON.stringify(parsedValue)}\n`));
       // NOTE - in case of errors additional tests can be carried out just on intermediate
