@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component } from "@angular/core";
+import { ChangeDetectionStrategy, Component, computed, signal } from "@angular/core";
 import { Platform, MenuController } from "@ionic/angular";
 import { Router } from "@angular/router";
 import { Capacitor } from "@capacitor/core";
@@ -30,7 +30,6 @@ import { AppDataService } from "./shared/services/data/app-data.service";
 import { AuthService } from "./shared/services/auth/auth.service";
 import { LifecycleActionsService } from "./shared/services/lifecycle-actions/lifecycle-actions.service";
 import { AppConfigService } from "./shared/services/app-config/app-config.service";
-import { IAppConfig } from "./shared/model";
 import { TaskService } from "./shared/services/task/task.service";
 import { AppUpdateService } from "./shared/services/app-update/app-update.service";
 import { RemoteAssetService } from "./shared/services/remote-asset/remote-asset.service";
@@ -47,14 +46,13 @@ import { DeploymentService } from "./shared/services/deployment/deployment.servi
   selector: "app-root",
   templateUrl: "app.component.html",
   styleUrls: ["app.component.scss"],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AppComponent {
-  appConfig: IAppConfig;
-  appAuthenticationDefaults: IAppConfig["APP_AUTHENTICATION_DEFAULTS"];
-  sideMenuDefaults: IAppConfig["APP_SIDEMENU_DEFAULTS"];
-  footerDefaults: IAppConfig["APP_FOOTER_DEFAULTS"];
+  sideMenuDefaults = computed(() => this.appConfigService.appConfig().APP_SIDEMENU_DEFAULTS);
+  footerDefaults = computed(() => this.appConfigService.appConfig().APP_FOOTER_DEFAULTS);
   /** Track when app ready to render sidebar and route templates */
-  public renderAppTemplates = false;
+  public renderAppTemplates = signal(false);
 
   public get deploymentConfig() {
     return this.deploymentService.config;
@@ -74,7 +72,6 @@ export class AppComponent {
 
     // 3rd Party Services
     private platform: Platform,
-    private cdr: ChangeDetectorRef,
     private menuController: MenuController,
     private router: Router,
     // App services
@@ -119,7 +116,6 @@ export class AppComponent {
   private async initializeApp() {
     this.platform.ready().then(async () => {
       this.platforms = this.platform.platforms().join(" ");
-      this.subscribeToAppConfigChanges();
       await this.populateAppInitFields();
       await this.initialiseCoreServices();
       this.hackSetDeveloperOptions();
@@ -146,9 +142,7 @@ export class AppComponent {
         await SplashScreen.hide();
       }
       // Show main template
-      this.renderAppTemplates = true;
-      // Detect changes in case expression changed prior to render (e.g. feedback sidebar)
-      this.cdr.detectChanges();
+      this.renderAppTemplates.set(true);
       this.scheduleReinitialisation();
     });
   }
@@ -172,14 +166,14 @@ export class AppComponent {
    */
   private async loadAuthConfig() {
     const { firebase } = this.deploymentService.config;
-    const { enforceLogin } = this.appAuthenticationDefaults;
+    const { enforceLogin, signInTemplate } =
+      this.appConfigService.appConfig().APP_AUTHENTICATION_DEFAULTS;
     const ensureLogin = firebase.config && enforceLogin && Capacitor.isNativePlatform();
     if (ensureLogin) {
       this.authService.ready();
       const authUser = await this.authService.getCurrentUser();
       if (!authUser) {
-        const templatename = this.appAuthenticationDefaults.signInTemplate;
-        const { modal } = await this.templateService.runStandaloneTemplate(templatename, {
+        const { modal } = await this.templateService.runStandaloneTemplate(signInTemplate, {
           showCloseButton: false,
           waitForDismiss: false,
         });
@@ -187,16 +181,6 @@ export class AppComponent {
         await modal.dismiss();
       }
     }
-  }
-
-  /** Initialise appConfig and set dependent properties */
-  private subscribeToAppConfigChanges() {
-    this.appConfigService.changesWithInitialValue$.subscribe((changes: IAppConfig) => {
-      this.appConfig = { ...this.appConfig, ...changes };
-      this.sideMenuDefaults = this.appConfig.APP_SIDEMENU_DEFAULTS;
-      this.footerDefaults = this.appConfig.APP_FOOTER_DEFAULTS;
-      this.appAuthenticationDefaults = this.appConfig.APP_AUTHENTICATION_DEFAULTS;
-    });
   }
 
   /**
