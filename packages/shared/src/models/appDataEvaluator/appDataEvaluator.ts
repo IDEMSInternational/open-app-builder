@@ -37,7 +37,7 @@ export class AppDataEvaluator {
     this.templatedData.updateContext(context);
   }
   public updateExecutionContext(update: IContext) {
-    this.setExecutionContext({ ...this.context, update });
+    this.setExecutionContext({ ...this.context, ...update });
   }
 
   /** Wrapper around templatedData method to list all variables within data **/
