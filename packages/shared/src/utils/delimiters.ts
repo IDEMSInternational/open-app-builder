@@ -59,7 +59,6 @@ export function addJSDelimeters(value: string, contextPrefixes: string[]) {
   // outer variables, e.g. `@row[this.inner_variable]` or `@row.outer_variable`
   // E.g. Regex /{@(row|local)([a-z0-9_.\[\]]*)}/gi
   const outerRegex = new RegExp(`{@(${contextPrefixes.join("|")})([a-z0-9_.\\[\\]]*)}`, "gi");
-  console.log({ outerRegex });
   replaced = replaced.replace(outerRegex, "this.$1$2");
   return replaced;
 }
