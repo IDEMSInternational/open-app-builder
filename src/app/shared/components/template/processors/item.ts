@@ -5,17 +5,15 @@ import { TemplatedData } from "packages/shared/src/models/templatedData/template
 
 import { shuffleArray } from "src/app/shared/utils";
 import { FlowTypes } from "../models";
-import { objectToArray } from "../utils";
 
 export class ItemProcessor {
   constructor(
-    private dataList: any,
+    private dataList: FlowTypes.Data_listRow[],
     private parameterList?: any
   ) {}
 
   public process(templateRows: any) {
-    const data = objectToArray(this.dataList);
-    const pipedData = this.pipeData(data, this.parameterList);
+    const pipedData = this.pipeData(this.dataList, this.parameterList);
     const itemRows = this.generateLoopItemRows(templateRows, pipedData);
     const parsedItemRows = this.hackSetNestedName(itemRows);
     // Return both rows for rendering and list of itemData used (post pipe operations)

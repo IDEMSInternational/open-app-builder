@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { JSEvaluator } from "shared/src/models/jsEvaluator/jsEvaluator";
 import {
-  ITemplatedDataContextList,
+  ITemplatedDataContext,
   TemplatedData,
 } from "shared/src/models/templatedData/templatedData";
 import { AsyncServiceBase } from "../asyncService.base";
@@ -129,7 +129,7 @@ export class AppDataVariableService extends AsyncServiceBase {
   }
 
   /** Evaluate all context-variable expressions - return as both nested and flat map */
-  private async processContextVariables(variables: ITemplatedDataContextList) {
+  private async processContextVariables(variables: ITemplatedDataContext) {
     const evaluatedContext = {};
     const evaluatedContextFlatmap = {};
     let isRecursive = false;
