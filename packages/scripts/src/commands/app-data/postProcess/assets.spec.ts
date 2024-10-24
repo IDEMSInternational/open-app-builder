@@ -10,7 +10,7 @@ import { vol } from "memfs";
 // Use default imports to allow spying on functions and replacing with mock methods
 import { ActiveDeployment } from "../../deployment/get";
 import { resolve } from "path";
-import { IAssetEntryHashmap } from "data-models/deployment.model";
+import { IAssetEntryHashmap } from "data-models/assets.model";
 import { useMockLogger } from "../../../../test/helpers/utils";
 
 // Mock all fs calls to use memfs implementation
