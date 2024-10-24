@@ -21,8 +21,8 @@ export class TemplateBaseComponent implements ITemplateRowProps {
   _row: FlowTypes.TemplateRow;
 
   value = signal<FlowTypes.TemplateRow["value"]>(undefined, { equal: isEqual });
-
   parameterList = signal<FlowTypes.TemplateRow["parameter_list"]>({}, { equal: isEqual });
+  actionList = signal<FlowTypes.TemplateRow["action_list"]>([], { equal: isEqual });
 
   /**
    * @ignore
@@ -32,6 +32,7 @@ export class TemplateBaseComponent implements ITemplateRowProps {
     this._row = row;
     this.value.set(row.value);
     this.parameterList.set(row.parameter_list);
+    this.actionList.set(row.action_list);
   }
 
   /**
