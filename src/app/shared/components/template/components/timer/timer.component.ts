@@ -136,7 +136,7 @@ export class TmplTimerComponent extends TemplateBaseComponent implements ITempla
       const columnOptions = this.timeValues();
       this.pickerController
         .create({
-          mode: this.platform.is("android") ? "md" : "ios" || "ios",
+          mode: this.platform.is("android") ? "md" : "ios",
           columns: this.getColumns(numColumns, columnOptions),
           buttons: [
             {
