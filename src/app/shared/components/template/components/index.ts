@@ -41,7 +41,6 @@ import { TmplLottieAnimation } from "./lottie-animation";
 import { TmplNavigationBarComponent } from "./navigation-bar/navigation-bar.component";
 import { TmplNumberComponent } from "./number-selector/number-selector.component";
 import { TmplOdkFormComponent } from "./odk-form/odk-form.component";
-import { TmplParentPointBoxComponent } from "./points-item/points-item.component";
 import { TmplPdfComponent } from "./pdf/pdf.component";
 import { TmplProgressPathComponent } from "./progress-path/progress-path.component";
 import { TmplQRCodeComponent } from "./qr-code/qr-code.component";
@@ -103,7 +102,6 @@ export const TEMPLATE_COMPONENTS = [
   TmplNavigationBarComponent,
   TmplNumberComponent,
   TmplOdkFormComponent,
-  TmplParentPointBoxComponent,
   TmplPdfComponent,
   TmplProgressPathComponent,
   TmplQRCodeComponent,
@@ -162,7 +160,6 @@ const CORE_COMPONENT_MAPPING: Record<FlowTypes.TemplateRowType, Type<ITemplateRo
   nested_properties: null as any,
   number_selector: TmplNumberComponent,
   odk_form: TmplOdkFormComponent,
-  parent_point_box: TmplParentPointBoxComponent,
   pdf: TmplPdfComponent,
   progress_path: TmplProgressPathComponent,
   qr_code: TmplQRCodeComponent,
