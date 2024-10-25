@@ -1,0 +1,85 @@
+@use "../utils";
+@use "sass:color";
+@use "./overrides";
+@use "./typography";
+
+@mixin theme-plh_kids_kw {
+  [data-theme="plh_kids_kw"] {
+    /** Authoring variables **/
+    $color-primary: hsl(209 63.8% 24.9%); // #174168
+    $color-secondary: hsl(199 100% 41.6%); // #0092D4
+    $page-background: white;
+
+    /** Authoring component overrides **/
+    $variable-overrides: (
+      ion-font-family: "Nunito",
+      font-weight-standard: 500,
+      font-weight-medium: 600,
+      font-weight-bold: 700,
+      font-weight-extra-bold: 800,
+      font-letter-spacing: -0.2px,
+      font-letter-spacing-large: -0.5px,
+
+      font-size-text-tiny: 14px,
+      font-size-text-small: 16px,
+      font-size-text-medium: 20px,
+      font-size-text-large: 24px,
+      font-size-text-extra-large: 32px,
+      line-height-text-tiny: 18px,
+      line-height-text-small: 24px,
+      line-height-text-medium: 28px,
+      line-height-text-large: 32px,
+      line-height-text-extra-large: 40px,
+
+      ion-border-radius-small: 8px,
+      ion-border-radius-standard: 12px,
+      ion-border-radius-secondary: 20px,
+      ion-border-radius-rounded: 50px,
+
+      buttons-min-height: 60px,
+      buttons-short-height: 48px,
+      buttons-medium-height: 60px,
+      buttons-tall-height: 80px,
+      buttons-font-size-small: 16px,
+      buttons-font-size-medium: 18px,
+      buttons-font-size-large: 20px,
+      buttons-font-size: 24px,
+      buttons-size: 64px,
+      buttons-full-width: 100%,
+      buttons-full-height: 100%,
+
+      button-background-primary: var(--ion-color-primary-500),
+      button-background-secondary: var(--ion-color-secondary),
+      button-background-option: var(--ion-color-primary-800),
+      round-button-background-secondary-light: var(--ion-color-yellow),
+      tile-button-background-primary: var(--ion-color-primary-500),
+      tile-button-background-primary-light: var(--ion-color-primary-300),
+      tile-button-background-secondary: var(--ion-color-secondary),
+      tile-button-background-secondary-light: var(--ion-color-yellow),
+      points-item-background: var(--ion-background-color),
+      points-item-background-complete: var(--ion-color-primary-200),
+      points-item-border: rgba(black, 0.07),
+      display-group-background-banner-primary: var(--ion-color-primary-200),
+      display-group-background-banner-secondary: var(--ion-color-secondary-300),
+      display-group-background-home-light: var(--ion-color-primary-300),
+      display-group-background-home-mid: var(--ion-color-primary-600),
+      display-group-background-home-dark: var(--ion-color-primary-800),
+      combo-box-background-with-value: var(--ion-color-primary-300),
+      accordion-background-highlight: var(--ion-color-primary-300),
+      tour-next-button-background: var(--ion-color-secondary),
+      radio-group-background-selected: var(--ion-color-primary-300),
+      ion-item-background: var(--ion-color-gray-light),
+      task-progress-bar-color: var(--ion-color-green),
+      progress-path-line-background: var(--ion-color-gray-100),
+      icon-size-small: 16px,
+      icon-size-medium: 24px,
+      icon-size-large: 32px,
+      icon-size-extra-large: 40px,
+      icon-size-largest: 48px,
+    );
+    @include utils.generateTheme($color-primary, $color-secondary, $page-background);
+    @each $name, $value in $variable-overrides {
+      --#{$name}: #{$value};
+    }
+  }
+}

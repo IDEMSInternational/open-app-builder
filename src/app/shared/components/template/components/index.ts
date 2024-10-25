@@ -64,6 +64,7 @@ import { TmplVideoComponent } from "./video";
 
 import { WorkshopsComponent } from "./layout/workshops_accordion";
 import { TmplTextBubbleComponent } from "./text-bubble/text-bubble.component";
+import { DEMO_COMPONENT_MAPPING } from "packages/components/demo";
 
 /** All components should be exported as a single array for easy module import */
 export const TEMPLATE_COMPONENTS = [
@@ -130,10 +131,7 @@ export const TEMPLATE_COMPONENTS = [
 /***************************************************************************************
  * Template component mapping
  **************************************************************************************/
-export const TEMPLATE_COMPONENT_MAPPING: Record<
-  FlowTypes.TemplateRowType,
-  Type<ITemplateRowProps>
-> = {
+const CORE_COMPONENT_MAPPING: Record<FlowTypes.TemplateRowType, Type<ITemplateRowProps>> = {
   accordion: TmplAccordionComponent,
   accordion_section: AccordionSectionComponent,
   advanced_dashed_box: TmplAdvancedDashedBoxComponent,
@@ -196,4 +194,9 @@ export const TEMPLATE_COMPONENT_MAPPING: Record<
   update_action_list: null as any,
   video: TmplVideoComponent,
   workshops_accordion: WorkshopsComponent,
+};
+
+export const TEMPLATE_COMPONENT_MAPPING = {
+  ...CORE_COMPONENT_MAPPING,
+  ...DEMO_COMPONENT_MAPPING,
 };
