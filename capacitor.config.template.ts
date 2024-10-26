@@ -38,5 +38,5 @@ const config: CapacitorConfig = {
 export default config;
 
 function toBoolean(v: string) {
-  return !!v;
+  return v && typeof v === "string" && v.toLowerCase() === "true" ? true : false;
 }
