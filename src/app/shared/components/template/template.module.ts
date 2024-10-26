@@ -16,7 +16,7 @@ import { TmplCompHostDirective, TemplateComponent } from "./template-component";
 
 import { appendStyleSvgDirective } from "./directives/shadowStyleSvg.directive";
 import { createCustomElement } from "@angular/elements";
-import { TemplatePipesModule } from "./pipes/template-pipes.module";
+import { TemplatePipesModule } from "./pipes";
 
 @NgModule({
   imports: [
