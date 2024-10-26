@@ -94,12 +94,14 @@ describe("Object Utils", () => {
         }
       )
     ).toEqual(true);
+    // literal object with different order
+    expect(isEqual({ a: 1, b: 2 }, { b: 2, a: 1 })).toEqual(true);
     // inequality deep check
     expect(
       isEqual(
         {
           string: "hello",
-          array: [1, "a", null, "additional"],
+          array: [1, "a", null, false],
           nested: {
             array: [2],
           },

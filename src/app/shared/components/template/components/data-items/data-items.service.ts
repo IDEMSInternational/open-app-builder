@@ -42,19 +42,19 @@ export class DataItemsService {
    * and evaluating all dynamic dependencies
    */
   public async generateItemRows(params: {
-    templateItemsRow: FlowTypes.TemplateRow;
+    templateRows: FlowTypes.TemplateRow[];
     dataListRows: FlowTypes.Data_listRow[];
     dataListName: string;
+    parameterList: IDataItemParameterList;
     parentRowMap?: any;
   }) {
     const evaluator = new AppDataEvaluator();
 
-    const { templateItemsRow, dataListName, parentRowMap = {} } = params;
+    const { dataListName, parameterList, templateRows, parentRowMap = {} } = params;
     let { dataListRows } = params;
-    const { parameter_list = {}, rows } = templateItemsRow;
 
     // Dynamically evaluate any filter operations as these could depend on item or local contexts
-    const { filter, ...operators } = parameter_list as IDataItemParameterList;
+    const { filter, ...operators } = parameterList;
     if (filter) {
       const filterContext = await this.generateDynamicEvaluationContext(filter, parentRowMap);
       evaluator.setExecutionContext(filterContext);
@@ -71,13 +71,18 @@ export class DataItemsService {
     const parsedOperators = evaluator.evaluate(operators);
 
     // Generate looped item rows for each template row
-    const { itemRows, itemData } = new ItemProcessor(dataListRows, parsedOperators).process(rows);
+    const { itemRows, itemData } = new ItemProcessor(dataListRows, parsedOperators).process(
+      templateRows
+    );
 
     // TODO - possibly just keep reference to item index now that filter has been already done
     const itemRowsWithMeta = setItemMeta(itemRows, itemData, dataListName);
 
     // Extract any common context used in all evaluation (e.g. @field, @local)
-    const commonRowDynamicContext = await this.generateDynamicEvaluationContext(rows, parentRowMap);
+    const commonRowDynamicContext = await this.generateDynamicEvaluationContext(
+      templateRows,
+      parentRowMap
+    );
     evaluator.setExecutionContext(commonRowDynamicContext);
 
     // Parse rows with full evaluation of any dynamic context

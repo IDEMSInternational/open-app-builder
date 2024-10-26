@@ -4,6 +4,7 @@ import { DynamicDataService } from "src/app/shared/services/dynamic-data/dynamic
 import { FlowTypes } from "../../models";
 import { TemplateBaseComponent } from "../base";
 import { DataItemsService } from "./data-items.service";
+import { IDataItemParameterList } from "./data-items.types";
 
 /** Metadata passed to `set_item` and `set_items` action **/
 interface IActionSetItemParamsMeta {
@@ -53,13 +54,14 @@ export class TmplDataItemsComponent extends TemplateBaseComponent implements OnD
     // NOTE - this will fail to catch case where context variables updated (e.g. @local, @field)
     effect(
       async () => {
-        const row = this.rowSignal();
-        if (row) {
+        const value = this.value();
+        const parameterList = this.parameterList();
+        if (value) {
           // setup data subscriptions
-          const dataListName = row.value.replace(`@data.`, "");
+          const dataListName = value.replace(`@data.`, "");
           if (dataListName !== this.dataListName) {
             this.dataListName = dataListName;
-            this.subscribeToData(dataListName);
+            this.subscribeToData(dataListName, parameterList);
           }
         }
       },
@@ -67,7 +69,7 @@ export class TmplDataItemsComponent extends TemplateBaseComponent implements OnD
     );
   }
 
-  private async subscribeToData(dataListName: string) {
+  private async subscribeToData(dataListName: string, parameterList: IDataItemParameterList) {
     if (this.dataQuery$) {
       this.dataQuery$.unsubscribe();
     }
@@ -78,7 +80,8 @@ export class TmplDataItemsComponent extends TemplateBaseComponent implements OnD
         const { templateRowMap } = this.parent.templateRowService;
         const parsedItemRows = await this.service.generateItemRows({
           dataListRows,
-          templateItemsRow: this._row,
+          parameterList,
+          templateRows: this._row.rows,
           parentRowMap: templateRowMap,
           dataListName: this.dataListName,
         });

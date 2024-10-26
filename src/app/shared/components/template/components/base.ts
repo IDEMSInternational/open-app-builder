@@ -1,7 +1,7 @@
 import { Component, Input, signal } from "@angular/core";
+import { isEqual } from "packages/shared/src/utils/object-utils";
 import { FlowTypes, ITemplateRowProps } from "../models";
 import { TemplateContainerComponent } from "../template-container.component";
-import { isEqual } from "packages/shared/src/utils/object-utils";
 
 @Component({
   template: ``,
