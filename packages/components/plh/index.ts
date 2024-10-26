@@ -3,7 +3,7 @@ import { NgModule, Type } from "@angular/core";
 import type { ITemplateRowProps } from "src/app/shared/components/template/models";
 import { CommonModule } from "@angular/common";
 import { IonicModule } from "@ionic/angular";
-import { TemplatePipesModule } from "src/app/shared/components/template/pipes/template-pipes.module";
+import { TemplatePipesModule } from "src/app/shared/components/template/pipes";
 import { LottieModule } from "ngx-lottie";
 import { PlhParentPointCounterComponent } from "./parent-point-counter/parent-point-counter.component";
 import { PlhParentPointBoxComponent } from "./parent-point-box/parent-point-box.component";
