@@ -286,6 +286,8 @@ export namespace FlowTypes {
     | "nested_properties"
     | "number_selector"
     | "odk_form"
+    | "parent_point_box"
+    | "parent_point_counter"
     | "pdf"
     | "progress_path"
     | "qr_code"
