@@ -77,3 +77,30 @@ export const sortJsonKeys = <T extends Record<string, any>>(json: T): T => {
       return obj;
     }, {}) as T;
 };
+
+/** Minimal deep equality checker, loosely based on lodash _isEqual but for simple primitives only */
+export function isEqual(a: any, b: any) {
+  // handle simple string, boolean, number, undefined, null or same object reference
+  if (a === b) return true;
+  // handle different object types
+  if (typeof a !== typeof b) return false;
+  // handle deep comparison for arrays
+  if (Array.isArray(a) && Array.isArray(b)) {
+    if (a.length !== b.length) return false;
+    // find the first element index where there is a mismatch
+    // if all elements are the same `findIndex` returns value -1
+    const differentIndex = a.findIndex((v, i) => !isEqual(v, b[i]));
+    return differentIndex === -1;
+  }
+  // handle deep comparison for literal objects
+  if (isObjectLiteral(a) && isObjectLiteral(b)) {
+    // assert if equal if same properties but in different order
+    const aSorted = sortJsonKeys(a);
+    const bSorted = sortJsonKeys(b);
+    if (!isEqual(Object.keys(aSorted), Object.keys(bSorted))) return false;
+    return isEqual(Object.values(aSorted), Object.values(bSorted));
+  }
+  // could not compare (e.g. symbols, date objects, functions, buffers etc)
+  console.warn(`[isEqual] could not compare`, a, b);
+  return false;
+}
