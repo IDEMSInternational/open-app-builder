@@ -316,7 +316,8 @@ export namespace FlowTypes {
     | "toggle_bar"
     | "update_action_list"
     | "video"
-    | "workshops_accordion";
+    | "workshops_accordion"
+    | "youtube";
 
   export interface TemplateRow extends Row_with_translations {
     type: TemplateRowType;
