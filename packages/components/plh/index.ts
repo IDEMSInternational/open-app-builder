@@ -11,8 +11,16 @@ import { PlhBottomNavigationBarComponent } from "./bottom-navigation-bar/bottom-
 
 @NgModule({
   imports: [CommonModule, IonicModule, TemplatePipesModule, LottieModule],
-  exports: [PlhParentPointCounterComponent, PlhParentPointBoxComponent],
-  declarations: [PlhParentPointCounterComponent, PlhParentPointBoxComponent],
+  exports: [
+    PlhBottomNavigationBarComponent,
+    PlhParentPointCounterComponent,
+    PlhParentPointBoxComponent,
+  ],
+  declarations: [
+    PlhBottomNavigationBarComponent,
+    PlhParentPointCounterComponent,
+    PlhParentPointBoxComponent,
+  ],
   providers: [],
 })
 export class PlhComponentsModule {}
