@@ -21,15 +21,15 @@ body[data-theme="plh_kids_kw"] {
     ion-button[disabled] {
       filter: none;
     }
+
+    .left {
+      text-align: unset !important;
+    }
     // Center align all button text by default
     .left.null ::ng-deep {
+      text-align: center;
       p {
         text-align: center !important;
-      }
-    }
-    .left ::ng-deep {
-      p {
-        text-align: left !important;
       }
     }
     .left.centre ::ng-deep {
@@ -232,6 +232,7 @@ body[data-theme="plh_kids_kw"] {
       }
     }
     .accordion-header::ng-deep ion-icon {
+      color: unset;
       color: white !important;
     }
     ion-item.accordion-content {
