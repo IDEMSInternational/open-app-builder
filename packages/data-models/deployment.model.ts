@@ -1,3 +1,4 @@
+import type { IContentsEntry } from "shared";
 import type { IGdriveEntry } from "../@idemsInternational/gdrive-tools";
 import type { IAppConfig, IAppConfigOverride } from "./appConfig";
 
@@ -154,6 +155,14 @@ interface IDeploymentCoreConfig {
   _parent_config?: Partial<IDeploymentConfig & { _workspace_path: string }>;
 }
 
+/** Duplicate type defintion from data-models (TODO - find better way to share) */
+interface IFlowTypeBase {
+  flow_type: string;
+  flow_name: string;
+  flow_subtype?: string;
+  status: "draft" | "released";
+}
+
 export type IDeploymentConfig = IDeploymentCoreConfig & IDeploymentRuntimeConfig;
 
 /**
@@ -234,43 +243,3 @@ export const DEPLOYMENT_CONFIG_DEFAULTS: IDeploymentConfig = {
   _parent_config: null,
   _version: 1.0,
 };
-
-/** Duplicate type defintion from scripts (TODO - find better way to share) */
-interface IContentsEntry {
-  relativePath: string;
-  size_kb: number;
-  modifiedTime: string;
-  md5Checksum: string;
-}
-
-/** Extend to include fields for front-end features */
-interface IAssetContentsEntry extends IContentsEntry {
-  /**
-   * Stores one of the following:
-   * 1. For core assets: Specific path to file when not the same as relativePath, e.g. asset overrides
-   * 2. For remote assets, on native devices: The path to the local file in native storage
-   * 3. For remote assets, on web: The public URL for the remotely hosted file (in supabase storage)
-   * */
-  filePath?: string;
-  /** id field is required to convert asset contents to and from data_list format */
-  id?: string;
-}
-
-/** Duplicate type defintion from data-models (TODO - find better way to share) */
-interface IFlowTypeBase {
-  flow_type: string;
-  flow_name: string;
-  flow_subtype?: string;
-  status: "draft" | "released";
-}
-
-export type IAssetContentsEntryMinimal = Omit<IAssetContentsEntry, "relativePath" | "modifiedTime">;
-
-export interface IAssetEntry extends IAssetContentsEntryMinimal {
-  overrides?: {
-    [theme_name: string]: {
-      [language_code: string]: IAssetContentsEntryMinimal;
-    };
-  };
-}
-export type IAssetEntryHashmap = { [assetPath: string]: IAssetEntry };
