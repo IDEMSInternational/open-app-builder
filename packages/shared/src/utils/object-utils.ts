@@ -100,6 +100,6 @@ export function isEqual(a: any, b: any) {
     if (!isEqual(Object.keys(aSorted), Object.keys(bSorted))) return false;
     return isEqual(Object.values(aSorted), Object.values(bSorted));
   }
-  // could not compare (e.g. symbols, buffers etc)
+  // could not compare (e.g. symbols, date objects, functions, buffers etc)
   return false;
 }
