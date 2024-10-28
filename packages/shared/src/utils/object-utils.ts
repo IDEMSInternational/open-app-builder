@@ -101,5 +101,6 @@ export function isEqual(a: any, b: any) {
     return isEqual(Object.values(aSorted), Object.values(bSorted));
   }
   // could not compare (e.g. symbols, date objects, functions, buffers etc)
+  console.warn(`[isEqual] could not compare`, a, b);
   return false;
 }
