@@ -90,7 +90,7 @@ export function extractDynamicEvaluators(
           type = "raw";
         }
         // cross-check to ensure lookup matches one of the pre-defined dynamic field types (e.g. not email@domain.com)
-        if (!appConfigDefault.DYNAMIC_PREFIXES.includes(type)) {
+        if (!FlowTypes.DYNAMIC_PREFIXES.includes(type)) {
           return undefined;
         }
         return { fullExpression, matchedExpression, type, fieldName };

@@ -14,19 +14,6 @@ import { IAppSkin } from "./skin.model";
  * special use case for relative paths
  ********************************************************************************************/
 
-const DYNAMIC_PREFIXES = [
-  "local",
-  "field",
-  "fields",
-  "global",
-  "data",
-  "campaign",
-  "calc",
-  "item",
-  "raw",
-  "row",
-] as const;
-
 const APP_LANGUAGES = {
   /** Language used during first load. If translations do not exist will default to source strings (gb_en) */
   default: "gb_en",
@@ -217,7 +204,6 @@ const APP_CONFIG = {
   APP_THEMES,
   APP_UPDATES,
   ASSET_PACKS,
-  DYNAMIC_PREFIXES,
   FEEDBACK_MODULE_DEFAULTS,
   NOTIFICATIONS_SYNC_FREQUENCY_MS,
   NOTIFICATION_DEFAULTS,
