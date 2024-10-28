@@ -6,7 +6,7 @@ interface IDelimitedTestData {
   delimited: string;
 }
 
-const prefixes = ["row"];
+const prefixes = ["row", "local"];
 const stringDelimiterTests: IDelimitedTestData[] = [
   // basic
   {
@@ -17,6 +17,11 @@ const stringDelimiterTests: IDelimitedTestData[] = [
   {
     input: "@row.first_name @row.last_name",
     delimited: "{@row.first_name} {@row.last_name}",
+  },
+  // mixed contexts
+  {
+    input: "@row.first_name @local.name",
+    delimited: "{@row.first_name} {@local.name}",
   },
   // nested
   {
@@ -40,6 +45,9 @@ interface IParseTestData {
   extracted: ITemplatedStringVariable;
 }
 
+/**
+ * yarn workspace shared test --filter "addStringDelimiters"
+ */
 describe("addStringDelimiters", () => {
   // Test individual string parsing
   for (const testData of stringDelimiterTests) {
@@ -60,21 +68,27 @@ describe("addStringDelimiters", () => {
 });
 
 const jsDelimterTests: IDelimitedTestData[] = [
-  // nested
-  {
-    input: "@row.@row.first_name",
-    delimited: "this.row[this.row.first_name]",
-  },
-
   // basic
   {
     input: "@row.first_name",
     delimited: "this.row.first_name",
   },
+
   // expression
   {
     input: "@row.first_name === 'Ada'",
     delimited: "this.row.first_name === 'Ada'",
+  },
+  // mixed context expressions
+  {
+    input: "@row.number_1 > @local.number_2",
+    delimited: "this.row.number_1 > this.local.number_2",
+  },
+
+  // nested
+  {
+    input: "@row.@row.first_name",
+    delimited: "this.row[this.row.first_name]",
   },
 
   // nested with braces
@@ -105,7 +119,7 @@ describe("addJSDelimiters", () => {
     const { input, delimited } = testData;
 
     it(JSON.stringify(input), () => {
-      const parsedValue = Delimiters.addJSDelimeters(input, prefixes);
+      const parsedValue = Delimiters.addJSDelimiters(input, prefixes);
       expect(parsedValue).toEqual(delimited);
       process.nextTick(() => console.log(`      ${JSON.stringify(parsedValue)}\n`));
       // NOTE - in case of errors additional tests can be carried out just on intermediate
