@@ -85,7 +85,7 @@ export function isEqual(a: any, b: any) {
   // handle different object types
   if (typeof a !== typeof b) return false;
   // handle deep comparison for arrays
-  if (Array.isArray(a)) {
+  if (Array.isArray(a) && Array.isArray(b)) {
     if (a.length !== b.length) return false;
     // find the first element index where there is a mismatch
     // if all elements are the same `findIndex` returns value -1
@@ -93,7 +93,7 @@ export function isEqual(a: any, b: any) {
     return differentIndex === -1;
   }
   // handle deep comparison for literal objects
-  if (isObjectLiteral(a)) {
+  if (isObjectLiteral(a) && isObjectLiteral(b)) {
     // assert if equal if same properties but in different order
     const aSorted = sortJsonKeys(a);
     const bSorted = sortJsonKeys(b);
