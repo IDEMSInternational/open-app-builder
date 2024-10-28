@@ -10,7 +10,7 @@ import { TemplateBaseComponent } from "../base";
 import { ITemplateRowProps } from "../../models";
 import { AudioService } from "src/app/shared/services/audio/audio.service";
 import { AudioPlayer } from "src/app/shared/services/audio/audio.player";
-import { PLHAssetPipe } from "../../pipes/plh-asset.pipe";
+import { TemplateAssetService } from "../../services/template-asset.service";
 
 @Component({
   selector: "plh-timer",
@@ -75,7 +75,7 @@ export class TmplTimerComponent extends TemplateBaseComponent implements ITempla
     private pickerController: PickerController,
     private platform: Platform,
     private audioService: AudioService,
-    private plhAssetPipe: PLHAssetPipe
+    private templateAssetService: TemplateAssetService
   ) {
     super();
     this.changeState(new PausedState(this));
@@ -85,7 +85,7 @@ export class TmplTimerComponent extends TemplateBaseComponent implements ITempla
     this.getParams();
     this.state.callOnInit();
     if (this.ping) {
-      const pingSrc = this.plhAssetPipe.transform(this.ping);
+      const pingSrc = this.templateAssetService.getTranslatedAssetPath(this.ping);
       this.player = this.audioService.createPlayer(pingSrc);
     }
   }
@@ -115,7 +115,7 @@ export class TmplTimerComponent extends TemplateBaseComponent implements ITempla
 
   getAssetParamFromTemplateRow(parameterName: string, _default: string | null) {
     const value = getStringParamFromTemplateRow(this._row, parameterName, null);
-    return value ? this.plhAssetPipe.transform(value) : _default;
+    return value ? this.templateAssetService.getTranslatedAssetPath(value) : _default;
   }
 
   getDurationFromParams() {
