@@ -1,19 +1,25 @@
-import { Component, ElementRef, HostListener, Input, OnInit, ViewChild } from "@angular/core";
-import { TemplateBaseComponent } from "src/app/shared/components/template/components/base";
-import { FlowTypes, ITemplateRowProps } from "src/app/shared/components/template/models";
 import {
-  getBooleanParamFromTemplateRow,
-  getStringParamFromTemplateRow,
-} from "src/app/shared/utils";
+  Component,
+  ElementRef,
+  HostBinding,
+  HostListener,
+  Input,
+  OnInit,
+  ViewChild,
+} from "@angular/core";
+import { TemplateBaseComponent } from "../base";
+import { FlowTypes, ITemplateRowProps } from "../../models";
+import { getBooleanParamFromTemplateRow, getStringParamFromTemplateRow } from "../../../../utils";
 import { AnimationOptions } from "ngx-lottie";
-import { TemplateAssetService } from "src/app/shared/components/template/services/template-asset.service";
+import { TemplateAssetService } from "../../services/template-asset.service";
 
 @Component({
-  selector: "plh-parent-point-box",
-  templateUrl: "./parent-point-box.component.html",
-  styleUrls: ["./parent-point-box.component.scss"],
+  selector: "plh-points-item",
+  templateUrl: "./points-item.component.html",
+  styleUrls: ["./points-item.component.scss"],
 })
-export class PlhParentPointBoxComponent
+// TODO - why does the class name not match the file name??
+export class TmplParentPointBoxComponent
   extends TemplateBaseComponent
   implements ITemplateRowProps, OnInit
 {
