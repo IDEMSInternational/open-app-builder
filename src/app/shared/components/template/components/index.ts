@@ -65,6 +65,7 @@ import { TmplVideoComponent } from "./video";
 import { WorkshopsComponent } from "./layout/workshops_accordion";
 import { TmplTextBubbleComponent } from "./text-bubble/text-bubble.component";
 import { DEMO_COMPONENT_MAPPING } from "packages/components/demo";
+import { PLH_COMPONENT_MAPPING } from "packages/components/plh";
 
 /** All components should be exported as a single array for easy module import */
 export const TEMPLATE_COMPONENTS = [
@@ -199,4 +200,5 @@ const CORE_COMPONENT_MAPPING: Record<FlowTypes.TemplateRowType, Type<ITemplateRo
 export const TEMPLATE_COMPONENT_MAPPING = {
   ...CORE_COMPONENT_MAPPING,
   ...DEMO_COMPONENT_MAPPING,
+  ...PLH_COMPONENT_MAPPING,
 };
