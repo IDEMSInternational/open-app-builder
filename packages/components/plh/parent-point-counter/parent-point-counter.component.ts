@@ -1,13 +1,13 @@
 import { Component, OnChanges, OnInit } from "@angular/core";
 import { getNumberParamFromTemplateRow, getStringParamFromTemplateRow } from "src/app/shared/utils";
-import { TemplateBaseComponent } from "../base";
+import { TemplateBaseComponent } from "src/app/shared/components/template/components/base";
 
 @Component({
   selector: "plh-parent-point-counter",
   templateUrl: "./parent-point-counter.component.html",
   styleUrls: ["./parent-point-counter.component.scss"],
 })
-export class TmplParentPointCounterComponent
+export class PlhParentPointCounterComponent
   extends TemplateBaseComponent
   implements OnInit, OnChanges
 {
