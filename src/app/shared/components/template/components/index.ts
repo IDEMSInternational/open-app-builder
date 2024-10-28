@@ -40,8 +40,6 @@ import { TmplLottieAnimation } from "./lottie-animation";
 import { TmplNavigationBarComponent } from "./navigation-bar/navigation-bar.component";
 import { TmplNumberComponent } from "./number-selector/number-selector.component";
 import { TmplOdkFormComponent } from "./odk-form/odk-form.component";
-import { TmplParentPointBoxComponent } from "./points-item/points-item.component";
-import { TmplParentPointCounterComponent } from "./parent-point-counter/parent-point-counter.component";
 import { TmplPdfComponent } from "./pdf/pdf.component";
 import { TmplProgressPathComponent } from "./progress-path/progress-path.component";
 import { TmplQRCodeComponent } from "./qr-code/qr-code.component";
@@ -65,6 +63,7 @@ import { WorkshopsComponent } from "./layout/workshops_accordion";
 import { YoutubeComponent } from "./youtube/youtube.component";
 
 import { DEMO_COMPONENT_MAPPING } from "packages/components/demo";
+import { PLH_COMPONENT_MAPPING } from "packages/components/plh";
 
 /** All components should be exported as a single array for easy module import */
 export const TEMPLATE_COMPONENTS = [
@@ -103,8 +102,6 @@ export const TEMPLATE_COMPONENTS = [
   TmplNavigationBarComponent,
   TmplNumberComponent,
   TmplOdkFormComponent,
-  TmplParentPointBoxComponent,
-  TmplParentPointCounterComponent,
   TmplPdfComponent,
   TmplProgressPathComponent,
   TmplQRCodeComponent,
@@ -163,8 +160,6 @@ const CORE_COMPONENT_MAPPING: Record<FlowTypes.TemplateRowType, Type<ITemplateRo
   nested_properties: null as any,
   number_selector: TmplNumberComponent,
   odk_form: TmplOdkFormComponent,
-  parent_point_box: TmplParentPointBoxComponent,
-  parent_point_counter: TmplParentPointCounterComponent,
   pdf: TmplPdfComponent,
   progress_path: TmplProgressPathComponent,
   qr_code: TmplQRCodeComponent,
@@ -200,4 +195,5 @@ const CORE_COMPONENT_MAPPING: Record<FlowTypes.TemplateRowType, Type<ITemplateRo
 export const TEMPLATE_COMPONENT_MAPPING = {
   ...CORE_COMPONENT_MAPPING,
   ...DEMO_COMPONENT_MAPPING,
+  ...PLH_COMPONENT_MAPPING,
 };
