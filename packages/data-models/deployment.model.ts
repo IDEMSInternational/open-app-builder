@@ -108,6 +108,8 @@ interface IDeploymentCoreConfig {
     splash_asset_path?: string;
     icon_asset_foreground_path?: string;
     icon_asset_background_path?: string;
+    /** Support pinch-zoom within app. Default `false` */
+    zoom_enabled?: boolean;
   };
   app_data: {
     /** Folder to populate processed content. Default `./app_data` */
@@ -128,6 +130,8 @@ interface IDeploymentCoreConfig {
     app_id?: string;
     /** App Store app name, e.g. "Example App" */
     app_name?: string;
+    /** Support pinch-zoom within app. Default `false` */
+    zoom_enabled?: boolean;
   };
   translations: {
     /** List of all language codes to include. Default null (includes all) */

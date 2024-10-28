@@ -40,6 +40,10 @@ on:
           description: Name of branch to build (defaults to event trigger sha)
           type: string
           default: ""
+        lfs:
+          description: Enable git lfs to include download of all binary assets (user-facing deployments)
+          type: boolean
+          default: true
   
       outputs:
         GIT_SHA:
@@ -75,6 +79,7 @@ jobs:
             ref: ${{inputs.branch}}
             path: ".idems_app/deployments/${{env.DEPLOYMENT_NAME}}"
             fetch-depth: 0
+            lfs: ${{inputs.lfs}}
             
         - name: Populate Encryption key
           if: env.DEPLOYMENT_PRIVATE_KEY != ''
