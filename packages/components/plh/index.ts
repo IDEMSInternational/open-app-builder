@@ -13,5 +13,5 @@ import { PlhBottomNavigationBarComponent } from "./bottom-navigation-bar/bottom-
 export class PlhComponentsModule {}
 
 export const PLH_COMPONENT_MAPPING: Record<string, Type<ITemplateRowProps>> = {
-  bottom_nav: PlhBottomNavigationBarComponent
+  plh_bottom_nav: PlhBottomNavigationBarComponent,
 };
