@@ -27,7 +27,7 @@ export class PlhParentPointBoxComponent
   windowWidth: number;
   text: string | null;
   wasClicked: boolean = false;
-  value: number | null = 0;
+  _value: number | null = 0;
   animOptions: AnimationOptions;
   animCelebrationOptions: AnimationOptions;
   play_celebration: boolean;
@@ -84,7 +84,7 @@ export class PlhParentPointBoxComponent
       return;
     }
     this._row.value = parseInt(this._row.value) + 1;
-    this.value = this._row.value;
+    this._value = this._row.value;
     this.star.nativeElement.classList.add("on-add");
     if (this.play_celebration) {
       this.showCelebrationAnimation = true;
@@ -97,7 +97,7 @@ export class PlhParentPointBoxComponent
       this.item.nativeElement.classList.add("complete");
     }
     this.wasClicked = true;
-    await this.setValue(this.value);
+    await this.setValue(this._value);
     await this.triggerActions("click");
     await this.triggerActions("changed");
   }
