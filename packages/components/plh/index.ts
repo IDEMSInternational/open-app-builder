@@ -3,11 +3,12 @@ import { NgModule, Type } from "@angular/core";
 import type { ITemplateRowProps } from "src/app/shared/components/template/models";
 import { CommonModule } from "@angular/common";
 import { IonicModule } from "@ionic/angular";
+import { PlhBottomNavigationBarComponent } from "./bottom-navigation-bar/bottom-navigation-bar.component";
 
 @NgModule({
   imports: [CommonModule, IonicModule],
-  exports: [],
-  declarations: [],
+  exports: [PlhBottomNavigationBarComponent],
+  declarations: [PlhBottomNavigationBarComponent],
 })
 export class PlhComponentsModule {}
 
