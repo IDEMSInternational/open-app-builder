@@ -101,7 +101,7 @@ describe("Object Utils", () => {
       isEqual(
         {
           string: "hello",
-          array: [1, "a", null, false],
+          array: [1, "a", null],
           nested: {
             array: [2],
           },
@@ -109,7 +109,7 @@ describe("Object Utils", () => {
         },
         {
           string: "hello",
-          array: [1, "a", null],
+          array: [1, "a", null, false],
           nested: {
             array: [2],
           },

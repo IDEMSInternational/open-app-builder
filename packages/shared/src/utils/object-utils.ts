@@ -86,6 +86,7 @@ export function isEqual(a: any, b: any) {
   if (typeof a !== typeof b) return false;
   // handle deep comparison for arrays
   if (Array.isArray(a)) {
+    if (a.length !== b.length) return false;
     // find the first element index where there is a mismatch
     // if all elements are the same `findIndex` returns value -1
     const differentIndex = a.findIndex((v, i) => !isEqual(v, b[i]));
