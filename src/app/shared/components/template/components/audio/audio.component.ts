@@ -8,9 +8,9 @@ import {
 import { Howl } from "howler";
 import { ITemplateRowProps } from "../../models";
 import { TemplateBaseComponent } from "../base";
-import { PLHAssetPipe } from "../../pipes/plh-asset.pipe";
 import { ModalController } from "@ionic/angular";
 import { TemplatePopupComponent } from "../layout/popup/popup.component";
+import { TemplateAssetService } from "../../services/template-asset.service";
 
 // Names of ion-icons to be used by default in the player.
 // Will be overridden if user provides values for play_icon_asset, pause_icon_asset or forward_icon_asset
@@ -94,7 +94,7 @@ export class TmplAudioComponent
   trackerInterval: NodeJS.Timeout;
 
   constructor(
-    private plhAssetPipe: PLHAssetPipe,
+    private templateAssetService: TemplateAssetService,
     private modalCtrl: ModalController
   ) {
     super();
@@ -117,7 +117,7 @@ export class TmplAudioComponent
     this.params.variant = getStringParamFromTemplateRow(this._row, "variant", "compact")
       .split(",")
       .join(" ") as IAudioParams["variant"];
-    this.params.src = this.plhAssetPipe.transform(
+    this.params.src = this.templateAssetService.getTranslatedAssetPath(
       this._row.value || getStringParamFromTemplateRow(this._row, "src", null)
     );
     this.params.playIconAsset = this.getAssetParamFromTemplateRow(
@@ -149,7 +149,7 @@ export class TmplAudioComponent
 
   private getAssetParamFromTemplateRow(parameterName: string, _default: string | null) {
     const value = getStringParamFromTemplateRow(this._row, parameterName, null);
-    return value ? this.plhAssetPipe.transform(value) : _default;
+    return value ? this.templateAssetService.getTranslatedAssetPath(value) : _default;
   }
 
   private initPlayer() {

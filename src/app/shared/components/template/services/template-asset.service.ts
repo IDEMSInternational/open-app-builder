@@ -56,6 +56,11 @@ export class TemplateAssetService extends AsyncServiceBase {
    * 4. default theme, default language
    */
   getTranslatedAssetPath(value: string) {
+    if (!value) return "";
+    // keep external links
+    if (value.startsWith("http")) {
+      return value;
+    }
     let assetName = cleanAssetName(value);
     const assetEntry = this.assetsContentsList$.value[assetName];
     if (!assetEntry) {
