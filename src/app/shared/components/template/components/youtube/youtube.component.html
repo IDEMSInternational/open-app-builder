@@ -1,9 +1,11 @@
-<div class="youtube-container">
-  <!-- The `iframe` property `allowFullscreen` must be set as a static attribute,
-   see https://angular.dev/errors/NG0910 -->
-  @if (params.allowFullScreen) {
-    <iframe [src]="src" frameborder="0" allowfullscreen></iframe>
-  } @else {
-    <iframe [src]="src" frameborder="0"></iframe>
-  }
-</div>
+@if (src) {
+  <div class="youtube-container">
+    <!-- The `iframe` property `allowFullscreen` must be set as a static attribute,
+     see https://angular.dev/errors/NG0910 -->
+    @if (params.allowFullScreen) {
+      <iframe [src]="src" frameborder="0" allowfullscreen></iframe>
+    } @else {
+      <iframe [src]="src" frameborder="0"></iframe>
+    }
+  </div>
+}
