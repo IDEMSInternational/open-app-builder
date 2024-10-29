@@ -5,6 +5,7 @@ import {
   getBooleanParamFromTemplateRow,
   addQueryParamsToUrl,
   getQueryParam,
+  extractTwoLetterLanguageCode,
 } from "src/app/shared/utils";
 import { TemplateTranslateService } from "../../services/template-translate.service";
 
@@ -69,7 +70,7 @@ export class YoutubeComponent extends TemplateBaseComponent implements OnInit {
       // hide the fullscreen button if allow_fullscreen is false
       fs: this.params.allowFullScreen ? "1" : "0",
       // Attempt to set the player's interface language to match the app language
-      hl: this.templateTranslateService.app_language$.value,
+      hl: extractTwoLetterLanguageCode(this.templateTranslateService.app_language$.value),
       // Disable related videos (at least those from external channels)
       rel: "0",
     };
