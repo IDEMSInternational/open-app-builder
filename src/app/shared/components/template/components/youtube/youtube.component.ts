@@ -3,16 +3,18 @@ import { TemplateBaseComponent } from "../base";
 import { DomSanitizer, SafeResourceUrl } from "@angular/platform-browser";
 import {
   getBooleanParamFromTemplateRow,
-  getStringParamFromTemplateRow,
+  addQueryParamsToUrl,
+  getQueryParam,
 } from "src/app/shared/utils";
 import { TemplateTranslateService } from "../../services/template-translate.service";
 
 interface IYoutubeParams {
-  /** TEMPLATE PARAMETER: video_id */
-  videoId: string;
   /** TEMPLATE PARAMETER: allow_full_screen. Default true */
   allowFullScreen?: boolean;
 }
+
+/** The name of the query param in a YouTube URL that is used to specify the video ID */
+const YOUTUBE_VIDEO_ID_QUERY_PARAM = "v";
 
 @Component({
   selector: "youtube",
@@ -22,6 +24,7 @@ interface IYoutubeParams {
 export class YoutubeComponent extends TemplateBaseComponent implements OnInit {
   params: Partial<IYoutubeParams> = {};
   src: SafeResourceUrl;
+  videoId: string;
 
   constructor(
     private domSanitizer: DomSanitizer,
@@ -32,12 +35,23 @@ export class YoutubeComponent extends TemplateBaseComponent implements OnInit {
 
   ngOnInit() {
     this.getParams();
-    this.getYoutubeSrc();
+    if (this.videoId) {
+      this.getYoutubeSrc();
+    }
   }
 
   private getParams() {
-    this.params.videoId =
-      this._row.value || getStringParamFromTemplateRow(this._row, "video_id", "");
+    if (this.value()) {
+      try {
+        // Extract the video ID from the YouTube URL – this means any query params from
+        // original URL are ignored (generally desirable)
+        this.videoId = getQueryParam(this.value(), YOUTUBE_VIDEO_ID_QUERY_PARAM);
+      } catch {
+        console.error(`[YouTube Component] "${this.value()}" is not a valid YouTube URL`);
+      }
+    } else {
+      console.error("[YouTube Component] A valid YouTube URL must be provided as value");
+    }
     this.params.allowFullScreen = getBooleanParamFromTemplateRow(
       this._row,
       "allow_fullscreen",
@@ -46,7 +60,7 @@ export class YoutubeComponent extends TemplateBaseComponent implements OnInit {
   }
 
   private getYoutubeSrc() {
-    const baseYoutubeUrl = `https://www.youtube.com/embed/${this.params.videoId}`;
+    const baseYoutubeUrl = `https://www.youtube.com/embed/${this.videoId}`;
 
     // See https://developers.google.com/youtube/player_parameters
     const youtubeQueryParams = {
@@ -60,16 +74,7 @@ export class YoutubeComponent extends TemplateBaseComponent implements OnInit {
       rel: "0",
     };
 
-    const youtubeUrl = this.addQueryParamsToUrl(baseYoutubeUrl, youtubeQueryParams);
+    const youtubeUrl = addQueryParamsToUrl(baseYoutubeUrl, youtubeQueryParams);
     this.src = this.domSanitizer.bypassSecurityTrustResourceUrl(youtubeUrl);
-  }
-
-  /** Add key/value query params to a url string */
-  private addQueryParamsToUrl(url: string, params: { [key: string]: string }): string {
-    const urlObj = new URL(url);
-    Object.keys(params).forEach((key) => {
-      urlObj.searchParams.set(key, params[key]);
-    });
-    return urlObj.toString();
   }
 }

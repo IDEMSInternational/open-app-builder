@@ -525,3 +525,18 @@ export function convertBlobToBase64(blob: Blob): Promise<string> {
     reader.readAsDataURL(blob);
   });
 }
+
+/** Add key/value query params to a url string */
+export function addQueryParamsToUrl(url: string, params: { [key: string]: string }): string {
+  const urlObj = new URL(url);
+  Object.keys(params).forEach((key) => {
+    urlObj.searchParams.set(key, params[key]);
+  });
+  return urlObj.toString();
+}
+
+/** Extract the value of a query param from a URL string */
+export function getQueryParam(url: string, param: string): string | null {
+  const urlObj = new URL(url);
+  return urlObj.searchParams.get(param);
+}
