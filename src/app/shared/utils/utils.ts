@@ -544,8 +544,8 @@ export function getQueryParam(url: string, param: string): string | null {
 /**
  * Extracts the two-letter language code from a given country language string.
  * Two-letter ISO 639-1 Codes: https://www.loc.gov/standards/iso639-2/php/code_list.php
- * @param {string} languageCode Country language code from in `ab_ab` or `ab_abc` format
- * @returns {string} The extracted two-letter language code, e.g. `ab`, or the original country language code if the format is invalid
+ * @param {string} languageCode Country language code from in `xx_yy` format, where `yy` is the two-letter language code
+ * @returns {string} The extracted two-letter language code, e.g. `yy`, or the original country language code if the format is invalid
  */
 export function extractTwoLetterLanguageCode(languageCode: string): string {
   const parts = languageCode.split("_");
