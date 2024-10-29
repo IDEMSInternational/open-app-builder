@@ -5,6 +5,7 @@ import {
   isObjectLiteral,
   sortJsonKeys,
   toEmptyObject,
+  arrayToHashmap,
 } from "./object-utils";
 
 const MOCK_NESTED_OBJECT = {
@@ -101,7 +102,7 @@ describe("Object Utils", () => {
       isEqual(
         {
           string: "hello",
-          array: [1, "a", null, false],
+          array: [1, "a", null],
           nested: {
             array: [2],
           },
@@ -109,7 +110,7 @@ describe("Object Utils", () => {
         },
         {
           string: "hello",
-          array: [1, "a", null],
+          array: [1, "a", null, false],
           nested: {
             array: [2],
           },
@@ -117,5 +118,30 @@ describe("Object Utils", () => {
         }
       )
     ).toEqual(false);
+  });
+  it("arrayToHashmap", () => {
+    const arr = [
+      { id: "id_1", number: 1 },
+      { id: "id_2", number: 2 },
+    ];
+    const res = arrayToHashmap(arr, "id");
+    expect(res).toEqual({
+      id_1: { id: "id_1", number: 1 },
+      id_2: { id: "id_2", number: 2 },
+    });
+  });
+
+  it("arrayToHashmap duplicate key", () => {
+    const arr = [
+      { id: "id_1", number: 1 },
+      { id: "id_2", number: 2 },
+      { id: "id_2", number: 2.1 },
+    ];
+    const res = arrayToHashmap(arr, "id", (k) => `${k}_duplicate`);
+    expect(res).toEqual({
+      id_1: { id: "id_1", number: 1 },
+      id_2: { id: "id_2", number: 2 },
+      id_2_duplicate: { id: "id_2", number: 2.1 },
+    });
   });
 });
