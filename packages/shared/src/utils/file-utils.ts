@@ -247,30 +247,6 @@ export function groupJsonByMultipleKeys<T>(json: T[], keys: string[], joinCharac
   return byKey;
 }
 
-/**
- * Convert an object array into a json object, with keys corresponding to array entries
- * @param keyfield any unique field which all array objects contain to use as hash keys (e.g. 'id')
- * @param handleDuplicateKey optional function to trigger when duplicate hash key entry detected.
- * Should return replacement key to populate instead
- */
-export function arrayToHashmap<T extends object>(
-  arr: T[],
-  keyfield: keyof T,
-  handleDuplicateKey = (k: string) => k
-): { [key: string]: T } {
-  const hashmap: { [key: string]: T } = {};
-  for (const el of arr) {
-    if (el.hasOwnProperty(keyfield)) {
-      let hashKey = el[keyfield] as string;
-      if (hashKey in hashmap) {
-        hashKey = handleDuplicateKey(hashKey);
-      }
-      hashmap[hashKey] = el;
-    }
-  }
-  return hashmap;
-}
-
 export function listFolderNames(folderPath: string) {
   if (!fs.existsSync(folderPath)) {
     return [];

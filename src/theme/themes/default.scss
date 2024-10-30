@@ -10,6 +10,8 @@
 
     /** Authoring component overrides **/
     $variable-overrides: (
+      demo-variable: red,
+      // an example variable for illustration purposes
       gradient-yellow-vertical:
         linear-gradient(175deg, var(--ion-color-yellow-200) 30%, var(--ion-color-yellow-500)),
       gradient-yellow-horizontal:
