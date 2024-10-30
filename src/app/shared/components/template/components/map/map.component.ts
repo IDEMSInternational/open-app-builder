@@ -17,6 +17,8 @@ import Fill from "ol/style/Fill";
 import Stroke from "ol/style/Stroke";
 import chroma from "chroma-js";
 import BaseLayer from "ol/layer/Base";
+import { RangeCustomEvent } from "@ionic/angular";
+import { Feature } from "ol";
 
 interface IMapLayer {
   id: string;
@@ -36,6 +38,7 @@ interface IMapLayer {
   scale_max: number;
   scale_min: number;
   scale_bins: number[];
+  scale_slider: boolean;
   scale_title: string;
   stroke: string;
   type: "vector" | "heatmap";
@@ -88,6 +91,39 @@ export class TmplMapComponent extends TemplateBaseComponent implements OnInit {
 
   public toggleLayer(mapLayer: BaseLayer) {
     mapLayer.setVisible(!mapLayer.getVisible());
+  }
+
+  /**
+   * Handles the change event from a slider component and updates the visibility of features
+   * in a vector map layer based on the selected range values.
+   */
+  public handleSliderChange(event: any, mapLayer: BaseLayer) {
+    // Only works on vector layers
+    const { lower, upper } = (event as RangeCustomEvent).detail.value as {
+      lower: number;
+      upper: number;
+    };
+    console.log("lower:", lower, "upper:", upper);
+    const vectorLayer = mapLayer as VectorLayer;
+    const propertyName = vectorLayer.get("propertyToPlot");
+
+    const scaleMax = vectorLayer.get("scaleMax");
+    const scaleMin = vectorLayer.get("scaleMin");
+
+    const normaliseValue = (value: number) => {
+      return scaleMin + (value / 100) * (scaleMax - scaleMin);
+    };
+
+    const lowerNormalised = normaliseValue(lower);
+    const upperNormalised = normaliseValue(upper);
+
+    const filterFeatures = (feature: Feature) => {
+      const value = feature.get(propertyName);
+      return value >= lowerNormalised && value <= upperNormalised;
+    };
+    vectorLayer.getSource().forEachFeature((feature: Feature) => {
+      feature.set("visible", filterFeatures(feature));
+    });
   }
 
   private async initialiseMap() {
@@ -199,6 +235,7 @@ export class TmplMapComponent extends TemplateBaseComponent implements OnInit {
       name,
       description,
       opacity,
+      propertyToPlot,
       scaleMax: scale_max,
       scaleMin: scale_min,
       scaleTitle: scale_title,
@@ -224,6 +261,7 @@ export class TmplMapComponent extends TemplateBaseComponent implements OnInit {
       point_radius_max,
       point_radius_property,
       point_radius_property_max,
+      scale_slider,
     } = layer;
     if (!source_asset) return;
 
@@ -233,6 +271,8 @@ export class TmplMapComponent extends TemplateBaseComponent implements OnInit {
         url: source_asset,
       }),
       style: (feature) => {
+        if (feature.get("visible") === false) return null;
+
         const geometryType = feature.getGeometry().getType();
 
         if (geometryType === "Polygon") {
@@ -276,6 +316,7 @@ export class TmplMapComponent extends TemplateBaseComponent implements OnInit {
     if (propertyToPlot) {
       const colourScale = this.generateColourScale(scale_max, scale_min, gradient_palette);
       vectorLayer.setStyle((feature) => {
+        if (feature.get("visible") === false) return null;
         const value = feature.get(propertyToPlot);
         const style = new Style({
           fill: new Fill({
@@ -300,7 +341,9 @@ export class TmplMapComponent extends TemplateBaseComponent implements OnInit {
       scaleMin: scale_min,
       scaleTitle: scale_title,
       scaleColours,
+      scaleSlider: scale_slider,
       opacity,
+      propertyToPlot,
     });
     this.addLayer(vectorLayer);
   }
@@ -339,11 +382,23 @@ export class TmplMapComponent extends TemplateBaseComponent implements OnInit {
       scaleMin?: number;
       scaleTitle?: string;
       scaleColours?: string[];
+      scaleSlider?: boolean;
       opacity?: number;
+      propertyToPlot?: string;
     }
   ) {
-    const { visible, name, description, scaleMax, scaleMin, scaleTitle, scaleColours, opacity } =
-      setCustomLayerProperties;
+    const {
+      visible,
+      name,
+      description,
+      scaleMax,
+      scaleMin,
+      scaleTitle,
+      scaleColours,
+      scaleSlider,
+      opacity,
+      propertyToPlot,
+    } = setCustomLayerProperties;
 
     const cssGradientFill = scaleColours
       ? `linear-gradient(90deg, ${scaleColours.join(", ")})`
@@ -356,6 +411,8 @@ export class TmplMapComponent extends TemplateBaseComponent implements OnInit {
     layer.set("scaleMax", scaleMax);
     layer.set("scaleMin", scaleMin);
     layer.set("scaleTitle", scaleTitle);
+    layer.set("scaleSlider", scaleSlider);
+    layer.set("propertyToPlot", propertyToPlot);
   }
 
   private calcPointRadius(value: number, maxvalue: number, maxRadius: number) {
