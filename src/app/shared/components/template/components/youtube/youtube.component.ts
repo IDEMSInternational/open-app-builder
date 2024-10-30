@@ -1,7 +1,7 @@
 import { Component, computed } from "@angular/core";
 import { TemplateBaseComponent } from "../base";
 import { DomSanitizer } from "@angular/platform-browser";
-import { extractTwoLetterLanguageCode, getBooleanParamFromTemplateRow } from "src/app/shared/utils";
+import { getBooleanParamFromTemplateRow } from "src/app/shared/utils";
 import { TemplateTranslateService } from "../../services/template-translate.service";
 
 interface ITemplateParams {
@@ -94,9 +94,7 @@ export class YoutubeComponent extends TemplateBaseComponent {
     // hide the fullscreen button if allow_fullscreen is false
     this.setYouTubeParam(url, "showFullscreenButton", params.allowFullScreen ? "1" : "0");
     // Attempt to set the player's interface language to match the app language
-    const languageCode = extractTwoLetterLanguageCode(
-      this.templateTranslateService.app_language$.value
-    );
+    const languageCode = this.templateTranslateService.app_language_code;
     this.setYouTubeParam(url, "interfaceLanguage", languageCode);
     // Disable related videos (at least those from external channels)
     this.setYouTubeParam(url, "showRelatedVideos", "0");
