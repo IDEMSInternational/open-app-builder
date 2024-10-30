@@ -339,7 +339,7 @@ export namespace FlowTypes {
     /** Keep a list of dynamic dependencies used within a template, by reference (e.g. {@local.var1 : ["text_1"]}) */
     _dynamicDependencies?: { [reference: string]: string[] };
     _translatedFields?: { [field: string]: any };
-    _evalContext?: { itemContext: TemplateRowItemEvalContext }; // force specific context variables when calculating eval statements (such as loop items)
+    _evalContext?: any; // force specific context variables when calculating eval statements (such as loop items)
     __EMPTY?: any; // empty cells (can be removed after pr 679 merged)
   }
 
