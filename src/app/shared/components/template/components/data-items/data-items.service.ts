@@ -7,9 +7,9 @@ import {
 import { AppDataEvaluator } from "packages/shared/src/models/appDataEvaluator/appDataEvaluator";
 
 import { TemplateVariablesService } from "../../services/template-variables.service";
-import { ItemProcessor } from "../../processors/item";
-import { setItemMeta } from "./data-items.utils";
+import { generateLoopItemRows, updateActionList } from "./data-items.utils";
 import { IDataItemParameterList } from "./data-items.types";
+import { ItemDataPipe } from "../../processors/itemPipe";
 
 @Injectable({ providedIn: "root" })
 export class DataItemsService {
@@ -39,21 +39,34 @@ export class DataItemsService {
   /**
    * Take an input data_items row and corresponding data_list and generate the full
    * set of rows for templating, taking into account any data operations (e.g. sort, filter)
-   * and evaluating all dynamic dependencies
+   * and evaluating all dynamic dependencies. This is done in the following stages
+   *
+   * 1. Take the source item data_list and apply any data operations provided from parameter list.
+   * This will be done in a dynamic context to allow for filtering by expression, e.g. @item.number > 2
+   *
+   * 2. Generate a set of template rows for each items, keeping track of the item context for
+   * evaluation in next stages
+   *
+   * 3. Update any action list calls to set_item or set_items as these are simple wrappers to more general
+   * set_data action (where set_item infers default metadata like list_id and item_ids ).
+   * Evaluate the action_lists standalone as they may refer to a different item context,
+   *
+   * e.g. set_item `{_id: @item._index + 1, completed: !item.completed}` would evaluate current item to get
+   * target index, but then use that value for completed toggle
    */
   public async generateItemRows(params: {
     templateRows: FlowTypes.TemplateRow[];
     dataListRows: FlowTypes.Data_listRow[];
     dataListName: string;
-    parameterList: IDataItemParameterList;
+    parameterList?: IDataItemParameterList;
     parentRowMap?: any;
   }) {
     const evaluator = new AppDataEvaluator();
 
-    const { dataListName, parameterList, templateRows, parentRowMap = {} } = params;
+    const { dataListName, parameterList = {}, templateRows, parentRowMap = {} } = params;
     let { dataListRows } = params;
 
-    // Dynamically evaluate any filter operations as these could depend on item or local contexts
+    // 1a. Dynamically evaluate any filter operations as these could depend on item or local contexts
     const { filter, ...operators } = parameterList;
     if (filter) {
       const filterContext = await this.generateDynamicEvaluationContext(filter, parentRowMap);
@@ -65,20 +78,20 @@ export class DataItemsService {
       });
     }
 
-    // Dynamically evaluate the rest of parameter list operators
+    // 1b. Dynamically evaluate the rest of parameter list operators
     const operatorContext = await this.generateDynamicEvaluationContext(operators, parentRowMap);
     evaluator.setExecutionContext(operatorContext);
     const parsedOperators = evaluator.evaluate(operators);
 
-    // Generate looped item rows for each template row
-    const { itemRows, itemData } = new ItemProcessor(dataListRows, parsedOperators).process(
-      templateRows
-    );
+    // 1c. Apply data pipe operations
+    const operations = Object.entries<any>(parsedOperators).map(([name, arg]) => ({ name, arg }));
+    const itemListRows = new ItemDataPipe().process(dataListRows, operations);
 
-    // TODO - possibly just keep reference to item index now that filter has been already done
-    const itemRowsWithMeta = setItemMeta(itemRows, itemData, dataListName);
+    // 2.Generate rows
+    const itemTemplateRows = generateLoopItemRows(templateRows, itemListRows);
+    console.log({ itemTemplateRows });
 
-    // Extract any common context used in all evaluation (e.g. @field, @local)
+    // 3a. Extract any common context used in all evaluation (e.g. @field, @local)
     const commonRowDynamicContext = await this.generateDynamicEvaluationContext(
       templateRows,
       parentRowMap
@@ -88,18 +101,29 @@ export class DataItemsService {
     // Parse rows with full evaluation of any dynamic context
     // This will include common context extracted previously and individual item context
     const parsedRows: FlowTypes.TemplateRow[] = [];
-    for (const { _evalContext, ...row } of itemRowsWithMeta) {
+
+    for (const row of itemTemplateRows) {
+      // 3b. Update action_list separately in case action list refers to a different item via _index or _id property
+      const rowWithUpdatedActionList = updateActionList({
+        templateRow: row,
+        itemListRows,
+        dataListName,
+      });
+
+      // 3c. Evaluate the rest of the row
+      const { _evalContext, ...rest } = rowWithUpdatedActionList;
       evaluator.updateExecutionContext({ item: _evalContext.itemContext });
-      const evaluated = await evaluator.evaluate(row);
+      const evaluated = await evaluator.evaluate(rest);
       parsedRows.push(evaluated);
     }
-
-    // TODO - sort action lists
-    // // Process action list before rest of row to handle case where action targets a different item context
-    // const parsedItemRowsWithActions = itemRowsWithMeta.map((row) =>
-    //   updateActionList(row, itemData)
-    // );
 
     return parsedRows;
   }
 }
+
+// TODO - handle subtle case where using 2 different item contexts in single expression
+/**
+ 
+_id: @item._id + 1, completed:!@item.completed
+
+ */
