@@ -346,7 +346,7 @@ export class TmplMapComponent extends TemplateBaseComponent implements OnInit {
       setCustomLayerProperties;
 
     const cssGradientFill = scaleColours
-      ? `linear-gradient(0deg, ${scaleColours.join(", ")})`
+      ? `linear-gradient(90deg, ${scaleColours.join(", ")})`
       : undefined;
     layer.setVisible(visible === undefined || !!visible);
     if (opacity || opacity === 0) layer.setOpacity(opacity);
