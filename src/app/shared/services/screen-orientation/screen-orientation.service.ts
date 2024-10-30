@@ -1,10 +1,6 @@
 import { Injectable } from "@angular/core";
 import { SyncServiceBase } from "../syncService.base";
-import {
-  ScreenOrientation,
-  OrientationLockType,
-  OrientationLockOptions,
-} from "@capacitor/screen-orientation";
+import { ScreenOrientation, OrientationLockType } from "@capacitor/screen-orientation";
 import { TemplateActionRegistry } from "../../components/template/services/instance/template-action.registry";
 
 const ORIENTATION_TYPES: OrientationLockType[] = ["portrait", "landscape"];
@@ -35,6 +31,10 @@ export class ScreenOrientationService extends SyncServiceBase {
     });
   }
 
+  private async setOrientation(orientation: OrientationLockType) {
+    return await ScreenOrientation.lock({ orientation });
+  }
+
   private async setPortrait() {
     return await this.setOrientation("portrait");
   }
@@ -45,10 +45,6 @@ export class ScreenOrientationService extends SyncServiceBase {
 
   private async getOrientation() {
     return await ScreenOrientation.orientation();
-  }
-
-  private async setOrientation(orientation: OrientationLockType) {
-    return await ScreenOrientation.lock({ orientation });
   }
 
   private async unlockOrientation() {
