@@ -5,16 +5,34 @@ import { extractTwoLetterLanguageCode, getBooleanParamFromTemplateRow } from "sr
 import { TemplateTranslateService } from "../../services/template-translate.service";
 
 interface ITemplateParams {
-  allow_full_screen?: string;
+  allow_fullscreen?: string;
 }
 
 interface IYoutubeParams {
-  /** TEMPLATE PARAMETER: allow_full_screen. Default true */
+  /** TEMPLATE PARAMETER: allow_fullscreen. Default true */
   allowFullScreen?: boolean;
 }
 
-/** The name of the query param in a YouTube URL that is used to specify the video ID */
-const YOUTUBE_VIDEO_ID_QUERY_PARAM = "v";
+/**
+ * The names of the Youtube-specific query params that will be added to the url
+ * For a full list and explanation, see https://developers.google.com/youtube/player_parameters
+ * */
+const YOUTUBE_URL_QUERY_PARAMS: { [K in keyof YouTubeUrlQueryParamValues]: string } = {
+  videoId: "v",
+  color: "color",
+  showFullscreenButton: "fs",
+  interfaceLanguage: "hl",
+  showRelatedVideos: "rel",
+};
+
+/** Possible values of the supported query params */
+interface YouTubeUrlQueryParamValues {
+  videoId: string;
+  color: "red" | "white";
+  showFullscreenButton: "0" | "1";
+  interfaceLanguage: string; // 2-letter ISO 639-1 code
+  showRelatedVideos: "0" | "1";
+}
 
 @Component({
   selector: "youtube",
@@ -53,9 +71,9 @@ export class YoutubeComponent extends TemplateBaseComponent {
     if (value && typeof value === "string" && value.startsWith("https://")) {
       const url = new URL(value);
       // only support urls that include video id through parameter (e.g. not youtu.be/12345678901)
-      const videoId = url.searchParams.get(YOUTUBE_VIDEO_ID_QUERY_PARAM);
+      const videoId = url.searchParams.get(YOUTUBE_URL_QUERY_PARAMS.videoId);
       if (videoId) {
-        url.searchParams.delete(YOUTUBE_VIDEO_ID_QUERY_PARAM);
+        url.searchParams.delete(YOUTUBE_URL_QUERY_PARAMS.videoId);
         // rewrite host and pathname to use youtube embed version
         url.host = "youtube.com";
         url.pathname = `/embed/${videoId}`;
@@ -72,16 +90,25 @@ export class YoutubeComponent extends TemplateBaseComponent {
    */
   private setUrlParams(url: URL, params: IYoutubeParams) {
     // Favour white over red for more theme compatibility
-    url.searchParams.set("color", "white");
+    this.setYouTubeParam(url, "color", "white");
     // hide the fullscreen button if allow_fullscreen is false
-    url.searchParams.set("fs", params.allowFullScreen ? "1" : "0");
+    this.setYouTubeParam(url, "showFullscreenButton", params.allowFullScreen ? "1" : "0");
     // Attempt to set the player's interface language to match the app language
     const languageCode = extractTwoLetterLanguageCode(
       this.templateTranslateService.app_language$.value
     );
-    url.searchParams.set("hl", languageCode);
+    this.setYouTubeParam(url, "interfaceLanguage", languageCode);
     // Disable related videos (at least those from external channels)
-    url.searchParams.set("rel", "0");
+    this.setYouTubeParam(url, "showRelatedVideos", "0");
     return url;
   }
+
+  private setYouTubeParam = <K extends keyof YouTubeUrlQueryParamValues>(
+    url: URL,
+    key: K,
+    value: YouTubeUrlQueryParamValues[K]
+  ) => {
+    const paramName = YOUTUBE_URL_QUERY_PARAMS[key];
+    url.searchParams.set(paramName, value);
+  };
 }
