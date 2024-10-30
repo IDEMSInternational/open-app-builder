@@ -63,6 +63,7 @@ function parseConfigJson(json: IDeploymentConfigJson) {
 /**
  * Decide if a config needs recompiling by checking if modified timestamps
  * on the .ts and .json files are the same (applied during compilation)
+ * TODO - also consider files from encrypted or other imports (e.g. skins)
  */
 function isConfigUpToDate(tsPath: string, jsonPath: string) {
   const json = fs.readJSONSync(jsonPath) as IDeploymentConfigJson;

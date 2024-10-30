@@ -2,7 +2,7 @@
 
 import type { IDataPipeOperation } from "shared";
 import type { IAppConfig } from "./appConfig";
-import type { IAssetEntry } from "./deployment.model";
+import type { IAssetEntry } from "./assets.model";
 
 /*********************************************************************************************
  *  Base flow types
@@ -287,8 +287,6 @@ export namespace FlowTypes {
     | "nested_properties"
     | "number_selector"
     | "odk_form"
-    | "parent_point_box"
-    | "parent_point_counter"
     | "pdf"
     | "progress_path"
     | "qr_code"

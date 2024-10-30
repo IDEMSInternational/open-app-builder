@@ -42,8 +42,6 @@ import { TmplMapComponent } from "./map/map.component";
 import { TmplNavigationBarComponent } from "./navigation-bar/navigation-bar.component";
 import { TmplNumberComponent } from "./number-selector/number-selector.component";
 import { TmplOdkFormComponent } from "./odk-form/odk-form.component";
-import { TmplParentPointBoxComponent } from "./points-item/points-item.component";
-import { TmplParentPointCounterComponent } from "./parent-point-counter/parent-point-counter.component";
 import { TmplPdfComponent } from "./pdf/pdf.component";
 import { TmplProgressPathComponent } from "./progress-path/progress-path.component";
 import { TmplQRCodeComponent } from "./qr-code/qr-code.component";
@@ -56,7 +54,7 @@ import { TmplTaskCardComponent } from "./task-card/task-card.component";
 import { TmplTaskProgressBarComponent } from "./task-progress-bar/task-progress-bar.component";
 import { TmplTextAreaComponent } from "./text-area/text-area.component";
 import { TmplTextBoxComponent } from "./text-box/text-box.component";
-import { TmplTextComponent } from "./text";
+import { TmplTextComponent } from "./text/text.component";
 import { TmplTileComponent } from "./tile-component/tile-component.component";
 import { TmplTitleComponent } from "./title";
 import { TmplTimerComponent } from "./timer/timer.component";
@@ -65,6 +63,8 @@ import { TmplVideoComponent } from "./video";
 
 import { WorkshopsComponent } from "./layout/workshops_accordion";
 import { TmplTextBubbleComponent } from "./text-bubble/text-bubble.component";
+import { DEMO_COMPONENT_MAPPING } from "packages/components/demo";
+import { PLH_COMPONENT_MAPPING } from "packages/components/plh";
 
 /** All components should be exported as a single array for easy module import */
 export const TEMPLATE_COMPONENTS = [
@@ -104,8 +104,6 @@ export const TEMPLATE_COMPONENTS = [
   TmplNavigationBarComponent,
   TmplNumberComponent,
   TmplOdkFormComponent,
-  TmplParentPointBoxComponent,
-  TmplParentPointCounterComponent,
   TmplPdfComponent,
   TmplProgressPathComponent,
   TmplQRCodeComponent,
@@ -132,10 +130,7 @@ export const TEMPLATE_COMPONENTS = [
 /***************************************************************************************
  * Template component mapping
  **************************************************************************************/
-export const TEMPLATE_COMPONENT_MAPPING: Record<
-  FlowTypes.TemplateRowType,
-  Type<ITemplateRowProps>
-> = {
+const CORE_COMPONENT_MAPPING: Record<FlowTypes.TemplateRowType, Type<ITemplateRowProps>> = {
   accordion: TmplAccordionComponent,
   accordion_section: AccordionSectionComponent,
   advanced_dashed_box: TmplAdvancedDashedBoxComponent,
@@ -168,8 +163,6 @@ export const TEMPLATE_COMPONENT_MAPPING: Record<
   nested_properties: null as any,
   number_selector: TmplNumberComponent,
   odk_form: TmplOdkFormComponent,
-  parent_point_box: TmplParentPointBoxComponent,
-  parent_point_counter: TmplParentPointCounterComponent,
   pdf: TmplPdfComponent,
   progress_path: TmplProgressPathComponent,
   qr_code: TmplQRCodeComponent,
@@ -199,4 +192,10 @@ export const TEMPLATE_COMPONENT_MAPPING: Record<
   update_action_list: null as any,
   video: TmplVideoComponent,
   workshops_accordion: WorkshopsComponent,
+};
+
+export const TEMPLATE_COMPONENT_MAPPING = {
+  ...CORE_COMPONENT_MAPPING,
+  ...DEMO_COMPONENT_MAPPING,
+  ...PLH_COMPONENT_MAPPING,
 };
