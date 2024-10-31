@@ -12,7 +12,7 @@ import {
 } from "../components/layout/popup/popup.component";
 import { ITemplateContainerProps } from "../models";
 import { TemplateContainerComponent } from "../template-container.component";
-import { TemplateService } from "./template.service";
+import { TemplateMetadataService } from "./template-metadata.service";
 
 // Toggle logs used across full service for debugging purposes (there's quite a few and tedious to comment)
 const SHOW_DEBUG_LOGS = false;
@@ -31,7 +31,7 @@ export class TemplateNavService extends SyncServiceBase {
     private location: Location,
     private router: Router,
     private route: ActivatedRoute,
-    private templateService: TemplateService
+    private templateMetadataService: TemplateMetadataService
   ) {
     super("TemplateNav");
   }
@@ -44,23 +44,6 @@ export class TemplateNavService extends SyncServiceBase {
   private openPopupsByName: {
     [templatename: string]: { modal: HTMLIonModalElement; props: ITemplateContainerProps };
   } = {};
-
-  public async applyQueryParamsForTemplate(templateName: string) {
-    const templateMetadata = await this.templateService.getTemplateMetadata(templateName);
-    await this.updateQueryParamsFromTemplateMetadata(templateMetadata);
-  }
-  public async updateQueryParamsFromTemplateMetadata(
-    templateMetadata: FlowTypes.Template["parameter_list"]
-  ) {
-    const templateMetadataQueryParams: ITemplateMetadataQueryParams = {};
-    templateMetadataQueryParams.landscape = templateMetadata?.landscape || null;
-    this.router.navigate([], {
-      relativeTo: this.route,
-      queryParams: templateMetadataQueryParams,
-      queryParamsHandling: "merge",
-      replaceUrl: true,
-    });
-  }
 
   public async handleQueryParamChange(
     params: INavQueryParams,
@@ -134,7 +117,7 @@ export class TemplateNavService extends SyncServiceBase {
     // handle template navigation
     else {
       navTarget = ["template", templatename];
-      this.applyQueryParamsForTemplate(templatename);
+      this.templateMetadataService.applyQueryParamsForTemplate(templatename);
     }
     return this.router.navigate(navTarget, {
       queryParams,
@@ -389,9 +372,4 @@ export interface INavQueryParams {
   popup_child?: string; //
   popup_parent?: string;
   popup_parent_triggered_by?: string; //
-}
-
-/** Templates can add additional query params to the url based on authored metadata */
-export interface ITemplateMetadataQueryParams {
-  landscape?: boolean;
 }

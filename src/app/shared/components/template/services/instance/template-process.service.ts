@@ -7,6 +7,7 @@ import { TemplateContainerComponent } from "../../template-container.component";
 import { TemplateNavService } from "../template-nav.service";
 import { TemplateService } from "../template.service";
 import { CampaignService } from "src/app/feature/campaign/campaign.service";
+import { TemplateMetadataService } from "../template-metadata.service";
 
 /**
  * The template process service is a slightly hacky wrapper around the template container component so that
@@ -29,6 +30,9 @@ export class TemplateProcessService extends SyncServiceBase {
 
   private get templateService() {
     return getGlobalService(this.injector, TemplateService);
+  }
+  private get templateMetadataService() {
+    return getGlobalService(this.injector, TemplateMetadataService);
   }
   private get templateNavService() {
     return getGlobalService(this.injector, TemplateNavService);
@@ -56,6 +60,7 @@ export class TemplateProcessService extends SyncServiceBase {
     // Create mock template container component
     this.container = new TemplateContainerComponent(
       this.templateService,
+      this.templateMetadataService,
       this.templateNavService,
       this.injector
     );
