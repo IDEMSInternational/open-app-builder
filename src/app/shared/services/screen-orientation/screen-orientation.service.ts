@@ -34,20 +34,4 @@ export class ScreenOrientationService extends SyncServiceBase {
   private async setOrientation(orientation: OrientationLockType) {
     return await ScreenOrientation.lock({ orientation });
   }
-
-  private async setPortrait() {
-    return await this.setOrientation("portrait");
-  }
-
-  private async setLandscape() {
-    return await this.setOrientation("landscape");
-  }
-
-  private async getOrientation() {
-    return await ScreenOrientation.orientation();
-  }
-
-  private async unlockOrientation() {
-    return await ScreenOrientation.unlock();
-  }
 }
