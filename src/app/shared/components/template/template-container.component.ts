@@ -128,6 +128,11 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
    * ```
    */
   public async forceRerender(full = false, shouldProcess = false) {
+    // ensure query params are applied on rerender, only for top-level templates
+    if (!this.parent) {
+      this.templateNavService.updateQueryParamsFromTemplateMetadata(this.template.parameter_list);
+    }
+
     if (shouldProcess) {
       if (full) {
         console.log("[Force Reload]", this.name);
