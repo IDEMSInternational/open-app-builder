@@ -12,6 +12,7 @@ import {
 } from "../components/layout/popup/popup.component";
 import { ITemplateContainerProps } from "../models";
 import { TemplateContainerComponent } from "../template-container.component";
+import { TemplateService } from "./template.service";
 
 // Toggle logs used across full service for debugging purposes (there's quite a few and tedious to comment)
 const SHOW_DEBUG_LOGS = false;
@@ -29,7 +30,8 @@ export class TemplateNavService extends SyncServiceBase {
     private modalCtrl: ModalController,
     private location: Location,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private templateService: TemplateService
   ) {
     super("TemplateNav");
   }
@@ -42,6 +44,23 @@ export class TemplateNavService extends SyncServiceBase {
   private openPopupsByName: {
     [templatename: string]: { modal: HTMLIonModalElement; props: ITemplateContainerProps };
   } = {};
+
+  public async applyQueryParamsForTemplate(templateName: string) {
+    const templateMetadata = await this.templateService.getTemplateMetadata(templateName);
+    await this.updateQueryParamsFromTemplateMetadata(templateMetadata);
+  }
+  public async updateQueryParamsFromTemplateMetadata(
+    templateMetadata: FlowTypes.Template["parameter_list"]
+  ) {
+    const templateMetadataQueryParams: ITemplateMetadataQueryParams = {};
+    templateMetadataQueryParams.landscape = templateMetadata?.landscape || null;
+    this.router.navigate([], {
+      relativeTo: this.route,
+      queryParams: templateMetadataQueryParams,
+      queryParamsHandling: "merge",
+      replaceUrl: true,
+    });
+  }
 
   public async handleQueryParamChange(
     params: INavQueryParams,
@@ -85,8 +104,6 @@ export class TemplateNavService extends SyncServiceBase {
     const [templatename, key, value] = action.args;
     const nav_parent_triggered_by = action._triggeredBy?.name;
     const queryParams: INavQueryParams = { nav_parent: parentName, nav_parent_triggered_by };
-    // handle direct page or template navigation
-    const navTarget = templatename.startsWith("/") ? [templatename] : ["template", templatename];
 
     // If "dismiss_pop_up" is set to true for the go_to action, dismiss the current popup before navigating away
     if (key === "dismiss_pop_up" && parseBoolean(value)) {
@@ -107,6 +124,17 @@ export class TemplateNavService extends SyncServiceBase {
         // Dismiss open popup (without await to allow rest of nav to proceed await)
         this.dismissPopup(popup_child);
       }
+    }
+
+    let navTarget: any[];
+    // handle direct page navigation
+    if (templatename.startsWith("/")) {
+      navTarget = [templatename];
+    }
+    // handle template navigation
+    else {
+      navTarget = ["template", templatename];
+      this.applyQueryParamsForTemplate(templatename);
     }
     return this.router.navigate(navTarget, {
       queryParams,
@@ -361,4 +389,9 @@ export interface INavQueryParams {
   popup_child?: string; //
   popup_parent?: string;
   popup_parent_triggered_by?: string; //
+}
+
+/** Templates can add additional query params to the url based on authored metadata */
+export interface ITemplateMetadataQueryParams {
+  landscape?: boolean;
 }
