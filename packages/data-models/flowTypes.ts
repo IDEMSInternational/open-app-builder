@@ -415,6 +415,7 @@ export namespace FlowTypes {
     "process_template",
     "reset_app",
     "save_to_device",
+    "screen_orientation",
     "set_field",
     "set_item",
     "set_items",
