@@ -3,7 +3,7 @@ import { ActivatedRoute } from "@angular/router";
 import { Capacitor } from "@capacitor/core";
 import { FlowTypes, IAppConfig } from "data-models";
 import { Subscription } from "rxjs";
-import { TemplateNavService } from "src/app/shared/components/template/services/template-nav.service";
+import { TemplateMetadataService } from "src/app/shared/components/template/services/template-metadata.service";
 import { AppConfigService } from "src/app/shared/services/app-config/app-config.service";
 import { AppDataService } from "src/app/shared/services/data/app-data.service";
 
@@ -24,13 +24,13 @@ export class TemplatePage implements OnInit, OnDestroy {
     private route: ActivatedRoute,
     private appDataService: AppDataService,
     private appConfigService: AppConfigService,
-    private templateNavService: TemplateNavService
+    private templateMetadataService: TemplateMetadataService
   ) {}
 
   async ngOnInit() {
     this.templateName = this.route.snapshot.params.templateName;
     if (this.templateName) {
-      this.templateNavService.applyQueryParamsForTemplate(this.templateName);
+      this.templateMetadataService.applyQueryParamsForTemplate(this.templateName);
     } else {
       const allTemplates = this.appDataService.listSheetsByType("template");
       this.allTemplates = allTemplates.sort((a, b) => (a.flow_name > b.flow_name ? 1 : -1));
