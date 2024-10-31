@@ -48,12 +48,17 @@ $imageSize: 64px;
 }
 
 .text-bubble {
-  padding: var(--large-padding);
-  p {
-    line-height: inherit;
-    margin: 0;
-    font-size: var(--font-size-text-large);
-    color: var(--ion-color-primary);
+  padding: var(--small-padding) var(--large-padding);
+
+  // HACK: The `text` component already includes a substantial margin, but when the `text-bubble`
+  // component contains child rows rather than a `value` string, apply a margin around these rows.
+  plh-template-component {
+    &:first-child {
+      margin-top: var(--regular-padding);
+    }
+    &:last-child {
+      margin-bottom: var(--regular-padding);
+    }
   }
 }
 

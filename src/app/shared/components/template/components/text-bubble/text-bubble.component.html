@@ -5,9 +5,9 @@
 >
   <div class="text-bubble" [attr.data-position]="params.speakerPosition">
     @if (_row.value) {
-      <p class="text">
-        {{ _row.value }}
-      </p>
+      <plh-tmpl-text
+        [row]="{ _nested_name: '', name: '', type: 'text', value: value() }"
+      ></plh-tmpl-text>
     }
     @for (childRow of _row.rows | filterDisplayComponent; track trackByRow($index, childRow)) {
       <plh-template-component
