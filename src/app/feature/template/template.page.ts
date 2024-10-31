@@ -26,14 +26,15 @@ export class TemplatePage implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.templateName = this.route.snapshot.params.templateName;
-    const allTemplates = this.appDataService.listSheetsByType("template");
-    this.allTemplates = allTemplates.sort((a, b) => (a.flow_name > b.flow_name ? 1 : -1));
-    this.filteredTemplates = allTemplates;
+    if (!this.templateName) {
+      const allTemplates = this.appDataService.listSheetsByType("template");
+      this.allTemplates = allTemplates.sort((a, b) => (a.flow_name > b.flow_name ? 1 : -1));
+      this.filteredTemplates = allTemplates;
+    }
     this.subscribeToAppConfigChanges();
   }
 
   search() {
-    this.allTemplates = this.allTemplates;
     this.filteredTemplates = this.allTemplates.filter(
       (i) => i.flow_name.toLocaleLowerCase().indexOf(this.filterTerm.toLowerCase()) > -1
     );
