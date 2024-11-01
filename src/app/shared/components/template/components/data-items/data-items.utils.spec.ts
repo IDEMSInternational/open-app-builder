@@ -1,10 +1,5 @@
 import type { FlowTypes } from "packages/data-models";
-import {
-  convertItemActionToSetDataAction,
-  updateActionList,
-  generateLoopItemRows,
-  generateItemMeta,
-} from "./data-items.utils";
+import { generateLoopItemRows, generateItemMeta } from "./data-items.utils";
 
 /***********************************************************************************************
  * Mock Data
@@ -20,19 +15,6 @@ const MOCK_TEMPLATE_ROW: FlowTypes.TemplateRow = {
   name: "",
   type: "button",
   value: "@item.text",
-};
-
-/**
- * Mock structure for `begin_data_items .... end_data_items` syntax
- * The list provided in `value` will be used to source data_list items, and the `rows`
- * nested will be templated from the items
- */
-const MOCK_DATA_ITEMS_ROW: FlowTypes.TemplateRow = {
-  _nested_name: "",
-  name: "",
-  type: "data_items",
-  value: "@data.mock_item_list",
-  rows: [MOCK_TEMPLATE_ROW],
 };
 
 /**
@@ -67,7 +49,6 @@ describe("DataItems Utils", () => {
   });
   it("generateLoopItemRows", () => {
     const res = generateLoopItemRows([MOCK_TEMPLATE_ROW], MOCK_ITEMS_LIST);
-    console.log(res);
     expect(res).toEqual([
       {
         _nested_name: "",
@@ -103,15 +84,4 @@ describe("DataItems Utils", () => {
       },
     ]);
   });
-
-  fit("convertItemActionToSetDataAction", () => {
-    const res = convertItemActionToSetDataAction({
-      action: { action_id: "set_item", args: [], trigger: "click", params: {} },
-      dataListName: "",
-      itemListRows: [],
-      update: { completed: true },
-    });
-  });
-
-  it("updateActionList", () => {});
 });
