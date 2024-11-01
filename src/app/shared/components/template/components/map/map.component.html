@@ -9,6 +9,19 @@
               {{ mapLayer.get("scaleTitle") }}
             </div>
             <div class="scale-container">
+              @if (mapLayer.get("scaleSlider")) {
+                <ion-range
+                  [dualKnobs]="true"
+                  [value]="{ lower: 0, upper: 100 }"
+                  [ngStyle]="{ '--bar-background': mapLayer.get('gradientFill') }"
+                  (ionChange)="handleSliderChange($event, mapLayer)"
+                ></ion-range>
+              } @else {
+                <div
+                  class="colour-scale"
+                  [ngStyle]="{ 'background-image': mapLayer.get('gradientFill') }"
+                ></div>
+              }
               <div class="scale-labels">
                 <div class="scale-label max">
                   {{ mapLayer.get("scaleMax") }}
@@ -17,10 +30,6 @@
                   {{ mapLayer.get("scaleMin") }}
                 </div>
               </div>
-              <div
-                class="colour-scale"
-                [ngStyle]="{ 'background-image': mapLayer.get('gradientFill') }"
-              ></div>
             </div>
           </div>
         }
