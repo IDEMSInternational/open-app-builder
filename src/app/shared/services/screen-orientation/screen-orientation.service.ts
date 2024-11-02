@@ -1,10 +1,10 @@
-import { effect, Injectable, WritableSignal } from "@angular/core";
-import { SyncServiceBase } from "../syncService.base";
+import { effect, Injectable, signal } from "@angular/core";
 import { ScreenOrientation, OrientationLockType } from "@capacitor/screen-orientation";
 import { TemplateActionRegistry } from "../../components/template/services/instance/template-action.registry";
 import { ActivatedRoute } from "@angular/router";
 import { Capacitor } from "@capacitor/core";
 import { distinctUntilChanged, filter, map } from "rxjs";
+import { AsyncServiceBase } from "../asyncService.base";
 
 // Supported orientation types
 const ORIENTATION_TYPES: OrientationLockType[] = ["portrait", "landscape"];
@@ -14,29 +14,28 @@ type IOrientationType = (typeof ORIENTATION_TYPES)[number];
 @Injectable({
   providedIn: "root",
 })
-export class ScreenOrientationService extends SyncServiceBase {
-  private orientation: WritableSignal<IOrientationType>;
+export class ScreenOrientationService extends AsyncServiceBase {
+  private orientation = signal<IOrientationType>("portrait");
   constructor(
     private templateActionRegistry: TemplateActionRegistry,
     private route: ActivatedRoute
   ) {
     super("Screen Orientation Service");
     effect(() => {
-      console.log(`[SCREEN ORIENTATION] - Orientation: ${this.orientation()}`);
       this.setOrientation(this.orientation());
     });
-    this.initialise();
+    this.registerInitFunction(this.initialise);
   }
 
   async initialise() {
-    // TODO: also check if any templates actually use screen orientation metadata?
-    // Or maybe have a toggle to enable "landscape_mode" at deployment config level
+    // TODO: expose a property at deployment config level to enable "landscape_mode" to avoid unnecessary checks
+    // AND/OR: check on init if any templates actually use screen orientation metadata?
     if (Capacitor.isNativePlatform()) {
       const currentOrientation = await this.getOrientation();
       this.orientation.set(currentOrientation);
       this.watchOrientationParam();
+      this.registerTemplateActionHandlers();
     }
-    this.registerTemplateActionHandlers();
   }
 
   private registerTemplateActionHandlers() {
