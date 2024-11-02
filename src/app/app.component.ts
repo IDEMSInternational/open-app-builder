@@ -251,9 +251,8 @@ export class AppComponent {
         this.feedbackService,
         this.shareService,
         this.fileManagerService,
-        this.screenOrientationService,
       ],
-      deferred: [this.analyticsService],
+      deferred: [this.analyticsService, this.screenOrientationService],
       implicit: [
         this.dbService,
         this.templateTranslateService,
