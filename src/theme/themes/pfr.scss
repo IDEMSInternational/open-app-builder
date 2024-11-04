@@ -9,8 +9,11 @@
     $page-background: white;
     $green: #289b4c;
 
-    /** Authoring component overrides **/
+    /** Global and component variables **/
     $variable-overrides: (
+      // BORDERS
+      // ion-border-standard: 2px solid var(--ion-color-primary),
+      // ion-border-thin-standard: 1px solid var(--ion-color-primary),
       button-background-primary: var(--ion-color-primary-500),
       button-background-secondary: var(--ion-color-secondary),
       button-background-option: var(--ion-color-primary-800),

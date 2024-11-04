@@ -8,10 +8,14 @@
     $color-secondary: hsl(31, 100%, 57%); // #fa9529
     $page-background: null;
 
-    /** Authoring component overrides **/
+    /** Global and component variables **/
     $variable-overrides: (
-      demo-variable: red,
       // an example variable for illustration purposes
+      demo-variable: red,
+
+      // BORDERS
+      // ion-border-standard: 2px solid var(--ion-color-primary),
+      // ion-border-thin-standard: 1px solid var(--ion-color-primary),
       gradient-yellow-vertical:
         linear-gradient(175deg, var(--ion-color-yellow-200) 30%, var(--ion-color-yellow-500)),
       gradient-yellow-horizontal:
