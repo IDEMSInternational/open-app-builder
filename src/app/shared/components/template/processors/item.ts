@@ -10,12 +10,12 @@ interface ITemplateRowWithItemContext extends FlowTypes.TemplateRow {
 
 export class ItemProcessor {
   constructor(
-    private dataList: FlowTypes.Data_listRow[] = [],
+    private dataListRows: FlowTypes.Data_listRow[] = [],
     private parameterList: any = {}
   ) {}
 
   public process(templateRows: any) {
-    const pipedData = this.pipeData(this.dataList, this.parameterList);
+    const pipedData = this.pipeData(this.dataListRows, this.parameterList);
     const itemTemplateRows = this.generateLoopItemRows(templateRows, pipedData);
     const parsedItemTemplatedRows = this.hackSetNestedName(itemTemplateRows);
     // Return both rows for rendering and list of itemData used (post pipe operations)
