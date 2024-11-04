@@ -9,7 +9,7 @@ import { Project, SyntaxKind } from "ts-morph";
 import { ActiveDeployment } from "../../commands/deployment/get";
 import { Logger, logOutput, openUrl, promptOptions } from "../../utils";
 import type { IDeploymentConfigJson } from "../../commands/deployment/common";
-import { PATHS } from "shared";
+import { pad, PATHS } from "shared";
 
 class GitProvider {
   private git: SimpleGit;
@@ -22,11 +22,12 @@ class GitProvider {
 
   /** Access git clone methods directly independent of deployment */
   public async cloneRepo(repoPath: string, localPath: string) {
-    logUpdate();
+    console.log("\n");
     const git = simpleGit(PATHS.DEPLOYMENTS_PATH, {
-      progress: ({ processed, total }) => logUpdate(chalk.gray(`${processed}/${total}`)),
+      progress: ({ stage, progress, processed, total }) =>
+        logUpdate(chalk.gray(`${stage} | ${pad(progress, 2)}% | ${processed}/${total}`)),
     });
-    const res = await git.clone(repoPath, localPath, ["--progress"]);
+    const res = await git.clone(repoPath, localPath);
     logUpdate.done();
     return res;
   }
