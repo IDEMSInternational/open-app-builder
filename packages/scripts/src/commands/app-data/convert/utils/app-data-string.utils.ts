@@ -97,6 +97,7 @@ export function extractDynamicDependencies(dynamicFields: FlowTypes.TemplateRow[
 }
 
 // Standardise newline characters within a string (i.e. replace "\r\n" (CRLF) with "\n" (LF))
+// also replace any remaining \r with \n (https://github.com/IDEMSInternational/open-app-builder/issues/2499)
 export function standardiseNewlines(str: string) {
-  return str.replace(/\\r\\n/g, "\\n");
+  return str.replace(/\\r\\n/g, "\\n").replace(/\\r/g, "\\n");
 }
