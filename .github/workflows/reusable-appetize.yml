@@ -33,7 +33,7 @@ jobs:
       uses: ./.github/workflows/reusable-android-build.yml
       secrets: inherit
       with:
-        branch: ${{ github.base_ref }} 
+        branch: ${{ github.ref }} 
    
   test_appetize:
     needs: build
