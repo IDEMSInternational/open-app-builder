@@ -362,7 +362,7 @@ export namespace FlowTypes {
     [key: string]: any;
   };
 
-  const DYNAMIC_PREFIXES_COMPILER = ["gen", "row"] as const;
+  const DYNAMIC_PREFIXES_COMPILER = ["gen", "row", "default"] as const;
 
   const DYNAMIC_PREFIXES_RUNTIME = [
     "local",
