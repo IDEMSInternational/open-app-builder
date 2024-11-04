@@ -129,10 +129,6 @@
   // BORDERS
   --ion-border-standard: 2px solid #{map.get($colorPalette, "color-primary")};
   --ion-border-thin-standard: 1px solid #{map.get($colorPalette, "color-primary")};
-  --ion-border-color-secondary: 2px solid #{map.get($colorPalette, "color-secondary")};
-  --ion-border-light: 1px solid #{map.get($colorPalette, "light")};
-  --ion-border-light-thicker: 2px solid #{map.get($colorPalette, "light")};
-  --border-dashed: 2px dashed #{map.get($colorPalette, "color-primary")};
 
   //  GRADIENTS
   //Gradient direction
