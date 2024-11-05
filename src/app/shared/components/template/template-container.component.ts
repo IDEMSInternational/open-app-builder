@@ -19,7 +19,6 @@ import { TemplateNavService } from "./services/template-nav.service";
 import { TemplateRowService } from "./services/instance/template-row.service";
 import { TemplateService } from "./services/template.service";
 import { getIonContentScrollTop, setElStyleAnimated, setIonContentScrollTop } from "./utils";
-import { TemplateMetadataService } from "./services/template-metadata.service";
 
 /** Logging Toggle - rewrite default functions to enable or disable inline logs */
 let SHOW_DEBUG_LOGS = false;
@@ -68,7 +67,6 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
 
   constructor(
     private templateService: TemplateService,
-    private templateMetadataService: TemplateMetadataService,
     private templateNavService: TemplateNavService,
     private injector: Injector,
     // Containers created in headless context may not have specific injectors
@@ -130,13 +128,6 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
    * ```
    */
   public async forceRerender(full = false, shouldProcess = false) {
-    // ensure query params are applied on rerender, only for top-level templates
-    if (!this.parent) {
-      this.templateMetadataService.updateQueryParamsFromTemplateMetadata(
-        this.template.parameter_list
-      );
-    }
-
     if (shouldProcess) {
       if (full) {
         console.log("[Force Reload]", this.name);
