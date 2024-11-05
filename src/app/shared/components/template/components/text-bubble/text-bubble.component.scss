@@ -48,7 +48,7 @@ $imageSize: 64px;
 }
 
 .text-bubble {
-  padding: var(--large-padding) var(--large-padding);
+  padding: var(--large-padding);
 
   // Override default margins of child text component:
   // handle with padding on this parent element instead

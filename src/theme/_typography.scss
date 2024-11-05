@@ -8,8 +8,7 @@ h3 {
 }
 
 p {
-  margin-top: var(--margin-text);
-  margin-bottom: var(--margin-text);
+  margin: var(--margin-text, 0.75em) 0;
 }
 
 .standard {
