@@ -50,7 +50,7 @@ $background-secondary-light: var(
     // Note - CC 2021-12-21 - Currently not in use in any templates, but keeping in case we want
     // to expose as a parameter option in the future
     .circle-border {
-      border: var(--ion-border-standard);
+      border: var(--border-standard);
       --border-radius: var(--ion-border-radius-rounded);
       border-radius: var(--ion-border-radius-rounded);
     }
@@ -75,7 +75,7 @@ $background-secondary-light: var(
   width: 8rem;
   min-height: 7rem;
   border-radius: var(--ion-border-radius-standard);
-  border: var(--ion-border-thin-standard);
+  border: var(--border-thin-standard);
   background: var(--ion-color-primary-contrast);
   text-align: center;
   padding: var(--tiny-padding);

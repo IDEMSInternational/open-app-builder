@@ -127,8 +127,8 @@
   --ion-item-background: #{map.get($colorPalette, "color-primary-100")};
 
   // BORDERS
-  --ion-border-standard: 2px solid #{map.get($colorPalette, "color-primary")};
-  --ion-border-thin-standard: 1px solid #{map.get($colorPalette, "color-primary")};
+  --border-standard: 2px solid #{map.get($colorPalette, "color-primary")};
+  --border-thin-standard: 1px solid #{map.get($colorPalette, "color-primary")};
 
   //  GRADIENTS
   //Gradient direction
