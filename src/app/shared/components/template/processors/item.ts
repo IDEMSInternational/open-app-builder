@@ -1,27 +1,28 @@
-// NOTE - importing from 'shared' will fail as contains non-browser packages and
-// name conflicts with local 'shared' folder. Import full path from packages instead
-import { JSEvaluator } from "packages/shared/src/models/jsEvaluator/jsEvaluator";
 import { TemplatedData } from "packages/shared/src/models/templatedData/templatedData";
-
-import { shuffleArray } from "src/app/shared/utils";
 import { FlowTypes } from "../models";
-import { objectToArray } from "../utils";
+import { ItemDataPipe } from "./itemPipe";
+
+type IItemEvalContext = FlowTypes.TemplateRowItemEvalContextMetadata;
+
+interface ITemplateRowWithItemContext extends FlowTypes.TemplateRow {
+  _evalContext: { itemContext: IItemEvalContext }; // force specific context variables when calculating eval statements (such as loop items)
+}
 
 export class ItemProcessor {
   constructor(
-    private dataList: any,
-    private parameterList?: any
+    private dataListRows: FlowTypes.Data_listRow[] = [],
+    private parameterList: any = {}
   ) {}
 
   public process(templateRows: any) {
-    const data = objectToArray(this.dataList);
-    const pipedData = this.pipeData(data, this.parameterList);
-    const itemRows = this.generateLoopItemRows(templateRows, pipedData);
-    const parsedItemRows = this.hackSetNestedName(itemRows);
+    const pipedData = this.pipeData(this.dataListRows, this.parameterList);
+    const itemTemplateRows = this.generateLoopItemRows(templateRows, pipedData);
+    const parsedItemTemplatedRows = this.hackSetNestedName(itemTemplateRows);
     // Return both rows for rendering and list of itemData used (post pipe operations)
-    return { itemRows: parsedItemRows, itemData: pipedData };
+    return { itemTemplateRows: parsedItemTemplatedRows, itemData: pipedData };
   }
 
+  /** Process all item list operators, such as filter, sort and limit */
   private pipeData(data: any[], parameter_list: any) {
     if (parameter_list) {
       const operations = Object.entries<any>(parameter_list).map(([name, arg]) => ({
@@ -43,7 +44,7 @@ export class ItemProcessor {
     templateRows: FlowTypes.TemplateRow[],
     itemData: FlowTypes.Data_listRow[]
   ) {
-    const loopItemRows: FlowTypes.TemplateRow[] = [];
+    const loopItemRows: ITemplateRowWithItemContext[] = [];
     const lastItemIndex = itemData.length - 1;
     for (const [indexKey, item] of Object.entries(itemData)) {
       const _index = Number(indexKey);
@@ -53,7 +54,7 @@ export class ItemProcessor {
         _first: _index === 0,
         _last: _index === lastItemIndex,
       };
-      const evalContext: FlowTypes.TemplateRow["_evalContext"] = {
+      const evalContext: ITemplateRowWithItemContext["_evalContext"] = {
         itemContext: {
           ...item,
           ...itemContextMeta,
@@ -71,11 +72,11 @@ export class ItemProcessor {
   /** Update the evaluation context of a row and recursively any nested rows */
   private setRecursiveRowEvalContext(
     row: FlowTypes.TemplateRow,
-    evalContext: FlowTypes.TemplateRow["_evalContext"]
-  ) {
+    evalContext: ITemplateRowWithItemContext["_evalContext"]
+  ): ITemplateRowWithItemContext {
     // Workaround destructure for memory allocation issues (applying click action of last item only)
     const { rows, ...rest } = JSON.parse(JSON.stringify(row));
-    const rowWithEvalContext: FlowTypes.TemplateRow = { ...rest, _evalContext: evalContext };
+    const rowWithEvalContext: ITemplateRowWithItemContext = { ...rest, _evalContext: evalContext };
     // handle child rows independently to avoid accidental property leaks
     if (row.rows) {
       rowWithEvalContext.rows = [];
@@ -92,59 +93,17 @@ export class ItemProcessor {
    * so use delimited syntax and parse via newer TemplatedData processor
    * @see https://github.com/IDEMSInternational/parenting-app-ui/issues/1765
    */
-  private hackSetNestedName(itemRows: FlowTypes.TemplateRow[]) {
+  private hackSetNestedName(itemRows: ITemplateRowWithItemContext[]) {
     const parsedRows = [];
     for (const row of itemRows) {
       const parser = new TemplatedData({ context: { item: row._evalContext.itemContext } });
       const { rows, _nested_name } = row;
       row._nested_name = parser.parse(_nested_name);
       if (rows) {
-        row.rows = this.hackSetNestedName(rows);
+        row.rows = this.hackSetNestedName(rows as ITemplateRowWithItemContext[]);
       }
       parsedRows.push(row);
     }
     return parsedRows;
   }
-}
-
-/**
- *
- */
-class ItemDataPipe {
-  public process(data: any[], operations: { name: string; arg?: string }[]) {
-    for (const { name, arg } of operations) {
-      const operator = this.operations[name];
-      if (operator) {
-        data = operator(data, arg);
-      } else {
-        console.error("No item pipeline operation found", name);
-      }
-    }
-    return data;
-  }
-
-  private operations = {
-    shuffle: (items: any[] = []) => {
-      return shuffleArray(items);
-    },
-    sort: (items: any[] = [], sortField: string) => {
-      if (!sortField) return items;
-      return items.sort((a, b) => (a[sortField] > b[sortField] ? 1 : -1));
-    },
-    filter: (items: any[] = [], expression: string) => {
-      if (!expression) return;
-      return items.filter((item) => {
-        // NOTE - expects all non-item condition to be evaluated
-        // e.g. `@item.field > @local.some_value` already be evaluated to `this.item.field > "local value"`
-        const evaluator = new JSEvaluator();
-        const evaluated = evaluator.evaluate(expression, { item });
-        return evaluated;
-      });
-    },
-    reverse: (items: any[] = []) => items.reverse(),
-    limit: (items: any[] = [], value: string) => {
-      if (!value) return items;
-      return items.slice(0, Number(value));
-    },
-  };
 }
