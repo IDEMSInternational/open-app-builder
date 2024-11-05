@@ -4,7 +4,7 @@ ion-modal.combo-box-modal {
   --border-color: var(--border-color-default);
   --border-radius: var(--ion-border-radius-secondary);
   --border-style: solid;
-  --border-width: 2px;
+  --border-width: var(--border-width-default);
   --background: var(--ion-color-primary-contrast);
   --max-width: 90vw;
 }
