@@ -12,7 +12,8 @@
     $variable-overrides: (
       // BORDERS
       border-color-default: var(--ion-color-gray-200),
-      border-standard: 2px solid var(--border-color-default),
+      border-width-default: 1px,
+      border-standard: var(--border-width-default) solid var(--border-color-default),
       border-thin-standard: 1px solid var(--border-color-default),
       button-background-primary: var(--ion-color-primary-500),
       button-background-secondary: var(--ion-color-secondary),

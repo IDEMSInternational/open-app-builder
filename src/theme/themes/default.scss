@@ -15,7 +15,8 @@
 
       // BORDERS
       border-color-default: var(--ion-color-primary),
-      border-standard: 2px solid var(--border-color-default),
+      border-width-default: 2px,
+      border-standard: var(--border-width-default) solid var(--border-color-default),
       border-thin-standard: 1px solid var(--border-color-default),
       gradient-yellow-vertical:
         linear-gradient(175deg, var(--ion-color-yellow-200) 30%, var(--ion-color-yellow-500)),
