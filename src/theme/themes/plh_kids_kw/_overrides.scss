@@ -1,8 +1,19 @@
 @use "../../mixins";
 
 body[data-theme="plh_kids_kw"] {
+  ion-content {
+    --padding-start: 0;
+    --padding-end: 0;
+    --padding-bottom: 0;
+    --padding-top: 0;
+  }
+
+  a {
+    text-decoration: none;
+  }
   // button
   plh-button {
+    // border: 1px solid red;
     ion-button {
       min-height: var(--buttons-medium-height);
       height: var(--buttons-full-height);
@@ -247,6 +258,31 @@ body[data-theme="plh_kids_kw"] {
           font-weight: var(--font-weight-standard) !important;
         }
       }
+    }
+  }
+
+  // bottom_nav
+  .plh-bottom-nav-wrapper {
+    @include mixins.flex-space-between;
+    flex-direction: row;
+    width: 100%;
+    padding: 12px 16px 8px 16px;
+    border-top: 1px solid #e7e8e9;
+    .nav-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    .label p {
+      padding: 0;
+      margin: 0;
+      color: #6686b1;
+      font-weight: var(--font-weight-standard);
+    }
+    .active-link .label p {
+      font-weight: var(--font-weight-bold);
+      color: #0066a1;
     }
   }
 }
