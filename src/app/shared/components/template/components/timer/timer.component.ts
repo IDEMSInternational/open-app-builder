@@ -10,7 +10,7 @@ import { TemplateBaseComponent } from "../base";
 import { ITemplateRowProps } from "../../models";
 import { AudioService } from "src/app/shared/services/audio/audio.service";
 import { AudioPlayer } from "src/app/shared/services/audio/audio.player";
-import { PLHAssetPipe } from "../../pipes/plh-asset.pipe";
+import { TemplateAssetService } from "../../services/template-asset.service";
 
 @Component({
   selector: "plh-timer",
@@ -41,7 +41,7 @@ export class TmplTimerComponent extends TemplateBaseComponent implements ITempla
   timerDurationExtension: number = 1 * 60;
   help: string | null = null;
   title: string;
-  _value: number;
+  private _timerValue: number;
   starting_minutes: number;
   starting_seconds: number;
   minutes: string;
@@ -56,14 +56,14 @@ export class TmplTimerComponent extends TemplateBaseComponent implements ITempla
     return [data.slice(0, 6), data, data.slice(0, 6), data];
   };
 
-  get value() {
-    return this._value;
+  public get timerValue() {
+    return this._timerValue;
   }
 
-  set value(val: number) {
+  public set timerValue(val: number) {
     if (!val) val = 0;
 
-    this._value = val;
+    this._timerValue = val;
 
     const _seconds = val % 60;
     const _minutes = Math.floor(val / 60);
@@ -75,7 +75,7 @@ export class TmplTimerComponent extends TemplateBaseComponent implements ITempla
     private pickerController: PickerController,
     private platform: Platform,
     private audioService: AudioService,
-    private plhAssetPipe: PLHAssetPipe
+    private templateAssetService: TemplateAssetService
   ) {
     super();
     this.changeState(new PausedState(this));
@@ -85,7 +85,7 @@ export class TmplTimerComponent extends TemplateBaseComponent implements ITempla
     this.getParams();
     this.state.callOnInit();
     if (this.ping) {
-      const pingSrc = this.plhAssetPipe.transform(this.ping);
+      const pingSrc = this.templateAssetService.getTranslatedAssetPath(this.ping);
       this.player = this.audioService.createPlayer(pingSrc);
     }
   }
@@ -110,12 +110,12 @@ export class TmplTimerComponent extends TemplateBaseComponent implements ITempla
     );
     this.starting_minutes = getNumberParamFromTemplateRow(this._row, "starting_minutes", 10);
     this.starting_seconds = getNumberParamFromTemplateRow(this._row, "starting_seconds", 0);
-    this.value = this.getDurationFromParams();
+    this.timerValue = this.getDurationFromParams();
   }
 
   getAssetParamFromTemplateRow(parameterName: string, _default: string | null) {
     const value = getStringParamFromTemplateRow(this._row, parameterName, null);
-    return value ? this.plhAssetPipe.transform(value) : _default;
+    return value ? this.templateAssetService.getTranslatedAssetPath(value) : _default;
   }
 
   getDurationFromParams() {
@@ -136,7 +136,7 @@ export class TmplTimerComponent extends TemplateBaseComponent implements ITempla
       const columnOptions = this.timeValues();
       this.pickerController
         .create({
-          mode: this.platform.is("android") ? "md" : "ios" || "ios",
+          mode: this.platform.is("android") ? "md" : "ios",
           columns: this.getColumns(numColumns, columnOptions),
           buttons: [
             {
@@ -233,10 +233,10 @@ abstract class State {
 
     if (type === "mm") {
       this.timer.minInput.nativeElement.value = val;
-      this.timer.value = valNumber * 60 + Number(this.timer.seconds.replace(/^0/, ""));
+      this.timer.timerValue = valNumber * 60 + Number(this.timer.seconds.replace(/^0/, ""));
     } else if (type === "ss") {
       this.timer.secInput.nativeElement.value = val;
-      this.timer.value = valNumber + Number(this.timer.minutes.replace(/^0/, "")) * 60;
+      this.timer.timerValue = valNumber + Number(this.timer.minutes.replace(/^0/, "")) * 60;
     }
   }
 
@@ -263,18 +263,18 @@ class PlayingState extends State {
   }
 
   clickRightButton() {
-    this.timer.value += this.timer.timerDurationExtension;
+    this.timer.timerValue += this.timer.timerDurationExtension;
   }
 
   countDown() {
     this.intervalRef = setInterval(() => {
-      if (this.timer.value === 0) {
+      if (this.timer.timerValue === 0) {
         clearInterval(this.intervalRef);
         this.timer.changeState(new PausedState(this.timer));
         if (this.timer.player) this.timer.player.play();
         return;
       }
-      this.timer.value -= 1;
+      this.timer.timerValue -= 1;
     }, 1000);
   }
 }
@@ -295,6 +295,6 @@ class PausedState extends State {
   }
 
   clickRightButton() {
-    this.timer.value = this.timer.getDurationFromParams();
+    this.timer.timerValue = this.timer.getDurationFromParams();
   }
 }
