@@ -8,9 +8,10 @@ import { LottieModule } from "ngx-lottie";
 import { PlhParentPointCounterComponent } from "./parent-point-counter/parent-point-counter.component";
 import { PlhParentPointBoxComponent } from "./parent-point-box/parent-point-box.component";
 import { PlhBottomNavigationBarComponent } from "./plh-kids-kw/components/bottom-navigation-bar/bottom-navigation-bar.component";
+import { RouterModule } from "@angular/router";
 
 @NgModule({
-  imports: [CommonModule, IonicModule, TemplatePipesModule, LottieModule],
+  imports: [CommonModule, IonicModule, TemplatePipesModule, LottieModule, RouterModule],
   exports: [
     PlhBottomNavigationBarComponent,
     PlhParentPointCounterComponent,

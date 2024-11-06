@@ -1,8 +1,18 @@
 <div class="plh-bottom-nav-wrapper">
   @for (button of params.buttonList; track button.name) {
-    <a class="nav-item">
-      <div class="icon">
+    <a
+      class="nav-item"
+      routerLinkActive="active-link"
+      [routerLink]="'template/' + button.target_template"
+      [attr.data-name]="button.name"
+      (click)="toggleIcon()"
+      [ngClass]="isActive ? 'active-link' : ''"
+    >
+      <div *ngIf="!isActive" class="icon">
         <img [src]="button.icon | plhAsset" />
+      </div>
+      <div *ngIf="isActive" class="icon">
+        <img [src]="button.active_icon | plhAsset" />
       </div>
       <div class="label">
         <p>{{ button.label }}</p>
