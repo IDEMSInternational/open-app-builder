@@ -42,6 +42,7 @@ import { FeedbackService } from "./feature/feedback/feedback.service";
 import { ShareService } from "./shared/services/share/share.service";
 import { LocalStorageService } from "./shared/services/local-storage/local-storage.service";
 import { DeploymentService } from "./shared/services/deployment/deployment.service";
+import { ScreenOrientationService } from "./shared/services/screen-orientation/screen-orientation.service";
 
 @Component({
   selector: "app-root",
@@ -111,7 +112,8 @@ export class AppComponent {
     private appUpdateService: AppUpdateService,
     private remoteAssetService: RemoteAssetService,
     private shareService: ShareService,
-    private fileManagerService: FileManagerService
+    private fileManagerService: FileManagerService,
+    private screenOrientationService: ScreenOrientationService
   ) {
     this.initializeApp();
   }
@@ -249,6 +251,7 @@ export class AppComponent {
         this.feedbackService,
         this.shareService,
         this.fileManagerService,
+        this.screenOrientationService,
       ],
       deferred: [this.analyticsService],
       implicit: [
