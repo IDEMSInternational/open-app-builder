@@ -60,7 +60,7 @@ export default program
  */
 export class AppDataConverter {
   /** Change version to invalidate all underlying caches */
-  public version = 20231002.0;
+  public version = 20241104.0;
 
   public activeDeployment = ActiveDeployment.get();
 

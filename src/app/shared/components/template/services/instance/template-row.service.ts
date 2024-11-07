@@ -291,13 +291,11 @@ export class TemplateRowService extends SyncServiceBase {
       // items have their data lists already parsed as hashmap. convert back to array and process
       const itemDataList = row.value as Record<string, FlowTypes.Data_listRow>;
       const parsedItemDataList = await this.parseDataList(itemDataList);
+      const parsedItemDataRows = Object.values(parsedItemDataList);
       const { parameter_list, rows } = row;
-      // TODO - need to evaluate items in same way to data_items
-      // I.E - parse dynamic list and return array (not hashmap (??))
-      const { itemTemplateRows } = new ItemProcessor(
-        Object.values(parsedItemDataList),
-        parameter_list
-      ).process(rows);
+      const { itemTemplateRows } = new ItemProcessor(parsedItemDataRows, parameter_list).process(
+        rows
+      );
       const parsedItemRows = await this.processRows(itemTemplateRows, isNestedTemplate, row.name);
       return parsedItemRows;
     }

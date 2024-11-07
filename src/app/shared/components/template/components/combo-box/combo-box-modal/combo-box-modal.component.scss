@@ -13,7 +13,7 @@ $background-with-value: var(
   padding: 0;
   .text-box-input {
     background: var(--ion-color-primary-contrast);
-    border: var(--ion-border-standard);
+    border: var(--border-standard);
     border-radius: var(--ion-border-radius-secondary);
     width: 100%;
     min-height: 55px;
@@ -55,7 +55,7 @@ $background-with-value: var(
       min-height: 55px;
       width: 100%;
       background: var(--ion-color-primary-contrast);
-      border: var(--ion-border-standard);
+      border: var(--border-standard);
       border-radius: var(--ion-border-radius-secondary);
       box-shadow: var(--ion-default-box-shadow);
       @include mixins.flex-centered;
