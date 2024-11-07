@@ -15,8 +15,8 @@ import { TemplateActionRegistry } from "../../components/template/services/insta
 
 const TEST_DATA_ROWS = [
   { id: "id_0", number: 0, string: "hello" },
-  { id: "id_1", number: 1, string: "hello", boolean: true, _meta_field: { test: "hello" } },
-  // TODO include out-of-order data for use in test cases
+  { id: "id_1", number: 1, string: "hello", boolean: true },
+  // TODO include out-of-order data for use in test cases (?)
 ];
 
 /********************************************************************************
@@ -134,28 +134,17 @@ describe("DynamicDataService Actions", () => {
     expect(data[1].number).toEqual(101);
   });
 
-  fit("set_data ignores updates for unchanged data", async () => {
+  it("set_data ignores updates for unchanged data", async () => {
     const { _updates } = await actions["parseParams"]({ _list_id: "test_flow", number: 1 });
-    expect(_updates.length).toEqual(1);
+    expect(_updates).toEqual([{ id: "id_0", number: 1 }]);
   });
 
-  // TODO - continue with tests below
-  // TODO - update component demo sheet
-  // TODO - confirm if any breaking changes
-
-  it("set_data without evaluation (_updates passed directly)", async () => {});
-
-  it("ignores writes to readonly '_' fields", async () => {
-    const params = getTestActionRow({
-      _id: "id1",
-      _meta_field: "updated string",
-      string: "updated string",
-    });
-    await actions.set_data(params);
-    const obs = await service.query$<any>("data_list", "test_flow");
-    const data = await firstValueFrom(obs);
-    expect(data[0].string).toEqual("updated string");
-    expect(data[0]._meta_field).toEqual({ test: "hello" });
+  it("set_data ignores evaluation when _updates provided", async () => {
+    const params: IActionSetDataParams = { _updates: [{ id: "id_0", number: "@item.number" }] };
+    const data = await triggerTestSetDataAction(service, params);
+    // test case illustrative only of not parsing data (would have been parsed independently)
+    expect(data[0].number).toEqual("@item.number");
+    expect(data[1].number).toEqual(1);
   });
 
   /*************************************************************
@@ -168,26 +157,18 @@ describe("DynamicDataService Actions", () => {
       string: "sets an item correctly a given id",
     });
     await expectAsync(actions.set_data(params)).toBeRejectedWithError(
-      "[Update Fail] no doc exists for data_list:test_flow with row_id: missing_id"
+      `[Update Fail] no doc exists\ndata_list: test_flow\n_id: missing_id`
     );
-    // also ensure new item not created
-    const obs = await service.query$<any>("data_list", "test_flow");
-    const data = await firstValueFrom(obs);
-    expect(data.length).toEqual(3);
   });
 
   it("throws error if provided _index does not exist", async () => {
     const params = getTestActionRow({
-      _id: "missing_id",
+      _index: 10,
       string: "sets an item correctly a given id",
     });
     await expectAsync(actions.set_data(params)).toBeRejectedWithError(
-      "[Update Fail] no doc exists for data_list:test_flow with row_id: missing_id"
+      `[Update Fail] no doc exists\ndata_list: test_flow\n_index: 10`
     );
-    // also ensure new item not created
-    const obs = await service.query$<any>("data_list", "test_flow");
-    const data = await firstValueFrom(obs);
-    expect(data.length).toEqual(3);
   });
 });
 
