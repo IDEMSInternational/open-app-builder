@@ -1,20 +1,22 @@
 import { effect, Injectable } from "@angular/core";
-import { ScreenOrientation, OrientationLockType } from "@capacitor/screen-orientation";
+import { ScreenOrientation } from "@capacitor/screen-orientation";
 import { TemplateActionRegistry } from "../../components/template/services/instance/template-action.registry";
 import { Capacitor } from "@capacitor/core";
 import { TemplateMetadataService } from "../../components/template/services/template-metadata.service";
 import { SyncServiceBase } from "../syncService.base";
+import { environment } from "src/environments/environment";
 
-// Supported orientation types
-const ORIENTATION_TYPES = ["portrait", "landscape"] as const;
+/** List of possible orientations provided by authors */
+const SCREEN_ORIENTATIONS = ["portrait", "landscape"] as const;
 
-type IOrientationType = (typeof ORIENTATION_TYPES)[number];
+type IScreenOrientation = (typeof SCREEN_ORIENTATIONS)[number];
 
 @Injectable({
   providedIn: "root",
 })
 export class ScreenOrientationService extends SyncServiceBase {
-  private enabled: boolean;
+  /** Actively locked screen orientation */
+  private lockedOrientation: IScreenOrientation | undefined;
 
   constructor(
     private templateActionRegistry: TemplateActionRegistry,
@@ -24,23 +26,16 @@ export class ScreenOrientationService extends SyncServiceBase {
 
     // TODO: expose a property at deployment config level to enable "landscape_mode" to avoid unnecessary checks
     // AND/OR: check on init if any templates actually use screen orientation metadata?
-    this.enabled = Capacitor.isNativePlatform();
+    const isEnabled = Capacitor.isNativePlatform() || !environment.production;
 
-    if (this.enabled) {
-      effect(() => {
-        const targetOrientation =
-          this.templateMetadataService.parameterList().orientation || "portrait";
-        if (targetOrientation && ORIENTATION_TYPES.includes(targetOrientation)) {
-          this.setOrientation(targetOrientation);
-        }
-      });
-    }
-    this.initialise();
-  }
-
-  async initialise() {
-    if (this.enabled) {
+    if (isEnabled) {
+      // Add handlers to set orientation on action
       this.registerTemplateActionHandlers();
+      // Set orientation when template parameter orientation changes
+      effect(async () => {
+        const { orientation } = this.templateMetadataService.parameterList();
+        this.setOrientation(orientation);
+      });
     }
   }
 
@@ -48,21 +43,27 @@ export class ScreenOrientationService extends SyncServiceBase {
     this.templateActionRegistry.register({
       screen_orientation: async ({ args }) => {
         const [targetOrientation] = args;
-        if (ORIENTATION_TYPES.includes(targetOrientation)) {
-          this.setOrientation(targetOrientation);
-        } else {
-          console.error(`[SCREEN ORIENTATION] - Invalid orientation: ${targetOrientation}`);
-        }
+        this.setOrientation(targetOrientation);
       },
     });
   }
 
-  public async setOrientation(orientation: IOrientationType) {
-    console.log(`[SCREEN ORIENTATION] - Setting to ${orientation}`);
-    return await ScreenOrientation.lock({ orientation: orientation as OrientationLockType });
-  }
+  private async setOrientation(orientation: IScreenOrientation) {
+    // avoid re-locking same orientation
+    if (orientation === this.lockedOrientation) return;
 
-  private async getOrientation() {
-    return (await ScreenOrientation.orientation()).type;
+    this.lockedOrientation = orientation;
+
+    if (orientation) {
+      if (SCREEN_ORIENTATIONS.includes(orientation)) {
+        console.log(`[SCREEN ORIENTATION] - Lock ${orientation}`);
+        return ScreenOrientation.lock({ orientation });
+      } else {
+        console.error(`[SCREEN ORIENTATION] - Invalid orientation: ${orientation}`);
+      }
+    } else {
+      console.log(`[SCREEN ORIENTATION] - Unlock`);
+      return ScreenOrientation.unlock();
+    }
   }
 }

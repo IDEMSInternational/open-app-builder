@@ -1,10 +1,11 @@
-import { Injectable, OnDestroy, signal } from "@angular/core";
+import { computed, effect, Injectable, signal } from "@angular/core";
 import { SyncServiceBase } from "src/app/shared/services/syncService.base";
 import { TemplateService } from "./template.service";
 import { FlowTypes } from "src/app/shared/model";
-import { ActivatedRoute, NavigationEnd, Router } from "@angular/router";
-import { distinctUntilChanged, filter, map, Subject, takeUntil } from "rxjs";
-import { Capacitor } from "@capacitor/core";
+import { Router } from "@angular/router";
+import { toSignal } from "@angular/core/rxjs-interop";
+import { ngRouterMergedSnapshot$ } from "src/app/shared/utils/angular.utils";
+import { isEqual } from "packages/shared/src/utils/object-utils";
 
 /**
  * Service responsible for handling metadata of the current top-level template,
@@ -13,10 +14,15 @@ import { Capacitor } from "@capacitor/core";
 @Injectable({
   providedIn: "root",
 })
-export class TemplateMetadataService extends SyncServiceBase implements OnDestroy {
-  public parameterList = signal<FlowTypes.Template["parameter_list"]>({});
-  private enabled: boolean;
-  private destroy$ = new Subject();
+export class TemplateMetadataService extends SyncServiceBase {
+  /** Utility snapshot used to get router snapshot from service (outside render context) */
+  private snapshot = toSignal(ngRouterMergedSnapshot$(this.router));
+
+  /** Name of current template provide by route param */
+  private templateName = computed<string | undefined>(() => this.snapshot().params.templateName);
+
+  /** List of parameterList provided with current template */
+  public parameterList = signal<FlowTypes.Template["parameter_list"]>({}, { equal: isEqual });
 
   constructor(
     private templateService: TemplateService,
@@ -24,53 +30,16 @@ export class TemplateMetadataService extends SyncServiceBase implements OnDestro
   ) {
     super("TemplateMetadata");
 
-    // Currently the only watched parameter is for screen orientation,
-    // which is only supported on native platforms
-    this.enabled = !Capacitor.isNativePlatform();
-    this.initialise();
-  }
-
-  private initialise() {
-    if (this.enabled) {
-      this.watchRouteForTopLevelTemplate();
-    }
-  }
-
-  private watchRouteForTopLevelTemplate() {
-    this.router.events
-      .pipe(
-        filter((event) => event instanceof NavigationEnd),
-        map(() => this.router.routerState.root),
-        map((root) => this.extractTemplateNameFromRoute(root)),
-        distinctUntilChanged(),
-        takeUntil(this.destroy$)
-      )
-      .subscribe(async (templateName: string | undefined) => {
-        await this.updateParameterList(templateName);
-      });
-  }
-
-  private extractTemplateNameFromRoute(root: ActivatedRoute): string | undefined {
-    let active = root;
-    while (active.firstChild) {
-      active = active.firstChild;
-    }
-    return active.snapshot.params["templateName"];
-  }
-
-  private async updateParameterList(templateName: string | undefined) {
-    if (!templateName) return this.parameterList.set({});
-    try {
-      const parameterList = await this.templateService.getTemplateMetadata(templateName);
-      this.parameterList.set(parameterList || {});
-    } catch (error) {
-      console.error("[TEMPLATE METADATA] Failed to fetch template parameter_list", error);
-      this.parameterList.set({});
-    }
-  }
-
-  ngOnDestroy() {
-    this.destroy$.next(true);
-    this.destroy$.complete();
+    // subscribe to template name changes and load corresponding template parameter list on change
+    effect(
+      async () => {
+        const templateName = this.templateName();
+        const parameterList = templateName
+          ? await this.templateService.getTemplateMetadata(templateName)
+          : {};
+        this.parameterList.set(parameterList);
+      },
+      { allowSignalWrites: true }
+    );
   }
 }
