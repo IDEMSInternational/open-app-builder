@@ -28,9 +28,7 @@ export class TemplatePage implements OnInit, OnDestroy {
   ngOnInit() {
     this.templateName = this.route.snapshot.params.templateName;
     if (!this.templateName) {
-      const allTemplates = this.appDataService.listSheetsByType("template");
-      this.allTemplates = allTemplates.sort((a, b) => (a.flow_name > b.flow_name ? 1 : -1));
-      this.filteredTemplates = allTemplates;
+      this.listTemplates();
     }
     this.subscribeToAppConfigChanges();
   }
@@ -41,8 +39,11 @@ export class TemplatePage implements OnInit, OnDestroy {
     );
   }
 
-  public trackByFn(index) {
-    return index;
+  /** Create a list of all templates to display when no specific template loaded */
+  private listTemplates() {
+    const allTemplates = this.appDataService.listSheetsByType("template");
+    this.allTemplates = allTemplates.sort((a, b) => (a.flow_name > b.flow_name ? 1 : -1));
+    this.filteredTemplates = allTemplates;
   }
 
   private subscribeToAppConfigChanges() {
