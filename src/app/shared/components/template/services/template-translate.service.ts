@@ -52,6 +52,21 @@ export class TemplateTranslateService extends AsyncServiceBase {
     return this.app_language$.value;
   }
 
+  /**
+   * Extracts the two-letter language code from a given country language string.
+   * Two-letter ISO 639-1 Codes: https://www.loc.gov/standards/iso639-2/php/code_list.php
+   * @param {string} languageCode Country language code from in `xx_yy` format, where `yy` is the two-letter language code
+   * @returns {string} The extracted two-letter language code, e.g. `yy`, or the original country language code if the format is invalid
+   */
+  get app_language_code() {
+    const parts = this.app_language.split("_");
+    if (parts.length === 2 && parts[1].length === 2) {
+      return parts[1];
+    }
+    // Return original language code if the format is invalid
+    return this.app_language;
+  }
+
   /** Set the local storage variable that tracks the app language */
   async setLanguage(code: string, updateDB = true) {
     if (code) {
