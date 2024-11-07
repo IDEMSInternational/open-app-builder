@@ -166,11 +166,11 @@ export class TemplateService extends SyncServiceBase {
   }
 
   public async getTemplateMetadata(templateName: string) {
-    const template = (await this.appDataService.getSheet<FlowTypes.Template>(
+    const template = (await this.appDataService.getSheet(
       "template",
       templateName
     )) as FlowTypes.Template;
-    return template?.parameter_list;
+    return template?.parameter_list || {};
   }
 
   /**
