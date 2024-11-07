@@ -32,9 +32,9 @@ export class ScreenOrientationService extends SyncServiceBase {
       // Add handlers to set orientation on action
       this.registerTemplateActionHandlers();
       // Set orientation when template parameter orientation changes
-      effect(() => {
-        const targetOrientation = this.templateMetadataService.parameterList().orientation;
-        this.setOrientation(targetOrientation);
+      effect(async () => {
+        const { orientation } = this.templateMetadataService.parameterList();
+        this.setOrientation(orientation);
       });
     }
   }
