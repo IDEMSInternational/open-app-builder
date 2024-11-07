@@ -14,7 +14,7 @@ $background-highlight: var(
   .accordion-status {
     @include mixins.medium-square;
     border-radius: var(--ion-border-radius-rounded);
-    border: var(--ion-border-thin-standard);
+    border: var(--border-thin-standard);
     padding: var(--tiny-padding);
     background: var(--ion-color-primary-contrast);
     display: flex;
@@ -43,7 +43,7 @@ $background-highlight: var(
     border-radius: var(--ion-border-radius-standard);
     overflow: hidden;
     padding: var(--small-padding);
-    border: var(--ion-border-thin-standard);
+    border: var(--border-thin-standard);
     transition: max-height 0.4s;
     overflow-y: hidden;
     &.completed {
