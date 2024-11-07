@@ -119,11 +119,11 @@ export class DynamicDataService extends AsyncServiceBase {
       const existingDoc = await this.db.getDoc<any>(collectionName, row_id);
       if (existingDoc) {
         const data = existingDoc.toMutableJSON();
-        update = deepMergeObjects(data, update);
+        const mergedUpdate = deepMergeObjects(data, update);
         // update memory db
-        await this.db.updateDoc({ collectionName, id: row_id, data: update });
+        await this.db.updateDoc({ collectionName, id: row_id, data: mergedUpdate });
         // update persisted db
-        this.writeCache.update({ flow_name, flow_type, id: row_id, data: update });
+        this.writeCache.update({ flow_name, flow_type, id: row_id, data: mergedUpdate });
       } else {
         throw new Error(
           `[Update Fail] no doc exists for ${flow_type}:${flow_name} with row_id: ${row_id}`
