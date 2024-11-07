@@ -1,7 +1,6 @@
 /* eslint @typescript-eslint/sort-type-constituents: "warn"  */
 
 import type { IDataPipeOperation } from "shared";
-import type { IAppConfig } from "./appConfig";
 import type { IAssetEntry } from "./assets.model";
 
 /*********************************************************************************************
