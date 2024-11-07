@@ -1,10 +1,10 @@
 import { IActionHandler } from "../../components/template/services/instance/template-action.registry";
 import type { DynamicDataService } from "./dynamic-data.service";
 import { firstValueFrom } from "rxjs";
-import { isEqual, isObjectLiteral } from "packages/shared/src/utils/object-utils";
+import { isObjectLiteral } from "packages/shared/src/utils/object-utils";
 import { FlowTypes } from "packages/data-models";
 import { MangoQuery } from "rxdb";
-import { evaluateDynamicDataUpdate } from "./dynamic-data.utils";
+import { evaluateDynamicDataUpdate, isItemChanged } from "./dynamic-data.utils";
 
 /** Metadata passed to set_data action to specify data for update **/
 interface IActionSetDataParamsMeta {
@@ -87,11 +87,20 @@ class DynamicDataActionFactory {
       items = [items[_index]];
     }
 
+    const cleanedUpdate = this.removeUpdateMetadata(update);
+
     // Evaluate item updates for any `@item` self-references
-    const evaluated = evaluateDynamicDataUpdate(items, update);
+    const evaluated = evaluateDynamicDataUpdate(items, cleanedUpdate);
 
     // Filter to only include updates that will change original item
-    return evaluated.filter((data, i) => !isEqual(items[i], data));
+    return evaluated.filter((data, i) => isItemChanged(items[i], data));
+  }
+
+  private removeUpdateMetadata(update: Record<string, any>) {
+    for (const key of Object.keys(update)) {
+      if (key.startsWith("_")) delete update[key];
+    }
+    return update;
   }
 }
 
