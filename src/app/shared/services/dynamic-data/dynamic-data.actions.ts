@@ -1,10 +1,10 @@
 import { IActionHandler } from "../../components/template/services/instance/template-action.registry";
 import type { DynamicDataService } from "./dynamic-data.service";
 import { firstValueFrom } from "rxjs";
-import { isObjectLiteral } from "packages/shared/src/utils/object-utils";
+import { isEqual, isObjectLiteral } from "packages/shared/src/utils/object-utils";
 import { FlowTypes } from "packages/data-models";
 import { MangoQuery } from "rxdb";
-import { evaluateDynamicDataUpdate, isItemChanged } from "./dynamic-data.utils";
+import { evaluateDynamicDataUpdate } from "./dynamic-data.utils";
 
 /** Metadata passed to set_data action to specify data for update **/
 interface IActionSetDataParamsMeta {
@@ -65,6 +65,7 @@ class DynamicDataActionFactory {
   }
 
   private async generateUpdateList(params: IActionSetDataParams) {
+    // remove metadata from rest of update
     const { _id, _index, _list_id, _updates, ...update } = params;
     const query: MangoQuery = {};
     if (_id) {
@@ -90,7 +91,7 @@ class DynamicDataActionFactory {
     const evaluated = evaluateDynamicDataUpdate(items, update);
 
     // Filter to only include updates that will change original item
-    return evaluated.filter((data, i) => isItemChanged(items[i], data));
+    return evaluated.filter((data, i) => !isEqual(items[i], data));
   }
 }
 
