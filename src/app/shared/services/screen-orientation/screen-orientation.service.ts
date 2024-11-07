@@ -48,7 +48,7 @@ export class ScreenOrientationService extends SyncServiceBase {
     });
   }
 
-  private async setOrientation(orientation: IScreenOrientation) {
+  public async setOrientation(orientation: IScreenOrientation) {
     // avoid re-locking same orientation
     if (orientation === this.lockedOrientation) return;
 

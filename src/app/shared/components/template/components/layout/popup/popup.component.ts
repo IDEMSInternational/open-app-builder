@@ -2,6 +2,7 @@ import { Component, Input } from "@angular/core";
 import { ModalController } from "@ionic/angular";
 import { FlowTypes, ITemplateContainerProps } from "../../../models";
 import { TemplateContainerComponent } from "../../../template-container.component";
+import { ScreenOrientationService } from "src/app/shared/services/screen-orientation/screen-orientation.service";
 
 @Component({
   templateUrl: "./popup.component.html",
@@ -14,7 +15,10 @@ import { TemplateContainerComponent } from "../../../template-container.componen
 export class TemplatePopupComponent {
   @Input() props: ITemplatePopupComponentProps;
 
-  constructor(private modalCtrl: ModalController) {}
+  constructor(
+    private modalCtrl: ModalController,
+    private screenOrientationService: ScreenOrientationService
+  ) {}
 
   /**
    * When templates emit completed/uncompleted value from standalone popup close the popup
@@ -38,6 +42,11 @@ export class TemplatePopupComponent {
 
   dismiss(value?: { emit_value: string; emit_data: any }) {
     this.modalCtrl.dismiss(value);
+    // HACK - unlock screen orientation when dismissing a fullscreen pop-up. This allows screen orientation
+    // to be set on a fullscreen pop-up (and crucially, unset) despite it not being a top-level template
+    if (this.props.fullscreen) {
+      this.screenOrientationService.setOrientation("unlock");
+    }
   }
 }
 
