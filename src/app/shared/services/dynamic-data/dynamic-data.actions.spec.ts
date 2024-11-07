@@ -133,8 +133,9 @@ describe("DynamicDataService Actions", () => {
   });
 
   it("set_data ignores updates for unchanged data", async () => {
-    const { _updates } = await actions["parseParams"]({ _list_id: "test_flow", number: 1 });
-    expect(_updates).toEqual([{ id: "id_0", number: 1 }]);
+    const params: IActionSetDataParams = { _list_id: "test_flow", number: 1 };
+    const updates = await actions["generateUpdateList"](params);
+    expect(updates).toEqual([{ id: "id_0", number: 1 }]);
   });
 
   it("set_data prevents update to metadata fields", async () => {
