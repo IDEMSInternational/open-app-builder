@@ -49,11 +49,11 @@ $imageSize: 64px;
 
 .text-bubble {
   padding: var(--large-padding);
-  p {
-    line-height: inherit;
-    margin: 0;
-    font-size: var(--font-size-text-large);
-    color: var(--ion-color-primary);
+
+  // Override default margins of child text component:
+  // handle with padding on this parent element instead
+  plh-tmpl-text {
+    --margin-text: 0;
   }
 }
 
