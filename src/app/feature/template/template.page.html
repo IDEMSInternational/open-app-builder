@@ -6,7 +6,7 @@
     <h3>Select a Template</h3>
     <ion-searchbar [(ngModel)]="filterTerm" (ionInput)="search()"></ion-searchbar>
     <ion-list>
-      @for(template of filteredTemplates; track trackByFn) {
+      @for(template of filteredTemplates; track $index) {
       <ion-item [routerLink]="template.flow_name">{{template.flow_name}}</ion-item>
       }
     </ion-list>
