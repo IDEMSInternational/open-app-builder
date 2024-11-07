@@ -11,6 +11,7 @@ import { PersistedMemoryAdapter } from "./adapters/persistedMemory";
 import { ReactiveMemoryAdapter, REACTIVE_SCHEMA_BASE } from "./adapters/reactiveMemory";
 import { TemplateActionRegistry } from "../../components/template/services/instance/template-action.registry";
 import { TopLevelProperty } from "rxdb/dist/types/types";
+import ActionsFactory from "./dynamic-data.actions";
 import { DeploymentService } from "../deployment/deployment.service";
 
 type IDocWithMeta = { id: string; APP_META?: Record<string, any> };
@@ -52,6 +53,10 @@ export class DynamicDataService extends AsyncServiceBase {
   ) {
     super("Dynamic Data");
     this.registerInitFunction(this.initialise);
+    // register action handlers
+    const { set_data } = new ActionsFactory(this);
+    this.templateActionRegistry.register({ set_data });
+    // HACK - Legacy `set_item` action still managed here (will be removed in #2454)
     this.registerTemplateActionHandlers();
   }
 
@@ -140,12 +145,16 @@ export class DynamicDataService extends AsyncServiceBase {
       const existingDoc = await this.db.getDoc<any>(collectionName, row_id);
       if (existingDoc) {
         const data = existingDoc.toMutableJSON();
-        update = deepMergeObjects(data, update);
+        const mergedUpdate = deepMergeObjects(data, update);
+        // update memory db
+        await this.db.updateDoc({ collectionName, id: row_id, data: mergedUpdate });
+        // update persisted db
+        this.writeCache.update({ flow_name, flow_type, id: row_id, data: mergedUpdate });
+      } else {
+        throw new Error(
+          `[Update Fail] no doc exists for ${flow_type}:${flow_name} with row_id: ${row_id}`
+        );
       }
-      // update memory db
-      await this.db.updateDoc({ collectionName, id: row_id, data: update });
-      // update persisted db
-      this.writeCache.update({ flow_name, flow_type, id: row_id, data: update });
     }
   }
 
