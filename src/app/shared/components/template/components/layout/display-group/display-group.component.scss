@@ -52,7 +52,8 @@
     border-radius: var(--ion-border-radius-secondary);
     flex: 1;
     background-color: var(--background-color, transparent);
-    border: 2px solid var(--border-color, transparent);
+    border: var(--border-standard);
+    border-color: var(--border-color);
   }
 
   &[data-variant~="box_gray"] {
@@ -72,6 +73,6 @@
 
   &[data-variant~="box_white"] {
     --background-color: white;
-    --border-color: var(--ion-color-gray-200);
+    --border-color: var(--border-color-default, var(--ion-color-primary));
   }
 }
