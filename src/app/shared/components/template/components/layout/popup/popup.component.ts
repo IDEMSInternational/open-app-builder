@@ -1,8 +1,12 @@
-import { Component, Input } from "@angular/core";
+import { Component, Input, OnInit } from "@angular/core";
 import { ModalController } from "@ionic/angular";
 import { FlowTypes, ITemplateContainerProps } from "../../../models";
 import { TemplateContainerComponent } from "../../../template-container.component";
-import { ScreenOrientationService } from "src/app/shared/services/screen-orientation/screen-orientation.service";
+import {
+  IScreenOrientation,
+  ScreenOrientationService,
+} from "src/app/shared/services/screen-orientation/screen-orientation.service";
+import { TemplateService } from "../../../services/template.service";
 
 @Component({
   templateUrl: "./popup.component.html",
@@ -12,13 +16,23 @@ import { ScreenOrientationService } from "src/app/shared/services/screen-orienta
  * When opening a template as a popup, provide a minimal interface and load
  * the template directly as a regular template-container element
  */
-export class TemplatePopupComponent {
+export class TemplatePopupComponent implements OnInit {
   @Input() props: ITemplatePopupComponentProps;
+  private templateOrientation: IScreenOrientation | undefined;
 
   constructor(
     private modalCtrl: ModalController,
-    private screenOrientationService: ScreenOrientationService
+    private screenOrientationService: ScreenOrientationService,
+    private templateService: TemplateService
   ) {}
+
+  async ngOnInit() {
+    // HACK - handle template metadata for fullscreen pop-ups within component.
+    // The template metadata service currently only handles top-level templates
+    if (this.props.fullscreen) {
+      await this.handletemplateMetadata();
+    }
+  }
 
   /**
    * When templates emit completed/uncompleted value from standalone popup close the popup
@@ -42,10 +56,24 @@ export class TemplatePopupComponent {
 
   dismiss(value?: { emit_value: string; emit_data: any }) {
     this.modalCtrl.dismiss(value);
-    // HACK - unlock screen orientation when dismissing a fullscreen pop-up. This allows screen orientation
-    // to be set on a fullscreen pop-up (and crucially, unset) despite it not being a top-level template
     if (this.props.fullscreen) {
       this.screenOrientationService.setOrientation("unlock");
+    }
+  }
+
+  private async handletemplateMetadata() {
+    const { templatename } = this.props;
+    if (!templatename) return;
+
+    const templateParameterList = await this.templateService.getTemplateMetadata(templatename);
+    this.templateOrientation = templateParameterList?.orientation;
+
+    await this.setScreenOrientation();
+  }
+
+  private async setScreenOrientation() {
+    if (this.templateOrientation) {
+      await this.screenOrientationService.setOrientation(this.templateOrientation);
     }
   }
 }
