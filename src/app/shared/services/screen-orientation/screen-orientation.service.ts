@@ -7,7 +7,7 @@ import { SyncServiceBase } from "../syncService.base";
 import { environment } from "src/environments/environment";
 
 /** List of possible orientations provided by authors */
-const SCREEN_ORIENTATIONS = ["portrait", "landscape"] as const;
+const SCREEN_ORIENTATIONS = ["portrait", "landscape", "unlock"] as const;
 
 type IScreenOrientation = (typeof SCREEN_ORIENTATIONS)[number];
 
@@ -54,7 +54,7 @@ export class ScreenOrientationService extends SyncServiceBase {
 
     this.lockedOrientation = orientation;
 
-    if (orientation) {
+    if (orientation && orientation !== "unlock") {
       if (SCREEN_ORIENTATIONS.includes(orientation)) {
         console.log(`[SCREEN ORIENTATION] - Lock ${orientation}`);
         return ScreenOrientation.lock({ orientation });
