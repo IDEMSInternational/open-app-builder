@@ -1,5 +1,5 @@
 import { FlowTypes } from "packages/data-models";
-import { evaluateDynamicDataUpdate } from "./dynamic-data.utils";
+import { evaluateDynamicDataUpdate, isItemChanged } from "./dynamic-data.utils";
 
 const itemRows: FlowTypes.Data_listRow[] = [
   { id: "id_0", number: 0, string: "hello" },
@@ -20,5 +20,12 @@ describe("DynamicDataService Utils", () => {
       { id: "id_0", number: 10 },
       { id: "id_1", number: 11 },
     ]);
+  });
+
+  it("isItemChanged true", async () => {
+    const res1 = isItemChanged({ id: "id_1", number: 1, string: "hello" }, { number: 2 });
+    expect(res1).toEqual(true);
+    const res2 = isItemChanged({ id: "id_1", number: 1 }, { number: 1 });
+    expect(res2).toEqual(false);
   });
 });
