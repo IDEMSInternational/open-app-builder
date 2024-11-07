@@ -165,6 +165,14 @@ export class TemplateService extends SyncServiceBase {
     }
   }
 
+  public async getTemplateMetadata(templateName: string) {
+    const template = (await this.appDataService.getSheet(
+      "template",
+      templateName
+    )) as FlowTypes.Template;
+    return template?.parameter_list || {};
+  }
+
   /**
    * Check if target template contains any conditional overrides. Evaluate condition and override if satisfied.
    * @param isOverrideTarget indicate if self-referencing override target from override (prevent infinite loop)
