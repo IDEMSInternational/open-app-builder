@@ -9,7 +9,7 @@ import { environment } from "src/environments/environment";
 /** List of possible orientations provided by authors */
 const SCREEN_ORIENTATIONS = ["portrait", "landscape", "unlock"] as const;
 
-type IScreenOrientation = (typeof SCREEN_ORIENTATIONS)[number];
+export type IScreenOrientation = (typeof SCREEN_ORIENTATIONS)[number];
 
 @Injectable({
   providedIn: "root",
