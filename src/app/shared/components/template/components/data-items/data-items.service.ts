@@ -7,13 +7,17 @@ import {
 import { AppDataEvaluator } from "packages/shared/src/models/appDataEvaluator/appDataEvaluator";
 
 import { TemplateVariablesService } from "../../services/template-variables.service";
-import { generateLoopItemRows, updateActionList } from "./data-items.utils";
-import { IDataItemParameterList } from "./data-items.types";
+import { generateLoopItemRows } from "./data-items.utils";
+import { IDataItemParameterList, ITemplateRowWithDataItemContext } from "./data-items.types";
 import { ItemDataPipe } from "../../processors/itemPipe";
+import { DataItemsActionService } from "./data-items.actions";
 
 @Injectable({ providedIn: "root" })
 export class DataItemsService {
-  constructor(private templateVariablesService: TemplateVariablesService) {}
+  constructor(
+    private templateVariablesService: TemplateVariablesService,
+    private dataItemsActionService: DataItemsActionService
+  ) {}
 
   /**
    * Given any source of input data extract a list of dynamic variables and evaluate them
@@ -103,21 +107,44 @@ export class DataItemsService {
     const parsedRows: FlowTypes.TemplateRow[] = [];
 
     for (const row of itemTemplateRows) {
-      // 3b. Update action_list separately in case action list refers to a different item via _index or _id property
-      const rowWithUpdatedActionList = updateActionList({
-        templateRow: row,
-        itemListRows,
-        dataListName,
-      });
+      const { _item } = row;
+      evaluator.updateExecutionContext({ item: _item });
+
+      // NOTE - need to evaluate row with item context but not action list
+      // TODO - separate into function to allow also parsing row.rows
 
       // 3c. Evaluate the rest of the row
-      const { _evalContext, ...rest } = rowWithUpdatedActionList;
-      evaluator.updateExecutionContext({ item: _evalContext.itemContext });
-      const evaluated = await evaluator.evaluate(rest);
-      parsedRows.push(evaluated);
+      const parsedRow = this.evaluateItemRow(row, evaluator);
+
+      console.log("parsedRow", parsedRow);
+
+      // TODO - separately store action context?
+      const rowWithUpdatedActionList = this.dataItemsActionService.mapSetItemActions(
+        parsedRow,
+        evaluator
+      );
+      console.log("rowWithUpdatedActionList", rowWithUpdatedActionList);
+
+      // 3b. Update action_list separately in case action list refers to a different item via _index or _id property
+      // const rowWithUpdatedActionList = this.dataItemsActionService.mapItemActions(row)
+      // updateItemActions({
+      //   templateRow: row,
+      //   itemListRows,
+      //   dataListName,
+      // });
+
+      parsedRows.push(parsedRow);
     }
 
     return parsedRows;
+  }
+
+  private evaluateItemRow(row: ITemplateRowWithDataItemContext, evaluator: AppDataEvaluator) {
+    if (row.rows) {
+      row.rows = row.rows.map((r) => this.evaluateItemRow({ ...r, _item: row._item }, evaluator));
+    }
+    const { action_list, ...rest } = row;
+    return { action_list, ...evaluator.evaluate(rest) };
   }
 }
 
