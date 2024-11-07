@@ -5,6 +5,8 @@ import { firstValueFrom } from "rxjs";
 import { DynamicDataService } from "./dynamic-data.service";
 import { AppDataService } from "../data/app-data.service";
 import { MockAppDataService } from "../data/app-data.service.spec";
+import { DeploymentService } from "../deployment/deployment.service";
+import { MockDeploymentService } from "../deployment/deployment.service.spec";
 
 const TEST_DATA_ROWS = [
   { id: "id1", number: 1, string: "hello", boolean: true, _meta_field: { test: "hello" } },
@@ -38,6 +40,10 @@ describe("DynamicDataService", () => {
             },
           }),
         },
+        {
+          provide: DeploymentService,
+          useValue: new MockDeploymentService({ name: "test" }),
+        },
       ],
     });
 
@@ -45,7 +51,6 @@ describe("DynamicDataService", () => {
     window.global = window;
 
     service = TestBed.inject(DynamicDataService);
-    TestBed.inject(AppDataService);
     await service.ready();
     // Ensure any data previously persisted is cleared
     await service.resetFlow("data_list", "test_flow");

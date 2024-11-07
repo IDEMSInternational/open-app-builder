@@ -33,18 +33,3 @@ function hasDynamicDataItemReferences(data: any) {
   const contextVariables = new TemplatedData().listContextVariables(data, ["item"]);
   return contextVariables.item;
 }
-
-/**
- * Compare an item with update snapshot and determine whether the update contains
- * any changes. This performs a shallow comparison of updated values against item values
- *
- * TODO - add tests
- * TODO - consider adding support for nested arrays and objects
- */
-export function isItemChanged(
-  item: FlowTypes.Data_listRow[],
-  update: Partial<FlowTypes.Data_listRow>[]
-) {
-  const isChanged = Object.entries(update).find(([key, value]) => item[key] !== value);
-  return isChanged ? true : false;
-}
