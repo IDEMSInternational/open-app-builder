@@ -41,6 +41,11 @@ class DynamicDataActionFactory {
     }
   };
 
+  public reset_data: IActionHandler = async ({ params }: { params?: IActionSetDataParams }) => {
+    const { _list_id } = await this.parseParams(params);
+    return this.service.resetFlow("data_list", _list_id);
+  };
+
   private async parseParams(params: IActionSetDataParams) {
     // util to log item params and add name prefix as part of thrown errors
     function throwParseError(msg: string) {
