@@ -189,6 +189,11 @@ export class DynamicDataService extends AsyncServiceBase {
     return this.writeCache.state;
   }
 
+  public getSchema(flow_type: FlowTypes.FlowType, flow_name: string) {
+    const collectionName = this.normaliseCollectionName(flow_type, flow_name);
+    return this.db.getCollection(collectionName)?.schema;
+  }
+
   /** Ensure a collection exists, creating if not and populating with corresponding list data */
   private async ensureCollection(flow_type: FlowTypes.FlowType, flow_name: string) {
     const collectionName = this.normaliseCollectionName(flow_type, flow_name);
