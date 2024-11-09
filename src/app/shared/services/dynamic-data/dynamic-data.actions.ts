@@ -4,7 +4,11 @@ import { firstValueFrom } from "rxjs";
 import { isObjectLiteral } from "packages/shared/src/utils/object-utils";
 import { FlowTypes } from "packages/data-models";
 import { MangoQuery } from "rxdb";
-import { evaluateDynamicDataUpdate, isItemChanged } from "./dynamic-data.utils";
+import {
+  coerceDataUpdateTypes,
+  evaluateDynamicDataUpdate,
+  isItemChanged,
+} from "./dynamic-data.utils";
 
 /** Metadata passed to set_data action to specify data for update **/
 interface IActionSetDataParamsMeta {
@@ -41,27 +45,29 @@ class DynamicDataActionFactory {
     }
   };
 
-  private async parseParams(params: IActionSetDataParams) {
-    // util to log item params and add name prefix as part of thrown errors
-    function throwParseError(msg: string) {
-      console.error(params);
-      throw new Error("[set_data] " + msg);
-    }
-    if (isObjectLiteral(params)) {
-      let { _updates, _list_id } = params;
+  public reset_data: IActionHandler = async ({ params }: { params?: IActionSetDataParams }) => {
+    const { _list_id } = await this.parseParams(params);
+    return this.service.resetFlow("data_list", _list_id);
+  };
 
+  /** Parse action parameters to generate a list of updates to apply */
+  private async parseParams(params: IActionSetDataParams) {
+    if (isObjectLiteral(params)) {
+      const parsed = this.hackParseTemplatedParams(params);
+      let { _updates, _list_id } = parsed;
+      console.log("params", { params, parsed });
       // handle parse from item reference string
       if (_list_id) {
         if (!_updates) {
-          _updates = await this.generateUpdateList(params);
+          _updates = await this.generateUpdateList(parsed);
         }
-
         return { _updates, _list_id };
       }
     }
 
     // throw error if args not parsed correctly
-    throwParseError("invalid params");
+    console.error(params);
+    throw new Error("[set_data] could not parse params");
   }
 
   private async generateUpdateList(params: IActionSetDataParams) {
@@ -92,8 +98,12 @@ class DynamicDataActionFactory {
     // Evaluate item updates for any `@item` self-references
     const evaluated = evaluateDynamicDataUpdate(items, cleanedUpdate);
 
+    // Coerce updates to correct data types (inline parameter_list values parsed as strings)
+    const schema = this.service.getSchema("data_list", _list_id);
+    const coerced = coerceDataUpdateTypes(schema?.jsonSchema?.properties, evaluated);
+
     // Filter to only include updates that will change original item
-    return evaluated.filter((data, i) => isItemChanged(items[i], data));
+    return coerced.filter((data, i) => isItemChanged(items[i], data));
   }
 
   private removeUpdateMetadata(update: Record<string, any>) {
@@ -101,6 +111,31 @@ class DynamicDataActionFactory {
       if (key.startsWith("_")) delete update[key];
     }
     return update;
+  }
+
+  /**
+   * Any params provided by templating system will already be partially parsed to replace dynamic references
+   * such as @local or @field. This also converts @item references to `this.item`
+   * Revert the item changes and also convert string parameter values to number where required
+   *
+   * TODO - this method should be removed and `items` made to update their own `this` context
+   **/
+  private hackParseTemplatedParams(params: IActionSetDataParams) {
+    const parsed: IActionSetDataParams = {};
+    // HACK - un-parse @item references that the templating system converts to `this.item`
+    for (const [key, value] of Object.entries(params)) {
+      if (typeof value === "string") {
+        parsed[key] = value.replace(/this\.item/g, "@item");
+      } else {
+        parsed[key] = value;
+      }
+    }
+    // convert _index param which may be passed as string from template if defined inline
+    // NOTE - RXDB will automatically cast all other string values to correct type due to inferred schema
+    if (typeof params._index === "string") {
+      parsed._index = Number(params._index);
+    }
+    return parsed;
   }
 }
 
