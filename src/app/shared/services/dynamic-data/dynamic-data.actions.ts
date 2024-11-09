@@ -4,7 +4,11 @@ import { firstValueFrom } from "rxjs";
 import { isObjectLiteral } from "packages/shared/src/utils/object-utils";
 import { FlowTypes } from "packages/data-models";
 import { MangoQuery } from "rxdb";
-import { evaluateDynamicDataUpdate, isItemChanged } from "./dynamic-data.utils";
+import {
+  coerceDataUpdateTypes,
+  evaluateDynamicDataUpdate,
+  isItemChanged,
+} from "./dynamic-data.utils";
 
 /** Metadata passed to set_data action to specify data for update **/
 interface IActionSetDataParamsMeta {
@@ -94,8 +98,12 @@ class DynamicDataActionFactory {
     // Evaluate item updates for any `@item` self-references
     const evaluated = evaluateDynamicDataUpdate(items, cleanedUpdate);
 
+    // Coerce updates to correct data types (inline parameter_list values parsed as strings)
+    const schema = this.service.getSchema("data_list", _list_id);
+    const coerced = coerceDataUpdateTypes(schema?.jsonSchema?.properties, evaluated);
+
     // Filter to only include updates that will change original item
-    return evaluated.filter((data, i) => isItemChanged(items[i], data));
+    return coerced.filter((data, i) => isItemChanged(items[i], data));
   }
 
   private removeUpdateMetadata(update: Record<string, any>) {
