@@ -33,7 +33,8 @@ export class TemplateMetadataService extends SyncServiceBase {
     // subscribe to template name changes and load corresponding template parameter list on change
     effect(
       async () => {
-        const templateName = this.templateName();
+        // use full screen popup template if exists, or current template page if not
+        const templateName = this.templateService.standaloneTemplateName() || this.templateName();
         const parameterList = templateName
           ? await this.templateService.getTemplateMetadata(templateName)
           : {};

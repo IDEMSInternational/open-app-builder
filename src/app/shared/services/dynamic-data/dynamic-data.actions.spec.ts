@@ -153,6 +153,27 @@ describe("DynamicDataService Actions", () => {
     expect(data[1].number).toEqual(1);
   });
 
+  it("reset_data action restores data to initial", async () => {
+    const updatedData = await triggerTestSetDataAction(service, { string: "updated string" });
+    expect(updatedData[0].string).toEqual("updated string");
+    const resetActionBase = getTestActionRow({});
+    await actions.reset_data({ ...resetActionBase, action_id: "reset_data" });
+    const obs = await service.query$<any>("data_list", "test_flow");
+    const resetData = await firstValueFrom(obs);
+    expect(resetData[0].string).toEqual("hello");
+  });
+
+  /*************************************************************
+   *  Misc
+   ************************************************************/
+
+  it("Coerces string params to correct data type", async () => {
+    // NOTE - there is no specific code that casts variables, but RXDB will infer from schema
+    const params: IActionSetDataParams = { number: "300" };
+    const data = await triggerTestSetDataAction(service, params);
+    expect(data[0].number).toEqual(300);
+  });
+
   /*************************************************************
    *  Quality Control
    ************************************************************/
