@@ -395,13 +395,27 @@ body[data-theme="plh_kids_kw"] {
       }
     }
   }
-
   plh-tmpl-title {
     .title-wrapper h1 p {
       font-size: var(--font-size-text-title);
       margin: var(--paragraph-margin-medium) 0;
       line-height: var(--line-height-text-large);
       color: var(--ion-color-primary-700);
+    }
+  }
+
+  // Text Area
+  plh-text-area {
+    .wrapper .text_area {
+      background: white !important;
+      border: 0.8px solid var(--ion-color-gray-200) !important;
+      font-size: var(--font-size-text-medium) !important;
+      color: var(--ion-color-gray-900) !important;
+      font-weight: var(--font-weight-medium) !important;
+      box-shadow: none !important;
+      border-radius: var(--ion-border-radius-standard);
+      --padding-end: 16px !important;
+      --padding-start: 16px !important;
     }
   }
 }
