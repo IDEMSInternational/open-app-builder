@@ -339,7 +339,7 @@ body[data-theme="plh_kids_kw"] {
       }
 
       ol {
-        margin: 4px 0;
+        margin: var(--paragraph-margin-small) 0;
       }
     }
 
@@ -379,6 +379,29 @@ body[data-theme="plh_kids_kw"] {
 
     .avatar-name {
       text-align: right;
+    }
+  }
+
+  // Text
+  plh-tmpl-text {
+    .standard {
+      color: var(--ion-color-gray-900);
+      font-size: var(--font-size-text-medium);
+      p {
+        margin: var(--paragraph-margin-small) 0;
+      }
+      ol {
+        margin: var(--paragraph-margin-small) 0;
+      }
+    }
+  }
+
+  plh-tmpl-title {
+    .title-wrapper h1 p {
+      font-size: var(--font-size-text-title);
+      margin: var(--paragraph-margin-medium) 0;
+      line-height: var(--line-height-text-large);
+      color: var(--ion-color-primary-700);
     }
   }
 }
