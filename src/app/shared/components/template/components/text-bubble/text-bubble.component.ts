@@ -10,7 +10,7 @@ interface ITextBubbleParams {
   /** TEMPLATE PARAMETER: "variant" */
   variant: "gray" | "primary" | "secondary" | "no-border" | "orange" | "yellow";
   /** TEMPLATE PARAMETER: "avatar_name". The name of the speaker */
-  avatarName: string;
+  speakerName: string;
 }
 
 @Component({
@@ -38,6 +38,6 @@ export class TmplTextBubbleComponent extends TemplateBaseComponent implements On
     this.params.variant = getStringParamFromTemplateRow(this._row, "variant", "")
       .split(",")
       .join(" ") as ITextBubbleParams["variant"];
-    this.params.avatarName = getStringParamFromTemplateRow(this._row, "avatar_name", "");
+    this.params.speakerName = getStringParamFromTemplateRow(this._row, "speaker_name", "");
   }
 }
