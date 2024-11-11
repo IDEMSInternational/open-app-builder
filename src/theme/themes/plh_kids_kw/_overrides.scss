@@ -418,4 +418,23 @@ body[data-theme="plh_kids_kw"] {
       --padding-start: 16px !important;
     }
   }
+
+  // Text Box
+  plh-text-box {
+    .wrapper {
+      .text-box-input {
+        background: white !important;
+        border: 1px solid var(--ion-color-gray-200) !important;
+        font-size: var(--font-size-text-medium) !important;
+        color: var(--ion-color-gray-900) !important;
+        font-weight: var(--font-weight-medium) !important;
+        box-shadow: none !important;
+        --padding-end: 16px !important;
+        --padding-start: 16px !important;
+        --padding-top: 14px;
+        --padding-bottom: 14px;
+        min-height: 58px;
+      }
+    }
+  }
 }
