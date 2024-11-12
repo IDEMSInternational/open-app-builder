@@ -8,7 +8,7 @@ interface ITextBubbleParams {
   /** TEMPLATE PARAMETER: "speaker_position". The position of the speaker image and speech bubble tail */
   speakerPosition: "left" | "right";
   /** TEMPLATE PARAMETER: "variant" */
-  variant: "gray" | "primary" | "secondary" | "no-border" | "orange" | "yellow";
+  variant: "gray" | "primary" | "secondary" | "no-border" | "accent-1" | "accent-2";
   /** TEMPLATE PARAMETER: "avatar_name". The name of the speaker */
   speakerName: string;
 }
