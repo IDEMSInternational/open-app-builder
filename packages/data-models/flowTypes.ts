@@ -1,7 +1,6 @@
 /* eslint @typescript-eslint/sort-type-constituents: "warn"  */
 
 import type { IDataPipeOperation } from "shared";
-import type { IAppConfig } from "./appConfig";
 import type { IAssetEntry } from "./assets.model";
 
 /*********************************************************************************************
@@ -315,7 +314,8 @@ export namespace FlowTypes {
     | "toggle_bar"
     | "update_action_list"
     | "video"
-    | "workshops_accordion";
+    | "workshops_accordion"
+    | "youtube";
 
   export interface TemplateRow extends Row_with_translations {
     type: TemplateRowType;
@@ -340,7 +340,7 @@ export namespace FlowTypes {
     /** Keep a list of dynamic dependencies used within a template, by reference (e.g. {@local.var1 : ["text_1"]}) */
     _dynamicDependencies?: { [reference: string]: string[] };
     _translatedFields?: { [field: string]: any };
-    _evalContext?: { itemContext: TemplateRowItemEvalContext }; // force specific context variables when calculating eval statements (such as loop items)
+    _evalContext?: any; // force specific context variables when calculating eval statements (such as loop items)
     __EMPTY?: any; // empty cells (can be removed after pr 679 merged)
   }
 
@@ -362,7 +362,26 @@ export namespace FlowTypes {
     [key: string]: any;
   };
 
-  type IDynamicPrefix = IAppConfig["DYNAMIC_PREFIXES"][number];
+  const DYNAMIC_PREFIXES_COMPILER = ["gen", "row", "default"] as const;
+
+  const DYNAMIC_PREFIXES_RUNTIME = [
+    "local",
+    "field",
+    "fields",
+    "global",
+    "data",
+    "campaign",
+    "calc",
+    "item",
+    "raw",
+  ] as const;
+
+  export const DYNAMIC_PREFIXES = [
+    ...DYNAMIC_PREFIXES_COMPILER,
+    ...DYNAMIC_PREFIXES_RUNTIME,
+  ] as const;
+
+  export type IDynamicPrefix = (typeof DYNAMIC_PREFIXES)[number];
 
   /** Data passed back from regex match, e.g. expression @local.someField => type:local, fieldName: someField */
   export interface TemplateRowDynamicEvaluator {
@@ -415,9 +434,13 @@ export namespace FlowTypes {
     "process_template",
     "reset_app",
     "save_to_device",
+    "screen_orientation",
     "set_field",
+    /** NOTE - only available from with data_items loop */
     "set_item",
+    /** NOTE - only available from with data_items loop */
     "set_items",
+    "set_data",
     "set_local",
     "share",
     "style",
