@@ -18,7 +18,6 @@ import {
   standardiseNewlines,
 } from "./utils";
 import { FlowParserProcessor } from "./processors/flowParser/flowParser";
-import { ReportGenerator } from "./report/report";
 
 /***************************************************************************************
  * CLI
@@ -61,7 +60,7 @@ export default program
  */
 export class AppDataConverter {
   /** Change version to invalidate all underlying caches */
-  public version = 20231002.0;
+  public version = 20241104.0;
 
   public activeDeployment = ActiveDeployment.get();
 
@@ -130,7 +129,6 @@ export class AppDataConverter {
     processor.logger = this.logger;
     const jsonFlows = Object.values(combinedOutputsHashmap);
     const result = (await processor.process(jsonFlows)) as IParsedWorkbookData;
-    await new ReportGenerator(this.activeDeployment).process(result);
 
     // TODO - write to disk and log
     const { errors, warnings } = this.logOutputs(result);

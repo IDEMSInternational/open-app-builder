@@ -32,6 +32,8 @@ PODS:
     - Capacitor
   - CapacitorPushNotifications (6.0.2):
     - Capacitor
+  - CapacitorScreenOrientation (6.0.2):
+    - Capacitor
   - CapacitorShare (6.0.2):
     - Capacitor
   - CapacitorSplashScreen (6.0.2):
@@ -162,6 +164,7 @@ DEPENDENCIES:
   - "CapacitorFirebasePerformance (from `../../node_modules/@capacitor-firebase/performance`)"
   - "CapacitorLocalNotifications (from `../../node_modules/@capacitor/local-notifications`)"
   - "CapacitorPushNotifications (from `../../node_modules/@capacitor/push-notifications`)"
+  - "CapacitorScreenOrientation (from `../../node_modules/@capacitor/screen-orientation`)"
   - "CapacitorShare (from `../../node_modules/@capacitor/share`)"
   - "CapacitorSplashScreen (from `../../node_modules/@capacitor/splash-screen`)"
   - "CapawesomeCapacitorAppUpdate (from `../../node_modules/@capawesome/capacitor-app-update`)"
@@ -218,6 +221,8 @@ EXTERNAL SOURCES:
     :path: "../../node_modules/@capacitor/local-notifications"
   CapacitorPushNotifications:
     :path: "../../node_modules/@capacitor/push-notifications"
+  CapacitorScreenOrientation:
+    :path: "../../node_modules/@capacitor/screen-orientation"
   CapacitorShare:
     :path: "../../node_modules/@capacitor/share"
   CapacitorSplashScreen:
@@ -239,6 +244,7 @@ SPEC CHECKSUMS:
   CapacitorFirebasePerformance: c806ce7f8270295465c050210d8e8a4ae2dc282e
   CapacitorLocalNotifications: 6bac9e948b2b8852506c6d74abb2cde140250f86
   CapacitorPushNotifications: ccd797926c030acad3d5498ef452c735c90a2c89
+  CapacitorScreenOrientation: 6039dc2ea4a8596b79316709d5727e8bb7e32845
   CapacitorShare: 591ae4693d85686ceb590db8e8b44aa014ec6490
   CapacitorSplashScreen: 250df9ef8014fac5c7c1fd231f0f8b1d8f0b5624
   CapawesomeCapacitorAppUpdate: 3c05b5c8e42f9c6a88d666093406e9336d9bfdb1
@@ -264,6 +270,6 @@ SPEC CHECKSUMS:
   PromisesSwift: 9d77319bbe72ebf6d872900551f7eeba9bce2851
   RecaptchaInterop: 7d1a4a01a6b2cb1610a47ef3f85f0c411434cb21
 
-PODFILE CHECKSUM: a6362e50008bd5aea904cdd9ec858da94a7f155c
+PODFILE CHECKSUM: 131ec70809fe3dec63113a003a42e6009560dcef
 
 COCOAPODS: 1.15.2

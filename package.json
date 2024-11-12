@@ -1,6 +1,6 @@
 {
   "name": "frontend",
-  "version": "0.16.35",
+  "version": "0.16.38",
   "author": "IDEMS International",
   "license": "See LICENSE",
   "homepage": "https://idems.international/",
@@ -54,6 +54,7 @@
     "@capacitor/ios": "^6.0.0",
     "@capacitor/local-notifications": "^6.0.0",
     "@capacitor/push-notifications": "^6.0.0",
+    "@capacitor/screen-orientation": "^6.0.2",
     "@capacitor/share": "^6.0.0",
     "@capacitor/splash-screen": "^6.0.0",
     "@capawesome/capacitor-app-update": "^6.0.0",

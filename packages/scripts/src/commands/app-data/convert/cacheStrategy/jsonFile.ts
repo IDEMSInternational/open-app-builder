@@ -34,7 +34,10 @@ export class JsonFileCache {
 
   constructor(folderPath: string, version: number) {
     this.version = version;
-    this.setup(folderPath);
+    // HACK - support tests by avoiding setup if folderPath not provided
+    if (folderPath) {
+      this.setup(folderPath);
+    }
   }
 
   /**
