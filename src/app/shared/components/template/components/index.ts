@@ -126,9 +126,22 @@ export const TEMPLATE_COMPONENTS = [
 ];
 
 /***************************************************************************************
- * Template component mapping
+ * Template core component mapping
+ * These components are used within the core system and are not removed from build
  **************************************************************************************/
-const DISPLAY_COMPONENT_MAPPING: Record<FlowTypes.TemplateRowType, Type<ITemplateRowProps>> = {
+const CORE_COMPONENT_MAPPING: Record<FlowTypes.TemplateRowCoreType, any> = {
+  data_items: TmplDataItemsComponent,
+  template: TemplateContainerComponent,
+  text: TmplTextComponent, // used in various child component dynamic rows
+  title: TmplTitleComponent, // used in not-found default fallback
+};
+
+/***************************************************************************************
+ * Template common component mapping
+ * These components are available on-demand and can be removed from build via
+ * deployment config optimisation
+ **************************************************************************************/
+const COMMON_COMPONENT_MAPPING = {
   /* optimise:components:start */
   accordion: TmplAccordionComponent,
   accordion_section: AccordionSectionComponent,
@@ -141,8 +154,7 @@ const DISPLAY_COMPONENT_MAPPING: Record<FlowTypes.TemplateRowType, Type<ITemplat
   carousel: TmplCarouselComponent,
   combo_box: TmplComboBoxComponent,
   dashed_box: TmplDashedBoxComponent,
-  data_items: TmplDataItemsComponent,
-  debug_toggle: PLHDebugToggleComponent as any,
+  debug_toggle: PLHDebugToggleComponent,
   display_grid: TmplDisplayGridComponent,
   display_group: TmplDisplayGroupComponent,
   drawer: TmplDrawerComponent,
@@ -171,14 +183,11 @@ const DISPLAY_COMPONENT_MAPPING: Record<FlowTypes.TemplateRowType, Type<ITemplat
   subtitle: TmplSubtitleComponent,
   task_card: TmplTaskCardComponent,
   task_progress_bar: TmplTaskProgressBarComponent,
-  template: TemplateContainerComponent as any,
-  text: TmplTextComponent,
   text_area: TmplTextAreaComponent,
   text_box: TmplTextBoxComponent,
   text_bubble: TmplTextBubbleComponent,
   tile_component: TmplTileComponent,
   timer: TmplTimerComponent,
-  title: TmplTitleComponent,
   toggle_bar: TmplToggleBarComponent,
   video: TmplVideoComponent,
   workshops_accordion: WorkshopsComponent,
@@ -187,7 +196,8 @@ const DISPLAY_COMPONENT_MAPPING: Record<FlowTypes.TemplateRowType, Type<ITemplat
 };
 
 export const TEMPLATE_COMPONENT_MAPPING = {
-  ...DISPLAY_COMPONENT_MAPPING,
+  ...COMMON_COMPONENT_MAPPING,
   ...DEMO_COMPONENT_MAPPING,
   ...PLH_COMPONENT_MAPPING,
+  ...CORE_COMPONENT_MAPPING,
 };

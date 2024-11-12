@@ -9,7 +9,7 @@ interface IReportData {
   count: number;
 }
 
-interface ITemplateSummaryReport extends IReportTable {
+export interface ITemplateSummaryReport extends IReportTable {
   data: IReportData[];
 }
 

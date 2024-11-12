@@ -71,7 +71,9 @@ export class FormComponent extends TemplateBaseComponent implements OnInit {
     this._row.rows.forEach((r) => {
       if (
         r.value &&
-        (r.type === "text_box" || r.type === "simple_checkbox" || r.type === "text_area")
+        (r.type === ("text_box" as any) ||
+          r.type === ("simple_checkbox" as any) ||
+          r.type === ("text_area" as any))
       ) {
         this.form[r.name] = r.value;
       }
