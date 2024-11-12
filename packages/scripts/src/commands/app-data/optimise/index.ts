@@ -1,22 +1,41 @@
+import chalk from "chalk";
 import { IDeploymentConfigJson } from "data-models";
 import { existsSync } from "fs";
 import { readFile, writeFile } from "fs/promises";
 import { resolve } from "path";
-import { Logger, PATHS } from "shared";
+import { deepMergeObjects, Logger, PATHS, ROOT_DIR, setNestedProperty } from "shared";
+import ANGULAR_JSON_TEMPLATE from "../../../../../../angular.base.json";
 import type { IReportOutput } from "../report/report.types";
-import chalk from "chalk";
+
 import { ComponentOptimiser } from "./optimisers/components";
+import { IAngularBuildOptions } from "./optimise.types";
 
 const APP_DIR = resolve(PATHS.ROOT_DIR, "src", "app");
 
 export class AppDataOptimiser {
   private report: IReportOutput;
+  private angularBuildOptions = this.getAngularJsonBuildOptions();
+
   constructor(private config: IDeploymentConfigJson) {}
+
   public async run() {
     this.report = await this.loadSummaryReport();
-    await this.optimiseComponents();
+    // apply any configured optimisations
+    const { components } = this.config.optimisation;
+    if (components) {
+      await this.optimiseComponents();
+    }
+    // ensure write of updated angular json regardless of any optimisations
+    // to make available to deployment
+    await this.writeAngularJson();
   }
 
+  /** Retrieve base angular build options and return as new object */
+  private getAngularJsonBuildOptions(): IAngularBuildOptions {
+    return deepMergeObjects({}, ANGULAR_JSON_TEMPLATE.projects.app.architect.build.options);
+  }
+
+  /** Load data from generated reports */
   private async loadSummaryReport() {
     const { _workspace_path } = this.config;
     const summaryReportPath = resolve(_workspace_path, "reports", "summary.json");
@@ -42,13 +61,26 @@ export class AppDataOptimiser {
       encoding: "utf8",
     });
     // Optimise
-    const optimisedIndex = await new ComponentOptimiser(this.config).run(
-      template_components,
-      componentsIndex
-    );
+    const res = await new ComponentOptimiser(this.config).run({
+      reportComponents: template_components,
+      componentsIndex,
+      angularBuildOptions: this.angularBuildOptions,
+    });
+    const { optimisedIndex, optimisedBuildOptions } = res;
+    this.angularBuildOptions = optimisedBuildOptions;
     // Write deployment index
     const outputPath = resolve(componentsDir, "index.deployment.ts");
     await writeFile(outputPath, optimisedIndex);
     console.log(chalk.gray(`Components optimisation written to\n${outputPath}`));
+  }
+
+  private async writeAngularJson() {
+    const outputPath = resolve(ROOT_DIR, "angular.json");
+    const mergedConfig = setNestedProperty(
+      "projects.app.architect.build.options",
+      this.angularBuildOptions,
+      ANGULAR_JSON_TEMPLATE
+    );
+    await writeFile(outputPath, JSON.stringify(mergedConfig, null, 2));
   }
 }
