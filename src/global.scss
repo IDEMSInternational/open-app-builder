@@ -161,7 +161,7 @@ $tour-next-button-background: var(
     transform: translate(-50%, -5%);
   }
   .introjs-bullets ul li a {
-    border: var(--ion-border-thin-standard);
+    border: var(--border-thin-standard);
     background: var(--ion-color-primary-contrast);
   }
   .introjs-bullets ul li a.active {
@@ -170,7 +170,7 @@ $tour-next-button-background: var(
   }
 }
 .buttonClass {
-  border: var(--ion-border-thin-standard);
+  border: var(--border-thin-standard);
   padding: 10px 15px;
   border-radius: var(--ion-border-radius-small);
   box-shadow: var(--ion-default-box-shadow);

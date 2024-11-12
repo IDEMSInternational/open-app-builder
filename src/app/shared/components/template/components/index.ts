@@ -20,7 +20,6 @@ import { TemplateBaseComponent } from "./base";
 import { TemplateDebuggerComponent } from "./debugger";
 import { TemplateHTMLComponent } from "./html/html.component";
 import { TemplatePopupComponent } from "./layout/popup/popup.component";
-
 import { TmplAccordionComponent } from "./accordion/accordion.component";
 import { TmplAdvancedDashedBoxComponent } from "./layout/advanced-dashed-box/advanced-dashed-box.component";
 import { TmplAnimatedSlidesComponent } from "./animated-slides/animated-slides.component";
@@ -55,14 +54,15 @@ import { TmplTaskProgressBarComponent } from "./task-progress-bar/task-progress-
 import { TmplTextAreaComponent } from "./text-area/text-area.component";
 import { TmplTextBoxComponent } from "./text-box/text-box.component";
 import { TmplTextComponent } from "./text/text.component";
+import { TmplTextBubbleComponent } from "./text-bubble/text-bubble.component";
 import { TmplTileComponent } from "./tile-component/tile-component.component";
 import { TmplTitleComponent } from "./title";
 import { TmplTimerComponent } from "./timer/timer.component";
 import { TmplToggleBarComponent } from "./toggle-bar/toggle-bar";
 import { TmplVideoComponent } from "./video";
-
 import { WorkshopsComponent } from "./layout/workshops_accordion";
-import { TmplTextBubbleComponent } from "./text-bubble/text-bubble.component";
+import { YoutubeComponent } from "./youtube/youtube.component";
+
 import { DEMO_COMPONENT_MAPPING } from "packages/components/demo";
 import { PLH_COMPONENT_MAPPING } from "packages/components/plh";
 
@@ -192,6 +192,7 @@ const CORE_COMPONENT_MAPPING: Record<FlowTypes.TemplateRowType, Type<ITemplateRo
   update_action_list: null as any,
   video: TmplVideoComponent,
   workshops_accordion: WorkshopsComponent,
+  youtube: YoutubeComponent,
 };
 
 export const TEMPLATE_COMPONENT_MAPPING = {
