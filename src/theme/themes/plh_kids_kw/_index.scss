@@ -88,6 +88,38 @@
       paragraph-margin-small: 4px,
       paragraph-margin-medium: 8px,
       paragraph-margin-large: 12px,
+
+      // SURFACE COLOUR PALETTE
+      color-surface-white: #ffffff,
+      color-surface-white-variant: #f9f9fa,
+      color-surface-black: #1b1c1d,
+      color-surface-black-variant: #44474a,
+      color-outline: #74777c,
+      color-outline-variant: #c4c7c9,
+
+      // SECONDARY PALETTE
+      color-secondary-blue-40: #0066a1,
+      color-secondary-blue-50: #007fbf,
+      color-secondary-blue-60: #2e98d8,
+      color-secondary-blue-70: #6ab2e9,
+      color-secondary-blue-80: #9ecbf5,
+      color-secondary-blue-90: #cfe5fb,
+
+      // YELLOW PALETTE
+      color-accent-yellow-40: #815600,
+      color-accent-yellow-50: #9f6e00,
+      color-accent-yellow-60: #bb8807,
+      color-accent-yellow-70: #d5a344,
+      color-accent-yellow-80: #eac07c,
+      color-accent-yellow-95: #fdefdc,
+
+      // ORANGE PALETTE
+      color-accent-orange-40: #b82000,
+      color-accent-orange-50: #dd3b00,
+      color-accent-orange-70: #ff8250,
+      color-accent-orange-80: #ffab83,
+      color-accent-orange-90: #ffd5be,
+      color-accent-orange-95: #ffeade,
     );
     @include utils.generateTheme($color-primary, $color-secondary, $page-background);
     @each $name, $value in $variable-overrides {
