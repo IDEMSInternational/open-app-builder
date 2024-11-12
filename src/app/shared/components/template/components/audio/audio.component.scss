@@ -4,7 +4,7 @@ $control-background: var(--audio-control-background, var(--ion-color-primary-500
 
 .container-player[data-variant~="compact"] {
   background: white;
-  border: var(--ion-border-standard);
+  border: var(--border-standard);
   box-sizing: border-box;
   box-shadow: var(--ion-default-box-shadow);
   border-radius: var(--ion-border-radius-standard);
@@ -87,7 +87,7 @@ $control-background: var(--audio-control-background, var(--ion-color-primary-500
 
 .container-player[data-variant~="large"] {
   background: var(--ion-color-primary-contrast);
-  border: var(--ion-border-standard);
+  border: var(--border-standard);
   box-sizing: border-box;
   box-shadow: var(--ion-default-box-shadow);
   border-radius: var(--ion-border-radius-standard);
@@ -134,7 +134,7 @@ $control-background: var(--audio-control-background, var(--ion-color-primary-500
       }
 
       ion-range::part(bar) {
-        border: var(--ion-border-thin-standard);
+        border: var(--border-thin-standard);
         height: var(--audio-bar-height);
       }
 
