@@ -68,12 +68,11 @@ export class FormComponent extends TemplateBaseComponent implements OnInit {
   }
 
   private fillInForm(): void {
+    // TODO - CC 2024-11 are the specific row types required?
     this._row.rows.forEach((r) => {
       if (
         r.value &&
-        (r.type === ("text_box" as any) ||
-          r.type === ("simple_checkbox" as any) ||
-          r.type === ("text_area" as any))
+        (r.type === "text_box" || r.type === "simple_checkbox" || r.type === "text_area")
       ) {
         this.form[r.name] = r.value;
       }
