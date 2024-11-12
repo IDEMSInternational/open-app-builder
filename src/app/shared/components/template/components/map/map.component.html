@@ -1,6 +1,6 @@
 <div class="map-container">
   <div class="map-and-legend-container">
-    <div id="map" class="map"></div>
+    <div id="mapElement" #mapElement class="map"></div>
     <div class="legend">
       @for (mapLayer of mapLayers; track $index) {
         @if (mapLayer.getVisible() && mapLayer.get("gradientFill")) {
