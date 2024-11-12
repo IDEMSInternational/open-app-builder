@@ -17,11 +17,11 @@ export class ComponentOptimiser {
   public async run(params: {
     angularBuildOptions: IAngularBuildOptions;
     componentsIndex: string;
-    reportComponents: IReportOutput["template_components"];
+    reportData: IReportOutput["template_components"]["data"];
   }) {
-    const { angularBuildOptions, componentsIndex, reportComponents } = params;
+    const { angularBuildOptions, componentsIndex, reportData } = params;
 
-    const unusedComponents = this.listUnusedComponents(reportComponents, componentsIndex);
+    const unusedComponents = this.listUnusedComponents(reportData, componentsIndex);
     const optimisedIndex = this.optimiseComponentsIndex(unusedComponents, componentsIndex);
     const optimisedBuildOptions = this.optimiseBuildOptions(unusedComponents, angularBuildOptions);
 
@@ -33,14 +33,14 @@ export class ComponentOptimiser {
    * from the template components index.ts file, and return list of unused component mappings
    */
   private listUnusedComponents(
-    reportComponents: IReportOutput["template_components"],
+    reportData: IReportOutput["template_components"]["data"],
     componentsIndex: string
   ) {
     const { optimisation } = this.config;
 
     // Merge list of all components used with deployment-specified implicit components
     const { implicit = [] } = optimisation.components;
-    const usedComponentSelectors = reportComponents.data.map((el) => el.type).concat(implicit);
+    const usedComponentSelectors = reportData.map((el) => el.type).concat(implicit);
 
     const mergedComponentSelectors = this.hackAddCommonImplicitDependencies(usedComponentSelectors);
     const unusedComponents: ICommonComponentMapping = {};
