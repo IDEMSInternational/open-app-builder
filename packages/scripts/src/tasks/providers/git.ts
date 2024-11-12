@@ -2,12 +2,14 @@ import chalk from "chalk";
 import fs from "fs-extra";
 import path from "path";
 import semver from "semver";
+import logUpdate from "log-update";
 import simpleGit, { ResetMode } from "simple-git";
 import type { SimpleGit, FileStatusResult } from "simple-git";
 import { Project, SyntaxKind } from "ts-morph";
 import { ActiveDeployment } from "../../commands/deployment/get";
 import { Logger, logOutput, openUrl, promptOptions } from "../../utils";
 import type { IDeploymentConfigJson } from "../../commands/deployment/common";
+import { pad, PATHS } from "shared";
 
 class GitProvider {
   private git: SimpleGit;
@@ -20,8 +22,14 @@ class GitProvider {
 
   /** Access git clone methods directly independent of deployment */
   public async cloneRepo(repoPath: string, localPath: string) {
-    const git = simpleGit();
-    return git.clone(repoPath, localPath);
+    console.log("\n");
+    const git = simpleGit(PATHS.DEPLOYMENTS_PATH, {
+      progress: ({ stage, progress, processed, total }) =>
+        logUpdate(chalk.gray(`${stage} | ${pad(progress, 2)}% | ${processed}/${total}`)),
+    });
+    const res = await git.clone(repoPath, localPath);
+    logUpdate.done();
+    return res;
   }
 
   /** Pull latest content from remote repo into local branch. Attempt to resolve any conflicts */

@@ -2196,6 +2196,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@capacitor/screen-orientation@npm:^6.0.2":
+  version: 6.0.2
+  resolution: "@capacitor/screen-orientation@npm:6.0.2"
+  peerDependencies:
+    "@capacitor/core": ^6.0.0
+  checksum: d7e431f9c42373d71d2d6b062ba3fc2fc1e4b034b02166b13c7ba4366e932e61c7558ae6e0429a84a7273f246ea42b23d3ae673ca8a8e7e60517f85d9bd41b22
+  languageName: node
+  linkType: hard
+
 "@capacitor/share@npm:^6.0.0":
   version: 6.0.2
   resolution: "@capacitor/share@npm:6.0.2"
@@ -15016,6 +15025,7 @@ __metadata:
     "@capacitor/ios": ^6.0.0
     "@capacitor/local-notifications": ^6.0.0
     "@capacitor/push-notifications": ^6.0.0
+    "@capacitor/screen-orientation": ^6.0.2
     "@capacitor/share": ^6.0.0
     "@capacitor/splash-screen": ^6.0.0
     "@capawesome/capacitor-app-update": ^6.0.0

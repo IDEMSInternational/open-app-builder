@@ -77,10 +77,11 @@ export class TmplDataItemsComponent extends TemplateBaseComponent implements OnD
     parameterList: any
   ) {
     const parsedItemDataList = await this.parseDataList(itemDataList);
-    const { itemRows, itemData } = new ItemProcessor(parsedItemDataList, parameterList).process(
-      rows
-    );
-    const itemRowsWithMeta = this.setItemMeta(itemRows, itemData, this.dataListName);
+    const { itemTemplateRows, itemData } = new ItemProcessor(
+      Object.values(parsedItemDataList),
+      parameterList
+    ).process(rows);
+    const itemRowsWithMeta = this.setItemMeta(itemTemplateRows, itemData, this.dataListName);
 
     const parsedItemRows = await this.hackProcessRows(itemRowsWithMeta);
     // TODO - deep diff and only update changed
