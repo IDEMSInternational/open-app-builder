@@ -128,7 +128,8 @@ export const TEMPLATE_COMPONENTS = [
 /***************************************************************************************
  * Template component mapping
  **************************************************************************************/
-const CORE_COMPONENT_MAPPING: Record<FlowTypes.TemplateRowType, Type<ITemplateRowProps>> = {
+const DISPLAY_COMPONENT_MAPPING: Record<FlowTypes.TemplateRowType, Type<ITemplateRowProps>> = {
+  /* optimise:components:start */
   accordion: TmplAccordionComponent,
   accordion_section: AccordionSectionComponent,
   advanced_dashed_box: TmplAdvancedDashedBoxComponent,
@@ -144,20 +145,17 @@ const CORE_COMPONENT_MAPPING: Record<FlowTypes.TemplateRowType, Type<ITemplateRo
   debug_toggle: PLHDebugToggleComponent as any,
   display_grid: TmplDisplayGridComponent,
   display_group: TmplDisplayGroupComponent,
-  display_theme: null as any,
   drawer: TmplDrawerComponent,
   form: FormComponent,
   help_icon: TmplHelpIconComponent,
   html: TemplateHTMLComponent,
   icon_banner: TmplIconBannerComponent,
   image: TmplImageComponent,
-  items: null,
   latex: TmplLatexComponent,
   lottie_animation: TmplLottieAnimation,
   nav_group: NavGroupComponent,
   nav_section: AnimatedSectionComponent,
   navigation_bar: TmplNavigationBarComponent,
-  nested_properties: null as any,
   number_selector: TmplNumberComponent,
   odk_form: TmplOdkFormComponent,
   pdf: TmplPdfComponent,
@@ -167,10 +165,6 @@ const CORE_COMPONENT_MAPPING: Record<FlowTypes.TemplateRowType, Type<ITemplateRo
   radio_group: TmplRadioGroupComponent,
   round_button: RoundIconButtonComponent,
   select_text: SelectTextComponent,
-  set_default: null as any,
-  set_field: null as any,
-  set_local: null as any,
-  set_variable: null as any,
   simple_checkbox: TmplSimpleCheckboxComponent,
   slider: TmplSliderComponent,
   square_button: SquareIconButtonComponent,
@@ -186,14 +180,14 @@ const CORE_COMPONENT_MAPPING: Record<FlowTypes.TemplateRowType, Type<ITemplateRo
   timer: TmplTimerComponent,
   title: TmplTitleComponent,
   toggle_bar: TmplToggleBarComponent,
-  update_action_list: null as any,
   video: TmplVideoComponent,
   workshops_accordion: WorkshopsComponent,
   youtube: YoutubeComponent,
+  /* optimise:components:end */
 };
 
 export const TEMPLATE_COMPONENT_MAPPING = {
-  ...CORE_COMPONENT_MAPPING,
+  ...DISPLAY_COMPONENT_MAPPING,
   ...DEMO_COMPONENT_MAPPING,
   ...PLH_COMPONENT_MAPPING,
 };

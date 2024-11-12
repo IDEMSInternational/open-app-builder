@@ -253,6 +253,19 @@ export namespace FlowTypes {
     rows: TemplateRow[];
     comments?: string;
   }
+
+  /** Row types that do not display component but perform an action when processed */
+  export type TemplateRowCoreType =
+    | "display_theme"
+    | "items"
+    | "nested_properties"
+    | "set_default"
+    | "set_field"
+    | "set_local"
+    | "set_variable"
+    | "update_action_list";
+
+  /** Row types that render components */
   export type TemplateRowType =
     | "accordion_section"
     | "accordion"
@@ -269,20 +282,17 @@ export namespace FlowTypes {
     | "debug_toggle"
     | "display_grid"
     | "display_group"
-    | "display_theme"
     | "drawer"
     | "form"
     | "help_icon"
     | "html"
     | "icon_banner"
     | "image"
-    | "items"
     | "latex"
     | "lottie_animation"
     | "nav_group"
     | "nav_section"
     | "navigation_bar"
-    | "nested_properties"
     | "number_selector"
     | "odk_form"
     | "pdf"
@@ -292,10 +302,6 @@ export namespace FlowTypes {
     | "radio_group"
     | "round_button"
     | "select_text"
-    | "set_default"
-    | "set_field"
-    | "set_local"
-    | "set_variable"
     | "simple_checkbox"
     | "slider"
     | "square_button"
@@ -311,13 +317,12 @@ export namespace FlowTypes {
     | "timer"
     | "title"
     | "toggle_bar"
-    | "update_action_list"
     | "video"
     | "workshops_accordion"
     | "youtube";
 
   export interface TemplateRow extends Row_with_translations {
-    type: TemplateRowType;
+    type: TemplateRowCoreType | TemplateRowType;
     name: string;
     value?: any; // TODO - incoming data will be string, so components should handle own parsing
     action_list?: TemplateRowAction[];
