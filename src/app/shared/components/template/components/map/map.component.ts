@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { AfterViewInit, Component, ElementRef, ViewChild } from "@angular/core";
 import { TemplateBaseComponent } from "../base";
 import { TemplateAssetService } from "../../services/template-asset.service";
 import { getParamFromTemplateRow, getStringParamFromTemplateRow } from "src/app/shared/utils";
@@ -63,13 +63,14 @@ interface IMapParams {
   styleUrls: ["./map.component.scss"],
   templateUrl: "./map.component.html",
 })
-export class TmplMapComponent extends TemplateBaseComponent implements OnInit {
+export class TmplMapComponent extends TemplateBaseComponent implements AfterViewInit {
   public params: Partial<IMapParams> = {};
   public map: Map;
   public mapLayers: BaseLayer[] = [];
   get mapLayersReversed(): any[] {
     return [...this.mapLayers].reverse();
   }
+  @ViewChild("mapElement") mapElement!: ElementRef<HTMLElement>;
 
   constructor(
     private templateAssetService: TemplateAssetService,
@@ -78,7 +79,11 @@ export class TmplMapComponent extends TemplateBaseComponent implements OnInit {
     super();
   }
 
-  async ngOnInit() {
+  ngAfterViewInit() {
+    this.init();
+  }
+
+  private async init() {
     await this.getParams();
     await this.initialiseMap();
     this.addLayers(this.params.layers);
@@ -133,7 +138,6 @@ export class TmplMapComponent extends TemplateBaseComponent implements OnInit {
           source: new OSM(),
         }),
       ],
-      target: "map",
       view: new View({
         center: [0, 0],
         extent: this.params.extent,
@@ -142,6 +146,8 @@ export class TmplMapComponent extends TemplateBaseComponent implements OnInit {
         maxZoom: 18,
       }),
     });
+
+    this.map.setTarget(this.mapElement.nativeElement);
   }
 
   private async getParams() {
