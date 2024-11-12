@@ -255,8 +255,7 @@ export namespace FlowTypes {
   }
 
   /** Row types that do not display component but perform an action when processed */
-  export type TemplateRowCoreType =
-    | "display_theme"
+  type TemplateRowBaseType =
     | "items"
     | "nested_properties"
     | "set_default"
@@ -265,64 +264,11 @@ export namespace FlowTypes {
     | "set_variable"
     | "update_action_list";
 
-  /** Row types that render components */
-  export type TemplateRowType =
-    | "accordion_section"
-    | "accordion"
-    | "advanced_dashed_box"
-    | "animated_section_group"
-    | "animated_section"
-    | "animated_slides"
-    | "audio"
-    | "button"
-    | "carousel"
-    | "combo_box"
-    | "dashed_box"
-    | "data_items"
-    | "debug_toggle"
-    | "display_grid"
-    | "display_group"
-    | "drawer"
-    | "form"
-    | "help_icon"
-    | "html"
-    | "icon_banner"
-    | "image"
-    | "latex"
-    | "lottie_animation"
-    | "nav_group"
-    | "nav_section"
-    | "navigation_bar"
-    | "number_selector"
-    | "odk_form"
-    | "pdf"
-    | "progress_path"
-    | "qr_code"
-    | "radio_button_grid"
-    | "radio_group"
-    | "round_button"
-    | "select_text"
-    | "simple_checkbox"
-    | "slider"
-    | "square_button"
-    | "subtitle"
-    | "task_card"
-    | "task_progress_bar"
-    | "template"
-    | "text_area"
-    | "text_box"
-    | "text_bubble"
-    | "text"
-    | "tile_component"
-    | "timer"
-    | "title"
-    | "toggle_bar"
-    | "video"
-    | "workshops_accordion"
-    | "youtube";
+  /** Row types used within core components (always included) */
+  export type TemplateRowCoreType = "data_items" | "template" | "text" | "title";
 
   export interface TemplateRow extends Row_with_translations {
-    type: TemplateRowCoreType | TemplateRowType;
+    type: TemplateRowBaseType | TemplateRowCoreType;
     name: string;
     value?: any; // TODO - incoming data will be string, so components should handle own parsing
     action_list?: TemplateRowAction[];
