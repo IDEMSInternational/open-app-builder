@@ -41,6 +41,8 @@ import { FeedbackService } from "./feature/feedback/feedback.service";
 import { ShareService } from "./shared/services/share/share.service";
 import { LocalStorageService } from "./shared/services/local-storage/local-storage.service";
 import { DeploymentService } from "./shared/services/deployment/deployment.service";
+import { ScreenOrientationService } from "./shared/services/screen-orientation/screen-orientation.service";
+import { TemplateMetadataService } from "./shared/components/template/services/template-metadata.service";
 
 @Component({
   selector: "app-root",
@@ -86,6 +88,7 @@ export class AppComponent {
     private tourService: TourService,
     private templateService: TemplateService,
     private templateFieldService: TemplateFieldService,
+    private templateMetadataService: TemplateMetadataService,
     private templateProcessService: TemplateProcessService,
     private appEventService: AppEventService,
     private campaignService: CampaignService,
@@ -108,7 +111,8 @@ export class AppComponent {
     private appUpdateService: AppUpdateService,
     private remoteAssetService: RemoteAssetService,
     private shareService: ShareService,
-    private fileManagerService: FileManagerService
+    private fileManagerService: FileManagerService,
+    private screenOrientationService: ScreenOrientationService
   ) {
     this.initializeApp();
   }
@@ -233,6 +237,8 @@ export class AppComponent {
         this.feedbackService,
         this.shareService,
         this.fileManagerService,
+        this.templateMetadataService,
+        this.screenOrientationService,
       ],
       deferred: [this.analyticsService],
       implicit: [

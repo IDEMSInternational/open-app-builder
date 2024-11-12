@@ -2,7 +2,7 @@
 .container {
   width: calc(100% - 10px);
   background: var(--ion-color-primary-contrast);
-  border: var(--ion-border-standard);
+  border: var(--border-standard);
   box-shadow: var(--ion-default-box-shadow);
   border-radius: var(--ion-border-radius-secondary);
   @include mixins.flex-space-between;
@@ -24,7 +24,7 @@
     --background: transparent;
     --box-shadow: none;
     border-radius: var(--ion-border-radius-rounded);
-    border: var(--ion-border-standard);
+    border: var(--border-standard);
     @include mixins.tiny-square;
     @include mixins.flex-centered;
     .line {

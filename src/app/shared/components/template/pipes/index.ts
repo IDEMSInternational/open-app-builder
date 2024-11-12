@@ -1,3 +1,6 @@
+import { NgModule } from "@angular/core";
+import { CommonModule } from "@angular/common";
+
 import { FilterDisplayComponentPipe } from "./filter-display-component.pipe";
 import { LatexPipe } from "./latex.pipe";
 import { MarkdownPipe } from "./markdown.pipe";
@@ -7,7 +10,7 @@ import { StyleListPipe } from "./styleList.pipe";
 import { TranslatePipe } from "./translate.pipe";
 import { QRCodePipe } from "./qr-code.pipe";
 
-export const TEMPLATE_PIPES = [
+const TEMPLATE_PIPES = [
   FilterDisplayComponentPipe,
   MarkdownPipe,
   PLHAssetPipe,
@@ -17,3 +20,10 @@ export const TEMPLATE_PIPES = [
   LatexPipe,
   QRCodePipe,
 ];
+
+@NgModule({
+  declarations: [...TEMPLATE_PIPES],
+  exports: [...TEMPLATE_PIPES],
+  imports: [CommonModule],
+})
+export class TemplatePipesModule {}
