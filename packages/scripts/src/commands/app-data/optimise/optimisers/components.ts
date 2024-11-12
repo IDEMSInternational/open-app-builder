@@ -7,10 +7,6 @@ export class ComponentOptimiser {
   /** Generate an optimised components index file based on components used within deployment */
   public async run(report: IReportOutput["template_components"], componentsIndex: string) {
     const { optimisation } = this.config;
-    // Use default index if optimisation not enabled
-    if (!optimisation.components?.enabled) return componentsIndex;
-    // Ensure report data available for optimisation
-    if (!report.data) return componentsIndex;
 
     let optimisedIndex = componentsIndex;
 
