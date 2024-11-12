@@ -66,7 +66,13 @@ export class AppDataOptimiser {
       angularBuildOptions: this.angularBuildOptions,
     });
     const { optimisedIndex, optimisedBuildOptions } = res;
+    // Update angular build options with optimisations and file replacement
     this.angularBuildOptions = optimisedBuildOptions;
+    // add component index override
+    this.angularBuildOptions.fileReplacements.push({
+      replace: "src/shared/components/template/components/index.ts",
+      with: "src/shared/components/template/components/index.deployment.ts",
+    });
     // Write deployment index
     const outputPath = resolve(componentsDir, "index.deployment.ts");
     await writeFile(outputPath, optimisedIndex);
