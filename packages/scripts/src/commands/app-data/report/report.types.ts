@@ -1,3 +1,5 @@
+import { ReportGenerator } from "./report";
+
 // Use union types to allow strong typing by report display type
 export type IReport = IReportTable | IReportText;
 
@@ -23,3 +25,6 @@ interface IReportText extends IReportBase {
   data: string;
   type: "text";
 }
+
+/** Type extraction of all generated report outputs */
+export type IReportOutput = Awaited<ReturnType<ReportGenerator["generateOutputReports"]>>;
