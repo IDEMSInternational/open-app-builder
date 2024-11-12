@@ -14,7 +14,7 @@ export class ComponentOptimiser {
    * @param componentsIndex parsed template components index file for modification
    * @param reportComponents parsed report template_components result
    * */
-  public async run(params: {
+  public run(params: {
     angularBuildOptions: IAngularBuildOptions;
     componentsIndex: string;
     reportData: IReportOutput["template_components"]["data"];

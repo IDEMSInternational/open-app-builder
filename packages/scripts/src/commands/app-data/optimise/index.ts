@@ -23,7 +23,7 @@ export class AppDataOptimiser {
     // apply any configured optimisations
     const { components } = this.config.optimisation;
     if (components) {
-      await this.optimiseComponents();
+      this.optimiseComponents();
     }
     // ensure write of updated angular json regardless of any optimisations
     // to make available to deployment
@@ -70,8 +70,8 @@ export class AppDataOptimiser {
     this.angularBuildOptions = optimisedBuildOptions;
     // add component index override
     this.angularBuildOptions.fileReplacements.push({
-      replace: "src/shared/components/template/components/index.ts",
-      with: "src/shared/components/template/components/index.deployment.ts",
+      replace: "src/app/shared/components/template/components/index.ts",
+      with: "src/app/shared/components/template/components/index.deployment.ts",
     });
     // Write deployment index
     const outputPath = resolve(componentsDir, "index.deployment.ts");
