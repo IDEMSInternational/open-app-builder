@@ -195,6 +195,9 @@ const COMMON_COMPONENT_MAPPING = {
   /* optimise:components:end */
 };
 
+/** Utility type of all named components from common mapping */
+export type ICommonComponentName = keyof typeof COMMON_COMPONENT_MAPPING;
+
 export const TEMPLATE_COMPONENT_MAPPING = {
   ...COMMON_COMPONENT_MAPPING,
   ...DEMO_COMPONENT_MAPPING,
