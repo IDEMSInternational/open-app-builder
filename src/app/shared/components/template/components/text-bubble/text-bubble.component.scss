@@ -32,6 +32,16 @@ $imageSize: 64px;
   &[data-variant~="no_border"] {
     --border-color: transparent;
   }
+
+  &[data-variant~="accent-1"] {
+    --background-color: var(--ion-color-primary-200);
+    --border-color: var(--ion-color-primary-500);
+  }
+
+  &[data-variant~="accent-2"] {
+    --background-color: var(--ion-color-secondary-200);
+    --border-color: var(--ion-color-secondary-500);
+  }
 }
 
 .speaker-image {
@@ -118,4 +128,16 @@ $imageSize: 64px;
   border-image: conic-gradient(var(--c2) 0 0) fill 0 / var(--r)
     max(var(--b), 100% - var(--p) - var(--h) * tan(var(--a) / 2)) 0
     max(var(--b), var(--p) - var(--h) * tan(var(--a) / 2)) / 0 0 var(--h) 0;
+}
+
+// For the speaker name
+.speaker-name {
+  position: absolute;
+  bottom: -55px;
+  left: 78px;
+  color: var(--ion-color-gray-700);
+}
+.container[data-position="right"] .speaker-name {
+  text-align: right;
+  right: 80px;
 }
