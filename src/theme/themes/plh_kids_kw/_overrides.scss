@@ -115,7 +115,7 @@ body[data-theme="plh_kids_kw"] {
         .progress-block {
           ion-range {
             width: 100% !important;
-            --bar-background: white !important;
+            --bar-background: var(--color-surface-white) !important;
             --bar-height: 12px !important;
             --knob-size: 20px !important;
             --knob-background: var(--ion-color-secondary-600) !important;
@@ -189,7 +189,7 @@ body[data-theme="plh_kids_kw"] {
         .progress-block {
           .audio-range {
             --bar-background-active: var(--ion-color-primary-400) !important;
-            --bar-background: white !important;
+            --bar-background: var(--color-surface-white) !important;
             --bar-height: 12px !important;
             --bar-border-radius: var(--ion-border-radius-standard) !important;
             --knob-size: 0px !important;
@@ -227,7 +227,7 @@ body[data-theme="plh_kids_kw"] {
       border-radius: var(--ion-border-radius-small);
       box-shadow: none;
       .accordion-section-title {
-        color: white;
+        color: var(--color-surface-white);
 
         font-size: var(--font-size-text-medium);
         font-weight: var(--font-weight-bold);
@@ -236,7 +236,7 @@ body[data-theme="plh_kids_kw"] {
     }
     ion-accordion.accordion-animated > [slot="header"] .ion-accordion-toggle-icon {
       color: unset !important;
-      color: white !important;
+      color: var(--color-surface-white) !important;
     }
     ion-item.accordion-header[slot="header"] {
       display: flex;
@@ -252,13 +252,13 @@ body[data-theme="plh_kids_kw"] {
       }
     }
     ion-item.accordion-content {
-      border-top: 1px solid #c4c7c9 !important;
+      border-top: 1px solid var(--color-outline-variant) !important;
       margin: 0px 10px !important;
 
       plh-tmpl-text {
         width: 100%;
         p {
-          color: white !important;
+          color: var(--color-surface-white) !important;
           font-size: var(--font-size-text-medium) !important;
           line-height: var(--line-height-text-medium) !important;
           font-weight: var(--font-weight-standard) !important;
@@ -282,8 +282,8 @@ body[data-theme="plh_kids_kw"] {
       --border-color: none;
       --background-color: none;
       .text-bubble {
-        border: 1px solid #74777c;
-        background-color: #f9f9fa;
+        border: 1px solid var(--color-outline);
+        background-color: var(--color-white-variant);
       }
     }
 
@@ -300,24 +300,24 @@ body[data-theme="plh_kids_kw"] {
       --background-color: none;
       --border-color: none;
       .text-bubble {
-        border: 1px solid #815600;
-        background-color: #f9f9fa;
+        border: 1px solid var(--color-accent-yellow-40);
+        background-color: var(--color-white-variant);
       }
     }
 
-    &[data-variant~="orange"] {
+    &[data-variant~="accent-1"] {
       margin-bottom: 14px;
       .text-bubble {
-        border: 1px solid #ff8250;
-        background-color: #ffeade;
+        border: 1px solid var(--color-accent-orange-70);
+        background-color: var(--color-accent-orange-95);
       }
     }
 
-    &[data-variant~="yellow"] {
+    &[data-variant~="accent-2"] {
       margin-bottom: 14px;
       .text-bubble {
-        border: 1px solid #d5a344;
-        background-color: #fdefdc;
+        border: 1px solid var(--color-accent-yellow-70);
+        background-color: var(--color-accent-yellow-95);
       }
     }
 
@@ -362,10 +362,11 @@ body[data-theme="plh_kids_kw"] {
       }
     }
 
-    .avatar-name {
+    .speaker-name {
+      position: unset !important;
       margin-bottom: 6px;
       font-size: var(--font-size-text-tiny);
-      color: #74777c;
+      color: var(--color-outline);
       font-weight: var(--font-weight-bold);
       letter-spacing: -0.1px;
     }
@@ -396,7 +397,7 @@ body[data-theme="plh_kids_kw"] {
       margin-left: 8px;
     }
 
-    .avatar-name {
+    .speaker-name {
       text-align: right;
     }
   }
@@ -404,7 +405,7 @@ body[data-theme="plh_kids_kw"] {
   // Text
   plh-tmpl-text {
     .standard {
-      color: var(--ion-color-gray-900);
+      color: var(--color-surface-black);
       font-size: var(--font-size-text-medium);
       p {
         margin: var(--paragraph-margin-small) 0;
@@ -426,8 +427,8 @@ body[data-theme="plh_kids_kw"] {
   // Text Area
   plh-text-area {
     .wrapper .text_area {
-      background: white !important;
-      border: 0.8px solid var(--ion-color-gray-200) !important;
+      background: var(--color-surface-white) !important;
+      border: 1px solid var(--color-outline-variant) !important;
       font-size: var(--font-size-text-medium) !important;
       color: var(--ion-color-gray-900) !important;
       font-weight: var(--font-weight-medium) !important;
@@ -442,10 +443,10 @@ body[data-theme="plh_kids_kw"] {
   plh-text-box {
     .wrapper {
       .text-box-input {
-        background: white !important;
-        border: 1px solid var(--ion-color-gray-200) !important;
+        background: var(--color-surface-white) !important;
+        border: 1px solid var(--color-outline-variant) !important;
         font-size: var(--font-size-text-medium) !important;
-        color: var(--ion-color-gray-900) !important;
+        color: var(--color-surface-black) !important;
         font-weight: var(--font-weight-medium) !important;
         box-shadow: none !important;
         --padding-end: 16px !important;
@@ -468,7 +469,7 @@ body[data-theme="plh_kids_kw"] {
       width: 100%;
       padding: 0;
       .text {
-        border: 1px solid #f8dfbb;
+        border: 1px solid var(--color-accent-yellow-80);
         border-top-left-radius: 12px;
         border-bottom-left-radius: 12px;
 
@@ -494,8 +495,8 @@ body[data-theme="plh_kids_kw"] {
         border-top-right-radius: 12px;
         border-bottom-right-radius: 12px;
 
-        background-color: #815600;
-        color: white;
+        background-color: var(--color-accent-yellow-40);
+        color: var(--color-surface-white);
         font-size: var(--font-size-text-small) !important;
         font-weight: var(--font-weight-bold);
         text-align: center;
