@@ -267,8 +267,15 @@ export namespace FlowTypes {
   /** Row types used within core components (always included) */
   export type TemplateRowCoreType = "data_items" | "template" | "text" | "title";
 
+  /**
+   * HACK - Deployments can also have row types for any registered component names
+   * To keep intellisense from named core/base types and allow for any string use
+   * workaround type https://stackoverflow.com/a/61048124
+   * */
+  type TemplateRowDeploymentType = string & {};
+
   export interface TemplateRow extends Row_with_translations {
-    type: TemplateRowBaseType | TemplateRowCoreType;
+    type: TemplateRowBaseType | TemplateRowCoreType | TemplateRowDeploymentType;
     name: string;
     value?: any; // TODO - incoming data will be string, so components should handle own parsing
     action_list?: TemplateRowAction[];

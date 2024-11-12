@@ -48,7 +48,8 @@ export class TemplateBaseComponent implements ITemplateRowProps {
    * @ignore
    */
   triggerActions(trigger: FlowTypes.TemplateRowAction["trigger"] = "click") {
-    if (this._row.disabled && this._row.type !== ("accordion_section" as any)) {
+    // TODO - CC 2024-11 is the accordion_section workaround still required?
+    if (this._row.disabled && this._row.type !== "accordion_section") {
       console.log("Click action disabled for ", this._row.name);
       return;
     }
