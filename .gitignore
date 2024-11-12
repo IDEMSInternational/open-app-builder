@@ -93,3 +93,8 @@ android/app/src/main/res/values/strings.xml
 ios/App/App.xcodeproj/project.pbxproj
 ios/App/App/capacitor.config.json
 ios/App/App/config.xml
+
+
+# Deployment-specific files
+src/**/*.deployment.ts
+angular.json
