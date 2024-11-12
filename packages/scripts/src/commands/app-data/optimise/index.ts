@@ -54,7 +54,6 @@ export class AppDataOptimiser {
    * components that are used within sheets
    */
   private async optimiseComponents() {
-    const { template_components } = this.report;
     // Read default index
     const componentsDir = resolve(APP_DIR, "shared", "components", "template", "components");
     const componentsIndex = await readFile(resolve(componentsDir, "index.ts"), {
@@ -62,7 +61,7 @@ export class AppDataOptimiser {
     });
     // Optimise
     const res = await new ComponentOptimiser(this.config).run({
-      reportComponents: template_components,
+      reportData: this.report.template_components.data,
       componentsIndex,
       angularBuildOptions: this.angularBuildOptions,
     });
