@@ -7,6 +7,7 @@ import { WorkflowRunner } from "../../commands/workflow/run";
 import { SRC_ASSETS_PATH } from "../../paths";
 import { IContentsEntry, replicateDir } from "../../utils";
 import { IDeploymentConfigJson, IDeploymentRuntimeConfig } from "data-models";
+import { AppDataOptimiser } from "../../commands/app-data/optimise";
 
 /** Prepare sourcely cached assets for population to app */
 const postProcessAssets = async (options: { sourceAssetsFolders: string[] }) => {
@@ -36,7 +37,7 @@ const generateReports = async () => {
 /**
  * Copy data from source deployment folder to running app assets folder
  */
-const copyDeploymentDataToApp = () => {
+const copyDeploymentDataToApp = async () => {
   const { app_data } = WorkflowRunner.config;
 
   // copy filtered subset of app_data
@@ -63,6 +64,9 @@ const copyDeploymentDataToApp = () => {
   const configTarget = path.resolve(targetFolder, "deployment.json");
   const runtimeConfig = generateRuntimeConfig(WorkflowRunner.config);
   writeFileSync(configTarget, JSON.stringify(runtimeConfig, null, 2));
+
+  // optimise components
+  await new AppDataOptimiser(WorkflowRunner.config).run();
 };
 
 function generateRuntimeConfig(deploymentConfig: IDeploymentConfigJson): IDeploymentRuntimeConfig {
