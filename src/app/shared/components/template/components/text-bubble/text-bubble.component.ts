@@ -9,7 +9,7 @@ interface ITextBubbleParams {
   speakerPosition: "left" | "right";
   /** TEMPLATE PARAMETER: "variant" */
   variant: "gray" | "primary" | "secondary" | "no-border" | "orange" | "yellow";
-  /** TEMPLATE PARAMETER: "avatar_name". The name of the speaker */
+  /** TEMPLATE PARAMETER: "speaker_name". The name of the speaker */
   speakerName: string;
 }
 
