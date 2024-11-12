@@ -1,4 +1,4 @@
-import { Injectable } from "@angular/core";
+import { Injectable, signal } from "@angular/core";
 import { LocalStorageService } from "src/app/shared/services/local-storage/local-storage.service";
 import { AppDataService } from "src/app/shared/services/data/app-data.service";
 import { DbService } from "src/app/shared/services/db/db.service";
@@ -19,6 +19,9 @@ import { SyncServiceBase } from "src/app/shared/services/syncService.base";
   providedIn: "root",
 })
 export class TemplateService extends SyncServiceBase {
+  /** Name of any template running in fullscreen standalone mode */
+  public standaloneTemplateName = signal<string | undefined>(undefined);
+
   constructor(
     private localStorageService: LocalStorageService,
     private appDataService: AppDataService,
@@ -80,6 +83,11 @@ export class TemplateService extends SyncServiceBase {
       componentProps: { props },
     });
     await modal.present();
+
+    // track standalone template name so that template-meta.service can update loaded template params
+    this.standaloneTemplateName.set(templatename);
+    modal.onDidDismiss().then(() => this.standaloneTemplateName.set(undefined));
+
     let dismissData: { emit_value?: string; emit_data?: any } = {};
     if (props.waitForDismiss) {
       const { data } = await modal.onDidDismiss();
@@ -163,6 +171,14 @@ export class TemplateService extends SyncServiceBase {
       console.error(`[Template] - Not Found -`, templateName);
       return NOT_FOUND_TEMPLATE(templateName);
     }
+  }
+
+  public async getTemplateMetadata(templateName: string) {
+    const template = (await this.appDataService.getSheet(
+      "template",
+      templateName
+    )) as FlowTypes.Template;
+    return template?.parameter_list || {};
   }
 
   /**
