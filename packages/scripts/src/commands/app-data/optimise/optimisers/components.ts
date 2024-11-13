@@ -6,11 +6,22 @@ import { ComponentManifest } from "./component-manifest";
 /** Partial hashmap of named common components with their corresponding component class name */
 type ICommonComponentMapping = { [name in ICommonComponentName]?: any };
 
-interface IComponentOptimisationOutput {
-  indexTs: string;
-  moduleTs: string;
+// Optimisation input parameters
+export interface IComponentOptimisationParams {
+  /** parsed angular.json file for entry modification */
   angularBuildOptions: IAngularBuildOptions;
+  /** parsed template components index file for modification */
+  indexTs: string;
+  /** parsed template components module file for modification */
+  moduleTs: string;
+  /** parsed report template_components result */
+  reportData: IReportOutput["template_components"]["data"];
+  /** deployment optimisation config */
+  config: IDeploymentConfigJson["optimisation"];
 }
+
+// Optimised output is same as input but without reportData and config */
+type IComponentOptimisationOutput = Omit<IComponentOptimisationParams, "reportData" | "config">;
 
 export class ComponentOptimiser {
   private usedComponents: ICommonComponentMapping = {};
@@ -18,39 +29,27 @@ export class ComponentOptimiser {
 
   private output: IComponentOptimisationOutput;
 
-  constructor(private config: IDeploymentConfigJson) {}
+  constructor(private params: IComponentOptimisationParams) {}
 
-  /**
-   * Generate an optimised components index file based on components used within deployment
-   * @param angularJson parsed angular.json file for entry modification
-   * @param indexTs parsed template components index file for modification
-   * @param moduleTs parsed template components module file for modification
-   * @param reportComponents parsed report template_components result
-   * */
-  public run(input: {
-    angularBuildOptions: IAngularBuildOptions;
-    indexTs: string;
-    moduleTs: string;
-    reportData: IReportOutput["template_components"]["data"];
-  }) {
-    const { angularBuildOptions, indexTs, moduleTs, reportData } = input;
-
+  public run() {
+    // copy input data to output object for overwrite
+    const { angularBuildOptions, indexTs, moduleTs, reportData } = this.params;
     this.output = { angularBuildOptions, indexTs, moduleTs };
 
+    // setup lists of used and unused components
     this.usedComponents = this.listUsedComponents(reportData);
     this.unusedComponents = this.listUnusedComponents(indexTs);
 
+    // handle optimisation and return optimised output
     for (const [componentName, importName] of Object.entries(this.unusedComponents)) {
       this.optimiseUnusedComponent(componentName as any, importName);
     }
-
     return this.output;
   }
 
   /** Generate a list of all used components */
   private listUsedComponents(reportData: IReportOutput["template_components"]["data"]) {
-    const { optimisation } = this.config;
-    const { implicit = [] } = optimisation.components;
+    const { implicit = [] } = this.params.config.components;
     // create a mapping of all used component names (generated from report and implicit config)
     // additionally include any known implicit dependenciies
     const usedComponentMapping: ICommonComponentMapping = {};

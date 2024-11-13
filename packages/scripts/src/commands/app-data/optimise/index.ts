@@ -17,12 +17,12 @@ export class AppDataOptimiser {
 
   private buildConfig = ANGULAR_JSON_TEMPLATE.projects.app.architect.build;
 
-  constructor(private config: IDeploymentConfigJson) {}
+  constructor(private deploymentConfig: IDeploymentConfigJson) {}
 
   public async run() {
     this.report = await this.loadSummaryReport();
     // apply any configured optimisations
-    const { components } = this.config.optimisation;
+    const { components } = this.deploymentConfig.optimisation;
     if (components) {
       await this.optimiseComponents();
       await this.writeAngularJson();
@@ -31,7 +31,7 @@ export class AppDataOptimiser {
 
   /** Load data from generated reports */
   private async loadSummaryReport() {
-    const { _workspace_path } = this.config;
+    const { _workspace_path } = this.deploymentConfig;
     const summaryReportPath = resolve(_workspace_path, "reports", "summary.json");
     if (!existsSync(summaryReportPath)) {
       Logger.error({
@@ -58,12 +58,14 @@ export class AppDataOptimiser {
 
     // Optimise components
     const angularBuildOptions = this.buildConfig.options;
-    const optimised = new ComponentOptimiser(this.config).run({
+    const optimiser = new ComponentOptimiser({
       angularBuildOptions,
+      config: this.deploymentConfig.optimisation,
       indexTs,
       moduleTs,
       reportData: this.report.template_components.data,
     });
+    const optimised = optimiser.run();
 
     // Write optimised outputs to file for override during production build
     const indexTsTarget = resolve(templatesDir, "components", "index.deployment.ts");
