@@ -257,7 +257,8 @@ body[data-theme="plh_kids_kw"] {
       border: 2px solid #2e98d8;
       border-radius: var(--ion-border-radius-secondary);
       padding: 16px;
-      box-shadow: 2px 2px 12px #83b1db;
+      box-shadow: 1px 1px 10px #92b7da;
+      background-color: #f6fafe;
       .container {
         display: flex;
         flex-direction: row;
@@ -307,6 +308,7 @@ body[data-theme="plh_kids_kw"] {
       box-shadow: none;
       opacity: 0.5;
       border: 2px solid #dbe3f2;
+      background-color: #ffffff;
       .module-image {
         img {
           width: 60px;
