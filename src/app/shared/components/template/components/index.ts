@@ -1,6 +1,5 @@
 /* eslint sort-keys: "error"  */
-import { Type } from "@angular/core";
-import { FlowTypes, ITemplateRowProps } from "../models";
+import { FlowTypes } from "../models";
 import { TemplateContainerComponent } from "../template-container.component";
 
 /***************************************************************************************
