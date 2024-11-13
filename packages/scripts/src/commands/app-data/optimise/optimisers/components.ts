@@ -1,96 +1,125 @@
 import { IDeploymentConfigJson } from "data-models";
 import type { IReportOutput } from "../../report/report.types";
 import { IAngularBuildOptions, ICommonComponentName } from "../optimise.types";
+import { ComponentManifest } from "./component-manifest";
 
 /** Partial hashmap of named common components with their corresponding component class name */
-type ICommonComponentMapping = { [name in ICommonComponentName]?: string };
+type ICommonComponentMapping = { [name in ICommonComponentName]?: any };
+
+interface IComponentOptimisationOutput {
+  indexTs: string;
+  moduleTs: string;
+  angularBuildOptions: IAngularBuildOptions;
+}
 
 export class ComponentOptimiser {
+  private usedComponents: ICommonComponentMapping = {};
+  private unusedComponents: ICommonComponentMapping = {};
+
+  private output: IComponentOptimisationOutput;
+
   constructor(private config: IDeploymentConfigJson) {}
 
   /**
    * Generate an optimised components index file based on components used within deployment
    * @param angularJson parsed angular.json file for entry modification
-   * @param componentsIndex parsed template components index file for modification
+   * @param indexTs parsed template components index file for modification
+   * @param moduleTs parsed template components module file for modification
    * @param reportComponents parsed report template_components result
    * */
-  public run(params: {
+  public run(input: {
     angularBuildOptions: IAngularBuildOptions;
-    componentsIndex: string;
+    indexTs: string;
+    moduleTs: string;
     reportData: IReportOutput["template_components"]["data"];
   }) {
-    const { angularBuildOptions, componentsIndex, reportData } = params;
+    const { angularBuildOptions, indexTs, moduleTs, reportData } = input;
 
-    const unusedComponents = this.listUnusedComponents(reportData, componentsIndex);
-    const optimisedIndex = this.optimiseComponentsIndex(unusedComponents, componentsIndex);
-    const optimisedBuildOptions = this.optimiseBuildOptions(unusedComponents, angularBuildOptions);
+    this.output = { angularBuildOptions, indexTs, moduleTs };
 
-    return { optimisedIndex, optimisedBuildOptions };
+    this.usedComponents = this.listUsedComponents(reportData);
+    this.unusedComponents = this.listUnusedComponents(indexTs);
+
+    for (const [componentName, importName] of Object.entries(this.unusedComponents)) {
+      this.optimiseUnusedComponent(componentName as any, importName);
+    }
+
+    return this.output;
+  }
+
+  /** Generate a list of all used components */
+  private listUsedComponents(reportData: IReportOutput["template_components"]["data"]) {
+    const { optimisation } = this.config;
+    const { implicit = [] } = optimisation.components;
+    // create a mapping of all used component names (generated from report and implicit config)
+    // additionally include any known implicit dependenciies
+    const usedComponentMapping: ICommonComponentMapping = {};
+    const usedComponentNames = reportData.map((el) => el.type).concat(implicit);
+    for (const componentName of usedComponentNames) {
+      usedComponentMapping[componentName] = true;
+      // Add additional implicit components from known manifest
+      for (const implicitName of ComponentManifest[componentName]?.implicit || []) {
+        usedComponentMapping[implicitName] = true;
+      }
+    }
+    return usedComponentMapping;
   }
 
   /**
    * Compare list of components named in report against all common components as extracted
    * from the template components index.ts file, and return list of unused component mappings
    */
-  private listUnusedComponents(
-    reportData: IReportOutput["template_components"]["data"],
-    componentsIndex: string
-  ) {
-    const { optimisation } = this.config;
-
-    // Merge list of all components used with deployment-specified implicit components
-    const { implicit = [] } = optimisation.components;
-    const usedComponentSelectors = reportData.map((el) => el.type).concat(implicit);
-
-    const mergedComponentSelectors = this.hackAddCommonImplicitDependencies(usedComponentSelectors);
+  private listUnusedComponents(indexTs: string) {
     const unusedComponents: ICommonComponentMapping = {};
     // Extract the section of the index.ts file between tags
     // `optimise:components:start` and `optimise:components:end`
     const sectionRegex = /optimise:components:start \*\/([\s\S]*)\/* optimise:components:end/;
-    const sectionText = sectionRegex.exec(componentsIndex)?.[1];
+    const sectionText = sectionRegex.exec(indexTs)?.[1];
     // Extract all `selector: componentName` pairs from mapping
     const keyValueRegex = /([a-z0-9_]*): ([a-z0-9_]*)/gi;
     for (const match of sectionText?.matchAll(keyValueRegex)) {
       const [, selector, componentName] = match;
-      if (!mergedComponentSelectors.includes(selector)) {
+      if (!this.usedComponents[selector]) {
         unusedComponents[selector] = componentName;
       }
     }
     return unusedComponents;
   }
 
-  /** Revert specific changes made to angular.json for component support if not in use */
-  private optimiseBuildOptions(
-    unusedComponents: ICommonComponentMapping,
-    buildOptions: IAngularBuildOptions
-  ) {
-    // remove comp-pdf assets
-    if (unusedComponents.pdf) {
-      buildOptions.assets = buildOptions.assets.filter((v) => v.output !== "/assets/comp-pdf");
-    }
-    return buildOptions;
-  }
+  // TODO - add module tests
+  private optimiseUnusedComponent(componentName: ICommonComponentName, importName: string) {
+    let { angularBuildOptions, indexTs, moduleTs } = this.output;
 
-  /** Update components index file to comment out references to components not in use */
-  private optimiseComponentsIndex(
-    unusedComponents: ICommonComponentMapping,
-    componentsIndex: string
-  ) {
-    for (const componentName of Object.values(unusedComponents)) {
-      const regex = new RegExp(`(.*${componentName}.*)`, "g");
-      for (const match of componentsIndex.matchAll(regex)) {
-        componentsIndex = componentsIndex.replace(match[1], `// ${match[1]}`);
+    // comment out references to component import from component index
+    indexTs = this.commentOutLinesContainingString(indexTs, importName);
+
+    // handle knock-ons
+    const manifest = ComponentManifest[componentName];
+    if (manifest) {
+      const { assets, module } = manifest;
+      // remove angular.json build assets
+      if (assets) {
+        angularBuildOptions.assets = this.output.angularBuildOptions.assets.filter(
+          (v) => v.output !== assets
+        );
+      }
+      // remove module import refs
+      // TODO - handle (future) case if module used by multiple components
+      if (module) {
+        moduleTs = this.commentOutLinesContainingString(moduleTs, module);
       }
     }
-    return componentsIndex;
+    // update output
+    this.output = { angularBuildOptions, indexTs, moduleTs };
   }
 
-  /** Update list of implicit dependencies that are known to typically cause issues */
-  private hackAddCommonImplicitDependencies(usedComponentSelectors: string[]) {
-    if (usedComponentSelectors.includes("display_group")) {
-      usedComponentSelectors.push("form");
-      usedComponentSelectors.push("advanced_dashed_box");
+  // TODO - add tests
+  private commentOutLinesContainingString(sourceText: string, value: string) {
+    const regex = new RegExp(`(.*${value}.*)`, "g");
+    console.log(regex);
+    for (const match of sourceText.matchAll(regex)) {
+      sourceText = sourceText.replace(match[1], `// ${match[1]}`);
     }
-    return usedComponentSelectors;
+    return sourceText;
   }
 }
