@@ -64,10 +64,8 @@ const copyDeploymentDataToApp = async () => {
   const configTarget = path.resolve(targetFolder, "deployment.json");
   const runtimeConfig = generateRuntimeConfig(WorkflowRunner.config);
   writeFileSync(configTarget, JSON.stringify(runtimeConfig, null, 2));
-
-  // optimise components
-  await new AppDataOptimiser(WorkflowRunner.config).run();
 };
+const optimiseBuild = async () => new AppDataOptimiser(WorkflowRunner.config).run();
 
 function generateRuntimeConfig(deploymentConfig: IDeploymentConfigJson): IDeploymentRuntimeConfig {
   const { analytics, api, app_config, error_logging, firebase, git, name, supabase, web } =
@@ -87,4 +85,10 @@ function generateRuntimeConfig(deploymentConfig: IDeploymentConfigJson): IDeploy
   };
 }
 
-export default { generateReports, postProcessAssets, postProcessSheets, copyDeploymentDataToApp };
+export default {
+  generateReports,
+  postProcessAssets,
+  postProcessSheets,
+  copyDeploymentDataToApp,
+  optimiseBuild,
+};

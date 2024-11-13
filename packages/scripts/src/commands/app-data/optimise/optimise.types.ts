@@ -1,4 +1,4 @@
-import ANGULAR_JSON from "../../../../../../angular.base.json";
+import ANGULAR_JSON from "../../../../../../angular.json";
 
 export type { ICommonComponentName } from "../../../../../../src/app/shared/components/template/components";
 
