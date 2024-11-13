@@ -1,7 +1,7 @@
 import { IDeploymentConfigJson } from "data-models";
 import type { IReportOutput } from "../../report/report.types";
 import { IAngularBuildOptions, ICommonComponentName } from "../optimise.types";
-import { ComponentManifest } from "./component-manifest";
+import { COMPONENT_MANIFEST } from "./component-manifest";
 
 /** Partial hashmap of named common components with their corresponding component class name */
 type ICommonComponentMapping = { [name in ICommonComponentName]?: any };
@@ -24,8 +24,12 @@ export interface IComponentOptimisationParams {
 type IComponentOptimisationOutput = Omit<IComponentOptimisationParams, "reportData" | "config">;
 
 export class ComponentOptimiser {
+  /** List of all used components as [authored_name]: [code_component_name] */
   private usedComponents: ICommonComponentMapping = {};
+  /** List of all unused components as [authored_name]: [code_component_name] */
   private unusedComponents: ICommonComponentMapping = {};
+  /** Manifest of component dependencies */
+  private manifest = COMPONENT_MANIFEST;
 
   private output: IComponentOptimisationOutput;
 
@@ -51,13 +55,13 @@ export class ComponentOptimiser {
   private listUsedComponents(reportData: IReportOutput["template_components"]["data"]) {
     const { implicit = [] } = this.params.config.components;
     // create a mapping of all used component names (generated from report and implicit config)
-    // additionally include any known implicit dependenciies
+    // additionally include any known implicit dependencies
     const usedComponentMapping: ICommonComponentMapping = {};
     const usedComponentNames = reportData.map((el) => el.type).concat(implicit);
     for (const componentName of usedComponentNames) {
       usedComponentMapping[componentName] = true;
       // Add additional implicit components from known manifest
-      for (const implicitName of ComponentManifest[componentName]?.implicit || []) {
+      for (const implicitName of this.manifest[componentName]?.implicit || []) {
         usedComponentMapping[implicitName] = true;
       }
     }
@@ -85,7 +89,11 @@ export class ComponentOptimiser {
     return unusedComponents;
   }
 
-  // TODO - add module tests
+  /**
+   * Handle component optimisation, removing unused component references from
+   * component index.ts and handling manifest knock-ons to remove imported modules
+   * or angular build assets as required
+   */
   private optimiseUnusedComponent(componentName: ICommonComponentName, importName: string) {
     let { angularBuildOptions, indexTs, moduleTs } = this.output;
 
@@ -93,7 +101,7 @@ export class ComponentOptimiser {
     indexTs = this.commentOutLinesContainingString(indexTs, importName);
 
     // handle knock-ons
-    const manifest = ComponentManifest[componentName];
+    const manifest = this.manifest[componentName];
     if (manifest) {
       const { assets, module } = manifest;
       // remove angular.json build assets
@@ -112,11 +120,12 @@ export class ComponentOptimiser {
     this.output = { angularBuildOptions, indexTs, moduleTs };
   }
 
-  // TODO - add tests
+  /** Take a multi-line source text and comment out any lines containing a given value */
   private commentOutLinesContainingString(sourceText: string, value: string) {
+    // create regex expression with capture group to match entire line containing value
     const regex = new RegExp(`(.*${value}.*)`, "g");
-    console.log(regex);
     for (const match of sourceText.matchAll(regex)) {
+      // replace matched line with commented out version
       sourceText = sourceText.replace(match[1], `// ${match[1]}`);
     }
     return sourceText;
