@@ -25,10 +25,8 @@ export class AppDataOptimiser {
     const { components } = this.config.optimisation;
     if (components) {
       await this.optimiseComponents();
+      await this.writeAngularJson();
     }
-    // ensure write of updated angular json regardless of any optimisations
-    // to make available to deployment
-    await this.writeAngularJson();
   }
 
   /** Load data from generated reports */

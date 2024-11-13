@@ -85,6 +85,7 @@ export class ComponentOptimiser {
     return componentsIndex;
   }
 
+  /** Update list of implicit dependencies that are known to typically cause issues */
   private hackAddCommonImplicitDependencies(usedComponentSelectors: string[]) {
     if (usedComponentSelectors.includes("display_group")) {
       usedComponentSelectors.push("form");
