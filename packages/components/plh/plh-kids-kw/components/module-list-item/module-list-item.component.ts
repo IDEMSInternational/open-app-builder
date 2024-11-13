@@ -9,7 +9,7 @@ import {
 interface IModuleListItemParams {
   /* TEMPLATE PARAMETER: "module_image_asset". The image attached to the module */
   moduleImageAsset: string | null;
-  /* TEMPLATE PARAMETER: "module_alignment". The alignment of elements within the module item. Default "large" */
+  /* TEMPLATE PARAMETER: "module_alignment". The alignment of elements within the module item. Default "left" */
   moduleAlignment: "left" | "right";
   /* TEMPLATE PARAMETER: "text_transform". The format of the text on the module item. Default null */
   textTransform: "capitalise" | "uppercase" | null;
