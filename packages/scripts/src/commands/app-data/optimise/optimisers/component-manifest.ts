@@ -13,7 +13,7 @@ export interface IComponentManifest {
  * List of components that are known to require specific changes to core build to function.
  * NOTE - this list is not comprehensive (should update as required)
  */
-export const ComponentManifest: {
+export const COMPONENT_MANIFEST: {
   [name in ICommonComponentName]?: IComponentManifest;
 } = {
   carousel: { module: "SwiperModule" },
