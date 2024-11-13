@@ -1,6 +1,6 @@
 import ANGULAR_JSON from "../../../../../../angular.json";
 
-export type { ICommonComponentName } from "../../../../../../src/app/shared/components/template/components";
+export type { IComponentManifest, ICommonComponentName } from "../../../../../components/types";
 
 /** Extracted type of settings found in angular.json projects.app.architect.build.options */
 export type IAngularBuildOptions =

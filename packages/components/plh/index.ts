@@ -6,7 +6,6 @@ import { TemplatePipesModule } from "src/app/shared/components/template/pipes";
 import { LottieModule } from "ngx-lottie";
 import { PlhParentPointCounterComponent } from "./parent-point-counter/parent-point-counter.component";
 import { PlhParentPointBoxComponent } from "./parent-point-box/parent-point-box.component";
-import { IComponentManifest } from "../types";
 
 @NgModule({
   imports: [CommonModule, IonicModule, TemplatePipesModule, LottieModule],
@@ -21,8 +20,4 @@ export const PLH_COMPONENT_MAPPING = {
   parent_point_box: PlhParentPointBoxComponent,
 };
 
-type PLHComponentName = keyof typeof PLH_COMPONENT_MAPPING;
-
-export const PLH_COMPONENT_MANIFEST: IComponentManifest<PLHComponentName> = {
-  parent_point_box: { implicit: ["lottie_animation"] },
-};
+export type PLHComponentName = keyof typeof PLH_COMPONENT_MAPPING;

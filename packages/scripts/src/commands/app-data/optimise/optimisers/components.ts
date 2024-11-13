@@ -1,7 +1,10 @@
-import { IDeploymentConfigJson } from "data-models";
+import type { IDeploymentConfigJson } from "data-models";
 import type { IReportOutput } from "../../report/report.types";
-import { IAngularBuildOptions, ICommonComponentName } from "../optimise.types";
-import { COMPONENT_MANIFEST } from "./component-manifest";
+import type {
+  IAngularBuildOptions,
+  ICommonComponentName,
+  IComponentManifest,
+} from "../optimise.types";
 
 /** Partial hashmap of named common components with their corresponding component class name */
 type ICommonComponentMapping = { [name in ICommonComponentName]?: any };
@@ -12,6 +15,8 @@ export interface IComponentOptimisationParams {
   angularBuildOptions: IAngularBuildOptions;
   /** parsed template components index file for modification */
   indexTs: string;
+  /** Manifest of component dependencies */
+  manifest: IComponentManifest;
   /** parsed template components module file for modification */
   moduleTs: string;
   /** parsed report template_components result */
@@ -21,15 +26,16 @@ export interface IComponentOptimisationParams {
 }
 
 // Optimised output is same as input but without reportData and config */
-type IComponentOptimisationOutput = Omit<IComponentOptimisationParams, "reportData" | "config">;
+type IComponentOptimisationOutput = Omit<
+  IComponentOptimisationParams,
+  "reportData" | "config" | "manifest"
+>;
 
 export class ComponentOptimiser {
   /** List of all used components as [authored_name]: [code_component_name] */
   private usedComponents: ICommonComponentMapping = {};
   /** List of all unused components as [authored_name]: [code_component_name] */
   private unusedComponents: ICommonComponentMapping = {};
-  /** Manifest of component dependencies */
-  private manifest = COMPONENT_MANIFEST;
 
   private output: IComponentOptimisationOutput;
 
@@ -61,7 +67,7 @@ export class ComponentOptimiser {
     for (const componentName of usedComponentNames) {
       usedComponentMapping[componentName] = true;
       // Add additional implicit components from known manifest
-      for (const implicitName of this.manifest[componentName]?.implicit || []) {
+      for (const implicitName of this.params.manifest[componentName]?.implicit || []) {
         usedComponentMapping[implicitName] = true;
       }
     }
@@ -101,7 +107,7 @@ export class ComponentOptimiser {
     indexTs = this.commentOutLinesContainingString(indexTs, importName);
 
     // handle knock-ons
-    const manifest = this.manifest[componentName];
+    const manifest = this.params.manifest[componentName];
     if (manifest) {
       const { assets, module } = manifest;
       // remove angular.json build assets
