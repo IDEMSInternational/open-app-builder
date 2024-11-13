@@ -16,7 +16,7 @@ export interface IComponentOptimisationParams {
   /** parsed template components index file for modification */
   indexTs: string;
   /** Manifest of component dependencies */
-  manifest: IComponentManifest;
+  manifest: IComponentManifest<string, string>;
   /** parsed template components module file for modification */
   moduleTs: string;
   /** parsed report template_components result */
@@ -32,7 +32,7 @@ type IComponentOptimisationOutput = Omit<
 >;
 
 export class ComponentOptimiser {
-  /** List of all used components as [authored_name]: [code_component_name] */
+  /** List of all used components as [authored_name]: true */
   private usedComponents: ICommonComponentMapping = {};
   /** List of all unused components as [authored_name]: [code_component_name] */
   private unusedComponents: ICommonComponentMapping = {};
