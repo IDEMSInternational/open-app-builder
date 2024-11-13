@@ -1,6 +1,6 @@
 import { IDeploymentConfigJson } from "data-models";
-import { ComponentOptimiser } from "./components";
-import { IAngularBuildOptions } from "../optimise.types";
+import { ComponentOptimiser, IComponentOptimisationParams } from "./components";
+import { IAngularBuildOptions, IComponentManifest } from "../optimise.types";
 import { IReportOutput } from "../../report/report.types";
 
 /*****************************************************************************
@@ -11,13 +11,23 @@ const MOCK_OPTIMISATION_CONFIG = (implicit: string[] = []) => {
   const optimisation: IDeploymentConfigJson["optimisation"] = {
     components: { enabled: true, implicit },
   };
-  return { optimisation } as IDeploymentConfigJson;
+  return optimisation;
 };
 
-const MOCK_ANGULAR_BUILD_OPTIONS = (options: Partial<IAngularBuildOptions> = { assets: [] }) =>
-  options as IAngularBuildOptions;
+const MOCK_ANGULAR_BUILD_OPTIONS = (
+  options: Partial<IAngularBuildOptions> = {
+    // mock a component that also populates files from node_modules to an assets folder
+    assets: [
+      {
+        glob: "**/*",
+        input: "node_modules/mockUnusedModuleAssets",
+        output: "/assets/comp-mock-unused",
+      },
+    ],
+  }
+) => options as IAngularBuildOptions;
 
-const MOCK_COMPONENTS_INDEX = `
+const MOCK_INDEX_TS = () => `
 import { MockUsedComponent } from ".";
 import { MockUnusedComponent } from ".";
 import { MockImplicitComponent } from ".";
@@ -38,7 +48,7 @@ const COMMON_COMPONENT_MAPPING = {
 `;
 
 // expected output (unused commented out)
-const MOCK_COMPONENTS_INDEX_OPTIMISED = `
+const MOCK_INDEX_TS_OPTIMISED = `
 import { MockUsedComponent } from ".";
 // import { MockUnusedComponent } from ".";
 import { MockImplicitComponent } from ".";
@@ -58,6 +68,36 @@ const COMMON_COMPONENT_MAPPING = {
 }
 `;
 
+const MOCK_MODULE_TS = () => `
+import {MockUnusedModule} from '.'
+imports:[
+  MockUnusedModule
+]
+`;
+
+const MOCK_MODULE_TS_OPTIMISED = `
+// import {MockUnusedModule} from '.'
+imports:[
+//   MockUnusedModule
+]
+`;
+
+const MOCK_COMPONENTS = {
+  mock_used: "MockUsedComponent",
+  mock_unused: "MockUnusedComponent",
+  mock_implicit: "MockImplicitComponent",
+};
+type IMockComponentName = keyof typeof MOCK_COMPONENTS;
+
+const MOCK_MANIFEST: IComponentManifest<IMockComponentName, IMockComponentName> = {
+  mock_used: {
+    implicit: ["mock_implicit"],
+  },
+  mock_unused: {
+    module: "MockUnusedModule",
+    assets: "/assets/comp-mock-unused",
+  },
+};
 const MOCK_REPORT_DATA: IReportOutput["template_components"]["data"] = [
   { type: "mock_used", count: 1 },
 ];
@@ -68,81 +108,55 @@ const MOCK_REPORT_DATA: IReportOutput["template_components"]["data"] = [
 
 /** yarn workspace scripts test -t optimisers/components.spec.ts */
 describe("optimise components - basic", () => {
+  let optimiser: ComponentOptimiser;
+  beforeEach(() => {
+    const params: IComponentOptimisationParams = {
+      angularBuildOptions: MOCK_ANGULAR_BUILD_OPTIONS(),
+      config: MOCK_OPTIMISATION_CONFIG(),
+      indexTs: MOCK_INDEX_TS(),
+      manifest: MOCK_MANIFEST,
+      moduleTs: MOCK_MODULE_TS(),
+      reportData: MOCK_REPORT_DATA,
+    };
+    optimiser = new ComponentOptimiser(params);
+  });
+  it("lists used components (including manifest implicit)", () => {
+    optimiser.run();
+    expect(optimiser["usedComponents"]).toEqual({ mock_used: true, mock_implicit: true });
+  });
+
   it("lists unused components", () => {
-    const config = MOCK_OPTIMISATION_CONFIG();
-    const optimiser = new ComponentOptimiser(config);
-    const res = optimiser["listUnusedComponents"](MOCK_REPORT_DATA, MOCK_COMPONENTS_INDEX);
-    expect(res).toEqual({
+    optimiser.run();
+    expect(optimiser["unusedComponents"]).toEqual({
       mock_unused: "MockUnusedComponent",
-      mock_implicit: "MockImplicitComponent",
     });
   });
 
+  it("includes implicit components defined in manifest", () => {
+    optimiser.run();
+    console.log("unused components", optimiser["unusedComponents"]);
+    expect(optimiser["unusedComponents"]).toEqual({ mock_unused: "MockUnusedComponent" });
+  });
+
   it("includes implicit components defined in config", () => {
-    const config = MOCK_OPTIMISATION_CONFIG(["mock_implicit"]);
-    const optimiser = new ComponentOptimiser(config);
-    const res = optimiser["listUnusedComponents"](MOCK_REPORT_DATA, MOCK_COMPONENTS_INDEX);
-    expect(res).toEqual({ mock_unused: "MockUnusedComponent" });
+    optimiser["params"].config.components.implicit = ["mock_unused"];
+    optimiser.run();
+    expect(optimiser["unusedComponents"]).toEqual({});
   });
 
   it("optimises component index", () => {
-    const config = MOCK_OPTIMISATION_CONFIG(["mock_implicit"]);
-    const optimiser = new ComponentOptimiser(config);
-    const res = optimiser["optimiseComponentsIndex"](
-      { mock_unused: "MockUnusedComponent" } as any,
-      MOCK_COMPONENTS_INDEX
-    );
-    expect(res).toEqual(MOCK_COMPONENTS_INDEX_OPTIMISED);
+    const { indexTs } = optimiser.run();
+    expect(indexTs).toEqual(MOCK_INDEX_TS_OPTIMISED);
   });
 
-  it("runs when called", () => {
-    const config = MOCK_OPTIMISATION_CONFIG(["mock_implicit"]);
-    const optimiser = new ComponentOptimiser(config);
-    const angularBuildOptions = MOCK_ANGULAR_BUILD_OPTIONS();
-    const componentsIndex = MOCK_COMPONENTS_INDEX;
-    const reportData = MOCK_REPORT_DATA;
-    const res = optimiser.run({ angularBuildOptions, componentsIndex, reportData });
-    expect(res.optimisedIndex).toEqual(MOCK_COMPONENTS_INDEX_OPTIMISED);
-    expect(res.optimisedBuildOptions).toEqual({ assets: [] });
+  it("optimises component module", () => {
+    const { moduleTs } = optimiser.run();
+    expect(moduleTs).toEqual(MOCK_MODULE_TS_OPTIMISED);
   });
-});
 
-/*****************************************************************************
- * Advanced Tests
- * Ensure specific functionality for advanced use-cases
- ****************************************************************************/
-// Use root angular json to ensure advanced test cases pass as expected
-import PROD_ANGULAR_JSON from "../../.././../../../../angular.json";
-
-const MOCK_COMPONENTS_INDEX_ADVANCED = `
-import { TmplPdfComponent } from ".";
-
-export const TEMPLATE_COMPONENTS = [
-  TmplPdfComponent
-]
-
-const COMMON_COMPONENT_MAPPING = {
-  /* optimise:components:start */
-  pdf: TmplPdfComponent,
-  /* optimise:components:end */
-}
-`;
-
-describe("optimise components - advanced", () => {
-  it("removes pdf component assets from angular config", () => {
-    const config = MOCK_OPTIMISATION_CONFIG(["mock_implicit"]);
-    const optimiser = new ComponentOptimiser(config);
-    const angularBuildOptions = PROD_ANGULAR_JSON.projects.app.architect.build.options;
-    // check pdfAssets defined in angular.json
-    const pdfAssets = angularBuildOptions.assets.find((v) => v.output === "/assets/comp-pdf");
-    expect(pdfAssets).toBeTruthy();
-    const componentsIndex = MOCK_COMPONENTS_INDEX_ADVANCED;
-    const reportData = [];
-    const res = optimiser.run({ angularBuildOptions, componentsIndex, reportData });
-    // check pdfAssets removed from optimised build
-    const pdfAssetsUpdated = res.optimisedBuildOptions.assets.find(
-      (v) => v.output === "/assets/comp-pdf"
-    );
-    expect(pdfAssetsUpdated).toBeUndefined();
+  it("optimises angular assets", () => {
+    const { angularBuildOptions } = optimiser.run();
+    console.log("angularBuildOpts", angularBuildOptions);
+    expect(angularBuildOptions).toEqual({ assets: [] });
   });
 });
