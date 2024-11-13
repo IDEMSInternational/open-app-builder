@@ -1,12 +1,12 @@
-import { NgModule, Type } from "@angular/core";
+import { NgModule } from "@angular/core";
 
-import type { ITemplateRowProps } from "src/app/shared/components/template/models";
 import { CommonModule } from "@angular/common";
 import { IonicModule } from "@ionic/angular";
 import { TemplatePipesModule } from "src/app/shared/components/template/pipes";
 import { LottieModule } from "ngx-lottie";
 import { PlhParentPointCounterComponent } from "./parent-point-counter/parent-point-counter.component";
 import { PlhParentPointBoxComponent } from "./parent-point-box/parent-point-box.component";
+import { IComponentManifest } from "../types";
 
 @NgModule({
   imports: [CommonModule, IonicModule, TemplatePipesModule, LottieModule],
@@ -16,7 +16,13 @@ import { PlhParentPointBoxComponent } from "./parent-point-box/parent-point-box.
 })
 export class PlhComponentsModule {}
 
-export const PLH_COMPONENT_MAPPING: Record<string, Type<ITemplateRowProps>> = {
+export const PLH_COMPONENT_MAPPING = {
   parent_point_counter: PlhParentPointCounterComponent,
   parent_point_box: PlhParentPointBoxComponent,
+};
+
+type PLHComponentName = keyof typeof PLH_COMPONENT_MAPPING;
+
+export const PLH_COMPONENT_MANIFEST: IComponentManifest<PLHComponentName> = {
+  parent_point_box: { implicit: ["lottie_animation"] },
 };
