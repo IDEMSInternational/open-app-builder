@@ -3,18 +3,19 @@ import { IDeploymentConfigJson } from "data-models";
 import { existsSync } from "fs";
 import { readFile, writeFile } from "fs/promises";
 import { resolve } from "path";
-import { deepMergeObjects, Logger, PATHS, ROOT_DIR, setNestedProperty } from "shared";
-import ANGULAR_JSON_TEMPLATE from "../../../../../../angular.base.json";
+import { format } from "prettier";
+import { Logger, PATHS, ROOT_DIR, setNestedProperty } from "shared";
+import ANGULAR_JSON_TEMPLATE from "../../../../../../angular.json";
 import type { IReportOutput } from "../report/report.types";
 
 import { ComponentOptimiser } from "./optimisers/components";
-import { IAngularBuildOptions } from "./optimise.types";
 
 const APP_DIR = resolve(PATHS.ROOT_DIR, "src", "app");
 
 export class AppDataOptimiser {
   private report: IReportOutput;
-  private angularBuildOptions = this.getAngularJsonBuildOptions();
+
+  private buildConfig = ANGULAR_JSON_TEMPLATE.projects.app.architect.build;
 
   constructor(private config: IDeploymentConfigJson) {}
 
@@ -23,16 +24,11 @@ export class AppDataOptimiser {
     // apply any configured optimisations
     const { components } = this.config.optimisation;
     if (components) {
-      this.optimiseComponents();
+      await this.optimiseComponents();
     }
     // ensure write of updated angular json regardless of any optimisations
     // to make available to deployment
     await this.writeAngularJson();
-  }
-
-  /** Retrieve base angular build options and return as new object */
-  private getAngularJsonBuildOptions(): IAngularBuildOptions {
-    return deepMergeObjects({}, ANGULAR_JSON_TEMPLATE.projects.app.architect.build.options);
   }
 
   /** Load data from generated reports */
@@ -60,19 +56,23 @@ export class AppDataOptimiser {
       encoding: "utf8",
     });
     // Optimise
-    const res = await new ComponentOptimiser(this.config).run({
+    const res = new ComponentOptimiser(this.config).run({
       reportData: this.report.template_components.data,
       componentsIndex,
-      angularBuildOptions: this.angularBuildOptions,
+      angularBuildOptions: this.buildConfig.options,
     });
     const { optimisedIndex, optimisedBuildOptions } = res;
+
     // Update angular build options with optimisations and file replacement
-    this.angularBuildOptions = optimisedBuildOptions;
-    // add component index override
-    this.angularBuildOptions.fileReplacements.push({
+    this.buildConfig.options = optimisedBuildOptions;
+
+    // Update angular file replacements to include deployment-specific
+    const deploymentIndexReplacement = {
       replace: "src/app/shared/components/template/components/index.ts",
       with: "src/app/shared/components/template/components/index.deployment.ts",
-    });
+    };
+    this.buildConfig.configurations.production.fileReplacements.push(deploymentIndexReplacement);
+
     // Write deployment index
     const outputPath = resolve(componentsDir, "index.deployment.ts");
     await writeFile(outputPath, optimisedIndex);
@@ -82,10 +82,16 @@ export class AppDataOptimiser {
   private async writeAngularJson() {
     const outputPath = resolve(ROOT_DIR, "angular.json");
     const mergedConfig = setNestedProperty(
-      "projects.app.architect.build.options",
-      this.angularBuildOptions,
+      "projects.app.architect.build",
+      this.buildConfig,
       ANGULAR_JSON_TEMPLATE
     );
-    await writeFile(outputPath, JSON.stringify(mergedConfig, null, 2));
+    const formattedText = await format(JSON.stringify(mergedConfig), {
+      parser: "json",
+      printWidth: 100,
+      endOfLine: "crlf",
+      trailingComma: "es5",
+    });
+    await writeFile(outputPath, formattedText);
   }
 }

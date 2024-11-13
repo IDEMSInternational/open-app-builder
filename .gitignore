@@ -97,4 +97,3 @@ ios/App/App/config.xml
 
 # Deployment-specific files
 src/**/*.deployment.ts
-angular.json
