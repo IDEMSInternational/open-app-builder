@@ -44,37 +44,48 @@ export class AppDataOptimiser {
   }
 
   /**
-   * Create optimised `index.deployment.ts` file for shared components, exporting only
-   * components that are used within sheets
+   * Create optimised template component `index.deployment.ts` and `template.module.ts` files,
+   * declaring only components used and modules required by those components
    */
   private async optimiseComponents() {
-    // Read default index
-    const componentsDir = resolve(APP_DIR, "shared", "components", "template", "components");
-    const componentsIndex = await readFile(resolve(componentsDir, "index.ts"), {
-      encoding: "utf8",
-    });
-    // Optimise
-    const res = new ComponentOptimiser(this.config).run({
+    const templatesDir = resolve(APP_DIR, "shared", "components", "template");
+
+    // Read default component indexTs and moduleTs files
+    const indexTsPath = resolve(templatesDir, "components", "index.ts");
+    const indexTs = await readFile(indexTsPath, { encoding: "utf8" });
+    const moduleTsPath = resolve(templatesDir, "template.module.ts");
+    const moduleTs = await readFile(moduleTsPath, { encoding: "utf8" });
+
+    // Optimise components
+    const angularBuildOptions = this.buildConfig.options;
+    const optimised = new ComponentOptimiser(this.config).run({
+      angularBuildOptions,
+      indexTs,
+      moduleTs,
       reportData: this.report.template_components.data,
-      componentsIndex,
-      angularBuildOptions: this.buildConfig.options,
     });
-    const { optimisedIndex, optimisedBuildOptions } = res;
 
-    // Update angular build options with optimisations and file replacement
-    this.buildConfig.options = optimisedBuildOptions;
+    // Write optimised outputs to file for override during production build
+    const indexTsTarget = resolve(templatesDir, "components", "index.deployment.ts");
+    await writeFile(indexTsTarget, optimised.indexTs);
+    const moduleTsTarget = resolve(templatesDir, "template.module.deployment.ts");
+    await writeFile(moduleTsTarget, optimised.moduleTs);
 
-    // Update angular file replacements to include deployment-specific
-    const deploymentIndexReplacement = {
+    const outputMsg = `Components optimisation written to\n${indexTsTarget}\n${moduleTsTarget}`;
+    console.log(chalk.gray(outputMsg));
+
+    // Update angular build options with optimisations and file replacement (written to file later)
+    const indexReplacement = {
       replace: "src/app/shared/components/template/components/index.ts",
       with: "src/app/shared/components/template/components/index.deployment.ts",
     };
-    this.buildConfig.configurations.production.fileReplacements.push(deploymentIndexReplacement);
-
-    // Write deployment index
-    const outputPath = resolve(componentsDir, "index.deployment.ts");
-    await writeFile(outputPath, optimisedIndex);
-    console.log(chalk.gray(`Components optimisation written to\n${outputPath}`));
+    const moduleReplacement = {
+      replace: "src/app/shared/components/template/template.module.ts",
+      with: "src/app/shared/components/template/template.module.deployment.ts",
+    };
+    this.buildConfig.configurations.production.fileReplacements.push(indexReplacement);
+    this.buildConfig.configurations.production.fileReplacements.push(moduleReplacement);
+    this.buildConfig.options = optimised.angularBuildOptions;
   }
 
   private async writeAngularJson() {
@@ -84,6 +95,7 @@ export class AppDataOptimiser {
       this.buildConfig,
       ANGULAR_JSON_TEMPLATE
     );
+    // format with prettier prior to write to reduce git diff
     const formattedText = await format(JSON.stringify(mergedConfig), {
       parser: "json",
       printWidth: 100,
