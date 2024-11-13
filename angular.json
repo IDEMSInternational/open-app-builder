@@ -24,7 +24,6 @@
                             "fonts": false,
                             "styles": false
                         },
-                        "fileReplacements": [],
                         "assets": [
                             {
                                 "glob": "**/*",
@@ -65,7 +64,8 @@
                             "vendorChunk": true,
                             "extractLicenses": false,
                             "sourceMap": true,
-                            "namedChunks": true
+                            "namedChunks": true,
+                            "fileReplacements": []
                         },
                         "production": {
                             "fileReplacements": [
