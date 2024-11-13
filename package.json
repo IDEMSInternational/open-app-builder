@@ -71,6 +71,7 @@
     "bootstrap-datepicker": "^1.10.0",
     "capacitor-blob-writer": "^1.1.17",
     "clone": "^2.1.2",
+    "components": "workspace:*",
     "core-js": "^3.33.3",
     "data-models": "workspace:*",
     "date-fns": "^2.30.0",

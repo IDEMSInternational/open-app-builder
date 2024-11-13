@@ -5,10 +5,12 @@ import { readFile, writeFile } from "fs/promises";
 import { resolve } from "path";
 import { format } from "prettier";
 import { Logger, PATHS, ROOT_DIR, setNestedProperty } from "shared";
+
 import ANGULAR_JSON_TEMPLATE from "../../../../../../angular.json";
 import type { IReportOutput } from "../report/report.types";
 
 import { ComponentOptimiser } from "./optimisers/components";
+import { TEMPLATE_COMPONENT_MANIFEST } from "../../../../../../src/app/shared/components/template/components/manifest";
 
 const APP_DIR = resolve(PATHS.ROOT_DIR, "src", "app");
 
@@ -62,6 +64,7 @@ export class AppDataOptimiser {
       angularBuildOptions,
       config: this.deploymentConfig.optimisation,
       indexTs,
+      manifest: TEMPLATE_COMPONENT_MANIFEST,
       moduleTs,
       reportData: this.report.template_components.data,
     });
