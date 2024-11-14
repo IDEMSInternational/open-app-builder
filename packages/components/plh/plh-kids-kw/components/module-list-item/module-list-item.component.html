@@ -1,27 +1,58 @@
 <div class="module-item" [attr.data-lock]="params.isLocked">
-  <div class="container" [attr.data-position]="params.moduleAlignment">
-    <div class="module-image">
-      <img [src]="params.moduleImageAsset | plhAsset" />
-    </div>
-    @if (_row.value) {
-      <div class="module-title">
-        <p [attr.data-variant]="params.textTransform">{{ _row.value }}</p>
-      </div>
-    }
-    @if (params.isLocked) {
-      <div class="locked">
-        <img class="icon" [src]="params.lockedImageAsset | plhAsset" />
-      </div>
-    } @else {
-      <div class="unlocked">
-        @if (params.targetTemplate !== null) {
-          <a class="nav-icon" [routerLink]="'template/' + params.targetTemplate">
-            <img class="icon" [src]="params.navImageAsset | plhAsset" />
+  @if (params.navItem && !params.isLocked) {
+    <div
+      class="container"
+      [attr.data-language-direction]="templateTranslateService.languageDirection()"
+      (click)="triggerActions('click')"
+    >
+      @if (params.moduleImageAsset) {
+        <div class="module-image">
+          <img [src]="params.moduleImageAsset | plhAsset" />
+        </div>
+      }
+      @if (_row.value) {
+        <div class="module-title">
+          <p [attr.data-variant]="params.textTransform">{{ _row.value }}</p>
+        </div>
+      }
+      @if (params.isLocked) {
+        <div class="locked">
+          <img class="icon" [src]="params.lockedImageAsset | plhAsset" />
+        </div>
+      } @else {
+        <div class="unlocked">
+          <a class="nav-icon">
+            <img
+              class="icon"
+              [attr.data-language-direction]="templateTranslateService.languageDirection()"
+              [src]="params.navImageAsset | plhAsset"
+            />
           </a>
-        } @else {
-          <div class="no-nav"></div>
-        }
-      </div>
-    }
-  </div>
+        </div>
+      }
+    </div>
+  } @else {
+    <div
+      class="container"
+      [attr.data-language-direction]="templateTranslateService.languageDirection()"
+    >
+      @if (params.moduleImageAsset) {
+        <div class="module-image">
+          <img [src]="params.moduleImageAsset | plhAsset" />
+        </div>
+      }
+      @if (_row.value) {
+        <div class="module-title">
+          <p [attr.data-variant]="params.textTransform">{{ _row.value }}</p>
+        </div>
+      }
+      @if (params.isLocked) {
+        <div class="locked">
+          <img class="icon" [src]="params.lockedImageAsset | plhAsset" />
+        </div>
+      } @else {
+        <div class="no-nav"></div>
+      }
+    </div>
+  }
 </div>
