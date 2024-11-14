@@ -293,13 +293,21 @@ body[data-theme="plh_kids_kw"] {
       .icon {
         width: 28px;
         max-width: unset;
+        &[data-language-direction~="rtl"] {
+          -webkit-transform: scaleX(-1);
+          transform: scaleX(-1);
+        }
       }
-      .container[data-position~="right"] {
-        display: flex;
-        flex-direction: row-reverse;
+      .container[data-language-direction~="rtl"] {
         .module-title {
           p {
             text-align: right;
+          }
+        }
+        .module-image {
+          img {
+            -webkit-transform: scaleX(-1);
+            transform: scaleX(-1);
           }
         }
       }
