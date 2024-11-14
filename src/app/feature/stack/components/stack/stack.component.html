@@ -1,0 +1,18 @@
+<ion-toolbar>
+  <!-- use mode="ios" to centre title within toolbar -->
+  <ion-title mode="ios">
+    <ion-icon name="rocket-outline"></ion-icon>
+    Modal
+  </ion-title>
+  <ion-buttons slot="end">
+    <ion-button (click)="close()">
+      <ion-icon name="close"></ion-icon>
+    </ion-button>
+  </ion-buttons>
+</ion-toolbar>
+<ion-content>
+  <plh-template-container
+    class="template-container"
+    [templatename]="templatename"
+  ></plh-template-container>
+</ion-content>
