@@ -6,6 +6,7 @@ import { Router } from "@angular/router";
 import { toSignal } from "@angular/core/rxjs-interop";
 import { ngRouterMergedSnapshot$ } from "src/app/shared/utils/angular.utils";
 import { isEqual } from "packages/shared/src/utils/object-utils";
+import { parseStringValue } from "src/app/shared/utils";
 
 /**
  * Service responsible for handling metadata of the current top-level template,
@@ -38,7 +39,10 @@ export class TemplateMetadataService extends SyncServiceBase {
         const parameterList = templateName
           ? await this.templateService.getTemplateMetadata(templateName)
           : {};
-        this.parameterList.set(parameterList);
+        const parsedParameterList: Record<string, any> = Object.fromEntries(
+          Object.entries(parameterList).map(([key, value]) => [key, parseStringValue(value)])
+        );
+        this.parameterList.set(parsedParameterList);
       },
       { allowSignalWrites: true }
     );
