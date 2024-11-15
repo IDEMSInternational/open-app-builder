@@ -6,7 +6,7 @@ import {
   setNestedProperty,
 } from "../../../utils";
 import { DefaultParser } from "./default.parser";
-import { isObjectLiteral, Logger } from "shared";
+import { isEmptyObjectDeep, isObjectLiteral, Logger } from "shared";
 
 export class DataListParser extends DefaultParser {
   postProcessRow(row: FlowTypes.Data_listRow) {
@@ -34,8 +34,11 @@ export class DataListParser extends DefaultParser {
     return row;
   }
 
-  public override postProcessFlow(flow: FlowTypes.Data_list): FlowTypes.Data_list {
-    flow.metadata = this.getFlowMetadata(flow);
+  public override postProcessFlow(flow: FlowTypes.Data_list) {
+    const metadata = this.getFlowMetadata(flow);
+    if (!isEmptyObjectDeep(metadata)) {
+      flow._metadata = metadata;
+    }
     return flow;
   }
 
@@ -45,20 +48,20 @@ export class DataListParser extends DefaultParser {
   }
 
   /** Assign column metadata from @metadata row if provided, or infer from data if not*/
-  private getFlowMetadata(flow: FlowTypes.Data_list) {
+  private getFlowMetadata(flow: FlowTypes.FlowTypeWithData) {
     const [firstRow] = flow.rows;
-    const metadata =
+    const initialMetadata =
       firstRow?.id === "@metadata"
         ? this.assignMetadataFromRow(firstRow)
         : this.inferMetadataFromData(flow.rows);
 
-    const errors = this.qualityCheckMetadata(metadata);
-    if (errors.length > 0) {
-      for (const error of errors) {
-        console.error(error);
+    const { metadata, warnings } = this.qualityCheckMetadata(initialMetadata);
+    if (warnings.length > 0) {
+      for (const warning of warnings) {
+        console.warn(warning);
       }
-      Logger.error({
-        msg1: `[${flow.flow_name}] Data List validation has (${errors.length}) errors`,
+      Logger.warning({
+        msg1: `[${flow.flow_name}] Data List validation has (${warnings.length}) warnings`,
         msg2: flow._xlsxPath,
       });
     }
@@ -69,26 +72,30 @@ export class DataListParser extends DefaultParser {
   private assignMetadataFromRow(metadataRow: FlowTypes.Data_listRow) {
     // do not extract metadata for id column
     const { id, ...values } = metadataRow;
-    const metadata: FlowTypes.Data_list["metadata"] = {};
+    const metadata: FlowTypes.Data_list["_metadata"] = {};
     for (const [field, metadataString] of Object.entries(values)) {
-      metadata[field] = parseAppDataCollectionString(metadataString as string) as any;
+      if (metadataString) {
+        metadata[field] = parseAppDataCollectionString(metadataString as string) as any;
+      }
     }
     return metadata;
   }
 
   /** Infer data_list metadata from data */
   private inferMetadataFromData(rows: FlowTypes.Data_listRow[]) {
-    const metadata: FlowTypes.Data_list["metadata"] = {};
+    const metadata: FlowTypes.Data_list["_metadata"] = {};
     for (const row of rows) {
       // do not extract metadata for id column
       const { id, ...values } = row;
       for (const [field, value] of Object.entries(values)) {
-        if (!metadata[field]) {
-          metadata[field] = { type: undefined };
-        }
-        // only assign type if previously unassigned
-        if (!metadata[field].type) {
-          metadata[field].type = this.inferColumnDataType(value);
+        // do not assign type to other metadata columns
+        if (!field.startsWith("_")) {
+          // only assign type if previously unassigned
+          if (!metadata[field]?.type) {
+            const inferredType = this.inferColumnDataType(value);
+            metadata[field] ??= {};
+            metadata[field].type = inferredType;
+          }
         }
       }
     }
@@ -104,16 +111,25 @@ export class DataListParser extends DefaultParser {
     return undefined;
   }
 
-  private qualityCheckMetadata(metadata: FlowTypes.Data_list["metadata"]) {
-    const errors: string[] = [];
+  private qualityCheckMetadata(metadata: FlowTypes.Data_list["_metadata"]) {
+    const warnings: string[] = [];
     for (const [columnName, columnMetadata] of Object.entries(metadata)) {
-      // ensure all columns have data type
-      if (columnMetadata.type === undefined) {
-        errors.push(
-          `"${columnName}" column cannot infer type\nEither include an @metadata column or add example value to a row`
-        );
+      // omit metadata for string or undefined types, will used default "string" at runtime
+      if (columnMetadata.type === "string" || columnMetadata.type === undefined) {
+        delete metadata[columnName];
       }
+
+      /**
+       * TODO - consider whether check below actually useful to have
+       * ensure all columns have data type
+       */
+      // if (columnMetadata.type === undefined) {
+      //   metadata[columnName].type = "string";
+      //   warnings.push(
+      //     `"${columnName}" column cannot infer type (assume string)\nEither include an @metadata column or add example value to a row`
+      //   );
+      // }
     }
-    return errors;
+    return { warnings, metadata };
   }
 }
