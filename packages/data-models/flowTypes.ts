@@ -74,9 +74,25 @@ export namespace FlowTypes {
     flow_type: "asset_pack";
     rows: Data_listRow<IAssetEntry>[];
   }
+
+  /**
+   * Data types supported within data_lists
+   * These are a subset of types provided by Json Schema standards
+   * https://json-schema.org/draft/2020-12/json-schema-core#name-instance-data-model
+   *  */
+  export type Data_listColumnType = "boolean" | "number" | "object" | "string";
+
+  export interface Data_listColumnMetadata {
+    type: Data_listColumnType;
+  }
+
   export interface Data_list extends FlowTypeWithData {
     flow_type: "data_list";
     rows: Data_listRow[];
+    /** Hashmap of metadata for each data column */
+    metadata: {
+      [column_name: string]: Data_listColumnMetadata;
+    };
   }
   export interface DataPipeFlow extends FlowTypeWithData {
     flow_type: "data_pipe";
