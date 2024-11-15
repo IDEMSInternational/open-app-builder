@@ -353,6 +353,30 @@ export function parseBoolean(val: any): boolean {
 }
 
 /**
+ * Take an input string value and attempt to parse as native data type, including
+ * numeric, boolean, null and undefined string representations.
+ * Copied from packages/shared/src/utils/string-utils.ts
+ */
+export function parseStringValue(v: string): any {
+  // return non-string and empty string as-is
+  if (typeof v !== "string") return v;
+  if (!v) return v;
+  v = v.trim();
+  // attempt to parse as number if possible and return if valid
+  // https://stackoverflow.com/questions/175739/how-can-i-check-if-a-string-is-a-valid-number
+  if (!isNaN(v as any)) return Number(v);
+  // attempt to parse as boolean and return if matched
+  if (v.match(/^true$/gi)) return true;
+  if (v.match(/^false$/gi)) return false;
+  // attempt to parse null and undefined string representations and return if matched
+  if (v.match(/^null$/gi)) return null;
+  if (v.match(/^undefined$/gi)) return undefined;
+  // attempt to parse quoted (keep string representation)
+  if (v.match(/^"[a-z0-9.]*"$/gi)) return v.replace(/"/g, "");
+  return v;
+}
+
+/**
  * Convert a string to an integer hashcode (note, may be positive or negative)
  * https://stackoverflow.com/questions/7616461/generate-a-hash-from-string-in-javascript
  * https://gist.github.com/hyamamoto/fd435505d29ebfa3d9716fd2be8d42f0
