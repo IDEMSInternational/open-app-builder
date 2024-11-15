@@ -83,14 +83,15 @@ export namespace FlowTypes {
   export type Data_listColumnType = "boolean" | "number" | "object" | "string";
 
   export interface Data_listColumnMetadata {
-    type: Data_listColumnType;
+    /** Column data type. Default "string" when not defined */
+    type?: Data_listColumnType;
   }
 
   export interface Data_list extends FlowTypeWithData {
     flow_type: "data_list";
     rows: Data_listRow[];
-    /** Hashmap of metadata for each data column */
-    metadata: {
+    /** Hashmap of any additional column metadata (omitted if all columns default string type) */
+    _metadata?: {
       [column_name: string]: Data_listColumnMetadata;
     };
   }
