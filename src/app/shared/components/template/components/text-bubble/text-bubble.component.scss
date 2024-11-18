@@ -3,6 +3,14 @@
 // NOTE - when copying css border-image double-slash // misinterpreted so replace with / 0 /
 
 $imageSize: 64px;
+$bubble-background-color-1: var(--text-bubble-background-color-1, var(--ion-color-primary-200));
+$bubble-border-color-1: var(--text-bubble-border-color-1, var(--ion-color-primary-500));
+$bubble-background-color-2: var(--text-bubble-background-color-2, var(--ion-color-secondary-200));
+$bubble-border-color-2: var(--text-bubble-border-color-2, var(--ion-color-secondary-500));
+$bubble-background-color-3: var(--text-bubble-background-color-3, var(--ion-color-primary-200));
+$bubble-border-color-3: var(--text-bubble-border-color-3, var(--ion-color-primary-500));
+$bubble-background-color-4: var(--text-bubble-background-color-4, var(--ion-color-secondary-200));
+$bubble-border-color-4: var(--text-bubble-border-color-4, var(--ion-color-secondary-500));
 
 .container {
   position: relative;
@@ -20,27 +28,27 @@ $imageSize: 64px;
   }
 
   &[data-variant~="primary"] {
-    --background-color: var(--ion-color-primary-200);
-    --border-color: var(--ion-color-primary-500);
+    --background-color: #{$bubble-background-color-1};
+    --border-color: #{$bubble-border-color-1};
   }
 
   &[data-variant~="secondary"] {
-    --background-color: var(--ion-color-secondary-200);
-    --border-color: var(--ion-color-secondary-500);
+    --background-color: #{$bubble-background-color-2};
+    --border-color: #{$bubble-border-color-2};
   }
 
   &[data-variant~="no_border"] {
     --border-color: transparent;
   }
 
-  &[data-variant~="accent-1"] {
-    --background-color: var(--ion-color-primary-200);
-    --border-color: var(--ion-color-primary-500);
+  &[data-variant~="tertiary"] {
+    --background-color: #{$bubble-background-color-3};
+    --border-color: #{$bubble-border-color-3};
   }
 
-  &[data-variant~="accent-2"] {
-    --background-color: var(--ion-color-secondary-200);
-    --border-color: var(--ion-color-secondary-500);
+  &[data-variant~="quaternary"] {
+    --background-color: #{$bubble-background-color-4};
+    --border-color: #{$bubble-border-color-4};
   }
 }
 
