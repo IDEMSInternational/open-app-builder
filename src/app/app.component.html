@@ -1,67 +1,67 @@
-<ion-app
-  *ngIf="renderAppTemplates"
-  contentId="main"
-  [attr.data-platform]="platforms"
-  [dir]="templateTranslateService.languageDirection()"
->
-  <!-- Left Sidebar -->
-  <ion-menu
-    *ngIf="sideMenuDefaults.enabled"
-    #menu
-    side="start"
-    menuId="main-side-menu"
-    contentId="main-content"
+@if (renderAppTemplates()) {
+  <ion-app
+    contentId="main"
+    [attr.data-platform]="platforms"
+    [dir]="templateTranslateService.languageDirection()"
   >
-    <ion-header>
-      <ion-toolbar color="primary">
-        <ion-title>{{ sideMenuDefaults.title }}</ion-title>
-        <div class="app-version" slot="end">
-          @if (sideMenuDefaults.should_show_version) {
-            @if (deploymentConfig._content_version; as CONTENT_VERSION) {
-              <span>
-                <abbr [title]="deploymentConfig._app_builder_version" tabindex="1">
-                  {{ CONTENT_VERSION }}
-                </abbr>
-              </span>
-            } @else {
-              <span>{{ deploymentConfig._app_builder_version }} </span>
-            }
-          }
-          <span *ngIf="sideMenuDefaults.should_show_deployment_name" style="margin-left: 16px"
-            >({{ deploymentConfig.name }})</span
-          >
-        </div>
-      </ion-toolbar>
-    </ion-header>
-    <ion-content>
-      <plh-template-container
-        [templatename]="sideMenuDefaults.template_name"
-        (click)="menu.close()"
-        [ignoreQueryParamChanges]="true"
-      ></plh-template-container>
-    </ion-content>
-  </ion-menu>
-  <!-- Main content: shows in split-pane when sidebar route active -->
-  <ion-split-pane when="lg" contentId="main" [disabled]="!sidebarRouter.isActivated">
-    <div style="display: flex; flex-direction: column; height: 100%; width: 100%" id="main">
-      <plh-main-header></plh-main-header>
-      <div class="route-container">
-        <ion-router-outlet id="main-content"></ion-router-outlet>
-      </div>
-      <ion-footer *ngIf="footerDefaults.templateName">
-        <ion-toolbar color="primary">
+    <!-- Left Sidebar -->
+    @if (sideMenuDefaults().enabled) {
+      <ion-menu #menu side="start" menuId="main-side-menu" contentId="main-content">
+        <ion-header>
+          <ion-toolbar color="primary">
+            <ion-title>{{ sideMenuDefaults().title }}</ion-title>
+            <div class="app-version" slot="end">
+              @if (sideMenuDefaults().should_show_version) {
+                @if (deploymentConfig._content_version; as CONTENT_VERSION) {
+                  <span>
+                    <abbr [title]="deploymentConfig._app_builder_version" tabindex="1">
+                      {{ CONTENT_VERSION }}
+                    </abbr>
+                  </span>
+                } @else {
+                  <span>{{ deploymentConfig._app_builder_version }} </span>
+                }
+              }
+              @if (sideMenuDefaults().should_show_deployment_name) {
+                <span style="margin-left: 16px">({{ deploymentConfig.name }})</span>
+              }
+            </div>
+          </ion-toolbar>
+        </ion-header>
+        <ion-content>
           <plh-template-container
-            [templatename]="footerDefaults.templateName"
+            [templatename]="sideMenuDefaults().template_name"
+            (click)="menu.close()"
             [ignoreQueryParamChanges]="true"
           ></plh-template-container>
-        </ion-toolbar>
-      </ion-footer>
-    </div>
-    <!-- Sidebar router -->
-    <ion-menu id="sidebar" contentId="main-content" side="end" swipeGesture="false">
-      <div id="sidebar-content">
-        <router-outlet name="sidebar" #sidebarRouter="outlet"></router-outlet>
+        </ion-content>
+      </ion-menu>
+    }
+
+    <!-- Main content: shows in split-pane when sidebar route active -->
+    <ion-split-pane when="lg" contentId="main" [disabled]="!sidebarRouter.isActivated">
+      <div style="display: flex; flex-direction: column; height: 100%; width: 100%" id="main">
+        <plh-main-header></plh-main-header>
+        <div class="route-container">
+          <ion-router-outlet id="main-content"></ion-router-outlet>
+        </div>
+        @if (footerDefaults().templateName; as footerTemplateName) {
+          <ion-footer>
+            <ion-toolbar color="primary">
+              <plh-template-container
+                [templatename]="footerTemplateName"
+                [ignoreQueryParamChanges]="true"
+              ></plh-template-container>
+            </ion-toolbar>
+          </ion-footer>
+        }
       </div>
-    </ion-menu>
-  </ion-split-pane>
-</ion-app>
+      <!-- Sidebar router -->
+      <ion-menu id="sidebar" contentId="main-content" side="end" swipeGesture="false">
+        <div id="sidebar-content">
+          <router-outlet name="sidebar" #sidebarRouter="outlet"></router-outlet>
+        </div>
+      </ion-menu>
+    </ion-split-pane>
+  </ion-app>
+}
