@@ -36,6 +36,6 @@ export class TemplateAppConfigService extends SyncServiceBase {
     if (currentSkin.appConfig) {
       overrides = deepMergeObjects({}, currentSkin.appConfig, overrides);
     }
-    this.appConfigService.setAppConfig(overrides, false);
+    this.appConfigService.setAppConfig(overrides);
   }
 }
