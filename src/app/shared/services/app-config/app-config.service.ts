@@ -71,11 +71,8 @@ export class AppConfigService extends SyncServiceBase {
   /**
    * Generate a complete app config by deep-merging app config overrides
    * with the initial config
-   * @param ignoreEmptyOverrides – Set to false in order to allow empty debug to "reset" app config
    */
-  public setAppConfig(overrides: IAppConfigOverride = {}, ignoreEmptyOverrides = true) {
-    // Ignore case where no overrides provides or overrides already applied
-    if (ignoreEmptyOverrides && Object.keys(overrides).length === 0) return;
+  public setAppConfig(overrides: IAppConfigOverride = {}) {
     const mergedConfig = deepMergeObjects({} as IAppConfig, this.initialConfig, overrides);
     this.handleConfigSideEffects(overrides, mergedConfig);
     this.appConfig.set(mergedConfig);
