@@ -20,9 +20,14 @@ export class TemplateAppConfigService extends SyncServiceBase {
     private skinService: SkinService
   ) {
     super("TemplateAppConfig");
-    effect(async () => {
-      this.applyAppConfigOverrides(this.templateMetadataService.parameterList()?.app_config);
-    });
+    effect(
+      async () => {
+        const templateAppConfigOverrides = this.templateMetadataService.parameterList()
+          .app_config as RecursivePartial<IAppConfig>;
+        this.applyAppConfigOverrides(templateAppConfigOverrides);
+      },
+      { allowSignalWrites: true }
+    );
   }
 
   applyAppConfigOverrides(overrides: RecursivePartial<IAppConfig> = {}) {
@@ -31,6 +36,6 @@ export class TemplateAppConfigService extends SyncServiceBase {
     if (currentSkin.appConfig) {
       overrides = deepMergeObjects({}, currentSkin.appConfig, overrides);
     }
-    this.appConfigService.setAppConfig(overrides);
+    this.appConfigService.setAppConfig(overrides, false);
   }
 }

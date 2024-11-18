@@ -6,9 +6,11 @@ import {
   HostBinding,
   Injector,
   Input,
+  OnChanges,
   OnDestroy,
   OnInit,
   Output,
+  SimpleChanges,
 } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
 import { takeUntil } from "rxjs/operators";
@@ -37,7 +39,9 @@ let log_groupEnd = SHOW_DEBUG_LOGS ? console.groupEnd : () => null;
  * - Track dynamic variable dependency (to know when to trigger row change based on set_local/field/global events)
  * - Consider case of template container re-render (some draft cached code exists, but not sure if this is a valid use-case or not)
  */
-export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateContainerProps {
+export class TemplateContainerComponent
+  implements OnChanges, OnInit, OnDestroy, ITemplateContainerProps
+{
   /** unique instance_name of template if created as a child of another template */
   @Input() name: string;
   /** flow_name of template for lookup */
@@ -91,6 +95,12 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
       this.templateRowService.setLogging(true);
     }
     await this.renderTemplate();
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes.templatename) {
+      this.forceRerender(true);
+    }
   }
 
   ngOnDestroy(): void {
