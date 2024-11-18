@@ -47,11 +47,12 @@ export class SkinService extends SyncServiceBase {
   public setSkin(skinName: string, isInit = false) {
     if (this.availableSkins.hasOwnProperty(skinName)) {
       const targetSkin = this.availableSkins[skinName];
-      console.log("[SKIN] SET", { targetSkin });
-      // A skin can just have a name, with no associated overrides
-      if (targetSkin.appConfig) {
-        this.applySkinOverride(targetSkin.appConfig);
-      }
+
+      const override = this.generateOverrideConfig(targetSkin);
+      const revert = this.generateRevertConfig(targetSkin);
+      console.log("[SKIN] SET", { targetSkin, override, revert });
+      this.appConfigService.setAppConfig(override);
+      this.revertOverride = revert;
       this.currentSkin = targetSkin;
 
       if (!isInit) {
@@ -75,35 +76,27 @@ export class SkinService extends SyncServiceBase {
     return this.localStorageService.getProtected("APP_SKIN");
   }
 
-  private applySkinOverride(appConfig: RecursivePartial<IAppConfig>) {
-    const override = this.generateOverrideConfig(appConfig);
-    const revert = this.generateRevertConfig(appConfig);
-    this.appConfigService.setAppConfig(override);
-    console.log("[SKIN] Apply override", { override, revert });
-    this.revertOverride = revert;
-  }
-
   /**
    * Skin overrides are designed to be merged on top of the default app config
    * When applying a new skin calculate the config changes required to both
    * revert any previous skin override and apply new
    */
-  private generateOverrideConfig(appConfig: RecursivePartial<IAppConfig>) {
+  private generateOverrideConfig(skin: IAppSkin) {
     // Merge onto new object to avoid changing stored revertOverride
     const base: RecursivePartial<IAppConfig> = {};
-    return deepMergeObjects(base, this.revertOverride, appConfig);
+    return deepMergeObjects(base, this.revertOverride, skin.appConfig);
   }
 
   /** Determine config that would need to be applied to revert the new update */
-  private generateRevertConfig(appConfig: RecursivePartial<IAppConfig>) {
+  private generateRevertConfig(skin: IAppSkin) {
     const revert: RecursivePartial<IAppConfig> = {};
     const config = this.appConfigService.appConfig();
-    for (const key of Object.keys(appConfig || {})) {
+    for (const key of Object.keys(skin.appConfig || {})) {
       // When reverting the skin, should target the current config value unless
       // previously overridden (in which case target initial value)
       const revertTarget = deepMergeObjects({}, config[key], this.revertOverride[key]);
       // Track what has changed to be able to revert back in future
-      revert[key] = updatedDiff(appConfig[key], revertTarget);
+      revert[key] = updatedDiff(skin.appConfig[key], revertTarget);
     }
     return revert;
   }
