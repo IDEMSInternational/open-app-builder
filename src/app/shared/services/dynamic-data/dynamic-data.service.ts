@@ -107,7 +107,6 @@ export class DynamicDataService extends AsyncServiceBase {
     return firstValueFrom(obs);
   }
 
-  /** */
   public async update<T>(
     flow_type: FlowTypes.FlowType,
     flow_name: string,
