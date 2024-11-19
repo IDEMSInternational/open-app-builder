@@ -55,7 +55,6 @@ class DynamicDataActionFactory {
     if (isObjectLiteral(params)) {
       const parsed = this.hackParseTemplatedParams(params);
       let { _updates, _list_id } = parsed;
-      console.log("params", { params, parsed });
       // handle parse from item reference string
       if (_list_id) {
         if (!_updates) {
