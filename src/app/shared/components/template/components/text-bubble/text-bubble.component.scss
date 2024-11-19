@@ -3,6 +3,10 @@
 // NOTE - when copying css border-image double-slash // misinterpreted so replace with / 0 /
 
 $imageSize: 64px;
+$bubble-background-color-3: var(--text-bubble-background-color-3, --ion-color-primary-200);
+$bubble-border-color-3: var(--text-bubble-border-color-3, --ion-color-primary-500);
+$bubble-background-color-4: var(--text-bubble-background-color-4, --ion-color-secondary-200);
+$bubble-border-color-4: var(--text-bubble-border-color-4, --ion-color-secondary-500);
 
 .container {
   position: relative;
@@ -33,14 +37,14 @@ $imageSize: 64px;
     --border-color: transparent;
   }
 
-  &[data-variant~="accent-1"] {
-    --background-color: var(--ion-color-primary-200);
-    --border-color: var(--ion-color-primary-500);
+  &[data-variant~="speaker-3"] {
+    --background-color: #{$bubble-background-color-3};
+    --border-color: #{$bubble-border-color-3};
   }
 
-  &[data-variant~="accent-2"] {
-    --background-color: var(--ion-color-secondary-200);
-    --border-color: var(--ion-color-secondary-500);
+  &[data-variant~="speaker-4"] {
+    --background-color: #{$bubble-background-color-4};
+    --border-color: #{$bubble-background-color-4};
   }
 }
 
