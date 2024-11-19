@@ -2,14 +2,17 @@ import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
+  computed,
   EventEmitter,
   Input,
   OnDestroy,
   OnInit,
   Output,
+  signal,
 } from "@angular/core";
 import { TaskService } from "src/app/shared/services/task/task.service";
 import {
+  filterObjectByKeys,
   getBooleanParamFromTemplateRow,
   getStringParamFromTemplateRow,
 } from "src/app/shared/utils";
@@ -17,6 +20,8 @@ import { TemplateBaseComponent } from "../base";
 import { IProgressStatus } from "src/app/shared/services/task/task.service";
 import { Subscription, debounceTime } from "rxjs";
 import { DynamicDataService } from "src/app/shared/services/dynamic-data/dynamic-data.service";
+import { validItemOperations } from "../../processors/itemPipe";
+import { ItemProcessor } from "../../processors/item";
 
 interface ITaskProgressBarParams {
   /**
@@ -76,15 +81,19 @@ export class TmplTaskProgressBarComponent
   @Input() progressStatus: IProgressStatus;
   @Input() progressUnitsName: string;
   @Input() showText: boolean;
+  @Input() parameterList: any;
   @Output() progressStatusChange = new EventEmitter<IProgressStatus>();
   @Output() newlyCompleted = new EventEmitter<boolean>();
   params: Partial<ITaskProgressBarParams> = {};
-  dataRows: any[];
+  dataRows = signal<any[]>([]);
+  processedDataRows = computed(() => this.processDataRows(this.dataRows()));
   subtasksTotal: number;
   subtasksCompleted: number;
   standalone: boolean = false;
   useDynamicData: boolean;
   private dataQuery$: Subscription;
+  itemRowOperations: Partial<Pick<{ [param: string]: string }, string>>;
+  itemProcessor: ItemProcessor;
 
   constructor(
     private cdr: ChangeDetectorRef,
@@ -131,6 +140,7 @@ export class TmplTaskProgressBarComponent
         "completed_field_column_name",
         "completed_field"
       );
+      this.configureItemProcessor(this._row.parameter_list);
     }
     // If component is being instantiated by a parent component (e.g. task-card), use Input() values for params.
     else {
@@ -140,26 +150,43 @@ export class TmplTaskProgressBarComponent
       this.params.showText = this.showText;
       this.params.completedColumnName = "completed";
       this.params.completedFieldColumnName = "completed_field";
+      this.configureItemProcessor(this.parameterList);
     }
+    console.log("itemRowOperations", this.itemRowOperations);
   }
 
   get progressPercentage() {
     return (this.subtasksCompleted / this.subtasksTotal) * 100;
   }
 
+  // Apply any item row operations, e.g. filter, if supplied to component
+  private processDataRows(dataRows: any[]) {
+    if (this.itemProcessor) {
+      return this.itemProcessor.pipeData(dataRows, this.itemRowOperations);
+    }
+    return dataRows;
+  }
+
+  private configureItemProcessor(parameterList: any) {
+    this.itemRowOperations = filterObjectByKeys(parameterList, validItemOperations);
+    if (Object.keys(this.itemRowOperations).length > 0) {
+      this.itemProcessor = new ItemProcessor();
+    }
+  }
+
   private async getTaskGroupDataRows() {
     await this.taskService.ready();
-    this.dataRows = await this.taskService.getTaskGroupDataRows(this.params.dataListName);
+    this.dataRows.set(await this.taskService.getTaskGroupDataRows(this.params.dataListName));
   }
 
   private checkAndSetUseDynamicData() {
-    this.useDynamicData = this.dataRows?.[0]?.hasOwnProperty(this.params.completedColumnName);
+    this.useDynamicData = this.dataRows()?.[0]?.hasOwnProperty(this.params.completedColumnName);
   }
 
   private async evaluateTaskGroupData() {
     const previousProgressStatus = this.progressStatus;
     const { subtasksTotal, subtasksCompleted, progressStatus, newlyCompleted } =
-      await this.taskService.evaluateTaskGroupData(this.dataRows, {
+      await this.taskService.evaluateTaskGroupData(this.processedDataRows(), {
         completedColumnName: this.params.completedColumnName,
         completedField: this.params.completedField,
         completedFieldColumnName: this.params.completedFieldColumnName,
@@ -186,7 +213,7 @@ export class TmplTaskProgressBarComponent
       await this.dynamicDataService.ready();
       const query = await this.dynamicDataService.query$("data_list", this.params.dataListName);
       this.dataQuery$ = query.pipe(debounceTime(50)).subscribe(async (data) => {
-        this.dataRows = data;
+        this.dataRows.set(data);
         await this.evaluateTaskGroupData();
       });
     }
