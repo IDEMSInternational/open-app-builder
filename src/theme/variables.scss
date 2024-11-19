@@ -40,9 +40,6 @@
 
   // Default content should fit full width, but limit to desktop breakpoint width
   --content-max-width: 100vw;
-  @include breakpoints.desktop {
-    --content-max-width: #{map-get(breakpoints.$sizes, "desktop")};
-  }
 
   // Header
   // Default value, overridden programmatically by header component
