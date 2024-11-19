@@ -14,7 +14,10 @@ export class ItemDataPipe {
     return data;
   }
 
-  private operations = {
+  private operations: Record<
+    (typeof validItemOperations)[number],
+    (items: any[], arg?: string) => any
+  > = {
     shuffle: (items: any[] = []) => {
       return shuffleArray(items);
     },
@@ -39,3 +42,5 @@ export class ItemDataPipe {
     },
   };
 }
+
+export const validItemOperations = ["shuffle", "sort", "filter", "reverse", "limit"];
