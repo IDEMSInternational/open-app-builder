@@ -137,7 +137,13 @@ $imageSize: 64px;
   left: 78px;
   color: var(--ion-color-gray-700);
 }
-.container[data-position="right"] .speaker-name {
-  text-align: right;
-  right: 80px;
+.container[data-position="right"] {
+  .speaker-name {
+    text-align: right;
+    right: 80px;
+  }
+  img.speaker-image {
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+  }
 }
