@@ -1,5 +1,5 @@
 <div class="module-item" [attr.data-lock]="params.isLocked">
-  @if (params.navItem && !params.isLocked) {
+  @if (!params.isLocked) {
     <div
       class="container"
       [attr.data-language-direction]="templateTranslateService.languageDirection()"
@@ -15,20 +15,12 @@
           <p [attr.data-variant]="params.textTransform">{{ _row.value }}</p>
         </div>
       }
-      @if (params.isLocked) {
-        <div class="locked">
-          <img class="icon" [src]="params.lockedImageAsset | plhAsset" />
+      @if (params.navImageAsset !== null) {
+        <div class="nav-icon">
+          <img class="icon" [src]="params.navImageAsset | plhAsset" />
         </div>
       } @else {
-        <div class="unlocked">
-          <a class="nav-icon">
-            <img
-              class="icon"
-              [attr.data-language-direction]="templateTranslateService.languageDirection()"
-              [src]="params.navImageAsset | plhAsset"
-            />
-          </a>
-        </div>
+        <div class="no-nav"></div>
       }
     </div>
   } @else {
@@ -46,7 +38,7 @@
           <p [attr.data-variant]="params.textTransform">{{ _row.value }}</p>
         </div>
       }
-      @if (params.isLocked) {
+      @if (params.lockedImageAsset !== null) {
         <div class="locked">
           <img class="icon" [src]="params.lockedImageAsset | plhAsset" />
         </div>

@@ -12,8 +12,6 @@ interface IModuleListItemParams {
   moduleImageAsset: string | null;
   /* TEMPLATE PARAMETER: "text_transform". The format of the text on the module item. Default null */
   textTransform: "capitalise" | "uppercase" | null;
-  /* TEMPLATE PARAMETER: "is_nav_item". Marks an item as navigable  in order to show the navigation image asset. Default "true"  */
-  navItem: boolean;
   /* TEMPLATE PARAMETER: "is_locked". The boolean that marks the module as locked or unlocked */
   isLocked: boolean;
   /* TEMPLATE PARAMETER: "nav_image_asset". The navigation icon*/
@@ -47,7 +45,6 @@ export class PlhModuleListItemComponent extends TemplateBaseComponent implements
     this.params.textTransform = getStringParamFromTemplateRow(this._row, "text_transform", null) as
       | "capitalise"
       | "uppercase";
-    this.params.navItem = getBooleanParamFromTemplateRow(this._row, "is_nav_item", true);
     this.params.isLocked = getBooleanParamFromTemplateRow(this._row, "is_locked", false);
     this.params.navImageAsset = getStringParamFromTemplateRow(this._row, "nav_image_asset", null);
     this.params.lockedImageAsset = getStringParamFromTemplateRow(
