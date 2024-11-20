@@ -77,16 +77,23 @@ export class TmplTaskProgressBarComponent
 {
   @Input() dataListName: string | null;
   @Input() completedField: string | null;
+  @Input() completedColumnName: string;
   @Input() highlighted: boolean | null;
   @Input() progressStatus: IProgressStatus;
   @Input() progressUnitsName: string;
   @Input() showText: boolean;
+  // Pass whole parameter list from parent component to extract any item row operations
   @Input() parameterList: any;
   @Output() progressStatusChange = new EventEmitter<IProgressStatus>();
   @Output() newlyCompleted = new EventEmitter<boolean>();
   params: Partial<ITaskProgressBarParams> = {};
   dataRows = signal<any[]>([]);
-  processedDataRows = computed(() => this.processDataRows(this.dataRows()));
+  processedDataRows = computed(() => {
+    console.log("dataRows", this.dataRows());
+    const processedDataRows = this.processDataRows(this.dataRows());
+    console.log("processedDataRows", processedDataRows);
+    return processedDataRows;
+  });
   subtasksTotal: number;
   subtasksCompleted: number;
   standalone: boolean = false;
@@ -148,7 +155,7 @@ export class TmplTaskProgressBarComponent
       this.params.completedField = this.completedField;
       this.params.progressUnitsName = this.progressUnitsName;
       this.params.showText = this.showText;
-      this.params.completedColumnName = "completed";
+      this.params.completedColumnName = this.completedColumnName || "completed";
       this.params.completedFieldColumnName = "completed_field";
       this.configureItemProcessor(this.parameterList);
     }
