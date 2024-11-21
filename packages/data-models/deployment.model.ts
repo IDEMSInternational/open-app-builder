@@ -3,7 +3,7 @@ import type { IGdriveEntry } from "../@idemsInternational/gdrive-tools";
 import type { IAppConfig, IAppConfigOverride } from "./appConfig";
 
 /** Update version to force recompile next time deployment set (e.g. after default config update) */
-export const DEPLOYMENT_CONFIG_VERSION = 20240914.0;
+export const DEPLOYMENT_CONFIG_VERSION = 20241121.0;
 
 /** Configuration settings available to runtime application */
 export interface IDeploymentRuntimeConfig {
@@ -85,8 +85,6 @@ interface IDeploymentCoreConfig {
     assets_folder_id?: string;
     /** IDs of folders containing app assets, as seen in end of url */
     assets_folder_ids?: string[];
-    /** generated gdrive access token. Default `packages/scripts/config/token.json` */
-    auth_token_path?: string;
     /** filter function applied to sheets download that receives basic file info such as folder and id. Default `(gdriveEntry)=>true` */
     sheets_filter_function?: (gdriveEntry: IGdriveEntry) => boolean;
     /** filter function applied to assets download that receives basic file info such as folder and id. Default `(gdriveEntry)=>true` */
@@ -214,7 +212,6 @@ export const DEPLOYMENT_CONFIG_DEFAULTS: IDeploymentConfig = {
   google_drive: {
     assets_folder_id: "",
     sheets_folder_id: "",
-    auth_token_path: "packages/scripts/config/token.json",
     sheets_filter_function: (gdriveEntry) => true,
     assets_filter_function: (gdriveEntry) => true,
   },

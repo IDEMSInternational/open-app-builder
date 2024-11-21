@@ -4673,7 +4673,6 @@ __metadata:
     "@types/node": ^16.11.10
     boxen: ^5.0.1
     chalk: ^4.1.0
-    commander: ^8.3.0
     fs-extra: ^10.0.0
     googleapis: ^108.0.0
     log-update: ^4.0.0
