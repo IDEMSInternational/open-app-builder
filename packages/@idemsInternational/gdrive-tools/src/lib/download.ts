@@ -18,14 +18,13 @@ import {
 } from "../utils";
 import { authorizeGDrive } from "./authorize";
 import { IGdriveEntry } from "../models";
+import { IAuthorizeOptions } from "../types";
 
 const GOOGLE_FOLDER_MIMETYPE = "application/vnd.google-apps.folder";
 
-export interface IDownloadOptions {
+export interface IDownloadOptions extends IAuthorizeOptions {
   folderId: string;
   outputPath: string;
-  credentialsPath: string;
-  authTokenPath: string;
   logName: string;
   filterFn?: (entry: IGdriveEntry) => boolean;
 }

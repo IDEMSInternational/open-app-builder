@@ -4,12 +4,12 @@ import { authorizeGDrive, authorizeGDriveActivity } from "./authorize";
 import { randomUUID } from "crypto";
 import { GDriveDownloader } from "./download";
 import chalk from "chalk";
+import { getAuthPaths } from "../utils";
+import { IAuthorizeOptions } from "../types";
 
-export interface IWatchOptions {
+export interface IWatchOptions extends IAuthorizeOptions {
   folderId: string;
   outputPath: string;
-  credentialsPath: string;
-  authTokenPath: string;
   logName: string;
 }
 
@@ -46,7 +46,8 @@ export class GDriveWatcher {
    * NOTE - requires API enabled https://console.cloud.google.com/apis/api/driveactivity.googleapis.com
    */
   private async wipPollActivityApi(interval = 1000 * 3) {
-    const { folderId, authTokenPath, credentialsPath } = this.options;
+    const { folderId } = this.options;
+    const { authTokenPath, credentialsPath } = getAuthPaths(this.options);
     const { driveactivity } = await authorizeGDriveActivity({ authTokenPath, credentialsPath });
     console.log("\nwatching user edits...\n");
     const executePoll = async (resolve: (value: any) => void, reject: (err: Error) => void) => {
@@ -104,7 +105,7 @@ export class GDriveWatcher {
     if (!this.enabled) {
       return;
     }
-    const { authTokenPath, credentialsPath } = this.options;
+    const { authTokenPath, credentialsPath } = getAuthPaths(this.options);
     const { drive } = await authorizeGDrive({ authTokenPath, credentialsPath });
     let pageToken = await this.getPageToken(drive);
     console.log("watching file changes...");
