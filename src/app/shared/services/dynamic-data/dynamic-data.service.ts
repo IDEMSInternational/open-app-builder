@@ -11,6 +11,7 @@ import { PersistedMemoryAdapter } from "./adapters/persistedMemory";
 import { ReactiveMemoryAdapter, REACTIVE_SCHEMA_BASE } from "./adapters/reactiveMemory";
 import { TemplateActionRegistry } from "../../components/template/services/instance/template-action.registry";
 import { TopLevelProperty } from "rxdb/dist/types/types";
+import ActionsFactory from "./dynamic-data.actions";
 import { DeploymentService } from "../deployment/deployment.service";
 
 type IDocWithMeta = { id: string; APP_META?: Record<string, any> };
@@ -52,6 +53,10 @@ export class DynamicDataService extends AsyncServiceBase {
   ) {
     super("Dynamic Data");
     this.registerInitFunction(this.initialise);
+    // register action handlers
+    const { set_data, reset_data } = new ActionsFactory(this);
+    this.templateActionRegistry.register({ set_data, reset_data });
+    // HACK - Legacy `set_item` action still managed here (will be removed in #2454)
     this.registerTemplateActionHandlers();
   }
 
@@ -140,12 +145,16 @@ export class DynamicDataService extends AsyncServiceBase {
       const existingDoc = await this.db.getDoc<any>(collectionName, row_id);
       if (existingDoc) {
         const data = existingDoc.toMutableJSON();
-        update = deepMergeObjects(data, update);
+        const mergedUpdate = deepMergeObjects(data, update);
+        // update memory db
+        await this.db.updateDoc({ collectionName, id: row_id, data: mergedUpdate });
+        // update persisted db
+        this.writeCache.update({ flow_name, flow_type, id: row_id, data: mergedUpdate });
+      } else {
+        throw new Error(
+          `[Update Fail] no doc exists for ${flow_type}:${flow_name} with row_id: ${row_id}`
+        );
       }
-      // update memory db
-      await this.db.updateDoc({ collectionName, id: row_id, data: update });
-      // update persisted db
-      this.writeCache.update({ flow_name, flow_type, id: row_id, data: update });
     }
   }
 
@@ -157,14 +166,20 @@ export class DynamicDataService extends AsyncServiceBase {
       await lastValueFrom(this.collectionCreators[collectionName]);
     }
     // Ensure any persisted data deleted
-    await this.writeCache.delete(flow_type, flow_name);
+    this.writeCache.delete(flow_type, flow_name);
 
     // Remove in-memory db if exists
     const existingCollection = this.db.getCollection(collectionName);
     if (existingCollection) {
-      await this.db.removeCollection(collectionName);
+      // Empty existing data and re-seed initial data
+      const docs = await existingCollection.find().exec();
+      await existingCollection.bulkRemove(docs.map((d) => d.id));
+      // Re-seed initial data
+      const initialData = await this.getInitialData(flow_type, flow_name);
+      await existingCollection.bulkInsert(initialData);
+    } else {
+      await this.createCollection(flow_type, flow_name);
     }
-    await this.createCollection(flow_type, flow_name);
   }
 
   /** Access full state of all persisted data layers */
@@ -172,6 +187,11 @@ export class DynamicDataService extends AsyncServiceBase {
     // ensure all writes are complete before returning overall state
     await this.writeCache.persistStateToDB();
     return this.writeCache.state;
+  }
+
+  public getSchema(flow_type: FlowTypes.FlowType, flow_name: string) {
+    const collectionName = this.normaliseCollectionName(flow_type, flow_name);
+    return this.db.getCollection(collectionName)?.schema;
   }
 
   /** Ensure a collection exists, creating if not and populating with corresponding list data */
@@ -196,17 +216,10 @@ export class DynamicDataService extends AsyncServiceBase {
     if (initialData.length === 0) {
       throw new Error(`No data exists for collection [${flow_name}], cannot initialise`);
     }
-    // add index property to each element before insert, for sorting queried data by original order
-    const initialDataWithMeta = initialData.map((el) => {
-      return {
-        ...el,
-        row_index: initialData.indexOf(el),
-      };
-    });
 
-    const schema = this.inferSchema(initialDataWithMeta[0]);
+    const schema = this.inferSchema(initialData[0]);
     await this.db.createCollection(collectionName, schema);
-    await this.db.bulkInsert(collectionName, initialDataWithMeta);
+    await this.db.bulkInsert(collectionName, initialData);
     // notify any observers that collection has been created
     this.collectionCreators[collectionName].next(collectionName);
     this.collectionCreators[collectionName].complete();
@@ -224,7 +237,10 @@ export class DynamicDataService extends AsyncServiceBase {
     const mergedData = this.mergeData(flowData?.rows, writeDataArray);
     // HACK - rxdb can't write any fields prefixed with `_` so extract all to top-level APP_META key
     const cleaned = mergedData.map((el) => this.extractMeta(el));
-    return cleaned;
+
+    // add index property to each element before insert, for sorting queried data by original order
+    const initialDataWithMeta = cleaned.map((el) => ({ ...el, row_index: cleaned.indexOf(el) }));
+    return initialDataWithMeta;
   }
 
   /** When working with rxdb collections only alphanumeric lower case names allowed  */
