@@ -6,7 +6,6 @@ import path from "path";
 import PQueue from "p-queue";
 import { drive_v3 } from "googleapis";
 import { GaxiosResponse, GaxiosOptions } from "gaxios";
-import { PATHS } from "../paths";
 import {
   GDRIVE_OFFICE_MAPPING,
   MIMETYPE_EXTENSIONS,
@@ -19,6 +18,7 @@ import {
 import { authorizeGDrive } from "./authorize";
 import { IGdriveEntry } from "../models";
 import { IAuthorizeOptions } from "../types";
+import { GDRIVE_LOGS_DIR } from "../paths";
 
 const GOOGLE_FOLDER_MIMETYPE = "application/vnd.google-apps.folder";
 
@@ -40,7 +40,7 @@ export class GDriveDownloader {
     this.contentsPath = path.resolve(outputPath, this.contentsFileName);
     // prepare folders
     fs.ensureDirSync(outputPath);
-    fs.ensureDirSync(PATHS.LOGS_DIR);
+    fs.ensureDirSync(GDRIVE_LOGS_DIR);
     this.loadCacheContents();
   }
 
@@ -178,7 +178,7 @@ export class GDriveDownloader {
     // Remove empty folders left after deletions
     cleanupEmptyFolders(this.options.outputPath);
     // Update logs
-    const actionsLogPath = path.resolve(PATHS.LOGS_DIR, `${this.options.logName}.json`);
+    const actionsLogPath = path.resolve(GDRIVE_LOGS_DIR, `${this.options.logName}.json`);
     console.log(chalk.gray(actionsLogPath));
     fs.writeFileSync(actionsLogPath, JSON.stringify(actions, null, 2));
   }
