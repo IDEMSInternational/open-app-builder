@@ -1,7 +1,3 @@
-# gdrive service account for gdrive download scripts
-config/*
-!config/public.key
-!config/*.enc
 build
 dist
 exec
@@ -9,3 +5,7 @@ exec
 test/data/cache
 test/data/output
 test/data/reports
+
+# Legacy config folder, removed in #2544 but adding 
+# to gitignore to prevent accidental exposure to tracking
+config
