@@ -1,28 +1,33 @@
 import fs from "fs";
 import chalk from "chalk";
 import { driveactivity_v2, drive_v3, google } from "googleapis";
-import {} from "googleapis";
 import http from "http";
 import opn from "open";
 import url from "url";
 import { logError } from "../utils";
 import { OAuth2Client } from "google-auth-library";
-
-export interface IAuthorizeOptions {
-  credentialsPath: string;
-  authTokenPath: string;
-}
+import { existsSync, removeSync } from "fs-extra";
+import { getAuthPaths } from "../utils";
+import { IAuthorizeOptions } from "../types";
 
 /***************************************************************************************
  * Main Methods
  *************************************************************************************/
 
+export function clearAuthToken(options: IAuthorizeOptions = {}) {
+  // remove existing auth token if exists
+  const { authTokenPath } = getAuthPaths(options);
+  if (existsSync(authTokenPath)) {
+    removeSync(authTokenPath);
+  }
+}
+
 /** Authorize access to the Gdrive api and return client */
 export function authorizeGDrive(
-  options: IAuthorizeOptions,
+  options: IAuthorizeOptions = {},
   driveOptions?: drive_v3.Options
 ): Promise<{ drive: drive_v3.Drive }> {
-  const { authTokenPath, credentialsPath } = options;
+  const { authTokenPath, credentialsPath } = getAuthPaths(options);
   const authScopes = [
     "https://www.googleapis.com/auth/drive.readonly",
     "https://www.googleapis.com/auth/drive.metadata.readonly",
@@ -46,7 +51,7 @@ export function authorizeGDriveActivity(
   options: IAuthorizeOptions,
   activityOptions?: driveactivity_v2.Options
 ): Promise<{ driveactivity: driveactivity_v2.Driveactivity }> {
-  const { authTokenPath, credentialsPath } = options;
+  const { authTokenPath, credentialsPath } = getAuthPaths(options);
   const authScopes = ["https://www.googleapis.com/auth/drive.activity.readonly"];
   return new Promise((resolve, reject) => {
     try {

@@ -4,26 +4,17 @@ import {
   authorizeGDrive,
   GDriveWatcher,
   IGdriveEntry,
+  clearAuthToken,
 } from "@idemsInternational/gdrive-tools";
 import chokidar from "chokidar";
-import { existsSync, removeSync } from "fs-extra";
 import path from "path";
 
 import { WorkflowRunner } from "../../commands/workflow/run";
-import { AUTH_TOKEN_PATH, CREDENTIALS_PATH } from "../../paths";
-
-const getCommonOptions = () => {
-  const authTokenPath = getAuthTokenPath();
-  return { authTokenPath, credentialsPath: CREDENTIALS_PATH };
-};
 
 const authorize = async () => {
-  // remove any pre-existing auth token
-  const authTokenPath = getAuthTokenPath();
-  if (existsSync(authTokenPath)) {
-    removeSync(authTokenPath);
-  }
-  return authorizeGDrive(getCommonOptions());
+  // clear any existing tokens
+  clearAuthToken();
+  return authorizeGDrive();
 };
 
 /**
@@ -39,7 +30,6 @@ const download = async (options: {
   const { folderId, filterFn } = options;
   const outputPath = getOutputFolder(folderId);
   const dlOptions: IDownloadOptions = {
-    ...getCommonOptions(),
     folderId,
     logName: `${folderId}.log`,
     outputPath,
@@ -53,16 +43,6 @@ const download = async (options: {
 const getOutputFolder = (folderId: string) => {
   const { _workspace_path } = WorkflowRunner.config;
   return path.resolve(_workspace_path, "tasks", "gdrive", "outputs", folderId);
-};
-
-const getAuthTokenPath = () => {
-  const { config } = WorkflowRunner;
-  const { _workspace_path } = config;
-  const { auth_token_path } = config.google_drive;
-  const authTokenPath = auth_token_path
-    ? path.resolve(_workspace_path, auth_token_path)
-    : AUTH_TOKEN_PATH;
-  return authTokenPath;
 };
 
 /**
@@ -82,7 +62,6 @@ const liveReload = async (options: {
   const logName = `${folderId}.log`;
 
   const gdriveWatcher = new GDriveWatcher({
-    ...getCommonOptions(),
     folderId,
     logName,
     outputPath,
