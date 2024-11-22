@@ -9,15 +9,15 @@ import {
 
 interface IModuleListItemParams {
   /* TEMPLATE PARAMETER: "module_image_asset". The image attached to the module */
-  moduleImageAsset: string | null;
+  moduleImageAsset?: string;
   /* TEMPLATE PARAMETER: "text_transform". The format of the text on the module item. Default null */
-  textTransform: "capitalise" | "uppercase" | null;
+  textTransform?: "capitalise" | "uppercase";
   /* TEMPLATE PARAMETER: "is_locked". The boolean that marks the module as locked or unlocked */
-  isLocked: boolean;
+  isLocked?: boolean;
   /* TEMPLATE PARAMETER: "nav_image_asset". The navigation icon*/
-  navImageAsset: string | null;
+  navImageAsset?: string;
   /* TEMPLATE PARAMETER: "locked_image_asset". The locked icon*/
-  lockedImageAsset: string | null;
+  lockedImageAsset?: string;
 }
 
 @Component({
