@@ -1,6 +1,6 @@
 import { FlowTypes } from "data-models";
 import { DataListParser } from ".";
-import { TEST_DATA_PATHS, useMockLogger } from "../../../../../../../test/helpers/utils";
+import { TEST_DATA_PATHS } from "../../../../../../../test/helpers/utils";
 import { FlowParserProcessor } from "../flowParser";
 
 const MOCK_DATA_LIST = (): FlowTypes.Data_list => ({
@@ -47,7 +47,7 @@ describe("data_list Parser Metadata", () => {
       additional: { type: "boolean" },
     });
   });
-  it("Assigns column metadata from metadata row", () => {
+  it("Assigns column metadata from metadata row (and removes it)", () => {
     const flowWithMetadataRow = {
       ...MOCK_DATA_LIST(),
       rows: [
@@ -55,10 +55,11 @@ describe("data_list Parser Metadata", () => {
         { id: "id_1", number: undefined, text: undefined },
       ],
     };
-    const { _metadata } = parser.postProcessFlow(flowWithMetadataRow);
+    const { _metadata, rows } = parser.postProcessFlow(flowWithMetadataRow);
     expect(_metadata).toEqual({
       number: { type: "number" },
     });
+    expect(rows.length).toEqual(1);
   });
   it("Omits metadata when all columns are strings", () => {
     const flowWithStringColumns = {
