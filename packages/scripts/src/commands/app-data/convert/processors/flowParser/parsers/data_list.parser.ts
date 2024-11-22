@@ -51,7 +51,7 @@ export class DataListParser extends DefaultParser {
     // assign from metadata row and remove
     if (firstRow?.id === "@metadata") {
       metadataInitial = this.assignMetadataFromRow(firstRow);
-      flow.rows = flow.rows.slice(0, 1);
+      flow.rows = flow.rows.slice(1);
     }
     // infer from data when metadata row not available
     else {
