@@ -29,18 +29,7 @@ export class TemplateSummaryReport {
     // TODO - could also consider components or actions referenced from data_lists
     for (const flow of data.template || []) {
       for (const row of flow.rows) {
-        const { action_list = [], type } = row as FlowTypes.TemplateRow;
-        for (const action of action_list) {
-          let { action_id, args } = action;
-          // HACK -include emit type actions
-          if (action_id === "emit") {
-            action_id += `: ${args[0]}`;
-          }
-          this.summary.actions[action_id] ??= { count: 0 };
-          this.summary.actions[action_id].count++;
-        }
-        this.summary.components[type] ??= { count: 0 };
-        this.summary.components[type].count++;
+        this.extractRowReport(row);
       }
     }
 
@@ -58,6 +47,25 @@ export class TemplateSummaryReport {
     };
 
     return { template_components, template_actions };
+  }
+
+  private extractRowReport(row: FlowTypes.TemplateRow) {
+    const { action_list = [], type, rows = [] } = row;
+    for (const action of action_list) {
+      let { action_id, args } = action;
+      // HACK -include emit type actions
+      if (action_id === "emit") {
+        action_id += `: ${args[0]}`;
+      }
+      this.summary.actions[action_id] ??= { count: 0 };
+      this.summary.actions[action_id].count++;
+    }
+    this.summary.components[type] ??= { count: 0 };
+    this.summary.components[type].count++;
+    // include nested rows (e.g. display groups)
+    for (const nestedRow of rows) {
+      this.extractRowReport(nestedRow);
+    }
   }
 
   /** Convert type records to array for report */
