@@ -1,6 +1,5 @@
-import { NgModule, Type } from "@angular/core";
+import { NgModule } from "@angular/core";
 
-import type { ITemplateRowProps } from "src/app/shared/components/template/models";
 import { CommonModule } from "@angular/common";
 import { IonicModule } from "@ionic/angular";
 import { TemplatePipesModule } from "src/app/shared/components/template/pipes";
@@ -22,8 +21,10 @@ import { RouterModule } from "@angular/router";
 })
 export class PlhComponentsModule {}
 
-export const PLH_COMPONENT_MAPPING: Record<string, Type<ITemplateRowProps>> = {
+export const PLH_COMPONENT_MAPPING = {
   parent_point_counter: PlhParentPointCounterComponent,
   parent_point_box: PlhParentPointBoxComponent,
   plh_module_list_item: PlhModuleListItemComponent,
 };
+
+export type PLHComponentName = keyof typeof PLH_COMPONENT_MAPPING;
