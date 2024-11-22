@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, ViewChild } from "@angular/core";
+import { AfterViewInit, ChangeDetectorRef, Component, ElementRef, ViewChild } from "@angular/core";
 import { TemplateBaseComponent } from "../base";
 import { TemplateAssetService } from "../../services/template-asset.service";
 import { getParamFromTemplateRow, getStringParamFromTemplateRow } from "src/app/shared/utils";
@@ -74,7 +74,8 @@ export class TmplMapComponent extends TemplateBaseComponent implements AfterView
 
   constructor(
     private templateAssetService: TemplateAssetService,
-    private appDataService: AppDataService
+    private appDataService: AppDataService,
+    private cdr: ChangeDetectorRef
   ) {
     super();
   }
@@ -376,6 +377,9 @@ export class TmplMapComponent extends TemplateBaseComponent implements AfterView
   private addLayer(layer: BaseLayer) {
     this.map.addLayer(layer);
     this.mapLayers.push(layer);
+    console.log("maplayers", this.mapLayers);
+    console.log("maplayers length", this.mapLayers.length);
+    this.cdr.markForCheck();
   }
 
   private setCustomLayerProperties(
