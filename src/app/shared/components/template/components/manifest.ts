@@ -11,6 +11,7 @@ const COMMON_COMPONENT_MANIFEST: IComponentManifest<ICommonComponentName> = {
   lottie_animation: { module: "LottieModule" },
   pdf: { assets: "/assets/comp-pdf", module: "NgxExtendedPdfViewerModule" },
   slider: { module: "NouisliderModule" },
+  workshops_accordion: { implicit: ["accordion_section"] },
 };
 
 /**
