@@ -57,9 +57,11 @@ export class DataListParser extends DefaultParser {
     else {
       metadataInitial = this.inferMetadataFromData(flow.rows);
     }
-    // quality check metadata and assign cleaned meta to flow
+    // quality check metadata and assign cleaned meta to flow if non-empty
     const { warnings, metadata } = this.qualityCheckMetadata(metadataInitial);
-    flow._metadata = metadata;
+    if (!isEmptyObjectDeep(metadata)) {
+      flow._metadata = metadata;
+    }
 
     if (warnings.length > 0) {
       for (const warning of warnings) {
