@@ -11258,6 +11258,12 @@ __metadata:
   languageName: node
   linkType: hard
 
+"components@workspace:*, components@workspace:packages/components":
+  version: 0.0.0-use.local
+  resolution: "components@workspace:packages/components"
+  languageName: unknown
+  linkType: soft
+
 "compress-commons@npm:^4.1.2":
   version: 4.1.2
   resolution: "compress-commons@npm:4.1.2"
@@ -15132,6 +15138,7 @@ __metadata:
     capacitor-blob-writer: ^1.1.17
     clone: ^2.1.2
     codelyzer: ^6.0.2
+    components: "workspace:*"
     concurrently: ^6.2.0
     core-js: ^3.33.3
     cspell: ^6.20.1
