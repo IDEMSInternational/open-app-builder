@@ -35,11 +35,8 @@ export class DataListParser extends DefaultParser {
   }
 
   public override postProcessFlow(flow: FlowTypes.Data_list) {
-    const metadata = this.getFlowMetadata(flow);
-    if (!isEmptyObjectDeep(metadata)) {
-      flow._metadata = metadata;
-    }
-    return flow;
+    const flowWithMetadata = this.getFlowMetadata(flow);
+    return flowWithMetadata;
   }
 
   public postProcessFlows(flows: FlowTypes.Data_list[]) {
@@ -47,15 +44,23 @@ export class DataListParser extends DefaultParser {
     return flowsWithOverrides;
   }
 
-  /** Assign column metadata from @metadata row if provided, or infer from data if not*/
-  private getFlowMetadata(flow: FlowTypes.FlowTypeWithData) {
+  /** Assign column metadata from @metadata row if provided, or infer from data if not */
+  private getFlowMetadata(flow: FlowTypes.Data_list) {
     const [firstRow] = flow.rows;
-    const initialMetadata =
-      firstRow?.id === "@metadata"
-        ? this.assignMetadataFromRow(firstRow)
-        : this.inferMetadataFromData(flow.rows);
+    let metadataInitial: FlowTypes.Data_list["_metadata"];
+    // assign from metadata row and remove
+    if (firstRow?.id === "@metadata") {
+      metadataInitial = this.assignMetadataFromRow(firstRow);
+      flow.rows = flow.rows.slice(0, 1);
+    }
+    // infer from data when metadata row not available
+    else {
+      metadataInitial = this.inferMetadataFromData(flow.rows);
+    }
+    // quality check metadata and assign cleaned meta to flow
+    const { warnings, metadata } = this.qualityCheckMetadata(metadataInitial);
+    flow._metadata = metadata;
 
-    const { metadata, warnings } = this.qualityCheckMetadata(initialMetadata);
     if (warnings.length > 0) {
       for (const warning of warnings) {
         console.warn(warning);
@@ -65,7 +70,7 @@ export class DataListParser extends DefaultParser {
         msg2: flow._xlsxPath,
       });
     }
-    return metadata;
+    return flow;
   }
 
   /** Assign data_list metadata using a first `@metadata` row */
