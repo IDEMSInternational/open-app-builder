@@ -56,6 +56,11 @@ interface IMapParams {
    * A data list or data list name containing a list of layers to be added to the map. Format IMapLayer
    */
   layers: IMapLayer[];
+  /**
+   * TEMPLATE PARAMETER: controls_style
+   * The style in which to display the list of viewable layers. Default "list".
+   */
+  controlsStyle: "dropdown" | "list";
 }
 
 @Component({
@@ -69,6 +74,11 @@ export class TmplMapComponent extends TemplateBaseComponent implements AfterView
   public mapLayers: BaseLayer[] = [];
   get mapLayersReversed(): any[] {
     return [...this.mapLayers].reverse();
+  }
+  get visibleLayerNames(): any[] {
+    return this.mapLayersReversed
+      .filter((layer) => layer.getVisible())
+      .map((layer) => layer.get("name"));
   }
   @ViewChild("mapElement") mapElement!: ElementRef<HTMLElement>;
 
@@ -132,6 +142,16 @@ export class TmplMapComponent extends TemplateBaseComponent implements AfterView
     });
   }
 
+  public handleDropdownChange(event: any) {
+    this.makeLayersVisible(event.detail.value);
+  }
+
+  private makeLayersVisible(layers: string[]) {
+    this.mapLayers.forEach((layer) => {
+      layer.setVisible(layers.includes(layer.get("name")));
+    });
+  }
+
   private async initialiseMap() {
     this.map = new Map({
       layers: [
@@ -172,6 +192,12 @@ export class TmplMapComponent extends TemplateBaseComponent implements AfterView
     if (extentRaw) {
       this.params.extent = extentRaw.split(",").map((num) => parseFloat(num.trim()));
     }
+
+    this.params.controlsStyle = getStringParamFromTemplateRow(
+      this._row,
+      "controls_style",
+      "list"
+    ) as IMapParams["controlsStyle"];
   }
 
   private parseLayerParams(layer: any) {
