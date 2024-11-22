@@ -51,7 +51,7 @@ export class SkinService extends SyncServiceBase {
       const override = this.generateOverrideConfig(targetSkin);
       const revert = this.generateRevertConfig(targetSkin);
       console.log("[SKIN] SET", { targetSkin, override, revert });
-      this.appConfigService.setAppConfig(override);
+      this.appConfigService.setAppConfig(override, "skin");
       this.revertOverride = revert;
       this.currentSkin = targetSkin;
 

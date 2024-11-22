@@ -6,6 +6,7 @@ import { Router } from "@angular/router";
 import { toSignal } from "@angular/core/rxjs-interop";
 import { ngRouterMergedSnapshot$ } from "src/app/shared/utils/angular.utils";
 import { isEqual } from "packages/shared/src/utils/object-utils";
+import { AppConfigService } from "src/app/shared/services/app-config/app-config.service";
 
 /**
  * Service responsible for handling metadata of the current top-level template,
@@ -26,6 +27,7 @@ export class TemplateMetadataService extends SyncServiceBase {
 
   constructor(
     private templateService: TemplateService,
+    private appConfigService: AppConfigService,
     private router: Router
   ) {
     super("TemplateMetadata");
@@ -42,5 +44,10 @@ export class TemplateMetadataService extends SyncServiceBase {
       },
       { allowSignalWrites: true }
     );
+    // apply any template-specific appConfig overrides on change
+    effect(() => {
+      const templateAppConfig = this.parameterList().app_config;
+      this.appConfigService.setAppConfig(templateAppConfig, "template");
+    });
   }
 }
