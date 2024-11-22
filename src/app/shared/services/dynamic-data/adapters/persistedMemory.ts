@@ -135,7 +135,7 @@ export class PersistedMemoryAdapter {
     this.persistStateToDB();
   }
 
-  public async delete(flow_type: FlowTypes.FlowType, flow_name: string) {
+  public delete(flow_type: FlowTypes.FlowType, flow_name: string) {
     if (this.get(flow_type, flow_name)) {
       delete this.state[flow_type][flow_name];
       this.persistStateToDB();
