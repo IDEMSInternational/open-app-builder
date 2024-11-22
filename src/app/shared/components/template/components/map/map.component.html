@@ -62,7 +62,7 @@
           }
         </ion-select>
       }
-    } @else {
+    } @else if (params.controlsStyle === "list") {
       <ion-list>
         @for (mapLayer of mapLayersReversed; track $index) {
           <ion-item>

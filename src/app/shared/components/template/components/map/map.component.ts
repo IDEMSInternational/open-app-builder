@@ -58,7 +58,7 @@ interface IMapParams {
   layers: IMapLayer[];
   /**
    * TEMPLATE PARAMETER: controls_style
-   * The style in which to display the list of viewable layers. Default "list".
+   * The style in which to display the list of viewable layers. Default "dropdown".
    */
   controlsStyle: "dropdown" | "list";
 }
@@ -196,7 +196,7 @@ export class TmplMapComponent extends TemplateBaseComponent implements AfterView
     this.params.controlsStyle = getStringParamFromTemplateRow(
       this._row,
       "controls_style",
-      "list"
+      "dropdown"
     ) as IMapParams["controlsStyle"];
   }
 
