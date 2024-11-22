@@ -1,1 +1,22 @@
-<p>module-details-header works!</p>
+<div class="module-header">
+  <div
+    class="wrapper"
+    [attr.data-language-direction]="templateTranslateService.languageDirection()"
+  >
+    <div class="image">
+      @if (params.moduleImageAsset) {
+        <div
+          class="module-illustration"
+          [style.backgroundImage]="'url(' + (params.bgImage | plhAsset) + ')'"
+        >
+          <img [src]="params.moduleImageAsset | plhAsset" class="module-image" />
+        </div>
+      }
+    </div>
+    @if (_row.value) {
+      <div class="module-title">
+        <h2>{{ _row.value }}</h2>
+      </div>
+    }
+  </div>
+</div>
