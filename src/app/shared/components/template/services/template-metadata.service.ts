@@ -45,9 +45,12 @@ export class TemplateMetadataService extends SyncServiceBase {
       { allowSignalWrites: true }
     );
     // apply any template-specific appConfig overrides on change
-    effect(() => {
-      const templateAppConfig = this.parameterList().app_config;
-      this.appConfigService.setAppConfig(templateAppConfig, "template");
-    });
+    effect(
+      () => {
+        const templateAppConfig = this.parameterList().app_config;
+        this.appConfigService.setAppConfig(templateAppConfig, "template");
+      },
+      { allowSignalWrites: true }
+    );
   }
 }
