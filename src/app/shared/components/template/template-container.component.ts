@@ -99,6 +99,7 @@ export class TemplateContainerComponent
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes.templatename) {
+      console.log("template changes", changes);
       this.forceRerender(true);
     }
   }

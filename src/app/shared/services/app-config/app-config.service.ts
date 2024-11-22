@@ -10,7 +10,7 @@ import { updateRoutingDefaults } from "./app-config.utils";
 import { Router } from "@angular/router";
 import { isEqual } from "packages/shared/src/utils/object-utils";
 
-/** Config overrides can come from a variety of sources with orders of hierarchy */
+/** Config overrides can come from a variety of sources with orders of priority */
 const APP_CONFIG_OVERRIDE_ORDER = {
   default: 0,
   deployment: 1,
@@ -35,7 +35,7 @@ export class AppConfigService extends SyncServiceBase {
   /** Tracking observable of deep changes to app config, exposed in `changes` public method */
   private appConfigChanges$: Observable<RecursivePartial<IAppConfig>>;
 
-  /** Array of all applied config overrides. Array position represents override hierarchy order (0-3) */
+  /** Array of all applied config overrides. Array position represents override order (0-3) */
   private configOverrides: IAppConfigOverride[] = [];
 
   /**
@@ -78,18 +78,29 @@ export class AppConfigService extends SyncServiceBase {
    * with the initial config
    */
   public setAppConfig(overrides: IAppConfigOverride = {}, source: IAppConfigOverrideSource) {
+    // use override source to specify index used in override order
     const overrideIndex = APP_CONFIG_OVERRIDE_ORDER[source];
+
+    // ignore updates that are identical to current overrides for a given level
+    if (isEqual(overrides, this.configOverrides[overrideIndex])) {
+      return;
+    }
+
     // replace any overrides at the existing level (e.g. skin or template)
     this.configOverrides[overrideIndex] = overrides;
+
     // merge all levels of override, with higher order levels merged on top of lower
     const mergedConfig = deepMergeObjects({} as IAppConfig, ...this.configOverrides);
 
-    // trigger change effects only if config changed
-    if (!isEqual(this.appConfig(), mergedConfig)) {
-      this.handleConfigSideEffects(overrides, mergedConfig);
-      this.appConfig.set(mergedConfig);
-      this.appConfig$.next(mergedConfig);
+    // if merged config unchanged ignore (e.g. lower order update superseded by higher order)
+    if (isEqual(this.appConfig(), mergedConfig)) {
+      return;
     }
+
+    // trigger change effects
+    this.handleConfigSideEffects(overrides, mergedConfig);
+    this.appConfig.set(mergedConfig);
+    this.appConfig$.next(mergedConfig);
   }
 
   private handleConfigSideEffects(overrides: IAppConfigOverride = {}, config: IAppConfig) {
