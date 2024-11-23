@@ -30,11 +30,10 @@ export class StackService extends SyncServiceBase {
         const [actionId] = args;
         const childActions = {
           open: async () => {
-            const { template, title, icon, show_close_button } = params;
+            const { template, title, show_close_button } = params;
             const stackConfig = {
               templateName: template,
               title,
-              icon,
               showCloseButton: show_close_button,
             };
             this.pushStack(stackConfig);

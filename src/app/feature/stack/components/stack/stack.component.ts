@@ -4,7 +4,6 @@ import { ModalController } from "@ionic/angular";
 export interface IStackConfig {
   templateName: string;
   title?: string;
-  icon?: string;
   showCloseButton?: boolean;
 }
 
