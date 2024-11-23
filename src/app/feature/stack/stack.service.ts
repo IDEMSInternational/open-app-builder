@@ -71,6 +71,7 @@ export class StackService extends SyncServiceBase {
     // Set property for dynamic CSS calculations
     modal.style.setProperty("--stack-index", stackIndex.toString());
     await modal.onWillDismiss();
+    // Stack modal has already been closed by component, so just remove from array
     this.openStacks.splice(stackIndex, 1);
   }
 
