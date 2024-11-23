@@ -7,7 +7,7 @@ import { AppDataService, IAppDataCache } from "./app-data.service";
 import { FlowTypes } from "../../model";
 import { MockAppDataVariableService } from "./app-data-variable.service.spec";
 import { ErrorHandlerService } from "../error-handler/error-handler.service";
-import { MockErrorHandlerService } from "../error-handler/error-handler.service.spec";
+import { MockErrorHandlerService } from "../error-handler/error-handler.service.mock.spec";
 import { DbService } from "../db/db.service";
 import { MockDbService } from "../db/db.service.spec";
 import { Injectable } from "@angular/core";
