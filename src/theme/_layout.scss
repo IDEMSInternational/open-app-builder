@@ -67,11 +67,17 @@ ion-modal.template-popup-modal {
 
 // Nav stack modal
 ion-modal.stack-modal {
-  --height: 90%;
+  // Progressively stagger successive stack modals
+  --height: calc(var(--safe-area-height) - ((var(--stack-index) + 1) * 56px));
   --width: 100%;
   --border-radius: 24px;
   --box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
   --backdrop-opacity: 0.5;
+
+  // Override defalut ion-modal behaviour of hiding backdrop for subsequent modals after first
+  &:not([data-stack-index="0"]) {
+    --backdrop-opacity: 0.2 !important;
+  }
 
   &::part(backdrop) {
     background-color: black;
