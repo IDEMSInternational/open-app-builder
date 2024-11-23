@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { ModalController } from "@ionic/angular";
-import { StackComponent } from "./components/stack/stack.component";
+import { IStackConfig, StackComponent } from "./components/stack/stack.component";
 import { SyncServiceBase } from "src/app/shared/services/syncService.base";
 import { TemplateActionRegistry } from "src/app/shared/components/template/services/instance/template-action.registry";
 
@@ -27,16 +27,25 @@ export class StackService extends SyncServiceBase {
       nav_stack: async ({ args, params }) => {
         const [actionId] = args;
         const childActions = {
-          push: async () => {
-            const { template } = params;
-            this.navStackPush(template);
+          open: async () => {
+            const { template, title, icon, show_close_button } = params;
+            const stackConfig = {
+              templateName: template,
+              title,
+              icon,
+              showCloseButton: show_close_button,
+            };
+            this.pushStack(stackConfig);
           },
-          pop: async () => {
-            this.navStackPop();
+          close_top: async () => {
+            this.closeTopStack();
+          },
+          close_all: () => {
+            this.closeAllStacks();
           },
         };
         if (!(actionId in childActions)) {
-          console.error("app_update does not have action", actionId);
+          console.error(`[NAV_STACK] No action, ${actionId}`);
           return;
         }
         return childActions[actionId]();
@@ -44,24 +53,42 @@ export class StackService extends SyncServiceBase {
     });
   }
 
-  navStackPush(templateName: string) {
-    console.log("templateName", templateName);
-    this.openModal(templateName);
-  }
-
-  navStackPop() {}
-
-  async openModal(templatename: string) {
+  /**
+   * Create a new stack modal and push it to openStacks array.
+   * Await and remove from openStacks array on dismiss
+   */
+  private async pushStack(stackConfig: IStackConfig) {
     const modal = await this.modalCtrl.create({
       component: StackComponent,
-      componentProps: { templatename },
+      componentProps: { config: stackConfig },
       // update to this styling must be done in global theme scss as the modal is injected dynamically into the dom
       cssClass: "stack-modal",
     });
     modal.present();
-
     this.openStacks.push(modal);
+    const stackIndex = this.getStackIndex(modal);
+    modal.setAttribute("data-stack-index", stackIndex.toString());
+    // Set property for dynamic CSS calculations
+    modal.style.setProperty("--stack-index", stackIndex.toString());
+    await modal.onWillDismiss();
+    this.openStacks.splice(stackIndex, 1);
+  }
 
-    const { data, role } = await modal.onWillDismiss();
+  private closeTopStack() {
+    if (this.openStacks.length === 0) return;
+    this.closeStack(this.openStacks.length - 1);
+  }
+
+  private getStackIndex(modalElement: HTMLIonModalElement) {
+    return this.openStacks.indexOf(modalElement);
+  }
+
+  private async closeStack(index: number) {
+    await this.openStacks[index].dismiss();
+    this.openStacks.splice(index, 1);
+  }
+
+  private closeAllStacks() {
+    this.openStacks.forEach(async (_, index) => await this.closeStack(index));
   }
 }
