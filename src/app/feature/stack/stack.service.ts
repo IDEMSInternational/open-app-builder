@@ -4,6 +4,8 @@ import { IStackConfig, StackComponent } from "./components/stack/stack.component
 import { SyncServiceBase } from "src/app/shared/services/syncService.base";
 import { TemplateActionRegistry } from "src/app/shared/components/template/services/instance/template-action.registry";
 
+interface StackModal extends HTMLIonModalElement {}
+
 @Injectable({
   providedIn: "root",
 })
@@ -54,25 +56,43 @@ export class StackService extends SyncServiceBase {
   }
 
   /**
-   * Create a new stack modal and push it to openStacks array.
+   * Create and present a new stack modal and push it to openStacks array.
    * Await and remove from openStacks array on dismiss
    */
   private async pushStack(stackConfig: IStackConfig) {
+    const modal = await this.createStackModal(stackConfig);
+    await this.presentAndTrackModal(modal);
+    await this.handleModalDismissal(modal);
+  }
+
+  /**
+   * Creates a new stack modal instance
+   */
+  private async createStackModal(config: IStackConfig) {
     const modal = await this.modalCtrl.create({
       component: StackComponent,
-      componentProps: { config: stackConfig },
-      // update to this styling must be done in global theme scss as the modal is injected dynamically into the dom
+      componentProps: { config },
+      // Styling must be done in global theme scss as the modal is injected dynamically into the dom
       cssClass: "stack-modal",
     });
-    modal.present();
-    this.openStacks.push(modal);
-    const stackIndex = this.getStackIndex(modal);
+    return modal as StackModal;
+  }
+
+  private async presentAndTrackModal(modal: StackModal) {
+    const stackIndex = this.openStacks.length;
     modal.setAttribute("data-stack-index", stackIndex.toString());
-    // Set property for dynamic CSS calculations
     modal.style.setProperty("--stack-index", stackIndex.toString());
+
+    await modal.present();
+    this.openStacks.push(modal);
+  }
+
+  private async handleModalDismissal(modal: StackModal): Promise<void> {
     await modal.onWillDismiss();
     // Stack modal has already been closed by component, so just remove from array
-    this.openStacks.splice(stackIndex, 1);
+    const index = this.getStackIndex(modal);
+    if (index === -1) return;
+    this.openStacks.splice(index, 1);
   }
 
   private closeTopStack() {
