@@ -1,13 +1,8 @@
 <ion-toolbar>
-  @if (config.title || config.icon) {
+  @if (config.title) {
     <!-- use mode="ios" to centre title within toolbar -->
     <ion-title mode="ios">
-      @if (config.icon) {
-        <ion-icon name="rocket-outline"></ion-icon>
-      }
-      @if (config.title) {
-        {{ config.title }}
-      }
+      {{ config.title }}
     </ion-title>
   }
   @if (config.showCloseButton) {
