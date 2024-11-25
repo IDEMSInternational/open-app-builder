@@ -81,6 +81,9 @@ export class AppConfigService extends SyncServiceBase {
     // use override source to specify index used in override order
     const overrideIndex = APP_CONFIG_OVERRIDE_ORDER[source];
 
+    if (!overrideIndex && overrideIndex !== 0)
+      return console.error(`[APP CONFIG] Unknown config override source, ${source}`);
+
     // ignore updates that are identical to current overrides for a given level
     if (isEqual(overrides, this.configOverrides[overrideIndex])) {
       return;
