@@ -18,6 +18,10 @@ import { appendStyleSvgDirective } from "./directives/shadowStyleSvg.directive";
 import { createCustomElement } from "@angular/elements";
 import { TemplatePipesModule } from "./pipes";
 
+// Components from external packages
+import { PLH_COMPONENTS } from "packages/components/plh";
+import { DEMO_COMPONENTS } from "packages/components/demo";
+
 @NgModule({
   imports: [
     CommonModule,
@@ -32,12 +36,19 @@ import { TemplatePipesModule } from "./pipes";
     NgxExtendedPdfViewerModule,
     TemplatePipesModule,
   ],
-  exports: [...TEMPLATE_COMPONENTS, TemplateContainerComponent],
+  exports: [
+    ...TEMPLATE_COMPONENTS,
+    ...PLH_COMPONENTS,
+    ...DEMO_COMPONENTS,
+    TemplateContainerComponent,
+  ],
   declarations: [
     TmplCompHostDirective,
     TemplateComponent,
     TooltipDirective,
     ...TEMPLATE_COMPONENTS,
+    ...PLH_COMPONENTS,
+    ...DEMO_COMPONENTS,
     TemplateContainerComponent,
     appendStyleSvgDirective,
   ],
