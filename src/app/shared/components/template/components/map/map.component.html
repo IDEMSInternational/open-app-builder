@@ -37,8 +37,32 @@
     </div>
   </div>
   <div class="map-controls">
-    <div class="layer-control"></div>
-    @if (mapLayers.length > 0) {
+    @if (params.controlsStyle === "dropdown") {
+      @if (mapLayers.length > 0) {
+        <ion-select
+          label="Visible Layers:"
+          interface="modal"
+          fill="outline"
+          placeholder="Select map layers to view"
+          [multiple]="true"
+          (ionChange)="handleDropdownChange($event)"
+          [value]="visibleLayerNames"
+        >
+          @for (mapLayer of mapLayersReversed; track $index) {
+            <ion-select-option [value]="mapLayer.get('name')">
+              <ion-item>
+                <ion-label>
+                  {{
+                    mapLayer.get("name") +
+                      (mapLayer.get("description") ? " – " + mapLayer.get("description") : "")
+                  }}
+                </ion-label>
+              </ion-item>
+            </ion-select-option>
+          }
+        </ion-select>
+      }
+    } @else if (params.controlsStyle === "list") {
       <ion-list>
         @for (mapLayer of mapLayersReversed; track $index) {
           <ion-item>
