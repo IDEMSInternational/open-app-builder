@@ -1,4 +1,4 @@
-$map-height: 80vh;
+$map-height: 70vh;
 
 .map-container {
   width: 100%;
@@ -9,6 +9,7 @@ $map-height: 80vh;
   flex-direction: column;
   width: 100%;
   min-height: $map-height;
+  position: relative;
 }
 
 .map {
@@ -17,18 +18,23 @@ $map-height: 80vh;
 }
 
 .legend {
+  z-index: 100;
+  position: absolute;
+  bottom: 0;
+  height: auto;
+  background-color: rgba(255, 255, 255, 0.6);
   display: flex;
   flex-direction: column;
-  width: auto;
-  padding: 0 12px;
+  width: 100%;
+  padding: 0 24px;
 
   .legend-item {
     display: flex;
     flex-direction: column;
-    padding: 8px 0;
+    padding: 2px 0;
     .title {
       width: 100%;
-      margin-bottom: 8px;
+      margin-bottom: 2px;
     }
 
     .scale-container {
@@ -53,7 +59,7 @@ $map-height: 80vh;
     .colour-scale {
       width: 100%;
       height: 12px;
-      margin-bottom: 8px;
+      margin-bottom: 4px;
     }
 
     ion-range {
@@ -65,6 +71,7 @@ $map-height: 80vh;
       --bar-height: 12px;
       --knob-background: var(--ion-color-primary);
       --knob-size: 28px;
+      --height: 18px;
     }
   }
 }

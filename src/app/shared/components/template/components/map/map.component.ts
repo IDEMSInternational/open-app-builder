@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, ViewChild } from "@angular/core";
+import { AfterViewInit, ChangeDetectorRef, Component, ElementRef, ViewChild } from "@angular/core";
 import { TemplateBaseComponent } from "../base";
 import { TemplateAssetService } from "../../services/template-asset.service";
 import { getParamFromTemplateRow, getStringParamFromTemplateRow } from "src/app/shared/utils";
@@ -56,6 +56,11 @@ interface IMapParams {
    * A data list or data list name containing a list of layers to be added to the map. Format IMapLayer
    */
   layers: IMapLayer[];
+  /**
+   * TEMPLATE PARAMETER: controls_style
+   * The style in which to display the list of viewable layers. Default "dropdown".
+   */
+  controlsStyle: "dropdown" | "list";
 }
 
 @Component({
@@ -70,11 +75,17 @@ export class TmplMapComponent extends TemplateBaseComponent implements AfterView
   get mapLayersReversed(): any[] {
     return [...this.mapLayers].reverse();
   }
+  get visibleLayerNames(): any[] {
+    return this.mapLayersReversed
+      .filter((layer) => layer.getVisible())
+      .map((layer) => layer.get("name"));
+  }
   @ViewChild("mapElement") mapElement!: ElementRef<HTMLElement>;
 
   constructor(
     private templateAssetService: TemplateAssetService,
-    private appDataService: AppDataService
+    private appDataService: AppDataService,
+    private cdr: ChangeDetectorRef
   ) {
     super();
   }
@@ -131,6 +142,16 @@ export class TmplMapComponent extends TemplateBaseComponent implements AfterView
     });
   }
 
+  public handleDropdownChange(event: any) {
+    this.makeLayersVisible(event.detail.value);
+  }
+
+  private makeLayersVisible(layers: string[]) {
+    this.mapLayers.forEach((layer) => {
+      layer.setVisible(layers.includes(layer.get("name")));
+    });
+  }
+
   private async initialiseMap() {
     this.map = new Map({
       layers: [
@@ -171,6 +192,12 @@ export class TmplMapComponent extends TemplateBaseComponent implements AfterView
     if (extentRaw) {
       this.params.extent = extentRaw.split(",").map((num) => parseFloat(num.trim()));
     }
+
+    this.params.controlsStyle = getStringParamFromTemplateRow(
+      this._row,
+      "controls_style",
+      "dropdown"
+    ) as IMapParams["controlsStyle"];
   }
 
   private parseLayerParams(layer: any) {
@@ -376,6 +403,9 @@ export class TmplMapComponent extends TemplateBaseComponent implements AfterView
   private addLayer(layer: BaseLayer) {
     this.map.addLayer(layer);
     this.mapLayers.push(layer);
+    console.log("maplayers", this.mapLayers);
+    console.log("maplayers length", this.mapLayers.length);
+    this.cdr.markForCheck();
   }
 
   private setCustomLayerProperties(
