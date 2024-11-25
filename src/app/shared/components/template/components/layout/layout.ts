@@ -1,6 +1,5 @@
 import { Component, Input, OnInit } from "@angular/core";
 import { FlowTypes } from "../../models";
-import { TemplateContainerComponent } from "../../template-container.component";
 import { TemplateBaseComponent } from "../base";
 
 @Component({
@@ -24,7 +23,6 @@ import { TemplateBaseComponent } from "../base";
  * ```
  */
 export class TemplateLayoutComponent extends TemplateBaseComponent implements OnInit {
-  _row: FlowTypes.TemplateRow;
   /** specific data used in component rendering */
   @Input() set row(row: FlowTypes.TemplateRow) {
     row.rows = (row.rows || []).map((r) => {
@@ -34,8 +32,6 @@ export class TemplateLayoutComponent extends TemplateBaseComponent implements On
     row = this.modifyRowSetter(row);
     this._row = row;
   }
-  /** reference to parent template container - does not have setter as should remain static */
-  @Input() parent: TemplateContainerComponent;
 
   ngOnInit() {
     this.addParentActionsFilter();
