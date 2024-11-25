@@ -1,5 +1,6 @@
 import { FlowTypes } from "src/app/shared/model";
 import { TemplateContainerComponent } from "../template-container.component";
+import { InputSignal } from "@angular/core";
 export { FlowTypes } from "src/app/shared/model";
 
 /**
@@ -10,7 +11,7 @@ export { FlowTypes } from "src/app/shared/model";
  * @param parent - reference to parent template (when nested)
  */
 export interface ITemplateContainerProps {
-  templatename: string;
+  templatename: string | InputSignal<string>;
   name: string;
   parent?: { name: string; component?: any };
   row?: FlowTypes.TemplateRow;

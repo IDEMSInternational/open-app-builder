@@ -1,16 +1,16 @@
 import {
   ChangeDetectorRef,
   Component,
+  effect,
   ElementRef,
   EventEmitter,
   HostBinding,
   Injector,
+  input,
   Input,
-  OnChanges,
   OnDestroy,
   OnInit,
   Output,
-  SimpleChanges,
 } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
 import { takeUntil } from "rxjs/operators";
@@ -39,13 +39,11 @@ let log_groupEnd = SHOW_DEBUG_LOGS ? console.groupEnd : () => null;
  * - Track dynamic variable dependency (to know when to trigger row change based on set_local/field/global events)
  * - Consider case of template container re-render (some draft cached code exists, but not sure if this is a valid use-case or not)
  */
-export class TemplateContainerComponent
-  implements OnChanges, OnInit, OnDestroy, ITemplateContainerProps
-{
+export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateContainerProps {
   /** unique instance_name of template if created as a child of another template */
   @Input() name: string;
   /** flow_name of template for lookup */
-  @Input() templatename: string;
+  templatename = input.required<string>();
   @Input() parent?: TemplateContainerComponent;
   @Input() row?: FlowTypes.TemplateRow;
   /** Allow parents to also see emitted value (note - currently responding to emit is done in service, not output bindings except for ) */
@@ -77,12 +75,16 @@ export class TemplateContainerComponent
     public elRef?: ElementRef,
     private route?: ActivatedRoute
   ) {
+    effect(() => {
+      this.templatename();
+      this.renderTemplate();
+    });
     this.templateActionService = new TemplateActionService(injector, this);
     this.templateRowService = new TemplateRowService(injector, this);
   }
   /** Assign the templatename as metdaata on the component for easier debugging and testing */
   @HostBinding("attr.data-templatename") get getTemplatename() {
-    return this.templatename;
+    return this.templatename();
   }
 
   async ngOnInit() {
@@ -95,13 +97,6 @@ export class TemplateContainerComponent
       this.templateRowService.setLogging(true);
     }
     await this.renderTemplate();
-  }
-
-  ngOnChanges(changes: SimpleChanges) {
-    if (changes.templatename) {
-      console.log("template changes", changes);
-      this.forceRerender(true);
-    }
   }
 
   ngOnDestroy(): void {
@@ -188,10 +183,10 @@ export class TemplateContainerComponent
   private async renderTemplate() {
     // Lookup template
     const template = await this.templateService.getTemplateByName(
-      this.templatename,
+      this.templatename(),
       this.row?.is_override_target
     );
-    this.name = this.name || this.templatename;
+    this.name = this.name || this.templatename();
     this.templateBreadcrumbs = [...(this.parent?.templateBreadcrumbs || []), this.name];
     this.template = template;
     log_group("[Template Render Start]", this.name);
