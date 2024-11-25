@@ -1,7 +1,5 @@
-import { Component, Input, OnInit, ViewChild } from "@angular/core";
-import { FlowTypes } from "../../../../model";
+import { Component, OnInit, ViewChild } from "@angular/core";
 import { TemplateBaseComponent } from "../base";
-import { ITemplateRowProps } from "../../models";
 import {
   getBooleanParamFromTemplateRow,
   getNumberParamFromTemplateRow,
@@ -15,11 +13,7 @@ import { Options, PipsMode } from "nouislider";
   templateUrl: "./slider.component.html",
   styleUrls: ["./slider.component.scss"],
 })
-export class TmplSliderComponent
-  extends TemplateBaseComponent
-  implements ITemplateRowProps, OnInit
-{
-  @Input() template: FlowTypes.Template;
+export class TmplSliderComponent extends TemplateBaseComponent implements OnInit {
   @ViewChild("slider") slider: NouisliderComponent;
   help: string | null;
   no_value_text: string = "no_value";

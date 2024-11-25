@@ -1,7 +1,5 @@
 import { AfterViewInit, Component, ElementRef, Input, OnInit } from "@angular/core";
 import { FlowTypes } from "data-models";
-import { ITemplateRowProps } from "../../models";
-import { TemplateContainerComponent } from "../../template-container.component";
 import { TemplateBaseComponent } from "../base";
 import { getBooleanParamFromTemplateRow, getStringParamFromTemplateRow } from "../../../../utils";
 
@@ -12,9 +10,8 @@ import { getBooleanParamFromTemplateRow, getStringParamFromTemplateRow } from ".
 })
 export class RoundIconButtonComponent
   extends TemplateBaseComponent
-  implements ITemplateRowProps, OnInit, AfterViewInit
+  implements OnInit, AfterViewInit
 {
-  @Input() parent: TemplateContainerComponent;
   @Input() template: FlowTypes.Template;
   icon_src: string;
   text: string;

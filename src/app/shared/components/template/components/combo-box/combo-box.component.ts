@@ -9,8 +9,6 @@ import {
   getStringParamFromTemplateRow,
 } from "src/app/shared/utils";
 import { TemplateBaseComponent } from "../base";
-import { ITemplateRowProps } from "../../models";
-import { TemplateService } from "../../services/template.service";
 import { ReplaySubject } from "rxjs";
 
 @Component({
@@ -18,10 +16,7 @@ import { ReplaySubject } from "rxjs";
   templateUrl: "./combo-box.component.html",
   styleUrls: ["./combo-box.component.scss"],
 })
-export class TmplComboBoxComponent
-  extends TemplateBaseComponent
-  implements ITemplateRowProps, OnInit, OnDestroy
-{
+export class TmplComboBoxComponent extends TemplateBaseComponent implements OnInit, OnDestroy {
   @Input() template: FlowTypes.Template;
   placeholder: string;
   prioritisePlaceholder: boolean;
@@ -32,7 +27,7 @@ export class TmplComboBoxComponent
   answerList: IAnswerListItem[];
   private componentDestroyed$ = new ReplaySubject(1);
 
-  constructor(private modalController: ModalController, private templateService: TemplateService) {
+  constructor(private modalController: ModalController) {
     super();
   }
 
