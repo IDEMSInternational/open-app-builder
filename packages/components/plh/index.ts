@@ -1,25 +1,14 @@
-import { NgModule } from "@angular/core";
-
-import { CommonModule } from "@angular/common";
-import { IonicModule } from "@ionic/angular";
-import { TemplatePipesModule } from "src/app/shared/components/template/pipes";
-import { LottieModule } from "ngx-lottie";
 import { PlhParentPointCounterComponent } from "./parent-point-counter/parent-point-counter.component";
 import { PlhParentPointBoxComponent } from "./parent-point-box/parent-point-box.component";
 import { PlhModuleListItemComponent } from "./plh-kids-kw/components/module-list-item/module-list-item.component";
-import { RouterModule } from "@angular/router";
 
-@NgModule({
-  imports: [CommonModule, IonicModule, TemplatePipesModule, LottieModule, RouterModule],
-  exports: [PlhParentPointCounterComponent, PlhParentPointBoxComponent, PlhModuleListItemComponent],
-  declarations: [
-    PlhParentPointCounterComponent,
-    PlhParentPointBoxComponent,
-    PlhModuleListItemComponent,
-  ],
-  providers: [],
-})
-export class PlhComponentsModule {}
+export { PlhParentPointCounterComponent, PlhParentPointBoxComponent, PlhModuleListItemComponent };
+
+export const PLH_COMPONENTS = [
+  PlhParentPointCounterComponent,
+  PlhParentPointBoxComponent,
+  PlhModuleListItemComponent,
+];
 
 export const PLH_COMPONENT_MAPPING = {
   parent_point_counter: PlhParentPointCounterComponent,
