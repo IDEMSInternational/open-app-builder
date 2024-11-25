@@ -6,7 +6,6 @@ import {
   getStringParamFromTemplateRow,
 } from "../../../../utils";
 import { Howl } from "howler";
-import { ITemplateRowProps } from "../../models";
 import { TemplateBaseComponent } from "../base";
 import { ModalController } from "@ionic/angular";
 import { TemplatePopupComponent } from "../layout/popup/popup.component";
@@ -60,12 +59,7 @@ interface IAudioParams {
   templateUrl: "./audio.component.html",
   styleUrls: ["./audio.component.scss"],
 })
-export class TmplAudioComponent
-  extends TemplateBaseComponent
-  implements ITemplateRowProps, OnInit, OnDestroy
-{
-  @Input() template: FlowTypes.Template;
-
+export class TmplAudioComponent extends TemplateBaseComponent implements OnInit, OnDestroy {
   params: Partial<IAudioParams> = {};
 
   /** @ignore */

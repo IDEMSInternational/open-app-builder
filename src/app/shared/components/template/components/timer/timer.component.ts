@@ -1,5 +1,4 @@
 import { Component, ElementRef, Input, OnInit, ViewChild } from "@angular/core";
-import { FlowTypes } from "data-models";
 import {
   getBooleanParamFromTemplateRow,
   getNumberParamFromTemplateRow,
@@ -7,7 +6,6 @@ import {
 } from "../../../../utils";
 import { PickerController, Platform } from "@ionic/angular";
 import { TemplateBaseComponent } from "../base";
-import { ITemplateRowProps } from "../../models";
 import { AudioService } from "src/app/shared/services/audio/audio.service";
 import { AudioPlayer } from "src/app/shared/services/audio/audio.player";
 import { TemplateAssetService } from "../../services/template-asset.service";
@@ -17,12 +15,7 @@ import { TemplateAssetService } from "../../services/template-asset.service";
   templateUrl: "./timer.component.html",
   styleUrls: ["./timer.component.scss"],
 })
-export class TmplTimerComponent extends TemplateBaseComponent implements ITemplateRowProps, OnInit {
-  _row: FlowTypes.TemplateRow;
-  @Input() set row(value: FlowTypes.TemplateRow) {
-    this._row = value;
-  }
-  @Input() template: FlowTypes.Template;
+export class TmplTimerComponent extends TemplateBaseComponent implements OnInit {
   @ViewChild("min", { static: false }) minInput: ElementRef;
   @ViewChild("sec", { static: false }) secInput: ElementRef;
   playIcon: string;

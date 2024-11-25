@@ -1,6 +1,5 @@
 import { Component, OnInit } from "@angular/core";
 import { TemplateBaseComponent } from "../base";
-import { ITemplateRowProps } from "../../models";
 import { getStringParamFromTemplateRow, parseMarkdown } from "src/app/shared/utils";
 import { DomSanitizer, SafeHtml } from "@angular/platform-browser";
 
@@ -9,10 +8,7 @@ import { DomSanitizer, SafeHtml } from "@angular/platform-browser";
   templateUrl: "./dashed-box.component.html",
   styleUrls: ["./dashed-box.component.scss"],
 })
-export class TmplDashedBoxComponent
-  extends TemplateBaseComponent
-  implements ITemplateRowProps, OnInit
-{
+export class TmplDashedBoxComponent extends TemplateBaseComponent implements OnInit {
   style: string;
   icon_src: string | null;
   icon_position: string;

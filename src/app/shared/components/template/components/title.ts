@@ -1,6 +1,5 @@
 import { Component, OnInit } from "@angular/core";
 import { TemplateBaseComponent } from "./base";
-import { ITemplateRowProps } from "../models";
 import { getStringParamFromTemplateRow } from "../../../utils";
 
 @Component({
@@ -24,7 +23,7 @@ import { getStringParamFromTemplateRow } from "../../../utils";
   `,
   styleUrls: ["./title.scss"],
 })
-export class TmplTitleComponent extends TemplateBaseComponent implements ITemplateRowProps, OnInit {
+export class TmplTitleComponent extends TemplateBaseComponent implements OnInit {
   help: string | null;
   tooltipPosition: string;
   textAlign: string;

@@ -1,6 +1,5 @@
 import { Component, OnInit } from "@angular/core";
 import { TemplateBaseComponent } from "../base";
-import { ITemplateRowProps } from "../../models";
 import { getStringParamFromTemplateRow } from "src/app/shared/utils";
 
 @Component({
@@ -8,10 +7,7 @@ import { getStringParamFromTemplateRow } from "src/app/shared/utils";
   templateUrl: "./text-area.component.html",
   styleUrls: ["./text-area.component.scss"],
 })
-export class TmplTextAreaComponent
-  extends TemplateBaseComponent
-  implements ITemplateRowProps, OnInit
-{
+export class TmplTextAreaComponent extends TemplateBaseComponent implements OnInit {
   public placeholder: string;
 
   constructor() {
