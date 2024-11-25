@@ -4,13 +4,13 @@ import { writeFile, ensureDir, emptyDir } from "fs-extra";
 import { resolve, dirname } from "path";
 import { logOutput } from "shared";
 
-import { IReport } from "./report.types";
+import type { IReport } from "./report.types";
 import { generateReportMarkdown } from "./report.utils";
 import { FlowByTypeReport } from "./reporters/flows-by-type";
 import { TemplateSummaryReport } from "./reporters/template-summary";
 import { AssetsSummaryReport } from "./reporters/asset-summary";
 import { IParsedWorkbookData } from "../convert/types";
-import { readJson, writeJson } from "fs-extra";
+import { readJson } from "fs-extra";
 import { ISheetContents } from "../postProcess/sheets";
 
 /**
@@ -24,6 +24,11 @@ export class ReportGenerator {
   constructor(private deployment: IDeploymentConfigJson) {}
 
   public async process() {
+    const outputReports = await this.generateOutputReports();
+    await this.writeOutputs(outputReports);
+  }
+
+  private async generateOutputReports() {
     const sheetsData = await this.loadSheetsData();
     const assetData = await this.loadAssetsData();
 
@@ -31,7 +36,7 @@ export class ReportGenerator {
     const FlowReports = await new FlowByTypeReport().process(sheetsData);
     const AssetReports = await new AssetsSummaryReport(assetData).process(sheetsData);
     const outputReports = { ...TemplateReports, ...AssetReports, ...FlowReports };
-    await this.writeOutputs(outputReports);
+    return outputReports;
   }
 
   private async writeOutputs(reports: Record<string, IReport>) {
@@ -78,7 +83,7 @@ export class ReportGenerator {
   private async writeOutputJson(reports: Record<string, IReport>, target: string) {
     const output: Record<string, any> = {};
     for (const [key, { data }] of Object.entries(reports)) {
-      output[key] = data;
+      output[key] = { data };
     }
     await writeFile(target, JSON.stringify(output, null, 2));
   }
