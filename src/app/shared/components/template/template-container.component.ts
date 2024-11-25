@@ -80,15 +80,14 @@ export class TemplateContainerComponent implements OnInit, OnDestroy {
     effect(() => {
       // re-render template whenever input template name changes
       const templatename = this.templatename();
+      this.hostTemplateName = templatename;
       this.renderTemplate(templatename);
     });
     this.templateActionService = new TemplateActionService(injector, this);
     this.templateRowService = new TemplateRowService(injector, this);
   }
   /** Assign the templatename as metdaata on the component for easier debugging and testing */
-  @HostBinding("attr.data-templatename") get getTemplatename() {
-    return this.templatename();
-  }
+  @HostBinding("attr.data-templatename") public hostTemplateName: string;
 
   async ngOnInit() {
     if (!this.ignoreQueryParamChanges) {
