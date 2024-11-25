@@ -86,10 +86,19 @@ describe("AppConfigService", () => {
     expect(appConfigSetSpy).toHaveBeenCalledTimes(1);
   });
 
-  it("reverts to initial config values when template override removed", async () => {
+  it("reverts to initial config values when all overrides removed", async () => {
     service.setAppConfig({ APP_FOOTER_DEFAULTS: { templateName: "template_footer" } }, "template");
     expect(service.appConfig().APP_FOOTER_DEFAULTS.templateName).toEqual("template_footer");
     service.setAppConfig({}, "template");
     expect(service.appConfig().APP_FOOTER_DEFAULTS.templateName).toEqual("mock_footer");
+  });
+
+  it("reverts to lower order config values when higher order override removed", async () => {
+    service.setAppConfig({ APP_FOOTER_DEFAULTS: { templateName: "skin_footer" } }, "skin");
+    expect(service.appConfig().APP_FOOTER_DEFAULTS.templateName).toEqual("skin_footer");
+    service.setAppConfig({ APP_FOOTER_DEFAULTS: { templateName: "template_footer" } }, "template");
+    expect(service.appConfig().APP_FOOTER_DEFAULTS.templateName).toEqual("template_footer");
+    service.setAppConfig({}, "template");
+    expect(service.appConfig().APP_FOOTER_DEFAULTS.templateName).toEqual("skin_footer");
   });
 });
