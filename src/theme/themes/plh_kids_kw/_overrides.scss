@@ -312,7 +312,9 @@ body[data-theme="plh_kids_kw"] {
         }
       }
     }
-    .module-item[data-lock~="true"] {
+    .module-item[data-lock~="true"],
+    .module-item[data-lock~="TRUE"],
+    .module-item[data-lock~="True"] {
       box-shadow: none;
       opacity: 0.5;
       border: 2px solid #dbe3f2;
