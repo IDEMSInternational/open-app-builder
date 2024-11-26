@@ -1,4 +1,4 @@
-// Styling must be done in global scss as the modal is injected dynamically into the dom
+// Styling must be globally scoped ('@use'd in src/theme/_components.scss), as the modal is injected dynamically into the DOM
 
 ion-modal.nav-stack-modal {
   // Progressively stagger successive stack modals
