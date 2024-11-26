@@ -2,7 +2,7 @@
 
 ion-modal.nav-stack-modal {
   // Progressively stagger successive stack modals
-  --height: calc(var(--safe-area-height) - ((var(--stack-index) + 1) * 56px));
+  --height: calc(var(--safe-area-height) - (56px + (var(--stack-index) * 16px)));
   --width: 100%;
   --border-radius: 24px;
   --box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
