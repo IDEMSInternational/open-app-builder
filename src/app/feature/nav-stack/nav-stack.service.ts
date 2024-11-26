@@ -39,10 +39,10 @@ export class NavStackService extends SyncServiceBase {
             this.pushNavStack(navStackConfig);
           },
           close_top: async () => {
-            this.closeTopNavStack();
+            await this.closeTopNavStack();
           },
-          close_all: () => {
-            this.closeAllNavStacks();
+          close_all: async () => {
+            await this.closeAllNavStacks();
           },
         };
         if (!(actionId in childActions)) {
@@ -94,9 +94,9 @@ export class NavStackService extends SyncServiceBase {
     this.openNavStacks.splice(index, 1);
   }
 
-  private closeTopNavStack() {
+  private async closeTopNavStack() {
     if (this.openNavStacks.length === 0) return;
-    this.closeNavStack(this.openNavStacks.length - 1);
+    await this.closeNavStack(this.openNavStacks.length - 1);
   }
 
   private getNavStackIndex(modalElement: HTMLIonModalElement) {
@@ -108,7 +108,10 @@ export class NavStackService extends SyncServiceBase {
     this.openNavStacks.splice(index, 1);
   }
 
-  private closeAllNavStacks() {
-    this.openNavStacks.forEach(async (_, index) => await this.closeNavStack(index));
+  private async closeAllNavStacks() {
+    // Close nav-stacks in reverse order
+    for (let index = this.openNavStacks.length - 1; index >= 0; index--) {
+      await this.closeNavStack(index);
+    }
   }
 }
