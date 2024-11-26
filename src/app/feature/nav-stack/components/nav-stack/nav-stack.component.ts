@@ -14,22 +14,7 @@ export interface INavStackConfig {
   styleUrls: ["./nav-stack.component.scss"],
 })
 export class NavStackComponent {
-  private _config: INavStackConfig = {
-    templateName: "",
-    showCloseButton: true,
-  };
-  // Merge input values with defaults, ignoring any `undefined` values
-  @Input()
-  set config(config: INavStackConfig) {
-    this._config = {
-      ...this._config,
-      ...Object.fromEntries(Object.entries(config).filter(([_, v]) => v !== undefined)),
-    };
-  }
-  get config(): INavStackConfig {
-    return this._config;
-  }
-
+  @Input() config: INavStackConfig;
   constructor(private modalCtrl: ModalController) {}
 
   public close() {
