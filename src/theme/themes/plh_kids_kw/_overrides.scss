@@ -390,5 +390,13 @@ body[data-theme="plh_kids_kw"] {
         }
       }
     }
+    .activity-container[data-language-direction~="rtl"] {
+      .progress-tracker {
+        .progress-bar-container {
+          margin-right: 0;
+          margin-left: 6px;
+        }
+      }
+    }
   }
 }

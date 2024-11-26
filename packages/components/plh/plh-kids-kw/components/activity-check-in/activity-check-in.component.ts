@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { TemplateBaseComponent } from "src/app/shared/components/template/components/base";
+import { TemplateTranslateService } from "src/app/shared/components/template/services/template-translate.service";
 import { getStringParamFromTemplateRow } from "src/app/shared/utils";
 
 interface IActivityCheckInParams {
@@ -29,6 +30,10 @@ export class PlhActivityCheckInComponent extends TemplateBaseComponent implement
   progressPercentage: number = 16; // Initial progress
 
   private unlockDate: Date;
+
+  constructor(public templateTranslateService: TemplateTranslateService) {
+    super();
+  }
 
   ngOnInit() {
     this.getParams();
