@@ -1,7 +1,43 @@
 import { TestBed } from "@angular/core/testing";
 import { NavStackService } from "./nav-stack.service";
 import { ModalController } from "@ionic/angular";
-import { INavStackConfig, NavStackComponent } from "./components/nav-stack/nav-stack.component";
+import { INavStackConfig } from "./components/nav-stack/nav-stack.component";
+import { _wait } from "packages/shared/src/utils/async-utils";
+import { lastValueFrom, Subject } from "rxjs";
+
+const MOCK_NAV_STACK = (): INavStackConfig => ({
+  templateName: "mock_stack_template",
+  title: "Mock Stack Title",
+});
+
+/** Create a new modal spy object for use by modal controller or direct testing */
+function createModalSpy() {
+  // eslint-disable-next-line jasmine/no-unsafe-spy
+  const modalSpy: jasmine.SpyObj<HTMLIonModalElement> = jasmine.createSpyObj(
+    "HTMLIonModalElement",
+    ["dismiss", "onWillDismiss", "present", "getAttribute", "setAttribute"]
+  );
+  Object.defineProperty(modalSpy, "style", {
+    value: {
+      setProperty: jasmine.createSpy(),
+    },
+  });
+  // mock attribute methods
+  const attributes: Record<string, string> = {};
+  modalSpy.setAttribute.and.callFake((name, value) => (attributes[name] = value));
+  modalSpy.getAttribute.and.callFake((name) => attributes[name]);
+
+  // mock event emitter for dismiss and triggered onWillDismiss
+  const modalDismissEvent = new Subject<any>();
+  modalSpy.dismiss.and.callFake((data) => {
+    modalDismissEvent.next(data);
+    modalDismissEvent.complete();
+    return data;
+  });
+  modalSpy.onWillDismiss.and.callFake(async () => lastValueFrom(modalDismissEvent));
+  modalSpy.present.and.resolveTo();
+  return modalSpy;
+}
 
 /**
  * Call standalone tests via:
@@ -9,81 +45,73 @@ import { INavStackConfig, NavStackComponent } from "./components/nav-stack/nav-s
  */
 describe("NavStackService", () => {
   let service: NavStackService;
-  let mockModalController: jasmine.SpyObj<ModalController>;
-  let mockModal: jasmine.SpyObj<HTMLIonModalElement>;
+  let modalControllerSpy: jasmine.SpyObj<ModalController>;
 
   beforeEach(() => {
-    mockModalController = jasmine.createSpyObj("ModalController", ["create"]);
+    // create spy modalController which also creates spied modals
+    modalControllerSpy = jasmine.createSpyObj("ModalController", ["create"]);
+    modalControllerSpy.create.and.callFake(async () => createModalSpy());
+
     TestBed.configureTestingModule({
-      providers: [{ provide: ModalController, useValue: mockModalController }],
+      providers: [{ provide: ModalController, useValue: modalControllerSpy }],
     });
     service = TestBed.inject(NavStackService);
-
-    // Remove any previously created nav-stacks
-    service.openNavStacks = [];
-
-    mockModal = jasmine.createSpyObj("HTMLIonModalElement", [
-      "present",
-      "onWillDismiss",
-      "setAttribute",
-    ]);
-    Object.defineProperty(mockModal, "style", {
-      value: {
-        setProperty: jasmine.createSpy(),
-      },
-    });
-    mockModal.present.and.resolveTo();
-    mockModal.onWillDismiss.and.resolveTo();
-    mockModalController.create.and.resolveTo(mockModal);
   });
 
-  it("should create a nav-stack modal with correct configuration", async () => {
-    const navStackConfig = { title: "Test Stack" } as INavStackConfig;
-    await service["createNavStackModal"](navStackConfig);
-
-    expect(mockModalController.create).toHaveBeenCalledWith({
-      component: NavStackComponent,
-      componentProps: { config: navStackConfig },
-      cssClass: "nav-stack-modal",
-    });
+  it("creates a new nav stack modal", async () => {
+    await service.pushNavStack(MOCK_NAV_STACK());
+    expect(service["openNavStacks"].length).toEqual(1);
   });
 
-  it("should update, present and track a new nav-stack modal", async () => {
-    await service["presentAndTrackModal"](mockModal);
-    expect(mockModal.style.setProperty).toHaveBeenCalledWith("--stack-index", "0");
-    expect(mockModal.present).toHaveBeenCalled();
-    expect(service.openNavStacks.length).toBe(1);
-    expect(service.openNavStacks[0]).toBe(mockModal);
+  it("tracks stack index as attributes", async () => {
+    await service.pushNavStack(MOCK_NAV_STACK());
+    const [modal] = service["openNavStacks"];
+    const index = modal.getAttribute("data-stack-index");
+    expect(index).toEqual("0");
   });
 
-  it("should remove the modal from openNavStacks on dismissal", async () => {
-    service.openNavStacks = [mockModal];
-    await service["handleModalDismissal"](mockModal);
-    await mockModal.onWillDismiss();
-    expect(service.openNavStacks.length).toBe(0);
+  it("displays multiple indexed nav stacks", async () => {
+    await service.pushNavStack(MOCK_NAV_STACK());
+    await service.pushNavStack(MOCK_NAV_STACK());
+    expect(service["openNavStacks"].length).toEqual(2);
+
+    const [modal_0, modal_1] = service["openNavStacks"];
+    expect(modal_0.getAttribute("data-stack-index")).toEqual("0");
+    expect(modal_1.getAttribute("data-stack-index")).toEqual("1");
+  });
+
+  it("should remove the modal from service['openNavStacks'] on dismissal", async () => {
+    const modalSpy1 = createModalSpy();
+    service["openNavStacks"] = [modalSpy1];
+
+    await service.closeTopNavStack();
+
+    expect(modalSpy1.dismiss).toHaveBeenCalled();
+    expect(service["openNavStacks"].length).toBe(0);
   });
 
   it("should close the top modal in the stack", async () => {
-    const mockModal1 = jasmine.createSpyObj("HTMLIonModalElement", ["dismiss"]);
-    const mockModal2 = jasmine.createSpyObj("HTMLIonModalElement", ["dismiss"]);
-    service.openNavStacks = [mockModal1, mockModal2];
+    const modalSpy1 = createModalSpy();
+    const modalSpy2 = createModalSpy();
+    service["openNavStacks"] = [modalSpy1, modalSpy2];
 
-    await service["closeTopNavStack"]();
+    await service.closeTopNavStack();
 
-    expect(mockModal2.dismiss).toHaveBeenCalled();
-    expect(service.openNavStacks.length).toBe(1);
-    expect(service.openNavStacks[0]).toBe(mockModal1);
+    expect(modalSpy1.dismiss).not.toHaveBeenCalled();
+    expect(modalSpy2.dismiss).toHaveBeenCalled();
+    expect(service["openNavStacks"].length).toBe(1);
+    expect(service["openNavStacks"][0]).toBe(modalSpy1);
   });
 
   it("should close all modals in the stack", async () => {
-    const mockModal1 = jasmine.createSpyObj("HTMLIonModalElement", ["dismiss"]);
-    const mockModal2 = jasmine.createSpyObj("HTMLIonModalElement", ["dismiss"]);
-    service.openNavStacks = [mockModal1, mockModal2];
+    const modalSpy1 = createModalSpy();
+    const modalSpy2 = createModalSpy();
+    service["openNavStacks"] = [modalSpy1, modalSpy2];
 
-    await service["closeAllNavStacks"]();
+    await service.closeAllNavStacks();
 
-    expect(mockModal1.dismiss).toHaveBeenCalled();
-    expect(mockModal2.dismiss).toHaveBeenCalled();
-    expect(service.openNavStacks.length).toBe(0);
+    expect(modalSpy1.dismiss).toHaveBeenCalled();
+    expect(modalSpy2.dismiss).toHaveBeenCalled();
+    expect(service["openNavStacks"].length).toBe(0);
   });
 });
