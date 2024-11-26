@@ -26,7 +26,7 @@ export class PlhActivityCheckInComponent extends TemplateBaseComponent implement
 
   countDownDays: number = 6; // Number of days being counted down
   daysLeft: number = 6; // Days until unlock
-  progressPercentage: number = 100; // Initial progress
+  progressPercentage: number = 16; // Initial progress
 
   private unlockDate: Date;
 
@@ -86,7 +86,6 @@ export class PlhActivityCheckInComponent extends TemplateBaseComponent implement
   private calculateUnlockDate(): void {
     const now = new Date();
     this.unlockDate = new Date(now.getTime() + this.countDownDays * 24 * 60 * 60 * 1000);
-    console.log("Unlock Date->", this.unlockDate);
   }
 
   // Update the progress bar and unlock state
@@ -96,7 +95,7 @@ export class PlhActivityCheckInComponent extends TemplateBaseComponent implement
 
     if (this.daysLeft > 0) {
       this.daysLeft = Math.ceil(this.daysLeft / (24 * 60 * 60 * 1000));
-      this.progressPercentage = ((7 - this.countDownDays) / 7) * 100;
+      this.progressPercentage = ((this.countDownDays - this.daysLeft) / this.countDownDays) * 100;
     } else {
       this.progressPercentage = 0;
       localStorage.removeItem(this.getLocalStorageKey());
