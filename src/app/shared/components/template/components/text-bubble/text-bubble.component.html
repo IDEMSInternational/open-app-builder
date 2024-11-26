@@ -2,6 +2,7 @@
   class="text-bubble-container container"
   [attr.data-position]="params.speakerPosition"
   [attr.data-variant]="params.variant"
+  [attr.data-language-direction]="templateTranslateService.languageDirection()"
 >
   <div>
     @if (params.speakerName) {

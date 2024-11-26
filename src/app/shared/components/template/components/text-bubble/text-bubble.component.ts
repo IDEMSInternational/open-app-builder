@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewEncapsulation } from "@angular/core";
 import { TemplateBaseComponent } from "../base";
 import { getStringParamFromTemplateRow } from "src/app/shared/utils";
+import { TemplateTranslateService } from "../../services/template-translate.service";
 
 interface ITextBubbleParams {
   /** TEMPLATE PARAMETER: "speaker_image_asset". The path to an image to be used as the speaker */
@@ -20,6 +21,10 @@ interface ITextBubbleParams {
 })
 export class TmplTextBubbleComponent extends TemplateBaseComponent implements OnInit {
   params: Partial<ITextBubbleParams> = {};
+
+  constructor(public templateTranslateService: TemplateTranslateService) {
+    super();
+  }
   ngOnInit() {
     this.getParams();
   }
