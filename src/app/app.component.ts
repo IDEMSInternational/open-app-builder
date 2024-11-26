@@ -43,7 +43,7 @@ import { LocalStorageService } from "./shared/services/local-storage/local-stora
 import { DeploymentService } from "./shared/services/deployment/deployment.service";
 import { ScreenOrientationService } from "./shared/services/screen-orientation/screen-orientation.service";
 import { TemplateMetadataService } from "./shared/components/template/services/template-metadata.service";
-import { StackService } from "./feature/stack/stack.service";
+import { NavStackService } from "./feature/nav-stack/nav-stack.service";
 
 @Component({
   selector: "app-root",
@@ -114,7 +114,7 @@ export class AppComponent {
     private shareService: ShareService,
     private fileManagerService: FileManagerService,
     private screenOrientationService: ScreenOrientationService,
-    private stackService: StackService
+    private navStackService: NavStackService
   ) {
     this.initializeApp();
   }
@@ -241,7 +241,7 @@ export class AppComponent {
         this.fileManagerService,
         this.templateMetadataService,
         this.screenOrientationService,
-        this.stackService,
+        this.navStackService,
       ],
       deferred: [this.analyticsService],
       implicit: [

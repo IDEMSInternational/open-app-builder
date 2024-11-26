@@ -65,8 +65,8 @@ ion-modal.template-popup-modal {
   }
 }
 
-// Nav stack modal
-ion-modal.stack-modal {
+// Nav-stack modal
+ion-modal.nav-stack-modal {
   // Progressively stagger successive stack modals
   --height: calc(var(--safe-area-height) - ((var(--stack-index) + 1) * 56px));
   --width: 100%;
