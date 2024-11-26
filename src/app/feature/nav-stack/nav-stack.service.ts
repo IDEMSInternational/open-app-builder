@@ -9,7 +9,7 @@ interface NavStackModal extends HTMLIonModalElement {}
   providedIn: "root",
 })
 export class NavStackService extends SyncServiceBase {
-  openNavStacks: HTMLIonModalElement[] = [];
+  private openNavStacks: HTMLIonModalElement[] = [];
 
   constructor(private modalCtrl: ModalController) {
     super("navStack");
@@ -23,7 +23,18 @@ export class NavStackService extends SyncServiceBase {
   public async pushNavStack(navStackConfig: INavStackConfig) {
     const modal = await this.createNavStackModal(navStackConfig);
     await this.presentAndTrackModal(modal);
-    await this.handleModalDismissal(modal);
+  }
+
+  public async closeAllNavStacks() {
+    // Close nav-stacks in reverse order
+    for (let index = this.openNavStacks.length - 1; index >= 0; index--) {
+      await this.closeNavStack(index);
+    }
+  }
+
+  public async closeTopNavStack() {
+    if (this.openNavStacks.length === 0) return;
+    await this.closeNavStack(this.openNavStacks.length - 1);
   }
 
   /**
@@ -52,19 +63,13 @@ export class NavStackService extends SyncServiceBase {
     }
     await modal.present();
     this.openNavStacks.push(modal);
-  }
 
-  private async handleModalDismissal(modal: NavStackModal): Promise<void> {
-    await modal.onWillDismiss();
-    // Nav-stack modal has already been closed by component, so just remove from array
-    const index = this.getNavStackIndex(modal);
-    if (index === -1) return;
-    this.openNavStacks.splice(index, 1);
-  }
-
-  public async closeTopNavStack() {
-    if (this.openNavStacks.length === 0) return;
-    await this.closeNavStack(this.openNavStacks.length - 1);
+    // Remove array entry whenever modal is dismissed
+    modal.onWillDismiss().then(() => {
+      const index = this.getNavStackIndex(modal);
+      if (index === -1) return;
+      this.openNavStacks.splice(index, 1);
+    });
   }
 
   private getNavStackIndex(modalElement: HTMLIonModalElement) {
@@ -74,12 +79,5 @@ export class NavStackService extends SyncServiceBase {
   private async closeNavStack(index: number) {
     await this.openNavStacks[index].dismiss();
     this.openNavStacks.splice(index, 1);
-  }
-
-  public async closeAllNavStacks() {
-    // Close nav-stacks in reverse order
-    for (let index = this.openNavStacks.length - 1; index >= 0; index--) {
-      await this.closeNavStack(index);
-    }
   }
 }
