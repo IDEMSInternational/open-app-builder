@@ -326,4 +326,69 @@ body[data-theme="plh_kids_kw"] {
       }
     }
   }
+
+  // activity-check-in
+  plh-activity-check-in {
+    .activity-container {
+      width: 45%;
+      .wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+      .progress-tracker {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        .wrapper {
+          width: 46%;
+        }
+        .progress-bar-container {
+          background-color: var(--ion-color-gray-200);
+          height: 14px;
+          border-radius: var(--ion-border-radius-rounded);
+          margin-right: 8px;
+          overflow: hidden;
+          width: 100%;
+        }
+        .progress-bar {
+          border-radius: var(--ion-border-radius-rounded);
+          height: 100%;
+          background-color: #e0b160;
+          transition:
+            width 0.5s ease,
+            background-color 0.5s ease;
+        }
+        .countdown-text {
+          color: var(--ion-color-gray-600);
+          font-weight: var(--font-weight-medium);
+        }
+      }
+      .image {
+        img {
+          width: 140px;
+        }
+      }
+      .details {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        margin-top: -5px;
+        .title h4 {
+          color: var(--ion-color-gray-600);
+          font-weight: var(--font-weight-bold);
+        }
+        .icon {
+          display: flex;
+          align-items: center;
+          img {
+            width: 28px;
+          }
+        }
+      }
+    }
+  }
 }
