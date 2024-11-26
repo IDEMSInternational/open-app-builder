@@ -1,32 +1,32 @@
-import { Component, Input, OnInit } from "@angular/core";
+import { Component, Input } from "@angular/core";
 import { ModalController } from "@ionic/angular";
 
-export interface IStackConfig {
+export interface INavStackConfig {
   templateName: string;
   title?: string;
   showCloseButton?: boolean;
 }
 
-/** The logic for stack open/dismiss exists in the stack-navigation service */
+/** The logic for nav-stack open/dismiss exists in the nav-stack service */
 @Component({
-  selector: "plh-stack",
-  templateUrl: "./stack.component.html",
-  styleUrls: ["./stack.component.scss"],
+  selector: "tmpl-nav-stack",
+  templateUrl: "./nav-stack.component.html",
+  styleUrls: ["./nav-stack.component.scss"],
 })
-export class StackComponent {
-  private _config: IStackConfig = {
+export class NavStackComponent {
+  private _config: INavStackConfig = {
     templateName: "",
     showCloseButton: true,
   };
   // Merge input values with defaults, ignoring any `undefined` values
   @Input()
-  set config(config: IStackConfig) {
+  set config(config: INavStackConfig) {
     this._config = {
       ...this._config,
       ...Object.fromEntries(Object.entries(config).filter(([_, v]) => v !== undefined)),
     };
   }
-  get config(): IStackConfig {
+  get config(): INavStackConfig {
     return this._config;
   }
 

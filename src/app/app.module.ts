@@ -24,7 +24,6 @@ import { TourModule } from "./feature/tour/tour.module";
 import { ErrorHandlerService } from "./shared/services/error-handler/error-handler.service";
 import { ServerAPIInterceptor } from "./shared/services/server/interceptors";
 import { DeploymentFeaturesModule } from "./deployment-features.module";
-import { StackModule } from "./feature/stack/stack.module";
 
 // Note we need a separate function as it's required
 // by the AOT compiler.
@@ -49,7 +48,6 @@ export function lottiePlayerFactory() {
     TourModule,
     ContextMenuModule,
     DeploymentFeaturesModule,
-    StackModule,
   ],
   providers: [
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },

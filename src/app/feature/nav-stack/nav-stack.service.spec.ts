@@ -1,13 +1,13 @@
 import { TestBed } from "@angular/core/testing";
 
-import { StackService } from "./stack.service";
+import { NavStackService } from "./nav-stack.service";
 
-describe("StackService", () => {
-  let service: StackService;
+describe("NavStackService", () => {
+  let service: NavStackService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(StackService);
+    service = TestBed.inject(NavStackService);
   });
 
   it("should be created", () => {

@@ -1,19 +1,19 @@
 import { ComponentFixture, TestBed, waitForAsync } from "@angular/core/testing";
 import { IonicModule } from "@ionic/angular";
 
-import { StackComponent } from "./stack.component";
+import { NavStackComponent } from "./nav-stack.component";
 
-describe("StackComponent", () => {
-  let component: StackComponent;
-  let fixture: ComponentFixture<StackComponent>;
+describe("NavStackComponent", () => {
+  let component: NavStackComponent;
+  let fixture: ComponentFixture<NavStackComponent>;
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [StackComponent],
+      declarations: [NavStackComponent],
       imports: [IonicModule.forRoot()],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(StackComponent);
+    fixture = TestBed.createComponent(NavStackComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   }));
