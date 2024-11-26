@@ -11,7 +11,6 @@ export interface INavStackConfig {
 @Component({
   selector: "tmpl-nav-stack",
   templateUrl: "./nav-stack.component.html",
-  styleUrls: ["./nav-stack.component.scss"],
 })
 export class NavStackComponent {
   @Input() config: INavStackConfig;
