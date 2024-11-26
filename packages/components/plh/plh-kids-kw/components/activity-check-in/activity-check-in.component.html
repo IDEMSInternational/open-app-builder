@@ -2,14 +2,15 @@
   <div class="activity-container">
     <div class="wrapper">
       <div class="progress-tracker">
-        <div class="progress-bar-container">
-          <div
-            class="progress-bar"
-            [ngStyle]="{
-              width: progressPercentage + '%',
-              backgroundColor: daysLeft === 1 ? 'green' : '#007bff'
-            }"
-          ></div>
+        <div class="wrapper">
+          <div class="progress-bar-container">
+            <div
+              class="progress-bar"
+              [ngStyle]="{
+                width: progressPercentage + '%'
+              }"
+            ></div>
+          </div>
         </div>
         <div class="countdown-text">{{ daysLeft }} day{{ daysLeft > 1 ? "s" : "" }} left</div>
       </div>
