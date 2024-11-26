@@ -1,5 +1,8 @@
 @if (daysLeft >= 1) {
-  <div class="activity-container">
+  <div
+    class="activity-container"
+    [attr.data-language-direction]="templateTranslateService.languageDirection()"
+  >
     <div class="wrapper">
       <div class="progress-tracker">
         <div class="wrapper">
