@@ -2,7 +2,6 @@ import { Injectable } from "@angular/core";
 import { ModalController } from "@ionic/angular";
 import { INavStackConfig, NavStackComponent } from "./components/nav-stack/nav-stack.component";
 import { SyncServiceBase } from "src/app/shared/services/syncService.base";
-import { TemplateActionRegistry } from "src/app/shared/components/template/services/instance/template-action.registry";
 
 interface NavStackModal extends HTMLIonModalElement {}
 
@@ -12,53 +11,16 @@ interface NavStackModal extends HTMLIonModalElement {}
 export class NavStackService extends SyncServiceBase {
   openNavStacks: HTMLIonModalElement[] = [];
 
-  constructor(
-    private modalCtrl: ModalController,
-    private templateActionRegistry: TemplateActionRegistry
-  ) {
+  constructor(private modalCtrl: ModalController) {
     super("navStack");
-    this.init();
-  }
-
-  private init() {
-    this.registerTemplateActionHandlers();
-  }
-
-  private registerTemplateActionHandlers() {
-    this.templateActionRegistry.register({
-      nav_stack: async ({ args, params }) => {
-        const [actionId] = args;
-        const childActions = {
-          open: async () => {
-            const { template, title, show_close_button = true } = params;
-            const navStackConfig = {
-              templateName: template,
-              title,
-              showCloseButton: show_close_button,
-            };
-            this.pushNavStack(navStackConfig);
-          },
-          close_top: async () => {
-            await this.closeTopNavStack();
-          },
-          close_all: async () => {
-            await this.closeAllNavStacks();
-          },
-        };
-        if (!(actionId in childActions)) {
-          console.error(`[NAV_STACK] No action, ${actionId}`);
-          return;
-        }
-        return childActions[actionId]();
-      },
-    });
+    // NB: Actions are registered in nav-stack module
   }
 
   /**
    * Create and present a new nav-stack modal and push it to openNavStacks array.
    * Await and remove from openNavStacks array on dismiss
    */
-  private async pushNavStack(navStackConfig: INavStackConfig) {
+  public async pushNavStack(navStackConfig: INavStackConfig) {
     const modal = await this.createNavStackModal(navStackConfig);
     await this.presentAndTrackModal(modal);
     await this.handleModalDismissal(modal);
@@ -100,7 +62,7 @@ export class NavStackService extends SyncServiceBase {
     this.openNavStacks.splice(index, 1);
   }
 
-  private async closeTopNavStack() {
+  public async closeTopNavStack() {
     if (this.openNavStacks.length === 0) return;
     await this.closeNavStack(this.openNavStacks.length - 1);
   }
@@ -114,7 +76,7 @@ export class NavStackService extends SyncServiceBase {
     this.openNavStacks.splice(index, 1);
   }
 
-  private async closeAllNavStacks() {
+  public async closeAllNavStacks() {
     // Close nav-stacks in reverse order
     for (let index = this.openNavStacks.length - 1; index >= 0; index--) {
       await this.closeNavStack(index);
