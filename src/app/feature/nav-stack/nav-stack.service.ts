@@ -30,7 +30,7 @@ export class NavStackService extends SyncServiceBase {
         const [actionId] = args;
         const childActions = {
           open: async () => {
-            const { template, title, show_close_button } = params;
+            const { template, title, show_close_button = true } = params;
             const navStackConfig = {
               templateName: template,
               title,
