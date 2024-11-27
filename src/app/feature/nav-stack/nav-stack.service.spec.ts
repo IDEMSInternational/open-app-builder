@@ -66,7 +66,7 @@ describe("NavStackService", () => {
   it("tracks stack index as attributes", async () => {
     await service.pushNavStack(MOCK_NAV_STACK());
     const [modal] = service["openNavStacks"];
-    const index = modal.getAttribute("data-stack-index");
+    const index = modal.getAttribute("data-nav-stack-index");
     expect(index).toEqual("0");
   });
 
@@ -76,8 +76,8 @@ describe("NavStackService", () => {
     expect(service["openNavStacks"].length).toEqual(2);
 
     const [modal_0, modal_1] = service["openNavStacks"];
-    expect(modal_0.getAttribute("data-stack-index")).toEqual("0");
-    expect(modal_1.getAttribute("data-stack-index")).toEqual("1");
+    expect(modal_0.getAttribute("data-nav-stack-index")).toEqual("0");
+    expect(modal_1.getAttribute("data-nav-stack-index")).toEqual("1");
   });
 
   it("should remove the modal from service['openNavStacks'] on dismissal", async () => {

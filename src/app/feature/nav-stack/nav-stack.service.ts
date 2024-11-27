@@ -52,8 +52,8 @@ export class NavStackService extends SyncServiceBase {
 
   private async presentAndTrackModal(modal: NavStackModal) {
     const navStackIndex = this.openNavStacks.length;
-    modal.setAttribute("data-stack-index", navStackIndex.toString());
-    modal.style.setProperty("--stack-index", navStackIndex.toString());
+    modal.setAttribute("data-nav-stack-index", navStackIndex.toString());
+    modal.style.setProperty("--nav-stack-index", navStackIndex.toString());
 
     // Remove focus from active element before presenting modal to avoid accessibility warning
     // See https://stackoverflow.com/a/79210442
