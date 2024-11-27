@@ -274,7 +274,7 @@ body[data-theme="plh_kids_kw"] {
   }
 
   // Text Bubble
-  plh-text-bubble {
+  tmpl-text-bubble {
     .text-bubble-container {
       position: unset;
       display: flex;
@@ -406,7 +406,25 @@ body[data-theme="plh_kids_kw"] {
       }
     }
     .text-bubble-container[data-language-direction~="rtl"] {
-      border: 1px solid red;
+      .text-bubble {
+        border-radius: 12px 0px 12px 12px;
+      }
+      &[data-position="right"] {
+        float: left;
+        .text-bubble {
+          border-radius: 0px 12px 12px 12px;
+        }
+        img.speaker-image {
+          -webkit-transform: scaleX(1);
+          transform: scaleX(1);
+        }
+      }
+      img.speaker-image {
+        position: unset;
+        margin-left: 8px;
+        -webkit-transform: scaleX(-1);
+        transform: scaleX(-1);
+      }
     }
   }
 
