@@ -23,13 +23,11 @@ export class NavStackService extends SyncServiceBase {
   public async pushNavStack(navStackConfig: INavStackConfig) {
     const modal = await this.createNavStackModal(navStackConfig);
     await this.presentAndTrackModal(modal);
+    return modal;
   }
 
   public async closeAllNavStacks() {
-    // Close nav-stacks in reverse order
-    for (let index = this.openNavStacks.length - 1; index >= 0; index--) {
-      await this.closeNavStack(index);
-    }
+    await Promise.all(this.openNavStacks.map(async (navStack) => await navStack.dismiss()));
   }
 
   public async closeTopNavStack() {
@@ -55,15 +53,14 @@ export class NavStackService extends SyncServiceBase {
     modal.setAttribute("data-nav-stack-index", navStackIndex.toString());
     modal.style.setProperty("--nav-stack-index", navStackIndex.toString());
 
-    await modal.present();
-    this.openNavStacks.push(modal);
-
     // Remove array entry whenever modal is dismissed
     modal.onWillDismiss().then(() => {
       const index = this.getNavStackIndex(modal);
       if (index === -1) return;
       this.openNavStacks.splice(index, 1);
     });
+    await modal.present();
+    this.openNavStacks.push(modal);
   }
 
   private getNavStackIndex(modalElement: HTMLIonModalElement) {
