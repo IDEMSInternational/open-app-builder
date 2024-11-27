@@ -105,7 +105,7 @@ export class PlhActivityCheckInComponent extends TemplateBaseComponent implement
       this.progressPercentage =
         ((this.params.countDownDays - this.daysLeft) / this.params.countDownDays) * 100;
     } else {
-      this.progressPercentage = 0;
+      this.progressPercentage = 16;
       localStorage.removeItem(this.getLocalStorageKey());
     }
   }
