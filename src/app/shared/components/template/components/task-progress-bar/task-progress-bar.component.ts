@@ -58,6 +58,10 @@ interface ITaskProgressBarParams {
    * Deafult "completed_field"
    * */
   completedFieldColumnName: string;
+  /** TEMPLATE PARAMETER: "variant". Default "bar". */
+  variant: "bar" | "wheel";
+  /* TEMPLATE PARAMETER: "wheel_title". The wheel title that appears at the bottom */
+  title?: string;
 }
 
 @Component({
@@ -85,6 +89,9 @@ export class TmplTaskProgressBarComponent
   standalone: boolean = false;
   useDynamicData: boolean;
   private dataQuery$: Subscription;
+  radius = 16; // Radius of the circle
+  circumference = 2 * Math.PI * this.radius; // Circumference of the circle
+  percentage: number;
 
   constructor(
     private cdr: ChangeDetectorRef,
@@ -131,6 +138,10 @@ export class TmplTaskProgressBarComponent
         "completed_field_column_name",
         "completed_field"
       );
+      this.params.variant = getStringParamFromTemplateRow(this._row, "variant", "bar")
+        .split(",")
+        .join(" ") as ITaskProgressBarParams["variant"];
+      this.params.title = getStringParamFromTemplateRow(this._row, "wheel_title", null);
     }
     // If component is being instantiated by a parent component (e.g. task-card), use Input() values for params.
     else {
@@ -145,6 +156,14 @@ export class TmplTaskProgressBarComponent
 
   get progressPercentage() {
     return (this.subtasksCompleted / this.subtasksTotal) * 100;
+  }
+
+  getStrokeOffset(): number {
+    this.percentage =
+      this.subtasksCompleted < this.subtasksTotal
+        ? this.subtasksCompleted / this.subtasksTotal
+        : 100;
+    return this.circumference * (1 - this.percentage);
   }
 
   private async getTaskGroupDataRows() {
