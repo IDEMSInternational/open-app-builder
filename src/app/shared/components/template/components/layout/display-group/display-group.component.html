@@ -30,7 +30,7 @@
   <!-- Form layout -->
   <plh-tmpl-form *ngSwitchCase="'form'" [inputRow]="_row" [parent]="parent"></plh-tmpl-form>
 </div>
-<!-- If sticky, add inline element so that rest of centent doesn't shift behind -->
+<!-- If sticky, add inline element so that rest of content doesn't shift behind -->
 @if (params.sticky === "top") {
   <div class="sticky-top-placeholder" [style.height.px]="stickyHeight()"></div>
 }

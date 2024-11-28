@@ -96,9 +96,7 @@ export class TmplDisplayGroupComponent
     const computedStyles = getComputedStyle(this.displayGroupWrapper.nativeElement);
     const ionContentPaddingStart =
       parseFloat(computedStyles.getPropertyValue("--padding-start")) || 0;
-    const templateContainerMarginEm = computedStyles
-      .getPropertyValue("--template-container-margin")
-      .trim();
+    const templateContainerMarginEm = computedStyles.getPropertyValue("--row-margin-top").trim();
     const fontSize = parseFloat(computedStyles.fontSize) || 0;
     const templateContainerMarginPx = parseFloat(templateContainerMarginEm) * fontSize || 0;
     return ionContentPaddingStart + templateContainerMarginPx;
