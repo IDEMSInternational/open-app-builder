@@ -26,6 +26,13 @@
     bottom: 0;
   }
 }
+// When displaying a sticky header inside a nav-stack modal, remove the inline placeholder
+// as the nav-stack has an in-built header
+:host-context(.nav-stack-modal) {
+  .sticky-top-placeholder {
+    display: none;
+  }
+}
 /// In flex box components should try to fill height, but not width (leave to flex property)
 .display-group-wrapper > plh-template-component {
   height: 100%;

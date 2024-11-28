@@ -32,8 +32,8 @@
 </div>
 <!-- If sticky, add inline element so that rest of centent doesn't shift behind -->
 @if (params.sticky === "top") {
-  <div [style.height.px]="stickyHeight()"></div>
+  <div class="sticky-top-placeholder" [style.height.px]="stickyHeight()"></div>
 }
 @if (params.sticky === "bottom") {
-  <div [style.height.px]="stickyHeight()"></div>
+  <div class="sticky-bottom-placeholder" [style.height.px]="stickyHeight()"></div>
 }
