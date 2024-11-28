@@ -403,6 +403,7 @@ export namespace FlowTypes {
      * Use `auth: sign_in_google` instead
      * */
     "google_auth",
+    "nav_stack",
     "open_external",
     "pop_up",
     "process_template",
@@ -428,12 +429,12 @@ export namespace FlowTypes {
     "user",
   ] as const;
 
-  export interface TemplateRowAction {
+  export interface TemplateRowAction<ParamsType = any> {
     /** actions have an associated trigger */
     trigger: TemplateRowActionTrigger;
     action_id: (typeof ACTION_ID_LIST)[number];
     args: any[]; // should be boolean | string, but breaks type-checking for templates;
-    params?: any; // additional params also used by args (does not require position argument)
+    params?: ParamsType; // additional params also used by args (does not require position argument)
     // TODO - CC 2022-04-29 - ideally args should be included as part of params
     _triggeredBy?: TemplateRow; // tracking the component that triggered the action for logging;
     /**
