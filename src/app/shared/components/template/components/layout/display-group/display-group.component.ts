@@ -74,16 +74,34 @@ export class TmplDisplayGroupComponent
     return "default";
   }
 
-  /** Observe the height of the display group wrapper element and update the stickyHeight property accordingly */
+  /** Observe the height of the display group wrapper element and update the height of the placeholder accordingly */
   private initResizeObserver() {
     if (this.displayGroupWrapper) {
       this.resizeObserver = new ResizeObserver((entries) => {
+        let containerPadding = 0;
+        // In the case of a sticky header, the top padding/margin of the main app content and template container need to be accounted for,
+        // now that the display group sits at the very top of the content window outside of the main content and template container
+        if (this.params.sticky === "top") {
+          containerPadding = this.getTotalContainerTopPadding();
+        }
         const entry = entries[0];
-        this.stickyHeight.set(entry.contentRect.height);
+        this.stickyHeight.set(entry.contentRect.height - containerPadding);
       });
 
       this.resizeObserver.observe(this.displayGroupWrapper.nativeElement);
     }
+  }
+
+  private getTotalContainerTopPadding() {
+    const computedStyles = getComputedStyle(this.displayGroupWrapper.nativeElement);
+    const ionContentPaddingStart =
+      parseFloat(computedStyles.getPropertyValue("--padding-start")) || 0;
+    const templateContainerMarginEm = computedStyles
+      .getPropertyValue("--template-container-margin")
+      .trim();
+    const fontSize = parseFloat(computedStyles.fontSize) || 0;
+    const templateContainerMarginPx = parseFloat(templateContainerMarginEm) * fontSize || 0;
+    return ionContentPaddingStart + templateContainerMarginPx;
   }
 
   ngOnDestroy() {
