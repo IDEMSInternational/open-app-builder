@@ -5,6 +5,8 @@ export interface INavStackConfig {
   templateName: string;
   title?: string;
   showCloseButton?: boolean;
+  // If true, the default nav-stack header will be ignored by content
+  useTemplateHeader?: boolean;
 }
 
 /** The logic for nav-stack open/dismiss exists in the nav-stack service */
