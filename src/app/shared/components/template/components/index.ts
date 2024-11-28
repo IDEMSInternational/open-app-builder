@@ -54,7 +54,7 @@ import { TmplTextBoxComponent } from "./text-box/text-box.component";
 import { TmplTextComponent } from "./text/text.component";
 import { TmplTextBubbleComponent } from "./text-bubble/text-bubble.component";
 import { TmplTileComponent } from "./tile-component/tile-component.component";
-import { TmplTitleComponent } from ".//title/title.component";
+import { TmplTitleComponent } from "./title/title.component";
 import { TmplTimerComponent } from "./timer/timer.component";
 import { TmplToggleBarComponent } from "./toggle-bar/toggle-bar";
 import { TmplVideoComponent } from "./video";

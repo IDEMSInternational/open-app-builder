@@ -5,6 +5,7 @@ interface INavStackActionParams {
   template: string;
   title: string;
   show_close_button: boolean;
+  use_template_header: boolean;
 }
 
 export class NavStackActionFactory {
@@ -14,11 +15,12 @@ export class NavStackActionFactory {
     const [actionId] = args;
     const childActions = {
       open: async () => {
-        const { template, title, show_close_button = true } = params;
+        const { template, title, show_close_button = true, use_template_header } = params;
         const navStackConfig = {
           templateName: template,
           title,
           showCloseButton: show_close_button,
+          useTemplateHeader: use_template_header,
         };
         this.service.pushNavStack(navStackConfig);
       },
