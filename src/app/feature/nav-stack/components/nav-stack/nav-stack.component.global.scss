@@ -26,9 +26,5 @@ ion-modal.nav-stack-modal {
   ion-toolbar {
     --background: var(--ion-color-background);
     --color: var(--ion-color-primary);
-
-    &.fixed {
-      position: fixed;
-    }
   }
 }
