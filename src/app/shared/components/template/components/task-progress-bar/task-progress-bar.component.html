@@ -1,13 +1,41 @@
-<div
-  class="progress-bar-wrapper"
-  [class.highlighted]="highlighted"
-  [class]="progressStatus"
-  [class.standalone]="standalone"
->
-  <p *ngIf="params.showText" class="tiny progress-text">
-    {{ subtasksTotal + " " + params.progressUnitsName }}
-  </p>
-  <div class="progress-bar-background">
-    <div class="progress-bar" [style.width]="progressPercentage + '%'"></div>
+@if (params.variant.includes("bar")) {
+  <div
+    class="progress-bar-wrapper"
+    [class.highlighted]="highlighted"
+    [class]="progressStatus"
+    [class.standalone]="standalone"
+  >
+    <p *ngIf="params.showText" class="tiny progress-text">
+      {{ subtasksTotal + " " + params.progressUnitsName }}
+    </p>
+    <div class="progress-bar-background">
+      <div class="progress-bar" [style.width]="progressPercentage + '%'"></div>
+    </div>
   </div>
-</div>
+}
+@if (params.variant.includes("wheel")) {
+  <div class="task-progress-wheel">
+    <div class="progress-container">
+      <svg class="progress-wheel" viewBox="0 0 36 36">
+        <!-- Background Circle -->
+        <circle class="progress-background" cx="18" cy="18" r="16" />
+        <!-- Foreground Arc -->
+        <circle
+          class="progress-foreground"
+          cx="18"
+          cy="18"
+          r="16"
+          [style.strokeDasharray]="circumference"
+          [style.strokeDashoffset]="getStrokeOffset()"
+        />
+      </svg>
+      <!-- Percentage Text -->
+      <div class="progress-text">{{ percentage * 100 }}%</div>
+      @if (params.title) {
+        <div class="wheel-title">
+          <h4>{{ params.title }}</h4>
+        </div>
+      }
+    </div>
+  </div>
+}
