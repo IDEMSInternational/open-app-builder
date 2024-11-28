@@ -47,7 +47,7 @@ interface ITaskProgressBarParams {
    * The name of the column in the source data list that tracks the completed value of each subtask.
    * If there is no column with this name, the component will look for a column matching completed_field_column_name,
    * and use the corresponding app fields to track the completion status of subtasks.
-   * Deafult "completed"
+   * Default "completed"
    * */
   completedColumnName: string;
   /**
@@ -55,7 +55,7 @@ interface ITaskProgressBarParams {
    * The name of the column in the source data list which stores the name of the completed field of each subtask.
    * The app fields corresponding to the values in this column are used to evaluate the completion of subtasks iff the
    * completed_column_name column is not present. In this case, the task progress bar will not update without a page reload.
-   * Deafult "completed_field"
+   * Default "completed_field"
    * */
   completedFieldColumnName: string;
   /** TEMPLATE PARAMETER: "variant". Default "bar". */
