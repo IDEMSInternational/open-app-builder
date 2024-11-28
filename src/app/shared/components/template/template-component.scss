@@ -27,10 +27,14 @@ plh-template-container > plh-template-component:not([data-hidden="true"]) {
   margin-top: 0;
 }
 // Apply 1em margin to all non-hidden children but the first, see https://stackoverflow.com/a/29422984
+plh-template-container {
+  // Set as variable vor use in downstream calculations, e.g. sticky display group (set but not applied to first child)
+  --template-container-margin: 1em;
+}
 plh-template-container
   > plh-template-component:not([data-hidden="true"])
   ~ plh-template-component:not([data-hidden="true"]) {
-  margin-top: 1em;
+  margin-top: var(--template-container-margin);
 }
 
 /// Ensure standalone containers and components fill all available space
