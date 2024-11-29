@@ -2,6 +2,7 @@ import { Injectable } from "@angular/core";
 import { ModalController } from "@ionic/angular";
 import { INavStackConfig, NavStackComponent } from "./components/nav-stack/nav-stack.component";
 import { SyncServiceBase } from "src/app/shared/services/syncService.base";
+import { TemplateNavService } from "src/app/shared/components/template/services/template-nav.service";
 
 interface NavStackModal extends HTMLIonModalElement {}
 
@@ -10,10 +11,21 @@ interface NavStackModal extends HTMLIonModalElement {}
 })
 export class NavStackService extends SyncServiceBase {
   private openNavStacks: HTMLIonModalElement[] = [];
+  handlerSet = false;
 
-  constructor(private modalCtrl: ModalController) {
+  constructor(
+    private modalCtrl: ModalController,
+    private templateNavService: TemplateNavService
+  ) {
     super("navStack");
     // NB: Actions are registered in nav-stack module
+  }
+
+  setCustomBackHandler() {
+    this.templateNavService.initializeBackButtonHandler(() => {
+      this.closeTopNavStack();
+      return true;
+    });
   }
 
   /**
@@ -21,6 +33,10 @@ export class NavStackService extends SyncServiceBase {
    * Await and remove from openNavStacks array on dismiss
    */
   public async pushNavStack(navStackConfig: INavStackConfig) {
+    if (!this.handlerSet) {
+      this.setCustomBackHandler();
+      this.handlerSet = true;
+    }
     const modal = await this.createNavStackModal(navStackConfig);
     await this.presentAndTrackModal(modal);
     return modal;
@@ -33,6 +49,10 @@ export class NavStackService extends SyncServiceBase {
   public async closeTopNavStack() {
     if (this.openNavStacks.length === 0) return;
     await this.closeNavStack(this.openNavStacks.length - 1);
+    if (this.openNavStacks.length === 0) {
+      this.templateNavService.destroyBackButtonHandler();
+      this.handlerSet = false;
+    }
   }
 
   /**
