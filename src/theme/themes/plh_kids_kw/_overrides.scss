@@ -539,8 +539,7 @@ body[data-theme="plh_kids_kw"] {
   plh-module-list-item {
     .module-item {
       width: 100%;
-      // TODO: switch to global secondary variable
-      border: 2px solid #2e98d8;
+      border: 2px solid var(--color-secondary-blue-60);
       border-radius: var(--ion-border-radius-secondary);
       padding: 16px;
       box-shadow: 1px 1px 10px #92b7da;
@@ -602,67 +601,13 @@ body[data-theme="plh_kids_kw"] {
       box-shadow: none;
       opacity: 0.5;
       border: 2px solid #dbe3f2;
-      background-color: #ffffff;
+      background-color: var(--color-surface-white);
       .module-image {
         img {
           width: 60px;
           height: 60px;
           max-width: unset;
         }
-      }
-    }
-  }
-
-  // progress-wheel
-  .task-progress-wheel {
-    .progress-container {
-      position: relative;
-      width: 150px;
-      height: 150px;
-      margin-bottom: 48px;
-    }
-
-    .progress-wheel {
-      width: 100%;
-      height: 100%;
-      transform: rotate(-90deg); /* Start arc at the top */
-    }
-
-    .progress-background {
-      fill: none;
-      stroke: var(--ion-color-gray-100);
-      stroke-width: 3.6;
-    }
-
-    .progress-foreground {
-      fill: none;
-      stroke: #007fbf;
-      stroke-width: 3.6;
-      stroke-linecap: square;
-      transform-origin: center;
-      transform: rotate(0);
-      transition: stroke-dashoffset 0.5s ease-in-out;
-    }
-
-    .progress-text {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      font-size: 28px;
-      font-weight: var(--font-weight-medium);
-      color: var(--ion-color-gray-700);
-    }
-
-    .wheel-title {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      margin-top: -5px;
-      color: var(--ion-color-gray-600);
-      h4 {
-        font-weight: var(--font-weight-bold);
       }
     }
   }
@@ -677,12 +622,12 @@ body[data-theme="plh_kids_kw"] {
           box-shadow: none;
 
           border-radius: var(--ion-border-radius-small);
-          border: 1px solid #2e98d8;
+          border: 1px solid var(--color-secondary-blue-60);
           padding: 24px;
           margin-bottom: 10px;
         }
         .checked {
-          border: 2px solid #2e98d8;
+          border: 2px solid var(--color-secondary-blue-60);
           // background: #f6fafe !important;
         }
       }
@@ -703,7 +648,7 @@ body[data-theme="plh_kids_kw"] {
       }
     }
     .standard-label {
-      background-color: #ffd5be;
+      background-color: var(--color-accent-orange-90);
       border-radius: var(--ion-border-radius-small);
       max-width: unset;
       box-shadow: none;
@@ -713,7 +658,7 @@ body[data-theme="plh_kids_kw"] {
       margin: 12px !important;
     }
     .checked {
-      background: #ffab83;
+      background: var(--color-accent-orange-80);
       border: 2px solid #ff6f3a;
       transition: 0.3s linear;
     }
