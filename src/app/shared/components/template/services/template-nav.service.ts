@@ -17,8 +17,7 @@ import { TemplateContainerComponent } from "../template-container.component";
 const SHOW_DEBUG_LOGS = false;
 const log = SHOW_DEBUG_LOGS ? console.log : () => null;
 
-// Handler should return true if back button should be disabled
-type ICustomBackHandler = () => boolean;
+type ICustomBackHandler = () => any;
 
 @Injectable({
   providedIn: "root",
@@ -89,7 +88,7 @@ export class TemplateNavService extends SyncServiceBase {
    *  Handling browser navigation
    ****************************************************************************************************/
 
-  public initializeBackButtonHandler(handler?: () => boolean) {
+  public initializeBackButtonHandler(handler?: ICustomBackHandler) {
     if (handler) {
       this.setCustomBackHandler(handler);
     }

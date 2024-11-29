@@ -11,7 +11,6 @@ interface NavStackModal extends HTMLIonModalElement {}
 })
 export class NavStackService extends SyncServiceBase {
   private openNavStacks: HTMLIonModalElement[] = [];
-  handlerSet = false;
 
   constructor(
     private modalCtrl: ModalController,
@@ -21,21 +20,13 @@ export class NavStackService extends SyncServiceBase {
     // NB: Actions are registered in nav-stack module
   }
 
-  setCustomBackHandler() {
-    this.templateNavService.initializeBackButtonHandler(() => {
-      this.closeTopNavStack();
-      return true;
-    });
-  }
-
   /**
    * Create and present a new nav-stack modal and push it to openNavStacks array.
    * Await and remove from openNavStacks array on dismiss
    */
   public async pushNavStack(navStackConfig: INavStackConfig) {
-    if (!this.handlerSet) {
+    if (this.openNavStacks.length === 0) {
       this.setCustomBackHandler();
-      this.handlerSet = true;
     }
     const modal = await this.createNavStackModal(navStackConfig);
     await this.presentAndTrackModal(modal);
@@ -49,10 +40,6 @@ export class NavStackService extends SyncServiceBase {
   public async closeTopNavStack() {
     if (this.openNavStacks.length === 0) return;
     await this.closeNavStack(this.openNavStacks.length - 1);
-    if (this.openNavStacks.length === 0) {
-      this.templateNavService.destroyBackButtonHandler();
-      this.handlerSet = false;
-    }
   }
 
   /**
@@ -77,7 +64,7 @@ export class NavStackService extends SyncServiceBase {
     modal.onWillDismiss().then(() => {
       const index = this.getNavStackIndex(modal);
       if (index === -1) return;
-      this.openNavStacks.splice(index, 1);
+      this.removeNavStackFromArray(index);
     });
     await modal.present();
     this.openNavStacks.push(modal);
@@ -89,6 +76,17 @@ export class NavStackService extends SyncServiceBase {
 
   private async closeNavStack(index: number) {
     await this.openNavStacks[index].dismiss();
+    this.removeNavStackFromArray(index);
+  }
+
+  private removeNavStackFromArray(index: number) {
     this.openNavStacks.splice(index, 1);
+    if (this.openNavStacks.length === 0) {
+      this.templateNavService.destroyBackButtonHandler();
+    }
+  }
+
+  private setCustomBackHandler() {
+    this.templateNavService.initializeBackButtonHandler(() => this.closeTopNavStack());
   }
 }
