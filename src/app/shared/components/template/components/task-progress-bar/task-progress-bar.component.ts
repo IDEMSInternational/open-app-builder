@@ -89,9 +89,11 @@ export class TmplTaskProgressBarComponent
   standalone: boolean = false;
   useDynamicData: boolean;
   private dataQuery$: Subscription;
+
+  /** Progress wheel variables */
   radius = 16; // Radius of the circle
   circumference = 2 * Math.PI * this.radius; // Circumference of the circle
-  percentage: number;
+  percentage: number = 0;
 
   constructor(
     private cdr: ChangeDetectorRef,
@@ -110,6 +112,7 @@ export class TmplTaskProgressBarComponent
     } else {
       this.evaluateTaskGroupData();
     }
+    this.getStrokeOffset();
   }
 
   getParams() {
@@ -158,11 +161,9 @@ export class TmplTaskProgressBarComponent
     return (this.subtasksCompleted / this.subtasksTotal) * 100;
   }
 
+  /** Calculate circumference of progress circle based on number of tasks completed */
   getStrokeOffset(): number {
-    this.percentage =
-      this.subtasksCompleted < this.subtasksTotal
-        ? this.subtasksCompleted / this.subtasksTotal
-        : 100;
+    this.percentage = this.subtasksCompleted / this.subtasksTotal;
     return this.circumference * (1 - this.percentage);
   }
 
