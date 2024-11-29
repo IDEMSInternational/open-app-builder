@@ -22,11 +22,11 @@ export class TemplateBaseComponent implements ITemplateRowProps {
 
   // TODO - main row should just be an input.required and child code refactored to avoid set override
   // TODO - could also consider whether setting parent required (is it template row map or services?), possibly merge with row
-  rowSignal = signal<FlowTypes.TemplateRow>(undefined);
+  rowSignal = signal<FlowTypes.TemplateRow>(undefined, { equal: isEqual });
   value = computed(() => this.rowSignal().value, { equal: isEqual });
-  parameterList = computed(() => this.rowSignal().parameter_list, { equal: isEqual });
-  actionList = computed(() => this.rowSignal().action_list, { equal: isEqual });
-  rows = computed(() => this.rowSignal().rows, { equal: isEqual });
+  parameterList = computed(() => this.rowSignal().parameter_list || {}, { equal: isEqual });
+  actionList = computed(() => this.rowSignal().action_list || [], { equal: isEqual });
+  rows = computed<FlowTypes.TemplateRow[]>(() => this.rowSignal().rows || [], { equal: isEqual });
 
   /**
    * @ignore
