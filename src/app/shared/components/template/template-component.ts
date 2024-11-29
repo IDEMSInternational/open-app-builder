@@ -152,8 +152,8 @@ export class TemplateComponent implements OnInit, AfterContentInit, ITemplateRow
     const viewContainerRef = this.tmplComponentHost.viewContainerRef;
     const componentRef = viewContainerRef.createComponent(component);
     // assign input variables (note template name taken from the row's value column)
-    componentRef.instance.row = row;
     componentRef.instance.parent = this.parent;
+    componentRef.instance.row = row;
     componentRef.instance.name = row.name;
     componentRef.instance.templatename = row.value;
     this.componentRef = componentRef;
