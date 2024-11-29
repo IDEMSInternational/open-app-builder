@@ -531,82 +531,83 @@ body[data-theme="plh_kids_kw"] {
 
       .image-based-icon {
         max-width: 32px !important;
-        // module-list-item
-        plh-module-list-item {
-          .module-item {
-            width: 100%;
-            // TODO: switch to global secondary variable
-            border: 2px solid #2e98d8;
-            border-radius: var(--ion-border-radius-secondary);
-            padding: 16px;
-            box-shadow: 1px 1px 10px #92b7da;
-            background-color: #f6fafe;
-            .container {
-              display: flex;
-              flex-direction: row;
-              align-items: center;
-              justify-content: space-between;
-            }
-            .module-image {
-              img {
-                width: 100px;
-                height: 100px;
-                max-width: unset;
-              }
-            }
-            .module-title {
-              margin: 0 12px;
-              margin-right: 18px;
-              p {
-                font-size: var(--font-size-text-medium);
-                color: var(--ion-color-primary-700);
-                font-weight: var(--font-weight-bold);
-                line-height: var(--line-height-text-small);
-                text-align: left;
-                text-transform: none;
-                &[data-variant~="capitalise"] {
-                  text-transform: capitalize;
-                }
-                &[data-variant~="uppercase"] {
-                  text-transform: uppercase;
-                }
-              }
-            }
-            .icon {
-              width: 28px;
-              max-width: unset;
-              &[data-language-direction~="rtl"] {
-                -webkit-transform: scaleX(-1);
-                transform: scaleX(-1);
-              }
-            }
-            .container[data-language-direction~="rtl"] {
-              .module-title {
-                p {
-                  text-align: right;
-                }
-              }
-              .module-image {
-                img {
-                  -webkit-transform: scaleX(-1);
-                  transform: scaleX(-1);
-                }
-              }
-            }
+      }
+    }
+  }
+
+  // module-list-item
+  plh-module-list-item {
+    .module-item {
+      width: 100%;
+      // TODO: switch to global secondary variable
+      border: 2px solid #2e98d8;
+      border-radius: var(--ion-border-radius-secondary);
+      padding: 16px;
+      box-shadow: 1px 1px 10px #92b7da;
+      background-color: #f6fafe;
+      .container {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .module-image {
+        img {
+          width: 100px;
+          height: 100px;
+          max-width: unset;
+        }
+      }
+      .module-title {
+        margin: 0 12px;
+        margin-right: 18px;
+        p {
+          font-size: var(--font-size-text-medium);
+          color: var(--ion-color-primary-700);
+          font-weight: var(--font-weight-bold);
+          line-height: var(--line-height-text-small);
+          text-align: left;
+          text-transform: none;
+          &[data-variant~="capitalise"] {
+            text-transform: capitalize;
           }
-          .module-item[data-lock~="true"] {
-            box-shadow: none;
-            opacity: 0.5;
-            border: 2px solid #dbe3f2;
-            background-color: #ffffff;
-            .module-image {
-              img {
-                width: 60px;
-                height: 60px;
-                max-width: unset;
-              }
-            }
+          &[data-variant~="uppercase"] {
+            text-transform: uppercase;
           }
+        }
+      }
+      .icon {
+        width: 28px;
+        max-width: unset;
+        &[data-language-direction~="rtl"] {
+          -webkit-transform: scaleX(-1);
+          transform: scaleX(-1);
+        }
+      }
+      .container[data-language-direction~="rtl"] {
+        .module-title {
+          p {
+            text-align: right;
+          }
+        }
+        .module-image {
+          img {
+            -webkit-transform: scaleX(-1);
+            transform: scaleX(-1);
+          }
+        }
+      }
+    }
+    .module-item[data-lock~="true"] {
+      box-shadow: none;
+      opacity: 0.5;
+      border: 2px solid #dbe3f2;
+      background-color: #ffffff;
+      .module-image {
+        img {
+          width: 60px;
+          height: 60px;
+          max-width: unset;
         }
       }
     }
