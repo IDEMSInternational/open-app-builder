@@ -74,9 +74,26 @@ export namespace FlowTypes {
     flow_type: "asset_pack";
     rows: Data_listRow<IAssetEntry>[];
   }
+
+  /**
+   * Data types supported within data_lists
+   * These are a subset of types provided by Json Schema standards
+   * https://json-schema.org/draft/2020-12/json-schema-core#name-instance-data-model
+   *  */
+  export type Data_listColumnType = "boolean" | "number" | "object" | "string";
+
+  export interface Data_listColumnMetadata {
+    /** Column data type. Default "string" when not defined */
+    type?: Data_listColumnType;
+  }
+
   export interface Data_list extends FlowTypeWithData {
     flow_type: "data_list";
     rows: Data_listRow[];
+    /** Hashmap of any additional column metadata (omitted if all columns default string type) */
+    _metadata?: {
+      [column_name: string]: Data_listColumnMetadata;
+    };
   }
   export interface DataPipeFlow extends FlowTypeWithData {
     flow_type: "data_pipe";
@@ -253,72 +270,29 @@ export namespace FlowTypes {
     rows: TemplateRow[];
     comments?: string;
   }
-  export type TemplateRowType =
-    | "accordion_section"
-    | "accordion"
-    | "advanced_dashed_box"
-    | "animated_section_group"
-    | "animated_section"
-    | "animated_slides"
-    | "audio"
-    | "button"
-    | "carousel"
-    | "combo_box"
-    | "dashed_box"
-    | "data_items"
-    | "debug_toggle"
-    | "display_grid"
-    | "display_group"
-    | "display_theme"
-    | "drawer"
-    | "form"
-    | "help_icon"
-    | "html"
-    | "icon_banner"
-    | "image"
+
+  /** Row types that do not display component but perform an action when processed */
+  type TemplateRowBaseType =
     | "items"
-    | "latex"
-    | "lottie_animation"
-    | "map"
-    | "nav_group"
-    | "nav_section"
-    | "navigation_bar"
     | "nested_properties"
-    | "number_selector"
-    | "odk_form"
-    | "pdf"
-    | "progress_path"
-    | "qr_code"
-    | "radio_button_grid"
-    | "radio_group"
-    | "round_button"
-    | "select_text"
     | "set_default"
     | "set_field"
     | "set_local"
     | "set_variable"
-    | "simple_checkbox"
-    | "slider"
-    | "square_button"
-    | "subtitle"
-    | "task_card"
-    | "task_progress_bar"
-    | "template"
-    | "text_area"
-    | "text_box"
-    | "text_bubble"
-    | "text"
-    | "tile_component"
-    | "timer"
-    | "title"
-    | "toggle_bar"
-    | "update_action_list"
-    | "video"
-    | "workshops_accordion"
-    | "youtube";
+    | "update_action_list";
+
+  /** Row types used within core components (always included) */
+  export type TemplateRowCoreType = "data_items" | "template" | "text" | "title";
+
+  /**
+   * HACK - Deployments can also have row types for any registered component names
+   * To keep intellisense from named core/base types and allow for any string use
+   * workaround type https://stackoverflow.com/a/61048124
+   * */
+  type TemplateRowDeploymentType = string & {};
 
   export interface TemplateRow extends Row_with_translations {
-    type: TemplateRowType;
+    type: TemplateRowBaseType | TemplateRowCoreType | TemplateRowDeploymentType;
     name: string;
     value?: any; // TODO - incoming data will be string, so components should handle own parsing
     action_list?: TemplateRowAction[];
@@ -429,6 +403,7 @@ export namespace FlowTypes {
      * Use `auth: sign_in_google` instead
      * */
     "google_auth",
+    "nav_stack",
     "open_external",
     "pop_up",
     "process_template",
@@ -454,12 +429,12 @@ export namespace FlowTypes {
     "user",
   ] as const;
 
-  export interface TemplateRowAction {
+  export interface TemplateRowAction<ParamsType = any> {
     /** actions have an associated trigger */
     trigger: TemplateRowActionTrigger;
     action_id: (typeof ACTION_ID_LIST)[number];
     args: any[]; // should be boolean | string, but breaks type-checking for templates;
-    params?: any; // additional params also used by args (does not require position argument)
+    params?: ParamsType; // additional params also used by args (does not require position argument)
     // TODO - CC 2022-04-29 - ideally args should be included as part of params
     _triggeredBy?: TemplateRow; // tracking the component that triggered the action for logging;
     /**

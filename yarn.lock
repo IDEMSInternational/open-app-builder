@@ -7883,6 +7883,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/qrcode@npm:^1.5.5":
+  version: 1.5.5
+  resolution: "@types/qrcode@npm:1.5.5"
+  dependencies:
+    "@types/node": "*"
+  checksum: d92c1d3e77406bf13a03ec521b2ffb1ac99b2e6ea3a17cad670f2610f62e1293554c57e4074bb2fd4e9369f475f863b69e0ae8c543cb049c4a3c1b0c2d92522a
+  languageName: node
+  linkType: hard
+
 "@types/qs@npm:*":
   version: 6.9.11
   resolution: "@types/qs@npm:6.9.11"
@@ -11311,6 +11320,12 @@ __metadata:
   checksum: 94550aa462c7bd5a61c1bc480e28554aa306066930152d1b1844a0dd3845d4e5db7e261ddec62ae184913b3e59b55a2ad84093b9d3596a8f17c341514d6c483d
   languageName: node
   linkType: hard
+
+"components@workspace:*, components@workspace:packages/components":
+  version: 0.0.0-use.local
+  resolution: "components@workspace:packages/components"
+  languageName: unknown
+  linkType: soft
 
 "compress-commons@npm:^4.1.2":
   version: 4.1.2
@@ -15187,6 +15202,7 @@ __metadata:
     "@types/marked": ^2.0.3
     "@types/node": ^18.18.13
     "@types/nouislider": ^15.0.0
+    "@types/qrcode": ^1.5.5
     "@types/swiper": ~4.2.0
     "@typescript-eslint/eslint-plugin": ^6.13.1
     "@typescript-eslint/parser": ^6.13.1
@@ -15195,6 +15211,7 @@ __metadata:
     chroma-js: ^2.6.0
     clone: ^2.1.2
     codelyzer: ^6.0.2
+    components: "workspace:*"
     concurrently: ^6.2.0
     core-js: ^3.33.3
     cspell: ^6.20.1
