@@ -2,7 +2,7 @@
   <div class="map-and-legend-container">
     <div id="mapElement" #mapElement class="map"></div>
     <div class="legend">
-      @for (layerGroup of mapLayerGroups; track $index) {
+      @for (layerGroup of mapLayerGroupsSorted; track $index) {
         @for (mapLayer of layerGroup.layers; track $index) {
           @if (mapLayer.getVisible() && mapLayer.get("gradientFill")) {
             <div class="legend-item">
@@ -39,31 +39,34 @@
     </div>
   </div>
   <div class="map-controls">
-    @for (layerGroup of mapLayerGroups; track $index) {
+    @for (layerGroup of mapLayerGroupsSorted; track $index) {
       @if (!layerGroup.controls_style || layerGroup.controls_style === "dropdown") {
         @if (layerGroup.layers.length > 0) {
-          <ion-select
-            label="Visible Layers:"
-            interface="modal"
-            fill="outline"
-            placeholder="Select map layers to view"
-            [multiple]="true"
-            (ionChange)="handleDropdownChange($event, layerGroup.id)"
-            [value]="getVisibleLayerNames(layerGroup.id)"
-          >
-            @for (mapLayer of layerGroup.layers; track $index) {
-              <ion-select-option [value]="mapLayer.get('name')">
-                <ion-item>
-                  <ion-label>
-                    {{
-                      mapLayer.get("name") +
-                        (mapLayer.get("description") ? " – " + mapLayer.get("description") : "")
-                    }}
-                  </ion-label>
-                </ion-item>
-              </ion-select-option>
-            }
-          </ion-select>
+          <div class="map-control-container">
+            <p>{{ (layerGroup.name || "Visible layers") + ":" }}</p>
+            <ion-select
+              interface="modal"
+              fill="outline"
+              placeholder="Select map layers to view"
+              [multiple]="!layerGroup.single_selection"
+              (ionChange)="handleDropdownChange($event, layerGroup.id)"
+              [value]="getVisibleLayerNames(layerGroup.id)"
+            >
+              @for (mapLayer of layerGroup.layers; track $index) {
+                <ion-select-option [value]="mapLayer.get('name')">
+                  <ion-item>
+                    <ion-label>
+                      {{
+                        mapLayer.get("name") +
+                          (mapLayer.get("description") ? " – " + mapLayer.get("description") : "")
+                      }}
+                    </ion-label>
+                  </ion-item>
+                </ion-select-option>
+              }
+              {{ "hiiiii" }}
+            </ion-select>
+          </div>
         }
       } @else if (params.controlsStyle === "list") {
         <ion-list>

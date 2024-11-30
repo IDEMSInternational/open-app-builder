@@ -77,7 +77,14 @@ $map-height: 70vh;
 }
 
 .map-controls {
-  margin-top: 10px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  .map-control-container {
+    flex: 1;
+    min-width: 0;
+  }
 
   .layer-control {
     display: flex;
