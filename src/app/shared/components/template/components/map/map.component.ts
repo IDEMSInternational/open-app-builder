@@ -422,17 +422,40 @@ export class TmplMapComponent extends TemplateBaseComponent implements AfterView
       const colourScale = this.generateColourScale(scale_max, scale_min, gradient_palette);
       vectorLayer.setStyle((feature) => {
         if (feature.get("visible") === false) return null;
-        const value = feature.get(propertyToPlot);
-        const style = new Style({
-          fill: new Fill({
-            color: this.getColourForValue(colourScale, value),
-          }),
-          stroke: new Stroke({
-            color: stroke && stroke !== "none" ? stroke : "transparent",
-            width: 1,
-          }),
-        });
-        return style;
+        const geometryType = feature.getGeometry().getType();
+        if (geometryType === "Polygon") {
+          const value = feature.get(propertyToPlot);
+          const style = new Style({
+            fill: new Fill({
+              color: this.getColourForValue(colourScale, value),
+            }),
+            stroke: new Stroke({
+              color: stroke && stroke !== "none" ? stroke : "transparent",
+              width: 1,
+            }),
+          });
+          return style;
+        } else if (geometryType === "Point") {
+          const radius = point_radius_property
+            ? this.calcPointRadius(
+                feature.get(point_radius_property),
+                point_radius_property_max,
+                point_radius_max
+              )
+            : 2;
+          return new Style({
+            image: new CircleStyle({
+              radius,
+              fill: new Fill({
+                color: fill && fill !== "none" ? fill : "transparent",
+              }),
+              stroke: new Stroke({
+                color: stroke === "none" ? "transparent" : stroke || "black",
+                width: 1,
+              }),
+            }),
+          });
+        }
       });
       const equidistantScaleColours = colourScale.colors(5);
       scaleColours = equidistantScaleColours;
