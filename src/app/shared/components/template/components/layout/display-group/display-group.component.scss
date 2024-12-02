@@ -16,6 +16,8 @@
     width: 100vw;
     display: flex;
     justify-content: center;
+    // nav-stacks have a z-index of (10 + var(--nav-stack-index))
+    z-index: calc(10 + var(--nav-stack-index, 0));
   }
 
   &[data-sticky="top"] {
