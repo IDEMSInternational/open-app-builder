@@ -27,7 +27,7 @@
     "test:e2e": "yarn workspace test-e2e start",
     "lint": "ng lint",
     "lint:docs": "cspell \"documentation/docs/**/*.md\" --config \"cspell.config.yml\"",
-    "analyse": "ng build --configuration=production --stats-json && npx webpack-bundle-analyzer www/stats.json",
+    "analyse": "yarn workflow optimise_build && ng build --configuration=production --stats-json && npx webpack-bundle-analyzer www/stats.json",
     "version": "yarn workspace scripts start version",
     "format": "yarn prettier . --write --log-level silent"
   },
@@ -139,6 +139,7 @@
     "@types/marked": "^2.0.3",
     "@types/node": "^18.18.13",
     "@types/nouislider": "^15.0.0",
+    "@types/qrcode": "^1.5.5",
     "@types/swiper": "~4.2.0",
     "@typescript-eslint/eslint-plugin": "^6.13.1",
     "@typescript-eslint/parser": "^6.13.1",

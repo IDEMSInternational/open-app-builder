@@ -10,7 +10,6 @@ import {
   ITemplatePopupComponentProps,
   TemplatePopupComponent,
 } from "../components/layout/popup/popup.component";
-import { ITemplateContainerProps } from "../models";
 import { TemplateContainerComponent } from "../template-container.component";
 
 // Toggle logs used across full service for debugging purposes (there's quite a few and tedious to comment)
@@ -40,7 +39,7 @@ export class TemplateNavService extends SyncServiceBase {
    * unless specifically closed (e.g. nav triggered from modal)
    */
   private openPopupsByName: {
-    [templatename: string]: { modal: HTMLIonModalElement; props: ITemplateContainerProps };
+    [templatename: string]: { modal: HTMLIonModalElement; props: ITemplatePopupComponentProps };
   } = {};
 
   public async handleQueryParamChange(
