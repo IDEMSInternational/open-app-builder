@@ -8,6 +8,8 @@ ion-modal.nav-stack-modal {
   --box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
   --backdrop-opacity: 0.5;
 
+  z-index: calc(10 + var(--nav-stack-index));
+
   // Override defalut ion-modal behaviour of hiding backdrop for subsequent modals after first
   &:not([data-nav-stack-index="0"]) {
     --backdrop-opacity: 0.2 !important;
