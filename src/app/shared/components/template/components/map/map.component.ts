@@ -43,6 +43,22 @@ interface IMapLayer {
   stroke: string;
   type: "vector" | "heatmap";
   visible_default: boolean;
+  layer_group?: string;
+}
+
+const DEFAULT_LAYER_GROUP_ID = "default";
+
+type IControlsStyleType = "dropdown" | "list";
+
+interface IMapLayerGroup {
+  id: string;
+  name?: string;
+  controls_style?: IControlsStyleType;
+  display_order?: number;
+  single_selection?: boolean;
+  description?: string;
+  layers_data?: IMapLayer[] | string;
+  layers?: BaseLayer[];
 }
 
 interface IMapParams {
@@ -53,9 +69,16 @@ interface IMapParams {
   extent: number[];
   /**
    * TEMPLATE PARAMETER: layers.
-   * A data list or data list name containing a list of layers to be added to the map. Format IMapLayer
+   * A data list or data list name containing a list of layers to be added to the map. Format IMapLayer.
+   * Should not be used in conjuction with layer_groups
    */
   layers: IMapLayer[];
+  /**
+   * TEMPLATE PARAMETER: layer_groups.
+   * A data list or data list name containing a list of layer groups to be added to the map. Format IMapLayerGroup.
+   * Should not be used in conjuction with layers
+   */
+  layerGroups: IMapLayerGroup[];
   /**
    * TEMPLATE PARAMETER: controls_style
    * The style in which to display the list of viewable layers. Default "dropdown".
@@ -72,13 +95,9 @@ export class TmplMapComponent extends TemplateBaseComponent implements AfterView
   public params: Partial<IMapParams> = {};
   public map: Map;
   public mapLayers: BaseLayer[] = [];
-  get mapLayersReversed(): any[] {
-    return [...this.mapLayers].reverse();
-  }
-  get visibleLayerNames(): any[] {
-    return this.mapLayersReversed
-      .filter((layer) => layer.getVisible())
-      .map((layer) => layer.get("name"));
+  public mapLayerGroups: IMapLayerGroup[] = [];
+  get mapLayerGroupsSorted() {
+    return this.mapLayerGroups.sort((a, b) => b.display_order - a.display_order);
   }
   @ViewChild("mapElement") mapElement!: ElementRef<HTMLElement>;
 
@@ -97,12 +116,23 @@ export class TmplMapComponent extends TemplateBaseComponent implements AfterView
   private async init() {
     await this.getParams();
     await this.initialiseMap();
-    this.addLayers(this.params.layers);
+    if (this.params.layerGroups) {
+      for (const layerGroup of this.params.layerGroups) {
+        this.addLayerGroupLayers(layerGroup);
+      }
+    } else if (this.params.layers) {
+      this.addLayers(this.params.layers);
+    }
   }
 
   public handleToggleChange(event: any, mapLayer: BaseLayer) {
     const toggleValue = event.detail.checked;
     mapLayer.setVisible(toggleValue);
+  }
+
+  public getVisibleLayerNames(layerGroup: string) {
+    const groupLayers = this.mapLayerGroups.find((group) => group.id === layerGroup)?.layers;
+    return groupLayers.filter((layer) => layer.getVisible()).map((layer) => layer.get("name"));
   }
 
   public toggleLayer(mapLayer: BaseLayer) {
@@ -119,7 +149,6 @@ export class TmplMapComponent extends TemplateBaseComponent implements AfterView
       lower: number;
       upper: number;
     };
-    console.log("lower:", lower, "upper:", upper);
     const vectorLayer = mapLayer as VectorLayer;
     const propertyName = vectorLayer.get("propertyToPlot");
 
@@ -142,14 +171,24 @@ export class TmplMapComponent extends TemplateBaseComponent implements AfterView
     });
   }
 
-  public handleDropdownChange(event: any) {
-    this.makeLayersVisible(event.detail.value);
+  public handleDropdownChange(event: any, layerGroupId?: string) {
+    this.makeLayersVisible(event.detail.value, layerGroupId);
   }
 
-  private makeLayersVisible(layers: string[]) {
-    this.mapLayers.forEach((layer) => {
-      layer.setVisible(layers.includes(layer.get("name")));
-    });
+  private makeLayersVisible(layers: string[], layerGroupId?: string) {
+    if (layerGroupId) {
+      const layerGroup = this.mapLayerGroups.find((group) => group.id === layerGroupId);
+      layerGroup.layers.forEach((layer) => {
+        layer.setVisible(layers.includes(layer.get("name")));
+      });
+      return;
+    } else {
+      for (const layerGroup of this.mapLayerGroups) {
+        layerGroup.layers.forEach((layer) => {
+          layer.setVisible(layers.includes(layer.get("name")));
+        });
+      }
+    }
   }
 
   private async initialiseMap() {
@@ -172,21 +211,33 @@ export class TmplMapComponent extends TemplateBaseComponent implements AfterView
   }
 
   private async getParams() {
-    const layersReference = getParamFromTemplateRow(this._row, "layers", null);
-    let layersRaw;
-    if (!layersReference) {
-      layersRaw = [];
+    // Use layer_groups if provided, otherwise use layers
+    const layerGroupsReference = getParamFromTemplateRow(this._row, "layer_groups", null);
+    if (layerGroupsReference) {
+      this.params.layerGroups = await this.getDataListFromReferenceParam(layerGroupsReference);
+      for (const layerGroup of this.params.layerGroups) {
+        layerGroup.layers_data = await this.getDataListFromReferenceParam(layerGroup.layers_data);
+      }
+      this.mapLayerGroups = this.params.layerGroups.map((layerGroup) => {
+        layerGroup.layers_data = (layerGroup.layers_data as IMapLayer[]).map((layer) =>
+          this.parseLayerParams(layer)
+        );
+        return layerGroup;
+      });
+    } else {
+      const layersReference = getParamFromTemplateRow(this._row, "layers", null);
+      if (layersReference) {
+        const layersData = await this.getDataListFromReferenceParam(layersReference);
+        this.params.layers = layersData.map((layer) => this.parseLayerParams(layer));
+      }
+      this.mapLayerGroups = [
+        {
+          id: DEFAULT_LAYER_GROUP_ID,
+          layers_data: this.params.layers,
+          layers: [],
+        },
+      ];
     }
-    // If raw value is a string, assume it is a data list name and fetch the associated data
-    else if (typeof layersReference === "string") {
-      const dataList = await this.appDataService.getSheet("data_list", layersReference);
-      layersRaw = dataList?.rows || [];
-    }
-    // Else assume it is a parsed data list, as passed by e.g. @data.my_map_data_list
-    else {
-      layersRaw = Object.values(layersReference);
-    }
-    this.params.layers = layersRaw.map((layer) => this.parseLayerParams(layer));
 
     const extentRaw = getStringParamFromTemplateRow(this._row, "extent", null);
     if (extentRaw) {
@@ -200,6 +251,21 @@ export class TmplMapComponent extends TemplateBaseComponent implements AfterView
     ) as IMapParams["controlsStyle"];
   }
 
+  private async getDataListFromReferenceParam(dataListReference: any) {
+    if (!dataListReference) return [];
+    let rows: any[] = [];
+    // If raw value is a string, assume it is a data list name and fetch the associated data
+    if (typeof dataListReference === "string") {
+      const dataList = await this.appDataService.getSheet("data_list", dataListReference);
+      rows = dataList?.rows || [];
+    }
+    // Else assume it is a parsed data list, as passed by e.g. @data.my_map_data_list
+    else {
+      rows = Object.values(dataListReference);
+    }
+    return rows;
+  }
+
   private parseLayerParams(layer: any) {
     layer.source_asset = this.templateAssetService.getTranslatedAssetPath(layer.source_asset);
     layer.blur = Number(layer.blur);
@@ -210,14 +276,20 @@ export class TmplMapComponent extends TemplateBaseComponent implements AfterView
     return layer;
   }
 
-  private addLayers(layers: IMapLayer[]) {
+  private addLayerGroupLayers(layerGroup: IMapLayerGroup) {
+    if (layerGroup.layers_data) {
+      this.addLayers(layerGroup.layers_data as IMapLayer[], layerGroup.id);
+    }
+  }
+
+  private addLayers(layers: IMapLayer[], layerGroup?: string) {
     for (const layer of layers) {
       switch (layer.type) {
         case "vector":
-          this.addVectorLayer(layer);
+          this.addVectorLayer(layer, layerGroup);
           break;
         case "heatmap":
-          this.addHeatmapLayer(layer);
+          this.addHeatmapLayer(layer, layerGroup);
           break;
         default:
           console.warn(`[MAP] Unknown layer type for ${layer.name}: ${layer.type}`);
@@ -225,7 +297,7 @@ export class TmplMapComponent extends TemplateBaseComponent implements AfterView
     }
   }
 
-  private addHeatmapLayer(layer: IMapLayer) {
+  private addHeatmapLayer(layer: IMapLayer, layerGroup?: string) {
     if (!layer) return;
     const {
       description,
@@ -274,9 +346,9 @@ export class TmplMapComponent extends TemplateBaseComponent implements AfterView
       scaleTitle: scale_title,
       scaleColours: gradient_palette,
     });
-    this.addLayer(heatmapLayer);
+    this.addLayer(heatmapLayer, layerGroup);
   }
-  private addVectorLayer(layer: IMapLayer) {
+  private addVectorLayer(layer: IMapLayer, layerGroup?: string) {
     if (!layer) return;
     const {
       description,
@@ -378,7 +450,7 @@ export class TmplMapComponent extends TemplateBaseComponent implements AfterView
       opacity,
       propertyToPlot,
     });
-    this.addLayer(vectorLayer);
+    this.addLayer(vectorLayer, layerGroup);
   }
 
   private mapValueToBin(value, bins: number[]) {
@@ -400,11 +472,11 @@ export class TmplMapComponent extends TemplateBaseComponent implements AfterView
     return 0;
   }
 
-  private addLayer(layer: BaseLayer) {
+  private addLayer(layer: BaseLayer, layerGroupId: string = DEFAULT_LAYER_GROUP_ID) {
     this.map.addLayer(layer);
-    this.mapLayers.push(layer);
-    console.log("maplayers", this.mapLayers);
-    console.log("maplayers length", this.mapLayers.length);
+    const targetGroup = this.mapLayerGroups.find((group) => group.id === layerGroupId);
+    targetGroup.layers ??= [];
+    targetGroup.layers.push(layer);
     this.cdr.markForCheck();
   }
 

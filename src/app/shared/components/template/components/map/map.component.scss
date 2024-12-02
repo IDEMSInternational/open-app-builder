@@ -64,7 +64,6 @@ $map-height: 70vh;
 
     ion-range {
       width: 100%;
-      // position: absolute;
       bottom: 0px;
       --bar-background: none;
       --bar-background-active: none;
@@ -77,7 +76,14 @@ $map-height: 70vh;
 }
 
 .map-controls {
-  margin-top: 10px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  .map-control-container {
+    flex: 1;
+    min-width: 0;
+  }
 
   .layer-control {
     display: flex;
