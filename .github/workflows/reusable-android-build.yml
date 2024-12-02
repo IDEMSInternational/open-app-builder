@@ -74,6 +74,10 @@ jobs:
           with:
             path: ".idems_app/deployments/${{env.DEPLOYMENT_NAME}}"
 
+        - name: Populate Encryption key
+          if: env.DEPLOYMENT_PRIVATE_KEY != ''
+          run: echo "${{env.DEPLOYMENT_PRIVATE_KEY}}" > ./.idems_app/deployments/${{env.DEPLOYMENT_NAME}}/encrypted/private.key
+
         - name: Populate google-services.json
           env:
             GOOGLE_SERVICES_JSON: ${{ env.GOOGLE_SERVICES_JSON }}
