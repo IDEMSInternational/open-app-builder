@@ -172,10 +172,22 @@ export class TmplTaskProgressBarComponent
   }
 
   private configureItemProcessor(parameterList: any) {
-    this.itemRowOperations = filterObjectByKeys(parameterList, validItemOperations);
-    if (Object.keys(this.itemRowOperations).length > 0) {
+    const rawItemRowOperations = filterObjectByKeys(parameterList, validItemOperations);
+    if (Object.keys(rawItemRowOperations).length > 0) {
+      this.itemRowOperations = this.hackParseItemRowOperationParams(rawItemRowOperations);
       this.itemProcessor = new ItemProcessor();
     }
+  }
+
+  // HACK: use `@task_item` reference in item row operations to prevent evaluation up to this point.
+  // Replace with `this.item` before passing to item processor for evaluation
+  private hackParseItemRowOperationParams(itemRowOperations: any) {
+    for (const [name, arg] of Object.entries(itemRowOperations)) {
+      if (arg && typeof arg === "string") {
+        itemRowOperations[name] = arg.replaceAll("@task_item", "this.item");
+      }
+    }
+    return itemRowOperations;
   }
 
   private async getTaskGroupDataRows() {
