@@ -213,7 +213,6 @@ export class TmplMapComponent extends TemplateBaseComponent implements AfterView
   private async getParams() {
     // Use layer_groups if provided, otherwise use layers
     const layerGroupsReference = getParamFromTemplateRow(this._row, "layer_groups", null);
-    console.log("layerGroupsReference", layerGroupsReference);
     if (layerGroupsReference) {
       this.params.layerGroups = await this.getDataListFromReferenceParam(layerGroupsReference);
       for (const layerGroup of this.params.layerGroups) {
@@ -225,7 +224,6 @@ export class TmplMapComponent extends TemplateBaseComponent implements AfterView
         );
         return layerGroup;
       });
-      console.log("this.mapLayerGroups", this.mapLayerGroups);
     } else {
       const layersReference = getParamFromTemplateRow(this._row, "layers", null);
       if (layersReference) {
@@ -285,7 +283,6 @@ export class TmplMapComponent extends TemplateBaseComponent implements AfterView
   }
 
   private addLayers(layers: IMapLayer[], layerGroup?: string) {
-    console.log("addLayers called", layers, layerGroup);
     for (const layer of layers) {
       switch (layer.type) {
         case "vector":
@@ -476,17 +473,10 @@ export class TmplMapComponent extends TemplateBaseComponent implements AfterView
   }
 
   private addLayer(layer: BaseLayer, layerGroupId: string = DEFAULT_LAYER_GROUP_ID) {
-    console.log("addLayer called", layer);
     this.map.addLayer(layer);
-    console.log("this.mapLayerGroups", this.mapLayerGroups);
-    console.log("layerGroup", layerGroupId);
     const targetGroup = this.mapLayerGroups.find((group) => group.id === layerGroupId);
     targetGroup.layers ??= [];
     targetGroup.layers.push(layer);
-    console.log("this.mapLayerGroups", this.mapLayerGroups);
-    // this.mapLayerGroups[layerGroupId].layers.push(layer);
-    // this.mapLayers.push(layer);
-    console.log("this.mapLayers", this.mapLayers);
     this.cdr.markForCheck();
   }
 
