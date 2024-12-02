@@ -1,5 +1,6 @@
 import { FlowTypes } from "data-models";
-import { setNestedProperty, booleanStringToBoolean } from "../utils";
+import { setNestedProperty } from "../utils";
+import { parseStringValue } from "shared/src/utils";
 
 /**
  * Convert app data map string to object
@@ -50,9 +51,13 @@ export function parseAppDataCollectionString(
     // handle keys that define deeper nesting, such as time.hours: 7
     if (key.includes(".")) {
       const [base, ...nested] = key.split(".");
-      collection[base] = setNestedProperty(nested.join("."), value, collection[base]);
+      collection[base] = setNestedProperty(
+        nested.join("."),
+        parseStringValue(value),
+        collection[base]
+      );
     } else {
-      collection[key] = booleanStringToBoolean(value);
+      collection[key] = parseStringValue(value);
     }
   });
   return collection;

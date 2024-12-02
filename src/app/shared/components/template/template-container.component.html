@@ -1,7 +1,7 @@
 <ng-template [ngIf]="debugMode && !parent" [ngIfElse]="noDebugger">
   <!-- Debugger Mode -->
   <div class="debug-name">
-    <div>template: {{ templatename || "(undefined)" }}</div>
+    <div>template: {{ templatename() || "(undefined)" }}</div>
     <div>name: {{ name || "(undefined)" }}</div>
   </div>
   <!-- Template Component-->
