@@ -89,9 +89,7 @@ export class TmplTaskProgressBarComponent
   params: Partial<ITaskProgressBarParams> = {};
   dataRows = signal<any[]>([]);
   processedDataRows = computed(() => {
-    console.log("dataRows", this.dataRows());
     const processedDataRows = this.processDataRows(this.dataRows());
-    console.log("processedDataRows", processedDataRows);
     return processedDataRows;
   });
   subtasksTotal: number;
@@ -159,14 +157,13 @@ export class TmplTaskProgressBarComponent
       this.params.completedFieldColumnName = "completed_field";
       this.configureItemProcessor(this.parameterList);
     }
-    console.log("itemRowOperations", this.itemRowOperations);
   }
 
   get progressPercentage() {
     return (this.subtasksCompleted / this.subtasksTotal) * 100;
   }
 
-  // Apply any item row operations, e.g. filter, if supplied to component
+  // Apply any item row operations, e.g. filter, if supplied to component via parameter list
   private processDataRows(dataRows: any[]) {
     if (this.itemProcessor) {
       return this.itemProcessor.pipeData(dataRows, this.itemRowOperations);
