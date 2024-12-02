@@ -370,6 +370,12 @@ export class TmplMapComponent extends TemplateBaseComponent implements AfterView
     } = layer;
     if (!source_asset) return;
 
+    let scaleColours, colourScale;
+    if (propertyToPlot) {
+      colourScale = this.generateColourScale(scale_max, scale_min, gradient_palette);
+      const equidistantScaleColours = colourScale.colors(5);
+      scaleColours = equidistantScaleColours;
+    }
     const vectorLayer = new VectorLayer({
       source: new VectorSource({
         format: new GeoJSON(),
@@ -379,15 +385,36 @@ export class TmplMapComponent extends TemplateBaseComponent implements AfterView
         if (feature.get("visible") === false) return null;
 
         const geometryType = feature.getGeometry().getType();
-
         if (geometryType === "Polygon") {
+          if (propertyToPlot) {
+            const value = feature.get(propertyToPlot);
+            return new Style({
+              fill: new Fill({
+                color: this.getColourForValue(colourScale, value),
+              }),
+              stroke: new Stroke({
+                color: stroke && stroke !== "none" ? stroke : "transparent",
+                width: 1,
+              }),
+            });
+          } else {
+            return new Style({
+              fill: new Fill({
+                color: fill && fill !== "none" ? fill : "transparent",
+              }),
+              stroke: new Stroke({
+                color: stroke && stroke !== "none" ? stroke : "transparent",
+                width: 1,
+              }),
+            });
+          }
+        }
+
+        if (geometryType === "LineString") {
           return new Style({
-            fill: new Fill({
-              color: fill && fill !== "none" ? fill : "transparent",
-            }),
             stroke: new Stroke({
               color: stroke && stroke !== "none" ? stroke : "transparent",
-              width: 1,
+              width: 2,
             }),
           });
         }
@@ -415,51 +442,6 @@ export class TmplMapComponent extends TemplateBaseComponent implements AfterView
         }
       },
     });
-
-    let scaleColours;
-
-    if (propertyToPlot) {
-      const colourScale = this.generateColourScale(scale_max, scale_min, gradient_palette);
-      vectorLayer.setStyle((feature) => {
-        if (feature.get("visible") === false) return null;
-        const geometryType = feature.getGeometry().getType();
-        if (geometryType === "Polygon") {
-          const value = feature.get(propertyToPlot);
-          const style = new Style({
-            fill: new Fill({
-              color: this.getColourForValue(colourScale, value),
-            }),
-            stroke: new Stroke({
-              color: stroke && stroke !== "none" ? stroke : "transparent",
-              width: 1,
-            }),
-          });
-          return style;
-        } else if (geometryType === "Point") {
-          const radius = point_radius_property
-            ? this.calcPointRadius(
-                feature.get(point_radius_property),
-                point_radius_property_max,
-                point_radius_max
-              )
-            : 2;
-          return new Style({
-            image: new CircleStyle({
-              radius,
-              fill: new Fill({
-                color: fill && fill !== "none" ? fill : "transparent",
-              }),
-              stroke: new Stroke({
-                color: stroke === "none" ? "transparent" : stroke || "black",
-                width: 1,
-              }),
-            }),
-          });
-        }
-      });
-      const equidistantScaleColours = colourScale.colors(5);
-      scaleColours = equidistantScaleColours;
-    }
 
     this.setCustomLayerProperties(vectorLayer, {
       visible: visible_default,
