@@ -5,11 +5,13 @@ import {
   ElementRef,
   EventEmitter,
   HostBinding,
+  Inject,
   Injector,
   input,
   Input,
   OnDestroy,
   OnInit,
+  Optional,
   Output,
 } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
@@ -43,7 +45,7 @@ export class TemplateContainerComponent implements OnInit, OnDestroy {
   /** unique instance_name of template if created as a child of another template */
   @Input() name: string;
   /** flow_name of template for lookup */
-  templatename = input<string>();
+  templatename = input.required<string>();
   /** reference to parent template (when nested) */
   @Input() parent?: TemplateContainerComponent;
   /** reference to the full row if template instantiated from a parent */
@@ -75,14 +77,17 @@ export class TemplateContainerComponent implements OnInit, OnDestroy {
     private injector: Injector,
     // Containers created in headless context may not have specific injectors
     public elRef?: ElementRef,
-    private route?: ActivatedRoute
+    private route?: ActivatedRoute,
+    @Optional() @Inject("IS_HEADLESS") private isHeadless?: boolean
   ) {
-    effect(() => {
-      // re-render template whenever input template name changes
-      const templatename = this.templatename();
-      this.hostTemplateName = templatename;
-      this.renderTemplate(templatename);
-    });
+    if (!this.isHeadless) {
+      effect(() => {
+        // re-render template whenever input template name changes
+        const templatename = this.templatename();
+        this.hostTemplateName = templatename;
+        this.renderTemplate(templatename);
+      });
+    }
     this.templateActionService = new TemplateActionService(injector, this);
     this.templateRowService = new TemplateRowService(injector, this);
   }
@@ -239,6 +244,11 @@ export class TemplateContainerComponent implements OnInit, OnDestroy {
     log = SHOW_DEBUG_LOGS ? console.log : () => null;
     log_group = SHOW_DEBUG_LOGS ? console.group : () => null;
     log_groupEnd = SHOW_DEBUG_LOGS ? console.groupEnd : () => null;
+  }
+
+  private isCreatedProgrammatically(): boolean {
+    // Check call stack for programmatic creation indicators
+    return new Error().stack.includes("createComponent");
   }
 }
 

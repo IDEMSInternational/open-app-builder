@@ -57,7 +57,10 @@ export class TemplateProcessService extends SyncServiceBase {
     this.container = new TemplateContainerComponent(
       this.templateService,
       this.templateNavService,
-      this.injector
+      this.injector,
+      undefined,
+      undefined,
+      true
     );
     // this.container.name = this.container.name || this.templatename;
     // this.templateBreadcrumbs = [...(this.parent?.templateBreadcrumbs || []), this.name];
