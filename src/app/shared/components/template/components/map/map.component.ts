@@ -39,6 +39,8 @@ interface IMapLayer {
   scale_min: number;
   scale_bins: number[];
   scale_slider: boolean;
+  /** Colour to set those features outside of slider range. Default is to set them to be hidden */
+  excluded_features_colour: string;
   scale_title: string;
   stroke: string;
   type: "vector" | "heatmap";
@@ -154,6 +156,7 @@ export class TmplMapComponent extends TemplateBaseComponent implements AfterView
 
     const scaleMax = vectorLayer.get("scaleMax");
     const scaleMin = vectorLayer.get("scaleMin");
+    const excludedFeaturesColour = vectorLayer.get("excludedFeaturesColour");
 
     const normaliseValue = (value: number) => {
       return scaleMin + (value / 100) * (scaleMax - scaleMin);
@@ -167,7 +170,11 @@ export class TmplMapComponent extends TemplateBaseComponent implements AfterView
       return value >= lowerNormalised && value <= upperNormalised;
     };
     vectorLayer.getSource().forEachFeature((feature: Feature) => {
-      feature.set("visible", filterFeatures(feature));
+      if (excludedFeaturesColour) {
+        feature.set("overrideColour", filterFeatures(feature));
+      } else {
+        feature.set("visible", filterFeatures(feature));
+      }
     });
   }
 
@@ -367,6 +374,7 @@ export class TmplMapComponent extends TemplateBaseComponent implements AfterView
       point_radius_property,
       point_radius_property_max,
       scale_slider,
+      excluded_features_colour,
     } = layer;
     if (!source_asset) return;
 
@@ -385,7 +393,15 @@ export class TmplMapComponent extends TemplateBaseComponent implements AfterView
         if (feature.get("visible") === false) return null;
 
         const geometryType = feature.getGeometry().getType();
+        const overrideColour = feature.get("overrideColour");
         if (geometryType === "Polygon") {
+          if (overrideColour) {
+            return new Style({
+              fill: new Fill({
+                color: excluded_features_colour,
+              }),
+            });
+          }
           if (propertyToPlot) {
             const value = feature.get(propertyToPlot);
             return new Style({
@@ -411,6 +427,14 @@ export class TmplMapComponent extends TemplateBaseComponent implements AfterView
         }
 
         if (geometryType === "LineString") {
+          if (overrideColour) {
+            return new Style({
+              stroke: new Stroke({
+                color: excluded_features_colour,
+                width: 2,
+              }),
+            });
+          }
           return new Style({
             stroke: new Stroke({
               color: stroke && stroke !== "none" ? stroke : "transparent",
@@ -427,6 +451,21 @@ export class TmplMapComponent extends TemplateBaseComponent implements AfterView
                 point_radius_max
               )
             : 2;
+
+          if (overrideColour) {
+            return new Style({
+              image: new CircleStyle({
+                radius,
+                fill: new Fill({
+                  color: excluded_features_colour,
+                }),
+                stroke: new Stroke({
+                  color: "transparent",
+                  width: 0,
+                }),
+              }),
+            });
+          }
           return new Style({
             image: new CircleStyle({
               radius,
@@ -454,6 +493,7 @@ export class TmplMapComponent extends TemplateBaseComponent implements AfterView
       scaleSlider: scale_slider,
       opacity,
       propertyToPlot,
+      excludedFeaturesColour: excluded_features_colour,
     });
     this.addLayer(vectorLayer, layerGroup);
   }
@@ -498,6 +538,7 @@ export class TmplMapComponent extends TemplateBaseComponent implements AfterView
       scaleSlider?: boolean;
       opacity?: number;
       propertyToPlot?: string;
+      excludedFeaturesColour?: string;
     }
   ) {
     const {
@@ -511,6 +552,7 @@ export class TmplMapComponent extends TemplateBaseComponent implements AfterView
       scaleSlider,
       opacity,
       propertyToPlot,
+      excludedFeaturesColour,
     } = setCustomLayerProperties;
 
     const cssGradientFill = scaleColours
@@ -525,6 +567,7 @@ export class TmplMapComponent extends TemplateBaseComponent implements AfterView
     layer.set("scaleMin", scaleMin);
     layer.set("scaleTitle", scaleTitle);
     layer.set("scaleSlider", scaleSlider);
+    layer.set("excludedFeaturesColour", excludedFeaturesColour);
     layer.set("propertyToPlot", propertyToPlot);
   }
 
