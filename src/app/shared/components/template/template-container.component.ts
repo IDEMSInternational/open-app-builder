@@ -1,10 +1,12 @@
 import {
   ChangeDetectorRef,
   Component,
+  effect,
   ElementRef,
   EventEmitter,
   HostBinding,
   Injector,
+  input,
   Input,
   OnDestroy,
   OnInit,
@@ -13,7 +15,7 @@ import {
 import { ActivatedRoute } from "@angular/router";
 import { takeUntil } from "rxjs/operators";
 import { Subject } from "rxjs";
-import { FlowTypes, ITemplateContainerProps } from "./models";
+import { FlowTypes } from "./models";
 import { TemplateActionService } from "./services/instance/template-action.service";
 import { TemplateNavService } from "./services/template-nav.service";
 import { TemplateRowService } from "./services/instance/template-row.service";
@@ -37,12 +39,14 @@ let log_groupEnd = SHOW_DEBUG_LOGS ? console.groupEnd : () => null;
  * - Track dynamic variable dependency (to know when to trigger row change based on set_local/field/global events)
  * - Consider case of template container re-render (some draft cached code exists, but not sure if this is a valid use-case or not)
  */
-export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateContainerProps {
+export class TemplateContainerComponent implements OnInit, OnDestroy {
   /** unique instance_name of template if created as a child of another template */
   @Input() name: string;
   /** flow_name of template for lookup */
-  @Input() templatename: string;
+  templatename = input.required<string>();
+  /** reference to parent template (when nested) */
   @Input() parent?: TemplateContainerComponent;
+  /** reference to the full row if template instantiated from a parent */
   @Input() row?: FlowTypes.TemplateRow;
   /** Allow parents to also see emitted value (note - currently responding to emit is done in service, not output bindings except for ) */
   @Output() emittedValue = new EventEmitter<{ emit_value: string; emit_data: any }>();
@@ -73,13 +77,17 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
     public elRef?: ElementRef,
     private route?: ActivatedRoute
   ) {
+    effect(() => {
+      // re-render template whenever input template name changes
+      const templatename = this.templatename();
+      this.hostTemplateName = templatename;
+      this.renderTemplate(templatename);
+    });
     this.templateActionService = new TemplateActionService(injector, this);
     this.templateRowService = new TemplateRowService(injector, this);
   }
   /** Assign the templatename as metdaata on the component for easier debugging and testing */
-  @HostBinding("attr.data-templatename") get getTemplatename() {
-    return this.templatename;
-  }
+  @HostBinding("attr.data-templatename") public hostTemplateName: string;
 
   async ngOnInit() {
     if (!this.ignoreQueryParamChanges) {
@@ -90,7 +98,6 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
       this.setLogging(true);
       this.templateRowService.setLogging(true);
     }
-    await this.renderTemplate();
   }
 
   ngOnDestroy(): void {
@@ -136,7 +143,7 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
         this.templateRowService.renderedRows = [];
         // allow time for other pending ops to finish
         await _wait(50);
-        await this.renderTemplate();
+        await this.renderTemplate(this.templatename());
       } else {
         await this.templateRowService.processRowUpdates();
         console.log("[Force Reprocess]", this.name, this.templateRowService.renderedRows);
@@ -174,13 +181,13 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
    *  Template Initialisation
    **************************************************************************************/
 
-  private async renderTemplate() {
+  private async renderTemplate(templatename: string) {
     // Lookup template
     const template = await this.templateService.getTemplateByName(
-      this.templatename,
+      templatename,
       this.row?.is_override_target
     );
-    this.name = this.name || this.templatename;
+    this.name = this.name || templatename;
     this.templateBreadcrumbs = [...(this.parent?.templateBreadcrumbs || []), this.name];
     this.template = template;
     log_group("[Template Render Start]", this.name);

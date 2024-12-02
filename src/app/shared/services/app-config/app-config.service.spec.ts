@@ -3,13 +3,9 @@ import { TestBed } from "@angular/core/testing";
 import { AppConfigService } from "./app-config.service";
 import { BehaviorSubject } from "rxjs/internal/BehaviorSubject";
 import { IAppConfig } from "../../model";
-import { signal } from "@angular/core";
+import { signal, WritableSignal } from "@angular/core";
 import { DeploymentService } from "../deployment/deployment.service";
-import {
-  getDefaultAppConfig,
-  IAppConfigOverride,
-  IDeploymentRuntimeConfig,
-} from "packages/data-models";
+import { IAppConfigOverride, IDeploymentRuntimeConfig } from "packages/data-models";
 import { deepMergeObjects } from "../../utils";
 import { firstValueFrom } from "rxjs/internal/firstValueFrom";
 import { MockDeploymentService } from "../deployment/deployment.service.spec";
@@ -46,6 +42,7 @@ const MOCK_DEPLOYMENT_CONFIG: Partial<IDeploymentRuntimeConfig> = {
  */
 describe("AppConfigService", () => {
   let service: AppConfigService;
+  let appConfigSetSpy: jasmine.Spy<WritableSignal<IAppConfig>>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -54,24 +51,20 @@ describe("AppConfigService", () => {
       ],
     });
     service = TestBed.inject(AppConfigService);
+    appConfigSetSpy = spyOn(service.appConfig, "set").and.callThrough();
   });
 
   it("applies default config overrides on init", () => {
-    expect(service.appConfig().APP_HEADER_DEFAULTS.title).toEqual(
-      getDefaultAppConfig().APP_HEADER_DEFAULTS.title
-    );
+    expect(service.appConfig().APP_HEADER_DEFAULTS.title).toEqual("App");
   });
 
   it("applies deployment-specific config overrides on init", () => {
     expect(service.appConfig().APP_FOOTER_DEFAULTS.templateName).toEqual("mock_footer");
   });
 
-  it("applies overrides to app config", () => {
-    service.setAppConfig({ APP_HEADER_DEFAULTS: { title: "updated" } });
-    expect(service.appConfig().APP_HEADER_DEFAULTS).toEqual({
-      ...getDefaultAppConfig().APP_HEADER_DEFAULTS,
-      title: "updated",
-    });
+  it("applies skin-level overrides to app config", () => {
+    service.setAppConfig({ APP_HEADER_DEFAULTS: { title: "updated" } }, "skin");
+    expect(service.appConfig().APP_HEADER_DEFAULTS.title).toEqual("updated");
     // also ensure doesn't unset default deployment
     expect(service.appConfig().APP_FOOTER_DEFAULTS.templateName).toEqual("mock_footer");
   });
@@ -80,7 +73,32 @@ describe("AppConfigService", () => {
     firstValueFrom(service.changes$).then((v) => {
       expect(v).toEqual({ APP_HEADER_DEFAULTS: { title: "partial changes" } });
     });
+    service.setAppConfig({ APP_HEADER_DEFAULTS: { title: "partial changes" } }, "skin");
+    expect(appConfigSetSpy).toHaveBeenCalledTimes(1);
+  });
 
-    service.setAppConfig({ APP_HEADER_DEFAULTS: { title: "partial changes" } });
+  it("ignores lower-order updates when higher order exists", async () => {
+    service.setAppConfig({ APP_FOOTER_DEFAULTS: { templateName: "template_footer" } }, "template");
+    expect(service.appConfig().APP_FOOTER_DEFAULTS.templateName).toEqual("template_footer");
+    service.setAppConfig({ APP_FOOTER_DEFAULTS: { templateName: "skin_footer" } }, "skin");
+    expect(service.appConfig().APP_FOOTER_DEFAULTS.templateName).toEqual("template_footer");
+    // the second service set should not trigger any changes to appConfig signal (or observable)
+    expect(appConfigSetSpy).toHaveBeenCalledTimes(1);
+  });
+
+  it("reverts to initial config values when all overrides removed", async () => {
+    service.setAppConfig({ APP_FOOTER_DEFAULTS: { templateName: "template_footer" } }, "template");
+    expect(service.appConfig().APP_FOOTER_DEFAULTS.templateName).toEqual("template_footer");
+    service.setAppConfig({}, "template");
+    expect(service.appConfig().APP_FOOTER_DEFAULTS.templateName).toEqual("mock_footer");
+  });
+
+  it("reverts to lower order config values when higher order override removed", async () => {
+    service.setAppConfig({ APP_FOOTER_DEFAULTS: { templateName: "skin_footer" } }, "skin");
+    expect(service.appConfig().APP_FOOTER_DEFAULTS.templateName).toEqual("skin_footer");
+    service.setAppConfig({ APP_FOOTER_DEFAULTS: { templateName: "template_footer" } }, "template");
+    expect(service.appConfig().APP_FOOTER_DEFAULTS.templateName).toEqual("template_footer");
+    service.setAppConfig({}, "template");
+    expect(service.appConfig().APP_FOOTER_DEFAULTS.templateName).toEqual("skin_footer");
   });
 });
