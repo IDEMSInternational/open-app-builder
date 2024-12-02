@@ -208,7 +208,7 @@ export function getBooleanParamFromTemplateRow(
   _default: boolean
 ): boolean {
   const params = row.parameter_list || {};
-  return params.hasOwnProperty(name) ? params[name] === "true" : _default;
+  return params.hasOwnProperty(name) ? parseBoolean(params[name]) : _default;
 }
 
 export function getAnswerListParamFromTemplateRow(
