@@ -245,11 +245,6 @@ export class TemplateContainerComponent implements OnInit, OnDestroy {
     log_group = SHOW_DEBUG_LOGS ? console.group : () => null;
     log_groupEnd = SHOW_DEBUG_LOGS ? console.groupEnd : () => null;
   }
-
-  private isCreatedProgrammatically(): boolean {
-    // Check call stack for programmatic creation indicators
-    return new Error().stack.includes("createComponent");
-  }
 }
 
 /** helper function used for dev to wait a fixed amount of time */
