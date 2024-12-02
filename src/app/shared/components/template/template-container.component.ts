@@ -43,7 +43,7 @@ export class TemplateContainerComponent implements OnInit, OnDestroy {
   /** unique instance_name of template if created as a child of another template */
   @Input() name: string;
   /** flow_name of template for lookup */
-  templatename = input.required<string>();
+  templatename = input<string>();
   /** reference to parent template (when nested) */
   @Input() parent?: TemplateContainerComponent;
   /** reference to the full row if template instantiated from a parent */
