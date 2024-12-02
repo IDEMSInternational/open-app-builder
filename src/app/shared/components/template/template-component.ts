@@ -155,7 +155,8 @@ export class TemplateComponent implements OnInit, AfterContentInit, ITemplateRow
     componentRef.instance.row = row;
     componentRef.instance.parent = this.parent;
     componentRef.instance.name = row.name;
-    componentRef.instance.templatename = row.value;
+    // assign templatename input using signal
+    componentRef.setInput("templatename", row.value);
     this.componentRef = componentRef;
   }
 
