@@ -25,9 +25,6 @@ export class NavStackService extends SyncServiceBase {
    * Await and remove from openNavStacks array on dismiss
    */
   public async pushNavStack(navStackConfig: INavStackConfig) {
-    if (this.openNavStacks.length === 0) {
-      this.setCustomBackHandler();
-    }
     const modal = await this.createNavStackModal(navStackConfig);
     await this.presentAndTrackModal(modal);
     return modal;
@@ -67,7 +64,7 @@ export class NavStackService extends SyncServiceBase {
       this.removeNavStackFromArray(index);
     });
     await modal.present();
-    this.openNavStacks.push(modal);
+    this.addNavStackToArray(modal);
   }
 
   private getNavStackIndex(modalElement: HTMLIonModalElement) {
@@ -77,6 +74,13 @@ export class NavStackService extends SyncServiceBase {
   private async closeNavStack(index: number) {
     await this.openNavStacks[index].dismiss();
     this.removeNavStackFromArray(index);
+  }
+
+  private addNavStackToArray(modal: NavStackModal) {
+    if (this.openNavStacks.length === 0) {
+      this.setCustomBackHandler();
+    }
+    this.openNavStacks.push(modal);
   }
 
   private removeNavStackFromArray(index: number) {
