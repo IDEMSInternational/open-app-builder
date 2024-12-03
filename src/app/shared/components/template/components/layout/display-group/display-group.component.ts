@@ -9,6 +9,10 @@ interface IDisplayGroupParams {
   style: "form" | "default" | string | null;
   /** TEMPLATE PARAMETER: "offset". Add a custom bottom margin */
   offset: number;
+  /** TEMPLATE PARAMETER: "background_image_asset". Add a background to the display group */
+  backgroundImageAsset: string;
+  /** TEMPLATE PARAMETER: "background_image_asset". Add a position to the background image */
+  backgroundImagePosition: string;
 }
 
 @Component({
@@ -37,6 +41,16 @@ export class TmplDisplayGroupComponent extends TemplateBaseComponent implements 
       .join(" ")
       .concat(" " + this.params.style) as IDisplayGroupParams["variant"];
     this.type = this.getTypeFromStyles();
+    this.params.backgroundImageAsset = getStringParamFromTemplateRow(
+      this._row,
+      "background_image_asset",
+      null
+    );
+    this.params.backgroundImagePosition = getStringParamFromTemplateRow(
+      this._row,
+      "background_image_position",
+      "top"
+    );
   }
 
   private getTypeFromStyles() {
