@@ -152,6 +152,7 @@ export class TmplTaskProgressBarComponent
       this.params.showText = this.showText;
       this.params.completedColumnName = "completed";
       this.params.completedFieldColumnName = "completed_field";
+      this.params.variant = "bar";
     }
   }
 
