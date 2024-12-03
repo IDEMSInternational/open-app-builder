@@ -3,9 +3,18 @@
 $background-primary: var(--button-background-primary, var(--gradient-primary-mid-vertical));
 $background-secondary: var(--button-background-secondary, var(--gradient-secondary-mid-vertical));
 $background-option: (--button-background-option, var(--gradient-primary-dark-vertical));
-$background-secondary-light: var(--round-button-background-secondary-light, var(--ion-color-secondary-200));
-$background-secondary-mid: var(--round-button-background-secondary-mid, var(--ion-color-secondary-400));
-$background-secondary-dark: var(--round-button-background-secondary-dark, var(--ion-color-secondary-600));
+$background-secondary-light: var(
+  --round-button-background-secondary-light,
+  var(--ion-color-secondary-200)
+);
+$background-secondary-mid: var(
+  --round-button-background-secondary-mid,
+  var(--ion-color-secondary-400)
+);
+$background-secondary-dark: var(
+  --round-button-background-secondary-dark,
+  var(--ion-color-secondary-600)
+);
 
 ion-tab-button {
   color: var(--ion-color-primary-contrast);
@@ -129,4 +138,11 @@ ion-tab-button {
 }
 .alternative {
   color: var(--ion-color-primary);
+}
+
+.no-background {
+  background-color: transparent;
+  ion-icon {
+    height: 32px;
+  }
 }
