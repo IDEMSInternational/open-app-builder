@@ -1,21 +1,29 @@
 <div
-  class="container"
+  class="text-bubble-container container"
   [attr.data-position]="params.speakerPosition"
   [attr.data-variant]="params.variant"
+  [attr.data-language-direction]="templateTranslateService.languageDirection()"
 >
-  <div class="text-bubble" [attr.data-position]="params.speakerPosition">
-    @if (_row.value) {
-      <plh-tmpl-text
-        [row]="{ _nested_name: '', name: '', type: 'text', value: value() }"
-      ></plh-tmpl-text>
+  <div>
+    @if (params.speakerName) {
+      <div class="speaker-name">{{ params.speakerName }}</div>
+    } @else {
+      <div class="no-name"></div>
     }
-    @for (childRow of _row.rows | filterDisplayComponent; track trackByRow($index, childRow)) {
-      <plh-template-component
-        [row]="childRow"
-        [parent]="parent"
-        [attr.data-rowname]="_row.name"
-      ></plh-template-component>
-    }
+    <div class="text-bubble" [attr.data-position]="params.speakerPosition">
+      @if (_row.value) {
+        <plh-tmpl-text
+          [row]="{ _nested_name: '', name: '', type: 'text', value: value() }"
+        ></plh-tmpl-text>
+      }
+      @for (childRow of _row.rows | filterDisplayComponent; track trackByRow($index, childRow)) {
+        <plh-template-component
+          [row]="childRow"
+          [parent]="parent"
+          [attr.data-rowname]="_row.name"
+        ></plh-template-component>
+      }
+    </div>
   </div>
   <img
     [src]="params.speakerImageAsset | plhAsset"
