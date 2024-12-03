@@ -48,3 +48,57 @@ $progress-colour: var(--task-progress-bar-color, var(--ion-color-primary));
     }
   }
 }
+
+// progress-wheel
+.task-progress-wheel {
+  .progress-container {
+    position: relative;
+    width: 150px;
+    height: 150px;
+    margin-bottom: 48px;
+  }
+
+  .progress-wheel {
+    width: 100%;
+    height: 100%;
+    transform: rotate(-90deg); /* Start arc at the top */
+  }
+
+  .progress-background {
+    fill: none;
+    stroke: var(--ion-color-gray-100);
+    stroke-width: 3.6;
+  }
+
+  .progress-foreground {
+    fill: none;
+    stroke: var(--ion-color-secondary-600);
+    stroke-width: 3.6;
+    stroke-linecap: square;
+    transform-origin: center;
+    transform: rotate(0);
+    transition: stroke-dashoffset 0.5s ease-in-out;
+  }
+
+  .progress-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 28px;
+    font-weight: var(--font-weight-medium);
+    color: var(--ion-color-gray-700);
+  }
+
+  .wheel-title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-top: -5px;
+    color: var(--ion-color-gray-600);
+    h4 {
+      font-weight: var(--font-weight-bold);
+    }
+  }
+}
