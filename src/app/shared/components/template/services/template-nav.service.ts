@@ -29,7 +29,7 @@ export class TemplateNavService extends SyncServiceBase {
   // Custom function to handle browser's back button press
   customBackHandler: ICustomBackHandler | null = null;
   popStateListener: ((event: PopStateEvent) => void) | null = null;
-  ignorePopState: boolean = false;
+  public suppressPopState: boolean = false;
 
   constructor(
     private modalCtrl: ModalController,
@@ -110,17 +110,13 @@ export class TemplateNavService extends SyncServiceBase {
   }
 
   private onPopState(event: PopStateEvent) {
-    if (this.ignorePopState) {
-      this.ignorePopState = false;
+    if (this.suppressPopState) {
+      this.suppressPopState = false;
       return;
     }
     if (this.customBackHandler) {
       this.customBackHandler();
-      // ignore popstate event for the programmatic forward navigation
-      // this.ignorePopState = true;
-      // this.location.forward();
     }
-    // this.location.back();
   }
 
   /*****************************************************************************************************
