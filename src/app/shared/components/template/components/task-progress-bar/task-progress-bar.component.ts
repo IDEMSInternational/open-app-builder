@@ -47,7 +47,7 @@ interface ITaskProgressBarParams {
    * The name of the column in the source data list that tracks the completed value of each subtask.
    * If there is no column with this name, the component will look for a column matching completed_field_column_name,
    * and use the corresponding app fields to track the completion status of subtasks.
-   * Deafult "completed"
+   * Default "completed"
    * */
   completedColumnName: string;
   /**
@@ -55,9 +55,13 @@ interface ITaskProgressBarParams {
    * The name of the column in the source data list which stores the name of the completed field of each subtask.
    * The app fields corresponding to the values in this column are used to evaluate the completion of subtasks iff the
    * completed_column_name column is not present. In this case, the task progress bar will not update without a page reload.
-   * Deafult "completed_field"
+   * Default "completed_field"
    * */
   completedFieldColumnName: string;
+  /** TEMPLATE PARAMETER: "variant". Default "bar". */
+  variant: "bar" | "wheel";
+  /* TEMPLATE PARAMETER: "wheel_title". The wheel title that appears at the bottom */
+  title?: string;
 }
 
 @Component({
@@ -85,6 +89,10 @@ export class TmplTaskProgressBarComponent
   standalone: boolean = false;
   useDynamicData: boolean;
   private dataQuery$: Subscription;
+
+  /** Progress wheel variables */
+  radius = 16; // Radius of the circle
+  circumference = 2 * Math.PI * this.radius; // Circumference of the circle
 
   constructor(
     private cdr: ChangeDetectorRef,
@@ -131,6 +139,10 @@ export class TmplTaskProgressBarComponent
         "completed_field_column_name",
         "completed_field"
       );
+      this.params.variant = getStringParamFromTemplateRow(this._row, "variant", "bar")
+        .split(",")
+        .join(" ") as ITaskProgressBarParams["variant"];
+      this.params.title = getStringParamFromTemplateRow(this._row, "wheel_title", null);
     }
     // If component is being instantiated by a parent component (e.g. task-card), use Input() values for params.
     else {
@@ -145,6 +157,12 @@ export class TmplTaskProgressBarComponent
 
   get progressPercentage() {
     return (this.subtasksCompleted / this.subtasksTotal) * 100;
+  }
+
+  /** Calculate circumference of progress circle based on number of tasks completed */
+  getStrokeOffset(): number {
+    const progressProportion = this.subtasksCompleted / this.subtasksTotal;
+    return this.circumference * (1 - (progressProportion || 0));
   }
 
   private async getTaskGroupDataRows() {
