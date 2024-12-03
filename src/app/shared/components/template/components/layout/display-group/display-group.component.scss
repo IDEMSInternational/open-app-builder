@@ -4,6 +4,8 @@
 .display-group-wrapper {
   display: flex;
   align-items: center;
+  background-repeat: no-repeat;
+  height: auto;
 }
 /// In flex box components should try to fill height, but not width (leave to flex property)
 .display-group-wrapper > plh-template-component {
