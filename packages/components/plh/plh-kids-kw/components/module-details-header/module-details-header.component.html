@@ -7,7 +7,7 @@
       @if (params.moduleImageAsset) {
         <div
           class="module-illustration"
-          [style.backgroundImage]="'url(' + (params.bgImage | plhAsset) + ')'"
+          [style.backgroundImage]="'url(' + (params.backgroundImageAsset | plhAsset) + ')'"
         >
           <img [src]="params.moduleImageAsset | plhAsset" class="module-image" />
         </div>

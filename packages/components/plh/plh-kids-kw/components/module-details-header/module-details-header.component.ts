@@ -1,10 +1,10 @@
 import { Component, OnInit } from "@angular/core";
 import { TemplateBaseComponent } from "src/app/shared/components/template/components/base";
 import { TemplateTranslateService } from "src/app/shared/components/template/services/template-translate.service";
-import { getParamFromTemplateRow, getStringParamFromTemplateRow } from "src/app/shared/utils";
+import { getStringParamFromTemplateRow } from "src/app/shared/utils";
 
 interface IModuleHeaderParams {
-  bgImage?: string;
+  backgroundImageAsset?: string;
   moduleImageAsset?: string;
 }
 @Component({
@@ -24,7 +24,11 @@ export class PlhModuleDetailsHeaderComponent extends TemplateBaseComponent imple
   }
 
   private getParams() {
-    this.params.bgImage = getStringParamFromTemplateRow(this._row, "background_illustration", null);
+    this.params.backgroundImageAsset = getStringParamFromTemplateRow(
+      this._row,
+      "background_image_asset",
+      null
+    );
     this.params.moduleImageAsset = getStringParamFromTemplateRow(
       this._row,
       "module_image_asset",
