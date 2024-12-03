@@ -156,7 +156,7 @@ export class TmplTaskProgressBarComponent
   }
 
   get progressPercentage() {
-    return (this.subtasksCompleted / this.subtasksTotal) * 100;
+    return Math.round((this.subtasksCompleted / this.subtasksTotal) * 100);
   }
 
   /** Calculate circumference of progress circle based on number of tasks completed */
