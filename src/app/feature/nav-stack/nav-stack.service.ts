@@ -18,7 +18,6 @@ export class NavStackService extends SyncServiceBase {
   ) {
     super("navStack");
     // NB: Actions are registered in nav-stack module
-    // setInterval(() => console.log("history state", history.state), 1000);
   }
 
   /**
@@ -27,16 +26,15 @@ export class NavStackService extends SyncServiceBase {
    */
   public async pushNavStack(navStackConfig: INavStackConfig) {
     const modal = await this.createNavStackModal(navStackConfig);
-    console.log("modal id", modal.id);
-    // add a history entry so that the page can be navigated back to
-    history.pushState({ modalId: modal.id }, "");
     await this.presentAndTrackModal(modal);
     return modal;
   }
 
   public async closeAllNavStacks() {
-    await Promise.all(this.openNavStacks.map(async (navStack) => await navStack.dismiss()));
-    console.log("openNavStacks", this.openNavStacks);
+    // Close nav-stacks in reverse order
+    for (let index = this.openNavStacks.length - 1; index >= 0; index--) {
+      await this.closeNavStack(index);
+    }
   }
 
   public async closeTopNavStack() {
@@ -67,10 +65,12 @@ export class NavStackService extends SyncServiceBase {
       const index = this.getNavStackIndex(modal);
       if (index === -1) return;
       this.removeNavStackFromArray(index);
-      // this.removeNavStackHistoryState(modal);
+      this.removeNavStackHistoryState(modal);
     });
-    await modal.present();
     this.addNavStackToArray(modal);
+    // add a history entry so that we can navigate back on dismissal without changing page
+    history.pushState({ modalId: modal.id }, "");
+    await modal.present();
   }
 
   private getNavStackIndex(modalElement: HTMLIonModalElement) {
@@ -84,17 +84,13 @@ export class NavStackService extends SyncServiceBase {
 
   private async dismissNavStackModal(modal: NavStackModal) {
     await modal.dismiss();
-    this.removeNavStackHistoryState(modal);
   }
 
   private removeNavStackHistoryState(modal: NavStackModal) {
     const modalId = modal.id;
-    console.log("**modalId", modalId);
-    console.log("**history state", history.state);
-    console.log("**history state modalId", history.state?.modalId);
     // If we pushed a state for this modal, go back
     if (history.state?.modalId === modalId) {
-      console.log("going back");
+      this.templateNavService.suppressPopState = true;
       history.back();
     }
   }
@@ -108,7 +104,6 @@ export class NavStackService extends SyncServiceBase {
 
   private removeNavStackFromArray(index: number) {
     this.openNavStacks.splice(index, 1);
-    console.log("openNavStacks", this.openNavStacks);
     if (this.openNavStacks.length === 0) {
       this.templateNavService.destroyBackButtonHandler();
     }
