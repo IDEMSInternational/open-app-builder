@@ -3,6 +3,7 @@ import { shuffleArray } from "src/app/shared/utils";
 
 export class ItemDataPipe {
   public process(data: any[], operations: { name: string; arg?: string }[]) {
+    console.log("ItemDataPipe.process", data, operations);
     for (const { name, arg } of operations) {
       const operator = this.operations[name];
       if (operator) {
@@ -14,7 +15,10 @@ export class ItemDataPipe {
     return data;
   }
 
-  private operations = {
+  private operations: Record<
+    (typeof validItemOperations)[number],
+    (items: any[], arg?: string) => any
+  > = {
     shuffle: (items: any[] = []) => {
       return shuffleArray(items);
     },
@@ -39,3 +43,5 @@ export class ItemDataPipe {
     },
   };
 }
+
+export const validItemOperations = ["shuffle", "sort", "filter", "reverse", "limit"];

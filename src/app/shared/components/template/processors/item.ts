@@ -23,7 +23,7 @@ export class ItemProcessor {
   }
 
   /** Process all item list operators, such as filter, sort and limit */
-  private pipeData(data: any[], parameter_list: any) {
+  public pipeData(data: any[], parameter_list: any) {
     if (parameter_list) {
       const operations = Object.entries<any>(parameter_list).map(([name, arg]) => ({
         name,
