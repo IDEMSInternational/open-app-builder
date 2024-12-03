@@ -103,6 +103,7 @@ export class TemplateNavService extends SyncServiceBase {
       window.removeEventListener("popstate", this.popStateListener);
       this.popStateListener = null;
     }
+    this.customBackHandler = null;
   }
 
   private setCustomBackHandler(handler: ICustomBackHandler) {
@@ -115,7 +116,6 @@ export class TemplateNavService extends SyncServiceBase {
       return;
     }
     if (this.customBackHandler) {
-      event.preventDefault();
       this.customBackHandler();
       // ignore popstate event for the programmatic forward navigation
       this.ignorePopState = true;
