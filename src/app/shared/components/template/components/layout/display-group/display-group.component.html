@@ -7,6 +7,8 @@
   [style.marginBottom.px]="params.offset"
   [ngSwitch]="type"
   [style]="_row.style_list | styleList"
+  [style.backgroundImage]="'url(' + (params.backgroundImageAsset | plhAsset) + ')'"
+  [style.backgroundPosition]="params.backgroundImagePosition"
 >
   <!-- Default Layout -->
   <ng-container *ngSwitchDefault>
