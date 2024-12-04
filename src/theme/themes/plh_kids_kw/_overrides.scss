@@ -671,12 +671,12 @@ body[data-theme="plh_kids_kw"] {
   ion-tab-button {
     box-shadow: none;
     background: var(--ion-color-primary-600);
-    &.navigation {
+    &[data-variant~="navigation"] {
       background: var(--ion-color-primary-700) !important;
       border-radius: var(--ion-border-radius-standard);
       box-shadow: none !important;
     }
-    &.module {
+    &[data-variant~="module"] {
       background: var(--color-secondary-blue-40) !important;
       border-radius: var(--ion-border-radius-rounded);
       box-shadow: -1px 2px 12px rgba(43, 144, 199, 0.6);
@@ -684,16 +684,16 @@ body[data-theme="plh_kids_kw"] {
       min-width: 68px;
       min-height: 64px;
     }
-    &.orange {
+    &[data-variant~="orange"] {
       background: var(--color-accent-orange-70);
     }
-    &.yellow {
+    &[data-variant~="yellow"] {
       background: var(--color-accent-yellow-70);
     }
-    &.dark-orange {
+    &[data-variant~="dark-orange"] {
       background: var(--color-accent-orange-40);
     }
-    &.information {
+    &[data-variant~="information"] {
       background: var(--color-secondary-blue-40);
     }
   }
