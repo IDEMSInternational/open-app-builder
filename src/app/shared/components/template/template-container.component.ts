@@ -43,7 +43,7 @@ export class TemplateContainerComponent implements OnInit, OnDestroy {
   /** unique instance_name of template if created as a child of another template */
   @Input() name: string;
   /** flow_name of template for lookup */
-  templatename = input.required<string>();
+  templatename = input<string>();
   /** reference to parent template (when nested) */
   @Input() parent?: TemplateContainerComponent;
   /** reference to the full row if template instantiated from a parent */
@@ -77,12 +77,20 @@ export class TemplateContainerComponent implements OnInit, OnDestroy {
     public elRef?: ElementRef,
     private route?: ActivatedRoute
   ) {
-    effect(() => {
-      // re-render template whenever input template name changes
-      const templatename = this.templatename();
-      this.hostTemplateName = templatename;
-      this.renderTemplate(templatename);
-    });
+    effect(
+      () => {
+        // re-render template whenever input template name changes
+        // TODO - this isn't passed when running standalone. Should ideally de-couple render/service logic
+        const templatename = this.templatename();
+        if (templatename) {
+          this.hostTemplateName = templatename;
+          this.renderTemplate(templatename);
+        }
+      },
+      // NOTE - pass the injector from the constructor as angular will not be able
+      // to auto-determine injector when called from a standalone template
+      { injector }
+    );
     this.templateActionService = new TemplateActionService(injector, this);
     this.templateRowService = new TemplateRowService(injector, this);
   }
