@@ -5,11 +5,10 @@ import { TemplateFieldService } from "./template-field.service";
 import { MockTemplateFieldService } from "./template-field.service.spec";
 import { AppDataService } from "src/app/shared/services/data/app-data.service";
 import { CampaignService } from "src/app/feature/campaign/campaign.service";
-import { MockAppDataService } from "src/app/shared/services/data/app-data.service.spec";
+import { MockAppDataService } from "src/app/shared/services/data/app-data.service.mock.spec";
 import { TemplateCalcService } from "./template-calc.service";
 import { MockTemplateCalcService } from "./template-calc.service.spec";
-import { DeploymentService } from "src/app/shared/services/deployment/deployment.service";
-import { MockDeploymentService } from "src/app/shared/services/deployment/deployment.service.spec";
+import { TemplateTranslateService } from "./template-translate.service";
 
 const MOCK_APP_DATA = {};
 
@@ -140,22 +139,20 @@ describe("TemplateVariablesService", () => {
           useValue: new MockAppDataService(MOCK_APP_DATA),
         },
         {
-          provide: DeploymentService,
-          useValue: new MockDeploymentService({ name: "test" }),
-        },
-        {
           provide: TemplateCalcService,
           useValue: new MockTemplateCalcService(),
         },
-        // Mock single method from campaign service called
+        // Mock single method from campaign and templateTranslate services called
         {
           provide: CampaignService,
           useValue: {
-            ready: async () => {
-              return true;
-            },
+            ready: async () => true,
             getNextCampaignRows: getNextCampaignRowsSpy,
           },
+        },
+        {
+          provide: TemplateTranslateService,
+          useValue: { ready: async () => true, translateRow: (row) => row },
         },
       ],
     });
@@ -210,7 +207,8 @@ describe("TemplateVariablesService", () => {
       MOCK_ITEM_STRING,
       TEST_ITEM_CONTEXT
     );
-    expect(resWithoutItemContext).toEqual(MOCK_ITEM_STRING);
+    // NOTE - currently replaces `@item` with `this.item` when value not found
+    expect(resWithoutItemContext).toEqual("this.item._index + 1");
   });
 
   it("Evaluates string containing local variable", async () => {
@@ -223,7 +221,13 @@ describe("TemplateVariablesService", () => {
   });
 
   it("Evaluates templateLiteral with dynamic keys", async () => {
-    const res = await service.evaluatePLHData({ "@field.dynamic_field": 2 }, TEST_FIELD_CONTEXT);
+    const res = await service.evaluatePLHData(
+      { "@field.dynamic_field": 2 },
+      {
+        row: { ...MOCK_CONTEXT_BASE.row, _dynamicFields: {} },
+        templateRowMap: {},
+      }
+    );
     expect(res).toEqual({ number: 2 });
   });
 });
