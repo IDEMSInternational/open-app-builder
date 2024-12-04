@@ -5,6 +5,23 @@ import { TemplateContainerComponent } from "../../template-container.component";
 import { TemplateBaseComponent } from "../base";
 import { getBooleanParamFromTemplateRow, getStringParamFromTemplateRow } from "../../../../utils";
 
+interface IRoundButtonParams {
+  /** TEMPLATE_PARAMETER: 'icon_src' */
+  buttonAlign: string;
+  /** TEMPLATE_PARAMETER: 'icon_src' */
+  disabled: boolean;
+  /** TEMPLATE_PARAMETER: 'icon_src' */
+  icon_src: string;
+  /** TEMPLATE_PARAMETER: 'icon_src' */
+  style: string;
+  /** TEMPLATE_PARAMETER: 'icon_src' */
+  text: string;
+  /** TEMPLATE_PARAMETER: 'style'. Legacy, use 'variant' instead */
+  textAlign: string;
+  /** TEMPLATE_PARAMETER: 'variant' */
+  variant: "no-background" | "module" | "category" | "navigation" | "information" | "module" | "home_screen" | "orange" | "dark_orange" | "yellow" | "standard" | "alternative";
+}
+
 @Component({
   selector: "plh-round-button",
   templateUrl: "./round-icon-button.component.html",
@@ -16,12 +33,7 @@ export class RoundIconButtonComponent
 {
   @Input() parent: TemplateContainerComponent;
   @Input() template: FlowTypes.Template;
-  icon_src: string;
-  text: string;
-  style: string;
-  disabled: boolean = false;
-  textAlign: string;
-  buttonAlign: string;
+  params: Partial<IRoundButtonParams> = {};
   isHomeScreen: boolean = false;
   isCustomIcon: boolean = false;
   constructor(private elRef: ElementRef) {
@@ -44,15 +56,19 @@ export class RoundIconButtonComponent
   }
 
   getParams() {
-    this.style = getStringParamFromTemplateRow(this._row, "style", "information");
-    this.disabled = getBooleanParamFromTemplateRow(this._row, "disabled", false);
+    this.params.style = getStringParamFromTemplateRow(this._row, "style", "");
+    this.params.variant = getStringParamFromTemplateRow(this._row, "variant", "")
+      .split(",")
+      .join(" ")
+      .concat(" ") as IRoundButtonParams["variant"];
+    this.params.disabled = getBooleanParamFromTemplateRow(this._row, "disabled", false);
     if (this._row.disabled) {
-      this.disabled = true;
+      this.params.disabled = true;
     }
-    this.text = getStringParamFromTemplateRow(this._row, "text", "");
-    this.icon_src = getStringParamFromTemplateRow(this._row, "icon_src", "");
-    this.buttonAlign = getStringParamFromTemplateRow(this._row, "button_align", "center");
-    this.isHomeScreen = this.style.includes("home_screen");
-    this.isCustomIcon = this.icon_src.includes("/");
+    this.params.text = getStringParamFromTemplateRow(this._row, "text", "");
+    this.params.icon_src = getStringParamFromTemplateRow(this._row, "icon_src", "");
+    this.params.buttonAlign = getStringParamFromTemplateRow(this._row, "button_align", "center");
+    this.isHomeScreen = this.params.style.includes("home_screen");
+    this.isCustomIcon = this.params.icon_src.includes("/");
   }
 }
