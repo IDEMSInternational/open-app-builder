@@ -25,16 +25,17 @@ body[data-theme="plh_kids_kw"] {
     .left {
       text-align: unset !important;
     }
-    // Center align all button text by default
-    .left.null ::ng-deep {
-      text-align: center;
-      p {
-        text-align: center !important;
-      }
-    }
-    .left ::ng-deep {
+    .left.text {
+      text-align: left;
       p {
         text-align: left !important;
+      }
+    }
+    // Center align all button text by default
+    .left.null {
+      text-align: center !important;
+      p {
+        text-align: center !important;
       }
     }
     .left.centre ::ng-deep {
@@ -70,6 +71,22 @@ body[data-theme="plh_kids_kw"] {
       --background: var(--ion-color-primary-600);
       &:hover {
         --background: var(--ion-color-primary-500);
+      }
+    }
+    ion-button[data-variant~="card"],
+    ion-button[data-param-style~="no-background"] {
+      border: none;
+    }
+    ion-button[data-variant~="card"][data-param-style~="no-background"] {
+      border: 1px solid transparent;
+      border-radius: 0px;
+      background-color: transparent;
+      background: transparent;
+      color: var(--color-surface-black);
+      min-height: 64px;
+      padding: 18px 24px;
+      p {
+        font-weight: var(--font-weight-standard);
       }
     }
   }
