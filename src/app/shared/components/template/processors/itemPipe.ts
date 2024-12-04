@@ -1,9 +1,12 @@
 import { JSEvaluator } from "packages/shared/src/models/jsEvaluator/jsEvaluator";
 import { shuffleArray } from "src/app/shared/utils";
 
+/** List of operations should by item pipe (exported to allow extraction from parameter_list by task-progress-bar */
+export const ITEM_PIPE_OPERATOR_NAMES = ["shuffle", "sort", "filter", "reverse", "limit"] as const;
+type IOperationName = (typeof ITEM_PIPE_OPERATOR_NAMES)[number];
+
 export class ItemDataPipe {
   public process(data: any[], operations: { name: string; arg?: string }[]) {
-    console.log("ItemDataPipe.process", data, operations);
     for (const { name, arg } of operations) {
       const operator = this.operations[name];
       if (operator) {
@@ -15,10 +18,7 @@ export class ItemDataPipe {
     return data;
   }
 
-  private operations: Record<
-    (typeof validItemOperations)[number],
-    (items: any[], arg?: string) => any
-  > = {
+  private operations: Record<IOperationName, (items: any[], arg?: string) => any> = {
     shuffle: (items: any[] = []) => {
       return shuffleArray(items);
     },
@@ -43,5 +43,3 @@ export class ItemDataPipe {
     },
   };
 }
-
-export const validItemOperations = ["shuffle", "sort", "filter", "reverse", "limit"];
