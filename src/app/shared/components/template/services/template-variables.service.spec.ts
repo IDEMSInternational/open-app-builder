@@ -8,6 +8,8 @@ import { CampaignService } from "src/app/feature/campaign/campaign.service";
 import { MockAppDataService } from "src/app/shared/services/data/app-data.service.spec";
 import { TemplateCalcService } from "./template-calc.service";
 import { MockTemplateCalcService } from "./template-calc.service.spec";
+import { DeploymentService } from "src/app/shared/services/deployment/deployment.service";
+import { MockDeploymentService } from "src/app/shared/services/deployment/deployment.service.spec";
 
 const MOCK_APP_DATA = {};
 
@@ -17,6 +19,7 @@ const MOCK_FIELDS = {
   _app_skin: "default",
   string_field: "test_string_value",
   number_field: 2,
+  dynamic_field: "number",
 };
 
 const MOCK_CONTEXT_BASE: IVariableContext = {
@@ -137,6 +140,10 @@ describe("TemplateVariablesService", () => {
           useValue: new MockAppDataService(MOCK_APP_DATA),
         },
         {
+          provide: DeploymentService,
+          useValue: new MockDeploymentService({ name: "test" }),
+        },
+        {
           provide: TemplateCalcService,
           useValue: new MockTemplateCalcService(),
         },
@@ -213,5 +220,10 @@ describe("TemplateVariablesService", () => {
       TEST_LOCAL_CONTEXT
     );
     expect(resWithLocalContext).toEqual("Hello Jasper");
+  });
+
+  it("Evaluates templateLiteral with dynamic keys", async () => {
+    const res = await service.evaluatePLHData({ "@field.dynamic_field": 2 }, TEST_FIELD_CONTEXT);
+    expect(res).toEqual({ number: 2 });
   });
 });
