@@ -16,6 +16,7 @@ env:
     PARENT_DEPLOYMENT_NAME: ${{vars.PARENT_DEPLOYMENT_NAME}}
     PARENT_DEPLOYMENT_BRANCH: ${{vars.PARENT_DEPLOYMENT_BRANCH}}
     GOOGLE_SERVICES_JSON: ${{secrets.GOOGLE_SERVICES_JSON}}
+    DEPLOYMENT_PRIVATE_KEY: ${{secrets.DEPLOYMENT_PRIVATE_KEY}}
     SIGNING_KEY: ${{secrets.SIGNING_KEY}}
     ALIAS: ${{secrets.ALIAS}}
     KEY_STORE_PASSWORD: ${{secrets.KEY_STORE_PASSWORD}}
@@ -73,6 +74,10 @@ jobs:
           uses: actions/checkout@v3
           with:
             path: ".idems_app/deployments/${{env.DEPLOYMENT_NAME}}"
+
+        - name: Populate Encryption key
+          if: env.DEPLOYMENT_PRIVATE_KEY != ''
+          run: echo "${{env.DEPLOYMENT_PRIVATE_KEY}}" > ./.idems_app/deployments/${{env.DEPLOYMENT_NAME}}/encrypted/private.key
 
         - name: Populate google-services.json
           env:
