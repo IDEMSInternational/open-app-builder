@@ -2,6 +2,7 @@ import { Injectable } from "@angular/core";
 import { ModalController } from "@ionic/angular";
 import { INavStackConfig, NavStackComponent } from "./components/nav-stack/nav-stack.component";
 import { SyncServiceBase } from "src/app/shared/services/syncService.base";
+import { TemplateNavService } from "src/app/shared/components/template/services/template-nav.service";
 
 interface NavStackModal extends HTMLIonModalElement {}
 
@@ -11,7 +12,10 @@ interface NavStackModal extends HTMLIonModalElement {}
 export class NavStackService extends SyncServiceBase {
   private openNavStacks: HTMLIonModalElement[] = [];
 
-  constructor(private modalCtrl: ModalController) {
+  constructor(
+    private modalCtrl: ModalController,
+    private templateNavService: TemplateNavService
+  ) {
     super("navStack");
     // NB: Actions are registered in nav-stack module
   }
@@ -57,10 +61,10 @@ export class NavStackService extends SyncServiceBase {
     modal.onWillDismiss().then(() => {
       const index = this.getNavStackIndex(modal);
       if (index === -1) return;
-      this.openNavStacks.splice(index, 1);
+      this.removeNavStackFromArray(index);
     });
     await modal.present();
-    this.openNavStacks.push(modal);
+    this.addNavStackToArray(modal);
   }
 
   private getNavStackIndex(modalElement: HTMLIonModalElement) {
@@ -69,6 +73,24 @@ export class NavStackService extends SyncServiceBase {
 
   private async closeNavStack(index: number) {
     await this.openNavStacks[index].dismiss();
+    this.removeNavStackFromArray(index);
+  }
+
+  private addNavStackToArray(modal: NavStackModal) {
+    if (this.openNavStacks.length === 0) {
+      this.setCustomBackHandler();
+    }
+    this.openNavStacks.push(modal);
+  }
+
+  private removeNavStackFromArray(index: number) {
     this.openNavStacks.splice(index, 1);
+    if (this.openNavStacks.length === 0) {
+      this.templateNavService.destroyBackButtonHandler();
+    }
+  }
+
+  private setCustomBackHandler() {
+    this.templateNavService.initializeBackButtonHandler(() => this.closeTopNavStack());
   }
 }
