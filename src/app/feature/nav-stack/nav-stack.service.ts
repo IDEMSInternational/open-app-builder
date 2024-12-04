@@ -11,6 +11,7 @@ interface NavStackModal extends HTMLIonModalElement {}
 })
 export class NavStackService extends SyncServiceBase {
   private openNavStacks: HTMLIonModalElement[] = [];
+  private readonly MAX_NAV_STACKS = 10;
 
   constructor(
     private modalCtrl: ModalController,
@@ -25,6 +26,10 @@ export class NavStackService extends SyncServiceBase {
    * Await and remove from openNavStacks array on dismiss
    */
   public async pushNavStack(navStackConfig: INavStackConfig) {
+    if (this.openNavStacks.length >= this.MAX_NAV_STACKS) {
+      console.warn(`[NAV STACK] Maximum number of nav stacks reached: ${this.MAX_NAV_STACKS}`);
+      return null;
+    }
     const modal = await this.createNavStackModal(navStackConfig);
     await this.presentAndTrackModal(modal);
     return modal;
@@ -60,36 +65,41 @@ export class NavStackService extends SyncServiceBase {
     modal.setAttribute("data-nav-stack-index", navStackIndex.toString());
     modal.style.setProperty("--nav-stack-index", navStackIndex.toString());
 
-    // Remove array entry whenever modal is dismissed
-    modal.onWillDismiss().then(() => {
-      const index = this.getNavStackIndex(modal);
-      if (index === -1) return;
-      this.removeNavStackFromArray(index);
-      this.removeNavStackHistoryState(modal);
-    });
+    // Handle nav stack dismissal here (whether programmatically from service or from nav-stack component)
+    modal.onWillDismiss().then(() => this.handleNavStackDismissal(modal));
+
     this.addNavStackToArray(modal);
     // add a history entry so that we can navigate back on dismissal without changing page
     history.pushState({ modalId: modal.id }, "");
     await modal.present();
   }
 
+  private handleNavStackDismissal(modal: NavStackModal) {
+    const index = this.getNavStackIndex(modal);
+    if (index === -1) return;
+    this.removeNavStackFromArray(index);
+    this.removeNavStackHistoryState(modal);
+  }
+
   private getNavStackIndex(modalElement: HTMLIonModalElement) {
     return this.openNavStacks.indexOf(modalElement);
   }
 
+  /**
+   * Programmiatcally dismiss a nav-stack. Handling removing from openNavStacks array is done elsewhere
+   * to handle both programmatic dismissal and dismissal from nav-stack component (e.g. via close button)
+   */
   private async closeNavStack(index: number) {
-    await this.dismissNavStackModal(this.openNavStacks[index]);
-    this.openNavStacks.splice(index, 1);
-  }
-
-  private async dismissNavStackModal(modal: NavStackModal) {
-    await modal.dismiss();
+    const modal = this.openNavStacks[index];
+    if (modal) {
+      await modal.dismiss();
+    }
   }
 
   private removeNavStackHistoryState(modal: NavStackModal) {
     const modalId = modal.id;
-    // If we pushed a state for this modal, go back
     if (history.state?.modalId === modalId) {
+      // Temporarily suppress handling `popstate` events for the navigation
       this.templateNavService.suppressPopState = true;
       history.back();
     }
