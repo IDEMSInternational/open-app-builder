@@ -32,7 +32,7 @@
     </div>
   </div>
 } @else {
-  <div class="activity-container">
+  <div class="activity-container" (click)="triggerActions('click')">
     <div class="wrapper unlocked">
       <div class="image">
         <img [src]="params.unlockedImageAsset | plhAsset" />

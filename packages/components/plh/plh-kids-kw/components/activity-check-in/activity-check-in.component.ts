@@ -81,6 +81,7 @@ export class PlhActivityCheckInComponent extends TemplateBaseComponent implement
     const storedDate = localStorage.getItem(localStorageKey);
     if (storedDate) {
       this.unlockDate = new Date(storedDate);
+      this.updateProgress();
     } else {
       this.unlockDate = this.getMidnightOfDate(new Date());
       this.unlockDate.setDate(this.unlockDate.getDate() + this.params.countDownDays);
@@ -88,7 +89,6 @@ export class PlhActivityCheckInComponent extends TemplateBaseComponent implement
     }
     const dailyInterval = this.getMillisecondsUntilMidnight(); // Count until midnight
     setTimeout(() => {
-      this.updateProgress();
       setInterval(() => this.updateProgress(), 24 * 60 * 60 * 1000);
     }, dailyInterval);
   }
