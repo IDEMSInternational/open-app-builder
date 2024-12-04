@@ -12,7 +12,6 @@ import {
 } from "@angular/core";
 import { TaskService } from "src/app/shared/services/task/task.service";
 import {
-  filterObjectByKeys,
   getBooleanParamFromTemplateRow,
   getStringParamFromTemplateRow,
 } from "src/app/shared/utils";
@@ -20,8 +19,9 @@ import { TemplateBaseComponent } from "../base";
 import { IProgressStatus } from "src/app/shared/services/task/task.service";
 import { Subscription, debounceTime } from "rxjs";
 import { DynamicDataService } from "src/app/shared/services/dynamic-data/dynamic-data.service";
-import { validItemOperations } from "../../processors/itemPipe";
+import { ITEM_PIPE_OPERATOR_NAMES } from "../../processors/itemPipe";
 import { ItemProcessor } from "../../processors/item";
+import { filterObjectByKeys } from "packages/shared/src/utils/object-utils";
 
 interface ITaskProgressBarParams {
   /**
@@ -172,7 +172,7 @@ export class TmplTaskProgressBarComponent
   }
 
   private configureItemProcessor(parameterList: any) {
-    const rawItemRowOperations = filterObjectByKeys(parameterList, validItemOperations);
+    const rawItemRowOperations = filterObjectByKeys(parameterList, ITEM_PIPE_OPERATOR_NAMES as any);
     if (Object.keys(rawItemRowOperations).length > 0) {
       this.itemRowOperations = this.hackParseItemRowOperationParams(rawItemRowOperations);
       this.itemProcessor = new ItemProcessor();

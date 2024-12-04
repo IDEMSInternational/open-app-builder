@@ -525,9 +525,3 @@ export function convertBlobToBase64(blob: Blob): Promise<string> {
     reader.readAsDataURL(blob);
   });
 }
-
-export function filterObjectByKeys<T extends object, K extends keyof T>(obj: T, validKeys: K[]) {
-  return Object.fromEntries(
-    Object.entries(obj).filter(([key]) => validKeys.includes(key as K))
-  ) as Partial<Pick<T, K>>;
-}
