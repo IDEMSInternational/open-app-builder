@@ -34,9 +34,22 @@ export class TmplDisplayGroupStickyComponent implements AfterViewInit, OnDestroy
   }
 
   private handleSizeChange(entries: ResizeObserverEntry[]) {
-    // In the case of a sticky header, the top padding/margin of the main app content and template container need to be accounted for,
-    // now that the display group sits at the very top of the content window outside of the main content and template container
     const [{ contentRect }] = entries;
-    this.height.set(contentRect.height);
+
+    let topPadding = 0;
+    if (this.position() === "top") {
+      // As the display group now sits at the top of the content window ignoring the app-wide padding applied to ion-content,
+      // the height of the inline display group placeholder should account for this padding
+      topPadding = this.getContentContainerTopPadding();
+    }
+
+    this.height.set(contentRect.height - topPadding);
+  }
+
+  private getContentContainerTopPadding() {
+    const computedStyles = getComputedStyle(this.viewRef.element.nativeElement);
+    const ionContentPaddingStart =
+      parseFloat(computedStyles.getPropertyValue("--padding-start")) || 0;
+    return ionContentPaddingStart;
   }
 }
