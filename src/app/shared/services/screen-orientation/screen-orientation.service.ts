@@ -22,7 +22,7 @@ export class ScreenOrientationService extends SyncServiceBase {
     private templateActionRegistry: TemplateActionRegistry,
     private templateMetadataService: TemplateMetadataService
   ) {
-    super("Screen Orientation Service");
+    super("ScreenOrientation");
 
     // TODO: expose a property at deployment config level to enable "landscape_mode" to avoid unnecessary checks
     // AND/OR: check on init if any templates actually use screen orientation metadata?

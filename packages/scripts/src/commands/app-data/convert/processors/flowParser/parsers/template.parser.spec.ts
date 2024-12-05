@@ -86,7 +86,7 @@ describe("Template Parser PostProcessor", () => {
     });
     expect(case4.value).toEqual([
       { key_1a: "textValue", key_1b: "@local.value" },
-      { key_2a: "", key_2b: "5" },
+      { key_2a: "", key_2b: 5 },
     ]);
   });
 
