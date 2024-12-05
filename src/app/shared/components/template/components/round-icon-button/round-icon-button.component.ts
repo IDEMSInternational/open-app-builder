@@ -19,7 +19,19 @@ interface IRoundButtonParams {
   /** TEMPLATE_PARAMETER: 'style'. Legacy, use 'variant' instead */
   textAlign: string;
   /** TEMPLATE_PARAMETER: 'variant' */
-  variant: "no-background" | "module" | "category" | "navigation" | "information" | "module" | "home_screen" | "orange" | "dark_orange" | "yellow" | "standard" | "alternative";
+  variant:
+    | "no-background"
+    | "module"
+    | "category"
+    | "navigation"
+    | "information"
+    | "module"
+    | "home_screen"
+    | "orange"
+    | "dark_orange"
+    | "yellow"
+    | "standard"
+    | "alternative";
 }
 
 @Component({
