@@ -1,11 +1,8 @@
 <div class="completion-modal">
-  <div class="wrapper">
-    <div class="confetti-image">
-      <img [src]="params.backgroundImageAsset | plhAsset" />
-    </div>
-    <div class="gift-image">
-      <img [src]="params.giftImageAsset | plhAsset" />
-    </div>
+  <div
+    class="wrapper"
+    [style.backgroundImage]="'url(' + (params.backgroundImageAsset | plhAsset) + ')'"
+  >
     <span *ngIf="_row.rows" class="children">
       <plh-template-component
         *ngFor="let childRow of _row.rows | filterDisplayComponent; trackBy: trackByRow"
