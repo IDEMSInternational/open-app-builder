@@ -698,7 +698,7 @@ body[data-theme="plh_kids_kw"] {
         var(--color-secondary-blue-50),
         var(--color-secondary-blue-80)
       );
-      height: 640px;
+      min-height: 600px;
       border-radius: 40px;
     }
     .wrapper {
@@ -706,22 +706,16 @@ body[data-theme="plh_kids_kw"] {
       flex-direction: column;
       justify-content: center;
       align-items: center;
+      min-height: inherit;
       height: 100%;
-      position: relative;
+
+      background-size: 100%;
+      background-repeat: no-repeat;
+      background-position-y: -36px;
+      background-position-x: center;
       .children {
         width: 100%;
         padding: 0px 16px;
-      }
-    }
-    .confetti-image {
-      position: absolute;
-      top: -30px;
-      width: 100%;
-    }
-    .gift-image {
-      img {
-        max-width: 260px;
-        min-width: 200px;
       }
     }
   }
