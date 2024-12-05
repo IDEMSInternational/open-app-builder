@@ -1,8 +1,8 @@
 <div class="completion-modal">
-  <div
-    class="wrapper"
-    [style.backgroundImage]="'url(' + (params.backgroundImageAsset | plhAsset) + ')'"
-  >
+  <div class="wrapper">
+    <div class="confetti-image">
+      <img [src]="params.backgroundImageAsset | plhAsset" />
+    </div>
     <div class="gift-image">
       <img [src]="params.giftImageAsset | plhAsset" />
     </div>
