@@ -1,6 +1,6 @@
 import { Component, Input } from "@angular/core";
 import { ModalController } from "@ionic/angular";
-import { FlowTypes, ITemplateContainerProps } from "../../../models";
+import { FlowTypes } from "../../../models";
 import { TemplateContainerComponent } from "../../../template-container.component";
 
 @Component({
@@ -41,11 +41,15 @@ export class TemplatePopupComponent {
   }
 }
 
-export interface ITemplatePopupComponentProps extends ITemplateContainerProps {
+/** Required inputs to pass on to TemplateContainer component */
+interface IContainerProps {
   name: string;
   templatename: string;
-  parent?: TemplateContainerComponent;
   row?: FlowTypes.TemplateRow;
+  parent?: TemplateContainerComponent;
+}
+
+export interface ITemplatePopupComponentProps extends IContainerProps {
   showCloseButton?: boolean;
   /** Dismiss popup when completed or uncompleted is emitted from child template */
   dismissOnEmit?: boolean;
