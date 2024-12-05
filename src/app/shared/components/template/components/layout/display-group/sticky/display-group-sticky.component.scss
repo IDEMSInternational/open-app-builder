@@ -1,0 +1,22 @@
+// When the display group is "sticky", style it as an inline header/footer
+:host {
+  display: flex;
+  position: fixed;
+  left: 0;
+  width: 100vw;
+  justify-content: center;
+  background-color: var(--ion-background-color);
+
+  // HACK - nav-stacks have a z-index of (10 + var(--nav-stack-index))
+  // TODO - is this required??
+  // z-index: calc(10 + var(--nav-stack-index, 0));
+
+  // use provided inputs to specify host top/bottom as signals do not nicely
+  // map to hostAttribute https://github.com/angular/angular/issues/53888
+  &[ng-reflect-position="top"] {
+    top: 0;
+  }
+  &[ng-reflect-position="bottom"] {
+    bottom: 0;
+  }
+}
