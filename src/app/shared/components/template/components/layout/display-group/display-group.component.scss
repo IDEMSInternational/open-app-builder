@@ -5,29 +5,6 @@
   display: flex;
   align-items: center;
 }
-
-// When the display group is "sticky", style it as an inline header/footer
-.display-group-wrapper {
-  &[data-sticky="top"],
-  &[data-sticky="bottom"] {
-    background-color: var(--ion-background-color);
-    position: fixed;
-    left: 0;
-    width: 100vw;
-    display: flex;
-    justify-content: center;
-    // nav-stacks have a z-index of (10 + var(--nav-stack-index))
-    z-index: calc(10 + var(--nav-stack-index, 0));
-  }
-
-  &[data-sticky="top"] {
-    top: 0;
-  }
-
-  &[data-sticky="bottom"] {
-    bottom: 0;
-  }
-}
 /// In flex box components should try to fill height, but not width (leave to flex property)
 .display-group-wrapper > plh-template-component {
   height: 100%;

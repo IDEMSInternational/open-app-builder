@@ -30,6 +30,7 @@ import { TmplDashedBoxComponent } from "./dashed-box/dashed-box.component";
 import { TmplDataItemsComponent } from "./data-items/data-items.component";
 import { TmplDisplayGridComponent } from "./layout/display-grid/display-grid.component";
 import { TmplDisplayGroupComponent } from "./layout/display-group/display-group.component";
+import { TmplDisplayGroupStickyComponent } from "./layout/display-group/sticky/display-group-sticky.component";
 import { TmplDrawerComponent } from "./drawer/drawer.component";
 import { TmplHelpIconComponent } from "./help-icon";
 import { TmplIconBannerComponent } from "./icon-banner/icon-banner.component";
@@ -92,6 +93,7 @@ export const TEMPLATE_COMPONENTS = [
   TmplDataItemsComponent,
   TmplDisplayGridComponent,
   TmplDisplayGroupComponent,
+  TmplDisplayGroupStickyComponent,
   TmplDrawerComponent,
   TmplHelpIconComponent,
   TmplIconBannerComponent,
@@ -156,6 +158,7 @@ const COMMON_COMPONENT_MAPPING = {
   debug_toggle: PLHDebugToggleComponent,
   display_grid: TmplDisplayGridComponent,
   display_group: TmplDisplayGroupComponent,
+  display_group_sticky: TmplDisplayGroupStickyComponent,
   drawer: TmplDrawerComponent,
   form: FormComponent,
   help_icon: TmplHelpIconComponent,
