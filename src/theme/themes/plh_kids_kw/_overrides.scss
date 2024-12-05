@@ -666,4 +666,31 @@ body[data-theme="plh_kids_kw"] {
       padding: 8px;
     }
   }
+
+  // Completion Modal
+  plh-completion-modal {
+    .completion-modal {
+      background: linear-gradient(
+        310deg,
+        var(--color-secondary-blue-50),
+        var(--color-secondary-blue-80)
+      );
+      height: 640px;
+      border-radius: 40px;
+      overflow-y: visible;
+    }
+    .wrapper {
+      // background-position: center;
+      background-size: 100%;
+      background-repeat: no-repeat;
+      background-position-y: -36px;
+      background-position-x: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+      overflow-y: visible;
+    }
+  }
 }
