@@ -13,6 +13,8 @@ interface IDisplayGroupParams {
   backgroundImageAsset: string;
   /** TEMPLATE PARAMETER: "background_image_asset". Add a position to the background image */
   backgroundImagePosition: string;
+  /** TEMPLATE PARAMETER: "sticky". Set to "top" or "bottom" to make the display group a sticky inline header/footer */
+  sticky: "top" | "bottom" | null;
 }
 
 @Component({
@@ -29,17 +31,18 @@ export class TmplDisplayGroupComponent extends TemplateBaseComponent implements 
     this.getParams();
   }
 
-  clickDisplayGroup() {
+  public clickDisplayGroup() {
     this.triggerActions("click");
   }
 
-  getParams() {
+  private getParams() {
     this.params.style = getStringParamFromTemplateRow(this._row, "style", "row");
     this.params.offset = getNumberParamFromTemplateRow(this._row, "offset", 0);
     this.params.variant = getStringParamFromTemplateRow(this._row, "variant", "")
       .split(",")
       .join(" ")
       .concat(" " + this.params.style) as IDisplayGroupParams["variant"];
+    this.params.sticky = getStringParamFromTemplateRow(this._row, "sticky", null) as any;
     this.type = this.getTypeFromStyles();
     this.params.backgroundImageAsset = getStringParamFromTemplateRow(
       this._row,
