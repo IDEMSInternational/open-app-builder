@@ -685,4 +685,35 @@ body[data-theme="plh_kids_kw"] {
       border-left: 6px solid var(--ion-color-primary-600);
     }
   }
+
+  // Round Button
+  ion-tab-button {
+    box-shadow: none;
+    background: var(--ion-color-primary-600);
+    &[data-variant~="navigation"] {
+      background: var(--ion-color-primary-700) !important;
+      border-radius: var(--ion-border-radius-standard);
+      box-shadow: none !important;
+    }
+    &[data-variant~="module"] {
+      background: var(--color-secondary-blue-40) !important;
+      border-radius: var(--ion-border-radius-rounded);
+      box-shadow: -1px 2px 12px rgba(43, 144, 199, 0.6);
+      border: 1px solid var(--color-secondary-blue-60);
+      min-width: 68px;
+      min-height: 64px;
+    }
+    &[data-variant~="orange"] {
+      background: var(--color-accent-orange-70);
+    }
+    &[data-variant~="yellow"] {
+      background: var(--color-accent-yellow-70);
+    }
+    &[data-variant~="dark-orange"] {
+      background: var(--color-accent-orange-40);
+    }
+    &[data-variant~="information"] {
+      background: var(--color-secondary-blue-40);
+    }
+  }
 }
