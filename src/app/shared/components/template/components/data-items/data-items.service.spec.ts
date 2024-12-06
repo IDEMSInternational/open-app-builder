@@ -6,23 +6,12 @@ import { DataItemsService } from "./data-items.service";
 import { DynamicDataService } from "src/app/shared/services/dynamic-data/dynamic-data.service";
 import { MockDynamicDataService } from "src/app/shared/services/dynamic-data/dynamic-data.service.mock.spec";
 import { firstValueFrom } from "rxjs";
-import { DataItemProcessor } from "./data-items.processor";
+import { Injector } from "@angular/core";
+import { TemplateVariablesService } from "../../services/template-variables.service";
 
-const MOCK_DATA_ITEMS_ROW: FlowTypes.TemplateRow = {
-  _nested_name: "",
-  name: "",
-  type: "data_items",
-  value: "mock_data_items_list",
-  rows: [
-    {
-      _nested_name: "",
-      name: "",
-      type: "text",
-      value: "@item.id",
-    },
-  ],
-};
-
+/***************************************************************************************
+ * Test Setup
+ **************************************************************************************/
 const MOCK_DATA_ITEMS_LIST: FlowTypes.Data_listRow[] = [
   {
     id: "id_1",
@@ -32,7 +21,52 @@ const MOCK_DATA_ITEMS_LIST: FlowTypes.Data_listRow[] = [
     id: "id_2",
     completed: true,
   },
+  {
+    id: "id_3",
+    completed: false,
+  },
 ];
+
+const MOCK_BUTTON = (): FlowTypes.TemplateRow => ({
+  _nested_name: "",
+  name: "",
+  type: "button",
+  value: "@item.id",
+  action_list: [
+    {
+      trigger: "click",
+      action_id: "set_item",
+      args: [],
+      _raw: "click | set_item | completed: true",
+      _cleaned: "click | set_item | completed: true",
+      params: {
+        completed: true,
+      },
+    },
+  ],
+});
+
+const MOCK_TEMPLATE_ROWS_WITH_NESTED: FlowTypes.TemplateRow[] = [
+  MOCK_BUTTON(),
+  {
+    _nested_name: "",
+    name: "",
+    type: "display_group",
+    rows: [MOCK_BUTTON()],
+  },
+];
+
+const MOCK_DATA_ITEMS_ROW: FlowTypes.TemplateRow = {
+  _nested_name: "",
+  name: "",
+  type: "data_items",
+  value: "mock_data_items_list",
+  rows: MOCK_TEMPLATE_ROWS_WITH_NESTED,
+};
+
+/***************************************************************************************
+ * Test Methods
+ **************************************************************************************/
 
 /**
  * Call standalone tests via:
@@ -40,7 +74,8 @@ const MOCK_DATA_ITEMS_LIST: FlowTypes.Data_listRow[] = [
  */
 describe("DataItemsService", () => {
   let service: DataItemsService;
-  let dataItemsProcessorSpy: jasmine.SpyObj<DataItemProcessor>;
+
+  let rowProcessorSpy: jasmine.Spy;
 
   beforeEach(async () => {
     TestBed.configureTestingModule({
@@ -54,13 +89,18 @@ describe("DataItemsService", () => {
             },
           }),
         },
+        // methods that call these providers are mocked so simply provide stub
+        { provide: Injector, useValue: {} },
+        { provide: TemplateVariablesService, useValue: {} },
       ],
     });
     service = TestBed.inject(DataItemsService);
 
     // mock calls to data items processor
-    dataItemsProcessorSpy = jasmine.createSpyObj("DataItemProcessor", ["renderItems"]);
-    service["getDataItemsProcessor"] = () => dataItemsProcessorSpy;
+    service["hackParseDataList"] = jasmine.createSpy().and.callFake(async (v) => v);
+    // spy on calls to rowProcessor and just return unprocessed
+    rowProcessorSpy = jasmine.createSpy().and.callFake(async (v) => v);
+    service["hackProcessRows"] = rowProcessorSpy;
   });
 
   it("should be created", () => {
@@ -68,13 +108,29 @@ describe("DataItemsService", () => {
   });
 
   it("retrieves data_list data and provides observable list of processed data", async () => {
-    const MOCK_LOCAL_VARIABLES = {};
     const obs = service.getItemsObservable(MOCK_DATA_ITEMS_ROW, {});
-    await firstValueFrom(obs);
-    expect(dataItemsProcessorSpy.renderItems).toHaveBeenCalledWith(
-      MOCK_DATA_ITEMS_LIST,
-      MOCK_DATA_ITEMS_ROW.rows,
-      MOCK_LOCAL_VARIABLES
-    );
+    const data = await firstValueFrom(obs);
+    // should generate looped item rows (2 template rows x 3 item rows)
+    expect(data.length).toEqual(6);
+    // ordinarily data from items row will be processed
+    // check that it calls processor with item context
+    expect(rowProcessorSpy).toHaveBeenCalledTimes(1);
+    const [rowProcessorItemRowsArg] = rowProcessorSpy.calls.first().args;
+    expect(rowProcessorItemRowsArg[0]._evalContext).toEqual({
+      itemContext: {
+        id: "id_1",
+        completed: true,
+        _index: 0,
+        _id: "id_1",
+        _first: true,
+        _last: false,
+      },
+    });
   });
+
+  // TODO - requires improvement to mocked dynamic data service
+  // it("provides live update when data changes", async () => {
+  //   const obs = service.getItemsObservable(MOCK_DATA_ITEMS_ROW, {});
+  //   await firstValueFrom(obs);
+  // });
 });
