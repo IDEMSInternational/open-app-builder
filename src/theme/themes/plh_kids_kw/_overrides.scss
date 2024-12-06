@@ -689,4 +689,16 @@ body[data-theme="plh_kids_kw"] {
       background: var(--color-secondary-blue-40);
     }
   }
+
+  // Radio Button Grid
+  .radio-grid {
+    .item {
+      border: 1px solid var(--ion-color-gray-100);
+      box-shadow: none !important;
+      border-radius: var(--ion-border-radius-small);
+      .item-image-container {
+        padding: 16px;
+      }
+    }
+  }
 }
