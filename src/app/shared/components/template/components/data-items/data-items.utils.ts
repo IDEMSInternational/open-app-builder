@@ -45,6 +45,10 @@ export function updateItemMeta(
           a.args = [setItemContext];
         }
         if (a.action_id === "set_items") {
+          console.warn(
+            "[Deprecated] set_items should not be used from within an items loop",
+            "Use a `set_data` action instead outside of loop"
+          );
           // TODO - add a check for @item refs and replace parameter list with correct values
           // for each individual item (default will be just to pick the first)
           a.args = [setItemContext];
