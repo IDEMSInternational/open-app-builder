@@ -188,7 +188,7 @@ export class TaskService extends AsyncServiceBase {
   }
 
   async setTaskGroupCompletedField(completedField: string, isCompleted: boolean) {
-    console.log(`Setting ${completedField} to ${isCompleted}`);
+    if (!completedField) return;
     await this.templateFieldService.setField(completedField, `${isCompleted}`);
   }
 

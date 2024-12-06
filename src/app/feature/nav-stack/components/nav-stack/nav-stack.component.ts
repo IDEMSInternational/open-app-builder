@@ -17,6 +17,6 @@ export class NavStackComponent {
   constructor(private modalCtrl: ModalController) {}
 
   public close() {
-    this.modalCtrl.dismiss();
+    this.modalCtrl.dismiss("", "close-button");
   }
 }
