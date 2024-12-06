@@ -6,7 +6,7 @@ import { PLH_COMPONENT_MANIFEST } from "components/plh/manifest";
 const COMMON_COMPONENT_MANIFEST: IComponentManifest<ICommonComponentName> = {
   carousel: { module: "SwiperModule" },
   display_group: {
-    implicit: ["form", "advanced_dashed_box"],
+    implicit: ["advanced_dashed_box", "display_group_sticky", "form"],
   },
   lottie_animation: { module: "LottieModule" },
   pdf: { assets: "/assets/comp-pdf", module: "NgxExtendedPdfViewerModule" },
