@@ -1,6 +1,6 @@
 import { Component, Input } from "@angular/core";
 import { TemplateBaseComponent } from "../../base";
-import { FlowTypes, ITemplateRowProps } from "../../../models";
+import { FlowTypes } from "../../../models";
 
 interface IDisplayGridParams {
   /**
@@ -31,7 +31,7 @@ interface IDisplayGridParams {
   templateUrl: "./display-grid.component.html",
   styleUrls: ["./display-grid.component.scss"],
 })
-export class TmplDisplayGridComponent extends TemplateBaseComponent implements ITemplateRowProps {
+export class TmplDisplayGridComponent extends TemplateBaseComponent {
   /**
    * Computed grid style from input parameters
    * @ignore

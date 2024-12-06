@@ -1,6 +1,6 @@
 import { Component, Input } from "@angular/core";
 import { TemplateBaseComponent } from "../base";
-import { FlowTypes, ITemplateRowProps } from "../../models";
+import { FlowTypes } from "../../models";
 import { getAnswerListParamFromTemplateRow, IAnswerListItem } from "src/app/shared/utils";
 
 interface IRadioButtonGridParams {
@@ -28,10 +28,7 @@ interface IRadioButtonGridParams {
   templateUrl: "./radio-button-grid.component.html",
   styleUrls: ["./radio-button-grid.component.scss"],
 })
-export class TmplRadioButtonGridComponent
-  extends TemplateBaseComponent
-  implements ITemplateRowProps
-{
+export class TmplRadioButtonGridComponent extends TemplateBaseComponent {
   /**
    * Computed item array from input parameters
    * @ignore

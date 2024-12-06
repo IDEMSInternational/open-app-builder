@@ -1,7 +1,5 @@
-import { Component, Input, OnInit } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { TemplateBaseComponent } from "../base";
-import { ITemplateRowProps } from "../../models";
-import { TemplateContainerComponent } from "../../template-container.component";
 import { getBooleanParamFromTemplateRow, getStringParamFromTemplateRow } from "../../../../utils";
 
 @Component({
@@ -9,11 +7,7 @@ import { getBooleanParamFromTemplateRow, getStringParamFromTemplateRow } from ".
   templateUrl: "./simple-checkbox.component.html",
   styleUrls: ["./simple-checkbox.component.scss"],
 })
-export class TmplSimpleCheckboxComponent
-  extends TemplateBaseComponent
-  implements ITemplateRowProps, OnInit
-{
-  @Input() parent: TemplateContainerComponent;
+export class TmplSimpleCheckboxComponent extends TemplateBaseComponent implements OnInit {
   position: string;
   reverse: boolean;
   label_text: string | null;

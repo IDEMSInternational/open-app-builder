@@ -1,6 +1,6 @@
 import { Component, ElementRef, HostListener, Input, OnInit, ViewChild } from "@angular/core";
 import { TemplateBaseComponent } from "src/app/shared/components/template/components/base";
-import { FlowTypes, ITemplateRowProps } from "src/app/shared/components/template/models";
+import { FlowTypes } from "src/app/shared/components/template/models";
 import {
   getBooleanParamFromTemplateRow,
   getStringParamFromTemplateRow,
@@ -13,10 +13,7 @@ import { TemplateAssetService } from "src/app/shared/components/template/service
   templateUrl: "./parent-point-box.component.html",
   styleUrls: ["./parent-point-box.component.scss"],
 })
-export class PlhParentPointBoxComponent
-  extends TemplateBaseComponent
-  implements ITemplateRowProps, OnInit
-{
+export class PlhParentPointBoxComponent extends TemplateBaseComponent implements OnInit {
   @Input() template: FlowTypes.Template;
   @ViewChild("star", { static: false }) star: ElementRef;
   @ViewChild("item", { static: false }) item: ElementRef;

@@ -1,7 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { Capacitor } from "@capacitor/core";
 import { TemplateBaseComponent } from "../base";
-import { ITemplateRowProps } from "../../models";
 import {
   getStringParamFromTemplateRow,
   getBooleanParamFromTemplateRow,
@@ -36,10 +35,7 @@ interface IToggleParams {
   templateUrl: "./toggle-bar.html",
   styleUrls: ["./toggle-bar.scss"],
 })
-export class TmplToggleBarComponent
-  extends TemplateBaseComponent
-  implements ITemplateRowProps, OnInit
-{
+export class TmplToggleBarComponent extends TemplateBaseComponent implements OnInit {
   params: Partial<IToggleParams> = {};
   /**
    * The ion-toggle component uses "md" ("material design") and "ios" to refer to visual styles of the component
