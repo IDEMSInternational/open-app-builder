@@ -3,7 +3,13 @@
   @if (params.sticky === "top") {
     <div [style.height.px]="sticky.height()"></div>
   }
-  <tmpl-display-group-sticky [position]="params.sticky" #sticky>
+  <tmpl-display-group-sticky
+    [position]="params.sticky"
+    [style.--sticky-background]="
+      params.stickyBackground === 'transparent' ? 'transparent' : 'var(--ion-background-color)'
+    "
+    #sticky
+  >
     <ng-container *ngTemplateOutlet="content"></ng-container>
   </tmpl-display-group-sticky>
   @if (params.sticky === "bottom") {
