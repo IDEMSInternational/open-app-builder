@@ -1,32 +1,18 @@
-<div class="radio-grid" [ngStyle]="gridStyle">
-  @if (parameter_list.variant.includes("default")) {
+<div class="radio-grid" [ngStyle]="gridStyle" [attr.data-variant]="parameter_list.variant">
+  @for (item of radioItems; track $index) {
     <div
-      *ngFor="let item of radioItems"
       class="item"
       (click)="handleItemClick(item)"
       [attr.data-selected]="item.name === _row.value"
     >
-      <div class="item-image-container" *ngIf="item.image">
-        <img class="item-image" [src]="item.image | plhAsset" />
-      </div>
-      <div class="item-text">{{ item.text }}</div>
-    </div>
-  }
-  @if (parameter_list.variant.includes("circle-icon")) {
-    <div class="circle-grid" [ngStyle]="gridStyle">
-      <div
-        *ngFor="let item of radioItems"
-        class="item"
-        (click)="handleItemClick(item)"
-        [attr.data-selected]="item.name === _row.value"
-      >
-        <div class="item-image-container" *ngIf="item.image">
-          <img class="item-icon" [src]="item.image | plhAsset" />
+      @if (item.image) {
+        <div class="item-image-container">
+          <img class="item-image" [src]="item.image | plhAsset" />
         </div>
-        @if (item.text) {
-          <div class="item-text">{{ item.text }}</div>
-        }
-      </div>
+      }
+      @if (item.text) {
+        <div class="item-text">{{ item.text }}</div>
+      }
     </div>
   }
 </div>

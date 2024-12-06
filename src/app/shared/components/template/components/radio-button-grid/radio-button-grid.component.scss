@@ -29,7 +29,7 @@ $text-color: var(--radio-button-font-color, var(--ion-color-primary));
   color: $text-color;
 }
 
-.circle-grid {
+.radio-grid[data-variant="circle-icon"] {
   display: grid;
 
   .item {
@@ -66,7 +66,7 @@ $text-color: var(--radio-button-font-color, var(--ion-color-primary));
     background: unset;
     .item-image-container {
       border: 2px solid var(--ion-color-primary-300);
-      background: var(--ion-color-primary-100);
+      background: var(--ion-color-primary-200);
     }
     .item-text {
       font-weight: bold;
