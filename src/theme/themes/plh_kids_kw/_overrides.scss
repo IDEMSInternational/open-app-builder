@@ -698,7 +698,7 @@ body[data-theme="plh_kids_kw"] {
         var(--color-secondary-blue-50),
         var(--color-secondary-blue-80)
       );
-      min-height: 600px;
+      min-height: 68vh;
       border-radius: 40px;
     }
     .wrapper {
@@ -709,13 +709,15 @@ body[data-theme="plh_kids_kw"] {
       min-height: inherit;
       height: 100%;
 
-      background-size: 100%;
-      background-repeat: no-repeat;
-      background-position-y: -36px;
-      background-position-x: center;
+      position: relative;
       .children {
+        position: relative;
         width: 100%;
         padding: 0px 16px;
+      }
+      .confetti-image {
+        position: absolute;
+        top: -30px;
       }
     }
   }
