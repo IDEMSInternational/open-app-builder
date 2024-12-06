@@ -53,17 +53,13 @@ export class NavStackService extends SyncServiceBase {
    * Creates a new nav-stack modal instance
    */
   private async createNavStackModal(config: INavStackConfig) {
-    console.log("[NAV STACK] config", config);
     const modal = await this.modalCtrl.create({
       component: NavStackComponent,
       componentProps: { config },
       // Styling must be done in global theme scss as the modal is injected dynamically into the dom
       cssClass: "nav-stack-modal",
       canDismiss: (data, role) => {
-        console.log("Dismiss requested", data, role);
-        console.log("Allowed dismiss roles", ALLOWED_DISMISS_ROLES);
         if (ALLOWED_DISMISS_ROLES.includes(role)) {
-          console.log("Dismiss allowed");
           return Promise.resolve(true);
         }
         return Promise.resolve(false);
