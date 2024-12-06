@@ -659,6 +659,33 @@ body[data-theme="plh_kids_kw"] {
     }
   }
 
+  // Display Group
+  .display-group-wrapper {
+    border-radius: 0px !important;
+    border-top-right-radius: var(--ion-border-radius-small) !important;
+    border-bottom-right-radius: var(--ion-border-radius-small) !important;
+    &[data-variant~="box_primary"] {
+      --background-color: var(--ion-color-gray-100) !important;
+      border: none;
+      border-left: 6px solid var(--color-accent-yellow-60);
+    }
+    &[data-variant~="box_secondary"] {
+      --background-color: var(--ion-color-gray-100) !important;
+      border: none;
+      border-left: 6px solid var(--ion-color-secondary-600);
+    }
+    &[data-variant~="box_gray"] {
+      --background-color: var(--ion-color-gray-100) !important;
+      border: none;
+      border-left: 6px solid var(--ion-color-gray-600);
+    }
+    &[data-variant~="box_white"] {
+      --background-color: white !important;
+      border: none;
+      border-left: 6px solid var(--ion-color-primary-600);
+    }
+  }
+
   // Round Button
   ion-tab-button {
     box-shadow: none;
@@ -687,40 +714,6 @@ body[data-theme="plh_kids_kw"] {
     }
     &[data-variant~="information"] {
       background: var(--color-secondary-blue-40);
-    }
-  }
-
-  // Completion Modal
-  plh-completion-modal {
-    .completion-modal {
-      margin: 20px -20px;
-      background: linear-gradient(
-        310deg,
-        var(--color-secondary-blue-50),
-        var(--color-secondary-blue-80)
-      );
-      min-height: 80vh;
-      max-width: 480px;
-      border-radius: 40px;
-    }
-    .wrapper {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      min-height: inherit;
-      height: 100%;
-
-      position: relative;
-      .children {
-        position: relative;
-        width: 100%;
-        padding: 0px 16px;
-      }
-      .confetti-image {
-        position: absolute;
-        top: -30px;
-      }
     }
   }
 }
