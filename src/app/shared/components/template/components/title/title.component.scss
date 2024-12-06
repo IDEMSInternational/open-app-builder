@@ -45,4 +45,12 @@
     color: var(--ion-color-primary);
     @include mixins.small-square;
   }
+
+  &[data-variant~="header"] {
+    padding: var(--regular-padding);
+    h1 {
+      width: 100%;
+      text-align: center !important;
+    }
+  }
 }
