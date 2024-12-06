@@ -15,10 +15,7 @@ import { switchMap, filter } from "rxjs";
  * Data Items are a structural row component that subscribes to a dynamic data list
  * and re-renders child components on change
  *
- * TODO
- * - Would be better if can render children without container (like regular items)
- * - Should be refactored into structural container instead of display component
- * - Could possibly refactor to feature module including services
+ * - Should be refactored to handle at container level without rendered UI
  */
 export class TmplDataItemsComponent extends TemplateBaseComponent {
   // HACK - create signal from combination of signals and observables
