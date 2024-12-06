@@ -693,12 +693,14 @@ body[data-theme="plh_kids_kw"] {
   // Completion Modal
   plh-completion-modal {
     .completion-modal {
+      margin: 20px -20px;
       background: linear-gradient(
         310deg,
         var(--color-secondary-blue-50),
         var(--color-secondary-blue-80)
       );
-      min-height: 68vh;
+      min-height: 80vh;
+      max-width: 480px;
       border-radius: 40px;
     }
     .wrapper {
