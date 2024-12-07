@@ -265,6 +265,11 @@ export class TemplateRowService extends SyncServiceBase {
     // strings should be translated before dynamic processing
     const translatedRow = this.templateTranslateService.translateRow(preProcessedRow);
 
+    // data_items handle all of their own row processing
+    if (translatedRow.type === "data_items") {
+      return translatedRow;
+    }
+
     // Continue processing full row
     const parsedRow: FlowTypes.TemplateRow = await this.templateVariablesService.evaluatePLHData(
       { ...translatedRow },
@@ -280,9 +285,6 @@ export class TemplateRowService extends SyncServiceBase {
     }
 
     if (type === "template") isNestedTemplate = true;
-
-    // data_items still need to process on render so avoid populating child rows to templateRowMap
-    if (type === "data_items") isNestedTemplate = true;
 
     // Instead of returning themselves items looped child rows
     if (type === "items") {

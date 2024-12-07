@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { JSEvaluator } from "shared/src/models/jsEvaluator/jsEvaluator";
 import {
-  ITemplatedDataContextList,
+  ITemplatedDataContext,
   TemplatedData,
 } from "shared/src/models/templatedData/templatedData";
 import { AsyncServiceBase } from "../asyncService.base";
@@ -108,7 +108,7 @@ export class AppDataVariableService extends AsyncServiceBase {
     // If the parsed expression not valid JS (e.g. just text) then return as-is
     const jsEvaluator = new JSEvaluator();
 
-    // Note - assign all replaced string values as javascript contants to support further operation, E.g.
+    // Note - assign all replaced string values as javascript constants to support further operation, E.g.
     // `@field.name.startsWith('A')` -> my_name.startsWith('A'); constants: {my_name: "my_name"} (will evaulate string variable)
     // `hello @field.name` -> `hello my_name`; constants: {my_name: "my_name"} (fails to evaluate hello and returns as text)
     const constants: Record<string, string> = {};
@@ -129,7 +129,7 @@ export class AppDataVariableService extends AsyncServiceBase {
   }
 
   /** Evaluate all context-variable expressions - return as both nested and flat map */
-  private async processContextVariables(variables: ITemplatedDataContextList) {
+  private async processContextVariables(variables: ITemplatedDataContext) {
     const evaluatedContext = {};
     const evaluatedContextFlatmap = {};
     let isRecursive = false;
