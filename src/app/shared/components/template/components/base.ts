@@ -1,4 +1,4 @@
-import { Component, Input, signal } from "@angular/core";
+import { Component, computed, Input, signal } from "@angular/core";
 import { isEqual } from "packages/shared/src/utils/object-utils";
 import { FlowTypes, ITemplateRowProps } from "../models";
 import { TemplateContainerComponent } from "../template-container.component";
@@ -20,9 +20,13 @@ export class TemplateBaseComponent implements ITemplateRowProps {
   /** @ignore */
   _row: FlowTypes.TemplateRow;
 
-  value = signal<FlowTypes.TemplateRow["value"]>(undefined, { equal: isEqual });
-  parameterList = signal<FlowTypes.TemplateRow["parameter_list"]>({}, { equal: isEqual });
-  actionList = signal<FlowTypes.TemplateRow["action_list"]>([], { equal: isEqual });
+  // TODO - main row should just be an input.required and child code refactored to avoid set override
+  // TODO - could also consider whether setting parent required (is it template row map or services?), possibly merge with row
+  rowSignal = signal<FlowTypes.TemplateRow>(undefined, { equal: isEqual });
+  value = computed(() => this.rowSignal().value, { equal: isEqual });
+  parameterList = computed(() => this.rowSignal().parameter_list || {}, { equal: isEqual });
+  actionList = computed(() => this.rowSignal().action_list || [], { equal: isEqual });
+  rows = computed<FlowTypes.TemplateRow[]>(() => this.rowSignal().rows || [], { equal: isEqual });
 
   /**
    * @ignore
@@ -30,9 +34,7 @@ export class TemplateBaseComponent implements ITemplateRowProps {
    **/
   @Input() set row(row: FlowTypes.TemplateRow) {
     this._row = row;
-    this.value.set(row.value);
-    this.parameterList.set(row.parameter_list);
-    this.actionList.set(row.action_list);
+    this.rowSignal.set(row);
   }
 
   /**
@@ -40,7 +42,6 @@ export class TemplateBaseComponent implements ITemplateRowProps {
    * reference to parent template container - does not have setter as should remain static
    **/
   @Input() parent: TemplateContainerComponent;
-  constructor() {}
 
   /**
    * Whenever actions are triggered handle in the parent template component
