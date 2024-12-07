@@ -4,7 +4,7 @@ import { IConverterPaths, IFlowHashmapByType, IParsedWorkbookData } from "../../
 import { arrayToHashmap, groupJsonByKey, IContentsEntry } from "../../utils";
 import BaseProcessor from "../base";
 
-const cacheVersion = 20241121.2;
+const cacheVersion = 20241203.0;
 
 export class FlowParserProcessor extends BaseProcessor<FlowTypes.FlowTypeWithData> {
   public parsers: { [flowType in FlowTypes.FlowType]: Parsers.DefaultParser } = {
