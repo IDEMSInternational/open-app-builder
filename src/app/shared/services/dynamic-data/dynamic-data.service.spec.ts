@@ -4,7 +4,7 @@ import { firstValueFrom } from "rxjs";
 
 import { DynamicDataService } from "./dynamic-data.service";
 import { AppDataService } from "../data/app-data.service";
-import { MockAppDataService } from "../data/app-data.service.spec";
+import { MockAppDataService } from "../data/app-data.service.mock.spec";
 import { DeploymentService } from "../deployment/deployment.service";
 import { MockDeploymentService } from "../deployment/deployment.service.spec";
 
