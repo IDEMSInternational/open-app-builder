@@ -4,7 +4,7 @@ import { getNumberParamFromTemplateRow, getStringParamFromTemplateRow } from "..
 
 interface IDisplayGroupParams {
   /** TEMPLATE PARAMETER: "variant" */
-  variant: "box_gray" | "box_primary" | "box_secondary" | "box_white" | "dashed_box";
+  variant: "box_gray" | "box_primary" | "box_secondary" | "box_white" | "dashed_box" | "header";
   /** TEMPLATE PARAMETER: "style". TODO: Various additional legacy styles, review and convert some to variants */
   style: "form" | "default" | string | null;
   /** TEMPLATE PARAMETER: "offset". Add a custom bottom margin */

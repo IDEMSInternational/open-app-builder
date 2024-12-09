@@ -42,6 +42,13 @@
   margin: 1em 0 0 0;
 }
 
+.display-group-wrapper[data-variant~="header"] {
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 var(--small-padding);
+}
+
 .display-group-wrapper {
   &[data-variant~="box_gray"],
   &[data-variant~="box_primary"],
