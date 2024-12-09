@@ -3,13 +3,7 @@
   @if (params.sticky === "top") {
     <div [style.height.px]="sticky.height()"></div>
   }
-  <tmpl-display-group-sticky
-    [position]="params.sticky"
-    [style.--sticky-background]="
-      params.stickyBackground === 'transparent' ? 'transparent' : 'var(--ion-background-color)'
-    "
-    #sticky
-  >
+  <tmpl-display-group-sticky [position]="params.sticky" #sticky>
     <ng-container *ngTemplateOutlet="content"></ng-container>
   </tmpl-display-group-sticky>
   @if (params.sticky === "bottom") {
@@ -32,8 +26,14 @@
     [style.marginBottom.px]="params.offset"
     [ngSwitch]="type"
     [style]="_row.style_list | styleList"
-    [style.backgroundImage]="'url(' + (params.backgroundImageAsset | plhAsset) + ')'"
-    [style.backgroundPosition]="params.backgroundImagePosition"
+    [style.backgroundImage]="
+      params.backgroundImageAsset
+        ? 'url(' + (params.backgroundImageAsset | plhAsset) + ')'
+        : undefined
+    "
+    [style.backgroundPosition]="
+      params.backgroundImageAsset ? params.backgroundImagePosition : undefined
+    "
   >
     <!-- Default Layout -->
     <ng-container *ngSwitchDefault>

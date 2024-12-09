@@ -21,11 +21,6 @@ interface IDisplayGroupParams {
   backgroundImagePosition: string;
   /** TEMPLATE PARAMETER: "sticky". Set to "top" or "bottom" to make the display group a sticky inline header/footer */
   sticky: "top" | "bottom" | null;
-  /**
-   * TEMPLATE PARAMETER: "sticky_background". Set the background colour of the display group if sticky.
-   * Defaults to using the main app background colour determined by the theme.
-   */
-  stickyBackground: "default" | "transparent";
 }
 
 @Component({
@@ -65,11 +60,6 @@ export class TmplDisplayGroupComponent extends TemplateBaseComponent implements 
       "background_image_position",
       "top"
     );
-    this.params.stickyBackground = getStringParamFromTemplateRow(
-      this._row,
-      "sticky_background",
-      "default"
-    ) as IDisplayGroupParams["stickyBackground"];
   }
 
   private getTypeFromStyles() {
