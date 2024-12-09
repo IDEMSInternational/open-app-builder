@@ -5,7 +5,7 @@ interface ITestData {
   output: any; // Expected end parsed data
 }
 
-/** This context is applied to all tests. Input will be processed for subsitition into output */
+/** This context is applied to all tests. Input will be processed for substitution into output */
 const context = {
   input: {
     row: {
@@ -127,17 +127,18 @@ describe("Templated Data Parsing", () => {
 });
 
 /**
- * Text extract method of
+ * Text extract method
+ * yarn workspace shared test --filter "Templated Data Extraction"
  */
 describe("Templated Data Extraction", () => {
   const extractTests: ITestData[] = [
     {
       input: "hello @row.value_1 @row.value_2",
-      output: { row: { value_1: true, value_2: true } },
+      output: { row: { value_1: "", value_2: "" } },
     },
     {
       input: "hello @row.value_1.child_property",
-      output: { row: { value_1: true } },
+      output: { row: { value_1: "" } },
     },
     {
       input: "@unknown_prefix.value",
@@ -145,11 +146,11 @@ describe("Templated Data Extraction", () => {
     },
     {
       input: "@row.@row.recursive_value",
-      output: { row: { __recursive: true, recursive_value: true } },
+      output: { row: { "*": "", recursive_value: "" } },
     },
     {
       input: "@row.row_value @field.field_value",
-      output: { row: { row_value: true }, field: { field_value: true } },
+      output: { row: { row_value: "" }, field: { field_value: "" } },
     },
     {
       input: {
@@ -157,7 +158,7 @@ describe("Templated Data Extraction", () => {
         array: ["@row.value_2", "@row.value_3"],
         nested: { string: ["@row.value_4"] },
       },
-      output: { row: { value_1: true, value_2: true, value_3: true, value_4: true } },
+      output: { row: { value_1: "", value_2: "", value_3: "", value_4: "" } },
     },
   ];
   // Test individual string parsing
@@ -170,8 +171,8 @@ describe("Templated Data Extraction", () => {
     const { input, output } = testData;
     it(JSON.stringify(input), () => {
       const parser = new TemplatedData();
-      const parsedValue = parser.listContextVariables(input, ["row", "field"]);
-      expect(parsedValue).toEqual(output);
+      const contextVariables = parser.listContextVariables(input, ["row", "field"]);
+      expect(contextVariables).toEqual(output);
       // process.nextTick(() => console.log(`      ${JSON.stringify(parsedValue)}\n`));
     });
   }

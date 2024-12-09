@@ -1,193 +1,88 @@
 import { ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { TmplDataItemsComponent } from "./data-items.component";
+import { IActionSetItemParams, TmplDataItemsComponent } from "./data-items.component";
 import { FlowTypes } from "../../models";
 import { HttpClientTestingModule } from "@angular/common/http/testing";
+import { DeploymentService } from "src/app/shared/services/deployment/deployment.service";
+import { MockDeploymentService } from "src/app/shared/services/deployment/deployment.service.spec";
+import { DynamicDataService } from "src/app/shared/services/dynamic-data/dynamic-data.service";
+import { _wait } from "packages/shared/src/utils/async-utils";
+import { MockDynamicDataService } from "src/app/shared/services/dynamic-data/dynamic-data.service.mock.spec";
+import { DataItemsService } from "./data-items.service";
 
-const TEST_ITEM_DATA: FlowTypes.Data_listRow[] = [
-  {
-    id: "id_1",
-    completed: true,
-  },
-  {
-    id: "id_2",
-    completed: true,
-  },
+/***********************************************************************************************
+ * Mock Data
+ **********************************************************************************************/
+
+const MOCK_ITEMS_LIST: FlowTypes.Data_listRow[] = [
+  { id: "id_1", text: "item 1", number: 1, boolean: true },
+  { id: "id_2", text: "item 2", number: 2, boolean: false },
 ];
 
-// Template rows representing an item loop consisting of one button per item
-const TEST_ROWS: FlowTypes.TemplateRow[] = [
-  {
-    type: "button",
-    value: "Click here",
-    action_list: [
-      {
-        trigger: "click",
-        action_id: "set_item",
-        args: [],
-        _raw: "click | set_item | completed: true",
-        _cleaned: "click | set_item | completed: true",
-        params: {
-          completed: true,
-        },
-      },
-    ],
-    name: "button_1",
-    _nested_name: "data_items_3.button_1",
-    _evalContext: {
-      itemContext: {
-        id: "id_1",
-        label: "Task 1",
-        completed: true,
-        _index: 0,
-        _id: "id_1",
-        _first: true,
-        _last: false,
-      },
-    },
-  },
-  {
-    type: "button",
-    value: "Click here",
-    _translations: {
-      value: {},
-    },
-    action_list: [
-      {
-        trigger: "click",
-        action_id: "set_item",
-        args: [],
-        _raw: "click | set_item | completed: true",
-        _cleaned: "click | set_item | completed: true",
-        params: {
-          completed: true,
-        },
-      },
-    ],
-    name: "button_1",
-    _nested_name: "data_items_3.button_1",
-    _evalContext: {
-      itemContext: {
-        id: "id_2",
-        label: "Task 2",
-        completed: true,
-        _index: 1,
-        _id: "id_2",
-        _first: false,
-        _last: false,
-      },
-    },
-  },
-];
-
-// Template rows representing an item loop consisting of one button inside a display_group per item
-const TEST_ROWS_NESTED: FlowTypes.TemplateRow[] = [
-  {
-    type: "display_group",
-    name: "display_group_1",
-    _nested_name: "data_items_6.display_group_1",
-    _evalContext: {
-      itemContext: {
-        id: "id_1",
-        label: "Task 1",
-        completed: true,
-        _index: 0,
-        _id: "id_1",
-        _first: true,
-        _last: false,
-      },
-    },
-    rows: [
-      {
-        type: "button",
-        value: "Click here",
-        _translations: {
-          value: {},
-        },
-        action_list: [
-          {
-            trigger: "click",
-            action_id: "set_item",
-            args: [],
-            _raw: "click | set_item | completed: true",
-            _cleaned: "click | set_item | completed: true",
-            params: {
-              completed: true,
-            },
-          },
-        ],
-        name: "button_1",
-        _nested_name: "data_items_6.display_group_1.button_1",
-        _evalContext: {
-          itemContext: {
-            id: "id_1",
-            label: "Task 1",
-            completed: true,
-            _index: 0,
-            _id: "id_1",
-            _first: true,
-            _last: false,
-          },
-        },
-      },
-    ],
-  },
-  {
-    type: "display_group",
-    name: "display_group_1",
-    _nested_name: "data_items_6.display_group_1",
-    _evalContext: {
-      itemContext: {
-        id: "id_2",
-        label: "Task 2",
-        completed: true,
-        _index: 1,
-        _id: "id_2",
-        _first: false,
-        _last: false,
-      },
-    },
-    rows: [
-      {
-        type: "button",
-        value: "Click here",
-        _translations: {
-          value: {},
-        },
-        action_list: [
-          {
-            trigger: "click",
-            action_id: "set_item",
-            args: [],
-            _raw: "click | set_item | completed: true",
-            _cleaned: "click | set_item | completed: true",
-            params: {
-              completed: true,
-            },
-          },
-        ],
-        name: "button_1",
-        _nested_name: "data_items_6.display_group_1.button_1",
-        _evalContext: {
-          itemContext: {
-            id: "id_2",
-            label: "Task 2",
-            completed: true,
-            _index: 1,
-            _id: "id_2",
-            _first: false,
-            _last: false,
-          },
-        },
-      },
-    ],
-  },
-];
+const MOCK_TEMPLATE_ROW: FlowTypes.TemplateRow = {
+  _nested_name: "",
+  name: "",
+  type: "button",
+  value: "@item.text",
+};
 
 /**
+ * Mock structure for `begin_data_items .... end_data_items` syntax
+ * The list provided in `value` will be used to source data_list items, and the `rows`
+ * nested will be templated from the items
+ */
+const MOCK_DATA_ITEMS_ROW: FlowTypes.TemplateRow = {
+  _nested_name: "",
+  name: "",
+  type: "data_items",
+  value: "@data.mock_item_list",
+  rows: [MOCK_TEMPLATE_ROW],
+};
+
+/***********************************************************************************************
+ * Test Utils
+ **********************************************************************************************/
+
+// Utility to make it easier to test setting setting component row and returning rendered items
+// It triggers row set side-effects and returns rendered item rows
+const setTestRow = async (component: TmplDataItemsComponent, row: FlowTypes.TemplateRow) => {
+  component.row = row;
+  // NOTE - the query that retrieves data_list rows for templating has a 50ms debounce,
+  // so include wait time during tests to allow items to finish populating
+  await _wait(50);
+  return component.itemRows();
+};
+
+// Utility to make it easier to test setting actions
+// This applies the set_item/set_items action on a generic template with parsed parameters
+// It will trigger action_list update side-effects
+const setTestActionList = async (
+  component: TmplDataItemsComponent,
+  payload: { action_id: "set_item" | "set_items"; params: IActionSetItemParams }
+) => {
+  const { action_id, params } = payload;
+  const row: FlowTypes.TemplateRow = {
+    ...MOCK_DATA_ITEMS_ROW,
+    rows: [
+      { ...MOCK_TEMPLATE_ROW, action_list: [{ trigger: "click", action_id, args: [], params }] },
+    ],
+  };
+  return setTestRow(component, row);
+};
+
+const setupFixture = () => {
+  const fixture = TestBed.createComponent(TmplDataItemsComponent);
+  // HACK - support @local variable processing
+  fixture.componentInstance.parent = { templateRowService: { templateRowMap: {} } } as any;
+  return fixture;
+};
+
+/***********************************************************************************************
+ * Data Item Processing
+ *
  * Call standalone tests via:
  * yarn ng test --include src/app/shared/components/template/components/data-items/data-items.component.spec.ts
- */
+ **********************************************************************************************/
 describe("DataItemsComponent", () => {
   let component: TmplDataItemsComponent;
   let fixture: ComponentFixture<TmplDataItemsComponent>;
@@ -196,9 +91,17 @@ describe("DataItemsComponent", () => {
     await TestBed.configureTestingModule({
       imports: [HttpClientTestingModule],
       declarations: [TmplDataItemsComponent],
+      providers: [
+        { provide: DeploymentService, useValue: new MockDeploymentService({ name: "test" }) },
+        {
+          provide: DynamicDataService,
+          useValue: new MockDynamicDataService({ data_list: { mock_item_list: MOCK_ITEMS_LIST } }),
+        },
+        DataItemsService,
+      ],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(TmplDataItemsComponent);
+    fixture = setupFixture();
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
@@ -207,33 +110,189 @@ describe("DataItemsComponent", () => {
     expect(component).toBeTruthy();
   });
 
-  it("adds item meta to action arguments", () => {
-    // ID of original item
-    const rowItemId = TEST_ROWS[0]._evalContext.itemContext._id;
-    // add item meta
-    const rowsWithItemMeta = component["setItemMeta"](TEST_ROWS, TEST_ITEM_DATA, "test_data_list");
-    // get action args for a set_item action (setItemContext object is passed within an array)
-    const setItemContext = rowsWithItemMeta[0].action_list.find(
-      (action) => action.action_id === "set_item"
-    ).args[0];
-    expect(setItemContext.currentItemId).toBe(rowItemId);
+  it("generates evaluation context for rows", async () => {
+    const renderedRows = await setTestRow(component, MOCK_DATA_ITEMS_ROW);
+    // all rows should be populated with full item data alongside metadata fields
+    expect(renderedRows[0]._evalContext).toEqual({
+      itemContext: { ...MOCK_ITEMS_LIST[0], _first: true, _id: "id_1", _index: 0, _last: false },
+    });
+    expect(renderedRows[1]._evalContext).toEqual({
+      itemContext: { ...MOCK_ITEMS_LIST[1], _first: false, _id: "id_2", _index: 1, _last: true },
+    });
   });
 
-  it("adds item meta to action arguments nested inside child rows", () => {
-    // ID of original item
-    const rowItemId = TEST_ROWS_NESTED[0]._evalContext.itemContext._id;
-    // add item meta
-    const rowsWithItemMeta = component["setItemMeta"](
-      TEST_ROWS_NESTED,
-      TEST_ITEM_DATA,
-      "test_data_list"
-    );
-    // get rows at one level of nesting (e.g. those within a display group)
-    const nestedRowsWithItemMeta = rowsWithItemMeta[0].rows;
-    // get action args for a set_item action (args object is passed within an array)
-    const setItemContext = nestedRowsWithItemMeta[0].action_list.find(
-      (action) => action.action_id === "set_item"
-    ).args[0];
-    expect(setItemContext.currentItemId).toBe(rowItemId);
+  it("generates item rows when input row set", async () => {
+    const renderedRows = await setTestRow(component, MOCK_DATA_ITEMS_ROW);
+    expect(renderedRows.length).toEqual(2);
+
+    // check rendered item rows, ignoring eval context (as checked in previous test)
+    const [row_1, row_2] = renderedRows;
+    const { _evalContext, ...parsed_1 } = row_1;
+    expect(parsed_1).toEqual({ _nested_name: "", name: "", type: "button", value: "item 1" });
+    const { _evalContext: _2, ...parsed_2 } = row_2;
+    expect(parsed_2).toEqual({ _nested_name: "", name: "", type: "button", value: "item 2" });
+  });
+
+  // TODO - test items re-render when data updated (requires better mock dynamic data service)
+
+  it("sets dataList name from parsed row", async () => {
+    component.row = MOCK_DATA_ITEMS_ROW;
+    await _wait(50);
+    expect(component["dataListName"]).toEqual("mock_item_list");
+    // TODO - could also test different ways to pass row name used in `hackGetRawDataListName`
+  });
+
+  // TODO - data_list with dynamic field/global variables
+});
+
+/***********************************************************************************************
+ * Actions
+ *
+ * Call standalone tests via:
+ * yarn ng test --include src/app/shared/components/template/components/data-items/data-items.component.spec.ts
+ **********************************************************************************************/
+
+describe("DataItemsComponent Actions", () => {
+  let component: TmplDataItemsComponent;
+  let fixture: ComponentFixture<TmplDataItemsComponent>;
+
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      imports: [HttpClientTestingModule],
+      declarations: [TmplDataItemsComponent],
+      providers: [
+        { provide: DeploymentService, useValue: new MockDeploymentService({ name: "test" }) },
+        {
+          provide: DynamicDataService,
+          useValue: new MockDynamicDataService({ data_list: { mock_item_list: MOCK_ITEMS_LIST } }),
+        },
+        DataItemsService,
+      ],
+    }).compileComponents();
+
+    fixture = setupFixture();
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
+
+  it("set_item action uses global set_data", async () => {
+    const params = { hello: "test" };
+    // call utility to set action list with parameters on component row
+    const parsedRows = await setTestActionList(component, { action_id: "set_item", params });
+
+    // should convert to set_data action with updated params
+    expect(parsedRows[0].action_list).toEqual([
+      {
+        trigger: "click",
+        action_id: "set_data",
+        args: [],
+        params: { _list_id: "mock_item_list", _updates: [{ ...params, id: "id_1" }] },
+      },
+    ]);
+  });
+
+  it("set_item with context variables", async () => {
+    const params = { number: "@item.number * 10" };
+    const parsedRows = await setTestActionList(component, { action_id: "set_item", params });
+    // expect action to strip away metadata fields and also assign target id
+    expect(parsedRows[0].action_list[0].params).toEqual({
+      _list_id: "mock_item_list",
+      _updates: [{ id: "id_1", number: 10 }],
+    });
+    expect(parsedRows[1].action_list[0].params).toEqual({
+      _list_id: "mock_item_list",
+      _updates: [{ id: "id_2", number: 20 }],
+    });
+  });
+
+  it("set_item by id", async () => {
+    const params = { hello: "test", _id: "id_2" };
+    const parsedRows = await setTestActionList(component, { action_id: "set_item", params });
+    // expect action to strip away metadata fields and also assign target id
+    const { _id, ...writeableProps } = params;
+    expect(parsedRows[0].action_list[0].params).toEqual({
+      _list_id: "mock_item_list",
+      _updates: [{ ...writeableProps, id: "id_2" }],
+    });
+    expect(parsedRows[1].action_list[0].params).toEqual({
+      _list_id: "mock_item_list",
+      _updates: [{ ...writeableProps, id: "id_2" }],
+    });
+  });
+
+  it("set_item by id uses target item context", async () => {
+    const params = { number: "@item.number * 10", _id: "id_2" };
+    const parsedRows = await setTestActionList(component, { action_id: "set_item", params });
+    // expect action to strip away metadata fields and also assign target id
+    expect(parsedRows[0].action_list[0].params).toEqual({
+      _list_id: "mock_item_list",
+      _updates: [{ number: 20, id: "id_2" }],
+    });
+    expect(parsedRows[1].action_list[0].params).toEqual({
+      _list_id: "mock_item_list",
+      _updates: [{ number: 20, id: "id_2" }],
+    });
+  });
+
+  it("set_item by index", async () => {
+    const params = { hello: "test", _index: 1 };
+    const parsedRows = await setTestActionList(component, { action_id: "set_item", params });
+    // expect action to strip away metadata fields and also assign target id
+    const { _index, ...writeableProps } = params;
+    expect(parsedRows[0].action_list[0].params).toEqual({
+      _list_id: "mock_item_list",
+      _updates: [{ ...writeableProps, id: "id_2" }],
+    });
+  });
+
+  fit("set_item by dynamic _index", async () => {
+    const params = { hello: "test", _index: `@item._index + 1` };
+    // NOTE - will log error due to final item not having target reference
+    const parsedRows = await setTestActionList(component, { action_id: "set_item", params });
+    const { _index, ...writeableProps } = params;
+    expect(parsedRows[0].action_list[0].params).toEqual({
+      _list_id: "mock_item_list",
+      _updates: [{ ...writeableProps, id: "id_2" }],
+    });
+  });
+
+  it("set_items bulk update", async () => {
+    const params = { boolean: false };
+    const parsedRows = await setTestActionList(component, { action_id: "set_items", params });
+    // all rows should contain action that update all rows
+    expect(parsedRows[0].action_list[0].params).toEqual({
+      _list_id: "mock_item_list",
+      _updates: [
+        { id: "id_1", boolean: false },
+        { id: "id_2", boolean: false },
+      ],
+    });
+    expect(parsedRows[1].action_list[0].params).toEqual({
+      _list_id: "mock_item_list",
+      _updates: [
+        { id: "id_1", boolean: false },
+        { id: "id_2", boolean: false },
+      ],
+    });
+  });
+
+  it("set_items preserves own item context", async () => {
+    const params = { number: "@item.number * 10" };
+    const parsedRows = await setTestActionList(component, { action_id: "set_items", params });
+    // all rows should contain action that update all rows
+    expect(parsedRows[0].action_list[0].params).toEqual({
+      _list_id: "mock_item_list",
+      _updates: [
+        { id: "id_1", number: 10 },
+        { id: "id_2", number: 20 },
+      ],
+    });
+    expect(parsedRows[1].action_list[0].params).toEqual({
+      _list_id: "mock_item_list",
+      _updates: [
+        { id: "id_1", number: 10 },
+        { id: "id_2", number: 20 },
+      ],
+    });
   });
 });

@@ -1,23 +1,12 @@
 import { ITemplatedStringVariable } from "../../types";
 import { addStringDelimiters, extractDelimitedTemplateString } from "../../utils/delimiters";
 import { isObjectLiteral } from "../../utils/object-utils";
-
-type ITemplatedDataContext = { [prefix: string]: any };
+import type { FlowTypes } from "data-models";
 
 /** Hashmap of all context-based variable names used in expression, organised by prefix, e.g.
- * `{ field: {some_field_name: true}, row: {some_row_name:true, another_name: true}}`
+ * `{ field: {some_field_name: ""}, row: {some_row_name:"", another_name: ""}}`
  */
-
-export interface ITemplatedDataContextList {
-  [contextPrefix: string]: {
-    [contextVariableName: string]: boolean;
-    /**
-     * Track whether variable list known to contain recursive variables that will
-     * require runtime evaluation, e.g. `{ field: {some_field_name: true, __recursive: true}`
-     */
-    __recursive?: boolean;
-  };
-}
+export type ITemplatedDataContext = { [prefix in FlowTypes.IDynamicPrefix]?: Record<string, any> };
 
 /**
  * Templated data class contains methods to to convert data containing dynamic context variables
@@ -31,12 +20,15 @@ export class TemplatedData {
   /** Value returned after parsing templated data, e.g. `"Hello example_1"` */
   public parsedValue: any;
 
-  /** json object containing namespaced values for context replacements
+  /** json object containing flattened values for context replacements
    * ```
-   * {row:{id:"example_1"}}
+   * {
+   *  "@row":{id:"example_1"}
+   *  "@row.id": "example_1"
+   * }
    * ```
    */
-  public parsedContext: ITemplatedDataContext;
+  public parsedContext: Record<string, any>;
 
   /** List of all prefixes used in context, e.g `["row"]` */
   private contextPrefixes: string[] = [];
@@ -74,19 +66,20 @@ export class TemplatedData {
    * Iterate over data, parse string values and nested objects and arrays recursively
    */
   public parse<T>(value: T) {
-    if (value) {
-      if (typeof value === "string") {
-        value = this.parseTemplatedString(value);
+    if (typeof value === "string") {
+      return this.parseTemplatedString(value);
+    }
+    // recursively convert array and json-like objects
+    if (Array.isArray(value)) {
+      return value.map((v) => this.parse(v)) as any;
+    }
+    if (isObjectLiteral(value)) {
+      // create a new object to avoid changes to input
+      const parsed = {};
+      for (const [key, nestedValue] of Object.entries(value)) {
+        parsed[key] = this.parse(nestedValue);
       }
-      // recursively convert array and json-like objects
-      if (Array.isArray(value)) {
-        value = value.map((v) => this.parse(v)) as any;
-      }
-      if (isObjectLiteral(value)) {
-        for (const [key, nestedValue] of Object.entries(value)) {
-          value[key] = this.parse(nestedValue);
-        }
-      }
+      return parsed;
     }
     return value;
   }
@@ -96,12 +89,12 @@ export class TemplatedData {
    * detected within data value
    **/
   public listContextVariables(value: any, prefixes: string[] = []) {
-    let contextVariables: ITemplatedDataContextList = {};
+    let contextVariables: ITemplatedDataContext = {};
 
     // Recursively extract any nested context strings
     function extractContext(contextValue: any) {
       if (contextValue) {
-        if ({}.constructor === contextValue.constructor) {
+        if (isObjectLiteral(contextValue)) {
           extractContext(Object.values(contextValue));
         }
         if (Array.isArray(contextValue)) {
@@ -126,17 +119,18 @@ export class TemplatedData {
       }
 
       // Populate any variables identified from processed strings to context variable list
-      // Include recursive handling when detected nested, e.g. @row.@row.nested_lookup
+      // Include handling when detected nested, e.g. @row.@row.nested_lookup
       function populateContextVariables(entries: ITemplatedStringVariable[]) {
         for (const entry of entries) {
           let [prefix, name] = entry.value.split(".");
           prefix = prefix.replace("@", "");
           contextVariables[prefix] ??= {};
+          // recursive variables - keep wildcard reference and process inner
           if (entry.variables) {
-            contextVariables[prefix].__recursive = true;
+            contextVariables[prefix]["*"] = "";
             populateContextVariables(Object.values(entry.variables));
           } else {
-            contextVariables[prefix][name] = true;
+            contextVariables[prefix][name] = "";
           }
         }
       }
@@ -147,7 +141,7 @@ export class TemplatedData {
 
   /**
    * Take a string and replace instances of context variables, such as `"hello {@row.name}"`
-   * Will convert non-delimited strings to delimted, extract list of variables and parse
+   * Will convert non-delimited strings to delimited, extract list of variables and parse
    */
   private parseTemplatedString(value: string) {
     const delimited = addStringDelimiters(value, this.contextPrefixes);
