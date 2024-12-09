@@ -171,7 +171,7 @@ export class TmplMapComponent extends TemplateBaseComponent implements AfterView
     };
     vectorLayer.getSource().forEachFeature((feature: Feature) => {
       if (excludedFeaturesColour) {
-        feature.set("overrideColour", filterFeatures(feature));
+        feature.set("overrideColour", !filterFeatures(feature));
       } else {
         feature.set("visible", filterFeatures(feature));
       }
