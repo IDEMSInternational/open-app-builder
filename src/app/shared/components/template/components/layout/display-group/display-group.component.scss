@@ -44,6 +44,11 @@
   margin: 1em 0 0 0;
 }
 
+.display-group-wrapper[data-variant~="inline_padding"] {
+  padding-left: var(--padding-start);
+  padding-right: var(--padding-end);
+}
+
 .display-group-wrapper {
   &[data-variant~="box_gray"],
   &[data-variant~="box_primary"],

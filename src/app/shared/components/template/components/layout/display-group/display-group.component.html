@@ -1,70 +1,58 @@
-<div
-  (click)="clickDisplayGroup()"
-  class="display-group-wrapper"
-  [attr.data-param-style]="params.style"
-  [attr.data-rowname]="_row.name"
-  [attr.data-variant]="params.variant"
-  [style.marginBottom.px]="params.offset"
-  [ngSwitch]="type"
-  [style]="_row.style_list | styleList"
-  [style.backgroundImage]="'url(' + (params.backgroundImageAsset | plhAsset) + ')'"
-  [style.backgroundPosition]="params.backgroundImagePosition"
->
-  <!-- Default Layout -->
-  <ng-container *ngSwitchDefault>
-    <plh-template-component
-      *ngFor="let childRow of _row.rows | filterDisplayComponent; trackBy: trackByRow"
-      [row]="childRow"
-    >
-      @if (params.sticky) {
-        <!-- Sticky display group - includes placeholder padding elements above/below main content -->
-        @if (params.sticky === "top") {
-          <div [style.height.px]="sticky.height()"></div>
-        }
-        <tmpl-display-group-sticky [position]="params.sticky" #sticky>
-          <ng-container *ngTemplateOutlet="content"></ng-container>
-        </tmpl-display-group-sticky>
-        @if (params.sticky === "bottom") {
-          <div [style.height.px]="sticky.height()"></div>
-        }
-      } @else {
-        <!-- Regular display group - render templated content -->
-        <ng-container *ngTemplateOutlet="content"></ng-container>
-      }
+@if (params.sticky) {
+  <!-- Sticky display group - includes placeholder padding elements above/below main content -->
+  @if (params.sticky === "top") {
+    <div [style.height.px]="sticky.height()"></div>
+  }
+  <tmpl-display-group-sticky
+    [position]="params.sticky"
+    [style.--sticky-background]="
+      params.stickyBackground === 'transparent' ? 'transparent' : 'var(--ion-background-color)'
+    "
+    #sticky
+  >
+    <ng-container *ngTemplateOutlet="content"></ng-container>
+  </tmpl-display-group-sticky>
+  @if (params.sticky === "bottom") {
+    <div [style.height.px]="sticky.height()"></div>
+  }
+} @else {
+  <!-- Regular display group - render templated content -->
+  <ng-container *ngTemplateOutlet="content"></ng-container>
+}
 
-      <!-- Main Content - shown either within sticky or standard versions -->
-      <ng-template #content>
-        <!--  -->
-        <div
-          (click)="clickDisplayGroup()"
-          class="display-group-wrapper"
-          [attr.data-param-style]="params.style"
-          [attr.data-rowname]="_row.name"
-          [attr.data-variant]="params.variant"
-          [style.marginBottom.px]="params.offset"
-          [ngSwitch]="type"
-          [style]="_row.style_list | styleList"
-        >
-          <!-- Default Layout -->
-          <ng-container *ngSwitchDefault>
-            <plh-template-component
-              *ngFor="let childRow of _row.rows | filterDisplayComponent; trackBy: trackByRow"
-              [row]="childRow"
-              [parent]="parent"
-              [attr.data-rowname]="_row.name"
-            >
-            </plh-template-component>
-          </ng-container>
-          <!-- Dashed-box -->
-          <plh-advanced-dashed-box
-            *ngSwitchCase="'dashed_box'"
-            [inputRow]="_row"
-            [parent]="parent"
-            style="flex: 1"
-          ></plh-advanced-dashed-box>
-          <!-- Form layout -->
-          <plh-tmpl-form *ngSwitchCase="'form'" [inputRow]="_row" [parent]="parent"></plh-tmpl-form>
-        </div>
-      </ng-template> </plh-template-component
-  ></ng-container>
-</div>
+<!-- Main Content - shown either within sticky or standard versions -->
+<ng-template #content>
+  <!--  -->
+  <div
+    (click)="clickDisplayGroup()"
+    class="display-group-wrapper"
+    [attr.data-param-style]="params.style"
+    [attr.data-rowname]="_row.name"
+    [attr.data-variant]="params.variant"
+    [style.marginBottom.px]="params.offset"
+    [ngSwitch]="type"
+    [style]="_row.style_list | styleList"
+    [style.backgroundImage]="'url(' + (params.backgroundImageAsset | plhAsset) + ')'"
+    [style.backgroundPosition]="params.backgroundImagePosition"
+  >
+    <!-- Default Layout -->
+    <ng-container *ngSwitchDefault>
+      <plh-template-component
+        *ngFor="let childRow of _row.rows | filterDisplayComponent; trackBy: trackByRow"
+        [row]="childRow"
+        [parent]="parent"
+        [attr.data-rowname]="_row.name"
+      >
+      </plh-template-component>
+    </ng-container>
+    <!-- Dashed-box -->
+    <plh-advanced-dashed-box
+      *ngSwitchCase="'dashed_box'"
+      [inputRow]="_row"
+      [parent]="parent"
+      style="flex: 1"
+    ></plh-advanced-dashed-box>
+    <!-- Form layout -->
+    <plh-tmpl-form *ngSwitchCase="'form'" [inputRow]="_row" [parent]="parent"></plh-tmpl-form>
+  </div>
+</ng-template>
