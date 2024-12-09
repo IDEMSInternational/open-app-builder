@@ -54,6 +54,14 @@ export class AppComponent {
   sideMenuDefaults = computed(() => this.appConfigService.appConfig().APP_SIDEMENU_DEFAULTS);
   footerDefaults = computed(() => this.appConfigService.appConfig().APP_FOOTER_DEFAULTS);
   layoutConfig = computed(() => this.appConfigService.appConfig().LAYOUT);
+
+  public routeContainerStyle = computed(() => {
+    const { main_content_padding } = this.layoutConfig();
+    return {
+      "--main-content-padding": main_content_padding,
+    };
+  });
+
   /** Track when app ready to render sidebar and route templates */
   public renderAppTemplates = signal(false);
 
