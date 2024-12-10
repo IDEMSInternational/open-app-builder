@@ -45,6 +45,7 @@
 }
 
 .display-group-wrapper[data-variant~="inline_padding"] {
+  width: 100%;
   padding-left: var(--padding-start);
   padding-right: var(--padding-end);
 }
