@@ -56,9 +56,9 @@ export class AppComponent {
   layoutConfig = computed(() => this.appConfigService.appConfig().LAYOUT);
 
   public routeContainerStyle = computed(() => {
-    const { main_content_padding } = this.layoutConfig();
+    const { page_padding } = this.layoutConfig();
     return {
-      "--main-content-padding": main_content_padding,
+      "--page-padding": page_padding,
     };
   });
 
