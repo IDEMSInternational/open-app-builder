@@ -57,7 +57,7 @@ export class DynamicDataService extends AsyncServiceBase {
     const { set_data, reset_data } = new ActionsFactory(this);
     this.templateActionRegistry.register({ set_data, reset_data });
     // HACK - Legacy `set_item` action still managed here (will be removed in #2454)
-    this.registerTemplateActionHandlers();
+    this.registerLegacyItemsActions();
   }
 
   private async initialise() {
@@ -75,7 +75,7 @@ export class DynamicDataService extends AsyncServiceBase {
     this.writeCache = await new PersistedMemoryAdapter(name).create();
     this.db = await new ReactiveMemoryAdapter(name).createDB();
   }
-  private registerTemplateActionHandlers() {
+  private registerLegacyItemsActions() {
     this.templateActionRegistry.register({
       /**
        * Write properties on the current item (default), or on an explicitly targeted item,
