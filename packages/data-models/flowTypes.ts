@@ -382,6 +382,19 @@ export namespace FlowTypes {
 
   export type IDynamicPrefix = (typeof DYNAMIC_PREFIXES)[number];
 
+  /**
+   * Namespaced hashmap of dynamic variables. Values may include evaluated value,
+   * or may include variable metadata depending on use context
+   * @example
+   * ```
+   * {
+   * local: {my_local_var: {}
+   * field: {some_field_var: {}
+   * }
+   * ```
+   * */
+  export type IDynamicContext = { [key in IDynamicPrefix]?: { [fieldName: string]: any } };
+
   /** Data passed back from regex match, e.g. expression @local.someField => type:local, fieldName: someField */
   export interface TemplateRowDynamicEvaluator {
     fullExpression: string;
