@@ -118,7 +118,7 @@ const APP_FOOTER_DEFAULTS: { templateName: string | null } = {
 };
 
 const LAYOUT = {
-  main_content_padding: "24px",
+  page_padding: "24px",
 };
 
 const APP_SIDEMENU_DEFAULTS = {
