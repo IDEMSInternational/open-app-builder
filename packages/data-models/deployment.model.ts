@@ -3,7 +3,7 @@ import type { IGdriveEntry } from "../@idemsInternational/gdrive-tools";
 import type { IAppConfig, IAppConfigOverride } from "./appConfig";
 
 /** Update version to force recompile next time deployment set (e.g. after default config update) */
-export const DEPLOYMENT_CONFIG_VERSION = 20240914.0;
+export const DEPLOYMENT_CONFIG_VERSION = 20241111.0;
 
 /** Configuration settings available to runtime application */
 export interface IDeploymentRuntimeConfig {
@@ -133,6 +133,12 @@ interface IDeploymentCoreConfig {
     /** Support pinch-zoom within app. Default `false` */
     zoom_enabled?: boolean;
   };
+  optimisation: {
+    components?: {
+      enabled?: boolean;
+      implicit?: string[];
+    };
+  };
   translations: {
     /** List of all language codes to include. Default null (includes all) */
     filter_language_codes?: string[];
@@ -229,6 +235,7 @@ export const DEPLOYMENT_CONFIG_DEFAULTS: IDeploymentConfig = {
     assets_filter_function: (fileEntry) => true,
   },
   ios: {},
+  optimisation: {},
   translations: {
     filter_language_codes: null,
     source_strings_path: "./app_data/translations_source/source_strings",
