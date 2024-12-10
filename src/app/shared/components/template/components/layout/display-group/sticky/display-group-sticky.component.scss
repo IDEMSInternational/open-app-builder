@@ -7,6 +7,11 @@
   justify-content: center;
   z-index: 10;
 
+  background-color: var(--ion-background-color);
+  &[data-param-style~="background-transparent"] {
+    background-color: transparent;
+  }
+
   &[sticky-position="top"] {
     top: 0;
   }
