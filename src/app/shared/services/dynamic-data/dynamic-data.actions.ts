@@ -10,8 +10,17 @@ import {
   isItemChanged,
 } from "./dynamic-data.utils";
 
+interface IActionSetDataOperatorParams {
+  // TODO - ideally use same itemPipe operators
+  // (although filter will need to be updated to include dynamic context)
+  _filter?: string;
+  _limit?: number;
+  _reverse?: boolean;
+  _sort?: string;
+}
+
 /** Metadata passed to set_data action to specify data for update **/
-interface IActionSetDataParamsMeta {
+interface IActionSetDataParamsMeta extends IActionSetDataOperatorParams {
   /** Reference to source data_list id. All rows in list will be updated */
   _list_id?: string;
 
@@ -92,6 +101,8 @@ class DynamicDataActionFactory {
       items = [items[_index]];
     }
 
+    const filteredUpdate = {};
+
     const cleanedUpdate = this.removeUpdateMetadata(update);
 
     // Evaluate item updates for any `@item` self-references
@@ -103,6 +114,22 @@ class DynamicDataActionFactory {
 
     // Filter to only include updates that will change original item
     return coerced.filter((data, i) => isItemChanged(items[i], data));
+  }
+
+  private applyUpdateOperations(params: IActionSetDataParams) {
+    // TODO - decide when to evaluate... e.g. filter: @item.id > @local.value
+    const { _filter, _reverse, _sort, _limit } = params;
+    const parsedOps: IActionSetDataOperatorParams = {};
+    for (const [operator, arg] of Object.entries({ _filter, _reverse, _sort, _limit })) {
+      if (arg !== undefined) {
+        let parsedArg = "";
+        // TODO - understand if dynamic or numeric string...
+        // TODO - better to convert these params in parser not at runtime!!! (same for _index previously)
+        // using some sort of parseNumericalString or similar regex lookup... same for boolean strings and other similar
+        if (operator === "_limit" && typeof parsedArg === "string") {
+        }
+      }
+    }
   }
 
   private removeUpdateMetadata(update: Record<string, any>) {
