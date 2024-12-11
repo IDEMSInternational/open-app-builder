@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, computed, OnInit, signal } from "@angular/core";
 import { addDays, differenceInCalendarDays, parseISO, startOfDay, toDate } from "date-fns";
 import { TemplateBaseComponent } from "src/app/shared/components/template/components/base";
 import { TemplateTranslateService } from "src/app/shared/components/template/services/template-translate.service";
@@ -37,12 +37,20 @@ interface IActivityCheckInParams {
 export class PlhActivityCheckInComponent extends TemplateBaseComponent implements OnInit {
   params: Partial<IActivityCheckInParams> = {};
 
-  progressPercentage: number = 16; // Initial progress
-  daysUntilUnlock: number;
-
-  get locked() {
-    return this.daysUntilUnlock && this.daysUntilUnlock > 0;
-  }
+  daysUntilUnlock = signal(Infinity);
+  locked = computed(() => {
+    return this.daysUntilUnlock() && this.daysUntilUnlock() > 0;
+  });
+  countdownText = computed(() => {
+    const targetIndex = Math.min(
+      this.daysUntilUnlock() - 1,
+      this.params.countdownTextList.length - 1
+    );
+    return this.params.countdownTextList[targetIndex];
+  });
+  progressPercentage = computed(() => {
+    return ((this.params.countDownDays - this.daysUntilUnlock()) / this.params.countDownDays) * 100;
+  });
 
   constructor(public templateTranslateService: TemplateTranslateService) {
     super();
@@ -51,16 +59,6 @@ export class PlhActivityCheckInComponent extends TemplateBaseComponent implement
   ngOnInit() {
     this.getParams();
     this.calculateDaysUntilUnlock();
-  }
-
-  public getCountdownText() {
-    return this.params.countdownTextList[
-      Math.min(this.daysUntilUnlock - 1, this.params.countdownTextList.length - 1)
-    ];
-  }
-
-  public getProgressPercentage() {
-    return ((this.params.countDownDays - this.daysUntilUnlock) / this.params.countDownDays) * 100;
   }
 
   private getParams() {
@@ -111,7 +109,7 @@ export class PlhActivityCheckInComponent extends TemplateBaseComponent implement
         startOfDay(unlockDate),
         startOfDay(new Date())
       );
-      this.daysUntilUnlock = Math.max(daysRemaining, 0);
+      this.daysUntilUnlock.set(Math.max(daysRemaining, 0));
     }
   }
 }
