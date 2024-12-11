@@ -10,12 +10,12 @@
             <div
               class="progress-bar"
               [ngStyle]="{
-                width: getProgressPercentage() + '%'
+                width: progressPercentage() + '%'
               }"
             ></div>
           </div>
         </div>
-        <div class="countdown-text">{{ getCountdownText() }}</div>
+        <div class="countdown-text">{{ countdownText() }}</div>
       </div>
 
       <div class="image">
