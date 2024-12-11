@@ -8,12 +8,10 @@
   background-color: var(--ion-background-color);
   z-index: 10;
 
-  // use provided inputs to specify host top/bottom as signals do not nicely
-  // map to hostAttribute https://github.com/angular/angular/issues/53888
-  &[ng-reflect-position="top"] {
+  &[sticky-position="top"] {
     top: 0;
   }
-  &[ng-reflect-position="bottom"] {
+  &[sticky-position="bottom"] {
     bottom: 0;
   }
 }
