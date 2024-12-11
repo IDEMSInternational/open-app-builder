@@ -1,5 +1,6 @@
 // When the display group is "sticky", style it as an inline header/footer
 :host {
+  display: block;
   position: fixed;
   left: 0;
   width: 100vw;
