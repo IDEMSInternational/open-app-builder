@@ -1,4 +1,4 @@
-@if (daysLeft >= 1) {
+@if (locked) {
   <div
     class="activity-container"
     [attr.data-language-direction]="templateTranslateService.languageDirection()"
@@ -10,12 +10,12 @@
             <div
               class="progress-bar"
               [ngStyle]="{
-                width: progressPercentage + '%'
+                width: getProgressPercentage() + '%'
               }"
             ></div>
           </div>
         </div>
-        <div class="countdown-text">In {{ daysLeft }} day{{ daysLeft > 1 ? "s" : "" }}</div>
+        <div class="countdown-text">{{ getCountdownText() }}</div>
       </div>
 
       <div class="image">
