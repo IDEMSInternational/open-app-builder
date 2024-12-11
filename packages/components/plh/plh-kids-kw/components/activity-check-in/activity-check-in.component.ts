@@ -1,7 +1,12 @@
 import { Component, OnInit } from "@angular/core";
+import { addDays, differenceInCalendarDays, parseISO, startOfDay, toDate } from "date-fns";
 import { TemplateBaseComponent } from "src/app/shared/components/template/components/base";
 import { TemplateTranslateService } from "src/app/shared/components/template/services/template-translate.service";
-import { getNumberParamFromTemplateRow, getStringParamFromTemplateRow } from "src/app/shared/utils";
+import {
+  getNumberParamFromTemplateRow,
+  getParamFromTemplateRow,
+  getStringParamFromTemplateRow,
+} from "src/app/shared/utils";
 
 interface IActivityCheckInParams {
   /* TEMPLATE PARAMETER: "activity_id". The activity identifier attached at the bottom of the component */
@@ -16,8 +21,12 @@ interface IActivityCheckInParams {
   unlockedIconAsset?: string;
   /* TEMPLATE PARAMETER: "unlocked_image_asset". The illustration that shows when the activity is locked */
   unlockedImageAsset?: string;
-  /* TEMPLATE PARAMETER: "days_to_count_down". The illustration that shows when the activity is locked */
+  /* TEMPLATE PARAMETER: "countdown_start_date". The date when the countdown is initially started */
+  countdownStartDate?: Date;
+  /* TEMPLATE PARAMETER: "countdown_days". The number of days after the start date that the activity is unlocked */
   countDownDays?: number;
+  /* TEMPLATE PARAMETER: "countdown_text_list". A list of text strings relating to the number of days left to countdown, in order from fewest to most */
+  countdownTextList?: string[];
 }
 
 @Component({
@@ -28,10 +37,12 @@ interface IActivityCheckInParams {
 export class PlhActivityCheckInComponent extends TemplateBaseComponent implements OnInit {
   params: Partial<IActivityCheckInParams> = {};
 
-  daysLeft: number; // Progress of days left
   progressPercentage: number = 16; // Initial progress
+  daysUntilUnlock: number;
 
-  private unlockDate: Date;
+  get locked() {
+    return this.daysUntilUnlock && this.daysUntilUnlock > 0;
+  }
 
   constructor(public templateTranslateService: TemplateTranslateService) {
     super();
@@ -39,10 +50,17 @@ export class PlhActivityCheckInComponent extends TemplateBaseComponent implement
 
   ngOnInit() {
     this.getParams();
-    this.daysLeft = this.params.countDownDays;
-    if (this._row.value) {
-      this.checkInTimer();
-    }
+    this.calculateDaysUntilUnlock();
+  }
+
+  public getCountdownText() {
+    return this.params.countdownTextList[
+      Math.min(this.daysUntilUnlock - 1, this.params.countdownTextList.length - 1)
+    ];
+  }
+
+  public getProgressPercentage() {
+    return ((this.params.countDownDays - this.daysUntilUnlock) / this.params.countDownDays) * 100;
   }
 
   private getParams() {
@@ -68,60 +86,32 @@ export class PlhActivityCheckInComponent extends TemplateBaseComponent implement
       "unlocked_image_asset",
       null
     );
-    this.params.countDownDays = getNumberParamFromTemplateRow(this._row, "days_to_count_down", 6);
-  }
-
-  private getLocalStorageKey(): string {
-    return `activity_${this.params.id}`;
-  }
-
-  // Calculates the days until check in
-  private checkInTimer() {
-    const localStorageKey = this.getLocalStorageKey();
-    const storedDate = localStorage.getItem(localStorageKey);
-    if (storedDate) {
-      this.unlockDate = new Date(storedDate);
-      this.updateProgress();
-    } else {
-      this.unlockDate = this.getMidnightOfDate(new Date());
-      this.unlockDate.setDate(this.unlockDate.getDate() + this.params.countDownDays);
-      localStorage.setItem(localStorageKey, this.unlockDate.toISOString());
-    }
-    const dailyInterval = this.getMillisecondsUntilMidnight(); // Count until midnight
-    setTimeout(() => {
-      setInterval(() => this.updateProgress(), 24 * 60 * 60 * 1000);
-    }, dailyInterval);
-  }
-
-  // Update the progress bar and unlock state
-  private updateProgress(): void {
-    const now = this.getMidnightOfDate(new Date());
-    this.daysLeft = this.unlockDate.getTime() - now.getTime();
-
-    if (now < this.unlockDate) {
-      this.daysLeft = Math.ceil(
-        (this.unlockDate.getTime() - now.getTime()) / (24 * 60 * 60 * 1000)
+    this.params.countDownDays = getNumberParamFromTemplateRow(this._row, "countdown_days", 6);
+    const countdownStartDate = getParamFromTemplateRow(this._row, "countdown_start_date", null);
+    try {
+      const parsedDate = parseISO(countdownStartDate);
+      this.params.countdownStartDate = parsedDate;
+    } catch {
+      console.error(
+        `[ACTIVITY CHECK-IN] Invalid date for countdown_start_date: ${countdownStartDate}`
       );
-      this.progressPercentage =
-        ((this.params.countDownDays - this.daysLeft) / this.params.countDownDays) * 100;
-    } else {
-      this.progressPercentage = 16;
-      localStorage.removeItem(this.getLocalStorageKey());
     }
+
+    let countdownTextList = getParamFromTemplateRow(this._row, "countdown_text_list", []);
+    if (typeof countdownTextList === "string") {
+      countdownTextList = countdownTextList.split(",").map((text) => text.trim());
+    }
+    this.params.countdownTextList = countdownTextList;
   }
 
-  // Get the number of milliseconds until midnight.
-  private getMillisecondsUntilMidnight(): number {
-    const now = new Date();
-    const midnight = this.getMidnightOfDate(now);
-    midnight.setDate(midnight.getDate() + 1);
-    return midnight.getTime() - now.getTime();
-  }
-
-  // Get the midnight of a given date.
-  private getMidnightOfDate(date: Date): Date {
-    const midnight = new Date(date);
-    midnight.setHours(0, 0, 0, 0);
-    return midnight;
+  private calculateDaysUntilUnlock() {
+    if (this.params.countdownStartDate && this.params.countDownDays) {
+      const unlockDate = addDays(this.params.countdownStartDate, this.params.countDownDays);
+      const daysRemaining = differenceInCalendarDays(
+        startOfDay(unlockDate),
+        startOfDay(new Date())
+      );
+      this.daysUntilUnlock = Math.max(daysRemaining, 0);
+    }
   }
 }
