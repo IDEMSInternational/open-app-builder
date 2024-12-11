@@ -26,14 +26,7 @@
     [style.marginBottom.px]="params.offset"
     [ngSwitch]="type"
     [style]="_row.style_list | styleList"
-    [style.backgroundImage]="
-      params.backgroundImageAsset
-        ? 'url(' + (params.backgroundImageAsset | plhAsset) + ')'
-        : undefined
-    "
-    [style.backgroundPosition]="
-      params.backgroundImageAsset ? params.backgroundImagePosition : undefined
-    "
+    [ngStyle]="backgroundImageStyles"
   >
     <!-- Default Layout -->
     <ng-container *ngSwitchDefault>

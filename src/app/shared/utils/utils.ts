@@ -186,7 +186,7 @@ export function getParamFromTemplateRow(
 export function getStringParamFromTemplateRow(
   row: FlowTypes.TemplateRow,
   name: string,
-  _default: string
+  _default: string = ""
 ): string {
   const paramValue = getParamFromTemplateRow(row, name, _default) as string;
   return paramValue ? `${paramValue}` : paramValue;
