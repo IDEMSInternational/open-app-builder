@@ -1,6 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { TemplateBaseComponent } from "../../base";
 import { getNumberParamFromTemplateRow, getStringParamFromTemplateRow } from "../../../../../utils";
+import { NgStyle } from "@angular/common";
+import { TemplateAssetService } from "../../../services/template-asset.service";
 
 interface IDisplayGroupParams {
   /** TEMPLATE PARAMETER: "variant" */
@@ -33,6 +35,12 @@ export class TmplDisplayGroupComponent extends TemplateBaseComponent implements 
   bgColor: string;
   type: "form" | "dashed_box" | "default";
 
+  public backgroundImageStyles: NgStyle["ngStyle"] = {};
+
+  constructor(private templateAssetService: TemplateAssetService) {
+    super();
+  }
+
   ngOnInit() {
     this.getParams();
   }
@@ -50,16 +58,7 @@ export class TmplDisplayGroupComponent extends TemplateBaseComponent implements 
       .concat(" " + this.params.style) as IDisplayGroupParams["variant"];
     this.params.sticky = getStringParamFromTemplateRow(this._row, "sticky", null) as any;
     this.type = this.getTypeFromStyles();
-    this.params.backgroundImageAsset = getStringParamFromTemplateRow(
-      this._row,
-      "background_image_asset",
-      null
-    );
-    this.params.backgroundImagePosition = getStringParamFromTemplateRow(
-      this._row,
-      "background_image_position",
-      "top"
-    );
+    this.backgroundImageStyles = this.getBackgroundImageStyles();
   }
 
   private getTypeFromStyles() {
@@ -67,5 +66,22 @@ export class TmplDisplayGroupComponent extends TemplateBaseComponent implements 
     if (this.params.style?.includes("dashed_box") || this.params.variant?.includes("dashed_box"))
       return "dashed_box";
     return "default";
+  }
+
+  private getBackgroundImageStyles() {
+    // only generate background image styles if asset included
+    const backgroundImageAsset = getStringParamFromTemplateRow(this._row, "background_image_asset");
+    if (!backgroundImageAsset) return {};
+    // retrieve the image asset url in the same way plh_asset pipe does
+    // assign background position and size styles and return
+    const url = this.templateAssetService.getTranslatedAssetPath(backgroundImageAsset);
+    const backgroundImage = `url(${url})`;
+    const backgroundPosition = getStringParamFromTemplateRow(
+      this._row,
+      "background_image_position",
+      "top"
+    );
+    const backgroundSize = "contain";
+    return { backgroundImage, backgroundPosition, backgroundSize };
   }
 }
