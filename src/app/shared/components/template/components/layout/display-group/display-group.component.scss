@@ -23,8 +23,8 @@
 .display-group-wrapper[data-param-style~="wrap"] {
   flex-wrap: wrap;
 }
-
-.display-group-wrapper[data-param-style~="background-page"] {
+// assign default background colour to the display group wrapper (useful in sticky group)
+.display-group-wrapper[data-param-style~="background_colour"] {
   background-color: var(--ion-background-color);
 }
 
