@@ -24,6 +24,10 @@
   flex-wrap: wrap;
 }
 
+.display-group-wrapper[data-param-style~="background-page"] {
+  background-color: var(--ion-background-color);
+}
+
 // Default spacing within display groups. Adapted from `template-component.scss`
 .display-group-wrapper[data-param-style~="row"] > plh-template-component:not([data-hidden="true"]) {
   margin: 0;
