@@ -17,7 +17,7 @@ interface IDisplayGroupParams {
   offset: number;
   /** TEMPLATE PARAMETER: "background_image_asset". Add a background to the display group */
   backgroundImageAsset: string;
-  /** TEMPLATE PARAMETER: "background_image_asset". Add a position to the background image */
+  /** TEMPLATE PARAMETER: "background_image_position". Add a position to the background image */
   backgroundImagePosition: string;
   /** TEMPLATE PARAMETER: "sticky". Set to "top" or "bottom" to make the display group a sticky inline header/footer */
   sticky: "top" | "bottom" | null;
