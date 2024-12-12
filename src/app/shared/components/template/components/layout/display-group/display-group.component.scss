@@ -24,7 +24,7 @@
   flex-wrap: wrap;
 }
 // assign default background colour to the display group wrapper (useful in sticky group)
-.display-group-wrapper[data-param-style~="background_colour"] {
+.display-group-wrapper[data-param-style~="background_solid"] {
   background-color: var(--ion-background-color);
 }
 
