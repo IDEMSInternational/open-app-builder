@@ -49,7 +49,8 @@ export function parseAppDataCollectionString(
     let [key, value] = el.split(":");
     value = value ? value.trim() : value;
     // handle keys that define deeper nesting, such as time.hours: 7
-    if (key.includes(".")) {
+    // do not nest dynamic references
+    if (key.includes(".") && !key.startsWith("@")) {
       const [base, ...nested] = key.split(".");
       collection[base] = setNestedProperty(
         nested.join("."),
