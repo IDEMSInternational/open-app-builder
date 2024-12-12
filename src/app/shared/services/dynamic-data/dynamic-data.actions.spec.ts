@@ -13,20 +13,38 @@ import { DeploymentService } from "../deployment/deployment.service";
 import { MockDeploymentService } from "../deployment/deployment.service.spec";
 import { TemplateActionRegistry } from "../../components/template/services/instance/template-action.registry";
 
-const TEST_DATA_ROWS = [
-  { id: "id_0", number: 0, string: "hello", _meta: "original" },
-  { id: "id_1", number: 1, string: "hello", boolean: true, _meta: "original" },
+type ITestRow = { id: string; number: number; string: string; _meta_field?: any };
+
+const TEST_DATA_ROWS = (): FlowTypes.Data_listRow<ITestRow>[] => [
+  { id: "id_0", number: 0, string: "hello", _meta_field: "original" },
+  { id: "id_1", number: 1, string: "hello", _meta_field: "original" },
 ];
+
+const TEST_DATA_LIST = (): FlowTypes.Data_list => ({
+  flow_name: "test_flow",
+  flow_type: "data_list",
+  // Make deep clone of data to avoid data overwrite issues
+  rows: TEST_DATA_ROWS(),
+  // Metadata would be extracted from parser based on data or defined schema
+  _metadata: {
+    boolean: { type: "boolean" },
+    number: { type: "number" },
+    _meta_field: { type: "object" },
+  },
+});
 
 /********************************************************************************
  * Test Utilities
  *******************************************************************************/
 
 /** Generate a rows to trigger set_data action with included params */
-function getTestActionRow(params: IActionSetDataParams) {
+function getTestActionRow(
+  params: IActionSetDataParams,
+  action_id: FlowTypes.TemplateRowAction["action_id"]
+) {
   params._list_id = "test_flow";
   const actionRow: FlowTypes.TemplateRowAction = {
-    action_id: "set_data",
+    action_id,
     trigger: "click",
     args: [],
     params,
@@ -39,9 +57,18 @@ function getTestActionRow(params: IActionSetDataParams) {
  * to corresponding data_list
  * * */
 async function triggerTestSetDataAction(service: DynamicDataService, params: IActionSetDataParams) {
-  const actionRow = getTestActionRow(params);
+  const actionRow = getTestActionRow(params, "set_data");
   const actions = new ActionFactory(service);
   await actions.set_data(actionRow);
+  const obs = await service.query$<any>("data_list", "test_flow");
+  const data = await firstValueFrom(obs);
+  return data;
+}
+
+async function triggerAddDataAction(service: DynamicDataService, params: IActionSetDataParams) {
+  const actionRow = getTestActionRow(params, "add_data");
+  const actions = new ActionFactory(service);
+  await actions.add_data(actionRow);
   const obs = await service.query$<any>("data_list", "test_flow");
   const data = await firstValueFrom(obs);
   return data;
@@ -64,12 +91,7 @@ describe("DynamicDataService Actions", () => {
           provide: AppDataService,
           useValue: new MockAppDataService({
             data_list: {
-              test_flow: {
-                flow_name: "test_flow",
-                flow_type: "data_list",
-                // Make deep clone of data to avoid data overwrite issues
-                rows: JSON.parse(JSON.stringify(TEST_DATA_ROWS)),
-              },
+              test_flow: TEST_DATA_LIST(),
             },
           }),
         },
@@ -139,10 +161,10 @@ describe("DynamicDataService Actions", () => {
   });
 
   it("set_data prevents update to metadata fields", async () => {
-    const params: IActionSetDataParams = { _meta: "updated", string: "updated" };
+    const params: IActionSetDataParams = { _meta_field: "updated", string: "updated" };
     const data = await triggerTestSetDataAction(service, params);
     expect(data[0].string).toEqual("updated");
-    expect(data[0]._meta).toEqual("original");
+    expect(data[0]._meta_field).toEqual("original");
   });
 
   it("set_data ignores evaluation when _updates provided", async () => {
@@ -156,7 +178,7 @@ describe("DynamicDataService Actions", () => {
   it("reset_data action restores data to initial", async () => {
     const updatedData = await triggerTestSetDataAction(service, { string: "updated string" });
     expect(updatedData[0].string).toEqual("updated string");
-    const resetActionBase = getTestActionRow({});
+    const resetActionBase = getTestActionRow({}, "reset_data");
     await actions.reset_data({ ...resetActionBase, action_id: "reset_data" });
     const obs = await service.query$<any>("data_list", "test_flow");
     const resetData = await firstValueFrom(obs);
@@ -179,20 +201,26 @@ describe("DynamicDataService Actions", () => {
    ************************************************************/
 
   it("throws error if provided _id does not exist", async () => {
-    const params = getTestActionRow({
-      _id: "missing_id",
-      string: "sets an item correctly a given id",
-    });
+    const params = getTestActionRow(
+      {
+        _id: "missing_id",
+        string: "sets an item correctly a given id",
+      },
+      "set_data"
+    );
     await expectAsync(actions.set_data(params)).toBeRejectedWithError(
       `[Update Fail] no doc exists\ndata_list: test_flow\n_id: missing_id`
     );
   });
 
   it("throws error if provided _index does not exist", async () => {
-    const params = getTestActionRow({
-      _index: 10,
-      string: "sets an item correctly a given id",
-    });
+    const params = getTestActionRow(
+      {
+        _index: 10,
+        string: "sets an item correctly a given id",
+      },
+      "set_data"
+    );
     await expectAsync(actions.set_data(params)).toBeRejectedWithError(
       `[Update Fail] no doc exists\ndata_list: test_flow\n_index: 10`
     );
