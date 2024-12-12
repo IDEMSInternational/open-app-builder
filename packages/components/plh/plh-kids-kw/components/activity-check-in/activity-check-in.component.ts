@@ -9,8 +9,6 @@ import {
 } from "src/app/shared/utils";
 
 interface IActivityCheckInParams {
-  /* TEMPLATE PARAMETER: "activity_id". The activity identifier attached at the bottom of the component */
-  id: string;
   /* TEMPLATE PARAMETER: "title". The title attached at the bottom of the component */
   title?: string;
   /* TEMPLATE PARAMETER: "locked_icon_asset". The icon that shows when the activity is locked */
@@ -66,7 +64,6 @@ export class PlhActivityCheckInComponent extends TemplateBaseComponent implement
   }
 
   private getParams() {
-    this.params.id = getStringParamFromTemplateRow(this._row, "activity_id", null);
     this.params.title = getStringParamFromTemplateRow(this._row, "title", null);
     this.params.lockedIconAsset = getStringParamFromTemplateRow(
       this._row,
