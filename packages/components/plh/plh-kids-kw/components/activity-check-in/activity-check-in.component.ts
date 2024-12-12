@@ -1,5 +1,5 @@
 import { Component, computed, OnInit, signal } from "@angular/core";
-import { addDays, differenceInCalendarDays, parseISO, startOfDay, toDate } from "date-fns";
+import { addDays, differenceInCalendarDays, isValid, parseISO, startOfDay } from "date-fns";
 import { TemplateBaseComponent } from "src/app/shared/components/template/components/base";
 import { TemplateTranslateService } from "src/app/shared/components/template/services/template-translate.service";
 import {
@@ -49,7 +49,11 @@ export class PlhActivityCheckInComponent extends TemplateBaseComponent implement
     return this.params.countdownTextList[targetIndex];
   });
   progressPercentage = computed(() => {
-    return ((this.params.countDownDays - this.daysUntilUnlock()) / this.params.countDownDays) * 100;
+    if (this.daysUntilUnlock() === Infinity) return 0;
+    return (
+      ((this.params.countDownDays - (this.daysUntilUnlock() || 0)) / this.params.countDownDays) *
+      100
+    );
   });
 
   constructor(public templateTranslateService: TemplateTranslateService) {
@@ -86,14 +90,18 @@ export class PlhActivityCheckInComponent extends TemplateBaseComponent implement
     );
     this.params.countDownDays = getNumberParamFromTemplateRow(this._row, "countdown_days", 6);
     const countdownStartDate = getParamFromTemplateRow(this._row, "countdown_start_date", null);
-    try {
-      const parsedDate = parseISO(countdownStartDate);
-      this.params.countdownStartDate = parsedDate;
-    } catch {
-      console.error(
-        `[ACTIVITY CHECK-IN] Invalid date for countdown_start_date: ${countdownStartDate}`
-      );
+
+    let parsedDate = new Date(countdownStartDate);
+    if (!isValid(parsedDate)) {
+      // Attempt to parse from ISO format
+      parsedDate = parseISO(countdownStartDate);
+      if (!isValid(parsedDate)) {
+        console.error(
+          `[ACTIVITY CHECK-IN] Invalid date for countdown_start_date: ${countdownStartDate}`
+        );
+      }
     }
+    this.params.countdownStartDate = parsedDate;
 
     let countdownTextList = getParamFromTemplateRow(this._row, "countdown_text_list", []);
     if (typeof countdownTextList === "string") {
@@ -103,6 +111,7 @@ export class PlhActivityCheckInComponent extends TemplateBaseComponent implement
   }
 
   private calculateDaysUntilUnlock() {
+    if (this.params.countDownDays === 0) this.daysUntilUnlock.set(0);
     if (this.params.countdownStartDate && this.params.countDownDays) {
       const unlockDate = addDays(this.params.countdownStartDate, this.params.countDownDays);
       const daysRemaining = differenceInCalendarDays(
