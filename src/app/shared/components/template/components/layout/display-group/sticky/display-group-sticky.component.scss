@@ -5,7 +5,6 @@
   left: 0;
   width: 100vw;
   justify-content: center;
-  background-color: var(--sticky-background);
   z-index: 10;
 
   &[sticky-position="top"] {
