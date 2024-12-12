@@ -84,7 +84,7 @@ export class AppDataService extends SyncServiceBase {
     is_override_target: boolean = false,
     /** Keep log of previous override flow names to avoid infinite loops, e.g. flow_a -> flow_b -> flow_a  */
     overrideHistory: string[] = []
-  ) {
+  ): Promise<T> {
     const flowContents = this.sheetContents[flow_type][flow_name];
     if (!flowContents) {
       // log error but don't throw to allow further processing
