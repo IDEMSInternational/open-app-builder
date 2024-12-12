@@ -450,6 +450,8 @@ body[data-theme="plh_kids_kw"] {
       }
     }
   }
+
+  // Title
   plh-tmpl-title {
     .title-wrapper h1 {
       font-size: var(--font-size-text-title);
@@ -457,7 +459,7 @@ body[data-theme="plh_kids_kw"] {
       line-height: var(--line-height-text-large);
       color: var(--color-surface-black);
     }
-    .list-title {
+    .title-wrapper[data-variant~="list-title"] {
       font-size: var(--font-size-text-large) !important;
       font-weight: var(--font-weight-medium) !important;
       background-color: #e7f2fd;
@@ -467,7 +469,7 @@ body[data-theme="plh_kids_kw"] {
         border: none;
       }
     }
-    .page-title h1 {
+    .title-wrapper[data-variant~="page-title"] h1 {
       font-size: var(--font-size-text-extra-large) !important;
     }
   }

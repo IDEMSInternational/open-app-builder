@@ -13,7 +13,7 @@ interface ITitleParams {
   /** TEMPLATE PARAMETER: "style". */
   style: string | null;
   /** TEMPLATE PARAMETER: "variant". */
-  variant: "" | "header";
+  variant: "" | "header" | "list-title" | "page-title";
 }
 
 @Component({
