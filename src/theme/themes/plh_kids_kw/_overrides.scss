@@ -668,18 +668,18 @@ body[data-theme="plh_kids_kw"] {
     }
     .image {
       .module-illustration {
-        height: 480px;
+        height: 380px;
         background-position: center;
         background-repeat: no-repeat;
-        background-size: 380px;
+        background-size: 320px;
 
         display: flex;
         justify-content: center;
         align-items: center;
       }
       img.module-image {
-        max-width: 220px;
-        min-width: 220px;
+        max-width: 190px;
+        min-width: 190px;
         margin-top: -40px;
         border-radius: 50%;
       }
