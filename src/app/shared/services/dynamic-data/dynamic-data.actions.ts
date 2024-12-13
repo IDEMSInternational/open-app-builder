@@ -9,6 +9,7 @@ import {
   evaluateDynamicDataUpdate,
   isItemChanged,
 } from "./dynamic-data.utils";
+import { generateUUID } from "../../utils";
 
 interface IActionSetDataOperatorParams {
   // TODO - ideally use same itemPipe operators
@@ -37,6 +38,11 @@ interface IActionSetDataParamsMeta extends IActionSetDataOperatorParams {
 /** Key-value pairs to update. These support reference to self `@item` context */
 export type IActionSetDataParams = IActionSetDataParamsMeta & Record<string, any>;
 
+export type IActionRemoveDataParams = {
+  _list_id: string;
+  _id: string;
+};
+
 class DynamicDataActionFactory {
   constructor(private service: DynamicDataService) {}
 
@@ -47,7 +53,12 @@ class DynamicDataActionFactory {
    * click | set_data | _list: @data.example_list, completed:true;
    */
   public set_data: IActionHandler = async ({ params }: { params?: IActionSetDataParams }) => {
-    const { _list_id, _updates } = await this.parseParams(params);
+    const parsed = await this.parseParams(params);
+    // if called from set_item will already include list of updates to apply, if not generate
+    if (!parsed._updates) {
+      parsed._updates = await this.generateUpdateList(parsed);
+    }
+    const { _list_id, _updates } = parsed;
     // Hack, no current method for bulk update so make successive (changes debounced in component)
     for (const { id, ...writeableProps } of _updates) {
       await this.service.update("data_list", _list_id, id, writeableProps);
@@ -59,18 +70,37 @@ class DynamicDataActionFactory {
     return this.service.resetFlow("data_list", _list_id);
   };
 
+  public remove_data: IActionHandler = async ({ params }: { params?: IActionRemoveDataParams }) => {
+    const { _id, _list_id } = params;
+    return this.service.remove("data_list", _list_id, [_id]);
+  };
+
+  public add_data: IActionHandler = async ({ params }: { params?: IActionSetDataParams }) => {
+    const { _list_id, ...data } = await this.parseParams(params);
+    // assign a row_index to push user_generated docs to bottom of list
+    let row_index = await this.service.getCount("data_list", _list_id);
+    data.id = generateUUID();
+    // add metadata to track user created
+    data._user_created = true;
+    data.row_index = row_index;
+    // HACK - use the same dynamic data evaluator as set_data action
+    // This requires passing an item list, so just create an ad-hoc list with a single item
+    const [evaluated] = evaluateDynamicDataUpdate([{ id: data.id }], data);
+    // TODO - add support for evaluating @list statements
+    const schema = this.service.getSchema("data_list", _list_id);
+    const [coerced] = coerceDataUpdateTypes(schema?.jsonSchema?.properties, [evaluated]);
+    return this.service.insert("data_list", _list_id, coerced);
+  };
+
   /** Parse action parameters to generate a list of updates to apply */
   private async parseParams(params: IActionSetDataParams) {
     if (isObjectLiteral(params)) {
       const parsed = this.hackParseTemplatedParams(params);
-      let { _updates, _list_id } = parsed;
-      // handle parse from item reference string
-      if (_list_id) {
-        if (!_updates) {
-          _updates = await this.generateUpdateList(parsed);
-        }
-        return { _updates, _list_id };
+      if (!parsed._list_id) {
+        console.error(params);
+        throw new Error("[Data Actions] could not parse list id");
       }
+      return parsed;
     }
 
     // throw error if args not parsed correctly
@@ -101,9 +131,15 @@ class DynamicDataActionFactory {
       items = [items[_index]];
     }
 
-    const filteredUpdate = {};
+    return this.parseUpdateData(update, items, _list_id);
+  }
 
-    const cleanedUpdate = this.removeUpdateMetadata(update);
+  private parseUpdateData(
+    updateData: Record<string, any>,
+    items: FlowTypes.Data_listRow[],
+    _list_id: string
+  ) {
+    const cleanedUpdate = this.removeUpdateMetadata(updateData);
 
     // Evaluate item updates for any `@item` self-references
     const evaluated = evaluateDynamicDataUpdate(items, cleanedUpdate);
@@ -113,7 +149,7 @@ class DynamicDataActionFactory {
     const coerced = coerceDataUpdateTypes(schema?.jsonSchema?.properties, evaluated);
 
     // Filter to only include updates that will change original item
-    return coerced.filter((data, i) => isItemChanged(items[i], data));
+    return coerced.filter((el, i) => isItemChanged(items[i], el));
   }
 
   private applyUpdateOperations(params: IActionSetDataParams) {

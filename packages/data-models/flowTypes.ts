@@ -396,6 +396,9 @@ export namespace FlowTypes {
     | "sent" // notification sent
     | "uncompleted";
 
+  const DATA_ACTIONS_LIST = ["add_data", "remove_data", "set_data"] as const;
+  const ITEMS_ACTIONS_LIST = ["remove_item", "set_item", "set_items"] as const;
+
   // TODO document '' action for stop propagation
   // note - to keep target nav within component stack go_to is actually just a special case of pop_up
   // TODO - 2021-03-11 - most of list needs reconsideration/implementation
@@ -425,11 +428,6 @@ export namespace FlowTypes {
     "save_to_device",
     "screen_orientation",
     "set_field",
-    /** NOTE - only available from with data_items loop */
-    "set_item",
-    /** NOTE - only available from with data_items loop */
-    "set_items",
-    "set_data",
     "set_local",
     "share",
     "style",
@@ -440,6 +438,8 @@ export namespace FlowTypes {
     "track_event",
     "trigger_actions",
     "user",
+    ...DATA_ACTIONS_LIST,
+    ...ITEMS_ACTIONS_LIST,
   ] as const;
 
   export interface TemplateRowAction<ParamsType = any> {
