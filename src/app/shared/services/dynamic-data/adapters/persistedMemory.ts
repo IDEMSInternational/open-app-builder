@@ -28,7 +28,8 @@ interface IPersistedDoc {
   flow_name: string;
   flow_type: string;
   row_id: string;
-  data: any;
+  /** Partial user data overrides to apply */
+  data: Record<string, any>;
 }
 
 /** The full schema is provided for persisted memory */
