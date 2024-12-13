@@ -1,7 +1,7 @@
 import { TestBed } from "@angular/core/testing";
 
 import { HttpClientTestingModule } from "@angular/common/http/testing";
-import { MockAppDataService } from "../data/app-data.service.spec";
+import { MockAppDataService } from "../data/app-data.service.mock.spec";
 import { AppDataService } from "../data/app-data.service";
 
 import { IActionSetDataParams } from "./dynamic-data.actions";

@@ -57,7 +57,7 @@ export class DynamicDataService extends AsyncServiceBase {
     const { set_data, reset_data } = new ActionsFactory(this);
     this.templateActionRegistry.register({ set_data, reset_data });
     // HACK - Legacy `set_item` action still managed here (will be removed in #2454)
-    this.registerTemplateActionHandlers();
+    this.registerLegacyItemsActions();
   }
 
   private async initialise() {
@@ -75,7 +75,7 @@ export class DynamicDataService extends AsyncServiceBase {
     this.writeCache = await new PersistedMemoryAdapter(name).create();
     this.db = await new ReactiveMemoryAdapter(name).createDB();
   }
-  private registerTemplateActionHandlers() {
+  private registerLegacyItemsActions() {
     this.templateActionRegistry.register({
       /**
        * Write properties on the current item (default), or on an explicitly targeted item,
@@ -175,8 +175,8 @@ export class DynamicDataService extends AsyncServiceBase {
       const docs = await existingCollection.find().exec();
       await existingCollection.bulkRemove(docs.map((d) => d.id));
       // Re-seed initial data
-      const initialData = await this.getInitialData(flow_type, flow_name);
-      await existingCollection.bulkInsert(initialData);
+      const { data } = await this.prepareInitialData(flow_type, flow_name);
+      await existingCollection.bulkInsert(data);
     } else {
       await this.createCollection(flow_type, flow_name);
     }
@@ -212,35 +212,52 @@ export class DynamicDataService extends AsyncServiceBase {
     const collectionName = this.normaliseCollectionName(flow_type, flow_name);
     // create collection and insert initial data. Use AsyncSubject to notify only when complete
     this.collectionCreators[collectionName] = new AsyncSubject();
-    const initialData = await this.getInitialData(flow_type, flow_name);
-    if (initialData.length === 0) {
-      throw new Error(`No data exists for collection [${flow_name}], cannot initialise`);
-    }
+    const { data, schema } = await this.prepareInitialData(flow_type, flow_name);
 
-    const schema = this.inferSchema(initialData[0]);
     await this.db.createCollection(collectionName, schema);
-    await this.db.bulkInsert(collectionName, initialData);
+    await this.db.bulkInsert(collectionName, data);
     // notify any observers that collection has been created
     this.collectionCreators[collectionName].next(collectionName);
     this.collectionCreators[collectionName].complete();
     delete this.collectionCreators[collectionName];
   }
 
-  /** Retrieve json sheet data and merge with any user writes */
-  private async getInitialData(flow_type: FlowTypes.FlowType, flow_name: string) {
+  /**
+   * Retrieve json sheet data and merge with any user writes
+   * Use the retrieved sheet data as source of truth for schema and ensure write data
+   * compatible in case of schema changes
+   * */
+  private async prepareInitialData(flow_type: FlowTypes.FlowType, flow_name: string) {
     const flowData = await this.appDataService.getSheet(flow_type, flow_name);
+    if (!flowData || flowData.rows.length === 0) {
+      throw new Error(`No data exists for collection [${flow_name}], cannot initialise`);
+    }
+    // Infer schema from flow. Specific data types will be included within flow._metadata,
+    // and all other fields considered string
+    const schema = this.inferSchema(flowData.rows[0]);
+    // Cached data will automatically be cast to correct data type from schema,
+    // with any additional fields ignored
+    const mergedData = this.mergeWriteCacheData(flow_type, flow_name, flowData.rows);
+    // HACK - rxdb can't write any fields prefixed with `_` so extract all to top-level APP_META key
+    const cleaned = mergedData.map((el) => this.extractMeta(el));
+
+    // add index property to each element before insert, for sorting queried data by original order
+    const data = cleaned.map((el) => ({ ...el, row_index: cleaned.indexOf(el) }));
+    return { data, schema };
+  }
+
+  private mergeWriteCacheData(
+    flow_type: FlowTypes.FlowType,
+    flow_name: string,
+    initialData: any[]
+  ) {
     const writeData = this.writeCache.get(flow_type, flow_name) || {};
     const writeDataArray: IDocWithMeta[] = Object.entries(writeData).map(([id, v]) => ({
       ...v,
       id,
     }));
-    const mergedData = this.mergeData(flowData?.rows, writeDataArray);
-    // HACK - rxdb can't write any fields prefixed with `_` so extract all to top-level APP_META key
-    const cleaned = mergedData.map((el) => this.extractMeta(el));
-
-    // add index property to each element before insert, for sorting queried data by original order
-    const initialDataWithMeta = cleaned.map((el) => ({ ...el, row_index: cleaned.indexOf(el) }));
-    return initialDataWithMeta;
+    const mergedData = this.mergeData(initialData, writeDataArray);
+    return mergedData;
   }
 
   /** When working with rxdb collections only alphanumeric lower case names allowed  */
@@ -259,23 +276,22 @@ export class DynamicDataService extends AsyncServiceBase {
    * Any fields that will be used in querying need to have defined properties for each field
    * Use an example data entry to try and infer schema from datatypes present in that row
    *
-   * TODO - ideally better if schmea can also be defined using an `@schema` row or similar
    */
-  private inferSchema(data: any) {
-    const { id, ...fields } = data;
+  private inferSchema(dataRow: any, metadata: FlowTypes.Data_list["_metadata"] = {}) {
+    const { id, ...fields } = dataRow;
     // TODO - could make QC check in parser instead of at runtime
     if (!id) {
-      throw new Error("Cannot create dynamic data without id column\n" + data);
+      throw new Error("Cannot create dynamic data without id column\n" + dataRow);
     }
     if (typeof id !== "string") {
-      throw new Error("ID column must be formatted as a string\n" + data);
+      throw new Error("ID column must be formatted as a string\n" + dataRow);
     }
     const schema = REACTIVE_SCHEMA_BASE;
-    for (const [key, value] of Object.entries(fields)) {
+    for (const key of Object.keys(fields)) {
       if (!schema.properties[key]) {
-        const type = typeof value;
-        const entry: TopLevelProperty = { type };
-        schema.properties[key] = entry;
+        // assign any provided metadata, with fallback 'string' type if not specified
+        const type = metadata[key]?.type || "string";
+        schema.properties[key] = { ...metadata[key], type };
       }
     }
     return schema;
