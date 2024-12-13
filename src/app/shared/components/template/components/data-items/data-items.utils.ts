@@ -1,4 +1,5 @@
 import { FlowTypes } from "packages/data-models";
+import { IActionRemoveDataParams } from "src/app/shared/services/dynamic-data/dynamic-data.actions";
 import { ISetItemContext } from "src/app/shared/services/dynamic-data/dynamic-data.service";
 
 /**
@@ -43,6 +44,16 @@ export function updateItemMeta(
       r.action_list = r.action_list.map((a) => {
         if (a.action_id === "set_item") {
           a.args = [setItemContext];
+        }
+        // re-map remove_item to remove_data action
+        // TODO - set_item and set_items should also be remapped
+        if (a.action_id === "remove_item") {
+          a.action_id = "remove_data";
+          const removeDataParams: IActionRemoveDataParams = {
+            _id: itemId,
+            _list_id: dataListName,
+          };
+          a.params = removeDataParams;
         }
         if (a.action_id === "set_items") {
           console.warn(
