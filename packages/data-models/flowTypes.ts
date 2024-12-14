@@ -419,6 +419,7 @@ export namespace FlowTypes {
      * Use `auth: sign_in_google` instead
      * */
     "google_auth",
+    "nav",
     "nav_stack",
     "open_external",
     "pop_up",
