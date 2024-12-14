@@ -1,8 +1,5 @@
 import { isObjectLiteral } from "packages/shared/src/utils/object-utils";
-import {
-  IActionHandler,
-  TemplateActionRegistry,
-} from "../../../components/template/services/instance/template-action.registry";
+import { IActionHandler } from "../../../components/template/services/instance/template-action.registry";
 import type { DynamicDataService } from "../dynamic-data.service";
 
 import addDataAction, { IActionAddDataParams } from "./add_data.action";
@@ -22,16 +19,8 @@ type IActionResetDataParams = {
   _list_id: string;
 };
 
-export const registerDynamicDataActions = (
-  service: DynamicDataService,
-  templateActionRegistry: TemplateActionRegistry
-) => {
-  const { add_data, remove_data, reset_data, set_data } = new DynamicDataActionFactory(service);
-  return templateActionRegistry.register({ add_data, remove_data, reset_data, set_data });
-};
-
 // Use action factory to make it easier to apply common logic to action params and pass service
-class DynamicDataActionFactory {
+export class DynamicDataActionFactory {
   constructor(private service: DynamicDataService) {}
 
   public set_data: IActionHandler = async ({ params }: { params?: IActionSetDataParams }) => {
