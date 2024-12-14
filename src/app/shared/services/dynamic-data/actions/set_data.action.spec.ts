@@ -11,6 +11,7 @@ import { FlowTypes } from "packages/data-models";
 import { DeploymentService } from "../../deployment/deployment.service";
 import { MockDeploymentService } from "../../deployment/deployment.service.spec";
 import { TemplateActionRegistry } from "../../../components/template/services/instance/template-action.registry";
+import { DynamicDataActionFactory } from "./index";
 
 type ITestRow = { id: string; number: number; string: string; _meta_field?: any };
 
@@ -153,6 +154,21 @@ describe("set_data Action", () => {
     // test case illustrative only of not parsing data (would have been parsed independently)
     expect(data[0].number).toEqual("@item.number");
     expect(data[1].number).toEqual(1);
+  });
+
+  it("reset_data action restores data to initial", async () => {
+    const updatedData = await triggerTestSetDataAction(service, { string: "updated string" });
+    expect(updatedData[0].string).toEqual("updated string");
+    const { reset_data } = new DynamicDataActionFactory(service);
+    await reset_data({
+      action_id: "reset_data",
+      args: [],
+      trigger: "click",
+      params: { _list_id: "test_flow" },
+    });
+    const obs = await service.query$<any>("data_list", "test_flow");
+    const resetData = await firstValueFrom(obs);
+    expect(resetData[0].string).toEqual("hello");
   });
 
   /*************************************************************
