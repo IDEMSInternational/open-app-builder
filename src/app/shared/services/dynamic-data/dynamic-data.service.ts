@@ -10,7 +10,7 @@ import { arrayToHashmap, deepMergeObjects } from "../../utils";
 import { PersistedMemoryAdapter } from "./adapters/persistedMemory";
 import { ReactiveMemoryAdapter, REACTIVE_SCHEMA_BASE } from "./adapters/reactiveMemory";
 import { TemplateActionRegistry } from "../../components/template/services/instance/template-action.registry";
-import ActionsFactory from "./dynamic-data.actions";
+import { registerDynamicDataActions } from "./actions";
 import { DeploymentService } from "../deployment/deployment.service";
 
 @Injectable({ providedIn: "root" })
@@ -51,8 +51,7 @@ export class DynamicDataService extends AsyncServiceBase {
     super("Dynamic Data");
     this.registerInitFunction(this.initialise);
     // register action handlers
-    const { set_data, reset_data, add_data, remove_data } = new ActionsFactory(this);
-    this.templateActionRegistry.register({ set_data, reset_data, add_data, remove_data });
+    registerDynamicDataActions(this, templateActionRegistry);
     // HACK - Legacy `set_item` action still managed here (will be removed in #2454)
     this.registerLegacyItemsActions();
   }

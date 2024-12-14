@@ -1,5 +1,5 @@
 import { FlowTypes } from "packages/data-models";
-import { IActionRemoveDataParams } from "src/app/shared/services/dynamic-data/dynamic-data.actions";
+import { IActionRemoveDataParams } from "src/app/shared/services/dynamic-data/actions";
 import { ISetItemContext } from "src/app/shared/services/dynamic-data/dynamic-data.service";
 
 /**
