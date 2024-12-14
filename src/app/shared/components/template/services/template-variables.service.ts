@@ -93,7 +93,16 @@ export class TemplateVariablesService extends AsyncServiceBase {
       else if (data !== null) {
         // only evaluate if there are dynamic fields recorded somewhere in the object
         if (dynamicFields) {
-          for (const k of Object.keys(data)) {
+          for (let k of Object.keys(data)) {
+            // HACK - replace any dynamic keys and re-evaluate
+            // TODO - should ideally be easier to identify within existing dynamicFields system
+            if (k.startsWith("@")) {
+              const keyDynamicEvaluators = extractDynamicEvaluators(k);
+              const evaluatedKey = await this.evaluatePLHString(keyDynamicEvaluators, context);
+              data[evaluatedKey] = data[k];
+              delete data[k];
+              return this.evaluatePLHData({ ...data }, context, omitFields);
+            }
             value[k] = data[k];
             if (this.shouldEvaluateField(k as any, omitFields)) {
               // evalute each object element with reference to any dynamic specified for it's index (instead of fieldname)
