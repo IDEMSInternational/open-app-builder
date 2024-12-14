@@ -1,17 +1,16 @@
 import { TestBed } from "@angular/core/testing";
 
 import { HttpClientTestingModule } from "@angular/common/http/testing";
-import { MockAppDataService } from "../data/app-data.service.mock.spec";
-import { AppDataService } from "../data/app-data.service";
+import { MockAppDataService } from "../../data/app-data.service.mock.spec";
+import { AppDataService } from "../../data/app-data.service";
 
-import { IActionSetDataParams } from "./dynamic-data.actions";
-import { DynamicDataService } from "./dynamic-data.service";
-import ActionFactory from "./dynamic-data.actions";
+import setDataAction, { IActionSetDataParams } from "./set_data.action";
+import { DynamicDataService } from "../dynamic-data.service";
 import { firstValueFrom } from "rxjs";
 import { FlowTypes } from "packages/data-models";
-import { DeploymentService } from "../deployment/deployment.service";
-import { MockDeploymentService } from "../deployment/deployment.service.spec";
-import { TemplateActionRegistry } from "../../components/template/services/instance/template-action.registry";
+import { DeploymentService } from "../../deployment/deployment.service";
+import { MockDeploymentService } from "../../deployment/deployment.service.spec";
+import { TemplateActionRegistry } from "../../../components/template/services/instance/template-action.registry";
 
 type ITestRow = { id: string; number: number; string: string; _meta_field?: any };
 
@@ -37,38 +36,13 @@ const TEST_DATA_LIST = (): FlowTypes.Data_list => ({
  * Test Utilities
  *******************************************************************************/
 
-/** Generate a rows to trigger set_data action with included params */
-function getTestActionRow(
-  params: IActionSetDataParams,
-  action_id: FlowTypes.TemplateRowAction["action_id"]
-) {
-  params._list_id = "test_flow";
-  const actionRow: FlowTypes.TemplateRowAction = {
-    action_id,
-    trigger: "click",
-    args: [],
-    params,
-  };
-  return actionRow;
-}
-
 /**
  * Trigger the set_data action with included params and return first update
  * to corresponding data_list
  * * */
 async function triggerTestSetDataAction(service: DynamicDataService, params: IActionSetDataParams) {
-  const actionRow = getTestActionRow(params, "set_data");
-  const actions = new ActionFactory(service);
-  await actions.set_data(actionRow);
-  const obs = await service.query$<any>("data_list", "test_flow");
-  const data = await firstValueFrom(obs);
-  return data;
-}
-
-async function triggerAddDataAction(service: DynamicDataService, params: IActionSetDataParams) {
-  const actionRow = getTestActionRow(params, "add_data");
-  const actions = new ActionFactory(service);
-  await actions.add_data(actionRow);
+  params._list_id = "test_flow";
+  await setDataAction(service, params);
   const obs = await service.query$<any>("data_list", "test_flow");
   const data = await firstValueFrom(obs);
   return data;
@@ -76,11 +50,11 @@ async function triggerAddDataAction(service: DynamicDataService, params: IAction
 
 /********************************************************************************
  * Tests
- * yarn ng test --include src/app/shared/services/dynamic-data/dynamic-data.actions.spec.ts
+ * yarn ng test --include src/app/shared/services/dynamic-data/actions/set_data.action.spec.ts
  *******************************************************************************/
-describe("DynamicDataService Actions", () => {
+describe("set_data Action", () => {
   let service: DynamicDataService;
-  let actions: ActionFactory;
+  let serviceUpdateSpy: jasmine.Spy;
 
   beforeEach(async () => {
     TestBed.configureTestingModule({
@@ -110,10 +84,12 @@ describe("DynamicDataService Actions", () => {
     window.global = window;
 
     service = TestBed.inject(DynamicDataService);
+
+    serviceUpdateSpy = spyOn(service, "update").and.callThrough();
+
     await service.ready();
     // Ensure any data previously persisted is cleared
     await service.resetFlow("data_list", "test_flow");
-    actions = new ActionFactory(service);
   });
 
   /*************************************************************
@@ -156,8 +132,12 @@ describe("DynamicDataService Actions", () => {
 
   it("set_data ignores updates for unchanged data", async () => {
     const params: IActionSetDataParams = { _list_id: "test_flow", number: 1 };
-    const updates = await actions["generateUpdateList"](params);
-    expect(updates).toEqual([{ id: "id_0", number: 1 }]);
+    await triggerTestSetDataAction(service, params);
+    // expect only 1 row to be updated (skip id_1 which has same number)
+    console.log("spy", serviceUpdateSpy.calls.all());
+    expect(serviceUpdateSpy).toHaveBeenCalledOnceWith("data_list", "test_flow", "id_0", {
+      number: 1,
+    });
   });
 
   it("set_data prevents update to metadata fields", async () => {
@@ -173,16 +153,6 @@ describe("DynamicDataService Actions", () => {
     // test case illustrative only of not parsing data (would have been parsed independently)
     expect(data[0].number).toEqual("@item.number");
     expect(data[1].number).toEqual(1);
-  });
-
-  it("reset_data action restores data to initial", async () => {
-    const updatedData = await triggerTestSetDataAction(service, { string: "updated string" });
-    expect(updatedData[0].string).toEqual("updated string");
-    const resetActionBase = getTestActionRow({}, "reset_data");
-    await actions.reset_data({ ...resetActionBase, action_id: "reset_data" });
-    const obs = await service.query$<any>("data_list", "test_flow");
-    const resetData = await firstValueFrom(obs);
-    expect(resetData[0].string).toEqual("hello");
   });
 
   /*************************************************************
@@ -201,27 +171,21 @@ describe("DynamicDataService Actions", () => {
    ************************************************************/
 
   it("throws error if provided _id does not exist", async () => {
-    const params = getTestActionRow(
-      {
-        _id: "missing_id",
-        string: "sets an item correctly a given id",
-      },
-      "set_data"
-    );
-    await expectAsync(actions.set_data(params)).toBeRejectedWithError(
+    const params = {
+      _id: "missing_id",
+      string: "sets an item correctly a given id",
+    };
+    await expectAsync(triggerTestSetDataAction(service, params)).toBeRejectedWithError(
       `[Update Fail] no doc exists\ndata_list: test_flow\n_id: missing_id`
     );
   });
 
   it("throws error if provided _index does not exist", async () => {
-    const params = getTestActionRow(
-      {
-        _index: 10,
-        string: "sets an item correctly a given id",
-      },
-      "set_data"
-    );
-    await expectAsync(actions.set_data(params)).toBeRejectedWithError(
+    const params = {
+      _index: 10,
+      string: "sets an item correctly a given id",
+    };
+    await expectAsync(triggerTestSetDataAction(service, params)).toBeRejectedWithError(
       `[Update Fail] no doc exists\ndata_list: test_flow\n_index: 10`
     );
   });
