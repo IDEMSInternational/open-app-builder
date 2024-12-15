@@ -525,6 +525,20 @@ body[data-theme="plh_kids_kw"] {
         max-width: 32px !important;
       }
     }
+    .box-wrapper[data-language-direction~="rtl"] {
+      .text {
+        border-top-right-radius: 12px;
+        border-bottom-right-radius: 12px;
+        border-top-left-radius: 0px;
+        border-bottom-left-radius: 0px;
+      }
+      .copy-button {
+        border-top-left-radius: 12px;
+        border-bottom-left-radius: 12px;
+        border-top-right-radius: 0px;
+        border-bottom-right-radius: 0px;
+      }
+    }
   }
 
   // module-list-item
