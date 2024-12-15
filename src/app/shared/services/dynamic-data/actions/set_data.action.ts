@@ -70,7 +70,7 @@ async function generateUpdateList(service: DynamicDataService, params: IActionSe
     items = [items[_index]];
   }
   // Coerce updates to correct data types (inline parameter_list values parsed as strings)
-  const schema = service.getSchema("data_list", _list_id);
+  const schema = await service.getSchema("data_list", _list_id);
 
   return parseUpdateData(schema, update, items, _list_id);
 }

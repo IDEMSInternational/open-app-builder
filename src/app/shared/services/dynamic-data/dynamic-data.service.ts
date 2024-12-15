@@ -155,16 +155,11 @@ export class DynamicDataService extends AsyncServiceBase {
   ) {
     const { collectionName } = await this.ensureCollection(flow_type, flow_name);
     const { id } = data;
-    // TODO - remove metadata
-    const res = await this.db.bulkInsert(collectionName, [data]);
-    // TODO - generating row_id and row_index
-    //      - possibly just use 0 index for now and can re-populate later after retrieval (?)
-    // TODO - track whether user generated/owned?
-    // TODO - check what happens after data_list updated (user entries retained?)
+    await this.db.bulkInsert(collectionName, [data]);
     this.writeCache.update({ flow_type, flow_name, id, data });
-    // TODO - what if id already exists?
   }
 
+  /** Remove user_generated data row */
   public async remove(flow_type: FlowTypes.FlowType, flow_name: string, ids: string[]) {
     const { collectionName } = await this.ensureCollection(flow_type, flow_name);
     const collection = this.db.getCollection(collectionName);
@@ -203,8 +198,9 @@ export class DynamicDataService extends AsyncServiceBase {
     return this.writeCache.state;
   }
 
-  public getSchema(flow_type: FlowTypes.FlowType, flow_name: string) {
-    const collectionName = this.normaliseCollectionName(flow_type, flow_name);
+  public async getSchema(flow_type: FlowTypes.FlowType, flow_name: string) {
+    // ensure collection has been created when accessing schema
+    const { collectionName } = await this.ensureCollection(flow_type, flow_name);
     return this.db.getCollection(collectionName)?.schema;
   }
 
