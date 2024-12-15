@@ -24,12 +24,12 @@ export class DynamicDataActionFactory {
   constructor(private service: DynamicDataService) {}
 
   public set_data: IActionHandler = async ({ params }: { params?: IActionSetDataParams }) => {
-    const parsedParams = parseActionParams(params);
+    const parsedParams = this.parseActionParams(params);
     return setDataAction(this.service, parsedParams);
   };
 
   public reset_data: IActionHandler = async ({ params }: { params?: IActionResetDataParams }) => {
-    const { _list_id } = parseActionParams(params);
+    const { _list_id } = this.parseActionParams(params);
     return this.service.resetFlow("data_list", _list_id);
   };
 
@@ -39,25 +39,25 @@ export class DynamicDataActionFactory {
   };
 
   public add_data: IActionHandler = async ({ params }: { params?: IActionAddDataParams }) => {
-    const parsedParams = parseActionParams(params);
+    const parsedParams = this.parseActionParams(params);
     return addDataAction(this.service, parsedParams);
   };
-}
 
-/** Parse action parameters to generate a list of updates to apply */
-function parseActionParams<T extends IActionBaseParams>(params: T) {
-  if (isObjectLiteral(params)) {
-    const parsed = hackParseTemplatedParams(params);
-    if (!parsed._list_id) {
-      console.error(params);
-      throw new Error("[Data Actions] could not parse list id");
+  /** Parse action parameters to ensure list id provided and  */
+  private parseActionParams<T extends IActionBaseParams>(params: T) {
+    if (isObjectLiteral(params)) {
+      const parsed = hackParseTemplatedParams(params);
+      if (!parsed._list_id) {
+        console.error(params);
+        throw new Error("[Data Actions] could not parse list id");
+      }
+      return parsed;
     }
-    return parsed;
-  }
 
-  // throw error if args not parsed correctly
-  console.error(params);
-  throw new Error("[set_data] could not parse params");
+    // throw error if args not parsed correctly
+    console.error(params);
+    throw new Error("[set_data] could not parse params");
+  }
 }
 
 /**

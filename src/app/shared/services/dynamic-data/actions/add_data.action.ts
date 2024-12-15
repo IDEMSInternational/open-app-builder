@@ -8,6 +8,9 @@ export type IActionAddDataParams = {
 
 export default async (service: DynamicDataService, params: IActionAddDataParams) => {
   const { _list_id, ...data } = await parseParams(params);
+
+  const schema = await service.getSchema("data_list", _list_id);
+
   // assign a row_index to push user_generated docs to bottom of list
   data.row_index = await service.getCount("data_list", _list_id);
   // generate a unique id for the entry
@@ -18,7 +21,7 @@ export default async (service: DynamicDataService, params: IActionAddDataParams)
   // This requires passing an item list, so just create an ad-hoc list with a single item
   // TODO - add support for evaluating @list reference to parent list
   const [evaluated] = evaluateDynamicDataUpdate([{ id: data.id }], data);
-  const schema = service.getSchema("data_list", _list_id);
+
   const [coerced] = coerceDataUpdateTypes(schema?.jsonSchema?.properties, [evaluated]);
   return service.insert("data_list", _list_id, coerced);
 };
