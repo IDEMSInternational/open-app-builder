@@ -3,6 +3,7 @@
     [class]="'card-wrapper landscape ' + style"
     [attr.data-variant]="variant"
     (click)="triggerActions('click')"
+    [attr.data-status]="progressStatus"
   >
     <ng-container *ngIf="highlighted; else showProgress">
       <span class="badge highlighted-badge">
@@ -10,19 +11,21 @@
       </span>
     </ng-container>
     <ng-template #showProgress>
-      <span class="badge progress-badge">
-        <span class="circle" [class]="progressStatus"></span>
-        <img
-          *ngIf="progressStatus === 'inProgress'"
-          class="icon"
-          src="{{ inProgressIcon | plhAsset }}"
-        />
-        <img
-          *ngIf="progressStatus === 'completed'"
-          class="icon completed"
-          src="{{ completedIcon | plhAsset }}"
-        />
-      </span>
+      @if (inProgressIcon || completedIcon) {
+        <span class="badge progress-badge">
+          <span class="circle" [class]="progressStatus"></span>
+          <img
+            *ngIf="progressStatus === 'inProgress'"
+            class="icon"
+            src="{{ inProgressIcon | plhAsset }}"
+          />
+          <img
+            *ngIf="progressStatus === 'completed'"
+            class="icon completed"
+            src="{{ completedIcon | plhAsset }}"
+          />
+        </span>
+      }
     </ng-template>
     <div class="content-wrapper">
       <ng-container *ngIf="!title">
@@ -94,7 +97,7 @@
         <span class="badge highlighted-badge">
           {{ highlightedText }}
         </span>
-      } @else {
+      } @else if (inProgressIcon || completedIcon) {
         <span class="badge progress-badge">
           <span class="circle" [class]="progressStatus"></span>
           <img
