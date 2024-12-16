@@ -52,6 +52,10 @@ $text-color: var(--radio-button-font-color, var(--ion-color-primary));
     height: 86px;
 
     padding: 16px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
     img {
       width: 48px;
     }
