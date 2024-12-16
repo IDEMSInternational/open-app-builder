@@ -7,7 +7,13 @@
     >
       @if (item.image) {
         <div class="item-image-container">
-          <img class="item-image" [src]="item.image | plhAsset" />
+          <img
+            class="item-image"
+            [src]="
+              (item.name === _row.value && item.image_checked ? item.image_checked : item.image)
+                | plhAsset
+            "
+          />
         </div>
       }
       @if (item.text) {
