@@ -278,6 +278,8 @@ export class DynamicDataService extends AsyncServiceBase {
    *
    */
   private inferSchema(dataRow: any, metadata: FlowTypes.Data_list["_metadata"] = {}) {
+    // Extract app meta data properties to an `APP_META` field (these fields will not have their type inferred)
+    dataRow = this.extractMeta(dataRow);
     const { id, ...fields } = dataRow;
     // TODO - could make QC check in parser instead of at runtime
     if (!id) {
