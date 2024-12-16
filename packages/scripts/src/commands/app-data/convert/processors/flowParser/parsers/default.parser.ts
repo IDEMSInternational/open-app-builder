@@ -75,7 +75,7 @@ export class DefaultParser<
 
   /** If any flows have a first row that starts `@default` return values */
   private extractRowDefaultValues(flow: FlowType) {
-    const firstRow = flow.rows?.[0] || {};
+    const firstRow: Record<string, any> = flow.rows?.[0] || {};
     if (Object.values(firstRow)[0] === "@default") {
       const defaultKey = Object.keys(firstRow)[0];
       delete firstRow[defaultKey];
@@ -116,7 +116,7 @@ class RowProcessor {
   constructor(
     public row: IRowData,
     public parent: DefaultParser,
-    public defaultValues?: any
+    public defaultValues?: Record<string, any>
   ) {}
 
   public run() {
@@ -246,6 +246,7 @@ class RowProcessor {
           if (field.endsWith("_collection") || field.includes("_collection_")) {
             this.row[field] = parseAppDataCollectionString(this.row[field]);
           }
+          // parse action_list within default parser in case referenced from data_list
           if (field.endsWith("action_list")) {
             this.row[field] = this.row[field]
               .map((actionString) => parseAppDataActionString(actionString))
