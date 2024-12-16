@@ -89,9 +89,10 @@ describe("SkinService", () => {
   });
 
   it("does not change non-overridden values", () => {
-    expect(service["appConfigService"].appConfig().APP_FOOTER_DEFAULTS.templateName).toEqual(
-      "mock_footer"
-    );
+    expect(service["appConfigService"].appConfig().APP_FOOTER_DEFAULTS).toEqual({
+      templateName: "mock_footer",
+      background: "primary",
+    });
   });
 
   it("loads active skin from local storage on init if available", () => {
