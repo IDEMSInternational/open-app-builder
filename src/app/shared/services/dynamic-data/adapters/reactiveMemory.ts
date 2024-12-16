@@ -44,7 +44,11 @@ export const REACTIVE_SCHEMA_BASE: RxJsonSchema<any> = {
       maxLength: 128, // <- the primary key must have set maxLength
     },
     row_index: { type: "integer", minimum: 0, maximum: 10000, multipleOf: 1, final: true },
-    APP_META: { type: "object" },
+    APP_META: {
+      type: "object",
+      additionalProperties: true,
+      default: {},
+    },
   },
   required: ["id"],
   indexes: ["row_index"],
@@ -55,8 +59,11 @@ const MIGRATIONS: MigrationStrategies = {
     return newDoc;
   },
   2: (oldDoc) => {
-    // adds optional APP_META property to schema, but not required
-    return oldDoc;
+    const newDoc = {
+      ...oldDoc,
+      APP_META: oldDoc.APP_META ?? {},
+    };
+    return newDoc;
   },
 };
 
