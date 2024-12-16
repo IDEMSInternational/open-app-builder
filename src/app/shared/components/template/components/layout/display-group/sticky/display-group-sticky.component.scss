@@ -1,10 +1,10 @@
 // When the display group is "sticky", style it as an inline header/footer
 :host {
-  display: flex;
+  display: block;
   position: fixed;
   left: 0;
   width: 100vw;
-  justify-content: center;
+  background-color: var(--ion-background-color);
   z-index: 10;
 
   &[sticky-position="top"] {
