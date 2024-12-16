@@ -69,11 +69,10 @@ export class headerComponent implements OnInit, OnDestroy {
     );
     effect(
       () => {
+        const config = this.headerConfig();
         // when route changes handle side-effects
         const e = this.routeChanges();
-        if (e instanceof NavigationEnd) {
-          this.handleRouteChange();
-        }
+        this.handleRouteChange();
         if (e instanceof NavigationStart) {
           this.hasBackHistory = true;
         }
