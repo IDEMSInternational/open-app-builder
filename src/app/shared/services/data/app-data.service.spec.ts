@@ -4,7 +4,6 @@ import { HttpClientTestingModule } from "@angular/common/http/testing";
 
 import { AppDataVariableService } from "./app-data-variable.service";
 import { AppDataService, IAppDataCache } from "./app-data.service";
-import { FlowTypes } from "../../model";
 import { MockAppDataVariableService } from "./app-data-variable.service.spec";
 import { ErrorHandlerService } from "../error-handler/error-handler.service";
 import { MockErrorHandlerService } from "../error-handler/error-handler.service.mock.spec";
@@ -95,31 +94,6 @@ const CONTENTS_MOCK: ISheetContents = {
   template: {},
   tour: {},
 };
-
-/** Mock calls for sheets from the appData service to return test data */
-export class MockAppDataService implements Partial<AppDataService> {
-  public appDataCache: IAppDataCache;
-
-  // allow additional specs implementing service to provide their own data if required
-  constructor(mockData: Partial<IAppDataCache> = {}) {
-    this.appDataCache = { ...DATA_CACHE_CLEAN, ...mockData };
-  }
-
-  public ready() {
-    return true;
-  }
-
-  public async getSheet<T extends FlowTypes.FlowTypeWithData>(
-    flow_type: FlowTypes.FlowType,
-    flow_name: string
-  ): Promise<T> {
-    await _wait(50);
-    return this.appDataCache[flow_type]?.[flow_name] as T;
-  }
-  public async getTranslationStrings(language_code: string) {
-    return {};
-  }
-}
 
 /** Use an extended service for testing to allow override of protected variables */
 @Injectable({ providedIn: "root" })
