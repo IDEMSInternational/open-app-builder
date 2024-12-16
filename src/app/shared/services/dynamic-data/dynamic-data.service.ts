@@ -288,8 +288,9 @@ export class DynamicDataService extends AsyncServiceBase {
     }
     const schema = REACTIVE_SCHEMA_BASE;
     for (const key of Object.keys(fields)) {
-      if (!schema.properties[key]) {
-        // assign any provided metadata, with fallback 'string' type if not specified
+      // assign any provided metadata, with fallback 'string' type if not specified
+      // ignore any `_` fields as these will be merged into APP_META (do not satisfy rxdb regex)
+      if (!schema.properties[key] && !key.startsWith("_")) {
         const type = metadata[key]?.type || "string";
         schema.properties[key] = { ...metadata[key], type };
       }
