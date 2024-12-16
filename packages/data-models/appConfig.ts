@@ -83,13 +83,15 @@ const APP_ROUTE_DEFAULTS = {
   ],
 };
 
-export type IHeaderColourOptions = "primary" | "secondary" | "none";
+export type IHeaderFooterBackgroundOptions = "primary" | "secondary" | "none";
 export type IHeaderVariantOptions = "default" | "compact";
 
 const APP_HEADER_DEFAULTS = {
-  title: "App",
   collapse: false,
-  colour: "primary" as IHeaderColourOptions,
+  colour: "primary" as IHeaderFooterBackgroundOptions,
+  show: true,
+  template: null as string | null,
+  title: "App",
   // The "compact" variant reduces the header height and removes the title
   variant: "default" as IHeaderVariantOptions,
   // default only show menu button on home screen
@@ -113,8 +115,9 @@ const activeRoute = (location: Location) => {
   return path;
 };
 
-const APP_FOOTER_DEFAULTS: { templateName: string | null } = {
-  templateName: null,
+const APP_FOOTER_DEFAULTS = {
+  templateName: null as string | null,
+  background: "primary" as IHeaderFooterBackgroundOptions,
 };
 
 const APP_SIDEMENU_DEFAULTS = {
