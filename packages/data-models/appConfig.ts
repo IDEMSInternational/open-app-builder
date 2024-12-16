@@ -120,6 +120,10 @@ const APP_FOOTER_DEFAULTS = {
   background: "primary" as IHeaderFooterBackgroundOptions,
 };
 
+const LAYOUT = {
+  page_padding: "24px",
+};
+
 const APP_SIDEMENU_DEFAULTS = {
   enabled: true,
   title: "App",
@@ -208,6 +212,7 @@ const APP_CONFIG = {
   APP_UPDATES,
   ASSET_PACKS,
   FEEDBACK_MODULE_DEFAULTS,
+  LAYOUT,
   NOTIFICATIONS_SYNC_FREQUENCY_MS,
   NOTIFICATION_DEFAULTS,
   SERVER_SYNC_FREQUENCY_MS,
