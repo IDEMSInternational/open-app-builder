@@ -1,11 +1,12 @@
-<div class="display-grid" [ngStyle]="gridStyle">
-  <plh-template-component
-    *ngFor="let childRow of _row.rows | filterDisplayComponent; trackBy: trackByRow"
-    [row]="childRow"
-    [parent]="parent"
-    [attr.data-rowname]="_row.name"
-    class="grid-item"
-    [ngStyle]="itemStyle"
-  >
-  </plh-template-component>
+<div class="display-grid" [ngStyle]="gridStyle()">
+  @for (gridRow of gridRows() | filterDisplayComponent; track gridRow._nested_name) {
+    <plh-template-component
+      [row]="gridRow"
+      [parent]="parent"
+      [attr.data-rowname]="_row.name"
+      class="grid-item"
+      [ngStyle]="itemStyle()"
+    >
+    </plh-template-component>
+  }
 </div>
