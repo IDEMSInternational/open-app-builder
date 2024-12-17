@@ -129,7 +129,6 @@ const APP_SIDEMENU_DEFAULTS = {
 };
 
 const APP_AUTHENTICATION_DEFAULTS = {
-  enforceLogin: false,
   signInTemplate: "sign_in",
 };
 

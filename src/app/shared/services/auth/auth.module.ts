@@ -10,5 +10,6 @@ import { AuthService } from "./auth.service";
 export class AuthModule {
   constructor(private service: AuthService) {
     // include service to initialise and register handlers
+    service.ready();
   }
 }
