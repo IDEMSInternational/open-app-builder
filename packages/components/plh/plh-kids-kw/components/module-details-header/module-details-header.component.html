@@ -3,6 +3,11 @@
     class="wrapper"
     [attr.data-language-direction]="templateTranslateService.languageDirection()"
   >
+    <div class="back-button">
+      <ion-button size="small" (click)="handleBackButtonClick()">
+        <ion-icon slot="icon-only" name="chevron-back-outline"></ion-icon>
+      </ion-button>
+    </div>
     <div class="image">
       @if (params.moduleImageAsset) {
         <div

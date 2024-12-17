@@ -1,11 +1,16 @@
+import { Location } from "@angular/common";
 import { Component, OnInit } from "@angular/core";
 import { TemplateBaseComponent } from "src/app/shared/components/template/components/base";
 import { TemplateTranslateService } from "src/app/shared/components/template/services/template-translate.service";
-import { getStringParamFromTemplateRow } from "src/app/shared/utils";
+import {
+  getBooleanParamFromTemplateRow,
+  getStringParamFromTemplateRow,
+} from "src/app/shared/utils";
 
 interface IModuleHeaderParams {
   backgroundImageAsset?: string;
   moduleImageAsset?: string;
+  hideBackButton?: boolean;
 }
 @Component({
   selector: "plh-module-details-header",
@@ -15,12 +20,19 @@ interface IModuleHeaderParams {
 export class PlhModuleDetailsHeaderComponent extends TemplateBaseComponent implements OnInit {
   params: Partial<IModuleHeaderParams> = {};
 
-  constructor(public templateTranslateService: TemplateTranslateService) {
+  constructor(
+    public templateTranslateService: TemplateTranslateService,
+    private location: Location
+  ) {
     super();
   }
 
   ngOnInit() {
     this.getParams();
+  }
+
+  public handleBackButtonClick() {
+    this.location.back();
   }
 
   private getParams() {
@@ -33,6 +45,11 @@ export class PlhModuleDetailsHeaderComponent extends TemplateBaseComponent imple
       this._row,
       "module_image_asset",
       null
+    );
+    this.params.hideBackButton = getBooleanParamFromTemplateRow(
+      this._row,
+      "hide_back_button",
+      false
     );
   }
 }
