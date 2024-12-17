@@ -536,6 +536,7 @@ body[data-theme="plh_kids_kw"] {
       padding: 16px;
       box-shadow: 1px 1px 10px #92b7da;
       background-color: #f6fafe;
+      margin: 12px 0;
       .container {
         display: flex;
         flex-direction: row;
@@ -570,10 +571,6 @@ body[data-theme="plh_kids_kw"] {
       .icon {
         width: 28px;
         max-width: unset;
-        &[data-language-direction~="rtl"] {
-          -webkit-transform: scaleX(-1);
-          transform: scaleX(-1);
-        }
       }
       .container[data-language-direction~="rtl"] {
         .module-title {
@@ -586,6 +583,10 @@ body[data-theme="plh_kids_kw"] {
             -webkit-transform: scaleX(-1);
             transform: scaleX(-1);
           }
+        }
+        .icon {
+          -webkit-transform: scaleX(-1);
+          transform: scaleX(-1);
         }
       }
     }
