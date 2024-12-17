@@ -31,7 +31,7 @@ export const REACTIVE_SCHEMA_BASE: RxJsonSchema<any> = {
   title: "base schema for id-primary key data",
   // NOTE - important to start at 0 and not timestamp (e.g. 20221220) as will check
   // for migration strategies for each version which is hugely inefficient
-  version: 1,
+  version: 2,
   primaryKey: "id",
   type: "object",
   properties: {
@@ -40,6 +40,11 @@ export const REACTIVE_SCHEMA_BASE: RxJsonSchema<any> = {
       maxLength: 128, // <- the primary key must have set maxLength
     },
     row_index: { type: "integer", minimum: 0, maximum: 10000, multipleOf: 1, final: true },
+    APP_META: {
+      type: "object",
+      additionalProperties: true,
+      default: {},
+    },
   },
   required: ["id"],
   indexes: ["row_index"],
@@ -47,6 +52,13 @@ export const REACTIVE_SCHEMA_BASE: RxJsonSchema<any> = {
 const MIGRATIONS: MigrationStrategies = {
   1: (oldDoc) => {
     const newDoc = { ...oldDoc, row_index: 0 };
+    return newDoc;
+  },
+  2: (oldDoc) => {
+    const newDoc = {
+      ...oldDoc,
+      APP_META: oldDoc.APP_META ?? {},
+    };
     return newDoc;
   },
 };
