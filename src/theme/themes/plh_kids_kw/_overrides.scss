@@ -536,6 +536,7 @@ body[data-theme="plh_kids_kw"] {
       padding: 16px;
       box-shadow: 1px 1px 10px #92b7da;
       background-color: #f6fafe;
+      margin: 12px 0;
       .container {
         display: flex;
         flex-direction: row;
@@ -570,10 +571,6 @@ body[data-theme="plh_kids_kw"] {
       .icon {
         width: 28px;
         max-width: unset;
-        &[data-language-direction~="rtl"] {
-          -webkit-transform: scaleX(-1);
-          transform: scaleX(-1);
-        }
       }
       .container[data-language-direction~="rtl"] {
         .module-title {
@@ -586,6 +583,10 @@ body[data-theme="plh_kids_kw"] {
             -webkit-transform: scaleX(-1);
             transform: scaleX(-1);
           }
+        }
+        .icon {
+          -webkit-transform: scaleX(-1);
+          transform: scaleX(-1);
         }
       }
     }
@@ -659,6 +660,46 @@ body[data-theme="plh_kids_kw"] {
     }
   }
 
+  // module header
+  plh-module-details-header {
+    .module-header {
+      border-bottom-left-radius: 40px;
+      border-bottom-right-radius: 40px;
+      background-color: #9ecbf5;
+    }
+    .image {
+      .module-illustration {
+        height: 380px;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: 320px;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      img.module-image {
+        max-width: 190px;
+        min-width: 190px;
+        margin-top: -30px;
+        border-radius: 50%;
+      }
+    }
+    .module-title {
+      margin-top: -70px;
+      padding-bottom: 30px;
+      padding-left: 16px;
+      h2 {
+        font-weight: var(--font-weight-bold);
+        font-size: 28px;
+      }
+    }
+    .wrapper[data-language-direction~="rtl"] {
+      .module-title {
+        padding-right: 16px;
+      }
+    }
+  }
   // Round Button
   ion-tab-button {
     box-shadow: none;
