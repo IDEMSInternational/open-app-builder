@@ -1,0 +1,29 @@
+<div class="module-header">
+  <div
+    class="wrapper"
+    [attr.data-language-direction]="templateTranslateService.languageDirection()"
+  >
+    @if (!this.params.hideBackButton) {
+      <div class="back-button">
+        <ion-button size="small" (click)="handleBackButtonClick()">
+          <ion-icon slot="icon-only" name="chevron-back-outline"></ion-icon>
+        </ion-button>
+      </div>
+    }
+    <div class="image">
+      @if (params.moduleImageAsset) {
+        <div
+          class="module-illustration"
+          [style.backgroundImage]="'url(' + (params.backgroundImageAsset | plhAsset) + ')'"
+        >
+          <img [src]="params.moduleImageAsset | plhAsset" class="module-image" />
+        </div>
+      }
+    </div>
+    @if (_row.value) {
+      <div class="module-title">
+        <h2>{{ _row.value }}</h2>
+      </div>
+    }
+  </div>
+</div>
