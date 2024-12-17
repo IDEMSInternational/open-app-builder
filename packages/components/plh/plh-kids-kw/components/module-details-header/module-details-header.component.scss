@@ -1,0 +1,9 @@
+.back-button {
+  ion-button {
+    margin: var(--regular-margin);
+    --box-shadow: none;
+    --border-radius: var(--ion-border-radius-standard);
+    --padding-top: 8px;
+    --padding-bottom: 8px;
+  }
+}
