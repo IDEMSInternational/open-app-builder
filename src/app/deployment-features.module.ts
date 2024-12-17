@@ -15,5 +15,5 @@ import { AuthModule } from "./shared/services/auth/auth.module";
  *
  * This is a feature marked for future implementation
  */
-@NgModule({ imports: [AnalyticsModule, NavStackModule, AuthModule] })
+@NgModule({ imports: [AuthModule, AnalyticsModule, NavStackModule] })
 export class DeploymentFeaturesModule {}

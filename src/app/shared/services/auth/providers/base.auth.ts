@@ -7,10 +7,12 @@ export class AuthProviderBase {
   public async initialise(injector: Injector) {}
 
   public async signInWithGoogle() {
+    throw new Error("Google sign in not enabled");
     return this.authUser();
   }
 
   public async signOut() {
+    this.authUser.set(undefined);
     return this.authUser();
   }
 }

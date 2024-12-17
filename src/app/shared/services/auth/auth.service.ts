@@ -6,15 +6,14 @@ import { AuthProviderBase } from "./providers/base.auth";
 import { AsyncServiceBase } from "../asyncService.base";
 import { getAuthProvider } from "./providers";
 import { IAuthUser } from "./types";
+import { filter, firstValueFrom, tap } from "rxjs";
+import { TemplateService } from "../../components/template/services/template.service";
 import { toObservable } from "@angular/core/rxjs-interop";
-import { filter, firstValueFrom } from "rxjs";
 
 @Injectable({
   providedIn: "root",
 })
 export class AuthService extends AsyncServiceBase {
-  public authUser = signal<IAuthUser | null>(null);
-
   /** Auth provider used */
   private provider: AuthProviderBase;
 
@@ -22,27 +21,51 @@ export class AuthService extends AsyncServiceBase {
     private templateActionRegistry: TemplateActionRegistry,
     private localStorageService: LocalStorageService,
     private deploymentService: DeploymentService,
-    private injector: Injector
+    private injector: Injector,
+    private templateService: TemplateService
   ) {
     super("Auth");
-    this.provider = getAuthProvider(this.deploymentService.config.auth?.provider);
+    this.provider = getAuthProvider(this.config.provider);
     this.registerInitFunction(this.initialise);
     effect(async () => {
       const authUser = this.provider.authUser();
-      console.log("[Auth User]", authUser);
       this.addStorageEntry(authUser);
     });
   }
 
-  /** Return a promise that resolves only after a signed in user defined */
-  public async waitForUserSignedIn() {
-    const authUser$ = toObservable(this.authUser);
-    return firstValueFrom(authUser$.pipe(filter((value: IAuthUser | null) => !!value)));
+  private get config() {
+    return this.deploymentService.config.auth || {};
   }
 
   private async initialise() {
     await this.provider.initialise(this.injector);
     this.registerTemplateActionHandlers();
+    if (this.config.enforceLogin) {
+      // NOTE - Do not await the enforce login to allow other services to initialise in background
+      this.enforceLogin();
+    }
+  }
+
+  private async enforceLogin() {
+    // If user already logged in simply return. If providers auto-login during then waiting to verify
+    // should be included during the provide init method
+    if (this.provider.authUser()) {
+      return;
+    }
+    const { signInTemplate } = this.deploymentService.config.app_config.APP_AUTHENTICATION_DEFAULTS;
+    const { modal } = await this.templateService.runStandaloneTemplate(signInTemplate, {
+      showCloseButton: false,
+      waitForDismiss: false,
+    });
+    // wait for user signal to update with a signed in user before dismissing modal
+    const authUser$ = toObservable(this.provider.authUser, { injector: this.injector });
+    await firstValueFrom(
+      authUser$.pipe(
+        tap((authUser) => console.log("auth user", authUser)),
+        filter((value: IAuthUser | null) => !!value)
+      )
+    );
+    await modal.dismiss();
   }
 
   private registerTemplateActionHandlers() {
