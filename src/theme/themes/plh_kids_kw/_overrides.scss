@@ -727,6 +727,18 @@ body[data-theme="plh_kids_kw"] {
     }
   }
 
+  // Radio Button Grid
+  .radio-grid {
+    .item {
+      border: 1px solid var(--ion-color-gray-100);
+      box-shadow: none !important;
+      border-radius: var(--ion-border-radius-small);
+      .item-image-container {
+        padding: 16px;
+      }
+    }
+  }
+
   // Completion Modal
   plh-completion-modal {
     .completion-modal {
