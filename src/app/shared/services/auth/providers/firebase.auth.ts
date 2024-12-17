@@ -1,5 +1,6 @@
 import { Injectable, Injector } from "@angular/core";
-import { FirebaseAuthentication, User } from "@capacitor-firebase/authentication";
+import { FirebaseAuthentication } from "@capacitor-firebase/authentication";
+import { getAuth } from "firebase/auth";
 import { FirebaseService } from "../../firebase/firebase.service";
 import { AuthProviderBase } from "./base.auth";
 
@@ -14,8 +15,8 @@ export class FirebaseAuthProvider extends AuthProviderBase {
       throw new Error("[Firebase Auth] app not configured");
     }
     this.addAuthListeners();
-    // ensure any previous signed in user is loaded
-    await FirebaseAuthentication.getCurrentUser();
+    // use firebase authStateReady to ensure any previously logged in user is available
+    await getAuth().authStateReady();
   }
 
   public async signInWithGoogle() {
