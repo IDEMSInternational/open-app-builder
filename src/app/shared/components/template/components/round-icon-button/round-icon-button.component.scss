@@ -3,9 +3,18 @@
 $background-primary: var(--button-background-primary, var(--gradient-primary-mid-vertical));
 $background-secondary: var(--button-background-secondary, var(--gradient-secondary-mid-vertical));
 $background-option: (--button-background-option, var(--gradient-primary-dark-vertical));
-$background-secondary-light: var(--round-button-background-secondary-light, var(--ion-color-secondary-200));
-$background-secondary-mid: var(--round-button-background-secondary-mid, var(--ion-color-secondary-400));
-$background-secondary-dark: var(--round-button-background-secondary-dark, var(--ion-color-secondary-600));
+$background-secondary-light: var(
+  --round-button-background-secondary-light,
+  var(--ion-color-secondary-200)
+);
+$background-secondary-mid: var(
+  --round-button-background-secondary-mid,
+  var(--ion-color-secondary-400)
+);
+$background-secondary-dark: var(
+  --round-button-background-secondary-dark,
+  var(--ion-color-secondary-600)
+);
 
 ion-tab-button {
   color: var(--ion-color-primary-contrast);
@@ -54,6 +63,7 @@ ion-tab-button {
     text-transform: none;
   }
 }
+
 .home_screen {
   @include mixins.largest-square;
   @include mixins.absolute-centered;
@@ -89,44 +99,69 @@ ion-tab-button {
     height: var(--round-button-wrapper-small-device-height);
   }
 }
-.yellow {
-  background: $background-secondary-light;
-}
-.orange {
-  background: $background-secondary-mid;
-}
-.dark_orange {
-  background: $background-secondary-dark;
-}
 
-.navigation {
-  width: var(--round-button-navigation-width);
-  min-height: var(--round-button-navigation-min-height);
-  background: $background-secondary;
-}
+ion-tab-button {
+  &[data-variant~="information"],
+  &.information {
+    background: $background-primary;
+  }
 
-.information {
-  background: $background-primary;
-}
+  &[data-variant~="yellow"],
+  &.yellow {
+    background: $background-secondary-light;
+  }
 
-.make_me_smile {
-  background: $background-primary;
-  color: var(--ion-color-primary-contrast);
-}
+  &[data-variant~="orange"],
+  &.orange {
+    background: $background-secondary-mid;
+  }
 
-.get_me_going {
-  background: $background-secondary;
-  color: var(--ion-color-primary-contrast);
-}
+  &[data-variant~="dark_orange"],
+  &.dark_orange {
+    background: $background-secondary-dark;
+  }
 
-.options {
-  background: $background-option;
-  color: var(--ion-color-primary-contrast);
-}
+  &[data-variant~="navigation"],
+  &.navigation {
+    width: var(--round-button-navigation-width);
+    min-height: var(--round-button-navigation-min-height);
+    background: $background-secondary;
+  }
 
-.standard {
-  color: var(--ion-color-primary-contrast);
-}
-.alternative {
-  color: var(--ion-color-primary);
+  &[data-variant~="make_me_smile"],
+  &.make_me_smile {
+    background: $background-primary;
+    color: var(--ion-color-primary-contrast);
+  }
+
+  &[data-variant~="get_me_going"],
+  &.get_me_going {
+    background: $background-secondary;
+    color: var(--ion-color-primary-contrast);
+  }
+
+  &[data-variant~="options"],
+  &.options {
+    background: $background-option;
+    color: var(--ion-color-primary-contrast);
+  }
+
+  &[data-variant~="standard"],
+  &.standard {
+    color: var(--ion-color-primary-contrast);
+  }
+
+  &[data-variant~="alternative"],
+  &.alternative {
+    color: var(--ion-color-primary);
+  }
+
+  &[data-variant~="no-background"],
+  &.no-background {
+    background: transparent;
+    box-shadow: none;
+    ion-icon {
+      height: 32px;
+    }
+  }
 }
