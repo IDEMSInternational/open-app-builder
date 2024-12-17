@@ -42,7 +42,7 @@
     <ion-split-pane when="lg" contentId="main" [disabled]="!sidebarRouter.isActivated">
       <div style="display: flex; flex-direction: column; height: 100%; width: 100%" id="main">
         <plh-main-header></plh-main-header>
-        <div class="route-container">
+        <div class="route-container" [ngStyle]="routeContainerStyle()">
           <ion-router-outlet id="main-content"></ion-router-outlet>
         </div>
         @if (footerDefaults().templateName; as footerTemplateName) {
