@@ -212,6 +212,7 @@ export class TemplateNavService extends SyncServiceBase {
     container?: TemplateContainerComponent
   ) {
     const templatename = action.args[0];
+    const variant = action.params.variant;
     // if triggered outside templating system (e.g. via notification action) still enable
     // popup creation and dismiss on nav changes
     if (!container) {
@@ -226,6 +227,7 @@ export class TemplateNavService extends SyncServiceBase {
       popup_child: templatename,
       popup_parent: name,
       popup_parent_triggered_by: action._triggeredBy?.name || null,
+      popup_variant: variant,
     };
     this.router.navigate([], { queryParams, replaceUrl: true, queryParamsHandling: "merge" });
   }
@@ -384,4 +386,5 @@ export interface INavQueryParams {
   popup_child?: string; //
   popup_parent?: string;
   popup_parent_triggered_by?: string; //
+  popup_variant?: string;
 }
