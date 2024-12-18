@@ -1,33 +1,29 @@
-@if (daysLeft >= 1) {
+@if (locked()) {
   <div
     class="activity-container"
     [attr.data-language-direction]="templateTranslateService.languageDirection()"
   >
-    <div class="wrapper">
-      <div class="progress-tracker">
-        <div class="wrapper">
-          <div class="progress-bar-container">
-            <div
-              class="progress-bar"
-              [ngStyle]="{
-                width: progressPercentage + '%'
-              }"
-            ></div>
-          </div>
-        </div>
-        <div class="countdown-text">In {{ daysLeft }} day{{ daysLeft > 1 ? "s" : "" }}</div>
+    <div class="progress-tracker">
+      <div class="progress-bar-container">
+        <div
+          class="progress-bar"
+          [ngStyle]="{
+            width: progressPercentage() + '%'
+          }"
+        ></div>
       </div>
+      <div class="countdown-text">{{ countdownText() }}</div>
+    </div>
 
-      <div class="image">
-        <img [src]="params.lockedImageAsset | plhAsset" />
+    <div class="image">
+      <img [src]="params.lockedImageAsset | plhAsset" />
+    </div>
+    <div class="details">
+      <div class="title">
+        <h4>{{ params.title }}</h4>
       </div>
-      <div class="details">
-        <div class="title">
-          <h4>{{ params.title }}</h4>
-        </div>
-        <div class="icon">
-          <img [src]="params.lockedIconAsset | plhAsset" />
-        </div>
+      <div class="icon">
+        <img [src]="params.lockedIconAsset | plhAsset" />
       </div>
     </div>
   </div>

@@ -30,7 +30,7 @@ plh-template-container > plh-template-component:not([data-hidden="true"]) {
 plh-template-container
   > plh-template-component:not([data-hidden="true"])
   ~ plh-template-component:not([data-hidden="true"]) {
-  margin-top: 1em;
+  margin-top: var(--row-margin-top);
 }
 
 /// Ensure standalone containers and components fill all available space

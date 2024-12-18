@@ -248,13 +248,9 @@ body[data-theme="plh_kids_kw"] {
       flex-direction: row;
       justify-content: space-between;
       align-items: flex-start;
-      min-width: 390px;
-      left: 0;
-      right: 0;
-      // border: 1px solid red;
-      &::ng-deep {
-        border: 1px solid red !important;
-      }
+      min-width: 220px;
+      width: 100%;
+      --inner-padding-end: 0px;
     }
     ion-item.accordion-content {
       border-top: 1px solid var(--color-outline-variant) !important;
@@ -387,14 +383,6 @@ body[data-theme="plh_kids_kw"] {
 
       .text-bubble {
         border-radius: 12px 0px 12px 12px;
-
-        p {
-          text-align: right;
-        }
-
-        li {
-          text-align: right;
-        }
       }
 
       img.speaker-image {
@@ -544,6 +532,7 @@ body[data-theme="plh_kids_kw"] {
       padding: 16px;
       box-shadow: 1px 1px 10px #92b7da;
       background-color: #f6fafe;
+      margin: 12px 0;
       .container {
         display: flex;
         flex-direction: row;
@@ -578,10 +567,6 @@ body[data-theme="plh_kids_kw"] {
       .icon {
         width: 28px;
         max-width: unset;
-        &[data-language-direction~="rtl"] {
-          -webkit-transform: scaleX(-1);
-          transform: scaleX(-1);
-        }
       }
       .container[data-language-direction~="rtl"] {
         .module-title {
@@ -595,6 +580,10 @@ body[data-theme="plh_kids_kw"] {
             transform: scaleX(-1);
           }
         }
+        .icon {
+          -webkit-transform: scaleX(-1);
+          transform: scaleX(-1);
+        }
       }
     }
     .module-item[data-lock~="true"] {
@@ -607,84 +596,6 @@ body[data-theme="plh_kids_kw"] {
           width: 60px;
           height: 60px;
           max-width: unset;
-        }
-      }
-    }
-  }
-
-  // activity-check-in
-  plh-activity-check-in {
-    .activity-container {
-      width: 45%;
-      .wrapper {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-      }
-      .progress-tracker {
-        width: 100%;
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: center;
-        .wrapper {
-          width: 46%;
-        }
-        .progress-bar-container {
-          background-color: var(--ion-color-gray-200);
-          height: 14px;
-          border-radius: var(--ion-border-radius-rounded);
-          margin-right: 8px;
-          overflow: hidden;
-          width: 100%;
-        }
-        .progress-bar {
-          border-radius: var(--ion-border-radius-rounded);
-          height: 100%;
-          background-color: #e0b160;
-          transition:
-            width 0.5s ease,
-            background-color 0.5s ease;
-        }
-        .countdown-text {
-          color: var(--ion-color-gray-600);
-          font-weight: var(--font-weight-medium);
-        }
-      }
-      .image {
-        img {
-          width: 140px;
-        }
-      }
-      .unlocked .image {
-        img {
-          width: 170px;
-        }
-      }
-      .details {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        margin-top: -5px;
-        .title h4 {
-          color: var(--ion-color-gray-600);
-          font-weight: var(--font-weight-bold);
-        }
-        .icon {
-          display: flex;
-          align-items: center;
-          img {
-            width: 28px;
-          }
-        }
-      }
-    }
-    .activity-container[data-language-direction~="rtl"] {
-      .progress-tracker {
-        .progress-bar-container {
-          margin-right: 0;
-          margin-left: 6px;
         }
       }
     }
@@ -742,6 +653,123 @@ body[data-theme="plh_kids_kw"] {
     }
     img {
       padding: 8px;
+    }
+  }
+
+  // module header
+  plh-module-details-header {
+    .module-header {
+      border-bottom-left-radius: 40px;
+      border-bottom-right-radius: 40px;
+      background-color: #9ecbf5;
+    }
+    .image {
+      .module-illustration {
+        height: 380px;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: 320px;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      img.module-image {
+        max-width: 190px;
+        min-width: 190px;
+        margin-top: -30px;
+        border-radius: 50%;
+      }
+    }
+    .module-title {
+      margin-top: -70px;
+      padding-bottom: 30px;
+      padding-left: 16px;
+      h2 {
+        font-weight: var(--font-weight-bold);
+        font-size: 28px;
+      }
+    }
+    .wrapper[data-language-direction~="rtl"] {
+      .module-title {
+        padding-right: 16px;
+      }
+    }
+  }
+  // Round Button
+  ion-tab-button {
+    box-shadow: none;
+    background: var(--ion-color-primary-600);
+    &[data-variant~="navigation"] {
+      background: var(--ion-color-primary-700) !important;
+      border-radius: var(--ion-border-radius-standard);
+      box-shadow: none !important;
+    }
+    &[data-variant~="module"] {
+      background: var(--color-secondary-blue-40) !important;
+      border-radius: var(--ion-border-radius-rounded);
+      box-shadow: -1px 2px 12px rgba(43, 144, 199, 0.6);
+      border: 1px solid var(--color-secondary-blue-60);
+      min-width: 68px;
+      min-height: 64px;
+    }
+    &[data-variant~="orange"] {
+      background: var(--color-accent-orange-70);
+    }
+    &[data-variant~="yellow"] {
+      background: var(--color-accent-yellow-70);
+    }
+    &[data-variant~="dark-orange"] {
+      background: var(--color-accent-orange-40);
+    }
+    &[data-variant~="information"] {
+      background: var(--color-secondary-blue-40);
+    }
+  }
+
+  // Radio Button Grid
+  .radio-grid {
+    .item {
+      border: 1px solid var(--ion-color-gray-100);
+      box-shadow: none !important;
+      border-radius: var(--ion-border-radius-small);
+      .item-image-container {
+        padding: 16px;
+      }
+    }
+  }
+
+  // Completion Modal
+  plh-completion-modal {
+    .completion-modal {
+      margin: 20px -20px;
+      background: linear-gradient(
+        310deg,
+        var(--color-secondary-blue-50),
+        var(--color-secondary-blue-80)
+      );
+      min-height: 80vh;
+      max-width: 480px;
+      border-radius: 40px;
+    }
+    .wrapper {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      min-height: inherit;
+      height: 100%;
+
+      position: relative;
+      .children {
+        position: relative;
+        width: 100%;
+        padding: 0px 16px;
+      }
+      .confetti-image {
+        position: absolute;
+        top: -30px;
+      }
     }
   }
 }
