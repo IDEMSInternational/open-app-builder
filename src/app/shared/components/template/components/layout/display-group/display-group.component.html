@@ -26,6 +26,7 @@
     [style.marginBottom.px]="params.offset"
     [ngSwitch]="type"
     [style]="_row.style_list | styleList"
+    [ngStyle]="backgroundImageStyles"
   >
     <!-- Default Layout -->
     <ng-container *ngSwitchDefault>
