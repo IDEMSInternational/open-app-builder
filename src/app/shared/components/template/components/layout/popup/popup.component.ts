@@ -59,4 +59,6 @@ export interface ITemplatePopupComponentProps extends IContainerProps {
   fullscreen?: boolean;
   /** Pass text only to render that text in a popup, bypassing any templates */
   popupText?: string;
+  /** Template Parameter: "variant". Defines style and use of pop up */
+  variant?: string;
 }
