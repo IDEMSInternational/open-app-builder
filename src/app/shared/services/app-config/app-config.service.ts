@@ -100,10 +100,23 @@ export class AppConfigService extends SyncServiceBase {
       return;
     }
 
+    // some app config properties should be functions, but may be defined as boolean values,
+    // e.g. in template parameter_list to disable a certain property on that template
+    const functionKeys = ["should_show_back_button", "should_show_menu_button"];
+    functionKeys.forEach((key) => {
+      mergedConfig.APP_HEADER_DEFAULTS[key] = this.normaliseToFunction(
+        mergedConfig.APP_HEADER_DEFAULTS[key]
+      );
+    });
+
     // trigger change effects
     this.handleConfigSideEffects(overrides, mergedConfig);
     this.appConfig.set(mergedConfig);
     this.appConfig$.next(mergedConfig);
+  }
+
+  private normaliseToFunction(value: any) {
+    return typeof value === "function" ? value : () => !!value;
   }
 
   private handleConfigSideEffects(overrides: IAppConfigOverride = {}, config: IAppConfig) {
