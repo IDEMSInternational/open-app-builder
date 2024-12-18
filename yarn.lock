@@ -8068,6 +8068,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/uuid@npm:^10.0.0":
+  version: 10.0.0
+  resolution: "@types/uuid@npm:10.0.0"
+  checksum: e3958f8b0fe551c86c14431f5940c3470127293280830684154b91dc7eb3514aeb79fe3216968833cf79d4d1c67f580f054b5be2cd562bebf4f728913e73e944
+  languageName: node
+  linkType: hard
+
 "@types/validator@npm:*, @types/validator@npm:^13.6.1, @types/validator@npm:^13.7.17":
   version: 13.11.9
   resolution: "@types/validator@npm:13.11.9"
@@ -15142,6 +15149,7 @@ __metadata:
     "@types/nouislider": ^15.0.0
     "@types/qrcode": ^1.5.5
     "@types/swiper": ~4.2.0
+    "@types/uuid": ^10.0.0
     "@typescript-eslint/eslint-plugin": ^6.13.1
     "@typescript-eslint/parser": ^6.13.1
     bootstrap-datepicker: ^1.10.0
@@ -15209,6 +15217,7 @@ __metadata:
     swiper: ^8.4.7
     trusted-types: ^2.0.0
     typescript: 5.2.2
+    uuid: ^11.0.3
     zone.js: ~0.14.2
   languageName: unknown
   linkType: soft
@@ -26974,6 +26983,15 @@ __metadata:
   bin:
     uuid: dist/bin/uuid
   checksum: 8dd2c83c43ddc7e1c71e36b60aea40030a6505139af6bee0f382ebcd1a56f6cd3028f7f06ffb07f8cf6ced320b76aea275284b224b002b289f89fe89c389b028
+  languageName: node
+  linkType: hard
+
+"uuid@npm:^11.0.3":
+  version: 11.0.3
+  resolution: "uuid@npm:11.0.3"
+  bin:
+    uuid: dist/esm/bin/uuid
+  checksum: 646181c77e8b8df9bd07254faa703943e1c4d5ccde7d080312edf12f443f6c5750801fd9b27bf2e628594182165e6b1b880c0382538f7eca00b26622203741dc
   languageName: node
   linkType: hard
 
