@@ -248,13 +248,9 @@ body[data-theme="plh_kids_kw"] {
       flex-direction: row;
       justify-content: space-between;
       align-items: flex-start;
-      min-width: 390px;
-      left: 0;
-      right: 0;
-      // border: 1px solid red;
-      &::ng-deep {
-        border: 1px solid red !important;
-      }
+      min-width: 220px;
+      width: 100%;
+      --inner-padding-end: 0px;
     }
     ion-item.accordion-content {
       border-top: 1px solid var(--color-outline-variant) !important;
@@ -550,6 +546,7 @@ body[data-theme="plh_kids_kw"] {
       padding: 16px;
       box-shadow: 1px 1px 10px #92b7da;
       background-color: #f6fafe;
+      margin: 12px 0;
       .container {
         display: flex;
         flex-direction: row;
@@ -584,10 +581,6 @@ body[data-theme="plh_kids_kw"] {
       .icon {
         width: 28px;
         max-width: unset;
-        &[data-language-direction~="rtl"] {
-          -webkit-transform: scaleX(-1);
-          transform: scaleX(-1);
-        }
       }
       .container[data-language-direction~="rtl"] {
         .module-title {
@@ -600,6 +593,10 @@ body[data-theme="plh_kids_kw"] {
             -webkit-transform: scaleX(-1);
             transform: scaleX(-1);
           }
+        }
+        .icon {
+          -webkit-transform: scaleX(-1);
+          transform: scaleX(-1);
         }
       }
     }
@@ -741,6 +738,18 @@ body[data-theme="plh_kids_kw"] {
     }
     &[data-variant~="information"] {
       background: var(--color-secondary-blue-40);
+    }
+  }
+
+  // Radio Button Grid
+  .radio-grid {
+    .item {
+      border: 1px solid var(--ion-color-gray-100);
+      box-shadow: none !important;
+      border-radius: var(--ion-border-radius-small);
+      .item-image-container {
+        padding: 16px;
+      }
     }
   }
 
