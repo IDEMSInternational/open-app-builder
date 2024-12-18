@@ -2,6 +2,7 @@
   class="box-wrapper"
   [attr.data-toggled]="toggle"
   (click)="triggerCopyContent($event, _row); triggerActions('click')"
+  [attr.data-language-direction]="templateTranslateService.languageDirection()"
 >
   <div class="text">{{ _row?.value }}</div>
   <div class="copy-button">
