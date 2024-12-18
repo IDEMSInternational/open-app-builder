@@ -28,7 +28,11 @@
     </div>
   </div>
 } @else {
-  <div class="activity-container" (click)="triggerActions('click')">
+  <div
+    class="activity-container"
+    (click)="triggerActions('click')"
+    [attr.data-language-direction]="templateTranslateService.languageDirection()"
+  >
     <div class="wrapper unlocked">
       <div class="image">
         <img [src]="params.unlockedImageAsset | plhAsset" />
