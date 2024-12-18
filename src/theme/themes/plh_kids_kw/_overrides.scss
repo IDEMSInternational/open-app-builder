@@ -248,13 +248,9 @@ body[data-theme="plh_kids_kw"] {
       flex-direction: row;
       justify-content: space-between;
       align-items: flex-start;
-      min-width: 390px;
-      left: 0;
-      right: 0;
-      // border: 1px solid red;
-      &::ng-deep {
-        border: 1px solid red !important;
-      }
+      min-width: 220px;
+      width: 100%;
+      --inner-padding-end: 0px;
     }
     ion-item.accordion-content {
       border-top: 1px solid var(--color-outline-variant) !important;
@@ -571,10 +567,6 @@ body[data-theme="plh_kids_kw"] {
       .icon {
         width: 28px;
         max-width: unset;
-        &[data-language-direction~="rtl"] {
-          -webkit-transform: scaleX(-1);
-          transform: scaleX(-1);
-        }
       }
       .container[data-language-direction~="rtl"] {
         .module-title {
@@ -587,6 +579,10 @@ body[data-theme="plh_kids_kw"] {
             -webkit-transform: scaleX(-1);
             transform: scaleX(-1);
           }
+        }
+        .icon {
+          -webkit-transform: scaleX(-1);
+          transform: scaleX(-1);
         }
       }
     }
@@ -657,6 +653,47 @@ body[data-theme="plh_kids_kw"] {
     }
     img {
       padding: 8px;
+    }
+  }
+
+  // module header
+  plh-module-details-header {
+    .module-header {
+      border-bottom-left-radius: 40px;
+      border-bottom-right-radius: 40px;
+      background-color: #9ecbf5;
+    }
+    .image {
+      .module-illustration {
+        height: 380px;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: 320px;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      img.module-image {
+        max-width: 190px;
+        min-width: 190px;
+        margin-top: -30px;
+        border-radius: 50%;
+      }
+    }
+    .module-title {
+      margin-top: -70px;
+      padding-bottom: 30px;
+      padding-left: 16px;
+      h2 {
+        font-weight: var(--font-weight-bold);
+        font-size: 28px;
+      }
+    }
+    .wrapper[data-language-direction~="rtl"] {
+      .module-title {
+        padding-right: 16px;
+      }
     }
   }
 
@@ -871,6 +908,17 @@ body[data-theme="plh_kids_kw"] {
         filter: none !important;
         border: 1px solid #e1e2e4 !important;
         box-shadow: 0px 2px 8px rgba($color: #000000, $alpha: 0.1);
+      }
+    }
+  }
+  // Radio Button Grid
+  .radio-grid {
+    .item {
+      border: 1px solid var(--ion-color-gray-100);
+      box-shadow: none !important;
+      border-radius: var(--ion-border-radius-small);
+      .item-image-container {
+        padding: 16px;
       }
     }
   }
