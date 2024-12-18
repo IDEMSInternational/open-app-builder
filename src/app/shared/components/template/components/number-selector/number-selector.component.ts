@@ -56,7 +56,7 @@ export class TmplNumberComponent
       this.displayValue = this.min_value;
     }
     // assign any previously saved value
-    if (this._row.value) {
+    if (this._row.value || this._row.value === 0) {
       this.displayValue = this._row.value;
     }
   }
