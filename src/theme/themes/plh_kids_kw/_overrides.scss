@@ -482,6 +482,7 @@ body[data-theme="plh_kids_kw"] {
       border: none;
       width: 100%;
       padding: 0;
+      border-radius: 12px !important;
       .text {
         border: 1px solid var(--color-accent-yellow-80);
         border-top-left-radius: 12px;
@@ -519,6 +520,23 @@ body[data-theme="plh_kids_kw"] {
 
       .image-based-icon {
         max-width: 32px !important;
+      }
+      &[data-toggled="true"] {
+        background-color: var(--color-accent-yellow-95) !important;
+      }
+    }
+    .box-wrapper[data-language-direction~="rtl"] {
+      .text {
+        border-top-right-radius: 12px;
+        border-bottom-right-radius: 12px;
+        border-top-left-radius: 0px;
+        border-bottom-left-radius: 0px;
+      }
+      .copy-button {
+        border-top-left-radius: 12px;
+        border-bottom-left-radius: 12px;
+        border-top-right-radius: 0px;
+        border-bottom-right-radius: 0px;
       }
     }
   }
