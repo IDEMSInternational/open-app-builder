@@ -723,4 +723,11 @@ body[data-theme="plh_kids_kw"] {
       }
     }
   }
+
+  // Pop Up
+  .popup-backdrop {
+    &[data-variant~="plh_completion"] {
+      border: 1px solid red !important;
+    }
+  }
 }
