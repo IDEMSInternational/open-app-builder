@@ -728,6 +728,12 @@ body[data-theme="plh_kids_kw"] {
   .popup-backdrop {
     &[data-variant~="plh_completion"] {
       border: 1px solid red !important;
+
+      .popup-container {
+        .popup-content {
+          background-color: red;
+        }
+      }
     }
   }
 }
