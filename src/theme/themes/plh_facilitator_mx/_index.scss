@@ -1,0 +1,110 @@
+@use "../utils";
+@use "sass:color";
+@use "./overrides";
+
+@mixin theme-plh_facilitator_mx {
+  [data-theme="plh_facilitator_mx"] {
+    /** Authoring variables **/
+    $color-primary: hsl(183, 40%, 43%); // #419499;
+    $color-secondary: hsl(168, 77%, 43%); //#19C2A0;
+    $page-background: white;
+
+    /** Global and component variables **/
+    $variable-overrides: (
+      font-weight-standard: 500,
+      font-weight-medium: 600,
+      font-weight-bold: 700,
+      font-weight-extra-bold: 800,
+
+      font-size-text-tiny: 14px,
+      font-size-text-small: 16px,
+      font-size-text-mid-size: 18px,
+      font-size-text-medium: 20px,
+      font-size-text-large: 24px,
+      font-size-text-title: 28px,
+      font-size-text-extra-large: 32px,
+
+      line-height-text-tiny: 18px,
+      line-height-text-small: 24px,
+      line-height-text-medium: 28px,
+      line-height-text-large: 32px,
+      line-height-text-extra-large: 40px,
+
+      ion-border-radius-small: 8px,
+      ion-border-radius-standard: 12px,
+      ion-border-radius-secondary: 20px,
+      ion-border-radius-rounded: 50px,
+
+      // BORDERS
+      border-color-default: var(--ion-color-gray-200),
+      border-width-default: 1px,
+      border-standard: var(--border-width-default) solid var(--border-color-default),
+      border-thin-standard: 1px solid var(--border-color-default),
+      button-background-primary: var(--ion-color-primary-500),
+      button-background-secondary: var(--ion-color-secondary),
+      button-background-option: var(--ion-color-primary-800),
+      round-button-background-secondary-light: var(--ion-color-yellow),
+      tile-button-background-primary: var(--ion-color-primary-500),
+      tile-button-background-primary-light: var(--ion-color-primary-300),
+      tile-button-background-secondary: var(--ion-color-secondary),
+      tile-button-background-secondary-light: var(--ion-color-yellow),
+      points-item-background: var(--ion-background-color),
+      points-item-background-complete: var(--ion-color-primary-200),
+      points-item-border: rgba(black, 0.07),
+      display-group-background-banner-primary: var(--ion-color-primary-200),
+      display-group-background-banner-secondary: var(--ion-color-secondary-300),
+      display-group-background-home-light: var(--ion-color-primary-300),
+      display-group-background-home-mid: var(--ion-color-primary-600),
+      display-group-background-home-dark: var(--ion-color-primary-800),
+      combo-box-background-with-value: var(--ion-color-primary-300),
+      accordion-background-highlight: var(--ion-color-primary-300),
+      tour-next-button-background: var(--ion-color-secondary),
+      radio-group-background-selected: var(--ion-color-primary-300),
+      ion-item-background: var(--ion-color-gray-light),
+      task-progress-bar-color: var(--ion-color-green),
+      progress-path-line-background: var(--ion-color-gray-100),
+      // ICONS
+      icon-size-small: 16px,
+      icon-size-medium: 24px,
+      icon-size-large: 32px,
+      icon-size-extra-large: 40px,
+      icon-size-largest: 48px,
+
+      // SURFACE COLOUR PALETTE
+      color-surface-white: #ffffff,
+      color-surface-white-variant: #f9f9fa,
+      color-surface-black: #1b1c1d,
+      color-surface-black-variant: #44474a,
+      color-outline: #74777c,
+      color-outline-variant: #c4c7c9,
+
+      // SECONDARY PALETTE
+      color-secondary-green-40: #006f54,
+      color-secondary-green-50: #008a6c,
+      color-secondary-green-60: #00a485,
+      color-secondary-green-70: #4ebda1,
+      color-secondary-green-80: #8ad5bf,
+      color-secondary-green-90: #c4ebde,
+
+      // ORANGE PALETTE
+      color-accent-orange-40: #a63b0f,
+      color-accent-orange-50: #c75223,
+      color-accent-orange-60: #e36f40,
+      color-accent-orange-70: #f89065,
+      color-accent-orange-80: #ffb392,
+      color-accent-orange-95: #ffd8c6,
+
+      // BLUE PALETTE
+      color-accent-blue-40: #46607f,
+      color-accent-blue-50: #5e799b,
+      color-accent-blue-60: #7993b4,
+      color-accent-blue-70: #98adca,
+      color-accent-blue-80: #b9c8de,
+      color-accent-blue-90: #dce3ef,
+    );
+    @include utils.generateTheme($color-primary, $color-secondary, $page-background);
+    @each $name, $value in $variable-overrides {
+      --#{$name}: #{$value};
+    }
+  }
+}
