@@ -1,3 +1,4 @@
+import type { FlowTypes } from "packages/data-models/flowTypes";
 import { JSEvaluator } from "packages/shared/src/models/jsEvaluator/jsEvaluator";
 import { shuffleArray } from "src/app/shared/utils";
 
@@ -26,13 +27,17 @@ export class ItemDataPipe {
       if (!sortField) return items;
       return items.sort((a, b) => (a[sortField] > b[sortField] ? 1 : -1));
     },
-    filter: (items: any[] = [], expression: string) => {
+    filter: (
+      items: any[] = [],
+      expression: string,
+      contextVariables: FlowTypes.IDynamicContext = {}
+    ) => {
       if (!expression) return;
       return items.filter((item) => {
         // NOTE - expects all non-item condition to be evaluated
         // e.g. `@item.field > @local.some_value` already be evaluated to `this.item.field > "local value"`
         const evaluator = new JSEvaluator();
-        const evaluated = evaluator.evaluate(expression, { item });
+        const evaluated = evaluator.evaluate(expression, { ...contextVariables, item });
         return evaluated;
       });
     },
