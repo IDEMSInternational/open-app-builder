@@ -84,16 +84,40 @@ const APP_ROUTE_DEFAULTS = {
 };
 
 export type IHeaderFooterBackgroundOptions = "primary" | "secondary" | "none";
+/** The "compact" variant reduces the header height and removes the title */
 export type IHeaderVariantOptions = "default" | "compact";
 
-const APP_HEADER_DEFAULTS = {
+interface IAppConfigHeader {
+  back_button: {
+    hidden: boolean;
+  };
+  collapse: boolean;
+  colour: IHeaderFooterBackgroundOptions;
+  hidden: boolean;
+  menu_button: {
+    hidden: boolean;
+  };
+  template: string | null;
+  title: string;
+  variant: IHeaderVariantOptions;
+  should_show_menu_button: (location: Location) => boolean;
+  should_show_back_button: (location: Location) => boolean;
+  should_minimize_app_on_back: (location: Location) => boolean;
+}
+
+const APP_HEADER_DEFAULTS: IAppConfigHeader = {
+  back_button: {
+    hidden: false,
+  },
   collapse: false,
-  colour: "primary" as IHeaderFooterBackgroundOptions,
-  show: true,
-  template: null as string | null,
+  colour: "primary",
+  hidden: false,
+  menu_button: {
+    hidden: false,
+  },
+  template: null,
   title: "App",
-  // The "compact" variant reduces the header height and removes the title
-  variant: "default" as IHeaderVariantOptions,
+  variant: "default",
   // default only show menu button on home screen
   should_show_menu_button: (location: Location) =>
     activeRoute(location) === APP_ROUTE_DEFAULTS.home_route,

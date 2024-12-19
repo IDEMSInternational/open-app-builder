@@ -19,7 +19,7 @@
         [templatename]="headerConfig().template"
         [ignoreQueryParamChanges]="true"
       ></plh-template-container>
-    } @else if (!(headerConfig().variant === "compact")) {
+    } @else if (headerConfig().title && headerConfig().variant !== "compact") {
       <ion-title style="text-align: center" routerLink="/">
         <span>{{ headerConfig().title }}</span>
       </ion-title>
