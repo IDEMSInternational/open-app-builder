@@ -5,7 +5,6 @@
   border: 1px solid rgba(black, 0.07);
   border-radius: var(--ion-border-radius-secondary);
   padding: var(--regular-padding);
-  padding-right: var(--tiny-padding);
   max-width: 400px;
   filter: drop-shadow(var(--ion-default-box-shadow));
 
@@ -34,6 +33,7 @@
       }
       .image-wrapper {
         width: 85%;
+        padding-left: unset;
       }
     }
   }
