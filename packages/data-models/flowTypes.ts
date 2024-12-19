@@ -357,6 +357,19 @@ export namespace FlowTypes {
 
   export type IDynamicPrefix = (typeof DYNAMIC_PREFIXES)[number];
 
+  /**
+   * Namespaced hashmap of dynamic variables. Values may include evaluated value,
+   * or may include variable metadata depending on use context
+   * @example
+   * ```
+   * {
+   * local: {my_local_var: {}
+   * field: {some_field_var: {}
+   * }
+   * ```
+   * */
+  export type IDynamicContext = { [key in IDynamicPrefix]?: { [fieldName: string]: any } };
+
   /** Data passed back from regex match, e.g. expression @local.someField => type:local, fieldName: someField */
   export interface TemplateRowDynamicEvaluator {
     fullExpression: string;
@@ -382,6 +395,9 @@ export namespace FlowTypes {
     | "nav_resume" // return to template after navigation or popup close;
     | "sent" // notification sent
     | "uncompleted";
+
+  const DATA_ACTIONS_LIST = ["add_data", "remove_data", "set_data"] as const;
+  const ITEMS_ACTIONS_LIST = ["remove_item", "set_item", "set_items"] as const;
 
   // TODO document '' action for stop propagation
   // note - to keep target nav within component stack go_to is actually just a special case of pop_up
@@ -413,11 +429,6 @@ export namespace FlowTypes {
     "save_to_device",
     "screen_orientation",
     "set_field",
-    /** NOTE - only available from with data_items loop */
-    "set_item",
-    /** NOTE - only available from with data_items loop */
-    "set_items",
-    "set_data",
     "set_local",
     "share",
     "style",
@@ -428,6 +439,8 @@ export namespace FlowTypes {
     "track_event",
     "trigger_actions",
     "user",
+    ...DATA_ACTIONS_LIST,
+    ...ITEMS_ACTIONS_LIST,
   ] as const;
 
   export interface TemplateRowAction<ParamsType = any> {
