@@ -1,4 +1,4 @@
-import { Injector } from "@angular/core";
+import { Injector, signal } from "@angular/core";
 import { FlowTypes } from "src/app/shared/model";
 import { getGlobalService } from "src/app/shared/services/global.service";
 import { SyncServiceBase } from "src/app/shared/services/syncService.base";
@@ -9,6 +9,7 @@ import { mergeTemplateRows } from "../../utils/template-utils";
 import { TemplateFieldService } from "../template-field.service";
 import { TemplateTranslateService } from "../template-translate.service";
 import { TemplateVariablesService } from "../template-variables.service";
+import { isEqual } from "packages/shared/src/utils/object-utils";
 
 /** Logging Toggle - rewrite default functions to enable or disable inline logs */
 let SHOW_DEBUG_LOGS = false;
@@ -34,7 +35,7 @@ export class TemplateRowService extends SyncServiceBase {
   /** List of overrides set by parent templates for access during parent processing */
   /** Hashmap of all rows keyed by nested row name (e.g. contentBox1.row1.title)  */
   public templateRowMap: ITemplateRowMap = {};
-  public renderedRows: FlowTypes.TemplateRow[]; // rows processed and filtered by condition
+  public renderedRows = signal<FlowTypes.TemplateRow[]>([], { equal: isEqual }); // rows processed and filtered by condition
 
   constructor(
     private injector: Injector,
@@ -234,7 +235,7 @@ export class TemplateRowService extends SyncServiceBase {
     const renderedRows = this.filterConditionalTemplateRows(
       JSON.parse(JSON.stringify(processedRows))
     );
-    this.renderedRows = renderedRows;
+    this.renderedRows.set(renderedRows);
     log("[Rows Processed]", logName, { rows, processedRows, renderedRows });
     return processedRows;
   }
