@@ -17,6 +17,8 @@ import { TemplateActionRegistry } from "./instance/template-action.registry";
 const SHOW_DEBUG_LOGS = false;
 const log = SHOW_DEBUG_LOGS ? console.log : () => null;
 
+type ICustomBackHandler = () => any;
+
 @Injectable({
   providedIn: "root",
 })
@@ -25,6 +27,11 @@ const log = SHOW_DEBUG_LOGS ? console.log : () => null;
  * ...
  */
 export class TemplateNavService extends SyncServiceBase {
+  // Custom function to handle browser's back button press
+  customBackHandler: ICustomBackHandler | null = null;
+  popStateListener: ((event: PopStateEvent) => void) | null = null;
+  public suppressPopState: boolean = false;
+
   constructor(
     private modalCtrl: ModalController,
     private location: Location,
@@ -78,6 +85,43 @@ export class TemplateNavService extends SyncServiceBase {
       ]);
     }
   }
+
+  /*****************************************************************************************************
+   *  Handling browser navigation
+   ****************************************************************************************************/
+
+  public initializeBackButtonHandler(handler?: ICustomBackHandler) {
+    if (handler) {
+      this.setCustomBackHandler(handler);
+    }
+    if (!this.popStateListener) {
+      this.popStateListener = this.onPopState.bind(this);
+      window.addEventListener("popstate", this.popStateListener);
+    }
+  }
+
+  public destroyBackButtonHandler() {
+    if (this.popStateListener) {
+      window.removeEventListener("popstate", this.popStateListener);
+      this.popStateListener = null;
+    }
+    this.customBackHandler = null;
+  }
+
+  private setCustomBackHandler(handler: ICustomBackHandler) {
+    this.customBackHandler = handler;
+  }
+
+  private onPopState(event: PopStateEvent) {
+    if (this.suppressPopState) {
+      this.suppressPopState = false;
+      return;
+    }
+    if (this.customBackHandler) {
+      this.customBackHandler();
+    }
+  }
+
   /*****************************************************************************************************
    *  Nav Actions
    ****************************************************************************************************/
