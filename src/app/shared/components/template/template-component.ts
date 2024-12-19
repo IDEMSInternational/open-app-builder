@@ -173,11 +173,18 @@ export class TemplateComponent implements OnInit, AfterContentInit, ITemplateRow
    * parent variables will not propagate down. Force reprocessing to workaround
    * See issue https://github.com/IDEMSInternational/open-app-builder/issues/2636
    */
-  private hackForceReprocessNestedTemplate() {
+  private async hackForceReprocessNestedTemplate() {
     if (this._row.type === "template") {
       const componentRef = this.componentRef as ComponentRef<TemplateContainerComponent>;
       if (componentRef.instance.parent) {
-        componentRef.instance.templateRowService.processContainerTemplateRows();
+        // HACK - if parent template changes name of nested child template instance fully
+        // recreate the template container
+        if ((componentRef.instance.templatename(), this._row.value)) {
+          this.componentRef.destroy();
+          this.renderTemplateComponent(this._row);
+          // TODO - test better ways to manage from container, confirming test cases from
+          // https://github.com/IDEMSInternational/open-app-builder/issues/2636
+        }
       }
     }
   }
