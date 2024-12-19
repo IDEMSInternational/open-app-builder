@@ -1,9 +1,9 @@
-import { ChangeDetectionStrategy, Component } from "@angular/core";
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component } from "@angular/core";
 import { FlowTypes } from "../../models";
 import { TemplateBaseComponent } from "../base";
 import { DataItemsService } from "./data-items.service";
 import { toObservable, toSignal } from "@angular/core/rxjs-interop";
-import { switchMap, filter } from "rxjs";
+import { switchMap, filter, tap } from "rxjs";
 
 @Component({
   selector: "plh-data-items",
@@ -23,11 +23,17 @@ export class TmplDataItemsComponent extends TemplateBaseComponent {
   public itemRows = toSignal(
     toObservable(this.rowSignal).pipe(
       filter((row) => row !== undefined),
-      switchMap((row) => this.subscribeToDynamicData(row))
+      switchMap((row) => this.subscribeToDynamicData(row)),
+      tap(() => {
+        this.cdr.detectChanges();
+      })
     )
   );
 
-  constructor(private dataItemsService: DataItemsService) {
+  constructor(
+    private dataItemsService: DataItemsService,
+    private cdr: ChangeDetectorRef
+  ) {
     super();
   }
 

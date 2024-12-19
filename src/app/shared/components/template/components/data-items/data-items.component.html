@@ -1,7 +1,8 @@
-@for (row of itemRows(); track row._nested_name) {
+@for (row of itemRows(); track trackByRow($index, row)) {
   <plh-template-component
     [row]="row"
     [parent]="parent"
     [attr.data-rowname]="row.name"
   ></plh-template-component>
+  <div>{{ row.rows | json }}</div>
 }
