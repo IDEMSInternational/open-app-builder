@@ -455,7 +455,7 @@ body[data-theme="plh_kids_kw"] {
       line-height: var(--line-height-text-large);
       color: var(--color-surface-black);
     }
-    .title-wrapper[data-variant~="list-title"] {
+    .title-wrapper[data-variant~="section-banner"] {
       font-size: var(--font-size-text-large) !important;
       font-weight: var(--font-weight-medium) !important;
       background-color: #e7f2fd;
@@ -465,7 +465,7 @@ body[data-theme="plh_kids_kw"] {
         border: none;
       }
     }
-    .title-wrapper[data-variant~="page-title"] h1 {
+    .title-wrapper[data-variant~="page-banner"] h1 {
       font-size: var(--font-size-text-extra-large) !important;
     }
   }
