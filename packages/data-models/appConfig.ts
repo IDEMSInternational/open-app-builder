@@ -117,6 +117,10 @@ const APP_FOOTER_DEFAULTS: { templateName: string | null } = {
   templateName: null,
 };
 
+const LAYOUT = {
+  page_padding: "24px",
+};
+
 const APP_SIDEMENU_DEFAULTS = {
   enabled: true,
   title: "App",
@@ -128,10 +132,11 @@ const APP_SIDEMENU_DEFAULTS = {
   should_show_deployment_name: false,
 };
 
-const APP_AUTHENTICATION_DEFAULTS = {
-  enforceLogin: false,
-  signInTemplate: "sign_in",
-};
+/**
+ * @deprecated 0.18.0
+ * Use `deployment.auth` to configure auth
+ */
+const APP_AUTHENTICATION_DEFAULTS = {};
 
 type IAppLaunchAction = {
   type: "template_popup" | "tour_start";
@@ -205,6 +210,7 @@ const APP_CONFIG = {
   APP_UPDATES,
   ASSET_PACKS,
   FEEDBACK_MODULE_DEFAULTS,
+  LAYOUT,
   NOTIFICATIONS_SYNC_FREQUENCY_MS,
   NOTIFICATION_DEFAULTS,
   SERVER_SYNC_FREQUENCY_MS,

@@ -12,7 +12,6 @@ import { TemplateService } from "../template.service";
 import { TemplateTranslateService } from "../template-translate.service";
 import { EventService } from "src/app/shared/services/event/event.service";
 import { DBSyncService } from "src/app/shared/services/db/db-sync.service";
-import { AuthService } from "src/app/shared/services/auth/auth.service";
 import { SkinService } from "src/app/shared/services/skin/skin.service";
 import { ThemeService } from "src/app/feature/theme/services/theme.service";
 import { getGlobalService } from "src/app/shared/services/global.service";
@@ -65,9 +64,6 @@ export class TemplateActionService extends SyncServiceBase {
   private get dbSyncService() {
     return getGlobalService(this.injector, DBSyncService);
   }
-  private get authService() {
-    return getGlobalService(this.injector, AuthService);
-  }
   private get skinService() {
     return getGlobalService(this.injector, SkinService);
   }
@@ -93,7 +89,6 @@ export class TemplateActionService extends SyncServiceBase {
       this.analyticsService,
       this.templateService,
       this.eventService,
-      this.authService,
       this.skinService,
     ]);
   }
