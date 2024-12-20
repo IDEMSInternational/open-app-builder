@@ -181,7 +181,7 @@ export class TemplateComponent implements OnInit, AfterContentInit, ITemplateRow
         // reflected in the child template (e.g. set_nested_variable contains parent local variable)
         // As it is not currently easy to isolate this case, fully recreate any child template when
         // the parent template updates
-        if (componentRef.instance.templatename() !== this._row.value) {
+        if (componentRef.instance.templatename()) {
           this.componentRef.destroy();
           this.renderTemplateComponent(this._row);
           // TODO - test better ways to manage from container, confirming test cases from
