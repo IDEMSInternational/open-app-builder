@@ -1,19 +1,8 @@
 @use "../../mixins";
 
 body[data-theme="plh_kids_kw"] {
-  ion-content {
-    --padding-start: 0;
-    --padding-end: 0;
-    --padding-bottom: 0;
-    --padding-top: 0;
-  }
-
-  a {
-    text-decoration: none;
-  }
   // button
   plh-button {
-    // border: 1px solid red;
     ion-button {
       min-height: var(--buttons-medium-height);
       height: var(--buttons-full-height);
@@ -32,13 +21,8 @@ body[data-theme="plh_kids_kw"] {
     ion-button[disabled] {
       filter: none;
     }
-
-    .left {
-      text-align: unset !important;
-    }
     // Center align all button text by default
     .left.null ::ng-deep {
-      text-align: center;
       p {
         text-align: center !important;
       }
