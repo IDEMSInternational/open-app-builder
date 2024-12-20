@@ -53,6 +53,15 @@ import { TemplateMetadataService } from "./shared/components/template/services/t
 export class AppComponent {
   sideMenuDefaults = computed(() => this.appConfigService.appConfig().APP_SIDEMENU_DEFAULTS);
   footerDefaults = computed(() => this.appConfigService.appConfig().APP_FOOTER_DEFAULTS);
+  layoutConfig = computed(() => this.appConfigService.appConfig().LAYOUT);
+
+  public routeContainerStyle = computed(() => {
+    const { page_padding } = this.layoutConfig();
+    return {
+      "--page-padding": page_padding,
+    };
+  });
+
   /** Track when app ready to render sidebar and route templates */
   public renderAppTemplates = signal(false);
 
@@ -100,7 +109,6 @@ export class AppComponent {
     public templateTranslateService: TemplateTranslateService,
     private crashlyticsService: CrashlyticsService,
     private appDataService: AppDataService,
-    private authService: AuthService,
     private seoService: SeoService,
     private taskService: TaskService,
     private feedbackService: FeedbackService,
@@ -125,7 +133,6 @@ export class AppComponent {
       this.hackSetDeveloperOptions();
       const isDeveloperMode = this.templateFieldService.getField("user_mode") === false;
       const user = this.userMetaService.userMeta;
-      await this.loadAuthConfig();
 
       if (!user.first_app_open) {
         await this.userMetaService.setUserMeta({ first_app_open: new Date().toISOString() });
@@ -161,29 +168,6 @@ export class AppComponent {
       await this.appEventService.ready();
       const { first_app_launch } = this.appEventService.summary;
       this.localStorageService.setProtected("APP_FIRST_LAUNCH", first_app_launch);
-    }
-  }
-
-  /**
-   * Authentication requires verified domain and app ids populated to firebase console
-   * Currently only run on native where specified (but can comment out for testing locally)
-   */
-  private async loadAuthConfig() {
-    const { firebase } = this.deploymentService.config;
-    const { enforceLogin, signInTemplate } =
-      this.appConfigService.appConfig().APP_AUTHENTICATION_DEFAULTS;
-    const ensureLogin = firebase.config && enforceLogin && Capacitor.isNativePlatform();
-    if (ensureLogin) {
-      this.authService.ready();
-      const authUser = await this.authService.getCurrentUser();
-      if (!authUser) {
-        const { modal } = await this.templateService.runStandaloneTemplate(signInTemplate, {
-          showCloseButton: false,
-          waitForDismiss: false,
-        });
-        await this.authService.waitForSignInComplete();
-        await modal.dismiss();
-      }
     }
   }
 
@@ -231,7 +215,6 @@ export class AppComponent {
         this.templateService,
         this.templateProcessService,
         this.appDataService,
-        this.authService,
         this.serverService,
         this.seoService,
         this.feedbackService,
