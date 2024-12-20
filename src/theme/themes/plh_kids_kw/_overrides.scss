@@ -25,16 +25,17 @@ body[data-theme="plh_kids_kw"] {
     .left {
       text-align: unset !important;
     }
-    // Center align all button text by default
-    .left.null ::ng-deep {
-      text-align: center;
-      p {
-        text-align: center !important;
-      }
-    }
-    .left ::ng-deep {
+    .left.text {
+      text-align: left;
       p {
         text-align: left !important;
+      }
+    }
+    // Center align all button text by default
+    .left.null {
+      text-align: center !important;
+      p {
+        text-align: center !important;
       }
     }
     .left.centre ::ng-deep {
@@ -70,6 +71,22 @@ body[data-theme="plh_kids_kw"] {
       --background: var(--ion-color-primary-600);
       &:hover {
         --background: var(--ion-color-primary-500);
+      }
+    }
+    ion-button[data-variant~="card"],
+    ion-button[data-param-style~="no-background"] {
+      border: none;
+    }
+    ion-button[data-variant~="card"][data-param-style~="no-background"] {
+      border: 1px solid transparent;
+      border-radius: 0px;
+      background-color: transparent;
+      background: transparent;
+      color: var(--color-surface-black);
+      min-height: 64px;
+      padding: 18px 24px;
+      p {
+        font-weight: var(--font-weight-standard);
       }
     }
   }
@@ -429,12 +446,27 @@ body[data-theme="plh_kids_kw"] {
       }
     }
   }
+
+  // Title
   plh-tmpl-title {
-    .title-wrapper h1 p {
+    .title-wrapper h1 {
       font-size: var(--font-size-text-title);
       margin: var(--paragraph-margin-medium) 0;
       line-height: var(--line-height-text-large);
-      color: var(--ion-color-primary-700);
+      color: var(--color-surface-black);
+    }
+    .title-wrapper[data-variant~="section-banner"] {
+      font-size: var(--font-size-text-large) !important;
+      font-weight: var(--font-weight-medium) !important;
+      background-color: #e7f2fd;
+      border-bottom: 1px solid var(--color-secondary-blue-80);
+      h1 {
+        padding: 18px;
+        border: none;
+      }
+    }
+    .title-wrapper[data-variant~="page-banner"] h1 {
+      font-size: var(--font-size-text-extra-large) !important;
     }
   }
 
