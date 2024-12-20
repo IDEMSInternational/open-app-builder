@@ -146,15 +146,12 @@ export class TemplateContainerComponent implements OnInit, OnDestroy {
     if (shouldProcess) {
       if (full) {
         console.log("[Force Reload]", this.name);
-        // ensure angular destroys previous row components before rendering new
-        // (note - will cause short content flicker)
-        this.templateRowService.renderedRows = [];
         // allow time for other pending ops to finish
         await _wait(50);
         await this.renderTemplate(this.templatename());
       } else {
         await this.templateRowService.processRowUpdates();
-        console.log("[Force Reprocess]", this.name, this.templateRowService.renderedRows);
+        console.log("[Force Reprocess]", this.name, this.templateRowService.renderedRows());
         for (const child of Object.values(this.children || {})) {
           await child.forceRerender(full, shouldProcess);
         }
@@ -203,7 +200,7 @@ export class TemplateContainerComponent implements OnInit, OnDestroy {
     log("[Template] Rendered", this.name, {
       template,
       ctxt: { ...this },
-      renderedRows: { ...this.templateRowService.renderedRows },
+      renderedRows: { ...this.templateRowService.renderedRows() },
       rowMap: this.templateRowService.templateRowMap,
     });
     // if a parent exists also provide parent reference to this as a child
