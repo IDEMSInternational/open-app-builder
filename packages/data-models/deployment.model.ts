@@ -40,10 +40,8 @@ export interface IDeploymentRuntimeConfig {
   auth: {
     /** provider to use with authentication actions. actions will be disabled if no provider specified */
     provider?: "firebase" | "supabase";
-    /** prevent user accessing app pages without being logged in */
-    enforceLogin?: boolean;
-    /** template to display when enforceLogin enabled */
-    signInTemplate?: string;
+    /** prevent user accessing app pages without being logged in. Specified template will be shown until logged in */
+    enforceLoginTemplate?: string;
   };
   /**
    * Specify if using firebase for auth and crashlytics.

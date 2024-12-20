@@ -40,20 +40,19 @@ export class AuthService extends AsyncServiceBase {
   private async initialise() {
     await this.provider.initialise(this.injector);
     this.registerTemplateActionHandlers();
-    if (this.config.enforceLogin) {
+    if (this.config.enforceLoginTemplate) {
       // NOTE - Do not await the enforce login to allow other services to initialise in background
-      this.enforceLogin();
+      this.enforceLogin(this.config.enforceLoginTemplate);
     }
   }
 
-  private async enforceLogin() {
+  private async enforceLogin(templateName: string) {
     // If user already logged in simply return. If providers auto-login during then waiting to verify
     // should be included during the provide init method
     if (this.provider.authUser()) {
       return;
     }
-    const { signInTemplate } = this.deploymentService.config.app_config.APP_AUTHENTICATION_DEFAULTS;
-    const { modal } = await this.templateService.runStandaloneTemplate(signInTemplate, {
+    const { modal } = await this.templateService.runStandaloneTemplate(templateName, {
       showCloseButton: false,
       waitForDismiss: false,
     });

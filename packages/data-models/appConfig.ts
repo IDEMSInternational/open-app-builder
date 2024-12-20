@@ -132,6 +132,12 @@ const APP_SIDEMENU_DEFAULTS = {
   should_show_deployment_name: false,
 };
 
+/**
+ * @deprecated 0.18.0
+ * Use `deployment.auth` to configure auth
+ */
+const APP_AUTHENTICATION_DEFAULTS = {};
+
 type IAppLaunchAction = {
   type: "template_popup" | "tour_start";
   value: string;
@@ -192,6 +198,7 @@ const TASKS = {
 const APP_CONFIG = {
   APP_HEADER_DEFAULTS,
   APP_INITIALISATION_DEFAULTS,
+  APP_AUTHENTICATION_DEFAULTS,
   APP_LANGUAGES,
   APP_LANGUAGES_META,
   APP_ROUTE_DEFAULTS,
