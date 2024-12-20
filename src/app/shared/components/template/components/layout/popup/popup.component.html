@@ -3,6 +3,7 @@
   (click)="dismissOnBackdrop($event)"
   [attr.data-fullscreen]="props.fullscreen ? true : null"
   [dir]="templateTranslateService.languageDirection()"
+  [attr.data-variant]="props.variant ? props.variant : null"
 >
   <div class="popup-container">
     <div (click)="dismiss()" class="close-button" fill="clear" *ngIf="props.showCloseButton">
