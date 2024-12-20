@@ -42,6 +42,8 @@ export interface IDeploymentRuntimeConfig {
     provider?: "firebase" | "supabase";
     /** prevent user accessing app pages without being logged in */
     enforceLogin?: boolean;
+    /** template to display when enforceLogin enabled */
+    signInTemplate?: string;
   };
   /**
    * Specify if using firebase for auth and crashlytics.
