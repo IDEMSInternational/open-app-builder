@@ -10,8 +10,8 @@ import {
   ITemplatePopupComponentProps,
   TemplatePopupComponent,
 } from "../components/layout/popup/popup.component";
-import { ITemplateContainerProps } from "../models";
 import { TemplateContainerComponent } from "../template-container.component";
+import { TemplateActionRegistry } from "./instance/template-action.registry";
 
 // Toggle logs used across full service for debugging purposes (there's quite a few and tedious to comment)
 const SHOW_DEBUG_LOGS = false;
@@ -29,9 +29,11 @@ export class TemplateNavService extends SyncServiceBase {
     private modalCtrl: ModalController,
     private location: Location,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private templateActionRegistry: TemplateActionRegistry
   ) {
     super("TemplateNav");
+    this.registerTemplateActionHandlers();
   }
 
   /**
@@ -40,7 +42,7 @@ export class TemplateNavService extends SyncServiceBase {
    * unless specifically closed (e.g. nav triggered from modal)
    */
   private openPopupsByName: {
-    [templatename: string]: { modal: HTMLIonModalElement; props: ITemplateContainerProps };
+    [templatename: string]: { modal: HTMLIonModalElement; props: ITemplatePopupComponentProps };
   } = {};
 
   public async handleQueryParamChange(
@@ -347,6 +349,27 @@ export class TemplateNavService extends SyncServiceBase {
     });
     this.openPopupsByName[popup_child] = { modal, props: childContainerProps };
     return modal;
+  }
+
+  /*****************************************************************************************************
+   *  Register custom nav actions
+   ****************************************************************************************************/
+  private registerTemplateActionHandlers() {
+    this.templateActionRegistry.register({
+      nav: async ({ args }) => {
+        const [arg] = args;
+        switch (arg) {
+          case "back":
+            this.location.back();
+            break;
+          case "forward":
+            this.location.forward();
+            break;
+          default:
+            console.warn(`[TEMPLATE NAV] Unrecognised nav action: ${arg}`);
+        }
+      },
+    });
   }
 }
 

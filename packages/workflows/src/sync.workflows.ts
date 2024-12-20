@@ -193,7 +193,7 @@ const workflows: IDeploymentWorkflows = {
                     parent: workflow,
                     args: ["--skip-download"],
                   });
-                  tasks.appData.copyDeploymentDataToApp();
+                  await tasks.appData.copyDeploymentDataToApp();
                 }
               },
             });
@@ -258,5 +258,5 @@ const processLocalFiles = async (
     });
   }
 
-  tasks.appData.copyDeploymentDataToApp();
+  await tasks.appData.copyDeploymentDataToApp();
 };

@@ -7,6 +7,7 @@ import { FlowTypes } from "../model";
 import { objectToArray } from "../components/template/utils";
 import marked from "marked";
 import { markedSmartypantsLite } from "marked-smartypants-lite";
+import { v4 as uuidV4 } from "uuid";
 
 /**
  * Generate a random string of characters in base-36 (a-z and 0-9 characters)
@@ -15,6 +16,11 @@ import { markedSmartypantsLite } from "marked-smartypants-lite";
  */
 export function generateRandomId() {
   return Math.random().toString(36).substring(2);
+}
+
+/** Generate a uuid with v4 specification */
+export function generateUUID() {
+  return uuidV4();
 }
 
 /**
@@ -208,7 +214,7 @@ export function getBooleanParamFromTemplateRow(
   _default: boolean
 ): boolean {
   const params = row.parameter_list || {};
-  return params.hasOwnProperty(name) ? params[name] === "true" : _default;
+  return params.hasOwnProperty(name) ? parseBoolean(params[name]) : _default;
 }
 
 export function getAnswerListParamFromTemplateRow(
