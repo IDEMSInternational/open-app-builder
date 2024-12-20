@@ -45,6 +45,11 @@ export class DataItemsService {
                   const parsedItemList = await this.hackParseDataList(data);
                   const itemProcessor = new ItemProcessor(parsedItemList, parameter_list);
                   const { itemTemplateRows, itemData } = itemProcessor.process(rows);
+                  // if no child rows for data_items loop assume want back raw items
+                  if (rows.length === 0) {
+                    return itemData;
+                  }
+                  // otherwise process generated template rows
                   const itemRowsWithMeta = updateItemMeta(itemTemplateRows, itemData, dataListName);
                   const parsedItemRows = await this.hackProcessRows(
                     itemRowsWithMeta,
