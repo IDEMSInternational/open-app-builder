@@ -32,14 +32,12 @@ const MOCK_SKIN_2: IAppSkin = {
 
 const MOCK_APP_CONFIG: Partial<IAppConfig> = {
   APP_HEADER_DEFAULTS: {
+    back_button: {},
+    menu_button: {},
     template: null,
-    show: true,
     title: "default",
     collapse: false,
     colour: "none",
-    should_minimize_app_on_back: () => true,
-    should_show_back_button: () => true,
-    should_show_menu_button: () => true,
     variant: "default",
   },
   APP_SKINS: {

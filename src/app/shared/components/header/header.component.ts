@@ -2,7 +2,7 @@ import { Location } from "@angular/common";
 import { ChangeDetectionStrategy, Component, OnDestroy, OnInit, ViewChild } from "@angular/core";
 import { computed, effect, signal } from "@angular/core";
 import { toSignal } from "@angular/core/rxjs-interop";
-import { NavigationEnd, NavigationStart, Router } from "@angular/router";
+import { NavigationStart, Router } from "@angular/router";
 import { App } from "@capacitor/app";
 import { Capacitor, PluginListenerHandle } from "@capacitor/core";
 import { Subscription, fromEvent, map } from "rxjs";
@@ -10,6 +10,7 @@ import type { IHeaderVariantOptions } from "data-models/appConfig";
 import { AppConfigService } from "../../services/app-config/app-config.service";
 import { IonHeader, ScrollBaseCustomEvent, ScrollDetail } from "@ionic/angular";
 import { _wait } from "packages/shared/src/utils/async-utils";
+import { activeRoute } from "../../utils/angular.utils";
 
 interface ScrollCustomEvent extends ScrollBaseCustomEvent {
   detail: ScrollDetail;
@@ -50,6 +51,9 @@ export class headerComponent implements OnInit, OnDestroy {
 
   /** Track scroll events when using header collapse mode */
   private scrollEvents$: Subscription;
+
+  /** Track whether on home route for back button and menu button side-effects */
+  private isHomeRoute = true;
 
   constructor(
     private router: Router,
@@ -101,13 +105,16 @@ export class headerComponent implements OnInit, OnDestroy {
 
   /** Determine whether to show back and menu buttons based on location */
   private handleRouteChange() {
-    const { back_button, menu_button, should_show_back_button, should_show_menu_button } =
-      this.headerConfig();
+    // update whether home route or not
+    const { APP_ROUTE_DEFAULTS } = this.appConfigService.appConfig();
+    this.isHomeRoute = activeRoute(location) === APP_ROUTE_DEFAULTS.home_route;
+
+    const { back_button, menu_button } = this.headerConfig();
 
     // The explicit `hidden` property should override the function of location
     // TODO: move functions to component code and out of app config, no use case for overriding them
-    const showBackButton = !back_button.hidden && should_show_back_button(location);
-    const showMenuButton = !menu_button.hidden && should_show_menu_button(location);
+    const showBackButton = !back_button.hidden && !this.isHomeRoute;
+    const showMenuButton = !menu_button.hidden && this.isHomeRoute;
     this.showBackButton.set(showBackButton);
     this.showMenuButton.set(showMenuButton);
     this.marginTop.set(0);
@@ -115,8 +122,7 @@ export class headerComponent implements OnInit, OnDestroy {
 
   /** When device back button evaluate conditions to handle app minimise */
   private handleHardwareBackPress() {
-    const { should_minimize_app_on_back } = this.headerConfig();
-    if (should_minimize_app_on_back(location)) {
+    if (this.isHomeRoute) {
       App.minimizeApp();
     }
   }
