@@ -71,9 +71,7 @@ export class headerComponent implements OnInit, OnDestroy {
       () => {
         // when route changes handle side-effects
         const e = this.routeChanges();
-        if (e instanceof NavigationEnd) {
-          this.handleRouteChange();
-        }
+        this.handleRouteChange();
         if (e instanceof NavigationStart) {
           this.hasBackHistory = true;
         }
@@ -103,9 +101,15 @@ export class headerComponent implements OnInit, OnDestroy {
 
   /** Determine whether to show back and menu buttons based on location */
   private handleRouteChange() {
-    const { should_show_back_button, should_show_menu_button } = this.headerConfig();
-    this.showBackButton.set(should_show_back_button(location));
-    this.showMenuButton.set(should_show_menu_button(location));
+    const { back_button, menu_button, should_show_back_button, should_show_menu_button } =
+      this.headerConfig();
+
+    // The explicit `hidden` property should override the function of location
+    // TODO: move functions to component code and out of app config, no use case for overriding them
+    const showBackButton = !back_button.hidden && should_show_back_button(location);
+    const showMenuButton = !menu_button.hidden && should_show_menu_button(location);
+    this.showBackButton.set(showBackButton);
+    this.showMenuButton.set(showMenuButton);
     this.marginTop.set(0);
   }
 

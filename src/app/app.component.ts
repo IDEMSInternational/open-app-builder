@@ -51,8 +51,9 @@ import { TemplateMetadataService } from "./shared/components/template/services/t
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AppComponent {
-  sideMenuDefaults = computed(() => this.appConfigService.appConfig().APP_SIDEMENU_DEFAULTS);
-  footerDefaults = computed(() => this.appConfigService.appConfig().APP_FOOTER_DEFAULTS);
+  headerConfig = computed(() => this.appConfigService.appConfig().APP_HEADER_DEFAULTS);
+  footerConfig = computed(() => this.appConfigService.appConfig().APP_FOOTER_DEFAULTS);
+  sideMenuConfig = computed(() => this.appConfigService.appConfig().APP_SIDEMENU_DEFAULTS);
   layoutConfig = computed(() => this.appConfigService.appConfig().LAYOUT);
 
   public routeContainerStyle = computed(() => {
