@@ -32,7 +32,10 @@ export class TmplComboBoxComponent
   answerList: IAnswerListItem[];
   private componentDestroyed$ = new ReplaySubject(1);
 
-  constructor(private modalController: ModalController, private templateService: TemplateService) {
+  constructor(
+    private modalController: ModalController,
+    private templateService: TemplateService
+  ) {
     super();
   }
 
@@ -74,7 +77,6 @@ export class TmplComboBoxComponent
         customAnswerSelected: this.customAnswerSelected,
         style: this.style,
       },
-      showBackdrop: false,
     });
 
     modal.onDidDismiss().then(async (data) => {

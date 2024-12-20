@@ -1,6 +1,5 @@
 /* eslint sort-keys: "error"  */
-import { Type } from "@angular/core";
-import { FlowTypes, ITemplateRowProps } from "../models";
+import { FlowTypes } from "../models";
 import { TemplateContainerComponent } from "../template-container.component";
 
 /***************************************************************************************
@@ -31,6 +30,7 @@ import { TmplDashedBoxComponent } from "./dashed-box/dashed-box.component";
 import { TmplDataItemsComponent } from "./data-items/data-items.component";
 import { TmplDisplayGridComponent } from "./layout/display-grid/display-grid.component";
 import { TmplDisplayGroupComponent } from "./layout/display-group/display-group.component";
+import { TmplDisplayGroupStickyComponent } from "./layout/display-group/sticky/display-group-sticky.component";
 import { TmplDrawerComponent } from "./drawer/drawer.component";
 import { TmplHelpIconComponent } from "./help-icon";
 import { TmplIconBannerComponent } from "./icon-banner/icon-banner.component";
@@ -55,15 +55,15 @@ import { TmplTextBoxComponent } from "./text-box/text-box.component";
 import { TmplTextComponent } from "./text/text.component";
 import { TmplTextBubbleComponent } from "./text-bubble/text-bubble.component";
 import { TmplTileComponent } from "./tile-component/tile-component.component";
-import { TmplTitleComponent } from "./title";
+import { TmplTitleComponent } from "./title/title.component";
 import { TmplTimerComponent } from "./timer/timer.component";
 import { TmplToggleBarComponent } from "./toggle-bar/toggle-bar";
 import { TmplVideoComponent } from "./video";
 import { WorkshopsComponent } from "./layout/workshops_accordion";
 import { YoutubeComponent } from "./youtube/youtube.component";
 
-import { DEMO_COMPONENT_MAPPING } from "packages/components/demo";
-import { PLH_COMPONENT_MAPPING } from "packages/components/plh";
+import { DEMO_COMPONENT_MAPPING } from "components/demo";
+import { PLH_COMPONENT_MAPPING } from "components/plh";
 
 /** All components should be exported as a single array for easy module import */
 export const TEMPLATE_COMPONENTS = [
@@ -93,6 +93,7 @@ export const TEMPLATE_COMPONENTS = [
   TmplDataItemsComponent,
   TmplDisplayGridComponent,
   TmplDisplayGroupComponent,
+  TmplDisplayGroupStickyComponent,
   TmplDrawerComponent,
   TmplHelpIconComponent,
   TmplIconBannerComponent,
@@ -126,9 +127,23 @@ export const TEMPLATE_COMPONENTS = [
 ];
 
 /***************************************************************************************
- * Template component mapping
+ * Template core component mapping
+ * These components are used within the core system and are not removed from build
  **************************************************************************************/
-const CORE_COMPONENT_MAPPING: Record<FlowTypes.TemplateRowType, Type<ITemplateRowProps>> = {
+const CORE_COMPONENT_MAPPING: Record<FlowTypes.TemplateRowCoreType, any> = {
+  data_items: TmplDataItemsComponent,
+  template: TemplateContainerComponent,
+  text: TmplTextComponent, // used in various child component dynamic rows
+  title: TmplTitleComponent, // used in not-found default fallback
+};
+
+/***************************************************************************************
+ * Template common component mapping
+ * These components are available on-demand and can be removed from build via
+ * deployment config optimisation
+ **************************************************************************************/
+const COMMON_COMPONENT_MAPPING = {
+  /* optimise:components:start */
   accordion: TmplAccordionComponent,
   accordion_section: AccordionSectionComponent,
   advanced_dashed_box: TmplAdvancedDashedBoxComponent,
@@ -140,24 +155,21 @@ const CORE_COMPONENT_MAPPING: Record<FlowTypes.TemplateRowType, Type<ITemplateRo
   carousel: TmplCarouselComponent,
   combo_box: TmplComboBoxComponent,
   dashed_box: TmplDashedBoxComponent,
-  data_items: TmplDataItemsComponent,
-  debug_toggle: PLHDebugToggleComponent as any,
+  debug_toggle: PLHDebugToggleComponent,
   display_grid: TmplDisplayGridComponent,
   display_group: TmplDisplayGroupComponent,
-  display_theme: null as any,
+  display_group_sticky: TmplDisplayGroupStickyComponent,
   drawer: TmplDrawerComponent,
   form: FormComponent,
   help_icon: TmplHelpIconComponent,
   html: TemplateHTMLComponent,
   icon_banner: TmplIconBannerComponent,
   image: TmplImageComponent,
-  items: null,
   latex: TmplLatexComponent,
   lottie_animation: TmplLottieAnimation,
   nav_group: NavGroupComponent,
   nav_section: AnimatedSectionComponent,
   navigation_bar: TmplNavigationBarComponent,
-  nested_properties: null as any,
   number_selector: TmplNumberComponent,
   odk_form: TmplOdkFormComponent,
   pdf: TmplPdfComponent,
@@ -167,33 +179,30 @@ const CORE_COMPONENT_MAPPING: Record<FlowTypes.TemplateRowType, Type<ITemplateRo
   radio_group: TmplRadioGroupComponent,
   round_button: RoundIconButtonComponent,
   select_text: SelectTextComponent,
-  set_default: null as any,
-  set_field: null as any,
-  set_local: null as any,
-  set_variable: null as any,
   simple_checkbox: TmplSimpleCheckboxComponent,
   slider: TmplSliderComponent,
   square_button: SquareIconButtonComponent,
   subtitle: TmplSubtitleComponent,
   task_card: TmplTaskCardComponent,
   task_progress_bar: TmplTaskProgressBarComponent,
-  template: TemplateContainerComponent as any,
-  text: TmplTextComponent,
   text_area: TmplTextAreaComponent,
   text_box: TmplTextBoxComponent,
   text_bubble: TmplTextBubbleComponent,
   tile_component: TmplTileComponent,
   timer: TmplTimerComponent,
-  title: TmplTitleComponent,
   toggle_bar: TmplToggleBarComponent,
-  update_action_list: null as any,
   video: TmplVideoComponent,
   workshops_accordion: WorkshopsComponent,
   youtube: YoutubeComponent,
+  /* optimise:components:end */
 };
 
+/** Utility type of all named components from common mapping */
+export type ICommonComponentName = keyof typeof COMMON_COMPONENT_MAPPING;
+
 export const TEMPLATE_COMPONENT_MAPPING = {
-  ...CORE_COMPONENT_MAPPING,
+  ...COMMON_COMPONENT_MAPPING,
   ...DEMO_COMPONENT_MAPPING,
   ...PLH_COMPONENT_MAPPING,
+  ...CORE_COMPONENT_MAPPING,
 };

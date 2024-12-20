@@ -11,7 +11,7 @@ import { Logger } from "shared/src/utils/logging/console-logger";
  * @param callOriginal specify whether to still call original Logger
  * methods after spy intercept
  */
-export function useMockLogger(callOriginal = true) {
+export function useMockLogger(callOriginal = false) {
   const error = jest.spyOn(Logger, "error");
   const warning = jest.spyOn(Logger, "warning");
   if (!callOriginal) {
