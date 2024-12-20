@@ -177,9 +177,11 @@ export class TemplateComponent implements OnInit, AfterContentInit, ITemplateRow
     if (this._row.type === "template") {
       const componentRef = this.componentRef as ComponentRef<TemplateContainerComponent>;
       if (componentRef.instance.parent) {
-        // HACK - if parent template changes name of nested child template instance fully
-        // recreate the template container
-        if ((componentRef.instance.templatename(), this._row.value)) {
+        // HACK - when a parent updates there may be cases when the updated variables need to be
+        // reflected in the child template (e.g. set_nested_variable contains parent local variable)
+        // As it is not currently easy to isolate this case, fully recreate any child template when
+        // the parent template updates
+        if (componentRef.instance.templatename()) {
           this.componentRef.destroy();
           this.renderTemplateComponent(this._row);
           // TODO - test better ways to manage from container, confirming test cases from
