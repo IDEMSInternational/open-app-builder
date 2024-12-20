@@ -132,10 +132,11 @@ const APP_SIDEMENU_DEFAULTS = {
   should_show_deployment_name: false,
 };
 
-const APP_AUTHENTICATION_DEFAULTS = {
-  enforceLogin: false,
-  signInTemplate: "sign_in",
-};
+/**
+ * @deprecated 0.18.0
+ * Use `deployment.auth` to configure auth
+ */
+const APP_AUTHENTICATION_DEFAULTS = {};
 
 type IAppLaunchAction = {
   type: "template_popup" | "tour_start";
