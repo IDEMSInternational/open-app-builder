@@ -117,6 +117,6 @@ export class DataItemsService {
     // HACK - still want to be able to use localContext from parent rows so copy to child processor
     processor.templateRowMap = JSON.parse(JSON.stringify(templateRowMap));
     await processor.processContainerTemplateRows();
-    return processor.renderedRows;
+    return processor.renderedRows();
   }
 }
