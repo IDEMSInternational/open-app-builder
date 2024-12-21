@@ -1,7 +1,6 @@
-import { Component, Input, OnInit } from "@angular/core";
+import { Component, input, Input, OnInit } from "@angular/core";
 import { FlowTypes } from "src/app/shared/model";
 import {
-  getAnswerListParamFromTemplateRow,
   getBooleanParamFromTemplateRow,
   getNumberParamFromTemplateRow,
   getStringParamFromTemplateRow,
@@ -16,8 +15,8 @@ import { ModalController } from "@ionic/angular";
   styleUrls: ["./combo-box-modal.component.scss"],
 })
 export class ComboBoxModalComponent implements OnInit {
+  public answerOptions = input.required<IAnswerListItem[]>();
   @Input() row: FlowTypes.TemplateRow;
-  @Input() template: FlowTypes.Template;
   @Input() selectedValue: string;
   @Input() customAnswerSelected: boolean;
   @Input() style: string;
@@ -29,7 +28,10 @@ export class ComboBoxModalComponent implements OnInit {
   inputPosition: boolean = false;
   maxLength: number = 30;
   placeholder: string = "";
-  constructor(private fb: FormBuilder, private modalController: ModalController) {}
+  constructor(
+    private fb: FormBuilder,
+    private modalController: ModalController
+  ) {}
 
   ngOnInit() {
     this.getParams();
@@ -37,7 +39,6 @@ export class ComboBoxModalComponent implements OnInit {
   }
 
   getParams() {
-    this.valuesFromListAnswers = getAnswerListParamFromTemplateRow(this.row, "answer_list", null);
     this.textTitle = getStringParamFromTemplateRow(this.row, "text", null);
     this.inputAllowed = getBooleanParamFromTemplateRow(this.row, "input_allowed", false);
     this.inputPosition =
