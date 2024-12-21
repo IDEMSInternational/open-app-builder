@@ -3,7 +3,7 @@ import type { IGdriveEntry } from "../@idemsInternational/gdrive-tools";
 import type { IAppConfig, IAppConfigOverride } from "./appConfig";
 
 /** Update version to force recompile next time deployment set (e.g. after default config update) */
-export const DEPLOYMENT_CONFIG_VERSION = 20241111.0;
+export const DEPLOYMENT_CONFIG_VERSION = 20241215.1;
 
 /** Configuration settings available to runtime application */
 export interface IDeploymentRuntimeConfig {
@@ -36,6 +36,13 @@ export interface IDeploymentRuntimeConfig {
     /** sentry/glitchtip logging dsn */
     dsn: string;
   };
+  /** Enable auth actions by specifying auth provider */
+  auth: {
+    /** provider to use with authentication actions. actions will be disabled if no provider specified */
+    provider?: "firebase" | "supabase";
+    /** prevent user accessing app pages without being logged in. Specified template will be shown until logged in */
+    enforceLoginTemplate?: string;
+  };
   /**
    * Specify if using firebase for auth and crashlytics.
    * Requires firebase config available through encrypted config */
@@ -50,10 +57,6 @@ export interface IDeploymentRuntimeConfig {
       messagingSenderId: string;
       appId: string;
       measurementId: string;
-    };
-    auth: {
-      /** Enables `auth` actions to allow user sign-in/out */
-      enabled: boolean;
     };
     crashlytics: {
       /** Enables app crash reports to firebase crashlytics */
@@ -200,9 +203,9 @@ export const DEPLOYMENT_RUNTIME_CONFIG_DEFAULTS: IDeploymentRuntimeConfig = {
     endpoint: "https://apps-server.idems.international/analytics",
   },
   app_config: {},
+  auth: {},
   firebase: {
     config: null,
-    auth: { enabled: false },
     crashlytics: { enabled: true },
   },
   supabase: {
