@@ -1,4 +1,5 @@
 import { FlowTypes } from "packages/data-models";
+import { IActionRemoveDataParams } from "src/app/shared/services/dynamic-data/actions";
 import { ISetItemContext } from "src/app/shared/services/dynamic-data/dynamic-data.service";
 
 /**
@@ -44,6 +45,16 @@ export function updateItemMeta(
         if (a.action_id === "set_item") {
           a.args = [setItemContext];
         }
+        // re-map remove_item to remove_data action
+        // TODO - set_item and set_items should also be remapped
+        if (a.action_id === "remove_item") {
+          a.action_id = "remove_data";
+          const removeDataParams: IActionRemoveDataParams = {
+            _id: itemId,
+            _list_id: dataListName,
+          };
+          a.params = removeDataParams;
+        }
         if (a.action_id === "set_items") {
           console.warn(
             "[Deprecated] set_items should not be used from within an items loop",
@@ -58,7 +69,7 @@ export function updateItemMeta(
     }
 
     // Apply recursively to ensure item children with nested rows (e.g. display groups) also inherit item context
-    if (r.rows) {
+    if (r.rows && r.type !== "data_items" && r.type !== "items") {
       r.rows = updateItemMeta(r.rows, itemData, dataListName);
     }
 
