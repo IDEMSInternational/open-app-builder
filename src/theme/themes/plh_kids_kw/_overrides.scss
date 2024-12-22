@@ -264,6 +264,14 @@ body[data-theme="plh_kids_kw"] {
           line-height: var(--line-height-text-medium) !important;
           font-weight: var(--font-weight-standard) !important;
           margin-top: 8px;
+          a {
+            color: var(--color-surface-white-variant) !important;
+            text-decoration: underline !important;
+          }
+        }
+        a {
+          color: var(--color-surface-white-variant) !important;
+          text-decoration: underline !important;
         }
       }
     }
