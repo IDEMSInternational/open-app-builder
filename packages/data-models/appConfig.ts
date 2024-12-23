@@ -89,44 +89,27 @@ export type IHeaderVariantOptions = "default" | "compact";
 
 interface IAppConfigHeader {
   back_button: {
-    hidden: boolean;
+    hidden?: boolean;
   };
   collapse: boolean;
   colour: IHeaderFooterBackgroundOptions;
-  hidden: boolean;
+  hidden?: boolean;
   menu_button: {
-    hidden: boolean;
+    hidden?: boolean;
   };
   template: string | null;
   title: string;
   variant: IHeaderVariantOptions;
-  should_show_menu_button: (location: Location) => boolean;
-  should_show_back_button: (location: Location) => boolean;
-  should_minimize_app_on_back: (location: Location) => boolean;
 }
 
 const APP_HEADER_DEFAULTS: IAppConfigHeader = {
-  back_button: {
-    hidden: false,
-  },
+  back_button: {},
   collapse: false,
   colour: "primary",
-  hidden: false,
-  menu_button: {
-    hidden: false,
-  },
+  menu_button: {},
   template: null,
   title: "App",
   variant: "default",
-  // default only show menu button on home screen
-  should_show_menu_button: (location: Location) =>
-    activeRoute(location) === APP_ROUTE_DEFAULTS.home_route,
-  // default show back button on all screens except home screen
-  should_show_back_button: (location: Location) =>
-    activeRoute(location) !== APP_ROUTE_DEFAULTS.home_route,
-  // on device minimize app when back button pressed from home screen
-  should_minimize_app_on_back: (location: Location) =>
-    activeRoute(location) === APP_ROUTE_DEFAULTS.home_route,
 };
 
 /**
