@@ -37,6 +37,8 @@ export class PlhActivityCheckInComponent extends TemplateBaseComponent implement
 
   daysUntilUnlock = signal(Infinity);
   locked = computed(() => {
+    // If no start date is provided, activity should be locked
+    if (!this.params.countdownStartDate) return true;
     return this.daysUntilUnlock() && this.daysUntilUnlock() > 0;
   });
   countdownText = computed(() => {
@@ -93,6 +95,7 @@ export class PlhActivityCheckInComponent extends TemplateBaseComponent implement
       // Attempt to parse from ISO format
       parsedDate = parseISO(countdownStartDate);
       if (!isValid(parsedDate)) {
+        parsedDate = null;
         console.error(
           `[ACTIVITY CHECK-IN] Invalid date for countdown_start_date: ${countdownStartDate}`
         );
