@@ -5,14 +5,10 @@
       routerLinkActive="active-link"
       [routerLink]="'template/' + button.target_template"
       [attr.data-name]="button.name"
-      (click)="toggleIcon()"
-      [ngClass]="isActive ? 'active-link' : ''"
+      #rla="routerLinkActive"
     >
-      <div *ngIf="!isActive" class="icon">
-        <img [src]="button.icon | plhAsset" />
-      </div>
-      <div *ngIf="isActive" class="icon">
-        <img [src]="button.active_icon | plhAsset" />
+      <div class="icon">
+        <img [src]="(rla.isActive ? button.active_icon : button.icon) | plhAsset" />
       </div>
       <div class="label">
         <p>{{ button.label }}</p>
