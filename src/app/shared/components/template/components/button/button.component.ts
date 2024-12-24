@@ -27,8 +27,13 @@ interface IButtonParams {
   textAlign: "left" | "centre" | "right";
   /** TEMPLATE PARAMETER: "button_align" */
   buttonAlign: "left" | "centre" | "right";
-  /** TEMPLATE PARAMETER: "icon". The path to an icon asset */
+  /** TEMPLATE PARAMETER: "icon". The path to an icon asset. This will be displayed in the 'start' slot (left for LTR languages) */
   icon: string;
+  /**
+   * TEMPLATE PARAMETER: "icon_secondary_asset". The path to a secondary icon asset,
+   * which will be displayed in the 'end' slot (right for LTR languages)
+   * */
+  iconSecondary: string;
   /** TEMPLATE PARAMETER: "image_asset". The path to an image asset */
   image: string;
 }
@@ -75,6 +80,11 @@ export class TmplButtonComponent extends TemplateBaseComponent implements OnInit
       "center"
     ) as any;
     this.params.icon = getStringParamFromTemplateRow(this._row, "icon", null);
+    this.params.iconSecondary = getStringParamFromTemplateRow(
+      this._row,
+      "icon_secondary_asset",
+      null
+    );
   }
 
   /** Determine if the button is inside a display group with the style "two_columns" */
