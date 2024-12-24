@@ -990,4 +990,52 @@ body[data-theme="plh_kids_kw"] {
       color: #0066a1;
     }
   }
+
+  // Pop Up
+  .popup-backdrop {
+    &[data-variant~="plh_completion"] {
+      .popup-container {
+        min-height: 70vh;
+        padding: 0 1.4rem;
+        margin-top: -28px;
+        .popup-content {
+          background: linear-gradient(
+            310deg,
+            var(--color-secondary-blue-50),
+            var(--color-secondary-blue-80)
+          );
+          border-radius: 40px;
+          border: none !important;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          height: 100%;
+        }
+        plh-template-container {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-family: var(--ion-font-family);
+        }
+        plh-tmpl-text p,
+        plh-tmpl-text h1,
+        plh-tmpl-title p,
+        plh-tmpl-title h1 {
+          text-align: center;
+          color: var(--color-surface-white);
+        }
+        plh-tmpl-title {
+          div.title-wrapper {
+            align-items: center;
+            justify-content: center;
+          }
+        }
+        .close-button {
+          border: 0.8px solid var(--color-secondary-blue-80);
+          color: var(--color-secondary-blue-50);
+        }
+      }
+    }
+  }
 }

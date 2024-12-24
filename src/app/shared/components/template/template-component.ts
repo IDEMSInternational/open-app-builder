@@ -71,7 +71,8 @@ export class TemplateComponent implements OnInit, AfterContentInit, ITemplateRow
     this._row = row;
     if (this.componentRef) {
       log("[Component Update]", row.name, row);
-      this.componentRef.instance.row = row;
+      this.componentRef.setInput("row", row);
+      this.hackForceReprocessNestedTemplate();
     } else {
       log("[Component Create]", row.name, row);
     }
@@ -130,7 +131,7 @@ export class TemplateComponent implements OnInit, AfterContentInit, ITemplateRow
     // Depending on row type, either prepare instantiation of a nested template or a display component
     switch (row.type) {
       case "template":
-        return this.renderTemplateComponent(TemplateContainerComponent, row);
+        return this.renderTemplateComponent(row);
       default:
         const displayComponent = TEMPLATE_COMPONENT_MAPPING[row.type];
         if (displayComponent) {
@@ -145,15 +146,12 @@ export class TemplateComponent implements OnInit, AfterContentInit, ITemplateRow
   }
 
   /** Create and render a nested template component */
-  private renderTemplateComponent(
-    component: typeof TemplateContainerComponent,
-    row: FlowTypes.TemplateRow
-  ) {
+  private renderTemplateComponent(row: FlowTypes.TemplateRow) {
     const viewContainerRef = this.tmplComponentHost.viewContainerRef;
-    const componentRef = viewContainerRef.createComponent(component);
+    const componentRef = viewContainerRef.createComponent(TemplateContainerComponent);
     // assign input variables (note template name taken from the row's value column)
     componentRef.instance.parent = this.parent;
-    componentRef.instance.row = row;
+    componentRef.setInput("row", row);
     componentRef.instance.name = row.name;
     // assign templatename input using signal
     componentRef.setInput("templatename", row.value);
@@ -168,5 +166,28 @@ export class TemplateComponent implements OnInit, AfterContentInit, ITemplateRow
     componentRef.instance.parent = this.parent;
     componentRef.instance.row = row;
     this.componentRef = componentRef;
+  }
+
+  /**
+   * If the current template is generated as a child of data_items then updates to
+   * parent variables will not propagate down. Force reprocessing to workaround
+   * See issue https://github.com/IDEMSInternational/open-app-builder/issues/2636
+   */
+  private async hackForceReprocessNestedTemplate() {
+    if (this._row.type === "template") {
+      const componentRef = this.componentRef as ComponentRef<TemplateContainerComponent>;
+      if (componentRef.instance.parent) {
+        // HACK - when a parent updates there may be cases when the updated variables need to be
+        // reflected in the child template (e.g. set_nested_variable contains parent local variable)
+        // As it is not currently easy to isolate this case, fully recreate any child template when
+        // the parent template updates
+        if (componentRef.instance.templatename()) {
+          this.componentRef.destroy();
+          this.renderTemplateComponent(this._row);
+          // TODO - test better ways to manage from container, confirming test cases from
+          // https://github.com/IDEMSInternational/open-app-builder/issues/2636
+        }
+      }
+    }
   }
 }
