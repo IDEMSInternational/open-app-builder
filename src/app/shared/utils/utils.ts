@@ -223,7 +223,6 @@ export function getAnswerListParamFromTemplateRow(
   _default: IAnswerListItem[]
 ): IAnswerListItem[] {
   const params = row.parameter_list || {};
-  console.log(params[name]);
   return params.hasOwnProperty(name) ? parseAnswerList(params[name]) : _default;
 }
 
