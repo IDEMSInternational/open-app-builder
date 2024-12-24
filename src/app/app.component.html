@@ -5,13 +5,13 @@
     [dir]="templateTranslateService.languageDirection()"
   >
     <!-- Left Sidebar -->
-    @if (sideMenuDefaults().enabled) {
+    @if (sideMenuConfig().enabled) {
       <ion-menu #menu side="start" menuId="main-side-menu" contentId="main-content">
         <ion-header>
           <ion-toolbar color="primary">
-            <ion-title>{{ sideMenuDefaults().title }}</ion-title>
+            <ion-title>{{ sideMenuConfig().title }}</ion-title>
             <div class="app-version" slot="end">
-              @if (sideMenuDefaults().should_show_version) {
+              @if (sideMenuConfig().should_show_version) {
                 @if (deploymentConfig._content_version; as CONTENT_VERSION) {
                   <span>
                     <abbr [title]="deploymentConfig._app_builder_version" tabindex="1">
@@ -22,7 +22,7 @@
                   <span>{{ deploymentConfig._app_builder_version }} </span>
                 }
               }
-              @if (sideMenuDefaults().should_show_deployment_name) {
+              @if (sideMenuConfig().should_show_deployment_name) {
                 <span style="margin-left: 16px">({{ deploymentConfig.name }})</span>
               }
             </div>
@@ -30,7 +30,7 @@
         </ion-header>
         <ion-content>
           <plh-template-container
-            [templatename]="sideMenuDefaults().template_name"
+            [templatename]="sideMenuConfig().template_name"
             (click)="menu.close()"
             [ignoreQueryParamChanges]="true"
           ></plh-template-container>
@@ -41,13 +41,15 @@
     <!-- Main content: shows in split-pane when sidebar route active -->
     <ion-split-pane when="lg" contentId="main" [disabled]="!sidebarRouter.isActivated">
       <div style="display: flex; flex-direction: column; height: 100%; width: 100%" id="main">
-        <plh-main-header></plh-main-header>
+        <plh-main-header
+          [style.display]="headerConfig().hidden ? 'none' : 'block'"
+        ></plh-main-header>
         <div class="route-container" [ngStyle]="routeContainerStyle()">
           <ion-router-outlet id="main-content"></ion-router-outlet>
         </div>
-        @if (footerDefaults().templateName; as footerTemplateName) {
+        @if (footerConfig().templateName; as footerTemplateName) {
           <ion-footer>
-            <ion-toolbar color="primary">
+            <ion-toolbar [color]="footerConfig().background">
               <plh-template-container
                 [templatename]="footerTemplateName"
                 [ignoreQueryParamChanges]="true"
