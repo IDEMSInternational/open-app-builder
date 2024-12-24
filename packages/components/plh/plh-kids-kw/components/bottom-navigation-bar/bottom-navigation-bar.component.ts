@@ -20,18 +20,12 @@ interface INavButton {
 })
 export class PlhBottomNavigationBarComponent extends TemplateBaseComponent implements OnInit {
   params: Partial<IPlhBottomNavigationParams> = {};
-  isActive = false;
 
   ngOnInit() {
     this.getParams();
   }
 
-  //get template parameters
   getParams() {
     this.params.buttonList = getParamFromTemplateRow(this._row, "button_list", []);
-  }
-
-  toggleIcon() {
-    this.isActive = !this.isActive;
   }
 }
