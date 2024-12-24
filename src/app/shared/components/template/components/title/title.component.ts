@@ -13,7 +13,7 @@ interface ITitleParams {
   /** TEMPLATE PARAMETER: "style". */
   style: string | null;
   /** TEMPLATE PARAMETER: "variant". */
-  variant: "" | "header" | "section-banner" | "page-banner";
+  variant: "" | "header" | "section_banner" | "page_banner";
 }
 
 @Component({
