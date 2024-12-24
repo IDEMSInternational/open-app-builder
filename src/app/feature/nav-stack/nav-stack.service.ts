@@ -2,7 +2,7 @@ import { Injectable } from "@angular/core";
 import { ModalController } from "@ionic/angular";
 import { INavStackConfig, NavStackComponent } from "./components/nav-stack/nav-stack.component";
 import { SyncServiceBase } from "src/app/shared/services/syncService.base";
-import { TemplateNavService } from "src/app/shared/components/template/services/template-nav.service";
+import { Location } from "@angular/common";
 
 interface NavStackModal extends HTMLIonModalElement {}
 
@@ -12,10 +12,17 @@ interface NavStackModal extends HTMLIonModalElement {}
 export class NavStackService extends SyncServiceBase {
   private openNavStacks: HTMLIonModalElement[] = [];
   private readonly MAX_NAV_STACKS = 10;
+  // When any nav-stack is open, handle back button to close all nav-stacks
+  // TODO implement routing within stacks and nested stacks and use native button functionality to close top nav stack instead
+  private customBackHandler = () => {
+    this.closeAllNavStacks();
+    // Navigate forward in history to counteract back behaviour and remain on the page that launched the nav-stack
+    this.location.forward();
+  };
 
   constructor(
     private modalCtrl: ModalController,
-    private templateNavService: TemplateNavService
+    private location: Location
   ) {
     super("navStack");
     // NB: Actions are registered in nav-stack module
@@ -35,11 +42,8 @@ export class NavStackService extends SyncServiceBase {
     return modal;
   }
 
-  public async closeAllNavStacks() {
-    // Close nav-stacks in reverse order
-    for (let index = this.openNavStacks.length - 1; index >= 0; index--) {
-      await this.closeNavStack(index);
-    }
+  public closeAllNavStacks() {
+    return Promise.all(this.openNavStacks.map((navStack) => navStack.dismiss()));
   }
 
   public async closeTopNavStack() {
@@ -69,8 +73,6 @@ export class NavStackService extends SyncServiceBase {
     modal.onWillDismiss().then(() => this.handleNavStackDismissal(modal));
 
     this.addNavStackToArray(modal);
-    // add a history entry so that we can navigate back on dismissal without changing page
-    history.pushState({ modalId: modal.id }, "");
     await modal.present();
   }
 
@@ -78,7 +80,6 @@ export class NavStackService extends SyncServiceBase {
     const index = this.getNavStackIndex(modal);
     if (index === -1) return;
     this.removeNavStackFromArray(index);
-    this.removeNavStackHistoryState(modal);
   }
 
   private getNavStackIndex(modalElement: HTMLIonModalElement) {
@@ -96,18 +97,9 @@ export class NavStackService extends SyncServiceBase {
     }
   }
 
-  private removeNavStackHistoryState(modal: NavStackModal) {
-    const modalId = modal.id;
-    if (history.state?.modalId === modalId) {
-      // Temporarily suppress handling `popstate` events for the navigation
-      this.templateNavService.suppressPopState = true;
-      history.back();
-    }
-  }
-
   private addNavStackToArray(modal: NavStackModal) {
     if (this.openNavStacks.length === 0) {
-      this.setCustomBackHandler();
+      this.setCustomBackButtonHandler();
     }
     this.openNavStacks.push(modal);
   }
@@ -115,11 +107,15 @@ export class NavStackService extends SyncServiceBase {
   private removeNavStackFromArray(index: number) {
     this.openNavStacks.splice(index, 1);
     if (this.openNavStacks.length === 0) {
-      this.templateNavService.destroyBackButtonHandler();
+      this.destroyBackButtonHandler();
     }
   }
 
-  private setCustomBackHandler() {
-    this.templateNavService.initializeBackButtonHandler(() => this.closeTopNavStack());
+  private setCustomBackButtonHandler() {
+    window.addEventListener("popstate", this.customBackHandler);
+  }
+
+  private destroyBackButtonHandler() {
+    window.removeEventListener("popstate", this.customBackHandler);
   }
 }
