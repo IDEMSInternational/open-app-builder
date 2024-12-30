@@ -6,9 +6,16 @@
   [attr.data-variant]="props.variant ? props.variant : null"
 >
   <div class="popup-container">
-    <div (click)="dismiss()" class="close-button" fill="clear" *ngIf="props.showCloseButton">
-      <ion-icon slot="icon-only" name="close"></ion-icon>
-    </div>
+    @if (props.showCloseButton) {
+      <div
+        (click)="dismiss()"
+        class="close-button"
+        fill="clear"
+        [attr.data-language-direction]="templateTranslateService.languageDirection()"
+      >
+        <ion-icon slot="icon-only" name="close"></ion-icon>
+      </div>
+    }
     <div class="popup-content" [attr.data-fullscreen]="props.fullscreen ? true : null">
       @if (props.popupText) {
         <!-- Use a text component row to display popup text -->
