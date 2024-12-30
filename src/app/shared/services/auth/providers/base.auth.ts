@@ -12,7 +12,7 @@ export class AuthProviderBase {
   }
 
   public async signOut() {
-    this.authUser.set(undefined);
+    throw new Error("Sign in not enabled");
     return this.authUser();
   }
 }
