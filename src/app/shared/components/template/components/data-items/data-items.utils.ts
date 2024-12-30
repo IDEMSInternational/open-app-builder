@@ -69,6 +69,7 @@ export function updateItemMeta(
     }
 
     // Apply recursively to ensure item children with nested rows (e.g. display groups) also inherit item context
+    // Do not override the item context for rows that create their own item lists (i.e. data_items and items)
     if (r.rows && r.type !== "data_items" && r.type !== "items") {
       r.rows = updateItemMeta(r.rows, itemData, dataListName);
     }
