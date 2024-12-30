@@ -31,11 +31,8 @@ export class NavStackService extends SyncServiceBase {
     return modal;
   }
 
-  public async closeAllNavStacks() {
-    // Close nav-stacks in reverse order
-    for (let index = this.openNavStacks().length - 1; index >= 0; index--) {
-      await this.closeNavStack(index);
-    }
+  public closeAllNavStacks() {
+    return Promise.all(this.openNavStacks().map((navStack) => navStack.dismiss()));
   }
 
   public async closeTopNavStack() {
