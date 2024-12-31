@@ -88,6 +88,28 @@ body[data-theme="plh_kids_kw"] {
       p {
         font-weight: var(--font-weight-standard);
       }
+      &[data-language-direction~="rtl"] {
+        .left.text {
+          text-align: right;
+          p {
+            text-align: right !important;
+          }
+        }
+        .left.right {
+          p {
+            text-align: left !important;
+          }
+        }
+      }
+    }
+    ion-button[data-language-direction~="rtl"] .children {
+      position: unset !important;
+      align-self: unset !important;
+      padding: 0px !important;
+      ion-icon {
+        -webkit-transform: scaleX(-1);
+        transform: scaleX(-1);
+      }
     }
   }
 
