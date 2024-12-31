@@ -29,6 +29,7 @@ export class AuthService extends AsyncServiceBase {
     this.registerInitFunction(this.initialise);
     effect(async () => {
       const authUser = this.provider.authUser();
+      await this.checkProfileRestore(authUser);
       this.addStorageEntry(authUser);
     });
   }
@@ -44,6 +45,11 @@ export class AuthService extends AsyncServiceBase {
       // NOTE - Do not await the enforce login to allow other services to initialise in background
       this.enforceLogin(this.config.enforceLoginTemplate);
     }
+  }
+
+  private async checkProfileRestore(authUser: IAuthUser) {
+    const existingUser = this.localStorageService.getProtected("AUTH_USER_ID");
+    if (existingUser) return;
   }
 
   private async enforceLogin(templateName: string) {
@@ -91,13 +97,13 @@ export class AuthService extends AsyncServiceBase {
     });
   }
 
-  /** Keep a subset of auth user info in contact fields for db lookup*/
+  /** Keep id of auth user info in contact fields for db lookup*/
   private addStorageEntry(user?: IAuthUser) {
     if (user) {
       const { uid } = user;
-      this.localStorageService.setProtected("APP_AUTH_USER", JSON.stringify({ uid }));
+      this.localStorageService.setProtected("AUTH_USER_ID", uid);
     } else {
-      this.localStorageService.removeProtected("APP_AUTH_USER");
+      this.localStorageService.removeProtected("AUTH_USER_ID");
     }
   }
 }
