@@ -7,13 +7,19 @@ import { TemplateComponentsModule } from "../../shared/components/template/templ
 import { TemplateActionRegistry } from "src/app/shared/components/template/services/instance/template-action.registry";
 import { NavStackService } from "./nav-stack.service";
 import { NavStackActionFactory } from "./nav-stack.actions";
+import { NavStackBackService } from "./nav-stack-back.service";
 
 @NgModule({
   declarations: [NavStackComponent],
   imports: [CommonModule, IonicModule, TemplateComponentModule, TemplateComponentsModule],
 })
 export class NavStackModule {
-  constructor(templateActionRegistry: TemplateActionRegistry, navStackService: NavStackService) {
+  constructor(
+    templateActionRegistry: TemplateActionRegistry,
+    navStackService: NavStackService,
+    // include navStackBack service to enable back button management
+    navStackBackService: NavStackBackService
+  ) {
     const { nav_stack } = new NavStackActionFactory(navStackService);
     templateActionRegistry.register({ nav_stack });
   }
