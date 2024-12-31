@@ -2,17 +2,12 @@
   class="popup-backdrop"
   (click)="dismissOnBackdrop($event)"
   [attr.data-fullscreen]="props.fullscreen ? true : null"
-  [dir]="templateTranslateService.languageDirection()"
   [attr.data-variant]="props.variant ? props.variant : null"
+  [dir]="templateTranslateService.languageDirection()"
 >
   <div class="popup-container">
     @if (props.showCloseButton) {
-      <div
-        (click)="dismiss()"
-        class="close-button"
-        fill="clear"
-        [attr.data-language-direction]="templateTranslateService.languageDirection()"
-      >
+      <div (click)="dismiss()" class="close-button" fill="clear">
         <ion-icon slot="icon-only" name="close"></ion-icon>
       </div>
     }
