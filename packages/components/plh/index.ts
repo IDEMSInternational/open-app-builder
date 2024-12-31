@@ -4,6 +4,7 @@ import { PlhModuleListItemComponent } from "./plh-kids-kw/components/module-list
 import { PlhActivityCheckInComponent } from "./plh-kids-kw/components/activity-check-in/activity-check-in.component";
 import { PlhCompletionModalComponent } from "./plh-kids-kw/components/completion-modal/completion-modal.component";
 import { PlhModuleDetailsHeaderComponent } from "./plh-kids-kw/components/module-details-header/module-details-header.component";
+import { PlhBottomNavigationBarComponent } from "./plh-kids-kw/components/bottom-navigation-bar/bottom-navigation-bar.component";
 
 export {
   PlhParentPointCounterComponent,
@@ -12,6 +13,7 @@ export {
   PlhActivityCheckInComponent,
   PlhCompletionModalComponent,
   PlhModuleDetailsHeaderComponent,
+  PlhBottomNavigationBarComponent,
 };
 
 export const PLH_COMPONENTS = [
@@ -21,6 +23,7 @@ export const PLH_COMPONENTS = [
   PlhActivityCheckInComponent,
   PlhCompletionModalComponent,
   PlhModuleDetailsHeaderComponent,
+  PlhBottomNavigationBarComponent,
 ];
 
 export const PLH_COMPONENT_MAPPING = {
@@ -30,6 +33,7 @@ export const PLH_COMPONENT_MAPPING = {
   plh_module_list_item: PlhModuleListItemComponent,
   plh_activity_check_in: PlhActivityCheckInComponent,
   plh_completion_modal: PlhCompletionModalComponent,
+  plh_bottom_nav: PlhBottomNavigationBarComponent,
 };
 
 export type PLHComponentName = keyof typeof PLH_COMPONENT_MAPPING;

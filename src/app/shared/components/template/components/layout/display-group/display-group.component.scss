@@ -29,7 +29,9 @@
 .display-group-wrapper[data-param-style~="row"]
   > plh-template-component:not([data-hidden="true"])
   ~ plh-template-component:not([data-hidden="true"]) {
-  margin: 0 0 0 1em;
+  margin: 0;
+  // Use margin-inline-start to support LTR and RTL languages
+  margin-inline-start: 1em;
 }
 
 .display-group-wrapper[data-param-style~="column"]
