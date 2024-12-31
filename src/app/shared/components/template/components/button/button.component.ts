@@ -4,6 +4,7 @@ import {
   getBooleanParamFromTemplateRow,
 } from "src/app/shared/utils";
 import { TemplateBaseComponent } from "../base";
+import { TemplateTranslateService } from "../../services/template-translate.service";
 
 interface IButtonParams {
   /** TEMPLATE PARAMETER: "variant" */
@@ -52,7 +53,10 @@ export class TmplButtonComponent extends TemplateBaseComponent implements OnInit
   variantMap: { cardPortrait: boolean };
 
   /** @ignore */
-  constructor(private elRef: ElementRef) {
+  constructor(
+    private elRef: ElementRef,
+    public templateTranslateService: TemplateTranslateService
+  ) {
     super();
   }
 

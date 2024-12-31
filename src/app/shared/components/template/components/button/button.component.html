@@ -8,6 +8,7 @@
     [attr.data-param-style]="params.style"
     [attr.data-variant]="params.variant"
     [attr.data-has-children]="_row.rows ? true : false"
+    [attr.data-language-direction]="templateTranslateService.languageDirection()"
   >
     @if (params.icon) {
       <ion-icon slot="start" src="{{ params.icon | plhAsset }}"></ion-icon>
