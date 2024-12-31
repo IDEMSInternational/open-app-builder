@@ -9,6 +9,7 @@ import { IAuthUser } from "./types";
 import { filter, firstValueFrom, tap } from "rxjs";
 import { TemplateService } from "../../components/template/services/template.service";
 import { toObservable } from "@angular/core/rxjs-interop";
+import { ServerService } from "../server/server.service";
 
 @Injectable({
   providedIn: "root",
@@ -22,7 +23,8 @@ export class AuthService extends AsyncServiceBase {
     private localStorageService: LocalStorageService,
     private deploymentService: DeploymentService,
     private injector: Injector,
-    private templateService: TemplateService
+    private templateService: TemplateService,
+    private serverService: ServerService
   ) {
     super("Auth");
     this.provider = getAuthProvider(this.config.provider);
@@ -31,6 +33,10 @@ export class AuthService extends AsyncServiceBase {
       const authUser = this.provider.authUser();
       await this.checkProfileRestore(authUser);
       this.addStorageEntry(authUser);
+      // perform immediate sync if user signed in to ensure data backed up
+      if (authUser) {
+        this.serverService.syncUserData();
+      }
     });
   }
 
@@ -47,9 +53,12 @@ export class AuthService extends AsyncServiceBase {
     }
   }
 
-  private async checkProfileRestore(authUser: IAuthUser) {
+  private async checkProfileRestore(authUser?: IAuthUser) {
+    if (!authUser) return;
     const existingUser = this.localStorageService.getProtected("AUTH_USER_ID");
     if (existingUser) return;
+    // no existingUser user, should check if authUser exists on server and prompt restore
+    // TODO - handle
   }
 
   private async enforceLogin(templateName: string) {
@@ -98,10 +107,9 @@ export class AuthService extends AsyncServiceBase {
   }
 
   /** Keep id of auth user info in contact fields for db lookup*/
-  private addStorageEntry(user?: IAuthUser) {
-    if (user) {
-      const { uid } = user;
-      this.localStorageService.setProtected("AUTH_USER_ID", uid);
+  private addStorageEntry(auth_user?: IAuthUser) {
+    if (auth_user) {
+      this.localStorageService.setProtected("AUTH_USER_ID", auth_user.uid);
     } else {
       this.localStorageService.removeProtected("AUTH_USER_ID");
     }
