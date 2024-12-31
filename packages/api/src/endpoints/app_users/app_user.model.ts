@@ -13,6 +13,9 @@ export class AppUser extends Model<InferAttributes<AppUser>, InferCreationAttrib
   @Column({ allowNull: false })
   app_deployment_name: string;
 
+  @Column({ allowNull: false })
+  auth_user_id: string;
+
   @Column({ type: DataType.JSONB })
   contact_fields: any;
 
