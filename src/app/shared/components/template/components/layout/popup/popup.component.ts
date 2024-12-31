@@ -2,7 +2,6 @@ import { Component, Input } from "@angular/core";
 import { ModalController } from "@ionic/angular";
 import { FlowTypes } from "../../../models";
 import { TemplateContainerComponent } from "../../../template-container.component";
-import { TemplateTranslateService } from "../../../services/template-translate.service";
 
 @Component({
   templateUrl: "./popup.component.html",
@@ -15,12 +14,7 @@ import { TemplateTranslateService } from "../../../services/template-translate.s
 export class TemplatePopupComponent {
   @Input() props: ITemplatePopupComponentProps;
 
-  constructor(
-    private modalCtrl: ModalController,
-    // HACK: Since pop-ups can be launched outside of main app container (e.g. as part of launch actions),
-    // handle RTL language support directly in this component
-    public templateTranslateService: TemplateTranslateService
-  ) {}
+  constructor(private modalCtrl: ModalController) {}
 
   /**
    * When templates emit completed/uncompleted value from standalone popup close the popup
