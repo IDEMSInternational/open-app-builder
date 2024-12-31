@@ -3,6 +3,7 @@
   (click)="dismissOnBackdrop($event)"
   [attr.data-fullscreen]="props.fullscreen ? true : null"
   [attr.data-variant]="props.variant ? props.variant : null"
+  [dir]="templateTranslateService.languageDirection()"
 >
   <div class="popup-container">
     @if (props.showCloseButton) {
