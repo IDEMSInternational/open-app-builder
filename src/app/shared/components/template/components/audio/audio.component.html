@@ -15,7 +15,8 @@
       }
     </div>
   }
-  <div class="second-row">
+  <!-- Enforce LTR language direction for player controls,see https://github.com/IDEMSInternational/open-app-builder/issues/2617 -->
+  <div class="second-row" dir="ltr">
     @if (params.variant.includes("compact") && params.showInfoButton) {
       <ion-button fill="clear" class="action-button" (click)="handleActionButtonClick()">
         @if (params.infoIconAsset) {
