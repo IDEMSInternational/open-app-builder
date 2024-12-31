@@ -76,7 +76,7 @@ export class ServerService extends SyncServiceBase {
     const timestamp = generateTimestamp();
     contact_fields[getProtectedFieldName("SERVER_SYNC_LATEST")] = timestamp;
 
-    const auth_id = this.localStorageService.getProtected("AUTH_USER_ID");
+    const auth_id = this.localStorageService.getProtected("AUTH_USER_ID") || null;
 
     // TODO - get DTO from api (?)
     const data = {
