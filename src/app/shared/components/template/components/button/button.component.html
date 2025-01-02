@@ -11,10 +11,15 @@
     [attr.data-language-direction]="templateTranslateService.languageDirection()"
   >
     @if (params.icon) {
-      <ion-icon slot="start" src="{{ params.icon | plhAsset }}"></ion-icon>
+      <ion-icon slot="start" [src]="params.icon | plhAsset"></ion-icon>
     }
     @if (params.iconSecondary) {
-      <ion-icon slot="end" src="{{ params.iconSecondary | plhAsset }}"></ion-icon>
+      <!-- HACK: support icon being a path to an asset or assume it is the name of an ion-icon (e.g. chevron-forward) -->
+      @if (params.iconSecondary.includes(".")) {
+        <ion-icon slot="end" [src]="params.iconSecondary | plhAsset"></ion-icon>
+      } @else {
+        <ion-icon slot="end" [name]="params.iconSecondary"></ion-icon>
+      }
     }
     <span
       *ngIf="_row.value"
