@@ -914,8 +914,59 @@ body[data-theme="plh_kids_kw"] {
     .circle-card-wrapper {
       .circle-wrapper {
         filter: none !important;
-        border: 1px solid #e1e2e4 !important;
-        box-shadow: 0px 2px 8px rgba($color: #000000, $alpha: 0.1);
+        border: 2px solid #edeeef !important;
+        box-shadow: -2px 2px 5px rgba($color: #7e8386, $alpha: 0.8);
+        background-color: #e7e8e9;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        position: relative;
+        img {
+          opacity: 0.5 !important;
+          border-radius: 50% !important;
+          width: 75% !important;
+          height: 75% !important;
+        }
+        .locked {
+          display: flex !important;
+          position: absolute;
+          margin: 0 auto;
+          top: 0px;
+          left: 0px;
+          right: 0px;
+          bottom: 0px;
+
+          align-items: center;
+          justify-content: center;
+
+          img {
+            width: 42px;
+            max-width: 48px;
+            object-fit: contain;
+            opacity: 1 !important;
+          }
+        }
+      }
+      .circle-wrapper.inProgress {
+        border: 4px solid #c99529 !important;
+        box-shadow: 0px 2px 12px rgba($color: #007fbf, $alpha: 0.7);
+        img {
+          opacity: 1 !important;
+        }
+      }
+      .circle-wrapper.completed {
+        border: 4px solid var(--ion-color-secondary-100) !important;
+        box-shadow: 0px 2px 12px rgba($color: #007fbf, $alpha: 0.7);
+        img {
+          opacity: 1 !important;
+          width: 100% !important;
+          height: 100% !important;
+        }
+      }
+      .badge {
+        display: none !important;
       }
     }
   }
@@ -965,7 +1016,7 @@ body[data-theme="plh_kids_kw"] {
     }
   }
 
-  // bottom_nav
+  // Bottom Nav
   .plh-bottom-nav-wrapper {
     @include mixins.flex-space-between;
     flex-direction: row;
@@ -1034,6 +1085,19 @@ body[data-theme="plh_kids_kw"] {
         .close-button {
           border: 0.8px solid var(--color-secondary-blue-80);
           color: var(--color-secondary-blue-50);
+        }
+      }
+    }
+  }
+
+  // Progress Path
+  plh-progress-path {
+    .progress-path-child-wrapper {
+      margin-bottom: 48px !important;
+      .path-segment {
+        svg {
+          stroke-width: 26px;
+          stroke: var(--color-surface-white-variant) !important;
         }
       }
     }
