@@ -84,8 +84,7 @@ interface ITaskCardParams {
    */
   show_progress_text: boolean;
   /**
-   * The icon to display in the "badge" added to the task card
-   * when its associated task/task group has been completed
+   * The icon to mark a task as "locked"
    */
   locked_image_asset: string;
 }
