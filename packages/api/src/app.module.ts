@@ -31,6 +31,7 @@ import { DeploymentModule } from "./modules";
     }),
     DefaultModule,
     Endpoints.AppUsersModule,
+    Endpoints.AuthUsersModule,
     Endpoints.ContactFieldsModule,
     Endpoints.AppFeedbackModule,
     Endpoints.AppNotificationInteractionModule,
