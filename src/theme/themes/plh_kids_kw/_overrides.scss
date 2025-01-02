@@ -666,28 +666,30 @@ body[data-theme="plh_kids_kw"] {
 
   // Display Group
   .display-group-wrapper {
-    border-radius: 0px !important;
-    border-top-right-radius: var(--ion-border-radius-small) !important;
-    border-bottom-right-radius: var(--ion-border-radius-small) !important;
+    &[data-variant*="box"] {
+      border-radius: 0px !important;
+      border-start-end-radius: var(--ion-border-radius-small) !important;
+      border-end-end-radius: var(--ion-border-radius-small) !important;
+    }
     &[data-variant~="box_primary"] {
       --background-color: var(--ion-color-gray-100) !important;
       border: none;
-      border-left: 6px solid var(--color-accent-yellow-60);
+      border-inline-start: 6px solid var(--color-accent-yellow-60);
     }
     &[data-variant~="box_secondary"] {
       --background-color: var(--ion-color-gray-100) !important;
       border: none;
-      border-left: 6px solid var(--ion-color-secondary-600);
+      border-inline-start: 6px solid var(--ion-color-secondary-600);
     }
     &[data-variant~="box_gray"] {
       --background-color: var(--ion-color-gray-100) !important;
       border: none;
-      border-left: 6px solid var(--ion-color-gray-600);
+      border-inline-start: 6px solid var(--ion-color-gray-600);
     }
     &[data-variant~="box_white"] {
       --background-color: white !important;
       border: none;
-      border-left: 6px solid var(--ion-color-primary-600);
+      border-inline-start: 6px solid var(--ion-color-primary-600);
     }
   }
 
