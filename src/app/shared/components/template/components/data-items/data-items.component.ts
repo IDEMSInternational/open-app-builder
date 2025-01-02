@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from "@angular/core";
+import { ChangeDetectionStrategy, Component, computed, effect } from "@angular/core";
 import { FlowTypes } from "../../models";
 import { TemplateBaseComponent } from "../base";
 import { DataItemsService } from "./data-items.service";
@@ -27,8 +27,32 @@ export class TmplDataItemsComponent extends TemplateBaseComponent {
     )
   );
 
+  /** List of actions to trigger on data_change */
+  private dataActions = computed(() =>
+    this.actionList().filter((a) => a.trigger === "data_changed")
+  );
+
   constructor(private dataItemsService: DataItemsService) {
     super();
+    effect(async () => {
+      const actions = this.dataActions();
+      const itemRows = this.itemRows();
+      if (actions.length > 0 && itemRows !== undefined) {
+        // TODO - if data_items have child rows the generated itemRows will be looped items
+        // Need different method to always pass data_items list and not generated loop
+        // (will only work if no child rows defined as fallback returns list rows and not generated)
+        await this.hackTriggerDataChangedActions(actions, itemRows);
+      }
+    });
+  }
+
+  /** Trigger a `data_changed` action and evaluate with items list context */
+  private async hackTriggerDataChangedActions(
+    actions: FlowTypes.TemplateRowAction[] = [],
+    itemRows: any[] = []
+  ) {
+    const evaluatedActions = this.dataItemsService.evaluateDataActions(actions, itemRows);
+    await this.parent.handleActions(evaluatedActions, this._row);
   }
 
   private subscribeToDynamicData(row: FlowTypes.TemplateRow) {
