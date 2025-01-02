@@ -196,6 +196,9 @@
         height: 100%;
         clip-path: circle(#{$circle-width / 2 - 4px} at center);
       }
+      .locked {
+        display: none;
+      }
     }
 
     plh-task-progress-bar {

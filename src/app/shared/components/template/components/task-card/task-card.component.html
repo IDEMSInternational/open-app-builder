@@ -111,8 +111,13 @@
           />
         </span>
       }
-      <div class="circle-wrapper">
+      <div class="circle-wrapper" [class]="progressStatus">
         <img [src]="image | plhAsset" />
+        @if (progressStatus === "notStarted" && lockedImageAsset) {
+          <div class="locked">
+            <img [src]="lockedImageAsset | plhAsset" />
+          </div>
+        }
       </div>
     </div>
     @if (title) {
