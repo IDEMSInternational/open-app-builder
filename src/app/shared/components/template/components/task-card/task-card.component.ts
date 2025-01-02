@@ -83,6 +83,11 @@ interface ITaskCardParams {
    * Default true
    */
   show_progress_text: boolean;
+  /**
+   * The icon to display in the "badge" added to the task card
+   * when its associated task/task group has been completed
+   */
+  locked_image_asset: string;
 }
 
 @Component({
@@ -112,6 +117,7 @@ export class TmplTaskCardComponent extends TemplateBaseComponent implements OnIn
   inProgressIcon: string;
   isButton: boolean;
   variant: ITaskCardParams["variant"];
+  lockedImageAsset: string;
 
   constructor(
     private taskService: TaskService,
@@ -156,6 +162,7 @@ export class TmplTaskCardComponent extends TemplateBaseComponent implements OnIn
       "sections"
     );
     this.showProgressText = getBooleanParamFromTemplateRow(this._row, "show_progress_text", true);
+    this.lockedImageAsset = getStringParamFromTemplateRow(this._row, "locked_image_asset", null);
   }
 
   checkProgressStatus() {
