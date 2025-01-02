@@ -17,8 +17,8 @@ export class AuthUsersController {
   @ApiParam({ name: "auth_user_id", type: String })
   @ApiOperation({ summary: "Get auth user profile" })
   @DeploymentHeaders()
-  findOne(@Param("auth_user_id") auth_user_id: string): Promise<AppUser> {
+  findOne(@Param("auth_user_id") auth_user_id: string): Promise<AppUser[]> {
     const model = this.deploymentService.model(AppUser);
-    return model.findOne({where:{auth_user_id}})
+    return model.findAll({where:{auth_user_id}})
   }
 }
