@@ -2048,41 +2048,41 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@capacitor-firebase/authentication@npm:^6.1.0":
-  version: 6.1.0
-  resolution: "@capacitor-firebase/authentication@npm:6.1.0"
+"@capacitor-firebase/authentication@npm:^6.3.1":
+  version: 6.3.1
+  resolution: "@capacitor-firebase/authentication@npm:6.3.1"
   peerDependencies:
     "@capacitor/core": ^6.0.0
-    firebase: ^10.9.0
+    firebase: ^10.9.0 || ^11.0.0
   peerDependenciesMeta:
     firebase:
       optional: true
-  checksum: c70c82576c46333d8d56c03dbe51ceab798cddd7974dbc2aa0f6e287059deea245d17be6343302096a09bd91d8e13b0bf8d6e8417b65ecb86e62573674492df0
+  checksum: 148200081ff5100e992205a19d9940e155c32e92a428405eb490e04b009f56ac364fc1c606e0ce1c6aec35003701fbff0022dd6a3057ecb3a8fbe16cacaf4bb6
   languageName: node
   linkType: hard
 
-"@capacitor-firebase/crashlytics@npm:^6.1.0":
-  version: 6.1.0
-  resolution: "@capacitor-firebase/crashlytics@npm:6.1.0"
+"@capacitor-firebase/crashlytics@npm:^6.3.1":
+  version: 6.3.1
+  resolution: "@capacitor-firebase/crashlytics@npm:6.3.1"
   peerDependencies:
     "@capacitor/core": ^6.0.0
   peerDependenciesMeta:
     firebase:
       optional: true
-  checksum: 9d20b204545e7bb6fed9b858270342634bd8772c84b516ba467d1a6b13a870edcdc1048def10c50f2edebd7fd0c896a2f7728176594cda670d807ed0b5e0f045
+  checksum: b52dc7a42d2f961aa47b30b8918038fa9ae370308240e52f3b78f2d125b3318a7eed34aa845aa98470daf826878b62c8233d8dac47e33d6fcb7c89ea59201914
   languageName: node
   linkType: hard
 
-"@capacitor-firebase/performance@npm:^6.1.0":
-  version: 6.1.0
-  resolution: "@capacitor-firebase/performance@npm:6.1.0"
+"@capacitor-firebase/performance@npm:^6.3.1":
+  version: 6.3.1
+  resolution: "@capacitor-firebase/performance@npm:6.3.1"
   peerDependencies:
     "@capacitor/core": ^6.0.0
-    firebase: ^10.9.0
+    firebase: ^10.9.0 || ^11.0.0
   peerDependenciesMeta:
     firebase:
       optional: true
-  checksum: 8aa094e6cece67ed8101cc0d78b2c9a0f3aa9f027de765095963ad95604be4bda70155573a8b8ef190ae571c878ae3fe3f63c688a56268f79840faddd16acaac
+  checksum: 25b4da6e44db02520bfa9f0d89b1428c0efa275e1a270f9b567513e469e9f2ce8157c1c9ba70d8c83b21b462aaecadea1dec807f84ec036cb59be66963284a63
   languageName: node
   linkType: hard
 
@@ -8065,6 +8065,13 @@ __metadata:
   version: 1.3.5
   resolution: "@types/triple-beam@npm:1.3.5"
   checksum: 519b6a1b30d4571965c9706ad5400a200b94e4050feca3e7856e3ea7ac00ec9903e32e9a10e2762d0f7e472d5d03e5f4b29c16c0bd8c1f77c8876c683b2231f1
+  languageName: node
+  linkType: hard
+
+"@types/uuid@npm:^10.0.0":
+  version: 10.0.0
+  resolution: "@types/uuid@npm:10.0.0"
+  checksum: e3958f8b0fe551c86c14431f5940c3470127293280830684154b91dc7eb3514aeb79fe3216968833cf79d4d1c67f580f054b5be2cd562bebf4f728913e73e944
   languageName: node
   linkType: hard
 
@@ -15100,9 +15107,9 @@ __metadata:
     "@angular/platform-browser-dynamic": ~17.2.2
     "@angular/router": ~17.2.2
     "@capacitor-community/file-opener": ^6.0.0
-    "@capacitor-firebase/authentication": ^6.1.0
-    "@capacitor-firebase/crashlytics": ^6.1.0
-    "@capacitor-firebase/performance": ^6.1.0
+    "@capacitor-firebase/authentication": ^6.3.1
+    "@capacitor-firebase/crashlytics": ^6.3.1
+    "@capacitor-firebase/performance": ^6.3.1
     "@capacitor/android": ^6.0.0
     "@capacitor/app": ^6.0.0
     "@capacitor/cli": ^6.0.0
@@ -15142,6 +15149,7 @@ __metadata:
     "@types/nouislider": ^15.0.0
     "@types/qrcode": ^1.5.5
     "@types/swiper": ~4.2.0
+    "@types/uuid": ^10.0.0
     "@typescript-eslint/eslint-plugin": ^6.13.1
     "@typescript-eslint/parser": ^6.13.1
     bootstrap-datepicker: ^1.10.0
@@ -15209,6 +15217,7 @@ __metadata:
     swiper: ^8.4.7
     trusted-types: ^2.0.0
     typescript: 5.2.2
+    uuid: ^11.0.3
     zone.js: ~0.14.2
   languageName: unknown
   linkType: soft
@@ -26974,6 +26983,15 @@ __metadata:
   bin:
     uuid: dist/bin/uuid
   checksum: 8dd2c83c43ddc7e1c71e36b60aea40030a6505139af6bee0f382ebcd1a56f6cd3028f7f06ffb07f8cf6ced320b76aea275284b224b002b289f89fe89c389b028
+  languageName: node
+  linkType: hard
+
+"uuid@npm:^11.0.3":
+  version: 11.0.3
+  resolution: "uuid@npm:11.0.3"
+  bin:
+    uuid: dist/esm/bin/uuid
+  checksum: 646181c77e8b8df9bd07254faa703943e1c4d5ccde7d080312edf12f443f6c5750801fd9b27bf2e628594182165e6b1b880c0382538f7eca00b26622203741dc
   languageName: node
   linkType: hard
 
