@@ -89,16 +89,16 @@ export class PlhActivityCheckInComponent extends TemplateBaseComponent implement
     );
     this.params.countDownDays = getNumberParamFromTemplateRow(this._row, "countdown_days", 6);
     const countdownStartDate = getParamFromTemplateRow(this._row, "countdown_start_date", null);
-
-    let parsedDate = new Date(countdownStartDate);
-    if (!isValid(parsedDate)) {
-      // Attempt to parse from ISO format
-      parsedDate = parseISO(countdownStartDate);
-      if (!isValid(parsedDate)) {
-        parsedDate = null;
-        console.error(
-          `[ACTIVITY CHECK-IN] Invalid date for countdown_start_date: ${countdownStartDate}`
-        );
+    let parsedDate = null;
+    if (countdownStartDate) {
+      const attemptDate = new Date(countdownStartDate);
+      if (isValid(attemptDate)) {
+        parsedDate = attemptDate;
+      } else {
+        const attemptISO = parseISO(countdownStartDate);
+        if (isValid(attemptISO)) {
+          parsedDate = attemptISO;
+        }
       }
     }
     this.params.countdownStartDate = parsedDate;
