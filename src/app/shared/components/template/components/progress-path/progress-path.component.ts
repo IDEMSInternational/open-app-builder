@@ -5,7 +5,7 @@ import { TemplateTranslateService } from "../../services/template-translate.serv
 
 interface IProgressPathParams {
   /** TEMPLATE_PARAMETER: "variant". Default "wavy" */
-  variant: "basic" | "wavy";
+  variant: "basic" | "wavy" | "curved";
 }
 
 // HACK - hardcoded sizing values to make content fit reasonably well
@@ -27,7 +27,7 @@ const SIZING = {
 })
 export class TmplProgressPathComponent extends TemplateBaseComponent implements OnInit {
   private params: Partial<IProgressPathParams> = {};
-  private pathVariant: "basic" | "wavy";
+  private pathVariant: "basic" | "wavy" | "curved";
 
   public svgPath: string;
   public svgViewBox: string;
@@ -47,14 +47,14 @@ export class TmplProgressPathComponent extends TemplateBaseComponent implements 
     this.params.variant = getStringParamFromTemplateRow(this._row, "variant", "wavy")
       .split(",")
       .join(" ") as IProgressPathParams["variant"];
-    this.pathVariant = this.params.variant.includes("basic") ? "basic" : "wavy";
+    this.pathVariant = this.params.variant;
   }
 
   /**
    * Generate a base SVG segment used to connect 2 progress items together
    * Roughly a horizontal line and smooth bend, adjusted for sizing
    */
-  private generateSVGPath(variant: "basic" | "wavy" = "wavy") {
+  private generateSVGPath(variant: "basic" | "curved" | "wavy" = "wavy") {
     // arbitrary values used to make base width/height fit
     const { widthPx, xOffset, yOffset, textContentHeight } = SIZING;
 
@@ -87,7 +87,14 @@ export class TmplProgressPathComponent extends TemplateBaseComponent implements 
     c 48,0 72,64 48,${viewboxHeight - yOffset - 4}
     `.trim();
 
-    this.svgPath = variant === "basic" ? basic() : wavy();
+    const curved = () =>
+      `
+    M ${xOffset},${yOffset}
+    c 0,140 280,-80 252,160 1
+    v 80
+    `.trim();
+
+    this.svgPath = variant === "basic" ? basic() : variant === "wavy" ? wavy() : curved();
     this.svgViewBox = `0 0 ${widthPx} ${viewboxHeight}`;
     this.contentHeight = `${textContentHeight}px`;
   }
