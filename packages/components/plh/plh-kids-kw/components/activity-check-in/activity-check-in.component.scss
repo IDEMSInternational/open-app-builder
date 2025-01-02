@@ -1,7 +1,5 @@
 .activity-container {
-  max-width: 180px;
-  height: 150px;
-  max-height: 150px;
+  max-width: 168px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -35,17 +33,12 @@
     }
   }
   .image {
-    margin-top: -20px;
+    height: 150px;
     img {
-      min-width: 140px;
-      max-width: 140px;
-    }
-  }
-  .unlocked .image {
-    margin-top: -16px;
-    img {
-      max-width: 160px;
-      min-width: 160px;
+      padding: 4px;
+      height: 100%;
+      width: 100%;
+      object-fit: contain;
     }
   }
   .details {
@@ -53,15 +46,17 @@
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    margin-top: -28px;
+    width: fit-content;
+    margin: 0 auto;
     .title h4 {
+      text-align: center;
       color: var(--ion-color-gray-600);
       font-weight: var(--font-weight-bold);
     }
     .icon {
       display: flex;
       align-items: center;
-      margin: 0 6px;
+      margin: 0 4px;
       img {
         width: 28px;
       }
