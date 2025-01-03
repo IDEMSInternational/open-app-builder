@@ -26,9 +26,9 @@ body[data-theme="plh_kids_kw"] {
       text-align: unset !important;
     }
     .left.text {
-      text-align: left;
+      text-align: start;
       p {
-        text-align: left !important;
+        text-align: start !important;
       }
     }
     // Center align all button text by default
@@ -45,7 +45,7 @@ body[data-theme="plh_kids_kw"] {
     }
     .left.right ::ng-deep {
       p {
-        text-align: right !important;
+        text-align: end !important;
       }
     }
     //Alignment Buttons
