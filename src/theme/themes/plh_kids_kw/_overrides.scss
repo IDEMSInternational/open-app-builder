@@ -111,6 +111,19 @@ body[data-theme="plh_kids_kw"] {
         transform: scaleX(-1);
       }
     }
+
+    // card-portrait variant (designed to handle a single icon as child rows
+    .button-container[data-variant~="card-portrait"][data-has-children] {
+      .button-text {
+        text-align: start !important;
+        padding-inline-end: 36px !important;
+      }
+      .children {
+        inset-inline-end: -2px !important;
+        bottom: 2px !important;
+        padding: 0px !important;
+      }
+    }
   }
 
   // audio
@@ -437,7 +450,7 @@ body[data-theme="plh_kids_kw"] {
       }
 
       .speaker-name {
-        text-align: right;
+        text-align: end;
       }
     }
     .text-bubble-container[data-language-direction~="rtl"] {
@@ -880,6 +893,7 @@ body[data-theme="plh_kids_kw"] {
         min-height: 56px !important;
         border-radius: var(--ion-border-radius-small) !important;
         font-weight: var(--font-weight-medium) !important;
+        text-align: center !important;
       }
     }
     .checked-radio {

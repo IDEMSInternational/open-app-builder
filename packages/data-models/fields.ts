@@ -3,7 +3,6 @@
  * They are used to store store computed or exported variables and are not user overridable
  */
 enum PROTECTED_FIELDS {
-  APP_AUTH_USER = "app_auth_user",
   APP_FIRST_LAUNCH = "app_first_launch",
   APP_LANGUAGE = "app_language",
   APP_SKIN = "app_skin",
@@ -14,6 +13,7 @@ enum PROTECTED_FIELDS {
   APP_UPDATE_DOWNLOADED = "app_update_downloaded",
   APP_USER_ID = "app_user_id",
   APP_VERSION = "app_version",
+  AUTH_USER_ID = "auth_user_id",
   CONTENT_VERSION = "content_version",
   DEPLOYMENT_NAME = "deployment_name",
   FEEDBACK_SELECTED_TEXT = "feedback_selected_text",
