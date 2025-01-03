@@ -84,7 +84,7 @@ interface ITaskCardParams {
    */
   show_progress_text: boolean;
   /**
-   * The icon to mark a task as "locked"
+   * The icon that will be displayed if the task is "locked" (currently only implemented for plh_kids_kw theme)
    */
   locked_image_asset: string;
 }
