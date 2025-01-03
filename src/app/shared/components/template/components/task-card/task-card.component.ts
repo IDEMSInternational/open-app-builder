@@ -84,6 +84,10 @@ interface ITaskCardParams {
    */
   show_progress_text: boolean;
   /**
+   * Whether or not the task card is in a "locked" state. Any logic to determint this should be handled in the template
+   */
+  locked: boolean;
+  /**
    * The icon that will be displayed if the task is "locked" (currently only implemented for plh_kids_kw theme)
    */
   locked_image_asset: string;
@@ -116,6 +120,7 @@ export class TmplTaskCardComponent extends TemplateBaseComponent implements OnIn
   inProgressIcon: string;
   isButton: boolean;
   variant: ITaskCardParams["variant"];
+  locked: boolean;
   lockedImageAsset: string;
 
   constructor(
@@ -129,6 +134,11 @@ export class TmplTaskCardComponent extends TemplateBaseComponent implements OnIn
     this.getParams();
     this.highlighted = this.checkGroupHighlighted();
     this.checkProgressStatus();
+  }
+
+  public handleClick() {
+    if (this.locked) return;
+    this.triggerActions("click");
   }
 
   getParams() {
@@ -161,6 +171,7 @@ export class TmplTaskCardComponent extends TemplateBaseComponent implements OnIn
       "sections"
     );
     this.showProgressText = getBooleanParamFromTemplateRow(this._row, "show_progress_text", true);
+    this.locked = getBooleanParamFromTemplateRow(this._row, "locked", false);
     this.lockedImageAsset = getStringParamFromTemplateRow(this._row, "locked_image_asset", null);
   }
 
