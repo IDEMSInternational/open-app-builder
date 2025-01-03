@@ -42,9 +42,10 @@
   <div
     *ngSwitchCase="true"
     class="button-container"
-    (click)="triggerActions('click')"
+    (click)="handleClick()"
     [attr.data-variant]="params.variant"
     [attr.data-has-children]="_row.rows ? true : false"
+    [attr.data-disabled]="params.disabled"
   >
     <img *ngIf="params.image" src="{{ params.image | plhAsset }}" />
     <div *ngIf="_row.value" [class]="'button-text ' + params.textAlign">
