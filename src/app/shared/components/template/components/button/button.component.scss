@@ -112,10 +112,10 @@ ion-button[data-variant~="card"] {
     padding: 1rem 0 0.5rem;
     text-align: center;
     &.right {
-      text-align: right;
+      text-align: end;
     }
     &.left {
-      text-align: left;
+      text-align: start;
     }
     &.center {
       text-align: center;
@@ -173,14 +173,14 @@ ion-button[data-variant~="card"] {
 
 .left ::ng-deep {
   margin: 0 auto 0 2px;
-  text-align: left;
+  text-align: start;
   p {
     margin: 0 0 0 2px;
   }
 }
 .right {
   margin: 0 2px 0 auto;
-  text-align: right;
+  text-align: end;
 }
 .center {
   text-align: center;
