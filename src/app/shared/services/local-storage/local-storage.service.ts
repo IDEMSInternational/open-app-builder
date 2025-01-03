@@ -2,7 +2,7 @@ import { Injectable } from "@angular/core";
 import { IProtectedFieldName, getProtectedFieldName } from "data-models";
 import { SyncServiceBase } from "../syncService.base";
 
-const STORAGE_PREFIX = "rp-contact-field";
+export const LOCAL_STORAGE_PREFIX = "rp-contact-field";
 
 @Injectable({
   providedIn: "root",
@@ -14,8 +14,8 @@ export class LocalStorageService extends SyncServiceBase {
 
   private get(key: string): string | null {
     if (!key) return null;
-    if (!key.startsWith(STORAGE_PREFIX)) {
-      key = `${STORAGE_PREFIX}.${key}`;
+    if (!key.startsWith(LOCAL_STORAGE_PREFIX)) {
+      key = `${LOCAL_STORAGE_PREFIX}.${key}`;
     }
     return localStorage.getItem(key);
   }
@@ -25,16 +25,16 @@ export class LocalStorageService extends SyncServiceBase {
     if (!allowProtected && this.isProtected(key)) {
       console.warn(`[DEPRECATED] - set local-storage with protected name: ${key}`);
     }
-    if (!key.startsWith(STORAGE_PREFIX)) {
-      key = `${STORAGE_PREFIX}.${key}`;
+    if (!key.startsWith(LOCAL_STORAGE_PREFIX)) {
+      key = `${LOCAL_STORAGE_PREFIX}.${key}`;
     }
     return localStorage.setItem(key, value);
   }
 
   private remove(key: string) {
     if (!key) return;
-    if (!key.startsWith(STORAGE_PREFIX)) {
-      key = `${STORAGE_PREFIX}.${key}`;
+    if (!key.startsWith(LOCAL_STORAGE_PREFIX)) {
+      key = `${LOCAL_STORAGE_PREFIX}.${key}`;
     }
     return localStorage.removeItem(key);
   }
@@ -69,7 +69,7 @@ export class LocalStorageService extends SyncServiceBase {
   getAll() {
     const values = {};
     Object.keys(localStorage)
-      .filter((k) => k.startsWith(STORAGE_PREFIX))
+      .filter((k) => k.startsWith(LOCAL_STORAGE_PREFIX))
       .forEach((k) => (values[k] = localStorage.getItem(k)));
     return values;
   }
@@ -92,8 +92,8 @@ export class LocalStorageService extends SyncServiceBase {
   }
   /** Check if a field name is protected (starts with underscore prefixed or non-prefixed) */
   isProtected(key: string) {
-    if (key.startsWith(STORAGE_PREFIX)) {
-      key = key.replace(`${STORAGE_PREFIX}.`, "");
+    if (key.startsWith(LOCAL_STORAGE_PREFIX)) {
+      key = key.replace(`${LOCAL_STORAGE_PREFIX}.`, "");
     }
     return key.startsWith("_");
   }

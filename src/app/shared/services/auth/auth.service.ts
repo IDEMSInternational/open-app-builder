@@ -6,17 +6,22 @@ import { AuthProviderBase } from "./providers/base.auth";
 import { AsyncServiceBase } from "../asyncService.base";
 import { getAuthProvider } from "./providers";
 import { IAuthUser } from "./types";
-import { filter, firstValueFrom, tap } from "rxjs";
+import { filter, firstValueFrom, map } from "rxjs";
 import { TemplateService } from "../../components/template/services/template.service";
 import { toObservable } from "@angular/core/rxjs-interop";
 import { ServerService } from "../server/server.service";
+import { HttpClient } from "@angular/common/http";
+import type { IServerUser } from "../server/server.types";
 
 @Injectable({
   providedIn: "root",
 })
 export class AuthService extends AsyncServiceBase {
   /** Auth provider used */
-  private provider: AuthProviderBase;
+  public provider: AuthProviderBase;
+
+  /** List of profiles with same auth id for restore (first device login only) */
+  public restoreProfiles = signal<IServerUser[]>([]);
 
   constructor(
     private templateActionRegistry: TemplateActionRegistry,
@@ -24,20 +29,28 @@ export class AuthService extends AsyncServiceBase {
     private deploymentService: DeploymentService,
     private injector: Injector,
     private templateService: TemplateService,
-    private serverService: ServerService
+    private serverService: ServerService,
+    private http: HttpClient
   ) {
     super("Auth");
     this.provider = getAuthProvider(this.config.provider);
     this.registerInitFunction(this.initialise);
-    effect(async () => {
-      const authUser = this.provider.authUser();
-      await this.checkProfileRestore(authUser);
-      this.addStorageEntry(authUser);
-      // perform immediate sync if user signed in to ensure data backed up
-      if (authUser) {
-        this.serverService.syncUserData();
-      }
-    });
+    effect(
+      async () => {
+        const authUser = this.provider.authUser();
+        this.addStorageEntry(authUser);
+
+        if (authUser) {
+          // perform immediate sync if user signed in to ensure data backed up
+          await this.serverService.syncUserData();
+          await this.checkForUserRestore(authUser);
+        } else {
+          // If signed out or no auth user reset previous data and return
+          this.restoreProfiles.set([]);
+        }
+      },
+      { allowSignalWrites: true }
+    );
   }
 
   private get config() {
@@ -53,12 +66,20 @@ export class AuthService extends AsyncServiceBase {
     }
   }
 
-  private async checkProfileRestore(authUser?: IAuthUser) {
-    if (!authUser) return;
-    const existingUser = this.localStorageService.getProtected("AUTH_USER_ID");
-    if (existingUser) return;
-    // no existingUser user, should check if authUser exists on server and prompt restore
-    // TODO - handle
+  private async checkForUserRestore(authUser: IAuthUser) {
+    // List all server entries with the same auth_id (multiple devices)
+    // TODO - get type-safe return types using openapi http client
+    const authEntries = await firstValueFrom(
+      this.http
+        .get(`/auth_users/${authUser.uid}`, { responseType: "json" })
+        .pipe(map((v) => (v as IServerUser[]) || []))
+    );
+
+    const currentUserId = this.localStorageService.getProtected("APP_USER_ID");
+    const restoreProfiles = authEntries
+      .filter((v) => v.app_user_id !== currentUserId)
+      .sort((a, b) => (a.updatedAt > b.createdAt ? -1 : 1));
+    this.restoreProfiles.set(restoreProfiles);
   }
 
   private async enforceLogin(templateName: string) {
@@ -73,12 +94,7 @@ export class AuthService extends AsyncServiceBase {
     });
     // wait for user signal to update with a signed in user before dismissing modal
     const authUser$ = toObservable(this.provider.authUser, { injector: this.injector });
-    await firstValueFrom(
-      authUser$.pipe(
-        tap((authUser) => console.log("auth user", authUser)),
-        filter((value: IAuthUser | null) => !!value)
-      )
-    );
+    await firstValueFrom(authUser$.pipe(filter((value: IAuthUser | null) => !!value)));
     await modal.dismiss();
   }
 
