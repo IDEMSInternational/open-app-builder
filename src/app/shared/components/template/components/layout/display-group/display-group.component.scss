@@ -28,6 +28,19 @@
   background-color: var(--ion-background-color);
 }
 
+// HACK: Flip background image (but not child content) when language direction is RTL
+:dir(rtl) {
+  .display-group-wrapper {
+    justify-content: flex-end;
+    &[data-has-background-image] {
+      transform: scaleX(-1);
+      > * {
+        transform: scaleX(-1);
+      }
+    }
+  }
+}
+
 // Default spacing within display groups. Adapted from `template-component.scss`
 .display-group-wrapper[data-param-style~="row"] > plh-template-component:not([data-hidden="true"]) {
   margin: 0;
