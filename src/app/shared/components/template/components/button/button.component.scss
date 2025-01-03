@@ -93,8 +93,14 @@ ion-button[data-variant~="card"] {
   // TODO: make a variable
   width: 160px;
 
-  &:active {
-    background-color: var(--ion-color-gray-light);
+  &[data-disabled="true"] {
+    opacity: 0.6;
+  }
+
+  &:not([data-disabled="true"]) {
+    &:active {
+      background-color: var(--ion-color-gray-light);
+    }
   }
 
   img {
@@ -121,7 +127,7 @@ ion-button[data-variant~="card"] {
   .children {
     position: absolute;
     align-self: flex-end;
-    right: -4px;
+    inset-inline-end: -4px;
     top: -12px;
     display: flex;
     align-items: center;
