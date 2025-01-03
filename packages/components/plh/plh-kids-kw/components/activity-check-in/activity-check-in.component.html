@@ -1,0 +1,52 @@
+@if (locked()) {
+  <div
+    class="activity-container"
+    [attr.data-language-direction]="templateTranslateService.languageDirection()"
+  >
+    @if (params.countdownStartDate) {
+      <div class="progress-tracker">
+        <div class="progress-bar-container">
+          <div
+            class="progress-bar"
+            [ngStyle]="{
+              width: progressPercentage() + '%'
+            }"
+          ></div>
+        </div>
+        <div class="countdown-text">{{ countdownText() }}</div>
+      </div>
+    }
+
+    <div class="image">
+      <img [src]="params.lockedImageAsset | plhAsset" />
+    </div>
+    <div class="details">
+      <div class="title">
+        <h4>{{ params.title }}</h4>
+      </div>
+      <div class="icon">
+        <img [src]="params.lockedIconAsset | plhAsset" />
+      </div>
+    </div>
+  </div>
+} @else {
+  <div
+    class="activity-container"
+    (click)="triggerActions('click')"
+    [attr.data-language-direction]="templateTranslateService.languageDirection()"
+  >
+    <div class="wrapper unlocked">
+      <div class="image">
+        <img [src]="params.unlockedImageAsset | plhAsset" />
+      </div>
+      <div class="details">
+        <div class="title">
+          <h4>{{ params.title }}</h4>
+        </div>
+        <div class="icon">
+          <img [src]="params.unlockedIconAsset | plhAsset" />
+        </div>
+      </div>
+    </div>
+  </div>
+}
