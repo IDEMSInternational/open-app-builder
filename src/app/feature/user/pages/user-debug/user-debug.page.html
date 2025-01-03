@@ -1,10 +1,75 @@
 <ion-content class="ion-padding">
+  <!-- Sync Debug -->
   <div style="display: flex; align-items: center; gap: 8px">
     <span>App User ID:</span>
     <ion-input [(ngModel)]="importUserId" style="flex: 1"></ion-input>
-    <ion-button (click)="importUserData()">Import</ion-button>
+    <ion-button (click)="importUserData(importUserId)">Import</ion-button>
     <ion-button (click)="syncUserData()">Sync</ion-button>
   </div>
+  <!-- Sign In Debug -->
+  <div style="display: flex; align-items: center; gap: 8px">
+    @if(authService.provider.authUser(); as user){
+    <span style="margin-right: auto">App Auth ID: {{user.uid}} </span>
+    <ion-button (click)="authService.provider.signOut()">Sign Out</ion-button>
+    } @else {
+    <span style="margin-right: auto">Anonymous User </span>
+    <ion-button (click)="authService.provider.signInWithGoogle()">Sign In</ion-button>
+    }
+  </div>
+  <!-- Auth Profile Restore -->
+  @if(authService.restoreProfiles().length > 0){
+  <h2>Auth Profile Restore</h2>
+  <div class="table-container">
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Device</th>
+          <th>Last Updated</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        @for(profile of authService.restoreProfiles(); track profile.app_user_id){
+        <tr>
+          <td>{{profile.app_user_id}}</td>
+          <td>
+            <div>{{profile.device_info.manufacturer}}</div>
+            <div>{{profile.device_info.model}}</div>
+          </td>
+          <td>{{profile.updatedAt | date:'medium'}}</td>
+          <td>
+            <ion-button (click)="importUserData(profile.app_user_id)">Restore</ion-button>
+          </td>
+        </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+  }
+
+  <!-- Protected Fields -->
+  <h2>Protected Fields</h2>
+  <div class="table-container">
+    <table>
+      <thead>
+        <tr>
+          <th>Field</th>
+          <th>Value</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for(contactField of protectedFields(); track contactField.key){
+        <tr>
+          <td>{{contactField.key}}</td>
+          <td>{{contactField.value}}</td>
+        </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Contact Fields -->
   <h2>Contact Fields</h2>
   <div class="table-container">
     <table>
@@ -15,7 +80,7 @@
         </tr>
       </thead>
       <tbody>
-        @for(contactField of contactFields; track contactField.key){
+        @for(contactField of contactFields(); track contactField.key){
         <tr>
           <td>{{contactField.key}}</td>
           <td>{{contactField.value}}</td>
