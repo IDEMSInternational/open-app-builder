@@ -4,6 +4,8 @@
 .display-group-wrapper {
   display: flex;
   align-items: center;
+  background-repeat: no-repeat;
+  height: auto;
 }
 /// In flex box components should try to fill height, but not width (leave to flex property)
 .display-group-wrapper > plh-template-component {
@@ -20,6 +22,10 @@
 }
 .display-group-wrapper[data-param-style~="wrap"] {
   flex-wrap: wrap;
+}
+// assign default background colour to the display group wrapper (useful in sticky group)
+.display-group-wrapper[data-param-style~="background_solid"] {
+  background-color: var(--ion-background-color);
 }
 
 // Default spacing within display groups. Adapted from `template-component.scss`
@@ -42,6 +48,12 @@
   > plh-template-component:not([data-hidden="true"])
   ~ plh-template-component:not([data-hidden="true"]) {
   margin: 1em 0 0 0;
+}
+
+.display-group-wrapper[data-variant~="inline_padding"] {
+  width: 100%;
+  padding-left: var(--padding-start);
+  padding-right: var(--padding-end);
 }
 
 .display-group-wrapper {
