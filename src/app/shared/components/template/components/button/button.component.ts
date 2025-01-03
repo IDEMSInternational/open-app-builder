@@ -55,6 +55,11 @@ export class TmplButtonComponent extends TemplateBaseComponent implements OnInit
     this.getParams();
   }
 
+  public handleClick() {
+    if (this.params.disabled) return;
+    this.triggerActions("click");
+  }
+
   private getParams() {
     this.params.style = `${getStringParamFromTemplateRow(this._row, "style", "information")} ${
       this.isTwoColumns() ? "two_columns" : ""
