@@ -21,8 +21,19 @@ body[data-theme="plh_kids_kw"] {
     ion-button[disabled] {
       filter: none;
     }
+
+    .left {
+      text-align: unset !important;
+    }
+    .left.text {
+      text-align: left;
+      p {
+        text-align: left !important;
+      }
+    }
     // Center align all button text by default
-    .left.null ::ng-deep {
+    .left.null {
+      text-align: center !important;
       p {
         text-align: center !important;
       }
@@ -60,6 +71,57 @@ body[data-theme="plh_kids_kw"] {
       --background: var(--ion-color-primary-600);
       &:hover {
         --background: var(--ion-color-primary-500);
+      }
+    }
+    ion-button[data-variant~="card"],
+    ion-button[data-param-style~="no-background"] {
+      border: none;
+    }
+    ion-button[data-variant~="card"][data-param-style~="no-background"] {
+      border: 1px solid transparent;
+      border-radius: 0px;
+      background-color: transparent;
+      background: transparent;
+      color: var(--color-surface-black);
+      min-height: 64px;
+      padding: 18px 24px;
+      p {
+        font-weight: var(--font-weight-standard);
+      }
+      &[data-language-direction~="rtl"] {
+        .left.text {
+          text-align: right;
+          p {
+            text-align: right !important;
+          }
+        }
+        .left.right {
+          p {
+            text-align: left !important;
+          }
+        }
+      }
+    }
+    ion-button[data-language-direction~="rtl"] .children {
+      position: unset !important;
+      align-self: unset !important;
+      padding: 0px !important;
+      ion-icon {
+        -webkit-transform: scaleX(-1);
+        transform: scaleX(-1);
+      }
+    }
+
+    // card-portrait variant (designed to handle a single icon as child rows
+    .button-container[data-variant~="card-portrait"][data-has-children] {
+      .button-text {
+        text-align: start !important;
+        padding-inline-end: 36px !important;
+      }
+      .children {
+        inset-inline-end: -2px !important;
+        bottom: 2px !important;
+        padding: 0px !important;
       }
     }
   }
@@ -388,7 +450,7 @@ body[data-theme="plh_kids_kw"] {
       }
 
       .speaker-name {
-        text-align: right;
+        text-align: end;
       }
     }
     .text-bubble-container[data-language-direction~="rtl"] {
@@ -427,12 +489,27 @@ body[data-theme="plh_kids_kw"] {
       }
     }
   }
+
+  // Title
   plh-tmpl-title {
-    .title-wrapper h1 p {
+    .title-wrapper h1 {
       font-size: var(--font-size-text-title);
       margin: var(--paragraph-margin-medium) 0;
       line-height: var(--line-height-text-large);
-      color: var(--ion-color-primary-700);
+      color: var(--color-surface-black);
+    }
+    .title-wrapper[data-variant~="section_banner"] {
+      font-size: var(--font-size-text-large) !important;
+      font-weight: var(--font-weight-medium) !important;
+      background-color: #e7f2fd;
+      border-bottom: 1px solid var(--color-secondary-blue-80);
+      h1 {
+        padding: 18px;
+        border: none;
+      }
+    }
+    .title-wrapper[data-variant~="page_banner"] h1 {
+      font-size: var(--font-size-text-extra-large) !important;
     }
   }
 
