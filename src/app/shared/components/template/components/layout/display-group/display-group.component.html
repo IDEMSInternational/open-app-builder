@@ -23,6 +23,7 @@
     [attr.data-param-style]="params.style"
     [attr.data-rowname]="_row.name"
     [attr.data-variant]="params.variant"
+    [attr.data-has-background-image]="params.backgroundImageAsset ? true : false"
     [style.marginBottom.px]="params.offset"
     [ngSwitch]="type"
     [style]="_row.style_list | styleList"
