@@ -79,7 +79,7 @@
     </div>
   </div>
 } @else {
-  <div class="circle-card-wrapper" (click)="triggerActions('click')">
+  <div class="circle-card-wrapper" (click)="handleClick()">
     <div class="image-and-badge-wrapper">
       <div *ngIf="taskGroupId && !taskId">
         <plh-task-progress-bar
@@ -113,7 +113,7 @@
       }
       <div class="circle-wrapper" [class]="progressStatus">
         <img [src]="image | plhAsset" />
-        @if (progressStatus === "notStarted" && lockedImageAsset) {
+        @if (locked) {
           <div class="locked-image">
             <img [src]="lockedImageAsset | plhAsset" />
           </div>
