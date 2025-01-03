@@ -7,10 +7,22 @@ import { AsyncServiceBase } from "../asyncService.base";
 import { DbService } from "../db/db.service";
 import { TemplateActionRegistry } from "../../components/template/services/instance/template-action.registry";
 import { TemplateFieldService } from "../../components/template/services/template-field.service";
-import { LocalStorageService } from "../local-storage/local-storage.service";
+import { LOCAL_STORAGE_PREFIX, LocalStorageService } from "../local-storage/local-storage.service";
 import { DynamicDataService } from "../dynamic-data/dynamic-data.service";
+import { getProtectedFieldName, IProtectedFieldName } from "packages/data-models";
 
 type IDynamicDataState = ReturnType<DynamicDataService["getState"]>;
+
+/**
+ * List of protected fields to include when importing a user profile
+ * TODO - ideally should have distinct lists for protected fields that can and cannot be imported
+ * */
+const IMPORTABLE_PROTECTED_FIELD_NAMES: IProtectedFieldName[] = [
+  "APP_FIRST_LAUNCH",
+  "APP_LANGUAGE",
+  "APP_SKIN",
+  "APP_THEME",
+];
 
 @Injectable({ providedIn: "root" })
 export class UserMetaService extends AsyncServiceBase {
@@ -83,11 +95,23 @@ export class UserMetaService extends AsyncServiceBase {
     }
   }
 
-  private async importUserContactFields(contact_fields = {}) {
+  private async importUserContactFields(contact_fields: Record<string, string> = {}) {
+    // create a reverse mapping of protected fields that are allowed to be imported
+    // to allow setting protected fields such as rp-contact-field._app_skin
+    const protectedFieldMapping: Record<string, string> = {};
+    for (const fieldName of IMPORTABLE_PROTECTED_FIELD_NAMES) {
+      const mappedName = `${LOCAL_STORAGE_PREFIX}.${getProtectedFieldName(fieldName)}`;
+      protectedFieldMapping[mappedName] = fieldName;
+    }
     for (const [key, value] of Object.entries(contact_fields)) {
-      // TODO - handle special contact fields as required (e.g. _app_skin, _app_theme)
       if (!this.localStorageService.isProtected(key)) {
-        this.localStorageService.setString(key, value as string);
+        this.localStorageService.setString(key, value);
+      } else {
+        // allow import if non-protected or marked as importable protected
+        const mappedKey = protectedFieldMapping[key];
+        if (mappedKey) {
+          this.localStorageService.setProtected(mappedKey as any, value);
+        }
       }
     }
   }
