@@ -27,6 +27,7 @@ export function parseAppDataActionString(actionString: string): FlowTypes.Templa
     changed: true,
     click: true,
     completed: true,
+    data_changed: true,
     uncompleted: true,
     nav_resume: true,
     sent: true,

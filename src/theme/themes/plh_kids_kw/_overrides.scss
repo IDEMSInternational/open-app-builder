@@ -21,20 +21,10 @@ body[data-theme="plh_kids_kw"] {
     ion-button[disabled] {
       filter: none;
     }
-
-    .left {
-      text-align: unset !important;
-    }
     // Center align all button text by default
     .left.null ::ng-deep {
-      text-align: center;
       p {
         text-align: center !important;
-      }
-    }
-    .left ::ng-deep {
-      p {
-        text-align: left !important;
       }
     }
     .left.centre ::ng-deep {
@@ -264,6 +254,14 @@ body[data-theme="plh_kids_kw"] {
           line-height: var(--line-height-text-medium) !important;
           font-weight: var(--font-weight-standard) !important;
           margin-top: 8px;
+          a {
+            color: var(--color-surface-white-variant) !important;
+            text-decoration: underline !important;
+          }
+        }
+        a {
+          color: var(--color-surface-white-variant) !important;
+          text-decoration: underline !important;
         }
       }
     }
@@ -674,6 +672,35 @@ body[data-theme="plh_kids_kw"] {
     }
   }
 
+  // Display Group
+  .display-group-wrapper {
+    &[data-variant*="box"] {
+      border-radius: 0px !important;
+      border-start-end-radius: var(--ion-border-radius-small) !important;
+      border-end-end-radius: var(--ion-border-radius-small) !important;
+    }
+    &[data-variant~="box_primary"] {
+      --background-color: var(--ion-color-gray-100) !important;
+      border: none;
+      border-inline-start: 6px solid var(--color-accent-yellow-60);
+    }
+    &[data-variant~="box_secondary"] {
+      --background-color: var(--ion-color-gray-100) !important;
+      border: none;
+      border-inline-start: 6px solid var(--ion-color-secondary-600);
+    }
+    &[data-variant~="box_gray"] {
+      --background-color: var(--ion-color-gray-100) !important;
+      border: none;
+      border-inline-start: 6px solid var(--ion-color-gray-600);
+    }
+    &[data-variant~="box_white"] {
+      --background-color: white !important;
+      border: none;
+      border-inline-start: 6px solid var(--ion-color-primary-600);
+    }
+  }
+
   // module header
   plh-module-details-header {
     .module-header {
@@ -789,6 +816,7 @@ body[data-theme="plh_kids_kw"] {
         min-height: 56px !important;
         border-radius: var(--ion-border-radius-small) !important;
         font-weight: var(--font-weight-medium) !important;
+        text-align: center !important;
       }
     }
     .checked-radio {
@@ -972,6 +1000,32 @@ body[data-theme="plh_kids_kw"] {
         position: absolute;
         top: -30px;
       }
+    }
+  }
+
+  // bottom_nav
+  .plh-bottom-nav-wrapper {
+    @include mixins.flex-space-between;
+    flex-direction: row;
+    width: 100%;
+    padding: 12px 16px 8px 16px;
+    border-top: 1px solid #e7e8e9;
+    .nav-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+    }
+    .label p {
+      padding: 0;
+      margin: 0;
+      color: #6686b1;
+      font-weight: var(--font-weight-standard);
+    }
+    .active-link .label p {
+      font-weight: var(--font-weight-bold);
+      color: #0066a1;
     }
   }
 

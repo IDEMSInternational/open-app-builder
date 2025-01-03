@@ -39,7 +39,7 @@ export class TmplTitleComponent extends TemplateBaseComponent implements ITempla
     this.params.textAlign = getStringParamFromTemplateRow(
       this._row,
       "text_align",
-      "left"
+      null
     ) as ITitleParams["textAlign"];
     this.params.variant = getStringParamFromTemplateRow(this._row, "variant", "")
       .split(",")

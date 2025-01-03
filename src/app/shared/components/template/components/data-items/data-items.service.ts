@@ -1,12 +1,14 @@
 import { Injectable, Injector } from "@angular/core";
 import { FlowTypes } from "packages/data-models";
-import { debounceTime, of, switchMap } from "rxjs";
+import { debounceTime, of, switchMap, distinctUntilChanged } from "rxjs";
 import { DynamicDataService } from "src/app/shared/services/dynamic-data/dynamic-data.service";
 import { ITemplateRowMap, TemplateRowService } from "../../services/instance/template-row.service";
 import { defer } from "rxjs/internal/observable/defer";
 import { TemplateVariablesService } from "../../services/template-variables.service";
 import { ItemProcessor } from "../../processors/item";
 import { updateItemMeta } from "./data-items.utils";
+import { isEqual } from "packages/shared/src/utils/object-utils";
+import { AppDataEvaluator } from "packages/shared/src/models/appDataEvaluator/appDataEvaluator";
 
 @Injectable({ providedIn: "root" })
 export class DataItemsService {
@@ -25,13 +27,13 @@ export class DataItemsService {
     }
     const { rows = [], parameter_list = {} } = dataItemsRow;
 
-    // Create an observable that subscribes to data changes, debounced to avoid immediate re-processing
-    // Use defer to allow async code within observable
+    // Create an observable that subscribes to data changes, debounced to avoid immediate re-processing,
+    // re-emitting only on distinct changes. Use defer to allow async code within observable
     return (
       defer(async () => {
         await this.dynamicDataService.ready();
         const query = await this.dynamicDataService.query$("data_list", dataListName);
-        return query.pipe(debounceTime(50));
+        return query.pipe(debounceTime(50), distinctUntilChanged(isEqual));
       })
         // Map the output from the query to a new defer block that handles item processing and
         // Uses inner defer block to allow async processing when outer query emits data
@@ -62,6 +64,24 @@ export class DataItemsService {
           )
         )
     );
+  }
+
+  /**
+   * If triggering data_change action args will be evaluated current item data available within `@items` context
+   * @param actions List of actions to process
+   * @param itemRows List of rows populated by data_items.
+   * */
+  public evaluateDataActions(
+    actions: FlowTypes.TemplateRowAction[],
+    items: FlowTypes.Data_listRow[]
+  ) {
+    const evaluator = new AppDataEvaluator();
+    return actions.map((a) => {
+      evaluator.setExecutionContext({ items });
+      const args = evaluator.evaluate(a.args);
+      // create new object to ensure args don't overwrite original
+      return { ...a, args };
+    });
   }
 
   /**

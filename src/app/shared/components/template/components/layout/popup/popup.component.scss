@@ -20,7 +20,7 @@
     }
     .close-button {
       top: 10px;
-      right: 10px;
+      inset-inline-end: 10px;
     }
   }
   .popup-content {
@@ -44,7 +44,6 @@
   .close-button {
     position: absolute;
     top: 18px;
-    right: 19px;
     background: white;
     width: 40px;
     height: 40px;
@@ -58,5 +57,7 @@
     z-index: 1;
     box-shadow: var(--ion-default-box-shadow);
     color: var(--ion-color-primary);
+    // align 18px from end (varies with rtl/ltr direction)
+    inset-inline-end: 18px;
   }
 }

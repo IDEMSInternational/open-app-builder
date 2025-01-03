@@ -25,7 +25,9 @@ export class TemplateBaseComponent implements ITemplateRowProps {
   rowSignal = signal<FlowTypes.TemplateRow>(undefined, { equal: isEqual });
   value = computed(() => this.rowSignal().value, { equal: isEqual });
   parameterList = computed(() => this.rowSignal().parameter_list || {}, { equal: isEqual });
-  actionList = computed(() => this.rowSignal().action_list || [], { equal: isEqual });
+  actionList = computed<FlowTypes.TemplateRowAction[]>(() => this.rowSignal().action_list || [], {
+    equal: isEqual,
+  });
   rows = computed<FlowTypes.TemplateRow[]>(() => this.rowSignal().rows || [], { equal: isEqual });
 
   /**
@@ -56,7 +58,9 @@ export class TemplateBaseComponent implements ITemplateRowProps {
     }
     const action_list = this._row.action_list || [];
     const actionsForTrigger = action_list.filter((a) => a.trigger === trigger);
-    return this.parent.handleActions(actionsForTrigger, this._row);
+    if (actionsForTrigger.length > 0) {
+      return this.parent.handleActions(actionsForTrigger, this._row);
+    }
   }
 
   /**
