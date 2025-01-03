@@ -94,7 +94,16 @@ export class TmplProgressPathComponent extends TemplateBaseComponent implements 
     v 80
     `.trim();
 
-    this.svgPath = variant === "basic" ? basic() : variant === "wavy" ? wavy() : curved();
+    switch (variant) {
+      case "basic":
+        this.svgPath = basic();
+        break;
+      case "curved":
+        this.svgPath = curved();
+        break;
+      default:
+        this.svgPath = wavy();
+    }
     this.svgViewBox = `0 0 ${widthPx} ${viewboxHeight}`;
     this.contentHeight = `${textContentHeight}px`;
   }

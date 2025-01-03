@@ -114,7 +114,7 @@
       <div class="circle-wrapper" [class]="progressStatus">
         <img [src]="image | plhAsset" />
         @if (progressStatus === "notStarted" && lockedImageAsset) {
-          <div class="locked">
+          <div class="locked-image">
             <img [src]="lockedImageAsset | plhAsset" />
           </div>
         }

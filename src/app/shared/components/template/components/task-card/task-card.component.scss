@@ -196,7 +196,8 @@
         height: 100%;
         clip-path: circle(#{$circle-width / 2 - 4px} at center);
       }
-      .locked {
+      // TODO: Currently only enabled for `plh_kids_kw` theme
+      .locked-image {
         display: none;
       }
     }
