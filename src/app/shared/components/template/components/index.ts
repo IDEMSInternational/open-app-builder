@@ -30,6 +30,7 @@ import { TmplDashedBoxComponent } from "./dashed-box/dashed-box.component";
 import { TmplDataItemsComponent } from "./data-items/data-items.component";
 import { TmplDisplayGridComponent } from "./layout/display-grid/display-grid.component";
 import { TmplDisplayGroupComponent } from "./layout/display-group/display-group.component";
+import { TmplDisplayGroupStickyComponent } from "./layout/display-group/sticky/display-group-sticky.component";
 import { TmplDrawerComponent } from "./drawer/drawer.component";
 import { TmplHelpIconComponent } from "./help-icon";
 import { TmplIconBannerComponent } from "./icon-banner/icon-banner.component";
@@ -55,7 +56,7 @@ import { TmplTextBoxComponent } from "./text-box/text-box.component";
 import { TmplTextComponent } from "./text/text.component";
 import { TmplTextBubbleComponent } from "./text-bubble/text-bubble.component";
 import { TmplTileComponent } from "./tile-component/tile-component.component";
-import { TmplTitleComponent } from "./title";
+import { TmplTitleComponent } from "./title/title.component";
 import { TmplTimerComponent } from "./timer/timer.component";
 import { TmplToggleBarComponent } from "./toggle-bar/toggle-bar";
 import { TmplVideoComponent } from "./video";
@@ -93,6 +94,7 @@ export const TEMPLATE_COMPONENTS = [
   TmplDataItemsComponent,
   TmplDisplayGridComponent,
   TmplDisplayGroupComponent,
+  TmplDisplayGroupStickyComponent,
   TmplDrawerComponent,
   TmplHelpIconComponent,
   TmplIconBannerComponent,
@@ -158,6 +160,7 @@ const COMMON_COMPONENT_MAPPING = {
   debug_toggle: PLHDebugToggleComponent,
   display_grid: TmplDisplayGridComponent,
   display_group: TmplDisplayGroupComponent,
+  display_group_sticky: TmplDisplayGroupStickyComponent,
   drawer: TmplDrawerComponent,
   form: FormComponent,
   help_icon: TmplHelpIconComponent,
