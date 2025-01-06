@@ -62,7 +62,9 @@
             <plh-task-progress-bar
               [dataListName]="taskGroupDataList"
               [completedField]="completedField"
+              [completedColumnName]="completedColumnName"
               [highlighted]="highlighted"
+              [parameterList]="_row.parameter_list"
               [progressUnitsName]="progressUnitsName"
               [showText]="showProgressText"
               [(progressStatus)]="progressStatus"

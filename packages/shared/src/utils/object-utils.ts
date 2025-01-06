@@ -127,3 +127,12 @@ export function arrayToHashmap<T extends object>(
   }
   return hashmap;
 }
+
+/** Take an object and return a subset of keys matching list of provided keys */
+export function filterObjectByKeys<T extends Record<string, any>, K extends keyof T>(
+  obj: T,
+  includeKeys: K[]
+) {
+  const filteredEntries = Object.entries(obj).filter(([key]) => includeKeys.includes(key as K));
+  return Object.fromEntries(filteredEntries) as Partial<Pick<T, K>>;
+}

@@ -92,6 +92,8 @@ export class TmplAudioComponent
   hasStarted: boolean = false;
   /** @ignore */
   trackerInterval: NodeJS.Timeout;
+  /** Track any opened transcript modal to close on destroy */
+  private transcriptModal: HTMLIonModalElement;
 
   constructor(
     private templateAssetService: TemplateAssetService,
@@ -255,7 +257,7 @@ export class TmplAudioComponent
   }
 
   private async openTranscriptPopup() {
-    const modal = await this.modalCtrl.create({
+    this.transcriptModal = await this.modalCtrl.create({
       component: TemplatePopupComponent,
       componentProps: {
         props: {
@@ -269,14 +271,13 @@ export class TmplAudioComponent
       cssClass: "template-popup-modal",
       showBackdrop: false,
     });
-    modal.present();
+    this.transcriptModal.present();
   }
 
   async ngOnDestroy() {
     this.player?.stop();
-    const activeModal = await this.modalCtrl.getTop();
-    if (activeModal) {
-      await activeModal.dismiss();
+    if (this.transcriptModal) {
+      await this.transcriptModal.dismiss();
     }
   }
 }
