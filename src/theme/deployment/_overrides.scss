@@ -5,10 +5,11 @@ plh-button > ion-button {
 
 /// Ensure all pages have padding
 ion-content {
-  --padding-top: 24px;
-  --padding-bottom: 24px;
-  --padding-start: 24px;
-  --padding-end: 24px;
+  $default-padding: 24px;
+  --padding-top: var(--page-padding, #{$default-padding});
+  --padding-bottom: var(--page-padding, #{$default-padding});
+  --padding-start: var(--page-padding, #{$default-padding});
+  --padding-end: var(--page-padding, #{$default-padding});
 
   // HACK: prevent scrollbar from hiding when interacting with ion-range, for example (this can cause visual glitches).
   // see https://github.com/ionic-team/ionic-framework/issues/25595#issuecomment-1330293954
@@ -60,10 +61,10 @@ p {
   font-size: var(--font-size-text-large);
 }
 .right {
-  text-align: right;
+  text-align: end;
 }
 .left {
-  text-align: left;
+  text-align: start;
 }
 .center {
   text-align: center;

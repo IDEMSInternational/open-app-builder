@@ -20,7 +20,11 @@ import { RxDBMigrationPlugin } from "rxdb/plugins/migration";
 addRxPlugin(RxDBMigrationPlugin);
 import { RxDBUpdatePlugin } from "rxdb/plugins/update";
 addRxPlugin(RxDBUpdatePlugin);
-import { BehaviorSubject } from "rxjs";
+import { map } from "rxjs";
+import { of } from "rxjs/internal/observable/of";
+import { FlowTypes } from "packages/data-models";
+
+type IDocWithMeta = FlowTypes.Data_listRow & { APP_META?: Record<string, any> };
 
 /**
  * Create a base schema for data
@@ -31,7 +35,7 @@ export const REACTIVE_SCHEMA_BASE: RxJsonSchema<any> = {
   title: "base schema for id-primary key data",
   // NOTE - important to start at 0 and not timestamp (e.g. 20221220) as will check
   // for migration strategies for each version which is hugely inefficient
-  version: 1,
+  version: 2,
   primaryKey: "id",
   type: "object",
   properties: {
@@ -40,6 +44,11 @@ export const REACTIVE_SCHEMA_BASE: RxJsonSchema<any> = {
       maxLength: 128, // <- the primary key must have set maxLength
     },
     row_index: { type: "integer", minimum: 0, maximum: 10000, multipleOf: 1, final: true },
+    APP_META: {
+      type: "object",
+      additionalProperties: true,
+      default: {},
+    },
   },
   required: ["id"],
   indexes: ["row_index"],
@@ -47,6 +56,13 @@ export const REACTIVE_SCHEMA_BASE: RxJsonSchema<any> = {
 const MIGRATIONS: MigrationStrategies = {
   1: (oldDoc) => {
     const newDoc = { ...oldDoc, row_index: 0 };
+    return newDoc;
+  },
+  2: (oldDoc) => {
+    const newDoc = {
+      ...oldDoc,
+      APP_META: oldDoc.APP_META ?? {},
+    };
     return newDoc;
   },
 };
@@ -86,17 +102,26 @@ export class ReactiveMemoryAdapter {
       return undefined;
     }
     const matchedDocs = await collection.findByIds([docId]).exec();
-    const existingDoc: RxDocument<T> = matchedDocs.get(docId);
+    const existingDoc: RxDocument<IDocWithMeta> = matchedDocs.get(docId);
     return existingDoc;
   }
 
-  public query(name: string, queryObj?: MangoQuery) {
+  public query<T extends FlowTypes.Data_listRow>(name: string, queryObj?: MangoQuery) {
     const collection = this.getCollection(name);
     if (!collection) {
       console.error("No db entry", name);
-      return new BehaviorSubject([]);
+      return of([]);
     }
-    return collection.find(queryObj).$;
+    // we need mutable json so that we can replace dynamic references as required
+    // ensure any previously extracted metadata fields are repopulated
+    return collection.find(queryObj).$.pipe(
+      map((docs) =>
+        docs.map((d: RxDocument<T>) => {
+          const data = d.toMutableJSON();
+          return this.populateMeta(data);
+        })
+      )
+    );
   }
 
   /**
@@ -113,6 +138,8 @@ export class ReactiveMemoryAdapter {
     if (data.length > 0) {
       await collection.bulkRemove(data.map((d) => d.id));
     }
+    // Use a pre-insert hook to extract any metadata fields that are unsupported by rxdb
+    collection.preInsert((doc) => this.extractMeta(doc), true);
     return collection;
   }
 
@@ -151,5 +178,29 @@ export class ReactiveMemoryAdapter {
 
   public async removeCollection(collectionName: string) {
     await this.db.collections[collectionName].remove();
+  }
+
+  /**
+   * Iterate over a document's key-value pairs and populate any properties starting with
+   * an underscore to a single top-level APP_META property
+   */
+  private extractMeta(doc: IDocWithMeta) {
+    const APP_META: Record<string, any> = {};
+    const rxdbMetaKeys = ["_attachments", "_deleted", "_meta", "_rev"];
+    for (const [key, value] of Object.entries(doc)) {
+      if (key.startsWith("_") && !rxdbMetaKeys.includes(key)) {
+        APP_META[key] = value;
+        delete doc[key];
+      }
+    }
+    if (Object.keys(APP_META).length > 0) {
+      doc.APP_META = APP_META;
+    }
+    return doc;
+  }
+  /** Populate any previously extracted APP_META properties back to document */
+  private populateMeta(doc: IDocWithMeta) {
+    const { APP_META, ...data } = doc;
+    return { ...data, ...APP_META };
   }
 }
