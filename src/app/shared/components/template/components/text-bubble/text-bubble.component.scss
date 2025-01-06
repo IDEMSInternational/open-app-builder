@@ -143,7 +143,7 @@ $bubble-border-color-4: var(--text-bubble-border-color-4, --ion-color-secondary-
 }
 .container[data-position="right"] {
   .speaker-name {
-    text-align: right;
+    text-align: end;
     right: 80px;
   }
   img.speaker-image {

@@ -43,7 +43,7 @@ export class TemplateContainerComponent implements OnInit, OnDestroy {
   /** unique instance_name of template if created as a child of another template */
   @Input() name: string;
   /** flow_name of template for lookup */
-  templatename = input.required<string>();
+  templatename = input<string>();
   /** reference to parent template (when nested) */
   @Input() parent?: TemplateContainerComponent;
   /** reference to the full row if template instantiated from a parent */
@@ -77,12 +77,20 @@ export class TemplateContainerComponent implements OnInit, OnDestroy {
     public elRef?: ElementRef,
     private route?: ActivatedRoute
   ) {
-    effect(() => {
-      // re-render template whenever input template name changes
-      const templatename = this.templatename();
-      this.hostTemplateName = templatename;
-      this.renderTemplate(templatename);
-    });
+    effect(
+      () => {
+        // re-render template whenever input template name changes
+        // TODO - this isn't passed when running standalone. Should ideally de-couple render/service logic
+        const templatename = this.templatename();
+        if (templatename) {
+          this.hostTemplateName = templatename;
+          this.renderTemplate(templatename);
+        }
+      },
+      // NOTE - pass the injector from the constructor as angular will not be able
+      // to auto-determine injector when called from a standalone template
+      { injector }
+    );
     this.templateActionService = new TemplateActionService(injector, this);
     this.templateRowService = new TemplateRowService(injector, this);
   }
@@ -138,15 +146,12 @@ export class TemplateContainerComponent implements OnInit, OnDestroy {
     if (shouldProcess) {
       if (full) {
         console.log("[Force Reload]", this.name);
-        // ensure angular destroys previous row components before rendering new
-        // (note - will cause short content flicker)
-        this.templateRowService.renderedRows = [];
         // allow time for other pending ops to finish
         await _wait(50);
         await this.renderTemplate(this.templatename());
       } else {
         await this.templateRowService.processRowUpdates();
-        console.log("[Force Reprocess]", this.name, this.templateRowService.renderedRows);
+        console.log("[Force Reprocess]", this.name, this.templateRowService.renderedRows());
         for (const child of Object.values(this.children || {})) {
           await child.forceRerender(full, shouldProcess);
         }
@@ -195,7 +200,7 @@ export class TemplateContainerComponent implements OnInit, OnDestroy {
     log("[Template] Rendered", this.name, {
       template,
       ctxt: { ...this },
-      renderedRows: { ...this.templateRowService.renderedRows },
+      renderedRows: { ...this.templateRowService.renderedRows() },
       rowMap: this.templateRowService.templateRowMap,
     });
     // if a parent exists also provide parent reference to this as a child
