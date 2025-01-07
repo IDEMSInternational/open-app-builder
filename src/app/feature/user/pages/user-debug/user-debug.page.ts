@@ -1,6 +1,7 @@
-import { Component, Injector, OnInit } from "@angular/core";
+import { Component, Injector, OnInit, signal } from "@angular/core";
 import { TemplateActionService } from "src/app/shared/components/template/services/instance/template-action.service";
 import { TemplateFieldService } from "src/app/shared/components/template/services/template-field.service";
+import { AuthService } from "src/app/shared/services/auth/auth.service";
 import { DynamicDataService } from "src/app/shared/services/dynamic-data/dynamic-data.service";
 import { LocalStorageService } from "src/app/shared/services/local-storage/local-storage.service";
 
@@ -21,6 +22,7 @@ export class UserDebugPage implements OnInit {
     private fieldService: TemplateFieldService,
     private dynamicDataService: DynamicDataService,
     private localStorageService: LocalStorageService,
+    public authService: AuthService,
     private injector: Injector
   ) {}
   /** Id of current user */
@@ -28,7 +30,9 @@ export class UserDebugPage implements OnInit {
   /** ID of user to import */
   public importUserId = "";
   /** List of user contact fields */
-  public contactFields: { key: string; value: string }[] = [];
+  public contactFields = signal<{ key: string; value: string }[]>([]);
+  /** List of protected user contact fields */
+  public protectedFields = signal<{ key: string; value: string }[]>([]);
   /** List of user dynamic_data entries */
   public dynamicDataEntries: IDynamicDataEntry[] = [];
   /** Active row selected from list of user dynamic_data entries */
@@ -47,7 +51,7 @@ export class UserDebugPage implements OnInit {
 
   /** Retrieve current user contact fields and dynamic data */
   private async loadUserData() {
-    this.contactFields = this.getUserContactFields();
+    this.loadUserContactFields();
     this.userId = this.fieldService.getField("_app_user_id");
     this.importUserId = this.userId;
     this.dynamicDataEntries = await this.getDynamicDataEntries();
@@ -56,13 +60,14 @@ export class UserDebugPage implements OnInit {
     this.setDynamicEntryView(this.dynamicDataEntries[0]);
   }
 
-  public async importUserData() {
+  public async importUserData(id: string) {
     // mimic `user: import : [id]` template action
     await this.actionService.handleActions([
-      { trigger: "click", action_id: "user", args: ["import", this.importUserId] },
+      { trigger: "click", action_id: "user", args: ["import", id] },
     ]);
     // repopulate contact fields to reflect server sync meta
     await this.loadUserData();
+    location.reload();
   }
 
   public async syncUserData() {
@@ -88,13 +93,14 @@ export class UserDebugPage implements OnInit {
   }
 
   /** Retrieve localStorage entries prefixed by field service prefix */
-  private getUserContactFields() {
+  private loadUserContactFields() {
     const localStorageHashmap = this.localStorageService.getAll();
-    const contactFields = Object.entries<string>(localStorageHashmap).map(([key, value]) => ({
-      key,
-      value,
-    }));
-    return contactFields.sort((a, b) => (a.key > b.key ? 1 : -1));
+    const contactFields = Object.entries<string>(localStorageHashmap)
+      .sort(([a], [b]) => (a > b ? 1 : -1))
+      .map(([key, value]) => ({ key: key.replace("rp-contact-field.", ""), value }));
+
+    this.contactFields.set(contactFields.filter((v) => !v.key.startsWith("_")));
+    this.protectedFields.set(contactFields.filter((v) => v.key.startsWith("_")));
   }
 
   /** Retrieve user dynamic data entries stored in IndexedDB */
