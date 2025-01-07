@@ -53,7 +53,7 @@ $progress-colour: var(--task-progress-bar-color, var(--ion-color-primary));
 .task-progress-wheel {
   .progress-container {
     position: relative;
-    width: 150px;
+    max-width: 150px;
     height: 150px;
     margin-bottom: 48px;
   }

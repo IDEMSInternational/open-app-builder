@@ -8,7 +8,7 @@
         <div
           class="container-radio"
           [class.checked-radio]="form.get('answer').value === radio.name"
-          *ngFor="let radio of valuesFromListAnswers"
+          *ngFor="let radio of answerOptions()"
         >
           <label>
             <input

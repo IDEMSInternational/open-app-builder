@@ -31,7 +31,7 @@ end
 target 'App' do
   capacitor_pods
   # Add your Pods here
-  pod 'FirebaseCore', '~> 10'
+  pod 'FirebaseCore', '~> 11'
 end
 
 post_install do |installer|

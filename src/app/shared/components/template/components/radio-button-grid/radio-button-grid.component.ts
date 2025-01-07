@@ -1,7 +1,11 @@
 import { Component, Input } from "@angular/core";
 import { TemplateBaseComponent } from "../base";
 import { FlowTypes, ITemplateRowProps } from "../../models";
-import { getAnswerListParamFromTemplateRow, IAnswerListItem } from "src/app/shared/utils";
+import {
+  getAnswerListParamFromTemplateRow,
+  getStringParamFromTemplateRow,
+  IAnswerListItem,
+} from "src/app/shared/utils";
 
 interface IRadioButtonGridParams {
   /** List of options presented as radio items */
@@ -21,6 +25,8 @@ interface IRadioButtonGridParams {
    * Default '16px'
    **/
   grid_gap: string;
+  /* TEMPLATE PARAMETER: "variant". The style variant of the button_grid */
+  variant?: "default" | "circle-icon";
 }
 
 @Component({
@@ -67,6 +73,9 @@ export class TmplRadioButtonGridComponent
     this.parameter_list = this._row.parameter_list || ({} as any);
     this.radioItems = getAnswerListParamFromTemplateRow(this._row, "answer_list", []);
     this.gridStyle = this.generateGridStyle();
+    this.parameter_list.variant = getStringParamFromTemplateRow(this._row, "variant", "default")
+      .split(",")
+      .join(" ") as IRadioButtonGridParams["variant"];
   }
 
   /**

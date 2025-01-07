@@ -6,6 +6,7 @@ import {
   sortJsonKeys,
   toEmptyObject,
   arrayToHashmap,
+  filterObjectByKeys,
 } from "./object-utils";
 
 const MOCK_NESTED_OBJECT = {
@@ -22,6 +23,9 @@ const MOCK_NESTED_OBJECT = {
   number: 1,
 };
 
+/**
+ * yarn workspace shared test --filter "Object Utils"
+ */
 describe("Object Utils", () => {
   it("isObjectLiteral", () => {
     expect(isObjectLiteral({})).toEqual(true);
@@ -143,5 +147,9 @@ describe("Object Utils", () => {
       id_2: { id: "id_2", number: 2 },
       id_2_duplicate: { id: "id_2", number: 2.1 },
     });
+  });
+  it("filterObjectByKeys", () => {
+    const res = filterObjectByKeys({ keep: 1, ignore: 2 }, ["keep"]);
+    expect(res).toEqual({ keep: 1 });
   });
 });

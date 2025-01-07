@@ -12,7 +12,9 @@ import { IAppConfigOverride } from "./appConfig";
  *       enabled: false
  *     }
  *     APP_HEADER_DEFAULTS: {
- *       should_show_menu_button: false
+ *       menu_button: {
+ *         hidden: true
+ *       }
  *     }
  *   }
  * }

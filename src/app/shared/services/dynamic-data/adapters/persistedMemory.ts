@@ -28,7 +28,8 @@ interface IPersistedDoc {
   flow_name: string;
   flow_type: string;
   row_id: string;
-  data: any;
+  /** Partial user data overrides to apply */
+  data: Record<string, any>;
 }
 
 /** The full schema is provided for persisted memory */
@@ -36,7 +37,7 @@ const SCHEMA: RxJsonSchema<any> = {
   title: "base schema for id-primary key data",
   // NOTE - important to start at 0 and not timestamp (e.g. 20221220) as will check
   // for migration strategies for each version which is hugely inefficient
-  version: 2,
+  version: 3,
   primaryKey: "id",
   type: "object",
   properties: {
@@ -47,13 +48,12 @@ const SCHEMA: RxJsonSchema<any> = {
     flow_name: { type: "string", maxLength: 64 },
     flow_type: { type: "string", maxLength: 64 },
     row_id: { type: "string", maxLength: 64 },
-    row_index: { type: "integer", minimum: 0, maximum: 10000, multipleOf: 1, final: true },
     data: {
       type: "object",
     },
   },
-  required: ["id", "flow_type", "flow_name", "row_id", "data", "row_index"],
-  indexes: ["flow_type", "flow_name", "row_id", "row_index"],
+  required: ["id", "flow_type", "flow_name", "row_id", "data"],
+  indexes: ["flow_type", "flow_name", "row_id"],
 };
 const MIGRATIONS: MigrationStrategies = {
   // As part of RXDb v14 update all data requires migrating to change metadata fields (no doc data changes)
@@ -62,6 +62,10 @@ const MIGRATIONS: MigrationStrategies = {
   2: (oldDoc) => {
     const newDoc = { ...oldDoc, row_index: 0 };
     return newDoc;
+  },
+  // remove row_index from persisted memory as user writes will never modify
+  3: (doc) => {
+    return doc;
   },
 };
 
@@ -135,11 +139,20 @@ export class PersistedMemoryAdapter {
     this.persistStateToDB();
   }
 
-  public delete(flow_type: FlowTypes.FlowType, flow_name: string) {
-    if (this.get(flow_type, flow_name)) {
-      delete this.state[flow_type][flow_name];
-      this.persistStateToDB();
+  public delete(flow_type: FlowTypes.FlowType, flow_name: string, ids?: string[]) {
+    const stateRef = this.get(flow_type, flow_name);
+    if (!stateRef) return;
+    // delete individuals
+    if (ids) {
+      for (const id of ids) {
+        delete this.state[flow_type][flow_name][id];
+      }
     }
+    // delete all
+    else {
+      delete this.state[flow_type][flow_name];
+    }
+    this.persistStateToDB();
   }
 
   /** Trigger persist handler. Requests will be debounced and notified when complete */

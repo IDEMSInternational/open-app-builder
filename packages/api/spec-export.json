@@ -130,6 +130,39 @@
         ]
       }
     },
+    "/auth_users/{auth_user_id}": {
+      "get": {
+        "operationId": "AuthUsersController_findOne",
+        "summary": "Get auth user profile",
+        "parameters": [
+          {
+            "name": "auth_user_id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-deployment-db-name",
+            "in": "header",
+            "description": "Name of db for deployment to populate",
+            "schema": {
+              "type": "string",
+              "default": "plh"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Auth Users"
+        ]
+      }
+    },
     "/contact_fields": {
       "get": {
         "operationId": "ContactFieldController_findAll",
@@ -339,7 +372,7 @@
   "info": {
     "title": "IDEMS Apps API",
     "description": "App-Server Communication",
-    "version": "1.4.4",
+    "version": "1.6.0",
     "contact": {}
   },
   "tags": [

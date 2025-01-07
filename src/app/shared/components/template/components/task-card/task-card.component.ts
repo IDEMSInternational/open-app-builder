@@ -30,6 +30,12 @@ interface ITaskCardParams {
    * as their completion is calculated by the completion of their constituent tasks
    */
   completed_field: string;
+  /**
+   * TEMPLATE PARAMETER: completed_column_name.
+   * The name of the column in the referenced task_group_data data list that tracks the completed value of each subtask.
+   * Deafult "completed"
+   * */
+  completed_column_name: string;
   /** The title to display on the task card */
   title: string;
   /**
@@ -97,6 +103,7 @@ export class TmplTaskCardComponent extends TemplateBaseComponent implements OnIn
   taskGroupId: string | null;
   taskGroupDataList: string | null;
   completedField: string | null;
+  completedColumnName: string | null;
   taskId: string | null;
   title: string | null;
   subtitle: string | null;
@@ -123,6 +130,11 @@ export class TmplTaskCardComponent extends TemplateBaseComponent implements OnIn
     this.taskGroupId = getStringParamFromTemplateRow(this._row, "task_group_id", null);
     this.taskGroupDataList = getStringParamFromTemplateRow(this._row, "task_group_data", null);
     this.completedField = getStringParamFromTemplateRow(this._row, "completed_field", null);
+    this.completedColumnName = getStringParamFromTemplateRow(
+      this._row,
+      "completed_column_name",
+      "completed"
+    );
     this.taskId = getStringParamFromTemplateRow(this._row, "task_id", null);
     this.title = getStringParamFromTemplateRow(this._row, "title", null);
     this.subtitle = getStringParamFromTemplateRow(this._row, "subtitle", null);

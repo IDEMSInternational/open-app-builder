@@ -83,24 +83,33 @@ const APP_ROUTE_DEFAULTS = {
   ],
 };
 
-export type IHeaderColourOptions = "primary" | "secondary" | "none";
+export type IHeaderFooterBackgroundOptions = "primary" | "secondary" | "none";
+/** The "compact" variant reduces the header height and removes the title */
 export type IHeaderVariantOptions = "default" | "compact";
 
-const APP_HEADER_DEFAULTS = {
-  title: "App",
+interface IAppConfigHeader {
+  back_button: {
+    hidden?: boolean;
+  };
+  collapse: boolean;
+  colour: IHeaderFooterBackgroundOptions;
+  hidden?: boolean;
+  menu_button: {
+    hidden?: boolean;
+  };
+  template: string | null;
+  title: string;
+  variant: IHeaderVariantOptions;
+}
+
+const APP_HEADER_DEFAULTS: IAppConfigHeader = {
+  back_button: {},
   collapse: false,
-  colour: "primary" as IHeaderColourOptions,
-  // The "compact" variant reduces the header height and removes the title
-  variant: "default" as IHeaderVariantOptions,
-  // default only show menu button on home screen
-  should_show_menu_button: (location: Location) =>
-    activeRoute(location) === APP_ROUTE_DEFAULTS.home_route,
-  // default show back button on all screens except home screen
-  should_show_back_button: (location: Location) =>
-    activeRoute(location) !== APP_ROUTE_DEFAULTS.home_route,
-  // on device minimize app when back button pressed from home screen
-  should_minimize_app_on_back: (location: Location) =>
-    activeRoute(location) === APP_ROUTE_DEFAULTS.home_route,
+  colour: "primary",
+  menu_button: {},
+  template: null,
+  title: "App",
+  variant: "default",
 };
 
 /**
@@ -113,8 +122,13 @@ const activeRoute = (location: Location) => {
   return path;
 };
 
-const APP_FOOTER_DEFAULTS: { templateName: string | null } = {
-  templateName: null,
+const APP_FOOTER_DEFAULTS = {
+  templateName: null as string | null,
+  background: "primary" as IHeaderFooterBackgroundOptions,
+};
+
+const LAYOUT = {
+  page_padding: "24px",
 };
 
 const APP_SIDEMENU_DEFAULTS = {
@@ -128,10 +142,11 @@ const APP_SIDEMENU_DEFAULTS = {
   should_show_deployment_name: false,
 };
 
-const APP_AUTHENTICATION_DEFAULTS = {
-  enforceLogin: false,
-  signInTemplate: "sign_in",
-};
+/**
+ * @deprecated 0.18.0
+ * Use `deployment.auth` to configure auth
+ */
+const APP_AUTHENTICATION_DEFAULTS = {};
 
 type IAppLaunchAction = {
   type: "template_popup" | "tour_start";
@@ -205,6 +220,7 @@ const APP_CONFIG = {
   APP_UPDATES,
   ASSET_PACKS,
   FEEDBACK_MODULE_DEFAULTS,
+  LAYOUT,
   NOTIFICATIONS_SYNC_FREQUENCY_MS,
   NOTIFICATION_DEFAULTS,
   SERVER_SYNC_FREQUENCY_MS,
