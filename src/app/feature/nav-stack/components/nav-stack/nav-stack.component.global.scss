@@ -21,10 +21,11 @@ ion-modal.nav-stack-modal {
     border-radius: var(--border-radius) var(--border-radius) 0 0;
     position: absolute;
     bottom: 0px;
+    padding-bottom: calc(0px + var(--ion-safe-area-bottom, 0));
   }
 
   ion-toolbar {
-    --background: var(--ion-color-background);
+    --background: var(--ion-background-color);
     --color: var(--ion-color-primary);
   }
 }

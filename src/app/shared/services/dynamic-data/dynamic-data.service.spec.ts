@@ -4,16 +4,31 @@ import { firstValueFrom } from "rxjs";
 
 import { DynamicDataService } from "./dynamic-data.service";
 import { AppDataService } from "../data/app-data.service";
-import { MockAppDataService } from "../data/app-data.service.spec";
+import { MockAppDataService } from "../data/app-data.service.mock.spec";
 import { DeploymentService } from "../deployment/deployment.service";
 import { MockDeploymentService } from "../deployment/deployment.service.spec";
+import { FlowTypes } from "packages/data-models";
 
-const TEST_DATA_ROWS = [
+type ITestRow = { id: string; number: number; string: string; boolean: boolean; _meta_field?: any };
+
+const TEST_DATA_ROWS = (): FlowTypes.Data_listRow<ITestRow>[] => [
   { id: "id1", number: 1, string: "hello", boolean: true, _meta_field: { test: "hello" } },
   { id: "id2", number: 2, string: "goodbye", boolean: false },
   { id: "id0", number: 3, string: "goodbye", boolean: false },
 ];
-type ITestRow = (typeof TEST_DATA_ROWS)[number];
+
+const TEST_DATA_LIST = (): FlowTypes.Data_list => ({
+  flow_name: "test_flow",
+  flow_type: "data_list",
+  // Make deep clone of data to avoid data overwrite issues
+  rows: TEST_DATA_ROWS(),
+  // Metadata would be extracted from parser based on data or defined schema
+  _metadata: {
+    boolean: { type: "boolean" },
+    number: { type: "number" },
+    _meta_field: { type: "object" },
+  },
+});
 
 /**
  * Call standalone tests via:
@@ -30,14 +45,7 @@ describe("DynamicDataService", () => {
         {
           provide: AppDataService,
           useValue: new MockAppDataService({
-            data_list: {
-              test_flow: {
-                flow_name: "test_flow",
-                flow_type: "data_list",
-                // Make deep clone of data to avoid data overwrite issues
-                rows: JSON.parse(JSON.stringify(TEST_DATA_ROWS)),
-              },
-            },
+            data_list: { test_flow: TEST_DATA_LIST() },
           }),
         },
         {

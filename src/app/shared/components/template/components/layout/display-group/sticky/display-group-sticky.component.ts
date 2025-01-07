@@ -1,6 +1,7 @@
 import {
   AfterViewInit,
   Component,
+  HostBinding,
   input,
   OnDestroy,
   signal,
@@ -18,6 +19,12 @@ import {
 export class TmplDisplayGroupStickyComponent implements AfterViewInit, OnDestroy {
   position = input.required<"top" | "bottom">();
   height = signal(0);
+  // use hostBinding to specify host top/bottom as signals do not nicely
+  // map to hostAttribute https://github.com/angular/angular/issues/53888
+  @HostBinding("attr.sticky-position")
+  get stickyPosition() {
+    return this.position();
+  }
 
   private resizeObserver = new ResizeObserver((entries) => this.handleSizeChange(entries));
 

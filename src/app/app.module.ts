@@ -38,16 +38,16 @@ export function lottiePlayerFactory() {
     BrowserAnimationsModule,
     IonicModule.forRoot(),
     AppRoutingModule,
+    TemplateComponentsModule,
+    DeploymentFeaturesModule,
     HttpClientModule,
     SharedModule,
     FormsModule,
     LottieModule.forRoot({ player: lottiePlayerFactory }),
     // NOTE CC 2021-11-04 not sure if cache causes issues or not https://github.com/ngx-lottie/ngx-lottie/issues/115
     // LottieCacheModule.forRoot(),
-    TemplateComponentsModule,
     TourModule,
     ContextMenuModule,
-    DeploymentFeaturesModule,
   ],
   providers: [
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
