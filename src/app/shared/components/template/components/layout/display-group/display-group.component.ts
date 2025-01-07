@@ -70,11 +70,15 @@ export class TmplDisplayGroupComponent extends TemplateBaseComponent implements 
 
   private getBackgroundImageStyles() {
     // only generate background image styles if asset included
-    const backgroundImageAsset = getStringParamFromTemplateRow(this._row, "background_image_asset");
-    if (!backgroundImageAsset) return {};
+    this.params.backgroundImageAsset = getStringParamFromTemplateRow(
+      this._row,
+      "background_image_asset",
+      ""
+    );
+    if (!this.params.backgroundImageAsset) return {};
     // retrieve the image asset url in the same way plh_asset pipe does
     // assign background position and size styles and return
-    const url = this.templateAssetService.getTranslatedAssetPath(backgroundImageAsset);
+    const url = this.templateAssetService.getTranslatedAssetPath(this.params.backgroundImageAsset);
     const backgroundImage = `url(${url})`;
     const backgroundPosition = getStringParamFromTemplateRow(
       this._row,
