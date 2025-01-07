@@ -2,6 +2,10 @@ import type { FlowTypes } from "packages/data-models/flowTypes";
 import { JSEvaluator } from "packages/shared/src/models/jsEvaluator/jsEvaluator";
 import { shuffleArray } from "src/app/shared/utils";
 
+/** List of operations should by item pipe (exported to allow extraction from parameter_list by task-progress-bar */
+export const ITEM_PIPE_OPERATOR_NAMES = ["shuffle", "sort", "filter", "reverse", "limit"] as const;
+type IOperationName = (typeof ITEM_PIPE_OPERATOR_NAMES)[number];
+
 export class ItemDataPipe {
   public process(data: any[], operations: { name: string; arg?: string }[]) {
     for (const { name, arg } of operations) {
@@ -15,7 +19,7 @@ export class ItemDataPipe {
     return data;
   }
 
-  private operations = {
+  private operations: Record<IOperationName, (items: any[], arg?: string) => any> = {
     shuffle: (items: any[] = []) => {
       return shuffleArray(items);
     },

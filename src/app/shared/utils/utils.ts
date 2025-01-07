@@ -192,7 +192,7 @@ export function getParamFromTemplateRow(
 export function getStringParamFromTemplateRow(
   row: FlowTypes.TemplateRow,
   name: string,
-  _default: string
+  _default: string = ""
 ): string {
   const paramValue = getParamFromTemplateRow(row, name, _default) as string;
   return paramValue ? `${paramValue}` : paramValue;
@@ -223,7 +223,6 @@ export function getAnswerListParamFromTemplateRow(
   _default: IAnswerListItem[]
 ): IAnswerListItem[] {
   const params = row.parameter_list || {};
-  console.log(params[name]);
   return params.hasOwnProperty(name) ? parseAnswerList(params[name]) : _default;
 }
 

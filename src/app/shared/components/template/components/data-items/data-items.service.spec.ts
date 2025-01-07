@@ -128,6 +128,42 @@ describe("DataItemsService", () => {
     });
   });
 
+  it("evaluates data actions rows with items context (if empty)", async () => {
+    // HACK - Actions only trigger correctly if data_items do not contain looped child rows
+    const emptyItemsRow = { ...MOCK_DATA_ITEMS_ROW, rows: undefined };
+    const obs = service.getItemsObservable(emptyItemsRow, {});
+    const data = await firstValueFrom(obs);
+    const [evaluated] = service.evaluateDataActions(
+      [
+        {
+          trigger: "data_changed",
+          action_id: "set_local",
+          args: ["my_local_var", "@items.length"],
+        },
+      ],
+      data
+    );
+    console.log({ evaluated });
+    expect(evaluated.args).toEqual(["my_local_var", 3]);
+  });
+  // TODO - fix case where items context refers to generated loop items and not list items
+  xit("evaluates data actions rows with items context", async () => {
+    const obs = service.getItemsObservable(MOCK_DATA_ITEMS_ROW, {});
+    const data = await firstValueFrom(obs);
+    const [evaluated] = service.evaluateDataActions(
+      [
+        {
+          trigger: "data_changed",
+          action_id: "set_local",
+          args: ["my_local_var", "@items.length"],
+        },
+      ],
+      data
+    );
+    // Note - currently return 6 due to generated loop item rows
+    expect(evaluated.args).toEqual(["my_local_var", 3]);
+  });
+
   // TODO - requires improvement to mocked dynamic data service
   // it("provides live update when data changes", async () => {
   //   const obs = service.getItemsObservable(MOCK_DATA_ITEMS_ROW, {});

@@ -32,12 +32,12 @@ const MOCK_SKIN_2: IAppSkin = {
 
 const MOCK_APP_CONFIG: Partial<IAppConfig> = {
   APP_HEADER_DEFAULTS: {
+    back_button: {},
+    menu_button: {},
+    template: null,
     title: "default",
     collapse: false,
     colour: "none",
-    should_minimize_app_on_back: () => true,
-    should_show_back_button: () => true,
-    should_show_menu_button: () => true,
     variant: "default",
   },
   APP_SKINS: {
@@ -50,6 +50,7 @@ const MOCK_APP_CONFIG: Partial<IAppConfig> = {
   },
   APP_FOOTER_DEFAULTS: {
     templateName: "mock_footer",
+    background: "primary",
   },
 };
 
@@ -88,6 +89,7 @@ describe("SkinService", () => {
   it("does not change non-overridden values", () => {
     expect(service["appConfigService"].appConfig().APP_FOOTER_DEFAULTS).toEqual({
       templateName: "mock_footer",
+      background: "primary",
     });
   });
 
@@ -96,53 +98,11 @@ describe("SkinService", () => {
     expect(service.getActiveSkinName()).toEqual("MOCK_SKIN_2");
   });
 
-  it("generates override and revert configs", () => {
-    expect(service["revertOverride"]).toEqual({
-      APP_HEADER_DEFAULTS: { title: "default", colour: "none" },
-    });
-  });
-
-  it("reverts previous override when applying another skin", () => {
-    // MOCK_SKIN_1 will already be applied on load
-    const override = service["generateOverrideConfig"](MOCK_SKIN_2);
-    // creates a deep merge of override properties on top of current
-    expect(override).toEqual({
-      APP_HEADER_DEFAULTS: {
-        // revert changes only available in skin_1
-        colour: "none",
-        // apply changes from skin_2
-        title: "mock 2",
-        variant: "compact",
-      },
-    });
-    const revert = service["generateRevertConfig"](MOCK_SKIN_2);
-
-    // creates config revert to undo just the skin changes
-    expect(revert).toEqual({
-      APP_HEADER_DEFAULTS: {
-        // only revert changes remaining from skin_2
-        title: "default",
-        variant: "default",
-      },
-    });
-  });
-
   it("sets skin: sets active skin name", () => {
     service["setSkin"](MOCK_SKIN_2.name);
     expect(service.getActiveSkinName()).toEqual("MOCK_SKIN_2");
     service["setSkin"](MOCK_SKIN_1.name);
     expect(service.getActiveSkinName()).toEqual("MOCK_SKIN_1");
-  });
-
-  it("sets skin: sets revertOverride correctly", () => {
-    // MOCK_SKIN_1 will already be applied on load
-    service["setSkin"](MOCK_SKIN_2.name);
-    expect(service["revertOverride"]).toEqual({
-      APP_HEADER_DEFAULTS: {
-        title: "default",
-        variant: "default",
-      },
-    });
   });
 
   it("sets skin: updates AppConfigService.appConfig values", () => {
