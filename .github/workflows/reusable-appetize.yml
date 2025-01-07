@@ -22,7 +22,9 @@ env:
 
 
 on:
- workflow_call:
+  pull_request:
+    types: [labeled, synchronize]
+  workflow_call:
 
 jobs:
 
@@ -31,7 +33,9 @@ jobs:
       uses: ./.github/workflows/reusable-android-build.yml
       secrets: inherit
       with:
-        branch: ${{ github.base_ref }} 
+        branch: ${{ github.ref }} 
+      permissions:
+        contents: read
    
   test_appetize:
     needs: build
