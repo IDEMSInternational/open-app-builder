@@ -20,7 +20,7 @@ ion-modal.nav-stack-modal {
   &::part(content) {
     border-radius: var(--border-radius) var(--border-radius) 0 0;
     position: absolute;
-    bottom: 0px;
+    bottom: calc(0px + var(--ion-safe-area-bottom, 0));
   }
 
   ion-toolbar {
