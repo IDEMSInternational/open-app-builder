@@ -44,6 +44,12 @@
         <plh-main-header
           [style.display]="headerConfig().hidden ? 'none' : 'block'"
         ></plh-main-header>
+        <!-- Add spacer element when header is hidden to account for safe area (native status bar, notch etc.) -->
+        <div
+          class="safe-area-spacer"
+          [style.display]="headerConfig().hidden ? 'block' : 'none'"
+          [style.height]="'var(--ion-safe-area-top, 0)'"
+        ></div>
         <div class="route-container" [ngStyle]="routeContainerStyle()">
           <ion-router-outlet id="main-content"></ion-router-outlet>
         </div>
