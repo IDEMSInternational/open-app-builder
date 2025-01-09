@@ -1216,6 +1216,11 @@ body[data-theme="plh_kids_kw"] {
     .progress-path {
       display: grid;
       grid-template-columns: 1fr 430px 1fr;
+      overflow-y: scroll;
+      scrollbar-width: none;
+      &::-webkit-scrollbar {
+        display: none;
+      }
       .wrapper {
         height: 100%;
         max-height: 750px;
