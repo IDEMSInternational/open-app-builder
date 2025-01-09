@@ -1027,10 +1027,67 @@ body[data-theme="plh_kids_kw"] {
       }
     }
     .circle-card-wrapper {
-      .circle-wrapper {
-        filter: none !important;
-        border: 1px solid #e1e2e4 !important;
-        box-shadow: 0px 2px 8px rgba($color: #000000, $alpha: 0.1);
+      .image-and-badge-wrapper {
+        .circle-wrapper {
+          filter: none !important;
+          border: 2px solid #edeeef !important;
+          box-shadow: -2px 2px 5px rgba($color: #7e8386, $alpha: 0.8);
+          background-color: #e7e8e9;
+
+          display: flex;
+          align-items: center;
+          justify-content: center;
+
+          position: relative;
+          height: 80px !important;
+          width: 80px !important;
+        }
+        img {
+          opacity: 0.5 !important;
+          border-radius: 50% !important;
+          width: 80% !important;
+          height: 80% !important;
+        }
+        .locked-image {
+          display: flex !important;
+          position: absolute;
+          margin: 0 auto;
+          top: 0px;
+          left: 0px;
+          right: 0px;
+          bottom: 0px;
+
+          align-items: center;
+          justify-content: center;
+
+          img {
+            width: 36px;
+            max-width: 40px;
+            object-fit: contain;
+            opacity: 1 !important;
+          }
+        }
+        .circle-wrapper.inProgress {
+          border: 4px solid #c99529 !important;
+          box-shadow: 0px 2px 12px rgba($color: #007fbf, $alpha: 0.7);
+          width: 95px !important;
+          height: 95px !important;
+          img {
+            opacity: 1 !important;
+          }
+        }
+        .circle-wrapper.completed {
+          border: 4px solid var(--ion-color-secondary-200) !important;
+          box-shadow: none !important;
+          img {
+            opacity: 1 !important;
+            width: 100% !important;
+            height: 100% !important;
+          }
+        }
+        .badge {
+          display: none !important;
+        }
       }
     }
   }
@@ -1149,6 +1206,90 @@ body[data-theme="plh_kids_kw"] {
         .close-button {
           border: 0.8px solid var(--color-secondary-blue-80);
           color: var(--color-secondary-blue-50);
+        }
+      }
+    }
+  }
+
+  // Plh Progress Path
+  plh-plh-progress-path {
+    .progress-path {
+      display: grid;
+      grid-template-columns: 1fr 430px 1fr;
+      .wrapper {
+        height: 100%;
+        max-height: 750px;
+        background-position: center;
+        background-repeat: no-repeat;
+        position: relative;
+        grid-column: 2/3;
+      }
+      .path-segment {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        svg {
+          stroke-width: 26px;
+          stroke: var(--color-surface-white-variant) !important;
+          opacity: 0.85;
+        }
+      }
+      .progress-path-child-wrapper {
+        position: absolute;
+        height: 100%;
+        margin: 0 auto;
+        top: 0;
+        left: 0;
+        .progress-path-child-content-wrapper {
+          height: 100%;
+          position: relative;
+        }
+        .progress-path-child-content {
+          position: absolute !important;
+          plh-task-card {
+            .circle-card-wrapper {
+              .title-wrapper {
+                display: none;
+              }
+            }
+          }
+          &:nth-child(1) {
+            bottom: 20px;
+            left: 40%;
+          }
+          &:nth-child(2) {
+            bottom: 108px;
+            right: 12px;
+          }
+          &:nth-child(3) {
+            bottom: 198px;
+            right: 130px;
+          }
+          &:nth-child(4) {
+            bottom: 210px;
+            left: 28px;
+          }
+          &:nth-child(5) {
+            top: 230px;
+            left: 14px;
+          }
+          &:nth-child(6) {
+            top: 216px;
+            left: 188px;
+          }
+          &:nth-child(7) {
+            top: 133px;
+            right: 10px;
+          }
+          &:nth-child(8) {
+            top: 65px;
+            right: 139px;
+          }
+          &:nth-child(9) {
+            top: 10px;
+            left: 54px;
+          }
         }
       }
     }
