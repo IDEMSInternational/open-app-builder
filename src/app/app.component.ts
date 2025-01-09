@@ -27,7 +27,6 @@ import { LocalNotificationInteractionService } from "./shared/services/notificat
 import { DBSyncService } from "./shared/services/db/db-sync.service";
 import { CrashlyticsService } from "./shared/services/crashlytics/crashlytics.service";
 import { AppDataService } from "./shared/services/data/app-data.service";
-import { AuthService } from "./shared/services/auth/auth.service";
 import { LifecycleActionsService } from "./shared/services/lifecycle-actions/lifecycle-actions.service";
 import { AppConfigService } from "./shared/services/app-config/app-config.service";
 import { TaskService } from "./shared/services/task/task.service";
@@ -51,7 +50,6 @@ import { TemplateMetadataService } from "./shared/components/template/services/t
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AppComponent {
-  headerConfig = computed(() => this.appConfigService.appConfig().APP_HEADER_DEFAULTS);
   footerConfig = computed(() => this.appConfigService.appConfig().APP_FOOTER_DEFAULTS);
   sideMenuConfig = computed(() => this.appConfigService.appConfig().APP_SIDEMENU_DEFAULTS);
   layoutConfig = computed(() => this.appConfigService.appConfig().LAYOUT);
