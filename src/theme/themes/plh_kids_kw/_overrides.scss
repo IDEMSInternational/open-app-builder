@@ -1169,7 +1169,6 @@ body[data-theme="plh_kids_kw"] {
       .popup-container {
         min-height: 70vh;
         padding: 0 1.4rem;
-        margin-top: -28px;
         .popup-content {
           background: linear-gradient(
             310deg,
@@ -1206,6 +1205,7 @@ body[data-theme="plh_kids_kw"] {
         .close-button {
           border: 0.8px solid var(--color-secondary-blue-80);
           color: var(--color-secondary-blue-50);
+          top: 0px;
         }
       }
     }
