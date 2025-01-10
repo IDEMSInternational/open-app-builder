@@ -394,7 +394,7 @@ export class TmplMapComponent extends TemplateBaseComponent implements AfterView
 
         const geometryType = feature.getGeometry().getType();
         const overrideColour = feature.get("overrideColour");
-        if (geometryType === "Polygon") {
+        if (geometryType === "Polygon" || geometryType === "MultiPolygon") {
           if (overrideColour) {
             return new Style({
               fill: new Fill({
