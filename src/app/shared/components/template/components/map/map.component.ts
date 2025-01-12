@@ -188,6 +188,18 @@ export class TmplMapComponent extends TemplateBaseComponent implements AfterView
     }
   }
 
+  public getSliderOptions(mapLayer: any) {
+    const scaleIncrement = mapLayer.get("scaleIncrement") || mapLayer.get("scaleMax") / 10;
+    return {
+      disabled: !mapLayer.get("scaleSlider"),
+      floor: mapLayer.get("scaleMin"),
+      ceil: mapLayer.get("scaleMax"),
+      step: scaleIncrement,
+      showTicks: !mapLayer.get("scaleSlider") || !!mapLayer.get("scaleIncrement"),
+      showTicksValues: !mapLayer.get("scaleSlider") || !!mapLayer.get("scaleIncrement"),
+    };
+  }
+
   private async initialiseMap() {
     this.map = new Map({
       layers: [
