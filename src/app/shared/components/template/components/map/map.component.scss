@@ -101,6 +101,13 @@ $map-height: 70vh;
       .ngx-slider-tick.ngx-slider-selected {
         background: white;
       }
+
+      &.disabled {
+        .ngx-slider-pointer {
+          // Hide element but preserve styling
+          visibility: hidden !important;
+        }
+      }
     }
   }
 }
