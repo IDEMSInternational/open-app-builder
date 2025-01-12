@@ -11,26 +11,33 @@
               </div>
               <div class="scale-container">
                 @if (mapLayer.get("scaleSlider")) {
-                  <ion-range
-                    [dualKnobs]="true"
-                    [value]="{ lower: 0, upper: 100 }"
+                  <ngx-slider
+                    [value]="mapLayer.get('scaleMin')"
+                    [highValue]="mapLayer.get('scaleMax')"
+                    [options]="{
+                      floor: mapLayer.get('scaleMin'),
+                      ceil: mapLayer.get('scaleMax'),
+                      step: mapLayer.get('scaleIncrement') || mapLayer.get('scaleMax') / 10,
+                      showTicks: !!mapLayer.get('scaleIncrement'),
+                      showTicksValues: !!mapLayer.get('scaleIncrement')
+                    }"
+                    (userChangeEnd)="handleSliderChange($event, mapLayer)"
                     [ngStyle]="{ '--bar-background': mapLayer.get('gradientFill') }"
-                    (ionChange)="handleSliderChange($event, mapLayer)"
-                  ></ion-range>
+                  ></ngx-slider>
                 } @else {
                   <div
                     class="colour-scale"
                     [ngStyle]="{ 'background-image': mapLayer.get('gradientFill') }"
                   ></div>
+                  <div class="scale-labels">
+                    <div class="scale-label max">
+                      {{ mapLayer.get("scaleMax") }}
+                    </div>
+                    <div class="scale-label min">
+                      {{ mapLayer.get("scaleMin") }}
+                    </div>
+                  </div>
                 }
-                <div class="scale-labels">
-                  <div class="scale-label max">
-                    {{ mapLayer.get("scaleMax") }}
-                  </div>
-                  <div class="scale-label min">
-                    {{ mapLayer.get("scaleMin") }}
-                  </div>
-                </div>
               </div>
             </div>
           }
