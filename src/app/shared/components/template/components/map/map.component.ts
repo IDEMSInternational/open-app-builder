@@ -19,6 +19,7 @@ import chroma from "chroma-js";
 import BaseLayer from "ol/layer/Base";
 import { RangeCustomEvent } from "@ionic/angular";
 import { Feature } from "ol";
+import { ChangeContext } from "@angular-slider/ngx-slider";
 
 interface IMapLayer {
   id: string;
@@ -37,6 +38,8 @@ interface IMapLayer {
   gradient_palette: string[];
   scale_max: number;
   scale_min: number;
+  /** The size of the steps on the scale */
+  scale_increment: number;
   scale_bins: number[];
   scale_slider: boolean;
   /** Colour to set those features outside of slider range. Default is to set them to be hidden */
@@ -147,28 +150,15 @@ export class TmplMapComponent extends TemplateBaseComponent implements AfterView
    */
   public handleSliderChange(event: any, mapLayer: BaseLayer) {
     // Only works on vector layers
-    const { lower, upper } = (event as RangeCustomEvent).detail.value as {
-      lower: number;
-      upper: number;
-    };
+    const { value: lower, highValue: upper } = event as ChangeContext;
     const vectorLayer = mapLayer as VectorLayer;
     const propertyName = vectorLayer.get("propertyToPlot");
 
-    const scaleMax = vectorLayer.get("scaleMax");
-    const scaleMin = vectorLayer.get("scaleMin");
-    const excludedFeaturesColour = vectorLayer.get("excludedFeaturesColour");
-
-    const normaliseValue = (value: number) => {
-      return scaleMin + (value / 100) * (scaleMax - scaleMin);
-    };
-
-    const lowerNormalised = normaliseValue(lower);
-    const upperNormalised = normaliseValue(upper);
-
     const filterFeatures = (feature: Feature) => {
       const value = feature.get(propertyName);
-      return value >= lowerNormalised && value <= upperNormalised;
+      return value >= lower && value <= upper;
     };
+    const excludedFeaturesColour = vectorLayer.get("excludedFeaturesColour");
     vectorLayer.getSource().forEachFeature((feature: Feature) => {
       if (excludedFeaturesColour) {
         feature.set("overrideColour", !filterFeatures(feature));
@@ -316,6 +306,7 @@ export class TmplMapComponent extends TemplateBaseComponent implements AfterView
       gradient_palette,
       scale_max,
       scale_min,
+      scale_increment,
       scale_bins,
       scale_title,
       source_asset,
@@ -350,6 +341,7 @@ export class TmplMapComponent extends TemplateBaseComponent implements AfterView
       propertyToPlot,
       scaleMax: scale_max,
       scaleMin: scale_min,
+      scaleIncrement: scale_increment,
       scaleTitle: scale_title,
       scaleColours: gradient_palette,
     });
@@ -366,6 +358,7 @@ export class TmplMapComponent extends TemplateBaseComponent implements AfterView
       gradient_palette,
       scale_max,
       scale_min,
+      scale_increment,
       scale_title,
       source_asset,
       stroke,
@@ -488,6 +481,7 @@ export class TmplMapComponent extends TemplateBaseComponent implements AfterView
       description,
       scaleMax: scale_max,
       scaleMin: scale_min,
+      scaleIncrement: scale_increment,
       scaleTitle: scale_title,
       scaleColours,
       scaleSlider: scale_slider,
@@ -531,6 +525,7 @@ export class TmplMapComponent extends TemplateBaseComponent implements AfterView
       visible?: boolean;
       name: string;
       description?: string;
+      scaleIncrement?: number;
       scaleMax?: number;
       scaleMin?: number;
       scaleTitle?: string;
@@ -545,6 +540,7 @@ export class TmplMapComponent extends TemplateBaseComponent implements AfterView
       visible,
       name,
       description,
+      scaleIncrement,
       scaleMax,
       scaleMin,
       scaleTitle,
@@ -563,6 +559,7 @@ export class TmplMapComponent extends TemplateBaseComponent implements AfterView
     layer.set("name", name);
     layer.set("description", description);
     layer.set("gradientFill", cssGradientFill);
+    layer.set("scaleIncrement", scaleIncrement);
     layer.set("scaleMax", scaleMax);
     layer.set("scaleMin", scaleMin);
     layer.set("scaleTitle", scaleTitle);
