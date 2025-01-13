@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, computed, effect } from "@angular/core";
+import { ChangeDetectionStrategy, Component, computed, effect, OnInit } from "@angular/core";
 import { FlowTypes } from "../../models";
 import { TemplateBaseComponent } from "../base";
 import { DataItemsService } from "./data-items.service";
@@ -17,7 +17,7 @@ import { switchMap, filter } from "rxjs";
  *
  * - Should be refactored to handle at container level without rendered UI
  */
-export class TmplDataItemsComponent extends TemplateBaseComponent {
+export class TmplDataItemsComponent extends TemplateBaseComponent implements OnInit {
   // HACK - create signal from combination of signals and observables
   // https://github.com/angular/angular/issues/53519
   public itemRows = toSignal(
@@ -46,6 +46,10 @@ export class TmplDataItemsComponent extends TemplateBaseComponent {
     });
   }
 
+  ngOnInit() {
+    this.hackInterceptSetLocalActions();
+  }
+
   /** Trigger a `data_changed` action and evaluate with items list context */
   private async hackTriggerDataChangedActions(
     actions: FlowTypes.TemplateRowAction[] = [],
@@ -58,5 +62,22 @@ export class TmplDataItemsComponent extends TemplateBaseComponent {
   private subscribeToDynamicData(row: FlowTypes.TemplateRow) {
     const { templateRowMap } = this.parent;
     return this.dataItemsService.getItemsObservable(row, templateRowMap);
+  }
+
+  /**
+   * Prevent child components triggering set_local actions that would update the value of a component
+   * within the data_items loop. These are not synced with the parent templateRowMap, and instead require
+   * the author to explicitly use a set_item action. This applies to any component that internally calls `setValue`
+   */
+  private hackInterceptSetLocalActions() {
+    this.parent.templateActionService.handleActionsInterceptor = async (actions) => {
+      return actions.filter((action) => {
+        if (action.action_id === "set_local") {
+          const [nestedName] = action.args;
+          return nestedName in this.parent.templateRowMap;
+        }
+        return true;
+      });
+    };
   }
 }
