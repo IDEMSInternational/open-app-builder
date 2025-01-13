@@ -165,8 +165,23 @@ export class TemplateActionService extends SyncServiceBase {
         const selfField = arg.split(".")[1];
         arg = this.container?.templateRowMap[action._triggeredBy?._nested_name]?.[selfField];
       }
+
       return arg;
     });
+
+    // HACK – If a set_local action targets the row that triggered it, update the template row map to make this row available
+    if (action.action_id === "set_local" && this.container) {
+      const { _triggeredBy: triggerRow } = action;
+      const { _nested_name } = triggerRow;
+      const [setLocalKey] = action.args;
+
+      if (
+        setLocalKey === _nested_name &&
+        !this.container.templateRowMap.hasOwnProperty(_nested_name)
+      ) {
+        this.container.templateRowMap[_nested_name] = triggerRow;
+      }
+    }
     const { action_id, args } = action;
 
     // Call any action registered with global handler
