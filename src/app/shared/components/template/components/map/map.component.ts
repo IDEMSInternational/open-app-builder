@@ -17,8 +17,8 @@ import Fill from "ol/style/Fill";
 import Stroke from "ol/style/Stroke";
 import chroma from "chroma-js";
 import BaseLayer from "ol/layer/Base";
-import { RangeCustomEvent } from "@ionic/angular";
 import { Feature } from "ol";
+import { ChangeContext } from "@angular-slider/ngx-slider";
 
 interface IMapLayer {
   id: string;
@@ -37,6 +37,9 @@ interface IMapLayer {
   gradient_palette: string[];
   scale_max: number;
   scale_min: number;
+  /** The size of the steps on the scale */
+  scale_increment: number;
+  scale_slider_snap: boolean;
   scale_bins: number[];
   scale_slider: boolean;
   /** Colour to set those features outside of slider range. Default is to set them to be hidden */
@@ -147,28 +150,15 @@ export class TmplMapComponent extends TemplateBaseComponent implements AfterView
    */
   public handleSliderChange(event: any, mapLayer: BaseLayer) {
     // Only works on vector layers
-    const { lower, upper } = (event as RangeCustomEvent).detail.value as {
-      lower: number;
-      upper: number;
-    };
+    const { value: lower, highValue: upper } = event as ChangeContext;
     const vectorLayer = mapLayer as VectorLayer;
     const propertyName = vectorLayer.get("propertyToPlot");
 
-    const scaleMax = vectorLayer.get("scaleMax");
-    const scaleMin = vectorLayer.get("scaleMin");
-    const excludedFeaturesColour = vectorLayer.get("excludedFeaturesColour");
-
-    const normaliseValue = (value: number) => {
-      return scaleMin + (value / 100) * (scaleMax - scaleMin);
-    };
-
-    const lowerNormalised = normaliseValue(lower);
-    const upperNormalised = normaliseValue(upper);
-
     const filterFeatures = (feature: Feature) => {
       const value = feature.get(propertyName);
-      return value >= lowerNormalised && value <= upperNormalised;
+      return value >= lower && value <= upper;
     };
+    const excludedFeaturesColour = vectorLayer.get("excludedFeaturesColour");
     vectorLayer.getSource().forEachFeature((feature: Feature) => {
       if (excludedFeaturesColour) {
         feature.set("overrideColour", !filterFeatures(feature));
@@ -196,6 +186,27 @@ export class TmplMapComponent extends TemplateBaseComponent implements AfterView
         });
       }
     }
+  }
+
+  public getSliderOptions(mapLayer: any) {
+    const sliderOptions = {
+      disabled: !mapLayer.get("scaleSlider"),
+      floor: mapLayer.get("scaleMin"),
+      ceil: mapLayer.get("scaleMax"),
+      // Default to no ticks (1 big one)
+      tickStep: mapLayer.get("scaleIncrement") || mapLayer.get("scaleMax"),
+      step: mapLayer.get("scaleIncrement") || mapLayer.get("scaleMax") / 1000,
+      showTicks: !mapLayer.get("scaleSlider") || !!mapLayer.get("scaleIncrement"),
+      showTicksValues: !mapLayer.get("scaleSlider") || !!mapLayer.get("scaleIncrement"),
+      // Convert tooltip value to display max of 2 decimal places
+      translate: (value: number) => {
+        return new Intl.NumberFormat("en-GB", {
+          minimumFractionDigits: 0,
+          maximumFractionDigits: 2,
+        }).format(value);
+      },
+    };
+    return sliderOptions;
   }
 
   private async initialiseMap() {
@@ -316,6 +327,8 @@ export class TmplMapComponent extends TemplateBaseComponent implements AfterView
       gradient_palette,
       scale_max,
       scale_min,
+      scale_increment,
+      scale_slider_snap,
       scale_bins,
       scale_title,
       source_asset,
@@ -350,6 +363,8 @@ export class TmplMapComponent extends TemplateBaseComponent implements AfterView
       propertyToPlot,
       scaleMax: scale_max,
       scaleMin: scale_min,
+      scaleIncrement: scale_increment,
+      scaleSliderSnap: scale_slider_snap,
       scaleTitle: scale_title,
       scaleColours: gradient_palette,
     });
@@ -366,6 +381,8 @@ export class TmplMapComponent extends TemplateBaseComponent implements AfterView
       gradient_palette,
       scale_max,
       scale_min,
+      scale_increment,
+      scale_slider_snap,
       scale_title,
       source_asset,
       stroke,
@@ -488,6 +505,8 @@ export class TmplMapComponent extends TemplateBaseComponent implements AfterView
       description,
       scaleMax: scale_max,
       scaleMin: scale_min,
+      scaleIncrement: scale_increment,
+      scaleSliderSnap: scale_slider_snap,
       scaleTitle: scale_title,
       scaleColours,
       scaleSlider: scale_slider,
@@ -533,6 +552,8 @@ export class TmplMapComponent extends TemplateBaseComponent implements AfterView
       description?: string;
       scaleMax?: number;
       scaleMin?: number;
+      scaleIncrement?: number;
+      scaleSliderSnap?: boolean;
       scaleTitle?: string;
       scaleColours?: string[];
       scaleSlider?: boolean;
@@ -547,6 +568,8 @@ export class TmplMapComponent extends TemplateBaseComponent implements AfterView
       description,
       scaleMax,
       scaleMin,
+      scaleIncrement,
+      scaleSliderSnap,
       scaleTitle,
       scaleColours,
       scaleSlider,
@@ -565,6 +588,8 @@ export class TmplMapComponent extends TemplateBaseComponent implements AfterView
     layer.set("gradientFill", cssGradientFill);
     layer.set("scaleMax", scaleMax);
     layer.set("scaleMin", scaleMin);
+    layer.set("scaleIncrement", scaleIncrement);
+    layer.set("scaleSliderSnap", scaleSliderSnap);
     layer.set("scaleTitle", scaleTitle);
     layer.set("scaleSlider", scaleSlider);
     layer.set("excludedFeaturesColour", excludedFeaturesColour);

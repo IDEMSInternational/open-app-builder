@@ -61,16 +61,53 @@ $map-height: 70vh;
       height: 12px;
       margin-bottom: 4px;
     }
+  }
+}
 
-    ion-range {
-      width: 100%;
-      bottom: 0px;
-      --bar-background: none;
-      --bar-background-active: none;
-      --bar-height: 12px;
-      --knob-background: var(--ion-color-primary);
-      --knob-size: 28px;
-      --height: 18px;
+/** Styling of scale slider, see example at https://angular-slider.github.io/ngx-slider/demos#styled-slider */
+::ng-deep {
+  .scale-container {
+    .ngx-slider {
+      --bar-height: 14px;
+
+      .ngx-slider-bar {
+        background: var(--bar-background);
+        height: var(--bar-height);
+      }
+      .ngx-slider-selection {
+        background: rgba(255, 255, 255, 0.1);
+      }
+
+      .ngx-slider-pointer {
+        top: calc(-1 * var(--bar-height) / 2);
+        background-color: var(--ion-color-primary);
+      }
+
+      .ngx-slider-pointer:after {
+        background-color: white;
+      }
+      .ngx-slider-pointer.ngx-slider-active:after {
+        background-color: black;
+      }
+
+      .ngx-slider-tick {
+        width: 2px;
+        height: var(--bar-height);
+        border-radius: 0;
+        background: black;
+        top: 3px;
+      }
+
+      .ngx-slider-tick.ngx-slider-selected {
+        background: white;
+      }
+
+      &.disabled {
+        .ngx-slider-pointer {
+          // Hide element but preserve styling
+          visibility: hidden !important;
+        }
+      }
     }
   }
 }
