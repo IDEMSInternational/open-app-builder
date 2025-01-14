@@ -47,7 +47,7 @@ export class TmplDataItemsComponent extends TemplateBaseComponent implements OnI
   }
 
   ngOnInit() {
-    this.hackInterceptSetLocalActions();
+    this.hackInterceptComponentActions();
   }
 
   /** Trigger a `data_changed` action and evaluate with items list context */
@@ -69,15 +69,8 @@ export class TmplDataItemsComponent extends TemplateBaseComponent implements OnI
    * within the data_items loop. These are not synced with the parent templateRowMap, and instead require
    * the author to explicitly use a set_item action. This applies to any component that internally calls `setValue`
    */
-  private hackInterceptSetLocalActions() {
-    this.parent.templateActionService.handleActionsInterceptor = async (actions) => {
-      return actions.filter((action) => {
-        if (action.action_id === "set_local") {
-          const [nestedName] = action.args;
-          return nestedName in this.parent.templateRowMap;
-        }
-        return true;
-      });
-    };
+  private hackInterceptComponentActions() {
+    this.parent.templateActionService.handleActionsInterceptor = async (actions, _triggeredBy) =>
+      this.dataItemsService.evaluateComponentActions(actions, _triggeredBy);
   }
 }
