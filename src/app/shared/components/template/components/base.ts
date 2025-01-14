@@ -74,7 +74,6 @@ export class TemplateBaseComponent implements ITemplateRowProps {
       args: [this._row._nested_name, value],
       trigger: "click",
     };
-    console.log("set value", action);
     return this.parent.handleActions([action], this._row);
   }
 
