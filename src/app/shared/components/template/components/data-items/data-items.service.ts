@@ -85,42 +85,21 @@ export class DataItemsService {
     });
   }
 
-  /**
-   * Intercept any actions trigger from child components of a data_items loop to ensure they can correctly
-   * manage values which may be bound to the item context, i.e. references to `this.value` or setting own value
-   */
-  public evaluateComponentActions(
-    actions: FlowTypes.TemplateRowAction[],
-    _triggeredBy: FlowTypes.TemplateRow
-  ) {
+  /** Evaluate any self-references within triggered action params or args */
+  public evaluateComponentAction(action: FlowTypes.TemplateRowAction) {
     const evaluator = new JSEvaluator();
-    return actions
-      .filter((action) => {
-        if (action.action_id === "set_local") {
-          const [nestedName] = action.args;
-          // Ignore self-update actions as not easy to reverse-engineer which corresponding item variable to set
-          if (nestedName === _triggeredBy?._nested_name) {
-            return false;
-          }
-        }
-        return true;
-      })
-      .map((action) => {
-        // Ensure any action params or args that self-reference `this.value` have correct value assigned
-        for (const [key, value] of Object.entries(action.params || {})) {
-          if (typeof value === "string" && value.includes("this.value")) {
-            action.params[key] = evaluator.evaluate(value, _triggeredBy);
-          }
-        }
-        action.args = action.args.map((arg) => {
-          if (typeof arg === "string" && arg.includes("this.value")) {
-            arg = evaluator.evaluate(arg, _triggeredBy);
-          }
-          return arg;
-        });
-
-        return action;
-      });
+    for (const [key, value] of Object.entries(action.params || {})) {
+      if (typeof value === "string" && value.includes("this.value")) {
+        action.params[key] = evaluator.evaluate(value, action._triggeredBy);
+      }
+    }
+    action.args = action.args.map((arg) => {
+      if (typeof arg === "string" && arg.includes("this.value")) {
+        arg = evaluator.evaluate(arg, action._triggeredBy);
+      }
+      return arg;
+    });
+    return action;
   }
 
   /**

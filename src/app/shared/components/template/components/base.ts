@@ -72,7 +72,7 @@ export class TemplateBaseComponent implements ITemplateRowProps {
     this._row.value = value;
 
     const action: FlowTypes.TemplateRowAction = {
-      action_id: "set_local",
+      action_id: "set_self",
       args: [this._row._nested_name, value],
       trigger: "click",
     };
