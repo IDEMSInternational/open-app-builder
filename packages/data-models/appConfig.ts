@@ -128,7 +128,10 @@ const APP_FOOTER_DEFAULTS = {
 };
 
 const LAYOUT = {
-  page_padding: "24px",
+  page_padding: {
+    horizontal: "24px",
+    vertical: "24px",
+  },
 };
 
 const APP_SIDEMENU_DEFAULTS = {
