@@ -310,20 +310,24 @@ body[data-theme="plh_kids_kw"] {
 
       plh-tmpl-text {
         width: 100%;
-        p {
+        .standard {
           color: var(--color-surface-white) !important;
-          font-size: var(--font-size-text-medium) !important;
-          line-height: var(--line-height-text-medium) !important;
-          font-weight: var(--font-weight-standard) !important;
-          margin-top: 8px;
+          p,
+          ul,
+          ol {
+            font-size: var(--font-size-text-medium) !important;
+            line-height: var(--line-height-text-medium) !important;
+            font-weight: var(--font-weight-standard) !important;
+            margin-top: 8px;
+            a {
+              color: var(--color-surface-white-variant) !important;
+              text-decoration: underline !important;
+            }
+          }
           a {
             color: var(--color-surface-white-variant) !important;
             text-decoration: underline !important;
           }
-        }
-        a {
-          color: var(--color-surface-white-variant) !important;
-          text-decoration: underline !important;
         }
       }
     }
