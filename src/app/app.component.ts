@@ -59,7 +59,8 @@ export class AppComponent {
   public routeContainerStyle = computed(() => {
     const { page_padding } = this.layoutConfig();
     return {
-      "--page-padding": page_padding,
+      "--page-padding-horizontal": page_padding.horizontal,
+      "--page-padding-vertical": page_padding.vertical,
     };
   });
 
