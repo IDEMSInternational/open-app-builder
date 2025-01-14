@@ -32,6 +32,7 @@ let log_groupEnd = SHOW_DEBUG_LOGS ? console.groupEnd : () => null;
 export class TemplateActionService extends SyncServiceBase {
   private actionsQueue: FlowTypes.TemplateRowAction[] = [];
   private actionsQueueProcessing$ = new BehaviorSubject<boolean>(false);
+  private actionsInterceptors = new Map();
 
   constructor(
     private injector: Injector,
@@ -114,12 +115,32 @@ export class TemplateActionService extends SyncServiceBase {
   /** Optional method child component can add to handle post-action callback */
   public async handleActionsCallback(actions: FlowTypes.TemplateRowAction[], results: any) {}
 
-  /** Optional method child component can filter action list to handle outside of default handlers */
+  /**
+   * @deprecated v0.18.0 - prefer to use `registerActionsInterceptor`
+   * Provide a single override method that will be applied to all actions triggered within the
+   * current container
+   * */
   public async handleActionsInterceptor(
     actions: FlowTypes.TemplateRowAction[],
     _triggeredBy?: FlowTypes.TemplateRow
   ): Promise<FlowTypes.TemplateRowAction[]> {
     return actions;
+  }
+
+  /**
+   * Register an action interceptor to apply to all actions within a named scope
+   * @param scope namespace to apply actions. Any actions triggered by components starting with
+   * the same namespace will be intercepted, matched by the component nested name. Usually this
+   * will be the current component row name, to apply to all nested children
+   * @param handler function to apply to action. If action is returned from function then the action
+   * will continue to be piped through any more interceptors as well as final processing.
+   * Return undefined to prevent further action processing
+   * */
+  public async registerActionsInterceptor(
+    scope: string,
+    handler: (action: FlowTypes.TemplateRowAction) => FlowTypes.TemplateRowAction | undefined
+  ) {
+    this.actionsInterceptors.set(scope, handler);
   }
 
   /**
@@ -134,9 +155,13 @@ export class TemplateActionService extends SyncServiceBase {
       this.actionsQueueProcessing$.next(true);
       while (this.actionsQueue.length > 0) {
         const action = this.actionsQueue[0];
-        await this.processAction(action);
+        // Pipe action through interceptors. Only process if interceptors return a value
+        const postInterceptAction = await this.processActionInterceptors(action);
+        if (postInterceptAction) {
+          await this.processAction(action);
+          processedActions.push(action);
+        }
         this.actionsQueue.shift();
-        processedActions.push(action);
       }
       this.actionsQueueProcessing$.next(false);
       log_groupEnd();
@@ -152,6 +177,7 @@ export class TemplateActionService extends SyncServiceBase {
       const reprocessActions: FlowTypes.TemplateRowAction["action_id"][] = [
         "set_field",
         "set_local",
+        "set_self",
         "trigger_actions",
       ];
       if (processedActions.find((a) => reprocessActions.includes(a.action_id))) {
@@ -159,6 +185,18 @@ export class TemplateActionService extends SyncServiceBase {
       }
     }
   }
+
+  private async processActionInterceptors(action: FlowTypes.TemplateRowAction) {
+    const actionScope = action._triggeredBy?._nested_name;
+    if (!actionScope) return action;
+    for (const [scope, interceptor] of this.actionsInterceptors) {
+      if (action && actionScope.startsWith(scope)) {
+        action = await interceptor(action);
+      }
+    }
+    return action;
+  }
+
   private async processAction(action: FlowTypes.TemplateRowAction) {
     action.args = action.args.map((arg) => {
       // HACK - update any self referenced values (see note from template.parser method)
@@ -183,6 +221,9 @@ export class TemplateActionService extends SyncServiceBase {
       case "reset_app":
         return this.settingsService.resetApp();
       case "set_local":
+        console.log("[SET LOCAL]", { key, value });
+        return this.setLocalVariable(key, value);
+      case "set_self":
         console.log("[SET LOCAL]", { key, value });
         return this.setLocalVariable(key, value);
       case "go_to":

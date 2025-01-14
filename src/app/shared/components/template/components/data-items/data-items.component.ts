@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, computed, effect, OnInit } from "@angular/core";
+import { ChangeDetectionStrategy, Component, computed, effect } from "@angular/core";
 import { FlowTypes } from "../../models";
 import { TemplateBaseComponent } from "../base";
 import { DataItemsService } from "./data-items.service";
@@ -17,7 +17,7 @@ import { switchMap, filter } from "rxjs";
  *
  * - Should be refactored to handle at container level without rendered UI
  */
-export class TmplDataItemsComponent extends TemplateBaseComponent implements OnInit {
+export class TmplDataItemsComponent extends TemplateBaseComponent {
   // HACK - create signal from combination of signals and observables
   // https://github.com/angular/angular/issues/53519
   public itemRows = toSignal(
@@ -44,10 +44,10 @@ export class TmplDataItemsComponent extends TemplateBaseComponent implements OnI
         await this.hackTriggerDataChangedActions(actions, itemRows);
       }
     });
-  }
-
-  ngOnInit() {
-    this.hackInterceptComponentActions();
+    effect(() => {
+      const { _nested_name } = this.rowSignal();
+      this.hackInterceptComponentActions(_nested_name);
+    });
   }
 
   /** Trigger a `data_changed` action and evaluate with items list context */
@@ -65,12 +65,16 @@ export class TmplDataItemsComponent extends TemplateBaseComponent implements OnI
   }
 
   /**
-   * Prevent child components triggering set_local actions that would update the value of a component
+   * Prevent child components triggering set_self actions that would update the value of a component
    * within the data_items loop. These are not synced with the parent templateRowMap, and instead require
    * the author to explicitly use a set_item action. This applies to any component that internally calls `setValue`
    */
-  private hackInterceptComponentActions() {
-    this.parent.templateActionService.handleActionsInterceptor = async (actions, _triggeredBy) =>
-      this.dataItemsService.evaluateComponentActions(actions, _triggeredBy);
+  private hackInterceptComponentActions(_nested_name: string) {
+    this.parent.templateActionService.registerActionsInterceptor(_nested_name, (action) => {
+      if (action.action_id === "set_self" && action._triggeredBy._evalContext?.itemContext) {
+        return undefined;
+      }
+      return this.dataItemsService.evaluateComponentAction(action);
+    });
   }
 }
