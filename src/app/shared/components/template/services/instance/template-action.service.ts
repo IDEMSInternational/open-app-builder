@@ -99,7 +99,7 @@ export class TemplateActionService extends SyncServiceBase {
     _triggeredBy?: FlowTypes.TemplateRow
   ) {
     await this.ensurePublicServicesReady();
-    const unhandledActions = await this.handleActionsInterceptor(actions);
+    const unhandledActions = await this.handleActionsInterceptor(actions, _triggeredBy);
     unhandledActions.forEach((action) => this.actionsQueue.push({ ...action, _triggeredBy }));
     const res = await this.processActionQueue();
     await this.handleActionsCallback([...unhandledActions], res);
@@ -116,7 +116,8 @@ export class TemplateActionService extends SyncServiceBase {
 
   /** Optional method child component can filter action list to handle outside of default handlers */
   public async handleActionsInterceptor(
-    actions: FlowTypes.TemplateRowAction[]
+    actions: FlowTypes.TemplateRowAction[],
+    _triggeredBy?: FlowTypes.TemplateRow
   ): Promise<FlowTypes.TemplateRowAction[]> {
     return actions;
   }
