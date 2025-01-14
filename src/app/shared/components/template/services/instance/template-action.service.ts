@@ -99,9 +99,17 @@ export class TemplateActionService extends SyncServiceBase {
     actions: FlowTypes.TemplateRowAction[] = [],
     _triggeredBy?: FlowTypes.TemplateRow
   ) {
+    // Track action trigger source
+    // Will be undefined if triggered from service instead of row component
+    actions = actions.map((a) => {
+      a._triggeredBy = _triggeredBy;
+      return a;
+    });
+
     await this.ensurePublicServicesReady();
-    const unhandledActions = await this.handleActionsInterceptor(actions, _triggeredBy);
-    unhandledActions.forEach((action) => this.actionsQueue.push({ ...action, _triggeredBy }));
+    // process any global action interceptors
+    const unhandledActions = await this.handleActionsInterceptor(actions);
+    unhandledActions.forEach((action) => this.actionsQueue.push({ ...action }));
     const res = await this.processActionQueue();
     await this.handleActionsCallback([...unhandledActions], res);
     if (!this.container?.parent) {
@@ -121,8 +129,7 @@ export class TemplateActionService extends SyncServiceBase {
    * current container
    * */
   public async handleActionsInterceptor(
-    actions: FlowTypes.TemplateRowAction[],
-    _triggeredBy?: FlowTypes.TemplateRow
+    actions: FlowTypes.TemplateRowAction[]
   ): Promise<FlowTypes.TemplateRowAction[]> {
     return actions;
   }
