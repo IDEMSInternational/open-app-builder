@@ -5,8 +5,8 @@
 @mixin theme-plh_facilitator_mx {
   [data-theme="plh_facilitator_mx"] {
     /** Authoring variables **/
-    $color-primary: hsl(183, 40%, 43%); // #419499;
-    $color-secondary: hsl(168, 77%, 43%); //#19C2A0;
+    $color-primary: #006265; // #006265;
+    $color-secondary: #a83c0c; // #a83c0c;
     $page-background: white;
 
     /** Global and component variables **/
