@@ -11,7 +11,10 @@
 
     <div class="progress-path-child-wrapper" [style.width]="width">
       <div class="progress-path-child-content-wrapper" [style.--container-width]="width">
-        @for (childRow of _row.rows | filterDisplayComponent; track trackByRow($index, childRow)) {
+        @for (
+          childRow of progressRows() | filterDisplayComponent;
+          track trackByRow($index, childRow)
+        ) {
           <div class="progress-path-child-content">
             <plh-template-component
               [row]="childRow"
