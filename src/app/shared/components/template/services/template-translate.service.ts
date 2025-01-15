@@ -1,4 +1,4 @@
-import { Injectable, WritableSignal, signal } from "@angular/core";
+import { Injectable, WritableSignal, effect, signal } from "@angular/core";
 import { IAppConfig } from "data-models";
 import { BehaviorSubject } from "rxjs";
 import { AppConfigService } from "src/app/shared/services/app-config/app-config.service";
@@ -31,6 +31,11 @@ export class TemplateTranslateService extends AsyncServiceBase {
   ) {
     super("Template Translate");
     this.registerInitFunction(this.init);
+
+    effect(() => {
+      // persist language direction to authoring field
+      this.localStorageService.setProtected("APP_LANGUAGE_DIRECTION", this.languageDirection());
+    });
   }
 
   private async init() {
