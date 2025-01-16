@@ -4,7 +4,7 @@
     class="text-box-input"
     [inputmode]="isNumberInput ? 'tel' : 'text'"
     (ionBlur)="handleChange(input.value)"
-    [value]="prioritisePlaceholder ? '' : _row.value"
+    [value]="prioritisePlaceholder ? '' : value()"
     [placeholder]="placeholder"
     [maxlength]="maxLength"
     [style.textAlign]="textAlign"
