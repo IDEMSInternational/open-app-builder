@@ -5,8 +5,8 @@
 @mixin theme-plh_facilitator_mx {
   [data-theme="plh_facilitator_mx"] {
     /** Authoring variables **/
-    $color-primary: #006265; // #006265;
-    $color-secondary: #a83c0c; // #a83c0c;
+    $color-primary: #005054;
+    $color-secondary: #a83c0c;
     $page-background: white;
 
     /** Global and component variables **/
@@ -16,12 +16,12 @@
       font-weight-bold: 700,
       font-weight-extra-bold: 800,
 
-      font-size-text-tiny: 14px,
-      font-size-text-small: 16px,
-      font-size-text-mid-size: 18px,
-      font-size-text-medium: 20px,
+      font-size-text-tiny: 12px,
+      font-size-text-small: 14px,
+      font-size-text-mid-size: 16px,
+      font-size-text-medium: 18px,
       font-size-text-large: 24px,
-      font-size-text-title: 28px,
+      font-size-text-title: 24px,
       font-size-text-extra-large: 32px,
 
       line-height-text-tiny: 18px,
@@ -101,6 +101,17 @@
       color-accent-blue-70: #98adca,
       color-accent-blue-80: #b9c8de,
       color-accent-blue-90: #dce3ef,
+
+      // PRIMARY PALETTE OVERRIDE
+      ion-color-primary-800: #00383b,
+      ion-color-primary-700: #004448,
+      ion-color-primary-600: #0f696d,
+      ion-color-primary-500: #2c8388,
+      ion-color-primary-400: #509ca1,
+      ion-color-primary-300: #77b6b9,
+      ion-color-primary-200: #a2ced1,
+      ion-color-primary-100: #d0e7e8,
+      ion-color-primary-50: #e7f3f4,
     );
     @include utils.generateTheme($color-primary, $color-secondary, $page-background);
     @each $name, $value in $variable-overrides {
