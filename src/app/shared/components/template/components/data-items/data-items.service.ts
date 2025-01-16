@@ -9,6 +9,7 @@ import { ItemProcessor } from "../../processors/item";
 import { updateItemMeta } from "./data-items.utils";
 import { isEqual } from "packages/shared/src/utils/object-utils";
 import { AppDataEvaluator } from "packages/shared/src/models/appDataEvaluator/appDataEvaluator";
+import { JSEvaluator } from "packages/shared/src/models/jsEvaluator/jsEvaluator";
 
 @Injectable({ providedIn: "root" })
 export class DataItemsService {
@@ -82,6 +83,23 @@ export class DataItemsService {
       // create new object to ensure args don't overwrite original
       return { ...a, args };
     });
+  }
+
+  /** Evaluate any self-references within triggered action params or args */
+  public evaluateComponentAction(action: FlowTypes.TemplateRowAction) {
+    const evaluator = new JSEvaluator();
+    for (const [key, value] of Object.entries(action.params || {})) {
+      if (typeof value === "string" && value.includes("this.value")) {
+        action.params[key] = evaluator.evaluate(value, action._triggeredBy);
+      }
+    }
+    action.args = action.args.map((arg) => {
+      if (typeof arg === "string" && arg.includes("this.value")) {
+        arg = evaluator.evaluate(arg, action._triggeredBy);
+      }
+      return arg;
+    });
+    return action;
   }
 
   /**
