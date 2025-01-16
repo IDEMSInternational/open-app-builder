@@ -22,6 +22,7 @@ export class TmplComboBoxComponent
   extends TemplateBaseComponent
   implements ITemplateRowProps, OnInit, OnDestroy
 {
+  public variant: "modal" | "dropdown" | string;
   public placeholder: string;
   public prioritisePlaceholder: boolean;
   private style: string;
@@ -39,7 +40,7 @@ export class TmplComboBoxComponent
     )
   );
 
-  private answerOptions = computed(() => {
+  public answerOptions = computed(() => {
     const dataItemRows = this.dataItemRows();
     if (dataItemRows !== undefined) {
       return (dataItemRows as IAnswerListItem[]) || [];
@@ -79,6 +80,7 @@ export class TmplComboBoxComponent
       false
     );
     this.style = getStringParamFromTemplateRow(this._row, "style", "");
+    this.variant = getStringParamFromTemplateRow(this._row, "variant", "modal");
   }
 
   async openModal() {
