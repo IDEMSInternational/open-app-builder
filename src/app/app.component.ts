@@ -43,6 +43,7 @@ import { LocalStorageService } from "./shared/services/local-storage/local-stora
 import { DeploymentService } from "./shared/services/deployment/deployment.service";
 import { ScreenOrientationService } from "./shared/services/screen-orientation/screen-orientation.service";
 import { TemplateMetadataService } from "./shared/components/template/services/template-metadata.service";
+import { getPaddingValuesFromShorthand } from "./shared/components/template/utils";
 
 @Component({
   selector: "app-root",
@@ -58,8 +59,12 @@ export class AppComponent {
 
   public routeContainerStyle = computed(() => {
     const { page_padding } = this.layoutConfig();
+    const { top, right, bottom, left } = getPaddingValuesFromShorthand(page_padding);
     return {
-      "--page-padding": page_padding,
+      "--page-padding-top": top,
+      "--page-padding-start": left,
+      "--page-padding-bottom": bottom,
+      "--page-padding-end": right,
     };
   });
 
