@@ -68,9 +68,11 @@ export class TemplateBaseComponent implements ITemplateRowProps {
    * @ignore
    **/
   setValue(value: any) {
-    // console.log("setting value", value);
+    // HACK - provide optimistic update so that data_items interceptor also can access updated row value
+    this._row.value = value;
+
     const action: FlowTypes.TemplateRowAction = {
-      action_id: "set_local",
+      action_id: "set_self",
       args: [this._row._nested_name, value],
       trigger: "click",
     };
