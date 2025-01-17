@@ -62,6 +62,9 @@ export interface IDeploymentRuntimeConfig {
       /** Enables app crash reports to firebase crashlytics */
       enabled: boolean;
     };
+    auth: {
+      enabled: boolean;
+    };
   };
   /** Friendly name used to identify the deployment name */
   name: string;
