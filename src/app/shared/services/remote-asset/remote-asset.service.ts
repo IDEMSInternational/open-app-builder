@@ -1,7 +1,6 @@
 import { Injectable } from "@angular/core";
 import { HttpClient, HttpEventType } from "@angular/common/http";
 import { Capacitor } from "@capacitor/core";
-import { createClient, SupabaseClient } from "@supabase/supabase-js";
 import { FileObject } from "@supabase/storage-js";
 import { TemplateActionRegistry } from "../../components/template/services/instance/template-action.registry";
 import { FlowTypes, IAppConfig } from "../../model";
@@ -15,7 +14,8 @@ import { AsyncServiceBase } from "../asyncService.base";
 import type { IAssetEntry, IAssetOverrideProps } from "packages/data-models";
 import { DynamicDataService } from "../dynamic-data/dynamic-data.service";
 import { arrayToHashmap, convertBlobToBase64, deepMergeObjects } from "../../utils";
-import { DeploymentService } from "../deployment/deployment.service";
+import { SupabaseService } from "../../supabase/supabase.service";
+import { SupabaseClient } from "@supabase/supabase-js";
 
 const CORE_ASSET_PACK_NAME = "core_assets";
 
@@ -24,13 +24,12 @@ const CORE_ASSET_PACK_NAME = "core_assets";
 })
 export class RemoteAssetService extends AsyncServiceBase {
   remoteAssetsEnabled: boolean;
-  supabaseEnabled: boolean;
   bucketName: string;
   folderName: string;
-  supabase: SupabaseClient;
   downloading: boolean = false;
   downloadProgress: number;
   manifest: FlowTypes.AssetPack;
+  private supabase: SupabaseClient;
 
   constructor(
     private appConfigService: AppConfigService,
@@ -40,7 +39,7 @@ export class RemoteAssetService extends AsyncServiceBase {
     private templateAssetService: TemplateAssetService,
     private templateActionRegistry: TemplateActionRegistry,
     private http: HttpClient,
-    private deploymentService: DeploymentService
+    private supabaseService: SupabaseService
   ) {
     super("RemoteAsset");
     this.registerInitFunction(this.initialise);
@@ -48,10 +47,8 @@ export class RemoteAssetService extends AsyncServiceBase {
 
   private async initialise() {
     this.registerTemplateActionHandlers();
-    // require supabase to be configured to use remote asset service
-    const { enabled, publicApiKey, url } = this.deploymentService.config.supabase;
-    this.supabaseEnabled = enabled;
-    if (this.supabaseEnabled) {
+    this.supabase = this.supabaseService.supabase;
+    if (this.supabase) {
       await this.ensureAsyncServicesReady([this.templateAssetService, this.dynamicDataService]);
       this.ensureSyncServicesReady([
         this.appConfigService,
@@ -60,7 +57,6 @@ export class RemoteAssetService extends AsyncServiceBase {
       ]);
       this.subscribeToAppConfigChanges();
       if (this.remoteAssetsEnabled) {
-        this.supabase = createClient(url, publicApiKey);
         const { flow_type, flow_name } = this.generateCoreAssetPack(
           this.templateAssetService.assetsContentsList$.value
         );
@@ -85,7 +81,7 @@ export class RemoteAssetService extends AsyncServiceBase {
         const [actionId, ...assetPackArgs] = args;
         const childActions = {
           download: async () => {
-            if (this.supabaseEnabled && this.remoteAssetsEnabled) {
+            if (this.supabase && this.remoteAssetsEnabled) {
               const assetPackName = assetPackArgs[0];
               if (assetPackName) {
                 try {
@@ -107,7 +103,7 @@ export class RemoteAssetService extends AsyncServiceBase {
               );
           },
           reset: async () => {
-            if (this.supabaseEnabled && this.remoteAssetsEnabled) {
+            if (this.supabase && this.remoteAssetsEnabled) {
               await this.reset();
             } else
               console.error(
