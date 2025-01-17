@@ -66,6 +66,7 @@
                 [showText]="showProgressText"
                 [(progressStatus)]="progressStatus"
                 (newlyCompleted)="handleNewlyCompleted($event)"
+                [parameterList]="_row.parameter_list"
               ></plh-task-progress-bar>
             </div>
           }
@@ -91,6 +92,7 @@
             [showText]="false"
             [(progressStatus)]="progressStatus"
             (newlyCompleted)="handleNewlyCompleted($event)"
+            [parameterList]="_row.parameter_list"
           ></plh-task-progress-bar>
         </div>
       }
