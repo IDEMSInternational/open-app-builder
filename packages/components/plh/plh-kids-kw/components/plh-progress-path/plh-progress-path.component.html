@@ -1,4 +1,4 @@
-<div class="progress-path">
+<div class="progress-path" #progressPath [class.loading]="loading">
   <div
     class="wrapper"
     [style.backgroundImage]="'url(' + (params.backgroundImageAsset | plhAsset) + ')'"

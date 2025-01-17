@@ -1218,9 +1218,14 @@ body[data-theme="plh_kids_kw"] {
   // Plh Progress Path
   plh-plh-progress-path {
     .progress-path {
+      &.loading {
+        visibility: hidden;
+      }
+
       display: grid;
       grid-template-columns: 1fr 430px 1fr;
       overflow-y: scroll;
+      overflow-x: scroll;
       scrollbar-width: none;
       &::-webkit-scrollbar {
         display: none;
