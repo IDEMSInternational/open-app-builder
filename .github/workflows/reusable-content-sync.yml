@@ -44,6 +44,8 @@ on:
           required: true
         PAT:
           required: true
+        DEPLOYMENT_PRIVATE_KEY:
+          description: Provide private key if deployment uses encrypted config
    
 jobs:
    build:
