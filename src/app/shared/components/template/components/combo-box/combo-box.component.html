@@ -22,7 +22,7 @@
     >
       @for (answerOption of answerOptions(); track answerOption.name) {
         <ion-select-option [value]="answerOption.name">
-          {{ answerOption.name }}
+          {{ answerOption.text }}
         </ion-select-option>
       }
     </ion-select>
