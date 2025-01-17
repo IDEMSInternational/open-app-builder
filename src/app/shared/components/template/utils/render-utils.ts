@@ -70,3 +70,10 @@ export function setElStyleAnimated(
     return;
   });
 }
+
+/** Extract constituent directional values from shorthand padding CSS value */
+export function getPaddingValuesFromShorthand(padding: string) {
+  const paddingArray = padding.split(" ");
+  const [top, right = top, bottom = top, left = right] = paddingArray;
+  return { top, right, bottom, left };
+}
