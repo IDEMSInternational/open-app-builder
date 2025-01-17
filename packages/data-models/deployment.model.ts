@@ -210,6 +210,7 @@ export const DEPLOYMENT_RUNTIME_CONFIG_DEFAULTS: IDeploymentRuntimeConfig = {
   firebase: {
     config: null,
     crashlytics: { enabled: true },
+    auth: { enabled: false },
   },
   supabase: {
     enabled: false,
