@@ -22,7 +22,7 @@ export class TmplComboBoxComponent
   extends TemplateBaseComponent
   implements ITemplateRowProps, OnInit, OnDestroy
 {
-  public variant: "modal" | "dropdown" | string;
+  public variant: "modal" | "dropdown";
   public placeholder: string;
   public prioritisePlaceholder: boolean;
   private style: string;
@@ -80,7 +80,9 @@ export class TmplComboBoxComponent
       false
     );
     this.style = getStringParamFromTemplateRow(this._row, "style", "");
-    this.variant = getStringParamFromTemplateRow(this._row, "variant", "modal");
+    this.variant = getStringParamFromTemplateRow(this._row, "variant", "modal") as
+      | "modal"
+      | "dropdown";
   }
 
   async openModal() {
