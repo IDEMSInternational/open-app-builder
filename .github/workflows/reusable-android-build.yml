@@ -39,6 +39,9 @@ on:
           type: string
           description: "Specify branch for deployment"
           default: ""
+      secrets:
+        DEPLOYMENT_PRIVATE_KEY:
+          description: Provide private key if deployment uses encrypted config
   
 jobs:
   
