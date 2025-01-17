@@ -41,15 +41,7 @@
     <!-- Main content: shows in split-pane when sidebar route active -->
     <ion-split-pane when="lg" contentId="main" [disabled]="!sidebarRouter.isActivated">
       <div style="display: flex; flex-direction: column; height: 100%; width: 100%" id="main">
-        <plh-main-header
-          [style.display]="headerConfig().hidden ? 'none' : 'block'"
-        ></plh-main-header>
-        <!-- Add spacer element when header is hidden to account for safe area (native status bar, notch etc.) -->
-        <div
-          class="safe-area-spacer"
-          [style.display]="headerConfig().hidden ? 'block' : 'none'"
-          [style.height]="'var(--ion-safe-area-top, 0)'"
-        ></div>
+        <plh-main-header></plh-main-header>
         <div class="route-container" [ngStyle]="routeContainerStyle()">
           <ion-router-outlet id="main-content"></ion-router-outlet>
         </div>

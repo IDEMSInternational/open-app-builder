@@ -12,6 +12,16 @@ export function getIonContentScrollTop(elRef: ElementRef) {
 
 /**
  * Find the nearest ion-content element and inspect shadow root
+ * to get scrollTop of main element
+ */
+export function getIonContentHeight(elRef: ElementRef) {
+  const nativeElement: HTMLElement = elRef.nativeElement;
+  const contentEl = nativeElement.closest("ion-content");
+  return contentEl?.shadowRoot?.querySelector("main")?.scrollHeight || 0;
+}
+
+/**
+ * Find the nearest ion-content element and inspect shadow root
  * to set scrollTop on main element
  */
 export function setIonContentScrollTop(elRef: ElementRef, value: number) {
@@ -69,4 +79,11 @@ export function setElStyleAnimated(
     }, 1000 / fps);
     return;
   });
+}
+
+/** Extract constituent directional values from shorthand padding CSS value */
+export function getPaddingValuesFromShorthand(padding: string) {
+  const paddingArray = padding.split(" ");
+  const [top, right = top, bottom = top, left = right] = paddingArray;
+  return { top, right, bottom, left };
 }

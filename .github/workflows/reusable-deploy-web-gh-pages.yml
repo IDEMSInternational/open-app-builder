@@ -40,6 +40,9 @@ on:
         default: ${{vars.GH_PAGES_BASE || ''}}
         required: false
         type: string
+    secrets:
+      DEPLOYMENT_PRIVATE_KEY:
+        description: Provide private key if deployment uses encrypted config
       
 
 jobs:

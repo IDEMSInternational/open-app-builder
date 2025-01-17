@@ -17,10 +17,6 @@ export class TmplTextComponent extends TemplateBaseComponent implements OnInit {
   params: Partial<ITextParams> = {};
   hasTextValue: boolean;
 
-  constructor() {
-    super();
-  }
-
   ngOnInit() {
     this.getParams();
   }

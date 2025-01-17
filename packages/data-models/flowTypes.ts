@@ -431,6 +431,7 @@ export namespace FlowTypes {
     "screen_orientation",
     "set_field",
     "set_local",
+    "set_self",
     "share",
     "style",
     "start_tour",

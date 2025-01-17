@@ -44,6 +44,10 @@ export class TmplDataItemsComponent extends TemplateBaseComponent {
         await this.hackTriggerDataChangedActions(actions, itemRows);
       }
     });
+    effect(() => {
+      const { _nested_name } = this.rowSignal();
+      this.hackInterceptComponentActions(_nested_name);
+    });
   }
 
   /** Trigger a `data_changed` action and evaluate with items list context */
@@ -58,5 +62,19 @@ export class TmplDataItemsComponent extends TemplateBaseComponent {
   private subscribeToDynamicData(row: FlowTypes.TemplateRow) {
     const { templateRowMap } = this.parent;
     return this.dataItemsService.getItemsObservable(row, templateRowMap);
+  }
+
+  /**
+   * Prevent child components triggering set_self actions that would update the value of a component
+   * within the data_items loop. These are not synced with the parent templateRowMap, and instead require
+   * the author to explicitly use a set_item action. This applies to any component that internally calls `setValue`
+   */
+  private hackInterceptComponentActions(_nested_name: string) {
+    this.parent.templateActionService.registerActionsInterceptor(_nested_name, (action) => {
+      if (action.action_id === "set_self" && action._triggeredBy._evalContext?.itemContext) {
+        return undefined;
+      }
+      return this.dataItemsService.evaluateComponentAction(action);
+    });
   }
 }

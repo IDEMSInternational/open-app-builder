@@ -5,6 +5,7 @@
 enum PROTECTED_FIELDS {
   APP_FIRST_LAUNCH = "app_first_launch",
   APP_LANGUAGE = "app_language",
+  APP_LANGUAGE_DIRECTION = "app_language_direction",
   APP_SKIN = "app_skin",
   APP_THEME = "app_theme",
   /** Track whether an update is available for download */
