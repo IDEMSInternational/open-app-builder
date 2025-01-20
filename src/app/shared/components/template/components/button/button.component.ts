@@ -37,6 +37,8 @@ interface IButtonParams {
   iconSecondary: string;
   /** TEMPLATE PARAMETER: "image_asset". The path to an image asset */
   image: string;
+  /** TEMPLATE PARAMETER: "icon_align". Aligns the Primary icon to the left or right */
+  iconAlign: "left" | "right";
 }
 
 /**
@@ -94,6 +96,7 @@ export class TmplButtonComponent extends TemplateBaseComponent implements OnInit
       "icon_secondary_asset",
       null
     );
+    this.params.iconAlign = getStringParamFromTemplateRow(this._row, "icon_align", "left") as any;
   }
 
   /** Determine if the button is inside a display group with the style "two_columns" */
