@@ -976,8 +976,8 @@ body[data-theme="plh_facilitator_mx"] {
     &[data-variant~="yellow"] {
       background: var(--color-accent-yellow-70);
     }
-    &[data-variant~="dark-orange"] {
-      background: var(--color-accent-orange-40);
+    &[data-variant~="dark_orange"] {
+      background: var(--color-accent-orange-40) !important;
     }
     &[data-variant~="information"] {
       background: var(--color-secondary-blue-40);
