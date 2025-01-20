@@ -63,6 +63,9 @@ export class TmplComboBoxComponent
     private dataItemsService: DataItemsService
   ) {
     super();
+    // If an initial value is authored, check if this corresponds to an answer option entry.
+    // Handle in effect as answer options may not be available on init
+    // TODO: Refactor base component to use value() signal and use this to compute displayText
     effect(
       () => {
         if (this.answerOptions().length > 0 && this._row.value) {
