@@ -949,11 +949,16 @@ body[data-theme="plh_facilitator_mx"] {
   // Round Button
   ion-tab-button {
     box-shadow: none;
-    background: var(--ion-color-primary-600);
+    background: var(--ion-color-primary-600) !important;
     &[data-variant~="navigation"] {
       background: var(--ion-color-primary-700) !important;
-      border-radius: var(--ion-border-radius-standard);
+      border-radius: var(--ion-border-radius-small);
       box-shadow: none !important;
+      min-height: 32px;
+      width: 36px;
+      ion-icon {
+        font-size: 18px;
+      }
     }
     &[data-variant~="module"] {
       background: var(--color-secondary-blue-40) !important;
