@@ -230,7 +230,7 @@ body[data-theme="plh_facilitator_mx"] {
       color: white;
     }
     .card.standard {
-      color: var(--ion-color-primary-800);
+      color: var(--ion-color-primary-600);
     }
     .alternative {
       color: var(--ion-color-primary-50);
@@ -358,8 +358,8 @@ body[data-theme="plh_facilitator_mx"] {
       }
     }
     .container-player[data-variant~="large"] {
-      background: var(--ion-color-primary-50);
-      border: 0.9px solid var(--ion-color-primary-100);
+      background: var(--ion-color-gary-100);
+      border: 0.9px solid var(--ion-color-gray-200);
       box-sizing: border-box;
       box-shadow: none;
       border-radius: var(--ion-border-radius-standard);
@@ -400,7 +400,7 @@ body[data-theme="plh_facilitator_mx"] {
           }
           .btn-play {
             @include mixins.large-square;
-            --background: var(--ion-color-primary-50) !important;
+            --background: var(--ion-color-gary-100) !important;
             --border-radius: var(--ion-border-radius-rounded) !important;
             --padding: 0 !important;
             --box-shadow: none !important;
