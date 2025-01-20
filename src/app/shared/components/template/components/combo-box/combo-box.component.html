@@ -2,9 +2,9 @@
   <button
     class="open-combobox margin-t-regular"
     (click)="openModal()"
-    [class.placeholder-style]="(!_row.value && placeholder) || prioritisePlaceholder"
-    [class.disabled]="disabled()"
     [ngClass]="{
+      disabled: disabled(),
+      'placeholder-style': (!_row.value && placeholder) || prioritisePlaceholder,
       'with-value': _row.value,
       'no-value': !_row.value
     }"
