@@ -1,4 +1,4 @@
-import { Component, computed, effect, OnDestroy, OnInit, signal } from "@angular/core";
+import { Component, computed, effect, OnDestroy, signal } from "@angular/core";
 import { ModalController } from "@ionic/angular";
 import { ComboBoxModalComponent } from "./combo-box-modal/combo-box-modal.component";
 import {
@@ -20,7 +20,7 @@ import { toObservable, toSignal } from "@angular/core/rxjs-interop";
 })
 export class TmplComboBoxComponent
   extends TemplateBaseComponent
-  implements ITemplateRowProps, OnInit, OnDestroy
+  implements ITemplateRowProps, OnDestroy
 {
   public variant: "modal" | "dropdown";
   public placeholder: string;
@@ -58,6 +58,15 @@ export class TmplComboBoxComponent
     return this.answerText() && !this.prioritisePlaceholder ? this.answerText() : this.placeholder;
   });
 
+  public buttonStyle = computed(() => {
+    return {
+      disabled: this.disabled(),
+      "placeholder-style": (!this._row.value && this.placeholder) || this.prioritisePlaceholder,
+      "with-value": this._row.value,
+      "no-value": !this._row.value,
+    };
+  });
+
   constructor(
     private modalController: ModalController,
     private dataItemsService: DataItemsService
@@ -79,10 +88,10 @@ export class TmplComboBoxComponent
       },
       { allowSignalWrites: true }
     );
-  }
-
-  ngOnInit(): void {
-    this.getParams();
+    effect(() => {
+      this.parameterList();
+      this.getParams();
+    });
   }
 
   getParams() {
