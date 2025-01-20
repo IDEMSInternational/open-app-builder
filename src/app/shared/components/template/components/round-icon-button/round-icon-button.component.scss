@@ -159,7 +159,7 @@ ion-tab-button {
   &[data-variant~="no-background"],
   &.no-background {
     color: unset;
-    background: transparent;
+    background: transparent !important;
     box-shadow: none;
     ion-icon {
       height: 32px;

@@ -141,7 +141,7 @@ export class headerComponent implements OnInit, OnDestroy {
     // TODO: current header collapse implementation does not work on ios, so do not enable on this platform
     if (Capacitor.getPlatform() === "ios") return;
     this.removeScrollEventListeners();
-    if (shouldCollapse) {
+    if (shouldCollapse && !this.headerConfig().hidden) {
       this.listenToScrollEvents();
     }
   }
