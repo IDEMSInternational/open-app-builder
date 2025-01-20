@@ -951,7 +951,6 @@ body[data-theme="plh_facilitator_mx"] {
   // Round Button
   ion-tab-button {
     box-shadow: none;
-    background: var(--ion-color-primary-600) !important;
     &[data-variant~="navigation"] {
       background: var(--ion-color-primary-700) !important;
       border-radius: var(--ion-border-radius-small);
