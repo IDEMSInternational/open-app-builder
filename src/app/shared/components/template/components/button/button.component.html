@@ -9,12 +9,12 @@
     [attr.data-variant]="params.variant"
     [attr.data-has-children]="_row.rows ? true : false"
     [attr.data-language-direction]="templateTranslateService.languageDirection()"
-    [attr.data-icon-align]="params.buttonIconAlign"
+    [attr.data-icon-align]="params.iconAlign"
   >
-    @if (params.icon && params.buttonIconAlign === "left") {
+    @if (params.icon && params.iconAlign === "left") {
       <ion-icon slot="start" [src]="params.icon | plhAsset"></ion-icon>
     }
-    @if (params.icon && params.buttonIconAlign === "right") {
+    @if (params.icon && params.iconAlign === "right") {
       <ion-icon slot="end" [src]="params.icon | plhAsset"></ion-icon>
     }
     @if (params.iconSecondary) {
