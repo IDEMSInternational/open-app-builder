@@ -989,7 +989,6 @@ body[data-theme="plh_facilitator_mx"] {
     border: 1px solid var(--ion-color-primary-400) !important;
     border-radius: var(--ion-border-radius-small) !important;
     filter: none !important;
-    background: var(--ion-color-primary-50);
     box-shadow: -2px 2px 6px var(--ion-color-primary-100);
     min-height: 58px !important;
     &.placeholder-style {
@@ -997,9 +996,7 @@ body[data-theme="plh_facilitator_mx"] {
       font-weight: var(--font-weight-bold) !important;
     }
     &.with-value {
-      background: var(--ion-color-primary-600);
       font-weight: var(--font-weight-bold) !important;
-      color: white;
     }
   }
   combo-box-modal {
