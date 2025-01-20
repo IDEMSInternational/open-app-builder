@@ -9,10 +9,13 @@
     [attr.data-variant]="params.variant"
     [attr.data-has-children]="_row.rows ? true : false"
     [attr.data-language-direction]="templateTranslateService.languageDirection()"
-    [attr.data-button-align]="params.buttonAlign"
+    [attr.data-icon-align]="params.buttonIconAlign"
   >
-    @if (params.icon) {
+    @if (params.icon && params.buttonIconAlign === "left") {
       <ion-icon slot="start" [src]="params.icon | plhAsset"></ion-icon>
+    }
+    @if (params.icon && params.buttonIconAlign === "right") {
+      <ion-icon slot="end" [src]="params.icon | plhAsset"></ion-icon>
     }
     @if (params.iconSecondary) {
       <!-- HACK: support icon being a path to an asset or assume it is the name of an ion-icon (e.g. chevron-forward) -->
