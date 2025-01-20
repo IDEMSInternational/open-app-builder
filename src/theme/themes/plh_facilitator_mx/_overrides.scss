@@ -202,11 +202,13 @@ body[data-theme="plh_facilitator_mx"] {
       text-align: center !important;
       p {
         text-align: center !important;
+        width: auto !important;
       }
     }
     .left.centre ::ng-deep {
       p {
         text-align: center !important;
+        width: auto !important;
       }
     }
     .left.right ::ng-deep {
