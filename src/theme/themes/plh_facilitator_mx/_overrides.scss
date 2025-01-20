@@ -951,7 +951,6 @@ body[data-theme="plh_facilitator_mx"] {
   // Round Button
   ion-tab-button {
     box-shadow: none;
-    background: var(--ion-color-primary-600) !important;
     &[data-variant~="navigation"] {
       background: var(--ion-color-primary-700) !important;
       border-radius: var(--ion-border-radius-small);
@@ -976,8 +975,8 @@ body[data-theme="plh_facilitator_mx"] {
     &[data-variant~="yellow"] {
       background: var(--color-accent-yellow-70);
     }
-    &[data-variant~="dark-orange"] {
-      background: var(--color-accent-orange-40);
+    &[data-variant~="dark_orange"] {
+      background: var(--color-accent-orange-40) !important;
     }
     &[data-variant~="information"] {
       background: var(--color-secondary-blue-40);
