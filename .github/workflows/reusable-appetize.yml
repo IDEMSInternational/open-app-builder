@@ -22,7 +22,10 @@ env:
 
 
 on:
- workflow_call:
+  workflow_call:
+    secrets:
+      DEPLOYMENT_PRIVATE_KEY:
+        description: Provide private key if deployment uses encrypted config
 
 jobs:
 
