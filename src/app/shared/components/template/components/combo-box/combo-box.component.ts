@@ -1,4 +1,4 @@
-import { Component, computed, OnDestroy, OnInit } from "@angular/core";
+import { Component, computed, OnDestroy, OnInit, signal } from "@angular/core";
 import { ModalController } from "@ionic/angular";
 import { ComboBoxModalComponent } from "./combo-box-modal/combo-box-modal.component";
 import {
@@ -25,8 +25,10 @@ export class TmplComboBoxComponent
   public variant: "modal" | "dropdown";
   public placeholder: string;
   public prioritisePlaceholder: boolean;
+  public disabledText: string;
   private style: string;
-  public text = "";
+  public text = signal("");
+  private authorDisabled = false;
   private customAnswerSelected: boolean = false;
   private customAnswerText: string;
   private componentDestroyed$ = new ReplaySubject(1);
@@ -48,6 +50,16 @@ export class TmplComboBoxComponent
     return getAnswerListParamFromTemplateRow(this.rowSignal(), "answer_list", []);
   });
 
+  public disabled = computed(() => this.authorDisabled || this.answerOptions().length === 0);
+
+  public displayText = computed(() => {
+    return this.disabled()
+      ? this.disabledText
+      : this.text() && !this.prioritisePlaceholder
+        ? this.text()
+        : this.placeholder;
+  });
+
   constructor(
     private modalController: ModalController,
     private dataItemsService: DataItemsService
@@ -63,12 +75,14 @@ export class TmplComboBoxComponent
         ? !this.answerOptions().find((x) => x.name === this._row.value)
         : false;
 
-    this.text = "";
+    this.text.set("");
     if (this._row.value) {
-      this.text = this.customAnswerSelected
-        ? this.customAnswerText
-        : this.answerOptions().find((answerListItem) => answerListItem.name === this._row.value)
-            ?.text;
+      this.text.set(
+        this.customAnswerSelected
+          ? this.customAnswerText
+          : this.answerOptions().find((answerListItem) => answerListItem.name === this._row.value)
+              ?.text
+      );
     }
   }
 
@@ -79,10 +93,12 @@ export class TmplComboBoxComponent
       "prioritise_placeholder",
       false
     );
+    this.disabledText = getStringParamFromTemplateRow(this._row, "disabled_text", "");
     this.style = getStringParamFromTemplateRow(this._row, "style", "");
     this.variant = getStringParamFromTemplateRow(this._row, "variant", "modal") as
       | "modal"
       | "dropdown";
+    this.authorDisabled = getBooleanParamFromTemplateRow(this._row, "disabled", false);
   }
 
   async openModal() {
@@ -92,7 +108,7 @@ export class TmplComboBoxComponent
       componentProps: {
         answerOptions: this.answerOptions,
         row: this._row,
-        selectedValue: this.customAnswerSelected ? this.text : this._row.value,
+        selectedValue: this.customAnswerSelected ? this.text() : this._row.value,
         customAnswerSelected: this.customAnswerSelected,
         style: this.style,
       },
@@ -100,11 +116,9 @@ export class TmplComboBoxComponent
 
     modal.onDidDismiss().then(async (data) => {
       this.prioritisePlaceholder = false;
-      this.text = data?.data?.answer?.text;
+      this.text.set(data?.data?.answer?.text);
       this.customAnswerSelected = data?.data?.customAnswerSelected;
-      this.customAnswerText = this.customAnswerSelected
-        ? (this.text = data?.data?.answer?.text)
-        : "";
+      this.customAnswerText = this.customAnswerSelected ? this.text() : "";
       await this.setValue(data?.data?.answer?.name);
       await this.triggerActions("changed");
     });
