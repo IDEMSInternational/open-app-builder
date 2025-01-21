@@ -1,14 +1,8 @@
-<div class="progress-path" #progressPath [class.loading]="loading">
+<div class="progress-path" #progressPath [class.loading]="loading()">
   <div
     class="wrapper"
     [style.backgroundImage]="'url(' + (params.backgroundImageAsset | plhAsset) + ')'"
   >
-    <!-- <div class="path-segment">
-      <svg [attr.viewBox]="svgViewBox" stroke="currentColor">
-        <path fill="none" [attr.d]="svgPath" />
-      </svg>
-    </div> -->
-
     <div class="progress-path-child-wrapper" [style.width]="width">
       <div class="progress-path-child-content-wrapper" [style.--container-width]="width">
         @for (
