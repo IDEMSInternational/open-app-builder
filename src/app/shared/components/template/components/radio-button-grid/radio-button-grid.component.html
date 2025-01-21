@@ -1,4 +1,9 @@
-<div class="radio-grid" [ngStyle]="gridStyle" [attr.data-variant]="parameter_list.variant">
+<div
+  class="radio-button"
+  [ngStyle]="gridStyle"
+  [attr.data-variant]="parameter_list.variant"
+  [ngClass]="parameter_list.style"
+>
   @for (item of radioItems; track $index) {
     <div
       class="item"
@@ -17,7 +22,9 @@
         </div>
       }
       @if (item.text) {
-        <div class="item-text">{{ item.text }}</div>
+        <div class="item-text">
+          <p>{{ item.text }}</p>
+        </div>
       }
     </div>
   }
