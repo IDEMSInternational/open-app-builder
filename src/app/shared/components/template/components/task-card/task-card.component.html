@@ -5,7 +5,7 @@
     (click)="triggerActions('click')"
     [attr.data-status]="progressStatus"
   >
-    @if (highlighted) {
+    @if (highlighted()) {
       <span class="badge highlighted-badge">
         {{ highlightedText }}
       </span>
@@ -61,7 +61,7 @@
               <plh-task-progress-bar
                 [dataListName]="taskGroupDataList"
                 [completedField]="completedField"
-                [highlighted]="highlighted"
+                [highlighted]="highlighted()"
                 [progressUnitsName]="progressUnitsName"
                 [showText]="showProgressText"
                 [(progressStatus)]="progressStatus"
@@ -86,7 +86,7 @@
           <plh-task-progress-bar
             [dataListName]="taskGroupDataList"
             [completedField]="completedField"
-            [highlighted]="highlighted"
+            [highlighted]="highlighted()"
             [progressUnitsName]="progressUnitsName"
             [showText]="false"
             [(progressStatus)]="progressStatus"
@@ -94,7 +94,7 @@
           ></plh-task-progress-bar>
         </div>
       }
-      @if (highlighted) {
+      @if (highlighted()) {
         <span class="badge highlighted-badge">
           {{ highlightedText }}
         </span>
@@ -108,7 +108,10 @@
           }
         </span>
       }
-      <div class="circle-wrapper" [class]="progressStatus" [class.locked]="locked">
+      <div
+        class="circle-wrapper"
+        [ngClass]="{ progressStatus, locked, highlighted: highlighted() }"
+      >
         <img [src]="image | plhAsset" />
         @if (locked) {
           <div class="locked-image">
