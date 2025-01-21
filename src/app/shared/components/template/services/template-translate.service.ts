@@ -134,7 +134,7 @@ export class TemplateTranslateService extends AsyncServiceBase {
    * NOTE - this method is currently only used by data-items as regular processor translates after parsing
    * into template, where translateRow method can be used
    */
-  translateDataListRows(rows: FlowTypes.Data_listRow[] = []) {
+  public translateDataListRows(rows: FlowTypes.Data_listRow[] = []) {
     if (rows.length === 0) return rows;
     // use first row to identify list of fields for translation
     const [{ _translatedFields }] = rows;

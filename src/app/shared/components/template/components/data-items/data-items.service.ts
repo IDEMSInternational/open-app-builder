@@ -128,11 +128,12 @@ export class DataItemsService {
    * (default template processor uses `ensureValueTranslated` method from `template-variables.service`)
    *
    * TODO - this isn't an efficient method for parsing. Data lists should be evaluated in parser
-   * and list of variables to replace identified as metadata in similar way to templating
-   *
+   * and list of variables to replace identified as metadata in similar way to templating.
    */
   private async hackParseDataList(dataListRows: FlowTypes.Data_listRow[]) {
     // Ensure data list rows translated before processing template items
+    // It might be possible to avoid repeated translation effort if including translated data_list in query,
+    // but would also need better tracking of language change and data updates so not currently optimized.
     const translatedListRows = this.templateTranslateService.translateDataListRows(dataListRows);
     const evaluatedRows: FlowTypes.Data_listRow[] = [];
     for (const row of translatedListRows) {
