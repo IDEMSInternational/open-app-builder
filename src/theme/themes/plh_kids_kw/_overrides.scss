@@ -651,7 +651,7 @@ body[data-theme="plh_kids_kw"] {
           color: var(--ion-color-primary-700);
           font-weight: var(--font-weight-bold);
           line-height: var(--line-height-text-small);
-          text-align: left;
+          text-align: center;
           text-transform: none;
           &[data-variant~="capitalise"] {
             text-transform: capitalize;
@@ -666,11 +666,6 @@ body[data-theme="plh_kids_kw"] {
         max-width: unset;
       }
       .container[data-language-direction~="rtl"] {
-        .module-title {
-          p {
-            text-align: right;
-          }
-        }
         .module-image {
           img {
             -webkit-transform: scaleX(-1);
