@@ -140,7 +140,6 @@ export class TemplateTranslateService extends AsyncServiceBase {
     const [{ _translatedFields }] = rows;
     if (!_translatedFields) return rows;
     const translateKeys = Object.keys(_translatedFields);
-    console.log("translate list rows", JSON.parse(JSON.stringify(rows)));
     // translate rows
     return rows.map((row) => {
       for (const key of translateKeys) {
@@ -187,7 +186,7 @@ export class TemplateTranslateService extends AsyncServiceBase {
     return translated;
   }
 
-  subscribeToAppConfigChanges() {
+  private subscribeToAppConfigChanges() {
     this.appConfigService.appConfig$.subscribe((appConfig: IAppConfig) => {
       this.appLanguages = appConfig.APP_LANGUAGES;
       this.appLanguagesMeta = appConfig.APP_LANGUAGES_META;
