@@ -1045,30 +1045,13 @@ body[data-theme="plh_kids_kw"] {
           position: relative;
           height: 75px !important;
           width: 75px !important;
-        }
-        img {
-          opacity: 0.5 !important;
-          border-radius: 50% !important;
-          width: 80% !important;
-          height: 80% !important;
-        }
-        .locked-image {
-          display: flex !important;
-          position: absolute;
-          margin: 0 auto;
-          top: 0px;
-          left: 0px;
-          right: 0px;
-          bottom: 0px;
-
-          align-items: center;
-          justify-content: center;
-
-          img {
-            width: 36px;
-            max-width: 40px;
-            object-fit: contain;
-            opacity: 1 !important;
+          &.locked {
+            img {
+              opacity: 0.5 !important;
+              border-radius: 50% !important;
+              width: 80% !important;
+              height: 80% !important;
+            }
           }
         }
         .circle-wrapper.inProgress {
@@ -1218,9 +1201,9 @@ body[data-theme="plh_kids_kw"] {
   // Plh Progress Path
   plh-progress-path {
     .progress-path {
-      // &.loading {
-      //   visibility: hidden;
-      // }
+      &.loading {
+        visibility: hidden;
+      }
 
       height: 700px;
       width: 100%;

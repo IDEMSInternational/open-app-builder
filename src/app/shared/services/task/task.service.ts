@@ -167,7 +167,7 @@ export class TaskService extends AsyncServiceBase {
     }).length;
     let progressStatus: IProgressStatus;
     let newlyCompleted: boolean;
-    if (subtasksCompleted === subtasksTotal) {
+    if (subtasksCompleted && subtasksCompleted === subtasksTotal) {
       progressStatus = "completed";
       // Check whether task group has already been completed
       if (!this.templateFieldService.getField(completedField)) {

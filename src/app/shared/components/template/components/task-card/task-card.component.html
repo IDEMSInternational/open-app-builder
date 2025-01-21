@@ -79,57 +79,10 @@
     </div>
   </div>
 } @else {
-  @if (!locked) {
-    <div class="circle-card-wrapper" (click)="handleClick()">
-      <div class="image-and-badge-wrapper">
-        @if (taskGroupId && !taskId) {
-          <div>
-            <plh-task-progress-bar
-              [dataListName]="taskGroupDataList"
-              [completedField]="completedField"
-              [highlighted]="highlighted"
-              [progressUnitsName]="progressUnitsName"
-              [showText]="false"
-              [(progressStatus)]="progressStatus"
-              (newlyCompleted)="handleNewlyCompleted($event)"
-            ></plh-task-progress-bar>
-          </div>
-        }
-        @if (highlighted) {
-          <span class="badge highlighted-badge">
-            {{ highlightedText }}
-          </span>
-        } @else if (inProgressIcon || completedIcon) {
-          <span class="badge progress-badge">
-            <span class="circle" [class]="progressStatus"></span>
-            @if (progressStatus === "inProgress") {
-              <img class="icon" src="{{ inProgressIcon | plhAsset }}" />
-            } @else if (progressStatus === "completed") {
-              <img class="icon completed" src="{{ completedIcon | plhAsset }}" />
-            }
-          </span>
-        }
-        <div class="circle-wrapper" [class]="progressStatus">
-          <img [src]="image | plhAsset" />
-          @if (locked) {
-            <div class="locked-image">
-              <img [src]="lockedImageAsset | plhAsset" />
-            </div>
-          }
-        </div>
-      </div>
-      @if (title) {
-        <div class="title-wrapper">
-          <p>
-            {{ title }}
-          </p>
-        </div>
-      }
-    </div>
-  } @else {
-    <div class="circle-card-wrapper">
-      <div class="image-and-badge-wrapper">
-        <div *ngIf="taskGroupId && !taskId">
+  <div class="circle-card-wrapper" (click)="handleClick()">
+    <div class="image-and-badge-wrapper">
+      @if (taskGroupId && !taskId) {
+        <div>
           <plh-task-progress-bar
             [dataListName]="taskGroupDataList"
             [completedField]="completedField"
@@ -140,41 +93,36 @@
             (newlyCompleted)="handleNewlyCompleted($event)"
           ></plh-task-progress-bar>
         </div>
-        @if (highlighted) {
-          <span class="badge highlighted-badge">
-            {{ highlightedText }}
-          </span>
-        } @else {
-          <span class="badge progress-badge">
-            <span class="circle" [class]="progressStatus"></span>
-            <img
-              *ngIf="progressStatus === 'inProgress'"
-              class="icon"
-              src="{{ inProgressIcon | plhAsset }}"
-            />
-            <img
-              *ngIf="progressStatus === 'completed'"
-              class="icon completed"
-              src="{{ completedIcon | plhAsset }}"
-            />
-          </span>
-        }
-        <div class="circle-wrapper" [class]="progressStatus">
-          <img [src]="image | plhAsset" />
-          @if (locked) {
-            <div class="locked-image">
-              <img [src]="lockedImageAsset | plhAsset" />
-            </div>
-          }
-        </div>
-      </div>
-      @if (title) {
-        <div class="title-wrapper">
-          <p>
-            {{ title }}
-          </p>
-        </div>
       }
+      @if (highlighted) {
+        <span class="badge highlighted-badge">
+          {{ highlightedText }}
+        </span>
+      } @else if (inProgressIcon || completedIcon) {
+        <span class="badge progress-badge">
+          <span class="circle" [class]="progressStatus"></span>
+          @if (progressStatus === "inProgress") {
+            <img class="icon" src="{{ inProgressIcon | plhAsset }}" />
+          } @else if (progressStatus === "completed") {
+            <img class="icon completed" src="{{ completedIcon | plhAsset }}" />
+          }
+        </span>
+      }
+      <div class="circle-wrapper" [class]="progressStatus" [class.locked]="locked">
+        <img [src]="image | plhAsset" />
+        @if (locked) {
+          <div class="locked-image">
+            <img [src]="lockedImageAsset | plhAsset" />
+          </div>
+        }
+      </div>
     </div>
-  }
+    @if (title) {
+      <div class="title-wrapper">
+        <p>
+          {{ title }}
+        </p>
+      </div>
+    }
+  </div>
 }
