@@ -16,7 +16,7 @@ interface IPlhProgressPathParams {
 }
 
 @Component({
-  selector: "plh-plh-progress-path",
+  selector: "plh-progress-path",
   templateUrl: "./plh-progress-path.component.html",
   styleUrls: ["./plh-progress-path.component.scss"],
 })
@@ -53,7 +53,6 @@ export class PlhProgressPathComponent
   }
 
   ngOnInit() {
-    this.generateSVGPath();
     this.getParams();
   }
 
@@ -85,19 +84,19 @@ export class PlhProgressPathComponent
     );
   }
 
-  private generateSVGPath() {
-    const curvedPath = () =>
-      `
-    M 92,58
-    c 80,110 290,-30 310,150
-    c -10,40 -90,100 -248,46
-    c -160,-54 -180,270 40,204
-    c 90,-36 140,0 210,80
-    c -6,12 -40,50 -160,96
-    v 0
-    `.trim();
+  // private generateSVGPath() {
+  //   const curvedPath = () =>
+  //     `
+  //   M 92,58
+  //   c 80,110 290,-30 310,150
+  //   c -10,40 -90,100 -248,46
+  //   c -160,-54 -180,270 40,204
+  //   c 90,-36 140,0 210,80
+  //   c -6,12 -40,50 -160,96
+  //   v 0
+  //   `.trim();
 
-    this.svgPath = curvedPath();
-    this.svgViewBox = `0 0 450 700`;
-  }
+  //   this.svgPath = curvedPath();
+  //   this.svgViewBox = `0 0 450 700`;
+  // }
 }
