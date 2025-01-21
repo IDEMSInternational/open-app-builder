@@ -106,6 +106,11 @@ ion-tab-button {
     background: $background-primary;
   }
 
+  &[data-variant~="primary_light"],
+  &.primary_light {
+    background: var(--ion-color-primary-200);
+  }
+
   &[data-variant~="yellow"],
   &.yellow {
     background: $background-secondary-light;
@@ -159,7 +164,7 @@ ion-tab-button {
   &[data-variant~="no-background"],
   &.no-background {
     color: unset;
-    background: transparent;
+    background: transparent !important;
     box-shadow: none;
     ion-icon {
       height: 32px;
