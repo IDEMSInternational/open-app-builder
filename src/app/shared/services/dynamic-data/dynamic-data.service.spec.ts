@@ -149,7 +149,7 @@ describe("DynamicDataService", () => {
     await service.query$("data_list", "fakeData").catch((err) => {
       errMsg = err.message;
     });
-    expect(errMsg).toEqual("No data exists for collection [fakeData], cannot initialise");
+    expect(errMsg).toEqual(`[data_list] "fakeData" not found`);
   });
 
   it("ignores cached data where initial data no longer exists", async () => {

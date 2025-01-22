@@ -9,15 +9,19 @@ import { MockAppDataService } from "src/app/shared/services/data/app-data.servic
 import { DynamicDataService } from "src/app/shared/services/dynamic-data/dynamic-data.service";
 import { TaskService } from "src/app/shared/services/task/task.service";
 import { DataItemsService } from "../data-items/data-items.service";
+import { SwiperModule } from "swiper/angular";
+import { FlowTypes } from "packages/data-models";
+
+const MOCK_ROW: FlowTypes.TemplateRow = { _nested_name: "", name: "", type: "carousel" };
 
 describe("CarouselComponent", () => {
   let component: TmplCarouselComponent;
   let fixture: ComponentFixture<TmplCarouselComponent>;
 
-  beforeEach(waitForAsync(() => {
+  beforeEach(waitForAsync(async () => {
     TestBed.configureTestingModule({
       declarations: [TmplCarouselComponent],
-      imports: [IonicModule.forRoot()],
+      imports: [IonicModule.forRoot(), SwiperModule],
       providers: [
         { provide: AppConfigService, useValue: new MockAppConfigService() },
         { provide: AppDataService, useValue: new MockAppDataService() },
@@ -29,8 +33,9 @@ describe("CarouselComponent", () => {
     }).compileComponents();
 
     fixture = TestBed.createComponent(TmplCarouselComponent);
+    fixture.componentRef.setInput("row", MOCK_ROW);
+    await fixture.whenStable();
     component = fixture.componentInstance;
-    fixture.detectChanges();
   }));
 
   it("should create", () => {
