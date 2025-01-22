@@ -2,6 +2,7 @@ import { ComponentFixture, TestBed } from "@angular/core/testing";
 
 import { TmplRadioButtonGridComponent } from "./radio-button-grid.component";
 import { FlowTypes } from "packages/data-models";
+import { DataItemsService } from "../data-items/data-items.service";
 
 const MOCK_ROW: FlowTypes.TemplateRow = { _nested_name: "", name: "", type: "radio_button_grid" };
 
@@ -12,7 +13,7 @@ describe("RadioButtonGridComponent", () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [TmplRadioButtonGridComponent],
-      providers: [],
+      providers: [{ provide: DataItemsService, useValue: {} }],
     }).compileComponents();
 
     fixture = TestBed.createComponent(TmplRadioButtonGridComponent);
