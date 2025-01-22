@@ -13,7 +13,6 @@ import { MockAppDataService } from "./shared/services/data/app-data.service.mock
 import { HttpClientTestingModule } from "@angular/common/http/testing";
 import { SkinService } from "./shared/services/skin/skin.service";
 import { AnalyticsService } from "./shared/services/analytics";
-import { TemplateService } from "./shared/components/template/services/template.service";
 import { FeedbackService } from "./feature/feedback/feedback.service";
 import { AppUpdateService } from "./shared/services/app-update/app-update.service";
 
