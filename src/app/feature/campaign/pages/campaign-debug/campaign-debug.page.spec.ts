@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from "@angular/core/testing";
 
 import { CampaignDebugPage } from "./campaign-debug.page";
 import { DeploymentService } from "src/app/shared/services/deployment/deployment.service";
-import { MockDeploymentService } from "src/app/shared/services/deployment/deployment.service.spec";
+import { MockDeploymentService } from "src/app/shared/services/deployment/deployment.service.mock.spec";
 import { AppDataService } from "src/app/shared/services/data/app-data.service";
 import { MockAppDataService } from "src/app/shared/services/data/app-data.service.mock.spec";
 import { ActivatedRoute, RouterModule } from "@angular/router";
@@ -23,7 +23,7 @@ describe("CampaignDebugPage", () => {
         // TODO - use mocked constructor services instead when implementing tests
         {
           provide: DeploymentService,
-          useValue: new MockDeploymentService({}),
+          useValue: new MockDeploymentService(),
         },
         {
           provide: AppDataService,

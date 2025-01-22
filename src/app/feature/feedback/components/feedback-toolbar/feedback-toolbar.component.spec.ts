@@ -7,7 +7,7 @@ import { UserMetaService } from "src/app/shared/services/userMeta/userMeta.servi
 import { DBSyncService } from "src/app/shared/services/db/db-sync.service";
 import { AppConfigService } from "src/app/shared/services/app-config/app-config.service";
 import { MockAppConfigService } from "src/app/shared/services/app-config/app-config.service.mock.spec";
-import { MockDeploymentService } from "src/app/shared/services/deployment/deployment.service.spec";
+import { MockDeploymentService } from "src/app/shared/services/deployment/deployment.service.mock.spec";
 import { FeedbackService } from "../../feedback.service";
 import { DeploymentService } from "src/app/shared/services/deployment/deployment.service";
 
@@ -24,7 +24,7 @@ describe("FeedbackToolbarComponent", () => {
         { provide: UserMetaService, useValue: {} },
         { provide: DBSyncService, useValue: {} },
         { provide: AppConfigService, useValue: new MockAppConfigService() },
-        { provide: DeploymentService, useValue: new MockDeploymentService({}) },
+        { provide: DeploymentService, useValue: new MockDeploymentService() },
         { provide: FeedbackService, useValue: {} },
       ],
     }).compileComponents();

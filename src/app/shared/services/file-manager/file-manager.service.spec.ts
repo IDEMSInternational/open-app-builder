@@ -5,7 +5,7 @@ import { ErrorHandlerService } from "../error-handler/error-handler.service";
 import { MockErrorHandlerService } from "../error-handler/error-handler.service.mock.spec";
 import { TemplateAssetService } from "../../components/template/services/template-asset.service";
 import { DeploymentService } from "../deployment/deployment.service";
-import { MockDeploymentService } from "../deployment/deployment.service.spec";
+import { MockDeploymentService } from "../deployment/deployment.service.mock.spec";
 
 /**
  * Call standalone tests via:
@@ -20,7 +20,7 @@ describe("FileManagerService", () => {
       providers: [
         { provide: ErrorHandlerService, useValue: new MockErrorHandlerService() },
         { provide: TemplateAssetService, useValue: {} },
-        { provide: DeploymentService, useValue: new MockDeploymentService({}) },
+        { provide: DeploymentService, useValue: new MockDeploymentService() },
       ],
     });
     service = TestBed.inject(FileManagerService);

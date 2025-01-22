@@ -1,7 +1,7 @@
 import { AppConfigService } from "./app-config.service";
 import { IAppConfig } from "../../model";
 
-import { MockDeploymentService } from "../deployment/deployment.service.spec";
+import { MockDeploymentService } from "../deployment/deployment.service.mock.spec";
 import { DeploymentService } from "../deployment/deployment.service";
 import { Router } from "@angular/router";
 
