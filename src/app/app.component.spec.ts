@@ -7,7 +7,7 @@ import { StatusBar } from "@ionic-native/status-bar/ngx";
 
 import { AppComponent } from "./app.component";
 import { DeploymentService } from "./shared/services/deployment/deployment.service";
-import { MockDeploymentService } from "./shared/services/deployment/deployment.service.spec";
+import { MockDeploymentService } from "./shared/services/deployment/deployment.service.mock.spec";
 import { AppDataService } from "./shared/services/data/app-data.service";
 import { MockAppDataService } from "./shared/services/data/app-data.service.mock.spec";
 import { HttpClientTestingModule } from "@angular/common/http/testing";
@@ -33,7 +33,7 @@ describe("AppComponent", () => {
         { provide: StatusBar, useValue: statusBarSpy },
         { provide: SplashScreen, useValue: splashScreenSpy },
         { provide: Platform, useValue: platformSpy },
-        { provide: DeploymentService, useValue: new MockDeploymentService({}) },
+        { provide: DeploymentService, useValue: new MockDeploymentService() },
         { provide: AppDataService, useValue: new MockAppDataService() },
         { provide: SkinService, useValue: {} },
         { provide: ModalController, useValue: {} },

@@ -2,7 +2,7 @@ import { TestBed } from "@angular/core/testing";
 
 import { AuthService } from "./auth.service";
 import { DeploymentService } from "../deployment/deployment.service";
-import { MockDeploymentService } from "../deployment/deployment.service.spec";
+import { MockDeploymentService } from "../deployment/deployment.service.mock.spec";
 import { TemplateService } from "../../components/template/services/template.service";
 import { ServerService } from "../server/server.service";
 import { HttpClientTestingModule } from "@angular/common/http/testing";
@@ -14,7 +14,7 @@ describe("AuthService", () => {
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule],
       providers: [
-        { provide: DeploymentService, useValue: new MockDeploymentService({}) },
+        { provide: DeploymentService, useValue: new MockDeploymentService() },
         { provide: TemplateService, useValue: {} },
         { provide: ServerService, useValue: {} },
       ],

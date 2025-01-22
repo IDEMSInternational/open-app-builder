@@ -6,7 +6,7 @@ import { DynamicDataService } from "./dynamic-data.service";
 import { AppDataService } from "../data/app-data.service";
 import { MockAppDataService } from "../data/app-data.service.mock.spec";
 import { DeploymentService } from "../deployment/deployment.service";
-import { MockDeploymentService } from "../deployment/deployment.service.spec";
+import { MockDeploymentService } from "../deployment/deployment.service.mock.spec";
 import { FlowTypes } from "packages/data-models";
 
 type ITestRow = { id: string; number: number; string: string; boolean: boolean; _meta_field?: any };

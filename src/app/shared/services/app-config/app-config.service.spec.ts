@@ -7,7 +7,7 @@ import { DeploymentService } from "../deployment/deployment.service";
 import { IDeploymentRuntimeConfig } from "packages/data-models";
 
 import { firstValueFrom } from "rxjs/internal/firstValueFrom";
-import { MockDeploymentService } from "../deployment/deployment.service.spec";
+import { MockDeploymentService } from "../deployment/deployment.service.mock.spec";
 
 const MOCK_DEPLOYMENT_CONFIG: Partial<IDeploymentRuntimeConfig> = {
   app_config: { APP_FOOTER_DEFAULTS: { templateName: "mock_footer" } },
