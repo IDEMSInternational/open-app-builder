@@ -4,7 +4,7 @@ import { ThemeService } from "./theme.service";
 import { LocalStorageService } from "src/app/shared/services/local-storage/local-storage.service";
 import { MockLocalStorageService } from "src/app/shared/services/local-storage/local-storage.service.spec";
 import { AppConfigService } from "src/app/shared/services/app-config/app-config.service";
-import { MockAppConfigService } from "src/app/shared/services/app-config/app-config.service.spec";
+import { MockAppConfigService } from "src/app/shared/services/app-config/app-config.service.mock.spec";
 import { IAppConfig } from "packages/data-models";
 
 export class MockThemeService implements Partial<ThemeService> {
