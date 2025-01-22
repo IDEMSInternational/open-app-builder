@@ -15,6 +15,8 @@ import { AppConfigService } from "../app-config/app-config.service";
 import { CampaignService } from "../../../feature/campaign/campaign.service";
 import { TemplateFieldService } from "../../components/template/services/template-field.service";
 import { _wait } from "packages/shared/src/utils/async-utils";
+import { DynamicDataService } from "../dynamic-data/dynamic-data.service";
+import { MockDynamicDataService } from "../dynamic-data/dynamic-data.service.mock.spec";
 
 // This must match the corresponding value in the deployment config, if the default value is overridden
 const highlightedTaskFieldName = "_task_highlighted_group_id";
@@ -95,6 +97,10 @@ describe("TaskService", () => {
         {
           provide: AppConfigService,
           useValue: new MockAppConfigService(MOCK_CONFIG),
+        },
+        {
+          provide: DynamicDataService,
+          useValue: new MockDynamicDataService(MOCK_DATA),
         },
         // Mock single method from campaign service called
         {
