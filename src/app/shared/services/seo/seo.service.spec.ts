@@ -1,12 +1,16 @@
 import { TestBed } from "@angular/core/testing";
 
 import { SeoService } from "./seo.service";
+import { DeploymentService } from "../deployment/deployment.service";
+import { MockDeploymentService } from "../deployment/deployment.service.spec";
 
 describe("SeoService", () => {
   let service: SeoService;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({});
+    TestBed.configureTestingModule({
+      providers: [{ provide: DeploymentService, useValue: new MockDeploymentService({}) }],
+    });
     service = TestBed.inject(SeoService);
   });
 
