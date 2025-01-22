@@ -19,19 +19,19 @@ export class FirebaseService extends SyncServiceBase {
    */
   private initialise() {
     const { firebase } = this.deploymentService.config;
+    if (firebase) {
+      // Check if any services are enabled, simply return if not
+      const enabledServices = Object.entries(firebase)
+        .filter(([key, v]) => v && v.constructor === {}.constructor && v["enabled"])
+        .map(([key]) => key);
+      if (enabledServices.length === 0) return;
 
-    // Check if any services are enabled, simply return if not
-    const enabledServices = Object.entries(firebase)
-      .filter(([key, v]) => v && v.constructor === {}.constructor && v["enabled"])
-      .map(([key]) => key);
-    if (enabledServices.length === 0) return;
-
-    // Check config exists if services are enabled
-    if (!firebase.config) {
-      console.warn(`[Firebase] config missing, services disabled:\n`, enabledServices.join(", "));
-      return;
+      // Check config exists if services are enabled
+      if (!firebase.config) {
+        console.warn(`[Firebase] config missing, services disabled:\n`, enabledServices.join(", "));
+        return;
+      }
+      this.app = initializeApp(firebase.config);
     }
-
-    this.app = initializeApp(firebase.config);
   }
 }
