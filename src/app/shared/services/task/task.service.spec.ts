@@ -7,7 +7,7 @@ import { TaskService } from "./task.service";
 
 // Mock Services
 import { MockTemplateFieldService } from "../../components/template/services/template-field.service.spec";
-import { MockAppConfigService } from "../app-config/app-config.service.spec";
+import { MockAppConfigService } from "../app-config/app-config.service.mock.spec";
 import { MockAppDataService } from "../data/app-data.service.mock.spec";
 // Mocked Services
 import { AppDataService, IAppDataCache } from "../data/app-data.service";

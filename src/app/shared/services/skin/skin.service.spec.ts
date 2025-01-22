@@ -4,7 +4,7 @@ import { SkinService } from "./skin.service";
 import { LocalStorageService } from "../local-storage/local-storage.service";
 import { MockLocalStorageService } from "../local-storage/local-storage.service.spec";
 import { AppConfigService } from "../app-config/app-config.service";
-import { MockAppConfigService } from "../app-config/app-config.service.spec";
+import { MockAppConfigService } from "../app-config/app-config.service.mock.spec";
 import { TemplateService } from "../../components/template/services/template.service";
 import { ThemeService } from "src/app/feature/theme/services/theme.service";
 import { MockThemeService } from "src/app/feature/theme/services/theme.service.spec";
