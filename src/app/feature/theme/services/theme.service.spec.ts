@@ -7,16 +7,6 @@ import { AppConfigService } from "src/app/shared/services/app-config/app-config.
 import { MockAppConfigService } from "src/app/shared/services/app-config/app-config.service.mock.spec";
 import { IAppConfig } from "packages/data-models";
 
-export class MockThemeService implements Partial<ThemeService> {
-  ready() {
-    return true;
-  }
-  setTheme() {}
-  getCurrentTheme() {
-    return "mock_theme";
-  }
-}
-
 const MOCK_APP_CONFIG: Partial<IAppConfig> = {
   APP_THEMES: {
     available: ["MOCK_THEME_1", "MOCK_THEME_2"],
