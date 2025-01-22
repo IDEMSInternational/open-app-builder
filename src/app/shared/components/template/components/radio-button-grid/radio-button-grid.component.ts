@@ -26,9 +26,7 @@ interface IRadioButtonGridParams {
    **/
   grid_gap: string;
   /* TEMPLATE PARAMETER: "variant". The style variant of the button_grid */
-  variant?: "default" | "circle-icon";
-  /* TEMPLATE PARAMETER: "style". Defines the display style of the buttons. Default is grid */
-  style?: "grid" | "flex";
+  variant?: "default" | "circle-icon" | "flex";
 }
 
 @Component({
@@ -78,9 +76,6 @@ export class TmplRadioButtonGridComponent
     this.parameter_list.variant = getStringParamFromTemplateRow(this._row, "variant", "default")
       .split(",")
       .join(" ") as IRadioButtonGridParams["variant"];
-    this.parameter_list.style = getStringParamFromTemplateRow(this._row, "style", "grid")
-      .split(",")
-      .join(" ") as IRadioButtonGridParams["style"];
   }
 
   /**
