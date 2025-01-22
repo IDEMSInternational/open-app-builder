@@ -5,12 +5,15 @@ import { TmplTaskCardComponent } from "./task-card.component";
 import { TaskService } from "src/app/shared/services/task/task.service";
 import { TemplateFieldService } from "../../services/template-field.service";
 import { MockTemplateFieldService } from "../../services/template-field.service.spec";
+import { FlowTypes } from "packages/data-models";
+
+const MOCK_ROW: FlowTypes.TemplateRow = { _nested_name: "", name: "", type: "task_card" };
 
 describe("TmplTaskCardComponent", () => {
   let component: TmplTaskCardComponent;
   let fixture: ComponentFixture<TmplTaskCardComponent>;
 
-  beforeEach(waitForAsync(() => {
+  beforeEach(waitForAsync(async () => {
     TestBed.configureTestingModule({
       declarations: [TmplTaskCardComponent],
       imports: [IonicModule.forRoot()],
@@ -21,8 +24,9 @@ describe("TmplTaskCardComponent", () => {
     }).compileComponents();
 
     fixture = TestBed.createComponent(TmplTaskCardComponent);
+    fixture.componentRef.setInput("row", MOCK_ROW);
+    await fixture.whenStable();
     component = fixture.componentInstance;
-    fixture.detectChanges();
   }));
 
   it("should create", () => {
