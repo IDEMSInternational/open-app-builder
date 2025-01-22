@@ -2,6 +2,7 @@ import { ComponentFixture, TestBed, waitForAsync } from "@angular/core/testing";
 import { IonicModule } from "@ionic/angular";
 
 import { TmplProgressPathComponent } from "./progress-path.component";
+import { TemplateTranslateService } from "../../services/template-translate.service";
 
 describe("TmplProgressPathComponent", () => {
   let component: TmplProgressPathComponent;
@@ -11,6 +12,7 @@ describe("TmplProgressPathComponent", () => {
     TestBed.configureTestingModule({
       declarations: [TmplProgressPathComponent],
       imports: [IonicModule.forRoot()],
+      providers: [{ provide: TemplateTranslateService, useValue: {} }],
     }).compileComponents();
 
     fixture = TestBed.createComponent(TmplProgressPathComponent);
