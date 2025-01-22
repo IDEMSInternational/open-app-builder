@@ -27,6 +27,7 @@ describe("RadioButtonGridComponent", () => {
     component = fixture.componentInstance;
   }));
 
+  // TODO - DataItemsService not injecting correctly, may require mock
   it("should create", () => {
     expect(component).toBeTruthy();
   });
