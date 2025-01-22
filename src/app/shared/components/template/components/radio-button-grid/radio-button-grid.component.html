@@ -1,9 +1,4 @@
-<div
-  class="radio-button"
-  [ngStyle]="gridStyle"
-  [attr.data-variant]="parameter_list.variant"
-  [ngClass]="parameter_list.style"
->
+<div class="radio-buttons" [ngStyle]="gridStyle" [attr.data-variant]="parameter_list.variant">
   @for (item of radioItems; track $index) {
     <div
       class="item"

@@ -9,7 +9,7 @@ $border-radius: var(--ion-border-radius-standard);
 $text-size: var(--radio-button-font-size, 1.25rem);
 $text-color: var(--radio-button-font-color, var(--ion-color-primary));
 
-.radio-button.grid {
+.radio-buttons {
   display: grid;
 }
 .item {
@@ -29,7 +29,7 @@ $text-color: var(--radio-button-font-color, var(--ion-color-primary));
   color: $text-color;
 }
 
-.radio-button.grid[data-variant="circle-icon"] {
+.radio-buttons[data-variant="circle-icon"] {
   display: grid;
 
   .item {
@@ -78,7 +78,7 @@ $text-color: var(--radio-button-font-color, var(--ion-color-primary));
   }
 }
 
-.radio-button.flex {
+.radio-buttons[data-variant="flex"] {
   display: flex;
   flex-flow: row wrap;
   justify-content: space-evenly;
