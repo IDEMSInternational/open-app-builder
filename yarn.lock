@@ -15204,6 +15204,7 @@ __metadata:
     karma-coverage: ~2.2.0
     karma-jasmine: ~5.1.0
     karma-jasmine-html-reporter: ~2.0.0
+    karma-json-result-reporter: ^1.0.0
     katex: ^0.16.21
     lint-staged: ^15.2.2
     lottie-web: ^5.12.2
@@ -15352,6 +15353,13 @@ __metadata:
   dependencies:
     node-gyp: latest
   conditions: os=darwin
+  languageName: node
+  linkType: hard
+
+"fun-map@npm:^3.3.1":
+  version: 3.3.1
+  resolution: "fun-map@npm:3.3.1"
+  checksum: 317cce13550b54563d9c4b85276ff97095b91fc2cff2be6f39e47c92b8a7d6ef7cc4d167b451630423fa0d25cca639173f1d3398a0903af51ac371fcb6ffecc8
   languageName: node
   linkType: hard
 
@@ -18571,6 +18579,15 @@ __metadata:
   peerDependencies:
     karma: ^6.0.0
   checksum: ebefd1094e7c2b4c854027621d854908166c79cccaabb5a6ba0ace42cd785a9da0a9aad1aa41937956bd4848287eac04886eebfd7c851b927d2132d3563b7739
+  languageName: node
+  linkType: hard
+
+"karma-json-result-reporter@npm:^1.0.0":
+  version: 1.0.0
+  resolution: "karma-json-result-reporter@npm:1.0.0"
+  dependencies:
+    fun-map: ^3.3.1
+  checksum: 0f97c7016f964e1df2ef8a98a649bc061f81d7222fcaedfde57772aff3a5097daa109fdc7d28955cf72af41c0e44e694d866fea2f878a2012a7a6b40b1665420
   languageName: node
   linkType: hard
 
