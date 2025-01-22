@@ -7,7 +7,7 @@ import { AppConfigService } from "../app-config/app-config.service";
 import { MockAppConfigService } from "../app-config/app-config.service.mock.spec";
 import { TemplateService } from "../../components/template/services/template.service";
 import { ThemeService } from "src/app/feature/theme/services/theme.service";
-import { MockThemeService } from "src/app/feature/theme/services/theme.service.spec";
+import { MockThemeService } from "src/app/feature/theme/services/theme.service.mock.spec";
 import { IAppConfig, IAppSkin } from "packages/data-models";
 import { deepMergeObjects } from "../../utils";
 import clone from "clone";
