@@ -491,20 +491,24 @@ body[data-theme="plh_facilitator_mx"] {
 
       plh-tmpl-text {
         width: 100%;
-        p {
+        .standard {
           color: var(--color-surface-white) !important;
-          font-size: var(--font-size-text-medium) !important;
-          line-height: var(--line-height-text-medium) !important;
-          font-weight: var(--font-weight-standard) !important;
-          margin-top: 8px;
+          p,
+          ul,
+          ol {
+            font-size: var(--font-size-text-medium) !important;
+            line-height: var(--line-height-text-medium) !important;
+            font-weight: var(--font-weight-standard) !important;
+            margin-top: 8px;
+            a {
+              color: var(--color-surface-white-variant) !important;
+              text-decoration: underline !important;
+            }
+          }
           a {
             color: var(--color-surface-white-variant) !important;
             text-decoration: underline !important;
           }
-        }
-        a {
-          color: var(--color-surface-white-variant) !important;
-          text-decoration: underline !important;
         }
       }
     }
@@ -703,7 +707,7 @@ body[data-theme="plh_facilitator_mx"] {
       padding: 0;
       border-radius: 12px !important;
       .text {
-        border: 1px solid var(--color-accent-yellow-80);
+        border: 1px solid var(--color-accent-orange-80);
         border-top-left-radius: 12px;
         border-bottom-left-radius: 12px;
 
@@ -729,7 +733,7 @@ body[data-theme="plh_facilitator_mx"] {
         border-top-right-radius: 12px;
         border-bottom-right-radius: 12px;
 
-        background-color: var(--color-accent-yellow-40);
+        background-color: var(--color-accent-orange-40);
         color: var(--color-surface-white);
         font-size: var(--font-size-text-small) !important;
         font-weight: var(--font-weight-bold);
@@ -741,7 +745,7 @@ body[data-theme="plh_facilitator_mx"] {
         max-width: 32px !important;
       }
       &[data-toggled="true"] {
-        background-color: var(--color-accent-yellow-95) !important;
+        background-color: var(--color-accent-orange-95) !important;
       }
     }
     .box-wrapper[data-language-direction~="rtl"] {
