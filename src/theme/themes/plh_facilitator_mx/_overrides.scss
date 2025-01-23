@@ -17,11 +17,24 @@ body[data-theme="plh_facilitator_mx"] {
 
   //Title
   plh-tmpl-title {
-    .title-wrapper h1 p {
+    .title-wrapper h1 {
       font-size: var(--font-size-text-title);
       margin: var(--paragraph-margin-medium) 0;
       line-height: var(--line-height-text-large);
       color: var(--color-surface-black);
+    }
+    .title-wrapper[data-variant~="section_banner"] {
+      font-size: var(--font-size-text-large) !important;
+      font-weight: var(--font-weight-medium) !important;
+      background-color: #effcfc;
+      border-bottom: 1px solid #b2f3ed;
+      h1 {
+        padding: 18px;
+        border: none;
+      }
+    }
+    .title-wrapper[data-variant~="page_banner"] h1 {
+      font-size: var(--font-size-text-extra-large) !important;
     }
   }
   // Task Card
