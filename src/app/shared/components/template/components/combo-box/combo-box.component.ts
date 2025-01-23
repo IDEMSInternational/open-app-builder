@@ -58,15 +58,6 @@ export class TmplComboBoxComponent
     return this.answerText() && !this.prioritisePlaceholder ? this.answerText() : this.placeholder;
   });
 
-  public buttonStyle = computed(() => {
-    return {
-      disabled: this.disabled(),
-      "placeholder-style": (!this._row.value && this.placeholder) || this.prioritisePlaceholder,
-      "with-value": this._row.value,
-      "no-value": !this._row.value,
-    };
-  });
-
   constructor(
     private modalController: ModalController,
     private dataItemsService: DataItemsService
@@ -107,6 +98,11 @@ export class TmplComboBoxComponent
       | "modal"
       | "dropdown";
     this.authorDisabled = getBooleanParamFromTemplateRow(this._row, "disabled", false);
+  }
+
+  public handleDropdownChange(value) {
+    this.setValue(value);
+    this.triggerActions("changed");
   }
 
   async openModal() {
