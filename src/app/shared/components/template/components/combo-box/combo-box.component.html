@@ -2,23 +2,25 @@
   <button
     class="open-combobox margin-t-regular"
     (click)="openModal()"
-    [class.placeholder-style]="(!_row.value && placeholder) || prioritisePlaceholder"
     [ngClass]="{
+      disabled: disabled(),
+      'placeholder-style': (!_row.value && placeholder) || prioritisePlaceholder,
       'with-value': _row.value,
       'no-value': !_row.value
     }"
-    [disabled]="_row.disabled"
+    [disabled]="disabled()"
   >
-    {{ (text && !prioritisePlaceholder ? text : placeholder) | translate }}
+    {{ displayText() | translate }}
   </button>
 } @else if (variant === "dropdown") {
   <div class="combo-box-container dropdown">
     <ion-select
       [class.hasValue]="!!_row.value"
-      [placeholder]="(text && !prioritisePlaceholder ? text : placeholder) | translate"
+      [placeholder]="displayText() | translate"
       (ionChange)="setValue($event.detail.value)"
       interface="popover"
       labelPlacement="stacked"
+      [disabled]="disabled()"
     >
       @for (answerOption of answerOptions(); track answerOption.name) {
         <ion-select-option [value]="answerOption.name">
