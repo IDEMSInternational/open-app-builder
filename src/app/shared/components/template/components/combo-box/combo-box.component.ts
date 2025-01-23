@@ -1,4 +1,4 @@
-import { Component, computed, OnDestroy, OnInit } from "@angular/core";
+import { Component, computed, effect, OnDestroy, signal } from "@angular/core";
 import { ModalController } from "@ionic/angular";
 import { ComboBoxModalComponent } from "./combo-box-modal/combo-box-modal.component";
 import {
@@ -20,14 +20,16 @@ import { toObservable, toSignal } from "@angular/core/rxjs-interop";
 })
 export class TmplComboBoxComponent
   extends TemplateBaseComponent
-  implements ITemplateRowProps, OnInit, OnDestroy
+  implements ITemplateRowProps, OnDestroy
 {
   public variant: "modal" | "dropdown";
   public placeholder: string;
   public prioritisePlaceholder: boolean;
+  public disabledText: string;
   private style: string;
-  public text = "";
-  private customAnswerSelected: boolean = false;
+  public answerText = signal("");
+  private authorDisabled = false;
+  private customAnswerSelected = signal(false);
   private customAnswerText: string;
   private componentDestroyed$ = new ReplaySubject(1);
 
@@ -48,28 +50,48 @@ export class TmplComboBoxComponent
     return getAnswerListParamFromTemplateRow(this.rowSignal(), "answer_list", []);
   });
 
+  public disabled = computed(() => this.authorDisabled || this.answerOptions().length === 0);
+
+  public displayText = computed(() => {
+    if (this.disabled()) return this.disabledText;
+    if (this.customAnswerSelected()) return this.customAnswerText;
+    return this.answerText() && !this.prioritisePlaceholder ? this.answerText() : this.placeholder;
+  });
+
+  public buttonStyle = computed(() => {
+    return {
+      disabled: this.disabled(),
+      "placeholder-style": (!this._row.value && this.placeholder) || this.prioritisePlaceholder,
+      "with-value": this._row.value,
+      "no-value": !this._row.value,
+    };
+  });
+
   constructor(
     private modalController: ModalController,
     private dataItemsService: DataItemsService
   ) {
     super();
-  }
-
-  ngOnInit(): void {
-    this.getParams();
-
-    this.customAnswerSelected =
-      this.answerOptions().length > 0 && this._row.value
-        ? !this.answerOptions().find((x) => x.name === this._row.value)
-        : false;
-
-    this.text = "";
-    if (this._row.value) {
-      this.text = this.customAnswerSelected
-        ? this.customAnswerText
-        : this.answerOptions().find((answerListItem) => answerListItem.name === this._row.value)
-            ?.text;
-    }
+    // If an initial value is authored, check if this corresponds to an answer option entry.
+    // Handle in effect as answer options may not be available on init
+    // TODO: Refactor base component to use value() signal and use this to compute displayText
+    effect(
+      () => {
+        if (this.answerOptions().length > 0 && this._row.value) {
+          const selectedAnswer = this.answerOptions().find((x) => x.name === this._row.value);
+          if (!selectedAnswer) {
+            this.customAnswerSelected.set(true);
+          } else {
+            this.answerText.set(selectedAnswer?.text || "");
+          }
+        }
+      },
+      { allowSignalWrites: true }
+    );
+    effect(() => {
+      this.parameterList();
+      this.getParams();
+    });
   }
 
   getParams() {
@@ -79,10 +101,12 @@ export class TmplComboBoxComponent
       "prioritise_placeholder",
       false
     );
+    this.disabledText = getStringParamFromTemplateRow(this._row, "disabled_text", "");
     this.style = getStringParamFromTemplateRow(this._row, "style", "");
     this.variant = getStringParamFromTemplateRow(this._row, "variant", "modal") as
       | "modal"
       | "dropdown";
+    this.authorDisabled = getBooleanParamFromTemplateRow(this._row, "disabled", false);
   }
 
   async openModal() {
@@ -92,19 +116,17 @@ export class TmplComboBoxComponent
       componentProps: {
         answerOptions: this.answerOptions,
         row: this._row,
-        selectedValue: this.customAnswerSelected ? this.text : this._row.value,
-        customAnswerSelected: this.customAnswerSelected,
+        selectedValue: this.customAnswerSelected() ? this.answerText() : this._row.value,
+        customAnswerSelected: this.customAnswerSelected(),
         style: this.style,
       },
     });
 
     modal.onDidDismiss().then(async (data) => {
       this.prioritisePlaceholder = false;
-      this.text = data?.data?.answer?.text;
-      this.customAnswerSelected = data?.data?.customAnswerSelected;
-      this.customAnswerText = this.customAnswerSelected
-        ? (this.text = data?.data?.answer?.text)
-        : "";
+      this.answerText.set(data?.data?.answer?.text);
+      this.customAnswerSelected.set(data?.data?.customAnswerSelected);
+      this.customAnswerText = this.customAnswerSelected() ? data?.data?.answer?.text : "";
       await this.setValue(data?.data?.answer?.name);
       await this.triggerActions("changed");
     });

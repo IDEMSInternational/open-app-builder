@@ -18,7 +18,11 @@ export class MockAppDataService implements Partial<AppDataService> {
   public appDataCache: IAppDataCache;
 
   // allow additional specs implementing service to provide their own data if required
-  constructor(mockData: Partial<IAppDataCache> = {}) {
+  constructor(
+    mockData: Partial<IAppDataCache> = {},
+    /** Bypass methods to load translations from http by providing combined language_codes and strings */
+    private translationStrings: { [language_code: string]: { [source_text: string]: string } } = {}
+  ) {
     this.appDataCache = { ...DATA_CACHE_CLEAN, ...mockData };
   }
 
@@ -34,6 +38,7 @@ export class MockAppDataService implements Partial<AppDataService> {
     return this.appDataCache[flow_type]?.[flow_name] as T;
   }
   public async getTranslationStrings(language_code: string) {
-    return {};
+    await _wait(50);
+    return this.translationStrings[language_code];
   }
 }
