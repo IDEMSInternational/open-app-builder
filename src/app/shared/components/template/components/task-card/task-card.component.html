@@ -79,7 +79,7 @@
     </div>
   </div>
 } @else {
-  <div class="circle-card-wrapper" (click)="triggerActions('click')">
+  <div class="circle-card-wrapper" (click)="handleClick()">
     <div class="image-and-badge-wrapper">
       @if (taskGroupId && !taskId) {
         <div>
@@ -108,8 +108,13 @@
           }
         </span>
       }
-      <div class="circle-wrapper">
+      <div class="circle-wrapper" [class]="progressStatus">
         <img [src]="image | plhAsset" />
+        @if (locked) {
+          <div class="locked-image">
+            <img [src]="lockedImageAsset | plhAsset" />
+          </div>
+        }
       </div>
     </div>
     @if (title) {
