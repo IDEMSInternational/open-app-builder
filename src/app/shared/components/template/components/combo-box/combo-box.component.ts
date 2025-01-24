@@ -100,9 +100,9 @@ export class TmplComboBoxComponent
     this.authorDisabled = getBooleanParamFromTemplateRow(this._row, "disabled", false);
   }
 
-  public handleDropdownChange(value) {
-    this.setValue(value);
-    this.triggerActions("changed");
+  public async handleDropdownChange(value) {
+    await this.setValue(value);
+    await this.triggerActions("changed");
   }
 
   async openModal() {
