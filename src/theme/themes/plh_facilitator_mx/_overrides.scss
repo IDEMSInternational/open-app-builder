@@ -6,10 +6,9 @@ body[data-theme="plh_facilitator_mx"] {
     .standard {
       color: var(--color-surface-black);
       font-size: var(--font-size-text-medium);
-      p {
-        margin: var(--paragraph-margin-medium) 0;
-      }
-      ol {
+      p,
+      ol,
+      ul {
         margin: var(--paragraph-margin-medium) 0;
       }
     }
