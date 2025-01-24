@@ -17,7 +17,7 @@
     <ion-select
       [class.hasValue]="!!_row.value"
       [placeholder]="displayText() | translate"
-      (ionChange)="setValue($event.detail.value)"
+      (ionChange)="handleDropdownChange($event.detail.value)"
       interface="popover"
       labelPlacement="stacked"
       [disabled]="disabled()"
