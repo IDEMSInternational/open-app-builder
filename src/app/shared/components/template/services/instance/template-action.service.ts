@@ -205,14 +205,28 @@ export class TemplateActionService extends SyncServiceBase {
   }
 
   private async processAction(action: FlowTypes.TemplateRowAction) {
+    // HACK - update any self referenced values (see note from template.parser method)
+    // Update action.args
     action.args = action.args.map((arg) => {
-      // HACK - update any self referenced values (see note from template.parser method)
       if (typeof arg === "string" && arg.startsWith("this.")) {
         const selfField = arg.split(".")[1];
         arg = this.container?.templateRowMap[action._triggeredBy?._nested_name]?.[selfField];
       }
       return arg;
     });
+    // Update action.params
+    if (action.params) {
+      action.params = Object.fromEntries(
+        Object.entries(action.params).map(([key, value]) => {
+          if (typeof value === "string" && value.startsWith("this.")) {
+            const selfField = value.split(".")[1];
+            value = this.container?.templateRowMap[action._triggeredBy?._nested_name]?.[selfField];
+          }
+          return [key, value];
+        })
+      );
+    }
+
     const { action_id, args } = action;
 
     // Call any action registered with global handler
