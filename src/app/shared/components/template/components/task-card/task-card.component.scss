@@ -196,6 +196,25 @@
         height: 100%;
         clip-path: circle(#{$circle-width / 2 - 4px} at center);
       }
+      .locked-image {
+        display: flex;
+        position: absolute;
+        margin: 0 auto;
+        top: 0px;
+        left: 0px;
+        right: 0px;
+        bottom: 0px;
+
+        align-items: center;
+        justify-content: center;
+
+        img {
+          width: 36px;
+          max-width: 40px;
+          object-fit: contain;
+          opacity: 1;
+        }
+      }
     }
 
     plh-task-progress-bar {
