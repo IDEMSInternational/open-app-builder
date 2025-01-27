@@ -33,8 +33,6 @@ export class PlhProgressPathComponent
   implements OnInit, AfterViewInit
 {
   public loading = signal(true);
-  public svgPath: string;
-  public svgViewBox: string;
   public width = `420px`;
   params: Partial<IPlhProgressPathParams> = {};
   @ViewChild("progressPath", { static: false }) progressPath!: ElementRef;
@@ -65,8 +63,8 @@ export class PlhProgressPathComponent
   }
 
   ngAfterViewInit() {
+    this.scrollToBottomMiddle();
     setTimeout(() => {
-      this.scrollToBottomMiddle();
       this.loading.set(false);
     }, 100);
   }
