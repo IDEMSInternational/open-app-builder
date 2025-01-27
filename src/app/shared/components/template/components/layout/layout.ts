@@ -22,7 +22,7 @@ import { TemplateContainerComponent } from "../../template-container.component";
  *  <plh-template-component *ngFor="let childRow of _row.rows; trackBy: trackByRow" [row]="childRow" [parent]="parent"></plh-template-component>
  * ```
  */
-export class TemplateLayoutComponent implements ITemplateRowProps, OnInit {
+export class TemplateLayoutComponent implements ITemplateRowProps {
   _row: FlowTypes.TemplateRow;
   /** specific data used in component rendering */
   @Input() set row(row: FlowTypes.TemplateRow) {
@@ -36,10 +36,6 @@ export class TemplateLayoutComponent implements ITemplateRowProps, OnInit {
   /** reference to parent template container - does not have setter as should remain static */
   @Input() parent: TemplateContainerComponent;
   constructor() {}
-
-  ngOnInit() {
-    this.addParentActionsFilter();
-  }
 
   /**
    * As content can be nested within containers or pages, a general
@@ -67,26 +63,6 @@ export class TemplateLayoutComponent implements ITemplateRowProps, OnInit {
     return row;
   }
 
-  /**
-   * Add any additional methods or function calls to actions that would otherwise be handled by
-   * the template container.
-   * @returns `true` or `false` to specify if the action should continue to also
-   * be processed by the template container parent (as it is used as a filter)
-   */
-  public interceptTemplateContainerAction(action: FlowTypes.TemplateRowAction) {
-    return true;
-  }
-
   public trackByRow = (index: number, row: FlowTypes.TemplateRow) =>
     this.parent.trackByRow(index, row);
-
-  private addParentActionsFilter() {
-    this.parent.templateActionService.handleActionsInterceptor = async (actions) => {
-      return actions.filter((action) => {
-        const shouldHandleByParent = this.interceptTemplateContainerAction(action);
-        // continue to process on parent unless specific return says not to
-        return shouldHandleByParent !== false;
-      });
-    };
-  }
 }
