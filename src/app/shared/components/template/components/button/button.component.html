@@ -7,7 +7,7 @@
     (click)="triggerActions('click')"
     [attr.data-param-style]="params.style"
     [attr.data-variant]="params.variant"
-    [attr.data-has-children]="_row.rows ? true : false"
+    [attr.data-has-children]="_row.rows ? true : null"
     [attr.data-language-direction]="templateTranslateService.languageDirection()"
     [attr.data-icon-align]="params.iconAlign"
   >
@@ -48,7 +48,7 @@
     class="button-container"
     (click)="handleClick()"
     [attr.data-variant]="params.variant"
-    [attr.data-has-children]="_row.rows ? true : false"
+    [attr.data-has-children]="_row.rows ? true : null"
     [attr.data-disabled]="params.disabled"
   >
     <img *ngIf="params.image" src="{{ params.image | plhAsset }}" />
