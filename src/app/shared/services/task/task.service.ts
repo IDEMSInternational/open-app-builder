@@ -166,22 +166,21 @@ export class TaskService extends AsyncServiceBase {
       }
     }).length;
     let progressStatus: IProgressStatus;
-    let newlyCompleted: boolean;
+    let newlyCompleted = false;
     if (subtasksCompleted && subtasksCompleted === subtasksTotal) {
       progressStatus = "completed";
-      // Check whether task group has already been completed
-      if (!this.templateFieldService.getField(completedField)) {
-        // If not, set completed field to "true"
+
+      // If using completed field, check and update whether task group has been completed and return "newlyCompleted" status
+      if (completedField && !this.templateFieldService.getField(completedField)) {
         await this.setTaskGroupCompletedField(completedField, true);
         newlyCompleted = true;
       }
     } else {
-      await this.setTaskGroupCompletedField(completedField, false);
-      if (subtasksCompleted) {
-        progressStatus = "inProgress";
-      } else {
-        progressStatus = "notStarted";
+      if (completedField) {
+        await this.setTaskGroupCompletedField(completedField, false);
       }
+
+      progressStatus = subtasksCompleted > 0 ? "inProgress" : "notStarted";
     }
     this.evaluateHighlightedTaskGroup();
     return { subtasksTotal, subtasksCompleted, progressStatus, newlyCompleted };
