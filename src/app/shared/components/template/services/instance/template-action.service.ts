@@ -217,12 +217,22 @@ export class TemplateActionService extends SyncServiceBase {
     // Update action.params
     if (action.params) {
       action.params = Object.fromEntries(
-        Object.entries(action.params).map(([key, value]) => {
-          if (typeof value === "string" && value.startsWith("this.")) {
-            const selfField = value.split(".")[1];
-            value = this.container?.templateRowMap[action._triggeredBy?._nested_name]?.[selfField];
+        Object.entries(action.params).map(([key, paramValue]) => {
+          if (typeof paramValue === "string" && paramValue.includes("+this.value")) {
+            const thisValue =
+              this.container?.templateRowMap[action._triggeredBy?._nested_name]?.value;
+            paramValue = paramValue.replace(" + this.value", `${thisValue}`);
           }
-          return [key, value];
+          if (
+            typeof paramValue === "string" &&
+            paramValue.startsWith("this.") &&
+            !paramValue.startsWith("this.item")
+          ) {
+            const selfField = paramValue.split(".")[1];
+            paramValue =
+              this.container?.templateRowMap[action._triggeredBy?._nested_name]?.[selfField];
+          }
+          return [key, paramValue];
         })
       );
     }
