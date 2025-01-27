@@ -173,8 +173,15 @@ body[data-theme="plh_facilitator_mx"] {
       &[data-status~="inProgress"] {
         border: 1px solid var(--color-accent-blue-70) !important;
         box-shadow: none !important;
+      }
+      &[data-status~="completed"] {
+        border: 1px solid var(--color-accent-blue-70) !important;
+        box-shadow: none !important;
         .content-wrapper {
           background-color: var(--color-accent-blue-90) !important;
+          .image-wrapper {
+            filter: grayscale(1);
+          }
         }
       }
     }
