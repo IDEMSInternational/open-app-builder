@@ -218,19 +218,18 @@ export class TemplateActionService extends SyncServiceBase {
     if (action.params) {
       action.params = Object.fromEntries(
         Object.entries(action.params).map(([key, paramValue]) => {
-          if (typeof paramValue === "string" && paramValue.includes("+this.value")) {
-            const thisValue =
-              this.container?.templateRowMap[action._triggeredBy?._nested_name]?.value;
-            paramValue = paramValue.replace(" + this.value", `${thisValue}`);
-          }
-          if (
-            typeof paramValue === "string" &&
-            paramValue.startsWith("this.") &&
-            !paramValue.startsWith("this.item")
-          ) {
-            const selfField = paramValue.split(".")[1];
-            paramValue =
-              this.container?.templateRowMap[action._triggeredBy?._nested_name]?.[selfField];
+          // @item is temporarily replaced with `this.item` to avoid parsing without context – do not touch here
+          if (typeof paramValue === "string" && !paramValue.startsWith("this.item")) {
+            if (paramValue.includes("+this.value")) {
+              const thisValue =
+                this.container?.templateRowMap[action._triggeredBy?._nested_name]?.value;
+              paramValue = paramValue.replace(" + this.value", `${thisValue}`);
+            }
+            if (typeof paramValue === "string" && paramValue.startsWith("this.")) {
+              const selfField = paramValue.split(".")[1];
+              paramValue =
+                this.container?.templateRowMap[action._triggeredBy?._nested_name]?.[selfField];
+            }
           }
           return [key, paramValue];
         })
