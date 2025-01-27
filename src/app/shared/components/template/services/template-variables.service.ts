@@ -363,8 +363,21 @@ export class TemplateVariablesService extends AsyncServiceBase {
   }
 
   /**
-   *
-   *
+   * Take a dummy table of context variables used and evaluate all variables with their
+   * respective evaluators.
+   * @example
+   * ```ts
+   * const contextVariables = {
+   *  fields:{some_field:true},
+   *  local:{some_local:true}
+   * }
+   * evaluateContextVariables(contextVariables)
+   * // returns
+   * {
+   *  fields:{some_field:"field_value"},
+   *  local:{some_local:"local_value"}
+   * }
+   * ```
    */
   public async evaluateContextVariables(contextVariables: ITemplatedDataContextList) {
     const evaluatedVariables: {
@@ -379,8 +392,7 @@ export class TemplateVariablesService extends AsyncServiceBase {
         } else {
           console.warn(`No evaluator exists for context:`, context);
           // TODO - better to return empty string, expression or undefined?
-          evaluatedVariables[context][expression] = undefined;
-          // context[variable] = `@${context}["${variable}"]`;
+          evaluatedVariables[context][expression] = "";
         }
       }
     }
@@ -388,14 +400,15 @@ export class TemplateVariablesService extends AsyncServiceBase {
   }
 
   /**
+   * Mapping of dynamic prefixes with methods to retrieve values
    *
-   * TODO - add method to register handlers
+   * TODO - some prefixes still require migration (calc, item, local), and method should be added to register handlers
+   * from external services (like template-action registry)
    */
   private evaluators: Record<
     FlowTypes.IDynamicPrefixRuntime,
     (expression: string, context: any) => Promise<any>
   > = {
-    calc: async () => {},
     campaign: async (fieldName) => {
       // TODO - ideally campaign lookup should be merged into data list lookup with additional query/params
       // e.g. evaluate conditions, take first etc.
@@ -418,14 +431,15 @@ export class TemplateVariablesService extends AsyncServiceBase {
     field: async (fieldName) => this.templateFieldService.getField(fieldName),
     fields: async (fieldName) => this.templateFieldService.getField(fieldName),
     global: async (fieldName) => this.templateFieldService.getGlobal(fieldName),
-    item: async (v) => v,
-    // Local expressions should be evaluated from within local container context instead of service
-    local: async (v) => v,
-    // Raw expressions
     raw: async (v) => v,
+    // All methods below are hardcoded into legacy processDynamicEvaluator switch
+    // statement and evaluated there instead of evaluators lookup
+    // The will need to be refactored in the future, but provide better ways to include required context parameters
+    calc: async () => {},
+    item: async (v) => v,
+    local: async (v) => v,
   };
 
-  // TODO -
   public evaluateLocal(fieldName: string, templateRowMap: ITemplateRowMap) {
     // TODO - assumed 'value' field will be returned but this could be provided instead as an arg
     const returnField: keyof FlowTypes.TemplateRow = "value";
