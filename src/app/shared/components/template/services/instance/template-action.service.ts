@@ -18,6 +18,8 @@ import { getGlobalService } from "src/app/shared/services/global.service";
 import { SyncServiceBase } from "src/app/shared/services/syncService.base";
 import { TemplateActionRegistry } from "./template-action.registry";
 import { CampaignService } from "src/app/feature/campaign/campaign.service";
+import { TemplateVariablesService } from "../template-variables.service";
+import { AppDataEvaluator } from "packages/shared/src/models/appDataEvaluator/appDataEvaluator";
 
 /** Logging Toggle - rewrite default functions to enable or disable inline logs */
 let SHOW_DEBUG_LOGS = false;
@@ -95,23 +97,12 @@ export class TemplateActionService extends SyncServiceBase {
   }
 
   /** Public method to add actions to processing queue and process */
-  public async handleActions(
-    actions: FlowTypes.TemplateRowAction[] = [],
-    _triggeredBy?: FlowTypes.TemplateRow
-  ) {
-    // Track action trigger source
-    // Will be undefined if triggered from service instead of row component
-    actions = actions.map((a) => {
-      a._triggeredBy = _triggeredBy;
-      return a;
-    });
-
+  public async handleActions(actions: FlowTypes.TemplateRowAction[] = []) {
     await this.ensurePublicServicesReady();
     // process any global action interceptors
-    const unhandledActions = await this.handleActionsInterceptor(actions);
-    unhandledActions.forEach((action) => this.actionsQueue.push({ ...action }));
+    actions.forEach((action) => this.actionsQueue.push({ ...action }));
     const res = await this.processActionQueue();
-    await this.handleActionsCallback([...unhandledActions], res);
+    await this.handleActionsCallback([...actions], res);
     if (!this.container?.parent) {
       await this.templateNavService.handleNavActionsFromChild(actions, this.container);
     }
@@ -124,17 +115,6 @@ export class TemplateActionService extends SyncServiceBase {
   public async handleActionsCallback(actions: FlowTypes.TemplateRowAction[], results: any) {}
 
   /**
-   * @deprecated v0.18.0 - prefer to use `registerActionsInterceptor`
-   * Provide a single override method that will be applied to all actions triggered within the
-   * current container
-   * */
-  public async handleActionsInterceptor(
-    actions: FlowTypes.TemplateRowAction[]
-  ): Promise<FlowTypes.TemplateRowAction[]> {
-    return actions;
-  }
-
-  /**
    * Register an action interceptor to apply to all actions within a named scope
    * @param scope namespace to apply actions. Any actions triggered by components starting with
    * the same namespace will be intercepted, matched by the component nested name. Usually this
@@ -145,7 +125,9 @@ export class TemplateActionService extends SyncServiceBase {
    * */
   public async registerActionsInterceptor(
     scope: string,
-    handler: (action: FlowTypes.TemplateRowAction) => FlowTypes.TemplateRowAction | undefined
+    handler: (
+      action: FlowTypes.TemplateRowAction
+    ) => Promise<FlowTypes.TemplateRowAction | undefined>
   ) {
     this.actionsInterceptors.set(scope, handler);
   }
@@ -161,7 +143,16 @@ export class TemplateActionService extends SyncServiceBase {
       log_group(`Process Actions - ${this.container?.name}`, [...this.actionsQueue]);
       this.actionsQueueProcessing$.next(true);
       while (this.actionsQueue.length > 0) {
-        const action = this.actionsQueue[0];
+        let action = this.actionsQueue[0];
+        const { args, params, _evalContext } = action;
+        // evaluate any actions that include dynamic evaluation context
+        if (_evalContext) {
+          const evaluator = new AppDataEvaluator();
+          evaluator.setExecutionContext(_evalContext);
+          const evaluated = evaluator.evaluate({ args, params });
+          action = { ...action, ...evaluated };
+        }
+
         // Pipe action through interceptors. Only process if interceptors return a value
         const postInterceptAction = await this.processActionInterceptors(action);
         if (postInterceptAction) {
@@ -197,6 +188,7 @@ export class TemplateActionService extends SyncServiceBase {
     const actionScope = action._triggeredBy?._nested_name;
     if (!actionScope) return action;
     for (const [scope, interceptor] of this.actionsInterceptors) {
+      // apply handlers for specific scope (e.g. data_item and nav_group children)
       if (action && actionScope.startsWith(scope)) {
         action = await interceptor(action);
       }
@@ -205,14 +197,6 @@ export class TemplateActionService extends SyncServiceBase {
   }
 
   private async processAction(action: FlowTypes.TemplateRowAction) {
-    action.args = action.args.map((arg) => {
-      // HACK - update any self referenced values (see note from template.parser method)
-      if (typeof arg === "string" && arg.startsWith("this.")) {
-        const selfField = arg.split(".")[1];
-        arg = this.container?.templateRowMap[action._triggeredBy?._nested_name]?.[selfField];
-      }
-      return arg;
-    });
     const { action_id, args } = action;
 
     // Call any action registered with global handler

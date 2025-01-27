@@ -269,7 +269,9 @@ export class TemplateRowService extends SyncServiceBase {
     // Continue processing full row
     const parsedRow: FlowTypes.TemplateRow = await this.templateVariablesService.evaluatePLHData(
       { ...translatedRow },
-      evalContext
+      evalContext,
+      // do not evaluate action_list as this will be evaluated at time of triggering
+      ["action_list"]
     );
 
     const row = parsedRow;

@@ -129,6 +129,7 @@ export class NavGroupComponent extends TemplateLayoutComponent {
     }
   }
 
+  // TODO - register as interceptor
   interceptTemplateContainerAction(action: FlowTypes.TemplateRowAction) {
     const { action_id, args } = action;
     // only allow actions to be processed by parent if last section
@@ -206,13 +207,11 @@ export class NavGroupComponent extends TemplateLayoutComponent {
             action_id: "set_field",
             args: [progressField, "" + currentPercentDone],
             trigger: "completed",
-            _triggeredBy: this._row,
           },
           {
             action_id: "set_field",
             args: [progressFieldMaximum, "" + maximumPercentDone],
             trigger: "completed",
-            _triggeredBy: this._row,
           },
         ],
         this._row

@@ -338,7 +338,7 @@ export namespace FlowTypes {
 
   const DYNAMIC_PREFIXES_COMPILER = ["gen", "row", "default"] as const;
 
-  const DYNAMIC_PREFIXES_RUNTIME = [
+  export const DYNAMIC_PREFIXES_RUNTIME = [
     "local",
     "field",
     "fields",
@@ -354,6 +354,8 @@ export namespace FlowTypes {
     ...DYNAMIC_PREFIXES_COMPILER,
     ...DYNAMIC_PREFIXES_RUNTIME,
   ] as const;
+
+  export type IDynamicPrefixRuntime = (typeof DYNAMIC_PREFIXES_RUNTIME)[number];
 
   export type IDynamicPrefix = (typeof DYNAMIC_PREFIXES)[number];
 
@@ -453,6 +455,8 @@ export namespace FlowTypes {
     params?: ParamsType; // additional params also used by args (does not require position argument)
     // TODO - CC 2022-04-29 - ideally args should be included as part of params
     _triggeredBy?: TemplateRow; // tracking the component that triggered the action for logging;
+    /** mapping of dynamic variables referenced in action with current value*/
+    _evalContext?: { [prefix in IDynamicPrefix]?: { [name: string]: any } };
     /**
      * most actions are specified from a parent template (begin_template statement) and are executed
      * within parent context. However actions specified by own update_action_list statement require self handling

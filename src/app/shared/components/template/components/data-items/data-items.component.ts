@@ -70,10 +70,13 @@ export class TmplDataItemsComponent extends TemplateBaseComponent {
    * the author to explicitly use a set_item action. This applies to any component that internally calls `setValue`
    */
   private hackInterceptComponentActions(_nested_name: string) {
-    this.parent.templateActionService.registerActionsInterceptor(_nested_name, (action) => {
-      if (action.action_id === "set_self" && action._triggeredBy._evalContext?.itemContext) {
+    this.parent.templateActionService.registerActionsInterceptor(_nested_name, async (action) => {
+      const itemContext = action._triggeredBy?._evalContext?.itemContext;
+      if (action.action_id === "set_self" && itemContext) {
         return undefined;
       }
+      // Ensure actions also have access to item context for evaluation
+      action._evalContext = { ...action._evalContext, item: itemContext };
       return this.dataItemsService.evaluateComponentAction(action);
     });
   }
