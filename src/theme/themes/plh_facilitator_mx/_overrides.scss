@@ -181,9 +181,6 @@ body[data-theme="plh_facilitator_mx"] {
           background-color: var(--color-accent-blue-90) !important;
           .image-wrapper {
             filter: grayscale(1);
-            img {
-              filter: grayscale(1);
-            }
           }
         }
       }
