@@ -220,10 +220,11 @@ export class TemplateActionService extends SyncServiceBase {
         Object.entries(action.params).map(([key, paramValue]) => {
           // @item is temporarily replaced with `this.item` to avoid parsing without context – do not touch here
           if (typeof paramValue === "string" && !paramValue.startsWith("this.item")) {
+            // HACK: handle cases of intended concatenation of self-reference value
             if (paramValue.includes("+this.value")) {
               const thisValue =
                 this.container?.templateRowMap[action._triggeredBy?._nested_name]?.value;
-              paramValue = paramValue.replace(" + this.value", `${thisValue}`);
+              paramValue = paramValue.replace("+this.value", `${thisValue}`);
             }
             if (typeof paramValue === "string" && paramValue.startsWith("this.")) {
               const selfField = paramValue.split(".")[1];
