@@ -218,7 +218,12 @@ export class TemplateActionService extends SyncServiceBase {
     if (action.params) {
       action.params = Object.fromEntries(
         Object.entries(action.params).map(([key, value]) => {
-          if (typeof value === "string" && value.startsWith("this.")) {
+          if (
+            typeof value === "string" &&
+            value.startsWith("this.") &&
+            // @item is temporarily replaced with `this.item` to avoid parsing without context – do not touch here
+            !value.startsWith("this.item")
+          ) {
             const selfField = value.split(".")[1];
             value = this.container?.templateRowMap[action._triggeredBy?._nested_name]?.[selfField];
           }
