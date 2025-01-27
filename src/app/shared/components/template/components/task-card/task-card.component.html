@@ -5,7 +5,7 @@
     (click)="triggerActions('click')"
     [attr.data-status]="progressStatus"
   >
-    @if (highlighted) {
+    @if (highlighted()) {
       <span class="badge highlighted-badge">
         {{ highlightedText }}
       </span>
@@ -61,8 +61,8 @@
               <plh-task-progress-bar
                 [dataListName]="taskGroupDataList"
                 [completedField]="completedField"
+                [highlighted]="highlighted()"
                 [completedColumnName]="completedColumnName"
-                [highlighted]="highlighted"
                 [parameterList]="_row.parameter_list"
                 [progressUnitsName]="progressUnitsName"
                 [showText]="showProgressText"
@@ -81,15 +81,15 @@
     </div>
   </div>
 } @else {
-  <div class="circle-card-wrapper" (click)="triggerActions('click')">
+  <div class="circle-card-wrapper" (click)="handleClick()">
     <div class="image-and-badge-wrapper">
       @if (taskGroupId && !taskId) {
         <div>
           <plh-task-progress-bar
             [dataListName]="taskGroupDataList"
             [completedField]="completedField"
+            [highlighted]="highlighted()"
             [completedColumnName]="completedColumnName"
-            [highlighted]="highlighted"
             [parameterList]="_row.parameter_list"
             [progressUnitsName]="progressUnitsName"
             [showText]="false"
@@ -98,7 +98,7 @@
           ></plh-task-progress-bar>
         </div>
       }
-      @if (highlighted) {
+      @if (highlighted()) {
         <span class="badge highlighted-badge">
           {{ highlightedText }}
         </span>
@@ -112,8 +112,16 @@
           }
         </span>
       }
-      <div class="circle-wrapper">
+      <div
+        class="circle-wrapper"
+        [ngClass]="{ progressStatus, locked, highlighted: highlighted() }"
+      >
         <img [src]="image | plhAsset" />
+        @if (locked) {
+          <div class="locked-image">
+            <img [src]="lockedImageAsset | plhAsset" />
+          </div>
+        }
       </div>
     </div>
     @if (title) {

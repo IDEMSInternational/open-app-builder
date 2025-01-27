@@ -173,8 +173,15 @@ body[data-theme="plh_facilitator_mx"] {
       &[data-status~="inProgress"] {
         border: 1px solid var(--color-accent-blue-70) !important;
         box-shadow: none !important;
+      }
+      &[data-status~="completed"] {
+        border: 1px solid var(--color-accent-blue-70) !important;
+        box-shadow: none !important;
         .content-wrapper {
           background-color: var(--color-accent-blue-90) !important;
+          .image-wrapper {
+            filter: grayscale(1);
+          }
         }
       }
     }
@@ -282,6 +289,35 @@ body[data-theme="plh_facilitator_mx"] {
         }
       }
     }
+
+    ion-button[data-variant~="faq"] {
+      --border-radius: 0px var(--ion-border-radius-small) var(--ion-border-radius-small) 0px;
+      --background: white;
+      --background-activated: var(--ion-color-gray-light);
+      --padding-top: var(--tiny-padding);
+      --padding-bottom: var(--tiny-padding);
+      color: var(--color-surface-black);
+      min-height: var(--buttons-tall-height);
+
+      border: 1px solid var(--ion-color-gray-light);
+      border-radius: 0px !important;
+      border-start-end-radius: var(--ion-border-radius-small) !important;
+      border-end-end-radius: var(--ion-border-radius-small) !important;
+      border-inline-start: 4px solid var(--ion-color-primary);
+
+      &:hover {
+        --background: var(--ion-color-gray-light);
+      }
+      .text.left.null {
+        text-align: start !important;
+        p {
+          margin-inline-end: auto;
+          text-align: start !important;
+          width: auto !important;
+        }
+      }
+    }
+
     ion-button[data-language-direction~="rtl"] .children {
       position: unset !important;
       align-self: unset !important;
