@@ -36,7 +36,7 @@ export class TemplateBaseComponent implements ITemplateRowProps {
    **/
   @Input() set row(row: FlowTypes.TemplateRow) {
     this._row = row;
-    this.rowSignal.set(row);
+    this.rowSignal.set({ ...row });
   }
 
   /**
