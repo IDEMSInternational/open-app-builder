@@ -1026,10 +1026,50 @@ body[data-theme="plh_kids_kw"] {
       }
     }
     .circle-card-wrapper {
-      .circle-wrapper {
-        filter: none !important;
-        border: 1px solid #e1e2e4 !important;
-        box-shadow: 0px 2px 8px rgba($color: #000000, $alpha: 0.1);
+      .image-and-badge-wrapper {
+        .circle-wrapper {
+          filter: none !important;
+          border: 2px solid #edeeef !important;
+          box-shadow: -2px 2px 5px rgba($color: #7e8386, $alpha: 0.8);
+          background-color: #e7e8e9;
+
+          display: flex;
+          align-items: center;
+          justify-content: center;
+
+          position: relative;
+          height: 75px !important;
+          width: 75px !important;
+          &.locked {
+            img {
+              opacity: 0.5 !important;
+              border-radius: 50% !important;
+              width: 80% !important;
+              height: 80% !important;
+            }
+          }
+        }
+        .circle-wrapper.highlighted {
+          border: 4px solid #c99529 !important;
+          box-shadow: 0px 2px 12px rgba($color: #007fbf, $alpha: 0.7);
+          width: 80px !important;
+          height: 80px !important;
+          img {
+            opacity: 1 !important;
+          }
+        }
+        .circle-wrapper.completed {
+          border: 4px solid var(--ion-color-secondary-200) !important;
+          box-shadow: none !important;
+          img {
+            opacity: 1 !important;
+            width: 100% !important;
+            height: 100% !important;
+          }
+        }
+        .badge {
+          display: none !important;
+        }
       }
     }
   }
@@ -1148,6 +1188,154 @@ body[data-theme="plh_kids_kw"] {
           border: 0.8px solid var(--color-secondary-blue-80);
           color: var(--color-secondary-blue-50);
           top: 0px;
+        }
+      }
+    }
+  }
+
+  // Plh Progress Path
+  plh-progress-path {
+    .progress-path {
+      &.loading {
+        visibility: hidden;
+      }
+
+      height: 700px;
+      width: 100%;
+      overflow-x: scroll;
+      scrollbar-width: none;
+      &::-webkit-scrollbar {
+        display: none;
+      }
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      .wrapper {
+        height: 100%;
+        width: 100vw;
+
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        position: relative;
+        overflow-x: scroll;
+
+        max-width: 430px;
+        min-width: 280px;
+
+        display: flex;
+        justify-content: center;
+        align-items: flex-end;
+      }
+      .progress-path-child-wrapper {
+        height: 100%;
+        .progress-path-child-content-wrapper {
+          height: 100%;
+          position: relative;
+        }
+        .progress-path-child-content {
+          position: absolute !important;
+          plh-task-card {
+            .circle-card-wrapper {
+              .title-wrapper {
+                display: none;
+              }
+            }
+          }
+          &:nth-child(1) {
+            bottom: 3%;
+            left: 40%;
+          }
+          &:nth-child(2) {
+            bottom: 18%;
+            right: 3.6%;
+          }
+          &:nth-child(3) {
+            bottom: 30%;
+            right: 34%;
+          }
+          &:nth-child(4) {
+            bottom: 32%;
+            left: 7%;
+          }
+          &:nth-child(5) {
+            top: 36%;
+            left: 2%;
+          }
+          &:nth-child(6) {
+            top: 34.6%;
+            left: 46%;
+          }
+          &:nth-child(7) {
+            top: 24%;
+            right: -1%;
+          }
+          &:nth-child(8) {
+            top: 13%;
+            right: 37%;
+          }
+          &:nth-child(9) {
+            top: 2%;
+            left: 10%;
+          }
+        }
+      }
+    }
+    @media (max-width: 400px) {
+      .progress-path {
+        height: 100vh;
+        .wrapper {
+          background-position: bottom;
+        }
+        .progress-path-child-wrapper {
+          .progress-path-child-content {
+            plh-task-card {
+              .circle-card-wrapper .image-and-badge-wrapper .circle-wrapper {
+                height: 75px !important;
+                width: 75px !important;
+                &.inProgress {
+                  width: 78px !important;
+                  height: 78px !important;
+                }
+              }
+            }
+            &:nth-child(1) {
+              bottom: 4%;
+              left: 40%;
+            }
+            &:nth-child(2) {
+              bottom: 10%;
+              right: 3.6%;
+            }
+            &:nth-child(3) {
+              bottom: 32%;
+              right: 10%;
+            }
+            &:nth-child(4) {
+              bottom: 29%;
+              left: 18%;
+            }
+            &:nth-child(5) {
+              top: 33%;
+              left: 12%;
+            }
+            &:nth-child(6) {
+              top: 36%;
+              right: 10%;
+            }
+            &:nth-child(7) {
+              top: 15%;
+              right: 2%;
+            }
+            &:nth-child(8) {
+              top: 13%;
+              right: 40%;
+            }
+            &:nth-child(9) {
+              top: 6%;
+              left: 6%;
+            }
+          }
         }
       }
     }
