@@ -85,7 +85,7 @@ export class TemplateNavService extends SyncServiceBase {
     // TODO: Find more elegant way to get current root level template name
     const parentName = location.pathname.replace("/template/", "");
     const [templatename, key, value] = action.args;
-    const nav_parent_triggered_by = action._triggeredBy?.name;
+    const nav_parent_triggered_by = action._triggeredBy._nested_name;
     const queryParams: INavQueryParams = { nav_parent: parentName, nav_parent_triggered_by };
     // handle direct page or template navigation
     const navTarget = templatename.startsWith("/") ? [templatename] : ["template", templatename];
@@ -149,7 +149,7 @@ export class TemplateNavService extends SyncServiceBase {
       if (triggerRow) {
         log("trigger row", triggerRow);
         const triggeredActions = triggerRow.action_list.filter((a) => a.trigger === nav_child_emit);
-        await container.templateActionService.handleActions(triggeredActions, triggerRow);
+        await container.handleActions(triggeredActions, triggerRow);
         // back history will have changed (2 duplicate pages), so nav back to restore correct back button
         history.back();
       } else {
@@ -226,7 +226,7 @@ export class TemplateNavService extends SyncServiceBase {
     const queryParams: INavQueryParams = {
       popup_child: templatename,
       popup_parent: name,
-      popup_parent_triggered_by: action._triggeredBy?.name || null,
+      popup_parent_triggered_by: action._triggeredBy._nested_name || null,
       popup_variant: variant,
     };
     this.router.navigate([], { queryParams, replaceUrl: true, queryParamsHandling: "merge" });
@@ -251,7 +251,7 @@ export class TemplateNavService extends SyncServiceBase {
         // process any completed/uncompleted actions as specified
         const emittedActions = actionsByTrigger[nav_child_emit];
         if (emittedActions) {
-          await container.templateActionService.handleActions(emittedActions, triggerRow);
+          await container.handleActions(emittedActions, triggerRow);
           await this.dismissPopup(popup_child, nav_child_emit);
         }
         // if the popup does not have any actions triggered by the nav_emit, leave open if there

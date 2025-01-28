@@ -21,6 +21,9 @@ import { TemplateNavService } from "./services/template-nav.service";
 import { TemplateRowService } from "./services/instance/template-row.service";
 import { TemplateService } from "./services/template.service";
 import { getIonContentScrollTop, setElStyleAnimated, setIonContentScrollTop } from "./utils";
+import { extractDynamicFields } from "packages/data-models/functions";
+import { TemplateVariablesService } from "./services/template-variables.service";
+import { AppDataEvaluator } from "packages/shared/src/models/appDataEvaluator/appDataEvaluator";
 
 /** Logging Toggle - rewrite default functions to enable or disable inline logs */
 let SHOW_DEBUG_LOGS = false;
@@ -67,6 +70,10 @@ export class TemplateContainerComponent implements OnInit, OnDestroy {
 
   public get cdr() {
     return this.injector.get(ChangeDetectorRef);
+  }
+
+  private get templateVariablesService() {
+    return this.injector.get(TemplateVariablesService);
   }
 
   constructor(
@@ -118,11 +125,16 @@ export class TemplateContainerComponent implements OnInit, OnDestroy {
    *
    **************************************************************************************/
 
-  public handleActions(
+  public async handleActions(
     actions: FlowTypes.TemplateRowAction[] = [],
     _triggeredBy: FlowTypes.TemplateRow
   ) {
-    return this.templateActionService.handleActions(actions, _triggeredBy);
+    for (const action of actions) {
+      // store reference to parent row that triggered, but without action_list as would be recursive ref
+      action._triggeredBy = { ..._triggeredBy, action_list: [] };
+      const actionWithEvalContext = await this.evaluateActionVariables(action);
+      await this.templateActionService.handleActions([actionWithEvalContext]);
+    }
   }
 
   get templateRowMap() {
@@ -180,6 +192,45 @@ export class TemplateContainerComponent implements OnInit, OnDestroy {
         }
       }
     }
+  }
+
+  /**
+   * When triggering an action ensure any references to local variables have latest value.
+   * Values can become stale if successive actions update and use the same variables.
+   **/
+  private async evaluateActionVariables(action: FlowTypes.TemplateRowAction) {
+    const { params, args, _triggeredBy } = action;
+    // Generate a list of all dynamic variables used in the action
+    const evaluator = new AppDataEvaluator();
+    const dynamicPrefixes = [].concat(FlowTypes.DYNAMIC_PREFIXES_RUNTIME);
+    const contextVariables = evaluator.listContextVariables({ params, args }, dynamicPrefixes);
+    const hasDynamicContext = Object.keys(contextVariables).length > 0;
+    // Evaluate variables and store within action evaluation context variable
+    if (hasDynamicContext) {
+      const evalContext =
+        await this.templateVariablesService.evaluateContextVariables(contextVariables);
+      // Workaround to also re-evaluate any local variables
+      if (evalContext.local) {
+        for (const key of Object.keys(evalContext.local)) {
+          const { value } = this.templateVariablesService.evaluateLocal(key, this.templateRowMap);
+          evalContext.local[key] = value;
+        }
+      }
+      // HACK - also assign `this.value` to context to support legacy self-reference workarounds
+      if (_triggeredBy) {
+        evalContext["value"] = _triggeredBy.value;
+      }
+      // Values of dynamic variables are stored within the action _evalContext for full evaluation
+      // in the action-list service (alongside variable updates from other interceptors)
+      action._evalContext = evalContext;
+    }
+    // As well as dynamic references also check for legacy `this.value` self-references
+    const hasSelfReferences = JSON.stringify({ params, args }).includes(`this.value`);
+    if (hasSelfReferences && _triggeredBy) {
+      action._evalContext ??= {};
+      action._evalContext["value"] = _triggeredBy.value;
+    }
+    return action;
   }
 
   /***************************************************************************************

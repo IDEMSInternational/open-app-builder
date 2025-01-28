@@ -9,6 +9,7 @@ import { extractDynamicEvaluators } from "data-models";
 import { TemplateFieldService } from "./template-field.service";
 import { AppDataService } from "src/app/shared/services/data/app-data.service";
 import { AsyncServiceBase } from "src/app/shared/services/asyncService.base";
+import type { ITemplatedDataContextList } from "packages/shared/src/models/templatedData/templatedData";
 
 /** Logging Toggle - rewrite default functions to enable or disable inline logs */
 const SHOW_DEBUG_LOGS = false;
@@ -85,7 +86,7 @@ export class TemplateVariablesService extends AsyncServiceBase {
       // process arrays as json objects and return
       if (Array.isArray(data)) {
         const objData = _arrayToObject(data);
-        const evaluatedObjData = await this.evaluatePLHData(objData, context);
+        const evaluatedObjData = await this.evaluatePLHData(objData, context, omitFields);
         value = Object.values(evaluatedObjData);
       }
 
@@ -108,7 +109,7 @@ export class TemplateVariablesService extends AsyncServiceBase {
               // evalute each object element with reference to any dynamic specified for it's index (instead of fieldname)
               const nestedContext = { ...context };
               nestedContext.field = nestedContext.field ? `${nestedContext.field}.${k}` : k;
-              const evaluated = await this.evaluatePLHData(data[k], nestedContext);
+              const evaluated = await this.evaluatePLHData(data[k], nestedContext, omitFields);
               value[k] = evaluated;
             }
           }
@@ -362,6 +363,109 @@ export class TemplateVariablesService extends AsyncServiceBase {
   }
 
   /**
+   * Take a dummy table of context variables used and evaluate all variables with their
+   * respective evaluators.
+   * @example
+   * ```ts
+   * const contextVariables = {
+   *  fields:{some_field:true},
+   *  local:{some_local:true}
+   * }
+   * evaluateContextVariables(contextVariables)
+   * // returns
+   * {
+   *  fields:{some_field:"field_value"},
+   *  local:{some_local:"local_value"}
+   * }
+   * ```
+   */
+  public async evaluateContextVariables(contextVariables: ITemplatedDataContextList) {
+    const evaluatedVariables: {
+      [prefix in FlowTypes.IDynamicPrefixRuntime]?: { [expression: string]: any };
+    } = {};
+    for (const [context, expressions] of Object.entries(contextVariables)) {
+      evaluatedVariables[context] = {};
+      for (const expression of Object.keys(expressions)) {
+        const evaluator = this.evaluators[context];
+        if (evaluator) {
+          evaluatedVariables[context][expression] = await evaluator(expression);
+        } else {
+          console.warn(`No evaluator exists for context:`, context);
+          // TODO - better to return empty string, expression or undefined?
+          evaluatedVariables[context][expression] = "";
+        }
+      }
+    }
+    return evaluatedVariables;
+  }
+
+  /**
+   * Mapping of dynamic prefixes with methods to retrieve values
+   *
+   * TODO - some prefixes still require migration (calc, item, local), and method should be added to register handlers
+   * from external services (like template-action registry)
+   */
+  private evaluators: Record<
+    FlowTypes.IDynamicPrefixRuntime,
+    (expression: string, context: any) => Promise<any>
+  > = {
+    campaign: async (fieldName) => {
+      // TODO - ideally campaign lookup should be merged into data list lookup with additional query/params
+      // e.g. evaluate conditions, take first etc.
+      await this.campaignService.ready();
+      const rows = await this.campaignService.getNextCampaignRows(fieldName);
+      return rows?.[0];
+    },
+    data: async (fieldName) => {
+      let parsedValue = {};
+      const [flow_name, nested_path] = fieldName.split(".");
+      const sheet = await this.appDataService.getSheet("data_list", flow_name);
+      if (sheet) {
+        parsedValue = sheet.rowsHashmap;
+        if (nested_path) {
+          parsedValue = getNestedProperty(sheet.rowsHashmap, nested_path);
+        }
+      }
+      return parsedValue;
+    },
+    field: async (fieldName) => this.templateFieldService.getField(fieldName),
+    fields: async (fieldName) => this.templateFieldService.getField(fieldName),
+    global: async (fieldName) => this.templateFieldService.getGlobal(fieldName),
+    raw: async (v) => v,
+    // All methods below are hardcoded into legacy processDynamicEvaluator switch
+    // statement and evaluated there instead of evaluators lookup
+    // The will need to be refactored in the future, but provide better ways to include required context parameters
+    calc: async () => {},
+    item: async (v) => v,
+    local: async (v) => v,
+  };
+
+  public evaluateLocal(fieldName: string, templateRowMap: ITemplateRowMap) {
+    // TODO - assumed 'value' field will be returned but this could be provided instead as an arg
+    const returnField: keyof FlowTypes.TemplateRow = "value";
+
+    // find any rows where nested path corresponds to match path
+    let matchedRows: { row: FlowTypes.TemplateRow; nestedName: string }[] = [];
+    Object.entries(templateRowMap).forEach(([nestedName, row]) => {
+      if (nestedName === fieldName || nestedName.endsWith(`.${fieldName}`)) {
+        matchedRows.push({ row, nestedName });
+      }
+    });
+
+    // match found - return least nested (in case of duplicates)
+    if (matchedRows.length > 0) {
+      matchedRows = matchedRows.sort(
+        (a, b) => a.nestedName.split(".").length - b.nestedName.split(".").length
+      );
+      if (matchedRows.length > 1) {
+        console.warn(`@local.${fieldName} found multiple`, { matchedRows });
+      }
+      return { value: matchedRows[0].row[returnField] };
+    }
+    return { missing: true, value: "" };
+  }
+
+  /**
    * Lookup evaluators from statements such as @local.someVar or @data.anotherVar and return the
    * value depending on the required method
    */
@@ -375,18 +479,10 @@ export class TemplateVariablesService extends AsyncServiceBase {
     const { templateRowMap, field } = context;
     switch (type) {
       case "local":
-        // TODO - assumed 'value' field will be returned but this could be provided instead as an arg
-        const returnField: keyof FlowTypes.TemplateRow = "value";
-
-        // find any rows where nested path corresponds to match path
-        let matchedRows: { row: FlowTypes.TemplateRow; nestedName: string }[] = [];
-        Object.entries(templateRowMap).forEach(([nestedName, row]) => {
-          if (nestedName === fieldName || nestedName.endsWith(`.${fieldName}`)) {
-            matchedRows.push({ row, nestedName });
-          }
-        });
+        const { missing, value } = this.evaluateLocal(fieldName, templateRowMap);
+        parsedValue = value;
         // no match found. If condition assume this is fine, otherwise authoring error
-        if (matchedRows.length === 0) {
+        if (missing) {
           if (field === "condition") {
             parsedValue = false;
           } else {
@@ -397,47 +493,8 @@ export class TemplateVariablesService extends AsyncServiceBase {
             });
           }
         }
-        // match found - return least nested (in case of duplicates)
-        else {
-          matchedRows = matchedRows.sort(
-            (a, b) => a.nestedName.split(".").length - b.nestedName.split(".").length
-          );
-          if (matchedRows.length > 1) {
-            console.warn(`@local.${fieldName} found multiple`, { matchedRows });
-          }
-          parsedValue = matchedRows[0].row[returnField];
-        }
+        break;
 
-        break;
-      case "field":
-        // console.warn("To keep consistency with rapidpro, @fields should be used instead of @field");
-        parsedValue = this.templateFieldService.getField(fieldName);
-        break;
-      case "fields":
-        parsedValue = this.templateFieldService.getField(fieldName);
-        break;
-      case "global":
-        parsedValue = this.templateFieldService.getGlobal(fieldName);
-        break;
-      case "data":
-        const [flow_name, nested_path] = fieldName.split(".");
-        const sheet = await this.appDataService.getSheet("data_list", flow_name);
-        if (sheet) {
-          parsedValue = sheet.rowsHashmap;
-          if (nested_path) {
-            parsedValue = getNestedProperty(sheet.rowsHashmap, nested_path);
-          }
-        } else {
-          // if sheet not found return as empty object
-          parsedValue = {};
-        }
-        break;
-      // TODO - ideally campaign lookup should be merged into data list lookup with additional query/params
-      // e.g. evaluate conditions, take first etc.
-      case "campaign":
-        await this.campaignService.ready();
-        parsedValue = (await this.campaignService.getNextCampaignRows(fieldName))?.[0];
-        break;
       case "calc":
         const expression = fieldName.replace(/@/gi, "this.");
         const { thisCtxt, globalFunctions, globalConstants } = context.calcContext;
@@ -445,6 +502,7 @@ export class TemplateVariablesService extends AsyncServiceBase {
         // TODO - merge string replacements with above methods
         parsedValue = evaluateJSExpression(expression, thisCtxt, globalFunctions, globalConstants);
         break;
+      // TODO - all item evaluators should be intercepted by data-items/item components instead of here
       case "item":
         // only attempt to evaluate items if context passed, otherwise leave as original unparsed string
         if (context?.itemContext) {
@@ -454,12 +512,18 @@ export class TemplateVariablesService extends AsyncServiceBase {
         }
         break;
       default:
-        parseSuccess = false;
-        console.error("No evaluator for dynamic field:", evaluator.matchedExpression);
-        // By default return an empty string if could not be evaluated successfully
-        // NOTE - any value is fine to return EXCEPT a dynamic expression (e.g. same @local.some_var)
-        // This will be checked a second time and could cause an infinite loop
-        parsedValue = "";
+        // HACK - Only some evaluators have been migrated to new format
+        // TODO - migrate all global evaluators and provide alternate handling for specific
+        if (this.evaluators[type]) {
+          parsedValue = await this.evaluators[type](fieldName);
+        } else {
+          parseSuccess = false;
+          console.error("No evaluator for dynamic field:", evaluator.matchedExpression);
+          // By default return an empty string if could not be evaluated successfully
+          // NOTE - any value is fine to return EXCEPT a dynamic expression (e.g. same @local.some_var)
+          // This will be checked a second time and could cause an infinite loop
+          parsedValue = "";
+        }
     }
     parsedValue = this.ensureValueTranslated(parsedValue);
     return { parsedValue, parseSuccess };
@@ -491,10 +555,4 @@ function _arrayToObject(arr: any[]) {
   const obj = {};
   arr.forEach((el, i) => (obj[i] = el));
   return obj;
-}
-
-function mapToJson(map: Map<string, any>) {
-  const json = {};
-  map.forEach((value, key) => (json[key] = value));
-  return json;
 }
