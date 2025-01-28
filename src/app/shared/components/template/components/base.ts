@@ -67,7 +67,7 @@ export class TemplateBaseComponent implements ITemplateRowProps {
    * Update the current value of the row by setting a local variable that matches
    * @ignore
    **/
-  setValue(value: any) {
+  async setValue(value: any) {
     // HACK - provide optimistic update so that data_items interceptor also can access updated row value
     this._row.value = value;
 
