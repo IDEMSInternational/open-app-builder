@@ -3,7 +3,7 @@
   <ion-button
     *ngSwitchDefault
     [class]="'full standard medium' + ' ' + params.style + ' ' + params.buttonAlign"
-    [disabled]="params.disabled"
+    [disabled]="disabled()"
     (click)="triggerActions('click')"
     [attr.data-param-style]="params.style"
     [attr.data-variant]="params.variant"
@@ -49,7 +49,7 @@
     (click)="handleClick()"
     [attr.data-variant]="params.variant"
     [attr.data-has-children]="_row.rows ? true : null"
-    [attr.data-disabled]="params.disabled"
+    [attr.data-disabled]="disabled()"
   >
     <img *ngIf="params.image" src="{{ params.image | plhAsset }}" />
     <div *ngIf="_row.value" [class]="'button-text ' + params.textAlign">
