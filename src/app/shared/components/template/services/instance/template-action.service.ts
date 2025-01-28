@@ -205,32 +205,7 @@ export class TemplateActionService extends SyncServiceBase {
   }
 
   private async processAction(action: FlowTypes.TemplateRowAction) {
-    // HACK - update any self referenced values (see note from template.parser method)
-    // Update action.args
-    action.args = action.args.map((arg) => {
-      if (typeof arg === "string" && arg.startsWith("this.")) {
-        const selfField = arg.split(".")[1];
-        arg = this.container?.templateRowMap[action._triggeredBy?._nested_name]?.[selfField];
-      }
-      return arg;
-    });
-    // Update action.params
-    if (action.params) {
-      action.params = Object.fromEntries(
-        Object.entries(action.params).map(([key, value]) => {
-          if (
-            typeof value === "string" &&
-            value.startsWith("this.") &&
-            // @item is temporarily replaced with `this.item` to avoid parsing without context – do not touch here
-            !value.startsWith("this.item")
-          ) {
-            const selfField = value.split(".")[1];
-            value = this.container?.templateRowMap[action._triggeredBy?._nested_name]?.[selfField];
-          }
-          return [key, value];
-        })
-      );
-    }
+    action = this.hackUpdateActionSelfReferenceValues(action);
 
     const { action_id, args } = action;
 
@@ -351,6 +326,41 @@ export class TemplateActionService extends SyncServiceBase {
       default:
         throw new Error(`No handler for action\n${action_id} : ${args.join(", ")}`);
     }
+  }
+
+  // HACK - update any self referenced values (see note from template.parser method)
+  // This workaround is required in order for self referenced values in action args and params to
+  // access the up-to-date value, as opposed to the value as it was when the action was originally parsed
+  // See https://github.com/IDEMSInternational/open-app-builder/pull/2749
+  private hackUpdateActionSelfReferenceValues(
+    action: FlowTypes.TemplateRowAction
+  ): FlowTypes.TemplateRowAction {
+    // Update action.args
+    action.args = action.args.map((arg) => {
+      if (typeof arg === "string" && arg.startsWith("this.")) {
+        const selfField = arg.split(".")[1];
+        arg = this.container?.templateRowMap[action._triggeredBy?._nested_name]?.[selfField];
+      }
+      return arg;
+    });
+    // Update action.params
+    if (action.params) {
+      action.params = Object.fromEntries(
+        Object.entries(action.params).map(([key, value]) => {
+          if (
+            typeof value === "string" &&
+            value.startsWith("this.") &&
+            // @item is temporarily replaced with `this.item` to avoid parsing without context – do not touch here
+            !value.startsWith("this.item")
+          ) {
+            const selfField = value.split(".")[1];
+            value = this.container?.templateRowMap[action._triggeredBy?._nested_name]?.[selfField];
+          }
+          return [key, value];
+        })
+      );
+    }
+    return action;
   }
 
   /**
