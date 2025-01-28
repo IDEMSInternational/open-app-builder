@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit } from "@angular/core";
+import { Component, computed, ElementRef, OnInit } from "@angular/core";
 import {
   getStringParamFromTemplateRow,
   getBooleanParamFromTemplateRow,
@@ -51,6 +51,11 @@ interface IButtonParams {
 })
 export class TmplButtonComponent extends TemplateBaseComponent implements OnInit {
   params: Partial<IButtonParams> = {};
+  disabled = computed(
+    () =>
+      getBooleanParamFromTemplateRow(this.rowSignal(), "disabled", false) ||
+      this.rowSignal().disabled
+  );
   /** @ignore */
   variantMap: { cardPortrait: boolean };
 
@@ -79,11 +84,7 @@ export class TmplButtonComponent extends TemplateBaseComponent implements OnInit
       .split(",")
       .join(" ") as IButtonParams["variant"];
     this.populateVariantMap();
-    this.params.disabled = getBooleanParamFromTemplateRow(this._row, "disabled", false);
     this.params.image = getStringParamFromTemplateRow(this._row, "image_asset", null);
-    if (this._row.disabled) {
-      this.params.disabled = true;
-    }
     this.params.textAlign = getStringParamFromTemplateRow(this._row, "text_align", null) as any;
     this.params.buttonAlign = getStringParamFromTemplateRow(
       this._row,
