@@ -70,8 +70,8 @@ export class TmplButtonComponent extends TemplateBaseComponent {
     this.triggerActions("click");
   }
 
-  private getParams(authorParams: FlowTypes.TemplateRow["parameter_list"]) {
-    const buttonParams: IButtonParams = {
+  private getParams(authorParams: FlowTypes.TemplateRow["parameter_list"]): IButtonParams {
+    return {
       disabled: parseBoolean(this.parameterList().disabled),
       style: `${getStringParamFromTemplateRow(this._row, "style", "information")} ${
         this.isTwoColumns() ? "two_columns" : ""
@@ -86,7 +86,6 @@ export class TmplButtonComponent extends TemplateBaseComponent {
       iconSecondary: getStringParamFromTemplateRow(this._row, "icon_secondary_asset", null),
       iconAlign: getStringParamFromTemplateRow(this._row, "icon_align", "left") as any,
     };
-    return buttonParams;
   }
 
   /** Determine if the button is inside a display group with the style "two_columns" */
