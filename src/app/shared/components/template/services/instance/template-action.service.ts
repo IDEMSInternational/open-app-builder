@@ -350,6 +350,10 @@ export class TemplateActionService extends SyncServiceBase {
         if (value === "this.value") {
           action.params[key] = currentValue;
         }
+        // HACK: workaround for a specific use case of concatenating the current value
+        // within a param, see https://github.com/IDEMSInternational/open-app-builder/pull/2750
+        // TODO: support general data evaluation and remove this workaround
+        // See https://github.com/IDEMSInternational/open-app-builder/pull/2753
         if (typeof value === "string" && value.includes("+this.value")) {
           action.params[key] = value.replace("+this.value", `${currentValue}`);
         }
