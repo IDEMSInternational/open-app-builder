@@ -337,26 +337,25 @@ export class TemplateActionService extends SyncServiceBase {
   ): FlowTypes.TemplateRowAction {
     // Update action.args and action.params
     const currentValue = this.container?.templateRowMap?.[action._triggeredBy?._nested_name]?.value;
-    if (action.args) {
-      action.args = action.args.map((arg) => {
-        if (arg === "this.value") {
+    // define a replacer that preserves type if `this.value` specified, replacing as string for
+    // other expressions `@local.some_field_{this.value}`
+    function replaceReference(v: any) {
+      if (typeof v === "string") {
+        if (v === "this.value") {
           return currentValue;
         }
-        return arg;
-      });
+        if (v.includes("{this.value}")) {
+          return v.replace("{this.value}", currentValue);
+        }
+      }
+      return v;
+    }
+    if (action.args) {
+      action.args = action.args.map((arg) => replaceReference(arg));
     }
     if (action.params) {
       for (const [key, value] of Object.entries(action.params)) {
-        if (value === "this.value") {
-          action.params[key] = currentValue;
-        }
-        // HACK: workaround for a specific use case of concatenating the current value
-        // within a param, see https://github.com/IDEMSInternational/open-app-builder/pull/2750
-        // TODO: support general data evaluation and remove this workaround
-        // See https://github.com/IDEMSInternational/open-app-builder/pull/2753
-        if (typeof value === "string" && value.includes("+this.value")) {
-          action.params[key] = value.replace("+this.value", `${currentValue}`);
-        }
+        action.params[key] = replaceReference(value);
       }
     }
     return action;
