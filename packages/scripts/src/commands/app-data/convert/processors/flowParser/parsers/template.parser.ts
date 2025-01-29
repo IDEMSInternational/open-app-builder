@@ -148,12 +148,11 @@ export class TemplateParser extends DefaultParser {
           });
         }
         if (action.params) {
-          action.params = Object.fromEntries(
-            Object.entries(action.params).map(([key, value]) => [
-              key,
-              typeof value === "string" && value === `@local.${rowName}` ? "this.value" : value,
-            ])
-          );
+          for (const [key, value] of Object.entries(action.params)) {
+            if (typeof value === "string" && value === `@local.${rowName}`) {
+              action.params[key] = "this.value";
+            }
+          }
         }
       }
       return action;
