@@ -335,30 +335,22 @@ export class TemplateActionService extends SyncServiceBase {
   private hackUpdateActionSelfReferenceValues(
     action: FlowTypes.TemplateRowAction
   ): FlowTypes.TemplateRowAction {
-    // Update action.args
-    action.args = action.args.map((arg) => {
-      if (typeof arg === "string" && arg.startsWith("this.")) {
-        const selfField = arg.split(".")[1];
-        arg = this.container?.templateRowMap[action._triggeredBy?._nested_name]?.[selfField];
-      }
-      return arg;
-    });
-    // Update action.params
+    // Update action.args and action.params
+    const currentValue = this.container?.templateRowMap?.[action._triggeredBy?._nested_name]?.value;
+    if (action.args) {
+      action.args = action.args.map((arg) => {
+        if (arg === "this.value") {
+          return currentValue;
+        }
+        return arg;
+      });
+    }
     if (action.params) {
-      action.params = Object.fromEntries(
-        Object.entries(action.params).map(([key, value]) => {
-          if (
-            typeof value === "string" &&
-            value.startsWith("this.") &&
-            // @item is temporarily replaced with `this.item` to avoid parsing without context – do not touch here
-            !value.startsWith("this.item")
-          ) {
-            const selfField = value.split(".")[1];
-            value = this.container?.templateRowMap[action._triggeredBy?._nested_name]?.[selfField];
-          }
-          return [key, value];
-        })
-      );
+      for (const [key, value] of Object.entries(action.params)) {
+        if (value === "this.value") {
+          action.params[key] = currentValue;
+        }
+      }
     }
     return action;
   }
