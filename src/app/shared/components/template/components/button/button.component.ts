@@ -51,13 +51,7 @@ interface IButtonParams {
 })
 export class TmplButtonComponent extends TemplateBaseComponent implements OnInit {
   params: Partial<IButtonParams> = {};
-  disabled = computed(() => {
-    // TODO: is disabling by row still supported generally?
-    const disabledByRow = this.rowSignal().disabled;
-    if (disabledByRow) return true;
-    const disabledByParam = getBooleanParamFromTemplateRow(this.rowSignal(), "disabled", false);
-    return disabledByParam;
-  });
+  disabled = computed(() => getBooleanParamFromTemplateRow(this.rowSignal(), "disabled", false));
   /** @ignore */
   variantMap: { cardPortrait: boolean };
 
