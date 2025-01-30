@@ -26,7 +26,7 @@ interface IRadioButtonGridParams {
    **/
   grid_gap: string;
   /* TEMPLATE PARAMETER: "variant". The style variant of the button_grid */
-  variant?: "default" | "circle-icon";
+  variant?: "default" | "circle-icon" | "flex";
 }
 
 @Component({
