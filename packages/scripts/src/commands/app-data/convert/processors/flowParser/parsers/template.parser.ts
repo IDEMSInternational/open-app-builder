@@ -138,13 +138,22 @@ export class TemplateParser extends DefaultParser {
       return action_list;
     }
     return action_list.map((action) => {
-      if (rowName && Array.isArray(action.args)) {
-        action.args = action.args.map((arg) => {
-          if (arg === `@local.${rowName}`) {
-            arg = `this.value`;
+      if (rowName) {
+        if (Array.isArray(action.args)) {
+          action.args = action.args.map((arg) => {
+            if (arg === `@local.${rowName}`) {
+              arg = `this.value`;
+            }
+            return arg;
+          });
+        }
+        if (action.params) {
+          for (const [key, value] of Object.entries(action.params)) {
+            if (typeof value === "string" && value === `@local.${rowName}`) {
+              action.params[key] = "this.value";
+            }
           }
-          return arg;
-        });
+        }
       }
       return action;
     });
