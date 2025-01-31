@@ -84,7 +84,7 @@ describe("TemplateActionService", () => {
     expect(service.container.templateRowMap.mock_row_1.value).toEqual("updated");
   });
 
-  it("Uses updated args when successive actions change same variable", async () => {
+  it("Uses latest value for `this.value` arg", async () => {
     const _triggeredBy = { _nested_name: "mock_row_1", name: "mock_row_1", type: "" };
     await service.handleActions(
       [
@@ -98,9 +98,21 @@ describe("TemplateActionService", () => {
       _triggeredBy
     );
     expect(service.container.templateRowMap.mock_row_2.value).toEqual("updated");
+    // also include test case of concatenated expression
+    await service.handleActions(
+      [
+        {
+          trigger: "click",
+          action_id: "set_local",
+          args: ["mock_row_2", "prefix_{this.value}"],
+        },
+      ],
+      _triggeredBy
+    );
+    expect(service.container.templateRowMap.mock_row_2.value).toEqual("prefix_updated");
   });
 
-  it("Uses updated params when successive actions change same variable", async () => {
+  it("Uses latest value for `this.value` param", async () => {
     const _triggeredBy = { _nested_name: "mock_row_1", name: "mock_row_1", type: "" };
     await service.handleActions(
       [
