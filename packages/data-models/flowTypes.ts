@@ -293,7 +293,7 @@ export namespace FlowTypes {
 
   /** Mapping of dynamic variables by prefix to value references */
   export interface TemplateRowEvalContext {
-    item?: TemplateRowItemEvalContextMetadata;
+    item?: TemplateRowItemEvalContextMetadata & { [key: string]: any };
     local?: { [row_nested_name: string]: FlowTypes.TemplateRow["value"] };
     row?: FlowTypes.TemplateRow;
     /**
