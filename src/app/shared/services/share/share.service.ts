@@ -14,6 +14,8 @@ const SHARE_NOT_SUPPORTED_ON_PLATFORM_ERROR_MESSAGE =
   providedIn: "root",
 })
 export class ShareService extends SyncServiceBase {
+  // Temporary local storage path on native devices for file being shared
+  localFilepath: string;
   constructor(
     private errorHandler: ErrorHandlerService,
     private fileManagerService: FileManagerService,
@@ -30,19 +32,24 @@ export class ShareService extends SyncServiceBase {
 
   private registerTemplateActionHandlers() {
     this.templateActionRegistry.register({
-      share: async ({ args }) => {
+      share: async ({ args, params }) => {
         const [actionId, ...shareArgs] = args;
-        const childActions = {
-          file: async () => await this.shareFile(shareArgs[0]),
-          text: () => this.share({ text: shareArgs[0] }),
-          url: () => this.share({ url: shareArgs[0] }),
-        };
-        // To support deprecated "share" action (previously used to share text only),
-        // assume text is being shared if first arg is not an actionId
-        if (!(actionId in childActions)) {
-          return await this.share({ text: args[0] });
+        // Support legacy "share" action syntax
+        if (actionId) {
+          const childActions = {
+            file: async () => await this.shareFile(shareArgs[0]),
+            text: () => this.share({ text: shareArgs[0] }),
+            url: () => this.share({ url: shareArgs[0] }),
+          };
+          // To support deprecated "share" action (previously used to share text only),
+          // assume text is being shared if first arg is not an actionId
+          if (!(actionId in childActions)) {
+            return await this.share({ text: args[0] });
+          }
+          return childActions[actionId]();
+        } else {
+          this.share(params);
         }
-        return childActions[actionId]();
       },
     });
   }
@@ -51,12 +58,72 @@ export class ShareService extends SyncServiceBase {
     const { value: canShare } = await Share.canShare();
     if (canShare) {
       try {
+        const { text, file, url } = options;
+
         const { activityType } = await Share.share(options);
         console.log("[SHARE] Content shared to", activityType);
       } catch (error) {
         this.handleShareError(error);
       }
     } else console.error(SHARE_NOT_SUPPORTED_ON_PLATFORM_ERROR_MESSAGE);
+  }
+
+  private async getFileData(relativePath: string) {
+    let shareAbleFileData = {};
+    try {
+      if (relativePath) {
+        await this.templateAssetService.ready();
+        // On native platforms, try to share file using @capacitor/share
+        if (Capacitor.isNativePlatform()) {
+          const { value: canShare } = await Share.canShare();
+          if (canShare) {
+            this.fileManagerService.ready();
+            const blob = (await this.templateAssetService.fetchAsset(relativePath, "blob")) as Blob;
+            // @capacitor/share can only share files saved to "Cache" directory
+            const response = await this.fileManagerService.saveFile({
+              data: blob,
+              targetPath: relativePath,
+              directory: "Cache",
+            });
+            this.localFilepath = response.localFilepath;
+            if (this.localFilepath) {
+              shareAbleFileData = { url: this.localFilepath };
+            }
+            // const { localFilepath } = await this.fileManagerService.saveFile({
+            //   data: blob,
+            //   targetPath: relativePath,
+            //   directory: "Cache",
+            // });
+            // if (localFilepath) {
+            //   const { activityType } = await Share.share({ url: localFilepath });
+            //   console.log("[SHARE] Content shared to", activityType);
+            // }
+          } else console.error(SHARE_NOT_SUPPORTED_ON_PLATFORM_ERROR_MESSAGE);
+        }
+        // On web platforms, try to share file using Web Share API
+        else {
+          if (navigator.canShare) {
+            const blob = (await this.templateAssetService.fetchAsset(relativePath, "blob")) as Blob;
+            const filename = relativePath.split("/").pop();
+            shareAbleFileData = { files: [new File([blob], filename, { type: blob.type })] };
+            // if (navigator.canShare(data)) {
+            //   await navigator.share(data);
+            // } else {
+            //   console.error("[SHARE] Unable to share file:", data);
+            // }
+          } else {
+            console.error(SHARE_NOT_SUPPORTED_ON_PLATFORM_ERROR_MESSAGE);
+          }
+        }
+      }
+    } catch (error) {
+      this.handleShareError(error);
+    } finally {
+      // If a temporary file was saved for sharing, delete it
+      if (this.localFilepath) {
+        this.fileManagerService.deleteFile(localFilepath);
+      }
+    }
   }
 
   async shareFile(relativePath: string) {
