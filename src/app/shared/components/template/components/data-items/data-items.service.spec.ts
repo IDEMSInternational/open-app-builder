@@ -121,7 +121,7 @@ describe("DataItemsService", () => {
     expect(rowProcessorSpy).toHaveBeenCalledTimes(1);
     const [rowProcessorItemRowsArg] = rowProcessorSpy.calls.first().args;
     expect(rowProcessorItemRowsArg[0]._evalContext).toEqual({
-      itemContext: {
+      item: {
         id: "id_1",
         completed: true,
         _index: 0,
