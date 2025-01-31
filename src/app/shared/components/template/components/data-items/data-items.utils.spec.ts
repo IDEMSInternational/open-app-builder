@@ -16,14 +16,14 @@ const MOCK_TEMPLATE_ITEM_ROW: FlowTypes.TemplateRow = {
         { trigger: "click", action_id: "set_item", args: [], params: { completed: false } },
       ],
       _evalContext: {
-        itemContext: {
+        item: {
           _id: "id_1",
         },
       },
     },
   ],
   _evalContext: {
-    itemContext: {
+    item: {
       _id: "id_1",
     },
   },
@@ -39,9 +39,9 @@ describe("Data Items Utils", () => {
     const [updatedRow] = res;
     // should automatically assign index, first and last meta from item list id lookup
     const expectedItemContext = { _id: "id_1", _index: 1, _first: false, _last: true };
-    expect(updatedRow._evalContext.itemContext).toEqual(expectedItemContext);
+    expect(updatedRow._evalContext.item).toEqual(expectedItemContext);
     // also check recursive child rows updated
-    expect(updatedRow.rows[0]._evalContext.itemContext).toEqual(expectedItemContext);
+    expect(updatedRow.rows[0]._evalContext.item).toEqual(expectedItemContext);
   });
 
   it("updateItemMeta assigns set_item action context", () => {
