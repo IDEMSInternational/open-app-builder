@@ -30,10 +30,10 @@ export class MockAppDataService extends AppDataService {
   // allow additional specs implementing service to provide their own data if required
   constructor(
     mockData: Partial<IAppDataCache> = {},
-    /** List of url-data pairs for http client to return */
-    mockHttpResponses: { [url: string]: any } = {},
     /** Bypass methods to load translations from http by providing combined language_codes and strings */
-    private translationStrings: { [language_code: string]: { [source_text: string]: string } } = {}
+    private translationStrings: { [language_code: string]: { [source_text: string]: string } } = {},
+    /** List of url-data pairs for http client to return */
+    mockHttpResponses: { [url: string]: any } = {}
   ) {
     super(
       mockHttpClient(mockHttpResponses) as HttpClient,

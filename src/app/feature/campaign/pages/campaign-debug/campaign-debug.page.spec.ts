@@ -27,7 +27,7 @@ describe("CampaignDebugPage", () => {
         },
         {
           provide: AppDataService,
-          useValue: new MockAppDataService({}),
+          useValue: new MockAppDataService(),
         },
         // TODO - update values when implementing tests
         {
