@@ -336,7 +336,8 @@ export class TemplateActionService extends SyncServiceBase {
     action: FlowTypes.TemplateRowAction
   ): FlowTypes.TemplateRowAction {
     // Update action.args and action.params
-    const currentValue = this.container?.templateRowMap?.[action._triggeredBy?._nested_name]?.value;
+    const currentValue = this.container?.templateRowMap?.[action._triggeredBy?._nested_name]
+      ?.value as string;
     if (action.args) {
       action.args = action.args.map((arg) => {
         if (arg === "this.value") {
