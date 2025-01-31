@@ -6,6 +6,7 @@ import { ErrorHandlerService } from "../error-handler/error-handler.service";
 import { AppDataVariableService } from "./app-data-variable.service";
 import { HttpClient } from "@angular/common/http";
 import { delay, of } from "rxjs";
+import { FlowTypes } from "packages/data-models";
 
 /** Base mock data for use with any services calling mock app-data handlers */
 const DATA_CACHE_CLEAN: IAppDataCache = {
@@ -30,7 +31,9 @@ export class MockAppDataService extends AppDataService {
   constructor(
     mockData: Partial<IAppDataCache> = {},
     /** List of url-data pairs for http client to return */
-    mockHttpResponses: { [url: string]: any } = {}
+    mockHttpResponses: { [url: string]: any } = {},
+    /** Bypass methods to load translations from http by providing combined language_codes and strings */
+    private translationStrings: { [language_code: string]: { [source_text: string]: string } } = {}
   ) {
     super(
       mockHttpClient(mockHttpResponses) as HttpClient,
@@ -39,5 +42,21 @@ export class MockAppDataService extends AppDataService {
     );
     this.appDataCache = { ...DATA_CACHE_CLEAN, ...mockData };
     this.sheetContents = { ...DATA_CACHE_CLEAN, ...mockData };
+  }
+
+  public ready() {
+    return true;
+  }
+
+  public async getSheet<T extends FlowTypes.FlowTypeWithData>(
+    flow_type: FlowTypes.FlowType,
+    flow_name: string
+  ): Promise<T> {
+    await _wait(50);
+    return this.appDataCache[flow_type]?.[flow_name] as T;
+  }
+  public async getTranslationStrings(language_code: string) {
+    await _wait(50);
+    return this.translationStrings[language_code];
   }
 }

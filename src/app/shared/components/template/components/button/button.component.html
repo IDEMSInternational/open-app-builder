@@ -1,33 +1,33 @@
-<ng-container [ngSwitch]="variantMap.cardPortrait">
+<ng-container [ngSwitch]="variantMap().cardPortrait">
   <!-- Default variant -->
   <ion-button
     *ngSwitchDefault
-    [class]="'full standard medium' + ' ' + params.style + ' ' + params.buttonAlign"
-    [disabled]="params.disabled"
+    [class]="'full standard medium' + ' ' + params().style + ' ' + params().buttonAlign"
+    [disabled]="params().disabled"
     (click)="triggerActions('click')"
-    [attr.data-param-style]="params.style"
-    [attr.data-variant]="params.variant"
-    [attr.data-has-children]="_row.rows ? true : false"
+    [attr.data-param-style]="params().style"
+    [attr.data-variant]="params().variant"
+    [attr.data-has-children]="_row.rows ? true : null"
     [attr.data-language-direction]="templateTranslateService.languageDirection()"
-    [attr.data-icon-align]="params.iconAlign"
+    [attr.data-icon-align]="params().iconAlign"
   >
-    @if (params.icon && params.iconAlign === "left") {
-      <ion-icon slot="start" [src]="params.icon | plhAsset"></ion-icon>
+    @if (params().icon && params().iconAlign === "left") {
+      <ion-icon slot="start" [src]="params().icon | plhAsset"></ion-icon>
     }
-    @if (params.icon && params.iconAlign === "right") {
-      <ion-icon slot="end" [src]="params.icon | plhAsset"></ion-icon>
+    @if (params().icon && params().iconAlign === "right") {
+      <ion-icon slot="end" [src]="params().icon | plhAsset"></ion-icon>
     }
-    @if (params.iconSecondary) {
+    @if (params().iconSecondary) {
       <!-- HACK: support icon being a path to an asset or assume it is the name of an ion-icon (e.g. chevron-forward) -->
-      @if (params.iconSecondary.includes(".")) {
-        <ion-icon slot="end" [src]="params.iconSecondary | plhAsset"></ion-icon>
+      @if (params().iconSecondary.includes(".")) {
+        <ion-icon slot="end" [src]="params().iconSecondary | plhAsset"></ion-icon>
       } @else {
-        <ion-icon slot="end" [name]="params.iconSecondary"></ion-icon>
+        <ion-icon slot="end" [name]="params().iconSecondary"></ion-icon>
       }
     }
     <span
       *ngIf="_row.value"
-      [class]="'left text ' + params.textAlign"
+      [class]="'left text ' + params().textAlign"
       [innerHTML]="_row.value | markdown"
     >
     </span>
@@ -47,12 +47,12 @@
     *ngSwitchCase="true"
     class="button-container"
     (click)="handleClick()"
-    [attr.data-variant]="params.variant"
-    [attr.data-has-children]="_row.rows ? true : false"
-    [attr.data-disabled]="params.disabled"
+    [attr.data-variant]="params().variant"
+    [attr.data-has-children]="_row.rows ? true : null"
+    [attr.data-disabled]="params().disabled"
   >
-    <img *ngIf="params.image" src="{{ params.image | plhAsset }}" />
-    <div *ngIf="_row.value" [class]="'button-text ' + params.textAlign">
+    <img *ngIf="params().image" src="{{ params().image | plhAsset }}" />
+    <div *ngIf="_row.value" [class]="'button-text ' + params().textAlign">
       {{ _row.value }}
     </div>
     <span *ngIf="_row.rows" class="children">
