@@ -8,6 +8,7 @@ import { MockDynamicDataService } from "src/app/shared/services/dynamic-data/dyn
 import { firstValueFrom } from "rxjs";
 import { Injector } from "@angular/core";
 import { TemplateVariablesService } from "../../services/template-variables.service";
+import { TemplateTranslateService } from "../../services/template-translate.service";
 
 /***************************************************************************************
  * Test Setup
@@ -76,6 +77,7 @@ describe("DataItemsService", () => {
   let service: DataItemsService;
 
   let rowProcessorSpy: jasmine.Spy;
+  let translateDataListRowsSpy: jasmine.Spy;
 
   beforeEach(async () => {
     TestBed.configureTestingModule({
@@ -91,16 +93,18 @@ describe("DataItemsService", () => {
         },
         // methods that call these providers are mocked so simply provide stub
         { provide: Injector, useValue: {} },
-        { provide: TemplateVariablesService, useValue: {} },
+        { provide: TemplateVariablesService, useValue: { evaluateConditionString: (v) => v } },
+        { provide: TemplateTranslateService, useValue: {} },
       ],
     });
     service = TestBed.inject(DataItemsService);
 
-    // mock calls to data items processor
-    service["hackParseDataList"] = jasmine.createSpy().and.callFake(async (v) => v);
     // spy on calls to rowProcessor and just return unprocessed
     rowProcessorSpy = jasmine.createSpy().and.callFake(async (v) => v);
     service["hackProcessRows"] = rowProcessorSpy;
+    // use spy for calls to templateTranslateService
+    translateDataListRowsSpy = jasmine.createSpy().and.callFake((v) => v);
+    service["templateTranslateService"]["translateDataListRows"] = translateDataListRowsSpy;
   });
 
   it("should be created", () => {
@@ -162,6 +166,12 @@ describe("DataItemsService", () => {
     );
     // Note - currently return 6 due to generated loop item rows
     expect(evaluated.args).toEqual(["my_local_var", 3]);
+  });
+
+  it("translated data_item rows", async () => {
+    const obs = service.getItemsObservable(MOCK_DATA_ITEMS_ROW, {});
+    await firstValueFrom(obs);
+    expect(translateDataListRowsSpy).toHaveBeenCalledTimes(1);
   });
 
   // TODO - requires improvement to mocked dynamic data service

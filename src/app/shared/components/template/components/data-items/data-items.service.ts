@@ -9,13 +9,16 @@ import { ItemProcessor } from "../../processors/item";
 import { updateItemMeta } from "./data-items.utils";
 import { isEqual } from "packages/shared/src/utils/object-utils";
 import { AppDataEvaluator } from "packages/shared/src/models/appDataEvaluator/appDataEvaluator";
+import { JSEvaluator } from "packages/shared/src/models/jsEvaluator/jsEvaluator";
+import { TemplateTranslateService } from "../../services/template-translate.service";
 
 @Injectable({ providedIn: "root" })
 export class DataItemsService {
   constructor(
     private dynamicDataService: DynamicDataService,
     private injector: Injector,
-    private templateVariablesService: TemplateVariablesService
+    private templateVariablesService: TemplateVariablesService,
+    private templateTranslateService: TemplateTranslateService
   ) {}
 
   /** Process an template data_items row and generate an observable of generated child item rows */
@@ -40,7 +43,7 @@ export class DataItemsService {
         .pipe(
           switchMap((query) =>
             query.pipe(
-              switchMap((data) =>
+              switchMap((data: FlowTypes.Data_listRow[]) =>
                 defer(async () => {
                   // Parse the retrieved data_list. Use item processor to loop over item data
                   // and templated rows to generate item rows
@@ -84,6 +87,23 @@ export class DataItemsService {
     });
   }
 
+  /** Evaluate any self-references within triggered action params or args */
+  public evaluateComponentAction(action: FlowTypes.TemplateRowAction) {
+    const evaluator = new JSEvaluator();
+    for (const [key, value] of Object.entries(action.params || {})) {
+      if (typeof value === "string" && value.includes("this.value")) {
+        action.params[key] = evaluator.evaluate(value, action._triggeredBy);
+      }
+    }
+    action.args = action.args.map((arg) => {
+      if (typeof arg === "string" && arg.includes("this.value")) {
+        arg = evaluator.evaluate(arg, action._triggeredBy);
+      }
+      return arg;
+    });
+    return action;
+  }
+
   /**
    * If datalist referenced as @data.some_list it will already be parsed, so extract
    * name from raw values.
@@ -104,25 +124,29 @@ export class DataItemsService {
 
   /**
    * Similar method as templateRowService to partially evaluate any string expressions in data_lists,
-   * except uses arrays instead of hashmaps
+   * except uses arrays instead of hashmaps and includes translation
+   * (default template processor uses `ensureValueTranslated` method from `template-variables.service`)
    *
    * TODO - this isn't an efficient method for parsing. Data lists should be evaluated in parser
-   * and list of variables to replace identified as metadata in similar way to templating
-   *
-   * TODO - is this even required if the templated rows are also parsed?
+   * and list of variables to replace identified as metadata in similar way to templating.
    */
-  private async hackParseDataList(dataListHashmap: FlowTypes.Data_listRow[]) {
-    const parsedHashmap: Record<string, FlowTypes.Data_listRow> = {};
-    for (const [listKey, listValue] of Object.entries(dataListHashmap)) {
-      parsedHashmap[listKey] = listValue;
-      for (const [itemKey, itemValue] of Object.entries(listValue)) {
-        if (typeof itemValue === "string") {
-          parsedHashmap[listKey][itemKey] =
-            await this.templateVariablesService.evaluateConditionString(itemValue);
+  private async hackParseDataList(dataListRows: FlowTypes.Data_listRow[]) {
+    // Ensure data list rows translated before processing template items
+    // It might be possible to avoid repeated translation effort if including translated data_list in query,
+    // but would also need better tracking of language change and data updates so not currently optimized.
+    const translatedListRows = this.templateTranslateService.translateDataListRows(dataListRows);
+    const evaluatedRows: FlowTypes.Data_listRow[] = [];
+    for (const row of translatedListRows) {
+      for (const [key, value] of Object.entries(row)) {
+        if (typeof value === "string") {
+          const evaluated = await this.templateVariablesService.evaluateConditionString(value);
+          row[key] = evaluated;
         }
       }
+      evaluatedRows.push(row);
     }
-    return Object.values(parsedHashmap);
+
+    return evaluatedRows;
   }
 
   /**

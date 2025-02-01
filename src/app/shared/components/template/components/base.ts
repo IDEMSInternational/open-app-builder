@@ -36,7 +36,8 @@ export class TemplateBaseComponent implements ITemplateRowProps {
    **/
   @Input() set row(row: FlowTypes.TemplateRow) {
     this._row = row;
-    this.rowSignal.set(row);
+    // take shallow clone to still be able to detect changes if this._row directly modified
+    this.rowSignal.set({ ...row });
   }
 
   /**
@@ -67,10 +68,13 @@ export class TemplateBaseComponent implements ITemplateRowProps {
    * Update the current value of the row by setting a local variable that matches
    * @ignore
    **/
-  setValue(value: any) {
-    // console.log("setting value", value);
+  async setValue(value: any) {
+    // HACK - provide optimistic update so that data_items interceptor also can access updated row value
+    this._row.value = value;
+    this.rowSignal.update((v) => ({ ...v, value }));
+
     const action: FlowTypes.TemplateRowAction = {
-      action_id: "set_local",
+      action_id: "set_self",
       args: [this._row._nested_name, value],
       trigger: "click",
     };
