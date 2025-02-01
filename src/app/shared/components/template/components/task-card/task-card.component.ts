@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, computed, OnInit, signal } from "@angular/core";
 import { TaskService } from "src/app/shared/services/task/task.service";
 import {
   getBooleanParamFromTemplateRow,
@@ -54,7 +54,14 @@ interface ITaskCardParams {
    * A list of named style variants of the component, separated by spaces or commas.
    * Default "landscape"
    * */
-  variant: "background-secondary" | "background-primary" | "button" | "landscape" | "portrait" | "";
+  variant:
+    | "background-secondary"
+    | "background-primary"
+    | "button"
+    | "landscape"
+    | "portrait"
+    | ""
+    | "block-button";
   /**
    * The icon to display in the "badge" added to the task card
    * when its associated task/task group has been completed
@@ -65,6 +72,12 @@ interface ITaskCardParams {
    * when its associated task/task group is in progress
    */
   in_progress_icon: string;
+  /**
+   * Set the highlighted status directly, bypassing any calculations.
+   * If using, no value should be provided for task_group_id
+   * Default false
+   */
+  highlighted: boolean;
   /**
    * Text to display in the "badge" added to the task card
    * when its associated task group is the highlighted task group.
@@ -83,6 +96,14 @@ interface ITaskCardParams {
    * Default true
    */
   show_progress_text: boolean;
+  /**
+   * Whether or not the task card is in a "locked" state. Any logic to determint this should be handled in the template
+   */
+  locked: boolean;
+  /**
+   * The icon that will be displayed if the task is "locked" (currently only implemented for plh_kids_kw theme)
+   */
+  locked_image_asset: string;
 }
 
 @Component({
@@ -95,7 +116,11 @@ export class TmplTaskCardComponent extends TemplateBaseComponent implements OnIn
   public parameter_list: ITaskCardParams;
 
   style: string;
-  highlighted: boolean;
+  highlighted = computed(() => {
+    if (this.taskGroupId) return this.checkGroupHighlighted();
+    return this.authorHighlighted();
+  });
+  authorHighlighted = signal(false);
   highlightedText: string;
   progressUnitsName: string;
   showProgressText: boolean;
@@ -112,6 +137,8 @@ export class TmplTaskCardComponent extends TemplateBaseComponent implements OnIn
   inProgressIcon: string;
   isButton: boolean;
   variant: ITaskCardParams["variant"];
+  locked: boolean;
+  lockedImageAsset: string;
 
   constructor(
     private taskService: TaskService,
@@ -122,8 +149,12 @@ export class TmplTaskCardComponent extends TemplateBaseComponent implements OnIn
 
   ngOnInit() {
     this.getParams();
-    this.highlighted = this.checkGroupHighlighted();
     this.checkProgressStatus();
+  }
+
+  public handleClick() {
+    if (this.locked) return;
+    this.triggerActions("click");
   }
 
   getParams() {
@@ -149,6 +180,7 @@ export class TmplTaskCardComponent extends TemplateBaseComponent implements OnIn
 
     this.completedIcon = getStringParamFromTemplateRow(this._row, "completed_icon", null);
     this.inProgressIcon = getStringParamFromTemplateRow(this._row, "in_progress_icon", null);
+    this.authorHighlighted.set(getBooleanParamFromTemplateRow(this._row, "highlighted", false));
     this.highlightedText = getStringParamFromTemplateRow(this._row, "highlighted_text", "Active");
     this.progressUnitsName = getStringParamFromTemplateRow(
       this._row,
@@ -156,6 +188,8 @@ export class TmplTaskCardComponent extends TemplateBaseComponent implements OnIn
       "sections"
     );
     this.showProgressText = getBooleanParamFromTemplateRow(this._row, "show_progress_text", true);
+    this.locked = getBooleanParamFromTemplateRow(this._row, "locked", false);
+    this.lockedImageAsset = getStringParamFromTemplateRow(this._row, "locked_image_asset", null);
   }
 
   checkProgressStatus() {
