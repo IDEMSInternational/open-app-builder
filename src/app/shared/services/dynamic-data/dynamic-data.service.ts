@@ -12,6 +12,7 @@ import { ReactiveMemoryAdapter, REACTIVE_SCHEMA_BASE } from "./adapters/reactive
 import { TemplateActionRegistry } from "../../components/template/services/instance/template-action.registry";
 import { DynamicDataActionFactory } from "./actions";
 import { DeploymentService } from "../deployment/deployment.service";
+import type { Observable } from "rxjs/internal/Observable";
 
 @Injectable({ providedIn: "root" })
 /**
@@ -111,8 +112,8 @@ export class DynamicDataService extends AsyncServiceBase {
     queryObj = { ...defaultQueryObj, ...queryObj };
     // use a live query to return all documents in the collection, converting
     // from reactive documents to json data instead
-    let query = this.db.query(collectionName, queryObj);
-    return query;
+    let query = this.db.query<T>(collectionName, queryObj);
+    return query as Observable<T[]>;
   }
 
   /** Take a snapshot of the current state of a table */

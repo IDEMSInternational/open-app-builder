@@ -11,6 +11,7 @@ import { SyncServiceBase } from "../syncService.base";
 import { LocalStorageService } from "../local-storage/local-storage.service";
 import { DynamicDataService } from "../dynamic-data/dynamic-data.service";
 import { DeploymentService } from "../deployment/deployment.service";
+import { IServerUser } from "./server.types";
 
 /**
  * Backend API
@@ -78,8 +79,7 @@ export class ServerService extends SyncServiceBase {
 
     const auth_user_id = this.localStorageService.getProtected("AUTH_USER_ID") || null;
 
-    // TODO - get DTO from api (?)
-    const data = {
+    const data: Partial<IServerUser> = {
       auth_user_id,
       contact_fields,
       app_version: _app_builder_version,
