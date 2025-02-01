@@ -18,7 +18,7 @@ import Stroke from "ol/style/Stroke";
 import chroma from "chroma-js";
 import BaseLayer from "ol/layer/Base";
 import { Feature } from "ol";
-import { ChangeContext } from "@angular-slider/ngx-slider";
+import { ChangeContext, Options } from "@angular-slider/ngx-slider";
 
 interface IMapLayer {
   id: string;
@@ -189,7 +189,7 @@ export class TmplMapComponent extends TemplateBaseComponent implements AfterView
   }
 
   public getSliderOptions(mapLayer: any) {
-    const sliderOptions = {
+    const sliderOptions: Options = {
       disabled: !mapLayer.get("scaleSlider"),
       floor: mapLayer.get("scaleMin"),
       ceil: mapLayer.get("scaleMax"),
@@ -205,6 +205,7 @@ export class TmplMapComponent extends TemplateBaseComponent implements AfterView
           maximumFractionDigits: 2,
         }).format(value);
       },
+      vertical: true,
     };
     return sliderOptions;
   }
@@ -579,7 +580,7 @@ export class TmplMapComponent extends TemplateBaseComponent implements AfterView
     } = setCustomLayerProperties;
 
     const cssGradientFill = scaleColours
-      ? `linear-gradient(90deg, ${scaleColours.join(", ")})`
+      ? `linear-gradient(0deg, ${scaleColours.join(", ")})`
       : undefined;
     layer.setVisible(visible === undefined || !!visible);
     if (opacity || opacity === 0) layer.setOpacity(opacity);
