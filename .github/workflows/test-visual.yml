@@ -64,12 +64,6 @@ jobs:
           mkdir www
           tar -xf artifact.tar --directory www
 
-        # HACK - as lifecycle_actions block template view simply remove them all
-        # TODO - review if still required (CC 2023-08-15)
-      - name: HACK - Remove lifecycle actions
-        run: |
-          rm -f -R www/assets/app_data/sheets/data_list/lifecycle_actions
-
         ###########################################################################################
         # Generate
         ###########################################################################################
