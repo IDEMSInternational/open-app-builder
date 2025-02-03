@@ -59,7 +59,6 @@ export class ScreenshotDownload {
     if (!latestArtifact) {
       throw new Error(`No artifacts found with name: ${SCREENSHOT_ARTIFACT_NAME}`);
     }
-    console.log("latest artifact", latestArtifact);
     const browser_download_url = getGHRepoArtifactDLLink(latestArtifact);
     return { browser_download_url, id: latestArtifact.id };
   }
