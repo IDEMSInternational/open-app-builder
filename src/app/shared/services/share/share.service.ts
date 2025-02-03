@@ -7,9 +7,6 @@ import { FileManagerService } from "../file-manager/file-manager.service";
 import { TemplateAssetService } from "../../components/template/services/template-asset.service";
 import { Capacitor } from "@capacitor/core";
 
-const SHARE_NOT_SUPPORTED_ON_PLATFORM_ERROR_MESSAGE =
-  "[SHARE] Sharing is not supported on this platform";
-
 interface IShareActionParams {
   file?: string;
   text?: string;
@@ -43,8 +40,12 @@ export class ShareService extends SyncServiceBase {
       share: async (action) => {
         const { args, params } = action as { args: string[]; params: IShareActionParams };
 
+        if (params) {
+          this.handleShare(params);
+        }
         // Support legacy "share" action arg-based syntax
-        if (args) {
+        else if (args) {
+          console.warn("[SHARE] Deprecated action syntax. Use `share | data_type: data` instead.");
           const [actionId, ...shareArgs] = args;
           const childActions = {
             file: async () => await this.handleShare({ file: shareArgs[0] }),
@@ -57,45 +58,34 @@ export class ShareService extends SyncServiceBase {
             return await this.handleShare({ text: args[0] });
           }
           return childActions[actionId]();
-        } else if (params) {
-          this.handleShare(params);
         } else {
-          return console.error("[SHARE] no params provided");
+          return console.error("[SHARE] No params provided to `share` action");
         }
       },
     });
   }
 
   private async handleShare(options: IShareActionParams) {
-    if (options.file) {
-      options = await this.processShareParams(options);
+    // Convert file reference to platform-relative shareable file data
+    if (options?.file) {
+      const fileData = await this.getFileData(options.file);
+      delete options.file;
+      options = { ...options, ...fileData };
     }
-    const { value: canShare } = await Share.canShare();
-    if (!canShare) return console.error(SHARE_NOT_SUPPORTED_ON_PLATFORM_ERROR_MESSAGE);
     await this.share(options);
   }
 
-  private async processShareParams(params: IShareActionParams) {
-    if (params?.file) {
-      const fileData = await this.getFileData(params.file);
-      delete params.file;
-      params = { ...params, ...fileData };
-    }
-    return params;
-  }
-
-  async share(options: ShareOptions | ShareData) {
+  private async share(options: ShareOptions | ShareData) {
     try {
       if (Capacitor.isNativePlatform()) {
         const { value: canShare } = await Share.canShare();
-        if (canShare) {
-          try {
-            const { activityType } = await Share.share(options as ShareOptions);
-            console.log("[SHARE] Content shared to", activityType);
-          } catch (error) {
-            this.handleShareError(error);
-          }
-        } else console.error(SHARE_NOT_SUPPORTED_ON_PLATFORM_ERROR_MESSAGE);
+        if (!canShare) return console.error("[SHARE] Sharing is not supported on this platform");
+        try {
+          const { activityType } = await Share.share(options as ShareOptions);
+          console.log("[SHARE] Content shared to", activityType);
+        } catch (error) {
+          this.handleShareError(error);
+        }
       }
       // Capacitor's Share API does not support sharing files on web, so use Web Share API directly
       else {
