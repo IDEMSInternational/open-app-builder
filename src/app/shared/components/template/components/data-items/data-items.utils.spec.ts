@@ -18,14 +18,14 @@ const MOCK_TEMPLATE_ITEM_ROW: FlowTypes.TemplateRow = {
       _evalContext: {
         item: {
           _id: "id_1",
-        },
+        } as any,
       },
     },
   ],
   _evalContext: {
     item: {
       _id: "id_1",
-    },
+    } as any,
   },
 };
 
