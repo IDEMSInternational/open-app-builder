@@ -20,12 +20,14 @@ export class FirebaseService extends SyncServiceBase {
   private initialise() {
     const { firebase } = this.deploymentService.config;
 
-    // If no firebase config is provided, do not initialise Firebase app and provide warning
-    if (!firebase.config) {
-      const enabledServices = Object.entries(firebase)
-        .filter(([key, v]) => v && v.constructor === {}.constructor && v["enabled"])
-        .map(([key]) => key);
-      console.warn(`[Firebase] config missing, services disabled:\n`, enabledServices.join(", "));
+    // Skip init if top-level firebase config not provided
+    if (!firebase) return;
+
+    // Provide warning if firebase app config not available (e.g. encrypted import failed)
+    const { config, ...services } = firebase;
+    if (!config) {
+      const configuredServices = Object.keys(services).join(", ");
+      console.warn(`[Firebase] config missing, services disabled:\n`, configuredServices);
       return;
     }
 
