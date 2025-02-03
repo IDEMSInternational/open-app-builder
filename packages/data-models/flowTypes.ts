@@ -291,10 +291,26 @@ export namespace FlowTypes {
    * */
   type TemplateRowDeploymentType = string & {};
 
+  /** Mapping of dynamic variables by prefix to value references */
+  export interface TemplateRowEvalContext {
+    item?: TemplateRowItemEvalContextMetadata & { [key: string]: any };
+    local?: { [row_nested_name: string]: FlowTypes.TemplateRow["value"] };
+    row?: FlowTypes.TemplateRow;
+    /**
+     * HACK - when evaluating dynamic context the "field" value references the column name being evaluated
+     * and not @field values
+     * TODO - refactor
+     */
+    field?: string;
+    // TODO - type definition appears in template-calc service but not easy to import (should refactor)
+    calc?: any;
+    // TODO - generic support for all prefixes
+  }
+
   export interface TemplateRow extends Row_with_translations {
     type: TemplateRowBaseType | TemplateRowCoreType | TemplateRowDeploymentType;
     name: string;
-    value?: any; // TODO - incoming data will be string, so components should handle own parsing
+    value?: boolean | number | string;
     action_list?: TemplateRowAction[];
     style_list?: string[];
     parameter_list?: { [param: string]: string };
@@ -314,7 +330,7 @@ export namespace FlowTypes {
     /** Keep a list of dynamic dependencies used within a template, by reference (e.g. {@local.var1 : ["text_1"]}) */
     _dynamicDependencies?: { [reference: string]: string[] };
     _translatedFields?: { [field: string]: any };
-    _evalContext?: any; // force specific context variables when calculating eval statements (such as loop items)
+    _evalContext?: TemplateRowEvalContext;
     __EMPTY?: any; // empty cells (can be removed after pr 679 merged)
   }
 
@@ -338,7 +354,7 @@ export namespace FlowTypes {
 
   const DYNAMIC_PREFIXES_COMPILER = ["gen", "row", "default"] as const;
 
-  const DYNAMIC_PREFIXES_RUNTIME = [
+  export const DYNAMIC_PREFIXES_RUNTIME = [
     "local",
     "field",
     "fields",
@@ -349,6 +365,8 @@ export namespace FlowTypes {
     "item",
     "raw",
   ] as const;
+
+  type IDynamicPrefixRuntime = (typeof DYNAMIC_PREFIXES_RUNTIME)[number];
 
   export const DYNAMIC_PREFIXES = [
     ...DYNAMIC_PREFIXES_COMPILER,

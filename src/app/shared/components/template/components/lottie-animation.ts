@@ -37,7 +37,7 @@ export class TmplLottieAnimation extends TemplateBaseComponent implements OnInit
     // Loop by default
     const loop = r?.parameter_list?.loop === "false" ? false : true;
     if (r.value) {
-      const path = this.templateAssetService.getTranslatedAssetPath(r.value);
+      const path = this.templateAssetService.getTranslatedAssetPath(r.value as string);
       this.animOptions = {
         path,
         loop,

@@ -285,7 +285,6 @@ export class CampaignService extends AsyncServiceBase {
     translatedRow._dynamicFields = extractDynamicFields(translatedRow);
     const parsedRow = await this.templateVariablesService.evaluatePLHData(translatedRow, {
       row: translatedRow,
-      templateRowMap: {},
     });
     return parsedRow as FlowTypes.Campaign_listRow;
   }

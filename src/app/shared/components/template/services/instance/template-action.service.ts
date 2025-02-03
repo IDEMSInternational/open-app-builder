@@ -345,7 +345,7 @@ export class TemplateActionService extends SyncServiceBase {
           return currentValue;
         }
         if (v.includes("{this.value}")) {
-          return v.replace("{this.value}", currentValue);
+          return v.replace("{this.value}", currentValue as string);
         }
       }
       return v;
