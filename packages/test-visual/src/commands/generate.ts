@@ -151,10 +151,16 @@ export class ScreenshotGenerate {
   /** Create initial puppeteer browser and custom page objects   */
   private async prepareBrowserRunner() {
     const { height, width } = VISUAL_TEST_CONFIG.pageDefaults;
+    const args = ["--disable-notifications"];
+    // when running via github actions bypass sandbox
+    // https://github.com/puppeteer/puppeteer/blob/main/docs/troubleshooting.md#setting-up-chrome-linux-sandbox
+    if (process.env.CI) {
+      args.push("--disable-setuid-sandbox", "--no-sandbox");
+    }
     this.browser = await puppeteer.launch({
       headless: !this.options.debug,
       defaultViewport: { width, height },
-      args: ["--disable-notifications"],
+      args,
       dumpio: this.options.debug,
     });
     this.page = await this.setupPage();
