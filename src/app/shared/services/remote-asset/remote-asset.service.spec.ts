@@ -101,6 +101,7 @@ const MOCK_DEPLOYMENT_CONFIG: Partial<IDeploymentRuntimeConfig> = {
   supabase: {
     enabled: true,
   },
+  firebase: { crashlytics: { enabled: false } },
 };
 
 /**
