@@ -2,9 +2,6 @@
 name: Test-Visual Generate Screenshots
 on:
   workflow_dispatch:
-  push:
-    branches:
-      - master
 concurrency:
   group: test-visual-generate-${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true

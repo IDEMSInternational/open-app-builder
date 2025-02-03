@@ -1,21 +1,30 @@
 import { Command } from "commander";
-import puppeteer from "puppeteer";
+import puppeteer, { Browser, Page } from "puppeteer";
 import path from "path";
 import PQueue from "p-queue";
 import fs from "fs-extra";
 import handler from "serve-handler";
 import http from "http";
 import logUpdate from "log-update";
+import type { Dexie } from "dexie";
 import { DEXIE_SRC_PATH, paths } from "../config";
 import { outputCompleteMessage, outputErrorMessage, zipFolder } from "../utils";
 import { VISUAL_TEST_CONFIG } from "../config/test";
+import { _wait } from "../../../shared/src/utils/async-utils";
 
 type IPageConfig = (typeof VISUAL_TEST_CONFIG)["pageList"][number];
 type IDexieConfig = (typeof VISUAL_TEST_CONFIG)["dexieConfig"];
 
-// Import Dexie from the src folder so that same instance can be used to seed the DB
-// as is used in the app itself. Uses require import syntax for compatibility
-const Dexie = require(DEXIE_SRC_PATH);
+// HACK - fix tsx issue
+// https://github.com/privatenumber/tsx/issues/113
+const { toString } = Function.prototype;
+Function.prototype.toString = function () {
+  const stringified = Reflect.apply(toString, this, arguments);
+  return `function () {
+        const __name = (target, value) => Object.defineProperty(target, "name", { value, configurable: true });
+        return Reflect.apply(${stringified}, this, arguments);
+    }`;
+};
 
 /***************************************************************************************
  * Configuration
@@ -79,8 +88,8 @@ export default program
  *************************************************************************************/
 
 export class ScreenshotGenerate {
-  browser: puppeteer.Browser;
-  page: puppeteer.Page;
+  browser: Browser;
+  page: Page;
   server?: http.Server;
 
   private options: IProgramOptions;
@@ -142,10 +151,16 @@ export class ScreenshotGenerate {
   /** Create initial puppeteer browser and custom page objects   */
   private async prepareBrowserRunner() {
     const { height, width } = VISUAL_TEST_CONFIG.pageDefaults;
+    const args = ["--disable-notifications"];
+    // when running via github actions bypass sandbox
+    // https://github.com/puppeteer/puppeteer/blob/main/docs/troubleshooting.md#setting-up-chrome-linux-sandbox
+    if (process.env.CI) {
+      args.push("--disable-setuid-sandbox", "--no-sandbox");
+    }
     this.browser = await puppeteer.launch({
       headless: !this.options.debug,
       defaultViewport: { width, height },
-      args: ["--disable-notifications"],
+      args,
       dumpio: this.options.debug,
     });
     this.page = await this.setupPage();
@@ -184,7 +199,7 @@ export class ScreenshotGenerate {
     // run an initial request that can be used to check for console errors in debug mode
     if (this.options.debug) {
       await this.page.goto(APP_SERVER_URL, { waitUntil: "networkidle2" });
-      await this.page.waitForTimeout(10000);
+      await _wait(10000);
     }
 
     // create a task queue for handling concurrent requests
@@ -195,6 +210,9 @@ export class ScreenshotGenerate {
       autoStart: false,
       throwOnTimeout: false,
     });
+    // Ensure page unload dialogs are automatically closed
+    // https://stackoverflow.com/a/68639531
+    const acceptBeforeUnload = (dialog) => dialog.type() === "beforeunload" && dialog.accept();
 
     // setup screenshot requests
     pageList.forEach((pageConfig) => {
@@ -203,6 +221,7 @@ export class ScreenshotGenerate {
         const outputPath = path.resolve(paths.SCREENSHOTS_FOLDER, `${name}.png`);
         if (!fs.existsSync(outputPath)) {
           const page = await this.browser.newPage();
+          page.on("dialog", acceptBeforeUnload);
           // resize page viewport if override provided
           if (height !== pageDefaults.height || width !== pageDefaults.width) {
             await page.setViewport({ width: pageConfig.width, height: pageConfig.height });
@@ -250,7 +269,7 @@ export class ScreenshotGenerate {
   }
 
   /** Load a template page from within the app and wait for content to render */
-  private async goToUrl(pageConfig: IPageConfig, page: puppeteer.Page) {
+  private async goToUrl(pageConfig: IPageConfig, page: Page) {
     const { url, selector } = pageConfig;
     await page.goto(`${APP_SERVER_URL}/${url}`, {
       waitUntil: "networkidle2",
@@ -259,7 +278,7 @@ export class ScreenshotGenerate {
     await page.waitForSelector(selector);
     // Additional timeout to support page fully loading
     // TODO - replace with function call from the app
-    await page.waitForTimeout(pageConfig.pageWait);
+    await _wait(pageConfig.pageWait);
     // Try to ensure all rendering complete by requesting animation frame
     await page.evaluate(async () => {
       async function waitForAnimationFrame() {
@@ -299,11 +318,14 @@ export class ScreenshotGenerate {
    * NOTE - requires dexie scripts to be included (handled in init)
    **/
   private async setIndexedDB(dexieConfig: IDexieConfig) {
+    // Import Dexie from the src folder so that same instance can be used to seed the DB
+    // as is used in the app itself. Uses require import syntax for compatibility
+    await import(`file:///${DEXIE_SRC_PATH}`);
     const { data, tableSchema, version } = dexieConfig;
     const passedArgs = { tableSchema, version, data };
     return this.page.evaluate(async (args: typeof passedArgs) => {
       const appWindow: IAppWindow = window as any;
-      const db = new appWindow.Dexie("plh-app-db");
+      const db: Dexie = new appWindow.Dexie("plh-app-db");
       const { tableSchema, data, version } = args;
       // when configuring database from seed require setting a lower version
       // so that it can be configured as the correct version in the app
@@ -324,5 +346,5 @@ export class ScreenshotGenerate {
 }
 
 interface IAppWindow extends Window {
-  Dexie: typeof Dexie;
+  Dexie: any;
 }

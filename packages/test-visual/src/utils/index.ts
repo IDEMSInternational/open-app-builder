@@ -1,4 +1,3 @@
-import axios from "axios";
 import fs from "fs-extra";
 import archiver from "archiver";
 import extract from "extract-zip";
@@ -6,6 +5,7 @@ import chalk from "chalk";
 import boxen from "boxen";
 import logUpdate from "log-update";
 import { Command } from "commander";
+import { Stream } from "stream";
 
 /** Display an output message in a blue box with 2 lines of text */
 export function outputCompleteMessage(text1: string, text2 = "") {
@@ -64,28 +64,30 @@ export function unzipFile(zipFilePath: string, outputFolderPath: string) {
 }
 
 export async function downloadToFile(url: string, outputFilePath: string) {
-  const client = axios.create();
-  console.log("downloading", url);
-  const writer = fs.createWriteStream(outputFilePath);
-  const { data, headers } = await client.get(url, {
-    responseType: "stream",
-  });
-  const totalLength = headers["content-length"];
-  let bytesReceived = 0;
-  data.on("data", (chunk: Buffer) => {
-    bytesReceived += chunk.length;
-    const progress = Math.round((bytesReceived / totalLength) * 100);
-    logUpdate(`${progress}%`);
-  });
-  data.pipe(writer);
-  return new Promise<void>((resolve, reject) => {
-    writer.on("finish", () => {
-      logUpdate(`downloaded ${outputFilePath}`);
-      logUpdate.done();
-      resolve();
+  const { body, headers } = await fetch(url);
+  if (body) {
+    const totalLength = parseInt(headers.get("content-length"), 10);
+    let bytesReceived = 0;
+    // create outstream to write to file
+    const outStream = fs.createWriteStream(outputFilePath);
+    // convert fetch stream to node readable stream
+    // additionally log progress on write updates
+    const stream = Stream.Readable.fromWeb(body as any);
+    stream.on("data", (chunk) => {
+      const progress = Math.round((bytesReceived / totalLength) * 100);
+      bytesReceived += chunk.length;
+      logUpdate(`${progress}%`);
     });
-    writer.on("error", reject);
-  });
+    // pipe income fetch stream to file write, and resolve promise when complete
+    stream.pipe(outStream);
+    return new Promise((resolve) => {
+      stream.on("close", () => {
+        logUpdate.done();
+        resolve(true);
+      });
+    });
+  }
+  throw new Error(`Download Failed: ${url}`);
 }
 
 export function logProgramHelp(program: Command) {
