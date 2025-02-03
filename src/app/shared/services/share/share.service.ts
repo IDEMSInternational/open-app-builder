@@ -41,10 +41,10 @@ export class ShareService extends SyncServiceBase {
         const { args, params } = action as { args: string[]; params: IShareActionParams };
 
         if (params) {
-          this.handleShare(params);
+          await this.handleShare(params);
         } else if (args) {
           console.warn("[SHARE] Deprecated action syntax. Use `share | data_type: data` instead.");
-          this.handleLegacyShare(args);
+          await this.handleLegacyShare(args);
         } else {
           return console.error("[SHARE] No params provided to `share` action");
         }
@@ -64,17 +64,17 @@ export class ShareService extends SyncServiceBase {
       delete parsedOptions.file;
       parsedOptions = { ...parsedOptions, ...fileData };
     }
-    await this.share(options);
+    await this.share(parsedOptions);
   }
 
   private async share(options: ShareOptions | ShareData) {
     try {
       if (Capacitor.isNativePlatform()) {
-        this.shareNative(options as ShareOptions);
+        await this.shareNative(options as ShareOptions);
       }
       // Capacitor's Share API does not support sharing files on web, so use Web Share API directly
       else {
-        this.shareWeb(options as ShareData);
+        await this.shareWeb(options as ShareData);
       }
     } catch (error) {
       this.handleShareError(error);
@@ -162,15 +162,15 @@ export class ShareService extends SyncServiceBase {
     const [actionId, ...shareArgs] = args;
     const childActions = {
       file: async () => await this.handleShare({ file: shareArgs[0] }),
-      text: () => this.handleShare({ text: shareArgs[0] }),
-      url: () => this.handleShare({ url: shareArgs[0] }),
+      text: async () => await this.handleShare({ text: shareArgs[0] }),
+      url: async () => await this.handleShare({ url: shareArgs[0] }),
     };
     // To support deprecated "share" action (previously used to share text only),
     // assume text is being shared if first arg does not match an actionId
     if (!(actionId in childActions)) {
       await this.handleShare({ text: args[0] });
     } else {
-      childActions[actionId]();
+      await childActions[actionId](args);
     }
   }
 }
