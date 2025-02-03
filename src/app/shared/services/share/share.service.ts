@@ -12,7 +12,7 @@ interface IShareActionParams {
   text?: string;
   url?: string;
   title?: string;
-  dialogTitle?: string;
+  dialog_title?: string;
 }
 
 @Injectable({
@@ -53,11 +53,16 @@ export class ShareService extends SyncServiceBase {
   }
 
   private async handleShare(options: IShareActionParams) {
+    // Rename `dialog_title` to `dialogTitle`
+    let parsedOptions = {
+      dialogTitle: options.dialog_title,
+      ...(({ dialog_title, ...rest }) => rest)(options),
+    };
     // Convert file reference to platform-relative shareable file data
-    if (options?.file) {
-      const fileData = await this.getFileData(options.file);
-      delete options.file;
-      options = { ...options, ...fileData };
+    if (parsedOptions?.file) {
+      const fileData = await this.getFileData(parsedOptions.file);
+      delete parsedOptions.file;
+      parsedOptions = { ...parsedOptions, ...fileData };
     }
     await this.share(options);
   }
