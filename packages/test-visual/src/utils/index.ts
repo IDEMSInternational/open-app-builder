@@ -81,9 +81,13 @@ export async function downloadToFile(url: string, outputFilePath: string) {
     // pipe income fetch stream to file write, and resolve promise when complete
     stream.pipe(fs.createWriteStream(outputFilePath));
     return new Promise((resolve) => {
-      outStream.on("close", () => resolve(true));
+      stream.on("close", () => {
+        logUpdate.done();
+        resolve(true);
+      });
     });
   }
+  throw new Error(`Download Failed: ${url}`);
 }
 
 export function logProgramHelp(program: Command) {
