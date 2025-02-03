@@ -46,7 +46,7 @@ export interface IDeploymentRuntimeConfig {
   /**
    * Specify if using firebase for auth and crashlytics.
    * Requires firebase config available through encrypted config */
-  firebase?: {
+  firebase: {
     /** Project config as specified in firebase console (recommend loading from encrypted environment) */
     config?: {
       apiKey: string;
