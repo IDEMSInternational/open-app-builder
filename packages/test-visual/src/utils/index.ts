@@ -79,7 +79,7 @@ export async function downloadToFile(url: string, outputFilePath: string) {
       logUpdate(`${progress}%`);
     });
     // pipe income fetch stream to file write, and resolve promise when complete
-    stream.pipe(fs.createWriteStream(outputFilePath));
+    stream.pipe(outStream);
     return new Promise((resolve) => {
       stream.on("close", () => {
         logUpdate.done();
