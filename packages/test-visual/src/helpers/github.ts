@@ -1,6 +1,7 @@
 import fs from "fs-extra";
 import path from "path";
 import { Octokit } from "octokit";
+import type { RestEndpointMethodTypes } from "@octokit/plugin-rest-endpoint-methods";
 import { GH_REPO_NAME, GH_REPO_ORG, paths } from "../config";
 import { downloadToFile } from "../utils";
 
@@ -20,9 +21,11 @@ type PromiseResolveType<T> = T extends PromiseLike<infer U> ? U : T;
 export type IGHReleaseData = PromiseResolveType<ReturnType<typeof getGHRepoReleases>>[0];
 
 /** Retrieve the latest available repo artifacts (NOTE - non-exhaustive, paging not used) */
-export async function getGHRepoArtifacts() {
+export async function getGHRepoArtifacts(
+  params: Partial<RestEndpointMethodTypes["actions"]["listArtifactsForRepo"]["parameters"]>
+) {
   const octokit = new Octokit({});
-  const artifactsRes = await octokit.rest.actions.listArtifactsForRepo({ repo, owner });
+  const artifactsRes = await octokit.rest.actions.listArtifactsForRepo({ repo, owner, ...params });
   return artifactsRes.data.artifacts;
 }
 type IGHArtifact = PromiseResolveType<ReturnType<typeof getGHRepoArtifacts>>[0];
