@@ -7,7 +7,7 @@ import { AppDataService } from "src/app/shared/services/data/app-data.service";
 import { CampaignService } from "src/app/feature/campaign/campaign.service";
 import { MockAppDataService } from "src/app/shared/services/data/app-data.service.mock.spec";
 import { TemplateCalcService } from "./template-calc.service";
-import { MockTemplateCalcService } from "./template-calc.service.spec";
+import { MockTemplateCalcService } from "./template-calc.service.mock.spec";
 import { TemplateTranslateService } from "./template-translate.service";
 import { FlowTypes } from "packages/data-models";
 

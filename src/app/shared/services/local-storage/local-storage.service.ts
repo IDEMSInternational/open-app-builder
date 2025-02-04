@@ -2,20 +2,21 @@ import { Injectable } from "@angular/core";
 import { IProtectedFieldName, getProtectedFieldName } from "data-models";
 import { SyncServiceBase } from "../syncService.base";
 
-export const LOCAL_STORAGE_PREFIX = "rp-contact-field";
-
 @Injectable({
   providedIn: "root",
 })
 export class LocalStorageService extends SyncServiceBase {
+  /** Prefix applied to all localStorage entries */
+  public prefix = "rp-contact-field";
+
   constructor() {
     super("LocalStorage");
   }
 
   private get(key: string): string | null {
     if (!key) return null;
-    if (!key.startsWith(LOCAL_STORAGE_PREFIX)) {
-      key = `${LOCAL_STORAGE_PREFIX}.${key}`;
+    if (!key.startsWith(this.prefix)) {
+      key = `${this.prefix}.${key}`;
     }
     return localStorage.getItem(key);
   }
@@ -25,16 +26,16 @@ export class LocalStorageService extends SyncServiceBase {
     if (!allowProtected && this.isProtected(key)) {
       console.warn(`[DEPRECATED] - set local-storage with protected name: ${key}`);
     }
-    if (!key.startsWith(LOCAL_STORAGE_PREFIX)) {
-      key = `${LOCAL_STORAGE_PREFIX}.${key}`;
+    if (!key.startsWith(this.prefix)) {
+      key = `${this.prefix}.${key}`;
     }
     return localStorage.setItem(key, value);
   }
 
   private remove(key: string) {
     if (!key) return;
-    if (!key.startsWith(LOCAL_STORAGE_PREFIX)) {
-      key = `${LOCAL_STORAGE_PREFIX}.${key}`;
+    if (!key.startsWith(this.prefix)) {
+      key = `${this.prefix}.${key}`;
     }
     return localStorage.removeItem(key);
   }
@@ -69,7 +70,7 @@ export class LocalStorageService extends SyncServiceBase {
   getAll() {
     const values = {};
     Object.keys(localStorage)
-      .filter((k) => k.startsWith(LOCAL_STORAGE_PREFIX))
+      .filter((k) => k.startsWith(this.prefix))
       .forEach((k) => (values[k] = localStorage.getItem(k)));
     return values;
   }
@@ -92,8 +93,8 @@ export class LocalStorageService extends SyncServiceBase {
   }
   /** Check if a field name is protected (starts with underscore prefixed or non-prefixed) */
   isProtected(key: string) {
-    if (key.startsWith(LOCAL_STORAGE_PREFIX)) {
-      key = key.replace(`${LOCAL_STORAGE_PREFIX}.`, "");
+    if (key.startsWith(this.prefix)) {
+      key = key.replace(`${this.prefix}.`, "");
     }
     return key.startsWith("_");
   }
