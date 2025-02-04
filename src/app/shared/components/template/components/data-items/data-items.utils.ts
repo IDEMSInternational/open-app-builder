@@ -23,12 +23,13 @@ export function updateItemMeta(
   const itemDataIDs = itemData.map((item) => item.id);
   // Reassign metadata fields previously assigned by item as rendered row count may have changed
   return templateRows.map((r) => {
-    const itemId = r._evalContext.item._id;
+    const itemId = r._evalContext.item.id;
     // Map the row item context to the original list of items rendered to know position in item list.
     const itemIndex = itemDataIDs.indexOf(itemId);
     // Update metadata fields as _first, _last and index may have changed based on dynamic updates
     r._evalContext.item = {
       ...r._evalContext.item,
+      _id: itemId,
       _index: itemIndex,
       _first: itemIndex === 0,
       _last: itemIndex === lastItemIndex,
