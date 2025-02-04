@@ -1,4 +1,4 @@
-import { IFunctionHashmap } from "packages/shared/src";
+import type { IFunctionHashmap } from "packages/shared/src/models/jsEvaluator/jsEvaluator";
 
 /**
  * Temporary functions used for plh sheets

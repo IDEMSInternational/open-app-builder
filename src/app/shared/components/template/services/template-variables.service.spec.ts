@@ -1,5 +1,5 @@
 import { TestBed } from "@angular/core/testing";
-import { IVariableContext, TemplateVariablesService } from "./template-variables.service";
+import { TemplateVariablesService } from "./template-variables.service";
 import { HttpClientTestingModule } from "@angular/common/http/testing";
 import { TemplateFieldService } from "./template-field.service";
 import { MockTemplateFieldService } from "./template-field.service.spec";
@@ -9,6 +9,7 @@ import { MockAppDataService } from "src/app/shared/services/data/app-data.servic
 import { TemplateCalcService } from "./template-calc.service";
 import { MockTemplateCalcService } from "./template-calc.service.spec";
 import { TemplateTranslateService } from "./template-translate.service";
+import { FlowTypes } from "packages/data-models";
 
 const MOCK_APP_DATA = {};
 
@@ -21,7 +22,7 @@ const MOCK_FIELDS = {
   dynamic_field: "number",
 };
 
-const MOCK_CONTEXT_BASE: IVariableContext = {
+const MOCK_CONTEXT_BASE: FlowTypes.TemplateRowEvalContext = {
   // Assume the row will have a dynamic 'field' entry
   field: "value",
   row: {
@@ -30,8 +31,8 @@ const MOCK_CONTEXT_BASE: IVariableContext = {
     name: "test_row",
     _nested_name: "test_row",
   },
-  templateRowMap: {},
-  calcContext: {
+  local: {},
+  calc: {
     globalConstants: {},
     globalFunctions: {},
     thisCtxt: {
@@ -41,7 +42,7 @@ const MOCK_CONTEXT_BASE: IVariableContext = {
   },
 };
 
-const TEST_FIELD_CONTEXT: IVariableContext = {
+const TEST_FIELD_CONTEXT: FlowTypes.TemplateRowEvalContext = {
   ...MOCK_CONTEXT_BASE,
   row: {
     ...MOCK_CONTEXT_BASE.row,
@@ -61,7 +62,7 @@ const TEST_FIELD_CONTEXT: IVariableContext = {
 
 // Context adapted from this debug template:
 // https://docs.google.com/spreadsheets/d/1tL6CPHEIW-GPMYjdhVKQToy_hZ1H5qNIBkkh9XnA5QM/edit#gid=114708400
-const TEST_ITEM_CONTEXT: IVariableContext = {
+const TEST_ITEM_CONTEXT: FlowTypes.TemplateRowEvalContext = {
   ...MOCK_CONTEXT_BASE,
   row: {
     ...MOCK_CONTEXT_BASE.row,
@@ -78,7 +79,7 @@ const TEST_ITEM_CONTEXT: IVariableContext = {
       ],
     },
   },
-  itemContext: {
+  item: {
     id: "id1",
     number: 1,
     string: "hello",
@@ -90,16 +91,11 @@ const TEST_ITEM_CONTEXT: IVariableContext = {
   },
 };
 
-const TEST_LOCAL_CONTEXT: IVariableContext = {
+const TEST_LOCAL_CONTEXT: FlowTypes.TemplateRowEvalContext = {
   ...MOCK_CONTEXT_BASE,
-  templateRowMap: {
+  local: {
     // Mock row setting a local variable
-    string_local: {
-      name: "string_local",
-      value: "Jasper",
-      type: "set_variable",
-      _nested_name: "string_local",
-    },
+    string_local: "Jasper",
   },
   row: {
     ...MOCK_CONTEXT_BASE.row,
@@ -202,7 +198,7 @@ describe("TemplateVariablesService", () => {
     expect(resWithItemContext).toEqual(1);
     // Retain raw expression if evaluating outside of item context
     // https://github.com/IDEMSInternational/parenting-app-ui/pull/2215#discussion_r1514757364
-    delete TEST_ITEM_CONTEXT.itemContext;
+    delete TEST_ITEM_CONTEXT.item;
     const resWithoutItemContext = await service.evaluatePLHData(
       MOCK_ITEM_STRING,
       TEST_ITEM_CONTEXT
@@ -225,7 +221,7 @@ describe("TemplateVariablesService", () => {
       { "@field.dynamic_field": 2 },
       {
         row: { ...MOCK_CONTEXT_BASE.row, _dynamicFields: {} },
-        templateRowMap: {},
+        local: {},
       }
     );
     expect(res).toEqual({ number: 2 });
