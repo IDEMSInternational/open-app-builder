@@ -3,7 +3,7 @@ import { TemplateTranslateService } from "./template-translate.service";
 import { AppDataService } from "src/app/shared/services/data/app-data.service";
 import { MockAppDataService } from "src/app/shared/services/data/app-data.service.mock.spec";
 import { AppConfigService } from "src/app/shared/services/app-config/app-config.service";
-import { MockAppConfigService } from "src/app/shared/services/app-config/app-config.service.spec";
+import { MockAppConfigService } from "src/app/shared/services/app-config/app-config.service.mock.spec";
 
 const MOCK_DATA_LIST_ROWS = [
   {
