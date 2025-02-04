@@ -94,12 +94,12 @@ export function updateRowPropertyRecursively(
   row: FlowTypes.TemplateRow,
   update: Partial<FlowTypes.TemplateRow>
 ) {
-  // Provide a simple merge of update on top of parent row and any nested child rows
-  row = deepMergeObjects({} as any, row, update);
-  if (row.rows) {
-    row.rows = row.rows.map((r) => updateRowPropertyRecursively(r, update));
+  const updated = deepMergeObjects({} as FlowTypes.TemplateRow, row, update);
+  if (updated.rows) {
+    updated.rows = updated.rows.map((r) => updateRowPropertyRecursively(r, update));
   }
-  return row;
+  console.log(JSON.parse(JSON.stringify({ row, update, updated })));
+  return updated;
 }
 
 /**
