@@ -11,6 +11,8 @@ import { isEqual } from "packages/shared/src/utils/object-utils";
 import { AppDataEvaluator } from "packages/shared/src/models/appDataEvaluator/appDataEvaluator";
 import { JSEvaluator } from "packages/shared/src/models/jsEvaluator/jsEvaluator";
 import { TemplateTranslateService } from "../../services/template-translate.service";
+import { updateRowPropertyRecursively } from "../../utils";
+import { TemplateCalcService } from "../../services/template-calc.service";
 
 @Injectable({ providedIn: "root" })
 export class DataItemsService {
@@ -18,7 +20,8 @@ export class DataItemsService {
     private dynamicDataService: DynamicDataService,
     private injector: Injector,
     private templateVariablesService: TemplateVariablesService,
-    private templateTranslateService: TemplateTranslateService
+    private templateTranslateService: TemplateTranslateService,
+    private templateCalcService: TemplateCalcService
   ) {}
 
   /** Process an template data_items row and generate an observable of generated child item rows */
@@ -49,11 +52,17 @@ export class DataItemsService {
                   // and templated rows to generate item rows
                   const parsedItemList = await this.hackParseDataList(data);
                   const itemProcessor = new ItemProcessor(parsedItemList, parameter_list);
-                  const { itemTemplateRows, itemData } = itemProcessor.process(rows);
+
+                  // apply pipe operations to items to handle sort, filter, limit etc.
+                  const itemData = itemProcessor.pipeData(parsedItemList, parameter_list);
+
                   // if no child rows for data_items loop assume want back raw items
                   if (rows.length === 0) {
                     return itemData;
                   }
+
+                  const itemTemplateRows = this.prepareItemRows(itemData, rows);
+
                   // otherwise process generated template rows
                   const itemRowsWithMeta = updateItemMeta(itemTemplateRows, itemData, dataListName);
                   const parsedItemRows = await this.hackProcessRows(
@@ -67,6 +76,49 @@ export class DataItemsService {
           )
         )
     );
+  }
+
+  /**
+   * Iterate over item list and child rows, and generate corresponding templated item rows.
+   * Includes evaluating local variables generated within the item loop and adding to evalContext
+   * used when rendering the templated rows
+   */
+  private prepareItemRows(items: FlowTypes.Data_listRow[], rows: FlowTypes.TemplateRow[]) {
+    const evaluator = new AppDataEvaluator();
+
+    // any set_variable statements within data_items loop will be managed internally as
+    // local context variables. This applies by default to any templated rows without a row type
+    const templatedRows = rows.filter((r) => r.type !== "set_variable");
+    const variableRows = rows.filter((r) => r.type === "set_variable");
+    const itemRows: FlowTypes.TemplateRow[] = [];
+
+    for (const item of items) {
+      // evaluate any variable rows with item context
+      const _evalContext: FlowTypes.TemplateRowEvalContext = { item, local: {} };
+      // generate a list of local variables within item loop
+      for (const { name, value } of variableRows) {
+        if (typeof value === "string") {
+          let evaluated: any;
+          // HACK - AppDataEvaluator can't detect or extract `@calc(...)` statements so process manually
+          // TODO - add support to extract @calc statements to AppDataEvaluator and provide callable function
+          if (value.startsWith("@calc")) {
+            evaluated = this.templateCalcService.evaluate(value, _evalContext);
+          } else {
+            evaluator.setExecutionContext(_evalContext as any);
+            evaluated = evaluator.evaluate(value);
+          }
+          // use base name instead of nested as still unique within item loop context
+          _evalContext.local[name] = evaluated;
+        }
+      }
+      // assign item and intermediate local variable eval context to main row and any child rows
+      for (const row of templatedRows) {
+        const rowWithRecursiveEvalContext = updateRowPropertyRecursively(row, { _evalContext });
+        itemRows.push(rowWithRecursiveEvalContext);
+      }
+    }
+
+    return itemRows;
   }
 
   /**
