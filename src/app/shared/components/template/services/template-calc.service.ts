@@ -2,12 +2,10 @@ import { IFunctionHashmap, IConstantHashmap, evaluateJSExpression } from "src/ap
 import { Injectable } from "@angular/core";
 import { Device, DeviceInfo } from "@capacitor/device";
 import * as date_fns from "date-fns";
-import { ServerService } from "src/app/shared/services/server/server.service";
 import { DataEvaluationService } from "src/app/shared/services/data/data-evaluation.service";
 import { AsyncServiceBase } from "src/app/shared/services/asyncService.base";
 import { PLH_CALC_FUNCTIONS } from "./template-calc-functions/plh-calc-functions";
 import { CORE_CALC_FUNCTIONS } from "./template-calc-functions/core-calc-functions";
-import { UserMetaService } from "src/app/shared/services/userMeta/userMeta.service";
 import { LocalStorageService } from "src/app/shared/services/local-storage/local-storage.service";
 import type { FlowTypes } from "packages/data-models";
 
@@ -24,17 +22,15 @@ export class TemplateCalcService extends AsyncServiceBase {
   };
 
   constructor(
-    private serverService: ServerService,
     private dataEvaluationService: DataEvaluationService,
-    private localStorageService: LocalStorageService,
-    private userMetaService: UserMetaService
+    private localStorageService: LocalStorageService
   ) {
     super("TemplateCalc");
     this.registerInitFunction(this.initialise);
   }
   private async initialise() {
-    this.ensureSyncServicesReady([this.serverService, this.localStorageService]);
-    await this.ensureAsyncServicesReady([this.dataEvaluationService, this.userMetaService]);
+    this.ensureSyncServicesReady([this.localStorageService]);
+    await this.ensureAsyncServicesReady([this.dataEvaluationService]);
     await this.setUserMetaData();
     this.getCalcContext();
   }
