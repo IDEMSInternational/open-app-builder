@@ -98,7 +98,6 @@ export function updateRowPropertyRecursively(
   if (updated.rows) {
     updated.rows = updated.rows.map((r) => updateRowPropertyRecursively(r, update));
   }
-  console.log(JSON.parse(JSON.stringify({ row, update, updated })));
   return updated;
 }
 
