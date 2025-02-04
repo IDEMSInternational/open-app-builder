@@ -1,4 +1,4 @@
-import { IFunctionHashmap, IConstantHashmap } from "src/app/shared/utils";
+import { IFunctionHashmap, IConstantHashmap, evaluateJSExpression } from "src/app/shared/utils";
 import { Injectable } from "@angular/core";
 import { Device, DeviceInfo } from "@capacitor/device";
 import * as date_fns from "date-fns";
@@ -9,6 +9,7 @@ import { PLH_CALC_FUNCTIONS } from "./template-calc-functions/plh-calc-functions
 import { CORE_CALC_FUNCTIONS } from "./template-calc-functions/core-calc-functions";
 import { UserMetaService } from "src/app/shared/services/userMeta/userMeta.service";
 import { LocalStorageService } from "src/app/shared/services/local-storage/local-storage.service";
+import type { FlowTypes } from "packages/data-models";
 
 @Injectable({ providedIn: "root" })
 export class TemplateCalcService extends AsyncServiceBase {
@@ -47,6 +48,19 @@ export class TemplateCalcService extends AsyncServiceBase {
     // Assign all calc functions also to window object to allow calling between functions
     (window as any).calc = this.calcFunctions;
     return this.calcContext;
+  }
+
+  /**
+   * Evaluate inner expression provided by `@calc(...)` expression
+   * The expression is evaluated as JS, with additional access to global constants, function and
+   * evaluation context variables
+   * */
+  public evaluate(expression: string, evalContext: FlowTypes.TemplateRowEvalContext) {
+    const calcContext = this.getCalcContext();
+    const calcExpression = expression.replace(/@/gi, "this.");
+    const { thisCtxt, globalFunctions, globalConstants } = calcContext;
+    const mergedContext = { ...thisCtxt, ...evalContext };
+    return evaluateJSExpression(calcExpression, mergedContext, globalFunctions, globalConstants);
   }
 
   /**
