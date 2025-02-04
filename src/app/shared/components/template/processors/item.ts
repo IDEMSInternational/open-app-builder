@@ -2,12 +2,6 @@ import { TemplatedData } from "packages/shared/src/models/templatedData/template
 import { FlowTypes } from "../models";
 import { ItemDataPipe } from "./itemPipe";
 
-type IItemEvalContext = FlowTypes.TemplateRowItemEvalContextMetadata;
-
-interface ITemplateRowWithItemContext extends FlowTypes.TemplateRow {
-  _evalContext: { itemContext: IItemEvalContext }; // force specific context variables when calculating eval statements (such as loop items)
-}
-
 export class ItemProcessor {
   constructor(
     private dataListRows: FlowTypes.Data_listRow[] = [],
@@ -44,7 +38,7 @@ export class ItemProcessor {
     templateRows: FlowTypes.TemplateRow[],
     itemData: FlowTypes.Data_listRow[]
   ) {
-    const loopItemRows: ITemplateRowWithItemContext[] = [];
+    const loopItemRows: FlowTypes.TemplateRow[] = [];
     const lastItemIndex = itemData.length - 1;
     for (const [indexKey, item] of Object.entries(itemData)) {
       const _index = Number(indexKey);
@@ -54,8 +48,8 @@ export class ItemProcessor {
         _first: _index === 0,
         _last: _index === lastItemIndex,
       };
-      const evalContext: ITemplateRowWithItemContext["_evalContext"] = {
-        itemContext: {
+      const evalContext: FlowTypes.TemplateRow["_evalContext"] = {
+        item: {
           ...item,
           ...itemContextMeta,
           // Assign row dynamic context to allow reference to rendered row metadata, including
@@ -72,11 +66,11 @@ export class ItemProcessor {
   /** Update the evaluation context of a row and recursively any nested rows */
   private setRecursiveRowEvalContext(
     row: FlowTypes.TemplateRow,
-    evalContext: ITemplateRowWithItemContext["_evalContext"]
-  ): ITemplateRowWithItemContext {
+    evalContext: FlowTypes.TemplateRow["_evalContext"]
+  ): FlowTypes.TemplateRow {
     // Workaround destructure for memory allocation issues (applying click action of last item only)
     const { rows, ...rest } = JSON.parse(JSON.stringify(row));
-    const rowWithEvalContext: ITemplateRowWithItemContext = { ...rest, _evalContext: evalContext };
+    const rowWithEvalContext: FlowTypes.TemplateRow = { ...rest, _evalContext: evalContext };
     // handle child rows independently to avoid accidental property leaks
     if (row.rows) {
       rowWithEvalContext.rows = [];
@@ -93,14 +87,14 @@ export class ItemProcessor {
    * so use delimited syntax and parse via newer TemplatedData processor
    * @see https://github.com/IDEMSInternational/parenting-app-ui/issues/1765
    */
-  private hackSetNestedName(itemRows: ITemplateRowWithItemContext[]) {
+  private hackSetNestedName(itemRows: FlowTypes.TemplateRow[]) {
     const parsedRows = [];
     for (const row of itemRows) {
-      const parser = new TemplatedData({ context: { item: row._evalContext.itemContext } });
+      const parser = new TemplatedData({ context: { item: row._evalContext.item } });
       const { rows, _nested_name } = row;
       row._nested_name = parser.parse(_nested_name);
       if (rows) {
-        row.rows = this.hackSetNestedName(rows as ITemplateRowWithItemContext[]);
+        row.rows = this.hackSetNestedName(rows as FlowTypes.TemplateRow[]);
       }
       parsedRows.push(row);
     }

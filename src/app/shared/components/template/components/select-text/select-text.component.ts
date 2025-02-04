@@ -60,7 +60,7 @@ export class SelectTextComponent
       this.toggle = !this.toggle;
     });
 
-    let text = _row.value;
+    let text = _row.value as string;
     await Clipboard.write({ string: text });
   }
 
