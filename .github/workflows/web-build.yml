@@ -164,7 +164,7 @@ jobs:
       
       - name: Test
         if: ${{inputs.include-tests}}
-        run: yarn test:workspaces
+        run: yarn test:workspaces && yarn ng test
 
       - name: Build
         run: yarn build ${{inputs.build-flags}}
