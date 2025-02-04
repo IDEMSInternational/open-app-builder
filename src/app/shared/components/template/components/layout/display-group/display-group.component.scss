@@ -89,3 +89,13 @@
     --border-color: var(--border-color-default, var(--ion-color-primary));
   }
 }
+
+.display-group-wrapper {
+  &[data-variant~="solid_secondary"] {
+    padding: var(--regular-padding);
+    background-color: var(--ion-color-secondary);
+    border-radius: var(--ion-border-radius-secondary);
+    border: var(--border-standard);
+    border-color: var(--ion-color-secondary-200);
+  }
+}
