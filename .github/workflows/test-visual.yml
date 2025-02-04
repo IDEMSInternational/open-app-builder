@@ -132,10 +132,10 @@ jobs:
             ${{ env.BIGGEST_DIFFS }}
 
             **Download Link**
-            https://nightly.link/IDEMSInternational/parenting-app-ui/actions/runs/${{github.run_id}}
+            https://nightly.link/IDEMSInternational/open-app-builder/actions/runs/${{github.run_id}}
 
             **Run Details**
-            https://github.com/IDEMSInternational/parenting-app-ui/actions/runs/${{github.run_id}}
+            https://github.com/IDEMSInternational/open-app-builder/actions/runs/${{github.run_id}}
 
       # Alt implementation to DL artifact using action instead of download script
 
