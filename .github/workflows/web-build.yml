@@ -148,9 +148,8 @@ jobs:
         run: yarn workflow deployment set ${{env.DEPLOYMENT_NAME}}
 
       #############################################################################
-      #         Build
-      # Run optional tests before building and uploading final build as artifact
-      # for use in other actions
+      #         Test
+      # Run optional tests before building
       #############################################################################
 
       - name: Lint
@@ -162,9 +161,22 @@ jobs:
         if: ${{ inputs.include-tests && !inputs.lfs }}
         run: git lfs pull --include "packages/scripts/test/data/input/*"
       
-      - name: Test
+      - name: Test - Shared
         if: ${{inputs.include-tests}}
-        run: yarn test:workspaces
+        run: yarn workspace shared test
+
+      - name: Test - Scripts
+        if: ${{inputs.include-tests}}
+        run: yarn workspace scripts test
+
+      - name: Test - Src
+        if: ${{inputs.include-tests}}
+        run: yarn ng test --source-map=false --browsers=ChromeHeadless --watch=false
+        
+      #############################################################################
+      #         Build
+      # Build and upload as artifact for use in other actions
+      #############################################################################
 
       - name: Build
         run: yarn build ${{inputs.build-flags}}
