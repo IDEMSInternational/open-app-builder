@@ -171,7 +171,7 @@ jobs:
 
       - name: Test - Src
         if: ${{inputs.include-tests}}
-        run: yarn ng test --sourceMap=false --browsers=ChromeHeadless --watch=false
+        run: yarn ng test --source-map=false --browsers=ChromeHeadless --watch=false
         
       #############################################################################
       #         Build
