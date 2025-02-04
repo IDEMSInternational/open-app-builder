@@ -60,7 +60,13 @@ const VISUAL_TEST_TEMPLATE_LIST = template
 
 /** Main export for use in test runner */
 export const VISUAL_TEST_CONFIG = {
-  localStorageFields: { _app_language: "za_en", name: "test default user" },
+  localStorageFields: {
+    _app_language: "en",
+    name: "test default user",
+    // set language selected to bypass language select on debug deployment
+    // TODO - make configurable from deployment and action runner
+    language_selected: "true",
+  },
   dexieConfig: {
     version: DB_VERSION,
     tableSchema: DB_TABLES,
