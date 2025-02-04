@@ -94,23 +94,27 @@ export class DataItemsService {
 
     for (const item of items) {
       // evaluate any variable rows with item context
-      const _evalContext: FlowTypes.TemplateRowEvalContext = { item, local: {} };
+      const _evalContext: FlowTypes.TemplateRowEvalContext = { item };
       // generate a list of local variables within item loop
-      for (const { name, value } of variableRows) {
-        if (typeof value === "string") {
-          let evaluated: any;
-          // HACK - AppDataEvaluator can't detect or extract `@calc(...)` statements so process manually
-          // TODO - add support to extract @calc statements to AppDataEvaluator and provide callable function
-          if (value.startsWith("@calc")) {
-            evaluated = this.templateCalcService.evaluate(value, _evalContext);
-          } else {
-            evaluator.setExecutionContext(_evalContext as any);
-            evaluated = evaluator.evaluate(value);
+      if (variableRows.length > 0) {
+        _evalContext.local = {};
+        for (const { name, value } of variableRows) {
+          if (typeof value === "string") {
+            let evaluated: any;
+            // HACK - AppDataEvaluator can't detect or extract `@calc(...)` statements so process manually
+            // TODO - add support to extract @calc statements to AppDataEvaluator and provide callable function
+            if (value.startsWith("@calc")) {
+              evaluated = this.templateCalcService.evaluate(value, _evalContext);
+            } else {
+              evaluator.setExecutionContext(_evalContext as any);
+              evaluated = evaluator.evaluate(value);
+            }
+            // use base name instead of nested as still unique within item loop context
+            _evalContext.local[name] = evaluated;
           }
-          // use base name instead of nested as still unique within item loop context
-          _evalContext.local[name] = evaluated;
         }
       }
+
       // assign item and intermediate local variable eval context to main row and any child rows
       for (const row of templatedRows) {
         const rowWithRecursiveEvalContext = updateRowPropertyRecursively(row, { _evalContext });
