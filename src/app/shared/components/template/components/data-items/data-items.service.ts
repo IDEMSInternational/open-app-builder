@@ -221,6 +221,11 @@ export class DataItemsService {
     } as any);
     // HACK - still want to be able to use localContext from parent rows so copy to child processor
     processor.templateRowMap = JSON.parse(JSON.stringify(templateRowMap));
+    const templateRowMapValues = Object.fromEntries(
+      Object.entries(templateRowMap).map(([key, { value }]) => [key, value])
+    );
+    processor.templateRowMapValues = templateRowMapValues;
+
     await processor.processContainerTemplateRows();
     return processor.renderedRows();
   }
