@@ -59,6 +59,8 @@
   &[data-variant~="box_gray"],
   &[data-variant~="box_primary"],
   &[data-variant~="box_secondary"],
+  &[data-variant~="box_secondary_alt"],
+  &[data-variant~="solid_secondary"],
   &[data-variant~="box_white"] {
     margin-top: var(--regular-margin);
     padding: var(--regular-padding);
@@ -84,18 +86,13 @@
     --border-color: var(--ion-color-secondary-500);
   }
 
+  &[data-variant~="box_secondary_alt"] {
+    --background-color: var(--ion-color-secondary-600);
+    --border-color: var(--ion-color-secondary-200);
+  }
+
   &[data-variant~="box_white"] {
     --background-color: white;
     --border-color: var(--border-color-default, var(--ion-color-primary));
-  }
-}
-
-.display-group-wrapper {
-  &[data-variant~="solid_secondary"] {
-    padding: var(--regular-padding);
-    background-color: var(--ion-color-secondary);
-    border-radius: var(--ion-border-radius-secondary);
-    border: var(--border-standard);
-    border-color: var(--ion-color-secondary-200);
   }
 }
