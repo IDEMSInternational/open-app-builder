@@ -31,14 +31,15 @@ class MockTemplateRowService implements Partial<TemplateRowService> {
     mock_row_1: { value: "", _nested_name: "mock_row_1", name: "mock_row_1", type: "" },
     mock_row_2: { value: "", _nested_name: "mock_row_2", name: "mock_row_2", type: "" },
   };
+  templateRowMapValues = {
+    mock_row_1: "",
+    mock_row_2: "",
+  };
   processRowUpdates = async () => null;
 }
 
 class MockContainer implements Partial<TemplateContainerComponent> {
   templateRowService = new MockTemplateRowService() as any as TemplateRowService;
-  get templateRowMap() {
-    return this.templateRowService.templateRowMap;
-  }
 }
 
 /**
@@ -74,14 +75,16 @@ describe("TemplateActionService", () => {
     await service.handleActions([
       { trigger: "click", action_id: "set_local", args: ["mock_row_1", "updated"] },
     ]);
-    expect(service.container.templateRowMap.mock_row_1.value).toEqual("updated");
+    expect(service.container.templateRowService.templateRowMap.mock_row_1.value).toEqual("updated");
+    expect(service.container.templateRowService.templateRowMapValues.mock_row_1).toEqual("updated");
   });
 
   it("set_self action", async () => {
     await service.handleActions([
       { trigger: "click", action_id: "set_self", args: ["mock_row_1", "updated"] },
     ]);
-    expect(service.container.templateRowMap.mock_row_1.value).toEqual("updated");
+    expect(service.container.templateRowService.templateRowMap.mock_row_1.value).toEqual("updated");
+    expect(service.container.templateRowService.templateRowMapValues.mock_row_1).toEqual("updated");
   });
 
   it("Uses latest value for `this.value` arg", async () => {
@@ -97,7 +100,8 @@ describe("TemplateActionService", () => {
       ],
       _triggeredBy
     );
-    expect(service.container.templateRowMap.mock_row_2.value).toEqual("updated");
+    expect(service.container.templateRowService.templateRowMap.mock_row_2.value).toEqual("updated");
+    expect(service.container.templateRowService.templateRowMapValues.mock_row_1).toEqual("updated");
     // also include test case of concatenated expression
     await service.handleActions(
       [
@@ -109,7 +113,9 @@ describe("TemplateActionService", () => {
       ],
       _triggeredBy
     );
-    expect(service.container.templateRowMap.mock_row_2.value).toEqual("prefix_updated");
+    expect(service.container.templateRowService.templateRowMap.mock_row_2.value).toEqual(
+      "prefix_updated"
+    );
   });
 
   it("Uses latest value for `this.value` param", async () => {
