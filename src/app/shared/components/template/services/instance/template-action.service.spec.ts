@@ -40,6 +40,10 @@ class MockTemplateRowService implements Partial<TemplateRowService> {
 
 class MockContainer implements Partial<TemplateContainerComponent> {
   templateRowService = new MockTemplateRowService() as any as TemplateRowService;
+
+  get templateRowMap() {
+    return this.templateRowService.templateRowMap;
+  }
 }
 
 /**
@@ -101,7 +105,7 @@ describe("TemplateActionService", () => {
       _triggeredBy
     );
     expect(service.container.templateRowService.templateRowMap.mock_row_2.value).toEqual("updated");
-    expect(service.container.templateRowService.templateRowMapValues.mock_row_1).toEqual("updated");
+    expect(service.container.templateRowService.templateRowMapValues.mock_row_2).toEqual("updated");
     // also include test case of concatenated expression
     await service.handleActions(
       [
