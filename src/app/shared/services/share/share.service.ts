@@ -15,12 +15,14 @@ interface IShareActionParams {
   dialog_title?: string;
 }
 
+type IShareParams = Omit<IShareActionParams, "dialog_title"> & { dialogTitle?: string };
+
 @Injectable({
   providedIn: "root",
 })
 export class ShareService extends SyncServiceBase {
-  // Temporary local storage path on native devices for file being shared
-  localFilepath: string;
+  /** Temporary local storage path on native devices for file being shared */
+  private localFilepath: string;
   constructor(
     private errorHandler: ErrorHandlerService,
     private fileManagerService: FileManagerService,
@@ -38,13 +40,21 @@ export class ShareService extends SyncServiceBase {
   private registerTemplateActionHandlers() {
     this.templateActionRegistry.register({
       share: async (action) => {
-        const { args, params } = action as { args: string[]; params: IShareActionParams };
+        let { args, params } = action as { args: string[]; params: IShareActionParams };
+
+        // Handle legacy arg-based syntax, where action is called as `share: data_type: data`
+        if (args) {
+          console.warn("[SHARE] Deprecated action syntax. Use `share | data_type: data` instead.");
+          const [dataType, ...shareArgs] = args;
+          if (dataType && shareArgs?.[0]) {
+            params = {
+              [dataType]: shareArgs[0],
+            };
+          }
+        }
 
         if (params) {
           await this.handleShare(params);
-        } else if (args) {
-          console.warn("[SHARE] Deprecated action syntax. Use `share | data_type: data` instead.");
-          await this.handleLegacyShare(args);
         } else {
           return console.error("[SHARE] No params provided to `share` action");
         }
@@ -54,10 +64,9 @@ export class ShareService extends SyncServiceBase {
 
   private async handleShare(options: IShareActionParams) {
     // Rename `dialog_title` to `dialogTitle`
-    let parsedOptions = {
-      dialogTitle: options.dialog_title,
-      ...(({ dialog_title, ...rest }) => rest)(options),
-    };
+    const { dialog_title, ...shareOptions } = options;
+    let parsedOptions = { dialogTitle: dialog_title, ...shareOptions };
+
     // Convert file reference to platform-relative shareable file data
     if (parsedOptions?.file) {
       const fileData = await this.getFileData(parsedOptions.file);
@@ -67,14 +76,14 @@ export class ShareService extends SyncServiceBase {
     await this.share(parsedOptions);
   }
 
-  private async share(options: ShareOptions | ShareData) {
+  private async share(options: IShareParams) {
     try {
       if (Capacitor.isNativePlatform()) {
-        await this.shareNative(options as ShareOptions);
+        await this.shareNative(options);
       }
       // Capacitor's Share API does not support sharing files on web, so use Web Share API directly
       else {
-        await this.shareWeb(options as ShareData);
+        await this.shareWeb(options);
       }
     } catch (error) {
       this.handleShareError(error);
@@ -154,23 +163,6 @@ export class ShareService extends SyncServiceBase {
       console.warn("[SHARE] Share cancelled by user");
     } else {
       this.errorHandler.handleError(error);
-    }
-  }
-
-  // Handle "share" actions called using legacy arg-based syntax
-  private async handleLegacyShare(args: string[]) {
-    const [actionId, ...shareArgs] = args;
-    const childActions = {
-      file: async () => await this.handleShare({ file: shareArgs[0] }),
-      text: async () => await this.handleShare({ text: shareArgs[0] }),
-      url: async () => await this.handleShare({ url: shareArgs[0] }),
-    };
-    // To support deprecated "share" action (previously used to share text only),
-    // assume text is being shared if first arg does not match an actionId
-    if (!(actionId in childActions)) {
-      await this.handleShare({ text: args[0] });
-    } else {
-      await childActions[actionId](args);
     }
   }
 }
