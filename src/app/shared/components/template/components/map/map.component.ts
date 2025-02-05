@@ -13,6 +13,7 @@ import HeatmapLayer from "ol/layer/Heatmap";
 import GeoJSON from "ol/format/GeoJSON";
 import Style from "ol/style/Style";
 import CircleStyle from "ol/style/Circle";
+import Icon from "ol/style/Icon";
 import Fill from "ol/style/Fill";
 import Stroke from "ol/style/Stroke";
 import chroma from "chroma-js";
@@ -29,6 +30,8 @@ interface IMapLayer {
   point_radius_max: number;
   point_radius_property: string;
   point_radius_property_max: number;
+  point_icon_asset: string;
+  point_icon_excluded_asset: string;
   blur: number;
   fill: string;
   opacity: number;
@@ -159,9 +162,11 @@ export class TmplMapComponent extends TemplateBaseComponent implements AfterView
       return value >= lower && value <= upper;
     };
     const excludedFeaturesColour = vectorLayer.get("excludedFeaturesColour");
+    const pointIconAsset = vectorLayer.get("pointIconAsset");
     vectorLayer.getSource().forEachFeature((feature: Feature) => {
-      if (excludedFeaturesColour) {
-        feature.set("overrideColour", !filterFeatures(feature));
+      // Do not set visibility of excluded features if an excluded colour is provided, or if using point icons
+      if (excludedFeaturesColour || pointIconAsset) {
+        feature.set("isExcludedFromFilter", !filterFeatures(feature));
       } else {
         feature.set("visible", filterFeatures(feature));
       }
@@ -288,6 +293,12 @@ export class TmplMapComponent extends TemplateBaseComponent implements AfterView
   private parseLayerParams(layer: any) {
     layer.source_asset = this.templateAssetService.getTranslatedAssetPath(layer.source_asset);
     layer.blur = Number(layer.blur);
+    layer.point_icon_asset = this.templateAssetService.getTranslatedAssetPath(
+      layer.point_icon_asset
+    );
+    layer.point_icon_excluded_asset = this.templateAssetService.getTranslatedAssetPath(
+      layer.point_icon_excluded_asset
+    );
     layer.point_radius_max = Number(layer.point_radius_max);
     layer.point_radius_property_max = Number(layer.point_radius_property_max);
     layer.scale_bins = layer.scale_bins?.split(", ").map(Number);
@@ -388,6 +399,8 @@ export class TmplMapComponent extends TemplateBaseComponent implements AfterView
       source_asset,
       stroke,
       visible_default,
+      point_icon_asset,
+      point_icon_excluded_asset,
       point_radius_max,
       point_radius_property,
       point_radius_property_max,
@@ -411,9 +424,9 @@ export class TmplMapComponent extends TemplateBaseComponent implements AfterView
         if (feature.get("visible") === false) return null;
 
         const geometryType = feature.getGeometry().getType();
-        const overrideColour = feature.get("overrideColour");
+        const isExcludedFromFilter = feature.get("isExcludedFromFilter");
         if (geometryType === "Polygon" || geometryType === "MultiPolygon") {
-          if (overrideColour) {
+          if (isExcludedFromFilter) {
             return new Style({
               fill: new Fill({
                 color: excluded_features_colour,
@@ -445,7 +458,7 @@ export class TmplMapComponent extends TemplateBaseComponent implements AfterView
         }
 
         if (geometryType === "LineString") {
-          if (overrideColour) {
+          if (isExcludedFromFilter) {
             return new Style({
               stroke: new Stroke({
                 color: excluded_features_colour,
@@ -470,32 +483,51 @@ export class TmplMapComponent extends TemplateBaseComponent implements AfterView
               )
             : 2;
 
-          if (overrideColour) {
-            return new Style({
-              image: new CircleStyle({
-                radius,
-                fill: new Fill({
-                  color: excluded_features_colour,
-                }),
-                stroke: new Stroke({
-                  color: "transparent",
-                  width: 0,
-                }),
+          let style: Style;
+
+          if (point_icon_asset) {
+            console.log("point_icon_asset", point_icon_asset);
+            console.log("point_icon_excluded_asset", point_icon_excluded_asset);
+            style = new Style({
+              image: new Icon({
+                src:
+                  isExcludedFromFilter && point_icon_excluded_asset
+                    ? point_icon_excluded_asset
+                    : point_icon_asset,
+                anchor: [0.5, 0.5], // Anchor at centre of icon
+                opacity: isExcludedFromFilter && !point_icon_excluded_asset ? 0.3 : 1,
               }),
             });
+          } else {
+            if (isExcludedFromFilter) {
+              style = new Style({
+                image: new CircleStyle({
+                  radius,
+                  fill: new Fill({
+                    color: excluded_features_colour,
+                  }),
+                  stroke: new Stroke({
+                    color: "transparent",
+                    width: 0,
+                  }),
+                }),
+              });
+            } else {
+              style = new Style({
+                image: new CircleStyle({
+                  radius,
+                  fill: new Fill({
+                    color: fill && fill !== "none" ? fill : "transparent",
+                  }),
+                  stroke: new Stroke({
+                    color: stroke === "none" ? "transparent" : stroke || "black",
+                    width: 1,
+                  }),
+                }),
+              });
+            }
           }
-          return new Style({
-            image: new CircleStyle({
-              radius,
-              fill: new Fill({
-                color: fill && fill !== "none" ? fill : "transparent",
-              }),
-              stroke: new Stroke({
-                color: stroke === "none" ? "transparent" : stroke || "black",
-                width: 1,
-              }),
-            }),
-          });
+          return style;
         }
       },
     });
@@ -514,6 +546,7 @@ export class TmplMapComponent extends TemplateBaseComponent implements AfterView
       opacity,
       propertyToPlot,
       excludedFeaturesColour: excluded_features_colour,
+      pointIconAsset: point_icon_asset,
     });
     this.addLayer(vectorLayer, layerGroup);
   }
@@ -561,6 +594,7 @@ export class TmplMapComponent extends TemplateBaseComponent implements AfterView
       opacity?: number;
       propertyToPlot?: string;
       excludedFeaturesColour?: string;
+      pointIconAsset?: string;
     }
   ) {
     const {
@@ -577,6 +611,7 @@ export class TmplMapComponent extends TemplateBaseComponent implements AfterView
       opacity,
       propertyToPlot,
       excludedFeaturesColour,
+      pointIconAsset,
     } = setCustomLayerProperties;
 
     const cssGradientFill = scaleColours
@@ -594,6 +629,7 @@ export class TmplMapComponent extends TemplateBaseComponent implements AfterView
     layer.set("scaleTitle", scaleTitle);
     layer.set("scaleSlider", scaleSlider);
     layer.set("excludedFeaturesColour", excludedFeaturesColour);
+    layer.set("pointIconAsset", pointIconAsset);
     layer.set("propertyToPlot", propertyToPlot);
   }
 
