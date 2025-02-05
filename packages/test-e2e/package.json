@@ -16,7 +16,7 @@
     "concurrently": "^6.2.1",
     "cypress": "^8.3.0",
     "cypress-image-snapshot": "^4.0.1",
-    "data-models": "1.0.0",
+    "data-models": "workspace:*",
     "typescript": "~4.2.4",
     "wait-on": "^6.0.0"
   }
