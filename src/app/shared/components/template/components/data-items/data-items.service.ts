@@ -6,7 +6,7 @@ import { ITemplateRowMap, TemplateRowService } from "../../services/instance/tem
 import { defer } from "rxjs/internal/observable/defer";
 import { TemplateVariablesService } from "../../services/template-variables.service";
 import { ItemProcessor } from "../../processors/item";
-import { updateItemMeta } from "./data-items.utils";
+import { generateItemMeta, updateItemActionLists } from "./data-items.utils";
 import { isEqual } from "packages/shared/src/utils/object-utils";
 import { AppDataEvaluator } from "packages/shared/src/models/appDataEvaluator/appDataEvaluator";
 import { JSEvaluator } from "packages/shared/src/models/jsEvaluator/jsEvaluator";
@@ -61,12 +61,14 @@ export class DataItemsService {
                     return itemData;
                   }
 
-                  const itemTemplateRows = this.prepareItemRows(itemData, rows);
+                  const itemTemplateRows = this.prepareItemRows({
+                    items: itemData,
+                    rows,
+                    dataListName,
+                  });
 
-                  // otherwise process generated template rows
-                  const itemRowsWithMeta = updateItemMeta(itemTemplateRows, itemData, dataListName);
                   const parsedItemRows = await this.hackProcessRows(
-                    itemRowsWithMeta,
+                    itemTemplateRows,
                     templateRowMap
                   );
                   return parsedItemRows;
@@ -83,7 +85,12 @@ export class DataItemsService {
    * Includes evaluating local variables generated within the item loop and adding to evalContext
    * used when rendering the templated rows
    */
-  private prepareItemRows(items: FlowTypes.Data_listRow[], rows: FlowTypes.TemplateRow[]) {
+  private prepareItemRows(config: {
+    items: FlowTypes.Data_listRow[];
+    rows: FlowTypes.TemplateRow[];
+    dataListName: string;
+  }) {
+    const { items, rows, dataListName } = config;
     const evaluator = new AppDataEvaluator();
 
     // any set_variable statements within data_items loop will be managed internally as
@@ -91,11 +98,15 @@ export class DataItemsService {
     const templatedRows = rows.filter((r) => r.type !== "set_variable");
     const variableRows = rows.filter((r) => r.type === "set_variable");
     const itemRows: FlowTypes.TemplateRow[] = [];
+    const lastItemIndex = items.length - 1;
+    const itemDataIds: string[] = items.map((i) => i.id);
 
-    for (const item of items) {
-      // evaluate any variable rows with item context
-      const _evalContext: FlowTypes.TemplateRowEvalContext = { item };
-      // generate a list of local variables within item loop
+    for (const [index, item] of items.entries()) {
+      // assign item metadata and store to evalContext
+      const _evalContext: FlowTypes.TemplateRowEvalContext = {
+        item: { ...item, ...generateItemMeta(item, index, lastItemIndex) },
+      };
+      // generate a list of local variables within item loop and also store within evalContext
       if (variableRows.length > 0) {
         _evalContext.local = {};
         for (const { name, value } of variableRows) {
@@ -115,10 +126,15 @@ export class DataItemsService {
         }
       }
 
-      // assign item and intermediate local variable eval context to main row and any child rows
+      // add eval context to all templated rows and recursive child rows
       for (const row of templatedRows) {
         const rowWithRecursiveEvalContext = updateRowPropertyRecursively(row, { _evalContext });
-        itemRows.push(rowWithRecursiveEvalContext);
+        const rowWithUpdatedActionList = updateItemActionLists(
+          rowWithRecursiveEvalContext,
+          dataListName,
+          itemDataIds
+        );
+        itemRows.push(rowWithUpdatedActionList);
       }
     }
 
@@ -220,6 +236,7 @@ export class DataItemsService {
       },
     } as any);
     // HACK - still want to be able to use localContext from parent rows so copy to child processor
+    // TODO - review how best to manage this... is parent data_items row missing out on local context?
     processor.templateRowMap = JSON.parse(JSON.stringify(templateRowMap));
     const templateRowMapValues = Object.fromEntries(
       Object.entries(templateRowMap).map(([key, { value }]) => [key, value])
