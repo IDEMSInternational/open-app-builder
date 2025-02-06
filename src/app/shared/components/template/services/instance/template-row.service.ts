@@ -37,7 +37,7 @@ export class TemplateRowService extends SyncServiceBase {
   public templateRowMap: ITemplateRowMap = {};
 
   /** Modified templateRowMap to only include row values, for use in local evalContext */
-  private templateRowMapValues: { [row_nested_name: string]: FlowTypes.TemplateRow["value"] } = {};
+  public templateRowMapValues: { [row_nested_name: string]: FlowTypes.TemplateRow["value"] } = {};
 
   public renderedRows = signal<FlowTypes.TemplateRow[]>([], { equal: isEqual }); // rows processed and filtered by condition
 
