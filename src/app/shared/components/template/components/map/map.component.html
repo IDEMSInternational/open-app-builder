@@ -4,7 +4,7 @@
     <div class="legend">
       @for (layerGroup of mapLayerGroupsSorted; track $index) {
         @for (mapLayer of layerGroup.layers; track $index) {
-          @if (mapLayer.getVisible() && mapLayer.get("gradientFill")) {
+          @if (mapLayer.getVisible() && mapLayer.get("showScale")) {
             <div class="legend-item">
               <div class="title">
                 <p>{{ mapLayer.get("scaleTitle") }}</p>
