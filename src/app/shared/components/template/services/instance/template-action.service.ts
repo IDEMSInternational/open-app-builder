@@ -205,14 +205,8 @@ export class TemplateActionService extends SyncServiceBase {
   }
 
   private async processAction(action: FlowTypes.TemplateRowAction) {
-    action.args = action.args.map((arg) => {
-      // HACK - update any self referenced values (see note from template.parser method)
-      if (typeof arg === "string" && arg.startsWith("this.")) {
-        const selfField = arg.split(".")[1];
-        arg = this.container?.templateRowMap[action._triggeredBy?._nested_name]?.[selfField];
-      }
-      return arg;
-    });
+    action = this.hackUpdateActionSelfReferenceValues(action);
+
     const { action_id, args } = action;
 
     // Call any action registered with global handler
@@ -334,6 +328,39 @@ export class TemplateActionService extends SyncServiceBase {
     }
   }
 
+  // HACK - update any self referenced values (see note from template.parser method)
+  // This workaround is required in order for self referenced values in action args and params to
+  // access the up-to-date value, as opposed to the value as it was when the action was originally parsed
+  // See https://github.com/IDEMSInternational/open-app-builder/pull/2749
+  private hackUpdateActionSelfReferenceValues(
+    action: FlowTypes.TemplateRowAction
+  ): FlowTypes.TemplateRowAction {
+    // Update action.args and action.params
+    const currentValue = this.container?.templateRowMap?.[action._triggeredBy?._nested_name]?.value;
+    // define a replacer that preserves type if `this.value` specified, replacing as string for
+    // other expressions `@local.some_field_{this.value}`
+    function replaceReference(v: any) {
+      if (typeof v === "string") {
+        if (v === "this.value") {
+          return currentValue;
+        }
+        if (v.includes("{this.value}")) {
+          return v.replace("{this.value}", currentValue as string);
+        }
+      }
+      return v;
+    }
+    if (action.args) {
+      action.args = action.args.map((arg) => replaceReference(arg));
+    }
+    if (action.params) {
+      for (const [key, value] of Object.entries(action.params)) {
+        action.params[key] = replaceReference(value);
+      }
+    }
+    return action;
+  }
+
   /**
    * Update a local template row
    *
@@ -355,6 +382,8 @@ export class TemplateActionService extends SyncServiceBase {
       }
       rowEntry.value = value;
       this.container.templateRowService.templateRowMap[rowEntry._nested_name] = rowEntry;
+      this.container.templateRowService.templateRowMapValues[rowEntry._nested_name] =
+        rowEntry.value;
     } else {
       // TODO
       console.warn("Setting local variable which does not exist", { key, value }, "TODO");
