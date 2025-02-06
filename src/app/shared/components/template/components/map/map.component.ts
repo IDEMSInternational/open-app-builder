@@ -1,4 +1,12 @@
-import { AfterViewInit, ChangeDetectorRef, Component, ElementRef, ViewChild } from "@angular/core";
+import {
+  AfterViewInit,
+  ChangeDetectorRef,
+  Component,
+  effect,
+  ElementRef,
+  signal,
+  ViewChild,
+} from "@angular/core";
 import { TemplateBaseComponent } from "../base";
 import { TemplateAssetService } from "../../services/template-asset.service";
 import { getParamFromTemplateRow, getStringParamFromTemplateRow } from "src/app/shared/utils";
@@ -40,6 +48,8 @@ interface IMapLayer {
   gradient_palette: string[];
   scale_max: number;
   scale_min: number;
+  /** If two layers have the same scale ID, only one scale will be displayed */
+  scale_id: string;
   /** The size of the steps on the scale */
   scale_increment: number;
   scale_slider_snap: boolean;
@@ -104,6 +114,8 @@ export class TmplMapComponent extends TemplateBaseComponent implements AfterView
   public map: Map;
   public mapLayers: BaseLayer[] = [];
   public mapLayerGroups: IMapLayerGroup[] = [];
+  /** Track which scale IDs have already been added to avoid duplicates */
+  public visibleScaleIds = signal([]);
   get mapLayerGroupsSorted() {
     return this.mapLayerGroups.sort((a, b) => b.display_order - a.display_order);
   }
@@ -115,6 +127,32 @@ export class TmplMapComponent extends TemplateBaseComponent implements AfterView
     private cdr: ChangeDetectorRef
   ) {
     super();
+    // HACK: ensure that exactly one scale is visible for each group of scale IDs
+    // TODO: should be handled by single a top-level slider for the whole grouop,
+    // rather than one associated with a specific layer
+    effect(() => {
+      const visibleScaleIds = this.visibleScaleIds();
+      const allLayers = this.getAllLayers();
+      for (const id of visibleScaleIds) {
+        const layersWithScaleId = allLayers.filter((l) => l?.get("scaleId") === id);
+        let firstVisibleLayerFound = false;
+        layersWithScaleId.forEach((layer) => {
+          if (layer.getVisible() === true && !firstVisibleLayerFound) {
+            const scaleAlreadyVisible = layer.get("showScale");
+            layer.set("showScale", true);
+            if (!scaleAlreadyVisible) {
+              this.handleSliderChange(
+                { value: layer.get("scaleMin"), highValue: layer.get("scaleMax"), pointerType: 0 },
+                layer
+              );
+            }
+            firstVisibleLayerFound = true;
+          } else {
+            layer.set("showScale", false);
+          }
+        });
+      }
+    });
   }
 
   ngAfterViewInit() {
@@ -135,7 +173,51 @@ export class TmplMapComponent extends TemplateBaseComponent implements AfterView
 
   public handleToggleChange(event: any, mapLayer: BaseLayer) {
     const toggleValue = event.detail.checked;
-    mapLayer.setVisible(toggleValue);
+    this.setLayerVisibility(mapLayer, toggleValue);
+  }
+
+  private setLayerVisibility(mapLayer: BaseLayer, value: boolean) {
+    if (mapLayer.getVisible() === value) return;
+
+    const scaleId = mapLayer.get("scaleId");
+
+    if (scaleId) {
+      if (value) {
+        if (!this.visibleScaleIds().includes(scaleId)) {
+          this.visibleScaleIds.set([...this.visibleScaleIds(), scaleId]);
+        }
+      } else {
+        // Check if any other layer with the same scaleId is still visible
+        const allLayers = this.getAllLayers();
+        const scaleIdHasOtherVisibleLayer = allLayers.some((l) => {
+          return (
+            l?.get("scaleId") === scaleId && l?.getVisible() && l?.get("id") !== mapLayer?.get("id")
+          );
+        });
+        // and if not, remove ID from list
+        if (!scaleIdHasOtherVisibleLayer) {
+          this.visibleScaleIds.set(this.visibleScaleIds().filter((id) => id !== scaleId));
+        } else {
+          // HACK: Trigger side effects withoout changing value
+          const scaleIds = this.visibleScaleIds();
+          this.visibleScaleIds.set([]);
+          this.visibleScaleIds.set(scaleIds);
+        }
+      }
+    }
+    mapLayer.setVisible(value);
+  }
+
+  private getAllLayers() {
+    return this.mapLayerGroups.map((group) => group.layers).flat();
+  }
+
+  private shouldShowLayerScale(layer: BaseLayer) {
+    // If no gradient is specified, there is no scale to show
+    if (!layer.get("gradientFill")) return false;
+    // Layers with a specified scale ID have there visibility managed by computed property
+    if (layer.get("scaleId")) return false;
+    return true;
   }
 
   public getVisibleLayerNames(layerGroup: string) {
@@ -143,23 +225,34 @@ export class TmplMapComponent extends TemplateBaseComponent implements AfterView
     return groupLayers.filter((layer) => layer.getVisible()).map((layer) => layer.get("name"));
   }
 
-  public toggleLayer(mapLayer: BaseLayer) {
-    mapLayer.setVisible(!mapLayer.getVisible());
-  }
-
   /**
    * Handles the change event from a slider component and updates the visibility of features
    * in a vector map layer based on the selected range values.
    */
-  public handleSliderChange(event: any, mapLayer: BaseLayer) {
-    // Only works on vector layers
-    const { value: lower, highValue: upper } = event as ChangeContext;
-    const vectorLayer = mapLayer as VectorLayer;
-    const propertyName = vectorLayer.get("propertyToPlot");
+  public handleSliderChange(event: ChangeContext, mapLayer: BaseLayer) {
+    const { value: lower, highValue: upper } = event;
 
+    // Only works on vector layers
+    const triggerLayer = mapLayer as VectorLayer;
+
+    // HACK: scale slider values are applied to all visible layers with the same scaleId
+    if (triggerLayer.get("scaleId")) {
+      const layersWithSameScaleId = this.getAllLayers().filter(
+        (l) => l.get("scaleId") === triggerLayer.get("scaleId")
+      );
+      for (const layer of layersWithSameScaleId) {
+        this.filterLayerFeatures(layer as VectorLayer, upper, lower);
+      }
+    } else {
+      this.filterLayerFeatures(triggerLayer, upper, lower);
+    }
+  }
+
+  private filterLayerFeatures(vectorLayer: VectorLayer, upperValue: number, lowerValue: number) {
+    const propertyName = vectorLayer.get("propertyToPlot");
     const filterFeatures = (feature: Feature) => {
       const value = feature.get(propertyName);
-      return value >= lower && value <= upper;
+      return value >= lowerValue && value <= upperValue;
     };
     const excludedFeaturesColour = vectorLayer.get("excludedFeaturesColour");
     const pointIconAsset = vectorLayer.get("pointIconAsset");
@@ -181,13 +274,13 @@ export class TmplMapComponent extends TemplateBaseComponent implements AfterView
     if (layerGroupId) {
       const layerGroup = this.mapLayerGroups.find((group) => group.id === layerGroupId);
       layerGroup.layers.forEach((layer) => {
-        layer.setVisible(layers.includes(layer.get("name")));
+        this.setLayerVisibility(layer, layers.includes(layer.get("name")));
       });
       return;
     } else {
       for (const layerGroup of this.mapLayerGroups) {
         layerGroup.layers.forEach((layer) => {
-          layer.setVisible(layers.includes(layer.get("name")));
+          this.setLayerVisibility(layer, layers.includes(layer.get("name")));
         });
       }
     }
@@ -330,6 +423,7 @@ export class TmplMapComponent extends TemplateBaseComponent implements AfterView
   private addHeatmapLayer(layer: IMapLayer, layerGroup?: string) {
     if (!layer) return;
     const {
+      id,
       description,
       name,
       blur,
@@ -337,6 +431,7 @@ export class TmplMapComponent extends TemplateBaseComponent implements AfterView
       opacity,
       property: propertyToPlot,
       gradient_palette,
+      scale_id,
       scale_max,
       scale_min,
       scale_increment,
@@ -368,6 +463,7 @@ export class TmplMapComponent extends TemplateBaseComponent implements AfterView
     }
 
     this.setCustomLayerProperties(heatmapLayer, {
+      id,
       visible: visible_default,
       name,
       description,
@@ -375,6 +471,7 @@ export class TmplMapComponent extends TemplateBaseComponent implements AfterView
       propertyToPlot,
       scaleMax: scale_max,
       scaleMin: scale_min,
+      scaleId: scale_id,
       scaleIncrement: scale_increment,
       scaleSliderSnap: scale_slider_snap,
       scaleTitle: scale_title,
@@ -385,6 +482,7 @@ export class TmplMapComponent extends TemplateBaseComponent implements AfterView
   private addVectorLayer(layer: IMapLayer, layerGroup?: string) {
     if (!layer) return;
     const {
+      id,
       description,
       fill,
       name,
@@ -393,6 +491,7 @@ export class TmplMapComponent extends TemplateBaseComponent implements AfterView
       gradient_palette,
       scale_max,
       scale_min,
+      scale_id,
       scale_increment,
       scale_slider_snap,
       scale_title,
@@ -486,8 +585,6 @@ export class TmplMapComponent extends TemplateBaseComponent implements AfterView
           let style: Style;
 
           if (point_icon_asset) {
-            console.log("point_icon_asset", point_icon_asset);
-            console.log("point_icon_excluded_asset", point_icon_excluded_asset);
             style = new Style({
               image: new Icon({
                 src:
@@ -533,11 +630,13 @@ export class TmplMapComponent extends TemplateBaseComponent implements AfterView
     });
 
     this.setCustomLayerProperties(vectorLayer, {
+      id,
       visible: visible_default,
       name,
       description,
       scaleMax: scale_max,
       scaleMin: scale_min,
+      scaleId: scale_id,
       scaleIncrement: scale_increment,
       scaleSliderSnap: scale_slider_snap,
       scaleTitle: scale_title,
@@ -581,11 +680,13 @@ export class TmplMapComponent extends TemplateBaseComponent implements AfterView
   private setCustomLayerProperties(
     layer: BaseLayer,
     setCustomLayerProperties: {
+      id?: string;
       visible?: boolean;
       name: string;
       description?: string;
       scaleMax?: number;
       scaleMin?: number;
+      scaleId?: string;
       scaleIncrement?: number;
       scaleSliderSnap?: boolean;
       scaleTitle?: string;
@@ -598,11 +699,13 @@ export class TmplMapComponent extends TemplateBaseComponent implements AfterView
     }
   ) {
     const {
+      id,
       visible,
       name,
       description,
       scaleMax,
       scaleMin,
+      scaleId,
       scaleIncrement,
       scaleSliderSnap,
       scaleTitle,
@@ -617,13 +720,14 @@ export class TmplMapComponent extends TemplateBaseComponent implements AfterView
     const cssGradientFill = scaleColours
       ? `linear-gradient(0deg, ${scaleColours.join(", ")})`
       : undefined;
-    layer.setVisible(visible === undefined || !!visible);
     if (opacity || opacity === 0) layer.setOpacity(opacity);
+    layer.set("id", id);
     layer.set("name", name);
     layer.set("description", description);
     layer.set("gradientFill", cssGradientFill);
     layer.set("scaleMax", scaleMax);
     layer.set("scaleMin", scaleMin);
+    layer.set("scaleId", scaleId);
     layer.set("scaleIncrement", scaleIncrement);
     layer.set("scaleSliderSnap", scaleSliderSnap);
     layer.set("scaleTitle", scaleTitle);
@@ -631,6 +735,11 @@ export class TmplMapComponent extends TemplateBaseComponent implements AfterView
     layer.set("excludedFeaturesColour", excludedFeaturesColour);
     layer.set("pointIconAsset", pointIconAsset);
     layer.set("propertyToPlot", propertyToPlot);
+
+    layer.set("showScale", this.shouldShowLayerScale(layer));
+    // Override default visibility, "true"
+    layer.setVisible(false);
+    this.setLayerVisibility(layer, visible === undefined || !!visible);
   }
 
   private calcPointRadius(value: number, maxvalue: number, maxRadius: number) {
