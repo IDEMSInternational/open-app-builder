@@ -189,6 +189,7 @@ export class TmplMapComponent extends TemplateBaseComponent implements AfterView
         if (!this.visibleScaleIds().includes(scaleId)) {
           this.visibleScaleIds.set([...this.visibleScaleIds(), scaleId]);
         }
+        this.handleSliderChange(mapLayer);
       } else {
         // Check if any other layer with the same scaleId is still visible
         const allLayers = this.getAllLayers();
