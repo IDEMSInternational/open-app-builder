@@ -10,7 +10,7 @@ import { TemplateAssetService } from "../services/template-asset.service";
 export class PLHAssetPipe implements PipeTransform {
   constructor(private templateAssetService: TemplateAssetService) {}
 
-  transform(value: string) {
+  transform(value: any) {
     const translatedPath = this.templateAssetService.getTranslatedAssetPath(value);
     return translatedPath;
   }
