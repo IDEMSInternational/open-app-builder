@@ -62,7 +62,7 @@ export class TmplTableComponent extends TemplateBaseComponent implements AfterVi
   }
 
   private async getDataRowsFromValue(dataListName: string) {
-    // TODO: handle data passed as @data format (see data-items handling)
+    // TODO: handle data passed as @data format, and query dynamic data to return live data (see data-items handling)
     if (typeof dataListName !== "string") {
       console.log("[TABLE COMPONENT] Value must be a data list name string");
       return [];
