@@ -72,7 +72,7 @@ jobs:
             path: ".idems_app/deployments/${{env.PARENT_DEPLOYMENT_NAME}}"
             repository: ${{env.PARENT_DEPLOYMENT_REPO}}
             ref: ${{env.PARENT_DEPLOYMENT_BRANCH}}
-            # main repo does not use lfs so ignore input
+            # main repo does not use lfs so explicitly omit
             lfs: false
   
         - name: Checkout deployment

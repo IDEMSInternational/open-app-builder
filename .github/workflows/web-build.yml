@@ -91,7 +91,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          # main repo should not use lfs
+          # main repo does not use lfs so explicitly omit
           lfs: false
           ref: ${{inputs.branch}}
 
@@ -157,11 +157,6 @@ jobs:
       - name: Lint
         if: ${{inputs.include-tests}}
         run: yarn lint && yarn workspace api lint
-
-      # Ensure test xlsx files checked out
-      - name: Checkout test files
-        if: ${{ inputs.include-tests && !inputs.lfs }}
-        run: git lfs pull --include "packages/scripts/test/data/input/*"
       
       - name: Test
         if: ${{inputs.include-tests}}
