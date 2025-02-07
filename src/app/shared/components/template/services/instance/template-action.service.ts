@@ -382,6 +382,8 @@ export class TemplateActionService extends SyncServiceBase {
       }
       rowEntry.value = value;
       this.container.templateRowService.templateRowMap[rowEntry._nested_name] = rowEntry;
+      this.container.templateRowService.templateRowMapValues[rowEntry._nested_name] =
+        rowEntry.value;
     } else {
       // TODO
       console.warn("Setting local variable which does not exist", { key, value }, "TODO");
