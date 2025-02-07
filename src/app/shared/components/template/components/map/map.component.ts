@@ -116,6 +116,12 @@ export class TmplMapComponent extends TemplateBaseComponent implements AfterView
   public mapLayerGroups: IMapLayerGroup[] = [];
   /** Track which scale IDs have already been added to avoid duplicates */
   public visibleScaleIds = signal([]);
+  /**
+   * The current values of the slider for each scale, indexed by scale ID (if specified) else layer ID
+   * TODO: Render a single slider for each group of scale IDs, rather than swapping between sliders for different layers
+   * TOD: Integrate signals
+   * */
+  public sliderValues = {};
   get mapLayerGroupsSorted() {
     return this.mapLayerGroups.sort((a, b) => b.display_order - a.display_order);
   }
@@ -141,10 +147,7 @@ export class TmplMapComponent extends TemplateBaseComponent implements AfterView
             const scaleAlreadyVisible = layer.get("showScale");
             layer.set("showScale", true);
             if (!scaleAlreadyVisible) {
-              this.handleSliderChange(
-                { value: layer.get("scaleMin"), highValue: layer.get("scaleMax"), pointerType: 0 },
-                layer
-              );
+              this.handleSliderChange(layer);
             }
             firstVisibleLayerFound = true;
           } else {
@@ -228,9 +231,11 @@ export class TmplMapComponent extends TemplateBaseComponent implements AfterView
   /**
    * Handles the change event from a slider component and updates the visibility of features
    * in a vector map layer based on the selected range values.
+   * TODO: Integrate signals to track slider values rather than calling this method explicitly
    */
-  public handleSliderChange(event: ChangeContext, mapLayer: BaseLayer) {
-    const { value: lower, highValue: upper } = event;
+  public handleSliderChange(mapLayer: BaseLayer, event?: ChangeContext) {
+    const scaleId = mapLayer.get("scaleId") || mapLayer.get("id");
+    const { min: lower, max: upper } = this.sliderValues[scaleId];
 
     // Only works on vector layers
     const triggerLayer = mapLayer as VectorLayer;
@@ -238,7 +243,7 @@ export class TmplMapComponent extends TemplateBaseComponent implements AfterView
     // HACK: scale slider values are applied to all visible layers with the same scaleId
     if (triggerLayer.get("scaleId")) {
       const layersWithSameScaleId = this.getAllLayers().filter(
-        (l) => l.get("scaleId") === triggerLayer.get("scaleId")
+        (l) => l?.get("scaleId") === triggerLayer.get("scaleId")
       );
       for (const layer of layersWithSameScaleId) {
         this.filterLayerFeatures(layer as VectorLayer, upper, lower);
@@ -256,14 +261,27 @@ export class TmplMapComponent extends TemplateBaseComponent implements AfterView
     };
     const excludedFeaturesColour = vectorLayer.get("excludedFeaturesColour");
     const pointIconAsset = vectorLayer.get("pointIconAsset");
-    vectorLayer.getSource().forEachFeature((feature: Feature) => {
-      // Do not set visibility of excluded features if an excluded colour is provided, or if using point icons
-      if (excludedFeaturesColour || pointIconAsset) {
-        feature.set("isExcludedFromFilter", !filterFeatures(feature));
-      } else {
-        feature.set("visible", filterFeatures(feature));
-      }
-    });
+
+    const applyFiltering = (source: VectorSource) =>
+      source.forEachFeature((feature: Feature) => {
+        // Do not set visibility of excluded features if an excluded colour is provided, or if using point icons
+        if (excludedFeaturesColour || pointIconAsset) {
+          feature.set("isExcludedFromFilter", !filterFeatures(feature));
+        } else {
+          feature.set("visible", filterFeatures(feature));
+        }
+      });
+
+    const source = vectorLayer.getSource();
+    if (source.getFeatures().length > 0) {
+      applyFiltering(source);
+    }
+    // HACK: await to see if source is still loading (couldn't get `source.once('featuresloadend')` to work)
+    else {
+      setTimeout(() => {
+        applyFiltering(vectorLayer.getSource());
+      }, 200);
+    }
   }
 
   public handleDropdownChange(event: any, layerGroupId?: string) {
@@ -674,6 +692,15 @@ export class TmplMapComponent extends TemplateBaseComponent implements AfterView
     const targetGroup = this.mapLayerGroups.find((group) => group.id === layerGroupId);
     targetGroup.layers ??= [];
     targetGroup.layers.push(layer);
+    const scaleId = layer.get("scaleId") || layer.get("id");
+    this.sliderValues[scaleId] = {
+      min: layer.get("scaleMin") || 0,
+      max: layer.get("scaleMax") || 0,
+    };
+    this.setLayerVisibility(
+      layer,
+      layer.get("visibleDefault") === undefined || !!layer.get("visibleDefault")
+    );
     this.cdr.markForCheck();
   }
 
@@ -735,11 +762,11 @@ export class TmplMapComponent extends TemplateBaseComponent implements AfterView
     layer.set("excludedFeaturesColour", excludedFeaturesColour);
     layer.set("pointIconAsset", pointIconAsset);
     layer.set("propertyToPlot", propertyToPlot);
+    layer.set("visibleDefault", visible);
 
     layer.set("showScale", this.shouldShowLayerScale(layer));
     // Override default visibility, "true"
     layer.setVisible(false);
-    this.setLayerVisibility(layer, visible === undefined || !!visible);
   }
 
   private calcPointRadius(value: number, maxvalue: number, maxRadius: number) {
