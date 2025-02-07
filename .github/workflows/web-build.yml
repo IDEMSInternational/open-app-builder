@@ -44,7 +44,7 @@ on:
       lfs:
         description: Enable git lfs to include download of all binary assets (user-facing deployments)
         type: boolean
-        default: true
+        default: false
       skip-upload:
         description: "Specify whether to skip uploading build artifact at end"
         type: boolean
@@ -91,7 +91,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          lfs: ${{inputs.lfs}}
+          # main repo should not use lfs
+          lfs: false
           ref: ${{inputs.branch}}
 
       - name: Setup Node
