@@ -1,8 +1,18 @@
-import { ChangeDetectorRef, Component, computed, effect, OnInit } from "@angular/core";
+import {
+  AfterViewInit,
+  ChangeDetectorRef,
+  Component,
+  computed,
+  effect,
+  OnInit,
+  ViewChild,
+} from "@angular/core";
 import { TemplateBaseComponent } from "../base";
 import { FlowTypes } from "packages/data-models";
 import { getBooleanParamFromTemplateRow } from "src/app/shared/utils";
 import { AppDataService } from "src/app/shared/services/data/app-data.service";
+import { MatTableDataSource } from "@angular/material/table";
+import { MatSort } from "@angular/material/sort";
 
 interface ITableParams {
   /** TEMPLATE PARAMETER: show_id. Display the data lists's ID column in the table. Default false */
@@ -14,24 +24,33 @@ interface ITableParams {
   templateUrl: "./table.component.html",
   styleUrls: ["./table.component.scss"],
 })
-export class TmplTableComponent extends TemplateBaseComponent {
+export class TmplTableComponent extends TemplateBaseComponent implements AfterViewInit {
   params = computed(() => this.getParams(this.parameterList()));
   dataRows = computed(() => this.getDataRowsFromValue(this.value()));
 
   columnsToDisplay = [];
-  dataSource = [];
+  dataSource: MatTableDataSource<any>;
+
+  @ViewChild(MatSort) sort: MatSort;
 
   constructor(
     private appDataService: AppDataService,
     private cdr: ChangeDetectorRef
   ) {
     super();
-    // Mat table requires a data source to be an array, not signal value, so unwrap
     effect(async () => {
-      this.dataSource = (await this.dataRows()) || [];
-      this.columnsToDisplay = this.getColumnsToDisplayFromData(await this.dataRows());
+      const data = (await this.dataRows()) || [];
+      this.dataSource = new MatTableDataSource(data);
+      this.columnsToDisplay = this.getColumnsToDisplayFromData(data);
+      if (this.sort) {
+        this.dataSource.sort = this.sort;
+      }
       this.cdr.detectChanges();
     });
+  }
+
+  ngAfterViewInit() {
+    this.dataSource.sort = this.sort;
   }
 
   private getParams(authorParams: FlowTypes.TemplateRow["parameter_list"]): ITableParams {
