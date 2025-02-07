@@ -1,6 +1,6 @@
 import { TestBed } from "@angular/core/testing";
 import { RemoteAssetService } from "./remote-asset.service";
-import { MockDeploymentService } from "../deployment/deployment.service.spec";
+import { MockDeploymentService } from "../deployment/deployment.service.mock.spec";
 import { HttpClientTestingModule } from "@angular/common/http/testing";
 import { IAssetContents } from "src/app/data";
 import { FlowTypes } from "../../model";

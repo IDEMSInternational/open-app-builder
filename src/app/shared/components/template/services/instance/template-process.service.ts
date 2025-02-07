@@ -64,6 +64,7 @@ export class TemplateProcessService extends SyncServiceBase {
     this.container.template = template;
     // reset any existing templateRowMap data
     this.container.templateRowService.templateRowMap = {};
+    this.container.templateRowService.templateRowMapValues = {};
     // process the template as if it were rendered
     // TODO - should filter out template rows to only include those used programatically (e.g. set_variable, set_field etc.)
     await this.container.templateRowService.processContainerTemplateRows();
