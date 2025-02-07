@@ -41,9 +41,9 @@ on:
           type: string
           default: ""
         lfs:
-          description: Enable git lfs to include download of all binary assets (user-facing deployments)
+          description: Enable git lfs asset download for content repos (if used by repo)
           type: boolean
-          default: false
+          default: true
   
       outputs:
         GIT_SHA:

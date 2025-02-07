@@ -42,9 +42,9 @@ on:
         type: boolean
         default: false
       lfs:
-        description: Enable git lfs to include download of all binary assets (user-facing deployments)
+        description: Enable git lfs asset download for content repos (if used by repo)
         type: boolean
-        default: false
+        default: true
       skip-upload:
         description: "Specify whether to skip uploading build artifact at end"
         type: boolean
