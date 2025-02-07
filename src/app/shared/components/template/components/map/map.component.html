@@ -12,11 +12,11 @@
               <div class="scale-container">
                 <ngx-slider
                   [class.disabled]="!mapLayer.get('scaleSlider')"
-                  [value]="mapLayer.get('scaleSlider') ? mapLayer.get('scaleMin') : null"
-                  [highValue]="mapLayer.get('scaleSlider') ? mapLayer.get('scaleMax') : null"
+                  [(value)]="sliderValues[mapLayer.get('scaleId') || mapLayer.get('id')].min"
+                  [(highValue)]="sliderValues[mapLayer.get('scaleId') || mapLayer.get('id')].max"
                   [options]="getSliderOptions(mapLayer)"
                   (userChangeEnd)="
-                    mapLayer.get('scaleSlider') ? handleSliderChange($event, mapLayer) : null
+                    mapLayer.get('scaleSlider') ? handleSliderChange(mapLayer, $event) : null
                   "
                   [ngStyle]="{ '--bar-background': mapLayer.get('gradientFill') }"
                 ></ngx-slider>
@@ -30,7 +30,7 @@
   <div class="map-controls">
     @for (layerGroup of mapLayerGroupsSorted; track $index) {
       @if (!layerGroup.controls_style || layerGroup.controls_style === "dropdown") {
-        @if (layerGroup.layers.length > 0) {
+        @if (layerGroup.layers?.length > 0) {
           <div class="map-control-container">
             <p>{{ (layerGroup.name || "Visible layers") + ":" }}</p>
             <ion-select
