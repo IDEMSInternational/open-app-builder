@@ -71,7 +71,7 @@ export class TmplDataItemsComponent extends TemplateBaseComponent {
    */
   private hackInterceptComponentActions(_nested_name: string) {
     this.parent.templateActionService.registerActionsInterceptor(_nested_name, (action) => {
-      if (action.action_id === "set_self" && action._triggeredBy._evalContext?.itemContext) {
+      if (action.action_id === "set_self" && action._triggeredBy._evalContext?.item) {
         return undefined;
       }
       return this.dataItemsService.evaluateComponentAction(action);

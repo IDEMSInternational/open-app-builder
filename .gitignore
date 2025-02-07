@@ -83,6 +83,8 @@ private.key
 
 .nx
 
+karma-result.json
+
 # Native config files populated by scripts
 capacitor.config.ts
 capacitor.config.json
