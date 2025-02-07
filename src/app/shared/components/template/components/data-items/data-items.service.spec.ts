@@ -154,7 +154,6 @@ describe("DataItemsService", () => {
     expect(evaluated.args).toEqual(["my_local_var", 3]);
   });
 
-  it("...", async () => {});
   // TODO - fix case where items context refers to generated loop items and not list items
   xit("evaluates data actions rows with items context", async () => {
     const obs = service.getItemsObservable(MOCK_DATA_ITEMS_ROW, {});
