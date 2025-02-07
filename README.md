@@ -1,5 +1,3 @@
-[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/IDEMSInternational/open-app-builder.git)
-
 # Open App Builder
 
 [Online Documentation](https://idemsinternational.github.io/open-app-builder/)
@@ -11,13 +9,10 @@
 1. Download and install [Git](https://git-scm.com/downloads)  
    This will be used to download the repository
 
-2. Download and install [Git LFS](https://git-lfs.github.com/)  
-   This will be used to download any required binary assets, such as images or pdfs
-
-3. Download and install [Node](https://nodejs.org/en/download/)   
+2. Download and install [Node](https://nodejs.org/en/download/)   
    This is the programming language required to run the project. We currently support any of the versions prefixed `v20.x.x` or `v18.x.x`
 
-4. Download and Install [Yarn](https://classic.yarnpkg.com/en/docs/install)  
+3. Download and Install [Yarn](https://classic.yarnpkg.com/en/docs/install)  
    This manages all 3rd-party code dependencies
 
 ## Installation
@@ -26,9 +21,8 @@
 
 To download the repo into the current working directory, run:
 ```
-git lfs clone https://github.com/IDEMSInternational/open-app-builder.git
+git clone https://github.com/IDEMSInternational/open-app-builder.git
 ```
-Note - if you do a regular git clone, you can always run `git lfs fetch --all` later to sync assets
 
 ### Install required dependencies
 Navigate to the newly cloned directory if you have not done so already:
