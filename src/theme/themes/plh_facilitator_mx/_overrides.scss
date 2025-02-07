@@ -947,6 +947,9 @@ body[data-theme="plh_facilitator_mx"] {
       border: none;
       border-inline-start: 3px solid var(--color-accent-orange-40);
     }
+    &[data-variant~="box_secondary_alt"] {
+      border-radius: var(--ion-border-radius-secondary) !important;
+    }
     &[data-variant~="box_gray"] {
       --background-color: var(--ion-color-gray-100) !important;
       border: none;

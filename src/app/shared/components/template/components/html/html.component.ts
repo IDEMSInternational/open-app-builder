@@ -15,6 +15,6 @@ export class TemplateHTMLComponent extends TemplateBaseComponent implements OnIn
   }
 
   ngOnInit() {
-    this.html = this.domSanitizer.bypassSecurityTrustHtml(this._row.value);
+    this.html = this.domSanitizer.bypassSecurityTrustHtml(this._row.value as string);
   }
 }
