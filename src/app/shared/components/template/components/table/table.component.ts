@@ -50,7 +50,9 @@ export class TmplTableComponent extends TemplateBaseComponent implements AfterVi
   }
 
   ngAfterViewInit() {
-    this.dataSource.sort = this.sort;
+    if (this.dataSource) {
+      this.dataSource.sort = this.sort;
+    }
   }
 
   private getParams(authorParams: FlowTypes.TemplateRow["parameter_list"]): ITableParams {
