@@ -19,19 +19,14 @@ export class FirebaseAuthProvider extends AuthProviderBase {
     await getAuth().authStateReady();
   }
 
-  public async signInWithGoogle() {
+  public override async signInWithGoogle() {
     await FirebaseAuthentication.signInWithGoogle();
     return this.authUser();
   }
 
-  public async signOut() {
+  public override async signOut() {
     await FirebaseAuthentication.signOut();
     return this.authUser();
-  }
-
-  public async getCurrentUser() {
-    const { user } = await FirebaseAuthentication.getCurrentUser();
-    return user;
   }
 
   /**
