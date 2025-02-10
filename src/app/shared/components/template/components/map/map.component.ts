@@ -122,6 +122,9 @@ export class TmplMapComponent extends TemplateBaseComponent implements AfterView
    * TOD: Integrate signals
    * */
   public sliderValues = {};
+  /** Track whether an layer is "loading", i.e. a calculation is in progress on its features */
+  layerLoading = signal(true);
+
   get mapLayerGroupsSorted() {
     return this.mapLayerGroups.sort((a, b) => b.display_order - a.display_order);
   }
@@ -255,6 +258,8 @@ export class TmplMapComponent extends TemplateBaseComponent implements AfterView
   }
 
   private filterLayerFeatures(vectorLayer: VectorLayer, upperValue: number, lowerValue: number) {
+    lowerValue = this.roundToXDecimalPlace(lowerValue, 1);
+    upperValue = this.roundToXDecimalPlace(upperValue, 1);
     const propertyName = vectorLayer.get("propertyToPlot");
     const filterFeatures = (feature: Feature) => {
       const value = feature.get(propertyName);
@@ -263,15 +268,25 @@ export class TmplMapComponent extends TemplateBaseComponent implements AfterView
     const excludedFeaturesColour = vectorLayer.get("excludedFeaturesColour");
     const pointIconAsset = vectorLayer.get("pointIconAsset");
 
-    const applyFiltering = (source: VectorSource) =>
-      source.forEachFeature((feature: Feature) => {
-        // Do not set visibility of excluded features if an excluded colour is provided, or if using point icons
-        if (excludedFeaturesColour || pointIconAsset) {
-          feature.set("isExcludedFromFilter", !filterFeatures(feature));
-        } else {
-          feature.set("visible", filterFeatures(feature));
-        }
-      });
+    const applyFiltering = (source: VectorSource) => {
+      if (!this.layerLoading()) {
+        this.layerLoading.set(true);
+      }
+      try {
+        source.forEachFeature((feature: Feature) => {
+          // Do not set visibility of excluded features if an excluded colour is provided, or if using point icons
+          if (excludedFeaturesColour || pointIconAsset) {
+            feature.set("isExcludedFromFilter", !filterFeatures(feature));
+          } else {
+            feature.set("visible", filterFeatures(feature));
+          }
+        });
+      } catch (e) {
+        throw e;
+      } finally {
+        this.layerLoading.set(false);
+      }
+    };
 
     const source = vectorLayer.getSource();
     if (source.getFeatures().length > 0) {
@@ -319,12 +334,17 @@ export class TmplMapComponent extends TemplateBaseComponent implements AfterView
       translate: (value: number) => {
         return new Intl.NumberFormat("en-GB", {
           minimumFractionDigits: 0,
-          maximumFractionDigits: 2,
+          maximumFractionDigits: 1,
         }).format(value);
       },
       vertical: true,
     };
     return sliderOptions;
+  }
+
+  private roundToXDecimalPlace(value: number, decimalPlaces: number = 1) {
+    const factor = 10 ** decimalPlaces;
+    return Math.round(value * factor) / factor;
   }
 
   private async initialiseMap() {
@@ -437,6 +457,7 @@ export class TmplMapComponent extends TemplateBaseComponent implements AfterView
           console.warn(`[MAP] Unknown layer type for ${layer.name}: ${layer.type}`);
       }
     }
+    this.layerLoading.set(false);
   }
 
   private addHeatmapLayer(layer: IMapLayer, layerGroup?: string) {
