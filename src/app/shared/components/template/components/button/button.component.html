@@ -1,7 +1,6 @@
-<ng-container [ngSwitch]="variantMap().cardPortrait">
+@if (!variantMap().cardPortrait && !variantMap().googleAuth) {
   <!-- Default variant -->
   <ion-button
-    *ngSwitchDefault
     [class]="'full standard medium' + ' ' + params().style + ' ' + params().buttonAlign"
     [disabled]="params().disabled"
     (click)="triggerActions('click')"
@@ -41,10 +40,9 @@
       ></plh-template-component>
     </span>
   </ion-button>
-
+} @else if (variantMap().cardPortrait) {
   <!-- "card-portrait" variant. This variant is not achievable using an ion-button -->
   <div
-    *ngSwitchCase="true"
     class="button-container"
     (click)="handleClick()"
     [attr.data-variant]="params().variant"
@@ -65,4 +63,10 @@
       ></plh-template-component>
     </span>
   </div>
-</ng-container>
+} @else if (variantMap().googleAuth) {
+  <!-- Google auth variant -->
+  <tmpl-button-google-sign-in
+    [value]="value()"
+    (click)="handleClick()"
+  ></tmpl-button-google-sign-in>
+}
