@@ -255,6 +255,8 @@ export class TmplMapComponent extends TemplateBaseComponent implements AfterView
   }
 
   private filterLayerFeatures(vectorLayer: VectorLayer, upperValue: number, lowerValue: number) {
+    lowerValue = this.roundToXDecimalPlace(lowerValue, 1);
+    upperValue = this.roundToXDecimalPlace(upperValue, 1);
     const propertyName = vectorLayer.get("propertyToPlot");
     const filterFeatures = (feature: Feature) => {
       const value = feature.get(propertyName);
@@ -319,12 +321,17 @@ export class TmplMapComponent extends TemplateBaseComponent implements AfterView
       translate: (value: number) => {
         return new Intl.NumberFormat("en-GB", {
           minimumFractionDigits: 0,
-          maximumFractionDigits: 2,
+          maximumFractionDigits: 1,
         }).format(value);
       },
       vertical: true,
     };
     return sliderOptions;
+  }
+
+  private roundToXDecimalPlace(value: number, decimalPlaces: number = 1) {
+    const factor = 10 ** decimalPlaces;
+    return Math.round(value * factor) / factor;
   }
 
   private async initialiseMap() {
