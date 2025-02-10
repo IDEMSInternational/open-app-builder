@@ -1,4 +1,4 @@
-@if (!variantMap().cardPortrait && !variantMap().googleAuth) {
+@if (!variantMap().cardPortrait && !variantMap().googleSignIn) {
   <!-- Default variant -->
   <ion-button
     [class]="'full standard medium' + ' ' + params().style + ' ' + params().buttonAlign"
@@ -63,8 +63,8 @@
       ></plh-template-component>
     </span>
   </div>
-} @else if (variantMap().googleAuth) {
-  <!-- Google auth variant -->
+} @else if (variantMap().googleSignIn) {
+  <!-- Google Sign In variant -->
   <tmpl-button-google-sign-in
     [value]="value()"
     (click)="handleClick()"
