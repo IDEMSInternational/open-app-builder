@@ -122,6 +122,9 @@ export class TmplMapComponent extends TemplateBaseComponent implements AfterView
    * TOD: Integrate signals
    * */
   public sliderValues = {};
+  /** Track whether an layer is "loading", i.e. a calculation is in progress on its features */
+  layerLoading = signal(true);
+
   get mapLayerGroupsSorted() {
     return this.mapLayerGroups.sort((a, b) => b.display_order - a.display_order);
   }
@@ -265,15 +268,25 @@ export class TmplMapComponent extends TemplateBaseComponent implements AfterView
     const excludedFeaturesColour = vectorLayer.get("excludedFeaturesColour");
     const pointIconAsset = vectorLayer.get("pointIconAsset");
 
-    const applyFiltering = (source: VectorSource) =>
-      source.forEachFeature((feature: Feature) => {
-        // Do not set visibility of excluded features if an excluded colour is provided, or if using point icons
-        if (excludedFeaturesColour || pointIconAsset) {
-          feature.set("isExcludedFromFilter", !filterFeatures(feature));
-        } else {
-          feature.set("visible", filterFeatures(feature));
-        }
-      });
+    const applyFiltering = (source: VectorSource) => {
+      if (!this.layerLoading()) {
+        this.layerLoading.set(true);
+      }
+      try {
+        source.forEachFeature((feature: Feature) => {
+          // Do not set visibility of excluded features if an excluded colour is provided, or if using point icons
+          if (excludedFeaturesColour || pointIconAsset) {
+            feature.set("isExcludedFromFilter", !filterFeatures(feature));
+          } else {
+            feature.set("visible", filterFeatures(feature));
+          }
+        });
+      } catch (e) {
+        throw e;
+      } finally {
+        this.layerLoading.set(false);
+      }
+    };
 
     const source = vectorLayer.getSource();
     if (source.getFeatures().length > 0) {
@@ -444,6 +457,7 @@ export class TmplMapComponent extends TemplateBaseComponent implements AfterView
           console.warn(`[MAP] Unknown layer type for ${layer.name}: ${layer.type}`);
       }
     }
+    this.layerLoading.set(false);
   }
 
   private addHeatmapLayer(layer: IMapLayer, layerGroup?: string) {
