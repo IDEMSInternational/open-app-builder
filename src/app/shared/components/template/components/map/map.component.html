@@ -1,5 +1,10 @@
 <div class="map-container">
   <div class="map-and-legend-container">
+    @if (layerLoading()) {
+      <div class="loading-overlay">
+        <p>Data loading...</p>
+      </div>
+    }
     <div id="mapElement" #mapElement class="map"></div>
     <div class="legend">
       @for (layerGroup of mapLayerGroupsSorted; track $index) {
