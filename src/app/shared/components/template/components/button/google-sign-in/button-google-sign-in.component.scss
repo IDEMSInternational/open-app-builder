@@ -1,5 +1,7 @@
 /* CSS copied from https://developers.google.com/identity/branding-guidelines
-with Theme: Light; Shape: Pill */
+with Theme: Light; Shape: Pill 
+The only modification is using `margin-inline-end` instead of `margin-right` to support RTL languages
+*/
 
 .gsi-material-button {
   -moz-user-select: none;
