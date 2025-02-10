@@ -13,7 +13,7 @@ interface IButtonParams {
     | "card-portrait"
     | "flexible"
     | "full"
-    | "google_auth"
+    | "google_sign_in"
     | "information"
     | "medium"
     | "navigation"
@@ -43,7 +43,7 @@ interface IButtonParams {
 
 interface IVariantMap {
   cardPortrait?: boolean;
-  googleAuth?: boolean;
+  googleSignIn?: boolean;
 }
 
 /**
@@ -104,7 +104,7 @@ export class TmplButtonComponent extends TemplateBaseComponent {
     const variantArray = variant.split(" ");
     return {
       cardPortrait: variantArray.includes("card-portrait"),
-      googleAuth: variantArray.includes("google_auth"),
+      googleSignIn: variantArray.includes("google_sign_in"),
     };
   }
 }
