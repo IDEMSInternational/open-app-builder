@@ -126,8 +126,12 @@ export class AuthService extends AsyncServiceBase {
   private addStorageEntry(auth_user?: IAuthUser) {
     if (auth_user) {
       this.localStorageService.setProtected("AUTH_USER_ID", auth_user.uid);
+      this.localStorageService.setProtected("AUTH_USER_DISPLAY_NAME", auth_user.displayName);
+      this.localStorageService.setProtected("AUTH_USER_PROFILE_IMAGE_URL", auth_user.photoUrl);
     } else {
       this.localStorageService.removeProtected("AUTH_USER_ID");
+      this.localStorageService.removeProtected("AUTH_USER_DISPLAY_NAME");
+      this.localStorageService.removeProtected("AUTH_USER_PROFILE_IMAGE_URL");
     }
   }
 }
