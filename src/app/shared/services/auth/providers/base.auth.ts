@@ -1,8 +1,8 @@
 import { Injector, signal } from "@angular/core";
 import { IAuthUser } from "../types";
 
-export class AuthProviderBase {
-  public authUser = signal<IAuthUser | null>(null);
+export class AuthProviderBase<TAuthUser = IAuthUser> {
+  public authUser = signal<TAuthUser | null>(null);
 
   public async initialise(injector: Injector) {}
 

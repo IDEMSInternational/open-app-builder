@@ -1,13 +1,15 @@
 import { Injectable, Injector } from "@angular/core";
-import { FirebaseAuthentication } from "@capacitor-firebase/authentication";
+import { FirebaseAuthentication, User } from "@capacitor-firebase/authentication";
 import { getAuth } from "firebase/auth";
 import { FirebaseService } from "../../firebase/firebase.service";
 import { AuthProviderBase } from "./base.auth";
 
+export type FirebaseAuthUser = User;
+
 @Injectable({
   providedIn: "root",
 })
-export class FirebaseAuthProvider extends AuthProviderBase {
+export class FirebaseAuthProvider extends AuthProviderBase<User> {
   public override async initialise(injector: Injector) {
     const firebaseService = injector.get(FirebaseService);
     // TODO - is service required here?
