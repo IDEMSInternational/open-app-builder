@@ -4,4 +4,6 @@ export type IAuthProvider = IDeploymentConfig["auth"]["provider"];
 
 export interface IAuthUser {
   uid: string;
+  displayName: string;
+  photoUrl: string;
 }
