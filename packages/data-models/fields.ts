@@ -28,3 +28,9 @@ enum PROTECTED_FIELDS {
 export const getProtectedFieldName = (key: IProtectedFieldName) => `_${PROTECTED_FIELDS[key]}`;
 
 export type IProtectedFieldName = keyof typeof PROTECTED_FIELDS;
+
+/** A list of protected fields that should not be synced to the server */
+export const EXCLUDED_FIELDS: IProtectedFieldName[] = [
+  "AUTH_USER_DISPLAY_NAME",
+  "AUTH_USER_PROFILE_IMAGE_URL",
+];
