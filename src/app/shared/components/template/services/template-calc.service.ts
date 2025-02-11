@@ -1,4 +1,4 @@
-import { IFunctionHashmap, IConstantHashmap } from "src/app/shared/utils";
+import { IFunctionHashmap, IConstantHashmap, evaluateJSExpression } from "src/app/shared/utils";
 import { Injectable } from "@angular/core";
 import { Device, DeviceInfo } from "@capacitor/device";
 import * as date_fns from "date-fns";
@@ -7,6 +7,22 @@ import { AsyncServiceBase } from "src/app/shared/services/asyncService.base";
 import { PLH_CALC_FUNCTIONS } from "./template-calc-functions/plh-calc-functions";
 import { CORE_CALC_FUNCTIONS } from "./template-calc-functions/core-calc-functions";
 import { LocalStorageService } from "src/app/shared/services/local-storage/local-storage.service";
+import type { FlowTypes } from "packages/data-models";
+
+/** Window context with additional calc service properties attached */
+type IWindowWithCalc = Window & {
+  /**
+   * @deprecated 0.18.0 Prefer to call directly instead of via window
+   *
+   * ✔️ `@calc(pick_random([1,2,3]))`
+   * ❌ `@calc(window.calc.pick_random([1,2,3]))`
+   *
+   * All user-defined calc available globally
+   * */
+  calc: IFunctionHashmap;
+  /** Specific data_fns lib available globally */
+  date_fns: typeof date_fns;
+};
 
 @Injectable({ providedIn: "root" })
 export class TemplateCalcService extends AsyncServiceBase {
@@ -27,6 +43,11 @@ export class TemplateCalcService extends AsyncServiceBase {
     super("TemplateCalc");
     this.registerInitFunction(this.initialise);
   }
+
+  private get windowWithCalc() {
+    return window as any as IWindowWithCalc;
+  }
+
   private async initialise() {
     this.ensureSyncServicesReady([this.localStorageService]);
     await this.ensureAsyncServicesReady([this.dataEvaluationService]);
@@ -41,8 +62,21 @@ export class TemplateCalcService extends AsyncServiceBase {
       this.calcContext = this.generateCalcContext();
     }
     // Assign all calc functions also to window object to allow calling between functions
-    (window as any).calc = this.calcFunctions;
+    this.windowWithCalc.calc = this.calcFunctions;
     return this.calcContext;
+  }
+
+  /**
+   * Evaluate inner expression provided by `@calc(...)` expression
+   * The expression is evaluated as JS, with additional access to global constants, function and
+   * evaluation context variables
+   * */
+  public evaluate(expression: string, evalContext: FlowTypes.TemplateRowEvalContext = {}) {
+    const calcContext = this.getCalcContext();
+    const calcExpression = expression.replace(/@/gi, "this.");
+    const { thisCtxt, globalFunctions, globalConstants } = calcContext;
+    const mergedContext = { ...thisCtxt, ...evalContext };
+    return evaluateJSExpression(calcExpression, mergedContext, globalFunctions, globalConstants);
   }
 
   /**
@@ -91,9 +125,7 @@ export class TemplateCalcService extends AsyncServiceBase {
    * ```
    */
   private generateGlobalConstants() {
-    const globalConstants: IConstantHashmap = {
-      test_var: "hello",
-    };
+    const globalConstants: IConstantHashmap = {};
     return globalConstants;
   }
 
@@ -105,7 +137,7 @@ export class TemplateCalcService extends AsyncServiceBase {
    * ```
    */
   private addWindowCalcFunctions() {
-    (window as any).date_fns = date_fns;
+    this.windowWithCalc.date_fns = date_fns;
   }
 }
 
@@ -116,6 +148,8 @@ export class TemplateCalcService extends AsyncServiceBase {
  */
 export interface ICalcContext {
   thisCtxt: {
+    /** assign `this.calc` variable to handle replaced `this.calc(...)` expressions */
+    calc: (v) => any;
     [name: string]: any;
   };
   globalFunctions: IFunctionHashmap;
