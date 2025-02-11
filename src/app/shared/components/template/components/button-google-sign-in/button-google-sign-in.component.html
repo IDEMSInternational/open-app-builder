@@ -1,6 +1,6 @@
 <!-- HTML copied from https://developers.google.com/identity/branding-guidelines
  with Theme: Light; Shape: Pill -->
-<button class="gsi-material-button">
+<button class="gsi-material-button" (click)="handleClick()">
   <div class="gsi-material-button-state"></div>
   <div class="gsi-material-button-content-wrapper">
     <div class="gsi-material-button-icon">
@@ -30,7 +30,7 @@
         <path fill="none" d="M0 0h48v48H0z"></path>
       </svg>
     </div>
-    <span class="gsi-material-button-contents">{{ value }}</span>
-    <span style="display: none">{{ value }}</span>
+    <span class="gsi-material-button-contents">{{ value() }}</span>
+    <span style="display: none">{{ value() }}</span>
   </div>
 </button>
