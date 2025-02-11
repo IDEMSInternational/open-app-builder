@@ -1,9 +1,6 @@
 import type { IDeploymentConfig } from "packages/data-models";
+import type { FirebaseAuthUser } from "./providers/firebase.auth";
 
 export type IAuthProvider = IDeploymentConfig["auth"]["provider"];
 
-export interface IAuthUser {
-  uid: string;
-  displayName: string;
-  photoUrl: string;
-}
+export type IAuthUser = { uid: string } | FirebaseAuthUser;
