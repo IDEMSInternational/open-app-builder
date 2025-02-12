@@ -139,26 +139,29 @@ export class TmplMapComponent extends TemplateBaseComponent implements AfterView
     // HACK: ensure that exactly one scale is visible for each group of scale IDs
     // TODO: should be handled by single a top-level slider for the whole grouop,
     // rather than one associated with a specific layer
-    effect(() => {
-      const visibleScaleIds = this.visibleScaleIds();
-      const allLayers = this.getAllLayers();
-      for (const id of visibleScaleIds) {
-        const layersWithScaleId = allLayers.filter((l) => l?.get("scaleId") === id);
-        let firstVisibleLayerFound = false;
-        layersWithScaleId.forEach((layer) => {
-          if (layer.getVisible() === true && !firstVisibleLayerFound) {
-            const scaleAlreadyVisible = layer.get("showScale");
-            layer.set("showScale", true);
-            if (!scaleAlreadyVisible) {
-              this.handleSliderChange(layer);
+    effect(
+      () => {
+        const visibleScaleIds = this.visibleScaleIds();
+        const allLayers = this.getAllLayers();
+        for (const id of visibleScaleIds) {
+          const layersWithScaleId = allLayers.filter((l) => l?.get("scaleId") === id);
+          let firstVisibleLayerFound = false;
+          layersWithScaleId.forEach((layer) => {
+            if (layer.getVisible() === true && !firstVisibleLayerFound) {
+              const scaleAlreadyVisible = layer.get("showScale");
+              layer.set("showScale", true);
+              if (!scaleAlreadyVisible) {
+                this.handleSliderChange(layer);
+              }
+              firstVisibleLayerFound = true;
+            } else {
+              layer.set("showScale", false);
             }
-            firstVisibleLayerFound = true;
-          } else {
-            layer.set("showScale", false);
-          }
-        });
-      }
-    });
+          });
+        }
+      },
+      { allowSignalWrites: true }
+    );
   }
 
   ngAfterViewInit() {
@@ -239,6 +242,7 @@ export class TmplMapComponent extends TemplateBaseComponent implements AfterView
    */
   public handleSliderChange(mapLayer: BaseLayer, event?: ChangeContext) {
     const scaleId = mapLayer.get("scaleId") || mapLayer.get("id");
+    if (!this.sliderValues[scaleId]) return;
     const { min: lower, max: upper } = this.sliderValues[scaleId];
 
     // Only works on vector layers
