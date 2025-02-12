@@ -51,6 +51,21 @@ describe("LocalStorageService", () => {
     expect(service.isProtected("rp-contact-field._app_user_id")).toEqual(true);
   });
 
+  it("sets and gets private entries", () => {
+    service.setProtected("AUTH_USER_DISPLAY_NAME", "private_user_name");
+    expect(service.getProtected("AUTH_USER_DISPLAY_NAME")).toEqual("private_user_name");
+    expect(localStorage.getItem("rp-contact-field._auth_user_display_name")).toEqual(
+      "private_user_name"
+    );
+  });
+
+  it("omits private entries from getAll method", () => {
+    service.setProtected("AUTH_USER_DISPLAY_NAME", "private_user_name");
+    const res = service.getAll();
+    console.log("res", res);
+    expect(res).toEqual({});
+  });
+
   // TODO - currently deprecated but not throwing error
   // it("prevents setting protected fields", () => {});
 });
