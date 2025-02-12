@@ -60,6 +60,7 @@ export class AuthService extends AsyncServiceBase {
         const collectionData = profiles.map((p) => ({ ...p, id: p.app_user_id }));
         await this.dynamicDataService.ready();
         await this.dynamicDataService.setInternalCollection("auth_profiles", collectionData);
+        console.log("[Auth] Restore Profiles", profiles);
       }
     });
   }
