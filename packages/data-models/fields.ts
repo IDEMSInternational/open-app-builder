@@ -24,7 +24,7 @@ enum PROTECTED_FIELDS {
 
 /** Private fields are protected and will not be synced to the server */
 enum PRIVATE_FIELDS {
-  AUTH_USER_NAME = "auth_user_display_name",
+  AUTH_USER_NAME = "auth_user_name",
   AUTH_USER_FAMILY_NAME = "auth_user_family_name",
   AUTH_USER_GIVEN_NAME = "auth_user_given_name",
   AUTH_USER_PICTURE = "auth_user_picture",
@@ -34,7 +34,7 @@ const PRIVATE_FIELDS_INVERSE_MAPPING = Object.fromEntries(
   Object.entries(PRIVATE_FIELDS).map(([k, v]) => [v, k])
 );
 
-/** Check whether a string represents the value from a private field, e.g. 'auth_user_display_name' */
+/** Check whether a string represents the value from a private field, e.g. 'auth_user_name' */
 export const isPrivateFieldName = (key: string) => key in PRIVATE_FIELDS_INVERSE_MAPPING;
 
 /** Whenever retrieving a protected field make sure to include underscore prefix */
