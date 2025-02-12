@@ -12,6 +12,7 @@ import { toObservable } from "@angular/core/rxjs-interop";
 import { ServerService } from "../server/server.service";
 import { HttpClient } from "@angular/common/http";
 import type { IServerUser } from "../server/server.types";
+import { DynamicDataService } from "../dynamic-data/dynamic-data.service";
 
 @Injectable({
   providedIn: "root",
@@ -30,7 +31,8 @@ export class AuthService extends AsyncServiceBase {
     private injector: Injector,
     private templateService: TemplateService,
     private serverService: ServerService,
-    private http: HttpClient
+    private http: HttpClient,
+    private dynamicDataService: DynamicDataService
   ) {
     super("Auth");
     this.provider = getAuthProvider(this.config.provider);
@@ -51,6 +53,15 @@ export class AuthService extends AsyncServiceBase {
       },
       { allowSignalWrites: true }
     );
+    // expose restore profile data to authoring via `app_auth_profiles` internal collection
+    effect(async () => {
+      const profiles = this.restoreProfiles();
+      if (profiles.length > 0) {
+        const collectionData = profiles.map((p) => ({ ...p, id: p.app_user_id }));
+        await this.dynamicDataService.ready();
+        await this.dynamicDataService.setInternalCollection("auth_profiles", collectionData);
+      }
+    });
   }
 
   private get config() {
