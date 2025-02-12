@@ -141,6 +141,8 @@ export class AuthService extends AsyncServiceBase {
     } else {
       this.localStorageService.removeProtected("AUTH_USER_ID");
       this.localStorageService.removeProtected("AUTH_USER_DISPLAY_NAME");
+      this.localStorageService.removeProtected("AUTH_USER_FAMILY_NAME");
+      this.localStorageService.removeProtected("AUTH_USER_GIVEN_NAME");
       this.localStorageService.removeProtected("AUTH_USER_PROFILE_IMAGE_URL");
     }
   }
