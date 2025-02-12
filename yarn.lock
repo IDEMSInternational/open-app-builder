@@ -14957,6 +14957,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"fake-indexeddb@npm:^6.0.0":
+  version: 6.0.0
+  resolution: "fake-indexeddb@npm:6.0.0"
+  checksum: c55bb1f54c1c910a6ca9e18b376ebecc51a29eceb829550d415aa34c2e246730a76dd35dc4fd6d8ae5c5790b9b4f180859e9457bcb73f2d167cc87aa04b6201e
+  languageName: node
+  linkType: hard
+
 "fancy-log@npm:^2.0.0":
   version: 2.0.0
   resolution: "fancy-log@npm:2.0.0"
@@ -15688,6 +15695,7 @@ __metadata:
     eslint-plugin-prefer-arrow: 1.2.3
     eslint-plugin-promise: ^6.1.1
     extract-math: ^1.2.3
+    fake-indexeddb: ^6.0.0
     file-saver: ^2.0.5
     firebase: ^10.9.0
     firebase-tools: ^13.6.0
