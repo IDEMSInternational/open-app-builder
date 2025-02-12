@@ -22,7 +22,9 @@ export class FirebaseAuthProvider extends AuthProviderBase<User> {
   }
 
   public async signInWithGoogle() {
-    await FirebaseAuthentication.signInWithGoogle();
+    const result = await FirebaseAuthentication.signInWithGoogle();
+    const accessToken = result?.credential?.accessToken;
+    await this.getGoogleUserInfo(accessToken);
     return this.authUser();
   }
 

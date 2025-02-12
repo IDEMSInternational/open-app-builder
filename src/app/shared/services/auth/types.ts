@@ -3,4 +3,10 @@ import type { FirebaseAuthUser } from "./providers/firebase.auth";
 
 export type IAuthProvider = IDeploymentConfig["auth"]["provider"];
 
-export type IAuthUser = { uid: string } | FirebaseAuthUser;
+export type IAuthUser =
+  | {
+      uid: string;
+      given_name?: string;
+      family_name?: string;
+    }
+  | FirebaseAuthUser;
