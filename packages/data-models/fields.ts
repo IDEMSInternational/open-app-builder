@@ -15,6 +15,8 @@ enum PROTECTED_FIELDS {
   APP_USER_ID = "app_user_id",
   APP_VERSION = "app_version",
   AUTH_USER_DISPLAY_NAME = "auth_user_display_name",
+  AUTH_USER_FAMILY_NAME = "auth_user_family_name",
+  AUTH_USER_GIVEN_NAME = "auth_user_given_name",
   AUTH_USER_ID = "auth_user_id",
   AUTH_USER_PROFILE_IMAGE_URL = "auth_user_profile_image_url",
   CONTENT_VERSION = "content_version",
@@ -32,5 +34,7 @@ export type IProtectedFieldName = keyof typeof PROTECTED_FIELDS;
 /** A list of protected fields that should not be synced to the server */
 export const EXCLUDED_FIELDS: IProtectedFieldName[] = [
   "AUTH_USER_DISPLAY_NAME",
+  "AUTH_USER_FAMILY_NAME",
+  "AUTH_USER_GIVEN_NAME",
   "AUTH_USER_PROFILE_IMAGE_URL",
 ];
