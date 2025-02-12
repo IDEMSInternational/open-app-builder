@@ -210,6 +210,19 @@ export class DynamicDataService extends AsyncServiceBase {
     return this.db.getCollection(collectionName)?.count().exec();
   }
 
+  /**
+   * Set the data for an internal data collection
+   * All internal collections are prefixed by `app_` and are only stored ephemerally (not persisted)
+   * Data that is set will override any pre-existing data
+   **/
+  public async setInternalCollection(name: string, data: any[]) {
+    const { collectionName } = await this.ensureCollection("data_list", `app_${name}`);
+    const collection = this.db.getCollection(collectionName);
+    const docs = await collection.find().exec();
+    await collection.bulkRemove(docs.map((d) => d.id));
+    await this.db.bulkInsert(collectionName, data);
+  }
+
   /** Ensure a collection exists, creating if not and populating with corresponding list data */
   private async ensureCollection(flow_type: FlowTypes.FlowType, flow_name: string) {
     const collectionName = this.normaliseCollectionName(flow_type, flow_name);
@@ -244,6 +257,11 @@ export class DynamicDataService extends AsyncServiceBase {
    * compatible in case of schema changes
    * */
   private async prepareInitialData(flow_type: FlowTypes.FlowType, flow_name: string) {
+    // Internal `app_` tables are in-memory only and do not have preloaded data or schema
+    if (flow_name.startsWith("app_")) {
+      return { data: [], schema: { ...REACTIVE_SCHEMA_BASE } };
+    }
+
     const flowData = await this.appDataService.getSheet<FlowTypes.Data_list>(flow_type, flow_name);
     if (!flowData || flowData.rows.length === 0) {
       throw new Error(`No data exists for collection [${flow_name}], cannot initialise`);
