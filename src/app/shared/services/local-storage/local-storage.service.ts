@@ -104,7 +104,7 @@ export class LocalStorageService extends SyncServiceBase {
   /** Check if a field name has been marked as private */
   isPrivate(key: string) {
     if (key.startsWith(this.prefix)) {
-      key = key.replace(`${this.prefix}.`, "");
+      key = key.replace(`${this.prefix}._`, "");
     }
     return isPrivateFieldName(key);
   }

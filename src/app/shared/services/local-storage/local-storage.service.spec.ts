@@ -60,7 +60,6 @@ describe("LocalStorageService", () => {
   it("omits private entries from getAll method", () => {
     service.setProtected("AUTH_USER_NAME", "private_user_name");
     const res = service.getAll();
-    console.log("res", res);
     expect(res).toEqual({});
   });
 
