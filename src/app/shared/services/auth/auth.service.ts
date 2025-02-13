@@ -36,7 +36,7 @@ export class AuthService extends AsyncServiceBase {
     this.provider = getAuthProvider(this.config.provider);
     this.registerInitFunction(this.initialise);
     effect(
-      async (onCleanup) => {
+      async () => {
         const authUser = this.provider.authUser();
         if (authUser) {
           this.addStorageEntry(authUser);
@@ -48,12 +48,6 @@ export class AuthService extends AsyncServiceBase {
           this.restoreProfiles.set([]);
           this.clearUserData();
         }
-
-        // before new user is updated ensure any old data is cleared
-        // should also run when effect is destroyed
-        onCleanup(() => {
-          this.clearUserData();
-        });
       },
       { allowSignalWrites: true }
     );
