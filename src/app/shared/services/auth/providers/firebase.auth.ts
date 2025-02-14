@@ -27,11 +27,10 @@ export class FirebaseAuthProvider extends AuthProviderBase {
     const { user, additionalUserInfo } = await FirebaseAuthentication.signInWithGoogle();
     if (user) {
       // NOTE - additionalUserInfo is only returned on first signIn so persist to localStorage
-      // for access on automated sign-in following restart
-      const { profile } = additionalUserInfo;
-      if (profile) {
-        localStorage.setItem(AUTH_METADATA_FIELD, JSON.stringify(profile));
-      }
+      // for access on automated sign-in following restart. Use fallback empty object if null
+      const { profile = {} } = additionalUserInfo;
+      localStorage.setItem(AUTH_METADATA_FIELD, JSON.stringify(profile));
+
       this.setAuthUser(user, profile);
     }
     return this.authUser();
@@ -44,7 +43,7 @@ export class FirebaseAuthProvider extends AuthProviderBase {
     return this.authUser();
   }
 
-  private setAuthUser(user: User, profile: Partial<IAuthUser> = {}) {
+  private setAuthUser(user: User, profile: Partial<IAuthUser>) {
     const authUser: IAuthUser = {
       ...profile,
       uid: user.uid,
