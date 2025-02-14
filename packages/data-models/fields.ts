@@ -14,11 +14,7 @@ enum PROTECTED_FIELDS {
   APP_UPDATE_DOWNLOADED = "app_update_downloaded",
   APP_USER_ID = "app_user_id",
   APP_VERSION = "app_version",
-  AUTH_USER_DISPLAY_NAME = "auth_user_display_name",
-  AUTH_USER_FAMILY_NAME = "auth_user_family_name",
-  AUTH_USER_GIVEN_NAME = "auth_user_given_name",
   AUTH_USER_ID = "auth_user_id",
-  AUTH_USER_PROFILE_IMAGE_URL = "auth_user_profile_image_url",
   CONTENT_VERSION = "content_version",
   DEPLOYMENT_NAME = "deployment_name",
   FEEDBACK_SELECTED_TEXT = "feedback_selected_text",
@@ -26,15 +22,25 @@ enum PROTECTED_FIELDS {
   SERVER_SYNC_LATEST = "server_sync_latest",
 }
 
+/** Private fields are protected and will not be synced to the server */
+enum PRIVATE_FIELDS {
+  AUTH_USER_NAME = "auth_user_name",
+  AUTH_USER_FAMILY_NAME = "auth_user_family_name",
+  AUTH_USER_GIVEN_NAME = "auth_user_given_name",
+  AUTH_USER_PICTURE = "auth_user_picture",
+}
+
+const PRIVATE_FIELDS_INVERSE_MAPPING = Object.fromEntries(
+  Object.entries(PRIVATE_FIELDS).map(([k, v]) => [v, k])
+);
+
+/** Check whether a string represents the value from a private field, e.g. 'auth_user_name' */
+export const isPrivateFieldName = (key: string) => key in PRIVATE_FIELDS_INVERSE_MAPPING;
+
 /** Whenever retrieving a protected field make sure to include underscore prefix */
-export const getProtectedFieldName = (key: IProtectedFieldName) => `_${PROTECTED_FIELDS[key]}`;
+export const getProtectedFieldName = (key: IProtectedFieldName) => {
+  const mappedName = PRIVATE_FIELDS[key] || PROTECTED_FIELDS[key];
+  return `_${mappedName}`;
+};
 
-export type IProtectedFieldName = keyof typeof PROTECTED_FIELDS;
-
-/** A list of protected fields that should not be synced to the server */
-export const EXCLUDED_FIELDS: IProtectedFieldName[] = [
-  "AUTH_USER_DISPLAY_NAME",
-  "AUTH_USER_FAMILY_NAME",
-  "AUTH_USER_GIVEN_NAME",
-  "AUTH_USER_PROFILE_IMAGE_URL",
-];
+export type IProtectedFieldName = keyof typeof PROTECTED_FIELDS | keyof typeof PRIVATE_FIELDS;

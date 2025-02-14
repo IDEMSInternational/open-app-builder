@@ -38,15 +38,15 @@ export class AuthService extends AsyncServiceBase {
     effect(
       async () => {
         const authUser = this.provider.authUser();
-        this.addStorageEntry(authUser);
-
         if (authUser) {
+          this.addStorageEntry(authUser);
           // perform immediate sync if user signed in to ensure data backed up
           await this.serverService.syncUserData();
           await this.checkForUserRestore(authUser);
         } else {
           // If signed out or no auth user reset previous data and return
           this.restoreProfiles.set([]);
+          this.clearUserData();
         }
       },
       { allowSignalWrites: true }
@@ -123,27 +123,19 @@ export class AuthService extends AsyncServiceBase {
   }
 
   /** Keep id of auth user info in contact fields for db lookup*/
-  private addStorageEntry(auth_user?: IAuthUser) {
-    if (auth_user) {
-      this.localStorageService.setProtected("AUTH_USER_ID", auth_user.uid);
-      if ("displayName" in auth_user) {
-        this.localStorageService.setProtected("AUTH_USER_DISPLAY_NAME", auth_user.displayName);
-      }
-      if ("photoUrl" in auth_user) {
-        this.localStorageService.setProtected("AUTH_USER_PROFILE_IMAGE_URL", auth_user.photoUrl);
-      }
-      if ("family_name" in auth_user) {
-        this.localStorageService.setProtected("AUTH_USER_FAMILY_NAME", auth_user.family_name);
-      }
-      if ("given_name" in auth_user) {
-        this.localStorageService.setProtected("AUTH_USER_GIVEN_NAME", auth_user.given_name);
-      }
-    } else {
-      this.localStorageService.removeProtected("AUTH_USER_ID");
-      this.localStorageService.removeProtected("AUTH_USER_DISPLAY_NAME");
-      this.localStorageService.removeProtected("AUTH_USER_FAMILY_NAME");
-      this.localStorageService.removeProtected("AUTH_USER_GIVEN_NAME");
-      this.localStorageService.removeProtected("AUTH_USER_PROFILE_IMAGE_URL");
-    }
+  private addStorageEntry(auth_user: IAuthUser) {
+    this.localStorageService.setProtected("AUTH_USER_ID", auth_user.uid);
+    this.localStorageService.setProtected("AUTH_USER_NAME", auth_user.name || "");
+    this.localStorageService.setProtected("AUTH_USER_FAMILY_NAME", auth_user.family_name || "");
+    this.localStorageService.setProtected("AUTH_USER_GIVEN_NAME", auth_user.given_name || "");
+    this.localStorageService.setProtected("AUTH_USER_PICTURE", auth_user.picture || "");
+  }
+
+  private clearUserData() {
+    this.localStorageService.removeProtected("AUTH_USER_ID");
+    this.localStorageService.removeProtected("AUTH_USER_NAME");
+    this.localStorageService.removeProtected("AUTH_USER_FAMILY_NAME");
+    this.localStorageService.removeProtected("AUTH_USER_GIVEN_NAME");
+    this.localStorageService.removeProtected("AUTH_USER_PICTURE");
   }
 }
