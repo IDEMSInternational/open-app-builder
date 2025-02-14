@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { IProtectedFieldName, getProtectedFieldName } from "data-models";
+import { IProtectedFieldName, getProtectedFieldName, isPrivateFieldName } from "data-models";
 import { SyncServiceBase } from "../syncService.base";
 
 @Injectable({
@@ -67,10 +67,12 @@ export class LocalStorageService extends SyncServiceBase {
     }
   }
 
+  /** Retrieve all key-values pairs that have been stored by app to localStorage, excluding private */
   getAll() {
     const values = {};
     Object.keys(localStorage)
       .filter((k) => k.startsWith(this.prefix))
+      .filter((k) => !this.isPrivate(k))
       .forEach((k) => (values[k] = localStorage.getItem(k)));
     return values;
   }
@@ -97,5 +99,13 @@ export class LocalStorageService extends SyncServiceBase {
       key = key.replace(`${this.prefix}.`, "");
     }
     return key.startsWith("_");
+  }
+
+  /** Check if a field name has been marked as private */
+  isPrivate(key: string) {
+    if (key.startsWith(this.prefix)) {
+      key = key.replace(`${this.prefix}._`, "");
+    }
+    return isPrivateFieldName(key);
   }
 }

@@ -1,7 +1,7 @@
 import { HttpClient, HttpErrorResponse } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { DeviceInfo, Device } from "@capacitor/device";
-import { IAppConfig, getProtectedFieldName, EXCLUDED_FIELDS } from "data-models";
+import { IAppConfig, getProtectedFieldName } from "data-models";
 import { interval } from "rxjs";
 import { throwError } from "rxjs";
 import { environment } from "src/environments/environment";
@@ -70,8 +70,7 @@ export class ServerService extends SyncServiceBase {
       this.app_user_id = uuid;
     }
     console.log("[SERVER] sync data");
-    const all_contact_fields = this.localStorageService.getAll();
-    const contact_fields = this.removeExcludedContactFields(all_contact_fields);
+    const contact_fields = this.localStorageService.getAll();
 
     const dynamic_data = await this.dynamicDataService.getState();
 
@@ -115,15 +114,6 @@ export class ServerService extends SyncServiceBase {
           (err) => resolve(null)
         );
     });
-  }
-
-  /** Remove any protected fields that should not be synced */
-  private removeExcludedContactFields(contactFields: {}) {
-    const { prefix } = this.localStorageService;
-    EXCLUDED_FIELDS.forEach(
-      (field) => delete contactFields[`${prefix}.${getProtectedFieldName(field)}`]
-    );
-    return contactFields;
   }
 
   private handleError(error: HttpErrorResponse) {
