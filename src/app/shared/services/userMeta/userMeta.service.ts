@@ -77,6 +77,9 @@ export class UserMetaService extends AsyncServiceBase {
 
   /** Import existing user contact fields and replace current user */
   private async importUser(id: string) {
+    if (!id) {
+      throw new Error(`[User Import] no id provided`);
+    }
     try {
       // TODO - get type-safe return types using openapi http client
       const profile = await firstValueFrom(
@@ -87,7 +90,7 @@ export class UserMetaService extends AsyncServiceBase {
         return;
       }
       const { contact_fields, dynamic_data } = profile as any;
-      console.log("[User Import]", { contact_fields, dynamic_data });
+      console.log("[User Import]", profile);
       await this.importUserContactFields(contact_fields);
       await this.importUserDynamicData(dynamic_data);
     } catch (error) {
