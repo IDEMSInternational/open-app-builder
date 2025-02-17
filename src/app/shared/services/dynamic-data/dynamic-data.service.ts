@@ -212,11 +212,11 @@ export class DynamicDataService extends AsyncServiceBase {
 
   /**
    * Set the data for an internal data collection
-   * All internal collections are prefixed by `app_` and are only stored ephemerally (not persisted)
+   * All internal collections are prefixed by `_app_` and are only stored ephemerally (not persisted)
    * Data that is set will override any pre-existing data
    **/
   public async setInternalCollection(name: string, data: any[]) {
-    const { collectionName } = await this.ensureCollection("data_list", `app_${name}`);
+    const { collectionName } = await this.ensureCollection("data_list", `_${name}`);
     const collection = this.db.getCollection(collectionName);
     const docs = await collection.find().exec();
     await collection.bulkRemove(docs.map((d) => d.id));
@@ -257,8 +257,8 @@ export class DynamicDataService extends AsyncServiceBase {
    * compatible in case of schema changes
    * */
   private async prepareInitialData(flow_type: FlowTypes.FlowType, flow_name: string) {
-    // Internal `app_` tables are in-memory only and do not have preloaded data or schema
-    if (flow_name.startsWith("app_")) {
+    // Internal tables, prefixed by `_` are in-memory read-only and do not have preloaded data or schema
+    if (flow_name.startsWith("_")) {
       return { data: [], schema: { ...REACTIVE_SCHEMA_BASE } };
     }
 
