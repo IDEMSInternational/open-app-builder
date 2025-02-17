@@ -3,15 +3,21 @@ import { ICalcContext, TemplateCalcService } from "./template-calc.service";
 import { MockDataEvaluationService } from "src/app/shared/services/data/data-evaluation.service.mock.spec";
 
 export class MockTemplateCalcService extends TemplateCalcService {
-  constructor() {
+  constructor(mockCalcContext: Partial<ICalcContext> = {}) {
     super(new MockDataEvaluationService(), new MockLocalStorageService());
-  }
-
-  public getCalcContext(): ICalcContext {
-    return {
-      thisCtxt: {},
-      globalConstants: {},
-      globalFunctions: {},
+    // merge any mock calc context with defaults
+    super["calcContext"] = {
+      thisCtxt: {
+        // ensure default calc included as allows `@calc(...)` to be triggered via `this.calc(...)`
+        calc: (v: any) => v,
+        ...mockCalcContext.thisCtxt,
+      },
+      globalConstants: {
+        ...mockCalcContext.globalConstants,
+      },
+      globalFunctions: {
+        ...mockCalcContext.globalFunctions,
+      },
     };
   }
 }
