@@ -1073,32 +1073,6 @@ body[data-theme="plh_kids_kw"] {
       }
     }
   }
-  // Radio Button Grid
-  plh-radio-button-grid {
-    .radio-buttons {
-      .item {
-        border: 1px solid var(--ion-color-gray-100);
-        box-shadow: none !important;
-        border-radius: var(--ion-border-radius-small);
-        .item-image-container {
-          padding: 16px;
-        }
-      }
-    }
-    .radio-buttons[data-variant="flex"] {
-      .item {
-        background-color: var(--color-accent-orange-90) !important;
-        &[data-selected="true"] {
-          background: var(--color-accent-orange-80) !important;
-          border: 2px solid #ff6f3a !important;
-          transition: 0.2s linear !important;
-        }
-        .item-image-container {
-          padding: 0px;
-        }
-      }
-    }
-  }
 
   // Completion Modal
   plh-completion-modal {
