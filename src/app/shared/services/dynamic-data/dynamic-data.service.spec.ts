@@ -143,6 +143,13 @@ describe("DynamicDataService", () => {
     ).toBeRejectedWithError();
   });
 
+  it("supports internal collections", async () => {
+    await service.setInternalCollection("mock", [{ id: "1", string: "hello" }]);
+    const obs = await service.query$<any>("data_list", "_mock");
+    const data = await firstValueFrom(obs);
+    expect(data).toEqual([{ id: "1", string: "hello" }]);
+  });
+
   // QA
   it("prevents query of non-existent data lists", async () => {
     let errMsg: string;
