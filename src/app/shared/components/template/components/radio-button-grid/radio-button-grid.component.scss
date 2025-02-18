@@ -1,13 +1,12 @@
-// @use "/src/theme/mixins";
-$item-width: 140px;
-$item-height: 140px;
-
+$background: var(--radio-group-background, white);
 $background-selected: var(
   --radio-group-background-selected,
   var(--gradient-primary-light-vertical)
 );
-$border: var(--border-standard);
-$border-radius: var(--ion-border-radius-standard);
+$border: var(--radio-group-border, var(--border-standard));
+$border-selected: var(--radio-group-border-selected, var(--border-standard));
+$border-radius: var(--radio-group-border-radius, var(--ion-border-radius-standard));
+$box-shadow: var(--radio-group-box-shadow, var(--ion-default-box-shadow));
 $text-size: var(--radio-button-font-size, 1.25rem);
 $text-color: var(--radio-button-font-color, var(--ion-color-primary));
 
@@ -16,15 +15,17 @@ $text-color: var(--radio-button-font-color, var(--ion-color-primary));
 }
 .item {
   border: $border;
-  border-radius: 15px;
+  border-radius: $border-radius;
   text-align: center;
   padding: 8px;
-  background: white;
+  background: $background;
   cursor: pointer;
-  box-shadow: var(--ion-default-box-shadow);
+  box-shadow: $box-shadow;
 }
 .item[data-selected="true"] {
   background: $background-selected;
+  border: $border-selected;
+  transition: 0.2s linear;
 }
 .item-text {
   font-size: $text-size;
@@ -81,66 +82,44 @@ $text-color: var(--radio-button-font-color, var(--ion-color-primary));
 }
 
 .radio-buttons[data-variant="flex"] {
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: space-evenly;
-  align-items: center;
+  $item-width: 140px;
+  $item-height: 140px;
 
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: stretch;
   width: 100%;
   .item {
-    background-color: var(--ion-color-secondary-200);
-    box-shadow: none;
-    border: none;
-
     width: $item-width;
-    height: $item-height;
-
+    min-height: $item-height;
+    background-color: $background;
+    box-shadow: $box-shadow;
+    border: $border;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-
-    overflow: hidden;
-    border-radius: var(--ion-border-radius-small);
-    padding: 0px;
     padding: 12px 8px;
     margin: 4px 0;
 
-    max-width: calc(8.5rem * 0.9);
-    max-height: calc(140px * 0.9);
-
     &[data-selected="true"] {
-      background-color: var(--ion-color-secondary-400);
-      border: 2px solid var(--ion-color-secondary-600);
-      padding: 8px 12px;
+      background-color: $background-selected;
+      border: $border-selected;
     }
-  }
-  .item-image-container {
-    margin-bottom: 4px;
-    img {
-      max-width: calc($item-width * 0.5);
-      min-width: calc($item-width * 0.42);
-      max-height: calc($item-width * 0.36);
-      object-fit: cover;
-      border-radius: calc($item-width * 0.02);
+    .item-image-container {
+      height: calc($item-height * 0.5);
+      margin-bottom: 8px;
+      img {
+        height: 100%;
+      }
     }
-  }
-  .item-text {
-    width: 100%;
-    display: flex;
-    align-items: flex-end;
-    justify-content: center;
-
-    height: calc($item-height * 0.32);
-    overflow: hidden;
-    p {
-      color: var(--ion-color-gray-900);
-      font-size: var(--font-size-text-small);
-      font-weight: var(--font-weight-medium);
-      text-align: center;
-      padding: 0px;
-      margin: 0px;
-      overflow: hidden;
+    .item-text {
+      p {
+        font-size: var(--font-size-text-small);
+        text-align: center;
+        margin: 0px;
+      }
     }
   }
 }
