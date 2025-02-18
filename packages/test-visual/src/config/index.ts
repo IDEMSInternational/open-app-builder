@@ -4,6 +4,8 @@ import dotenv from "dotenv";
 
 const env = loadEnvVars();
 
+const __dirname = import.meta.dirname;
+
 const ROOT_FOLDER = path.resolve(__dirname, "../../../../");
 const REPO_FOLDER = path.resolve(__dirname, "../../");
 
@@ -36,7 +38,7 @@ function loadEnvVars() {
   if (result.error) {
     // no env file, just use defaults
     const defaultEnv: IEnvVars = {
-      GH_REPO_NAME: "parenting-app-ui",
+      GH_REPO_NAME: "open-app-builder",
       GH_REPO_ORG: "IDEMSInternational",
     };
     return defaultEnv;

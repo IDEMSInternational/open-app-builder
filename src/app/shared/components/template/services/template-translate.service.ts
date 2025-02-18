@@ -6,6 +6,7 @@ import { AsyncServiceBase } from "src/app/shared/services/asyncService.base";
 import { AppDataService } from "src/app/shared/services/data/app-data.service";
 import { LocalStorageService } from "src/app/shared/services/local-storage/local-storage.service";
 import { FlowTypes } from "../models";
+import { isObjectLiteral } from "packages/shared/src/utils/object-utils";
 
 @Injectable({ providedIn: "root" })
 /**
@@ -105,7 +106,7 @@ export class TemplateTranslateService extends AsyncServiceBase {
    * Note - for improved efficiency rows with translatable data will usually have
    * a `translatedFields` property that lists keys for translation
    */
-  translateRow(row: FlowTypes.TemplateRow = {} as any) {
+  translateRow(row: FlowTypes.TemplateRow = {} as any): FlowTypes.TemplateRow {
     const translated = { ...row };
     // Case 1 - row with translate fields identified (e.g. template row)
     if (row._translations) {
@@ -119,8 +120,8 @@ export class TemplateTranslateService extends AsyncServiceBase {
     }
     // Case 2 - row value assigned from data list with translate fields
     const { value } = row;
-    if (value && value._translations) {
-      translated.value = this.translateRow(value);
+    if (value && isObjectLiteral(value) && (value as any)._translations) {
+      translated.value = this.translateRow(value as any) as any;
     }
     // Note - there is a third case when row value assigned from calculation (e.g. data list child field)
     // but this is currently manually handled in the template-variables service as required
