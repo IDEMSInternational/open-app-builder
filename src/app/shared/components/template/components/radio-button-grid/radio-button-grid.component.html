@@ -4,6 +4,7 @@
       class="item"
       (click)="handleItemClick(item)"
       [attr.data-selected]="item.name === _row.value"
+      [style.--min-item-width]="parameter_list.item_width"
     >
       @if (item.image) {
         <div class="item-image-container">
