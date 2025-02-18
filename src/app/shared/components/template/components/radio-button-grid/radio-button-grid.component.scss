@@ -82,7 +82,7 @@ $text-color: var(--radio-button-font-color, var(--ion-color-primary));
 }
 
 .radio-buttons[data-variant="flex"] {
-  $item-width: 140px;
+  $item-width: var(--min-item-width, 140px);
   $item-height: 140px;
 
   display: flex;
