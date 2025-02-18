@@ -2,20 +2,10 @@ import { TestBed } from "@angular/core/testing";
 
 import { ThemeService } from "./theme.service";
 import { LocalStorageService } from "src/app/shared/services/local-storage/local-storage.service";
-import { MockLocalStorageService } from "src/app/shared/services/local-storage/local-storage.service.spec";
+import { MockLocalStorageService } from "src/app/shared/services/local-storage/local-storage.service.mock.spec";
 import { AppConfigService } from "src/app/shared/services/app-config/app-config.service";
-import { MockAppConfigService } from "src/app/shared/services/app-config/app-config.service.spec";
+import { MockAppConfigService } from "src/app/shared/services/app-config/app-config.service.mock.spec";
 import { IAppConfig } from "packages/data-models";
-
-export class MockThemeService implements Partial<ThemeService> {
-  ready() {
-    return true;
-  }
-  setTheme() {}
-  getCurrentTheme() {
-    return "mock_theme";
-  }
-}
 
 const MOCK_APP_CONFIG: Partial<IAppConfig> = {
   APP_THEMES: {

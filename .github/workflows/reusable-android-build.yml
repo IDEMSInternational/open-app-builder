@@ -63,7 +63,6 @@ jobs:
           with:
             repository: "IDEMSInternational/open-app-builder.git"
             ref: ${{env.APP_CODE_BRANCH}}
-            lfs: true
   
         - name: Checkout parent repo if needed
           if: env.PARENT_DEPLOYMENT_REPO != ''
