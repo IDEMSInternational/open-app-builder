@@ -71,6 +71,7 @@ export class ServerService extends SyncServiceBase {
     }
     console.log("[SERVER] sync data");
     const contact_fields = this.localStorageService.getAll();
+
     const dynamic_data = await this.dynamicDataService.getState();
 
     // apply temp timestamp to contact fields to sync as latest

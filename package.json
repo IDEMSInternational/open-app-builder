@@ -157,6 +157,7 @@
     "eslint-plugin-n": "^15.7.0",
     "eslint-plugin-prefer-arrow": "1.2.3",
     "eslint-plugin-promise": "^6.1.1",
+    "fake-indexeddb": "^6.0.0",
     "firebase-tools": "^13.6.0",
     "husky": "^8.0.3",
     "jasmine-core": "~4.5.0",
@@ -166,6 +167,7 @@
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.0.0",
+    "karma-json-result-reporter": "^1.0.0",
     "lint-staged": "^15.2.2",
     "prettier": "^3.2.5",
     "typescript": "5.2.2"

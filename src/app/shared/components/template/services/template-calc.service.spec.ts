@@ -1,18 +1,91 @@
-import { ICalcContext, TemplateCalcService } from "./template-calc.service";
+import { TestBed } from "@angular/core/testing";
+import { TemplateCalcService } from "./template-calc.service";
+import { MockDataEvaluationService } from "src/app/shared/services/data/data-evaluation.service.mock.spec";
+import { MockLocalStorageService } from "src/app/shared/services/local-storage/local-storage.service.mock.spec";
+import { DataEvaluationService } from "src/app/shared/services/data/data-evaluation.service";
+import { LocalStorageService } from "src/app/shared/services/local-storage/local-storage.service";
+import { CORE_CALC_FUNCTIONS } from "./template-calc-functions/core-calc-functions";
+import { PLH_CALC_FUNCTIONS } from "./template-calc-functions/plh-calc-functions";
 
-export class MockTemplateCalcService implements Partial<TemplateCalcService> {
-  public async ready(): Promise<boolean> {
-    return true;
-  }
+/**
+ * Call standalone tests via:
+ * yarn ng test --include src/app/shared/components/template/services/template-calc.service.spec.ts
+ */
+describe("TemplateCalcService", () => {
+  let service: TemplateCalcService;
 
-  public getCalcContext(): ICalcContext {
-    return {
-      thisCtxt: {},
-      globalConstants: {},
-      globalFunctions: {},
-    };
-  }
-}
+  beforeEach(async () => {
+    TestBed.configureTestingModule({
+      providers: [
+        {
+          provide: DataEvaluationService,
+          useValue: new MockDataEvaluationService(),
+        },
+        {
+          provide: LocalStorageService,
+          useValue: new MockLocalStorageService(),
+        },
+      ],
+    });
+    service = TestBed.inject(TemplateCalcService);
+    await service.ready();
+  });
+
+  it("should be created", () => {
+    expect(service).toBeTruthy();
+  });
+
+  it("[Deprecated] populates window.calc with calc functions", () => {
+    const { calc } = service["windowWithCalc"];
+    expect(Object.keys(calc)).toEqual([
+      ...Object.keys(CORE_CALC_FUNCTIONS),
+      ...Object.keys(PLH_CALC_FUNCTIONS),
+    ]);
+  });
+
+  it("populates window.date_fns with date_fns lib", () => {
+    const { date_fns } = service["windowWithCalc"];
+    expect(date_fns.hoursToMilliseconds(1)).toEqual(3600000);
+  });
+
+  it("Gets calc context", () => {
+    const calcContext = service.getCalcContext();
+    const { globalConstants, globalFunctions, thisCtxt } = calcContext;
+    // global constants and functions are passed by service
+    expect(globalConstants).toEqual({});
+    // global functions should be same as window but without 3rd party
+    expect(Object.keys(globalFunctions)).toEqual([
+      ...Object.keys(CORE_CALC_FUNCTIONS),
+      ...Object.keys(PLH_CALC_FUNCTIONS),
+    ]);
+    // By default a handful of specific app data context fields always populated
+    expect(Object.keys(thisCtxt)).toEqual([
+      "calc",
+      "app_day",
+      "app_first_launch",
+      "app_user_id",
+      "device_info",
+    ]);
+  });
+
+  it("evaluates @calc statements", async () => {
+    const res = await service.evaluate("@calc(2*2)");
+    expect(res).toEqual(4);
+  });
+
+  it("evaluates @calc statements with window functions", async () => {
+    const res = await service.evaluate("@calc(window.date_fns.hoursToMilliseconds(1))", {});
+    expect(res).toEqual(3600000);
+  });
+
+  it("evaluates @calc statements with local context", async () => {
+    // NOTE - `@local` expression should be converted to `this.local` in template-parser
+    const res = await service.evaluate("@calc(this.local.test_string)", {
+      local: { test_string: "hello" },
+    });
+    expect(res).toEqual("hello");
+  });
+});
 
 /**
  * TODO - Add testing data and methods
