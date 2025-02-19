@@ -12,6 +12,7 @@ import { toObservable } from "@angular/core/rxjs-interop";
 import { ServerService } from "../server/server.service";
 import { HttpClient } from "@angular/common/http";
 import type { IServerUser } from "../server/server.types";
+import { DynamicDataService } from "../dynamic-data/dynamic-data.service";
 
 @Injectable({
   providedIn: "root",
@@ -30,7 +31,8 @@ export class AuthService extends AsyncServiceBase {
     private injector: Injector,
     private templateService: TemplateService,
     private serverService: ServerService,
-    private http: HttpClient
+    private http: HttpClient,
+    private dynamicDataService: DynamicDataService
   ) {
     super("Auth");
     this.provider = getAuthProvider(this.config.provider);
@@ -38,19 +40,29 @@ export class AuthService extends AsyncServiceBase {
     effect(
       async () => {
         const authUser = this.provider.authUser();
-        this.addStorageEntry(authUser);
-
         if (authUser) {
+          this.addStorageEntry(authUser);
           // perform immediate sync if user signed in to ensure data backed up
           await this.serverService.syncUserData();
           await this.checkForUserRestore(authUser);
         } else {
           // If signed out or no auth user reset previous data and return
           this.restoreProfiles.set([]);
+          this.clearUserData();
         }
       },
       { allowSignalWrites: true }
     );
+    // expose restore profile data to authoring via `app_auth_profiles` internal collection
+    effect(async () => {
+      const profiles = this.restoreProfiles();
+      if (profiles.length > 0) {
+        const collectionData = profiles.map((p) => ({ ...p, id: p.app_user_id }));
+        await this.dynamicDataService.ready();
+        await this.dynamicDataService.setInternalCollection("auth_profiles", collectionData);
+        console.log("[Auth] Restore Profiles", profiles);
+      }
+    });
   }
 
   private get config() {
@@ -123,11 +135,19 @@ export class AuthService extends AsyncServiceBase {
   }
 
   /** Keep id of auth user info in contact fields for db lookup*/
-  private addStorageEntry(auth_user?: IAuthUser) {
-    if (auth_user) {
-      this.localStorageService.setProtected("AUTH_USER_ID", auth_user.uid);
-    } else {
-      this.localStorageService.removeProtected("AUTH_USER_ID");
-    }
+  private addStorageEntry(auth_user: IAuthUser) {
+    this.localStorageService.setProtected("AUTH_USER_ID", auth_user.uid);
+    this.localStorageService.setProtected("AUTH_USER_NAME", auth_user.name || "");
+    this.localStorageService.setProtected("AUTH_USER_FAMILY_NAME", auth_user.family_name || "");
+    this.localStorageService.setProtected("AUTH_USER_GIVEN_NAME", auth_user.given_name || "");
+    this.localStorageService.setProtected("AUTH_USER_PICTURE", auth_user.picture || "");
+  }
+
+  private clearUserData() {
+    this.localStorageService.removeProtected("AUTH_USER_ID");
+    this.localStorageService.removeProtected("AUTH_USER_NAME");
+    this.localStorageService.removeProtected("AUTH_USER_FAMILY_NAME");
+    this.localStorageService.removeProtected("AUTH_USER_GIVEN_NAME");
+    this.localStorageService.removeProtected("AUTH_USER_PICTURE");
   }
 }
