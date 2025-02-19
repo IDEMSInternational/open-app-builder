@@ -3,7 +3,8 @@ import { FlowTypes } from "../../models";
 import { TemplateBaseComponent } from "../base";
 import { DataItemsService } from "./data-items.service";
 import { toObservable, toSignal } from "@angular/core/rxjs-interop";
-import { switchMap, filter } from "rxjs";
+import { switchMap, filter, distinctUntilChanged } from "rxjs";
+import { isEqual } from "packages/shared/src/utils/object-utils";
 
 @Component({
   selector: "plh-data-items",
@@ -23,25 +24,20 @@ export class TmplDataItemsComponent extends TemplateBaseComponent {
   public itemRows = toSignal(
     toObservable(this.rowSignal).pipe(
       filter((row) => row !== undefined),
-      switchMap((row) => this.subscribeToDynamicData(row))
+      switchMap((row) => this.subscribeToDynamicData(row)),
+      distinctUntilChanged(isEqual)
     )
-  );
-
-  /** List of actions to trigger on data_change */
-  private dataActions = computed(() =>
-    this.actionList().filter((a) => a.trigger === "data_changed")
   );
 
   constructor(private dataItemsService: DataItemsService) {
     super();
     effect(async () => {
-      const actions = this.dataActions();
       const itemRows = this.itemRows();
-      if (actions.length > 0 && itemRows !== undefined) {
+      if (itemRows !== undefined) {
         // TODO - if data_items have child rows the generated itemRows will be looped items
         // Need different method to always pass data_items list and not generated loop
         // (will only work if no child rows defined as fallback returns list rows and not generated)
-        await this.hackTriggerDataChangedActions(actions, itemRows);
+        await this.hackTriggerDataChangedActions(itemRows);
       }
     });
     effect(() => {
@@ -51,12 +47,12 @@ export class TmplDataItemsComponent extends TemplateBaseComponent {
   }
 
   /** Trigger a `data_changed` action and evaluate with items list context */
-  private async hackTriggerDataChangedActions(
-    actions: FlowTypes.TemplateRowAction[] = [],
-    itemRows: any[] = []
-  ) {
-    const evaluatedActions = this.dataItemsService.evaluateDataActions(actions, itemRows);
-    await this.parent.handleActions(evaluatedActions, this._row);
+  private async hackTriggerDataChangedActions(itemRows: any[] = []) {
+    const actions = this.actionList().filter((a) => a.trigger === "data_changed");
+    if (actions.length > 0) {
+      const evaluatedActions = this.dataItemsService.evaluateDataActions(actions, itemRows);
+      await this.parent.handleActions(evaluatedActions, this._row);
+    }
   }
 
   private subscribeToDynamicData(row: FlowTypes.TemplateRow) {
