@@ -109,11 +109,12 @@ $text-color: var(--radio-button-font-color, var(--ion-color-primary));
 
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-evenly;
+  justify-content: center;
   align-items: stretch;
   width: 100%;
   .item {
-    width: $item-width;
+    flex-grow: 1;
+    min-width: $item-width;
     min-height: $item-height;
     background-color: $background;
     box-shadow: $box-shadow;
@@ -123,7 +124,6 @@ $text-color: var(--radio-button-font-color, var(--ion-color-primary));
     justify-content: space-between;
     align-items: center;
     padding: 12px 8px;
-    margin: 4px 0;
 
     &[data-selected="true"] {
       background-color: $background-selected;
