@@ -104,18 +104,15 @@ $text-color: var(--radio-button-font-color, var(--ion-color-primary));
 }
 
 .radio-buttons[data-variant="flex"] {
-  $item-width: var(--min-item-width, 140px);
-  $item-height: 140px;
-
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   align-items: stretch;
   width: 100%;
   .item {
-    flex-grow: 1;
-    min-width: $item-width;
-    min-height: $item-height;
+    flex: 1 1 auto;
+    width: 25%;
+    min-width: var(--min-item-width, 10px);
     background-color: $background;
     box-shadow: $box-shadow;
     border: $border;
@@ -123,6 +120,7 @@ $text-color: var(--radio-button-font-color, var(--ion-color-primary));
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
+    gap: 12px;
     padding: 12px 8px;
 
     &[data-selected="true"] {
@@ -130,8 +128,7 @@ $text-color: var(--radio-button-font-color, var(--ion-color-primary));
       border: $border-selected;
     }
     .item-image-container {
-      height: calc($item-height * 0.5);
-      margin-bottom: 8px;
+      height: var(--icon-size-largest);
       img {
         height: 100%;
       }
