@@ -1,3 +1,4 @@
+// Vars for primary style
 $background: var(--radio-group-background, white);
 $background-selected: var(
   --radio-group-background-selected,
@@ -5,6 +6,16 @@ $background-selected: var(
 );
 $border: var(--radio-group-border, var(--border-standard));
 $border-selected: var(--radio-group-border-selected, var(--border-standard));
+
+// Vars for secondary style
+$background-secondary: var(--radio-group-background-secondary, white);
+$background-selected-secondary: var(
+  --radio-group-background-selected-secondary,
+  var(--gradient-secondary-light-vertical)
+);
+$border-secondary: var(--radio-group-border-secondary, var(--border-standard));
+$border-selected-secondary: var(--radio-group-border-selected-secondary, var(--border-standard));
+
 $border-radius: var(--radio-group-border-radius, var(--ion-border-radius-standard));
 $box-shadow: var(--radio-group-box-shadow, var(--ion-default-box-shadow));
 $text-size: var(--radio-button-font-size, 1.25rem);
@@ -12,24 +23,35 @@ $text-color: var(--radio-button-font-color, var(--ion-color-primary));
 
 .radio-buttons {
   display: grid;
-}
-.item {
-  border: $border;
-  border-radius: $border-radius;
-  text-align: center;
-  padding: 8px;
-  background: $background;
-  cursor: pointer;
-  box-shadow: $box-shadow;
-}
-.item[data-selected="true"] {
-  background: $background-selected;
-  border: $border-selected;
-  transition: 0.2s linear;
-}
-.item-text {
-  font-size: $text-size;
-  color: $text-color;
+  .item {
+    border: $border;
+    border-radius: $border-radius;
+    text-align: center;
+    padding: 8px;
+    background: $background;
+    cursor: pointer;
+    box-shadow: $box-shadow;
+    &[data-selected="true"] {
+      background: $background-selected;
+      border: $border-selected;
+      transition: 0.2s linear;
+    }
+    .item-text {
+      font-size: $text-size;
+      color: $text-color;
+    }
+  }
+
+  &[data-style="secondary"] {
+    .item {
+      border: $border-secondary;
+      background: $background-secondary;
+      &[data-selected="true"] {
+        background: $background-selected-secondary;
+        border: $border-selected-secondary;
+      }
+    }
+  }
 }
 
 .radio-buttons[data-variant="circle-icon"] {
@@ -119,6 +141,17 @@ $text-color: var(--radio-button-font-color, var(--ion-color-primary));
         font-size: var(--font-size-text-small);
         text-align: center;
         margin: 0px;
+      }
+    }
+  }
+
+  &[data-style="secondary"] {
+    .item {
+      border: $border-secondary;
+      background: $background-secondary;
+      &[data-selected="true"] {
+        background: $background-selected-secondary;
+        border: $border-selected-secondary;
       }
     }
   }
