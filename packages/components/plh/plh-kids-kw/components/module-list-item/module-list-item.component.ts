@@ -18,6 +18,8 @@ interface IModuleListItemParams {
   moduleImageAsset?: string;
   /* TEMPLATE PARAMETER: "nav_image_asset". The navigation icon*/
   navImageAsset?: string;
+  /* TEMPLATE PARAMETER: "variant" */
+  variant?: "default" | "circle";
 }
 
 @Component({
@@ -44,6 +46,11 @@ export class PlhModuleListItemComponent extends TemplateBaseComponent {
       navImageAsset: getStringParamFromTemplateRow(this._row, "nav_image_asset", null),
       lockedImageAsset: getStringParamFromTemplateRow(this._row, "locked_image_asset", null),
       highlighted: getBooleanParamFromTemplateRow(this._row, "highlighted", false),
+      variant: getStringParamFromTemplateRow(
+        this._row,
+        "variant",
+        "default"
+      ) as IModuleListItemParams["variant"],
     };
   }
 }

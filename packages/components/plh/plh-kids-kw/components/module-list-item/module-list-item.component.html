@@ -3,6 +3,7 @@
   [attr.data-language-direction]="templateTranslateService.languageDirection()"
   [attr.data-locked]="params().isLocked"
   [attr.data-highlighted]="params().highlighted"
+  [attr.data-variant]="params().variant"
   (click)="handleClick()"
 >
   @if (params().moduleImageAsset) {
@@ -20,7 +21,7 @@
   }
 
   @if (params().isLocked && params().lockedImageAsset !== null) {
-    <div class="locked">
+    <div class="locked-icon">
       <img class="icon" [src]="params().lockedImageAsset | plhAsset" />
     </div>
   } @else if (!params().isLocked && params().navImageAsset !== null) {
