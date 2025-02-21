@@ -43,7 +43,7 @@
               fill="outline"
               placeholder="Select map layers to view"
               [multiple]="!layerGroup.single_selection"
-              (ionChange)="handleDropdownChange($event, layerGroup.id)"
+              (ionChange)="handleDropdownChange($event.detail.value, layerGroup.id)"
               [value]="getVisibleLayerNames(layerGroup.id)"
             >
               @for (mapLayer of layerGroup.layers; track $index) {
