@@ -12,7 +12,6 @@ $highlighted-color: var(--module-list-item-color-highlighted, var(--ion-color-se
   margin-bottom: 16px;
   cursor: pointer;
   display: flex;
-  flex-direction: row;
   align-items: center;
   justify-content: space-between;
 
@@ -58,11 +57,6 @@ $highlighted-color: var(--module-list-item-color-highlighted, var(--ion-color-se
 // Circle variant
 .container[data-variant~="circle"] {
   $circle-width: 100px;
-
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-
   width: $circle-width;
   height: $circle-width;
   border-radius: 50%;
@@ -71,6 +65,7 @@ $highlighted-color: var(--module-list-item-color-highlighted, var(--ion-color-se
   border: 2px solid $default-color;
   box-shadow: 1px 1px 10px $default-color;
   position: relative;
+
   .module-image {
     width: 100%;
     height: 100%;
@@ -82,14 +77,10 @@ $highlighted-color: var(--module-list-item-color-highlighted, var(--ion-color-se
     }
   }
   .locked-icon {
-    display: flex;
     position: absolute;
     margin: 0 auto;
-    top: 0px;
-    left: 0px;
-    right: 0px;
-    bottom: 0px;
-
+    inset: 0;
+    display: flex;
     align-items: center;
     justify-content: center;
 
@@ -97,7 +88,6 @@ $highlighted-color: var(--module-list-item-color-highlighted, var(--ion-color-se
       width: 36px;
       max-width: 40px;
       object-fit: contain;
-      opacity: 1;
     }
   }
   .module-title {
@@ -114,14 +104,8 @@ $highlighted-color: var(--module-list-item-color-highlighted, var(--ion-color-se
 // Param styles (common to variants)
 .container {
   &[data-language-direction~="rtl"] {
-    .module-image {
-      img {
-        -webkit-transform: scaleX(-1);
-        transform: scaleX(-1);
-      }
-    }
+    .module-image img,
     .icon {
-      -webkit-transform: scaleX(-1);
       transform: scaleX(-1);
     }
   }
