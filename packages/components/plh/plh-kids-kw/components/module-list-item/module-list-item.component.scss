@@ -15,7 +15,13 @@
   .module-image {
     flex-shrink: 1;
     width: 100px;
+    height: 100px;
     min-width: 60px;
+    display: flex;
+    align-items: center;
+    img {
+      width: 100%;
+    }
   }
   .module-title {
     flex-shrink: 2;

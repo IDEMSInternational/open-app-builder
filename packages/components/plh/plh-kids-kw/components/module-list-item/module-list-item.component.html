@@ -8,6 +8,8 @@
     <div class="module-image">
       <img [src]="params.moduleImageAsset | plhAsset" />
     </div>
+  } @else {
+    <div class="image-spacer"></div>
   }
 
   @if (_row.value) {
@@ -25,6 +27,6 @@
       <img class="icon" [src]="params.navImageAsset | plhAsset" />
     </div>
   } @else {
-    <div class="no-nav"></div>
+    <div class="icon-spacer"></div>
   }
 </div>
