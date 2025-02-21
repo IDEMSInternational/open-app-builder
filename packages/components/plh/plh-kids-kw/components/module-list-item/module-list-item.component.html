@@ -1,12 +1,12 @@
 <div
   class="container"
   [attr.data-language-direction]="templateTranslateService.languageDirection()"
-  [attr.data-locked]="params.isLocked"
+  [attr.data-locked]="params().isLocked"
   (click)="handleClick()"
 >
-  @if (params.moduleImageAsset) {
+  @if (params().moduleImageAsset) {
     <div class="module-image">
-      <img [src]="params.moduleImageAsset | plhAsset" />
+      <img [src]="params().moduleImageAsset | plhAsset" />
     </div>
   } @else {
     <div class="image-spacer"></div>
@@ -18,13 +18,13 @@
     </div>
   }
 
-  @if (params.isLocked && params.lockedImageAsset !== null) {
+  @if (params().isLocked && params().lockedImageAsset !== null) {
     <div class="locked">
-      <img class="icon" [src]="params.lockedImageAsset | plhAsset" />
+      <img class="icon" [src]="params().lockedImageAsset | plhAsset" />
     </div>
-  } @else if (!params.isLocked && params.navImageAsset !== null) {
+  } @else if (!params().isLocked && params().navImageAsset !== null) {
     <div class="nav-icon">
-      <img class="icon" [src]="params.navImageAsset | plhAsset" />
+      <img class="icon" [src]="params().navImageAsset | plhAsset" />
     </div>
   } @else {
     <div class="icon-spacer"></div>
