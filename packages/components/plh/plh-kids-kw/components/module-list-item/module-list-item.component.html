@@ -2,6 +2,7 @@
   class="container"
   [attr.data-language-direction]="templateTranslateService.languageDirection()"
   [attr.data-locked]="params().isLocked"
+  [attr.data-highlighted]="params().highlighted"
   (click)="handleClick()"
 >
   @if (params().moduleImageAsset) {
