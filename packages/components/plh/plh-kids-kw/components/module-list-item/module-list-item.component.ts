@@ -8,7 +8,7 @@ import {
 } from "src/app/shared/utils";
 
 interface IModuleListItemParams {
-  /* TEMPLATE PARAMETER: "highlighted" */
+  /* TEMPLATE PARAMETER: "highlighted". Apply "highlighted" styling */
   highlighted?: boolean;
   /* TEMPLATE PARAMETER: "is_locked". The boolean that marks the module as locked or unlocked */
   isLocked?: boolean;
