@@ -304,21 +304,23 @@ export class TmplMapComponent extends TemplateBaseComponent implements AfterView
     }
   }
 
-  public handleDropdownChange(event: any, layerGroupId?: string) {
-    this.makeLayersVisible(event.detail.value, layerGroupId);
+  public handleDropdownChange(value: string | string[], layerGroupId?: string) {
+    // Value may be a single name string, or an array of name strings
+    const layerNames = Array.isArray(value) ? value : [value];
+    this.makeLayersVisible(layerNames, layerGroupId);
   }
 
-  private makeLayersVisible(layers: string[], layerGroupId?: string) {
+  private makeLayersVisible(layerNames: string[], layerGroupId?: string) {
     if (layerGroupId) {
       const layerGroup = this.mapLayerGroups.find((group) => group.id === layerGroupId);
       layerGroup.layers.forEach((layer) => {
-        this.setLayerVisibility(layer, layers.includes(layer.get("name")));
+        this.setLayerVisibility(layer, layerNames.includes(layer.get("name")));
       });
       return;
     } else {
       for (const layerGroup of this.mapLayerGroups) {
         layerGroup.layers.forEach((layer) => {
-          this.setLayerVisibility(layer, layers.includes(layer.get("name")));
+          this.setLayerVisibility(layer, layerNames.includes(layer.get("name")));
         });
       }
     }
