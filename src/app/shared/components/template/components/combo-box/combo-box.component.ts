@@ -102,7 +102,6 @@ export class TmplComboBoxComponent
 
   public async handleDropdownChange(value) {
     await this.setValue(value);
-    await this.triggerActions("changed");
   }
 
   async openModal() {
@@ -124,7 +123,6 @@ export class TmplComboBoxComponent
       this.customAnswerSelected.set(data?.data?.customAnswerSelected);
       this.customAnswerText = this.customAnswerSelected() ? data?.data?.answer?.text : "";
       await this.setValue(data?.data?.answer?.name);
-      await this.triggerActions("changed");
     });
     await modal.present();
   }

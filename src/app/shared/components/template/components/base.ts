@@ -69,6 +69,10 @@ export class TemplateBaseComponent implements ITemplateRowProps {
    * @ignore
    **/
   async setValue(value: any) {
+    // TODO - also want to prevent triggering changed action
+    if (value === this._row.value) {
+      return;
+    }
     // HACK - provide optimistic update so that data_items interceptor also can access updated row value
     this._row.value = value;
     this.rowSignal.update((v) => ({ ...v, value }));
@@ -78,7 +82,8 @@ export class TemplateBaseComponent implements ITemplateRowProps {
       args: [this._row._nested_name, value],
       trigger: "click",
     };
-    return this.parent.handleActions([action], this._row);
+    await this.parent.handleActions([action], this._row);
+    await this.triggerActions("changed");
   }
 
   /** @ignore */

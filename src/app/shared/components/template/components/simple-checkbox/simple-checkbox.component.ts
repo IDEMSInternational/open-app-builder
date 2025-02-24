@@ -27,7 +27,6 @@ export class TmplSimpleCheckboxComponent
   }
   public async handleChange(isChecked: boolean) {
     await this.setValue(isChecked);
-    this.triggerActions("changed");
   }
 
   getParams() {

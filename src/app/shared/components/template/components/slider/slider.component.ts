@@ -88,7 +88,6 @@ export class TmplSliderComponent
 
   async changeValue(value: number | "no_value") {
     await this.setValue(value);
-    await this.triggerActions("changed");
   }
 
   updateConfigParams() {

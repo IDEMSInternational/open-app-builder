@@ -68,7 +68,6 @@ export class TmplRadioButtonGridComponent
    */
   public async handleItemClick(item: IAnswerListItem) {
     await this.setValue(item.name);
-    this.triggerActions("changed");
   }
 
   private setParams() {
