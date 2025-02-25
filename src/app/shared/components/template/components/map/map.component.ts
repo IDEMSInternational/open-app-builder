@@ -300,7 +300,7 @@ export class TmplMapComponent extends TemplateBaseComponent implements AfterView
     else {
       setTimeout(() => {
         applyFiltering(vectorLayer.getSource());
-      }, 200);
+      }, 500);
     }
   }
 
