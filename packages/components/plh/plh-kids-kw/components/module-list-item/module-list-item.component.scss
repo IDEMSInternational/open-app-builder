@@ -87,9 +87,9 @@ $highlighted-color: var(--module-list-item-color-highlighted, var(--ion-color-se
 
 // Circle variant
 .container[data-variant~="circle"] {
-  --circle-width: 76px;
-  &[data-highlighted~="true"] {
-    --circle-width: 84px;
+  --circle-width: 84px;
+  &[data-locked~="true"] {
+    --circle-width: 76px;
   }
   width: var(--circle-width);
   height: var(--circle-width);
