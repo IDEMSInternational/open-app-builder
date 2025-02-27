@@ -167,6 +167,22 @@ export class PersistedMemoryAdapter {
     await firstValueFrom(this.statePersist$.pipe(filter((v) => v === "complete")));
   }
 
+  /** Return list of all flow name and flow type for each saved flow */
+  public async getAllFlowNamesAndTypes(): Promise<{ flow_type: string; flow_name: string }[]> {
+    const allCollections = Object.values(this.db.collections);
+
+    const allResults = await Promise.all(
+      allCollections.map(async (collection) => {
+        const docs: RxDocument[] = await collection.find().exec();
+        // Since each collection relates to a single flow, just take the first
+        const doc = docs[0].toMutableJSON();
+        const { flow_type, flow_name } = doc as any;
+        return { flow_type, flow_name };
+      })
+    );
+
+    return allResults;
+  }
   /**
    * Subscribe to state persist tracker, handling persist operation
    * when requested and with 500ms debounce between operations
