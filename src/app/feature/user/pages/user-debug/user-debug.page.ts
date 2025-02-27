@@ -82,8 +82,10 @@ export class UserDebugPage implements OnInit {
   /** Prepare table data to display for provided dynamic data entry */
   public setDynamicEntryView(entry?: IDynamicDataEntry) {
     if (entry) {
-      const rows = Object.values(entry.data);
-      this.dynamicDataTable = { headers: Object.keys(rows[0]), rows };
+      // ensure all entries include an id column and put at start of table
+      const rows = Object.entries(entry.data).map(([id, data]) => ({ ...data, id }));
+      const headers = ["id", ...Object.keys(rows[0]).filter((k) => k !== "id")];
+      this.dynamicDataTable = { headers, rows };
     } else {
       this.dynamicDataTable = { headers: [], rows: [] };
     }
