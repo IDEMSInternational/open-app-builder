@@ -192,6 +192,17 @@ export class DynamicDataService extends AsyncServiceBase {
     }
   }
 
+  /** Remove user writes on all flows */
+  public async resetAll() {
+    try {
+      await this.writeCache.deleteAll();
+      await this.db.removeAll();
+      console.log("[Dynamic Data] All data reset successfully");
+    } catch (error) {
+      console.error("[Dynamic Data] Error resetting all data:", error);
+    }
+  }
+
   /** Access full state of all persisted data layers */
   public async getState() {
     // ensure all writes are complete before returning overall state
