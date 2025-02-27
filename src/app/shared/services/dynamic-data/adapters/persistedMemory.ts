@@ -155,6 +155,11 @@ export class PersistedMemoryAdapter {
     this.persistStateToDB();
   }
 
+  public async deleteAll() {
+    this.state = {};
+    await this.persistStateToDB();
+  }
+
   /** Trigger persist handler. Requests will be debounced and notified when complete */
   public async persistStateToDB() {
     this.statePersist$.next("pending");
@@ -198,7 +203,7 @@ export class PersistedMemoryAdapter {
     const db = await this.mapDBToObject({});
     const idsToDelete = [];
     for (const flow_type of Object.keys(db)) {
-      const { deleted } = compareObjectKeys(db[flow_type], this.state[flow_type]);
+      const { deleted } = compareObjectKeys(db[flow_type], this.state[flow_type] || {});
       for (const flow_name of deleted) {
         const rowHash = db[flow_type][flow_name];
         for (const row_id of Object.keys(rowHash)) {
