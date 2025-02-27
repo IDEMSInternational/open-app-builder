@@ -336,7 +336,7 @@ export class TemplateActionService extends SyncServiceBase {
     action: FlowTypes.TemplateRowAction
   ): FlowTypes.TemplateRowAction {
     // Update action.args and action.params
-    const currentValue = this.container?.templateRowMap?.[action._triggeredBy?._nested_name]?.value;
+    const currentValue = action._triggeredBy?.value;
     // define a replacer that preserves type if `this.value` specified, replacing as string for
     // other expressions `@local.some_field_{this.value}`
     function replaceReference(v: any) {
