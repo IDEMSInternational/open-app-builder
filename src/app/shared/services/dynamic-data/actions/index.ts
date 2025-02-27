@@ -29,8 +29,13 @@ export class DynamicDataActionFactory {
   };
 
   public reset_data: IActionHandler = async ({ params }: { params?: IActionResetDataParams }) => {
-    const { _list_id } = this.parseActionParams(params);
-    return this.service.resetFlow("data_list", _list_id);
+    if (!params) {
+      // If no list specified, reset all flows
+      return this.service.resetAll();
+    } else {
+      const { _list_id } = this.parseActionParams(params);
+      return this.service.resetFlow("data_list", _list_id);
+    }
   };
 
   public remove_data: IActionHandler = async ({ params }: { params?: IActionRemoveDataParams }) => {
