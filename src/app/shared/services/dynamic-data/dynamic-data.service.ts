@@ -193,11 +193,21 @@ export class DynamicDataService extends AsyncServiceBase {
   }
 
   /** Remove user writes on all flows */
-  public async resetAll() {
+  public async resetAll(includeInternal = false) {
     try {
+      const allFlowNamesAndTypes = await this.writeCache.getAllFlowNamesAndTypes();
       await this.writeCache.deleteAll();
-      await this.db.removeAll();
-      console.log("[Dynamic Data] All data reset successfully");
+
+      const resets = allFlowNamesAndTypes
+        // By default, don't reset internal collections
+        .filter(({ flow_name }) => includeInternal || !flow_name.startsWith("_"))
+        .map(({ flow_type, flow_name }) =>
+          this.resetFlow(flow_type as FlowTypes.FlowType, flow_name)
+        );
+
+      await Promise.all(resets);
+
+      console.log(`[Dynamic Data] Reset completed. Total flows: ${allFlowNamesAndTypes.length}`);
     } catch (error) {
       console.error("[Dynamic Data] Error resetting all data:", error);
     }
@@ -223,7 +233,7 @@ export class DynamicDataService extends AsyncServiceBase {
 
   /**
    * Set the data for an internal data collection
-   * All internal collections are prefixed by `_app_` and are only stored ephemerally (not persisted)
+   * All internal collections are prefixed by `_` and are only stored ephemerally (not persisted)
    * Data that is set will override any pre-existing data
    **/
   public async setInternalCollection(name: string, data: any[]) {
