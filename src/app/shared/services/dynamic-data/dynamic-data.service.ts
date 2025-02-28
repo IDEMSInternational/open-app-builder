@@ -379,6 +379,7 @@ export class DynamicDataService extends AsyncServiceBase {
     }
 
     if (itemDataIDs.includes(targetRowId)) {
+      console.log("[Set Item]", flow_name, targetRowId, writeableProps);
       await this.update("data_list", flow_name, targetRowId, writeableProps);
     } else {
       console.warn(`[SET ITEM] - No item ${_id ? "with ID " + _id : "at index " + _index}`);
