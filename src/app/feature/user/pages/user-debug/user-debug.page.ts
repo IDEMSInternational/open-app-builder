@@ -1,4 +1,5 @@
 import { Component, Injector, OnInit, signal } from "@angular/core";
+import { uniqueObjectArrayKeys } from "packages/shared/src/utils/object-utils";
 import { TemplateActionService } from "src/app/shared/components/template/services/instance/template-action.service";
 import { TemplateFieldService } from "src/app/shared/components/template/services/template-field.service";
 import { AuthService } from "src/app/shared/services/auth/auth.service";
@@ -82,8 +83,11 @@ export class UserDebugPage implements OnInit {
   /** Prepare table data to display for provided dynamic data entry */
   public setDynamicEntryView(entry?: IDynamicDataEntry) {
     if (entry) {
-      const rows = Object.values(entry.data);
-      this.dynamicDataTable = { headers: Object.keys(rows[0]), rows };
+      // ensure all entries include an id column and put at start of table
+      const rows = Object.entries(entry.data).map(([id, data]) => ({ ...data, id }));
+      const uniqueKeys = uniqueObjectArrayKeys(rows);
+      const headers = ["id", ...uniqueKeys.filter((k) => k !== "id")];
+      this.dynamicDataTable = { headers, rows };
     } else {
       this.dynamicDataTable = { headers: [], rows: [] };
     }
