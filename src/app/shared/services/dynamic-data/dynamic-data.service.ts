@@ -139,8 +139,8 @@ export class DynamicDataService extends AsyncServiceBase {
         const mergedUpdate = deepMergeObjects(data, update);
         // update memory db
         await this.db.updateDoc({ collectionName, id: row_id, data: mergedUpdate });
-        // update persisted db
-        this.writeCache.update({ flow_name, flow_type, id: row_id, data: mergedUpdate });
+        // update persisted db - only use partial update as will be merged
+        this.writeCache.update({ flow_name, flow_type, id: row_id, data: update });
       } else {
         throw new Error(
           `[Update Fail] no doc exists for ${flow_type}:${flow_name} with row_id: ${row_id}`
@@ -192,6 +192,27 @@ export class DynamicDataService extends AsyncServiceBase {
     }
   }
 
+  /** Remove user writes on all flows */
+  public async resetAll(includeInternal = false) {
+    try {
+      const allFlowNamesAndTypes = await this.writeCache.getAllFlowNamesAndTypes();
+      await this.writeCache.deleteAll();
+
+      const resets = allFlowNamesAndTypes
+        // By default, don't reset internal collections
+        .filter(({ flow_name }) => includeInternal || !flow_name.startsWith("_"))
+        .map(({ flow_type, flow_name }) =>
+          this.resetFlow(flow_type as FlowTypes.FlowType, flow_name)
+        );
+
+      await Promise.all(resets);
+
+      console.log(`[Dynamic Data] Reset completed. Total flows: ${allFlowNamesAndTypes.length}`);
+    } catch (error) {
+      console.error("[Dynamic Data] Error resetting all data:", error);
+    }
+  }
+
   /** Access full state of all persisted data layers */
   public async getState() {
     // ensure all writes are complete before returning overall state
@@ -212,7 +233,7 @@ export class DynamicDataService extends AsyncServiceBase {
 
   /**
    * Set the data for an internal data collection
-   * All internal collections are prefixed by `_app_` and are only stored ephemerally (not persisted)
+   * All internal collections are prefixed by `_` and are only stored ephemerally (not persisted)
    * Data that is set will override any pre-existing data
    **/
   public async setInternalCollection(name: string, data: any[]) {
