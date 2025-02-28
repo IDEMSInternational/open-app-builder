@@ -24,7 +24,6 @@ export class TmplTextBoxComponent extends TemplateBaseComponent implements OnIni
   }
   public async handleChange(value: any) {
     await this.setValue(value);
-    this.triggerActions("changed");
   }
 
   getParams() {

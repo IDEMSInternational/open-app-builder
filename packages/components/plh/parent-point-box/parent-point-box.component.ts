@@ -99,7 +99,6 @@ export class PlhParentPointBoxComponent
     this.wasClicked = true;
     await this.setValue(this._value);
     await this.triggerActions("click");
-    await this.triggerActions("changed");
   }
 
   async clickInfo(event) {

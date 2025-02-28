@@ -28,6 +28,5 @@ export class TmplTextAreaComponent
 
   public async handleChange(value: any) {
     await this.setValue(value);
-    this.triggerActions("changed");
   }
 }

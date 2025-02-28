@@ -89,7 +89,6 @@ export class TmplNumberComponent
       }
     }
     await this.setValue(this.displayValue);
-    this.triggerActions("changed");
   }
 
   getMinOrMaxFromCategoryListItem(item: string): ICategoryList {
