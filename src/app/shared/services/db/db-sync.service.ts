@@ -7,9 +7,7 @@ import {
   IDBServerUserRecord,
   IDBTable,
 } from "data-models";
-import { interval, lastValueFrom } from "rxjs";
-import { environment } from "src/environments/environment";
-import { IAppConfig } from "../../model";
+import { lastValueFrom } from "rxjs";
 import { AppConfigService } from "../app-config/app-config.service";
 import { AsyncServiceBase } from "../asyncService.base";
 import { UserMetaService } from "../userMeta/userMeta.service";
@@ -18,6 +16,10 @@ import { DeploymentService } from "../deployment/deployment.service";
 
 @Injectable({ providedIn: "root" })
 /**
+ * Handle syncing local tables to specific server endpoints, such as `feedback` and
+ * `local_notification_interaction`
+ *
+ * NOTE - user profile data is managed separately via the `ServerSyncService`
  *
  * TODOs
  * - Batch update (requires api changes)
@@ -25,12 +27,6 @@ import { DeploymentService } from "../deployment/deployment.service";
  * - 2-way sync (possibly via sync protocol)
  */
 export class DBSyncService extends AsyncServiceBase {
-  syncSchedule;
-  /**
-   * Track whether server sync should be attempted. E.g. can be temporarily disabled on
-   * a given template via template level app config
-   */
-  syncEnabled: boolean;
   constructor(
     private dbService: DbService,
     private http: HttpClient,
@@ -39,24 +35,22 @@ export class DBSyncService extends AsyncServiceBase {
     private deploymentService: DeploymentService
   ) {
     super("DB Sync");
-    this.registerInitFunction(this.inititialise);
+    this.registerInitFunction(this.initialise);
   }
 
-  private async inititialise() {
+  private async initialise() {
     await this.ensureAsyncServicesReady([this.dbService, this.userMetaService]);
     this.ensureSyncServicesReady([this.appConfigService]);
-    this.subscribeToAppConfigChanges();
-    // Automatically sync data periodically
-    if (environment.production) {
-      this.syncToServer();
-      this.syncSchedule.subscribe(() => {
-        this.syncToServer();
-      });
-    }
   }
 
-  /** sync local tables to server */
-  public async syncToServer() {
+  /**
+   * Sync `feedback` and `local_notifications_interaction` table data using their
+   * corresponding api endpoints
+   *
+   * NOTE - this is triggered regularly via the `ServerService` or on demand via
+   * `emit: server_sync` action
+   */
+  public async syncDBTables() {
     for (const table_id of Object.keys(DB_SERVER_MAPPING)) {
       await this.syncTable(table_id as IDBTable);
     }
@@ -101,11 +95,5 @@ export class DBSyncService extends AsyncServiceBase {
       return serverRecord;
     }
     return record;
-  }
-
-  subscribeToAppConfigChanges() {
-    this.appConfigService.appConfig$.subscribe((appConfig: IAppConfig) => {
-      this.syncSchedule = interval(appConfig.SERVER.sync.frequency);
-    });
   }
 }

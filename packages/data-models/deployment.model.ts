@@ -3,7 +3,7 @@ import type { IGdriveEntry } from "../@idemsInternational/gdrive-tools";
 import type { IAppConfig, IAppConfigOverride } from "./appConfig";
 
 /** Update version to force recompile next time deployment set (e.g. after default config update) */
-export const DEPLOYMENT_CONFIG_VERSION = 20250202.0;
+export const DEPLOYMENT_CONFIG_VERSION = 20250303.0;
 
 /** Configuration settings available to runtime application */
 export interface IDeploymentRuntimeConfig {
@@ -22,6 +22,8 @@ export interface IDeploymentRuntimeConfig {
      * Will be replaced when running locally as per `src\app\shared\services\server\interceptors.ts`
      * */
     endpoint?: string;
+    /** Frequency (in ms) to attempt syncing data to server. Default 1000 * 60 * 5 (5 mins) */
+    sync_frequency?: number;
   };
   analytics: {
     enabled: boolean;
@@ -195,6 +197,7 @@ export const DEPLOYMENT_RUNTIME_CONFIG_DEFAULTS: IDeploymentRuntimeConfig = {
     enabled: true,
     db_name: "plh",
     endpoint: "https://apps-server.idems.international/api",
+    sync_frequency: 1000 * 60 * 5,
   },
   analytics: {
     enabled: true,
