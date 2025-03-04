@@ -1,12 +1,10 @@
-import { HttpClient, HttpErrorResponse } from "@angular/common/http";
+import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { DeviceInfo, Device } from "@capacitor/device";
-import { IAppConfig, getProtectedFieldName } from "data-models";
+import { getProtectedFieldName } from "data-models";
 import { interval } from "rxjs";
-import { throwError } from "rxjs";
 import { environment } from "src/environments/environment";
 import { generateTimestamp } from "../../utils";
-import { AppConfigService } from "../app-config/app-config.service";
 import { SyncServiceBase } from "../syncService.base";
 import { LocalStorageService } from "../local-storage/local-storage.service";
 import { DynamicDataService } from "../dynamic-data/dynamic-data.service";
@@ -26,18 +24,10 @@ import { IServerUser } from "./server.types";
 export class ServerService extends SyncServiceBase {
   app_user_id: string;
   device_info: DeviceInfo;
-  syncSchedule;
-  /**
-   * Track whether server sync should be attempted. E.g. can be temporarily disabled on
-   * a given template via template level app config
-   */
-  syncEnabled: boolean;
-
   //   Requires update (?) - https://angular.io/api/common/http/HttpContext
   //   context =  new HttpContext().set(SERVER_API, true),
   constructor(
     private http: HttpClient,
-    private appConfigService: AppConfigService,
     private localStorageService: LocalStorageService,
     private dynamicDataService: DynamicDataService,
     private deploymentService: DeploymentService
@@ -47,11 +37,12 @@ export class ServerService extends SyncServiceBase {
   }
 
   private initialise() {
-    this.ensureSyncServicesReady([this.appConfigService, this.localStorageService]);
-    this.subscribeToAppConfigChanges();
-    if (environment.production) {
+    this.ensureSyncServicesReady([this.localStorageService]);
+    const { api } = this.deploymentService.config;
+    if (environment.production && api.enabled) {
+      // initial sync and create interval timer to sync regularly
       this.syncUserData();
-      this.syncSchedule.subscribe(() => {
+      interval(api.sync_frequency).subscribe(() => {
         this.syncUserData();
       });
     }
@@ -66,11 +57,6 @@ export class ServerService extends SyncServiceBase {
   }
 
   public async syncUserData() {
-    if (!this.syncEnabled) {
-      console.log("[SERVER] sync disabled");
-      return;
-    }
-
     const { name, _app_builder_version } = this.deploymentService.config;
     await this.dynamicDataService.ready();
     if (!this.device_info) {
@@ -124,19 +110,6 @@ export class ServerService extends SyncServiceBase {
           },
           (err) => resolve(null)
         );
-    });
-  }
-
-  private handleError(error: HttpErrorResponse) {
-    //   sync failed, retry later (?)
-    return throwError("Could not connect to server");
-  }
-
-  subscribeToAppConfigChanges() {
-    this.appConfigService.appConfig$.subscribe((appConfig: IAppConfig) => {
-      const { SERVER } = appConfig;
-      this.syncEnabled = SERVER.sync.enabled;
-      this.syncSchedule = interval(SERVER.sync.frequency);
     });
   }
 }
