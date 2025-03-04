@@ -24,6 +24,11 @@ import { IServerUser } from "./server.types";
 export class ServerService extends SyncServiceBase {
   app_user_id: string;
   device_info: DeviceInfo;
+  /**
+   * Track whether sync enabled to allow toggling sync on/off
+   * TODO - expose action/public methods to set
+   **/
+  private syncEnabled: boolean;
   //   Requires update (?) - https://angular.io/api/common/http/HttpContext
   //   context =  new HttpContext().set(SERVER_API, true),
   constructor(
@@ -38,9 +43,11 @@ export class ServerService extends SyncServiceBase {
 
   private initialise() {
     this.ensureSyncServicesReady([this.localStorageService]);
+    // set default sync enabled state from deployment config
     const { api } = this.deploymentService.config;
-    if (environment.production && api.enabled) {
-      // initial sync and create interval timer to sync regularly
+    this.syncEnabled = api.enabled;
+    if (environment.production) {
+      // run initial sync and create interval timer to sync regularly
       this.syncUserData();
       interval(api.sync_frequency).subscribe(() => {
         this.syncUserData();
@@ -57,6 +64,10 @@ export class ServerService extends SyncServiceBase {
   }
 
   public async syncUserData() {
+    if (!this.syncEnabled) {
+      console.log("[SERVER] sync disabled");
+      return;
+    }
     const { name, _app_builder_version } = this.deploymentService.config;
     await this.dynamicDataService.ready();
     if (!this.device_info) {
