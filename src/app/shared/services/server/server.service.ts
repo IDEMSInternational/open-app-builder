@@ -10,6 +10,7 @@ import { LocalStorageService } from "../local-storage/local-storage.service";
 import { DynamicDataService } from "../dynamic-data/dynamic-data.service";
 import { DeploymentService } from "../deployment/deployment.service";
 import { IServerUser } from "./server.types";
+import { DBSyncService } from "../db/db-sync.service";
 
 /**
  * Backend API
@@ -35,7 +36,8 @@ export class ServerService extends SyncServiceBase {
     private http: HttpClient,
     private localStorageService: LocalStorageService,
     private dynamicDataService: DynamicDataService,
-    private deploymentService: DeploymentService
+    private deploymentService: DeploymentService,
+    private dbSyncService: DBSyncService
   ) {
     super("Server");
     this.initialise();
@@ -49,8 +51,10 @@ export class ServerService extends SyncServiceBase {
     if (environment.production) {
       // run initial sync and create interval timer to sync regularly
       this.syncUserData();
+      this.syncDBTableData();
       interval(api.sync_frequency).subscribe(() => {
         this.syncUserData();
+        this.syncDBTableData();
       });
     }
   }
@@ -122,5 +126,10 @@ export class ServerService extends SyncServiceBase {
           (err) => resolve(null)
         );
     });
+  }
+
+  private async syncDBTableData() {
+    await this.dbSyncService.ready();
+    return this.dbSyncService.syncDBTables();
   }
 }
