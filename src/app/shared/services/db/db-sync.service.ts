@@ -16,6 +16,10 @@ import { DeploymentService } from "../deployment/deployment.service";
 
 @Injectable({ providedIn: "root" })
 /**
+ * Handle syncing local tables to specific server endpoints, such as `feedback` and
+ * `local_notification_interaction`
+ *
+ * NOTE - user profile data is managed separately via the `ServerSyncService`
  *
  * TODOs
  * - Batch update (requires api changes)
@@ -23,12 +27,6 @@ import { DeploymentService } from "../deployment/deployment.service";
  * - 2-way sync (possibly via sync protocol)
  */
 export class DBSyncService extends AsyncServiceBase {
-  syncSchedule;
-  /**
-   * Track whether server sync should be attempted. E.g. can be temporarily disabled on
-   * a given template via template level app config
-   */
-  syncEnabled: boolean;
   constructor(
     private dbService: DbService,
     private http: HttpClient,
@@ -37,10 +35,10 @@ export class DBSyncService extends AsyncServiceBase {
     private deploymentService: DeploymentService
   ) {
     super("DB Sync");
-    this.registerInitFunction(this.inititialise);
+    this.registerInitFunction(this.initialise);
   }
 
-  private async inititialise() {
+  private async initialise() {
     await this.ensureAsyncServicesReady([this.dbService, this.userMetaService]);
     this.ensureSyncServicesReady([this.appConfigService]);
   }
