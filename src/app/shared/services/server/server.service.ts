@@ -27,6 +27,12 @@ export class ServerService extends SyncServiceBase {
   app_user_id: string;
   device_info: DeviceInfo;
   syncSchedule;
+  /**
+   * Track whether server sync should be attempted. E.g. can be temporarily disabled on
+   * a given template via template level app config
+   */
+  syncEnabled: boolean;
+
   //   Requires update (?) - https://angular.io/api/common/http/HttpContext
   //   context =  new HttpContext().set(SERVER_API, true),
   constructor(
@@ -60,6 +66,11 @@ export class ServerService extends SyncServiceBase {
   }
 
   public async syncUserData() {
+    if (!this.syncEnabled) {
+      console.log("[SERVER] sync disabled");
+      return;
+    }
+
     const { name, _app_builder_version } = this.deploymentService.config;
     await this.dynamicDataService.ready();
     if (!this.device_info) {
@@ -123,7 +134,9 @@ export class ServerService extends SyncServiceBase {
 
   subscribeToAppConfigChanges() {
     this.appConfigService.appConfig$.subscribe((appConfig: IAppConfig) => {
-      this.syncSchedule = interval(appConfig.SERVER_SYNC_FREQUENCY_MS);
+      const { SERVER } = appConfig;
+      this.syncEnabled = SERVER.sync.enabled;
+      this.syncSchedule = interval(SERVER.sync.frequency);
     });
   }
 }
