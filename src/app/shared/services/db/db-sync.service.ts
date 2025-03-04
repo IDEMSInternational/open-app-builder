@@ -7,9 +7,7 @@ import {
   IDBServerUserRecord,
   IDBTable,
 } from "data-models";
-import { interval, lastValueFrom } from "rxjs";
-import { environment } from "src/environments/environment";
-import { IAppConfig } from "../../model";
+import { lastValueFrom } from "rxjs";
 import { AppConfigService } from "../app-config/app-config.service";
 import { AsyncServiceBase } from "../asyncService.base";
 import { UserMetaService } from "../userMeta/userMeta.service";
@@ -45,18 +43,16 @@ export class DBSyncService extends AsyncServiceBase {
   private async inititialise() {
     await this.ensureAsyncServicesReady([this.dbService, this.userMetaService]);
     this.ensureSyncServicesReady([this.appConfigService]);
-    this.subscribeToAppConfigChanges();
-    // Automatically sync data periodically
-    if (environment.production) {
-      this.syncToServer();
-      this.syncSchedule.subscribe(() => {
-        this.syncToServer();
-      });
-    }
   }
 
-  /** sync local tables to server */
-  public async syncToServer() {
+  /**
+   * Sync `feedback` and `local_notifications_interaction` table data using their
+   * corresponding api endpoints
+   *
+   * NOTE - this is triggered regularly via the `ServerService` or on demand via
+   * `emit: server_sync` action
+   */
+  public async syncDBTables() {
     for (const table_id of Object.keys(DB_SERVER_MAPPING)) {
       await this.syncTable(table_id as IDBTable);
     }
@@ -101,11 +97,5 @@ export class DBSyncService extends AsyncServiceBase {
       return serverRecord;
     }
     return record;
-  }
-
-  subscribeToAppConfigChanges() {
-    this.appConfigService.appConfig$.subscribe((appConfig: IAppConfig) => {
-      this.syncSchedule = interval(appConfig.SERVER.sync.frequency);
-    });
   }
 }
