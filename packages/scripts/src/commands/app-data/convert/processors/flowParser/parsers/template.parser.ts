@@ -37,7 +37,9 @@ export class TemplateParser extends DefaultParser {
       }
       if (row.name?.endsWith("_collection") || row.name?.includes("_collection_")) {
         if (row.value && typeof row.value === "string") {
-          row.value = parseAppDataCollectionString(row.value);
+          // TODO - verify if case used and whether it might be better to use a different
+          // column to store parsed object literal in value (would require type defs update)
+          row.value = parseAppDataCollectionString(row.value) as any;
         }
       }
     }
@@ -138,13 +140,22 @@ export class TemplateParser extends DefaultParser {
       return action_list;
     }
     return action_list.map((action) => {
-      if (rowName && Array.isArray(action.args)) {
-        action.args = action.args.map((arg) => {
-          if (arg === `@local.${rowName}`) {
-            arg = `this.value`;
+      if (rowName) {
+        if (Array.isArray(action.args)) {
+          action.args = action.args.map((arg) => {
+            if (arg === `@local.${rowName}`) {
+              arg = `this.value`;
+            }
+            return arg;
+          });
+        }
+        if (action.params) {
+          for (const [key, value] of Object.entries(action.params)) {
+            if (typeof value === "string" && value === `@local.${rowName}`) {
+              action.params[key] = "this.value";
+            }
           }
-          return arg;
-        });
+        }
       }
       return action;
     });
@@ -155,7 +166,7 @@ export class TemplateParser extends DefaultParser {
     switch (row.type) {
       // template row name assigned to target template name
       case "template":
-        return row.value;
+        return row.value as string;
       // default use combination of row type and row number
       default:
         return `${row.type}_${rowNumber}`;

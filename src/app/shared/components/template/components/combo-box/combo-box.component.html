@@ -1,12 +1,32 @@
-<button
-  class="open-combobox margin-t-regular"
-  (click)="openModal()"
-  [class.placeholder-style]="(!_row.value && placeholder) || prioritisePlaceholder"
-  [ngClass]="{
-    'with-value': _row.value,
-    'no-value': !_row.value
-  }"
-  [disabled]="_row.disabled"
->
-  {{ (text && !prioritisePlaceholder ? text : placeholder) | translate }}
-</button>
+@if (params().variant === "modal") {
+  <button
+    class="open-combobox margin-t-regular"
+    (click)="openModal()"
+    [ngClass]="{
+      disabled: disabled(),
+      'placeholder-style': (!_row.value && params().placeholder) || params().prioritisePlaceholder,
+      'with-value': _row.value,
+      'no-value': !_row.value
+    }"
+    [disabled]="disabled()"
+  >
+    {{ displayText() | translate }}
+  </button>
+} @else if (params().variant === "dropdown") {
+  <div class="combo-box-container dropdown">
+    <ion-select
+      [class.hasValue]="!!_row.value"
+      [placeholder]="displayText() | translate"
+      (ionChange)="handleDropdownChange($event.detail.value)"
+      interface="popover"
+      labelPlacement="stacked"
+      [disabled]="disabled()"
+    >
+      @for (answerOption of answerOptions(); track answerOption.name) {
+        <ion-select-option [value]="answerOption.name">
+          {{ answerOption.text }}
+        </ion-select-option>
+      }
+    </ion-select>
+  </div>
+}

@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, computed, OnInit, signal } from "@angular/core";
 import { TaskService } from "src/app/shared/services/task/task.service";
 import {
   getBooleanParamFromTemplateRow,
@@ -73,6 +73,12 @@ interface ITaskCardParams {
    */
   in_progress_icon: string;
   /**
+   * Set the highlighted status directly, bypassing any calculations.
+   * If using, no value should be provided for task_group_id
+   * Default false
+   */
+  highlighted: boolean;
+  /**
    * Text to display in the "badge" added to the task card
    * when its associated task group is the highlighted task group.
    * Default "Active"
@@ -110,7 +116,11 @@ export class TmplTaskCardComponent extends TemplateBaseComponent implements OnIn
   public parameter_list: ITaskCardParams;
 
   style: string;
-  highlighted: boolean;
+  highlighted = computed(() => {
+    if (this.taskGroupId) return this.checkGroupHighlighted();
+    return this.authorHighlighted();
+  });
+  authorHighlighted = signal(false);
   highlightedText: string;
   progressUnitsName: string;
   showProgressText: boolean;
@@ -139,7 +149,6 @@ export class TmplTaskCardComponent extends TemplateBaseComponent implements OnIn
 
   ngOnInit() {
     this.getParams();
-    this.highlighted = this.checkGroupHighlighted();
     this.checkProgressStatus();
   }
 
@@ -171,6 +180,7 @@ export class TmplTaskCardComponent extends TemplateBaseComponent implements OnIn
 
     this.completedIcon = getStringParamFromTemplateRow(this._row, "completed_icon", null);
     this.inProgressIcon = getStringParamFromTemplateRow(this._row, "in_progress_icon", null);
+    this.authorHighlighted.set(getBooleanParamFromTemplateRow(this._row, "highlighted", false));
     this.highlightedText = getStringParamFromTemplateRow(this._row, "highlighted_text", "Active");
     this.progressUnitsName = getStringParamFromTemplateRow(
       this._row,

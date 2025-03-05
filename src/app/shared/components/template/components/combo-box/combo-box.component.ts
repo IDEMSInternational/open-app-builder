@@ -1,4 +1,4 @@
-import { Component, computed, OnDestroy, OnInit } from "@angular/core";
+import { Component, computed, effect, OnDestroy, Signal, signal } from "@angular/core";
 import { ModalController } from "@ionic/angular";
 import { ComboBoxModalComponent } from "./combo-box-modal/combo-box-modal.component";
 import {
@@ -8,10 +8,19 @@ import {
   getStringParamFromTemplateRow,
 } from "src/app/shared/utils";
 import { TemplateBaseComponent } from "../base";
-import { ITemplateRowProps } from "../../models";
+import { FlowTypes, ITemplateRowProps } from "../../models";
 import { ReplaySubject, map, filter, switchMap } from "rxjs";
 import { DataItemsService } from "../data-items/data-items.service";
 import { toObservable, toSignal } from "@angular/core/rxjs-interop";
+
+interface IComboBoxParams {
+  disabled: boolean;
+  disabledText: string;
+  placeholder: string;
+  prioritisePlaceholder: boolean;
+  style: string;
+  variant: "modal" | "dropdown";
+}
 
 @Component({
   selector: "plh-combo-box",
@@ -20,13 +29,12 @@ import { toObservable, toSignal } from "@angular/core/rxjs-interop";
 })
 export class TmplComboBoxComponent
   extends TemplateBaseComponent
-  implements ITemplateRowProps, OnInit, OnDestroy
+  implements ITemplateRowProps, OnDestroy
 {
-  public placeholder: string;
-  public prioritisePlaceholder: boolean;
-  private style: string;
-  public text = "";
-  private customAnswerSelected: boolean = false;
+  public params: Signal<IComboBoxParams> = computed(() => this.getParams(this.parameterList()));
+
+  public answerText = signal("");
+  private customAnswerSelected = signal(false);
   private customAnswerText: string;
   private componentDestroyed$ = new ReplaySubject(1);
 
@@ -39,7 +47,7 @@ export class TmplComboBoxComponent
     )
   );
 
-  private answerOptions = computed(() => {
+  public answerOptions = computed(() => {
     const dataItemRows = this.dataItemRows();
     if (dataItemRows !== undefined) {
       return (dataItemRows as IAnswerListItem[]) || [];
@@ -47,38 +55,61 @@ export class TmplComboBoxComponent
     return getAnswerListParamFromTemplateRow(this.rowSignal(), "answer_list", []);
   });
 
+  public disabled = computed(() => this.params().disabled || this.answerOptions().length === 0);
+
+  public displayText = computed(() => {
+    if (this.disabled()) return this.params().disabledText;
+    if (this.customAnswerSelected()) return this.customAnswerText;
+    return this.answerText() && !this.params().prioritisePlaceholder
+      ? this.answerText()
+      : this.params().placeholder;
+  });
+
   constructor(
     private modalController: ModalController,
     private dataItemsService: DataItemsService
   ) {
     super();
-  }
-
-  ngOnInit(): void {
-    this.getParams();
-
-    this.customAnswerSelected =
-      this.answerOptions().length > 0 && this._row.value
-        ? !this.answerOptions().find((x) => x.name === this._row.value)
-        : false;
-
-    this.text = "";
-    if (this._row.value) {
-      this.text = this.customAnswerSelected
-        ? this.customAnswerText
-        : this.answerOptions().find((answerListItem) => answerListItem.name === this._row.value)
-            ?.text;
-    }
-  }
-
-  getParams() {
-    this.placeholder = getStringParamFromTemplateRow(this._row, "placeholder", "");
-    this.prioritisePlaceholder = getBooleanParamFromTemplateRow(
-      this._row,
-      "prioritise_placeholder",
-      false
+    // If an initial value is authored, check if this corresponds to an answer option entry.
+    // Handle in effect as answer options may not be available on init
+    // TODO: Refactor base component to use value() signal and use this to compute displayText
+    effect(
+      () => {
+        if (this.answerOptions().length > 0 && this._row.value) {
+          const selectedAnswer = this.answerOptions().find((x) => x.name === this._row.value);
+          if (!selectedAnswer) {
+            this.customAnswerSelected.set(true);
+          } else {
+            this.answerText.set(selectedAnswer?.text || "");
+          }
+        }
+      },
+      { allowSignalWrites: true }
     );
-    this.style = getStringParamFromTemplateRow(this._row, "style", "");
+  }
+
+  private getParams(authorParams?: FlowTypes.TemplateRow["parameter_list"]): IComboBoxParams {
+    return {
+      disabled: getBooleanParamFromTemplateRow(this._row, "disabled", false),
+      disabledText: getStringParamFromTemplateRow(this._row, "disabled_text", ""),
+      placeholder: getStringParamFromTemplateRow(this._row, "placeholder", ""),
+      prioritisePlaceholder: getBooleanParamFromTemplateRow(
+        this._row,
+        "prioritise_placeholder",
+        false
+      ),
+      style: getStringParamFromTemplateRow(this._row, "style", ""),
+      variant: getStringParamFromTemplateRow(
+        this._row,
+        "variant",
+        "modal"
+      ) as IComboBoxParams["variant"],
+    };
+  }
+
+  public async handleDropdownChange(value) {
+    await this.setValue(value);
+    await this.triggerActions("changed");
   }
 
   async openModal() {
@@ -88,19 +119,17 @@ export class TmplComboBoxComponent
       componentProps: {
         answerOptions: this.answerOptions,
         row: this._row,
-        selectedValue: this.customAnswerSelected ? this.text : this._row.value,
-        customAnswerSelected: this.customAnswerSelected,
-        style: this.style,
+        selectedValue: this.customAnswerSelected() ? this.answerText() : this._row.value,
+        customAnswerSelected: this.customAnswerSelected(),
+        style: this.params().style,
       },
     });
 
     modal.onDidDismiss().then(async (data) => {
-      this.prioritisePlaceholder = false;
-      this.text = data?.data?.answer?.text;
-      this.customAnswerSelected = data?.data?.customAnswerSelected;
-      this.customAnswerText = this.customAnswerSelected
-        ? (this.text = data?.data?.answer?.text)
-        : "";
+      this.params().prioritisePlaceholder = false;
+      this.answerText.set(data?.data?.answer?.text);
+      this.customAnswerSelected.set(data?.data?.customAnswerSelected);
+      this.customAnswerText = this.customAnswerSelected() ? data?.data?.answer?.text : "";
       await this.setValue(data?.data?.answer?.name);
       await this.triggerActions("changed");
     });

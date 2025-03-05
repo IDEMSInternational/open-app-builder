@@ -18,7 +18,10 @@ interface ICustomVariableMeta {
 export class CssVariableTableComponent implements AfterViewInit {
   customStyleVariables: ICustomVariableMeta[] = [];
 
-  constructor(private themeService: ThemeService, private elementRef: ElementRef) {}
+  constructor(
+    private themeService: ThemeService,
+    private elementRef: ElementRef
+  ) {}
 
   ngAfterViewInit() {
     this.loadElementCustomVariables();
@@ -29,8 +32,9 @@ export class CssVariableTableComponent implements AfterViewInit {
   private loadElementCustomVariables() {
     const currentEl = this.elementRef.nativeElement as HTMLElement;
     const contentEl = currentEl.closest("ion-content");
+    // NOTE - contentEl does not appear in test environment so workaround
+    if (!contentEl) return;
     const customVariables = this.themeService.calculateElCustomProperties(contentEl);
-    console.log("custom variables", customVariables, contentEl);
     this.customStyleVariables = Object.entries<string>(customVariables)
       .map(([name, value]) => ({
         name,

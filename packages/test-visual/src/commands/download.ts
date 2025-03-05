@@ -49,12 +49,16 @@ export class ScreenshotDownload {
    * TODO - not filtered to specific branch run (assume fine)
    */
   private async getLatestScreenshotsArtifact() {
-    const artifacts = await getGHRepoArtifacts();
-    const latestArtifact = artifacts.find((a) => a.name === SCREENSHOT_ARTIFACT_NAME);
+    const artifacts = await getGHRepoArtifacts({
+      name: SCREENSHOT_ARTIFACT_NAME,
+      page: 1,
+      per_page: 1,
+    });
+    // artifacts return in reverse-chronological order so first entry should be latest
+    const [latestArtifact] = artifacts;
     if (!latestArtifact) {
       throw new Error(`No artifacts found with name: ${SCREENSHOT_ARTIFACT_NAME}`);
     }
-    console.log("latest artifact", latestArtifact);
     const browser_download_url = getGHRepoArtifactDLLink(latestArtifact);
     return { browser_download_url, id: latestArtifact.id };
   }

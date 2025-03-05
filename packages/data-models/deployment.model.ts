@@ -3,7 +3,7 @@ import type { IGdriveEntry } from "../@idemsInternational/gdrive-tools";
 import type { IAppConfig, IAppConfigOverride } from "./appConfig";
 
 /** Update version to force recompile next time deployment set (e.g. after default config update) */
-export const DEPLOYMENT_CONFIG_VERSION = 20241215.1;
+export const DEPLOYMENT_CONFIG_VERSION = 20250202.0;
 
 /** Configuration settings available to runtime application */
 export interface IDeploymentRuntimeConfig {
@@ -46,9 +46,9 @@ export interface IDeploymentRuntimeConfig {
   /**
    * Specify if using firebase for auth and crashlytics.
    * Requires firebase config available through encrypted config */
-  firebase: {
+  firebase?: {
     /** Project config as specified in firebase console (recommend loading from encrypted environment) */
-    config?: {
+    config: {
       apiKey: string;
       authDomain: string;
       databaseURL: string;
@@ -58,8 +58,8 @@ export interface IDeploymentRuntimeConfig {
       appId: string;
       measurementId: string;
     };
-    crashlytics: {
-      /** Enables app crash reports to firebase crashlytics */
+    /** Configure app crash reports to firebase crashlytics */
+    crashlytics?: {
       enabled: boolean;
     };
   };
@@ -204,10 +204,6 @@ export const DEPLOYMENT_RUNTIME_CONFIG_DEFAULTS: IDeploymentRuntimeConfig = {
   },
   app_config: {},
   auth: {},
-  firebase: {
-    config: null,
-    crashlytics: { enabled: true },
-  },
   supabase: {
     enabled: false,
   },

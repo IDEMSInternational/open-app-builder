@@ -120,7 +120,7 @@ export class TmplAudioComponent
       .split(",")
       .join(" ") as IAudioParams["variant"];
     this.params.src = this.templateAssetService.getTranslatedAssetPath(
-      this._row.value || getStringParamFromTemplateRow(this._row, "src", null)
+      (this._row.value as string) || getStringParamFromTemplateRow(this._row, "src", null)
     );
     this.params.playIconAsset = this.getAssetParamFromTemplateRow(
       "play_icon_asset",

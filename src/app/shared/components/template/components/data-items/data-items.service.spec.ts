@@ -8,6 +8,9 @@ import { MockDynamicDataService } from "src/app/shared/services/dynamic-data/dyn
 import { firstValueFrom } from "rxjs";
 import { Injector } from "@angular/core";
 import { TemplateVariablesService } from "../../services/template-variables.service";
+import { TemplateTranslateService } from "../../services/template-translate.service";
+import { TemplateCalcService } from "../../services/template-calc.service";
+import { MockTemplateCalcService } from "../../services/template-calc.service.mock.spec";
 
 /***************************************************************************************
  * Test Setup
@@ -16,18 +19,21 @@ const MOCK_DATA_ITEMS_LIST: FlowTypes.Data_listRow[] = [
   {
     id: "id_1",
     completed: true,
+    number: 1,
   },
   {
     id: "id_2",
     completed: true,
+    number: 2,
   },
   {
     id: "id_3",
     completed: false,
+    number: 3,
   },
 ];
 
-const MOCK_BUTTON = (): FlowTypes.TemplateRow => ({
+const MOCK_BUTTON = (overrides: Partial<FlowTypes.TemplateRow> = {}): FlowTypes.TemplateRow => ({
   _nested_name: "",
   name: "",
   type: "button",
@@ -44,9 +50,10 @@ const MOCK_BUTTON = (): FlowTypes.TemplateRow => ({
       },
     },
   ],
+  ...overrides,
 });
 
-const MOCK_TEMPLATE_ROWS_WITH_NESTED: FlowTypes.TemplateRow[] = [
+const MOCK_TEMPLATE_ROWS_WITH_NESTED = (): FlowTypes.TemplateRow[] => [
   MOCK_BUTTON(),
   {
     _nested_name: "",
@@ -56,13 +63,13 @@ const MOCK_TEMPLATE_ROWS_WITH_NESTED: FlowTypes.TemplateRow[] = [
   },
 ];
 
-const MOCK_DATA_ITEMS_ROW: FlowTypes.TemplateRow = {
+const MOCK_DATA_ITEMS_ROW = (): FlowTypes.TemplateRow => ({
   _nested_name: "",
   name: "",
   type: "data_items",
   value: "mock_data_items_list",
-  rows: MOCK_TEMPLATE_ROWS_WITH_NESTED,
-};
+  rows: MOCK_TEMPLATE_ROWS_WITH_NESTED(),
+});
 
 /***************************************************************************************
  * Test Methods
@@ -76,6 +83,7 @@ describe("DataItemsService", () => {
   let service: DataItemsService;
 
   let rowProcessorSpy: jasmine.Spy;
+  let translateDataListRowsSpy: jasmine.Spy;
 
   beforeEach(async () => {
     TestBed.configureTestingModule({
@@ -91,16 +99,23 @@ describe("DataItemsService", () => {
         },
         // methods that call these providers are mocked so simply provide stub
         { provide: Injector, useValue: {} },
-        { provide: TemplateVariablesService, useValue: {} },
+        { provide: TemplateVariablesService, useValue: { evaluateConditionString: (v) => v } },
+        { provide: TemplateTranslateService, useValue: {} },
+        {
+          provide: TemplateCalcService,
+          // use custom calc service methods to test item local context evaluation
+          useValue: new MockTemplateCalcService({ globalFunctions: { double: (v) => v * 2 } }),
+        },
       ],
     });
     service = TestBed.inject(DataItemsService);
 
-    // mock calls to data items processor
-    service["hackParseDataList"] = jasmine.createSpy().and.callFake(async (v) => v);
     // spy on calls to rowProcessor and just return unprocessed
     rowProcessorSpy = jasmine.createSpy().and.callFake(async (v) => v);
     service["hackProcessRows"] = rowProcessorSpy;
+    // use spy for calls to templateTranslateService
+    translateDataListRowsSpy = jasmine.createSpy().and.callFake((v) => v);
+    service["templateTranslateService"]["translateDataListRows"] = translateDataListRowsSpy;
   });
 
   it("should be created", () => {
@@ -108,7 +123,7 @@ describe("DataItemsService", () => {
   });
 
   it("retrieves data_list data and provides observable list of processed data", async () => {
-    const obs = service.getItemsObservable(MOCK_DATA_ITEMS_ROW, {});
+    const obs = service.getItemsObservable(MOCK_DATA_ITEMS_ROW(), {});
     const data = await firstValueFrom(obs);
     // should generate looped item rows (2 template rows x 3 item rows)
     expect(data.length).toEqual(6);
@@ -116,10 +131,12 @@ describe("DataItemsService", () => {
     // check that it calls processor with item context
     expect(rowProcessorSpy).toHaveBeenCalledTimes(1);
     const [rowProcessorItemRowsArg] = rowProcessorSpy.calls.first().args;
+    console.log({ rowProcessorItemRowsArg });
     expect(rowProcessorItemRowsArg[0]._evalContext).toEqual({
-      itemContext: {
+      item: {
         id: "id_1",
         completed: true,
+        number: 1,
         _index: 0,
         _id: "id_1",
         _first: true,
@@ -128,9 +145,43 @@ describe("DataItemsService", () => {
     });
   });
 
+  it("includes local variable context within item loops", async () => {
+    // child rows include local variable setter and display component
+    const itemsRow = {
+      ...MOCK_DATA_ITEMS_ROW(),
+      rows: [
+        {
+          type: "set_variable",
+          name: "itemDouble",
+          _nested_name: "",
+          // use custom calc context variable to test calc evaluation
+          value: "@calc(double(@item.number))",
+        },
+        {
+          type: "set_variable",
+          name: "mockString",
+          _nested_name: "",
+          // test previous variables can be processed within templated data
+          value: "test @local.itemDouble",
+        },
+        MOCK_BUTTON({ value: "@local.mockString" }),
+      ],
+    };
+
+    const obs = service.getItemsObservable(itemsRow, {});
+    const data: FlowTypes.TemplateRow[] = await firstValueFrom(obs);
+    expect(data.length).toEqual(3);
+    // local context
+    expect(data[0]._evalContext.local).toEqual({ itemDouble: 2, mockString: "test 2" });
+    expect(data[1]._evalContext.local).toEqual({ itemDouble: 4, mockString: "test 4" });
+    expect(data[2]._evalContext.local).toEqual({ itemDouble: 6, mockString: "test 6" });
+    // templated row values will not be evaluated by service, but instead by template processor
+    expect(data[0].value).toEqual("@local.mockString");
+  });
+
   it("evaluates data actions rows with items context (if empty)", async () => {
     // HACK - Actions only trigger correctly if data_items do not contain looped child rows
-    const emptyItemsRow = { ...MOCK_DATA_ITEMS_ROW, rows: undefined };
+    const emptyItemsRow = { ...MOCK_DATA_ITEMS_ROW(), rows: undefined };
     const obs = service.getItemsObservable(emptyItemsRow, {});
     const data = await firstValueFrom(obs);
     const [evaluated] = service.evaluateDataActions(
@@ -146,9 +197,10 @@ describe("DataItemsService", () => {
     console.log({ evaluated });
     expect(evaluated.args).toEqual(["my_local_var", 3]);
   });
+
   // TODO - fix case where items context refers to generated loop items and not list items
   xit("evaluates data actions rows with items context", async () => {
-    const obs = service.getItemsObservable(MOCK_DATA_ITEMS_ROW, {});
+    const obs = service.getItemsObservable(MOCK_DATA_ITEMS_ROW(), {});
     const data = await firstValueFrom(obs);
     const [evaluated] = service.evaluateDataActions(
       [
@@ -162,6 +214,12 @@ describe("DataItemsService", () => {
     );
     // Note - currently return 6 due to generated loop item rows
     expect(evaluated.args).toEqual(["my_local_var", 3]);
+  });
+
+  it("translated data_item rows", async () => {
+    const obs = service.getItemsObservable(MOCK_DATA_ITEMS_ROW(), {});
+    await firstValueFrom(obs);
+    expect(translateDataListRowsSpy).toHaveBeenCalledTimes(1);
   });
 
   // TODO - requires improvement to mocked dynamic data service

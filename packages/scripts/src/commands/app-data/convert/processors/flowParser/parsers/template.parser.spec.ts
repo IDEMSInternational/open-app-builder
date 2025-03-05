@@ -6,7 +6,7 @@ const ROW_BASE: FlowTypes.TemplateRow = {
   name: "",
   type: "" as any,
 };
-
+/** yarn workspace scripts test -t template.parser.spec.ts */
 describe("Template Parser PostProcessor", () => {
   let parser: TemplateParser;
   beforeEach(() => {
@@ -118,10 +118,17 @@ describe("Template Parser PostProcessor", () => {
       ...ROW_BASE,
       name: "my_action_list",
       action_list: [
-        { trigger: "click", action_id: "", args: ["@local.my_action_list", "some_value"] },
+        {
+          trigger: "click",
+          action_id: "",
+          args: ["@local.my_action_list", "some_value"],
+          params: { param_1: "@local.my_action_list", param_2: "some_value" },
+        },
       ],
     });
+    // Should replace self references in args and params
     expect(res.action_list[0].args).toEqual(["this.value", "some_value"]);
+    expect(res.action_list[0].params).toEqual({ param_1: "this.value", param_2: "some_value" });
   });
 
   it("Extracts dynamic fields", () => {

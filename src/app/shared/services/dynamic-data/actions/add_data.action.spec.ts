@@ -9,7 +9,7 @@ import { DynamicDataService } from "../dynamic-data.service";
 import { firstValueFrom } from "rxjs";
 import { FlowTypes } from "packages/data-models";
 import { DeploymentService } from "../../deployment/deployment.service";
-import { MockDeploymentService } from "../../deployment/deployment.service.spec";
+import { MockDeploymentService } from "../../deployment/deployment.service.mock.spec";
 import { TemplateActionRegistry } from "../../../components/template/services/instance/template-action.registry";
 import { DynamicDataActionFactory, IActionRemoveDataParams } from "./index";
 

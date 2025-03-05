@@ -8,6 +8,9 @@ const MOCK_FAMILES = () => [["Ada", "Blaise"], ["Charles"], ["Daniel", "Eva"]];
  * yarn ng test --include src\app\shared\components\template\services\template-calc-functions\plh-calc-functions.spec.ts
  */
 describe("Template Calc - PLH Functions", () => {
+  beforeEach(() => {
+    (window as any).calc = PLH_CALC_FUNCTIONS;
+  });
   it("Add family", () => {
     const res = PLH_CALC_FUNCTIONS.plh_add_family(MOCK_FAMILES(), "Friedrich", "Graham", "Hannah");
     expect(res).toEqual([
@@ -35,6 +38,9 @@ describe("Template Calc - PLH Functions", () => {
 });
 
 describe("Template Calc - PLH Functions QA", () => {
+  beforeEach(() => {
+    (window as any).calc = PLH_CALC_FUNCTIONS;
+  });
   it("Handles string input", () => {
     const stringInput = JSON.stringify(MOCK_FAMILES());
     const res = PLH_CALC_FUNCTIONS.plh_add_family(stringInput, "Friedrich", "Graham", "Hannah");

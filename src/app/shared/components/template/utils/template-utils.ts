@@ -1,5 +1,5 @@
 import { FlowTypes } from "src/app/shared/model";
-import { arrayToHashmap } from "src/app/shared/utils";
+import { arrayToHashmap, deepMergeObjects } from "src/app/shared/utils";
 
 /**
  * Take 2 template rows and perform a deep merge, including deep merge of nested row.rows
@@ -87,6 +87,18 @@ function flattenJson<T>(json: any, tree = {}, nestedPath?: string): { [key: stri
     }
   });
   return tree;
+}
+
+/** Update a property on a row and all child rows */
+export function updateRowPropertyRecursively(
+  row: FlowTypes.TemplateRow,
+  update: Partial<FlowTypes.TemplateRow>
+) {
+  const updated = deepMergeObjects({} as FlowTypes.TemplateRow, row, update);
+  if (updated.rows) {
+    updated.rows = updated.rows.map((r) => updateRowPropertyRecursively(r, update));
+  }
+  return updated;
 }
 
 /**

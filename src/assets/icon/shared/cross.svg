@@ -1,3 +1,7 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:57481bfe3c2b70a540000463a8fcfcd6abc65823851f39c3d54258787cb53a4d
-size 431
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 76.93 76.93">
+    <defs>
+        <style>.cls-1{fill:#FFFFFF;}</style>
+    </defs>
+    <path class="cls-1"
+          d="M62.09,59.62,41.28,38.82,61.72,18.38a2.11,2.11,0,0,0-3-3L38.29,35.82,17.73,15.26a2.12,2.12,0,1,0-3,3L35.29,38.82,14.36,59.75a2.12,2.12,0,0,0,0,3,2.12,2.12,0,0,0,3,0L38.29,41.81l20.8,20.81a2.12,2.12,0,0,0,3-3Z"/>
+</svg>

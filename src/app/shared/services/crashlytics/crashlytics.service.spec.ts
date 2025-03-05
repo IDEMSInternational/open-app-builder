@@ -1,12 +1,16 @@
 import { TestBed } from "@angular/core/testing";
 
 import { CrashlyticsService } from "./crashlytics.service";
+import { DeploymentService } from "../deployment/deployment.service";
+import { MockDeploymentService } from "../deployment/deployment.service.mock.spec";
 
 describe("CrashlyticsService", () => {
   let service: CrashlyticsService;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({});
+    TestBed.configureTestingModule({
+      providers: [{ provide: DeploymentService, useValue: new MockDeploymentService() }],
+    });
     service = TestBed.inject(CrashlyticsService);
   });
 
