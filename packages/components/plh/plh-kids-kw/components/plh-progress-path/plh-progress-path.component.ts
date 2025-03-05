@@ -1,4 +1,12 @@
-import { AfterViewInit, Component, computed, ElementRef, OnInit, ViewChild } from "@angular/core";
+import {
+  AfterViewInit,
+  Component,
+  computed,
+  ElementRef,
+  OnInit,
+  signal,
+  ViewChild,
+} from "@angular/core";
 import { toObservable, toSignal } from "@angular/core/rxjs-interop";
 import { filter, map, switchMap } from "rxjs";
 import { TemplateBaseComponent } from "src/app/shared/components/template/components/base";
@@ -16,7 +24,7 @@ interface IPlhProgressPathParams {
 }
 
 @Component({
-  selector: "plh-plh-progress-path",
+  selector: "plh-progress-path",
   templateUrl: "./plh-progress-path.component.html",
   styleUrls: ["./plh-progress-path.component.scss"],
 })
@@ -24,9 +32,7 @@ export class PlhProgressPathComponent
   extends TemplateBaseComponent
   implements OnInit, AfterViewInit
 {
-  public loading = true;
-  public svgPath: string;
-  public svgViewBox: string;
+  public loading = signal(true);
   public width = `420px`;
   params: Partial<IPlhProgressPathParams> = {};
   @ViewChild("progressPath", { static: false }) progressPath!: ElementRef;
@@ -53,13 +59,14 @@ export class PlhProgressPathComponent
   }
 
   ngOnInit() {
-    this.generateSVGPath();
     this.getParams();
   }
 
   ngAfterViewInit() {
-    setTimeout(() => this.scrollToBottomMiddle(), 100);
-    this.loading = false;
+    this.scrollToBottomMiddle();
+    setTimeout(() => {
+      this.loading.set(false);
+    }, 100);
   }
 
   // Scroll to the bottom and horizontally to the middle of the component
@@ -83,21 +90,5 @@ export class PlhProgressPathComponent
       "background_image_asset",
       null
     );
-  }
-
-  private generateSVGPath() {
-    const curvedPath = () =>
-      `
-    M 92,58
-    c 80,110 290,-30 310,150
-    c -10,40 -90,100 -248,46
-    c -160,-54 -180,270 40,204
-    c 90,-36 140,0 210,80
-    c -6,12 -40,50 -160,96
-    v 0
-    `.trim();
-
-    this.svgPath = curvedPath();
-    this.svgViewBox = `0 0 450 700`;
   }
 }

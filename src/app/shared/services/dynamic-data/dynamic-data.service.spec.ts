@@ -6,7 +6,7 @@ import { DynamicDataService } from "./dynamic-data.service";
 import { AppDataService } from "../data/app-data.service";
 import { MockAppDataService } from "../data/app-data.service.mock.spec";
 import { DeploymentService } from "../deployment/deployment.service";
-import { MockDeploymentService } from "../deployment/deployment.service.spec";
+import { MockDeploymentService } from "../deployment/deployment.service.mock.spec";
 import { FlowTypes } from "packages/data-models";
 
 type ITestRow = { id: string; number: number; string: string; boolean: boolean; _meta_field?: any };
@@ -88,6 +88,22 @@ describe("DynamicDataService", () => {
     // Not easily possible due to clearCache method used (but removing shows it does work)
   });
 
+  it("persists partial updates to cache", async () => {
+    await service.update("data_list", "test_flow", "id1", { number: 1.1 });
+    await service.update("data_list", "test_flow", "id1", { string: "updated" });
+    const cacheState = await service.getState();
+    expect(cacheState).toEqual({
+      data_list: {
+        test_flow: {
+          id1: {
+            number: 1.1,
+            string: "updated",
+          },
+        },
+      },
+    });
+  });
+
   it("provides live querying", async () => {
     // HACK - ensure any previous data cleared before running test
     await service.resetFlow("data_list", "test_flow");
@@ -143,13 +159,20 @@ describe("DynamicDataService", () => {
     ).toBeRejectedWithError();
   });
 
+  it("supports internal collections", async () => {
+    await service.setInternalCollection("mock", [{ id: "1", string: "hello" }]);
+    const obs = await service.query$<any>("data_list", "_mock");
+    const data = await firstValueFrom(obs);
+    expect(data).toEqual([{ id: "1", string: "hello" }]);
+  });
+
   // QA
   it("prevents query of non-existent data lists", async () => {
     let errMsg: string;
     await service.query$("data_list", "fakeData").catch((err) => {
       errMsg = err.message;
     });
-    expect(errMsg).toEqual("No data exists for collection [fakeData], cannot initialise");
+    expect(errMsg).toEqual(`No data exists for collection [fakeData], cannot initialise`);
   });
 
   it("ignores cached data where initial data no longer exists", async () => {

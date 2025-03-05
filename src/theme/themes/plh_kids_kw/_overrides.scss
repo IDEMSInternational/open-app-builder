@@ -120,6 +120,8 @@ body[data-theme="plh_kids_kw"] {
       }
       .children {
         inset-inline-end: -2px !important;
+        // `top` must be unset explicitly to avoid cascade/inheritance issue on webkit browsers
+        top: unset;
         bottom: 2px !important;
         padding: 0px !important;
       }
@@ -620,84 +622,6 @@ body[data-theme="plh_kids_kw"] {
     }
   }
 
-  // module-list-item
-  plh-module-list-item {
-    .module-item {
-      width: 100%;
-      border: 2px solid var(--color-secondary-blue-60);
-      border-radius: var(--ion-border-radius-secondary);
-      padding: 16px;
-      box-shadow: 1px 1px 10px #92b7da;
-      background-color: #f6fafe;
-      margin-bottom: 16px;
-      .container {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: space-between;
-      }
-      .module-image {
-        img {
-          width: 100px;
-          height: 100px;
-          max-width: unset;
-        }
-      }
-      .module-title {
-        margin: 0 12px;
-        margin-right: 18px;
-        p {
-          font-size: var(--font-size-text-medium);
-          color: var(--ion-color-primary-700);
-          font-weight: var(--font-weight-bold);
-          line-height: var(--line-height-text-small);
-          text-align: left;
-          text-transform: none;
-          &[data-variant~="capitalise"] {
-            text-transform: capitalize;
-          }
-          &[data-variant~="uppercase"] {
-            text-transform: uppercase;
-          }
-        }
-      }
-      .icon {
-        width: 28px;
-        max-width: unset;
-      }
-      .container[data-language-direction~="rtl"] {
-        .module-title {
-          p {
-            text-align: right;
-          }
-        }
-        .module-image {
-          img {
-            -webkit-transform: scaleX(-1);
-            transform: scaleX(-1);
-          }
-        }
-        .icon {
-          -webkit-transform: scaleX(-1);
-          transform: scaleX(-1);
-        }
-      }
-    }
-    .module-item[data-lock~="true"] {
-      box-shadow: none;
-      opacity: 0.5;
-      border: 2px solid #dbe3f2;
-      background-color: var(--color-surface-white);
-      .module-image {
-        img {
-          width: 60px;
-          height: 60px;
-          max-width: unset;
-        }
-      }
-    }
-  }
-
   // Radio Button Group
   plh-radio-group {
     .btn_triangle {
@@ -1043,39 +967,22 @@ body[data-theme="plh_kids_kw"] {
           justify-content: center;
 
           position: relative;
-          height: 80px !important;
-          width: 80px !important;
-        }
-        img {
-          opacity: 0.5 !important;
-          border-radius: 50% !important;
-          width: 80% !important;
-          height: 80% !important;
-        }
-        .locked-image {
-          display: flex !important;
-          position: absolute;
-          margin: 0 auto;
-          top: 0px;
-          left: 0px;
-          right: 0px;
-          bottom: 0px;
-
-          align-items: center;
-          justify-content: center;
-
-          img {
-            width: 36px;
-            max-width: 40px;
-            object-fit: contain;
-            opacity: 1 !important;
+          height: 75px !important;
+          width: 75px !important;
+          &.locked {
+            img {
+              opacity: 0.5 !important;
+              border-radius: 50% !important;
+              width: 80% !important;
+              height: 80% !important;
+            }
           }
         }
-        .circle-wrapper.inProgress {
+        .circle-wrapper.highlighted {
           border: 4px solid #c99529 !important;
           box-shadow: 0px 2px 12px rgba($color: #007fbf, $alpha: 0.7);
-          width: 95px !important;
-          height: 95px !important;
+          width: 80px !important;
+          height: 80px !important;
           img {
             opacity: 1 !important;
           }
@@ -1092,17 +999,6 @@ body[data-theme="plh_kids_kw"] {
         .badge {
           display: none !important;
         }
-      }
-    }
-  }
-  // Radio Button Grid
-  .radio-grid {
-    .item {
-      border: 1px solid var(--ion-color-gray-100);
-      box-shadow: none !important;
-      border-radius: var(--ion-border-radius-small);
-      .item-image-container {
-        padding: 16px;
       }
     }
   }
@@ -1216,47 +1112,41 @@ body[data-theme="plh_kids_kw"] {
   }
 
   // Plh Progress Path
-  plh-plh-progress-path {
+  plh-progress-path {
     .progress-path {
       &.loading {
         visibility: hidden;
       }
 
       height: 700px;
-      display: grid;
-      grid-template-columns: 1fr 430px 1fr;
-      overflow-y: scroll;
+      width: 100%;
       overflow-x: scroll;
       scrollbar-width: none;
       &::-webkit-scrollbar {
         display: none;
       }
+      display: flex;
+      justify-content: center;
+      align-items: center;
       .wrapper {
-        height: 700px;
+        height: 100%;
+        width: 100vw;
+
         background-position: center;
         background-repeat: no-repeat;
         background-size: cover;
         position: relative;
-        grid-column: 2/3;
-      }
-      .path-segment {
-        visibility: hidden;
+        overflow-x: scroll;
+
+        max-width: 430px;
+        min-width: 280px;
+
         display: flex;
         justify-content: center;
-        align-items: center;
-        width: 100%;
-        svg {
-          stroke-width: 26px;
-          stroke: var(--color-surface-white-variant) !important;
-          opacity: 0.85;
-        }
+        align-items: flex-end;
       }
       .progress-path-child-wrapper {
-        position: absolute;
         height: 100%;
-        margin: 0 auto;
-        top: 0;
-        left: 0;
         .progress-path-child-content-wrapper {
           height: 100%;
           position: relative;
@@ -1271,40 +1161,98 @@ body[data-theme="plh_kids_kw"] {
             }
           }
           &:nth-child(1) {
-            bottom: 20px;
+            bottom: 3%;
             left: 40%;
           }
           &:nth-child(2) {
-            bottom: 108px;
-            right: 12px;
+            bottom: 18%;
+            right: 3.6%;
           }
           &:nth-child(3) {
-            bottom: 198px;
-            right: 130px;
+            bottom: 30%;
+            right: 34%;
           }
           &:nth-child(4) {
-            bottom: 210px;
-            left: 28px;
+            bottom: 32%;
+            left: 7%;
           }
           &:nth-child(5) {
-            top: 230px;
-            left: 14px;
+            top: 36%;
+            left: 2%;
           }
           &:nth-child(6) {
-            top: 216px;
-            left: 188px;
+            top: 34.6%;
+            left: 46%;
           }
           &:nth-child(7) {
-            top: 133px;
-            right: 10px;
+            top: 24%;
+            right: -1%;
           }
           &:nth-child(8) {
-            top: 65px;
-            right: 139px;
+            top: 13%;
+            right: 37%;
           }
           &:nth-child(9) {
-            top: 10px;
-            left: 54px;
+            top: 2%;
+            left: 10%;
+          }
+        }
+      }
+    }
+    @media (max-width: 400px) {
+      .progress-path {
+        height: 100vh;
+        .wrapper {
+          background-position: bottom;
+        }
+        .progress-path-child-wrapper {
+          .progress-path-child-content {
+            plh-task-card {
+              .circle-card-wrapper .image-and-badge-wrapper .circle-wrapper {
+                height: 75px !important;
+                width: 75px !important;
+                &.inProgress {
+                  width: 78px !important;
+                  height: 78px !important;
+                }
+              }
+            }
+            &:nth-child(1) {
+              bottom: 4%;
+              left: 40%;
+            }
+            &:nth-child(2) {
+              bottom: 10%;
+              right: 3.6%;
+            }
+            &:nth-child(3) {
+              bottom: 32%;
+              right: 10%;
+            }
+            &:nth-child(4) {
+              bottom: 29%;
+              left: 18%;
+            }
+            &:nth-child(5) {
+              top: 33%;
+              left: 12%;
+            }
+            &:nth-child(6) {
+              top: 36%;
+              right: 10%;
+            }
+            &:nth-child(7) {
+              top: 15%;
+              right: 2%;
+            }
+            &:nth-child(8) {
+              top: 13%;
+              right: 40%;
+            }
+            &:nth-child(9) {
+              top: 6%;
+              left: 6%;
+            }
           }
         }
       }

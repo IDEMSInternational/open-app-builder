@@ -1,5 +1,5 @@
 import { FlowTypes } from "../../models";
-import { updateItemMeta } from "./data-items.utils";
+import { updateItemActionLists, generateItemMeta } from "./data-items.utils";
 
 const MOCK_ITEM_ROWS = [{ id: "id_0" }, { id: "id_1" }];
 
@@ -16,16 +16,16 @@ const MOCK_TEMPLATE_ITEM_ROW: FlowTypes.TemplateRow = {
         { trigger: "click", action_id: "set_item", args: [], params: { completed: false } },
       ],
       _evalContext: {
-        itemContext: {
+        item: {
           _id: "id_1",
-        },
+        } as any,
       },
     },
   ],
   _evalContext: {
-    itemContext: {
+    item: {
       _id: "id_1",
-    },
+    } as any,
   },
 };
 
@@ -34,19 +34,14 @@ const MOCK_TEMPLATE_ITEM_ROW: FlowTypes.TemplateRow = {
  * yarn ng test --include src/app/shared/components/template/components/data-items/data-items.utils.spec.ts
  */
 describe("Data Items Utils", () => {
-  it("updateItemMeta updates item metadata", () => {
-    const res = updateItemMeta([MOCK_TEMPLATE_ITEM_ROW], MOCK_ITEM_ROWS, "mock_data_list");
-    const [updatedRow] = res;
-    // should automatically assign index, first and last meta from item list id lookup
-    const expectedItemContext = { _id: "id_1", _index: 1, _first: false, _last: true };
-    expect(updatedRow._evalContext.itemContext).toEqual(expectedItemContext);
-    // also check recursive child rows updated
-    expect(updatedRow.rows[0]._evalContext.itemContext).toEqual(expectedItemContext);
+  it("generateItemMeta", () => {
+    const res = generateItemMeta(MOCK_ITEM_ROWS[0], 0, 1);
+    expect(res).toEqual({ _first: true, _last: false, _id: "id_0", _index: 0 });
   });
 
-  it("updateItemMeta assigns set_item action context", () => {
-    const res = updateItemMeta([MOCK_TEMPLATE_ITEM_ROW], MOCK_ITEM_ROWS, "mock_data_list");
-    const updatedButtonActionListArgs = res[0].rows[0].action_list[0].args;
+  it("updateItemActionLists assigns set_item action context", () => {
+    const res = updateItemActionLists(MOCK_TEMPLATE_ITEM_ROW, "mock_data_list", ["id_0", "id_1"]);
+    const updatedButtonActionListArgs = res.rows[0].action_list[0].args;
     expect(updatedButtonActionListArgs).toEqual([
       {
         flow_name: "mock_data_list",
