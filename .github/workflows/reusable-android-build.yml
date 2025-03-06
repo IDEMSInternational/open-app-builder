@@ -110,7 +110,7 @@ jobs:
           # Checkout any git-lfs files required for android splash or icon
           # TODO - assumes android splash/icon in "android" asset subfolder, should read from deployment config
         - name: Ensure android git lfs resources checked out
-          run: git lfs pull --include "*/android/*"
+          run: git lfs pull --include "**/android/**"
   
         - name: Prepare android configuration
           run: yarn workflow android
