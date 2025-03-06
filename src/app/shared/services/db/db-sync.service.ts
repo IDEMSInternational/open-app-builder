@@ -26,6 +26,11 @@ import { DeploymentService } from "../deployment/deployment.service";
  */
 export class DBSyncService extends AsyncServiceBase {
   syncSchedule;
+  /**
+   * Track whether server sync should be attempted. E.g. can be temporarily disabled on
+   * a given template via template level app config
+   */
+  syncEnabled: boolean;
   constructor(
     private dbService: DbService,
     private http: HttpClient,
@@ -100,7 +105,7 @@ export class DBSyncService extends AsyncServiceBase {
 
   subscribeToAppConfigChanges() {
     this.appConfigService.appConfig$.subscribe((appConfig: IAppConfig) => {
-      this.syncSchedule = interval(appConfig.SERVER_SYNC_FREQUENCY_MS);
+      this.syncSchedule = interval(appConfig.SERVER.sync.frequency);
     });
   }
 }

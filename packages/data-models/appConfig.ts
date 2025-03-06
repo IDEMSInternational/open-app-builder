@@ -62,8 +62,13 @@ const NOTIFICATION_DEFAULTS = {
 /** How often to attempt to re-evaluate scheduled notifications - currently every minutes */
 const NOTIFICATIONS_SYNC_FREQUENCY_MS = 1000 * 60 * 3;
 
-/** How often to attempt sync - currently every 5mins */
-const SERVER_SYNC_FREQUENCY_MS = 1000 * 60 * 5;
+const SERVER = {
+  sync: {
+    enabled: true,
+    /** How often to attempt sync - currently every 5mins */
+    frequency: 1000 * 60 * 5,
+  },
+};
 
 const APP_ROUTE_DEFAULTS = {
   /** Default redirect form landing '/' route */
@@ -223,7 +228,7 @@ const APP_CONFIG = {
   LAYOUT,
   NOTIFICATIONS_SYNC_FREQUENCY_MS,
   NOTIFICATION_DEFAULTS,
-  SERVER_SYNC_FREQUENCY_MS,
+  SERVER,
   TASKS,
 };
 
