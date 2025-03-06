@@ -152,12 +152,23 @@ jobs:
         - name: Build Android Debug APK
           working-directory: android
           run: ./gradlew :app:assembleDebug
+          
+          # Sign Debug APK 
+        - name: Sign Debug APK
+          id: sign_debug_apk
+          uses: r0adkll/sign-android-release@v1
+          with:
+            releaseDirectory: ./android/app/build/outputs/apk/debug
+            signingKeyBase64: ${{ env.SIGNING_KEY }}
+            alias: ${{ env.ALIAS }}
+            keyStorePassword: ${{ env.KEY_STORE_PASSWORD }}
+            keyPassword: ${{ env.KEY_PASSWORD }}
   
         - name: Upload debug apk
           uses: actions/upload-artifact@v4
           with:
             name: debug_apk
-            path: android/app/build/outputs/apk/debug/app-debug.apk
+            path: ${{steps.sign_debug_apk.outputs.signedReleaseFile}}
   
           # Signed Release Bundle
         - name: Build Android Release Bundle
