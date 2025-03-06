@@ -4,8 +4,8 @@ import { AppDataVariableService, IVariableContext } from "./app-data-variable.se
 import { DbService } from "../db/db.service";
 import { LocalStorageService } from "../local-storage/local-storage.service";
 import { AppDataHandlerBase } from "./variable-handlers";
-import { MockDbService } from "../db/db.service.spec";
-import { MockLocalStorageService } from "../local-storage/local-storage.service.spec";
+import { MockDbService } from "../db/db.service.mock.spec";
+import { MockLocalStorageService } from "../local-storage/local-storage.service.mock.spec";
 
 function getMockHandlers() {
   /** Mock handler inherits base handler which stores all get/set in-memory */

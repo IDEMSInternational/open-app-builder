@@ -120,6 +120,8 @@ body[data-theme="plh_kids_kw"] {
       }
       .children {
         inset-inline-end: -2px !important;
+        // `top` must be unset explicitly to avoid cascade/inheritance issue on webkit browsers
+        top: unset;
         bottom: 2px !important;
         padding: 0px !important;
       }
@@ -620,79 +622,6 @@ body[data-theme="plh_kids_kw"] {
     }
   }
 
-  // module-list-item
-  plh-module-list-item {
-    .module-item {
-      width: 100%;
-      border: 2px solid var(--color-secondary-blue-60);
-      border-radius: var(--ion-border-radius-secondary);
-      padding: 16px;
-      box-shadow: 1px 1px 10px #92b7da;
-      background-color: #f6fafe;
-      margin-bottom: 16px;
-      .container {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: space-between;
-      }
-      .module-image {
-        img {
-          width: 100px;
-          height: 100px;
-          max-width: unset;
-        }
-      }
-      .module-title {
-        margin: 0 12px;
-        margin-right: 18px;
-        p {
-          font-size: var(--font-size-text-medium);
-          color: var(--ion-color-primary-700);
-          font-weight: var(--font-weight-bold);
-          line-height: var(--line-height-text-small);
-          text-align: center;
-          text-transform: none;
-          &[data-variant~="capitalise"] {
-            text-transform: capitalize;
-          }
-          &[data-variant~="uppercase"] {
-            text-transform: uppercase;
-          }
-        }
-      }
-      .icon {
-        width: 28px;
-        max-width: unset;
-      }
-      .container[data-language-direction~="rtl"] {
-        .module-image {
-          img {
-            -webkit-transform: scaleX(-1);
-            transform: scaleX(-1);
-          }
-        }
-        .icon {
-          -webkit-transform: scaleX(-1);
-          transform: scaleX(-1);
-        }
-      }
-    }
-    .module-item[data-lock~="true"] {
-      box-shadow: none;
-      opacity: 0.5;
-      border: 2px solid #dbe3f2;
-      background-color: var(--color-surface-white);
-      .module-image {
-        img {
-          width: 60px;
-          height: 60px;
-          max-width: unset;
-        }
-      }
-    }
-  }
-
   // Radio Button Group
   plh-radio-group {
     .btn_triangle {
@@ -1070,17 +999,6 @@ body[data-theme="plh_kids_kw"] {
         .badge {
           display: none !important;
         }
-      }
-    }
-  }
-  // Radio Button Grid
-  .radio-grid {
-    .item {
-      border: 1px solid var(--ion-color-gray-100);
-      box-shadow: none !important;
-      border-radius: var(--ion-border-radius-small);
-      .item-image-container {
-        padding: 16px;
       }
     }
   }

@@ -136,3 +136,14 @@ export function filterObjectByKeys<T extends Record<string, any>, K extends keyo
   const filteredEntries = Object.entries(obj).filter(([key]) => includeKeys.includes(key as K));
   return Object.fromEntries(filteredEntries) as Partial<Pick<T, K>>;
 }
+
+/** Extract all the unique keys across objects in an array */
+export function uniqueObjectArrayKeys(arr: Record<string, any>[]) {
+  const keyHashmap: Record<string, boolean> = {};
+  for (const el of arr) {
+    for (const key of Object.keys(el)) {
+      keyHashmap[key] = true;
+    }
+  }
+  return Object.keys(keyHashmap);
+}
