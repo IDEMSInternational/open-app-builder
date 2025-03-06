@@ -49,6 +49,7 @@ import { TmplRadioGroupComponent } from "./radio-group/radio-group.component";
 import { TmplSimpleCheckboxComponent } from "./simple-checkbox/simple-checkbox.component";
 import { TmplSliderComponent } from "./slider/slider.component";
 import { TmplSubtitleComponent } from "./subtitle";
+import { TmplTableComponent } from "./table/table.component";
 import { TmplTaskCardComponent } from "./task-card/task-card.component";
 import { TmplTaskProgressBarComponent } from "./task-progress-bar/task-progress-bar.component";
 import { TmplTextAreaComponent } from "./text-area/text-area.component";
@@ -113,6 +114,7 @@ export const TEMPLATE_COMPONENTS = [
   TmplSimpleCheckboxComponent,
   TmplSliderComponent,
   TmplSubtitleComponent,
+  TmplTableComponent,
   TmplTaskCardComponent,
   TmplTaskProgressBarComponent,
   TmplTextAreaComponent,
@@ -186,6 +188,7 @@ const COMMON_COMPONENT_MAPPING = {
   slider: TmplSliderComponent,
   square_button: SquareIconButtonComponent,
   subtitle: TmplSubtitleComponent,
+  table: TmplTableComponent,
   task_card: TmplTaskCardComponent,
   task_progress_bar: TmplTaskProgressBarComponent,
   text_area: TmplTextAreaComponent,
