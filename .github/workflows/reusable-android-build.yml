@@ -39,10 +39,6 @@ on:
           type: string
           description: "Specify branch for deployment"
           default: ""
-        lfs:
-          description: Enable git lfs asset download for content repos (if used by repo)
-          type: boolean
-          default: true
       secrets:
         DEPLOYMENT_PRIVATE_KEY:
           description: Provide private key if deployment uses encrypted config
@@ -53,7 +49,6 @@ jobs:
         uses: ./.github/workflows/reusable-app-build.yml
         with: 
           branch: ${{ inputs.branch }}
-          lfs: ${{inputs.lfs}}
         secrets: inherit
   
     build_android:
@@ -81,8 +76,6 @@ jobs:
           uses: actions/checkout@v3
           with:
             path: ".idems_app/deployments/${{env.DEPLOYMENT_NAME}}"
-            # content repo optionally includes lfs
-            lfs: ${{inputs.lfs}}
 
         - name: Populate Encryption key
           if: env.DEPLOYMENT_PRIVATE_KEY != ''
@@ -117,7 +110,6 @@ jobs:
           # Checkout any git-lfs files required for android splash or icon
           # TODO - assumes android splash/icon in "android" asset subfolder, should read from deployment config
         - name: Ensure android git lfs resources checked out
-          if: ${{inputs.lfs}}
           run: git lfs pull --include "*/android/*"
   
         - name: Prepare android configuration
