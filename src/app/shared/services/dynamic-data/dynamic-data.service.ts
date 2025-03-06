@@ -139,8 +139,8 @@ export class DynamicDataService extends AsyncServiceBase {
         const mergedUpdate = deepMergeObjects(data, update);
         // update memory db
         await this.db.updateDoc({ collectionName, id: row_id, data: mergedUpdate });
-        // update persisted db
-        this.writeCache.update({ flow_name, flow_type, id: row_id, data: mergedUpdate });
+        // update persisted db - only use partial update as will be merged
+        this.writeCache.update({ flow_name, flow_type, id: row_id, data: update });
       } else {
         throw new Error(
           `[Update Fail] no doc exists for ${flow_type}:${flow_name} with row_id: ${row_id}`
@@ -358,6 +358,7 @@ export class DynamicDataService extends AsyncServiceBase {
     }
 
     if (itemDataIDs.includes(targetRowId)) {
+      console.log("[Set Item]", flow_name, targetRowId, writeableProps);
       await this.update("data_list", flow_name, targetRowId, writeableProps);
     } else {
       console.warn(`[SET ITEM] - No item ${_id ? "with ID " + _id : "at index " + _index}`);
