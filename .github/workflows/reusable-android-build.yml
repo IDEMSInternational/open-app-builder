@@ -152,6 +152,13 @@ jobs:
         - name: Build Android Debug APK
           working-directory: android
           run: ./gradlew :app:assembleDebug
+
+        #  https://github.com/r0adkll/sign-android-release/issues/84
+        - name: Setup build tool version variable
+          shell: bash
+          run: |
+            BUILD_TOOL_VERSION=$(ls /usr/local/lib/android/sdk/build-tools/ | tail -n 1)
+            echo "BUILD_TOOL_VERSION=$BUILD_TOOL_VERSION" >> $GITHUB_ENV
           
           # Sign Debug APK 
         - name: Sign Debug APK
@@ -163,6 +170,8 @@ jobs:
             alias: ${{ env.ALIAS }}
             keyStorePassword: ${{ env.KEY_STORE_PASSWORD }}
             keyPassword: ${{ env.KEY_PASSWORD }}
+          env:
+            BUILD_TOOLS_VERSION: ${{ env.BUILD_TOOL_VERSION }}
   
         - name: Upload debug apk
           uses: actions/upload-artifact@v4
@@ -184,6 +193,8 @@ jobs:
             alias: ${{ env.ALIAS }}
             keyStorePassword: ${{ env.KEY_STORE_PASSWORD }}
             keyPassword: ${{ env.KEY_PASSWORD }}
+          env:
+            BUILD_TOOLS_VERSION: ${{ env.BUILD_TOOL_VERSION }}
             
         - name: Upload release bundle
           uses: actions/upload-artifact@v4
