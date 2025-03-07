@@ -101,7 +101,7 @@ jobs:
           sdk: "iOS 11.1"
         working-directory: ios
         run: |
-          fastlane run build_ios_app 
+          bundle exec fastlane run build_ios_app 
           --workspace "${{env.workspace}}"
           --configuration "${{env.configuration}}"
           --scheme "${{env.scheme}}"
