@@ -99,14 +99,7 @@ jobs:
         with:
           lane: build_ios_app
           subdirectory: ios/App
-          options: |
-            {
-              "workspace": "${{env.workspace}}",
-              "configuration": "${{env.configuration}}",
-              "scheme": "${{env.scheme}}",
-              "output_name": "${{env.output_name}}",
-              "sdk": "${{env.sdk}}",
-            }
+          options: '{"workspace": "${{env.workspace}}","configuration": "${{env.configuration}}","scheme": "${{env.scheme}}","output_name": "${{env.output_name}}","sdk": "${{env.sdk}}"}'
 
     # TODO - google plist
     #   - name: Populate google-services.json
