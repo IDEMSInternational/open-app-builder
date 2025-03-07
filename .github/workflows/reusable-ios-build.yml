@@ -86,19 +86,35 @@ jobs:
         with:
           ruby-version: "3.0"
           bundler-cache: true
-          working-directory: ios/App
+          working-directory: ios
 
-      # https://docs.fastlane.tools/actions/build_ios_app/
-      - uses: maierj/fastlane-action@v3.1.0
+      - name: Build IOS
         env:
-          workspace: App.xcworkspace
+          workspace: App/App.xcworkspace
           configuration: debug
           scheme: "App"
           output_name: "app.ipa"
           sdk: "iOS 11.1"
-        with:
-          lane: build_ios_app
-          subdirectory: ios/App
+        working-directory: ios
+        run: |
+          fastlane run build_ios_app 
+          --workspace "${{env.workspace}}"
+          --configuration "${{env.configuration}}"
+          --scheme "${{env.scheme}}"
+          --output_name "${{env.output_name}}"
+          --sdk "${{env.sdk}}"
+
+      # https://docs.fastlane.tools/actions/build_ios_app/
+      # - uses: maierj/fastlane-action@v3.1.0
+      #   env:
+      #     workspace: App/App.xcworkspace
+      #     configuration: debug
+      #     scheme: "App"
+      #     output_name: "app.ipa"
+      #     sdk: "iOS 11.1"
+      #   with:
+      #     lane: build_ios_app
+      #     subdirectory: ios
           options: '{"workspace": "${{env.workspace}}","configuration": "${{env.configuration}}","scheme": "${{env.scheme}}","output_name": "${{env.output_name}}","sdk": "${{env.sdk}}"}'
 
     # TODO - google plist
