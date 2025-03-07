@@ -52,17 +52,17 @@ jobs:
   #         Deployment build
   #############################################################################
 
-  build_web:
-    uses: ./.github/workflows/reusable-app-build.yml
-    with:
-      branch: ${{ inputs.branch }}
-      post-build-cmd: npx cap sync ios
-      additional-artifact: ios
-    secrets: inherit
+  # build_web:
+  #   uses: ./.github/workflows/reusable-app-build.yml
+  #   with:
+  #     branch: ${{ inputs.branch }}
+  #     post-build-cmd: npx cap sync ios
+  #     additional-artifact: ios
+  #   secrets: inherit
 
   debug:
     runs-on: macos-latest
-    needs: build_web
+    # needs: build_web
     steps:
       - name: Download IOS artifact
         uses: actions/download-artifact@v4
@@ -72,7 +72,7 @@ jobs:
           #   NOTE - need to explicitly include token to download from a different workflow run
           # https://github.com/actions/download-artifact/issues/320
           github-token: ${{ github.token }}
-          # run-id: 13729563778
+          run-id: 13731332844
 
       - name: Extract Build folder
         run: |
@@ -85,7 +85,8 @@ jobs:
         with:
           ruby-version: "3.0"
           bundler-cache: true
-          working-directory: ios
+        env: # $BUNDLE_GEMFILE must be set at the job level, so it is set for all steps
+          BUNDLE_GEMFILE: ${{ github.workspace }}/ios/Gemfile
 
           # Could not determine gemfile path, skipping "bundle install" and caching
           # TODO - likely needs gemfile lock
