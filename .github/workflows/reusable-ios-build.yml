@@ -52,19 +52,18 @@ jobs:
   #         Deployment build
   #############################################################################
 
-  # build_web:
-  #   uses: ./.github/workflows/reusable-app-build.yml
-  #   with:
-  #     branch: ${{ inputs.branch }}
-  #     post-build-cmd: npx cap sync ios
-  #     additional-artifact: ios
-  #   secrets: inherit
+  build_web:
+    uses: ./.github/workflows/reusable-app-build.yml
+    with:
+      branch: ${{ inputs.branch }}
+      post-build-cmd: npx cap sync ios
+      additional-artifact: ios
+    secrets: inherit
 
   debug:
     runs-on: macos-latest
-    # needs: build_web
+    needs: build_web
     steps:
-      - uses: actions/checkout@v4
       - name: Download IOS artifact
         uses: actions/download-artifact@v4
         with:
@@ -73,12 +72,11 @@ jobs:
           #   NOTE - need to explicitly include token to download from a different workflow run
           # https://github.com/actions/download-artifact/issues/320
           github-token: ${{ github.token }}
-          run-id: 13729563778
+          # run-id: 13729563778
 
-      # Extract contents from the ios artifact into the repo ios folder. This will populate
-      # files previously copied via `npx cap sync ios` post-build command
       - name: Extract Build folder
         run: |
+          mkdir ios
           tar -xf artifact.tar --directory ios
           ls ios
 
