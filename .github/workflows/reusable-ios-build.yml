@@ -52,22 +52,24 @@ jobs:
   #         Deployment build
   #############################################################################
 
-  build_web:
-    uses: ./.github/workflows/reusable-app-build.yml
-    with:
-      branch: ${{ inputs.branch }}
-      post-build-cmd: npx cap sync ios
-      additional-artifact: ios
-    secrets: inherit
+  #   build_web:
+  #     uses: ./.github/workflows/reusable-app-build.yml
+  #     with:
+  #       branch: ${{ inputs.branch }}
+  #       post-build-cmd: npx cap sync ios
+  #       additional-artifact: ios
+  #     secrets: inherit
 
   debug:
     runs-on: ubuntu-latest
-    needs: build_web
+    # needs: build_web
     steps:
       - name: Download IOS artifact
         uses: actions/download-artifact@v4
         with:
           name: ios
+          # TODO - revert after debugging   
+          run-id: 13727815102
       - name: Extract Build folder
         run: |
           mkdir ios
