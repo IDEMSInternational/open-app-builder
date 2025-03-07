@@ -72,14 +72,17 @@ jobs:
       - name: Download IOS artifact
         uses: actions/download-artifact@v4
         with:
-          #   name: ios
+          name: ios
           # TODO - revert after debugging
+          #   NOTE - need to explicitly include token to download from a different workflow run
+          # https://github.com/actions/download-artifact/issues/320
+          github-token: ${{ github.token }}
           run-id: 13727815102
-          repository: IDEMSInternational/app-debug-content
         #   https://github.com/IDEMSInternational/app-debug-content/actions/runs/13727815102/artifacts/2713158337
 
       - name: Extract Build folder
         run: |
+          ls -R
           mkdir ios
           tar -xf artifact.tar --directory ios
           ls
