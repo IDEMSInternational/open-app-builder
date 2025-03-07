@@ -101,11 +101,11 @@ jobs:
           subdirectory: ios/App
           options: |
             '{ 
-            "workspace": $workspace, 
-            "configuration": "$configuration", 
-            "scheme:$scheme", 
-            "output_name":$output_name,
-            "sdk":$sdk
+            "workspace": "${{env.workspace}}", 
+            "configuration": "${{env.configuration}}", 
+            "scheme: "${{env.scheme}}", 
+            "output_name": "${{env.output_name}}",
+            "sdk": "${{env.sdk}}"
             }'
 
     # TODO - google plist
