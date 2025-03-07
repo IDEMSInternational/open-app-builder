@@ -44,6 +44,14 @@ on:
           description: Enable git lfs asset download for content repos (if used by repo)
           type: boolean
           default: true
+        post-build-cmd:
+          description: Optional command to run postbuild
+          type: string
+          default: ""
+        additional-artifact:
+          description: Optional folder name to upload as additional artifact (e.g. ios/android folders)
+          type: string
+          default: ""
   
       outputs:
         GIT_SHA:
@@ -120,9 +128,20 @@ jobs:
 
         - name: Build
           run: yarn build ${{inputs.build-flags}}
+
+        - name: Post-Build
+          if: ${{inputs.post-build-cmd}}
+          run: ${{inputs.post-build-cmd}}
   
-        - name: Upload artifact
+        - name: Upload www artifact
           uses: actions/upload-pages-artifact@v3
           with:
             path: "www/"
             name: www  
+
+        - name: Upload additional artifacts
+          if: ${{inputs.additional-artifact}}
+          uses: actions/upload-pages-artifact@v3
+          with:
+            path: "${{inputs.additional-artifact}}/"
+            name: ${{inputs.additional-artifact}}
