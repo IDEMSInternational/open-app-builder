@@ -64,11 +64,6 @@ jobs:
     runs-on: macos-latest
     # needs: build_web
     steps:
-      - uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: "3.0"
-          bundler-cache: true
-
       - name: Download IOS artifact
         uses: actions/download-artifact@v4
         with:
@@ -87,10 +82,31 @@ jobs:
           tar -xf artifact.tar --directory ios
           ls -R
 
-    #   - uses: maierj/fastlane-action@v3.1.0
-    #     with:
-    #       lane: beta
-    #       subdirectory: "ios/App"
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: "3.0"
+          bundler-cache: true
+          working-directory: ios/App
+
+      # https://docs.fastlane.tools/actions/build_ios_app/
+      - uses: maierj/fastlane-action@v3.1.0
+        env:
+          workspace: App.xcworkspace
+          configuration: debug
+          scheme: "App"
+          output_name: "app.ipa"
+          sdk: "iOS 11.1"
+        with:
+          lane: build_ios_app
+          subdirectory: ios/App
+          options: |
+            '{ 
+            "workspace": $workspace, 
+            "configuration": "$configuration", 
+            "scheme:$scheme", 
+            "output_name":$output_name,
+            "sdk":$sdk
+            }'
 
     # TODO - google plist
     #   - name: Populate google-services.json
