@@ -88,6 +88,7 @@ jobs:
           bundler-cache: true
           working-directory: ios
 
+      # https://docs.fastlane.tools/actions/build_ios_app/
       - name: Build IOS
         env:
           workspace: App/App.xcworkspace
@@ -103,19 +104,6 @@ jobs:
           --scheme "${{env.scheme}}"
           --output_name "${{env.output_name}}"
           --sdk "${{env.sdk}}"
-
-      # https://docs.fastlane.tools/actions/build_ios_app/
-      # - uses: maierj/fastlane-action@v3.1.0
-      #   env:
-      #     workspace: App/App.xcworkspace
-      #     configuration: debug
-      #     scheme: "App"
-      #     output_name: "app.ipa"
-      #     sdk: "iOS 11.1"
-      #   with:
-      #     lane: build_ios_app
-      #     subdirectory: ios
-          options: '{"workspace": "${{env.workspace}}","configuration": "${{env.configuration}}","scheme": "${{env.scheme}}","output_name": "${{env.output_name}}","sdk": "${{env.sdk}}"}'
 
     # TODO - google plist
     #   - name: Populate google-services.json
