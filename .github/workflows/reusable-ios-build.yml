@@ -61,15 +61,23 @@ jobs:
   #     secrets: inherit
 
   debug:
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
     # needs: build_web
     steps:
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: "3.0"
+          bundler-cache: true
+
       - name: Download IOS artifact
         uses: actions/download-artifact@v4
         with:
-          name: ios
-          # TODO - revert after debugging   
+          #   name: ios
+          # TODO - revert after debugging
           run-id: 13727815102
+          repository: IDEMSInternational/app-debug-content
+        #   https://github.com/IDEMSInternational/app-debug-content/actions/runs/13727815102/artifacts/2713158337
+
       - name: Extract Build folder
         run: |
           mkdir ios
@@ -78,11 +86,16 @@ jobs:
           ls ios
           ls ios/App
 
-        # TODO - google plist
-      #   - name: Populate google-services.json
-      #     env:
-      #       GOOGLE_SERVICES_JSON: ${{ env.GOOGLE_SERVICES_JSON }}
-      #     run: echo $GOOGLE_SERVICES_JSON > android/app/google-services.json
+    #   - uses: maierj/fastlane-action@v3.1.0
+    #     with:
+    #       lane: beta
+    #       subdirectory: "ios/App"
+
+    # TODO - google plist
+    #   - name: Populate google-services.json
+    #     env:
+    #       GOOGLE_SERVICES_JSON: ${{ env.GOOGLE_SERVICES_JSON }}
+    #     run: echo $GOOGLE_SERVICES_JSON > android/app/google-services.json
 
     #############################################################################
     #         IOS Build and Upload
