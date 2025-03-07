@@ -85,9 +85,7 @@ jobs:
           ls -R
           mkdir ios
           tar -xf artifact.tar --directory ios
-          ls
-          ls ios
-          ls ios/App
+          ls -R
 
     #   - uses: maierj/fastlane-action@v3.1.0
     #     with:
