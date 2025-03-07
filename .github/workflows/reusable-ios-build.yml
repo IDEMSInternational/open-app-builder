@@ -52,13 +52,13 @@ jobs:
   #         Deployment build
   #############################################################################
 
-  build_web:
-    uses: ./.github/workflows/reusable-app-build.yml
-    with:
-      branch: ${{ inputs.branch }}
-      post-build-cmd: npx cap sync ios
-      additional-artifact: ios
-    secrets: inherit
+  # build_web:
+  #   uses: ./.github/workflows/reusable-app-build.yml
+  #   with:
+  #     branch: ${{ inputs.branch }}
+  #     post-build-cmd: npx cap sync ios
+  #     additional-artifact: ios
+  #   secrets: inherit
 
   debug:
     runs-on: macos-latest
@@ -72,8 +72,7 @@ jobs:
           #   NOTE - need to explicitly include token to download from a different workflow run
           # https://github.com/actions/download-artifact/issues/320
           github-token: ${{ github.token }}
-          # run-id: 13727815102
-        #   https://github.com/IDEMSInternational/app-debug-content/actions/runs/13727815102/artifacts/2713158337
+          run-id: 13729563778
 
       - name: Extract Build folder
         run: |
@@ -81,6 +80,7 @@ jobs:
           tar -xf artifact.tar --directory ios
           ls -R
 
+      # Setup ruby. This will also default install the Gemfile in the ios folder which includes fastlane
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: "3.0"
