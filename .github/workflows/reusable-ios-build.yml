@@ -84,9 +84,9 @@ jobs:
       # via the setup-ruby command. This file could also be created and comitted to core repo is required
       - name: Add fastlane gem
         run: |
-          touch Gemfile
           echo 'source "https://rubygems.org"' > Gemfile
-          echo 'gem "fastlane"' > Gemfile
+          echo 'gem "fastlane"' >> Gemfile
+          cat Gemfile
 
       # Setup ruby. This will also default install the Gemfile in the ios folder which includes fastlane
       - uses: ruby/setup-ruby@v1
