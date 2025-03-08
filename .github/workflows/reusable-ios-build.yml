@@ -119,7 +119,10 @@ jobs:
         working-directory: ios/App
         run: |
           bundle exec fastlane run build_ios_app \
-          --configuration "${{env.configuration}}" --scheme "App" --skip_codesigning true --skip_package_ipa true
+          configuration:"${{env.configuration}}" \
+          scheme:"App" \
+          skip_codesigning \
+          skip_package_ipa
 
     # TODO - google plist
     #   - name: Populate google-services.json
