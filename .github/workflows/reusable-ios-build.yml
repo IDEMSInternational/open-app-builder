@@ -96,10 +96,12 @@ jobs:
 
       - name: Setup development certificates
         working-directory: ios/App
+        env:
+          IOS_USERNAME: "example@idems.international"
         run: |
           mkdir fastlane
           bundle exec fastlane run create_keychain name:"temp.keychain", password:"temp1234", unlock, default_keychain
-          bundle exec fastlane run get_certificates
+          bundle exec fastlane run get_certificates username:"${{env.IOS_USERNAME}}", development
           bundle exec fastlane run get_provisioning_profile
           bundle exec fastlane run disable_automatic_code_signing
 
