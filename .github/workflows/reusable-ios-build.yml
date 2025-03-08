@@ -62,17 +62,24 @@ jobs:
     runs-on: macos-latest
     # needs: build_web
     steps:
-      # TODO - still need to install node_modules for use in build
-      # TODO - copy google plist
+      # checkout and install just the node_modules from the main repo
+      # so that they can be used as part of the ios build process
+      # (capacitor keeps pod files in node_modules)
       - uses: actions/checkout@v4
         with:
           repository: "IDEMSInternational/open-app-builder.git"
           ref: ${{env.APP_CODE_BRANCH}}
+          filter: yarn.lock
       - uses: actions/setup-node@v4
         with:
           node-version: 20.17.0
           cache: yarn
-      - run: yarn workspaces focus --production
+      - name: Install IOS node_modules
+        env:
+          REMOTE: https://github.com/IDEMSInternational/open-app-builder.git
+        run: |
+          git archive --remote=${{env.REMOTE}} HEAD yarn.lock | tar -x
+          yarn workspaces focus --production
 
       - name: Download IOS artifact
         uses: actions/download-artifact@v4
@@ -89,9 +96,8 @@ jobs:
       # capacitor.config.json included
       - name: Setup IOS folder
         run: |
-          mkdir tmp
-          tar -xf artifact.tar --directory tmp
-          cp -R tmp/* ios/
+          mkdir ios
+          tar -xf artifact.tar --directory ios
           echo ${{env.GOOGLE_SERVICES_PLIST}} > ios/App/App/GoogleService-Info.plist
           ls ios/App/App
 
