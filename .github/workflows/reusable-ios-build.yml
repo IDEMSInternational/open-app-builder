@@ -52,17 +52,19 @@ jobs:
   #         Deployment build
   #############################################################################
 
-  # build_web:
-  #   uses: ./.github/workflows/reusable-app-build.yml
-  #   with:
-  #     branch: ${{ inputs.branch }}
-  #     post-build-cmd: yarn workflow ios configure && npx cap sync ios
-  #     additional-artifact: ios
-  #   secrets: inherit
+  build_web:
+    uses: ./.github/workflows/reusable-app-build.yml
+    with:
+      branch: ${{ inputs.branch }}
+      post-build-cmd: yarn workflow ios configure && npx cap sync ios
+      additional-artifact: ios
+      # Ensure build also run on macos to allow npx cap sync to configure ios pods
+      workflow-runner: macos-latest
+    secrets: inherit
 
   debug:
     runs-on: macos-latest
-    # needs: build_web
+    needs: build_web
     steps:
       - name: Download IOS artifact
         uses: actions/download-artifact@v4
@@ -72,7 +74,7 @@ jobs:
           #   NOTE - need to explicitly include token to download from a different workflow run
           # https://github.com/actions/download-artifact/issues/320
           github-token: ${{ github.token }}
-          run-id: 13731930921
+          # run-id: 13731930921
 
       - name: Extract Build folder
         run: |

@@ -52,19 +52,21 @@ on:
           description: Optional folder name to upload as additional artifact (e.g. ios/android folders)
           type: string
           default: ""
-  
+        workflow-runner:
+          description: Optionally specify github runner to use for build action
+          type: string
+          default: ubuntu-latest
       outputs:
         GIT_SHA:
           description: "Git SHA of build head"
           value: ${{ jobs.build.outputs.GIT_SHA }}
-  
 jobs:
     build:
       outputs:
         GIT_SHA: ${{ steps.populate.outputs.GIT_SHA }}
       env:
         ARTIFACT: test
-      runs-on: ubuntu-latest
+      runs-on: ${{inputs.workflow-runner}}
 
       steps:
         - name: Check out app code
