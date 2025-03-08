@@ -52,13 +52,13 @@ jobs:
   #         Deployment build
   #############################################################################
 
-  # build_web:
-  #   uses: ./.github/workflows/reusable-app-build.yml
-  #   with:
-  #     branch: ${{ inputs.branch }}
-  #     post-build-cmd: npx cap sync ios
-  #     additional-artifact: ios
-  #   secrets: inherit
+  build_web:
+    uses: ./.github/workflows/reusable-app-build.yml
+    with:
+      branch: ${{ inputs.branch }}
+      post-build-cmd: yarn workflow ios configure && npx cap sync ios
+      additional-artifact: ios
+    secrets: inherit
 
   debug:
     runs-on: macos-latest
@@ -98,17 +98,17 @@ jobs:
 
       # Call fastlane build_ios_app track
       # https://docs.fastlane.tools/actions/build_ios_app/
-      - name: Build IOS
-        env:
-          configuration: debug
-          sdk: "iOS 11.1"
-        working-directory: ios/App
-        run: |
-          bundle exec fastlane run build_ios_app 
-          --configuration "${{env.configuration}}"
-          --scheme "App"
-          --output_name "app.ipa"
-          --sdk "${{env.sdk}}"
+      # - name: Build IOS
+      #   env:
+      #     configuration: debug
+      #     sdk: "iOS 11.1"
+      #   working-directory: ios/App
+      #   run: |
+      #     bundle exec fastlane run build_ios_app
+      #     --configuration "${{env.configuration}}"
+      #     --scheme "App"
+      #     --output_name "app.ipa"
+      #     --sdk "${{env.sdk}}"
 
     # TODO - google plist
     #   - name: Populate google-services.json
