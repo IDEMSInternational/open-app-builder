@@ -97,7 +97,8 @@ jobs:
       - name: Setup development certificates
         working-directory: ios/App
         run: |
-          bundle exec fastlane create_keychain name:"temp.keychain", password:"temp1234", unlock:true, default-keychain:true
+          mkdir fastlane
+          bundle exec fastlane run create_keychain name:"temp.keychain", password:"temp1234", unlock:true, default_keychain:true
           bundle exec fastlane run get_certificates
           bundle exec fastlane run get_provisioning_profile
           bundle exec fastlane run disable_automatic_code_signing
@@ -154,7 +155,7 @@ jobs:
     # IOS_P12_PASSWORD: ${{secrets.IOS_P12_PASSWORD}}
 
     # - name: Setup Fastlane Match
-    #   working-directory: ios/App
+    #   working-directory: ios/App/fastlane
     #   run: |
     #     echo 'google_cloud_bucket_name("${{env.IOS_FASTLANE_MATCH_GCS_BUCKET_NAME}}")' > Matchfile
     #     echo 'storage_mode("google_cloud")' >> Matchfile
