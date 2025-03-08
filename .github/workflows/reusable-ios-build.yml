@@ -111,19 +111,15 @@ jobs:
 
       # Attempt to create an unsigned build for local testing
       # https://blog.richardszalay.com/2016/08/22/ios-deploy-pipeline-3-setup-and-build-test-phase/
+      # https://stackoverflow.com/a/66278353
       - name: Build IOS
         env:
           # Supported configurations in project are Debug and Release
           configuration: Debug
-          sdk: "iOS 11.1"
         working-directory: ios/App
         run: |
-          bundle exec fastlane run build_ios_app
-          --configuration "${{env.configuration}}"
-          --scheme "App"
-          --sdk "${{env.sdk}}"
-          --skip_codesigning true
-          --skip_package_ipa true
+          bundle exec fastlane run build_ios_app \
+          --configuration "${{env.configuration}}" --scheme "App" --skip_codesigning true --skip_package_ipa true
 
     # TODO - google plist
     #   - name: Populate google-services.json
