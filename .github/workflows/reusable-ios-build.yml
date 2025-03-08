@@ -102,11 +102,14 @@ jobs:
           bundler-cache: true
           working-directory: ios/App
 
+        # https://docs.fastlane.tools/codesigning/getting-started/
+
       - name: Setup development certificates
         run: |
           bundle exec fastlane create_keychain --name "temp.keychain" --password "temp1234" --unlock true --default-keychain true
-          bundle exec fastlane run cert --development true
-          bundle exec fastlane run sigh --development true
+          bundle exec fastlane run get_certificates
+          bundle exec fastlane run get_provisioning_profile
+          bundle exec fastlane run disable_automatic_code_signing
 
       # - name: Setup Fastlane Match
       #   working-directory: ios/App
