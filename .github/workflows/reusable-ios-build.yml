@@ -68,10 +68,6 @@ jobs:
         with:
           repository: "IDEMSInternational/open-app-builder.git"
           ref: ${{env.APP_CODE_BRANCH}}
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 20.17.0
-          cache: yarn
 
       - name: Download IOS artifact
         uses: actions/download-artifact@v4
@@ -122,6 +118,10 @@ jobs:
       #     bundle exec fastlane run disable_automatic_code_signing
 
       # Install node_module dependencies (includes capacitor plugin pods required for build)
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20.17.0
+          cache: yarn
       - run: yarn workspaces focus --production
 
       # Call fastlane build_ios_app track
