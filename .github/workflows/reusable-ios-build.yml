@@ -19,16 +19,6 @@ env:
 
   GOOGLE_SERVICES_JSON: ${{secrets.GOOGLE_SERVICES_JSON}}
 
-  # IOS_FASTLANE_MATCH_GCS_SERVICE_JSON: ${{secrets.IOS_FASTLANE_MATCH_GCS_SERVICE_JSON}}
-
-  # IOS_CODE_SIGNING_IDENTITY: ${{ secrets.IOS_CODE_SIGNING_IDENTITY }}
-  # IOS_TEAM_ID: ${{ secrets.IOS_TEAM_ID }}
-
-  # IOS_MOBILEPROVISION_BASE64: ${{secrets.IOS_MOBILEPROVISION_BASE64}}
-  # # Combined P12 key+cert encoded as base64
-  # IOS_P12_BASE64: ${{secrets.IOS_P12_BASE64}}
-  # IOS_P12_PASSWORD: ${{secrets.IOS_P12_PASSWORD}}
-
   ##################################################################################
   #         Main Code
   ##################################################################################
@@ -107,7 +97,7 @@ jobs:
       - name: Setup development certificates
         working-directory: ios/App
         run: |
-          bundle exec fastlane create_keychain --name "temp.keychain" --password "temp1234" --unlock true --default-keychain true
+          bundle exec fastlane create_keychain(name:"temp.keychain", password:"temp1234", unlock:true, default-keychain:true)
           bundle exec fastlane run get_certificates
           bundle exec fastlane run get_provisioning_profile
           bundle exec fastlane run disable_automatic_code_signing
@@ -151,6 +141,17 @@ jobs:
     # Will need to use production code-signing methods (e.g. match or manual p12)
     # https://docs.fastlane.tools/codesigning/getting-started/
     #############################################################################
+
+    # env:
+    # IOS_FASTLANE_MATCH_GCS_SERVICE_JSON: ${{secrets.IOS_FASTLANE_MATCH_GCS_SERVICE_JSON}}
+
+    # IOS_CODE_SIGNING_IDENTITY: ${{ secrets.IOS_CODE_SIGNING_IDENTITY }}
+    # IOS_TEAM_ID: ${{ secrets.IOS_TEAM_ID }}
+
+    # IOS_MOBILEPROVISION_BASE64: ${{secrets.IOS_MOBILEPROVISION_BASE64}}
+    # # Combined P12 key+cert encoded as base64
+    # IOS_P12_BASE64: ${{secrets.IOS_P12_BASE64}}
+    # IOS_P12_PASSWORD: ${{secrets.IOS_P12_PASSWORD}}
 
     # - name: Setup Fastlane Match
     #   working-directory: ios/App
