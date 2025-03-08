@@ -19,11 +19,15 @@ env:
 
   GOOGLE_SERVICES_JSON: ${{secrets.GOOGLE_SERVICES_JSON}}
 
-  IOS_CODE_SIGNING_IDENTITY: ${{ secrets.IOS_CODE_SIGNING_IDENTITY }}
-  IOS_TEAM_ID: ${{ secrets.IOS_TEAM_ID }}
+  # IOS_FASTLANE_MATCH_GCS_SERVICE_JSON: ${{secrets.IOS_FASTLANE_MATCH_GCS_SERVICE_JSON}}
 
-  IOS_MOBILEPROVISION_BASE64: ${{secrets.IOS_MOBILEPROVISION_BASE64}}
-  IOS_P12_BASE64: ${{secrets.IOS_P12_BASE64}}
+  # IOS_CODE_SIGNING_IDENTITY: ${{ secrets.IOS_CODE_SIGNING_IDENTITY }}
+  # IOS_TEAM_ID: ${{ secrets.IOS_TEAM_ID }}
+
+  # IOS_MOBILEPROVISION_BASE64: ${{secrets.IOS_MOBILEPROVISION_BASE64}}
+  # # Combined P12 key+cert encoded as base64
+  # IOS_P12_BASE64: ${{secrets.IOS_P12_BASE64}}
+  # IOS_P12_PASSWORD: ${{secrets.IOS_P12_PASSWORD}}
 
   ##################################################################################
   #         Main Code
@@ -52,19 +56,19 @@ jobs:
   #         Deployment build
   #############################################################################
 
-  build_web:
-    uses: ./.github/workflows/reusable-app-build.yml
-    with:
-      branch: ${{ inputs.branch }}
-      post-build-cmd: yarn workflow ios configure && npx cap sync ios
-      additional-artifact: ios
-      # Ensure build also run on macos to allow npx cap sync to configure ios pods
-      workflow-runner: macos-latest
-    secrets: inherit
+  # build_web:
+  #   uses: ./.github/workflows/reusable-app-build.yml
+  #   with:
+  #     branch: ${{ inputs.branch }}
+  #     post-build-cmd: yarn workflow ios configure && npx cap sync ios
+  #     additional-artifact: ios
+  #     # Ensure build also run on macos to allow npx cap sync to configure ios pods
+  #     workflow-runner: macos-latest
+  #   secrets: inherit
 
   debug:
     runs-on: macos-latest
-    needs: build_web
+    # needs: build_web
     steps:
       - name: Download IOS artifact
         uses: actions/download-artifact@v4
@@ -74,7 +78,7 @@ jobs:
           #   NOTE - need to explicitly include token to download from a different workflow run
           # https://github.com/actions/download-artifact/issues/320
           github-token: ${{ github.token }}
-          # run-id: 13731930921
+          run-id: 13732579493
 
       - name: Extract Build folder
         run: |
@@ -97,6 +101,26 @@ jobs:
           ruby-version: "3.0"
           bundler-cache: true
           working-directory: ios/App
+
+      - name: Setup development certificates
+        run: |
+          bundle exec fastlane create_keychain --name "temp.keychain" --password "temp1234" --unlock true --default-keychain true
+          bundle exec fastlane run cert --development true
+          bundle exec fastlane run sigh --development true
+
+      # - name: Setup Fastlane Match
+      #   working-directory: ios/App
+      #   run: |
+      #     echo 'google_cloud_bucket_name("c2dev-fastlane-match-certs")' > Matchfile
+      #     echo 'storage_mode("google_cloud")' >> Matchfile
+      #     echo 'type("development")' >> Matchfile'
+
+      #
+      # - name: Setup IOS Certs
+      #   run: |
+      #     echo ${{env.IOS_P12_BASE64}} | base64 --decode > cert.p12
+      #     bundle exec fastlane create_keychain --name "temp.keychain" --password "temp1234" --unlock true --default-keychain true
+      #     bundle exec import_certificate --certificate_path cert.p12 --certificate_password "${{env.IOS_P12_PASSWORD}}"
 
       # Call fastlane build_ios_app track
       # https://docs.fastlane.tools/actions/build_ios_app/
