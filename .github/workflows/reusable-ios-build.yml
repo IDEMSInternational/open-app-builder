@@ -94,19 +94,23 @@ jobs:
 
         # https://docs.fastlane.tools/codesigning/getting-started/
 
-      - name: Setup development certificates
-        working-directory: ios/App
-        env:
-          IOS_USERNAME: "example@idems.international"
-        run: |
-          mkdir fastlane
-          bundle exec fastlane run create_keychain name:"temp.keychain", password:"temp1234", unlock, default_keychain
-          bundle exec fastlane run get_certificates username:"${{env.IOS_USERNAME}}", development
-          bundle exec fastlane run get_provisioning_profile
-          bundle exec fastlane run disable_automatic_code_signing
+      # TODO - still need to use app store connect to manage
+      # - name: Setup development certificates
+      #   working-directory: ios/App
+      #   env:
+      #     IOS_USERNAME: "example@idems.international"
+      #   run: |
+      #     mkdir fastlane
+      #     bundle exec fastlane run create_keychain name:"temp.keychain", password:"temp1234", unlock, default_keychain
+      #     bundle exec fastlane run get_certificates username:"${{env.IOS_USERNAME}}", development, force
+      #     bundle exec fastlane run get_provisioning_profile
+      #     bundle exec fastlane run disable_automatic_code_signing
 
       # Call fastlane build_ios_app track
       # https://docs.fastlane.tools/actions/build_ios_app/
+
+      # Attempt to create an unsigned build for local testing
+      # https://blog.richardszalay.com/2016/08/22/ios-deploy-pipeline-3-setup-and-build-test-phase/
       - name: Build IOS
         env:
           configuration: debug
@@ -118,6 +122,8 @@ jobs:
           --scheme "App"
           --output_name "app.ipa"
           --sdk "${{env.sdk}}"
+          --skip_package_ipa true
+          --xcargs "CODE_SIGNING_REQUIRED=NO CODE_SIGN_IDENTITY=''"
 
     # TODO - google plist
     #   - name: Populate google-services.json
