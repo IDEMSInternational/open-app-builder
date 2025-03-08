@@ -72,7 +72,6 @@ jobs:
         with:
           node-version: 20.17.0
           cache: yarn
-      - run: yarn workspaces focus --production
 
       - name: Download IOS artifact
         uses: actions/download-artifact@v4
@@ -89,7 +88,7 @@ jobs:
         run: |
           rm -R ios/*
           tar -xf artifact.tar --directory ios
-          echo ${{env.GOOGLE_SERVICES_PLIST}} > ios/App/App/GoogleService-Info.plist
+          echo $GOOGLE_SERVICES_PLIST > ios/App/App/GoogleService-Info.plist
           ls ios/App/App
 
       # Create a ruby gemfile declaring fastlane dep for install. This will be auto-installed
@@ -122,6 +121,9 @@ jobs:
       #     bundle exec fastlane run get_certificates username:"${{env.IOS_USERNAME}}", development, force
       #     bundle exec fastlane run get_provisioning_profile
       #     bundle exec fastlane run disable_automatic_code_signing
+
+      # Install node_module dependencies (includes capacitor plugin pods required for build)
+      - run: yarn workspaces focus --production
 
       # Call fastlane build_ios_app track
       # https://docs.fastlane.tools/actions/build_ios_app/
