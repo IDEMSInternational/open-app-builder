@@ -69,7 +69,7 @@ jobs:
         with:
           node-version: 20.17.0
           cache: yarn
-      - run: yarn install
+      - run: yarn workspaces focus --production
 
       - name: Download IOS artifact
         uses: actions/download-artifact@v4
@@ -81,10 +81,14 @@ jobs:
           github-token: ${{ github.token }}
           run-id: 13732579493
 
+      # Merge built ios artifact with repo default
+      # NOTE - this is handled manually instead of via npx cap sync to ensure deployment-specific
+      # capacitor.config.json included
       - name: Extract Build folder
         run: |
-          mkdir ios
-          tar -xf artifact.tar --directory ios
+          mkdir tmp
+          tar -xf artifact.tar --directory tmp
+          cp -R tmp/* ios/*
           ls ios
 
       # Create a ruby gemfile declaring fastlane dep for install. This will be auto-installed
