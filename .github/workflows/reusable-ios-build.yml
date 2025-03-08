@@ -62,14 +62,6 @@ jobs:
     runs-on: macos-latest
     # needs: build_web
     steps:
-      # checkout and install just the node_modules from the main repo
-      # so that they can be used as part of the ios build process
-      # (capacitor keeps pod files in node_modules)
-      - uses: actions/checkout@v4
-        with:
-          repository: "IDEMSInternational/open-app-builder.git"
-          ref: ${{env.APP_CODE_BRANCH}}
-          filter: yarn.lock
       - uses: actions/setup-node@v4
         with:
           node-version: 20.17.0
