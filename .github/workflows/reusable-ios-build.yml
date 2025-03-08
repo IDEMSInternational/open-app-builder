@@ -123,7 +123,7 @@ jobs:
           --scheme "App"
           --sdk "${{env.sdk}}"
           --skip_package_ipa true
-          --xcargs "CODE_SIGNING_REQUIRED=NO CODE_SIGN_IDENTITY=''"
+          --export_xcargs "CODE_SIGNING_REQUIRED=NO CODE_SIGN_IDENTITY=''"
 
     # TODO - google plist
     #   - name: Populate google-services.json
