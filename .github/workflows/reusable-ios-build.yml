@@ -105,25 +105,12 @@ jobs:
         # https://docs.fastlane.tools/codesigning/getting-started/
 
       - name: Setup development certificates
+        working-directory: ios/App
         run: |
           bundle exec fastlane create_keychain --name "temp.keychain" --password "temp1234" --unlock true --default-keychain true
           bundle exec fastlane run get_certificates
           bundle exec fastlane run get_provisioning_profile
           bundle exec fastlane run disable_automatic_code_signing
-
-      # - name: Setup Fastlane Match
-      #   working-directory: ios/App
-      #   run: |
-      #     echo 'google_cloud_bucket_name("c2dev-fastlane-match-certs")' > Matchfile
-      #     echo 'storage_mode("google_cloud")' >> Matchfile
-      #     echo 'type("development")' >> Matchfile'
-
-      #
-      # - name: Setup IOS Certs
-      #   run: |
-      #     echo ${{env.IOS_P12_BASE64}} | base64 --decode > cert.p12
-      #     bundle exec fastlane create_keychain --name "temp.keychain" --password "temp1234" --unlock true --default-keychain true
-      #     bundle exec import_certificate --certificate_path cert.p12 --certificate_password "${{env.IOS_P12_PASSWORD}}"
 
       # Call fastlane build_ios_app track
       # https://docs.fastlane.tools/actions/build_ios_app/
@@ -157,3 +144,24 @@ jobs:
     #       # you can also archive the entire directory
     #       # path: ${{ runner.temp }}/build
     #       retention-days: 3
+
+    #############################################################################
+    #         TODO - IOS Deploy Testflight
+    # Possibly separate action to testflight deployment]
+    # Will need to use production code-signing methods (e.g. match or manual p12)
+    # https://docs.fastlane.tools/codesigning/getting-started/
+    #############################################################################
+
+    # - name: Setup Fastlane Match
+    #   working-directory: ios/App
+    #   run: |
+    #     echo 'google_cloud_bucket_name("${{env.IOS_FASTLANE_MATCH_GCS_BUCKET_NAME}}")' > Matchfile
+    #     echo 'storage_mode("google_cloud")' >> Matchfile
+    #     echo 'type("development")' >> Matchfile'
+
+    #
+    # - name: Setup IOS Certs
+    #   run: |
+    #     echo ${{env.IOS_P12_BASE64}} | base64 --decode > cert.p12
+    #     bundle exec fastlane create_keychain --name "temp.keychain" --password "temp1234" --unlock true --default-keychain true
+    #     bundle exec import_certificate --certificate_path cert.p12 --certificate_password "${{env.IOS_P12_PASSWORD}}"
