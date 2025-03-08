@@ -60,6 +60,17 @@ jobs:
     runs-on: macos-latest
     # needs: build_web
     steps:
+      # TODO - still need to install node_modules for use in build
+      - uses: actions/checkout@v4
+        with:
+          repository: "IDEMSInternational/open-app-builder.git"
+          ref: ${{env.APP_CODE_BRANCH}}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20.17.0
+          cache: yarn
+      - run: yarn install
+
       - name: Download IOS artifact
         uses: actions/download-artifact@v4
         with:
@@ -95,6 +106,7 @@ jobs:
         # https://docs.fastlane.tools/codesigning/getting-started/
 
       # TODO - still need to use app store connect to manage
+      # TODO - when passing commands via fastlane run needs formatting differently (should test without run)
       # - name: Setup development certificates
       #   working-directory: ios/App
       #   env:
