@@ -123,6 +123,7 @@ jobs:
           --scheme "App"
           --sdk "${{env.sdk}}"
           --skip_codesigning true
+          --skip_package_ipa true
 
     # TODO - google plist
     #   - name: Populate google-services.json
