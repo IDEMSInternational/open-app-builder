@@ -113,14 +113,14 @@ jobs:
       # https://blog.richardszalay.com/2016/08/22/ios-deploy-pipeline-3-setup-and-build-test-phase/
       - name: Build IOS
         env:
-          configuration: debug
+          # Supported configurations in project are Debug and Release
+          configuration: Debug
           sdk: "iOS 11.1"
         working-directory: ios/App
         run: |
           bundle exec fastlane run build_ios_app
           --configuration "${{env.configuration}}"
           --scheme "App"
-          --output_name "app.ipa"
           --sdk "${{env.sdk}}"
           --skip_package_ipa true
           --xcargs "CODE_SIGNING_REQUIRED=NO CODE_SIGN_IDENTITY=''"
