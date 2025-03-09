@@ -59,7 +59,7 @@ jobs:
       should_build: ${{steps.should_build.outputs.should_build}}
     steps:
       - id: should_build
-        run: echo "should_build=${{github.env.DEBUG_RUN_ID==''}}" >> "$GITHUB_OUTPUT"
+        run: echo "should_build=${{!env.DEBUG_RUN_ID}}" >> "$GITHUB_OUTPUT"
 
   build_web:
     if: needs.should_build.outputs.should_build
