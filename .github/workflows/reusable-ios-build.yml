@@ -47,16 +47,16 @@ jobs:
   #         Build Deployment Web
   #############################################################################
 
-  # build_web:
-  #   uses: ./.github/workflows/reusable-app-build.yml
-  #   with:
-  #     branch: ${{ inputs.branch }}
-  #     post-build-cmd: yarn workflow ios configure && npx cap sync ios
+  build_web:
+    uses: ./.github/workflows/reusable-app-build.yml
+    with:
+      branch: ${{ inputs.branch }}
+      post-build-cmd: yarn workflow ios configure && npx cap sync ios
 
-  #     additional-artifact: ios
-  #     # Ensure build also run on macos to allow npx cap sync to configure ios pods
-  #     workflow-runner: macos-latest
-  #   secrets: inherit
+      additional-artifact: ios
+      # Ensure build also run on macos to allow npx cap sync to configure ios pods
+      workflow-runner: macos-latest
+    secrets: inherit
 
   #############################################################################
   #         Build IOS
@@ -64,7 +64,7 @@ jobs:
 
   build_ios:
     runs-on: macos-latest
-    # needs: build_web
+    needs: build_web
     steps:
       # Checkout builder repo and install node_modules so that they can be used in ios build
       # (e.g. capacitor plugins store podfiles in node_modules)
@@ -77,11 +77,10 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: ios
-          # TODO - revert after debugging
-          #   NOTE - need to explicitly include token to download from a different workflow run
+          # Debug - use fixed build artifact (can skip build_web). Needs explicit token set
           # https://github.com/actions/download-artifact/issues/320
-          github-token: ${{ github.token }}
-          run-id: 13732579493
+          # github-token: ${{ github.token }}
+          # run-id: 13732579493
 
       # Remove default ios folder and replace with artifact generated
       - name: Setup IOS folder
