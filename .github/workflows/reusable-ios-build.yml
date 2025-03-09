@@ -110,7 +110,7 @@ jobs:
         with:
           node-version: 20.17.0
           cache: yarn
-      - run: yarn workspaces focus --production
+      - run: yarn workspaces focus frontend --production
 
       # Attempt to create an unsigned build for local testing
       # https://blog.richardszalay.com/2016/08/22/ios-deploy-pipeline-3-setup-and-build-test-phase/
@@ -123,7 +123,7 @@ jobs:
         # Call fastlane build_ios_app track
         # https://docs.fastlane.tools/actions/build_ios_app/
         run: |
-          bundle exec fastlane build_ios_app --configuration "${{env.configuration}}" --scheme "App" --skip_codesigning true --skip_package_ipa true --output_directory "build"
+          bundle exec fastlane build_ios_app --configuration "${{env.configuration}}" --scheme "App" --skip_codesigning true --skip_package_ipa true
 
       #############################################################################
       #         Upload
@@ -132,8 +132,8 @@ jobs:
       - name: Upload application
         uses: actions/upload-artifact@v4
         with:
-          name: app
-          path: ios/App/build
+          name: xcode_archive
+          path: /Users/runner/Library/Developer/Xcode/Archives
           # you can also archive the entire directory
           retention-days: 30
 
