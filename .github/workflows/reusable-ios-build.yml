@@ -20,6 +20,10 @@ env:
   GOOGLE_SERVICES_JSON: ${{secrets.GOOGLE_SERVICES_JSON}}
   GOOGLE_SERVICES_PLIST: ${{secrets.GOOGLE_SERVICES_PLIST}}
 
+  # If debugging can use build from previous run and skip build_web step
+  # Build artifacts expire after 24h so will need updating
+  DEBUG_RUN_ID: 13744145866
+
   ##################################################################################
   #         Main Code
   ##################################################################################
@@ -48,6 +52,7 @@ jobs:
   #############################################################################
 
   build_web:
+    if: ${{!github.env.DEBUG_RUN_ID}}
     uses: ./.github/workflows/reusable-app-build.yml
     with:
       branch: ${{ inputs.branch }}
@@ -77,10 +82,10 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: ios
-          # Debug - use fixed build artifact (can skip build_web). Needs explicit token set
+          # Use build artifact generated either as part of this run or from previous run (if debug run id set)
           # https://github.com/actions/download-artifact/issues/320
-          # github-token: ${{ github.token }}
-          # run-id: 13732579493
+          github-token: ${{ github.token }}
+          run-id: ${{env.DEBUG_RUN_ID || github.run_id}}
 
       # Remove default ios folder and replace with artifact generated
       - name: Setup IOS folder
@@ -123,7 +128,7 @@ jobs:
         # Call fastlane build_ios_app track
         # https://docs.fastlane.tools/actions/build_ios_app/
         run: |
-          bundle exec fastlane build_ios_app --configuration "${{env.configuration}}" --scheme "App" --skip_codesigning true --skip_package_ipa true
+          bundle exec fastlane build_ios_app --configuration "${{env.configuration}}" --scheme "App" --skip_codesigning true --skip_package_ipa true --build_path "./build"
 
       #############################################################################
       #         Upload
@@ -132,8 +137,8 @@ jobs:
       - name: Upload application
         uses: actions/upload-artifact@v4
         with:
-          name: xcode_archive
-          path: /Users/runner/Library/Developer/Xcode/Archives
+          name: ios_build
+          path: /ios/App/build
           # you can also archive the entire directory
           retention-days: 30
 
