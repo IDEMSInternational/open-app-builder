@@ -51,6 +51,11 @@ jobs:
   #         Build Deployment Web
   #############################################################################
 
+  debug:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo ${{github.env.DEBUG_RUN_ID}} ${{!github.env.DEBUG_RUN_ID}}
+
   build_web:
     if: ${{!github.env.DEBUG_RUN_ID}}
     uses: ./.github/workflows/reusable-app-build.yml
