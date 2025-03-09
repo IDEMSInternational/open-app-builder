@@ -52,7 +52,7 @@ jobs:
   #############################################################################
 
   # Debug - check whether a debug_run_id is provided to determine whether build_web
-  # job can be skipped. This runs as standalone job as job-level `if` cannot access env
+  # job can be skipped. This runs as standalone job as job-level `if` cannot access env.
   should_build:
     runs-on: ubuntu-latest
     outputs:
@@ -62,13 +62,13 @@ jobs:
         run: echo "should_build=${{!env.DEBUG_RUN_ID}}" >> "$GITHUB_OUTPUT"
 
   build_web:
-    if: needs.should_build.outputs.should_build
+    if: ${{needs.should_build.outputs.should_build == true}}
     needs: [should_build]
     uses: ./.github/workflows/reusable-app-build.yml
     with:
       branch: ${{ inputs.branch }}
       post-build-cmd: yarn workflow ios configure && npx cap sync ios
-
+      # Upload ios directory as it includes configured template files and www content
       additional-artifact: ios
       # Ensure build also run on macos to allow npx cap sync to configure ios pods
       workflow-runner: macos-latest
