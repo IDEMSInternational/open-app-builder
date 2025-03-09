@@ -116,68 +116,82 @@ jobs:
       # https://github.com/fastlane/fastlane/discussions/21996
       # https://blog.richardszalay.com/2016/08/22/ios-deploy-pipeline-3-setup-and-build-test-phase/
       # https://stackoverflow.com/a/66278353
-      - name: Build IOS
+      - name: Build IOS (simulator)
         working-directory: ios/App
+        env:
+          # Common args used to create unsigned builds (simulator or xcarchive)
+          CODE_SIGNING_ARGS: --skip_codesigning true --skip_package_ipa true
+          # Args to create simulator build. Output format will be .app
+          SIMULATOR_BUILD_ARGS: --destination "generic/platform=iOS Simulator" --derived_data_path "./output/data" --skip_archive true
+
         # Call fastlane build_ios_app track
         # https://docs.fastlane.tools/actions/build_ios_app/
         run: |
-          bundle exec fastlane build_ios_app --configuration "Release" --scheme "App" --destination "generic/platform=iOS Simulator" --skip_codesigning true --skip_package_ipa true --skip_archive true --build_path "./build" --output_directory "./build/output" --derived_data_path "./build/data"
+          bundle exec fastlane build_ios_app --configuration "Release" --scheme "App" ${{env.CODE_SIGNING_ARGS}} ${{env.SIMULATOR_BUILD_ARGS}}
 
       #############################################################################
       #         Upload
+      # This will export an xcarchive that can be signed manually
       #############################################################################
 
-      - name: Upload application
+      - name: Upload build
         uses: actions/upload-artifact@v4
         with:
-          name: ios_build
-          path: ios/App/build
+          name: simulator_app
+          path: ios/App/output/data/Build/Products/Release-iphonesimulator/*.app
           # you can also archive the entire directory
           retention-days: 30
 
-    #############################################################################
-    #         TODO - IOS Deploy Testflight
-    # Possibly separate action to testflight deployment]
-    # Will need to use production code-signing methods (e.g. match or manual p12)
-    # https://docs.fastlane.tools/codesigning/getting-started/
-    #############################################################################
+          #############################################################################
+          #         TODO - IOS Deploy Testflight
+          # Possibly separate action to testflight deployment]
+          # Will need to use production code-signing methods (e.g. match or manual p12)
+          # https://docs.fastlane.tools/codesigning/getting-started/
+          #############################################################################
 
-    # env:
-    # IOS_FASTLANE_MATCH_GCS_SERVICE_JSON: ${{secrets.IOS_FASTLANE_MATCH_GCS_SERVICE_JSON}}
+          # env:
+          # IOS_FASTLANE_MATCH_GCS_SERVICE_JSON: ${{secrets.IOS_FASTLANE_MATCH_GCS_SERVICE_JSON}}
 
-    # IOS_CODE_SIGNING_IDENTITY: ${{ secrets.IOS_CODE_SIGNING_IDENTITY }}
-    # IOS_TEAM_ID: ${{ secrets.IOS_TEAM_ID }}
+          # IOS_CODE_SIGNING_IDENTITY: ${{ secrets.IOS_CODE_SIGNING_IDENTITY }}
+          # IOS_TEAM_ID: ${{ secrets.IOS_TEAM_ID }}
 
-    # IOS_MOBILEPROVISION_BASE64: ${{secrets.IOS_MOBILEPROVISION_BASE64}}
-    # # Combined P12 key+cert encoded as base64
-    # IOS_P12_BASE64: ${{secrets.IOS_P12_BASE64}}
-    # IOS_P12_PASSWORD: ${{secrets.IOS_P12_PASSWORD}}
+          # IOS_MOBILEPROVISION_BASE64: ${{secrets.IOS_MOBILEPROVISION_BASE64}}
+          # # Combined P12 key+cert encoded as base64
+          # IOS_P12_BASE64: ${{secrets.IOS_P12_BASE64}}
+          # IOS_P12_PASSWORD: ${{secrets.IOS_P12_PASSWORD}}
 
-    # https://docs.fastlane.tools/codesigning/getting-started/
+          # https://docs.fastlane.tools/codesigning/getting-started/
 
-    # TODO - still need to use app store connect to manage
-    # TODO - when passing commands via fastlane run needs formatting differently (should test without run)
-    # - name: Setup development certificates
-    #   working-directory: ios/App
-    #   env:
-    #     IOS_USERNAME: "example@idems.international"
-    #   run: |
-    #     mkdir fastlane
-    #     bundle exec fastlane run create_keychain name:"temp.keychain", password:"temp1234", unlock, default_keychain
-    #     bundle exec fastlane run get_certificates username:"${{env.IOS_USERNAME}}", development, force
-    #     bundle exec fastlane run get_provisioning_profile
-    #     bundle exec fastlane run disable_automatic_code_signing
+          # TODO - still need to use app store connect to manage
+          # TODO - when passing commands via fastlane run needs formatting differently (should test without run)
+          # - name: Setup development certificates
+          #   working-directory: ios/App
+          #   env:
+          #     IOS_USERNAME: "example@idems.international"
+          #   run: |
+          #     mkdir fastlane
+          #     bundle exec fastlane run create_keychain name:"temp.keychain", password:"temp1234", unlock, default_keychain
+          #     bundle exec fastlane run get_certificates username:"${{env.IOS_USERNAME}}", development, force
+          #     bundle exec fastlane run get_provisioning_profile
+          #     bundle exec fastlane run disable_automatic_code_signing
 
-    # - name: Setup Fastlane Match
-    #   working-directory: ios/App/fastlane
-    #   run: |
-    #     echo 'google_cloud_bucket_name("${{env.IOS_FASTLANE_MATCH_GCS_BUCKET_NAME}}")' > Matchfile
-    #     echo 'storage_mode("google_cloud")' >> Matchfile
-    #     echo 'type("development")' >> Matchfile'
+          # - name: Setup Fastlane Match
+          #   working-directory: ios/App/fastlane
+          #   run: |
+          #     echo 'google_cloud_bucket_name("${{env.IOS_FASTLANE_MATCH_GCS_BUCKET_NAME}}")' > Matchfile
+          #     echo 'storage_mode("google_cloud")' >> Matchfile
+          #     echo 'type("development")' >> Matchfile'
 
-    #
-    # - name: Setup IOS Certs
-    #   run: |
-    #     echo ${{env.IOS_P12_BASE64}} | base64 --decode > cert.p12
-    #     bundle exec fastlane create_keychain --name "temp.keychain" --password "temp1234" --unlock true --default-keychain true
-    #     bundle exec import_certificate --certificate_path cert.p12 --certificate_password "${{env.IOS_P12_PASSWORD}}"
+          #
+          # - name: Setup IOS Certs
+          #   run: |
+          #     echo ${{env.IOS_P12_BASE64}} | base64 --decode > cert.p12
+          #     bundle exec fastlane create_keychain --name "temp.keychain" --password "temp1234" --unlock true --default-keychain true
+          #     bundle exec import_certificate --certificate_path cert.p12 --certificate_password "${{env.IOS_P12_PASSWORD}}"
+
+          # TODO - possible config to build xcarchive file that could be signed into IPA after download
+          # https://stackoverflow.com/a/66278353
+          # XCARCHIVE_BUILD_ARGS: --archive_path "./output/archive"
+
+          # TODO - review args required if building signed IPA
+          # IPA_BUILD_ARGS: --build_path "./output/build" --output_directory "./output/output"
