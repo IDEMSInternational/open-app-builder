@@ -44,7 +44,7 @@ on:
 
 jobs:
   #############################################################################
-  #         Deployment build
+  #         Build Deployment Web
   #############################################################################
 
   # build_web:
@@ -58,7 +58,11 @@ jobs:
   #     workflow-runner: macos-latest
   #   secrets: inherit
 
-  debug:
+  #############################################################################
+  #         Build IOS
+  #############################################################################
+
+  build_ios:
     runs-on: macos-latest
     # needs: build_web
     steps:
@@ -102,21 +106,6 @@ jobs:
           bundler-cache: true
           working-directory: ios/App
 
-        # https://docs.fastlane.tools/codesigning/getting-started/
-
-      # TODO - still need to use app store connect to manage
-      # TODO - when passing commands via fastlane run needs formatting differently (should test without run)
-      # - name: Setup development certificates
-      #   working-directory: ios/App
-      #   env:
-      #     IOS_USERNAME: "example@idems.international"
-      #   run: |
-      #     mkdir fastlane
-      #     bundle exec fastlane run create_keychain name:"temp.keychain", password:"temp1234", unlock, default_keychain
-      #     bundle exec fastlane run get_certificates username:"${{env.IOS_USERNAME}}", development, force
-      #     bundle exec fastlane run get_provisioning_profile
-      #     bundle exec fastlane run disable_automatic_code_signing
-
       # Install node_module dependencies (includes capacitor plugin pods required for build)
       - uses: actions/setup-node@v4
         with:
@@ -124,38 +113,30 @@ jobs:
           cache: yarn
       - run: yarn workspaces focus --production
 
-      # Call fastlane build_ios_app track
-      # https://docs.fastlane.tools/actions/build_ios_app/
-
       # Attempt to create an unsigned build for local testing
       # https://blog.richardszalay.com/2016/08/22/ios-deploy-pipeline-3-setup-and-build-test-phase/
       # https://stackoverflow.com/a/66278353
       - name: Build IOS
         env:
-          # Supported configurations in project are Debug and Release
+          # Supported configurations in IOS project are Debug and Release
           configuration: Debug
         working-directory: ios/App
+        # Call fastlane build_ios_app track
+        # https://docs.fastlane.tools/actions/build_ios_app/
         run: |
-          bundle exec fastlane build_ios_app --configuration "${{env.configuration}}" --scheme "App" --skip_codesigning true --skip_package_ipa true
+          bundle exec fastlane build_ios_app --configuration "${{env.configuration}}" --scheme "App" --skip_codesigning true --skip_package_ipa true --output_directory "build"
 
-    # TODO - google plist
-    #   - name: Populate google-services.json
-    #     env:
-    #       GOOGLE_SERVICES_JSON: ${{ env.GOOGLE_SERVICES_JSON }}
-    #     run: echo $GOOGLE_SERVICES_JSON > android/app/google-services.json
+      #############################################################################
+      #         Upload
+      #############################################################################
 
-    #############################################################################
-    #         IOS Build and Upload
-    #############################################################################
-
-    #   - name: Upload application
-    #     uses: actions/upload-artifact@v3
-    #     with:
-    #       name: app
-    #       path: ${{ runner.temp }}/build/app.ipa
-    #       # you can also archive the entire directory
-    #       # path: ${{ runner.temp }}/build
-    #       retention-days: 3
+      - name: Upload application
+        uses: actions/upload-artifact@v3
+        with:
+          name: app
+          path: ios/App/build
+          # you can also archive the entire directory
+          retention-days: 30
 
     #############################################################################
     #         TODO - IOS Deploy Testflight
@@ -174,6 +155,21 @@ jobs:
     # # Combined P12 key+cert encoded as base64
     # IOS_P12_BASE64: ${{secrets.IOS_P12_BASE64}}
     # IOS_P12_PASSWORD: ${{secrets.IOS_P12_PASSWORD}}
+
+    # https://docs.fastlane.tools/codesigning/getting-started/
+
+    # TODO - still need to use app store connect to manage
+    # TODO - when passing commands via fastlane run needs formatting differently (should test without run)
+    # - name: Setup development certificates
+    #   working-directory: ios/App
+    #   env:
+    #     IOS_USERNAME: "example@idems.international"
+    #   run: |
+    #     mkdir fastlane
+    #     bundle exec fastlane run create_keychain name:"temp.keychain", password:"temp1234", unlock, default_keychain
+    #     bundle exec fastlane run get_certificates username:"${{env.IOS_USERNAME}}", development, force
+    #     bundle exec fastlane run get_provisioning_profile
+    #     bundle exec fastlane run disable_automatic_code_signing
 
     # - name: Setup Fastlane Match
     #   working-directory: ios/App/fastlane
