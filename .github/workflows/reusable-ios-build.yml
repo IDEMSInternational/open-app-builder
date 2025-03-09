@@ -77,9 +77,11 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: ios
-          # Use build artifact generated either as part of this run or from previous run (if debug run id set)
+          # DEBUG - uncomment lines below, `build_web` job and `needs: build_web` to skip build step
+          # and use the output from a previous run for quicker debugging. Requires github-token
           # https://github.com/actions/download-artifact/issues/320
-          github-token: ${{ github.token }}
+
+          # github-token: ${{ github.token }}
           # run-id: 13743953801
 
       # Remove default ios folder and replace with artifact generated
@@ -114,8 +116,6 @@ jobs:
 
       # Attempt to create an unsigned build for local testing
       # https://github.com/fastlane/fastlane/discussions/21996
-      # https://blog.richardszalay.com/2016/08/22/ios-deploy-pipeline-3-setup-and-build-test-phase/
-      # https://stackoverflow.com/a/66278353
       - name: Build IOS (simulator)
         working-directory: ios/App
         env:
@@ -139,11 +139,10 @@ jobs:
         with:
           name: simulator_app
           path: ios/App/output/data/Build/Products/Release-iphonesimulator/*.app
-          # you can also archive the entire directory
           retention-days: 30
 
           #############################################################################
-          #         TODO - IOS Deploy Testflight
+          #         WiP Notes - IOS Deploy Testflight
           # Possibly separate action to testflight deployment]
           # Will need to use production code-signing methods (e.g. match or manual p12)
           # https://docs.fastlane.tools/codesigning/getting-started/
