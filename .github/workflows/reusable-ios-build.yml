@@ -113,6 +113,7 @@ jobs:
       - run: yarn workspaces focus frontend --production
 
       # Attempt to create an unsigned build for local testing
+      # https://github.com/fastlane/fastlane/discussions/21996
       # https://blog.richardszalay.com/2016/08/22/ios-deploy-pipeline-3-setup-and-build-test-phase/
       # https://stackoverflow.com/a/66278353
       - name: Build IOS
@@ -120,7 +121,7 @@ jobs:
         # Call fastlane build_ios_app track
         # https://docs.fastlane.tools/actions/build_ios_app/
         run: |
-          bundle exec fastlane build_ios_app --configuration "Release" --scheme "App" --skip_codesigning true --skip_package_ipa true --skip_archive true --build_path "./build" --output_directory "./build"
+          bundle exec fastlane build_ios_app --configuration "Release" --scheme "App" --destination "generic/platform=iOS Simulator" --skip_codesigning true --skip_package_ipa true --skip_archive true --build_path "./build" --output_directory "./build" --derived_data_path "./build"
 
       #############################################################################
       #         Upload
