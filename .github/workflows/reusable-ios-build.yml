@@ -116,14 +116,11 @@ jobs:
       # https://blog.richardszalay.com/2016/08/22/ios-deploy-pipeline-3-setup-and-build-test-phase/
       # https://stackoverflow.com/a/66278353
       - name: Build IOS
-        env:
-          # Supported configurations in IOS project are Debug and Release
-          configuration: Debug
         working-directory: ios/App
         # Call fastlane build_ios_app track
         # https://docs.fastlane.tools/actions/build_ios_app/
         run: |
-          bundle exec fastlane build_ios_app --configuration "${{env.configuration}}" --scheme "App" --skip_codesigning true --skip_package_ipa true --build_path "./build"
+          bundle exec fastlane build_ios_app --configuration "Release" --scheme "App" --skip_codesigning true --skip_package_ipa true --skip_archive true --build_path "./build" --output_directory "./build"
 
       #############################################################################
       #         Upload
@@ -133,7 +130,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: ios_build
-          path: /ios/App/build
+          path: ios
           # you can also archive the entire directory
           retention-days: 30
 
