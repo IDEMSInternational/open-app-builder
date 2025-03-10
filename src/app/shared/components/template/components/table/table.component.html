@@ -1,5 +1,10 @@
 <div class="table-container">
-  <table mat-table [dataSource]="dataSource" matSort>
+  @if (params().showSearch) {
+    <ion-input fill="outline" #filterInput (keyup)="applyFilter(filterInput.value)">
+      <ion-icon slot="start" name="search"></ion-icon>
+    </ion-input>
+  }
+  <table mat-table [dataSource]="dataSource()" matSort>
     <cdk-virtual-scroll-viewport autosize style="height: 100%">
       @for (column of columnsToDisplay(); track column) {
         <ng-container [matColumnDef]="column">
