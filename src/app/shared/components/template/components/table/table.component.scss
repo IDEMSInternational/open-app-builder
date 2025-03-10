@@ -1,8 +1,6 @@
 .table-container {
-  width: 100%;
-  max-height: 80vh;
+  height: 100%;
   overflow: auto;
-
   tr[mat-header-row] {
     background-color: var(--ion-background-color);
   }

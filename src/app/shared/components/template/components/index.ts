@@ -67,6 +67,11 @@ import { YoutubeComponent } from "./youtube/youtube.component";
 import { DEMO_COMPONENT_MAPPING } from "components/demo";
 import { PLH_COMPONENT_MAPPING } from "components/plh";
 
+export const TEMPLATE_STANDALONE_COMPONENTS = [
+  // tmpl prefix
+  TmplTableComponent,
+];
+
 /** All components should be exported as a single array for easy module import */
 export const TEMPLATE_COMPONENTS = [
   // no prefix
@@ -114,7 +119,6 @@ export const TEMPLATE_COMPONENTS = [
   TmplSimpleCheckboxComponent,
   TmplSliderComponent,
   TmplSubtitleComponent,
-  TmplTableComponent,
   TmplTaskCardComponent,
   TmplTaskProgressBarComponent,
   TmplTextAreaComponent,
