@@ -17,8 +17,8 @@ ion-app[data-platform~="ios"] {
 
   // Elements that make use of `filter: drop-shadow`:
 
-  plh-button {
-    .button-container[data-variant~="card-portrait"] {
+  plh-combo-box {
+    .open-combobox {
       @include force-gpu-acceleration;
     }
   }
