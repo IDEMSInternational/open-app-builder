@@ -14,4 +14,12 @@ ion-app[data-platform~="ios"] {
       @include force-gpu-acceleration;
     }
   }
+
+  // Elements that make use of `filter: drop-shadow`:
+
+  plh-button {
+    .button-container[data-variant~="card-portrait"] {
+      @include force-gpu-acceleration;
+    }
+  }
 }
