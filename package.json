@@ -157,6 +157,7 @@
     "eslint-plugin-n": "^15.7.0",
     "eslint-plugin-prefer-arrow": "1.2.3",
     "eslint-plugin-promise": "^6.1.1",
+    "eslint-plugin-stylelint": "^0.1.1",
     "fake-indexeddb": "^6.0.0",
     "firebase-tools": "^13.6.0",
     "husky": "^8.0.3",
@@ -170,6 +171,8 @@
     "karma-json-result-reporter": "^1.0.0",
     "lint-staged": "^15.2.2",
     "prettier": "^3.2.5",
+    "stylelint": "^16.15.0",
+    "stylelint-config-standard-scss": "^14.0.0",
     "typescript": "5.2.2"
   },
   "resolutions": {
