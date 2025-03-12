@@ -1,0 +1,12 @@
+{
+  "rules": {
+    "declaration-property-value-disallowed-list": [
+      {
+        "filter": ["/drop-shadow/"]
+      },
+      {
+        "message": "The `drop-shadow` filter has known issues on iOS. Consider using `box-shadow` instead. If you need to use `drop-shadow`, apply the workaround from src/theme/overrides.ios.scss."
+      }
+    ]
+  }
+}
