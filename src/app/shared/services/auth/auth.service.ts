@@ -90,7 +90,7 @@ export class AuthService extends AsyncServiceBase {
     const currentUserId = this.localStorageService.getProtected("APP_USER_ID");
     const restoreProfiles = authEntries
       .filter((v) => v.app_user_id !== currentUserId)
-      .sort((a, b) => (a.updatedAt > b.createdAt ? -1 : 1));
+      .sort((a, b) => (a.updatedAt > b.updatedAt ? -1 : 1));
     this.restoreProfiles.set(restoreProfiles);
   }
 
