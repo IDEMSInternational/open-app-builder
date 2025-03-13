@@ -1,6 +1,6 @@
 import { Component, computed, effect, Injector, OnInit, signal } from "@angular/core";
 import { isEqual, uniqueObjectArrayKeys } from "packages/shared/src/utils/object-utils";
-import { map } from "rxjs";
+import { map, debounceTime, switchMap, startWith, tap } from "rxjs/operators";
 import { toSignal } from "@angular/core/rxjs-interop";
 import { TemplateActionService } from "src/app/shared/components/template/services/instance/template-action.service";
 import { TemplateFieldService } from "src/app/shared/components/template/services/template-field.service";
@@ -8,6 +8,11 @@ import { AuthService } from "src/app/shared/services/auth/auth.service";
 import { DynamicDataService } from "src/app/shared/services/dynamic-data/dynamic-data.service";
 import { LocalStorageService } from "src/app/shared/services/local-storage/local-storage.service";
 import { AppDataService } from "src/app/shared/services/data/app-data.service";
+import { RxDocument } from "rxdb";
+import { IPersistedDoc } from "src/app/shared/services/dynamic-data/adapters/persistedMemory";
+
+/** Snapshot of persisted memory state for data_list type */
+type IDynamicDataState = { [flow_name: string]: { [row_id: string]: any } };
 
 @Component({
   selector: "user-debug-page",
@@ -35,7 +40,7 @@ export class UserDebugPage implements OnInit {
     () => {
       const state = this.dynamicDataState() || ({} as any);
       const selected = this.dynamicDataSelected();
-      return { ...state.data_list?.[selected] };
+      return { ...state?.[selected] };
     },
     { equal: isEqual }
   );
@@ -44,9 +49,7 @@ export class UserDebugPage implements OnInit {
   public dynamicDataTableData = signal({ headers: [], rows: [] });
 
   /** List of all flow names where dynamic data has been set */
-  public dynamicDataSelectOptions = computed(() => [
-    ...Object.keys(this.dynamicDataState()?.data_list || {}),
-  ]);
+  public dynamicDataSelectOptions = computed(() => [...Object.keys(this.dynamicDataState() || {})]);
 
   private actionService = new TemplateActionService(this.injector);
 
@@ -124,11 +127,17 @@ export class UserDebugPage implements OnInit {
     const allTableData = sheetData?.rows || [];
     // generate list of all unique headers found across original data and overrides
     const headers = uniqueObjectArrayKeys([...allTableData, ...Object.values(flowDynamicData)]);
+    // add placeholder rows for any created dynamically (no original sheet row)
+    const sheetRowIds = allTableData.map((r) => r.id);
+    Object.keys(flowDynamicData).forEach((id) => {
+      if (!sheetRowIds.includes(id)) allTableData.push({ id });
+    });
     // generate a list of merged initial + user override data, tracking what keys contain overridden values
     const rows = allTableData.map((r) => {
       const overrides = flowDynamicData[r.id];
       return { ...r, ...overrides, _override_keys: Object.keys(overrides || {}) };
     });
+
     return { headers, rows };
   }
 
@@ -146,7 +155,24 @@ export class UserDebugPage implements OnInit {
   /** Create a subscription that updates with any writeCache db changes and returns full state of cache */
   private subscribeToDynamicDataState() {
     const writeCache = this.dynamicDataService["writeCache"];
-    // return new object for writeCache state to ensure signal fires
-    return writeCache["collection"].find().$.pipe(map(() => ({ ...writeCache.state })));
+    const collection = writeCache["collection"];
+    // subscribe to db change event stream to capture changes from multiple tabs
+    return writeCache["db"].$.pipe(
+      debounceTime(50),
+      startWith({}),
+      switchMap(() => collection.find().exec()),
+      map((docs: RxDocument<IPersistedDoc>[]) => {
+        // recreate a snapshot of the entire dynamic db state from saved docs
+        // NOTE - not using existing service state value as that is not kept in sync
+        // when using multiple tabs
+        const state: IDynamicDataState = {};
+        for (const doc of docs) {
+          const { data, flow_name, row_id } = doc;
+          state[flow_name] ??= {};
+          state[flow_name][row_id] = data;
+        }
+        return state;
+      })
+    );
   }
 }
