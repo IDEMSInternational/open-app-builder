@@ -3,9 +3,9 @@ $highlighted-color: var(--module-list-item-color-highlighted, var(--ion-color-se
 
 // Styles common to variants
 .container {
+  box-shadow: 0px 5px 4px rgba(0, 0, 0, 0.4);
   cursor: pointer;
   border: 2px solid $default-color;
-  box-shadow: 1px 1px 10px $default-color;
   background-color: color-mix(in srgb, $default-color 5%, white);
 
   &[data-language-direction~="rtl"] {
@@ -17,14 +17,12 @@ $highlighted-color: var(--module-list-item-color-highlighted, var(--ion-color-se
 
   &[data-locked~="true"] {
     cursor: not-allowed;
-    box-shadow: none;
     border: 2px solid var(--ion-color-gray-200);
     background-color: white;
   }
 
   &[data-highlighted~="true"] {
     border: 2px solid $highlighted-color;
-    box-shadow: 1px 1px 10px $highlighted-color;
     background-color: color-mix(in srgb, $highlighted-color 5%, white);
   }
 }
@@ -90,7 +88,6 @@ $highlighted-color: var(--module-list-item-color-highlighted, var(--ion-color-se
   --circle-width: 84px;
   &[data-locked~="true"] {
     --circle-width: 76px;
-    box-shadow: -2px 2px 5px rgba(0, 0, 0, 0.2);
   }
   width: var(--circle-width);
   height: var(--circle-width);
