@@ -5,7 +5,9 @@ $highlighted-color: var(--module-list-item-color-highlighted, var(--ion-color-se
 .container {
   box-shadow: 0px 5px 4px rgba(0, 0, 0, 0.4);
   cursor: pointer;
-  border: 2px solid $default-color;
+  border-width: 2px;
+  border-style: solid;
+  border-color: $default-color;
   background-color: color-mix(in srgb, $default-color 5%, white);
 
   &[data-language-direction~="rtl"] {
@@ -17,12 +19,12 @@ $highlighted-color: var(--module-list-item-color-highlighted, var(--ion-color-se
 
   &[data-locked~="true"] {
     cursor: not-allowed;
-    border: 2px solid var(--ion-color-gray-200);
+    border-color: var(--ion-color-gray-200);
     background-color: white;
   }
 
   &[data-highlighted~="true"] {
-    border: 2px solid $highlighted-color;
+    border-color: $highlighted-color;
     background-color: color-mix(in srgb, $highlighted-color 5%, white);
   }
 }
@@ -86,9 +88,6 @@ $highlighted-color: var(--module-list-item-color-highlighted, var(--ion-color-se
 // Circle variant
 .container[data-variant~="circle"] {
   --circle-width: 84px;
-  &[data-locked~="true"] {
-    --circle-width: 76px;
-  }
   width: var(--circle-width);
   height: var(--circle-width);
   border-radius: 50%;
@@ -132,7 +131,6 @@ $highlighted-color: var(--module-list-item-color-highlighted, var(--ion-color-se
   }
 
   &[data-locked~="true"] {
-    border-width: 2px;
     .module-image {
       opacity: 0.5;
     }
