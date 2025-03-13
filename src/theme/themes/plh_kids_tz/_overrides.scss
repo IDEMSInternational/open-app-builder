@@ -1,0 +1,17 @@
+body[data-theme="plh_kids_tz"] {
+  /** COMPONENTS **/
+
+  /** Module list item */
+  plh-module-list-item {
+    .container {
+      border-width: 3px;
+    }
+    .container[data-variant~="circle"] {
+      border-width: 8px;
+      /** Use [class] to increase specificity without using !important */
+      .module-image[class] {
+        padding: 0px;
+      }
+    }
+  }
+}

@@ -761,6 +761,8 @@ body[data-theme="plh_kids_kw"] {
     // Circle variant
     .container[data-variant~="circle"] {
       &[data-locked~="true"] {
+        --circle-width: 76px;
+        border-width: 2px;
         box-shadow: -2px 2px 5px rgba(0, 0, 0, 0.2);
       }
     }
