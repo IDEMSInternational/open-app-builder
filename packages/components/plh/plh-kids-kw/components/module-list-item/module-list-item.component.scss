@@ -90,12 +90,12 @@ $highlighted-color: var(--module-list-item-color-highlighted, var(--ion-color-se
   --circle-width: 84px;
   &[data-locked~="true"] {
     --circle-width: 76px;
+    box-shadow: -2px 2px 5px rgba(0, 0, 0, 0.2);
   }
   width: var(--circle-width);
   height: var(--circle-width);
   border-radius: 50%;
   border-width: 4px;
-  filter: drop-shadow(-2px 2px 5px rgba(0, 0, 0, 0.2));
   overflow: hidden;
   background-color: white;
   position: relative;
