@@ -1,4 +1,5 @@
 import { Component, Injector, OnInit, signal } from "@angular/core";
+import { FlowTypes } from "packages/data-models";
 import { uniqueObjectArrayKeys } from "packages/shared/src/utils/object-utils";
 import { TemplateActionService } from "src/app/shared/components/template/services/instance/template-action.service";
 import { TemplateFieldService } from "src/app/shared/components/template/services/template-field.service";
@@ -94,6 +95,17 @@ export class UserDebugPage implements OnInit {
   }
   public dynamicEntryCompareFn(a: IDynamicDataEntry, b: IDynamicDataEntry) {
     return a.id === b.id;
+  }
+
+  public async resetSelectedDynamicData() {
+    const { flow_type, flow_name } = this.dynamicDataSelected;
+    await this.dynamicDataService.resetFlow(flow_type as FlowTypes.FlowType, flow_name);
+    location.reload();
+  }
+
+  public async resetAllDynamicData() {
+    await this.dynamicDataService.resetAll();
+    location.reload();
   }
 
   /** Retrieve localStorage entries prefixed by field service prefix */
