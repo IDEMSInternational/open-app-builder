@@ -442,6 +442,18 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@angular/cdk-experimental@npm:^19.2.2":
+  version: 19.2.2
+  resolution: "@angular/cdk-experimental@npm:19.2.2"
+  dependencies:
+    tslib: ^2.3.0
+  peerDependencies:
+    "@angular/cdk": 19.2.2
+    "@angular/core": ^19.0.0 || ^20.0.0
+  checksum: c42e7a607d1f4aafb502915e190212ed47fb567df6c8d047cbed70d08cdaabc64a3f252df6f7298fe2c08ccb1b82699006f9efca937db28ae1833888b5ef876c
+  languageName: node
+  linkType: hard
+
 "@angular/cdk@npm:^17":
   version: 17.3.10
   resolution: "@angular/cdk@npm:17.3.10"
@@ -16508,6 +16520,7 @@ __metadata:
     "@angular-eslint/template-parser": 17.2.1
     "@angular/animations": ^17.2.2
     "@angular/cdk": ^17
+    "@angular/cdk-experimental": ^19.2.2
     "@angular/cli": ~17.2.1
     "@angular/common": ~17.2.2
     "@angular/compiler": ~17.2.2
