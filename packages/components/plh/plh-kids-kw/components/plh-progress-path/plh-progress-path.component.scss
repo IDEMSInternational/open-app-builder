@@ -37,7 +37,7 @@
       position: relative;
     }
     .progress-path-child-content {
-      position: absolute !important;
+      position: absolute;
       &:nth-child(1) {
         bottom: 1%;
         left: 40%;
