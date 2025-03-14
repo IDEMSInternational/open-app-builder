@@ -16,6 +16,13 @@ th {
   top: 0;
   background-color: #f9f8f8;
 }
+
+td.dynamic-data-value {
+  opacity: 0.4;
+}
+td.isOverrideValue {
+  opacity: 1;
+}
 .table-container {
   max-height: 300px;
   overflow: auto;
