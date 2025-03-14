@@ -1,0 +1,7 @@
+.table-container {
+  height: 100%;
+  overflow: auto;
+  tr[mat-header-row] {
+    background-color: var(--ion-background-color);
+  }
+}

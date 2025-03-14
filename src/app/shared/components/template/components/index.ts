@@ -49,6 +49,7 @@ import { TmplRadioGroupComponent } from "./radio-group/radio-group.component";
 import { TmplSimpleCheckboxComponent } from "./simple-checkbox/simple-checkbox.component";
 import { TmplSliderComponent } from "./slider/slider.component";
 import { TmplSubtitleComponent } from "./subtitle";
+import { TmplTableComponent } from "./table/table.component";
 import { TmplTaskCardComponent } from "./task-card/task-card.component";
 import { TmplTaskProgressBarComponent } from "./task-progress-bar/task-progress-bar.component";
 import { TmplTextAreaComponent } from "./text-area/text-area.component";
@@ -65,6 +66,11 @@ import { YoutubeComponent } from "./youtube/youtube.component";
 
 import { DEMO_COMPONENT_MAPPING } from "components/demo";
 import { PLH_COMPONENT_MAPPING } from "components/plh";
+
+export const TEMPLATE_STANDALONE_COMPONENTS = [
+  // tmpl prefix
+  TmplTableComponent,
+];
 
 /** All components should be exported as a single array for easy module import */
 export const TEMPLATE_COMPONENTS = [
@@ -186,6 +192,7 @@ const COMMON_COMPONENT_MAPPING = {
   slider: TmplSliderComponent,
   square_button: SquareIconButtonComponent,
   subtitle: TmplSubtitleComponent,
+  table: TmplTableComponent,
   task_card: TmplTaskCardComponent,
   task_progress_bar: TmplTaskProgressBarComponent,
   text_area: TmplTextAreaComponent,
