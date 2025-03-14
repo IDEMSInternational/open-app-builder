@@ -747,6 +747,27 @@ body[data-theme="plh_kids_kw"] {
     }
   }
 
+  // Module list item
+  plh-module-list-item {
+    .container {
+      box-shadow: 1px 1px 10px var(--module-list-item-color-default);
+      &[data-locked~="true"] {
+        box-shadow: none;
+      }
+      &[data-highlighted~="true"] {
+        box-shadow: 1px 1px 10px var(--module-list-item-color-highlighted);
+      }
+    }
+    // Circle variant
+    .container[data-variant~="circle"] {
+      &[data-locked~="true"] {
+        --circle-width: 76px;
+        border-width: 2px;
+        box-shadow: -2px 2px 5px rgba(0, 0, 0, 0.2);
+      }
+    }
+  }
+
   // Round Button
   ion-tab-button {
     box-shadow: none;
