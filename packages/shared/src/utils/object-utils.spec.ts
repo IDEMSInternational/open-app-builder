@@ -160,4 +160,8 @@ describe("Object Utils", () => {
     ]);
     expect(res).toEqual(["a", "b", "c"]);
   });
+  it("uniqueObjectArrayKeys max depth", () => {
+    const res = uniqueObjectArrayKeys([{ a: 1 }, { b: 2 }, { c: 3 }], 2);
+    expect(res).toEqual(["a", "b"]);
+  });
 });
