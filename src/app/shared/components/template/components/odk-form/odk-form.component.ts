@@ -103,7 +103,6 @@ export class TmplOdkFormComponent extends TemplateBaseComponent implements OnIni
 
   public async save(opts = { draft: false }) {
     await this.setValue(this.xmlFormValue);
-    await this.triggerActions("changed");
   }
 
   private get xmlFormValue() {
@@ -112,7 +111,6 @@ export class TmplOdkFormComponent extends TemplateBaseComponent implements OnIni
 
   private async handleEventDataUpdate(e: ReturnType<typeof Events.DataUpdate>) {
     await this.setValue(this.xmlFormValue);
-    await this.triggerActions("changed");
   }
 
   private async handleEventXmlFormChange(e: ReturnType<typeof Events.XFormsValueChanged>) {
