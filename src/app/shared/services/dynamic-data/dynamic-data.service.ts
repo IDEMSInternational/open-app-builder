@@ -139,8 +139,8 @@ export class DynamicDataService extends AsyncServiceBase {
         const mergedUpdate = deepMergeObjects(data, update);
         // update memory db
         await this.db.updateDoc({ collectionName, id: row_id, data: mergedUpdate });
-        // update persisted db
-        this.writeCache.update({ flow_name, flow_type, id: row_id, data: mergedUpdate });
+        // update persisted db - only use partial update as will be merged
+        this.writeCache.update({ flow_name, flow_type, id: row_id, data: update });
       } else {
         throw new Error(
           `[Update Fail] no doc exists for ${flow_type}:${flow_name} with row_id: ${row_id}`
@@ -210,6 +210,19 @@ export class DynamicDataService extends AsyncServiceBase {
     return this.db.getCollection(collectionName)?.count().exec();
   }
 
+  /**
+   * Set the data for an internal data collection
+   * All internal collections are prefixed by `_app_` and are only stored ephemerally (not persisted)
+   * Data that is set will override any pre-existing data
+   **/
+  public async setInternalCollection(name: string, data: any[]) {
+    const { collectionName } = await this.ensureCollection("data_list", `_${name}`);
+    const collection = this.db.getCollection(collectionName);
+    const docs = await collection.find().exec();
+    await collection.bulkRemove(docs.map((d) => d.id));
+    await this.db.bulkInsert(collectionName, data);
+  }
+
   /** Ensure a collection exists, creating if not and populating with corresponding list data */
   private async ensureCollection(flow_type: FlowTypes.FlowType, flow_name: string) {
     const collectionName = this.normaliseCollectionName(flow_type, flow_name);
@@ -244,6 +257,11 @@ export class DynamicDataService extends AsyncServiceBase {
    * compatible in case of schema changes
    * */
   private async prepareInitialData(flow_type: FlowTypes.FlowType, flow_name: string) {
+    // Internal tables, prefixed by `_` are in-memory read-only and do not have preloaded data or schema
+    if (flow_name.startsWith("_")) {
+      return { data: [], schema: { ...REACTIVE_SCHEMA_BASE } };
+    }
+
     const flowData = await this.appDataService.getSheet<FlowTypes.Data_list>(flow_type, flow_name);
     if (!flowData || flowData.rows.length === 0) {
       throw new Error(`No data exists for collection [${flow_name}], cannot initialise`);
@@ -340,6 +358,7 @@ export class DynamicDataService extends AsyncServiceBase {
     }
 
     if (itemDataIDs.includes(targetRowId)) {
+      console.log("[Set Item]", flow_name, targetRowId, writeableProps);
       await this.update("data_list", flow_name, targetRowId, writeableProps);
     } else {
       console.warn(`[SET ITEM] - No item ${_id ? "with ID " + _id : "at index " + _index}`);

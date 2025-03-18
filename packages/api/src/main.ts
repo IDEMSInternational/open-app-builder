@@ -5,12 +5,18 @@ import { AppModule } from "./app.module";
 import { DBInstance } from "./db";
 import { environment } from "./environment";
 import { version } from "../package.json";
+import { json, urlencoded } from "express";
 
 async function bootstrap() {
   // DB Bootstrap (could be managed outside repo)
   await new DBInstance().setup();
   // API Bootstrap (auto connects to DB)
   const app = await NestFactory.create(AppModule);
+
+  // Configure body parser with increased payload size limits
+  app.use(json({ limit: "2mb" }));
+  app.use(urlencoded({ extended: true, limit: "2mb" }));
+
   app.enableCors();
   // Make available on reverse proxy path (e.g. /api)
   // app.setGlobalPrefix(environment.API_BASE_PATH || "");

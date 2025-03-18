@@ -8,8 +8,6 @@ import { RouterModule } from "@angular/router";
 import { SwiperModule } from "swiper/angular";
 import { NgxExtendedPdfViewerModule } from "ngx-extended-pdf-viewer";
 import { NgxSliderModule } from "@angular-slider/ngx-slider";
-import { MatTableModule } from "@angular/material/table";
-import { MatSortModule } from "@angular/material/sort";
 
 import { SharedPipesModule } from "../../pipes";
 import { TooltipDirective } from "../common/directives/tooltip.directive";
@@ -31,8 +29,6 @@ import { DEMO_COMPONENTS } from "packages/components/demo";
     FormsModule,
     IonicModule,
     LottieModule,
-    MatSortModule,
-    MatTableModule,
     NgxExtendedPdfViewerModule,
     NgxSliderModule,
     NouisliderModule,
