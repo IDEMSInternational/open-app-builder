@@ -65,7 +65,6 @@ export class TmplRadioGroupComponent
 
   public async handleRadioButtonClick(selectedValue: string) {
     await this.setValue(selectedValue);
-    this.triggerActions("changed");
   }
 
   /**

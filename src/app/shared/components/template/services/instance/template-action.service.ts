@@ -301,7 +301,6 @@ export class TemplateActionService extends SyncServiceBase {
         }
         if (emit_value === "server_sync") {
           await this.serverService.syncUserData();
-          await this.dbSyncService.syncToServer();
         }
         if (parent) {
           const msg = ` from ${row?.name || "(no row)"} to parent ${parent?.name || "(no parent)"}`;

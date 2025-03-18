@@ -747,6 +747,27 @@ body[data-theme="plh_kids_kw"] {
     }
   }
 
+  // Module list item
+  plh-module-list-item {
+    .container {
+      box-shadow: 1px 1px 10px var(--module-list-item-color-default);
+      &[data-locked~="true"] {
+        box-shadow: none;
+      }
+      &[data-highlighted~="true"] {
+        box-shadow: 1px 1px 10px var(--module-list-item-color-highlighted);
+      }
+    }
+    // Circle variant
+    .container[data-variant~="circle"] {
+      &[data-locked~="true"] {
+        --circle-width: 76px;
+        border-width: 2px;
+        box-shadow: -2px 2px 5px rgba(0, 0, 0, 0.2);
+      }
+    }
+  }
+
   // Round Button
   ion-tab-button {
     box-shadow: none;
@@ -1113,146 +1134,11 @@ body[data-theme="plh_kids_kw"] {
 
   // Plh Progress Path
   plh-progress-path {
-    .progress-path {
-      &.loading {
-        visibility: hidden;
-      }
-
-      height: 700px;
-      width: 100%;
-      overflow-x: scroll;
-      scrollbar-width: none;
-      &::-webkit-scrollbar {
-        display: none;
-      }
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      .wrapper {
-        height: 100%;
-        width: 100vw;
-
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: cover;
-        position: relative;
-        overflow-x: scroll;
-
-        max-width: 430px;
-        min-width: 280px;
-
-        display: flex;
-        justify-content: center;
-        align-items: flex-end;
-      }
-      .progress-path-child-wrapper {
-        height: 100%;
-        .progress-path-child-content-wrapper {
-          height: 100%;
-          position: relative;
-        }
-        .progress-path-child-content {
-          position: absolute !important;
-          plh-task-card {
-            .circle-card-wrapper {
-              .title-wrapper {
-                display: none;
-              }
-            }
-          }
-          &:nth-child(1) {
-            bottom: 3%;
-            left: 40%;
-          }
-          &:nth-child(2) {
-            bottom: 18%;
-            right: 3.6%;
-          }
-          &:nth-child(3) {
-            bottom: 30%;
-            right: 34%;
-          }
-          &:nth-child(4) {
-            bottom: 32%;
-            left: 7%;
-          }
-          &:nth-child(5) {
-            top: 36%;
-            left: 2%;
-          }
-          &:nth-child(6) {
-            top: 34.6%;
-            left: 46%;
-          }
-          &:nth-child(7) {
-            top: 24%;
-            right: -1%;
-          }
-          &:nth-child(8) {
-            top: 13%;
-            right: 37%;
-          }
-          &:nth-child(9) {
-            top: 2%;
-            left: 10%;
-          }
-        }
-      }
-    }
-    @media (max-width: 400px) {
-      .progress-path {
-        height: 100vh;
-        .wrapper {
-          background-position: bottom;
-        }
-        .progress-path-child-wrapper {
-          .progress-path-child-content {
-            plh-task-card {
-              .circle-card-wrapper .image-and-badge-wrapper .circle-wrapper {
-                height: 75px !important;
-                width: 75px !important;
-                &.inProgress {
-                  width: 78px !important;
-                  height: 78px !important;
-                }
-              }
-            }
-            &:nth-child(1) {
-              bottom: 4%;
-              left: 40%;
-            }
-            &:nth-child(2) {
-              bottom: 10%;
-              right: 3.6%;
-            }
-            &:nth-child(3) {
-              bottom: 32%;
-              right: 10%;
-            }
-            &:nth-child(4) {
-              bottom: 29%;
-              left: 18%;
-            }
-            &:nth-child(5) {
-              top: 33%;
-              left: 12%;
-            }
-            &:nth-child(6) {
-              top: 36%;
-              right: 10%;
-            }
-            &:nth-child(7) {
-              top: 15%;
-              right: 2%;
-            }
-            &:nth-child(8) {
-              top: 13%;
-              right: 40%;
-            }
-            &:nth-child(9) {
-              top: 6%;
-              left: 6%;
-            }
+    .progress-path-child-content {
+      plh-task-card {
+        .circle-card-wrapper {
+          .title-wrapper {
+            display: none;
           }
         }
       }

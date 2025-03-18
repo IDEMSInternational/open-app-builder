@@ -1,11 +1,14 @@
 $default-color: var(--module-list-item-color-default, var(--ion-color-primary-300));
+$completed-color: var(--module-list-item-color-completed, var(--ion-color-green));
 $highlighted-color: var(--module-list-item-color-highlighted, var(--ion-color-secondary-300));
 
 // Styles common to variants
 .container {
+  box-shadow: 0px 5px 4px rgba(0, 0, 0, 0.4);
   cursor: pointer;
-  border: 2px solid $default-color;
-  box-shadow: 1px 1px 10px $default-color;
+  border-width: 2px;
+  border-style: solid;
+  border-color: $default-color;
   background-color: color-mix(in srgb, $default-color 5%, white);
 
   &[data-language-direction~="rtl"] {
@@ -15,17 +18,20 @@ $highlighted-color: var(--module-list-item-color-highlighted, var(--ion-color-se
     }
   }
 
-  &[data-locked~="true"] {
-    cursor: not-allowed;
-    box-shadow: none;
-    border: 2px solid var(--ion-color-gray-200);
-    background-color: white;
+  &[data-completed~="true"] {
+    border-color: $completed-color;
+    background-color: color-mix(in srgb, $completed-color 5%, white);
   }
 
   &[data-highlighted~="true"] {
-    border: 2px solid $highlighted-color;
-    box-shadow: 1px 1px 10px $highlighted-color;
+    border-color: $highlighted-color;
     background-color: color-mix(in srgb, $highlighted-color 5%, white);
+  }
+
+  &[data-locked~="true"] {
+    cursor: not-allowed;
+    border-color: var(--ion-color-gray-200);
+    background-color: white;
   }
 }
 
@@ -88,14 +94,10 @@ $highlighted-color: var(--module-list-item-color-highlighted, var(--ion-color-se
 // Circle variant
 .container[data-variant~="circle"] {
   --circle-width: 84px;
-  &[data-locked~="true"] {
-    --circle-width: 76px;
-  }
   width: var(--circle-width);
   height: var(--circle-width);
   border-radius: 50%;
   border-width: 4px;
-  filter: drop-shadow(-2px 2px 5px rgba(0, 0, 0, 0.2));
   overflow: hidden;
   background-color: white;
   position: relative;
@@ -135,7 +137,6 @@ $highlighted-color: var(--module-list-item-color-highlighted, var(--ion-color-se
   }
 
   &[data-locked~="true"] {
-    border-width: 2px;
     .module-image {
       opacity: 0.5;
     }

@@ -50,8 +50,7 @@ export class FirebaseAuthProvider extends AuthProviderBase {
 
   /**
    * Configure Firebase Auth to use indexedDB for persistence on native platforms.
-   * Default mechanism (cookies?) may not be available from capacitor://localhost domains (e.g. on ios)
-   * See https://stackoverflow.com/a/74904270
+   * See https://github.com/IDEMSInternational/open-app-builder/pull/2835#pullrequestreview-2672295259
    * and https://firebase.google.com/docs/auth/web/custom-dependencies#platform-specific_considerations
    */
   private initialiseAuth(app: FirebaseApp) {

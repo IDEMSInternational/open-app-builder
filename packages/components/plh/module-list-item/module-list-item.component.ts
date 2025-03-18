@@ -8,6 +8,8 @@ import {
 } from "src/app/shared/utils";
 
 interface IModuleListItemParams {
+  /* TEMPLATE PARAMETER: "completed". Apply "completed" styling */
+  completed?: boolean;
   /* TEMPLATE PARAMETER: "highlighted". Apply "highlighted" styling */
   highlighted?: boolean;
   /* TEMPLATE PARAMETER: "is_locked". The boolean that marks the module as locked or unlocked */
@@ -46,6 +48,7 @@ export class PlhModuleListItemComponent extends TemplateBaseComponent {
       navImageAsset: getStringParamFromTemplateRow(this._row, "nav_image_asset", null),
       lockedImageAsset: getStringParamFromTemplateRow(this._row, "locked_image_asset", null),
       highlighted: getBooleanParamFromTemplateRow(this._row, "highlighted", false),
+      completed: getBooleanParamFromTemplateRow(this._row, "completed", false),
       variant: getStringParamFromTemplateRow(
         this._row,
         "variant",
