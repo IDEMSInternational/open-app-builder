@@ -41,6 +41,7 @@ export default async (service: DynamicDataService, params: IActionSetDataParams)
     params._updates = await generateUpdateList(service, params);
   }
   const { _list_id, _updates } = params;
+  console.log("[Set Data]", _list_id, _updates);
   // Hack, no current method for bulk update so make successive (changes debounced in component)
   for (const { id, ...writeableProps } of _updates) {
     await service.update("data_list", _list_id, id, writeableProps);

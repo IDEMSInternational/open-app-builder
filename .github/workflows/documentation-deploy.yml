@@ -11,13 +11,6 @@ jobs:
     steps:
       - name: Checkout main
         uses: actions/checkout@v4
-        # Only pull lfs files for documentation folder
-        # https://github.com/git-lfs/git-lfs/issues/1351
-      - name: Checkout git lfs partial files
-        run: git lfs pull --include "documentation/*"
-      - name: Remove Git LFS requirements
-        # Github pages fails when expecting LFS, so remove hook
-        run: rm .git/hooks/pre-push
       - name: Deploy docs
         uses: mhausenblas/mkdocs-deploy-gh-pages@e55ecab6718b449a90ebd4313f1320f9327f1386
         env:

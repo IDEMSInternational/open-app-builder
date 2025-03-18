@@ -1,9 +1,15 @@
-<div class="radio-grid" [ngStyle]="gridStyle" [attr.data-variant]="parameter_list.variant">
+<div
+  class="radio-buttons"
+  [ngStyle]="gridStyle"
+  [attr.data-variant]="parameter_list.variant"
+  [attr.data-style]="parameter_list.style"
+>
   @for (item of radioItems; track $index) {
     <div
       class="item"
       (click)="handleItemClick(item)"
       [attr.data-selected]="item.name === _row.value"
+      [style.--min-item-width]="parameter_list.item_width"
     >
       @if (item.image) {
         <div class="item-image-container">
@@ -17,7 +23,9 @@
         </div>
       }
       @if (item.text) {
-        <div class="item-text">{{ item.text }}</div>
+        <div class="item-text">
+          <p>{{ item.text }}</p>
+        </div>
       }
     </div>
   }

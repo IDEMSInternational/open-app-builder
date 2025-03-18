@@ -288,7 +288,7 @@ export class TemplateRowService extends SyncServiceBase {
     if (type === "template") isNestedTemplate = true;
 
     // data_items still need to process on render so avoid populating child rows to templateRowMap
-    if (type === "data_items") isNestedTemplate = true;
+    if (type === "data_items") return row;
 
     // Instead of returning themselves items looped child rows
     if (type === "items") {

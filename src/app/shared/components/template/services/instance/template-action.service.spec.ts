@@ -91,11 +91,10 @@ describe("TemplateActionService", () => {
     expect(service.container.templateRowService.templateRowMapValues.mock_row_1).toEqual("updated");
   });
 
-  it("Uses latest value for `this.value` arg", async () => {
-    const _triggeredBy = { _nested_name: "mock_row_1", name: "mock_row_1", type: "" };
+  it("Uses latest value for `this.value` arg from trigger row", async () => {
+    const _triggeredBy = { _nested_name: "", name: "", type: "", value: "updated" };
     await service.handleActions(
       [
-        { trigger: "click", action_id: "set_self", args: ["mock_row_1", "updated"] },
         {
           trigger: "click",
           action_id: "set_local",
@@ -123,7 +122,7 @@ describe("TemplateActionService", () => {
   });
 
   it("Uses latest value for `this.value` param", async () => {
-    const _triggeredBy = { _nested_name: "mock_row_1", name: "mock_row_1", type: "" };
+    const _triggeredBy = { _nested_name: "", name: "", type: "", value: "updated" };
     await service.handleActions(
       [
         { trigger: "click", action_id: "set_self", args: ["mock_row_1", "updated"] },

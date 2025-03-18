@@ -5,7 +5,6 @@ www
 *.md
 .angular
 node_modules
-.github
 .idems_app
 .vscode
 .yarn

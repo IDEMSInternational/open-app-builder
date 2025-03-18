@@ -17,7 +17,7 @@ $item-border: var(--points-item-border, none);
     max-width: 100%; // Don't allow overlap
     height: var(--points-item-height);
     background: $item-background;
-    filter: drop-shadow(var(--ion-default-box-shadow));
+    box-shadow: var(--ion-default-box-shadow);
     border: 1px solid $item-border;
     border-radius: var(--ion-border-radius-standard);
     position: relative;

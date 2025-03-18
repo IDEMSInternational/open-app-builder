@@ -1,6 +1,6 @@
 import { PlhParentPointCounterComponent } from "./parent-point-counter/parent-point-counter.component";
 import { PlhParentPointBoxComponent } from "./parent-point-box/parent-point-box.component";
-import { PlhModuleListItemComponent } from "./plh-kids-kw/components/module-list-item/module-list-item.component";
+import { PlhModuleListItemComponent } from "./module-list-item/module-list-item.component";
 import { PlhActivityCheckInComponent } from "./plh-kids-kw/components/activity-check-in/activity-check-in.component";
 import { PlhCompletionModalComponent } from "./plh-kids-kw/components/completion-modal/completion-modal.component";
 import { PlhModuleDetailsHeaderComponent } from "./plh-kids-kw/components/module-details-header/module-details-header.component";
