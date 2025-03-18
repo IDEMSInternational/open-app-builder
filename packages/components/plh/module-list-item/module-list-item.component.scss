@@ -1,4 +1,5 @@
 $default-color: var(--module-list-item-color-default, var(--ion-color-primary-300));
+$completed-color: var(--module-list-item-color-completed, var(--ion-color-green));
 $highlighted-color: var(--module-list-item-color-highlighted, var(--ion-color-secondary-300));
 
 // Styles common to variants
@@ -17,15 +18,20 @@ $highlighted-color: var(--module-list-item-color-highlighted, var(--ion-color-se
     }
   }
 
-  &[data-locked~="true"] {
-    cursor: not-allowed;
-    border-color: var(--ion-color-gray-200);
-    background-color: white;
+  &[data-completed~="true"] {
+    border-color: $completed-color;
+    background-color: color-mix(in srgb, $completed-color 5%, white);
   }
 
   &[data-highlighted~="true"] {
     border-color: $highlighted-color;
     background-color: color-mix(in srgb, $highlighted-color 5%, white);
+  }
+
+  &[data-locked~="true"] {
+    cursor: not-allowed;
+    border-color: var(--ion-color-gray-200);
+    background-color: white;
   }
 }
 
