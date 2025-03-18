@@ -23,7 +23,7 @@ class MockTemplateService implements Partial<TemplateService> {
 
 const MOCK_SKIN_1: IAppSkin = {
   name: "MOCK_SKIN_1",
-  appConfig: { APP_HEADER_DEFAULTS: { title: "mock 1", colour: "primary" } },
+  appConfig: { APP_HEADER_DEFAULTS: { title: "mock 1", background: "primary" } },
 };
 const MOCK_SKIN_2: IAppSkin = {
   name: "MOCK_SKIN_2",
@@ -37,7 +37,7 @@ const MOCK_APP_CONFIG: Partial<IAppConfig> = {
     template: null,
     title: "default",
     collapse: false,
-    colour: "none",
+    background: "none",
     variant: "default",
   },
   APP_SKINS: {
