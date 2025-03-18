@@ -88,6 +88,22 @@ describe("DynamicDataService", () => {
     // Not easily possible due to clearCache method used (but removing shows it does work)
   });
 
+  it("persists partial updates to cache", async () => {
+    await service.update("data_list", "test_flow", "id1", { number: 1.1 });
+    await service.update("data_list", "test_flow", "id1", { string: "updated" });
+    const cacheState = await service.getState();
+    expect(cacheState).toEqual({
+      data_list: {
+        test_flow: {
+          id1: {
+            number: 1.1,
+            string: "updated",
+          },
+        },
+      },
+    });
+  });
+
   it("provides live querying", async () => {
     // HACK - ensure any previous data cleared before running test
     await service.resetFlow("data_list", "test_flow");
@@ -141,6 +157,13 @@ describe("DynamicDataService", () => {
     await expectAsync(
       service.update("data_list", "test_flow", "id1", { row_index: 5 })
     ).toBeRejectedWithError();
+  });
+
+  it("supports internal collections", async () => {
+    await service.setInternalCollection("mock", [{ id: "1", string: "hello" }]);
+    const obs = await service.query$<any>("data_list", "_mock");
+    const data = await firstValueFrom(obs);
+    expect(data).toEqual([{ id: "1", string: "hello" }]);
   });
 
   // QA

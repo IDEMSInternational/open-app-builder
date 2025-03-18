@@ -7,6 +7,7 @@ import {
   toEmptyObject,
   arrayToHashmap,
   filterObjectByKeys,
+  uniqueObjectArrayKeys,
 } from "./object-utils";
 
 const MOCK_NESTED_OBJECT = {
@@ -151,5 +152,16 @@ describe("Object Utils", () => {
   it("filterObjectByKeys", () => {
     const res = filterObjectByKeys({ keep: 1, ignore: 2 }, ["keep"]);
     expect(res).toEqual({ keep: 1 });
+  });
+  it("uniqueObjectArrayKeys", () => {
+    const res = uniqueObjectArrayKeys([
+      { a: 1, b: 2 },
+      { b: 3, c: 4 },
+    ]);
+    expect(res).toEqual(["a", "b", "c"]);
+  });
+  it("uniqueObjectArrayKeys max depth", () => {
+    const res = uniqueObjectArrayKeys([{ a: 1 }, { b: 2 }, { c: 3 }], 2);
+    expect(res).toEqual(["a", "b"]);
   });
 });

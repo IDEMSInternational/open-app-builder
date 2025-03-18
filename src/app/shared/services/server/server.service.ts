@@ -1,17 +1,16 @@
-import { HttpClient, HttpErrorResponse } from "@angular/common/http";
+import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { DeviceInfo, Device } from "@capacitor/device";
-import { IAppConfig, getProtectedFieldName } from "data-models";
+import { getProtectedFieldName } from "data-models";
 import { interval } from "rxjs";
-import { throwError } from "rxjs";
 import { environment } from "src/environments/environment";
 import { generateTimestamp } from "../../utils";
-import { AppConfigService } from "../app-config/app-config.service";
 import { SyncServiceBase } from "../syncService.base";
 import { LocalStorageService } from "../local-storage/local-storage.service";
 import { DynamicDataService } from "../dynamic-data/dynamic-data.service";
 import { DeploymentService } from "../deployment/deployment.service";
 import { IServerUser } from "./server.types";
+import { DBSyncService } from "../db/db-sync.service";
 
 /**
  * Backend API
@@ -26,27 +25,36 @@ import { IServerUser } from "./server.types";
 export class ServerService extends SyncServiceBase {
   app_user_id: string;
   device_info: DeviceInfo;
-  syncSchedule;
+  /**
+   * Track whether sync enabled to allow toggling sync on/off
+   * TODO - expose action/public methods to set
+   **/
+  private syncEnabled: boolean;
   //   Requires update (?) - https://angular.io/api/common/http/HttpContext
   //   context =  new HttpContext().set(SERVER_API, true),
   constructor(
     private http: HttpClient,
-    private appConfigService: AppConfigService,
     private localStorageService: LocalStorageService,
     private dynamicDataService: DynamicDataService,
-    private deploymentService: DeploymentService
+    private deploymentService: DeploymentService,
+    private dbSyncService: DBSyncService
   ) {
     super("Server");
     this.initialise();
   }
 
   private initialise() {
-    this.ensureSyncServicesReady([this.appConfigService, this.localStorageService]);
-    this.subscribeToAppConfigChanges();
+    this.ensureSyncServicesReady([this.localStorageService]);
+    // set default sync enabled state from deployment config
+    const { api } = this.deploymentService.config;
+    this.syncEnabled = api.enabled;
     if (environment.production) {
+      // run initial sync and create interval timer to sync regularly
       this.syncUserData();
-      this.syncSchedule.subscribe(() => {
+      this.syncDBTableData();
+      interval(api.sync_frequency).subscribe(() => {
         this.syncUserData();
+        this.syncDBTableData();
       });
     }
   }
@@ -60,6 +68,10 @@ export class ServerService extends SyncServiceBase {
   }
 
   public async syncUserData() {
+    if (!this.syncEnabled) {
+      console.log("[SERVER] sync disabled");
+      return;
+    }
     const { name, _app_builder_version } = this.deploymentService.config;
     await this.dynamicDataService.ready();
     if (!this.device_info) {
@@ -71,6 +83,7 @@ export class ServerService extends SyncServiceBase {
     }
     console.log("[SERVER] sync data");
     const contact_fields = this.localStorageService.getAll();
+
     const dynamic_data = await this.dynamicDataService.getState();
 
     // apply temp timestamp to contact fields to sync as latest
@@ -115,14 +128,8 @@ export class ServerService extends SyncServiceBase {
     });
   }
 
-  private handleError(error: HttpErrorResponse) {
-    //   sync failed, retry later (?)
-    return throwError("Could not connect to server");
-  }
-
-  subscribeToAppConfigChanges() {
-    this.appConfigService.appConfig$.subscribe((appConfig: IAppConfig) => {
-      this.syncSchedule = interval(appConfig.SERVER_SYNC_FREQUENCY_MS);
-    });
+  private async syncDBTableData() {
+    await this.dbSyncService.ready();
+    return this.dbSyncService.syncDBTables();
   }
 }
