@@ -84,12 +84,12 @@ export type IHeaderFooterBackgroundOptions = "primary" | "secondary" | "none";
 /** The "compact" variant reduces the header height and removes the title */
 export type IHeaderVariantOptions = "default" | "compact";
 
-interface IAppConfigHeader {
+interface IAppConfigHeaderBase {
   back_button: {
     hidden?: boolean;
   };
+  background: IHeaderFooterBackgroundOptions;
   collapse: boolean;
-  colour: IHeaderFooterBackgroundOptions;
   hidden?: boolean;
   menu_button: {
     hidden?: boolean;
@@ -99,10 +99,16 @@ interface IAppConfigHeader {
   variant: IHeaderVariantOptions;
 }
 
+/** Include deprecated properties for backwards compatibility */
+interface IAppConfigHeader extends IAppConfigHeaderBase {
+  /** @deprecated, use "background" instead */
+  colour?: IHeaderFooterBackgroundOptions;
+}
+
 const APP_HEADER_DEFAULTS: IAppConfigHeader = {
   back_button: {},
+  background: "primary",
   collapse: false,
-  colour: "primary",
   menu_button: {},
   template: null,
   title: "App",
@@ -119,9 +125,20 @@ const activeRoute = (location: Location) => {
   return path;
 };
 
-const APP_FOOTER_DEFAULTS = {
-  templateName: null as string | null,
-  background: "primary" as IHeaderFooterBackgroundOptions,
+interface IAppConfigFooterBase {
+  background: IHeaderFooterBackgroundOptions;
+  template: string | null;
+}
+
+/** Include deprecated properties for backwards compatibility */
+interface IAppConfigFooter extends IAppConfigFooterBase {
+  /** @deprecated, use "background" instead */
+  templateName?: string | null;
+}
+
+const APP_FOOTER_DEFAULTS: IAppConfigFooter = {
+  background: "primary",
+  template: null,
 };
 
 const LAYOUT = {
@@ -222,6 +239,44 @@ const APP_CONFIG = {
   NOTIFICATION_DEFAULTS,
   TASKS,
 };
+
+/**
+ * Deprecation migrations to support renamed propertiesfor backwards compatibility
+ */
+const DEPRECATION_RULES = {
+  APP_FOOTER_DEFAULTS: {
+    templateName: {
+      newProperty: "template",
+      message: "APP_FOOTER_DEFAULTS.templateName is deprecated. Use template instead.",
+    },
+  },
+  APP_HEADER_DEFAULTS: {
+    colour: {
+      newProperty: "background",
+      message: "APP_HEADER_DEFAULTS.colour is deprecated. Use background instead.",
+    },
+  },
+};
+
+/**
+ * Applies deprecation migrations to the app config, converting deprecated properties to their new equivalents
+ */
+export function applyAppConfigDeprecations(config: RecursivePartial<IAppConfig>) {
+  Object.entries(DEPRECATION_RULES).forEach(([configSection, rules]) => {
+    const sourceSection = config[configSection];
+    if (!sourceSection) return;
+
+    Object.entries(rules).forEach(([oldProperty, rule]) => {
+      if (oldProperty in sourceSection) {
+        console.warn(`[APP CONFIG] ${rule.message}`);
+        sourceSection[rule.newProperty] = sourceSection[oldProperty];
+        delete sourceSection[oldProperty];
+      }
+    });
+  });
+
+  return config;
+}
 
 /**
  * Get full app config populated with default values
