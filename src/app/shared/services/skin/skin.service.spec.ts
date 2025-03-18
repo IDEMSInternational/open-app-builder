@@ -49,7 +49,7 @@ const MOCK_APP_CONFIG: Partial<IAppConfig> = {
     defaultThemeName: "MOCK_THEME_1",
   },
   APP_FOOTER_DEFAULTS: {
-    templateName: "mock_footer",
+    template: "mock_footer",
     background: "primary",
   },
 };
@@ -88,7 +88,7 @@ describe("SkinService", () => {
 
   it("does not change non-overridden values", () => {
     expect(service["appConfigService"].appConfig().APP_FOOTER_DEFAULTS).toEqual({
-      templateName: "mock_footer",
+      template: "mock_footer",
       background: "primary",
     });
   });
