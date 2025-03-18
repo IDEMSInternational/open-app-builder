@@ -7,7 +7,7 @@ import { AsyncServiceBase } from "../asyncService.base";
 import { DbService } from "../db/db.service";
 import { TemplateActionRegistry } from "../../components/template/services/instance/template-action.registry";
 import { TemplateFieldService } from "../../components/template/services/template-field.service";
-import { LOCAL_STORAGE_PREFIX, LocalStorageService } from "../local-storage/local-storage.service";
+import { LocalStorageService } from "../local-storage/local-storage.service";
 import { DynamicDataService } from "../dynamic-data/dynamic-data.service";
 import { getProtectedFieldName, IProtectedFieldName } from "packages/data-models";
 
@@ -77,6 +77,9 @@ export class UserMetaService extends AsyncServiceBase {
 
   /** Import existing user contact fields and replace current user */
   private async importUser(id: string) {
+    if (!id) {
+      throw new Error(`[User Import] no id provided`);
+    }
     try {
       // TODO - get type-safe return types using openapi http client
       const profile = await firstValueFrom(
@@ -87,7 +90,7 @@ export class UserMetaService extends AsyncServiceBase {
         return;
       }
       const { contact_fields, dynamic_data } = profile as any;
-      console.log("[User Import]", { contact_fields, dynamic_data });
+      console.log("[User Import]", profile);
       await this.importUserContactFields(contact_fields);
       await this.importUserDynamicData(dynamic_data);
     } catch (error) {
@@ -99,8 +102,9 @@ export class UserMetaService extends AsyncServiceBase {
     // create a reverse mapping of protected fields that are allowed to be imported
     // to allow setting protected fields such as rp-contact-field._app_skin
     const protectedFieldMapping: Record<string, string> = {};
+    const { prefix } = this.localStorageService;
     for (const fieldName of IMPORTABLE_PROTECTED_FIELD_NAMES) {
-      const mappedName = `${LOCAL_STORAGE_PREFIX}.${getProtectedFieldName(fieldName)}`;
+      const mappedName = `${prefix}.${getProtectedFieldName(fieldName)}`;
       protectedFieldMapping[mappedName] = fieldName;
     }
     for (const [key, value] of Object.entries(contact_fields)) {

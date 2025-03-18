@@ -24,6 +24,7 @@ import { TmplAdvancedDashedBoxComponent } from "./layout/advanced-dashed-box/adv
 import { TmplAnimatedSlidesComponent } from "./animated-slides/animated-slides.component";
 import { TmplAudioComponent } from "./audio/audio.component";
 import { TmplButtonComponent } from "./button/button.component";
+import { TmplButtonGoogleSignInComponent } from "./button-google-sign-in/button-google-sign-in.component";
 import { TmplCarouselComponent } from "./carousel/carousel.component";
 import { TmplComboBoxComponent } from "./combo-box/combo-box.component";
 import { TmplDashedBoxComponent } from "./dashed-box/dashed-box.component";
@@ -67,6 +68,11 @@ import { YoutubeComponent } from "./youtube/youtube.component";
 import { DEMO_COMPONENT_MAPPING } from "components/demo";
 import { PLH_COMPONENT_MAPPING } from "components/plh";
 
+export const TEMPLATE_STANDALONE_COMPONENTS = [
+  // tmpl prefix
+  TmplTableComponent,
+];
+
 /** All components should be exported as a single array for easy module import */
 export const TEMPLATE_COMPONENTS = [
   // no prefix
@@ -89,6 +95,7 @@ export const TEMPLATE_COMPONENTS = [
   TmplAnimatedSlidesComponent,
   TmplAudioComponent,
   TmplButtonComponent,
+  TmplButtonGoogleSignInComponent,
   TmplCarouselComponent,
   TmplComboBoxComponent,
   TmplDashedBoxComponent,
@@ -114,7 +121,6 @@ export const TEMPLATE_COMPONENTS = [
   TmplSimpleCheckboxComponent,
   TmplSliderComponent,
   TmplSubtitleComponent,
-  TmplTableComponent,
   TmplTaskCardComponent,
   TmplTaskProgressBarComponent,
   TmplTextAreaComponent,
@@ -165,6 +171,7 @@ const COMMON_COMPONENT_MAPPING = {
   display_group_sticky: TmplDisplayGroupStickyComponent,
   drawer: TmplDrawerComponent,
   form: FormComponent,
+  google_sign_in_button: TmplButtonGoogleSignInComponent,
   help_icon: TmplHelpIconComponent,
   html: TemplateHTMLComponent,
   icon_banner: TmplIconBannerComponent,
