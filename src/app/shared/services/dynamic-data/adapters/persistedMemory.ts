@@ -174,6 +174,9 @@ export class PersistedMemoryAdapter {
     const allResults = await Promise.all(
       allCollections.map(async (collection) => {
         const docs: RxDocument[] = await collection.find().exec();
+        if (!docs || docs.length === 0) {
+          return null;
+        }
         // Since each collection relates to a single flow, just take the first
         const doc = docs[0].toMutableJSON();
         const { flow_type, flow_name } = doc as any;
@@ -181,7 +184,7 @@ export class PersistedMemoryAdapter {
       })
     );
 
-    return allResults;
+    return allResults.filter((result) => result !== null);
   }
   /**
    * Subscribe to state persist tracker, handling persist operation

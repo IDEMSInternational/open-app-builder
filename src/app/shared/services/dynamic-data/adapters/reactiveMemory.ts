@@ -181,7 +181,8 @@ export class ReactiveMemoryAdapter {
   }
 
   public async removeAll() {
-    this.db.remove();
+    await this.db.remove();
+    await this.createDB();
   }
 
   /**
