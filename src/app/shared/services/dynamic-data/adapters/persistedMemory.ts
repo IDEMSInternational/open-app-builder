@@ -23,7 +23,7 @@ import { deepMergeObjects, compareObjectKeys } from "../../../utils";
  * All persisted docs are stored in the same format with a standard set of meta fields and doc data
  * This avoids breaking schema changes for underlying data changes
  * */
-interface IPersistedDoc {
+export interface IPersistedDoc {
   id: string;
   flow_name: string;
   flow_type: string;
