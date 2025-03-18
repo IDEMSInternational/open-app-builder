@@ -1,3 +1,4 @@
+import { FlowTypes } from "packages/data-models";
 import { Component, computed, effect, Injector, OnInit, signal } from "@angular/core";
 import { isEqual, uniqueObjectArrayKeys } from "packages/shared/src/utils/object-utils";
 import { map, debounceTime, switchMap, startWith, tap } from "rxjs/operators";
@@ -139,6 +140,17 @@ export class UserDebugPage implements OnInit {
     });
 
     return { headers, rows };
+  }
+
+  public async resetSelectedDynamicData() {
+    const selected = this.dynamicDataSelected();
+    await this.dynamicDataService.resetFlow("data_list", selected);
+    location.reload();
+  }
+
+  public async resetAllDynamicData() {
+    await this.dynamicDataService.resetAll();
+    location.reload();
   }
 
   /** Retrieve localStorage entries prefixed by field service prefix */
