@@ -195,6 +195,7 @@ export class DynamicDataService extends AsyncServiceBase {
   /** Remove user writes on all flows */
   public async resetAll(includeInternal = false) {
     try {
+      await this.db.removeAll();
       const allFlowNamesAndTypes = await this.writeCache.getAllFlowNamesAndTypes();
       await this.writeCache.deleteAll();
 

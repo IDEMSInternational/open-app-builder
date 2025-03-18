@@ -125,7 +125,7 @@ export class UserMetaService extends AsyncServiceBase {
      * Reset all user dynamic data before importing new data
      * TODO: implement a variety of different merge strategies and expose options to template action
      */
-    this.dynamicDataService.resetAll();
+    await this.dynamicDataService.resetAll();
 
     if (!dynamic_data) return;
     for (const [flow_type, entriesByFlowName] of Object.entries(dynamic_data)) {
