@@ -3,7 +3,7 @@ import type { IGdriveEntry } from "../@idemsInternational/gdrive-tools";
 import type { IAppConfig, IAppConfigOverride } from "./appConfig";
 
 /** Update version to force recompile next time deployment set (e.g. after default config update) */
-export const DEPLOYMENT_CONFIG_VERSION = 20250303.0;
+export const DEPLOYMENT_CONFIG_VERSION = 20250320.0;
 
 /** Configuration settings available to runtime application */
 export interface IDeploymentRuntimeConfig {
@@ -44,6 +44,15 @@ export interface IDeploymentRuntimeConfig {
     provider?: "firebase" | "supabase";
     /** prevent user accessing app pages without being logged in. Specified template will be shown until logged in */
     enforceLoginTemplate?: string;
+  };
+  campaigns: {
+    /**
+     * Specify whether campaigns notification used by deployment. Default `true`
+     *
+     * NOTE - if disabled functionality will still enable if explicitly called from templates (e.g. `@campaign` authoring)
+     * This is a temporary option, and will later be replaced by automated build optimisation to detect if used or not
+     **/
+    enabled?: boolean;
   };
   /**
    * Specify if using firebase for auth and crashlytics.
@@ -207,6 +216,9 @@ export const DEPLOYMENT_RUNTIME_CONFIG_DEFAULTS: IDeploymentRuntimeConfig = {
   },
   app_config: {},
   auth: {},
+  campaigns: {
+    enabled: true,
+  },
   supabase: {
     enabled: false,
   },
