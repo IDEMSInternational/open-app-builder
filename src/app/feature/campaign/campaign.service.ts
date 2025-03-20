@@ -11,6 +11,7 @@ import { AppConfigService } from "src/app/shared/services/app-config/app-config.
 import { AsyncServiceBase } from "src/app/shared/services/asyncService.base";
 import { AppDataService } from "src/app/shared/services/data/app-data.service";
 import { DataEvaluationService } from "src/app/shared/services/data/data-evaluation.service";
+import { DeploymentService } from "src/app/shared/services/deployment/deployment.service";
 import {
   ILocalNotification,
   LocalNotificationService,
@@ -49,6 +50,7 @@ export class CampaignService extends AsyncServiceBase {
     private templateTranslateService: TemplateTranslateService,
     private appDataService: AppDataService,
     private appConfigService: AppConfigService,
+    private deploymentService: DeploymentService,
     private injector: Injector
   ) {
     super("Campaigns");
@@ -64,6 +66,11 @@ export class CampaignService extends AsyncServiceBase {
   }
 
   private async initialise() {
+    // Skip init if disabled by deployment
+    if (!this.deploymentService.config.campaigns.enabled) {
+      return;
+    }
+
     await this.ensureAsyncServicesReady([
       this.localNotificationService,
       this.templateTranslateService,

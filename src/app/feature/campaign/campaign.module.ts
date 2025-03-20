@@ -11,7 +11,6 @@ import { CampaignDebugRowComponent } from "./pages/campaign-debug/components/cam
 import { CalcDaysDiffPipe } from "./pages/campaign-debug/components/calcDays.pipe";
 import { CampaignScheduleDebugRowComponent } from "./pages/campaign-debug/components/campaign-schedule-debug-row";
 import { CampaignService } from "./campaign.service";
-import { DeploymentService } from "src/app/shared/services/deployment/deployment.service";
 
 @NgModule({
   imports: [CommonModule, FormsModule, IonicModule, CampaignPageRoutingModule, SharedPipesModule],
@@ -24,11 +23,8 @@ import { DeploymentService } from "src/app/shared/services/deployment/deployment
   ],
 })
 export class CampaignModule {
-  constructor(service: CampaignService, deploymentService: DeploymentService) {
-    // initialise service when module loaded to sync notification interactions
-    // only load eagerly if specified in deployment config
-    if (deploymentService.config.campaigns.enabled) {
-      service.ready();
-    }
+  constructor(service: CampaignService) {
+    // eagerly load service when module loaded
+    service.ready();
   }
 }
