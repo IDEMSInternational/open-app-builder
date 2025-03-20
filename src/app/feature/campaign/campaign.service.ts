@@ -52,7 +52,7 @@ export class CampaignService extends AsyncServiceBase {
     private injector: Injector
   ) {
     super("Campaigns");
-    this.registerInitFunction(this.inititialise);
+    this.registerInitFunction(this.initialise);
   }
 
   /**
@@ -63,7 +63,7 @@ export class CampaignService extends AsyncServiceBase {
     return this.injector.get(TemplateVariablesService);
   }
 
-  private async inititialise() {
+  private async initialise() {
     await this.ensureAsyncServicesReady([
       this.localNotificationService,
       this.templateTranslateService,
@@ -89,7 +89,7 @@ export class CampaignService extends AsyncServiceBase {
     this._subscribeToNotificationUpdates();
   }
   public reInitialise() {
-    return this.inititialise();
+    return this.initialise();
   }
 
   /**
