@@ -4,10 +4,10 @@ import { SyncServiceBase } from "../syncService.base";
 import { IHttpActionParams } from "./http.actions";
 import ky, { KyInstance } from "ky";
 
-import { HttpCacheAdapter } from "./http-cache";
 import { KyHeadersInit } from "ky/distribution/types/options";
 import { shorthandToTime } from "./http.utils";
 import { AsyncServiceBase } from "../asyncService.base";
+import { HttpCache } from "./http-cache";
 
 /**
  * The HTTP service is used to retrieve data from external sources
@@ -26,7 +26,7 @@ import { AsyncServiceBase } from "../asyncService.base";
 @Injectable({ providedIn: "root" })
 export class HttpService extends AsyncServiceBase {
   private client: KyInstance;
-  private cache: HttpCacheAdapter;
+  private cache: HttpCache;
 
   constructor() {
     super("HTTP Service");
@@ -36,7 +36,7 @@ export class HttpService extends AsyncServiceBase {
   private async init() {
     const client = this.setupApiClient();
     this.client = client;
-    const cache = new HttpCacheAdapter();
+    const cache = new HttpCache();
     await cache.init();
     this.cache = cache;
     // TODO - purge expired from cache
