@@ -84,7 +84,7 @@ export type IHeaderFooterBackgroundOptions = "primary" | "secondary" | "none";
 /** The "compact" variant reduces the header height and removes the title */
 export type IHeaderVariantOptions = "default" | "compact";
 
-interface IAppConfigHeaderBase {
+interface IAppConfigHeader {
   back_button: {
     hidden?: boolean;
   };
@@ -97,10 +97,6 @@ interface IAppConfigHeaderBase {
   template: string | null;
   title: string;
   variant: IHeaderVariantOptions;
-}
-
-/** Include deprecated properties for backwards compatibility */
-interface IAppConfigHeader extends IAppConfigHeaderBase {
   /** @deprecated, use "background" instead */
   colour?: IHeaderFooterBackgroundOptions;
 }
@@ -125,13 +121,9 @@ const activeRoute = (location: Location) => {
   return path;
 };
 
-interface IAppConfigFooterBase {
+interface IAppConfigFooter {
   background: IHeaderFooterBackgroundOptions;
   template: string | null;
-}
-
-/** Include deprecated properties for backwards compatibility */
-interface IAppConfigFooter extends IAppConfigFooterBase {
   /** @deprecated, use "background" instead */
   templateName?: string | null;
 }
