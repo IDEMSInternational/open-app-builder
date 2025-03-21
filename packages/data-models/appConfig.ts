@@ -233,7 +233,12 @@ const APP_CONFIG = {
 };
 
 /**
- * Deprecation migrations to support renamed propertiesfor backwards compatibility
+ * List of deprecated app_config properties
+ * These will be replaced at runtime if applied as config overrides
+ *
+ * Mappings should be maintained until methods exist in the parser to ensure authored
+ * configurations are valid. This will require updates to check for template-level
+ * config overrides (deployment and skin configs are otherwise type-checked)
  */
 const DEPRECATION_RULES = {
   APP_FOOTER_DEFAULTS: {
@@ -250,9 +255,7 @@ const DEPRECATION_RULES = {
   },
 };
 
-/**
- * Applies deprecation migrations to the app config, converting deprecated properties to their new equivalents
- */
+/** Convert any deprecated properties to their new equivalents */
 export function applyAppConfigDeprecations(config: RecursivePartial<IAppConfig>) {
   Object.entries(DEPRECATION_RULES).forEach(([configSection, rules]) => {
     const sourceSection = config[configSection];
