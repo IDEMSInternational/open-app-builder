@@ -212,11 +212,16 @@ In accordance with the instructions on deployment [file encryption](#file-encryp
     
     config.firebase = {
       config: loadEncryptedConfig('firebase.json'),
-      auth: { enabled: true },
-      crashlytics:{ enabled: true }
     }
     ```
-   where enabling the various features is optional.
+5. Individual Firebase features can then be enabled via the deployment config. E.g. 
+
+    ```js
+    config.auth = {
+      provider: 'firebase',
+    }
+    ```
+    In this case, authentication must also be enabled for the corresponding project through the Firebase console too.
 
 ## File Encryption
 In cases where deployments need to share private information, such as API keys or service accounts, a special encryption folder can be used to handle encryption and decryption processes
