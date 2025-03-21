@@ -48,9 +48,7 @@ export interface IDeploymentRuntimeConfig {
   campaigns: {
     /**
      * Specify whether campaigns notification used by deployment. Default `true`
-     *
-     * NOTE - if disabled functionality will still enable if explicitly called from templates (e.g. `@campaign` authoring)
-     * This is a temporary option, and will later be replaced by automated build optimisation to detect if used or not
+     * Disabling campaigns will also remove the use and permission prompt for localNotifications
      **/
     enabled?: boolean;
   };
