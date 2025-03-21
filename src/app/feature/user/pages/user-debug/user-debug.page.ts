@@ -1,17 +1,18 @@
-import { Component, Injector, OnInit, signal } from "@angular/core";
-import { uniqueObjectArrayKeys } from "packages/shared/src/utils/object-utils";
+import { Component, computed, effect, Injector, OnInit, signal } from "@angular/core";
+import { isEqual, uniqueObjectArrayKeys } from "packages/shared/src/utils/object-utils";
+import { map, debounceTime, switchMap, startWith, tap } from "rxjs/operators";
+import { toSignal } from "@angular/core/rxjs-interop";
 import { TemplateActionService } from "src/app/shared/components/template/services/instance/template-action.service";
 import { TemplateFieldService } from "src/app/shared/components/template/services/template-field.service";
 import { AuthService } from "src/app/shared/services/auth/auth.service";
 import { DynamicDataService } from "src/app/shared/services/dynamic-data/dynamic-data.service";
 import { LocalStorageService } from "src/app/shared/services/local-storage/local-storage.service";
+import { AppDataService } from "src/app/shared/services/data/app-data.service";
+import { RxDocument } from "rxdb";
+import { IPersistedDoc } from "src/app/shared/services/dynamic-data/adapters/persistedMemory";
 
-interface IDynamicDataEntry {
-  id: string;
-  flow_type: string;
-  flow_name: string;
-  data: Record<string, any>;
-}
+/** Snapshot of persisted memory state for data_list type */
+type IDynamicDataState = { [flow_name: string]: { [row_id: string]: any } };
 
 @Component({
   selector: "user-debug-page",
@@ -19,13 +20,6 @@ interface IDynamicDataEntry {
   styleUrl: "user-debug.page.scss",
 })
 export class UserDebugPage implements OnInit {
-  constructor(
-    private fieldService: TemplateFieldService,
-    private dynamicDataService: DynamicDataService,
-    private localStorageService: LocalStorageService,
-    public authService: AuthService,
-    private injector: Injector
-  ) {}
   /** Id of current user */
   public userId = "";
   /** ID of user to import */
@@ -34,14 +28,65 @@ export class UserDebugPage implements OnInit {
   public contactFields = signal<{ key: string; value: string }[]>([]);
   /** List of protected user contact fields */
   public protectedFields = signal<{ key: string; value: string }[]>([]);
-  /** List of user dynamic_data entries */
-  public dynamicDataEntries: IDynamicDataEntry[] = [];
-  /** Active row selected from list of user dynamic_data entries */
-  public dynamicDataSelected: IDynamicDataEntry;
+
+  /** Live state of all dynamic data stored */
+  private dynamicDataState = toSignal(this.subscribeToDynamicDataState());
+
+  /** Name of flow selected to display dynamic data */
+  public dynamicDataSelected = signal("");
+
+  /** Live state of selected flow dynamic data sub-state */
+  private dynamicDataSelectedState = computed(
+    () => {
+      const state = this.dynamicDataState() || ({} as any);
+      const selected = this.dynamicDataSelected();
+      return { ...state?.[selected] };
+    },
+    { equal: isEqual }
+  );
+
   /** Table configuration to display data from active dynamic_data row */
-  public dynamicDataTable: { headers: string[]; rows: any[] };
+  public dynamicDataTableData = signal({ headers: [], rows: [] });
+
+  /** List of all flow names where dynamic data has been set */
+  public dynamicDataSelectOptions = computed(() => [...Object.keys(this.dynamicDataState() || {})]);
 
   private actionService = new TemplateActionService(this.injector);
+
+  constructor(
+    private fieldService: TemplateFieldService,
+    private appDataService: AppDataService,
+    private dynamicDataService: DynamicDataService,
+    private localStorageService: LocalStorageService,
+    public authService: AuthService,
+    private injector: Injector
+  ) {
+    // load first dynamic data option by default
+    effect(
+      () => {
+        const selected = this.dynamicDataSelected();
+        if (!selected) {
+          const options = this.dynamicDataSelectOptions();
+          if (options[0]) {
+            this.dynamicDataSelected.set(options[0]);
+          }
+        }
+      },
+      { allowSignalWrites: true }
+    );
+    // load table data when selected flow or corresponding data sub-state changes
+    effect(
+      async () => {
+        const selected = this.dynamicDataSelected();
+        const dynamicData = this.dynamicDataSelectedState();
+        if (selected) {
+          const { headers, rows } = await this.loadDynamicDataTable(selected, dynamicData);
+          this.dynamicDataTableData.set({ headers, rows });
+        }
+      },
+      { allowSignalWrites: true }
+    );
+  }
 
   async ngOnInit() {
     await this.fieldService.ready();
@@ -55,10 +100,6 @@ export class UserDebugPage implements OnInit {
     this.loadUserContactFields();
     this.userId = this.fieldService.getField("_app_user_id");
     this.importUserId = this.userId;
-    this.dynamicDataEntries = await this.getDynamicDataEntries();
-    // populate dynamic data table with first entry if available
-    this.dynamicDataSelected = this.dynamicDataEntries[0];
-    this.setDynamicEntryView(this.dynamicDataEntries[0]);
   }
 
   public async importUserData(id: string) {
@@ -81,19 +122,23 @@ export class UserDebugPage implements OnInit {
   }
 
   /** Prepare table data to display for provided dynamic data entry */
-  public setDynamicEntryView(entry?: IDynamicDataEntry) {
-    if (entry) {
-      // ensure all entries include an id column and put at start of table
-      const rows = Object.entries(entry.data).map(([id, data]) => ({ ...data, id }));
-      const uniqueKeys = uniqueObjectArrayKeys(rows);
-      const headers = ["id", ...uniqueKeys.filter((k) => k !== "id")];
-      this.dynamicDataTable = { headers, rows };
-    } else {
-      this.dynamicDataTable = { headers: [], rows: [] };
-    }
-  }
-  public dynamicEntryCompareFn(a: IDynamicDataEntry, b: IDynamicDataEntry) {
-    return a.id === b.id;
+  private async loadDynamicDataTable(flowName: string, flowDynamicData: any = {}) {
+    const sheetData = await this.appDataService.getSheet("data_list", flowName);
+    const allTableData = sheetData?.rows || [];
+    // generate list of all unique headers found across original data and overrides
+    const headers = uniqueObjectArrayKeys([...allTableData, ...Object.values(flowDynamicData)]);
+    // add placeholder rows for any created dynamically (no original sheet row)
+    const sheetRowIds = allTableData.map((r) => r.id);
+    Object.keys(flowDynamicData).forEach((id) => {
+      if (!sheetRowIds.includes(id)) allTableData.push({ id });
+    });
+    // generate a list of merged initial + user override data, tracking what keys contain overridden values
+    const rows = allTableData.map((r) => {
+      const overrides = flowDynamicData[r.id];
+      return { ...r, ...overrides, _override_keys: Object.keys(overrides || {}) };
+    });
+
+    return { headers, rows };
   }
 
   /** Retrieve localStorage entries prefixed by field service prefix */
@@ -107,15 +152,27 @@ export class UserDebugPage implements OnInit {
     this.protectedFields.set(contactFields.filter((v) => v.key.startsWith("_")));
   }
 
-  /** Retrieve user dynamic data entries stored in IndexedDB */
-  private async getDynamicDataEntries() {
-    const dynamicData: IDynamicDataEntry[] = [];
-    const state = await this.dynamicDataService.getState();
-    for (const [flow_type, dataByFlow] of Object.entries(state)) {
-      for (const [flow_name, data] of Object.entries(dataByFlow)) {
-        dynamicData.push({ flow_type, flow_name, data, id: `${flow_type}__${flow_name}` });
-      }
-    }
-    return dynamicData;
+  /** Create a subscription that updates with any writeCache db changes and returns full state of cache */
+  private subscribeToDynamicDataState() {
+    const writeCache = this.dynamicDataService["writeCache"];
+    const collection = writeCache["collection"];
+    // subscribe to db change event stream to capture changes from multiple tabs
+    return writeCache["db"].$.pipe(
+      debounceTime(50),
+      startWith({}),
+      switchMap(() => collection.find().exec()),
+      map((docs: RxDocument<IPersistedDoc>[]) => {
+        // recreate a snapshot of the entire dynamic db state from saved docs
+        // NOTE - not using existing service state value as that is not kept in sync
+        // when using multiple tabs
+        const state: IDynamicDataState = {};
+        for (const doc of docs) {
+          const { data, flow_name, row_id } = doc;
+          state[flow_name] ??= {};
+          state[flow_name][row_id] = data;
+        }
+        return state;
+      })
+    );
   }
 }
