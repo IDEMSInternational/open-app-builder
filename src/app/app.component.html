@@ -45,11 +45,11 @@
         <div class="route-container" [ngStyle]="routeContainerStyle()">
           <ion-router-outlet id="main-content"></ion-router-outlet>
         </div>
-        @if (footerConfig().templateName; as footerTemplateName) {
+        @if (footerConfig().template; as footerTemplate) {
           <ion-footer>
             <ion-toolbar [color]="footerConfig().background">
               <plh-template-container
-                [templatename]="footerTemplateName"
+                [templatename]="footerTemplate"
                 [ignoreQueryParamChanges]="true"
               ></plh-template-container>
             </ion-toolbar>
