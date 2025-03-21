@@ -1,18 +1,26 @@
 import { envReplace } from "@idemsInternational/env-replace";
 import { Logger, generateVersionCode } from "../../utils";
 import { PATHS } from "shared";
+import type { IDeploymentConfig } from "data-models";
 import fs from "fs";
 import plist from "plist";
 
 interface IiOSBuildOptions {
   appId: string;
   appName: string;
+  authProvider: IDeploymentConfig["auth"]["provider"];
   versionName: string;
   zoomEnabled: boolean;
 }
 
 /** Populate iOS template files with variables from deployment */
-const configure = async ({ appId, appName, versionName, zoomEnabled }: IiOSBuildOptions) => {
+const configure = async ({
+  appId,
+  appName,
+  versionName,
+  zoomEnabled,
+  authProvider,
+}: IiOSBuildOptions) => {
   // TODO - allow user to input and update config where variables not defined (?)
   if (!appId)
     Logger.error({
@@ -31,7 +39,7 @@ const configure = async ({ appId, appName, versionName, zoomEnabled }: IiOSBuild
     });
   const versionCode = generateVersionCode(versionName);
 
-  const { GOOGLE_REVERSED_CLIENT_ID } = getCustomUrlSchemes();
+  const { GOOGLE_REVERSED_CLIENT_ID } = getCustomUrlSchemes(authProvider);
 
   // Populate templated iOS files
   await envReplace.replaceFiles({
@@ -73,29 +81,34 @@ function convertToValidIOSAppId(appId: string) {
  * Currently just REVERSED_CLIENT_ID, required for Google Auth integration
  * TODO: make this step optional, allowing for deployments without Google Auth integration, for example
  */
-function getCustomUrlSchemes() {
-  let GOOGLE_REVERSED_CLIENT_ID: string;
-  const googleServicesPlist = fs.readFileSync(PATHS.IOS_GOOGLE_SERVICE_INFO_PLIST_PATH, "utf8");
-  if (!googleServicesPlist) {
-    Logger.error({
-      msg1: `No GoogleService-Info.plist file found at ${PATHS.IOS_GOOGLE_SERVICE_INFO_PLIST_PATH}`,
-      msg2: `Please add file, downloaded from Firebase console`,
-    });
-  }
-  try {
-    const parsedPlist = plist.parse(googleServicesPlist);
-    GOOGLE_REVERSED_CLIENT_ID = JSON.parse(JSON.stringify(parsedPlist)).REVERSED_CLIENT_ID;
-    if (!GOOGLE_REVERSED_CLIENT_ID) {
-      Logger.error({
-        msg1: `No REVERSED_CLIENT_ID found in ${PATHS.IOS_GOOGLE_SERVICE_INFO_PLIST_PATH}`,
-        msg2: `Please ensure the file is the correct GoogleService-Info.plist file downloaded from Firebase console`,
-      });
+function getCustomUrlSchemes(authProvider: IiOSBuildOptions["authProvider"]) {
+  let GOOGLE_REVERSED_CLIENT_ID = "";
+  if (authProvider) {
+    // TODO: handle other auth providers
+    if (authProvider === "firebase") {
+      const googleServicesPlist = fs.readFileSync(PATHS.IOS_GOOGLE_SERVICE_INFO_PLIST_PATH, "utf8");
+      if (!googleServicesPlist) {
+        Logger.error({
+          msg1: `No GoogleService-Info.plist file found at ${PATHS.IOS_GOOGLE_SERVICE_INFO_PLIST_PATH}`,
+          msg2: `Please add file, downloaded from Firebase console`,
+        });
+      }
+      try {
+        const parsedPlist = plist.parse(googleServicesPlist);
+        GOOGLE_REVERSED_CLIENT_ID = JSON.parse(JSON.stringify(parsedPlist)).REVERSED_CLIENT_ID;
+        if (!GOOGLE_REVERSED_CLIENT_ID) {
+          Logger.error({
+            msg1: `No REVERSED_CLIENT_ID found in ${PATHS.IOS_GOOGLE_SERVICE_INFO_PLIST_PATH}`,
+            msg2: `Please ensure the file is the correct GoogleService-Info.plist file downloaded from Firebase console`,
+          });
+        }
+      } catch {
+        Logger.error({
+          msg1: `Error parsing ${PATHS.IOS_GOOGLE_SERVICE_INFO_PLIST_PATH}`,
+          msg2: `Please ensure the file is the correct GoogleService-Info.plist file downloaded from Firebase console`,
+        });
+      }
     }
-  } catch {
-    Logger.error({
-      msg1: `Error parsing ${PATHS.IOS_GOOGLE_SERVICE_INFO_PLIST_PATH}`,
-      msg2: `Please ensure the file is the correct GoogleService-Info.plist file downloaded from Firebase console`,
-    });
   }
   return { GOOGLE_REVERSED_CLIENT_ID };
 }
