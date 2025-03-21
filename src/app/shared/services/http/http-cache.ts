@@ -97,18 +97,29 @@ export class HttpCache {
       // res.body.getReader()
 
       const key = this.generateRequestKey(req);
-      // TODO - serialisation
-      await this.storageCache.set(key, value);
-      // TODO - determine when/if to set to memory
-      // Do not await, prefer to eagerly return
-      this.memoryCache.set(key, value);
-      return;
+
+      // // TODO - serialisation
+      // await this.storageCache.set(key, value);
+      // // TODO - determine when/if to set to memory
+      // // Do not await, prefer to eagerly return
+      // this.memoryCache.set(key, value);
+      // return;
     }
   }
 
-  public clear() {}
+  public async clear() {
+    await this.storageCache.clear();
+    await this.memoryCache.clear();
+  }
 
-  public remove(req) {}
+  public async delete(req: KyRequest) {
+    const key = this.generateRequestKey(req);
+    const deleteRes = await this.storageCache.delete(key);
+    if (deleteRes === true) {
+      await this.memoryCache.delete(key);
+    }
+    return deleteRes;
+  }
 
   /**
    * Create an id representing request

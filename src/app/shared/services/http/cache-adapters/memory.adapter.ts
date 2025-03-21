@@ -3,6 +3,8 @@ import { IHttpCacheAdapter } from "./types";
 /** Simple adapter that stores all key-value pairs in an in-memory map opbject */
 export class HttpCacheAdapterMemory implements IHttpCacheAdapter {
   private map = new Map();
+
+  // Core methods
   public async list() {
     return [...this.map.keys()];
   }
@@ -17,5 +19,10 @@ export class HttpCacheAdapterMemory implements IHttpCacheAdapter {
   }
   public async delete(key: string) {
     return this.map.delete(key);
+  }
+
+  //  Additional methods
+  public async has(key: string) {
+    return this.map.has(key);
   }
 }
