@@ -13,17 +13,14 @@ import { UserMetaService } from "./shared/services/userMeta/userMeta.service";
 import { AppEventService } from "./shared/services/app-events/app-events.service";
 import { TourService } from "./feature/tour/tour.service";
 import { TemplateService } from "./shared/components/template/services/template.service";
-import { CampaignService } from "./feature/campaign/campaign.service";
 import { ServerService } from "./shared/services/server/server.service";
 import { DataEvaluationService } from "./shared/services/data/data-evaluation.service";
 import { DynamicDataService } from "./shared/services/dynamic-data/dynamic-data.service";
 import { TemplateProcessService } from "./shared/components/template/services/instance/template-process.service";
 import { isSameDay } from "date-fns";
 import { AnalyticsService } from "./shared/services/analytics/analytics.service";
-import { LocalNotificationService } from "./shared/services/notification/local-notification.service";
 import { TemplateFieldService } from "./shared/components/template/services/template-field.service";
 import { TemplateTranslateService } from "./shared/components/template/services/template-translate.service";
-import { LocalNotificationInteractionService } from "./shared/services/notification/local-notification-interaction.service";
 import { DBSyncService } from "./shared/services/db/db-sync.service";
 import { CrashlyticsService } from "./shared/services/crashlytics/crashlytics.service";
 import { AppDataService } from "./shared/services/data/app-data.service";
@@ -104,11 +101,8 @@ export class AppComponent {
     private templateMetadataService: TemplateMetadataService,
     private templateProcessService: TemplateProcessService,
     private appEventService: AppEventService,
-    private campaignService: CampaignService,
     private dataEvaluationService: DataEvaluationService,
     private analyticsService: AnalyticsService,
-    private localNotificationService: LocalNotificationService,
-    private localNotificationInteractionService: LocalNotificationInteractionService,
     // make public so that language direction signal can be read directly in template
     public templateTranslateService: TemplateTranslateService,
     private crashlyticsService: CrashlyticsService,
@@ -204,11 +198,8 @@ export class AppComponent {
         this.dynamicDataService,
         this.userMetaService,
         this.tourService,
-        this.localNotificationService,
-        this.localNotificationInteractionService,
         this.taskService,
         this.taskActions,
-        this.campaignService,
         this.remoteAssetService,
       ],
       nonBlocking: [

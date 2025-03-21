@@ -33,7 +33,7 @@
   </div>
   <ion-list>
     <notification-debug-interacted-row
-      *ngFor="let notification of localNotificationInteractionService.interactedNotifications$ | async"
+      *ngFor="let notification of dbEntries$ | async"
       [notification]="notification"
     ></notification-debug-interacted-row>
   </ion-list>

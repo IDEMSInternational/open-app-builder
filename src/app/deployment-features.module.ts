@@ -3,6 +3,7 @@ import { NgModule } from "@angular/core";
 import { AnalyticsModule } from "./shared/services/analytics";
 import { NavStackModule } from "./feature/nav-stack/nav-stack.module";
 import { AuthModule } from "./shared/services/auth/auth.module";
+import { CampaignModule } from "./feature/campaign/campaign.module";
 
 /**
  * Module imports required for specific deployment features
@@ -15,5 +16,14 @@ import { AuthModule } from "./shared/services/auth/auth.module";
  *
  * This is a feature marked for future implementation
  */
-@NgModule({ imports: [AuthModule, AnalyticsModule, NavStackModule] })
+@NgModule({
+  imports: [
+    /* */
+    AuthModule,
+    AnalyticsModule,
+    CampaignModule,
+    NavStackModule,
+    /* */
+  ],
+})
 export class DeploymentFeaturesModule {}
