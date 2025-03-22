@@ -1,7 +1,8 @@
 import { TestBed } from "@angular/core/testing";
 
 import { HttpService } from "./http.service";
-import { ResponsePromise } from "ky";
+import { Input, Options, ResponsePromise } from "ky";
+import { MockHttpCache } from "./cache/http-cache.mock.spec";
 
 /**
  * Call standalone tests via:
@@ -9,13 +10,17 @@ import { ResponsePromise } from "ky";
  */
 describe("HttpService", () => {
   let service: HttpService;
-  let getReqSpy: jasmine.Spy;
+  let getReqSpy: jasmine.Spy<<T>(url: Input, options?: Options) => ResponsePromise<T>>;
 
-  beforeEach(() => {
+  beforeEach(async () => {
     TestBed.configureTestingModule({});
     service = TestBed.inject(HttpService);
-    service.ready();
 
+    // use mock cache adapter to stub responses from cache
+    service.cache = new MockHttpCache({ "https://mock.string": "hello" });
+    await service.ready();
+
+    // add spy for get requests
     getReqSpy = spyOn(service["client"], "get").and.callFake(() => {
       return {} as ResponsePromise<any>;
     });
@@ -25,14 +30,48 @@ describe("HttpService", () => {
     expect(service).toBeTruthy();
   });
 
-  it("sets cache adapter depending on environment", () => {});
+  it("uses cache adaptor", async () => {
+    const cache = service["cache"];
+    expect(cache).toBeTruthy();
+  });
 
-  it("populates expiry header", async () => {});
+  it("sends get request", async () => {
+    await service.get("https://example.com", { expiry: "1d" });
+    expect(getReqSpy).toHaveBeenCalledTimes(1);
+  });
 
-  it("retries failed downloads", () => {});
+  it("populates default headers", async () => {
+    const res = await service.get("https://example.com");
+    const [url, options] = getReqSpy.calls.first().args;
+    const expiryHeader = options.headers["x-cache-expiry"];
+    expect(expiryHeader).toBeTruthy();
+    expect(Number(expiryHeader)).toBeGreaterThan(new Date().getTime());
+  });
 
-  it("cache-only strategy", async () => {});
+  // Should convert '1m' expiry to ms and calculate expiry as epoch time diff from now
+  it("populates custom cache-expiry header", async () => {
+    const reqTimeStamp = new Date().getTime();
+    await service.get("https://example.com", { expiry: "1m" });
+    const [url, options] = getReqSpy.calls.first().args;
+    const expiryHeader = options.headers["x-cache-expiry"];
+    const expiryTimeDiff = Number(expiryHeader) - reqTimeStamp;
+    // Should set expiry 1 minute from time of request (60,000 ms)
+    // Could be slightly less depending on time between timestamp and sending request
+    expect(expiryTimeDiff).toBeGreaterThanOrEqual(60000);
+    expect(expiryTimeDiff).toBeLessThanOrEqual(61000);
+  });
+
+  it("cache-only strategy", async () => {
+    // allow full api to call through to check if intercepted by cache
+    getReqSpy.and.callThrough();
+    const res = await service.get("https://mock.string", { strategy: "cache-only" });
+    const sourceHeader = res.headers.get("x-res-source");
+    expect(sourceHeader).toEqual("cache");
+  });
+
   it("cache-first strategy", async () => {});
   it("network-first strategy", async () => {});
   it("network-only strategy", async () => {});
+
+  it("retries failed downloads", () => {});
 });

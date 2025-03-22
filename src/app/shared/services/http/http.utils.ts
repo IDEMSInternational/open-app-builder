@@ -1,4 +1,19 @@
 /**
+ * Create an id representing request
+ * Simply returns a combination of the method and url
+ *
+ * This could be enhanced in the future by providing url normalization, e.g.
+ * https://github.com/jaredwray/cacheable/blob/main/packages/cacheable-request/src/index.ts#L67
+ *
+ */
+export const generateRequestKey = (req: { method: string; url: string }) => {
+  // Remove trailing slash as a means of normalising requests to `example.com` and `example.com/`
+  const url = req.url.replace(/\/$/, "");
+  const method = req.method.toUpperCase();
+  return `${method}|${url}`;
+};
+
+/**
  * Convert short TTL representation (e.g. 15s 2h 30d) to ms
  * Copied from https://github.com/jaredwray/cacheable/blob/main/packages/cacheable/src/shorthand-time.ts
  */

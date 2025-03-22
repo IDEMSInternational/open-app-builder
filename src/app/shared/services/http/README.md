@@ -7,7 +7,7 @@ progress sharing, download abort and failed download retry
 It builds on top of the ky http client, as a language-agnostics and more feature rich alternative to angular's own http client.
 https://github.com/sindresorhus/ky
 
-Takes inspiration from service worker caching strategies, cacheable-request spec and tanstackQuery
+Takes inspiration from service worker caching strategies, cacheable-request spec
 https://developer.chrome.com/docs/workbox/caching-strategies-overview
 https://github.com/jaredwray/cacheable/tree/main/packages/cacheable-request
 
@@ -46,6 +46,8 @@ Inspiration:
 - https://tanstack.com/query/latest/docs/framework/react/overview
 
 ## TODOs
+
+- [ ] Support passing custom _id to requests to subscribe to result elsewhere (possibly as part of download service)
 
 - [ ] Component support 
 E.g Image component properties - `cache` (no expiry), `cache: 30d`. A separate `cache_update` parameter can be included to force update after response. 
