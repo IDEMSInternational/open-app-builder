@@ -1,77 +1,79 @@
 import { KyRequest, KyResponse } from "ky";
-
-/**
- * https://byojs.dev/storage/
- */
-
-import { HttpCacheAdapterMemory } from "./cache-adapters/memory.adapter";
-import { IHttpCacheAdapter } from "./cache-adapters/types";
+import { HttpCacheAdapterMemory } from "./adapters/memory.adapter";
+import { IHttpCacheAdapter } from "./adapters/types";
 import { Capacitor } from "@capacitor/core";
-import { HttpCacheAdapterFile } from "./cache-adapters/file.adapter";
-import { HTTPCacheAdapterOPFS } from "./cache-adapters/opfs.adapter";
-
-// TODO - want to keep L1 and L2 for all adapters
-// NOT extending base, but replacing l2
+import { HttpCacheAdapterFile } from "./adapters/file.adapter";
+import { HTTPCacheAdapterOPFS } from "./adapters/opfs.adapter";
+import { generateRequestKey } from "../http.utils";
 
 /**
- *
+ * ...
  */
 export class HttpCache {
   /** Layer-1 cache that keeps in-memory */
   private memoryCache = new HttpCacheAdapterMemory();
 
-  private storageCache: IHttpCacheAdapter;
+  /** Layer-2 cache that persists to storage */
+  private storageCache?: IHttpCacheAdapter;
+
+  constructor(storageCache?: IHttpCacheAdapter) {
+    this.storageCache = storageCache;
+  }
 
   /**
    * Determine which storage adapter is optimal based on current environment (e.g. browser/native)
    * Specific storage compatibility checks can be tested via:
    * https://byojs.dev/storage/
    */
-  private async setupStorageAdapter(): Promise<IHttpCacheAdapter> {
-    if (Capacitor.isNativePlatform) {
+  private async createStorageAdapter(): Promise<IHttpCacheAdapter> {
+    if (Capacitor.isNativePlatform()) {
       return new HttpCacheAdapterFile();
     }
+    // TODO - disable on ios browser (detect), as writes only supported in worker threads
+    // https://developer.mozilla.org/en-US/docs/Web/API/FileSystemWritableFileStream/write#browser_compatibility
+    // https://webkit.org/blog/12257/the-file-system-access-api-with-origin-private-file-system/
     if ("storage" in navigator) {
-      // TODO - allow to function async
-      console.log("navigator storage");
       try {
         // TODO - subfolder name depending on deployment?
         const opfsRoot = await navigator.storage.getDirectory();
-        const directoryHandle = await opfsRoot.getDirectoryHandle("my first folder", {
+        console.log("opfsRoot", opfsRoot);
+        const directoryHandle = await opfsRoot.getDirectoryHandle("TODO_Deployment_Name", {
           create: true,
         });
-        // TODO - write method may not be supported in safari
-        // https://developer.mozilla.org/en-US/docs/Web/API/FileSystemWritableFileStream/write#browser_compatibility
+
         return new HTTPCacheAdapterOPFS(directoryHandle);
-      } catch (error) {}
+      } catch (error) {
+        console.error("Failed to setup opfs storage", error);
+      }
     }
 
-    // TODO - opfs support - considering ios limitations
     return new HttpCacheAdapterMemory();
   }
 
-  //   TODO - split memory and base adapter...
   /** Layer-2 cache for platform storage implementation */
 
   public async init() {
-    this.storageCache = await this.setupStorageAdapter();
+    // auto-select best storage adapter if not specified
+    this.storageCache ??= await this.createStorageAdapter();
 
     const keys = await this.storageCache.list();
+    console.log("storage cache keys", keys);
     for (const key of keys) {
       // keep reference to
       this.memoryCache.set(key, undefined);
     }
   }
 
-  public has(req: KyRequest) {
-    const key = this.generateRequestKey(req);
+  public async has(req: KyRequest) {
+    const key = generateRequestKey(req);
     // TODO - possibly private method and just use get
     return this.memoryCache.has(key);
   }
 
   public async get(req: KyRequest) {
-    const key = this.generateRequestKey(req);
+    const key = generateRequestKey(req);
     const cachedValue = await this.memoryCache.get(key);
+    console.log("get", { key, cachedValue });
     if (cachedValue) {
       return cachedValue;
     }
@@ -96,7 +98,7 @@ export class HttpCache {
       // TODO - consider streamed/piped reads
       // res.body.getReader()
 
-      const key = this.generateRequestKey(req);
+      const key = generateRequestKey(req);
 
       // // TODO - serialisation
       // await this.storageCache.set(key, value);
@@ -113,25 +115,12 @@ export class HttpCache {
   }
 
   public async delete(req: KyRequest) {
-    const key = this.generateRequestKey(req);
+    const key = generateRequestKey(req);
     const deleteRes = await this.storageCache.delete(key);
     if (deleteRes === true) {
       await this.memoryCache.delete(key);
     }
     return deleteRes;
-  }
-
-  /**
-   * Create an id representing request
-   * Simply returns a combination of the method and url
-   *
-   * This could be enhanced in the future by providing url normalization, e.g.
-   * https://github.com/jaredwray/cacheable/blob/main/packages/cacheable-request/src/index.ts#L67
-   *
-   */
-  private generateRequestKey(req: KyRequest) {
-    // TODO ensure params are cached
-    return `[${req.method}]${req.url}`;
   }
 }
 

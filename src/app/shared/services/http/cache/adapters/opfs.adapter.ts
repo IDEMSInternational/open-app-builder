@@ -26,6 +26,7 @@ export class HTTPCacheAdapterOPFS implements IHttpCacheAdapter {
   }
 
   public async set(key: string, value: any) {
+    console.log("set opfs", key, value);
     // note: trick to skip `await` microtask when
     // not a promise
 
