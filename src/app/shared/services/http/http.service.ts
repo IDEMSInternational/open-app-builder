@@ -1,13 +1,13 @@
 import { Injectable } from "@angular/core";
 
-import ky, { KyInstance } from "ky";
+import ky from "ky";
 
-import { KyHeadersInit } from "ky/distribution/types/options";
-import { shorthandToTime } from "./http.utils";
+import { Options } from "ky/distribution/types/options";
+import { generateRequestKey, shorthandToTime } from "./http.utils";
 import { AsyncServiceBase } from "../asyncService.base";
 import { HttpCache } from "./cache/http-cache";
 
-export interface IHttpRequestOptions {
+export interface IHttpRequestOptions extends Options {
   /** Shorthand ttl, e.g. 1m (60000) 1h (3600000) 1d (86400000). Default 1m */
   expiry?: string;
 
@@ -16,14 +16,11 @@ export interface IHttpRequestOptions {
    * Default uses browser own defaults, typically relying on response headers
    **/
   strategy?: "cache-first" | "cache-only" | "network-first" | "network-only";
-
-  /** Maximum number of times to re-attempt failed request. Default 2*/
-  max_retries?: number;
 }
 const DEFAULT_OPTIONS: IHttpRequestOptions = {
-  max_retries: 2,
   expiry: "30d",
   strategy: "cache-first",
+  retry: 2,
 };
 
 /**
@@ -43,79 +40,145 @@ export class HttpService extends AsyncServiceBase {
   private async init() {
     this.addClientHooks();
     await this.cache.init();
-
-    // TODO - purge expired from cache
   }
 
   public async get(url: string, options: IHttpRequestOptions = {}) {
-    const { strategy, expiry, max_retries } = { ...DEFAULT_OPTIONS, ...options };
+    const mergedOptions: IHttpRequestOptions = { ...DEFAULT_OPTIONS, ...options, method: "get" };
+    const { strategy } = mergedOptions;
 
-    // Forward header used in request
-    const headers: KyHeadersInit = {
-      "x-cache-expiry": `${shorthandToTime(expiry)}`,
-      "x-cache-strategy": strategy,
-    };
-    const controller = new AbortController();
-    const { signal } = controller;
+    switch (strategy) {
+      case "cache-only":
+        return this.handleCacheRequest(url, mergedOptions);
 
-    // TODO - consider handling cache-only/cache-first response here???
-    // TODO - probably yes, and work with IDs instead of requests....
+      case "cache-first":
+        const cacheRes = await this.handleCacheRequest(url, mergedOptions);
+        if (cacheRes.status === 200) {
+          return cacheRes;
+        }
+        return this.handleNetworkRequest(url, mergedOptions);
 
-    // Handle request
-    // NOTE - cache requests still go through client api for consistent response format
-    return this.client.get(url, {
-      headers,
-      onDownloadProgress: (p) => {
-        console.log("progress", p);
-      },
-      signal,
-      retry: max_retries,
-      // use custom caching (?) - or maybe default if not strategy selected
-      // this would use request headers.. maybe use response headers?
-      cache: strategy === "network-only" ? "no-cache" : "default",
-    });
+      case "network-first":
+        const networkRes = await this.handleNetworkRequest(url, mergedOptions);
+        if (this.isSuccessStatus(networkRes.status)) {
+          return networkRes;
+        }
+        return this.handleCacheRequest(url, mergedOptions);
+
+      default:
+        return this.handleNetworkRequest(url, mergedOptions);
+    }
+  }
+
+  private isSuccessStatus(code: number) {
+    // TODO - consider other cacheable response validation, e.g.
+    // https://github.com/kornelski/http-cache-semantics
+    return code >= 200 && code < 300;
+  }
+
+  private handleNetworkRequest(url: string, options: IHttpRequestOptions) {
+    const { expiry } = options;
+
+    // populate cache expiry header to handle in after-response hook
+    options.headers ??= {};
+    options.headers["x-cache-expiry"] = `${shorthandToTime(expiry)}`;
+
+    return this.client.get(url, options);
+  }
+
+  private async handleCacheRequest(url: string, options: IHttpRequestOptions) {
+    const key = generateRequestKey({ url, method: options.method });
+    const cacheRes = await this.cache.get(key);
+    const status = cacheRes ? 200 : 400;
+    const headers = new Headers({ "x-res-source": "cache" });
+    return new Response(cacheRes, { status, headers });
+  }
+
+  private async updateCache(req: Request, res: Response) {
+    if (this.isSuccessStatus(res.status)) {
+      const key = generateRequestKey({ url: req.url, method: req.method });
+      const expiry = req.headers.get("x-cache-expiry");
+      const expiryTime = expiry ? shorthandToTime(expiry) : undefined;
+
+      // Use response clone to allow initial response to still be passed
+      // TODO - handle streaming body response
+      const clone = res.clone();
+
+      // TODO - understand different application types
+      // TODO - when to use buffer vs convert...
+      const reader = res.body.getReader();
+      //
+      const contentType = res.headers.get("content-type");
+      // TODO - use expiry header
+      if (contentType === "application/json") {
+        // TODO - serialisation? or just body
+      }
+    }
   }
 
   private addClientHooks() {
     this.client = this.client.extend({
       hooks: {
-        beforeRequest: [
-          async (req) => {
-            const strategy = req.headers.get("x-cache-strategy") as IHttpRequestOptions["strategy"];
-            console.log("send request", strategy);
-            if (strategy === "cache-only") {
-              const headers = new Headers({ "x-res-source": "cache" });
-              const cacheRes = await this.cache.get(req);
-              const status = cacheRes ? 200 : 400;
-              return new Response(cacheRes, { status, headers });
-            }
-            if (this.cache.has(req)) {
-              const res = await this.cache.get(req);
-
-              // TODO - mimic response?
-              // return new Response(res, { status: 200,headers:{""} });
-            }
-          },
-        ],
+        beforeRequest: [],
         afterResponse: [
           async (req, options, res) => {
             console.log("res", res);
-            if (res.status === 200) {
-              console.log("after res");
-              // TODO - consider conditions when to clone and extract to cache
-              // vs just returning as-is
-              const clone = res.clone();
-              // TODO - stream to cache? instead of set
-              // will depend on body type - to review
-
-              // delay cache updates to avoid blocking UI
-              setTimeout(() => {
-                this.cache.set(req, clone);
-              }, 500);
-            }
+            // delay cache updates to avoid blocking UI
+            setTimeout(() => {
+              this.updateCache(req, res);
+            }, 500);
           },
         ],
       },
     });
   }
 }
+/**
+ * 
+
+// Handle request
+    // NOTE - cache requests still go through client api for consistent response format
+    const req = this.client.get(url, {
+      headers,
+      // TODO - maybe this should be part of download service that also handles writing to disk...
+      
+      retry: max_retries,
+      // use custom caching (?) - or maybe default if not strategy selected
+      // this would use request headers.. maybe use response headers?
+      cache: strategy === "network-only" ? "no-cache" : "default",
+    });
+
+     */
+
+/**
+ * TODOs
+ * - How to keep track of expiry (possibly via cached doc? e.g. _expiry ), or separate db table
+ *   If separate db table again will have to ask whether best kept here or in download service
+ * 
+ * - Handling network-first timeout
+ * - Stale-then-revalidate strategy - how best to subscribe (maybe setup in download)
+ *
+ * Data-download service
+ * - stale-then-revalidate style strategy (possibly just race both cache and network reqs)
+ *   requires `revalidate` param
+ * - could consider moving all strategies to service?
+ * - custom request ids for tracking in other components
+ * - download progress observable and abort signal
+ * - conversion of response file types
+ * 
+ * E.g.
+ * ```
+ *   
+   const controller = new AbortController();
+   const { signal, abort } = controller;
+
+    const progress = new Subject<DownloadProgress>();
+   onDownloadProgress: (p) => {
+        progress.next(p);
+        console.log("progress", p);
+        if (p.percent === 1) {
+          progress.complete();
+        }
+      },
+      signal,
+ * ```
+ */

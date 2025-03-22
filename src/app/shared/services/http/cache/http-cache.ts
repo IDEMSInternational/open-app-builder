@@ -1,10 +1,8 @@
-import { KyRequest, KyResponse } from "ky";
 import { HttpCacheAdapterMemory } from "./adapters/memory.adapter";
 import { IHttpCacheAdapter } from "./adapters/types";
 import { Capacitor } from "@capacitor/core";
 import { HttpCacheAdapterFile } from "./adapters/file.adapter";
 import { HTTPCacheAdapterOPFS } from "./adapters/opfs.adapter";
-import { generateRequestKey } from "../http.utils";
 
 /**
  * ...
@@ -56,6 +54,9 @@ export class HttpCache {
     // auto-select best storage adapter if not specified
     this.storageCache ??= await this.createStorageAdapter();
 
+    // TODO - purge expired from cache (passed by parent?)
+    // or maybe _metadata object stored in cache (?)
+
     const keys = await this.storageCache.list();
     console.log("storage cache keys", keys);
     for (const key of keys) {
@@ -64,14 +65,12 @@ export class HttpCache {
     }
   }
 
-  public async has(req: KyRequest) {
-    const key = generateRequestKey(req);
+  public async has(key: string) {
     // TODO - possibly private method and just use get
     return this.memoryCache.has(key);
   }
 
-  public async get(req: KyRequest) {
-    const key = generateRequestKey(req);
+  public async get(key: string) {
     const cachedValue = await this.memoryCache.get(key);
     console.log("get", { key, cachedValue });
     if (cachedValue) {
@@ -86,27 +85,14 @@ export class HttpCache {
     // TODO - stream req to file? ... or more like a pipe op
   }
 
-  public async set(req: KyRequest, res: KyResponse) {
-    // TODO - consider other cacheable response validation, e.g.
-    // https://github.com/kornelski/http-cache-semantics
-    if (res.status === 200) {
-      const contentType = res.headers.get("content-type");
-      // TODO - use expiry header
-      if (contentType === "application/json") {
-        // TODO - serialisation? or just body
-      }
-      // TODO - consider streamed/piped reads
-      // res.body.getReader()
+  public async set(key: string, value: any) {
+    // TODO - serialisation (cache-dependent)
+    await this.storageCache.set(key, value);
 
-      const key = generateRequestKey(req);
-
-      // // TODO - serialisation
-      // await this.storageCache.set(key, value);
-      // // TODO - determine when/if to set to memory
-      // // Do not await, prefer to eagerly return
-      // this.memoryCache.set(key, value);
-      // return;
-    }
+    // TODO - determine when/if to set to memory
+    // Do not await, prefer to eagerly return
+    this.memoryCache.set(key, value);
+    return;
   }
 
   public async clear() {
@@ -114,8 +100,7 @@ export class HttpCache {
     await this.memoryCache.clear();
   }
 
-  public async delete(req: KyRequest) {
-    const key = generateRequestKey(req);
+  public async delete(key: string) {
     const deleteRes = await this.storageCache.delete(key);
     if (deleteRes === true) {
       await this.memoryCache.delete(key);
