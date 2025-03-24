@@ -97,7 +97,7 @@ interface IAppConfigHeader {
   template: string | null;
   title: string;
   variant: IHeaderVariantOptions;
-  /** @deprecated, use "background" instead */
+  /** @deprecated use "background" instead */
   colour?: IHeaderFooterBackgroundOptions;
 }
 
@@ -124,7 +124,7 @@ const activeRoute = (location: Location) => {
 interface IAppConfigFooter {
   background: IHeaderFooterBackgroundOptions;
   template: string | null;
-  /** @deprecated, use "template" instead */
+  /** @deprecated use "template" instead */
   templateName?: string | null;
 }
 
