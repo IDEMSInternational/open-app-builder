@@ -99,7 +99,7 @@ function getCustomUrlSchemes(authProvider: IiOSBuildOptions["authProvider"]) {
         if (!GOOGLE_REVERSED_CLIENT_ID) {
           Logger.error({
             msg1: `No REVERSED_CLIENT_ID found in ${PATHS.IOS_GOOGLE_SERVICE_INFO_PLIST_PATH}`,
-            msg2: `Please ensure the file is the correct GoogleService-Info.plist file downloaded from Firebase console`,
+            msg2: `Please ensure Google Auth is configured in the Firebase console and the latest GoogleService-Info.plist file is populated`,
           });
         }
       } catch {
