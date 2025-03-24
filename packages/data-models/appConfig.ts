@@ -124,7 +124,7 @@ const activeRoute = (location: Location) => {
 interface IAppConfigFooter {
   background: IHeaderFooterBackgroundOptions;
   template: string | null;
-  /** @deprecated, use "background" instead */
+  /** @deprecated, use "template" instead */
   templateName?: string | null;
 }
 
