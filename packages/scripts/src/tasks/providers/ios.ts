@@ -84,32 +84,32 @@ function convertToValidIOSAppId(appId: string) {
 function getCustomUrlSchemes(authProvider: IiOSBuildOptions["authProvider"]) {
   let GOOGLE_REVERSED_CLIENT_ID = "";
   if (authProvider) {
-    // TODO: handle other auth providers
-    if (authProvider === "firebase") {
-      const googleServicesPlist = fs.readFileSync(PATHS.IOS_GOOGLE_SERVICE_INFO_PLIST_PATH, "utf8");
-      if (!googleServicesPlist) {
+    // TODO: revisit code if supporting other auth providers
+    if (authProvider !== "firebase") throw new Error(`Unsupported auth provider: ${authProvider}`);
+    const googleServicesPlist = fs.readFileSync(PATHS.IOS_GOOGLE_SERVICE_INFO_PLIST_PATH, "utf8");
+    if (!googleServicesPlist) {
+      Logger.error({
+        msg1: `No GoogleService-Info.plist file found at ${PATHS.IOS_GOOGLE_SERVICE_INFO_PLIST_PATH}`,
+        msg2: `Please add file, downloaded from Firebase console`,
+      });
+    }
+    try {
+      const parsedPlist = plist.parse(googleServicesPlist);
+      GOOGLE_REVERSED_CLIENT_ID = JSON.parse(JSON.stringify(parsedPlist)).REVERSED_CLIENT_ID;
+      if (!GOOGLE_REVERSED_CLIENT_ID) {
         Logger.error({
-          msg1: `No GoogleService-Info.plist file found at ${PATHS.IOS_GOOGLE_SERVICE_INFO_PLIST_PATH}`,
-          msg2: `Please add file, downloaded from Firebase console`,
+          msg1: `No REVERSED_CLIENT_ID found in ${PATHS.IOS_GOOGLE_SERVICE_INFO_PLIST_PATH}`,
+          msg2: `Please ensure Google Auth is configured in the Firebase console and the latest GoogleService-Info.plist file is populated`,
         });
       }
-      try {
-        const parsedPlist = plist.parse(googleServicesPlist);
-        GOOGLE_REVERSED_CLIENT_ID = JSON.parse(JSON.stringify(parsedPlist)).REVERSED_CLIENT_ID;
-        if (!GOOGLE_REVERSED_CLIENT_ID) {
-          Logger.error({
-            msg1: `No REVERSED_CLIENT_ID found in ${PATHS.IOS_GOOGLE_SERVICE_INFO_PLIST_PATH}`,
-            msg2: `Please ensure Google Auth is configured in the Firebase console and the latest GoogleService-Info.plist file is populated`,
-          });
-        }
-      } catch {
-        Logger.error({
-          msg1: `Error parsing ${PATHS.IOS_GOOGLE_SERVICE_INFO_PLIST_PATH}`,
-          msg2: `Please ensure the file is the correct GoogleService-Info.plist file downloaded from Firebase console`,
-        });
-      }
+    } catch {
+      Logger.error({
+        msg1: `Error parsing ${PATHS.IOS_GOOGLE_SERVICE_INFO_PLIST_PATH}`,
+        msg2: `Please ensure the file is the correct GoogleService-Info.plist file downloaded from Firebase console`,
+      });
     }
   }
+
   return { GOOGLE_REVERSED_CLIENT_ID };
 }
 
