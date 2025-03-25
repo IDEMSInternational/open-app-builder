@@ -46,7 +46,6 @@ export class CampaignService extends AsyncServiceBase {
 
   constructor(
     private dataEvaluationService: DataEvaluationService,
-    private localNotificationService: LocalNotificationService,
     private templateTranslateService: TemplateTranslateService,
     private appDataService: AppDataService,
     private appConfigService: AppConfigService,
@@ -65,14 +64,18 @@ export class CampaignService extends AsyncServiceBase {
     return this.injector.get(TemplateVariablesService);
   }
 
+  // Call via injector to avoid accidental service init (unclear exact reason why it still inits when not called)
+  // TODO - can hopefully tidy up pending follow-ups to https://github.com/IDEMSInternational/open-app-builder/pull/2859
+  get localNotificationService() {
+    return this.injector.get(LocalNotificationService);
+  }
+
   private async initialise() {
-    // Skip init if disabled by deployment
+    // Skip init if disabled by deployment. Include here and not in constructor to also handle re-init
     if (!this.deploymentService.config.campaigns.enabled) {
       return;
     }
-
     await this.ensureAsyncServicesReady([
-      this.localNotificationService,
       this.templateTranslateService,
       this.templateVariablesService,
       this.dataEvaluationService,
