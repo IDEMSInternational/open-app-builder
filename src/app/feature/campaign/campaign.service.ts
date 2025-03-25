@@ -78,6 +78,7 @@ export class CampaignService extends AsyncServiceBase {
     await this.ensureAsyncServicesReady([
       this.templateTranslateService,
       this.templateVariablesService,
+      this.localNotificationService,
       this.dataEvaluationService,
     ]);
     this.ensureSyncServicesReady([this.appConfigService]);
