@@ -195,7 +195,7 @@ class EnvReplaceClass {
   private logSummary() {
     const tableSummary = [];
     for (const [fileName, replacements] of Object.entries(this.summary)) {
-      for (let [varName, value] of Object.entries(replacements)) {
+      for (const [varName, value] of Object.entries(replacements)) {
         const truncatedValue = value.length > 40 ? value.slice(0, 37) + "..." : value;
         tableSummary.push({ fileName, varName, value: truncatedValue });
       }
