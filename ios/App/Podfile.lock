@@ -1,4 +1,10 @@
 PODS:
+  - AppAuth (1.7.6):
+    - AppAuth/Core (= 1.7.6)
+    - AppAuth/ExternalUserAgent (= 1.7.6)
+  - AppAuth/Core (1.7.6)
+  - AppAuth/ExternalUserAgent (1.7.6):
+    - AppAuth/Core
   - Capacitor (6.1.2):
     - CapacitorCordova
   - CapacitorApp (6.0.1):
@@ -19,6 +25,10 @@ PODS:
     - Capacitor
     - CapacitorFirebaseAuthentication/Lite (= 6.3.1)
     - FirebaseAuth (~> 11.0)
+  - CapacitorFirebaseAuthentication/Google (6.3.1):
+    - Capacitor
+    - FirebaseAuth (~> 11.0)
+    - GoogleSignIn (= 7.1.0)
   - CapacitorFirebaseAuthentication/Lite (6.3.1):
     - Capacitor
     - FirebaseAuth (~> 11.0)
@@ -40,29 +50,29 @@ PODS:
     - Capacitor
   - CapawesomeCapacitorAppUpdate (6.0.0):
     - Capacitor
-  - FirebaseABTesting (11.6.0):
-    - FirebaseCore (~> 11.6.0)
-  - FirebaseAppCheckInterop (11.6.0)
-  - FirebaseAuth (11.6.0):
+  - FirebaseABTesting (11.9.0):
+    - FirebaseCore (~> 11.9.0)
+  - FirebaseAppCheckInterop (11.9.0)
+  - FirebaseAuth (11.9.0):
     - FirebaseAppCheckInterop (~> 11.0)
     - FirebaseAuthInterop (~> 11.0)
-    - FirebaseCore (~> 11.6.0)
-    - FirebaseCoreExtension (~> 11.6.0)
+    - FirebaseCore (~> 11.9.0)
+    - FirebaseCoreExtension (~> 11.9.0)
     - GoogleUtilities/AppDelegateSwizzler (~> 8.0)
     - GoogleUtilities/Environment (~> 8.0)
     - GTMSessionFetcher/Core (< 5.0, >= 3.4)
-    - RecaptchaInterop (~> 100.0)
-  - FirebaseAuthInterop (11.6.0)
-  - FirebaseCore (11.6.0):
-    - FirebaseCoreInternal (~> 11.6.0)
+    - RecaptchaInterop (~> 101.0)
+  - FirebaseAuthInterop (11.9.0)
+  - FirebaseCore (11.9.0):
+    - FirebaseCoreInternal (~> 11.9.0)
     - GoogleUtilities/Environment (~> 8.0)
     - GoogleUtilities/Logger (~> 8.0)
-  - FirebaseCoreExtension (11.6.0):
-    - FirebaseCore (~> 11.6.0)
-  - FirebaseCoreInternal (11.6.0):
+  - FirebaseCoreExtension (11.9.0):
+    - FirebaseCore (~> 11.9.0)
+  - FirebaseCoreInternal (11.9.0):
     - "GoogleUtilities/NSData+zlib (~> 8.0)"
-  - FirebaseCrashlytics (11.6.0):
-    - FirebaseCore (~> 11.6.0)
+  - FirebaseCrashlytics (11.9.0):
+    - FirebaseCore (~> 11.9.0)
     - FirebaseInstallations (~> 11.0)
     - FirebaseRemoteConfigInterop (~> 11.0)
     - FirebaseSessions (~> 11.0)
@@ -70,13 +80,13 @@ PODS:
     - GoogleUtilities/Environment (~> 8.0)
     - nanopb (~> 3.30910.0)
     - PromisesObjC (~> 2.4)
-  - FirebaseInstallations (11.6.0):
-    - FirebaseCore (~> 11.6.0)
+  - FirebaseInstallations (11.9.0):
+    - FirebaseCore (~> 11.9.0)
     - GoogleUtilities/Environment (~> 8.0)
     - GoogleUtilities/UserDefaults (~> 8.0)
     - PromisesObjC (~> 2.4)
-  - FirebasePerformance (11.6.0):
-    - FirebaseCore (~> 11.6.0)
+  - FirebasePerformance (11.9.0):
+    - FirebaseCore (~> 11.9.0)
     - FirebaseInstallations (~> 11.0)
     - FirebaseRemoteConfig (~> 11.0)
     - FirebaseSessions (~> 11.0)
@@ -85,31 +95,35 @@ PODS:
     - GoogleUtilities/MethodSwizzler (~> 8.0)
     - GoogleUtilities/UserDefaults (~> 8.0)
     - nanopb (~> 3.30910.0)
-  - FirebaseRemoteConfig (11.6.0):
+  - FirebaseRemoteConfig (11.9.0):
     - FirebaseABTesting (~> 11.0)
-    - FirebaseCore (~> 11.6.0)
+    - FirebaseCore (~> 11.9.0)
     - FirebaseInstallations (~> 11.0)
     - FirebaseRemoteConfigInterop (~> 11.0)
     - FirebaseSharedSwift (~> 11.0)
     - GoogleUtilities/Environment (~> 8.0)
     - "GoogleUtilities/NSData+zlib (~> 8.0)"
-  - FirebaseRemoteConfigInterop (11.6.0)
-  - FirebaseSessions (11.6.0):
-    - FirebaseCore (~> 11.6.0)
-    - FirebaseCoreExtension (~> 11.6.0)
+  - FirebaseRemoteConfigInterop (11.9.0)
+  - FirebaseSessions (11.9.0):
+    - FirebaseCore (~> 11.9.0)
+    - FirebaseCoreExtension (~> 11.9.0)
     - FirebaseInstallations (~> 11.0)
     - GoogleDataTransport (~> 10.0)
     - GoogleUtilities/Environment (~> 8.0)
     - GoogleUtilities/UserDefaults (~> 8.0)
     - nanopb (~> 3.30910.0)
     - PromisesSwift (~> 2.1)
-  - FirebaseSharedSwift (11.6.0)
+  - FirebaseSharedSwift (11.9.0)
   - GCDWebServer (3.5.4):
     - GCDWebServer/Core (= 3.5.4)
   - GCDWebServer/Core (3.5.4)
   - GoogleDataTransport (10.1.0):
     - nanopb (~> 3.30910.0)
     - PromisesObjC (~> 2.4)
+  - GoogleSignIn (7.1.0):
+    - AppAuth (< 2.0, >= 1.7.3)
+    - GTMAppAuth (< 5.0, >= 4.1.1)
+    - GTMSessionFetcher/Core (~> 3.3)
   - GoogleUtilities/AppDelegateSwizzler (8.0.2):
     - GoogleUtilities/Environment
     - GoogleUtilities/Logger
@@ -137,7 +151,10 @@ PODS:
   - GoogleUtilities/UserDefaults (8.0.2):
     - GoogleUtilities/Logger
     - GoogleUtilities/Privacy
-  - GTMSessionFetcher/Core (4.1.0)
+  - GTMAppAuth (4.1.1):
+    - AppAuth/Core (~> 1.7)
+    - GTMSessionFetcher/Core (< 4.0, >= 3.3)
+  - GTMSessionFetcher/Core (3.5.0)
   - nanopb (3.30910.0):
     - nanopb/decode (= 3.30910.0)
     - nanopb/encode (= 3.30910.0)
@@ -146,7 +163,7 @@ PODS:
   - PromisesObjC (2.4.0)
   - PromisesSwift (2.4.0):
     - PromisesObjC (= 2.4.0)
-  - RecaptchaInterop (100.0.0)
+  - RecaptchaInterop (101.0.0)
 
 DEPENDENCIES:
   - "Capacitor (from `../../node_modules/@capacitor/ios`)"
@@ -158,6 +175,7 @@ DEPENDENCIES:
   - "CapacitorDevice (from `../../node_modules/@capacitor/device`)"
   - "CapacitorFilesystem (from `../../node_modules/@capacitor/filesystem`)"
   - "CapacitorFirebaseAuthentication (from `../../node_modules/@capacitor-firebase/authentication`)"
+  - "CapacitorFirebaseAuthentication/Google (from `../../node_modules/@capacitor-firebase/authentication`)"
   - "CapacitorFirebaseCrashlytics (from `../../node_modules/@capacitor-firebase/crashlytics`)"
   - "CapacitorFirebasePerformance (from `../../node_modules/@capacitor-firebase/performance`)"
   - "CapacitorLocalNotifications (from `../../node_modules/@capacitor/local-notifications`)"
@@ -170,6 +188,7 @@ DEPENDENCIES:
 
 SPEC REPOS:
   trunk:
+    - AppAuth
     - FirebaseABTesting
     - FirebaseAppCheckInterop
     - FirebaseAuth
@@ -186,7 +205,9 @@ SPEC REPOS:
     - FirebaseSharedSwift
     - GCDWebServer
     - GoogleDataTransport
+    - GoogleSignIn
     - GoogleUtilities
+    - GTMAppAuth
     - GTMSessionFetcher
     - nanopb
     - PromisesObjC
@@ -230,6 +251,7 @@ EXTERNAL SOURCES:
     :path: "../../node_modules/@capawesome/capacitor-app-update"
 
 SPEC CHECKSUMS:
+  AppAuth: d4f13a8fe0baf391b2108511793e4b479691fb73
   Capacitor: 69c7f687aabb8d85e543497411e40638b5cc08c0
   CapacitorApp: f51c08c64df914fc934239fd1b3fc809d62a02f6
   CapacitorBlobWriter: d709e5d22ab9989afd730eb4773873d1ded5fd08
@@ -247,29 +269,31 @@ SPEC CHECKSUMS:
   CapacitorShare: 5d49f1b220e991372b4d5d34be9a6080a042bae4
   CapacitorSplashScreen: b46e61cc4345d73d510530b0c845a30e3602db40
   CapawesomeCapacitorAppUpdate: 08a91f5be8dc99ad336fe131d3b011b7acb49c22
-  FirebaseABTesting: 663ece168d2d65a31f71603d71937e326020a887
-  FirebaseAppCheckInterop: 347aa09a805219a31249b58fc956888e9fcb314b
-  FirebaseAuth: 0304982cfe00df8d49bf533bc4becd3de36c7122
-  FirebaseAuthInterop: a919d415797d23b7bfe195a04f322b86c65020ef
-  FirebaseCore: 48b0dd707581cf9c1a1220da68223fb0a562afaa
-  FirebaseCoreExtension: 2d77d6430c16cf43ca2b04608302ed02b3598361
-  FirebaseCoreInternal: d98ab91e2d80a56d7b246856a8885443b302c0c2
-  FirebaseCrashlytics: b21c665fb50138766480bce73ebdb1aa30f7f300
-  FirebaseInstallations: efc0946fc756e4d22d8113f7c761948120322e8c
-  FirebasePerformance: eede3a4db492e4cc0e094cdc71a83896e948fea3
-  FirebaseRemoteConfig: ee5161282c4e857ad81c0197cd8baec9d5dfef0e
-  FirebaseRemoteConfigInterop: e75e348953352a000331eb77caf01e424248e176
-  FirebaseSessions: 9529d14180868e29a8da164b3a729c036204918b
-  FirebaseSharedSwift: a4e5dfca3e210633bb3a3dfb94176c019211948b
+  FirebaseABTesting: 7edd6acbd2b75ed72bd7c4d4957ee57914eafc9b
+  FirebaseAppCheckInterop: 9226f7217b43e99dfa0bc9f674ad8108cef89feb
+  FirebaseAuth: 8eebb43f35cd2c1bb1981e3cef27c45617b85316
+  FirebaseAuthInterop: 2a26ee1bea6d47df8048683cfa071e7da657798f
+  FirebaseCore: 7cfcf7e8b33985c06478fd2b96e2f7101eb61a1c
+  FirebaseCoreExtension: b35fed507db40e6224fe36b163d34d18147da368
+  FirebaseCoreInternal: 154779013b85b4b290fdba38414df475f42e3096
+  FirebaseCrashlytics: 2eb9e0a0fc7394ae28825ca8ee18ca24452663cd
+  FirebaseInstallations: c76d4931a485fc0cc2dc1d62d3ed0369846ea4b8
+  FirebasePerformance: 954de962f256dc475a16e307276c92b849e61932
+  FirebaseRemoteConfig: 69a9fa23e134776ec99b2bef3ce7804aab7956ea
+  FirebaseRemoteConfigInterop: 710954a00e956c5fe5144a8e46164f0361389203
+  FirebaseSessions: 0a5e23cc8cfb84a4f6b7914b08aaaaac31ae5e58
+  FirebaseSharedSwift: 574e6a5602afe4397a55c8d4f767382d620285de
   GCDWebServer: 2c156a56c8226e2d5c0c3f208a3621ccffbe3ce4
   GoogleDataTransport: aae35b7ea0c09004c3797d53c8c41f66f219d6a7
+  GoogleSignIn: d4281ab6cf21542b1cfaff85c191f230b399d2db
   GoogleUtilities: 26a3abef001b6533cf678d3eb38fd3f614b7872d
-  GTMSessionFetcher: 923b710231ad3d6f3f0495ac1ced35421e07d9a6
+  GTMAppAuth: f69bd07d68cd3b766125f7e072c45d7340dea0de
+  GTMSessionFetcher: 5aea5ba6bd522a239e236100971f10cb71b96ab6
   nanopb: fad817b59e0457d11a5dfbde799381cd727c1275
   PromisesObjC: f5707f49cb48b9636751c5b2e7d227e43fba9f47
   PromisesSwift: 9d77319bbe72ebf6d872900551f7eeba9bce2851
-  RecaptchaInterop: 7d1a4a01a6b2cb1610a47ef3f85f0c411434cb21
+  RecaptchaInterop: 11e0b637842dfb48308d242afc3f448062325aba
 
-PODFILE CHECKSUM: 62a3da7b56d30729755bed84c28a47627f40c18c
+PODFILE CHECKSUM: dc004f7fd4d7b852c4b74cb5c22bcde7e163d76d
 
 COCOAPODS: 1.16.2
