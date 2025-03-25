@@ -48,6 +48,48 @@
   </div>
   }
 
+  <!-- Dynamic Data -->
+  <h2>Dynamic Data</h2>
+  <ion-select
+    #dynamicDataSelect
+    placeholder="Select Data"
+    [value]="dynamicDataSelected()"
+    (ionChange)="dynamicDataSelected.set(dynamicDataSelect.value)"
+    style="margin-bottom: 1rem"
+  >
+    @for(flowName of dynamicDataSelectOptions(); track flowName){
+    <ion-select-option [value]="flowName">{{flowName}}</ion-select-option>
+    }
+  </ion-select>
+  @if(dynamicDataTableData(); as table){
+  <div class="table-container">
+    <table>
+      <thead>
+        <tr>
+          @for(header of table.headers; track header){
+          <th>{{header}}</th>
+          }
+        </tr>
+      </thead>
+      <tbody>
+        @for(row of table.rows; track row.id){
+        <tr>
+          @for(header of table.headers; track header){
+          <td
+            class="dynamic-data-value"
+            [class.isOverrideValue]="row._override_keys.includes(header)"
+          >
+            {{row[header]}}
+          </td>
+          }
+        </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+
+  }
+
   <!-- Protected Fields -->
   <h2>Protected Fields</h2>
   <div class="table-container">
@@ -89,41 +131,4 @@
       </tbody>
     </table>
   </div>
-
-  <h2>Dynamic Data</h2>
-  <ion-select
-    #dynamicDataSelect
-    placeholder="Select Data"
-    [(ngModel)]="dynamicDataSelected"
-    (ionChange)="setDynamicEntryView(dynamicDataSelect.value)"
-    style="margin-bottom: 1rem"
-    [compareWith]="dynamicEntryCompareFn"
-  >
-    @for(entry of dynamicDataEntries; track entry.id){
-    <ion-select-option [value]="entry">{{entry.flow_name}}</ion-select-option>
-    }
-  </ion-select>
-  @if(dynamicDataTable; as table){
-  <div class="table-container">
-    <table>
-      <thead>
-        <tr>
-          @for(header of table.headers; track header){
-          <th>{{header}}</th>
-          }
-        </tr>
-      </thead>
-      <tbody>
-        @for(row of table.rows; track row.id){
-        <tr>
-          @for(header of table.headers; track header){
-          <td>{{row[header]}}</td>
-          }
-        </tr>
-        }
-      </tbody>
-    </table>
-  </div>
-
-  }
 </ion-content>
