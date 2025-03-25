@@ -6,7 +6,7 @@
   border-radius: var(--ion-border-radius-secondary);
   padding: var(--regular-padding);
   max-width: 400px;
-  filter: drop-shadow(var(--ion-default-box-shadow));
+  box-shadow: var(--ion-default-box-shadow);
 
   // Variants should be set using "variant" param, but support legacy
   // "style" param for "portrait" and "button", which adds a class
@@ -113,7 +113,6 @@
 .badge {
   position: absolute;
   top: -10px;
-  filter: drop-shadow(var(--ion-default-box-shadow));
   &.highlighted-badge {
     right: -10px;
     padding: 5px 10px;
@@ -127,6 +126,10 @@
     width: 36px;
   }
   .circle {
+    &.notStarted {
+      display: none;
+    }
+    box-shadow: var(--ion-default-box-shadow);
     height: 36px;
     width: 36px;
     border-radius: 50%;
@@ -189,7 +192,7 @@
       overflow: hidden;
       background-color: white;
       border: 1px solid rgba(black, 0.07);
-      filter: drop-shadow(var(--ion-default-box-shadow));
+      box-shadow: var(--ion-default-box-shadow);
 
       img {
         width: 100%;

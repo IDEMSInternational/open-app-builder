@@ -1,5 +1,10 @@
 import { Injectable, signal } from "@angular/core";
-import { getDefaultAppConfig, IAppConfig, IAppConfigOverride } from "data-models";
+import {
+  getDefaultAppConfig,
+  IAppConfig,
+  IAppConfigOverride,
+  applyAppConfigDeprecations,
+} from "data-models";
 import { BehaviorSubject } from "rxjs";
 import { deepMergeObjects, RecursivePartial, trackObservableObjectChanges } from "../../utils";
 import { SyncServiceBase } from "../syncService.base";
@@ -78,6 +83,8 @@ export class AppConfigService extends SyncServiceBase {
    * with the initial config
    */
   public setAppConfig(overrides: IAppConfigOverride = {}, source: IAppConfigOverrideSource) {
+    overrides = applyAppConfigDeprecations(overrides);
+
     // use override source to specify index used in override order
     const overrideIndex = APP_CONFIG_OVERRIDE_ORDER[source];
 

@@ -1,13 +1,13 @@
 <ion-header
-  [class.ion-no-border]="headerConfig().colour === 'none'"
+  [class.ion-no-border]="headerConfig().background === 'none'"
   [style.marginTop]="marginTop() + 'px'"
 >
   <!-- When the header is hidden at the app config level, render the ion-toolbar element with 0 height to handle the top safe area on iOS.
  See https://github.com/IDEMSInternational/open-app-builder/issues/2692 -->
   <ion-toolbar
-    [color]="headerConfig().hidden ? 'none' : headerConfig().colour"
+    [color]="headerConfig().hidden ? 'none' : headerConfig().background"
     [class.header-hidden]="headerConfig().hidden"
-    [attr.data-colour]="headerConfig().colour"
+    [attr.data-background]="headerConfig().background"
   >
     @if (!headerConfig().hidden) {
       <ion-buttons slot="start" style="position: absolute">

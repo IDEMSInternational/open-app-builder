@@ -1,5 +1,6 @@
-@use "./utils";
+@use "../utils";
 @use "sass:color";
+@use "./overrides";
 
 @mixin theme-plh_kids_tz {
   [data-theme="plh_kids_tz"] {
@@ -7,9 +8,22 @@
     $color-primary: hsl(203, 76%, 21%); // #0d3f5e
     $color-secondary: #edb135; // #EDB135
     $page-background: white;
+    $color-green: #92c96d;
 
     /** Global and component variables **/
     $variable-overrides: (
+      // Custom palette
+      color-accent-pink: #ee007b,
+      // color-accent-pink-50: #ffe6f3,
+      // color-accent-pink-100: #ffcce6,
+      // color-accent-pink-200: #ff99ce,
+      // color-accent-pink-300: #fe67b5,
+      // color-accent-pink-400: #fe349c,
+      // color-accent-pink-500: #fe0184,
+      // color-accent-pink-600: #cb0169,
+      // color-accent-pink-700: #98014f,
+      // color-accent-pink-800: #660035,
+      // color-accent-pink-900: #33001a,
       // BORDERS
       border-color-default: var(--ion-color-gray-200),
       border-width-default: 1px,
@@ -52,11 +66,18 @@
       // radio-button-font-size: 1.25rem,
       // radio-button-font-color: var(--ion-color-primary),
       ion-item-background: var(--ion-color-gray-light),
-      task-progress-bar-color: var(--ion-color-primary-500),
+      task-progress-bar-color: var(--ion-color-green),
       // checkbox-background-color: white,
-      progress-path-line-background: var(--ion-color-gray-100)
+      progress-path-line-background: var(--ion-color-gray-100),
+      module-list-item-color-default: var(--ion-color-secondary-300),
+      module-list-item-color-highlighted: var(--color-accent-pink)
     );
-    @include utils.generateTheme($color-primary, $color-secondary, $page-background);
+    @include utils.generateTheme(
+      $p: $color-primary,
+      $s: $color-secondary,
+      $bg: $page-background,
+      $g: $color-green
+    );
     @each $name, $value in $variable-overrides {
       --#{$name}: #{$value};
     }
