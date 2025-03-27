@@ -22,6 +22,7 @@ import {
 import { AppConfigService } from "../app-config/app-config.service";
 import { AsyncServiceBase } from "../asyncService.base";
 import { DbService } from "../db/db.service";
+import { LocalNotificationPersistAdapter } from "./local-notification-persist.adapter";
 
 // Notification ids must be +/- 2^31-1 as per capacitor docs
 const NOTIFICATION_ID_MAX = 2147483647;
@@ -61,7 +62,8 @@ export class LocalNotificationService extends AsyncServiceBase {
   /** Observable list of all scheduled notifications */
   public pendingNotifications$ = new BehaviorSubject<ILocalNotification[]>([]);
   public permissionGranted = false;
-  /** Observable list of notificaitons interacted with */
+
+  public persistAdapter = new LocalNotificationPersistAdapter();
   public interactedNotification$ = new BehaviorSubject<ActionPerformed>(null);
 
   /** Typed wrapper around database table used to store local notifications */
@@ -81,7 +83,10 @@ export class LocalNotificationService extends AsyncServiceBase {
   /** Default settings used where otherwise not specified */
   localNotificationDefaults: LocalNotificationSchema;
 
-  constructor(private dbService: DbService, private appConfigService: AppConfigService) {
+  constructor(
+    private dbService: DbService,
+    private appConfigService: AppConfigService
+  ) {
     super("Local Notifications");
     this.registerInitFunction(this.init);
   }
@@ -89,6 +94,11 @@ export class LocalNotificationService extends AsyncServiceBase {
   private async init() {
     await this.ensureAsyncServicesReady([this.dbService]);
     this.ensureSyncServicesReady([this.appConfigService]);
+
+    // setup interactions adapter
+    const table = this.dbService.table("local_notifications_interaction");
+    this.persistAdapter.init(this, table);
+
     this.subscribeToAppConfigChanges();
     this.db = this.dbService.table<ILocalNotification>("local_notifications");
     this.sessionStartTime = new Date().getTime();

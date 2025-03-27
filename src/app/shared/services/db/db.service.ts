@@ -16,6 +16,17 @@ window.addEventListener("unhandledrejection", (event) => {
   console.warn("Unhandled promise rejection:", reason && (reason.stack || reason));
 });
 
+/**
+ * Generate standard metadata to be included with database entries
+ **/
+export function generateDBMeta(syncable = false) {
+  const meta: IDBMeta = {
+    _created: generateTimestamp(),
+    _sync_status: syncable ? "ignored" : "pending",
+  };
+  return meta;
+}
+
 @Injectable({
   providedIn: "root",
 })
@@ -93,16 +104,8 @@ export class DbService extends AsyncServiceBase {
     return table;
   }
 
-  /**
-   * Generate standard metadata to be included with database entries
-   * */
-  public generateDBMeta(syncable = false) {
-    const meta: IDBMeta = {
-      _created: generateTimestamp(),
-      _sync_status: syncable ? "ignored" : "pending",
-    };
-    return meta;
-  }
+  // Provide access to utility function
+  public generateDBMeta = generateDBMeta;
 
   /**
    * Add reactive bindings to the database to receive updates

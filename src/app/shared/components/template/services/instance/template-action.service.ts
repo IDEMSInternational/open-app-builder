@@ -17,7 +17,6 @@ import { ThemeService } from "src/app/feature/theme/services/theme.service";
 import { getGlobalService } from "src/app/shared/services/global.service";
 import { SyncServiceBase } from "src/app/shared/services/syncService.base";
 import { TemplateActionRegistry } from "./template-action.registry";
-import { CampaignService } from "src/app/feature/campaign/campaign.service";
 
 /** Logging Toggle - rewrite default functions to enable or disable inline logs */
 let SHOW_DEBUG_LOGS = false;
@@ -72,9 +71,6 @@ export class TemplateActionService extends SyncServiceBase {
     return getGlobalService(this.injector, ThemeService);
   }
 
-  private get campaignService() {
-    return getGlobalService(this.injector, CampaignService);
-  }
   private get templateActionRegistry() {
     // HACK - as only service that does not extend sync/async base just return
     return this.injector.get(TemplateActionRegistry);

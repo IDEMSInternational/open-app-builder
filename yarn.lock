@@ -8955,6 +8955,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/plist@npm:^3.0.5":
+  version: 3.0.5
+  resolution: "@types/plist@npm:3.0.5"
+  dependencies:
+    "@types/node": "*"
+    xmlbuilder: ">=11.0.1"
+  checksum: 71417189c9bc0d0cb4595106cea7c7a8a7274f64d2e9c4dd558efd7993bcfdada58be6917189e3be7c455fe4e5557004658fd13bd12254eafed8c56e0868b59e
+  languageName: node
+  linkType: hard
+
 "@types/pngjs@npm:^6.0.5":
   version: 6.0.5
   resolution: "@types/pngjs@npm:6.0.5"
@@ -25454,6 +25464,7 @@ __metadata:
     "@types/inquirer": ^7.3.1
     "@types/jest": ^29.5.12
     "@types/node-rsa": ^1.1.1
+    "@types/plist": ^3.0.5
     "@types/semver": ^7.3.9
     actions: "workspace:*"
     boxen: ^5.0.1
@@ -25471,6 +25482,7 @@ __metadata:
     node-rsa: ^1.1.1
     open: ^8
     p-queue: ^6.6.2
+    plist: ^3.1.0
     semver: ^7.5.2
     shared: "workspace:*"
     simple-git: ^3.7.1
@@ -29751,7 +29763,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"xmlbuilder@npm:^15.1.1":
+"xmlbuilder@npm:>=11.0.1, xmlbuilder@npm:^15.1.1":
   version: 15.1.1
   resolution: "xmlbuilder@npm:15.1.1"
   checksum: 14f7302402e28d1f32823583d121594a9dca36408d40320b33f598bd589ca5163a352d076489c9c64d2dc1da19a790926a07bf4191275330d4de2b0d85bb1843
