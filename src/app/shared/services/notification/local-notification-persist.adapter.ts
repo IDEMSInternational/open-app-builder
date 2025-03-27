@@ -1,13 +1,11 @@
-import { Injectable } from "@angular/core";
 import type { Table } from "dexie";
 import { IDBMeta } from "data-models";
 import { BehaviorSubject } from "rxjs";
 import { interval } from "rxjs";
 import { debounce, filter } from "rxjs/operators";
 import { generateTimestamp } from "../../utils";
-import { AsyncServiceBase } from "../asyncService.base";
-import { DbService } from "../db/db.service";
-import { LocalNotificationService } from "./local-notification.service";
+import { generateDBMeta } from "../db/db.service";
+import type { LocalNotificationService } from "./local-notification.service";
 
 export interface ILocalNotificationInteraction {
   sent_recorded_timestamp: string;
@@ -21,41 +19,31 @@ export interface ILocalNotificationInteraction {
 }
 export type ILocalNotificationInteractionDB = ILocalNotificationInteraction & IDBMeta;
 
-@Injectable({
-  providedIn: "root",
-})
-/**
- * Small service that handles tracking local notification interaction history and saving to db
- *
- */
-export class LocalNotificationInteractionService extends AsyncServiceBase {
+/** Track local notification interaction and persist to db */
+export class LocalNotificationPersistAdapter {
   /** Typed wrapper around database table used to store local notifications */
   private db: Table<ILocalNotificationInteractionDB, number>;
-  /**  */
-  public interactedNotifications$ = new BehaviorSubject<ILocalNotificationInteractionDB[]>([]);
 
-  constructor(
-    private dbService: DbService,
-    private localNotificationService: LocalNotificationService
+  /** List of all interacted notifications */
+  public dbEntries$ = new BehaviorSubject<ILocalNotificationInteractionDB[]>([]);
+
+  public init(
+    service: LocalNotificationService,
+    table: Table<ILocalNotificationInteractionDB, number>
   ) {
-    super("LocalNotificationInteraction");
-    this.registerInitFunction(this.initialise);
+    this.db = table;
+    this.subscribeToNotifications(service);
+    // trigger without await to load in non-blocking way
+    this.loadInteractedNotifications();
   }
-  private async initialise() {
-    await this.ensureAsyncServicesReady([this.dbService, this.localNotificationService]);
-    this.db = this.dbService.table<ILocalNotificationInteraction>(
-      "local_notifications_interaction"
-    );
-    this.subscribeToNotifications();
-    await this.loadInteractedNotifications();
-  }
+
   public async loadInteractedNotifications() {
     const interactedNotifications = await this.db.reverse().toArray();
-    this.interactedNotifications$.next(interactedNotifications);
+    this.dbEntries$.next(interactedNotifications);
   }
 
-  private subscribeToNotifications() {
-    this.localNotificationService.interactedNotification$
+  private subscribeToNotifications(localNotificationService: LocalNotificationService) {
+    localNotificationService.interactedNotification$
       .pipe(
         debounce(() => interval(1000)), // generally try to ensure action update happen after session update
         filter((v) => !!v)
@@ -74,7 +62,7 @@ export class LocalNotificationInteractionService extends AsyncServiceBase {
         await this.recordNotificationInteraction(notification.id, update);
         this.loadInteractedNotifications();
       });
-    this.localNotificationService.sessionNotifications$
+    localNotificationService.sessionNotifications$
       .pipe(
         debounce(() => interval(500)), // local notifications can re-evalute in quick succession so debounce
         filter((v) => v.length > 0)
@@ -101,7 +89,7 @@ export class LocalNotificationInteractionService extends AsyncServiceBase {
 
     if (!entry) {
       entry = {
-        ...this.dbService.generateDBMeta(),
+        ...generateDBMeta(),
         notification_id,
       } as any;
     }
