@@ -1,10 +1,7 @@
-import { Component, ViewChild } from "@angular/core";
+import { Component, OnInit, ViewChild } from "@angular/core";
 import { IonDatetime, IonModal } from "@ionic/angular";
 import { DBSyncService } from "src/app/shared/services/db/db-sync.service";
-import {
-  ILocalNotificationInteraction,
-  LocalNotificationInteractionService,
-} from "src/app/shared/services/notification/local-notification-interaction.service";
+import type { ILocalNotificationInteraction } from "src/app/shared/services/notification/local-notification-persist.adapter";
 import {
   ILocalNotification,
   LocalNotificationService,
@@ -14,7 +11,7 @@ import {
   templateUrl: "./notifications-debug.page.html",
   styleUrls: ["./notifications-debug.page.scss"],
 })
-export class NotificationsDebugPage {
+export class NotificationsDebugPage implements OnInit {
   public editableNotification: ILocalNotification;
   pickerValue: string;
   pickerMin = new Date().toISOString().substring(0, 10);
@@ -23,13 +20,20 @@ export class NotificationsDebugPage {
 
   constructor(
     public localNotificationService: LocalNotificationService,
-    public localNotificationInteractionService: LocalNotificationInteractionService,
     private dbSyncService: DBSyncService
   ) {}
+  async ngOnInit() {
+    await this.dbSyncService.ready();
+    await this.localNotificationService.ready();
+  }
+
+  public get dbEntries$() {
+    return this.localNotificationService.persistAdapter.dbEntries$;
+  }
 
   public async syncInteractedNotifications() {
     await this.dbSyncService.syncTable("local_notifications_interaction");
-    await this.localNotificationInteractionService.loadInteractedNotifications();
+    await this.localNotificationService.persistAdapter.loadInteractedNotifications();
   }
 
   public async showCustomNotificationSchedule(notification: ILocalNotification) {
