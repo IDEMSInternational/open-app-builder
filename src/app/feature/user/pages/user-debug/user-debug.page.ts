@@ -1,4 +1,3 @@
-import { FlowTypes } from "packages/data-models";
 import { Component, computed, effect, Injector, OnInit, signal } from "@angular/core";
 import { isEqual, uniqueObjectArrayKeys } from "packages/shared/src/utils/object-utils";
 import { map, debounceTime, switchMap, startWith, tap } from "rxjs/operators";
@@ -11,6 +10,7 @@ import { LocalStorageService } from "src/app/shared/services/local-storage/local
 import { AppDataService } from "src/app/shared/services/data/app-data.service";
 import { RxDocument } from "rxdb";
 import { IPersistedDoc } from "src/app/shared/services/dynamic-data/adapters/persistedMemory";
+import { AlertController } from "@ionic/angular";
 
 /** Snapshot of persisted memory state for data_list type */
 type IDynamicDataState = { [flow_name: string]: { [row_id: string]: any } };
@@ -60,6 +60,7 @@ export class UserDebugPage implements OnInit {
     private dynamicDataService: DynamicDataService,
     private localStorageService: LocalStorageService,
     public authService: AuthService,
+    private alertCtrl: AlertController,
     private injector: Injector
   ) {
     // load first dynamic data option by default
@@ -142,15 +143,24 @@ export class UserDebugPage implements OnInit {
     return { headers, rows };
   }
 
-  public async resetSelectedDynamicData() {
-    const selected = this.dynamicDataSelected();
-    await this.dynamicDataService.resetFlow("data_list", selected);
-    location.reload();
+  public async resetDynamicDataList(flow_name: string) {
+    await this.dynamicDataService.resetFlow("data_list", flow_name);
   }
 
-  public async resetAllDynamicData() {
-    await this.dynamicDataService.resetAll();
-    location.reload();
+  public async promptDynamicDataResetAll() {
+    const actionSheet = await this.alertCtrl.create({
+      header: "Dynamic Data Reset",
+      message: "Are you sure you want to reset all dynamic data?",
+      buttons: [
+        { text: "Yes, Reset", role: "destructive" },
+        { text: "No, Cancel", role: "cancel" },
+      ],
+    });
+    await actionSheet.present();
+    const { role } = await actionSheet.onDidDismiss();
+    if (role === "destructive") {
+      await this.dynamicDataService.resetAll();
+    }
   }
 
   /** Retrieve localStorage entries prefixed by field service prefix */

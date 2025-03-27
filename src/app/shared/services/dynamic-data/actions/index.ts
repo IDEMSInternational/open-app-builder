@@ -15,8 +15,8 @@ export type IActionRemoveDataParams = {
   _id: string;
 };
 
-type IActionResetDataParams = {
-  _list_id: string;
+export type IActionResetDataParams = {
+  _list_id?: string;
 };
 
 // Use action factory to make it easier to apply common logic to action params and pass service
@@ -29,17 +29,17 @@ export class DynamicDataActionFactory {
   };
 
   public reset_data: IActionHandler = async ({ params }: { params?: IActionResetDataParams }) => {
-    if (!params) {
-      // If no list specified, reset all flows
-      return this.service.resetAll();
-    } else {
+    if (params?._list_id) {
       const { _list_id } = this.parseActionParams(params);
       return this.service.resetFlow("data_list", _list_id);
+    } else {
+      // If no list specified, reset all flows
+      return this.service.resetAll();
     }
   };
 
   public remove_data: IActionHandler = async ({ params }: { params?: IActionRemoveDataParams }) => {
-    const { _id, _list_id } = params;
+    const { _id, _list_id } = this.parseActionParams(params);
     return this.service.remove("data_list", _list_id, [_id]);
   };
 

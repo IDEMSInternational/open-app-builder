@@ -11,7 +11,7 @@ import { FlowTypes } from "packages/data-models";
 import { DeploymentService } from "../../deployment/deployment.service";
 import { MockDeploymentService } from "../../deployment/deployment.service.mock.spec";
 import { TemplateActionRegistry } from "../../../components/template/services/instance/template-action.registry";
-import { DynamicDataActionFactory, IActionRemoveDataParams } from "./index";
+import { DynamicDataActionFactory, IActionRemoveDataParams, IActionResetDataParams } from "./index";
 
 type ITestRow = { id: string; number: number; string: string; _meta_field?: any };
 
@@ -61,6 +61,22 @@ async function triggerRemoveDataAction(
     args: [],
     trigger: "click",
     params: { ...params, _list_id: "test_flow" },
+  });
+  const obs = await service.query$<any>("data_list", "test_flow");
+  const data = await firstValueFrom(obs);
+  return data;
+}
+
+async function triggerResetDataAction(
+  service: DynamicDataService,
+  params: Partial<IActionResetDataParams>
+) {
+  const { reset_data } = new DynamicDataActionFactory(service);
+  await reset_data({
+    action_id: "remove_data",
+    args: [],
+    trigger: "click",
+    params,
   });
   const obs = await service.query$<any>("data_list", "test_flow");
   const data = await firstValueFrom(obs);
@@ -132,6 +148,21 @@ describe("set_data Action", () => {
     expect(addedData.number).toEqual(2);
     const updatedData = await triggerRemoveDataAction(service, { _id: addedData.id });
     expect(updatedData.length).toEqual(2);
+  });
+
+  it("reset_data - single list", async () => {
+    const data = await triggerTestAddDataAction(service, { number: 2 });
+    expect(data.length).toEqual(3);
+    const resetData = await triggerResetDataAction(service, { _list_id: "test_flow" });
+    expect(resetData.length).toEqual(2);
+  });
+
+  it("reset_data - all", async () => {
+    const data = await triggerTestAddDataAction(service, { number: 2 });
+    expect(data.length).toEqual(3);
+    // NOTE - only tests against single created list
+    const resetData = await triggerResetDataAction(service, {});
+    expect(resetData.length).toEqual(2);
   });
 
   // TODO - @list evaluation (when supported)
