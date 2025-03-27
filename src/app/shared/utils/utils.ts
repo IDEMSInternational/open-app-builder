@@ -414,8 +414,8 @@ export function deepDiffObjects<T extends Object, U extends Object>(original: T,
  * ```
  * */
 export function compareObjectKeys<T extends Object, U extends Object>(a: T, b: U) {
-  const aKeys = Object.keys(a);
-  const bKeys = Object.keys(b);
+  const aKeys = Object.keys(a || {});
+  const bKeys = Object.keys(b || {});
   return {
     added: bKeys.filter((key) => !(key in a)),
     deleted: aKeys.filter((key) => !(key in b)),
