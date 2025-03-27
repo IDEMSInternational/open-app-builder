@@ -1,4 +1,4 @@
-import { Component, input, Input, OnInit } from "@angular/core";
+import { Component, computed, input, Input, OnInit, signal } from "@angular/core";
 import { FlowTypes } from "src/app/shared/model";
 import {
   getBooleanParamFromTemplateRow,
@@ -28,6 +28,14 @@ export class ComboBoxModalComponent implements OnInit {
   inputPosition: boolean = false;
   maxLength: number = 30;
   placeholder: string = "";
+  searchTerm = signal<string>("");
+  showSearch = computed(() => this.answerOptions().length > 10);
+  filteredOptions = computed(() =>
+    this.answerOptions().filter((options) =>
+      options.text.toLowerCase().includes(this.searchTerm().toLowerCase())
+    )
+  );
+
   constructor(
     private fb: FormBuilder,
     private modalController: ModalController
@@ -106,6 +114,10 @@ export class ComboBoxModalComponent implements OnInit {
         });
       }
     }
+  }
+
+  search(searchTerm: string) {
+    this.searchTerm.set(searchTerm);
   }
 
   get customAnswerClass() {
