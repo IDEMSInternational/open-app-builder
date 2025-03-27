@@ -1,5 +1,9 @@
 import { Injectable, Injector } from "@angular/core";
-import { FirebaseAuthentication, User } from "@capacitor-firebase/authentication";
+import {
+  AdditionalUserInfo,
+  FirebaseAuthentication,
+  User,
+} from "@capacitor-firebase/authentication";
 import { getAuth, initializeAuth, indexedDBLocalPersistence, Auth } from "firebase/auth";
 import { FirebaseService } from "../../firebase/firebase.service";
 import { AuthProviderBase } from "./base.auth";
@@ -28,15 +32,23 @@ export class FirebaseAuthProvider extends AuthProviderBase {
     await this.handleAutomatedLogin();
   }
 
+  public async signInWithApple() {
+    const { user, additionalUserInfo } = await FirebaseAuthentication.signInWithApple();
+    if (user) {
+      // Note: Apple allows for anonymous sign-in so profile info may be minimal
+      const { profile = {} } = additionalUserInfo;
+      this.setAuthUser(user, profile);
+      this.saveUserInfo(user, profile);
+    }
+    return this.authUser();
+  }
+
   public async signInWithGoogle() {
     const { user, additionalUserInfo } = await FirebaseAuthentication.signInWithGoogle();
     if (user) {
-      // NOTE - additionalUserInfo is only returned on first signIn so persist to localStorage
-      // for access on automated sign-in following restart. Use fallback empty object if null
       const { profile = {} } = additionalUserInfo;
-      localStorage.setItem(AUTH_METADATA_FIELD, JSON.stringify(profile));
-
       this.setAuthUser(user, profile);
+      this.saveUserInfo(user, profile);
     }
     return this.authUser();
   }
@@ -67,8 +79,15 @@ export class FirebaseAuthProvider extends AuthProviderBase {
     const authUser: IAuthUser = {
       ...profile,
       uid: user.uid,
+      name: user.displayName,
     };
     this.authUser.set(authUser);
+  }
+
+  private saveUserInfo(user: User, profile: AdditionalUserInfo["profile"]) {
+    // NOTE - additionalUserInfo is only returned on first signIn so persist to localStorage
+    // for access on automated sign-in following restart. Use fallback empty object if null
+    localStorage.setItem(AUTH_METADATA_FIELD, JSON.stringify(profile));
   }
 
   /**

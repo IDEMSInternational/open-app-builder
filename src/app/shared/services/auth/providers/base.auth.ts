@@ -6,6 +6,11 @@ export class AuthProviderBase {
 
   public async initialise(injector: Injector) {}
 
+  public async signInWithApple() {
+    throw new Error("Apple sign in not enabled");
+    return this.authUser();
+  }
+
   public async signInWithGoogle() {
     throw new Error("Google sign in not enabled");
     return this.authUser();
