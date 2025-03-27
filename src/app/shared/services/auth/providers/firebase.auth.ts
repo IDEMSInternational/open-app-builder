@@ -33,13 +33,12 @@ export class FirebaseAuthProvider extends AuthProviderBase {
   }
 
   public async signInWithApple() {
-    console.log("signInWithApple");
-    const result = await FirebaseAuthentication.signInWithApple();
-    const { user, additionalUserInfo } = result;
-    console.log("signInWithApple result", result);
+    const { user, additionalUserInfo } = await FirebaseAuthentication.signInWithApple();
     if (user) {
       // Note: Apple allows for anonymous sign-in so profile info may be minimal
-      this.saveUserInfo(user, additionalUserInfo);
+      const { profile = {} } = additionalUserInfo;
+      this.setAuthUser(user, profile);
+      this.saveUserInfo(user, profile);
     }
     return this.authUser();
   }
@@ -47,7 +46,9 @@ export class FirebaseAuthProvider extends AuthProviderBase {
   public async signInWithGoogle() {
     const { user, additionalUserInfo } = await FirebaseAuthentication.signInWithGoogle();
     if (user) {
-      this.saveUserInfo(user, additionalUserInfo);
+      const { profile = {} } = additionalUserInfo;
+      this.setAuthUser(user, profile);
+      this.saveUserInfo(user, profile);
     }
     return this.authUser();
   }
@@ -83,13 +84,10 @@ export class FirebaseAuthProvider extends AuthProviderBase {
     this.authUser.set(authUser);
   }
 
-  private saveUserInfo(user: User, additionalUserInfo: AdditionalUserInfo) {
+  private saveUserInfo(user: User, profile: AdditionalUserInfo["profile"]) {
     // NOTE - additionalUserInfo is only returned on first signIn so persist to localStorage
     // for access on automated sign-in following restart. Use fallback empty object if null
-    const { profile = {} } = additionalUserInfo;
     localStorage.setItem(AUTH_METADATA_FIELD, JSON.stringify(profile));
-
-    this.setAuthUser(user, profile);
   }
 
   /**
