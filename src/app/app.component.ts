@@ -161,6 +161,7 @@ export class AppComponent {
     this.localStorageService.setProtected("DEPLOYMENT_NAME", name);
     this.localStorageService.setProtected("APP_VERSION", _app_builder_version);
     this.localStorageService.setProtected("CONTENT_VERSION", _content_version);
+    this.localStorageService.setProtected("PLATFORM", Capacitor.getPlatform());
     // HACK - ensure first_app_launch migrated from event service
     if (!this.localStorageService.getProtected("APP_FIRST_LAUNCH")) {
       await this.appEventService.ready();
