@@ -19,6 +19,7 @@ enum PROTECTED_FIELDS {
   DEPLOYMENT_NAME = "deployment_name",
   FEEDBACK_SELECTED_TEXT = "feedback_selected_text",
   FEEDBACK_SIDEBAR_OPEN = "feedback_sidebar_open",
+  PLATFORM = "platform",
   SERVER_SYNC_LATEST = "server_sync_latest",
 }
 
