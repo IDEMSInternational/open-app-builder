@@ -180,6 +180,11 @@ export class ReactiveMemoryAdapter {
     await this.db.collections[collectionName].remove();
   }
 
+  public async removeAll() {
+    await this.db.remove();
+    await this.createDB();
+  }
+
   /**
    * Iterate over a document's key-value pairs and populate any properties starting with
    * an underscore to a single top-level APP_META property
