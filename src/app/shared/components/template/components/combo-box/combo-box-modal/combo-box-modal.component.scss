@@ -9,7 +9,16 @@ $background-with-value: var(
   display: contents;
 }
 
-.wrapper {
+.searchbar {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  &.ios {
+    position: unset;
+    top: unset;
+  }
+}
+
+.custom-input {
   padding: 0;
   .text-box-input {
     background: var(--ion-color-primary-contrast);
@@ -26,21 +35,24 @@ $background-with-value: var(
   }
 }
 
-.header {
+.modal-title {
   font-size: 20px;
   text-align: center;
   color: var(--ion-color-primary);
-  margin-top: 20px;
-  margin-bottom: 20px;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  position: relative;
+  top: auto;
 }
 
 .form {
   display: flex;
   flex-direction: column;
+  margin-bottom: 40px;
   &.reverse {
     flex-direction: column-reverse;
   }
-  .container-radio {
+  .option {
     margin-bottom: 20px;
     min-height: 55px;
     width: 100%;

@@ -29,7 +29,7 @@ export class ComboBoxModalComponent implements OnInit {
   maxLength: number = 30;
   placeholder: string = "";
   searchTerm = signal<string>("");
-  showSearch = computed(() => this.answerOptions().length > 10);
+  showSearch = computed(() => this.answerOptions().length > 8);
   filteredOptions = computed(() =>
     this.answerOptions().filter((options) =>
       options.text.toLowerCase().includes(this.searchTerm().toLowerCase())

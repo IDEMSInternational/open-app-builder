@@ -1,13 +1,17 @@
 <ion-header *ngIf="textTitle || showSearch()">
   <ion-toolbar>
-    <ion-title *ngIf="textTitle" [class]="'header'">{{ textTitle }}</ion-title>
-    <ion-searchbar *ngIf="showSearch()" (ionInput)="search($event.target.value)"></ion-searchbar>
+    <ion-title *ngIf="textTitle" class="modal-title">{{ textTitle }}</ion-title>
+    <ion-searchbar
+      *ngIf="showSearch()"
+      (ionInput)="search($event.target.value)"
+      class="searchbar"
+    ></ion-searchbar>
   </ion-toolbar>
 </ion-header>
 <ion-content>
   <form [formGroup]="form" class="form" [class.reverse]="inputPosition">
     <div
-      class="container-radio"
+      class="option"
       [class.checked-radio]="form.get('answer').value === radio.name"
       *ngFor="let radio of filteredOptions()"
     >
@@ -16,7 +20,7 @@
         {{ radio.text | translate }}
       </label>
     </div>
-    <div class="wrapper" *ngIf="inputAllowed">
+    <div class="custom-input" *ngIf="inputAllowed">
       <ion-input
         formControlName="customAnswer"
         [class]="customAnswerClass"
