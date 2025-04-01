@@ -88,11 +88,10 @@
     </table>
   </div>
   <div style="display: flex; align-items: center; gap: 8px; margin-top: 1rem">
-    <span>Reset dynamic data:</span>
-    @if (dynamicDataSelected) {
-    <ion-button (click)="resetSelectedDynamicData()">Reset selected data list</ion-button>
+    @if (dynamicDataSelected(); as selected) {
+    <ion-button (click)="resetDynamicDataList(selected)">Reset List</ion-button>
     }
-    <ion-button (click)="resetAllDynamicData()">Reset all</ion-button>
+    <ion-button (click)="promptDynamicDataResetAll()" fill="clear">Reset All</ion-button>
   </div>
   }
 
