@@ -116,6 +116,7 @@ export class AuthService extends AsyncServiceBase {
         const [actionId] = args;
         const childActions = {
           sign_in_google: async () => await this.provider.signInWithGoogle(),
+          sign_in_apple: async () => await this.provider.signInWithApple(),
           sign_out: async () => await this.provider.signOut(),
         };
         if (!(actionId in childActions)) {
