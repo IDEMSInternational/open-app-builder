@@ -192,26 +192,14 @@ export class DynamicDataService extends AsyncServiceBase {
     }
   }
 
-  /** Remove user writes on all flows */
-  public async resetAll(includeInternal = false) {
-    try {
-      await this.db.removeAll();
-      const allFlowNamesAndTypes = await this.writeCache.getAllFlowNamesAndTypes();
-      await this.writeCache.deleteAll();
-
-      const resets = allFlowNamesAndTypes
-        // By default, don't reset internal collections
-        .filter(({ flow_name }) => includeInternal || !flow_name.startsWith("_"))
-        .map(({ flow_type, flow_name }) =>
-          this.resetFlow(flow_type as FlowTypes.FlowType, flow_name)
-        );
-
-      await Promise.all(resets);
-
-      console.log(`[Dynamic Data] Reset completed. Total flows: ${allFlowNamesAndTypes.length}`);
-    } catch (error) {
-      console.error("[Dynamic Data] Error resetting all data:", error);
-    }
+  /**
+   * Remove user writes on all flows
+   * NOTE - as this will also reset internal flows it is recommended to reload the app
+   * after reset
+   * */
+  public async resetAll() {
+    await this.db.removeAll();
+    await this.writeCache.deleteAll();
   }
 
   /** Access full state of all persisted data layers */
