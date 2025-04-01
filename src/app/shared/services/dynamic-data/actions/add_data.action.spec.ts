@@ -73,7 +73,7 @@ async function triggerResetDataAction(
 ) {
   const { reset_data } = new DynamicDataActionFactory(service);
   await reset_data({
-    action_id: "remove_data",
+    action_id: "reset_data",
     args: [],
     trigger: "click",
     params,
