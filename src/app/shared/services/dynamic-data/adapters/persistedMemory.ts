@@ -155,6 +155,11 @@ export class PersistedMemoryAdapter {
     this.persistStateToDB();
   }
 
+  public async deleteAll() {
+    this.state = {};
+    await this.persistStateToDB();
+  }
+
   /** Trigger persist handler. Requests will be debounced and notified when complete */
   public async persistStateToDB() {
     this.statePersist$.next("pending");
