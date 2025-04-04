@@ -16,11 +16,18 @@ import {
   getIonContentHeight,
   setIonContentScrollTop,
 } from "src/app/shared/components/template/utils";
-import { getStringParamFromTemplateRow } from "src/app/shared/utils";
+import {
+  getBooleanParamFromTemplateRow,
+  getStringParamFromTemplateRow,
+} from "src/app/shared/utils";
 
 interface IPlhProgressPathParams {
   /** TEMPLATE_PARAMETER: "background_image_asset". Used to set the progress path background */
   backgroundImageAsset: string;
+  /**
+   * TEMPLATE_PARAMETER: "start_at_bottom". If true, child items will start at bottom of path
+   * and component will scroll to the bottom on page load */
+  startAtBottom: boolean;
 }
 
 @Component({
@@ -47,7 +54,8 @@ export class PlhProgressPathComponent
     toObservable(this.rows).pipe(
       map((rows) => rows.find((r) => r.type === "data_items")),
       filter((row) => row !== undefined),
-      switchMap((row) => this.dataItemsService.getItemsObservable(row, this.parent.templateRowMap))
+      switchMap((row) => this.dataItemsService.getItemsObservable(row, this.parent.templateRowMap)),
+      map((items) => (this.params.startAtBottom ? [...items].reverse() : items))
     )
   );
 
@@ -63,14 +71,14 @@ export class PlhProgressPathComponent
   }
 
   ngAfterViewInit() {
-    this.scrollToBottomMiddle();
+    this.scrollToCentre();
     setTimeout(() => {
       this.loading.set(false);
     }, 100);
   }
 
-  // Scroll to the bottom and horizontally to the middle of the component
-  private scrollToBottomMiddle() {
+  // Scroll to centre the starting child step in the viewport
+  private scrollToCentre() {
     const element = this.progressPath.nativeElement;
 
     // Scroll component content horizontally to centre component content
@@ -79,9 +87,12 @@ export class PlhProgressPathComponent
       left: scrollLeft,
     });
 
-    // Scroll parent ion-content element to the bottom
-    const height = getIonContentHeight(this.progressPath);
-    setIonContentScrollTop(this.progressPath, height);
+    if (this.params.startAtBottom) {
+      console.log("scrolling to bottom");
+      // Scroll parent ion-content element to the bottom
+      const height = getIonContentHeight(this.progressPath);
+      setIonContentScrollTop(this.progressPath, height);
+    }
   }
 
   private getParams() {
@@ -90,5 +101,6 @@ export class PlhProgressPathComponent
       "background_image_asset",
       null
     );
+    this.params.startAtBottom = getBooleanParamFromTemplateRow(this._row, "start_at_bottom", false);
   }
 }
