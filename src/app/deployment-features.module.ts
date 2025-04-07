@@ -2,6 +2,7 @@ import { NgModule } from "@angular/core";
 
 import { AnalyticsModule } from "./shared/services/analytics";
 import { NavStackModule } from "./feature/nav-stack/nav-stack.module";
+import { DataDownloadModule } from "./feature/data-download/data-download.module";
 import { AuthModule } from "./shared/services/auth/auth.module";
 
 /**
@@ -15,5 +16,5 @@ import { AuthModule } from "./shared/services/auth/auth.module";
  *
  * This is a feature marked for future implementation
  */
-@NgModule({ imports: [AuthModule, AnalyticsModule, NavStackModule] })
+@NgModule({ imports: [AuthModule, AnalyticsModule, DataDownloadModule, NavStackModule] })
 export class DeploymentFeaturesModule {}

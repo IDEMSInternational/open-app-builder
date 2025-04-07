@@ -1,5 +1,5 @@
-import { IActionHandler } from "../../components/template/services/instance/template-action.registry";
-import { HttpService } from "./http.service";
+import { IActionHandler } from "../../shared/components/template/services/instance/template-action.registry";
+import { HttpService } from "../../shared/services/http/http.service";
 
 // export class HttpActionFactory {
 //   constructor(private service: HttpService) {}
