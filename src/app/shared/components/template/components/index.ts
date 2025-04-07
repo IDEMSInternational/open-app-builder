@@ -66,6 +66,7 @@ import { YoutubeComponent } from "./youtube/youtube.component";
 
 import { DEMO_COMPONENT_MAPPING } from "components/demo";
 import { PLH_COMPONENT_MAPPING } from "components/plh";
+import { ComboBoxSearchComponent } from "./combo-box/combo-box-search/combo-box-search.component";
 
 export const TEMPLATE_STANDALONE_COMPONENTS = [
   // tmpl prefix
@@ -79,6 +80,7 @@ export const TEMPLATE_COMPONENTS = [
   AnimatedSectionComponent,
   AnimatedSectionGroupComponent,
   ComboBoxModalComponent,
+  ComboBoxSearchComponent,
   FormComponent,
   NavGroupComponent,
   RoundIconButtonComponent,

@@ -12,6 +12,7 @@ import { FlowTypes, ITemplateRowProps } from "../../models";
 import { ReplaySubject, map, filter, switchMap } from "rxjs";
 import { DataItemsService } from "../data-items/data-items.service";
 import { toObservable, toSignal } from "@angular/core/rxjs-interop";
+import { ComboBoxSearchComponent } from "./combo-box-search/combo-box-search.component";
 
 interface IComboBoxParams {
   disabled: boolean;
@@ -54,6 +55,7 @@ export class TmplComboBoxComponent
     }
     return getAnswerListParamFromTemplateRow(this.rowSignal(), "answer_list", []);
   });
+  showSearch = computed(() => this.answerOptions().length > 8);
 
   public disabled = computed(() => this.params().disabled || this.answerOptions().length === 0);
 
@@ -115,6 +117,29 @@ export class TmplComboBoxComponent
     const modal = await this.modalController.create({
       component: ComboBoxModalComponent,
       cssClass: "combo-box-modal",
+      componentProps: {
+        answerOptions: this.answerOptions,
+        row: this._row,
+        selectedValue: this.customAnswerSelected() ? this.answerText() : this._row.value,
+        customAnswerSelected: this.customAnswerSelected(),
+        style: this.params().style,
+      },
+    });
+
+    modal.onDidDismiss().then(async (data) => {
+      this.params().prioritisePlaceholder = false;
+      this.answerText.set(data?.data?.answer?.text);
+      this.customAnswerSelected.set(data?.data?.customAnswerSelected);
+      this.customAnswerText = this.customAnswerSelected() ? data?.data?.answer?.text : "";
+      await this.setValue(data?.data?.answer?.name);
+    });
+    await modal.present();
+  }
+
+  async openSearch() {
+    const modal = await this.modalController.create({
+      component: ComboBoxSearchComponent,
+      cssClass: "combo-box-search",
       componentProps: {
         answerOptions: this.answerOptions,
         row: this._row,

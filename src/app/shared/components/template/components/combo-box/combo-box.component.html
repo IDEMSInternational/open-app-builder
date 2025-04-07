@@ -13,7 +13,21 @@
     {{ displayText() | translate }}
   </button>
 } @else if (params().variant === "dropdown") {
-  <div class="combo-box-container dropdown">
+  <button *ngIf="showSearch()"
+    class="open-combobox margin-t-regular"
+    (click)="openSearch()"
+    [ngClass]="{
+      disabled: disabled(),
+      'placeholder-style': (!_row.value && params().placeholder) || params().prioritisePlaceholder,
+      'with-value': _row.value,
+      'no-value': !_row.value
+    }"
+    [disabled]="disabled()"
+  >
+    {{ displayText() | translate }}
+  </button>
+
+  <div *ngIf="!showSearch()" class="combo-box-container dropdown">
     <ion-select
       [class.hasValue]="!!_row.value"
       [placeholder]="displayText() | translate"
