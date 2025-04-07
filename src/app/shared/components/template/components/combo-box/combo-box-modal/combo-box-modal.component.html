@@ -1,34 +1,36 @@
-<ion-header *ngIf="textTitle || showSearch()">
-  <ion-toolbar>
-    <ion-title *ngIf="textTitle" class="modal-title">{{ textTitle }}</ion-title>
-    <ion-searchbar
-      *ngIf="showSearch()"
-      (ionInput)="search($event.target.value)"
-      class="searchbar"
-    ></ion-searchbar>
-  </ion-toolbar>
-</ion-header>
-<ion-content>
-  <form [formGroup]="form" class="form" [class.reverse]="inputPosition">
-    <div
-      class="option"
-      [class.checked-radio]="form.get('answer').value === radio.name"
-      *ngFor="let radio of filteredOptions()"
-    >
-      <label>
-        <input type="radio" (click)="check(radio)" formControlName="answer" [value]="radio.name" />
-        {{ radio.text | translate }}
-      </label>
-    </div>
-    <div class="custom-input" *ngIf="inputAllowed">
-      <ion-input
-        formControlName="customAnswer"
-        [class]="customAnswerClass"
-        (keyup.enter)="enterCustomAnswer()"
-        [placeholder]="placeholder"
-        [class.checked-radio]="form.get('customAnswer').value === selectedValue"
-      >
-      </ion-input>
-    </div>
-  </form>
-</ion-content>
+<div class="container-modal">
+  <div class="header" *ngIf="textTitle">
+    {{ textTitle }}
+  </div>
+  <div class="form">
+    <form [formGroup]="form" [class.reverse]="inputPosition">
+      <div class="checkboxes">
+        <div
+          class="container-radio"
+          [class.checked-radio]="form.get('answer').value === radio.name"
+          *ngFor="let radio of answerOptions()"
+        >
+          <label>
+            <input
+              type="radio"
+              (click)="check(radio)"
+              formControlName="answer"
+              [value]="radio.name"
+            />
+            {{ radio.text | translate }}
+          </label>
+        </div>
+      </div>
+      <div class="wrapper" *ngIf="inputAllowed">
+        <ion-input
+          formControlName="customAnswer"
+          [class]="customAnswerClass"
+          (keyup.enter)="enterCustomAnswer()"
+          [placeholder]="placeholder"
+          [class.checked-radio]="form.get('customAnswer').value === selectedValue"
+        >
+        </ion-input>
+      </div>
+    </form>
+  </div>
+</div>
