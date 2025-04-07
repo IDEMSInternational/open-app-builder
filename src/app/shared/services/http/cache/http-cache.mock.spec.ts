@@ -16,6 +16,6 @@ export class MockHttpCache extends HttpCache {
       mockAdapter.set(cacheKey, value);
     }
 
-    super(mockAdapter);
+    super("mockCache", mockAdapter);
   }
 }

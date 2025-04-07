@@ -4,12 +4,19 @@ import ky from "ky";
 
 import { Options } from "ky/distribution/types/options";
 import { generateRequestKey, shorthandToTime } from "./http.utils";
-import { AsyncServiceBase } from "../asyncService.base";
 import { HttpCache } from "./cache/http-cache";
+import { SyncServiceBase } from "../syncService.base";
 
 export interface IHttpRequestOptions extends Options {
+  /**
+   * Namespace for storing cached responses. Default 'cache'
+   * Providing a different namespace enables more fine-grained cache management,
+   * such as deleting all entries in a "downloads" cache
+   **/
+  cacheName?: string;
+
   /** Shorthand ttl, e.g. 1m (60000) 1h (3600000) 1d (86400000). Default 1m */
-  expiry?: string;
+  cacheExpiry?: string;
 
   /**
    * Specify strategy.
@@ -18,7 +25,8 @@ export interface IHttpRequestOptions extends Options {
   strategy?: "cache-first" | "cache-only" | "network-first" | "network-only";
 }
 const DEFAULT_OPTIONS: IHttpRequestOptions = {
-  expiry: "30d",
+  cacheName: "cache",
+  cacheExpiry: "30d",
   strategy: "cache-first",
   retry: 2,
 };
@@ -28,23 +36,23 @@ const DEFAULT_OPTIONS: IHttpRequestOptions = {
  * For more details see [Readme](./README.md)
  */
 @Injectable({ providedIn: "root" })
-export class HttpService extends AsyncServiceBase {
-  private client = ky;
-  public cache = new HttpCache();
+export class HttpService extends SyncServiceBase {
+  private client = this.getClient();
+
+  /** Map of cache instances by namespace */
+  private cacheNamespaces: Record<string, HttpCache> = {};
 
   constructor() {
     super("HTTP Service");
-    this.registerInitFunction(this.init);
-  }
-
-  private async init() {
-    this.addClientHooks();
-    await this.cache.init();
   }
 
   public async get(url: string, options: IHttpRequestOptions = {}) {
     const mergedOptions: IHttpRequestOptions = { ...DEFAULT_OPTIONS, ...options, method: "get" };
-    const { strategy } = mergedOptions;
+    const { strategy, cacheExpiry } = mergedOptions;
+
+    // populate cache expiry header to handle in after-response hook
+    options.headers ??= {};
+    options.headers["x-cache-expiry"] = `${shorthandToTime(cacheExpiry)}`;
 
     switch (strategy) {
       case "cache-only":
@@ -65,6 +73,7 @@ export class HttpService extends AsyncServiceBase {
         return this.handleCacheRequest(url, mergedOptions);
 
       default:
+        // TODO - should default be cache-first?
         return this.handleNetworkRequest(url, mergedOptions);
     }
   }
@@ -76,21 +85,35 @@ export class HttpService extends AsyncServiceBase {
   }
 
   private handleNetworkRequest(url: string, options: IHttpRequestOptions) {
-    const { expiry } = options;
-
-    // populate cache expiry header to handle in after-response hook
-    options.headers ??= {};
-    options.headers["x-cache-expiry"] = `${shorthandToTime(expiry)}`;
-
     return this.client.get(url, options);
   }
 
   private async handleCacheRequest(url: string, options: IHttpRequestOptions) {
+    const { cacheName } = options;
+    const cache = await this.getCache(cacheName);
     const key = generateRequestKey({ url, method: options.method });
-    const cacheRes = await this.cache.get(key);
+
+    // TODO - evaluate and handle expirty here to invalidate existing cache which
+    // may have originally set a longer expiry
+
+    const cacheRes = await cache.get(key, expiryTime);
     const status = cacheRes ? 200 : 400;
     const headers = new Headers({ "x-res-source": "cache" });
     return new Response(cacheRes, { status, headers });
+  }
+
+  private async getCache(name: string) {
+    if (!this.cacheNamespaces[name]) {
+      const createdCache = await this.createCache(name);
+      await createdCache.ready();
+      this.cacheNamespaces[name] = createdCache;
+    }
+    return this.cacheNamespaces[name];
+  }
+
+  // separate cache creation method for easy test stub
+  private async createCache(name: string) {
+    return new HttpCache(name);
   }
 
   private async updateCache(req: Request, res: Response) {
@@ -98,6 +121,8 @@ export class HttpService extends AsyncServiceBase {
       const key = generateRequestKey({ url: req.url, method: req.method });
       const expiry = req.headers.get("x-cache-expiry");
       const expiryTime = expiry ? shorthandToTime(expiry) : undefined;
+      console.log("expirty time", expiryTime);
+      // TODO - handle here or in cache?
 
       // Use response clone to allow initial response to still be passed
       // TODO - handle streaming body response
@@ -115,8 +140,9 @@ export class HttpService extends AsyncServiceBase {
     }
   }
 
-  private addClientHooks() {
-    this.client = this.client.extend({
+  /** Create a new ky client with hooks for cache management */
+  private getClient() {
+    return ky.extend({
       hooks: {
         beforeRequest: [],
         afterResponse: [
@@ -156,6 +182,9 @@ export class HttpService extends AsyncServiceBase {
  * 
  * - Handling network-first timeout
  * - Stale-then-revalidate strategy - how best to subscribe (maybe setup in download)
+ * - Include namespace for cache files/folders/prefix
+ * - Use head requests to help know if cache is potentially invalid (compare size, checksum if available)
+ * - Error handling
  *
  * Data-download service
  * - stale-then-revalidate style strategy (possibly just race both cache and network reqs)

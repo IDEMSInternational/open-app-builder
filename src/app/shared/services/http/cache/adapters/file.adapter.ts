@@ -1,6 +1,14 @@
 import { IHttpCacheAdapter } from "./types";
 
-/** Simple adapter that stores all key-value pairs in an in-memory map opbject */
+/**
+ *
+ *
+ * TODO
+ * - Consider blob-writer
+ * https://github.com/diachedelic/capacitor-blob-writer
+ * - Consider file-chunk adaptor for streamed writes
+ * https://www.npmjs.com/package/capacitor-file-chunk
+ */
 export class HttpCacheAdapterFile implements IHttpCacheAdapter {
   public async list() {
     // TODO

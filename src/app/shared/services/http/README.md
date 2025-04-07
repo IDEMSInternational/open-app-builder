@@ -19,11 +19,12 @@ storage adapters are used to handle read/write operations in different environme
 All storage adapters are 2-layered.
 An L1 layer stores in-memory lists of known files and response values for data retrieved multiple times within a session. An L2 layer stores to a permanent storage location, such as FileSystem, OPFS and IndexedDB
 
+The L1 layer also handles storage of cache metadata, such as expiry, size, checksums, using the L2 provider as permanent data store to omit the need of a separate database for tracking 
+
 It takes inspiration from:
 - https://github.com/BYOJS/storage
 - https://keyv.org/
 
-It could be further extended in the future if writing as adaptor for [keyv](https://github.com/jaredwray/keyv), enabling functionality such as pre/post operation hooks and custom data serialization (although focus of keyv is more on database data storage than file storage)
 
 ## Template Interaction
 
@@ -117,3 +118,7 @@ Angular specific. Designed as global interceptor, not service-specific
 
 https://www.npmjs.com/package/ng-http-caching
 Angular specific. Binary cache strategies (cache or not), no support of cache-first / network-first with fallback
+
+https://github.com/jaredwray/keyv
+Designed around json-serializable data (no support for binary files, blobs etc.)
+Would require custom storage adapters for opfs and capacitor-file

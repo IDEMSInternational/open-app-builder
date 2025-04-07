@@ -9,6 +9,10 @@ import { IHttpCacheAdapter } from "./types";
  *
  * - writeable stream on IOS
  * https://developer.mozilla.org/en-US/docs/Web/API/FileSystemWritableFileStream/write#browser_compatibility
+ *
+ * - streamed writes
+ * https://web.dev/case-studies/kiwix
+ * https://github.com/kiwix/kiwix-js-pwa/blob/main/www/js/lib/cache.js#L721
  */
 export class HTTPCacheAdapterOPFS implements IHttpCacheAdapter {
   constructor(private rootFS: FileSystemDirectoryHandle) {}

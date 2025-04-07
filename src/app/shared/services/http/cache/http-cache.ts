@@ -4,17 +4,32 @@ import { Capacitor } from "@capacitor/core";
 import { HttpCacheAdapterFile } from "./adapters/file.adapter";
 import { HTTPCacheAdapterOPFS } from "./adapters/opfs.adapter";
 
+interface IMemoryCacheEntry {
+  storagePath: string;
+  size: number;
+  modified: string;
+  expiry: number;
+  data: any;
+}
+
 /**
  * ...
+ * TODO (see end of page)
+ *
  */
 export class HttpCache {
-  /** Layer-1 cache that keeps in-memory */
+  /**
+   * Layer-1 cache that keeps in-memory
+   * Also tracks storage metadata including
+   * */
   private memoryCache = new HttpCacheAdapterMemory();
 
   /** Layer-2 cache that persists to storage */
   private storageCache?: IHttpCacheAdapter;
 
-  constructor(storageCache?: IHttpCacheAdapter) {
+  private initialised = false;
+
+  constructor(namespace: string, storageCache?: IHttpCacheAdapter) {
     this.storageCache = storageCache;
   }
 
@@ -50,7 +65,9 @@ export class HttpCache {
 
   /** Layer-2 cache for platform storage implementation */
 
-  public async init() {
+  public async ready() {
+    if (this.initialised) return;
+
     // auto-select best storage adapter if not specified
     this.storageCache ??= await this.createStorageAdapter();
 
@@ -61,8 +78,10 @@ export class HttpCache {
     console.log("storage cache keys", keys);
     for (const key of keys) {
       // keep reference to
-      this.memoryCache.set(key, undefined);
+      this.memoryCache.set(key, {});
     }
+    this.initialised = true;
+    return;
   }
 
   public async has(key: string) {
@@ -85,7 +104,7 @@ export class HttpCache {
     // TODO - stream req to file? ... or more like a pipe op
   }
 
-  public async set(key: string, value: any) {
+  public async set(key: string, value: any, expiry: number) {
     // TODO - serialisation (cache-dependent)
     await this.storageCache.set(key, value);
 
@@ -115,12 +134,13 @@ export class HttpCache {
  * - valid response caching
  * - storing expiry and such
  * - storing blobs (native and browser)
+ * - manage cache expiry
+ * - max cache size (auto-delete oldest/largest) - ideally with adapter able to provide limit
+ * - max ttl
+ * - max in-memory size
+ * - checksums and revalidation
+ * - namespaced caches (with separate contents)
  *
  * Review how cacheable-request encodes....
+ * https://github.dev/jaredwray/cacheable/tree/main/packages/cacheable-request
  */
-
-// https://github.dev/nigrosimone/ng-http-caching/blob/c3c1b00cac4f9e88cdcbd68c70031995790c202e/projects/ng-http-caching/src/lib/ng-http-caching.service.ts
-// return req.method + '@' + req.urlWithParams;?
-//
-// https://github.dev/ngneat/cashew/blob/b357c0da0b9ee697f5ce7cac24dc90c7d54b9061/projects/ngneat/cashew/src/lib/key-serializer.ts
-// request.urlWithParams
