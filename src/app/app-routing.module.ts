@@ -25,6 +25,11 @@ const featureRoutes: Routes = [
       import("./feature/notification/notification.module").then((m) => m.NotificationsModule),
   },
   {
+    path: "shared-data",
+    loadChildren: () =>
+      import("./feature/shared-data/shared-data.module").then((m) => m.SharedDataModule),
+  },
+  {
     path: "template",
     loadChildren: () =>
       import("./feature/template/template.module").then((m) => m.TemplatePageModule),
@@ -52,6 +57,11 @@ const sidebarRoutes: Routes = [
     path: "feedback",
     loadChildren: () => import("./feature/feedback/feedback.module").then((m) => m.FeedbackModule),
     outlet: "sidebar",
+  },
+  {
+    path: "shared-data",
+    loadChildren: () =>
+      import("./feature/shared-data/shared-data.module").then((m) => m.SharedDataModule),
   },
   {
     path: "template",
