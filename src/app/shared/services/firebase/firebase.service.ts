@@ -7,7 +7,7 @@ import { DeploymentService } from "../deployment/deployment.service";
 @Injectable({ providedIn: "root" })
 export class FirebaseService extends SyncServiceBase {
   /** Initialised firebase app. Will be undefined if firebase config unavailable */
-  app: FirebaseApp | undefined;
+  public app: FirebaseApp | undefined;
 
   constructor(private deploymentService: DeploymentService) {
     super("Firebase");
