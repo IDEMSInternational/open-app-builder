@@ -5041,21 +5041,21 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@ionic/angular@npm:^7.7.3":
-  version: 7.7.3
-  resolution: "@ionic/angular@npm:7.7.3"
+"@ionic/angular@npm:^8.5.3":
+  version: 8.5.3
+  resolution: "@ionic/angular@npm:8.5.3"
   dependencies:
-    "@ionic/core": 7.7.3
+    "@ionic/core": 8.5.3
     ionicons: ^7.0.0
     jsonc-parser: ^3.0.0
     tslib: ^2.3.0
   peerDependencies:
-    "@angular/core": ">=14.0.0"
-    "@angular/forms": ">=14.0.0"
-    "@angular/router": ">=14.0.0"
+    "@angular/core": ">=16.0.0"
+    "@angular/forms": ">=16.0.0"
+    "@angular/router": ">=16.0.0"
     rxjs: ">=7.5.0"
-    zone.js: ">=0.11.0"
-  checksum: 0541a6e49f919913d2e7648faa6b8588e32700eb4bc8e5069075d26c62f7d3bc586c61709688b5a1d0414c212c34bf63d2c824851fa5b2e9334a8cdc72647e5b
+    zone.js: ">=0.13.0"
+  checksum: baedb3f43666967cd9a5376d4a03a2f9930ea01177f04f87021b12b735851c2dfd9d9386253802b97dfdf021b6b5c29d4e8f8951d5786c231d01d9498516cfd4
   languageName: node
   linkType: hard
 
@@ -5141,14 +5141,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@ionic/core@npm:7.7.3":
-  version: 7.7.3
-  resolution: "@ionic/core@npm:7.7.3"
+"@ionic/core@npm:8.5.3":
+  version: 8.5.3
+  resolution: "@ionic/core@npm:8.5.3"
   dependencies:
-    "@stencil/core": ^4.12.2
+    "@stencil/core": 4.20.0
     ionicons: ^7.2.2
     tslib: ^2.1.0
-  checksum: 0aff6fc607a5da1dcc1afffd6178ab73b229d26e1b3bf5b27594b8798bbc622b4673abca9c7a76c1f03b633468f1e9f23350f65face8526c41a6a8d4c7f8b9cb
+  checksum: aaf69ea77137f5581e43835d78fef7da5d282914471c855ec5d5bce7e9839a4d46ba45e5051676659168d1ce408283d6418bcf60fc42aab6dbac8e8d437cd060
   languageName: node
   linkType: hard
 
@@ -7834,21 +7834,21 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@stencil/core@npm:4.20.0":
+  version: 4.20.0
+  resolution: "@stencil/core@npm:4.20.0"
+  bin:
+    stencil: bin/stencil
+  checksum: 1b8d31bc841787e5d1e83e71f155e86d04775d6131857db6c1104f1f62b80818501b2232c5d7eb72125877fe599b2000bfb37f5b23e30abf123d2d1f8f505652
+  languageName: node
+  linkType: hard
+
 "@stencil/core@npm:^4.0.3":
   version: 4.12.2
   resolution: "@stencil/core@npm:4.12.2"
   bin:
     stencil: bin/stencil
   checksum: 85bcb310448cf3647b80cdc3df061ff2fac5879a56920ba7e24150722a773024dbe6522be3e3ae206c66d4a3a10e4547318a5568d32aaafbf2e8dd089d55f3f9
-  languageName: node
-  linkType: hard
-
-"@stencil/core@npm:^4.12.2":
-  version: 4.12.3
-  resolution: "@stencil/core@npm:4.12.3"
-  bin:
-    stencil: bin/stencil
-  checksum: 83403cd94cc14e75fe6a4d53f54dbaacdb82c351902444e6da309a7f8f467ea05edfd16ed5751ec0ba6327813a7db5eee75a88efee96df3231a1cad40df78921
   languageName: node
   linkType: hard
 
@@ -11757,17 +11757,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"caniuse-lite@npm:^1.0.30001578":
-  version: 1.0.30001589
-  resolution: "caniuse-lite@npm:1.0.30001589"
-  checksum: 7a6e6c4fb14c2bd0103a8f744bdd8701c1a5f19162f4a7600b89e25bc86d689f82204dc135f3a1dcd1a53050caa04fd0bb39b7df88698a6b90f189ec48900689
-  languageName: node
-  linkType: hard
-
-"caniuse-lite@npm:^1.0.30001580":
-  version: 1.0.30001587
-  resolution: "caniuse-lite@npm:1.0.30001587"
-  checksum: fb50aa9beaaae42f9feae92ce038f6ff71e97510f024ef1bef2666f3adcfd36d6c59e5675442e5fe795575193f71bc826cb7721d4b0f6d763e82d193bea57863
+"caniuse-lite@npm:^1.0.30001578, caniuse-lite@npm:^1.0.30001580":
+  version: 1.0.30001712
+  resolution: "caniuse-lite@npm:1.0.30001712"
+  checksum: 83760e735d1d7ab9ff7270747d70b71da4341bdc1c90df9fe2008ada382653e13d7501bfd7068e1d835184b03b8ac598b127bfe3e7d53419b9d7827730b4ae1a
   languageName: node
   linkType: hard
 
@@ -16567,7 +16560,7 @@ __metadata:
     "@ionic-native/http": ^5.36.0
     "@ionic-native/media": ^5.36.0
     "@ionic-native/status-bar": ^5.36.0
-    "@ionic/angular": ^7.7.3
+    "@ionic/angular": ^8.5.3
     "@ionic/angular-toolkit": ^11.0.1
     "@ionic/cli": ^7.1.5
     "@ionic/pwa-elements": ^3.2.2
