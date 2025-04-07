@@ -18,23 +18,6 @@ $background-with-value: var(
   }
 }
 
-.custom-input {
-  padding: 0;
-  .text-box-input {
-    background: var(--ion-color-primary-contrast);
-    border: var(--border-standard);
-    border-radius: var(--ion-border-radius-secondary);
-    width: 100%;
-    min-height: 55px;
-    font-size: var(--combo-box-font-size-standard);
-    color: var(--ion-color-primary);
-    text-align: center;
-    font-weight: 500;
-    box-shadow: var(--ion-default-box-shadow);
-    margin-bottom: 20px;
-  }
-}
-
 .modal-title {
   font-size: 20px;
   text-align: center;
@@ -45,38 +28,18 @@ $background-with-value: var(
   top: auto;
 }
 
-.form {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 40px;
-  &.reverse {
-    flex-direction: column-reverse;
-  }
-  .option {
-    margin-bottom: 20px;
-    min-height: 55px;
-    width: 100%;
-    background: var(--ion-color-primary-contrast);
-    border: var(--border-standard);
-    border-radius: var(--ion-border-radius-secondary);
-    box-shadow: var(--ion-default-box-shadow);
-    @include mixins.flex-centered;
-    input {
-      display: none;
-    }
-    label {
-      padding: 5px;
-      width: 100%;
-      text-align: center;
-      @include mixins.flex-centered;
-      font-weight: var(--font-weight-standard);
-      font-size: var(--combo-box-font-size-standard);
-      color: var(--ion-color-primary);
-      min-height: 50px;
-      border-radius: 20px;
-    }
-  }
-  .checked-radio {
-    background: $background-with-value;
-  }
+ion-radio{
+  --color:transparent;
+  --color-checked: transparent;
+}
+
+ion-list, ion-item {
+  --background: var(--ion-background-color, #fff);
+  background-color: var(--background);
+}
+
+ion-item.selected
+{
+  --background: var(--combo-box-background-with-value, var(--gradient-primary-light-vertical));
+  color: var(--combo-box-selected-value-text, var(--ion-color-primary));
 }

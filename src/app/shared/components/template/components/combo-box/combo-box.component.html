@@ -14,7 +14,7 @@
   </button>
 } @else if (params().variant === "dropdown") {
   <button *ngIf="showSearch()"
-    class="open-combobox margin-t-regular"
+    class="open-search-combobox margin-t-regular"
     (click)="openSearch()"
     [ngClass]="{
       disabled: disabled(),
@@ -22,9 +22,9 @@
       'with-value': _row.value,
       'no-value': !_row.value
     }"
-    [disabled]="disabled()"
-  >
-    {{ displayText() | translate }}
+    [disabled]="disabled()">
+    <span class="text">{{ displayText() | translate }}</span>
+    <ion-icon name="caret-down-sharp" size="small" aria-hidden="true" ></ion-icon>
   </button>
 
   <div *ngIf="!showSearch()" class="combo-box-container dropdown">

@@ -70,3 +70,44 @@ $background-with-value: var(
     }
   }
 }
+
+// Search variant
+.open-search-combobox {
+  width: 100%;
+  display: flex;
+  color: var(--ion-color-primary);
+  min-height: var(--combo-box-min-height);
+  font-size: var(--combo-box-font-size-standard);
+  border: var(--border-standard);
+  border-radius: var(--ion-border-radius-small);
+  background-color: var(--combo-box-background-no-value, transparent);
+  --highlight-color: transparent;
+  padding-left: var(--small-padding);
+  padding-right: var(--small-padding);
+
+  .text, ion-icon {
+    margin-top: auto;
+    margin-bottom: auto;
+  }
+
+  ion-icon {
+    margin-left: auto;
+    width: 0.8125rem;
+  }
+
+  .disabled {
+    opacity: 0.5;
+  }
+
+  .placeholder-style,
+  .disabled {
+    color: $placeholder-text;
+  }
+  .with-value {
+    background: $background-with-value;
+    color: $selected-value-text;
+  }
+  .no-value {
+    background: $background-no-value;
+  }
+}

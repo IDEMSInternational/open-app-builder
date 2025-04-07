@@ -143,20 +143,21 @@ export class TmplComboBoxComponent
       componentProps: {
         answerOptions: this.answerOptions,
         row: this._row,
-        selectedValue: this.customAnswerSelected() ? this.answerText() : this._row.value,
+        selectedValue: this._row.value,
         customAnswerSelected: this.customAnswerSelected(),
         style: this.params().style,
-      },
+      }
     });
 
     modal.onDidDismiss().then(async (data) => {
       this.params().prioritisePlaceholder = false;
-      this.answerText.set(data?.data?.answer?.text);
+      this.answerText.set(data?.data?.answer.text);
       this.customAnswerSelected.set(data?.data?.customAnswerSelected);
       this.customAnswerText = this.customAnswerSelected() ? data?.data?.answer?.text : "";
       await this.setValue(data?.data?.answer?.name);
     });
     await modal.present();
+    return false;
   }
 
   ngOnDestroy() {
