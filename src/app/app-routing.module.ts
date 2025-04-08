@@ -26,8 +26,7 @@ const featureRoutes: Routes = [
   },
   {
     path: "shared-data",
-    loadChildren: () =>
-      import("./feature/shared-data/shared-data.module").then((m) => m.SharedDataModule),
+    loadChildren: () => import("./feature/shared-data").then((m) => m.SHARED_DATA_ROUTES),
   },
   {
     path: "template",
@@ -60,8 +59,7 @@ const sidebarRoutes: Routes = [
   },
   {
     path: "shared-data",
-    loadChildren: () =>
-      import("./feature/shared-data/shared-data.module").then((m) => m.SharedDataModule),
+    loadChildren: () => import("./feature/shared-data").then((m) => m.SHARED_DATA_ROUTES),
   },
   {
     path: "template",
