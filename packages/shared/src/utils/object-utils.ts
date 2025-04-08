@@ -177,3 +177,29 @@ export function deepMergeObjects(target: any, ...sources: any) {
 
   return deepMergeObjects(target, ...sources);
 }
+
+/**
+ * Take 2 arrays and merge all values from second array onto first
+ * Any values in second array will overwrite values from first
+ * @param options.keyField unique field in all array objects to use as hash (e.g. 'id')
+ * @param options.deep for duplicate entries specify whether to deep merge entries (default latter takes priority)
+ */
+export function mergeObjectArrays<T extends object>(
+  baseArr: T[] = [],
+  mergeArr: T[] = [],
+  options: { keyField: keyof T; deep?: boolean }
+) {
+  console.log("merge object arrays", baseArr, mergeArr);
+  const { keyField, deep } = options;
+  const mergedHashmap = arrayToHashmap<T>(baseArr, keyField);
+  for (const el of mergeArr) {
+    const key = el[keyField] as string;
+    // deep merge if specified
+    if (key in mergedHashmap && deep) {
+      mergedHashmap[key] = deepMergeObjects(mergedHashmap[key], el);
+    } else {
+      mergedHashmap[key] = el;
+    }
+  }
+  return Object.values(mergedHashmap) as T[];
+}

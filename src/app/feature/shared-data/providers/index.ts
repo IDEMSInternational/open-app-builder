@@ -9,7 +9,7 @@ export const getDataProvider = (name: ISharedDataProvider): SharedDataProviderBa
     case "firebase":
       return new FirebaseDataProvider();
     default:
-      console.warn("[Auth Provider] not configured for: ", name);
+      console.warn("[Shared Data] no provider configured for: ", name);
       return new SharedDataProviderBase();
   }
 };
