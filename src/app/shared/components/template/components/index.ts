@@ -24,6 +24,7 @@ import { TmplAdvancedDashedBoxComponent } from "./layout/advanced-dashed-box/adv
 import { TmplAnimatedSlidesComponent } from "./animated-slides/animated-slides.component";
 import { TmplAudioComponent } from "./audio/audio.component";
 import { TmplButtonComponent } from "./button/button.component";
+import { TmplButtonAppleSignInComponent } from "./button-apple-sign-in/button-apple-sign-in.component";
 import { TmplButtonGoogleSignInComponent } from "./button-google-sign-in/button-google-sign-in.component";
 import { TmplCarouselComponent } from "./carousel/carousel.component";
 import { TmplComboBoxComponent } from "./combo-box/combo-box.component";
@@ -96,6 +97,7 @@ export const TEMPLATE_COMPONENTS = [
   TmplAnimatedSlidesComponent,
   TmplAudioComponent,
   TmplButtonComponent,
+  TmplButtonAppleSignInComponent,
   TmplButtonGoogleSignInComponent,
   TmplCarouselComponent,
   TmplComboBoxComponent,
@@ -160,6 +162,7 @@ const COMMON_COMPONENT_MAPPING = {
   animated_section: AnimatedSectionComponent,
   animated_section_group: AnimatedSectionGroupComponent,
   animated_slides: TmplAnimatedSlidesComponent,
+  apple_sign_in_button: TmplButtonAppleSignInComponent,
   audio: TmplAudioComponent,
   button: TmplButtonComponent,
   carousel: TmplCarouselComponent,
