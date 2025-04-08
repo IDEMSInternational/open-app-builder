@@ -155,7 +155,6 @@ export class TmplComboBoxComponent
       await this.setValue(data?.data?.answer?.name);
     });
     await modal.present();
-    return false;
   }
 
   ngOnDestroy() {
