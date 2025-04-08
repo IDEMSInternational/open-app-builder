@@ -1,13 +1,5 @@
 @use "/src/theme/mixins";
 
-$background-with-value: var(
-  --combo-box-background-with-value,
-  var(--gradient-primary-light-vertical)
-);
-
-:host {
-  display: contents;
-}
 
 .searchbar {
   padding-top: 12px;
@@ -34,12 +26,15 @@ ion-radio{
 }
 
 ion-list, ion-item {
-  --background: var(--ion-background-color, #fff);
-  background-color: var(--background);
+  --background: #fff;
+  background-color: #fff;
 }
 
 ion-item.selected
 {
-  --background: var(--combo-box-background-with-value, var(--gradient-primary-light-vertical));
-  color: var(--combo-box-selected-value-text, var(--ion-color-primary));
+  --background: rgba(var(--ion-color-primary-rgb, 56, 128, 255), 0.08);
+  --background-focused: var(--ion-color-primary, #3880ff);
+  --background-focused-opacity: 0.2;
+  --background-hover: var(--ion-color-primary, #3880ff);
+  --background-hover-opacity: 0.12;
 }

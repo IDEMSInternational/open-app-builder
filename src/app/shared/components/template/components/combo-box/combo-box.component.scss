@@ -85,6 +85,11 @@ $background-with-value: var(
   padding-left: var(--small-padding);
   padding-right: var(--small-padding);
 
+  &.placeholder-style {
+    color: var(--placeholder-color);
+    opacity: 0.6;
+  }
+
   .text, ion-icon {
     margin-top: auto;
     margin-bottom: auto;
@@ -99,10 +104,10 @@ $background-with-value: var(
     opacity: 0.5;
   }
 
-  .placeholder-style,
   .disabled {
     color: $placeholder-text;
   }
+
   .with-value {
     background: $background-with-value;
     color: $selected-value-text;
