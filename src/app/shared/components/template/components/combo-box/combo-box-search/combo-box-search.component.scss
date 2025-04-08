@@ -26,8 +26,8 @@ ion-radio{
 }
 
 ion-list, ion-item {
-  --background: #fff;
-  background-color: #fff;
+  --background: var(--ion-background-color, #fff);
+  background-color: var(--background);
 }
 
 ion-item.selected

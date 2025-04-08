@@ -74,6 +74,7 @@ $background-with-value: var(
 // Search variant
 .open-search-combobox {
   width: 100%;
+  height: 58px;
   display: flex;
   color: var(--ion-color-primary);
   min-height: var(--combo-box-min-height);
@@ -90,6 +91,20 @@ $background-with-value: var(
     opacity: 0.6;
   }
 
+  &.disabled {
+    opacity: 0.5;
+    color: $placeholder-text;
+  }
+
+  &.with-value {
+    background: $background-with-value;
+    color: $selected-value-text;
+  }
+  
+  &.no-value {
+    background: $background-no-value;
+  }
+
   .text, ion-icon {
     margin-top: auto;
     margin-bottom: auto;
@@ -98,21 +113,5 @@ $background-with-value: var(
   ion-icon {
     margin-left: auto;
     width: 0.8125rem;
-  }
-
-  .disabled {
-    opacity: 0.5;
-  }
-
-  .disabled {
-    color: $placeholder-text;
-  }
-
-  .with-value {
-    background: $background-with-value;
-    color: $selected-value-text;
-  }
-  .no-value {
-    background: $background-no-value;
   }
 }
