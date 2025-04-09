@@ -28,7 +28,9 @@ the future for general functionality, such as marking the row as public/private,
 - Fix cache data insert/update/upsert issues
 - Add actions to set/update data
 - dynamic data internal persistence handling (likely standalone PR)
+    OR just use hardcoded methods with _shared_data collection name
 - Render data_items
+- Emit cached items before server update
 
 
 **Service**

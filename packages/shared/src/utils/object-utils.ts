@@ -189,7 +189,6 @@ export function mergeObjectArrays<T extends object>(
   mergeArr: T[] = [],
   options: { keyField: keyof T; deep?: boolean }
 ) {
-  console.log("merge object arrays", baseArr, mergeArr);
   const { keyField, deep } = options;
   const mergedHashmap = arrayToHashmap<T>(baseArr, keyField);
   for (const el of mergeArr) {
