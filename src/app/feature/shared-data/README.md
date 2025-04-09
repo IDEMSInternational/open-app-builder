@@ -6,8 +6,11 @@
 Each row has a unique id, and a specific "data" column of shared json data. Additional columns will be used in
 the future for general functionality, such as marking the row as public/private, or providing list of users to share with
 
+- Likely difficulty in making data migrations in future. Why want to keep very minimal top-level info (server data compatibility with legacy app users).
+Minimal track collection creator auth id (assume later permissions), and a single boolean `isPublic` . These top-level used for db access control and query efficiency.
+
 - Default enabled for all projects using firebase integration. Although only inits when used in templates/actions so non-issue if firebase not configured
-- Debug project configured to work with firebase `debug-e8934`. I don't have access so locally overwrite to use `idems-app-debug`. Could be updated
+- Debug project configured to work with firebase `debug-e8934`. I don't have access so locally overwrite to use `idems-app-debug`. If making this the encrypted config will likely need to update ios plist also with new credentials if testing auth on simulator builds
 - Shared data is automatically stored in local data_lists for offline access. Authors should avoid manually authoring any lists with reserved prefix `shared_`, unless explicitly expecting it to be replaced by server data
 
 ```json
@@ -24,9 +27,8 @@ the future for general functionality, such as marking the row as public/private,
 
 ## TODO
 
-
-- Add actions to set/update data
-- Collection creation methods
+- Shared data display table (core data and editable)
+- Add actions to update data
 - Render data_items
 - Test single doc subscription methods
 - Test nested collection subscription methods
@@ -74,7 +76,7 @@ service cloud.firestore {
     }
     
     function isPublic(){
-    	return resource.data.public==true;
+    	return resource.data.isPublic==true;
     }
     
     // Function to check whether only nested document.data updated and not
@@ -86,13 +88,14 @@ service cloud.firestore {
     // Match documents in the shared_data collection
     match /shared_data/{documentId} {
     
-    	allow list: if isPublic() || isOwner();
+    	allow list: if  isPublic() || isOwner();
 
       // Allow reads if the document has public field set to true
-      allow read: if isPublic() || isOwner();
+      // Include exist check to allow return that the doc does not exist
+      allow read: if !exists(request.path) || isPublic() || isOwner();
       
       // Allow creation if user is authenticated and doc sets _created_by 
-      allow create: if isOwner();
+      allow create: if request.resource.data._created_by == request.auth.uid;
       
       // Allow update by creator, or to child inner data by anyone
       allow update: if isOwner() || isDataUpdateOnly();
@@ -125,6 +128,7 @@ Likely db not created or permissions not setup
 - [ ] Fine-grained permissions (e.g. owner and write-access)
 - [ ] Access code and invite links
 - [ ] Group user roles
+- [ ] Error handling messages
 
 ### Core
 - [ ] Pass device id to providers for use in queries, e.g. `const { identifier: uuid } = await Device.getId();`
