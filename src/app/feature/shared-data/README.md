@@ -24,13 +24,12 @@ the future for general functionality, such as marking the row as public/private,
 
 ## TODO
 
-- Add support for converting firebase timestamps
-- Fix cache data insert/update/upsert issues
+
 - Add actions to set/update data
-- dynamic data internal persistence handling (likely standalone PR)
-    OR just use hardcoded methods with _shared_data collection name
+- Collection creation methods
 - Render data_items
-- Emit cached items before server update
+- Test single doc subscription methods
+- Test nested collection subscription methods
 
 
 **Service**

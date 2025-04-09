@@ -51,23 +51,11 @@ export class FirebaseDataProvider extends SharedDataProviderBase {
   }
 
   public override queryMultiple$(params: SharedDataQueryParams) {
-    const { id = "", since = "" } = params;
-    const collectionPath = id ? `${COLLECTION}/${id}` : COLLECTION;
-    const collectionRef = collection(this.db, collectionPath);
-
-    // convert isoString datevalue to firestore timestamp for comparison
-    const queryDate = since ? Timestamp.fromDate(new Date(since)) : undefined;
-
     // Retrieve docs where public true or use included
-    const publicDocs = query(
-      collectionRef,
-      // where("_updated_at", ">", queryDate),
-      where("public", "==", true),
-      orderBy("_updated_at")
-    );
+    const docsQuery = this.buildDocumentQuery(params);
 
     // const privateDocs = query(collectionRef, where());
-    return this.queryToObservable<ISharedDataItemFirestore>(publicDocs).pipe(
+    return this.queryToObservable<ISharedDataItemFirestore>(docsQuery).pipe(
       map((docs) =>
         docs.map((d) => {
           // convert firestore timestamps back to isostring
@@ -97,6 +85,26 @@ export class FirebaseDataProvider extends SharedDataProviderBase {
   public override set(id: string, data: ISharedDataItem["data"]) {
     const docRef = doc(this.db, COLLECTION, id);
     return updateDoc(docRef, "data", data, { _updated_at: serverTimestamp });
+  }
+
+  private buildDocumentQuery(params: SharedDataQueryParams) {
+    const { id = "", since = "" } = params;
+    const collectionPath = id ? `${COLLECTION}/${id}` : COLLECTION;
+    const collectionRef = collection(this.db, collectionPath);
+
+    if (since) {
+      // convert isoString date to firestore timestamp for comparison
+      const queryDate = Timestamp.fromDate(new Date(since));
+      // optimise query to filter _updated_at first as likely will have fewer results
+      return query(
+        collectionRef,
+        where("_updated_at", ">", queryDate),
+        where("public", "==", true),
+        orderBy("_updated_at")
+      );
+    } else {
+      return query(collectionRef, where("public", "==", true));
+    }
   }
 
   /** Convert a firestore query to observable for eaiser subscription management */
