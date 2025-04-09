@@ -139,6 +139,21 @@ export class PersistedMemoryAdapter {
     this.persistStateToDB();
   }
 
+  /** Set data for a given entry. Will overwrite any existing data */
+  public set(update: IDataUpdate) {
+    const { flow_name, flow_type, id, data } = update;
+    if (!this.state[flow_type]) this.state[flow_type] = {};
+    if (!this.state[flow_type][flow_name]) this.state[flow_type][flow_name] = {};
+    // Remove any values marked as undefined
+    for (const [key, value] of Object.entries(data)) {
+      if (value === undefined) {
+        delete data[key];
+      }
+    }
+    this.state[flow_type][flow_name][id] = data;
+    this.persistStateToDB();
+  }
+
   public delete(flow_type: FlowTypes.FlowType, flow_name: string, ids?: string[]) {
     const stateRef = this.get(flow_type, flow_name);
     if (!stateRef) return;

@@ -12,7 +12,7 @@ import { ReactiveMemoryAdapter, REACTIVE_SCHEMA_BASE } from "./adapters/reactive
 import { TemplateActionRegistry } from "../../components/template/services/instance/template-action.registry";
 import { DynamicDataActionFactory } from "./actions";
 import { DeploymentService } from "../deployment/deployment.service";
-import type { Observable } from "rxjs/internal/Observable";
+import { Observable, defer, switchMap } from "rxjs";
 
 @Injectable({ providedIn: "root" })
 /**
@@ -100,28 +100,36 @@ export class DynamicDataService extends AsyncServiceBase {
   }
 
   /** Watch for changes to a specific flow */
-  public async query$<T extends FlowTypes.Data_listRow>(
+  public query$<T = FlowTypes.Data_listRow>(
     flow_type: FlowTypes.FlowType,
     flow_name: string,
-    queryObj?: MangoQuery
-  ) {
-    const { collectionName } = await this.ensureCollection(flow_type, flow_name);
-
-    // by default, use `row_index` as query index to return results sorted on this property
-    const defaultQueryObj = { index: ["row_index", "id"] };
-    queryObj = { ...defaultQueryObj, ...queryObj };
-    // use a live query to return all documents in the collection, converting
-    // from reactive documents to json data instead
-    let query = this.db.query<T>(collectionName, queryObj);
-    return query as Observable<T[]>;
+    queryObj?: MangoQuery<T>
+  ): Observable<T[]> {
+    // ensure service ready and collection created when querying
+    // use defer to enable subscribing synchronously
+    return defer(async () => {
+      await this.ready();
+      const { collectionName } = await this.ensureCollection(flow_type, flow_name);
+      return collectionName;
+    }).pipe(
+      switchMap((collectionName) => {
+        // by default, use `row_index` as query index to return results sorted on this property
+        const defaultQueryObj = { index: ["row_index", "id"] };
+        queryObj = { ...defaultQueryObj, ...queryObj };
+        // use a live query to return all documents in the collection, converting
+        // from reactive documents to json data instead
+        let query = this.db.query<T>(collectionName, queryObj);
+        return query as Observable<T[]>;
+      })
+    );
   }
 
   /** Take a snapshot of the current state of a table */
-  public async snapshot<T extends FlowTypes.Data_listRow>(
+  public snapshot<T extends FlowTypes.Data_listRow>(
     flow_type: FlowTypes.FlowType,
     flow_name: string
   ) {
-    const obs = await this.query$<T>(flow_type, flow_name);
+    const obs = this.query$<T>(flow_type, flow_name);
     return firstValueFrom(obs);
   }
 
@@ -157,7 +165,29 @@ export class DynamicDataService extends AsyncServiceBase {
     const { collectionName } = await this.ensureCollection(flow_type, flow_name);
     const { id } = data;
     await this.db.bulkInsert(collectionName, [data]);
-    this.writeCache.update({ flow_type, flow_name, id, data });
+    this.writeCache.set({ flow_type, flow_name, id, data });
+  }
+
+  public async upsert<T extends { id: string }>(
+    flow_type: FlowTypes.FlowType,
+    flow_name: string,
+    data: T
+  ) {
+    return this.bulkUpsert(flow_type, flow_name, [data]);
+  }
+
+  /** Insert multiple docs into database. If given doc already exists it will be replaced */
+  public async bulkUpsert<T extends { id: string }>(
+    flow_type: FlowTypes.FlowType,
+    flow_name: string,
+    data: T[]
+  ) {
+    const { collectionName } = await this.ensureCollection(flow_type, flow_name);
+    await this.db.bulkUpsert(collectionName, data);
+    for (const row of data) {
+      const { id } = row;
+      this.writeCache.set({ flow_type, flow_name, id, data: row });
+    }
   }
 
   /** Remove user_generated data row */
@@ -267,25 +297,31 @@ export class DynamicDataService extends AsyncServiceBase {
    * compatible in case of schema changes
    * */
   private async prepareInitialData(flow_type: FlowTypes.FlowType, flow_name: string) {
-    // Internal tables, prefixed by `_` are in-memory read-only and do not have preloaded data or schema
-    if (flow_name.startsWith("_")) {
-      return { data: [], schema: { ...REACTIVE_SCHEMA_BASE } };
+    // Default initial rows and schema, used for internal data
+    let initialRows: any[] = [];
+    let schema = { ...REACTIVE_SCHEMA_BASE };
+
+    // Assume any flows that do not start with an underscore should be initialised from sheets
+    if (!flow_name.startsWith("_")) {
+      const flowData = await this.appDataService.getSheet<FlowTypes.Data_list>(
+        flow_type,
+        flow_name
+      );
+      if (!flowData || flowData.rows.length === 0) {
+        throw new Error(`No data exists for collection [${flow_name}], cannot initialise`);
+      }
+      // add index property to each element before insert, for sorting queried data by original order
+      initialRows = flowData.rows.map((el, i) => ({ ...el, row_index: i }));
+      // Infer schema from flow. Specific data types will be included within flow._metadata,
+      // and all other fields considered string
+      schema = this.inferSchema(flowData.rows[0], flowData._metadata);
     }
 
-    const flowData = await this.appDataService.getSheet<FlowTypes.Data_list>(flow_type, flow_name);
-    if (!flowData || flowData.rows.length === 0) {
-      throw new Error(`No data exists for collection [${flow_name}], cannot initialise`);
-    }
-    // Infer schema from flow. Specific data types will be included within flow._metadata,
-    // and all other fields considered string
-    const schema = this.inferSchema(flowData.rows[0], flowData._metadata);
     // Cached data will automatically be cast to correct data type from schema,
     // with any additional fields ignored
-    const mergedData = this.mergeWriteCacheData(flow_type, flow_name, flowData.rows);
+    const mergedData = this.mergeWriteCacheData(flow_type, flow_name, initialRows);
 
-    // add index property to each element before insert, for sorting queried data by original order
-    const data = mergedData.map((el, i) => ({ ...el, row_index: i }));
-    return { data, schema };
+    return { data: mergedData, schema };
   }
 
   private mergeWriteCacheData(
