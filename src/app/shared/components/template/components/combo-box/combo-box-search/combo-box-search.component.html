@@ -1,4 +1,4 @@
-<ion-header *ngIf="textTitle || showSearch()">
+<ion-header>
   <ion-toolbar>
     <ion-title *ngIf="textTitle" class="modal-title">{{ textTitle }}</ion-title>
     <ion-searchbar (ionInput)="search($event.target.value)" class="searchbar"></ion-searchbar>

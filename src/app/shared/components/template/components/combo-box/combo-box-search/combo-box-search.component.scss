@@ -25,16 +25,16 @@ ion-radio{
   --color-checked: transparent;
 }
 
-ion-list, ion-item {
-  --background: var(--ion-background-color, #fff);
+ion-list {
   background-color: var(--background);
+}
+
+ion-item {
+  --background: var(--ion-background-color, #fff);
 }
 
 ion-item.selected
 {
-  --background: rgba(var(--ion-color-primary-rgb, 56, 128, 255), 0.08);
-  --background-focused: var(--ion-color-primary, #3880ff);
-  --background-focused-opacity: 0.2;
-  --background-hover: var(--ion-color-primary, #3880ff);
-  --background-hover-opacity: 0.12;
+  --background: var(--combo-box-background-with-value, var(--ion-color-primary-200)); 
+  --color: var(--combo-box-selected-value-text, var(--ion-color-primary));
 }

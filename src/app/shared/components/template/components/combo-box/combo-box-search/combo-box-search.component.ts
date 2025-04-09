@@ -18,7 +18,6 @@ export class ComboBoxSearchComponent implements OnInit {
 
   textTitle: string | null;
   searchTerm = signal<string>("");
-  showSearch = computed(() => this.answerOptions().length > 8);
   selectedItem = computed(() => {
     if (!this.selectedValue) return null;
     return this.answerOptions().find((item) => item.name === this.selectedValue);
@@ -38,10 +37,6 @@ export class ComboBoxSearchComponent implements OnInit {
 
   getParams() {
     this.textTitle = getStringParamFromTemplateRow(this.row, "text", null);
-  }
-
-  compareWith(itemA: IAnswerListItem, itemB: IAnswerListItem){
-    itemA.name === itemB.name;
   }
 
   select(item: IAnswerListItem){
