@@ -4,5 +4,57 @@
   <h3>Public Data Collections</h3>
   <!-- <plh-shared-data [row]="debugRowSingle()"> </plh-shared-data> -->
 
-  <plh-shared-data [row]="debugRowMultiple()"> </plh-shared-data>
+  <plh-shared-data #sharedDataRow [row]="debugRowMultiple()"> </plh-shared-data>
+
+  <h3>Update Shared Data</h3>
+  <ion-item>
+    <ion-select
+      #select
+      label="Select Collection"
+      (ionChange)="selectedDataCollection.set(select.value)"
+    >
+      @for(item of sharedDataRow.data(); track item.id){
+      <ion-select-option [value]="item">{{item.id}}</ion-select-option>
+      }
+    </ion-select>
+  </ion-item>
+  @if(selectedDataCollection(); as collection){
+  <div>Data:</div>
+  <p>{{collection.data | json}}</p>
+  }
+
+  <h3>Create Shared Collection</h3>
+
+  @if(authService.provider.authUser(); as authUser){
+  <!-- Create shared data form -->
+  <ion-list>
+    <ion-item>
+      <ion-input
+        label="_created_by"
+        labelPlacement="fixed"
+        disabled
+        [value]="authUser.uid"
+      ></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input
+        #idInput
+        label="id"
+        placeholder="Unique id of shared data collection"
+        labelPlacement="fixed"
+      ></ion-input>
+    </ion-item>
+  </ion-list>
+  <ion-button (click)="createSharedData(idInput.value.toString())" [disabled]="!idInput.value"
+    >Create</ion-button
+  >
+  <hr style="margin-top: 2rem" />
+  <ion-button (click)="authService.provider.signOut()">Sign Out</ion-button>
+  } @else {
+  <!-- Sign-in prompt -->
+  <p>Only authenticated users are able to create new shared data collections</p>
+  <ion-button (click)="authService.provider.signInWithGoogle()" style="margin-top: 2rem"
+    >Sign in</ion-button
+  >
+  }
 </ion-content>

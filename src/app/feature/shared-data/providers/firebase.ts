@@ -17,6 +17,7 @@ import {
   Timestamp,
   updateDoc,
   where,
+  WhereFilterOp,
 } from "firebase/firestore";
 import { SharedDataProviderBase, SharedDataQueryParams } from "./base";
 import { FirebaseService } from "src/app/shared/services/firebase/firebase.service";
@@ -31,6 +32,11 @@ type ISharedDataCollectionFirestore = Omit<ISharedDataCollection, "_created_at" 
   _created_at: Timestamp;
   _updated_at: Timestamp;
 };
+
+// Utility to provide type-safety on where clause queries
+function whereTyped(fieldPath: keyof ISharedDataCollection, opStr: WhereFilterOp, value: unknown) {
+  return where(fieldPath, opStr, value);
+}
 
 /** Convert timestamps stored locally (isoString) and on firestore (Timestamp) */
 const sharedDataConverter: FirestoreDataConverter<
@@ -105,18 +111,20 @@ export class FirebaseDataProvider extends SharedDataProviderBase {
     params: SharedDataQueryParams
   ) {
     const { since } = params;
+
     if (since) {
       // convert isoString date to firestore timestamp for comparison
       const queryDate = Timestamp.fromDate(new Date(since));
+
       // optimise query to filter _updated_at first as likely will have fewer results
       return query(
         collectionRef,
-        where("_updated_at", ">", queryDate),
-        where("isPublic", "==", true),
+        whereTyped("_updated_at", ">", queryDate),
+        whereTyped("isPublic", "==", true),
         orderBy("_updated_at")
       );
     } else {
-      return query(collectionRef, where("isPublic", "==", true));
+      return query(collectionRef, whereTyped("isPublic", "==", true));
     }
   }
 

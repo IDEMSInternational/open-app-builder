@@ -1,6 +1,6 @@
 import { Injector } from "@angular/core";
 import { of } from "rxjs";
-import { ISharedDataItem } from "../types";
+import { ISharedDataCollection } from "../types";
 
 export interface SharedDataQueryParams {
   /**
@@ -18,16 +18,16 @@ export class SharedDataProviderBase {
   /** Provide a live-query to a single document and stream updates */
   public querySingle$(params: SharedDataQueryParams) {
     console.error(`[Shared Data] Provider method not implemented: querySingle$`);
-    return of({} as ISharedDataItem);
+    return of({} as ISharedDataCollection);
   }
   /** Provide a live-query to all documents within    */
   public queryMultiple$(params: SharedDataQueryParams) {
     console.error(`[Shared Data] Provider method not implemented: queryMultiple$`);
-    return of([] as ISharedDataItem[]);
+    return of([] as ISharedDataCollection[]);
   }
 
   /** Create a new shared data collection with a given id */
-  public async create(_id: string, data: ISharedDataItem) {
+  public async create(_id: string, data: ISharedDataCollection) {
     console.error(`[Shared Data] Provider method not implemented: create`);
     return;
   }

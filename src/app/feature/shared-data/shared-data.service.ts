@@ -6,8 +6,13 @@ import { AsyncServiceBase } from "src/app/shared/services/asyncService.base";
 import { DeploymentService } from "src/app/shared/services/deployment/deployment.service";
 import { DynamicDataService } from "src/app/shared/services/dynamic-data/dynamic-data.service";
 import { map, tap, switchMap, defer, take, Observable, combineLatestWith, startWith } from "rxjs";
-import { ISharedDataItem } from "./types";
+import {
+  ISharedDataCollection,
+  ISharedDataCollectionConfig,
+  ISharedDataCollectionMetadata,
+} from "./types";
 import { MangoQuery } from "rxdb";
+import { AuthService } from "src/app/shared/services/auth/auth.service";
 
 @Injectable({
   providedIn: "root",
@@ -18,7 +23,8 @@ export class SharedDataService extends AsyncServiceBase {
   constructor(
     private deploymentService: DeploymentService,
     private injector: Injector,
-    private dynamicDataService: DynamicDataService
+    private dynamicDataService: DynamicDataService,
+    private authService: AuthService
   ) {
     super("Shared Data");
     this.provider = getDataProvider(this.config.provider);
@@ -53,11 +59,23 @@ export class SharedDataService extends AsyncServiceBase {
     );
   }
 
-  public update(id: string, data: ISharedDataItem["data"]) {
+  public create(id: string, config: ISharedDataCollectionConfig = {}) {
+    const _created_by = this.authService.provider.authUser()?.uid;
+    const mergedConfig: ISharedDataCollectionConfig = { isPublic: true, ...config };
+    const meta: ISharedDataCollectionMetadata = {
+      _created_by,
+      _created_at: new Date().toISOString(),
+      _updated_at: new Date().toISOString(),
+      id,
+    };
+    return this.provider.create(id, { ...mergedConfig, ...meta, data: {} });
+  }
+
+  public update(id: string, data: ISharedDataCollection["data"]) {
     // TODO - ensure provider populates server timestamps for _created_at and _updated_at
   }
 
-  private async updateCache(id: string, docs: ISharedDataItem[]) {
+  private async updateCache(id: string, docs: ISharedDataCollection[]) {
     if (docs.length > 0) {
       const cacheName = id ? `_shared_data/${id}` : "_shared_data";
       await this.dynamicDataService.bulkUpsert("data_list", cacheName, docs);
@@ -71,12 +89,12 @@ export class SharedDataService extends AsyncServiceBase {
     // if id provided filter query to only return doc matching id, default return all in collection
     const query: MangoQuery = id ? { selector: { id } } : {};
     return this.dynamicDataService
-      .query$<ISharedDataItem>("data_list", cacheName, query)
+      .query$<ISharedDataCollection>("data_list", cacheName, query)
       .pipe(map((docs) => docs.sort((a, b) => (a._updated_at > b._updated_at ? 1 : -1))));
   }
 
   /** Prepare query to request latest docs from server */
-  private getServerQuery(id = "", cacheQuery: Observable<ISharedDataItem[]>) {
+  private getServerQuery(id = "", cacheQuery: Observable<ISharedDataCollection[]>) {
     // 0. Extract path segments to determine if single (e.g. group_1) or multiple (e.g. group_1/messages) query
     const segments = id?.split("/").filter((v) => v) || [];
 

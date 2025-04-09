@@ -2,14 +2,20 @@ import type { IDeploymentConfig } from "packages/data-models";
 
 export type ISharedDataProvider = IDeploymentConfig["shared_data"]["provider"];
 
-export interface ISharedDataItem {
-  /** shared data row id */
-  id: string;
+export interface ISharedDataCollectionConfig {
   /** specify whether collection public */
-  public?: boolean;
-  data: any;
-  // metadata
+  isPublic?: boolean;
+}
+
+export interface ISharedDataCollectionMetadata {
+  id: string;
   _created_by: string;
   _created_at: string;
   _updated_at: string;
 }
+
+export type ISharedDataCollection = ISharedDataCollectionConfig &
+  ISharedDataCollectionMetadata & {
+    /** shared data, stored as key-value pairs */
+    data: Record<string, any>;
+  };
