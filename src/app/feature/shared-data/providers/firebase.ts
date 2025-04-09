@@ -1,10 +1,12 @@
 import { Injector } from "@angular/core";
 import {
   collection,
+  CollectionReference,
   doc,
   DocumentData,
   Firestore,
-  getDoc,
+  FirestoreDataConverter,
+  getDocFromServer,
   getFirestore,
   onSnapshot,
   orderBy,
@@ -19,15 +21,36 @@ import {
 import { SharedDataProviderBase, SharedDataQueryParams } from "./base";
 import { FirebaseService } from "src/app/shared/services/firebase/firebase.service";
 import { Observable, map } from "rxjs";
-import { ISharedDataItem } from "../types";
+import { ISharedDataCollection } from "../types";
 
 /** Prefix applied to all firebase collections for storing shared data */
 const COLLECTION = `shared_data`;
 
 // Data stored in firestore replaces ISOString timestamps with Firestore Timestamps
-type ISharedDataItemFirestore = Omit<ISharedDataItem, "_created_at" | "_updated_at"> & {
+type ISharedDataCollectionFirestore = Omit<ISharedDataCollection, "_created_at" | "_updated_at"> & {
   _created_at: Timestamp;
   _updated_at: Timestamp;
+};
+
+/** Convert timestamps stored locally (isoString) and on firestore (Timestamp) */
+const sharedDataConverter: FirestoreDataConverter<
+  ISharedDataCollection,
+  ISharedDataCollectionFirestore
+> = {
+  fromFirestore: (snapshot) => {
+    const d = snapshot.data() as ISharedDataCollectionFirestore;
+    return {
+      ...d,
+      _created_at: d._created_at.toDate().toISOString(),
+      _updated_at: d._updated_at.toDate().toISOString(),
+    };
+  },
+
+  toFirestore: (d: ISharedDataCollection) => ({
+    ...d,
+    _created_at: d._created_at ? Timestamp.fromDate(new Date(d._created_at)) : serverTimestamp(),
+    _updated_at: serverTimestamp(),
+  }),
 };
 
 /**
@@ -46,52 +69,42 @@ export class FirebaseDataProvider extends SharedDataProviderBase {
     if (!app) {
       throw new Error(`Shared data provider required firebase to be configured`);
     }
-
     this.db = getFirestore(app);
   }
 
   public override queryMultiple$(params: SharedDataQueryParams) {
+    // TODO - track if existing subscriptions already exist to avoid recreating (at top-level)
+
+    const { id = "" } = params;
+    const collectionPath = id ? `${COLLECTION}/${id}` : COLLECTION;
+    const collectionRef = collection(this.db, collectionPath).withConverter(sharedDataConverter);
+
     // Retrieve docs where public true or use included
-    const docsQuery = this.buildDocumentQuery(params);
+    const docsQuery = this.buildDocumentQuery(collectionRef, params);
 
     // const privateDocs = query(collectionRef, where());
-    return this.queryToObservable<ISharedDataItemFirestore>(docsQuery).pipe(
-      map((docs) =>
-        docs.map((d) => {
-          // convert firestore timestamps back to isostring
-          const item: ISharedDataItem = {
-            ...d,
-            _created_at: d._created_at.toDate().toISOString(),
-            _updated_at: d._updated_at.toDate().toISOString(),
-          };
-          return item;
-        })
-      )
-    );
+    return this.queryToObservable<ISharedDataCollection>(docsQuery);
   }
 
-  public override async create(id: string, data: ISharedDataItem) {
+  public override async create(id: string, data: ISharedDataCollection) {
     const docRef = doc(this.db, COLLECTION, id);
-    const { exists } = await getDoc(docRef);
-    if (exists()) {
+    const res = await getDocFromServer(docRef);
+    if (res.exists()) {
       throw new Error(`[Shared Data] id already exists: ${id}`);
     }
-    // TODO - check auth user exists - should also fail security rules
-
-    // replace timestamp metadata with firebase server timestamps for improved querying
-    return setDoc(docRef, { ...data, _created_at: serverTimestamp, _updated_at: serverTimestamp });
+    return setDoc(docRef, data);
   }
 
-  public override set(id: string, data: ISharedDataItem["data"]) {
+  public override set(id: string, data: ISharedDataCollection["data"]) {
     const docRef = doc(this.db, COLLECTION, id);
-    return updateDoc(docRef, "data", data, { _updated_at: serverTimestamp });
+    return updateDoc(docRef, "data", data, { _updated_at: serverTimestamp() });
   }
 
-  private buildDocumentQuery(params: SharedDataQueryParams) {
-    const { id = "", since = "" } = params;
-    const collectionPath = id ? `${COLLECTION}/${id}` : COLLECTION;
-    const collectionRef = collection(this.db, collectionPath);
-
+  private buildDocumentQuery(
+    collectionRef: CollectionReference<ISharedDataCollection, ISharedDataCollectionFirestore>,
+    params: SharedDataQueryParams
+  ) {
+    const { since } = params;
     if (since) {
       // convert isoString date to firestore timestamp for comparison
       const queryDate = Timestamp.fromDate(new Date(since));
@@ -99,11 +112,11 @@ export class FirebaseDataProvider extends SharedDataProviderBase {
       return query(
         collectionRef,
         where("_updated_at", ">", queryDate),
-        where("public", "==", true),
+        where("isPublic", "==", true),
         orderBy("_updated_at")
       );
     } else {
-      return query(collectionRef, where("public", "==", true));
+      return query(collectionRef, where("isPublic", "==", true));
     }
   }
 
