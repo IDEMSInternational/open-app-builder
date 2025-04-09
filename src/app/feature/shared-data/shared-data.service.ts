@@ -5,9 +5,8 @@ import { getDataProvider } from "./providers";
 import { AsyncServiceBase } from "src/app/shared/services/asyncService.base";
 import { DeploymentService } from "src/app/shared/services/deployment/deployment.service";
 import { DynamicDataService } from "src/app/shared/services/dynamic-data/dynamic-data.service";
-import { map, tap, switchMap, defer, firstValueFrom } from "rxjs";
+import { map, tap, switchMap, defer, take, Observable, combineLatestWith, startWith } from "rxjs";
 import { ISharedDataItem } from "./types";
-import { mergeObjectArrays } from "packages/shared/src/utils/object-utils";
 import { MangoQuery } from "rxdb";
 
 @Injectable({
@@ -29,40 +28,26 @@ export class SharedDataService extends AsyncServiceBase {
   /**
    * Create a query to subscribe to live data source, update cache and
    * @param id specific document id or path to query. If not provided all shared data docs will be returned
+   *
+   * The query will return all results from the cache, but also include a side-effect that
+   * checks server for updates and automatically updates the cache so that a single stream of data emitted,
+   * starting with cached and applying updates from server
    */
   public query$(id?: string) {
-    // 0. Extract path segments to determine if single (e.g. group_1) or multiple (e.g. group_1/messages) query
-    const segments = id?.split("/").filter((v) => v) || [];
-
-    // TODO - always emit from cache
-
-    // 1. Query cache for any docs saved. run once and store results
+    // Use defer statement to allow async await for services to be initialised
     return defer(async () => {
       await this.ready();
-      return this.getCacheDocs(id);
     }).pipe(
-      switchMap((cacheDocs) => {
-        const queryParams: SharedDataQueryParams = { id, since: cacheDocs[0]?._updated_at };
-        // create a server query either for a specific doc or for all docs in a collection
-        // in both cases return results as an array for better uniformity
-        const serverQuery =
-          segments.length % 2 === 0
-            ? this.provider.queryMultiple$(queryParams).pipe(map((docs) => docs || []))
-            : this.provider.querySingle$(queryParams).pipe(map((doc) => (doc ? [doc] : [])));
+      switchMap(() => {
+        // Combine cache and server queries so that they can be unsubscribed at the same time.
+        // Only emit results from cache as server updates will update the cache. Force server to emit
+        // empty update immediately as combine only emits after receiving first value from each
+        const cacheQuery = this.getCacheQuery(id);
+        const serverQuery = this.getServerQuery(id, cacheQuery).pipe(startWith([]));
 
-        // 2. Take the latest timestamp query server for newer
-        return (
-          serverQuery
-            // 3. Update cache on server updates
-            .pipe(
-              // Server docs initially return `null` response to inform data is fetching
-              tap((serverDocs) => this.updateCache(id, serverDocs)),
-              // 4. Return combined cache and server docs
-              // Use non-deep merge to ensure any server docs fully overwrite cache docs
-              map((serverDocs) =>
-                mergeObjectArrays(cacheDocs, serverDocs, { keyField: "id", deep: false })
-              )
-            )
+        return cacheQuery.pipe(
+          combineLatestWith(serverQuery),
+          map(([cacheDocs, serverDocs]) => cacheDocs)
         );
       })
     );
@@ -73,21 +58,47 @@ export class SharedDataService extends AsyncServiceBase {
   }
 
   private async updateCache(id: string, docs: ISharedDataItem[]) {
-    const cacheName = id ? `_shared_data/${id}` : "_shared_data";
-    console.log("update cache", cacheName, docs);
-    await this.dynamicDataService.bulkUpsert("data_list", cacheName, docs);
+    if (docs.length > 0) {
+      const cacheName = id ? `_shared_data/${id}` : "_shared_data";
+      await this.dynamicDataService.bulkUpsert("data_list", cacheName, docs);
+    }
   }
 
   /** Retrieve docs stored in cache, sorted by most recently updated */
-  private async getCacheDocs(id?: string) {
-    const cacheName = id ? `_shared_data/${id}` : id;
-    // TODO - different methods for single doc vs collection?
+  private getCacheQuery(id?: string) {
+    const cacheName = id ? `_shared_data/${id}` : "_shared_data";
 
     // if id provided filter query to only return doc matching id, default return all in collection
     const query: MangoQuery = id ? { selector: { id } } : {};
-    const q = this.dynamicDataService.query$<ISharedDataItem>("data_list", cacheName, query);
-    const docs = await firstValueFrom(q);
-    return docs.sort((a, b) => (a._updated_at > b._updated_at ? 1 : -1));
+    return this.dynamicDataService
+      .query$<ISharedDataItem>("data_list", cacheName, query)
+      .pipe(map((docs) => docs.sort((a, b) => (a._updated_at > b._updated_at ? 1 : -1))));
+  }
+
+  /** Prepare query to request latest docs from server */
+  private getServerQuery(id = "", cacheQuery: Observable<ISharedDataItem[]>) {
+    // 0. Extract path segments to determine if single (e.g. group_1) or multiple (e.g. group_1/messages) query
+    const segments = id?.split("/").filter((v) => v) || [];
+
+    // 1. Use the first result from the cacheQuery to find timestamp of latest doc in cache
+    return cacheQuery.pipe(
+      take(1),
+      switchMap((cacheDocs) => {
+        // 2. With the initial cache docs retrieved create server query for newer
+        const lastUpdate = cacheDocs[0]?._updated_at;
+        const queryParams: SharedDataQueryParams = { id, since: lastUpdate };
+
+        // 3. create a server query either for a specific doc or for all docs in a collection
+        // in both cases return results as an array for better uniformity
+        const serverQuery =
+          segments.length % 2 === 0
+            ? this.provider.queryMultiple$(queryParams).pipe(map((docs) => docs || []))
+            : this.provider.querySingle$(queryParams).pipe(map((doc) => (doc ? [doc] : [])));
+
+        // 4. When new data received update the cache as a side-effect
+        return serverQuery.pipe(tap((serverDocs) => this.updateCache(id, serverDocs)));
+      })
+    );
   }
 
   private get config() {
