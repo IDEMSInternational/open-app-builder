@@ -39,10 +39,11 @@ import { TemplateFieldService } from "src/app/shared/components/template/service
         ></ion-datetime>
       </ion-item>
       <ion-item>
-        <ion-label>App Day</ion-label>
         <ion-input
           #appDay
           type="number"
+          label="App Day"
+          label-placement="start"
           [value]="dbData.app_day"
           style="text-align: right"
           (ionBlur)="setAppLaunchData($any(firstLaunch.value), appDay.value)"
