@@ -12,9 +12,8 @@
   >
     {{ displayText() | translate }}
   </button>
-} @else if (params().variant === "dropdown") {
-  <button *ngIf="showSearch()"
-    class="open-search-combobox margin-t-regular"
+} @else if (params().variant === "dropdown" && showSearch()) {
+  <button class="open-search-combobox margin-t-regular"
     (click)="openSearch()"
     [ngClass]="{
       disabled: disabled(),
@@ -26,8 +25,8 @@
     <span class="text">{{ displayText() | translate }}</span>
     <ion-icon name="caret-down-sharp" size="small" aria-hidden="true" ></ion-icon>
   </button>
-
-  <div *ngIf="!showSearch()" class="combo-box-container dropdown">
+} @else if (params().variant === "dropdown" && !showSearch()) {
+  <div class="combo-box-container dropdown">
     <ion-select
       [class.hasValue]="!!_row.value"
       [placeholder]="displayText() | translate"

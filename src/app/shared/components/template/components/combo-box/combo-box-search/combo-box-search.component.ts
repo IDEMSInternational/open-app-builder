@@ -1,9 +1,5 @@
-import { Component, computed, input, Input, OnInit, signal } from "@angular/core";
-import { FlowTypes } from "src/app/shared/model";
-import {
-  getStringParamFromTemplateRow,
-  IAnswerListItem,
-} from "src/app/shared/utils";
+import { Component, computed, input, Input, signal } from "@angular/core";
+import {IAnswerListItem } from "src/app/shared/utils";
 import { ModalController } from "@ionic/angular";
 
 @Component({
@@ -11,17 +7,12 @@ import { ModalController } from "@ionic/angular";
   templateUrl: "./combo-box-search.component.html",
   styleUrls: ["./combo-box-search.component.scss"],
 })
-export class ComboBoxSearchComponent implements OnInit {
+export class ComboBoxSearchComponent {
   public answerOptions = input.required<IAnswerListItem[]>();
-  @Input() row: FlowTypes.TemplateRow;
+  @Input() title: string;
   @Input() selectedValue: string;
 
-  textTitle: string | null;
-  searchTerm = signal<string>("");
-  selectedItem = computed(() => {
-    if (!this.selectedValue) return null;
-    return this.answerOptions().find((item) => item.name === this.selectedValue);
-  });
+  public searchTerm = signal<string>("");
 
   filteredOptions = computed(() =>
     this.answerOptions().filter((options) =>
@@ -30,14 +21,6 @@ export class ComboBoxSearchComponent implements OnInit {
   );
 
   constructor(private modalController: ModalController) {}
-
-  ngOnInit() {
-    this.getParams();
-  }
-
-  getParams() {
-    this.textTitle = getStringParamFromTemplateRow(this.row, "text", null);
-  }
 
   select(item: IAnswerListItem){
     this.closeModal({ answer: item });

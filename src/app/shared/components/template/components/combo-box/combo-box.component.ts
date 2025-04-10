@@ -142,7 +142,7 @@ export class TmplComboBoxComponent
       cssClass: "combo-box-search",
       componentProps: {
         answerOptions: this.answerOptions,
-        row: this._row,
+        title: getStringParamFromTemplateRow(this._row, "text"),
         selectedValue: this._row.value,
         customAnswerSelected: this.customAnswerSelected(),
         style: this.params().style,
