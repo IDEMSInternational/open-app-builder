@@ -27,23 +27,24 @@ export class SharedDataProviderBase {
   }
 
   /** Create a new shared data collection with a given id */
-  public async create(_id: string, data: ISharedDataCollection) {
+  public async create(id: string, data: ISharedDataCollection) {
     console.error(`[Shared Data] Provider method not implemented: create`);
     return;
   }
 
   /**
-   * Update a shared document with data provided
-   * Data will be merged with existing data
+   * Update a given key-value pair within a shared data collection
+   * NOTE - setting as `undefined` will remove from the database
    */
-  public async set(_id: string, data: any) {
-    console.error(`[Shared Data] Provider method not implemented: set`);
+  public async updateData(id: string, key: string, value: any) {
+    console.error(`[Shared Data] Provider method not implemented: updateData`);
+    return;
   }
 
   /**
    * Remove
    */
-  public async remove(_id: string, data: any) {
+  public async remove(id: string, data: any) {
     console.error(`[Shared Data] Provider method not implemented: remove`);
   }
 }

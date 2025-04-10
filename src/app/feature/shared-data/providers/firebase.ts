@@ -2,6 +2,7 @@ import { Injector } from "@angular/core";
 import {
   collection,
   CollectionReference,
+  deleteField,
   doc,
   DocumentData,
   Firestore,
@@ -21,7 +22,7 @@ import {
 } from "firebase/firestore";
 import { SharedDataProviderBase, SharedDataQueryParams } from "./base";
 import { FirebaseService } from "src/app/shared/services/firebase/firebase.service";
-import { Observable, map } from "rxjs";
+import { Observable } from "rxjs";
 import { ISharedDataCollection } from "../types";
 
 /** Prefix applied to all firebase collections for storing shared data */
@@ -101,9 +102,14 @@ export class FirebaseDataProvider extends SharedDataProviderBase {
     return setDoc(docRef, data);
   }
 
-  public override set(id: string, data: ISharedDataCollection["data"]) {
+  public override updateData(id: string, key: string, value: any) {
     const docRef = doc(this.db, COLLECTION, id);
-    return updateDoc(docRef, "data", data, { _updated_at: serverTimestamp() });
+    // remove nested data entry
+    if (value === undefined) {
+      value = deleteField();
+    }
+    // use data nested notation to apply partial update
+    return updateDoc(docRef, { [`data.${key}`]: value, _updated_at: serverTimestamp() });
   }
 
   private buildDocumentQuery(
