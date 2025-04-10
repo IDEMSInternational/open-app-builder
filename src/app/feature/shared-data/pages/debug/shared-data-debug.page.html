@@ -2,25 +2,82 @@
   <h2>Shared Data</h2>
 
   <h3>Public Data Collections</h3>
-  <!-- <plh-shared-data [row]="debugRowSingle()"> </plh-shared-data> -->
 
-  <plh-shared-data #sharedDataRow [row]="debugRowMultiple()"> </plh-shared-data>
+  <plh-shared-data #sharedDataRow [row]="debugRow()"> </plh-shared-data>
 
   <h3>Update Shared Data</h3>
   <ion-item>
     <ion-select
       #select
       label="Select Collection"
-      (ionChange)="selectedDataCollection.set(select.value)"
+      (ionChange)="sharedDataSelected.set(select.value)"
     >
       @for(item of sharedDataRow.data(); track item.id){
-      <ion-select-option [value]="item">{{item.id}}</ion-select-option>
+      <ion-select-option [value]="item.id">{{item.id}}</ion-select-option>
       }
     </ion-select>
   </ion-item>
   @if(selectedDataCollection(); as collection){
-  <div>Data:</div>
-  <p>{{collection.data | json}}</p>
+  <ion-accordion-group
+    [multiple]="true"
+    [value]="['metadata', 'shared_data']"
+    style="margin-top: 2rem"
+  >
+    <!-- Shared Data -->
+    <ion-accordion value="shared_data">
+      <ion-item slot="header" color="light">
+        <ion-label>Shared Data</ion-label>
+      </ion-item>
+      <div class="ion-padding" slot="content">
+        <p>Shared data synced with server and all users</p>
+        @for(el of collectionData(); track el.key){
+        <ion-item>
+          <ion-input
+            [label]="el.key"
+            labelPlacement="fixed"
+            [value]="el.value"
+            disabled
+          ></ion-input>
+        </ion-item>
+        }
+        <!-- Data editor -->
+        <div style="display: flex; gap: 1rem; margin-top: 2rem">
+          <ion-item style="flex: 1">
+            <ion-input label="key" labelPlacement="floating" #keyInput></ion-input>
+          </ion-item>
+          <ion-item style="flex: 1">
+            <ion-input label="value" labelPlacement="floating" #valInput></ion-input>
+          </ion-item>
+          <ion-button
+            [disabled]="!keyInput.value"
+            (click)="update(keyInput.value.toString(),valInput.value.toString())"
+            >Update</ion-button
+          >
+        </div>
+      </div>
+    </ion-accordion>
+
+    <!-- Collection Metadata -->
+    <ion-accordion value="metadata">
+      <ion-item slot="header" color="light">
+        <ion-label>Metadata</ion-label>
+      </ion-item>
+      <div class="ion-padding" slot="content">
+        <p>Fields populated on first creation or automatically on update</p>
+        @for(el of collectionMeta(); track el.key){
+        <ion-item>
+          <ion-input
+            [label]="el.key"
+            labelPlacement="fixed"
+            [value]="el.value"
+            disabled
+          ></ion-input>
+        </ion-item>
+        }
+      </div>
+    </ion-accordion>
+  </ion-accordion-group>
+
   }
 
   <h3>Create Shared Collection</h3>

@@ -71,8 +71,8 @@ export class SharedDataService extends AsyncServiceBase {
     return this.provider.create(id, { ...mergedConfig, ...meta, data: {} });
   }
 
-  public update(id: string, data: ISharedDataCollection["data"]) {
-    // TODO - ensure provider populates server timestamps for _created_at and _updated_at
+  public update(id: string, key: string, value: any) {
+    return this.provider.updateData(id, key, value);
   }
 
   private async updateCache(id: string, docs: ISharedDataCollection[]) {

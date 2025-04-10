@@ -1,4 +1,4 @@
-import { Component, computed, OnInit, signal } from "@angular/core";
+import { Component, computed, OnInit, signal, viewChild } from "@angular/core";
 import { SharedDataService } from "../../shared-data.service";
 import { IonicModule } from "@ionic/angular";
 import { TemplateComponentsModule } from "src/app/shared/components/template/template.module";
@@ -6,6 +6,8 @@ import { FlowTypes } from "packages/data-models";
 import { AuthService } from "src/app/shared/services/auth/auth.service";
 import { ISharedDataCollection } from "../../types";
 import { JsonPipe } from "@angular/common";
+import { ROW_TEMPLATES } from "./row-templates";
+import { TmplSharedDataComponent } from "src/app/shared/components/template/components/shared-data/shared-data.component";
 
 @Component({
   selector: "plh-shared-data-debug",
@@ -15,28 +17,39 @@ import { JsonPipe } from "@angular/common";
   imports: [IonicModule, TemplateComponentsModule, JsonPipe],
 })
 export class SharedDataDebugPage implements OnInit {
-  public selectedDataCollection = signal<ISharedDataCollection | undefined>(undefined);
+  private sharedDataRow = viewChild.required<TmplSharedDataComponent>("sharedDataRow");
 
-  public selectedDataTable = computed(() => {
-    const collection = this.selectedDataCollection();
-    if (collection) {
-      const { _created_at, _created_by, _updated_at, data, id } = collection;
+  /** Compute list of all shared data collections by reading from the share_data template row */
+  public sharedDataCollections = computed(() => this.sharedDataRow().data());
+
+  public sharedDataSelected = signal<string | undefined>(undefined);
+
+  /** Identify and track data from the selected data collection */
+  public selectedDataCollection = computed<ISharedDataCollection | undefined>(() => {
+    const id = this.sharedDataSelected();
+    if (id) {
+      return this.sharedDataCollections().find((v) => v.id === id);
     }
   });
 
-  public debugRowSingle = signal<FlowTypes.TemplateRow>({
-    _nested_name: "",
-    name: "",
-    type: "share_data",
-    value: "debug_group_1",
+  public collectionMeta = computed(() => {
+    const collection = this.selectedDataCollection();
+    if (collection) {
+      const { data, ...meta } = collection;
+      return Object.entries(meta).map(([key, value]) => ({ key, value }));
+    }
   });
 
-  public debugRowMultiple = signal<FlowTypes.TemplateRow>({
-    _nested_name: "",
-    name: "",
-    type: "share_data",
-    value: undefined,
+  public collectionData = computed(() => {
+    const collection = this.selectedDataCollection();
+    if (collection) {
+      const { data } = collection;
+      return Object.entries(data).map(([key, value]) => ({ key, value }));
+    }
   });
+
+  /** Row to test authored share_data row type */
+  public debugRow = signal<FlowTypes.TemplateRow>(ROW_TEMPLATES.share_data_base);
 
   constructor(
     private service: SharedDataService,
@@ -45,6 +58,14 @@ export class SharedDataDebugPage implements OnInit {
 
   async ngOnInit() {
     await Promise.allSettled([this.service.ready(), this.authService.ready()]);
+  }
+
+  public update(key: string, value: string) {
+    if (value === "") {
+      value = undefined;
+    }
+    const { id } = this.selectedDataCollection();
+    this.service.update(id, key, value);
   }
 
   public createSharedData(id: string) {

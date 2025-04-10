@@ -27,11 +27,17 @@ Minimal track collection creator auth id (assume later permissions), and a singl
 
 ## TODO
 
+- Generate unique IDs (?) and allow for custom (non-unique) name?
 - Shared data display table (core data and editable)
+- Delete shared collection
 - Add actions to update data
 - Render data_items
 - Test single doc subscription methods
 - Test nested collection subscription methods
+- Invite system
+  Short term possible public groups all synced and filtered by code?
+- Add separate public/private group queries (handle case where public <-> private but already persisted)
+  Possible require all stale data to be re-synced? Or just disallow toggle... Or just leave synced snapshot
 
 
 **Service**
@@ -82,7 +88,7 @@ service cloud.firestore {
     // Function to check whether only nested document.data updated and not
     // any parent keys such as document.public or document._created_by
     function isDataUpdateOnly(){
-    	return request.resource.data.diff(resource.data).affectedKeys().hasOnly(['data'])
+    	return request.resource.data.diff(resource.data).affectedKeys().hasOnly(['data','_updated_at'])
     }
     
     // Match documents in the shared_data collection
