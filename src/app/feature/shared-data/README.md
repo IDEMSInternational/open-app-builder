@@ -6,6 +6,37 @@
 Each row has a unique id, and a specific "data" column of shared json data. Additional columns will be used in
 the future for general functionality, such as marking the row as public/private, or providing list of users to share with
 
+Firestore structures
+
+- Querying optimised for all documents in a collection
+
+   collection            document      collection   document
+1) / shared_data /        {group_id}  /    shared/data
+2) / shared_data_group_1/  data      /   
+3) / shared_data /        groups      /   
+
+
+Case 1
+`/shared_data/{group_id}`
+                  |  { createdBy: 'user_1', updatedAt: '...', isPublic: true, label:'Group 1',}
+
+
++ Single query to `shared_data` can list all groups
+- Syncing endpoint will sync all data from all groups unnecessarily (metadata + data combined)
+
+Case 2
+`/shared_data/{group_id}/shared/data`
+                  |               | { label:'Group 1' }    
+                  | { createdBy: 'user_1', updatedAt: '...', isPublic: true, label:'Group 1',}
++ Can still list all groups without 
+
+Case 3
+`/shared_data/{group_id}`
+
+Case 4
+`/shared_data/{group_id}`
+
+
 - Likely difficulty in making data migrations in future. Why want to keep very minimal top-level info (server data compatibility with legacy app users).
 Minimal track collection creator auth id (assume later permissions), and a single boolean `isPublic` . These top-level used for db access control and query efficiency.
 
@@ -28,6 +59,7 @@ Minimal track collection creator auth id (assume later permissions), and a singl
 ## TODO
 
 - Generate unique IDs (?) and allow for custom (non-unique) name?
+- Rethink data model - ideally all key-value pairs should be in doc and subscribed as doc instead of top-level sub
 - Shared data display table (core data and editable)
 - Delete shared collection
 - Add actions to update data

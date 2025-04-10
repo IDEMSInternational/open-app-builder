@@ -33,7 +33,7 @@ export class TmplSharedDataComponent extends TemplateBaseComponent {
   // Subscribe to shared data if params includes a target list id
   private query$ = toObservable(this.params).pipe(
     debounceTime(50),
-    switchMap((params) => this.subscribeToSharedData(params))
+    switchMap((params) => this.service.query$(params.id))
   );
 
   public data = toSignal(this.query$);
@@ -44,13 +44,5 @@ export class TmplSharedDataComponent extends TemplateBaseComponent {
       const data = this.data();
       console.log("data", data);
     });
-  }
-
-  private subscribeToSharedData(params: Params) {
-    const { id } = params;
-    console.log("subscribe to data", params);
-    // TODO - allow either list or document to be set from value (?)
-    // TODO - handle single vs multiple query
-    return this.service.query$(id);
   }
 }

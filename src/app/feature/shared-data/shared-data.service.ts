@@ -5,7 +5,17 @@ import { getDataProvider } from "./providers";
 import { AsyncServiceBase } from "src/app/shared/services/asyncService.base";
 import { DeploymentService } from "src/app/shared/services/deployment/deployment.service";
 import { DynamicDataService } from "src/app/shared/services/dynamic-data/dynamic-data.service";
-import { map, tap, switchMap, defer, take, Observable, combineLatestWith, startWith } from "rxjs";
+import {
+  map,
+  tap,
+  switchMap,
+  defer,
+  take,
+  Observable,
+  combineLatestWith,
+  startWith,
+  finalize,
+} from "rxjs";
 import {
   ISharedDataCollection,
   ISharedDataCollectionConfig,
@@ -14,11 +24,16 @@ import {
 import { MangoQuery } from "rxdb";
 import { AuthService } from "src/app/shared/services/auth/auth.service";
 
+import { TrackedBehaviorSubject } from "./trackedBehaviorSubject";
+
 @Injectable({
   providedIn: "root",
 })
 export class SharedDataService extends AsyncServiceBase {
   public provider: SharedDataProviderBase;
+
+  // Cache of active query subjects by resource path
+  private queryCache = new Map<string, TrackedBehaviorSubject<ISharedDataCollection[]>>();
 
   constructor(
     private deploymentService: DeploymentService,
@@ -38,23 +53,37 @@ export class SharedDataService extends AsyncServiceBase {
    * The query will return all results from the cache, but also include a side-effect that
    * checks server for updates and automatically updates the cache so that a single stream of data emitted,
    * starting with cached and applying updates from server
+   *
+   * Additional optimization allows for multiple query requests for the same resource path to be
+   * grouped together so that only a single active data connection is maintained
    */
-  public query$(id?: string) {
-    // Use defer statement to allow async await for services to be initialised
-    return defer(async () => {
-      await this.ready();
-    }).pipe(
-      switchMap(() => {
-        // Combine cache and server queries so that they can be unsubscribed at the same time.
-        // Only emit results from cache as server updates will update the cache. Force server to emit
-        // empty update immediately as combine only emits after receiving first value from each
-        const cacheQuery = this.getCacheQuery(id);
-        const serverQuery = this.getServerQuery(id, cacheQuery).pipe(startWith([]));
+  public query$(resourcePath?: string) {
+    // In case multiple components attempting to query same data use cache to allow
+    // multiple observers to subscribe to the same data
+    const existingQuery = this.queryCache.get(resourcePath);
+    if (existingQuery) {
+      return existingQuery;
+    }
 
-        return cacheQuery.pipe(
-          combineLatestWith(serverQuery),
-          map(([cacheDocs, serverDocs]) => cacheDocs)
-        );
+    // Create a new subject for this resource path and store in cache
+    const subject = new TrackedBehaviorSubject<ISharedDataCollection[]>([]);
+    this.queryCache.set(resourcePath, subject);
+
+    // Create data query for cache and server data.
+    // Subscribe to query and use to update subject
+    const query = this.createCombinedServerCacheQuery(resourcePath);
+    const subscription = query.subscribe({
+      next: (data) => subject.next(data),
+      error: (err) => subject.error(err),
+      // complete not required as firestore query stays open indefinitely
+    });
+
+    // The TrackedBehaviourSubject will automatically complete whenever there are no active
+    // subscribers. When this happens also unsubscribe from inner data subscription and remove cache
+    return subject.pipe(
+      finalize(() => {
+        subscription.unsubscribe();
+        this.queryCache.delete(resourcePath);
       })
     );
   }
@@ -68,11 +97,41 @@ export class SharedDataService extends AsyncServiceBase {
       _updated_at: new Date().toISOString(),
       id,
     };
-    return this.provider.create(id, { ...mergedConfig, ...meta, data: {} });
+    return this.provider.createSharedCollection(id, { ...mergedConfig, ...meta, data: {} });
   }
 
   public update(id: string, key: string, value: any) {
-    return this.provider.updateData(id, key, value);
+    return this.provider.updateSharedData(id, key, value);
+  }
+
+  public async clearCache() {
+    await this.dynamicDataService.resetFlow("data_list", "_shared_data");
+    // perform a reload to re-init any active subscriptions
+    location.reload();
+  }
+
+  /**
+   * Create a combined query that first checks cache for latest entry, and then
+   * switches to server query for updates, saving updates to cache and emitting
+   */
+  private createCombinedServerCacheQuery(resourcePath: string) {
+    // Use defer statement to allow awaiting async service init as part of observable
+    return defer(async () => {
+      await this.ready();
+    }).pipe(
+      switchMap(() => {
+        // Combine cache and server queries so that they can be unsubscribed at the same time.
+        // Only emit results from cache as server updates will update the cache. Force server to emit
+        // empty update immediately as combine only emits after receiving first value from each
+        const cacheQuery = this.getCacheQuery(resourcePath);
+        const serverQuery = this.getServerQuery(resourcePath, cacheQuery).pipe(startWith([]));
+
+        return cacheQuery.pipe(
+          combineLatestWith(serverQuery),
+          map(([cacheDocs, serverDocs]) => cacheDocs)
+        );
+      })
+    );
   }
 
   private async updateCache(id: string, docs: ISharedDataCollection[]) {
