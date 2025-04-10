@@ -93,7 +93,7 @@ export class FirebaseDataProvider extends SharedDataProviderBase {
     return this.queryToObservable<ISharedDataCollection>(docsQuery);
   }
 
-  public override async create(id: string, data: ISharedDataCollection) {
+  public override async createSharedCollection(id: string, data: ISharedDataCollection) {
     const docRef = doc(this.db, COLLECTION, id);
     const res = await getDocFromServer(docRef);
     if (res.exists()) {
@@ -102,7 +102,7 @@ export class FirebaseDataProvider extends SharedDataProviderBase {
     return setDoc(docRef, data);
   }
 
-  public override updateData(id: string, key: string, value: any) {
+  public override updateSharedData(id: string, key: string, value: any) {
     const docRef = doc(this.db, COLLECTION, id);
     // remove nested data entry
     if (value === undefined) {
