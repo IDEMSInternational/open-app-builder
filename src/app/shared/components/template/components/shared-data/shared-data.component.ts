@@ -2,11 +2,13 @@ import { ChangeDetectionStrategy, Component, computed, effect } from "@angular/c
 import { TemplateBaseComponent } from "../base";
 import { SharedDataService } from "src/app/feature/shared-data/shared-data.service";
 import { toObservable, toSignal } from "@angular/core/rxjs-interop";
-import { switchMap, debounceTime } from "rxjs";
+import { switchMap, debounceTime, filter, of } from "rxjs";
 import { isEqual } from "packages/shared/src/utils/object-utils";
+import { AuthService } from "src/app/shared/services/auth/auth.service";
 
 interface Params {
   id?: string;
+  authId: string;
 }
 
 interface IAuthorParams {
@@ -25,20 +27,30 @@ export class TmplSharedDataComponent extends TemplateBaseComponent {
     () => {
       const id = this.value();
       const authorParams = this.parameterList() as IAuthorParams;
-      return { id, ...authorParams };
+      const authId = this.authService.provider.authUser()?.uid;
+      return { id, ...authorParams, authId };
     },
     { equal: isEqual }
   );
 
   // Subscribe to shared data if params includes a target list id
   private query$ = toObservable(this.params).pipe(
+    filter((v) => v.authId !== undefined),
     debounceTime(50),
-    switchMap((params) => this.service.query$(params.id))
+    switchMap((params) => {
+      if (params.authId) {
+        return this.service.query$(params.id);
+      }
+      return of([]);
+    })
   );
 
   public data = toSignal(this.query$);
 
-  constructor(private service: SharedDataService) {
+  constructor(
+    private service: SharedDataService,
+    private authService: AuthService
+  ) {
     super();
     effect(async () => {
       const data = this.data();
