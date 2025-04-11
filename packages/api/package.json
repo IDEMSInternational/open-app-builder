@@ -20,7 +20,7 @@
     "docker:debug": "docker run -d --name apps-api-debug --rm idems/apps-api:$npm_package_version sleep infinity"
   },
   "dependencies": {
-    "@nestjs/common": "^9.4.3",
+    "@nestjs/common": "^11.0.16",
     "@nestjs/config": "^2.3.4",
     "@nestjs/core": "^9.4.3",
     "@nestjs/event-emitter": "^1.4.2",
