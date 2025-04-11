@@ -3,8 +3,7 @@ import type { IDeploymentConfig } from "packages/data-models";
 export type ISharedDataProvider = IDeploymentConfig["shared_data"]["provider"];
 
 export interface ISharedDataCollectionConfig {
-  /** specify whether collection public */
-  isPublic?: boolean;
+  // additional fields to populate during ini
 }
 
 export interface ISharedDataCollectionMetadata {
@@ -16,6 +15,6 @@ export interface ISharedDataCollectionMetadata {
 
 export type ISharedDataCollection = ISharedDataCollectionConfig &
   ISharedDataCollectionMetadata & {
-    /** shared data, stored as key-value pairs */
+    /** publicly available group data, stored as key-value pairs */
     data: Record<string, any>;
   };

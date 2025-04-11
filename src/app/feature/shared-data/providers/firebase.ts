@@ -7,10 +7,8 @@ import {
   DocumentData,
   Firestore,
   FirestoreDataConverter,
-  getDocFromServer,
   getFirestore,
   onSnapshot,
-  orderBy,
   Query,
   query,
   serverTimestamp,
@@ -49,15 +47,17 @@ const sharedDataConverter: FirestoreDataConverter<
     return {
       ...d,
       _created_at: d._created_at.toDate().toISOString(),
-      _updated_at: d._updated_at.toDate().toISOString(),
+      _updated_at: d._updated_at?.toDate().toISOString(),
     };
   },
 
-  toFirestore: (d: ISharedDataCollection) => ({
-    ...d,
-    _created_at: d._created_at ? Timestamp.fromDate(new Date(d._created_at)) : serverTimestamp(),
-    _updated_at: serverTimestamp(),
-  }),
+  toFirestore: (d: ISharedDataCollection) => {
+    return {
+      ...d,
+      _created_at: d._created_at ? Timestamp.fromDate(new Date(d._created_at)) : serverTimestamp(),
+      _updated_at: serverTimestamp(),
+    };
+  },
 };
 
 /**
@@ -83,8 +83,8 @@ export class FirebaseDataProvider extends SharedDataProviderBase {
     // TODO - track if existing subscriptions already exist to avoid recreating (at top-level)
 
     const { id = "" } = params;
-    const collectionPath = id ? `${COLLECTION}/${id}` : COLLECTION;
-    const collectionRef = collection(this.db, collectionPath).withConverter(sharedDataConverter);
+    const resourcePath = id ? `${COLLECTION}/${id}` : COLLECTION;
+    const collectionRef = collection(this.db, resourcePath).withConverter(sharedDataConverter);
 
     // Retrieve docs where public true or use included
     const docsQuery = this.buildDocumentQuery(collectionRef, params);
@@ -94,11 +94,8 @@ export class FirebaseDataProvider extends SharedDataProviderBase {
   }
 
   public override async createSharedCollection(id: string, data: ISharedDataCollection) {
-    const docRef = doc(this.db, COLLECTION, id);
-    const res = await getDocFromServer(docRef);
-    if (res.exists()) {
-      throw new Error(`[Shared Data] id already exists: ${id}`);
-    }
+    const collectionRef = collection(this.db, COLLECTION).withConverter(sharedDataConverter);
+    const docRef = doc(collectionRef, id);
     return setDoc(docRef, data);
   }
 
@@ -116,7 +113,7 @@ export class FirebaseDataProvider extends SharedDataProviderBase {
     collectionRef: CollectionReference<ISharedDataCollection, ISharedDataCollectionFirestore>,
     params: SharedDataQueryParams
   ) {
-    const { since } = params;
+    const { since, auth_id } = params;
 
     if (since) {
       // convert isoString date to firestore timestamp for comparison
@@ -126,15 +123,16 @@ export class FirebaseDataProvider extends SharedDataProviderBase {
       return query(
         collectionRef,
         whereTyped("_updated_at", ">", queryDate),
-        whereTyped("isPublic", "==", true),
-        orderBy("_updated_at")
+        // avoid syncing any docs that might have been erroneously updated
+        whereTyped("_updated_at", "<", Timestamp.fromDate(new Date())),
+        whereTyped("members", "array-contains", auth_id)
       );
     } else {
-      return query(collectionRef, whereTyped("isPublic", "==", true));
+      return query(collectionRef, whereTyped("members", "array-contains", auth_id));
     }
   }
 
-  /** Convert a firestore query to observable for eaiser subscription management */
+  /** Convert a firestore query to observable for easier subscription management */
   private queryToObservable<T>(q: Query<DocumentData, DocumentData>): Observable<T[]> {
     return new Observable<T[]>((observer) => {
       try {
