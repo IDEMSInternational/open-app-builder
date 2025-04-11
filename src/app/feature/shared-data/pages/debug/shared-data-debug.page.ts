@@ -4,7 +4,7 @@ import { IonicModule } from "@ionic/angular";
 import { TemplateComponentsModule } from "src/app/shared/components/template/template.module";
 import { FlowTypes } from "packages/data-models";
 import { AuthService } from "src/app/shared/services/auth/auth.service";
-import { ISharedDataCollection } from "../../types";
+import { ISharedDataCollection, ISharedDataCollectionMetadata } from "../../types";
 import { JsonPipe } from "@angular/common";
 import { ROW_TEMPLATES } from "./row-templates";
 import { TmplSharedDataComponent } from "src/app/shared/components/template/components/shared-data/shared-data.component";
@@ -35,7 +35,8 @@ export class SharedDataDebugPage implements OnInit {
   public collectionMeta = computed(() => {
     const collection = this.selectedDataCollection();
     if (collection) {
-      const { data, ...meta } = collection;
+      const { _created_at, _created_by, _updated_at, id } = collection;
+      const meta: ISharedDataCollectionMetadata = { _created_at, _created_by, _updated_at, id };
       return Object.entries(meta).map(([key, value]) => ({ key, value }));
     }
   });
@@ -43,8 +44,9 @@ export class SharedDataDebugPage implements OnInit {
   public collectionData = computed(() => {
     const collection = this.selectedDataCollection();
     if (collection) {
-      const { data } = collection;
-      return Object.entries(data).map(([key, value]) => ({ key, value }));
+      const { _created_at, _created_by, _updated_at, id, ...rest } = collection;
+      const meta: ISharedDataCollectionMetadata = { _created_at, _created_by, _updated_at, id };
+      return Object.entries(rest).map(([key, value]) => ({ key, value }));
     }
   });
 
@@ -52,7 +54,7 @@ export class SharedDataDebugPage implements OnInit {
   public debugRow = signal<FlowTypes.TemplateRow>(ROW_TEMPLATES.share_data_base);
 
   constructor(
-    private service: SharedDataService,
+    public service: SharedDataService,
     public authService: AuthService
   ) {}
 
@@ -68,7 +70,7 @@ export class SharedDataDebugPage implements OnInit {
     this.service.update(id, key, value);
   }
 
-  public createSharedData(id: string) {
-    this.service.create(id, { isPublic: true });
+  public async createSharedData() {
+    await this.service.createSharedCollection();
   }
 }

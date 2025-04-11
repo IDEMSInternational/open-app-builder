@@ -1,6 +1,10 @@
 <ion-content class="ion-padding">
   <h2>Shared Data</h2>
 
+  <h3>Auth</h3>
+  @if(authService.provider.authUser()){
+  <ion-button (click)="authService.provider.signOut()"> Sign out </ion-button>
+
   <h3>Public Data Collections</h3>
 
   <plh-shared-data #sharedDataRow [row]="debugRow()"> </plh-shared-data>
@@ -18,18 +22,14 @@
     </ion-select>
   </ion-item>
   @if(selectedDataCollection(); as collection){
-  <ion-accordion-group
-    [multiple]="true"
-    [value]="['metadata', 'shared_data']"
-    style="margin-top: 2rem"
-  >
+  <ion-accordion-group [multiple]="true" [value]="['metadata', 'shared_data']">
     <!-- Shared Data -->
     <ion-accordion value="shared_data">
       <ion-item slot="header" color="light">
-        <ion-label>Shared Data</ion-label>
+        <ion-label>Group Admin Data</ion-label>
       </ion-item>
       <div class="ion-padding" slot="content">
-        <p>Shared data synced with server and all users</p>
+        <p>Admin data can be read by all users, but only updated by group owner</p>
         @for(el of collectionData(); track el.key){
         <ion-item>
           <ion-input
@@ -93,25 +93,25 @@
         [value]="authUser.uid"
       ></ion-input>
     </ion-item>
-    <ion-item>
-      <ion-input
-        #idInput
-        label="id"
-        placeholder="Unique id of shared data collection"
-        labelPlacement="fixed"
-      ></ion-input>
-    </ion-item>
   </ion-list>
-  <ion-button (click)="createSharedData(idInput.value.toString())" [disabled]="!idInput.value"
-    >Create</ion-button
-  >
+  <ion-button (click)="createSharedData()">Create</ion-button>
   <hr style="margin-top: 2rem" />
   <ion-button (click)="authService.provider.signOut()">Sign Out</ion-button>
   } @else {
   <!-- Sign-in prompt -->
   <p>Only authenticated users are able to create new shared data collections</p>
-  <ion-button (click)="authService.provider.signInWithGoogle()" style="margin-top: 2rem"
-    >Sign in</ion-button
-  >
+
+  }
+
+  <h3>Clear Cached Data</h3>
+  <p>
+    If data is manually removed or edited on server, changes will not be synced to client.
+    Workaround to force hard resync
+  </p>
+  <ion-button (click)="service.clearCache()"> Clear Cached Data </ion-button>
+
+  } @else{
+  <p>Users need to be signed in to firebase to use shared data</p>
+  <ion-button (click)="authService.provider.signInWithGoogle()"> Sign in </ion-button>
   }
 </ion-content>

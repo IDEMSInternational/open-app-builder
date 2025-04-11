@@ -10,12 +10,6 @@ Firestore structures
 
 - Querying optimised for all documents in a collection
 
-   collection            document      collection   document
-1) / shared_data /        {group_id}  /    shared/data
-2) / shared_data_group_1/  data      /   
-3) / shared_data /        groups      /   
-
-
 Case 1
 `/shared_data/{group_id}`
                   |  { createdBy: 'user_1', updatedAt: '...', isPublic: true, label:'Group 1',}
@@ -58,6 +52,7 @@ Minimal track collection creator auth id (assume later permissions), and a singl
 
 ## TODO
 
+- Finish refactoring data to nested document
 - Generate unique IDs (?) and allow for custom (non-unique) name?
 - Rethink data model - ideally all key-value pairs should be in doc and subscribed as doc instead of top-level sub
 - Shared data display table (core data and editable)
@@ -113,30 +108,34 @@ service cloud.firestore {
       return request.auth != null && resource.data._created_by == request.auth.uid;
     }
     
-    function isPublic(){
-    	return resource.data.isPublic==true;
+    function isMember() {
+      return request.auth.uid in resource.data.members;
+    }
+    
+    function isPublic() {
+      return resource.data.isPublic == true;
     }
     
     // Function to check whether only nested document.data updated and not
     // any parent keys such as document.public or document._created_by
-    function isDataUpdateOnly(){
-    	return request.resource.data.diff(resource.data).affectedKeys().hasOnly(['data','_updated_at'])
+    function isProfileUpdateOnly(){
+    	return request.resource.data.diff(resource.data).affectedKeys().hasOnly(['profile','_updated_at'])
     }
     
     // Match documents in the shared_data collection
     match /shared_data/{documentId} {
     
-    	allow list: if  isPublic() || isOwner();
+    	// Allow all users to sync list of groups
+    	allow list: if isOwner() || isMember() || isPublic();
 
       // Allow reads if the document has public field set to true
-      // Include exist check to allow return that the doc does not exist
-      allow read: if !exists(request.path) || isPublic() || isOwner();
+      allow read: if isOwner() || isMember() || isPublic();
       
       // Allow creation if user is authenticated and doc sets _created_by 
       allow create: if request.resource.data._created_by == request.auth.uid;
       
       // Allow update by creator, or to child inner data by anyone
-      allow update: if isOwner() || isDataUpdateOnly();
+      allow update: if isOwner();
                              
      // Allow deletes only by the creator
       allow delete: if isOwner();
