@@ -15,6 +15,8 @@ import {
   combineLatestWith,
   startWith,
   finalize,
+  catchError,
+  of,
 } from "rxjs";
 import {
   ISharedDataCollection,
@@ -25,6 +27,8 @@ import { MangoQuery } from "rxdb";
 import { AuthService } from "src/app/shared/services/auth/auth.service";
 
 import { TrackedBehaviorSubject } from "./trackedBehaviorSubject";
+import { generateUUID } from "src/app/shared/utils";
+import { Device } from "@capacitor/device";
 
 @Injectable({
   providedIn: "root",
@@ -88,16 +92,22 @@ export class SharedDataService extends AsyncServiceBase {
     );
   }
 
-  public create(id: string, config: ISharedDataCollectionConfig = {}) {
+  public async createSharedCollection(config: ISharedDataCollectionConfig = {}) {
     const _created_by = this.authService.provider.authUser()?.uid;
-    const mergedConfig: ISharedDataCollectionConfig = { isPublic: true, ...config };
+    const id = generateUUID();
     const meta: ISharedDataCollectionMetadata = {
       _created_by,
       _created_at: new Date().toISOString(),
       _updated_at: new Date().toISOString(),
       id,
     };
-    return this.provider.createSharedCollection(id, { ...mergedConfig, ...meta, data: {} });
+    return this.provider.createSharedCollection(id, {
+      ...config,
+      ...meta,
+      profile: {},
+      admins: [_created_by],
+      members: [_created_by],
+    });
   }
 
   public update(id: string, key: string, value: any) {
@@ -105,7 +115,19 @@ export class SharedDataService extends AsyncServiceBase {
   }
 
   public async clearCache() {
-    await this.dynamicDataService.resetFlow("data_list", "_shared_data");
+    // stop all active data subscriptions
+    [...this.queryCache.values()].forEach((subject) => {
+      subject.next([]);
+      subject.complete();
+    });
+
+    const state = await this.dynamicDataService.getState();
+    const sharedDataState = state.data_list?.["_shared_data"] || {};
+
+    await this.dynamicDataService.resetFlow("data_list", `_shared_data`);
+    for (const flowName of Object.keys(sharedDataState)) {
+      await this.dynamicDataService.resetFlow("data_list", `_shared_data/${flowName}`);
+    }
     // perform a reload to re-init any active subscriptions
     location.reload();
   }
@@ -163,7 +185,9 @@ export class SharedDataService extends AsyncServiceBase {
       switchMap((cacheDocs) => {
         // 2. With the initial cache docs retrieved create server query for newer
         const lastUpdate = cacheDocs[0]?._updated_at;
-        const queryParams: SharedDataQueryParams = { id, since: lastUpdate };
+
+        const auth_id = this.authService.provider.authUser()?.uid;
+        const queryParams: SharedDataQueryParams = { id, since: lastUpdate, auth_id };
 
         // 3. create a server query either for a specific doc or for all docs in a collection
         // in both cases return results as an array for better uniformity
@@ -173,7 +197,13 @@ export class SharedDataService extends AsyncServiceBase {
             : this.provider.querySingle$(queryParams).pipe(map((doc) => (doc ? [doc] : [])));
 
         // 4. When new data received update the cache as a side-effect
-        return serverQuery.pipe(tap((serverDocs) => this.updateCache(id, serverDocs)));
+        return serverQuery.pipe(
+          tap((serverDocs) => this.updateCache(id, serverDocs)),
+          catchError((err) => {
+            console.error("server query err", err);
+            return of([]);
+          })
+        );
       })
     );
   }

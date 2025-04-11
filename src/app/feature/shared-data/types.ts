@@ -16,5 +16,11 @@ export interface ISharedDataCollectionMetadata {
 export type ISharedDataCollection = ISharedDataCollectionConfig &
   ISharedDataCollectionMetadata & {
     /** publicly available group data, stored as key-value pairs */
-    data: Record<string, any>;
+    profile: Record<string, any>;
+    /** list of device_ids registered as members */
+    members: string[];
+    /** list of device_ids registered as admins */
+    admins: string[];
+
+    isPublic?: boolean;
   };
