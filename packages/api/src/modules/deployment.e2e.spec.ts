@@ -36,7 +36,7 @@ describe("deployment module (e2e)", () => {
       await new Promise((resolve) =>
         setTimeout(() => {
           resolve(true);
-        }, 500 * i)
+        }, 500 * i),
       );
       const app_user_id = `${userIdBase}_${i}`;
       const { status, body } = await requestUserPost(app, deploymentDBName, app_user_id);

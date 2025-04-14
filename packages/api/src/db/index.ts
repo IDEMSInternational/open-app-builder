@@ -36,7 +36,7 @@ export class DBInstance {
 
         // Do not attempt to make SSL connection (docker container does not generate ssl certs)
         // https://stackoverflow.com/a/61411969
-        ssl:false
+        ssl: false,
       });
       await this.runMigrations(migrationClient);
       await migrationClient.close();
