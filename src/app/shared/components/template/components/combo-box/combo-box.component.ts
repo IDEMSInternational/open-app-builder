@@ -161,4 +161,15 @@ export class TmplComboBoxComponent
     this.componentDestroyed$.next(true);
     this.componentDestroyed$.complete();
   }
+
+  public searchButtonClass = computed(()=>{
+    const value = this.value();
+    const params = this.params();
+    return {
+       disabled: this.disabled(),
+      'placeholder-style': (!value && params.placeholder) || params.prioritisePlaceholder,
+      'with-value': value ? true : undefined,
+      'no-value': value ? undefined : true
+    }
+  })
 }

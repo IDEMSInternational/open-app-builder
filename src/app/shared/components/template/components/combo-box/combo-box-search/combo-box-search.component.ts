@@ -12,7 +12,7 @@ export class ComboBoxSearchComponent {
   @Input() title: string;
   @Input() selectedValue: string;
 
-  public searchTerm = signal<string>("");
+  public searchTerm = signal("");
 
   filteredOptions = computed(() =>
     this.answerOptions().filter((options) =>

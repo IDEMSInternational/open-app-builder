@@ -15,12 +15,7 @@
 } @else if (params().variant === "dropdown" && showSearch()) {
   <button class="open-search-combobox margin-t-regular"
     (click)="openSearch()"
-    [ngClass]="{
-      disabled: disabled(),
-      'placeholder-style': (!_row.value && params().placeholder) || params().prioritisePlaceholder,
-      'with-value': _row.value,
-      'no-value': !_row.value
-    }"
+    [ngClass]="searchButtonClass()"
     [disabled]="disabled()">
     <span class="text">{{ displayText() | translate }}</span>
     <ion-icon name="caret-down-sharp" size="small" aria-hidden="true" ></ion-icon>
