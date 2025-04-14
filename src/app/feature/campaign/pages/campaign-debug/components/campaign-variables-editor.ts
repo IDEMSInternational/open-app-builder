@@ -43,7 +43,7 @@ import { TemplateFieldService } from "src/app/shared/components/template/service
           #appDay
           type="number"
           label="App Day"
-          label-placement="start"
+          labelPlacement="start"
           [value]="dbData.app_day"
           style="text-align: right"
           (ionBlur)="setAppLaunchData($any(firstLaunch.value), appDay.value)"
