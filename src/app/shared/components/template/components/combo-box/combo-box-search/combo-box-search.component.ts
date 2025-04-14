@@ -1,4 +1,4 @@
-import { Component, computed, input, Input, signal } from "@angular/core";
+import { Component, computed, input, signal } from "@angular/core";
 import {IAnswerListItem } from "src/app/shared/utils";
 import { ModalController } from "@ionic/angular";
 
@@ -9,8 +9,8 @@ import { ModalController } from "@ionic/angular";
 })
 export class ComboBoxSearchComponent {
   public answerOptions = input.required<IAnswerListItem[]>();
-  @Input() title: string;
-  @Input() selectedValue: string;
+  public title = input<string>();
+  public selectedValue = input<string>();
 
   public searchTerm = signal("");
 
