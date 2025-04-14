@@ -50,7 +50,7 @@ services:
       - ../../api/.env
     environment:
       DB_HOST: db
-      API_BASE_PATH: api
+      API_BASE_URL: api
     networks:
       - db_network
       - webserver_network

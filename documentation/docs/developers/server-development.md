@@ -15,11 +15,10 @@ Requires [postgres13](https://www.postgresql.org/download/) installed locally
 ```bash
 cp packages/api/.env.example packages/api/.env
 ```
-Ensure `API_BASE_PATH=""` to allow running standalone (as opposed to part of full stack)
 
-2. Ensure the named `POSTGRES_USER` specified in `.env` also exists on postgres database with admin privileges. More info on creating users using PGAdmin4 can be found in this [Google Doc](https://docs.google.com/document/d/1YLxLQfr0UC0VdA-fVOVeKSnHaVySi2gQ7FCLQQozqv8/edit?usp=sharing)
+1. Ensure the named `POSTGRES_USER` specified in `.env` also exists on postgres database with admin privileges. More info on creating users using PGAdmin4 can be found in this [Google Doc](https://docs.google.com/document/d/1YLxLQfr0UC0VdA-fVOVeKSnHaVySi2gQ7FCLQQozqv8/edit?usp=sharing)
 
-3. Serve api
+2. Serve api
   ```bash
   yarn workspace api start:watch
   ```
@@ -34,7 +33,7 @@ Ensure `API_BASE_PATH=""` to allow running standalone (as opposed to part of ful
 
     ![](images/api-docs.png)
 
-4. Interact with app.
+1. Interact with app.
 By default any app running locally via `yarn start` will target the localhost api, so in-app operations such as contact field syncing can be tested in the same way as production
 
 ### API Tests
@@ -63,14 +62,13 @@ yarn workspace api test:e2e -t app_user
 Requires [docker desktop](https://www.docker.com/products/docker-desktop/) installed locally
 
 1. Configure .env variables as per `packages\server\README.md`
-Ensure `API_BASE_PATH="/api"` to allow running as part of full stack
    
 2. Build api
 ```bash
 yarn workspace api docker:build
 ```
 
-3. run server stack
+1. run server stack
 ```bash
 yarn workspace server start
 ```
