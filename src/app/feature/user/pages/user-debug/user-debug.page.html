@@ -87,7 +87,12 @@
       </tbody>
     </table>
   </div>
-
+  <div style="display: flex; align-items: center; gap: 8px; margin-top: 1rem">
+    @if (dynamicDataSelected(); as selected) {
+    <ion-button (click)="resetDynamicDataList(selected)">Reset List</ion-button>
+    }
+    <ion-button (click)="promptDynamicDataResetAll()" fill="clear">Reset All</ion-button>
+  </div>
   }
 
   <!-- Protected Fields -->

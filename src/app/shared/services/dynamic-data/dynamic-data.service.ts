@@ -192,6 +192,16 @@ export class DynamicDataService extends AsyncServiceBase {
     }
   }
 
+  /**
+   * Remove user writes on all flows
+   * NOTE - as this will also reset internal flows it is recommended to reload the app
+   * after reset
+   * */
+  public async resetAll() {
+    await this.db.removeAll();
+    await this.writeCache.deleteAll();
+  }
+
   /** Access full state of all persisted data layers */
   public async getState() {
     // ensure all writes are complete before returning overall state
@@ -212,7 +222,7 @@ export class DynamicDataService extends AsyncServiceBase {
 
   /**
    * Set the data for an internal data collection
-   * All internal collections are prefixed by `_app_` and are only stored ephemerally (not persisted)
+   * All internal collections are prefixed by `_` and are only stored ephemerally (not persisted)
    * Data that is set will override any pre-existing data
    **/
   public async setInternalCollection(name: string, data: any[]) {
