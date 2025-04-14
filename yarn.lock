@@ -5018,18 +5018,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@ionic-native/status-bar@npm:^5.36.0":
-  version: 5.36.0
-  resolution: "@ionic-native/status-bar@npm:5.36.0"
-  dependencies:
-    "@types/cordova": latest
-  peerDependencies:
-    "@ionic-native/core": ^5.1.0
-    rxjs: ^5.5.0 || ^6.5.0
-  checksum: 68661d93c853d168ce0c69531a1c079075dfddce72be5980236727069918ab384b9d77db824979741b40aeb2eba9b480dee51aaa2bc6ae3dfac967834ce3017c
-  languageName: node
-  linkType: hard
-
 "@ionic/angular-toolkit@npm:^11.0.1":
   version: 11.0.1
   resolution: "@ionic/angular-toolkit@npm:11.0.1"
@@ -16559,7 +16547,6 @@ __metadata:
     "@ionic-native/device": ^5.36.0
     "@ionic-native/http": ^5.36.0
     "@ionic-native/media": ^5.36.0
-    "@ionic-native/status-bar": ^5.36.0
     "@ionic/angular": ^8.5.3
     "@ionic/angular-toolkit": ^11.0.1
     "@ionic/cli": ^7.1.5

@@ -64,7 +64,6 @@
     "@ionic-native/device": "^5.36.0",
     "@ionic-native/http": "^5.36.0",
     "@ionic-native/media": "^5.36.0",
-    "@ionic-native/status-bar": "^5.36.0",
     "@ionic/angular": "^8.5.3",
     "@ionic/pwa-elements": "^3.2.2",
     "@sentry/angular-ivy": "^7.102.1",
