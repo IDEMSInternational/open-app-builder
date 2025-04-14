@@ -4,7 +4,6 @@
     "/status": {
       "get": {
         "operationId": "DefaultController_checkStatus",
-        "summary": "Check server status",
         "parameters": [
           {
             "name": "x-deployment-db-name",
@@ -21,38 +20,16 @@
           "200": {
             "description": ""
           }
-        }
-      }
-    },
-    "/app_users": {
-      "get": {
-        "operationId": "AppUsersController_findAll",
-        "summary": "List users",
-        "parameters": [
-          {
-            "name": "x-deployment-db-name",
-            "in": "header",
-            "description": "Name of db for deployment to populate",
-            "schema": {
-              "type": "string",
-              "default": "plh"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": ""
-          }
         },
+        "summary": "Check server status",
         "tags": [
-          "Users"
+          "Default"
         ]
       }
     },
     "/app_users/{app_user_id}": {
       "get": {
         "operationId": "AppUsersController_findOne",
-        "summary": "Get user profile",
         "parameters": [
           {
             "name": "app_user_id",
@@ -77,13 +54,13 @@
             "description": ""
           }
         },
+        "summary": "Get user profile",
         "tags": [
           "Users"
         ]
       },
       "post": {
         "operationId": "AppUsersController_setUserData",
-        "summary": "Update user profile",
         "parameters": [
           {
             "name": "x-deployment-db-name",
@@ -125,6 +102,7 @@
             }
           }
         },
+        "summary": "Update user profile",
         "tags": [
           "Users"
         ]
@@ -133,7 +111,6 @@
     "/auth_users/{auth_user_id}": {
       "get": {
         "operationId": "AuthUsersController_findOne",
-        "summary": "Get auth user profile",
         "parameters": [
           {
             "name": "auth_user_id",
@@ -158,6 +135,7 @@
             "description": ""
           }
         },
+        "summary": "Get auth user profile",
         "tags": [
           "Auth Users"
         ]
@@ -166,7 +144,6 @@
     "/contact_fields": {
       "get": {
         "operationId": "ContactFieldController_findAll",
-        "summary": "List contact field entries",
         "parameters": [
           {
             "name": "x-deployment-db-name",
@@ -183,6 +160,7 @@
             "description": ""
           }
         },
+        "summary": "List contact field entries",
         "tags": [
           "Contact Fields"
         ]
@@ -191,7 +169,6 @@
     "/contact_fields/{app_user_id}": {
       "post": {
         "operationId": "ContactFieldController_setUserContactFields",
-        "summary": "Set User Contact Fields",
         "parameters": [
           {
             "name": "x-deployment-db-name",
@@ -233,6 +210,7 @@
             }
           }
         },
+        "summary": "Set User Contact Fields",
         "tags": [
           "Contact Fields"
         ]
@@ -241,7 +219,6 @@
     "/app_feedback": {
       "get": {
         "operationId": "AppFeedbackController_findAll",
-        "summary": "List all feedback",
         "parameters": [
           {
             "name": "x-deployment-db-name",
@@ -258,13 +235,13 @@
             "description": ""
           }
         },
+        "summary": "List all feedback",
         "tags": [
           "Feedback"
         ]
       },
       "post": {
         "operationId": "AppFeedbackController_addUserFeedback",
-        "summary": "Add feedback entry",
         "parameters": [
           {
             "name": "x-deployment-db-name",
@@ -298,6 +275,7 @@
             }
           }
         },
+        "summary": "Add feedback entry",
         "tags": [
           "Feedback"
         ]
@@ -306,7 +284,6 @@
     "/app_notification_interaction": {
       "get": {
         "operationId": "AppNotificationInteractionController_findAll",
-        "summary": "List all notification interactions",
         "parameters": [
           {
             "name": "x-deployment-db-name",
@@ -323,13 +300,13 @@
             "description": ""
           }
         },
+        "summary": "List all notification interactions",
         "tags": [
           "Notification Interaction"
         ]
       },
       "post": {
         "operationId": "AppNotificationInteractionController_addUserNotificationInteraction",
-        "summary": "Add notification interaction entry",
         "parameters": [
           {
             "name": "x-deployment-db-name",
@@ -363,6 +340,7 @@
             }
           }
         },
+        "summary": "Add notification interaction entry",
         "tags": [
           "Notification Interaction"
         ]
@@ -372,7 +350,7 @@
   "info": {
     "title": "IDEMS Apps API",
     "description": "App-Server Communication",
-    "version": "1.6.0",
+    "version": "1.7.0",
     "contact": {}
   },
   "tags": [
@@ -383,7 +361,7 @@
   ],
   "servers": [
     {
-      "url": ""
+      "url": "/api"
     }
   ],
   "components": {
