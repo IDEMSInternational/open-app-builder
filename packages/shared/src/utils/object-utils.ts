@@ -202,3 +202,39 @@ export function mergeObjectArrays<T extends object>(
   }
   return Object.values(mergedHashmap) as T[];
 }
+
+/**
+ * Diff 2 objects and return a summary of key operations required to transform a -> b
+ * Objects are compared via deep comparison, although output returned for
+ * create/update operations specify the full value (not nested partial diff)
+ **/
+export function diffObjects(a: Record<string, any>, b: Record<string, any>) {
+  const ops = {
+    add: [] as { key: string; value: any }[],
+    update: [] as { key: string; value: any }[],
+    delete: [] as { key: string; value: any }[],
+  };
+
+  const mapA = new Map(Object.entries(a));
+  const mapB = new Map(Object.entries(b));
+
+  function addOperation(type: keyof typeof ops, key: string, value: any): void {
+    ops[type].push({ key, value });
+  }
+
+  for (const [key, bValue] of mapB) {
+    if (!mapA.has(key)) {
+      addOperation("add", key, bValue);
+    } else if (!isEqual(mapA.get(key), bValue)) {
+      addOperation("update", key, bValue);
+    }
+  }
+
+  for (const [key] of mapA) {
+    if (!mapB.has(key)) {
+      addOperation("delete", key, undefined);
+    }
+  }
+
+  return ops;
+}
