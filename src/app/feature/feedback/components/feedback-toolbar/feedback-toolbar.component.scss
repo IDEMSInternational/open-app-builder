@@ -26,9 +26,8 @@ ion-range.width-select {
   margin-bottom: -4px;
 }
 
-// Hack - label sizing a pain with slider and checkboxes inlined
-.tool-label,
-ion-checkbox::part(label) {
+ion-checkbox::part(label),
+ion-range::part(label) {
   font-size: 14px;
   line-height: 14px;
   overflow: inherit;
