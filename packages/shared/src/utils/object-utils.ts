@@ -151,6 +151,5 @@ export function uniqueObjectArrayKeys(arr: Record<string, any>[], maxDepth?: num
       keyHashmap[key] = true;
     }
   }
-  console.log({ keyHashmap });
   return Object.keys(keyHashmap);
 }

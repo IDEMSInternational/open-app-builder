@@ -93,6 +93,8 @@ export class UserMetaService extends AsyncServiceBase {
       console.log("[User Import]", profile);
       await this.importUserContactFields(contact_fields);
       await this.importUserDynamicData(dynamic_data);
+      // Reload to re-initialise default values on dynamic data and internal tables
+      location.reload();
     } catch (error) {
       console.error("[User Import] failed", error);
     }
@@ -121,6 +123,12 @@ export class UserMetaService extends AsyncServiceBase {
   }
 
   private async importUserDynamicData(dynamic_data?: IDynamicDataState) {
+    /**
+     * Reset all user dynamic data before importing new data
+     * TODO: implement a variety of different merge strategies and expose options to template action
+     */
+    await this.dynamicDataService.resetAll();
+
     if (!dynamic_data) return;
     for (const [flow_type, entriesByFlowName] of Object.entries(dynamic_data)) {
       for (const [flow_name, entriesByRowId] of Object.entries(entriesByFlowName)) {
