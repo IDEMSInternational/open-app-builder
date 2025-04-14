@@ -9,6 +9,7 @@ import {
   filterObjectByKeys,
   uniqueObjectArrayKeys,
   mergeObjectArrays,
+  diffObjects,
 } from "./object-utils";
 
 const MOCK_NESTED_OBJECT = {
@@ -186,5 +187,15 @@ describe("Object Utils", () => {
       { id: "id_2", string: "goodbye", nested: { boolean: false, number: 1, string: "hello" } },
       { id: "id_3", string: "hello" },
     ]);
+  });
+  it("diffObjects", () => {
+    const a = { key_1: { string: "hello", number: 1 }, key_2: { boolean: true } };
+    const b = { key_1: { string: "goodbye", number: 1 }, key_3: false };
+    const res = diffObjects(a, b);
+    expect(res).toEqual({
+      add: [{ key: "key_3", value: false }],
+      update: [{ key: "key_1", value: { string: "goodbye", number: 1 } }],
+      delete: [{ key: "key_2", value: undefined }],
+    });
   });
 });
