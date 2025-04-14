@@ -38,9 +38,11 @@ async function bootstrap() {
   SwaggerModule.setup("", app, document);
   // Starts listening for shutdown hooks
   app.enableShutdownHooks();
+  // ensure local server also directing requests to `/api`
+  app.setGlobalPrefix(environment.API_BASE_PATH);
   const port = process.env.API_PORT || 3000;
   await app.listen(port);
-  console.log(`app v${version} running on port ${port}`);
+  console.log(`app v${version} running on ${port}`);
 }
 bootstrap();
 
