@@ -31,7 +31,7 @@ export class SharedDataProviderBase {
   /** Create a new shared data collection with a given id */
   public async createSharedCollection(id: string, data: ISharedDataCollection) {
     console.error(`[Shared Data] Provider method not implemented: create`);
-    return;
+    return data;
   }
 
   /**

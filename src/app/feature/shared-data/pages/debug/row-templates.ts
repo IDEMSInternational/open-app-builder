@@ -1,14 +1,13 @@
 import { FlowTypes } from "packages/data-models";
 
-const share_data_base: FlowTypes.TemplateRow = {
-  _nested_name: "",
-  name: "",
-  type: "share_data",
-  value: undefined,
-  rows: [],
-  action_list: [],
+const shared_data_base: Omit<
+  FlowTypes.TemplateRow,
+  "_nested_name" | "name" | "action_list" | "rows"
+> = {
+  type: "shared_data",
+  value: "",
 };
 
 export const ROW_TEMPLATES = {
-  share_data_base,
+  shared_data_base: shared_data_base as FlowTypes.TemplateRow,
 };
