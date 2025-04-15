@@ -2,6 +2,7 @@ import { Injector } from "@angular/core";
 import {
   collection,
   CollectionReference,
+  deleteDoc,
   deleteField,
   doc,
   DocumentData,
@@ -115,6 +116,12 @@ export class FirebaseDataProvider extends SharedDataProviderBase {
     }
     // use data nested notation to apply partial update
     return updateDoc(docRef, { [`data.${key}`]: value, _updated_at: serverTimestamp() });
+  }
+
+  public override async deleteSharedCollection(id: string) {
+    const collectionRef = collection(this.db, COLLECTION).withConverter(sharedDataConverter);
+    const docRef = doc(collectionRef, id);
+    return deleteDoc(docRef);
   }
 
   private buildDocumentQuery(

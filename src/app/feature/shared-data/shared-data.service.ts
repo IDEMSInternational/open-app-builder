@@ -6,18 +6,19 @@ import { AsyncServiceBase } from "src/app/shared/services/asyncService.base";
 import { DeploymentService } from "src/app/shared/services/deployment/deployment.service";
 import { DynamicDataService } from "src/app/shared/services/dynamic-data/dynamic-data.service";
 import {
-  map,
-  tap,
-  switchMap,
-  defer,
-  take,
-  Observable,
-  combineLatestWith,
-  distinctUntilChanged,
-  startWith,
-  finalize,
   catchError,
+  combineLatestWith,
+  defer,
+  distinctUntilChanged,
+  finalize,
+  firstValueFrom,
+  map,
+  Observable,
   of,
+  startWith,
+  switchMap,
+  take,
+  tap,
 } from "rxjs";
 import {
   ISharedDataCollection,
@@ -111,7 +112,29 @@ export class SharedDataService extends AsyncServiceBase {
     });
   }
 
-  public update(id: string, key: string, value: any) {
+  public async deleteSharedCollection(id: string) {
+    const auth_id = this.authService.provider.authUser()?.uid;
+    // TODO - handle case where changes need to be synced to users
+    const latest = await firstValueFrom(
+      this.provider.querySingle$({ auth_id, id, since: undefined })
+    );
+    if (latest) {
+      const { _created_by, members } = latest;
+      // only allow delete if owner (will be blocked by rules otherwise)
+      // and if no other members (no way to sync delete currently)
+      // TODO - handle strategy for deleting across multiple users
+      if (members.length > 1) {
+        throw new Error(`Cannot delete group with additional members`);
+      }
+      if (_created_by !== auth_id) {
+        throw new Error(`Only owner can delete group: ${_created_by}`);
+      }
+      await this.provider.deleteSharedCollection(id);
+      await this.dynamicDataService.remove("data_list", "_shared_data", [id]);
+    }
+  }
+
+  public updateSharedData(id: string, key: string, value: any) {
     return this.provider.updateSharedData(id, key, value);
   }
 
@@ -149,6 +172,7 @@ export class SharedDataService extends AsyncServiceBase {
           combineLatestWith(serverQuery),
           map(([cacheDocs, serverDocs]) => cacheDocs),
           distinctUntilChanged(isEqual)
+          // TODO - consider doc validation (?)
         );
       })
     );
