@@ -5,32 +5,60 @@
   @if(authService.provider.authUser()){
   <ion-button (click)="authService.provider.signOut()"> Sign out </ion-button>
 
-  <h3>Public Data Collections</h3>
+  <!-- Multiple query -->
+  <h3>Shared Data - List Rows</h3>
+  <p>Use an empty shared_data row to query for all shared data collections available to a user</p>
+  <p>
+    NOTE - All row data updates will be synced in realtime<br />This may be excessive if many
+    rows/frequent updates
+  </p>
+  <code style="display: block; margin-bottom: 1rem">{{templateRowMultiple() | json}}</code>
 
-  <plh-shared-data #sharedDataRow [row]="debugRow()"> </plh-shared-data>
+  <tmpl-shared-data [row]="templateRowMultiple()" (itemsChanged)="sharedDataMultiple.set($event)">
+  </tmpl-shared-data>
 
-  <h3>Update Shared Data</h3>
-  <ion-item>
-    <ion-select
-      #select
-      label="Select Collection"
-      (ionChange)="sharedDataSelected.set(select.value)"
-    >
-      @for(item of sharedDataRow.data(); track item.id){
-      <ion-select-option [value]="item.id">{{item.id}}</ion-select-option>
-      }
-    </ion-select>
-  </ion-item>
-  @if(selectedDataCollection(); as collection){
+  <!-- Multiple results -->
+  <div class="items-container">
+    @for(item of sharedDataMultiple(); track item.id){
+    <div class="item-container" (click)="selectedId.set(item.id)">
+      <div style="display: flex">
+        <div class="item-title" style="flex: 1">{{item.id}}</div>
+        <ion-button class="item-delete" (click)="promptCollectionDelete(item.id)" fill="clear">
+          <ion-icon name="trash"></ion-icon>
+        </ion-button>
+      </div>
+
+      <div class="item-label">{{item.data.label}}</div>
+    </div>
+
+    }
+    <ion-button (click)="createSharedData()">
+      <ion-icon name="add"></ion-icon> New Collection
+    </ion-button>
+  </div>
+
+  <!-- Single query -->
+  @if(templateRowSingle()){
+  <h3>Shared Data - Selected Row</h3>
+  <p>Use a value to select a single shared_row collection</p>
+  <code style="display: block; margin-bottom: 1rem">{{templateRowSingle() | json}}</code>
+
+  <tmpl-shared-data [row]="templateRowSingle()" (itemChanged)="sharedDataSingle.set($event)">
+  </tmpl-shared-data>
+  }
+
+  <!-- Single result -->
+  @if(displayTableData(); as tableData){
+
   <ion-accordion-group [multiple]="true" [value]="['metadata', 'shared_data']">
     <!-- Shared Data -->
     <ion-accordion value="shared_data">
       <ion-item slot="header" color="light">
-        <ion-label>Group Admin Data</ion-label>
+        <ion-label>Group Data</ion-label>
       </ion-item>
       <div class="ion-padding" slot="content">
-        <p>Admin data can be read by all users, but only updated by group owner</p>
-        @for(el of collectionData(); track el.key){
+        <p>Data can be read by all users, but only updated by group owner</p>
+        @for(el of tableData.data; track el.key){
         <ion-item>
           <ion-input
             [label]="el.key"
@@ -63,8 +91,10 @@
         <ion-label>Metadata</ion-label>
       </ion-item>
       <div class="ion-padding" slot="content">
-        <p>Fields populated on first creation or automatically on update</p>
-        @for(el of collectionMeta(); track el.key){
+        <p>
+          Group metadata is set automatically or by specific actions and cannot be directly modified
+        </p>
+        @for(el of tableData.meta; track el.key){
         <ion-item>
           <ion-input
             [label]="el.key"
@@ -77,31 +107,9 @@
       </div>
     </ion-accordion>
   </ion-accordion-group>
-
   }
 
-  <h3>Create Shared Collection</h3>
-
-  @if(authService.provider.authUser(); as authUser){
-  <!-- Create shared data form -->
-  <ion-list>
-    <ion-item>
-      <ion-input
-        label="_created_by"
-        labelPlacement="fixed"
-        disabled
-        [value]="authUser.uid"
-      ></ion-input>
-    </ion-item>
-  </ion-list>
-  <ion-button (click)="createSharedData()">Create</ion-button>
   <hr style="margin-top: 2rem" />
-  <ion-button (click)="authService.provider.signOut()">Sign Out</ion-button>
-  } @else {
-  <!-- Sign-in prompt -->
-  <p>Only authenticated users are able to create new shared data collections</p>
-
-  }
 
   <h3>Clear Cached Data</h3>
   <p>
