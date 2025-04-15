@@ -5,6 +5,7 @@ import {
   deleteField,
   doc,
   DocumentData,
+  DocumentReference,
   Firestore,
   FirestoreDataConverter,
   getFirestore,
@@ -79,9 +80,15 @@ export class FirebaseDataProvider extends SharedDataProviderBase {
     this.db = getFirestore(app);
   }
 
-  public override queryMultiple$(params: SharedDataQueryParams) {
-    // TODO - track if existing subscriptions already exist to avoid recreating (at top-level)
+  public override querySingle$(params: SharedDataQueryParams) {
+    const { id } = params;
+    const collectionRef = collection(this.db, COLLECTION).withConverter(sharedDataConverter);
+    const docRef = doc(collectionRef, id);
 
+    return this.docRefToObservable(docRef);
+  }
+
+  public override queryMultiple$(params: SharedDataQueryParams) {
     const { id = "" } = params;
     const resourcePath = id ? `${COLLECTION}/${id}` : COLLECTION;
     const collectionRef = collection(this.db, resourcePath).withConverter(sharedDataConverter);
@@ -96,7 +103,8 @@ export class FirebaseDataProvider extends SharedDataProviderBase {
   public override async createSharedCollection(id: string, data: ISharedDataCollection) {
     const collectionRef = collection(this.db, COLLECTION).withConverter(sharedDataConverter);
     const docRef = doc(collectionRef, id);
-    return setDoc(docRef, data);
+    await setDoc(docRef, data);
+    return data;
   }
 
   public override updateSharedData(id: string, key: string, value: any) {
@@ -123,8 +131,6 @@ export class FirebaseDataProvider extends SharedDataProviderBase {
       return query(
         collectionRef,
         whereTyped("_updated_at", ">", queryDate),
-        // avoid syncing any docs that might have been erroneously updated
-        whereTyped("_updated_at", "<", Timestamp.fromDate(new Date())),
         whereTyped("members", "array-contains", auth_id)
       );
     } else {
@@ -142,6 +148,30 @@ export class FirebaseDataProvider extends SharedDataProviderBase {
           (snapshot) => {
             const items = snapshot.docs.map((d) => ({ id: d.id, ...d.data() }) as T);
             observer.next(items);
+          },
+          (error) => {
+            observer.error(error);
+          }
+        );
+
+        // Return the unsubscribe function to clean up when this Observable is unsubscribed
+        return unsubscribe;
+      } catch (error) {
+        observer.error(error);
+      }
+    });
+  }
+
+  /** Convert a firestore doc snapshot ref */
+  private docRefToObservable<T extends DocumentData>(ref: DocumentReference<T>): Observable<T> {
+    return new Observable<T>((observer) => {
+      try {
+        // Set up the snapshot listener
+        const unsubscribe = onSnapshot(
+          ref,
+          (snapshot) => {
+            const d = { id: snapshot.id, ...snapshot.data() } as T;
+            observer.next(d);
           },
           (error) => {
             observer.error(error);

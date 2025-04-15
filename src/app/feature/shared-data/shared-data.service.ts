@@ -13,6 +13,7 @@ import {
   take,
   Observable,
   combineLatestWith,
+  distinctUntilChanged,
   startWith,
   finalize,
   catchError,
@@ -28,7 +29,7 @@ import { AuthService } from "src/app/shared/services/auth/auth.service";
 
 import { TrackedBehaviorSubject } from "./trackedBehaviorSubject";
 import { generateUUID } from "src/app/shared/utils";
-import { Device } from "@capacitor/device";
+import { isEqual } from "packages/shared/src/utils/object-utils";
 
 @Injectable({
   providedIn: "root",
@@ -104,7 +105,7 @@ export class SharedDataService extends AsyncServiceBase {
     return this.provider.createSharedCollection(id, {
       ...config,
       ...meta,
-      profile: {},
+      data: {},
       admins: [_created_by],
       members: [_created_by],
     });
@@ -123,11 +124,7 @@ export class SharedDataService extends AsyncServiceBase {
 
     const state = await this.dynamicDataService.getState();
     const sharedDataState = state.data_list?.["_shared_data"] || {};
-
-    await this.dynamicDataService.resetFlow("data_list", `_shared_data`);
-    for (const flowName of Object.keys(sharedDataState)) {
-      await this.dynamicDataService.resetFlow("data_list", `_shared_data/${flowName}`);
-    }
+    await this.dynamicDataService.remove("data_list", "_shared_data", Object.keys(sharedDataState));
     // perform a reload to re-init any active subscriptions
     location.reload();
   }
@@ -150,7 +147,8 @@ export class SharedDataService extends AsyncServiceBase {
 
         return cacheQuery.pipe(
           combineLatestWith(serverQuery),
-          map(([cacheDocs, serverDocs]) => cacheDocs)
+          map(([cacheDocs, serverDocs]) => cacheDocs),
+          distinctUntilChanged(isEqual)
         );
       })
     );
