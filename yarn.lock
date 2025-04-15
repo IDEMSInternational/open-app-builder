@@ -5006,18 +5006,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@ionic-native/media@npm:^5.36.0":
-  version: 5.36.0
-  resolution: "@ionic-native/media@npm:5.36.0"
-  dependencies:
-    "@types/cordova": latest
-  peerDependencies:
-    "@ionic-native/core": ^5.1.0
-    rxjs: ^5.5.0 || ^6.5.0
-  checksum: be7f54d316e012cea2d578a75b3d7047291cdb8eba89122f883e88654546b5d1e22de529275fd6c91f46c1ac1bf6e4b1040f5a49710e7953e4cfbe225e9d816b
-  languageName: node
-  linkType: hard
-
 "@ionic/angular-toolkit@npm:^11.0.1":
   version: 11.0.1
   resolution: "@ionic/angular-toolkit@npm:11.0.1"
@@ -16546,7 +16534,6 @@ __metadata:
     "@ionic-native/core": ^5.36.0
     "@ionic-native/device": ^5.36.0
     "@ionic-native/http": ^5.36.0
-    "@ionic-native/media": ^5.36.0
     "@ionic/angular": ^8.5.3
     "@ionic/angular-toolkit": ^11.0.1
     "@ionic/cli": ^7.1.5
