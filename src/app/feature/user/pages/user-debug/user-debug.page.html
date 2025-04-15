@@ -1,8 +1,7 @@
 <ion-content class="ion-padding">
   <!-- Sync Debug -->
   <div style="display: flex; align-items: center; gap: 8px">
-    <span>App User ID:</span>
-    <ion-input [(ngModel)]="importUserId" style="flex: 1"></ion-input>
+    <ion-input [(ngModel)]="importUserId" label="App User ID:" style="flex: 1"></ion-input>
     <ion-button (click)="importUserData(importUserId)">Import</ion-button>
     <ion-button (click)="syncUserData()">Sync</ion-button>
   </div>
