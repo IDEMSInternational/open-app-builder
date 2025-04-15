@@ -4971,41 +4971,6 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@ionic-native/core@npm:^5.36.0":
-  version: 5.36.0
-  resolution: "@ionic-native/core@npm:5.36.0"
-  dependencies:
-    "@types/cordova": latest
-  peerDependencies:
-    rxjs: ^5.5.0 || ^6.5.0
-  checksum: 3c376ecf98fa9cc8f00a977872afd2e7e7076bfc31779ed0f2246013696b1c2f2c84286b91103f26a5c73611b4f0e385a71fe86f6a977a59e40e6640a5fe8bc6
-  languageName: node
-  linkType: hard
-
-"@ionic-native/device@npm:^5.36.0":
-  version: 5.36.0
-  resolution: "@ionic-native/device@npm:5.36.0"
-  dependencies:
-    "@types/cordova": latest
-  peerDependencies:
-    "@ionic-native/core": ^5.1.0
-    rxjs: ^5.5.0 || ^6.5.0
-  checksum: a5b1b382cbdc8e016356f7942670425e67de1b294347c43b1b70dbc9f73eabee4dcf0b81f4f8cefd5ac421c532ab5fe052c6fd687250d13541dafbb7ccb53a2c
-  languageName: node
-  linkType: hard
-
-"@ionic-native/http@npm:^5.36.0":
-  version: 5.36.0
-  resolution: "@ionic-native/http@npm:5.36.0"
-  dependencies:
-    "@types/cordova": latest
-  peerDependencies:
-    "@ionic-native/core": ^5.1.0
-    rxjs: ^5.5.0 || ^6.5.0
-  checksum: 24d3a7460b6c6930c305794585b2e3d9df5975869a245b1e60d8ec4e0c0172e026cb685005406199f96d12cf22a64939abb29d44bdaa76ad3aa851bbc269c08c
-  languageName: node
-  linkType: hard
-
 "@ionic/angular-toolkit@npm:^11.0.1":
   version: 11.0.1
   resolution: "@ionic/angular-toolkit@npm:11.0.1"
@@ -8380,13 +8345,6 @@ __metadata:
   version: 2.1.5
   resolution: "@types/cookiejar@npm:2.1.5"
   checksum: 04d5990e87b6387532d15a87d9ec9b2eb783039291193863751dcfd7fc723a3b3aa30ce4c06b03975cba58632e933772f1ff031af23eaa3ac7f94e71afa6e073
-  languageName: node
-  linkType: hard
-
-"@types/cordova@npm:latest":
-  version: 11.0.3
-  resolution: "@types/cordova@npm:11.0.3"
-  checksum: fb0eb0c614bb83ce886050f84feb1ae47efc469d4c091c74a64c7f99f65f75973ab4055328dacdaccb3fefed8ff57b95a9c220536418e71f1fe961bf6b5e68a1
   languageName: node
   linkType: hard
 
@@ -16531,9 +16489,6 @@ __metadata:
     "@capacitor/splash-screen": ^6.0.0
     "@capawesome/capacitor-app-update": ^6.0.0
     "@compodoc/compodoc": ^1.1.23
-    "@ionic-native/core": ^5.36.0
-    "@ionic-native/device": ^5.36.0
-    "@ionic-native/http": ^5.36.0
     "@ionic/angular": ^8.5.3
     "@ionic/angular-toolkit": ^11.0.1
     "@ionic/cli": ^7.1.5
