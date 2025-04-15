@@ -1,13 +1,13 @@
 <div class="toolbar-container">
   <ion-item lines="none" style="width: 100px">
-    <ion-label class="tool-label" position="stacked">Navigation</ion-label>
     <ion-checkbox
+      labelPlacement="stacked"
       [(ngModel)]="feedbackService.options.navigationEnabled"
       (ionChange)="feedbackService.setNavigationEnabled(feedbackService.options.navigationEnabled)"
-    ></ion-checkbox>
+      >Navigation</ion-checkbox
+    >
   </ion-item>
   <ion-item lines="none" style="flex: 2">
-    <ion-label class="tool-label" position="stacked">Page Width</ion-label>
     <ion-range
       class="width-select"
       [pin]="true"
@@ -18,6 +18,8 @@
       [step]="160"
       [(ngModel)]="feedbackService.options.contentPageWidth"
       (ionChange)="feedbackService.setContentPageWidth(feedbackService.options.contentPageWidth)"
+      label="Page Width"
+      labelPlacement="stacked"
     >
     </ion-range>
   </ion-item>
