@@ -44,9 +44,9 @@ export class SharedDataProviderBase {
   }
 
   /**
-   * Remove
+   * Delete
    */
-  public async removeSharedCollection(id: string, data: any) {
+  public async deleteSharedCollection(id: string) {
     console.error(`[Shared Data] Provider method not implemented: remove`);
   }
 }

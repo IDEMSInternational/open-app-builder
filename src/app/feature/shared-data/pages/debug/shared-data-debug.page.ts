@@ -1,61 +1,52 @@
 import { Component, computed, OnInit, signal, viewChild } from "@angular/core";
 import { SharedDataService } from "../../shared-data.service";
-import { IonicModule } from "@ionic/angular";
+import { AlertController, IonicModule } from "@ionic/angular";
 import { TemplateComponentsModule } from "src/app/shared/components/template/template.module";
 import { FlowTypes } from "packages/data-models";
 import { AuthService } from "src/app/shared/services/auth/auth.service";
-import { ISharedDataCollection, ISharedDataCollectionMetadata } from "../../types";
+import { ISharedDataCollection } from "../../types";
 import { JsonPipe } from "@angular/common";
 import { ROW_TEMPLATES } from "./row-templates";
-import { TmplSharedDataComponent } from "src/app/shared/components/template/components/shared-data/shared-data.component";
 
 @Component({
-  selector: "plh-shared-data-debug",
   templateUrl: "./shared-data-debug.page.html",
   styleUrls: ["./shared-data-debug.page.scss"],
   standalone: true,
   imports: [IonicModule, TemplateComponentsModule, JsonPipe],
 })
 export class SharedDataDebugPage implements OnInit {
-  private sharedDataRow = viewChild.required<TmplSharedDataComponent>("sharedDataRow");
+  /** Row to test authored shared_data colleciton query */
+  public templateRowMultiple = signal<FlowTypes.TemplateRow>(ROW_TEMPLATES.shared_data_base);
 
-  /** Compute list of all shared data collections by reading from the share_data template row */
-  public sharedDataCollections = computed(() => this.sharedDataRow().data());
-
-  public sharedDataSelected = signal<string | undefined>(undefined);
-
-  /** Identify and track data from the selected data collection */
-  public selectedDataCollection = computed<ISharedDataCollection | undefined>(() => {
-    const id = this.sharedDataSelected();
+  /** Row to test authored shared_data single value query */
+  public templateRowSingle = computed(() => {
+    const id = this.selectedId();
     if (id) {
-      return this.sharedDataCollections().find((v) => v.id === id);
+      return { ...ROW_TEMPLATES.shared_data_base, value: id };
     }
   });
 
-  public collectionMeta = computed(() => {
-    const collection = this.selectedDataCollection();
-    if (collection) {
-      const { _created_at, _created_by, _updated_at, id } = collection;
-      const meta: ISharedDataCollectionMetadata = { _created_at, _created_by, _updated_at, id };
-      return Object.entries(meta).map(([key, value]) => ({ key, value }));
+  public selectedId = signal<string | undefined>(undefined);
+
+  public sharedDataSingle = signal<ISharedDataCollection | undefined>(undefined);
+  public sharedDataMultiple = signal<ISharedDataCollection[]>([]);
+
+  /** Reformat collection data into entries for easier table display */
+  public displayTableData = computed(() => {
+    const collection = this.sharedDataSingle();
+    if (collection && collection.data) {
+      const { data, ...meta } = collection;
+      return {
+        meta: Object.entries(meta).map(([key, value]) => ({ key, value })),
+        data: Object.entries(data).map(([key, value]) => ({ key, value })),
+      };
     }
   });
-
-  public collectionData = computed(() => {
-    const collection = this.selectedDataCollection();
-    if (collection) {
-      const { _created_at, _created_by, _updated_at, id, ...rest } = collection;
-      const meta: ISharedDataCollectionMetadata = { _created_at, _created_by, _updated_at, id };
-      return Object.entries(rest).map(([key, value]) => ({ key, value }));
-    }
-  });
-
-  /** Row to test authored share_data row type */
-  public debugRow = signal<FlowTypes.TemplateRow>(ROW_TEMPLATES.share_data_base);
 
   constructor(
     public service: SharedDataService,
-    public authService: AuthService
+    public authService: AuthService,
+    private alertCtrl: AlertController
   ) {}
 
   async ngOnInit() {
@@ -66,11 +57,29 @@ export class SharedDataDebugPage implements OnInit {
     if (value === "") {
       value = undefined;
     }
-    const { id } = this.selectedDataCollection();
-    this.service.update(id, key, value);
+    const id = this.selectedId();
+    this.service.updateSharedData(id, key, value);
   }
 
   public async createSharedData() {
-    await this.service.createSharedCollection();
+    const { id } = await this.service.createSharedCollection();
+    this.selectedId.set(id);
+  }
+
+  public async promptCollectionDelete(id: string) {
+    const actionSheet = await this.alertCtrl.create({
+      header: "Shared Data Delete",
+      message:
+        "Are you sure you want to delete this collection? Deleted collections cannot be recovered",
+      buttons: [
+        { text: "Yes, Delete", role: "destructive" },
+        { text: "No, Cancel", role: "cancel" },
+      ],
+    });
+    await actionSheet.present();
+    const { role } = await actionSheet.onDidDismiss();
+    if (role === "destructive") {
+      this.service.deleteSharedCollection(id);
+    }
   }
 }

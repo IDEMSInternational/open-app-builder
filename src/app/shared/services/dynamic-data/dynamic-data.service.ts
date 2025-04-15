@@ -195,7 +195,7 @@ export class DynamicDataService extends AsyncServiceBase {
     const { collectionName } = await this.ensureCollection(flow_type, flow_name);
     const collection = this.db.getCollection(collectionName);
     await collection.bulkRemove(ids);
-    this.writeCache.delete(flow_type, flow_name, ids);
+    await this.writeCache.delete(flow_type, flow_name, ids);
   }
 
   /** Remove user writes on a flow to return it to its original state */
