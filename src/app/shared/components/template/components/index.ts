@@ -168,6 +168,7 @@ const COMMON_COMPONENT_MAPPING = {
   carousel: TmplCarouselComponent,
   combo_box: TmplComboBoxComponent,
   dashed_box: TmplDashedBoxComponent,
+  date_time_picker: TmplDateTimePickerComponent,
   debug_toggle: PLHDebugToggleComponent,
   display_grid: TmplDisplayGridComponent,
   display_group: TmplDisplayGroupComponent,

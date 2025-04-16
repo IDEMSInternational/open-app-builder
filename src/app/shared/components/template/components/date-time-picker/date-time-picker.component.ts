@@ -2,9 +2,9 @@ import { Component, OnInit } from "@angular/core";
 import { TemplateBaseComponent } from "../base";
 
 @Component({
-  selector: "plh-date-time-picker", // Updated selector
-  templateUrl: "./date-time-picker.component.html", // Updated file reference
-  styleUrls: ["./date-time-picker.component.scss"], // Updated file reference
+  selector: "plh-date-time-picker",
+  templateUrl: "./date-time-picker.component.html",
+  styleUrls: ["./date-time-picker.component.scss"],
 })
 export class TmplDateTimePickerComponent extends TemplateBaseComponent implements OnInit {
   // Updated class name
