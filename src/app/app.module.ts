@@ -10,10 +10,6 @@ import { IonicModule, IonicRouteStrategy } from "@ionic/angular";
 import { LottieModule } from "ngx-lottie";
 import player from "lottie-web";
 
-// Native
-import { HTTP } from "@ionic-native/http/ngx";
-import { Device } from "@ionic-native/device/ngx";
-
 // Components
 import { AppComponent } from "./app.component";
 import { AppRoutingModule } from "./app-routing.module";
@@ -51,8 +47,6 @@ export function lottiePlayerFactory() {
   ],
   providers: [
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
-    HTTP,
-    Device,
     // Use custom api interceptor to handle interaction with server backend
     { provide: HTTP_INTERCEPTORS, useClass: ServerAPIInterceptor, multi: true },
     // Use custom error handler
