@@ -20,14 +20,14 @@ cp packages/api/.env.example packages/api/.env
 
 2. Serve api
   ```bash
-  yarn workspace api start:watch
+  yarn workspace api start
   ```
 
     This will start a local api server alongside interactive documentation for testing endpoints
     This can be found on [localhost:3000](http://localhost:3000)
 
     !!! note
-        If postgres is not configured to start at boot time, as seems to be the case by default on macOS, then you must manually start it before serving the API. In order to start postgres running in the background, run `pg_ctl -D /usr/local/var/postgres start`.
+        If postgres is not configured to start at boot time, as seems to be the case by default on macOS, then you must manually start it before serving the API. E.g., run `brew services start postgresql` or `pg_ctl -D /usr/local/var/postgres start`.
 
     *Example Docs - endpoints can be viewed and triggered with parameters*
 
