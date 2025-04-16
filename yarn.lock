@@ -4971,65 +4971,6 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@ionic-native/core@npm:^5.36.0":
-  version: 5.36.0
-  resolution: "@ionic-native/core@npm:5.36.0"
-  dependencies:
-    "@types/cordova": latest
-  peerDependencies:
-    rxjs: ^5.5.0 || ^6.5.0
-  checksum: 3c376ecf98fa9cc8f00a977872afd2e7e7076bfc31779ed0f2246013696b1c2f2c84286b91103f26a5c73611b4f0e385a71fe86f6a977a59e40e6640a5fe8bc6
-  languageName: node
-  linkType: hard
-
-"@ionic-native/device@npm:^5.36.0":
-  version: 5.36.0
-  resolution: "@ionic-native/device@npm:5.36.0"
-  dependencies:
-    "@types/cordova": latest
-  peerDependencies:
-    "@ionic-native/core": ^5.1.0
-    rxjs: ^5.5.0 || ^6.5.0
-  checksum: a5b1b382cbdc8e016356f7942670425e67de1b294347c43b1b70dbc9f73eabee4dcf0b81f4f8cefd5ac421c532ab5fe052c6fd687250d13541dafbb7ccb53a2c
-  languageName: node
-  linkType: hard
-
-"@ionic-native/http@npm:^5.36.0":
-  version: 5.36.0
-  resolution: "@ionic-native/http@npm:5.36.0"
-  dependencies:
-    "@types/cordova": latest
-  peerDependencies:
-    "@ionic-native/core": ^5.1.0
-    rxjs: ^5.5.0 || ^6.5.0
-  checksum: 24d3a7460b6c6930c305794585b2e3d9df5975869a245b1e60d8ec4e0c0172e026cb685005406199f96d12cf22a64939abb29d44bdaa76ad3aa851bbc269c08c
-  languageName: node
-  linkType: hard
-
-"@ionic-native/media@npm:^5.36.0":
-  version: 5.36.0
-  resolution: "@ionic-native/media@npm:5.36.0"
-  dependencies:
-    "@types/cordova": latest
-  peerDependencies:
-    "@ionic-native/core": ^5.1.0
-    rxjs: ^5.5.0 || ^6.5.0
-  checksum: be7f54d316e012cea2d578a75b3d7047291cdb8eba89122f883e88654546b5d1e22de529275fd6c91f46c1ac1bf6e4b1040f5a49710e7953e4cfbe225e9d816b
-  languageName: node
-  linkType: hard
-
-"@ionic-native/status-bar@npm:^5.36.0":
-  version: 5.36.0
-  resolution: "@ionic-native/status-bar@npm:5.36.0"
-  dependencies:
-    "@types/cordova": latest
-  peerDependencies:
-    "@ionic-native/core": ^5.1.0
-    rxjs: ^5.5.0 || ^6.5.0
-  checksum: 68661d93c853d168ce0c69531a1c079075dfddce72be5980236727069918ab384b9d77db824979741b40aeb2eba9b480dee51aaa2bc6ae3dfac967834ce3017c
-  languageName: node
-  linkType: hard
-
 "@ionic/angular-toolkit@npm:^11.0.1":
   version: 11.0.1
   resolution: "@ionic/angular-toolkit@npm:11.0.1"
@@ -5041,21 +4982,21 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@ionic/angular@npm:^7.7.3":
-  version: 7.7.3
-  resolution: "@ionic/angular@npm:7.7.3"
+"@ionic/angular@npm:^8.5.3":
+  version: 8.5.3
+  resolution: "@ionic/angular@npm:8.5.3"
   dependencies:
-    "@ionic/core": 7.7.3
+    "@ionic/core": 8.5.3
     ionicons: ^7.0.0
     jsonc-parser: ^3.0.0
     tslib: ^2.3.0
   peerDependencies:
-    "@angular/core": ">=14.0.0"
-    "@angular/forms": ">=14.0.0"
-    "@angular/router": ">=14.0.0"
+    "@angular/core": ">=16.0.0"
+    "@angular/forms": ">=16.0.0"
+    "@angular/router": ">=16.0.0"
     rxjs: ">=7.5.0"
-    zone.js: ">=0.11.0"
-  checksum: 0541a6e49f919913d2e7648faa6b8588e32700eb4bc8e5069075d26c62f7d3bc586c61709688b5a1d0414c212c34bf63d2c824851fa5b2e9334a8cdc72647e5b
+    zone.js: ">=0.13.0"
+  checksum: baedb3f43666967cd9a5376d4a03a2f9930ea01177f04f87021b12b735851c2dfd9d9386253802b97dfdf021b6b5c29d4e8f8951d5786c231d01d9498516cfd4
   languageName: node
   linkType: hard
 
@@ -5141,14 +5082,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@ionic/core@npm:7.7.3":
-  version: 7.7.3
-  resolution: "@ionic/core@npm:7.7.3"
+"@ionic/core@npm:8.5.3":
+  version: 8.5.3
+  resolution: "@ionic/core@npm:8.5.3"
   dependencies:
-    "@stencil/core": ^4.12.2
+    "@stencil/core": 4.20.0
     ionicons: ^7.2.2
     tslib: ^2.1.0
-  checksum: 0aff6fc607a5da1dcc1afffd6178ab73b229d26e1b3bf5b27594b8798bbc622b4673abca9c7a76c1f03b633468f1e9f23350f65face8526c41a6a8d4c7f8b9cb
+  checksum: aaf69ea77137f5581e43835d78fef7da5d282914471c855ec5d5bce7e9839a4d46ba45e5051676659168d1ce408283d6418bcf60fc42aab6dbac8e8d437cd060
   languageName: node
   linkType: hard
 
@@ -7834,21 +7775,21 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@stencil/core@npm:4.20.0":
+  version: 4.20.0
+  resolution: "@stencil/core@npm:4.20.0"
+  bin:
+    stencil: bin/stencil
+  checksum: 1b8d31bc841787e5d1e83e71f155e86d04775d6131857db6c1104f1f62b80818501b2232c5d7eb72125877fe599b2000bfb37f5b23e30abf123d2d1f8f505652
+  languageName: node
+  linkType: hard
+
 "@stencil/core@npm:^4.0.3":
   version: 4.12.2
   resolution: "@stencil/core@npm:4.12.2"
   bin:
     stencil: bin/stencil
   checksum: 85bcb310448cf3647b80cdc3df061ff2fac5879a56920ba7e24150722a773024dbe6522be3e3ae206c66d4a3a10e4547318a5568d32aaafbf2e8dd089d55f3f9
-  languageName: node
-  linkType: hard
-
-"@stencil/core@npm:^4.12.2":
-  version: 4.12.3
-  resolution: "@stencil/core@npm:4.12.3"
-  bin:
-    stencil: bin/stencil
-  checksum: 83403cd94cc14e75fe6a4d53f54dbaacdb82c351902444e6da309a7f8f467ea05edfd16ed5751ec0ba6327813a7db5eee75a88efee96df3231a1cad40df78921
   languageName: node
   linkType: hard
 
@@ -8404,13 +8345,6 @@ __metadata:
   version: 2.1.5
   resolution: "@types/cookiejar@npm:2.1.5"
   checksum: 04d5990e87b6387532d15a87d9ec9b2eb783039291193863751dcfd7fc723a3b3aa30ce4c06b03975cba58632e933772f1ff031af23eaa3ac7f94e71afa6e073
-  languageName: node
-  linkType: hard
-
-"@types/cordova@npm:latest":
-  version: 11.0.3
-  resolution: "@types/cordova@npm:11.0.3"
-  checksum: fb0eb0c614bb83ce886050f84feb1ae47efc469d4c091c74a64c7f99f65f75973ab4055328dacdaccb3fefed8ff57b95a9c220536418e71f1fe961bf6b5e68a1
   languageName: node
   linkType: hard
 
@@ -11757,17 +11691,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"caniuse-lite@npm:^1.0.30001578":
-  version: 1.0.30001589
-  resolution: "caniuse-lite@npm:1.0.30001589"
-  checksum: 7a6e6c4fb14c2bd0103a8f744bdd8701c1a5f19162f4a7600b89e25bc86d689f82204dc135f3a1dcd1a53050caa04fd0bb39b7df88698a6b90f189ec48900689
-  languageName: node
-  linkType: hard
-
-"caniuse-lite@npm:^1.0.30001580":
-  version: 1.0.30001587
-  resolution: "caniuse-lite@npm:1.0.30001587"
-  checksum: fb50aa9beaaae42f9feae92ce038f6ff71e97510f024ef1bef2666f3adcfd36d6c59e5675442e5fe795575193f71bc826cb7721d4b0f6d763e82d193bea57863
+"caniuse-lite@npm:^1.0.30001578, caniuse-lite@npm:^1.0.30001580":
+  version: 1.0.30001712
+  resolution: "caniuse-lite@npm:1.0.30001712"
+  checksum: 83760e735d1d7ab9ff7270747d70b71da4341bdc1c90df9fe2008ada382653e13d7501bfd7068e1d835184b03b8ac598b127bfe3e7d53419b9d7827730b4ae1a
   languageName: node
   linkType: hard
 
@@ -16562,12 +16489,7 @@ __metadata:
     "@capacitor/splash-screen": ^6.0.0
     "@capawesome/capacitor-app-update": ^6.0.0
     "@compodoc/compodoc": ^1.1.23
-    "@ionic-native/core": ^5.36.0
-    "@ionic-native/device": ^5.36.0
-    "@ionic-native/http": ^5.36.0
-    "@ionic-native/media": ^5.36.0
-    "@ionic-native/status-bar": ^5.36.0
-    "@ionic/angular": ^7.7.3
+    "@ionic/angular": ^8.5.3
     "@ionic/angular-toolkit": ^11.0.1
     "@ionic/cli": ^7.1.5
     "@ionic/pwa-elements": ^3.2.2
