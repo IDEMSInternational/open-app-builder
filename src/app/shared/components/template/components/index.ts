@@ -67,6 +67,7 @@ import { YoutubeComponent } from "./youtube/youtube.component";
 
 import { DEMO_COMPONENT_MAPPING } from "components/demo";
 import { PLH_COMPONENT_MAPPING } from "components/plh";
+import { TmplDateTimePickerComponent } from "./date-time-picker/date-time-picker.component";
 
 export const TEMPLATE_STANDALONE_COMPONENTS = [
   // tmpl prefix
@@ -132,6 +133,7 @@ export const TEMPLATE_COMPONENTS = [
   TmplTitleComponent,
   TmplToggleBarComponent,
   TmplVideoComponent,
+  TmplDateTimePickerComponent,
   // no prefix
   WorkshopsComponent,
 ];
