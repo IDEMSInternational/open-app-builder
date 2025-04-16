@@ -1,5 +1,5 @@
 import { Component, computed, input, signal } from "@angular/core";
-import {IAnswerListItem } from "src/app/shared/utils";
+import { IAnswerListItem } from "src/app/shared/utils";
 import { ModalController } from "@ionic/angular";
 
 @Component({
@@ -14,7 +14,7 @@ export class ComboBoxSearchComponent {
 
   public searchTerm = signal("");
 
-  filteredOptions = computed(() =>
+  public filteredOptions = computed(() =>
     this.answerOptions().filter((options) =>
       options.text.toLowerCase().includes(this.searchTerm().toLowerCase())
     )
@@ -22,17 +22,17 @@ export class ComboBoxSearchComponent {
 
   constructor(private modalController: ModalController) {}
 
-  select(item: IAnswerListItem){
+  public select(item: IAnswerListItem) {
     this.closeModal({ answer: item });
   }
 
-  closeModal(value) {
+  public search(searchTerm: string) {
+    this.searchTerm.set(searchTerm);
+  }
+
+  private closeModal(value) {
     setTimeout(async () => {
       await this.modalController.dismiss(value);
     }, 50);
-  }
-
-  search(searchTerm: string) {
-    this.searchTerm.set(searchTerm);
   }
 }

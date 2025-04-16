@@ -55,7 +55,7 @@ export class TmplComboBoxComponent
     }
     return getAnswerListParamFromTemplateRow(this.rowSignal(), "answer_list", []);
   });
-  showSearch = computed(() => this.answerOptions().length > 8);
+  public showSearch = computed(() => this.answerOptions().length > 8);
 
   public disabled = computed(() => this.params().disabled || this.answerOptions().length === 0);
 
@@ -145,8 +145,8 @@ export class TmplComboBoxComponent
         title: signal(getStringParamFromTemplateRow(this._row, "text")),
         selectedValue: this.rowSignal,
         customAnswerSelected: this.customAnswerSelected(),
-        style: this.params().style
-      }
+        style: this.params().style,
+      },
     });
 
     modal.onDidDismiss().then(async (data) => {
@@ -162,14 +162,14 @@ export class TmplComboBoxComponent
     this.componentDestroyed$.complete();
   }
 
-  public searchButtonClass = computed(()=>{
+  public searchButtonClass = computed(() => {
     const value = this.value();
     const params = this.params();
     return {
-       disabled: this.disabled(),
-      'placeholder-style': (!value && params.placeholder) || params.prioritisePlaceholder,
-      'with-value': value ? true : undefined,
-      'no-value': value ? undefined : true
-    }
-  })
+      disabled: this.disabled(),
+      "placeholder-style": (!value && params.placeholder) || params.prioritisePlaceholder,
+      "with-value": value ? true : undefined,
+      "no-value": value ? undefined : true,
+    };
+  });
 }
