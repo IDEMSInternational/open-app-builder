@@ -143,7 +143,7 @@ export class TmplComboBoxComponent
       componentProps: {
         answerOptions: this.answerOptions,
         title: signal(getStringParamFromTemplateRow(this._row, "text")),
-        selectedValue: this.rowSignal,
+        selectedValue: this.value,
         customAnswerSelected: this.customAnswerSelected(),
         style: this.params().style,
       },

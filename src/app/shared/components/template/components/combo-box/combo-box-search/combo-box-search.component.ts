@@ -1,7 +1,6 @@
 import { Component, computed, input, signal } from "@angular/core";
 import { IAnswerListItem } from "src/app/shared/utils";
 import { ModalController } from "@ionic/angular";
-import { FlowTypes } from "packages/data-models";
 
 @Component({
   selector: "combo-box-search",
@@ -11,7 +10,7 @@ import { FlowTypes } from "packages/data-models";
 export class ComboBoxSearchComponent {
   public answerOptions = input.required<IAnswerListItem[]>();
   public title = input<string>();
-  public selectedValue = input<FlowTypes.TemplateRow>();
+  public selectedValue = input<string>();
 
   public searchTerm = signal("");
 
@@ -21,10 +20,9 @@ export class ComboBoxSearchComponent {
     )
   );
 
-  public isSelected = (item: IAnswerListItem) =>
-    computed(() => {
-      return this.selectedValue().value === item.name;
-    });
+  public isSelected(item: IAnswerListItem) {
+    return this.selectedValue() === item.name;
+  }
 
   constructor(private modalController: ModalController) {}
 
