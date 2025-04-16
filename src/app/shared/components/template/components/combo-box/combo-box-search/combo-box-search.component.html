@@ -13,7 +13,7 @@
 <ion-content>
   <ion-list>
     @for (item of filteredOptions(); track item.name) {
-      <ion-item (click)="select(item)" [class.selected]="item.name === selectedValue()">
+      <ion-item (click)="select(item)" [class.selected]="isSelected(item)()">
         {{ item.text }}
       </ion-item>
     }
