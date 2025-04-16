@@ -1,4 +1,4 @@
-import { Component, computed, input, Signal, signal } from "@angular/core";
+import { Component, computed, input, signal } from "@angular/core";
 import { IAnswerListItem } from "src/app/shared/utils";
 import { ModalController } from "@ionic/angular";
 import { FlowTypes } from "packages/data-models";
@@ -21,7 +21,7 @@ export class ComboBoxSearchComponent {
     )
   );
 
-  public isSelected = (item: IAnswerListItem): Signal<boolean> =>
+  public isSelected = (item: IAnswerListItem) =>
     computed(() => {
       return this.selectedValue().value === item.name;
     });
