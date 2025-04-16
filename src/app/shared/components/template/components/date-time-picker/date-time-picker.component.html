@@ -5,6 +5,7 @@
     <ion-datetime
       id="datetime"
       #datetime
+      [(ngModel)]="initialValue"
       [showDefaultButtons]="true"
       (ionChange)="handleChange(datetime.value)"
     >

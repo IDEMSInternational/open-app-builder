@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, signal } from "@angular/core";
 import { TemplateBaseComponent } from "../base";
 
 interface IDateTimePickerParams {
@@ -11,15 +11,12 @@ interface IDateTimePickerParams {
   templateUrl: "./date-time-picker.component.html",
   styleUrls: ["./date-time-picker.component.scss"],
 })
-export class TmplDateTimePickerComponent extends TemplateBaseComponent implements OnInit {
-  // Updated class name
-  public value = this.rowSignal;
+export class TmplDateTimePickerComponent extends TemplateBaseComponent {
+  public initialValue = this.value() ? this.value : signal(new Date().toISOString().slice(0, 16));
 
   constructor() {
     super();
   }
-
-  public ngOnInit() {}
 
   public handleChange(value: string | string[]) {
     this.setValue(value);
