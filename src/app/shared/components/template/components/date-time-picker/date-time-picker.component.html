@@ -1,1 +1,21 @@
-<p>datetime-picker works!</p>
+<ion-datetime-button datetime="datetime"></ion-datetime-button>
+
+<ion-modal [keepContentsMounted]="true">
+  <ng-template>
+    <ion-datetime
+      id="datetime"
+      #datetime
+      [showDefaultButtons]="true"
+      (ionChange)="handleChange(datetime.value)"
+    >
+      <ion-buttons slot="buttons">
+        <ion-button color="danger" (click)="datetime.cancel(true)">
+          <ion-icon name="close"></ion-icon>
+        </ion-button>
+        <ion-button color="primary" (click)="datetime.confirm(true)">
+          <ion-icon name="checkmark"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </ion-datetime>
+  </ng-template>
+</ion-modal>
