@@ -30,8 +30,8 @@ import { Column, Model } from "sequelize-typescript";
  * ```
  */
 export class AppCommonModel<
-  TModelAttributes extends {} = any,
-  TCreationAttributes extends {} = TModelAttributes
+  TModelAttributes extends object = any,
+  TCreationAttributes extends object = TModelAttributes,
 > extends Model<TModelAttributes, TCreationAttributes> {
   @Column({ allowNull: false })
   app_user_id: string;
