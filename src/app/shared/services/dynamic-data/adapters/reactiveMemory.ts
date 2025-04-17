@@ -152,6 +152,12 @@ export class ReactiveMemoryAdapter {
     return success;
   }
 
+  public async bulkUpsert(name: string, docs: any[]) {
+    // NOTE - rxdb 16 bulkUpsert does not track error/success the same as bulkInsert
+    const res = await this.db.collections[name].bulkUpsert(docs);
+    return res;
+  }
+
   /** Update doc or create new if doc with that ID doesn't already exist (upsert) */
   public async updateDoc(update: IDataUpdate) {
     const { collectionName, id, data } = update;

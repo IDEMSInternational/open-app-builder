@@ -74,28 +74,6 @@ export function mergeArrayOfArrays<T>(arr: T[][]) {
   return [].concat.apply([], arr);
 }
 
-/**
- * Take 2 object arrays identified by a given key field, and merge rows together.
- * In case of rows with identical keys, only one will be retained
- *
- * @param primaryRows set of rows given priority in case of conflict
- * @param secondaryRows set of rows to merge into primary
- * @param keyfield key in rows to identify conflicts
- */
-export function mergeObjectArrays<T>(
-  primaryRows: T[],
-  secondaryRows: T[] = [],
-  keyfield: keyof T
-): T[] {
-  const secondaryHash = arrayToHashmap(secondaryRows, keyfield as string);
-  primaryRows.forEach((r) => {
-    if (r.hasOwnProperty(keyfield)) {
-      secondaryHash[r[keyfield as string]] = r;
-    }
-  });
-  return Object.values(secondaryHash);
-}
-
 export function randomElementFromArray<T>(arr: T[] = null) {
   try {
     const randomItem = arr[Math.floor(Math.random() * arr.length)];
@@ -400,29 +378,6 @@ export function deepMergeObjects<T = Record<string, any>>(target: T = {} as T, .
 
 export function deepDiffObjects<T extends Object, U extends Object>(original: T, updated: U) {
   return diff(original, updated) as RecursivePartial<T | U>;
-}
-
-/**
- * @returns list of keys added and deleted from `a` object
- * @example
- * ```ts
- * const a = { key1: "", key2: "" };
- * const b = { key2: "", key3: "" };
- * compareObjectKeys(a,b)
- * // result
- * { added: [ 'key3' ], deleted: [ 'key1' ] }
- * ```
- * */
-export function compareObjectKeys<T extends Object, U extends Object>(
-  a: T = {} as T,
-  b: U = {} as U
-) {
-  const aKeys = Object.keys(a);
-  const bKeys = Object.keys(b);
-  return {
-    added: bKeys.filter((key) => !(key in a)),
-    deleted: aKeys.filter((key) => !(key in b)),
-  };
 }
 
 export function isObject(item: any) {

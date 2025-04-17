@@ -13,6 +13,7 @@ import { JSEvaluator } from "packages/shared/src/models/jsEvaluator/jsEvaluator"
 import { TemplateTranslateService } from "../../services/template-translate.service";
 import { updateRowPropertyRecursively } from "../../utils";
 import { TemplateCalcService } from "../../services/template-calc.service";
+import { Observable } from "rxjs/internal/Observable";
 
 @Injectable({ providedIn: "root" })
 export class DataItemsService {
@@ -25,7 +26,10 @@ export class DataItemsService {
   ) {}
 
   /** Process an template data_items row and generate an observable of generated child item rows */
-  public getItemsObservable(dataItemsRow: FlowTypes.TemplateRow, templateRowMap: ITemplateRowMap) {
+  public getItemsObservable(
+    dataItemsRow: FlowTypes.TemplateRow,
+    templateRowMap: ITemplateRowMap
+  ): Observable<FlowTypes.TemplateRow[]> {
     const dataListName = this.hackGetRawDataListName(dataItemsRow);
     if (!dataListName) {
       console.warn("[Data Items] no list provided", dataItemsRow);
@@ -35,48 +39,38 @@ export class DataItemsService {
 
     // Create an observable that subscribes to data changes, debounced to avoid immediate re-processing,
     // re-emitting only on distinct changes. Use defer to allow async code within observable
-    return (
-      defer(async () => {
-        await this.dynamicDataService.ready();
-        const query = await this.dynamicDataService.query$("data_list", dataListName);
-        return query.pipe(debounceTime(50), distinctUntilChanged(isEqual));
-      })
-        // Map the output from the query to a new defer block that handles item processing and
-        // Uses inner defer block to allow async processing when outer query emits data
-        .pipe(
-          switchMap((query) =>
-            query.pipe(
-              switchMap((data: FlowTypes.Data_listRow[]) =>
-                defer(async () => {
-                  // Parse the retrieved data_list. Use item processor to loop over item data
-                  // and templated rows to generate item rows
-                  const parsedItemList = await this.hackParseDataList(data);
-                  const itemProcessor = new ItemProcessor(parsedItemList, parameter_list);
 
-                  // apply pipe operations to items to handle sort, filter, limit etc.
-                  const itemData = itemProcessor.pipeData(parsedItemList, parameter_list);
+    const query = this.dynamicDataService.query$("data_list", dataListName);
+    return query.pipe(
+      debounceTime(50),
+      distinctUntilChanged(isEqual),
+      // Map the output from the query to a new defer block that handles item processing and
+      // Uses inner defer block to allow async processing when outer query emits data
+      switchMap((data: FlowTypes.Data_listRow[]) =>
+        defer(async () => {
+          // Parse the retrieved data_list. Use item processor to loop over item data
+          // and templated rows to generate item rows
+          const parsedItemList = await this.hackParseDataList(data);
+          const itemProcessor = new ItemProcessor(parsedItemList, parameter_list);
 
-                  // if no child rows for data_items loop assume want back raw items
-                  if (rows.length === 0) {
-                    return itemData;
-                  }
+          // apply pipe operations to items to handle sort, filter, limit etc.
+          const itemData = itemProcessor.pipeData(parsedItemList, parameter_list);
 
-                  const itemTemplateRows = this.prepareItemRows({
-                    items: itemData,
-                    rows,
-                    dataListName,
-                  });
+          // if no child rows for data_items loop assume want back raw items
+          if (rows.length === 0) {
+            return itemData;
+          }
 
-                  const parsedItemRows = await this.hackProcessRows(
-                    itemTemplateRows,
-                    templateRowMap
-                  );
-                  return parsedItemRows;
-                })
-              )
-            )
-          )
-        )
+          const itemTemplateRows = this.prepareItemRows({
+            items: itemData,
+            rows,
+            dataListName,
+          });
+
+          const parsedItemRows = await this.hackProcessRows(itemTemplateRows, templateRowMap);
+          return parsedItemRows;
+        })
+      )
     );
   }
 
