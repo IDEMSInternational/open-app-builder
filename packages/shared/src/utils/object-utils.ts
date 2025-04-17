@@ -153,3 +153,88 @@ export function uniqueObjectArrayKeys(arr: Record<string, any>[], maxDepth?: num
   }
   return Object.keys(keyHashmap);
 }
+
+/**
+ * Deep merge two objects.
+ * Copied from https://stackoverflow.com/a/34749873/5693245
+ * @param target
+ * @param ...sources
+ */
+export function deepMergeObjects(target: any, ...sources: any) {
+  if (!sources.length) return target;
+  const source = sources.shift();
+
+  if (isObjectLiteral(target) && isObjectLiteral(source)) {
+    for (const key in source) {
+      if (isObjectLiteral(source[key])) {
+        if (!target[key]) Object.assign(target, { [key]: {} });
+        deepMergeObjects(target[key], source[key]);
+      } else {
+        Object.assign(target, { [key]: source[key] });
+      }
+    }
+  }
+
+  return deepMergeObjects(target, ...sources);
+}
+
+/**
+ * Take 2 arrays and merge all values from second array onto first
+ * Any values in second array will overwrite values from first
+ * @param options.keyField unique field in all array objects to use as hash (e.g. 'id')
+ * @param options.deep for duplicate entries specify whether to deep merge entries (default latter takes priority)
+ */
+export function mergeObjectArrays<T extends object>(
+  baseArr: T[] = [],
+  mergeArr: T[] = [],
+  options: { keyField: keyof T; deep?: boolean }
+) {
+  const { keyField, deep } = options;
+  const mergedHashmap = arrayToHashmap<T>(baseArr, keyField);
+  for (const el of mergeArr) {
+    const key = el[keyField] as string;
+    // deep merge if specified
+    if (key in mergedHashmap && deep) {
+      mergedHashmap[key] = deepMergeObjects(mergedHashmap[key], el);
+    } else {
+      mergedHashmap[key] = el;
+    }
+  }
+  return Object.values(mergedHashmap) as T[];
+}
+
+/**
+ * Diff 2 objects and return a summary of key operations required to transform a -> b
+ * Objects are compared via deep comparison, although output returned for
+ * create/update operations specify the full value (not nested partial diff)
+ **/
+export function diffObjects(a: Record<string, any>, b: Record<string, any>) {
+  const ops = {
+    add: [] as { key: string; value: any }[],
+    update: [] as { key: string; value: any }[],
+    delete: [] as { key: string; value: any }[],
+  };
+
+  const mapA = new Map(Object.entries(a));
+  const mapB = new Map(Object.entries(b));
+
+  function addOperation(type: keyof typeof ops, key: string, value: any): void {
+    ops[type].push({ key, value });
+  }
+
+  for (const [key, bValue] of mapB) {
+    if (!mapA.has(key)) {
+      addOperation("add", key, bValue);
+    } else if (!isEqual(mapA.get(key), bValue)) {
+      addOperation("update", key, bValue);
+    }
+  }
+
+  for (const [key] of mapA) {
+    if (!mapB.has(key)) {
+      addOperation("delete", key, undefined);
+    }
+  }
+
+  return ops;
+}
