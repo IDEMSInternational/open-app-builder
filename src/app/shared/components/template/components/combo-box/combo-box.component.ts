@@ -12,6 +12,7 @@ import { FlowTypes, ITemplateRowProps } from "../../models";
 import { ReplaySubject, map, filter, switchMap } from "rxjs";
 import { DataItemsService } from "../data-items/data-items.service";
 import { toObservable, toSignal } from "@angular/core/rxjs-interop";
+import { ComboBoxSearchComponent } from "./combo-box-search/combo-box-search.component";
 
 interface IComboBoxParams {
   disabled: boolean;
@@ -54,6 +55,7 @@ export class TmplComboBoxComponent
     }
     return getAnswerListParamFromTemplateRow(this.rowSignal(), "answer_list", []);
   });
+  public showSearch = computed(() => this.answerOptions().length > 8);
 
   public disabled = computed(() => this.params().disabled || this.answerOptions().length === 0);
 
@@ -134,8 +136,40 @@ export class TmplComboBoxComponent
     await modal.present();
   }
 
+  async openSearch() {
+    const modal = await this.modalController.create({
+      component: ComboBoxSearchComponent,
+      cssClass: "combo-box-search",
+      componentProps: {
+        answerOptions: this.answerOptions,
+        title: signal(getStringParamFromTemplateRow(this._row, "text")),
+        selectedValue: this.value,
+        customAnswerSelected: this.customAnswerSelected(),
+        style: this.params().style,
+      },
+    });
+
+    modal.onDidDismiss().then(async (data) => {
+      this.params().prioritisePlaceholder = false;
+      this.answerText.set(data?.data?.answer.text);
+      await this.setValue(data?.data?.answer?.name);
+    });
+    await modal.present();
+  }
+
   ngOnDestroy() {
     this.componentDestroyed$.next(true);
     this.componentDestroyed$.complete();
   }
+
+  public searchButtonClass = computed(() => {
+    const value = this.value();
+    const params = this.params();
+    return {
+      disabled: this.disabled(),
+      "placeholder-style": (!value && params.placeholder) || params.prioritisePlaceholder,
+      "with-value": value ? true : undefined,
+      "no-value": value ? undefined : true,
+    };
+  });
 }

@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-toolbar>
+    @if (title()) {
+      <ion-title class="modal-title">{{ title() }}</ion-title>
+    }
+    <ion-searchbar
+      (ionInput)="search($event.target.value)"
+      placeholder=""
+      class="searchbar"
+    ></ion-searchbar>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-list>
+    @for (item of filteredOptions(); track item.name) {
+      <ion-item (click)="select(item)" [class.selected]="isSelected(item)">
+        {{ item.text }}
+      </ion-item>
+    }
+  </ion-list>
+</ion-content>
