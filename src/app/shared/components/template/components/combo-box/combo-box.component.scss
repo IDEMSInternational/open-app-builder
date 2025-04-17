@@ -1,14 +1,16 @@
 $placeholder-text: var(--combo-box-placeholder-text, var(--ion-color-primary-transparent));
+$selected-value-text: var(--combo-box-selected-value-text, var(--ion-color-primary));
 $background-no-value: var(--combo-box-background-no-value, transparent);
 $background-with-value: var(
   --combo-box-background-with-value,
   var(--gradient-primary-light-vertical)
 );
 
+// Modal variant
 .open-combobox {
   outline: none;
   width: 100%;
-  border: var(--ion-border-standard);
+  border: var(--border-standard);
   box-sizing: border-box;
   filter: drop-shadow(var(--ion-default-box-shadow));
   border-radius: var(--ion-border-radius-secondary);
@@ -24,12 +26,47 @@ $background-with-value: var(
   }
 }
 
-.placeholder-style {
+.disabled {
+  opacity: 0.5;
+}
+
+.placeholder-style,
+.disabled {
   color: $placeholder-text;
 }
 .with-value {
   background: $background-with-value;
+  color: $selected-value-text;
 }
 .no-value {
   background: $background-no-value;
+}
+
+// Dropdown variant
+.combo-box-container.dropdown {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  ion-select {
+    font-size: var(--combo-box-font-size-standard);
+    border: var(--border-standard);
+    border-radius: var(--ion-border-radius-small);
+    background-color: $background-no-value;
+    --highlight-color: transparent;
+    padding-left: var(--small-padding);
+    padding-right: var(--small-padding);
+
+    &::part(icon) {
+      color: var(--ion-color-primary);
+    }
+    &.hasValue {
+      background: $background-with-value;
+      &::part(container) {
+        color: $selected-value-text;
+      }
+      &::part(icon) {
+        color: $selected-value-text;
+      }
+    }
+  }
 }

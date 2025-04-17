@@ -1,4 +1,5 @@
-import { Component, Input } from "@angular/core";
+import { Component, computed, Input, signal } from "@angular/core";
+import { isEqual } from "packages/shared/src/utils/object-utils";
 import { FlowTypes, ITemplateRowProps } from "../models";
 import { TemplateContainerComponent } from "../template-container.component";
 
@@ -19,12 +20,24 @@ export class TemplateBaseComponent implements ITemplateRowProps {
   /** @ignore */
   _row: FlowTypes.TemplateRow;
 
+  // TODO - main row should just be an input.required and child code refactored to avoid set override
+  // TODO - could also consider whether setting parent required (is it template row map or services?), possibly merge with row
+  rowSignal = signal<FlowTypes.TemplateRow>(undefined, { equal: isEqual });
+  value = computed(() => this.rowSignal().value, { equal: isEqual });
+  parameterList = computed(() => this.rowSignal().parameter_list || {}, { equal: isEqual });
+  actionList = computed<FlowTypes.TemplateRowAction[]>(() => this.rowSignal().action_list || [], {
+    equal: isEqual,
+  });
+  rows = computed<FlowTypes.TemplateRow[]>(() => this.rowSignal().rows || [], { equal: isEqual });
+
   /**
    * @ignore
    * specific data used in component rendering
    **/
   @Input() set row(row: FlowTypes.TemplateRow) {
     this._row = row;
+    // take shallow clone to still be able to detect changes if this._row directly modified
+    this.rowSignal.set({ ...row });
   }
 
   /**
@@ -32,7 +45,6 @@ export class TemplateBaseComponent implements ITemplateRowProps {
    * reference to parent template container - does not have setter as should remain static
    **/
   @Input() parent: TemplateContainerComponent;
-  constructor() {}
 
   /**
    * Whenever actions are triggered handle in the parent template component
@@ -40,27 +52,38 @@ export class TemplateBaseComponent implements ITemplateRowProps {
    * @ignore
    */
   triggerActions(trigger: FlowTypes.TemplateRowAction["trigger"] = "click") {
+    // TODO - CC 2024-11 is the accordion_section workaround still required?
     if (this._row.disabled && this._row.type !== "accordion_section") {
       console.log("Click action disabled for ", this._row.name);
       return;
     }
     const action_list = this._row.action_list || [];
     const actionsForTrigger = action_list.filter((a) => a.trigger === trigger);
-    return this.parent.handleActions(actionsForTrigger, this._row);
+    if (actionsForTrigger.length > 0) {
+      return this.parent.handleActions(actionsForTrigger, this._row);
+    }
   }
 
   /**
    * Update the current value of the row by setting a local variable that matches
    * @ignore
    **/
-  setValue(value: any) {
-    // console.log("setting value", value);
+  async setValue(value: any) {
+    // TODO - also want to prevent triggering changed action
+    if (value === this._row.value) {
+      return;
+    }
+    // HACK - provide optimistic update so that data_items interceptor also can access updated row value
+    this._row.value = value;
+    this.rowSignal.update((v) => ({ ...v, value }));
+
     const action: FlowTypes.TemplateRowAction = {
-      action_id: "set_local",
+      action_id: "set_self",
       args: [this._row._nested_name, value],
       trigger: "click",
     };
-    return this.parent.handleActions([action], this._row);
+    await this.parent.handleActions([action], this._row);
+    await this.triggerActions("changed");
   }
 
   /** @ignore */

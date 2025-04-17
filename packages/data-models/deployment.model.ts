@@ -1,8 +1,9 @@
+import type { IContentsEntry } from "shared";
 import type { IGdriveEntry } from "../@idemsInternational/gdrive-tools";
-import type { IAppConfigOverride } from "./appConfig";
+import type { IAppConfig, IAppConfigOverride } from "./appConfig";
 
 /** Update version to force recompile next time deployment set (e.g. after default config update) */
-export const DEPLOYMENT_CONFIG_VERSION = 20240912.0;
+export const DEPLOYMENT_CONFIG_VERSION = 20250320.0;
 
 /** Configuration settings available to runtime application */
 export interface IDeploymentRuntimeConfig {
@@ -21,6 +22,8 @@ export interface IDeploymentRuntimeConfig {
      * Will be replaced when running locally as per `src\app\shared\services\server\interceptors.ts`
      * */
     endpoint?: string;
+    /** Frequency (in ms) to attempt syncing data to server. Default 1000 * 60 * 5 (5 mins) */
+    sync_frequency?: number;
   };
   analytics: {
     enabled: boolean;
@@ -35,27 +38,37 @@ export interface IDeploymentRuntimeConfig {
     /** sentry/glitchtip logging dsn */
     dsn: string;
   };
+  /** Enable auth actions by specifying auth provider */
+  auth: {
+    /** provider to use with authentication actions. actions will be disabled if no provider specified */
+    provider?: "firebase" | "supabase";
+    /** prevent user accessing app pages without being logged in. Specified template will be shown until logged in */
+    enforceLoginTemplate?: string;
+  };
+  campaigns: {
+    /**
+     * Specify whether campaigns notification used by deployment. Default `true`
+     * Disabling campaigns will also remove the use and permission prompt for localNotifications
+     **/
+    enabled?: boolean;
+  };
   /**
    * Specify if using firebase for auth and crashlytics.
    * Requires firebase config available through encrypted config */
-  firebase: {
+  firebase?: {
     /** Project config as specified in firebase console (recommend loading from encrypted environment) */
-    config?: {
+    config: {
       apiKey: string;
       authDomain: string;
-      databaseURL: string;
+      databaseURL?: string;
       projectId: string;
       storageBucket: string;
       messagingSenderId: string;
       appId: string;
       measurementId: string;
     };
-    auth: {
-      /** Enables `auth` actions to allow user sign-in/out */
-      enabled: boolean;
-    };
-    crashlytics: {
-      /** Enables app crash reports to firebase crashlytics */
+    /** Configure app crash reports to firebase crashlytics */
+    crashlytics?: {
       enabled: boolean;
     };
   };
@@ -107,6 +120,8 @@ interface IDeploymentCoreConfig {
     splash_asset_path?: string;
     icon_asset_foreground_path?: string;
     icon_asset_background_path?: string;
+    /** Support pinch-zoom within app. Default `false` */
+    zoom_enabled?: boolean;
   };
   app_data: {
     /** Folder to populate processed content. Default `./app_data` */
@@ -127,6 +142,14 @@ interface IDeploymentCoreConfig {
     app_id?: string;
     /** App Store app name, e.g. "Example App" */
     app_name?: string;
+    /** Support pinch-zoom within app. Default `false` */
+    zoom_enabled?: boolean;
+  };
+  optimisation: {
+    components?: {
+      enabled?: boolean;
+      implicit?: string[];
+    };
   };
   translations: {
     /** List of all language codes to include. Default null (includes all) */
@@ -150,7 +173,21 @@ interface IDeploymentCoreConfig {
   _parent_config?: Partial<IDeploymentConfig & { _workspace_path: string }>;
 }
 
+/** Duplicate type defintion from data-models (TODO - find better way to share) */
+interface IFlowTypeBase {
+  flow_type: string;
+  flow_name: string;
+  flow_subtype?: string;
+  status: "draft" | "released";
+}
+
 export type IDeploymentConfig = IDeploymentCoreConfig & IDeploymentRuntimeConfig;
+
+/**
+ * Generated config includes placeholders for all app_config entries to allow specific
+ * overrides for deeply nested properties, e.g. `app_config.NOTIFICATION_DEFAULTS.time.hour`
+ */
+export type IDeploymentConfigGenerated = IDeploymentConfig & { app_config: IAppConfig };
 
 /** Deployment with additional metadata when set as active deployment */
 export interface IDeploymentConfigJson extends IDeploymentConfig {
@@ -167,6 +204,7 @@ export const DEPLOYMENT_RUNTIME_CONFIG_DEFAULTS: IDeploymentRuntimeConfig = {
     enabled: true,
     db_name: "plh",
     endpoint: "https://apps-server.idems.international/api",
+    sync_frequency: 1000 * 60 * 5,
   },
   analytics: {
     enabled: true,
@@ -175,11 +213,9 @@ export const DEPLOYMENT_RUNTIME_CONFIG_DEFAULTS: IDeploymentRuntimeConfig = {
     endpoint: "https://apps-server.idems.international/analytics",
   },
   app_config: {},
-
-  firebase: {
-    config: null,
-    auth: { enabled: false },
-    crashlytics: { enabled: true },
+  auth: {},
+  campaigns: {
+    enabled: true,
   },
   supabase: {
     enabled: false,
@@ -188,9 +224,11 @@ export const DEPLOYMENT_RUNTIME_CONFIG_DEFAULTS: IDeploymentRuntimeConfig = {
 };
 
 /** Full example of just all config once merged with defaults */
-export const DEPLOYMENT_CONFIG_EXAMPLE_DEFAULTS: IDeploymentConfig = {
+export const DEPLOYMENT_CONFIG_DEFAULTS: IDeploymentConfig = {
   ...DEPLOYMENT_RUNTIME_CONFIG_DEFAULTS,
-  name: "Full Config Example",
+  // NOTE - app_config will be populated during config generation
+  app_config: {} as any,
+  name: "",
   google_drive: {
     assets_folder_id: "",
     sheets_folder_id: "",
@@ -209,6 +247,7 @@ export const DEPLOYMENT_CONFIG_EXAMPLE_DEFAULTS: IDeploymentConfig = {
     assets_filter_function: (fileEntry) => true,
   },
   ios: {},
+  optimisation: {},
   translations: {
     filter_language_codes: null,
     source_strings_path: "./app_data/translations_source/source_strings",
@@ -223,43 +262,3 @@ export const DEPLOYMENT_CONFIG_EXAMPLE_DEFAULTS: IDeploymentConfig = {
   _parent_config: null,
   _version: 1.0,
 };
-
-/** Duplicate type defintion from scripts (TODO - find better way to share) */
-interface IContentsEntry {
-  relativePath: string;
-  size_kb: number;
-  modifiedTime: string;
-  md5Checksum: string;
-}
-
-/** Extend to include fields for front-end features */
-interface IAssetContentsEntry extends IContentsEntry {
-  /**
-   * Stores one of the following:
-   * 1. For core assets: Specific path to file when not the same as relativePath, e.g. asset overrides
-   * 2. For remote assets, on native devices: The path to the local file in native storage
-   * 3. For remote assets, on web: The public URL for the remotely hosted file (in supabase storage)
-   * */
-  filePath?: string;
-  /** id field is required to convert asset contents to and from data_list format */
-  id?: string;
-}
-
-/** Duplicate type defintion from data-models (TODO - find better way to share) */
-interface IFlowTypeBase {
-  flow_type: string;
-  flow_name: string;
-  flow_subtype?: string;
-  status: "draft" | "released";
-}
-
-export type IAssetContentsEntryMinimal = Omit<IAssetContentsEntry, "relativePath" | "modifiedTime">;
-
-export interface IAssetEntry extends IAssetContentsEntryMinimal {
-  overrides?: {
-    [theme_name: string]: {
-      [language_code: string]: IAssetContentsEntryMinimal;
-    };
-  };
-}
-export type IAssetEntryHashmap = { [assetPath: string]: IAssetEntry };

@@ -1,0 +1,14 @@
+@if (this._row.value) {
+  <div
+    class="large standard normal"
+    [class]="params.style"
+    [ngStyle]="!hasTextValue ? { display: 'none' } : { display: 'block' }"
+    [innerHTML]="
+      params.type === 'numbered'
+        ? (this._row.value | number)
+        : (this._row.value?.toString() | markdown)
+    "
+    [style]="_row.style_list | styleList"
+    [style.textAlign]="params.textAlign"
+  ></div>
+}

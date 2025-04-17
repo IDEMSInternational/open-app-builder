@@ -19,6 +19,6 @@ import { DeploymentService } from "./deployment.service";
  */
 export class DeploymentModule implements NestModule {
   configure(consumer: MiddlewareConsumer) {
-    consumer.apply(DeploymentMiddleware).forRoutes({ path: "/**", method: RequestMethod.ALL });
+    consumer.apply(DeploymentMiddleware).forRoutes({ path: "/*path", method: RequestMethod.ALL });
   }
 }

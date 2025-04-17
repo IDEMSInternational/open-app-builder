@@ -26,7 +26,10 @@ class BaseProcessor<T = any, V = any> {
   constructor(public context: { namespace: string; paths: IConverterPaths; cacheVersion: number }) {
     const { namespace } = context;
     this.logger = createChildFileLogger({ source: namespace });
-    this.setupCache();
+    // HACK - support tests by avoiding setup if folderPath not provided
+    if (context.paths) {
+      this.setupCache();
+    }
   }
   /**
    * Create a namespaced cache folder and populate a list of all files currently cached,

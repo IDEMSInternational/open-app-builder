@@ -13,8 +13,66 @@
         <link rel="stylesheet" href="./styles/material.css">
     </head>
     <body>
+          <script>
+               // Blocking script to avaoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
 
-        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+
+               if ($darkModeToggles.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-block d-sm-none">
             <a href="./" class="navbar-brand">frontend documentation</a>
             <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
         </div>
@@ -47,55 +105,57 @@
 
 
     <ol class="breadcrumb">
-        <li>Dependencies</li>
+        <li class="breadcrumb-item">Dependencies</li>
     </ol>
     <ul class="dependencies-list">
         <li>
-            <b>@angular/animations</b> : ^15.0.4</li>
+            <b>@angular/animations</b> : ^17.2.2</li>
         <li>
-            <b>@angular/common</b> : ~15.0.4</li>
+            <b>@angular/common</b> : ~17.2.2</li>
         <li>
-            <b>@angular/core</b> : ~15.0.4</li>
+            <b>@angular/core</b> : ~17.2.2</li>
         <li>
-            <b>@angular/elements</b> : ^15.0.4</li>
+            <b>@angular/elements</b> : ^17.2.2</li>
         <li>
-            <b>@angular/fire</b> : ^7.3.0</li>
+            <b>@angular/forms</b> : ~17.2.2</li>
         <li>
-            <b>@angular/forms</b> : ~15.0.4</li>
+            <b>@angular/platform-browser</b> : ~17.2.2</li>
         <li>
-            <b>@angular/platform-browser</b> : ~15.0.4</li>
+            <b>@angular/platform-browser-dynamic</b> : ~17.2.2</li>
         <li>
-            <b>@angular/platform-browser-dynamic</b> : ~15.0.4</li>
+            <b>@angular/router</b> : ~17.2.2</li>
         <li>
-            <b>@angular/router</b> : ~15.0.4</li>
+            <b>@capacitor-community/file-opener</b> : ^6.0.0</li>
         <li>
-            <b>@capacitor-community/firebase-crashlytics</b> : ^1.3.0</li>
+            <b>@capacitor-firebase/authentication</b> : ^6.1.0</li>
         <li>
-            <b>@capacitor-firebase/authentication</b> : ^1.2.0</li>
+            <b>@capacitor-firebase/crashlytics</b> : ^6.1.0</li>
         <li>
-            <b>@capacitor-firebase/performance</b> : ^1.2.0</li>
+            <b>@capacitor-firebase/performance</b> : ^6.1.0</li>
         <li>
-            <b>@capacitor/android</b> : ^4.6.0</li>
+            <b>@capacitor/android</b> : ^6.0.0</li>
         <li>
-            <b>@capacitor/app</b> : ^4.1.1</li>
+            <b>@capacitor/app</b> : ^6.0.0</li>
         <li>
-            <b>@capacitor/cli</b> : ^4.6.0</li>
+            <b>@capacitor/clipboard</b> : ^6.0.0</li>
         <li>
-            <b>@capacitor/clipboard</b> : ^4.1.0</li>
+            <b>@capacitor/core</b> : ^6.0.0</li>
         <li>
-            <b>@capacitor/core</b> : ^4.6.0</li>
+            <b>@capacitor/device</b> : ^6.0.0</li>
         <li>
-            <b>@capacitor/device</b> : ^4.1.0</li>
+            <b>@capacitor/filesystem</b> : ^6.0.0</li>
         <li>
-            <b>@capacitor/filesystem</b> : ^4.1.4</li>
+            <b>@capacitor/ios</b> : ^6.0.0</li>
         <li>
-            <b>@capacitor/local-notifications</b> : ^4.1.4</li>
+            <b>@capacitor/local-notifications</b> : ^6.0.0</li>
         <li>
-            <b>@capacitor/push-notifications</b> : ^4.1.2</li>
+            <b>@capacitor/push-notifications</b> : ^6.0.0</li>
         <li>
-            <b>@capacitor/splash-screen</b> : ^4.1.2</li>
+            <b>@capacitor/share</b> : ^6.0.0</li>
         <li>
-            <b>@capawesome/capacitor-app-update</b> : ^2.0.1</li>
+            <b>@capacitor/splash-screen</b> : ^6.0.0</li>
+        <li>
+            <b>@capawesome/capacitor-app-update</b> : ^6.0.0</li>
         <li>
             <b>@ionic-native/core</b> : ^5.36.0</li>
         <li>
@@ -107,39 +167,31 @@
         <li>
             <b>@ionic-native/status-bar</b> : ^5.36.0</li>
         <li>
-            <b>@ionic/angular</b> : ^6.4.1</li>
+            <b>@ionic/angular</b> : ^7.7.3</li>
         <li>
-            <b>@ionic/pwa-elements</b> : ^3.1.1</li>
+            <b>@ionic/pwa-elements</b> : ^3.2.2</li>
         <li>
-            <b>@ngx-matomo/router</b> : ^1.3.3</li>
+            <b>@sentry/angular-ivy</b> : ^7.102.1</li>
         <li>
-            <b>@ngx-matomo/tracker</b> : ^1.3.3</li>
+            <b>@supabase/supabase-js</b> : ^2.39.0</li>
         <li>
-            <b>@sentry/angular</b> : ^7.21.1</li>
-        <li>
-            <b>@supabase/supabase-js</b> : ^2.13.1</li>
-        <li>
-            <b>app-data</b> : workspace:*</li>
+            <b>@types/file-saver</b> : ^2.0.7</li>
         <li>
             <b>bootstrap-datepicker</b> : ^1.10.0</li>
         <li>
-            <b>capacitor-blob-writer</b> : ^1.1.9</li>
-        <li>
-            <b>capacitor-firebase-auth</b> : ^3.0.0</li>
+            <b>capacitor-blob-writer</b> : ^1.1.17</li>
         <li>
             <b>clone</b> : ^2.1.2</li>
         <li>
-            <b>cordova-res</b> : ^0.15.4</li>
-        <li>
-            <b>core-js</b> : ^3.27.1</li>
+            <b>core-js</b> : ^3.33.3</li>
         <li>
             <b>data-models</b> : workspace:*</li>
         <li>
-            <b>date-fns</b> : ^2.22.1</li>
+            <b>date-fns</b> : ^2.30.0</li>
         <li>
             <b>deep-object-diff</b> : ^1.1.9</li>
         <li>
-            <b>dexie</b> : ^3.0.3</li>
+            <b>dexie</b> : ^3.2.4</li>
         <li>
             <b>dexie-observable</b> : 3.0.0-beta.11</li>
         <li>
@@ -147,61 +199,65 @@
         <li>
             <b>document-register-element</b> : ^1.14.10</li>
         <li>
-            <b>dompurify</b> : ^2.3.6</li>
+            <b>dompurify</b> : ^3.1.3</li>
         <li>
             <b>extract-math</b> : ^1.2.3</li>
         <li>
-            <b>firebase</b> : ^9.8.1</li>
+            <b>file-saver</b> : ^2.0.5</li>
         <li>
-            <b>globalthis</b> : ^1.0.2</li>
+            <b>firebase</b> : ^10.7.0</li>
         <li>
-            <b>howler</b> : ^2.2.1</li>
+            <b>globalthis</b> : ^1.0.3</li>
+        <li>
+            <b>howler</b> : ^2.2.4</li>
         <li>
             <b>html5sortable</b> : ^0.13.3</li>
         <li>
-            <b>intro.js</b> : ^3.2.1</li>
+            <b>intro.js</b> : ^3.4.0</li>
         <li>
-            <b>jquery</b> : ^3.7.0</li>
+            <b>jquery</b> : ^3.7.1</li>
         <li>
             <b>jquery-touchswipe</b> : ^1.6.19</li>
         <li>
-            <b>katex</b> : ^0.15.3</li>
+            <b>katex</b> : ^0.16.10</li>
         <li>
-            <b>lottie-web</b> : ^5.7.14</li>
+            <b>lottie-web</b> : ^5.12.2</li>
         <li>
-            <b>marked</b> : ^2.0.1</li>
+            <b>marked</b> : ^2.1.3</li>
+        <li>
+            <b>marked-smartypants-lite</b> : ^1.0.2</li>
         <li>
             <b>mergexml</b> : ^1.2.3</li>
         <li>
-            <b>ng2-nouislider</b> : ^1.8.3</li>
+            <b>ng2-nouislider</b> : ^2.0.0</li>
         <li>
-            <b>ngx-color</b> : ^6.1.0</li>
+            <b>ngx-extended-pdf-viewer</b> : 18.1.9</li>
         <li>
-            <b>ngx-extended-pdf-viewer</b> : 16.2.16</li>
+            <b>ngx-lottie</b> : ^10.0.0</li>
         <li>
-            <b>ngx-lottie</b> : ^7.0.4</li>
+            <b>ngx-matomo-client</b> : ^6.0.2</li>
         <li>
-            <b>nouislider</b> : ^14.6.3</li>
+            <b>nouislider</b> : ^15.7.1</li>
         <li>
-            <b>qrcode</b> : ^1.5.1</li>
+            <b>qrcode</b> : ^1.5.3</li>
         <li>
-            <b>rxdb</b> : ^13.15.3</li>
+            <b>rxdb</b> : ^14.17.1</li>
         <li>
-            <b>rxjs</b> : ^7.8.0</li>
+            <b>rxjs</b> : ^7.8.1</li>
         <li>
             <b>scripts</b> : workspace:*</li>
         <li>
             <b>shared</b> : workspace:*</li>
         <li>
-            <b>signature_pad</b> : ^4.1.5</li>
+            <b>signature_pad</b> : ^4.1.7</li>
         <li>
             <b>stacktrace-js</b> : ^2.0.2</li>
         <li>
-            <b>swiper</b> : ^8.4.4</li>
+            <b>swiper</b> : ^8.4.7</li>
         <li>
             <b>trusted-types</b> : ^2.0.0</li>
         <li>
-            <b>zone.js</b> : ~0.11.4</li>
+            <b>zone.js</b> : ~0.14.2</li>
     </ul>
 
 

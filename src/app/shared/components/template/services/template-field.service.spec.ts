@@ -27,9 +27,8 @@ export class MockTemplateFieldService implements Partial<TemplateFieldService> {
   }
 }
 
+// TODO - split from mock and add tests
 describe("TemplateFieldService", () => {
-  let service: TemplateFieldService;
-
   beforeEach(async () => {
     TestBed.configureTestingModule({
       imports: [],

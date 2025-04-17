@@ -13,8 +13,66 @@
         <link rel="stylesheet" href="./styles/material.css">
     </head>
     <body>
+          <script>
+               // Blocking script to avaoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
 
-        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+
+               if ($darkModeToggles.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-block d-sm-none">
             <a href="./" class="navbar-brand">frontend documentation</a>
             <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
         </div>
@@ -51,7 +109,7 @@
 
 
 <ol class="breadcrumb">
-    <li>Documentation coverage</li>
+    <li class="breadcrumb-item">Documentation coverage</li>
 </ol>
 
 <div>
@@ -89,7 +147,7 @@
             <td>TmplAnimatedSlidesComponent</td>
             <td align="right" data-sort="0">
                 <span class="coverage-percent">0 %</span>
-                <span class="coverage-count">(0/7)</span>
+                <span class="coverage-count">(0/8)</span>
             </td>
         </tr>
         <tr class="low">
@@ -101,7 +159,55 @@
             <td>TmplAudioComponent</td>
             <td align="right" data-sort="0">
                 <span class="coverage-percent">0 %</span>
-                <span class="coverage-count">(0/28)</span>
+                <span class="coverage-count">(0/16)</span>
+            </td>
+        </tr>
+        <tr class="very-good">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./interfaces/IAudioParams.html">src/app/shared/components/template/components/audio/audio.component.ts</a>
+            </td>
+            <td>interface</td>
+            <td>IAudioParams</td>
+            <td align="right" data-sort="90">
+                <span class="coverage-percent">90 %</span>
+                <span class="coverage-count">(9/10)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./miscellaneous/variables.html#FORWARD_ICON_DEFAULT">src/app/shared/components/template/components/audio/audio.component.ts</a>
+            </td>
+            <td>variable</td>
+            <td>FORWARD_ICON_DEFAULT</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./miscellaneous/variables.html#PAUSE_ICON_DEFAULT">src/app/shared/components/template/components/audio/audio.component.ts</a>
+            </td>
+            <td>variable</td>
+            <td>PAUSE_ICON_DEFAULT</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./miscellaneous/variables.html#PLAY_ICON_DEFAULT">src/app/shared/components/template/components/audio/audio.component.ts</a>
+            </td>
+            <td>variable</td>
+            <td>PLAY_ICON_DEFAULT</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
             </td>
         </tr>
         <tr class="low">
@@ -116,16 +222,28 @@
                 <span class="coverage-count">(0/2)</span>
             </td>
         </tr>
-        <tr class="very-good">
+        <tr class="medium">
             <td>
                 <!-- miscellaneous -->
                 <a href="./components/TmplButtonComponent.html">src/app/shared/components/template/components/button/button.component.ts</a>
             </td>
             <td>component</td>
             <td>TmplButtonComponent</td>
-            <td align="right" data-sort="100">
-                <span class="coverage-percent">100 %</span>
-                <span class="coverage-count">(6/6)</span>
+            <td align="right" data-sort="50">
+                <span class="coverage-percent">50 %</span>
+                <span class="coverage-count">(1/2)</span>
+            </td>
+        </tr>
+        <tr class="very-good">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./interfaces/IButtonParams.html">src/app/shared/components/template/components/button/button.component.ts</a>
+            </td>
+            <td>interface</td>
+            <td>IButtonParams</td>
+            <td align="right" data-sort="87">
+                <span class="coverage-percent">87 %</span>
+                <span class="coverage-count">(7/8)</span>
             </td>
         </tr>
         <tr class="low">
@@ -135,9 +253,9 @@
             </td>
             <td>component</td>
             <td>TmplCarouselComponent</td>
-            <td align="right" data-sort="14">
-                <span class="coverage-percent">14 %</span>
-                <span class="coverage-count">(1/7)</span>
+            <td align="right" data-sort="12">
+                <span class="coverage-percent">12 %</span>
+                <span class="coverage-count">(1/8)</span>
             </td>
         </tr>
         <tr class="low">
@@ -149,19 +267,7 @@
             <td>ComboBoxModalComponent</td>
             <td align="right" data-sort="0">
                 <span class="coverage-percent">0 %</span>
-                <span class="coverage-count">(0/22)</span>
-            </td>
-        </tr>
-        <tr class="low">
-            <td>
-                <!-- miscellaneous -->
-                <a href="./interfaces/AnswerBody.html">src/app/shared/components/template/components/combo-box/combo-box-modal/combo-box-modal.component.ts</a>
-            </td>
-            <td>interface</td>
-            <td>AnswerBody</td>
-            <td align="right" data-sort="0">
-                <span class="coverage-percent">0 %</span>
-                <span class="coverage-count">(0/3)</span>
+                <span class="coverage-count">(0/21)</span>
             </td>
         </tr>
         <tr class="low">
@@ -173,7 +279,7 @@
             <td>TmplComboBoxComponent</td>
             <td align="right" data-sort="0">
                 <span class="coverage-percent">0 %</span>
-                <span class="coverage-count">(0/11)</span>
+                <span class="coverage-count">(0/12)</span>
             </td>
         </tr>
         <tr class="low">
@@ -311,13 +417,13 @@
         <tr class="low">
             <td>
                 <!-- miscellaneous -->
-                <a href="./components/AccordionSectionComponent.html">src/app/shared/components/template/components/layout/accordion_section.ts</a>
+                <a href="./components/AccordionSectionComponent.html">src/app/shared/components/template/components/layout/accordion-section/accordion-section.component.ts</a>
             </td>
             <td>component</td>
             <td>AccordionSectionComponent</td>
-            <td align="right" data-sort="14">
-                <span class="coverage-percent">14 %</span>
-                <span class="coverage-count">(1/7)</span>
+            <td align="right" data-sort="10">
+                <span class="coverage-percent">10 %</span>
+                <span class="coverage-count">(1/10)</span>
             </td>
         </tr>
         <tr class="low">
@@ -383,13 +489,25 @@
         <tr class="low">
             <td>
                 <!-- miscellaneous -->
-                <a href="./components/TmplDisplayGroupComponent.html">src/app/shared/components/template/components/layout/display_group.ts</a>
+                <a href="./components/TmplDisplayGroupComponent.html">src/app/shared/components/template/components/layout/display-group/display-group.component.ts</a>
             </td>
             <td>component</td>
             <td>TmplDisplayGroupComponent</td>
             <td align="right" data-sort="0">
                 <span class="coverage-percent">0 %</span>
                 <span class="coverage-count">(0/6)</span>
+            </td>
+        </tr>
+        <tr class="good">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./interfaces/IDisplayGroupParams.html">src/app/shared/components/template/components/layout/display-group/display-group.component.ts</a>
+            </td>
+            <td>interface</td>
+            <td>IDisplayGroupParams</td>
+            <td align="right" data-sort="75">
+                <span class="coverage-percent">75 %</span>
+                <span class="coverage-count">(3/4)</span>
             </td>
         </tr>
         <tr class="low">
@@ -431,7 +549,7 @@
         <tr class="low">
             <td>
                 <!-- miscellaneous -->
-                <a href="./components/TemplatePopupComponent.html">src/app/shared/components/template/components/layout/popup.ts</a>
+                <a href="./components/TemplatePopupComponent.html">src/app/shared/components/template/components/layout/popup/popup.component.ts</a>
             </td>
             <td>component</td>
             <td>TemplatePopupComponent</td>
@@ -443,7 +561,7 @@
         <tr class="medium">
             <td>
                 <!-- miscellaneous -->
-                <a href="./interfaces/ITemplatePopupComponentProps.html">src/app/shared/components/template/components/layout/popup.ts</a>
+                <a href="./interfaces/ITemplatePopupComponentProps.html">src/app/shared/components/template/components/layout/popup/popup.component.ts</a>
             </td>
             <td>interface</td>
             <td>ITemplatePopupComponentProps</td>
@@ -500,6 +618,18 @@
                 <span class="coverage-count">(0/5)</span>
             </td>
         </tr>
+        <tr class="very-good">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./miscellaneous/functions.html#parseValueListItems">src/app/shared/components/template/components/navigation-bar/navigation-bar.component.ts</a>
+            </td>
+            <td>function</td>
+            <td>parseValueListItems</td>
+            <td align="right" data-sort="100">
+                <span class="coverage-percent">100 %</span>
+                <span class="coverage-count">(1/1)</span>
+            </td>
+        </tr>
         <tr class="low">
             <td>
                 <!-- miscellaneous -->
@@ -522,1614 +652,6 @@
             <td align="right" data-sort="0">
                 <span class="coverage-percent">0 %</span>
                 <span class="coverage-count">(0/3)</span>
-            </td>
-        </tr>
-        <tr class="low">
-            <td>
-                <!-- miscellaneous -->
-                <a href="./classes/MutationsTracker.html">src/app/shared/components/template/components/odk-form/libs/enketo/js/dom-utils.ts</a>
-            </td>
-            <td>class</td>
-            <td>MutationsTracker</td>
-            <td align="right" data-sort="0">
-                <span class="coverage-percent">0 %</span>
-                <span class="coverage-count">(0/7)</span>
-            </td>
-        </tr>
-        <tr class="very-good">
-            <td>
-                <!-- miscellaneous -->
-                <a href="./miscellaneous/functions.html#_getSiblingElements">src/app/shared/components/template/components/odk-form/libs/enketo/js/dom-utils.ts</a>
-            </td>
-            <td>function</td>
-            <td>_getSiblingElements</td>
-            <td align="right" data-sort="100">
-                <span class="coverage-percent">100 %</span>
-                <span class="coverage-count">(1/1)</span>
-            </td>
-        </tr>
-        <tr class="very-good">
-            <td>
-                <!-- miscellaneous -->
-                <a href="./miscellaneous/functions.html#closestAncestorUntil">src/app/shared/components/template/components/odk-form/libs/enketo/js/dom-utils.ts</a>
-            </td>
-            <td>function</td>
-            <td>closestAncestorUntil</td>
-            <td align="right" data-sort="100">
-                <span class="coverage-percent">100 %</span>
-                <span class="coverage-count">(1/1)</span>
-            </td>
-        </tr>
-        <tr class="very-good">
-            <td>
-                <!-- miscellaneous -->
-                <a href="./miscellaneous/functions.html#empty">src/app/shared/components/template/components/odk-form/libs/enketo/js/dom-utils.ts</a>
-            </td>
-            <td>function</td>
-            <td>empty</td>
-            <td align="right" data-sort="100">
-                <span class="coverage-percent">100 %</span>
-                <span class="coverage-count">(1/1)</span>
-            </td>
-        </tr>
-        <tr class="very-good">
-            <td>
-                <!-- miscellaneous -->
-                <a href="./miscellaneous/functions.html#getAncestors">src/app/shared/components/template/components/odk-form/libs/enketo/js/dom-utils.ts</a>
-            </td>
-            <td>function</td>
-            <td>getAncestors</td>
-            <td align="right" data-sort="100">
-                <span class="coverage-percent">100 %</span>
-                <span class="coverage-count">(1/1)</span>
-            </td>
-        </tr>
-        <tr class="very-good">
-            <td>
-                <!-- miscellaneous -->
-                <a href="./miscellaneous/functions.html#getChild">src/app/shared/components/template/components/odk-form/libs/enketo/js/dom-utils.ts</a>
-            </td>
-            <td>function</td>
-            <td>getChild</td>
-            <td align="right" data-sort="100">
-                <span class="coverage-percent">100 %</span>
-                <span class="coverage-count">(1/1)</span>
-            </td>
-        </tr>
-        <tr class="very-good">
-            <td>
-                <!-- miscellaneous -->
-                <a href="./miscellaneous/functions.html#getChildren">src/app/shared/components/template/components/odk-form/libs/enketo/js/dom-utils.ts</a>
-            </td>
-            <td>function</td>
-            <td>getChildren</td>
-            <td align="right" data-sort="100">
-                <span class="coverage-percent">100 %</span>
-                <span class="coverage-count">(1/1)</span>
-            </td>
-        </tr>
-        <tr class="very-good">
-            <td>
-                <!-- miscellaneous -->
-                <a href="./miscellaneous/functions.html#getRepeatIndex">src/app/shared/components/template/components/odk-form/libs/enketo/js/dom-utils.ts</a>
-            </td>
-            <td>function</td>
-            <td>getRepeatIndex</td>
-            <td align="right" data-sort="100">
-                <span class="coverage-percent">100 %</span>
-                <span class="coverage-count">(1/1)</span>
-            </td>
-        </tr>
-        <tr class="very-good">
-            <td>
-                <!-- miscellaneous -->
-                <a href="./miscellaneous/functions.html#getSiblingElement">src/app/shared/components/template/components/odk-form/libs/enketo/js/dom-utils.ts</a>
-            </td>
-            <td>function</td>
-            <td>getSiblingElement</td>
-            <td align="right" data-sort="100">
-                <span class="coverage-percent">100 %</span>
-                <span class="coverage-count">(1/1)</span>
-            </td>
-        </tr>
-        <tr class="very-good">
-            <td>
-                <!-- miscellaneous -->
-                <a href="./miscellaneous/functions.html#getSiblingElements">src/app/shared/components/template/components/odk-form/libs/enketo/js/dom-utils.ts</a>
-            </td>
-            <td>function</td>
-            <td>getSiblingElements</td>
-            <td align="right" data-sort="100">
-                <span class="coverage-percent">100 %</span>
-                <span class="coverage-count">(1/1)</span>
-            </td>
-        </tr>
-        <tr class="low">
-            <td>
-                <!-- miscellaneous -->
-                <a href="./miscellaneous/functions.html#getSiblingElementsAndSelf">src/app/shared/components/template/components/odk-form/libs/enketo/js/dom-utils.ts</a>
-            </td>
-            <td>function</td>
-            <td>getSiblingElementsAndSelf</td>
-            <td align="right" data-sort="0">
-                <span class="coverage-percent">0 %</span>
-                <span class="coverage-count">(0/1)</span>
-            </td>
-        </tr>
-        <tr class="very-good">
-            <td>
-                <!-- miscellaneous -->
-                <a href="./miscellaneous/functions.html#getXPath">src/app/shared/components/template/components/odk-form/libs/enketo/js/dom-utils.ts</a>
-            </td>
-            <td>function</td>
-            <td>getXPath</td>
-            <td align="right" data-sort="100">
-                <span class="coverage-percent">100 %</span>
-                <span class="coverage-count">(1/1)</span>
-            </td>
-        </tr>
-        <tr class="low">
-            <td>
-                <!-- miscellaneous -->
-                <a href="./miscellaneous/functions.html#hasNextSiblingElementSameName">src/app/shared/components/template/components/odk-form/libs/enketo/js/dom-utils.ts</a>
-            </td>
-            <td>function</td>
-            <td>hasNextSiblingElementSameName</td>
-            <td align="right" data-sort="0">
-                <span class="coverage-percent">0 %</span>
-                <span class="coverage-count">(0/1)</span>
-            </td>
-        </tr>
-        <tr class="low">
-            <td>
-                <!-- miscellaneous -->
-                <a href="./miscellaneous/functions.html#hasPreviousCommentSiblingWithContent">src/app/shared/components/template/components/odk-form/libs/enketo/js/dom-utils.ts</a>
-            </td>
-            <td>function</td>
-            <td>hasPreviousCommentSiblingWithContent</td>
-            <td align="right" data-sort="0">
-                <span class="coverage-percent">0 %</span>
-                <span class="coverage-count">(0/1)</span>
-            </td>
-        </tr>
-        <tr class="low">
-            <td>
-                <!-- miscellaneous -->
-                <a href="./miscellaneous/functions.html#hasPreviousSiblingElementSameName">src/app/shared/components/template/components/odk-form/libs/enketo/js/dom-utils.ts</a>
-            </td>
-            <td>function</td>
-            <td>hasPreviousSiblingElementSameName</td>
-            <td align="right" data-sort="0">
-                <span class="coverage-percent">0 %</span>
-                <span class="coverage-count">(0/1)</span>
-            </td>
-        </tr>
-        <tr class="low">
-            <td>
-                <!-- miscellaneous -->
-                <a href="./miscellaneous/functions.html#hasSiblingElementSameName">src/app/shared/components/template/components/odk-form/libs/enketo/js/dom-utils.ts</a>
-            </td>
-            <td>function</td>
-            <td>hasSiblingElementSameName</td>
-            <td align="right" data-sort="0">
-                <span class="coverage-percent">0 %</span>
-                <span class="coverage-count">(0/1)</span>
-            </td>
-        </tr>
-        <tr class="very-good">
-            <td>
-                <!-- miscellaneous -->
-                <a href="./miscellaneous/variables.html#elementDataStore">src/app/shared/components/template/components/odk-form/libs/enketo/js/dom-utils.ts</a>
-            </td>
-            <td>variable</td>
-            <td>elementDataStore</td>
-            <td align="right" data-sort="100">
-                <span class="coverage-percent">100 %</span>
-                <span class="coverage-count">(1/1)</span>
-            </td>
-        </tr>
-        <tr class="very-good">
-            <td>
-                <!-- miscellaneous -->
-                <a href="./miscellaneous/functions.html#AddRepeat">src/app/shared/components/template/components/odk-form/libs/enketo/js/event.ts</a>
-            </td>
-            <td>function</td>
-            <td>AddRepeat</td>
-            <td align="right" data-sort="100">
-                <span class="coverage-percent">100 %</span>
-                <span class="coverage-count">(1/1)</span>
-            </td>
-        </tr>
-        <tr class="very-good">
-            <td>
-                <!-- miscellaneous -->
-                <a href="./miscellaneous/functions.html#ApplyFocus">src/app/shared/components/template/components/odk-form/libs/enketo/js/event.ts</a>
-            </td>
-            <td>function</td>
-            <td>ApplyFocus</td>
-            <td align="right" data-sort="100">
-                <span class="coverage-percent">100 %</span>
-                <span class="coverage-count">(1/1)</span>
-            </td>
-        </tr>
-        <tr class="very-good">
-            <td>
-                <!-- miscellaneous -->
-                <a href="./miscellaneous/functions.html#BeforeSave">src/app/shared/components/template/components/odk-form/libs/enketo/js/event.ts</a>
-            </td>
-            <td>function</td>
-            <td>BeforeSave</td>
-            <td align="right" data-sort="100">
-                <span class="coverage-percent">100 %</span>
-                <span class="coverage-count">(1/1)</span>
-            </td>
-        </tr>
-        <tr class="very-good">
-            <td>
-                <!-- miscellaneous -->
-                <a href="./miscellaneous/functions.html#Change">src/app/shared/components/template/components/odk-form/libs/enketo/js/event.ts</a>
-            </td>
-            <td>function</td>
-            <td>Change</td>
-            <td align="right" data-sort="100">
-                <span class="coverage-percent">100 %</span>
-                <span class="coverage-count">(1/1)</span>
-            </td>
-        </tr>
-        <tr class="very-good">
-            <td>
-                <!-- miscellaneous -->
-                <a href="./miscellaneous/functions.html#ChangeLanguage">src/app/shared/components/template/components/odk-form/libs/enketo/js/event.ts</a>
-            </td>
-            <td>function</td>
-            <td>ChangeLanguage</td>
-            <td align="right" data-sort="100">
-                <span class="coverage-percent">100 %</span>
-                <span class="coverage-count">(1/1)</span>
-            </td>
-        </tr>
-        <tr class="low">
-            <td>
-                <!-- miscellaneous -->
-                <a href="./miscellaneous/functions.html#ChangeOption">src/app/shared/components/template/components/odk-form/libs/enketo/js/event.ts</a>
-            </td>
-            <td>function</td>
-            <td>ChangeOption</td>
-            <td align="right" data-sort="0">
-                <span class="coverage-percent">0 %</span>
-                <span class="coverage-count">(0/1)</span>
-            </td>
-        </tr>
-        <tr class="low">
-            <td>
-                <!-- miscellaneous -->
-                <a href="./miscellaneous/functions.html#DataUpdate">src/app/shared/components/template/components/odk-form/libs/enketo/js/event.ts</a>
-            </td>
-            <td>function</td>
-            <td>DataUpdate</td>
-            <td align="right" data-sort="0">
-                <span class="coverage-percent">0 %</span>
-                <span class="coverage-count">(0/1)</span>
-            </td>
-        </tr>
-        <tr class="very-good">
-            <td>
-                <!-- miscellaneous -->
-                <a href="./miscellaneous/functions.html#DePrintify">src/app/shared/components/template/components/odk-form/libs/enketo/js/event.ts</a>
-            </td>
-            <td>function</td>
-            <td>DePrintify</td>
-            <td align="right" data-sort="100">
-                <span class="coverage-percent">100 %</span>
-                <span class="coverage-count">(1/1)</span>
-            </td>
-        </tr>
-        <tr class="very-good">
-            <td>
-                <!-- miscellaneous -->
-                <a href="./miscellaneous/functions.html#Edited">src/app/shared/components/template/components/odk-form/libs/enketo/js/event.ts</a>
-            </td>
-            <td>function</td>
-            <td>Edited</td>
-            <td align="right" data-sort="100">
-                <span class="coverage-percent">100 %</span>
-                <span class="coverage-count">(1/1)</span>
-            </td>
-        </tr>
-        <tr class="very-good">
-            <td>
-                <!-- miscellaneous -->
-                <a href="./miscellaneous/functions.html#FakeFocus">src/app/shared/components/template/components/odk-form/libs/enketo/js/event.ts</a>
-            </td>
-            <td>function</td>
-            <td>FakeFocus</td>
-            <td align="right" data-sort="100">
-                <span class="coverage-percent">100 %</span>
-                <span class="coverage-count">(1/1)</span>
-            </td>
-        </tr>
-        <tr class="very-good">
-            <td>
-                <!-- miscellaneous -->
-                <a href="./miscellaneous/functions.html#GoToInvisible">src/app/shared/components/template/components/odk-form/libs/enketo/js/event.ts</a>
-            </td>
-            <td>function</td>
-            <td>GoToInvisible</td>
-            <td align="right" data-sort="100">
-                <span class="coverage-percent">100 %</span>
-                <span class="coverage-count">(1/1)</span>
-            </td>
-        </tr>
-        <tr class="very-good">
-            <td>
-                <!-- miscellaneous -->
-                <a href="./miscellaneous/functions.html#GoToIrrelevant">src/app/shared/components/template/components/odk-form/libs/enketo/js/event.ts</a>
-            </td>
-            <td>function</td>
-            <td>GoToIrrelevant</td>
-            <td align="right" data-sort="100">
-                <span class="coverage-percent">100 %</span>
-                <span class="coverage-count">(1/1)</span>
-            </td>
-        </tr>
-        <tr class="very-good">
-            <td>
-                <!-- miscellaneous -->
-                <a href="./miscellaneous/functions.html#Input">src/app/shared/components/template/components/odk-form/libs/enketo/js/event.ts</a>
-            </td>
-            <td>function</td>
-            <td>Input</td>
-            <td align="right" data-sort="100">
-                <span class="coverage-percent">100 %</span>
-                <span class="coverage-count">(1/1)</span>
-            </td>
-        </tr>
-        <tr class="very-good">
-            <td>
-                <!-- miscellaneous -->
-                <a href="./miscellaneous/functions.html#InputUpdate">src/app/shared/components/template/components/odk-form/libs/enketo/js/event.ts</a>
-            </td>
-            <td>function</td>
-            <td>InputUpdate</td>
-            <td align="right" data-sort="100">
-                <span class="coverage-percent">100 %</span>
-                <span class="coverage-count">(1/1)</span>
-            </td>
-        </tr>
-        <tr class="very-good">
-            <td>
-                <!-- miscellaneous -->
-                <a href="./miscellaneous/functions.html#InstanceFirstLoad">src/app/shared/components/template/components/odk-form/libs/enketo/js/event.ts</a>
-            </td>
-            <td>function</td>
-            <td>InstanceFirstLoad</td>
-            <td align="right" data-sort="100">
-                <span class="coverage-percent">100 %</span>
-                <span class="coverage-count">(1/1)</span>
-            </td>
-        </tr>
-        <tr class="very-good">
-            <td>
-                <!-- miscellaneous -->
-                <a href="./miscellaneous/functions.html#Invalidated">src/app/shared/components/template/components/odk-form/libs/enketo/js/event.ts</a>
-            </td>
-            <td>function</td>
-            <td>Invalidated</td>
-            <td align="right" data-sort="100">
-                <span class="coverage-percent">100 %</span>
-                <span class="coverage-count">(1/1)</span>
-            </td>
-        </tr>
-        <tr class="very-good">
-            <td>
-                <!-- miscellaneous -->
-                <a href="./miscellaneous/functions.html#NewRepeat">src/app/shared/components/template/components/odk-form/libs/enketo/js/event.ts</a>
-            </td>
-            <td>function</td>
-            <td>NewRepeat</td>
-            <td align="right" data-sort="100">
-                <span class="coverage-percent">100 %</span>
-                <span class="coverage-count">(1/1)</span>
-            </td>
-        </tr>
-        <tr class="very-good">
-            <td>
-                <!-- miscellaneous -->
-                <a href="./miscellaneous/functions.html#PageFlip">src/app/shared/components/template/components/odk-form/libs/enketo/js/event.ts</a>
-            </td>
-            <td>function</td>
-            <td>PageFlip</td>
-            <td align="right" data-sort="100">
-                <span class="coverage-percent">100 %</span>
-                <span class="coverage-count">(1/1)</span>
-            </td>
-        </tr>
-        <tr class="very-good">
-            <td>
-                <!-- miscellaneous -->
-                <a href="./miscellaneous/functions.html#Printify">src/app/shared/components/template/components/odk-form/libs/enketo/js/event.ts</a>
-            </td>
-            <td>function</td>
-            <td>Printify</td>
-            <td align="right" data-sort="100">
-                <span class="coverage-percent">100 %</span>
-                <span class="coverage-count">(1/1)</span>
-            </td>
-        </tr>
-        <tr class="very-good">
-            <td>
-                <!-- miscellaneous -->
-                <a href="./miscellaneous/functions.html#ProgressUpdate">src/app/shared/components/template/components/odk-form/libs/enketo/js/event.ts</a>
-            </td>
-            <td>function</td>
-            <td>ProgressUpdate</td>
-            <td align="right" data-sort="100">
-                <span class="coverage-percent">100 %</span>
-                <span class="coverage-count">(1/1)</span>
-            </td>
-        </tr>
-        <tr class="very-good">
-            <td>
-                <!-- miscellaneous -->
-                <a href="./miscellaneous/functions.html#Removed">src/app/shared/components/template/components/odk-form/libs/enketo/js/event.ts</a>
-            </td>
-            <td>function</td>
-            <td>Removed</td>
-            <td align="right" data-sort="100">
-                <span class="coverage-percent">100 %</span>
-                <span class="coverage-count">(1/1)</span>
-            </td>
-        </tr>
-        <tr class="very-good">
-            <td>
-                <!-- miscellaneous -->
-                <a href="./miscellaneous/functions.html#RemoveRepeat">src/app/shared/components/template/components/odk-form/libs/enketo/js/event.ts</a>
-            </td>
-            <td>function</td>
-            <td>RemoveRepeat</td>
-            <td align="right" data-sort="100">
-                <span class="coverage-percent">100 %</span>
-                <span class="coverage-count">(1/1)</span>
-            </td>
-        </tr>
-        <tr class="low">
-            <td>
-                <!-- miscellaneous -->
-                <a href="./miscellaneous/functions.html#UpdateMaxSize">src/app/shared/components/template/components/odk-form/libs/enketo/js/event.ts</a>
-            </td>
-            <td>function</td>
-            <td>UpdateMaxSize</td>
-            <td align="right" data-sort="0">
-                <span class="coverage-percent">0 %</span>
-                <span class="coverage-count">(0/1)</span>
-            </td>
-        </tr>
-        <tr class="very-good">
-            <td>
-                <!-- miscellaneous -->
-                <a href="./miscellaneous/functions.html#ValidationComplete">src/app/shared/components/template/components/odk-form/libs/enketo/js/event.ts</a>
-            </td>
-            <td>function</td>
-            <td>ValidationComplete</td>
-            <td align="right" data-sort="100">
-                <span class="coverage-percent">100 %</span>
-                <span class="coverage-count">(1/1)</span>
-            </td>
-        </tr>
-        <tr class="very-good">
-            <td>
-                <!-- miscellaneous -->
-                <a href="./miscellaneous/functions.html#XFormsValueChanged">src/app/shared/components/template/components/odk-form/libs/enketo/js/event.ts</a>
-            </td>
-            <td>function</td>
-            <td>XFormsValueChanged</td>
-            <td align="right" data-sort="100">
-                <span class="coverage-percent">100 %</span>
-                <span class="coverage-count">(1/1)</span>
-            </td>
-        </tr>
-        <tr class="medium">
-            <td>
-                <!-- miscellaneous -->
-                <a href="./classes/Form.html">src/app/shared/components/template/components/odk-form/libs/enketo/js/form.ts</a>
-            </td>
-            <td>class</td>
-            <td>Form</td>
-            <td align="right" data-sort="40">
-                <span class="coverage-percent">40 %</span>
-                <span class="coverage-count">(24/59)</span>
-            </td>
-        </tr>
-        <tr class="good">
-            <td>
-                <!-- miscellaneous -->
-                <a href="./classes/Widget.html">src/app/shared/components/template/components/odk-form/libs/enketo/js/widget.ts</a>
-            </td>
-            <td>class</td>
-            <td>Widget</td>
-            <td align="right" data-sort="58">
-                <span class="coverage-percent">58 %</span>
-                <span class="coverage-count">(7/12)</span>
-            </td>
-        </tr>
-        <tr class="low">
-            <td>
-                <!-- miscellaneous -->
-                <a href="./miscellaneous/variables.html#range">src/app/shared/components/template/components/odk-form/libs/enketo/js/widget.ts</a>
-            </td>
-            <td>variable</td>
-            <td>range</td>
-            <td align="right" data-sort="0">
-                <span class="coverage-percent">0 %</span>
-                <span class="coverage-count">(0/1)</span>
-            </td>
-        </tr>
-        <tr class="low">
-            <td>
-                <!-- miscellaneous -->
-                <a href="./miscellaneous/functions.html#Unnamed function">src/app/shared/components/template/components/odk-form/libs/enketo/js/xpath-evaluator-binding.ts</a>
-            </td>
-            <td>function</td>
-            <td>Unnamed function</td>
-            <td align="right" data-sort="0">
-                <span class="coverage-percent">0 %</span>
-                <span class="coverage-count">(0/1)</span>
-            </td>
-        </tr>
-        <tr class="medium">
-            <td>
-                <!-- miscellaneous -->
-                <a href="./classes/BlankDate.html">src/app/shared/components/template/components/odk-form/libs/openrosa/date-extensions.ts</a>
-            </td>
-            <td>class</td>
-            <td>BlankDate</td>
-            <td align="right" data-sort="50">
-                <span class="coverage-percent">50 %</span>
-                <span class="coverage-count">(1/2)</span>
-            </td>
-        </tr>
-        <tr class="low">
-            <td>
-                <!-- miscellaneous -->
-                <a href="./miscellaneous/variables.html#getTimezoneOffsetAsTime">src/app/shared/components/template/components/odk-form/libs/openrosa/date-extensions.ts</a>
-            </td>
-            <td>variable</td>
-            <td>getTimezoneOffsetAsTime</td>
-            <td align="right" data-sort="0">
-                <span class="coverage-percent">0 %</span>
-                <span class="coverage-count">(0/1)</span>
-            </td>
-        </tr>
-        <tr class="very-good">
-            <td>
-                <!-- miscellaneous -->
-                <a href="./miscellaneous/variables.html#toISOLocalString">src/app/shared/components/template/components/odk-form/libs/openrosa/date-extensions.ts</a>
-            </td>
-            <td>variable</td>
-            <td>toISOLocalString</td>
-            <td align="right" data-sort="100">
-                <span class="coverage-percent">100 %</span>
-                <span class="coverage-count">(1/1)</span>
-            </td>
-        </tr>
-        <tr class="low">
-            <td>
-                <!-- miscellaneous -->
-                <a href="./miscellaneous/functions.html#Unnamed function">src/app/shared/components/template/components/odk-form/libs/openrosa/extended-xpath.ts</a>
-            </td>
-            <td>function</td>
-            <td>Unnamed function</td>
-            <td align="right" data-sort="0">
-                <span class="coverage-percent">0 %</span>
-                <span class="coverage-count">(0/1)</span>
-            </td>
-        </tr>
-        <tr class="low">
-            <td>
-                <!-- miscellaneous -->
-                <a href="./miscellaneous/variables.html#AND">src/app/shared/components/template/components/odk-form/libs/openrosa/extended-xpath.ts</a>
-            </td>
-            <td>variable</td>
-            <td>AND</td>
-            <td align="right" data-sort="0">
-                <span class="coverage-percent">0 %</span>
-                <span class="coverage-count">(0/1)</span>
-            </td>
-        </tr>
-        <tr class="low">
-            <td>
-                <!-- miscellaneous -->
-                <a href="./miscellaneous/variables.html#D">src/app/shared/components/template/components/odk-form/libs/openrosa/extended-xpath.ts</a>
-            </td>
-            <td>variable</td>
-            <td>D</td>
-            <td align="right" data-sort="0">
-                <span class="coverage-percent">0 %</span>
-                <span class="coverage-count">(0/1)</span>
-            </td>
-        </tr>
-        <tr class="low">
-            <td>
-                <!-- miscellaneous -->
-                <a href="./miscellaneous/variables.html#DIV">src/app/shared/components/template/components/odk-form/libs/openrosa/extended-xpath.ts</a>
-            </td>
-            <td>variable</td>
-            <td>DIV</td>
-            <td align="right" data-sort="0">
-                <span class="coverage-percent">0 %</span>
-                <span class="coverage-count">(0/1)</span>
-            </td>
-        </tr>
-        <tr class="low">
-            <td>
-                <!-- miscellaneous -->
-                <a href="./miscellaneous/variables.html#EQ">src/app/shared/components/template/components/odk-form/libs/openrosa/extended-xpath.ts</a>
-            </td>
-            <td>variable</td>
-            <td>EQ</td>
-            <td align="right" data-sort="0">
-                <span class="coverage-percent">0 %</span>
-                <span class="coverage-count">(0/1)</span>
-            </td>
-        </tr>
-        <tr class="low">
-            <td>
-                <!-- miscellaneous -->
-                <a href="./miscellaneous/variables.html#FUNCTION_NAME">src/app/shared/components/template/components/odk-form/libs/openrosa/extended-xpath.ts</a>
-            </td>
-            <td>variable</td>
-            <td>FUNCTION_NAME</td>
-            <td align="right" data-sort="0">
-                <span class="coverage-percent">0 %</span>
-                <span class="coverage-count">(0/1)</span>
-            </td>
-        </tr>
-        <tr class="low">
-            <td>
-                <!-- miscellaneous -->
-                <a href="./miscellaneous/variables.html#GT">src/app/shared/components/template/components/odk-form/libs/openrosa/extended-xpath.ts</a>
-            </td>
-            <td>variable</td>
-            <td>GT</td>
-            <td align="right" data-sort="0">
-                <span class="coverage-percent">0 %</span>
-                <span class="coverage-count">(0/1)</span>
-            </td>
-        </tr>
-        <tr class="low">
-            <td>
-                <!-- miscellaneous -->
-                <a href="./miscellaneous/variables.html#GTE">src/app/shared/components/template/components/odk-form/libs/openrosa/extended-xpath.ts</a>
-            </td>
-            <td>variable</td>
-            <td>GTE</td>
-            <td align="right" data-sort="0">
-                <span class="coverage-percent">0 %</span>
-                <span class="coverage-count">(0/1)</span>
-            </td>
-        </tr>
-        <tr class="low">
-            <td>
-                <!-- miscellaneous -->
-                <a href="./miscellaneous/variables.html#LT">src/app/shared/components/template/components/odk-form/libs/openrosa/extended-xpath.ts</a>
-            </td>
-            <td>variable</td>
-            <td>LT</td>
-            <td align="right" data-sort="0">
-                <span class="coverage-percent">0 %</span>
-                <span class="coverage-count">(0/1)</span>
-            </td>
-        </tr>
-        <tr class="low">
-            <td>
-                <!-- miscellaneous -->
-                <a href="./miscellaneous/variables.html#LTE">src/app/shared/components/template/components/odk-form/libs/openrosa/extended-xpath.ts</a>
-            </td>
-            <td>variable</td>
-            <td>LTE</td>
-            <td align="right" data-sort="0">
-                <span class="coverage-percent">0 %</span>
-                <span class="coverage-count">(0/1)</span>
-            </td>
-        </tr>
-        <tr class="low">
-            <td>
-                <!-- miscellaneous -->
-                <a href="./miscellaneous/variables.html#MINUS">src/app/shared/components/template/components/odk-form/libs/openrosa/extended-xpath.ts</a>
-            </td>
-            <td>variable</td>
-            <td>MINUS</td>
-            <td align="right" data-sort="0">
-                <span class="coverage-percent">0 %</span>
-                <span class="coverage-count">(0/1)</span>
-            </td>
-        </tr>
-        <tr class="low">
-            <td>
-                <!-- miscellaneous -->
-                <a href="./miscellaneous/variables.html#MOD">src/app/shared/components/template/components/odk-form/libs/openrosa/extended-xpath.ts</a>
-            </td>
-            <td>variable</td>
-            <td>MOD</td>
-            <td align="right" data-sort="0">
-                <span class="coverage-percent">0 %</span>
-                <span class="coverage-count">(0/1)</span>
-            </td>
-        </tr>
-        <tr class="low">
-            <td>
-                <!-- miscellaneous -->
-                <a href="./miscellaneous/variables.html#MULT">src/app/shared/components/template/components/odk-form/libs/openrosa/extended-xpath.ts</a>
-            </td>
-            <td>variable</td>
-            <td>MULT</td>
-            <td align="right" data-sort="0">
-                <span class="coverage-percent">0 %</span>
-                <span class="coverage-count">(0/1)</span>
-            </td>
-        </tr>
-        <tr class="low">
-            <td>
-                <!-- miscellaneous -->
-                <a href="./miscellaneous/variables.html#NE">src/app/shared/components/template/components/odk-form/libs/openrosa/extended-xpath.ts</a>
-            </td>
-            <td>variable</td>
-            <td>NE</td>
-            <td align="right" data-sort="0">
-                <span class="coverage-percent">0 %</span>
-                <span class="coverage-count">(0/1)</span>
-            </td>
-        </tr>
-        <tr class="low">
-            <td>
-                <!-- miscellaneous -->
-                <a href="./miscellaneous/variables.html#OR">src/app/shared/components/template/components/odk-form/libs/openrosa/extended-xpath.ts</a>
-            </td>
-            <td>variable</td>
-            <td>OR</td>
-            <td align="right" data-sort="0">
-                <span class="coverage-percent">0 %</span>
-                <span class="coverage-count">(0/1)</span>
-            </td>
-        </tr>
-        <tr class="low">
-            <td>
-                <!-- miscellaneous -->
-                <a href="./miscellaneous/variables.html#PLUS">src/app/shared/components/template/components/odk-form/libs/openrosa/extended-xpath.ts</a>
-            </td>
-            <td>variable</td>
-            <td>PLUS</td>
-            <td align="right" data-sort="0">
-                <span class="coverage-percent">0 %</span>
-                <span class="coverage-count">(0/1)</span>
-            </td>
-        </tr>
-        <tr class="low">
-            <td>
-                <!-- miscellaneous -->
-                <a href="./miscellaneous/variables.html#UNION">src/app/shared/components/template/components/odk-form/libs/openrosa/extended-xpath.ts</a>
-            </td>
-            <td>variable</td>
-            <td>UNION</td>
-            <td align="right" data-sort="0">
-                <span class="coverage-percent">0 %</span>
-                <span class="coverage-count">(0/1)</span>
-            </td>
-        </tr>
-        <tr class="very-good">
-            <td>
-                <!-- miscellaneous -->
-                <a href="./miscellaneous/functions.html#_distanceBetween">src/app/shared/components/template/components/odk-form/libs/openrosa/geo.ts</a>
-            </td>
-            <td>function</td>
-            <td>_distanceBetween</td>
-            <td align="right" data-sort="100">
-                <span class="coverage-percent">100 %</span>
-                <span class="coverage-count">(1/1)</span>
-            </td>
-        </tr>
-        <tr class="low">
-            <td>
-                <!-- miscellaneous -->
-                <a href="./miscellaneous/functions.html#_latLngsValid">src/app/shared/components/template/components/odk-form/libs/openrosa/geo.ts</a>
-            </td>
-            <td>function</td>
-            <td>_latLngsValid</td>
-            <td align="right" data-sort="0">
-                <span class="coverage-percent">0 %</span>
-                <span class="coverage-count">(0/1)</span>
-            </td>
-        </tr>
-        <tr class="low">
-            <td>
-                <!-- miscellaneous -->
-                <a href="./miscellaneous/functions.html#_toLatLngs">src/app/shared/components/template/components/odk-form/libs/openrosa/geo.ts</a>
-            </td>
-            <td>function</td>
-            <td>_toLatLngs</td>
-            <td align="right" data-sort="0">
-                <span class="coverage-percent">0 %</span>
-                <span class="coverage-count">(0/1)</span>
-            </td>
-        </tr>
-        <tr class="low">
-            <td>
-                <!-- miscellaneous -->
-                <a href="./miscellaneous/functions.html#_toRadians">src/app/shared/components/template/components/odk-form/libs/openrosa/geo.ts</a>
-            </td>
-            <td>function</td>
-            <td>_toRadians</td>
-            <td align="right" data-sort="0">
-                <span class="coverage-percent">0 %</span>
-                <span class="coverage-count">(0/1)</span>
-            </td>
-        </tr>
-        <tr class="very-good">
-            <td>
-                <!-- miscellaneous -->
-                <a href="./miscellaneous/functions.html#area">src/app/shared/components/template/components/odk-form/libs/openrosa/geo.ts</a>
-            </td>
-            <td>function</td>
-            <td>area</td>
-            <td align="right" data-sort="100">
-                <span class="coverage-percent">100 %</span>
-                <span class="coverage-count">(1/1)</span>
-            </td>
-        </tr>
-        <tr class="low">
-            <td>
-                <!-- miscellaneous -->
-                <a href="./miscellaneous/functions.html#asGeopoints">src/app/shared/components/template/components/odk-form/libs/openrosa/geo.ts</a>
-            </td>
-            <td>function</td>
-            <td>asGeopoints</td>
-            <td align="right" data-sort="0">
-                <span class="coverage-percent">0 %</span>
-                <span class="coverage-count">(0/1)</span>
-            </td>
-        </tr>
-        <tr class="low">
-            <td>
-                <!-- miscellaneous -->
-                <a href="./miscellaneous/functions.html#distance">src/app/shared/components/template/components/odk-form/libs/openrosa/geo.ts</a>
-            </td>
-            <td>function</td>
-            <td>distance</td>
-            <td align="right" data-sort="0">
-                <span class="coverage-percent">0 %</span>
-                <span class="coverage-count">(0/1)</span>
-            </td>
-        </tr>
-        <tr class="low">
-            <td>
-                <!-- miscellaneous -->
-                <a href="./miscellaneous/variables.html#EARTH_EQUATORIAL_RADIUS_METERS">src/app/shared/components/template/components/odk-form/libs/openrosa/geo.ts</a>
-            </td>
-            <td>variable</td>
-            <td>EARTH_EQUATORIAL_RADIUS_METERS</td>
-            <td align="right" data-sort="0">
-                <span class="coverage-percent">0 %</span>
-                <span class="coverage-count">(0/1)</span>
-            </td>
-        </tr>
-        <tr class="low">
-            <td>
-                <!-- miscellaneous -->
-                <a href="./miscellaneous/variables.html#PRECISION">src/app/shared/components/template/components/odk-form/libs/openrosa/geo.ts</a>
-            </td>
-            <td>variable</td>
-            <td>PRECISION</td>
-            <td align="right" data-sort="0">
-                <span class="coverage-percent">0 %</span>
-                <span class="coverage-count">(0/1)</span>
-            </td>
-        </tr>
-        <tr class="low">
-            <td>
-                <!-- miscellaneous -->
-                <a href="./miscellaneous/functions.html#_zeroPad">src/app/shared/components/template/components/odk-form/libs/openrosa/openrosa-extensions.ts</a>
-            </td>
-            <td>function</td>
-            <td>_zeroPad</td>
-            <td align="right" data-sort="0">
-                <span class="coverage-percent">0 %</span>
-                <span class="coverage-count">(0/1)</span>
-            </td>
-        </tr>
-        <tr class="low">
-            <td>
-                <!-- miscellaneous -->
-                <a href="./miscellaneous/functions.html#asDate">src/app/shared/components/template/components/odk-form/libs/openrosa/openrosa-extensions.ts</a>
-            </td>
-            <td>function</td>
-            <td>asDate</td>
-            <td align="right" data-sort="0">
-                <span class="coverage-percent">0 %</span>
-                <span class="coverage-count">(0/1)</span>
-            </td>
-        </tr>
-        <tr class="low">
-            <td>
-                <!-- miscellaneous -->
-                <a href="./miscellaneous/functions.html#asInteger">src/app/shared/components/template/components/odk-form/libs/openrosa/openrosa-extensions.ts</a>
-            </td>
-            <td>function</td>
-            <td>asInteger</td>
-            <td align="right" data-sort="0">
-                <span class="coverage-percent">0 %</span>
-                <span class="coverage-count">(0/1)</span>
-            </td>
-        </tr>
-        <tr class="very-good">
-            <td>
-                <!-- miscellaneous -->
-                <a href="./miscellaneous/functions.html#getNode">src/app/shared/components/template/components/odk-form/libs/openrosa/openrosa-extensions.ts</a>
-            </td>
-            <td>function</td>
-            <td>getNode</td>
-            <td align="right" data-sort="100">
-                <span class="coverage-percent">100 %</span>
-                <span class="coverage-count">(1/1)</span>
-            </td>
-        </tr>
-        <tr class="low">
-            <td>
-                <!-- miscellaneous -->
-                <a href="./miscellaneous/functions.html#getNodeName">src/app/shared/components/template/components/odk-form/libs/openrosa/openrosa-extensions.ts</a>
-            </td>
-            <td>function</td>
-            <td>getNodeName</td>
-            <td align="right" data-sort="0">
-                <span class="coverage-percent">0 %</span>
-                <span class="coverage-count">(0/1)</span>
-            </td>
-        </tr>
-        <tr class="low">
-            <td>
-                <!-- miscellaneous -->
-                <a href="./miscellaneous/functions.html#isNodeish">src/app/shared/components/template/components/odk-form/libs/openrosa/openrosa-extensions.ts</a>
-            </td>
-            <td>function</td>
-            <td>isNodeish</td>
-            <td align="right" data-sort="0">
-                <span class="coverage-percent">0 %</span>
-                <span class="coverage-count">(0/1)</span>
-            </td>
-        </tr>
-        <tr class="low">
-            <td>
-                <!-- miscellaneous -->
-                <a href="./miscellaneous/functions.html#mapFn">src/app/shared/components/template/components/odk-form/libs/openrosa/openrosa-extensions.ts</a>
-            </td>
-            <td>function</td>
-            <td>mapFn</td>
-            <td align="right" data-sort="0">
-                <span class="coverage-percent">0 %</span>
-                <span class="coverage-count">(0/1)</span>
-            </td>
-        </tr>
-        <tr class="very-good">
-            <td>
-                <!-- miscellaneous -->
-                <a href="./miscellaneous/functions.html#uuid">src/app/shared/components/template/components/odk-form/libs/openrosa/openrosa-extensions.ts</a>
-            </td>
-            <td>function</td>
-            <td>uuid</td>
-            <td align="right" data-sort="100">
-                <span class="coverage-percent">100 %</span>
-                <span class="coverage-count">(1/1)</span>
-            </td>
-        </tr>
-        <tr class="low">
-            <td>
-                <!-- miscellaneous -->
-                <a href="./miscellaneous/variables.html#EQ">src/app/shared/components/template/components/odk-form/libs/openrosa/openrosa-extensions.ts</a>
-            </td>
-            <td>variable</td>
-            <td>EQ</td>
-            <td align="right" data-sort="0">
-                <span class="coverage-percent">0 %</span>
-                <span class="coverage-count">(0/1)</span>
-            </td>
-        </tr>
-        <tr class="low">
-            <td>
-                <!-- miscellaneous -->
-                <a href="./miscellaneous/variables.html#GTE">src/app/shared/components/template/components/odk-form/libs/openrosa/openrosa-extensions.ts</a>
-            </td>
-            <td>variable</td>
-            <td>GTE</td>
-            <td align="right" data-sort="0">
-                <span class="coverage-percent">0 %</span>
-                <span class="coverage-count">(0/1)</span>
-            </td>
-        </tr>
-        <tr class="low">
-            <td>
-                <!-- miscellaneous -->
-                <a href="./miscellaneous/variables.html#MINUS">src/app/shared/components/template/components/odk-form/libs/openrosa/openrosa-extensions.ts</a>
-            </td>
-            <td>variable</td>
-            <td>MINUS</td>
-            <td align="right" data-sort="0">
-                <span class="coverage-percent">0 %</span>
-                <span class="coverage-count">(0/1)</span>
-            </td>
-        </tr>
-        <tr class="very-good">
-            <td>
-                <!-- miscellaneous -->
-                <a href="./miscellaneous/variables.html#NODEISH">src/app/shared/components/template/components/odk-form/libs/openrosa/openrosa-extensions.ts</a>
-            </td>
-            <td>variable</td>
-            <td>NODEISH</td>
-            <td align="right" data-sort="100">
-                <span class="coverage-percent">100 %</span>
-                <span class="coverage-count">(1/1)</span>
-            </td>
-        </tr>
-        <tr class="low">
-            <td>
-                <!-- miscellaneous -->
-                <a href="./miscellaneous/variables.html#openrosa_xpath_extensions">src/app/shared/components/template/components/odk-form/libs/openrosa/openrosa-extensions.ts</a>
-            </td>
-            <td>variable</td>
-            <td>openrosa_xpath_extensions</td>
-            <td align="right" data-sort="0">
-                <span class="coverage-percent">0 %</span>
-                <span class="coverage-count">(0/1)</span>
-            </td>
-        </tr>
-        <tr class="low">
-            <td>
-                <!-- miscellaneous -->
-                <a href="./miscellaneous/variables.html#PLUS">src/app/shared/components/template/components/odk-form/libs/openrosa/openrosa-extensions.ts</a>
-            </td>
-            <td>variable</td>
-            <td>PLUS</td>
-            <td align="right" data-sort="0">
-                <span class="coverage-percent">0 %</span>
-                <span class="coverage-count">(0/1)</span>
-            </td>
-        </tr>
-        <tr class="low">
-            <td>
-                <!-- miscellaneous -->
-                <a href="./miscellaneous/variables.html#RAW_NUMBER">src/app/shared/components/template/components/odk-form/libs/openrosa/openrosa-extensions.ts</a>
-            </td>
-            <td>variable</td>
-            <td>RAW_NUMBER</td>
-            <td align="right" data-sort="0">
-                <span class="coverage-percent">0 %</span>
-                <span class="coverage-count">(0/1)</span>
-            </td>
-        </tr>
-        <tr class="low">
-            <td>
-                <!-- miscellaneous -->
-                <a href="./miscellaneous/variables.html#cast">src/app/shared/components/template/components/odk-form/libs/openrosa/openrosa-xpath.ts</a>
-            </td>
-            <td>variable</td>
-            <td>cast</td>
-            <td align="right" data-sort="0">
-                <span class="coverage-percent">0 %</span>
-                <span class="coverage-count">(0/1)</span>
-            </td>
-        </tr>
-        <tr class="low">
-            <td>
-                <!-- miscellaneous -->
-                <a href="./miscellaneous/functions.html#_random13chars">src/app/shared/components/template/components/odk-form/libs/openrosa/random-token.ts</a>
-            </td>
-            <td>function</td>
-            <td>_random13chars</td>
-            <td align="right" data-sort="0">
-                <span class="coverage-percent">0 %</span>
-                <span class="coverage-count">(0/1)</span>
-            </td>
-        </tr>
-        <tr class="low">
-            <td>
-                <!-- miscellaneous -->
-                <a href="./miscellaneous/functions.html#randomToken">src/app/shared/components/template/components/odk-form/libs/openrosa/random-token.ts</a>
-            </td>
-            <td>function</td>
-            <td>randomToken</td>
-            <td align="right" data-sort="0">
-                <span class="coverage-percent">0 %</span>
-                <span class="coverage-count">(0/1)</span>
-            </td>
-        </tr>
-        <tr class="low">
-            <td>
-                <!-- miscellaneous -->
-                <a href="./miscellaneous/functions.html#dateStringToDays">src/app/shared/components/template/components/odk-form/libs/openrosa/utils/date.ts</a>
-            </td>
-            <td>function</td>
-            <td>dateStringToDays</td>
-            <td align="right" data-sort="0">
-                <span class="coverage-percent">0 %</span>
-                <span class="coverage-count">(0/1)</span>
-            </td>
-        </tr>
-        <tr class="low">
-            <td>
-                <!-- miscellaneous -->
-                <a href="./miscellaneous/functions.html#dateToDays">src/app/shared/components/template/components/odk-form/libs/openrosa/utils/date.ts</a>
-            </td>
-            <td>function</td>
-            <td>dateToDays</td>
-            <td align="right" data-sort="0">
-                <span class="coverage-percent">0 %</span>
-                <span class="coverage-count">(0/1)</span>
-            </td>
-        </tr>
-        <tr class="low">
-            <td>
-                <!-- miscellaneous -->
-                <a href="./miscellaneous/variables.html#DATE_STRING">src/app/shared/components/template/components/odk-form/libs/openrosa/utils/date.ts</a>
-            </td>
-            <td>variable</td>
-            <td>DATE_STRING</td>
-            <td align="right" data-sort="0">
-                <span class="coverage-percent">0 %</span>
-                <span class="coverage-count">(0/1)</span>
-            </td>
-        </tr>
-        <tr class="very-good">
-            <td>
-                <!-- miscellaneous -->
-                <a href="./miscellaneous/variables.html#daysInMonth">src/app/shared/components/template/components/odk-form/libs/openrosa/utils/date.ts</a>
-            </td>
-            <td>variable</td>
-            <td>daysInMonth</td>
-            <td align="right" data-sort="100">
-                <span class="coverage-percent">100 %</span>
-                <span class="coverage-count">(1/1)</span>
-            </td>
-        </tr>
-        <tr class="very-good">
-            <td>
-                <!-- miscellaneous -->
-                <a href="./miscellaneous/variables.html#isValidDate">src/app/shared/components/template/components/odk-form/libs/openrosa/utils/date.ts</a>
-            </td>
-            <td>variable</td>
-            <td>isValidDate</td>
-            <td align="right" data-sort="100">
-                <span class="coverage-percent">100 %</span>
-                <span class="coverage-count">(1/1)</span>
-            </td>
-        </tr>
-        <tr class="low">
-            <td>
-                <!-- miscellaneous -->
-                <a href="./miscellaneous/functions.html#convertSubstringArgs">src/app/shared/components/template/components/odk-form/libs/openrosa/utils/native.ts</a>
-            </td>
-            <td>function</td>
-            <td>convertSubstringArgs</td>
-            <td align="right" data-sort="0">
-                <span class="coverage-percent">0 %</span>
-                <span class="coverage-count">(0/1)</span>
-            </td>
-        </tr>
-        <tr class="low">
-            <td>
-                <!-- miscellaneous -->
-                <a href="./miscellaneous/functions.html#preprocessNativeArgs">src/app/shared/components/template/components/odk-form/libs/openrosa/utils/native.ts</a>
-            </td>
-            <td>function</td>
-            <td>preprocessNativeArgs</td>
-            <td align="right" data-sort="0">
-                <span class="coverage-percent">0 %</span>
-                <span class="coverage-count">(0/1)</span>
-            </td>
-        </tr>
-        <tr class="low">
-            <td>
-                <!-- miscellaneous -->
-                <a href="./miscellaneous/variables.html#cast">src/app/shared/components/template/components/odk-form/libs/openrosa/utils/native.ts</a>
-            </td>
-            <td>variable</td>
-            <td>cast</td>
-            <td align="right" data-sort="0">
-                <span class="coverage-percent">0 %</span>
-                <span class="coverage-count">(0/1)</span>
-            </td>
-        </tr>
-        <tr class="low">
-            <td>
-                <!-- miscellaneous -->
-                <a href="./miscellaneous/variables.html#fns">src/app/shared/components/template/components/odk-form/libs/openrosa/utils/native.ts</a>
-            </td>
-            <td>variable</td>
-            <td>fns</td>
-            <td align="right" data-sort="0">
-                <span class="coverage-percent">0 %</span>
-                <span class="coverage-count">(0/1)</span>
-            </td>
-        </tr>
-        <tr class="low">
-            <td>
-                <!-- miscellaneous -->
-                <a href="./miscellaneous/functions.html#bothOf">src/app/shared/components/template/components/odk-form/libs/openrosa/utils/operation.ts</a>
-            </td>
-            <td>function</td>
-            <td>bothOf</td>
-            <td align="right" data-sort="0">
-                <span class="coverage-percent">0 %</span>
-                <span class="coverage-count">(0/1)</span>
-            </td>
-        </tr>
-        <tr class="low">
-            <td>
-                <!-- miscellaneous -->
-                <a href="./miscellaneous/functions.html#castFor">src/app/shared/components/template/components/odk-form/libs/openrosa/utils/operation.ts</a>
-            </td>
-            <td>function</td>
-            <td>castFor</td>
-            <td align="right" data-sort="0">
-                <span class="coverage-percent">0 %</span>
-                <span class="coverage-count">(0/1)</span>
-            </td>
-        </tr>
-        <tr class="low">
-            <td>
-                <!-- miscellaneous -->
-                <a href="./miscellaneous/functions.html#equalityCompare">src/app/shared/components/template/components/odk-form/libs/openrosa/utils/operation.ts</a>
-            </td>
-            <td>function</td>
-            <td>equalityCompare</td>
-            <td align="right" data-sort="0">
-                <span class="coverage-percent">0 %</span>
-                <span class="coverage-count">(0/1)</span>
-            </td>
-        </tr>
-        <tr class="low">
-            <td>
-                <!-- miscellaneous -->
-                <a href="./miscellaneous/functions.html#handleOperation">src/app/shared/components/template/components/odk-form/libs/openrosa/utils/operation.ts</a>
-            </td>
-            <td>function</td>
-            <td>handleOperation</td>
-            <td align="right" data-sort="0">
-                <span class="coverage-percent">0 %</span>
-                <span class="coverage-count">(0/1)</span>
-            </td>
-        </tr>
-        <tr class="low">
-            <td>
-                <!-- miscellaneous -->
-                <a href="./miscellaneous/functions.html#oneOf">src/app/shared/components/template/components/odk-form/libs/openrosa/utils/operation.ts</a>
-            </td>
-            <td>function</td>
-            <td>oneOf</td>
-            <td align="right" data-sort="0">
-                <span class="coverage-percent">0 %</span>
-                <span class="coverage-count">(0/1)</span>
-            </td>
-        </tr>
-        <tr class="low">
-            <td>
-                <!-- miscellaneous -->
-                <a href="./miscellaneous/functions.html#relationalCompare">src/app/shared/components/template/components/odk-form/libs/openrosa/utils/operation.ts</a>
-            </td>
-            <td>function</td>
-            <td>relationalCompare</td>
-            <td align="right" data-sort="0">
-                <span class="coverage-percent">0 %</span>
-                <span class="coverage-count">(0/1)</span>
-            </td>
-        </tr>
-        <tr class="low">
-            <td>
-                <!-- miscellaneous -->
-                <a href="./miscellaneous/variables.html#AND">src/app/shared/components/template/components/odk-form/libs/openrosa/utils/operation.ts</a>
-            </td>
-            <td>variable</td>
-            <td>AND</td>
-            <td align="right" data-sort="0">
-                <span class="coverage-percent">0 %</span>
-                <span class="coverage-count">(0/1)</span>
-            </td>
-        </tr>
-        <tr class="low">
-            <td>
-                <!-- miscellaneous -->
-                <a href="./miscellaneous/variables.html#DIV">src/app/shared/components/template/components/odk-form/libs/openrosa/utils/operation.ts</a>
-            </td>
-            <td>variable</td>
-            <td>DIV</td>
-            <td align="right" data-sort="0">
-                <span class="coverage-percent">0 %</span>
-                <span class="coverage-count">(0/1)</span>
-            </td>
-        </tr>
-        <tr class="low">
-            <td>
-                <!-- miscellaneous -->
-                <a href="./miscellaneous/variables.html#EQ">src/app/shared/components/template/components/odk-form/libs/openrosa/utils/operation.ts</a>
-            </td>
-            <td>variable</td>
-            <td>EQ</td>
-            <td align="right" data-sort="0">
-                <span class="coverage-percent">0 %</span>
-                <span class="coverage-count">(0/1)</span>
-            </td>
-        </tr>
-        <tr class="low">
-            <td>
-                <!-- miscellaneous -->
-                <a href="./miscellaneous/variables.html#GT">src/app/shared/components/template/components/odk-form/libs/openrosa/utils/operation.ts</a>
-            </td>
-            <td>variable</td>
-            <td>GT</td>
-            <td align="right" data-sort="0">
-                <span class="coverage-percent">0 %</span>
-                <span class="coverage-count">(0/1)</span>
-            </td>
-        </tr>
-        <tr class="low">
-            <td>
-                <!-- miscellaneous -->
-                <a href="./miscellaneous/variables.html#GTE">src/app/shared/components/template/components/odk-form/libs/openrosa/utils/operation.ts</a>
-            </td>
-            <td>variable</td>
-            <td>GTE</td>
-            <td align="right" data-sort="0">
-                <span class="coverage-percent">0 %</span>
-                <span class="coverage-count">(0/1)</span>
-            </td>
-        </tr>
-        <tr class="low">
-            <td>
-                <!-- miscellaneous -->
-                <a href="./miscellaneous/variables.html#LT">src/app/shared/components/template/components/odk-form/libs/openrosa/utils/operation.ts</a>
-            </td>
-            <td>variable</td>
-            <td>LT</td>
-            <td align="right" data-sort="0">
-                <span class="coverage-percent">0 %</span>
-                <span class="coverage-count">(0/1)</span>
-            </td>
-        </tr>
-        <tr class="low">
-            <td>
-                <!-- miscellaneous -->
-                <a href="./miscellaneous/variables.html#LTE">src/app/shared/components/template/components/odk-form/libs/openrosa/utils/operation.ts</a>
-            </td>
-            <td>variable</td>
-            <td>LTE</td>
-            <td align="right" data-sort="0">
-                <span class="coverage-percent">0 %</span>
-                <span class="coverage-count">(0/1)</span>
-            </td>
-        </tr>
-        <tr class="low">
-            <td>
-                <!-- miscellaneous -->
-                <a href="./miscellaneous/variables.html#MINUS">src/app/shared/components/template/components/odk-form/libs/openrosa/utils/operation.ts</a>
-            </td>
-            <td>variable</td>
-            <td>MINUS</td>
-            <td align="right" data-sort="0">
-                <span class="coverage-percent">0 %</span>
-                <span class="coverage-count">(0/1)</span>
-            </td>
-        </tr>
-        <tr class="low">
-            <td>
-                <!-- miscellaneous -->
-                <a href="./miscellaneous/variables.html#MOD">src/app/shared/components/template/components/odk-form/libs/openrosa/utils/operation.ts</a>
-            </td>
-            <td>variable</td>
-            <td>MOD</td>
-            <td align="right" data-sort="0">
-                <span class="coverage-percent">0 %</span>
-                <span class="coverage-count">(0/1)</span>
-            </td>
-        </tr>
-        <tr class="low">
-            <td>
-                <!-- miscellaneous -->
-                <a href="./miscellaneous/variables.html#MULT">src/app/shared/components/template/components/odk-form/libs/openrosa/utils/operation.ts</a>
-            </td>
-            <td>variable</td>
-            <td>MULT</td>
-            <td align="right" data-sort="0">
-                <span class="coverage-percent">0 %</span>
-                <span class="coverage-count">(0/1)</span>
-            </td>
-        </tr>
-        <tr class="low">
-            <td>
-                <!-- miscellaneous -->
-                <a href="./miscellaneous/variables.html#NE">src/app/shared/components/template/components/odk-form/libs/openrosa/utils/operation.ts</a>
-            </td>
-            <td>variable</td>
-            <td>NE</td>
-            <td align="right" data-sort="0">
-                <span class="coverage-percent">0 %</span>
-                <span class="coverage-count">(0/1)</span>
-            </td>
-        </tr>
-        <tr class="low">
-            <td>
-                <!-- miscellaneous -->
-                <a href="./miscellaneous/variables.html#OR">src/app/shared/components/template/components/odk-form/libs/openrosa/utils/operation.ts</a>
-            </td>
-            <td>variable</td>
-            <td>OR</td>
-            <td align="right" data-sort="0">
-                <span class="coverage-percent">0 %</span>
-                <span class="coverage-count">(0/1)</span>
-            </td>
-        </tr>
-        <tr class="low">
-            <td>
-                <!-- miscellaneous -->
-                <a href="./miscellaneous/variables.html#PLUS">src/app/shared/components/template/components/odk-form/libs/openrosa/utils/operation.ts</a>
-            </td>
-            <td>variable</td>
-            <td>PLUS</td>
-            <td align="right" data-sort="0">
-                <span class="coverage-percent">0 %</span>
-                <span class="coverage-count">(0/1)</span>
-            </td>
-        </tr>
-        <tr class="low">
-            <td>
-                <!-- miscellaneous -->
-                <a href="./miscellaneous/variables.html#UNION">src/app/shared/components/template/components/odk-form/libs/openrosa/utils/operation.ts</a>
-            </td>
-            <td>variable</td>
-            <td>UNION</td>
-            <td align="right" data-sort="0">
-                <span class="coverage-percent">0 %</span>
-                <span class="coverage-count">(0/1)</span>
-            </td>
-        </tr>
-        <tr class="low">
-            <td>
-                <!-- miscellaneous -->
-                <a href="./miscellaneous/functions.html#toSnapshotResult">src/app/shared/components/template/components/odk-form/libs/openrosa/utils/result.ts</a>
-            </td>
-            <td>function</td>
-            <td>toSnapshotResult</td>
-            <td align="right" data-sort="0">
-                <span class="coverage-percent">0 %</span>
-                <span class="coverage-count">(0/1)</span>
-            </td>
-        </tr>
-        <tr class="very-good">
-            <td>
-                <!-- miscellaneous -->
-                <a href="./miscellaneous/functions.html#Random">src/app/shared/components/template/components/odk-form/libs/openrosa/utils/shuffle.ts</a>
-            </td>
-            <td>function</td>
-            <td>Random</td>
-            <td align="right" data-sort="100">
-                <span class="coverage-percent">100 %</span>
-                <span class="coverage-count">(1/1)</span>
-            </td>
-        </tr>
-        <tr class="very-good">
-            <td>
-                <!-- miscellaneous -->
-                <a href="./miscellaneous/functions.html#shuffle">src/app/shared/components/template/components/odk-form/libs/openrosa/utils/shuffle.ts</a>
-            </td>
-            <td>function</td>
-            <td>shuffle</td>
-            <td align="right" data-sort="100">
-                <span class="coverage-percent">100 %</span>
-                <span class="coverage-count">(1/1)</span>
-            </td>
-        </tr>
-        <tr class="low">
-            <td>
-                <!-- miscellaneous -->
-                <a href="./miscellaneous/variables.html#MAX_INT32">src/app/shared/components/template/components/odk-form/libs/openrosa/utils/shuffle.ts</a>
-            </td>
-            <td>variable</td>
-            <td>MAX_INT32</td>
-            <td align="right" data-sort="0">
-                <span class="coverage-percent">0 %</span>
-                <span class="coverage-count">(0/1)</span>
-            </td>
-        </tr>
-        <tr class="low">
-            <td>
-                <!-- miscellaneous -->
-                <a href="./miscellaneous/variables.html#MINSTD">src/app/shared/components/template/components/odk-form/libs/openrosa/utils/shuffle.ts</a>
-            </td>
-            <td>variable</td>
-            <td>MINSTD</td>
-            <td align="right" data-sort="0">
-                <span class="coverage-percent">0 %</span>
-                <span class="coverage-count">(0/1)</span>
-            </td>
-        </tr>
-        <tr class="low">
-            <td>
-                <!-- miscellaneous -->
-                <a href="./miscellaneous/functions.html#byDocumentOrder">src/app/shared/components/template/components/odk-form/libs/openrosa/utils/sort-by-document-order.ts</a>
-            </td>
-            <td>function</td>
-            <td>byDocumentOrder</td>
-            <td align="right" data-sort="0">
-                <span class="coverage-percent">0 %</span>
-                <span class="coverage-count">(0/1)</span>
-            </td>
-        </tr>
-        <tr class="low">
-            <td>
-                <!-- miscellaneous -->
-                <a href="./miscellaneous/functions.html#Unnamed function">src/app/shared/components/template/components/odk-form/libs/openrosa/utils/sort-by-document-order.ts</a>
-            </td>
-            <td>function</td>
-            <td>Unnamed function</td>
-            <td align="right" data-sort="0">
-                <span class="coverage-percent">0 %</span>
-                <span class="coverage-count">(0/1)</span>
-            </td>
-        </tr>
-        <tr class="low">
-            <td>
-                <!-- miscellaneous -->
-                <a href="./miscellaneous/functions.html#asBoolean">src/app/shared/components/template/components/odk-form/libs/openrosa/utils/xpath-cast.ts</a>
-            </td>
-            <td>function</td>
-            <td>asBoolean</td>
-            <td align="right" data-sort="0">
-                <span class="coverage-percent">0 %</span>
-                <span class="coverage-count">(0/1)</span>
-            </td>
-        </tr>
-        <tr class="low">
-            <td>
-                <!-- miscellaneous -->
-                <a href="./miscellaneous/functions.html#asNumber">src/app/shared/components/template/components/odk-form/libs/openrosa/utils/xpath-cast.ts</a>
-            </td>
-            <td>function</td>
-            <td>asNumber</td>
-            <td align="right" data-sort="0">
-                <span class="coverage-percent">0 %</span>
-                <span class="coverage-count">(0/1)</span>
-            </td>
-        </tr>
-        <tr class="low">
-            <td>
-                <!-- miscellaneous -->
-                <a href="./miscellaneous/functions.html#asString">src/app/shared/components/template/components/odk-form/libs/openrosa/utils/xpath-cast.ts</a>
-            </td>
-            <td>function</td>
-            <td>asString</td>
-            <td align="right" data-sort="0">
-                <span class="coverage-percent">0 %</span>
-                <span class="coverage-count">(0/1)</span>
-            </td>
-        </tr>
-        <tr class="very-good">
-            <td>
-                <!-- miscellaneous -->
-                <a href="./miscellaneous/functions.html#isDomNode">src/app/shared/components/template/components/odk-form/libs/openrosa/utils/xpath-cast.ts</a>
-            </td>
-            <td>function</td>
-            <td>isDomNode</td>
-            <td align="right" data-sort="100">
-                <span class="coverage-percent">100 %</span>
-                <span class="coverage-count">(1/1)</span>
-            </td>
-        </tr>
-        <tr class="low">
-            <td>
-                <!-- miscellaneous -->
-                <a href="./miscellaneous/functions.html#nodeToString">src/app/shared/components/template/components/odk-form/libs/openrosa/utils/xpath-cast.ts</a>
-            </td>
-            <td>function</td>
-            <td>nodeToString</td>
-            <td align="right" data-sort="0">
-                <span class="coverage-percent">0 %</span>
-                <span class="coverage-count">(0/1)</span>
             </td>
         </tr>
         <tr class="low">
@@ -2231,6 +753,42 @@
         <tr class="low">
             <td>
                 <!-- miscellaneous -->
+                <a href="./components/TmplProgressPathComponent.html">src/app/shared/components/template/components/progress-path/progress-path.component.ts</a>
+            </td>
+            <td>component</td>
+            <td>TmplProgressPathComponent</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/7)</span>
+            </td>
+        </tr>
+        <tr class="medium">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./interfaces/IProgressPathParams.html">src/app/shared/components/template/components/progress-path/progress-path.component.ts</a>
+            </td>
+            <td>interface</td>
+            <td>IProgressPathParams</td>
+            <td align="right" data-sort="50">
+                <span class="coverage-percent">50 %</span>
+                <span class="coverage-count">(1/2)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./miscellaneous/variables.html#SIZING">src/app/shared/components/template/components/progress-path/progress-path.component.ts</a>
+            </td>
+            <td>variable</td>
+            <td>SIZING</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
                 <a href="./components/TmplQRCodeComponent.html">src/app/shared/components/template/components/qr-code/qr-code.component.ts</a>
             </td>
             <td>component</td>
@@ -2250,18 +808,6 @@
             <td align="right" data-sort="33">
                 <span class="coverage-percent">33 %</span>
                 <span class="coverage-count">(1/3)</span>
-            </td>
-        </tr>
-        <tr class="low">
-            <td>
-                <!-- miscellaneous -->
-                <a href="./interfaces/IAnswerListItem.html">src/app/shared/components/template/components/radio-button-grid/radio-button-grid.component.ts</a>
-            </td>
-            <td>interface</td>
-            <td>IAnswerListItem</td>
-            <td align="right" data-sort="0">
-                <span class="coverage-percent">0 %</span>
-                <span class="coverage-count">(0/4)</span>
             </td>
         </tr>
         <tr class="very-good">
@@ -2286,18 +832,6 @@
             <td align="right" data-sort="6">
                 <span class="coverage-percent">6 %</span>
                 <span class="coverage-count">(1/16)</span>
-            </td>
-        </tr>
-        <tr class="low">
-            <td>
-                <!-- miscellaneous -->
-                <a href="./interfaces/IButton.html">src/app/shared/components/template/components/radio-group/radio-group.component.ts</a>
-            </td>
-            <td>interface</td>
-            <td>IButton</td>
-            <td align="right" data-sort="0">
-                <span class="coverage-percent">0 %</span>
-                <span class="coverage-count">(0/5)</span>
             </td>
         </tr>
         <tr class="low">
@@ -2345,7 +879,7 @@
             <td>TmplSliderComponent</td>
             <td align="right" data-sort="4">
                 <span class="coverage-percent">4 %</span>
-                <span class="coverage-count">(1/21)</span>
+                <span class="coverage-count">(1/22)</span>
             </td>
         </tr>
         <tr class="low">
@@ -2379,9 +913,21 @@
             </td>
             <td>component</td>
             <td>TmplTaskCardComponent</td>
-            <td align="right" data-sort="0">
-                <span class="coverage-percent">0 %</span>
-                <span class="coverage-count">(0/20)</span>
+            <td align="right" data-sort="4">
+                <span class="coverage-percent">4 %</span>
+                <span class="coverage-count">(1/23)</span>
+            </td>
+        </tr>
+        <tr class="very-good">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./interfaces/ITaskCardParams.html">src/app/shared/components/template/components/task-card/task-card.component.ts</a>
+            </td>
+            <td>interface</td>
+            <td>ITaskCardParams</td>
+            <td align="right" data-sort="93">
+                <span class="coverage-percent">93 %</span>
+                <span class="coverage-count">(14/15)</span>
             </td>
         </tr>
         <tr class="low">
@@ -2393,7 +939,19 @@
             <td>TmplTaskProgressBarComponent</td>
             <td align="right" data-sort="0">
                 <span class="coverage-percent">0 %</span>
-                <span class="coverage-count">(0/15)</span>
+                <span class="coverage-count">(0/17)</span>
+            </td>
+        </tr>
+        <tr class="very-good">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./interfaces/ITaskProgressBarParams.html">src/app/shared/components/template/components/task-progress-bar/task-progress-bar.component.ts</a>
+            </td>
+            <td>interface</td>
+            <td>ITaskProgressBarParams</td>
+            <td align="right" data-sort="85">
+                <span class="coverage-percent">85 %</span>
+                <span class="coverage-count">(6/7)</span>
             </td>
         </tr>
         <tr class="low">
@@ -2418,6 +976,30 @@
             <td align="right" data-sort="0">
                 <span class="coverage-percent">0 %</span>
                 <span class="coverage-count">(0/9)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./components/TmplTextBubbleComponent.html">src/app/shared/components/template/components/text-bubble/text-bubble.component.ts</a>
+            </td>
+            <td>component</td>
+            <td>TmplTextBubbleComponent</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/3)</span>
+            </td>
+        </tr>
+        <tr class="good">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./interfaces/ITextBubbleParams.html">src/app/shared/components/template/components/text-bubble/text-bubble.component.ts</a>
+            </td>
+            <td>interface</td>
+            <td>ITextBubbleParams</td>
+            <td align="right" data-sort="75">
+                <span class="coverage-percent">75 %</span>
+                <span class="coverage-count">(3/4)</span>
             </td>
         </tr>
         <tr class="low">
@@ -2453,7 +1035,7 @@
             <td>TmplTimerComponent</td>
             <td align="right" data-sort="0">
                 <span class="coverage-percent">0 %</span>
-                <span class="coverage-count">(0/36)</span>
+                <span class="coverage-count">(0/40)</span>
             </td>
         </tr>
         <tr class="low">
@@ -2516,16 +1098,28 @@
                 <span class="coverage-count">(0/6)</span>
             </td>
         </tr>
-        <tr class="low">
+        <tr class="medium">
             <td>
                 <!-- miscellaneous -->
                 <a href="./components/TmplToggleBarComponent.html">src/app/shared/components/template/components/toggle-bar/toggle-bar.ts</a>
             </td>
             <td>component</td>
             <td>TmplToggleBarComponent</td>
-            <td align="right" data-sort="12">
-                <span class="coverage-percent">12 %</span>
-                <span class="coverage-count">(1/8)</span>
+            <td align="right" data-sort="40">
+                <span class="coverage-percent">40 %</span>
+                <span class="coverage-count">(2/5)</span>
+            </td>
+        </tr>
+        <tr class="very-good">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./interfaces/IToggleParams.html">src/app/shared/components/template/components/toggle-bar/toggle-bar.ts</a>
+            </td>
+            <td>interface</td>
+            <td>IToggleParams</td>
+            <td align="right" data-sort="90">
+                <span class="coverage-percent">90 %</span>
+                <span class="coverage-count">(9/10)</span>
             </td>
         </tr>
         <tr class="low">

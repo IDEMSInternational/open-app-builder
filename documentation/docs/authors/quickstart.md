@@ -14,17 +14,13 @@ yarn install
 
 ### Setup required configuration
 
-All configuration is pre-established in the `packages/scripts/config` folder, however is encrypted to avoid sharing sensitive information publicly.
+In order to sync content from google drive, a set of application credentials is required to be placed in the `packages/scripts/config` folder
 
-You must obtain a `private.key` file from the development team which you can copy into the `packages/scripts/config` folder.
+Developer credentials can be requested from the dev team, or you can use your own credentials generated following instructions at:
+https://developers.google.com/identity/protocols/oauth2/web-server#creatingcred
 
-Once the file is copied run the following command:
+If creating your own credentials the `redirect_uri` should be set to http://localhost:3003/oauth2callback and authorized javascript origins to include http://localhost
 
-```
-yarn scripts config decrypt
-```
-
-You will see additional files populate to the `packages/scripts/config` folder such as they become decrypted
 
 ### Connect to Google Drive
 

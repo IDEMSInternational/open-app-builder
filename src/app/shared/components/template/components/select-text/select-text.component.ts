@@ -8,6 +8,7 @@ import {
 } from "src/app/shared/utils";
 import { TemplateBaseComponent } from "../base";
 import { FlowTypes, ITemplateRowProps } from "../../models";
+import { TemplateTranslateService } from "../../services/template-translate.service";
 
 @Component({
   selector: "plh-select-text",
@@ -30,6 +31,10 @@ export class SelectTextComponent
   public source = timer(1000);
   //output: 0
   public subscribe: Subscription;
+
+  constructor(public templateTranslateService: TemplateTranslateService) {
+    super();
+  }
 
   ngOnInit() {
     this.getParams();
@@ -55,7 +60,7 @@ export class SelectTextComponent
       this.toggle = !this.toggle;
     });
 
-    let text = _row.value;
+    let text = _row.value as string;
     await Clipboard.write({ string: text });
   }
 

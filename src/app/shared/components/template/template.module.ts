@@ -12,38 +12,46 @@ import { SharedPipesModule } from "../../pipes";
 import { TooltipDirective } from "../common/directives/tooltip.directive";
 import { TemplateContainerComponent } from "./template-container.component";
 import { TEMPLATE_COMPONENTS } from "./components";
-import { TEMPLATE_PIPES } from "./pipes";
 import { TmplCompHostDirective, TemplateComponent } from "./template-component";
 
 import { appendStyleSvgDirective } from "./directives/shadowStyleSvg.directive";
 import { createCustomElement } from "@angular/elements";
-import { PLHAssetPipe } from "./pipes/plh-asset.pipe";
+import { TemplatePipesModule } from "./pipes";
+
+// Components from external packages
+import { PLH_COMPONENTS } from "packages/components/plh";
+import { DEMO_COMPONENTS } from "packages/components/demo";
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
-    ReactiveFormsModule,
     IonicModule,
-    SharedPipesModule,
-    NouisliderModule,
     LottieModule,
-    RouterModule,
-    SwiperModule,
     NgxExtendedPdfViewerModule,
+    NouisliderModule,
+    ReactiveFormsModule,
+    RouterModule,
+    SharedPipesModule,
+    SwiperModule,
+    TemplatePipesModule,
   ],
-  exports: [...TEMPLATE_COMPONENTS, ...TEMPLATE_PIPES, TemplateContainerComponent],
+  exports: [
+    ...TEMPLATE_COMPONENTS,
+    ...PLH_COMPONENTS,
+    ...DEMO_COMPONENTS,
+    TemplateContainerComponent,
+  ],
   declarations: [
     TmplCompHostDirective,
     TemplateComponent,
     TooltipDirective,
     ...TEMPLATE_COMPONENTS,
-    ...TEMPLATE_PIPES,
+    ...PLH_COMPONENTS,
+    ...DEMO_COMPONENTS,
     TemplateContainerComponent,
     appendStyleSvgDirective,
   ],
-  // Pipes that are used in component ts files should be declared here
-  providers: [PLHAssetPipe],
 })
 export class TemplateComponentsModule {
   // Create a custom element for the template container

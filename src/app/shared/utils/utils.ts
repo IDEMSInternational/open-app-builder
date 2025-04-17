@@ -7,6 +7,7 @@ import { FlowTypes } from "../model";
 import { objectToArray } from "../components/template/utils";
 import marked from "marked";
 import { markedSmartypantsLite } from "marked-smartypants-lite";
+import { v4 as uuidV4 } from "uuid";
 
 /**
  * Generate a random string of characters in base-36 (a-z and 0-9 characters)
@@ -15,6 +16,11 @@ import { markedSmartypantsLite } from "marked-smartypants-lite";
  */
 export function generateRandomId() {
   return Math.random().toString(36).substring(2);
+}
+
+/** Generate a uuid with v4 specification */
+export function generateUUID() {
+  return uuidV4();
 }
 
 /**
@@ -186,7 +192,7 @@ export function getParamFromTemplateRow(
 export function getStringParamFromTemplateRow(
   row: FlowTypes.TemplateRow,
   name: string,
-  _default: string
+  _default: string = ""
 ): string {
   const paramValue = getParamFromTemplateRow(row, name, _default) as string;
   return paramValue ? `${paramValue}` : paramValue;
@@ -208,7 +214,7 @@ export function getBooleanParamFromTemplateRow(
   _default: boolean
 ): boolean {
   const params = row.parameter_list || {};
-  return params.hasOwnProperty(name) ? params[name] === "true" : _default;
+  return params.hasOwnProperty(name) ? parseBoolean(params[name]) : _default;
 }
 
 export function getAnswerListParamFromTemplateRow(
@@ -217,7 +223,6 @@ export function getAnswerListParamFromTemplateRow(
   _default: IAnswerListItem[]
 ): IAnswerListItem[] {
   const params = row.parameter_list || {};
-  console.log(params[name]);
   return params.hasOwnProperty(name) ? parseAnswerList(params[name]) : _default;
 }
 
@@ -375,7 +380,7 @@ export function stringToIntegerHash(str: string) {
  * @param target
  * @param ...sources
  */
-export function deepMergeObjects(target: any = {}, ...sources: any) {
+export function deepMergeObjects<T = Record<string, any>>(target: T = {} as T, ...sources: any) {
   if (!sources.length) return target;
   const source = sources.shift();
 
@@ -393,8 +398,8 @@ export function deepMergeObjects(target: any = {}, ...sources: any) {
   return deepMergeObjects(target, ...sources);
 }
 
-export function deepDiffObjects<T extends Object, U extends Object>(a: T, b: U) {
-  return diff(a, b) as RecursivePartial<T | U>;
+export function deepDiffObjects<T extends Object, U extends Object>(original: T, updated: U) {
+  return diff(original, updated) as RecursivePartial<T | U>;
 }
 
 /**
@@ -408,7 +413,10 @@ export function deepDiffObjects<T extends Object, U extends Object>(a: T, b: U) 
  * { added: [ 'key3' ], deleted: [ 'key1' ] }
  * ```
  * */
-export function compareObjectKeys<T extends Object, U extends Object>(a: T, b: U) {
+export function compareObjectKeys<T extends Object, U extends Object>(
+  a: T = {} as T,
+  b: U = {} as U
+) {
   const aKeys = Object.keys(a);
   const bKeys = Object.keys(b);
   return {

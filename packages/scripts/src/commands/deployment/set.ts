@@ -68,7 +68,7 @@ export class DeploymentSet {
     }
   }
 
-  private async promptDeploymentSelect() {
+  public async promptDeploymentSelect() {
     const deploymentNames = fs
       .readdirSync(DEPLOYMENTS_PATH, { withFileTypes: true })
       .filter((d) => d.isDirectory())

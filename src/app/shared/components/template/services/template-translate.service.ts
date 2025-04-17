@@ -1,4 +1,4 @@
-import { Injectable, WritableSignal, signal } from "@angular/core";
+import { Injectable, WritableSignal, effect, signal } from "@angular/core";
 import { IAppConfig } from "data-models";
 import { BehaviorSubject } from "rxjs";
 import { AppConfigService } from "src/app/shared/services/app-config/app-config.service";
@@ -6,6 +6,7 @@ import { AsyncServiceBase } from "src/app/shared/services/asyncService.base";
 import { AppDataService } from "src/app/shared/services/data/app-data.service";
 import { LocalStorageService } from "src/app/shared/services/local-storage/local-storage.service";
 import { FlowTypes } from "../models";
+import { isObjectLiteral } from "packages/shared/src/utils/object-utils";
 
 @Injectable({ providedIn: "root" })
 /**
@@ -31,6 +32,11 @@ export class TemplateTranslateService extends AsyncServiceBase {
   ) {
     super("Template Translate");
     this.registerInitFunction(this.init);
+
+    effect(() => {
+      // persist language direction to authoring field
+      this.localStorageService.setProtected("APP_LANGUAGE_DIRECTION", this.languageDirection());
+    });
   }
 
   private async init() {
@@ -50,6 +56,21 @@ export class TemplateTranslateService extends AsyncServiceBase {
 
   get app_language() {
     return this.app_language$.value;
+  }
+
+  /**
+   * Extracts the two-letter language code from a given country language string.
+   * Two-letter ISO 639-1 Codes: https://www.loc.gov/standards/iso639-2/php/code_list.php
+   * @param {string} languageCode Country language code from in `xx_yy` format, where `yy` is the two-letter language code
+   * @returns {string} The extracted two-letter language code, e.g. `yy`, or the original country language code if the format is invalid
+   */
+  get app_language_code() {
+    const parts = this.app_language.split("_");
+    if (parts.length === 2 && parts[1].length === 2) {
+      return parts[1];
+    }
+    // Return original language code if the format is invalid
+    return this.app_language;
   }
 
   /** Set the local storage variable that tracks the app language */
@@ -85,7 +106,7 @@ export class TemplateTranslateService extends AsyncServiceBase {
    * Note - for improved efficiency rows with translatable data will usually have
    * a `translatedFields` property that lists keys for translation
    */
-  translateRow(row: FlowTypes.TemplateRow = {} as any) {
+  translateRow(row: FlowTypes.TemplateRow = {} as any): FlowTypes.TemplateRow {
     const translated = { ...row };
     // Case 1 - row with translate fields identified (e.g. template row)
     if (row._translations) {
@@ -99,12 +120,38 @@ export class TemplateTranslateService extends AsyncServiceBase {
     }
     // Case 2 - row value assigned from data list with translate fields
     const { value } = row;
-    if (value && value._translations) {
-      translated.value = this.translateRow(value);
+    if (value && isObjectLiteral(value) && (value as any)._translations) {
+      translated.value = this.translateRow(value as any) as any;
     }
     // Note - there is a third case when row value assigned from calculation (e.g. data list child field)
     // but this is currently manually handled in the template-variables service as required
     return translated;
+  }
+
+  /**
+   * Translate all rows from a data_list. Uses `_translatedFields` metadata to determine which columns
+   * require translation, extracted from names with suffix `::eng`
+   *
+   * NOTE - this method is currently only used by data-items as regular processor translates after parsing
+   * into template, where translateRow method can be used
+   */
+  public translateDataListRows(rows: FlowTypes.Data_listRow[] = []) {
+    if (rows.length === 0) return rows;
+    // use first row to identify list of fields for translation
+    const [{ _translatedFields }] = rows;
+    if (!_translatedFields) return rows;
+    const translateKeys = Object.keys(_translatedFields);
+    // translate rows
+    return rows.map((row) => {
+      for (const key of translateKeys) {
+        const sourceText = row[key];
+        // TODO - confirm whether potential cases that list includes non-text entries
+        if (typeof sourceText === "string" && sourceText in this.translation_strings) {
+          row[key] = this.translation_strings[sourceText];
+        }
+      }
+      return row;
+    });
   }
 
   /**
@@ -140,7 +187,7 @@ export class TemplateTranslateService extends AsyncServiceBase {
     return translated;
   }
 
-  subscribeToAppConfigChanges() {
+  private subscribeToAppConfigChanges() {
     this.appConfigService.appConfig$.subscribe((appConfig: IAppConfig) => {
       this.appLanguages = appConfig.APP_LANGUAGES;
       this.appLanguagesMeta = appConfig.APP_LANGUAGES_META;

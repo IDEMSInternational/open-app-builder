@@ -38,6 +38,10 @@ const workflows: IDeploymentWorkflows = {
         function: async ({ tasks, workflow }) =>
           tasks.workflow.runWorkflow({ name: "sync_watch", parent: workflow }),
       },
+      {
+        name: "report",
+        function: async ({ tasks }) => tasks.appData.generateReports(),
+      },
     ],
   },
   sync_sheets: {
@@ -189,7 +193,7 @@ const workflows: IDeploymentWorkflows = {
                     parent: workflow,
                     args: ["--skip-download"],
                   });
-                  tasks.appData.copyDeploymentDataToApp();
+                  await tasks.appData.copyDeploymentDataToApp();
                 }
               },
             });
@@ -207,6 +211,15 @@ const workflows: IDeploymentWorkflows = {
           await tasks.gdrive.authorize();
           process.exit(0);
         },
+      },
+    ],
+  },
+  report: {
+    label: "Generate App Data Reports",
+    steps: [
+      {
+        name: "Report",
+        function: async ({ tasks }) => tasks.appData.generateReports(),
       },
     ],
   },
@@ -245,5 +258,5 @@ const processLocalFiles = async (
     });
   }
 
-  tasks.appData.copyDeploymentDataToApp();
+  await tasks.appData.copyDeploymentDataToApp();
 };

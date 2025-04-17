@@ -3,13 +3,10 @@ import { DefaultParser } from "./default.parser";
 import { TemplatedData } from "shared";
 
 export class GeneratorParser extends DefaultParser<FlowTypes.GeneratorFlow> {
-  /**
-   * Method applied after all flow processing and processing methods to populate
-   * generated flows to main list
-   */
-  public static populateProcessedFlows() {}
+  /** local hashmap of generated outputs. Used for tests  */
+  private outputHashmap: { [flow_name: string]: { [output_name: string]: any } } = {};
 
-  public postProcessFlow(flow: FlowTypes.GeneratorFlow): FlowTypes.GeneratorFlow {
+  public override postProcessFlow(flow: FlowTypes.GeneratorFlow): FlowTypes.GeneratorFlow {
     flow.parameter_list = this.validateParameterList(flow);
 
     const inputSources = this.loadInputSources();
@@ -23,13 +20,23 @@ export class GeneratorParser extends DefaultParser<FlowTypes.GeneratorFlow> {
       return;
     }
     try {
-      this.flow._generated = this.generateFlows(flow, dataListRows);
-      // this.handleOutputs(generated);
+      const generated = this.generateFlows(flow, dataListRows);
+      // HACK - populate to output hashmap for use in tests. Clone output due to deep nest issues
+      this.outputHashmap[flow.flow_name] = JSON.parse(JSON.stringify(generated));
+
+      // Pass all generated flows to the back of the current processing queue so that they can be
+      // populated to processed hashmap and referenced from other processes as required
+      for (const generatedFlow of generated) {
+        const deferId = `${generatedFlow.flow_type}.${generatedFlow.flow_subtype}.${generatedFlow.flow_name}`;
+        this.flowProcessor.deferInputProcess(generatedFlow, deferId);
+      }
+      // Return the parsed generator along with a summary of output flows to store within outputs
+      flow._output_flows = generated.map(({ rows, ...keptFields }) => keptFields);
+      return flow;
     } catch (error) {
       console.trace(error);
       throw error;
     }
-    return this.flow;
   }
 
   private validateParameterList(
@@ -61,7 +68,7 @@ export class GeneratorParser extends DefaultParser<FlowTypes.GeneratorFlow> {
     generator: FlowTypes.GeneratorFlow,
     dataListRows: FlowTypes.Data_listRow[]
   ) {
-    const generated: FlowTypes.FlowTypeWithData["_generated"] = {};
+    const generated: FlowTypes.FlowTypeWithData[] = [];
 
     for (const listRow of dataListRows) {
       const parser = new TemplatedData({
@@ -82,8 +89,7 @@ export class GeneratorParser extends DefaultParser<FlowTypes.GeneratorFlow> {
         flow_type: output_flow_type,
         rows: parsedRows,
       };
-      generated[output_flow_type] ??= {};
-      generated[output_flow_type][output_flow_name] = generatedFlow;
+      generated.push(generatedFlow);
     }
     return generated;
   }

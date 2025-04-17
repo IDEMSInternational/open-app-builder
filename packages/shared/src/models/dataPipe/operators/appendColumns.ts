@@ -1,5 +1,5 @@
 import { DataFrame, toJSON } from "danfojs";
-import { AppStringEvaluator } from "../../appStringEvaluator/appStringEvaluator";
+import { AppDataEvaluator } from "../../appDataEvaluator/appDataEvaluator";
 import BaseOperator from "./base";
 import { parseStringValue } from "../../../utils";
 
@@ -24,7 +24,7 @@ class AppendColumnsOperator extends BaseOperator {
     return arg.key && arg.valueExpression !== undefined;
   }
   apply() {
-    const evaluator = new AppStringEvaluator();
+    const evaluator = new AppDataEvaluator();
     for (const { key, valueExpression } of this.args_list) {
       const rows = toJSON(this.df) as any[];
       const appendValues = rows.map((row) => {

@@ -7,8 +7,8 @@ import { TaskService } from "./task.service";
 
 // Mock Services
 import { MockTemplateFieldService } from "../../components/template/services/template-field.service.spec";
-import { MockAppConfigService } from "../app-config/app-config.service.spec";
-import { MockAppDataService } from "../data/app-data.service.spec";
+import { MockAppConfigService } from "../app-config/app-config.service.mock.spec";
+import { MockAppDataService } from "../data/app-data.service.mock.spec";
 // Mocked Services
 import { AppDataService, IAppDataCache } from "../data/app-data.service";
 import { AppConfigService } from "../app-config/app-config.service";
@@ -16,6 +16,8 @@ import { CampaignService } from "../../../feature/campaign/campaign.service";
 import { TemplateFieldService } from "../../components/template/services/template-field.service";
 import { _wait } from "packages/shared/src/utils/async-utils";
 import { provideHttpClient, withInterceptorsFromDi } from "@angular/common/http";
+import { DynamicDataService } from "../dynamic-data/dynamic-data.service";
+import { MockDynamicDataService } from "../dynamic-data/dynamic-data.service.mock.spec";
 
 // This must match the corresponding value in the deployment config, if the default value is overridden
 const highlightedTaskFieldName = "_task_highlighted_group_id";
@@ -96,6 +98,10 @@ describe("TaskService", () => {
         {
           provide: AppConfigService,
           useValue: new MockAppConfigService(MOCK_CONFIG),
+        },
+        {
+          provide: DynamicDataService,
+          useValue: new MockDynamicDataService(MOCK_DATA),
         },
         // Mock single method from campaign service called
         {

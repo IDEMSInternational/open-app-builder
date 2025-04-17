@@ -20,6 +20,21 @@ name: Android - Release to Google Play
   
 on:
  workflow_call:
+   secrets: 
+    FIREBASE_SERVICE_ACCOUNT:
+      required: true
+    GOOGLE_SERVICES_JSON: 
+      required: true
+    SIGNING_KEY: 
+      required: true
+    ALIAS: 
+      required: true
+    KEY_STORE_PASSWORD: 
+      required: true
+    KEY_PASSWORD: 
+      required: true
+    DEPLOYMENT_PRIVATE_KEY:
+      description: Provide private key if deployment uses encrypted config
   
 jobs:
     build:

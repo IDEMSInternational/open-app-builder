@@ -1,44 +1,66 @@
 <ion-content class="ion-padding">
+  <!-- Sync Debug -->
   <div style="display: flex; align-items: center; gap: 8px">
-    <span>App User ID:</span>
-    <ion-input [(ngModel)]="importUserId" style="flex: 1"></ion-input>
-    <ion-button (click)="importUserData()">Import</ion-button>
+    <ion-input [(ngModel)]="importUserId" label="App User ID:" style="flex: 1"></ion-input>
+    <ion-button (click)="importUserData(importUserId)">Import</ion-button>
     <ion-button (click)="syncUserData()">Sync</ion-button>
   </div>
-  <h2>Contact Fields</h2>
+  <!-- Sign In Debug -->
+  <div style="display: flex; align-items: center; gap: 8px">
+    @if(authService.provider.authUser(); as user){
+    <span style="margin-right: auto">App Auth ID: {{user.uid}} </span>
+    <ion-button (click)="authService.provider.signOut()">Sign Out</ion-button>
+    } @else {
+    <span style="margin-right: auto">Anonymous User </span>
+    <ion-button (click)="authService.provider.signInWithGoogle()">Sign In</ion-button>
+    }
+  </div>
+  <!-- Auth Profile Restore -->
+  @if(authService.restoreProfiles().length > 0){
+  <h2>Auth Profile Restore</h2>
   <div class="table-container">
     <table>
       <thead>
         <tr>
-          <th>Field</th>
-          <th>Value</th>
+          <th>ID</th>
+          <th>Device</th>
+          <th>Last Updated</th>
+          <th></th>
         </tr>
       </thead>
       <tbody>
-        @for(contactField of contactFields; track contactField.key){
+        @for(profile of authService.restoreProfiles(); track profile.app_user_id){
         <tr>
-          <td>{{contactField.key}}</td>
-          <td>{{contactField.value}}</td>
+          <td>{{profile.app_user_id}}</td>
+          <td>
+            <div>{{profile.device_info.manufacturer}}</div>
+            <div>{{profile.device_info.model}}</div>
+          </td>
+          <td>{{profile.updatedAt | date:'medium'}}</td>
+          <td>
+            <ion-button (click)="importUserData(profile.app_user_id)">Restore</ion-button>
+          </td>
         </tr>
         }
       </tbody>
     </table>
   </div>
+  }
 
+  <!-- Dynamic Data -->
   <h2>Dynamic Data</h2>
   <ion-select
     #dynamicDataSelect
     placeholder="Select Data"
-    [(ngModel)]="dynamicDataSelected"
-    (ionChange)="setDynamicEntryView(dynamicDataSelect.value)"
+    [value]="dynamicDataSelected()"
+    (ionChange)="dynamicDataSelected.set(dynamicDataSelect.value)"
     style="margin-bottom: 1rem"
-    [compareWith]="dynamicEntryCompareFn"
   >
-    @for(entry of dynamicDataEntries; track entry.id){
-    <ion-select-option [value]="entry">{{entry.flow_name}}</ion-select-option>
+    @for(flowName of dynamicDataSelectOptions(); track flowName){
+    <ion-select-option [value]="flowName">{{flowName}}</ion-select-option>
     }
   </ion-select>
-  @if(dynamicDataTable; as table){
+  @if(dynamicDataTableData(); as table){
   <div class="table-container">
     <table>
       <thead>
@@ -52,13 +74,65 @@
         @for(row of table.rows; track row.id){
         <tr>
           @for(header of table.headers; track header){
-          <td>{{row[header]}}</td>
+          <td
+            class="dynamic-data-value"
+            [class.isOverrideValue]="row._override_keys.includes(header)"
+          >
+            {{row[header]}}
+          </td>
           }
         </tr>
         }
       </tbody>
     </table>
   </div>
-
+  <div style="display: flex; align-items: center; gap: 8px; margin-top: 1rem">
+    @if (dynamicDataSelected(); as selected) {
+    <ion-button (click)="resetDynamicDataList(selected)">Reset List</ion-button>
+    }
+    <ion-button (click)="promptDynamicDataResetAll()" fill="clear">Reset All</ion-button>
+  </div>
   }
+
+  <!-- Protected Fields -->
+  <h2>Protected Fields</h2>
+  <div class="table-container">
+    <table>
+      <thead>
+        <tr>
+          <th>Field</th>
+          <th>Value</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for(contactField of protectedFields(); track contactField.key){
+        <tr>
+          <td>{{contactField.key}}</td>
+          <td>{{contactField.value}}</td>
+        </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Contact Fields -->
+  <h2>Contact Fields</h2>
+  <div class="table-container">
+    <table>
+      <thead>
+        <tr>
+          <th>Field</th>
+          <th>Value</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for(contactField of contactFields(); track contactField.key){
+        <tr>
+          <td>{{contactField.key}}</td>
+          <td>{{contactField.value}}</td>
+        </tr>
+        }
+      </tbody>
+    </table>
+  </div>
 </ion-content>

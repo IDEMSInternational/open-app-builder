@@ -1,4 +1,4 @@
-export * from "./appStringEvaluator/appStringEvaluator";
+export * from "./appDataEvaluator/appDataEvaluator";
 export * from "./templatedData/templatedData";
 export * from "./jsEvaluator/jsEvaluator";
 

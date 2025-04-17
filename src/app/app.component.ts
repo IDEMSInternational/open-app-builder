@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component } from "@angular/core";
+import { ChangeDetectionStrategy, Component, computed, signal } from "@angular/core";
 import { Platform, MenuController } from "@ionic/angular";
 import { Router } from "@angular/router";
 import { Capacitor } from "@capacitor/core";
@@ -13,24 +13,19 @@ import { UserMetaService } from "./shared/services/userMeta/userMeta.service";
 import { AppEventService } from "./shared/services/app-events/app-events.service";
 import { TourService } from "./feature/tour/tour.service";
 import { TemplateService } from "./shared/components/template/services/template.service";
-import { CampaignService } from "./feature/campaign/campaign.service";
 import { ServerService } from "./shared/services/server/server.service";
 import { DataEvaluationService } from "./shared/services/data/data-evaluation.service";
 import { DynamicDataService } from "./shared/services/dynamic-data/dynamic-data.service";
 import { TemplateProcessService } from "./shared/components/template/services/instance/template-process.service";
 import { isSameDay } from "date-fns";
 import { AnalyticsService } from "./shared/services/analytics/analytics.service";
-import { LocalNotificationService } from "./shared/services/notification/local-notification.service";
 import { TemplateFieldService } from "./shared/components/template/services/template-field.service";
 import { TemplateTranslateService } from "./shared/components/template/services/template-translate.service";
-import { LocalNotificationInteractionService } from "./shared/services/notification/local-notification-interaction.service";
 import { DBSyncService } from "./shared/services/db/db-sync.service";
 import { CrashlyticsService } from "./shared/services/crashlytics/crashlytics.service";
 import { AppDataService } from "./shared/services/data/app-data.service";
-import { AuthService } from "./shared/services/auth/auth.service";
 import { LifecycleActionsService } from "./shared/services/lifecycle-actions/lifecycle-actions.service";
 import { AppConfigService } from "./shared/services/app-config/app-config.service";
-import { IAppConfig } from "./shared/model";
 import { TaskService } from "./shared/services/task/task.service";
 import { AppUpdateService } from "./shared/services/app-update/app-update.service";
 import { RemoteAssetService } from "./shared/services/remote-asset/remote-asset.service";
@@ -42,19 +37,34 @@ import { FeedbackService } from "./feature/feedback/feedback.service";
 import { ShareService } from "./shared/services/share/share.service";
 import { LocalStorageService } from "./shared/services/local-storage/local-storage.service";
 import { DeploymentService } from "./shared/services/deployment/deployment.service";
+import { ScreenOrientationService } from "./shared/services/screen-orientation/screen-orientation.service";
+import { TemplateMetadataService } from "./shared/components/template/services/template-metadata.service";
+import { getPaddingValuesFromShorthand } from "./shared/components/template/utils";
 
 @Component({
   selector: "app-root",
   templateUrl: "app.component.html",
   styleUrls: ["app.component.scss"],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AppComponent {
-  appConfig: IAppConfig;
-  appAuthenticationDefaults: IAppConfig["APP_AUTHENTICATION_DEFAULTS"];
-  sideMenuDefaults: IAppConfig["APP_SIDEMENU_DEFAULTS"];
-  footerDefaults: IAppConfig["APP_FOOTER_DEFAULTS"];
+  footerConfig = computed(() => this.appConfigService.appConfig().APP_FOOTER_DEFAULTS);
+  sideMenuConfig = computed(() => this.appConfigService.appConfig().APP_SIDEMENU_DEFAULTS);
+  layoutConfig = computed(() => this.appConfigService.appConfig().LAYOUT);
+
+  public routeContainerStyle = computed(() => {
+    const { page_padding } = this.layoutConfig();
+    const { top, right, bottom, left } = getPaddingValuesFromShorthand(page_padding);
+    return {
+      "--page-padding-top": top,
+      "--page-padding-start": left,
+      "--page-padding-bottom": bottom,
+      "--page-padding-end": right,
+    };
+  });
+
   /** Track when app ready to render sidebar and route templates */
-  public renderAppTemplates = false;
+  public renderAppTemplates = signal(false);
 
   public get deploymentConfig() {
     return this.deploymentService.config;
@@ -74,7 +84,6 @@ export class AppComponent {
 
     // 3rd Party Services
     private platform: Platform,
-    private cdr: ChangeDetectorRef,
     private menuController: MenuController,
     private router: Router,
     // App services
@@ -89,18 +98,15 @@ export class AppComponent {
     private tourService: TourService,
     private templateService: TemplateService,
     private templateFieldService: TemplateFieldService,
+    private templateMetadataService: TemplateMetadataService,
     private templateProcessService: TemplateProcessService,
     private appEventService: AppEventService,
-    private campaignService: CampaignService,
     private dataEvaluationService: DataEvaluationService,
     private analyticsService: AnalyticsService,
-    private localNotificationService: LocalNotificationService,
-    private localNotificationInteractionService: LocalNotificationInteractionService,
     // make public so that language direction signal can be read directly in template
     public templateTranslateService: TemplateTranslateService,
     private crashlyticsService: CrashlyticsService,
     private appDataService: AppDataService,
-    private authService: AuthService,
     private seoService: SeoService,
     private taskService: TaskService,
     private feedbackService: FeedbackService,
@@ -111,7 +117,8 @@ export class AppComponent {
     private appUpdateService: AppUpdateService,
     private remoteAssetService: RemoteAssetService,
     private shareService: ShareService,
-    private fileManagerService: FileManagerService
+    private fileManagerService: FileManagerService,
+    private screenOrientationService: ScreenOrientationService
   ) {
     this.initializeApp();
   }
@@ -119,13 +126,11 @@ export class AppComponent {
   private async initializeApp() {
     this.platform.ready().then(async () => {
       this.platforms = this.platform.platforms().join(" ");
-      this.subscribeToAppConfigChanges();
       await this.populateAppInitFields();
       await this.initialiseCoreServices();
       this.hackSetDeveloperOptions();
       const isDeveloperMode = this.templateFieldService.getField("user_mode") === false;
       const user = this.userMetaService.userMeta;
-      await this.loadAuthConfig();
 
       if (!user.first_app_open) {
         await this.userMetaService.setUserMeta({ first_app_open: new Date().toISOString() });
@@ -146,9 +151,7 @@ export class AppComponent {
         await SplashScreen.hide();
       }
       // Show main template
-      this.renderAppTemplates = true;
-      // Detect changes in case expression changed prior to render (e.g. feedback sidebar)
-      this.cdr.detectChanges();
+      this.renderAppTemplates.set(true);
       this.scheduleReinitialisation();
     });
   }
@@ -158,45 +161,13 @@ export class AppComponent {
     this.localStorageService.setProtected("DEPLOYMENT_NAME", name);
     this.localStorageService.setProtected("APP_VERSION", _app_builder_version);
     this.localStorageService.setProtected("CONTENT_VERSION", _content_version);
+    this.localStorageService.setProtected("PLATFORM", Capacitor.getPlatform());
     // HACK - ensure first_app_launch migrated from event service
     if (!this.localStorageService.getProtected("APP_FIRST_LAUNCH")) {
       await this.appEventService.ready();
       const { first_app_launch } = this.appEventService.summary;
       this.localStorageService.setProtected("APP_FIRST_LAUNCH", first_app_launch);
     }
-  }
-
-  /**
-   * Authentication requires verified domain and app ids populated to firebase console
-   * Currently only run on native where specified (but can comment out for testing locally)
-   */
-  private async loadAuthConfig() {
-    const { firebase } = this.deploymentService.config;
-    const { enforceLogin } = this.appAuthenticationDefaults;
-    const ensureLogin = firebase.config && enforceLogin && Capacitor.isNativePlatform();
-    if (ensureLogin) {
-      this.authService.ready();
-      const authUser = await this.authService.getCurrentUser();
-      if (!authUser) {
-        const templatename = this.appAuthenticationDefaults.signInTemplate;
-        const { modal } = await this.templateService.runStandaloneTemplate(templatename, {
-          showCloseButton: false,
-          waitForDismiss: false,
-        });
-        await this.authService.waitForSignInComplete();
-        await modal.dismiss();
-      }
-    }
-  }
-
-  /** Initialise appConfig and set dependent properties */
-  private subscribeToAppConfigChanges() {
-    this.appConfigService.changesWithInitialValue$.subscribe((changes: IAppConfig) => {
-      this.appConfig = { ...this.appConfig, ...changes };
-      this.sideMenuDefaults = this.appConfig.APP_SIDEMENU_DEFAULTS;
-      this.footerDefaults = this.appConfig.APP_FOOTER_DEFAULTS;
-      this.appAuthenticationDefaults = this.appConfig.APP_AUTHENTICATION_DEFAULTS;
-    });
   }
 
   /**
@@ -228,11 +199,8 @@ export class AppComponent {
         this.dynamicDataService,
         this.userMetaService,
         this.tourService,
-        this.localNotificationService,
-        this.localNotificationInteractionService,
         this.taskService,
         this.taskActions,
-        this.campaignService,
         this.remoteAssetService,
       ],
       nonBlocking: [
@@ -243,12 +211,13 @@ export class AppComponent {
         this.templateService,
         this.templateProcessService,
         this.appDataService,
-        this.authService,
         this.serverService,
         this.seoService,
         this.feedbackService,
         this.shareService,
         this.fileManagerService,
+        this.templateMetadataService,
+        this.screenOrientationService,
       ],
       deferred: [this.analyticsService],
       implicit: [

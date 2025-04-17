@@ -10,8 +10,8 @@ import {
   ITemplatePopupComponentProps,
   TemplatePopupComponent,
 } from "../components/layout/popup/popup.component";
-import { ITemplateContainerProps } from "../models";
 import { TemplateContainerComponent } from "../template-container.component";
+import { TemplateActionRegistry } from "./instance/template-action.registry";
 
 // Toggle logs used across full service for debugging purposes (there's quite a few and tedious to comment)
 const SHOW_DEBUG_LOGS = false;
@@ -29,9 +29,11 @@ export class TemplateNavService extends SyncServiceBase {
     private modalCtrl: ModalController,
     private location: Location,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private templateActionRegistry: TemplateActionRegistry
   ) {
     super("TemplateNav");
+    this.registerTemplateActionHandlers();
   }
 
   /**
@@ -40,7 +42,7 @@ export class TemplateNavService extends SyncServiceBase {
    * unless specifically closed (e.g. nav triggered from modal)
    */
   private openPopupsByName: {
-    [templatename: string]: { modal: HTMLIonModalElement; props: ITemplateContainerProps };
+    [templatename: string]: { modal: HTMLIonModalElement; props: ITemplatePopupComponentProps };
   } = {};
 
   public async handleQueryParamChange(
@@ -210,11 +212,12 @@ export class TemplateNavService extends SyncServiceBase {
     container?: TemplateContainerComponent
   ) {
     const templatename = action.args[0];
+    const variant = action.params?.variant;
     // if triggered outside templating system (e.g. via notification action) still enable
     // popup creation and dismiss on nav changes
     if (!container) {
       this.router.events.pipe(first()).subscribe(() => this.dismissPopup(templatename));
-      return this.createPopupAndWaitForDismiss(templatename, null);
+      return this.createPopupAndWaitForDismiss(templatename, null, variant);
     }
 
     const { name } = container;
@@ -224,6 +227,7 @@ export class TemplateNavService extends SyncServiceBase {
       popup_child: templatename,
       popup_parent: name,
       popup_parent_triggered_by: action._triggeredBy?.name || null,
+      popup_variant: variant,
     };
     this.router.navigate([], { queryParams, replaceUrl: true, queryParamsHandling: "merge" });
   }
@@ -232,7 +236,7 @@ export class TemplateNavService extends SyncServiceBase {
     params: INavQueryParams,
     container: TemplateContainerComponent
   ) {
-    const { popup_child, nav_child_emit, popup_parent_triggered_by } = params;
+    const { popup_child, nav_child_emit, popup_parent_triggered_by, popup_variant } = params;
     const { template } = container;
     const existingPopup = this.openPopupsByName[popup_child];
     log("[Popup] - parent", { params, parent: container.name });
@@ -272,15 +276,16 @@ export class TemplateNavService extends SyncServiceBase {
     }
     // If no popup already exists, create, present, and react to dismiss
     else {
-      await this.createPopupAndWaitForDismiss(popup_child, container);
+      await this.createPopupAndWaitForDismiss(popup_child, container, popup_variant);
     }
   }
 
   private async createPopupAndWaitForDismiss(
     popup_child: string,
-    container: TemplateContainerComponent
+    container: TemplateContainerComponent,
+    variant: string
   ) {
-    const childTemplateModal = await this.createChildPopupModal(popup_child, container);
+    const childTemplateModal = await this.createChildPopupModal(popup_child, container, variant);
     if (childTemplateModal) {
       await childTemplateModal.present();
       const { data } = await childTemplateModal.onDidDismiss();
@@ -294,6 +299,7 @@ export class TemplateNavService extends SyncServiceBase {
         popup_child: null,
         popup_parent: null,
         popup_parent_triggered_by: null,
+        popup_variant: null,
       };
       this.router.navigate([], { queryParams, replaceUrl: true, queryParamsHandling: "merge" });
     }
@@ -312,16 +318,20 @@ export class TemplateNavService extends SyncServiceBase {
     container: TemplateContainerComponent
   ) {
     // Hide any open popup that was trigggered on a previous page prior to navigation (unless new popup)
-    const { popup_child } = params;
+    const { popup_child, popup_variant } = params;
     const existingPopup = this.openPopupsByName[popup_child];
     if (existingPopup) {
       existingPopup.modal.classList.add("hide-popup-on-template");
     } else {
-      this.createPopupAndWaitForDismiss(params.popup_child, container);
+      this.createPopupAndWaitForDismiss(params.popup_child, container, popup_variant);
     }
   }
 
-  private async createChildPopupModal(popup_child: string, container: TemplateContainerComponent) {
+  private async createChildPopupModal(
+    popup_child: string,
+    container: TemplateContainerComponent,
+    variant?: string
+  ) {
     const childContainerProps: ITemplatePopupComponentProps = {
       // make the popup share the same name as the container so that nav events return to parent container page
       name: popup_child,
@@ -329,6 +339,7 @@ export class TemplateNavService extends SyncServiceBase {
       parent: container,
       showCloseButton: true,
       dismissOnEmit: true,
+      variant,
     };
     // If trying to recreate a popup that already exists simply mark as visible
     const existingPopup = this.openPopupsByName[popup_child];
@@ -348,6 +359,27 @@ export class TemplateNavService extends SyncServiceBase {
     this.openPopupsByName[popup_child] = { modal, props: childContainerProps };
     return modal;
   }
+
+  /*****************************************************************************************************
+   *  Register custom nav actions
+   ****************************************************************************************************/
+  private registerTemplateActionHandlers() {
+    this.templateActionRegistry.register({
+      nav: async ({ args }) => {
+        const [arg] = args;
+        switch (arg) {
+          case "back":
+            this.location.back();
+            break;
+          case "forward":
+            this.location.forward();
+            break;
+          default:
+            console.warn(`[TEMPLATE NAV] Unrecognised nav action: ${arg}`);
+        }
+      },
+    });
+  }
 }
 
 /** When using go_to statements various nav query params are added for maintaining relationships between templates */
@@ -361,4 +393,5 @@ export interface INavQueryParams {
   popup_child?: string; //
   popup_parent?: string;
   popup_parent_triggered_by?: string; //
+  popup_variant?: string;
 }

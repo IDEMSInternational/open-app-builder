@@ -14,6 +14,15 @@ const workflows: IDeploymentWorkflows = {
       },
     ],
   },
+  optimise_build: {
+    label: "Remove unused features from build code",
+    steps: [
+      {
+        name: "optimise_build",
+        function: async ({ tasks }) => tasks.appData.optimiseBuild(),
+      },
+    ],
+  },
   clear_workflow_cache: {
     label: "Clear workflow caches",
     steps: [

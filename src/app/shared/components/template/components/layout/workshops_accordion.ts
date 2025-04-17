@@ -1,13 +1,13 @@
 import { Component, OnInit } from "@angular/core";
-import { FlowTypes } from "src/app/shared/model";
 import { TemplateBaseComponent } from "../base";
+import { FlowTypes } from "packages/data-models";
 
 @Component({
   selector: "plh-tmpl-workshops-accordion",
   template: `<div class="workshops-accordion">
     <div>
       <plh-tmpl-accordion-section
-        *ngFor="let childRow of rows; let idx = index"
+        *ngFor="let childRow of accordionRows; let idx = index"
         [row]="childRow"
         [parent]="parent"
         [id]="idx.toString()"
@@ -19,14 +19,14 @@ import { TemplateBaseComponent } from "../base";
   styleUrls: ["./workshops_accordion.scss"],
 })
 export class WorkshopsComponent extends TemplateBaseComponent implements OnInit {
-  rows: FlowTypes.TemplateRow[];
+  public accordionRows: FlowTypes.TemplateRow[] = [];
 
   ngOnInit() {
-    this.rows = [...this._row.rows];
+    this.accordionRows = [...this.rows()];
   }
 
   toggleState(rowId: string) {
-    const updatedRows = this.rows.map((row, idx) => {
+    const updatedRows = this.accordionRows.map((row, idx) => {
       if (idx === +rowId) {
         if (row.parameter_list.state === "open") {
           row.parameter_list.state = "closed";
@@ -38,6 +38,6 @@ export class WorkshopsComponent extends TemplateBaseComponent implements OnInit 
       }
       return row;
     });
-    this.rows = updatedRows;
+    this.accordionRows = updatedRows;
   }
 }

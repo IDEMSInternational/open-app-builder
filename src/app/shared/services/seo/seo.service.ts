@@ -1,6 +1,7 @@
 import { Injectable } from "@angular/core";
 import { SyncServiceBase } from "../syncService.base";
 import { DeploymentService } from "../deployment/deployment.service";
+import { AppConfigService } from "../app-config/app-config.service";
 
 interface ISEOMeta {
   title: string;
@@ -21,7 +22,10 @@ type IMetaName =
   providedIn: "root",
 })
 export class SeoService extends SyncServiceBase {
-  constructor(private deploymentService: DeploymentService) {
+  constructor(
+    private deploymentService: DeploymentService,
+    private appConfigService: AppConfigService
+  ) {
     super("SEO Service");
     // call after init to apply defaults
     this.updateMeta({});
@@ -65,12 +69,14 @@ export class SeoService extends SyncServiceBase {
   private getDefaultSEOTags(): ISEOMeta {
     const PUBLIC_URL = location.origin;
     let faviconUrl = `${PUBLIC_URL}/assets/icon/favicon.svg`;
-    const { web, app_config } = this.deploymentService.config;
+    const { web } = this.deploymentService.config;
+    const { title } = this.appConfigService.appConfig().APP_HEADER_DEFAULTS;
+
     if (web?.favicon_asset) {
       faviconUrl = `${PUBLIC_URL}/assets/app_data/assets/${web.favicon_asset}`;
     }
     return {
-      title: app_config.APP_HEADER_DEFAULTS.title,
+      title,
       description: "",
       faviconUrl,
       imageUrl: ``,

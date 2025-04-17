@@ -1,8 +1,7 @@
 /* eslint @typescript-eslint/sort-type-constituents: "warn"  */
 
 import type { IDataPipeOperation } from "shared";
-import type { IAppConfig } from "./appConfig";
-import { IAssetEntry } from "./deployment.model";
+import type { IAssetEntry } from "./assets.model";
 
 /*********************************************************************************************
  *  Base flow types
@@ -66,8 +65,6 @@ export namespace FlowTypes {
     rows: any[];
     /** Datalists populate rows as a hashmap instead to allow easier access to nested structures */
     rowsHashmap?: { [id: string]: any };
-    /** Additional flows generated during parsing, such as data pipe or generator flow outputs */
-    _generated?: { [flow_type in FlowType]?: { [flow_name: string]: FlowTypeWithData } };
   }
 
   /*********************************************************************************************
@@ -77,13 +74,32 @@ export namespace FlowTypes {
     flow_type: "asset_pack";
     rows: Data_listRow<IAssetEntry>[];
   }
+
+  /**
+   * Data types supported within data_lists
+   * These are a subset of types provided by Json Schema standards
+   * https://json-schema.org/draft/2020-12/json-schema-core#name-instance-data-model
+   *  */
+  export type Data_listColumnType = "boolean" | "number" | "object" | "string";
+
+  export interface Data_listColumnMetadata {
+    /** Column data type. Default "string" when not defined */
+    type?: Data_listColumnType;
+  }
+
   export interface Data_list extends FlowTypeWithData {
     flow_type: "data_list";
     rows: Data_listRow[];
+    /** Hashmap of any additional column metadata (omitted if all columns default string type) */
+    _metadata?: {
+      [column_name: string]: Data_listColumnMetadata;
+    };
   }
   export interface DataPipeFlow extends FlowTypeWithData {
     flow_type: "data_pipe";
     rows: IDataPipeOperation[];
+    /** Generated list of output flows created by generator */
+    _output_flows?: FlowTypeBase[];
   }
   export interface GeneratorFlow extends FlowTypeWithData {
     flow_type: "generator";
@@ -93,6 +109,8 @@ export namespace FlowTypes {
       output_flow_subtype?: string;
       output_flow_type?: FlowType;
     };
+    /** Generated list of output flows created by generator */
+    _output_flows?: FlowTypeBase[];
   }
   export interface Translation_strings {
     [sourceText: string]: string;
@@ -252,74 +270,47 @@ export namespace FlowTypes {
     rows: TemplateRow[];
     comments?: string;
   }
-  export type TemplateRowType =
-    | "accordion_section"
-    | "accordion"
-    | "advanced_dashed_box"
-    | "animated_section_group"
-    | "animated_section"
-    | "animated_slides"
-    | "audio"
-    | "button"
-    | "carousel"
-    | "combo_box"
-    | "dashed_box"
-    | "data_items"
-    | "debug_toggle"
-    | "display_grid"
-    | "display_group"
-    | "display_theme"
-    | "drawer"
-    | "form"
-    | "help_icon"
-    | "html"
-    | "icon_banner"
-    | "image"
+
+  /** Row types that do not display component but perform an action when processed */
+  type TemplateRowBaseType =
     | "items"
-    | "latex"
-    | "lottie_animation"
-    | "nav_group"
-    | "nav_section"
-    | "navigation_bar"
     | "nested_properties"
-    | "number_selector"
-    | "odk_form"
-    | "parent_point_box"
-    | "parent_point_counter"
-    | "pdf"
-    | "progress_path"
-    | "qr_code"
-    | "radio_button_grid"
-    | "radio_group"
-    | "round_button"
-    | "select_text"
     | "set_default"
     | "set_field"
     | "set_local"
     | "set_variable"
-    | "simple_checkbox"
-    | "slider"
-    | "square_button"
-    | "subtitle"
-    | "task_card"
-    | "task_progress_bar"
-    | "template"
-    | "text_area"
-    | "text_box"
-    | "text_bubble"
-    | "text"
-    | "tile_component"
-    | "timer"
-    | "title"
-    | "toggle_bar"
-    | "update_action_list"
-    | "video"
-    | "workshops_accordion";
+    | "update_action_list";
+
+  /** Row types used within core components (always included) */
+  export type TemplateRowCoreType = "data_items" | "template" | "text" | "title";
+
+  /**
+   * HACK - Deployments can also have row types for any registered component names
+   * To keep intellisense from named core/base types and allow for any string use
+   * workaround type https://stackoverflow.com/a/61048124
+   * */
+  type TemplateRowDeploymentType = string & {};
+
+  /** Mapping of dynamic variables by prefix to value references */
+  export interface TemplateRowEvalContext {
+    item?: TemplateRowItemEvalContextMetadata & { [key: string]: any };
+    local?: { [row_nested_name: string]: FlowTypes.TemplateRow["value"] };
+    row?: FlowTypes.TemplateRow;
+    /**
+     * HACK - when evaluating dynamic context the "field" value references the column name being evaluated
+     * and not @field values
+     * TODO - refactor
+     */
+    field?: string;
+    // TODO - type definition appears in template-calc service but not easy to import (should refactor)
+    calc?: any;
+    // TODO - generic support for all prefixes
+  }
 
   export interface TemplateRow extends Row_with_translations {
-    type: TemplateRowType;
+    type: TemplateRowBaseType | TemplateRowCoreType | TemplateRowDeploymentType;
     name: string;
-    value?: any; // TODO - incoming data will be string, so components should handle own parsing
+    value?: boolean | number | string;
     action_list?: TemplateRowAction[];
     style_list?: string[];
     parameter_list?: { [param: string]: string };
@@ -339,7 +330,7 @@ export namespace FlowTypes {
     /** Keep a list of dynamic dependencies used within a template, by reference (e.g. {@local.var1 : ["text_1"]}) */
     _dynamicDependencies?: { [reference: string]: string[] };
     _translatedFields?: { [field: string]: any };
-    _evalContext?: { itemContext: TemplateRowItemEvalContext }; // force specific context variables when calculating eval statements (such as loop items)
+    _evalContext?: TemplateRowEvalContext;
     __EMPTY?: any; // empty cells (can be removed after pr 679 merged)
   }
 
@@ -361,7 +352,41 @@ export namespace FlowTypes {
     [key: string]: any;
   };
 
-  type IDynamicPrefix = IAppConfig["DYNAMIC_PREFIXES"][number];
+  const DYNAMIC_PREFIXES_COMPILER = ["gen", "row", "default"] as const;
+
+  export const DYNAMIC_PREFIXES_RUNTIME = [
+    "local",
+    "field",
+    "fields",
+    "global",
+    "data",
+    "campaign",
+    "calc",
+    "item",
+    "raw",
+  ] as const;
+
+  type IDynamicPrefixRuntime = (typeof DYNAMIC_PREFIXES_RUNTIME)[number];
+
+  export const DYNAMIC_PREFIXES = [
+    ...DYNAMIC_PREFIXES_COMPILER,
+    ...DYNAMIC_PREFIXES_RUNTIME,
+  ] as const;
+
+  export type IDynamicPrefix = (typeof DYNAMIC_PREFIXES)[number];
+
+  /**
+   * Namespaced hashmap of dynamic variables. Values may include evaluated value,
+   * or may include variable metadata depending on use context
+   * @example
+   * ```
+   * {
+   * local: {my_local_var: {}
+   * field: {some_field_var: {}
+   * }
+   * ```
+   * */
+  export type IDynamicContext = { [key in IDynamicPrefix]?: { [fieldName: string]: any } };
 
   /** Data passed back from regex match, e.g. expression @local.someField => type:local, fieldName: someField */
   export interface TemplateRowDynamicEvaluator {
@@ -384,10 +409,14 @@ export namespace FlowTypes {
     | "changed"
     | "click"
     | "completed"
+    | "data_changed"
     | "info_click"
     | "nav_resume" // return to template after navigation or popup close;
     | "sent" // notification sent
     | "uncompleted";
+
+  const DATA_ACTIONS_LIST = ["add_data", "remove_data", "set_data"] as const;
+  const ITEMS_ACTIONS_LIST = ["remove_item", "set_item", "set_items"] as const;
 
   // TODO document '' action for stop propagation
   // note - to keep target nav within component stack go_to is actually just a special case of pop_up
@@ -409,15 +438,18 @@ export namespace FlowTypes {
      * Use `auth: sign_in_google` instead
      * */
     "google_auth",
+    "nav",
+    "nav_stack",
     "open_external",
     "pop_up",
     "process_template",
     "reset_app",
+    "reset_data",
     "save_to_device",
+    "screen_orientation",
     "set_field",
-    "set_item",
-    "set_items",
     "set_local",
+    "set_self",
     "share",
     "style",
     "start_tour",
@@ -427,14 +459,16 @@ export namespace FlowTypes {
     "track_event",
     "trigger_actions",
     "user",
+    ...DATA_ACTIONS_LIST,
+    ...ITEMS_ACTIONS_LIST,
   ] as const;
 
-  export interface TemplateRowAction {
+  export interface TemplateRowAction<ParamsType = any> {
     /** actions have an associated trigger */
     trigger: TemplateRowActionTrigger;
     action_id: (typeof ACTION_ID_LIST)[number];
     args: any[]; // should be boolean | string, but breaks type-checking for templates;
-    params?: any; // additional params also used by args (does not require position argument)
+    params?: ParamsType; // additional params also used by args (does not require position argument)
     // TODO - CC 2022-04-29 - ideally args should be included as part of params
     _triggeredBy?: TemplateRow; // tracking the component that triggered the action for logging;
     /**

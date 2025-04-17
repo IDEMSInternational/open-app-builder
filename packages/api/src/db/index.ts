@@ -32,14 +32,11 @@ export class DBInstance {
         database: this.dbName,
         // disable verbose migration logs in test
         logging: process.env.NODE_ENV === "test" ? false : true,
-        // Fix SSL issue
-        // https://dev.to/rodjosh/connectionerror-sequelizeconnectionerror-no-pghbaconf-entry-for-host-in-heroku-postgresql-using-sequelize-3icj
-        dialectOptions: {
-          ssl: {
-            require: true,
-            rejectUnauthorized: false,
-          },
-        },
+        dialect: "postgres",
+
+        // Do not attempt to make SSL connection (docker container does not generate ssl certs)
+        // https://stackoverflow.com/a/61411969
+        ssl: false,
       });
       await this.runMigrations(migrationClient);
       await migrationClient.close();
