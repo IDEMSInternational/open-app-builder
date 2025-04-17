@@ -2,6 +2,12 @@
 
 
 ## Review Notes
+- Auth requirement
+  - Assuming required at level of admin/member. 
+- Making data available to anonymous users...?
+  - Maybe public groups. But wouldn't want to make top-level listable as would sync all data in groups (maybe search by accessCode or similar)
+- Decoupling general functionality from specific co-facilitator requirements
+  - Want to add data structures to support what will be needed
 - Conceptually shared_data should be thought of as a single data_list, with rows containing sharable data.
 Each row has a unique id, and a specific "data" column of shared json data. Additional columns will be used in
 the future for general functionality, such as marking the row as public/private, or providing list of users to share with
@@ -52,15 +58,16 @@ Minimal track collection creator auth id (assume later permissions), and a singl
 
 ## TODO
 
-- Finish refactoring data to nested document
-- Generate unique IDs (?) and allow for custom (non-unique) name?
-- Rethink data model - ideally all key-value pairs should be in doc and subscribed as doc instead of top-level sub
-- Shared data display table (core data and editable)
+- Fix cache -- appears to add both `/` and `__` versions but only remove underscore
+- Split PRs
+- Consider allowing namespace e.g. `parent_groups` -> `shared_parent_groups`
+
+
 - Delete shared collection
+- PLH-specific group component
 - Add actions to update data
 - Render data_items
-- Test single doc subscription methods
-- Test nested collection subscription methods
+- - Make plans for nested (do not implement)
 - Invite system
   Short term possible public groups all synced and filtered by code?
 - Add separate public/private group queries (handle case where public <-> private but already persisted)
