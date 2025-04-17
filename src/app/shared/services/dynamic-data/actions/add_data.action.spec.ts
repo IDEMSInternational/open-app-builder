@@ -1,6 +1,5 @@
 import { TestBed } from "@angular/core/testing";
 
-import { HttpClientTestingModule } from "@angular/common/http/testing";
 import { MockAppDataService } from "../../data/app-data.service.mock.spec";
 import { AppDataService } from "../../data/app-data.service";
 
@@ -12,6 +11,8 @@ import { DeploymentService } from "../../deployment/deployment.service";
 import { MockDeploymentService } from "../../deployment/deployment.service.mock.spec";
 import { TemplateActionRegistry } from "../../../components/template/services/instance/template-action.registry";
 import { DynamicDataActionFactory, IActionRemoveDataParams, IActionResetDataParams } from "./index";
+import { provideHttpClient, withInterceptorsFromDi } from "@angular/common/http";
+import { provideHttpClientTesting } from "@angular/common/http/testing";
 
 type ITestRow = { id: string; number: number; string: string; _meta_field?: any };
 
@@ -92,8 +93,10 @@ describe("set_data Action", () => {
 
   beforeEach(async () => {
     TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule],
+      imports: [],
       providers: [
+        provideHttpClient(withInterceptorsFromDi()),
+        provideHttpClientTesting(),
         DynamicDataService,
         {
           provide: AppDataService,
