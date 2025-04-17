@@ -15,7 +15,7 @@ interface IDateTimePickerParams {
   styleUrls: ["./date-time-picker.component.scss"],
 })
 export class TmplDateTimePickerComponent extends TemplateBaseComponent {
-  public initialValue = this.value() ? this.value : signal(new Date().toISOString().slice(0, 16));
+  public dateTimeValue = this.value() ? this.value : signal(undefined);
   public params = computed(() => this.getParams());
   public name = computed(() => this.rowSignal()?.name);
 
