@@ -4,6 +4,7 @@ import { AnalyticsModule } from "./shared/services/analytics";
 import { NavStackModule } from "./feature/nav-stack/nav-stack.module";
 import { AuthModule } from "./shared/services/auth/auth.module";
 import { CampaignModule } from "./feature/campaign/campaign.module";
+import { provideSharedData } from "./feature/shared-data";
 
 /**
  * Module imports required for specific deployment features
@@ -24,6 +25,11 @@ import { CampaignModule } from "./feature/campaign/campaign.module";
     CampaignModule,
     NavStackModule,
     /* */
+  ],
+  // Modules defined as modern angular providers
+  providers: [
+    /** */
+    provideSharedData(),
   ],
 })
 export class DeploymentFeaturesModule {}

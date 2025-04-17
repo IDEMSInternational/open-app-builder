@@ -78,6 +78,7 @@ function generateRuntimeConfig(deploymentConfig: IDeploymentConfigJson): IDeploy
     firebase,
     git,
     name,
+    shared_data,
     supabase,
     web,
   } = deploymentConfig;
@@ -93,6 +94,7 @@ function generateRuntimeConfig(deploymentConfig: IDeploymentConfigJson): IDeploy
     error_logging,
     firebase,
     name,
+    shared_data,
     supabase,
     web,
   };

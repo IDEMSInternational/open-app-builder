@@ -451,6 +451,7 @@ export namespace FlowTypes {
     "set_local",
     "set_self",
     "share",
+    "shared_data",
     "style",
     "start_tour",
     "task",
