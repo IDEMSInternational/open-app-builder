@@ -1,12 +1,12 @@
-<ion-datetime-button datetime="datetime" [disabled]="params().disabled"></ion-datetime-button>
-
-<ion-modal [keepContentsMounted]="true">
+<ion-datetime-button [datetime]="name()" [disabled]="params().disabled"></ion-datetime-button>
+<ion-modal *ngIf="params().type" [keepContentsMounted]="true">
   <ng-template>
     <ion-datetime
-      id="datetime"
+      [id]="name()"
       #datetime
       [(ngModel)]="initialValue"
       [showDefaultButtons]="true"
+      [presentation]="params().type"
       (ionChange)="handleChange(datetime.value)"
     >
       <ion-buttons slot="buttons">
