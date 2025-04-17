@@ -9,11 +9,12 @@ import { DeploymentService } from "./shared/services/deployment/deployment.servi
 import { MockDeploymentService } from "./shared/services/deployment/deployment.service.mock.spec";
 import { AppDataService } from "./shared/services/data/app-data.service";
 import { MockAppDataService } from "./shared/services/data/app-data.service.mock.spec";
-import { HttpClientTestingModule } from "@angular/common/http/testing";
 import { SkinService } from "./shared/services/skin/skin.service";
 import { AnalyticsService } from "./shared/services/analytics";
 import { FeedbackService } from "./feature/feedback/feedback.service";
 import { AppUpdateService } from "./shared/services/app-update/app-update.service";
+import { provideHttpClient, withInterceptorsFromDi } from "@angular/common/http";
+import { provideHttpClientTesting } from "@angular/common/http/testing";
 
 describe("AppComponent", () => {
   let splashScreenSpy, platformReadySpy, platformSpy;
@@ -26,8 +27,9 @@ describe("AppComponent", () => {
     TestBed.configureTestingModule({
       declarations: [AppComponent],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
-      imports: [HttpClientTestingModule],
       providers: [
+        provideHttpClient(withInterceptorsFromDi()),
+        provideHttpClientTesting(),
         { provide: SplashScreen, useValue: splashScreenSpy },
         { provide: Platform, useValue: platformSpy },
         { provide: DeploymentService, useValue: new MockDeploymentService() },

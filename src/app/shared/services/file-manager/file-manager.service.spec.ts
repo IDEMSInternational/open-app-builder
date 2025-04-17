@@ -1,6 +1,7 @@
 import { TestBed } from "@angular/core/testing";
 import { FileManagerService } from "./file-manager.service";
-import { HttpClientTestingModule } from "@angular/common/http/testing";
+import { provideHttpClientTesting } from "@angular/common/http/testing";
+import { provideHttpClient, withInterceptorsFromDi } from "@angular/common/http";
 import { ErrorHandlerService } from "../error-handler/error-handler.service";
 import { MockErrorHandlerService } from "../error-handler/error-handler.service.mock.spec";
 import { TemplateAssetService } from "../../components/template/services/template-asset.service";
@@ -16,8 +17,10 @@ describe("FileManagerService", () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule],
+      imports: [],
       providers: [
+        provideHttpClient(withInterceptorsFromDi()),
+        provideHttpClientTesting(),
         { provide: ErrorHandlerService, useValue: new MockErrorHandlerService() },
         { provide: TemplateAssetService, useValue: {} },
         { provide: DeploymentService, useValue: new MockDeploymentService() },
