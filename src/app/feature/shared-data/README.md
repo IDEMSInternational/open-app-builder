@@ -57,13 +57,16 @@ Minimal track collection creator auth id (assume later permissions), and a singl
 
 
 ## TODO
+**Discuss on call**
+- Top-level naming (maybe prefix?)  e.g. `parent_groups` -> `shared_parent_groups`
+- Auth ids vs device ids (ability to use security rules)
+- Security rules (rule not filters, unlike postgres... determines if query will be allowed or not)
+- Deleting collections (local persistence)
+- Optimising reads (keeping deleted on server)
 
+**Dev**
 - Fix cache -- appears to add both `/` and `__` versions but only remove underscore
 - Split PRs
-- Consider allowing namespace e.g. `parent_groups` -> `shared_parent_groups`
-
-
-- Delete shared collection
 - PLH-specific group component
 - Add actions to update data
 - Render data_items
