@@ -1,4 +1,4 @@
-# Button
+# DateTimePicker
 
 ## Example
 
@@ -14,11 +14,14 @@
 
 ## Parameters
 
-| Parameter             | Value               | Description |
-| ---------             | -----------         | --------- |
-|disabled	            |false (default)      | Enables the button|
-|disabled	            |true                 | Disables the button and greys it out|
+| Parameter             | Value               | Description                          |
+| ---------             | ------------------  | ------------------------------------ |
+| disabled	            | false (default)     | Enables the button                   |
+| disabled	            | true                | Disables the button and greys it out |
 
+| type                  | date-time (default) | Allows date and time to be selected  |
+| type                  | date                | Allows date only to be selected      |  
+| type                  | time                | Allows time only to be selected      |  
 
 ## Events
 

@@ -1,10 +1,12 @@
 import { Component, computed, signal } from "@angular/core";
 import { TemplateBaseComponent } from "../base";
-import { parseBoolean } from "src/app/shared/utils";
+import { getStringParamFromTemplateRow, parseBoolean } from "src/app/shared/utils";
 
 interface IDateTimePickerParams {
   /** TEMPLATE PARAMETER: "disabled". If true, date time picker is disabled and greyed out */
   disabled: boolean;
+  /** TEMPLATE PARAMETER: "type". Determines the type of picker date & time ('datetime'), date only ('date') or time only ('time') picker*/
+  type: string;
 }
 
 @Component({
@@ -15,6 +17,7 @@ interface IDateTimePickerParams {
 export class TmplDateTimePickerComponent extends TemplateBaseComponent {
   public initialValue = this.value() ? this.value : signal(new Date().toISOString().slice(0, 16));
   public params = computed(() => this.getParams());
+  public name = computed(() => this.rowSignal()?.name);
 
   constructor() {
     super();
@@ -29,6 +32,7 @@ export class TmplDateTimePickerComponent extends TemplateBaseComponent {
 
     return {
       disabled: parseBoolean(parameterList.disabled),
+      type: getStringParamFromTemplateRow(this._row, "type", "date-time"),
     };
   }
 }
