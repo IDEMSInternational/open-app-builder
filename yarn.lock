@@ -12946,24 +12946,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"caniuse-lite@npm:^1.0.30001580":
-  version: 1.0.30001712
-  resolution: "caniuse-lite@npm:1.0.30001712"
-  checksum: 83760e735d1d7ab9ff7270747d70b71da4341bdc1c90df9fe2008ada382653e13d7501bfd7068e1d835184b03b8ac598b127bfe3e7d53419b9d7827730b4ae1a
-  languageName: node
-  linkType: hard
-
-"caniuse-lite@npm:^1.0.30001646":
-  version: 1.0.30001660
-  resolution: "caniuse-lite@npm:1.0.30001660"
-  checksum: 8b2c5de2f5facd31980426afbba68238270984acfe8c1ae925b8b6480448eea2fae292f815674617e9170c730c8a238d7cc0db919f184dc0e3cd9bec18f5e5ad
-  languageName: node
-  linkType: hard
-
-"caniuse-lite@npm:^1.0.30001688":
-  version: 1.0.30001713
-  resolution: "caniuse-lite@npm:1.0.30001713"
-  checksum: 45fd9ae77965a694818d495671ba3e9a87e4eed063824b2244c0b83b1ab0ba2d8e71dcd45441f638caadf8f0c99e154a4326bbef5c291327090cdc38feeda6fd
+"caniuse-lite@npm:^1.0.30001580, caniuse-lite@npm:^1.0.30001646, caniuse-lite@npm:^1.0.30001688":
+  version: 1.0.30001714
+  resolution: "caniuse-lite@npm:1.0.30001714"
+  checksum: e68fbee9a115f842f0d907e033f14e8d476f965473556fb993c8870854a2608573eebf4dbc2aa5b03caa9c6224ff4afe63ea8c702566fbbcb78c369fba72395b
   languageName: node
   linkType: hard
 
@@ -18131,8 +18117,8 @@ __metadata:
     marked-smartypants-lite: ^1.0.2
     mergexml: ^1.2.3
     ng2-nouislider: ^2.0.0
-    ngx-extended-pdf-viewer: 18.1.9
-    ngx-lottie: ^10.0.0
+    ngx-extended-pdf-viewer: ^19.7.1
+    ngx-lottie: ^12.0.0
     ngx-matomo-client: ^6.0.2
     nouislider: ^15.7.1
     prettier: ^3.2.5
@@ -23748,29 +23734,30 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ngx-extended-pdf-viewer@npm:18.1.9":
-  version: 18.1.9
-  resolution: "ngx-extended-pdf-viewer@npm:18.1.9"
+"ngx-extended-pdf-viewer@npm:^19.7.1":
+  version: 19.7.1
+  resolution: "ngx-extended-pdf-viewer@npm:19.7.1"
   dependencies:
     lodash.deburr: ^4.1.0
     tslib: ^2.3.0
   peerDependencies:
-    "@angular/common": ">=12.0.0 <18.0.0"
-    "@angular/core": ">=12.0.0 <18.0.0"
-  checksum: e0d8fe633e3c809fbb363933bbcc4239ccb053150a0fb10209066caeddb04142cfccd8ff2e0e75f8f6aeb0f5c5db41b3f89f86bf8d0c321fd885a33a183e9837
+    "@angular/common": ">=16.0.0 <18.0.0"
+    "@angular/core": ">=16.0.0 <18.0.0"
+    rxjs: ">=7.0.0"
+  checksum: 261346475949e8360febee60d0413b9846cc7ba3045dd5c4f0a649317c7665895070d36335e67fc309ebd8f120c57e94dd2c103a6ab22bd61e2320613ee3eba6
   languageName: node
   linkType: hard
 
-"ngx-lottie@npm:^10.0.0":
-  version: 10.0.0
-  resolution: "ngx-lottie@npm:10.0.0"
+"ngx-lottie@npm:^12.0.0":
+  version: 12.0.0
+  resolution: "ngx-lottie@npm:12.0.0"
   dependencies:
     "@scarf/scarf": ^1.1.1
     tslib: ^2.3.0
   peerDependencies:
-    "@angular/core": ">=15"
+    "@angular/core": ">=18"
     lottie-web: ">=5.9.2"
-  checksum: 1e7abd8baab02f3ae365bff90272ead63db9fc2b6a4c1775ad58ce7349300c14e824d294804ceb045c5dae6e07beceacbbbf7350eb3d5d52f71940c6ba24b997
+  checksum: a8b6897cd806b3b95d303395fe884fe7af1148bfbc9b73fdfd922c2bc584a95a56cad7bcc29f123518fc1f60129a572c98dc1b9a3dd1a4c9516115034e17a502
   languageName: node
   linkType: hard
 
