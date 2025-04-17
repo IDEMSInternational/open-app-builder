@@ -7,12 +7,12 @@ const ALLOWED_TABLES = ["contact_fields"];
 /** Temp middleware to limit operation to specific tables only */
 export class TablesMiddleware implements NestMiddleware {
   use(req: Request, res: Response, next: NextFunction) {
-    const [table_name, ...rest] = req.params?.[0]?.split("/");
+    const [table_name] = req.params?.[0]?.split("/");
     console.log(table_name, ALLOWED_TABLES.includes(table_name));
     if (!ALLOWED_TABLES.includes(table_name)) {
       throw new HttpException(
         `Operations only permitted on tables [${ALLOWED_TABLES}]`,
-        HttpStatus.FORBIDDEN
+        HttpStatus.FORBIDDEN,
       );
     }
     next();
