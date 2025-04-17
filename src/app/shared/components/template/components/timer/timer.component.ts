@@ -132,6 +132,10 @@ export class TmplTimerComponent extends TemplateBaseComponent implements ITempla
     this.state.clickRightButton();
   }
 
+  /**
+   * TODO: ionic pickerController is legacy and will be deprecated, refactor to use inline ion-picker component,
+   * see example: https://ionicframework.com/docs/api/picker#picker-in-modal
+   */
   openPicker() {
     if (this.isTimerEditable) {
       const numColumns = 4;

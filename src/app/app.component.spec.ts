@@ -3,7 +3,6 @@ import { TestBed, waitForAsync } from "@angular/core/testing";
 
 import { ModalController, Platform } from "@ionic/angular";
 import { SplashScreen } from "@capacitor/splash-screen";
-import { StatusBar } from "@ionic-native/status-bar/ngx";
 
 import { AppComponent } from "./app.component";
 import { DeploymentService } from "./shared/services/deployment/deployment.service";
@@ -17,10 +16,9 @@ import { FeedbackService } from "./feature/feedback/feedback.service";
 import { AppUpdateService } from "./shared/services/app-update/app-update.service";
 
 describe("AppComponent", () => {
-  let statusBarSpy, splashScreenSpy, platformReadySpy, platformSpy;
+  let splashScreenSpy, platformReadySpy, platformSpy;
 
   beforeEach(waitForAsync(() => {
-    statusBarSpy = jasmine.createSpyObj("StatusBar", ["styleDefault"]);
     splashScreenSpy = jasmine.createSpyObj("SplashScreen", ["hide"]);
     platformReadySpy = Promise.resolve();
     platformSpy = jasmine.createSpyObj("Platform", { ready: platformReadySpy });
@@ -30,7 +28,6 @@ describe("AppComponent", () => {
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
       imports: [HttpClientTestingModule],
       providers: [
-        { provide: StatusBar, useValue: statusBarSpy },
         { provide: SplashScreen, useValue: splashScreenSpy },
         { provide: Platform, useValue: platformSpy },
         { provide: DeploymentService, useValue: new MockDeploymentService() },

@@ -166,6 +166,10 @@ describe("DynamicDataService", () => {
     expect(data).toEqual([{ id: "1", string: "hello" }]);
   });
 
+  it("TODO - delete bulk/single", async () => {
+    // TODO
+  });
+
   // QA
   it("prevents query of non-existent data lists", async () => {
     let errMsg: string;
