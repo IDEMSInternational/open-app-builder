@@ -6,7 +6,7 @@ import { resolve } from "path";
 interface IParsedEnvironment {
   WEBSOCKET_PORT: string;
   API_PORT: string;
-  API_BASE_PATH: string;
+  API_BASE_URL: string;
   DB_HOST: string;
   DB_PORT: string;
   POSTGRES_USER: string;
