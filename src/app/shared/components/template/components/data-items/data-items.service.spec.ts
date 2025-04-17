@@ -179,6 +179,36 @@ describe("DataItemsService", () => {
     expect(data[0].value).toEqual("@local.mockString");
   });
 
+  it("supports non-string intermediate variables", async () => {
+    // child rows include local variable setter and display component
+    const itemsRow = {
+      ...MOCK_DATA_ITEMS_ROW(),
+      rows: [
+        {
+          type: "set_variable",
+          name: "intermediateMultiplier",
+          _nested_name: "",
+          value: 10,
+        },
+        {
+          type: "set_variable",
+          name: "multipliedNumber",
+          _nested_name: "",
+          value: "@calc(@local.intermediateMultiplier * @item.number)",
+        },
+        MOCK_BUTTON({ value: "test @local.multipliedNumber" }),
+      ],
+    };
+
+    const obs = service.getItemsObservable(itemsRow, {});
+    const data: FlowTypes.TemplateRow[] = await firstValueFrom(obs);
+    // local context
+    expect(data[1]._evalContext.local).toEqual({
+      intermediateMultiplier: 10,
+      multipliedNumber: 20,
+    });
+  });
+
   it("evaluates data actions rows with items context (if empty)", async () => {
     // HACK - Actions only trigger correctly if data_items do not contain looped child rows
     const emptyItemsRow = { ...MOCK_DATA_ITEMS_ROW(), rows: undefined };
